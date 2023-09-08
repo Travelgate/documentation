@@ -33,7 +33,17 @@ const config = {
   },
 
   plugins:[
-    require.resolve("@cmfcmf/docusaurus-search-local")
+    require.resolve("@cmfcmf/docusaurus-search-local"),
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'kb',
+        path: 'kb',
+        routeBasePath: 'kb',
+        sidebarPath: require.resolve('./sidebarsKb.js'),
+        // ... other options
+      },
+    ],
   ],
 
   presets: [
@@ -74,13 +84,19 @@ const config = {
           src: 'img/logo.svg',
         },
         items: [
-          // {
-          //   type: 'docSidebar',
-          //   sidebarId: 'tutorialSidebar',
-          //   position: 'left',
-          //   label: 'Tutorial',
-          // },
-          // {to: '/blog', label: 'Blog', position: 'left'},
+          {
+            type: 'docSidebar',
+            sidebarId: 'tutorialSidebar',
+            position: 'left',
+            label: 'Documentation',
+          },
+          {
+            to: '/kb/intro',
+            //type: 'docSidebar',
+            sidebarId: 'kbSidebar',
+            label: 'Knowledge Base',
+            position: 'left'
+          },
           // {
           //   href: 'https://github.com/facebook/docusaurus',
           //   label: 'GitHub',

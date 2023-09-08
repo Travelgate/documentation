@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocumentation=self.webpackChunkdocumentation||[]).push([[457],{6045:e=>{e.exports=JSON.parse('{"title":"Basics","description":"Learn Travelgate basics","slug":"/category/basics","permalink":"/docs/category/basics","navigation":{"next":{"title":"Travelgate","permalink":"/docs/basics/travelgate"}}}')}}]);

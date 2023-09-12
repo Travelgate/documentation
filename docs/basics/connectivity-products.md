@@ -23,7 +23,7 @@ For Sellers:
 
 * [Hotel Push Sellers API](../apis/hotel-push-sellers-api/overview): In the Push integration framework, Sellers transmit their product data to the TGX Database/System. Push integrations are characterized by reduced traffic demands and swifter response times. However, they don't support real-time interactions and demand more developmental effort.
 
-### APPs Connections
+### APP Connections
 
 If an API isn't part of your tech stack or you aren't integrated with any tech platform, worry not! TravelgateX has user-friendly APPs tailored for you.
 

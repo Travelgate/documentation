@@ -1,0 +1,68 @@
+---
+id: itinerary-map
+title: ItineraryMap
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type ItineraryMap {
+  order: Int!
+  productToken: String!
+  productType: ProductType
+  ref: String!
+  startDay: Int!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>ItineraryMap.<b>order</b></code>](#)<Bullet />[`Int!`](/api/scalars/int) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Indicates de chronological order of each entry
+
+#### [<code style={{ fontWeight: 'normal' }}>ItineraryMap.<b>productToken</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Product token that will be used in Book (may not be received in search)
+
+#### [<code style={{ fontWeight: 'normal' }}>ItineraryMap.<b>productType</b></code>](#)<Bullet />[`ProductType`](/api/enums/product-type) <Badge class="badge badge--secondary" text="enum"/>
+
+> Type of the product (Transport, accomodation...)
+
+#### [<code style={{ fontWeight: 'normal' }}>ItineraryMap.<b>ref</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Ref to identify the entry in it's specified List (Accommodations, Transports...)
+
+#### [<code style={{ fontWeight: 'normal' }}>ItineraryMap.<b>startDay</b></code>](#)<Bullet />[`Int!`](/api/scalars/int) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Day where activity will take place
+
+### Member of
+
+[`BookingPayload`](/api/objects/booking-payload) <Badge class="badge badge--secondary" text="object"/><Bullet />[`BookPayload`](/api/objects/book-payload) <Badge class="badge badge--secondary" text="object"/><Bullet />[`QuotePayload`](/api/objects/quote-payload) <Badge class="badge badge--secondary" text="object"/><Bullet />[`SearchOption`](/api/objects/search-option) <Badge class="badge badge--secondary" text="object"/>

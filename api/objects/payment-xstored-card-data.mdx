@@ -1,0 +1,93 @@
+---
+id: payment-xstored-card-data
+title: PaymentXStoredCardData
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type PaymentXStoredCardData {
+  instance: Group!
+  pointOfSale: PointOfSale!
+  bookingReference: String!
+  checkOut: Date
+  checkIn: Date
+  cardType: String
+  holder: Holder
+  number: CardNumber
+  CVC: CVC
+  expire: PaymentXExpireDate
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentXStoredCardData.<b>instance</b></code>](#)<Bullet />[`Group!`](/api/objects/group) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Asigned instance of PaymentX of the booked property.
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentXStoredCardData.<b>pointOfSale</b></code>](#)<Bullet />[`PointOfSale!`](/api/objects/point-of-sale) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Physical point of sale where the card was registered.
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentXStoredCardData.<b>bookingReference</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Indicates the referece of the booking
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentXStoredCardData.<b>checkOut</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Check-out, booking date Format: YYYY-MM-DD
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentXStoredCardData.<b>checkIn</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Check-in, booking date Format: YYYY-MM-DD
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentXStoredCardData.<b>cardType</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Indicates the card type.
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentXStoredCardData.<b>holder</b></code>](#)<Bullet />[`Holder`](/api/objects/holder) <Badge class="badge badge--secondary" text="object"/>
+
+> Contains owner s name
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentXStoredCardData.<b>number</b></code>](#)<Bullet />[`CardNumber`](/api/scalars/card-number) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Card Number (16 digits typically)
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentXStoredCardData.<b>CVC</b></code>](#)<Bullet />[`CVC`](/api/scalars/cvc) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Contains credit card CVC
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentXStoredCardData.<b>expire</b></code>](#)<Bullet />[`PaymentXExpireDate`](/api/objects/payment-xexpire-date) <Badge class="badge badge--secondary" text="object"/>
+
+> Contains credit card expiration date
+
+### Member of
+
+[`PaymentXStoredCard`](/api/objects/payment-xstored-card) <Badge class="badge badge--secondary" text="object"/>

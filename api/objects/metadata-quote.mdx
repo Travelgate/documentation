@@ -1,0 +1,83 @@
+---
+id: metadata-quote
+title: MetadataQuote
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type MetadataQuote {
+  informBindingPrice: ReviewedBool!
+  informNRFRate: ReviewedBool!
+  informRemarks: ReviewedBool!
+  informCancelPolicies: ReviewedBool!
+  informCancelPoliciesDescription: ReviewedBool!
+  timeZone: ReviewedTimeZone!
+  informSurcharges: ReviewedBool!
+  requiredNationality: ReviewedBool
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataQuote.<b>informBindingPrice</b></code>](#)<Bullet />[`ReviewedBool!`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Informs if the price is binding in Quote response.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataQuote.<b>informNRFRate</b></code>](#)<Bullet />[`ReviewedBool!`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> The supplier can inform in Quote if the rate is non-refundable.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataQuote.<b>informRemarks</b></code>](#)<Bullet />[`ReviewedBool!`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Returns remarks.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataQuote.<b>informCancelPolicies</b></code>](#)<Bullet />[`ReviewedBool!`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Informs cancellation policies.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataQuote.<b>informCancelPoliciesDescription</b></code>](#)<Bullet />[`ReviewedBool!`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Specifies if the supplier informs the cancel policies in free text.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataQuote.<b>timeZone</b></code>](#)<Bullet />[`ReviewedTimeZone!`](/api/objects/reviewed-time-zone) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Specifies if the supplier inform the cancel policies in free text
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataQuote.<b>informSurcharges</b></code>](#)<Bullet />[`ReviewedBool!`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Informs if the supplier returns surcharges.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataQuote.<b>requiredNationality</b></code>](#)<Bullet />[`ReviewedBool`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="object"/>
+
+> Informs if the supplier requires nationality
+
+### Member of
+
+[`MetadataData`](/api/objects/metadata-data) <Badge class="badge badge--secondary" text="object"/>

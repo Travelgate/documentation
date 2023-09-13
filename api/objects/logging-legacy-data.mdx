@@ -1,0 +1,108 @@
+---
+id: logging-legacy-data
+title: LoggingLegacyData
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type LoggingLegacyData {
+  code: ID!
+  timestamp: DateTime!
+  sessionID: ID!
+  access: Access!
+  client: Client!
+  operation: Operation!
+  trafficType: TrafficType!
+  cloudEnvironment: Environment!
+  statusType: StatsInfoTypes!
+  errorCode: ID!
+  execTime: Int!
+  url: URI!
+  unencryptedURL: URI!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>LoggingLegacyData.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>LoggingLegacyData.<b>timestamp</b></code>](#)<Bullet />[`DateTime!`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Date of search
+
+#### [<code style={{ fontWeight: 'normal' }}>LoggingLegacyData.<b>sessionID</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Return session id
+
+#### [<code style={{ fontWeight: 'normal' }}>LoggingLegacyData.<b>access</b></code>](#)<Bullet />[`Access!`](/api/objects/access) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Owner access
+
+#### [<code style={{ fontWeight: 'normal' }}>LoggingLegacyData.<b>client</b></code>](#)<Bullet />[`Client!`](/api/objects/client) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Owner client
+
+#### [<code style={{ fontWeight: 'normal' }}>LoggingLegacyData.<b>operation</b></code>](#)<Bullet />[`Operation!`](/api/objects/operation) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Return group operation
+
+#### [<code style={{ fontWeight: 'normal' }}>LoggingLegacyData.<b>trafficType</b></code>](#)<Bullet />[`TrafficType!`](/api/enums/traffic-type) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> Responsible for the execution of the this stats. If TRUE then cache, else client
+
+#### [<code style={{ fontWeight: 'normal' }}>LoggingLegacyData.<b>cloudEnvironment</b></code>](#)<Bullet />[`Environment!`](/api/objects/environment) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Return environment
+
+#### [<code style={{ fontWeight: 'normal' }}>LoggingLegacyData.<b>statusType</b></code>](#)<Bullet />[`StatsInfoTypes!`](/api/enums/stats-info-types) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> return hub status
+
+#### [<code style={{ fontWeight: 'normal' }}>LoggingLegacyData.<b>errorCode</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Return if exist error code
+
+#### [<code style={{ fontWeight: 'normal' }}>LoggingLegacyData.<b>execTime</b></code>](#)<Bullet />[`Int!`](/api/scalars/int) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Return execTime
+
+#### [<code style={{ fontWeight: 'normal' }}>LoggingLegacyData.<b>url</b></code>](#)<Bullet />[`URI!`](/api/scalars/uri) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Return the URL to download
+
+#### [<code style={{ fontWeight: 'normal' }}>LoggingLegacyData.<b>unencryptedURL</b></code>](#)<Bullet />[`URI!`](/api/scalars/uri) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Return the unencrypted URL to download
+
+### Member of
+
+[`LoggingLegacy`](/api/objects/logging-legacy) <Badge class="badge badge--secondary" text="object"/>

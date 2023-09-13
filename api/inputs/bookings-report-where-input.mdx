@@ -1,0 +1,104 @@
+---
+id: bookings-report-where-input
+title: BookingsReportWhereInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+## BOOKING REPORT // Where Input
+
+```graphql
+input BookingsReportWhereInput {
+  bookingAt: DateRange
+  checkInAt: DateRange
+  cancelAt: DateRange
+  reference: References
+  requestMode: ModeType!
+  ownerCode_in: [ID!]
+  groupCode_in: [ID!]
+  accessCode_in: [ID!]
+  supplierCode_in: [ID!]
+  clientCode_in: [ID!]
+  marketCode_in: [String!]
+  countryCode_in: [String!]
+  bookingStatus_in: [BookStatusType!]
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingsReportWhereInput.<b>bookingAt</b></code>](#)<Bullet />[`DateRange`](/api/inputs/date-range) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingsReportWhereInput.<b>checkInAt</b></code>](#)<Bullet />[`DateRange`](/api/inputs/date-range) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingsReportWhereInput.<b>cancelAt</b></code>](#)<Bullet />[`DateRange`](/api/inputs/date-range) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingsReportWhereInput.<b>reference</b></code>](#)<Bullet />[`References`](/api/inputs/references) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingsReportWhereInput.<b>requestMode</b></code>](#)<Bullet />[`ModeType!`](/api/enums/mode-type) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingsReportWhereInput.<b>ownerCode_in</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingsReportWhereInput.<b>groupCode_in</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingsReportWhereInput.<b>accessCode_in</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingsReportWhereInput.<b>supplierCode_in</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingsReportWhereInput.<b>clientCode_in</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingsReportWhereInput.<b>marketCode_in</b></code>](#)<Bullet />[`[String!]`](/api/scalars/string) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> List of markets
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingsReportWhereInput.<b>countryCode_in</b></code>](#)<Bullet />[`[String!]`](/api/scalars/string) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> List of destinations
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingsReportWhereInput.<b>bookingStatus_in</b></code>](#)<Bullet />[`[BookStatusType!]`](/api/enums/book-status-type) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> List of booking status

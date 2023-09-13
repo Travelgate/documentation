@@ -1,0 +1,219 @@
+---
+id: profile-update-input
+title: ProfileUpdateInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+ToDo: Add ProfileData to input
+
+```graphql
+input ProfileUpdateInput {
+  Asset: AssetUpdateManyThroughUpdatingOtherSubentity
+  classifications: ProfileCreateOrUpdateClassificationsInput
+  description: String
+  groupCode: ID
+  name: String
+  order: Float
+  ownerCode: ID
+  slug: String
+  status: Status
+  websiteUrl: String
+  buyerPartnerStatus: PartnerStatusType
+  sellerPartnerStatus: PartnerStatusType
+  buyerOnboardingStart: Date
+  buyerOnboardingEnd: Date
+  sellerOnboardingStart: Date
+  sellerOnboardingEnd: Date
+  buyerFirstBooking: Date
+  buyerLastBooking: Date
+  sellerFirstBooking: Date
+  sellerLastBooking: Date
+  sellerIntegrationType: [SellerIntegrationType!]
+  buyerIntegrationType: [BuyerIntegrationType!]
+  buyerTechPlatformOrgType: BuyerTechSolutionCompanyType
+  buyerTechBridge: String
+  sellerTechBridge: String
+  country: String
+  buyerOrgType: BuyerCompanyType
+  sellerOrgType: SellerCompanyType
+  sellerTechPlatformOrgType: SellerTechSolutionCompanyType
+  buyerCategoryPropertiesInput: BuyerCategoryPropertiesInput
+  sellerCategoryPropertiesInput: SellerCategoryPropertiesInput
+  isDemandBridge: Boolean
+  isSupplyBridge: Boolean
+  internalExtendedInfoInput: InternalExtendedInfoInput
+  buyerInsightsCountriesInput: [InsightsCountriesInput]
+  sellerInsightsCountriesInput: [InsightsCountriesInput]
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileUpdateInput.<b>Asset</b></code>](#)<Bullet />[`AssetUpdateManyThroughUpdatingOtherSubentity`](/api/inputs/asset-update-many-through-updating-other-subentity) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileUpdateInput.<b>classifications</b></code>](#)<Bullet />[`ProfileCreateOrUpdateClassificationsInput`](/api/inputs/profile-create-or-update-classifications-input) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileUpdateInput.<b>description</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileUpdateInput.<b>groupCode</b></code>](#)<Bullet />[`ID`](/api/scalars/id) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileUpdateInput.<b>name</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileUpdateInput.<b>order</b></code>](#)<Bullet />[`Float`](/api/scalars/float) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileUpdateInput.<b>ownerCode</b></code>](#)<Bullet />[`ID`](/api/scalars/id) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileUpdateInput.<b>slug</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileUpdateInput.<b>status</b></code>](#)<Bullet />[`Status`](/api/enums/status) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileUpdateInput.<b>websiteUrl</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileUpdateInput.<b>buyerPartnerStatus</b></code>](#)<Bullet />[`PartnerStatusType`](/api/enums/partner-status-type) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileUpdateInput.<b>sellerPartnerStatus</b></code>](#)<Bullet />[`PartnerStatusType`](/api/enums/partner-status-type) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileUpdateInput.<b>buyerOnboardingStart</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileUpdateInput.<b>buyerOnboardingEnd</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileUpdateInput.<b>sellerOnboardingStart</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileUpdateInput.<b>sellerOnboardingEnd</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileUpdateInput.<b>buyerFirstBooking</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileUpdateInput.<b>buyerLastBooking</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileUpdateInput.<b>sellerFirstBooking</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileUpdateInput.<b>sellerLastBooking</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileUpdateInput.<b>sellerIntegrationType</b></code>](#)<Bullet />[`[SellerIntegrationType!]`](/api/enums/seller-integration-type) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileUpdateInput.<b>buyerIntegrationType</b></code>](#)<Bullet />[`[BuyerIntegrationType!]`](/api/enums/buyer-integration-type) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileUpdateInput.<b>buyerTechPlatformOrgType</b></code>](#)<Bullet />[`BuyerTechSolutionCompanyType`](/api/enums/buyer-tech-solution-company-type) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileUpdateInput.<b>buyerTechBridge</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileUpdateInput.<b>sellerTechBridge</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileUpdateInput.<b>country</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileUpdateInput.<b>buyerOrgType</b></code>](#)<Bullet />[`BuyerCompanyType`](/api/enums/buyer-company-type) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileUpdateInput.<b>sellerOrgType</b></code>](#)<Bullet />[`SellerCompanyType`](/api/enums/seller-company-type) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileUpdateInput.<b>sellerTechPlatformOrgType</b></code>](#)<Bullet />[`SellerTechSolutionCompanyType`](/api/enums/seller-tech-solution-company-type) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileUpdateInput.<b>buyerCategoryPropertiesInput</b></code>](#)<Bullet />[`BuyerCategoryPropertiesInput`](/api/inputs/buyer-category-properties-input) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileUpdateInput.<b>sellerCategoryPropertiesInput</b></code>](#)<Bullet />[`SellerCategoryPropertiesInput`](/api/inputs/seller-category-properties-input) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileUpdateInput.<b>isDemandBridge</b></code>](#)<Bullet />[`Boolean`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileUpdateInput.<b>isSupplyBridge</b></code>](#)<Bullet />[`Boolean`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileUpdateInput.<b>internalExtendedInfoInput</b></code>](#)<Bullet />[`InternalExtendedInfoInput`](/api/inputs/internal-extended-info-input) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileUpdateInput.<b>buyerInsightsCountriesInput</b></code>](#)<Bullet />[`[InsightsCountriesInput]`](/api/inputs/insights-countries-input) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileUpdateInput.<b>sellerInsightsCountriesInput</b></code>](#)<Bullet />[`[InsightsCountriesInput]`](/api/inputs/insights-countries-input) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="input"/>
+
+>

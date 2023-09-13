@@ -1,0 +1,104 @@
+---
+id: access-update-input
+title: AccessUpdateInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+input AccessUpdateInput {
+  name: String
+  supplierCode: ID
+  isTest: Boolean
+  isShared: Boolean
+  user: String
+  password: String
+  updateDescriptiveInfo: Int
+  descriptiveInfoLimit: Int
+  isSchedulerActive: Boolean
+  updateList: Int
+  updateDateRange: String
+  urls: UrlsInput
+  ownerCode: ID
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>AccessUpdateInput.<b>name</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Access descriptive unique name
+
+#### [<code style={{ fontWeight: 'normal' }}>AccessUpdateInput.<b>supplierCode</b></code>](#)<Bullet />[`ID`](/api/scalars/id) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Supplier code for this Access
+
+#### [<code style={{ fontWeight: 'normal' }}>AccessUpdateInput.<b>isTest</b></code>](#)<Bullet />[`Boolean`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Indicates if Access can be used for testing or not
+
+#### [<code style={{ fontWeight: 'normal' }}>AccessUpdateInput.<b>isShared</b></code>](#)<Bullet />[`Boolean`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Indicates if Access is shared or not
+
+#### [<code style={{ fontWeight: 'normal' }}>AccessUpdateInput.<b>user</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> User code to connect to supplier
+
+#### [<code style={{ fontWeight: 'normal' }}>AccessUpdateInput.<b>password</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Password for the connection
+
+#### [<code style={{ fontWeight: 'normal' }}>AccessUpdateInput.<b>updateDescriptiveInfo</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Refresh time to update Despriptive Info
+
+#### [<code style={{ fontWeight: 'normal' }}>AccessUpdateInput.<b>descriptiveInfoLimit</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Limit on DescriptiveInfo; 0 denotates no limit
+
+#### [<code style={{ fontWeight: 'normal' }}>AccessUpdateInput.<b>isSchedulerActive</b></code>](#)<Bullet />[`Boolean`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Indicates if scheduler is active
+
+#### [<code style={{ fontWeight: 'normal' }}>AccessUpdateInput.<b>updateList</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Refresh time to update other batch lists
+
+#### [<code style={{ fontWeight: 'normal' }}>AccessUpdateInput.<b>updateDateRange</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Range on update date
+
+#### [<code style={{ fontWeight: 'normal' }}>AccessUpdateInput.<b>urls</b></code>](#)<Bullet />[`UrlsInput`](/api/inputs/urls-input) <Badge class="badge badge--secondary" text="input"/>
+
+> Specific URLs
+
+#### [<code style={{ fontWeight: 'normal' }}>AccessUpdateInput.<b>ownerCode</b></code>](#)<Bullet />[`ID`](/api/scalars/id) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Owner code for this Access

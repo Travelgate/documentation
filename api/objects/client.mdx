@@ -1,0 +1,92 @@
+---
+id: client
+title: Client
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Client identifies who is making the request and holds the configuration assigned to it.
+
+```graphql
+type Client implements Node {
+  code: ID!
+  clientData: ClientData
+  adviseMessage(level: [AdviseMessageLevel]): [AdviseMessage!]
+  error: [Error!] @deprecated
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Client.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Client unique code, format: "cli000"
+
+#### [<code style={{ fontWeight: 'normal' }}>Client.<b>clientData</b></code>](#)<Bullet />[`ClientData`](/api/objects/client-data) <Badge class="badge badge--secondary" text="object"/>
+
+> Extended Client information
+
+#### [<code style={{ fontWeight: 'normal' }}>Client.<b>adviseMessage</b></code>](#)<Bullet />[`[AdviseMessage!]`](/api/objects/advise-message) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> List of advise messages.
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>Client.adviseMessage.<b>level</b></code>](#)<Bullet />[`[AdviseMessageLevel]`](/api/enums/advise-message-level) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Client.<b>error</b></code>](#)<Bullet />[`[Error!]`](/api/objects/error) <Badge class="badge badge--deprecated badge--secondary" text="deprecated"/> <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> :::caution DEPRECATED
+> deprecated from 2019-01-01. Use AdviseMessage instead
+> :::
+
+#### [<code style={{ fontWeight: 'normal' }}>Client.<b>createdAt</b></code>](#)<Bullet />[`DateTime!`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Client creation date
+
+#### [<code style={{ fontWeight: 'normal' }}>Client.<b>updatedAt</b></code>](#)<Bullet />[`DateTime!`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Client last update date
+
+#### [<code style={{ fontWeight: 'normal' }}>Client.<b>deletedAt</b></code>](#)<Bullet />[`DateTime`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Client deleted date
+
+### Interfaces
+
+#### [`Node`](/api/interfaces/node) <Badge class="badge badge--secondary" text="interface"/>
+
+>
+
+### Member of
+
+[`AdminMutation`](/api/objects/admin-mutation) <Badge class="badge badge--secondary" text="object"/><Bullet />[`AdminQuery`](/api/objects/admin-query) <Badge class="badge badge--secondary" text="object"/><Bullet />[`AuditRuleData`](/api/objects/audit-rule-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`BookingAggregation`](/api/objects/booking-aggregation) <Badge class="badge badge--secondary" text="object"/><Bullet />[`BookingDetail`](/api/objects/booking-detail) <Badge class="badge badge--secondary" text="object"/><Bullet />[`ClientEdge`](/api/objects/client-edge) <Badge class="badge badge--secondary" text="object"/><Bullet />[`LoggingLegacyData`](/api/objects/logging-legacy-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`StatsAggregationData`](/api/objects/stats-aggregation-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`StatsData`](/api/objects/stats-data) <Badge class="badge badge--secondary" text="object"/>
+
+### Implemented by
+
+[`AlertObjectsUnion`](/api/unions/alert-objects-union) <Badge class="badge badge--secondary" text="union"/>

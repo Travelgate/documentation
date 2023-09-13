@@ -1,0 +1,83 @@
+---
+id: mapping-type
+title: MappingType
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+enum MappingType {
+  AMENITY
+  BOARD
+  RATE
+  ROOM
+  ROOM_DESCRIPTION
+  PROMOTION
+  HOTEL_ROOM
+  HOTEL_ROOM_DESCRIPTION
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>MappingType.<b>AMENITY</b></code>](#)
+
+> HOTEL - Coming soon
+
+#### [<code style={{ fontWeight: 'normal' }}>MappingType.<b>BOARD</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>MappingType.<b>RATE</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>MappingType.<b>ROOM</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>MappingType.<b>ROOM_DESCRIPTION</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>MappingType.<b>PROMOTION</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>MappingType.<b>HOTEL_ROOM</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>MappingType.<b>HOTEL_ROOM_DESCRIPTION</b></code>](#)
+
+>
+
+### Member of
+
+[`HotelXMappingReportWhereInput`](/api/inputs/hotel-xmapping-report-where-input) <Badge class="badge badge--secondary" text="input"/>

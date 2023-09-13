@@ -1,0 +1,63 @@
+---
+id: traffic-type
+title: TrafficType
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Posible source of ratios
+
+```graphql
+enum TrafficType {
+  BASIC
+  SPEED
+  SCHEDULER
+  OPTIMIZED
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficType.<b>BASIC</b></code>](#)
+
+> Ratios calculated from traffic between buyer and seller
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficType.<b>SPEED</b></code>](#)
+
+> Ratios calculated from traffic between buyer and Speed
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficType.<b>SCHEDULER</b></code>](#)
+
+> Ratios calculated from traffic between buyer and Static information cache
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficType.<b>OPTIMIZED</b></code>](#)
+
+> Ratios calculated from traffic between TGX s caches and seller
+
+### Member of
+
+[`LoggingLegacyData`](/api/objects/logging-legacy-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`LoggingLegacyFilterInput`](/api/inputs/logging-legacy-filter-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`OperationDetailed`](/api/objects/operation-detailed) <Badge class="badge badge--secondary" text="object"/><Bullet />[`StatsAggregationConnectionWhereInput`](/api/inputs/stats-aggregation-connection-where-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`StatsAggregationData`](/api/objects/stats-aggregation-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`StatsFilterInput`](/api/inputs/stats-filter-input) <Badge class="badge badge--secondary" text="input"/>

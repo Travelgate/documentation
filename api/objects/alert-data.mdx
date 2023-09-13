@@ -1,0 +1,100 @@
+---
+id: alert-data
+title: AlertData
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type AlertData {
+  code: ID!
+  name: String
+  description: String
+  configuration: AlertConfiguration!
+  isActive: Boolean!
+  history(relay: RelayInput, filter: AlertFilterInput): AlertConnection!
+  editor: Member!
+  events(relay: RelayInput, filter: AlertFilterInput): AlertEventConnection!
+  group: Group!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertData.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertData.<b>name</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Alert name
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertData.<b>description</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Alert description
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertData.<b>configuration</b></code>](#)<Bullet />[`AlertConfiguration!`](/api/objects/alert-configuration) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Alert configuration
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertData.<b>isActive</b></code>](#)<Bullet />[`Boolean!`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Indicates if the alert is being checked by the service.
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertData.<b>history</b></code>](#)<Bullet />[`AlertConnection!`](/api/objects/alert-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Records of each update made of the alert
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AlertData.history.<b>relay</b></code>](#)<Bullet />[`RelayInput`](/api/inputs/relay-input) <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AlertData.history.<b>filter</b></code>](#)<Bullet />[`AlertFilterInput`](/api/inputs/alert-filter-input) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertData.<b>editor</b></code>](#)<Bullet />[`Member!`](/api/objects/member) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Member has edit the actual alert data
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertData.<b>events</b></code>](#)<Bullet />[`AlertEventConnection!`](/api/objects/alert-event-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Records of the last 10 events triggered
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AlertData.events.<b>relay</b></code>](#)<Bullet />[`RelayInput`](/api/inputs/relay-input) <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AlertData.events.<b>filter</b></code>](#)<Bullet />[`AlertFilterInput`](/api/inputs/alert-filter-input) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertData.<b>group</b></code>](#)<Bullet />[`Group!`](/api/objects/group) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Group where the alert is saved
+
+### Member of
+
+[`Alert`](/api/objects/alert) <Badge class="badge badge--secondary" text="object"/>

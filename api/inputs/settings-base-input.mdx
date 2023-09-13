@@ -1,0 +1,68 @@
+---
+id: settings-base-input
+title: SettingsBaseInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Contains the time out and business rules of a supplier or an access.
+
+```graphql
+input SettingsBaseInput {
+  timeout: Int
+  auditTransactions: Boolean
+  businessRules: BusinessRulesInput
+  currency: Currency
+  commitRequired: Boolean
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>SettingsBaseInput.<b>timeout</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Milliseconds before the connection is closed.
+
+#### [<code style={{ fontWeight: 'normal' }}>SettingsBaseInput.<b>auditTransactions</b></code>](#)<Bullet />[`Boolean`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Specifies if transactions exchanged with the supplier have to be logged or not.
+
+#### [<code style={{ fontWeight: 'normal' }}>SettingsBaseInput.<b>businessRules</b></code>](#)<Bullet />[`BusinessRulesInput`](/api/inputs/business-rules-input) <Badge class="badge badge--secondary" text="input"/>
+
+> Business rules
+
+#### [<code style={{ fontWeight: 'normal' }}>SettingsBaseInput.<b>currency</b></code>](#)<Bullet />[`Currency`](/api/scalars/currency) <Badge class="badge badge--secondary" text="scalar"/>
+
+> The currency
+
+#### [<code style={{ fontWeight: 'normal' }}>SettingsBaseInput.<b>commitRequired</b></code>](#)<Bullet />[`Boolean`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Indicates if the book will be confirmed in 1 or 2 steps
+
+### Member of
+
+[`HotelXAccessInput`](/api/inputs/hotel-xaccess-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`HotelXSupplierInput`](/api/inputs/hotel-xsupplier-input) <Badge class="badge badge--secondary" text="input"/>

@@ -1,0 +1,70 @@
+---
+id: mapping-context
+title: MappingContext
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Returns the differents group contexts
+@deprecated(reason: "deprecated from 2019-09-10. not operating or being used")
+
+```graphql
+type MappingContext {
+  code: String!
+  hotels(codes: [String!]): [MappingEntity!]
+  rooms(codes: [String!]): [MappingEntity!]
+  boards(codes: [String!]): [MappingEntity!]
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>MappingContext.<b>code</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Code of the context
+
+#### [<code style={{ fontWeight: 'normal' }}>MappingContext.<b>hotels</b></code>](#)<Bullet />[`[MappingEntity!]`](/api/objects/mapping-entity) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Mapping of hotels, you can filter by hotel code.
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>MappingContext.hotels.<b>codes</b></code>](#)<Bullet />[`[String!]`](/api/scalars/string) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>MappingContext.<b>rooms</b></code>](#)<Bullet />[`[MappingEntity!]`](/api/objects/mapping-entity) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Mapping of rooms, you can filter by room code.
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>MappingContext.rooms.<b>codes</b></code>](#)<Bullet />[`[String!]`](/api/scalars/string) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>MappingContext.<b>boards</b></code>](#)<Bullet />[`[MappingEntity!]`](/api/objects/mapping-entity) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Mapping of boards, you can filter by board code.
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>MappingContext.boards.<b>codes</b></code>](#)<Bullet />[`[String!]`](/api/scalars/string) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+### Member of
+
+[`Mapping`](/api/objects/mapping) <Badge class="badge badge--secondary" text="object"/>

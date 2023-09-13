@@ -1,0 +1,100 @@
+---
+id: stats-data
+title: StatsData
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type StatsData {
+  access: Access!
+  client: Client!
+  from: DateTime!
+  to: DateTime!
+  ratios(trafficType: TrafficType!): Ratios! @deprecated
+  operations(type: [ServiceOperationType!]): [OperationDetailed!]
+  hits(
+    trafficType: TrafficType!
+    statusType: StatsInfoTypes!
+    operationType: OperationType!
+  ): Int64!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsData.<b>access</b></code>](#)<Bullet />[`Access!`](/api/objects/access) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Owner access
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsData.<b>client</b></code>](#)<Bullet />[`Client!`](/api/objects/client) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Owner client
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsData.<b>from</b></code>](#)<Bullet />[`DateTime!`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> From date of search
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsData.<b>to</b></code>](#)<Bullet />[`DateTime!`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> To date of search
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsData.<b>ratios</b></code>](#)<Bullet />[`Ratios!`](/api/objects/ratios) <Badge class="badge badge--deprecated badge--secondary" text="deprecated"/> <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> :::caution DEPRECATED
+> deprecated from 2019-04-08. Added hits fields to be able to calculate ratios at client side.
+> :::
+>
+> Ratios details
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>StatsData.ratios.<b>trafficType</b></code>](#)<Bullet />[`TrafficType!`](/api/enums/traffic-type) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsData.<b>operations</b></code>](#)<Bullet />[`[OperationDetailed!]`](/api/objects/operation-detailed) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Stats information per operation
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>StatsData.operations.<b>type</b></code>](#)<Bullet />[`[ServiceOperationType!]`](/api/enums/service-operation-type) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsData.<b>hits</b></code>](#)<Bullet />[`Int64!`](/api/scalars/int-64) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Summarized Stats
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>StatsData.hits.<b>trafficType</b></code>](#)<Bullet />[`TrafficType!`](/api/enums/traffic-type) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>StatsData.hits.<b>statusType</b></code>](#)<Bullet />[`StatsInfoTypes!`](/api/enums/stats-info-types) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>StatsData.hits.<b>operationType</b></code>](#)<Bullet />[`OperationType!`](/api/enums/operation-type) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+### Member of
+
+[`Stats`](/api/objects/stats) <Badge class="badge badge--secondary" text="object"/>

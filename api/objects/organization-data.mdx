@@ -1,0 +1,565 @@
+---
+id: organization-data
+title: OrganizationData
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type OrganizationData implements GroupCommonData {
+  id: ID!
+  code: ID!
+  label: String
+  type: GroupType!
+  info: String
+  crmID: String
+  crmData: CompanyCrmData
+  payParcID: String @deprecated
+  partner: Organization
+  isPublic: Boolean
+  children(
+    codes: [ID!]
+    first: Int
+    last: Int
+    before: String
+    after: String
+    type: GroupType
+    codeStartsWith: String
+  ): GroupConnection
+  descendents(
+    codes: [ID!]
+    type: GroupType
+    orderBy: OrderByDescendents
+    first: Int
+    last: Int
+    before: String
+    after: String
+    codeStartsWith: String
+  ): GroupConnection
+  parents(
+    codes: [ID!]
+    type: GroupType
+    first: Int
+    last: Int
+    before: String
+    after: String
+  ): GroupConnection
+  owner: Member!
+  contacts: [OrganizationContact!]
+  isEditable: Boolean!
+  members(
+    codes: [ID!]
+    phones: [String!]
+    type: MemberType
+    first: Int
+    last: Int
+    before: String
+    after: String
+  ): MemberConnection
+  apis(
+    codes: [ID!]
+    first: Int
+    last: Int
+    before: String
+    after: String
+  ): APIConnection
+  products(
+    codes: [ID!]
+    first: Int
+    last: Int
+    before: String
+    after: String
+  ): ProductConnection
+  allMembers(
+    codes: [ID!]
+    phones: [String!]
+    type: MemberType
+    first: Int
+    last: Int
+    before: String
+    after: String
+  ): MemberConnection
+  accesses(
+    accessID: [ID!]
+    owner: [ID!]
+    first: Int
+    last: Int
+    before: String
+    after: String
+  ): AccessConnection
+  suppliers(
+    supplierID: [ID!]
+    accessID: [ID!]
+    owner: [ID!]
+    serviceAPI: [ID!]
+    isActive: Boolean
+    first: Int
+    last: Int
+    before: String
+    after: String
+  ): SupplierConnection
+  clients(
+    clientID: [ID!]
+    name: [ID!]
+    owner: [ID!]
+    isActive: Boolean
+    first: Int
+    last: Int
+    before: String
+    after: String
+  ): ClientConnection
+  domains: [Domain]!
+  template: String
+  country: Country! @deprecated
+  allAccesses: AccessConnection
+  allSuppliers: SupplierConnection
+  allClients: ClientConnection
+  primaryPartner: Partner!
+  allPartners(
+    where: PartnerWhereInput
+    orderBy: PartnerOrderByInput
+    relay: RelayInput
+  ): PartnerConnection!
+  isBuyer: Boolean!
+  isSeller: Boolean!
+  deleted_at: DateTime
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationData.<b>id</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationData.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationData.<b>label</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationData.<b>type</b></code>](#)<Bullet />[`GroupType!`](/api/enums/group-type) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationData.<b>info</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationData.<b>crmID</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationData.<b>crmData</b></code>](#)<Bullet />[`CompanyCrmData`](/api/objects/company-crm-data) <Badge class="badge badge--secondary" text="object"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationData.<b>payParcID</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--deprecated badge--secondary" text="deprecated"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> :::caution DEPRECATED
+> deprecated from 2023-06-06
+> :::
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationData.<b>partner</b></code>](#)<Bullet />[`Organization`](/api/objects/organization) <Badge class="badge badge--secondary" text="object"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationData.<b>isPublic</b></code>](#)<Bullet />[`Boolean`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationData.<b>children</b></code>](#)<Bullet />[`GroupConnection`](/api/objects/group-connection) <Badge class="badge badge--secondary" text="object"/>
+
+> Only responses folders.(non-hierarchically)
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.children.<b>codes</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.children.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.children.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.children.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.children.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.children.<b>type</b></code>](#)<Bullet />[`GroupType`](/api/enums/group-type) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.children.<b>codeStartsWith</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationData.<b>descendents</b></code>](#)<Bullet />[`GroupConnection`](/api/objects/group-connection) <Badge class="badge badge--secondary" text="object"/>
+
+> Response all descendents groups nodes in this group (nom-hierarchically)
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.descendents.<b>codes</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.descendents.<b>type</b></code>](#)<Bullet />[`GroupType`](/api/enums/group-type) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.descendents.<b>orderBy</b></code>](#)<Bullet />[`OrderByDescendents`](/api/enums/order-by-descendents) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.descendents.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.descendents.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.descendents.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.descendents.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.descendents.<b>codeStartsWith</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationData.<b>parents</b></code>](#)<Bullet />[`GroupConnection`](/api/objects/group-connection) <Badge class="badge badge--secondary" text="object"/>
+
+> Response all parents groups nodes for this group (nom-hierarchically)
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.parents.<b>codes</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.parents.<b>type</b></code>](#)<Bullet />[`GroupType`](/api/enums/group-type) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.parents.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.parents.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.parents.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.parents.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationData.<b>owner</b></code>](#)<Bullet />[`Member!`](/api/objects/member) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationData.<b>contacts</b></code>](#)<Bullet />[`[OrganizationContact!]`](/api/objects/organization-contact) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Differents contacts in a organization.
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationData.<b>isEditable</b></code>](#)<Bullet />[`Boolean!`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationData.<b>members</b></code>](#)<Bullet />[`MemberConnection`](/api/objects/member-connection) <Badge class="badge badge--secondary" text="object"/>
+
+> ##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.members.<b>codes</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.members.<b>phones</b></code>](#)<Bullet />[`[String!]`](/api/scalars/string) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.members.<b>type</b></code>](#)<Bullet />[`MemberType`](/api/enums/member-type) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.members.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.members.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.members.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.members.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationData.<b>apis</b></code>](#)<Bullet />[`APIConnection`](/api/objects/apiconnection) <Badge class="badge badge--secondary" text="object"/>
+
+> APIs assigned to this group. Products have APIs.
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.apis.<b>codes</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.apis.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.apis.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.apis.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.apis.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationData.<b>products</b></code>](#)<Bullet />[`ProductConnection`](/api/objects/product-connection) <Badge class="badge badge--secondary" text="object"/>
+
+> Products asign to a organization
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.products.<b>codes</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.products.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.products.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.products.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.products.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationData.<b>allMembers</b></code>](#)<Bullet />[`MemberConnection`](/api/objects/member-connection) <Badge class="badge badge--secondary" text="object"/>
+
+> Response all members in this group s childrens (hierarchically)
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.allMembers.<b>codes</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.allMembers.<b>phones</b></code>](#)<Bullet />[`[String!]`](/api/scalars/string) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.allMembers.<b>type</b></code>](#)<Bullet />[`MemberType`](/api/enums/member-type) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.allMembers.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.allMembers.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.allMembers.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.allMembers.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationData.<b>accesses</b></code>](#)<Bullet />[`AccessConnection`](/api/objects/access-connection) <Badge class="badge badge--secondary" text="object"/>
+
+> Access resources in a group
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.accesses.<b>accessID</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.accesses.<b>owner</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.accesses.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.accesses.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.accesses.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.accesses.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationData.<b>suppliers</b></code>](#)<Bullet />[`SupplierConnection`](/api/objects/supplier-connection) <Badge class="badge badge--secondary" text="object"/>
+
+> Supplier resources in a group
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.suppliers.<b>supplierID</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.suppliers.<b>accessID</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.suppliers.<b>owner</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.suppliers.<b>serviceAPI</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.suppliers.<b>isActive</b></code>](#)<Bullet />[`Boolean`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.suppliers.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.suppliers.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.suppliers.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.suppliers.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationData.<b>clients</b></code>](#)<Bullet />[`ClientConnection`](/api/objects/client-connection) <Badge class="badge badge--secondary" text="object"/>
+
+> Clients resources in a group
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.clients.<b>clientID</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.clients.<b>name</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.clients.<b>owner</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.clients.<b>isActive</b></code>](#)<Bullet />[`Boolean`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.clients.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.clients.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.clients.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.clients.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationData.<b>domains</b></code>](#)<Bullet />[`[Domain]!`](/api/objects/domain) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationData.<b>template</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationData.<b>country</b></code>](#)<Bullet />[`Country!`](/api/scalars/country) <Badge class="badge badge--deprecated badge--secondary" text="deprecated"/> <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> :::caution DEPRECATED
+> deprecated from 2023-06-06
+> :::
+>
+> ISO 3166-1 alpha-2 format country code with enclosing double quotes "ES"
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationData.<b>allAccesses</b></code>](#)<Bullet />[`AccessConnection`](/api/objects/access-connection) <Badge class="badge badge--secondary" text="object"/>
+
+> Access resources in this organization
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationData.<b>allSuppliers</b></code>](#)<Bullet />[`SupplierConnection`](/api/objects/supplier-connection) <Badge class="badge badge--secondary" text="object"/>
+
+> Supplier resources in this organization
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationData.<b>allClients</b></code>](#)<Bullet />[`ClientConnection`](/api/objects/client-connection) <Badge class="badge badge--secondary" text="object"/>
+
+> Clients resources in this organization
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationData.<b>primaryPartner</b></code>](#)<Bullet />[`Partner!`](/api/objects/partner) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationData.<b>allPartners</b></code>](#)<Bullet />[`PartnerConnection!`](/api/objects/partner-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> ##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.allPartners.<b>where</b></code>](#)<Bullet />[`PartnerWhereInput`](/api/inputs/partner-where-input) <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.allPartners.<b>orderBy</b></code>](#)<Bullet />[`PartnerOrderByInput`](/api/enums/partner-order-by-input) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>OrganizationData.allPartners.<b>relay</b></code>](#)<Bullet />[`RelayInput`](/api/inputs/relay-input) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationData.<b>isBuyer</b></code>](#)<Bullet />[`Boolean!`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationData.<b>isSeller</b></code>](#)<Bullet />[`Boolean!`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationData.<b>deleted_at</b></code>](#)<Bullet />[`DateTime`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+### Interfaces
+
+#### [`GroupCommonData`](/api/interfaces/group-common-data) <Badge class="badge badge--secondary" text="interface"/>
+
+>
+
+### Member of
+
+[`ActivationData`](/api/objects/activation-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Organization`](/api/objects/organization) <Badge class="badge badge--secondary" text="object"/><Bullet />[`RequesterInfo`](/api/objects/requester-info) <Badge class="badge badge--secondary" text="object"/>

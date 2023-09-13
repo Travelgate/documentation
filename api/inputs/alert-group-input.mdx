@@ -1,0 +1,58 @@
+---
+id: alert-group-input
+title: AlertGroupInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+input AlertGroupInput {
+  code: ID!
+  comercialType: AlertComercialType!
+  isInclusive: Boolean!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertGroupInput.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Group code
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertGroupInput.<b>comercialType</b></code>](#)<Bullet />[`AlertComercialType!`](/api/enums/alert-comercial-type) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> SELLER or BUYER
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertGroupInput.<b>isInclusive</b></code>](#)<Bullet />[`Boolean!`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Can be filtered traffic setting as inclusive or excludent
+
+### Member of
+
+[`AlertCommonConfigurationInput`](/api/inputs/alert-common-configuration-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`AlertUpdateCommonConfigurationInput`](/api/inputs/alert-update-common-configuration-input) <Badge class="badge badge--secondary" text="input"/>

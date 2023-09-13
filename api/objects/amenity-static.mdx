@@ -1,0 +1,60 @@
+---
+id: amenity-static
+title: AmenityStatic
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+An Amenity is defined as something intended to make life more pleasant or comfortable for people. Examples include: swimming pools, shopping centers, etc.
+
+```graphql
+type AmenityStatic {
+  code: String!
+  type: ApplicationAreaType!
+  texts(languages: [Language!]): [Text!]!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>AmenityStatic.<b>code</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Code
+
+#### [<code style={{ fontWeight: 'normal' }}>AmenityStatic.<b>type</b></code>](#)<Bullet />[`ApplicationAreaType!`](/api/enums/application-area-type) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> Indicates the type of Amenity.
+
+#### [<code style={{ fontWeight: 'normal' }}>AmenityStatic.<b>texts</b></code>](#)<Bullet />[`[Text!]!`](/api/objects/text) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Contains the descriptive
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AmenityStatic.texts.<b>languages</b></code>](#)<Bullet />[`[Language!]`](/api/scalars/language) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+### Member of
+
+[`HotelData`](/api/objects/hotel-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`RoomData`](/api/objects/room-data) <Badge class="badge badge--secondary" text="object"/>

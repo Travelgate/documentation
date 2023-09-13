@@ -1,0 +1,98 @@
+---
+id: hotel-option-quote
+title: HotelOptionQuote
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Contains information about quote(s)
+
+```graphql
+type HotelOptionQuote {
+  optionRefId: String!
+  status: StatusType!
+  price: Price!
+  searchPrice: PriceChange
+  cancelPolicy: CancelPolicy!
+  remarks: String
+  surcharges: [Surcharge!]
+  cardTypes: [PaymentCardType!]
+  addOns: AddOns
+  rooms: [RoomOptionQuote!]
+  paymentType: PaymentType!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelOptionQuote.<b>optionRefId</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> It is an unique identifier for the option. The id is used to make the quote query, so it is important not to modify it by any reason.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelOptionQuote.<b>status</b></code>](#)<Bullet />[`StatusType!`](/api/enums/status-type) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> The possible values in status in response are Available (OK) or On Request (RQ).
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelOptionQuote.<b>price</b></code>](#)<Bullet />[`Price!`](/api/objects/price) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Specifies the prices (Gross, Net and Amount) of the option returned.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelOptionQuote.<b>searchPrice</b></code>](#)<Bullet />[`PriceChange`](/api/objects/price-change) <Badge class="badge badge--secondary" text="object"/>
+
+> Specifies the price of the previous search option
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelOptionQuote.<b>cancelPolicy</b></code>](#)<Bullet />[`CancelPolicy!`](/api/objects/cancel-policy) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Specifies cancel policies of the option returned.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelOptionQuote.<b>remarks</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Additional information about the option.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelOptionQuote.<b>surcharges</b></code>](#)<Bullet />[`[Surcharge!]`](/api/objects/surcharge) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> List of surcharges of the option returned.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelOptionQuote.<b>cardTypes</b></code>](#)<Bullet />[`[PaymentCardType!]`](/api/enums/payment-card-type) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> List of credit cards allowed for this option
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelOptionQuote.<b>addOns</b></code>](#)<Bullet />[`AddOns`](/api/objects/add-ons) <Badge class="badge badge--secondary" text="object"/>
+
+> Additional information about the option
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelOptionQuote.<b>rooms</b></code>](#)<Bullet />[`[RoomOptionQuote!]`](/api/objects/room-option-quote) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> List of rooms of the option quoted.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelOptionQuote.<b>paymentType</b></code>](#)<Bullet />[`PaymentType!`](/api/enums/payment-type) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> Indicates the payment type of the option quoted. Possible options: Merchant, Direct, Card Booking, Card check in and Mixed.
+
+### Member of
+
+[`HotelQuote`](/api/objects/hotel-quote) <Badge class="badge badge--secondary" text="object"/>

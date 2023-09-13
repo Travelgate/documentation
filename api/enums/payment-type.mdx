@@ -1,0 +1,72 @@
+---
+id: payment-type
+title: PaymentType
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Options payment type
+
+```graphql
+enum PaymentType {
+  MERCHANT
+  DIRECT
+  CARD_BOOKING
+  CARD_CHECK_IN
+  PAYX
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentType.<b>MERCHANT</b></code>](#)
+
+> The payment is managed by the supplier.
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentType.<b>DIRECT</b></code>](#)
+
+> The payment is made straight to the actual payee, without sending it through an intermediary or a third party.
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentType.<b>CARD_BOOKING</b></code>](#)
+
+> The payment is managed by the supplier. The payment is effectuated at the time of booking.
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentType.<b>CARD_CHECK_IN</b></code>](#)
+
+> The payment is managed by the supplier. The payment is effectuated at check in in the hotel.
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentType.<b>PAYX</b></code>](#)
+
+> The payment is managed by TravelgateX.
+> The client may use this payment type if he contracts the service of virtual card creation(VCC).
+> This service allows Travelgate to manage the payments that require card data in the Booking process.
+> There are two payment types that require card data: CARD_BOOKING and CARD_CHECK_IN.
+> That way, TravelgateX generates the card with the net price that the client has to pay to the supplier.
+
+### Member of
+
+[`HotelOptionQuote`](/api/objects/hotel-option-quote) <Badge class="badge badge--secondary" text="object"/><Bullet />[`HotelOptionSearch`](/api/objects/hotel-option-search) <Badge class="badge badge--secondary" text="object"/><Bullet />[`ReviewedPaymentType`](/api/objects/reviewed-payment-type) <Badge class="badge badge--secondary" text="object"/>

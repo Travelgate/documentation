@@ -1,0 +1,103 @@
+---
+id: discount
+title: Discount
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+enum Discount {
+  BP
+  BI
+  DC
+  RC
+  RM
+  STR
+  ELB
+  SDG
+  SCL
+  RE
+  FAMILY1
+  FAMILY2
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>Discount.<b>BP</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Discount.<b>BI</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Discount.<b>DC</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Discount.<b>RC</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Discount.<b>RM</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Discount.<b>STR</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Discount.<b>ELB</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Discount.<b>SDG</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Discount.<b>SCL</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Discount.<b>RE</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Discount.<b>FAMILY1</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Discount.<b>FAMILY2</b></code>](#)
+
+> Familia numerosa grado 2
+
+### Member of
+
+[`FlightOfferWhereInput`](/api/inputs/flight-offer-where-input) <Badge class="badge badge--secondary" text="input"/>

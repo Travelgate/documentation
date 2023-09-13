@@ -1,0 +1,64 @@
+---
+id: logging-query
+title: LoggingQuery
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type LoggingQuery {
+  allAuditRules(where: AuditRuleWhereInput!): AuditRuleConnection!
+  retrieveStats(filter: LoggingLegacyFilterInput!): LoggingLegacyConnection!
+  allConnectionAuditRules(
+    where: AuditRuleConnectionWhereInput!
+  ): AuditRuleConnection!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>LoggingQuery.<b>allAuditRules</b></code>](#)<Bullet />[`AuditRuleConnection!`](/api/objects/audit-rule-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> ##### [<code style={{ fontWeight: 'normal' }}>LoggingQuery.allAuditRules.<b>where</b></code>](#)<Bullet />[`AuditRuleWhereInput!`](/api/inputs/audit-rule-where-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>LoggingQuery.<b>retrieveStats</b></code>](#)<Bullet />[`LoggingLegacyConnection!`](/api/objects/logging-legacy-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> retrieveLogsService(filter: LoggingFilterInput!): LoggingConnection!
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>LoggingQuery.retrieveStats.<b>filter</b></code>](#)<Bullet />[`LoggingLegacyFilterInput!`](/api/inputs/logging-legacy-filter-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>LoggingQuery.<b>allConnectionAuditRules</b></code>](#)<Bullet />[`AuditRuleConnection!`](/api/objects/audit-rule-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Return the entire set of audits of a given connection between a buyer and a seller
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>LoggingQuery.allConnectionAuditRules.<b>where</b></code>](#)<Bullet />[`AuditRuleConnectionWhereInput!`](/api/inputs/audit-rule-connection-where-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+### Returned by
+
+[`logging`](/api/queries/logging) <Badge class="badge badge--secondary" text="query"/>

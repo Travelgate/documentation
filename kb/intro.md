@@ -1,4 +1,2 @@
 
 # Knowledge Base
-
-**test Dulce**

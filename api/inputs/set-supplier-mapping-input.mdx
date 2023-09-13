@@ -1,0 +1,63 @@
+---
+id: set-supplier-mapping-input
+title: SetSupplierMappingInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+input SetSupplierMappingInput {
+  entity: MappingEntityType!
+  entityCode: ID!
+  supplierCode: ID!
+  mappings: [ContextedCodeInput!]!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>SetSupplierMappingInput.<b>entity</b></code>](#)<Bullet />[`MappingEntityType!`](/api/enums/mapping-entity-type) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> entity whose the codes are identifiers
+
+#### [<code style={{ fontWeight: 'normal' }}>SetSupplierMappingInput.<b>entityCode</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> supplier entity code
+
+#### [<code style={{ fontWeight: 'normal' }}>SetSupplierMappingInput.<b>supplierCode</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> supplier code
+
+#### [<code style={{ fontWeight: 'normal' }}>SetSupplierMappingInput.<b>mappings</b></code>](#)<Bullet />[`[ContextedCodeInput!]!`](/api/inputs/contexted-code-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+> list of mappings
+
+### Member of
+
+[`InscribeSetMappingInput`](/api/inputs/inscribe-set-mapping-input) <Badge class="badge badge--secondary" text="input"/>

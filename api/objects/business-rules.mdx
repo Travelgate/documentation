@@ -1,0 +1,53 @@
+---
+id: business-rules
+title: BusinessRules
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+List of business rules for filtering options based on your interests.
+
+```graphql
+type BusinessRules {
+  optionsQuota: Int
+  businessRulesType: BusinessRulesType
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>BusinessRules.<b>optionsQuota</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Options quota per availability; numbers of options based on availability
+
+#### [<code style={{ fontWeight: 'normal' }}>BusinessRules.<b>businessRulesType</b></code>](#)<Bullet />[`BusinessRulesType`](/api/enums/business-rules-type) <Badge class="badge badge--secondary" text="enum"/>
+
+> Different business rules for filtering options that you are interested in
+
+### Member of
+
+[`HotelXCommonSettingsData`](/api/objects/hotel-xcommon-settings-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`HotelXDefaultSettingsData`](/api/objects/hotel-xdefault-settings-data) <Badge class="badge badge--secondary" text="object"/>

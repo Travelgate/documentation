@@ -1,0 +1,53 @@
+---
+id: search-criteria-dinamyc-dates-input
+title: SearchCriteriaDinamycDatesInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+input SearchCriteriaDinamycDatesInput {
+  checkIn: [DateShiftInput!]!
+  checkOut: [DateShiftInput!]!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>SearchCriteriaDinamycDatesInput.<b>checkIn</b></code>](#)<Bullet />[`[DateShiftInput!]!`](/api/inputs/date-shift-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>SearchCriteriaDinamycDatesInput.<b>checkOut</b></code>](#)<Bullet />[`[DateShiftInput!]!`](/api/inputs/date-shift-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+### Member of
+
+[`SearchCriteriaCreateInput`](/api/inputs/search-criteria-create-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`SearchCriteriaUpdateInput`](/api/inputs/search-criteria-update-input) <Badge class="badge badge--secondary" text="input"/>

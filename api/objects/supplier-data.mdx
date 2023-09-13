@@ -1,0 +1,220 @@
+---
+id: supplier-data
+title: SupplierData
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Extended Supplier information
+
+```graphql
+type SupplierData {
+  id: ID!
+  code: ID!
+  name: String!
+  isActive: Boolean!
+  provider: ProviderData!
+  serviceApi: Int!
+  api: APIName!
+  owner: Organization
+  groupContent: GroupContent
+  supplierGroup: ID
+  context: String
+  sharedDefault: Access
+  groups(first: Int, last: Int, before: String, after: String): GroupConnection
+  accesses(
+    first: Int
+    last: Int
+    before: String
+    after: String
+    filter: AccessFilter
+  ): AccessConnection
+  clients(
+    first: Int
+    last: Int
+    before: String
+    after: String
+    filter: ClientFilter
+  ): ClientConnection
+  system: System!
+  audits(
+    where: EntityAuditWhereInput
+    orderBy: EntityAuditOrderByEnum
+  ): EntityAuditConnection!
+  serviceIntegrationData: ServiceIntegrationData
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierData.<b>id</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Supplier unique ID. Format: integer.
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierData.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Supplier unique code
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierData.<b>name</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Supplier name
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierData.<b>isActive</b></code>](#)<Bullet />[`Boolean!`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Indicates whether a Supplier is active.
+> This is a calculated field, a specific supplier can be activated or deactivated,
+> but if its provider is deactivated, the value will be = false
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierData.<b>provider</b></code>](#)<Bullet />[`ProviderData!`](/api/objects/provider-data) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Instance to which this supllier is connected
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierData.<b>serviceApi</b></code>](#)<Bullet />[`Int!`](/api/scalars/int) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> ServiceAPI indicates the type of the connection
+>
+> 1. hotel
+> 2. transportation
+> 3. car
+> 4. transfers
+> 5. activities
+> 6. virtualaccount
+> 7. payment
+> 8. package
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierData.<b>api</b></code>](#)<Bullet />[`APIName!`](/api/enums/apiname) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> API name for service API
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierData.<b>owner</b></code>](#)<Bullet />[`Organization`](/api/objects/organization) <Badge class="badge badge--secondary" text="object"/>
+
+> Organization that owns the Supplier
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierData.<b>groupContent</b></code>](#)<Bullet />[`GroupContent`](/api/objects/group-content) <Badge class="badge badge--secondary" text="object"/>
+
+> Grouping of static content related to this Supplier.
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierData.<b>supplierGroup</b></code>](#)<Bullet />[`ID`](/api/scalars/id) <Badge class="badge badge--secondary" text="scalar"/>
+
+> This is a calculated field that responds to groupContent &#x003E; code
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierData.<b>context</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> This is a calculated field that responds to groupContent &#x003E; groupContentData &#x003E; context &#x003E; code
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierData.<b>sharedDefault</b></code>](#)<Bullet />[`Access`](/api/objects/access) <Badge class="badge badge--secondary" text="object"/>
+
+> Indicates if this supplier normally have a shared default access, means that the content is managed in one only site and this is because improve de efficiency
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierData.<b>groups</b></code>](#)<Bullet />[`GroupConnection`](/api/objects/group-connection) <Badge class="badge badge--secondary" text="object"/>
+
+> Indicates the groups where the Supplier belongs. A supplier can be assigned to several groups
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>SupplierData.groups.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>SupplierData.groups.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>SupplierData.groups.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>SupplierData.groups.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierData.<b>accesses</b></code>](#)<Bullet />[`AccessConnection`](/api/objects/access-connection) <Badge class="badge badge--secondary" text="object"/>
+
+> Accesses of this Supplier
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>SupplierData.accesses.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>SupplierData.accesses.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>SupplierData.accesses.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>SupplierData.accesses.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>SupplierData.accesses.<b>filter</b></code>](#)<Bullet />[`AccessFilter`](/api/inputs/access-filter) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierData.<b>clients</b></code>](#)<Bullet />[`ClientConnection`](/api/objects/client-connection) <Badge class="badge badge--secondary" text="object"/>
+
+> Clients that belongs to some of the groups of the Supplier
+> Used to find out which Clients are likely to have connected with this Supplier on some occasion.
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>SupplierData.clients.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>SupplierData.clients.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>SupplierData.clients.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>SupplierData.clients.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>SupplierData.clients.<b>filter</b></code>](#)<Bullet />[`ClientFilter`](/api/inputs/client-filter) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierData.<b>system</b></code>](#)<Bullet />[`System!`](/api/objects/system) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierData.<b>audits</b></code>](#)<Bullet />[`EntityAuditConnection!`](/api/objects/entity-audit-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Audits it shows the supplier's change history
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>SupplierData.audits.<b>where</b></code>](#)<Bullet />[`EntityAuditWhereInput`](/api/inputs/entity-audit-where-input) <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>SupplierData.audits.<b>orderBy</b></code>](#)<Bullet />[`EntityAuditOrderByEnum`](/api/enums/entity-audit-order-by-enum) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierData.<b>serviceIntegrationData</b></code>](#)<Bullet />[`ServiceIntegrationData`](/api/objects/service-integration-data) <Badge class="badge badge--secondary" text="object"/>
+
+> Service Integration Data
+
+### Member of
+
+[`GeneratedPaymentInfo`](/api/objects/generated-payment-info) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Supplier`](/api/objects/supplier) <Badge class="badge badge--secondary" text="object"/>
+
+### Implemented by
+
+[`EntityData`](/api/unions/entity-data) <Badge class="badge badge--secondary" text="union"/>

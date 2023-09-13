@@ -1,0 +1,83 @@
+---
+id: provider
+title: Provider
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+A Provider is the link with the associated integration (also known as DLL)
+
+```graphql
+type Provider implements Node {
+  code: ID!
+  providerData: ProviderData
+  adviseMessage(level: [AdviseMessageLevel]): [AdviseMessage!]
+  error: [Error!] @deprecated
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Provider.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Provider unique code
+
+#### [<code style={{ fontWeight: 'normal' }}>Provider.<b>providerData</b></code>](#)<Bullet />[`ProviderData`](/api/objects/provider-data) <Badge class="badge badge--secondary" text="object"/>
+
+> Extended Provider information
+
+#### [<code style={{ fontWeight: 'normal' }}>Provider.<b>adviseMessage</b></code>](#)<Bullet />[`[AdviseMessage!]`](/api/objects/advise-message) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> List of advise messages.
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>Provider.adviseMessage.<b>level</b></code>](#)<Bullet />[`[AdviseMessageLevel]`](/api/enums/advise-message-level) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Provider.<b>error</b></code>](#)<Bullet />[`[Error!]`](/api/objects/error) <Badge class="badge badge--deprecated badge--secondary" text="deprecated"/> <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> :::caution DEPRECATED
+> deprecated from 2019-01-01. Use AdviseMessage instead
+> :::
+
+#### [<code style={{ fontWeight: 'normal' }}>Provider.<b>createdAt</b></code>](#)<Bullet />[`DateTime!`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Provider creation date
+
+#### [<code style={{ fontWeight: 'normal' }}>Provider.<b>updatedAt</b></code>](#)<Bullet />[`DateTime!`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Provider last update date
+
+### Interfaces
+
+#### [`Node`](/api/interfaces/node) <Badge class="badge badge--secondary" text="interface"/>
+
+>
+
+### Member of
+
+[`AdminMutation`](/api/objects/admin-mutation) <Badge class="badge badge--secondary" text="object"/><Bullet />[`AdminQuery`](/api/objects/admin-query) <Badge class="badge badge--secondary" text="object"/>

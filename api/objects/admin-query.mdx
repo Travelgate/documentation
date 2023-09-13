@@ -1,0 +1,962 @@
+---
+id: admin-query
+title: AdminQuery
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+The admin query root of TravelgateX s GraphQL interface.
+
+```graphql
+type AdminQuery {
+  jwt: JWT
+  accesses(
+    first: Int
+    last: Int
+    before: String
+    after: String
+    filter: AccessFilter
+  ): AccessConnection @deprecated
+  allAccesses(
+    first: Int
+    last: Int
+    before: String
+    after: String
+    where: AccessWhereInput
+    orderBy: AccessOrderByEnum
+  ): AccessConnection!
+  accessesByOwnerCodes(
+    first: Int
+    last: Int
+    before: String
+    after: String
+    ownerCodes: [ID!]!
+    orderBy: AccessOrderByEnum
+  ): AccessConnection!
+  accessesByGroupCodes(
+    first: Int
+    last: Int
+    before: String
+    after: String
+    groupCodes: [ID!]!
+    orderBy: AccessOrderByEnum
+  ): AccessConnection!
+  allEntityAudits(
+    where: EntityAuditWhereInput
+    orderBy: EntityAuditOrderByEnum
+  ): EntityAuditConnection!
+  access(where: AccessWhereUniqueInput!): Access
+  suppliers(
+    first: Int
+    last: Int
+    before: String
+    after: String
+    filter: SupplierFilter
+  ): SupplierConnection @deprecated
+  clients(
+    first: Int
+    last: Int
+    before: String
+    after: String
+    filter: ClientFilter
+  ): ClientConnection @deprecated
+  serviceApi(filter: ServiceApiFilter): ServiceApi
+  pointsOfSale(filter: PointOfSaleFilter): PointOfSaleConnection
+  entities(filter: EntityFilter): EntityConnection @deprecated
+  systems(
+    first: Int
+    last: Int
+    before: String
+    after: String
+    filter: SystemFilter
+  ): SystemConnection
+  getSupplierMaintainer(supplierID: ID!): Member
+  getProviderMaintainer(providerID: ID!): Member
+  organizations(
+    codes: [ID!]
+    domains: [DomainName!]
+    label: String
+    contains: String
+    organizationType: OrganizationTypeInput
+    crmID: String
+    first: Int
+    last: Int
+    before: String
+    after: String
+    orderBy: OrganizationOrderByInput
+    isPublic: Boolean
+    partner: ID
+    includeArchived: Boolean
+  ): OrganizationConnection!
+  products(
+    codes: [ID!]
+    first: Int
+    last: Int
+    before: String
+    after: String
+  ): ProductConnection!
+  members(
+    codes: [ID!]
+    phones: [String!]
+    type: MemberType
+    contains: String
+    isActive: Boolean
+    includeArchived: Boolean
+    groups_in: [ID!]
+    first: Int
+    last: Int
+    before: String
+    after: String
+  ): MemberConnection!
+  groups(
+    codes: [ID!]
+    contains: String
+    api: [ID!]
+    codeStartsWith: String
+    type: GroupType
+    parentCode: ID
+    first: Int
+    last: Int
+    before: String
+    after: String
+    includeArchived: Boolean
+  ): GroupConnection!
+  apis(
+    codes: [ID!]
+    first: Int
+    last: Int
+    before: String
+    after: String
+  ): APIConnection!
+  resources(
+    codes: [ID!]
+    first: Int
+    last: Int
+    before: String
+    after: String
+  ): ResourceConnection!
+  roles(
+    codes: [ID!]
+    type: RoleType
+    first: Int
+    last: Int
+    before: String
+    after: String
+  ): RoleConnection!
+  operations(
+    codes: [ID!]
+    type: OperationType
+    types: [OperationType!]
+    first: Int
+    last: Int
+    before: String
+    after: String
+  ): OperationConnection!
+  partner(code: ID!): Partner!
+  allPartners(
+    where: PartnerWhereInput
+    orderBy: PartnerOrderByInput
+    relay: RelayInput
+  ): PartnerConnection!
+  legacyAccesses(filter: LegacyAccessFilter): LegacyAccessConnection
+  hubUsers(filter: HubUsersFilter): [HubUser!] @deprecated
+  hubProviders(filter: HubProviderFilter): [HubProvider!]
+  client(where: ClientWhereUniqueInput!): Client
+  allClients(
+    where: ClientWhereInput
+    orderBy: ClientOrderByInput
+  ): ClientConnection!
+  clientsByOwnerCodes(
+    ownerCodes: [ID!]!
+    orderBy: ClientOrderByInput
+  ): ClientConnection!
+  clientsByGroupCodes(
+    groupCodes: [ID!]!
+    orderBy: ClientOrderByInput
+  ): ClientConnection!
+  allProviders(
+    where: ProviderWhereInput
+    orderBy: ProviderOrderByEnum
+  ): [Provider!]
+  allGroupContents(where: GroupContentWhereInput): [GroupContent!]
+  supplier(where: SupplierWhereUniqueInput!): Supplier
+  suppliersByOwnerCodes(
+    ownerCodes: [ID!]!
+    orderBy: SupplierOrderByEnum
+  ): SupplierConnection!
+  suppliersByGroupCodes(
+    groupCodes: [ID!]!
+    orderBy: SupplierOrderByEnum
+  ): SupplierConnection!
+  suppliersByProviderCodes(
+    providerCodes: [ID!]!
+    orderBy: SupplierOrderByEnum
+  ): SupplierConnection!
+  allSuppliers(
+    where: SupplierWhereInput
+    orderBy: SupplierOrderByEnum
+  ): SupplierConnection!
+  bearer: BearerData!
+  ftpPasswordByOrganizationCode(code: ID!): Password!
+  allOrganizations(
+    where: OrganizationsWhereInput
+    orderBy: OrganizationsOrderByEnum
+  ): OrganizationsConnection!
+  organization(where: OrganizationWhereUniqueInput!): Organizations!
+  allMembers(
+    where: MembersWhereInput
+    orderBy: MembersOrderByEnum
+  ): MembersConnection!
+  member(where: MemberWhereUniqueInput!): Members!
+  allConnections(
+    first: Int
+    last: Int
+    before: String
+    after: String
+    where: ConnectionWhereInput
+    orderBy: ConnectionOrderByEnum
+  ): ConnectionConnection!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>jwt</b></code>](#)<Bullet />[`JWT`](/api/scalars/jwt) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Get JSON Web Token (JWT) linked to Member
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>accesses</b></code>](#)<Bullet />[`AccessConnection`](/api/objects/access-connection) <Badge class="badge badge--deprecated badge--secondary" text="deprecated"/> <Badge class="badge badge--secondary" text="object"/>
+
+> :::caution DEPRECATED
+> deprecated from 2022-09-01. Use allAccesses instead
+> :::
+>
+> Deprecated EntitiesV1 query, please use allAccesses instead
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.accesses.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.accesses.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.accesses.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.accesses.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.accesses.<b>filter</b></code>](#)<Bullet />[`AccessFilter`](/api/inputs/access-filter) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>allAccesses</b></code>](#)<Bullet />[`AccessConnection!`](/api/objects/access-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Obtain a list of accesses for a filter
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.allAccesses.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.allAccesses.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.allAccesses.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.allAccesses.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.allAccesses.<b>where</b></code>](#)<Bullet />[`AccessWhereInput`](/api/inputs/access-where-input) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.allAccesses.<b>orderBy</b></code>](#)<Bullet />[`AccessOrderByEnum`](/api/enums/access-order-by-enum) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>accessesByOwnerCodes</b></code>](#)<Bullet />[`AccessConnection!`](/api/objects/access-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Obtain a list of accessesByOwnerCodes for a filter
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.accessesByOwnerCodes.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.accessesByOwnerCodes.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.accessesByOwnerCodes.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.accessesByOwnerCodes.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.accessesByOwnerCodes.<b>ownerCodes</b></code>](#)<Bullet />[`[ID!]!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.accessesByOwnerCodes.<b>orderBy</b></code>](#)<Bullet />[`AccessOrderByEnum`](/api/enums/access-order-by-enum) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>accessesByGroupCodes</b></code>](#)<Bullet />[`AccessConnection!`](/api/objects/access-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Obtain a list of accessesByGroupCodes for a filter
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.accessesByGroupCodes.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.accessesByGroupCodes.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.accessesByGroupCodes.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.accessesByGroupCodes.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.accessesByGroupCodes.<b>groupCodes</b></code>](#)<Bullet />[`[ID!]!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.accessesByGroupCodes.<b>orderBy</b></code>](#)<Bullet />[`AccessOrderByEnum`](/api/enums/access-order-by-enum) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>allEntityAudits</b></code>](#)<Bullet />[`EntityAuditConnection!`](/api/objects/entity-audit-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Obtain a list of Audit Entities for a filter
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.allEntityAudits.<b>where</b></code>](#)<Bullet />[`EntityAuditWhereInput`](/api/inputs/entity-audit-where-input) <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.allEntityAudits.<b>orderBy</b></code>](#)<Bullet />[`EntityAuditOrderByEnum`](/api/enums/entity-audit-order-by-enum) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>access</b></code>](#)<Bullet />[`Access`](/api/objects/access) <Badge class="badge badge--secondary" text="object"/>
+
+> Obtain a single access using a filter
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.access.<b>where</b></code>](#)<Bullet />[`AccessWhereUniqueInput!`](/api/inputs/access-where-unique-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>suppliers</b></code>](#)<Bullet />[`SupplierConnection`](/api/objects/supplier-connection) <Badge class="badge badge--deprecated badge--secondary" text="deprecated"/> <Badge class="badge badge--secondary" text="object"/>
+
+> :::caution DEPRECATED
+> deprecated from 2022-06-01. Use allSuppliers instead
+> :::
+>
+> Deprecated EntitiesV1 query, please use allSuppliers instead
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.suppliers.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.suppliers.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.suppliers.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.suppliers.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.suppliers.<b>filter</b></code>](#)<Bullet />[`SupplierFilter`](/api/inputs/supplier-filter) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>clients</b></code>](#)<Bullet />[`ClientConnection`](/api/objects/client-connection) <Badge class="badge badge--deprecated badge--secondary" text="deprecated"/> <Badge class="badge badge--secondary" text="object"/>
+
+> :::caution DEPRECATED
+> deprecated from 2021-12-24. Use allClients instead
+> :::
+>
+> Deprecated EntitiesV1 query, please use allClients instead
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.clients.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.clients.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.clients.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.clients.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.clients.<b>filter</b></code>](#)<Bullet />[`ClientFilter`](/api/inputs/client-filter) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>serviceApi</b></code>](#)<Bullet />[`ServiceApi`](/api/objects/service-api) <Badge class="badge badge--secondary" text="object"/>
+
+> Obtain a ServiceAPI
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.serviceApi.<b>filter</b></code>](#)<Bullet />[`ServiceApiFilter`](/api/inputs/service-api-filter) <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>pointsOfSale</b></code>](#)<Bullet />[`PointOfSaleConnection`](/api/objects/point-of-sale-connection) <Badge class="badge badge--secondary" text="object"/>
+
+> Obtain all Points of Sale for the filters
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.pointsOfSale.<b>filter</b></code>](#)<Bullet />[`PointOfSaleFilter`](/api/inputs/point-of-sale-filter) <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>entities</b></code>](#)<Bullet />[`EntityConnection`](/api/objects/entity-connection) <Badge class="badge badge--deprecated badge--secondary" text="deprecated"/> <Badge class="badge badge--secondary" text="object"/>
+
+> :::caution DEPRECATED
+> deprecated from 2019-08-21. Only for statsX product. Use client, supplier, accesess queries
+> :::
+>
+> Obtain a set of entities
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.entities.<b>filter</b></code>](#)<Bullet />[`EntityFilter`](/api/inputs/entity-filter) <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>systems</b></code>](#)<Bullet />[`SystemConnection`](/api/objects/system-connection) <Badge class="badge badge--secondary" text="object"/>
+
+> Obtain all clients for a filter.
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.systems.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.systems.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.systems.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.systems.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.systems.<b>filter</b></code>](#)<Bullet />[`SystemFilter`](/api/inputs/system-filter) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>getSupplierMaintainer</b></code>](#)<Bullet />[`Member`](/api/objects/member) <Badge class="badge badge--secondary" text="object"/>
+
+> Get supplier mantainer
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.getSupplierMaintainer.<b>supplierID</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>getProviderMaintainer</b></code>](#)<Bullet />[`Member`](/api/objects/member) <Badge class="badge badge--secondary" text="object"/>
+
+> Get provider mantainer
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.getProviderMaintainer.<b>providerID</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>organizations</b></code>](#)<Bullet />[`OrganizationConnection!`](/api/objects/organization-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Organizations list; specify organization codes to filter organizations
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.organizations.<b>codes</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.organizations.<b>domains</b></code>](#)<Bullet />[`[DomainName!]`](/api/scalars/domain-name) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.organizations.<b>label</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.organizations.<b>contains</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.organizations.<b>organizationType</b></code>](#)<Bullet />[`OrganizationTypeInput`](/api/enums/organization-type-input) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.organizations.<b>crmID</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.organizations.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.organizations.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.organizations.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.organizations.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.organizations.<b>orderBy</b></code>](#)<Bullet />[`OrganizationOrderByInput`](/api/enums/organization-order-by-input) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.organizations.<b>isPublic</b></code>](#)<Bullet />[`Boolean`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.organizations.<b>partner</b></code>](#)<Bullet />[`ID`](/api/scalars/id) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.organizations.<b>includeArchived</b></code>](#)<Bullet />[`Boolean`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>products</b></code>](#)<Bullet />[`ProductConnection!`](/api/objects/product-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Product catalog; specify products codes to filter
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.products.<b>codes</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.products.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.products.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.products.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.products.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>members</b></code>](#)<Bullet />[`MemberConnection!`](/api/objects/member-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Members list; specify member codes to filter members.
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.members.<b>codes</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.members.<b>phones</b></code>](#)<Bullet />[`[String!]`](/api/scalars/string) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.members.<b>type</b></code>](#)<Bullet />[`MemberType`](/api/enums/member-type) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.members.<b>contains</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.members.<b>isActive</b></code>](#)<Bullet />[`Boolean`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.members.<b>includeArchived</b></code>](#)<Bullet />[`Boolean`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.members.<b>groups_in</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.members.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.members.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.members.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.members.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>groups</b></code>](#)<Bullet />[`GroupConnection!`](/api/objects/group-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Groups list; specify group codes to filter groups.
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.groups.<b>codes</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.groups.<b>contains</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.groups.<b>api</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.groups.<b>codeStartsWith</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.groups.<b>type</b></code>](#)<Bullet />[`GroupType`](/api/enums/group-type) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.groups.<b>parentCode</b></code>](#)<Bullet />[`ID`](/api/scalars/id) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.groups.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.groups.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.groups.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.groups.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.groups.<b>includeArchived</b></code>](#)<Bullet />[`Boolean`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>apis</b></code>](#)<Bullet />[`APIConnection!`](/api/objects/apiconnection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Apis list; specify api codes to filter apis.
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.apis.<b>codes</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.apis.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.apis.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.apis.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.apis.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>resources</b></code>](#)<Bullet />[`ResourceConnection!`](/api/objects/resource-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Resources list; specify resource codes to filter resources.
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.resources.<b>codes</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.resources.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.resources.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.resources.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.resources.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>roles</b></code>](#)<Bullet />[`RoleConnection!`](/api/objects/role-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Roles list; specify role codes to filter roles.
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.roles.<b>codes</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.roles.<b>type</b></code>](#)<Bullet />[`RoleType`](/api/enums/role-type) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.roles.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.roles.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.roles.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.roles.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>operations</b></code>](#)<Bullet />[`OperationConnection!`](/api/objects/operation-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Operations list; specify operations codes to filter operations.
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.operations.<b>codes</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.operations.<b>type</b></code>](#)<Bullet />[`OperationType`](/api/enums/operation-type) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.operations.<b>types</b></code>](#)<Bullet />[`[OperationType!]`](/api/enums/operation-type) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.operations.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.operations.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.operations.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.operations.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>partner</b></code>](#)<Bullet />[`Partner!`](/api/objects/partner) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Partners
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.partner.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>allPartners</b></code>](#)<Bullet />[`PartnerConnection!`](/api/objects/partner-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.allPartners.<b>where</b></code>](#)<Bullet />[`PartnerWhereInput`](/api/inputs/partner-where-input) <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.allPartners.<b>orderBy</b></code>](#)<Bullet />[`PartnerOrderByInput`](/api/enums/partner-order-by-input) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.allPartners.<b>relay</b></code>](#)<Bullet />[`RelayInput`](/api/inputs/relay-input) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>legacyAccesses</b></code>](#)<Bullet />[`LegacyAccessConnection`](/api/objects/legacy-access-connection) <Badge class="badge badge--secondary" text="object"/>
+
+> Get HubUser/HubProvider relation
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.legacyAccesses.<b>filter</b></code>](#)<Bullet />[`LegacyAccessFilter`](/api/inputs/legacy-access-filter) <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>hubUsers</b></code>](#)<Bullet />[`[HubUser!]`](/api/objects/hub-user) <Badge class="badge badge--deprecated badge--secondary" text="deprecated"/> <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> :::caution DEPRECATED
+> This information will be moved within the clientData node under 'hubUser'
+> :::
+>
+> Get HubUsers
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.hubUsers.<b>filter</b></code>](#)<Bullet />[`HubUsersFilter`](/api/inputs/hub-users-filter) <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>hubProviders</b></code>](#)<Bullet />[`[HubProvider!]`](/api/objects/hub-provider) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Get HubProvider
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.hubProviders.<b>filter</b></code>](#)<Bullet />[`HubProviderFilter`](/api/inputs/hub-provider-filter) <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>client</b></code>](#)<Bullet />[`Client`](/api/objects/client) <Badge class="badge badge--secondary" text="object"/>
+
+> EntitiesV2: Get unique Client
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.client.<b>where</b></code>](#)<Bullet />[`ClientWhereUniqueInput!`](/api/inputs/client-where-unique-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>allClients</b></code>](#)<Bullet />[`ClientConnection!`](/api/objects/client-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> EntitiesV2: Get Clients for a specific filter. If you are searching for groups or owner,
+> please use the queries clientsByGroupCodes or clientsByOwnerCodes.
+> This query does not resolve siblings in case of filtering by groups, use clientsByGroupCodes instead
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.allClients.<b>where</b></code>](#)<Bullet />[`ClientWhereInput`](/api/inputs/client-where-input) <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.allClients.<b>orderBy</b></code>](#)<Bullet />[`ClientOrderByInput`](/api/enums/client-order-by-input) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>clientsByOwnerCodes</b></code>](#)<Bullet />[`ClientConnection!`](/api/objects/client-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> EntitiesV2: Get Clients for a specific list of owner codes
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.clientsByOwnerCodes.<b>ownerCodes</b></code>](#)<Bullet />[`[ID!]!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.clientsByOwnerCodes.<b>orderBy</b></code>](#)<Bullet />[`ClientOrderByInput`](/api/enums/client-order-by-input) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>clientsByGroupCodes</b></code>](#)<Bullet />[`ClientConnection!`](/api/objects/client-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> EntitiesV2: Get Clients for a specific list of group codes. Will returns clients from groups "siblings" too
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.clientsByGroupCodes.<b>groupCodes</b></code>](#)<Bullet />[`[ID!]!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.clientsByGroupCodes.<b>orderBy</b></code>](#)<Bullet />[`ClientOrderByInput`](/api/enums/client-order-by-input) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>allProviders</b></code>](#)<Bullet />[`[Provider!]`](/api/objects/provider) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> EntitiesV2: Get Providers for a specific filter
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.allProviders.<b>where</b></code>](#)<Bullet />[`ProviderWhereInput`](/api/inputs/provider-where-input) <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.allProviders.<b>orderBy</b></code>](#)<Bullet />[`ProviderOrderByEnum`](/api/enums/provider-order-by-enum) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>allGroupContents</b></code>](#)<Bullet />[`[GroupContent!]`](/api/objects/group-content) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> EntitiesV2: Get a list of GroupContents stored in the database
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.allGroupContents.<b>where</b></code>](#)<Bullet />[`GroupContentWhereInput`](/api/inputs/group-content-where-input) <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>supplier</b></code>](#)<Bullet />[`Supplier`](/api/objects/supplier) <Badge class="badge badge--secondary" text="object"/>
+
+> EntitiesV2: Get unique Supplier
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.supplier.<b>where</b></code>](#)<Bullet />[`SupplierWhereUniqueInput!`](/api/inputs/supplier-where-unique-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>suppliersByOwnerCodes</b></code>](#)<Bullet />[`SupplierConnection!`](/api/objects/supplier-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> EntitiesV2: Get Suppliers for a specific list of owner codes
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.suppliersByOwnerCodes.<b>ownerCodes</b></code>](#)<Bullet />[`[ID!]!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.suppliersByOwnerCodes.<b>orderBy</b></code>](#)<Bullet />[`SupplierOrderByEnum`](/api/enums/supplier-order-by-enum) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>suppliersByGroupCodes</b></code>](#)<Bullet />[`SupplierConnection!`](/api/objects/supplier-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> EntitiesV2: Get Suppliers for a specific list of group codes
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.suppliersByGroupCodes.<b>groupCodes</b></code>](#)<Bullet />[`[ID!]!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.suppliersByGroupCodes.<b>orderBy</b></code>](#)<Bullet />[`SupplierOrderByEnum`](/api/enums/supplier-order-by-enum) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>suppliersByProviderCodes</b></code>](#)<Bullet />[`SupplierConnection!`](/api/objects/supplier-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> EntitiesV2: Get Suppliers for a specific list of provider codes
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.suppliersByProviderCodes.<b>providerCodes</b></code>](#)<Bullet />[`[ID!]!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.suppliersByProviderCodes.<b>orderBy</b></code>](#)<Bullet />[`SupplierOrderByEnum`](/api/enums/supplier-order-by-enum) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>allSuppliers</b></code>](#)<Bullet />[`SupplierConnection!`](/api/objects/supplier-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> EntitiesV2: Get Suppliers for a specific filter. If you are searching for groups or owner,
+> please use the queries suppliersByGroupCodes or suppliersByOwnerCodes.
+> This query does not resolve siblings in case of filtering by groups, use suppliersByGroupCodes instead
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.allSuppliers.<b>where</b></code>](#)<Bullet />[`SupplierWhereInput`](/api/inputs/supplier-where-input) <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.allSuppliers.<b>orderBy</b></code>](#)<Bullet />[`SupplierOrderByEnum`](/api/enums/supplier-order-by-enum) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>bearer</b></code>](#)<Bullet />[`BearerData!`](/api/objects/bearer-data) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Recovers information for the current user.
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>ftpPasswordByOrganizationCode</b></code>](#)<Bullet />[`Password!`](/api/objects/password) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.ftpPasswordByOrganizationCode.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>allOrganizations</b></code>](#)<Bullet />[`OrganizationsConnection!`](/api/objects/organizations-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> allOrganizations: Get all organizations
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.allOrganizations.<b>where</b></code>](#)<Bullet />[`OrganizationsWhereInput`](/api/inputs/organizations-where-input) <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.allOrganizations.<b>orderBy</b></code>](#)<Bullet />[`OrganizationsOrderByEnum`](/api/enums/organizations-order-by-enum) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>organization</b></code>](#)<Bullet />[`Organizations!`](/api/objects/organizations) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> IAM: organization: Get a specific organization
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.organization.<b>where</b></code>](#)<Bullet />[`OrganizationWhereUniqueInput!`](/api/inputs/organization-where-unique-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>allMembers</b></code>](#)<Bullet />[`MembersConnection!`](/api/objects/members-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> IAM: allMembers: Get all members
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.allMembers.<b>where</b></code>](#)<Bullet />[`MembersWhereInput`](/api/inputs/members-where-input) <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.allMembers.<b>orderBy</b></code>](#)<Bullet />[`MembersOrderByEnum`](/api/enums/members-order-by-enum) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>member</b></code>](#)<Bullet />[`Members!`](/api/objects/members) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> IAM: members: Get a specific members
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.member.<b>where</b></code>](#)<Bullet />[`MemberWhereUniqueInput!`](/api/inputs/member-where-unique-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>allConnections</b></code>](#)<Bullet />[`ConnectionConnection!`](/api/objects/connection-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> EntititesV2 retrieve allConnections
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.allConnections.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.allConnections.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.allConnections.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.allConnections.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.allConnections.<b>where</b></code>](#)<Bullet />[`ConnectionWhereInput`](/api/inputs/connection-where-input) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.allConnections.<b>orderBy</b></code>](#)<Bullet />[`ConnectionOrderByEnum`](/api/enums/connection-order-by-enum) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+### Returned by
+
+[`admin`](/api/queries/admin) <Badge class="badge badge--secondary" text="query"/>

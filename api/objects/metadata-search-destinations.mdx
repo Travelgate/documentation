@@ -1,0 +1,58 @@
+---
+id: metadata-search-destinations
+title: MetadataSearchDestinations
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Contains information regarding the destinations for Search request.
+
+```graphql
+type MetadataSearchDestinations {
+  maxNumberHotels: ReviewedInt!
+  recommendedNumberHotels: ReviewedInt!
+  hotelSameDestinationRestriction: ReviewedBool!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataSearchDestinations.<b>maxNumberHotels</b></code>](#)<Bullet />[`ReviewedInt!`](/api/objects/reviewed-int) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Maximum number of hotels that can be requested.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataSearchDestinations.<b>recommendedNumberHotels</b></code>](#)<Bullet />[`ReviewedInt!`](/api/objects/reviewed-int) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Recomended number of hotels.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataSearchDestinations.<b>hotelSameDestinationRestriction</b></code>](#)<Bullet />[`ReviewedBool!`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Required all hotels from same destination
+
+### Member of
+
+[`MetadataSearch`](/api/objects/metadata-search) <Badge class="badge badge--secondary" text="object"/>

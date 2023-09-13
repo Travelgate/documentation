@@ -1,0 +1,78 @@
+---
+id: ferry-offer-data
+title: FerryOfferData
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type FerryOfferData {
+  sourceCode: ID
+  journey: Journey
+  rateType: Ratetype
+  rateGroup: Rategroup
+  price: Price
+  accommodation: FerryAccommodation
+  cancelPolicy: CancelPolicy
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>FerryOfferData.<b>sourceCode</b></code>](#)<Bullet />[`ID`](/api/scalars/id) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Seller Identifier.
+
+#### [<code style={{ fontWeight: 'normal' }}>FerryOfferData.<b>journey</b></code>](#)<Bullet />[`Journey`](/api/objects/journey) <Badge class="badge badge--secondary" text="object"/>
+
+> Journey details.
+
+#### [<code style={{ fontWeight: 'normal' }}>FerryOfferData.<b>rateType</b></code>](#)<Bullet />[`Ratetype`](/api/objects/ratetype) <Badge class="badge badge--secondary" text="object"/>
+
+> Seller defined rate category.
+
+#### [<code style={{ fontWeight: 'normal' }}>FerryOfferData.<b>rateGroup</b></code>](#)<Bullet />[`Rategroup`](/api/objects/rategroup) <Badge class="badge badge--secondary" text="object"/>
+
+> Seller defined rate category group.
+
+#### [<code style={{ fontWeight: 'normal' }}>FerryOfferData.<b>price</b></code>](#)<Bullet />[`Price`](/api/objects/price) <Badge class="badge badge--secondary" text="object"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>FerryOfferData.<b>accommodation</b></code>](#)<Bullet />[`FerryAccommodation`](/api/objects/ferry-accommodation) <Badge class="badge badge--secondary" text="object"/>
+
+> i.e. Seat, Cabin, etc.
+
+#### [<code style={{ fontWeight: 'normal' }}>FerryOfferData.<b>cancelPolicy</b></code>](#)<Bullet />[`CancelPolicy`](/api/objects/cancel-policy) <Badge class="badge badge--secondary" text="object"/>
+
+>
+
+### Member of
+
+[`FerryOffer`](/api/objects/ferry-offer) <Badge class="badge badge--secondary" text="object"/>

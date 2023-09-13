@@ -1,0 +1,68 @@
+---
+id: alert-error-rate-relative-configuration-by-requests-input
+title: AlertErrorRateRelativeConfigurationByRequestsInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+input AlertErrorRateRelativeConfigurationByRequestsInput {
+  toCheck: [Int!]
+  toCompare: [Int!]
+  windowing: AlertCommonByRequestsInput!
+  common: AlertCommonConfigurationInput!
+  relative: AlertCommonRelativeInput!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertErrorRateRelativeConfigurationByRequestsInput.<b>toCheck</b></code>](#)<Bullet />[`[Int!]`](/api/scalars/int) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Error codes to check. By default all error codes are checked
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertErrorRateRelativeConfigurationByRequestsInput.<b>toCompare</b></code>](#)<Bullet />[`[Int!]`](/api/scalars/int) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Error codes to compare. By defaults all traffic is compared
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertErrorRateRelativeConfigurationByRequestsInput.<b>windowing</b></code>](#)<Bullet />[`AlertCommonByRequestsInput!`](/api/inputs/alert-common-by-requests-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+> Common configuration for requests window type
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertErrorRateRelativeConfigurationByRequestsInput.<b>common</b></code>](#)<Bullet />[`AlertCommonConfigurationInput!`](/api/inputs/alert-common-configuration-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+> Common configuration alert
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertErrorRateRelativeConfigurationByRequestsInput.<b>relative</b></code>](#)<Bullet />[`AlertCommonRelativeInput!`](/api/inputs/alert-common-relative-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+> Common configuration of relative mode type
+
+### Member of
+
+[`AlertErrorRateRelativeByRequestsInput`](/api/inputs/alert-error-rate-relative-by-requests-input) <Badge class="badge badge--secondary" text="input"/>

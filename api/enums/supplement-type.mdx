@@ -1,0 +1,83 @@
+---
+id: supplement-type
+title: SupplementType
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Supplement Type
+
+```graphql
+enum SupplementType {
+  SKI_PASS
+  LESSONS
+  MEALS
+  EQUIPMENT
+  TICKET
+  TRANSFERS
+  GALA
+  ACTIVITY
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplementType.<b>SKI_PASS</b></code>](#)
+
+> A ticket or pass authorizing the holder to ski in a certain place or resort.
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplementType.<b>LESSONS</b></code>](#)
+
+> Lessons of any type that the costumer can take.
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplementType.<b>MEALS</b></code>](#)
+
+> Supplement of a determined meal plan.
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplementType.<b>EQUIPMENT</b></code>](#)
+
+> Extra equipment for a specific purpose.
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplementType.<b>TICKET</b></code>](#)
+
+> Admission to some service.
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplementType.<b>TRANSFERS</b></code>](#)
+
+> Transfers used by the costumer.
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplementType.<b>GALA</b></code>](#)
+
+> Gala: A festive occasion, celebration or special entertainment.
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplementType.<b>ACTIVITY</b></code>](#)
+
+> Activities that the costumer can do.
+
+### Member of
+
+[`Supplement`](/api/objects/supplement) <Badge class="badge badge--secondary" text="object"/>

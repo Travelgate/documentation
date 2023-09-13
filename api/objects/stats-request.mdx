@@ -1,0 +1,108 @@
+---
+id: stats-request
+title: StatsRequest
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Contains internal information.
+
+```graphql
+type StatsRequest {
+  total: Stat!
+  validation: Stat!
+  process: Stat!
+  configuration: Stat!
+  request: Stat!
+  response: Stat!
+  requestPlugin: StatPlugin
+  responsePlugin: StatPlugin
+  hotels: Int!
+  zones: Int!
+  cities: Int!
+  dockerID: String!
+  Accesses: [StatAccess!]!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsRequest.<b>total</b></code>](#)<Bullet />[`Stat!`](/api/objects/stat) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Total transaction time
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsRequest.<b>validation</b></code>](#)<Bullet />[`Stat!`](/api/objects/stat) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Request validation time
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsRequest.<b>process</b></code>](#)<Bullet />[`Stat!`](/api/objects/stat) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Process time. Contains communication time, parse time and plugin time.
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsRequest.<b>configuration</b></code>](#)<Bullet />[`Stat!`](/api/objects/stat) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Build access time
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsRequest.<b>request</b></code>](#)<Bullet />[`Stat!`](/api/objects/stat) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Request time
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsRequest.<b>response</b></code>](#)<Bullet />[`Stat!`](/api/objects/stat) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Response time
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsRequest.<b>requestPlugin</b></code>](#)<Bullet />[`StatPlugin`](/api/objects/stat-plugin) <Badge class="badge badge--secondary" text="object"/>
+
+> Plugin execution time
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsRequest.<b>responsePlugin</b></code>](#)<Bullet />[`StatPlugin`](/api/objects/stat-plugin) <Badge class="badge badge--secondary" text="object"/>
+
+> Plugin execution time
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsRequest.<b>hotels</b></code>](#)<Bullet />[`Int!`](/api/scalars/int) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Number of hotels
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsRequest.<b>zones</b></code>](#)<Bullet />[`Int!`](/api/scalars/int) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Number of zones
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsRequest.<b>cities</b></code>](#)<Bullet />[`Int!`](/api/scalars/int) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Number of cities
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsRequest.<b>dockerID</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Docker Id
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsRequest.<b>Accesses</b></code>](#)<Bullet />[`[StatAccess!]!`](/api/objects/stat-access) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Detail access time
+
+### Member of
+
+[`HotelBooking`](/api/objects/hotel-booking) <Badge class="badge badge--secondary" text="object"/><Bullet />[`HotelBookPayload`](/api/objects/hotel-book-payload) <Badge class="badge badge--secondary" text="object"/><Bullet />[`HotelCancelPayload`](/api/objects/hotel-cancel-payload) <Badge class="badge badge--secondary" text="object"/><Bullet />[`HotelCommitPayload`](/api/objects/hotel-commit-payload) <Badge class="badge badge--secondary" text="object"/><Bullet />[`HotelQuote`](/api/objects/hotel-quote) <Badge class="badge badge--secondary" text="object"/><Bullet />[`HotelSearch`](/api/objects/hotel-search) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Response`](/api/interfaces/response) <Badge class="badge badge--secondary" text="interface"/>

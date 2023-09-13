@@ -1,0 +1,160 @@
+---
+id: social-mutation
+title: SocialMutation
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type SocialMutation {
+  createProfile(data: ProfileCreateInput!): ProfileV2!
+  updateProfile(
+    where: ProfileWhereUniqueInput!
+    data: ProfileUpdateInput!
+  ): ProfileV2!
+  deleteProfile(where: ProfileWhereUniqueInput!): ProfileV2!
+  createCategory(data: CategoryCreateInput!): SocialCategory!
+  updateCategory(
+    where: CategoryWhereUniqueInput!
+    data: CategoryUpdateInput!
+  ): SocialCategory!
+  deleteCategory(where: CategoryWhereUniqueInput!): SocialCategory!
+  createSubCategory(
+    where: CategoryWhereUniqueInput!
+    data: SubCategoryCreateInput!
+  ): SocialSubCategory!
+  updateSubCategory(
+    where: SubCategoryWhereUniqueInput!
+    data: SubCategoryUpdateInput!
+  ): SocialSubCategory!
+  deleteSubCategory(where: SubCategoryWhereUniqueInput!): SocialSubCategory!
+  createUserProfile(data: UserProfileCreateInput!): UserProfile!
+  updateUserProfile(
+    where: UserProfileWhereUniqueInput!
+    data: UserProfileUpdateInput!
+  ): UserProfile!
+  createInvitation(data: InvitationCreateInput!): Invitation!
+  updateInvitation(
+    where: InvitationWhereUniqueInput!
+    data: InvitationUpdateInput!
+  ): Invitation!
+  createFavouritePartner(data: FavouritePartnerCreateInput): Organization!
+  deleteFavouritePartner(where: FavouritePartnerWhereUniqueInput): Organization!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>SocialMutation.<b>createProfile</b></code>](#)<Bullet />[`ProfileV2!`](/api/objects/profile-v2) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> ##### [<code style={{ fontWeight: 'normal' }}>SocialMutation.createProfile.<b>data</b></code>](#)<Bullet />[`ProfileCreateInput!`](/api/inputs/profile-create-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>SocialMutation.<b>updateProfile</b></code>](#)<Bullet />[`ProfileV2!`](/api/objects/profile-v2) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> ##### [<code style={{ fontWeight: 'normal' }}>SocialMutation.updateProfile.<b>where</b></code>](#)<Bullet />[`ProfileWhereUniqueInput!`](/api/inputs/profile-where-unique-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>SocialMutation.updateProfile.<b>data</b></code>](#)<Bullet />[`ProfileUpdateInput!`](/api/inputs/profile-update-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>SocialMutation.<b>deleteProfile</b></code>](#)<Bullet />[`ProfileV2!`](/api/objects/profile-v2) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> ##### [<code style={{ fontWeight: 'normal' }}>SocialMutation.deleteProfile.<b>where</b></code>](#)<Bullet />[`ProfileWhereUniqueInput!`](/api/inputs/profile-where-unique-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>SocialMutation.<b>createCategory</b></code>](#)<Bullet />[`SocialCategory!`](/api/objects/social-category) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> ##### [<code style={{ fontWeight: 'normal' }}>SocialMutation.createCategory.<b>data</b></code>](#)<Bullet />[`CategoryCreateInput!`](/api/inputs/category-create-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>SocialMutation.<b>updateCategory</b></code>](#)<Bullet />[`SocialCategory!`](/api/objects/social-category) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> ##### [<code style={{ fontWeight: 'normal' }}>SocialMutation.updateCategory.<b>where</b></code>](#)<Bullet />[`CategoryWhereUniqueInput!`](/api/inputs/category-where-unique-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>SocialMutation.updateCategory.<b>data</b></code>](#)<Bullet />[`CategoryUpdateInput!`](/api/inputs/category-update-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>SocialMutation.<b>deleteCategory</b></code>](#)<Bullet />[`SocialCategory!`](/api/objects/social-category) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> ##### [<code style={{ fontWeight: 'normal' }}>SocialMutation.deleteCategory.<b>where</b></code>](#)<Bullet />[`CategoryWhereUniqueInput!`](/api/inputs/category-where-unique-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>SocialMutation.<b>createSubCategory</b></code>](#)<Bullet />[`SocialSubCategory!`](/api/objects/social-sub-category) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> ##### [<code style={{ fontWeight: 'normal' }}>SocialMutation.createSubCategory.<b>where</b></code>](#)<Bullet />[`CategoryWhereUniqueInput!`](/api/inputs/category-where-unique-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>SocialMutation.createSubCategory.<b>data</b></code>](#)<Bullet />[`SubCategoryCreateInput!`](/api/inputs/sub-category-create-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>SocialMutation.<b>updateSubCategory</b></code>](#)<Bullet />[`SocialSubCategory!`](/api/objects/social-sub-category) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> ##### [<code style={{ fontWeight: 'normal' }}>SocialMutation.updateSubCategory.<b>where</b></code>](#)<Bullet />[`SubCategoryWhereUniqueInput!`](/api/inputs/sub-category-where-unique-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>SocialMutation.updateSubCategory.<b>data</b></code>](#)<Bullet />[`SubCategoryUpdateInput!`](/api/inputs/sub-category-update-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>SocialMutation.<b>deleteSubCategory</b></code>](#)<Bullet />[`SocialSubCategory!`](/api/objects/social-sub-category) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> ##### [<code style={{ fontWeight: 'normal' }}>SocialMutation.deleteSubCategory.<b>where</b></code>](#)<Bullet />[`SubCategoryWhereUniqueInput!`](/api/inputs/sub-category-where-unique-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>SocialMutation.<b>createUserProfile</b></code>](#)<Bullet />[`UserProfile!`](/api/objects/user-profile) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> ##### [<code style={{ fontWeight: 'normal' }}>SocialMutation.createUserProfile.<b>data</b></code>](#)<Bullet />[`UserProfileCreateInput!`](/api/inputs/user-profile-create-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>SocialMutation.<b>updateUserProfile</b></code>](#)<Bullet />[`UserProfile!`](/api/objects/user-profile) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> ##### [<code style={{ fontWeight: 'normal' }}>SocialMutation.updateUserProfile.<b>where</b></code>](#)<Bullet />[`UserProfileWhereUniqueInput!`](/api/inputs/user-profile-where-unique-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>SocialMutation.updateUserProfile.<b>data</b></code>](#)<Bullet />[`UserProfileUpdateInput!`](/api/inputs/user-profile-update-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>SocialMutation.<b>createInvitation</b></code>](#)<Bullet />[`Invitation!`](/api/objects/invitation) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> ##### [<code style={{ fontWeight: 'normal' }}>SocialMutation.createInvitation.<b>data</b></code>](#)<Bullet />[`InvitationCreateInput!`](/api/inputs/invitation-create-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>SocialMutation.<b>updateInvitation</b></code>](#)<Bullet />[`Invitation!`](/api/objects/invitation) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> ##### [<code style={{ fontWeight: 'normal' }}>SocialMutation.updateInvitation.<b>where</b></code>](#)<Bullet />[`InvitationWhereUniqueInput!`](/api/inputs/invitation-where-unique-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>SocialMutation.updateInvitation.<b>data</b></code>](#)<Bullet />[`InvitationUpdateInput!`](/api/inputs/invitation-update-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>SocialMutation.<b>createFavouritePartner</b></code>](#)<Bullet />[`Organization!`](/api/objects/organization) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> ##### [<code style={{ fontWeight: 'normal' }}>SocialMutation.createFavouritePartner.<b>data</b></code>](#)<Bullet />[`FavouritePartnerCreateInput`](/api/inputs/favourite-partner-create-input) <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>SocialMutation.<b>deleteFavouritePartner</b></code>](#)<Bullet />[`Organization!`](/api/objects/organization) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> ##### [<code style={{ fontWeight: 'normal' }}>SocialMutation.deleteFavouritePartner.<b>where</b></code>](#)<Bullet />[`FavouritePartnerWhereUniqueInput`](/api/inputs/favourite-partner-where-unique-input) <Badge class="badge badge--secondary" text="input"/>
+
+### Returned by
+
+[`social`](/api/mutations/social) <Badge class="badge badge--secondary" text="mutation"/>

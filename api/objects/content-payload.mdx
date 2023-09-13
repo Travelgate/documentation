@@ -1,0 +1,93 @@
+---
+id: content-payload
+title: ContentPayload
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type ContentPayload {
+  adviseMessages: [AdviseMessage]
+  packageCode: String
+  type: ContentType
+  supplier: PackageSupplier
+  language: String
+  name: String
+  destination: PackageDestination
+  description: String
+  media: [Medium!]
+  remarks: [Remark!]
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>ContentPayload.<b>adviseMessages</b></code>](#)<Bullet />[`[AdviseMessage]`](/api/objects/advise-message) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> List of errors
+
+#### [<code style={{ fontWeight: 'normal' }}>ContentPayload.<b>packageCode</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Identifier code
+
+#### [<code style={{ fontWeight: 'normal' }}>ContentPayload.<b>type</b></code>](#)<Bullet />[`ContentType`](/api/enums/content-type) <Badge class="badge badge--secondary" text="enum"/>
+
+> Specifies if it's a package or a tour
+
+#### [<code style={{ fontWeight: 'normal' }}>ContentPayload.<b>supplier</b></code>](#)<Bullet />[`PackageSupplier`](/api/objects/package-supplier) <Badge class="badge badge--secondary" text="object"/>
+
+> supplier information
+
+#### [<code style={{ fontWeight: 'normal' }}>ContentPayload.<b>language</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Language code (ISO 639-1)
+
+#### [<code style={{ fontWeight: 'normal' }}>ContentPayload.<b>name</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Package name
+
+#### [<code style={{ fontWeight: 'normal' }}>ContentPayload.<b>destination</b></code>](#)<Bullet />[`PackageDestination`](/api/objects/package-destination) <Badge class="badge badge--secondary" text="object"/>
+
+> Destination information
+
+#### [<code style={{ fontWeight: 'normal' }}>ContentPayload.<b>description</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Package description
+
+#### [<code style={{ fontWeight: 'normal' }}>ContentPayload.<b>media</b></code>](#)<Bullet />[`[Medium!]`](/api/objects/medium) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> List of available media
+
+#### [<code style={{ fontWeight: 'normal' }}>ContentPayload.<b>remarks</b></code>](#)<Bullet />[`[Remark!]`](/api/objects/remark) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> List of remarks for the product
+
+### Member of
+
+[`PackageQuery`](/api/objects/package-query) <Badge class="badge badge--secondary" text="object"/>

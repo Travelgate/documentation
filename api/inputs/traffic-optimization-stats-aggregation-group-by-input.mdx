@@ -1,0 +1,53 @@
+---
+id: traffic-optimization-stats-aggregation-group-by-input
+title: TrafficOptimizationStatsAggregationGroupByInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+input TrafficOptimizationStatsAggregationGroupByInput {
+  data: [TrafficOptimizationStatsDataGroupBy!]
+  time: StatsTimeGroupBy
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationStatsAggregationGroupByInput.<b>data</b></code>](#)<Bullet />[`[TrafficOptimizationStatsDataGroupBy!]`](/api/enums/traffic-optimization-stats-data-group-by) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> To group by data
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationStatsAggregationGroupByInput.<b>time</b></code>](#)<Bullet />[`StatsTimeGroupBy`](/api/enums/stats-time-group-by) <Badge class="badge badge--secondary" text="enum"/>
+
+> To group data by time
+
+### Member of
+
+[`TrafficOptimizationAggregationHotelStatsConnectionWhereInput`](/api/inputs/traffic-optimization-aggregation-hotel-stats-connection-where-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`TrafficOptimizationAggregationStatsConnectionWhereInput`](/api/inputs/traffic-optimization-aggregation-stats-connection-where-input) <Badge class="badge badge--secondary" text="input"/>

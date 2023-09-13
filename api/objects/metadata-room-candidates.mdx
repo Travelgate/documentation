@@ -1,0 +1,83 @@
+---
+id: metadata-room-candidates
+title: MetadataRoomCandidates
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Contains information about the restrictions of the rooms.
+
+```graphql
+type MetadataRoomCandidates {
+  maxNumberRoomCandidates: ReviewedInt!
+  paxTypeRangeInRoomCandidates: ReviwedPaxTypeRangeInRoomCandidates
+  maxPaxInRoomCandidates: ReviewedInt!
+  maxPaxInAllRooms: ReviewedInt!
+  requiredRoomWithSamePaxConfiguration: RequiredRoomWithSamePaxConfiguration!
+  rateRules: [ReviewedRateRule!]!
+  beds: MetadataBeds!
+  ageRange: ReviewedAgeRanges!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataRoomCandidates.<b>maxNumberRoomCandidates</b></code>](#)<Bullet />[`ReviewedInt!`](/api/objects/reviewed-int) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Maximum number of room candidates that can be requested in the same search request.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataRoomCandidates.<b>paxTypeRangeInRoomCandidates</b></code>](#)<Bullet />[`ReviwedPaxTypeRangeInRoomCandidates`](/api/objects/reviwed-pax-type-range-in-room-candidates) <Badge class="badge badge--secondary" text="object"/>
+
+> Contains information about the age restrictions of the guests in a room.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataRoomCandidates.<b>maxPaxInRoomCandidates</b></code>](#)<Bullet />[`ReviewedInt!`](/api/objects/reviewed-int) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Maximum number paxs in same room that can be requested in the same search request.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataRoomCandidates.<b>maxPaxInAllRooms</b></code>](#)<Bullet />[`ReviewedInt!`](/api/objects/reviewed-int) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Total amount of paxs that can be requested in the same search request.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataRoomCandidates.<b>requiredRoomWithSamePaxConfiguration</b></code>](#)<Bullet />[`RequiredRoomWithSamePaxConfiguration!`](/api/objects/required-room-with-same-pax-configuration) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Indicates whether all of the distributions must have the same configuration.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataRoomCandidates.<b>rateRules</b></code>](#)<Bullet />[`[ReviewedRateRule!]!`](/api/objects/reviewed-rate-rule) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> List of rate rule types supported by the supplie
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataRoomCandidates.<b>beds</b></code>](#)<Bullet />[`MetadataBeds!`](/api/objects/metadata-beds) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Information about beds.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataRoomCandidates.<b>ageRange</b></code>](#)<Bullet />[`ReviewedAgeRanges!`](/api/objects/reviewed-age-ranges) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> The age range used by the supplier.
+
+### Member of
+
+[`MetadataSearch`](/api/objects/metadata-search) <Badge class="badge badge--secondary" text="object"/>

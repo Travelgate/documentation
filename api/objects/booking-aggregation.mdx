@@ -1,0 +1,133 @@
+---
+id: booking-aggregation
+title: BookingAggregation
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type BookingAggregation {
+  status: BookStatusType
+  client: Client
+  supplier: Supplier
+  currency: String
+  bookingAt: Date
+  checkInAt: Date
+  cancelAt: Date
+  originMarket: String
+  destinationCountry: String
+  paxType: PaxTypeType
+  bookingWindow: BookingWindowType
+  lengthOfStay: Int
+  hotelName: String
+  amount: Float
+  amountEur: Float
+  amountCancelPenalties: [AmountCancelPenalty]
+  numBookings: Int
+  aggregate: Aggregate
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingAggregation.<b>status</b></code>](#)<Bullet />[`BookStatusType`](/api/enums/book-status-type) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingAggregation.<b>client</b></code>](#)<Bullet />[`Client`](/api/objects/client) <Badge class="badge badge--secondary" text="object"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingAggregation.<b>supplier</b></code>](#)<Bullet />[`Supplier`](/api/objects/supplier) <Badge class="badge badge--secondary" text="object"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingAggregation.<b>currency</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingAggregation.<b>bookingAt</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingAggregation.<b>checkInAt</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingAggregation.<b>cancelAt</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingAggregation.<b>originMarket</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingAggregation.<b>destinationCountry</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingAggregation.<b>paxType</b></code>](#)<Bullet />[`PaxTypeType`](/api/enums/pax-type-type) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingAggregation.<b>bookingWindow</b></code>](#)<Bullet />[`BookingWindowType`](/api/enums/booking-window-type) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingAggregation.<b>lengthOfStay</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingAggregation.<b>hotelName</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingAggregation.<b>amount</b></code>](#)<Bullet />[`Float`](/api/scalars/float) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingAggregation.<b>amountEur</b></code>](#)<Bullet />[`Float`](/api/scalars/float) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingAggregation.<b>amountCancelPenalties</b></code>](#)<Bullet />[`[AmountCancelPenalty]`](/api/objects/amount-cancel-penalty) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingAggregation.<b>numBookings</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingAggregation.<b>aggregate</b></code>](#)<Bullet />[`Aggregate`](/api/objects/aggregate) <Badge class="badge badge--secondary" text="object"/>
+
+>
+
+### Member of
+
+[`InsightsXBookingAggregation`](/api/objects/insights-xbooking-aggregation) <Badge class="badge badge--secondary" text="object"/>

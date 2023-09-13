@@ -1,0 +1,62 @@
+---
+id: criteria-booking-dates-input
+title: CriteriaBookingDatesInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Criteria by dates
+
+```graphql
+input CriteriaBookingDatesInput {
+  dateType: DateType!
+  start: Date!
+  end: Date!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>CriteriaBookingDatesInput.<b>dateType</b></code>](#)<Bullet />[`DateType!`](/api/enums/date-type) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> Type of date. Can be Arrival or Booking date.
+
+#### [<code style={{ fontWeight: 'normal' }}>CriteriaBookingDatesInput.<b>start</b></code>](#)<Bullet />[`Date!`](/api/scalars/date) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Start date.
+> Format: YYYY-MM-DD.
+> Start of date range
+
+#### [<code style={{ fontWeight: 'normal' }}>CriteriaBookingDatesInput.<b>end</b></code>](#)<Bullet />[`Date!`](/api/scalars/date) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> End date.
+> Format: YYYY-MM-DD.
+> End of date range
+
+### Member of
+
+[`HotelCriteriaBookingInput`](/api/inputs/hotel-criteria-booking-input) <Badge class="badge badge--secondary" text="input"/>

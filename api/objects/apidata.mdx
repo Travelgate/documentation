@@ -1,0 +1,172 @@
+---
+id: apidata
+title: APIData
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type APIData {
+  code: ID!
+  id: ID!
+  isEditable: Boolean!
+  label: String
+  groups(
+    codes: [ID!]
+    type: GroupType
+    first: Int
+    last: Int
+    before: String
+    after: String
+  ): GroupConnection
+  resources(
+    codes: [ID!]
+    first: Int
+    last: Int
+    before: String
+    after: String
+  ): ResourceConnection
+  operations(
+    codes: [ID!]
+    type: OperationType
+    types: [OperationType!]
+    first: Int
+    last: Int
+    before: String
+    after: String
+  ): OperationConnection
+  adviseMessageCatalog(level: [AdviseMessageLevel]): [AdviseMessage!]
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>APIData.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> API Code
+
+#### [<code style={{ fontWeight: 'normal' }}>APIData.<b>id</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> API ID
+
+#### [<code style={{ fontWeight: 'normal' }}>APIData.<b>isEditable</b></code>](#)<Bullet />[`Boolean!`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Is API Editable or not.
+
+#### [<code style={{ fontWeight: 'normal' }}>APIData.<b>label</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> API label
+
+#### [<code style={{ fontWeight: 'normal' }}>APIData.<b>groups</b></code>](#)<Bullet />[`GroupConnection`](/api/objects/group-connection) <Badge class="badge badge--secondary" text="object"/>
+
+> which groups are asigned this API?
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>APIData.groups.<b>codes</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>APIData.groups.<b>type</b></code>](#)<Bullet />[`GroupType`](/api/enums/group-type) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>APIData.groups.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>APIData.groups.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>APIData.groups.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>APIData.groups.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>APIData.<b>resources</b></code>](#)<Bullet />[`ResourceConnection`](/api/objects/resource-connection) <Badge class="badge badge--secondary" text="object"/>
+
+> which resources are asigned this API?
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>APIData.resources.<b>codes</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>APIData.resources.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>APIData.resources.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>APIData.resources.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>APIData.resources.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>APIData.<b>operations</b></code>](#)<Bullet />[`OperationConnection`](/api/objects/operation-connection) <Badge class="badge badge--secondary" text="object"/>
+
+> which operations are asigned this API?
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>APIData.operations.<b>codes</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>APIData.operations.<b>type</b></code>](#)<Bullet />[`OperationType`](/api/enums/operation-type) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>APIData.operations.<b>types</b></code>](#)<Bullet />[`[OperationType!]`](/api/enums/operation-type) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>APIData.operations.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>APIData.operations.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>APIData.operations.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>APIData.operations.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>APIData.<b>adviseMessageCatalog</b></code>](#)<Bullet />[`[AdviseMessage!]`](/api/objects/advise-message) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Advise messages catalog.
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>APIData.adviseMessageCatalog.<b>level</b></code>](#)<Bullet />[`[AdviseMessageLevel]`](/api/enums/advise-message-level) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="enum"/>
+
+### Member of
+
+[`API`](/api/objects/api) <Badge class="badge badge--secondary" text="object"/>

@@ -1,0 +1,68 @@
+---
+id: alert-update-error-rate-comparative-configuration-by-time-input
+title: AlertUpdateErrorRateComparativeConfigurationByTimeInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+input AlertUpdateErrorRateComparativeConfigurationByTimeInput {
+  toCheck: [Int!]
+  toCompare: [Int!]
+  windowing: AlertUpdateCommonByTimeInput
+  common: AlertUpdateCommonConfigurationInput
+  comparative: AlertUpdateCommonComparativeInput
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertUpdateErrorRateComparativeConfigurationByTimeInput.<b>toCheck</b></code>](#)<Bullet />[`[Int!]`](/api/scalars/int) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Error codes to check. By default all error codes are checked
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertUpdateErrorRateComparativeConfigurationByTimeInput.<b>toCompare</b></code>](#)<Bullet />[`[Int!]`](/api/scalars/int) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Error codes to compare. By defaults all traffic is compared
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertUpdateErrorRateComparativeConfigurationByTimeInput.<b>windowing</b></code>](#)<Bullet />[`AlertUpdateCommonByTimeInput`](/api/inputs/alert-update-common-by-time-input) <Badge class="badge badge--secondary" text="input"/>
+
+> Common configuration for time window type
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertUpdateErrorRateComparativeConfigurationByTimeInput.<b>common</b></code>](#)<Bullet />[`AlertUpdateCommonConfigurationInput`](/api/inputs/alert-update-common-configuration-input) <Badge class="badge badge--secondary" text="input"/>
+
+> Common configuration alert
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertUpdateErrorRateComparativeConfigurationByTimeInput.<b>comparative</b></code>](#)<Bullet />[`AlertUpdateCommonComparativeInput`](/api/inputs/alert-update-common-comparative-input) <Badge class="badge badge--secondary" text="input"/>
+
+> Common configuration of comparative mode type
+
+### Member of
+
+[`AlertUpdateErrorRateComparativeByTimeInput`](/api/inputs/alert-update-error-rate-comparative-by-time-input) <Badge class="badge badge--secondary" text="input"/>

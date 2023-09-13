@@ -1,0 +1,68 @@
+---
+id: journey-input
+title: JourneyInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+input JourneyInput {
+  departure: String
+  return: String
+  originCode: ID
+  destinationCode: ID
+  alternativeReturnCode: ID
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>JourneyInput.<b>departure</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Departure Date, ISO 8601 Format.
+
+#### [<code style={{ fontWeight: 'normal' }}>JourneyInput.<b>return</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Return Date, ISO 8601 Format.
+
+#### [<code style={{ fontWeight: 'normal' }}>JourneyInput.<b>originCode</b></code>](#)<Bullet />[`ID`](/api/scalars/id) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Departure Location, needs Code Mapping.
+
+#### [<code style={{ fontWeight: 'normal' }}>JourneyInput.<b>destinationCode</b></code>](#)<Bullet />[`ID`](/api/scalars/id) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Arrival Location, needs Code Mapping.
+
+#### [<code style={{ fontWeight: 'normal' }}>JourneyInput.<b>alternativeReturnCode</b></code>](#)<Bullet />[`ID`](/api/scalars/id) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Open-Jaw support, needs Code Mapping.
+
+### Member of
+
+[`FerrySearchWhereInput`](/api/inputs/ferry-search-where-input) <Badge class="badge badge--secondary" text="input"/>

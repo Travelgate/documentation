@@ -1,0 +1,68 @@
+---
+id: plugin-step-type
+title: PluginStepType
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Plugin Step Type. https://docs.travelgatex.com/hotelx/plugins/overview/
+
+```graphql
+enum PluginStepType {
+  REQUEST
+  REQUEST_ACCESS
+  RESPONSE_OPTION
+  RESPONSE_ACCESS
+  RESPONSE
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>PluginStepType.<b>REQUEST</b></code>](#)
+
+> Plugins executed after Buyer requests message to HotelX
+
+#### [<code style={{ fontWeight: 'normal' }}>PluginStepType.<b>REQUEST_ACCESS</b></code>](#)
+
+> Plugins executed before sending request to Supplier using Access and after Accesses have been calculated
+
+#### [<code style={{ fontWeight: 'normal' }}>PluginStepType.<b>RESPONSE_OPTION</b></code>](#)
+
+> Plugins executed after Supplier responds message. For every option returned
+
+#### [<code style={{ fontWeight: 'normal' }}>PluginStepType.<b>RESPONSE_ACCESS</b></code>](#)
+
+> Plugins executed after all Access options has been responded
+
+#### [<code style={{ fontWeight: 'normal' }}>PluginStepType.<b>RESPONSE</b></code>](#)
+
+> Plugins executed before HotelX responds message to to Buyer
+
+### Member of
+
+[`HotelXDefaultPlugin`](/api/objects/hotel-xdefault-plugin) <Badge class="badge badge--secondary" text="object"/><Bullet />[`HotelXDefaultPluginInput`](/api/inputs/hotel-xdefault-plugin-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`HotelXDefaultPluginStepInput`](/api/inputs/hotel-xdefault-plugin-step-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`HotelXFilterPluginTypeInput`](/api/inputs/hotel-xfilter-plugin-type-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`PluginStepInput`](/api/inputs/plugin-step-input) <Badge class="badge badge--secondary" text="input"/>

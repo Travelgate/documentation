@@ -1,0 +1,116 @@
+---
+id: booking-hotel
+title: BookingHotel
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type BookingHotel {
+  creationDate: Date @deprecated
+  checkIn: Date @deprecated
+  checkOut: Date @deprecated
+  bookingDate: Date
+  start: Date
+  end: Date
+  hotelCode: String
+  hotelName: String
+  boardCode: String
+  occupancies: [Occupancy!]
+  rooms: [BookingRoom!]
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingHotel.<b>creationDate</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--deprecated badge--secondary" text="deprecated"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> :::caution DEPRECATED
+> deprecated from 2018-02-28. Incorrect date format.
+> :::
+>
+> Creation date of the booking.
+> Format: YYYY-MM-DD
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingHotel.<b>checkIn</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--deprecated badge--secondary" text="deprecated"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> :::caution DEPRECATED
+> deprecated from 2018-02-28. Incorrect date format.
+> :::
+>
+> Check-in date for booking
+> Format: YYYY-MM-DD
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingHotel.<b>checkOut</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--deprecated badge--secondary" text="deprecated"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> :::caution DEPRECATED
+> deprecated from 2018-02-28. Incorrect date format.
+> :::
+>
+> Check-out date for the booking.
+> Format: YYYY-MM-DD
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingHotel.<b>bookingDate</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Creation date of the booking.
+> Format: YYYY-MM-DD
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingHotel.<b>start</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Check-in date for booking
+> Format: YYYY-MM-DD
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingHotel.<b>end</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Check-out date for the booking.
+> Format: YYYY-MM-DD
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingHotel.<b>hotelCode</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Code of the hotel in the context selected.
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingHotel.<b>hotelName</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Name of the hotel.
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingHotel.<b>boardCode</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Code of the board in the context selected.
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingHotel.<b>occupancies</b></code>](#)<Bullet />[`[Occupancy!]`](/api/objects/occupancy) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> List of occupancies for the request
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingHotel.<b>rooms</b></code>](#)<Bullet />[`[BookingRoom!]`](/api/objects/booking-room) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> List of rooms.
+
+### Member of
+
+[`HotelBookingDetail`](/api/objects/hotel-booking-detail) <Badge class="badge badge--secondary" text="object"/>

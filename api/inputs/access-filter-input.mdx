@@ -1,0 +1,54 @@
+---
+id: access-filter-input
+title: AccessFilterInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Include _OR_ exclude accesses in this specific search query. If not specified, default accesses will be used.
+Only one list (includes or excludes) _MUST_ be used.
+
+```graphql
+input AccessFilterInput {
+  includes: [ID!]
+  excludes: [ID!]
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>AccessFilterInput.<b>includes</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> These Access IDs will overwrite the default configuration. Only the IDs on this list will be used in the search query.
+
+#### [<code style={{ fontWeight: 'normal' }}>AccessFilterInput.<b>excludes</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> These Access IDs will overwrite the default configuration. The IDs on this list will be excluded from the search query.
+
+### Member of
+
+[`FilterInput`](/api/inputs/filter-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`HotelXFilterSearchInput`](/api/inputs/hotel-xfilter-search-input) <Badge class="badge badge--secondary" text="input"/>

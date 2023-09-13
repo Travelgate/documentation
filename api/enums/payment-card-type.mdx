@@ -1,0 +1,158 @@
+---
+id: payment-card-type
+title: PaymentCardType
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+List of credit card
+
+```graphql
+enum PaymentCardType {
+  VI
+  AX
+  BC
+  CA
+  CB
+  CU
+  DS
+  DC
+  T
+  R
+  N
+  L
+  E
+  JC
+  TO
+  S
+  EC
+  EU
+  TP
+  OP
+  ER
+  XS
+  O
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentCardType.<b>VI</b></code>](#)
+
+> Visa
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentCardType.<b>AX</b></code>](#)
+
+> American Express
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentCardType.<b>BC</b></code>](#)
+
+> BC Card
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentCardType.<b>CA</b></code>](#)
+
+> MasterCard
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentCardType.<b>CB</b></code>](#)
+
+> Carte Blanche
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentCardType.<b>CU</b></code>](#)
+
+> China Union Pay
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentCardType.<b>DS</b></code>](#)
+
+> Discover
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentCardType.<b>DC</b></code>](#)
+
+> Diners Club
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentCardType.<b>T</b></code>](#)
+
+> Carta Si
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentCardType.<b>R</b></code>](#)
+
+> Carte Bleue
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentCardType.<b>N</b></code>](#)
+
+> Dankort
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentCardType.<b>L</b></code>](#)
+
+> Delta
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentCardType.<b>E</b></code>](#)
+
+> Electron
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentCardType.<b>JC</b></code>](#)
+
+> Japan Credit Bureau
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentCardType.<b>TO</b></code>](#)
+
+> Maestro
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentCardType.<b>S</b></code>](#)
+
+> Switch
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentCardType.<b>EC</b></code>](#)
+
+> Electronic Cash
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentCardType.<b>EU</b></code>](#)
+
+> EuroCard
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentCardType.<b>TP</b></code>](#)
+
+> universal air travel card
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentCardType.<b>OP</b></code>](#)
+
+> optima
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentCardType.<b>ER</b></code>](#)
+
+> Air Canada/RnRoute
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentCardType.<b>XS</b></code>](#)
+
+> access
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentCardType.<b>O</b></code>](#)
+
+> others
+
+### Member of
+
+[`HotelData`](/api/objects/hotel-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`HotelOptionQuote`](/api/objects/hotel-option-quote) <Badge class="badge badge--secondary" text="object"/><Bullet />[`PaymentCardData`](/api/objects/payment-card-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`PaymentCardInput`](/api/inputs/payment-card-input) <Badge class="badge badge--secondary" text="input"/>

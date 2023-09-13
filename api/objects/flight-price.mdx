@@ -1,0 +1,68 @@
+---
+id: flight-price
+title: FlightPrice
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+The amount of money expected, required, or given in payment for something.
+
+```graphql
+type FlightPrice {
+  baseAmount: AmountType
+  fee: [Fee]
+  surcharge: [FlightSurcharge]
+  taxSummary: [TaxSummaryType]
+  totalAmount: AmountType
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>FlightPrice.<b>baseAmount</b></code>](#)<Bullet />[`AmountType`](/api/objects/amount-type) <Badge class="badge badge--secondary" text="object"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>FlightPrice.<b>fee</b></code>](#)<Bullet />[`[Fee]`](/api/objects/fee) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>FlightPrice.<b>surcharge</b></code>](#)<Bullet />[`[FlightSurcharge]`](/api/objects/flight-surcharge) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>FlightPrice.<b>taxSummary</b></code>](#)<Bullet />[`[TaxSummaryType]`](/api/objects/tax-summary-type) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>FlightPrice.<b>totalAmount</b></code>](#)<Bullet />[`AmountType`](/api/objects/amount-type) <Badge class="badge badge--secondary" text="object"/>
+
+>
+
+### Member of
+
+[`FlightOfferItemData`](/api/objects/flight-offer-item-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`FlightOrderData`](/api/objects/flight-order-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`FlightOrderItemData`](/api/objects/flight-order-item-data) <Badge class="badge badge--secondary" text="object"/>

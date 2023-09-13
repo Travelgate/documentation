@@ -1,0 +1,53 @@
+---
+id: time-range-input
+title: TimeRangeInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+input TimeRangeInput {
+  relative: RelativeInput
+  absolute: AbsoluteInput
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>TimeRangeInput.<b>relative</b></code>](#)<Bullet />[`RelativeInput`](/api/inputs/relative-input) <Badge class="badge badge--secondary" text="input"/>
+
+> Use now() to query data with timestamps relative to the server’s current timestamp.
+
+#### [<code style={{ fontWeight: 'normal' }}>TimeRangeInput.<b>absolute</b></code>](#)<Bullet />[`AbsoluteInput`](/api/inputs/absolute-input) <Badge class="badge badge--secondary" text="input"/>
+
+> Specify absolute time with date-time strings.
+
+### Member of
+
+[`LoggingLegacyFilterInput`](/api/inputs/logging-legacy-filter-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`StatsAggregationConnectionWhereInput`](/api/inputs/stats-aggregation-connection-where-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`StatsFilterInput`](/api/inputs/stats-filter-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`TrafficOptimizationAggregationHotelStatsConnectionWhereInput`](/api/inputs/traffic-optimization-aggregation-hotel-stats-connection-where-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`TrafficOptimizationAggregationStatsConnectionWhereInput`](/api/inputs/traffic-optimization-aggregation-stats-connection-where-input) <Badge class="badge badge--secondary" text="input"/>

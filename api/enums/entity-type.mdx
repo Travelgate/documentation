@@ -1,0 +1,63 @@
+---
+id: entity-type
+title: EntityType
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+enum EntityType {
+  ACCESS
+  SUPPLIER
+  CLIENT
+  PROVIDER
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>EntityType.<b>ACCESS</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>EntityType.<b>SUPPLIER</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>EntityType.<b>CLIENT</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>EntityType.<b>PROVIDER</b></code>](#)
+
+>
+
+### Member of
+
+[`EntityAuditData`](/api/objects/entity-audit-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`EntityAuditWhereInput`](/api/inputs/entity-audit-where-input) <Badge class="badge badge--secondary" text="input"/>

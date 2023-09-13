@@ -1,0 +1,91 @@
+---
+id: price
+title: Price
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Price indicates the value of the room/option.
+Supplements and/or surcharges can be included into the price, and will be verified with nodes Supplements/Surcharges.
+
+```graphql
+type Price implements Priceable {
+  currency: Currency!
+  binding: Boolean!
+  net: Float!
+  gross: Float!
+  exchange: Exchange!
+  markups: [Markup!]
+  minimumSellingPrice: Float
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Price.<b>currency</b></code>](#)<Bullet />[`Currency!`](/api/scalars/currency) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Currency code indicating which currency should be paid.
+> This information is mandatory.
+
+#### [<code style={{ fontWeight: 'normal' }}>Price.<b>binding</b></code>](#)<Bullet />[`Boolean!`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> It indicates if the price indicated in the gross must be respected.
+> That is, the customer can not sell the room / option at a price lower than that established by the supplier.
+> This information is mandatory.
+
+#### [<code style={{ fontWeight: 'normal' }}>Price.<b>net</b></code>](#)<Bullet />[`Float!`](/api/scalars/float) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Indicates the net price that the customer must pay to the supplier.
+> The net price is calculated by substrating the included surcharges from the gross price. (For calculation purposes only)
+> This information is mandatory.
+
+#### [<code style={{ fontWeight: 'normal' }}>Price.<b>gross</b></code>](#)<Bullet />[`Float!`](/api/scalars/float) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Indicates the retail price that the supplier sells to the customer.
+
+#### [<code style={{ fontWeight: 'normal' }}>Price.<b>exchange</b></code>](#)<Bullet />[`Exchange!`](/api/objects/exchange) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Provides information about the currency of original, and its rate applied over the results returned by the Supplier.
+> This information is mandatory.
+
+#### [<code style={{ fontWeight: 'normal' }}>Price.<b>markups</b></code>](#)<Bullet />[`[Markup!]`](/api/objects/markup) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Informs markup applied over supplier price.
+
+#### [<code style={{ fontWeight: 'normal' }}>Price.<b>minimumSellingPrice</b></code>](#)<Bullet />[`Float`](/api/scalars/float) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Indicates the minimum selling price it can be sold (determined by the Seller). Is is specified (not null), that field takes preference to Gross and Binding.
+
+### Interfaces
+
+#### [`Priceable`](/api/interfaces/priceable) <Badge class="badge badge--secondary" text="interface"/>
+
+>
+
+### Member of
+
+[`BookingDetail`](/api/objects/booking-detail) <Badge class="badge badge--secondary" text="object"/><Bullet />[`BookingRoom`](/api/objects/booking-room) <Badge class="badge badge--secondary" text="object"/><Bullet />[`FerryOfferData`](/api/objects/ferry-offer-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`FerryOrderPayload`](/api/objects/ferry-order-payload) <Badge class="badge badge--secondary" text="object"/><Bullet />[`HotelBookingAmend`](/api/objects/hotel-booking-amend) <Badge class="badge badge--secondary" text="object"/><Bullet />[`HotelBookingDetail`](/api/objects/hotel-booking-detail) <Badge class="badge badge--secondary" text="object"/><Bullet />[`HotelCancelDetail`](/api/objects/hotel-cancel-detail) <Badge class="badge badge--secondary" text="object"/><Bullet />[`HotelOptionQuote`](/api/objects/hotel-option-quote) <Badge class="badge badge--secondary" text="object"/><Bullet />[`HotelOptionSearch`](/api/objects/hotel-option-search) <Badge class="badge badge--secondary" text="object"/><Bullet />[`PriceBreakdown`](/api/objects/price-breakdown) <Badge class="badge badge--secondary" text="object"/><Bullet />[`RoomPrice`](/api/objects/room-price) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Supplement`](/api/objects/supplement) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Surcharge`](/api/objects/surcharge) <Badge class="badge badge--secondary" text="object"/>

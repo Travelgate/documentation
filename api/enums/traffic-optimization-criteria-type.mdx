@@ -1,0 +1,58 @@
+---
+id: traffic-optimization-criteria-type
+title: TrafficOptimizationCriteriaType
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+enum TrafficOptimizationCriteriaType {
+  NO_BOOK
+  NO_AVAIL
+  NO_PORTFOLIO
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationCriteriaType.<b>NO_BOOK</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationCriteriaType.<b>NO_AVAIL</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationCriteriaType.<b>NO_PORTFOLIO</b></code>](#)
+
+>
+
+### Member of
+
+[`TrafficOptimizationAccessHotelBlacklistWhereInput`](/api/inputs/traffic-optimization-access-hotel-blacklist-where-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`TrafficOptimizationAllAccessesHotelBlacklistWhereInput`](/api/inputs/traffic-optimization-all-accesses-hotel-blacklist-where-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`TrafficOptimizationAllAccessesRecommendationsWhereInput`](/api/inputs/traffic-optimization-all-accesses-recommendations-where-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`TrafficOptimizationConfiguration`](/api/objects/traffic-optimization-configuration) <Badge class="badge badge--secondary" text="object"/><Bullet />[`TrafficOptimizationConnectionConfiguration`](/api/objects/traffic-optimization-connection-configuration) <Badge class="badge badge--secondary" text="object"/><Bullet />[`TrafficOptimizationConnectionConnectionWhereInput`](/api/inputs/traffic-optimization-connection-connection-where-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`TrafficOptimizationConnectionWhereInput`](/api/inputs/traffic-optimization-connection-where-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`TrafficOptimizationHotelBlacklistData`](/api/objects/traffic-optimization-hotel-blacklist-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`TrafficOptimizationImprovementsCriteria`](/api/objects/traffic-optimization-improvements-criteria) <Badge class="badge badge--secondary" text="object"/><Bullet />[`TrafficOptimizationUpdateAccessCriteriaDataInput`](/api/inputs/traffic-optimization-update-access-criteria-data-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`TrafficOptimizationUpdateAllAccessesCriteriaDataInput`](/api/inputs/traffic-optimization-update-all-accesses-criteria-data-input) <Badge class="badge badge--secondary" text="input"/>

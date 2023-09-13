@@ -1,0 +1,293 @@
+---
+id: hotel-xmutation
+title: HotelXMutation
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type HotelXMutation {
+  amendDates(
+    data: HotelCriteriaAmendDatesCommitInput!
+    settings: HotelSettingsInput
+  ): HotelBookingAmend
+  amendBoard(
+    data: HotelCriteriaAmendBoardCommitInput!
+    settings: HotelSettingsInput
+  ): HotelBookingAmend
+  amendRooms(
+    data: HotelAmendRoomsCommitInput!
+    settings: HotelSettingsInput
+  ): HotelBookingAmend
+  createDefaultSettings(
+    group: ID!
+    clientName: ID
+    settings: HotelXDefaultSettingsDataInput!
+  ): HotelXDefaultSettings
+  updateDefaultSettings(
+    group: ID!
+    clientName: ID
+    settings: HotelXDefaultSettingsDataInput!
+  ): HotelXDefaultSettings
+  updateStatus(
+    group: ID!
+    access: ID
+    supplier: ID
+    clientName: ID
+    isActive: Boolean!
+  ): HotelXUpdateStatus
+  createCommonSettings(
+    group: ID!
+    access: ID
+    supplier: ID
+    settings: HotelXCommonSettingsDataInput!
+  ): HotelXCommonSettings
+  updateCommonSettings(
+    group: ID!
+    access: ID
+    supplier: ID
+    settings: HotelXCommonSettingsDataInput!
+  ): HotelXCommonSettings
+  book(
+    input: HotelBookInput!
+    settings: HotelSettingsInput
+    filter: HotelXFilterInput
+    appsInput: [HotelXAppInput!]
+  ): HotelBookPayload
+  cancel(
+    input: HotelCancelInput!
+    settings: HotelSettingsInput
+    filter: HotelXFilterInput
+    appsInput: [HotelXAppInput!]
+  ): HotelCancelPayload
+  commit(
+    input: HotelCommitInput!
+    settings: HotelSettingsInput
+  ): HotelCommitPayload
+  loadFile(input: String!): String! @deprecated
+  amendRemarks(
+    data: HotelCriteriaAmendRemarksCommitInput!
+    settings: HotelSettingsInput
+  ): HotelBookingAmend
+  amendPaxes(
+    data: HotelCriteriaAmendPaxesCommitInput!
+    settings: HotelSettingsInput
+  ): HotelBookingAmend
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.<b>amendDates</b></code>](#)<Bullet />[`HotelBookingAmend`](/api/objects/hotel-booking-amend) <Badge class="badge badge--secondary" text="object"/>
+
+> Commits the previous quoted dates amendment.
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.amendDates.<b>data</b></code>](#)<Bullet />[`HotelCriteriaAmendDatesCommitInput!`](/api/inputs/hotel-criteria-amend-dates-commit-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.amendDates.<b>settings</b></code>](#)<Bullet />[`HotelSettingsInput`](/api/inputs/hotel-settings-input) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.<b>amendBoard</b></code>](#)<Bullet />[`HotelBookingAmend`](/api/objects/hotel-booking-amend) <Badge class="badge badge--secondary" text="object"/>
+
+> Commits the previous quoted board amendment.
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.amendBoard.<b>data</b></code>](#)<Bullet />[`HotelCriteriaAmendBoardCommitInput!`](/api/inputs/hotel-criteria-amend-board-commit-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.amendBoard.<b>settings</b></code>](#)<Bullet />[`HotelSettingsInput`](/api/inputs/hotel-settings-input) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.<b>amendRooms</b></code>](#)<Bullet />[`HotelBookingAmend`](/api/objects/hotel-booking-amend) <Badge class="badge badge--secondary" text="object"/>
+
+> ##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.amendRooms.<b>data</b></code>](#)<Bullet />[`HotelAmendRoomsCommitInput!`](/api/inputs/hotel-amend-rooms-commit-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.amendRooms.<b>settings</b></code>](#)<Bullet />[`HotelSettingsInput`](/api/inputs/hotel-settings-input) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.<b>createDefaultSettings</b></code>](#)<Bullet />[`HotelXDefaultSettings`](/api/objects/hotel-xdefault-settings) <Badge class="badge badge--secondary" text="object"/>
+
+> Saves defaults settings to HotelX
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.createDefaultSettings.<b>group</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.createDefaultSettings.<b>clientName</b></code>](#)<Bullet />[`ID`](/api/scalars/id) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.createDefaultSettings.<b>settings</b></code>](#)<Bullet />[`HotelXDefaultSettingsDataInput!`](/api/inputs/hotel-xdefault-settings-data-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.<b>updateDefaultSettings</b></code>](#)<Bullet />[`HotelXDefaultSettings`](/api/objects/hotel-xdefault-settings) <Badge class="badge badge--secondary" text="object"/>
+
+> Updates defaults settings to HotelX
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.updateDefaultSettings.<b>group</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.updateDefaultSettings.<b>clientName</b></code>](#)<Bullet />[`ID`](/api/scalars/id) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.updateDefaultSettings.<b>settings</b></code>](#)<Bullet />[`HotelXDefaultSettingsDataInput!`](/api/inputs/hotel-xdefault-settings-data-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.<b>updateStatus</b></code>](#)<Bullet />[`HotelXUpdateStatus`](/api/objects/hotel-xupdate-status) <Badge class="badge badge--secondary" text="object"/>
+
+> Updates status of an entity of HotelX
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.updateStatus.<b>group</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.updateStatus.<b>access</b></code>](#)<Bullet />[`ID`](/api/scalars/id) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.updateStatus.<b>supplier</b></code>](#)<Bullet />[`ID`](/api/scalars/id) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.updateStatus.<b>clientName</b></code>](#)<Bullet />[`ID`](/api/scalars/id) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.updateStatus.<b>isActive</b></code>](#)<Bullet />[`Boolean!`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.<b>createCommonSettings</b></code>](#)<Bullet />[`HotelXCommonSettings`](/api/objects/hotel-xcommon-settings) <Badge class="badge badge--secondary" text="object"/>
+
+> ##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.createCommonSettings.<b>group</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.createCommonSettings.<b>access</b></code>](#)<Bullet />[`ID`](/api/scalars/id) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.createCommonSettings.<b>supplier</b></code>](#)<Bullet />[`ID`](/api/scalars/id) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.createCommonSettings.<b>settings</b></code>](#)<Bullet />[`HotelXCommonSettingsDataInput!`](/api/inputs/hotel-xcommon-settings-data-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.<b>updateCommonSettings</b></code>](#)<Bullet />[`HotelXCommonSettings`](/api/objects/hotel-xcommon-settings) <Badge class="badge badge--secondary" text="object"/>
+
+> ##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.updateCommonSettings.<b>group</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.updateCommonSettings.<b>access</b></code>](#)<Bullet />[`ID`](/api/scalars/id) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.updateCommonSettings.<b>supplier</b></code>](#)<Bullet />[`ID`](/api/scalars/id) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.updateCommonSettings.<b>settings</b></code>](#)<Bullet />[`HotelXCommonSettingsDataInput!`](/api/inputs/hotel-xcommon-settings-data-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.<b>book</b></code>](#)<Bullet />[`HotelBookPayload`](/api/objects/hotel-book-payload) <Badge class="badge badge--secondary" text="object"/>
+
+> Creates a new hotel booking consisting of an option of 1 or more rooms.
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.book.<b>input</b></code>](#)<Bullet />[`HotelBookInput!`](/api/inputs/hotel-book-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.book.<b>settings</b></code>](#)<Bullet />[`HotelSettingsInput`](/api/inputs/hotel-settings-input) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.book.<b>filter</b></code>](#)<Bullet />[`HotelXFilterInput`](/api/inputs/hotel-xfilter-input) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.book.<b>appsInput</b></code>](#)<Bullet />[`[HotelXAppInput!]`](/api/inputs/hotel-xapp-input) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.<b>cancel</b></code>](#)<Bullet />[`HotelCancelPayload`](/api/objects/hotel-cancel-payload) <Badge class="badge badge--secondary" text="object"/>
+
+> Cancels an existing hotel booking consisting of an option of 1 or more rooms.
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.cancel.<b>input</b></code>](#)<Bullet />[`HotelCancelInput!`](/api/inputs/hotel-cancel-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.cancel.<b>settings</b></code>](#)<Bullet />[`HotelSettingsInput`](/api/inputs/hotel-settings-input) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.cancel.<b>filter</b></code>](#)<Bullet />[`HotelXFilterInput`](/api/inputs/hotel-xfilter-input) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.cancel.<b>appsInput</b></code>](#)<Bullet />[`[HotelXAppInput!]`](/api/inputs/hotel-xapp-input) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.<b>commit</b></code>](#)<Bullet />[`HotelCommitPayload`](/api/objects/hotel-commit-payload) <Badge class="badge badge--secondary" text="object"/>
+
+> Commits an existing booking
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.commit.<b>input</b></code>](#)<Bullet />[`HotelCommitInput!`](/api/inputs/hotel-commit-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.commit.<b>settings</b></code>](#)<Bullet />[`HotelSettingsInput`](/api/inputs/hotel-settings-input) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.<b>loadFile</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--deprecated badge--secondary" text="deprecated"/> <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> :::caution DEPRECATED
+> deprecated from 2018-06-06
+> :::
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.loadFile.<b>input</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.<b>amendRemarks</b></code>](#)<Bullet />[`HotelBookingAmend`](/api/objects/hotel-booking-amend) <Badge class="badge badge--secondary" text="object"/>
+
+> Commits the previous quoted remarks amendment.
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.amendRemarks.<b>data</b></code>](#)<Bullet />[`HotelCriteriaAmendRemarksCommitInput!`](/api/inputs/hotel-criteria-amend-remarks-commit-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.amendRemarks.<b>settings</b></code>](#)<Bullet />[`HotelSettingsInput`](/api/inputs/hotel-settings-input) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.<b>amendPaxes</b></code>](#)<Bullet />[`HotelBookingAmend`](/api/objects/hotel-booking-amend) <Badge class="badge badge--secondary" text="object"/>
+
+> Commits the previous quoted paxes amendment.
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.amendPaxes.<b>data</b></code>](#)<Bullet />[`HotelCriteriaAmendPaxesCommitInput!`](/api/inputs/hotel-criteria-amend-paxes-commit-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.amendPaxes.<b>settings</b></code>](#)<Bullet />[`HotelSettingsInput`](/api/inputs/hotel-settings-input) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+### Returned by
+
+[`hotelX`](/api/mutations/hotel-x) <Badge class="badge badge--secondary" text="mutation"/>

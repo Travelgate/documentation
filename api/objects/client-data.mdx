@@ -1,0 +1,127 @@
+---
+id: client-data
+title: ClientData
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type ClientData {
+  id: ID!
+  code: ID!
+  name: ID!
+  isActive: Boolean!
+  group: Group
+  owner: Organization
+  suppliers(
+    first: Int
+    last: Int
+    before: String
+    after: String
+    filter: SupplierFilter
+  ): SupplierConnection
+  audits(
+    where: EntityAuditWhereInput
+    orderBy: EntityAuditOrderByEnum
+  ): EntityAuditConnection!
+  hubUser: HubUserData
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>ClientData.<b>id</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> ID unique identifier of a Client. Format: integer.
+
+#### [<code style={{ fontWeight: 'normal' }}>ClientData.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Client unique code. Format: "cliX" where X = ID
+
+#### [<code style={{ fontWeight: 'normal' }}>ClientData.<b>name</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Client unique name
+
+#### [<code style={{ fontWeight: 'normal' }}>ClientData.<b>isActive</b></code>](#)<Bullet />[`Boolean!`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Indicates whether a Client is active or inactive
+
+#### [<code style={{ fontWeight: 'normal' }}>ClientData.<b>group</b></code>](#)<Bullet />[`Group`](/api/objects/group) <Badge class="badge badge--secondary" text="object"/>
+
+> Indicates the group where the Client belongs. By definition a Client can belongs only to one group.
+
+#### [<code style={{ fontWeight: 'normal' }}>ClientData.<b>owner</b></code>](#)<Bullet />[`Organization`](/api/objects/organization) <Badge class="badge badge--secondary" text="object"/>
+
+> Organization that owns the Client
+
+#### [<code style={{ fontWeight: 'normal' }}>ClientData.<b>suppliers</b></code>](#)<Bullet />[`SupplierConnection`](/api/objects/supplier-connection) <Badge class="badge badge--secondary" text="object"/>
+
+> Suppliers that belong to the same group as the client.
+> Used to find out which suppliers are likely to have connected with this client on some occasion.
+> NOTE: Better to use the equivalent query suppliersByGroupCodes(groupCodes:["xxx"])
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>ClientData.suppliers.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>ClientData.suppliers.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>ClientData.suppliers.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>ClientData.suppliers.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>ClientData.suppliers.<b>filter</b></code>](#)<Bullet />[`SupplierFilter`](/api/inputs/supplier-filter) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ClientData.<b>audits</b></code>](#)<Bullet />[`EntityAuditConnection!`](/api/objects/entity-audit-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Audits it shows the client's change history
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>ClientData.audits.<b>where</b></code>](#)<Bullet />[`EntityAuditWhereInput`](/api/inputs/entity-audit-where-input) <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>ClientData.audits.<b>orderBy</b></code>](#)<Bullet />[`EntityAuditOrderByEnum`](/api/enums/entity-audit-order-by-enum) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ClientData.<b>hubUser</b></code>](#)<Bullet />[`HubUserData`](/api/objects/hub-user-data) <Badge class="badge badge--secondary" text="object"/>
+
+>
+
+### Member of
+
+[`Client`](/api/objects/client) <Badge class="badge badge--secondary" text="object"/>
+
+### Implemented by
+
+[`EntityData`](/api/unions/entity-data) <Badge class="badge badge--secondary" text="union"/>

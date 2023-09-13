@@ -1,0 +1,53 @@
+---
+id: rate-rules-filter-input
+title: RateRulesFilterInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+If requested, only options with the specified rateRules will be returned
+
+```graphql
+input RateRulesFilterInput {
+  includes: [RateRulesType!]
+  excludes: [RateRulesType!]
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>RateRulesFilterInput.<b>includes</b></code>](#)<Bullet />[`[RateRulesType!]`](/api/enums/rate-rules-type) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> if includes not nil: only options without rate rules and options with rate rules found in includes will be returned
+
+#### [<code style={{ fontWeight: 'normal' }}>RateRulesFilterInput.<b>excludes</b></code>](#)<Bullet />[`[RateRulesType!]`](/api/enums/rate-rules-type) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> if excludes not nil: only options without rate rules and options with rate rules that haven t been sent in excludes will be returned
+
+### Member of
+
+[`FilterInput`](/api/inputs/filter-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`HotelXFilterSearchInput`](/api/inputs/hotel-xfilter-search-input) <Badge class="badge badge--secondary" text="input"/>

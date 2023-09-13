@@ -1,0 +1,103 @@
+---
+id: hotel-runtime-parameter
+title: HotelRuntimeParameter
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Indicates information about how this field must be filled/parameter.
+
+```graphql
+type HotelRuntimeParameter {
+  defaultValue: String
+  description: String!
+  exampleValue: String
+  key: String
+  mandatory: Boolean!
+  pattern: String
+  patternDescription: String!
+  possibleValues: [String!]
+  providerTagName: String
+  show: Boolean!
+  tagRuntime: TagRuntimeType!
+  type: MetadataType!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelRuntimeParameter.<b>defaultValue</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Indicates the value used if no value is specified in connection configuration.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelRuntimeParameter.<b>description</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Specifies why and for what the parameter/field is necessary. If this field has a correlation in suppliers api, the description is gotten from the supplier documentation. Else this description shows a description set bu TGX.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelRuntimeParameter.<b>exampleValue</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Show an example value of the parameter.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelRuntimeParameter.<b>key</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Field used to identify the parameter. It is unique in every connection.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelRuntimeParameter.<b>mandatory</b></code>](#)<Bullet />[`Boolean!`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Indicates if the parameter/field is optional or mandatory. If is optional and no value is specified, our process uses the defaultValue.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelRuntimeParameter.<b>pattern</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Regular expression to validate the parameter/field value.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelRuntimeParameter.<b>patternDescription</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Description to translate a human lenguage the regular expression.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelRuntimeParameter.<b>possibleValues</b></code>](#)<Bullet />[`[String!]`](/api/scalars/string) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> List of valid values when the parameter only accepts a little set of values.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelRuntimeParameter.<b>providerTagName</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Supplier s tag name that correlates with the parameter.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelRuntimeParameter.<b>show</b></code>](#)<Bullet />[`Boolean!`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Indicates if the parameter is public or for internal use of TGX.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelRuntimeParameter.<b>tagRuntime</b></code>](#)<Bullet />[`TagRuntimeType!`](/api/enums/tag-runtime-type) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> Indicates the parameter s correlation with connection configuration.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelRuntimeParameter.<b>type</b></code>](#)<Bullet />[`MetadataType!`](/api/enums/metadata-type) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> Indicates the parameter s value type.
+
+### Member of
+
+[`HotelRuntimeConfigurationData`](/api/objects/hotel-runtime-configuration-data) <Badge class="badge badge--secondary" text="object"/>

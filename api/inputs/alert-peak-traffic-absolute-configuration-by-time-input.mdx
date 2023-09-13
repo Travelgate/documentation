@@ -1,0 +1,58 @@
+---
+id: alert-peak-traffic-absolute-configuration-by-time-input
+title: AlertPeakTrafficAbsoluteConfigurationByTimeInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+input AlertPeakTrafficAbsoluteConfigurationByTimeInput {
+  bounds: AlertBoundsInput!
+  windowing: AlertCommonByTimeInput!
+  common: AlertCommonConfigurationInput!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertPeakTrafficAbsoluteConfigurationByTimeInput.<b>bounds</b></code>](#)<Bullet />[`AlertBoundsInput!`](/api/inputs/alert-bounds-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+> Limits for number of requests
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertPeakTrafficAbsoluteConfigurationByTimeInput.<b>windowing</b></code>](#)<Bullet />[`AlertCommonByTimeInput!`](/api/inputs/alert-common-by-time-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+> Common configuration for requests window type
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertPeakTrafficAbsoluteConfigurationByTimeInput.<b>common</b></code>](#)<Bullet />[`AlertCommonConfigurationInput!`](/api/inputs/alert-common-configuration-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+> Common configuration alert
+
+### Member of
+
+[`AlertPeakTrafficAbsoluteByTimeInput`](/api/inputs/alert-peak-traffic-absolute-by-time-input) <Badge class="badge badge--secondary" text="input"/>

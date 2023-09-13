@@ -1,0 +1,108 @@
+---
+id: alert-groups
+title: AlertGroups
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+enum AlertGroups {
+  ACCESS
+  CLIENT
+  SUPPLIER
+  OPERATION
+  HUB_STATUS
+  ERROR_CODE
+  ERROR_TYPE
+  GROUP_ORG_SELLER
+  GROUP_ORG_BUYER
+  GROUP_FOLDER_SELLER
+  GROUP_FOLDER_BUYER
+  GROUP_PRODUCT_SELLER
+  GROUP_PRODUCT_BUYER
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertGroups.<b>ACCESS</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertGroups.<b>CLIENT</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertGroups.<b>SUPPLIER</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertGroups.<b>OPERATION</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertGroups.<b>HUB_STATUS</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertGroups.<b>ERROR_CODE</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertGroups.<b>ERROR_TYPE</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertGroups.<b>GROUP_ORG_SELLER</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertGroups.<b>GROUP_ORG_BUYER</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertGroups.<b>GROUP_FOLDER_SELLER</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertGroups.<b>GROUP_FOLDER_BUYER</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertGroups.<b>GROUP_PRODUCT_SELLER</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertGroups.<b>GROUP_PRODUCT_BUYER</b></code>](#)
+
+>
+
+### Member of
+
+[`AlertCommonConfigurationInput`](/api/inputs/alert-common-configuration-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`AlertConfiguration`](/api/objects/alert-configuration) <Badge class="badge badge--secondary" text="object"/><Bullet />[`AlertUpdateCommonConfigurationInput`](/api/inputs/alert-update-common-configuration-input) <Badge class="badge badge--secondary" text="input"/>

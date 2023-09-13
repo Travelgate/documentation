@@ -1,0 +1,58 @@
+---
+id: alert-bounds-input
+title: AlertBoundsInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Limit of requests to define
+
+```graphql
+input AlertBoundsInput {
+  bound: AlertBound!
+  upperBound: Int
+  lowerBound: Int
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertBoundsInput.<b>bound</b></code>](#)<Bullet />[`AlertBound!`](/api/enums/alert-bound) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> Bound limits to be used
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertBoundsInput.<b>upperBound</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Upper bound limit
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertBoundsInput.<b>lowerBound</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Lower bound limit
+
+### Member of
+
+[`AlertPeakTrafficAbsoluteConfigurationByTimeInput`](/api/inputs/alert-peak-traffic-absolute-configuration-by-time-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`AlertPeakTrafficComparativeConfigurationByTimeInput`](/api/inputs/alert-peak-traffic-comparative-configuration-by-time-input) <Badge class="badge badge--secondary" text="input"/>

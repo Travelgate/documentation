@@ -1,0 +1,93 @@
+---
+id: three-domain-security-input
+title: ThreeDomainSecurityInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+input ThreeDomainSecurityInput {
+  version: String
+  DSTransactionID: String
+  XID: String
+  ECI: String
+  CAVV: String
+  payerResponse: String
+  payerResponseStatus: PayerResponseStatusType
+  cardEnrolledStatus: ThreeDSCardEnrolledStatusType
+  merchantName: String
+  signatureStatus: ThreeDSSignatureStatusType
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>ThreeDomainSecurityInput.<b>version</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Three Domain Security Version
+
+#### [<code style={{ fontWeight: 'normal' }}>ThreeDomainSecurityInput.<b>DSTransactionID</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Universally unique transaction identifier assigned by the Directory Server (DS) to identify a single transaction.
+
+#### [<code style={{ fontWeight: 'normal' }}>ThreeDomainSecurityInput.<b>XID</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Transaction identifier resulting from authentication processing. Uniquely identifies a 3D Secure check request.
+
+#### [<code style={{ fontWeight: 'normal' }}>ThreeDomainSecurityInput.<b>ECI</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Electronic Commerce Indicator
+
+#### [<code style={{ fontWeight: 'normal' }}>ThreeDomainSecurityInput.<b>CAVV</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Cardholder Authentication Verification Value
+
+#### [<code style={{ fontWeight: 'normal' }}>ThreeDomainSecurityInput.<b>payerResponse</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Payer Authentication Response. It is the response to the Payer Authentication Request. The Payer Authentication Response has an XML structure with the information from the response of the authentication, and it contains a digital certificate as a sign of authenticity.
+
+#### [<code style={{ fontWeight: 'normal' }}>ThreeDomainSecurityInput.<b>payerResponseStatus</b></code>](#)<Bullet />[`PayerResponseStatusType`](/api/enums/payer-response-status-type) <Badge class="badge badge--secondary" text="enum"/>
+
+> Payer Authentication Response status
+
+#### [<code style={{ fontWeight: 'normal' }}>ThreeDomainSecurityInput.<b>cardEnrolledStatus</b></code>](#)<Bullet />[`ThreeDSCardEnrolledStatusType`](/api/enums/three-dscard-enrolled-status-type) <Badge class="badge badge--secondary" text="enum"/>
+
+> Result of enrollment status of the service request
+
+#### [<code style={{ fontWeight: 'normal' }}>ThreeDomainSecurityInput.<b>merchantName</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Merchant Name
+
+#### [<code style={{ fontWeight: 'normal' }}>ThreeDomainSecurityInput.<b>signatureStatus</b></code>](#)<Bullet />[`ThreeDSSignatureStatusType`](/api/enums/three-dssignature-status-type) <Badge class="badge badge--secondary" text="enum"/>
+
+> Signature value
+
+### Member of
+
+[`PaymentCardInput`](/api/inputs/payment-card-input) <Badge class="badge badge--secondary" text="input"/>

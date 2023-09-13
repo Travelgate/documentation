@@ -1,0 +1,53 @@
+---
+id: reviewed-bool
+title: ReviewedBool
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Contain bool value and review date
+
+```graphql
+type ReviewedBool {
+  reviewDate: Date!
+  value: Boolean!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>ReviewedBool.<b>reviewDate</b></code>](#)<Bullet />[`Date!`](/api/scalars/date) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Last reviewed date
+
+#### [<code style={{ fontWeight: 'normal' }}>ReviewedBool.<b>value</b></code>](#)<Bullet />[`Boolean!`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+### Member of
+
+[`MetadataAmendBoard`](/api/objects/metadata-amend-board) <Badge class="badge badge--secondary" text="object"/><Bullet />[`MetadataAmendDates`](/api/objects/metadata-amend-dates) <Badge class="badge badge--secondary" text="object"/><Bullet />[`MetadataAmendPaxes`](/api/objects/metadata-amend-paxes) <Badge class="badge badge--secondary" text="object"/><Bullet />[`MetadataAmendRemarks`](/api/objects/metadata-amend-remarks) <Badge class="badge badge--secondary" text="object"/><Bullet />[`MetadataBeds`](/api/objects/metadata-beds) <Badge class="badge badge--secondary" text="object"/><Bullet />[`MetadataBook`](/api/objects/metadata-book) <Badge class="badge badge--secondary" text="object"/><Bullet />[`MetadataBooking`](/api/objects/metadata-booking) <Badge class="badge badge--secondary" text="object"/><Bullet />[`MetadataCancel`](/api/objects/metadata-cancel) <Badge class="badge badge--secondary" text="object"/><Bullet />[`MetadataQuote`](/api/objects/metadata-quote) <Badge class="badge badge--secondary" text="object"/><Bullet />[`MetadataSearch`](/api/objects/metadata-search) <Badge class="badge badge--secondary" text="object"/><Bullet />[`MetadataSearchDestinations`](/api/objects/metadata-search-destinations) <Badge class="badge badge--secondary" text="object"/><Bullet />[`RequiredRoomWithSamePaxConfiguration`](/api/objects/required-room-with-same-pax-configuration) <Badge class="badge badge--secondary" text="object"/>

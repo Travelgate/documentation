@@ -1,0 +1,63 @@
+---
+id: traffic-optimization-hotel-blacklist-connection
+title: TrafficOptimizationHotelBlacklistConnection
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type TrafficOptimizationHotelBlacklistConnection {
+  totalCount: Int!
+  pageInfo: PageInfo!
+  edges: [TrafficOptimizationHotelBlacklistEdge]
+  adviseMessage(level: [AdviseMessageLevel]): [AdviseMessage!]
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationHotelBlacklistConnection.<b>totalCount</b></code>](#)<Bullet />[`Int!`](/api/scalars/int) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationHotelBlacklistConnection.<b>pageInfo</b></code>](#)<Bullet />[`PageInfo!`](/api/objects/page-info) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationHotelBlacklistConnection.<b>edges</b></code>](#)<Bullet />[`[TrafficOptimizationHotelBlacklistEdge]`](/api/objects/traffic-optimization-hotel-blacklist-edge) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationHotelBlacklistConnection.<b>adviseMessage</b></code>](#)<Bullet />[`[AdviseMessage!]`](/api/objects/advise-message) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> ##### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationHotelBlacklistConnection.adviseMessage.<b>level</b></code>](#)<Bullet />[`[AdviseMessageLevel]`](/api/enums/advise-message-level) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="enum"/>
+
+### Member of
+
+[`TrafficOptimizationQuery`](/api/objects/traffic-optimization-query) <Badge class="badge badge--secondary" text="object"/>

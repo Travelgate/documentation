@@ -1,0 +1,57 @@
+---
+id: package-mutation
+title: PackageMutation
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type PackageMutation {
+  book(where: BookWhereInput): BookPayload
+  cancel(where: PackageCancelWhereInput): CancelPayload
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>PackageMutation.<b>book</b></code>](#)<Bullet />[`BookPayload`](/api/objects/book-payload) <Badge class="badge badge--secondary" text="object"/>
+
+> Mutation to confirm an option
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>PackageMutation.book.<b>where</b></code>](#)<Bullet />[`BookWhereInput`](/api/inputs/book-where-input) <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>PackageMutation.<b>cancel</b></code>](#)<Bullet />[`CancelPayload`](/api/objects/cancel-payload) <Badge class="badge badge--secondary" text="object"/>
+
+> Mutation to cancel a confirmed booking
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>PackageMutation.cancel.<b>where</b></code>](#)<Bullet />[`PackageCancelWhereInput`](/api/inputs/package-cancel-where-input) <Badge class="badge badge--secondary" text="input"/>
+
+### Returned by
+
+[`package`](/api/mutations/package) <Badge class="badge badge--secondary" text="mutation"/>

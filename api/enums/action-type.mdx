@@ -1,0 +1,128 @@
+---
+id: action-type
+title: ActionType
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+enum ActionType {
+  UPDATE
+  DELETE
+  CREATE
+  ARCHIVE
+  UNARCHIVE
+  ACTIVATE
+  DEACTIVATE
+  GRANT_TO_GROUPS
+  REVOKE_FROM_FROUPS
+  APPEND_PARAMETERS
+  DELETE_PARAMETERS
+  APPEND_MARKETS
+  DELETE_MARKETS
+  APPEND_RATERULES
+  DELETE_RATERULES
+  SET_FIELD
+  REMOVE_FIELD
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>ActionType.<b>UPDATE</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ActionType.<b>DELETE</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ActionType.<b>CREATE</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ActionType.<b>ARCHIVE</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ActionType.<b>UNARCHIVE</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ActionType.<b>ACTIVATE</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ActionType.<b>DEACTIVATE</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ActionType.<b>GRANT_TO_GROUPS</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ActionType.<b>REVOKE_FROM_FROUPS</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ActionType.<b>APPEND_PARAMETERS</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ActionType.<b>DELETE_PARAMETERS</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ActionType.<b>APPEND_MARKETS</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ActionType.<b>DELETE_MARKETS</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ActionType.<b>APPEND_RATERULES</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ActionType.<b>DELETE_RATERULES</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ActionType.<b>SET_FIELD</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ActionType.<b>REMOVE_FIELD</b></code>](#)
+
+>
+
+### Member of
+
+[`EntityAuditData`](/api/objects/entity-audit-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`EntityAuditWhereInput`](/api/inputs/entity-audit-where-input) <Badge class="badge badge--secondary" text="input"/>

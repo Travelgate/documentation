@@ -1,0 +1,41 @@
+---
+id: uri
+title: URI
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+The URI type represents a URI values. A good example mith be an Hotel Image URL.
+In queries or mutations, URI fields have to be specified in RFC 3986, RFC 3987, and RFC 6570 (level 4) compliant URI string format with enclosing double quotes: "http:\\www.travelgatex.com".
+
+```graphql
+scalar URI
+```
+
+### Member of
+
+[`Contact`](/api/objects/contact) <Badge class="badge badge--secondary" text="object"/><Bullet />[`GiataData`](/api/objects/giata-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`LoggingLegacyData`](/api/objects/logging-legacy-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Media`](/api/objects/media) <Badge class="badge badge--secondary" text="object"/><Bullet />[`StatsAsset`](/api/objects/stats-asset) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Urls`](/api/objects/urls) <Badge class="badge badge--secondary" text="object"/><Bullet />[`UrlsInput`](/api/inputs/urls-input) <Badge class="badge badge--secondary" text="input"/>

@@ -1,0 +1,62 @@
+---
+id: alerts-xquery
+title: AlertsXQuery
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type AlertsXQuery {
+  alerts(
+    relay: RelayInput
+    filter: AlertFilterInput
+    criteria: AlertCriteriaInput
+  ): AlertConnection!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertsXQuery.<b>alerts</b></code>](#)<Bullet />[`AlertConnection!`](/api/objects/alert-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Query to obtain Alerts
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AlertsXQuery.alerts.<b>relay</b></code>](#)<Bullet />[`RelayInput`](/api/inputs/relay-input) <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AlertsXQuery.alerts.<b>filter</b></code>](#)<Bullet />[`AlertFilterInput`](/api/inputs/alert-filter-input) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AlertsXQuery.alerts.<b>criteria</b></code>](#)<Bullet />[`AlertCriteriaInput`](/api/inputs/alert-criteria-input) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+### Returned by
+
+[`alertsX`](/api/queries/alerts-x) <Badge class="badge badge--secondary" text="query"/>

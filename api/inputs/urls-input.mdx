@@ -1,0 +1,63 @@
+---
+id: urls-input
+title: UrlsInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+URLs Input
+
+```graphql
+input UrlsInput {
+  search: URI
+  quote: URI
+  book: URI
+  generic: URI
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>UrlsInput.<b>search</b></code>](#)<Bullet />[`URI`](/api/scalars/uri) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Specific URL for Availability method.
+
+#### [<code style={{ fontWeight: 'normal' }}>UrlsInput.<b>quote</b></code>](#)<Bullet />[`URI`](/api/scalars/uri) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Specific URL for Reservation method.
+
+#### [<code style={{ fontWeight: 'normal' }}>UrlsInput.<b>book</b></code>](#)<Bullet />[`URI`](/api/scalars/uri) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Specific URL for Valuation method.
+
+#### [<code style={{ fontWeight: 'normal' }}>UrlsInput.<b>generic</b></code>](#)<Bullet />[`URI`](/api/scalars/uri) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Supplier URL used for multiple methods.
+
+### Member of
+
+[`AccessCreateInput`](/api/inputs/access-create-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`AccessInput`](/api/inputs/access-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`AccessUpdateInput`](/api/inputs/access-update-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`ConfigurationInput`](/api/inputs/configuration-input) <Badge class="badge badge--secondary" text="input"/>

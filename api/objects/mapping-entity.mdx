@@ -1,0 +1,56 @@
+---
+id: mapping-entity
+title: MappingEntity
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Mapping about client codes with the equivalence per supplier.
+@deprecated(reason: "deprecated from 2019-09-10. not operating or being used")
+
+```graphql
+type MappingEntity {
+  code: String!
+  contexts(codes: [String!]): [Map!]
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>MappingEntity.<b>code</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Client code
+
+#### [<code style={{ fontWeight: 'normal' }}>MappingEntity.<b>contexts</b></code>](#)<Bullet />[`[Map!]`](/api/objects/map) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> You can filter by output context.
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>MappingEntity.contexts.<b>codes</b></code>](#)<Bullet />[`[String!]`](/api/scalars/string) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+### Member of
+
+[`MappingContext`](/api/objects/mapping-context) <Badge class="badge badge--secondary" text="object"/>

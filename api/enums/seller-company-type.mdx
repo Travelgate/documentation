@@ -1,0 +1,93 @@
+---
+id: seller-company-type
+title: SellerCompanyType
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+enum SellerCompanyType {
+  BEDBANK_WHOLESALER
+  VACATION_RENTALS
+  OTA_ONLINE_TRAVEL_AGENCY
+  TOUR_OPERATOR
+  TRAVEL_AGENCY
+  TRAVEL_GROUP
+  DMC_DESTINATION_MANAGEMENT_COMPANY
+  HOTEL_CHAIN
+  INDEPENDENT_HOTEL
+  CONTENT_PROVIDER
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>SellerCompanyType.<b>BEDBANK_WHOLESALER</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>SellerCompanyType.<b>VACATION_RENTALS</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>SellerCompanyType.<b>OTA_ONLINE_TRAVEL_AGENCY</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>SellerCompanyType.<b>TOUR_OPERATOR</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>SellerCompanyType.<b>TRAVEL_AGENCY</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>SellerCompanyType.<b>TRAVEL_GROUP</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>SellerCompanyType.<b>DMC_DESTINATION_MANAGEMENT_COMPANY</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>SellerCompanyType.<b>HOTEL_CHAIN</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>SellerCompanyType.<b>INDEPENDENT_HOTEL</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>SellerCompanyType.<b>CONTENT_PROVIDER</b></code>](#)
+
+>
+
+### Member of
+
+[`Profile`](/api/objects/profile) <Badge class="badge badge--secondary" text="object"/><Bullet />[`ProfileCreateInput`](/api/inputs/profile-create-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`ProfileData`](/api/objects/profile-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`ProfileUpdateInput`](/api/inputs/profile-update-input) <Badge class="badge badge--secondary" text="input"/>

@@ -1,0 +1,98 @@
+---
+id: metadata-booking
+title: MetadataBooking
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Return information about booking
+
+```graphql
+type MetadataBooking {
+  queryableBySupplierReference: ReviewedBool!
+  queryableByClientReference: ReviewedBool!
+  queryableByCreationDate: ReviewedBool!
+  queryableByCheckinDate: ReviewedBool!
+  informHotelReference: ReviewedBool
+  informCancelPolicies: ReviewedBool
+  informPriceCancel: ReviewedBool
+  requiresCheckInDateInReferences: ReviewedBool!
+  requiresCheckOutDateInReferences: ReviewedBool!
+  requiresReservationDateInReferences: ReviewedBool!
+  timeZone: ReviewedTimeZone!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataBooking.<b>queryableBySupplierReference</b></code>](#)<Bullet />[`ReviewedBool!`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Specifies if booking can be performed using supplier reference.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataBooking.<b>queryableByClientReference</b></code>](#)<Bullet />[`ReviewedBool!`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Specifies if booking can be performed using client reference.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataBooking.<b>queryableByCreationDate</b></code>](#)<Bullet />[`ReviewedBool!`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Specifies if booking can be performed using creation dates.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataBooking.<b>queryableByCheckinDate</b></code>](#)<Bullet />[`ReviewedBool!`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Specifies if booking can be performed using check in dates.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataBooking.<b>informHotelReference</b></code>](#)<Bullet />[`ReviewedBool`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="object"/>
+
+> Specifies if the supplier informs about Hotel Confirmation Number (HCN).
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataBooking.<b>informCancelPolicies</b></code>](#)<Bullet />[`ReviewedBool`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="object"/>
+
+> Specifies if the supplier informs about the cancellation policies.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataBooking.<b>informPriceCancel</b></code>](#)<Bullet />[`ReviewedBool`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="object"/>
+
+> Specifies if the supplier informs about the cancellation price.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataBooking.<b>requiresCheckInDateInReferences</b></code>](#)<Bullet />[`ReviewedBool!`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Specifies if the supplier requires check-in date in reference.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataBooking.<b>requiresCheckOutDateInReferences</b></code>](#)<Bullet />[`ReviewedBool!`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Specifies if the supplier requires check-out date in reference.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataBooking.<b>requiresReservationDateInReferences</b></code>](#)<Bullet />[`ReviewedBool!`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Specifies if the supplier requires the reservation date in reference.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataBooking.<b>timeZone</b></code>](#)<Bullet />[`ReviewedTimeZone!`](/api/objects/reviewed-time-zone) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Specifies the timezone in UTC in which the cancellation policies are located.
+
+### Member of
+
+[`MetadataData`](/api/objects/metadata-data) <Badge class="badge badge--secondary" text="object"/>

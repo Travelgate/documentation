@@ -1,0 +1,53 @@
+---
+id: phone-input
+title: PhoneInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+input PhoneInput {
+  countryCode: DialingCountryCode!
+  number: PhoneSubscriberNumber!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>PhoneInput.<b>countryCode</b></code>](#)<Bullet />[`DialingCountryCode!`](/api/scalars/dialing-country-code) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> The combination of one, two or three digits identifying a specific country, countries in an integrated numbering plan, or a specific geographic area (1 to 3 digits)
+
+#### [<code style={{ fontWeight: 'normal' }}>PhoneInput.<b>number</b></code>](#)<Bullet />[`PhoneSubscriberNumber!`](/api/scalars/phone-subscriber-number) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Identifies a subscriber for a particular global service
+
+### Member of
+
+[`ContactInfoInput`](/api/inputs/contact-info-input) <Badge class="badge badge--secondary" text="input"/>

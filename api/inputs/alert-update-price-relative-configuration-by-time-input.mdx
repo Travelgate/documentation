@@ -1,0 +1,63 @@
+---
+id: alert-update-price-relative-configuration-by-time-input
+title: AlertUpdatePriceRelativeConfigurationByTimeInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+input AlertUpdatePriceRelativeConfigurationByTimeInput {
+  price: AlertUpdatePriceInput
+  windowing: AlertUpdateCommonByTimeInput
+  common: AlertUpdateCommonConfigurationInput
+  relative: AlertUpdateCommonRelativeInput
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertUpdatePriceRelativeConfigurationByTimeInput.<b>price</b></code>](#)<Bullet />[`AlertUpdatePriceInput`](/api/inputs/alert-update-price-input) <Badge class="badge badge--secondary" text="input"/>
+
+> Configuration of amount & commission values
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertUpdatePriceRelativeConfigurationByTimeInput.<b>windowing</b></code>](#)<Bullet />[`AlertUpdateCommonByTimeInput`](/api/inputs/alert-update-common-by-time-input) <Badge class="badge badge--secondary" text="input"/>
+
+> Common configuration for time window type
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertUpdatePriceRelativeConfigurationByTimeInput.<b>common</b></code>](#)<Bullet />[`AlertUpdateCommonConfigurationInput`](/api/inputs/alert-update-common-configuration-input) <Badge class="badge badge--secondary" text="input"/>
+
+> Common configuration alert
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertUpdatePriceRelativeConfigurationByTimeInput.<b>relative</b></code>](#)<Bullet />[`AlertUpdateCommonRelativeInput`](/api/inputs/alert-update-common-relative-input) <Badge class="badge badge--secondary" text="input"/>
+
+> Common configuration of relative mode type
+
+### Member of
+
+[`AlertUpdatePriceRelativeByTimeInput`](/api/inputs/alert-update-price-relative-by-time-input) <Badge class="badge badge--secondary" text="input"/>

@@ -1,0 +1,68 @@
+---
+id: amenity
+title: Amenity
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+An Amenity is defined as something intended to make life more pleasant or comfortable for people. Examples include: swimming pools, shopping centers, etc.
+
+```graphql
+type Amenity {
+  code: String!
+  amenityCodeSupplier: String!
+  type: ApplicationAreaType!
+  value: String!
+  texts: String!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Amenity.<b>code</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Code
+
+#### [<code style={{ fontWeight: 'normal' }}>Amenity.<b>amenityCodeSupplier</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Code in supplier context
+
+#### [<code style={{ fontWeight: 'normal' }}>Amenity.<b>type</b></code>](#)<Bullet />[`ApplicationAreaType!`](/api/enums/application-area-type) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> Indicates the type of Amenity.
+
+#### [<code style={{ fontWeight: 'normal' }}>Amenity.<b>value</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Contains the value of amenity.
+
+#### [<code style={{ fontWeight: 'normal' }}>Amenity.<b>texts</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Contains the descriptive of amenity.
+
+### Member of
+
+[`HotelOptionSearch`](/api/objects/hotel-option-search) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Room`](/api/objects/room) <Badge class="badge badge--secondary" text="object"/>

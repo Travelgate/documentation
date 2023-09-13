@@ -1,0 +1,63 @@
+---
+id: flight-ticket-status-code
+title: FlightTicketStatusCode
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+iso ND2113
+
+```graphql
+enum FlightTicketStatusCode {
+  OPEN
+  CHECKED_IN
+  VOID
+  REFUNDED
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>FlightTicketStatusCode.<b>OPEN</b></code>](#)
+
+> open for use (O)
+
+#### [<code style={{ fontWeight: 'normal' }}>FlightTicketStatusCode.<b>CHECKED_IN</b></code>](#)
+
+> checked in (C)
+
+#### [<code style={{ fontWeight: 'normal' }}>FlightTicketStatusCode.<b>VOID</b></code>](#)
+
+> void (V)
+
+#### [<code style={{ fontWeight: 'normal' }}>FlightTicketStatusCode.<b>REFUNDED</b></code>](#)
+
+> refunded (R)
+
+### Member of
+
+[`FlightOrderData`](/api/objects/flight-order-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`FlightTicket`](/api/objects/flight-ticket) <Badge class="badge badge--secondary" text="object"/>

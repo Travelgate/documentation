@@ -1,0 +1,73 @@
+---
+id: organizations-data
+title: OrganizationsData
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Extended Organization information
+
+```graphql
+type OrganizationsData {
+  id: ID!
+  code: ID!
+  label: String!
+  owner: Organizations
+  isTest: Boolean!
+  members: [OrganizationMembers!]
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationsData.<b>id</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Organization unique ID. Format: integer.
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationsData.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Organization unique code
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationsData.<b>label</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Organization name
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationsData.<b>owner</b></code>](#)<Bullet />[`Organizations`](/api/objects/organizations) <Badge class="badge badge--secondary" text="object"/>
+
+> Indicates the owner organization: NOT MEMBER
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationsData.<b>isTest</b></code>](#)<Bullet />[`Boolean!`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Inidcates if the organization is for testing purpose
+
+#### [<code style={{ fontWeight: 'normal' }}>OrganizationsData.<b>members</b></code>](#)<Bullet />[`[OrganizationMembers!]`](/api/objects/organization-members) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> All organization members
+
+### Member of
+
+[`MemberOrganizations`](/api/objects/member-organizations) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Organizations`](/api/objects/organizations) <Badge class="badge badge--secondary" text="object"/>

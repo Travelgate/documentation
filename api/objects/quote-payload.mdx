@@ -1,0 +1,133 @@
+---
+id: quote-payload
+title: QuotePayload
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type QuotePayload {
+  accommodations: [Accommodation!]
+  activities: [Activity!]
+  adviseMessages: [AdviseMessage]
+  cancelPolicy: PackageCancelPolicy
+  itineraryMap: [ItineraryMap!]
+  locations: [PackageLocations!]
+  origin: PackageLocation
+  destination: PackageLocation
+  optionId: String!
+  price: PackagePrice
+  quoteToken: String!
+  refName: String
+  departureDate: String
+  returnDate: String
+  remarks: [Remark!]
+  paxes: Paxes
+  status: PackageStatus
+  transports: [Transport!]
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>QuotePayload.<b>accommodations</b></code>](#)<Bullet />[`[Accommodation!]`](/api/objects/accommodation) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> List of accommodations
+
+#### [<code style={{ fontWeight: 'normal' }}>QuotePayload.<b>activities</b></code>](#)<Bullet />[`[Activity!]`](/api/objects/activity) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> List of activities for the option
+
+#### [<code style={{ fontWeight: 'normal' }}>QuotePayload.<b>adviseMessages</b></code>](#)<Bullet />[`[AdviseMessage]`](/api/objects/advise-message) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> List of errors
+
+#### [<code style={{ fontWeight: 'normal' }}>QuotePayload.<b>cancelPolicy</b></code>](#)<Bullet />[`PackageCancelPolicy`](/api/objects/package-cancel-policy) <Badge class="badge badge--secondary" text="object"/>
+
+> Cancel policies thast apply to the option
+
+#### [<code style={{ fontWeight: 'normal' }}>QuotePayload.<b>itineraryMap</b></code>](#)<Bullet />[`[ItineraryMap!]`](/api/objects/itinerary-map) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Schedule of transports/activities/accommodations of the option
+
+#### [<code style={{ fontWeight: 'normal' }}>QuotePayload.<b>locations</b></code>](#)<Bullet />[`[PackageLocations!]`](/api/objects/package-locations) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Locations where the pacakge will take place
+
+#### [<code style={{ fontWeight: 'normal' }}>QuotePayload.<b>origin</b></code>](#)<Bullet />[`PackageLocation`](/api/objects/package-location) <Badge class="badge badge--secondary" text="object"/>
+
+> Origin of the package
+
+#### [<code style={{ fontWeight: 'normal' }}>QuotePayload.<b>destination</b></code>](#)<Bullet />[`PackageLocation`](/api/objects/package-location) <Badge class="badge badge--secondary" text="object"/>
+
+> Destination of the package
+
+#### [<code style={{ fontWeight: 'normal' }}>QuotePayload.<b>optionId</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Id for this option, could be different to received from search
+
+#### [<code style={{ fontWeight: 'normal' }}>QuotePayload.<b>price</b></code>](#)<Bullet />[`PackagePrice`](/api/objects/package-price) <Badge class="badge badge--secondary" text="object"/>
+
+> Price applied to the option
+
+#### [<code style={{ fontWeight: 'normal' }}>QuotePayload.<b>quoteToken</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Token used to confirm the option
+
+#### [<code style={{ fontWeight: 'normal' }}>QuotePayload.<b>refName</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Used to specify some key information of the package (few providers use this)
+
+#### [<code style={{ fontWeight: 'normal' }}>QuotePayload.<b>departureDate</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Date of departure for the option received in standard ISO 8601
+
+#### [<code style={{ fontWeight: 'normal' }}>QuotePayload.<b>returnDate</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Date of return for the option received in standard ISO 8601
+
+#### [<code style={{ fontWeight: 'normal' }}>QuotePayload.<b>remarks</b></code>](#)<Bullet />[`[Remark!]`](/api/objects/remark) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> list of remarks for the option
+
+#### [<code style={{ fontWeight: 'normal' }}>QuotePayload.<b>paxes</b></code>](#)<Bullet />[`Paxes`](/api/objects/paxes) <Badge class="badge badge--secondary" text="object"/>
+
+> Paxes for the option
+
+#### [<code style={{ fontWeight: 'normal' }}>QuotePayload.<b>status</b></code>](#)<Bullet />[`PackageStatus`](/api/enums/package-status) <Badge class="badge badge--secondary" text="enum"/>
+
+> Status of the package (Available, On_Request...)
+
+#### [<code style={{ fontWeight: 'normal' }}>QuotePayload.<b>transports</b></code>](#)<Bullet />[`[Transport!]`](/api/objects/transport) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> List of transports included in the booking
+
+### Member of
+
+[`PackageQuery`](/api/objects/package-query) <Badge class="badge badge--secondary" text="object"/>

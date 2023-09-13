@@ -1,0 +1,53 @@
+---
+id: three-dssignature-status-type
+title: ThreeDSSignatureStatusType
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+enum ThreeDSSignatureStatusType {
+  SIGNATURE_VALIDATED
+  SIGNATURE_NOT_VALIDATED
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>ThreeDSSignatureStatusType.<b>SIGNATURE_VALIDATED</b></code>](#)
+
+> Signature of the payer response has been validated successfully
+
+#### [<code style={{ fontWeight: 'normal' }}>ThreeDSSignatureStatusType.<b>SIGNATURE_NOT_VALIDATED</b></code>](#)
+
+> Signature of the payer response could not be validated
+
+### Member of
+
+[`ThreeDomainSecurityInput`](/api/inputs/three-domain-security-input) <Badge class="badge badge--secondary" text="input"/>

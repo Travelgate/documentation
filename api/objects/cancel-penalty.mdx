@@ -1,0 +1,73 @@
+---
+id: cancel-penalty
+title: CancelPenalty
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Contains information for cancellation penalities..
+
+```graphql
+type CancelPenalty {
+  deadline: DateTime
+  isCalculatedDeadline: Boolean!
+  hoursBefore: Int!
+  penaltyType: CancelPenaltyType!
+  currency: Currency!
+  value: Float!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>CancelPenalty.<b>deadline</b></code>](#)<Bullet />[`DateTime`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Cancellation fees will be applicabled between this date and check-in date
+
+#### [<code style={{ fontWeight: 'normal' }}>CancelPenalty.<b>isCalculatedDeadline</b></code>](#)<Bullet />[`Boolean!`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Specifies if the deadline has been taken from the seller’s response (false) or has been calculated by TravelgateX (true)
+
+#### [<code style={{ fontWeight: 'normal' }}>CancelPenalty.<b>hoursBefore</b></code>](#)<Bullet />[`Int!`](/api/scalars/int) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Cancellation fees applicable X number of hours before the check-in date
+
+#### [<code style={{ fontWeight: 'normal' }}>CancelPenalty.<b>penaltyType</b></code>](#)<Bullet />[`CancelPenaltyType!`](/api/enums/cancel-penalty-type) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> Type of penalty; this can be Nights, Percent or Import
+
+#### [<code style={{ fontWeight: 'normal' }}>CancelPenalty.<b>currency</b></code>](#)<Bullet />[`Currency!`](/api/scalars/currency) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Currency used in the cancellation policy
+
+#### [<code style={{ fontWeight: 'normal' }}>CancelPenalty.<b>value</b></code>](#)<Bullet />[`Float!`](/api/scalars/float) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Value of the cancellation policy
+
+### Member of
+
+[`CancelPolicy`](/api/objects/cancel-policy) <Badge class="badge badge--secondary" text="object"/>

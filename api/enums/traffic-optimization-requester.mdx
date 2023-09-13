@@ -1,0 +1,58 @@
+---
+id: traffic-optimization-requester
+title: TrafficOptimizationRequester
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+enum TrafficOptimizationRequester {
+  BUYER
+  SELLER
+  TGX
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationRequester.<b>BUYER</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationRequester.<b>SELLER</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationRequester.<b>TGX</b></code>](#)
+
+>
+
+### Member of
+
+[`TrafficOptimizationCreateAccessInput`](/api/inputs/traffic-optimization-create-access-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`TrafficOptimizationCreateAllAccessesInput`](/api/inputs/traffic-optimization-create-all-accesses-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`TrafficOptimizationUpdateAccessCriteriaDataInput`](/api/inputs/traffic-optimization-update-access-criteria-data-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`TrafficOptimizationUpdateAccessDataInput`](/api/inputs/traffic-optimization-update-access-data-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`TrafficOptimizationUpdateAllAccessesCriteriaDataInput`](/api/inputs/traffic-optimization-update-all-accesses-criteria-data-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`TrafficOptimizationUpdateAllAccessesDataInput`](/api/inputs/traffic-optimization-update-all-accesses-data-input) <Badge class="badge badge--secondary" text="input"/>

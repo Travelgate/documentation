@@ -1,0 +1,126 @@
+---
+id: resource-data
+title: ResourceData
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type ResourceData {
+  id: ID!
+  code: ID!
+  isEditable: Boolean!
+  label: String
+  apis(
+    codes: [ID!]
+    first: Int
+    last: Int
+    before: String
+    after: String
+  ): APIConnection
+  roles(
+    codes: [ID!]
+    type: RoleType
+    first: Int
+    last: Int
+    before: String
+    after: String
+  ): RoleConnection
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>ResourceData.<b>id</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ResourceData.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ResourceData.<b>isEditable</b></code>](#)<Bullet />[`Boolean!`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ResourceData.<b>label</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ResourceData.<b>apis</b></code>](#)<Bullet />[`APIConnection`](/api/objects/apiconnection) <Badge class="badge badge--secondary" text="object"/>
+
+> which API have asigned this resource?
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>ResourceData.apis.<b>codes</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>ResourceData.apis.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>ResourceData.apis.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>ResourceData.apis.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>ResourceData.apis.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ResourceData.<b>roles</b></code>](#)<Bullet />[`RoleConnection`](/api/objects/role-connection) <Badge class="badge badge--secondary" text="object"/>
+
+> which roles are asigned or are possibles in this resource?
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>ResourceData.roles.<b>codes</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>ResourceData.roles.<b>type</b></code>](#)<Bullet />[`RoleType`](/api/enums/role-type) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>ResourceData.roles.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>ResourceData.roles.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>ResourceData.roles.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>ResourceData.roles.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+### Member of
+
+[`Resource`](/api/objects/resource) <Badge class="badge badge--secondary" text="object"/>

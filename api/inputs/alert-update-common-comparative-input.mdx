@@ -1,0 +1,63 @@
+---
+id: alert-update-common-comparative-input
+title: AlertUpdateCommonComparativeInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+input AlertUpdateCommonComparativeInput {
+  historicalWindow: Int
+  offset: Int
+  variation: AlertVariation
+  percentageToAlert: Int
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertUpdateCommonComparativeInput.<b>historicalWindow</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+> The time frame in minutes to be used to compare with the window time frame
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertUpdateCommonComparativeInput.<b>offset</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Time frame in minutes to set the beginning of historicalWindow
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertUpdateCommonComparativeInput.<b>variation</b></code>](#)<Bullet />[`AlertVariation`](/api/enums/alert-variation) <Badge class="badge badge--secondary" text="enum"/>
+
+> According to percentageToAlert value
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertUpdateCommonComparativeInput.<b>percentageToAlert</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Percentage of traffic to be considered status ALERTING
+
+### Member of
+
+[`AlertUpdateAverageTimeComparativeConfigurationByTimeInput`](/api/inputs/alert-update-average-time-comparative-configuration-by-time-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`AlertUpdateErrorRateComparativeConfigurationByTimeInput`](/api/inputs/alert-update-error-rate-comparative-configuration-by-time-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`AlertUpdatePeakTrafficComparativeConfigurationByTimeInput`](/api/inputs/alert-update-peak-traffic-comparative-configuration-by-time-input) <Badge class="badge badge--secondary" text="input"/>

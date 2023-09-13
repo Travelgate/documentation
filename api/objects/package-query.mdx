@@ -1,0 +1,71 @@
+---
+id: package-query
+title: PackageQuery
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type PackageQuery {
+  quote(where: QuoteWhereInput): QuotePayload
+  content(where: ContentWhereInput): ContentPayload
+  booking(where: BookingWhereInput): BookingPayload
+  search(where: SearchWhereInput): SearchPayload
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>PackageQuery.<b>quote</b></code>](#)<Bullet />[`QuotePayload`](/api/objects/quote-payload) <Badge class="badge badge--secondary" text="object"/>
+
+> Query to retreive the lastest conditions for the option
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>PackageQuery.quote.<b>where</b></code>](#)<Bullet />[`QuoteWhereInput`](/api/inputs/quote-where-input) <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>PackageQuery.<b>content</b></code>](#)<Bullet />[`ContentPayload`](/api/objects/content-payload) <Badge class="badge badge--secondary" text="object"/>
+
+> Query to retreive the static information of a package
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>PackageQuery.content.<b>where</b></code>](#)<Bullet />[`ContentWhereInput`](/api/inputs/content-where-input) <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>PackageQuery.<b>booking</b></code>](#)<Bullet />[`BookingPayload`](/api/objects/booking-payload) <Badge class="badge badge--secondary" text="object"/>
+
+> Query to retreive the information of an existing booking
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>PackageQuery.booking.<b>where</b></code>](#)<Bullet />[`BookingWhereInput`](/api/inputs/booking-where-input) <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>PackageQuery.<b>search</b></code>](#)<Bullet />[`SearchPayload`](/api/objects/search-payload) <Badge class="badge badge--secondary" text="object"/>
+
+> Query to refresh an option or search by supplierPackageCode
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>PackageQuery.search.<b>where</b></code>](#)<Bullet />[`SearchWhereInput`](/api/inputs/search-where-input) <Badge class="badge badge--secondary" text="input"/>
+
+### Returned by
+
+[`package`](/api/queries/package) <Badge class="badge badge--secondary" text="query"/>

@@ -1,0 +1,65 @@
+---
+id: response
+title: Response
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+interface Response {
+  stats(token: String!): StatsRequest
+  auditData: AuditData
+  errors: [Error!]
+  warnings: [Warning!]
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Response.<b>stats</b></code>](#)<Bullet />[`StatsRequest`](/api/objects/stats-request) <Badge class="badge badge--secondary" text="object"/>
+
+> Application stats
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>Response.stats.<b>token</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Response.<b>auditData</b></code>](#)<Bullet />[`AuditData`](/api/objects/audit-data) <Badge class="badge badge--secondary" text="object"/>
+
+> Data sent and received in the supplier’s original format.
+
+#### [<code style={{ fontWeight: 'normal' }}>Response.<b>errors</b></code>](#)<Bullet />[`[Error!]`](/api/objects/error) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Errors that lead the service to stop
+
+#### [<code style={{ fontWeight: 'normal' }}>Response.<b>warnings</b></code>](#)<Bullet />[`[Warning!]`](/api/objects/warning) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Potentially harmful situations or errors that do not stop the service
+
+### Implemented by
+
+[`HotelBooking`](/api/objects/hotel-booking) <Badge class="badge badge--secondary" text="object"/><Bullet />[`HotelBookPayload`](/api/objects/hotel-book-payload) <Badge class="badge badge--secondary" text="object"/><Bullet />[`HotelCancelPayload`](/api/objects/hotel-cancel-payload) <Badge class="badge badge--secondary" text="object"/><Bullet />[`HotelCommitPayload`](/api/objects/hotel-commit-payload) <Badge class="badge badge--secondary" text="object"/><Bullet />[`HotelQuote`](/api/objects/hotel-quote) <Badge class="badge badge--secondary" text="object"/><Bullet />[`HotelSearch`](/api/objects/hotel-search) <Badge class="badge badge--secondary" text="object"/>

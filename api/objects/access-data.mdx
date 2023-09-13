@@ -1,0 +1,185 @@
+---
+id: access-data
+title: AccessData
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type AccessData {
+  id: ID!
+  code: ID!
+  name: String!
+  isActive: Boolean!
+  isTest: Boolean!
+  isShared: Boolean!
+  supplier: Supplier!
+  user: String
+  password: String
+  urls: Urls
+  parameters: [Parameter]
+  markets: [String!]
+  rateRules: [RateRulesType!]
+  shared: Access
+  owner: Organization
+  updateDescriptiveInfo: Int!
+  descriptiveInfoLimit: Int!
+  isSchedulerActive: Boolean
+  updateList: Int!
+  updateDateRange: String!
+  master: Access
+  groups(first: Int, last: Int, before: String, after: String): GroupConnection
+  audits(
+    where: EntityAuditWhereInput
+    orderBy: EntityAuditOrderByEnum
+  ): EntityAuditConnection!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>AccessData.<b>id</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Unique ID identifier
+
+#### [<code style={{ fontWeight: 'normal' }}>AccessData.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Unique AccessConfiguration identifier
+
+#### [<code style={{ fontWeight: 'normal' }}>AccessData.<b>name</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Access descriptive name
+
+#### [<code style={{ fontWeight: 'normal' }}>AccessData.<b>isActive</b></code>](#)<Bullet />[`Boolean!`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Indicates if Access is active
+
+#### [<code style={{ fontWeight: 'normal' }}>AccessData.<b>isTest</b></code>](#)<Bullet />[`Boolean!`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Indicates if Access can be used for testing or not
+
+#### [<code style={{ fontWeight: 'normal' }}>AccessData.<b>isShared</b></code>](#)<Bullet />[`Boolean!`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Indicates if Access is Shared
+
+#### [<code style={{ fontWeight: 'normal' }}>AccessData.<b>supplier</b></code>](#)<Bullet />[`Supplier!`](/api/objects/supplier) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Supplier for this Access
+
+#### [<code style={{ fontWeight: 'normal' }}>AccessData.<b>user</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> User code to connect to supplier
+
+#### [<code style={{ fontWeight: 'normal' }}>AccessData.<b>password</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Password for the connection
+
+#### [<code style={{ fontWeight: 'normal' }}>AccessData.<b>urls</b></code>](#)<Bullet />[`Urls`](/api/objects/urls) <Badge class="badge badge--secondary" text="object"/>
+
+> Specific URLs
+
+#### [<code style={{ fontWeight: 'normal' }}>AccessData.<b>parameters</b></code>](#)<Bullet />[`[Parameter]`](/api/objects/parameter) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> List of parameters for additional information
+
+#### [<code style={{ fontWeight: 'normal' }}>AccessData.<b>markets</b></code>](#)<Bullet />[`[String!]`](/api/scalars/string) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Markets allowed for the Access
+
+#### [<code style={{ fontWeight: 'normal' }}>AccessData.<b>rateRules</b></code>](#)<Bullet />[`[RateRulesType!]`](/api/enums/rate-rules-type) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> Business rule types for the Access
+
+#### [<code style={{ fontWeight: 'normal' }}>AccessData.<b>shared</b></code>](#)<Bullet />[`Access`](/api/objects/access) <Badge class="badge badge--secondary" text="object"/>
+
+> Parent Access if Shared Access
+
+#### [<code style={{ fontWeight: 'normal' }}>AccessData.<b>owner</b></code>](#)<Bullet />[`Organization`](/api/objects/organization) <Badge class="badge badge--secondary" text="object"/>
+
+> Access owner
+
+#### [<code style={{ fontWeight: 'normal' }}>AccessData.<b>updateDescriptiveInfo</b></code>](#)<Bullet />[`Int!`](/api/scalars/int) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Refresh time to update Despriptive Info
+
+#### [<code style={{ fontWeight: 'normal' }}>AccessData.<b>descriptiveInfoLimit</b></code>](#)<Bullet />[`Int!`](/api/scalars/int) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Limit on DescriptiveInfo; 0 denotates no limit
+
+#### [<code style={{ fontWeight: 'normal' }}>AccessData.<b>isSchedulerActive</b></code>](#)<Bullet />[`Boolean`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="scalar"/>
+
+> True if scheduler is active
+
+#### [<code style={{ fontWeight: 'normal' }}>AccessData.<b>updateList</b></code>](#)<Bullet />[`Int!`](/api/scalars/int) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Refresh time to update other batch lists
+
+#### [<code style={{ fontWeight: 'normal' }}>AccessData.<b>updateDateRange</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Range on update date
+
+#### [<code style={{ fontWeight: 'normal' }}>AccessData.<b>master</b></code>](#)<Bullet />[`Access`](/api/objects/access) <Badge class="badge badge--secondary" text="object"/>
+
+> Parent Master Access. null=&#x003E;masterAccess, notNull=&#x003E;slaveAccess
+
+#### [<code style={{ fontWeight: 'normal' }}>AccessData.<b>groups</b></code>](#)<Bullet />[`GroupConnection`](/api/objects/group-connection) <Badge class="badge badge--secondary" text="object"/>
+
+> Groups where access belongs
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AccessData.groups.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AccessData.groups.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AccessData.groups.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>AccessData.groups.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AccessData.<b>audits</b></code>](#)<Bullet />[`EntityAuditConnection!`](/api/objects/entity-audit-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Audits it shows the accesses change history
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AccessData.audits.<b>where</b></code>](#)<Bullet />[`EntityAuditWhereInput`](/api/inputs/entity-audit-where-input) <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AccessData.audits.<b>orderBy</b></code>](#)<Bullet />[`EntityAuditOrderByEnum`](/api/enums/entity-audit-order-by-enum) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+### Member of
+
+[`Access`](/api/objects/access) <Badge class="badge badge--secondary" text="object"/><Bullet />[`ActivationData`](/api/objects/activation-data) <Badge class="badge badge--secondary" text="object"/>
+
+### Implemented by
+
+[`EntityData`](/api/unions/entity-data) <Badge class="badge badge--secondary" text="union"/>

@@ -1,0 +1,103 @@
+---
+id: asset
+title: Asset
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type Asset {
+  Profile: Profile
+  createdAt: DateTime!
+  handle: String!
+  height: Float
+  id: Int!
+  mimeType: String!
+  name: String
+  size: Float!
+  type: AssetType!
+  updatedAt: DateTime!
+  url: String!
+  width: Float
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>Profile</b></code>](#)<Bullet />[`Profile`](/api/objects/profile) <Badge class="badge badge--secondary" text="object"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>createdAt</b></code>](#)<Bullet />[`DateTime!`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>handle</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>height</b></code>](#)<Bullet />[`Float`](/api/scalars/float) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>id</b></code>](#)<Bullet />[`Int!`](/api/scalars/int) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>mimeType</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>name</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>size</b></code>](#)<Bullet />[`Float!`](/api/scalars/float) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>type</b></code>](#)<Bullet />[`AssetType!`](/api/enums/asset-type) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>updatedAt</b></code>](#)<Bullet />[`DateTime!`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>url</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>width</b></code>](#)<Bullet />[`Float`](/api/scalars/float) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+### Member of
+
+[`Profile`](/api/objects/profile) <Badge class="badge badge--secondary" text="object"/><Bullet />[`ProfileData`](/api/objects/profile-data) <Badge class="badge badge--secondary" text="object"/>

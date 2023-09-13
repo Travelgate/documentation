@@ -1,0 +1,59 @@
+---
+id: client-create-input
+title: ClientCreateInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Create new client input
+
+```graphql
+input ClientCreateInput {
+  name: ID!
+  isActive: Boolean
+  group: ID!
+  id: ID
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>ClientCreateInput.<b>name</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> No blank, no special characters (except "\_" and "-"). The name will be lowercase
+
+#### [<code style={{ fontWeight: 'normal' }}>ClientCreateInput.<b>isActive</b></code>](#)<Bullet />[`Boolean`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Indicates whether a Client is active or inactive
+
+#### [<code style={{ fontWeight: 'normal' }}>ClientCreateInput.<b>group</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> IAM Group code. The group must exist.
+
+#### [<code style={{ fontWeight: 'normal' }}>ClientCreateInput.<b>id</b></code>](#)<Bullet />[`ID`](/api/scalars/id) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Optional, use it only if ID has to be specified

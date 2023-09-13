@@ -1,0 +1,183 @@
+---
+id: profile
+title: Profile
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type Profile {
+  profileData: ProfileData
+  id: Int!
+  name: String!
+  owner: Organization!
+  group: Group!
+  status: Status!
+  order: Float!
+  slug: String!
+  assets: [Asset!]
+  description: String
+  classifications: [ProfileClassification!]
+  websiteUrl: String
+  buyerPartnerStatus: PartnerStatusType
+  sellerPartnerStatus: PartnerStatusType
+  buyerOnboardingStart: Date
+  buyerOnboardingEnd: Date
+  sellerOnboardingStart: Date
+  sellerOnboardingEnd: Date
+  buyerFirstBooking: Date
+  buyerLastBooking: Date
+  sellerFirstBooking: Date
+  sellerLastBooking: Date
+  sellerIntegrationType: [SellerIntegrationType!]
+  buyerIntegrationType: [BuyerIntegrationType!]
+  buyerOrgType: BuyerCompanyType
+  sellerOrgType: SellerCompanyType
+  buyerTechPlatformOrgType: BuyerTechSolutionCompanyType
+  sellerTechPlatformOrgType: SellerTechSolutionCompanyType
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Profile.<b>profileData</b></code>](#)<Bullet />[`ProfileData`](/api/objects/profile-data) <Badge class="badge badge--secondary" text="object"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Profile.<b>id</b></code>](#)<Bullet />[`Int!`](/api/scalars/int) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Profile.<b>name</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Profile.<b>owner</b></code>](#)<Bullet />[`Organization!`](/api/objects/organization) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Profile.<b>group</b></code>](#)<Bullet />[`Group!`](/api/objects/group) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Profile.<b>status</b></code>](#)<Bullet />[`Status!`](/api/enums/status) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Profile.<b>order</b></code>](#)<Bullet />[`Float!`](/api/scalars/float) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Profile.<b>slug</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Profile.<b>assets</b></code>](#)<Bullet />[`[Asset!]`](/api/objects/asset) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Profile.<b>description</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Profile.<b>classifications</b></code>](#)<Bullet />[`[ProfileClassification!]`](/api/enums/profile-classification) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Profile.<b>websiteUrl</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Profile.<b>buyerPartnerStatus</b></code>](#)<Bullet />[`PartnerStatusType`](/api/enums/partner-status-type) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Profile.<b>sellerPartnerStatus</b></code>](#)<Bullet />[`PartnerStatusType`](/api/enums/partner-status-type) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Profile.<b>buyerOnboardingStart</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Profile.<b>buyerOnboardingEnd</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Profile.<b>sellerOnboardingStart</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Profile.<b>sellerOnboardingEnd</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Profile.<b>buyerFirstBooking</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Profile.<b>buyerLastBooking</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Profile.<b>sellerFirstBooking</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Profile.<b>sellerLastBooking</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Profile.<b>sellerIntegrationType</b></code>](#)<Bullet />[`[SellerIntegrationType!]`](/api/enums/seller-integration-type) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Profile.<b>buyerIntegrationType</b></code>](#)<Bullet />[`[BuyerIntegrationType!]`](/api/enums/buyer-integration-type) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Profile.<b>buyerOrgType</b></code>](#)<Bullet />[`BuyerCompanyType`](/api/enums/buyer-company-type) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Profile.<b>sellerOrgType</b></code>](#)<Bullet />[`SellerCompanyType`](/api/enums/seller-company-type) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Profile.<b>buyerTechPlatformOrgType</b></code>](#)<Bullet />[`BuyerTechSolutionCompanyType`](/api/enums/buyer-tech-solution-company-type) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Profile.<b>sellerTechPlatformOrgType</b></code>](#)<Bullet />[`SellerTechSolutionCompanyType`](/api/enums/seller-tech-solution-company-type) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+### Member of
+
+[`Asset`](/api/objects/asset) <Badge class="badge badge--secondary" text="object"/>

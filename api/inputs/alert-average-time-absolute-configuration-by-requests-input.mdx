@@ -1,0 +1,68 @@
+---
+id: alert-average-time-absolute-configuration-by-requests-input
+title: AlertAverageTimeAbsoluteConfigurationByRequestsInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+input AlertAverageTimeAbsoluteConfigurationByRequestsInput {
+  maxTime: Int
+  maxAverageTime: Int
+  requestsToAlert: Int!
+  windowing: AlertCommonByRequestsInput!
+  common: AlertCommonConfigurationInput!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertAverageTimeAbsoluteConfigurationByRequestsInput.<b>maxTime</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Time not allowed in miliseconds
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertAverageTimeAbsoluteConfigurationByRequestsInput.<b>maxAverageTime</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Average time not allowed in miliseconds
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertAverageTimeAbsoluteConfigurationByRequestsInput.<b>requestsToAlert</b></code>](#)<Bullet />[`Int!`](/api/scalars/int) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Number of requests with anomaly to set alert in ALERTING status
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertAverageTimeAbsoluteConfigurationByRequestsInput.<b>windowing</b></code>](#)<Bullet />[`AlertCommonByRequestsInput!`](/api/inputs/alert-common-by-requests-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+> Common configuration for requests window type
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertAverageTimeAbsoluteConfigurationByRequestsInput.<b>common</b></code>](#)<Bullet />[`AlertCommonConfigurationInput!`](/api/inputs/alert-common-configuration-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+> Common configuration alert
+
+### Member of
+
+[`AlertAverageTimeAbsoluteByRequestsInput`](/api/inputs/alert-average-time-absolute-by-requests-input) <Badge class="badge badge--secondary" text="input"/>

@@ -1,0 +1,92 @@
+---
+id: payment-card-data
+title: PaymentCardData
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Contains the information of the Payment Card
+
+```graphql
+type PaymentCardData {
+  active: Date!
+  CVC: CVC!
+  expire: Date!
+  holder: Holder!
+  id: ID!
+  number: CardNumber!
+  supplier: Supplier! @deprecated
+  type: PaymentCardType!
+  status: PaymentCardStatus
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentCardData.<b>active</b></code>](#)<Bullet />[`Date!`](/api/scalars/date) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Contains the payment card activation date
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentCardData.<b>CVC</b></code>](#)<Bullet />[`CVC!`](/api/scalars/cvc) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Contains credit card CVC
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentCardData.<b>expire</b></code>](#)<Bullet />[`Date!`](/api/scalars/date) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Contains the payment card expiration date
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentCardData.<b>holder</b></code>](#)<Bullet />[`Holder!`](/api/objects/holder) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Contains owner s name
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentCardData.<b>id</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Contains the generated card ID. It is provided by the third party supplier.
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentCardData.<b>number</b></code>](#)<Bullet />[`CardNumber!`](/api/scalars/card-number) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Contains credit card number
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentCardData.<b>supplier</b></code>](#)<Bullet />[`Supplier!`](/api/objects/supplier) <Badge class="badge badge--deprecated badge--secondary" text="deprecated"/> <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> :::caution DEPRECATED
+> deprecated from 2021-06-21.
+> :::
+>
+> Indicates the supplier or third party, responsible of the payment card s creation
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentCardData.<b>type</b></code>](#)<Bullet />[`PaymentCardType!`](/api/enums/payment-card-type) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> Indicates the supported card type
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentCardData.<b>status</b></code>](#)<Bullet />[`PaymentCardStatus`](/api/enums/payment-card-status) <Badge class="badge badge--secondary" text="enum"/>
+
+> Indicates the credit card status
+
+### Member of
+
+[`GeneratedPaymentInfo`](/api/objects/generated-payment-info) <Badge class="badge badge--secondary" text="object"/><Bullet />[`PaymentCard`](/api/objects/payment-card) <Badge class="badge badge--secondary" text="object"/>

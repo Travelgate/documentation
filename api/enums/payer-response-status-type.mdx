@@ -1,0 +1,73 @@
+---
+id: payer-response-status-type
+title: PayerResponseStatusType
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Indicates the authentication status of the transaction
+
+```graphql
+enum PayerResponseStatusType {
+  AUTHENTICATION_SUCCESS
+  AUTHENTICATION_FAILED
+  AUTHENTICATION_INCOMPLETE
+  TRANSACTION_ATTEMPT_SUCCESS_A
+  TRANSACTION_ATTEMPT_SUCCESS_B
+  AUTHENTICATION_REJECTED
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>PayerResponseStatusType.<b>AUTHENTICATION_SUCCESS</b></code>](#)
+
+> Successful Authentication
+
+#### [<code style={{ fontWeight: 'normal' }}>PayerResponseStatusType.<b>AUTHENTICATION_FAILED</b></code>](#)
+
+> Failed Authentication
+
+#### [<code style={{ fontWeight: 'normal' }}>PayerResponseStatusType.<b>AUTHENTICATION_INCOMPLETE</b></code>](#)
+
+> Unable to Complete Authentication
+
+#### [<code style={{ fontWeight: 'normal' }}>PayerResponseStatusType.<b>TRANSACTION_ATTEMPT_SUCCESS_A</b></code>](#)
+
+> Successful Attempts Transaction
+
+#### [<code style={{ fontWeight: 'normal' }}>PayerResponseStatusType.<b>TRANSACTION_ATTEMPT_SUCCESS_B</b></code>](#)
+
+> Successful Attempts Transaction
+
+#### [<code style={{ fontWeight: 'normal' }}>PayerResponseStatusType.<b>AUTHENTICATION_REJECTED</b></code>](#)
+
+> Authentication Rejected (Merchant must not submit for authorisation)
+
+### Member of
+
+[`ThreeDomainSecurityInput`](/api/inputs/three-domain-security-input) <Badge class="badge badge--secondary" text="input"/>

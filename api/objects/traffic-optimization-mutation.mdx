@@ -1,0 +1,145 @@
+---
+id: traffic-optimization-mutation
+title: TrafficOptimizationMutation
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type TrafficOptimizationMutation {
+  createTrafficOptimizationAccess(
+    data: TrafficOptimizationCreateAccessInput!
+  ): TrafficOptimizationAccess
+  activateTrafficOptimizationAccess(
+    where: TrafficOptimizationUpdateAccessWhereInput!
+    data: TrafficOptimizationUpdateAccessDataInput!
+  ): TrafficOptimizationAccess
+  deactivateTrafficOptimizationAccess(
+    where: TrafficOptimizationUpdateAccessWhereInput!
+    data: TrafficOptimizationUpdateAccessDataInput!
+  ): TrafficOptimizationAccess
+  updateTrafficOptimizationAccessCriteria(
+    where: TrafficOptimizationUpdateAccessWhereInput!
+    data: TrafficOptimizationUpdateAccessCriteriaDataInput!
+  ): TrafficOptimizationAccess
+  createTrafficOptimizationAllAccesses(
+    data: TrafficOptimizationCreateAllAccessesInput!
+  ): TrafficOptimizationConnection
+  activateTrafficOptimizationAllAccesses(
+    where: TrafficOptimizationUpdateAllAccessesWhereInput!
+    data: TrafficOptimizationUpdateAllAccessesDataInput!
+  ): TrafficOptimizationConnection
+  deactivateTrafficOptimizationAllAccesses(
+    where: TrafficOptimizationUpdateAllAccessesWhereInput!
+    data: TrafficOptimizationUpdateAllAccessesDataInput!
+  ): TrafficOptimizationConnection
+  updateTrafficOptimizationAllAccessesCriteria(
+    where: TrafficOptimizationUpdateAllAccessesWhereInput!
+    data: TrafficOptimizationUpdateAllAccessesCriteriaDataInput!
+  ): TrafficOptimizationConnection
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationMutation.<b>createTrafficOptimizationAccess</b></code>](#)<Bullet />[`TrafficOptimizationAccess`](/api/objects/traffic-optimization-access) <Badge class="badge badge--secondary" text="object"/>
+
+> Creates a new Traffic Optimization configuration for a given access
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationMutation.createTrafficOptimizationAccess.<b>data</b></code>](#)<Bullet />[`TrafficOptimizationCreateAccessInput!`](/api/inputs/traffic-optimization-create-access-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationMutation.<b>activateTrafficOptimizationAccess</b></code>](#)<Bullet />[`TrafficOptimizationAccess`](/api/objects/traffic-optimization-access) <Badge class="badge badge--secondary" text="object"/>
+
+> Activates the Traffic Optimization Tool for a given access
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationMutation.activateTrafficOptimizationAccess.<b>where</b></code>](#)<Bullet />[`TrafficOptimizationUpdateAccessWhereInput!`](/api/inputs/traffic-optimization-update-access-where-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationMutation.activateTrafficOptimizationAccess.<b>data</b></code>](#)<Bullet />[`TrafficOptimizationUpdateAccessDataInput!`](/api/inputs/traffic-optimization-update-access-data-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationMutation.<b>deactivateTrafficOptimizationAccess</b></code>](#)<Bullet />[`TrafficOptimizationAccess`](/api/objects/traffic-optimization-access) <Badge class="badge badge--secondary" text="object"/>
+
+> Deactivates the Traffic Optimization Tool for a given access
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationMutation.deactivateTrafficOptimizationAccess.<b>where</b></code>](#)<Bullet />[`TrafficOptimizationUpdateAccessWhereInput!`](/api/inputs/traffic-optimization-update-access-where-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationMutation.deactivateTrafficOptimizationAccess.<b>data</b></code>](#)<Bullet />[`TrafficOptimizationUpdateAccessDataInput!`](/api/inputs/traffic-optimization-update-access-data-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationMutation.<b>updateTrafficOptimizationAccessCriteria</b></code>](#)<Bullet />[`TrafficOptimizationAccess`](/api/objects/traffic-optimization-access) <Badge class="badge badge--secondary" text="object"/>
+
+> Updates the Traffic Optimization criteria field for a given access
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationMutation.updateTrafficOptimizationAccessCriteria.<b>where</b></code>](#)<Bullet />[`TrafficOptimizationUpdateAccessWhereInput!`](/api/inputs/traffic-optimization-update-access-where-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationMutation.updateTrafficOptimizationAccessCriteria.<b>data</b></code>](#)<Bullet />[`TrafficOptimizationUpdateAccessCriteriaDataInput!`](/api/inputs/traffic-optimization-update-access-criteria-data-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationMutation.<b>createTrafficOptimizationAllAccesses</b></code>](#)<Bullet />[`TrafficOptimizationConnection`](/api/objects/traffic-optimization-connection) <Badge class="badge badge--secondary" text="object"/>
+
+> Creates a new Traffic Optimization configuration for all of the accesses of a given connection
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationMutation.createTrafficOptimizationAllAccesses.<b>data</b></code>](#)<Bullet />[`TrafficOptimizationCreateAllAccessesInput!`](/api/inputs/traffic-optimization-create-all-accesses-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationMutation.<b>activateTrafficOptimizationAllAccesses</b></code>](#)<Bullet />[`TrafficOptimizationConnection`](/api/objects/traffic-optimization-connection) <Badge class="badge badge--secondary" text="object"/>
+
+> Activates the Traffic Optimization Tool for all of the accesses of a given connection
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationMutation.activateTrafficOptimizationAllAccesses.<b>where</b></code>](#)<Bullet />[`TrafficOptimizationUpdateAllAccessesWhereInput!`](/api/inputs/traffic-optimization-update-all-accesses-where-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationMutation.activateTrafficOptimizationAllAccesses.<b>data</b></code>](#)<Bullet />[`TrafficOptimizationUpdateAllAccessesDataInput!`](/api/inputs/traffic-optimization-update-all-accesses-data-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationMutation.<b>deactivateTrafficOptimizationAllAccesses</b></code>](#)<Bullet />[`TrafficOptimizationConnection`](/api/objects/traffic-optimization-connection) <Badge class="badge badge--secondary" text="object"/>
+
+> Deactivates the Traffic Optimization Tool for all of the accesses of a given connection
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationMutation.deactivateTrafficOptimizationAllAccesses.<b>where</b></code>](#)<Bullet />[`TrafficOptimizationUpdateAllAccessesWhereInput!`](/api/inputs/traffic-optimization-update-all-accesses-where-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationMutation.deactivateTrafficOptimizationAllAccesses.<b>data</b></code>](#)<Bullet />[`TrafficOptimizationUpdateAllAccessesDataInput!`](/api/inputs/traffic-optimization-update-all-accesses-data-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationMutation.<b>updateTrafficOptimizationAllAccessesCriteria</b></code>](#)<Bullet />[`TrafficOptimizationConnection`](/api/objects/traffic-optimization-connection) <Badge class="badge badge--secondary" text="object"/>
+
+> Updates the Traffic Optimization criteria field for all of the accesses of a given connection
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationMutation.updateTrafficOptimizationAllAccessesCriteria.<b>where</b></code>](#)<Bullet />[`TrafficOptimizationUpdateAllAccessesWhereInput!`](/api/inputs/traffic-optimization-update-all-accesses-where-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationMutation.updateTrafficOptimizationAllAccessesCriteria.<b>data</b></code>](#)<Bullet />[`TrafficOptimizationUpdateAllAccessesCriteriaDataInput!`](/api/inputs/traffic-optimization-update-all-accesses-criteria-data-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+### Returned by
+
+[`trafficOptimization`](/api/mutations/traffic-optimization) <Badge class="badge badge--secondary" text="mutation"/>

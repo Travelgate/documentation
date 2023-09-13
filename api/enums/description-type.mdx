@@ -1,0 +1,88 @@
+---
+id: description-type
+title: DescriptionType
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Indicates the type of description
+
+```graphql
+enum DescriptionType {
+  ADDITIONAL
+  AMENITY
+  ACTIVITY
+  RESTAURANT
+  ROOM
+  GENERAL
+  POOL
+  LOCATION
+  HOW_TO_GET
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>DescriptionType.<b>ADDITIONAL</b></code>](#)
+
+> Additional Information
+
+#### [<code style={{ fontWeight: 'normal' }}>DescriptionType.<b>AMENITY</b></code>](#)
+
+> Amenities
+
+#### [<code style={{ fontWeight: 'normal' }}>DescriptionType.<b>ACTIVITY</b></code>](#)
+
+> Activities
+
+#### [<code style={{ fontWeight: 'normal' }}>DescriptionType.<b>RESTAURANT</b></code>](#)
+
+> Restaurants
+
+#### [<code style={{ fontWeight: 'normal' }}>DescriptionType.<b>ROOM</b></code>](#)
+
+> Rooms
+
+#### [<code style={{ fontWeight: 'normal' }}>DescriptionType.<b>GENERAL</b></code>](#)
+
+> General
+
+#### [<code style={{ fontWeight: 'normal' }}>DescriptionType.<b>POOL</b></code>](#)
+
+> Pools
+
+#### [<code style={{ fontWeight: 'normal' }}>DescriptionType.<b>LOCATION</b></code>](#)
+
+> Locations
+
+#### [<code style={{ fontWeight: 'normal' }}>DescriptionType.<b>HOW_TO_GET</b></code>](#)
+
+> How to get
+
+### Member of
+
+[`Description`](/api/objects/description) <Badge class="badge badge--secondary" text="object"/>

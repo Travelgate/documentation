@@ -1,0 +1,64 @@
+---
+id: ferry-book-input
+title: FerryBookInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+input FerryBookInput {
+  quoteToken: String
+  departureOfferCode: ID
+  returnOfferCode: ID
+  holder: HolderInput
+  traveller: TravellerBookInput
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>FerryBookInput.<b>quoteToken</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Token returned in Quote.
+
+#### [<code style={{ fontWeight: 'normal' }}>FerryBookInput.<b>departureOfferCode</b></code>](#)<Bullet />[`ID`](/api/scalars/id) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Selected departure offer code.
+
+#### [<code style={{ fontWeight: 'normal' }}>FerryBookInput.<b>returnOfferCode</b></code>](#)<Bullet />[`ID`](/api/scalars/id) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Selected return offer code.
+
+#### [<code style={{ fontWeight: 'normal' }}>FerryBookInput.<b>holder</b></code>](#)<Bullet />[`HolderInput`](/api/inputs/holder-input) <Badge class="badge badge--secondary" text="input"/>
+
+> Main passenger.
+
+#### [<code style={{ fontWeight: 'normal' }}>FerryBookInput.<b>traveller</b></code>](#)<Bullet />[`TravellerBookInput`](/api/inputs/traveller-book-input) <Badge class="badge badge--secondary" text="input"/>
+
+>

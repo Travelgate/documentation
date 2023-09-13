@@ -1,0 +1,102 @@
+---
+id: hotel-xdefault-settings-data
+title: HotelXDefaultSettingsData
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type HotelXDefaultSettingsData {
+  context: String
+  language: Language
+  currency: Currency
+  nationality: Country
+  market: String @deprecated
+  markets: [String!]!
+  timeout: Timeout
+  businessRules: BusinessRules
+  accesses: [String!]
+  cache: [String!]
+  plugins: [HotelXDefaultPluginStep!]
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXDefaultSettingsData.<b>context</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Indicates the context of the I/O codes (hotel, board, room and rates)
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXDefaultSettingsData.<b>language</b></code>](#)<Bullet />[`Language`](/api/scalars/language) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Language to be used in request.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXDefaultSettingsData.<b>currency</b></code>](#)<Bullet />[`Currency`](/api/scalars/currency) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Currency requested if supported by supplier.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXDefaultSettingsData.<b>nationality</b></code>](#)<Bullet />[`Country`](/api/scalars/country) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Nationality of the guest (use ISO3166_1_alfa_2).
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXDefaultSettingsData.<b>market</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--deprecated badge--secondary" text="deprecated"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> :::caution DEPRECATED
+> deprecated from 2019-12-11.
+> :::
+>
+> Targeted zone, country or point of sale to be used in request.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXDefaultSettingsData.<b>markets</b></code>](#)<Bullet />[`[String!]!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Targeted zones, countries or point-ofsale-to be used in request.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXDefaultSettingsData.<b>timeout</b></code>](#)<Bullet />[`Timeout`](/api/objects/timeout) <Badge class="badge badge--secondary" text="object"/>
+
+> Group of timeouts to be used in the differents services
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXDefaultSettingsData.<b>businessRules</b></code>](#)<Bullet />[`BusinessRules`](/api/objects/business-rules) <Badge class="badge badge--secondary" text="object"/>
+
+> Business rules.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXDefaultSettingsData.<b>accesses</b></code>](#)<Bullet />[`[String!]`](/api/scalars/string) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Default acceses
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXDefaultSettingsData.<b>cache</b></code>](#)<Bullet />[`[String!]`](/api/scalars/string) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Cache accesses
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXDefaultSettingsData.<b>plugins</b></code>](#)<Bullet />[`[HotelXDefaultPluginStep!]`](/api/objects/hotel-xdefault-plugin-step) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Default plugins
+
+### Member of
+
+[`HotelXDefaultSettings`](/api/objects/hotel-xdefault-settings) <Badge class="badge badge--secondary" text="object"/>

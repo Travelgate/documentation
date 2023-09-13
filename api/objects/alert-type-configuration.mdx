@@ -1,0 +1,83 @@
+---
+id: alert-type-configuration
+title: AlertTypeConfiguration
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Depending on the alert type, typeConfiguration will use some fields
+
+```graphql
+type AlertTypeConfiguration {
+  maxAverageTime: Int
+  maxTime: Int
+  requestsToAlert: Int
+  toCheck: [Int!]
+  toCompare: [Int!]
+  price: AlertPrice
+  bounds: AlertBounds
+  ratios: AlertRatios
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertTypeConfiguration.<b>maxAverageTime</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Average time not allowed in miliseconds. Used for Average time alert type
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertTypeConfiguration.<b>maxTime</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Time not allowed in miliseconds. Used for Average time alert type
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertTypeConfiguration.<b>requestsToAlert</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Requests vs total requests checked to consider alert in ALERTING status. Used for Average time alert type
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertTypeConfiguration.<b>toCheck</b></code>](#)<Bullet />[`[Int!]`](/api/scalars/int) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Error codes to be Checked. By default all error codes excepts 0. Used for Error rate alert Type
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertTypeConfiguration.<b>toCompare</b></code>](#)<Bullet />[`[Int!]`](/api/scalars/int) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Error codes to be Compared with Checked codes. By default all error codes. Used for Error rate alert Type
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertTypeConfiguration.<b>price</b></code>](#)<Bullet />[`AlertPrice`](/api/objects/alert-price) <Badge class="badge badge--secondary" text="object"/>
+
+> Price contains the specific configuration for Price alert Type
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertTypeConfiguration.<b>bounds</b></code>](#)<Bullet />[`AlertBounds`](/api/objects/alert-bounds) <Badge class="badge badge--secondary" text="object"/>
+
+> Bounds contains the specific configuration for Peak Traffic alert Type
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertTypeConfiguration.<b>ratios</b></code>](#)<Bullet />[`AlertRatios`](/api/objects/alert-ratios) <Badge class="badge badge--secondary" text="object"/>
+
+> Ratios contains the specific configuration for Business MEtric alert type
+
+### Member of
+
+[`AlertConfiguration`](/api/objects/alert-configuration) <Badge class="badge badge--secondary" text="object"/>

@@ -1,0 +1,53 @@
+---
+id: business-rules-type
+title: BusinessRulesType
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Business rules type
+
+```graphql
+enum BusinessRulesType {
+  CHEAPER_AMOUNT
+  ROOM_TYPE
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>BusinessRulesType.<b>CHEAPER_AMOUNT</b></code>](#)
+
+> The cheapest options is returned without exceeding the optionsQuota limit.
+
+#### [<code style={{ fontWeight: 'normal' }}>BusinessRulesType.<b>ROOM_TYPE</b></code>](#)
+
+> Groups the option by room type without exceeding the optionsQuota limit.
+
+### Member of
+
+[`BusinessRules`](/api/objects/business-rules) <Badge class="badge badge--secondary" text="object"/><Bullet />[`BusinessRulesInput`](/api/inputs/business-rules-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`HotelXBusinessRulesInput`](/api/inputs/hotel-xbusiness-rules-input) <Badge class="badge badge--secondary" text="input"/>

@@ -1,0 +1,68 @@
+---
+id: priceable
+title: Priceable
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+interface Priceable {
+  currency: Currency!
+  binding: Boolean!
+  net: Float!
+  gross: Float
+  exchange: Exchange!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Priceable.<b>currency</b></code>](#)<Bullet />[`Currency!`](/api/scalars/currency) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Specifies the currency.
+
+#### [<code style={{ fontWeight: 'normal' }}>Priceable.<b>binding</b></code>](#)<Bullet />[`Boolean!`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Is binding.
+
+#### [<code style={{ fontWeight: 'normal' }}>Priceable.<b>net</b></code>](#)<Bullet />[`Float!`](/api/scalars/float) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Specifies the import net.
+
+#### [<code style={{ fontWeight: 'normal' }}>Priceable.<b>gross</b></code>](#)<Bullet />[`Float`](/api/scalars/float) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Specifies the import gross.
+
+#### [<code style={{ fontWeight: 'normal' }}>Priceable.<b>exchange</b></code>](#)<Bullet />[`Exchange!`](/api/objects/exchange) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Specifies the exchange.
+
+### Implemented by
+
+[`Markup`](/api/objects/markup) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Price`](/api/objects/price) <Badge class="badge badge--secondary" text="object"/>

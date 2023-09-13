@@ -1,0 +1,68 @@
+---
+id: buyer-integration-type
+title: BuyerIntegrationType
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+enum BuyerIntegrationType {
+  LEGACY
+  HOTELX
+  CHANNELX
+  B2B_VIRTUAL_AGENCY_TOOL
+  EASY_CONNECT
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>BuyerIntegrationType.<b>LEGACY</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BuyerIntegrationType.<b>HOTELX</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BuyerIntegrationType.<b>CHANNELX</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BuyerIntegrationType.<b>B2B_VIRTUAL_AGENCY_TOOL</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BuyerIntegrationType.<b>EASY_CONNECT</b></code>](#)
+
+>
+
+### Member of
+
+[`Profile`](/api/objects/profile) <Badge class="badge badge--secondary" text="object"/><Bullet />[`ProfileCreateInput`](/api/inputs/profile-create-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`ProfileData`](/api/objects/profile-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`ProfileUpdateInput`](/api/inputs/profile-update-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`TrafficOptimizationAllAccessesRecommendationsWhereInput`](/api/inputs/traffic-optimization-all-accesses-recommendations-where-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`TrafficOptimizationRecommendationAllAccessesData`](/api/objects/traffic-optimization-recommendation-all-accesses-data) <Badge class="badge badge--secondary" text="object"/>

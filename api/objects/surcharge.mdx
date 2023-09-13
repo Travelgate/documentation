@@ -1,0 +1,72 @@
+---
+id: surcharge
+title: Surcharge
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Indicates all the necessary information of the surcharge, which can be already added to the option returned or may be addded later in the booking step.
+
+```graphql
+type Surcharge {
+  code: String
+  chargeType: ChargeType!
+  mandatory: Boolean!
+  price: Price!
+  description: String
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Surcharge.<b>code</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Indicates the surcharge code
+
+#### [<code style={{ fontWeight: 'normal' }}>Surcharge.<b>chargeType</b></code>](#)<Bullet />[`ChargeType!`](/api/enums/charge-type) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> Indicates the charge type. We need to know whether the supplements have to be paid when the consumer gets to the hotel or beforehand.
+> Possible charge types: INCLUDE or EXCLUDE.
+> when INCLUDE : this surcharge is mandatory and included in the option s price
+> when EXCLUDE : this surcharge is not included in the option s price
+
+#### [<code style={{ fontWeight: 'normal' }}>Surcharge.<b>mandatory</b></code>](#)<Bullet />[`Boolean!`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Indicates if the surcharge is mandatory or not. If mandatory, this surcharge will be applied to this option.
+> If the chargeType is EXCLUDE the customer will have to pay it directly at the hotel.
+
+#### [<code style={{ fontWeight: 'normal' }}>Surcharge.<b>price</b></code>](#)<Bullet />[`Price!`](/api/objects/price) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Indicates the surcharge price.
+
+#### [<code style={{ fontWeight: 'normal' }}>Surcharge.<b>description</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Specifies the surcharge description.
+
+### Member of
+
+[`HotelOptionQuote`](/api/objects/hotel-option-quote) <Badge class="badge badge--secondary" text="object"/><Bullet />[`HotelOptionSearch`](/api/objects/hotel-option-search) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Room`](/api/objects/room) <Badge class="badge badge--secondary" text="object"/>

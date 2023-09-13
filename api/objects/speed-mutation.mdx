@@ -1,0 +1,157 @@
+---
+id: speed-mutation
+title: SpeedMutation
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type SpeedMutation {
+  createSpeedAccess(where: SpeedCreateAccessInput!): SpeedAccess
+  activateSpeedAccess(where: SpeedUpdateAccessStatusInput!): SpeedAccess
+  deactivateSpeedAccess(where: SpeedUpdateAccessStatusInput!): SpeedAccess
+  updateSpeedAccessRqMode(where: SpeedUpdateAccessRqModeInput!): SpeedAccess
+  updateSpeedAccessTtl(where: SpeedUpdateAccessTtlInput!): SpeedAccess
+  createSpeedAllAccesses(
+    data: SpeedCreateAllAccessesDataInput!
+    where: SpeedCreateAllAccessesWhereInput!
+  ): SpeedConnection
+  activateSpeedAllAccesses(
+    data: SpeedUpdateAllAccessesDataInput!
+    where: SpeedUpdateAllAccessesWhereInput!
+  ): SpeedConnection
+  deactivateSpeedAllAccesses(
+    data: SpeedUpdateAllAccessesDataInput!
+    where: SpeedUpdateAllAccessesWhereInput!
+  ): SpeedConnection
+  updateSpeedAllAccessesRqMode(
+    data: SpeedUpdateAllAccessesRqModeDataInput!
+    where: SpeedUpdateAllAccessesWhereInput!
+  ): SpeedConnection
+  updateSpeedAllAccessesTtl(
+    data: SpeedUpdateAllAccessesTtlDataInput!
+    where: SpeedUpdateAllAccessesWhereInput!
+  ): SpeedConnection
+  deleteSpeedLegacyHotel(
+    where: SpeedDeleteLegacyHotelWhereInput!
+  ): [AdviseMessage!]
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>SpeedMutation.<b>createSpeedAccess</b></code>](#)<Bullet />[`SpeedAccess`](/api/objects/speed-access) <Badge class="badge badge--secondary" text="object"/>
+
+> Creates a new Speed configuration for a given access
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>SpeedMutation.createSpeedAccess.<b>where</b></code>](#)<Bullet />[`SpeedCreateAccessInput!`](/api/inputs/speed-create-access-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>SpeedMutation.<b>activateSpeedAccess</b></code>](#)<Bullet />[`SpeedAccess`](/api/objects/speed-access) <Badge class="badge badge--secondary" text="object"/>
+
+> Activates the Speed tool for a given access
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>SpeedMutation.activateSpeedAccess.<b>where</b></code>](#)<Bullet />[`SpeedUpdateAccessStatusInput!`](/api/inputs/speed-update-access-status-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>SpeedMutation.<b>deactivateSpeedAccess</b></code>](#)<Bullet />[`SpeedAccess`](/api/objects/speed-access) <Badge class="badge badge--secondary" text="object"/>
+
+> Deactivates the Speed tool for a given access
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>SpeedMutation.deactivateSpeedAccess.<b>where</b></code>](#)<Bullet />[`SpeedUpdateAccessStatusInput!`](/api/inputs/speed-update-access-status-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>SpeedMutation.<b>updateSpeedAccessRqMode</b></code>](#)<Bullet />[`SpeedAccess`](/api/objects/speed-access) <Badge class="badge badge--secondary" text="object"/>
+
+> Updates the Request Mode attribute for the Speed configuration for a given access
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>SpeedMutation.updateSpeedAccessRqMode.<b>where</b></code>](#)<Bullet />[`SpeedUpdateAccessRqModeInput!`](/api/inputs/speed-update-access-rq-mode-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>SpeedMutation.<b>updateSpeedAccessTtl</b></code>](#)<Bullet />[`SpeedAccess`](/api/objects/speed-access) <Badge class="badge badge--secondary" text="object"/>
+
+> Updates the TTL attribute for the Speed configuration for a given access
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>SpeedMutation.updateSpeedAccessTtl.<b>where</b></code>](#)<Bullet />[`SpeedUpdateAccessTtlInput!`](/api/inputs/speed-update-access-ttl-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>SpeedMutation.<b>createSpeedAllAccesses</b></code>](#)<Bullet />[`SpeedConnection`](/api/objects/speed-connection) <Badge class="badge badge--secondary" text="object"/>
+
+> Creates a new Speed configuration for a given connection between a buyer and a seller
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>SpeedMutation.createSpeedAllAccesses.<b>data</b></code>](#)<Bullet />[`SpeedCreateAllAccessesDataInput!`](/api/inputs/speed-create-all-accesses-data-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>SpeedMutation.createSpeedAllAccesses.<b>where</b></code>](#)<Bullet />[`SpeedCreateAllAccessesWhereInput!`](/api/inputs/speed-create-all-accesses-where-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>SpeedMutation.<b>activateSpeedAllAccesses</b></code>](#)<Bullet />[`SpeedConnection`](/api/objects/speed-connection) <Badge class="badge badge--secondary" text="object"/>
+
+> Activates the Speed tool for a given connection between a buyer and a seller
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>SpeedMutation.activateSpeedAllAccesses.<b>data</b></code>](#)<Bullet />[`SpeedUpdateAllAccessesDataInput!`](/api/inputs/speed-update-all-accesses-data-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>SpeedMutation.activateSpeedAllAccesses.<b>where</b></code>](#)<Bullet />[`SpeedUpdateAllAccessesWhereInput!`](/api/inputs/speed-update-all-accesses-where-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>SpeedMutation.<b>deactivateSpeedAllAccesses</b></code>](#)<Bullet />[`SpeedConnection`](/api/objects/speed-connection) <Badge class="badge badge--secondary" text="object"/>
+
+> Deactivates the Speed tool for a given connection between a buyer and a seller
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>SpeedMutation.deactivateSpeedAllAccesses.<b>data</b></code>](#)<Bullet />[`SpeedUpdateAllAccessesDataInput!`](/api/inputs/speed-update-all-accesses-data-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>SpeedMutation.deactivateSpeedAllAccesses.<b>where</b></code>](#)<Bullet />[`SpeedUpdateAllAccessesWhereInput!`](/api/inputs/speed-update-all-accesses-where-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>SpeedMutation.<b>updateSpeedAllAccessesRqMode</b></code>](#)<Bullet />[`SpeedConnection`](/api/objects/speed-connection) <Badge class="badge badge--secondary" text="object"/>
+
+> Updates the Request Mode attribute for the Speed configuration for a given connection between a buyer and a seller
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>SpeedMutation.updateSpeedAllAccessesRqMode.<b>data</b></code>](#)<Bullet />[`SpeedUpdateAllAccessesRqModeDataInput!`](/api/inputs/speed-update-all-accesses-rq-mode-data-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>SpeedMutation.updateSpeedAllAccessesRqMode.<b>where</b></code>](#)<Bullet />[`SpeedUpdateAllAccessesWhereInput!`](/api/inputs/speed-update-all-accesses-where-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>SpeedMutation.<b>updateSpeedAllAccessesTtl</b></code>](#)<Bullet />[`SpeedConnection`](/api/objects/speed-connection) <Badge class="badge badge--secondary" text="object"/>
+
+> Updates the TTL attribute for the Speed configuration for a given connection between a buyer and a seller
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>SpeedMutation.updateSpeedAllAccessesTtl.<b>data</b></code>](#)<Bullet />[`SpeedUpdateAllAccessesTtlDataInput!`](/api/inputs/speed-update-all-accesses-ttl-data-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>SpeedMutation.updateSpeedAllAccessesTtl.<b>where</b></code>](#)<Bullet />[`SpeedUpdateAllAccessesWhereInput!`](/api/inputs/speed-update-all-accesses-where-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>SpeedMutation.<b>deleteSpeedLegacyHotel</b></code>](#)<Bullet />[`[AdviseMessage!]`](/api/objects/advise-message) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Deletes hotels of a given user and supplier
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>SpeedMutation.deleteSpeedLegacyHotel.<b>where</b></code>](#)<Bullet />[`SpeedDeleteLegacyHotelWhereInput!`](/api/inputs/speed-delete-legacy-hotel-where-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+### Returned by
+
+[`speed`](/api/mutations/speed) <Badge class="badge badge--secondary" text="mutation"/>

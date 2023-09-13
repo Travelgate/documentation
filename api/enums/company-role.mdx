@@ -1,0 +1,128 @@
+---
+id: company-role
+title: CompanyRole
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+enum CompanyRole {
+  ACCOUNT_MANAGER_BUYER
+  ACCOUNT_MANAGER_SELLER
+  BILLING_BUYER
+  BILLING_SELLER
+  CONTRACTING
+  GENERIC_ACCOUNT
+  LEGAL
+  PLATFOR_PRIMARY_ACCOUNT
+  PRESS
+  SALES_BUYER
+  SALES_SELLER
+  SERVICE_PROVIDER
+  TECH_BUYER
+  TECH_SELLER
+  TEST
+  TGX_HELPDESK_USER
+  UNKNOWN
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>CompanyRole.<b>ACCOUNT_MANAGER_BUYER</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>CompanyRole.<b>ACCOUNT_MANAGER_SELLER</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>CompanyRole.<b>BILLING_BUYER</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>CompanyRole.<b>BILLING_SELLER</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>CompanyRole.<b>CONTRACTING</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>CompanyRole.<b>GENERIC_ACCOUNT</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>CompanyRole.<b>LEGAL</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>CompanyRole.<b>PLATFOR_PRIMARY_ACCOUNT</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>CompanyRole.<b>PRESS</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>CompanyRole.<b>SALES_BUYER</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>CompanyRole.<b>SALES_SELLER</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>CompanyRole.<b>SERVICE_PROVIDER</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>CompanyRole.<b>TECH_BUYER</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>CompanyRole.<b>TECH_SELLER</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>CompanyRole.<b>TEST</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>CompanyRole.<b>TGX_HELPDESK_USER</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>CompanyRole.<b>UNKNOWN</b></code>](#)
+
+>
+
+### Member of
+
+[`CrmDataInput`](/api/inputs/crm-data-input) <Badge class="badge badge--secondary" text="input"/>

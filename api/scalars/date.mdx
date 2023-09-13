@@ -1,0 +1,41 @@
+---
+id: date
+title: Date
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+The Date type represents Date values. A good example might be a Hotel CheckIn Date.
+In queries or mutations, DateTime fields have to be specified in ISO 8601 format with enclosing double quotes: "2017-10-22".
+
+```graphql
+scalar Date
+```
+
+### Member of
+
+[`BookingAggregation`](/api/objects/booking-aggregation) <Badge class="badge badge--secondary" text="object"/><Bullet />[`BookingHotel`](/api/objects/booking-hotel) <Badge class="badge badge--secondary" text="object"/><Bullet />[`BookingHotelDetails`](/api/objects/booking-hotel-details) <Badge class="badge badge--secondary" text="object"/><Bullet />[`BookReferenceDatesInput`](/api/inputs/book-reference-dates-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`CriteriaBookingDatesInput`](/api/inputs/criteria-booking-dates-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`CriteriaSearch`](/api/objects/criteria-search) <Badge class="badge badge--secondary" text="object"/><Bullet />[`HotelCriteriaSearchInput`](/api/inputs/hotel-criteria-search-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`InsightsCountriesInput`](/api/inputs/insights-countries-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`InsightsCountriesWhereInput`](/api/inputs/insights-countries-where-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`PaymentCardData`](/api/objects/payment-card-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`PaymentXStoredCardData`](/api/objects/payment-xstored-card-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`PaymentXStoredCardInput`](/api/inputs/payment-xstored-card-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`PriceBreakdown`](/api/objects/price-breakdown) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Profile`](/api/objects/profile) <Badge class="badge badge--secondary" text="object"/><Bullet />[`ProfileCreateInput`](/api/inputs/profile-create-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`ProfileData`](/api/objects/profile-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`ProfileUpdateInput`](/api/inputs/profile-update-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`Promotion`](/api/objects/promotion) <Badge class="badge badge--secondary" text="object"/><Bullet />[`RatePlan`](/api/objects/rate-plan) <Badge class="badge badge--secondary" text="object"/><Bullet />[`ReviewedAgeRanges`](/api/objects/reviewed-age-ranges) <Badge class="badge badge--secondary" text="object"/><Bullet />[`ReviewedBool`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="object"/><Bullet />[`ReviewedInt`](/api/objects/reviewed-int) <Badge class="badge badge--secondary" text="object"/><Bullet />[`ReviewedPaymentType`](/api/objects/reviewed-payment-type) <Badge class="badge badge--secondary" text="object"/><Bullet />[`ReviewedRateRule`](/api/objects/reviewed-rate-rule) <Badge class="badge badge--secondary" text="object"/><Bullet />[`ReviewedText`](/api/objects/reviewed-text) <Badge class="badge badge--secondary" text="object"/><Bullet />[`ReviewedTimeZone`](/api/objects/reviewed-time-zone) <Badge class="badge badge--secondary" text="object"/><Bullet />[`ReviwedPaxTypeRangeInRoomCandidates`](/api/objects/reviwed-pax-type-range-in-room-candidates) <Badge class="badge badge--secondary" text="object"/><Bullet />[`SearchCriteriaStaticDates`](/api/objects/search-criteria-static-dates) <Badge class="badge badge--secondary" text="object"/><Bullet />[`SearchCriteriaStaticDatesInput`](/api/inputs/search-criteria-static-dates-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`Supplement`](/api/objects/supplement) <Badge class="badge badge--secondary" text="object"/><Bullet />[`UserOnboardingData`](/api/objects/user-onboarding-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`UserOnboardingUpdateInput`](/api/inputs/user-onboarding-update-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`VirtualCreditCardInput`](/api/inputs/virtual-credit-card-input) <Badge class="badge badge--secondary" text="input"/>

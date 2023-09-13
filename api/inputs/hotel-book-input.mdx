@@ -1,0 +1,81 @@
+---
+id: hotel-book-input
+title: HotelBookInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Criteria of book.
+
+```graphql
+input HotelBookInput {
+  optionRefId: String!
+  language: Language
+  clientReference: String!
+  deltaPrice: DeltaPriceInput
+  paymentCard: PaymentCardInput
+  remarks: String
+  holder: HolderInput!
+  rooms: [BookRoomInput!]!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelBookInput.<b>optionRefId</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> OptionRefID is a unique identifier assigned to each option, which is necessary for performing the Quote Query.
+> It is important to note that this identifier should not be modified or used externally, as it is an internal system identifier.
+> Additionally, it is crucial to understand that the OptionRefID value should not be interpreted in any other way beyond its use within the system.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelBookInput.<b>language</b></code>](#)<Bullet />[`Language`](/api/scalars/language) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Language to be used in request
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelBookInput.<b>clientReference</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Booking ID in client s system.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelBookInput.<b>deltaPrice</b></code>](#)<Bullet />[`DeltaPriceInput`](/api/inputs/delta-price-input) <Badge class="badge badge--secondary" text="input"/>
+
+> Indicates price variation permitted by the client.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelBookInput.<b>paymentCard</b></code>](#)<Bullet />[`PaymentCardInput`](/api/inputs/payment-card-input) <Badge class="badge badge--secondary" text="input"/>
+
+> If the payment is done by credit card, it s mandatory to specify the payment type and the credit card information.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelBookInput.<b>remarks</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Any customer comments for the supplier to consider.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelBookInput.<b>holder</b></code>](#)<Bullet />[`HolderInput!`](/api/inputs/holder-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+> Holder s basic information.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelBookInput.<b>rooms</b></code>](#)<Bullet />[`[BookRoomInput!]!`](/api/inputs/book-room-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+> Rooms within this option.

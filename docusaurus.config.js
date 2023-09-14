@@ -123,7 +123,7 @@ const config = {
             label: 'Documentation',
           },
           {
-            to: '/kb/intro',
+            to: '/kb',
             //type: 'docSidebar',
             sidebarId: 'kbSidebar',
             label: 'Knowledge Base',

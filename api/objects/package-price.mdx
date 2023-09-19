@@ -1,0 +1,73 @@
+---
+id: package-price
+title: PackagePrice
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type PackagePrice {
+  currency: String!
+  binding: Boolean!
+  net: Float!
+  gross: Float!
+  minimumSellingPrice: Float
+  nonCommissionablePrice: Float!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>PackagePrice.<b>currency</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Currency used for the package received in standard ISO 4217
+
+#### [<code style={{ fontWeight: 'normal' }}>PackagePrice.<b>binding</b></code>](#)<Bullet />[`Boolean!`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Specifies if the price is binding or not
+
+#### [<code style={{ fontWeight: 'normal' }}>PackagePrice.<b>net</b></code>](#)<Bullet />[`Float!`](/api/scalars/float) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Net price
+
+#### [<code style={{ fontWeight: 'normal' }}>PackagePrice.<b>gross</b></code>](#)<Bullet />[`Float!`](/api/scalars/float) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Gross price
+
+#### [<code style={{ fontWeight: 'normal' }}>PackagePrice.<b>minimumSellingPrice</b></code>](#)<Bullet />[`Float`](/api/scalars/float) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Minimum price the option can be sold at
+
+#### [<code style={{ fontWeight: 'normal' }}>PackagePrice.<b>nonCommissionablePrice</b></code>](#)<Bullet />[`Float!`](/api/scalars/float) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Price that is not commsissionable
+
+### Member of
+
+[`BookingPayload`](/api/objects/booking-payload) <Badge class="badge badge--secondary" text="object"/><Bullet />[`BookPayload`](/api/objects/book-payload) <Badge class="badge badge--secondary" text="object"/><Bullet />[`QuotePayload`](/api/objects/quote-payload) <Badge class="badge badge--secondary" text="object"/>

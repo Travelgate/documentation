@@ -1,0 +1,78 @@
+---
+id: seller-integration-type
+title: SellerIntegrationType
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Status of the profile
+
+```graphql
+enum SellerIntegrationType {
+  HOTEL_PULL_TGX
+  HOTEL_PULL_TGX_V2
+  HOTEL_PULL_GENERIC
+  HOTEL_PULL_GENERIC_V2
+  HOTEL_PUSH_TGX
+  HOTEL_PUSH_GENERIC
+  DISTRIBUTION
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>SellerIntegrationType.<b>HOTEL_PULL_TGX</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>SellerIntegrationType.<b>HOTEL_PULL_TGX_V2</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>SellerIntegrationType.<b>HOTEL_PULL_GENERIC</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>SellerIntegrationType.<b>HOTEL_PULL_GENERIC_V2</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>SellerIntegrationType.<b>HOTEL_PUSH_TGX</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>SellerIntegrationType.<b>HOTEL_PUSH_GENERIC</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>SellerIntegrationType.<b>DISTRIBUTION</b></code>](#)
+
+>
+
+### Member of
+
+[`Profile`](/api/objects/profile) <Badge class="badge badge--secondary" text="object"/><Bullet />[`ProfileCreateInput`](/api/inputs/profile-create-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`ProfileData`](/api/objects/profile-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`ProfileUpdateInput`](/api/inputs/profile-update-input) <Badge class="badge badge--secondary" text="input"/>

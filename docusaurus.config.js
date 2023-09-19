@@ -35,12 +35,44 @@ const config = {
   plugins:[
     require.resolve("@cmfcmf/docusaurus-search-local"),
     [
+      "@graphql-markdown/docusaurus",
+      {
+        // ... other options
+        schema: 'https://api.travelgatex.com',
+        rootPath: "./api",
+        baseURL: "/",
+        linkRoot: "/api",
+        pretty: true,
+        //homepage: "./docs/api-reference.md",
+        loaders: {
+          UrlLoader: {
+            module: "@graphql-tools/url-loader",
+            // options: {
+            //   headers: {
+            //     "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
+            //   }
+            // }
+          }
+        }
+      },
+    ],
+    [
       '@docusaurus/plugin-content-docs',
       {
         id: 'kb',
         path: 'kb',
         routeBasePath: 'kb',
         sidebarPath: require.resolve('./sidebarsKb.js'),
+        // ... other options
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'api',
+        path: 'api',
+        routeBasePath: 'api',
+        sidebarPath: require.resolve('./api/sidebar-schema.js'),
         // ... other options
       },
     ],
@@ -91,10 +123,17 @@ const config = {
             label: 'Documentation',
           },
           {
-            to: '/kb/intro',
+            to: '/kb',
             //type: 'docSidebar',
             sidebarId: 'kbSidebar',
             label: 'Knowledge Base',
+            position: 'left'
+          },
+          {
+            to: '/api',
+            //type: 'docSidebar',
+            sidebarId: 'schemaSidebar',
+            label: 'API Reference',
             position: 'left'
           },
           // {

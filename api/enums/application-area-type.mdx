@@ -1,0 +1,63 @@
+---
+id: application-area-type
+title: ApplicationAreaType
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+enum ApplicationAreaType {
+  HOTEL
+  ROOM
+  SERVICE
+  GENERAL
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>ApplicationAreaType.<b>HOTEL</b></code>](#)
+
+> Apply at the hotel.
+
+#### [<code style={{ fontWeight: 'normal' }}>ApplicationAreaType.<b>ROOM</b></code>](#)
+
+> Apply in the hotel.
+
+#### [<code style={{ fontWeight: 'normal' }}>ApplicationAreaType.<b>SERVICE</b></code>](#)
+
+> Applies to a service.
+
+#### [<code style={{ fontWeight: 'normal' }}>ApplicationAreaType.<b>GENERAL</b></code>](#)
+
+> Applies in general.
+
+### Member of
+
+[`Amenity`](/api/objects/amenity) <Badge class="badge badge--secondary" text="object"/><Bullet />[`AmenityStatic`](/api/objects/amenity-static) <Badge class="badge badge--secondary" text="object"/><Bullet />[`HotelXAmenityData`](/api/objects/hotel-xamenity-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Media`](/api/objects/media) <Badge class="badge badge--secondary" text="object"/>

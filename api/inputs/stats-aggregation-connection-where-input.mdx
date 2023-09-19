@@ -1,0 +1,104 @@
+---
+id: stats-aggregation-connection-where-input
+title: StatsAggregationConnectionWhereInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Filters able to retrieve stats
+
+```graphql
+input StatsAggregationConnectionWhereInput {
+  mode: ModeType!
+  timeRange: TimeRangeInput!
+  buyer_in: [ID!]
+  seller_in: [ID!]
+  access_in: [ID!]
+  client_in: [ID!]
+  supplier_in: [ID!]
+  operation_in: [ID!]
+  operationType_in: [OperationType!]
+  errorCode_in: [ID!]
+  errorType_in: [ID!]
+  trafficType_in: [TrafficType!]
+  api_in: [ID!]
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsAggregationConnectionWhereInput.<b>mode</b></code>](#)<Bullet />[`ModeType!`](/api/enums/mode-type) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> Retrieve data as a Buyer or as a Seller
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsAggregationConnectionWhereInput.<b>timeRange</b></code>](#)<Bullet />[`TimeRangeInput!`](/api/inputs/time-range-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+> Input time
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsAggregationConnectionWhereInput.<b>buyer_in</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> List of buyer codes
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsAggregationConnectionWhereInput.<b>seller_in</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> List of seller codes
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsAggregationConnectionWhereInput.<b>access_in</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> List of access codes
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsAggregationConnectionWhereInput.<b>client_in</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> List of client codes
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsAggregationConnectionWhereInput.<b>supplier_in</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> List of supplier codes
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsAggregationConnectionWhereInput.<b>operation_in</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> List of operation codes
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsAggregationConnectionWhereInput.<b>operationType_in</b></code>](#)<Bullet />[`[OperationType!]`](/api/enums/operation-type) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> List of operation types
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsAggregationConnectionWhereInput.<b>errorCode_in</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> List of error codes
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsAggregationConnectionWhereInput.<b>errorType_in</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> List of error types
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsAggregationConnectionWhereInput.<b>trafficType_in</b></code>](#)<Bullet />[`[TrafficType!]`](/api/enums/traffic-type) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> List of Traffic Type
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsAggregationConnectionWhereInput.<b>api_in</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> List of Api code

@@ -1,0 +1,76 @@
+---
+id: organization
+title: Organization
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Organization node is the root node in the hierarachy, the folders are the children of the organization and the products are the children of the folders.
+
+```graphql
+type Organization implements Node {
+  code: ID!
+  organizationData: OrganizationData
+  adviseMessage(level: [AdviseMessageLevel]): [AdviseMessage!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Organization.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Organization.<b>organizationData</b></code>](#)<Bullet />[`OrganizationData`](/api/objects/organization-data) <Badge class="badge badge--secondary" text="object"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>Organization.<b>adviseMessage</b></code>](#)<Bullet />[`[AdviseMessage!]`](/api/objects/advise-message) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> List of advise messages.
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>Organization.adviseMessage.<b>level</b></code>](#)<Bullet />[`[AdviseMessageLevel]`](/api/enums/advise-message-level) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Organization.<b>createdAt</b></code>](#)<Bullet />[`DateTime!`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Date created
+
+#### [<code style={{ fontWeight: 'normal' }}>Organization.<b>updatedAt</b></code>](#)<Bullet />[`DateTime!`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Date updated
+
+### Interfaces
+
+#### [`Node`](/api/interfaces/node) <Badge class="badge badge--secondary" text="interface"/>
+
+>
+
+### Member of
+
+[`AccessData`](/api/objects/access-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`AdminMutation`](/api/objects/admin-mutation) <Badge class="badge badge--secondary" text="object"/><Bullet />[`AuditRuleData`](/api/objects/audit-rule-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`ClientData`](/api/objects/client-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`DomainData`](/api/objects/domain-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`HubUserData`](/api/objects/hub-user-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`OrganizationData`](/api/objects/organization-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`OrganizationEdge`](/api/objects/organization-edge) <Badge class="badge badge--secondary" text="object"/><Bullet />[`OrganizationMemberRole`](/api/objects/organization-member-role) <Badge class="badge badge--secondary" text="object"/><Bullet />[`PointOfSaleData`](/api/objects/point-of-sale-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Profile`](/api/objects/profile) <Badge class="badge badge--secondary" text="object"/><Bullet />[`ProfileData`](/api/objects/profile-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`RecommendationData`](/api/objects/recommendation-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`SocialMutation`](/api/objects/social-mutation) <Badge class="badge badge--secondary" text="object"/><Bullet />[`SpeedOrganization`](/api/objects/speed-organization) <Badge class="badge badge--secondary" text="object"/><Bullet />[`StatsAggregationData`](/api/objects/stats-aggregation-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`SupplierData`](/api/objects/supplier-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`SystemData`](/api/objects/system-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`TrafficOptimizationHotelStatsAggregationData`](/api/objects/traffic-optimization-hotel-stats-aggregation-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`TrafficOptimizationOrganization`](/api/objects/traffic-optimization-organization) <Badge class="badge badge--secondary" text="object"/><Bullet />[`TrafficOptimizationStatsAggregationData`](/api/objects/traffic-optimization-stats-aggregation-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`TrafficOptimizationStatsHotelBlacklist`](/api/objects/traffic-optimization-stats-hotel-blacklist) <Badge class="badge badge--secondary" text="object"/>

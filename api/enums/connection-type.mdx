@@ -1,0 +1,143 @@
+---
+id: connection-type
+title: ConnectionType
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+enum ConnectionType {
+  HOTEL_X_BUYER_ONLY
+  HOTEL_LEGACY_BUYER_ONLY
+  CHANNEL_X_BUYER_ONLY
+  HOTEL_PULL_LEGACY_SELLER_ONLY
+  HOTEL_PULL_SELLER_GENERIC
+  HOTEL_PUSH_LEGACY_SELLER_ONLY
+  HOTEL_PUSH_SELLER_GENERIC
+  DMC_X
+  FLIGHTS_LEGACY_SELLER_ONLY
+  PAYMENT_LEGACY_SELLER_ONLY
+  B2B_VIRTUAL_AGENCY_TOOL_BUYER_ONLY
+  TRANSPORTATION_FLIGHT_LEGACY_BUYER_ONLY
+  FLIGHT_X_BUYER_ONLY
+  DIRECT_X
+  DISTRIBUTE
+  INVENTORY
+  ACTIVITIES_LEGACY
+  CARS_LEGACY
+  TRANSFERS_LEGACY
+  VIRTUAL_ACCOUNT_LEGACY
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>ConnectionType.<b>HOTEL_X_BUYER_ONLY</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ConnectionType.<b>HOTEL_LEGACY_BUYER_ONLY</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ConnectionType.<b>CHANNEL_X_BUYER_ONLY</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ConnectionType.<b>HOTEL_PULL_LEGACY_SELLER_ONLY</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ConnectionType.<b>HOTEL_PULL_SELLER_GENERIC</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ConnectionType.<b>HOTEL_PUSH_LEGACY_SELLER_ONLY</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ConnectionType.<b>HOTEL_PUSH_SELLER_GENERIC</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ConnectionType.<b>DMC_X</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ConnectionType.<b>FLIGHTS_LEGACY_SELLER_ONLY</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ConnectionType.<b>PAYMENT_LEGACY_SELLER_ONLY</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ConnectionType.<b>B2B_VIRTUAL_AGENCY_TOOL_BUYER_ONLY</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ConnectionType.<b>TRANSPORTATION_FLIGHT_LEGACY_BUYER_ONLY</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ConnectionType.<b>FLIGHT_X_BUYER_ONLY</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ConnectionType.<b>DIRECT_X</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ConnectionType.<b>DISTRIBUTE</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ConnectionType.<b>INVENTORY</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ConnectionType.<b>ACTIVITIES_LEGACY</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ConnectionType.<b>CARS_LEGACY</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ConnectionType.<b>TRANSFERS_LEGACY</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ConnectionType.<b>VIRTUAL_ACCOUNT_LEGACY</b></code>](#)
+
+>
+
+### Member of
+
+[`CompanyCrmData`](/api/objects/company-crm-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`CompanyCrmDataInput`](/api/inputs/company-crm-data-input) <Badge class="badge badge--secondary" text="input"/>

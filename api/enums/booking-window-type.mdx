@@ -1,0 +1,83 @@
+---
+id: booking-window-type
+title: BookingWindowType
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+BookingWindow
+
+```graphql
+enum BookingWindowType {
+  LAST_SECOND
+  LAST_MINUTE
+  ABOUT_ONE_WEEK
+  ABOUT_TWO_WEEKS
+  ABOUT_ONE_MONTH
+  ABOUT_TWO_MONTHS
+  ABOUT_THREE_MONTHS
+  MORE_THAN_THREE_MONTHS
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingWindowType.<b>LAST_SECOND</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingWindowType.<b>LAST_MINUTE</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingWindowType.<b>ABOUT_ONE_WEEK</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingWindowType.<b>ABOUT_TWO_WEEKS</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingWindowType.<b>ABOUT_ONE_MONTH</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingWindowType.<b>ABOUT_TWO_MONTHS</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingWindowType.<b>ABOUT_THREE_MONTHS</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingWindowType.<b>MORE_THAN_THREE_MONTHS</b></code>](#)
+
+>
+
+### Member of
+
+[`BookingAggregation`](/api/objects/booking-aggregation) <Badge class="badge badge--secondary" text="object"/>

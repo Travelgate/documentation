@@ -1,0 +1,75 @@
+---
+id: system-data
+title: SystemData
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type SystemData {
+  code: ID!
+  name: ID!
+  isActive: Boolean!
+  group: Group
+  owner: Organization
+  suppliers(filter: SupplierFilter): [Supplier]!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>SystemData.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> ID identifier of a System
+
+#### [<code style={{ fontWeight: 'normal' }}>SystemData.<b>name</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> System complete name
+
+#### [<code style={{ fontWeight: 'normal' }}>SystemData.<b>isActive</b></code>](#)<Bullet />[`Boolean!`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Indicates whether a System is active or inactive
+
+#### [<code style={{ fontWeight: 'normal' }}>SystemData.<b>group</b></code>](#)<Bullet />[`Group`](/api/objects/group) <Badge class="badge badge--secondary" text="object"/>
+
+> Indicates the group where the System belongs
+
+#### [<code style={{ fontWeight: 'normal' }}>SystemData.<b>owner</b></code>](#)<Bullet />[`Organization`](/api/objects/organization) <Badge class="badge badge--secondary" text="object"/>
+
+> System owner
+
+#### [<code style={{ fontWeight: 'normal' }}>SystemData.<b>suppliers</b></code>](#)<Bullet />[`[Supplier]!`](/api/objects/supplier) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Obtain all suppliers for a filter.
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>SystemData.suppliers.<b>filter</b></code>](#)<Bullet />[`SupplierFilter`](/api/inputs/supplier-filter) <Badge class="badge badge--secondary" text="input"/>
+
+### Member of
+
+[`System`](/api/objects/system) <Badge class="badge badge--secondary" text="object"/>

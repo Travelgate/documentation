@@ -1,0 +1,58 @@
+---
+id: cancel-payload
+title: CancelPayload
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type CancelPayload {
+  adviseMessages: [AdviseMessage]
+  bookReference: BookReference
+  bookStatus: PackageBookStatus
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>CancelPayload.<b>adviseMessages</b></code>](#)<Bullet />[`[AdviseMessage]`](/api/objects/advise-message) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> List of errors
+
+#### [<code style={{ fontWeight: 'normal' }}>CancelPayload.<b>bookReference</b></code>](#)<Bullet />[`BookReference`](/api/objects/book-reference) <Badge class="badge badge--secondary" text="object"/>
+
+> Client and supplier locators of the booking
+
+#### [<code style={{ fontWeight: 'normal' }}>CancelPayload.<b>bookStatus</b></code>](#)<Bullet />[`PackageBookStatus`](/api/enums/package-book-status) <Badge class="badge badge--secondary" text="enum"/>
+
+> Status of the booking (OK, Cancelled...)
+
+### Member of
+
+[`PackageMutation`](/api/objects/package-mutation) <Badge class="badge badge--secondary" text="object"/>

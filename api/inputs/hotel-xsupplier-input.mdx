@@ -1,0 +1,60 @@
+---
+id: hotel-xsupplier-input
+title: HotelXSupplierInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Supplier object. Contains its own settings, code and access.
+
+```graphql
+input HotelXSupplierInput {
+  settings: SettingsBaseInput
+  code: String!
+  accesses: [HotelXAccessInput!]
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXSupplierInput.<b>settings</b></code>](#)<Bullet />[`SettingsBaseInput`](/api/inputs/settings-base-input) <Badge class="badge badge--secondary" text="input"/>
+
+> You can configure an special settings for any supplier. This level overwrites the avail settings level but not the
+> access settings level.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXSupplierInput.<b>code</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Code that represents a supplier in our system.
+> This information is mandatory.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXSupplierInput.<b>accesses</b></code>](#)<Bullet />[`[HotelXAccessInput!]`](/api/inputs/hotel-xaccess-input) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="input"/>
+
+> Array of accesses that can overwrite an existing access information or include a new access for this avail.
+
+### Member of
+
+[`HotelSettingsInput`](/api/inputs/hotel-settings-input) <Badge class="badge badge--secondary" text="input"/>

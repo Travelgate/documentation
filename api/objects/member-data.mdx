@@ -1,0 +1,195 @@
+---
+id: member-data
+title: MemberData
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type MemberData {
+  id: ID!
+  code: ID!
+  label: String
+  isActive: Boolean!
+  firstName: String
+  lastName: String
+  type: MemberType!
+  crmData: CrmData
+  groups(
+    codes: [ID!]
+    type: GroupType
+    first: Int
+    last: Int
+    before: String
+    after: String
+  ): GroupConnection
+  roles(
+    codes: [ID!]
+    type: RoleType
+    first: Int
+    last: Int
+    before: String
+    after: String
+  ): RoleConnection
+  macroPermissions(
+    codes: [ID!]
+    first: Int
+    last: Int
+    before: String
+    after: String
+  ): MacroPermissionsConnection
+  organizationMemberRoles(
+    orgCodes: [ID!]
+    roleCodes: [RoleMemberType!]
+  ): [OrganizationMemberRole!]
+  phone: String
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>MemberData.<b>id</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>MemberData.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>MemberData.<b>label</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>MemberData.<b>isActive</b></code>](#)<Bullet />[`Boolean!`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Can members does queries in the platform?
+
+#### [<code style={{ fontWeight: 'normal' }}>MemberData.<b>firstName</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>MemberData.<b>lastName</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>MemberData.<b>type</b></code>](#)<Bullet />[`MemberType!`](/api/enums/member-type) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> Member Type
+
+#### [<code style={{ fontWeight: 'normal' }}>MemberData.<b>crmData</b></code>](#)<Bullet />[`CrmData`](/api/objects/crm-data) <Badge class="badge badge--secondary" text="object"/>
+
+> CRM specific data
+
+#### [<code style={{ fontWeight: 'normal' }}>MemberData.<b>groups</b></code>](#)<Bullet />[`GroupConnection`](/api/objects/group-connection) <Badge class="badge badge--secondary" text="object"/>
+
+> which groups the member is in?
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>MemberData.groups.<b>codes</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>MemberData.groups.<b>type</b></code>](#)<Bullet />[`GroupType`](/api/enums/group-type) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>MemberData.groups.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>MemberData.groups.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>MemberData.groups.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>MemberData.groups.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>MemberData.<b>roles</b></code>](#)<Bullet />[`RoleConnection`](/api/objects/role-connection) <Badge class="badge badge--secondary" text="object"/>
+
+> which roles the member has in?
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>MemberData.roles.<b>codes</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>MemberData.roles.<b>type</b></code>](#)<Bullet />[`RoleType`](/api/enums/role-type) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>MemberData.roles.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>MemberData.roles.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>MemberData.roles.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>MemberData.roles.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>MemberData.<b>macroPermissions</b></code>](#)<Bullet />[`MacroPermissionsConnection`](/api/objects/macro-permissions-connection) <Badge class="badge badge--secondary" text="object"/>
+
+> ##### [<code style={{ fontWeight: 'normal' }}>MemberData.macroPermissions.<b>codes</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>MemberData.macroPermissions.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>MemberData.macroPermissions.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>MemberData.macroPermissions.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>MemberData.macroPermissions.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>MemberData.<b>organizationMemberRoles</b></code>](#)<Bullet />[`[OrganizationMemberRole!]`](/api/objects/organization-member-role) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> ##### [<code style={{ fontWeight: 'normal' }}>MemberData.organizationMemberRoles.<b>orgCodes</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>MemberData.organizationMemberRoles.<b>roleCodes</b></code>](#)<Bullet />[`[RoleMemberType!]`](/api/enums/role-member-type) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>MemberData.<b>phone</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+### Member of
+
+[`Member`](/api/objects/member) <Badge class="badge badge--secondary" text="object"/><Bullet />[`RequesterInfo`](/api/objects/requester-info) <Badge class="badge badge--secondary" text="object"/>

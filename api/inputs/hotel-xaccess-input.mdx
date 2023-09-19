@@ -1,0 +1,60 @@
+---
+id: hotel-xaccess-input
+title: HotelXAccessInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+AccessInput overwrites an existent access in our Back Office or creates a new
+one to be used in this search query only. An access object contains its own code, configuration and settings.
+
+```graphql
+input HotelXAccessInput {
+  accessId: ID!
+  configuration: ConfigurationInput
+  settings: SettingsBaseInput
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXAccessInput.<b>accessId</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> The accessID used to identify the existing access in our Back Office in order to
+> overwrite it. Acts as an identifier in this search. It can either exist or not.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXAccessInput.<b>configuration</b></code>](#)<Bullet />[`ConfigurationInput`](/api/inputs/configuration-input) <Badge class="badge badge--secondary" text="input"/>
+
+> Information required to access the supplier s system.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXAccessInput.<b>settings</b></code>](#)<Bullet />[`SettingsBaseInput`](/api/inputs/settings-base-input) <Badge class="badge badge--secondary" text="input"/>
+
+> You can configure an special settings for any access. This level overwrites the search and supplier settings levels.
+
+### Member of
+
+[`HotelXSupplierInput`](/api/inputs/hotel-xsupplier-input) <Badge class="badge badge--secondary" text="input"/>

@@ -1,0 +1,93 @@
+---
+id: stat-access
+title: StatAccess
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type StatAccess {
+  name: String!
+  total: Stat!
+  staticConfiguration: Stat
+  hotels: Int!
+  zones: Int!
+  cities: Int!
+  requestAccess: StatPlugin
+  responseAccess: StatPlugin
+  transactions: [StatTransaction!]!
+  plugins: [StatPlugin!]
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>StatAccess.<b>name</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Access name
+
+#### [<code style={{ fontWeight: 'normal' }}>StatAccess.<b>total</b></code>](#)<Bullet />[`Stat!`](/api/objects/stat) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Total access time
+
+#### [<code style={{ fontWeight: 'normal' }}>StatAccess.<b>staticConfiguration</b></code>](#)<Bullet />[`Stat`](/api/objects/stat) <Badge class="badge badge--secondary" text="object"/>
+
+> Static configuration time
+
+#### [<code style={{ fontWeight: 'normal' }}>StatAccess.<b>hotels</b></code>](#)<Bullet />[`Int!`](/api/scalars/int) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Number of hotels
+
+#### [<code style={{ fontWeight: 'normal' }}>StatAccess.<b>zones</b></code>](#)<Bullet />[`Int!`](/api/scalars/int) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Number of zones
+
+#### [<code style={{ fontWeight: 'normal' }}>StatAccess.<b>cities</b></code>](#)<Bullet />[`Int!`](/api/scalars/int) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Number of cities
+
+#### [<code style={{ fontWeight: 'normal' }}>StatAccess.<b>requestAccess</b></code>](#)<Bullet />[`StatPlugin`](/api/objects/stat-plugin) <Badge class="badge badge--secondary" text="object"/>
+
+> Access request time
+
+#### [<code style={{ fontWeight: 'normal' }}>StatAccess.<b>responseAccess</b></code>](#)<Bullet />[`StatPlugin`](/api/objects/stat-plugin) <Badge class="badge badge--secondary" text="object"/>
+
+> Access response time
+
+#### [<code style={{ fontWeight: 'normal' }}>StatAccess.<b>transactions</b></code>](#)<Bullet />[`[StatTransaction!]!`](/api/objects/stat-transaction) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Detail transaction time
+
+#### [<code style={{ fontWeight: 'normal' }}>StatAccess.<b>plugins</b></code>](#)<Bullet />[`[StatPlugin!]`](/api/objects/stat-plugin) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Plugin execution time
+
+### Member of
+
+[`StatsRequest`](/api/objects/stats-request) <Badge class="badge badge--secondary" text="object"/>

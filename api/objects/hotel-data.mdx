@@ -1,0 +1,183 @@
+---
+id: hotel-data
+title: HotelData
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Hotel data
+
+```graphql
+type HotelData {
+  code: ID!
+  hotelCode: String!
+  hotelCodeSupplier: String
+  giataData: GiataData
+  hotelName: String
+  categoryCode: String
+  property: Property @deprecated
+  chainCode: String
+  exclusiveDeal: Boolean!
+  location: Location!
+  contact: Contact
+  rank: [Int!]!
+  cardTypes: [PaymentCardType!]
+  amenities: [AmenityStatic!] @deprecated
+  medias: [Media!]
+  descriptions(
+    types: [DescriptionType!]
+    languages: [Language!]
+  ): [Description!]
+  rooms: RoomConnection
+  propertyType: PropertyType
+  mandatoryFees: [MandatoryFee!]
+  checkIn: CheckInformation
+  checkOut: CheckInformation
+  allAmenities(mapOptions: [HotelXMapOptionInput!]): HotelXAmenityConnection
+  mappings(contexts: [String!]): [HotelXMappedCode!]
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelData.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Internal code.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelData.<b>hotelCode</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Code to perform availability.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelData.<b>hotelCodeSupplier</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Native supplier hotel code.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelData.<b>giataData</b></code>](#)<Bullet />[`GiataData`](/api/objects/giata-data) <Badge class="badge badge--secondary" text="object"/>
+
+> Giata data stored in giata.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelData.<b>hotelName</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Name of the hotel in the Supplier selected.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelData.<b>categoryCode</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Hotel category (for example number of stars).
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelData.<b>property</b></code>](#)<Bullet />[`Property`](/api/objects/property) <Badge class="badge badge--deprecated badge--secondary" text="deprecated"/> <Badge class="badge badge--secondary" text="object"/>
+
+> :::caution DEPRECATED
+> Deprecated from 2019-10-16. Redundant information
+> :::
+>
+> Indicates property type
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelData.<b>chainCode</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Hotel chain code
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelData.<b>exclusiveDeal</b></code>](#)<Bullet />[`Boolean!`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Indicates that the Hotel has an Exclusive Deal.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelData.<b>location</b></code>](#)<Bullet />[`Location!`](/api/objects/location) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Indicates the location of the hotel
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelData.<b>contact</b></code>](#)<Bullet />[`Contact`](/api/objects/contact) <Badge class="badge badge--secondary" text="object"/>
+
+> Contact contains information about hotel contact.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelData.<b>rank</b></code>](#)<Bullet />[`[Int!]!`](/api/scalars/int) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Rank indicates the supplier categorization.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelData.<b>cardTypes</b></code>](#)<Bullet />[`[PaymentCardType!]`](/api/enums/payment-card-type) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> List of credit cards
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelData.<b>amenities</b></code>](#)<Bullet />[`[AmenityStatic!]`](/api/objects/amenity-static) <Badge class="badge badge--deprecated badge--secondary" text="deprecated"/> <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> :::caution DEPRECATED
+> deprecated from 2021-09-17. Please, use allAmenities
+> :::
+>
+> Amenities
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelData.<b>medias</b></code>](#)<Bullet />[`[Media!]`](/api/objects/media) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Medias
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelData.<b>descriptions</b></code>](#)<Bullet />[`[Description!]`](/api/objects/description) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Descriptions
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>HotelData.descriptions.<b>types</b></code>](#)<Bullet />[`[DescriptionType!]`](/api/enums/description-type) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="enum"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>HotelData.descriptions.<b>languages</b></code>](#)<Bullet />[`[Language!]`](/api/scalars/language) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelData.<b>rooms</b></code>](#)<Bullet />[`RoomConnection`](/api/objects/room-connection) <Badge class="badge badge--secondary" text="object"/>
+
+> Rooms
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelData.<b>propertyType</b></code>](#)<Bullet />[`PropertyType`](/api/objects/property-type) <Badge class="badge badge--secondary" text="object"/>
+
+> Indicates property type.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelData.<b>mandatoryFees</b></code>](#)<Bullet />[`[MandatoryFee!]`](/api/objects/mandatory-fee) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Mandatory fees of property
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelData.<b>checkIn</b></code>](#)<Bullet />[`CheckInformation`](/api/objects/check-information) <Badge class="badge badge--secondary" text="object"/>
+
+> CheckIn information
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelData.<b>checkOut</b></code>](#)<Bullet />[`CheckInformation`](/api/objects/check-information) <Badge class="badge badge--secondary" text="object"/>
+
+> CheckOut information
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelData.<b>allAmenities</b></code>](#)<Bullet />[`HotelXAmenityConnection`](/api/objects/hotel-xamenity-connection) <Badge class="badge badge--secondary" text="object"/>
+
+> Amenities with mapping
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>HotelData.allAmenities.<b>mapOptions</b></code>](#)<Bullet />[`[HotelXMapOptionInput!]`](/api/inputs/hotel-xmap-option-input) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelData.<b>mappings</b></code>](#)<Bullet />[`[HotelXMappedCode!]`](/api/objects/hotel-xmapped-code) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Mapping codes for this property in various contexts, e.g.: TGX, GIATA,...
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>HotelData.mappings.<b>contexts</b></code>](#)<Bullet />[`[String!]`](/api/scalars/string) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+### Member of
+
+[`Hotel`](/api/objects/hotel) <Badge class="badge badge--secondary" text="object"/>
+
+### Implemented by
+
+[`DestinationSearchResult`](/api/unions/destination-search-result) <Badge class="badge badge--secondary" text="union"/>

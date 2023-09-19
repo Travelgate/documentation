@@ -1,0 +1,82 @@
+---
+id: stats-info
+title: StatsInfo
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Details of an specific error
+
+```graphql
+type StatsInfo {
+  code: ID!
+  type: StatsInfoTypes!
+  hits: Int64!
+  time: Int! @deprecated
+  averageTime: Int64!
+  totalTime: Int64!
+  assets: [StatsAsset!]
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsInfo.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsInfo.<b>type</b></code>](#)<Bullet />[`StatsInfoTypes!`](/api/enums/stats-info-types) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> Stats type
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsInfo.<b>hits</b></code>](#)<Bullet />[`Int64!`](/api/scalars/int-64) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Total hits
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsInfo.<b>time</b></code>](#)<Bullet />[`Int!`](/api/scalars/int) <Badge class="badge badge--deprecated badge--secondary" text="deprecated"/> <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> :::caution DEPRECATED
+> deprecated from 2019-04-03. Added new fields averageTime and totalTime.
+> :::
+>
+> Average time (ms)
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsInfo.<b>averageTime</b></code>](#)<Bullet />[`Int64!`](/api/scalars/int-64) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Average time (ms)
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsInfo.<b>totalTime</b></code>](#)<Bullet />[`Int64!`](/api/scalars/int-64) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Total time (ms)
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsInfo.<b>assets</b></code>](#)<Bullet />[`[StatsAsset!]`](/api/objects/stats-asset) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Details about errors.
+
+### Member of
+
+[`OperationDetailed`](/api/objects/operation-detailed) <Badge class="badge badge--secondary" text="object"/>

@@ -1,0 +1,135 @@
+---
+id: logging-legacy-filter-input
+title: LoggingLegacyFilterInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Filters needed to do a search.
+From (Start date of search - YYYY-MM-DD HH:mm:ss), To (End date of search - YYYY-MM-DD HH:mm:ss),
+
+```graphql
+input LoggingLegacyFilterInput {
+  from: DateTime
+  to: DateTime
+  timeRange: TimeRangeInput
+  requestMode: ModeType!
+  trafficType: [TrafficType!]
+  cloudEnvironments: [CloudEnvironment!]
+  apiCode: ID!
+  operationCodes: [ID!]
+  operationTypes: [OperationType!]
+  sessionIDs: [String!]
+  accessCodes: [ID!]
+  clientCodes: [ID!]
+  clientNames: [ID!]
+  supplierCodes: [ID!]
+  groups: [ID!]
+  errors: [ErrorFilter!]
+  first: Int
+  reference: ReferenceFilter
+  rangeFilters: [RangeFilter!]
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>LoggingLegacyFilterInput.<b>from</b></code>](#)<Bullet />[`DateTime`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="scalar"/>
+
+> From date of search
+
+#### [<code style={{ fontWeight: 'normal' }}>LoggingLegacyFilterInput.<b>to</b></code>](#)<Bullet />[`DateTime`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="scalar"/>
+
+> To date of search
+
+#### [<code style={{ fontWeight: 'normal' }}>LoggingLegacyFilterInput.<b>timeRange</b></code>](#)<Bullet />[`TimeRangeInput`](/api/inputs/time-range-input) <Badge class="badge badge--secondary" text="input"/>
+
+> Range of the time
+
+#### [<code style={{ fontWeight: 'normal' }}>LoggingLegacyFilterInput.<b>requestMode</b></code>](#)<Bullet />[`ModeType!`](/api/enums/mode-type) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> Buyer or Seller
+
+#### [<code style={{ fontWeight: 'normal' }}>LoggingLegacyFilterInput.<b>trafficType</b></code>](#)<Bullet />[`[TrafficType!]`](/api/enums/traffic-type) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> To serch in Speed
+
+#### [<code style={{ fontWeight: 'normal' }}>LoggingLegacyFilterInput.<b>cloudEnvironments</b></code>](#)<Bullet />[`[CloudEnvironment!]`](/api/enums/cloud-environment) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> List of environments
+
+#### [<code style={{ fontWeight: 'normal' }}>LoggingLegacyFilterInput.<b>apiCode</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> List of API codes
+
+#### [<code style={{ fontWeight: 'normal' }}>LoggingLegacyFilterInput.<b>operationCodes</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> List of operation codes
+
+#### [<code style={{ fontWeight: 'normal' }}>LoggingLegacyFilterInput.<b>operationTypes</b></code>](#)<Bullet />[`[OperationType!]`](/api/enums/operation-type) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> List of operation types
+
+#### [<code style={{ fontWeight: 'normal' }}>LoggingLegacyFilterInput.<b>sessionIDs</b></code>](#)<Bullet />[`[String!]`](/api/scalars/string) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> List of sessions
+
+#### [<code style={{ fontWeight: 'normal' }}>LoggingLegacyFilterInput.<b>accessCodes</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> List of access codes
+
+#### [<code style={{ fontWeight: 'normal' }}>LoggingLegacyFilterInput.<b>clientCodes</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> List of client codes
+
+#### [<code style={{ fontWeight: 'normal' }}>LoggingLegacyFilterInput.<b>clientNames</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> List of client names
+
+#### [<code style={{ fontWeight: 'normal' }}>LoggingLegacyFilterInput.<b>supplierCodes</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> List of supplier codes
+
+#### [<code style={{ fontWeight: 'normal' }}>LoggingLegacyFilterInput.<b>groups</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> List of groups
+
+#### [<code style={{ fontWeight: 'normal' }}>LoggingLegacyFilterInput.<b>errors</b></code>](#)<Bullet />[`[ErrorFilter!]`](/api/inputs/error-filter) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="input"/>
+
+> List of error codes
+
+#### [<code style={{ fontWeight: 'normal' }}>LoggingLegacyFilterInput.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Works like LIMIT of SQL
+
+#### [<code style={{ fontWeight: 'normal' }}>LoggingLegacyFilterInput.<b>reference</b></code>](#)<Bullet />[`ReferenceFilter`](/api/inputs/reference-filter) <Badge class="badge badge--secondary" text="input"/>
+
+> Locator to search in Insights
+
+#### [<code style={{ fontWeight: 'normal' }}>LoggingLegacyFilterInput.<b>rangeFilters</b></code>](#)<Bullet />[`[RangeFilter!]`](/api/inputs/range-filter) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="input"/>
+
+> Filter of the execution time

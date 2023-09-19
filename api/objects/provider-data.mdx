@@ -1,0 +1,90 @@
+---
+id: provider-data
+title: ProviderData
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Extended Provider information
+
+```graphql
+type ProviderData {
+  id: ID!
+  code: ID!
+  name: String!
+  isActive: Boolean!
+  isPublic: Boolean @deprecated
+  audits(
+    where: EntityAuditWhereInput
+    orderBy: EntityAuditOrderByEnum
+  ): EntityAuditConnection!
+  connectionType: ProviderConnectionType!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>ProviderData.<b>id</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Provider unique ID. Format: integer.
+
+#### [<code style={{ fontWeight: 'normal' }}>ProviderData.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Provider unique code
+
+#### [<code style={{ fontWeight: 'normal' }}>ProviderData.<b>name</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Provider name
+
+#### [<code style={{ fontWeight: 'normal' }}>ProviderData.<b>isActive</b></code>](#)<Bullet />[`Boolean!`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Indicates whether a Provider is active.
+> If the Provider is deactivated, all its Suppliers will be deactivated
+
+#### [<code style={{ fontWeight: 'normal' }}>ProviderData.<b>isPublic</b></code>](#)<Bullet />[`Boolean`](/api/scalars/boolean) <Badge class="badge badge--deprecated badge--secondary" text="deprecated"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> :::caution DEPRECATED
+> deprecated from 2019-01-01. Not used
+> :::
+
+#### [<code style={{ fontWeight: 'normal' }}>ProviderData.<b>audits</b></code>](#)<Bullet />[`EntityAuditConnection!`](/api/objects/entity-audit-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Audits it shows the provider's change history
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>ProviderData.audits.<b>where</b></code>](#)<Bullet />[`EntityAuditWhereInput`](/api/inputs/entity-audit-where-input) <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>ProviderData.audits.<b>orderBy</b></code>](#)<Bullet />[`EntityAuditOrderByEnum`](/api/enums/entity-audit-order-by-enum) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProviderData.<b>connectionType</b></code>](#)<Bullet />[`ProviderConnectionType!`](/api/enums/provider-connection-type) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> Indicates connection type of Supplier
+
+### Member of
+
+[`Provider`](/api/objects/provider) <Badge class="badge badge--secondary" text="object"/><Bullet />[`SupplierData`](/api/objects/supplier-data) <Badge class="badge badge--secondary" text="object"/>

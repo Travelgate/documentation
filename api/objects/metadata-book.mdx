@@ -1,0 +1,78 @@
+---
+id: metadata-book
+title: MetadataBook
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Return information about book
+
+```graphql
+type MetadataBook {
+  allowsDeltaPrice: ReviewedBool!
+  requiredAllPassengers: ReviewedBool!
+  allowsRemarks: ReviewedBool!
+  informBillingSupplier: ReviewedBool!
+  informHotelReference: ReviewedBool!
+  informPrice: ReviewedBool!
+  requiredNationality: ReviewedBool
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataBook.<b>allowsDeltaPrice</b></code>](#)<Bullet />[`ReviewedBool!`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Allows a margin stipulated by the client for booking with a higher price (delta).
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataBook.<b>requiredAllPassengers</b></code>](#)<Bullet />[`ReviewedBool!`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Required data for all passengers (names and surnames).
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataBook.<b>allowsRemarks</b></code>](#)<Bullet />[`ReviewedBool!`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Informs if the supplier allows send remarks.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataBook.<b>informBillingSupplier</b></code>](#)<Bullet />[`ReviewedBool!`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Informs if the supplier billing code.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataBook.<b>informHotelReference</b></code>](#)<Bullet />[`ReviewedBool!`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Informs if the supplier returns the hotel reference number.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataBook.<b>informPrice</b></code>](#)<Bullet />[`ReviewedBool!`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> The supplier informs the book price.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataBook.<b>requiredNationality</b></code>](#)<Bullet />[`ReviewedBool`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="object"/>
+
+> Informs if the supplier requires nationality
+
+### Member of
+
+[`MetadataData`](/api/objects/metadata-data) <Badge class="badge badge--secondary" text="object"/>

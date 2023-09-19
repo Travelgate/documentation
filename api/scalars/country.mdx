@@ -1,0 +1,41 @@
+---
+id: country
+title: Country
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+The Country type represents Country values. A good example might be a Passenger Nationality.
+In queries or mutations, Country fields have to be specified in ISO 3166-1 alpha-2 format with enclosing double quotes "ES".
+
+```graphql
+scalar Country
+```
+
+### Member of
+
+[`CreateOrganizationInput`](/api/inputs/create-organization-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`CriteriaSearch`](/api/objects/criteria-search) <Badge class="badge badge--secondary" text="object"/><Bullet />[`GeonameData`](/api/objects/geoname-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`HotelCriteriaSearchInput`](/api/inputs/hotel-criteria-search-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`HotelXDefaultSettingsData`](/api/objects/hotel-xdefault-settings-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`HotelXDefaultSettingsDataInput`](/api/inputs/hotel-xdefault-settings-data-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`HotelXHotelListInput`](/api/inputs/hotel-xhotel-list-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`Location`](/api/objects/location) <Badge class="badge badge--secondary" text="object"/><Bullet />[`OrganizationData`](/api/objects/organization-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`SearchCriteriaCreateInput`](/api/inputs/search-criteria-create-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`SearchCriteriaData`](/api/objects/search-criteria-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`SearchCriteriaUpdateInput`](/api/inputs/search-criteria-update-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`UpdateGroupInput`](/api/inputs/update-group-input) <Badge class="badge badge--secondary" text="input"/>

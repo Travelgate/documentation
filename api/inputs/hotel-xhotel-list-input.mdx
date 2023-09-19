@@ -1,0 +1,89 @@
+---
+id: hotel-xhotel-list-input
+title: HotelXHotelListInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+input HotelXHotelListInput {
+  access: ID
+  hotelCodes: [String!]
+  supplierHotelCodes: [String!]
+  hotelName: String
+  destinationCodes: [String!]
+  countries: [Country!]
+  ranks: [Int!]
+  maxSize: Int
+  group: ID
+  supplierCode: ID
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXHotelListInput.<b>access</b></code>](#)<Bullet />[`ID`](/api/scalars/id) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Indicates the access
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXHotelListInput.<b>hotelCodes</b></code>](#)<Bullet />[`[String!]`](/api/scalars/string) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Search by hotel codes. These hotel codes are used to perform search.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXHotelListInput.<b>supplierHotelCodes</b></code>](#)<Bullet />[`[String!]`](/api/scalars/string) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Search by hotel codes in supplier s context.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXHotelListInput.<b>hotelName</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Search by hotel name
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXHotelListInput.<b>destinationCodes</b></code>](#)<Bullet />[`[String!]`](/api/scalars/string) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Search by destination codes, only search by minimal destinations
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXHotelListInput.<b>countries</b></code>](#)<Bullet />[`[Country!]`](/api/scalars/country) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Filter by country
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXHotelListInput.<b>ranks</b></code>](#)<Bullet />[`[Int!]`](/api/scalars/int) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Filter by supplier rank
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXHotelListInput.<b>maxSize</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Maxium number of items per page
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXHotelListInput.<b>group</b></code>](#)<Bullet />[`ID`](/api/scalars/id) <Badge class="badge badge--secondary" text="scalar"/>
+
+> The supplier s group. Only available if all permissions allowed
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXHotelListInput.<b>supplierCode</b></code>](#)<Bullet />[`ID`](/api/scalars/id) <Badge class="badge badge--secondary" text="scalar"/>
+
+> The supplier s unique code

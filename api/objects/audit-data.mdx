@@ -1,0 +1,58 @@
+---
+id: audit-data
+title: AuditData
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Data sent and received in the supplier’s native format.
+
+```graphql
+type AuditData {
+  transactions: [Transactions!]!
+  timeStamp: DateTime!
+  processTime: Float!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>AuditData.<b>transactions</b></code>](#)<Bullet />[`[Transactions!]!`](/api/objects/transactions) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> List of transactions data
+
+#### [<code style={{ fontWeight: 'normal' }}>AuditData.<b>timeStamp</b></code>](#)<Bullet />[`DateTime!`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> TimeStamp
+
+#### [<code style={{ fontWeight: 'normal' }}>AuditData.<b>processTime</b></code>](#)<Bullet />[`Float!`](/api/scalars/float) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Process time in milliseconds (ms)
+
+### Member of
+
+[`HotelBooking`](/api/objects/hotel-booking) <Badge class="badge badge--secondary" text="object"/><Bullet />[`HotelBookingAmend`](/api/objects/hotel-booking-amend) <Badge class="badge badge--secondary" text="object"/><Bullet />[`HotelBookPayload`](/api/objects/hotel-book-payload) <Badge class="badge badge--secondary" text="object"/><Bullet />[`HotelCancelPayload`](/api/objects/hotel-cancel-payload) <Badge class="badge badge--secondary" text="object"/><Bullet />[`HotelCommitPayload`](/api/objects/hotel-commit-payload) <Badge class="badge badge--secondary" text="object"/><Bullet />[`HotelQuote`](/api/objects/hotel-quote) <Badge class="badge badge--secondary" text="object"/><Bullet />[`HotelSearch`](/api/objects/hotel-search) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Response`](/api/interfaces/response) <Badge class="badge badge--secondary" text="interface"/>

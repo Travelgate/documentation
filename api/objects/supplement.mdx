@@ -1,0 +1,132 @@
+---
+id: supplement
+title: Supplement
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Supplement that it can be or its already added to the option returned. Contains all the information about the supplement.
+
+```graphql
+type Supplement {
+  code: String!
+  name: String
+  description: String
+  supplementType: SupplementType!
+  chargeType: ChargeType!
+  mandatory: Boolean!
+  durationType: DurationType
+  quantity: Int
+  unit: UnitTimeType
+  effectiveDate: Date @deprecated
+  expireDate: Date @deprecated
+  start: Date
+  end: Date
+  resort: Resort
+  price: Price
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplement.<b>code</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Specifies the supplement code.
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplement.<b>name</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Specifies the supplement name.
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplement.<b>description</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Specifies the supplement description.
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplement.<b>supplementType</b></code>](#)<Bullet />[`SupplementType!`](/api/enums/supplement-type) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> Indicates the supplement type. Possible types: Fee, Ski_pass, Lessons, Meals, Equipment, Ticket, Transfers, Gla, Activity or Null.
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplement.<b>chargeType</b></code>](#)<Bullet />[`ChargeType!`](/api/enums/charge-type) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> Indicates the charge types. We need to know whether the supplements have to be paid when the consumer gets to the hotel or beforehand.
+> Possible charge types: INCLUDE or EXCLUDE.
+> when INCLUDE : this supplement is mandatory and included in the option s price
+> when EXCLUDE : this supplement is not included in the option s price
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplement.<b>mandatory</b></code>](#)<Bullet />[`Boolean!`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Indicates if the supplement is mandatory or not. If mandatory, this supplement will be applied to this option.
+> If the chargeType is EXCLUDE the customer will have to pay it directly at the hotel
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplement.<b>durationType</b></code>](#)<Bullet />[`DurationType`](/api/enums/duration-type) <Badge class="badge badge--secondary" text="enum"/>
+
+> Specifies the duration type. Possible duration types: Range (specified dates) or Open. This field is mandatory for PDI.
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplement.<b>quantity</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Indicates the quantity of field in the element "unit".
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplement.<b>unit</b></code>](#)<Bullet />[`UnitTimeType`](/api/enums/unit-time-type) <Badge class="badge badge--secondary" text="enum"/>
+
+> Indicates the unit type. Possible unit types: Day or Hour.
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplement.<b>effectiveDate</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--deprecated badge--secondary" text="deprecated"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> :::caution DEPRECATED
+> deprecated from 2018-02-28. Incorrect date format.
+> :::
+>
+> Indicates the effective date of the supplement.
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplement.<b>expireDate</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--deprecated badge--secondary" text="deprecated"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> :::caution DEPRECATED
+> deprecated from 2018-02-28. Incorrect date format.
+> :::
+>
+> Indicates the expire date of the supplement.
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplement.<b>start</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Indicates the effective date of the supplement.
+> Format: YYYY-MM-DD
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplement.<b>end</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Indicates the expire date of the supplement.
+> Format: YYYY-MM-DD
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplement.<b>resort</b></code>](#)<Bullet />[`Resort`](/api/objects/resort) <Badge class="badge badge--secondary" text="object"/>
+
+> Contains information about the resort
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplement.<b>price</b></code>](#)<Bullet />[`Price`](/api/objects/price) <Badge class="badge badge--secondary" text="object"/>
+
+> Indicates the supplement price.
+
+### Member of
+
+[`HotelOptionSearch`](/api/objects/hotel-option-search) <Badge class="badge badge--secondary" text="object"/>

@@ -1,0 +1,87 @@
+---
+id: traffic-optimization-hotel-stats-aggregation-data
+title: TrafficOptimizationHotelStatsAggregationData
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type TrafficOptimizationHotelStatsAggregationData {
+  hotels: TrafficOptimizationHotelStats!
+  buyer: Organization
+  seller: Organization
+  access: Access
+  supplier: Supplier
+  time: DateTime
+  deaggregateData(
+    where: TrafficOptimizationAggregationHotelStatsConnectionWhereInput!
+    groupBy: TrafficOptimizationStatsAggregationGroupByInput
+  ): TrafficOptimizationHotelStatsAggregationConnection
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationHotelStatsAggregationData.<b>hotels</b></code>](#)<Bullet />[`TrafficOptimizationHotelStats!`](/api/objects/traffic-optimization-hotel-stats) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> number of hits
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationHotelStatsAggregationData.<b>buyer</b></code>](#)<Bullet />[`Organization`](/api/objects/organization) <Badge class="badge badge--secondary" text="object"/>
+
+> buyer returned if you group by BUYER_ORGANIZATION
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationHotelStatsAggregationData.<b>seller</b></code>](#)<Bullet />[`Organization`](/api/objects/organization) <Badge class="badge badge--secondary" text="object"/>
+
+> seller returned if you group by SELLER_ORGANIZATION
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationHotelStatsAggregationData.<b>access</b></code>](#)<Bullet />[`Access`](/api/objects/access) <Badge class="badge badge--secondary" text="object"/>
+
+> access returned if you group by ACCESS
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationHotelStatsAggregationData.<b>supplier</b></code>](#)<Bullet />[`Supplier`](/api/objects/supplier) <Badge class="badge badge--secondary" text="object"/>
+
+> supplier returned if you group by SUPPLIER
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationHotelStatsAggregationData.<b>time</b></code>](#)<Bullet />[`DateTime`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="scalar"/>
+
+> returned time value if groupByTime is used
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationHotelStatsAggregationData.<b>deaggregateData</b></code>](#)<Bullet />[`TrafficOptimizationHotelStatsAggregationConnection`](/api/objects/traffic-optimization-hotel-stats-aggregation-connection) <Badge class="badge badge--secondary" text="object"/>
+
+> to get data deaggregate from this node
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationHotelStatsAggregationData.deaggregateData.<b>where</b></code>](#)<Bullet />[`TrafficOptimizationAggregationHotelStatsConnectionWhereInput!`](/api/inputs/traffic-optimization-aggregation-hotel-stats-connection-where-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationHotelStatsAggregationData.deaggregateData.<b>groupBy</b></code>](#)<Bullet />[`TrafficOptimizationStatsAggregationGroupByInput`](/api/inputs/traffic-optimization-stats-aggregation-group-by-input) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+### Member of
+
+[`TrafficOptimizationHotelStatsAggregation`](/api/objects/traffic-optimization-hotel-stats-aggregation) <Badge class="badge badge--secondary" text="object"/>

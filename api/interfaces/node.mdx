@@ -1,0 +1,58 @@
+---
+id: node
+title: Node
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+interface Node {
+  code: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Node.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> ID code
+
+#### [<code style={{ fontWeight: 'normal' }}>Node.<b>createdAt</b></code>](#)<Bullet />[`DateTime!`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Date created
+
+#### [<code style={{ fontWeight: 'normal' }}>Node.<b>updatedAt</b></code>](#)<Bullet />[`DateTime!`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Date updated
+
+### Implemented by
+
+[`Access`](/api/objects/access) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Activation`](/api/objects/activation) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Airport`](/api/objects/airport) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Alert`](/api/objects/alert) <Badge class="badge badge--secondary" text="object"/><Bullet />[`AlertEvent`](/api/objects/alert-event) <Badge class="badge badge--secondary" text="object"/><Bullet />[`API`](/api/objects/api) <Badge class="badge badge--secondary" text="object"/><Bullet />[`AuditRule`](/api/objects/audit-rule) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Board`](/api/objects/board) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Category`](/api/objects/category) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Client`](/api/objects/client) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Context`](/api/objects/context) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Destination`](/api/objects/destination) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Domain`](/api/objects/domain) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Entity`](/api/objects/entity) <Badge class="badge badge--secondary" text="object"/><Bullet />[`FlightOffer`](/api/objects/flight-offer) <Badge class="badge badge--secondary" text="object"/><Bullet />[`FlightOfferItem`](/api/objects/flight-offer-item) <Badge class="badge badge--secondary" text="object"/><Bullet />[`FlightOrder`](/api/objects/flight-order) <Badge class="badge badge--secondary" text="object"/><Bullet />[`FlightOrderItem`](/api/objects/flight-order-item) <Badge class="badge badge--secondary" text="object"/><Bullet />[`FlightService`](/api/objects/flight-service) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Geoname`](/api/objects/geoname) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Group`](/api/objects/group) <Badge class="badge badge--secondary" text="object"/><Bullet />[`GroupContent`](/api/objects/group-content) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Hotel`](/api/objects/hotel) <Badge class="badge badge--secondary" text="object"/><Bullet />[`HotelRuntimeConfiguration`](/api/objects/hotel-runtime-configuration) <Badge class="badge badge--secondary" text="object"/><Bullet />[`HotelXAmenity`](/api/objects/hotel-xamenity) <Badge class="badge badge--secondary" text="object"/><Bullet />[`HotelXUpdateStatus`](/api/objects/hotel-xupdate-status) <Badge class="badge badge--secondary" text="object"/><Bullet />[`HubProvider`](/api/objects/hub-provider) <Badge class="badge badge--secondary" text="object"/><Bullet />[`HubUser`](/api/objects/hub-user) <Badge class="badge badge--secondary" text="object"/><Bullet />[`InsightsXBookingAggregation`](/api/objects/insights-xbooking-aggregation) <Badge class="badge badge--secondary" text="object"/><Bullet />[`InsightsXBookingDetail`](/api/objects/insights-xbooking-detail) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Logging`](/api/objects/logging) <Badge class="badge badge--secondary" text="object"/><Bullet />[`LoggingLegacy`](/api/objects/logging-legacy) <Badge class="badge badge--secondary" text="object"/><Bullet />[`ManagedGroup`](/api/objects/managed-group) <Badge class="badge badge--secondary" text="object"/><Bullet />[`MappingInscription`](/api/objects/mapping-inscription) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Member`](/api/objects/member) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Metadata`](/api/objects/metadata) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Operation`](/api/objects/operation) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Organization`](/api/objects/organization) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Partner`](/api/objects/partner) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Password`](/api/objects/password) <Badge class="badge badge--secondary" text="object"/><Bullet />[`PaymentCard`](/api/objects/payment-card) <Badge class="badge badge--secondary" text="object"/><Bullet />[`PaymentXStoredCard`](/api/objects/payment-xstored-card) <Badge class="badge badge--secondary" text="object"/><Bullet />[`PointOfSale`](/api/objects/point-of-sale) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Product`](/api/objects/product) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Provider`](/api/objects/provider) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Recommendation`](/api/objects/recommendation) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Resource`](/api/objects/resource) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Role`](/api/objects/role) <Badge class="badge badge--secondary" text="object"/><Bullet />[`RoomStatic`](/api/objects/room-static) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Stats`](/api/objects/stats) <Badge class="badge badge--secondary" text="object"/><Bullet />[`Supplier`](/api/objects/supplier) <Badge class="badge badge--secondary" text="object"/><Bullet />[`System`](/api/objects/system) <Badge class="badge badge--secondary" text="object"/>

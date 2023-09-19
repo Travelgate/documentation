@@ -1,0 +1,147 @@
+---
+id: traffic-optimization-query
+title: TrafficOptimizationQuery
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type TrafficOptimizationQuery {
+  allTrafficOptimizationConnections(
+    where: TrafficOptimizationConnectionWhereInput!
+  ): TrafficOptimizationConnectionConnection!
+  trafficOptimizationConnectionConnection(
+    where: TrafficOptimizationConnectionConnectionWhereInput
+  ): TrafficOptimizationConnectionConnection!
+  allTrafficOptimizationAccessHotelBlacklist(
+    where: TrafficOptimizationAccessHotelBlacklistWhereInput
+    first: Int
+    after: String
+  ): TrafficOptimizationHotelBlacklistConnection!
+  allTrafficOptimizationAllAccessesHotelBlacklistStats(
+    where: TrafficOptimizationAllAccessesHotelBlacklistStatsWhereInput
+  ): TrafficOptimizationStatsAllAccessesHotelBlacklist!
+  allTrafficOptimizationAccessHotelBlacklistStats(
+    where: TrafficOptimizationAccessHotelBlacklistStatsWhereInput
+  ): TrafficOptimizationStatsAccessHotelBlacklist!
+  allTrafficOptimizationAllAccessesHotelBlacklist(
+    where: TrafficOptimizationAllAccessesHotelBlacklistWhereInput
+    first: Int
+    after: String
+  ): TrafficOptimizationHotelBlacklistConnection!
+  allTrafficOptimizationAllAccessesRecommendations(
+    where: TrafficOptimizationAllAccessesRecommendationsWhereInput
+    first: Int
+  ): TrafficOptimizationRecommendationsAllAccesses!
+  getTrafficOptimizationAggregationStats(
+    where: TrafficOptimizationAggregationStatsConnectionWhereInput!
+  ): TrafficOptimizationStatsAggregationConnection!
+  getTrafficOptimizationAggregationHotelStats(
+    where: TrafficOptimizationAggregationHotelStatsConnectionWhereInput!
+  ): TrafficOptimizationHotelStatsAggregationConnection!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationQuery.<b>allTrafficOptimizationConnections</b></code>](#)<Bullet />[`TrafficOptimizationConnectionConnection!`](/api/objects/traffic-optimization-connection-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> ##### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationQuery.allTrafficOptimizationConnections.<b>where</b></code>](#)<Bullet />[`TrafficOptimizationConnectionWhereInput!`](/api/inputs/traffic-optimization-connection-where-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationQuery.<b>trafficOptimizationConnectionConnection</b></code>](#)<Bullet />[`TrafficOptimizationConnectionConnection!`](/api/objects/traffic-optimization-connection-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Return traffic optimization configuration
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationQuery.trafficOptimizationConnectionConnection.<b>where</b></code>](#)<Bullet />[`TrafficOptimizationConnectionConnectionWhereInput`](/api/inputs/traffic-optimization-connection-connection-where-input) <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationQuery.<b>allTrafficOptimizationAccessHotelBlacklist</b></code>](#)<Bullet />[`TrafficOptimizationHotelBlacklistConnection!`](/api/objects/traffic-optimization-hotel-blacklist-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Return blacklist hotels of Accesses
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationQuery.allTrafficOptimizationAccessHotelBlacklist.<b>where</b></code>](#)<Bullet />[`TrafficOptimizationAccessHotelBlacklistWhereInput`](/api/inputs/traffic-optimization-access-hotel-blacklist-where-input) <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationQuery.allTrafficOptimizationAccessHotelBlacklist.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationQuery.allTrafficOptimizationAccessHotelBlacklist.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationQuery.<b>allTrafficOptimizationAllAccessesHotelBlacklistStats</b></code>](#)<Bullet />[`TrafficOptimizationStatsAllAccessesHotelBlacklist!`](/api/objects/traffic-optimization-stats-all-accesses-hotel-blacklist) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Return all unique blacklist hotels of Connections
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationQuery.allTrafficOptimizationAllAccessesHotelBlacklistStats.<b>where</b></code>](#)<Bullet />[`TrafficOptimizationAllAccessesHotelBlacklistStatsWhereInput`](/api/inputs/traffic-optimization-all-accesses-hotel-blacklist-stats-where-input) <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationQuery.<b>allTrafficOptimizationAccessHotelBlacklistStats</b></code>](#)<Bullet />[`TrafficOptimizationStatsAccessHotelBlacklist!`](/api/objects/traffic-optimization-stats-access-hotel-blacklist) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Return all unique blacklist hotels of accesses
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationQuery.allTrafficOptimizationAccessHotelBlacklistStats.<b>where</b></code>](#)<Bullet />[`TrafficOptimizationAccessHotelBlacklistStatsWhereInput`](/api/inputs/traffic-optimization-access-hotel-blacklist-stats-where-input) <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationQuery.<b>allTrafficOptimizationAllAccessesHotelBlacklist</b></code>](#)<Bullet />[`TrafficOptimizationHotelBlacklistConnection!`](/api/objects/traffic-optimization-hotel-blacklist-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Return blacklist hotels of Connections
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationQuery.allTrafficOptimizationAllAccessesHotelBlacklist.<b>where</b></code>](#)<Bullet />[`TrafficOptimizationAllAccessesHotelBlacklistWhereInput`](/api/inputs/traffic-optimization-all-accesses-hotel-blacklist-where-input) <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationQuery.allTrafficOptimizationAllAccessesHotelBlacklist.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationQuery.allTrafficOptimizationAllAccessesHotelBlacklist.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationQuery.<b>allTrafficOptimizationAllAccessesRecommendations</b></code>](#)<Bullet />[`TrafficOptimizationRecommendationsAllAccesses!`](/api/objects/traffic-optimization-recommendations-all-accesses) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Return recommendations of Connections
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationQuery.allTrafficOptimizationAllAccessesRecommendations.<b>where</b></code>](#)<Bullet />[`TrafficOptimizationAllAccessesRecommendationsWhereInput`](/api/inputs/traffic-optimization-all-accesses-recommendations-where-input) <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationQuery.allTrafficOptimizationAllAccessesRecommendations.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationQuery.<b>getTrafficOptimizationAggregationStats</b></code>](#)<Bullet />[`TrafficOptimizationStatsAggregationConnection!`](/api/objects/traffic-optimization-stats-aggregation-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Returns the aggregated stats registered for a specified input (buyer, seller, access or a combination between these)
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationQuery.getTrafficOptimizationAggregationStats.<b>where</b></code>](#)<Bullet />[`TrafficOptimizationAggregationStatsConnectionWhereInput!`](/api/inputs/traffic-optimization-aggregation-stats-connection-where-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationQuery.<b>getTrafficOptimizationAggregationHotelStats</b></code>](#)<Bullet />[`TrafficOptimizationHotelStatsAggregationConnection!`](/api/objects/traffic-optimization-hotel-stats-aggregation-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Returns the aggregated hotel stats registered for a specified input (buyer, seller, access or a combination between these)
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>TrafficOptimizationQuery.getTrafficOptimizationAggregationHotelStats.<b>where</b></code>](#)<Bullet />[`TrafficOptimizationAggregationHotelStatsConnectionWhereInput!`](/api/inputs/traffic-optimization-aggregation-hotel-stats-connection-where-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+### Returned by
+
+[`trafficOptimization`](/api/queries/traffic-optimization) <Badge class="badge badge--secondary" text="query"/>

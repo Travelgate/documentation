@@ -1,0 +1,83 @@
+---
+id: date-time-filter
+title: DateTimeFilter
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+input DateTimeFilter {
+  equals: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  not: DateTime
+  notIn: [DateTime!]
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>DateTimeFilter.<b>equals</b></code>](#)<Bullet />[`DateTime`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>DateTimeFilter.<b>gt</b></code>](#)<Bullet />[`DateTime`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>DateTimeFilter.<b>gte</b></code>](#)<Bullet />[`DateTime`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>DateTimeFilter.<b>in</b></code>](#)<Bullet />[`[DateTime!]`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>DateTimeFilter.<b>lt</b></code>](#)<Bullet />[`DateTime`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>DateTimeFilter.<b>lte</b></code>](#)<Bullet />[`DateTime`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>DateTimeFilter.<b>not</b></code>](#)<Bullet />[`DateTime`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>DateTimeFilter.<b>notIn</b></code>](#)<Bullet />[`[DateTime!]`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+### Member of
+
+[`AssetWhereInput`](/api/inputs/asset-where-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`ProfileWhereInput`](/api/inputs/profile-where-input) <Badge class="badge badge--secondary" text="input"/>

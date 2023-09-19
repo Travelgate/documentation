@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Connectivity products
+# Connectivity solutions
 
 At TravelgateX, partners can either be Buyers or Sellers. Depending on their role, they have the option to connect via a Pull or Push API or utilize our dedicated Apps for seamless integration.
 
@@ -10,14 +10,14 @@ At TravelgateX, partners can either be Buyers or Sellers. Depending on their rol
 
 TravelgateX provides two main types of API connectivity: Pull APIs and Push APIs.
 
-For Buyers:
+#### For Buyers:
 
 * [Hotel-X Pull Buyers API](../apis/hotel-x-pull-buyers-api/overview) and
  [Legacy Pull Buyers API](../apis/legacy-pull-buyers-api/overview): Through Pull integration, Buyers send Availability requests to TravelgateX. Upon receiving the request, TravelgateX consults the Seller and gets an immediate response. This response also includes static data like Hotel Lists, Room Lists, etc., fetched from the Seller's API. Pull integrations emphasize real-time communication between Buyers and Sellers. They are relatively simple to develop but necessitate significant system resources due to potentially higher traffic, in contrast to Push integrations.
 
 * [Channel-X Push Buyers API](../apis/channel-x-push-buyers-api/overview): Here, the Buyer configures the Hotel Setup on our Inventory Extranet. Subsequently, the Seller pushes the availability and pricing data to our System. This data is instantaneously processed and presented to the Buyer.
 
-For Sellers:
+#### For Sellers:
 
 * [Hotel Pull Sellers API](../apis/hotel-pull-sellers-api/overview): This works similarly to the Pull Buyers API, where the Seller receives real-time requests and sends back immediate responses.
 

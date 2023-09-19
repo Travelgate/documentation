@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Travelgate
+# What is TravelgateX
 
 TravelgateX is a connectivity marketplace that brings together Buyers and Sellers 
 of travel product. Our cutting-edge technology has earned the trust and confidence 
@@ -23,7 +23,7 @@ options. Whether you're a Tour Operator, OTA, Bedbank, or DMC, TravelgateX provi
 platform where you can sell your products and even cross-sell to a diverse pool of 
 potential customers. The opportunities are endless in our bustling Marketplace.
 
-Tech Platforms: Channel Managers, PMS, CRS, Tour Operation Platforms and other tech 
+Tech Platforms, such as Channel Managers, PMS, CRS, Tour Operation Platforms and other tech 
 providers can benefit from our APIs not only to expand their offerings, but also to 
 reach an unprecedented number of Partners and generate more business to boost their 
 revenue. Please check our Reseller and Affiliate programs to learn more about how to 

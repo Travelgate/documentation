@@ -1,0 +1,68 @@
+---
+id: cloud-environment
+title: CloudEnvironment
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+enum CloudEnvironment {
+  AZURE
+  GOOGLE
+  HETZNER
+  TOTAL_UPTIME
+  BLUEKIRI
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>CloudEnvironment.<b>AZURE</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>CloudEnvironment.<b>GOOGLE</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>CloudEnvironment.<b>HETZNER</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>CloudEnvironment.<b>TOTAL_UPTIME</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>CloudEnvironment.<b>BLUEKIRI</b></code>](#)
+
+>
+
+### Member of
+
+[`Environment`](/api/objects/environment) <Badge class="badge badge--secondary" text="object"/><Bullet />[`LoggingLegacyFilterInput`](/api/inputs/logging-legacy-filter-input) <Badge class="badge badge--secondary" text="input"/>

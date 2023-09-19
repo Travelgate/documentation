@@ -1,0 +1,73 @@
+---
+id: geoname-data
+title: GeonameData
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Geoname data, which contain a reference to his parent location
+
+```graphql
+type GeonameData {
+  code: ID!
+  name: String!
+  parent: Geoname!
+  country: Country
+  type: String!
+  coordinates: Coordinates!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>GeonameData.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> location code
+
+#### [<code style={{ fontWeight: 'normal' }}>GeonameData.<b>name</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> name of location
+
+#### [<code style={{ fontWeight: 'normal' }}>GeonameData.<b>parent</b></code>](#)<Bullet />[`Geoname!`](/api/objects/geoname) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Parent location, the top location is itself
+
+#### [<code style={{ fontWeight: 'normal' }}>GeonameData.<b>country</b></code>](#)<Bullet />[`Country`](/api/scalars/country) <Badge class="badge badge--secondary" text="scalar"/>
+
+> ISO 3166-1 alpha-2 format country code with enclosing double quotes "ES"
+
+#### [<code style={{ fontWeight: 'normal' }}>GeonameData.<b>type</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Hierarchy returned by geonames service. It might change depending on the hotel and its location.
+
+#### [<code style={{ fontWeight: 'normal' }}>GeonameData.<b>coordinates</b></code>](#)<Bullet />[`Coordinates!`](/api/objects/coordinates) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Geographical coordinates corresponding to a location.
+
+### Member of
+
+[`Geoname`](/api/objects/geoname) <Badge class="badge badge--secondary" text="object"/>

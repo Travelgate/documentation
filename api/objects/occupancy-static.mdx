@@ -1,0 +1,63 @@
+---
+id: occupancy-static
+title: OccupancyStatic
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Information about occupancy
+
+```graphql
+type OccupancyStatic {
+  total: OccupancyRange
+  infants: OccupancyRange
+  children: OccupancyRange
+  adults: OccupancyRange
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>OccupancyStatic.<b>total</b></code>](#)<Bullet />[`OccupancyRange`](/api/objects/occupancy-range) <Badge class="badge badge--secondary" text="object"/>
+
+> Occupancy Total Pax Range
+
+#### [<code style={{ fontWeight: 'normal' }}>OccupancyStatic.<b>infants</b></code>](#)<Bullet />[`OccupancyRange`](/api/objects/occupancy-range) <Badge class="badge badge--secondary" text="object"/>
+
+> Occupancy Infants Pax Range
+
+#### [<code style={{ fontWeight: 'normal' }}>OccupancyStatic.<b>children</b></code>](#)<Bullet />[`OccupancyRange`](/api/objects/occupancy-range) <Badge class="badge badge--secondary" text="object"/>
+
+> Occupancy Children Pax Range
+
+#### [<code style={{ fontWeight: 'normal' }}>OccupancyStatic.<b>adults</b></code>](#)<Bullet />[`OccupancyRange`](/api/objects/occupancy-range) <Badge class="badge badge--secondary" text="object"/>
+
+> Occupancy Adults Pax Range
+
+### Member of
+
+[`RoomData`](/api/objects/room-data) <Badge class="badge badge--secondary" text="object"/>

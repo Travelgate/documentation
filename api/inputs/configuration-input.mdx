@@ -1,0 +1,73 @@
+---
+id: configuration-input
+title: ConfigurationInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+The information and credentials required to access the supplier’s system.
+
+```graphql
+input ConfigurationInput {
+  username: String
+  password: String
+  urls: UrlsInput!
+  parameters: [ParameterInput!]
+  markets: [String!]
+  rateRules: [RateRulesType!]
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>ConfigurationInput.<b>username</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> User name for the connection.
+
+#### [<code style={{ fontWeight: 'normal' }}>ConfigurationInput.<b>password</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Password for the connection
+
+#### [<code style={{ fontWeight: 'normal' }}>ConfigurationInput.<b>urls</b></code>](#)<Bullet />[`UrlsInput!`](/api/inputs/urls-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+> URL or endpoint for the connection.
+
+#### [<code style={{ fontWeight: 'normal' }}>ConfigurationInput.<b>parameters</b></code>](#)<Bullet />[`[ParameterInput!]`](/api/inputs/parameter-input) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="input"/>
+
+> List of parameters with additional required information.
+
+#### [<code style={{ fontWeight: 'normal' }}>ConfigurationInput.<b>markets</b></code>](#)<Bullet />[`[String!]`](/api/scalars/string) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Source Markets allowed for the Access
+
+#### [<code style={{ fontWeight: 'normal' }}>ConfigurationInput.<b>rateRules</b></code>](#)<Bullet />[`[RateRulesType!]`](/api/enums/rate-rules-type) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> RateRules allowed for the access.
+
+### Member of
+
+[`HotelXAccessInput`](/api/inputs/hotel-xaccess-input) <Badge class="badge badge--secondary" text="input"/>

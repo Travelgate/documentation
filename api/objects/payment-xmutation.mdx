@@ -1,0 +1,57 @@
+---
+id: payment-xmutation
+title: PaymentXMutation
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type PaymentXMutation {
+  storeCard(input: PaymentXStoredCardInput!): PaymentXStoredCard!
+  deleteStoredCard(criteria: PaymentXStoredCardIDInput!): PaymentXStoredCard!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentXMutation.<b>storeCard</b></code>](#)<Bullet />[`PaymentXStoredCard!`](/api/objects/payment-xstored-card) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Store Card
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>PaymentXMutation.storeCard.<b>input</b></code>](#)<Bullet />[`PaymentXStoredCardInput!`](/api/inputs/payment-xstored-card-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>PaymentXMutation.<b>deleteStoredCard</b></code>](#)<Bullet />[`PaymentXStoredCard!`](/api/objects/payment-xstored-card) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Delete Card
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>PaymentXMutation.deleteStoredCard.<b>criteria</b></code>](#)<Bullet />[`PaymentXStoredCardIDInput!`](/api/inputs/payment-xstored-card-idinput) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+### Returned by
+
+[`paymentX`](/api/mutations/payment-x) <Badge class="badge badge--secondary" text="mutation"/>

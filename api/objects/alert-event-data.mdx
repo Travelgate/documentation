@@ -1,0 +1,79 @@
+---
+id: alert-event-data
+title: AlertEventData
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+AlertEvent data
+
+```graphql
+type AlertEventData {
+  code: ID!
+  groupBy: String
+  status: AlertEventType!
+  details: String!
+  detailsInfo: [AlertEventDetail]!
+  history(relay: RelayInput, filter: AlertFilterInput): AlertEventConnection!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertEventData.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertEventData.<b>groupBy</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertEventData.<b>status</b></code>](#)<Bullet />[`AlertEventType!`](/api/enums/alert-event-type) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> Status event
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertEventData.<b>details</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Contains data in html format encrypted
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertEventData.<b>detailsInfo</b></code>](#)<Bullet />[`[AlertEventDetail]!`](/api/objects/alert-event-detail) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Contains events data
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertEventData.<b>history</b></code>](#)<Bullet />[`AlertEventConnection!`](/api/objects/alert-event-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Last 10 events of the alert/grouBy
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AlertEventData.history.<b>relay</b></code>](#)<Bullet />[`RelayInput`](/api/inputs/relay-input) <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AlertEventData.history.<b>filter</b></code>](#)<Bullet />[`AlertFilterInput`](/api/inputs/alert-filter-input) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+### Member of
+
+[`AlertEvent`](/api/objects/alert-event) <Badge class="badge badge--secondary" text="object"/>

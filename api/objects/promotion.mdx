@@ -1,0 +1,88 @@
+---
+id: promotion
+title: Promotion
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Information about room promotions(offers).
+
+```graphql
+type Promotion {
+  code: String!
+  name: String
+  supplierCode: String!
+  effectiveDate: Date @deprecated
+  expireDate: Date @deprecated
+  start: Date
+  end: Date
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Promotion.<b>code</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Specifies the promotion code.
+
+#### [<code style={{ fontWeight: 'normal' }}>Promotion.<b>name</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Specifies the promotion name.
+
+#### [<code style={{ fontWeight: 'normal' }}>Promotion.<b>supplierCode</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Specifies the supplier s promotion code.
+
+#### [<code style={{ fontWeight: 'normal' }}>Promotion.<b>effectiveDate</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--deprecated badge--secondary" text="deprecated"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> :::caution DEPRECATED
+> deprecated from 2018-02-28. Incorrect date format.
+> :::
+>
+> Promotion effective date.
+
+#### [<code style={{ fontWeight: 'normal' }}>Promotion.<b>expireDate</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--deprecated badge--secondary" text="deprecated"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> :::caution DEPRECATED
+> deprecated from 2018-02-28. Incorrect date format.
+> :::
+>
+> Promotion expire date.
+
+#### [<code style={{ fontWeight: 'normal' }}>Promotion.<b>start</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Promotion effective date.
+> Format: YYYY-MM-DD
+
+#### [<code style={{ fontWeight: 'normal' }}>Promotion.<b>end</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Promotion expire date.
+> Format: YYYY-MM-DD
+
+### Member of
+
+[`Room`](/api/objects/room) <Badge class="badge badge--secondary" text="object"/>

@@ -1,0 +1,144 @@
+---
+id: profile-order-by-input
+title: ProfileOrderByInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+input ProfileOrderByInput {
+  apiTypes: SortOrder
+  buyerCategories: SortOrder
+  classifications: SortOrder
+  clientCodes: SortOrder
+  code: SortOrder
+  createdAt: SortOrder
+  description: SortOrder
+  groupCode: SortOrder
+  id: SortOrder
+  name: SortOrder
+  order: SortOrder
+  ownerCode: SortOrder
+  partnerCategories: SortOrder
+  sellerCategories: SortOrder
+  sellerIntegrationTypes: SortOrder
+  slug: SortOrder
+  status: SortOrder
+  supplierCodes: SortOrder
+  types: SortOrder
+  updatedAt: SortOrder
+  websiteUrl: SortOrder
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileOrderByInput.<b>apiTypes</b></code>](#)<Bullet />[`SortOrder`](/api/enums/sort-order) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileOrderByInput.<b>buyerCategories</b></code>](#)<Bullet />[`SortOrder`](/api/enums/sort-order) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileOrderByInput.<b>classifications</b></code>](#)<Bullet />[`SortOrder`](/api/enums/sort-order) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileOrderByInput.<b>clientCodes</b></code>](#)<Bullet />[`SortOrder`](/api/enums/sort-order) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileOrderByInput.<b>code</b></code>](#)<Bullet />[`SortOrder`](/api/enums/sort-order) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileOrderByInput.<b>createdAt</b></code>](#)<Bullet />[`SortOrder`](/api/enums/sort-order) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileOrderByInput.<b>description</b></code>](#)<Bullet />[`SortOrder`](/api/enums/sort-order) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileOrderByInput.<b>groupCode</b></code>](#)<Bullet />[`SortOrder`](/api/enums/sort-order) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileOrderByInput.<b>id</b></code>](#)<Bullet />[`SortOrder`](/api/enums/sort-order) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileOrderByInput.<b>name</b></code>](#)<Bullet />[`SortOrder`](/api/enums/sort-order) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileOrderByInput.<b>order</b></code>](#)<Bullet />[`SortOrder`](/api/enums/sort-order) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileOrderByInput.<b>ownerCode</b></code>](#)<Bullet />[`SortOrder`](/api/enums/sort-order) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileOrderByInput.<b>partnerCategories</b></code>](#)<Bullet />[`SortOrder`](/api/enums/sort-order) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileOrderByInput.<b>sellerCategories</b></code>](#)<Bullet />[`SortOrder`](/api/enums/sort-order) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileOrderByInput.<b>sellerIntegrationTypes</b></code>](#)<Bullet />[`SortOrder`](/api/enums/sort-order) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileOrderByInput.<b>slug</b></code>](#)<Bullet />[`SortOrder`](/api/enums/sort-order) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileOrderByInput.<b>status</b></code>](#)<Bullet />[`SortOrder`](/api/enums/sort-order) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileOrderByInput.<b>supplierCodes</b></code>](#)<Bullet />[`SortOrder`](/api/enums/sort-order) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileOrderByInput.<b>types</b></code>](#)<Bullet />[`SortOrder`](/api/enums/sort-order) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileOrderByInput.<b>updatedAt</b></code>](#)<Bullet />[`SortOrder`](/api/enums/sort-order) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileOrderByInput.<b>websiteUrl</b></code>](#)<Bullet />[`SortOrder`](/api/enums/sort-order) <Badge class="badge badge--secondary" text="enum"/>
+
+>

@@ -1,0 +1,391 @@
+---
+id: alerts-xmutation
+title: AlertsXMutation
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type AlertsXMutation {
+  createAlertErrorRateRelativeByTime(
+    data: AlertErrorRateRelativeByTimeInput!
+  ): Alert
+  createAlertErrorRateRelativeByRequests(
+    data: AlertErrorRateRelativeByRequestsInput!
+  ): Alert
+  createAlertErrorRateComparativeByTime(
+    data: AlertErrorRateComparativeByTimeInput!
+  ): Alert
+  createAlertAverageTimeRelativeByTime(
+    data: AlertAverageTimeRelativeByTimeInput!
+  ): Alert
+  createAlertAverageTimeRelativeByRequests(
+    data: AlertAverageTimeRelativeByRequestsInput!
+  ): Alert
+  createAlertAverageTimeAbsoluteByTime(
+    data: AlertAverageTimeAbsoluteByTimeInput!
+  ): Alert
+  createAlertAverageTimeAbsoluteByRequests(
+    data: AlertAverageTimeAbsoluteByRequestsInput!
+  ): Alert
+  createAlertAverageTimeComparativeByTime(
+    data: AlertAverageTimeComparativeByTimeInput!
+  ): Alert
+  createAlertPeakTrafficAbsoluteByTime(
+    data: AlertPeakTrafficAbsoluteByTimeInput!
+  ): Alert
+  createAlertPeakTrafficComparativeByTime(
+    data: AlertPeakTrafficComparativeByTimeInput!
+  ): Alert
+  createAlertPriceRelativeByTime(data: AlertPriceRelativeByTimeInput!): Alert
+  createAlertPriceRelativeByRequests(
+    data: AlertPriceRelativeByRequestsInput!
+  ): Alert
+  createAlertPriceAbsoluteByTime(data: AlertPriceAbsoluteByTimeInput!): Alert
+  createAlertPriceAbsoluteByRequests(
+    data: AlertPriceAbsoluteByRequestsInput!
+  ): Alert
+  updateAlertErrorRateRelativeByTime(
+    code: ID!
+    data: AlertUpdateErrorRateRelativeByTimeInput!
+  ): Alert
+  updateAlertErrorRateRelativeByRequests(
+    code: ID!
+    data: AlertUpdateErrorRateRelativeByRequestsInput!
+  ): Alert
+  updateAlertErrorRateComparativeByTime(
+    code: ID!
+    data: AlertUpdateErrorRateComparativeByTimeInput!
+  ): Alert
+  updateAlertAverageTimeRelativeByTime(
+    code: ID!
+    data: AlertUpdateAverageTimeRelativeByTimeInput!
+  ): Alert
+  updateAlertAverageTimeRelativeByRequests(
+    code: ID!
+    data: AlertUpdateAverageTimeRelativeByRequestsInput!
+  ): Alert
+  updateAlertAverageTimeAbsoluteByTime(
+    code: ID!
+    data: AlertUpdateAverageTimeAbsoluteByTimeInput!
+  ): Alert
+  updateAlertAverageTimeAbsoluteByRequests(
+    code: ID!
+    data: AlertUpdateAverageTimeAbsoluteByRequestsInput!
+  ): Alert
+  updateAlertAverageTimeComparativeByTime(
+    code: ID!
+    data: AlertUpdateAverageTimeComparativeByTimeInput!
+  ): Alert
+  updateAlertPeakTrafficAbsoluteByTime(
+    code: ID!
+    data: AlertUpdatePeakTrafficAbsoluteByTimeInput!
+  ): Alert
+  updateAlertPeakTrafficComparativeByTime(
+    code: ID!
+    data: AlertUpdatePeakTrafficComparativeByTimeInput!
+  ): Alert
+  updateAlertPriceRelativeByTime(
+    code: ID!
+    data: AlertUpdatePriceRelativeByTimeInput!
+  ): Alert
+  updateAlertPriceRelativeByRequests(
+    code: ID!
+    data: AlertUpdatePriceRelativeByRequestsInput!
+  ): Alert
+  updateAlertPriceAbsoluteByTime(
+    code: ID!
+    data: AlertUpdatePriceAbsoluteByTimeInput!
+  ): Alert
+  updateAlertPriceAbsoluteByRequests(
+    code: ID!
+    data: AlertUpdatePriceAbsoluteByRequestsInput!
+  ): Alert
+  deleteAlert(code: ID!): Alert
+  createAlertBusinessMetricRatioByTime(
+    data: AlertBusinessMetricRatioByTimeInput!
+  ): Alert
+  updateAlertBusinessMetricRatioByTime(
+    code: ID!
+    data: AlertUpdateBusinessMetricRatioByTimeInput!
+  ): Alert
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.<b>createAlertErrorRateRelativeByTime</b></code>](#)<Bullet />[`Alert`](/api/objects/alert) <Badge class="badge badge--secondary" text="object"/>
+
+> Mutation to create a new alert type ErrorRate as Relative mode & Time Window
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.createAlertErrorRateRelativeByTime.<b>data</b></code>](#)<Bullet />[`AlertErrorRateRelativeByTimeInput!`](/api/inputs/alert-error-rate-relative-by-time-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.<b>createAlertErrorRateRelativeByRequests</b></code>](#)<Bullet />[`Alert`](/api/objects/alert) <Badge class="badge badge--secondary" text="object"/>
+
+> Mutation to create a new alert type ErrorRate as Relative mode & Request Window
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.createAlertErrorRateRelativeByRequests.<b>data</b></code>](#)<Bullet />[`AlertErrorRateRelativeByRequestsInput!`](/api/inputs/alert-error-rate-relative-by-requests-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.<b>createAlertErrorRateComparativeByTime</b></code>](#)<Bullet />[`Alert`](/api/objects/alert) <Badge class="badge badge--secondary" text="object"/>
+
+> Mutation to create a new alert type ErrorRate as Comparative mode & Time Window
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.createAlertErrorRateComparativeByTime.<b>data</b></code>](#)<Bullet />[`AlertErrorRateComparativeByTimeInput!`](/api/inputs/alert-error-rate-comparative-by-time-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.<b>createAlertAverageTimeRelativeByTime</b></code>](#)<Bullet />[`Alert`](/api/objects/alert) <Badge class="badge badge--secondary" text="object"/>
+
+> Mutation to create a new alert type AverageTime as Relative mode & Time Window
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.createAlertAverageTimeRelativeByTime.<b>data</b></code>](#)<Bullet />[`AlertAverageTimeRelativeByTimeInput!`](/api/inputs/alert-average-time-relative-by-time-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.<b>createAlertAverageTimeRelativeByRequests</b></code>](#)<Bullet />[`Alert`](/api/objects/alert) <Badge class="badge badge--secondary" text="object"/>
+
+> Mutation to create a new alert type AverageTime as Relative mode & Request Window
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.createAlertAverageTimeRelativeByRequests.<b>data</b></code>](#)<Bullet />[`AlertAverageTimeRelativeByRequestsInput!`](/api/inputs/alert-average-time-relative-by-requests-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.<b>createAlertAverageTimeAbsoluteByTime</b></code>](#)<Bullet />[`Alert`](/api/objects/alert) <Badge class="badge badge--secondary" text="object"/>
+
+> Mutation to create a new alert type AverageTime as Absolute mode & Time Window
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.createAlertAverageTimeAbsoluteByTime.<b>data</b></code>](#)<Bullet />[`AlertAverageTimeAbsoluteByTimeInput!`](/api/inputs/alert-average-time-absolute-by-time-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.<b>createAlertAverageTimeAbsoluteByRequests</b></code>](#)<Bullet />[`Alert`](/api/objects/alert) <Badge class="badge badge--secondary" text="object"/>
+
+> Mutation to create a new alert type AverageTime as Absolute mode & Requests Window
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.createAlertAverageTimeAbsoluteByRequests.<b>data</b></code>](#)<Bullet />[`AlertAverageTimeAbsoluteByRequestsInput!`](/api/inputs/alert-average-time-absolute-by-requests-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.<b>createAlertAverageTimeComparativeByTime</b></code>](#)<Bullet />[`Alert`](/api/objects/alert) <Badge class="badge badge--secondary" text="object"/>
+
+> Mutation to create a new alert type AverageTime as Comparative mode & Time Window
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.createAlertAverageTimeComparativeByTime.<b>data</b></code>](#)<Bullet />[`AlertAverageTimeComparativeByTimeInput!`](/api/inputs/alert-average-time-comparative-by-time-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.<b>createAlertPeakTrafficAbsoluteByTime</b></code>](#)<Bullet />[`Alert`](/api/objects/alert) <Badge class="badge badge--secondary" text="object"/>
+
+> Mutation to create a new alert type PeakTraffic as Absolute mode & Time Window
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.createAlertPeakTrafficAbsoluteByTime.<b>data</b></code>](#)<Bullet />[`AlertPeakTrafficAbsoluteByTimeInput!`](/api/inputs/alert-peak-traffic-absolute-by-time-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.<b>createAlertPeakTrafficComparativeByTime</b></code>](#)<Bullet />[`Alert`](/api/objects/alert) <Badge class="badge badge--secondary" text="object"/>
+
+> Mutation to create a new alert type PeakTraffic as Comparative mode & Time Window
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.createAlertPeakTrafficComparativeByTime.<b>data</b></code>](#)<Bullet />[`AlertPeakTrafficComparativeByTimeInput!`](/api/inputs/alert-peak-traffic-comparative-by-time-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.<b>createAlertPriceRelativeByTime</b></code>](#)<Bullet />[`Alert`](/api/objects/alert) <Badge class="badge badge--secondary" text="object"/>
+
+> Mutation to create a new alert type Price as Relative mode & Time Window
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.createAlertPriceRelativeByTime.<b>data</b></code>](#)<Bullet />[`AlertPriceRelativeByTimeInput!`](/api/inputs/alert-price-relative-by-time-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.<b>createAlertPriceRelativeByRequests</b></code>](#)<Bullet />[`Alert`](/api/objects/alert) <Badge class="badge badge--secondary" text="object"/>
+
+> Mutation to create a new alert type Price as Relative mode & Request Window
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.createAlertPriceRelativeByRequests.<b>data</b></code>](#)<Bullet />[`AlertPriceRelativeByRequestsInput!`](/api/inputs/alert-price-relative-by-requests-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.<b>createAlertPriceAbsoluteByTime</b></code>](#)<Bullet />[`Alert`](/api/objects/alert) <Badge class="badge badge--secondary" text="object"/>
+
+> Mutation to create a new alert type Price as Absolute mode & Time Window
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.createAlertPriceAbsoluteByTime.<b>data</b></code>](#)<Bullet />[`AlertPriceAbsoluteByTimeInput!`](/api/inputs/alert-price-absolute-by-time-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.<b>createAlertPriceAbsoluteByRequests</b></code>](#)<Bullet />[`Alert`](/api/objects/alert) <Badge class="badge badge--secondary" text="object"/>
+
+> Mutation to create a new alert type Price as Absolute mode & Request Window
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.createAlertPriceAbsoluteByRequests.<b>data</b></code>](#)<Bullet />[`AlertPriceAbsoluteByRequestsInput!`](/api/inputs/alert-price-absolute-by-requests-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.<b>updateAlertErrorRateRelativeByTime</b></code>](#)<Bullet />[`Alert`](/api/objects/alert) <Badge class="badge badge--secondary" text="object"/>
+
+> Mutation to update an alert type ErrorRate as Relative mode & Time Window
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.updateAlertErrorRateRelativeByTime.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.updateAlertErrorRateRelativeByTime.<b>data</b></code>](#)<Bullet />[`AlertUpdateErrorRateRelativeByTimeInput!`](/api/inputs/alert-update-error-rate-relative-by-time-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.<b>updateAlertErrorRateRelativeByRequests</b></code>](#)<Bullet />[`Alert`](/api/objects/alert) <Badge class="badge badge--secondary" text="object"/>
+
+> Mutation to update an alert type ErrorRate as Relative mode & Request Window
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.updateAlertErrorRateRelativeByRequests.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.updateAlertErrorRateRelativeByRequests.<b>data</b></code>](#)<Bullet />[`AlertUpdateErrorRateRelativeByRequestsInput!`](/api/inputs/alert-update-error-rate-relative-by-requests-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.<b>updateAlertErrorRateComparativeByTime</b></code>](#)<Bullet />[`Alert`](/api/objects/alert) <Badge class="badge badge--secondary" text="object"/>
+
+> Mutation to update an alert type ErrorRate as Comparative mode & Time Window
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.updateAlertErrorRateComparativeByTime.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.updateAlertErrorRateComparativeByTime.<b>data</b></code>](#)<Bullet />[`AlertUpdateErrorRateComparativeByTimeInput!`](/api/inputs/alert-update-error-rate-comparative-by-time-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.<b>updateAlertAverageTimeRelativeByTime</b></code>](#)<Bullet />[`Alert`](/api/objects/alert) <Badge class="badge badge--secondary" text="object"/>
+
+> Mutation to update an alert type AverageTime as Relative mode & Time Window
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.updateAlertAverageTimeRelativeByTime.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.updateAlertAverageTimeRelativeByTime.<b>data</b></code>](#)<Bullet />[`AlertUpdateAverageTimeRelativeByTimeInput!`](/api/inputs/alert-update-average-time-relative-by-time-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.<b>updateAlertAverageTimeRelativeByRequests</b></code>](#)<Bullet />[`Alert`](/api/objects/alert) <Badge class="badge badge--secondary" text="object"/>
+
+> Mutation to update an alert type AverageTime as Relative mode & Request Window
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.updateAlertAverageTimeRelativeByRequests.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.updateAlertAverageTimeRelativeByRequests.<b>data</b></code>](#)<Bullet />[`AlertUpdateAverageTimeRelativeByRequestsInput!`](/api/inputs/alert-update-average-time-relative-by-requests-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.<b>updateAlertAverageTimeAbsoluteByTime</b></code>](#)<Bullet />[`Alert`](/api/objects/alert) <Badge class="badge badge--secondary" text="object"/>
+
+> Mutation to update an alert type AverageTime as Absolute mode & Time Window
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.updateAlertAverageTimeAbsoluteByTime.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.updateAlertAverageTimeAbsoluteByTime.<b>data</b></code>](#)<Bullet />[`AlertUpdateAverageTimeAbsoluteByTimeInput!`](/api/inputs/alert-update-average-time-absolute-by-time-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.<b>updateAlertAverageTimeAbsoluteByRequests</b></code>](#)<Bullet />[`Alert`](/api/objects/alert) <Badge class="badge badge--secondary" text="object"/>
+
+> Mutation to update an alert type AverageTime as Absolute mode & Request Window
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.updateAlertAverageTimeAbsoluteByRequests.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.updateAlertAverageTimeAbsoluteByRequests.<b>data</b></code>](#)<Bullet />[`AlertUpdateAverageTimeAbsoluteByRequestsInput!`](/api/inputs/alert-update-average-time-absolute-by-requests-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.<b>updateAlertAverageTimeComparativeByTime</b></code>](#)<Bullet />[`Alert`](/api/objects/alert) <Badge class="badge badge--secondary" text="object"/>
+
+> Mutation to update an alert type AverageTime as Comparative mode & Time Window
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.updateAlertAverageTimeComparativeByTime.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.updateAlertAverageTimeComparativeByTime.<b>data</b></code>](#)<Bullet />[`AlertUpdateAverageTimeComparativeByTimeInput!`](/api/inputs/alert-update-average-time-comparative-by-time-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.<b>updateAlertPeakTrafficAbsoluteByTime</b></code>](#)<Bullet />[`Alert`](/api/objects/alert) <Badge class="badge badge--secondary" text="object"/>
+
+> Mutation to update an alert type PeakTraffic as Absolute mode & Time Window
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.updateAlertPeakTrafficAbsoluteByTime.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.updateAlertPeakTrafficAbsoluteByTime.<b>data</b></code>](#)<Bullet />[`AlertUpdatePeakTrafficAbsoluteByTimeInput!`](/api/inputs/alert-update-peak-traffic-absolute-by-time-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.<b>updateAlertPeakTrafficComparativeByTime</b></code>](#)<Bullet />[`Alert`](/api/objects/alert) <Badge class="badge badge--secondary" text="object"/>
+
+> Mutation to update an alert type PeakTraffic as Comparative mode & Time Window
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.updateAlertPeakTrafficComparativeByTime.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.updateAlertPeakTrafficComparativeByTime.<b>data</b></code>](#)<Bullet />[`AlertUpdatePeakTrafficComparativeByTimeInput!`](/api/inputs/alert-update-peak-traffic-comparative-by-time-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.<b>updateAlertPriceRelativeByTime</b></code>](#)<Bullet />[`Alert`](/api/objects/alert) <Badge class="badge badge--secondary" text="object"/>
+
+> Mutation to update an alert type Price as Relative mode & Time Window
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.updateAlertPriceRelativeByTime.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.updateAlertPriceRelativeByTime.<b>data</b></code>](#)<Bullet />[`AlertUpdatePriceRelativeByTimeInput!`](/api/inputs/alert-update-price-relative-by-time-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.<b>updateAlertPriceRelativeByRequests</b></code>](#)<Bullet />[`Alert`](/api/objects/alert) <Badge class="badge badge--secondary" text="object"/>
+
+> Mutation to update an alert type Price as Relative mode & Requests Window
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.updateAlertPriceRelativeByRequests.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.updateAlertPriceRelativeByRequests.<b>data</b></code>](#)<Bullet />[`AlertUpdatePriceRelativeByRequestsInput!`](/api/inputs/alert-update-price-relative-by-requests-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.<b>updateAlertPriceAbsoluteByTime</b></code>](#)<Bullet />[`Alert`](/api/objects/alert) <Badge class="badge badge--secondary" text="object"/>
+
+> Mutation to update an alert type Price as Absolute mode & Time Window
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.updateAlertPriceAbsoluteByTime.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.updateAlertPriceAbsoluteByTime.<b>data</b></code>](#)<Bullet />[`AlertUpdatePriceAbsoluteByTimeInput!`](/api/inputs/alert-update-price-absolute-by-time-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.<b>updateAlertPriceAbsoluteByRequests</b></code>](#)<Bullet />[`Alert`](/api/objects/alert) <Badge class="badge badge--secondary" text="object"/>
+
+> Mutation to update an alert type Price as Absolute mode & Requests Window
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.updateAlertPriceAbsoluteByRequests.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.updateAlertPriceAbsoluteByRequests.<b>data</b></code>](#)<Bullet />[`AlertUpdatePriceAbsoluteByRequestsInput!`](/api/inputs/alert-update-price-absolute-by-requests-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.<b>deleteAlert</b></code>](#)<Bullet />[`Alert`](/api/objects/alert) <Badge class="badge badge--secondary" text="object"/>
+
+> Mutation to delete an alert
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.deleteAlert.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.<b>createAlertBusinessMetricRatioByTime</b></code>](#)<Bullet />[`Alert`](/api/objects/alert) <Badge class="badge badge--secondary" text="object"/>
+
+> Mutation to create a new alert type BusinessMetric as Ratio mode & Time Window
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.createAlertBusinessMetricRatioByTime.<b>data</b></code>](#)<Bullet />[`AlertBusinessMetricRatioByTimeInput!`](/api/inputs/alert-business-metric-ratio-by-time-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.<b>updateAlertBusinessMetricRatioByTime</b></code>](#)<Bullet />[`Alert`](/api/objects/alert) <Badge class="badge badge--secondary" text="object"/>
+
+> Mutation to update an alert type BusinessMetric as Ratio mode & Time Window
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.updateAlertBusinessMetricRatioByTime.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>AlertsXMutation.updateAlertBusinessMetricRatioByTime.<b>data</b></code>](#)<Bullet />[`AlertUpdateBusinessMetricRatioByTimeInput!`](/api/inputs/alert-update-business-metric-ratio-by-time-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+### Returned by
+
+[`alertsX`](/api/mutations/alerts-x) <Badge class="badge badge--secondary" text="mutation"/>

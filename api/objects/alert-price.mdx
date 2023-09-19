@@ -1,0 +1,68 @@
+---
+id: alert-price
+title: AlertPrice
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Price contains the specific configuration for Price alert Type
+
+```graphql
+type AlertPrice {
+  check: AlertCheckPrice!
+  range: AlertRangePrice!
+  amount: Int
+  commission: Int
+  amountBy: AlertAmountBy
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertPrice.<b>check</b></code>](#)<Bullet />[`AlertCheckPrice!`](/api/enums/alert-check-price) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> Specify which field is goinf to be checked. Amount, commission or both
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertPrice.<b>range</b></code>](#)<Bullet />[`AlertRangePrice!`](/api/enums/alert-range-price) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> Low or greater values of amount/commission (value included)
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertPrice.<b>amount</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Value of amount price
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertPrice.<b>commission</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Value of commission price
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertPrice.<b>amountBy</b></code>](#)<Bullet />[`AlertAmountBy`](/api/enums/alert-amount-by) <Badge class="badge badge--secondary" text="enum"/>
+
+> Used for check amount
+
+### Member of
+
+[`AlertTypeConfiguration`](/api/objects/alert-type-configuration) <Badge class="badge badge--secondary" text="object"/>

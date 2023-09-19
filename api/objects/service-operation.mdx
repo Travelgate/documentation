@@ -1,0 +1,63 @@
+---
+id: service-operation
+title: ServiceOperation
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Information related to an API operation
+
+```graphql
+type ServiceOperation {
+  code: ID!
+  name: String!
+  type: String!
+  travelOperation: Int!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>ServiceOperation.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Service Operation ID
+
+#### [<code style={{ fontWeight: 'normal' }}>ServiceOperation.<b>name</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Service Operation name
+
+#### [<code style={{ fontWeight: 'normal' }}>ServiceOperation.<b>type</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Service Operation type
+
+#### [<code style={{ fontWeight: 'normal' }}>ServiceOperation.<b>travelOperation</b></code>](#)<Bullet />[`Int!`](/api/scalars/int) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Service Operation Travel Operation ID (1: avail) (2: reservation) (3: batch) (4: batchLongRun)
+
+### Member of
+
+[`ServiceApi`](/api/objects/service-api) <Badge class="badge badge--secondary" text="object"/>

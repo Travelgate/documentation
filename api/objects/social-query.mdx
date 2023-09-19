@@ -1,0 +1,95 @@
+---
+id: social-query
+title: SocialQuery
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type SocialQuery {
+  profile(where: ProfileWhereUniqueInput!): ProfileV2!
+  allProfilesV2(
+    cursor: ProfileWhereUniqueInput
+    orderBy: [ProfileOrderByInput!]
+    skip: Int
+    take: Int
+    where: ProfileWhereInput
+  ): ProfileConnection!
+  category(where: CategoryWhereUniqueInput!): SocialCategory!
+  allCategories(where: CategoryWhereInput): SocialCategoryConnection!
+  userProfile(where: UserProfileWhereUniqueInput): UserProfile!
+  invitations(where: InvitationWhereInput): InvitationConnection!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>SocialQuery.<b>profile</b></code>](#)<Bullet />[`ProfileV2!`](/api/objects/profile-v2) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> ##### [<code style={{ fontWeight: 'normal' }}>SocialQuery.profile.<b>where</b></code>](#)<Bullet />[`ProfileWhereUniqueInput!`](/api/inputs/profile-where-unique-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>SocialQuery.<b>allProfilesV2</b></code>](#)<Bullet />[`ProfileConnection!`](/api/objects/profile-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> ##### [<code style={{ fontWeight: 'normal' }}>SocialQuery.allProfilesV2.<b>cursor</b></code>](#)<Bullet />[`ProfileWhereUniqueInput`](/api/inputs/profile-where-unique-input) <Badge class="badge badge--secondary" text="input"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>SocialQuery.allProfilesV2.<b>orderBy</b></code>](#)<Bullet />[`[ProfileOrderByInput!]`](/api/inputs/profile-order-by-input) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>SocialQuery.allProfilesV2.<b>skip</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>SocialQuery.allProfilesV2.<b>take</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+##### [<code style={{ fontWeight: 'normal' }}>SocialQuery.allProfilesV2.<b>where</b></code>](#)<Bullet />[`ProfileWhereInput`](/api/inputs/profile-where-input) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>SocialQuery.<b>category</b></code>](#)<Bullet />[`SocialCategory!`](/api/objects/social-category) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> ##### [<code style={{ fontWeight: 'normal' }}>SocialQuery.category.<b>where</b></code>](#)<Bullet />[`CategoryWhereUniqueInput!`](/api/inputs/category-where-unique-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>SocialQuery.<b>allCategories</b></code>](#)<Bullet />[`SocialCategoryConnection!`](/api/objects/social-category-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> ##### [<code style={{ fontWeight: 'normal' }}>SocialQuery.allCategories.<b>where</b></code>](#)<Bullet />[`CategoryWhereInput`](/api/inputs/category-where-input) <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>SocialQuery.<b>userProfile</b></code>](#)<Bullet />[`UserProfile!`](/api/objects/user-profile) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> ##### [<code style={{ fontWeight: 'normal' }}>SocialQuery.userProfile.<b>where</b></code>](#)<Bullet />[`UserProfileWhereUniqueInput`](/api/inputs/user-profile-where-unique-input) <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>SocialQuery.<b>invitations</b></code>](#)<Bullet />[`InvitationConnection!`](/api/objects/invitation-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> ##### [<code style={{ fontWeight: 'normal' }}>SocialQuery.invitations.<b>where</b></code>](#)<Bullet />[`InvitationWhereInput`](/api/inputs/invitation-where-input) <Badge class="badge badge--secondary" text="input"/>
+
+### Returned by
+
+[`social`](/api/queries/social) <Badge class="badge badge--secondary" text="query"/>

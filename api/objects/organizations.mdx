@@ -1,0 +1,75 @@
+---
+id: organizations
+title: Organizations
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type Organizations {
+  code: ID!
+  organizationsData: OrganizationsData
+  adviseMessage(level: [AdviseMessageLevel]): [AdviseMessage!]
+  createdAt: Time!
+  updatedAt: Time!
+  deletedAt: Time
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Organizations.<b>code</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Organization unique code
+
+#### [<code style={{ fontWeight: 'normal' }}>Organizations.<b>organizationsData</b></code>](#)<Bullet />[`OrganizationsData`](/api/objects/organizations-data) <Badge class="badge badge--secondary" text="object"/>
+
+> Extended Organization information
+
+#### [<code style={{ fontWeight: 'normal' }}>Organizations.<b>adviseMessage</b></code>](#)<Bullet />[`[AdviseMessage!]`](/api/objects/advise-message) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> List of advise messages.
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>Organizations.adviseMessage.<b>level</b></code>](#)<Bullet />[`[AdviseMessageLevel]`](/api/enums/advise-message-level) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Organizations.<b>createdAt</b></code>](#)<Bullet />[`Time!`](/api/scalars/time) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Organization creation date
+
+#### [<code style={{ fontWeight: 'normal' }}>Organizations.<b>updatedAt</b></code>](#)<Bullet />[`Time!`](/api/scalars/time) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Organization last update date
+
+#### [<code style={{ fontWeight: 'normal' }}>Organizations.<b>deletedAt</b></code>](#)<Bullet />[`Time`](/api/scalars/time) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Organization removal date
+
+### Member of
+
+[`AdminMutation`](/api/objects/admin-mutation) <Badge class="badge badge--secondary" text="object"/><Bullet />[`AdminQuery`](/api/objects/admin-query) <Badge class="badge badge--secondary" text="object"/><Bullet />[`ConnectionData`](/api/objects/connection-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`OrganizationsData`](/api/objects/organizations-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`OrganizationsEdge`](/api/objects/organizations-edge) <Badge class="badge badge--secondary" text="object"/>

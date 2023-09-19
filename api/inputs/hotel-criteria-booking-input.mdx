@@ -1,0 +1,70 @@
+---
+id: hotel-criteria-booking-input
+title: HotelCriteriaBookingInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Criteria of book contains basic information to find a book or books.
+If you are using our Hotelx locator (bookingID) you don t need to indicate any of the other fields
+
+```graphql
+input HotelCriteriaBookingInput {
+  accessCode: String
+  language: Language
+  typeSearch: BookingCriteriaType
+  references: CriteriaBookingReferencesInput
+  dates: CriteriaBookingDatesInput
+  bookingID: String
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelCriteriaBookingInput.<b>accessCode</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Name of the access that have to use in the request. Necessary if your search if by references or by dates.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelCriteriaBookingInput.<b>language</b></code>](#)<Bullet />[`Language`](/api/scalars/language) <Badge class="badge badge--secondary" text="scalar"/>
+
+> The language code.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelCriteriaBookingInput.<b>typeSearch</b></code>](#)<Bullet />[`BookingCriteriaType`](/api/enums/booking-criteria-type) <Badge class="badge badge--secondary" text="enum"/>
+
+> The search type criteria. Necessary if your search if by references or by dates.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelCriteriaBookingInput.<b>references</b></code>](#)<Bullet />[`CriteriaBookingReferencesInput`](/api/inputs/criteria-booking-references-input) <Badge class="badge badge--secondary" text="input"/>
+
+> The references criteria.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelCriteriaBookingInput.<b>dates</b></code>](#)<Bullet />[`CriteriaBookingDatesInput`](/api/inputs/criteria-booking-dates-input) <Badge class="badge badge--secondary" text="input"/>
+
+> The dates criteria.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelCriteriaBookingInput.<b>bookingID</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> HotelX s booking reference

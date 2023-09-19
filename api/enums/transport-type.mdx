@@ -1,0 +1,73 @@
+---
+id: transport-type
+title: TransportType
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+enum TransportType {
+  BUS
+  FERRY
+  FLIGHT
+  TRAIN
+  TRANSFER
+  UNKNOWN
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>TransportType.<b>BUS</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>TransportType.<b>FERRY</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>TransportType.<b>FLIGHT</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>TransportType.<b>TRAIN</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>TransportType.<b>TRANSFER</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>TransportType.<b>UNKNOWN</b></code>](#)
+
+>
+
+### Member of
+
+[`Transport`](/api/objects/transport) <Badge class="badge badge--secondary" text="object"/>

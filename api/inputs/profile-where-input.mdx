@@ -1,0 +1,173 @@
+---
+id: profile-where-input
+title: ProfileWhereInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+input ProfileWhereInput {
+  AND: [ProfileWhereInput!]
+  Asset: AssetFilter
+  NOT: [ProfileWhereInput!]
+  OR: [ProfileWhereInput!]
+  code: StringFilter
+  createdAt: DateTimeFilter
+  description: NullableStringFilter
+  groupCode: NullableStringFilter
+  id: IntFilter
+  name: StringFilter
+  order: FloatFilter
+  ownerCode: NullableStringFilter
+  slug: StringFilter
+  status: Status
+  buyerTechPlatformOrgType: BuyerTechSolutionCompanyType
+  sellerTechPlatformOrgType: SellerTechSolutionCompanyType
+  updatedAt: DateTimeFilter
+  websiteUrl: NullableStringFilter
+  buyerCategory: NullableStringFilter
+  sellerCategory: NullableStringFilter
+  isDemandBridge: Boolean
+  isSupplyBridge: Boolean
+  buyerPartnerStatus: PartnerStatusType
+  sellerPartnerStatus: PartnerStatusType
+  buyerInsightsCountriesInput: InsightsCountriesWhereInput
+  sellerInsightsCountriesInput: InsightsCountriesWhereInput
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileWhereInput.<b>AND</b></code>](#)<Bullet />[`[ProfileWhereInput!]`](/api/inputs/profile-where-input) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileWhereInput.<b>Asset</b></code>](#)<Bullet />[`AssetFilter`](/api/inputs/asset-filter) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileWhereInput.<b>NOT</b></code>](#)<Bullet />[`[ProfileWhereInput!]`](/api/inputs/profile-where-input) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileWhereInput.<b>OR</b></code>](#)<Bullet />[`[ProfileWhereInput!]`](/api/inputs/profile-where-input) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileWhereInput.<b>code</b></code>](#)<Bullet />[`StringFilter`](/api/inputs/string-filter) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileWhereInput.<b>createdAt</b></code>](#)<Bullet />[`DateTimeFilter`](/api/inputs/date-time-filter) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileWhereInput.<b>description</b></code>](#)<Bullet />[`NullableStringFilter`](/api/inputs/nullable-string-filter) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileWhereInput.<b>groupCode</b></code>](#)<Bullet />[`NullableStringFilter`](/api/inputs/nullable-string-filter) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileWhereInput.<b>id</b></code>](#)<Bullet />[`IntFilter`](/api/inputs/int-filter) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileWhereInput.<b>name</b></code>](#)<Bullet />[`StringFilter`](/api/inputs/string-filter) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileWhereInput.<b>order</b></code>](#)<Bullet />[`FloatFilter`](/api/inputs/float-filter) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileWhereInput.<b>ownerCode</b></code>](#)<Bullet />[`NullableStringFilter`](/api/inputs/nullable-string-filter) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileWhereInput.<b>slug</b></code>](#)<Bullet />[`StringFilter`](/api/inputs/string-filter) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileWhereInput.<b>status</b></code>](#)<Bullet />[`Status`](/api/enums/status) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileWhereInput.<b>buyerTechPlatformOrgType</b></code>](#)<Bullet />[`BuyerTechSolutionCompanyType`](/api/enums/buyer-tech-solution-company-type) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileWhereInput.<b>sellerTechPlatformOrgType</b></code>](#)<Bullet />[`SellerTechSolutionCompanyType`](/api/enums/seller-tech-solution-company-type) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileWhereInput.<b>updatedAt</b></code>](#)<Bullet />[`DateTimeFilter`](/api/inputs/date-time-filter) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileWhereInput.<b>websiteUrl</b></code>](#)<Bullet />[`NullableStringFilter`](/api/inputs/nullable-string-filter) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileWhereInput.<b>buyerCategory</b></code>](#)<Bullet />[`NullableStringFilter`](/api/inputs/nullable-string-filter) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileWhereInput.<b>sellerCategory</b></code>](#)<Bullet />[`NullableStringFilter`](/api/inputs/nullable-string-filter) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileWhereInput.<b>isDemandBridge</b></code>](#)<Bullet />[`Boolean`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileWhereInput.<b>isSupplyBridge</b></code>](#)<Bullet />[`Boolean`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileWhereInput.<b>buyerPartnerStatus</b></code>](#)<Bullet />[`PartnerStatusType`](/api/enums/partner-status-type) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileWhereInput.<b>sellerPartnerStatus</b></code>](#)<Bullet />[`PartnerStatusType`](/api/enums/partner-status-type) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileWhereInput.<b>buyerInsightsCountriesInput</b></code>](#)<Bullet />[`InsightsCountriesWhereInput`](/api/inputs/insights-countries-where-input) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileWhereInput.<b>sellerInsightsCountriesInput</b></code>](#)<Bullet />[`InsightsCountriesWhereInput`](/api/inputs/insights-countries-where-input) <Badge class="badge badge--secondary" text="input"/>
+
+>
+
+### Member of
+
+[`AssetWhereInput`](/api/inputs/asset-where-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`ProfileWhereInput`](/api/inputs/profile-where-input) <Badge class="badge badge--secondary" text="input"/>

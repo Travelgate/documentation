@@ -1,0 +1,108 @@
+---
+id: audit-rule-data
+title: AuditRuleData
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type AuditRuleData {
+  product: Product!
+  group: Group
+  access: Access
+  owner: Organization
+  client: Client
+  supplier: Supplier
+  buyer: Organization
+  seller: Organization
+  error: AdviseMessage
+  ttl: Int!
+  remainingTTL: Int!
+  percentageToAudit: Int!
+  auditStatus: AuditRuleStatus!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>AuditRuleData.<b>product</b></code>](#)<Bullet />[`Product!`](/api/objects/product) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AuditRuleData.<b>group</b></code>](#)<Bullet />[`Group`](/api/objects/group) <Badge class="badge badge--secondary" text="object"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AuditRuleData.<b>access</b></code>](#)<Bullet />[`Access`](/api/objects/access) <Badge class="badge badge--secondary" text="object"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AuditRuleData.<b>owner</b></code>](#)<Bullet />[`Organization`](/api/objects/organization) <Badge class="badge badge--secondary" text="object"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AuditRuleData.<b>client</b></code>](#)<Bullet />[`Client`](/api/objects/client) <Badge class="badge badge--secondary" text="object"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AuditRuleData.<b>supplier</b></code>](#)<Bullet />[`Supplier`](/api/objects/supplier) <Badge class="badge badge--secondary" text="object"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AuditRuleData.<b>buyer</b></code>](#)<Bullet />[`Organization`](/api/objects/organization) <Badge class="badge badge--secondary" text="object"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AuditRuleData.<b>seller</b></code>](#)<Bullet />[`Organization`](/api/objects/organization) <Badge class="badge badge--secondary" text="object"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AuditRuleData.<b>error</b></code>](#)<Bullet />[`AdviseMessage`](/api/objects/advise-message) <Badge class="badge badge--secondary" text="object"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AuditRuleData.<b>ttl</b></code>](#)<Bullet />[`Int!`](/api/scalars/int) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AuditRuleData.<b>remainingTTL</b></code>](#)<Bullet />[`Int!`](/api/scalars/int) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AuditRuleData.<b>percentageToAudit</b></code>](#)<Bullet />[`Int!`](/api/scalars/int) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>AuditRuleData.<b>auditStatus</b></code>](#)<Bullet />[`AuditRuleStatus!`](/api/enums/audit-rule-status) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+### Member of
+
+[`AuditRule`](/api/objects/audit-rule) <Badge class="badge badge--secondary" text="object"/>

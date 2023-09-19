@@ -1,0 +1,53 @@
+---
+id: alert-notifications-input
+title: AlertNotificationsInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+input AlertNotificationsInput {
+  emails: AlertEmailsInput
+  slack: AlertSlackInput
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertNotificationsInput.<b>emails</b></code>](#)<Bullet />[`AlertEmailsInput`](/api/inputs/alert-emails-input) <Badge class="badge badge--secondary" text="input"/>
+
+> Emails to send notifications
+
+#### [<code style={{ fontWeight: 'normal' }}>AlertNotificationsInput.<b>slack</b></code>](#)<Bullet />[`AlertSlackInput`](/api/inputs/alert-slack-input) <Badge class="badge badge--secondary" text="input"/>
+
+> Slack to send notificarions
+
+### Member of
+
+[`AlertCommonConfigurationInput`](/api/inputs/alert-common-configuration-input) <Badge class="badge badge--secondary" text="input"/>

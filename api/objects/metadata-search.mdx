@@ -1,0 +1,158 @@
+---
+id: metadata-search
+title: MetadataSearch
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type MetadataSearch {
+  destinations: MetadataSearchDestinations!
+  allowsCurrency: ReviewedBool!
+  implementsCombination: ReviewedBool!
+  numMarketsAllowed: ReviewedInt
+  release: ReviewedInt!
+  minimumStay: ReviewedInt!
+  maxStay: ReviewedInt!
+  roomCandidates: MetadataRoomCandidates!
+  informBindingPrice: ReviewedBool!
+  informCancelPolicies: ReviewedBool!
+  informRoomCancelPolicies: ReviewedBool!
+  timeZone: ReviewedTimeZone!
+  informRemarks: ReviewedBool!
+  paymentTypes: [ReviewedPaymentType!]!
+  languages: [ReviewedText!]!
+  informDailyPrice: ReviewedBool!
+  informDailyRatePlan: ReviewedBool!
+  informPromotions: ReviewedBool!
+  informNRFRateByRoom: ReviewedBool!
+  informSurcharges: ReviewedBool!
+  informRoomSurcharges: ReviewedBool!
+  informHotelName: ReviewedBool!
+  requiredNationality: ReviewedBool
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataSearch.<b>destinations</b></code>](#)<Bullet />[`MetadataSearchDestinations!`](/api/objects/metadata-search-destinations) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Contains information regarding the destinations
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataSearch.<b>allowsCurrency</b></code>](#)<Bullet />[`ReviewedBool!`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> If true, it is possible to request the currency.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataSearch.<b>implementsCombination</b></code>](#)<Bullet />[`ReviewedBool!`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Informs whether the integration allows room combination or not.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataSearch.<b>numMarketsAllowed</b></code>](#)<Bullet />[`ReviewedInt`](/api/objects/reviewed-int) <Badge class="badge badge--secondary" text="object"/>
+
+> Number of markets supported by the supplier in the same request.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataSearch.<b>release</b></code>](#)<Bullet />[`ReviewedInt!`](/api/objects/reviewed-int) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Minimum days required in between booking date and checking date ( days in advance ). If the value is zero then there is no limitation.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataSearch.<b>minimumStay</b></code>](#)<Bullet />[`ReviewedInt!`](/api/objects/reviewed-int) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Minimum number of days required for booking. If the value is zero then there is no limitation.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataSearch.<b>maxStay</b></code>](#)<Bullet />[`ReviewedInt!`](/api/objects/reviewed-int) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Maximum number of days allowed for booking.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataSearch.<b>roomCandidates</b></code>](#)<Bullet />[`MetadataRoomCandidates!`](/api/objects/metadata-room-candidates) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Contains information about the restrictions of the rooms.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataSearch.<b>informBindingPrice</b></code>](#)<Bullet />[`ReviewedBool!`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Supplier returns binding PVPs.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataSearch.<b>informCancelPolicies</b></code>](#)<Bullet />[`ReviewedBool!`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Returns cancellation policies at search step
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataSearch.<b>informRoomCancelPolicies</b></code>](#)<Bullet />[`ReviewedBool!`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Returns cancellation policies at room level.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataSearch.<b>timeZone</b></code>](#)<Bullet />[`ReviewedTimeZone!`](/api/objects/reviewed-time-zone) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Specifies the timezone in UTC in which the cancellation policies are located.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataSearch.<b>informRemarks</b></code>](#)<Bullet />[`ReviewedBool!`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Space available for any remarks or comments aimed at the client.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataSearch.<b>paymentTypes</b></code>](#)<Bullet />[`[ReviewedPaymentType!]!`](/api/objects/reviewed-payment-type) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> List of payment types accepted by the supplier with their reviewed date
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataSearch.<b>languages</b></code>](#)<Bullet />[`[ReviewedText!]!`](/api/objects/reviewed-text) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> List of languages supported
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataSearch.<b>informDailyPrice</b></code>](#)<Bullet />[`ReviewedBool!`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Informs if the supplier returns the daily price
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataSearch.<b>informDailyRatePlan</b></code>](#)<Bullet />[`ReviewedBool!`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Informs if the supplier returns the daily rate.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataSearch.<b>informPromotions</b></code>](#)<Bullet />[`ReviewedBool!`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> If true, the supplier returns the promotions(offers) applied.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataSearch.<b>informNRFRateByRoom</b></code>](#)<Bullet />[`ReviewedBool!`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> The supplier can inform in Search if the room is non-refundable.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataSearch.<b>informSurcharges</b></code>](#)<Bullet />[`ReviewedBool!`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Informs if the supplier returns surcharges.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataSearch.<b>informRoomSurcharges</b></code>](#)<Bullet />[`ReviewedBool!`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Returns surcharges at room level.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataSearch.<b>informHotelName</b></code>](#)<Bullet />[`ReviewedBool!`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> inform Hotel name at search step
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataSearch.<b>requiredNationality</b></code>](#)<Bullet />[`ReviewedBool`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="object"/>
+
+> Informs if the supplier requires nationality
+
+### Member of
+
+[`MetadataData`](/api/objects/metadata-data) <Badge class="badge badge--secondary" text="object"/>

@@ -1,0 +1,148 @@
+---
+id: user-onboarding-update-input
+title: UserOnboardingUpdateInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+input UserOnboardingUpdateInput {
+  startedAt: Date
+  finishedAt: Date
+  organizationCreated: Date
+  userDetailsFinishedAt: Date
+  sqlStartedAt: Date
+  sqlFinishedAt: Date
+  sqlStatus: SqlStatusType
+  billingAccountCreated: Date
+  tcpId: String
+  annexBuyerId: String
+  annexSellerId: String
+  annexPlatformId: Int
+  annexPlatformBuyerId: String
+  annexPlatformSellerId: String
+  tcpAcceptedAt: Date
+  annexBuyerAcceptedAt: Date
+  annexSellerAcceptedAt: Date
+  annexPlatformAcceptedAt: Date
+  annexPlatformBuyerAcceptedAt: Date
+  annexPlatformSellerAcceptedAt: Date
+  developmentNeeded: Boolean
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>UserOnboardingUpdateInput.<b>startedAt</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserOnboardingUpdateInput.<b>finishedAt</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserOnboardingUpdateInput.<b>organizationCreated</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserOnboardingUpdateInput.<b>userDetailsFinishedAt</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserOnboardingUpdateInput.<b>sqlStartedAt</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserOnboardingUpdateInput.<b>sqlFinishedAt</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserOnboardingUpdateInput.<b>sqlStatus</b></code>](#)<Bullet />[`SqlStatusType`](/api/enums/sql-status-type) <Badge class="badge badge--secondary" text="enum"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserOnboardingUpdateInput.<b>billingAccountCreated</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserOnboardingUpdateInput.<b>tcpId</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserOnboardingUpdateInput.<b>annexBuyerId</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserOnboardingUpdateInput.<b>annexSellerId</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserOnboardingUpdateInput.<b>annexPlatformId</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserOnboardingUpdateInput.<b>annexPlatformBuyerId</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserOnboardingUpdateInput.<b>annexPlatformSellerId</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserOnboardingUpdateInput.<b>tcpAcceptedAt</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserOnboardingUpdateInput.<b>annexBuyerAcceptedAt</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserOnboardingUpdateInput.<b>annexSellerAcceptedAt</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserOnboardingUpdateInput.<b>annexPlatformAcceptedAt</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserOnboardingUpdateInput.<b>annexPlatformBuyerAcceptedAt</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserOnboardingUpdateInput.<b>annexPlatformSellerAcceptedAt</b></code>](#)<Bullet />[`Date`](/api/scalars/date) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserOnboardingUpdateInput.<b>developmentNeeded</b></code>](#)<Bullet />[`Boolean`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="scalar"/>
+
+>
+
+### Member of
+
+[`UserProfileCreateInput`](/api/inputs/user-profile-create-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`UserProfileUpdateInput`](/api/inputs/user-profile-update-input) <Badge class="badge badge--secondary" text="input"/>

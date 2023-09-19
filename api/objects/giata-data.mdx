@@ -1,0 +1,63 @@
+---
+id: giata-data
+title: GiataData
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Hotel data obtained from Giata System.
+
+```graphql
+type GiataData {
+  id: ID!
+  source: URI!
+  href: URI!
+  updatedAt: DateTime!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>GiataData.<b>id</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Giata System ID.
+
+#### [<code style={{ fontWeight: 'normal' }}>GiataData.<b>source</b></code>](#)<Bullet />[`URI!`](/api/scalars/uri) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Giata URL for the hotels of the supplier.
+
+#### [<code style={{ fontWeight: 'normal' }}>GiataData.<b>href</b></code>](#)<Bullet />[`URI!`](/api/scalars/uri) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Giata url for the hotel info.
+
+#### [<code style={{ fontWeight: 'normal' }}>GiataData.<b>updatedAt</b></code>](#)<Bullet />[`DateTime!`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Date of last Giata update for this code.
+
+### Member of
+
+[`HotelData`](/api/objects/hotel-data) <Badge class="badge badge--secondary" text="object"/>

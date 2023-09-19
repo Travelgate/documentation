@@ -1,0 +1,169 @@
+---
+id: hotel-xhotel-filter-input
+title: HotelXHotelFilterInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+By default: Logical AND on all given filters. Hotels data are returned
+only if match condition
+
+```graphql
+input HotelXHotelFilterInput {
+  AND: [HotelXHotelFilterInput!]
+  OR: [HotelXHotelFilterInput!]
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  deletedAt_in: [DateTime!]
+  deletedAt_not_in: [DateTime!]
+  deletedAt_lt: DateTime
+  deletedAt_lte: DateTime
+  deletedAt_gt: DateTime
+  deletedAt_gte: DateTime
+  country_in: Boolean
+  category_in: Boolean
+  destination_in: Boolean
+  name_in: Boolean
+  coordinates_in: Boolean
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXHotelFilterInput.<b>AND</b></code>](#)<Bullet />[`[HotelXHotelFilterInput!]`](/api/inputs/hotel-xhotel-filter-input) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="input"/>
+
+> Logical AND on all given filters.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXHotelFilterInput.<b>OR</b></code>](#)<Bullet />[`[HotelXHotelFilterInput!]`](/api/inputs/hotel-xhotel-filter-input) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="input"/>
+
+> Logical OR on all given filters.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXHotelFilterInput.<b>createdAt_in</b></code>](#)<Bullet />[`[DateTime!]`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Return hotels with creation time in given list.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXHotelFilterInput.<b>createdAt_not_in</b></code>](#)<Bullet />[`[DateTime!]`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Return hotels with creation time that are not contained in given list.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXHotelFilterInput.<b>createdAt_lt</b></code>](#)<Bullet />[`DateTime`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Return hotels with creation time less than the given value.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXHotelFilterInput.<b>createdAt_lte</b></code>](#)<Bullet />[`DateTime`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Return hotels with creation time less than or equal the given value.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXHotelFilterInput.<b>createdAt_gt</b></code>](#)<Bullet />[`DateTime`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Return hotels with creation time greater than the given value.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXHotelFilterInput.<b>createdAt_gte</b></code>](#)<Bullet />[`DateTime`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Return hotels with creation time greater than or equal the given value.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXHotelFilterInput.<b>updatedAt_in</b></code>](#)<Bullet />[`[DateTime!]`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Return hotels with update time that are contained in given list.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXHotelFilterInput.<b>updatedAt_not_in</b></code>](#)<Bullet />[`[DateTime!]`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Return hotels with update time that are not contained in given list.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXHotelFilterInput.<b>updatedAt_lt</b></code>](#)<Bullet />[`DateTime`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Return hotels with update time less than the given value.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXHotelFilterInput.<b>updatedAt_lte</b></code>](#)<Bullet />[`DateTime`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Return hotels with update time less than or equal the given value.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXHotelFilterInput.<b>updatedAt_gt</b></code>](#)<Bullet />[`DateTime`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Return hotels with update time greater than the given value.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXHotelFilterInput.<b>updatedAt_gte</b></code>](#)<Bullet />[`DateTime`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Return hotels with update time greater than or equal the given value.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXHotelFilterInput.<b>deletedAt_in</b></code>](#)<Bullet />[`[DateTime!]`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Return hotels with delete time that are contained in given list.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXHotelFilterInput.<b>deletedAt_not_in</b></code>](#)<Bullet />[`[DateTime!]`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Return hotels with delete time that are not contained in given list.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXHotelFilterInput.<b>deletedAt_lt</b></code>](#)<Bullet />[`DateTime`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Return hotels with delete time less than the given value.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXHotelFilterInput.<b>deletedAt_lte</b></code>](#)<Bullet />[`DateTime`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Return hotels with delete time less than or equal the given value.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXHotelFilterInput.<b>deletedAt_gt</b></code>](#)<Bullet />[`DateTime`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Return hotels with delete time greater than the given value.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXHotelFilterInput.<b>deletedAt_gte</b></code>](#)<Bullet />[`DateTime`](/api/scalars/date-time) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Return hotels with delete time greater than or equal the given value.
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXHotelFilterInput.<b>country_in</b></code>](#)<Bullet />[`Boolean`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Hotel Country required for all Hotels
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXHotelFilterInput.<b>category_in</b></code>](#)<Bullet />[`Boolean`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Hotel Category code required for all Hotels
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXHotelFilterInput.<b>destination_in</b></code>](#)<Bullet />[`Boolean`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Hotel destination required for all Hotels
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXHotelFilterInput.<b>name_in</b></code>](#)<Bullet />[`Boolean`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Hotel Name required for all Hotels
+
+#### [<code style={{ fontWeight: 'normal' }}>HotelXHotelFilterInput.<b>coordinates_in</b></code>](#)<Bullet />[`Boolean`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Hotel Coordinates required for all Hotels
+
+### Member of
+
+[`HotelXHotelFilterInput`](/api/inputs/hotel-xhotel-filter-input) <Badge class="badge badge--secondary" text="input"/>

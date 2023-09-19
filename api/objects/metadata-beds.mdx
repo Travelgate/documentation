@@ -1,0 +1,63 @@
+---
+id: metadata-beds
+title: MetadataBeds
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Information about beds.
+
+```graphql
+type MetadataBeds {
+  informNumberOfUnits: ReviewedBool!
+  informSharedBed: ReviewedBool!
+  informBedType: ReviewedBool!
+  informNumberOfBeds: ReviewedBool!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataBeds.<b>informNumberOfUnits</b></code>](#)<Bullet />[`ReviewedBool!`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Indicates the number of units available per room.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataBeds.<b>informSharedBed</b></code>](#)<Bullet />[`ReviewedBool!`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Informs in Search response if beds in the room are shared.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataBeds.<b>informBedType</b></code>](#)<Bullet />[`ReviewedBool!`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Informs if the supplier returns the beds types.
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataBeds.<b>informNumberOfBeds</b></code>](#)<Bullet />[`ReviewedBool!`](/api/objects/reviewed-bool) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Informs if the supplier returns the number of beds for each room.
+
+### Member of
+
+[`MetadataRoomCandidates`](/api/objects/metadata-room-candidates) <Badge class="badge badge--secondary" text="object"/>

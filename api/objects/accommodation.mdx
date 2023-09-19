@@ -1,0 +1,83 @@
+---
+id: accommodation
+title: Accommodation
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type Accommodation {
+  boardCode: String!
+  boardName: String!
+  cityCode: String
+  hotelCode: String!
+  hotelName: String!
+  ref: String!
+  roomCode: String!
+  roomName: String!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Accommodation.<b>boardCode</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Board code assigned to the accommodation
+
+#### [<code style={{ fontWeight: 'normal' }}>Accommodation.<b>boardName</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Board name assigned to the accommodation
+
+#### [<code style={{ fontWeight: 'normal' }}>Accommodation.<b>cityCode</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> City code where the accommodation belongs to
+
+#### [<code style={{ fontWeight: 'normal' }}>Accommodation.<b>hotelCode</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Code of the accommodation
+
+#### [<code style={{ fontWeight: 'normal' }}>Accommodation.<b>hotelName</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> name of the accommodation
+
+#### [<code style={{ fontWeight: 'normal' }}>Accommodation.<b>ref</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> ref to see where it belongs in the itinerary map (if necessary)
+
+#### [<code style={{ fontWeight: 'normal' }}>Accommodation.<b>roomCode</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Code of the room assigned to the accommodation
+
+#### [<code style={{ fontWeight: 'normal' }}>Accommodation.<b>roomName</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> name of the room assigned to the accommodation
+
+### Member of
+
+[`BookingPayload`](/api/objects/booking-payload) <Badge class="badge badge--secondary" text="object"/><Bullet />[`BookPayload`](/api/objects/book-payload) <Badge class="badge badge--secondary" text="object"/><Bullet />[`QuotePayload`](/api/objects/quote-payload) <Badge class="badge badge--secondary" text="object"/><Bullet />[`SearchOption`](/api/objects/search-option) <Badge class="badge badge--secondary" text="object"/>

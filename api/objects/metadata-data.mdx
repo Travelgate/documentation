@@ -1,0 +1,142 @@
+---
+id: metadata-data
+title: MetadataData
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+MetadataData provides information about the metadata of the supplier so that it can be effectively configured.
+
+```graphql
+type MetadataData {
+  supplierCode: ID!
+  search: MetadataSearch!
+  quote: MetadataQuote!
+  book: MetadataBook!
+  booking: MetadataBooking!
+  cancel: MetadataCancel!
+  amendBoard: MetadataAmendBoard
+  amendDates: MetadataAmendDates
+  amendPaxes: MetadataAmendPaxes
+  amendRemarks: MetadataAmendRemarks
+  hotels: MetadataContent
+  destinations: MetadataContent
+  rooms: MetadataContent
+  boards: MetadataContent
+  categories: MetadataContent
+  markets: MetadataContent
+  currencies: MetadataContent
+  amenities: MetadataContent
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataData.<b>supplierCode</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Requested supplier code
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataData.<b>search</b></code>](#)<Bullet />[`MetadataSearch!`](/api/objects/metadata-search) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Search metadata
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataData.<b>quote</b></code>](#)<Bullet />[`MetadataQuote!`](/api/objects/metadata-quote) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Quote metadata
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataData.<b>book</b></code>](#)<Bullet />[`MetadataBook!`](/api/objects/metadata-book) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Book metadata
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataData.<b>booking</b></code>](#)<Bullet />[`MetadataBooking!`](/api/objects/metadata-booking) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Booking metadata
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataData.<b>cancel</b></code>](#)<Bullet />[`MetadataCancel!`](/api/objects/metadata-cancel) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Cancel metadata
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataData.<b>amendBoard</b></code>](#)<Bullet />[`MetadataAmendBoard`](/api/objects/metadata-amend-board) <Badge class="badge badge--secondary" text="object"/>
+
+> Amend Board metadata
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataData.<b>amendDates</b></code>](#)<Bullet />[`MetadataAmendDates`](/api/objects/metadata-amend-dates) <Badge class="badge badge--secondary" text="object"/>
+
+> Amend Dates metadata
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataData.<b>amendPaxes</b></code>](#)<Bullet />[`MetadataAmendPaxes`](/api/objects/metadata-amend-paxes) <Badge class="badge badge--secondary" text="object"/>
+
+> Amend Paxes metadata
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataData.<b>amendRemarks</b></code>](#)<Bullet />[`MetadataAmendRemarks`](/api/objects/metadata-amend-remarks) <Badge class="badge badge--secondary" text="object"/>
+
+> Amend Remarks metadata
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataData.<b>hotels</b></code>](#)<Bullet />[`MetadataContent`](/api/objects/metadata-content) <Badge class="badge badge--secondary" text="object"/>
+
+> Contains information regarding Hotels, Hotels returns a list of hotels all information available (code, name,
+> address, phone, etc.) for each hotel. Return null is not implemented
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataData.<b>destinations</b></code>](#)<Bullet />[`MetadataContent`](/api/objects/metadata-content) <Badge class="badge badge--secondary" text="object"/>
+
+> Contains information regarding Destinations, Destinations returns the supplier s destination list.
+> Return null is not implemented
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataData.<b>rooms</b></code>](#)<Bullet />[`MetadataContent`](/api/objects/metadata-content) <Badge class="badge badge--secondary" text="object"/>
+
+> Contains information regarding Rooms, RoomList aims to return a list of rooms, their codes as well as descriptions.
+> Return null is not implemented
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataData.<b>boards</b></code>](#)<Bullet />[`MetadataContent`](/api/objects/metadata-content) <Badge class="badge badge--secondary" text="object"/>
+
+> Contains information regarding Boards, Boards aims to return a list of the search boards,
+> which will be used in the Search response. Return null is not implemented
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataData.<b>categories</b></code>](#)<Bullet />[`MetadataContent`](/api/objects/metadata-content) <Badge class="badge badge--secondary" text="object"/>
+
+> Contains information regarding Categories, Categories returns a list of categories (codes and descriptions)
+> used in Hotels List. Return null is not implemented
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataData.<b>markets</b></code>](#)<Bullet />[`MetadataContent`](/api/objects/metadata-content) <Badge class="badge badge--secondary" text="object"/>
+
+> Contains information regarding Markets, Markets return a list of the available Markets, which will be
+> used in the Search request. Return null is not implemented
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataData.<b>currencies</b></code>](#)<Bullet />[`MetadataContent`](/api/objects/metadata-content) <Badge class="badge badge--secondary" text="object"/>
+
+> Contains information regarding Currencies, Currencies returns a list of currencies the supplier in booking flow.
+> Return null is not implemented
+
+#### [<code style={{ fontWeight: 'normal' }}>MetadataData.<b>amenities</b></code>](#)<Bullet />[`MetadataContent`](/api/objects/metadata-content) <Badge class="badge badge--secondary" text="object"/>
+
+> Contains information regarding Amenities, Amenities is defined as something intended to make life more
+> pleasant or comfortable for people, Examples include: swimming pools, shopping centers, etc.
+> Return null is not implemented
+
+### Member of
+
+[`Metadata`](/api/objects/metadata) <Badge class="badge badge--secondary" text="object"/>

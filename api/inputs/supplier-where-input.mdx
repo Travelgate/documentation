@@ -1,0 +1,89 @@
+---
+id: supplier-where-input
+title: SupplierWhereInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Supplier where input. Filters are additive (AND)
+
+```graphql
+input SupplierWhereInput {
+  code_in: [ID!]
+  name_in: [String!]
+  group_in: [ID!]
+  owner_in: [ID!]
+  provider_in: [ID!]
+  isActive: Boolean
+  groupContent: ID
+  serviceApi: ID
+  api: [APIName]
+  includeArchived: Boolean
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierWhereInput.<b>code_in</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Filter by Supplier codes
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierWhereInput.<b>name_in</b></code>](#)<Bullet />[`[String!]`](/api/scalars/string) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Filter by Supplier names
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierWhereInput.<b>group_in</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Filter by IAM Group codes
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierWhereInput.<b>owner_in</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Filter by Owner codes (Organization codes)
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierWhereInput.<b>provider_in</b></code>](#)<Bullet />[`[ID!]`](/api/scalars/id) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
+
+> Filter by Provider codes
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierWhereInput.<b>isActive</b></code>](#)<Bullet />[`Boolean`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Filter by Supplier status
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierWhereInput.<b>groupContent</b></code>](#)<Bullet />[`ID`](/api/scalars/id) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Filter by GroupContent code
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierWhereInput.<b>serviceApi</b></code>](#)<Bullet />[`ID`](/api/scalars/id) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Filter by ServiceApi ID (integer)
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierWhereInput.<b>api</b></code>](#)<Bullet />[`[APIName]`](/api/enums/apiname) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> Filter by APIs name
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierWhereInput.<b>includeArchived</b></code>](#)<Bullet />[`Boolean`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Include archived records

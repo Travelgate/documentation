@@ -1,0 +1,78 @@
+---
+id: stats-info-types
+title: StatsInfoTypes
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+enum StatsInfoTypes {
+  ALL
+  OK
+  INTEGRATION
+  PROVIDER
+  COMMUNICATION
+  HUB
+  OTHER
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsInfoTypes.<b>ALL</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsInfoTypes.<b>OK</b></code>](#)
+
+> Stats in OK state
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsInfoTypes.<b>INTEGRATION</b></code>](#)
+
+> Stats in NOK state caused by integration issues
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsInfoTypes.<b>PROVIDER</b></code>](#)
+
+> Stats in NOK state caused by supplier issues
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsInfoTypes.<b>COMMUNICATION</b></code>](#)
+
+> Stats in NOK state caused by Timeout
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsInfoTypes.<b>HUB</b></code>](#)
+
+> Stats in NOK state caused by HUB issues
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsInfoTypes.<b>OTHER</b></code>](#)
+
+> Stats in NOK state caused by other causes
+
+### Member of
+
+[`ErrorFilter`](/api/inputs/error-filter) <Badge class="badge badge--secondary" text="input"/><Bullet />[`LoggingLegacyData`](/api/objects/logging-legacy-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`StatsInfo`](/api/objects/stats-info) <Badge class="badge badge--secondary" text="object"/>

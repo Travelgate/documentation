@@ -1,0 +1,63 @@
+---
+id: booking-room
+title: BookingRoom
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type BookingRoom {
+  occupancyRefId: Int
+  code: String
+  description: String
+  price: Price
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingRoom.<b>occupancyRefId</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+> ID reference to the occupancy
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingRoom.<b>code</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Indicates the room code
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingRoom.<b>description</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Description about the room
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingRoom.<b>price</b></code>](#)<Bullet />[`Price`](/api/objects/price) <Badge class="badge badge--secondary" text="object"/>
+
+> Total price for all days.
+
+### Member of
+
+[`BookingHotel`](/api/objects/booking-hotel) <Badge class="badge badge--secondary" text="object"/><Bullet />[`BookingHotelDetails`](/api/objects/booking-hotel-details) <Badge class="badge badge--secondary" text="object"/>

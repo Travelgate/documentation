@@ -1,0 +1,92 @@
+---
+id: location
+title: Location
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+Indicates the location of the hotel
+
+```graphql
+type Location {
+  address: String
+  city: String
+  zipCode: String
+  country: Country
+  coordinates: Coordinates
+  closestDestination: DestinationData
+  airports: [Airport!]
+  geoNames: [Geoname!]! @deprecated
+  state: State
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Location.<b>address</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Contains Hotel Address
+
+#### [<code style={{ fontWeight: 'normal' }}>Location.<b>city</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Contains the city
+
+#### [<code style={{ fontWeight: 'normal' }}>Location.<b>zipCode</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Contains the zipCode.
+
+#### [<code style={{ fontWeight: 'normal' }}>Location.<b>country</b></code>](#)<Bullet />[`Country`](/api/scalars/country) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Country where is the Hotel.
+
+#### [<code style={{ fontWeight: 'normal' }}>Location.<b>coordinates</b></code>](#)<Bullet />[`Coordinates`](/api/objects/coordinates) <Badge class="badge badge--secondary" text="object"/>
+
+> Geographical coordinates corresponding to a location.
+
+#### [<code style={{ fontWeight: 'normal' }}>Location.<b>closestDestination</b></code>](#)<Bullet />[`DestinationData`](/api/objects/destination-data) <Badge class="badge badge--secondary" text="object"/>
+
+> Closest destination
+
+#### [<code style={{ fontWeight: 'normal' }}>Location.<b>airports</b></code>](#)<Bullet />[`[Airport!]`](/api/objects/airport) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Airports
+
+#### [<code style={{ fontWeight: 'normal' }}>Location.<b>geoNames</b></code>](#)<Bullet />[`[Geoname!]!`](/api/objects/geoname) <Badge class="badge badge--deprecated badge--secondary" text="deprecated"/> <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> :::caution DEPRECATED
+> Deprecated from 2023-04-18
+> :::
+>
+> Detailed information about the destinations geonames
+
+#### [<code style={{ fontWeight: 'normal' }}>Location.<b>state</b></code>](#)<Bullet />[`State`](/api/scalars/state) <Badge class="badge badge--secondary" text="scalar"/>
+
+> the state/province of the property
+
+### Member of
+
+[`AirportData`](/api/objects/airport-data) <Badge class="badge badge--secondary" text="object"/><Bullet />[`HotelData`](/api/objects/hotel-data) <Badge class="badge badge--secondary" text="object"/>

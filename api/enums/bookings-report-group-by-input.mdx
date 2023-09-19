@@ -1,0 +1,114 @@
+---
+id: bookings-report-group-by-input
+title: BookingsReportGroupByInput
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+## BOOKING REPORT // Group By Input
+
+```graphql
+enum BookingsReportGroupByInput {
+  status
+  clientCode
+  clientOrganization
+  supplierCode
+  supplierOrganization
+  currency
+  bookingAt
+  checkInAt
+  cancelAt
+  originMarket
+  destinationCountry
+  paxType
+  lengthOfStay
+  bookingWindow
+  hotel
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingsReportGroupByInput.<b>status</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingsReportGroupByInput.<b>clientCode</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingsReportGroupByInput.<b>clientOrganization</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingsReportGroupByInput.<b>supplierCode</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingsReportGroupByInput.<b>supplierOrganization</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingsReportGroupByInput.<b>currency</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingsReportGroupByInput.<b>bookingAt</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingsReportGroupByInput.<b>checkInAt</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingsReportGroupByInput.<b>cancelAt</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingsReportGroupByInput.<b>originMarket</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingsReportGroupByInput.<b>destinationCountry</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingsReportGroupByInput.<b>paxType</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingsReportGroupByInput.<b>lengthOfStay</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingsReportGroupByInput.<b>bookingWindow</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingsReportGroupByInput.<b>hotel</b></code>](#)
+
+>

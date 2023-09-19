@@ -1,0 +1,128 @@
+---
+id: booking-detail
+title: BookingDetail
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+type BookingDetail {
+  reference: Reference!
+  holder: Holder
+  hotel: BookingHotelDetails
+  price: Price
+  cancelPolicy: CancelPolicy
+  remarks: String
+  status: BookStatusType!
+  payable: String
+  sessionIdQuote: String
+  sessionIdBooking: String
+  sessionIdCancel: String
+  client: Client
+  supplier: Supplier
+  access: Access
+  executionTime: Int
+  timeout: Int
+  errorCode: String
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingDetail.<b>reference</b></code>](#)<Bullet />[`Reference!`](/api/objects/reference) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Booking ID in the Supplier s system
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingDetail.<b>holder</b></code>](#)<Bullet />[`Holder`](/api/objects/holder) <Badge class="badge badge--secondary" text="object"/>
+
+> Holder s name and surname
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingDetail.<b>hotel</b></code>](#)<Bullet />[`BookingHotelDetails`](/api/objects/booking-hotel-details) <Badge class="badge badge--secondary" text="object"/>
+
+> Information about the hotel.
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingDetail.<b>price</b></code>](#)<Bullet />[`Price`](/api/objects/price) <Badge class="badge badge--secondary" text="object"/>
+
+> Specifies the prices (Gross, Net and Amount) of the option returned.
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingDetail.<b>cancelPolicy</b></code>](#)<Bullet />[`CancelPolicy`](/api/objects/cancel-policy) <Badge class="badge badge--secondary" text="object"/>
+
+> Specifies cancel policies of the book returned.
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingDetail.<b>remarks</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Additional information about the book.
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingDetail.<b>status</b></code>](#)<Bullet />[`BookStatusType!`](/api/enums/book-status-type) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
+
+> Booking Status.
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingDetail.<b>payable</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Payable.
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingDetail.<b>sessionIdQuote</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Quote Session id
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingDetail.<b>sessionIdBooking</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Booking Session id
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingDetail.<b>sessionIdCancel</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Cancel Session id
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingDetail.<b>client</b></code>](#)<Bullet />[`Client`](/api/objects/client) <Badge class="badge badge--secondary" text="object"/>
+
+> Client Code
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingDetail.<b>supplier</b></code>](#)<Bullet />[`Supplier`](/api/objects/supplier) <Badge class="badge badge--secondary" text="object"/>
+
+> Supplier Code
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingDetail.<b>access</b></code>](#)<Bullet />[`Access`](/api/objects/access) <Badge class="badge badge--secondary" text="object"/>
+
+> Access ID
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingDetail.<b>executionTime</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Execution Time
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingDetail.<b>timeout</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Timeout
+
+#### [<code style={{ fontWeight: 'normal' }}>BookingDetail.<b>errorCode</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
+
+> Error Code
+
+### Member of
+
+[`InsightsXBookingDetail`](/api/objects/insights-xbooking-detail) <Badge class="badge badge--secondary" text="object"/>

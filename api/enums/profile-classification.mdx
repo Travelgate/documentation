@@ -1,0 +1,158 @@
+---
+id: profile-classification
+title: ProfileClassification
+hide_table_of_contents: false
+---
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="\_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={props.class}>{props.text}</span></>
+
+import { useState } from 'react';
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+const [open, setOpen] = useState(startOpen);
+return (
+<details {...(open ? { open: true } : {})} className="details" style={{ border:'none', boxShadow:'none', background:'var(--ifm-background-color)' }}>
+<summary
+onClick={(e) => {
+e.preventDefault();
+setOpen((open) => !open);
+}}
+style={{ listStyle:'none' }} >
+{open ? dataOpen : dataClose}
+</summary>
+{open && children}
+</details>
+);
+};
+
+No description
+
+```graphql
+enum ProfileClassification {
+  AIRLINE
+  BEDBANK
+  BOOKING_ENGINE
+  CHANNEL_MANAGER
+  CONSOLIDATOR
+  CONSORTIA
+  CRS
+  DMC
+  FLIGHT_AGGREGATOR
+  FLIGHT_CONSOLIDATOR
+  GDS
+  HOTEL_CHAIN
+  INDEPENDENT_HOTEL
+  MARKETING
+  METASEARCH_ENGINE
+  OTA
+  PMS
+  SWITCH
+  TECH_PLATFORM
+  TOUR_OPERATOR
+  TRAVEL_AGENCY
+  VACATION_RENTALS
+  WHOLESALER
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileClassification.<b>AIRLINE</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileClassification.<b>BEDBANK</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileClassification.<b>BOOKING_ENGINE</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileClassification.<b>CHANNEL_MANAGER</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileClassification.<b>CONSOLIDATOR</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileClassification.<b>CONSORTIA</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileClassification.<b>CRS</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileClassification.<b>DMC</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileClassification.<b>FLIGHT_AGGREGATOR</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileClassification.<b>FLIGHT_CONSOLIDATOR</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileClassification.<b>GDS</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileClassification.<b>HOTEL_CHAIN</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileClassification.<b>INDEPENDENT_HOTEL</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileClassification.<b>MARKETING</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileClassification.<b>METASEARCH_ENGINE</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileClassification.<b>OTA</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileClassification.<b>PMS</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileClassification.<b>SWITCH</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileClassification.<b>TECH_PLATFORM</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileClassification.<b>TOUR_OPERATOR</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileClassification.<b>TRAVEL_AGENCY</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileClassification.<b>VACATION_RENTALS</b></code>](#)
+
+>
+
+#### [<code style={{ fontWeight: 'normal' }}>ProfileClassification.<b>WHOLESALER</b></code>](#)
+
+>
+
+### Member of
+
+[`Profile`](/api/objects/profile) <Badge class="badge badge--secondary" text="object"/><Bullet />[`ProfileCreateOrUpdateClassificationsInput`](/api/inputs/profile-create-or-update-classifications-input) <Badge class="badge badge--secondary" text="input"/><Bullet />[`ProfileData`](/api/objects/profile-data) <Badge class="badge badge--secondary" text="object"/>

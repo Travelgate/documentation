@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Travelgate
+# Introduction
 
 TravelgateX is a connectivity marketplace that brings together Buyers and Sellers 
 of travel product. Our cutting-edge technology has earned the trust and confidence 

@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Overview
+# Quickstart
 
 Hotel-X API is a powerful aggregation solution that allows you to get results from the largest network of Sellers in a single request. You have the possibility to aggregate, or not, at different levels like hotel, room type and rate plan among others.
 

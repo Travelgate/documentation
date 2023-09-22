@@ -21,7 +21,7 @@ A client" is a tag or label that Buyers use to categorize their traffic. The cli
 You can have multiple client codes, for instance, to separate traffic for B2B and B2C (e.g., client_b2b, client_b2c). All accesses work with any client code, so choose according to your needs. You can check this information in your [Connections Settings](https://app.travelgatex.com/connections/settings).
 
 ### `Context`
-Context is a term used to describe the content codes used by both Buyers and Sellers. Every Supplier has their own unique context, which consists of specific codes for items like hotels, boards, and rooms. Buyers can either adopt their own context or the ones provided by the Supplier. When employing their own context, Buyers can either apply their own codes or engage a content provider (e.g. GIATA), in both cases creating their own context using our [Mapping Plugin](../apis/hotel-x-pull-buyers-api/plugins/mapping).
+Context is a term used to describe the content codes used by both Buyers and Sellers. Every Supplier has their own unique context, which consists of specific codes for items like hotels, boards, and rooms. Buyers can either adopt their own context or the ones provided by the Supplier. When employing their own context, Buyers can either apply their own codes or engage a content provider (e.g. GIATA), in both cases creating their own context using our [Mapping Plugin](../apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping.md).
 
 ### `Access`
 An access is the set of credentials and the authentication configuration that enables a Buyer to connect to a Seller. It is used to differentiate among Sellers and also to filter different credentials and configurations from the same Seller (e.g. B2B and B2C feeds). 

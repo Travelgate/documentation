@@ -136,6 +136,13 @@ const config = {
             label: 'API Reference',
             position: 'left'
           },
+          {
+            to: '/playground',
+            //type: 'docSidebar',
+            //sidebarId: 'schemaSidebar',
+            label: 'GraphQL Playground',
+            position: 'left'
+          },
           // {
           //   href: 'https://github.com/facebook/docusaurus',
           //   label: 'GitHub',

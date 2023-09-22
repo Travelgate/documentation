@@ -466,8 +466,8 @@ mutation {
 
 Congratulations on completing this quickstart tutorial! You've just learned how to create a basic sample booking. But there's more to discover:
 
-- [Retrieve static information](../apis/for-buyers/hotel-x-pull-buyers-api/content): Explore accessing static data.
-- [Make a booking](../apis/for-buyers/hotel-x-pull-buyers-api/booking-flow): Learn how to book with more details.
-- [Manage reservations](../apis/for-buyers/hotel-x-pull-buyers-api/booking-management): Get the hang of reservation management.
+- [Retrieve static information](../hotel-x-pull-buyers-api/content/overview): Explore accessing static data.
+- [Make a booking](../hotel-x-pull-buyers-api/booking-flow/overview): Learn how to book with more details.
+- [Manage reservations](../hotel-x-pull-buyers-api/booking-management/overview): Get the hang of reservation management.
 
 Our documentation has additional useful fields and functionalities for your business. To find out more, browse through our documentation to unlock the potential of these methods. Enjoy your journey!

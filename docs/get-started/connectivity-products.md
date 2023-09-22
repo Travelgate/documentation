@@ -8,7 +8,7 @@ At TravelgateX, partners can either be Buyers or Sellers. Depending on their rol
 
 ### API Connections
 
-TravelgateX provides two main types of API connectivity: Pull APIs and Push APIs.
+TravelgateX provides two main types of API connectivity for Buyers and Sellers, Pull APIs and Push APIs.
 
 For Buyers:
 

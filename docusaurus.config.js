@@ -76,6 +76,7 @@ const config = {
         // ... other options
       },
     ],
+    'custom-loaders'
   ],
 
   presets: [

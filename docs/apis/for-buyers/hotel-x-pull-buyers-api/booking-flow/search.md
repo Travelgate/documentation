@@ -6,40 +6,47 @@ sidebar_position: 2
 
 Search serves as the initial step in our booking flow, with the objective of verifying availability within the specified date range and for the requested number of guests, either for specific hotels or for hotels in the desired destination. It provides a comprehensive list of available options based on your search criteria. The returned fields include:
 
-* 
-* 
-* 
-
-You have the flexibility to filter your Search by access or opt not to set any access at all (resulting in requests for all available accesses). In the latter case, ensure you utilize your own context code to prevent mapping errors. Please note that your context code must be linked to the mapping files previously uploaded on your side to the FTP. By doing so, you will receive results from all your Sellers with your own Hotel Codes, ensuring a smooth and seamless process.
+* `hotelCode`
+* `hotelName`
+* `boardCode`
+* `paymentType`
+* `occupancies`
+* `rooms`
+* `price`
+* `rateRule`
+* `cancelPolicy`
+* `id`
 
 ### Criteria 
 
 This query offers versatility in search options, with certain fields marked as mandatory (checkIn, checkOut, hotels etc.) and others as optional (language, currency, nationality etc.). This flexibility empowers you to create a personalized Search Query, tailoring the requested fields to your specific needs. 
 
-Mandatory criteria
-* checkIn (Format: YYYY-MM-DD)
-* checkOut (Format: YYYY-MM-DD)
-* hotels (We recommend a maximum of 200 hotel codes per request)
-* destinations
-* occupancies (For multi-room bookings, this array will contain multiple elements, rooms. You will need to detail the occupancy for each room requested.)
+[ añadir ejemplo ]
 
-Optional criteria
-* language
-* currency
-* nationality
-* markets
+Mandatory criteria:
+* `checkIn` (Format: YYYY-MM-DD)
+* `checkOut` (Format: YYYY-MM-DD)
+* `hotels` (We recommend a maximum of 200 hotel codes per request)
+* `destinations`
+* `occupancies` (For multi-room bookings, this array will contain multiple elements, rooms. You will need to detail the occupancy for each room requested.)
+
+Optional criteria:
+* `language`
+* `currency`
+* `nationality`
+* `markets`
 
 ### Filter
 
 Filters allow you to precisely tailor the response according to your preferences. The available filters are:
 
-* Plugin: You can filter and specify which plugins need to be included or excluded.
+* `plugin`: You can filter and specify which plugins need to be included or excluded.
 
-* RateRules: This filter enables you to narrow down the options returned by the suppliers based on the desired rate rules you want to include or exclude.
+* `rateRules`: This filter enables you to narrow down the options returned by the suppliers based on the desired rate rules you want to include or exclude.
 
-* Status: Use this filter to determine which status (OK and RQ) will be included or excluded in the response.
+* `status`: Use this filter to determine which status (OK and RQ) will be included or excluded in the response.
 
-* Access: By using the access filter, our system will exclusively include or exclude options from the selected accesses:
+* `access`: By using the access filter, our system will exclusively include or exclude options from the selected accesses. If you opt not to set any access at all, requests will be made to all available accesses.
 
 ### Search Single Mode or Multi Mode
 
@@ -83,28 +90,28 @@ Settings are the common configurations used to construct requests to the supplie
 			"businessRulesType": "CHEAPER_AMOUNT"
 
 Mandatory Settings:
-* Context
-* Timeout (Timeout in milliseconds for supplier connections. Applied to all suppliers; won't close client connection if exceeded)
-* BusinessRules
-* Language
-* Currency
-* Nationality
-* Markets
+* `context` (Your context code must be linked to the mapping files previously uploaded on your side to the FTP. By doing so, you will receive results from all your Sellers with your own Hotel Codes, ensuring a smooth and seamless process)
+* `timeout` (Timeout in milliseconds for supplier connections. Applied to all suppliers; won't close client connection if exceeded)
+* `businessRules`
+* `language`
+* `currency`
+* `nationality`
+* `markets`
 
 Optional Settings:
-* Group
-* AuditTransactions 
-* Suppliers (Each one contains its own code, settings and accesses)
-* Plugins
-* TestMode (This flag allows only the accesses checked as test)
-* ClientTokens (Used to identify the origin of the request, this is only used in plugins)
+* `group`
+* `auditTransactions` 
+* `suppliers` (Each one contains its own code, settings and accesses)
+* `plugins`
+* `testMode` (This flag allows only the accesses checked as test)
+* `clientTokens` (Used to identify the origin of the request, this is only used in plugins)
 
-[ añadir ejemplo ]
+:::Key Recommendations
 
-### Key Recommendations
+* Customize the `timeout` according to your needs, taking into consideration the maximum values in Search is 25,000ms.
 
-* Customize the timeout according to your needs, taking into consideration the maximum values in Search is 25,000ms.
-
-* Set the audit transaction to "false" in "Search" for better performance.
+* Set the `auditTransaction` to "false" in Search for better performance.
 
 * The Search id remains valid for 24 hours, but transitioning quickly to the Quote phase is highly recommended for a smoother booking process.
+
+:::

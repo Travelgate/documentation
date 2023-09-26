@@ -4,14 +4,18 @@ sidebar_position: 1
 
 # Endpoint
 
-One advantage of GraphQL is the convenience of a single endpoint for all operations. You can access the Hotel-X API methods in both test and production environments using this endpoint: 
 
-```bash
+One significant advantage of GraphQL is the simplicity of having a single endpoint for all operations. Regardless of whether you're in a testing or production environment, you can access the Hotel-X API methods effortlessly using this primary endpoint:
+
+```
 https://api.travelgatex.com
 ```
 
-China endpoint: If your servers are located in China you can use the following endpoint to improve performance: 
+:::tip
 
-```bash
+If your servers are situated in **China**, we've got you covered to enhance your system's performance. You can utilize the following specialized endpoint:
+
+```
 http://api-cn.travelgatex.com
 ```
+:::

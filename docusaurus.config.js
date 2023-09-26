@@ -76,6 +76,7 @@ const config = {
         // ... other options
       },
     ],
+    'custom-loaders'
   ],
 
   presets: [
@@ -134,6 +135,13 @@ const config = {
             //type: 'docSidebar',
             sidebarId: 'schemaSidebar',
             label: 'API Reference',
+            position: 'left'
+          },
+          {
+            to: '/playground',
+            //type: 'docSidebar',
+            //sidebarId: 'schemaSidebar',
+            label: 'GraphQL Playground',
             position: 'left'
           },
           // {

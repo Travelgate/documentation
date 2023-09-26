@@ -47,11 +47,6 @@ const config = {
         loaders: {
           UrlLoader: {
             module: "@graphql-tools/url-loader",
-            // options: {
-            //   headers: {
-            //     "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
-            //   }
-            // }
           }
         }
       },

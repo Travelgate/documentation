@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# About our community
+# About our Community
 
 ## What is TravelgateX Community?🚀
 

@@ -9,6 +9,7 @@ import useIsBrowser from '@docusaurus/useIsBrowser';
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 import withToken from "../components/WithToken";
 import {hotelsListQuerySampleA} from "../graphql/sample-queries/hotels.list.query";
+import GraphqlSample from "../components/GraphqlSample";
 
 let fetcher = null;
 
@@ -18,29 +19,16 @@ if (ExecutionEnvironment.canUseDOM) {
     fetcher = null;
 }
 
-const Explorer = ({token}) => {
+const Explorer = (props) => {
     const {siteConfig} = useDocusaurusContext();
     const isBrowser = useIsBrowser();
 
     return (
         <Layout
             title={siteConfig.title}
-            description="GraphQL Explorer">
-            {isBrowser && fetcher && (
-                <BrowserOnly fallback={<div>Loading...</div>}>
-                    {() => {
-                        return (
-                            <>
-                                <GraphiQL
-                                    fetcher={fetcher}
-                                    headers={`{"Authorization": "Bearer ${token??''}"}`}
-                                    query={hotelsListQuerySampleA}
-                                />
-                            </>
-                        )
-                    }}
-                </BrowserOnly>
-            )}
+            description="GraphQL Explorer"
+        >
+                <GraphqlSample {...props} />
         </Layout>
     );
 }

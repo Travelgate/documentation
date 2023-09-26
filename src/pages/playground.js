@@ -8,6 +8,7 @@ import {GraphiQL} from 'graphiql';
 import useIsBrowser from '@docusaurus/useIsBrowser';
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 import withToken from "../components/WithToken";
+import {hotelsListQuerySampleA} from "../graphql/sample-queries/hotels.list.query";
 
 let fetcher = null;
 
@@ -33,6 +34,7 @@ const Explorer = ({token}) => {
                                 <GraphiQL
                                     fetcher={fetcher}
                                     headers={`{"Authorization": "Bearer ${token??''}"}`}
+                                    query={hotelsListQuerySampleA}
                                 />
                             </>
                         )

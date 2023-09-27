@@ -47,11 +47,6 @@ const config = {
         loaders: {
           UrlLoader: {
             module: "@graphql-tools/url-loader",
-            // options: {
-            //   headers: {
-            //     "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
-            //   }
-            // }
           }
         }
       },
@@ -73,9 +68,13 @@ const config = {
         path: 'api',
         routeBasePath: 'api',
         sidebarPath: require.resolve('./api/sidebar-schema.js'),
+        admonitions: {
+          tag: ':::'
+        }
         // ... other options
       },
     ],
+    'custom-loaders'
   ],
 
   presets: [
@@ -134,6 +133,13 @@ const config = {
             //type: 'docSidebar',
             sidebarId: 'schemaSidebar',
             label: 'API Reference',
+            position: 'left'
+          },
+          {
+            to: '/playground',
+            //type: 'docSidebar',
+            //sidebarId: 'schemaSidebar',
+            label: 'GraphQL Playground',
             position: 'left'
           },
           // {

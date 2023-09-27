@@ -68,6 +68,9 @@ const config = {
         path: 'api',
         routeBasePath: 'api',
         sidebarPath: require.resolve('./api/sidebar-schema.js'),
+        admonitions: {
+          tag: ':::'
+        }
         // ... other options
       },
     ],

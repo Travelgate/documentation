@@ -2,9 +2,29 @@
 sidebar_position: 1
 ---
 
-# Article 1
+# Essential Tech Requirements Before Connecting with TravelgateX as a Buyer! 🛠️
 
-Lorem ipsum
+## Preparing for Hotel-X API Development: Key Considerations Before Embarking on Development Work
 
+Welcome aboard to TravelgateX!
 
- 
+We're beyond excited that you've chosen to partner with us for expanding your hotel inventory. Starting out on a new venture can be challenging, but fear not! Our team is dedicated to walking alongside you throughout the onboarding process.
+
+Whether you have technical questions or need some guidance, we've got you covered. Just head over to [TravelgateX Community](https://community.travelgatex.com/), where you can connect with other developers, or get ready to dig into our Knowledge Base, packed with awesome articles and FAQs! And for a deeper dive, our comprehensive [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/) is at your fingertips.
+
+With our support and these valuable resources, you'll be well-equipped to make the most of Hotel-X API and take your inventory expansion to new heights.
+
+### What do I need to have in place before starting my development?💡
+
+TravelgateX is purely focused on connectivity so to be able to work with us via API and make the most of our Platform, you should ensure the following solutions are set up, whether in-house or outsourced:
+
+1. **API**: Integration with Hotel-X is a must, allowing you to interact effectively with Sellers.
+1. **Front solution**: You'll need a front-end setup to showcase the information obtained from the API.
+1. **Booking engine**: It will be necessary to manage the reservations of your Partners.
+1. **Mapping solution**: We work with the Supplier's native codes* for transparency, allowing the [mapping](https://knowledge.travelgate.com/content-mapping) between Buyers and Sellers to be easily optimized without interference from TravelgateX. If you can't map or prefer to use a mapping provider, we are integrated with [GIATA](https://knowledge.travelgate.com/giata-solutions). You can also outsource the mapping process to companies like Vervotech, Mapping Works, or DataBindR.
+
+> [!NOTE]
+>* When a Seller returns the **same hotel id for different properties**, we concatenate those hotel ids with their destination code in order to make them unique. That will be the only exception where we modify the Seller information. In that case, the hotelCode will be the one returned through our API (concatenated if needed) and the hotelCodeSupplier will be the native code of the supplier.
+
+\
+Remember, we're here to support you at every step, so don't hesitate to [reach out](https://knowledge.travelgate.com/guidelines-for-submitting-a-ticket-to-our-support-team) if you have any questions or need further assistance. Let's get you set up for success with Hotel-X! 🚀

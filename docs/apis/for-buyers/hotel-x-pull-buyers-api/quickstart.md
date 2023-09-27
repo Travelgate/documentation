@@ -4,6 +4,8 @@ sidebar_position: 1
 
 # Quickstart
 
+## Introduction
+
 Hotel-X API is a powerful aggregation solution that allows you to get results from the largest network of Sellers in a single request. Whether it's at the hotel, room type, or rate plan level, you have the flexibility to aggregate data to meet your specific needs.
 
 
@@ -26,7 +28,7 @@ In this quickstart tutorial, you will create a basic sample booking. Along the w
 Hotel-X offers a powerful GraphQL-based API that simplifies the process of booking hotels and managing reservations. Whether you're a seasoned developer or just getting started, this guide will walk you through the basics of using the API to make hotel bookings.
 
 
-### Introduction and prerequisites
+### Prerequisites
 
 #### API Endpoint
 
@@ -471,3 +473,15 @@ Congratulations on completing this quickstart tutorial! You've just learned how 
 - [Manage reservations](../hotel-x-pull-buyers-api/booking-management/overview): Get the hang of reservation management.
 
 Our documentation has additional useful fields and functionalities for your business. To find out more, browse through our documentation to unlock the potential of these methods. Enjoy your journey!
+
+
+Congratulations on completing this quickstart tutorial! 🎉 You've successfully learned the basics of creating a sample booking. But there's a world of knowledge waiting for you:
+
+- Explore the [Making Requests](../hotel-x-pull-buyers-api/making-requests/endpoint) section to dive deep into how a GraphQL API works and maximize its performance.
+- Discover various queries and mutations grouped by the following actions:
+    - [Retrieve static information](../hotel-x-pull-buyers-api/content/overview): Explore accessing static data.
+    - [Make a booking](../hotel-x-pull-buyers-api/booking-flow/overview): Learn how to book with more details.
+    - [Manage reservations](../hotel-x-pull-buyers-api/booking-management/overview): Get the hang of reservation management.
+- Unleash the full potential of your business with our diverse range of [plugins](../hotel-x-pull-buyers-api/plugins/overview).
+
+Our documentation is a treasure trove of additional features and functionalities to enhance your business. To uncover these valuable resources, explore our documentation further and make the most of these methods. Enjoy your journey!

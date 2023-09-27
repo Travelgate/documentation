@@ -10,14 +10,7 @@ const withToken = (WrappedComponent) => {
         const [token, setToken] = React.useState(null);
 
         useEffect(() => {
-            if (!isAuthenticated) {
-                loginWithPopup().then(() => {
-                    getIdTokenClaims().then(token => {
-                        console.debug(user, token);
-                        setToken(token?.__raw)
-                    });
-                });
-            } else {
+            if (isAuthenticated) {
                 getIdTokenClaims().then(token => {
                     console.debug(user, token);
                     setToken(token?.__raw)

@@ -1,8 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import 'graphiql/graphiql.css';
 import {Auth0Provider} from '@auth0/auth0-react';
+import useIsBrowser from "@docusaurus/useIsBrowser";
 
 const Root = ({children}) => {
+    const {isBrowser} = useIsBrowser();
+
     const configuration = {
         domain: 'xtg.eu.auth0.com',
         clientID: 'z5bs7Yo5L5tZ18hU7aHskyQu7nutyagO',
@@ -12,6 +15,12 @@ const Root = ({children}) => {
         responseMode: 'form_post',
         audience: 'z5bs7Yo5L5tZ18hU7aHskyQu7nutyagO'
     };
+
+    useEffect(() => {
+        if (isBrowser) {
+            configuration.redirectUri = window.location.origin;
+        }
+    }, []);
 
     return (
         <>

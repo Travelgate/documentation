@@ -66,7 +66,7 @@ Optional Settings:
 * `testMode` (This flag allows only the accesses checked as test)
 * `clientTokens` (Used to identify the origin of the request, this is only used in plugins)
 
-:::Key Recommendations
+:::info Key Recommendations
 
 * Customize the `timeout` according to your needs, taking into consideration the maximum values in Quote is 180,000ms.
 

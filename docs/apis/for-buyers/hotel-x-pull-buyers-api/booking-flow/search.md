@@ -106,12 +106,12 @@ Optional Settings:
 * `testMode` (This flag allows only the accesses checked as test)
 * `clientTokens` (Used to identify the origin of the request, this is only used in plugins)
 
-:::Key Recommendations
+:::info Key Recommendations
 
 * Customize the `timeout` according to your needs, taking into consideration the maximum values in Search is 25,000ms.
 
 * Set the `auditTransaction` to "false" in Search for better performance.
 
-* The Search id remains valid for 24 hours, but transitioning quickly to the Quote phase is highly recommended for a smoother booking process.
+* The Search `id` remains valid for 24 hours, but transitioning quickly to the Quote phase is highly recommended for a smoother booking process.
 
 :::

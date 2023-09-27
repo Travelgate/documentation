@@ -75,7 +75,7 @@ Optional Settings:
 * `clientTokens` (Used to identify the origin of the request, this is only used in plugins)
 * `commitRequired` (Indicates if the book will be confirmed in 1 or 2 steps. It only should be used in Book)
 
-:::Key Recommendations
+:::info Key Recommendations
 
 * Customize the `timeout` according to your needs, taking into consideration the maximum values in Book is 180,000ms.
 

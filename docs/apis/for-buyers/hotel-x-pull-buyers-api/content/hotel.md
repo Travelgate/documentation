@@ -6,13 +6,14 @@ sidebar_position: 2
 
 The Hotels Query returns a comprehensive hotel list from a supplier's access, granting you access to all the properties configured by the Seller for a given set of credentials. The returned fields include:
 
-* Hotel code
-* Hotel name
-* Location
-* Amenities
-* Media
-* Descriptions
-* Room information and max/min occupancy pax ranges (if available)
+* `hotelCode`
+* `hotelName`
+* `categoryCode`
+* `location`
+* `amenities`
+* `media`
+* `Descriptions`
+* `RoomInformation` and max/min occupancy pax ranges (if available)
 
 ### Criteria 
 

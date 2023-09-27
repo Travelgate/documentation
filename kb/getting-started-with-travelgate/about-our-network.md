@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# About our network
+# About our Network
 
 # Unlocking New Opportunities: Connect and Partner with TravelgateX Network!
 ## Grow your business connections by exploring our Network!

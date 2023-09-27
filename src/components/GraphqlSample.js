@@ -16,7 +16,7 @@ if (ExecutionEnvironment.canUseDOM) {
     fetcher = null;
 }
 
-const GraphqlSample = ({token}) => {
+const GraphqlSample = ({token, query}) => {
     const isBrowser = useIsBrowser();
 
     return (
@@ -29,7 +29,7 @@ const GraphqlSample = ({token}) => {
                                 <GraphiQL
                                     fetcher={fetcher}
                                     headers={`{"Authorization": "Bearer ${token??''}"}`}
-                                    query={hotelsListQuerySampleA}
+                                    query={query??hotelsListQuerySampleA}
                                 >
                                     <GraphiQL.Logo><></></GraphiQL.Logo>
                                 </GraphiQL>

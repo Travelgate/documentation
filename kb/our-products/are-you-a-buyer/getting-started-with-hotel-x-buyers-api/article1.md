@@ -80,7 +80,7 @@ Through this pivotal step (you can request a new connection (live or test) while
 
 ![Alt text](image-7.png)
 
-For a comprehensive understanding of how to initiate your first connection, we have provided detailed descriptions and instructions in two designated sections. By referring to these sections, you will find a [step-by-step guide](https://knowledge.travelgate.com/auto-activations-quickguide) on how to request your initial connection, as well as some [tips](v) to ensure the auto-connection process is performed successfully:
+For a comprehensive understanding of how to initiate your first connection, we have provided detailed descriptions and instructions in two designated sections. By referring to these sections, you will find a [step-by-step guide](https://knowledge.travelgate.com/auto-activations-quickguide) on how to request your initial connection, as well as some [tips](#) to ensure the auto-connection process is performed successfully:
 
 ![Alt text](image-8.png)
 

@@ -24,215 +24,7 @@ Remember to upload your [mapping files](../apis/for-buyers/hotel-x-pull-buyers-a
 :::
 
 ```graphql
-query {
-  hotelX {
-    search(
-      criteria: { 
-        checkIn: "2023-09-28",
-        checkOut: "2023-09-29",
-        occupancies: [{ paxes: [{age: 30}, {age: 30}] }],
-        hotels: ["1"],
-        currency: "EUR",
-        markets: "ES",
-        language: "es",
-        nationality: "ES"
-      },
-      settings: {
-        client: "client_demo",
-        context: "HOTELTEST",
-        auditTransactions: false,
-        testMode: true,
-        timeout: 25000
-      },
-      filterSearch: {
-        access: {
-          includes: ["2"]
-        }
-      }) {
-           context
-      errors{
-        code
-        type
-        description
-      }
-      warnings{
-        code
-        type
-        description
-      }
-      options {
-        id
-        accessCode
-        supplierCode
-        hotelCode
-        hotelName
-        boardCode
-        paymentType
-        status
-        occupancies {
-          id
-          paxes {
-            age
-          }
-        }
-        rooms {
-          occupancyRefId
-          code
-          description
-          refundable
-          roomPrice {
-            price {
-              currency
-              binding
-              net
-              gross
-              exchange {
-                currency
-                rate
-              }
-            }
-            breakdown {
-              price {
-                currency
-                binding
-                net
-                gross
-                exchange {
-                  currency
-                  rate
-                }
-                markups {
-                  channel
-                  currency
-                  binding
-                  net
-                  gross
-                  exchange {
-                    currency
-                    rate
-                  }
-                  rules {
-                    id
-                    name
-                    type
-                    value
-                  }
-                }
-              }
-            }
-          }
-          beds {
-            type
-            count
-          }
-          ratePlans {
-            code
-          }
-        }
-        price {
-          currency
-          binding
-          net
-          gross
-          exchange {
-            currency
-            rate
-          }
-          markups {
-            channel
-            currency
-            binding
-            net
-            gross
-            exchange {
-              currency
-              rate
-            }
-            rules {
-              id
-              name
-              type
-              value
-            }
-          }
-        }
-        supplements {
-          code
-          name
-          description
-          supplementType
-          chargeType
-          mandatory
-          durationType
-          quantity
-          unit
-          resort {
-            code
-            name
-            description
-          }
-          price {
-            currency
-            binding
-            net
-            gross
-            exchange {
-              currency
-              rate
-            }
-            markups {
-              channel
-              currency
-              binding
-              net
-              gross
-              exchange {
-                currency
-                rate
-              }
-            }
-          }
-        }
-        surcharges {
-          chargeType
-          description
-          price {
-            currency
-            binding
-            net
-            gross
-            exchange {
-              currency
-              rate
-            }
-            markups {
-              channel
-              currency
-              binding
-              net
-              gross
-              exchange {
-                currency
-                rate
-              }
-            }
-          }
-        }
-        rateRules
-        cancelPolicy {
-          refundable
-          cancelPenalties {
-            hoursBefore
-            penaltyType
-            currency
-            value
-          }
-        }
-        remarks
-      }
-    }
-  }
-}
+TODO
 ```
 
 :::note
@@ -351,29 +143,24 @@ You would need to apply the same approach for filter for specific plugin (`plugi
                 Singlemode search
             </summary>
             <div>The default mode in Hotel-X allows our Partners to perform one search per Seller connected to their account at a time. When running your Search, you should add the Seller's access code you would like to query.
-			```graphql
-			    filterSearch: {
-					access: {
-						includes: ["2"]
-						}
-				}
-			```
+            <br></br> 
+            <code>CODE TODO</code>
+            <br></br>
 			</div>
         </details>
 		<details>
             <summary>
                 Multimode search
             </summary>
-            <div>The multimode query allows our Partners to search multiple Sellers at the same time in just one request. To search in multimode, start by uploading your hotel [mapping files](../apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping) to your FTP. Once the files are processed, you'll have the ability to search multiple Sellers simultaneously by using your own context and hotel codes.
-						1. Specifying the access codes in the filter node: the query will only be sent to the accesses specified. 
-						```graphql
-						    filterSearch: {
-								access: {
-									includes: ["2","3"]
-									}
-							}
-						```
-						2. Not specifying any accesses: The query will be sent to all the accesses connected to your account (only the ones belonging to the Sellers where the [mapping file](../apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping) has been uploaded). This query will also check the value of the "testMode" tag in order to request only the test or production accesses, accordingly.
+            <div>The multimode query allows our Partners to search multiple Sellers at the same time in just one request. To search in multimode, start by uploading your hotel <a href="../plugins/mapping">mapping files</a> to your FTP. Once the files are processed, you'll have the ability to search multiple Sellers simultaneously by using your own context and hotel codes.
+              <br></br>
+              <br></br>
+              1. Specifying the access codes in the filter node: the query will only be sent to the accesses specified.
+              <br></br> 
+              <code>CODE TODO</code>
+              <br></br>
+              <br></br>
+              2. Not specifying any accesses: The query will be sent to all the accesses connected to your account (only the ones belonging to the Sellers where the <a href="../plugins/mapping">mapping files</a> has been uploaded). This query will also check the value of the "testMode" tag in order to request only the test or production accesses, accordingly.
 						</div>
         </details>
     </div>

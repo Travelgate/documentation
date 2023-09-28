@@ -135,7 +135,6 @@ You would need to apply the same approach for filter for specific plugin (`plugi
 
 <details>
 <summary>How can I search in single or multi mode?</summary>
-
 <p>You have the possibility to chose between searching in a single mode vs searching in a multi mode.</p>
 <details>
 <summary>Singlemode search</summary>
@@ -160,23 +159,36 @@ query {
 </p>
 </details>
 <details>
-    <summary>Multimode search</summary>
-    <p>The multimode query allows our Partners to search multiple Sellers at the same time in just one request. To
-        search in multimode, start by uploading your hotel <a href="../plugins/mapping">mapping files</a> to your FTP.
-        Once the files are processed, you'll have the ability to search multiple Sellers simultaneously by using your
-        own context and hotel codes.
-      <br></br>
-      <br></br>
-      1. Specifying the access codes in the filter node: the query will only be sent to the accesses specified.
-      <br></br>
-      <code>CODE TODO</code>
-      <br></br>
-      <br></br>
-      2. Not specifying any accesses: The query will be sent to all the accesses connected to your account (only the
-        ones belonging to the Sellers where the <a href="../plugins/mapping">mapping files</a> has been uploaded). This
-        query will also check the value of the "testMode" tag in order to request only the test or production accesses,
-        accordingly.
-      </p>
+<summary>Multimode search</summary>
+<p>The multimode query allows our Partners to search multiple Sellers at the same time in just one request. To
+    search in multimode, start by uploading your hotel <a href="../plugins/mapping">mapping files</a> to your FTP.
+    Once the files are processed, you'll have the ability to search multiple Sellers simultaneously by using your
+    own context and hotel codes.
+    <br></br>
+    <br></br>
+    1. Specifying the access codes in the filter node: the query will only be sent to the accesses specified.
+
+```graphql
+query {
+    hotelX {
+        search
+        criteria: {}
+        settings: {}
+        filterSearch: {
+            access: {
+                includes: ["2", "3"]
+            }
+        }
+    }
+}
+```
+</p>
+<p>
+    2. Not specifying any accesses: The query will be sent to all the accesses connected to your account (only the
+    ones belonging to the Sellers where the <a href="../plugins/mapping">mapping files</a> has been uploaded). This
+    query will also check the value of the "testMode" tag in order to request only the test or production accesses,
+    accordingly.
+</p>
 </details>
 </details>
 

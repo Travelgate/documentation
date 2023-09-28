@@ -351,9 +351,28 @@ Please note that a Book status may change over time: you may receive an ON_REQUE
     <summary>How do I define the total number of rooms in my Book request?</summary>
     <div>
         <div>To define the number of rooms in your reservation, you need to utilize the occupancyRefId previously returned in Search response.For instance, for a room of two adults:
-			<br></br> 
-			<code>CODE TODO</code>
-			<br></br>
+<p>
+
+```graphql
+"rooms": [
+	{
+		"occupancyRefId": 1,
+		"paxes": [
+			{
+				"name": "TestName",
+				"surname": "Surname",
+				"age": 30
+			},
+			{
+				"name": "TestName",
+				"surname": "Surname",
+				"age": 30
+			}
+		]
+	}
+]
+```
+</p>
 		</div>
     </div>
 </details>

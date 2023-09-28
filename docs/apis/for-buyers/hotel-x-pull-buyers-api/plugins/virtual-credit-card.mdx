@@ -1,0 +1,119 @@
+---
+sidebar_position: 11
+---
+
+# Virtual Credit Card
+
+Virtual Credit Card plugin adds the possibility to:
+
+* Create a virtual credit card (VccGen): Generate a virtual credit card during the booking operation, allowing payment of the reservation amount using this card.
+
+* Cancel a virtual credit card (VccCan): Cancel a virtual credit card as part of the cancellation operation.
+
+In order for the virtual credit card plugin to work, you need to have the genvcc file in the FTP + add the plugin to the request.
+
+### VCC Generator (VccGen)
+
+The VCC generator plugin empowers clients to generate virtual credit cards featuring activation and expiration dates of their choosing. 
+You can apply rules using the ‘genvcc.csv’ rules file to determine whether or not to utilize a specific VCC. This decision is based on the rules defined within the file and the parameters specified in the request.
+
+### VCC Cancelation (VccCan)
+
+The VCC cancel plugin is responsible for cancelling a virtual credit card identified by the id returned in the book response. The service will return the status of the payment card inside status field. This plugin should be utilized exclusively within the ‘Cancel’ operation, contingent on the successful completion of the booking cancellation.
+
+To specify the virtual credit card to be used for cancellation, a rule that returns an access key will be employed, utilizing the same rule file as ‘VCC generator.’ You can establish rules within the ‘genvcc.csv’ rule file to determine the utilization of a particular VCC based on rules within the file and request parameters.
+
+### Create Virtual Credit Card file
+
+```mdx-code-block
+<BrowserWindow>
+
+F[Folder code]_[Unique code]
+   HotelX_[Unique code]
+      BusinessRules
+         [Context Source]_sequential_genvcc.csv
+
+</BrowserWindow>
+```
+:::caution
+
+Bear in mind that this file is a collection of rules and we chose in every Book **the first rule that matches the criteria sent in the Query**. You should specify the more restrictive rules on the top of the file. If there is no value for any rule criteria row, it means that any value in the request matches this row. It is important to indicate the contexts used in values on the rule criteria to improve rule matching.
+
+:::
+
+Download the file, include your data following the example (delete the first line), save it in csv format, and upload it to your FTP following the example.
+
+<details>
+    <summary>Learn how to change the format of the csv file in order to edit and save it</summary>
+    <div>
+        <div>[Añadir vídeo]</div>
+    </div>
+</details>
+
+<details>
+    <summary>Check the definitions and file format if you have any doubts about the example</summary>
+    <div>
+        <div>
+		File Name: [Context Source]_sequential_safetymargin.csv
+		Directory: F[folder code][unique code]/HotelX[unique code]/BusinessRules
+		Delimiter: Comma (“,”)
+		Header Row:
+		   * IdRule: Rule’s identifier
+         * ClientToken: List of ClientTokens allowed for this rule
+         * NoClientToken: List of ClientTokens not allowed for this rule
+         * Supplier: List of hotel Suppliers allowed for this rule
+         * NoSupplier: List of hotel Suppliers not allowed for this rule
+         * Hotels: List of hotels for this rule which codes are in Context_Source context
+         * NotHotels: List of hotels not allowed for this rule which codes are in Context_Source context
+         * Access: Access that will be selected if this rule is matched to generate/cancel card
+         * NoAccess
+         * CardType: CardType that will be used to generate the virtual credit card
+         * VccAccess
+		</div>
+    </div>
+</details>
+
+<details>
+    <summary>List of available card types</summary>
+    <div>
+        <div>
+		VI	Visa
+      AX	American Express
+      BC	BC Card
+      CA	MasterCard
+      CB	Carte Blanche
+      CU	China Union Pay
+      DS	Discover
+      DC	Diners Club
+      T	Carta Si
+      R	Carte Bleue
+      N	Dankort
+      L	Delta
+      E	Electron
+      JC	Japan Credit Bureau
+      TO	Maestro
+      S	Switch
+      EC	Electronic Cash
+      EU	EuroCard
+      TP	Universal air travel card
+      OP	Optima
+      ER	Air Canada/RnRoute
+      XS	Access
+      O	Others
+		</div>
+    </div>
+</details>
+
+<details>
+    <summary>Check some of the most common use cases</summary>
+    <div>
+        <div>
+		Simple value field [Añadir csv]
+		Multivalue field [Añadir csv]
+		</div>
+    </div>
+</details>
+
+### Execute Virtual Credit Card plugin
+
+ESCRIBIR ESTA PARTE

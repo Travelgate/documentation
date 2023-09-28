@@ -1,0 +1,65 @@
+---
+sidebar_position: 12
+---
+
+# Currency Converter
+
+Currency converter plugin allows to apply currency conversion over all the prices in one option. This plugin receives an option + a currency and returns the same option with currency conversion applied over all the prices. It reads the information about rates from a file located in our ftp. Is mandatory that this file exists in the ftp and satisfies all the requirements below. Otherwise, an error will be returned.
+
+In order for the currency converter plugin to work, you need to have the currency converter file in the FTP + add the plugin to the request.
+
+### Create Currency Converter file
+
+```mdx-code-block
+<BrowserWindow>
+
+F[Folder code]_[Unique code]
+   HotelX_[Unique code]
+      BusinessRules
+         currency_map.csv
+
+</BrowserWindow>
+```
+:::note
+
+The rate with value 1.00 is the base rate. Other rates are calculated from it.
+
+:::
+
+Download the file, include your data following the example (delete the first line), save it in csv format, and upload it to your FTP following the example.
+
+<details>
+    <summary>Learn how to change the format of the csv file in order to edit and save it</summary>
+    <div>
+        <div>[Añadir vídeo]</div>
+    </div>
+</details>
+
+<details>
+    <summary>Check the definitions and file format if you have any doubts about the example</summary>
+    <div>
+        <div>
+		File Name: currency_map.csv
+		Directory: F[folder code][unique code]/HotelX[unique code]/BusinessRules
+		Delimiter: Comma (“,”)
+		Header Row:
+		   * Code
+           * Rate
+              * Decimal separator for rate must be point (“.”)
+		</div>
+    </div>
+</details>
+
+<details>
+    <summary>Check some of the most common use cases</summary>
+    <div>
+        <div>
+		Simple value field [Añadir csv]
+		Multivalue field [Añadir csv]
+		</div>
+    </div>
+</details>
+
+### Execute Currency Converter plugin
+
+ESCRIBIR ESTA PARTE

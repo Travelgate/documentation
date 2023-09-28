@@ -1,0 +1,69 @@
+---
+sidebar_position: 3
+---
+
+# Mapping
+
+Mapping plugin serves to convert either the Supplier's native codes to the Buyer's codes or vice versa. This feature includes Hotel Map, Board Map, Room Map, Rate Map, Amenity Map, Promotion Map and Room Description Map categories.
+
+In order for the blacklist plugin to work, you need to have the blacklist file in the FTP + add the plugin to the request. (ESCRIBIR ESTA PARTE PARA MAPPING)
+
+### Create Mapping file
+
+```mdx-code-block
+<BrowserWindow>
+
+F[Folder code]_[Unique code]
+   HotelX_[Unique code]
+      Maps
+         Hotel
+            [Context Source]_[Context Destination]_hotel_map.csv
+         Board
+            [Context Source]_[Context Destination]_board_map.csv
+         Room
+            [Context Source]_[Context Destination]_room_map.csv
+         Rate
+            [Context Source]_[Context Destination]_rate_map.csv
+         Amenity
+            [Context Source]_[Context Destination]_amenity_map.csv
+         Promotion
+            [Context Source]_[Context Destination]_promotion_map.csv
+         Room
+            [Context Source]_[Context Destination]_roomdescription_map.csv
+
+</BrowserWindow>
+```
+
+Download the file, include your data following the example (delete the first line), save it in csv format, and upload it to your FTP following the example.
+
+
+:::note
+
+You need to create one file for each Supplier.
+
+:::
+
+<details>
+    <summary>Learn how to change the format of the csv file in order to edit and save it</summary>
+    <div>
+        <div>[Añadir vídeo]</div>
+    </div>
+</details>
+
+<details>
+    <summary>Check the definitions and file format if you have any doubts about the example</summary>
+    <div>
+        <div>
+		File Name: [Context Source]_[Context Destination]_[entity]_map.csv
+		Directory: F[folder code][unique code]/HotelX[unique code]/Maps/[entity]
+		Delimiter: Comma (“,”)
+		Header Row:
+		   * Context Source: Client's context code
+         * Context Destination: Supplier's context code
+		</div>
+    </div>
+</details>
+
+### Execute Mapping plugin
+
+ESCRIBIR ESTA PARTE

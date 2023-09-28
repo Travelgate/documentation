@@ -1,0 +1,91 @@
+---
+sidebar_position: 7
+---
+
+# Commission
+
+Commission plugin defines the contracted/expected commission in cases where the Supplier is not able to send it via integration. The commission loaded in the FTP is considered as a Gross commission, meaning that the commission or profit is already included in the price.
+
+In order for the commission plugin to work, you need to have the commission file in the FTP + add the plugin to the request.
+
+### Create Commission file
+
+```mdx-code-block
+<BrowserWindow>
+
+F[Folder code]_[Unique code]
+   HotelX_[Unique code]
+      BusinessRules
+         [Context Source]_sequential_commission.csv
+
+</BrowserWindow>
+```
+
+Download the file, include your data following the example (delete the first line), save it in csv format, and upload it to your FTP following the example.
+
+
+:::note
+
+You need to create one file for each Supplier.
+
+:::
+
+<details>
+    <summary>Learn how to change the format of the csv file in order to edit and save it</summary>
+    <div>
+        <div>[Añadir vídeo]</div>
+    </div>
+</details>
+
+<details>
+    <summary>Check the definitions and file format if you have any doubts about the example</summary>
+    <div>
+        <div>
+		File Name: [Context Source]_sequential_commission.csv
+		Directory: F[folder code][unique code]/HotelX[unique code]/BusinessRules
+		Delimiter: Comma (“,”)
+		Header Row:
+		   * RuleId (mandatory): Unique identifier of the rule (assign one)
+         * ClientTokens: Client token used for index the rule
+         * SupplierCodes (mandatory): Supplier code
+            * Separator for multiples codes in the same row: Semicolon (“;”)
+         * NotSupplierCodes (mandatory): Supplier code
+            * Separator for multiples codes in the same row: Semicolon (“;”)
+         * CreationDateFrom: Start creation date (yyyy-mm-dd)
+         * CreationDateTo: End creation date (yyyy-mm-dd)
+         * CheckInFrom: Checkin date (yyyy-mm-dd)
+         * CheckInTo: Checkout date (yyyy-mm-dd)
+         * HotelCodes: Hotel code
+            * Separator for multiples codes in the same row: Semicolon (“;”)
+         * NothotelCodes: Hotel code
+            * Separator for multiples codes in the same row: Semicolon (“;”)
+         * ChainsCodes: Chain code
+            * Separator for multiples codes in the same row: Semicolon (“;”)
+         * NotChainCodes: Chain code
+            * Separator for multiples codes in the same row: Semicolon (“;”)
+         * DestinationCodes: Destination code
+            * Separator for multiples codes in the same row: Semicolon (“;”)
+         * NotDestinationCodes: Destination code
+            * Separator for multiples codes in the same row: Semicolon (“;”)
+         * Percentage (mandatory): Commission value (decimal separator must be point (“.”))
+         * Force (mandatory): Boolean value true/false
+            * True: The rule will be applied if matching all its conditions criteria, regardless of a commission being received or not from the supplier through the integration.
+            * False: The rule will not be applied despite of matching all its conditions criteria if a commission is received from the supplier through the integration.
+		</div>
+    </div>
+</details>
+
+<details>
+    <summary>Check some of the most common use cases</summary>
+    <div>
+        <div>
+		Simple value file for Supplier responding “"WRONG_FIELD" - "PLUGIN_ERROR" - some of the options have been discarded because we don't know if price is gross or net” [Añadir csv]
+		Simple value field [Añadir csv]
+		Multi value field [Añadir csv]
+		</div>
+    </div>
+</details>
+
+### Execute Commission plugin
+
+ESCRIBIR ESTA PARTE

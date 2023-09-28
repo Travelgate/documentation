@@ -1,0 +1,269 @@
+---
+sidebar_position: 2
+---
+
+# Booking list
+
+The Booking List operation allows to retrieve a booking (or bookings) with all its details from the booking reference locator. The returned fields for each booking in the list include:
+
+* `holder`
+* `hotel`
+* `price`
+* `remarks`
+* `status`
+
+
+:::note
+
+Remember that you can choose the information you want displayed:
+* `reference`: To display client or supplier booking reference
+* `status`: To display the booking status
+
+:::
+
+:::note
+
+The queryable fields available by a Seller may vary between Sellers.
+
+:::
+
+```graphql
+query {
+	hotelX {
+		booking(
+			criteria: {
+				accessCode: "2"
+				language: "es"
+				typeSearch: DATES
+				dates: { dateType: BOOKING, start: "2023-06-06", end: "2023-06-07" }
+			}
+			settings: {
+				client: "client_demo"
+				auditTransactions: true
+				context: "HOTELTEST"
+				testMode: true
+				timeout: 18000
+			}
+		) {
+			bookings {
+				billingSupplierCode
+				reference {
+					client
+					supplier
+					hotel
+					bookingID
+				}
+				holder {
+					name
+					surname
+				}
+				status
+				hotel {
+					hotelCode
+					hotelName
+					boardCode
+					occupancies {
+						id
+						paxes {
+							age
+						}
+					}
+					rooms {
+						occupancyRefId
+						code
+						description
+						price {
+							currency
+							net
+							exchange {
+								currency
+								rate
+							}
+						}
+					}
+				}
+				cancelPolicy {
+					refundable
+					cancelPenalties {
+						hoursBefore
+						penaltyType
+						currency
+						value
+					}
+				}
+				remarks
+				payable
+			}
+			errors {
+				code
+				type
+				description
+			}
+			warnings {
+				code
+				type
+				description
+			}
+		}
+	}
+}
+```
+
+### Criteria 
+
+This query offers versatility in booking search, with all fields marked as optional (accessCode, typeSearch, language etc.). This flexibility empowers you to create a personalized Booking List Query, tailoring the requested fields to your specific needs. 
+
+Optional criteria
+* `accessCode` (necessary if you search by references or by dates)
+* `typeSearch` (necessary if you search by references or by dates)
+* `language`
+* `dates` (to receive a list of all the reservations made in a specific type frame)
+* `bookingID` (to receive the details of a specific reservation)
+* `references` (to receive the details of a specific reservation)
+
+### Settings 
+
+Settings are the common configurations used to construct requests to the supplier/s. By default, we apply the same configuration to all Hotel-X clients.
+
+Mandatory Settings:
+* `context`
+* `timeout` (Timeout in milliseconds for supplier connections. Applied to all suppliers; won't close client connection if exceeded)
+* `businessRules`
+* `language`
+* `currency`
+* `nationality`
+* `markets`
+
+Optional Settings:
+* `group`
+* `auditTransactions` 
+* `suppliers` (Each one contains its own code, settings and accesses)
+* `plugins`
+* `testMode` (This flag allows only the accesses checked as test)
+* `clientTokens` (Used to identify the origin of the request, this is only used in plugins)
+
+### Filter
+
+Filters allow you to precisely tailor the response according to your preferences. The available filter is:
+
+* `plugin`: You can filter and specify which plugins need to be included or excluded.
+
+### Frequently asked questions
+
+<details>
+<summary>How can I perform a booking query while filtering by "bookingID"?</summary>
+<p>
+    Remember the bookingID is Hotel-X booking reference returned in Book response. Below, you'll find an example of a Booking Query that makes use of the "bookingID" filter.
+
+	**Book response:**
+
+```graphql
+"data" {
+    "hotelX" {
+        "book": {
+        "booking": {
+          "reference": {
+            "client": "clientReferenceTest",
+            "supplier": "supplierReferenceTest",
+            "bookingID": "bookindIDTest"
+          },
+          "price": {
+            "currency": "EUR",
+            "net": 800,
+            "gross": 800,
+            "binding": false
+          },
+          "status": "OK",
+        },
+        "errors": null,
+        "warnings": null
+            }
+        }
+    }
+```
+**Booking query request:**
+
+```graphql
+{
+    "criteriaBookingRead": {
+      "bookingID": "bookindIDTest"
+    },
+    "settings": {
+      "context": "contextCode",
+      "client": "clientCode",
+        "timeout": 58700,
+      "auditTransactions": false,
+        "testMode": false
+    }
+}
+```
+</p>
+</details>
+
+<details>
+<summary>How can I perform a Booking query while filtering by "references"?</summary>
+<p>
+    In order to perform a Booking query by "REFERENCES" (supplier and/or client references) you should add the references information in the CriteriaBookingReferencesInput:
+
+```graphql
+{
+        "criteriaBookingRead" : {
+            "accessCode" : "",
+            "language" : "en",
+            "typeSearch" : "REFERENCES",
+            "bookingID" : "",
+            "references" : {
+                "hotelCode" : "",
+                "currency" : "",
+                "references" : [
+                    {
+                        "supplier" : "supplierReference",
+                        "client" : "clientReference"
+                    }
+                ]
+            }
+        },
+        "settings" : {
+            "client" : "",
+            "auditTransactions" : true,
+            "context" : "",
+            "testMode" : false
+        }
+}
+```
+</p>
+</details>
+
+<details>
+    <summary>How can I retrieve a list of all bookings made within a specific time frame?</summary>
+    <div>
+        <div>In order to obtain a list of all the reservations made within a specific type frame you should perform the Booking query by "typeSearch" "DATES", specify if your "dateType" is either "BOOKING" (booking date) or "ARRIVAL" (check-in date) and the "start" and "end" dates of the query (yyyy-MM-dd).</div>
+    </div>
+</details>
+
+<details>
+<summary>How can I perform a booking query while filtering by "DATES"?</summary>
+<p>
+    Below, you'll find an example of a Booking Query that makes use of the "DATES" filter:
+
+```graphql
+{
+        "criteriaBookingRead" : {
+            "accessCode" : "",
+            "language" : "en",
+            "dates" : {
+                "dateType" : "BOOKING",
+                "start" : "2020-10-17",
+                "end" : "2020-10-18"
+            },
+            "typeSearch" : "DATES"
+        },
+        "settings" : {
+            "client" : "",
+            "context" : "",
+            "auditTransactions" : true
+        }
+}
+```
+</p>
+</details>

@@ -36,4 +36,4 @@ These have already been activated on your account and are ready to use.
 
 ### `API Key`
 
-An `Apikey` is a unique alphanumeric code that serves as a form of authentication required for accessing Hotel-X API. This key must be included in the HTTP Authorization request header to verify and authenticate the user agent with the server. It acts as a secure identifier, ensuring that only authorized users can make requests and access the API's functionalities. You can check this information in your [Connections Settings](https://app.travelgatex.com/connections/settings).
+An `Apikey` is a unique alphanumeric code that serves as a form of authentication required for accessing Hotel-X API. This key must be included in the HTTP Authorization request header to verify and authenticate the user agent with the server. It acts as a secure identifier, ensuring that only authorized users can make requests and access the API's functionalities. You can find your API Key on the Travelgate website in Connections > [Connections Settings](https://app.travelgatex.com/connections/settings).

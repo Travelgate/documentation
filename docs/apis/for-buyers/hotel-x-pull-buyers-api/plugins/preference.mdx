@@ -1,0 +1,107 @@
+---
+sidebar_position: 9
+---
+
+# Preference
+
+Preference plugin gives preference to the options that match the preference, returning the options in a preferential way. Sequentially, the rules will be evaluated until a match is found, upon finding it, the process will be stopped and the preference will be evaluated. In the same way, if the rule is not found, the option will be validated. The matching process uses clientTokens field, which identifies the provider and it is used to filter which business rules can be applied in the request sent.
+
+In order for the preference plugin to work, you need to have the preference file in the FTP + add the plugin to the request.
+
+### Preference plugin workflow
+
+1. Starts getting all the args set by the client in the query, like options, parameters (primaryKey among others), client tokens, etc.
+
+2. Gets the rules stored in database which will establish which options will be added or discarted based on several factors as % of tolerance of the price, options status, hotelcodes, supplier, etc.
+
+3. Builds a group function which will help to clasify the options slice in n different groups based on the primary key established in the query by the client and the rules stored in the data base (ftp preference file).Sorts the options in price order (from cheap to expensive).
+
+4. Go over each option and group them by primary key index. However not all the options will be filled in these aggrupations. This is where the rules come into play.
+To determine if an option will be discarted or not we have to check the group function which does the following: 
+   * If it is the first option in the pk index, this option will be automatically added.
+   * If the rule says that the competitors has to be discarted, all the options of that pk index will be discarted except for the first (the cheapest).
+   * If it isnt the first option and there aren’t any rule that matches the option, this option will be discarted.
+   * If it isnt the first option and the price is higher than the tolerance % established in the rules for that pk index, the option will also be discarted.
+
+5. With the resulting options grouped by pk indexes, finally collects all of them and return them to the service process which has used the plugin.
+
+### Create Preference file
+
+```mdx-code-block
+<BrowserWindow>
+
+F[Folder code]_[Unique code]
+   HotelX_[Unique code]
+      BusinessRules
+         [Context Source]_sequential_preference.csv
+
+</BrowserWindow>
+```
+
+Download the file, include your data following the example (delete the first line), save it in csv format, and upload it to your FTP following the example.
+
+<details>
+    <summary>Learn how to change the format of the csv file in order to edit and save it</summary>
+    <div>
+        <div>[Añadir vídeo]</div>
+    </div>
+</details>
+
+<details>
+    <summary>Check the definitions and file format if you have any doubts about the example</summary>
+    <div>
+        <div>
+		File Name: [Context Source]_sequential_preference.csv
+		Directory: F[folder code][unique code]/HotelX[unique code]/BusinessRules
+		Delimiter: Comma (“,”)
+		Header Row:
+		   * RuleId (mandatory): Rule identifier
+         * ClientTokens (mandatory): Identifier provided by the client that is used to filter which business rules can be applied for the sent request
+            * Separator for multiples codes in the same row: Semicolon (“;”)
+         * SupplierCodes (mandatory): Supplier code
+            * Separator for multiples codes in the same row: Semicolon (“;”)
+         * NotSupplierCodes (mandatory): Supplier code
+            * Separator for multiples codes in the same row: Semicolon (“;”)
+         * BookingDateFrom: Booking date (yyyy-mm-dd)
+         * BookingDateTo: Booking date to (yyyy-mm-dd)
+         * StartDateFrom: Start date from (yyyy-mm-dd)
+         * StartDateTo: Start date to (yyyy-mm-dd)
+         * HotelCodes: Hotel code
+            * Separator for multiples codes in the same row: Semicolon (“;”)
+         * NothotelCodes: Hotel code
+            * Separator for multiples codes in the same row: Semicolon (“;”)
+         * ChainsCodes: Chain code
+            * Separator for multiples codes in the same row: Semicolon (“;”)
+         * NotChainCodes: Chain code
+            * Separator for multiples codes in the same row: Semicolon (“;”)
+         * DestinationCodes: Destination code
+            * Separator for multiples codes in the same row: Semicolon (“;”)
+         * NotDestinationCodes: Destination code
+            * Separator for multiples codes in the same row: Semicolon (“;”)
+         * Status: Option status (OK, RQ)
+            * Separator for multiples codes in the same row: Semicolon (“;”)
+         * NotStatus: Option status (OK, RQ)
+            * Separator for multiples codes in the same row: Semicolon (“;”)
+         * Percentage (mandatory): Commission value, decimal separator must be point (“.”) 
+         * Filtercompetitors (mandatory): Filter competitors
+		</div>
+    </div>
+</details>
+
+<details>
+    <summary>Check some of the most common use cases</summary>
+    <div>
+        <div>
+		Percentage = 1, Supplier A: 126 €, Supplier B: 125 €
+           126 - 126 * 0.01 = 124,74 <= 125 €, then the selected one is supplier A
+        Percentage = 1, Supplier A: 128 €, Supplier B: 125 €
+           128 - 128 * 0.01 = 126.72> 125 €, then the selected one is supplier B
+        Simple value field [Añadir csv]
+		Simple value field [Añadir csv]
+		</div>
+    </div>
+</details>
+
+### Execute Preference plugin
+
+ESCRIBIR ESTA PARTE

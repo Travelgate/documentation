@@ -10,52 +10,164 @@ The Book operation requests a booking confirmation for the specified optionId ob
 * `hotel`
 * `price`
 * `cancelPolicy`
+* `bookingID`
 * `status` (Make sure you add this field to your Query in order to receive the reservation status in BookRS)
 * `clientReference` (The booking locator in your system (alphanumerical value))
 * `supplierReference` (Make sure you add this field to your Query in order to receive the provider locator in BookRS)
+
+:::note
+
+Make sure to change the value of the `clientReference` field so that the Book can be confirmed correctly .
+
+:::
+
+```graphql
+mutation {
+	hotelX {
+		book(
+			input: {
+				optionRefId: "11!11?1$230928?230929?1?14?0?ES?ES?es?EUR?0?2?1?14?1?0?06060824?BAR[%@BAR?100.0$0$false$EUR$$0$?1|30#30|1|2023-09-28|1|4132467|4132468|14|11|0?2269!2269?30$30??Double Standard?1??After$100.0!Before$100.0!ExpireDate$29/09/2023!mercado$ES!tgx_sess$804e6012-4b9f-47a3-83e2-75a126b8b812?OK?Sith?0?"
+				clientReference: "16729148477581"
+				deltaPrice: { amount: 10, percent: 10, applyBoth: true }
+				holder: { name: "Name1", surname: "Surname1" }
+				remarks: "In this valuation, the option price has changed to check the correct treatment of the price changes between the different & calls."
+				rooms: {
+					occupancyRefId: 1
+					paxes: [
+						{ name: "Name1", surname: "Surname1", age: 30 }
+						{ name: "Name2", surname: "Surname2", age: 30 }
+					]
+				}
+			}
+			settings: {
+				client: "client_demo"
+				auditTransactions: true
+				context: "HOTELTEST"
+				useContext: true
+				testMode: true
+			}
+		) {
+			auditData {
+				transactions {
+					request
+					response
+				}
+			}
+			booking {
+				price {
+					currency
+					binding
+					net
+					gross
+					exchange {
+						currency
+						rate
+					}
+					markups {
+						channel
+						currency
+						binding
+						net
+						gross
+						exchange {
+							currency
+							rate
+						}
+					}
+				}
+				status
+				remarks
+				reference {
+					client
+					supplier
+					bookingID
+					hotel
+				}
+				holder {
+					name
+					surname
+				}
+				hotel {
+					creationDate
+					checkIn
+					checkOut
+					hotelCode
+					hotelName
+					boardCode
+					occupancies {
+						id
+						paxes {
+							age
+						}
+					}
+					rooms {
+						code
+						description
+						occupancyRefId
+						price {
+							currency
+							binding
+							net
+							gross
+							exchange {
+								currency
+								rate
+							}
+							markups {
+								channel
+								currency
+								binding
+								net
+								gross
+								exchange {
+									currency
+									rate
+								}
+							}
+						}
+					}
+				}
+			}
+			errors {
+				code
+				type
+				description
+			}
+			warnings {
+				code
+				type
+				description
+			}
+		}
+	}
+}
+```
 
 ### Input
 
 This mutation offers versatility in book options, with certain fields marked as mandatory (optionRefId, clientReference, holder etc.) and others as optional (language, delta price, payment card etc.). This flexibility empowers you to create a personalized Book Multation, tailoring the requested fields to your specific needs. 
 
-[Añadir ejemplo]
-
-Mandatory criteria
-* `optionRefId` (Identifier of the option used in Quote)
-* `clientReference` (Booking ID in client's system)
+Mandatory input
+* `optionRefId` (identifier of the option used in Quote)
+* `clientReference` (booking ID in client's system)
 * `holder`
 * `rooms`
 
-Optional criteria
+Optional input
 * `language`
-* `deltaPrice` (Indicates price variation permitted by the client)
-* `paymentCard` (If the payment is done by credit card, it's mandatory to specify the payment type and the credit card information)
-* `remarks` (Any customer comments for the supplier to consider)
+* `deltaPrice` (indicates price variation permitted by the client)
+* `paymentCard` (if the payment is done by credit card, it's mandatory to specify the payment type and the credit card information)
+* `remarks` (any customer comments for the supplier to consider)
 
-### Filter
+:::info Key Recommendations
 
-Filters allow you to precisely tailor the response according to your preferences. The available filter is:
+Consider that the `deltaPrice` sets the price tolerance between Quote and Book. For instance, if the Quote stage displays a price of 100 and the `deltaPrice` is 5, a change up to 105 will still secure a confirmed booking.
 
-* `plugin`: You can filter and specify which plugins need to be included or excluded.
+:::
 
 ### Settings 
 
-Settings are the common configurations used to construct requests to the supplier/s. By default, we apply the same configuration to all Hotel-X clients, and as a result, the following configuration will be sent to the Seller:
-
-	"settings": {
-		"context": "",
-		"language": "en",
-		"currency": "EUR",
-		"nationality": "ES",
-		"market": "ES",
-		"timeout": {
-			"search": 25000,
-			"quote": 180000,
-			"book": 180000
-		},
-		"businessRules": {
-			"optionsQuota": 0,
-			"businessRulesType": "CHEAPER_AMOUNT"
+Settings are the common configurations used to construct requests to the supplier/s. By default, we apply the same configuration to all Hotel-X clients.
 
 Mandatory Settings:
 * `context` (Your context code must be linked to the mapping files previously uploaded on your side to the FTP. By doing so, you will receive results from all your Sellers with your own Hotel Codes, ensuring a smooth and seamless process)
@@ -81,6 +193,200 @@ Optional Settings:
 
 * Set the `auditTransaction` to "true" in Book when investigating errors.
 
-* Consider that the `deltaPrice` sets the price tolerance between Quote and Book. For instance, if the Quote stage displays a price of 100 and the `deltaPrice` is 5, a change up to 105 will still secure a confirmed booking.
-
 :::
+
+### Filter
+
+Filters allow you to precisely tailor the response according to your preferences. The available filter is:
+
+* `plugin`: You can filter and specify which plugins need to be included or excluded.
+
+### Payment Card
+
+Check an example of payment card input. Note that `isVCC`, `virtualCreditCard` and `threeDomainSecurity`, are all optionals.
+
+```graphql
+{
+			"cardType": "VI",
+			"holder": {
+				"name": "test_name",
+				"surname": "test_surname"
+			},
+			"number": "4874495143042809",
+			"CVC": "330",
+			"expire": {
+				"month": 9,
+				"year": 2028
+			},
+			"isVCC": true,
+			"virtualCreditCard": {
+				"activationDate": "2020-10-02",
+				"deactivationDate": "2021-01-02",
+				"currentBalance": 50.58,
+				"currencyCode": "EUR"
+			},
+			"threeDomainSecurity": {
+				"version": "1.0.1",
+				"DSTransactionID": "transaction 1",
+				"XID": "id123456",
+				"ECI": "05",
+				"CAVV": "CAVV",
+				"payerResponse": "base64xml response",
+				"payerResponseStatus": "AUTHENTICATION_SUCCESS",
+				"cardEnrolledStatus": "CARD_ENROLLED",
+				"merchantName": "test_name",
+				"signatureStatus": "SIGNATURE_NOT_VALIDATED"
+			}
+		}
+```
+
+<details>
+    <summary>Possible values for the threeDomainSecurity fields</summary>
+    <div>
+        <div>
+		**Visa, American Express, Diners Club and JCB**
+		05: 3DS authentication was successful, transactions are secured by 3DS.
+		06: Authentication was attempted but was not or could not be completed; possible reasons being either the card or its Issuing Bank has yet to participate in 3DS.
+		07: 3DS authentication is either failed or could not be attempted; possible reasons being both card and Issuing Bank are not secured by 3DS, technical errors, or improper configuration.
+		**MasterCard**
+		00: 3DS authentication is either failed or could not be attempted; possible reasons being both card and Issuing Bank are not secured by 3DS, technical errors, or improper configuration.
+		01: 3DS authentication was attempted but was not or could not be completed; possible reasons being either the card or its Issuing Bank has yet to participate in 3DS, or cardholder ran out of time to authorize.
+		02: 3DS authentication is successful.
+		</div>
+    </div>
+</details>
+
+<details>
+    <summary>Payer response status</summary>
+    <div>
+        <div>
+		AUTHENTICATION_SUCCESS: Successful Authentication.
+		AUTHENTICATION_FAILED: Failed Authentication.
+		AUTHENTICATION_INCOMPLETE: Unable to complete Authentication.
+		TRANSACTION_ATTEMPT_SUCCESS_A: Successful Attempts Transaction.
+		TRANSACTION_ATTEMPT_SUCCESS_B: You can proceed to authorisation using the information received.AUTHENTICATION_REJECTED: Authentication Rejected.
+		</div>
+    </div>
+</details>
+
+<details>
+    <summary>Card enrollment status</summary>
+    <div>
+        <div>
+		CARD_ENROLLED: Cardholder is enrolled. Bank is participating in 3-D Secure protocol and will return the ACSUrl.
+		CARD_NOT_ENROLLED: Cardholder Not Participating – Cardholder is not enrolled.
+		CANT_AUTHENTICATE: Unavailable. The DS or ACS is not available for authentication at the time of the request.
+		</div>
+    </div>
+</details>
+
+<details>
+    <summary>Signature verification status</summary>
+    <div>
+        <div>
+		SIGNATURE_VALIDATED: Signature of the PARes has been validated successfully.SIGNATURE_NOT_VALIDATED: PARes could not be validated.
+		</div>
+    </div>
+</details>
+
+### Book Status
+
+Once a Book (Reservation) method is run, our API response will provide its Book status. This status represents the current status of the reservation and can be categorized into four possible values:
+
+* OK: The reservation was completed with no problems.
+* ON_REQUEST: The reservation was completed but the product is still not available by the Seller, so the reservation goes into a waiting list. It is the Buyer’s responsibility to check if the booking is OK.
+Please note that a Book status may change over time: you may receive an ON_REQUEST status in Book response, and after running a Booking Query some seconds later the status may have already changed to OK.
+* UNKNOWN: The reservation process through TravelgateX was completed but due to a supplier error or a timeout, the reservation status is unknown (our system was unable to confirm if the booking has been confirmed or not the on Seller's system). It is the Buyer’s responsibility to check if the booking is OK.
+* PENDING_COMMIT: The payment has been confirmed on the provider’s side, but is necessary to make a commit in order to confirm the reservation.
+
+### Frequently asked questions
+
+<details>
+    <summary>What should I do if I receive both an OK status and an error in the same Book response?</summary>
+    <div>
+        <div>If you receive an error + booking status OK in BookRS (ReservationRS), the reservation status prevails over the error.
+		Although you may also run a Booking Query in order to check the status of a reservation, please note that you should always contact the Seller in order to check the actual status of a booking in those cases you receive a booking status different than OK or no response at all.</div>
+    </div>
+</details>
+
+<details>
+    <summary>What is the DeltaPrice? Why should I use it?</summary>
+    <div>
+        <div>The Delta Price indicates the price variation permitted by the Buyer (amount or percentage), so that an error will be returned if the new price does not abide to DeltaPrice. If DeltaPrice is not sent and the integration implements it, we assume that the price range is 0 and the process will continue (price is lower or equal to the price returned in Quote).
+		This field is implemented if it’s native to the Seller or if another Search/Quote request needs to be done in Book. Please note DeltaPrice should be implemented by a Seller in order to be available to a Buyer.</div>
+	<br/>
+        <details>
+            <summary>
+                What does DeltaPrice "applyBoth" mean?
+            </summary>
+            <div>applyBoth: false: It indicates that one of the conditions (amount or percentage) has to meet the DeltaPrice criteria before reservation.
+			applyBoth: true: It indicates that the new price cannot exceed the amount and percentage indicated by the Buyer.
+			</div>
+        </details>
+    </div>
+</details>
+
+<details>
+    <summary>Why do I receive a status "ON_REQUEST" and a holder name "test" in my reservations the test environment?</summary>
+    <div>
+        <div>In the test environment, it is common for some Sellers to consistently return an ON_REQUEST status. Furthermore, as a standard practice in the test environment, we automatically replace the holder and passenger names with "test".</div>
+    </div>
+</details>
+
+<details>
+    <summary>Will the currency in Book be the same as the currency in Quote?</summary>
+    <div>
+        <div>The currency used for the transaction will remain the same throughout the entire Booking Flow, including cancellation policies.</div>
+    </div>
+</details>
+
+<details>
+    <summary>Do I have to provide real names and ages for all the passengers?</summary>
+    <div>
+        <div>No, you are not required to provide real ages and names for all passengers. You can use default values for each age group and name. The only information that should be real is the holder's information.</div>
+    </div>
+</details>
+
+<details>
+    <summary>How do I define the total number of rooms in my Book request?</summary>
+    <div>
+        <div>To define the number of rooms in your reservation, you need to utilize the occupancyRefId previously returned in Search response.For instance, for a room of two adults:
+		```graphql
+		"rooms": [
+            {
+                "occupancyRefId": 1,
+                "paxes": [
+                    {
+                        "name": "TestName",
+                        "surname": "Surname",
+                        "age": 30
+                    },
+                    {
+                        "name": "TestName",
+                        "surname": "Surname",
+                        "age": 30
+                    }
+                ]
+            }
+        ]
+		```
+		</div>
+    </div>
+</details>
+
+<details>
+    <summary>What payment details should I add to my Book request?</summary>
+    <div>
+        <div>The payment type and details to be added in your Book request depend on the payment type returned for the option to be booked, note that payment types depend on the commercial agreement established by a Buyer with their Sellers.</div>
+    </div>
+</details>
+
+<details>
+    <summary>Where can I get the Hotel Confirmation Number (HCN)?</summary>
+    <div>
+        <div>Once a booking has been successfully confirmed in TravelgateX you may retrieve 2 different locators from its logs:
+		* The Buyer's locator (client reference).
+		* The Seller's locator (provider reference).
+		The Seller may also provide a third type of locator, issued by the hotel when it confirms the booking. This is known as the Hotel Confirmation Number (HCN) or Hotel Reference Booking (HRB).Please note we are only able to provide this code if the Seller returns it in their response.</div>
+    </div>
+</details>

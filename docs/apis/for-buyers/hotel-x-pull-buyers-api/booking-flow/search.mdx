@@ -134,36 +134,50 @@ You would need to apply the same approach for filter for specific plugin (`plugi
 </details>
 
 <details>
-    <summary>How can I search in single or multi mode?</summary>
-    <div>
-        <div>You have the possibility to chose between searching in a single mode vs searching in a multi mode.</div>
-        <br/>
-        <details>
-            <summary>
-                Singlemode search
-            </summary>
-            <div>The default mode in Hotel-X allows our Partners to perform one search per Seller connected to their account at a time. When running your Search, you should add the Seller's access code you would like to query.
-            <br></br> 
-            <code>CODE TODO</code>
-            <br></br>
-			</div>
-        </details>
-		<details>
-            <summary>
-                Multimode search
-            </summary>
-            <div>The multimode query allows our Partners to search multiple Sellers at the same time in just one request. To search in multimode, start by uploading your hotel <a href="../plugins/mapping">mapping files</a> to your FTP. Once the files are processed, you'll have the ability to search multiple Sellers simultaneously by using your own context and hotel codes.
-              <br></br>
-              <br></br>
-              1. Specifying the access codes in the filter node: the query will only be sent to the accesses specified.
-              <br></br> 
-              <code>CODE TODO</code>
-              <br></br>
-              <br></br>
-              2. Not specifying any accesses: The query will be sent to all the accesses connected to your account (only the ones belonging to the Sellers where the <a href="../plugins/mapping">mapping files</a> has been uploaded). This query will also check the value of the "testMode" tag in order to request only the test or production accesses, accordingly.
-						</div>
-        </details>
-    </div>
+<summary>How can I search in single or multi mode?</summary>
+
+<p>You have the possibility to chose between searching in a single mode vs searching in a multi mode.</p>
+<details>
+<summary>Singlemode search</summary>
+<p>
+    The default mode in Hotel-X allows our Partners to perform one search per Seller connected to their account at a
+    time. When running your Search, you should add the Seller's access code you would like to query.
+
+```graphql
+query {
+    hotelX {
+        search
+        criteria: {}
+        settings: {}
+        filterSearch: {
+            access: {
+                includes: ["2"]
+            }
+        }
+    }
+}
+```
+</p>
+</details>
+<details>
+    <summary>Multimode search</summary>
+    <p>The multimode query allows our Partners to search multiple Sellers at the same time in just one request. To
+        search in multimode, start by uploading your hotel <a href="../plugins/mapping">mapping files</a> to your FTP.
+        Once the files are processed, you'll have the ability to search multiple Sellers simultaneously by using your
+        own context and hotel codes.
+      <br></br>
+      <br></br>
+      1. Specifying the access codes in the filter node: the query will only be sent to the accesses specified.
+      <br></br>
+      <code>CODE TODO</code>
+      <br></br>
+      <br></br>
+      2. Not specifying any accesses: The query will be sent to all the accesses connected to your account (only the
+        ones belonging to the Sellers where the <a href="../plugins/mapping">mapping files</a> has been uploaded). This
+        query will also check the value of the "testMode" tag in order to request only the test or production accesses,
+        accordingly.
+      </p>
+</details>
 </details>
 
 <details>

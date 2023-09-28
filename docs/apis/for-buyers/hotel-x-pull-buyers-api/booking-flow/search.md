@@ -17,18 +17,240 @@ Search serves as the initial step in our booking flow, with the objective of ver
 * `cancelPolicy`
 * `id`
 
+:::note
+
+Remember to upload your [mapping files](../apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping) to our FTP in those cases you run requests with your own context codes, this way you will receive results from all your Sellers with your own hotel codes.
+
+:::
+
+```graphql
+query {
+  hotelX {
+    search(
+      criteria: { 
+        checkIn: "2023-09-28",
+        checkOut: "2023-09-29",
+        occupancies: [{ paxes: [{age: 30}, {age: 30}] }],
+        hotels: ["1"],
+        currency: "EUR",
+        markets: "ES",
+        language: "es",
+        nationality: "ES"
+      },
+      settings: {
+        client: "client_demo",
+        context: "HOTELTEST",
+        auditTransactions: false,
+        testMode: true,
+        timeout: 25000
+      },
+      filterSearch: {
+        access: {
+          includes: ["2"]
+        }
+      }) {
+           context
+      errors{
+        code
+        type
+        description
+      }
+      warnings{
+        code
+        type
+        description
+      }
+      options {
+        id
+        accessCode
+        supplierCode
+        hotelCode
+        hotelName
+        boardCode
+        paymentType
+        status
+        occupancies {
+          id
+          paxes {
+            age
+          }
+        }
+        rooms {
+          occupancyRefId
+          code
+          description
+          refundable
+          roomPrice {
+            price {
+              currency
+              binding
+              net
+              gross
+              exchange {
+                currency
+                rate
+              }
+            }
+            breakdown {
+              price {
+                currency
+                binding
+                net
+                gross
+                exchange {
+                  currency
+                  rate
+                }
+                markups {
+                  channel
+                  currency
+                  binding
+                  net
+                  gross
+                  exchange {
+                    currency
+                    rate
+                  }
+                  rules {
+                    id
+                    name
+                    type
+                    value
+                  }
+                }
+              }
+            }
+          }
+          beds {
+            type
+            count
+          }
+          ratePlans {
+            code
+          }
+        }
+        price {
+          currency
+          binding
+          net
+          gross
+          exchange {
+            currency
+            rate
+          }
+          markups {
+            channel
+            currency
+            binding
+            net
+            gross
+            exchange {
+              currency
+              rate
+            }
+            rules {
+              id
+              name
+              type
+              value
+            }
+          }
+        }
+        supplements {
+          code
+          name
+          description
+          supplementType
+          chargeType
+          mandatory
+          durationType
+          quantity
+          unit
+          resort {
+            code
+            name
+            description
+          }
+          price {
+            currency
+            binding
+            net
+            gross
+            exchange {
+              currency
+              rate
+            }
+            markups {
+              channel
+              currency
+              binding
+              net
+              gross
+              exchange {
+                currency
+                rate
+              }
+            }
+          }
+        }
+        surcharges {
+          chargeType
+          description
+          price {
+            currency
+            binding
+            net
+            gross
+            exchange {
+              currency
+              rate
+            }
+            markups {
+              channel
+              currency
+              binding
+              net
+              gross
+              exchange {
+                currency
+                rate
+              }
+            }
+          }
+        }
+        rateRules
+        cancelPolicy {
+          refundable
+          cancelPenalties {
+            hoursBefore
+            penaltyType
+            currency
+            value
+          }
+        }
+        remarks
+      }
+    }
+  }
+}
+```
+
+:::note
+
+In the room structure response there is a refundable field. If that field is set to false, it means that the room has 100% cancellation cost, in other words, the room is NON-REFUNDABLE. If the field returns a null value, it means that the seller is not able to return this info at this step. Some sellers do not return cancellation policies in availability. You can find out the specifities of each seller in their [metadata](../apis/for-buyers/hotel-x-pull-buyers-api/content/metadata).
+
+:::
+
 ### Criteria 
 
-This query offers versatility in search options, with certain fields marked as mandatory (checkIn, checkOut, hotels etc.) and others as optional (language, currency, nationality etc.). This flexibility empowers you to create a personalized Search Query, tailoring the requested fields to your specific needs. 
-
-[ añadir ejemplo ]
+This query offers versatility in search options, with certain fields marked as mandatory (`checkIn`, `checkOut`, `hotels` etc.) and others as optional (`language`, `currency`, `nationality` etc.). This flexibility empowers you to create a personalized Search Query, tailoring the requested fields to your specific needs. 
 
 Mandatory criteria:
-* `checkIn` (Format: YYYY-MM-DD)
-* `checkOut` (Format: YYYY-MM-DD)
-* `hotels` (We recommend a maximum of 200 hotel codes per request)
+* `checkIn` (YYYY-MM-DD)
+* `checkOut` (YYYY-MM-DD)
+* `hotels` (we recommend a maximum of 200 hotel codes per request)
 * `destinations`
-* `occupancies` (For multi-room bookings, this array will contain multiple elements, rooms. You will need to detail the occupancy for each room requested.)
+* `occupancies` (for multi-room bookings, this array will contain multiple elements, rooms + you will need to detail the occupancy for each room requested.)
 
 Optional criteria:
 * `language`
@@ -36,58 +258,9 @@ Optional criteria:
 * `nationality`
 * `markets`
 
-### Filter
-
-Filters allow you to precisely tailor the response according to your preferences. The available filters are:
-
-* `plugin`: You can filter and specify which plugins need to be included or excluded.
-
-* `rateRules`: This filter enables you to narrow down the options returned by the suppliers based on the desired rate rules you want to include or exclude.
-
-* `status`: Use this filter to determine which status (OK and RQ) will be included or excluded in the response.
-
-* `access`: By using the access filter, our system will exclusively include or exclude options from the selected accesses. If you opt not to set any access at all, requests will be made to all available accesses.
-
-### Search Single Mode or Multi Mode
-
-You have the possibility to chose between searching in a single mode vs searching in a multi mode.
-
-#### Single Mode 
-
-The default mode in Hotel-X allows our Partners to perform one search per Seller connected to their account at a time. When running your Search, you should add the Seller's access code you would like to query.
-
-[ añadir ejemplo ]
-
-#### Multimode Search
-
-The multimode query allows our Partners to search multiple Sellers at the same time in just one request. To search in multimode, start by uploading your hotel mapping files to your FTP. Once the files are processed, you'll have the ability to search multiple Sellers simultaneously by using your own context and hotel codes.
-
-Specifying the access codes in the filter node: the query will only be sent to the accesses specified.
-
-[ añadir ejemplo ]
-
-Not specifying any accesses: The query will be sent to all the accesses connected to your account (only the ones belonging to the Sellers where the mapping file has been uploaded). This query will also check the value of the "testMode" tag in order to request only the test or production accesses, accordingly.
-
-[ añadir ejemplo ]
-
 ### Settings 
 
-Settings are the common configurations used to construct requests to the supplier/s. By default, we apply the same configuration to all Hotel-X clients, and as a result, the following configuration will be sent to the Seller:
-
-	"settings": {
-		"context": "",
-		"language": "en",
-		"currency": "EUR",
-		"nationality": "ES",
-		"market": "ES",
-		"timeout": {
-			"search": 25000,
-			"quote": 180000,
-			"book": 180000
-		},
-		"businessRules": {
-			"optionsQuota": 0,
-			"businessRulesType": "CHEAPER_AMOUNT"
+Settings are the common configurations used to construct requests to the supplier/s. By default, we apply the same configuration to all Hotel-X clients.
 
 Mandatory Settings:
 * `context` (Your context code must be linked to the mapping files previously uploaded on your side to the FTP. By doing so, you will receive results from all your Sellers with your own Hotel Codes, ensuring a smooth and seamless process)
@@ -112,6 +285,167 @@ Optional Settings:
 
 * Set the `auditTransaction` to "false" in Search for better performance.
 
-* The Search `id` remains valid for 24 hours, but transitioning quickly to the Quote phase is highly recommended for a smoother booking process.
-
 :::
+
+### Filter
+
+Filters allow you to precisely tailor the response according to your preferences. The available filters are:
+
+* `plugin`: You can filter and specify which [plugins](../apis/for-buyers/hotel-x-pull-buyers-api/plugins) need to be included or excluded.
+
+* `rateRules`: This filter enables you to narrow down the options returned by the suppliers based on the desired rate rules you want to include or exclude.
+
+* `status`: Use this filter to determine which status (OK and RQ) will be included or excluded in the response.
+
+* `access`: By using the access filter, our system will exclusively include or exclude options from the selected accesses. If you opt not to set any access at all, requests will be made to all available accesses.
+
+**Request**
+
+```graphql
+query {
+    hotelX {
+    search
+      criteria: {}
+      settings: {}
+	  filterSearch: {
+        access: {
+          includes: ["2"]
+        }
+	  }
+	}
+}
+```
+
+You would need to apply the same approach for filter for specific plugin (`plugin`), rate rule (`rateRule`) and status (`status`).
+
+### Frequently asked questions
+
+<details>
+    <summary>How many hotel codes per request can I request in Search?</summary>
+    <div>
+        <div>We recommend a maximum of 200 hotels: the new aggregator will split them in batches in order to request all of them to each Seller.</div>
+    </div>
+</details>
+
+<details>
+    <summary>Are there any limitations on the number of searches/minute?</summary>
+    <div>
+        <div>Not from TravelgateX side, we don't have any limitations on the RPM in any of our methods. However, some Sellers may have some limitations so we suggest you contact directly with them in order to discuss this information.</div>
+    </div>
+</details>
+
+<details>
+    <summary>Does nationality or market affect the price returned?</summary>
+    <div>
+        <div>Yes, nationality and market might affect the rates received in Search response. This depends on the Seller so if you consider that you should get (or not) different rates depending on the nationality or market, please contact them directly.</div>
+    </div>
+</details>
+
+<details>
+    <summary>How can I search in single or multi mode?</summary>
+    <div>
+        <div>You have the possibility to chose between searching in a single mode vs searching in a multi mode.</div>
+        <br/>
+        <details>
+            <summary>
+                Singlemode search
+            </summary>
+            <div>The default mode in Hotel-X allows our Partners to perform one search per Seller connected to their account at a time. When running your Search, you should add the Seller's access code you would like to query.
+			```graphql
+			    filterSearch: {
+					access: {
+						includes: ["2"]
+						}
+				}
+			```
+			</div>
+        </details>
+		<details>
+            <summary>
+                Multimode search
+            </summary>
+            <div>The multimode query allows our Partners to search multiple Sellers at the same time in just one request. To search in multimode, start by uploading your hotel [mapping files](../apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping) to your FTP. Once the files are processed, you'll have the ability to search multiple Sellers simultaneously by using your own context and hotel codes.
+						1. Specifying the access codes in the filter node: the query will only be sent to the accesses specified. 
+						```graphql
+						    filterSearch: {
+								access: {
+									includes: ["2","3"]
+									}
+							}
+						```
+						2. Not specifying any accesses: The query will be sent to all the accesses connected to your account (only the ones belonging to the Sellers where the [mapping file](../apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping) has been uploaded). This query will also check the value of the "testMode" tag in order to request only the test or production accesses, accordingly.
+						</div>
+        </details>
+    </div>
+</details>
+
+<details>
+    <summary>Why there are so many fields with null value in the Search response?</summary>
+    <div>
+        <div>The number of "null" values returned is determined by the information provided by Sellers. For example, if you include certain fields in your Search Query but the Seller does not have that information available on their side, the value will be returned in our response as "null".</div>
+    </div>
+</details>
+
+<details>
+    <summary>Can I filter the Hotel-X Search results by payment type?</summary>
+    <div>
+        <div>Unfortunately, Hotel-X API does not currently offer the capability to filter search results by payment type.</div>
+    </div>
+</details>
+
+<details>
+    <summary>How can I limit and filter options through optionsQuota and Business Rules?</summary>
+    <div>
+        <div>
+		* OptionsQuota, how to limit the number of options in SearchRS:
+		Thanks to the optionsQuota tag, you are able to control and limit the number of options per Mealplan returned in SearchRS in those cases the Seller allows business rules (you will be able to check this information through our [Metadata Query](../apis/for-buyers/hotel-x-pull-buyers-api/content/metadata)).
+		Note that we have established a system-level limit so that if the OptionsQuota set on your side is higher than the limit established, we will use the one with the lowest value.
+		* businessRulesType, how to filter options through Business Rules
+		These are the 2 types of businessRules that may be applied:
+		   1. CHEAPER_AMOUNT: The cheapest options are returned without exceedig the optionsQuota limit.2. ROOM_TYPE: It groups the options by room type without exceeding the optionsQuota limit.
+		Please note that options are filtered using a limited combination of rooms types. First, we group same room types so you receive options with the same type/classification. For example: Standard-Standard-Standard-Standard, Junior-Junior-Junior-Junior…. Then, we combine the cheapest rooms with the remaining rooms, always checking for duplicates and without execeeding the optionsQuota limit.
+		If a Buyer sets a BusinessRules value, then it will be applied when the number of options returned exceeds the optionsQuota. If the client does not set any BusinessRules values, then the CheaperAmount BusinessRule is applied by default.</div>
+    </div>
+</details>
+
+<details>
+    <summary>What is the lifespan of the Search id?</summary>
+    <div>
+        <div>Search ids do not expire, however, we strongly recommend to transition from Search to Quote as quickly as possible, this will ensure a smoother and more efficient booking process.</div>
+    </div>
+</details>
+
+<details>
+    <summary>What is the occupancyrefID in Search response?</summary>
+    <div>
+        <div>The OccupancyRefID serves as the unique identifier for each room. When you request a single room, the OccupancyRefID will always be "1". However, if you request two rooms, each option will specify the information that belongs to each room (either Room "1" or Room "2").</div>
+    </div>
+</details>
+
+<details>
+    <summary>What does the "units" field indicate in the "rooms" node of the Search response?</summary>
+    <div>
+        <div>The "units" field refers to the number of available rooms of the same type in the hotel. Please note that whether this information is returned or not depends on the Seller.</div>
+    </div>
+</details>
+
+<details>
+    <summary>How can we differentiate a child from an infant? What is the age range of each of them?</summary>
+    <div>
+        <div>The age range for children and infants may vary depending on the Seller's restrictions. To find out the specific age range restrictions for each of your Sellers, you can refer to our [Metadata Method](../apis/for-buyers/hotel-x-pull-buyers-api/content/metadata) or directly contact the Seller.</div>
+    </div>
+</details>
+
+<details>
+    <summary>Can I receive daily prices in Hotel-X Search response?</summary>
+    <div>
+        <div>Yes, you can receive Daily Prices in Search Response (if the Seller returns this information) through the `roomPrice` > `priceBreakdown`</div>
+    </div>
+</details>
+
+<details>
+    <summary>Can I split the rooms returned within an Option and book them separately?</summary>
+    <div>
+        <div>We introduced the option node to ensure that all rooms within a specific option can be booked. If you need to book separate rooms, please send two separate Search requests, one for each room.</div>
+    </div>
+</details>

@@ -12,42 +12,128 @@ The Quote operation evaluates the rate before booking, providing the same inform
 * `rooms`
 * `surcharges`
 
+```graphql
+query {
+	hotelX {
+		quote(
+			criteria: {
+				optionRefId: "13[%!03!~|3[%@230928!~|230929!~|1!~|14!~|0!~|ES!~|ES!~|es!~|EUR!~|0!~|2!~|1!~|14!~|1!~|0!~|06060819!~|BAR[%@BAR!~|100[%@0[%@false[%@EUR[%@[%@0[%@!~|1|30#30|1|2023-09-28|1|4132467|4132468|14|11|0!~|2269[%!2269!~|30[%@30!~|!~|Double Standard!~|1!~|!~|mercado[%@ES[%!ExpireDate[%@29/09/2023[%!tarifaNRF[%@true[%!RateRule[%@tarifaNoRefundablePorHabitacion!~|OK!~|Sith!~|0!~|"
+			}
+			settings: {
+				client: "client_demo"
+				auditTransactions: true
+				context: "HOTELTEST"
+				testMode: true
+				timeout: 5000
+			}
+		) {
+			auditData {
+				transactions {
+					request
+					response
+				}
+			}
+			optionQuote {
+				addOns {
+					distribution {
+						value
+						key
+					}
+				}
+				searchPrice {
+					currency
+					net
+					gross
+					binding
+				}
+				optionRefId
+				status
+				price {
+					currency
+					binding
+					net
+					gross
+					exchange {
+						currency
+						rate
+					}
+					markups {
+						channel
+						currency
+						binding
+						net
+						gross
+						exchange {
+							currency
+							rate
+						}
+						rules {
+							id
+							name
+							type
+							value
+						}
+					}
+				}
+				cancelPolicy {
+					refundable
+					cancelPenalties {
+						hoursBefore
+						penaltyType
+						currency
+						value
+					}
+				}
+				cardTypes
+				remarks
+				surcharges {
+					chargeType
+					chargeType
+					price {
+						currency
+						binding
+						net
+						gross
+					}
+				}
+			}
+			errors {
+				code
+				type
+				description
+			}
+			warnings {
+				code
+				type
+				description
+			}
+		}
+	}
+}
+```
+
+:::note
+
+There are some mandatory data you should include at this step:
+* Cancellation policies (within the cancelPolicy structure response there is a refundable field. If this field is filled in with false, it means that the room has 100% cancellation cost, so the room is non-refundable)
+* Remarks
+* Taxes
+
+:::
+
 ### Criteria 
 
 This query offers versatility in quote options, with certain fields marked as mandatory (optionRefId) and others as optional (language). This flexibility empowers you to create a personalized Quote Query, tailoring the requested fields to your specific needs. 
 
-[Añadir ejemplo]
-
 Mandatory criteria:
-* `optionRefId` (Identifier of the option chosen in Search)
+* `optionRefId` (identifier of the option chosen in Search)
 
 Optional criteria:
 * `language`
 
-### Filter
-
-Filters allow you to precisely tailor the response according to your preferences. The available filter is:
-
-* `plugin`: You can filter and specify which plugins need to be included or excluded.
-
 ### Settings 
 
-Settings are the common configurations used to construct requests to the supplier/s. By default, we apply the same configuration to all Hotel-X clients, and as a result, the following configuration will be sent to the Seller:
-
-	"settings": {
-		"context": "",
-		"language": "en",
-		"currency": "EUR",
-		"nationality": "ES",
-		"market": "ES",
-		"timeout": {
-			"search": 25000,
-			"quote": 180000,
-			"book": 180000
-		},
-		"businessRules": {
-			"optionsQuota": 0,
-			"businessRulesType": "CHEAPER_AMOUNT"
+Settings are the common configurations used to construct requests to the supplier/s. By default, we apply the same configuration to all Hotel-X clients.
 
 Mandatory Settings:
 * `context` (Your context code must be linked to the mapping files previously uploaded on your side to the FTP. By doing so, you will receive results from all your Sellers with your own Hotel Codes, ensuring a smooth and seamless process)
@@ -73,3 +159,53 @@ Optional Settings:
 * Set the `audiTransaction` to "true" in Quote when investigating errors.
 
 :::
+
+### Filter
+
+Filters allow you to precisely tailor the response according to your preferences. The available filter is:
+
+* `plugin`: You can filter and specify which [plugins](../apis/for-buyers/hotel-x-pull-buyers-api/plugins) need to be included or excluded.
+
+### Frequently asked questions
+
+<details>
+    <summary>Do I have to perform a Quote Query in order to Book an option?</summary>
+    <div>
+        <div>Yes, in order to confirm a reservation, it is necessary to complete all three Booking Flow methods: Search, Quote, and Book.</div>
+    </div>
+</details>
+
+<details>
+    <summary>Are there any limitations on the number of Hotel-X Quote requests allowed per minute?</summary>
+    <div>
+        <div>Not from TravelgateX side, we don't have any limitations on the RPM in any of our methods. However, some Sellers may have some limitations so we suggest you contact directly with them in order to discuss this information.</div>
+    </div>
+</details>
+
+<details>
+    <summary>Do options get blocked in Hotel-X Quote Query?</summary>
+    <div>
+        <div>Some Sellers may block the options when performing a Quote Query so we strongly recommend to contact them directly regarding this topic in order to prevent future issues.</div>
+    </div>
+</details>
+
+<details>
+    <summary>Is there any possibility to obtain the hotelCode in the Hotel-X Quote response?</summary>
+    <div>
+        <div>Although the Quote Query does not include a specific "hotelCode" field, you can still retrieve the hotelCode information from the Search id that was used to perform the Quote, as well as from the Quote optionRefId that is returned in the response. It is important to note that both the Search id and optionRefId may vary between Sellers, so the information within them might differ.</div>
+    </div>
+</details>
+
+<details>
+    <summary>Is there any possibility to obtain RoomCodes in Quote?</summary>
+    <div>
+        <div>If the Seller provides this information, you can obtain the room code by including the rooms node in the HotelOptionQuote node.</div>
+    </div>
+</details>
+
+<details>
+    <summary>What should I do if I receive a status RQ in Quote response?</summary>
+    <div>
+        <div>You may receive a status On Request (status RQ) in Quote response in those cases the availability of the option previously selected is pending to be confirmed by the Seller. If you receive status RQ in Quote response, you should run a new Search request and restart the Booking Flow.</div>
+    </div>
+</details>

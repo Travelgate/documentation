@@ -11,11 +11,11 @@ One significant advantage of GraphQL is the simplicity of having a single endpoi
 https://api.travelgatex.com
 ```
 
-:::tip
+:::note
 
 If your servers are situated in **China**, we've got you covered to enhance your system's performance. You can utilize the following specialized endpoint:
 
 ```
-http://api-cn.travelgatex.com
+https://api-cn.travelgatex.com
 ```
 :::

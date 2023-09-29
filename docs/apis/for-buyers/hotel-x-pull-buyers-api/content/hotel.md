@@ -161,6 +161,30 @@ query {
 
 You would need to apply the same approach for search for specific hotels (`hotelCodes`) and countries (`countries`).
 
+### Filter the search
+
+`Filter` feature allows for more precise queries. It consists of two types of filters:
+
+* Date filters: These filters allow searching by dates in which the hotels have been  created (`createdAt_in`, `createdAt_It`, `createdAt_gt` etc.), updated (`updatedAt_in`, `updatedAt_It`, `updatedAt_gt` etc.), or deleted (`deletedAt_in`, `deletedAt_It`, `deletAt_gt` etc.).
+
+* Field filters (boolean: true or false): These filters allow searching hotels that have information in indicated fields, such as country (`country_in`), category (`category_in`), destination (`destination_in`), name (`name_in`), and coordinates (`coordinates_in`).
+
+:::note
+
+Take a look at the [API Playground](../playground) to see all the filters.
+
+:::
+
+**Request**
+
+```graphql
+query {
+    hotelX {
+    hotels(criteria: {access: "0"}, filter: {createdAt_lt: "2019-10-11", updatedAt_gt: "2019-10-15"}, relay: {})
+        }
+	  }
+```
+
 ### Know the total amount of properties
 
 To obtain the total number of properties in the list, you can easily add the `count` field to your Hotels Query.
@@ -229,14 +253,6 @@ query {
 								"hotelName": "Hotel Test",
 								"giataData": "11267",
 ```
-
-### Filter the search
-
-Filter feature allows for more precise queries. It consists of two types of filters:
-
-* Date filters: To search for hotels based on the dates they were created, updated, or deleted.
-
-* Field filters: To search for hotels based on specific fields such as country, category, destination, name, and coordinates.
 
 ### Paginate the response
 

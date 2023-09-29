@@ -24,7 +24,7 @@ This operation can include inserting a new object in a database, or deleting, or
 
 ### GraphQL Playground
 
-[API Playground](AÑADIR LINK AL PLAYGROUND) is an interactive, enjoyable, and extremely fast way to familiarize yourself with our Hotel-X API.
+[API Playground](../playground) is an interactive, enjoyable, and extremely fast way to familiarize yourself with our Hotel-X API.
 
 In the API Playground, first, click on the "Seat Headers" button at the top left to add both the Gzip Compression header and API Key.
 

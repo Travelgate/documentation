@@ -14,7 +14,7 @@ The cancellation operation allows you to cancel a booking made via TravelgateX. 
 * `rooms`
 * `rates`
 
-:::note
+:::caution
 
 Cancellation always takes into account the day and time of the destination in order to calculate what cancellation policy should be applied. UTC time.
 
@@ -184,10 +184,10 @@ Filters allow you to precisely tailor the response according to your preferences
 
 Once a Cancel (Cancellation) method is run, our API response will provide its Cancel status. This status represents the current status of the cancellation and can be categorized into four possible values:
 
-* CANCELLED: The status of the booking is cancelled.
-* OK: The reservation status is OK.
-* ON_REQUEST: The reservation was completed but the product is still not available by the Seller, so the reservation goes into a waiting list. It is the Buyer’s responsibility to check if the booking is OK.
-* UNKNOWN: The cancellation process through TravelgateX was completed but due to a supplier error or a timeout, the reservation status is unknown. It is the Buyer’s responsibility to check if the booking is cancelled.
+* `CANCELLED`: The status of the booking is cancelled.
+* `OK`: The reservation status is OK.
+* `ON_REQUEST`: The reservation was completed but the product is still not available by the Seller, so the reservation goes into a waiting list. It is the Buyer’s responsibility to check if the booking is OK.
+* `UNKNOWN`: The cancellation process through TravelgateX was completed but due to a supplier error or a timeout, the reservation status is unknown. It is the Buyer’s responsibility to check if the booking is cancelled.
 
 :::note
 

@@ -147,13 +147,13 @@ mutation {
 
 This mutation offers versatility in book options, with certain fields marked as mandatory (optionRefId, clientReference, holder etc.) and others as optional (language, delta price, payment card etc.). This flexibility empowers you to create a personalized Book Multation, tailoring the requested fields to your specific needs. 
 
-Mandatory input
+Mandatory input:
 * `optionRefId` (identifier of the option used in Quote)
 * `clientReference` (booking ID in client's system)
 * `holder`
 * `rooms`
 
-Optional input
+Optional input:
 * `language`
 * `deltaPrice` (indicates price variation permitted by the client)
 * `paymentCard` (if the payment is done by credit card, it's mandatory to specify the payment type and the credit card information)
@@ -293,11 +293,11 @@ Check an example of payment card input. Note that `isVCC`, `virtualCreditCard` a
 
 Once a Book (Reservation) method is run, our API response will provide its Book status. This status represents the current status of the reservation and can be categorized into four possible values:
 
-* OK: The reservation was completed with no problems.
-* ON_REQUEST: The reservation was completed but the product is still not available by the Seller, so the reservation goes into a waiting list. It is the Buyer’s responsibility to check if the booking is OK.
+* `OK`: The reservation was completed with no problems.
+* `ON_REQUEST`: The reservation was completed but the product is still not available by the Seller, so the reservation goes into a waiting list. It is the Buyer’s responsibility to check if the booking is OK.
 Please note that a Book status may change over time: you may receive an ON_REQUEST status in Book response, and after running a Booking Query some seconds later the status may have already changed to OK.
-* UNKNOWN: The reservation process through TravelgateX was completed but due to a supplier error or a timeout, the reservation status is unknown (our system was unable to confirm if the booking has been confirmed or not the on Seller's system). It is the Buyer’s responsibility to check if the booking is OK.
-* PENDING_COMMIT: The payment has been confirmed on the provider’s side, but is necessary to make a commit in order to confirm the reservation.
+* `UNKNOWN`: The reservation process through TravelgateX was completed but due to a supplier error or a timeout, the reservation status is unknown (our system was unable to confirm if the booking has been confirmed or not the on Seller's system). It is the Buyer’s responsibility to check if the booking is OK.
+* `PENDING_COMMIT`: The payment has been confirmed on the provider’s side, but is necessary to make a commit in order to confirm the reservation.
 
 ### Frequently asked questions
 

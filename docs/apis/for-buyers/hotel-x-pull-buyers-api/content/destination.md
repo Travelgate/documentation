@@ -52,6 +52,23 @@ query {
 }
 ```
 
+### Destination list logic
+
+Once you run a Destinations Query, you will receive the Seller's native destination codes in the response. These codes can be classified into 2 categories:
+
+1. Zone
+2. City
+
+Sellers build their own Destination Tree based on both nodes. Consequently, when you request their destination list, you will receive a structured categorized response that can help you with the mapping process.
+
+:::note
+
+The amount of information, content and the categorization of destinations returned might vary between Sellers.
+
+Also node classification can vary between Sellers, for example, San Francisco may be classified as a Zone by one Seller and as a City by another.
+
+:::
+
 ### Criteria  
 
 This query offers versatility, with certain fields marked as mandatory (`access`) and others as optional (`group`, `destinationCodes`, etc.). This flexibility empowers you to create a personalized Destinatiosn Query, tailoring the requested fields to your specific needs. Consequently, the response will only include information that is highly relevant to you, streamlining the retrieval process and ensuring the data you receive meets your exact requirements.
@@ -110,22 +127,6 @@ query {
 				"token": "FGluY2x1ZGVfY29udGV4dF91dWlkDnF1ZXJ5FGhlbkZldGNoAhZMN2w2SlZYaVNaaXhYeXHwdm1GWjlBAAAAAATLRLQWeXZ3cU12MkpSbTY3WkF6QzJraWJWZxZFX3NZYkQ1UFN6fWFaQjlXMXBSbmhBAAAAABCavEoWWFltUDMwVXRUT0ctUWY5Y3FDX39vQQ==",,
 				"edges": [
 ```
-### Destination list logic
-
-Once you run a Destinations Query, you will receive the Seller's native destination codes in the response. These codes can be classified into 2 categories:
-
-1. Zone
-2. City
-
-Sellers build their own Destination Tree based on both nodes. Consequently, when you request their destination list, you will receive a structured categorized response that can help you with the mapping process.
-
-:::note
-
-The amount of information, content and the categorization of destinations returned might vary between Sellers.
-
-Also node classification can vary between Sellers, for example, San Francisco may be classified as a Zone by one Seller and as a City by another.
-
-:::
 
 ### Mapping
 

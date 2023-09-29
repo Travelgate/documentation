@@ -277,4 +277,4 @@ When utilizing the Hotel List Query, you will receive the Seller's native hotel 
 
 Additionally, you can upload your own mapping files to our FTP (credentials should be provided by our Customer Care team), and we will use your own hotel codes in the booking flow.
 
-You can find all the necessary information in the [mapping section](../apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping).
+You can find all the necessary information in the [mapping section](../plugins/mapping.mdx).

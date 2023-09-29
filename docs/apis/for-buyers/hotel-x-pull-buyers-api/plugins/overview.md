@@ -8,9 +8,9 @@ Hotel-X offers customizable Plugins that allow you to incorporate your own busin
 
 Furthermore, there is an option to load default plugins into our database. Currently, the exclusive method for doing so involves reaching out to our dedicated Customer Care team. These default plugins will automatically execute in all the Queries and Mutations defined above when no filters are specified.
 
-### Ftp Files
+### FTP Files
 
-#### Ftp Endpoint
+#### FTP Endpoint
 
 ftp://ftp.xmltravelgate.com
 
@@ -31,7 +31,7 @@ HotelX_[Unique code]
 
 Example: /F**0**\_**178**/HotelX\_**179**
 
-#### Update Ftp Data
+#### Update FTP Data
 
 We have two options:
 
@@ -41,7 +41,7 @@ Example:
 * SourceContext_DestinationContext_entity_map_processed.csv –> example.csv
 * Changing the data by deleting the processed file and uploading a new one with new information.
 
-#### Delete Ftp Data
+#### Delete FTP Data
 
 Uploading a new file only with headers (no information).
 

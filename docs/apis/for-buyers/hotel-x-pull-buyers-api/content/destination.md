@@ -133,4 +133,4 @@ When utilizing the Destination List Query, you will receive the Seller's native 
 
 Additionally, you can upload your own mapping files to our FTP (credentials should be provided by our Customer Care team), and we will use your own destination codes in the booking flow.
 
-You can find all the necessary information in the [mapping section](../apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping).
+You can find all the necessary information in the [mapping section](../plugins/mapping.mdx).

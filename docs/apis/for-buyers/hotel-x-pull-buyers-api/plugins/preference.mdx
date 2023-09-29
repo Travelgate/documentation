@@ -49,57 +49,57 @@ Download the file, include your data following the example (delete the first lin
 
 <details>
     <summary>Check the definitions and file format if you have any doubts about the example</summary>
-    <div>
-        <div>
-		File Name: [Context Source]_sequential_preference.csv
-		Directory: F[folder code][unique code]/HotelX[unique code]/BusinessRules
-		Delimiter: Comma (“,”)
-		Header Row:
-		   * RuleId (mandatory): Rule identifier
-         * ClientTokens (mandatory): Identifier provided by the client that is used to filter which business rules can be applied for the sent request
-            * Separator for multiples codes in the same row: Semicolon (“;”)
-         * SupplierCodes (mandatory): Supplier code
-            * Separator for multiples codes in the same row: Semicolon (“;”)
-         * NotSupplierCodes (mandatory): Supplier code
-            * Separator for multiples codes in the same row: Semicolon (“;”)
-         * BookingDateFrom: Booking date (yyyy-mm-dd)
-         * BookingDateTo: Booking date to (yyyy-mm-dd)
-         * StartDateFrom: Start date from (yyyy-mm-dd)
-         * StartDateTo: Start date to (yyyy-mm-dd)
-         * HotelCodes: Hotel code
-            * Separator for multiples codes in the same row: Semicolon (“;”)
-         * NothotelCodes: Hotel code
-            * Separator for multiples codes in the same row: Semicolon (“;”)
-         * ChainsCodes: Chain code
-            * Separator for multiples codes in the same row: Semicolon (“;”)
-         * NotChainCodes: Chain code
-            * Separator for multiples codes in the same row: Semicolon (“;”)
-         * DestinationCodes: Destination code
-            * Separator for multiples codes in the same row: Semicolon (“;”)
-         * NotDestinationCodes: Destination code
-            * Separator for multiples codes in the same row: Semicolon (“;”)
-         * Status: Option status (OK, RQ)
-            * Separator for multiples codes in the same row: Semicolon (“;”)
-         * NotStatus: Option status (OK, RQ)
-            * Separator for multiples codes in the same row: Semicolon (“;”)
-         * Percentage (mandatory): Commission value, decimal separator must be point (“.”) 
-         * Filtercompetitors (mandatory): Filter competitors
-		</div>
-    </div>
+
+```txt
+File Name: [Context Source]_sequential_preference.csv
+Directory: F[folder code][unique code]/HotelX[unique code]/BusinessRules
+Delimiter: Comma (“,”)
+Header Row:
+   * RuleId (mandatory): Rule identifier
+ * ClientTokens (mandatory): Identifier provided by the client that is used to filter which business rules can be applied for the sent request
+    * Separator for multiples codes in the same row: Semicolon (“;”)
+ * SupplierCodes (mandatory): Supplier code
+    * Separator for multiples codes in the same row: Semicolon (“;”)
+ * NotSupplierCodes (mandatory): Supplier code
+    * Separator for multiples codes in the same row: Semicolon (“;”)
+ * BookingDateFrom: Booking date (yyyy-mm-dd)
+ * BookingDateTo: Booking date to (yyyy-mm-dd)
+ * StartDateFrom: Start date from (yyyy-mm-dd)
+ * StartDateTo: Start date to (yyyy-mm-dd)
+ * HotelCodes: Hotel code
+    * Separator for multiples codes in the same row: Semicolon (“;”)
+ * NothotelCodes: Hotel code
+    * Separator for multiples codes in the same row: Semicolon (“;”)
+ * ChainsCodes: Chain code
+    * Separator for multiples codes in the same row: Semicolon (“;”)
+ * NotChainCodes: Chain code
+    * Separator for multiples codes in the same row: Semicolon (“;”)
+ * DestinationCodes: Destination code
+    * Separator for multiples codes in the same row: Semicolon (“;”)
+ * NotDestinationCodes: Destination code
+    * Separator for multiples codes in the same row: Semicolon (“;”)
+ * Status: Option status (OK, RQ)
+    * Separator for multiples codes in the same row: Semicolon (“;”)
+ * NotStatus: Option status (OK, RQ)
+    * Separator for multiples codes in the same row: Semicolon (“;”)
+ * Percentage (mandatory): Commission value, decimal separator must be point (“.”)
+ * Filtercompetitors (mandatory): Filter competitors
+```
+
 </details>
 
 <details>
     <summary>Check some of the most common use cases</summary>
-    <div>
-        <div>
-		Percentage = 1, Supplier A: 126 €, Supplier B: 125 €
-           126 - 126 * 0.01 = 124,74 <= 125 €, then the selected one is supplier A
-        Percentage = 1, Supplier A: 128 €, Supplier B: 125 €
-           128 - 128 * 0.01 = 126.72> 125 €, then the selected one is supplier B
-        Simple value field [Añadir csv]
-		Simple value field [Añadir csv]
-		</div>
-    </div>
+
+```txt
+Percentage = 1, Supplier A: 126 €, Supplier B: 125 €
+   126 - 126 * 0.01 = 124,74 <= 125 €, then the selected one is supplier A
+Percentage = 1, Supplier A: 128 €, Supplier B: 125 €
+   128 - 128 * 0.01 = 126.72> 125 €, then the selected one is supplier B
+Simple value field [Añadir csv]
+Simple value field [Añadir csv]
+```
+
 </details>
 
 ### Execute Preference plugin

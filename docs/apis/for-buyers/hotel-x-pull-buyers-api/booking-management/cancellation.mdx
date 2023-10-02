@@ -1,0 +1,215 @@
+---
+sidebar_position: 4
+---
+
+# Cancellation
+
+The cancellation operation allows you to cancel a booking made via TravelgateX. The returned fields include:
+
+* `status`
+* `reference`
+* `price`
+* `holder`
+* `hotel`
+* `rooms`
+* `rates`
+
+:::caution
+
+Cancellation always takes into account the day and time of the destination in order to calculate what cancellation policy should be applied. UTC time.
+
+:::
+
+:::note
+
+The information returned in Cancel response may vary between Sellers.
+
+:::
+
+```graphql
+
+	hotelX {
+		cancel(
+			input: {
+				accessCode: "2"
+				hotelCode: "1"
+				reference: { supplier: "975723" }
+			}
+			settings: {
+				client: "client_demo"
+				auditTransactions: true
+				context: "HOTELTEST"
+				testMode: true
+				timeout: 18000
+			}
+		) {
+			auditData {
+				transactions {
+					request
+					response
+				}
+			}
+			errors {
+				type
+				code
+				description
+			}
+			warnings {
+				code
+				description
+			}
+			cancellation {
+				reference {
+					client
+					supplier
+					hotel
+					bookingID
+				}
+				cancelReference
+				status
+				price {
+					currency
+					binding
+					net
+					gross
+					exchange {
+						currency
+						rate
+					}
+				}
+				booking {
+					paymentCard {
+						code
+						paymentCardData {
+							type
+						}
+					}
+					billingSupplierCode
+					reference {
+						client
+						supplier
+						hotel
+						bookingID
+					}
+					holder {
+						name
+						surname
+					}
+					billingSupplierCode
+					price {
+						currency
+						binding
+						net
+						gross
+						exchange {
+							currency
+							rate
+						}
+					}
+					hotel {
+						creationDate
+						checkIn
+						checkOut
+						hotelCode
+						hotelName
+						boardCode
+						occupancies {
+							id
+							paxes {
+								age
+							}
+						}
+						rooms {
+							code
+							description
+							occupancyRefId
+							price {
+								currency
+								binding
+								net
+								gross
+								exchange {
+									currency
+									rate
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+```
+
+### Input
+
+This mutation offers versatility in cancellation, with all fields marked as optional (accessCode, language, hotelCode etc.). You can decide between the two options for cancellation, either by reference or by bookingID, empowering you with the choice that suits you best.
+
+Optional criteria
+* `reference`
+* `bookingID`
+* `accessCode`
+* `language`
+* `hotelCode`
+
+### Settings 
+
+Settings are the common configurations used to construct requests to the supplier/s. By default, we apply the same configuration to all Hotel-X clients.
+
+Mandatory Settings:
+* `context`
+* `timeout` (timeout in milliseconds for supplier connections. Applied to all suppliers; won't close client connection if exceeded)
+* `businessRules`
+* `language`
+* `currency`
+* `nationality`
+* `markets`
+
+Optional Settings:
+* `group`
+* `auditTransactions` 
+* `suppliers` (each one contains its own code, settings and accesses)
+* `plugins`
+* `testMode` (this flag allows only the accesses checked as test)
+* `clientTokens` (used to identify the origin of the request, this is only used in plugins)
+* `commitRequired` (indicates if the book will be confirmed in 1 or 2 steps. It only should be used in Book)
+
+### Filter
+
+Filters allow you to precisely tailor the response according to your preferences. The available filter is:
+
+* `plugin`: You can filter and specify which plugins need to be included or excluded.
+
+### Cancel Response
+
+Once a Cancel (Cancellation) method is run, our API response will provide its Cancel status. This status represents the current status of the cancellation and can be categorized into four possible values:
+
+* `CANCELLED`: The status of the booking is cancelled.
+* `OK`: The reservation status is OK.
+* `ON_REQUEST`: The reservation was completed but the product is still not available by the Seller, so the reservation goes into a waiting list. It is the Buyer’s responsibility to check if the booking is OK.
+* `UNKNOWN`: The cancellation process through TravelgateX was completed but due to a supplier error or a timeout, the reservation status is unknown. It is the Buyer’s responsibility to check if the booking is cancelled.
+
+:::note
+
+If you receive any of the "common errors" or a status other than "CANCELLED", it will be your responsibility as a Buyer to check the final status of the cancellation in the Seller's system.
+
+:::
+
+### Frequently asked questions
+
+<details>
+    <summary>How are cancellation costs calculated and displayed?</summary>
+    <div>
+        <div>Depending on the specifications provided by a Seller, cancellation costs can be calculated using three different penalty types. It is important to keep in mind that a booking may have more than one penalty type associated with it.
+		   * NIGHTS: It indicates the number of nights to be penalized.
+		   * PERCENT: It indicates the percentage to pay based on the option price (possible values between 0 and 100).
+		   * IMPORT: It Indicates the exact amount payable.</div>
+    </div>
+</details>
+
+<details>
+    <summary>Is it possible to retrieve the cancellation costs without canceling the option?</summary>
+    <div>
+        <div>If the Seller provides cancel policies information, you can access it either through Hotel-X Quote Query or Hotel-X Booking Query.</div>
+    </div>
+</details>

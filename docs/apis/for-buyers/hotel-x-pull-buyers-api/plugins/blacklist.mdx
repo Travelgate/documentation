@@ -87,17 +87,21 @@ Bear in mind that this file is a collection of rules and we chose in every Searc
 
 ### Execute Blacklist plugin
 
-In order to use the plugin, you should add it in Settings y the request.
+In order to use the plugin, you should add it in the Settings node of the request.
 
+```json
+"settings": {
 	"plugins": [
-			{
-				"step": "REQUEST_ACCESS",
-				"pluginsType": {
-					"name": "blacklist",
-					"type": "PRE_STEP"
-				}
+		{
+			"step": "REQUEST_ACCESS",
+			"pluginsType": {
+				"name": "blacklist",
+				"type": "PRE_STEP"
 			}
-		]
+		}
+	]
+}
+```
 
 To apply specific rule, you should add `clientTokens` in the request.
 

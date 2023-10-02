@@ -141,17 +141,10 @@ You would need to apply the same approach for filter for specific plugin (`plugi
 <p>
     The default mode in Hotel-X allows our Partners to perform one search per Seller connected to their account at a time. When running your Search, you should add the Seller's access code you would like to query.
 
-```graphql
-query {
-    hotelX {
-        search
-        criteria: {}
-        settings: {}
-        filterSearch: {
-            access: {
-                includes: ["2"]
-            }
-        }
+```json
+"filterSearch": {
+    "access": {
+        "includes": ["2"]
     }
 }
 ```
@@ -165,19 +158,12 @@ query {
     own context and hotel codes.
     <br></br>
     <br></br>
-    1. Specifying the access codes in the filter node: the query will only be sent to the accesses specified.
+    1. Specifying the access codes in the filter node in your variables: the query will only be sent to the accesses specified.
 
-```graphql
-query {
-    hotelX {
-        search
-        criteria: {}
-        settings: {}
-        filterSearch: {
-            access: {
-                includes: ["2", "3"]
-            }
-        }
+```json
+"filterSearch": {
+    "access": {
+        "includes": ["2", "3"]
     }
 }
 ```

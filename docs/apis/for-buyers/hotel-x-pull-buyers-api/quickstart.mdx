@@ -2,9 +2,9 @@
 sidebar_position: 1
 ---
 
-import {searchQuickStartQuery} from "../../../../src/graphql/sample-queries/search.quickstart.query";
-import {quoteQuickStartQuery} from "../../../../src/graphql/sample-queries/quote.quickstart.query";
-import {bookQuickStartMutation} from "../../../../src/graphql/sample-queries/book.quickstart.mutation";
+import {searchQuickStartQuery, searchQuickStartVariables} from "../../../../src/graphql/sample-queries/search.quickstart.query";
+import {quoteQuickStartQuery, quoteQuickStartVariables} from "../../../../src/graphql/sample-queries/quote.quickstart.query";
+import {bookQuickStartMutation, bookQuickStartVariables} from "../../../../src/graphql/sample-queries/book.quickstart.mutation";
 
 
 # Quickstart
@@ -82,7 +82,7 @@ The Search query is where the adventure begins in our shopping journey! Our aim 
 
 :::
 
-<GraphqlSample query={searchQuickStartQuery} variables={'{"foo": "bar"}'}/>
+<GraphqlSample query={searchQuickStartQuery} variables={searchQuickStartVariables}/>
 
 
 ### 2. Quote your selected option
@@ -91,7 +91,7 @@ Now, let's dive into the exciting part! After carefully reviewing all the option
 
 To make this happen, you'll need to retrieve the `optionRefId` from the search results and use this value as the input for the Quote request:
 
-<GraphqlSample query={quoteQuickStartQuery} />
+<GraphqlSample query={quoteQuickStartQuery} variables={quoteQuickStartVariables}/>
 
 
 ### 3. Confirm and book the option!
@@ -100,7 +100,13 @@ You're almost there! After securing your quote and ensuring all the details alig
 
 You'll need to provide the 'optionRefId' returned in the Quote step and enter all the necessary passenger information. Upon a successful booking request, you'll receive a confirmation along with essential reservation details. Congratulations! Your hotel stay is now officially booked.
 
-<GraphqlSample query={bookQuickStartMutation} />
+<GraphqlSample query={bookQuickStartMutation} variables={bookQuickStartVariables} />
+
+:::note
+
+Make sure to change the value of the `clientReference` field so that the Book can be confirmed correctly.
+
+:::
 
 ### Next steps
 

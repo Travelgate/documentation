@@ -4,11 +4,11 @@ sidebar_position: 9
 
 # Preference
 
-Preference plugin gives preference to the options that match the preference, returning the options in a preferential way. Sequentially, the rules will be evaluated until a match is found, upon finding it, the process will be stopped and the preference will be evaluated. In the same way, if the rule is not found, the option will be validated. The matching process uses clientTokens field, which identifies the provider and it is used to filter which business rules can be applied in the request sent.
+The Preference plugin works by prioritizing options that align with your preferences and presenting them in a preferred order. It follows a sequential process, where rules are checked one by one until a matching rule is found. When a match is found, the process stops, and your preference is applied. If no matching rule is found, the option will be validated.
 
-In order for the preference plugin to work, you need to have the preference file in the FTP + add the plugin to the request.
+To determine matches, the plugin uses the `clientTokens` field, which identifies the provider and helps filter which business rules can be applied to the request you send.
 
-### Preference plugin workflow
+## Preference plugin workflow
 
 1. Starts getting all the args set by the client in the query, like options, parameters (primaryKey among others), client tokens, etc.
 
@@ -25,83 +25,93 @@ To determine if an option will be discarted or not we have to check the group fu
 
 5. With the resulting options grouped by pk indexes, finally collects all of them and return them to the service process which has used the plugin.
 
-### Create Preference file
+Some examples:
+
+**Percentage = 1, Supplier A: 126 €, Supplier B: 125 €**  
+```
+126 - 126 * 0.01 = 124,74 <= 125 €, then the selected one is supplier A
+```
+
+**Percentage = 1, Supplier A: 128 €, Supplier B: 125 €**  
+```
+128 - 128 * 0.01 = 126.72> 125 €, then the selected one is supplier B
+```
+
+
+To get started with the Preference plugin, follow these simple steps:
+
+### 1. Create and upload your Preference file
+
+First, create your preference file in the correct format and then upload it to your FTP account. To assist you with this process, you can download the template file below, add your own rules, save it in CSV format, and then upload it to the corresponding folder in your FTP.
+
 
 ```mdx-code-block
 <BrowserWindow>
 
-F[Folder code]_[Unique code]
-   HotelX_[Unique code]
-      BusinessRules
-         [Context Source]_sequential_preference.csv
+📁F0\_0000  
+&nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX_0000  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁BusinessRules  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[\[Buyer Context\]\_sequential\_preference.csv](#)
 
 </BrowserWindow>
 ```
 
-Download the file, include your data following the example (delete the first line), save it in csv format, and upload it to your FTP following the example.
+#### File format specification
+
+* **File Name:** [Buyer Context]_sequential_preference.csv
+* **Directory:** F0_0000/HotelX0000/BusinessRules
+* **Delimiter:** Comma (`,`)
+* **Header Row:**
+   * **RuleId (mandatory):** Rule identifier
+   * **ClientTokens (mandatory):** Identifier provided by the client that is used to filter which business rules can be applied for the sent request
+      * Separator for multiples codes in the same row: Semicolon `;`
+   * **SupplierCodes (mandatory):** Supplier code
+      * Separator for multiples codes in the same row: Semicolon `;`
+   * **NotSupplierCodes (mandatory):** Supplier code
+      * Separator for multiples codes in the same row: Semicolon `;`
+   * **BookingDateFrom:** Booking date (yyyy-mm-dd)
+   * **BookingDateTo:** Booking date to (yyyy-mm-dd)
+   * **StartDateFrom:** Start date from (yyyy-mm-dd)
+   * **StartDateTo:** Start date to (yyyy-mm-dd)
+   * **HotelCodes:** Hotel code
+      * Separator for multiples codes in the same row: Semicolon `;`
+   * **NothotelCodes:** Hotel code
+      * Separator for multiples codes in the same row: Semicolon `;`
+   * **ChainsCodes:** Chain code
+      * Separator for multiples codes in the same row: Semicolon `;`
+   * **NotChainCodes:** Chain code
+      * Separator for multiples codes in the same row: Semicolon `;`
+   * **DestinationCodes:** Destination code
+      * Separator for multiples codes in the same row: Semicolon `;`
+   * **NotDestinationCodes:** Destination code
+      * Separator for multiples codes in the same row: Semicolon `;`
+   * **Status:** Option status (OK, RQ)
+      * Separator for multiples codes in the same row: Semicolon `;`
+   * **NotStatus:** Option status (OK, RQ)
+      * Separator for multiples codes in the same row: Semicolon `;`
+   * **Percentage (mandatory):** Commission value, decimal separator must be point `.`
+   * **Filtercompetitors (mandatory):** Filter competitors
+
+
+#### Check some of the most common use cases
+
+Here are some common use cases for the Preference plugin, along with the CSV template file to use:
+
+| Use Case                                                      | CSV Template file             |
+|---------------------------------------------------------------|-------------------------------|
+| Simple value field                                            | 📄[\[Buyer Context\]\_sequential\_preference.csv](#) |
+| Multi value field                                             | 📄[\[Buyer Context\]\_sequential\_preference.csv](#) |
+
 
 <details>
-    <summary>Learn how to change the format of the csv file in order to edit and save it</summary>
+    <summary>📹Learn how to change the format of the csv file in order to edit and save it</summary>
     <div>
         <div>[Añadir vídeo]</div>
     </div>
 </details>
 
-<details>
-    <summary>Check the definitions and file format if you have any doubts about the example</summary>
 
-```txt
-File Name: [Context Source]_sequential_preference.csv
-Directory: F[folder code][unique code]/HotelX[unique code]/BusinessRules
-Delimiter: Comma (“,”)
-Header Row:
-   * RuleId (mandatory): Rule identifier
- * ClientTokens (mandatory): Identifier provided by the client that is used to filter which business rules can be applied for the sent request
-    * Separator for multiples codes in the same row: Semicolon (“;”)
- * SupplierCodes (mandatory): Supplier code
-    * Separator for multiples codes in the same row: Semicolon (“;”)
- * NotSupplierCodes (mandatory): Supplier code
-    * Separator for multiples codes in the same row: Semicolon (“;”)
- * BookingDateFrom: Booking date (yyyy-mm-dd)
- * BookingDateTo: Booking date to (yyyy-mm-dd)
- * StartDateFrom: Start date from (yyyy-mm-dd)
- * StartDateTo: Start date to (yyyy-mm-dd)
- * HotelCodes: Hotel code
-    * Separator for multiples codes in the same row: Semicolon (“;”)
- * NothotelCodes: Hotel code
-    * Separator for multiples codes in the same row: Semicolon (“;”)
- * ChainsCodes: Chain code
-    * Separator for multiples codes in the same row: Semicolon (“;”)
- * NotChainCodes: Chain code
-    * Separator for multiples codes in the same row: Semicolon (“;”)
- * DestinationCodes: Destination code
-    * Separator for multiples codes in the same row: Semicolon (“;”)
- * NotDestinationCodes: Destination code
-    * Separator for multiples codes in the same row: Semicolon (“;”)
- * Status: Option status (OK, RQ)
-    * Separator for multiples codes in the same row: Semicolon (“;”)
- * NotStatus: Option status (OK, RQ)
-    * Separator for multiples codes in the same row: Semicolon (“;”)
- * Percentage (mandatory): Commission value, decimal separator must be point (“.”)
- * Filtercompetitors (mandatory): Filter competitors
-```
 
-</details>
+### 2. Execute Preference plugin in your query
 
-<details>
-    <summary>Check some of the most common use cases</summary>
-
-```txt
-Percentage = 1, Supplier A: 126 €, Supplier B: 125 €
-   126 - 126 * 0.01 = 124,74 <= 125 €, then the selected one is supplier A
-Percentage = 1, Supplier A: 128 €, Supplier B: 125 €
-   128 - 128 * 0.01 = 126.72> 125 €, then the selected one is supplier B
-Simple value field [Añadir csv]
-Simple value field [Añadir csv]
-```
-
-</details>
-
-### Execute Preference plugin
-
-ESCRIBIR ESTA PARTE
+ESCRIBIR ESTA PARTE (TODO)

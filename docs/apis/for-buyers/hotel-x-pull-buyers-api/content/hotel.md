@@ -171,7 +171,7 @@ You would need to apply the same approach for search for specific hotels (`hotel
 
 :::note
 
-Take a look at the [API Playground](../playground) to see all the filters.
+Take a look at the [API Playground](/playground/) to see all the filters.
 
 :::
 

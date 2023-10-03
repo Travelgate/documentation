@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import BrowserOnly from '@docusaurus/BrowserOnly';
 import 'graphiql/graphiql.css';
 import {createGraphiQLFetcher} from '@graphiql/create-fetcher';
@@ -18,6 +18,17 @@ if (ExecutionEnvironment.canUseDOM) {
 
 const GraphqlSample = ({token, query, variables}) => {
     const isBrowser = useIsBrowser();
+    const [headers, setHeaders] = useState(`{
+        "Authorization": "Apikey test0000-0000-0000-0000-000000000000"
+    }`);
+
+    useEffect(() => {
+        if (token) {
+            setHeaders(`{"Authorization": "Bearer ${token}"}`);
+        } else {
+
+        }
+    }, [token]);
 
     return (
         <>
@@ -28,7 +39,7 @@ const GraphqlSample = ({token, query, variables}) => {
                             <>
                                 <GraphiQL
                                     fetcher={fetcher}
-                                    headers={`{"Authorization": "Bearer ${token??''}"}`}
+                                    headers={headers}
                                     query={query??hotelsListQuerySampleA}
                                     variables={variables??''}
                                 >

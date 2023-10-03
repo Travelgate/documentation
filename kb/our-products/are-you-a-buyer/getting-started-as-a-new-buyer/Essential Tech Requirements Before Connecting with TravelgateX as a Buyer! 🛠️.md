@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Essential Tech Requirements Before Connecting with TravelgateX as a Buyer! 🛠️
+# Essential Tech Requirements Before Connecting with TravelgateX as a Buyer
 
 ## Preparing for Hotel-X API Development: Key Considerations Before Embarking on Development Work
 
@@ -26,5 +26,4 @@ TravelgateX is purely focused on connectivity so to be able to work with us via 
 > [!NOTE]
 >* When a Seller returns the **same hotel id for different properties**, we concatenate those hotel ids with their destination code in order to make them unique. That will be the only exception where we modify the Seller information. In that case, the hotelCode will be the one returned through our API (concatenated if needed) and the hotelCodeSupplier will be the native code of the supplier.
 
-\
 Remember, we're here to support you at every step, so don't hesitate to [reach out](https://knowledge.travelgate.com/guidelines-for-submitting-a-ticket-to-our-support-team) if you have any questions or need further assistance. Let's get you set up for success with Hotel-X! 🚀

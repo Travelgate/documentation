@@ -6,65 +6,51 @@ sidebar_position: 8
 
 Market Group plugin groups the input markets from Search depending on the agrupations you’ve decided beforehand. In order to be able to use the plugin, you’ll have to decide which markets to join for which supplier. This way the Search will only process as many transactions as groups have been formed by the plugin, since all of the markets of a same group would return the same options.
 
-In order for the market group plugin to work, you need to have the market group file in the FTP + add the plugin to the request.
+To get started with the Market Group plugin, follow these simple steps:
 
-### Create Market Group file
+## 1. Create and upload your Market Group file
+
+First, create your market group file in the correct format and then upload it to your FTP account. To assist you with this process, you can download the template file below, add your own rules, save it in CSV format, and then upload it to the corresponding folder in your FTP.
+
 
 ```mdx-code-block
 <BrowserWindow>
 
-F[Folder code]_[Unique code]
-   HotelX_[Unique code]
-      BusinessRules
-         markets_groups.csv
+📁F0\_0000  
+&nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX_0000  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁BusinessRules  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[markets_groups.csv](#)
 
 </BrowserWindow>
 ```
 
-Download the file, include your data following the example (delete the first line), save it in csv format, and upload it to your FTP following the example.
-
-
 :::caution
 
-Bear in mind that this plugin is only available in Search step and the market groups will not be recalculated after Search step. So if you take an option from Search that has been executed with market groups, those groups will remain the same through all the booking flow, even if you change those groups via ftp.
+Keep in mind that this plugin is only available in Search step and the market groups will not be recalculated after Search step. So if you take an option from Search that has been executed with market groups, those groups will remain the same through all the booking flow, even if you change those groups via ftp.
 
 :::
 
+### File format specification
+
+* **File Name:** markets_group.csv
+* **Directory:** F0_0000/HotelX0000/BusinessRules
+* **Delimiter:** Comma (`,`)
+* **Header Row:**
+    * **Supplier:** Supplier code
+    * **Markets:** List of groups of market
+        * Each group will be separated by `;` and each market will be separated by `#`
+    * **Other:** Boolean value true/false
+        * **True:** The Search input markets (`HotelCriteriaSearchInput`) not found in this configuration file, will be joined together and we will launch a query to the provider searching for options in these markets.
+        * **False:** These markets will be discarded.
+
 <details>
-    <summary>Learn how to change the format of the csv file in order to edit and save it</summary>
+    <summary>📹Learn how to change the format of the csv file in order to edit and save it</summary>
     <div>
         <div>[Añadir vídeo]</div>
     </div>
 </details>
 
-<details>
-    <summary>Check the definitions and file format if you have any doubts about the example</summary>
-    <div>
-        <div>
-		File Name: markets_group.csv
-		Directory: F[folder code][unique code]/HotelX[unique code]/BusinessRules
-		Delimiter: Comma (“,”)
-		Header Row:
-		   * Supplier: Supplier code
-           * Markets: List of groups of market
-              * Each group will be separated by ‘;’ and each market will be separated by ‘#’
-           * Other: Boolean value true/false
-              * True: The Search input markets (HotelCriteriaSearchInput) not found in this configuration file, will be joined together and we will launch a query to the provider searching for options in these markets.
-              * False: These markets will be discarded.
-		</div>
-    </div>
-</details>
 
-<details>
-    <summary>Check some of the most common use cases</summary>
-    <div>
-        <div>
-		Use case 1 [Añadir csv]
-		Use case 2 [Añadir csv]
-		</div>
-    </div>
-</details>
+## 2. Execute Blacklist plugin in your query
 
-### Execute Market Group plugin
-
-ESCRIBIR ESTA PARTE
+ESCRIBIR ESTA PARTE (TODO)

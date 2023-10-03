@@ -2,7 +2,9 @@
 sidebar_position: 1
 ---
 
-import {searchQuickStartQuery} from "../../../../src/graphql/sample-queries/search.quickstart.query";
+import {searchQuickStartQuery, searchQuickStartVariables} from "../../../../src/graphql/sample-queries/search.quickstart.query";
+import {quoteQuickStartQuery, quoteQuickStartVariables} from "../../../../src/graphql/sample-queries/quote.quickstart.query";
+import {bookQuickStartMutation, bookQuickStartVariables} from "../../../../src/graphql/sample-queries/book.quickstart.mutation";
 
 
 # Quickstart
@@ -80,8 +82,7 @@ The Search query is where the adventure begins in our shopping journey! Our aim 
 
 :::
 
-
-<GraphqlSample query={searchQuickStartQuery} />
+<GraphqlSample query={searchQuickStartQuery} variables={searchQuickStartVariables}/>
 
 
 ### 2. Quote your selected option
@@ -90,77 +91,7 @@ Now, let's dive into the exciting part! After carefully reviewing all the option
 
 To make this happen, you'll need to retrieve the `optionRefId` from the search results and use this value as the input for the Quote request:
 
-```graphql
-query {
-	hotelX {
-		quote(
-			criteria: {
-				optionRefId: "13[%!03!~|3[%@241028!~|241029!~|1!~|1!~|0!~|ES!~|ES!~|es!~|EUR!~|0!~|2!~|1!~|1!~|1!~|0!~|15091141!~|BAR[%@BAR!~|146[%@0[%@false[%@EUR[%@[%@0[%@!~|1|30#30|1|2024-10-28|1|4132467|4132468|1|11|0!~|2269[%!2269!~|30[%@30!~|!~|Double Standard!~|1!~|!~|mercado[%@ES[%!ExpireDate[%@29/10/2024[%!tarifaNRF[%@true[%!RateRule[%@tarifaNoRefundablePorHabitacion!~|OK!~|Sith!~|0!~|"
-			}
-			settings: {
-				client: "client_demo"
-				context: "HOTELTEST"
-				testMode: true
-				timeout: 5000
-			}
-		) {
-			errors {
-				code
-				type
-				description
-			}
-			warnings {
-				code
-				type
-				description
-			}
-			optionQuote {
-				optionRefId
-				status
-				price {
-					currency
-					binding
-					net
-					gross
-					exchange {
-						currency
-						rate
-					}
-					minimumSellingPrice
-				}
-				surcharges {
-					chargeType
-					price {
-						currency
-						binding
-						net
-						gross
-						exchange {
-							currency
-							rate
-						}
-						minimumSellingPrice
-					}
-					description
-				}
-				cancelPolicy {
-					refundable
-					description
-					cancelPenalties {
-						hoursBefore
-						penaltyType
-						currency
-						value
-					}
-				}
-				paymentType
-				cardTypes
-				remarks
-			}
-		}
-	}
-}
-```
+<GraphqlSample query={quoteQuickStartQuery} variables={quoteQuickStartVariables}/>
 
 
 ### 3. Confirm and book the option!
@@ -169,109 +100,13 @@ You're almost there! After securing your quote and ensuring all the details alig
 
 You'll need to provide the 'optionRefId' returned in the Quote step and enter all the necessary passenger information. Upon a successful booking request, you'll receive a confirmation along with essential reservation details. Congratulations! Your hotel stay is now officially booked.
 
-```graphql
-mutation {
-	hotelX {
-		book(
-			input: {
-				optionRefId: "11!11?1$241028?241029?1?1?0?ES?ES?es?EUR?0?2?1?1?1?0?15091142?BAR[%@BAR?146.0$0$false$EUR$$0$?1|30#30|1|2024-10-28|1|4132467|4132468|1|11|0?2269!2269?30$30??Double Standard?1??After$146.0!Before$146.0!ExpireDate$29/10/2024!mercado$ES!tgx_sess$f6152cba-f792-4e81-a2c1-e73ca63ecd02?OK?Sith?0?"
-				clientReference: "test_0123456789"
-				deltaPrice: { amount: 10, percent: 10, applyBoth: true }
-				holder: { name: "Jane", surname: "Doe" }
-				remarks: "This is just a test booking! Feel free to include any extra information in the remarks section that you'd like the supplier to know."
-				rooms: {
-					occupancyRefId: 1
-					paxes: [
-						{ name: "Jane", surname: "Doe", age: 30 }
-						{ name: "John", surname: "Smith", age: 30 }
-					]
-				}
-			}
-			settings: {
-				client: "client_demo"
-				context: "HOTELTEST"
-				testMode: true
-				timeout: 60000
-			}
-		) {
-			errors {
-				code
-				type
-				description
-			}
-			warnings {
-				code
-				type
-				description
-			}
+<GraphqlSample query={bookQuickStartMutation} variables={bookQuickStartVariables} />
 
-			booking {
-				status
-				price {
-					currency
-					binding
-					net
-					gross
-					exchange {
-						currency
-						rate
-					}
-				}
-				reference {
-					bookingID
-					client
-					supplier
-					hotel
-				}
-				holder {
-					name
-					surname
-				}
-				cancelPolicy {
-					refundable
-					cancelPenalties {
-						hoursBefore
-						penaltyType
-						currency
-						value
-					}
-				}
-				remarks
-				hotel {
-					hotelCode
-					hotelName
-					bookingDate
-					start
-					end
-					boardCode
-					occupancies {
-						id
-						paxes {
-							age
-						}
-					}
-					rooms {
-						code
-						description
-						occupancyRefId
-						price {
-							currency
-							binding
-							net
-							gross
-							exchange {
-								currency
-								rate
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
+:::note
 
-```
+Make sure to change the value of the `clientReference` field so that the Book can be confirmed correctly.
+
+:::
 
 ### Next steps
 

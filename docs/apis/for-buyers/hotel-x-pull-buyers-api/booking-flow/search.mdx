@@ -17,11 +17,159 @@ Search serves as the initial step in our booking flow, with the objective of ver
 * `cancelPolicy`
 * `id`
 
-:::note
+:::caution
 
-Remember to upload your [mapping files](../plugins/overview.md) to our FTP in those cases you run requests with your own context codes, this way you will receive results from all your Sellers with your own hotel codes.
+Remember to upload your [mapping files](../plugins/overview) to your FTP account in those cases you run requests with your own context codes, this way you will receive results from all your Sellers with your own hotel codes.
 
 :::
+
+
+
+## Inputs
+
+When creating your search query, you have three different inputs to fill based on your specific needs:
+
+1. Criteria
+2. Settings
+3. Filter Search
+
+```graphql
+query {
+    hotelX {
+    search
+      criteria: {}
+      settings: {}
+	  filterSearch: {}
+	}
+}
+```
+
+### 1. Criteria 
+
+The search query offers versatility in search options, with certain fields marked as mandatory (`checkIn`, `checkOut`, `hotels` etc.) and others as optional (`language`, `currency`, `nationality` etc.). This flexibility empowers you to create a personalized Search Query, tailoring the requested fields to your specific needs. 
+
+To specify your search criteria you need to use the input `HotelCriteriaSearchInput` in your query variables:
+
+```json
+{
+	"criteriaSearch": {
+		"checkIn": "2024-10-28",
+		"checkOut": "2024-10-29",
+		"occupancies": [
+			{
+				"paxes": [
+					{
+						"age": 30
+					},
+					{
+						"age": 30
+					}
+				]
+			}
+		],
+		"hotels": [
+			"1",
+            "2"
+		],
+		"currency": "EUR",
+		"market": "ES",
+		"language": "es",
+		"nationality": "ES"
+	}
+}
+```
+
+**Mandatory criteria:**
+* `checkIn` (yyyy-mm-dd)
+* `checkOut` (yyyy-mm-dd)
+* `hotels` (we recommend a maximum of 200 hotel codes per request)
+* `destinations`
+* `occupancies` (for multi-room bookings, this array will contain multiple elements, rooms + you will need to detail the occupancy for each room requested.)
+
+**Optional criteria:**
+* `language`
+* `currency`
+* `nationality`
+* `markets`
+
+### 2. Settings 
+
+Settings are the common configurations used to construct requests to the supplier/s. By default, we apply the same configuration to all Hotel-X clients.
+
+To specify your settings you need to use the input `HotelSettingsInput` in your query variables:
+
+```json
+{
+	"settings": {
+		"client": "client_demo",
+		"context": "HOTELTEST",
+		"testMode": true,
+        "auditTransactions": false,
+		"timeout": 5000
+	}
+}
+```
+
+
+**Mandatory Settings:**
+* `context` (Your context code must be linked to the mapping files previously uploaded on your side to the FTP. By doing so, you will receive results from all your Sellers with your own Hotel Codes, ensuring a smooth and seamless process)
+* `timeout` (Timeout in milliseconds for supplier connections. Applied to all suppliers; won't close client connection if exceeded)
+* `businessRules`
+* `language`
+* `currency`
+* `nationality`
+* `markets`
+
+**Optional Settings:**
+* `group`
+* `auditTransactions` 
+* `suppliers` (Each one contains its own code, settings and accesses)
+* `plugins`
+* `testMode` (This flag allows only the accesses checked as test)
+* `clientTokens` (Used to identify the origin of the request, this is only used in plugins)
+
+:::tip Key Recommendations
+
+* Customize the `timeout` according to your needs, taking into consideration the maximum values in Search is 25,000ms.
+
+* Set the `auditTransaction` to "false" in Search for better performance.
+
+:::
+
+### 3. Filter Search
+
+Filters allow you to precisely tailor the response according to your preferences. 
+
+To specify your filters you need to use the input `HotelXFilterSearchInput` in your query variables. The available filters inside this input are:
+
+* `plugin`: You can filter and specify which [plugins](../plugins/overview) need to be included or excluded.
+
+* `rateRules`: This filter enables you to narrow down the options returned by the suppliers based on the desired rate rules you want to include or exclude.
+
+* `status`: Use this filter to determine which status (OK and RQ) will be included or excluded in the response.
+
+* `access`: By using the access filter, our system will exclusively include or exclude options from the selected accesses. If you opt not to set any access at all, requests will be made to all available accesses.
+
+
+```json
+{
+    "filterSearch": {
+		"access": {
+			"includes": [
+				"2"
+			]
+		}
+	}
+}
+```
+
+You would need to apply the same approach for filter for specific plugin (`plugin`), rate rule (`rateRule`) and status (`status`).
+
+### Requests Examples
+
+TODO
+
+## Response
 
 ```graphql
 TODO
@@ -33,84 +181,7 @@ In the room structure response there is a refundable field. If that field is set
 
 :::
 
-### Criteria 
-
-This query offers versatility in search options, with certain fields marked as mandatory (`checkIn`, `checkOut`, `hotels` etc.) and others as optional (`language`, `currency`, `nationality` etc.). This flexibility empowers you to create a personalized Search Query, tailoring the requested fields to your specific needs. 
-
-Mandatory criteria:
-* `checkIn` (yyyy-mm-dd)
-* `checkOut` (yyyy-mm-dd)
-* `hotels` (we recommend a maximum of 200 hotel codes per request)
-* `destinations`
-* `occupancies` (for multi-room bookings, this array will contain multiple elements, rooms + you will need to detail the occupancy for each room requested.)
-
-Optional criteria:
-* `language`
-* `currency`
-* `nationality`
-* `markets`
-
-### Settings 
-
-Settings are the common configurations used to construct requests to the supplier/s. By default, we apply the same configuration to all Hotel-X clients.
-
-Mandatory Settings:
-* `context` (Your context code must be linked to the mapping files previously uploaded on your side to the FTP. By doing so, you will receive results from all your Sellers with your own Hotel Codes, ensuring a smooth and seamless process)
-* `timeout` (Timeout in milliseconds for supplier connections. Applied to all suppliers; won't close client connection if exceeded)
-* `businessRules`
-* `language`
-* `currency`
-* `nationality`
-* `markets`
-
-Optional Settings:
-* `group`
-* `auditTransactions` 
-* `suppliers` (Each one contains its own code, settings and accesses)
-* `plugins`
-* `testMode` (This flag allows only the accesses checked as test)
-* `clientTokens` (Used to identify the origin of the request, this is only used in plugins)
-
-:::info Key Recommendations
-
-* Customize the `timeout` according to your needs, taking into consideration the maximum values in Search is 25,000ms.
-
-* Set the `auditTransaction` to "false" in Search for better performance.
-
-:::
-
-### Filter
-
-Filters allow you to precisely tailor the response according to your preferences. The available filters are:
-
-* `plugin`: You can filter and specify which [plugins](../plugins/overview.md) need to be included or excluded.
-
-* `rateRules`: This filter enables you to narrow down the options returned by the suppliers based on the desired rate rules you want to include or exclude.
-
-* `status`: Use this filter to determine which status (OK and RQ) will be included or excluded in the response.
-
-* `access`: By using the access filter, our system will exclusively include or exclude options from the selected accesses. If you opt not to set any access at all, requests will be made to all available accesses.
-
-**Request**
-
-```graphql
-query {
-    hotelX {
-    search
-      criteria: {}
-      settings: {}
-	  filterSearch: {
-        access: {
-          includes: ["2"]
-        }
-	  }
-	}
-}
-```
-
-You would need to apply the same approach for filter for specific plugin (`plugin`), rate rule (`rateRule`) and status (`status`).
-
-### Frequently asked questions
+## Frequently asked questions
 
 <details>
     <summary>How many hotel codes per request can I request in Search?</summary>
@@ -141,17 +212,10 @@ You would need to apply the same approach for filter for specific plugin (`plugi
 <p>
     The default mode in Hotel-X allows our Partners to perform one search per Seller connected to their account at a time. When running your Search, you should add the Seller's access code you would like to query.
 
-```graphql
-query {
-    hotelX {
-        search
-        criteria: {}
-        settings: {}
-        filterSearch: {
-            access: {
-                includes: ["2"]
-            }
-        }
+```json
+"filterSearch": {
+    "access": {
+        "includes": ["2"]
     }
 }
 ```
@@ -165,19 +229,12 @@ query {
     own context and hotel codes.
     <br></br>
     <br></br>
-    1. Specifying the access codes in the filter node: the query will only be sent to the accesses specified.
+    1. Specifying the access codes in the filter node in your variables: the query will only be sent to the accesses specified.
 
-```graphql
-query {
-    hotelX {
-        search
-        criteria: {}
-        settings: {}
-        filterSearch: {
-            access: {
-                includes: ["2", "3"]
-            }
-        }
+```json
+"filterSearch": {
+    "access": {
+        "includes": ["2", "3"]
     }
 }
 ```
@@ -209,14 +266,21 @@ query {
     <summary>How can I limit and filter options through optionsQuota and Business Rules?</summary>
     <div>
         <div>
-		* OptionsQuota, how to limit the number of options in SearchRS:
-		Thanks to the optionsQuota tag, you are able to control and limit the number of options per Mealplan returned in SearchRS in those cases the Seller allows business rules (you will be able to check this information through our [Metadata Query](../apis/for-buyers/hotel-x-pull-buyers-api/content/metadata)).
-		Note that we have established a system-level limit so that if the OptionsQuota set on your side is higher than the limit established, we will use the one with the lowest value.
-		* businessRulesType, how to filter options through Business Rules
-		These are the 2 types of businessRules that may be applied:
-		   1. CHEAPER_AMOUNT: The cheapest options are returned without exceedig the optionsQuota limit.2. ROOM_TYPE: It groups the options by room type without exceeding the optionsQuota limit.
-		Please note that options are filtered using a limited combination of rooms types. First, we group same room types so you receive options with the same type/classification. For example: Standard-Standard-Standard-Standard, Junior-Junior-Junior-Junior…. Then, we combine the cheapest rooms with the remaining rooms, always checking for duplicates and without execeeding the optionsQuota limit.
-		If a Buyer sets a BusinessRules value, then it will be applied when the number of options returned exceeds the optionsQuota. If the client does not set any BusinessRules values, then the CheaperAmount BusinessRule is applied by default.</div>
+            <ul>
+                <li><b>optionsQuota, how to limit the number of options in SearchRS:</b> Thanks to the optionsQuota tag, you are able to control and limit the number of options per Mealplan returned in SearchRS in those cases the Seller allows business rules (<i>you will be able to check this information through our Metadata Query</i>). 
+                Note that we have established a system-level limit so that if the OptionsQuota set on your side is higher than the limit established, we will use the one with the lowest value.</li>
+                <br></br>
+                <li><b>businessRulesType, how to filter options through Business Rules:</b> These are the 2 types of businessRules that may be applied.
+                    <ul>
+                        <li>CHEAPER_AMOUNT: The cheapest options are returned without exceedig the optionsQuota limit.</li>
+                        <li>ROOM_TYPE: It groups the options by room type without exceeding the optionsQuota limit.</li>
+                    </ul>
+                    <br></br>
+                    Please note that options are filtered using a limited combination of rooms types. First, we group same room types so you receive options with the same type/classification. For example: Standard-Standard-Standard-Standard, Junior-Junior-Junior-Junior…. Then, we combine the cheapest rooms with the remaining rooms, always checking for duplicates and without execeeding the optionsQuota limit.
+		            If a Buyer sets a BusinessRules value, then it will be applied when the number of options returned exceeds the optionsQuota. If the client does not set any BusinessRules values, then the CheaperAmount BusinessRule is applied by default.
+                </li>
+            </ul>
+        </div>
     </div>
 </details>
 
@@ -244,7 +308,7 @@ query {
 <details>
     <summary>How can we differentiate a child from an infant? What is the age range of each of them?</summary>
     <div>
-        <div>The age range for children and infants may vary depending on the Seller's restrictions. To find out the specific age range restrictions for each of your Sellers, you can refer to our [Metadata Method](../apis/for-buyers/hotel-x-pull-buyers-api/content/metadata) or directly contact the Seller.</div>
+        <div>The age range for children and infants may vary depending on the Seller's restrictions. To find out the specific age range restrictions for each of your Sellers, you can refer to our Metadata Method or directly contact the Seller.</div>
     </div>
 </details>
 
@@ -261,3 +325,4 @@ query {
         <div>We introduced the option node to ensure that all rooms within a specific option can be booked. If you need to book separate rooms, please send two separate Search requests, one for each room.</div>
     </div>
 </details>
+

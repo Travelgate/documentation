@@ -12,130 +12,65 @@ The Quote operation evaluates the rate before booking, providing the same inform
 * `rooms`
 * `surcharges`
 
+
+## Inputs
+
+When creating your quote query, you have three different inputs to fill based on your specific needs:
+
+1. Criteria
+2. Settings
+3. Filter
+
 ```graphql
 query {
-	hotelX {
-		quote(
-			criteria: {
-				optionRefId: "13[%!03!~|3[%@230928!~|230929!~|1!~|14!~|0!~|ES!~|ES!~|es!~|EUR!~|0!~|2!~|1!~|14!~|1!~|0!~|06060819!~|BAR[%@BAR!~|100[%@0[%@false[%@EUR[%@[%@0[%@!~|1|30#30|1|2023-09-28|1|4132467|4132468|14|11|0!~|2269[%!2269!~|30[%@30!~|!~|Double Standard!~|1!~|!~|mercado[%@ES[%!ExpireDate[%@29/09/2023[%!tarifaNRF[%@true[%!RateRule[%@tarifaNoRefundablePorHabitacion!~|OK!~|Sith!~|0!~|"
-			}
-			settings: {
-				client: "client_demo"
-				auditTransactions: true
-				context: "HOTELTEST"
-				testMode: true
-				timeout: 5000
-			}
-		) {
-			auditData {
-				transactions {
-					request
-					response
-				}
-			}
-			optionQuote {
-				addOns {
-					distribution {
-						value
-						key
-					}
-				}
-				searchPrice {
-					currency
-					net
-					gross
-					binding
-				}
-				optionRefId
-				status
-				price {
-					currency
-					binding
-					net
-					gross
-					exchange {
-						currency
-						rate
-					}
-					markups {
-						channel
-						currency
-						binding
-						net
-						gross
-						exchange {
-							currency
-							rate
-						}
-						rules {
-							id
-							name
-							type
-							value
-						}
-					}
-				}
-				cancelPolicy {
-					refundable
-					cancelPenalties {
-						hoursBefore
-						penaltyType
-						currency
-						value
-					}
-				}
-				cardTypes
-				remarks
-				surcharges {
-					chargeType
-					chargeType
-					price {
-						currency
-						binding
-						net
-						gross
-					}
-				}
-			}
-			errors {
-				code
-				type
-				description
-			}
-			warnings {
-				code
-				type
-				description
-			}
-		}
+    hotelX {
+    quote
+      criteria: {}
+      settings: {}
+	  filter: {}
 	}
 }
 ```
 
-:::note
-
-There are some mandatory data you should include at this step:
-* Cancellation policies (within the cancelPolicy structure response there is a refundable field. If this field is filled in with false, it means that the room has 100% cancellation cost, so the room is non-refundable)
-* Remarks
-* Taxes
-
-:::
-
-### Criteria 
+### 1. Criteria 
 
 This query offers versatility in quote options, with certain fields marked as mandatory (optionRefId) and others as optional (language). This flexibility empowers you to create a personalized Quote Query, tailoring the requested fields to your specific needs. 
 
-Mandatory criteria:
+To specify your quote criteria you need to use the input `HotelCriteriaQuoteInput` in your query variables:
+
+
+```json
+{
+		"optionRefId": "13[%!03!~|3[%@241028!~|241029!~|1!~|1!~|0!~|ES!~|ES!~|es!~|EUR!~|0!~|2!~|1!~|1!~|1!~|0!~|15091141!~|BAR[%@BAR!~|146[%@0[%@false[%@EUR[%@[%@0[%@!~|1|30#30|1|2024-10-28|1|4132467|4132468|1|11|0!~|2269[%!2269!~|30[%@30!~|!~|Double Standard!~|1!~|!~|mercado[%@ES[%!ExpireDate[%@29/10/2024[%!tarifaNRF[%@true[%!RateRule[%@tarifaNoRefundablePorHabitacion!~|OK!~|Sith!~|0!~|"
+}
+```
+
+**Mandatory criteria:**
 * `optionRefId` (identifier of the option chosen in Search)
 
-Optional criteria:
+**Optional criteria:**
 * `language`
 
-### Settings 
+### 2. Settings 
 
 Settings are the common configurations used to construct requests to the supplier/s. By default, we apply the same configuration to all Hotel-X clients.
 
-Mandatory Settings:
+To specify your quote settings you need to use the input `HotelSettingsInput` in your query variables:
+
+```json
+{
+	"settings": {
+		"client": "client_demo",
+		"context": "HOTELTEST",
+		"testMode": true,
+		"auditTransactions": false,
+		"timeout": 10000
+	}
+}
+```
+
+
+**Mandatory Settings:**
 * `context` (Your context code must be linked to the mapping files previously uploaded on your side to the FTP. By doing so, you will receive results from all your Sellers with your own Hotel Codes, ensuring a smooth and seamless process)
 * `timeout` (Timeout in milliseconds for supplier connections. Applied to all suppliers; won't close client connection if exceeded)
 * `businessRules`
@@ -144,7 +79,7 @@ Mandatory Settings:
 * `nationality`
 * `markets`
 
-Optional Settings:
+**Optional Settings:**
 * `group`
 * `auditTransactions` 
 * `suppliers` (Each one contains its own code, settings and accesses)
@@ -152,7 +87,7 @@ Optional Settings:
 * `testMode` (This flag allows only the accesses checked as test)
 * `clientTokens` (Used to identify the origin of the request, this is only used in plugins)
 
-:::info Key Recommendations
+:::tip Key Recommendations
 
 * Customize the `timeout` according to your needs, taking into consideration the maximum values in Quote is 180,000ms.
 
@@ -160,13 +95,32 @@ Optional Settings:
 
 :::
 
-### Filter
+### 3. Filter
 
-Filters allow you to precisely tailor the response according to your preferences. The available filter is:
+Filters allow you to precisely tailor the response according to your preferences. 
 
-* `plugin`: You can filter and specify which [plugins](../plugins/overview.md) need to be included or excluded.
+To specify your filters you need to use the input `HotelXFilterInput` in your query variables. The available filter in quote is:
 
-### Frequently asked questions
+* `plugin`: You can filter and specify which [plugins](../plugins/overview) need to be included or excluded.
+
+
+### Requests Examples
+
+TODO
+
+
+## Response
+
+:::tip
+
+There are some mandatory data you should read at this step:
+* Cancellation policies (within the cancelPolicy structure response there is a refundable field. If this field is filled in with false, it means that the room has 100% cancellation cost, so the room is non-refundable).
+* Remarks
+* Taxes
+
+:::
+
+## Frequently asked questions
 
 <details>
     <summary>Do I have to perform a Quote Query in order to Book an option?</summary>

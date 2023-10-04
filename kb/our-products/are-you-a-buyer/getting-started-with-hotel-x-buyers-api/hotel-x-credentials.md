@@ -13,7 +13,9 @@ Once you have configured your account, you can access our App and check your Hot
 1. **Connections**: Click on "Connections" in the top menu. Then, click on "[Connections Settings](https://www.travelgatex.com/)".
 1. **API Settings**: Your Apikey will be displayed in a yellow box at the top of the page.
 
-((((( PTE IMAGEN ))))
+```
+image
+```
 
 >**NOTE:**\
 >**Please keep in mind that the Apikey will remain consistent across both test and production environments for all Sellers.**
@@ -23,7 +25,7 @@ An access refers to the combination of credentials and authentication configurat
 
 >For Hotel-X implementation and testing, we recommend using the following accesses (they have already been activated on your account and are ready to use):
 >* TravelgateX Test Seller (tgx): Access 2 with context HOTELTEST
->* Smyrooms Test: Access 5647 with context LOGITEST\
+>* Smyrooms Test: Access 5647 with context LOGITEST
 
 **How can I obtain an access code from an actual Seller?**
 
@@ -46,11 +48,15 @@ Buyers have the flexibility to either use their own codes or choose content prov
 
 To access the context, simply navigate to the Connections menu and click on "My Connections".
 
-(((PTE IMAGEN)))
+```
+image
+```
 
 Then, select the Seller and the information will be displayed.
 
-(((PTE IMAGEN)))
+```
+image
+```
 
 When you activate a new Seller, the context information will be provided to you along with the credentials in the confirmation email.
 

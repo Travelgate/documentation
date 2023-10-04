@@ -27,7 +27,7 @@ Nevertheless, we have established partnerships with numerous affiliates who spec
 - Static data download error/discrepancy.
 - "As a Seller, I can now return cancel policies in Search, please update this information".
 
-> [!NOTE]
+> [**<ins>NOTE</ins>**]
 >* For **Product Development requests**, please report them at **TravelgateX Community**. Our Product team will thoroughly evaluate every idea, suggestion, and request.
 >* For **Product Maintenance requests**, please report them via our APP ("Tickets").
 

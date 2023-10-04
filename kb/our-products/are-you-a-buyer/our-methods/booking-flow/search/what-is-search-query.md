@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# What is Search Query?
+# Hotel-X Development - Search Query
 
 ## All about Hotel-X Search Query
 
@@ -31,7 +31,9 @@ Of course! You will find more information about our Search by Destination [plugi
 ### What are the minimum recommended fields to be added to a Search Query?✔️
 Since the amount of information requested in Hotel-X Search Query will depend on your needs and preferences, our recommendation is to check all the the fields available in our [Playground](https://api.travelgatex.com/playground). For instance:
 
-((((((PTE IMAGEN)))))
+```
+image
+```
 
 ### How many hotel codes per request can I request in Search?🔢
 We recommend a maximum of 200 hotels: the new aggregator will split them in batches in order to request all of them to each Seller.

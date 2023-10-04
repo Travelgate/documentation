@@ -15,20 +15,26 @@ There are 2 different types of headers:
 * **Gzip Compression**\
 In order to increase performance and save bandwidth, all the live traffic must enable GZIP compression in the HTTP header:
 
-((((PTE IMAGEN))))
+```
+image
+```
 
 
 * **API Key Authorization**\
 Authentication is necessary for every request made to the TravelgateX GraphQL API. To authenticate the user agent with the server, an API Key must be included in the HTTP Authorization request header.
 
-((((PTE IMAGEN))))
+```
+image
+```
 
 ### Which headers are optional for my Hotel-X request?🔎
 
 * **Keep-Alive**\
 To enhance performance and optimize response times in Search, you have the option to include the Connection: keep-alive header in all your transactions.
 
-((((PTE IMAGEN))))
+```
+image
+```
 
 
 * **GraphQL To Rest**\

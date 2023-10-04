@@ -30,7 +30,9 @@ In order to proceed with the certification we will need:
 
 - A cURL request and response of each of the Booking Flow methods and for all the cases detailed below:
 
-(((PTE IMAGEN)))
+```
+image
+```
 
 
 - The resulting Hotel-X response interpretation screenshots of your system so we can ensure you are showing the information correctly. 
@@ -72,4 +74,6 @@ query ($criteriaSearch: HotelCriteriaSearchInput, $settings: HotelSettingsInput,
 ### How to apply for the Hotel-X Booking Flow certification 
 After completing all the cases, you must submit a ticket through the Booking Flow step certification in our Connectivity setup panel.
 
-(((PTE IMAGEN)))
+```
+image
+```

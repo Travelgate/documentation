@@ -21,6 +21,5 @@ sidebar_position: 2
 1. Once you have access to the Inventory Extranet you can watch the [TravelgateX Academy videos](https://www.youtube.com/watch?v=V_nJoDkMOTA) and check our [Extranet Documentation](https://docs.travelgatex.com/inventory-x/extranet/) to get acquainted with all the functionalities available for you. 
 1. Next, you should create a **pilot hotel** specifically for conducting product loading tests. You can refer to the "SetUp section" in our [Documentation](https://docs.travelgatex.com/inventory-x/extranet/load-product/setup/) to learn how to create it. We suggest using an actual hotel that you plan to work with, as conducting tests with real product will make it easier to transition smoothly to the live phase afterwards.
 
-> [!NOTE]\
-Feel free to access the following [link](https://docs.travelgatex.com/inventory-x/extranet/) for more information on our Inventory Extranet 📚
+>Feel free to access the following [link](https://docs.travelgatex.com/inventory-x/extranet/) for more information on our Inventory Extranet 📚
 

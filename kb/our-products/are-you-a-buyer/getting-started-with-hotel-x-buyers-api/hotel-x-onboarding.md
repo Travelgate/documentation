@@ -8,7 +8,7 @@ sidebar_position: 1
 
 
 Starting a new development project can be challenging. Accurate estimation of required resources and time is crucial to avoid inefficiencies and wasted resources. At TravelgateX, our goal is to simplify this process by providing comprehensive information, roadmap, timing for Hotel-X API development and assigning you an Onboarding Manager to support you all along the process. 
-\
+
 
 That's why we created the following step by step guide to guide you through the development journey, ensuring efficient and timely project completion. 
  
@@ -21,7 +21,7 @@ Our Hotel-X onboarding process consists of three distinct steps:
 1. Go Live
 
 By following these three steps, we ensure that you have the necessary knowledge and tools to successfully utilize Hotel-X and manage your operations independently through our Network.
-\
+
 
 To facilitate your progress through the onboarding process, we have developed the Connectivity Set Up panel, which will automatically appear when you log in to our Network.
 

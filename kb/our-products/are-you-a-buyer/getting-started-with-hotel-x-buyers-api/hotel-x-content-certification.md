@@ -28,10 +28,14 @@ In order for us to be  able to certify the content implementation, we will need 
 
 [Here](https://2825176.fs1.hubspotusercontent-na1.net/hubfs/2825176/Hotel-X%20Content%20Template%20File.docx) you can find the word file that will be used for the certification, which includes a comprehensive list of all the content methods. To proceed with the certification process, please answer the questions and provide the necessary information:
 
-((((IMAGEN))))
+```
+image
+```
 
 ### How to apply for the Hotel-X Content certification?🚀
 
 After completing the certification template, please submit a ticket via the Content step certification in our Connectivity Set Up panel.
 
-((((IMAGEN)))
+```
+image
+```

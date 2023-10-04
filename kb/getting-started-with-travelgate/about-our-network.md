@@ -46,6 +46,6 @@ Our system now suggests Company names as you type, displaying their logo and typ
 
  
 
-> [!NOTE]
+>**<ins>NOTE:**</ins>\
 **Wondering why you're seeing recommended Partners you're already connected with?**\
 It's because connections without traffic for the last 3 months will be suggested as a reminder for you to reactivate them - after all, they match your business!

@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# How do TGX IPs work with Sellers?
+# How do TravelgateX IPs work with Sellers?
 ## TravelgateX lists of fixed IPs
 
 You may already be aware that as a Seller, the requests you receive from TGX originate from various IPs. Different Sellers have different approaches when it comes to filtering IPs on their systems.
@@ -86,6 +86,6 @@ You should add **only** the following IP list (updated on 15/11/2021):
 ## Does TravelgateX need to whitelist my IPs?💡
 At TravelgateX we ensure that all our IPs are whitelisted at the Seller's system. It's important to note that **our system doesn't filter by IP**, and that there is no need for us to whitelist them. If you encounter any errors, rest assured that they are not caused by the IPs.
 
-**Have any questions? Feel free to reach out to our Customer Care team. We're here to assist you and would be happy to help!**
+>**Have any questions? Feel free to reach out to our [Customer Care team](https://app.travelgatex.com/tickets). We're here to assist you and would be happy to help!**
 
  

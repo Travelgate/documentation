@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 3
 ---
 
@@ -7,6 +7,6 @@ All our solutions have been conceived to empower our connectivity solution. We d
 
 **We are focused on connections and connectivity only**. We have, however, a relevant number of affiliates who do provide these services and we would be happy to put you in contact with them.
 
->**<ins>TIP<ins>**:\
->Don't forget to check our [website](https://www.travelgatex.com/) for further information on our APPs and solutions.
+><ins>**TIP:**</ins>\
+>Don't forget to check our [website](https://www.travelgatex.com/) for further information on our APPs and solutions🚀
 

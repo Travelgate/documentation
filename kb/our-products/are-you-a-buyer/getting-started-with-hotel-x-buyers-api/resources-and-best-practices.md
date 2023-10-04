@@ -17,7 +17,7 @@ sidebar_position: 5
 - For Hotel-X implementation and testing purposes, we recommend using the following [accesses](https://knowledge.travelgatex.com/hotel-x-credentials):
 	- TravelgateX Test Seller (tgx): Access 2 with context HOTELTEST
 	- Smyrooms Test: Access 5647 with context LOGITEST		
-\
+
 
 	These have already been activated on your account and are ready to use.
 
@@ -30,8 +30,8 @@ sidebar_position: 5
 
 To access all the methods available through our Hotel-X API, please use the endpoint **https://api.travelgatex.com** (both test and production environments).
 
->NOTE:
->- **China endpoint**: If your servers are located in China, you can improve performance by using the following URL: **https://api-cn.travelgatex.com**.
+>NOTE:\
+>**China endpoint**: If your servers are located in China, you can improve performance by using the following URL: **https://api-cn.travelgatex.com**.
 
 ### GZIP Compression📦
 To enhance performance and reduce bandwidth usage, it is **mandatory** to enable GZIP compression in the HTTP header for all Live traffic.

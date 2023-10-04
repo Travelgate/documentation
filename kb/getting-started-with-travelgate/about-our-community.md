@@ -12,7 +12,7 @@ But wait, there's more! We want to hear your thoughts on how we can take our pro
 
 At TravelgateX, we believe in the power of Product Development. It's all about making our products and services even better, one step at a time. So come on in and be a part of the journey. Your ideas can make a difference!
 
-> [!NOTE]
+> **<ins>NOTE:</ins>**\
 > At TravelgateX, we understand **Product Development** as any kind of development work that improves, adds or modifies functionalities to an existing products and/or services.
 
 Product Development examples:

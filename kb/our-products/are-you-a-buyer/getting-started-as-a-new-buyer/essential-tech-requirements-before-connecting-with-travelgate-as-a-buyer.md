@@ -23,7 +23,9 @@ TravelgateX is purely focused on connectivity so to be able to work with us via 
 1. **Booking engine**: It will be necessary to manage the reservations of your Partners.
 1. **Mapping solution**: We work with the Supplier's native codes* for transparency, allowing the [mapping](https://knowledge.travelgate.com/content-mapping) between Buyers and Sellers to be easily optimized without interference from TravelgateX. If you can't map or prefer to use a mapping provider, we are integrated with [GIATA](https://knowledge.travelgate.com/giata-solutions). You can also outsource the mapping process to companies like Vervotech, Mapping Works, or DataBindR.
 
-> [!NOTE]
->* When a Seller returns the **same hotel id for different properties**, we concatenate those hotel ids with their destination code in order to make them unique. That will be the only exception where we modify the Seller information. In that case, the hotelCode will be the one returned through our API (concatenated if needed) and the hotelCodeSupplier will be the native code of the supplier.
+
+>When a Seller returns the **same hotel id for different properties**, we concatenate those hotel ids with their destination code in order to make them unique. That will be the only exception where we modify the Seller information.\
+> In that case, the **hotelCode** will be the one returned through our API (concatenated if needed) and the **hotelCodeSupplier** will be the native code of the Supplier.\
+**You should always map the "hotelCode" since it will be the one used in TravelgateX methods.**
 
 Remember, we're here to support you at every step, so don't hesitate to [reach out](https://knowledge.travelgate.com/guidelines-for-submitting-a-ticket-to-our-support-team) if you have any questions or need further assistance. Let's get you set up for success with Hotel-X! 🚀

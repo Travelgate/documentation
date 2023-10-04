@@ -26,10 +26,14 @@ In order for us to certify your Booking Management implementation, we require th
 
 [Here](https://2825176.fs1.hubspotusercontent-na1.net/hubfs/2825176/Hotel-X%20Booking%20Management%20Template.docx) you can access the Word file containing the comprehensive list of Booking Management methods that will be used for the Certification Process. We kindly request your cooperation in answering the questions and providing the requested information.
 
-((((IMAGEN))))
+```
+image
+```
 
 ### How to apply💡
 
 After completing the certification template, please submit a ticket via the Booking Management step certification in our Connectivity Set Up.
 
-((((PTE IMAGES)))
+```
+image
+```

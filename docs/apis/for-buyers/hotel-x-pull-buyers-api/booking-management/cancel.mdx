@@ -2,6 +2,9 @@
 sidebar_position: 4
 ---
 
+import {cancelMutation, cancelByBookingIDVariables, cancelByReferenceVariables} from "../../../../../src/graphql/hotel-x/cancel.mutation";
+
+
 # Cancel
 
 The cancel operation allows you to cancel a booking made via TravelgateX. The returned fields include:
@@ -28,11 +31,10 @@ The information returned in Cancel response may vary between Sellers.
 
 ## Inputs
 
-When creating your cancel query, you have three different inputs to fill based on your specific needs:
+When creating your cancel query, you have two different inputs to fill based on your specific needs:
 
 1. Criteria
 2. Settings
-3. Filter
 
 ```graphql
 mutation {
@@ -40,7 +42,6 @@ mutation {
     cancel
       criteria: {}
       settings: {}
-	  filter: {}
 	}
 }
 ```
@@ -49,7 +50,9 @@ mutation {
 
 This mutation offers versatility in cancellation, with all fields marked as optional (accessCode, language, hotelCode etc.). You can decide between the two options for cancellation, either by reference or by bookingID, empowering you with the choice that suits you best.
 
-To specify your cancel input you need to use the input `HotelCancelInput` in your mutation variables:
+To specify your cancel input you need to use the input `HotelCancelInput` in your mutation variables.
+
+If you cancel using only the `bookingID` from the book response:
 
 ```json
 {
@@ -58,6 +61,8 @@ To specify your cancel input you need to use the input `HotelCancelInput` in you
     }
 }
 ```
+
+If you cancel using the `accessCode`, `hotelCode` and `reference` from the book response:
 
 ```json
 {
@@ -121,11 +126,18 @@ To specify your quote settings you need to use the input `HotelSettingsInput` in
 * `clientTokens` (used to identify the origin of the request, this is only used in plugins)
 * `commitRequired` (indicates if the book will be confirmed in 1 or 2 steps. It only should be used in Book)
 
-### 3. Filter
 
-Filters allow you to precisely tailor the response according to your preferences. To specify your filters you need to use the input `HotelXFilterInput` in your mutation variables. The available filter in cancel is:
 
-* `plugin`: You can filter and specify which plugins need to be included or excluded.
+### Requests Examples
+
+#### Cancel with `bookingID` from the book response
+
+<GraphqlSample query={cancelMutation} variables={cancelByBookingIDVariables} />
+
+#### Cancel using the `accessCode`, `hotelCode` and `reference` from the book response
+
+<GraphqlSample query={cancelMutation} variables={cancelByReferenceVariables} />
+
 
 ## Response
 

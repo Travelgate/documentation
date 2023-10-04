@@ -2,6 +2,9 @@
 sidebar_position: 2
 ---
 
+import {searchTwoRoomsQuery, searchTwoRoomsVariables} from "../../../../../src/graphql/hotel-x/search.tworooms.query";
+import {searchMultipleHotelsQuery, searchMultipleHotelsVariables} from "../../../../../src/graphql/hotel-x/search.multiplehotels.query";
+
 # Search
 
 Search serves as the initial step in our booking flow, with the objective of verifying availability within the specified date range and for the requested number of guests, either for specific hotels or for hotels in the desired destination. It provides a comprehensive list of available options based on your search criteria. The returned fields include:
@@ -142,8 +145,6 @@ Filters allow you to precisely tailor the response according to your preferences
 
 To specify your filters you need to use the input `HotelXFilterSearchInput` in your query variables. The available filters inside this input are:
 
-* `plugin`: You can filter and specify which [plugins](../plugins/overview) need to be included or excluded.
-
 * `rateRules`: This filter enables you to narrow down the options returned by the suppliers based on the desired rate rules you want to include or exclude.
 
 * `status`: Use this filter to determine which status (OK and RQ) will be included or excluded in the response.
@@ -163,11 +164,16 @@ To specify your filters you need to use the input `HotelXFilterSearchInput` in y
 }
 ```
 
-You would need to apply the same approach for filter for specific plugin (`plugin`), rate rule (`rateRule`) and status (`status`).
+You would need to apply the same approach for filter for specific rate rule (`rateRule`) and status (`status`).
 
 ### Requests Examples
 
-TODO
+#### Search query [1 hotel, 2 rooms: 3 adults 1 child]
+<GraphqlSample query={searchTwoRoomsQuery} variables={searchTwoRoomsVariables}/>
+
+#### Search query [2 hotels, 1 room: 2 adults]
+<GraphqlSample query={searchMultipleHotelsQuery} variables={searchMultipleHotelsVariables}/>
+
 
 ## Response
 

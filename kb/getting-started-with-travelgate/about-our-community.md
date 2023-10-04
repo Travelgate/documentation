@@ -15,6 +15,11 @@ At TravelgateX, we believe in the power of Product Development. It's all about m
 > **<ins>NOTE:</ins>**\
 > At TravelgateX, we understand **Product Development** as any kind of development work that improves, adds or modifies functionalities to an existing products and/or services.
 
+:::note
+At TravelgateX, we understand **Product Development** as any kind of development work that improves, adds or modifies functionalities to an existing products and/or services.
+:::
+
+
 Product Development examples:
 * I wish to have the ability to download more than 50 logs at once from the logs manager.
 * API New Major Version release for an existing integration (e.g. v1.0 to v2.0).

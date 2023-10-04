@@ -10,7 +10,7 @@ Furthermore, there is an option to load default plugins into our database. Curre
 
 ## FTP Files
 
-Upon receiving your Onboarding Welcome Pack, you will be granted access credentials to the FTP server. In the event that you need assistance or have not received your credentials, kindly raise a ticket on our [Help Center](https://app.travelgatex.com/tickets) to obtain your FTP credentials and initiate your journey.
+Upon receiving your Onboarding Welcome Pack, you will be granted access credentials to the FTP server. In the event that you need assistance or have not received your credentials, kindly raise a ticket to our [Customer Care team](https://app.travelgatex.com/tickets) to obtain your FTP credentials and initiate your journey.
 
 ### FTP Endpoint
 
@@ -36,7 +36,7 @@ F[Folder code]_[Unique code]
 * Unique code: corresponds to the folder unique code in our system.
 
 HotelX_[Unique code]
-* Unique code: corresponds to the HotelX unique code in our system.
+* Unique code: corresponds to the Hotel-X unique code in our system.
 
 Example: 
 
@@ -49,9 +49,9 @@ Example:
 </BrowserWindow>
 ```
 
-### Update FTP Data
+### Upload FTP Data
 
-To update an FTP file, follow these simple steps:
+To upload an FTP file, follow these simple steps:
 
 1. **Upload the File:**
    - Upload the file with the correct name, depending on its purpose.
@@ -70,7 +70,11 @@ To update an FTP file, follow these simple steps:
    SourceContext_DestinationContext_hotel_map_processed.csv
    ```
 
-3. **Updating the File:**
+### Update FTP Data
+
+To update an FTP file, follow these simple steps:
+
+1. **Updating the File:**
    - If you need to update the information in the file, simply delete the old file.
    - Upload the new file with the updated information, using the correct name.
    - You don't need to add the "_processed" tagline to the name; we'll take care of that on our end.
@@ -82,18 +86,18 @@ That's it! Updating FTP files is as easy as that.
 
 To delete all the information stored in our system, follow these straightforward steps:
 
-1. Prepare an empty file:
+1. **Prepare an empty file:**
 
 - Create a new file with empty content, including only the headers.
 - Ensure that the file structure, such as column headers, remains intact.
 
-2. Load the empty file in the FTP folder.
+2. **Load the empty file in the FTP folder.**
 
 That's it! By replacing the existing data with an empty file containing headers only, you effectively delete all the information previously loaded into our system.
 
 
 ## How to execute a plugin
 
-A plugin execution can be specified in any request’s HotelSettingsInput and it must specify in which step it should be executed. The plugin type and name are mandatory in order to identify a plugin instance.
+To execute the plugins, in some cases it is enough to upload the file to the FTP, in other cases you just have to indicate it in the request, and in some cases both actions need to be done - uploading the file to the FTP and indicating it in the request.
 
-[ añadir ejemplo ]
+In each of the plugins, you will see a section called "Execute plugin in your request", where it will be indicated how to execute that specific plugin.

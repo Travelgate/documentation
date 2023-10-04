@@ -44,6 +44,12 @@ You should create one file for each supplier that you want to map an entity.
 
 :::
 
+:::note
+
+If you need assistance with requesting your credentials to access the FTP server, determining the endpoint and directory format, or learning how to upload, update, and delete FTP files, please refer to the [overview](../plugins/overview) section of Plugins.
+
+:::
+
 ### File format specification
 
 * **File Name:** [Buyer Context]_[Supplier Context]_[entity]_map.csv
@@ -64,4 +70,50 @@ You should create one file for each supplier that you want to map an entity.
 
 ## 2. Execute Mapping plugin in your query
 
-ESCRIBIR ESTA PARTE
+:::note
+
+In the case of mapping, it will not be necessary to indicate the plugin at the request level for all mappings, only for amenities_map and promotions_map. In the remaining cases, hotel_map, board_map, room_map, etc., you just need to upload the file to the FTP.
+
+:::
+
+Once you've uploaded your mapping file, you can use the plugin adding the following field to the `settings` node of your request. Note that mapping plugin can just be executed in `search` `query`. In order to successfully execute the mapping plugin, you will need to create the request with the following variables, taking into account the type of mapping you want to execute.
+
+For amenity_map:
+
+* `step`: `RESPONSE_OPTION`
+* `type`: `PRE_STEP`
+* `name`: `amenity_map`
+
+```json
+"settings": {
+	"plugins": [
+		{
+			"step": "RESPONSE_OPTION",
+			"pluginsType": {
+				"type": "PRE_STEP",
+				"name": "board_map"
+			}
+		}
+	]
+}
+```
+
+For promotion_map:
+
+* `step`: `RESPONSE_OPTION`
+* `type`: `PRE_STEP`
+* `name`: `promotion_map`
+
+```json
+"settings": {
+	"plugins": [
+		{
+			"step": "RESPONSE_OPTION",
+			"pluginsType": {
+				"type": "PRE_STEP",
+				"name": "promotion_map"
+			}
+		}
+	]
+}
+```

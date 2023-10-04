@@ -13,7 +13,7 @@ Virtual Credit Card plugin adds the possibility to:
 
 To get started with the VCC plugin, follow these simple steps:
 
-##  1.Create and upload your VCC file
+##  1.Create and upload your GenVCC file
 
 First, create your virtual credit card file in the correct format and then upload it to your FTP account. To assist you with this process, you can download the template file below, add your own rules, save it in CSV format, and then upload it to the corresponding folder in your FTP.
 
@@ -45,31 +45,6 @@ First, create your virtual credit card file in the correct format and then uploa
     * **NoAccess**
     * **CardType:** CardType that will be used to generate the virtual credit card
     * **VccAccess**
-
-:::caution
-
-Bear in mind that this file is a collection of rules and we chose in every Book **the first rule that matches the criteria sent in the Query**. You should specify the more restrictive rules on the top of the file. If there is no value for any rule criteria row, it means that any value in the request matches this row. It is important to indicate the contexts used in values on the rule criteria to improve rule matching.
-
-:::
-
-
-### Check some of the most common use cases
-
-Here are some common use cases for the Safety Margin plugin, along with the CSV template file to use:
-
-| Use Case                                                      | CSV Template file             |
-|---------------------------------------------------------------|-------------------------------|
-| Simple value field                                            | 📄[\[Buyer Context\]\_sequential\_safetymargin.csv](#) |
-| Multi value field                                             | 📄[\[Buyer Context\]\_sequential\_safetymargin.csv](#) |
-
-
-<details>
-    <summary>📹Learn how to change the format of the csv file in order to edit and save it</summary>
-    <div>
-        <div>[Añadir vídeo]</div>
-    </div>
-</details>
-
 
 <details>
     <summary>List of available card types</summary>
@@ -186,6 +161,102 @@ Here are some common use cases for the Safety Margin plugin, along with the CSV 
 </details>
 
 
-### 2. Execute VCC plugin in your mutation
+:::caution
 
-ESCRIBIR ESTA PARTE (TODO)
+Bear in mind that this file is a collection of rules and we chose in every Book **the first rule that matches the criteria sent in the Query**. You should specify the more restrictive rules on the top of the file. If there is no value for any rule criteria row, it means that any value in the request matches this row. It is important to indicate the contexts used in values on the rule criteria to improve rule matching.
+
+:::
+
+
+### Check some of the most common use cases
+
+Here are some common use cases for the Safety Margin plugin, along with the CSV template file to use:
+
+| Use Case                                                      | CSV Template file             |
+|---------------------------------------------------------------|-------------------------------|
+| Simple value field                                            | 📄[\[Buyer Context\]\_sequential\_safetymargin.csv](#) |
+| Multi value field                                             | 📄[\[Buyer Context\]\_sequential\_safetymargin.csv](#) |
+
+
+<details>
+    <summary>📹Learn how to change the format of the csv file in order to edit and save it</summary>
+    <div>
+        <div>[Añadir vídeo]</div>
+    </div>
+</details>
+
+### 2. Execute Virtual Credit Card plugin in your mutation
+
+#### GenVCC
+
+Once you've uploaded your genvcc file, you can use the plugin adding the following field to the `settings` node of your request. Note that genvcc plugin can just be executed in `book` `mutation`. In order to successfully execute the genvcc plugin, you will need to create the request with the following variables.
+
+* `step`: `REQUEST`
+* `type`: `PRE_STEP`
+* `name`: `genvcc`
+* `parameters`:
+| Key            | Value         | Description                                                                    | Default Value (if not sent) | Mandatory |
+|----------------|---------------|--------------------------------------------------------------------------------|-----------------------------|-----------|
+| activationDate | yyyy/MM/dd    | Represents the date when the virtual credit card will be activated             | Same day as the book        | NO        |
+| expirationDate | yyyy/MM/dd    | Represents the date when the virtual credit card will expire                   | One month after check in    | NO        |
+| useGross       | true or false | Allows to choose the origin of the card amount. The option’s gross or the net. | Net option’s value          | NO        |
+
+```json
+"settings": {
+	"plugins": [
+		{
+			"step": "REQUEST",
+			"pluginsType": {
+				"type": "PRE_STEP",
+				"name": "genvcc"
+                "parameters": [
+						{
+							"key": "activationDate",
+							"value": "yyyy/mm/dd"
+						},
+						{
+							"key": "expirationDate",
+							"value": "yyyy/mm/dd"
+						},
+						{
+							"key" : "useGross",
+							"value" : "true"
+						}
+					]
+			}
+		}
+	]
+}
+```
+
+#### CanVCC
+
+In the case of canvcc, since it is a cancellation, there is no need to upload any file. You just have to indicate it in the request. Please note that the canvcc plugin can only be executed in the `cancel` `mutation`. To successfully execute the canvcc plugin, you will need to create the request with the following variables.
+
+* `step`: `RESPONSE`
+* `type`: `PRE_STEP`
+* `name`: `canvcc`
+* `parameters`:
+| Key | Value  | Format    | Description                                               | Default Value    | Mandatory |
+|-----|--------|-----------|-----------------------------------------------------------|------------------|-----------|
+| id  | string | no format | The id of the virtual credit card that you want to cancel | No default value | YES       |
+
+```json
+"settings": {
+	"plugins": [
+		{
+			"step": "RESPONSE",
+			"pluginsType": {
+				"type": "PRE_STEP",
+				"name": "canvcc"
+                "parameters": [
+						{
+							"key": "id",
+							"value": "virtualCreditCardID"
+						}
+					]
+			}
+		}
+	]
+}
+```

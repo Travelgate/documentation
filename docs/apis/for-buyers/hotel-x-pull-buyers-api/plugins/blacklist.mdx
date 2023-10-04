@@ -23,6 +23,12 @@ First, create your blacklist file in the correct format and then upload it to yo
 </BrowserWindow>
 ```
 
+:::note
+
+If you need assistance with requesting your credentials to access the FTP server, determining the endpoint and directory format, or learning how to upload, update, and delete FTP files, please refer to the [overview](../plugins/overview) section of Plugins.
+
+:::
+
 ### File format specification
 
 * **File Name:** blacklist_access_hotels.csv
@@ -82,7 +88,11 @@ Here are some common use cases for the Blacklist plugin, along with the CSV temp
 
 ## 2. Execute Blacklist plugin in your query
 
-Once you've uploaded your blacklist file, you can use the plugin adding the following field to the `settings` node of your request:
+Once you've uploaded your blacklist file, you can use the plugin adding the following field to the `settings` node of your request. Note that blacklist plugin can just be executed in `search` `query`. In order to successfully execute the blacklist plugin, you will need to create the request with the following variables.
+
+* `step`: `REQUEST_ACCESS`
+* `type`: `PRE_STEP`
+* `name`: `blacklist`
 
 ```json
 "settings": {
@@ -90,8 +100,8 @@ Once you've uploaded your blacklist file, you can use the plugin adding the foll
 		{
 			"step": "REQUEST_ACCESS",
 			"pluginsType": {
-				"name": "blacklist",
-				"type": "PRE_STEP"
+				"type": "PRE_STEP",
+				"name": "blacklist"
 			}
 		}
 	]
@@ -102,10 +112,6 @@ To apply a specific rule, add the `clientTokens` field to the `settings` node of
 
 ```json
 	"settings": {
-		"context": null,
-		"client": "xtg",
-		"auditTransactions": true,
-		"testMode": true,
 		"clientTokens": [
 			"testToken"
 		],
@@ -113,8 +119,8 @@ To apply a specific rule, add the `clientTokens` field to the `settings` node of
             {
 				"step": "REQUEST_ACCESS",
 				"pluginsType": {
-					"name": "blacklist",
-					"type": "PRE_STEP"
+					"type": "PRE_STEP",
+					"name": "blacklist"
 				}
 			}
         ]

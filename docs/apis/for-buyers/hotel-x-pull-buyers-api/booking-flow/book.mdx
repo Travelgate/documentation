@@ -2,6 +2,8 @@
 sidebar_position: 4
 ---
 
+import {bookQuickStartMutation, bookQuickStartVariables} from "../../../../../src/graphql/hotel-x/book.quickstart.mutation";
+
 # Book
 
 The Book operation requests a booking confirmation for the specified optionId obtained from the Quote. It provides a concise summary of the option, along with the reservation status. Please note that the returned information may vary depending on the Seller. The returned fields include:
@@ -20,11 +22,10 @@ The Book operation requests a booking confirmation for the specified optionId ob
 
 This mutation offers versatility in book options, with certain fields marked as mandatory (optionRefId, clientReference, holder etc.) and others as optional (language, delta price, payment card etc.). This flexibility empowers you to create a personalized Book Multation, tailoring the requested fields to your specific needs. 
 
-When creating your book mutation, you have three different inputs to fill based on your specific needs:
+When creating your book mutation, you have two different inputs to fill based on your specific needs:
 
 1. Input
 2. Settings
-3. Filter
 
 ```graphql
 mutation {
@@ -32,7 +33,6 @@ mutation {
     book
       input: {}
       settings: {}
-	  filter: {}
 	}
 }
 ```
@@ -343,15 +343,9 @@ To specify your quote settings you need to use the input `HotelSettingsInput` in
 
 :::
 
-### 3. Filter
-
-Filters allow you to precisely tailor the response according to your preferences. To specify your filters you need to use the input `HotelXFilterInput` in your mutation variables. The available filter in book is:
-
-* `plugin`: You can filter and specify which plugins need to be included or excluded.
-
 ### Requests Examples
 
-TODO
+<GraphqlSample query={bookQuickStartMutation} variables={bookQuickStartVariables} />
 
 ## Response
 

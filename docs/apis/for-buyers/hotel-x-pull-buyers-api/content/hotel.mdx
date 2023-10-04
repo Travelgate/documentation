@@ -1,0 +1,245 @@
+---
+sidebar_position: 2
+---
+
+import {hotelsQuery, hotelsByCountryVariables, hotelsByDestinationCodeVariables, hotelsByHotelCodeVariables} from "../../../../../src/graphql/hotel-x/hotels.query";
+
+
+# Hotel
+
+The Hotels Query returns a comprehensive hotel list from a supplier's access, granting you access to all the properties configured by the Seller for a given set of credentials. The returned fields include:
+
+* `hotelCode`
+* `hotelName`
+* `giataData`
+* `location`
+* `allAmenities`
+* `medias`
+* `descriptions`
+
+## Inputs
+
+When creating your hotels query, you have four different inputs to fill based on your specific needs:
+
+1. Criteria
+2. Relay
+3. Token
+4. Filter
+
+```graphql
+query {
+    hotelX {
+    hotels
+      criteria: {}
+      relay: {}
+	}
+}
+```
+
+### 1. Criteria 
+
+This query offers versatility, with certain fields marked as mandatory (`access`) and others as optional (`hotelCodes`, `countries`, `destinationCodes`, etc.). This flexibility empowers you to create a personalized Hotels Query, tailoring the requested fields to your specific needs. Consequently, the response will only include information that is highly relevant to you, streamlining the retrieval process and ensuring the data you receive meets your exact requirements.
+
+```json
+{
+	"criteriaHotels": {
+		"access": "2",
+		"hotelCodes": [
+			"91415"
+		],
+		"maxSize": 5
+	}
+}
+```
+
+**Mandatory criteria**
+* `access`
+
+**Optional criteria**
+* `hotelCodes` (search by hotel)
+* `countries` ??? (search by country)
+* `destinationCodes` (search by destination)
+* `ranks` ???
+* `maxSize` (paginate response)
+
+
+### 2. Relay
+
+TODO
+
+
+### 3. Token
+
+The Hotel-X API provides paginated responses to handle cases where the number of hotels from the selected supplier exceeds 5000. The default response page contains a maximum of 5000 hotels, but you can specify the number of objects returned per page using the `maxSize` field in the criteria variable explained before to retrieve between 1 and 5000 hotels.
+
+To include the token in your request, all you need to do is:
+
+1. Add the `token` object to the fields and variables. 
+
+2. After receiving a response, you will only receive a portion of the full list. To access the next page, simply copy the `token` tag from the response and include it in your next request. This will allow you to obtain a new set of objects in the following response.
+
+3. Repeat these steps until the `token` is no longer included in the response, the query will return “Hotels not found”.
+
+**Query variables**
+
+First hotels query you won't indicate any `token`input:
+
+```json
+{
+    "criteriaHotels" : {
+        "access" : "2",
+        "maxSize" : 5
+    },
+    "token" : ""
+}
+```
+
+You will obtain a response with 5 hotels per page:
+
+**Response**
+
+```json
+{
+	"data": {
+		"hotelX": {
+			"hotels": {
+				"token": "FGluY2x1ZGVfY29udGV4dF91dWlkDnF1ZXJ5VGhlbkZldGNoAhZMN2w2SlZYaVNaaXhYeXQwdm1GWjlBAAAAAAV14HUWeXZ3cU02MkpSbTY3WkF6QzJraWJWZxY2NDJ0Uk1EUFFkZXZZTS1ENDVTd2tBAAAAAAZuWSgWdFZSMzRYUVBUWC1nZ1ltWVRCTjVMZw==",
+				"count": 14,
+				"edges": [
+					{
+						"..."
+					}
+				]
+			}
+		}
+	}
+}
+```
+
+This token should be used as input in your next hotels query, inside the `token` input:
+
+
+```json
+{
+    "criteriaHotels" : {
+        "access" : "2",
+        "maxSize" : 5
+    },
+    "token" : "FGluY2x1ZGVfY29udGV4dF91dWlkDnF1ZXJ5VGhlbkZldGNoAhZMN2w2SlZYaVNaaXhYeXQwdm1GWjlBAAAAAAV14HUWeXZ3cU02MkpSbTY3WkF6QzJraWJWZxY2NDJ0Uk1EUFFkZXZZTS1ENDVTd2tBAAAAAAZuWSgWdFZSMzRYUVBUWC1nZ1ltWVRCTjVMZw=="
+}
+```
+
+
+### 4. Filter
+
+`Filter` feature allows for more precise queries. It consists of two types of filters:
+
+* **Date filters:** These filters allow searching by dates in which the hotels have been created (`createdAt_in`, `createdAt_It`, `createdAt_gt` etc.), updated (`updatedAt_in`, `updatedAt_It`, `updatedAt_gt` etc.), or deleted (`deletedAt_in`, `deletedAt_It`, `deletAt_gt` etc.).
+
+* **Field filters (boolean: true or false):** These filters allow searching hotels that have information in indicated fields, such as country (`country_in`), category (`category_in`), destination (`destination_in`), name (`name_in`), and coordinates (`coordinates_in`).
+
+```json
+{
+	"criteriaHotels": {
+		"access": "2"
+	},
+	"relay": {},
+	"token": "",
+	"filterHotel": {
+		"createdAt_gt": "2023-01-01T08:58:18.0117911Z"
+	}
+}
+```
+
+:::note
+
+Take a look at the [API Playground](/playground/) to see all the filters.
+
+:::
+
+
+### Requests examples
+
+#### Search for specific hotel code, country or destination
+
+When utilizing the Hotels List Query, for more personalized results, filter specific hotels, countries or destinations based on your interests. For example, to focus solely on the country Greece inventory of a Seller, add the `cpuntries` field with "GR" in your criteria. This will ensure you receive hotels directly related to that country, providing you with highly targeted and relevant information.
+
+<GraphqlSample query={hotelsQuery} variables={hotelsByCountryVariables} />
+
+You would need to apply the same approach for search for specific hotels (`hotelCodes`) and destinations (`destinationCodes`). For example, if we want to obtain only hotels from "Santorini", we can use the destination code for that zone. In our case, our test suppliers as code "101402" as Santorini, so we need to specify this code in the `destinationCodes` field:
+
+<GraphqlSample query={hotelsQuery} variables={hotelsByDestinationCodeVariables} />
+
+And if we want a list of specific hotel codes:
+
+<GraphqlSample query={hotelsQuery} variables={hotelsByHotelCodeVariables} />
+
+
+
+## Response
+
+:::note
+
+The amount of information and content returned might vary between Sellers.
+
+Hotel-X supports all languages, but receiving hotel descriptions in one or another depends entirely on the languages supported by the Seller.
+
+:::
+
+### Know the total amount of properties
+
+To obtain the total number of properties in the list, you can easily add the `count` field to your Hotels Query.
+
+### Receive GIATA codes
+
+Hotel-X API fully supports GIATA codes in Hotel-X Hotels Query response. Note that GIATA codes are only available at a hotel level.
+
+GIATA information is retrieved in the node `giataData`. This information is not returned by default, to activate this feature, [submit a ticket](https://app.travelgatex.com/tickets) with your GIATA credentials and specified Sellers for activation to our Customer Care team. Once GIATA is implemented for your account, add `giataData` node to your Hotels Query to receive GIATA details in the response.
+
+**Request**
+
+```graphql
+query {
+    hotelX {
+    hotels(criteria: {access: "2"}, relay: {}) {
+      edges {
+        cursor
+        node {
+          code
+          hotelData {
+            hotelCode
+            hotelName
+            giataData {
+              updatedAt
+              source
+              href
+            }
+```
+
+**Response**
+
+```graphql
+{
+	"data": {
+		"hotelX": {
+			"hotels": {
+				"edges": [
+					{
+						"cursor": "",
+						"node": {
+							"code": "",
+							"hotelData": {
+								"hotelCode": "66337",
+								"hotelName": "Hotel Test",
+								"giataData": "11267",
+```
+
+
+
+### Mapping
+
+When utilizing the Hotel List Query, you will receive the Seller's native hotel codes. Connecting with a new Seller doesn't always mean that you are interested in the whole hotels portfolio, maybe you are just interested in some specific hotels. Since mapping depends entirely on your side, you can map only those hotels you are interested in.
+
+Additionally, you can upload your own mapping files to our FTP (credentials should be provided by our Customer Care team), and we will use your own hotel codes in the booking flow.
+
+You can find all the necessary information in the [mapping section](../plugins/mapping.mdx).

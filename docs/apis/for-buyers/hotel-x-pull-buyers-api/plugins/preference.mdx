@@ -114,4 +114,22 @@ Here are some common use cases for the Preference plugin, along with the CSV tem
 
 ### 2. Execute Preference plugin in your query
 
-ESCRIBIR ESTA PARTE (TODO)
+Once you've uploaded your preference file, you can use the plugin adding the following field to the `settings` node of your request. Note that preference plugin can just be executed in `search` `query`. In order to successfully execute the preference plugin, you will need to create the request with the following variables.
+
+* `step`: `RESPONSE`
+* `type`: `PRE_STEP`
+* `name`: `preference`
+
+```json
+"settings": {
+	"plugins": [
+		{
+			"step": "RESPONSE",
+			"pluginsType": {
+				"type": "PRE_STEP",
+				"name": "preference"
+			}
+		}
+	]
+}
+```

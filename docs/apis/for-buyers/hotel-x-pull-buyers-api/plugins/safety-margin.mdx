@@ -80,6 +80,24 @@ Here are some common use cases for the Safety Margin plugin, along with the CSV 
 
 
 
-### 2. Execute Preference plugin in your query
+### 2. Execute Safety Margin plugin in your query
 
-ESCRIBIR ESTA PARTE (TODO)
+Once you've uploaded your safety margin file, you can use the plugin adding the following field to the `settings` node of your request. Note that safety margin plugin can just be executed in `search` `query`. In order to successfully execute the safety margin plugin, you will need to create the request with the following variables.
+
+* `step`: `RESPONSE_OPTION`
+* `type`: `PRE_STEP`
+* `name`: `safety_margin`
+
+```json
+"settings": {
+	"plugins": [
+		{
+			"step": "RESPONSE_OPTION",
+			"pluginsType": {
+				"type": "PRE_STEP",
+				"name": "safety_margin"
+			}
+		}
+	]
+}
+```

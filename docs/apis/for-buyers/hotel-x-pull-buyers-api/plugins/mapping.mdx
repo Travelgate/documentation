@@ -20,19 +20,19 @@ First, create your mapping file for the desired entity (hotel, board, room...) i
 &nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX\_0000  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁Maps  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁Hotel  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[Buyer Context]\_[Supplier Context]\_hotel\_map.csv  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[[Buyer Context]\_[Supplier Context]\_hotel\_map.csv](../../../../../static/files/hotel-x/[Buyer Context]_[Supplier Context]_hotel_map.csv)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁Board  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[Buyer Context]\_[Supplier Context]\_board\_map.csv  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[[Buyer Context]\_[Supplier Context]\_board\_map.csv](../../../../../static/files/hotel-x/[Buyer Context]_[Supplier Context]_board_map.csv)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁Room  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[Buyer Context]\_[Supplier Context]\_room\_map.csv  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[[Buyer Context]\_[Supplier Context]\_room\_map.csv](../../../../../static/files/hotel-x/[Buyer Context]_[Supplier Context]_room_map.csv)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁Rate  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[Buyer Context]\_[Supplier Context]\_rate\_map.csv  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[[Buyer Context]\_[Supplier Context]\_rate\_map.csv](../../../../../static/files/hotel-x/[Buyer Context]_[Supplier Context]_rate_map.csv)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁Amenity  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[Buyer Context]\_[Supplier Context]\_amenity\_map.csv  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[[Buyer Context]\_[Supplier Context]\_amenity\_map.csv](../../../../../static/files/hotel-x/[Buyer Context]_[Supplier Context]_amenity_map.csv)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁Promotion  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[Buyer Context]\_[Supplier Context]\_promotion\_map.csv  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[[Buyer Context]\_[Supplier Context]\_promotion\_map.csv](../../../../../static/files/hotel-x/[Buyer Context]_[Supplier Context]_promotion_map.csv)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁Room description  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[Buyer Context]\_[Supplier Context]\_roomdescription\_map.csv 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[[Buyer Context]\_[Supplier Context]\_roomdescription\_map.csv](../../../../../static/files/hotel-x/[Buyer Context]_[Supplier Context]_roomdescription_map.csv) 
 
 </BrowserWindow>
 ```
@@ -57,7 +57,7 @@ If you need assistance with requesting your credentials to access the FTP server
 * **Delimiter:** Comma (`,`)
 * **Header Row:**
    * Buyer Context: Buyer's context code
-   * Seller Context: Supplier's context code. This code can be found in the [My Connections](https://app.travelgatex.com/connections/myconnections) section on the TravelgateX website.
+   * Supplier Context: Supplier's (Seller's) context code. This code can be found in the [My Connections](https://app.travelgatex.com/connections/myconnections) section on the TravelgateX website.
 
 
 <details>
@@ -76,7 +76,7 @@ In the case of mapping, it will not be necessary to indicate the plugin at the r
 
 :::
 
-Once you've uploaded your mapping file, you can use the plugin adding the following field to the `settings` node of your request. Note that mapping plugin can just be executed in `search` `query`. In order to successfully execute the mapping plugin, you will need to create the request with the following variables, taking into account the type of mapping you want to execute.
+Once you've uploaded your mapping file, to use the plugin add the following field to the `settings` node of your request. Note that mapping plugin can just be executed in `search` `query`. In order to successfully execute the mapping plugin, you will need to create the request with the following variables, taking into account the type of mapping you want to execute.
 
 For amenity_map:
 
@@ -91,7 +91,7 @@ For amenity_map:
 			"step": "RESPONSE_OPTION",
 			"pluginsType": {
 				"type": "PRE_STEP",
-				"name": "board_map"
+				"name": "amenity_map"
 			}
 		}
 	]

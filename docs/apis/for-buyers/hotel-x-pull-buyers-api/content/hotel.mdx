@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-import {hotelsQuery, hotelsByCountryVariables, hotelsByDestinationCodeVariables, hotelsByHotelCodeVariables} from "../../../../../src/graphql/hotel-x/hotels.query";
+import {hotelsQuery, hotelsVariables, hotelsByCountryVariables, hotelsByDestinationCodeVariables, hotelsByHotelCodeVariables, hotelsByDateFilterVariables} from "../../../../../src/graphql/hotel-x/hotels.query";
 
 
 # Hotel
@@ -19,19 +19,19 @@ The Hotels Query returns a comprehensive hotel list from a supplier's access, gr
 
 ## Inputs
 
-When creating your hotels query, you have four different inputs to fill based on your specific needs:
+When creating your hotels query, you have three different inputs to fill based on your specific needs:
 
 1. Criteria
-2. Relay
-3. Token
-4. Filter
+2. Token
+3. Filter
 
 ```graphql
 query {
     hotelX {
     hotels
       criteria: {}
-      relay: {}
+	  token: {}
+	  filter: {}
 	}
 }
 ```
@@ -63,12 +63,7 @@ This query offers versatility, with certain fields marked as mandatory (`access`
 * `maxSize` (paginate response)
 
 
-### 2. Relay
-
-TODO
-
-
-### 3. Token
+### 2. Token
 
 The Hotel-X API provides paginated responses to handle cases where the number of hotels from the selected supplier exceeds 5000. The default response page contains a maximum of 5000 hotels, but you can specify the number of objects returned per page using the `maxSize` field in the criteria variable explained before to retrieve between 1 and 5000 hotels.
 
@@ -82,7 +77,7 @@ To include the token in your request, all you need to do is:
 
 **Query variables**
 
-First hotels query you won't indicate any `token`input:
+First, in your hotels query you won't indicate any `token`input:
 
 ```json
 {
@@ -130,7 +125,7 @@ This token should be used as input in your next hotels query, inside the `token`
 ```
 
 
-### 4. Filter
+### 3. Filter
 
 `Filter` feature allows for more precise queries. It consists of two types of filters:
 
@@ -143,7 +138,6 @@ This token should be used as input in your next hotels query, inside the `token`
 	"criteriaHotels": {
 		"access": "2"
 	},
-	"relay": {},
 	"token": "",
 	"filterHotel": {
 		"createdAt_gt": "2023-01-01T08:58:18.0117911Z"
@@ -160,20 +154,35 @@ Take a look at the [API Playground](/playground/) to see all the filters.
 
 ### Requests examples
 
-#### Search for specific hotel code, country or destination
+#### Search complete hotel list from a supplier
+
+<GraphqlSample query={hotelsQuery} variables={hotelsVariables} />
+
+
+#### Search for specific country
 
 When utilizing the Hotels List Query, for more personalized results, filter specific hotels, countries or destinations based on your interests. For example, to focus solely on the country Greece inventory of a Seller, add the `cpuntries` field with "GR" in your criteria. This will ensure you receive hotels directly related to that country, providing you with highly targeted and relevant information.
 
 <GraphqlSample query={hotelsQuery} variables={hotelsByCountryVariables} />
 
-You would need to apply the same approach for search for specific hotels (`hotelCodes`) and destinations (`destinationCodes`). For example, if we want to obtain only hotels from "Santorini", we can use the destination code for that zone. In our case, our test suppliers as code "101402" as Santorini, so we need to specify this code in the `destinationCodes` field:
+You would need to apply the same approach for search for specific hotels (`hotelCodes`) and destinations (`destinationCodes`). 
+
+#### Search for specific destination
+
+For example, if we want to obtain only hotels from "Santorini", we can use the destination code for that zone. In our case, our test suppliers as code "101402" as Santorini, so we need to specify this code in the `destinationCodes` field:
 
 <GraphqlSample query={hotelsQuery} variables={hotelsByDestinationCodeVariables} />
+
+#### Search for specific hotel code
 
 And if we want a list of specific hotel codes:
 
 <GraphqlSample query={hotelsQuery} variables={hotelsByHotelCodeVariables} />
 
+
+#### Search for a specific creation date
+
+<GraphqlSample query={hotelsQuery} variables={hotelsByDateFilterVariables} />
 
 
 ## Response
@@ -201,7 +210,7 @@ GIATA information is retrieved in the node `giataData`. This information is not 
 ```graphql
 query {
     hotelX {
-    hotels(criteria: {access: "2"}, relay: {}) {
+    hotels(criteria: {access: "2"}) {
       edges {
         cursor
         node {

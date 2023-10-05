@@ -1,7 +1,7 @@
 export const destinationsQuery = 
-`query ($criteria: HotelXDestinationListInput!, $relay: RelayInput!, $token: String) {
+`query ($criteria: HotelXDestinationListInput!, $token: String) {
 	hotelX {
-	  destinations(criteria: $criteria, relay: $relay, token: $token) {
+	  destinations(criteria: $criteria, token: $token) {
 			  token
 			  edges {
 				  node {
@@ -32,8 +32,7 @@ export const destinationsVariables =
 		"access": "2",
 		"maxSize": 15
 	},
-	"token": "",
-	"relay": {}
+	"token": ""
 }`
 
 
@@ -46,6 +45,5 @@ export const destinationsByDestinationCodeVariables =
 			"ES"
 		]
 	},
-	"token": "",
-	"relay": {}
+	"token": ""
 }`

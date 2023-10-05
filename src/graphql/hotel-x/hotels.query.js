@@ -1,7 +1,7 @@
 export const hotelsQuery = 
-`query ($criteriaHotels: HotelXHotelListInput!, $relay: RelayInput!, $token: String, $filterHotel: HotelXHotelFilterInput) {
+`query ($criteriaHotels: HotelXHotelListInput!, $token: String, $filterHotel: HotelXHotelFilterInput) {
 	hotelX {
-	  hotels(criteria: $criteriaHotels, relay: $relay, token: $token, filter: $filterHotel) {
+	  hotels(criteria: $criteriaHotels, token: $token, filter: $filterHotel) {
 			  token
 			  count
 			  edges {
@@ -93,6 +93,16 @@ export const hotelsQuery =
   }`
 
 
+export const hotelsVariables = 
+`{
+	"criteriaHotels": {
+		"access": "2",
+		"maxSize": 25
+	},
+	"token": ""
+}`
+
+
 export const hotelsByCountryVariables = 
 `{
 	"criteriaHotels": {
@@ -102,7 +112,6 @@ export const hotelsByCountryVariables =
 		],
 		"maxSize": 5
 	},
-	"relay": {},
 	"token": ""
 }`
 
@@ -116,7 +125,6 @@ export const hotelsByDestinationCodeVariables =
 		],
 		"maxSize": 5
 	},
-	"relay": {},
 	"token": ""
 }`
 
@@ -130,7 +138,6 @@ export const hotelsByHotelCodeVariables =
 			"2"
 		]
 	},
-	"relay": {},
 	"token": ""
 }`
 
@@ -139,7 +146,6 @@ export const hotelsByDateFilterVariables =
 	"criteriaHotels": {
 		"access": "2"
 	},
-	"relay": {},
 	"token": "",
 	"filterHotel": {
 		"createdAt_gt": "2023-01-01T08:58:18.0117911Z"

@@ -6,6 +6,7 @@ sidebar_position: 2
 
 # Unlocking New Opportunities: Connect and Partner with TravelgateX Network!
 ## Grow your business connections by exploring our Network!
+
 At TravelgateX, we provide tailored recommendations for new connections based on your usage data within our Marketplace. Our advanced algorithms ensure that you not only **expand your Network**, but also increase your booking volume by connecting you with Partners that are most relevant to your trading patterns. 
 
 ### How does TravelgateX Partner recommendation work? 🌟
@@ -19,7 +20,7 @@ And if you want to expand your business:
 * **New Destinations**: Expand your business to new destinations!
 * **New Markets**: Expand your business to new markets!
 ### Where do I find recommendations for my Company?  🔍
-You can access your recommended connections through both your [Dashboard](https://app.travelgatex.com/dashboardhttps://app.travelgatex.com/dashboard) and our [Network](https://app.travelgatex.com/network). Once you've identified a Partner you'd like to connect with, simply arrange your own contract and request their activation. It's that simple!
+You can access your recommended connections through both your [Dashboard](https://app.travelgatex.com/dashboard) and our [Network](https://app.travelgatex.com/network). Once you've identified a Partner you'd like to connect with, simply arrange your own contract and request their activation. It's that simple!
 
 ![Alt text](image.png)
 
@@ -46,6 +47,7 @@ Our system now suggests Company names as you type, displaying their logo and typ
 
  
 
-> [!NOTE]
-**Wondering why you're seeing recommended Partners you're already connected with?**\
+:::note
+**Wondering why you're seeing recommended Partners you're already connected with?**  
 It's because connections without traffic for the last 3 months will be suggested as a reminder for you to reactivate them - after all, they match your business!
+:::

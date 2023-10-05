@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 # About our Community
@@ -12,8 +12,13 @@ But wait, there's more! We want to hear your thoughts on how we can take our pro
 
 At TravelgateX, we believe in the power of Product Development. It's all about making our products and services even better, one step at a time. So come on in and be a part of the journey. Your ideas can make a difference!
 
-> [!NOTE]
+> **<ins>NOTE:</ins>**\
 > At TravelgateX, we understand **Product Development** as any kind of development work that improves, adds or modifies functionalities to an existing products and/or services.
+
+:::note
+At TravelgateX, we understand **Product Development** as any kind of development work that improves, adds or modifies functionalities to an existing products and/or services.
+:::
+
 
 Product Development examples:
 * I wish to have the ability to download more than 50 logs at once from the logs manager.

@@ -1,0 +1,160 @@
+---
+sidebar_position: 4
+---
+
+import {destinationsQuery, destinationsVariables, destinationsByDestinationCodeVariables} from "../../../../../src/graphql/hotel-x/destinations.query";
+
+
+# Destinations
+
+The Destinations Query returns a comprehensive destination list from a supplier's access, granting you access to all the destinations configured by the Seller for a given set of credentials. The returned fields include:
+
+* `code`
+* `available`
+* `detinationLeaf`
+* `texts` 
+* `closestDestinations`
+* `parent`
+* `type`
+
+
+
+## Inputs
+
+When creating your destinations query, you have two different inputs to fill based on your specific needs:
+
+1. Criteria
+2. Token
+
+
+### 1.Criteria  
+
+This query offers versatility, with certain fields marked as mandatory (`access`) and others as optional (`group`, `destinationCodes`, etc.). This flexibility empowers you to create a personalized Destinatiosn Query, tailoring the requested fields to your specific needs. Consequently, the response will only include information that is highly relevant to you, streamlining the retrieval process and ensuring the data you receive meets your exact requirements.
+
+```json
+{
+	"criteria": {
+		"access": "2",
+		"maxSize": 15,
+		"destinationCodes": [
+			"101402"
+		]
+	},
+	"token": ""
+}
+```
+
+**Mandatory criteria**
+* `access`
+
+**Optional criteria**
+* `destinationCodes` (search by destination)
+* `group`
+* `maxSize` (paginate response)
+
+
+### 2. Token
+
+The Hotel-X API provides paginated responses to handle cases where the number of destinations from the selected provider exceeds 5000. The default response page contains a maximum of 5000 destinations, but you can specify the number of objects returned per page using the `maxSize` field in the query criteria to retrieve between 1 and 5000 destinations.
+
+To include the token in your request, all you need to do is:
+
+1. Add the `token` object to the fields and arguments. Moreover, you have the flexibility to specify the number of objects returned per page by utilizing the `maxSize` tag in your arguments.
+
+2. After receiving a response, you will only receive a portion of the full list. To access the next page, simply copy the `token` tag from the response and include it in your next request. This will allow you to obtain a new set of objects in the following response.
+
+3. Repeat these steps until the `token` is no longer included in the response, the query will return “Destinations not found”.
+
+
+**Query variables**
+
+First, in your destinations query you won't indicate any `token`input:
+
+```json
+{
+    "criteria" : {
+        "access" : "2",
+        "maxSize" : 5
+    },
+    "token" : ""
+}
+```
+
+You will obtain a response with 5 destinations per page:
+
+**Response**
+
+```graphql
+{
+	"data": {
+		"hotelX": {
+			"destinations": {
+				"token": "FGluY2x1ZGVfY29udGV4dF91dWlkDnF1ZXJ5VGhlbkZldGNoAhZMN2w2SlZYaVNaaXhYeXQwdm1GWjlBAAAAAAV14HUWeXZ3cU02MkpSbTY3WkF6QzJraWJWZxY2NDJ0Uk1EUFFkZXZZTS1ENDVTd2tBAAAAAAZuWSgWdFZSMzRYUVBUWC1nZ1ltWVRCTjVMZw==",
+				"edges": [
+					{
+						"..."
+					}
+				]
+			}
+		}
+	}
+}
+```
+
+This token should be used as input in your next hotels query, inside the `token` input:
+
+
+```json
+{
+    "criteria" : {
+        "access" : "2",
+        "maxSize" : 5
+    },
+    "token" : "FGluY2x1ZGVfY29udGV4dF91dWlkDnF1ZXJ5VGhlbkZldGNoAhZMN2w2SlZYaVNaaXhYeXQwdm1GWjlBAAAAAAV14HUWeXZ3cU02MkpSbTY3WkF6QzJraWJWZxY2NDJ0Uk1EUFFkZXZZTS1ENDVTd2tBAAAAAAZuWSgWdFZSMzRYUVBUWC1nZ1ltWVRCTjVMZw=="
+}
+```
+
+
+
+### Requests examples
+
+#### Search complete destination list from a supplier
+
+<GraphqlSample query={destinationsQuery} variables={destinationsVariables} />
+
+
+#### Search for specific destination code
+
+When utilizing the Destination List Query, for more personalized results, filter specific destinations based on your interests. For example, to focus solely on the Spanish inventory of a Seller, add the `destinationCodes` field with "ES" in your criteria. This will ensure you receive destinations directly related to the "ES" zone, providing you with highly targeted and relevant information.
+
+<GraphqlSample query={destinationsQuery} variables={destinationsByDestinationCodeVariables} />
+
+
+
+## Response
+
+### Destination list logic
+
+Once you run a Destinations Query, you will receive the Seller's native destination codes in the response. These codes can be classified into 2 categories:
+
+1. Zone
+2. City
+
+Sellers build their own Destination Tree based on both nodes. Consequently, when you request their destination list, you will receive a structured categorized response that can help you with the mapping process.
+
+
+:::note
+
+The amount of information and content returned might vary between Sellers.
+
+Hotel-X supports all languages, but receiving destination descriptions in one or another depends entirely on the languages supported by the Seller.
+
+:::
+
+### Mapping
+
+When utilizing the Destination List Query, you will receive the Seller's native destination codes. Connecting with a new Seller doesn't always mean that you are interested in the whole destination portfolio, maybe you are just interested in some specific destinations. Since mapping depends entirely on your side, you can map only those destinations you are interested in.
+
+Additionally, you can upload your own mapping files to our FTP (credentials should be provided by our Customer Care team), and we will use your own destination codes in the booking flow.
+
+You can find all the necessary information in the [mapping section](../plugins/mapping.mdx).

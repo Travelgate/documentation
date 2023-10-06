@@ -4,10 +4,15 @@ sidebar_position: 1
 
 # Overview
 
-The main purpose of the Admin Query is to create, update, delete etc. your accesses and get a list of your accesses.
+In the [Key Concepts](../../../../get-started/key-concepts) section, we introduced you to the fundamental entities (accesses, suppliers, contexts...) that enable you to establish and manage connections with your Partners. Now, with the Admin API, you have the power to access a comprehensive list of all available entities within your organization, ensuring seamless connectivity.
 
-:::info
+In this section, you will find:
 
-An access is the set of credentials and the authentication configuration that enables a Buyer to connect to a Seller. It is used to differentiate among Sellers and also to filter different credentials and configurations from the same Seller (e.g. B2B and B2C feeds).
+- **List of Accesses:** Obtain a complete list of accesses, a critical component for successful interaction with your Partners. 
 
-:::
+- **List of Suppliers:** Access a detailed directory of suppliers code and its context, providing you with the necessary information to create your plugins files if you want to use them.
+
+The Admin API serves as your gateway to streamline access management and supplier information, facilitating a more efficient and effective experience within the Hotel-X ecosystem.
+
+Ready to explore the full scope of available entities? Dive into the "Admin" section and take control of your connectivity with Hotel-X and your Partners.
+

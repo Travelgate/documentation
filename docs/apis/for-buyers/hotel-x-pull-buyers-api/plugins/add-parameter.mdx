@@ -1,0 +1,48 @@
+---
+sidebar_position: 4
+---
+
+# Add Parameter
+
+The add parameter plugin allows to add parameters to existing accesses in the configuration. The plugin can be used in all booking services, allowing you to dynamically add parameters during the request time.
+
+Additionally, you have the option to replace the value of an existing parameter by adding a parameter with the same key in the query. This allows you to add different parameters to multiple accesses and/or suppliers in the same query.
+
+:::note
+
+For this plugin, there is no need to create any files; you just need to specify it in `settings` `plugins` in the request.
+
+:::
+
+## 1. Execute Add Parameter plugin in your query
+
+To use the plugin add the following field to the `settings` node of your request. Note that add paramenter plugin can be executed in `search`, `quote`, `book`, `booking` and `cancel` requests. In order to successfully execute the add paramenter plugin, you will need to create the request with the following variables.
+
+* `step`: `REQUEST_ACCESS`
+* `type`: `PRE_STEP`
+* `name`: `add_parameterX`
+* `parameters`:
+
+| Key               | Value | Condition | Description                                                                  |
+|-------------------|-------|-----------|------------------------------------------------------------------------------|
+| JSONConfiguration | JSON  | mandatory | JSON structure with parameters that you add by access, supplier or parameter |
+
+```json
+"settings": {
+	"plugins": [
+		{
+			"step": "REQUEST_ACCESS",
+			"pluginsType": {
+				"type": "PRE_STEP",
+				"name": "add_parameterX",
+                "parameters": [
+                    {
+                        "key": "JSONConfiguration",
+                        "value": "{\"accesses\": [ { \"codes\": [\"000\"], \"parameters\": [{ \"key\": \"A\", \"value\": \"0\" }] }]}"
+                    }
+                ]
+			}
+		}
+	]
+}
+```

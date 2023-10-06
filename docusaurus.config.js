@@ -132,7 +132,7 @@ const config = {
             to: '/api',
             //type: 'docSidebar',
             sidebarId: 'schemaSidebar',
-            label: 'API Reference',
+            label: 'GraphQL API Reference',
             position: 'left'
           },
           {

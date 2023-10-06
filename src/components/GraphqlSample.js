@@ -42,6 +42,7 @@ const GraphqlSample = ({token, query, variables}) => {
                                     headers={headers}
                                     query={query??hotelsListQuerySampleA}
                                     variables={variables??''}
+                                    onTabChange={() => { return false; }}
                                 >
                                     <GraphiQL.Logo><></></GraphiQL.Logo>
                                 </GraphiQL>

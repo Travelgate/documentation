@@ -8,13 +8,13 @@ The Search by Destination plugin enables to search by destinations codes in the 
 
 :::note
 
-For this plugin, there is no need to create any files; you just need to specify it in `settings` `plugins` in the request + add `destinations` field in the `criteria` of `search` query.
+For this plugin, there is no need to create any files; you just need to specify it in `settings` `plugins` in the request + add `destinations` field in the `criteria` of search query.
 
 :::
 
 ## 1. Execute Search by Destination plugin in your query
 
-To use the plugin add the following field to the `settings` node of your request. Note that search by destination plugin can just be executed in `search` `query`. In order to successfully execute the search by destination plugin, you will need to create the request with the following variables.
+To use the plugin add the following field to the `settings` node of your request. Note that search by destination plugin can just be executed in search query. In order to successfully execute the search by destination plugin, you will need to create the request with the following variables.
 
 * `step`: `REQUEST`
 * `type`: `PRE_STEP`
@@ -47,8 +47,8 @@ To use the plugin add the following field to the `settings` node of your request
 
 :::caution
 
-Remember that when making the [`search`](../docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/search.mdx) query, in the criteria, you will need to add the `destinations` field (instead of `hotels`). There is where you will need to add the destination codes. 
+Remember that when making the [search](../booking-flow/search) query, in the criteria, you will need to add the `destinations` field (instead of `hotels`). There is where you will need to add the destination codes. 
 
-To find out which destinations codes an access has, you will need to make the [`destination`](../docs/apis/for-buyers/hotel-x-pull-buyers-api/content/destination.md) content call.
+To find out which destinations codes an access has, you will need to make the [destinations](../content/destinations) content query.
 
 :::

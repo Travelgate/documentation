@@ -18,7 +18,7 @@ First, create your currency converter file in the correct format and then upload
 📁F0\_0000  
 &nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX_0000  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁BusinessRules  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[currency_map.csv](#)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[currency_map.csv](../../../../../static/files/hotel-x/currency_map.csv)
 
 </BrowserWindow>
 ```
@@ -50,14 +50,40 @@ The rate with value 1.00 is the base currency. Other rates are calculated from i
 </details>
 
 
-### Check some of the most common use cases
+## 2. Execute Currency Converter plugin in your query
 
-Here are some common use cases for the Safety Margin plugin, along with the CSV template file to use:
+Once you've uploaded your currency converter file, to use the plugin add the following field to the `settings` node of your request. Note that currency converter plugin can just be executed in search query. In order to successfully execute the preference plugin, you will need to create the request with the following variables.
 
-| Use Case                                                      | CSV Template file             |
-|---------------------------------------------------------------|-------------------------------|
-| Simple value field                                            | 📄[currency_map.csv](#) |
-| Multi value field                                             | 📄[currency_map.csv](#) |
+* `step`: `RESPONSE_OPTION`
+* `type`: `PRE_STEP`
+* `name`: `currency_exchange`
+* `parameters`:
 
+| Key      | Value   | Format     | Description                                                                                                        |
+|----------|---------|------------|--------------------------------------------------------------------------------------------------------------------|
+| currency | string  | ISO 4217   | The currency to which you want to convert                                                                          |
+| exclude  | boolean | true/false | Determinates if the options on which the currency change cannot be applied (no currency found in ftp) are excluded |
 
-### 2. Execute Currency Converter plugin in your query
+```json
+"settings": {
+	"plugins": [
+		{
+			"step": "RESPONSE_OPTION",
+			"pluginsType": {
+				"type": "PRE_STEP",
+				"name": "currency_exchange",
+                 "parameters": [
+						{
+							"key": "currency",
+							"value": "EUR"
+						},
+						{
+							"key": "exclude",
+							"value": "true"
+						}
+					]
+			}
+		}
+	]
+}
+```

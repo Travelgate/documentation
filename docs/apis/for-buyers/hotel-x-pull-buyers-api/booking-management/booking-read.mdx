@@ -1,0 +1,164 @@
+---
+sidebar_position: 2
+---
+
+import {bookingQuery, bookingByBookingIDVariables, bookingByReferenceVariables, bookingByArrivalDatesVariables, bookingByBookingDatesVariables} from "../../../../../src/graphql/hotel-x/booking.read.query";
+
+# Booking read and list
+
+The Booking query allows you to retrieve a specific booking with all its details using the booking ID or reference locator. You can also obtain a list of bookings that were made within a specific arrival date range or a specific booking date range. The returned fields for each booking in the list include:
+
+* `holder`
+* `hotel`
+* `price`
+* `remarks`
+* `status`
+
+## Inputs
+
+When creating your cancel query, you have two different inputs to fill based on your specific needs:
+
+1. Criteria
+2. Settings
+
+```graphql
+query {
+    hotelX {
+    booking
+      criteria: {}
+      settings: {}
+	}
+}
+```
+
+:::note
+
+Remember that you can choose the information you want displayed:
+* `reference`: To display client or supplier booking reference
+* `status`: To display the booking status
+
+:::
+
+### 1. Criteria 
+
+This query offers versatility in booking search, with all fields marked as optional (accessCode, typeSearch, language etc.). This flexibility empowers you to create a personalized Booking List Query, tailoring the requested fields to your specific needs. 
+
+To specify your quote criteria you need to use the input `HotelCriteriaBookingInput` in your query variables:
+
+```json
+{
+    "criteria" : {
+        "bookingID" : "1@1[241028[241029[230918[1[es[EUR[2[test_0123456789[2596391"
+    }
+}
+```
+
+```json
+{
+    "criteria" : {
+        "accessCode" : "2",
+        "typeSearch" : "REFERENCES",
+        "references" : {
+            "hotelCode" : "1",
+            "currency" : "EUR",
+            "references" : [
+                {
+                    "client" : "test_0123456789"
+                }
+            ]
+        }
+    }
+}
+```
+
+```json
+{
+    "criteria" : {
+        "accessCode" : "2",
+        "typeSearch" : "DATES",
+        "dates" : {
+            "dateType" : "ARRIVAL",
+            "start" : "2024-10-28",
+            "end" : "2024-10-28"
+        }
+    }
+}
+```
+
+**Optional criteria**
+* `accessCode` (necessary if you search by references or by dates)
+* `typeSearch` (necessary if you search by references or by dates)
+* `language`
+* `dates` (to receive a list of all the reservations made in a specific type frame)
+* `bookingID` (to receive the details of a specific reservation)
+* `references` (to receive the details of a specific reservation)
+
+:::danger
+
+Even if not all criteria are marked as mandatory, you must either use the bookingID from the book response or provide the set of all other criteria, including the access code, hotel, and reference, to read the reservation.
+
+:::
+
+### 2. Settings 
+
+Settings are the common configurations used to construct requests to the supplier/s. By default, we apply the same configuration to all Hotel-X clients.
+
+To specify your booking settings you need to use the input `HotelSettingsInput` in your query variables:
+
+```json
+{
+	"settings": {
+		"client": "client_demo",
+		"context": "HOTELTEST",
+		"testMode": true,
+		"auditTransactions": false,
+		"timeout": 60000
+	}
+}
+```
+
+**Mandatory Settings:**
+* `context`
+* `timeout` (Timeout in milliseconds for supplier connections. Applied to all suppliers; won't close client connection if exceeded)
+* `businessRules`
+* `language`
+* `currency`
+* `nationality`
+* `markets`
+
+**Optional Settings:**
+* `group`
+* `auditTransactions` 
+* `suppliers` (Each one contains its own code, settings and accesses)
+* `plugins`
+* `testMode` (This flag allows only the accesses checked as test)
+* `clientTokens` (Used to identify the origin of the request, this is only used in plugins)
+
+
+### Requests examples
+
+#### Booking read with `bookingID` from the book response
+
+<GraphqlSample query={bookingQuery} variables={bookingByBookingIDVariables} />
+
+#### Booking read using the `accessCode`, `hotelCode`, `currency` and `reference` from the book response
+
+<GraphqlSample query={bookingQuery} variables={bookingByReferenceVariables} />
+
+#### Booking list by arrival date range
+
+<GraphqlSample query={bookingQuery} variables={bookingByArrivalDatesVariables} />
+
+#### Booking list by booking date range
+
+<GraphqlSample query={bookingQuery} variables={bookingByBookingDatesVariables} />
+
+## Response
+
+:::note
+
+The results obtained in the response fields may vary between Sellers.
+
+:::
+
+## Frequently asked questions

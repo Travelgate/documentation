@@ -2,6 +2,8 @@
 sidebar_position: 3
 ---
 
+import {quoteQuickStartQuery, quoteQuickStartVariables} from "../../../../../src/graphql/hotel-x/quote.quickstart.query";
+
 # Quote
 
 The Quote operation evaluates the rate before booking, providing the same information as the Search response for a hotel rate, including up-to-date pricing. Additionally, it offers further details such as rate breakdown and cancellation policies. The returned fields include:
@@ -15,11 +17,10 @@ The Quote operation evaluates the rate before booking, providing the same inform
 
 ## Inputs
 
-When creating your quote query, you have three different inputs to fill based on your specific needs:
+When creating your quote query, you have two different inputs to fill based on your specific needs:
 
 1. Criteria
 2. Settings
-3. Filter
 
 ```graphql
 query {
@@ -27,7 +28,6 @@ query {
     quote
       criteria: {}
       settings: {}
-	  filter: {}
 	}
 }
 ```
@@ -95,18 +95,10 @@ To specify your quote settings you need to use the input `HotelSettingsInput` in
 
 :::
 
-### 3. Filter
-
-Filters allow you to precisely tailor the response according to your preferences. 
-
-To specify your filters you need to use the input `HotelXFilterInput` in your query variables. The available filter in quote is:
-
-* `plugin`: You can filter and specify which [plugins](../plugins/overview) need to be included or excluded.
-
 
 ### Requests Examples
 
-TODO
+<GraphqlSample query={quoteQuickStartQuery} variables={quoteQuickStartVariables}/>
 
 
 ## Response

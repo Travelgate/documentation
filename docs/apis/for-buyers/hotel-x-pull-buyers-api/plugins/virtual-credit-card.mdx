@@ -23,14 +23,14 @@ First, create your virtual credit card file in the correct format and then uploa
 📁F0\_0000  
 &nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX_0000  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁BusinessRules  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[\[Buyer Context\]\_sequential\_genvcc.csv](#)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[\[Buyer Context\]\_sequential\_genvcc.csv](../../../../../static/files/hotel-x/[Buyer Context]_sequential_genvcc.csv)
 
 </BrowserWindow>
 ```
 
 ### File format specification
 
-* **File Name:** [Buyer Context]_sequential_safetymargin.csv
+* **File Name:** [Buyer Context]_sequential_genvcc.csv
 * **Directory:** F0_0000/HotelX0000/BusinessRules
 * **Delimiter:** Comma (`,`)
 * **Header Row:**
@@ -168,16 +168,6 @@ Bear in mind that this file is a collection of rules and we chose in every Book 
 :::
 
 
-### Check some of the most common use cases
-
-Here are some common use cases for the Safety Margin plugin, along with the CSV template file to use:
-
-| Use Case                                                      | CSV Template file             |
-|---------------------------------------------------------------|-------------------------------|
-| Simple value field                                            | 📄[\[Buyer Context\]\_sequential\_safetymargin.csv](#) |
-| Multi value field                                             | 📄[\[Buyer Context\]\_sequential\_safetymargin.csv](#) |
-
-
 <details>
     <summary>📹Learn how to change the format of the csv file in order to edit and save it</summary>
     <div>
@@ -185,16 +175,17 @@ Here are some common use cases for the Safety Margin plugin, along with the CSV 
     </div>
 </details>
 
-### 2. Execute Virtual Credit Card plugin in your mutation
+## 2. Execute Virtual Credit Card plugin in your mutation
 
-#### GenVCC
+### GenVCC
 
-Once you've uploaded your genvcc file, you can use the plugin adding the following field to the `settings` node of your request. Note that genvcc plugin can just be executed in `book` `mutation`. In order to successfully execute the genvcc plugin, you will need to create the request with the following variables.
+Once you've uploaded your genvcc file, to use the plugin add the following field to the `settings` node of your request. Note that genvcc plugin can just be executed in `book` `mutation`. In order to successfully execute the genvcc plugin, you will need to create the request with the following variables.
 
 * `step`: `REQUEST`
 * `type`: `PRE_STEP`
 * `name`: `genvcc`
 * `parameters`:
+
 | Key            | Value         | Description                                                                    | Default Value (if not sent) | Mandatory |
 |----------------|---------------|--------------------------------------------------------------------------------|-----------------------------|-----------|
 | activationDate | yyyy/MM/dd    | Represents the date when the virtual credit card will be activated             | Same day as the book        | NO        |
@@ -229,7 +220,7 @@ Once you've uploaded your genvcc file, you can use the plugin adding the followi
 }
 ```
 
-#### CanVCC
+### CanVCC
 
 In the case of canvcc, since it is a cancellation, there is no need to upload any file. You just have to indicate it in the request. Please note that the canvcc plugin can only be executed in the `cancel` `mutation`. To successfully execute the canvcc plugin, you will need to create the request with the following variables.
 
@@ -237,6 +228,7 @@ In the case of canvcc, since it is a cancellation, there is no need to upload an
 * `type`: `PRE_STEP`
 * `name`: `canvcc`
 * `parameters`:
+
 | Key | Value  | Format    | Description                                               | Default Value    | Mandatory |
 |-----|--------|-----------|-----------------------------------------------------------|------------------|-----------|
 | id  | string | no format | The id of the virtual credit card that you want to cancel | No default value | YES       |

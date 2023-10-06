@@ -1,0 +1,46 @@
+---
+sidebar_position: 5
+---
+
+# Cheapest Price
+
+The Cheapest Price plugin enables the aggregation of Supplier options using various business rules. It is possible to aggregate different options based on different values, as indicated below with all the possibilities.
+
+:::note
+
+For this plugin, there is no need to create any files; you just need to specify it in `settings` `plugins` in the request.
+
+:::
+
+## 1. Execute Cheapest Price plugin in your query
+
+To use the plugin add the following field to the `settings` node of your request. Note that cheapest price plugin can just be executed in search query. In order to successfully execute the cheapest price plugin, you will need to create the request with the following variables.
+
+* `step`: `RESPONSE`
+* `type`: `PRE_STEP`
+* `name`: `cheapest_price`
+* `parameters`:
+
+| Key        | Value  | Condition | Description                                                                                                                                                                                                                                                                       |
+|------------|--------|-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| primaryKey | string | mandatory | Criteria used to aggregate, the possible values are: binding, board, cancelPolicy, currency, hotel, market, payment, promotion, rateRules, refundable, room, supplement, supplier, surcharges, ratePlan, status and eqRates. (The value is a set of criteria separated by commas) |
+
+```json
+"settings": {
+	"plugins": [
+		{
+			"step": "RESPONSE",
+			"pluginsType": {
+				"type": "PRE_STEP",
+				"name": "cheapest_price",
+                "parameters": [
+                    {
+                        "key": "primaryKey",
+                        "value": "hotel,supplier,room"
+                    }
+                ]
+			}
+		}
+	]
+}
+```

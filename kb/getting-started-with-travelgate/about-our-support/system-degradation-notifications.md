@@ -4,7 +4,6 @@ sidebar_position: 2
 
 # System Degradation Notifications
 
-## TravelgateX Status Page
 
 ### What is TravelgateX Status Page?⚠️
 

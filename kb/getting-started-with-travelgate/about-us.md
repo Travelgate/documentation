@@ -26,12 +26,12 @@ Connectivity is a fundamental aspect of any business, and finding the right Part
 
 ### Who can we connect with?🚀
 At TravelgateX, we take pride in having one of the largest networks of Partners worldwide. Check out our [website](https://www.travelgate.com/) for a full list.
- 
+
+:::info
 **<ins>NETWORK</ins>**  
-Connect to the largest travel Network with a single integration.
-
-**<ins>INNOVATION</ins>**  
-World-class technology with the most advanced travel APIs available.
-
+Connect to the largest travel Network with a single integration.  
+**<ins>INNOVATION</ins>**   
+World-class technology with the most advanced travel APIs available.  
 **<ins>PARTNERSHIP</ins>**  
 Trusted by Industry leaders and niche providers everywhere.
+:::

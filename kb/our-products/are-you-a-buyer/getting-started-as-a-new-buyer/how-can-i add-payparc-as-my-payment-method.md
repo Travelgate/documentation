@@ -3,8 +3,6 @@ sidebar_position: 3
 ---
 # How can I add PayParc as my Payment Method?
 
-## Learn how to request the activation of PayParc
-
 ### What is PayParc?💡
 
 [PayParc](https://www.payparc.com/), a Tech Partner in TravelgateX, facilitates e-Wallet Payment between a Buyer and a Seller in TravelgateX. The solution offered by PayParc eliminates the bad debt risk between Buyers and Sellers, as the amount of each booking is automatically moved between electronic wallets.

@@ -46,7 +46,7 @@ For Hotel-X implementation and testing purposes, we recommend using the followin
 
 You can also activate any Seller you have an agreement with, even their production environment. However, please note that you should not make live bookings during the Hotel-X implementation process until your development has been certified by TravelgateX.
 
->**NOTE**\
+>**NOTE**  
 > We recommend using access "2" or "5647" for your certification process as they will return all the information you need to complete your cases. 
 
 ### Additional notes and recommendations✔️

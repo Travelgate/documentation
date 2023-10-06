@@ -20,5 +20,5 @@ In case the number of hotels received through TGX is varies wildly from what you
 
 
 > [!NOTE]
-> \
+>   
 If you are connected to our Hotel Buyers API (legacy), please note that we deliver new connections with a parameter called “HotelXAccessCode”. It’s very important that you **don’t remove it** - you should not modify the XML Configuration you were delivered.

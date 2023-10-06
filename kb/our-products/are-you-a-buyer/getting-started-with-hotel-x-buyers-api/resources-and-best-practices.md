@@ -30,8 +30,9 @@ sidebar_position: 5
 
 To access all the methods available through our Hotel-X API, please use the endpoint **https://api.travelgatex.com** (both test and production environments).
 
->NOTE:\
->**China endpoint**: If your servers are located in China, you can improve performance by using the following URL: **https://api-cn.travelgatex.com**.
+:::  
+**China endpoint**: If your servers are located in China, you can improve performance by using the following URL: **https://api-cn.travelgatex.com**.
+:::
 
 ### GZIP Compression📦
 To enhance performance and reduce bandwidth usage, it is **mandatory** to enable GZIP compression in the HTTP header for all Live traffic.

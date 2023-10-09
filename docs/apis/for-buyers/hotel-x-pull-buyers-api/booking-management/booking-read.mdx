@@ -16,7 +16,7 @@ The Booking query allows you to retrieve a specific booking with all its details
 
 ## Inputs
 
-When creating your cancel query, you have two different inputs to fill based on your specific needs:
+When creating your booking query, you have two different inputs to fill based on your specific needs:
 
 1. Criteria
 2. Settings
@@ -41,9 +41,9 @@ Remember that you can choose the information you want displayed:
 
 ### 1. Criteria 
 
-This query offers versatility in booking search, with all fields marked as optional (accessCode, typeSearch, language etc.). This flexibility empowers you to create a personalized Booking List Query, tailoring the requested fields to your specific needs. 
+This query offers versatility in booking search, with all fields marked as optional (`accessCode`, `typeSearch`, `language` etc.). This flexibility empowers you to create a personalized Booking List Query, tailoring the requested fields to your specific needs. 
 
-To specify your quote criteria you need to use the input `HotelCriteriaBookingInput` in your query variables:
+To specify your booking criteria you need to use the input `HotelCriteriaBookingInput` in your query variables:
 
 ```json
 {
@@ -93,9 +93,9 @@ To specify your quote criteria you need to use the input `HotelCriteriaBookingIn
 * `bookingID` (to receive the details of a specific reservation)
 * `references` (to receive the details of a specific reservation)
 
-:::danger
+:::caution
 
-Even if not all criteria are marked as mandatory, you must either use the bookingID from the book response or provide the set of all other criteria, including the access code, hotel, and reference, to read the reservation.
+Even if not all criteria are marked as mandatory, you must either use the `bookingID` from the book response or provide the set of all other criteria, including the `accessCode`, `hotel`, and `reference`, to read the reservation.
 
 :::
 
@@ -137,7 +137,7 @@ To specify your booking settings you need to use the input `HotelSettingsInput` 
 
 ### Requests examples
 
-#### Booking read with `bookingID` from the book response
+#### Booking read with the `bookingID` from the book response
 
 <GraphqlSample query={bookingQuery} variables={bookingByBookingIDVariables} />
 
@@ -160,5 +160,3 @@ To specify your booking settings you need to use the input `HotelSettingsInput` 
 The results obtained in the response fields may vary between Sellers.
 
 :::
-
-## Frequently asked questions

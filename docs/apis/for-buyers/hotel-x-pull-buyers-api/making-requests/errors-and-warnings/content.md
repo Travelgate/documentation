@@ -1,0 +1,15 @@
+---
+sidebar_position: 1
+---
+
+# Content
+
+### Error List
+
+| Code	  | Description	           | Explanation                                                                                    |
+|-------|-----------------------|------------------------------------------------------------------------------------------------|
+| 11204	 | According to the case	 | This occurs when no results found                                                              |
+| 11400 | According to the case	 | A field or fields in the request are missing or not correct                                    |
+| 22401 | According to the case	 | This occurs when the request lacks valid authentication credentials for the requested resource |
+| 22500 | According to the case	 | Covers any unexpected error or errors due to internal service                                  |
+| 22512	 | According to the case	 | This occurs when there is insufficient data to return due to internal error service            |

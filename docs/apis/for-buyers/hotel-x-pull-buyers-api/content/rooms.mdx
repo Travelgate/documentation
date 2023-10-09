@@ -62,7 +62,7 @@ To include the token in your request, all you need to do is:
 
 2. After receiving a response, you will only receive a portion of the full list. To access the next page, simply copy the `token` tag from the response and include it in your next request. This will allow you to obtain a new set of objects in the following response.
 
-3. Repeat these steps until the `token` is no longer included in the response, the query will return “Destinations not found”.
+3. Repeat these steps until the `token` is no longer included in the response, the query will return “Rooms not found”.
 
 **Query variables**
 
@@ -91,7 +91,7 @@ You will obtain a response with 5 rooms per page:
 				"edges": [
 ```
 
-This token should be used as input in your next hotels query, inside the `token` input:
+This token should be used as input in your next rooms query, inside the `token` input:
 
 
 ```json
@@ -106,12 +106,12 @@ This token should be used as input in your next hotels query, inside the `token`
 
 ### Requests examples
 
-#### Search complete rooms list from a supplier
+#### Search for the complete rooms list from a supplier
 
 <GraphqlSample query={roomsQuery} variables={roomsVariables} />
 
 
-#### Search for specific room
+#### Search for a specific room list from a supplier
 
 When utilizing the Rooms List Query, for more personalized results, filter specific rooms based on your interests. For example, to focus solely on the twin room inventory of a Seller, add the `roomCodes` field with "2269" (this is the code that this Seller has assigned for the "Double Standard" room) in your criteria. This will provide you with highly targeted and relevant information.
 

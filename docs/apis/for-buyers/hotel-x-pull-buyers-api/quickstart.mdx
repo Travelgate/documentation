@@ -55,6 +55,11 @@ Accept-Encoding: gzip.
 * API Key: You can find your API Key on the Travelgate website in Connections > [Connections Settings](https://app.travelgatex.com/connections/settings).
 
 
+```html
+Authorization: ApiKey
+```    
+
+
 #### Supported Operations
 
 Lastly, please note that the Hotel-X API supports two types of operations:
@@ -94,9 +99,10 @@ To make this happen, you'll need to retrieve the `optionRefId` from the search r
 
 You're almost there! After securing your quote and ensuring all the details align with your travel plans, it's time to proceed with the booking. In this step, you confirm your reservation and officially lock in your stay.
 
-You'll need to provide the 'optionRefId' returned in the Quote step and enter all the necessary passenger information. Upon a successful booking request, you'll receive a confirmation along with essential reservation details. Congratulations! Your hotel stay is now officially booked.
+You'll need to provide the `optionRefId` returned in the Quote step and enter all the necessary passenger information. Upon a successful booking request, you'll receive a confirmation along with essential reservation details. Congratulations! Your hotel stay is now officially booked.
 
 <GraphqlSample query={bookQuickStartMutation} variables={bookQuickStartVariables} />
+
 
 :::note
 
@@ -104,7 +110,8 @@ Make sure to change the value of the `clientReference` field so that the Book ca
 
 :::
 
-### Next steps
+
+## Next steps
 
 Congratulations on completing this quickstart tutorial! 🎉 You've successfully learned the basics of creating a sample booking. But there's a world of knowledge waiting for you:
 

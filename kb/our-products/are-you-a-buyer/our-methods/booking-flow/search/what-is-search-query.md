@@ -18,12 +18,11 @@ Search is the first method in our Booking Flow. Search Query aims to return all 
 1. **Status:** You can specify whether you want to include or exclude [OK and/or RQ status](https://knowledge.travelgate.com/filter-search) in Search response.
 1. **Access:** You can choose the Hotel-X acces codes to be included or excluded from your request. Please note that you can filter your Search by Hotel-X access code, or don't set any access at all. If you don't specify any accesses in your request, our system will request all the accesses available on your side, so please make sure you [use your own context code](https://knowledge.travelgate.com/hotel-x-credentials) in order to avoid mapping errors.
 
-Feel free to check this [article](https://knowledge.travelgate.com/filter-search)
+Feel free to check this [article](https://knowledge.travelgate.com/filter-search) for further information on How to filter Search requests.✔️
 
-for further information on How to filter Search requests.✔️
-
-> [!NOTE]\
-> Remember to upload your mapping files to our FTP in those cases you run requests with your own context codes - you will receive results from all your Sellers with your own hotel codes. You will find more information about Mapping on TravelgateX here.
+:::note
+Remember to upload your mapping files to our FTP in those cases you run requests with your own context codes. That way, you will receive results from all your Sellers with your own hotel codes. You will find more information about Mapping on TravelgateX here.
+:::
 
 ### Can I search by destination?🔎
 Of course! You will find more information about our Search by Destination [plugin](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/plugins/search_by_destination/) here.
@@ -38,8 +37,9 @@ image
 ### How many hotel codes per request can I request in Search?🔢
 We recommend a maximum of 200 hotels: the new aggregator will split them in batches in order to request all of them to each Seller.
 
-> [!NOTE]\
-> Please take note the current formula and rate limit are subject to change.
+:::note 
+Please take note the current formula and rate limit are subject to change.
+:::
 
 ### Are there any limitations on the number of searches/minute?❓
 Not from TravelgateX side - we don't have any limitations on the RPM in any of our methods. However, some Sellers may have some limitations so we suggest you contact directly with them in order to discuss this information.
@@ -106,7 +106,9 @@ The age range for children and infants may vary depending on the Seller's restri
 ### Can I receive daily prices in Search response?📅
 Yes, if the Seller provides the information, you can receive daily prices in Search response through the roomPrice>**breakdown**:
 
-((((PENDING IMAGE))))
+```
+image
+```
 
 ### Can I filter the Hotel-X Search results by payment type?❓
 Unfortunately, Hotel-X API does not currently offer the capability to filter search results by payment type. 

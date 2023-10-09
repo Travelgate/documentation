@@ -37,7 +37,7 @@ mutation {
 
 ### 1. Input
 
-This mutation offers versatility in cancellation, with all fields marked as optional (accessCode, language, hotelCode etc.). You can decide between the two options for cancellation, either by reference or by bookingID, empowering you with the choice that suits you best.
+This mutation offers versatility in cancellation, with all fields marked as optional (`accessCode`, `language`, `hotelCode` etc.). You can decide between the two options for cancellation, either by `reference` or by `bookingID`, empowering you with the choice that suits you best.
 
 To specify your cancel input you need to use the input `HotelCancelInput` in your mutation variables.
 
@@ -73,9 +73,9 @@ If you cancel using the `accessCode`, `hotelCode` and `reference` from the book 
 * `hotelCode`
 
 
-:::danger
+:::caution
 
-Even if not all criteria are marked as mandatory, you must either use the bookingID from the book response or provide the set of all other criteria, including the access code, hotel, and reference, to cancel the reservation.
+Even if not all criteria are marked as mandatory, you must either use the `bookingID` from the book response or provide the set of all other criteria, including the `accessCode`, `hotel`, and `reference`, to cancel the reservation.
 
 :::
 
@@ -83,7 +83,7 @@ Even if not all criteria are marked as mandatory, you must either use the bookin
 
 Settings are the common configurations used to construct requests to the supplier/s. By default, we apply the same configuration to all Hotel-X clients.
 
-To specify your quote settings you need to use the input `HotelSettingsInput` in your query variables:
+To specify your cancel settings you need to use the input `HotelSettingsInput` in your mutation variables:
 
 ```json
 {
@@ -119,7 +119,7 @@ To specify your quote settings you need to use the input `HotelSettingsInput` in
 
 ### Requests Examples
 
-#### Cancel with `bookingID` from the book response
+#### Cancel with the `bookingID` from the book response
 
 <GraphqlSample query={cancelMutation} variables={cancelByBookingIDVariables} />
 
@@ -138,7 +138,7 @@ The information returned in Cancel response may vary between Sellers.
 
 ### Cancel Status
 
-Once a Cancel (Cancellation) method is run, our API response will provide its cancel status. This status represents the current status of the cancellation and can be categorized into four possible values:
+Once a Cancel method is run, our API response will provide its cancel status. This status represents the current status of the cancellation and can be categorized into four possible values:
 
 | Status         | Description                                                                                                                                                      |
 |----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -147,7 +147,7 @@ Once a Cancel (Cancellation) method is run, our API response will provide its ca
 | ON_REQUEST     | The reservation was completed but the product is still not available by the Seller, so the reservation goes into a waiting list. It is the Buyer’s responsibility to check if the booking is OK. |
 | UNKNOWN        | The cancellation process through TravelgateX was completed but due to a supplier error or a timeout, the reservation status is unknown. It is the Buyer’s responsibility to check if the booking is cancelled.   
 
-:::caution
+:::danger
 
 If you receive any of the "common errors" or a status other than "CANCELLED", it will be your responsibility as a Buyer to check the final status of the cancellation in the Seller's system.
 

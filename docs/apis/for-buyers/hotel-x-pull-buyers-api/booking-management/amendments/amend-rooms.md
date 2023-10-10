@@ -30,7 +30,7 @@ When creating your quote amend query, you have two different inputs to fill base
 
 #### 1. Criteria 
 
-You can perform the `query` (simulation) of the amendment sending all the booking information (references, dates, hotel code) or sending the bookingID got in the booking flow:
+You can perform the `query` (simulation) of the amendment sending all the booking information (`reference`, `dates`, `hotelCode`) or sending the bookingID got in the booking flow:
 
 * Booking information:
    * `accessCode`
@@ -89,9 +89,9 @@ When creating your quote amend query, you have two different inputs to fill base
 1. Data
 2. Settings
 
-#### 1. Data 
+### 1. Data 
 
-You must perform the `mutation` (commit) of the amendment sending the amendmentID received in the quote amend response:
+You must perform the `mutation` (commit) of the amendment sending the `amendmentID` received in the quote amend response:
 * `amendmentID`
 
 ### 2. Settings 

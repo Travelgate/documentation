@@ -1,0 +1,38 @@
+---
+sidebar_position: 3
+---
+
+import {allAccessesListQuery, allAccessesDetailQuery} from "../../../../../src/graphql/admin/allaccesses.query";
+
+
+# Get Accesses
+
+The `allAccesses` query provides you with all your available accesses and their basic information. Remember that an `access` is the set of credentials and authentication configuration that enables a Buyer to connect to a Seller.
+
+### Simple Accesses Request
+
+When performing a simple `allAccesses` request, the following fields will be returned for all your accesses:
+
+* `name`
+* `isActive`
+* `code`
+
+
+<GraphqlSample query={allAccessesListQuery}/>
+
+
+### Advanced Accesses Request
+
+If you want to obtain detailed information about each access, you can request additional fields, allowing you to access the parameters contained within each access.
+
+* `name`
+* `isActive`
+* `code`
+* `supplier`
+* `isTest`
+* `user`
+* `password`
+* `urls`
+* `parameters`
+
+<GraphqlSample query={allAccessesDetailQuery}/>

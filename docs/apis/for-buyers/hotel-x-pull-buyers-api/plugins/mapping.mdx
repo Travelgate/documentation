@@ -10,7 +10,7 @@ To get started with the Mapping plugin, follow these simple steps:
 
 ## 1. Create and upload your Mapping file
 
-First, create your mapping file for the desired entity (hotel, board, room...) in the correct format and then upload it to your FTP account. To assist you with this process, you can download the template file below, add your own rules, save it in CSV format, and then upload it to the corresponding folder in your FTP.
+First, create your mapping file for the desired entity (hotel, board, room...) in the correct format and then upload it to your FTP account. To assist you with this process, you can download the template file below ⬇️, add your own rules, save it in CSV format, and then upload it to the corresponding folder in your FTP.
 
 
 ```mdx-code-block
@@ -20,19 +20,19 @@ First, create your mapping file for the desired entity (hotel, board, room...) i
 &nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX  _0000  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁Maps  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁Hotel  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[[Buyer Context]  _[Supplier Context]  _hotel  _map.csv](../../../../../static/files/hotel-x/[Buyer Context]_[Supplier Context]_hotel_map.csv)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[BuyerContext_SupplierContext_hotel_map.csv](../../../../../static/files/hotel-x/BuyerContext_SupplierContext_hotel_map.csv)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁Board  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[[Buyer Context]  _[Supplier Context]  _board  _map.csv](../../../../../static/files/hotel-x/[Buyer Context]_[Supplier Context]_board_map.csv)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[BuyerContext_SupplierContext_board_map.csv](../../../../../static/files/hotel-x/BuyerContext_SupplierContext_board_map.csv)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁Room  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[[Buyer Context]  _[Supplier Context]  _room  _map.csv](../../../../../static/files/hotel-x/[Buyer Context]_[Supplier Context]_room_map.csv)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[BuyerContext_SupplierContext_room_map.csv](../../../../../static/files/hotel-x/BuyerContext_SupplierContext_room_map.csv)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁Rate  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[[Buyer Context]  _[Supplier Context]  _rate  _map.csv](../../../../../static/files/hotel-x/[Buyer Context]_[Supplier Context]_rate_map.csv)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[BuyerContext_SupplierContext_rate_map.csv](../../../../../static/files/hotel-x/BuyerContext_SupplierContext_rate_map.csv)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁Amenity  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[[Buyer Context]  _[Supplier Context]  _amenity  _map.csv](../../../../../static/files/hotel-x/[Buyer Context]_[Supplier Context]_amenity_map.csv)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[BuyerContext_SupplierContext_amenity_map.csv](../../../../../static/files/hotel-x/BuyerContext_SupplierContext_amenity_map.csv)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁Promotion  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[[Buyer Context]  _[Supplier Context]  _promotion  _map.csv](../../../../../static/files/hotel-x/[Buyer Context]_[Supplier Context]_promotion_map.csv)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[BuyerContext_SupplierContext_promotion_map.csv](../../../../../static/files/hotel-x/BuyerContext_SupplierContext_promotion_map.csv)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁Room description  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[[Buyer Context]  _[Supplier Context]  _roomdescription  _map.csv](../../../../../static/files/hotel-x/[Buyer Context]_[Supplier Context]_roomdescription_map.csv) 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[BuyerContext_SupplierContext_roomdescription_map.csv](../../../../../static/files/hotel-x/BuyerContext_SupplierContext_roomdescription_map.csv) 
 
 </BrowserWindow>
 ```
@@ -52,8 +52,8 @@ If you need assistance with requesting your credentials to access the FTP server
 
 ### File format specification
 
-* **File Name:** [Buyer Context]_[Supplier Context]_[entity]_map.csv
-* **Directory:** F0  _0000/HotelX  _0000/Maps/[entity]
+* **File Name:** BuyerContext_SupplierContext_entity_map.csv
+* **Directory:** F0\_0000/HotelX\_0000/Maps/[entity]
 * **Delimiter:** Comma (`,`)
 * **Header Row:**
    * Buyer Context: Buyer's context code
@@ -70,7 +70,7 @@ If you need assistance with requesting your credentials to access the FTP server
 
 ## 2. Execute Mapping plugin in your query
 
-:::note
+:::caution
 
 In the case of mapping, it will not be necessary to indicate the plugin at the request level for all mappings, only for amenities_map and promotions_map. In the remaining cases, hotel_map, board_map, room_map, etc., you just need to upload the file to the FTP.
 

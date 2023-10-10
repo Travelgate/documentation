@@ -46,9 +46,9 @@ This query offers versatility, with certain fields marked as mandatory (`access`
 
 **Optional criteria**
 * `hotelCodes` (search by hotel)
-* `countries` ??? (search by country)
+* `countries` (search by country)
 * `destinationCodes` (search by destination)
-* `ranks` ???
+* `ranks`
 * `maxSize` (paginate response)
 
 
@@ -66,7 +66,7 @@ To include the token in your request, all you need to do is:
 
 **Query variables**
 
-First, in your hotels query you won't indicate any `token`input:
+First, in your hotels query you won't indicate any `token` input:
 
 ```json
 {
@@ -120,7 +120,7 @@ This token should be used as input in your next hotels query, inside the `token`
 
 * **Date filters:** These filters allow searching by dates in which the hotels have been created (`createdAt_in`, `createdAt_It`, `createdAt_gt` etc.), updated (`updatedAt_in`, `updatedAt_It`, `updatedAt_gt` etc.), or deleted (`deletedAt_in`, `deletedAt_It`, `deletAt_gt` etc.).
 
-* **Field filters (boolean: true or false):** These filters allow searching hotels that have information in indicated fields, such as country (`country_in`), category (`category_in`), destination (`destination_in`), name (`name_in`), and coordinates (`coordinates_in`).
+* **Field filters** (boolean: true or false): These filters allow searching hotels that have information in indicated fields, such as country (`country_in`), category (`category_in`), destination (`destination_in`), name (`name_in`), and coordinates (`coordinates_in`).
 
 ```json
 {
@@ -143,33 +143,35 @@ Take a look at the [API Playground](/playground/) to see all the filters.
 
 ### Requests examples
 
-#### Search complete hotel list from a supplier
+#### Search for the complete hotel list from a supplier
 
 <GraphqlSample query={hotelsQuery} variables={hotelsVariables} />
 
 
-#### Search for specific country
+#### Search for a specific country from a supplier
 
-When utilizing the Hotels List Query, for more personalized results, filter specific hotels, countries or destinations based on your interests. For example, to focus solely on the country Greece inventory of a Seller, add the `cpuntries` field with "GR" in your criteria. This will ensure you receive hotels directly related to that country, providing you with highly targeted and relevant information.
+When utilizing the Hotels List Query, for more personalized results, filter specific hotels, countries or destinations based on your interests. For example, to focus solely on the inventory of a seller in Greece, add the `countries` field with "GR" in your criteria. This will ensure you receive hotels directly related to that country, providing you with highly targeted and relevant information.
 
 <GraphqlSample query={hotelsQuery} variables={hotelsByCountryVariables} />
 
+
 You would need to apply the same approach for search for specific hotels (`hotelCodes`) and destinations (`destinationCodes`). 
 
-#### Search for specific destination
 
-For example, if we want to obtain only hotels from "Santorini", we can use the destination code for that zone. In our case, our test suppliers as code "101402" as Santorini, so we need to specify this code in the `destinationCodes` field:
+#### Search for a specific destination from a supplier
+
+For example, if you want to obtain only hotels from "Santorini", you can use the destination code for that zone. In the bellow case, test supplier have determined code "101402" as Santorini, so you need to specify this code in the `destinationCodes` field:
 
 <GraphqlSample query={hotelsQuery} variables={hotelsByDestinationCodeVariables} />
 
-#### Search for specific hotel code
+#### Search for a specific hotel code from a supplier
 
-And if we want a list of specific hotel codes:
+If you want to retrieve the information of specific hotel codes from a supplier, you will need to specify the codes in the `hotelCodes` field:
 
 <GraphqlSample query={hotelsQuery} variables={hotelsByHotelCodeVariables} />
 
 
-#### Search for a specific creation date
+#### Search for a specific creation date from a supplier
 
 <GraphqlSample query={hotelsQuery} variables={hotelsByDateFilterVariables} />
 
@@ -192,7 +194,7 @@ To obtain the total number of properties in the list, you can easily add the `co
 
 Hotel-X API fully supports GIATA codes in Hotel-X Hotels Query response. Note that GIATA codes are only available at a hotel level.
 
-GIATA information is retrieved in the node `giataData`. This information is not returned by default, to activate this feature, [submit a ticket](https://app.travelgatex.com/tickets) with your GIATA credentials and specified Sellers for activation to our Customer Care team. Once GIATA is implemented for your account, add `giataData` node to your Hotels Query to receive GIATA details in the response.
+GIATA information is retrieved in the node `giataData`. This information is not returned by default, to activate this feature, [open a ticket](https://app.travelgatex.com/tickets) to our Customer Care team with your GIATA credentials and specified Sellers for activation. Once GIATA is implemented for your account, add `giataData` node to your Hotels Query to receive GIATA details in the response.
 
 **Request**
 

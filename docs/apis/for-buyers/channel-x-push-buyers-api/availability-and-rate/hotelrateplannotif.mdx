@@ -1,0 +1,838 @@
+---
+sidebar_position: 3
+---
+
+# HotelRatePlanNotif
+
+The HotelRatePlanNotif message contains information about rate prices and supplements. No rate information will be returned except Code, currency and status.
+
+Our system works with up to **3 types of prices: per room, per occupancy and per standard occupancy**. Although it is unusual that a channel works with more than one, it can happen. If this is the case, the 3 price types can coexist and the system should always return the lowest one at availability response. Also when more than one price is charged for the same day, the newest price will be returned as available price.
+
+#### **Price per Room**
+When a price is charged per Room means that all occupancies allowed in the room will have the same price. If an `AdditionalGuestAmount` are charged for occupancies over the standard occupancy, they will be applied.
+
+<details>
+    <summary>Sample scenarios for "Price per Room" price calculations.</summary>
+    <div>
+        <div><b>Case 1</b>
+        <br></br> 
+        Standard occupancy: 2
+        <br></br> 
+        Room uses:
+        <ul>
+		   <li>1-0-0</li>
+           <li>2-0-0</li>
+           <li>1-1-0</li>
+        </ul>  
+        Message:
+<p>
+
+```json
+<BaseByGuestAmts>
+    <BaseByGuestAmt Type = "25" AmountAfterTax="100.00"/>
+</BaseByGuestAmts>
+```
+</p>
+        Price: 
+        <table>
+				<thead>
+					<tr>
+						<th>
+							<strong>Occupancy</strong>
+						</th>
+						<th>
+							<strong>Price</strong>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1-0-0</td>
+						<td>100</td>
+					</tr>
+					<tr>
+						<td>2-0-0</td>
+						<td>100</td>
+					</tr>
+					<tr>
+						<td>1-0-0</td>
+						<td>100</td>
+					</tr>
+				</tbody>
+			</table>
+        </div>
+        <br></br> 
+        <div><b>Case 2</b>
+        <br></br> 
+        Standard occupancy: 2
+        <br></br> 
+        Room uses:
+        <ul>
+		   <li>1-0-0</li>
+           <li>2-0-0</li>
+           <li>3-0-0</li>
+           <li>1-1-0</li>
+           <li>3-1-0</li>
+        </ul>  
+        Message:
+<p>
+
+```json
+<BaseByGuestAmts>
+    <BaseByGuestAmt Type = "25" AmountAfterTax="100.00"/>
+</BaseByGuestAmts>
+<AdditionalGuestAmounts>
+    <AdditionalGuestAmount MaxAdditionalGuests = "1" Amount = "20.00" AgeQualifyingCode = "10" />
+    <AdditionalGuestAmount MaxAdditionalGuests = "1" Amount = "10.00" AgeQualifyingCode = "8" />
+</AdditionalGuestAmounts>
+```
+</p>
+        Price: 
+        <table>
+				<thead>
+					<tr>
+						<th>
+							<strong>Occupancy</strong>
+						</th>
+						<th>
+							<strong>Price</strong>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1-0-0</td>
+						<td>100</td>
+					</tr>
+					<tr>
+						<td>2-0-0</td>
+						<td>100</td>
+					</tr>
+					<tr>
+						<td>3-0-0</td>
+						<td>100 + (100⁄2 + 20) = 170</td>
+					</tr>
+                    <tr>
+						<td>1-1-0</td>
+						<td>100</td>
+					</tr>
+                    <tr>
+						<td>3-1-0</td>
+						<td>100 + (100⁄2 + 20) + (100⁄2 + 10) = 230</td>
+					</tr>
+				</tbody>
+			</table>
+        </div>
+        <br></br>
+        <div><b>Case 3</b>
+        <br></br> 
+        Standard occupancy: 3
+        <br></br> 
+        Room uses:
+        <ul>
+		   <li>1-0-0</li>
+           <li>2-0-0</li>
+           <li>3-0-0</li>
+           <li>4-0-0</li>
+        </ul>  
+        Message:
+<p>
+
+```json
+<BaseByGuestAmts>
+    <BaseByGuestAmt Type = "25" AmountAfterTax="120.00"/>
+</BaseByGuestAmts>
+<AdditionalGuestAmounts>
+    <AdditionalGuestAmount MaxAdditionalGuests = "1" Amount = "20.00" AgeQualifyingCode = "10" />
+</AdditionalGuestAmounts>
+```
+</p>
+        Price: 
+        <table>
+				<thead>
+					<tr>
+						<th>
+							<strong>Occupancy</strong>
+						</th>
+						<th>
+							<strong>Price</strong>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1-0-0</td>
+						<td>120</td>
+					</tr>
+					<tr>
+						<td>2-0-0</td>
+						<td>120</td>
+					</tr>
+					<tr>
+						<td>3-0-0</td>
+						<td>120</td>
+					</tr>
+                    <tr>
+						<td>4-0-0</td>
+						<td>120 + (120⁄3 + 20) = 180</td>
+					</tr>
+				</tbody>
+			</table>
+        </div> 
+    </div>
+</details>
+
+
+#### **Price per Pax/Guest** (Standard Occupancy)
+When a price is charged per Pax means that the price is for the number of guests specified. If NumberOfGuests is equal or under the standard occupancy, the price returned will have to be the same as the price charged. If `NumberOfGuests` is over the Standard Occupancy, the price is calculated from the Standard Occupancy price and the `AdditionalGuestAmount` charged.
+
+<details>
+    <summary>Sample scenarios for "Price per Pax/Guest" price calculations.</summary>
+    <div>
+        <div><b>Case 1</b>
+        <br></br> 
+        Standard occupancy: 2
+        <br></br> 
+        Room uses:
+        <ul>
+		   <li>1-0-0</li>
+           <li>2-0-0</li>
+        </ul>  
+        Message:
+<p>
+
+```json
+<BaseByGuestAmts>
+    <BaseByGuestAmt NumberOfGuests = "2" AmountAfterTax="100.00"/>
+</BaseByGuestAmts> 
+```
+</p>
+        Price: 
+        <table>
+				<thead>
+					<tr>
+						<th>
+							<strong>Occupancy</strong>
+						</th>
+						<th>
+							<strong>Price</strong>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1-0-0</td>
+						<td>Ø</td>
+					</tr>
+					<tr>
+						<td>2-0-0</td>
+						<td>2*(100⁄2) = 100</td>
+					</tr>
+				</tbody>
+			</table>
+        </div>
+        <br></br> 
+        <div><b>Case 2</b>
+        <br></br> 
+        Standard occupancy: 2
+        <br></br> 
+        Room uses:
+        <ul>
+		   <li>1-0-0</li>
+           <li>2-0-0</li>
+        </ul>  
+        Message:
+<p>
+
+```json
+<BaseByGuestAmts>
+    <BaseByGuestAmt NumberOfGuests = "1" AmountAfterTax="100.00"/>
+    <BaseByGuestAmt NumberOfGuests = "2" AmountAfterTax="130.00"/>
+</BaseByGuestAmts>
+```
+</p>
+        Price: 
+        <table>
+				<thead>
+					<tr>
+						<th>
+							<strong>Occupancy</strong>
+						</th>
+						<th>
+							<strong>Price</strong>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1-0-0</td>
+						<td>100</td>
+					</tr>
+					<tr>
+						<td>2-0-0</td>
+						<td>2*(130⁄2) = 130</td>
+					</tr>
+				</tbody>
+			</table>
+        </div>
+        <br></br>
+        <div><b>Case 3</b>
+        <br></br> 
+        Standard occupancy: 2
+        <br></br> 
+        Room uses:
+        <ul>
+		   <li>1-0-0</li>
+           <li>2-0-0</li>
+           <li>3-0-0</li>
+        </ul>  
+        Message:
+<p>
+
+```json
+<BaseByGuestAmts>
+    <BaseByGuestAmt NumberOfGuests = "2" AmountAfterTax="100.00"/>
+</BaseByGuestAmts>
+<AdditionalGuestAmounts>
+    <AdditionalGuestAmount MaxAdditionalGuests = "1" Amount = "40.00" AgeQualifyingCode = "10"/>
+</AdditionalGuestAmounts>
+```
+</p>
+        Price: 
+        <table>
+				<thead>
+					<tr>
+						<th>
+							<strong>Occupancy</strong>
+						</th>
+						<th>
+							<strong>Price</strong>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1-0-0</td>
+						<td>Ø</td>
+					</tr>
+					<tr>
+						<td>2-0-0</td>
+						<td>2*(100⁄2) = 100</td>
+					</tr>
+					<tr>
+						<td>3-0-0</td>
+						<td>(100⁄2) + (100⁄2) + (100⁄2) + (40) = 190</td>
+					</tr>
+				</tbody>
+			</table>
+        </div> 
+            <br></br>
+        <div><b>Case 4</b>
+        <br></br> 
+        Standard occupancy: 2
+        <br></br> 
+        Room uses:
+        <ul>
+		   <li>1-0-0</li>
+           <li>2-0-0</li>
+           <li>3-0-0</li>
+        </ul>  
+        Message:
+<p>
+
+```json
+<BaseByGuestAmts>
+    <BaseByGuestAmt NumberOfGuests = "2" AmountAfterTax="100.00"/>
+</BaseByGuestAmts>
+<AdditionalGuestAmounts>
+    <AdditionalGuestAmount MaxAdditionalGuests = "1" Amount = "40.00" AgeQualifyingCode = "10" Type="Exclusive"/>
+</AdditionalGuestAmounts>
+```
+</p>
+        Price: 
+        <table>
+				<thead>
+					<tr>
+						<th>
+							<strong>Occupancy</strong>
+						</th>
+						<th>
+							<strong>Price</strong>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1-0-0</td>
+						<td>Ø</td>
+					</tr>
+					<tr>
+						<td>2-0-0</td>
+						<td>2*(100⁄2) = 100</td>
+					</tr>
+					<tr>
+						<td>3-0-0</td>
+						<td>(100⁄2) + (100⁄2) + 40 = 140</td>
+					</tr>
+				</tbody>
+			</table>
+        </div> 
+        <div><b>Case 5</b>
+        <br></br> 
+        Standard occupancy: 2
+        <br></br> 
+        Room uses:
+        <ul>
+		   <li>1-0-0</li>
+           <li>2-0-0</li>
+           <li>1-1-0</li>
+        </ul>  
+        Message:
+<p>
+
+```json
+<BaseByGuestAmts>
+    <BaseByGuestAmt NumberOfGuests = "2" AmountAfterTax="100.00"/>
+</BaseByGuestAmts>
+<AdditionalGuestAmounts>
+    <AdditionalGuestAmount MaxAdditionalGuests = "1" Amount = "40.00" AgeQualifyingCode = "8" />
+</AdditionalGuestAmounts>
+```
+</p>
+        Price: 
+        <table>
+				<thead>
+					<tr>
+						<th>
+							<strong>Occupancy</strong>
+						</th>
+						<th>
+							<strong>Price</strong>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1-0-0</td>
+						<td>Ø</td>
+					</tr>
+					<tr>
+						<td>2-0-0</td>
+						<td>2*(100⁄2) = 100</td>
+					</tr>
+					<tr>
+						<td>1-1-0</td>
+						<td>2*(100⁄2) = 100</td>
+					</tr>
+				</tbody>
+			</table>
+        </div>
+        <div><b>Case 5.1</b>
+        <br></br> 
+        Standard occupancy: 2
+        <br></br> 
+        Room uses:
+        <ul>
+		   <li>1-0-0</li>
+           <li>2-0-0</li>
+           <li>1-0-1</li>
+        </ul>  
+        Message:
+<p>
+
+```json
+<BaseByGuestAmts>
+    <BaseByGuestAmt NumberOfGuests = "2" AmountAfterTax="100.00"/>
+</BaseByGuestAmts>
+<AdditionalGuestAmounts>
+    <AdditionalGuestAmount MaxAdditionalGuests = "1" Amount = "40.00" AgeQualifyingCode = "7" />
+</AdditionalGuestAmounts>
+```
+</p>
+        Price: 
+        <table>
+				<thead>
+					<tr>
+						<th>
+							<strong>Occupancy</strong>
+						</th>
+						<th>
+							<strong>Price</strong>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1-0-0</td>
+						<td>Ø</td>
+					</tr>
+					<tr>
+						<td>2-0-0</td>
+						<td>2*(100⁄2) = 100</td>
+					</tr>
+					<tr>
+						<td>1-1-0</td>
+						<td>2*(100⁄2) = 100</td>
+					</tr>
+				</tbody>
+			</table>
+        </div>
+        <div><b>Case 6</b>
+        <br></br> 
+        Standard occupancy: 2
+        <br></br> 
+        Room uses:
+        <ul>
+		   <li>1-0-0</li>
+           <li>2-0-0</li>
+           <li>2-1-0</li>
+        </ul>  
+        Message:
+<p>
+
+```json
+<BaseByGuestAmts>
+    <BaseByGuestAmt NumberOfGuests = "2" AmountAfterTax="100.00"/>
+</BaseByGuestAmts>
+<AdditionalGuestAmounts>
+    <AdditionalGuestAmount MaxAdditionalGuests = "1" Amount = "-40.00" AgeQualifyingCode = "8" />
+</AdditionalGuestAmounts>
+```
+</p>
+        Price: 
+        <table>
+				<thead>
+					<tr>
+						<th>
+							<strong>Occupancy</strong>
+						</th>
+						<th>
+							<strong>Price</strong>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1-0-0</td>
+						<td>Ø</td>
+					</tr>
+					<tr>
+						<td>2-0-0</td>
+						<td>2*(100⁄2) = 100</td>
+					</tr>
+					<tr>
+						<td>1-1-0</td>
+						<td>2*(100⁄2) + ((100⁄2) -40) = 60</td>
+					</tr>
+				</tbody>
+			</table>
+        </div>
+        <div><b>Case 7</b>
+        <br></br> 
+        Standard occupancy: 2
+        <br></br> 
+        Room uses:
+        <ul>
+		   <li>1-0-0</li>
+           <li>2-0-0</li>
+           <li>3-0-0</li>
+           <li>4-0-0</li>
+        </ul>  
+        Message:
+<p>
+
+```json
+<BaseByGuestAmts>
+    <BaseByGuestAmt NumberOfGuests = "2" AmountAfterTax="100.00"/>
+</BaseByGuestAmts>
+<AdditionalGuestAmounts>
+    <AdditionalGuestAmount MaxAdditionalGuests = "1" Amount = "10.00" AgeQualifyingCode = "10" />
+    <AdditionalGuestAmount MaxAdditionalGuests = "2" Amount = "-15.00" AgeQualifyingCode = "10" />
+</AdditionalGuestAmounts>
+```
+</p>
+        Price: 
+        <table>
+				<thead>
+					<tr>
+						<th>
+							<strong>Occupancy</strong>
+						</th>
+						<th>
+							<strong>Price</strong>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1-0-0</td>
+						<td>Ø</td>
+					</tr>
+					<tr>
+						<td>2-0-0</td>
+						<td>2*(100⁄2) = 100</td>
+					</tr>
+					<tr>
+						<td>3-0-0</td>
+						<td>(100⁄2) + (100⁄2) + ((100⁄2) + 10) = 160</td>
+					</tr>
+                    <tr>
+						<td>4-0-0</td>
+						<td>(100⁄2) + (100⁄2) + ((100⁄2) + 10) + ((100⁄2) - 15) = 195</td>
+					</tr>
+				</tbody>
+			</table>
+        </div>
+        </div>
+        <div><b>Case 8</b>
+        <br></br> 
+        Standard occupancy: 2
+        <br></br> 
+        Room uses:
+        <ul>
+		   <li>1-0-0</li>
+           <li>2-0-0</li>
+           <li>3-0-0</li>
+           <li>4-0-0</li>
+        </ul>  
+        Message:
+<p>
+
+```json
+<BaseByGuestAmts>
+    <BaseByGuestAmt NumberOfGuests = "2" AmountAfterTax="100.00"/>
+</BaseByGuestAmts>
+<AdditionalGuestAmounts>
+    <AdditionalGuestAmount MaxAdditionalGuests = "1" Amount = "-10.00" AgeQualifyingCode = "10" />
+</AdditionalGuestAmounts>
+```
+</p>
+        Price: 
+        <table>
+				<thead>
+					<tr>
+						<th>
+							<strong>Occupancy</strong>
+						</th>
+						<th>
+							<strong>Price</strong>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1-0-0</td>
+						<td>Ø</td>
+					</tr>
+					<tr>
+						<td>2-0-0</td>
+						<td>2*(100⁄2) = 100</td>
+					</tr>
+					<tr>
+						<td>3-0-0</td>
+						<td>(100⁄2) + (100⁄2) + ((100⁄2) -10) = 140</td>
+					</tr>
+                    <tr>
+						<td>4-0-0</td>
+						<td>(100⁄2) + (100⁄2) + ((100⁄2) -10) + ((100⁄2) - 10) = 180</td>
+					</tr>
+				</tbody>
+			</table>
+        </div>
+        <div><b>Case 9</b>
+        <br></br> 
+        Standard occupancy: 3
+        <br></br> 
+        Room uses:
+        <ul>
+		   <li>1-0-0</li>
+           <li>2-0-0</li>
+           <li>3-0-0</li>
+           <li>4-0-0</li>
+           <li>5-0-0</li>
+        </ul>  
+        Message:
+<p>
+
+```json
+<BaseByGuestAmts>
+    <BaseByGuestAmt NumberOfGuests = "3" AmountAfterTax="150.00"/>
+</BaseByGuestAmts>
+<AdditionalGuestAmounts>
+    <AdditionalGuestAmount MaxAdditionalGuests = "1" Amount = "-10.00" AgeQualifyingCode = "10" />
+    <AdditionalGuestAmount MaxAdditionalGuests = "2" Amount = "15.00" AgeQualifyingCode = "10" />
+</AdditionalGuestAmounts>
+```
+</p>
+        Price: 
+        <table>
+				<thead>
+					<tr>
+						<th>
+							<strong>Occupancy</strong>
+						</th>
+						<th>
+							<strong>Price</strong>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1-0-0</td>
+						<td>Ø</td>
+					</tr>
+					<tr>
+						<td>2-0-0</td>
+						<td>2*(100⁄2) = 100</td>
+					</tr>
+					<tr>
+						<td>3-0-0</td>
+						<td>3*(150⁄3) = 150</td>
+					</tr>
+                    <tr>
+						<td>4-0-0</td>
+						<td>(150⁄3) + (150⁄3) + (150⁄3) + ((150⁄3) - 10) = 190</td>
+					</tr>
+                    <tr>
+						<td>5-0-0</td>
+						<td>(150⁄3) + (150⁄3) + (150⁄3) + ((150⁄3) - 10) + ((150⁄3) + 15) = 255</td>
+					</tr>
+				</tbody>
+			</table>
+        </div>
+
+</details>
+
+
+#### **Price per Occupancy**
+When a price is charged per Occupancy means that this price will only be available for the specified occupancy. No `AdditionalGuestAmount` are applied.
+
+<details>
+    <summary>Sample scenarios for "Price per Occupancy" price calculations.</summary>
+    <div>
+        <div><b>Case 1</b>
+        <br></br>
+        Room uses:
+        <ul>
+		   <li>1-0-0</li>
+           <li>2-0-0</li>
+           <li>3-0-0</li>
+        </ul>  
+        Message:
+<p>
+
+```json
+<BaseByGuestAmts>
+    <BaseByGuestAmt Type = "14" AmountAfterTax="100.00" Code = "2-0-0"/>
+</BaseByGuestAmts> 
+```
+</p>
+        Price: 
+        <table>
+				<thead>
+					<tr>
+						<th>
+							<strong>Occupancy</strong>
+						</th>
+						<th>
+							<strong>Price</strong>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1-0-0</td>
+						<td>Ø</td>
+					</tr>
+					<tr>
+						<td>2-0-0</td>
+						<td>100</td>
+					</tr>
+                    <tr>
+						<td>3-0-0</td>
+						<td>Ø</td>
+					</tr>
+				</tbody>
+			</table>
+        </div>
+        <br></br> 
+        <div><b>Case 2</b>
+        <br></br> 
+        Room uses:
+        <ul>
+		   <li>2-1-0</li>
+           <li>2-0-1</li>
+        </ul>  
+        Message:
+<p>
+
+```json
+<BaseByGuestAmts>
+    <BaseByGuestAmt Type = "14" AmountAfterTax="95.00" Code = "2-1-0"/>
+    <BaseByGuestAmt Type = "14" AmountAfterTax="80.00" Code = "2-0-1"/>
+</BaseByGuestAmts>  
+```
+</p>
+        Price: 
+        <table>
+				<thead>
+					<tr>
+						<th>
+							<strong>Occupancy</strong>
+						</th>
+						<th>
+							<strong>Price</strong>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>2-1-0</td>
+						<td>95</td>
+					</tr>
+					<tr>
+						<td>2-0-1</td>
+						<td>80</td>
+					</tr>
+				</tbody>
+			</table>
+        </div> 
+    </div>
+</details>
+
+## Frequently asked questions
+
+<details>
+    <summary>For the standard occupancy calculation, should the data from `Quantities` `StandardNumBeds` or `BaseByGuestAmt` `NumberOfGuests` be consumed?</summary>
+    <div>
+        <div>If this is set as true, the type of Min/Max LOS is on arrival for that specific day. For this type, the values for Min/Max LOS on arrival, only apply if it is applied to the check-in day. If this is set as false, it’s a normal Min/Max LOS.</div>
+    </div>
+</details>
+
+<details>
+    <summary>Both tax `ChargeFrequency` and `ChargeUnit` are optional bits of information. So, what happens if they are not returned in a push message? Is need to re-calculate the price from `HotelRatePlanNotif` (if have tax elements are returned), or is it possible to assume `AmountAfterTax` in the final price?</summary>
+    <div>
+        <div>If these elements are not returned, then a fixed amount will be returned as a tax if you have set it up in the SetUp part of the extranet and depending on the type of tax you have set up. You always have to calculate the price that is returned in this tag with the tax.</div>
+    </div>
+</details>
+
+<details>
+    <summary>If I set up an additional tax (i.e. per pax and per night), should I add up or subtract it from `AmountAfterTax` attribute?</summary>
+    <div>
+        <div>The `AmountAfterTax` attribute inside the `RatePlanNotify` does not include the taxes you will set up (it might include any taxes the channel has loaded on their end if they have done so). The `AmountAfterTax` at the time of booking (the Reservation RS logs) will include the taxes indicated by you.</div>
+    </div>
+</details>
+
+<details>
+    <summary>Referring to the RatePlan message, there are `Supplement`. Understanding price is for meal basis, should I require calculation to add with `AmountAfterTax`? The purpose of this is an extra cost for supplement in case there are `AdditionalGuest` applied.</summary>
+    <div>
+        <div>The Supplement tag is for MealPlans, not for additional paxes. The price indicated in there, shows the price of the supplement.</div>
+    </div>
+</details>
+
+<details>
+    <summary>What happens if more than one price type is loaded for the same day/range of days and for the same room/rooms?</summary>
+    <div>
+        <div>All price types can be loaded at the same time (or at different times without overwriting). This isn’t usually the case and almost never is there more than 1 price type loaded at a time. If all price types are loaded at the same time, or only two are loaded at the same time, at the time of the Availability search the price that is returned is the cheapest one.</div>
+    </div>
+</details>

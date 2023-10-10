@@ -6,7 +6,7 @@ module.exports = function (context, options) {
                 module: {
                     rules: [
                         {
-                            test: /  .m?js/,
+                            test: /\.m?js/,
                             resolve: {
                                 fullySpecified: false
                             }

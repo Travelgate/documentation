@@ -10,6 +10,6 @@ Therefore, if you are planning to develop Channel-X, please reach out to Travelg
 
 :::note
 
-Email for Travelgate's Onboarding Team: client-onboarding@travelgate.com
+For the onboarding team to configure your account, send an email to client-onboarding@travelgate.com.
 
 :::

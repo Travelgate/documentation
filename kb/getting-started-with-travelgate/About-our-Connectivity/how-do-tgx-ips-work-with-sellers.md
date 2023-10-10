@@ -87,7 +87,5 @@ You should add **only** the following IP list (updated on 15/11/2021):
 ## Does TravelgateX need to whitelist my IPs?💡
 At TravelgateX we ensure that all our IPs are whitelisted at the Seller's system. It's important to note that **our system doesn't filter by IP**, and that there is no need for us to whitelist them. If you encounter any errors, rest assured that they are not caused by the IPs.
 
-```js
+
 <TipContactCustomerCare />
-```
- 

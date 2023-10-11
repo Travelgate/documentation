@@ -23,7 +23,7 @@ You can access your recommended connections through both your [Dashboard](https:
 
 ![Alt text](image.png)
 
-### Discover ideal Partners effortlessly with our Network upgrade!🚀
+### Discover ideal Partners effortlessly with our Network upgrade!🚀  
 Now you have greater control over search results and access to relevant information in one convenient place. This feature is situated on the left-hand side of the page and includes new filtering options such as:
 * Headquarters country
 * Company type (Buyer/Seller)
@@ -46,7 +46,6 @@ Our system now suggests Company names as you type, displaying their logo and typ
 
  
 
-:::note
-**Wondering why you're seeing recommended Partners you're already connected with?**  
-It's because connections without traffic for the last 3 months will be suggested as a reminder for you to reactivate them - after all, they match your business!
+:::note Wondering why you're seeing recommended Partners you're already connected with?
+This is because connections without activity in the last 3 months will be proposed as a reminder for you to reactivate them. After all, they are a good fit for your business!
 :::

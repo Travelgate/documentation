@@ -11,7 +11,7 @@ An XML integration is basically a connector that acts as a "translator" between 
 ### Pull Integration⬅️
 
 #### What are Pull integrations?
-Pull integrations (like Pull integrations), always involve two agents:
+Pull integrations (like Pull integrations), always involve **two agents**:
 
 1. A Seller
 1. A Buyer
@@ -43,7 +43,7 @@ Once a PUSH connection is activated, the Buyer (Client) configures their SetUp i
 
 Once the Client has finished the Hotel SetUp, they inform the Channel Manager so they can "push" their product (availability, rates), which will be immediately processed and offered to the Buyer.
 
-:::note
+:::info
 Buyers, Hotels and Channel Managers should **always be in touch** in order to be aware of any updates in their SetUp (like modifications, new rates/rooms, etc.).
 :::
 

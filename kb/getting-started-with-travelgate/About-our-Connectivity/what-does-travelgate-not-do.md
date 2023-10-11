@@ -9,6 +9,6 @@ All our solutions have been conceived to empower our connectivity solution. We d
 
 :::tip
 
-Don't forget to check our [website](https://www.travelgatex.com/) for further information on our APPs and solutions🚀
+**Don't forget to check our [website](https://www.travelgatex.com/) for further information on our APPs and solutions🚀**
 
 :::

@@ -6,13 +6,13 @@ sidebar_position: 5
 
 ## What is TravelgateX Community?🚀
 
-Welcome to [TravelgateX Community](https://community.travelgatex.com/)! Get ready to dive into the world of new [Product releases](https://community.travelgatex.com/c/product-release/12), [API releases](https://community.travelgatex.com/c/tgx-apis-release-notes/6), and exciting announcements from our Product Team.
+**Welcome to [TravelgateX Community](https://community.travelgatex.com/)!** Get ready to dive into the world of new [Product releases](https://community.travelgatex.com/c/product-release/12), [API releases](https://community.travelgatex.com/c/tgx-apis-release-notes/6), and exciting announcements from our Product Team.
 
 But wait, there's more! We want to hear your thoughts on how we can take our products to the next level, whether it's adding new features or making improvements.
 
 At TravelgateX, we believe in the power of Product Development. It's all about making our products and services even better, one step at a time. So come on in and be a part of the journey. Your ideas can make a difference!
 
-:::note
+:::info
 At TravelgateX, we understand **Product Development** as any kind of development work that improves, adds or modifies functionalities to an existing products and/or services.
 :::
 

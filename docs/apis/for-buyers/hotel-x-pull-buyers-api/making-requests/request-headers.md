@@ -17,7 +17,7 @@ Accept-Encoding: gzip
 **API Key**: Authentication is required for every request to the TravelgateX GraphQL API. An API Key must be included in the HTTP Authorization request header to authenticate the user agent with the server. You can find your API Key on the Travelgate website in Connections > [Connections Settings](https://app.travelgatex.com/connections/settings).
 
 ```html
-Authorization: ApiKey
+Authorization: ApiKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```              
 
 ### Optional Request Headers

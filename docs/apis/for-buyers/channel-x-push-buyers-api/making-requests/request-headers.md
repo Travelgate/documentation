@@ -42,7 +42,7 @@ Authorization: Basic aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1RWWg2bVlJSkcyWQ=
 
 ### Optional Request Headers
 
-**Compression**: By default, requests are not compressed. However, you can choose to compress requests using the following compression methods: `gzip`, `deflate`, and `br`. If you are interested in receiving compressed requests, please let us know by opening a [ticket](https://app.travelgatex.com/tickets).
+**Compression**: By default, requests are not compressed. However, you can choose to compress requests using the following compression methods: `gzip`, `deflate`, and `br`. If you are interested in receiving compressed requests, please let us know by opening a [ticket](https://app.travelgatex.com/tickets) to our customer team.
 
 In the case of `gzip`:
 

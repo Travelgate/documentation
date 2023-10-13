@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 5
+sidebar_position: 4
 ---
 
 # What exactly is Hotel-X and why should I develop it?
@@ -33,9 +33,9 @@ Some of Hotel-X key benefits are:
 - **Malformed requests**: Hotel-X automatically returns an error and avoids malformed request to be sent to the Seller (e.g. requesting more days or paxes per room than those supported by the Seller).
 
 ### What do our Partners think about the Hotel-X development?⭐
-- 70% of our Partners said Hotel-X development took less time than expected.
-- 85% of our Partners found it easy to develop our API.
-- 95% of our Partners are very satisfied with the amount of support received during the development phase.
+- **70%** of our Partners said Hotel-X development took less time than expected.
+- **85%** of our Partners found it easy to develop our API.
+- **95%** of our Partners are very satisfied with the amount of support received during the development phase.
 
 :::tip
 **Learn more about Hotel-X on our [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/)📑**

@@ -23,7 +23,7 @@ You can access your recommended connections through both your [Dashboard](https:
 
 ![Alt text](image.png)
 
-### Discover ideal Partners effortlessly with our Network upgrade!🚀  
+### Discover ideal Partners effortlessly with our Network upgrade!🚀
 Now you have greater control over search results and access to relevant information in one convenient place. This feature is situated on the left-hand side of the page and includes new filtering options such as:
 * Headquarters country
 * Company type (Buyer/Seller)

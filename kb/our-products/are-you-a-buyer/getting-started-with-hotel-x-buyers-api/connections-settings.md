@@ -20,24 +20,24 @@ You will find 2 tabs: "API Settings" and "Manage Clients".
 * **API Settings:**  
 This section displays your [API Key](https://knowledge.travelgate.com/hotel-x-credentials) as Buyer, Business Settings and Timeout Settings. Both Business and Timeout settings displayed are the ones configured **by default** for your account, regardless of the folder, client and access - please note Settings set at request level override default settings.
 
-```
-image
-```
+	```
+	image
+	```
 
-```
-image
-```
+	```
+	image
+	```
 
 * **Manage Clients:**  
 Here you are able to check the Hotel-X clients already created for your account, as well as **generate** new ones - adding new clients is as easy as clicking on "Create new client">"Add the new client name"). Regarding **client modifications**, please open a [ticket](https://app.travelgatex.com/tickets) to our Customer Care Team and provide us your current client code and the new one.
 
-```
-image
-```
+	```
+	image
+	```
 
-```
-image
-```
+	```
+	image
+	```
 
 **BROWSING AS A SELLER🔎**  
 You will find only 1 tab: "API Settings".
@@ -45,7 +45,7 @@ You will find only 1 tab: "API Settings".
 It displays your [API Key](https://knowledge.travelgate.com/hotel-x-credentials) as Seller.
 
 
-:::warning  
+:::warning Important
 Please be aware that you will have **separate API Keys for your roles as a Seller and as a Buyer** in our Platform. For example, if you are currently browsing as a Buyer and require access to your Seller API Key, you can easily switch your Partner profile type to Seller.
 :::
 

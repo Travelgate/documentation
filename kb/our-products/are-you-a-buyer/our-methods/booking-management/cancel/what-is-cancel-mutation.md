@@ -12,7 +12,7 @@ You have two options to cancel a reservation:
 1. Using its bookingID.
 
 :::tip
-**Don't forget to check our article on [Book Mutation](https://knowledge.travelgate.com/hotel-x-development-book-mutation) for further details on the information returned in Book response🚀**
+Don't forget to check our article on [Book Mutation](https://knowledge.travelgate.com/hotel-x-development-book-mutation) for further details on the information returned in Book response🚀
 :::
 
 ### What information can I expect in Cancel response?✔️
@@ -30,7 +30,7 @@ The information returned in Cancel response may vary between Sellers, so please 
 1. Holder
 
 :::tip
-**Remember to check the Sellers' [Metadata](https://knowledge.travelgate.com/hotel-x-development-metadata) for further details on their specifications and information returned on their side in Cancel response.🔎**
+Remember to check the Sellers' [Metadata](https://knowledge.travelgate.com/hotel-x-development-metadata) for further details on their specifications and information returned on their side in Cancel response.🔎
 :::
 
 ### How are cancellation costs calculated and displayed?🔢

@@ -11,6 +11,14 @@ Virtual Credit Card plugin adds the possibility to:
 
 * **Cancel a virtual credit card (VCCCan):** The VCC cancel plugin is responsible for cancelling a virtual credit card identified by the id returned in the book response. The service will return the status of the payment card inside status field. This plugin should be utilized exclusively within the [Cancel](../booking-management/cancel) operation, contingent on the successful completion of the booking cancellation. To specify the virtual credit card to be used for cancellation, a rule that returns an access key will be employed, utilizing the same rule file as the VCC generator. You can establish rules within the `genvcc.csv` rule file to determine the utilization of a particular VCC based on rules within the file and request parameters.
 
+
+:::note
+
+In order to activate this payment type for your connection or connections, open a [ticket](https://app.travelgatex.com/tickets) to our dedicated Customer Care team.
+
+:::
+
+
 To get started with the VCC plugin, follow these simple steps:
 
 ##  1.Create and upload your GenVCC file
@@ -20,7 +28,7 @@ First, create your virtual credit card file in the correct format and then uploa
 ```mdx-code-block
 <BrowserWindow>
 
-📁F0\_0000  
+📁F0  _0000  
 &nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX_0000  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁BusinessRules  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[BuyerContext_sequential_genvcc.csv](../../../../../static/files/hotel-x/BuyerContext_sequential_genvcc.csv)
@@ -171,7 +179,7 @@ Bear in mind that this file is a collection of rules and we chose in every Book 
 <details>
     <summary>📹Learn how to change the format of the csv file in order to edit and save it</summary>
     <div>
-        <div>[Añadir vídeo]</div>
+        <div><iframe width="560" height="315" src="https://www.youtube.com/embed/XkOk3SkZ0Sg?si=TYhN1QfMwYE1fusw&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
     </div>
 </details>
 

@@ -4,12 +4,12 @@ sidebar_position: 1
 
 # Endpoint
 
-In the case of Channel-X, it is the responsibility of the Buyer to provide Travelgate with the endpoint that will receive the requests, as well as the username and password.
+In the case of Channel-X, it is the responsibility of the Buyer to provide Travelgate with the **endpoint** that will receive the requests, as well as the **username** and **password**.
 
-Therefore, if you are planning to develop Channel-X, please reach out to Travelgate's onboarding team. In your email, explain that you will be developing Channel-X and provide the **endpoint**, **username** and **password**. With this information, the Onboarding team will configure your account, enabling you to develop and effectively utilize Channel-X.
+Therefore, if you are planning to develop Channel-X, please reach out to Travelgate's onboarding team. In your email, explain that you will be developing Channel-X and provide the endpoint, username and password. With this information, the Onboarding team will configure your account, enabling you to develop and effectively utilize Channel-X.
 
 :::note
 
-Email for Travelgate's Onboarding Team: client-onboarding@travelgate.com
+For the onboarding team to configure your account, send the email to client-onboarding@travelgate.com.
 
 :::

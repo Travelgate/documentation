@@ -30,9 +30,9 @@ In order to proceed with the certification we will need:
 
 - A cURL request and response of each of the Booking Flow methods and for all the cases detailed below:
 
-```
-image
-```
+    ```
+    image
+    ```
 
 
 - The resulting Hotel-X response interpretation screenshots of your system so we can ensure you are showing the information correctly. 
@@ -51,22 +51,22 @@ You can also activate any Seller you have an agreement with, even their producti
 
 ### Additional notes and recommendations✔️
 - Audit transactions in Search: Make sure you configure both your Query and Query variables according to this information:
-```
-query ($criteriaSearch: HotelCriteriaSearchInput, $settings: HotelSettingsInput, $filterSearch: HotelXFilterSearchInput) {
-  hotelX {
-    search(criteria: $criteriaSearch, settings: $settings, filterSearch: $filterSearch) {
-      auditData {
-        transactions {
-          request
-          response
-        }
-      }
-...
-```
+    ```
+    query ($criteriaSearch: HotelCriteriaSearchInput, $settings: HotelSettingsInput, $filterSearch: HotelXFilterSearchInput) {
+      hotelX {
+        search(criteria: $criteriaSearch, settings: $settings, filterSearch: $filterSearch) {
+          auditData {
+            transactions {
+              request
+              response
+            }
+          }
+    ...
+    ```
 
-```
-"auditTransactions": xxxx,
-```
+    ```
+    "auditTransactions": xxxx,
+    ```
 
 - Make sure you do not modify paxes ages throughout the Booking Flow.
 - More information in our [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/methods/bookingflow/) and [Hotel-X API Schema](https://api.travelgatex.com/playground).

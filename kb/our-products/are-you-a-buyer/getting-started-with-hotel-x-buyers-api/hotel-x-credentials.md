@@ -13,13 +13,13 @@ Once you have configured your account, you can access our App and check your Hot
 1. **Connections**: Click on "Connections" in the top menu. Then, click on "[Connections Settings](https://www.travelgatex.com/)".
 1. **API Settings**: Your Apikey will be displayed in a yellow box at the top of the page.
 
-```
-image
-```
+	```
+	image
+	```
 
-:::info
-**Please keep in mind that the Apikey will remain consistent across both test and production environments for all Sellers.**
-:::
+	:::info
+	**Please keep in mind that the Apikey will remain consistent across both test and production environments for all Sellers.**
+	:::
 
 ### Access☑️
 An access refers to the combination of credentials and authentication configuration that allows a Buyer to establish a connection with a Seller. It serves the purpose of distinguishing between different Sellers and filtering different credentials and configurations from the same Seller (e.g., B2B and B2C feeds). You can check this information in [My Connections](https://app.travelgatex.com/connections/myconnections).
@@ -31,8 +31,8 @@ For **Hotel-X implementation and testing**, we recommend using the following acc
 **How can I obtain an access code from an actual Seller?**
 To get your access code, simply establish a commercial agreement with the desired Partner and request activation through our website using the [Auto-Activations Form](https://knowledge.travelgate.com/auto-activations-quickguide).
 
-:::note
-**It is advisable to avoid making live bookings during the Hotel-X implementation process until your development has been certified by TravelgateX.**
+::: note
+It is advisable to avoid making live bookings during the Hotel-X implementation process until your development has been certified by TravelgateX.
 :::
 
 ### Client☑️
@@ -65,5 +65,5 @@ When you activate a new Seller, the context information will be provided to you 
 The distinction between the two is that an access holds your credentials for a specific connection, while a context is the internal TravelgateX code required to request either the original supplier hotel codes or your own hotel codes (previously mapped and uploaded to our FTP).
 
 :::info 
-**Feel free to check our [Hotel-X Buyers API Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/concepts/basicconcepts/supplier-access-client-context/) for additional information on Hotel-X credentials.**
+Feel free to check our [Hotel-X Buyers API Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/concepts/basicconcepts/supplier-access-client-context/) for additional information on Hotel-X credentials.
 :::

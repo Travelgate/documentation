@@ -24,13 +24,9 @@ This operation can include inserting a new object in a database, or deleting, or
 
 ### GraphQL Playground
 
-[API Playground](/playground/) is an interactive, enjoyable, and extremely fast way to familiarize yourself with our Hotel-X API.
+Get to know our [API Playground](/playground/) – a fun and interactive tool for getting to know our Hotel-X API! In the API Playground, you can easily customize your API requests by adding headers and variables. As you start typing your query, our Playground will even suggest fields and options, making it a breeze to build your queries. 
 
-In the API Playground, first, click on the "Seat Headers" button at the top left to add both the Gzip Compression header and API Key.
-
-As you begin typing the query, the Playground will provide autocomplete suggestions for the available fields to complete your query parameters. You can also click on the "Docs" button at the top right to learn more about our data model and explore all the options for constructing your query.
-
-You can customize the response you receive by setting Query variables in the bottom left pane of the Playground. This ensures that only the necessary fields are included in the response.
+To learn more about our data model and discover all the query possibilities, you can also explore our [GraphQL API Reference](/api/). And don't forget, you can tailor the response to your needs by setting query variables and fields. This way, you'll only get the information you're interested in.
 
 ### GraphQL Resources
 

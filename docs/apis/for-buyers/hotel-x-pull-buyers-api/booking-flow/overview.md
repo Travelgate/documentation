@@ -8,6 +8,9 @@ In order to book a hotel room, booking flow methods must be executed sequentiall
 
 ![Hotel-X Shopping Flow](../../../../../static/img/docs/hotel-x/hotel-x_shopping_flow.svg)
 
-Search is the first step in our booking flow, the goal is to check availability in the date range and pax specified for the requested hotels (or for the hotels in the destination requested). The call can search one or more sellers’ accesses. Quote is an operation used to assess and valuate the rate before the actual booking. It returns the same information as the Search response for a hotel rate with up-to-date price, along with additional information regarding the rate: rate breakdown and cancellation policies. Finally, Book operation requests a reservation confirmation for the specified optionId returned in Quote.
+1. **Search:** Start by checking availability for your desired dates and number of guests. You can search for one or multiple Sellers' access.
 
+2. **Quote:** This step allows you to evaluate the rate before making a final booking decision. It provides you with the same information as the Search response, including the most up-to-date pricing, rate details, and cancellation policies.
+
+3. **Book:** When you're ready, proceed with the Book operation. It requests a reservation confirmation using the specific optionId obtained from the Quote step.
 

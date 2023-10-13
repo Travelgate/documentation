@@ -35,4 +35,4 @@ To implement this feature, please follow below steps:
 ```html
 TGX-Content-Type: graphqlx/json
 ```  
-3. Test a sample call for every request using the header
+3. Test a sample call for every request using the header.

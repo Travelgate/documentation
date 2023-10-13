@@ -20,13 +20,6 @@ Search serves as the initial step in our booking flow, with the objective of ver
 * `cancelPolicy`
 * `id`
 
-:::caution
-
-Remember to upload your [mapping files](../plugins/mapping) to your FTP account in those cases you run requests with your own context codes, this way you will receive results from all your Sellers with your own hotel codes.
-
-:::
-
-
 
 ## Inputs
 
@@ -115,7 +108,7 @@ To specify your settings you need to use the input `HotelSettingsInput` in your 
 
 
 **Mandatory Settings:**
-* `context` (Your context code must be linked to the mapping files previously uploaded on your side to the FTP. By doing so, you will receive results from all your Sellers with your own Hotel Codes, ensuring a smooth and seamless process)
+* `context` (You have the flexibility to choose between using the supplier's context or your own, depending on which hotel codes you want to use in the query input. If you choose to search for different suppliers using the same query, you must use your own context code and mapping functionality.)
 * `timeout` (Timeout in milliseconds for supplier connections. Applied to all suppliers; won't close client connection if exceeded)
 * `businessRules`
 * `language`
@@ -138,6 +131,14 @@ To specify your settings you need to use the input `HotelSettingsInput` in your 
 * Set the `auditTransaction` to "false" in Search for better performance.
 
 :::
+
+
+:::caution Using your own context and mapping functionality
+
+To request hotel availability using your own hotel codes, utilize the [Hotel-X mapping feature](../plugins/mapping). You can achieve this by uploading your mapping files to your FTP account. This approach enables you to make requests with your unique context codes and receive results from all your Sellers with your custom hotel codes.
+
+:::
+
 
 ### 3. Filter Search
 

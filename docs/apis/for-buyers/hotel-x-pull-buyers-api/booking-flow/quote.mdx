@@ -71,8 +71,8 @@ To specify your quote settings you need to use the input `HotelSettingsInput` in
 
 
 **Mandatory Settings:**
-* `context` (Your context code must be linked to the mapping files previously uploaded on your side to the FTP. By doing so, you will receive results from all your Sellers with your own Hotel Codes, ensuring a smooth and seamless process)
-* `timeout` (Timeout in milliseconds for supplier connections. Applied to all suppliers; won't close client connection if exceeded)
+* `context` (You have the flexibility to choose between using the supplier's context or your own, depending on which codes you want to see in the response. If you prefer to receive responses with your custom codes, please ensure that your context code is linked to the mapping files that you've previously uploaded to your FTP account.)
+* `timeout` (Timeout in milliseconds for supplier connections. Applied to all suppliers; won't close client connection if exceeded.)
 * `businessRules`
 * `language`
 * `currency`
@@ -82,14 +82,14 @@ To specify your quote settings you need to use the input `HotelSettingsInput` in
 **Optional Settings:**
 * `group`
 * `auditTransactions` 
-* `suppliers` (Each one contains its own code, settings and accesses)
+* `suppliers` (Each one contains its own code, settings and accesses.)
 * `plugins`
-* `testMode` (This flag allows only the accesses checked as test)
-* `clientTokens` (Used to identify the origin of the request, this is only used in plugins)
+* `testMode` (This flag allows only the accesses checked as test.)
+* `clientTokens` (Used to identify the origin of the request, this is only used with some [plugins](../plugins).)
 
 :::tip Key Recommendations
 
-* Customize the `timeout` according to your needs, taking into consideration the maximum values in Quote is 180,000ms.
+* Customize the `timeout` according to your needs, taking into consideration **the maximum values in Quote is 180,000ms**.
 
 * Set the `audiTransaction` to "true" in Quote when investigating errors.
 
@@ -103,14 +103,14 @@ To specify your quote settings you need to use the input `HotelSettingsInput` in
 
 ## Response
 
-:::tip
+As mentioned earlier, the quote response will provide you with updated information about the option you selected during the search step. In this quote response, **there are some essential details that you should carefully review and consider** when providing information to your final customers:
 
-There are some mandatory data you should read at this step:
-* Cancellation policies (within the cancelPolicy structure response there is a refundable field. If this field is filled in with false, it means that the room has 100% cancellation cost, so the room is non-refundable).
-* Remarks
-* Taxes
+* **Cancellation Policies:** Within the cancelPolicy structure response, you will find a "refundable" field. If this field is marked as "false," it means that the room has a 100% cancellation cost, making it non-refundable.
 
-:::
+* **Remarks:** Pay attention to any remarks or additional notes provided in the response.
+
+* **Taxes:** Ensure you are aware of any applicable taxes associated with the selected option.
+
 
 ## Frequently asked questions
 
@@ -124,7 +124,7 @@ There are some mandatory data you should read at this step:
 <details>
     <summary>Are there any limitations on the number of Hotel-X Quote requests allowed per minute?</summary>
     <div>
-        <div>Not from TravelgateX side, we don't have any limitations on the RPM in any of our methods. However, some Sellers may have some limitations so we suggest you contact directly with them in order to discuss this information.</div>
+        <div>Not from TravelgateX side, we don't have any limitations on the RPM ("Requests for Minute") in any of our methods. However, some Sellers may have some limitations so we suggest you contact directly with them in order to discuss this information.</div>
     </div>
 </details>
 
@@ -132,13 +132,6 @@ There are some mandatory data you should read at this step:
     <summary>Do options get blocked in Hotel-X Quote Query?</summary>
     <div>
         <div>Some Sellers may block the options when performing a Quote Query so we strongly recommend to contact them directly regarding this topic in order to prevent future issues.</div>
-    </div>
-</details>
-
-<details>
-    <summary>Is there any possibility to obtain the hotelCode in the Hotel-X Quote response?</summary>
-    <div>
-        <div>Although the Quote Query does not include a specific "hotelCode" field, you can still retrieve the hotelCode information from the Search id that was used to perform the Quote, as well as from the Quote optionRefId that is returned in the response. It is important to note that both the Search id and optionRefId may vary between Sellers, so the information within them might differ.</div>
     </div>
 </details>
 

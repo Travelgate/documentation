@@ -24,5 +24,5 @@ Since this error serves as an indication that there is a discrepancy or issue wi
 1. **FTP files and Mapping**: If you are using our Mapping plugin, make sure that the hotel requested have been added to your [mapping file](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/plugins/mapping/) and it has been processed correctly.
 
 :::tip
-**Don't forget to check our [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/plugins/mapping/) for further information on Hotel-X Mapping plugin!🚀**
+Don't forget to check our [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/plugins/mapping/) for further information on Hotel-X Mapping plugin!🚀
 :::

@@ -195,5 +195,5 @@ Since this error serves as an indication that there is a discrepancy or issue wi
 ```
 
 :::note
-**If you're still experiencing the error after going through the information mentioned above, don't hesitate to contact our Customer Care team. We are here to help you!🚀**
+If you're still experiencing the error after going through the information mentioned above, don't hesitate to contact our Customer Care team. We are here to help you!🚀
 :::

@@ -7,7 +7,7 @@ sidebar_position: 2
 ### What is Hotel-X Destinations Query?🌍
 Destinations Query returns the list of destinations from a Supplier’s access, so that you are able to retrieve all the destinations the Seller has configured for a given set of credentials.
 
-### How can I retrieve the Seller's Destinations List through Hotel-X?💡
+### How can I retrieve the Seller's Destinations List?💡
 You just need to follow the specifications in our [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/methods/staticcontent/destination/) and [API Playground](https://api.travelgatex.com/) and build your own Destinations Query, as easy as that! Also, remember you are able to **personalize** the fields requested in order to receive only the information that matters to you in the response.
 
 **Destinations Query example:**
@@ -101,5 +101,5 @@ To ensure the availability of hotels, we suggest performing a Search query to fi
 
  
 :::tip
-Don't forget to check out our Documentation for Destinations Query and our Resources and Best Practices article, where you'll find Insomnia and Postman collections with Query examples🚀🌟
+Don't forget to check out our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/destinations) for Destinations Query and our [Resources and Best Practices article](/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/resources-and-best-practices), where you'll find Insomnia and Postman collections with Query examples🚀🌟
 :::

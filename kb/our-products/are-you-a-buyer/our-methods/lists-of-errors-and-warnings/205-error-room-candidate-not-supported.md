@@ -11,5 +11,5 @@ You will encounter a 205 error in those cases the number of room candidates in y
 To check the limitations set by the Seller and prevent errors and unnecessary traffic, we strongly advise utilizing our [Metadata Query](https://knowledge.travelgate.com/hotel-x-development-metadata).
  
 :::tip
-**Don't forget to check our [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/methods/staticcontent/metadata/) and [Hotel-X API Schema](https://api.travelgatex.com/) for further information on Metadata🚀**
+Don't forget to check our [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/methods/staticcontent/metadata/) and [Hotel-X API Schema](https://api.travelgatex.com/) for further information on Hotel-X Metadata Query🚀
 :::

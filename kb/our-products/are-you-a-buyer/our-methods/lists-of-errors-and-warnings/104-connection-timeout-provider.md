@@ -35,5 +35,5 @@ In the aforementioned example, the Buyer sets a timeout of 24700 milliseconds (2
 1. Retry the operation
 
 :::tip
-If you have followed the tips mentioned above and the Seller's performance is still not optimal, you can try activating Speed, our caching solution. By enabling Speed, you may be able to improve the response time and overall performance of the Seller's system (learn more here).
+If you have followed the tips mentioned above and the Seller's performance is still not optimal, you can try activating **[Speed](https://knowledge.travelgate.com/speed-app)**, our caching solution. By enabling Speed, you may be able to improve the response time and overall performance of the Seller's system (learn more here).
 :::

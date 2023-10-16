@@ -73,7 +73,7 @@ export const bookingQuery =
 export const bookingByBookingIDVariables = 
 `{
 	"criteriaBookingRead": {
-		"bookingID": "1@1[241028[241029[230918[1[es[EUR[2[test_0123456789[2596391"
+		"bookingID": "1@1[241028[241029[231010[1[en[EUR[2[test_01234567890[2636944"
 	},
 	"settings": {
 		"client": "client_demo",
@@ -94,7 +94,7 @@ export const bookingByReferenceVariables =
 			"currency": "EUR",
 			"references": [
 				{
-					"client": "test_0123456789"
+					"client": "test_01234567890"
 				}
 			]
 		}
@@ -134,8 +134,8 @@ export const bookingByBookingDatesVariables =
 		"typeSearch": "DATES",
 		"dates": {
 			"dateType": "BOOKING",
-			"start": "2023-08-25",
-			"end": "2023-08-30"
+			"start": "2023-10-01",
+			"end": "2023-10-10"
 		}
 	},
 	"settings": {

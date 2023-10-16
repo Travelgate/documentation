@@ -40,6 +40,8 @@ query {
 }
 ```
 
+<CautionSettingsHotelX />
+
 ### 1. Criteria 
 
 The search query offers versatility in search options, with certain fields marked as mandatory (`checkIn`, `checkOut`, `hotels` etc.) and others as optional (`language`, `currency`, `nationality` etc.). This flexibility empowers you to create a personalized Search Query, tailoring the requested fields to your specific needs. 
@@ -90,7 +92,7 @@ To specify your search criteria you need to use the input `HotelCriteriaSearchIn
 
 ### 2. Settings 
 
-Settings are the common configurations used to construct requests to the supplier/s. By default, we apply the same configuration to all Hotel-X clients.
+Settings are the common configurations used to construct requests to the supplier/s.You need to specify some in your query or mutation, while others are optional. If you skip the optional ones, we'll use default settings to keep your requests consistent and smooth.
 
 To specify your settings you need to use the input `HotelSettingsInput` in your query variables:
 
@@ -106,15 +108,11 @@ To specify your settings you need to use the input `HotelSettingsInput` in your 
 }
 ```
 
-
 **Mandatory Settings:**
+* `client`
 * `context` (You have the flexibility to choose between using the supplier's context or your own, depending on which hotel codes you want to use in the query input. If you choose to search for different suppliers using the same query, you must use your own context code and mapping functionality.)
 * `timeout` (Timeout in milliseconds for supplier connections. Applied to all suppliers; won't close client connection if exceeded.)
 * `businessRules`
-* `language`
-* `currency`
-* `nationality`
-* `markets`
 
 **Optional Settings:**
 * `group`

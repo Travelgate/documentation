@@ -1,29 +1,43 @@
 ---
-sidebar_position: 5
+sidebar_position: 4
 ---
 
 # Cheapest Price
 
-The Cheapest Price plugin enables the aggregation of Supplier options using various business rules. It is possible to aggregate different options based on different values, as indicated below with all the possibilities.
+The Cheapest Price plugin allows you to find the most affordable choice among your Suppliers using various aggregation criteria. This means you can, for example, aggregate the supplier options to discover the least expensive choice for each meal plan and hotel, or even the most budget-friendly option for each hotel, supplier, and room.
 
 :::note
-
-For this plugin, there is no need to create any files; you just need to specify it in `settings` `plugins` in the request.
-
+You don't need to create any files for this plugin. Just specify it in the `settings` > `plugins` field in your search query.
 :::
 
 ## 1. Execute Cheapest Price plugin in your query
 
 To use the plugin add the following field to the `settings` node of your request. Note that cheapest price plugin can just be executed in search query. In order to successfully execute the cheapest price plugin, you will need to create the request with the following variables.
 
-* `step`: `RESPONSE`
-* `type`: `PRE_STEP`
-* `name`: `cheapest_price`
-* `parameters`:
+* **`step`**: "RESPONSE"
+* **`type`**: "PRE_STEP"
+* **`name`**: "cheapest_price"
+* **`parameters`**:
+	* **`key`**: "primaryKey"
+	* **`value`**: Criterias used to aggregate, separated by commas. For example: "hotel, supplier, board". Possible values are: 
+		* hotel
+		* supplier
+		* board
+		* binding
+		* cancelPolicy
+		* currency
+		* market
+		* payment
+		* promotion
+		* rateRules
+		* refundable
+		* room 
+		* supplement
+		* surcharges
+		* ratePlan
+		* status
 
-| Key        | Value  | Condition | Description                                                                                                                                                                                                                                                                       |
-|------------|--------|-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| primaryKey | string | mandatory | Criteria used to aggregate, the possible values are: binding, board, cancelPolicy, currency, hotel, market, payment, promotion, rateRules, refundable, room, supplement, supplier, surcharges, ratePlan, status and eqRates. (The value is a set of criteria separated by commas) |
+For instance, if you want to find the most affordable option for each hotel, supplier, and room:
 
 ```json
 "settings": {
@@ -44,3 +58,24 @@ To use the plugin add the following field to the `settings` node of your request
 	]
 }
 ```
+
+
+### Special aggregation key: eqRates
+
+There is a special value for the aggregation key "eqRates" that  will combine the rateRules and ratePlans of an option and group all of the options, based on the file uploaded in the FTP with the name:
+
+```mdx-code-block
+<BrowserWindow>
+
+📁F0  _0000  
+&nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX_0000  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁BusinessRules  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[SupplierContext_rateplanraterule.csv](../../../../../static/files/hotel-x/SupplierContext_rateplanraterule.csv)
+**
+
+</BrowserWindow>
+```
+
+
+
+With this uploaded CSV file, all the options with the ratePlan code "NOREEMBOLSABLE" and no rateRules will be compared with each other. Similarly, all the options without a ratePlan code or without a mapped ratePlan and with rateRules set to "NON_REFUNDABLE" will also be compared with each other.

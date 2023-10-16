@@ -13,9 +13,9 @@ The Book operation requests a booking confirmation for the specified `optionId` 
 * `price`
 * `cancelPolicy`
 * `bookingID`
-* `status` (Make sure you add this field to your Query in order to receive the reservation status in BookRS)
-* `clientReference` (The booking locator in your system (alphanumerical value))
-* `supplierReference` (Make sure you add this field to your Query in order to receive the provider locator in BookRS)
+* `status` (Make sure you add this field to your Query in order to receive the reservation status in the book response.)
+* `clientReference` (The booking locator in your system - alphanumerical value.)
+* `supplierReference` (Make sure you add this field to your Query in order to receive the provider locator in the book response.)
 
 
 ## Inputs
@@ -36,6 +36,8 @@ mutation {
 	}
 }
 ```
+
+<CautionSettingsHotelX />
 
 ### 1. Input
 
@@ -76,20 +78,20 @@ To specify your book input you need to use the input `HotelBookInput` in your mu
 ```
 
 **Mandatory input:**
-* `optionRefId` (identifier of the option used in Quote)
-* `clientReference` (booking ID in client's system)
+* `optionRefId` (Identifier of the option used in Quote.)
+* `clientReference` (Bbooking ID in client's system.)
 * `holder`
 * `rooms`
 
 **Optional input:**
 * `language`
-* `deltaPrice` (indicates price variation permitted by the client)
-* `paymentCard` (if the payment is done by credit card, it's mandatory to specify the payment type and the credit card information)
-* `remarks` (any customer comments for the supplier to consider)
+* `deltaPrice` (Indicates price variation permitted by the Buyer.)
+* `paymentCard` (If the payment is done by credit card, it's mandatory to specify the payment type and the credit card information.)
+* `remarks` (Any customer comments for the supplier to consider.)
 
 :::tip Key Recommendations
 
-Consider that the `deltaPrice` sets the price tolerance between Quote and Book. For instance, if the Quote stage displays a price of 100 and the `deltaPrice` is 5, a change up to 105 will still secure a confirmed booking.
+Consider that the `deltaPrice` sets the price tolerance between Quote and Book. For instance, if the Quote stage displays a price of 100€ and the `deltaPrice` is 5, a change up to 105€ will still secure a confirmed booking.
 
 :::
 
@@ -318,26 +320,22 @@ To specify your quote settings you need to use the input `HotelSettingsInput` in
 ```
 
 **Mandatory Settings:**
-* `context` (Your context code must be linked to the mapping files previously uploaded on your side to the FTP. By doing so, you will receive results from all your Sellers with your own Hotel Codes, ensuring a smooth and seamless process)
-* `timeout` (Timeout in milliseconds for supplier connections. Applied to all suppliers; won't close client connection if exceeded)
+* `client`
+* `context` (You have the flexibility to choose between using the supplier's context or your own, depending on which codes you want to see in the response. If you prefer to receive responses with your custom codes, please ensure that your context code is linked to the mapping files that you've previously uploaded to your FTP account.)
+* `timeout` (Timeout in milliseconds for supplier connections. Applied to all suppliers; won't close client connection if exceeded.)
 * `businessRules`
-* `language`
-* `currency`
-* `nationality`
-* `markets`
 
 **Optional Settings:**
 * `group`
 * `auditTransactions` 
-* `suppliers` (Each one contains its own code, settings and accesses)
+* `suppliers` (Each one contains its own code, settings and accesses.)
 * `plugins`
-* `testMode` (This flag allows only the accesses checked as test)
-* `clientTokens` (Used to identify the origin of the request, this is only used in plugins)
-* `commitRequired` (Indicates if the book will be confirmed in 1 or 2 steps. It only should be used in Book)
+* `testMode` (This flag allows only the accesses checked as test.)
+* `clientTokens` (Used to identify the origin of the request, this is only used in plugins.)
 
 :::tip Key Recommendations
 
-* Customize the `timeout` according to your needs, taking into consideration the maximum values in Book is 180,000ms.
+* Customize the `timeout` according to your needs, taking into consideration **the maximum values in Book is 180,000ms**.
 
 * Set the `auditTransaction` to "true" in Book when investigating errors.
 
@@ -356,7 +354,7 @@ Once a Book (Reservation) method is run, our API response will provide its book 
 | Status         | Description                                                                                                                                                                                                                                                                                               |
 |----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | OK             | The reservation was successfully completed without any issues.                                                                                                                                                                                                                                            |
-| ON_REQUEST     | Please note that a Book status may change over time: you may receive an ON_REQUEST status in Book response, and after running a Booking Query some seconds later the status may have already changed to OK.                                                                                               |
+| ON_REQUEST     | Please note that a Book status may change over time: you may receive an ON_REQUEST status in Book response, and after running a [Booking Query](../booking-management/booking-read) some seconds later the status may have already changed to OK.                                                                                               |
 | UNKNOWN        | The reservation process through TravelgateX was completed but due to a supplier error or a timeout, the reservation status is unknown (our system was unable to confirm if the booking has been confirmed or not the on Seller's system). It is the Buyer’s responsibility to check if the booking is OK. |
 | PENDING_COMMIT | The payment has been confirmed on the provider’s side, but is necessary to make a commit in order to confirm the reservation.                                                                                                                                                                             |
 
@@ -366,7 +364,7 @@ Once a Book (Reservation) method is run, our API response will provide its book 
     <summary>What should I do if I receive both an OK status and an error in the same Book response?</summary>
     <div>
         <div>If you receive an error and a booking status OK in the Book response, the reservation status prevails over the error.
-		Although you may also run a Booking Query in order to check the status of a reservation, please note that you should always contact the Seller in order to check the actual status of a booking in those cases you receive a booking status different than OK or no response at all.</div>
+		Although you may also run a <a href="../booking-management/booking-read">Booking Query</a> in order to check the status of a reservation, please note that you should always contact the Seller in order to check the actual status of a booking in those cases you receive a booking status different than OK or no response at all.</div>
     </div>
 </details>
 
@@ -457,6 +455,6 @@ Once a Book (Reservation) method is run, our API response will provide its book 
 			<li>The Buyer's locator (client reference).</li>
 			<li>The Seller's locator (provider reference).</li>
 		</ul>
-		The Seller may also provide a third type of locator, issued by the hotel when it confirms the booking. This is known as the Hotel Confirmation Number (HCN) or Hotel Reference Booking (HRB).Please note we are only able to provide this code if the Seller returns it in their response.</div>
+		The Seller may also provide a third type of locator, issued by the hotel when it confirms the booking. This is known as the Hotel Confirmation Number (HCN) or Hotel Reference Booking (HRB). Please note we are only able to provide this code if the Seller returns it in their response.</div>
     </div>
 </details>

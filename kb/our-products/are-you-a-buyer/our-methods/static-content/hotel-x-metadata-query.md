@@ -6,7 +6,7 @@ sidebar_position: 6
 
 The Metadata query delivers a clear and summarized view of the Seller's main characteristics, as well as the methods implemented through their integration and the limitations and restrictions associated with their connection.
 
-:::warning
+:::info
 Note that **TravelgateX API specifications will always prevail over the Seller's specifications**. For instance, nationality should always be sent in SearchRQ even though it may be optional for some Sellers.
 :::
  
@@ -37,5 +37,5 @@ Since Metadata information may not be updated by our Sellers frequently (they up
 
  
 :::tip
-Learn more about Metadata Query on our Playground (DOCS tab) and Hotel-X Documentation. 
+Learn more about Metadata Query on our [Playground](https://api.travelgatex.com/playground) and [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata). 
 :::

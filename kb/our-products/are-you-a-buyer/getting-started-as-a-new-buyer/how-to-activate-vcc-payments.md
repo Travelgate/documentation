@@ -48,7 +48,5 @@ Don't forget to check our [API Documentation](https://docs.travelgatex.com/conne
 - eNett
 - WEX
 
-:::info 
-Have any doubts or questions? Don't hesitate to get in touch with our amazing Customer Care team via [Tickets](https://app.travelgatex.com/tickets) and they'll be happy to assist you⭐
-:::
+<TipContactCustomerCare/>
  

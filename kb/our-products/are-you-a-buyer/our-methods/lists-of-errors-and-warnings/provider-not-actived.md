@@ -24,5 +24,5 @@ image
 ```
 
 :::tip
-**Should the error persist after checking the aforementioned information please contact our [Customer Care team](https://app.travelgatex.com/tickets).**
+Should the error persist after checking the aforementioned information please contact our [Customer Care team](https://app.travelgatex.com/tickets).
 :::

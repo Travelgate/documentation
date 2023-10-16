@@ -16,7 +16,7 @@ Our core focus lies in providing **seamless connectivity solutions**. As a resul
 
 Nevertheless, we have established partnerships with numerous affiliates who specialize in these domains, and we would be more than happy to connect you with them.
 
-### How are Partner queries and requests categorized at TravelgateX?💡
+### How are Partner requests categorized at TravelgateX?💡
 1. **Product Development:** This involves any development work aimed at enhancing, adding, or modifying functionalities of an existing product and/or service. For example:
 	- "I would like to have the option to download more than 50 logs at once from our logs manager"
 	- API New Major Version release for an existing integration (e.g. v1.0 to v2.0).
@@ -29,8 +29,8 @@ Nevertheless, we have established partnerships with numerous affiliates who spec
 
 :::info
 
-* **Product Development requests**: please submit them via **TravelgateX Community**. Our Product team will thoroughly evaluate every idea, suggestion, and request.
-* **Product Maintenance requests**: please submit them via [Tickets](https://app.travelgatex.com/tickets).
+* To share your **Product Development** requests, please use [TravelgateX Community](https://community.travelgatex.com/). Our Product team will give a detailed evaluation to each idea, suggestion, and request.
+* For any **Product Maintenance requests**, kindly submit them through [Tickets](https://app.travelgatex.com/tickets).
 
 :::
 

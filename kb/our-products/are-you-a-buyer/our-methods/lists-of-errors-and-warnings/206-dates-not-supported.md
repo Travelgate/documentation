@@ -17,5 +17,5 @@ To check the dates specifications set by the Seller and prevent errors and unnec
 - Minimum number of days/stay required for a booking (minimumStay)
 
 :::tip
-**Don't forget to check our [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/methods/staticcontent/metadata/) and [Hotel-X API Schema](https://api.travelgatex.com/) for further information on Metadata🚀**
+Don't forget to check our [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/methods/staticcontent/metadata/) and [Hotel-X API Schema](https://api.travelgatex.com/) for further information on Metadata🚀
 :::

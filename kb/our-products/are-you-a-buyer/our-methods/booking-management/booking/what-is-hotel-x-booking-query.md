@@ -119,6 +119,6 @@ Please note that **the queryable fields available by a Seller may vary between S
 
 ::: info
 **If you are not using Hotel-X bookingID** input, you should indicate your accessCode in the HotelCriteriaBookingInput. Language is optional, but we recommend adding this information for optimal results.
-
-Don't forget to check our [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/methods/reservationmanagement/booklist/) and [API Schema](https://api.travelgatex.com/) for further information!🚀
 :::
+
+_Don't forget to check our [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/methods/reservationmanagement/booklist/) and [API Schema](https://api.travelgatex.com/) for further information!🚀_

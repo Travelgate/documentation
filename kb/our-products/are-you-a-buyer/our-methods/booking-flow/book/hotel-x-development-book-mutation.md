@@ -27,8 +27,9 @@ The [Delta Price](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/met
 
 This field is implemented if it’s native to the Seller or if another Search/Quote request needs to be done in Book - please note DeltaPrice should be implemented by a Seller in order to be available to a Buyer.
 
->**Interested in adding DeltaPrice in your requests? Feel free to access our [Hotel-X API Schema](https://api.travelgatex.com/) and [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/methods/bookingflow/book/) for more information!🚀**
-
+:::info
+**Interested in adding DeltaPrice in your requests?** Feel free to access our [Hotel-X API Schema](https://api.travelgatex.com/) and [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/methods/bookingflow/book/) for more information!🚀
+:::
  
 
 #### What does DeltaPrice "applyBoth" mean?**
@@ -43,7 +44,6 @@ This field is implemented if it’s native to the Seller or if another Search/Qu
 ### Why do I receive a status "ON_REQUEST" and a holder name "test" in my reservations the test environment?💡
 
 In the test environment, it is common for some Sellers to consistently return an ON_REQUEST status. Furthermore, as a standard practice in the test environment, we automatically replace the holder and passenger names with "test".
-
 ### Will the currency in Book be the same as the currency in Quote?💴
 The currency used for the transaction will remain the same throughout the entire Booking Flow, including cancellation policies.
 
@@ -93,4 +93,6 @@ The payment type and details to be added in your Book request depend on the paym
      {"query":"mutation ($bookInput: HotelBookInput!, $settings: HotelSettingsInput) {  n hotelX {  n book(input: $bookInput, settings: $settings) {  n  t  t  tauditData {  n  t  t  t  ttransactions {  n  t  t  t  t  trequest  n  t  t  t  t  tresponse  n  t  t  t  t}  n  t  t  t  ttimeStamp  n  t  t  t}  n booking {  n price {  n currency  n binding  n net  n gross  n exchange {  n currency  n rate  n }  n markups {  n channel  n currency  n binding  n net  n gross  n exchange {  n currency  n rate  n }  n }  n }  n status  n remarks  n reference {  n client  n supplier  n }  n holder {  n name  n surname  n }  n hotel {  n creationDate  n checkIn  n checkOut  n hotelCode  n hotelName  n boardCode  n occupancies {  n id  n paxes {  n age  n }  n }  n rooms {  n code  n description  n occupancyRefId  n price {  n currency  n binding  n net  n gross  n exchange {  n currency  n rate  n }  n markups {  n channel  n currency  n binding  n net  n gross  n exchange {  n currency  n rate  n }  n }  n }  n }  n }  n }  n errors {  n code  n type  n description  n }  n warnings {  n code  n type  n description  n }  n }  n }  n}  n","variables":{"bookInput":{"optionRefId":"","clientReference":"","remarks":"","paymentCard":{"type":"","holder":{"name":"Test1","surname":"Test1"},"number":"","CVC":"","expire":{"month":3,"year":25}},"deltaPrice":{"amount":10,"percent":10,"applyBoth":true},"holder":{"name":"Test KL","surname":"Test KL"},"rooms":[{"occupancyRefId":1,"paxes":[{"name":"Test1","surname":"Test1","age":30},{"name":"Test1","surname":"Test1","age":30}]}]},"settings":{"client":"","testMode":true,"context":"","auditTransactions":true}}}
     ```
 
+ :::tip
  Don't forget to check our [article](https://knowledge.travelgate.com/payment-types-travelgatex) on Payment Types at TravelgateX!🚀
+ :::

@@ -66,6 +66,6 @@ Unfortunately,  GIATA codes are not included in Hotel-X Rooms Query response. Fo
 No, the Room List response provides information on all the rooms that a Seller has configured for your account. However, it's important to note that availability may vary based on the specific dates and distribution you are requesting. Therefore, it is possible that certain rooms may not be available for your desired criteria.
 
 :::tip
-**Don't forget to check our Documentation and API Playground for further details!🚀**
+Don't forget to check our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/rooms) and [API Playground](https://api.travelgatex.com/playground) for further details!🚀
 :::
  

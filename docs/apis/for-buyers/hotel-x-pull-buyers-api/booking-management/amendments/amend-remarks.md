@@ -28,6 +28,8 @@ When creating your quote amend query, you have two different inputs to fill base
 1. Criteria
 2. Settings
 
+<CautionSettingsHotelX />
+
 ### 1. Criteria 
 
 You can perform the `query` (simulation) of the amendment sending all the booking information (`reference`, `dates`, `hotelode`) or sending the `bookingID` got in the booking flow:
@@ -47,16 +49,13 @@ You can perform the `query` (simulation) of the amendment sending all the bookin
 
 Settings are the common configurations used to construct requests to the supplier/s. By default, we apply the same configuration to all Hotel-X clients.
 
-Mandatory Settings:
+**Mandatory Settings:**
+* `client`
 * `context`
 * `timeout` (timeout in milliseconds for supplier connections. Applied to all suppliers; won't close client connection if exceeded)
 * `businessRules`
-* `language`
-* `currency`
-* `nationality`
-* `markets`
 
-Optional Settings:
+**Optional Settings:**
 * `group`
 * `auditTransactions`
 * `suppliers` (each one contains its own code, settings and accesses)

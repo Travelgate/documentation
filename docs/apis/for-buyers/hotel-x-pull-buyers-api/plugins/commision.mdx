@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7
+sidebar_position: 5
 ---
 
 # Commission
@@ -10,7 +10,7 @@ To get started with the Commission plugin, follow these simple steps:
 
 ## 1. Create and upload your Commission file
 
-First, create your commission file in the correct format and then upload it to your FTP account. To assist you with this process, you can download the template file below ⬇️, add your own rules, save it in CSV format, and then upload it to the corresponding folder in your FTP.
+To get started, create your commission file in the correct format and then upload it to your FTP account. We've provided a template file below ⬇️ to help you with this process. Just click on the file name, add your own rules, save it in CSV format, and then upload it to the corresponding folder in your FTP.
 
 ```mdx-code-block
 <BrowserWindow>
@@ -18,7 +18,7 @@ First, create your commission file in the correct format and then upload it to y
 📁F0  _0000  
 &nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX_0000  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁BusinessRules  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[BuyerContext_sequential_commission.csv](../../../../../static/files/hotel-x/BuyerContext_sequential_commission.csv)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[BuyerContext_sequential_commission.csv](../../../../../static/files/hotel-x/BuyerContext_sequential_commission.csv)**
 
 </BrowserWindow>
 ```
@@ -37,25 +37,25 @@ If you need assistance with requesting your credentials to access the FTP server
 * **Header Row:**
    * **RuleId (mandatory):** Unique identifier of the rule (assign one)
    * **ClientTokens:** Client token used for index the rule
-   * **SupplierCodes (mandatory):** Supplier code
+   * **SupplierCodes (mandatory):** List of the supplier codes you want the commission to be applied to. 
       * Separator for multiples codes in the same row: Semicolon (“;”)
-   * **NotSupplierCodes (mandatory):** Supplier code
+   * **NotSupplierCodes (mandatory):** List of the supplier codes you don't want the commission to be applied to. 
       * Separator for multiples codes in the same row: Semicolon (“;”)
    * **CreationDateFrom:** Start creation date (yyyy-mm-dd)
    * **CreationDateTo:** End creation date (yyyy-mm-dd)
    * **CheckInFrom:** Checkin date (yyyy-mm-dd)
    * **CheckInTo:** Checkout date (yyyy-mm-dd)
-   * **HotelCodes:** Hotel code
+   * **HotelCodes:** List of the hotel codes you want the commission to be applied to. 
       * Separator for multiples codes in the same row: Semicolon (“;”)
-   * **NothotelCodes:** Hotel code
+   * **NothotelCodes:** List of the hotel codes you don't want the commission to be applied to. 
       * Separator for multiples codes in the same row: Semicolon (“;”)
-   * **ChainsCodes:** Chain code
+   * **ChainsCodes:** List of the chain codes you want the commission to be applied to. 
       * Separator for multiples codes in the same row: Semicolon (“;”)
-   * **NotChainCodes:** Chain code
+   * **NotChainCodes:** List of the chain codes you don't want the commission to be applied to. 
       * Separator for multiples codes in the same row: Semicolon (“;”)
-   * **DestinationCodes:** Destination code
+   * **DestinationCodes:** List of the destination codes you want the commission to be applied to. 
       * Separator for multiples codes in the same row: Semicolon (“;”)
-   * **NotDestinationCodes:** Destination code
+   * **NotDestinationCodes:** List of the destination codes you don't want the commission to be applied to. 
       * Separator for multiples codes in the same row: Semicolon (“;”)
    * **Percentage (mandatory):** Commission value (decimal separator must be point (“.”))
    * **Force (mandatory):** Boolean value true/false

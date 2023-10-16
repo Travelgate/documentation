@@ -23,7 +23,6 @@ Some Sellers may block the options when performing a Quote Query so we strongly 
 
 ### Are there any limitations on the number of Hotel-X Quote requests allowed per minute?🔢
 Not from TravelgateX side - we don't have any limitations on the RPM in any of our methods. However, some Sellers may have some limitations so we suggest you contact directly with them in order to discuss this information.
-
 ### Do I have to perform a Quote Query in order to Book an option?💡
 Yes, in order to confirm a reservation, it is necessary to complete all three Booking Flow methods: Search, Quote, and Book.
 

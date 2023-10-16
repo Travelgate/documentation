@@ -11,7 +11,7 @@ The 101 error (exception not controlled or not classified as a general exception
 1. If the error continues to occur, please reach out to our [Customer Care Team](https://knowledge.travelgate.com/guidelines-for-submitting-a-ticket-to-our-support-team) for further assistance.
 
 :::tip
-**Don't forget to check our Documentation and API Schema for further information on all the mandatory fields expected in our API🚀**
+Don't forget to check our Documentation and API Schema for further information on all the mandatory fields expected in our API🚀
 :::
  
 

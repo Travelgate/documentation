@@ -24,5 +24,5 @@ To check the limitations set by the Seller and prevent errors and unnecessary tr
 - **requiredRoomWithSamePaxConfiguration**: It indicates whether all rooms should have the same configuration, same ages or same number of paxes.
 
 :::tip
-**Don't forget to check our [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/methods/staticcontent/metadata/) and [Hotel-X API Schema](https://api.travelgatex.com/) for further information on Metadata🚀**
+Don't forget to check our [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/methods/staticcontent/metadata/) and [Hotel-X API Schema](https://api.travelgatex.com/) for further information on Metadata🚀
 :::

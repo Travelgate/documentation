@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Hotel-X Onboarding
 
-## Find out what Hotel-X onboarding process looks like in order to plan your development
+## Find out what Hotel-X Onboarding process looks like in order to plan your development
 
 
 Starting a new development project can be challenging. Accurate estimation of required resources and time is crucial to avoid inefficiencies and wasted resources. At TravelgateX, our goal is to simplify this process by providing comprehensive information, roadmap, timing for Hotel-X API development and assigning you an Onboarding Manager to support you all along the process. 

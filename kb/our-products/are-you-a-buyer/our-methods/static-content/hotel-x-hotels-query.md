@@ -74,5 +74,5 @@ You should **always map the "hotelCode"** since it is the one you should use whe
 No, the Hotel List response includes all the hotels that a Seller has configured for your account. However, it is possible that there may be no availability for the specific dates or distribution that you are requesting.
 
 :::tip
-More information on our Documentation and API Playground
+More information on our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/hotel) and [API Playground](https://api.travelgatex.com/playground)
 :::

@@ -1,6 +1,6 @@
 ---
-id: package-cancel-where-input
-title: PackageCancelWhereInput
+id: stats-real-time-range-where-input
+title: StatsRealTimeRangeWhereInput
 hide_table_of_contents: false
 ---
 
@@ -32,18 +32,18 @@ style={{ listStyle:'none' }} >
 No description
 
 ```graphql
-input PackageCancelWhereInput {
-  settings: PackageInputSettings!
-  reference: PackageBookReference!
+input StatsRealTimeRangeWhereInput {
+  timeRange: TimeRangeInput!
+  groupByTime: StatsTimeGroupBy
 }
 ```
 
 ### Fields
 
-#### [<code style={{ fontWeight: 'normal' }}>PackageCancelWhereInput.<b>settings</b></code>](#)<Bullet />[`PackageInputSettings!`](/api/inputs/package-input-settings) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+#### [<code style={{ fontWeight: 'normal' }}>StatsRealTimeRangeWhereInput.<b>timeRange</b></code>](#)<Bullet />[`TimeRangeInput!`](/api/inputs/time-range-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
 
-> Node that represents the configuration for an specified request
+> Input time
 
-#### [<code style={{ fontWeight: 'normal' }}>PackageCancelWhereInput.<b>reference</b></code>](#)<Bullet />[`PackageBookReference!`](/api/inputs/package-book-reference) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+#### [<code style={{ fontWeight: 'normal' }}>StatsRealTimeRangeWhereInput.<b>groupByTime</b></code>](#)<Bullet />[`StatsTimeGroupBy`](/api/enums/stats-time-group-by) <Badge class="badge badge--secondary" text="enum"/>
 
-> Node that contains the client and supplier reference of a booking
+> Time aggregation

@@ -29,11 +29,10 @@ style={{ listStyle:'none' }} >
 );
 };
 
-Input PaymentCard, if the payment type is DIRECT, CARD_BOOKING or CARD_CHECK_IN, then is mandatory to specify the payment card information
+Input PaymentCard, if the payment type is DIRECT, CARD_BOOKING or CARD_CHECK_IN, then is mandatory to specify the payment card information.
 
 ```graphql
 input PaymentCardInput {
-  cardType: String
   type: PaymentCardType
   holder: HolderInput!
   number: String!
@@ -47,34 +46,29 @@ input PaymentCardInput {
 
 ### Fields
 
-#### [<code style={{ fontWeight: 'normal' }}>PaymentCardInput.<b>cardType</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
-
-> Indicates the supported card type, the supported card for this option is shown in Quote step.
-> @deprecated(reason: "deprecated from 2019-07-31. Please, use type")
-
 #### [<code style={{ fontWeight: 'normal' }}>PaymentCardInput.<b>type</b></code>](#)<Bullet />[`PaymentCardType`](/api/enums/payment-card-type) <Badge class="badge badge--secondary" text="enum"/>
 
 > Indicates the supported card type, the supported card for this option is shown in Quote step.
 
 #### [<code style={{ fontWeight: 'normal' }}>PaymentCardInput.<b>holder</b></code>](#)<Bullet />[`HolderInput!`](/api/inputs/holder-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
 
-> Contains owner s name
+> Contains owner's name.
 
 #### [<code style={{ fontWeight: 'normal' }}>PaymentCardInput.<b>number</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
 
-> Contains credit card number
+> Contains credit card number.
 
 #### [<code style={{ fontWeight: 'normal' }}>PaymentCardInput.<b>CVC</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
 
-> Contains credit card CVC
+> Contains credit card CVC.
 
 #### [<code style={{ fontWeight: 'normal' }}>PaymentCardInput.<b>expire</b></code>](#)<Bullet />[`ExpireDateInput!`](/api/inputs/expire-date-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
 
-> Contains credit card expiration date
+> Contains credit card expiration date.
 
 #### [<code style={{ fontWeight: 'normal' }}>PaymentCardInput.<b>isVCC</b></code>](#)<Bullet />[`Boolean`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="scalar"/>
 
-> Is a virtual credit card
+> Indicates if it is a virtual card
 
 #### [<code style={{ fontWeight: 'normal' }}>PaymentCardInput.<b>virtualCreditCard</b></code>](#)<Bullet />[`VirtualCreditCardInput`](/api/inputs/virtual-credit-card-input) <Badge class="badge badge--secondary" text="input"/>
 

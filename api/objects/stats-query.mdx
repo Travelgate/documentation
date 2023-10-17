@@ -44,6 +44,9 @@ type StatsQuery {
     where: StatsAggregationConnectionWhereInput!
     groupBy: StatsAggregationConnectionGroupByInput!
   ): StatsAggregationConnection!
+  getRealTimeRangeStats(
+    where: StatsRealTimeRangeWhereInput!
+  ): StatsRealTimeRange!
 }
 ```
 
@@ -80,6 +83,12 @@ type StatsQuery {
 ##### [<code style={{ fontWeight: 'normal' }}>StatsQuery.getAggregationStats.<b>groupBy</b></code>](#)<Bullet />[`StatsAggregationConnectionGroupByInput!`](/api/inputs/stats-aggregation-connection-group-by-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
 
 >
+
+#### [<code style={{ fontWeight: 'normal' }}>StatsQuery.<b>getRealTimeRangeStats</b></code>](#)<Bullet />[`StatsRealTimeRange!`](/api/objects/stats-real-time-range) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Query to retrieve Real Time Range will be return according to TimeRange input
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>StatsQuery.getRealTimeRangeStats.<b>where</b></code>](#)<Bullet />[`StatsRealTimeRangeWhereInput!`](/api/inputs/stats-real-time-range-where-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
 
 ### Returned by
 

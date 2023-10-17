@@ -29,7 +29,7 @@ style={{ listStyle:'none' }} >
 );
 };
 
-Contains information about quote(s)
+Contains information about quote
 
 ```graphql
 type HotelOptionQuote {
@@ -51,23 +51,23 @@ type HotelOptionQuote {
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelOptionQuote.<b>optionRefId</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
 
-> It is an unique identifier for the option. The id is used to make the quote query, so it is important not to modify it by any reason.
+> It is an unique identifier for the option created by HotelX system. The ID is used to make the quote query, so it is important not to modify it by any reason.
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelOptionQuote.<b>status</b></code>](#)<Bullet />[`StatusType!`](/api/enums/status-type) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
 
-> The possible values in status in response are Available (OK) or On Request (RQ).
+> The possible values in the response's status are Available (OK) or On Request (RQ).
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelOptionQuote.<b>price</b></code>](#)<Bullet />[`Price!`](/api/objects/price) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
 
-> Specifies the prices (Gross, Net and Amount) of the option returned.
+> Specifies the prices (Gross, Net and Amount) of the returned option.
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelOptionQuote.<b>searchPrice</b></code>](#)<Bullet />[`PriceChange`](/api/objects/price-change) <Badge class="badge badge--secondary" text="object"/>
 
-> Specifies the price of the previous search option
+> Specifies the price of the previous Search option, returned only if it has changed. If not, this field will be returned as Null.
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelOptionQuote.<b>cancelPolicy</b></code>](#)<Bullet />[`CancelPolicy!`](/api/objects/cancel-policy) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
 
-> Specifies cancel policies of the option returned.
+> Specifies cancel policies of the returned option.
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelOptionQuote.<b>remarks</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
 
@@ -75,7 +75,7 @@ type HotelOptionQuote {
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelOptionQuote.<b>surcharges</b></code>](#)<Bullet />[`[Surcharge!]`](/api/objects/surcharge) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
 
-> List of surcharges of the option returned.
+> List of surcharges of the returned option.
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelOptionQuote.<b>cardTypes</b></code>](#)<Bullet />[`[PaymentCardType!]`](/api/enums/payment-card-type) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="enum"/>
 
@@ -83,15 +83,15 @@ type HotelOptionQuote {
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelOptionQuote.<b>addOns</b></code>](#)<Bullet />[`AddOns`](/api/objects/add-ons) <Badge class="badge badge--secondary" text="object"/>
 
-> Additional information about the option
+> Additional information about the option. It is only available for the partners that uses our Distribution-X solution.
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelOptionQuote.<b>rooms</b></code>](#)<Bullet />[`[RoomOptionQuote!]`](/api/objects/room-option-quote) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
 
-> List of rooms of the option quoted.
+> List of rooms of the selected option.
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelOptionQuote.<b>paymentType</b></code>](#)<Bullet />[`PaymentType!`](/api/enums/payment-type) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
 
-> Indicates the payment type of the option quoted. Possible options: Merchant, Direct, Card Booking, Card check in and Mixed.
+> Indicates the payment type of the option returned. Possible options: MERCHANT, DIRECT, CARD_BOOKING, CARD_CHECK_IN and PAYX.
 
 ### Member of
 

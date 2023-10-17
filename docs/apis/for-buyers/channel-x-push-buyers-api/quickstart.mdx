@@ -6,7 +6,7 @@ sidebar_position: 1
 
 ## Introduction
 
-Channel-X extracts the product loaded between the Buyer and the Channel Managers into our Inventory system and sends it to the Buyer's system. Buyers have two options for loading product into their system: they can select the **Full Copy** tab in Inventory's extranet to load all the product, or they can select specific hotels to copy. When the Channel Manager makes an update, Channel-X sends a smaller product request **(Delta)** to notify buyers of the change.
+Channel-X extracts the product loaded between the Buyer and the Channel Managers into our Inventory tool and sends it to the Buyer's system. To get all the product details into their system, Buyers just need to go to the **Full Copy** tab in the Inventory's extranet. Once that's done, when the Channel Manager makes changes, Channel-X sends a smaller request **(Delta)** to let Buyers know about the updates.
 
 Please, note that connecting with Channel Managers through TravelgateX requires a previous step in which the Buyer configures the setup of the hotels, rates, and rooms contracted with the hoteliers in the Inventory extranet. This configuration allows the Channel Manager to map all this information and push availability and prices for the Buyer.
 
@@ -27,7 +27,7 @@ Channel-X provides a robust XML-based API that will enable you to push all the p
 
 #### API Endpoint
 
-In the case of Channel-X API, it is necessary for you to send the endpoint to Travelgate.
+For the Channel-X API, it is essential that you send the endpoint to Travelgate.
 
 #### Request Headers
 
@@ -66,7 +66,7 @@ In the case of the Channel-X API, Travelgate will send requests to the Buyer's s
 **Requests**
 
 Channel-X has three main methods. You will have to configure your system to accept the following requests: 
-* `HotelRatePlanInventoryNotif`, which contains information about the inventory setup Hotel, Rate and Room.
+* `HotelRatePlanInventoryNotif`, which contains information about the inventory setup: Hotel, Rate and Room.
 * `HotelAvailNotif`, which contains information about rate availability and allotment conditions.
 * `HotelRatePlanNotif`, which contains information about rate prices and supplements.
 
@@ -74,7 +74,7 @@ Channel-X has three main methods. You will have to configure your system to acce
 
 **Responses**
 
-After each request, a response should be provided from the Buyer's side. For instance, if a HotelAvailNotif request is received, a corresponding HotelAvailNotif response should be sent, and so forth. There are two response options, success or error.
+After each request, a response should be provided from the Buyer's side. For instance, if a `HotelAvailNotif` request is received, a corresponding `HotelAvailNotif` response should be sent, and so forth. There are two response options, success or error.
 
 Success:
 
@@ -100,13 +100,13 @@ Error:
 
 ### 2. Inventory SetUp
 
-Since Channel-X solution is integrated with Inventory, you should use our [Inventory Extranet](https://inventory.xmltravelgate.com/Account/Login?ReturnUrl=%2f) in order to configure the setup for the hotels, rates and rooms contracted with the hoteliers, so that your Channel Managers can map them as well. Once mapped, the Channel Manager will load and update availability and prices for the hotels, rates and rooms configured.
+Since Channel-X solution is integrated with the Inventory tool, you should use our [Inventory Extranet](https://inventory.xmltravelgate.com/Account/Login?ReturnUrl=%2f) in order to configure the setup for the hotels, rates and rooms contracted with the hoteliers, so that your Channel Managers can map them as well. Once mapped, the Channel Manager will load and update availability and prices for the hotels, rates and rooms configured.
 
 ![SetUp Inventory](../../../../static/img/docs/channel-x/setup-inventory.png)
 
 :::tip
 
-To learn how to set up hotels, rates, and rooms in the Inventory tool, please refer to the Inventory [SetUp section](#).
+To learn how to set up hotels, rates, and rooms in the Inventory tool, please refer to the [Inventory SetUp section](#).
 
 :::
 
@@ -132,7 +132,7 @@ Congratulations on completing this quickstart tutorial! 🎉 You've successfully
 - Discover various methods/messages grouped by the following actions:
     - [Inventory](./availability-rates-and-inventory/inventory): Retrieve the inventory setup (hotel, rate, room).
     - [Availability](./availability-rates-and-inventory/availability) and [Rate](./availability-rates-and-inventory/rates): Retrieve rate availability, allotment conditions and rate prices and supplements.
-- Don't forget to perform the [setup in the Inventory Tool](./inventory-tool/inventory-tool.mdx) before proceeding with your first [Full Copy](./fullcopy-and-deltas/fullcopy-and-deltas.mdx)!
+- Don't forget to perform the [SetUp in the Inventory Tool](./inventory-tool/inventory-tool.mdx) before proceeding with your first [Full Copy](./fullcopy-and-deltas/fullcopy-and-deltas.mdx)!
 
 :::caution
 

@@ -167,7 +167,7 @@ The `HotelRatePlanInventoryNotif` message contains information about the invento
 </details>
 
 <details>
-    <summary>Credit Cards codes</summary>
+    <summary>Credit Card codes</summary>
     <div>
         <div>
          <table>
@@ -287,6 +287,13 @@ The `HotelRatePlanInventoryNotif` message contains information about the invento
 ## Response
 
 After each request, a response should be provided from the Buyer's side. If a `HotelRatePlanInventoryNotif` request is received, a corresponding `HotelRatePlanInventoryNotif` response should be sent. There are two response options, success or error.
+
+:::caution
+
+Our system has a timeout of 5000ms. If no response occurs within this timeframe, we won't attempt to resend the request. It is recommended that your system processes our requests with an average handling time of 100ms.
+
+:::
+
 
 **Success:**
 

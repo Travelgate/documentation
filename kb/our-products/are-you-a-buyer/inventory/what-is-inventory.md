@@ -18,7 +18,7 @@ Get the best rates and direct access to hotel availability, giving your business
 - Get the connection up and running in minutes instead of months: connection to Channel Managers is no longer difficult or time-consuming.
 - As your business grows, your direct stock grows with it.
 
-- ### What are the features that make TravelgateX an ideal Partner for working with Channel Managers?🌟
+### What are the features that make TravelgateX an ideal Partner for working with Channel Managers?🌟
 - Friendly UI.
 - Inventory management area in back-office.
 - Fast go-to-market.

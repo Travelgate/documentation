@@ -35,7 +35,7 @@ Here you will be able to delete (by date range) all kinds of prices (price per r
 image
 ```
 
-:::info Learn more!
+:::info Learn more
 
 Check out our full [Documentation](https://docs.travelgatex.com/inventory-x/extranet/) to know how the Inventory extranet works in detail and find out all its functionalities and tools. 
 ::: 

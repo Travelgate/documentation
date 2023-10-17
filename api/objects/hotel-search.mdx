@@ -29,7 +29,7 @@ style={{ listStyle:'none' }} >
 );
 };
 
-Results from Avail Hotel; contains all the available options for a given date and itinerary
+Hotel results from the search response. Contains all the available options for the given criteria search
 
 ```graphql
 type HotelSearch implements Response {
@@ -58,11 +58,11 @@ type HotelSearch implements Response {
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelSearch.<b>auditData</b></code>](#)<Bullet />[`AuditData`](/api/objects/audit-data) <Badge class="badge badge--secondary" text="object"/>
 
-> Data sent and received in the supplier s native format.
+> All the sent and received transactions in the supplier's native format.
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelSearch.<b>requestCriteria</b></code>](#)<Bullet />[`CriteriaSearch`](/api/objects/criteria-search) <Badge class="badge badge--secondary" text="object"/>
 
-> Request Criteria
+> Request Criteria contains destination, travel dates and the number of pax in each room.
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelSearch.<b>options</b></code>](#)<Bullet />[`[HotelOptionSearch!]`](/api/objects/hotel-option-search) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
 
@@ -70,15 +70,17 @@ type HotelSearch implements Response {
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelSearch.<b>errors</b></code>](#)<Bullet />[`[Error!]`](/api/objects/error) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
 
-> Errors that abort services
+> List of errors that abort services.
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelSearch.<b>warnings</b></code>](#)<Bullet />[`[Warning!]`](/api/objects/warning) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
 
-> Potentially harmful situations or errors that won t force the service to abort
+> Potentially harmful situations or errors that won't force the service to abort.
+> To identify if it is blocked one, you can check our documentation regards this matter
+> https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/concepts/advancedconcepts/errorwarning/
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelSearch.<b>tracing</b></code>](#)<Bullet />[`HotelXTracing`](/api/objects/hotel-xtracing) <Badge class="badge badge--secondary" text="object"/>
 
-> Tracing information
+> Other information it may need to analize transactions. This information is only available through internal request and, by default, it is not returned
 
 ### Interfaces
 

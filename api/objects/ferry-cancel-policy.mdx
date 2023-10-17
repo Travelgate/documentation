@@ -1,6 +1,6 @@
 ---
-id: package-cancel-where-input
-title: PackageCancelWhereInput
+id: ferry-cancel-policy
+title: FerryCancelPolicy
 hide_table_of_contents: false
 ---
 
@@ -29,21 +29,25 @@ style={{ listStyle:'none' }} >
 );
 };
 
-No description
+Information about a policy cancellation.
 
 ```graphql
-input PackageCancelWhereInput {
-  settings: PackageInputSettings!
-  reference: PackageBookReference!
+type FerryCancelPolicy {
+  refundable: Boolean!
+  cancelPenalties: [FerryCancelPenalty!]
 }
 ```
 
 ### Fields
 
-#### [<code style={{ fontWeight: 'normal' }}>PackageCancelWhereInput.<b>settings</b></code>](#)<Bullet />[`PackageInputSettings!`](/api/inputs/package-input-settings) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+#### [<code style={{ fontWeight: 'normal' }}>FerryCancelPolicy.<b>refundable</b></code>](#)<Bullet />[`Boolean!`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
 
-> Node that represents the configuration for an specified request
+> Indicates if the option is refundable or non-refundable
 
-#### [<code style={{ fontWeight: 'normal' }}>PackageCancelWhereInput.<b>reference</b></code>](#)<Bullet />[`PackageBookReference!`](/api/inputs/package-book-reference) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+#### [<code style={{ fontWeight: 'normal' }}>FerryCancelPolicy.<b>cancelPenalties</b></code>](#)<Bullet />[`[FerryCancelPenalty!]`](/api/objects/ferry-cancel-penalty) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
 
-> Node that contains the client and supplier reference of a booking
+> List of cancellation penalties
+
+### Member of
+
+[`FerryOfferData`](/api/objects/ferry-offer-data) <Badge class="badge badge--secondary" text="object"/>

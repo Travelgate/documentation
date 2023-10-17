@@ -29,13 +29,12 @@ style={{ listStyle:'none' }} >
 );
 };
 
-Settings that you can edit for this avail. Values are loaded by default in our Back Office.
+Settings are the common configurations used to construct requests to the supplier/s. By default,
+we apply the same configuration to all Hotel-X clients in our back system.
 
 ```graphql
 input HotelSettingsInput {
   context: String
-  useContext: Boolean
-  connectUser: String
   client: ID
   group: ID
   timeout: Int
@@ -55,23 +54,13 @@ input HotelSettingsInput {
 
 > Indicates the context of the I/O codes (hotel, board, room and rates)
 
-#### [<code style={{ fontWeight: 'normal' }}>HotelSettingsInput.<b>useContext</b></code>](#)<Bullet />[`Boolean`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="scalar"/>
-
-> Indicates if you want use context, or not, by default is true.
-> @deprecated(reason: "deprecated from 2017-12-12. Redundant.")
-
-#### [<code style={{ fontWeight: 'normal' }}>HotelSettingsInput.<b>connectUser</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
-
-> This field is occurs only if the authorization header is of the type JWT.. It is used to change the user that has been set by default in the preload.
-> @deprecated(reason: "deprecated from 2018-03-19. Redundant.")
-
 #### [<code style={{ fontWeight: 'normal' }}>HotelSettingsInput.<b>client</b></code>](#)<Bullet />[`ID`](/api/scalars/id) <Badge class="badge badge--secondary" text="scalar"/>
 
-> Client name, this field is occurs only if the authorization header is of the type JWT.. It is used to change the user that has been set by default in the preload.
+> Client name set in TGX, present only if the authorization header is of the JWT type. It is used to modify the user initially set in the preload.
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelSettingsInput.<b>group</b></code>](#)<Bullet />[`ID`](/api/scalars/id) <Badge class="badge badge--secondary" text="scalar"/>
 
-> Group whose resources want to be used
+> Group whose resources are to be used
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelSettingsInput.<b>timeout</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
 
@@ -95,11 +84,11 @@ input HotelSettingsInput {
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelSettingsInput.<b>testMode</b></code>](#)<Bullet />[`Boolean`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="scalar"/>
 
-> This flag allows only the accesses checked as test. By default is production.
+> This flag is only allowed to be used for the access checked as 'TEST.' By default, it is set to 'LIVE.'
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelSettingsInput.<b>clientTokens</b></code>](#)<Bullet />[`[String!]`](/api/scalars/string) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="scalar"/>
 
-> Used to identify the origin of the request, this is only used in plugins.
+> Used to identify the origin of the request. This is solely used in plugins.
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelSettingsInput.<b>commitRequired</b></code>](#)<Bullet />[`Boolean`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="scalar"/>
 

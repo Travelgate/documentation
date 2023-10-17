@@ -88,7 +88,7 @@ type HotelOptionSearch implements BookableOptionSearch {
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelOptionSearch.<b>hotelCodeSupplier</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
 
-> Supplier s hotel code.
+> Supplier's hotel code.
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelOptionSearch.<b>hotelName</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
 
@@ -100,15 +100,15 @@ type HotelOptionSearch implements BookableOptionSearch {
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelOptionSearch.<b>boardCodeSupplier</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
 
-> Supplier s board code.
+> Supplier's board code.
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelOptionSearch.<b>paymentType</b></code>](#)<Bullet />[`PaymentType!`](/api/enums/payment-type) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
 
-> Indicates the payment type of the option returned. Possible options: Merchant, Direct, Card Booking, Card check in and Mixed.
+> Indicates the payment type of the option returned. Possible options: MERCHANT, DIRECT, CARD_BOOKING, CARD_CHECK_IN and PAYX.
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelOptionSearch.<b>status</b></code>](#)<Bullet />[`StatusType!`](/api/enums/status-type) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="enum"/>
 
-> The possible values in status in response are Available (OK) or On Request (RQ).
+> The possible values in the response's status are Available (OK) or On Request (RQ).
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelOptionSearch.<b>occupancies</b></code>](#)<Bullet />[`[Occupancy!]!`](/api/objects/occupancy) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
 
@@ -144,7 +144,7 @@ type HotelOptionSearch implements BookableOptionSearch {
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelOptionSearch.<b>addOns</b></code>](#)<Bullet />[`AddOns`](/api/objects/add-ons) <Badge class="badge badge--secondary" text="object"/>
 
-> Additional information about the option
+> Additional information about the option. It is only available for the partners that uses our Distribution-X solution.
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelOptionSearch.<b>token</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--deprecated badge--secondary" text="deprecated"/> <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
 
@@ -156,11 +156,11 @@ type HotelOptionSearch implements BookableOptionSearch {
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelOptionSearch.<b>id</b></code>](#)<Bullet />[`String!`](/api/scalars/string) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
 
-> OptionRefID is a unique identifier assigned to each option, which is necessary for performing the Quote Query. It should not be modified and should not be used externally, as it is an internal system identifier.
+> OptionRefID is a unique identifier assigned to each option. It should not be modified and should not be used externally, as it is an internal TGX system identifier.
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelOptionSearch.<b>amenities</b></code>](#)<Bullet />[`[Amenity!]`](/api/objects/amenity) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
 
-> Option level amenities. Contains information regarding Amenities, Amenities is defined as something intended to make life more leasant or comfortable for people, Examples include: swimming pools, shopping centers, etc.
+> Option-level amenities provide information about features intended to enhance comfort and enjoyment. Examples include swimming pools, shopping centers, etc.
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelOptionSearch.<b>rateRulesExtended</b></code>](#)<Bullet />[`[HotelOptionRateRule!]`](/api/objects/hotel-option-rate-rule) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
 

@@ -115,7 +115,7 @@ type HotelXQuery {
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelXQuery.<b>quoteDatesAmendment</b></code>](#)<Bullet />[`HotelBookingAmend`](/api/objects/hotel-booking-amend) <Badge class="badge badge--secondary" text="object"/>
 
-> Returns detailed information about booking dates amendment.
+> Returns detailed information about booking dates amendment, simulating an amendment and returning the possible values if the client wants to continue with the operation (mutation step).
 >
 > ##### [<code style={{ fontWeight: 'normal' }}>HotelXQuery.quoteDatesAmendment.<b>criteria</b></code>](#)<Bullet />[`HotelCriteriaAmendDatesQuoteInput!`](/api/inputs/hotel-criteria-amend-dates-quote-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
 
@@ -125,7 +125,7 @@ type HotelXQuery {
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelXQuery.<b>quoteBoardAmendment</b></code>](#)<Bullet />[`HotelBookingAmend`](/api/objects/hotel-booking-amend) <Badge class="badge badge--secondary" text="object"/>
 
-> Returns detailed information about booking board amendment.
+> Returns detailed information about booking board amendment, simulating an amendment and returning the possible values if the client wants to continue with the operation (mutation step).
 >
 > ##### [<code style={{ fontWeight: 'normal' }}>HotelXQuery.quoteBoardAmendment.<b>criteria</b></code>](#)<Bullet />[`HotelCriteriaAmendBoardQuoteInput!`](/api/inputs/hotel-criteria-amend-board-quote-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
 
@@ -135,6 +135,8 @@ type HotelXQuery {
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelXQuery.<b>quoteRoomsAmendment</b></code>](#)<Bullet />[`HotelBookingAmend`](/api/objects/hotel-booking-amend) <Badge class="badge badge--secondary" text="object"/>
 
+> Returns detailed information about booking rooms amendment, simulating an amendment and returning the possible values if the client wants to continue with the operation (mutation step).
+>
 > ##### [<code style={{ fontWeight: 'normal' }}>HotelXQuery.quoteRoomsAmendment.<b>criteria</b></code>](#)<Bullet />[`HotelCriteriaAmendRoomsQuoteInput!`](/api/inputs/hotel-criteria-amend-rooms-quote-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
 
 ##### [<code style={{ fontWeight: 'normal' }}>HotelXQuery.quoteRoomsAmendment.<b>settings</b></code>](#)<Bullet />[`HotelSettingsInput`](/api/inputs/hotel-settings-input) <Badge class="badge badge--secondary" text="input"/>
@@ -241,7 +243,7 @@ type HotelXQuery {
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelXQuery.<b>metadata</b></code>](#)<Bullet />[`MetadataConnection!`](/api/objects/metadata-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
 
-> Return a list of the available MealPlans, which will be used in the availability response.
+> This method furnishes details regarding the supplier's meta information, allowing for efficient configuration.
 >
 > ##### [<code style={{ fontWeight: 'normal' }}>HotelXQuery.metadata.<b>criteria</b></code>](#)<Bullet />[`HotelXMetadataQueryInput!`](/api/inputs/hotel-xmetadata-query-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
 
@@ -251,10 +253,9 @@ type HotelXQuery {
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelXQuery.<b>search</b></code>](#)<Bullet />[`HotelSearch`](/api/objects/hotel-search) <Badge class="badge badge--secondary" text="object"/>
 
-> Available options of an hotel for a given date and itinerary. It does not filter different classes, times or
-> fares. It will always retrieve all results returned by the suppliers. The availability request is very straight
-> forward. It only requires the criteria of search (destination, travel dates and the number of pax in each room).
-> But you must preload the other fields in our system by complete the fields absents.
+> Search serves as the initial step in our booking flow, with the objective of verifying availability within the
+> specified date range and for the requested number of guests, either for specific hotels or for hotels in the desired
+> destination. It provides a comprehensive list of available options based on your search criteria.
 >
 > ##### [<code style={{ fontWeight: 'normal' }}>HotelXQuery.search.<b>criteria</b></code>](#)<Bullet />[`HotelCriteriaSearchInput`](/api/inputs/hotel-criteria-search-input) <Badge class="badge badge--secondary" text="input"/>
 
@@ -272,7 +273,8 @@ type HotelXQuery {
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelXQuery.<b>quote</b></code>](#)<Bullet />[`HotelQuote`](/api/objects/hotel-quote) <Badge class="badge badge--secondary" text="object"/>
 
-> Returns the total price and cancellation policies of the Option selected in the previous step (Search).
+> Quote operation evaluates the rate before Book, providing the same information as the Search response for a hotel rate, including up-to-date pricing.
+> Additionally, it offers further details such as rate breakdown and cancellation policies.
 >
 > ##### [<code style={{ fontWeight: 'normal' }}>HotelXQuery.quote.<b>criteria</b></code>](#)<Bullet />[`HotelCriteriaQuoteInput!`](/api/inputs/hotel-criteria-quote-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
 
@@ -286,7 +288,7 @@ type HotelXQuery {
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelXQuery.<b>booking</b></code>](#)<Bullet />[`HotelBooking`](/api/objects/hotel-booking) <Badge class="badge badge--secondary" text="object"/>
 
-> Returns detailed information about books, you can search this books by indicating a list of locators, our HotelX booking ID or a range dates.
+> Returns detailed information about books, you can search this books by indicating a list of locators, our HotelX booking ID or a dates range.
 >
 > ##### [<code style={{ fontWeight: 'normal' }}>HotelXQuery.booking.<b>criteria</b></code>](#)<Bullet />[`HotelCriteriaBookingInput!`](/api/inputs/hotel-criteria-booking-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
 
@@ -308,7 +310,7 @@ type HotelXQuery {
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelXQuery.<b>bookStatusService</b></code>](#)<Bullet />[`ServiceStatus!`](/api/objects/service-status) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
 
-> Returns status of the new booking service.
+> Returns status of the book service.
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelXQuery.<b>cancelStatusService</b></code>](#)<Bullet />[`ServiceStatus!`](/api/objects/service-status) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
 

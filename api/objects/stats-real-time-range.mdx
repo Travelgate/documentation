@@ -1,6 +1,6 @@
 ---
-id: package-cancel-where-input
-title: PackageCancelWhereInput
+id: stats-real-time-range
+title: StatsRealTimeRange
 hide_table_of_contents: false
 ---
 
@@ -32,18 +32,22 @@ style={{ listStyle:'none' }} >
 No description
 
 ```graphql
-input PackageCancelWhereInput {
-  settings: PackageInputSettings!
-  reference: PackageBookReference!
+type StatsRealTimeRange {
+  realTimeRangeData: StatsRealTimeRangeData
+  adviseMessage(level: AdviseMessageLevel): [AdviseMessage!]
 }
 ```
 
 ### Fields
 
-#### [<code style={{ fontWeight: 'normal' }}>PackageCancelWhereInput.<b>settings</b></code>](#)<Bullet />[`PackageInputSettings!`](/api/inputs/package-input-settings) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+#### [<code style={{ fontWeight: 'normal' }}>StatsRealTimeRange.<b>realTimeRangeData</b></code>](#)<Bullet />[`StatsRealTimeRangeData`](/api/objects/stats-real-time-range-data) <Badge class="badge badge--secondary" text="object"/>
 
-> Node that represents the configuration for an specified request
+>
 
-#### [<code style={{ fontWeight: 'normal' }}>PackageCancelWhereInput.<b>reference</b></code>](#)<Bullet />[`PackageBookReference!`](/api/inputs/package-book-reference) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+#### [<code style={{ fontWeight: 'normal' }}>StatsRealTimeRange.<b>adviseMessage</b></code>](#)<Bullet />[`[AdviseMessage!]`](/api/objects/advise-message) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
 
-> Node that contains the client and supplier reference of a booking
+> ##### [<code style={{ fontWeight: 'normal' }}>StatsRealTimeRange.adviseMessage.<b>level</b></code>](#)<Bullet />[`AdviseMessageLevel`](/api/enums/advise-message-level) <Badge class="badge badge--secondary" text="enum"/>
+
+### Member of
+
+[`StatsQuery`](/api/objects/stats-query) <Badge class="badge badge--secondary" text="object"/>

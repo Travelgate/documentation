@@ -47,11 +47,11 @@ type Reference {
 
 #### [<code style={{ fontWeight: 'normal' }}>Reference.<b>client</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
 
-> Client reference booking
+> Client reference booking.
 
 #### [<code style={{ fontWeight: 'normal' }}>Reference.<b>supplier</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
 
-> Supplier reference booking
+> Supplier reference booking.
 
 #### [<code style={{ fontWeight: 'normal' }}>Reference.<b>commit</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--deprecated badge--secondary" text="deprecated"/> <Badge class="badge badge--secondary" text="scalar"/>
 
@@ -67,18 +67,20 @@ type Reference {
 
 #### [<code style={{ fontWeight: 'normal' }}>Reference.<b>hotelConfirmationNumberStatus</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
 
-> Process Status in order to obtain the hotel confirmation number. If this field is null or empty, means that the status is unknown. Possible values:
-> "P"=&#x003E;(pending): The booking hasnt been assinged to any operator yet, or it has, but the operator did not make the call yet
-> "R" =&#x003E; (retrying): The operator tried to call the hotel, but for some reason, the call couldnt be completed because of external factors. This means the operator will try to call again later.
-> "NA" =&#x003E; (no answer): The operator tried to call the hotel several times, but the hotel did not answer.
-> "C" =&#x003E; (cancelled): The operator has been informed by the hotel, that the booking has been canceled.
-> "DNE" =&#x003E; (does not exists): The operator has been informed by the hotel, that the booking does not exists
-> "F" =&#x003E; (fetched): The operator called the hotel and got the hotel confirmation number (a trully succesfull call)
-> "I" =&#x003E; (issued): The operator called the hotel, but there are issues. Maybe the hotel is closed, maybe natural disater situations are alerted for the check in date, etc.
+> Process Status in order to obtain the hotel confirmation number. If this field is null or empty that means that the status is UNKNOWN. Possible values:
+> "P" =&#x003E; (pending): The booking hasn't been assinged to any operator yet, or it has but the operator did not make the call yet.
+> "R" =&#x003E; (retrying): The operator tried to call the hotel but, for some reason, the call couldn't be completed because of external factors. This means the operator will try to call again later.
+> "NA" =&#x003E; (no answer): The operator tried to call the hotel several times but the hotel did not answer.
+> "C" =&#x003E; (cancelled): The operator has been informed by the hotel that the reservation has been cancelled.
+> "DNE" =&#x003E; (does not exist): The operator has been informed by the hotel that the reservation does not exist.
+> "F" =&#x003E; (fetched): The operator called the hotel and they got the hotel confirmation number (a truly succesful call)
+> "I" =&#x003E; (issued): The operator called the hotel but there were issues. Maybe the hotel is closed, maybe natural disaster situations are alerted for the check-in date, etc.
 
 #### [<code style={{ fontWeight: 'normal' }}>Reference.<b>bookingID</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
 
-> HotelX's booking reference. The BookingID is a unique identifier for each reservation that can be used to perform Booking and Cancel Queries in the system. It is not recommended to modify or use this value externally, although it may be useful for identifying and managing reservations within the system. It is important to note that the BookingID value should not be interpreted in any other way beyond its use within the system.
+> HotelX's booking reference. The BookingID is a unique identifier for each reservation that can be used to perform Booking queries and Cancel mutations in the system.
+> It is not recommended to modify or use this value externally, although it may be useful for identifying and managing reservations within the system.
+> It is important to note that the BookingID value should not be interpreted in any other way beyond its use within the system.
 
 #### [<code style={{ fontWeight: 'normal' }}>Reference.<b>amendmentID</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
 

@@ -1,0 +1,334 @@
+---
+sidebar_position: 3
+---
+
+# Availability
+
+## Availability Push
+
+Method to **push** availability to the product.
+
+### Request
+
+The `HotelAvailNotif` request message pushes availabilities for the [inventory](./inventory) that has been previously set up.
+
+[Añadir ejemplo]
+
+### Response
+
+After each request, Travelgate processes the data and provides a response to the Seller. Upon receiving a `HotelAvailNotif` request, Travelgate sends a corresponding `HotelAvailNotif` response. The response options include either **success** or an **error**.
+
+**Success:**
+
+```html
+<HotelAvailNotifResponse xmlns="http://schemas.xmltravelgate.com/hubpush/provider/2012/10">
+    <HotelAvailNotifResult>
+        <Success xmlns="http://www.opentravel.org/OTA/2003/05"/>
+    </HotelAvailNotifResult>
+</HotelAvailNotifResponse>
+```
+
+**Error:**
+
+```html
+<HotelAvailNotifResponse xmlns="http://schemas.xmltravelgate.com/hubpush/provider/2012/10">
+    <HotelAvailNotifResult>
+        <Errors xmlns="http://www.opentravel.org/OTA/2003/05">
+            <Error ShortText="AvailStatusMessages not found" Code="2"/>
+        </Errors>
+    </HotelAvailNotifResult>
+</HotelAvailNotifResponse>
+```
+
+<details>
+    <summary>Error codes you could receive in the response while setting up and loading the product</summary>
+    <div>
+        <div>
+         <table>
+				<thead>
+					<tr>
+						<th>
+							<strong>Error Code</strong>
+						</th>
+						<th>
+							<strong>Error Description</strong>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>-1</td>
+						<td>Unexpected error</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>Invalid request</td>
+					</tr>
+					<tr>
+						<td>10</td>
+						<td>Invalid hotel id</td>
+					</tr>
+                    <tr>
+						<td>11</td>
+						<td>Invalid dates</td>
+					</tr>
+					<tr>
+						<td>12</td>
+						<td>Invalid rate plan code</td>
+					</tr>
+					<tr>
+						<td>13</td>
+						<td>Invalid reservation id</td>
+					</tr>
+                    <tr>
+						<td>14</td>
+						<td>Invalid derived rate adjust values</td>
+					</tr>
+					<tr>
+						<td>15</td>
+						<td>Invalid id</td>
+					</tr>
+					<tr>
+						<td>16</td>
+						<td>Invalid amount type</td>
+					</tr>
+                    <tr>
+						<td>17</td>
+						<td>Invalid supplement type</td>
+					</tr>
+                    <tr>
+						<td>18</td>
+						<td>Invalid number of hotel</td>
+					</tr>
+                    <tr>
+						<td>19</td>
+						<td>Invalid rate currency code</td>
+					</tr>
+                    <tr>
+						<td>20</td>
+						<td>Requestor id not found</td>
+					</tr>
+                    <tr>
+						<td>21</td>
+						<td>Provider id not found</td>
+					</tr>
+                    <tr>
+						<td>22</td>
+						<td>Rooms not found</td>
+					</tr>
+                    <tr>
+						<td>23</td>
+						<td>Rates not found</td>
+					</tr>
+                    <tr>
+						<td>30</td>
+						<td>Occupation error</td>
+					</tr>
+                    <tr>
+						<td>31</td>
+						<td>Rate error</td>
+					</tr>
+                    <tr>
+						<td>32</td>
+						<td>Avail rq error</td>
+					</tr>
+                    <tr>
+						<td>33</td>
+						<td>Data Base error</td>
+					</tr>
+                    <tr>
+						<td>34</td>
+						<td>Cancel error</td>
+					</tr>
+                    <tr>
+						<td>35</td>
+						<td>Confirmation error</td>
+					</tr>
+                    <tr>
+						<td>36</td>
+						<td>Valuation_error</td>
+					</tr>
+                    <tr>
+						<td>37</td>
+						<td>Authorization error</td>
+					</tr>
+                    <tr>
+						<td>38</td>
+						<td>Authentication error</td>
+					</tr>
+                    <tr>
+						<td>90</td>
+						<td>Connection time out</td>
+					</tr>
+				</tbody>
+			</table>
+        </div>
+    </div>
+</details>
+
+## Availability Retrieval
+
+Method to **retrieve** the availability of the product.
+
+### Request
+
+The `HotelAvailRetrieve` request message is sent to retrieve a complete breakdown of availability, including details about the hotel, rate plans, and rooms.
+
+[Añadir ejemplo]
+
+### Response
+
+After each request, Travelgate processes the data and provides a response to the Seller. Upon receiving a `HotelRatePlanRetrieve` request, Travelgate sends a corresponding `HotelRatePlanRetrieve` response. 
+
+The response options include either **success** or an **error**. In the event of success, Travelgate will provide a response to the Seller by retrieving a breakdown of availability, including details about the hotel, rate plans, and rooms.
+
+**Success:**
+
+[Añadir ejemplo]
+
+**Error:**
+
+```html
+<HotelAvailRetrieveResponse xmlns="http://schemas.xmltravelgate.com/hubpush/provider/2012/10">
+    <HotelAvailRetrieveResult>
+        <Errors xmlns="http://www.opentravel.org/OTA/2003/05">
+            <Error ShortText="Incomplete AdditionalGuestAmount values" Code="7"/>
+        </Errors>
+    </HotelAvailRetrieveResult>
+</HotelAvailRetrieveResponse>
+```
+
+<details>
+    <summary>Error codes you could receive in the response while setting up and loading the product</summary>
+    <div>
+        <div>
+         <table>
+				<thead>
+					<tr>
+						<th>
+							<strong>Error Code</strong>
+						</th>
+						<th>
+							<strong>Error Description</strong>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>-1</td>
+						<td>Unexpected error</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>Invalid request</td>
+					</tr>
+					<tr>
+						<td>10</td>
+						<td>Invalid hotel id</td>
+					</tr>
+                    <tr>
+						<td>11</td>
+						<td>Invalid dates</td>
+					</tr>
+					<tr>
+						<td>12</td>
+						<td>Invalid rate plan code</td>
+					</tr>
+					<tr>
+						<td>13</td>
+						<td>Invalid reservation id</td>
+					</tr>
+                    <tr>
+						<td>14</td>
+						<td>Invalid derived rate adjust values</td>
+					</tr>
+					<tr>
+						<td>15</td>
+						<td>Invalid id</td>
+					</tr>
+					<tr>
+						<td>16</td>
+						<td>Invalid amount type</td>
+					</tr>
+                    <tr>
+						<td>17</td>
+						<td>Invalid supplement type</td>
+					</tr>
+                    <tr>
+						<td>18</td>
+						<td>Invalid number of hotel</td>
+					</tr>
+                    <tr>
+						<td>19</td>
+						<td>Invalid rate currency code</td>
+					</tr>
+                    <tr>
+						<td>20</td>
+						<td>Requestor id not found</td>
+					</tr>
+                    <tr>
+						<td>21</td>
+						<td>Provider id not found</td>
+					</tr>
+                    <tr>
+						<td>22</td>
+						<td>Rooms not found</td>
+					</tr>
+                    <tr>
+						<td>23</td>
+						<td>Rates not found</td>
+					</tr>
+                    <tr>
+						<td>30</td>
+						<td>Occupation error</td>
+					</tr>
+                    <tr>
+						<td>31</td>
+						<td>Rate error</td>
+					</tr>
+                    <tr>
+						<td>32</td>
+						<td>Avail rq error</td>
+					</tr>
+                    <tr>
+						<td>33</td>
+						<td>Data Base error</td>
+					</tr>
+                    <tr>
+						<td>34</td>
+						<td>Cancel error</td>
+					</tr>
+                    <tr>
+						<td>35</td>
+						<td>Confirmation error</td>
+					</tr>
+                    <tr>
+						<td>36</td>
+						<td>Valuation_error</td>
+					</tr>
+                    <tr>
+						<td>37</td>
+						<td>Authorization error</td>
+					</tr>
+                    <tr>
+						<td>38</td>
+						<td>Authentication error</td>
+					</tr>
+                    <tr>
+						<td>90</td>
+						<td>Connection time out</td>
+					</tr>
+				</tbody>
+			</table>
+        </div>
+    </div>
+</details>
+
+## Frequently asked questions
+
+<details>
+    <summary>a</summary>
+    <div>
+        <div>a</div>
+    </div>
+</details>

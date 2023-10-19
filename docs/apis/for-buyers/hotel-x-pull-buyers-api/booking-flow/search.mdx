@@ -20,13 +20,6 @@ Search serves as the initial step in our booking flow, with the objective of ver
 * `cancelPolicy`
 * `id`
 
-:::caution
-
-Remember to upload your [mapping files](../plugins/mapping) to your FTP account in those cases you run requests with your own context codes, this way you will receive results from all your Sellers with your own hotel codes.
-
-:::
-
-
 
 ## Inputs
 
@@ -46,6 +39,8 @@ query {
 	}
 }
 ```
+
+<CautionSettingsHotelX />
 
 ### 1. Criteria 
 
@@ -83,11 +78,11 @@ To specify your search criteria you need to use the input `HotelCriteriaSearchIn
 ```
 
 **Mandatory criteria:**
-* `checkIn` (yyyy-mm-dd)
-* `checkOut` (yyyy-mm-dd)
-* `hotels` (we recommend a maximum of 200 hotel codes per request)
+* `checkIn` (yyyy-MM-dd)
+* `checkOut` (yyyy-MM-dd)
+* `hotels` (We recommend a maximum of 200 hotel codes per request.)
 * `destinations`
-* `occupancies` (for multi-room bookings, this array will contain multiple elements, rooms + you will need to detail the occupancy for each room requested.)
+* `occupancies` (For multi-room bookings, this array will contain multiple elements, each representing a room, and you'll need to provide occupancy details for each requested room.)
 
 **Optional criteria:**
 * `language`
@@ -97,7 +92,7 @@ To specify your search criteria you need to use the input `HotelCriteriaSearchIn
 
 ### 2. Settings 
 
-Settings are the common configurations used to construct requests to the supplier/s. By default, we apply the same configuration to all Hotel-X clients.
+Settings are the common configurations used to construct requests to the supplier/s.You need to specify some in your query or mutation, while others are optional. If you skip the optional ones, we'll use default settings to keep your requests consistent and smooth.
 
 To specify your settings you need to use the input `HotelSettingsInput` in your query variables:
 
@@ -113,31 +108,35 @@ To specify your settings you need to use the input `HotelSettingsInput` in your 
 }
 ```
 
-
 **Mandatory Settings:**
-* `context` (Your context code must be linked to the mapping files previously uploaded on your side to the FTP. By doing so, you will receive results from all your Sellers with your own Hotel Codes, ensuring a smooth and seamless process)
-* `timeout` (Timeout in milliseconds for supplier connections. Applied to all suppliers; won't close client connection if exceeded)
+* `client`
+* `context` (You have the flexibility to choose between using the supplier's context or your own, depending on which hotel codes you want to use in the query input. If you choose to search for different suppliers using the same query, you must use your own context code and mapping functionality.)
+* `timeout` (Timeout in milliseconds for supplier connections. Applied to all suppliers; won't close client connection if exceeded.)
 * `businessRules`
-* `language`
-* `currency`
-* `nationality`
-* `markets`
 
 **Optional Settings:**
 * `group`
 * `auditTransactions` 
-* `suppliers` (Each one contains its own code, settings and accesses)
+* `suppliers` (Each one contains its own code, settings and accesses.)
 * `plugins`
-* `testMode` (This flag allows only the accesses checked as test)
-* `clientTokens` (Used to identify the origin of the request, this is only used in plugins)
+* `testMode` (This flag allows only the accesses checked as test.)
+* `clientTokens` (Used to identify the origin of the request, this is only used with some [plugins](../plugins/overview).)
 
 :::tip Key Recommendations
 
-* Customize the `timeout` according to your needs, taking into consideration the maximum values in Search is 25,000ms.
+* Customize the `timeout` according to your needs, taking into consideration **the maximum value in Search is 25,000ms**.
 
 * Set the `auditTransaction` to "false" in Search for better performance.
 
 :::
+
+
+:::caution Using your own context and mapping functionality
+
+To request hotel availability using your own hotel codes, utilize the [Hotel-X mapping feature](../plugins/mapping). You can achieve this by uploading your mapping files to your FTP account. This approach enables you to make requests with your unique context codes and receive results from all your Sellers with your custom hotel codes.
+
+:::
+
 
 ### 3. Filter Search
 
@@ -177,29 +176,31 @@ You would need to apply the same approach for filter for specific rate rule (`ra
 
 ## Response
 
-```graphql
-TODO
-```
+In the response to your search query, you'll receive all the available options that match your criteria. Each option provides various details, such as room type, price, and cancellation policies. Here are some key points to keep in mind:
 
-:::note
+### Cancel Policies: Refundable Field
 
-In the room structure response there is a refundable field. If that field is set to false, it means that the room has 100% cancellation cost, in other words, the room is NON-REFUNDABLE. If the field returns a null value, it means that the seller is not able to return this info at this step. Some sellers do not return cancellation policies in availability. You can find out the specifities of each seller in their [metadata](../content/metadata).
+In the room structure response, there is a `refundable` field. If this field is set to false, it means the room has a 100% cancellation cost, making it non-refundable. If the field returns a null value, it indicates that the seller doesn't provide this information at this stage and you will obtain this information in the quote step. 
 
+:::caution Remember
+Some Sellers may not include cancellation policies in their availability data. You can learn more about each Seller's specific details in their [metadata](../content/metadata).
 :::
+
+![Hotel-X Shopping Flow](../../../../../static/img/docs/hotel-x/hotel-x_single_mode.svg)
 
 ## Frequently asked questions
 
 <details>
     <summary>How many hotel codes per request can I request in Search?</summary>
     <div>
-        <div>We recommend a maximum of 200 hotels: the new aggregator will split them in batches in order to request all of them to each Seller.</div>
+        <div>We recommend a maximum of 200 hotels: our Hotel-X solution will split them in batches in order to request all of them to each Seller.</div>
     </div>
 </details>
 
 <details>
     <summary>Are there any limitations on the number of searches/minute?</summary>
     <div>
-        <div>Not from TravelgateX side, we don't have any limitations on the RPM in any of our methods. However, some Sellers may have some limitations so we suggest you contact directly with them in order to discuss this information.</div>
+        <div>Not from TravelgateX side, we don't have any limitations on the RPM ("Requests per Minute") in any of our methods. However, some Sellers may have some limitations so we suggest you contact directly with them in order to discuss this information.</div>
     </div>
 </details>
 
@@ -214,10 +215,12 @@ In the room structure response there is a refundable field. If that field is set
 <details>
 <summary>How can I search in single or multi mode?</summary>
 <p>You have the possibility to chose between searching in a single mode vs searching in a multi mode.</p>
-<details>
-<summary>Singlemode search</summary>
-<p>
-    The default mode in Hotel-X allows our Partners to perform one search per Seller connected to their account at a time. When running your Search, you should add the Seller's access code you would like to query.
+<b>Singlemode search</b>
+<p>The default mode in Hotel-X allows our Partners to perform one search per Seller connected to their account at a time.</p>
+
+![Hotel-X Shopping Flow](../../../../../static/img/docs/hotel-x/hotel-x_single_mode.svg)
+
+<p>When running your Search, you should add the Seller's access code you would like to query.</p>
 
 ```json
 "filterSearch": {
@@ -226,17 +229,17 @@ In the room structure response there is a refundable field. If that field is set
     }
 }
 ```
+
+<b>Multimode search</b>
+<p>The multimode query allows our Partners to search multiple Sellers at the same time in just one request. To search in multimode, start by uploading your <a href="../plugins/mapping">hotel mapping files</a> to your FTP. 
+Once the files are processed, you'll have the ability to search multiple Sellers simultaneously by using your own context and hotel codes.
 </p>
-</details>
-<details>
-<summary>Multimode search</summary>
-<p>The multimode query allows our Partners to search multiple Sellers at the same time in just one request. To
-    search in multimode, start by uploading your hotel mapping files to your FTP.
-    Once the files are processed, you'll have the ability to search multiple Sellers simultaneously by using your
-    own context and hotel codes.
-    <br></br>
-    <br></br>
-    1. Specifying the access codes in the filter node in your variables: the query will only be sent to the accesses specified.
+
+![Hotel-X Shopping Flow](../../../../../static/img/docs/hotel-x/hotel-x_multi_mode.svg)
+
+<p> 
+    <b>1. Specifying the access codes in the filter node in your variables:</b> the query will only be sent to the accesses specified.
+</p>
 
 ```json
 "filterSearch": {
@@ -245,14 +248,14 @@ In the room structure response there is a refundable field. If that field is set
     }
 }
 ```
-</p>
+
 <p>
-    2. Not specifying any accesses: The query will be sent to all the accesses connected to your account (only the
+    <b>2. Not specifying any accesses:</b> The query will be sent to all the accesses connected to your account (only the
     ones belonging to the Sellers where the mapping files has been uploaded). This
     query will also check the value of the "testMode" tag in order to request only the test or production accesses,
     accordingly.
 </p>
-</details>
+
 </details>
 
 <details>
@@ -322,7 +325,7 @@ In the room structure response there is a refundable field. If that field is set
 <details>
     <summary>Can I receive daily prices in Hotel-X Search response?</summary>
     <div>
-        <div>Yes, you can receive Daily Prices in Search Response (if the Seller returns this information) through the `roomPrice` > `priceBreakdown`</div>
+        <div>Yes, you can receive Daily Prices in Search Response (if the Seller returns this information) through the "roomPrice" > "priceBreakdown" fields.</div>
     </div>
 </details>
 

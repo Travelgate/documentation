@@ -42,6 +42,9 @@ type AdminMutation {
   cloneAccess(where: AccessWhereUniqueInput!, data: AccessCloneInput!): Access!
   activateAccess(where: AccessWhereUniqueInput!): Access!
   safeDeactivateAccess(where: AccessWhereUniqueInput!): Access!
+  safeDeactivateClient(where: ClientWhereUniqueInput!): Client!
+  safeDeactivateSupplier(where: SupplierWhereUniqueInput!): Supplier!
+  safeDeactivateProvider(where: ProviderWhereUniqueInput!): Provider!
   deactivateAccess(where: AccessWhereUniqueInput!): Access!
   grantAccessToGroups(
     where: AccessWhereUniqueInput!
@@ -102,12 +105,9 @@ type AdminMutation {
   revokePermissions(member: GrantPermissionsInput!): Member!
   clonePermissions(member: ClonePermissionsInput!): Member!
   updateGroup(group: UpdateGroupInput!): Group!
-  deleteMember(member: DeleteMemberInput!): Member!
   deleteGroup(group: DeleteGroupInput!): Group!
   grantApiToGroup(group: UpdateGroupAPISInput): Group!
   revokeApiFromGroup(group: UpdateGroupAPISInput): Group!
-  grantMacroPermissionsToMember(input: GrantMacroPermissionInput!): Member!
-  revokeMacroPermissionsFromMember(input: GrantMacroPermissionInput!): Member!
   addContact(
     organizationCode: ID!
     type: OrganizationContactType!
@@ -136,7 +136,6 @@ type AdminMutation {
   deleteAgent(PartnerCode: ID!, user: ID!): Partner!
   updateProvider(input: ProviderInput!): Provider
   createFtpByOrganization(orgCode: ID!): Organization!
-  deleteOrganization(organization: DeleteOrganizationInput!): Organization!
   setPartnerToOrganization(orgCode: ID!, partnerCode: ID!): Organization!
   removePartnerFromOrganization(orgCode: ID!): Organization!
   createProvider(data: ProviderCreateInput!): Provider!
@@ -180,10 +179,16 @@ type AdminMutation {
     where: ProviderWhereUniqueInput!
     data: ProviderConnectionType!
   ): Provider!
-  archiveOrganization(organization: DeleteOrganizationInput!): Organization!
-  unArchiveOrganization(organization: DeleteOrganizationInput!): Organization!
-  archiveMember(member: ArchiveMemberInput!): Member!
-  unArchiveMember(member: ArchiveMemberInput!): Member!
+  archiveOrganization(where: OrganizationWhereUniqueInput!): Organizations!
+  unArchiveOrganization(where: OrganizationWhereUniqueInput!): Organizations!
+  archiveOrganizationIAM(organization: DeleteOrganizationInput!): Organization!
+  unArchiveOrganizationIAM(
+    organization: DeleteOrganizationInput!
+  ): Organization!
+  archiveMember(member: MemberInput!): Member!
+  unArchiveMember(member: MemberInput!): Member!
+  deactivateMemberIAM(member: MemberInput!): Member!
+  activateMemberIAM(member: MemberInput!): Member!
   setOrganizationTestValue(
     where: OrganizationWhereUniqueInput!
     isTest: Boolean!
@@ -247,6 +252,24 @@ type AdminMutation {
 > Safe Desactivate Access
 >
 > ##### [<code style={{ fontWeight: 'normal' }}>AdminMutation.safeDeactivateAccess.<b>where</b></code>](#)<Bullet />[`AccessWhereUniqueInput!`](/api/inputs/access-where-unique-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminMutation.<b>safeDeactivateClient</b></code>](#)<Bullet />[`Client!`](/api/objects/client) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Safe Desactivate Client
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminMutation.safeDeactivateClient.<b>where</b></code>](#)<Bullet />[`ClientWhereUniqueInput!`](/api/inputs/client-where-unique-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminMutation.<b>safeDeactivateSupplier</b></code>](#)<Bullet />[`Supplier!`](/api/objects/supplier) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Safe Desactivate Supplier
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminMutation.safeDeactivateSupplier.<b>where</b></code>](#)<Bullet />[`SupplierWhereUniqueInput!`](/api/inputs/supplier-where-unique-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminMutation.<b>safeDeactivateProvider</b></code>](#)<Bullet />[`Provider!`](/api/objects/provider) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> Safe Desactivate Provider
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminMutation.safeDeactivateProvider.<b>where</b></code>](#)<Bullet />[`ProviderWhereUniqueInput!`](/api/inputs/provider-where-unique-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
 
 #### [<code style={{ fontWeight: 'normal' }}>AdminMutation.<b>deactivateAccess</b></code>](#)<Bullet />[`Access!`](/api/objects/access) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
 
@@ -558,12 +581,6 @@ type AdminMutation {
 >
 > ##### [<code style={{ fontWeight: 'normal' }}>AdminMutation.updateGroup.<b>group</b></code>](#)<Bullet />[`UpdateGroupInput!`](/api/inputs/update-group-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
 
-#### [<code style={{ fontWeight: 'normal' }}>AdminMutation.<b>deleteMember</b></code>](#)<Bullet />[`Member!`](/api/objects/member) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
-
-> Delete a member from specific group
->
-> ##### [<code style={{ fontWeight: 'normal' }}>AdminMutation.deleteMember.<b>member</b></code>](#)<Bullet />[`DeleteMemberInput!`](/api/inputs/delete-member-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
-
 #### [<code style={{ fontWeight: 'normal' }}>AdminMutation.<b>deleteGroup</b></code>](#)<Bullet />[`Group!`](/api/objects/group) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
 
 > Delete group and members from this group
@@ -581,18 +598,6 @@ type AdminMutation {
 > Remove API from an existing group
 >
 > ##### [<code style={{ fontWeight: 'normal' }}>AdminMutation.revokeApiFromGroup.<b>group</b></code>](#)<Bullet />[`UpdateGroupAPISInput`](/api/inputs/update-group-apisinput) <Badge class="badge badge--secondary" text="input"/>
-
-#### [<code style={{ fontWeight: 'normal' }}>AdminMutation.<b>grantMacroPermissionsToMember</b></code>](#)<Bullet />[`Member!`](/api/objects/member) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
-
-> Grant macro permission.
->
-> ##### [<code style={{ fontWeight: 'normal' }}>AdminMutation.grantMacroPermissionsToMember.<b>input</b></code>](#)<Bullet />[`GrantMacroPermissionInput!`](/api/inputs/grant-macro-permission-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
-
-#### [<code style={{ fontWeight: 'normal' }}>AdminMutation.<b>revokeMacroPermissionsFromMember</b></code>](#)<Bullet />[`Member!`](/api/objects/member) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
-
-> Revoke macro permission
->
-> ##### [<code style={{ fontWeight: 'normal' }}>AdminMutation.revokeMacroPermissionsFromMember.<b>input</b></code>](#)<Bullet />[`GrantMacroPermissionInput!`](/api/inputs/grant-macro-permission-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
 
 #### [<code style={{ fontWeight: 'normal' }}>AdminMutation.<b>addContact</b></code>](#)<Bullet />[`Organization!`](/api/objects/organization) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
 
@@ -701,12 +706,6 @@ type AdminMutation {
 > Sets FTP structure and send an email to the organization owner with the credentials
 >
 > ##### [<code style={{ fontWeight: 'normal' }}>AdminMutation.createFtpByOrganization.<b>orgCode</b></code>](#)<Bullet />[`ID!`](/api/scalars/id) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
-
-#### [<code style={{ fontWeight: 'normal' }}>AdminMutation.<b>deleteOrganization</b></code>](#)<Bullet />[`Organization!`](/api/objects/organization) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
-
-> Delete organization and related member roles.
->
-> ##### [<code style={{ fontWeight: 'normal' }}>AdminMutation.deleteOrganization.<b>organization</b></code>](#)<Bullet />[`DeleteOrganizationInput!`](/api/inputs/delete-organization-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
 
 #### [<code style={{ fontWeight: 'normal' }}>AdminMutation.<b>setPartnerToOrganization</b></code>](#)<Bullet />[`Organization!`](/api/objects/organization) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
 
@@ -882,25 +881,49 @@ type AdminMutation {
 
 >
 
-#### [<code style={{ fontWeight: 'normal' }}>AdminMutation.<b>archiveOrganization</b></code>](#)<Bullet />[`Organization!`](/api/objects/organization) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+#### [<code style={{ fontWeight: 'normal' }}>AdminMutation.<b>archiveOrganization</b></code>](#)<Bullet />[`Organizations!`](/api/objects/organizations) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
 
-> ##### [<code style={{ fontWeight: 'normal' }}>AdminMutation.archiveOrganization.<b>organization</b></code>](#)<Bullet />[`DeleteOrganizationInput!`](/api/inputs/delete-organization-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+> EntitiesV2: Archives organization from entities
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminMutation.archiveOrganization.<b>where</b></code>](#)<Bullet />[`OrganizationWhereUniqueInput!`](/api/inputs/organization-where-unique-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
 
-#### [<code style={{ fontWeight: 'normal' }}>AdminMutation.<b>unArchiveOrganization</b></code>](#)<Bullet />[`Organization!`](/api/objects/organization) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+#### [<code style={{ fontWeight: 'normal' }}>AdminMutation.<b>unArchiveOrganization</b></code>](#)<Bullet />[`Organizations!`](/api/objects/organizations) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
 
-> ##### [<code style={{ fontWeight: 'normal' }}>AdminMutation.unArchiveOrganization.<b>organization</b></code>](#)<Bullet />[`DeleteOrganizationInput!`](/api/inputs/delete-organization-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+> EntitiesV2: Unarchives organization from entities
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminMutation.unArchiveOrganization.<b>where</b></code>](#)<Bullet />[`OrganizationWhereUniqueInput!`](/api/inputs/organization-where-unique-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminMutation.<b>archiveOrganizationIAM</b></code>](#)<Bullet />[`Organization!`](/api/objects/organization) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> ArchiveOrganizationIAM: Archives organization from IAM
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminMutation.archiveOrganizationIAM.<b>organization</b></code>](#)<Bullet />[`DeleteOrganizationInput!`](/api/inputs/delete-organization-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminMutation.<b>unArchiveOrganizationIAM</b></code>](#)<Bullet />[`Organization!`](/api/objects/organization) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> UnarchiveOrganizationIAM: Unarchives organization from IAM
+>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminMutation.unArchiveOrganizationIAM.<b>organization</b></code>](#)<Bullet />[`DeleteOrganizationInput!`](/api/inputs/delete-organization-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
 
 #### [<code style={{ fontWeight: 'normal' }}>AdminMutation.<b>archiveMember</b></code>](#)<Bullet />[`Member!`](/api/objects/member) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
 
 > Archives member from platform and removes it from Auth0
 >
-> ##### [<code style={{ fontWeight: 'normal' }}>AdminMutation.archiveMember.<b>member</b></code>](#)<Bullet />[`ArchiveMemberInput!`](/api/inputs/archive-member-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminMutation.archiveMember.<b>member</b></code>](#)<Bullet />[`MemberInput!`](/api/inputs/member-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
 
 #### [<code style={{ fontWeight: 'normal' }}>AdminMutation.<b>unArchiveMember</b></code>](#)<Bullet />[`Member!`](/api/objects/member) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
 
 > Unarchives member from platform and adds it to Auth0
 >
-> ##### [<code style={{ fontWeight: 'normal' }}>AdminMutation.unArchiveMember.<b>member</b></code>](#)<Bullet />[`ArchiveMemberInput!`](/api/inputs/archive-member-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminMutation.unArchiveMember.<b>member</b></code>](#)<Bullet />[`MemberInput!`](/api/inputs/member-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminMutation.<b>deactivateMemberIAM</b></code>](#)<Bullet />[`Member!`](/api/objects/member) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminMutation.deactivateMemberIAM.<b>member</b></code>](#)<Bullet />[`MemberInput!`](/api/inputs/member-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>AdminMutation.<b>activateMemberIAM</b></code>](#)<Bullet />[`Member!`](/api/objects/member) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> ##### [<code style={{ fontWeight: 'normal' }}>AdminMutation.activateMemberIAM.<b>member</b></code>](#)<Bullet />[`MemberInput!`](/api/inputs/member-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
 
 #### [<code style={{ fontWeight: 'normal' }}>AdminMutation.<b>setOrganizationTestValue</b></code>](#)<Bullet />[`Organizations!`](/api/objects/organizations) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
 

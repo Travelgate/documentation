@@ -14,15 +14,15 @@ To get started with the Preference plugin, follow these simple steps:
 
 ##  1.Create and upload your Safety Margin file
 
-First, create your safety margin file in the correct format and then upload it to your FTP account. To assist you with this process, you can download the template file below ⬇️, add your own rules, save it in CSV format, and then upload it to the corresponding folder in your FTP.
+To get started, create your safety margin file in the correct format and then upload it to your FTP account. We've provided a template file below ⬇️ to help you with this process. Just click on the file name, add your own rules, save it in CSV format, and then upload it to the corresponding folder in your FTP.
 
 ```mdx-code-block
 <BrowserWindow>
 
-📁F0\_0000  
+📁F0  _0000  
 &nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX_0000  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁BusinessRules  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[BuyerContext_sequential_safetymargin.csv](../../../../../static/files/hotel-x/BuyerContext_sequential_safetymargin.csv)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[BuyerContext_sequential_safetymargin.csv](../../../../../static/files/hotel-x/BuyerContext_sequential_safetymargin.csv)**
 
 </BrowserWindow>
 ```
@@ -37,25 +37,25 @@ First, create your safety margin file in the correct format and then upload it t
    * **RuleId (mandatory):** Rule identifier
    * **ClientTokens (mandatory):**  Identifier provided by the client that is used to filter which business rules can be applied for the sent request
       * Separator for multiples codes in the same row: Semicolon `;`
-   * **SupplierCodes (mandatory):** Supplier code
+   * **SupplierCodes (mandatory):** Supplier codes you want the rule to be applied to.
       * Separator for multiples codes in the same row: Semicolon `;`
-   * **NotSupplierCodes (mandatory):** Supplier code
+   * **NotSupplierCodes (mandatory):** Supplier codes you don't want the rule to be applied to.
       * Separator for multiples codes in the same row: Semicolon `;`
    * **CreationDateFrom:** Start creation date (yyyy-mm-dd)
    * **CreationDateTo:** End creation date (yyyy-mm-dd)
    * **CheckInFrom:** Check in from date (yyyy-mm-dd)
    * **CheckInTo:** Check in to date (yyyy-mm-dd)
-   * **HotelCodes:** Hotel code
+   * **HotelCodes:** Hotel codes you want the rule to be applied to.
       * Separator for multiples codes in the same row: Semicolon `;`
-   * **NothotelCodes:** Hotel code
+   * **NothotelCodes:** Hotel codes you don't want the rule to be applied to.
       * Separator for multiples codes in the same row: Semicolon `;`
-   * **ChainsCodes:** Chain code
+   * **ChainsCodes:** Chain codes you want the rule to be applied to.
       * Separator for multiples codes in the same row: Semicolon `;`
-   * **NotChainCodes:** Chain code
+   * **NotChainCodes:** Chain codes you don't want the rule to be applied to.
       * Separator for multiples codes in the same row: Semicolon `;`
-   * **DestinationCodes:** Destination code
+   * **DestinationCodes:** Destination codes you want the rule to be applied to.
       * Separator for multiples codes in the same row: Semicolon `;`
-   * **NotDestinationCodes:** Destination code
+   * **NotDestinationCodes:** Destination codes you don't want the rule to be applied to.
       * Separator for multiples codes in the same row: Semicolon `;`
    * **Percentage (mandatory):** Commission value, decimal separator must be point `.`
 
@@ -73,9 +73,9 @@ First, create your safety margin file in the correct format and then upload it t
 
 Once you've uploaded your safety margin file, to use the plugin add the following field to the `settings` node of your request. Note that safety margin plugin can just be executed in search query. In order to successfully execute the safety margin plugin, you will need to create the request with the following variables.
 
-* `step`: `RESPONSE_OPTION`
-* `type`: `PRE_STEP`
-* `name`: `safety_margin`
+* **`step`**: "RESPONSE_OPTION"
+* **`type`**: "PRE_STEP"
+* **`name`**: "safety_margin"
 
 ```json
 "settings": {

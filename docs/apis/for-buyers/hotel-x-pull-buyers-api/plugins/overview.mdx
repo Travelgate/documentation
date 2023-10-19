@@ -4,9 +4,15 @@ sidebar_position: 1
 
 # Overview
 
-Hotel-X offers customizable Plugins that allow you to incorporate your own business logic without separate implementation. With Plugins, customize your requests and responses effortlessly as your business expands, and forget about aggregating responses from multiple suppliers. Just upload the required files to our FTP and configure the Plugins to suit your specific requirements.
+Hotel-X offers a versatile feature: customizable Plugins! These plugins enable you to seamlessly integrate your unique business logic, eliminating the need for complex implementations. With Plugins, you can easily fine-tune your requests and responses as your business expands, simplifying the management of responses from various suppliers.
+For instance, you can customize currency exchange, establish blacklists for hotels based on different criteria, or exclusively receive the cheapest option for each meal plan.
 
-Furthermore, there is an option to load default plugins into our database. Currently, the exclusive method for doing so involves reaching out to our dedicated Customer Care team opening a [ticket](https://app.travelgatex.com/tickets). These default plugins will automatically execute in all the Queries and Mutations when no filters are specified.
+To utilize these plugins, simply add and configure the one that suits your needs in your requests. In some cases, you may be required to upload a specific file to your FTP account, which we provide.
+
+:::note
+There's an option to load default plugins into our database. To explore this, kindly contact our dedicated Customer Care team to initiate the process by opening a ticket. These default plugins will automatically execute in all your Queries and Mutations when you haven't specified any filters. Enjoy the convenience!
+:::s
+
 
 ## FTP Files
 
@@ -26,7 +32,7 @@ The structure of the directory should be in the below format, all files should b
 <BrowserWindow>
 
 📁F[Folder code]\_[Unique code]  
-&nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX\_[Unique code]
+&nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX  _[Unique code]
 
 </BrowserWindow>
 ```
@@ -54,30 +60,28 @@ Example:
 To upload an FTP file, follow these simple steps:
 
 1. **Upload the File:**
-   - Upload the file with the correct name, depending on its purpose.
+   - Once you've decided on the plugin you want to use, and if it's necessary, simply upload the required CSV file.
 
 2. **Wait for Processing:**
    - Once you've uploaded the file, our system will take care of the rest.
    - We'll automatically add the "_processed" tagline to the end of the file name when the processing is complete.
 
-   For example, if you uploaded a file for hotel mapping with the name:
+   For example, if you uploaded a file for hotel mapping plugin with the name:
    ```
-   [Buyer Context]_[Supplier Context]_hotel_map_.csv
+   BuyerContext_SupplierContext_hotel_map_.csv
    ```
 
    After our system processes it, it will look like this:
    ```
-   [Buyer Context]_[Supplier Context]_hotel_map_processed.csv
+   BuyerContext_SupplierContext_hotel_map_processed.csv
    ```
 
 ### Update FTP Data
 
 To update an FTP file, follow these simple steps:
 
-1. **Updating the File:**
-   - If you need to update the information in the file, simply delete the old file.
-   - Upload the new file with the updated information, using the correct name.
-   - You don't need to add the "_processed" tagline to the name; we'll take care of that on our end.
+1. If you need to update the information in the file, simply delete the old file.
+2. Upload the new file with the updated information, using the correct name. You don't need to add the "_processed_" tagline to the name; we'll take care of that on our end.
 
 That's it! Updating FTP files is as easy as that.
 
@@ -99,4 +103,4 @@ That's it! By replacing the existing data with an empty file containing headers 
 
 To execute the plugins, in some cases it is enough to upload the file to the FTP, in other cases you just have to indicate it in the request, and in some cases both actions need to be done, uploading the file to the FTP and indicating it in the request.
 
-In each of the plugins, you will see a section called "Execute plugin in your request", where it will be indicated how to execute that specific plugin.
+In each of the plugins, you will see a section called "_Execute plugin in your request_", where it will be indicated how to execute that specific plugin.

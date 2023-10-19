@@ -1,24 +1,24 @@
 ---
-sidebar_position: 12
+sidebar_position: 7
 ---
 
 # Currency Converter
 
-Currency converter plugin allows to apply currency conversion over all the prices in one option. This plugin receives an option + a currency and returns the same option with currency conversion applied over all the prices. It reads the information about rates from a file located in our ftp. Is mandatory that this file exists in the ftp and satisfies all the requirements below. Otherwise, an error will be returned.
+The Currency Converter plugin enables the application of currency conversion to all the prices within a single option. This plugin takes an option and a currency as input and provides the same option with currency conversion applied to all the prices. It obtains rate information from a file located on our FTP server. It's important to note that the existence of this file on the FTP server and its compliance with specific requirements are mandatory. Otherwise, an error will be returned.
 
 To get started with the Currency Converter plugin, follow these simple steps:
 
 ##  1.Create and upload your Currency Converter file
 
-First, create your currency converter file in the correct format and then upload it to your FTP account. To assist you with this process, you can download the template file below ⬇️, add your own rules, save it in CSV format, and then upload it to the corresponding folder in your FTP.
+To get started, create your currency converter file in the correct format and then upload it to your FTP account. We've provided a template file below ⬇️ to help you with this process. Just click on the file name, add your own rules, save it in CSV format, and then upload it to the corresponding folder in your FTP.
 
 ```mdx-code-block
 <BrowserWindow>
 
-📁F0\_0000  
+📁F0  _0000  
 &nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX_0000  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁BusinessRules  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[currency_map.csv](../../../../../static/files/hotel-x/currency_map.csv)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[currency_map.csv](../../../../../static/files/hotel-x/currency_map.csv)**
 
 </BrowserWindow>
 ```
@@ -54,10 +54,10 @@ The rate with value 1.00 is the base currency. Other rates are calculated from i
 
 Once you've uploaded your currency converter file, to use the plugin add the following field to the `settings` node of your request. Note that currency converter plugin can just be executed in search query. In order to successfully execute the preference plugin, you will need to create the request with the following variables.
 
-* `step`: `RESPONSE_OPTION`
-* `type`: `PRE_STEP`
-* `name`: `currency_exchange`
-* `parameters`:
+* **`step`**: "RESPONSE_OPTION"
+* **`type`**: "PRE_STEP"
+* **`name`**: "currency_exchange"
+* **`parameters`**:
 
 | Key      | Value   | Format     | Description                                                                                                        |
 |----------|---------|------------|--------------------------------------------------------------------------------------------------------------------|

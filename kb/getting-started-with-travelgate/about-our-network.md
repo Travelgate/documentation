@@ -4,8 +4,7 @@ sidebar_position: 2
 
 # About our Network
 
-# Unlocking New Opportunities: Connect and Partner with TravelgateX Network!
-## Grow your business connections by exploring our Network!
+### Grow your business connections by exploring our Network!
 
 At TravelgateX, we provide tailored recommendations for new connections based on your usage data within our Marketplace. Our advanced algorithms ensure that you not only **expand your Network**, but also increase your booking volume by connecting you with Partners that are most relevant to your trading patterns. 
 
@@ -47,7 +46,6 @@ Our system now suggests Company names as you type, displaying their logo and typ
 
  
 
-:::note
-**Wondering why you're seeing recommended Partners you're already connected with?**  
-It's because connections without traffic for the last 3 months will be suggested as a reminder for you to reactivate them - after all, they match your business!
+:::note Wondering why you're seeing recommended Partners you're already connected with?
+This is because connections without activity in the last 3 months will be proposed as a reminder for you to reactivate them. After all, they are a good fit for your business!
 :::

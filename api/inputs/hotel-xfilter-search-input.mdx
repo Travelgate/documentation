@@ -29,7 +29,8 @@ style={{ listStyle:'none' }} >
 );
 };
 
-No description
+Filters allow you to precisely tailor the response according to your preferences.
+@deprecated (reason: "deprecated from 2018-10-21. Please, use PluginStepInput")
 
 ```graphql
 input HotelXFilterSearchInput {
@@ -44,16 +45,17 @@ input HotelXFilterSearchInput {
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelXFilterSearchInput.<b>access</b></code>](#)<Bullet />[`AccessFilterInput`](/api/inputs/access-filter-input) <Badge class="badge badge--secondary" text="input"/>
 
-> You can specify one of the filters or any of them. In this latter case, all the configurated accesses will be executed.
+> By using the access filter, our system will exclusively include or exclude options from the selected accesses.
+> If you opt not to set any access at all, requests will be made to all available accesses.
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelXFilterSearchInput.<b>plugin</b></code>](#)<Bullet />[`HotelXPluginFilterInput`](/api/inputs/hotel-xplugin-filter-input) <Badge class="badge badge--secondary" text="input"/>
 
-> Only is possible to specify one of this filters, it allows to filter which plugins have to be executed or excluded
+> You can filter and specify which plugins need to be included or excluded.
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelXFilterSearchInput.<b>rateRules</b></code>](#)<Bullet />[`RateRulesFilterInput`](/api/inputs/rate-rules-filter-input) <Badge class="badge badge--secondary" text="input"/>
 
-> If requested, only options with the specified rateRules will be returned
+> This filter enables you to narrow down the options returned by the suppliers based on the desired rate rules you want to include or exclude.
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelXFilterSearchInput.<b>status</b></code>](#)<Bullet />[`StatusFilterInput`](/api/inputs/status-filter-input) <Badge class="badge badge--secondary" text="input"/>
 
-> You can specify one of the filters or any of them. It allows to filter wich status will be returned
+> Use this filter to determine which status (OK and RQ) will be included or excluded in the response.

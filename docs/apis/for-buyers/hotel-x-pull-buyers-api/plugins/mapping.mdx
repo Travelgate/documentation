@@ -1,38 +1,41 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 # Mapping
 
-Mapping plugin serves to convert either the Supplier's native codes to the Buyer's codes or vice versa. This feature includes Hotel Map, Board Map, Room Map, Rate Map, Amenity Map, Promotion Map and Room Description Map categories.
+Mapping plugin serves to convert either the Supplier's native codes to the Buyer's codes or vice versa. 
+To do this, you need a file that shows how the Buyer's and Seller's codes relate, so our system can do the conversion automatically.
+
+This feature includes Hotel Map, Board Map, Room Map, Rate Map, Amenity Map, Promotion Map and Room Description Map categories.
 
 To get started with the Mapping plugin, follow these simple steps:
 
 ## 1. Create and upload your Mapping file
 
-First, create your mapping file for the desired entity (hotel, board, room...) in the correct format and then upload it to your FTP account. To assist you with this process, you can download the template file below ⬇️, add your own rules, save it in CSV format, and then upload it to the corresponding folder in your FTP.
+To get started, create your mapping file for the desired entity (hotel, board, room...) in the correct format and then upload it to your FTP account. We've provided a template file below ⬇️ to help you with this process. Just click on the file name, add your own rules, save it in CSV format, and then upload it to the corresponding folder in your FTP.
 
 
 ```mdx-code-block
 <BrowserWindow>
 
-📁F0\_0000  
-&nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX\_0000  
+📁F0  _0000  
+&nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX  _0000  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁Maps  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁Hotel  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[BuyerContext_SupplierContext_hotel_map.csv](../../../../../static/files/hotel-x/BuyerContext_SupplierContext_hotel_map.csv)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[BuyerContext_SupplierContext_hotel_map.csv](../../../../../static/files/hotel-x/BuyerContext_SupplierContext_hotel_map.csv)**  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁Board  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[BuyerContext_SupplierContext_board_map.csv](../../../../../static/files/hotel-x/BuyerContext_SupplierContext_board_map.csv)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[BuyerContext_SupplierContext_board_map.csv](../../../../../static/files/hotel-x/BuyerContext_SupplierContext_board_map.csv)**    
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁Room  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[BuyerContext_SupplierContext_room_map.csv](../../../../../static/files/hotel-x/BuyerContext_SupplierContext_room_map.csv)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[BuyerContext_SupplierContext_room_map.csv](../../../../../static/files/hotel-x/BuyerContext_SupplierContext_room_map.csv)**  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁Rate  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[BuyerContext_SupplierContext_rate_map.csv](../../../../../static/files/hotel-x/BuyerContext_SupplierContext_rate_map.csv)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[BuyerContext_SupplierContext_rate_map.csv](../../../../../static/files/hotel-x/BuyerContext_SupplierContext_rate_map.csv)**  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁Amenity  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[BuyerContext_SupplierContext_amenity_map.csv](../../../../../static/files/hotel-x/BuyerContext_SupplierContext_amenity_map.csv)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[BuyerContext_SupplierContext_amenity_map.csv](../../../../../static/files/hotel-x/BuyerContext_SupplierContext_amenity_map.csv)**  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁Promotion  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[BuyerContext_SupplierContext_promotion_map.csv](../../../../../static/files/hotel-x/BuyerContext_SupplierContext_promotion_map.csv)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[BuyerContext_SupplierContext_promotion_map.csv](../../../../../static/files/hotel-x/BuyerContext_SupplierContext_promotion_map.csv)**  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁Room description  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[BuyerContext_SupplierContext_roomdescription_map.csv](../../../../../static/files/hotel-x/BuyerContext_SupplierContext_roomdescription_map.csv) 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[BuyerContext_SupplierContext_roomdescription_map.csv](../../../../../static/files/hotel-x/BuyerContext_SupplierContext_roomdescription_map.csv)** 
 
 </BrowserWindow>
 ```
@@ -70,19 +73,21 @@ If you need assistance with requesting your credentials to access the FTP server
 
 ## 2. Execute Mapping plugin in your query
 
-:::caution
+:::caution Important
 
 In the case of mapping, it will not be necessary to indicate the plugin at the request level for all mappings, only for amenities_map and promotions_map. In the remaining cases, hotel_map, board_map, room_map, etc., you just need to upload the file to the FTP.
 
 :::
 
-Once you've uploaded your mapping file, to use the plugin add the following field to the `settings` node of your request. Note that mapping plugin can just be executed in search query. In order to successfully execute the mapping plugin, you will need to create the request with the following variables, taking into account the type of mapping you want to execute.
 
+If you want to map promotions or amenities, follow these steps:
+
+After uploading your mapping file, add the following field to the `settings` node of your request. Keep in mind that the mapping plugin can only be executed in a search query. To successfully use the mapping plugin, create the request with the following variables, considering the type of mapping you want to perform.
 For amenity_map:
 
-* `step`: `RESPONSE_OPTION`
-* `type`: `PRE_STEP`
-* `name`: `amenity_map`
+* **`step`**: "RESPONSE_OPTION"
+* **`type`**: "PRE_STEP"
+* **`name`**: "amenity_map"
 
 ```json
 "settings": {
@@ -100,9 +105,9 @@ For amenity_map:
 
 For promotion_map:
 
-* `step`: `RESPONSE_OPTION`
-* `type`: `PRE_STEP`
-* `name`: `promotion_map`
+* **`step`**: "RESPONSE_OPTION"
+* **`type`**: "PRE_STEP"
+* **`name`**: "promotion_map"
 
 ```json
 "settings": {

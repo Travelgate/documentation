@@ -38,7 +38,8 @@ type SocialMutation {
     where: ProfileWhereUniqueInput!
     data: ProfileUpdateInput!
   ): ProfileV2!
-  deleteProfile(where: ProfileWhereUniqueInput!): ProfileV2!
+  archiveProfile(where: ProfileWhereUniqueInput!): ProfileV2!
+  unarchiveProfile(where: ProfileWhereUniqueInput!): ProfileV2!
   createCategory(data: CategoryCreateInput!): SocialCategory!
   updateCategory(
     where: CategoryWhereUniqueInput!
@@ -59,6 +60,8 @@ type SocialMutation {
     where: UserProfileWhereUniqueInput!
     data: UserProfileUpdateInput!
   ): UserProfile!
+  archiveUserProfile(where: UserProfileWhereUniqueInput!): UserProfile!
+  unarchiveUserProfile(where: UserProfileWhereUniqueInput!): UserProfile!
   createInvitation(data: InvitationCreateInput!): Invitation!
   updateInvitation(
     where: InvitationWhereUniqueInput!
@@ -83,9 +86,13 @@ type SocialMutation {
 
 >
 
-#### [<code style={{ fontWeight: 'normal' }}>SocialMutation.<b>deleteProfile</b></code>](#)<Bullet />[`ProfileV2!`](/api/objects/profile-v2) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+#### [<code style={{ fontWeight: 'normal' }}>SocialMutation.<b>archiveProfile</b></code>](#)<Bullet />[`ProfileV2!`](/api/objects/profile-v2) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
 
-> ##### [<code style={{ fontWeight: 'normal' }}>SocialMutation.deleteProfile.<b>where</b></code>](#)<Bullet />[`ProfileWhereUniqueInput!`](/api/inputs/profile-where-unique-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+> ##### [<code style={{ fontWeight: 'normal' }}>SocialMutation.archiveProfile.<b>where</b></code>](#)<Bullet />[`ProfileWhereUniqueInput!`](/api/inputs/profile-where-unique-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>SocialMutation.<b>unarchiveProfile</b></code>](#)<Bullet />[`ProfileV2!`](/api/objects/profile-v2) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> ##### [<code style={{ fontWeight: 'normal' }}>SocialMutation.unarchiveProfile.<b>where</b></code>](#)<Bullet />[`ProfileWhereUniqueInput!`](/api/inputs/profile-where-unique-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
 
 #### [<code style={{ fontWeight: 'normal' }}>SocialMutation.<b>createCategory</b></code>](#)<Bullet />[`SocialCategory!`](/api/objects/social-category) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
 
@@ -134,6 +141,14 @@ type SocialMutation {
 ##### [<code style={{ fontWeight: 'normal' }}>SocialMutation.updateUserProfile.<b>data</b></code>](#)<Bullet />[`UserProfileUpdateInput!`](/api/inputs/user-profile-update-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
 
 >
+
+#### [<code style={{ fontWeight: 'normal' }}>SocialMutation.<b>archiveUserProfile</b></code>](#)<Bullet />[`UserProfile!`](/api/objects/user-profile) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> ##### [<code style={{ fontWeight: 'normal' }}>SocialMutation.archiveUserProfile.<b>where</b></code>](#)<Bullet />[`UserProfileWhereUniqueInput!`](/api/inputs/user-profile-where-unique-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>SocialMutation.<b>unarchiveUserProfile</b></code>](#)<Bullet />[`UserProfile!`](/api/objects/user-profile) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
+
+> ##### [<code style={{ fontWeight: 'normal' }}>SocialMutation.unarchiveUserProfile.<b>where</b></code>](#)<Bullet />[`UserProfileWhereUniqueInput!`](/api/inputs/user-profile-where-unique-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
 
 #### [<code style={{ fontWeight: 'normal' }}>SocialMutation.<b>createInvitation</b></code>](#)<Bullet />[`Invitation!`](/api/objects/invitation) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
 

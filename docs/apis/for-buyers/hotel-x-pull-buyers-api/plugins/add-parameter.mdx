@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 6
 ---
 
 # Add Parameter
@@ -9,40 +9,42 @@ The add parameter plugin allows to add parameters to existing accesses in the co
 Additionally, you have the option to replace the value of an existing parameter by adding a parameter with the same key in the query. This allows you to add different parameters to multiple accesses and/or suppliers in the same query.
 
 :::note
-
-For this plugin, there is no need to create any files; you just need to specify it in `settings` `plugins` in the request.
-
+You don't need to create any files for this plugin. Just specify it in the `settings` > `plugins` field in your search query.
 :::
 
 ## 1. Execute Add Parameter plugin in your query
 
 To use the plugin add the following field to the `settings` node of your request. Note that add paramenter plugin can be executed in `search`, `quote`, `book`, `booking` and `cancel` requests. In order to successfully execute the add paramenter plugin, you will need to create the request with the following variables.
 
-* `step`: `REQUEST_ACCESS`
-* `type`: `PRE_STEP`
-* `name`: `add_parameterX`
-* `parameters`:
+* **`step`**: "REQUEST_ACCESS"
+* **`type`**: "PRE_STEP"
+* **`name`**: "add_parameterX"
+* **`parameters`**:
+	* **`key`**: "JSONConfiguration"
+	* **`value`**: JSON structure with parameters that you add by access, supplier or parameter.
 
-| Key               | Value | Condition | Description                                                                  |
-|-------------------|-------|-----------|------------------------------------------------------------------------------|
-| JSONConfiguration | JSON  | mandatory | JSON structure with parameters that you add by access, supplier or parameter |
+For example, for the supplier "HOTELTEST" you add the parameter with key "D" and value "4".
 
 ```json
-"settings": {
-	"plugins": [
-		{
-			"step": "REQUEST_ACCESS",
-			"pluginsType": {
-				"type": "PRE_STEP",
-				"name": "add_parameterX",
-                "parameters": [
+{
+    "settings" : {
+        "plugins" : [
+            {
+                "step" : "REQUEST_ACCESS",
+                "pluginsType" : [
                     {
-                        "key": "JSONConfiguration",
-                        "value": "{\"accesses\": [ { \"codes\": [\"000\"], \"parameters\": [{ \"key\": \"A\", \"value\": \"0\" }] }]}"
+                        "name" : "add_parameterX",
+                        "type" : "POST_STEP",
+                        "parameters" : [
+                            {
+                                "key" : "JSONConfiguration",
+                                "value" : "{ \"suppliers\": [{ \"codes\": [\"HOTELTEST\"], \"parameters\": [{ \"key\": \"D\", \"value\": \"4\" }] }] }"
+                            }
+                        ]
                     }
                 ]
-			}
-		}
-	]
+            }
+        ]
+    }
 }
 ```

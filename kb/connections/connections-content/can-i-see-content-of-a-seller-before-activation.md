@@ -10,5 +10,5 @@ To access the content of any Seller, including hotels, rooms, and destinations, 
 1. **Access the Seller's Content:** Once the connection is established and the credentials are provided, you can effortlessly access and review the [Seller's content](https://knowledge.travelgate.com/buying-on-travelgatex#hotel-x-development-static-content) through our [website](https://knowledge.travelgate.com/connections-content) and via [Hotel-X Pull Buyers API](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/methods/staticcontent/) or [Legacy Pull Buyers API](https://docs.travelgatex.com/connectiontypesbuyers/legacy/methods/staticcontent/)*.
 
 :::info
-*Please remember that only existing Buyers or Buyers who are connecting through an already integrated Tech Platform can access the Hotel Buyers API (Legacy).
+Please remember that only existing Buyers or Buyers who are connecting through an already integrated Tech Platform can access the Hotel Buyers API (Legacy).
 :::

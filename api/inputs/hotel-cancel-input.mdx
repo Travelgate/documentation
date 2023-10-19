@@ -29,7 +29,7 @@ style={{ listStyle:'none' }} >
 );
 };
 
-Cancellation Criteria.
+Cancel criteria.
 
 ```graphql
 input HotelCancelInput {
@@ -53,12 +53,12 @@ input HotelCancelInput {
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelCancelInput.<b>hotelCode</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
 
-> The hotel code.
+> The hotel code, which is only used if you try to cancel with reference.
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelCancelInput.<b>reference</b></code>](#)<Bullet />[`BookReferenceInput`](/api/inputs/book-reference-input) <Badge class="badge badge--secondary" text="input"/>
 
-> Contains the client reference and/or supplier reference.
+> It contains reservation references. When using the reference object to cancel, hotelCode has to be send as well.
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelCancelInput.<b>bookingID</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
 
-> HotelX s booking reference
+> HotelX's booking reference. If you cancel with bookingID nor hotelCode norany other reference needs to be send.

@@ -4,16 +4,22 @@ sidebar_position: 1
 
 # Overview
 
-The `HotelRatePlanInventoryNotif` message contains information about the inventory setup information that should be followed by the structure: Hotel > Rate > Room.
+In the case of the Channel-X API, Travelgate will send requests to the Buyer's system, and the Buyer will reply with either success or error. Channel-X has three main methods. You need to set up your system to handle the following requests:
+
+* `HotelRatePlanInventoryNotif`, which contains information about the inventory setup: Hotel, Rate and Room.
+* `HotelAvailNotif`, which contains information about rate availability and allotment conditions.
+* `HotelRatePlanNotif`, which contains information about rate prices and supplements.
 
 :::note
-EXPLICAR AQUÍ QUE EXISTE LA FULL COPY Y LAS DELTAS
+
+Buyers access the [Full Copy](../fullcopy-and-deltas/fullcopy-and-deltas.mdx) tab to obtain all product details. Subsequently, Channel-X sends [Delta](../fullcopy-and-deltas/fullcopy-and-deltas.mdx) requests for updates made by the Channel Manager.
+
 :::
 
-Tenemos un timeout de 5000ms, si no respondes en ese tiempo nada, no volvemos a intentar enviar una request.
+After each request, a response should be provided from the Buyer's side. For instance, if a `HotelAvailNotif` request is received, a corresponding `HotelAvailNotif` response should be sent, and so forth. There are two response options, success or error.
 
 :::caution
 
-If you do not get information for a certain range of dates that you got previously loaded in the system, do not overwrite them, as this means these days conditions that don’t appear in the request have not changed.
+If you don't retrieve information for a specific range of dates that were previously loaded into the system, refrain from overwriting them. This indicates that the conditions for those days, which do not appear in the request, remain unchanged.
 
 :::

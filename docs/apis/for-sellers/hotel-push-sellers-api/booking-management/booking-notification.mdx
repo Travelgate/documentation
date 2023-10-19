@@ -1,0 +1,122 @@
+---
+sidebar_position: 2
+---
+
+# Booking Notification
+
+During the booking process, we'll send you a `HotelResNotif` request message to share reservation details. You just need to check and let us know the reservation status. After that, Travelgate will handle the response from your system, moving forward with the reservation and updating you on the status.
+
+:::note
+
+If you have the booking locator, include it in the `HotelResNotif` response, this way we'll include it in our response.
+
+:::
+
+Keep in mind that if there's an issue with the reservation in your system, we'll consider it as not successful (NOK) and let you know with an error message.
+
+### Request
+
+The `HotelResNotif` request message provides notifications for bookings.
+
+[Añadir ejemplo]
+
+### Response
+
+After each request, Travelgate processes the data and provides a response to the Seller. Upon receiving a `HotelResNotif` request, Travelgate sends a corresponding `HotelResNotif` response. The response options include either **success** or an **error**.
+
+**Success:**
+
+```html
+<OTA_HotelResNotifRS xmlns = "http://www.opentravel.org/OTA/2003/05" Timestamp = "2018-09-12T23:09:08+03:00">
+    <HotelReservations>
+        <HotelReservation ResStatus = "Confirmed">
+            <ResGlobalInfo>
+                <HotelReservationIDs>
+                    <HotelReservationID ResID_Value = "**providerLocator**" ResID_SourceContext = "Provider"/>
+                </HotelReservationIDs>
+            </ResGlobalInfo>
+        </HotelReservation>
+    </HotelReservations>
+    <Success/>
+/OTA_HotelResNotifRS>
+```
+
+**Error:**
+
+```html
+<OTA_HotelResNotifRS xmlns = "http://www.opentravel.org/OTA/2003/05" Timestamp = "2018-09-12T23:09:08+03:00">
+    <Errors>
+        <Error ShortText = "Confirmation error" Code = "50">Hotel doesn't exist</Error>
+    </Errors>
+</OTA_HotelResNotifRS>
+```
+
+<details>
+    <summary>Error codes you could receive in the response during the booking flow</summary>
+    <div>
+        <div>
+         <table>
+				<thead>
+					<tr>
+						<th>
+							<strong>Error Code</strong>
+						</th>
+						<th>
+							<strong>Error Description</strong>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>-1</td>
+						<td>Unexpected error</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>Validation error</td>
+					</tr>
+					<tr>
+						<td>10</td>
+						<td>HotelCode not found</td>
+					</tr>
+                    <tr>
+						<td>11</td>
+						<td>Invalid dates</td>
+					</tr>
+                    <tr>
+						<td>14</td>
+						<td>Invalid Derived Rate</td>
+					</tr>
+                    <tr>
+						<td>22</td>
+						<td>Rooms not found</td>
+					</tr>
+                    <tr>
+						<td>23</td>
+						<td>Rates not found</td>
+					</tr>
+                    <tr>
+						<td>30</td>
+						<td>Occupation error</td>
+					</tr>
+                    <tr>
+						<td>31</td>
+						<td>RatePlan_Rate Error</td>
+					</tr>
+                    <tr>
+						<td>38</td>
+						<td>POS credentials not found</td>
+					</tr>
+                    <tr>
+						<td>50</td>
+						<td>Confirmation error</td>
+					</tr>
+                    <tr>
+						<td>50</td>
+						<td>Cancellation error</td>
+					</tr>
+				</tbody>
+			</table>
+        </div>
+    </div>
+</details>

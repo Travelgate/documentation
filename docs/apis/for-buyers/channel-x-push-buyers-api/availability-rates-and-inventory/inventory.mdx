@@ -122,6 +122,22 @@ The `HotelRatePlanInventoryNotif` message contains information about the invento
 						<td>258</td>
 						<td>Gala Dinner</td>
 					</tr>
+					<tr>
+						<td>259</td>
+						<td>All Inclusive Light</td>
+					</tr>
+					<tr>
+						<td>260</td>
+						<td>Bed and breakfast + Half board</td>
+					</tr>
+					<tr>
+						<td>261</td>
+						<td>All Inclusive Limited</td>
+					</tr>
+					<tr>
+						<td>262</td>
+						<td>Bed and Brunch</td>
+					</tr>
 				</tbody>
 			</table>
         </div>
@@ -167,7 +183,7 @@ The `HotelRatePlanInventoryNotif` message contains information about the invento
 </details>
 
 <details>
-    <summary>Credit Cards codes</summary>
+    <summary>Credit Card codes</summary>
     <div>
         <div>
          <table>
@@ -267,10 +283,6 @@ The `HotelRatePlanInventoryNotif` message contains information about the invento
 						<td>Air Canada/RnRoute</td>
 					</tr>
                     <tr>
-						<td>256</td>
-						<td>Half board And Drinks</td>
-					</tr>
-                    <tr>
 						<td>XS</td>
 						<td>access</td>
 					</tr>
@@ -287,6 +299,13 @@ The `HotelRatePlanInventoryNotif` message contains information about the invento
 ## Response
 
 After each request, a response should be provided from the Buyer's side. If a `HotelRatePlanInventoryNotif` request is received, a corresponding `HotelRatePlanInventoryNotif` response should be sent. There are two response options, success or error.
+
+:::caution
+
+Our system has a timeout of 5000ms. If no response occurs within this timeframe, we won't attempt to resend the request. It is recommended that your system processes our requests with an average handling time of 100ms.
+
+:::
+
 
 **Success:**
 

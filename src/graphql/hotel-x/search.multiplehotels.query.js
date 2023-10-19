@@ -30,6 +30,7 @@ export const searchMultipleHotelsQuery =
 				boardCode
 				paymentType
 				status
+				markets
 				occupancies {
 					id
 					paxes {
@@ -202,7 +203,9 @@ export const searchMultipleHotelsVariables =
 			"2"
 		],
 		"currency": "EUR",
-		"market": "ES",
+		"markets": [
+			"ES"
+		],
 		"language": "es",
 		"nationality": "ES"
 	},

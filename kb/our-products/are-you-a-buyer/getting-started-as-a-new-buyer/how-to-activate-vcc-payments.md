@@ -41,6 +41,34 @@ Use this plugin by adding it to the settings in your Hotel-X Cancel Operation.
 Don't forget to check our [API Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/plugins/vcc/) for further details on the VCC Plugin File format and specifications🔎
 :::
 
+### List of available card types💡
+
+| Codes  | Names  |
+| ---  |  --- |
+| VI  |  Visa |
+| AX  |  American Express |
+| BC  |  BC Card |
+| CA  |  MasterCard |
+| CB  |  Carte Blanche |
+| CU  |  China Union Pay |
+| DS  |  Discover |
+| DC  |  Diners Club |
+| T  |  Carta Si |
+| R	  |  Carte Bleue |
+| N  |  Dankort |
+| L  |  Delta |
+| E  |  Electron |
+| JC  |  Japan Credit Bureau |
+| TO  |  Maestro |
+| S	  |  Switch |
+| EC  |  Electronic Cash |
+| EU  |  EuroCard |
+| TP  |  Universal Air Travel Card |
+| OP  |  Optima |
+| ER  |  Air Canada/RnRoute |
+| XS  |  Access |
+| O  |  Others |
+
  
 ### List of VCC Suppliers📑
 - Amadeus Virtual Account
@@ -49,4 +77,3 @@ Don't forget to check our [API Documentation](https://docs.travelgatex.com/conne
 - WEX
 
 <TipContactCustomerCare/>
- 

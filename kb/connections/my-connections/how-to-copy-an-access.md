@@ -14,6 +14,4 @@ In order to speed up the process of copying a pre-existing access and minimize t
 	- **Set your credentials** for that specific connection. Remember to check all the fields in the form in case you need to modify some information before requesting the activation.
 1. **Activation Process**: The activation process is similar to any other activation and may take some time. Don't forget to check our articles on [Auto-Activations](https://knowledge.travelgate.com/auto-activations-quickguide) for further information.
 
-```
-image
-```
+	![copy_access](https://stplaformwe.blob.core.windows.net/kbase/my_connections_9.jpg)

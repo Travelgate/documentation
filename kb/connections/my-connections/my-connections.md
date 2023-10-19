@@ -14,9 +14,7 @@ To check, activate, and keep track of your connections via TravelgateX, simply f
 
 2. Click on Connections>**My Connections**:
 
-	```
-	image
-	```
+	![my_connections_1](https://storage.travelgate.com/kbase/my_connections_1.jpg)
 
 ### What can I find in My Connections?🔎
 In [My Connections](https://app.travelgatex.com/connections/myconnections) section you will find a list of all your connections. You may filter your accesses based on their status, type, and whether they are active or not.
@@ -49,37 +47,27 @@ You can enable or disable your Hotel-X connections and accesses. Please note tha
 	- Yes: Active and operational access
 	- No: Active and non-operational access
 
-	```
-	image
-	```
 
-	```
-	image
-	```
+		<img src="https://storage.travelgate.com/kbase/my_connections_2.jpg" width="200" />
+
+
+		![my_connections_3](https://storage.travelgate.com/kbase/my_connections_3.jpg)
 
 1. **Accomodations**: the number of properties available for a given access.
 
-	```
-	image
-	```
+	![my_connections_4](https://storage.travelgate.com/kbase/my_connections_4.jpg)
 
 1. **APPs**: Links to the Stats, Logging, Alerts, Speed and Traffic Optimizer APPs for that specific access.
 
-	```
-	image
-	```
+	![my connections_5](https://storage.travelgate.com/kbase/my_connections_5.jpg)
 
 1. **Extended information on "Not Working" status**
 We have also added the following information in order to speed up the Auto-Activation process:
 
 - Informative PopUp: To find out why the auto-activation could not be carried out, hover over the "Not working" status to see an informative PopUp explaining the error.
 
- 	```
-	image
-	```
+	![my_connections_6](https://storage.travelgate.com/kbase/my_connections_6.jpg)
 
 - Assigned ticket and link to it: You can view the ticket information assigned to the access and open the ticket in the MyTickets section for more details about the current status of the access. 
 
-	```
-	image
-	```
+	<img src="https://storage.travelgate.com/kbase/my_connections_7.jpg" width="500" />

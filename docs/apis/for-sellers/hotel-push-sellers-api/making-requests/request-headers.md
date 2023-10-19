@@ -3,3 +3,62 @@ sidebar_position: 2
 ---
 
 # Request Headers
+
+The following request headers are essential for all request methods and must be included in every API request.
+
+### Mandatory Request Headers
+
+**Authentication**: Authentication is required for every request to the TravelgateX XML API. The authentication header employs two levels of authentication, namely "Security" and "POS." 
+
+1. **Security Level**
+
+   The Security level is situated in the SOAP envelope header of all requests, where the user and password of our Inventory system are transmitted.
+
+   ```html
+   <SOAP-ENV:Envelope xmlns:SOAP-ENV = "http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1 = "http://www.opentravel.org/OTA/2003/05" xmlns:ns2 = "http://schemas.xmltravelgate.com/hubpush/provider/2012/10" xmlns:ns3 = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+    <SOAP-ENV:Header>
+        <ns3:Security SOAP-ENV:mustUnderstand = "1">
+            <ns3:UsernameToken>
+                <ns3:Username>XXXXX</ns3:Username>
+                <ns3:Password>XXXXXXX</ns3:Password>
+            </ns3:UsernameToken>
+        </ns3:Security>
+    </SOAP-ENV:Header>
+    <SOAP-ENV:Body>
+        <!--Your request-->
+    </SOAP-ENV:Body>
+   </SOAP-ENV:Envelope>
+   ```             
+
+2. **POS Level**
+
+   The POS level is incorporated into the body of all requests. It comprises two fields: RequestorID, which represents the seller code assigned to initiate the request, and CompanyName, which signifies the buyer code assigned to receive the updates
+
+   ```html
+   <SOAP-ENV:Envelope xmlns:SOAP-ENV = "http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1 = "http://www.opentravel.org/OTA/2003/05" xmlns:ns2 = "http://schemas.xmltravelgate.com/hubpush/provider/2012/10" xmlns:ns3 = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+    <SOAP-ENV:Header>
+        <ns3:Security SOAP-ENV:mustUnderstand = "1">
+            <ns3:UsernameToken>
+                <ns3:Username>XXXXX</ns3:Username>
+                <ns3:Password>XXXXXXX</ns3:Password>
+            </ns3:UsernameToken>
+        </ns3:Security>
+    </SOAP-ENV:Header>
+    <SOAP-ENV:Body>
+        <ns:HotelRatePlanNotif><!--Your request, ex: HotelAvailNotif, HotelRatePlanInventoryRetrieve ...-->
+            <ns:request>
+                <ns1:POS>
+                    <ns1:Source>
+                        <ns1:RequestorID ID="Seller Code"/>
+                        <ns1:BookingChannel>
+                            <ns1:CompanyName Code="Buyer Code"/>
+                        </ns1:BookingChannel>
+                    </ns1:Source>
+                </ns1:POS>
+                ...
+                ...
+            </ns:request>
+      </ns:HotelRatePlanNotif>
+    </SOAP-ENV:Body>
+   </SOAP-ENV:Envelope>
+   ```       

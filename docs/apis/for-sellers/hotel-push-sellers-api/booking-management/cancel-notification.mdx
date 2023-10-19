@@ -1,0 +1,107 @@
+---
+sidebar_position: 3
+---
+
+# Cancel Notification
+
+During the cancellation process, we'll send you a `CancelNotif` request message to inform of the cancellation. You just need to check and let us know the reservation status. After that, Travelgate will handle the response from your system, moving forward with the cancellation process and updating you on the status.
+
+Keep in mind that if the cancellation fails in your system, we'll consider it as not successful (NOK) and let you know with an error message.
+
+### Request
+
+The `CancelNotif` request message provides notifications for cancellations.
+
+[Añadir ejemplo]
+
+### Response
+
+After each request, Travelgate processes the data and provides a response to the Seller. Upon receiving a `CancelNotif` request, Travelgate sends a corresponding `CancelNotif` response. The response options include either **success** or an **error**.
+
+**Success:**
+
+```html
+<OTA_HotelResNotifRS xmlns = "http://www.opentravel.org/OTA/2003/05" Timestamp = "2018-09-12T23:09:08+03:00">
+    <Success/>
+</OTA_HotelResNotifRS>
+```
+
+**Error:**
+
+```html
+<OTA_HotelResNotifRS xmlns = "http://www.opentravel.org/OTA/2003/05" Timestamp = "2018-09-12T23:09:08+03:00">
+    <Errors>
+        <Error ShortText = "Cancellation error" Code = "60">Reservation doesn't exist</Error>
+    </Errors>
+</OTA_HotelResNotifRS>
+```
+
+<details>
+    <summary>Error codes you could receive in the response during the booking flow</summary>
+    <div>
+        <div>
+         <table>
+				<thead>
+					<tr>
+						<th>
+							<strong>Error Code</strong>
+						</th>
+						<th>
+							<strong>Error Description</strong>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>-1</td>
+						<td>Unexpected error</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>Validation error</td>
+					</tr>
+					<tr>
+						<td>10</td>
+						<td>HotelCode not found</td>
+					</tr>
+                    <tr>
+						<td>11</td>
+						<td>Invalid dates</td>
+					</tr>
+                    <tr>
+						<td>14</td>
+						<td>Invalid Derived Rate</td>
+					</tr>
+                    <tr>
+						<td>22</td>
+						<td>Rooms not found</td>
+					</tr>
+                    <tr>
+						<td>23</td>
+						<td>Rates not found</td>
+					</tr>
+                    <tr>
+						<td>30</td>
+						<td>Occupation error</td>
+					</tr>
+                    <tr>
+						<td>31</td>
+						<td>RatePlan_Rate Error</td>
+					</tr>
+                    <tr>
+						<td>38</td>
+						<td>POS credentials not found</td>
+					</tr>
+                    <tr>
+						<td>50</td>
+						<td>Confirmation error</td>
+					</tr>
+                    <tr>
+						<td>50</td>
+						<td>Cancellation error</td>
+					</tr>
+				</tbody>
+			</table>
+        </div>
+    </div>
+</details>

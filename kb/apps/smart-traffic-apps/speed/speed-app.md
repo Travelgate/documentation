@@ -19,9 +19,9 @@ At TravelgateX, we always strive to adapt our tech solutions to our Partners’ 
 ### How can I use Speed? ⚡
 Once you're logged into [TravelgateX](https://www.travelgatex.com/), navigate to APPs > **Speed**. There, you'll find your Speed Dashboard, displaying the **accesses** currently active on Speed and those that were optimized at some point. 
 
-```
-image
-```
+![speed_1](https://storage.travelgate.com/kbase/speed_1.jpg)
+
+
 Here's the information available: 
 
 - Connection name and code
@@ -37,26 +37,20 @@ In order to configure Speed for one of your accesses, you should click on the **
 
 1. **Connection and access:** select the connection name and access you want to activate the cache.
 
-	```
-	image
-	```
+	![speed_2](https://storage.travelgate.com/kbase/speed_2.jpg)
 
 
 2. **Mode:** Speed can work in two different modes when the information requested by the Buyer is not already stored in our database:
 	- **Standard:** If a search result is not stored in Speed, the request is sent to the Seller and then the response is returned to the Buyer - Recommended.
 	- **Fast:** If a search result is not stored in Speed, no results will be returned. Internally, the request is sent to Seller to store it for future searches. This mode causes a higher ratio of no availability results.
 
-	```
-	image
-	```
+	![speed_3](https://storage.travelgate.com/kbase/speed_3.jpg)
 
 3. **Cache storage time (TTL):** Stored cache default value is 24 hours. However, Speed allows customization at a booking window level, for example: searches for the next two days, keep them 6 hours in cache. We always recommend to start using Speed with the default 24h and the use of this parameter is totally optional. 
-	- Booking window: It indicates the days range for the booking window to be applied. You can use the default time ranges specified or customize your own.
-	- Storage time - TTL (Time to Live): It indicates the amount of time the Seller search results will be stored in Speed for the previous time range selected. You can use the default TTL specified or customize your own. And don't worry about quote errors! If there is any error of this type, all searches stored in cache for that hotel will be automatically deleted to avoid future issues. Your Speed cache will be constantly updated!
+	- **Booking window:** It indicates the days range for the booking window to be applied. You can use the default time ranges specified or customize your own.
+	- **Storage time - TTL (Time to Live):** It indicates the amount of time the Seller search results will be stored in Speed for the previous time range selected. You can use the default TTL specified or customize your own. And don't worry about quote errors! If there is any error of this type, all searches stored in cache for that hotel will be automatically deleted to avoid future issues. Your Speed cache will be constantly updated!
 
-	```
-	image
-	```
+	![speed_4](https://storage.travelgate.com/kbase/speed_4.jpg)
 
 Once configured, click on **'Activate Speed'** and that's it! Our cache will start collecting data immediately and you will be able to check the Speed performance really soon.
 
@@ -64,9 +58,6 @@ Once configured, click on **'Activate Speed'** and that's it! Our cache will sta
 ### How can I check the improvement in my connections? 📊
 You can check your performance and improvement in terms of time and search traffic reduction just by clicking on the **"View Detail"** option in your Speed accesses list.
 
-	```
-	image
-	```
-
+![speed_5](https://storage.travelgate.com/kbase/speed_5.jpg)
 
 Select the date range you want to check and see the number of requests handled by Speed vs. those sent to the Seller. You can also check the time reduction achieved with Speed comparing the average response times from Speed vs. Seller.

@@ -29,9 +29,7 @@ In order to activate and work via Channel-X, you should take into account the fo
 1. **Channel-X pushes the information to your system**: Each update received from the Channel Manager gets pushed into your system.
 1. **Booking flow**: run your requests and enjoy Channel-X!
 
-	```
-	image
-	```
+	![channel_x](https://storage.travelgate.com/kbase/channel_x.jpg)
 
 
 :::tip

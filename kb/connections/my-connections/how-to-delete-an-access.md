@@ -9,6 +9,4 @@ We've made it simpler than ever to remove accesses that are no longer useful. In
 1. Deactivate the access by changing its status from "Active" to "Inactive".
 1. Open the action menu and select the "Delete access" option.
 
-```
-image
-```
+    ![delete_access](https://storage.travelgate.com/kbase/my_connections_10.jpg)

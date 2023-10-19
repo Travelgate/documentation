@@ -6,9 +6,7 @@ sidebar_position: 2
 
 There are **4 types** of traffic in TravelgateX: Basic, Speed, Optimized and Scheduler. 
 
-```
-image
-```
+![speed_6](https://storage.travelgate.com/kbase/speed_6.jpg)
 
 1. **BASIC** (Blue): It is the standard transaction. A Buyer is connected to a Seller without any other solutions to the connection.
 1. **SPEED** (Green): It is the transaction sent by a Buyer when their connection uses our Speed solution. Our cache solution blocks this request from reaching the Seller's system. 

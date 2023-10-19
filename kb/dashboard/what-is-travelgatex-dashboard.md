@@ -24,23 +24,17 @@ So, let's establish that connection and start harnessing the potential of the Ma
 	- **Look-to-Book (L2B)**: total number of Search requests by total number of bookings OK, minus cancellations OK.
 	- **Gross Merchandise Value**: total value (€) of all bookings with status OK.
 
-	```
-	image
-	```
+	![dashboard_1](https://storage.travelgate.com/kbase/dashboard_1.jpg)
 
-1. **Latest Status of my Reported Issues🌟**
+1. **Latest Status of my Reported Issues🌟**  
 Overview of the status of the most recent issues raised on your side in our Platform:
 
-	```
-	image
-	```
+	![dashboard_2](https://storage.travelgate.com/kbase/dashboard_2.jpg)
 
-1. **Smart Traffic APPs🌟**
+1. **Smart Traffic APPs🌟**  
 TravelgateX Smart Traffic APPs personalized recommendations to optimize your traffic and improve your overall performance in our Platform:
 
-	```
-	image
-	```
+	![dashboard_3](https://storage.travelgate.com/kbase/dashboard_3.jpg)
 
 1. **Additional Performance Reports🌟**
 	- **Top Booked Countries**: most booked countries and their market share.
@@ -52,9 +46,7 @@ TravelgateX Smart Traffic APPs personalized recommendations to optimize your tra
 	- **Worst Availability Ratio Connections**: based on the non-availability response and their corresponding search requests.
 	- **Connections with the Highest Traffic**: based on the sum of total search requests per connection.
 
-	```
-	image
-	```
+	![dashboard_4](https://stplaformwe.blob.core.windows.net/kbase/dashboard_4.jpg)
 
  
 :::tip

@@ -8,20 +8,14 @@ You might have noticed that some of your connections sport a yellow or red backg
 
 When a connection has no color, it means its error ratio is excellent, performing flawlessly in terms of performance. A yellow connection indicates it's working well, but there's potential for improvement. Fine-tuning some error ratios could make it even better. On the other hand, a red connection suggests the error ratio needs reviewing, as there may be errors that could be further reduced! Keep an eye on these indicators to ensure top-notch performance for your connections.
 
-```
-image
-```
+![stats_colors_1](https://storage.travelgate.com/kbase/stats_colors_1.jpg)
 
 
 Each scorecard displays a percentage of NOK (not OK) transactions, along with an informative icon. Hover over the icon, and a tooltip will pop up, revealing the typical percentage these ratios should be below.
 
-```
-image
-```
+![stats_colors_2](https://storage.travelgate.com/kbase/stats_colors_2.jpg)
 
-```
-image
-```
+![stats_colors_3](https://storage.travelgate.com/kbase/stats_colors_3.jpg)
 
 :::info
 Discover a world of amazing APPs that can enhance your connections' performance, including the [Traffic Optimizer](https://knowledge.travelgate.com/traffic-optimizer-quickguide) and [Speed](https://knowledge.travelgate.com/speed-app). Take a moment to explore each one and uncover how they can boost your experience! 🚀💡

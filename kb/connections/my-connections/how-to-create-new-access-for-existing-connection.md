@@ -10,6 +10,4 @@ In order to create a new access for an existing Partner connection, you just nee
 1. Filter the Connection of your choice.
 1. Click on the "Add Access" button at the end of the connection panel and you will be redirected to our [Auto-Activations form](https://knowledge.travelgate.com/auto-activations-quickguide).
 
-```
-image
-```
+    ![add_access](https://stplaformwe.blob.core.windows.net/kbase/my_connections_8.jpg)

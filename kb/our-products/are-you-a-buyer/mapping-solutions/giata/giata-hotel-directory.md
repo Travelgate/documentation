@@ -14,24 +14,20 @@ Imagine having a valuable and easily manageable source of fresh content readily 
 You'll have access to up-to-date and validated content **directly from the propertie**s themselves. No more outdated or unreliable information.
 **Simplify** your content management strategy and save valuable time and effort. No more struggling to keep your content consistent across multiple Platforms. With this solution, you can effortlessly manage your content and ensure it's always up-to-date.
 
-```
-image
-```
+![giata_hotel_directory_1](https://storage.travelgate.com/kbase/giata_hotel_directory_1.jpg)
 
 ### How can I request an activation for GIATA Hotel Directory?✔️
 1. Log onto TravelgateX (browse as Buyer)
 1. Click on Connections&rarr;[My Conections](https://knowledge.travelgate.com/my-connections)&rarr;Create a new Connection
 1. Request an activation for GIATA (Seller) following the indications from our [Auto-Activations Quick-guide](https://knowledge.travelgate.com/auto-activations-quickguide)
-	```
-	image
-	```
+
+	![giata_hotel_directory_2](https://storage.travelgate.com/kbase/giata_hotel_directory_2.jpg)
+
 1. That's it! Once the activation is complete, we will notify you promptly, allowing you to begin enjoying this content. Additionally, you can access it conveniently in our Connections Content section. 
-	```
-	image
-	```
-	```
-	image
-	```
+
+	![giata_hotel_directory_3](https://storage.travelgate.com/kbase/giata_hotel_directory_3.jpg)
+
+	![giata_hotel_directory_4](https://storage.travelgate.com/kbase/giata_hotel_directory_4.jpg)
 
 :::note
 **Are you interested in GIATA Multicodes as well?**

@@ -20,6 +20,4 @@ You can use the “tgx_sess” to check the Valuation logs for a specific Reserv
 1. Click on **Search logs by ID or Reference** and fill in the session ID information.
 1. Click on **Search ID** and Logging will return the Valuation logs for that specific Reservation.
 
-	```
-	image
-	```
+	![logging_app_5](https://storage.travelgate.com/kbase/logging_app_5.jpg)

@@ -10,9 +10,47 @@ The `HotelAvailNotif` message contains information about rate availability and a
 
 [Añadir ejemplos]
 
+### Request Data Breakdown
+
+| Element                                     | Rel  | Type    | Description                                                                                                                                                                                                                            |
+|---------------------------------------------|------|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| HotelAvailNotif                             | 1    |         |                                                                                                                                                                                                                                        |
+| ../request                                  | 1    |         |                                                                                                                                                                                                                                        |
+| request/AvailStatusMessages                 | 1    |         |                                                                                                                                                                                                                                        |
+| @HotelCode                                  | 1    | String  | Hotel Code                                                                                                                                                                                                                             |
+| ../AvailStatusMessage                       | 1..n |         |                                                                                                                                                                                                                                        |
+| @BookingLimit                               | 0..1 | Integer | Only used for DERIVATED RATES. Number of available rooms per Room-RatePlan for the indicated dates                                                                                                                                     |
+| @BookingSold                                | 0..1 | Integer | Only used for DERIVATED RATES. Number of booked rooms per Room-RatePlan for the indicated dates. The available allotment is the difference between BookingLimit and BookingSold                                                        |
+| AvailStatusMessage/StatusApplicationControl | 1    |         |                                                                                                                                                                                                                                        |
+| @Start                                      | 1    | Date    | Start date                                                                                                                                                                                                                             |
+| @End                                        | 1    | Date    | End date                                                                                                                                                                                                                               |
+| @RatePlanCode                               | 1    | String  |                                                                                                                                                                                                                                        |
+| @InvCode                                    | 0..1 | String  | Only used for BASIC RATES. Room Code                                                                                                                                                                                                   |
+| @InvType                                    | 0..1 | String  | ??? Only used for BASIC RATES. N: ROOM                                                                                                                                                                                                 |
+| @PromotionCode                              | 0..1 | String  | ??? Only used for OFFERS. N: Offer Code                                                                                                                                                                                                |
+| @Mon                                        | 0..1 | Boolean | If true or attribute is not present, there is availability on Monday                                                                                                                                                                   |
+| @Tue                                        | 0..1 | Boolean | If true or attribute is not present, there is availability on Tuesday                                                                                                                                                                  |
+| @Weds                                       | 0..1 | Boolean | If true or attribute is not present, there is availability on Wednesday                                                                                                                                                                |
+| @Thur                                       | 0..1 | Boolean | If true or attribute is not present, there is availability on Thurday                                                                                                                                                                  |
+| @Fri                                        | 0..1 | Boolean | If true or attribute is not present, there is availability on Friday                                                                                                                                                                   |
+| @Sat                                        | 0..1 | Boolean | If true or attribute is not present, there is availability on Saturday                                                                                                                                                                 |
+| @Sat                                        | 0..1 | Boolean | If true or attribute is not present, there is availability on Sunday                                                                                                                                                                   |
+| AvailStatusMessage/LengthsOfStay            | 0..1 |         |                                                                                                                                                                                                                                        |
+| @ArrivalDateBased                           | 0..1 | Boolean | true: the Minimum and Maximum Stay is checked ONLY the first day of the availability. false or null: the Minimum and Maximum Stay is checked all the availability days. If both values are needed, two AvailStatusMessage will be sent |
+| ../LengthOfStay                             | 1..2 |         |                                                                                                                                                                                                                                        |
+| @Time                                       | 1    | Integer | Indicates the number of @TimeUnit for this stay. When value is 0 or -1, condition should be deleted from the system                                                                                                                    |
+| @TimeUnit                                   | 1    | String  | ??? N: Day                                                                                                                                                                                                                             |
+| @MinMaxMessageType                          | 1    | String  | MinLOS (minimum) or MaxLOS (maximum) LenghtOfSaty                                                                                                                                                                                      |
+| AvailStatusMessage/RestrictionStatus        | 0..1 |         |                                                                                                                                                                                                                                        |
+| @Status                                     | 0..1 | String  | Open or Close                                                                                                                                                                                                                          |
+| @Restriction                                | 0..1 | String  | Master, Arrival or Departure                                                                                                                                                                                                           |
+| @MinAdvancedBookingOffset                   | 0..1 | Integer | Minimum number of days before the check-in date to be available to be booked. This restriction is usually used to offer discounts on early bookings. When value is 0 or -1, condition should be deleted from the system                |
+| @MaxAdvancedBookingOffset                   | 0..1 | Integer | Maximum number of days before the check-in date to be available to be booked. This restriction is usually used to offer last minute discounts on unsold inventory. When value is -1, condition should be deleted from the system       |
+| @SellThroughOpenIndicator                   | 0..1 | Boolean | BR. Room-RatePlan can be sold with no limit if @Status is Open                                                                                                                                                                         |
+
 ## Response
 
-After each request, a response should be provided from the Buyer's side. If a `HotelAvailNotif` request is received, a corresponding `HotelAvailNotif` response should be sent. There are two response options, success or error.
+After each request, a response should be provided from the Buyer's side. If a `HotelAvailNotif` request is received, a corresponding `HotelAvailNotif` response should be sent. There are two response options, **success** or **error**.
 
 :::caution
 
@@ -37,7 +75,7 @@ Our system has a timeout of 5000ms. If no response occurs within this timeframe,
 <HotelAvailNotifResponse xmlns = "http://schemas.xmltravelgate.com/hubpush/provider/2012/10">
     <HotelAvailNotifResult>
         <Errors xmlns = "http://www.opentravel.org/OTA/2003/05">
-            <Error ShortText = "AvailStatusMessages not found" Code = "2"/>
+            <Error ShortText = "HotelCode or RatePlanList not found" Code = "2"/>
         </Errors>
     </HotelAvailNotifResult>
 </HotelAvailNotifResponse>
@@ -106,20 +144,26 @@ Our system has a timeout of 5000ms. If no response occurs within this timeframe,
 <details>
     <summary>What does LengthsOfStay ArrivalDateBased mean? What’s different between the true and false values?</summary>
     <div>
-        <div>If this is set as true, the type of Min/Max LOS is on arrival for that specific day. For this type, the values for Min/Max LOS on arrival, only apply if it is applied to the check-in day. If this is set as false, it’s a normal Min/Max LOS.</div>
+        <div>If ArrivalDateBase is set to true, it checks whether the Min and Max LengthsOfStay conditions are met on the check-in day. If ArrivalDateBase is set to false, it checks if the Min and Max LengthsOfStay conditions are met for all the days you are requesting, meaning it ensures that these conditions are met for each day of your stay.</div>
     </div>
 </details>
 
 <details>
-    <summary>Is there a default maximum nights restriction (e.g., max 30 days) in Travelgate if the HotelAvailNotif does not include maximum Length of Stay (LOS) information?</summary>
+    <summary>Is there a default maximum nights restriction (e.g., max 30 days) in Travelgate if the HotelAvailNotif does not include maximum LengthOfStay (LOS) information?</summary>
     <div>
         <div>Travelgate does not have any restriction on default maximum nights.</div>
     </div>
 </details>
 
 <details>
-    <summary>What does `ArrivalClose`, `DepartureClose`, `Master` mean?</summary>
+    <summary>What does ArrivalClose, DepartureClose and Master mean?</summary>
     <div>
-        <div>The Closed On Arrival means that the check-in day cannot be the same day as the one that has Closed On Arrival applied to it, but this day can be inside the Availability search range. The Closed On Departure means that the check-out day cannot be the same day as the one that has Closed On Departure applied, but this day can be in the Availability search range. Closed Master means that the hotel is closed that day. The Closed Master means that in the indicated dates, none of the days can be a check-in day, check-out day or a day inside the range of the search.</div>
+	    <div>
+            <ul>
+                <li><b>ArrivalClose:</b> When it's open, you can check in on that day. If it's close, you can still stay but can't check in on that day.</li>
+                <li><b>DepartureClose:</b> When it's open, you can check out on that day. If it's close, you can still stay but can't check out on that day.</li>
+                <li><b>Master:</b> If the master is closed, there's no availability for that day, and you can't check in, check out, or stay.</li>
+            </ul>
+        </div>    
     </div>
 </details>

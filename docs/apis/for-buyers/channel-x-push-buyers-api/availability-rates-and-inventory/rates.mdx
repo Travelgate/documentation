@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # Rates
 
-The `HotelRatePlanNotif` message contains information about rate prices and supplements. No rate information will be returned except Code, currency and status.
+The `HotelRatePlanNotif` message contains information about rate prices and supplements. No rate information will be returned except code, currency and status.
 
 ## Request
 
@@ -122,13 +122,31 @@ The `HotelRatePlanNotif` message contains information about rate prices and supp
 						<td>258</td>
 						<td>Gala Dinner</td>
 					</tr>
+					<tr>
+						<td>259</td>
+						<td>All Inclusive Light</td>
+					</tr>
+					<tr>
+						<td>260</td>
+						<td>Bed and breakfast + Half board</td>
+					</tr>
+					<tr>
+						<td>261</td>
+						<td>All Inclusive Limited</td>
+					</tr>
+					<tr>
+						<td>262</td>
+						<td>Bed and Brunch</td>
+					</tr>
 				</tbody>
 			</table>
         </div>
     </div>
 </details>
 
-Our system works with up to **3 types of prices: per room, per occupancy and per standard occupancy**. Although it is unusual that a channel works with more than one, it can happen. If this is the case, the 3 price types can coexist and the system should always return the lowest one at availability response. Also when more than one price is charged for the same day, the newest price will be returned as available price.
+### Price Use Cases
+
+Our system works with up to **3 types of prices: per room, per standard occupancy and per occupancy**. Although it is unusual that a channel works with more than one, it can happen. If this is the case, the 3 price types can coexist and the system should always return the lowest one at availability response. Also when more than one price is charged for the same day, the newest price will be returned as available price.
 
 #### **Price per Room**
 When a price is charged per Room means that all occupancies allowed in the room will have the same price. If an `AdditionalGuestAmount` are charged for occupancies over the standard occupancy, they will be applied.
@@ -926,6 +944,13 @@ When a price is charged per Occupancy means that this price will only be availab
 
 After each request, a response should be provided from the Buyer's side. If a `HotelRatePlanNotif` request is received, a corresponding `HotelRatePlanNotif` response should be sent. There are two response options, success or error.
 
+:::caution
+
+Our system has a timeout of 5000ms. If no response occurs within this timeframe, we won't attempt to resend the request. It is recommended that your system processes our requests with an average handling time of 100ms.
+
+:::
+
+
 **Success:**
 
 ```html
@@ -1009,28 +1034,28 @@ After each request, a response should be provided from the Buyer's side. If a `H
 ## Frequently asked questions
 
 <details>
-    <summary>For the standard occupancy calculation, should the data from `Quantities` `StandardNumBeds` or `BaseByGuestAmt` `NumberOfGuests` be consumed?</summary>
+    <summary>For the standard occupancy calculation, should the data from Quantities StandardNumBeds or BaseByGuestAmt NumberOfGuests be consumed?</summary>
     <div>
         <div>If this is set as true, the type of Min/Max LOS is on arrival for that specific day. For this type, the values for Min/Max LOS on arrival, only apply if it is applied to the check-in day. If this is set as false, it’s a normal Min/Max LOS.</div>
     </div>
 </details>
 
 <details>
-    <summary>Both tax `ChargeFrequency` and `ChargeUnit` are optional bits of information. So, what happens if they are not returned in a push message? Is need to re-calculate the price from `HotelRatePlanNotif` (if have tax elements are returned), or is it possible to assume `AmountAfterTax` in the final price?</summary>
+    <summary>Both tax ChargeFrequency and ChargeUnit are optional bits of information. So, what happens if they are not returned in a push message? Is need to re-calculate the price from HotelRatePlanNotif (if have tax elements are returned), or is it possible to assume AmountAfterTax in the final price?</summary>
     <div>
         <div>If these elements are not returned, then a fixed amount will be returned as a tax if you have set it up in the SetUp part of the extranet and depending on the type of tax you have set up. You always have to calculate the price that is returned in this tag with the tax.</div>
     </div>
 </details>
 
 <details>
-    <summary>If I set up an additional tax (i.e. per pax and per night), should I add up or subtract it from `AmountAfterTax` attribute?</summary>
+    <summary>If I set up an additional tax (i.e. per pax and per night), should I add up or subtract it from AmountAfterTax attribute?</summary>
     <div>
         <div>The `AmountAfterTax` attribute inside the `RatePlanNotify` does not include the taxes you will set up (it might include any taxes the channel has loaded on their end if they have done so). The `AmountAfterTax` at the time of booking (the Reservation RS logs) will include the taxes indicated by you.</div>
     </div>
 </details>
 
 <details>
-    <summary>Referring to the RatePlan message, there are `Supplement`. Understanding price is for meal basis, should I require calculation to add with `AmountAfterTax`? The purpose of this is an extra cost for supplement in case there are `AdditionalGuest` applied.</summary>
+    <summary>Referring to the RatePlan message, there are Supplement. Understanding price is for meal basis, should I require calculation to add with AmountAfterTax? The purpose of this is an extra cost for supplement in case there are AdditionalGuest applied.</summary>
     <div>
         <div>The Supplement tag is for MealPlans, not for additional paxes. The price indicated in there, shows the price of the supplement.</div>
     </div>

@@ -1,0 +1,255 @@
+---
+sidebar_position: 4
+---
+
+# Booking List
+
+The `HotelResRetrieve` request message allows you to retrieve a list of bookings that were made within a specific arrival date range or a specific booking date range. 
+
+### Request
+
+The `HotelResRetrieve` request message provides the booking list.
+
+[Añadir ejemplo]
+
+### Response
+
+After each request, Travelgate processes the data and provides a response to the Seller. Upon receiving a `HotelResRetrieve` request, Travelgate sends a corresponding `HotelResRetrieve` response. The response options include either **success** or an **error**.
+
+**Success:**
+
+[Añadir ejemplo]
+
+<details>
+    <summary>Payment Type Codes</summary>
+    <div>
+        <div>
+         <table>
+				<thead>
+					<tr>
+						<th>
+							<strong>Code</strong>
+						</th>
+						<th>
+							<strong>Description</strong>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>MerchantPayment</td>
+						<td>The customer pays the client and the client will pay the provider</td>
+					</tr>
+					<tr>
+						<td>DirectPayment</td>
+						<td>The customer will have to use a credit card as guarantee for the hotel and the payment will be done by the customer at check-in</td>
+					</tr>
+                    <tr>
+						<td>BookingDatePayment</td>
+						<td>The client will use a credit card with the exact amount of the option so he can pay the provider/hotel. The provider will charge the payment on the reservation day</td>
+					</tr>
+					<tr>
+						<td>ArrivalDatePayment</td>
+						<td>The client will use a credit card with the exact amount of the option so he can pay the provider/hotel, the provider will charge the payment on the checking day</td>
+					</tr>
+				</tbody>
+			</table>
+        </div>
+    </div>
+</details>
+
+<details>
+    <summary>Credit Card codes</summary>
+    <div>
+        <div>
+         <table>
+				<thead>
+					<tr>
+						<th>
+							<strong>Code</strong>
+						</th>
+						<th>
+							<strong>Name</strong>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>VI</td>
+						<td>Visa</td>
+					</tr>
+					<tr>
+						<td>AX</td>
+						<td>American Express</td>
+					</tr>
+                    <tr>
+						<td>BC</td>
+						<td>BC Card</td>
+					</tr>
+					<tr>
+						<td>CA</td>
+						<td>MasterCard</td>
+					</tr>
+					<tr>
+						<td>CB</td>
+						<td>Carte Blanche</td>
+					</tr>
+                    <tr>
+						<td>CU</td>
+						<td>China Union Pay</td>
+					</tr>
+					<tr>
+						<td>DS</td>
+						<td>Discover</td>
+					</tr>
+					<tr>
+						<td>DC</td>
+						<td>Diners Club</td>
+					</tr>
+                    <tr>
+						<td>T</td>
+						<td>Carta Si</td>
+					</tr>
+                    <tr>
+						<td>R</td>
+						<td>Carte Bleue</td>
+					</tr>
+                    <tr>
+						<td>N</td>
+						<td>Dankort</td>
+					</tr>
+                    <tr>
+						<td>L</td>
+						<td>Delta</td>
+					</tr>
+                    <tr>
+						<td>E</td>
+						<td>Electron</td>
+					</tr>
+                    <tr>
+						<td>JC</td>
+						<td>Japan Credit Bureau</td>
+					</tr>
+                    <tr>
+						<td>TO</td>
+						<td>Maestro</td>
+					</tr>
+                    <tr>
+						<td>S</td>
+						<td>Switch</td>
+					</tr>
+                    <tr>
+						<td>EC</td>
+						<td>Electronic Cash</td>
+					</tr>
+                    <tr>
+						<td>EU</td>
+						<td>EuroCard</td>
+					</tr>
+                    <tr>
+						<td>TP</td>
+						<td>Universal air travel card</td>
+					</tr>
+                    <tr>
+						<td>OP</td>
+						<td>optima</td>
+					</tr>
+                    <tr>
+						<td>ER</td>
+						<td>Air Canada/RnRoute</td>
+					</tr>
+                    <tr>
+						<td>XS</td>
+						<td>access</td>
+					</tr>
+                    <tr>
+						<td>O</td>
+						<td>others</td>
+					</tr>
+				</tbody>
+			</table>
+        </div>
+    </div>
+</details>
+
+**Error:**
+
+```html
+<HotelResRetrieveResponse xmlns="http://schemas.xmltravelgate.com/hubpush/provider/2012/10">
+    <HotelResRetrieveResult>
+        <Errors xmlns="http://www.opentravel.org/OTA/2003/05">
+            <Error ShortText="Incomplete AdditionalGuestAmount values" Code="7"/>
+        </Errors>
+    </HotelResRetrieveResult>
+</HotelResRetrieveResponse>
+```
+
+<details>
+    <summary>Error codes you could receive in the response during the booking flow</summary>
+    <div>
+        <div>
+         <table>
+				<thead>
+					<tr>
+						<th>
+							<strong>Error Code</strong>
+						</th>
+						<th>
+							<strong>Error Description</strong>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>-1</td>
+						<td>Unexpected error</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>Validation error</td>
+					</tr>
+					<tr>
+						<td>10</td>
+						<td>HotelCode not found</td>
+					</tr>
+                    <tr>
+						<td>11</td>
+						<td>Invalid dates</td>
+					</tr>
+                    <tr>
+						<td>14</td>
+						<td>Invalid Derived Rate</td>
+					</tr>
+                    <tr>
+						<td>22</td>
+						<td>Rooms not found</td>
+					</tr>
+                    <tr>
+						<td>23</td>
+						<td>Rates not found</td>
+					</tr>
+                    <tr>
+						<td>30</td>
+						<td>Occupation error</td>
+					</tr>
+                    <tr>
+						<td>31</td>
+						<td>RatePlan_Rate Error</td>
+					</tr>
+                    <tr>
+						<td>38</td>
+						<td>POS credentials not found</td>
+					</tr>
+                    <tr>
+						<td>50</td>
+						<td>Confirmation error</td>
+					</tr>
+                    <tr>
+						<td>50</td>
+						<td>Cancellation error</td>
+					</tr>
+				</tbody>
+			</table>
+        </div>
+    </div>
+</details>

@@ -1,0 +1,78 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #0B59DE;
+  --ifm-color-primary-dark: #073AB0;        /* Darker shade */
+  --ifm-color-primary-darker: #04287D;     /* Even darker */
+  --ifm-color-primary-darkest: #021640;    /* Darkest */
+  --ifm-color-primary-light: #397BFF;      /* Lighter shade */
+  --ifm-color-primary-lighter: #6FA2FF;    /* Even lighter */
+  --ifm-color-primary-lightest: #A9C9FF;   /* Lightest */
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+
+[data-theme='dark'] {
+  --ifm-color-primary: #0B59DE;            /* Use the same primary color */
+  --ifm-color-primary-dark: #2E7DFF;       /* Slightly lighter than the normal dark shade */
+  --ifm-color-primary-darker: #529AFF;     /* Lighter */
+  --ifm-color-primary-darkest: #7BB2FF;    /* Lightest */
+  --ifm-color-primary-light: #0079E0;      /* Slightly darker than the normal light shade */
+  --ifm-color-primary-lighter: #0057A7;    /* Darker */
+  --ifm-color-primary-lightest: #003575;   /* Darkest */
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+.graphiql-container {
+  flex-grow: 1;
+  min-height: 800px;
+}
+
+.graphiql-session-header {
+  display: none !important;
+}
+
+.graphiql-container .graphiql-editors {
+  margin-top: 8px !important;
+}
+
+article .graphiql-sidebar {
+  display: none !important;;
+}
+
+.graphiql-container .graphiql-session {
+  flex-direction: column;
+}
+
+.graphiql-editor {
+  min-height: 200px !important;
+}
+
+.graphiql-response {
+  margin-top: 10px !important;
+}
+
+.g-playground {
+
+  .graphiql-container .graphiql-editors {
+    margin-top: inherit !important;
+  }
+
+  article .graphiql-sidebar {
+    display: inherit !important;;
+  }
+
+  .graphiql-container .graphiql-session {
+    flex-direction: row;
+  }
+
+  .graphiql-response {
+    margin-top: inherit !important;
+  }
+}

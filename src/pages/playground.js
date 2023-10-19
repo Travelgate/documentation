@@ -28,7 +28,9 @@ const Explorer = (props) => {
             title={siteConfig.title}
             description="GraphQL Explorer"
         >
+            <div className={`g-playground`}>
                 <GraphqlSample {...props} />
+            </div>
         </Layout>
     );
 }

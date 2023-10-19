@@ -39,7 +39,9 @@ If requested, only options with the specified rateRules will be returned. Some o
 ### 3. Plugin - HotelXPluginFilterInput✔️
 Thanks to Hotel-X Plugins you can customize your requests and responses to meet your business needs. You can filter which plugins have to be executed (included) or excluded.
 
->**Don't forget to check our Hotel-X Buyers API [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/plugins/) for further information!🚀**
+:::tip
+**Don't forget to check our Hotel-X Buyers API [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/plugins/) for further information!🚀**
+:::
 
 ### 4. Status - StatusFilterInput✔️
 You can define/filter which status (OK or RQ) is to be excluded or included in your Search response. Note that this filter will depend on the Seller returning this information in their response.

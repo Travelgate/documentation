@@ -8,7 +8,6 @@ Virtual Credit Card plugin adds the possibility to:
 
 * **Create a virtual credit card (VCCGen):** The VCC generator plugin empowers Buyers to generate virtual credit cards featuring activation and expiration dates of their choosing. You can apply rules using the `genvcc.csv` rules file to determine whether or not to utilize a specific VCC. This decision is based on the rules defined within the file and the parameters specified in the request.
 
-
 * **Cancel a virtual credit card (VCCCan):** The VCC cancel plugin is responsible for cancelling a virtual credit card identified by the id returned in the book response. The service will return the status of the payment card inside status field. This plugin should be utilized exclusively within the [Cancel](../booking-management/cancel) operation, contingent on the successful completion of the booking cancellation. To specify the virtual credit card to be used for cancellation, a rule that returns an access key will be employed, utilizing the same rule file as the VCC generator. You can establish rules within the `genvcc.csv` rule file to determine the utilization of a particular VCC based on rules within the file and request parameters.
 
 
@@ -23,15 +22,15 @@ To get started with the VCC plugin, follow these simple steps:
 
 ##  1.Create and upload your GenVCC file
 
-First, create your virtual credit card file in the correct format and then upload it to your FTP account. To assist you with this process, you can download the template file below ⬇️, add your own rules, save it in CSV format, and then upload it to the corresponding folder in your FTP.
+To get started, create your credit card file in the correct format and then upload it to your FTP account. We've provided a template file below ⬇️ to help you with this process. Just click on the file name, add your own rules, save it in CSV format, and then upload it to the corresponding folder in your FTP.
 
 ```mdx-code-block
 <BrowserWindow>
 
-📁F0\_0000  
+📁F0  _0000  
 &nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX_0000  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁BusinessRules  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[BuyerContext_sequential_genvcc.csv](../../../../../static/files/hotel-x/BuyerContext_sequential_genvcc.csv)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[BuyerContext_sequential_genvcc.csv](../../../../../static/files/hotel-x/BuyerContext_sequential_genvcc.csv)**
 
 </BrowserWindow>
 ```
@@ -189,10 +188,10 @@ Bear in mind that this file is a collection of rules and we chose in every Book 
 
 Once you've uploaded your genvcc file, to use the plugin add the following field to the `settings` node of your request. Note that genvcc plugin can just be executed in `book` `mutation`. In order to successfully execute the genvcc plugin, you will need to create the request with the following variables.
 
-* `step`: `REQUEST`
-* `type`: `PRE_STEP`
-* `name`: `genvcc`
-* `parameters`:
+* **`step`**: "REQUEST"
+* **`type`**: "PRE_STEP"
+* **`name`**: "genvcc"
+* **`parameters`**:
 
 | Key            | Value         | Description                                                                    | Default Value (if not sent) | Mandatory |
 |----------------|---------------|--------------------------------------------------------------------------------|-----------------------------|-----------|

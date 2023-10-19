@@ -84,16 +84,6 @@ type AdminQuery {
     after: String
     filter: ClientFilter
   ): ClientConnection @deprecated
-  serviceApi(filter: ServiceApiFilter): ServiceApi
-  pointsOfSale(filter: PointOfSaleFilter): PointOfSaleConnection
-  entities(filter: EntityFilter): EntityConnection @deprecated
-  systems(
-    first: Int
-    last: Int
-    before: String
-    after: String
-    filter: SystemFilter
-  ): SystemConnection
   getSupplierMaintainer(supplierID: ID!): Member
   getProviderMaintainer(providerID: ID!): Member
   organizations(
@@ -418,50 +408,6 @@ type AdminQuery {
 >
 
 ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.clients.<b>filter</b></code>](#)<Bullet />[`ClientFilter`](/api/inputs/client-filter) <Badge class="badge badge--secondary" text="input"/>
-
->
-
-#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>serviceApi</b></code>](#)<Bullet />[`ServiceApi`](/api/objects/service-api) <Badge class="badge badge--secondary" text="object"/>
-
-> Obtain a ServiceAPI
->
-> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.serviceApi.<b>filter</b></code>](#)<Bullet />[`ServiceApiFilter`](/api/inputs/service-api-filter) <Badge class="badge badge--secondary" text="input"/>
-
-#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>pointsOfSale</b></code>](#)<Bullet />[`PointOfSaleConnection`](/api/objects/point-of-sale-connection) <Badge class="badge badge--secondary" text="object"/>
-
-> Obtain all Points of Sale for the filters
->
-> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.pointsOfSale.<b>filter</b></code>](#)<Bullet />[`PointOfSaleFilter`](/api/inputs/point-of-sale-filter) <Badge class="badge badge--secondary" text="input"/>
-
-#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>entities</b></code>](#)<Bullet />[`EntityConnection`](/api/objects/entity-connection) <Badge class="badge badge--deprecated badge--secondary" text="deprecated"/> <Badge class="badge badge--secondary" text="object"/>
-
-> :::caution DEPRECATED
-> deprecated from 2019-08-21. Only for statsX product. Use client, supplier, accesess queries
-> :::
->
-> Obtain a set of entities
->
-> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.entities.<b>filter</b></code>](#)<Bullet />[`EntityFilter`](/api/inputs/entity-filter) <Badge class="badge badge--secondary" text="input"/>
-
-#### [<code style={{ fontWeight: 'normal' }}>AdminQuery.<b>systems</b></code>](#)<Bullet />[`SystemConnection`](/api/objects/system-connection) <Badge class="badge badge--secondary" text="object"/>
-
-> Obtain all clients for a filter.
->
-> ##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.systems.<b>first</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
-
-##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.systems.<b>last</b></code>](#)<Bullet />[`Int`](/api/scalars/int) <Badge class="badge badge--secondary" text="scalar"/>
-
->
-
-##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.systems.<b>before</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
-
->
-
-##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.systems.<b>after</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
-
->
-
-##### [<code style={{ fontWeight: 'normal' }}>AdminQuery.systems.<b>filter</b></code>](#)<Bullet />[`SystemFilter`](/api/inputs/system-filter) <Badge class="badge badge--secondary" text="input"/>
 
 >
 

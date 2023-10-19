@@ -1,5 +1,5 @@
 ---
-sidebar_position: 13
+sidebar_position: 12
 ---
 
 # Search by Destination
@@ -7,23 +7,19 @@ sidebar_position: 13
 The Search by Destination plugin enables to search by destinations codes in the Search query. Destination codes will be converted to hotel codes, then merged with the hotel codes sent in criteria if any, and finally the request will be sent to the supplier. In order to achieve the destination to hotel conversion, a source must be specified in a plugin.
 
 :::note
-
-For this plugin, there is no need to create any files; you just need to specify it in `settings` `plugins` in the request + add `destinations` field in the `criteria` of search query.
-
+You don't need to create any files for this plugin. Just specify it in the `settings` > `plugins` field in your search query.
 :::
 
 ## 1. Execute Search by Destination plugin in your query
 
 To use the plugin add the following field to the `settings` node of your request. Note that search by destination plugin can just be executed in search query. In order to successfully execute the search by destination plugin, you will need to create the request with the following variables.
 
-* `step`: `REQUEST`
-* `type`: `PRE_STEP`
-* `name`: `search_by_destination`
-* `parameters`:
-
-| Key      | Value  | Condition | Description                                                                                                                                            |
-|----------|--------|-----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| accessID | string | mandatory | The access used to convert destinations to hotel from its hotel list, which means that the hotel codes obtained are in the same context as the access. |
+* **`step`**: "REQUEST"
+* **`type`**: "PRE_STEP"
+* **`name`**: "search_by_destination"
+* **`parameters`**:
+	* **`key`**: "accessID"
+	* **`value`**: The access used to convert destinations to hotel from its hotel list, which means that the hotel codes obtained are in the same context as the access.
 
 ```json
 "settings": {
@@ -45,10 +41,10 @@ To use the plugin add the following field to the `settings` node of your request
 }
 ```
 
-:::caution
+:::caution Remember
 
-Remember that when making the [search](../booking-flow/search) query, in the criteria, you will need to add the `destinations` field (instead of `hotels`). There is where you will need to add the destination codes. 
+When you're setting up your [search](../booking-flow/search) query, be sure to include the `destinations` field in the criteria, not `hotels`. This is where you can specify your destination codes.
 
-To find out which destinations codes an access has, you will need to make the [destinations](../content/destinations) content query.
+To discover the destination codes accessible for your access, just refer to the [destinations](../content/destinations) content query.
 
 :::

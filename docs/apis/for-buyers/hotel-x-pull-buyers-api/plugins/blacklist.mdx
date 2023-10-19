@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # Blacklist
@@ -10,15 +10,15 @@ To get started with the Blacklist plugin, follow these simple steps:
 
 ## 1. Create and upload your Blacklist file
 
-First, create your blacklist file in the correct format and then upload it to your FTP account. To assist you with this process, you can download the template file below ⬇️, add your own rules, save it in CSV format, and then upload it to the corresponding folder in your FTP.
+To get started, create your blacklist file in the correct format and then upload it to your FTP account. We've provided a template file below ⬇️ to help you with this process. Just click on the file name, add your own rules, save it in CSV format, and then upload it to the corresponding folder in your FTP.
 
 ```mdx-code-block
 <BrowserWindow>
 
-📁F0\_0000  
+📁F0  _0000  
 &nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX_0000  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁BusinessRules  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📄[blacklist_access_hotels.csv](../../../../../static/files/hotel-x/blacklist_access_hotels.csv)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[blacklist_access_hotels.csv](../../../../../static/files/hotel-x/blacklist_access_hotels.csv)**
 
 </BrowserWindow>
 ```
@@ -35,24 +35,24 @@ If you need assistance with requesting your credentials to access the FTP server
 * **Directory:** F0_0000/HotelX_0000/BusinessRules
 * **Delimiter:** Comma (`,`)
 * **Header Row:**
-	* **IdRule:** Unique identifier of the rule (assign one)
-	* **ClientToken:** List of client token separated by `;` 
-	* **NoClientToken:** List of client token separated by `;`  
-	* **Client:** List of client codes separated by `;` 
-	* **NoClient:** List of client codes separated by `;` 
-	* **Supplier:** List of supplier codes separated by `;` 
-	* **NoSupplier:** List of supplier codes separated by `;` 
-	* **Access:** List of access codes separated by `;` 
-	* **NoAccess:** List of access codes separated by `;` 
-	* **Context:** List of operation (client?) context codes separated by `;` 
-	* **NoContext:** List of operation (client?) context codes separated by `;` 
-	* **ContextSup:** List of supplier context codes separated by `;` 
-	* **NoContextSup:** List of supplier context codes separated by `;` 
+	* **IdRule:** Unique identifier of the rule. You can assign one with the identifier that suits you better.
+	* **ClientToken:** List of the client tokens you want the rule to be applied to, separated by `;`. This is a dynamic parameter that you can include in your query request if you wish to enforce particular rules from the blacklist.
+	* **NoClientToken:** List of the client tokens you don't want the rule to be applied to, separated by `;`. 
+	* **Client:** List of the specific clients you want the rule to be applied to, separated by `;`. 
+	* **NoClient:** List of the specific clients you don't want the rule to be applied to, separated by `;`. 
+	* **Supplier:** List of the supplier codes you want the rule to be applied to, separated by `;`. 
+	* **NoSupplier:** List of the supplier codes you don't want the rule to be applied to, separated by `;` 
+	* **Access:** List of the access codes you want the rule to be applied to, separated by `;`. 
+	* **NoAccess:** List of the access codes you don't want the rule to be applied to, separated by `;`. 
+	* **Context:** List of the Buyer context codes you want the rule to be applied to, separated by `;`. 
+	* **NoContext:** List of the Buyer context codes you don't want the rule to be applied to, separated by `;`. 
+	* **ContextSup:** List of the Supplier context codes you want the rule to be applied to, separated by `;`. 
+	* **NoContextSup:** List of the Supplier context codes you don't want the rule to be applied to, separated by `;`. 
 	* **Values:** Values can be 'blacklist' or 'whitelist' with hotel codes grouped by context. The format is as follows:
-		* All values should have two blocks separated by the characters `||`
-		* The first block identifies the `context` and the second block identifies the list of `hotel codes` separated by `;` 
-		* Values in the whitelist or blacklist are separated by the characters `|@|`
-		* Use 'all' as a keyword when you want to choose all contexts or all hotels
+		* All values should have two blocks separated by the characters `||`.
+		* The first block identifies the `context` and the second block identifies the list of `hotel codes` separated by `;`. 
+		* Values in the whitelist or blacklist are separated by the characters `|@|`.
+		* Use 'all' as a keyword when you want to choose all contexts or all hotels.
 		* **Format examples:**
 			* Blacklist: `bk:(CTX1||A;B;C|@|CTX2||C;B;D;)`
 			* Whitelist: `wl:(CTX1||A;B;C|@|CTX2||all)`
@@ -80,18 +80,18 @@ Here are some common use cases for the Blacklist plugin, along with the CSV temp
 
 | Use Case                                                      | CSV Template file             |
 |---------------------------------------------------------------|-------------------------------|
-| Block all hotels of two accesses                              | 📄[blacklist\_access\_hotels.csv](../../../../../static/files/hotel-x/blacklist_access_hotels-1.csv) |
-| Block all hotels of two suppliers                             | 📄[blacklist\_access\_hotels.csv](../../../../../static/files/hotel-x/blacklist_access_hotels-2.csv) |
-| Block all hotels except “A” and “B” of two suppliers          | 📄[blacklist\_access\_hotels.csv](../../../../../static/files/hotel-x/blacklist_access_hotels-3.csv) |
+| Block all hotels of two accesses                              | 📄[blacklist  _access  _hotels.csv](../../../../../static/files/hotel-x/blacklist_access_hotels-1.csv) |
+| Block all hotels of two suppliers                             | 📄[blacklist  _access  _hotels.csv](../../../../../static/files/hotel-x/blacklist_access_hotels-2.csv) |
+| Block all hotels except “A” and “B” of two suppliers          | 📄[blacklist  _access  _hotels.csv](../../../../../static/files/hotel-x/blacklist_access_hotels-3.csv) |
 
 
 ## 2. Execute Blacklist plugin in your query
 
 Once you've uploaded your blacklist file, to use the plugin add the following field to the `settings` node of your request. Note that blacklist plugin can just be executed in search query. In order to successfully execute the blacklist plugin, you will need to create the request with the following variables.
 
-* `step`: `REQUEST_ACCESS`
-* `type`: `PRE_STEP`
-* `name`: `blacklist`
+* **`step`**: "REQUEST_ACCESS"
+* **`type`**: "PRE_STEP"
+* **`name`**: "blacklist"
 
 ```json
 "settings": {
@@ -107,7 +107,7 @@ Once you've uploaded your blacklist file, to use the plugin add the following fi
 }
 ```
 
-To apply a specific rule, add the `clientTokens` field to the `settings` node of your request:
+To apply a specific rule in a query, add the `clientTokens` field to the `settings` node of your request:
 
 ```json
 	"settings": {

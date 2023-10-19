@@ -30,7 +30,7 @@ style={{ listStyle:'none' }} >
 };
 
 Price indicates the value of the room/option.
-Supplements and/or surcharges can be included into the price, and will be verified with nodes Supplements/Surcharges.
+Supplements and/or surcharges can be included into the price and will be verified with nodes supplements/surcharges.
 
 ```graphql
 type Price implements Priceable {
@@ -49,19 +49,15 @@ type Price implements Priceable {
 #### [<code style={{ fontWeight: 'normal' }}>Price.<b>currency</b></code>](#)<Bullet />[`Currency!`](/api/scalars/currency) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
 
 > Currency code indicating which currency should be paid.
-> This information is mandatory.
 
 #### [<code style={{ fontWeight: 'normal' }}>Price.<b>binding</b></code>](#)<Bullet />[`Boolean!`](/api/scalars/boolean) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
 
-> It indicates if the price indicated in the gross must be respected.
-> That is, the customer can not sell the room / option at a price lower than that established by the supplier.
-> This information is mandatory.
+> It indicates whether the gross price must be honored, meaning the customer cannot sell the room/option at a price lower than the supplier's established rate.
 
 #### [<code style={{ fontWeight: 'normal' }}>Price.<b>net</b></code>](#)<Bullet />[`Float!`](/api/scalars/float) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
 
-> Indicates the net price that the customer must pay to the supplier.
+> It indicates the net price that the customer must pay to the supplier.
 > The net price is calculated by substrating the included surcharges from the gross price. (For calculation purposes only)
-> This information is mandatory.
 
 #### [<code style={{ fontWeight: 'normal' }}>Price.<b>gross</b></code>](#)<Bullet />[`Float!`](/api/scalars/float) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="scalar"/>
 
@@ -69,8 +65,7 @@ type Price implements Priceable {
 
 #### [<code style={{ fontWeight: 'normal' }}>Price.<b>exchange</b></code>](#)<Bullet />[`Exchange!`](/api/objects/exchange) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
 
-> Provides information about the currency of original, and its rate applied over the results returned by the Supplier.
-> This information is mandatory.
+> Provides currency information and the applicable rate for the results returned by the Supplier
 
 #### [<code style={{ fontWeight: 'normal' }}>Price.<b>markups</b></code>](#)<Bullet />[`[Markup!]`](/api/objects/markup) <Badge class="badge badge--secondary" text="list"/> <Badge class="badge badge--secondary" text="object"/>
 

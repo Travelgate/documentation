@@ -41,6 +41,6 @@ image
 - **Closed**: If your ticket has been waiting for a response for at least 21 days in Waiting on Buyer/Seller or 7 days after it's Resolved, it will be considered closed and cannot be reopened.
 
 
->**<ins>NOTE:</ins>**\
+>**<ins>NOTE:</ins>**  
 >Please be aware that **this process is specifically designed for product maintenance and activation purposes**. If you need to suggest a new feature or require any new development, please use our [Community](https://knowledge.travelgate.com/tgx-community) page.
 

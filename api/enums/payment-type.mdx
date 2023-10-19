@@ -29,7 +29,7 @@ style={{ listStyle:'none' }} >
 );
 };
 
-Options payment type
+Payment type options.
 
 ```graphql
 enum PaymentType {
@@ -57,15 +57,14 @@ enum PaymentType {
 
 #### [<code style={{ fontWeight: 'normal' }}>PaymentType.<b>CARD_CHECK_IN</b></code>](#)
 
-> The payment is managed by the supplier. The payment is effectuated at check in in the hotel.
+> The payment is managed by the supplier and is made at the hotel during check-in.
 
 #### [<code style={{ fontWeight: 'normal' }}>PaymentType.<b>PAYX</b></code>](#)
 
-> The payment is managed by TravelgateX.
-> The client may use this payment type if he contracts the service of virtual card creation(VCC).
-> This service allows Travelgate to manage the payments that require card data in the Booking process.
-> There are two payment types that require card data: CARD_BOOKING and CARD_CHECK_IN.
-> That way, TravelgateX generates the card with the net price that the client has to pay to the supplier.
+> Payment management is handled by TravelgateX. Clients can use this payment method if they contract the virtual card
+> creation (VCC) service. This service enables TravelgateX to manage payments that require card data in the booking process.
+> There are two payment types that require card data: CARD_BOOKING and CARD_CHECK_IN. TravelgateX generates the card with the
+> net price that the client needs to pay to the supplier.
 
 ### Member of
 

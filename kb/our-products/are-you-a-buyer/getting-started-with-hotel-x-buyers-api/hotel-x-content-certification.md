@@ -19,7 +19,7 @@ You should apply once you've finished the implementation of the content methods.
 - Correct application of the pagination
 - Correct application of the filtering and criteria options
 - Enabled GZIP compression header
-- 
+
 ### What information do you need to provide for the Certification?✔️
 
 In order for us to be  able to certify the content implementation, we will need you to provide the following information:

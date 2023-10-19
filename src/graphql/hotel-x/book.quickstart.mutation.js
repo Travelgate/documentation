@@ -83,7 +83,7 @@ export const bookQuickStartMutation =
 export const bookQuickStartVariables = 
 `{
 	"bookInput": {
-		"optionRefId": "11!11?1$241028?241029?1?1?0?ES?ES?es?EUR?0?2?1?1?1?0?15091142?BAR[%@BAR?146.0$0$false$EUR$$0$?1|30#30|1|2024-10-28|1|4132467|4132468|1|11|0?2269!2269?30$30??Double Standard?1??After$146.0!Before$146.0!ExpireDate$29/10/2024!mercado$ES!tgx_sess$f6152cba-f792-4e81-a2c1-e73ca63ecd02?OK?Sith?0?",
+		"optionRefId": "11!11?1$241028?241029?1?1?0?ES?ES?es?EUR?0?2?1?1?0?1?10101449?BARRF[%@BARRF?210.0$0$false$EUR$$0$?1|30#30|1|2024-10-28|1|4247163|4247164|1|11|0?5683!5683?30$30??Double Suite Deluxe?1?120$2$EUR$52.5$2024-10-22T10:00:00Z!72$2$EUR$105$2024-10-24T10:00:00Z!24$2$EUR$210$2024-10-26T10:00:00Z?After$210.0!Before$210.0!ExpireDate$29/10/2024!mercado$ES!tgx_sess$691c61a5-80b2-40a3-b6d2-4c32d5e30fca?OK?Sith?0?",
 		"clientReference": "test_0123456789",
 		"deltaPrice": {
 			"amount": 10,

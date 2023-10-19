@@ -126,6 +126,8 @@ type HotelXMutation {
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.<b>amendRooms</b></code>](#)<Bullet />[`HotelBookingAmend`](/api/objects/hotel-booking-amend) <Badge class="badge badge--secondary" text="object"/>
 
+> Commits the previous quoted rooms amendment
+>
 > ##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.amendRooms.<b>data</b></code>](#)<Bullet />[`HotelAmendRoomsCommitInput!`](/api/inputs/hotel-amend-rooms-commit-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
 
 ##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.amendRooms.<b>settings</b></code>](#)<Bullet />[`HotelSettingsInput`](/api/inputs/hotel-settings-input) <Badge class="badge badge--secondary" text="input"/>
@@ -216,7 +218,8 @@ type HotelXMutation {
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.<b>book</b></code>](#)<Bullet />[`HotelBookPayload`](/api/objects/hotel-book-payload) <Badge class="badge badge--secondary" text="object"/>
 
-> Creates a new hotel booking consisting of an option of 1 or more rooms.
+> Book operation requests a booking confirmation for the specified optionId obtained from the Quote. It provides a concise summary of the option,
+> along with the reservation status. Please note that the returned information may vary depending on the Seller.
 >
 > ##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.book.<b>input</b></code>](#)<Bullet />[`HotelBookInput!`](/api/inputs/hotel-book-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
 
@@ -234,7 +237,8 @@ type HotelXMutation {
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.<b>cancel</b></code>](#)<Bullet />[`HotelCancelPayload`](/api/objects/hotel-cancel-payload) <Badge class="badge badge--secondary" text="object"/>
 
-> Cancels an existing hotel booking consisting of an option of 1 or more rooms.
+> Cancel operation allows you to cancel a booking made via TravelgateX. It always takes into account the day and time of the destination in order
+> to calculate what cancellation policy should be applied (UTC time).
 >
 > ##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.cancel.<b>input</b></code>](#)<Bullet />[`HotelCancelInput!`](/api/inputs/hotel-cancel-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
 
@@ -252,7 +256,7 @@ type HotelXMutation {
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.<b>commit</b></code>](#)<Bullet />[`HotelCommitPayload`](/api/objects/hotel-commit-payload) <Badge class="badge badge--secondary" text="object"/>
 
-> Commits an existing booking
+> Commits an existing booking.
 >
 > ##### [<code style={{ fontWeight: 'normal' }}>HotelXMutation.commit.<b>input</b></code>](#)<Bullet />[`HotelCommitInput!`](/api/inputs/hotel-commit-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
 

@@ -1,10 +1,9 @@
 ﻿---
-sidebar_position: 4
+sidebar_position: 3
 ---
 
 # What is the difference between Pull and Push Sellers?
 
-## Differences between Pull and Push integrations
 
 ### But first things first: what's an XML integration?💡
 An XML integration is basically a connector that acts as a "translator" between the systems of Buyers and Sellers, allowing different formats or programming languages ​​(usually XML) to be compatible. This way, the information from a hotel provider, a Rent a Car, an airline, a railway company, or a shipping company is available on the website of an online travel agency, even if the information in their databases is structured differently.
@@ -12,7 +11,7 @@ An XML integration is basically a connector that acts as a "translator" between 
 ### Pull Integration⬅️
 
 #### What are Pull integrations?
-Pull integrations (like Pull integrations), always involve two agents:
+Pull integrations (like Pull integrations), always involve **two agents**:
 
 1. A Seller
 1. A Buyer
@@ -44,7 +43,9 @@ Once a PUSH connection is activated, the Buyer (Client) configures their SetUp i
 
 Once the Client has finished the Hotel SetUp, they inform the Channel Manager so they can "push" their product (availability, rates), which will be immediately processed and offered to the Buyer.
 
->Buyers, Hotels and Channel Managers should **always be in touch** in order to be aware of any updates in their SetUp (like modifications, new rates/rooms, etc.).
+:::info
+Buyers, Hotels and Channel Managers should **always be in touch** in order to be aware of any updates in their SetUp (like modifications, new rates/rooms, etc.).
+:::
 
 **Static content information:**
 

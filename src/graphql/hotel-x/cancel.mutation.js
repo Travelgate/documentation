@@ -90,7 +90,7 @@ export const cancelMutation =
 export const cancelByBookingIDVariables = 
 `{
 	"cancelInput": {
-		"bookingID": "1@1[241028[241029[230918[1[es[EUR[2[test_0123456789[2596391"
+		"bookingID": "1@1[241028[241029[231010[1[en[EUR[2[test_01234567890[2636944"
 	},
 	"settings": {
 		"client": "client_demo",
@@ -107,7 +107,7 @@ export const cancelByReferenceVariables =
 		"accessCode": "2",
 		"hotelCode": "1",
 		"reference": {
-			"supplier": "2596391"
+			"supplier": "2636944"
 		}
 	},
 	"settings": {

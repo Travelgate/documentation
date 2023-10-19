@@ -29,7 +29,7 @@ style={{ listStyle:'none' }} >
 );
 };
 
-Contains information about booking
+Contains information about booking.
 
 ```graphql
 type HotelBookingDetail {
@@ -53,11 +53,11 @@ type HotelBookingDetail {
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelBookingDetail.<b>reference</b></code>](#)<Bullet />[`Reference!`](/api/objects/reference) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
 
-> Booking ID in the Supplier s system
+> Booking ID references codes.
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelBookingDetail.<b>holder</b></code>](#)<Bullet />[`Holder`](/api/objects/holder) <Badge class="badge badge--secondary" text="object"/>
 
-> Holder s name and surname
+> Holder's name and surname
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelBookingDetail.<b>hotel</b></code>](#)<Bullet />[`BookingHotel`](/api/objects/booking-hotel) <Badge class="badge badge--secondary" text="object"/>
 
@@ -69,11 +69,11 @@ type HotelBookingDetail {
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelBookingDetail.<b>quotePrice</b></code>](#)<Bullet />[`PriceChange`](/api/objects/price-change) <Badge class="badge badge--secondary" text="object"/>
 
-> Specifies the price of the previous OptionQuote. Returned only if the shown Book price differs from the price shown at the Quote Option. If the price does not change, this field will be returned Null.
+> Specifies the price of the previous OptionQuote, returned only if it differs from the price shown at the Quote Option. If the price remains unchanged, this field will be returned as Null.
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelBookingDetail.<b>cancelPolicy</b></code>](#)<Bullet />[`CancelPolicy`](/api/objects/cancel-policy) <Badge class="badge badge--secondary" text="object"/>
 
-> Specifies cancel policies of the book returned.
+> Specifies cancel policies of the returned option .
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelBookingDetail.<b>remarks</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
 
@@ -88,7 +88,7 @@ type HotelBookingDetail {
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelBookingDetail.<b>billingSupplierCode</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
 
-> Supplier’s billing code. Will be returned if the supplier has different billing accounts and this is informed in the reservation.
+> Supplier’s billing code. It will be returned if the supplier has different billing accounts and this is informed in the reservation.
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelBookingDetail.<b>payable</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
 
@@ -96,7 +96,7 @@ type HotelBookingDetail {
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelBookingDetail.<b>addOns</b></code>](#)<Bullet />[`AddOns`](/api/objects/add-ons) <Badge class="badge badge--secondary" text="object"/>
 
-> Additional information about the option
+> Additional information about the option. It is only available for the partners that uses our Distribution-X solution.
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelBookingDetail.<b>paymentCard</b></code>](#)<Bullet />[`PaymentCard`](/api/objects/payment-card) <Badge class="badge badge--deprecated badge--secondary" text="deprecated"/> <Badge class="badge badge--secondary" text="object"/>
 
@@ -104,7 +104,7 @@ type HotelBookingDetail {
 > deprecated from 2021-06-21. Please use PaymentInfo instead
 > :::
 >
-> Specifies the information of the payment card, and the source of it, that has been generated at Book step
+> Specifies the information of the generated payment card, and the source of it.
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelBookingDetail.<b>paymentInfo</b></code>](#)<Bullet />[`GeneratedPaymentInfo`](/api/objects/generated-payment-info) <Badge class="badge badge--secondary" text="object"/>
 

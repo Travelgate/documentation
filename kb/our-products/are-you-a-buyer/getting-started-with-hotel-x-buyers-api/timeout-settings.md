@@ -17,8 +17,9 @@ It will depend on your preferences and needs. Our recommendation is to test whic
 * A maximum of 180000ms in Quote.
 * A maximum of 180000ms in Book.
 
->**TIP:**\
-> Unlock the potential of our connection by including the Seller in the process of establishing the ideal timeouts!
+:::tip
+Unlock the potential of our connection by including the Seller in the process of establishing the ideal timeouts!
+:::
 
 ## What happens if I set a higher timeout than the ones allowed at TravelgateX API?⚠️
 Please note that timeout values higher than those recommended will not be applied.
@@ -41,8 +42,9 @@ You can either set this information at a request level (in your query "settings"
 ```
 Or you can set a **default timeout value** in your API Settings - more information here.
 
->**NOTE:**\
->Setting a different timeout value for each Seller is not possible when requesting multimode - the timeout value set on your side will be applied to all of your Sellers.
+:::info 
+Setting a different timeout value for each Seller is not possible when requesting multimode - the timeout value set on your side will be applied to all of your Sellers.
+:::
 
 
 ### Timeout Settings in Hotel Buyers Legacy API🏨
@@ -54,4 +56,6 @@ If you are using our Hotel Buyers Legacy API, note that the timeout setup should
 1. **Supplier timeout**: this value indicates the time limit for a given request to a Seller. Please note the HUB timeout value should be set at least 300 ms higher than the Supplier timeout value in order to have enough time to parse the Seller's response.
 
 
-((((PTE IMAGEN))))
+```
+image
+```

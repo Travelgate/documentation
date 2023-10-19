@@ -1,9 +1,9 @@
 ﻿---
-sidebar_position: 5
+sidebar_position: 4
 ---
 
 # What exactly is Hotel-X and why should I develop it?
-## Whether you want to aggregate or not, Hotel-X has got you covered. It's your business, it's your call.
+### Whether you want to aggregate or not, Hotel-X has got you covered. It's your business, it's your call.
 
 [Hotel-X Pull Buyers API](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/) is a GraphQL-based powerful aggregating API. A single connection provides you a gateway to the largest Network of Buyers and Sellers, trusted by industry leaders and niche providers around the world.
 
@@ -14,7 +14,9 @@ The Hotel-X API **aggregates results** from multiple Sellers. Whether you prefer
 
 And it doesn’t stop there: Hotel-X functionalities can be easily extended by adding our [Plugins](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/plugins/). Any business need you might think of can be easily implemented. Do you want to avoid duplicate bookings? Add the [Booking Persistence](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/plugins/) plugin. Want to search by Destination? No worries! Leverage the power and flexibility of Hotel-X to get an edge over your competitors. Simple. Flexible. Beautiful.
 
->**Hotel-X is the industry’s first non-opinionated API that is fast becoming the new standard in Travel connectivity.**
+:::info
+Hotel-X is the Industry’s **first** non-opinionated API that is fast becoming the new standard in Travel connectivity.
+:::
 
 ### Benefits and features✔️
 Some of Hotel-X key benefits are: 
@@ -31,11 +33,11 @@ Some of Hotel-X key benefits are:
 - **Malformed requests**: Hotel-X automatically returns an error and avoids malformed request to be sent to the Seller (e.g. requesting more days or paxes per room than those supported by the Seller).
 
 ### What do our Partners think about the Hotel-X development?⭐
-- 70% of our Partners said Hotel-X development took less time than expected.
-- 85% of our Partners found it easy to develop our API.
-- 95% of our Partners are very satisfied with the amount of support received during the development phase.
+- **70%** of our Partners said Hotel-X development took less time than expected.
+- **85%** of our Partners found it easy to develop our API.
+- **95%** of our Partners are very satisfied with the amount of support received during the development phase.
 
->Learn more about Hotel-X on our [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/)📑
-
+:::tip
+**Learn more about Hotel-X on our [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/)📑**
+:::
  
-

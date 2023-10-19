@@ -34,6 +34,7 @@ const config = {
 
   plugins:[
     require.resolve("@cmfcmf/docusaurus-search-local"),
+    'docusaurus-plugin-sass',
     [
       "@graphql-markdown/docusaurus",
       {
@@ -97,7 +98,7 @@ const config = {
         //     'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         // },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve('./src/scss/custom.scss'),
         },
       }),
     ],

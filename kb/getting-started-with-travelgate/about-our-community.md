@@ -29,4 +29,4 @@ To disable e-mail notifications from TravelgateX Community, just follow the step
 1. To access your account preferences, simply click on your initials located in the top right corner. Then, scroll down to the bottom of the menu and select the preferences option.
 1. Next, navigate to the "Emails" section, customize the e-mail settings based on your preferences and click on "Save Changes".
 
-![Alt text](image-4.png)
+![community_disable](https://storage.travelgate.com/kbase/tgx_community_disable_notifications.jpg)

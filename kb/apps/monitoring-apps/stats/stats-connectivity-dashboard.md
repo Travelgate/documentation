@@ -32,7 +32,7 @@ Delve into other tabs like "Search," "Quote," "Book," "Cancel" and "Other" for s
 - L2B (Look To Book) ratio.
 
 
-    ![stats_dashboard_4](https://storage.travelgate.com/kbase/stats_dashboard_4.jpg)
+![stats_dashboard_4](https://storage.travelgate.com/kbase/stats_dashboard_4.jpg)
 
 Additionally, in case any transactions encounter errors, fret not! You can easily identify the specific error code and even download the log transactions for the Quote, Book, and Cancel steps. Stats is here to empower you with all the information you need.
 

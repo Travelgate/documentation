@@ -25,8 +25,8 @@ When creating a ticket, make sure to **select the appropriate option or category
 - **Partner's feedback required**: If we need more information or are waiting for **comments from the Buyer or Seller**, your ticket will be in this status.	
   - After **3 days** of waiting for a response, we will send a friendly reminder, and our system will send one additional reminder (after 5 days). 
   - If we have not received a response **after 7 days**, we will notify you that the ticket is now closed. If you don't want your ticket to be closed, be sure to comment on the ticket or add someone else from the appropriate team to the loop.
-- Resolved: Once your ticket has been resolved, we'll send you an email detailing the solution. If you don't agree with the solution, you have 7 days to respond. After this period, your ticket will be closed permanently.
-- Closed: If your ticket has been waiting for a response for at least 7 days in Waiting on Buyer/Seller or after it's Resolved, it will be considered closed and cannot be reopened.
+- **Resolved:** Once your ticket has been resolved, we'll send you an email detailing the solution. If you don't agree with the solution, you have 7 days to respond. After this period, your ticket will be closed permanently.
+- **Closed:** If your ticket has been waiting for a response for at least 7 days in Waiting on Buyer/Seller or after it's Resolved, it will be considered closed and cannot be reopened.
 
 **<ins>ACTIVATION TICKETS</ins>** 🚀
 - **Open**: After you've submitted your Auto-Activation request, you'll receive an automated response that includes a reference number, subject, and description. If the activation has not been processed automatically, our Connectivity Team will proceed to reviewing the New Connection manually.

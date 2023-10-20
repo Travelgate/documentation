@@ -39,10 +39,10 @@ To enhance performance and optimize response times in Search, you have the optio
 
 * **GraphQL To Rest**  
 To ensure optimal performance when expecting more than 5,000 options per search response, we recommend utilizing our GraphQL to Rest feature. To implement this feature, please follow the steps below:
-	* Verify that your JSON parser is updated to the latest schema, as Array Fields that were previously defined as single Scalars may result in unexpected JSON marshalling.
-	* Include the following HTTP header in your request(s): TGX-Content-Type: graphqlx/json.
-	* Test a sample call for each request using the provided header.
-	* Sit back and enjoy the enhanced performance!
+	- Verify that your JSON parser is updated to the latest schema, as Array Fields that were previously defined as single Scalars may result in unexpected JSON marshalling.
+	- Include the following HTTP header in your request(s): TGX-Content-Type: graphqlx/json.
+	- Test a sample call for each request using the provided header.
+Sit back and enjoy the enhanced performance!
 
 :::tip
 Don't forget to explore our [Hotel-X API Schema and Playground](https://api.travelgatex.com/playground) for comprehensive details and additional Documentation!🚀

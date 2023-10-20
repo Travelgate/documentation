@@ -52,16 +52,16 @@ Settings are the common configurations used to construct requests to the supplie
 **Mandatory Settings:**
 * `client`
 * `context`
-* `timeout` (timeout in milliseconds for supplier connections. Applied to all suppliers; won't close client connection if exceeded)
+* `timeout` (Timeout in milliseconds for supplier connections. Applied to all suppliers; won't close client connection if exceeded)
 * `businessRules`
 
 **Optional Settings:**
 * `group`
 * `auditTransactions`
-* `suppliers` (each one contains its own code, settings and accesses)
+* `suppliers` (Each one contains its own code, settings and accesses)
 * `plugins`
-* `testMode` (this flag allows only the accesses checked as test)
-* `clientTokens` (used to identify the origin of the request, this is only used in plugins)
+* `testMode` (This flag allows only the accesses checked as test)
+* `clientTokens` (Used to identify the origin of the request, this is only used in plugins)
 
 
 
@@ -99,7 +99,7 @@ Settings are the common configurations used to construct requests to the supplie
 
 **Mandatory Settings**
 * `context`
-* `timeout` (timeout in milliseconds for supplier connections. Applied to all suppliers; won't close client connection if exceeded)
+* `timeout` (Timeout in milliseconds for supplier connections. Applied to all suppliers; won't close client connection if exceeded)
 * `businessRules`
 * `language`
 * `currency`
@@ -109,7 +109,7 @@ Settings are the common configurations used to construct requests to the supplie
 **Optional Settings**
 * `group`
 * `auditTransactions`
-* `suppliers` (each one contains its own code, settings and accesses)
+* `suppliers` (Each one contains its own code, settings and accesses)
 * `plugins`
-* `testMode` (this flag allows only the accesses checked as test)
-* `clientTokens` (used to identify the origin of the request, this is only used in plugins)
+* `testMode` (This flag allows only the accesses checked as test)
+* `clientTokens` (Used to identify the origin of the request, this is only used in plugins)

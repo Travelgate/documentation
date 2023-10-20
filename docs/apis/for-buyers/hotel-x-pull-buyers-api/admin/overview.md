@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Overview
 
-In the [Key Concepts](../../../../get-started/key-concepts) section, we introduced you to the fundamental entities (accesses, suppliers, contexts...) that enable you to establish and manage connections with your Partners. Now, with the Admin API, you have the power to access a comprehensive list of all available entities within your organization, ensuring seamless connectivity.
+In the [Key Concepts](../../../../get-started/key-concepts) section, we introduced you to the fundamental entities (`access`, `supplier`, `context`...) that enable you to establish and manage connections with your Partners. Now, with the Admin API, you have the power to access a comprehensive list of all available entities within your organization, ensuring seamless connectivity.
 
 In this section, you will find:
 
@@ -14,5 +14,5 @@ In this section, you will find:
 
 The Admin API serves as your gateway to streamline access management and supplier information, facilitating a more efficient and effective experience within the Hotel-X ecosystem.
 
-Ready to explore the full scope of available entities? Dive into the "Admin" section and take control of your connectivity with Hotel-X and your Partners.
+Ready to explore the full scope of available entities? Dive into the [Admin section](get-accesses.mdx) and take control of your connectivity with Hotel-X and your Partners.
 

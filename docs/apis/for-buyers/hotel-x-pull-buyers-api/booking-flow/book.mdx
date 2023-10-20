@@ -79,7 +79,7 @@ To specify your book input you need to use the input `HotelBookInput` in your mu
 
 **Mandatory input:**
 * `optionRefId` (Identifier of the option used in Quote.)
-* `clientReference` (Bbooking ID in client's system.)
+* `clientReference` (Booking ID in client's system.)
 * `holder`
 * `rooms`
 
@@ -91,7 +91,9 @@ To specify your book input you need to use the input `HotelBookInput` in your mu
 
 :::tip Key Recommendations
 
-Consider that the `deltaPrice` sets the price tolerance between Quote and Book. For instance, if the Quote stage displays a price of 100€ and the `deltaPrice` is 5, a change up to 105€ will still secure a confirmed booking.
+* Customize the `timeout` according to your needs, taking into consideration **the maximum values in Book is 180,000ms.**
+
+* Consider that the `deltaPrice` sets the price tolerance between Quote and Book. For instance, if the Quote stage displays a price of 100€ and the `deltaPrice` is 5, a change up to 105€ will still secure a confirmed booking.
 
 :::
 
@@ -358,7 +360,7 @@ Once a Book (Reservation) method is run, our API response will provide its book 
 | UNKNOWN        | The reservation process through TravelgateX was completed but due to a supplier error or a timeout, the reservation status is unknown (our system was unable to confirm if the booking has been confirmed or not the on Seller's system). It is the Buyer’s responsibility to check if the booking is OK. |
 | PENDING_COMMIT | The payment has been confirmed on the provider’s side, but is necessary to make a commit in order to confirm the reservation.                                                                                                                                                                             |
 
-## Frequently asked questions
+## Frequently Asked Questions
 
 <details>
     <summary>What should I do if I receive both an OK status and an error in the same Book response?</summary>

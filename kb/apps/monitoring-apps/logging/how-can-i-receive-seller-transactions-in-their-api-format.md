@@ -23,9 +23,7 @@ In order to set the "auditTransactions" field in your Hotel-X Search request, yo
 **Hotel-X Query:**  
 You should add the "auditTransactions" field to your HotelSettingsInput as follows:
 
-```
-image
-```
+![logging_audit_transactions_1](https://storage.travelgate.com/kbase/logging_audit_transactions_1.jpg)
 
 ```
 query ($criteriaSearch: HotelCriteriaSearchInput, $settings: HotelSettingsInput, $filterSearch: HotelXFilterSearchInput) {
@@ -69,16 +67,12 @@ In order to set the "registerTransactions" field in your Legacy methods, you sho
 
 Method request:
 
-```
-image
-```
+![logging_audit_transactions_2](https://storage.travelgate.com/kbase/logging_audit_transactions_2.jpg)
 
 Method response:  
 You will receive the Seller's transactions within the "auditData" tag.
 
-```
-image
-```
+![logging_audit_transactions_3](https://storage.travelgate.com/kbase/logging_audit_transactions_3.jpg)
 
 ### Seller transactions through Stats and Logging APPs✅
 You can easily download logs of past transactions using our Stats and Logging APPs, except for Search logs as they are not saved by default.

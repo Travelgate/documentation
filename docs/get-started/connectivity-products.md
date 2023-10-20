@@ -19,7 +19,7 @@ For Buyers:
 
 For Sellers:
 
-* [Hotel Pull Sellers API](../apis/for-sellers/hotel-pull-sellers-api/overview): This works similarly to the Pull Buyers API, where the Seller receives real-time requests and sends back immediate responses.
+* [Hotel Pull Sellers API](../apis/for-sellers/hotel-pull-sellers-api/quickstart): This works similarly to the Pull Buyers API, where the Seller receives real-time requests and sends back immediate responses.
 
 * [Hotel Push Sellers API](../apis/for-sellers/hotel-push-sellers-api/quickstart.mdx): In the Push integration framework, Sellers transmit their product data to the TGX Database/System. Push integrations are characterized by reduced traffic demands and swifter response times. However, they don't support real-time interactions and demand more developmental effort.
 

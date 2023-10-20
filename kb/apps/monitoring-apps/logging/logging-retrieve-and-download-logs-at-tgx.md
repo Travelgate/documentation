@@ -15,9 +15,7 @@ sidebar_position: 1
 	- Reference
 1. Click on **Search**
 
-```
-image
-```
+	![logging_app_1](https://storage.travelgate.com/kbase/logging_app_1.jpg)
 
 ### What information does Logging provide me? 📤
 If your search criteria returns logs, Logging will display the following information:
@@ -33,7 +31,5 @@ If your search criteria returns logs, Logging will display the following informa
 - Traffic Type (Basic, Optimized, Scheduler, Speed)
 - Download link - Logs can be downloaded individually or in bulk using the "Download All" option above the table.
 
-```
-image
-```
+	![logging_app_2](https://storage.travelgate.com/kbase/logging_app_2.jpg)
 

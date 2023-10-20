@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 # How to filter Hotel-X Search requests
@@ -40,7 +40,7 @@ If requested, only options with the specified rateRules will be returned. Some o
 Thanks to Hotel-X Plugins you can customize your requests and responses to meet your business needs. You can filter which plugins have to be executed (included) or excluded.
 
 :::tip
-**Don't forget to check our Hotel-X Buyers API [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/plugins/) for further information!🚀**
+Don't forget to check our Hotel-X Buyers API [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/plugins/) for further information!🚀
 :::
 
 ### 4. Status - StatusFilterInput✔️

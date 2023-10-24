@@ -18,9 +18,7 @@ Don't forget to check our article on [Book Mutation](https://knowledge.travelgat
 ### What information can I expect in Cancel response?✔️
 The information returned in Cancel response may vary between Sellers, so please check our [Hotel-X API Schema](https://api.travelgatex.com/playground) in order to add to your Cancel the fields expected on your side. Additionally, you may check the Sellers' [Metadata](https://knowledge.travelgate.com/hotel-x-development-metadata) for further details on the specifications established on their side for this Method.
 
- ```
- image
- ```
+![cancel_mutation_1](https://storage.travelgate.com/kbase/cancel_mutation_1.jpg)
 
 
 **Some of the fields returned once a booking is cancelled are:**

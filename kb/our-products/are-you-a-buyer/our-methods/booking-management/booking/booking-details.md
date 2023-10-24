@@ -8,9 +8,7 @@ sidebar_position: 2
 ## What steps should I follow to retrieve the details of a booking?💡
 To obtain the **details of a specific reservation**, you can use the Booking query by either "**BookingID**" (highly recommended) or by "**references**" (to be deprecated):
 
-```
-image
-```
+![booking_query_1](https://storage.travelgate.com/kbase/booking_query_1.jpg)
 
 
 ### How can I perform a booking query while filtering by "bookingID"?🛠️

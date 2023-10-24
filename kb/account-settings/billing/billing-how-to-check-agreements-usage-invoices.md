@@ -31,14 +31,13 @@ Only **owner** and **admin** users have access to the complete menu.
 
 ![billing_manage_agreements](https://stplaformwe.blob.core.windows.net/kbase/billing_manage_agreements_3.jpg)
 
-### How can I request a payment type change for one of my Partners?💡
 
+### How can I request a payment type change for one of my Partners?
+It's possible that you and your Partner are currently splitting the cost of the connection under a Standard Payment Agreement. If you're interested in switching to a free arrangement where your Partner takes on the payment responsibility, you'll need to **wait for their acceptance** before proceeding with the change. If needed, you can also cancel the request.
 
-1. It's possible that you and your Partner are currently splitting the cost of the connection under a Standard Payment Agreement. If you're interested in switching to a free arrangement where your Partner takes on the payment responsibility, you'll need to **wait for their acceptance** before proceeding with the change. If needed, you can also cancel the request.
+![payment_change_4](https://storage.travelgate.com/kbase/billing_payment_change_4.jpg)
 
-	![payment_change_4](https://storage.travelgate.com/kbase/billing_payment_change_4.jpg)
-
-	![payment_change_5](https://storage.travelgate.com/kbase/billing_payment_change_5.jpg)
+![payment_change_5](https://storage.travelgate.com/kbase/billing_payment_change_5.jpg)
 
 1. Other modifications, such as switching from **Free to Standard** or **Standard to Supplement**, do not require Partner confirmation as the total cost of the connection is assumed. These changes can be processed automatically.
 1. Additionally, you will have access to the **historical record** of changes made in each agreement:

@@ -12,9 +12,7 @@ You may find the timeout value at a request level (in your Settings) or at a Def
 ### Legacy Buyers API
 This timeout is included as a [Common Element]8v) ("timeoutMilliseconds") in every request:
 
-```
-image
-```
+![104_error](https://storage.travelgate.com/kbase/104_error.jpg)
 
 In the aforementioned example, the Buyer sets a timeout of 24700 milliseconds (24.7 seconds) so that will be the time that TravelgateX will wait for a response by the Seller. Error 104 will be returned if we are not able to obtain a response from the Seller's system before the established timeout:
 

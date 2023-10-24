@@ -44,13 +44,13 @@ This field is implemented if it’s native to the Seller or if another Search/Qu
 ### Why do I receive a status "ON_REQUEST" and a holder name "test" in my reservations the test environment?💡
 
 In the test environment, it is common for some Sellers to consistently return an ON_REQUEST status. Furthermore, as a standard practice in the test environment, we automatically replace the holder and passenger names with "test".
-### Will the currency in Book be the same as the currency in Quote?💴
+### Will the currency in Book be the same as the currency in Quote?
 The currency used for the transaction will remain the same throughout the entire Booking Flow, including cancellation policies.
 
-### Do I have to provide real names and ages for all the passengers?👦👧
+### Do I have to provide real names and ages for all the passengers?
 No, you are not required to provide real ages and names for all passengers. You can use default values for each age group and name. The only information that should be real is the holder's information.
 
-### How do I define the total number of rooms in my Book request?🏨
+### How do I define the total number of rooms in my Book request?
 To define the number of rooms in your reservation, you need to utilize the occupancyRefId previously returned in Search response.
 For instance, for a room of two adults:
 ```

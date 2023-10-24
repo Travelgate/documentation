@@ -9,9 +9,7 @@ sidebar_position: 2
 ### How can I filter my Search requests?🚀
 You can filter your Search requests though the **HotelXFilterSearchInput** and according to the access, plugin, rateRules and status specified in your request.
 
-```
-ìmage
-``` 
+![filter_hotelx_search_1](https://storage.travelgate.com/kbase/filter_hotelx_search_1.jpg)
 
 ### 1. Access - AccessFilterInput✔️
 You can specify one access or none of them. In this latter case, all the accesses configured for a Buyer will be executed. You will find more information in the following articles:
@@ -46,9 +44,7 @@ Don't forget to check our Hotel-X Buyers API [Documentation](https://docs.travel
 ### 4. Status - StatusFilterInput✔️
 You can define/filter which status (OK or RQ) is to be excluded or included in your Search response. Note that this filter will depend on the Seller returning this information in their response.
 
-```
-image
- ```
+![filter_hotelx_search_2](https://storage.travelgate.com/kbase/filter_hotelx_search_2.jpg)
 
 >**Aggregate and apply business rules to this field!🚀**  
 >All you need to do is add either 'status' or 'notStatus' to the primary key of the aggregation and preference plugins. Both plugins follow the same behaviour, so it's a breeze to get started. For more details, don't forget to check out our [Developers Resources](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/plugins/preference/).

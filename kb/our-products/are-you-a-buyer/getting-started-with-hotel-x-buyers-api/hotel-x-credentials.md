@@ -12,10 +12,7 @@ Once you have configured your account, you can access our App and check your Hot
 1. **Log onto our website**: Log in with your credentials [here](https://www.travelgatex.com/).
 1. **Connections**: Click on "Connections" in the top menu. Then, click on "[Connections Settings](https://www.travelgatex.com/)".
 1. **API Settings**: Your Apikey will be displayed in a yellow box at the top of the page.
-
-	```
-	image
-	```
+	![hotelx_credentials_1](https://storage.travelgate.com/kbase/hotelx_credentials_1.jpg)
 
 	:::info
 	**Please keep in mind that the Apikey will remain consistent across both test and production environments for all Sellers.**
@@ -48,16 +45,11 @@ Context refers to the content codes utilized by both Buyers and Sellers. Each Se
 Buyers have the flexibility to either use their own codes or choose content providers. In either case, they can create their own context using our [Mapping Plugin](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/plugins/mapping/). This allows Buyers to align their own context with the Suppliers' context. 
 
 To access the context, simply navigate to the Connections menu and click on "My Connections".
-
-```
-image
-```
+![hotelx_credentials_2](https://storage.travelgate.com/kbase/hotelx_credentials_2.jpg)
 
 Then, select the Seller and the information will be displayed.
 
-```
-image
-```
+![hotelx_credentials_3](https://storage.travelgate.com/kbase/hotelx_credentials_3.jpg)
 
 When you activate a new Seller, the context information will be provided to you along with the credentials in the confirmation email.
 

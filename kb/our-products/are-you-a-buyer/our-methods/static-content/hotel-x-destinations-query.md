@@ -12,9 +12,8 @@ You just need to follow the specifications in our [Documentation](https://docs.t
 
 **Destinations Query example:**
 
-```
-image
-```
+![destinations_query_1](https://storage.travelgate.com/kbase/destinations_query_1.jpg)
+
 
 ```
 query {
@@ -57,15 +56,13 @@ Some of the fields returned are:
 
 - Code
 - Available
- -DestinationLeaf
+- DestinationLeaf
 - Texts
 - ClosestDestinations
 - Parent
 - Type
 
-```
-image
-```
+  ![destinations_query_2](https://storage.travelgate.com/kbase/destinations_query_2.jpg)
 
 
 ### Destination List Logic🔎

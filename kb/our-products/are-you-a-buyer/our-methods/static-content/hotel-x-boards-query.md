@@ -22,9 +22,7 @@ Please keep in mind that you won't be able to determine the total number of boar
 ### How can I filter my Boards Query?🔎
 To filter your results and receive specific board/s, you can include the "boardCodes" field in your criteria and specify the desired board/s.
 
-```
-image
-```
+![boards_query_1](https://storage.travelgate.com/kbase/boards_query_1.jpg)
 
 ### What can I expect to receive in Boards Query response?✔️
 The fields returned are: 

@@ -71,24 +71,92 @@ If you need assistance with requesting your credentials to access the FTP server
 </details>
 
 
-## 2. Execute Mapping Plugin in your Query
+<details>
+    <summary>Can I use a default code for un-mapped Supplier codes?</summary>
+    <div>
+		<p>
+			Imagine you've created a board mapping file for your Supplier's connection, but there are cases where you want to use a consistent code like 'RoomOnly' for meal plans that couldn't be mapped or for new board codes added by the supplier. 
+			To achieve this, you can utilize the 'Default Code' feature.
+			<br></br>
+			<br></br>
+			This feature allows you to define a default code for each code in the source (supplier) context. The entities that can have default codes include: Board, Room, Rate, Amenity, Promotion and Room Description.
+			To use this feature, simply add a new row in the BuyerContext column with your default code and place an asterisk (*) in the Supplier context column:
+		</p>
+<p>
+
+```bash
+Buyer Context, Supplier Context
+Room Only, RO
+All Inclusive, AI
+Room Only, *
+```
+
+</p>
+		In the example above, all the codes of entity board of supplier that are not found in the mapping file, will be "Room Only" in the response.
+		Please note that you can assign only one default code to each Supplier context.
+    </div>
+</details>
+
+
+## 2. Execute Mapping plugin in your query
+
+When working with your search query, you have two distinct ways to implement mapping:
+
+#### Option 1: Mapping only with Buyer context and FTP files
+
+If your search query's context is defined as your own Buyer context (meaning it differs from the supplier's context), Hotel-X will make an effort to map all entities (such as hotels, boards, etc., excluding amenities and promotions) to align with the query's context.
 
 :::caution Important
+In this scenario, there's no need to specify a plugin in your query. Just provide your own context in the context field and upload the mapping files to your FTP account.
 
-In the case of mapping, it will not be necessary to indicate the plugin at the request level for all mappings, only for amenities_map and promotions_map. In the remaining cases, hotel_map, board_map, room_map, etc., you just need to upload the file to the FTP.
+On the other hand, please note that it's absolutely mandatory to use the plugin in your search query to map amenities and promotions:
+
+```json
+"settings": {
+	"plugins": [
+		{
+			"step": "RESPONSE_OPTION",
+			"pluginsType": {
+				"type": "PRE_STEP",
+				"name": "amenity_mapX"
+			}
+		}
+	]
+}
+```
+
+```json
+"settings": {
+	"plugins": [
+		{
+			"step": "RESPONSE_OPTION",
+			"pluginsType": {
+				"type": "PRE_STEP",
+				"name": "promotion_mapX"
+			}
+		}
+	]
+}
+```
 
 :::
 
+#### Option 2: Mapping with mixed contexts for specific entities
 
-If you want to map promotions or amenities, follow these steps:
+While you can use either the Supplier's context or your own Buyer's context via FTP files in your search query, you can also mix both contexts for specific entities like boards, amenities, and promotions. For instance, you can keep using the Supplier's context for hotels or rooms but switch to your Buyer context for boards, amenities, and promotions. 
+This approach lets Hotel-X exclusively focus on mapping the entities you've specified in your query.
 
-After uploading your mapping file, add the following field to the `settings` node of your request. Keep in mind that the mapping plugin can only be executed in a search query. To successfully use the mapping plugin, create the request with the following variables, considering the type of mapping you want to perform.
+To enable this, just include the plugin in your query. After uploading your mapping file, add the following field to the settings node of your request. To make the most of the mapping plugin, configure the request with the appropriate variables based on the type of mapping you intend to perform:
 
-For **amenity_map**:
+
+Remember, you can only change the context for the board, amenity and promotion entities:
 
 * **`step`**: "RESPONSE_OPTION"
 * **`type`**: "PRE_STEP"
-* **`name`**: "amenity_map"
+* **`name`**: "{entity}_mapX"
+* **`parameters`**: 
+	* **`key`**: "context"
+	* **`value`**: {BuyerContext}
 
 ```json
 "settings": {
@@ -97,29 +165,19 @@ For **amenity_map**:
 			"step": "RESPONSE_OPTION",
 			"pluginsType": {
 				"type": "PRE_STEP",
-				"name": "amenity_map"
+				"name": "{entity}_mapX",
+				"parameters": [
+					{
+						"key": "context",
+						"value": "{BuyerContext}"
+					}
+				]
 			}
 		}
 	]
 }
 ```
 
-For **promotion_map**:
-
-* **`step`**: "RESPONSE_OPTION"
-* **`type`**: "PRE_STEP"
-* **`name`**: "promotion_map"
-
-```json
-"settings": {
-	"plugins": [
-		{
-			"step": "RESPONSE_OPTION",
-			"pluginsType": {
-				"type": "PRE_STEP",
-				"name": "promotion_map"
-			}
-		}
-	]
-}
-```
+:::caution Remember
+Keep in mind that the mapping plugin can only be executed in a search query. 
+:::

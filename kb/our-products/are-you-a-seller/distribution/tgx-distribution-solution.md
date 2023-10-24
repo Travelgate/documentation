@@ -25,9 +25,7 @@ Without the appropriate tools, these tasks can be challenging to accomplish effi
 ### How can I aggregate my direct contracts with hotel and third-party Suppliers?🏨
 When combining buying from your contracted hotels and other Suppliers with no required API, your best alternative is combining our [Inventory](https://knowledge.travelgatex.com/channel-managers-benefits) and Distribution solutions.
 
-```
-image
-```
+![distribution_soluion_1](https://storage.travelgate.com/kbase/distribution_solution_1.jpg)
 
  
 ### What are the different tools that are included in TravelgateX Distribution Solution?🛠️
@@ -41,9 +39,7 @@ image
 ### How can I apply complex business rules to my Buyers?💡
 Enhance your API connectivity with Buyers by utilizing Distribution as an extra layer. Load complex business rules such as markup conditions, currency rules, blacklists, and multiple selling rules through FTP files or manually via our user-friendly Distribution Extranet. Customize your business rules with ease!
 
-```
-image
-```
+![distribution_solution_2](https://storage.travelgate.com/kbase/distribution_solution_2.jpg)
 
 ### How can I create my own Bedbank by reselling third-party products without API integration?🏨
 As we mentioned in our previous use case, you can combine multiple Suppliers in Distribution. However, in this case, you won't have your own system codes or hotel master files from our Inventory APP, so you should follow the steps below:

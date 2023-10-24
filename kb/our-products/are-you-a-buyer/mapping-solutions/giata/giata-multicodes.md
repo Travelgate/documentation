@@ -18,16 +18,11 @@ Hotel-X API fully supports GIATA Multicodes in **Hotel-X Hotels Query** response
 Please remember to **declare the giataData in your Hotels Query** in order to receive this information in your Hotels response.⚠️
 :::
 
-```
-image
-```
+![giata_multicodes_1](https://storage.travelgate.com/kbase/giata_multicodes_1.jpg)
 
+![giata_multicodes_2](https://storage.travelgate.com/kbase/giata_multicodes_2.jpg)
 
- ```
-image
-```
-
-:::note
+:::tip
 **Are you interested in GIATA Hotel Directory as well?**
 Simply follow the easy steps outlined in the following [link](https://knowledge.travelgatex.com/giata-hotel-directory).
 :::

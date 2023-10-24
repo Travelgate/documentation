@@ -17,6 +17,6 @@ Please note that a Book status may change over time: you may receive an ON_REQUE
 ## What should I do if I receive both an OK status and an error in the same Book response?⚠️
 If you receive an error + booking status OK in BookRS (ReservationRS), <ins>**the reservation status prevails over the error**</ins>.
  
-:::note
-Although you may also run a Booking Query in order to check the status of a reservation, please note that you should **always contact the Seller** in order to check the actual status of a booking in those cases you receive a **booking status different than OK or no response at all**.
+:::info
+Although you may also run a Booking Query in order to check the status of a reservation, please note that you should always contact the Seller in order to check the actual status of a booking in those cases you receive a booking status different than OK or no response at all.
 :::

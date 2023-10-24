@@ -6,13 +6,9 @@ sidebar_position: 3
 
 ### Case 1 ✅
 If the Seller provides a **complete deadline with Timezone information in their API Response**, we will utilize that data to convert the deadline to UTC-0.
-Example:
-
-- Given a rate with Check-In date on 25/08/2022:
-
-    If the Supplier returns the deadline 2022-08-24T09:00:00.00+03, this is what we will return in the “Deadline” node in TravelgateX response:
-
-    2022-08-24T06:00:00Z
+Example:  
+Given a rate with Check-In date on 25/08/2022:
+- If the Supplier returns the deadline 2022-08-24T09:00:00.00+03, this is what we will return in the “Deadline” node in TravelgateX response: 2022-08-24T06:00:00Z
 
 ### Case 2 ✅
 In cases where **we do not receive a complete deadline (including the Timezone)** from the Seller via API Response, **but they confirm their working Timezone** through a ticket or email, we will establish and utilize that specific Timezone to convert the deadline to UTC-0.

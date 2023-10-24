@@ -15,7 +15,7 @@ The Hotel-X API **aggregates results** from multiple Sellers. Whether you prefer
 And it doesn’t stop there: Hotel-X functionalities can be easily extended by adding our [Plugins](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/plugins/). Any business need you might think of can be easily implemented. Do you want to avoid duplicate bookings? Add the [Booking Persistence](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/plugins/) plugin. Want to search by Destination? No worries! Leverage the power and flexibility of Hotel-X to get an edge over your competitors. Simple. Flexible. Beautiful.
 
 :::info
-Hotel-X is the Industry’s **first** non-opinionated API that is fast becoming the new standard in Travel connectivity.
+Hotel-X is the Industry’s **first non-opinionated API** that is fast becoming the new standard in Travel connectivity.
 :::
 
 ### Benefits and features✔️
@@ -38,6 +38,6 @@ Some of Hotel-X key benefits are:
 - **95%** of our Partners are very satisfied with the amount of support received during the development phase.
 
 :::tip
-**Learn more about Hotel-X on our [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/)📑**
+Learn more about Hotel-X on our [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/)📑
 :::
  

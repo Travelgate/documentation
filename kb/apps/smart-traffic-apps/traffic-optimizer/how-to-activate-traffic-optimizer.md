@@ -7,9 +7,7 @@ sidebar_position: 2
 ### How do I activate Traffic Optimizer?
 After logging onto TravelgateX, navigate to "APPs" and click on "Traffic Optimizer." This will take you to your Traffic Optimizer dashboard, where you can review the connections and accesses currently active on Traffic Optimizer, as well as those that were previously optimized. 
 
-```
-image
-```
+![traffic_optimizer_1](https://storage.travelgate.com/kbase/traffic_optimizer_1.jpg)
 
 ### What kind of information is displayed in the Traffic Optimizer dashboard?
 - Connection name and code
@@ -38,18 +36,13 @@ Choose the option that best fits your needs!
 ### Configuring a Traffic Optimizer connection or access 🖱️
 To set up Traffic Optimizer for one of your connections or accesses, simply click on the **'Optimize a connection' or 'Optimize an access'** button.
 
-```
-image
-```
+![traffic_optimizer_2](https://storage.travelgate.com/kbase/traffic_optimizer_2.jpg)
 
 Next, fill in the required fields in the form, which include the connection or access details and the criteria you want to use for optimization:
 
-```
-image
-```
-```
-image
-```
+![traffic_optimizer_3](https://storage.travelgate.com/kbase/traffic_optimizer_3.jpg)
+
+![traffic_optimizer_4](https://storage.travelgate.com/kbase/traffic_optimizer_4.jpg)
 
 :::info
 The activation for the 'No availability' and 'Zero booking' criteria will be automatic! As for the 'Not in portfolio' criteria, our team will handle it and inform you as soon as it's up and running!
@@ -64,16 +57,12 @@ To view the list of hotels blocked during that specific period, simply follow th
 
 2. Then, click on the 'Actions' menu > **'View blocked hotels.'** You'll have the option to filter the list by hotel name or code and by optimization criteria.
 
-    ```
-    image
-    ```
+    ![traffic_optimizer_5](https://storage.travelgate.com/kbase/traffic_optimizer_5.jpg)
 
 ### How is Traffic Optimizer improving my Search traffic? 🔎
 You can also monitor the performance of your optimized connections directly from our APP—clear and transparent. Simply select the connection or access you wish to review and click on the 'Actions' menu > **'View performance.'** There, you'll find more detailed information on the Search traffic saved in the last 24 hours. 
 
-    ```
-    image
-    ```
+![traffic_optimizer_6](https://storage.travelgate.com/kbase/traffic_optimizer_6.jpg)
  
 ### Can I exclude some hotels from being blocked by Traffic Optimizer?🗒️
 Of course! You have the flexibility to exclude hotels from the blacklist for specific connections. Additionally, each hotel on the blacklist can be made temporarily available for a preset amount of time to re-check conversion. This grace period is automatically activated by default for the "Zero bookings" criteria.

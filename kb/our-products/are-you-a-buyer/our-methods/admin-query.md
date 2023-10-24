@@ -21,5 +21,5 @@ You just need to follow the specifications in our [Documentation](https://docs.t
  
 
 :::tip
-**Don't forget to check our Documentation and API Playground for further details about Hotel-X Admin Query!🚀**
+Don't forget to check our Documentation and API Playground for further details about Hotel-X Admin Query!🚀
 :::

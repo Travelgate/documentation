@@ -8,24 +8,16 @@ sidebar_position: 1
 In order to add new users simply follow the steps below:
 
 1. Log onto our [website](https://www.travelgatex.com/)
-	```
-	ìmage
-	```
-
 1. Click on Settings
 1. Click on Users Management: Here you will be able to visualize the list of users linked to your Organization.
 
-	```
-	ìmage
-	```
+	![add_users_management](https://storage.travelgate.com/kbase/add_users_users_management.jpg)
 
 1. Click on "Create user" and fill in the information requested in the form. Please note that **only Owner and Admin members** can add users to an Organization.
-	```
-	ìmage
-	```
-	```
-	ìmage
-	```
+
+	![create_new_user_1](https://storage.travelgate.com/kbase/add_users_create_new_user_1.jpg)
+
+	![create_new_user_2](https://storage.travelgate.com/kbase/add_users_create_new_user_2.jpg)
 
 	:::info
 	**User roles:**
@@ -39,10 +31,4 @@ In order to add new users simply follow the steps below:
 1. Filter the user to be updated
 1. Use the drop-down menu in order to modify their role  - please note that this feature is only available for **Admin or Owner** users.
 
-	```
-	ìmage
-	```
-
-	```
-	ìmage
-	```
+![modify_role](https://storage.travelgate.com/kbase/add_users_can_i_modify_role.jpg)

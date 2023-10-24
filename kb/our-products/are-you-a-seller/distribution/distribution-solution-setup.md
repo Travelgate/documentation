@@ -44,6 +44,10 @@ Hotel-X utilizes six mapping files to enhance the accuracy of your aggregation. 
 Our mapping formats share a common structure, so you just need to follow the instructions below:
 
 - **Create the Mapping Directory:** Unfold your Organization folder and click in the "F0_" folder. Then, click in the "HotelX_" folder and create the "Maps" folder. The "Maps" folder will be the one where you will have to allocate all the mapping files.
+
+	![distribution_setup_1](https://storage.travelgate.com/kbase/distribution_setup_1.jpg)
+
+
 - **Hotel-X Mapping Files format:** You should follow the below [format](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/plugins/mapping/) when generating the mapping files:
 	- **File Name:** [Context Source]_[Context Destination]_[entity]_map.csv
 		- [Context Source](https://knowledge.travelgate.com/hotel-x-credentials): it corresponds to your own codes
@@ -72,11 +76,11 @@ There are up to 10 [master files](https://docs.travelgatex.com/distribution/file
 
 **Master files directory**
 
-You should upload the Master files into the Distribution folder as per below: 
+You should upload the Master files into the **Distribution folder** as per below: 
 
+![distribution_setup_2](https://storage.travelgate.com/kbase/distribution_setup_2.jpg)
 
-
-Master files format
+**Master files format**
 
 You should follow the format detailed for each of them:
 
@@ -86,37 +90,38 @@ You should follow the format detailed for each of them:
 
 We have introduced a new feature that allows you to upload your Master and Mapping files directly from our website using our Distribution APP. It's now easier than ever to manage your files. Don't forget to give it a try!🚀
 
-4. Distribution Setup🛠️
-In order to connect your first Buyer, it is necessary to create the Agency or Agencies that will represent your Buyer's credentials in our Distribution Extranet. Once the agency is created, you will have the ability to configure the Distribution Rules that apply to that specific Agency.
+### 4. Distribution Setup🛠️
+In order to connect your first Buyer, it is necessary to [create](https://docs.travelgatex.com/distribution/extranet/agencies/) the Agency or Agencies that will represent your Buyer's credentials in our [Distribution Extranet](https://app.travelgatex.com/apps/distribution). Once the agency is created, you will have the ability to configure the [Distribution Rules](https://docs.travelgatex.com/distribution/extranet/rules/) that apply to that specific Agency.
 
-5. Activate your Buyers and sell your product🚀
-Now, all that's left is to request the activation of the Buyers you have an agreement with through our Connect Form:
+### 5. Activate your Buyers and sell your product🚀
+Now, all that's left is to request the activation of the Buyers you have an agreement with through our [Connect Form](https://knowledge.travelgate.com/auto-activations-quickguide):
 
-In order to request the activation you should first retrieve the user and the access token from our Distribution extranet:
-User: It is the ID of the Agency you created for the Buyer you want to connect:
+1. In order to request the activation you should first **retrieve the user and the access token from our Distribution Extranet**:
+	- **User:** It is the ID of the Agency you created for the Buyer you want to connect:
+	
+		![distribution_setup_3](https://storage.travelgate.com/kbase/distribution_setup_3.jpg)
+		
+		In case of multiple accesses for the same Buyer (e.g. B2B/B2C), you should repeat this process for each of them.
 
+	- **Access Token:** Automatically generated once you create the Agency, it can be obtained by clicking in the "Token" button:
 
+		![distribution_setup_4](https://storage.travelgate.com/kbase/distribution_setup_4.jpg)
 
-In case of multiple accesses for the same Buyer (e.g. B2B/B2C), you should repeat this process for each of them.
+ 
 
-Access Token: Automatically generated once you create the Agency, it can be obtained by clicking in the "Token" button:
+2. **Request the activation** through our Auto-Activations form: Once you click in [New Connection](https://knowledge.travelgatex.com/auto-activations-quickguide), remember to add the User and Accesstoken to the form:
+
+	![distribution_setup_5](https://storage.travelgate.com/kbase/distribution_setup_5.jpg)
 
 
  
 
-Request the activation through our Auto-Activations form - make sure you add the user and access token to the form
-Once you click in New Connection (more information here). Remember to add the User and Accesstoken to the form:
+3. **Create a test hotel and set up your product!**  
+Check out our articles [How to connect to a Channel Manager via TravelgateX](https://knowledge.travelgatex.com/connect-channel-manager-via-travelgatex) and [How to set up and load product in Inventory](https://knowledge.travelgatex.com/inventory-set-up) for further information.
 
 
-
- 
-
-Create a test hotel and set up your product!
-Check out our articles How to connect to a Channel Manager via TravelgateX and How to set up and load product in Inventory for further information.
-
- 
-
-Don't forget to check our Documentation in order to learn all about Distribution and make the most of your connections!
-
+:::tip
+Don't forget to check our [Documentation](https://docs.travelgatex.com/distribution/) in order to learn all about Distribution and make the most of your connections!
+:::
 
  

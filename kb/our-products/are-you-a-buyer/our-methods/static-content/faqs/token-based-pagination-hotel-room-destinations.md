@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 8
+sidebar_position: 1
 ---
 
 # Token-based Pagination for Hotels, Rooms, and Destinations

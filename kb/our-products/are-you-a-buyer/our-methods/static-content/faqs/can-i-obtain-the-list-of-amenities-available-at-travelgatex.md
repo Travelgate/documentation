@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 7
+sidebar_position: 2
 ---
 
 # Can I obtain the list of amenities available at TravelgateX?

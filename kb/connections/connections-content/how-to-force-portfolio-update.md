@@ -9,22 +9,14 @@ In order to force the update of your portfolio, you should simply follow the ste
 
 1. Log onto our [website](https://www.travelgatex.com/).
 
-```
-image
-```
-
 1. Navigate to Connections > **[Connections Content](https://knowledge.travelgate.com/connections-content)**.
 
-	```
-	image
-	```
+	![force_portfolio_1](https://storage.travelgate.com/kbase/force_portfolio_update_1.jpg)
 
 1. **Filter a specific connection and access**, ensuring you are browsing as a Seller or Buyer as needed. There, you will also see the total number of hotels and Last update information.
 1. To force an update immediately, click on "**Force update now**" and your content will be refreshed within a few hours - Note that the time it takes may vary based on the total properties of a specific portfolio.
 
-	```
-	image
-	```
+	![force_portfolio_update_2](https://storage.travelgate.com/kbase/force_portfolio_update_2.jpg)
 
 
 ### Is the Seller static content stored in TravelgateX database?📦
@@ -43,5 +35,5 @@ Static content updates are carried out every 7-14 days, depending on the type of
 - If the Seller adds 50K, those new hotels will be automatically added to the Seller's portfolio within the following 7-14 days.
 
 :::tip
-**Manage your content effortlessly with TravelgateX interface. Stay updated with the latest market trends and keep your portfolio up-to-date!** 🌟
+Manage your content effortlessly with TravelgateX interface. Stay updated with the latest market trends and keep your portfolio up-to-date!
 :::

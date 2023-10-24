@@ -8,9 +8,7 @@ Monitoring and improving your Business performance is absolutely essential. Here
 
 With TravelgateX Bot, you have the power to optimize your performance like never before. This innovative tool allows you to effortlessly monitor and manage your connectivity operations, ensuring they are always operating at peak performance. Say goodbye to the complexities and hello to a streamlined and efficient way of staying ahead in the Travel Industry.
 
-```
-image
-```
+![stats_slackbot_1](https://storage.travelgate.com/kbase/stats_slackbot_1.jpg)
 
 ### What can you do with the Bot? 🚀
 
@@ -22,12 +20,9 @@ TravelgateX Bot for WhatsApp and Slack allows you to:
 - Detect your best and worst connections.
 - Analyze the Look-to-Book (L2B) ratio.
 
-```
-image
-```
-```
-image
-```
+![stats_slackbot_2](https://storage.travelgate.com/kbase/stats_slackbot_2.jpg)
+
+![stats_slackbot_3](https://storage.travelgate.com/kbase/stats_slackbot_3.jpg)
 
 ### Want to be among the first to try it? ☑️
 

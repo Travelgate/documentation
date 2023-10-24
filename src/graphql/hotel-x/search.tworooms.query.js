@@ -211,7 +211,9 @@ export const searchTwoRoomsVariables =
 			"1"
 		],
 		"currency": "EUR",
-		"market": "ES",
+		"markets": [
+			"ES"
+		],
 		"language": "es",
 		"nationality": "ES"
 	},

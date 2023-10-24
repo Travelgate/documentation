@@ -12,13 +12,9 @@ Just imagine the enormous task of storing the astounding number of search transa
 1. Indicate the **connection or access** you need Search logs from. You will also be able to check the **Audit Searches History** for further details on your previous audits.
 1. Our APP will start saving **5% of your Search traffic for 5 minutes**. 
 
-```
-image
-```
+    ![logging_app_3](https://storage.travelgate.com/kbase/logging_app_3.jpg)
 
-```
-image
-```
+    ![logging_app_4](https://storage.travelgate.com/kbase/logging_app_4.jpg)
 
 :::info
 The audit process may no be immediate, please wait a few minutes to recover the logs in the Logging APP and remember to filter by **“Search”** Operation type.

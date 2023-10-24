@@ -91,6 +91,9 @@ const config = {
         // ... Your options.
         // `hashed` is recommended as long-term-cache of index file is possible.
         hashed: true,
+        indexBlog: false,
+        explicitSearchResultPath: true,
+        docsDir: ["docs", "api", "kb"],
         // For Docs using Chinese, The `language` is recommended to set to:
         // ```
         // language: ["en", "zh"],

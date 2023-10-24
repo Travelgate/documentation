@@ -20,9 +20,7 @@ You just need to follow the specifications in our [Documentation](https://docs.t
 ### Can I search hotels by destination?🔎
 Of course! You can also **search hotels by destination by adding the "destinationCodes"** field in your Query criteria:
 
-```
-image
-```
+![hotels_query_1](https://storage.travelgate.com/kbase/hotels_query_1.jpg)
 
 
 ### What can I expect to receive in Hotels Query response?✔️
@@ -45,15 +43,13 @@ Just add the "**count**" field to your Hotels Query in order to retrieve the tot
 
 Query request:
 
-```
-image
-```
+![hotels_query_2](https://storage.travelgate.com/kbase/hotels_query_2.jpg)
+
 
 Query response:
 
-```
-image
-```
+![hotels_query_3](https://storage.travelgate.com/kbase/hotels_query_3.jpg)
+
 
 ### Can I paginate content methods? 🔢
 Sure! Make sure you check the following [article](https://knowledge.travelgate.com/content-pagination) for further information.

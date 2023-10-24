@@ -15,15 +15,11 @@ Please note we are only able to provide this code if the Seller returns it in th
 
 ### Hotel-X Pull Buyers API:
 
-```
-image
-```
+![hotel_confirmation_number_1](https://storage.travelgate.com/kbase/hotel_confirmation_number_1.jpg)
 
 
 Legacy Pull Buyers API - ReservationRS:
-```
-image
-```
+![hotel_confirmation_number_2](https://storage.travelgate.com/kbase/hotel_confirmation_number_2.jpg)
 
 
 ### How can I identify the Sellers that return HCN information?🔎

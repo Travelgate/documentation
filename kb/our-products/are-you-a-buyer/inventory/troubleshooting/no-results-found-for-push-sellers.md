@@ -13,16 +13,12 @@ Please check our article on [204 error - No results found](https://knowledge.tra
 Here are the possible causes for availability not being displayed for Push Sellers in our Extranet, along with the corresponding solutions:
 1. **Deactivated rates/rooms:** Check the SetUp section and ensure that rates and rooms are not deactivated. They will be highlighted in red if they are.
 
-	```
-	image
-	```
+	![204_error_inventory_1](https://storage.travelgate.com/kbase/204_error_inventory_1.jpg)
 
 1. **No product loaded for requested rates/rooms:** If no product is loaded, availability results will not be obtained.
 1. **Close Sales, Close On Arrival, or Close On Departure enabled for requested dates:** Days with Close Sales will be highlighted in red, while days with sales Closed On Arrival and/or Closed On Departure will be highlighted in a different shade of green and a checkbutton will be also applied.
 
-	```
-	image
-	```
+	![204_error_inventory_2](https://storage.travelgate.com/kbase/204_error_inventory_2.jpg)
 
 1. **Incorrectly loaded booking limit:** Verify that the booking limit has been loaded correctly.
 1. **Mismatch in search criteria:** Ensure that the search criteria in your request matches the criteria previously loaded for those rates/rooms.

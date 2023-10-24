@@ -19,25 +19,13 @@ In Connections Settings, you can easily view and manage your account settings. J
 You will find 2 tabs: "API Settings" and "Manage Clients".
 * **API Settings:**  
 This section displays your [API Key](https://knowledge.travelgate.com/hotel-x-credentials) as Buyer, Business Settings and Timeout Settings. Both Business and Timeout settings displayed are the ones configured **by default** for your account, regardless of the folder, client and access - please note Settings set at request level override default settings.
-
-	```
-	image
-	```
-
-	```
-	image
-	```
+	![connections_settings_1](https://storage.travelgate.com/kbase/connections_settings_1.jpg)
+	![connections_settings_2](https://storage.travelgate.com/kbase/connections_settings_2.jpg)
 
 * **Manage Clients:**  
 Here you are able to check the Hotel-X clients already created for your account, as well as **generate** new ones - adding new clients is as easy as clicking on "Create new client">"Add the new client name"). Regarding **client modifications**, please open a [ticket](https://app.travelgatex.com/tickets) to our Customer Care Team and provide us your current client code and the new one.
-
-	```
-	image
-	```
-
-	```
-	image
-	```
+		![connections_settings_3](https://storage.travelgate.com/kbase/connections_settings_3.jpg)
+		![connections_settings_4](https://storage.travelgate.com/kbase/connections_settings_4.jpg)
 
 **BROWSING AS A SELLER🔎**  
 You will find only 1 tab: "API Settings".

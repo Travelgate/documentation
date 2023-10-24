@@ -9,9 +9,7 @@ We have updated our [Quote (Valuation)](https://docs.travelgatex.com/connectiont
 - **TIMEZONE:**  
     We have added the new field “Timezone” in our Metadata method:
 
-    ```
-    image
-    ```
+    ![hotel_buyers_api_cancelpolicies1](https://storage.travelgate.com/kbase/hotel_buyers_api_cancelpolicies1.jpg)
 
     Timezone (see the [Metadata](https://docs.travelgatex.com/connectiontypesbuyers/legacy/methods/messages/metadata/) docs to check all possible values) will specify the timezone in UTC in which the cancellation policies are located.
 
@@ -25,18 +23,14 @@ If you have any doubts about the timezone returned by your Seller (for example, 
 
     This field is not subjected to any ambiguity as it is a date in **UTC-0 Standard**. The conversion of the date is made according to the value specified on the Metadata TimeZone.
 
-    ```
-    image
-    ```
+    ![hotel_buyers_api_cancelpolicies2](https://storage.travelgate.com/kbase/hotel_buyers_api_cancelpolicies2.jpg)
 
 - **CALCULATED DEADLINE:**  
     Finally, we have also added a "CalculatedDeadline" field to specify if the Deadline has been taken from the Seller’s response or if it has been calculated by TravelgateX.
 
     Please check the following table for a clear view of how we will treat the Cancellation Policies returned by the Seller according to the TimeZone established on the Metadata:
 
-    ```
-    image
-    ```
+    ![hotel_buyers_api_cancelpolicies3](https://storage.travelgate.com/kbase/hotel_buyers_api_cancelpolicies3.jpg)
 
 
 **What do I need to do?**

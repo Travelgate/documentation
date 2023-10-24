@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Channel-X
 
-Consolidate contracted products from different Channel Managers into your own system through a standardized API.
+Consolidate contracted products from different Channel Managers into your own system through a standardized API!
 
 ### What is Channel-X?💡
 

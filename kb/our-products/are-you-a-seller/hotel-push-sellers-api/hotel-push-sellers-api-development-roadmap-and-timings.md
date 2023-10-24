@@ -7,9 +7,7 @@ sidebar_position: 2
 Starting a new development is always a tricky task due to the lack of information surrounding the project and the difficulty to estimate the resources and time required. That lack of information leads to an under or over estimation of the resources needed and consequently to the inefficiency and ineffectiveness of the project planning, as well as a waste of time and resources.
 At TravelgateX we want to ease that process by providing all the necessary information, roadmap and timings to effectively calculate the amount of resources and timing that will require to develop the Hotel Push Sellers API.
 
-```
-image
-```
+![hotel_push_sellers_api_development_roadmap_timings_1](https://storage.travelgate.com/kbase/hotel_push_sellers_api_development_roadmap_timings_1.jpg)
 
 
 The Hotel Push Sellers API onboarding process is composed of 5 milestones:
@@ -37,8 +35,6 @@ We've also added a hotel, so you can test the implemented methods with it:
 	On average, the Sellers developing Hotel Push Sellers API spend approximately **9 days** in this phase.
 
 	This is the phase where the Sellers needs to implement HotelRatePlanInventoryRetrieve messages to retrieve the hotelier inventory and map it into their system. Optionally, Sellers can set up the product using HotelRatePlanInventoryNotif messages.
-
-
 	:::info
 	Further information on our Hotel Push Sellers [API Documentation](https://docs.travelgatex.com/inventory-x/api-reference/messages/set-up/).
 	:::

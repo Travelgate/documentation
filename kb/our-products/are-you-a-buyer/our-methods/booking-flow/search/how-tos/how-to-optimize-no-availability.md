@@ -8,7 +8,7 @@ sidebar_position: 1
 
 Normally, this is due to a mapping issue, so first thing would be ensure that you have only mapped Hotels that the Supplier has enabled for you. Alternatively, you could be requesting dates in which the hotels are closed or it could be that you are requesting Availability for Markets not allowed for some specific Hotels.
 
-Please find below a couple of tips to convert “No Availability” to “Results”, it's as easy as confirming with the Seller the following information:
+Please find below a couple of **tips** to convert “No Availability” to “Results”, it's as easy as confirming with the Seller the following information:
 
 1. The number of hotels that you should [expect to receive](https://knowledge.travelgate.com/content-issues) per feed (B2B, B2C). Once you have it, download the Seller's Hotel List via TravelgateX and if the number of hotels received is around the number you expect, we advise you to unmap absolutely all the hotels and start afresh with only the hotels you just received through our Hotel List.
 In case the number of hotels received through TGX is varies wildly from what you have confirmed with the Seller, then please reach out to our Help Center so we can check the reason for this discrepancy.

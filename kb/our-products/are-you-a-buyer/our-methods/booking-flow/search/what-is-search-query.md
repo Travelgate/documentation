@@ -30,9 +30,7 @@ Of course! You will find more information about our Search by Destination [plugi
 ### What are the minimum recommended fields to be added to a Search Query?✔️
 Since the amount of information requested in Hotel-X Search Query will depend on your needs and preferences, our recommendation is to check all the the fields available in our [Playground](https://api.travelgatex.com/playground). For instance:
 
-```
-image
-```
+![search_query_1](https://storage.travelgate.com/kbase/search_query_1.jpg)
 
 ### How many hotel codes per request can I request in Search?🔢
 We recommend a maximum of 200 hotels: the new aggregator will split them in batches in order to request all of them to each Seller.
@@ -106,9 +104,7 @@ The age range for children and infants may vary depending on the Seller's restri
 ### Can I receive daily prices in Search response?📅
 Yes, if the Seller provides the information, you can receive daily prices in Search response through the roomPrice>**breakdown**:
 
-```
-image
-```
+![search_query_2](https://storage.travelgate.com/kbase/search_query_2.jpg)
 
 ### Can I filter the Hotel-X Search results by payment type?❓
 Unfortunately, Hotel-X API does not currently offer the capability to filter search results by payment type. 

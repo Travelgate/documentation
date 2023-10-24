@@ -38,9 +38,7 @@ In order for us to be able to test and certify the integration, we will need you
 1. ReservationRead and ReservationList
 1. Static data
 
-```
-image
-```
+![hotel_pull_generic_api_certification_1](https://storage.travelgate.com/kbase/hotel_pull_sellers_api_generic_certification_1.jpg)
 
 
 ### How should I fill in my Certification File?🛠️

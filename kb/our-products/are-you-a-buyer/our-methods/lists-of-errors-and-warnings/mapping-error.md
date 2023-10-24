@@ -9,9 +9,7 @@ sidebar_position: 21
 
 **Example:**
 
-```
-image
-```
+![mapping_error](https://storage.travelgate.com/kbase/mapping_error.jpg)
 
 ### What can I do if I receive a "MAPPING_ERROR" in my response?🔎
 Since this error serves as an indication that there is a discrepancy or issue with the mapping validation, you should check the following information:

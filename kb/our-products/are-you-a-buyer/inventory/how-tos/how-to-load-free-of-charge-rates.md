@@ -9,9 +9,7 @@ Currently, there are certain Channel Managers that cannot load their prices indi
 ### How can I configure free of charge rates for children and babies?🌟
 To ensure a smooth transition for our existing product, **both check-boxes will be left unchecked by default**. This means that the system's behavior will remain unchanged by default.
 
-```
-image
-```
+![how_to_load_free_of_charge_children_babies_1](https://storage.travelgate.com/kbase/how_to_load_free_of_charge_children_babies_1.jpg)
 
 ### Price Calculation💡
 As you may know, Inventory works with three different types of price, and each Channel Manager loads their product using one of them:
@@ -31,21 +29,17 @@ As you may know, Inventory works with three different types of price, and each C
 ### STUDY CASE OF PRICE CALCULATION FOR A STANDARD OCCUPANCY OF 3🔎
 1. Under Standard Occupancy:
 
-	```
-	image
-	```
+	![how_to_load_free_of_charge_children_babies_2](https://storage.travelgate.com/kbase/how_to_load_free_of_charge_children_babies_2.jpg)
 
 1. Equal to Standard Occupancy:
-	```
-	image
-	```
+	![Alt text](image.png)
+	![how_to_load_free_of_charge_children_babies_3](https://storage.travelgate.com/kbase/how_to_load_free_of_charge_children_babies_3.jpg)
 
 
 1. Above Standard Occupancy:
 
-	```
-	image
-	```
+	![how_to_load_free_of_charge_children_babies_4](https://storage.travelgate.com/kbase/how_to_load_free_of_charge_children_babies_4.jpg)
+	![how_to_load_free_of_charge_children_babies_5](https://storage.travelgate.com/kbase/how_to_load_free_of_charge_children_babies_5.jpg)
 
 
 ### Pax Supplements💡
@@ -58,18 +52,9 @@ For example, for a Standard Occupancy of 3:
 - Child Supplement = 50€
 - Baby Supplement = 10€
 
-	```
-	image
-	```
-
-	```
-	image
-	```
-
-	```
-	image
-	```
-
+![how_to_load_free_of_charge_children_babies_6](https://storage.travelgate.com/kbase/how_to_load_free_of_charge_children_babies_6.jpg)
+![how_to_load_free_of_charge_children_babies_7](https://storage.travelgate.com/kbase/how_to_load_free_of_charge_children_babies_7.jpg)
+![how_to_load_free_of_charge_children_babies_8](https://storage.travelgate.com/kbase/how_to_load_free_of_charge_children_babies_8.jpg)
 
 
 
@@ -78,32 +63,21 @@ When the Channel Manager updates a product for a specific rate that has Free of 
 
 ### DETAILED PRICE CALCULATION STUDY CASE🔎
 For the following room occupations:
-```
-image
-```
+![how_to_load_free_of_charge_children_babies_9](https://storage.travelgate.com/kbase/how_to_load_free_of_charge_children_babies_9.jpg)
 
 
 And the same occupancy price for all the rates:
-```
-image
-```
+![how_to_load_free_of_charge_children_babies_10](https://storage.travelgate.com/kbase/how_to_load_free_of_charge_children_babies_10.jpg)
 
 
 The following price calculation logic will be applied: 
 
 - **Occupancy 1-2-0**
-	```
-	image
-	``` 
+	![how_to_load_free_of_charge_children_babies_11](https://storage.travelgate.com/kbase/how_to_load_free_of_charge_children_babies_11.jpg)
 
 - **Occupancy 1-3-0**
-	```
-	image
-	``` 
-	```
-	image
-	``` 
-
+![how_to_load_free_of_charge_children_babies_12](https://storage.travelgate.com/kbase/how_to_load_free_of_charge_children_babies_12.jpg)
+![Alt text](image-1.png)
 
  
 :::info

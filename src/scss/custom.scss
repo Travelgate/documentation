@@ -89,24 +89,19 @@ article .graphiql-sidebar {
         color: var(--ifm-code-secondary);
       }
     }
+    //LEVEL 1
     &.theme-doc-sidebar-item-category-level-1 {
       .menu__list-item-collapsible {
         &:hover {
           background-color: var(--ifm-color-primary);
-        }
-        .menu__link {
-          &:hover {
-            color: var(--ifm-code-white);
-          }
+          
         }
         .menu__link[aria-expanded='true'] {
           background-color: var(--ifm-color-primary) !important;
           color: var(--ifm-code-white);
-          &:after{
-            color: var( --ifm-code-white);
-          }
         }
       }
+      //LEVEL 2
       .theme-doc-sidebar-item-link-level-2 {
         .menu__link {
           &--active,
@@ -119,6 +114,62 @@ article .graphiql-sidebar {
         .menu__list-item-collapsible {
           &:hover {
             background-color:rgba(15, 100, 243, 0.20);
+          }
+          .menu__link[aria-expanded='true'] {
+            background-color:rgba(15, 100, 243, 0.20) !important;
+            color: var(--ifm-code-secondary);
+          }
+        }
+        //LEVEL 3
+        .theme-doc-sidebar-item-category-level-3{
+          .menu__list-item-collapsible {
+            &:hover {
+              background-color:rgba(206, 222, 248, 0.50);
+            }
+            .menu__link[aria-expanded='true'] {
+              background-color:rgba(206, 222, 248, 0.50) !important;
+              color: var(--ifm-code-secondary);
+            }
+          }
+          //LEVEL 4
+          .theme-doc-sidebar-item-link-level-4 {
+            .menu__link {
+              &--active,
+              &:hover{
+                background-color:rgba(243, 246, 254, 1);
+              }
+            }
+          }
+          .theme-doc-sidebar-item-category-level-4 {
+            .menu__list-item-collapsible {
+              &:hover {
+                background-color:rgba(243, 246, 254, 1);
+              }
+              .menu__link[aria-expanded='true'] {
+                background-color:rgba(243, 246, 254, 1) !important;
+                color: var(--ifm-code-secondary);
+              }
+            }
+          }
+          //LEVEL 5
+          .theme-doc-sidebar-item-link-level-5 {
+            .menu__link {
+              &--active,
+              &:hover{
+                background-color:rgba(243, 246, 254, 0.8);
+              }
+            }
+          }
+          .theme-doc-sidebar-item-category-level-5 {
+            .menu__list-item-collapsible {
+              &:hover {
+                background-color:rgba(243, 246, 254, 0.8);
+              }
+              .menu__link[aria-expanded='true'] {
+                background-color:rgba(243, 246, 254, 0.8) !important;
+                color: var(--ifm-code-secondary);
+              }
+            }
           }
         }
       }

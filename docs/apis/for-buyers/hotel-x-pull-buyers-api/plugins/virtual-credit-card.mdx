@@ -20,7 +20,7 @@ In order to activate this payment type for your connection or connections, open 
 
 To get started with the VCC plugin, follow these simple steps:
 
-##  1.Create and upload your GenVCC file
+##  1.Create and Upload your GenVCC File
 
 To get started, create your credit card file in the correct format and then upload it to your FTP account. We've provided a template file below ⬇️ to help you with this process. Just click on the file name, add your own rules, save it in CSV format, and then upload it to the corresponding folder in your FTP.
 
@@ -182,7 +182,7 @@ Bear in mind that this file is a collection of rules and we chose in every Book 
     </div>
 </details>
 
-## 2. Execute Virtual Credit Card plugin in your mutation
+## 2. Execute Virtual Credit Card Plugin in your Mutation
 
 ### GenVCC
 
@@ -193,11 +193,11 @@ Once you've uploaded your genvcc file, to use the plugin add the following field
 * **`name`**: "genvcc"
 * **`parameters`**:
 
-| Key            | Value         | Description                                                                    | Default Value (if not sent) | Mandatory |
-|----------------|---------------|--------------------------------------------------------------------------------|-----------------------------|-----------|
-| activationDate | yyyy/MM/dd    | Represents the date when the virtual credit card will be activated             | Same day as the book        | NO        |
-| expirationDate | yyyy/MM/dd    | Represents the date when the virtual credit card will expire                   | One month after check in    | NO        |
-| useGross       | true or false | Allows to choose the origin of the card amount. The option’s gross or the net. | Net option’s value          | NO        |
+| Key              | Value         | Description                                                                    | Default Value (if not sent) | Mandatory |
+|------------------|---------------|--------------------------------------------------------------------------------|-----------------------------|-----------|
+| `activationDate` | yyyy/mm/dd    | Represents the date when the virtual credit card will be activated             | Same day as the book        | NO        |
+| `expirationDate` | yyyy/mm/dd    | Represents the date when the virtual credit card will expire                   | One month after check in    | NO        |
+| `useGross`       | true or false | Allows to choose the origin of the card amount. The option’s gross or the net. | Net option’s value          | NO        |
 
 ```json
 "settings": {
@@ -231,14 +231,11 @@ Once you've uploaded your genvcc file, to use the plugin add the following field
 
 In the case of canvcc, since it is a cancellation, there is no need to upload any file. You just have to indicate it in the request. Please note that the canvcc plugin can only be executed in the `cancel` `mutation`. To successfully execute the canvcc plugin, you will need to create the request with the following variables.
 
-* `step`: `RESPONSE`
-* `type`: `PRE_STEP`
-* `name`: `canvcc`
-* `parameters`:
-
-| Key | Value  | Format    | Description                                               | Default Value    | Mandatory |
-|-----|--------|-----------|-----------------------------------------------------------|------------------|-----------|
-| id  | string | no format | The id of the virtual credit card that you want to cancel | No default value | YES       |
+* **`step`**: `RESPONSE`
+* **`type`**: `PRE_STEP`
+* **`name`**: `canvcc`
+* **`parameters`**:
+    * **`id`**: The id of the virtual credit card that you want to cancel.
 
 ```json
 "settings": {

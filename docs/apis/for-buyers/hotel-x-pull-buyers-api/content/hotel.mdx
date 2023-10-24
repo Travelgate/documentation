@@ -45,11 +45,11 @@ This query offers versatility, with certain fields marked as mandatory (`access`
 * `access`
 
 **Optional criteria**
-* `hotelCodes` (search by hotel)
-* `countries` (search by country)
-* `destinationCodes` (search by destination)
+* `hotelCodes` (Search by hotel)
+* `countries` (Search by country)
+* `destinationCodes` (Search by destination)
 * `ranks`
-* `maxSize` (paginate response)
+* `maxSize` (Paginate response)
 
 
 ### 2. Token
@@ -88,7 +88,6 @@ You will obtain a response with 5 hotels per page:
 		"hotelX": {
 			"hotels": {
 				"token": "FGluY2x1ZGVfY29udGV4dF91dWlkDnF1ZXJ5VGhlbkZldGNoAhZMN2w2SlZYaVNaaXhYeXQwdm1GWjlBAAAAAAV14HUWeXZ3cU02MkpSbTY3WkF6QzJraWJWZxY2NDJ0Uk1EUFFkZXZZTS1ENDVTd2tBAAAAAAZuWSgWdFZSMzRYUVBUWC1nZ1ltWVRCTjVMZw==",
-				"count": 14,
 				"edges": [
 					{
 						"..."
@@ -141,7 +140,7 @@ Take a look at the [API Playground](/playground/) to see all the filters.
 :::
 
 
-### Requests examples
+### Requests Examples
 
 #### Search for the complete hotel list from a supplier
 
@@ -186,11 +185,32 @@ Hotel-X supports all languages, but receiving hotel descriptions in one or anoth
 
 :::
 
-### Know the total amount of properties
+### Know the Total Amount of Properties
 
 To obtain the total number of properties in the list, you can easily add the `count` field to your Hotels Query.
 
-### Receive GIATA codes
+**Request**
+
+```graphql
+query {
+    hotelX {
+    hotels(criteria: {access: "2"}) {
+      count
+	  edges {
+```
+
+**Response**
+
+```graphql
+{
+	"data": {
+		"hotelX": {
+			"hotels": {
+				"count": 16,
+				"edges": [
+```
+
+### Receive GIATA Codes
 
 Hotel-X API fully supports GIATA codes in Hotel-X Hotels Query response. Note that GIATA codes are only available at a hotel level.
 

@@ -28,13 +28,11 @@ So, let's establish that connection and start harnessing the potential of the Ma
 
 1. **Latest Status of my Reported Issues🌟**  
 Overview of the status of the most recent issues raised on your side in our Platform:
-
-	![dashboard_2](https://storage.travelgate.com/kbase/dashboard_2.jpg)
+![dashboard_2](https://storage.travelgate.com/kbase/dashboard_2.jpg)
 
 1. **Smart Traffic APPs🌟**  
 TravelgateX Smart Traffic APPs personalized recommendations to optimize your traffic and improve your overall performance in our Platform:
-
-	![dashboard_3](https://storage.travelgate.com/kbase/dashboard_3.jpg)
+![dashboard_3](https://storage.travelgate.com/kbase/dashboard_3.jpg)
 
 1. **Additional Performance Reports🌟**
 	- **Top Booked Countries**: most booked countries and their market share.

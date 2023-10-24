@@ -117,8 +117,7 @@ Please note that **the queryable fields available by a Seller may vary between S
 - **"value"** indicates if that Seller requires or allows that specific field.
 - **"reviewDate"** indicates the last time this value was checked against the Seller.
 
-::: info
-**If you are not using Hotel-X bookingID** input, you should indicate your accessCode in the HotelCriteriaBookingInput. Language is optional, but we recommend adding this information for optimal results.
-:::
 
-_Don't forget to check our [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/methods/reservationmanagement/booklist/) and [API Schema](https://api.travelgatex.com/) for further information!🚀_
+::info
+*If you are not using Hotel-X bookingID input, you should indicate your accessCode in the HotelCriteriaBookingInput. Language is optional, but we recommend adding this information for optimal results.
+:::

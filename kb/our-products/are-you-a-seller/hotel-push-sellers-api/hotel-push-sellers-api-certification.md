@@ -140,7 +140,7 @@ Congratulations on your certification! Let's explore the next steps you should t
 1. Perform some final testing before going live.
 1. Once you've confirmed that everything is working properly, then you are ready to go live!
 
- 
-::: info
+
+:::info
 Don't forget to check our [Inventory Documentation](https://docs.travelgatex.com/inventory-x/extranet/) and [YouTube video tutorials](https://knowledge.travelgate.com/inventory-set-up) for further information on our Inventory Extranet!
 :::

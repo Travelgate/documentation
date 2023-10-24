@@ -94,7 +94,9 @@ article .graphiql-sidebar {
       .menu__list-item-collapsible {
         &:hover {
           background-color: var(--ifm-color-primary);
-          
+          .menu__link{
+            color: #FFFFFF;
+          }
         }
         .menu__link[aria-expanded='true'] {
           background-color: var(--ifm-color-primary) !important;
@@ -114,6 +116,9 @@ article .graphiql-sidebar {
         .menu__list-item-collapsible {
           &:hover {
             background-color:rgba(15, 100, 243, 0.20);
+            .menu__link{
+              color: var(--ifm-code-secondary) !important;
+            }
           }
           .menu__link[aria-expanded='true'] {
             background-color:rgba(15, 100, 243, 0.20) !important;
@@ -167,6 +172,26 @@ article .graphiql-sidebar {
               }
               .menu__link[aria-expanded='true'] {
                 background-color:rgba(243, 246, 254, 0.8) !important;
+                color: var(--ifm-code-secondary);
+              }
+            }
+          }
+          //LEVEL 6
+          .theme-doc-sidebar-item-link-level-6 {
+            .menu__link {
+              &--active,
+              &:hover{
+                background-color:rgba(243, 246, 254, 0.4);
+              }
+            }
+          }
+          .theme-doc-sidebar-item-category-level-6 {
+            .menu__list-item-collapsible {
+              &:hover {
+                background-color:rgba(243, 246, 254, 0.4);
+              }
+              .menu__link[aria-expanded='true'] {
+                background-color:rgba(243, 246, 254, 0.4) !important;
                 color: var(--ifm-code-secondary);
               }
             }

@@ -12,4 +12,6 @@ For Buyers, integrating with our API means you get a standardized feed from all 
 
 Sellers, get ready to expand your reach! Our Network offers unmatched distribution options. Whether you're a Tour Operator, OTA, Bedbank, or DMC, TravelgateX provides a platform where you can sell your products and even cross-sell to a diverse pool of potential customers. The opportunities are endless in our bustling Marketplace.
 
-Tech Platforms, such as Channel Managers,PMS, CRS, Tour Operation Platforms and other tech providers can benefit from our APIs not only to expand their offerings, but also to reach an unprecedented number of Partners and generate more business to boost their revenue. Please check our Reseller and Affiliate programs to learn more about how to make money using our APIs.
+Tech Platforms, such as Channel Managers, PMS, CRS, Tour Operation Platforms and other tech providers can benefit from our APIs not only to expand their offerings, but also to reach an unprecedented number of Partners and generate more business to boost their revenue. Please check our Reseller and Affiliate programs to learn more about how to make money using our APIs.
+
+![Marketplace](../../static/img/docs/marketplace_TGX.svg)

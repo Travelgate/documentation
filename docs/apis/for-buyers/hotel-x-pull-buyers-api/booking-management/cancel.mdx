@@ -102,17 +102,17 @@ To specify your cancel settings you need to use the input `HotelSettingsInput` i
 **Mandatory Settings:**
 * `client`
 * `context`
-* `timeout` (timeout in milliseconds for supplier connections. Applied to all suppliers; won't close client connection if exceeded)
+* `timeout` (Timeout in milliseconds for supplier connections. Applied to all suppliers; won't close client connection if exceeded)
 * `businessRules`
 
 **Optional Settings:**
 * `group`
 * `auditTransactions` 
-* `suppliers` (each one contains its own code, settings and accesses)
+* `suppliers` (Each one contains its own code, settings and accesses)
 * `plugins`
-* `testMode` (this flag allows only the accesses checked as test)
-* `clientTokens` (used to identify the origin of the request, this is only used in plugins)
-* `commitRequired` (indicates if the book will be confirmed in 1 or 2 steps. It only should be used in Book)
+* `testMode` (This flag allows only the accesses checked as test)
+* `clientTokens` (Used to identify the origin of the request, this is only used in plugins)
+* `commitRequired` (Indicates if the book will be confirmed in 1 or 2 steps. It only should be used in Book)
 
 :::caution Remember
 Keep in mind that if you leave some of the fields in the `settings` inputs unspecified, we will use the values from your default settings. You can review and control your default API settings by visiting the [API Settings section](https://app.travelgatex.com/connections/settings) on our website.
@@ -142,10 +142,10 @@ Once a Cancel method is run, our API response will provide its cancel status. Th
 
 | Status         | Description                                                                                                                                                      |
 |----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| CANCELLED      | The reservation is cancelled.                                                                                                                                    |
-| OK             | The reservation status is OK, is not cancelled.
-| ON_REQUEST     | The reservation was completed but the product is still not available by the Seller, so the reservation goes into a waiting list. It is the Buyer’s responsibility to check if the booking is OK. |
-| UNKNOWN        | The cancellation process through TravelgateX was completed but due to a supplier error or a timeout, the reservation status is unknown. It is the Buyer’s responsibility to check if the booking is cancelled.   
+| `CANCELLED`    | The reservation is cancelled.                                                                                                                                    |
+| `OK`           | The reservation status is OK, is not cancelled.
+| `ON_REQUEST`   | The reservation was completed but the product is still not available by the Seller, so the reservation goes into a waiting list. It is the Buyer’s responsibility to check if the booking is OK. |
+| `UNKNOWN`      | The cancellation process through TravelgateX was completed but due to a supplier error or a timeout, the reservation status is unknown. It is the Buyer’s responsibility to check if the booking is cancelled.   
 
 :::danger Important
 
@@ -153,14 +153,14 @@ If you receive any of the "common errors" or a status other than "CANCELLED", it
 
 :::
 
-### Cancel penalty
+### Cancel Penalty
 
 Cancellation always takes into account the day and time of the destination in order to calculate what cancellation policy should be applied. UTC time.
 
 
 
 
-## Frequently asked questions
+## Frequently Asked Questions
 
 <details>
     <summary>How are cancellation costs calculated and displayed?</summary>

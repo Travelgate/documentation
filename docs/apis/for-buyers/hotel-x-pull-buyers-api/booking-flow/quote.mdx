@@ -6,7 +6,7 @@ import {quoteQuickStartQuery, quoteQuickStartVariables} from "../../../../../src
 
 # Quote
 
-The Quote operation evaluates the rate before booking, providing the same information as the Search response for a hotel rate, including up-to-date pricing. Additionally, it offers further details such as rate breakdown and cancellation policies. The returned fields include:
+Quote operation evaluates the rate before booking, providing the same information as the Search response for a hotel rate, including up-to-date pricing. Additionally, it offers further details such as rate breakdown and cancellation policies. The returned fields include:
 
 * `status`
 * `price`
@@ -48,7 +48,7 @@ To specify your quote criteria you need to use the input `HotelCriteriaQuoteInpu
 ```
 
 **Mandatory criteria:**
-* `optionRefId` (identifier of the option chosen in Search)
+* `optionRefId` (Identifier of the option chosen in Search)
 
 **Optional criteria:**
 * `language`
@@ -104,14 +104,14 @@ To specify your quote settings you need to use the input `HotelSettingsInput` in
 
 As mentioned earlier, the quote response will provide you with updated information about the option you selected during the search step. In this quote response, **there are some essential details that you should carefully review and consider** when providing information to your final customers:
 
-* **Cancellation Policies:** Within the cancelPolicy structure response, you will find a "refundable" field. If this field is marked as "false," it means that the room has a 100% cancellation cost, making it non-refundable.
+* **Cancellation Policies:** Within the `cancelPolicy` structure response, you will find a `refundable` field. If this field is marked as "false," it means that the room has a 100% cancellation cost, making it non-refundable.
 
 * **Remarks:** Pay attention to any remarks or additional notes provided in the response.
 
 * **Taxes:** Ensure you are aware of any applicable taxes associated with the selected option.
 
 
-## Frequently asked questions
+## Frequently Asked Questions
 
 <details>
     <summary>Do I have to perform a Quote Query in order to Book an option?</summary>

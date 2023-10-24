@@ -8,7 +8,7 @@ The Currency Converter plugin enables the application of currency conversion to 
 
 To get started with the Currency Converter plugin, follow these simple steps:
 
-##  1.Create and upload your Currency Converter file
+##  1.Create and Upload your Currency Converter File
 
 To get started, create your currency converter file in the correct format and then upload it to your FTP account. We've provided a template file below ⬇️ to help you with this process. Just click on the file name, add your own rules, save it in CSV format, and then upload it to the corresponding folder in your FTP.
 
@@ -24,7 +24,7 @@ To get started, create your currency converter file in the correct format and th
 ```
 
 
-### File format specification
+### File Format Specification
 
 * **File Name:** currency_map.csv
 * **Directory:** F0_0000/HotelX0000/BusinessRules
@@ -50,7 +50,7 @@ The rate with value 1.00 is the base currency. Other rates are calculated from i
 </details>
 
 
-## 2. Execute Currency Converter plugin in your query
+## 2. Execute Currency Converter Plugin in your Query
 
 Once you've uploaded your currency converter file, to use the plugin add the following field to the `settings` node of your request. Note that currency converter plugin can just be executed in search query. In order to successfully execute the preference plugin, you will need to create the request with the following variables.
 
@@ -58,11 +58,8 @@ Once you've uploaded your currency converter file, to use the plugin add the fol
 * **`type`**: "PRE_STEP"
 * **`name`**: "currency_exchange"
 * **`parameters`**:
-
-| Key      | Value   | Format     | Description                                                                                                        |
-|----------|---------|------------|--------------------------------------------------------------------------------------------------------------------|
-| currency | string  | ISO 4217   | The currency to which you want to convert                                                                          |
-| exclude  | boolean | true/false | Determinates if the options on which the currency change cannot be applied (no currency found in ftp) are excluded |
+    * **`currency`**: The currency to which you want to convert, ISO 4217.
+	* **`exclude`**: True or false. Determinates if the options on which the currency change cannot be applied (no currency found in ftp) are excluded.
 
 ```json
 "settings": {

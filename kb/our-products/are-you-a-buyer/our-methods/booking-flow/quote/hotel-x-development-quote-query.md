@@ -34,7 +34,7 @@ image
 ```
 
 
->**Learn more about our Hotel-X Quote Query on our [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/methods/bookingflow/quote/) and [Playground](https://api.travelgatex.com/playground)🚀**
+>Learn more about our Hotel-X Quote Query on our [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/methods/bookingflow/quote/) and [Playground](https://api.travelgatex.com/playground)🚀
 
 
  

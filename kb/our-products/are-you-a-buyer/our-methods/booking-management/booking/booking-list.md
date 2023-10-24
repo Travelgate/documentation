@@ -5,7 +5,7 @@ sidebar_position: 3
 # Booking Query: Booking List
 
 ### How can I retrieve a list of all bookings made within a specific time frame?💡
-In order to obtain a list of all the reservations made within a specific type frame you should perform the Booking query by **"typeSearch" "DATES"**, specify if your **"dateType"** is either "**BOOKING**" (booking date) or "**ARRIVAL**" (check-in date) and the "start" and "end" dates of the query (yyyy-MM-dd).
+In order to obtain a list of all the reservations made within a specific type frame you should perform the Booking query by "**typeSearch" "DATES"**, specify if your "dateType"** is either "BOOKING* (booking date) or "ARRIVAL" (check-in date) and the "start" and "end" dates of the query (yyyy-MM-dd).
 
 ```
 image

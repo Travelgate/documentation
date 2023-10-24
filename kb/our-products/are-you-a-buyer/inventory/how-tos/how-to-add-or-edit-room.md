@@ -38,6 +38,6 @@ To create a new room type, simply provide a code and description for your own re
 If you wish to replace the current room type with another one that is not yet in your room master list, you can create a new room type. Simply provide a code and description for your own reference, and save it. This newly created room type will then be added to the room master list and will be available as an option in the "All room types" section.
  
 :::info
-Check our full [Documentation](https://docs.travelgatex.com/inventory-x/extranet/) to understand how the Inventory extranet works in detail and find out all its functionalities and tools🚀
+Check our full [Documentation](https://docs.travelgatex.com/inventory-x/extranet/) to understand how the Inventory extranet works in detail and find out all its functionalities and tools
 :::
  

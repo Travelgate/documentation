@@ -98,10 +98,9 @@ Now, all that's left is to request the activation of the Buyers you have an agre
 
 1. In order to request the activation you should first **retrieve the user and the access token from our Distribution Extranet**:
 	- **User:** It is the ID of the Agency you created for the Buyer you want to connect:
-
+	
 		![distribution_setup_3](https://storage.travelgate.com/kbase/distribution_setup_3.jpg)
-
-
+		
 		In case of multiple accesses for the same Buyer (e.g. B2B/B2C), you should repeat this process for each of them.
 
 	- **Access Token:** Automatically generated once you create the Agency, it can be obtained by clicking in the "Token" button:

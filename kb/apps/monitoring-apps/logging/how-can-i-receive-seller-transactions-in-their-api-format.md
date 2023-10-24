@@ -13,11 +13,11 @@ Even though it is a great feature to add to all your Booking Flow and Booking Ma
 1. **Search:** Make sure you don't set the "auditTransactions" value to "true" by default, otherwise the responses will be too heavy and it will affect the API performance.
 1. **Other methods:** You can set it to "true" in order to receive the raw request and response to the Seller and, if an error is returned, know where it is coming from.
 
-:::warning Exception
+:::info
 If you encounter an error, you have the option to **temporarily** set the "auditTransactions" value to "true" in Search. This will provide you with additional information regarding the Seller's response.
 :::
 
-### How can I set the "auditTransactions" field in my Hotel-X Pull Buyers API request?🚀
+### How can I set the "auditTransactions" field in my Hotel-X Pull Buyers API request?
 In order to set the "auditTransactions" field in your Hotel-X Search request, you should configure both your Query and Query variables according to the following information:
 
 **Hotel-X Query:**  
@@ -57,7 +57,7 @@ You should add the "auditTransactions" field to your Query settings as follows:
 ...
 ```
 
-:::warning Important:
+:::note Important:
 Please note that in order to receive the transactions with the Seller the auditTransactions information should be **declared both in your Query and Query variables**, otherwise, these transactions won't be returned.
 :::
 

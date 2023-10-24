@@ -29,9 +29,8 @@ Sellers will also receive an email requesting their collaboration to resolve any
 It's important to note that when an access is "Not Working", the "Edit access" feature remains blocked while our Connectivity Team checks the connection. To avoid creating duplicate tickets on our Platform, **we strongly advise against requesting the connection again**. It's best to wait until our Connectivity Team contacts you and asks for assistance. 
  
 
-::: note
+:::note
 If you have any activation-related updates or details to share, please avoid creating additional tickets for our Customer Care team. Instead, we kindly ask that you reply to our Connectivity Team email thread.  
-
 We appreciate your cooperation and thank you for helping us streamline our communication process!
 :::
  

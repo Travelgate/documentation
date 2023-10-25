@@ -46,9 +46,9 @@ As quick intro, let’s consider that in each API Search response, we return the
 Every option has a price and every price indicates:
 
 1. Currency
-1. Amount (net and gross in [Hotel-X Pull Buyers API](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/))
+1. Amount (net and gross in [Hotel-X Pull Buyers API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart))
 1. Binding
-1. In the case of TravelgateX [Legacy Pull Buyers API](https://docs.travelgatex.com/connectiontypesbuyers/legacy/), we also provide the commission.
+1. In the case of TravelgateX [Legacy Pull Buyers API](/docs/apis/for-buyers/legacy-pull-buyers-api/overview), we also provide the commission.
 1. Markup applied over the supplier price, whenever provided.
 ### What is a Binding price?
 When a price is tagged as "binding", it means it’s mandatory to sell over the amount indicated, gross or Minimum Selling Price if informed. It’s also called as mandatory price or PVP in Spain. 

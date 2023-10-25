@@ -81,6 +81,6 @@ The following price calculation logic will be applied:
 
  
 :::info
-Discover more by diving into our Inventory [Documentation](https://docs.travelgatex.com/inventory-x/) 🚀
+Discover more by diving into our Inventory [Documentation](/docs/apps/inventory/extranet/overview) 🚀
 :::
  

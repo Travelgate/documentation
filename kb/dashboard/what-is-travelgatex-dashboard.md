@@ -38,7 +38,7 @@ TravelgateX Smart Traffic APPs personalized recommendations to optimize your tra
 	- **Top Booked Countries**: most booked countries and their market share.
 	- **Top Source Markets**: top source markets and their market share.
 	- **Download your Latest Invoices**
-	- **Recommended Partners for You**: [suggestions](https://knowledge.travelgate.com/finding-new-partners) based on the account profile you are currently browsing on our Dashboard (Buyer/Seller).
+	- **Recommended Partners for You**: [suggestions](/kb/getting-started-with-travelgate/about-our-network) based on the account profile you are currently browsing on our Dashboard (Buyer/Seller).
 	- **Connections with the Highest Booking Volume**: based on the sum of total bookings per connection and their corresponding TTV.
 	- **Worst L2B Connections**: connections with the worst L2B and their corresponding search requests, bookings and cancellations.
 	- **Worst Availability Ratio Connections**: based on the non-availability response and their corresponding search requests.

@@ -9,13 +9,13 @@ Let's first review some general concepts about TravelgateX Activations. This wil
 
 If you're new to the process, we recommend checking out the following two articles:
 
-1. [Quick guide to Auto-Activations](https://knowledge.travelgate.com/auto-activations-quickguide)
-1. [My Connections](https://knowledge.travelgate.com/my-connections)  
+1. [Quick guide to Auto-Activations](/kb/connections/my-connections/guick-guide-to-auto-activations)
+1. [My Connections](/kb/connections/my-connections/)  
 
 1. Once you've read those, come back here and we'll jump right in!
 
 ### What is the Activation Testing Phase?🚀
-When activating a connection, whether it's done automatically or manually, a testing phase is necessary to ensure the new credentials functioning properly. This involves going through a Booking Flow (using the [Search](https://knowledge.travelgate.com/hotel-x-development-search-query) and [Quote](https://knowledge.travelgate.com/hotel-x-development-quote-query) queries) and downloading [Static Content](https://knowledge.travelgate.com/buying-on-travelgatex#hotel-x-development-static-content) information such as hotels and destinations. If everything checks out, the connection will be set to "**Working**" and the requestor will be notified. 
+When activating a connection, whether it's done automatically or manually, a testing phase is necessary to ensure the new credentials functioning properly. This involves going through a Booking Flow (using the [Search](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/search) and [Quote](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/quote) queries) and downloading [Static Content](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/overview) information such as hotels and destinations. If everything checks out, the connection will be set to "**Working**" and the requestor will be notified. 
 
 ### What happens if there are any contact mismatches?🔎
 In the event that there are contact mismatches between the information provided in the Connection Form and our database, we may need the Partner to share the connection details with you. 

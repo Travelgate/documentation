@@ -8,7 +8,7 @@ Consolidate contracted products from different Channel Managers into your own sy
 
 ### What is Channel-X?💡
 
-Channel-X extracts the product loaded by Channel Managers into our [Inventory](https://knowledge.travelgate.com/channel-managers-benefits) tool and pushes it directly into the system of a TravelgateX Partner, normally an OTA (Buyer). 
+Channel-X extracts the product loaded by Channel Managers into our [Inventory](/kb/our-products/are-you-a-buyer/inventory/what-is-inventory) tool and pushes it directly into the system of a TravelgateX Partner, normally an OTA (Buyer). 
 
 Thanks to Channel-X, you can now choose when and what product to refresh. It's a fully customizable and efficient tool in keeping your prices, availability and inventory up to date - the perfect middle-man between your system and the Channel Managers you are connected with! 
 
@@ -33,5 +33,5 @@ In order to activate and work via Channel-X, you should take into account the fo
 
 
 :::tip
-For more information on Channel-X functionalities and API specifications, don't forget to check out our [Documentation](https://knowledge.travelgate.com/what-is-channel-x)!🚀
+For more information on Channel-X functionalities and API specifications, don't forget to check out our [Documentation](/docs/apis/for-buyers/channel-x-push-buyers-api/quickstart)!🚀
 :::

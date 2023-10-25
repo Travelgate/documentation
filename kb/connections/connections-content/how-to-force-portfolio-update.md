@@ -9,7 +9,7 @@ In order to force the update of your portfolio, you should simply follow the ste
 
 1. Log onto our [website](https://www.travelgatex.com/).
 
-1. Navigate to Connections > **[Connections Content](https://knowledge.travelgate.com/connections-content)**.
+1. Navigate to Connections > **[Connections Content](/kb/connections/connections-content/how-to-check-my-connections-content)**.
 
 	![force_portfolio_1](https://storage.travelgate.com/kbase/force_portfolio_update_1.jpg)
 

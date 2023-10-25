@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 11
+sidebar_position: 12
 ---
 
 # 207 error - Request XML not accepted by Supplier

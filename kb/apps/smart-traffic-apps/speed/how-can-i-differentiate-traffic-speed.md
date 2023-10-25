@@ -16,6 +16,6 @@ There are **4 types** of traffic in TravelgateX: Basic, Speed, Optimized and Sch
 	- **Scheduler:** When the time it takes to get all the static information from a Seller is too high, TravelgateX downloads it asynchronously in order to return it to the Buyers in a shorter, more acceptable time period.
 
 :::note
-You can also target your Search by Traffic Type in our [Stats APP](https://knowledge.travelgate.com/stats-app).
+You can also target your Search by Traffic Type in our [Stats APP](/kb/apps/monitoring-apps/stats/stats-connectivity-dashboard).
 :::
  

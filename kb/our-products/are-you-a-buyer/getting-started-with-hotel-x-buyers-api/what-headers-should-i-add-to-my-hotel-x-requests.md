@@ -37,5 +37,5 @@ To ensure optimal performance when expecting more than 5,000 options per search 
 Sit back and enjoy the enhanced performance!
 
 :::tip
-Don't forget to explore our [Hotel-X API Schema and Playground](https://api.travelgatex.com/playground) for comprehensive details and additional Documentation!🚀
+Don't forget to explore our [Playground](/playground) for comprehensive details and additional Documentation!🚀
 :::

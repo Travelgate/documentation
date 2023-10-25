@@ -30,9 +30,7 @@ In order to proceed with the certification we will need:
 
 - A cURL request and response of each of the Booking Flow methods and for all the cases detailed below:
 
-    ```
-    image
-    ```
+    ![hotelx_booking_flow_certification_1](https://storage.travelgate.com/kbase/hotelx_booking_flow_certification_1.jpg)
 
 
 - The resulting Hotel-X response interpretation screenshots of your system so we can ensure you are showing the information correctly. 

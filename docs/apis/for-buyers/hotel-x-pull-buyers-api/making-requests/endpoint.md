@@ -19,3 +19,5 @@ If your servers are situated in **China**, we've got you covered to enhance your
 https://api-cn.travelgatex.com
 ```
 :::
+
+[playground](/docs/apis/for-buyers/hotel-x-pull-buyers-api/making-requests/endpoint)

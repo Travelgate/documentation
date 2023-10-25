@@ -4,14 +4,14 @@ sidebar_position: 2
 
 # Hotel Buyers API (Legacy) - Cancel Policies
 
-We have updated our [Quote (Valuation)](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/methods/bookingflow/quote/) response in order to provide more precise information regarding cancellationPolicies.
+We have updated our [Quote (Valuation)](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/quote) response in order to provide more precise information regarding cancellationPolicies.
 
 - **TIMEZONE:**  
     We have added the new field “Timezone” in our Metadata method:
 
     ![hotel_buyers_api_cancelpolicies1](https://storage.travelgate.com/kbase/hotel_buyers_api_cancelpolicies1.jpg)
 
-    Timezone (see the [Metadata](https://docs.travelgatex.com/connectiontypesbuyers/legacy/methods/messages/metadata/) docs to check all possible values) will specify the timezone in UTC in which the cancellation policies are located.
+    Timezone (see the [Metadata](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata) docs to check all possible values) will specify the timezone in UTC in which the cancellation policies are located.
 
 
 :::info
@@ -19,7 +19,7 @@ If you have any doubts about the timezone returned by your Seller (for example, 
 :::
 
 - **DEADLINE:**  
-    Additionally, we have added the "Deadline" field on [CancellationPolicies](https://docs.travelgatex.com/connectiontypesbuyers/legacy/methods/messages/valuation/#valuationrs-example) returned in Quote/Valuation response, in order to provide more precise information and avoid losing competitiveness.
+    Additionally, we have added the "Deadline" field on [CancellationPolicies](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/quote) returned in Quote/Valuation response, in order to provide more precise information and avoid losing competitiveness.
 
     This field is not subjected to any ambiguity as it is a date in **UTC-0 Standard**. The conversion of the date is made according to the value specified on the Metadata TimeZone.
 

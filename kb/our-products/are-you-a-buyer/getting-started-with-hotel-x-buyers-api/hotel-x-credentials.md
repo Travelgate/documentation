@@ -26,7 +26,7 @@ For **Hotel-X implementation and testing**, we recommend using the following acc
 * Smyrooms Test: Access 5647 with context LOGITEST
 
 **How can I obtain an access code from an actual Seller?**
-To get your access code, simply establish a commercial agreement with the desired Partner and request activation through our website using the [Auto-Activations Form](https://knowledge.travelgate.com/auto-activations-quickguide).
+To get your access code, simply establish a commercial agreement with the desired Partner and request activation through our website using the [Auto-Activations Form](/kb/connections/my-connections/auto-activations-process).
 
 ::: note
 It is advisable to avoid making live bookings during the Hotel-X implementation process until your development has been certified by TravelgateX.
@@ -36,13 +36,13 @@ It is advisable to avoid making live bookings during the Hotel-X implementation 
 
 A client refers to a Party that buys accommodation services through the Hotel-X API implementation. Client codes remain consistent throughout all TravelgateX implementations and they are used to identify the business that is making the request and to confirm that they have a configuration assigned to it.
 
-It is possible to have multiple client codes, for instance, in order to differentiate traffic between B2B and B2C credentials (e.g., client_b2b, client_b2c). As all accesses are compatible with any of your client codes, it is important to use the appropriate one according to your needs. You can find this information in your [Connections Settings](https://knowledge.travelgate.com/connections-settings).
+It is possible to have multiple client codes, for instance, in order to differentiate traffic between B2B and B2C credentials (e.g., client_b2b, client_b2c). As all accesses are compatible with any of your client codes, it is important to use the appropriate one according to your needs. You can find this information in your [Connections Settings](/kb/connections/api-settings/connections-settings).
 
 ### Context☑️
 
 Context refers to the content codes utilized by both Buyers and Sellers. Each Seller has its own unique context, which may differ between test and production environments. The context includes specific codes for hotels, boards, rooms, etc.
 
-Buyers have the flexibility to either use their own codes or choose content providers. In either case, they can create their own context using our [Mapping Plugin](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/plugins/mapping/). This allows Buyers to align their own context with the Suppliers' context. 
+Buyers have the flexibility to either use their own codes or choose content providers. In either case, they can create their own context using our [Mapping Plugin](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping). This allows Buyers to align their own context with the Suppliers' context. 
 
 To access the context, simply navigate to the Connections menu and click on "My Connections".
 ![hotelx_credentials_2](https://storage.travelgate.com/kbase/hotelx_credentials_2.jpg)
@@ -57,5 +57,5 @@ When you activate a new Seller, the context information will be provided to you 
 The distinction between the two is that an access holds your credentials for a specific connection, while a context is the internal TravelgateX code required to request either the original supplier hotel codes or your own hotel codes (previously mapped and uploaded to our FTP).
 
 :::info 
-Feel free to check our [Hotel-X Buyers API Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/concepts/basicconcepts/supplier-access-client-context/) for additional information on Hotel-X credentials.
+Feel free to check our [Hotel-X Buyers API Documentation](/docs/get-started/key-concepts) for additional information on Hotel-X credentials.
 :::

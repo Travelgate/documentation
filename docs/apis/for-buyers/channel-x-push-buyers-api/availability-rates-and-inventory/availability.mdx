@@ -50,7 +50,7 @@ The `HotelAvailNotif` message contains information about rate availability and a
 
 ## Response
 
-After each request, a response should be provided from the Buyer's side. If a `HotelAvailNotif` request is received, a corresponding `HotelAvailNotif` response should be sent. There are two response options, **success** or **error**.
+After each request, a response should be provided from your side. If a `HotelAvailNotif` request is received, a corresponding `HotelAvailNotif` response should be sent. There are two response options, **success** or **error**.
 
 :::caution
 
@@ -144,7 +144,12 @@ Our system has a timeout of 5000ms. If no response occurs within this timeframe,
 <details>
     <summary>What does LengthsOfStay ArrivalDateBased mean? What’s different between the true and false values?</summary>
     <div>
-        <div>If ArrivalDateBase is set to true, it checks whether the Min and Max LengthsOfStay conditions are met on the check-in day. If ArrivalDateBase is set to false, it checks if the Min and Max LengthsOfStay conditions are met for all the days you are requesting, meaning it ensures that these conditions are met for each day of your stay.</div>
+        <div>
+		    <ul>
+                <li>If ArrivalDateBase is set to <b>true,</b> it checks whether the Min and Max LengthsOfStay conditions are met on the check-in day.</li>
+                <li>If ArrivalDateBase is set to <b>false,</b> it checks if the Min and Max LengthsOfStay conditions are met for all the days you are requesting, meaning it ensures that these conditions are met for each of the days of your stay.</li>
+            </ul>
+		</div>
     </div>
 </details>
 

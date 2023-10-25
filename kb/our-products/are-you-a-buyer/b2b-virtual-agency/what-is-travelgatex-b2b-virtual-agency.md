@@ -43,11 +43,10 @@ sidebar_position: 1
 
 	![b2b_virtual_agency_8](https://storage.travelgate.com/kbase/b2b_virtual_agency_8.jpg)
 
-
 	![b2b_virtual_agency_9](https://storage.travelgate.com/kbase/b2b_virtual_agency_9.jpg)
 
 	![b2b_virtual_agency_10](https://storage.travelgate.com/kbase/b2b_virtual_agency_10.jpg)
 
-:::note
+:::tip
 Enjoy a seamless booking experience with the TravelgateX B2B Reservation Tool, where simplicity and convenience go hand in hand! 🏨
 :::

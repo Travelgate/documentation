@@ -10,7 +10,7 @@ To maintain transparency, there are no TravelgateX hotel codes. Instead, we alwa
 
 When a Seller returns the same hotel id for different properties, we concatenate those hotel ids with their destination code in order to make them unique. That will be the only exception where we modify the Seller information. In that case, the **hotelCode** will be the one returned through our API (concatenated if needed) and the **hotelCodeSupplier** will be the native code of the supplier.
 
-:::warning
+:::info Important:
 You should always map the "hotelCode" since it will be the one used in TravelgateX methods.
 :::
 

@@ -37,7 +37,7 @@ We've also added a hotel, so you can test the implemented methods with it:
 	On average, the Sellers developing Hotel Push Sellers API spend approximately **9 days** in this phase.
 
 	This is the phase where the Sellers needs to implement HotelRatePlanInventoryRetrieve messages to retrieve the hotelier inventory and map it into their system. Optionally, Sellers can set up the product using HotelRatePlanInventoryNotif messages.
-	
+
 
 	:::info
 	Further information on our Hotel Push Sellers [API Documentation](https://docs.travelgatex.com/inventory-x/api-reference/messages/set-up/).
@@ -53,7 +53,7 @@ We've also added a hotel, so you can test the implemented methods with it:
 	The product upload phase takes, on average, **14 days** tour our Sellers.
 
 3. **The Booking Management Phase**  
-	In this final phase providers can receive an instant API notification from TGX through HotelResNotif message (for bookings) and CancelNotif message (for cancellations). If the Seller doesn’t allow Push notifications to their system, it is possible to implement HotelResRetrieve messages in order to obtain a list of bookings from the Hotel Push Sellers API system.
+	In this final phase providers can receive an instant API notification from TGX through HotelResNotif message (for bookings) and CancelNotif message (for cancellations). If the Seller doesnï¿½t allow Push notifications to their system, it is possible to implement HotelResRetrieve messages in order to obtain a list of bookings from the Hotel Push Sellers API system.
 
 	:::info
 	Further information on our Hotel Push Sellers [API Documentation](https://docs.travelgatex.com/inventory-x/api-reference/messages/booking-flow/). 

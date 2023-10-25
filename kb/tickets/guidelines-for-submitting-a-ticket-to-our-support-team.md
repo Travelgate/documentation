@@ -25,7 +25,3 @@ If you're reporting an issue, please provide the following details:
 - We would greatly appreciate any **additional snapshots or information** you can provide. Your contribution is highly valued.
 ### API Updates by Sellers🚀
 If you're a Seller and need to inform us about an API update (minor API update/maintenance API update), please make sure to provide your updated API Documentation for thorough analysis.
-
-
->**Thank you for following these tips! By doing so, you're helping our Support Team manage your issues faster and more effectively!🌟**
-

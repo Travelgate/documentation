@@ -201,7 +201,106 @@ export const searchQuickStartVariables =
 			"1"
 		],
 		"currency": "EUR",
-		"market": "ES",
+		"markets": [
+			"ES"
+		],
+		"language": "es",
+		"nationality": "ES"
+	},
+	"settings": {
+		"client": "client_demo",
+		"context": "HOTELTEST",
+		"testMode": true,
+		"timeout": 25000
+	},
+	"filterSearch": {
+		"access": {
+			"includes": [
+				"2"
+			]
+		}
+	}
+}`
+
+
+export const searchTwoRoomsVariables = 
+`{
+	"criteriaSearch": {
+		"checkIn": "2024-10-28",
+		"checkOut": "2024-10-29",
+		"occupancies": [
+			{
+				"paxes": [
+					{
+						"age": 30
+					},
+					{
+						"age": 30
+					}
+				]
+			},
+			{
+				"paxes": [
+					{
+						"age": 30
+					},
+					{
+						"age": 8
+					}
+				]
+			}
+		],
+		"hotels": [
+			"1"
+		],
+		"currency": "EUR",
+		"markets": [
+			"ES"
+		],
+		"language": "es",
+		"nationality": "ES"
+	},
+	"settings": {
+		"client": "client_demo",
+		"context": "HOTELTEST",
+		"testMode": true,
+		"timeout": 25000
+	},
+	"filterSearch": {
+		"access": {
+			"includes": [
+				"2"
+			]
+		}
+	}
+}`
+
+
+export const searchMultipleHotelsVariables = 
+`{
+	"criteriaSearch": {
+		"checkIn": "2024-10-28",
+		"checkOut": "2024-10-29",
+		"occupancies": [
+			{
+				"paxes": [
+					{
+						"age": 30
+					},
+					{
+						"age": 30
+					}
+				]
+			}
+		],
+		"hotels": [
+			"1",
+			"2"
+		],
+		"currency": "EUR",
+		"markets": [
+			"ES"
+		],
 		"language": "es",
 		"nationality": "ES"
 	},

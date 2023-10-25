@@ -2,7 +2,7 @@
 sidebar_position: 7
 ---
 
-# I want to request a new connection, what should I do?💡
+# I want to request a new connection, what should I do?
 1. Log onto [TravelgateX](https://www.travelgatex.com/).
 1. Before starting, ensure you are logged into the correct Organization and Partner profile type. For instance, if you wish to connect as a Seller, browse as a Seller, and vice versa. You can find this information in the top right corner of your screen.
 
@@ -15,17 +15,13 @@ sidebar_position: 7
 
     ![https://storage.travelgate.com/kbase/quickguide_autoactivations_2.jpg](https://stplaformwe.blob.core.windows.net/kbase/quickguide_autoactivations_2.jpg)
 
-:::warning
-Please keep in mind that when requesting the activation of a connection, you are assuming financial responsibility with TravelgateX for this connection.
-:::
-   
+    :::warning Important
+    Please keep in mind that when requesting the activation of a connection, you are assuming financial responsibility with TravelgateX for this connection.
+    :::
+    
 
 1. Click on **Create a new Connection** and select the Partner you want to connect to.
-
-
-    ![quickguide_to_autoactivations_3](https://storage.travelgate.com/kbase/quickguide_autoactivations_3.jpg)
-
- 
+![quickguide_to_autoactivations_3](https://storage.travelgate.com/kbase/quickguide_autoactivations_3.jpg)
 
 1.  Provide your **Connection Information**: access name, notification emails, and connection type:
 
@@ -50,6 +46,6 @@ Just access section [My Connections](https://knowledge.travelgate.com/my-connect
 Then, you will be redirected to our Automated Connection Form (step 5 above) and follow the steps previously explained. Easy, right?
 
  
-:::tìp
+:::tip
 Interested in diving deeper into TravelgateX's auto-activation process? For more in-depth information, simply access the following [link](https://knowledge.travelgate.com/the-auto-activation-process)! 📚🔗
 :::

@@ -33,7 +33,12 @@ const config = {
   },
 
   plugins:[
-    require.resolve("@cmfcmf/docusaurus-search-local"),
+    // [
+    //   require.resolve("@cmfcmf/docusaurus-search-local"),
+    //   {
+    //     indexDocSidebarParentCategories: 10,
+    //   }
+    // ],
     'docusaurus-plugin-sass',
     [
       "@graphql-markdown/docusaurus",
@@ -78,6 +83,29 @@ const config = {
     'custom-loaders'
   ],
 
+  themes: [
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
+      ({
+        // ... Your options.
+        // `hashed` is recommended as long-term-cache of index file is possible.
+        ignoreFiles: ['404.html', 'markdown-page', 'playground', 'search'],
+        hashed: true,
+        indexBlog: false,
+        explicitSearchResultPath: true,
+        docsDir: ["docs", "api", "kb"],
+        // searchContextByPaths: ["docs", "api", "kb"],
+        highlightSearchTermsOnTargetPage: true,
+        // docsPluginIdForPreferredVersion: "docs",
+        // For Docs using Chinese, The `language` is recommended to set to:
+        // ```
+        // language: ["en", "zh"],
+        // ```
+      }),
+    ],
+  ],
+
   presets: [
     [
       'classic',
@@ -90,6 +118,7 @@ const config = {
           editUrl:
             'https://github.com/Travelgate/documentation/tree/main',
         },
+        blog: false,
         // blog: {
         //   showReadingTime: true,
         //   // Please change this to your repo.
@@ -118,7 +147,7 @@ const config = {
         items: [
           {
             type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
+            sidebarId: 'docsSidebar',
             position: 'left',
             label: 'Documentation',
           },

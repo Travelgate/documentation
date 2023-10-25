@@ -35,5 +35,5 @@ Static content updates are carried out every 7-14 days, depending on the type of
 - If the Seller adds 50K, those new hotels will be automatically added to the Seller's portfolio within the following 7-14 days.
 
 :::tip
-**Manage your content effortlessly with TravelgateX interface. Stay updated with the latest market trends and keep your portfolio up-to-date!**
+Manage your content effortlessly with TravelgateX interface. Stay updated with the latest market trends and keep your portfolio up-to-date!
 :::

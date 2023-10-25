@@ -29,8 +29,8 @@ Nevertheless, we have established partnerships with numerous affiliates who spec
 
 :::info
 
-* To share your **Product Development** requests, please use [TravelgateX Community](https://community.travelgatex.com/). Our Product team will give a detailed evaluation to each idea, suggestion, and request.
-* For any **Product Maintenance requests**, kindly submit them through [Tickets](https://app.travelgatex.com/tickets).
+* To share your *Product Development* requests, please use [TravelgateX Community](https://community.travelgatex.com/). Our Product team will give a detailed evaluation to each idea, suggestion, and request.
+* For any *Product Maintenance requests*, kindly submit them through [Tickets](https://app.travelgatex.com/tickets).
 
 :::
 

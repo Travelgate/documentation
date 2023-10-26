@@ -12,11 +12,11 @@ You have two options to cancel a reservation:
 1. Using its bookingID.
 
 :::tip
-Don't forget to check our article on [Book Mutation](https://knowledge.travelgate.com/hotel-x-development-book-mutation) for further details on the information returned in Book response🚀
+Don't forget to check our article on [Book Mutation](/kb/our-products/are-you-a-buyer/our-methods/booking-flow/book/hotel-x-development-book-mutation) for further details on the information returned in Book response🚀
 :::
 
 ### What information can I expect in Cancel response?✔️
-The information returned in Cancel response may vary between Sellers, so please check our [Hotel-X API Schema](https://api.travelgatex.com/playground) in order to add to your Cancel the fields expected on your side. Additionally, you may check the Sellers' [Metadata](https://knowledge.travelgate.com/hotel-x-development-metadata) for further details on the specifications established on their side for this Method.
+The information returned in Cancel response may vary between Sellers, so please check our [Hotel-X Playground Documentation](/playground) in order to add to your Cancel the fields expected on your side. Additionally, you may check the Sellers' [Metadata](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-metadata-query) for further details on the specifications established on their side for this Method.
 
 ![cancel_mutation_1](https://storage.travelgate.com/kbase/cancel_mutation_1.jpg)
 
@@ -28,7 +28,7 @@ The information returned in Cancel response may vary between Sellers, so please 
 1. Holder
 
 :::tip
-Remember to check the Sellers' [Metadata](https://knowledge.travelgate.com/hotel-x-development-metadata) for further details on their specifications and information returned on their side in Cancel response.🔎
+Remember to check the Sellers' [Metadata](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-metadata-query) for further details on their specifications and information returned on their side in Cancel response.🔎
 :::
 
 ### How are cancellation costs calculated and displayed?🔢
@@ -45,5 +45,5 @@ Unfortunately, there are no filters in the Cancel Mutation.
 If the Seller provides cancel policies information, you can access it either through Hotel-X Quote Query or Hotel-X Booking Query.
  
 :::tip
-Don't forget to check our [Hotel-X API Schema](https://api.travelgatex.com/playground) and [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/methods/reservationmanagement/cancellation/) for further information on Cancel Mutation. Interested in cancel penalties information as well? We've got you covered with some awesome [articles](https://knowledge.travelgate.com/cancel-policies-buyer) that dive deep into the topic!🚀
+Don't forget to check our [Hotel-X API Playground](/playground) and [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/cancel) for further information on Cancel Mutation. Interested in cancel penalties information as well? We've got you covered with some awesome [articles](/kb/faqs/faqs-cancel-policies/hotel-buyers-api-cancel-policies) that dive deep into the topic!🚀
 :::

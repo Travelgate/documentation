@@ -7,7 +7,7 @@ sidebar_position: 5
 This error occurs when the Seller's response time has exceeded the timeout set in the Buyer's request.
 
 ### Hotel-X Buyers API
-You may find the timeout value at a request level (in your Settings) or at a Default Settings level (in our website>Conections>[Connections Settings](https://knowledge.travelgate.com/connections-settings)).
+You may find the timeout value at a request level (in your Settings) or at a Default Settings level (in our website>Conections>[Connections Settings](/kb/connections/api-settings/connections-settings)).
 
 ### Legacy Buyers API
 This timeout is included as a [Common Element]8v) ("timeoutMilliseconds") in every request:
@@ -33,5 +33,5 @@ In the aforementioned example, the Buyer sets a timeout of 24700 milliseconds (2
 1. Retry the operation
 
 :::tip
-If you have followed the tips mentioned above and the Seller's performance is still not optimal, you can try activating **[Speed](https://knowledge.travelgate.com/speed-app)**, our caching solution. By enabling Speed, you may be able to improve the response time and overall performance of the Seller's system (learn more here).
+If you have followed the tips mentioned above and the Seller's performance is still not optimal, you can try activating **[Speed](/kb/apps/smart-traffic-apps/speed/speed-app)**, our caching solution. By enabling Speed, you may be able to improve the response time and overall performance of the Seller's system (learn more here).
 :::

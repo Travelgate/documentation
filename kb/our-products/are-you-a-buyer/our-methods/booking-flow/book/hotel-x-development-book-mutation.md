@@ -9,7 +9,7 @@ sidebar_position: 1
 Book operation requests a booking confirmation for the specified optionRefId returned in Quote. It returns a brief summary of the option plus the status of the reservation.
 
 ### What information can I expect in Book response?✔️
-The information returned in Book response may vary between Sellers, so please check our [Hotel-X API Schema](https://api.travelgatex.com/playground) in order to add to your Book the fields expected on your side. Additionally, you may check the [Metadata](https://knowledge.travelgate.com/hotel-x-development-metadata) of your Sellers for further details on the specifications established on their side for this Method.
+The information returned in Book response may vary between Sellers, so please check our [Hotel-X Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart) in order to add to your Book the fields expected on your side. Additionally, you may check the [Metadata](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-metadata-query) of your Sellers for further details on the specifications established on their side for this Method.
 
 **Some of the fields to be declared/added to Book mutation request are:**
 
@@ -23,12 +23,12 @@ The information returned in Book response may vary between Sellers, so please ch
 
 ### What is the DeltaPrice? Why should I use it?💡
 
-The [Delta Price](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/methods/bookingflow/book/) indicates the price variation permitted by the Buyer (amount or percentage), so that an error will be returned if the new price does not abide to DeltaPrice. If DeltaPrice is not sent and the integration implements it, we assume that the price range is 0 and the process will continue (price is lower or equal to the price returned in Quote).
+The [Delta Price](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/book) indicates the price variation permitted by the Buyer (amount or percentage), so that an error will be returned if the new price does not abide to DeltaPrice. If DeltaPrice is not sent and the integration implements it, we assume that the price range is 0 and the process will continue (price is lower or equal to the price returned in Quote).
 
 This field is implemented if it’s native to the Seller or if another Search/Quote request needs to be done in Book - please note DeltaPrice should be implemented by a Seller in order to be available to a Buyer.
 
 :::info
-**Interested in adding DeltaPrice in your requests?** Feel free to access our [Hotel-X API Schema](https://api.travelgatex.com/) and [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/methods/bookingflow/book/) for more information!🚀
+**Interested in adding DeltaPrice in your requests?** Feel free to access our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/book) for more information!🚀
 :::
  
 
@@ -94,5 +94,5 @@ The payment type and details to be added in your Book request depend on the paym
     ```
 
  :::tip
- Don't forget to check our [article](https://knowledge.travelgate.com/payment-types-travelgatex) on Payment Types at TravelgateX!🚀
+ Don't forget to check our [article](/kb/faqs/faqs-price/payment-types-at-tgx) on Payment Types at TravelgateX!🚀
  :::

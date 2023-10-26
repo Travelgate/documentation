@@ -7,28 +7,28 @@ sidebar_position: 1
 ## All about Hotel-X Search Query
 
 
-Search is the first method in our Booking Flow. Search Query aims to return all the available options for a given date and itinerary (and for one or more Seller's accesses). You will find more information and examples in our [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/methods/bookingflow/search/).
+Search is the first method in our Booking Flow. Search Query aims to return all the available options for a given date and itinerary (and for one or more Seller's accesses). You will find more information and examples in our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/search).
 
 ### Can I apply any filters to my Search request?💡
 
 
  Of course! You have the option to apply the following filters to your Search Query:
 
-1. **Rate Rules:** You can specify the [rate rules](https://knowledge.travelgate.com/filter-search) (such as package or honeymoon) to be included or excluded from the response.
-1. **Status:** You can specify whether you want to include or exclude [OK and/or RQ status](https://knowledge.travelgate.com/filter-search) in Search response.
-1. **Access:** You can choose the Hotel-X acces codes to be included or excluded from your request. Please note that you can filter your Search by Hotel-X access code, or don't set any access at all. If you don't specify any accesses in your request, our system will request all the accesses available on your side, so please make sure you [use your own context code](https://knowledge.travelgate.com/hotel-x-credentials) in order to avoid mapping errors.
+1. **Rate Rules:** You can specify the [rate rules](/kb/our-products/are-you-a-buyer/our-methods/booking-flow/search/how-tos/how-to-filter-hotel-x-search-requests) (such as package or honeymoon) to be included or excluded from the response.
+1. **Status:** You can specify whether you want to include or exclude [OK and/or RQ status](/kb/our-products/are-you-a-buyer/our-methods/booking-flow/search/how-tos/how-to-filter-hotel-x-search-requests) in Search response.
+1. **Access:** You can choose the Hotel-X acces codes to be included or excluded from your request. Please note that you can filter your Search by Hotel-X access code, or don't set any access at all. If you don't specify any accesses in your request, our system will request all the accesses available on your side, so please make sure you [use your own context code](/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/hotel-x-credentials) in order to avoid mapping errors.
 
-Feel free to check this [article](https://knowledge.travelgate.com/filter-search) for further information on How to filter Search requests.✔️
+Feel free to check this [article](/kb/our-products/are-you-a-buyer/our-methods/booking-flow/search/how-tos/how-to-filter-hotel-x-search-requests) for further information on How to filter Search requests.✔️
 
 :::note
 Remember to upload your mapping files to our FTP in those cases you run requests with your own context codes. That way, you will receive results from all your Sellers with your own hotel codes. You will find more information about Mapping on TravelgateX here.
 :::
 
 ### Can I search by destination?🔎
-Of course! You will find more information about our Search by Destination [plugin](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/plugins/search_by_destination/) here.
+Of course! You will find more information about our Search by Destination [plugin](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/search-by-destination) here.
 
 ### What are the minimum recommended fields to be added to a Search Query?✔️
-Since the amount of information requested in Hotel-X Search Query will depend on your needs and preferences, our recommendation is to check all the the fields available in our [Playground](https://api.travelgatex.com/playground). For instance:
+Since the amount of information requested in Hotel-X Search Query will depend on your needs and preferences, our recommendation is to check all the the fields available in our [Hotel-X Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart). For instance:
 
 ![search_query_1](https://storage.travelgate.com/kbase/search_query_1.jpg)
 
@@ -93,13 +93,13 @@ beds {
 For this request, the Seller may return the occupancyRefId, room description, refundable information and price but not the beds description (if that information is not available on their side, it would be returned as "null" in TravelgateX response).
 
 ### Can we define our own context for 2 or more Suppliers?🚀
-Certainly! You have the option to create your own [Context](https://knowledge.travelgate.com/hotel-x-credentials). To do this, simply follow the instructions in our Documentation and upload the mapping files accordingly in order to use it in your requests. For more detailed information, please refer to our [Documentation on Mapping](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/plugins/mapping/).
+Certainly! You have the option to create your own [Context](/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/hotel-x-credentials). To do this, simply follow the instructions in our Documentation and upload the mapping files accordingly in order to use it in your requests. For more detailed information, please refer to our [Documentation on Mapping](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping).
 
 ### How can we differentiate a child from an infant? What is the age range of each of them?👶
-The age range for children and infants may vary depending on the Seller's restrictions. To find out the specific age range restrictions for each of your Sellers, you can refer to our [Metadata](https://knowledge.travelgate.com/hotel-x-development-metadata) Method or directly contact the Seller.
+The age range for children and infants may vary depending on the Seller's restrictions. To find out the specific age range restrictions for each of your Sellers, you can refer to our [Metadata](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata) Method or directly contact the Seller.
 
  ### Can I receive a specific rate in Search response?🔎
- If you want to receive a specific rate in the Search response, you have the option to [filter the response](https://knowledge.travelgate.com/filter-search) by using the tag "rateRules". This allows you to customize the results and get the rates that meet your specific requirements.
+ If you want to receive a specific rate in the Search response, you have the option to [filter the response](/kb/our-products/are-you-a-buyer/our-methods/booking-flow/search/how-tos/how-to-filter-hotel-x-search-requests) by using the tag "rateRules". This allows you to customize the results and get the rates that meet your specific requirements.
 
 ### Can I receive daily prices in Search response?📅
 Yes, if the Seller provides the information, you can receive daily prices in Search response through the roomPrice>**breakdown**:

@@ -8,7 +8,7 @@ sidebar_position: 4
 Boards Query returns a simple boards map for a given set of credentials (access) that may include translations to other languages.
 
 ### How can I retrieve the Seller's Board List through Hotel-X?💡
-You just need to follow the specifications in our [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/methods/staticcontent/boards/) and [API Playground](https://api.travelgatex.com/) and build your own Boards Query, as easy as that! Also, remember you are able to personalize the fields requested in order to receive only the information that matters to you in the response.
+You just need to follow the specifications in our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/boards) and [API Playground](https://api.travelgatex.com/) and build your own Boards Query, as easy as that! Also, remember you are able to personalize the fields requested in order to receive only the information that matters to you in the response.
 
 **Boards Query example:**
 ```
@@ -42,7 +42,7 @@ Our primary goal is to ensure that our Partners receive the Seller's native info
 Don't worry, connecting with a new Seller doesn't mean you have to be interested in their entire boards portfolio. You have the flexibility to map only the specific boards that catch your interest.
 
 :::note
-Remember that if you are utilizing the Hotel-X API, you have the option to [upload your own mapping files to our FTP](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/plugins/mapping/). Take advantage of our FTP mapping and make the Booking Flow truly your own!🚀
+Remember that if you are utilizing the Hotel-X API, you have the option to [upload your own mapping files to our FTP](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping). Take advantage of our FTP mapping and make the Booking Flow truly your own!🚀
 :::
 
 ### Does the presence of a board in the Hotel-X Boards Query ensure its availability during a Search?⚠️

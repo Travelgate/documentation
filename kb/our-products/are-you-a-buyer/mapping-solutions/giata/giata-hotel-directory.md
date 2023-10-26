@@ -18,8 +18,8 @@ You'll have access to up-to-date and validated content directly from the propert
 
 ### How can I request an activation for GIATA Hotel Directory?✔️
 1. Log onto TravelgateX (browse as Buyer)
-1. Click on Connections&rarr;[My Conections](https://knowledge.travelgate.com/my-connections)&rarr;Create a new Connection
-1. Request an activation for GIATA (Seller) following the indications from our [Auto-Activations Quick-guide](https://knowledge.travelgate.com/auto-activations-quickguide)
+1. Click on Connections&rarr;[My Conections](/kb/connections/my-connections/)&rarr;Create a new Connection
+1. Request an activation for GIATA (Seller) following the indications from our [Auto-Activations Quick-guide](/kb/connections/my-connections/guick-guide-to-auto-activations)
 
 	![giata_hotel_directory_2](https://storage.travelgate.com/kbase/giata_hotel_directory_2.jpg)
 
@@ -30,6 +30,6 @@ You'll have access to up-to-date and validated content directly from the propert
 	![giata_hotel_directory_4](https://storage.travelgate.com/kbase/giata_hotel_directory_4.jpg)
 
 :::tip
-**Are you interested in GIATA Multicodes as well?**
-Simply follow the easy steps outlined in the following [link](https://knowledge.travelgatex.com/hotels-giata).
+Are you interested in **GIATA Multicodes** as well?
+Simply follow the easy steps outlined in the following [link](/kb/getting-started-with-travelgate/About-our-Connectivity/explore-and-discover-giata-products-in-our-marketplace).
 :::

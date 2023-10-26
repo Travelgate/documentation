@@ -32,6 +32,10 @@ const config = {
     locales: ['en'],
   },
 
+  scripts: [
+    'https://kit.fontawesome.com/e1e13599a5.js',
+  ],
+
   plugins:[
     // [
     //   require.resolve("@cmfcmf/docusaurus-search-local"),

@@ -18,4 +18,4 @@ You will encounter a 103 error in those cases your account has surpassed the agr
 ```
 ### What can I do if I receive a 103 error in my response?✔️
 1. Reach out to the Seller directly as they have the ability to adjust the QPS (Queries Per Second) limit set for your account.
-1. Activate [Speed](https://knowledge.travelgate.com/speed-app), our intelligent cache solution, to effectively reduce response time and alleviate traffic for the concerned connection.
+1. Activate [Speed](/kb/apps/smart-traffic-apps/speed/speed-app), our intelligent cache solution, to effectively reduce response time and alleviate traffic for the concerned connection.

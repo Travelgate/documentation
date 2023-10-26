@@ -47,6 +47,6 @@ No, the Categories Query response includes all the categories that a Seller has 
 
  
 :::tip
-Don't forget to check our [API Playground](https://api.travelgatex.com/playground) for further information on Hotel-X Categories Query!🚀
+Don't forget to check our [API Playground](/playground) for further information on Hotel-X Categories Query!🚀
 :::
  

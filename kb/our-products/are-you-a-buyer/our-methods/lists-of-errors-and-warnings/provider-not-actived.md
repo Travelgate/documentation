@@ -5,7 +5,7 @@ sidebar_position: 17
 # ProviderNotActived warning
 
 ### What does a ProviderNotActived warning mean?💡
-This warning is returned in those cases the connection has not yet been established with the Seller. Please keep in mind that you should first have a commercial agreement with them and [request their activation](https://knowledge.travelgate.com/auto-activations-quickguide).
+This warning is returned in those cases the connection has not yet been established with the Seller. Please keep in mind that you should first have a commercial agreement with them and [request their activation](/kb/connections/my-connections/guick-guide-to-auto-activations).
 
 ```
 

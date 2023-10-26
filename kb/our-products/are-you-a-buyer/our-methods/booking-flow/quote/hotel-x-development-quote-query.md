@@ -10,7 +10,7 @@ Quote is an operation used to assess and valuate the rate before the actual book
 ### What information can I expect in Quote response?✔️
 The information returned in Quote response may vary between Sellers. For instance, some Sellers may return cancel policies only in Search whereas others only in Quote, or in both Search and Quote.
 
-Please check our [Hotel-X API Schema](https://api.travelgatex.com/playground) in order to add to your Query the fields expected on your side (such as price, cancel policies, rooms, status, etc.) and check the [Metadata](https://knowledge.travelgate.com/hotel-x-development-metadata) of your Sellers for the specifications established on their side for this Method.
+Please check our [Hotel-X API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart) in order to add to your Query the fields expected on your side (such as price, cancel policies, rooms, status, etc.) and check the [Metadata](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-metadata-query) of your Sellers for the specifications established on their side for this Method.
 
 
 
@@ -32,7 +32,7 @@ If the Seller provides this information, you can obtain the room code by includi
 ![quote_query_1](https://storage.travelgate.com/kbase/quote_query_1.jpg)
 
 
->Learn more about our Hotel-X Quote Query on our [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/methods/bookingflow/quote/) and [Playground](https://api.travelgatex.com/playground)🚀
+>Learn more about our Hotel-X Quote Query on our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/quote) and [Playground](/playground)🚀
 
 
  

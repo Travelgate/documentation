@@ -13,4 +13,4 @@ Once a Cancel (Cancellation) method is run, our API response will provide its **
 - **ON_REQUEST**: The reservation was completed but the product is still not available by the Seller, so the reservation goes into a waiting list. It is the Buyer’s responsibility to check if the booking is OK.
 - **UNKNOWN**: The cancellation process through TravelgateX was completed but due to a supplier error or a timeout, the reservation status is unknown. It is the Buyer’s responsibility to check if the booking is cancelled.
 ### What should I do if I receive an error in Cancel response?⚠️
-If you receive **any of the [common errors](https://knowledge.travelgate.com/faqs#errors-and-warnings) or a status other than "CANCELLED"**, it will be your responsibility as a Buyer to check the final status of the cancellation in the Seller's system.
+If you receive **any of the [common errors](/kb/our-products/are-you-a-buyer/our-methods/lists-of-errors-and-warnings/overview) or a status other than "CANCELLED"**, it will be your responsibility as a Buyer to check the final status of the cancellation in the Seller's system.

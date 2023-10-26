@@ -10,7 +10,7 @@ Normally, this is due to a mapping issue, so first thing would be ensure that yo
 
 Please find below a couple of **tips** to convert “No Availability” to “Results”, it's as easy as confirming with the Seller the following information:
 
-1. The number of hotels that you should [expect to receive](https://knowledge.travelgate.com/content-issues) per feed (B2B, B2C). Once you have it, download the Seller's Hotel List via TravelgateX and if the number of hotels received is around the number you expect, we advise you to unmap absolutely all the hotels and start afresh with only the hotels you just received through our Hotel List.
+1. The number of hotels that you should [expect to receive](/kb/connections/connections-content/i-am-not-receiving-the-static-content-expected) per feed (B2B, B2C). Once you have it, download the Seller's Hotel List via TravelgateX and if the number of hotels received is around the number you expect, we advise you to unmap absolutely all the hotels and start afresh with only the hotels you just received through our Hotel List.
 In case the number of hotels received through TGX is varies wildly from what you have confirmed with the Seller, then please reach out to our Help Center so we can check the reason for this discrepancy.
 1. Check with the Seller whether there are Hotels or Hotels Chains in your portfolio that are only Available to specific Markets or Nationalities. If so, you should take this into account when analysing a lack of availability. Perhaps you are requesting a hotel that doesn’t offer product to the Spanish Market, and you receive No Availability because you have set the request with the “ES” Market.
 

@@ -54,7 +54,7 @@ The development of Hotel-X API comprises **three essential steps**, each focusin
 1. Booking Management
 
 ### Content 🏨
-This step involves obtaining and processing information through query acquaintance and mapping logic. The [Content methods](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/methods/staticcontent/) will allow you to retrieve static information from the Sellers, like the hotel list or the destination list.
+This step involves obtaining and processing information through query acquaintance and mapping logic. The [Content methods](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/overview) will allow you to retrieve static information from the Sellers, like the hotel list or the destination list.
 
 Due to the intricacies involved, the Content step is typically the most time-consuming. On average, Buyers developing Hotel-X spend approximately 12 days in this phase.
 
@@ -62,14 +62,14 @@ Due to the intricacies involved, the Content step is typically the most time-con
 
 ### Booking Flow 🚀
 
-The [Booking Flow](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/methods/bookingflow/) step consists of two queries (Search and Quote) and one mutation (Book). Our Buyers typically allocate an average of 8 days to complete this step.
+The [Booking Flow](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/overview) step consists of two queries (Search and Quote) and one mutation (Book). Our Buyers typically allocate an average of 8 days to complete this step.
 
 
 ![Alt text](image-5.png)
 
 ### Booking Management 🔎
 
-The [Booking Management](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/methods/reservationmanagement/) step involves a query and a mutation, specifically Booking (booking details and list) and Cancel (cancellation). Among the Booking Management methods, you can also find the Amendment operations. On average, Buyers developing Hotel-X spend approximately 5 days in this step.
+The [Booking Management](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/overview) step involves a query and a mutation, specifically Booking (booking details and list) and Cancel (cancellation). Among the Booking Management methods, you can also find the Amendment operations. On average, Buyers developing Hotel-X spend approximately 5 days in this step.
 
 
 ![Alt text](image-6.png)
@@ -80,7 +80,7 @@ Through this pivotal step (you can request a new connection (live or test) while
 
 ![Alt text](image-7.png)
 
-For a comprehensive understanding of how to initiate your first connection, we have provided detailed descriptions and instructions in two designated sections. By referring to these sections, you will find a [step-by-step guide](https://knowledge.travelgate.com/auto-activations-quickguide) on how to request your initial connection, as well as some [tips](#) to ensure the auto-connection process is performed successfully:
+For a comprehensive understanding of how to initiate your first connection, we have provided detailed descriptions and instructions in two designated sections. By referring to these sections, you will find a [step-by-step guide](/kb/connections/my-connections/guick-guide-to-auto-activations) on how to request your initial connection, as well as some [tips](#) to ensure the auto-connection process is performed successfully:
 
 ![Alt text](image-8.png)
 

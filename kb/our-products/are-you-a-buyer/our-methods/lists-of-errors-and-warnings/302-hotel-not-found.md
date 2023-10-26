@@ -1,12 +1,12 @@
 ﻿---
-sidebar_position: 13
+sidebar_position: 14
 ---
 
 # 302 error - Hotel not found
 
 
 ### What does a 302 error mean?💡
-You will encounter a 302 error in those cases our system is unable to locate the hotel you requested in your [Hotels](https://knowledge.travelgate.com/hotel-x-development-hotels) (DescriptiveInfo) method.
+You will encounter a 302 error in those cases our system is unable to locate the hotel you requested in your [Hotels](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-hotels-query) (DescriptiveInfo) method.
 ```
 <applicationErrors>
     <type>302</type>

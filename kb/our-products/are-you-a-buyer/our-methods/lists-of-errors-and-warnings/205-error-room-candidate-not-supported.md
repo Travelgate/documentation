@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 9
+sidebar_position: 10
 ---
 
 # 205 error - Room Candidate Not Supported
@@ -8,8 +8,8 @@ sidebar_position: 9
 You will encounter a 205 error in those cases the number of room candidates in your request exceeds the maximum set by the Seller.
 
 ### How can I obtain information about the Seller's limitations and minimize errors?🚫
-To check the limitations set by the Seller and prevent errors and unnecessary traffic, we strongly advise utilizing our [Metadata Query](https://knowledge.travelgate.com/hotel-x-development-metadata).
+To check the limitations set by the Seller and prevent errors and unnecessary traffic, we strongly advise utilizing our [Metadata Query](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata).
  
 :::tip
-Don't forget to check our [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/methods/staticcontent/metadata/) and [Hotel-X API Schema](https://api.travelgatex.com/) for further information on Hotel-X Metadata Query🚀
+Don't forget to check our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata) and [Hotel-X API Schema](https://api.travelgatex.com/) for further information on Hotel-X Metadata Query🚀
 :::

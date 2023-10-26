@@ -7,9 +7,7 @@ sidebar_position: 3
 ### How can I retrieve a list of all bookings made within a specific time frame?💡
 In order to obtain a list of all the reservations made within a specific type frame you should perform the Booking query by "**typeSearch" "DATES"**, specify if your "dateType"** is either "BOOKING* (booking date) or "ARRIVAL" (check-in date) and the "start" and "end" dates of the query (yyyy-MM-dd).
 
-```
-image
-```
+![booking_query_2](https://storage.travelgate.com/kbase/booking_query_2.jpg)
 
 ### How can I perform a booking query while filtering by "DATES"?🛠️
 Below, you'll find an example of a Booking Query that makes use of the "DATES" filter:

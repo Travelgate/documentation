@@ -16,9 +16,7 @@ Please keep in mind that this information is subject to variation based on the s
 1. **INCLUDE:**  mandatory surcharge, included in the option price.
 1. **EXCLUDE:** surcharge not included in the option price.
 
- ```
- image
- ```
+![hotelx_surcharges](https://storage.travelgate.com/kbase/hotelx_surcharges.jpg)
 
 :::info
 Don't forget to check our API Documentation and Hotel-X Schema for further information🚀🌟

@@ -8,13 +8,13 @@ sidebar_position: 5
 
 ### Main Resources🏆
 
-- [Hotel-X Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/)
-- [Hotel-X Playground](https://api.travelgatex.com/playground): You can use Playground as a client to test your queries and mutations. Additionally, you can access our SDL by clicking on the "Docs" tab ("Export SDL") and examine the structure and definition of each API methods available.
-- [Community](https://knowledge.travelgate.com/tgx-community): We regularly update and improve our Documentation, so make sure to check back often to stay up-to-date with the latest updates and changes.
-- [FAQs](https://knowledge.travelgatex.com/faqs)
-- [How to retrieve your Hotel-X Credentials](https://knowledge.travelgatex.com/hotel-x-credentials)
-- [How do I add more users to my Company's account?[(https://knowledge.travelgate.com/add-user-to-account)
-- For Hotel-X implementation and testing purposes, we recommend using the following [accesses](https://knowledge.travelgatex.com/hotel-x-credentials):
+- [Hotel-X Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart)
+- [Hotel-X Playground](/playground): You can use Playground as a client to test your queries and mutations. Additionally, you can access our SDL by clicking on the "Docs" tab ("Export SDL") and examine the structure and definition of each API methods available.
+- [Community](/kb/getting-started-with-travelgate/about-our-community): We regularly update and improve our Documentation, so make sure to check back often to stay up-to-date with the latest updates and changes.
+- FAQs
+- [How to retrieve your Hotel-X Credentials](/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/hotel-x-credentials)
+- [How do I add more users to my Company's account?](/kb/account-settings/users-management/how-to-add-manage-users-to-organization)
+- For Hotel-X implementation and testing purposes, we recommend using the following [accesses](/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/hotel-x-credentials):
 	- TravelgateX Test Seller (tgx): Access 2 with context HOTELTEST.
 	- Smyrooms Test: Access 5647 with context LOGITEST.  
 	
@@ -57,14 +57,14 @@ Feel free to visit our [blog](https://blog.travelgatex.com/en/how-to-improve-gra
 Stay informed about the real-time performance of our services with our [Status page](https://status.travelgatex.com/). Our event tracker and reliable metrics allow you to effortlessly track and monitor our performance.
 
 ### TravelgateX Plugins🔨
-Hotel-X provides customizable [Plugins](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/plugins/) that enable you to integrate your own business logic seamlessly, without the need for separate implementation. With Hotel-X Plugins, you have full control over customizing your requests and responses to align with your specific requirements and easily enhance your functionalities as your business grows and evolves.
+Hotel-X provides customizable [Plugins](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/overview) that enable you to integrate your own business logic seamlessly, without the need for separate implementation. With Hotel-X Plugins, you have full control over customizing your requests and responses to align with your specific requirements and easily enhance your functionalities as your business grows and evolves.
 
 In order to configure a Plugin, you'll need to upload a specific set of files to our FTP. Don't have your FTP credentials yet? No worries! Just raise contact our Support Team via ["Tickets"](https://app.travelgatex.com/tickets) and we will be happy to help you!
 
 
 ### Content Calls🏨
 
-The Hotel List, Room List, Board List, and other static information of Sellers can be obtained by making [Content Calls](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/methods/staticcontent/) through our API. It is highly recommended to implement these calls because sometimes the Seller codes may vary from the ones provided through TravelgateX API.
+The Hotel List, Room List, Board List, and other static information of Sellers can be obtained by making [Content Calls](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/overview) through our API. It is highly recommended to implement these calls because sometimes the Seller codes may vary from the ones provided through TravelgateX API.
 
 ### Criteria Search🔎
 We strongly recommend including the following fields in the criteria section of your Hotel-X Search query:
@@ -85,10 +85,10 @@ Please keep in mind the following points:
 You may build a calendar on your side with the Search response received via Hotel-X API, however, please note that the more requests you send to TravelgateX, the higher your bill may be due to having a huge L2B (this depends on the contract signed with TravelgateX).
 
 ### Book Status
-Learn all about Book (Reservation) status [here](https://knowledge.travelgatex.com/book-status).
+Learn all about Book (Reservation) status [here](/kb/our-products/are-you-a-buyer/our-methods/booking-flow/book/what-status-can-be-returned-in-hotel-x-book-response).
 
 ### Cancel Status
-Learn all about Cancel (Cancellation) status [here](https://knowledge.travelgatex.com/cancel-status).
+Learn all about Cancel (Cancellation) status [here](/kb/our-products/are-you-a-buyer/our-methods/booking-management/cancel/cancel-status).
 
 ### Other Tools and Resources
 - [GraphQL official Documentation](http://graphql.org/learn/)

@@ -21,7 +21,7 @@ In [My Connections](https://app.travelgatex.com/connections/myconnections) secti
 
 1. **Hotel-X access code**: Id of a given access.
 
-1. **Supplier and Context code**: Supplier code and Supplier Context code of a given access. Don't forget to check our article on [Hotel-X credentials](https://knowledge.travelgate.com/hotel-x-credentials) for further information.
+1. **Supplier and Context code**: Supplier code and Supplier Context code of a given access. Don't forget to check our article on [Hotel-X credentials](/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/hotel-x-credentials) for further information.
 
 1. **Access name**: The name of a given access.
 
@@ -42,9 +42,9 @@ In [My Connections](https://app.travelgatex.com/connections/myconnections) secti
 	:::
 
 1. **Access Active:**  
-	You can enable or disable your Hotel-X connections and accesses. Please note that you can only use accesses while they are active in our system. Still using our Legacy API? Connect to [Hotel-X API](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/) and enjoy this functionality and many more!
-		- Yes: Active and operational access
-		- No: Active and non-operational access
+	You can enable or disable your Hotel-X connections and accesses. Please note that you can only use accesses while they are active in our system. Still using our Legacy API? Connect to [Hotel-X API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart) and enjoy this functionality and many more!
+	- Yes: Active and operational access
+	- No: Active and non-operational access
 
 	<img src="https://storage.travelgate.com/kbase/my_connections_2.jpg" width="200" />
 

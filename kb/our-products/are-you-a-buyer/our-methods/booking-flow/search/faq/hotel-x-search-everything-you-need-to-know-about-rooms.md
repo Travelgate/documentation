@@ -93,7 +93,7 @@ And received the following information in SearchRS:
 This indicates that the Seller has successfully provided all the requested information except for bed descriptions.
  
 :::info
-You can explore additional details about Search in our [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/methods/bookingflow/search/) and [Hotel-X Schema](https://api.travelgatex.com/).
+You can explore additional details about Search in our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/search).
 :::
 
  

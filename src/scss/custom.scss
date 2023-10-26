@@ -222,3 +222,66 @@ article .graphiql-sidebar {
     }
   }
 }
+
+//SHORTCUTS OVERVIEW
+.shortcuts-overview {
+  .shortcuts-overview__content{
+    display: flex;
+    margin-bottom: 20px !important;
+    flex-wrap: wrap;
+    
+  }
+  .item{
+    border: 1px solid #E6E6E6;
+    border-radius: 2px;
+    padding: 20px;
+    color: var(--ifm-code-secondary);
+    text-decoration: none;
+    width: 31%;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    &:hover {
+      border: 1px solid var(--ifm-color-primary);
+    }
+    .hexagono {
+      width: 50px;
+      height: 30px;
+      background: var(--ifm-color-primary);
+      position: relative;
+      transform: rotate(90deg);
+      margin-bottom: 20px;
+      margin-top: 10px;
+      margin-left: 5px;
+    }
+    .hexagono::before {
+        content: "";
+        position: absolute;
+        top: -20px;
+        left: 0;
+        width: 0;
+        height: 0;
+        border-left: 25px solid transparent;
+        border-right: 25px solid transparent;
+        border-bottom: 20px solid var(--ifm-color-primary);
+    }
+    .hexagono::after {
+        content: "";
+        position: absolute;
+        bottom: -20px;
+        left: 0;
+        width: 0;
+        height: 0;
+        border-left: 25px solid transparent;
+        border-right: 25px solid transparent;
+        border-top: 20px solid var(--ifm-color-primary);
+    }
+    .item__title{
+      font-size: 20px;
+      margin: 0;
+    }
+    .item__subtitle{
+      color: #686868;
+      margin: 0;
+    }
+  }
+}

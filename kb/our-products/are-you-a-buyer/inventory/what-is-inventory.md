@@ -24,5 +24,5 @@ Get the best rates and direct access to hotel availability, giving your business
 - Fast go-to-market.
 
 :::info
-Discover more by diving into these informative [videos](https://knowledge.travelgate.com/inventory-set-up)
+Discover more by diving into these informative [videos](/kb/our-products/are-you-a-buyer/inventory/how-tos/how-to-set-up-and-load-product-inventory)
 :::

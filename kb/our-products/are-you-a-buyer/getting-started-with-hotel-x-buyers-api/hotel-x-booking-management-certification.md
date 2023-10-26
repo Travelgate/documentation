@@ -20,19 +20,15 @@ Since the Booking Management methods are optional, you have the flexibility to c
 - Correct application of the criteria options
 - Enabled GZIP compression header
 
-### What information do we need to provide for the Certification?📑
+### What information do we need to provide for the Certification?
 In order for us to certify your Booking Management implementation, we require the **Hotel-X Booking Management template file**. [Here](https://2825176.fs1.hubspotusercontent-na1.net/hubfs/2825176/Hotel-X%20Booking%20Management%20Template.docx) you can access the Word file containing the comprehensive list of Booking Management methods that will be used for the Certification Process. We kindly request your cooperation in answering the questions and providing the requested information.
 
 [Here](https://2825176.fs1.hubspotusercontent-na1.net/hubfs/2825176/Hotel-X%20Booking%20Management%20Template.docx) you can access the Word file containing the comprehensive list of Booking Management methods that will be used for the Certification Process. We kindly request your cooperation in answering the questions and providing the requested information.
 
-```
-image
-```
+![hotelx_booking_management_certification_1](https://storage.travelgate.com/kbase/hotelx_booking_management_certification_1.jpg)
 
 ### How to apply💡
 
 After completing the certification template, please submit a ticket via the Booking Management step certification in our Connectivity Set Up.
 
-```
-image
-```
+![hotelx_booking_management_certification_2](https://storage.travelgate.com/kbase/hotelx_booking_management_certification_2.jpg)

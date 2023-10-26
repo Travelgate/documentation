@@ -17,13 +17,13 @@ Keep in mind that the VCC plugin is **optional** and it depends on the Seller's 
 ### What is the goal of our VCC plugin?🚀
 Our VCC Generation plugin is designed to revolutionize your payment experience. Here's what it brings to the table:
 
-1. **VccGen - Create a virtual credit card**: Say goodbye to limitations. With [VccGen](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/plugins/vcc/#what-does-vccgen), you can effortlessly generate a virtual credit card during the booking process. This means you can pay for your reservation using this virtual card.
-1. **VccCan - Cancel a virtual credit card**: Plans change, and we get it. That's why we've included [VccCan](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/plugins/vcc/#what-does-vcccan), a feature that allows you to cancel a virtual credit card as part of the cancellation process.
+1. **VccGen - Create a virtual credit card**: Say goodbye to limitations. With [VccGen](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/virtual-credit-card), you can effortlessly generate a virtual credit card during the booking process. This means you can pay for your reservation using this virtual card.
+1. **VccCan - Cancel a virtual credit card**: Plans change, and we get it. That's why we've included [VccCan](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/virtual-credit-card), a feature that allows you to cancel a virtual credit card as part of the cancellation process.
 
 ## VCC Generator✔️
-The VCC Generator plugin allows clients to easily **create virtual credit cards** with customized activation and expiration dates. This service provides all the necessary information about the newly generated payment card, including the cardholder's name, credit card number, CVC, expiration date, and [card type](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/plugins/vcc/#list-of-available-card-types) (e.g., VI). It also reveals the source or Supplier responsible for creating the virtual credit card.
+The VCC Generator plugin allows clients to easily **create virtual credit cards** with customized activation and expiration dates. This service provides all the necessary information about the newly generated payment card, including the cardholder's name, credit card number, CVC, expiration date, and card type (e.g., VI). It also reveals the source or Supplier responsible for creating the virtual credit card.
 
-You can apply rules using the ‘genvcc.csv’ rules file to determine whether or not to utilize a specific VCC. This decision is based on the rules defined within the file and the parameters specified in the request. More details about rules’s file [here](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/plugins/vcc/#file-format).
+You can apply rules using the ‘genvcc.csv’ rules file to determine whether or not to utilize a specific VCC. This decision is based on the rules defined within the file and the parameters specified in the request. More details about rules’s file [here](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/virtual-credit-card#file-format-specification).
 
 ### How to use the VCC Generator plugin:**  
 Use this plugin by adding it to the settings in your Hotel-X Book Operation.
@@ -31,14 +31,14 @@ Use this plugin by adding it to the settings in your Hotel-X Book Operation.
 ## VCC Cancel❌
 The VCC Cancel plugin is responsible for **cancelling a virtual credit card** identified by the id returned in the Book response. The service will return the status of the payment card inside status field (in paymentInfo field). The utilization of this plugin is dependent on the successful completion of the booking cancellation.
 
-To specify the virtual credit card to use for cancellation, you can set up a rule in the 'genvcc.csv' rule file. This rule will generate an access key, similar to the 'VCC generator' rule. You can establish rules within the ‘genvcc.csv’ rule file to determine the utilization of a particular VCC based on rules within the file and request parameters. More details about rule’s file [here](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/plugins/vcc/#file-format).
+To specify the virtual credit card to use for cancellation, you can set up a rule in the 'genvcc.csv' rule file. This rule will generate an access key, similar to the 'VCC generator' rule. You can establish rules within the ‘genvcc.csv’ rule file to determine the utilization of a particular VCC based on rules within the file and request parameters. More details about rule’s file [here](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/virtual-credit-card#file-format-specification).
 
 ### How to use the VCC Cancel plugin**
 
 Use this plugin by adding it to the settings in your Hotel-X Cancel Operation.
 
 :::tip
-Don't forget to check our [API Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/plugins/vcc/) for further details on the VCC Plugin File format and specifications🔎
+Don't forget to check our [API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/virtual-credit-card#file-format-specification) for further details on the VCC Plugin File format and specifications🔎
 :::
 
 ### List of available card types💡

@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 20
+sidebar_position: 21
 ---
 
 # "WRONG_FIELD" - "PLUGIN_ERROR" - Commission Files
@@ -29,8 +29,8 @@ know if price is gross or net. Please, load your commission file in FTP"
 ```
 
 ### How do I upload the commission file to the FTP?🚀
-1. Request your FTP credentials via [ticket](https://knowledge.travelgate.com/tickets-status) (if you dont' have them already). 
-1. Check our Documentation on [Commission Plugin](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/plugins/net-price/) and follow the file format specified.
+1. Request your FTP credentials via [ticket](/kb/tickets/travelgatex-tickets) (if you dont' have them already). 
+1. Check our Documentation on [Commission Plugin](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/commision) and follow the file format specified.
 	1. **Encoding**: UTF-8
 	1. **File Name**: [Context Source]_sequential_commission.csv
 	1. **Headers** - Please ensure that you include at least the values from:
@@ -46,5 +46,5 @@ know if price is gross or net. Please, load your commission file in FTP"
 1. That's it! Once the information has been loaded successfully to our system, the file name will change to [Context Source]_sequential_commission_processed.csv
  
 :::info
-You will find more information on how to upload your FTP commission file on our [API Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/plugins/net-price/) and Plugins - [Format Files](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/plugins/format-files/).
+You will find more information on how to upload your FTP commission file on our [API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/commision) and Plugins - [Format Files](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/overview).
 :::

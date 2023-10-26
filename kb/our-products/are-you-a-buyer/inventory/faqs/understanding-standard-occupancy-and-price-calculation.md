@@ -59,5 +59,5 @@ Our Inventory Extranet allows for prices to be loaded in 3 different ways:
 
  
 :::info
-Discover more by diving into our [Inventory Documentation](https://docs.travelgatex.com/inventory-x/) 🚀
+Discover more by diving into our [Inventory Documentation](/docs/apps/inventory/overview) 🚀
 :::

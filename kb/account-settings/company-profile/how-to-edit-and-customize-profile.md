@@ -12,7 +12,7 @@ Our [Partner Network Directory](https://app.travelgatex.com/network) was born wi
 1. Alternatively, you can access your Profile directly from TravelgateX Network, filtering by Company.
 
 	:::info Important: 
-	Please note that **you can only edit your profile if you are an Owner or Admin user** in your Organization. If you have a different role, you will see a message stating that your current role restricts company editing. In that case, please contact the Administrator or Owner for profile adjustments. You can find more information on user roles [here](https://knowledge.travelgate.com/add-user-to-account).
+	Please note that **you can only edit your profile if you are an Owner or Admin user** in your Organization. If you have a different role, you will see a message stating that your current role restricts company editing. In that case, please contact the Administrator or Owner for profile adjustments. You can find more information on user roles [here](/kb/account-settings/users-management/how-to-add-manage-users-to-organization).
 	:::
 
 ![edit_customize_profile](https://storage.travelgate.com/kbase/edit_customize_profile.jpg)

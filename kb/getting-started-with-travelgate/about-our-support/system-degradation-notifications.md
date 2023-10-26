@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # System Degradation Notifications
@@ -15,4 +15,4 @@ If there is a service degradation, there is no need to open a ticket with our Cu
 
 ### What should you do if you are experiencing a service degradation but there are no reported issues on our Status service?💡
 1. Firstly, we recommend examining the **performance of all your connectivities**, as it is possible that one of your Sellers might be encountering issues within their own system.
-1. If the problem persists even after checking the above information, please don't hesitate to contact our **[Customer Care team](https://app.travelgatex.com/tickets)** for further assistance.
+1. If the problem persists even after checking the above information, please don't hesitate to contact our [Customer Care team](https://app.travelgatex.com/tickets) for further assistance.

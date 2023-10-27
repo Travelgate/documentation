@@ -24,8 +24,8 @@ Please keep in mind that **TravelgateX cannot guarantee the return of the price 
 
  
 :::info What is the Delta Price?
-The [Delta Price](https://docs.travelgatex.com/legacy/hotel-suppliers/methods/messages/booking-flow-methods/reservation/) represents the allowed price variation set by the Buyer. If the DeltaPrice is not sent and the integration supports it, we assume a price range of 0, and the process will proceed as long as the price is lower or equal to the one returned in the Quote.
+The [Delta Price](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/book) represents the allowed price variation set by the Buyer. If the DeltaPrice is not sent and the integration supports it, we assume a price range of 0, and the process will proceed as long as the price is lower or equal to the one returned in the Quote.
 
-The implementation of this field depends on whether it is native to the Seller or if another Search/Quote request needs to be made in Book. For more information, please refer to our [Schema](https://api.travelgatex.com/).
+The implementation of this field depends on whether it is native to the Seller or if another Search/Quote request needs to be made in Book. For more information, please refer to our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/book).
 :::
 

@@ -17,17 +17,13 @@ You just need to follow the specifications in our [Documentation](https://docs.t
 ### How can I filter my Rooms Query?🔎
 To filter your results and receive specific room/s, you can include the "roomCodes" field in your criteria and specify the desired room/s.
 
-```
-image
-```
+![rooms_query_1](https://storage.travelgate.com/kbase/rooms_query_1.jpg)
 
 ### What is the maximum number of rooms I am allowed to request in one request?🔢
 To determine the number of properties you wish to receive in the Rooms response, you should include the "**maxSize**" field in your Query criteria.
 Please keep in mind that the maximum value for "maxSize" is 1000. However, we recommend requesting 500 rooms per page to optimize response times.
 
-```
-image
-```
+![rooms_query_2](https://storage.travelgate.com/kbase/rooms_query_2.jpg)
 
 
 ### How can I paginate my Rooms Query?📑

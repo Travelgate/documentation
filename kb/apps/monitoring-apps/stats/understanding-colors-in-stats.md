@@ -18,5 +18,5 @@ Each scorecard displays a percentage of NOK (not OK) transactions, along with an
 ![stats_colors_3](https://storage.travelgate.com/kbase/stats_colors_3.jpg)
 
 :::info
-Discover a world of amazing APPs that can enhance your connections' performance, including the [Traffic Optimizer](https://knowledge.travelgate.com/traffic-optimizer-quickguide) and [Speed](https://knowledge.travelgate.com/speed-app). Take a moment to explore each one and uncover how they can boost your experience! 🚀💡
+Discover a world of amazing APPs that can enhance your connections' performance, including the [Traffic Optimizer](/kb/apps/smart-traffic-apps/traffic-optimizer/traffic-optimizer-app) and [Speed](/kb/apps/smart-traffic-apps/speed/speed-app). Take a moment to explore each one and uncover how they can boost your experience! 🚀💡
 :::

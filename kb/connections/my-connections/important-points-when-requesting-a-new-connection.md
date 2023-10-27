@@ -12,9 +12,9 @@ A common error is requesting an activation with credentials not yet activated by
 1. **Have I doubled-checked the credentials with the Seller?**  
 Sometimes the information provided is not correct, preventing the automatization to be successful. In these cases, we suggest verifying with the Seller that you have the right information in each field - you can also contact our Customer Care team if you find out that the fields requested are not correct.
 1. **Do I have a commercial agreement with the Partner I am trying to connect to?**  
-Requesting the activation through our connect form should be the final step towards connecting a new Partner. Please make sure you have an agreement with the Partner and the credentials are set before requesting the connection. Then, two scenarios may arise:
-	- **Connecting a Premium Partner**:It's completely free as they assume the connectivity costs via TravelgateX - The Premium Partner will request the activation of your connection and we will send you all the necessary data to enable the connectivity. You will still need to sign our Standard Connectivity agreement (Framework Terms & conditions - TCP).
-	- **Connecting to a Standard Seller**:You will need to take care of the connectivity fees. Feel free to contact us in order to arrange a commercial contract and get the most out of our Network!  
+Requesting the activation through our connect form should be the final step towards connecting a new Partner. Please make sure you have an agreement with the Partner and the credentials are set before requesting the connection. Then, two scenarios may arise:  
+- **Connecting a Premium Partner**:It's completely free as they assume the connectivity costs via TravelgateX - The Premium Partner will request the activation of your connection and we will send you all the necessary data to enable the connectivity. You will still need to sign our Standard Connectivity agreement (Framework Terms & conditions - TCP).
+- **Connecting to a Standard Seller**:You will need to take care of the connectivity fees. Feel free to contact us in order to arrange a commercial contract and get the most out of our Network!  
 
 ### Additional tips from our Activations Team💡
 - **If you are a Seller**: head to our website>My Connections>New Connection and check that the information configured for your connection is correct. This will make activating your integration for your Buyers faster. Please contact our [Customer Care](https://app.travelgatex.com/tickets) team on any discrepancy detected.

@@ -4,16 +4,19 @@ sidebar_position: 2
 
 # Inventory Tool
 
-Since Channel-X solution is integrated with Inventory, first of all you must use our [Inventory Extranet](https://inventory.xmltravelgate.com/Account/Login?ReturnUrl=%2f) in order to configure the setup for the hotels, rates and rooms contracted with the hoteliers, so that your Channel Managers can map them as well. Once mapped, the Channel Manager will load and update availability and prices for the hotels, rates and rooms configured.
-
-![SetUp Inventory](../../../../../static/img/docs/channel-x/setup-inventory.png)
+Since Channel-X solution is integrated with Inventory, first of all you must use our [Inventory extranet](https://inventory.xmltravelgate.com/Account/Login?ReturnUrl=%2f) in order to configure the setup for the hotels, rates and rooms contracted with the hoteliers, so that your Channel Managers can map them as well. Once mapped, the Channel Manager will load and update availability and prices for the hotels, rates and rooms configured.
 
 :::tip
 
-To learn how to setup hotels, rates, and rooms in the Inventory tool, please refer to the [SetUp section](#) within Inventory.
+To learn how to setup hotels, rates, and rooms in the Inventory tool, please refer to the [SetUp section](#) within APPs > Inventory.
 
 :::
 
-After completing this preliminary step, the `HotelRatePlanInventoryNotif` message will send information about the inventory setup (Hotel, Rate, and Room) to your system.
+&nbsp;
+![SetUp Inventory](../../../../../static/img/docs/channel-x/setup-inventory.png)
 
-The `HotelAvailNotif` and `HotelRatePlanNotif` messages will transmit information regarding the availability and rates pushed by the Channel Manager to your system.
+After completing this preliminary step, you will be able to perform a [Full Copy](../fullcopy-and-deltas/fullcopy-and-deltas.mdx). From that point onward, you will receive smaller requests, known as [Deltas](../fullcopy-and-deltas/fullcopy-and-deltas.mdx), to stay informed about updates.
+
+* `HotelRatePlanInventoryNotif` message will send information about the inventory setup (hotel, rate, and room) to your system.
+
+* `HotelAvailNotif` and `HotelRatePlanNotif` messages will transmit information regarding the availability and rates (pushed by the Channel Manager beforehand) to your system.

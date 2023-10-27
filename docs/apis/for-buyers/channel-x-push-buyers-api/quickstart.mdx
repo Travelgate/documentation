@@ -8,7 +8,7 @@ sidebar_position: 1
 
 Channel-X extracts the product loaded between the Buyer and the Channel Managers into our Inventory tool and sends it to the Buyer's system. To get all the product details into their system, Buyers just need to go to the **Full Copy** tab in the Inventory's extranet. Once that's done, when the Channel Manager makes changes, Channel-X sends a smaller request **(Delta)** to let Buyers know about the updates.
 
-Please, note that connecting with Channel Managers through TravelgateX requires a previous step in which the Buyer configures the setup of the hotels, rates, and rooms contracted with the hoteliers in the Inventory extranet. This configuration allows the Channel Manager to map all this information and push availability and prices for the Buyer.
+Please, note that connecting with Channel Managers through TravelgateX requires a previous step in which the Buyer configures the setup of the hotels, rates, and rooms contracted with the hoteliers in the [Inventory extranet](https://inventory.xmltravelgate.com/Account/Login?ReturnUrl=%2f). This configuration allows the Channel Manager to map all this information and push availability and prices for the Buyer.
 
 
 ![Channel-X Overview](../../../../static/img/docs/channel-x/channel-x_overview.svg)
@@ -16,25 +16,25 @@ Please, note that connecting with Channel Managers through TravelgateX requires 
 
 :::caution
 
-Channel-X Push Buyers API is a non-standalone API that exclusively retrieves to the Buyer's system product that have been previously pushed to the [Inventory tool](https://inventory.xmltravelgate.com/Account/Login?ReturnUrl=%2f). To enable bookings, it is essential to also develop [Hotel-X Pull Buyers API](../hotel-x-pull-buyers-api/quickstart) (if you already have the Legacy Pull Buyers API developed, it is also possible to work with it).
+Channel-X Push Buyers API is a non-standalone API that exclusively retrieves to the Buyer's system product that have been previously pushed to the [Inventory tool](https://inventory.xmltravelgate.com/Account/Login?ReturnUrl=%2f). To enable bookings, it is essential to also develop [Hotel-X Pull Buyers API](../hotel-x-pull-buyers-api/quickstart) (if you already have the [Legacy Pull Buyers API](../legacy-pull-buyers-api/overview) developed, it is also possible to work with it).
 
 :::
 
-## Let's get started: How to push product to your system!
+## Let's Get Started: How to Push Product to your System!
 
-Channel-X provides a robust XML-based API that will enable you to push all the product to your system, allowing you to create and display price calendars. Additionally, you will have full synchronization of products whenever needed, reducing network latency for availability searches, as there is no need to access an external system.
+Channel-X provides a robust XML-based API that will enable you to push all the product to your system, allowing you to create and display price calendars. Additionally, you will have full synchronization of products whenever needed, reducing network latency for availability searches.
 
 ### 1. Configure your system to operate with Channel-X
 
 #### API Endpoint
 
-For the Channel-X API, it is essential that you send the endpoint to Travelgate.
+For the Channel-X API, it is essential that you [send your endpoint to Travelgate](making-requests/endpoint).
 
 #### Request Headers
 
 To interact with the API, you'll need to configure your system to accept the following headers:
 
-* Content Type: Content-Type header provides with the actual content type of the returned content.
+* Content Type: Content-Type header provides information about the actual content type of the returned content.
 
 ```html
 Content-Type: text/xml;charset=UTF-8
@@ -54,10 +54,10 @@ SOAPAction: http://schemas.xmltravelgate.com/hubpush/provider/2012/10/IProviderG
 SOAPAction: http://schemas.xmltravelgate.com/hubpush/provider/2012/10/IProviderGen/HotelRatePlanNotif
 ```
 
-* Authentication: Combination of username and password (which you should have sent to us beforehand) encoded in Base64 format.
+* Authentication: Combination of username and password ([which you should have previously sent to us](making-requests/endpoint)) encoded in Base64 format.
 
 ```html
-Authorization: Basic aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1RWWg2bVlJSkcyWQ==
+Authorization: Basic xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ``` 
 
 #### Supported Operations
@@ -75,7 +75,7 @@ Channel-X has three main methods. You will have to configure your system to acce
 
 **Responses**
 
-After each request, a response should be provided from the Buyer's side. For instance, if a `HotelAvailNotif` request is received, a corresponding `HotelAvailNotif` response should be sent, and so forth. There are two response options, success or error.
+After each request, a response should be provided from your side. For instance, if a `HotelAvailNotif` request is received, a corresponding `HotelAvailNotif` response should be sent, and so forth. There are two response options, **success** or **error**.
 
 Success:
 
@@ -93,7 +93,7 @@ Error:
 <HotelAvailNotifResponse xmlns = "http://schemas.xmltravelgate.com/hubpush/provider/2012/10">
     <HotelAvailNotifResult>
         <Errors xmlns = "http://www.opentravel.org/OTA/2003/05">
-            <Error ShortText = "AvailStatusMessages not found" Code = "2"/>
+            <Error ShortText = "HotelCode or RatePlanList not found" Code = "2"/>
         </Errors>
     </HotelAvailNotifResult>
 </HotelAvailNotifResponse>
@@ -101,7 +101,7 @@ Error:
 
 ### 2. Inventory tool SetUp
 
-Since Channel-X solution is integrated with the Inventory tool, you should use our [Inventory Extranet](https://inventory.xmltravelgate.com/Account/Login?ReturnUrl=%2f) in order to configure the setup for the hotels, rates and rooms contracted with the hoteliers, so that your Channel Managers can map them as well. Once mapped, the Channel Manager will load and update availability and prices for the hotels, rates and rooms configured.
+Since Channel-X solution is integrated with the Inventory tool, you must use our [Inventory extranet](https://inventory.xmltravelgate.com/Account/Login?ReturnUrl=%2f) in order to configure the setup for the hotels, rates and rooms contracted with the hoteliers, so that the Channel Managers can map them as well. Once mapped, the Channel Manager will load and update availability and prices for the hotels, rates and rooms configured beforehand.
 
 ![SetUp Inventory](../../../../static/img/docs/channel-x/setup-inventory.png)
 
@@ -132,7 +132,7 @@ Congratulations on completing this quickstart tutorial! 🎉 You've successfully
 
 :::caution
 
-To enable bookings, it is essential to develop [Hotel-X Pull Buyers API](../hotel-x-pull-buyers-api/quickstart.mdx) (if you already have the Legacy Pull Buyers API developed, it is also possible to work with it).
+To enable bookings, it is essential to develop [Hotel-X Pull Buyers API](../hotel-x-pull-buyers-api/quickstart.mdx) (if you already have the [Legacy Pull Buyers API](../legacy-pull-buyers-api/overview) developed, it is also possible to work with it).
 
 :::
 

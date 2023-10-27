@@ -8,7 +8,7 @@ The following request headers will be sent in all request methods. It is essenti
 
 ### Mandatory Request Headers
 
-**Content Type**: Content-Type header provides with the actual content type of the returned content. In this case, the header is set to:
+**Content Type**: Content-Type header provides information about the actual content type of the returned content. In this case, the header is set to:
 
 ```html
 Content-Type: text/xml;charset=UTF-8
@@ -34,10 +34,10 @@ In the case of `HotelRatePlanNotif` request:
 SOAPAction: http://schemas.xmltravelgate.com/hubpush/provider/2012/10/IProviderGen/HotelRatePlanNotif
 ```
 
-**Authentication**: Requests are authenticated using Base64 encoding. This means that the username and password you have provided us will be encoded and sent in a Base64 format, as demonstrated in the following example:
+**Authentication**: Requests are authenticated using Base64 encoding. This means that the [username and password you have provided us](endpoint.md) will be encoded and sent in a Base64 format, as demonstrated in the following example:
 
 ```html
-Authorization: Basic aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1RWWg2bVlJSkcyWQ==
+Authorization: Basic xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```              
 
 ### Optional Request Headers

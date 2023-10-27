@@ -14,8 +14,6 @@ In the 'Account Settings' section, you can configure and edit your personal user
 - Department
 - Password
 
-```
-image
-```
+![Alt text](image-2.png)
 
 Just adjust these fields to set up your customized user profile on TravelgateX!

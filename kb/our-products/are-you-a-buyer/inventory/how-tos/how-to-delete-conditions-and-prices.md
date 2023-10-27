@@ -11,9 +11,7 @@ To remove the availability conditions and prices that have been loaded in Invent
 1. Choose the 'Delete Product' option.
 1. Select the Client-Provider connection and the hotel for which you are deleting information.
 1. Select the rates or derived rates, as well as the load type.
-	```
-	image
-	```
+	![how_to_delete_conditions_1](https://storage.travelgate.com/kbase/how_to_delete_conditions_1.jpg)
  
 Please note that this feature is **exclusively accessible to admin users**. If you are not an admin user, kindly reach out to your administrator for assistance in deleting any data.
 
@@ -24,18 +22,14 @@ This feature allows removing real product from our system. Deleting the incorrec
 ### How to delete Availability🛠️
 Here you will be able to delete (by date range) availability conditions like ‘booking limit' (allotment), ‘minimum or maximum length of stay’, ‘minimum or maximum length of stay on arrival’ and ‘minimum or maximum release’.
 
-```
-image
-```
+![how_to_delete_conditions_2](https://storage.travelgate.com/kbase/how_to_delete_conditions_2.jpg)
 
 ### How to delete Prices🛠️
 Here you will be able to delete (by date range) all kinds of prices (price per room, prices per pax and price per occupancy), as well as occupancy and mealplan supplements. Bear in mind that the mealplan supplements will be deleted for all types of paxes (adult, child and baby).
 
-```
-image
-```
+![how_to_delete_conditions_3](https://storage.travelgate.com/kbase/how_to_delete_conditions_3.jpg)
 
 :::info Learn more
 
-Check out our full [Documentation](https://docs.travelgatex.com/inventory-x/extranet/) to know how the Inventory extranet works in detail and find out all its functionalities and tools. 
+Check out our full [Documentation](/docs/apps/inventory/extranet/overview) to know how the Inventory extranet works in detail and find out all its functionalities and tools. 
 ::: 

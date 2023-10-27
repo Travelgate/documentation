@@ -13,5 +13,5 @@ Hotel-X API does not impose any restrictions or limitations on language usage. H
 To determine the languages supported by a particular Seller, you can utilize our [Metadata Query](https://knowledge.travelgate.com/hotel-x-development-metadata) method. Moreover, it is highly advisable to reach out to the Seller directly and verify if they support the language(s) you are interested in **before proceeding with their activation**.
 
 >:::tip
-Don't forget to access our [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/) and [API Schema](https://api.travelgatex.com/) for further information.
+Don't forget to access our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart/) for further information.
 :::

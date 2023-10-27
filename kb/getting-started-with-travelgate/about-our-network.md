@@ -20,10 +20,9 @@ And if you want to expand your business:
 * **New Markets**: Expand your business to new markets!
 ### Where do I find recommendations for my Company?  🔍
 You can access your recommended connections through both your [Dashboard](https://app.travelgatex.com/dashboard) and our [Network](https://app.travelgatex.com/network). Once you've identified a Partner you'd like to connect with, simply arrange your own contract and request their activation. It's that simple!
-
 ![Alt text](image.png)
 
-### Discover ideal Partners effortlessly with our Network upgrade!🚀
+### Discover ideal Partners effortlessly with our Network upgrade!
 Now you have greater control over search results and access to relevant information in one convenient place. This feature is situated on the left-hand side of the page and includes new filtering options such as:
 * Headquarters country
 * Company type (Buyer/Seller)

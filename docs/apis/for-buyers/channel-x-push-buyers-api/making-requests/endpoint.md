@@ -8,7 +8,7 @@ In the case of Channel-X, it is the responsibility of the Buyer to provide Trave
 
 Therefore, if you are planning to develop Channel-X, please reach out to Travelgate's onboarding team. In your email, explain that you will be developing Channel-X and provide the endpoint, username and password. With this information, the Onboarding team will configure your account, enabling you to develop and effectively utilize Channel-X.
 
-:::note
+:::info
 
 For the onboarding team to configure your account, send the email to client-onboarding@travelgate.com.
 

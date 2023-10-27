@@ -12,23 +12,17 @@ Once you have configured your system to receive our requests, you will need to p
 
 ### Deltas
 
-After the first Full Copy, when the Seller makes an update, Channel-X will send a smaller product request (Delta) to notify the Buyer of the change. Each `Delta` element can have one of these three states: `New`, `Delta`, `Remove`. It will be indicated in its correspondent tag.
+After the first Full Copy, when the Seller makes an update, Channel-X will send a smaller product request (Delta) to notify you of the change. Each `Delta` element can have one of these three states: `New`, `Delta`, `Remove` (It will be indicated in its correspondent tag).
 
-* `New`: it means the element was not added before. You should add the element in your system with the information provided.
+* `New`: It means the element was not added before, you should add the element in your system with the information provided.
 
-* `Delta` (modification): it means the element was created before but it has been edited. The element should be already created in your system and you should change the information of it with the new one. 
+* `Delta` (modification): It means the element was created previously but has been edited. The element should already exist in your system, and you should update its information with the new data. You will receive all element information, although not all the information sent may have changed. You can choose to either overwrite all existing data or selectively update the changed aspects.
 
-:::note
+* `Remove`: It means the element has been removed. You should delete the element from your system along with all its dependencies. When deleting an element (hotel, rate, or room), you will only receive the code in the request. In such cases, it's necessary to remove all elements from your system that depend on the one being deleted.
 
-You will receive all element information, although not all the information sent may have changed. You can choose to override all existing data or selectively update the changed aspects.
+:::caution
 
-:::
-
-* `Remove`: it means the element has been removed. You should delete the element in your system and all its dependences. 
-
-:::note
-
-When deleting an element (hotel, rate, or room), you will only receive the code in the request. In such cases, it's necessary to remove from your system all elements that depend on the one being deleted.
+If you don't retrieve information for a specific range of dates that were previously loaded into the system, refrain from overwriting them. This indicates that the conditions for those days, which do not appear in the request, remain unchanged.
 
 :::
 

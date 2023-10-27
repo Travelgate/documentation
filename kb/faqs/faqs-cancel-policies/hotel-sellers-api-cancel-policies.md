@@ -4,14 +4,14 @@ sidebar_position: 1
 
 # Hotel Sellers API - Cancel Policies
 
-We have updated our [Quote (Valuation)](/docs/apis/for-sellers/hotel-pull-sellers-api/methods/booking-flow/valuation) method in order to provide more precise information regarding cancellationPolicies.
+We have updated our [Quote (Valuation)](/docs/apis/for-sellers/hotel-pull-sellers-api/booking-flow/valuation) method in order to provide more precise information regarding cancellationPolicies.
 
 - **TIMEZONE:**  
     We have added the new field “Timezone” in our Metadata method:
 
     ![hotel_sellers_api_cancelpolicies1](https://storage.travelgate.com/kbase/hotel_sellers_api_cancelpolicies1.jpg)
 
-    Timezone (see the [Metadata](/docs/apis/for-sellers/hotel-pull-sellers-api/methods/content/meta-data) docs to check all possible values) will specify the timezone in UTC in which the cancellation policies are located.
+    Timezone (see the [Metadata](/docs/apis/for-sellers/hotel-pull-sellers-api/content/meta-data) docs to check all possible values) will specify the timezone in UTC in which the cancellation policies are located.
 
 
 :::info
@@ -19,7 +19,7 @@ If you have any doubts about the timezone returned (for example, if TimeZone is 
 :::
 
 - **DEADLINE:**  
-    Additionally, we have added the "Deadline" field on [CancellationPolicies](/docs/apis/for-sellers/hotel-pull-sellers-api/methods/booking-flow/valuation) returned in Quote/Valuation response, in order to provide more precise information and avoid losing competitiveness.
+    Additionally, we have added the "Deadline" field on [CancellationPolicies](/docs/apis/for-sellers/hotel-pull-sellers-api/booking-flow/valuation) returned in Quote/Valuation response, in order to provide more precise information and avoid losing competitiveness.
 
     This field is not subjected to any ambiguity as it is a date in **UTC-0 Standard**. The conversion of the date is made according to the value specified on the Metadata TimeZone.
 

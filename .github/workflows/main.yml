@@ -21,8 +21,6 @@ jobs:
           node-version: 18
           cache: npm
 
-      - name: Clean npm cache
-        run: npm cache clean --force
       - name: Install dependencies
         run: npm ci
       - name: Generate api reference from Graphql schema

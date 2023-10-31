@@ -40,6 +40,6 @@ When creating a ticket, make sure to **select the appropriate option or category
 
 
 :::note 
-Please be aware that **this process is specifically designed for product maintenance and activation purposes**. If you need to suggest a new feature or require any new development, please use our [Community](https://knowledge.travelgate.com/tgx-community) page.
+Please be aware that **this process is specifically designed for product maintenance and activation purposes**. If you need to suggest a new feature or require any new development, please use our [Community](/kb/getting-started-with-travelgate/about-our-community) page.
 :::
 

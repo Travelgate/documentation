@@ -44,7 +44,7 @@ TravelgateX Smart Traffic APPs personalized recommendations to optimize your tra
 	- **Worst Availability Ratio Connections**: based on the non-availability response and their corresponding search requests.
 	- **Connections with the Highest Traffic**: based on the sum of total search requests per connection.
 
-	![dashboard_4](https://stplaformwe.blob.core.windows.net/kbase/dashboard_4.jpg)
+	![dashboard_4](https://storage.travelgate.com/kbase/dashboard_4.jpg)
 
  
 :::tip

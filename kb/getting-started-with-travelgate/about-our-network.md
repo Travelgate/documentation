@@ -20,7 +20,7 @@ And if you want to expand your business:
 * **New Markets**: Expand your business to new markets!
 ### Where do I find recommendations for my Company?  🔍
 You can access your recommended connections through both your [Dashboard](https://app.travelgatex.com/dashboard) and our [Network](https://app.travelgatex.com/network). Once you've identified a Partner you'd like to connect with, simply arrange your own contract and request their activation. It's that simple!
-![Alt text](image.png)
+![network_1](https://storage.travelgate.com/kbase/network_1.jpg)
 
 ### Discover ideal Partners effortlessly with our Network upgrade!
 Now you have greater control over search results and access to relevant information in one convenient place. This feature is situated on the left-hand side of the page and includes new filtering options such as:
@@ -34,14 +34,14 @@ Destination markets
 
 And that's not all - when it comes to markets, you'll find a menu in the upper right corner with even more thrilling options to explore:
 
-![Alt text](image-1.png)
+![network_2](https://storage.travelgate.com/kbase/network_2.jpg)
 
-![Alt text](image-2.png)
+![network_3](https://storage.travelgate.com/kbase/network_3.jpg)
  
 ### Are you on the hunt for a particular Partner?🔎
 Our system now suggests Company names as you type, displaying their logo and type. To visualize or exclude Companies that are currently in the Onboarding status at TravelgateX, you can simply activate or deactivate the "Onboarding partners" option located in the top right corner of the screen.
 
-![Alt text](image-3.png)
+![network_4](https://storage.travelgate.com/kbase/network_4.jpg)
 
  
 

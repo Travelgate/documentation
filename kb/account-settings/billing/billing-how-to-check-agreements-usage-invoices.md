@@ -11,7 +11,7 @@ sidebar_position: 1
 	![billing_access_1](https://storage.travelgate.com/kbase/billing_access_billing_1.jpg)
 1. Use the tabs provided in order to check your Agreements, Usage or Invoices.
 
-	![billing_settings_2](https://stplaformwe.blob.core.windows.net/kbase/billing_settings_2.jpg)
+	![billing_settings_2](https://storage.travelgate.com/kbase/billing_settings_2.jpg)
 ### How can I manage my agreements? 📑
 
 1. Click on the "Agreements" (first tab).
@@ -29,7 +29,7 @@ sidebar_position: 1
 Only **owner** and **admin** users have access to the complete menu.
 :::
 
-![billing_manage_agreements](https://stplaformwe.blob.core.windows.net/kbase/billing_manage_agreements_3.jpg)
+![billing_manage_agreements](https://storage.travelgate.com/kbase/billing_manage_agreements_3.jpg)
 
 
 ### How can I request a payment type change for one of my Partners?

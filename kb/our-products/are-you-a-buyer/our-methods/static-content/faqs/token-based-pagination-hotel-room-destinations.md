@@ -20,7 +20,7 @@ The ContinuationToken has a time limit of 4 minutes, but each time a page reques
 
 
 :::info
-It's important to remember that the value assigned to "maxSize" must fall within the **range of 1 to 5000** for any of the three queries (Hotels, Rooms and Destinations).
+It's important to remember that the value assigned to "maxSize" must fall within the **range of 1 to 10000** for any of the three queries (Hotels, Rooms and Destinations).
 :::
 
 ```

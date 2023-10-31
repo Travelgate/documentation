@@ -23,13 +23,15 @@ function RestPlayground() {
     };
 
     return (
-        <div>
+        <div class="playground-wrap">
             <div>
-                <select id="method" value={method} onChange={(e) => setMethod(e.target.value)}>
+                <select id="method" value={method} onChange={(e) => setMethod(e.target.value)} class="playground-select">
                     <option>GET</option>
                     <option>POST</option>
                     {/* Add other methods as necessary */}
                 </select>
+            </div>
+            <div>
                 <input
                     id="endpoint"
                     type="text"
@@ -46,7 +48,10 @@ function RestPlayground() {
                     onChange={(e) => setRequestData(e.target.value)}
                 ></textarea>
             </div>
-            <button onClick={sendRequest}>Send Request</button>
+
+            <div>
+                <button onClick={sendRequest} class="playground-btn">Send Request</button>
+            </div>
 
             <div>
                 <label>Response:</label>

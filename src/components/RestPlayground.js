@@ -1,10 +1,19 @@
 import React, { useState } from 'react';
+import CodeBlock from '@theme/CodeBlock';
+import CodeMirror from '@uiw/react-codemirror';
+import { json } from '@codemirror/lang-json';
+import { vscodeDark } from '@uiw/codemirror-theme-vscode';
 
 function RestPlayground() {
     const [endpoint, setEndpoint] = useState('https://api.travelgate.com');
     const [method, setMethod] = useState('POST');
     const [requestData, setRequestData] = useState('');
     const [response, setResponse] = useState('');
+
+    const onChange = React.useCallback((val, viewUpdate) => {
+        console.log('val:', val);
+        setRequestData(val);
+    }, []);
 
     const sendRequest = async () => {
         try {
@@ -23,15 +32,16 @@ function RestPlayground() {
     };
 
     return (
-        <div class="playground-wrap">
-            <div>
-                <select id="method" value={method} onChange={(e) => setMethod(e.target.value)} class="playground-select">
+        <div className="playground-wrap">
+            <div>Method & URL</div>
+            <div className={`post-method`}>
+                <select id="method" value={method} onChange={(e) => setMethod(e.target.value)} className="playground-select">
                     <option>GET</option>
                     <option>POST</option>
                     {/* Add other methods as necessary */}
                 </select>
             </div>
-            <div>
+            <div className={`endpoint`}>
                 <input
                     id="endpoint"
                     type="text"
@@ -42,20 +52,33 @@ function RestPlayground() {
             </div>
             <div>
                 <label htmlFor="requestData">Request Data (for POST, PUT, etc.):</label>
-                <textarea
-                    id="requestData"
+                <CodeMirror
                     value={requestData}
-                    onChange={(e) => setRequestData(e.target.value)}
-                ></textarea>
+                    height="300px"
+                    extensions={[json()]}
+                    theme={vscodeDark}
+                    onChange={onChange}
+                />
+                {/*<textarea*/}
+                {/*    id="requestData"*/}
+                {/*    value={requestData}*/}
+                {/*    onChange={(e) => setRequestData(e.target.value)}*/}
+                {/*    rows={10}*/}
+                {/*></textarea>*/}
             </div>
 
             <div>
-                <button onClick={sendRequest} class="playground-btn">Send Request</button>
+                <button onClick={sendRequest} className="playground-btn">Send Request</button>
             </div>
 
-            <div>
-                <label>Response:</label>
-                <pre>{response}</pre>
+            <div className={response ? `` : `hidden`}>
+                <CodeBlock
+                    language="jsx"
+                    title={`Response from ${endpoint}`}
+                    showLineNumbers
+                >
+                    {response}
+                </CodeBlock>
             </div>
         </div>
     );

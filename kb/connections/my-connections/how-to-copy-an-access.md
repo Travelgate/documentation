@@ -14,4 +14,4 @@ In order to speed up the process of copying a pre-existing access and minimize t
 	- **Set your credentials** for that specific connection. Remember to check all the fields in the form in case you need to modify some information before requesting the activation.
 1. **Activation Process**: The activation process is similar to any other activation and may take some time. Don't forget to check our articles on [Auto-Activations](/kb/connections/my-connections/guick-guide-to-auto-activations) for further information.
 
-	![copy_access](https://stplaformwe.blob.core.windows.net/kbase/my_connections_9.jpg)
+	![copy_access](https://storage.travelgate.com/kbase/my_connections_9.jpg)

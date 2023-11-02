@@ -7,8 +7,13 @@ sidebar_position: 4
 
 ### How can I activate VCC payments with my Sellers?💡
 1. **Reach an agreement** with the VCC Payment Provider of your choice. This crucial step sets the foundation for seamless VCC transactions.
-1. Reach out to our dedicated **[Customer Care team](https://app.travelgatex.com/tickets)** in order to activate this payment type for your connection or connections.
-1. **Add the VCC Plugin** to your Hotel-X Book and Cancel requests.
+1. **Open a ticket to our Customer Care team** and provide the required information regarding the VCC supplier, the credentials provided by them, and the Seller/s for whom you wish to activate VCC payments. They will notify you once the VCC activation is complete.
+1. **Create your VCC Rules file and upload it to your FTP**.
+1. **Finish the VCC Setup:**
+    1. If you are connected to TravelgateX via our **Hotel-X Pull Buyers API**: Simply add the VCC Plugin to your Hotel-X Book and Cancel mutations.
+    1. If you are connected to TravelgateX via **TravelgateX Distribution Solution**: Just access our Distribution Extranet and configure the "Allow VCC" Rule in the configuration section (at an Agency level).  
+        ![vcc_activation_1](https://storage.travelgate.com/kbase/vcc_activation_1.jpg)
+
 
 :::note
 Keep in mind that the VCC plugin is **optional** and it depends on the Seller's willingness to accept VCC payments for both bookings and cancellations.

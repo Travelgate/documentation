@@ -13,7 +13,7 @@ At TravelgateX we want to ease that process by providing all the necessary infor
 The Hotel Push Sellers API onboarding process is composed of 5 milestones:
 
 ### Account configuration
-Learn how to edit and customize your Company's Profile [here](https://knowledge.travelgatex.com/how-to-configure-your-company-profile).
+Learn how to edit and customize your Company's Profile [here](/kb/account-settings/company-profile/how-to-edit-and-customize-profile).
 
 ### Hotel Push Sellers API development
 We've divided the Hotel Push Sellers API development into 3 main phases. Being the first one our set-up methods, second the product upload and third the booking management methods. Why this way? Because after accompanying our Partners through the development process, we've seen that when starting with the setup methods, they build a solid base to hold the product upload and booking management information and logic.
@@ -22,7 +22,7 @@ We've divided the Hotel Push Sellers API development into 3 main phases. Being t
 
 We've created a test client (you will find it on our Hotel Push Sellers API extranet as "ClientTest") and linked to your account, so you can test the methods as you implement them.
 
-Note that the RequestorID will be always the same one, as it is your Hotel Push Sellers API code. CompanyNameCode, on the other hand will be changing depending on the buyer connected to your account. During the development and for testing purposes, you can use the following CompanyNameCode: "CTEST").
+Note that the RequestorID will be always the same one, as it is your Hotel Push Sellers API code. CompanyNameCode, on the other hand will be changing depending on the buyer connected to your account. During the development and for testing purposes, you can use the following CompanyNameCode: "CTEST".
 
 We've also added a hotel, so you can test the implemented methods with it:
 
@@ -36,14 +36,14 @@ We've also added a hotel, so you can test the implemented methods with it:
 
 	This is the phase where the Sellers needs to implement HotelRatePlanInventoryRetrieve messages to retrieve the hotelier inventory and map it into their system. Optionally, Sellers can set up the product using HotelRatePlanInventoryNotif messages.
 	:::info
-	Further information on our Hotel Push Sellers [API Documentation](https://docs.travelgatex.com/inventory-x/api-reference/messages/set-up/).
+	Further information on our Hotel Push Sellers [API Documentation](/docs/apis/for-sellers/hotel-push-sellers-api/availability-rates-and-inventory/inventory).
 	:::
 
 2. **The Product Upload Phase**  
 	Here, providers need to implement HotelRatePlanNotif and HotelAvailNotif messages in order to synchronize hotelier rates and availability. Optionally, Sellers can read all the properties of their product loaded on our system using HotelAvailRetrieve and HotelRatePlanRetrieve messages.
 
 	:::info
-	Further information on our Hotel Push Sellers [API Documentation](https://docs.travelgatex.com/inventory-x/api-reference/messages/product-load/).
+	Further information on our Hotel Push Sellers [API Documentation](/docs/apis/for-sellers/hotel-push-sellers-api/availability-rates-and-inventory/rates).
 	:::
 
 	The product upload phase takes, on average, **14 days** tour our Sellers.
@@ -52,7 +52,7 @@ We've also added a hotel, so you can test the implemented methods with it:
 	In this final phase providers can receive an instant API notification from TGX through HotelResNotif message (for bookings) and CancelNotif message (for cancellations). If the Seller doesn�t allow Push notifications to their system, it is possible to implement HotelResRetrieve messages in order to obtain a list of bookings from the Hotel Push Sellers API system.
 
 	:::info
-	Further information on our Hotel Push Sellers [API Documentation](https://docs.travelgatex.com/inventory-x/api-reference/messages/booking-flow/). 
+	Further information on our Hotel Push Sellers [API Documentation](/docs/apis/for-sellers/hotel-push-sellers-api/availability-rates-and-inventory/overview). 
 	:::
 
 Our booking management methods takes, on average, **7 days** to our Sellers.
@@ -62,7 +62,7 @@ Our booking management methods takes, on average, **7 days** to our Sellers.
 Adding up the three phases, it takes **a total of 30 days** to develop our Hotel Push Sellers API. Obviously, the total time will depend on the amount of resources allocated to the project and the methods implemented.
 
 ### Hotel Push Sellers API certification
-In order to certify that Hotel Push Sellers API has been developed and all the implemented methods work correctly we will need you to provide a specific set of information - more information [here](https://knowledge.travelgatex.com/inventoryx-certification).
+In order to certify that Hotel Push Sellers API has been developed and all the implemented methods work correctly we will need you to provide a specific set of information - more information [here](/kb/our-products/are-you-a-seller/hotel-push-sellers-api/hotel-push-sellers-api-certification).
 
 On average, Sellers spend **15 days** approximately to certify Hotel Push Sellers API.
 
@@ -70,6 +70,6 @@ On average, Sellers spend **15 days** approximately to certify Hotel Push Seller
 Thanks to our automatic activation process, connecting a new Buyer takes on average **2 days**.
 
 Live
-Here the Buyer should perform the mapping work and the testings prior going live, so it has a noticeable impact in the total onboarding time (more information [here](https://knowledge.travelgatex.com/already-certified-now-what-1)). It takes, on average, **7 days**
+Here the Buyer should perform the mapping work and the testings prior going live, so it has a noticeable impact in the total onboarding time (more information [here](/kb/our-products/are-you-a-seller/hotel-push-sellers-api/hotel-push-sellers-api-already-certified)). It takes, on average, **7 days**
 
 Adding up all the milestones timings, it makes, on average, a total of **54 days** to fully develop Hotel Push Sellers API and go live with the first Buyer.   

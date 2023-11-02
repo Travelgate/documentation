@@ -120,5 +120,5 @@ Congratulations on your certification! Let's explore the next steps you should t
 
 
 :::info
-Don't forget to check our [Inventory Documentation](https://docs.travelgatex.com/inventory-x/extranet/) and [YouTube video tutorials](https://knowledge.travelgate.com/inventory-set-up) for further information on our Inventory Extranet!
+Don't forget to check our [Inventory Documentation](/docs/apps/inventory/extranet/overview) and [YouTube video tutorials](/kb/our-products/are-you-a-buyer/inventory/how-tos/how-to-set-up-and-load-product-inventory) for further information on our Inventory Extranet!
 :::

@@ -4,11 +4,9 @@ sidebar_position: 2
 
 # Availability Retrieval
 
-Method to **retrieve** the availability of the product.
+The `HotelAvailRetrieve` request message is sent to retrieve a complete breakdown of availability, including details about the Hotels, Rate Plans, and Rooms.
 
 ## Request
-
-The `HotelAvailRetrieve` request message is sent to retrieve a complete breakdown of availability, including details about the Hotels, Rate Plans, and Rooms.
 
 [Añadir ejemplo]
 
@@ -25,21 +23,21 @@ The `HotelAvailRetrieve` request message is sent to retrieve a complete breakdow
 | Source/BookingChannel                | ?    |        |                                                                                                                                                    |
 | ../CompanyName                       | ?    |        |                                                                                                                                                    |
 | @Code                                | ?    | String | ???Client ID                                                                                                                                       |
-| Source/TPA_Extensions                | 0..1 |        | Optional, if empty only active inventory will be received                                                                                          |
+| Source/TPA_Extensions                | 0..1 |        | Optional, if empty only active RatePlans/Rooms will be received                                                                                          |
 | ../Params                            | 0..1 |        |                                                                                                                                                    |
 | ../Param                             | 0..N |        |                                                                                                                                                    |
-| @key                                 | 1    | String | onlyActive                                                                                                                                         |
-| @value                               | 1    | String | 1 - You will receive all active inventory data. 0 - Active and deactivated inventory will be received. (Same case as without TPA_Extensions node.) |
+| @key                                 | 1    | String | `onlyActive`                                                                                                                                         |
+| @value                               | 1    | String | 1 - You will receive all active RatePlans/Rooms data. 0 - Active and deactivated RatePlans/Rooms will be received. (Same case as without TPA_Extensions node.) |
 | HotelAvailRequests                   |      |        |                                                                                                                                                    |
 | ../HotelAvailRequest                 |      |        |                                                                                                                                                    |
 | HotelAvailRequest/DateRange          |      |        |                                                                                                                                                    |
 | @Start                               | 1    | Date   | Start date to search rates.                                                                                                                        |
 | @End                                 | 1    | Date   | End date to search rates.                                                                                                                          |
-| HotelAvailRequest/HotelRef           | 1    |        | Contains hotel filter.                                                                                                                             |
+| HotelAvailRequest/HotelRef           | 1    |        |                                                                                                                              |
 | @HotelCode                           | 1    | String | Hotel date to search rates.                                                                                                                        |
 | HotelAvailRequest/RatePlanCandidates | 0..1 |        | If exists, contains rate filter.                                                                                                                   |
 | RatePlanCandidates/RatePlanCandidate | 1..n |        |                                                                                                                                                    |
-| @RatePlanCode                        | 1    | String | Rate Plan Code to search rates. 1                                                                                                                  |
+| @RatePlanCode                        | 1    | String | Rate Plan Code to search rates.                                                                                                                  |
 
 ## Response
 

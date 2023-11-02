@@ -112,7 +112,7 @@ When a price is charged **per Room**, it means that all occupancies allowed in t
 						<td>100</td>
 					</tr>
 					<tr>
-						<td>1-0-0</td>
+						<td>1-1-0</td>
 						<td>100</td>
 					</tr>
 				</tbody>
@@ -140,7 +140,7 @@ When a price is charged **per Room**, it means that all occupancies allowed in t
 </BaseByGuestAmts>
 <AdditionalGuestAmounts>
     <AdditionalGuestAmount MaxAdditionalGuests = "1" Amount = "20.00" AgeQualifyingCode = "10" />
-    <AdditionalGuestAmount MaxAdditionalGuests = "1" Amount = "10.00" AgeQualifyingCode = "8" />
+    <AdditionalGuestAmount MaxAdditionalGuests = "1" Amount = "10.00" AgeQualifyingCode = "8" Type="Exclusive"/>
 </AdditionalGuestAmounts>
 ```
 </p>
@@ -175,7 +175,7 @@ When a price is charged **per Room**, it means that all occupancies allowed in t
 					</tr>
                     <tr>
 						<td>3-1-0</td>
-						<td>100 + (100⁄2 + 20) + (100⁄2 + 10) = 230</td>
+						<td>100 + (100⁄2 + 20) + 10 = 180</td>
 					</tr>
 				</tbody>
 			</table>
@@ -378,7 +378,7 @@ When a price is charged **per Pax** means, it means that the price is based on t
 					</tr>
 					<tr>
 						<td>3-0-0</td>
-						<td>(100⁄2) + (100⁄2) + (100⁄2) + (40) = 190</td>
+						<td>(100⁄2) + (100⁄2) + ((100⁄2) + 40) = 190</td>
 					</tr>
 				</tbody>
 			</table>
@@ -480,7 +480,7 @@ When a price is charged **per Pax** means, it means that the price is based on t
 					</tr>
 					<tr>
 						<td>1-1-0</td>
-						<td>2*(100⁄2) = 100</td>
+						<td>(100⁄2) + ((100⁄2) + 40)= 190</td>
 					</tr>
 				</tbody>
 			</table>
@@ -504,7 +504,7 @@ When a price is charged **per Pax** means, it means that the price is based on t
     <BaseByGuestAmt NumberOfGuests = "2" AmountAfterTax="100.00"/>
 </BaseByGuestAmts>
 <AdditionalGuestAmounts>
-    <AdditionalGuestAmount MaxAdditionalGuests = "1" Amount = "40.00" AgeQualifyingCode = "7" />
+    <AdditionalGuestAmount MaxAdditionalGuests = "1" Amount = "40.00" AgeQualifyingCode = "7" Type="Exclusive"/>
 </AdditionalGuestAmounts>
 ```
 </p>
@@ -530,8 +530,8 @@ When a price is charged **per Pax** means, it means that the price is based on t
 						<td>2*(100⁄2) = 100</td>
 					</tr>
 					<tr>
-						<td>1-1-0</td>
-						<td>2*(100⁄2) = 100</td>
+						<td>1-0-1</td>
+						<td>2*(100⁄2) + 40 = 140</td>
 					</tr>
 				</tbody>
 			</table>
@@ -696,7 +696,7 @@ When a price is charged **per Pax** means, it means that the price is based on t
 					</tr>
                     <tr>
 						<td>4-0-0</td>
-						<td>(100⁄2) + (100⁄2) + ((100⁄2) -10) + ((100⁄2) - 10) = 180</td>
+						<td>Ø</td>
 					</tr>
 				</tbody>
 			</table>
@@ -746,7 +746,7 @@ When a price is charged **per Pax** means, it means that the price is based on t
 					</tr>
 					<tr>
 						<td>2-0-0</td>
-						<td>2*(100⁄2) = 100</td>
+						<td>Ø</td>
 					</tr>
 					<tr>
 						<td>3-0-0</td>

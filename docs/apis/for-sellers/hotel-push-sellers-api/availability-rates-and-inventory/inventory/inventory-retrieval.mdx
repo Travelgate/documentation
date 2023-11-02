@@ -4,11 +4,9 @@ sidebar_position: 2
 
 # Inventory Retrieval
 
-Method to **retrieve** the setup product: hotel, rate plan, room.
+The `HotelRatePlanInventoryRetrieve` request message is sent to retrieve a list of Hotels > Rate Plans > Rooms, along with their configurations.
 
 ## Request
-
-The `HotelRatePlanInventoryRetrieve` request message is sent to retrieve a list of Hotels > Rate Plans > Rooms, along with their configurations.
 
 :::caution
 
@@ -35,7 +33,7 @@ Inactive rate plans and rooms will not be returned in this message.
 | Source/TPA_Extensions          | 0..1 |        | Optional, if empty only active inventory will be received                                                                                          |
 | ../Params                      | 0..1 |        |                                                                                                                                                    |
 | ../Param                       | 0..N |        |                                                                                                                                                    |
-| @key                           | 1    | String | onlyActive                                                                                                                                         |
+| @key                           | 1    | String | `onlyActive`                                                                                                                                         |
 | @value                         | 1    | String | 1 - You will receive all active inventory data. 0 - Active and deactivated inventory will be received. (Same case as without TPA_Extensions node.) |
 | RatePlans/RatePlan/HotelRef    | 0..1 |        | Contains hotel filter                                                                                                                              |
 | ../RatePlan                    | 0..1 |        |                                                                                                                                                    |

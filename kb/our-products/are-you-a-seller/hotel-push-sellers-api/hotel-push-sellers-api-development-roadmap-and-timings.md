@@ -15,7 +15,7 @@ image
 The Hotel Push Sellers API onboarding process is composed of 5 milestones:
 
 ### Account configuration
-Learn how to edit and customize your Company's Profile [here](https://knowledge.travelgate.com/customize-profile).
+Learn how to edit and customize your Company's Profile [here](/kb/account-settings/company-profile/how-to-edit-and-customize-profile).
 
 ### Hotel Push Sellers API development
 We've divided the Hotel Push Sellers API development into 3 main phases. Being the first one our set-up methods, second the product upload and third the booking management methods. Why this way? Because after accompanying our Partners through the development process, we've seen that when starting with the setup methods, they build a solid base to hold the product upload and booking management information and logic.
@@ -66,7 +66,7 @@ Our booking management methods takes, on average, **7 days** to our Sellers.
 Adding up the three phases, it takes **a total of 30 days** to develop our Hotel Push Sellers API. Obviously, the total time will depend on the amount of resources allocated to the project and the methods implemented.
 
 ### Hotel Push Sellers API certification
-In order to certify that Hotel Push Sellers API has been developed and all the implemented methods work correctly we will need you to provide a specific set of information - more information [here](https://knowledge.travelgate.com/hotel-push-sellers-api-certification).
+In order to certify that Hotel Push Sellers API has been developed and all the implemented methods work correctly we will need you to provide a specific set of information - more information [here](/kb/our-products/are-you-a-seller/hotel-push-sellers-api/hotel-push-sellers-api-certification).
 
 On average, Sellers spend **15 days** approximately to certify Hotel Push Sellers API.
 

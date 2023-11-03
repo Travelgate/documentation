@@ -15,7 +15,7 @@ image
 The Hotel Push Sellers API onboarding process is composed of 5 milestones:
 
 ### Account configuration
-Learn how to edit and customize your Company's Profile [here](https://knowledge.travelgatex.com/how-to-configure-your-company-profile).
+Learn how to edit and customize your Company's Profile [here](https://knowledge.travelgate.com/customize-profile).
 
 ### Hotel Push Sellers API development
 We've divided the Hotel Push Sellers API development into 3 main phases. Being the first one our set-up methods, second the product upload and third the booking management methods. Why this way? Because after accompanying our Partners through the development process, we've seen that when starting with the setup methods, they build a solid base to hold the product upload and booking management information and logic.
@@ -24,7 +24,7 @@ We've divided the Hotel Push Sellers API development into 3 main phases. Being t
 
 We've created a test client (you will find it on our Hotel Push Sellers API extranet as "ClientTest") and linked to your account, so you can test the methods as you implement them.
 
-Note that the RequestorID will be always the same one, as it is your Hotel Push Sellers API code. CompanyNameCode, on the other hand will be changing depending on the buyer connected to your account. During the development and for testing purposes, you can use the following CompanyNameCode: "CTEST").
+Note that the RequestorID will be always the same one, as it is your Hotel Push Sellers API code. CompanyNameCode, on the other hand will be changing depending on the buyer connected to your account. During the development and for testing purposes, you can use the following CompanyNameCode: "CTEST".
 
 We've also added a hotel, so you can test the implemented methods with it:
 
@@ -66,7 +66,7 @@ Our booking management methods takes, on average, **7 days** to our Sellers.
 Adding up the three phases, it takes **a total of 30 days** to develop our Hotel Push Sellers API. Obviously, the total time will depend on the amount of resources allocated to the project and the methods implemented.
 
 ### Hotel Push Sellers API certification
-In order to certify that Hotel Push Sellers API has been developed and all the implemented methods work correctly we will need you to provide a specific set of information - more information [here](https://knowledge.travelgatex.com/inventoryx-certification).
+In order to certify that Hotel Push Sellers API has been developed and all the implemented methods work correctly we will need you to provide a specific set of information - more information [here](https://knowledge.travelgate.com/hotel-push-sellers-api-certification).
 
 On average, Sellers spend **15 days** approximately to certify Hotel Push Sellers API.
 

@@ -41,11 +41,11 @@ We're continuously enhancing our Activation Process, so much of the data will be
 
 ### I want to request an activation of some new credentials with a Seller, what should I do?☑️
 
-Just access section [My Connections](https://knowledge.travelgate.com/my-connections), click on the Partner for which you want to activate additional credentials, and then click on "Add new access".
+Just access section [My Connections](/kb/connections/my-connections/), click on the Partner for which you want to activate additional credentials, and then click on "Add new access".
 
 Then, you will be redirected to our Automated Connection Form (step 5 above) and follow the steps previously explained. Easy, right?
 
  
 :::tip
-Interested in diving deeper into TravelgateX's auto-activation process? For more in-depth information, simply access the following [link](https://knowledge.travelgate.com/the-auto-activation-process)! 📚🔗
+Interested in diving deeper into TravelgateX's auto-activation process? For more in-depth information, simply access the following [link](/kb/connections/my-connections/auto-activations-process)! 📚🔗
 :::

@@ -8,13 +8,12 @@ sidebar_position: 2
 Destinations Query returns the list of destinations from a Supplier’s access, so that you are able to retrieve all the destinations the Seller has configured for a given set of credentials.
 
 ### How can I retrieve the Seller's Destinations List?💡
-You just need to follow the specifications in our [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/methods/staticcontent/destination/) and [API Playground](https://api.travelgatex.com/) and build your own Destinations Query, as easy as that! Also, remember you are able to **personalize** the fields requested in order to receive only the information that matters to you in the response.
+You just need to follow the specifications in our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/destinations) and [API Playground](/playground) and build your own Destinations Query, as easy as that! Also, remember you are able to **personalize** the fields requested in order to receive only the information that matters to you in the response.
 
 **Destinations Query example:**
 
-```
-image
-```
+![destinations_query_1](https://storage.travelgate.com/kbase/destinations_query_1.jpg)
+
 
 ```
 query {
@@ -57,15 +56,13 @@ Some of the fields returned are:
 
 - Code
 - Available
- -DestinationLeaf
+- DestinationLeaf
 - Texts
 - ClosestDestinations
 - Parent
 - Type
 
-```
-image
-```
+  ![destinations_query_2](https://storage.travelgate.com/kbase/destinations_query_2.jpg)
 
 
 ### Destination List Logic🔎
@@ -90,7 +87,7 @@ For instance, let's say you're focused on the Spanish inventory of a Seller. Sim
 It's all about tailoring the mapping to suit your preferences!
 
 ### How can I know the total amount of destinations returned by a Seller?🔢
-To determine the total number of destinations provided by a Seller, it's crucial to download the complete destination list using [pagination](https://knowledge.travelgate.com/content-pagination).
+To determine the total number of destinations provided by a Seller, it's crucial to download the complete destination list using [pagination](/kb/our-products/are-you-a-buyer/our-methods/static-content/faqs/token-based-pagination-hotel-room-destinations).
 
 This process involves utilizing the token returned in each response to fetch the next set of destinations. Only when you encounter an error stating "destinations not found" will you know that you have retrieved the entire list. Keep this in mind to ensure you have the complete picture!
 

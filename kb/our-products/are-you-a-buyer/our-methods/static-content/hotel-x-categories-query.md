@@ -34,9 +34,7 @@ Some of the fields returned are:
 ### Can I filter by category code?✔️
 Yes! You can filter your results by adding the "categoryCode" field to your criteria and specifying the category or categories you want to receive.
 
-```
-image
-```
+![categories_query_1](https://storage.travelgate.com/kbase/categories_query_1.jpg)
 
 
 ### What category codes should I map as Buyer? Does TravelgateX map for us?❓
@@ -49,6 +47,6 @@ No, the Categories Query response includes all the categories that a Seller has 
 
  
 :::tip
-Don't forget to check our [API Playground](https://api.travelgatex.com/playground) for further information on Hotel-X Categories Query!🚀
+Don't forget to check our [API Playground](/playground) for further information on Hotel-X Categories Query!🚀
 :::
  

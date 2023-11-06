@@ -25,17 +25,17 @@ By following these three steps, we ensure that you have the necessary knowledge 
 
 To facilitate your progress through the onboarding process, we have developed the Connectivity Set Up panel, which will automatically appear when you log in to our Network.
 
-![Alt text](image.png)
+![hotelx_onboarding_1](https://storage.travelgate.com/kbase/hotelx_onboarding_1.jpg)
 
 Within this panel, you will find the three essential steps of the Hotel-X onboarding process, along with dedicated resources and information for each step.
 
 If you need to temporarily minimize the panel, simply click on the "Finish Onboarding Later" button:
 
-![Alt text](image-1.png)
+![hotelx_onboarding_2](https://storage.travelgate.com/kbase/hotelx_onboarding_2.jpg)
 
 Once you are ready to resume the onboarding click the "Continue your onboarding" button:
 
-![Alt text](image-3.png)
+![hotelx_onboarding_3](https://storage.travelgate.com/kbase/hotelx_onboarding_3.jpg)
 
 ## Hotel-X Development
 
@@ -54,35 +54,35 @@ The development of Hotel-X API comprises **three essential steps**, each focusin
 1. Booking Management
 
 ### Content 🏨
-This step involves obtaining and processing information through query acquaintance and mapping logic. The [Content methods](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/methods/staticcontent/) will allow you to retrieve static information from the Sellers, like the hotel list or the destination list.
+This step involves obtaining and processing information through query acquaintance and mapping logic. The [Content methods](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/overview) will allow you to retrieve static information from the Sellers, like the hotel list or the destination list.
 
 Due to the intricacies involved, the Content step is typically the most time-consuming. On average, Buyers developing Hotel-X spend approximately 12 days in this phase.
 
-![Alt text](image-4.png)
+![hotelx_onboarding_4](https://storage.travelgate.com/kbase/hotelx_onboarding_4.jpg)
 
 ### Booking Flow 🚀
 
-The [Booking Flow](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/methods/bookingflow/) step consists of two queries (Search and Quote) and one mutation (Book). Our Buyers typically allocate an average of 8 days to complete this step.
+The [Booking Flow](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/overview) step consists of two queries (Search and Quote) and one mutation (Book). Our Buyers typically allocate an average of 8 days to complete this step.
 
 
-![Alt text](image-5.png)
+![hotelx_onboarding_5](https://storage.travelgate.com/kbase/hotelx_onboarding_5.jpg)
 
 ### Booking Management 🔎
 
-The [Booking Management](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/methods/reservationmanagement/) step involves a query and a mutation, specifically Booking (booking details and list) and Cancel (cancellation). Among the Booking Management methods, you can also find the Amendment operations. On average, Buyers developing Hotel-X spend approximately 5 days in this step.
+The [Booking Management](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/overview) step involves a query and a mutation, specifically Booking (booking details and list) and Cancel (cancellation). Among the Booking Management methods, you can also find the Amendment operations. On average, Buyers developing Hotel-X spend approximately 5 days in this step.
 
 
-![Alt text](image-6.png)
+![hotelx_onboarding_6](https://storage.travelgate.com/kbase/hotelx_onboarding_6.jpg)
 
 ## First Partner Connection
 
 Through this pivotal step (you can request a new connection (live or test) while developing the Hotel-X API), we facilitate the establishment of the initial connection between you and the Seller you have an agreement with. Ensuring seamless communication and data exchange between the two platforms.
 
-![Alt text](image-7.png)
+![hotelx_onboarding_7](https://storage.travelgate.com/kbase/hotelx_onboarding_7.jpg)
 
-For a comprehensive understanding of how to initiate your first connection, we have provided detailed descriptions and instructions in two designated sections. By referring to these sections, you will find a [step-by-step guide](https://knowledge.travelgate.com/auto-activations-quickguide) on how to request your initial connection, as well as some [tips](#) to ensure the auto-connection process is performed successfully:
+For a comprehensive understanding of how to initiate your first connection, we have provided detailed descriptions and instructions in two designated sections. By referring to these sections, you will find a [step-by-step guide](/kb/connections/my-connections/guick-guide-to-auto-activations) on how to request your initial connection, as well as some [tips](#) to ensure the auto-connection process is performed successfully:
 
-![Alt text](image-8.png)
+![hotelx_onboarding_8](https://storage.travelgate.com/kbase/hotelx_onboarding_8.jpg)
 
 Upon successful testing of the methods during the auto-connection process, the connection of a new partner can be swiftly established within a matter of minutes or hours. However, in the event that any issues arise during this process, our diligent Activations team will conduct a manual review to resolve them. Please note that this manual review may extend the delivery time for the connection.
 
@@ -90,17 +90,17 @@ Upon successful testing of the methods during the auto-connection process, the c
 
 The final stage of our Hotel-X onboarding process is dedicated to facilitating your go-live with Hotel-X. During this critical phase, our team will provide extensive assistance in optimizing the API integration to ensure seamless functionality. We will guide you through the testing procedures to guarantee the integrity and reliability of the integration as well as the mapping process:
 
-![Alt text](image-9.png)
+![hotelx_onboarding_9](https://storage.travelgate.com/kbase/hotelx_onboarding_9.jpg)
 
-![Alt text](image-10.png)
+![hotelx_onboarding_10](https://storage.travelgate.com/kbase/hotelx_onboarding_10.jpg)
 
-![Alt text](image-11.png)
+![hotelx_onboarding_11](https://storage.travelgate.com/kbase/hotelx_onboarding_11.jpg)
 
 After successfully completing the mapping and testing steps, the subsequent step entails conducting your first live reservations with your Seller. As you proceed with live bookings, rest assured that our team will closely monitor the process to ensure its smooth operation.
 
 To provide you with valuable insights and transparency, we have implemented an automated update feature within the Connectivity Set Up panel. Once you reach a milestone of 10 bookings, this panel will be automatically updated to reflect the following page where we will ask you for your feedback:
 
-![Alt text](image-12.png)
+![hotelx_onboarding_12](https://storage.travelgate.com/kbase/hotelx_onboarding_12.jpg)
 
 ## Account configuration 🛠️
 

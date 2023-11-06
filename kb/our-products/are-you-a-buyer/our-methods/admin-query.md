@@ -17,7 +17,7 @@ Some of the fields returned through the Admin Query are:
 - Linked Profiles
 
 ### How can I retrieve Admin Query details through Hotel-X?💡
-You just need to follow the specifications in our [Documentation](https://docs.travelgatex.com/core/) and [API Playground](https://api.travelgatex.com/) and build your own Admin Query, as easy as that! Also, remember you are able to **personalize** the fields requested in order to receive only the information that matters to you in the response.
+You just need to follow the specifications in our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/admin/overview) and [API Playground](/playground) and build your own Admin Query, as easy as that! Also, remember you are able to **personalize** the fields requested in order to receive only the information that matters to you in the response.
  
 
 :::tip

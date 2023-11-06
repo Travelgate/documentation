@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 6
+sidebar_position: 7
 ---
 
 # 105 error - Payload too high
@@ -42,4 +42,4 @@ This error is returned whenever the size of the response by the Seller surpasses
  
 ### What can I do if I receive a 105 - "Payload to high" error in my response?✔️
 1. If you detect an increase of these errors, you should **contact the Seller** directly in order to check this information on their side and reduce the number of options/size of their responses.
-1. Should you need further support after checking this information with the Seller, do not hesitate to contact us again through a [ticket](https://knowledge.travelgate.com/guidelines-for-submitting-a-ticket-to-our-support-team) in our Portal and our team will be happy to help.
+1. Should you need further support after checking this information with the Seller, do not hesitate to contact us again through a [ticket](https://app.travelgatex.com/tickets) in our Portal and our team will be happy to help.

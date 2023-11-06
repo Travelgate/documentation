@@ -24,15 +24,13 @@ In the Hotel-X Booking Flow certification, we will be checking the following poi
 - Enabled GZIP compression header.
 - Understanding of the different payment types supported through Hotel-X.
 
-### What information do you need to provide for the certification?✔️
+### What information do you need to provide for the certification?
 
 In order to proceed with the certification we will need:
 
 - A cURL request and response of each of the Booking Flow methods and for all the cases detailed below:
 
-    ```
-    image
-    ```
+    ![hotelx_booking_flow_certification_1](https://storage.travelgate.com/kbase/hotelx_booking_flow_certification_1.jpg)
 
 
 - The resulting Hotel-X response interpretation screenshots of your system so we can ensure you are showing the information correctly. 
@@ -73,7 +71,4 @@ You can also activate any Seller you have an agreement with, even their producti
 
 ### How to apply for the Hotel-X Booking Flow certification 
 After completing all the cases, you must submit a ticket through the Booking Flow step certification in our Connectivity setup panel.
-
-```
-image
-```
+![Alt text](image-13.png)

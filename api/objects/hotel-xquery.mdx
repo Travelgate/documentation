@@ -48,34 +48,22 @@ type HotelXQuery {
   hotelConfigurationStatusService: ServiceStatus!
   defaultSettings(group: ID!, clientName: ID): HotelXDefaultSettings
   commonSettings(group: ID!, access: ID, supplier: ID): HotelXCommonSettings
-  boards(criteria: HotelXBoardQueryInput!, relay: RelayInput!): BoardConnection!
-  categories(
-    criteria: HotelXCategoryQueryInput!
-    relay: RelayInput!
-  ): CategoryConnection!
+  boards(criteria: HotelXBoardQueryInput!): BoardConnection!
+  categories(criteria: HotelXCategoryQueryInput!): CategoryConnection!
   hotels(
     criteria: HotelXHotelListInput!
-    relay: RelayInput!
     token: String
     filter: HotelXHotelFilterInput
   ): HotelConnection!
-  rooms(
-    criteria: HotelXRoomQueryInput!
-    relay: RelayInput!
-    token: String
-  ): RoomConnection!
+  rooms(criteria: HotelXRoomQueryInput!, token: String): RoomConnection!
   destinations(
     criteria: HotelXDestinationListInput!
-    relay: RelayInput!
     token: String
   ): DestinationConnection!
   destinationSearcher(
     criteria: HotelXDestinationSearcherInput!
   ): [DestinationSearchResult]!
-  metadata(
-    criteria: HotelXMetadataQueryInput!
-    relay: RelayInput!
-  ): MetadataConnection!
+  metadata(criteria: HotelXMetadataQueryInput!): MetadataConnection!
   search(
     criteria: HotelCriteriaSearchInput
     settings: HotelSettingsInput
@@ -175,29 +163,17 @@ type HotelXQuery {
 >
 > ##### [<code style={{ fontWeight: 'normal' }}>HotelXQuery.boards.<b>criteria</b></code>](#)<Bullet />[`HotelXBoardQueryInput!`](/api/inputs/hotel-xboard-query-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
 
-##### [<code style={{ fontWeight: 'normal' }}>HotelXQuery.boards.<b>relay</b></code>](#)<Bullet />[`RelayInput!`](/api/inputs/relay-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
-
->
-
 #### [<code style={{ fontWeight: 'normal' }}>HotelXQuery.<b>categories</b></code>](#)<Bullet />[`CategoryConnection!`](/api/objects/category-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
 
 > Query to obtain Categories
 >
 > ##### [<code style={{ fontWeight: 'normal' }}>HotelXQuery.categories.<b>criteria</b></code>](#)<Bullet />[`HotelXCategoryQueryInput!`](/api/inputs/hotel-xcategory-query-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
 
-##### [<code style={{ fontWeight: 'normal' }}>HotelXQuery.categories.<b>relay</b></code>](#)<Bullet />[`RelayInput!`](/api/inputs/relay-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
-
->
-
 #### [<code style={{ fontWeight: 'normal' }}>HotelXQuery.<b>hotels</b></code>](#)<Bullet />[`HotelConnection!`](/api/objects/hotel-connection) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="object"/>
 
 > Query to obtain Hotels
 >
 > ##### [<code style={{ fontWeight: 'normal' }}>HotelXQuery.hotels.<b>criteria</b></code>](#)<Bullet />[`HotelXHotelListInput!`](/api/inputs/hotel-xhotel-list-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
-
-##### [<code style={{ fontWeight: 'normal' }}>HotelXQuery.hotels.<b>relay</b></code>](#)<Bullet />[`RelayInput!`](/api/inputs/relay-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
-
->
 
 ##### [<code style={{ fontWeight: 'normal' }}>HotelXQuery.hotels.<b>token</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
 
@@ -213,10 +189,6 @@ type HotelXQuery {
 >
 > ##### [<code style={{ fontWeight: 'normal' }}>HotelXQuery.rooms.<b>criteria</b></code>](#)<Bullet />[`HotelXRoomQueryInput!`](/api/inputs/hotel-xroom-query-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
 
-##### [<code style={{ fontWeight: 'normal' }}>HotelXQuery.rooms.<b>relay</b></code>](#)<Bullet />[`RelayInput!`](/api/inputs/relay-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
-
->
-
 ##### [<code style={{ fontWeight: 'normal' }}>HotelXQuery.rooms.<b>token</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
 
 >
@@ -226,10 +198,6 @@ type HotelXQuery {
 > Query to obtain Destinations
 >
 > ##### [<code style={{ fontWeight: 'normal' }}>HotelXQuery.destinations.<b>criteria</b></code>](#)<Bullet />[`HotelXDestinationListInput!`](/api/inputs/hotel-xdestination-list-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
-
-##### [<code style={{ fontWeight: 'normal' }}>HotelXQuery.destinations.<b>relay</b></code>](#)<Bullet />[`RelayInput!`](/api/inputs/relay-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
-
->
 
 ##### [<code style={{ fontWeight: 'normal' }}>HotelXQuery.destinations.<b>token</b></code>](#)<Bullet />[`String`](/api/scalars/string) <Badge class="badge badge--secondary" text="scalar"/>
 
@@ -246,10 +214,6 @@ type HotelXQuery {
 > This method furnishes details regarding the supplier's meta information, allowing for efficient configuration.
 >
 > ##### [<code style={{ fontWeight: 'normal' }}>HotelXQuery.metadata.<b>criteria</b></code>](#)<Bullet />[`HotelXMetadataQueryInput!`](/api/inputs/hotel-xmetadata-query-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
-
-##### [<code style={{ fontWeight: 'normal' }}>HotelXQuery.metadata.<b>relay</b></code>](#)<Bullet />[`RelayInput!`](/api/inputs/relay-input) <Badge class="badge badge--secondary" text="non-null"/> <Badge class="badge badge--secondary" text="input"/>
-
->
 
 #### [<code style={{ fontWeight: 'normal' }}>HotelXQuery.<b>search</b></code>](#)<Bullet />[`HotelSearch`](/api/objects/hotel-search) <Badge class="badge badge--secondary" text="object"/>
 

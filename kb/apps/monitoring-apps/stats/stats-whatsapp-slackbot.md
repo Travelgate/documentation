@@ -31,5 +31,5 @@ If you're already a TravelgateX Partner, we have some exciting news for you! You
 By gaining early access to the Beta version of our Stats Bot, you'll have the opportunity to explore its features and benefits before anyone else. We value your Partnership and want to ensure you have the best tools at your disposal to enhance your business performance. So don't hesitate to get in touch with us and be a part of this exciting new development!
 
 :::info Give it a try!
-We're extending a warm invitation to you to dive into this incredible new tool and share your experiences with us and fellow TravelgateX Partners in our [Community](https://knowledge.travelgate.com/tgx-community). Your feedback is incredibly valuable to us as it allows us to continuously enhance and improve our services.
+We're extending a warm invitation to you to dive into this incredible new tool and share your experiences with us and fellow TravelgateX Partners in our [Community](kb/getting-started-with-travelgate/about-our-community.md). Your feedback is incredibly valuable to us as it allows us to continuously enhance and improve our services.
 :::

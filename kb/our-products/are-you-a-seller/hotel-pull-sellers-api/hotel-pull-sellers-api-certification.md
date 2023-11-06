@@ -20,7 +20,7 @@ The certification for the Hotel Pull Sellers Generic API is divided into three m
 The Hotel Pull Sellers Generic API Certification aims to test and verify the following information: 
 
 1. Usage of general data structure of our API.
-1. Correct application of the mandatory [content methods](https://docs.travelgatex.com/connectiontypessellers/hotelpullsellers/methods/data-structure/): Configuration, Geographic DestinationTree, HotelList, Descriptive Info, RoomList, MealPlanList, CategoryList and MetaData
+1. Correct application of the mandatory [content methods](/docs/apis/for-sellers/hotel-pull-sellers-api/content/overview): Configuration, Geographic DestinationTree, HotelList, Descriptive Info, RoomList, MealPlanList, CategoryList and MetaData
 1. Correct application of the Booking Flow and Management methods: Avail, Valuation, Reservation, ReservationRead, ReservationList and Cancel.
 1. The correct application of different distributions, mealplans, arrival and departure dates.
 1. The correct handling of payment types and prices (net, gross, commission, minimum selling price).
@@ -38,9 +38,7 @@ In order for us to be able to test and certify the integration, we will need you
 1. ReservationRead and ReservationList
 1. Static data
 
-```
-image
-```
+![hotel_pull_generic_api_certification_1](https://storage.travelgate.com/kbase/hotel_pull_sellers_api_generic_certification_1.jpg)
 
 
 ### How should I fill in my Certification File?🛠️

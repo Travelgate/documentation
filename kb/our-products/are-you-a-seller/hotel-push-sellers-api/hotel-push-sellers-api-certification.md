@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Hotel Push Sellers API Certification
+# Hotel Push Sellers Generic API Certification
 
 Ensuring that our Partners fully understand our API, can make good use of it and that the information transmitted is correct, is essential for a successful collaboration. That's why all the Partners connecting to our Platform through the Hotel Push Sellers API are required to pass a certification process.
 
@@ -39,22 +39,16 @@ Create one test hotel with two rates and one room per rate - fill in the hotel n
 
 - **Rates should include the following information:**
 
-	```
-	image
-	```
+	![hotel_push_sellers_api_certification_1](https://storage.travelgate.com/kbase/hotel_push_sellers_api_certification_1.jpg)
 
 - **Rooms should specify the following details:**
 
-	```
-	image
-	```
+	![hotel_push_sellers_api_certification_2](https://storage.travelgate.com/kbase/hotel_push_sellers_api_certification_2.jpg)
 
 
 - **Derived rates should have the following information:**
 
-	```
-	image
-	```
+	![hotel_push_sellers_api_certification_3](https://storage.travelgate.com/kbase/hotel_push_sellers_api_certification_3.jpg)
 
 In case you perform the set-up through the "HotelRatePlanInventoryNotif" method, we will need you to provide, along the [Inventory Certification file 1](https://f.hubspotusercontent20.net/hubfs/2825176/InventoryX%20Certification%20File%201.odt), the complete request/response logs under the following names: 
 
@@ -67,39 +61,26 @@ In order to create the SetUp for your hotels, simply follow the steps below:
 1. Run your tests with TravelgateX "**Hotel Test Pruebas Travelgate (Andorra la Vella)" (hotel code 23).**
 1. First of all, **add the aforementioned hotel to your Inventory SetUp** section and add its rates and rooms:
 
-```
-image
-```
+	![hotel_push_sellers_api_certification_4](https://storage.travelgate.com/kbase/hotel_push_sellers_api_certification_4.jpg)
 
 - **Rates should include the following information:**
-	```
-	image
-	```
+	![hotel_push_sellers_api_certification_5](https://storage.travelgate.com/kbase/hotel_push_sellers_api_certification_5.jpg)
 	For instance:
 
-	```
-	image
-	```
-	```
-	image
-	```
+	![hotel_push_sellers_api_certification_6](https://storage.travelgate.com/kbase/hotel_push_sellers_api_certification_6.jpg)
+	![hotel_push_sellers_api_certification_7](https://storage.travelgate.com/kbase/hotel_push_sellers_api_certification_7.jpg)
 
 - **Rooms should specify the following details:**
 
-	```
-	image
-	```
+	![hotel_push_sellers_api_certification_8](https://storage.travelgate.com/kbase/hotel_push_sellers_api_certification_8.jpg)
 	For instance:
 
-	```
-	image
-	```
+	![hotel_push_sellers_api_certification_9](https://storage.travelgate.com/kbase/hotel_push_sellers_api_certification_9.jpg)
+	![hotel_push_sellers_api_certification_10](https://storage.travelgate.com/kbase/hotel_push_sellers_api_certification_10.jpg)
 
 
 - **Derived rates should have the following information:**
-	```
-	image
-	```
+	![hotel_push_sellers_api_certification_11](https://storage.travelgate.com/kbase/hotel_push_sellers_api_certification_11.jpg)
  
 Once the SetUp is done, we are ready to start with the Product Load and Booking Management phase.
 
@@ -110,10 +91,7 @@ The Product Load phase is divided into two parts:
 1. **Retrieve methods:** HotelRatePlanRetrieve and HotelAvailRetrieve.
 
 Once all the scenarios included in the Certification File have been performed, we will need you to check our Extranet (Calendar) in order to make sure that the availability and amounts pushed are correct and the ones expected on your side.
-
-	```
-	image
-	```
+![hotel_push_sellers_api_certification_12](https://storage.travelgate.com/kbase/hotel_push_sellers_api_certification_12.jpg)
 
 :::note
 Once you have completed the SetUp and loaded your product, you just need to **apply for the Hotel Push Sellers API certification** option via our website and attach the Hotel Push Sellers API certification file 1.
@@ -142,5 +120,5 @@ Congratulations on your certification! Let's explore the next steps you should t
 
 
 :::info
-Don't forget to check our [Inventory Documentation](https://docs.travelgatex.com/inventory-x/extranet/) and [YouTube video tutorials](https://knowledge.travelgate.com/inventory-set-up) for further information on our Inventory Extranet!
+Don't forget to check our [Inventory Documentation](/docs/apps/inventory/extranet/overview) and [YouTube video tutorials](/kb/our-products/are-you-a-buyer/inventory/how-tos/how-to-set-up-and-load-product-inventory) for further information on our Inventory Extranet!
 :::

@@ -5,14 +5,14 @@ sidebar_position: 4
 # What exactly is Hotel-X and why should I develop it?
 ### Whether you want to aggregate or not, Hotel-X has got you covered. It's your business, it's your call.
 
-[Hotel-X Pull Buyers API](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/) is a GraphQL-based powerful aggregating API. A single connection provides you a gateway to the largest Network of Buyers and Sellers, trusted by industry leaders and niche providers around the world.
+[Hotel-X Pull Buyers API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart) is a GraphQL-based powerful aggregating API. A single connection provides you a gateway to the largest Network of Buyers and Sellers, trusted by industry leaders and niche providers around the world.
 
 _Connecting new Sellers has never been so easy - no extra developments, no maintenance._
 
 ### What makes Hotel-X different?🚀
 The Hotel-X API **aggregates results** from multiple Sellers. Whether you prefer to aggregate at hotel level or at hotel and room type level, or even hotel, room type and rate plan level or don’t aggregate at all, we got you covered. It’s your business, it’s your call.
 
-And it doesn’t stop there: Hotel-X functionalities can be easily extended by adding our [Plugins](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/plugins/). Any business need you might think of can be easily implemented. Do you want to avoid duplicate bookings? Add the [Booking Persistence](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/plugins/) plugin. Want to search by Destination? No worries! Leverage the power and flexibility of Hotel-X to get an edge over your competitors. Simple. Flexible. Beautiful.
+And it doesn’t stop there: Hotel-X functionalities can be easily extended by adding our [Plugins](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/overview). Any business need you might think of can be easily implemented. Do you want to avoid duplicate bookings? Add the [Booking Persistence](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/overview) plugin. Want to search by Destination? No worries! Leverage the power and flexibility of Hotel-X to get an edge over your competitors. Simple. Flexible. Beautiful.
 
 :::info
 Hotel-X is the Industry’s **first non-opinionated API** that is fast becoming the new standard in Travel connectivity.
@@ -38,6 +38,6 @@ Some of Hotel-X key benefits are:
 - **95%** of our Partners are very satisfied with the amount of support received during the development phase.
 
 :::tip
-Learn more about Hotel-X on our [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/)📑
+Learn more about Hotel-X on our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart)📑
 :::
  

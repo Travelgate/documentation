@@ -75,5 +75,5 @@ In our system, the Channel Manager (CM) is responsible for loading availability 
  
 :::info **Discover more!**
 
-Dive into our comprehensive [Documentation](https://docs.travelgatex.com/inventory/extranet/) to unlock the full potential of the Inventory extranet. Explore its functionalities, tools, and unleash your expertise!
+Dive into our comprehensive [Documentation](/docs/apps/inventory/extranet/overview) to unlock the full potential of the Inventory extranet. Explore its functionalities, tools, and unleash your expertise!
 :::

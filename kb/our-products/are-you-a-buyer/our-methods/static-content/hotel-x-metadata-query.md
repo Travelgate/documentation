@@ -37,5 +37,5 @@ Since Metadata information may not be updated by our Sellers frequently (they up
 
  
 :::tip
-Learn more about Metadata Query on our [Playground](https://api.travelgatex.com/playground) and [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata). 
+Learn more about Metadata Query on our [Playground](/playground) and [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata). 
 :::

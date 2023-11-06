@@ -11,6 +11,4 @@ In order to edit an access, simply follow the steps below:
 1. Select "Edit access" from the drop-down menu.
 1. You will be able visualize your current credentials for that specific access and modify your details accordingly (only editable information).
 
-```
-image
-```
+![edit_access](https://storage.travelgate.com/kbase/edit_access.jpg)

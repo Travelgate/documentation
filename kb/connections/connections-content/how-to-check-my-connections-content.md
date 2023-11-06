@@ -30,7 +30,7 @@ Efficiently managing your content without relying on TravelgateX intervention is
 		- GIATA ID
 		- Last upload
 		- Additional information: you can visualize it by clicking on a property.
-	1. "[Force update](https://knowledge.travelgate.com/force-portfolio-update)" functionality.
+	1. "[Force update](/kb/connections/connections-content/how-to-force-portfolio-update)" functionality.
 	1. "Get CSV" functionality
 
 

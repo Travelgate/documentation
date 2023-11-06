@@ -5,7 +5,7 @@ sidebar_position: 5
 # How can I know the currencies supported by a Seller?
 
 ### How can I obtain information about the currencies supported by a specific Seller?🔎
-To determine the languages supported by a particular Seller, you can utilize our [Metadata Query](https://knowledge.travelgate.com/hotel-x-development-metadata) method or request this information directly to the Seller.
+To determine the languages supported by a particular Seller, you can utilize our [Metadata Query](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-metadata-query) method or request this information directly to the Seller.
 
 ### And what happens if the Seller doesn't support the currency requested in Search?💡
 In this case, two scenarios are possible:
@@ -14,5 +14,5 @@ In this case, two scenarios are possible:
 1. The Seller returns the currency set up on their end for your credentials.
 
 :::tip
-Don't forget to check our [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/) and [Hotel-X Schema](https://api.travelgatex.com/) for further information🚀
+Don't forget to check our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart) and [Hotel-X Playground](/playground) for further information🚀
 :::

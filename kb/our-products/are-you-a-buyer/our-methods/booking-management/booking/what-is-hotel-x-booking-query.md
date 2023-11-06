@@ -16,12 +16,10 @@ Some of the fields returned are:
 - Remarks
 - Status
 
-```
-image
-```
+![booking_query_3](https://storage.travelgate.com/kbase/booking_query_3.jpg)
 
 ### How can I find out if a Seller only accepts a specific type of Booking Query?✅
-Please note that **the queryable fields available by a Seller may vary between Sellers**. You can check the restrictions and fields returned/allowed for a specific Seller via our [Metadata Query](https://knowledge.travelgate.com/hotel-x-development-metadata):
+Please note that **the queryable fields available by a Seller may vary between Sellers**. You can check the restrictions and fields returned/allowed for a specific Seller via our [Metadata Query](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata):
 
 **Metadata Query request:**
 ```

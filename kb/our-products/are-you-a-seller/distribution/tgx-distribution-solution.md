@@ -18,23 +18,23 @@ Without the appropriate tools, these tasks can be challenging to accomplish effi
 
 :::note
 **Looking to dive deeper into currency exchange?** Check out these handy links for more information on how to work with it:
-- [Distribution Extranet Documentation](https://docs.travelgatex.com/inventory-x/extranet/): Apply and configure currency business rules.
-- [FTP files](https://docs.travelgatex.com/distribution/file-loads/masters/currencies/): Create a file with your very own currency exchange and take control of your currency conversions!
+- [Distribution Extranet Documentation](/docs/apps/distribution/extranet/overview): Apply and configure currency business rules.
+- [FTP files](/docs/apps/distribution/files/external-files/masters/currencies): Create a file with your very own currency exchange and take control of your currency conversions!
 :::
 
 ### How can I aggregate my direct contracts with hotel and third-party Suppliers?🏨
-When combining buying from your contracted hotels and other Suppliers with no required API, your best alternative is combining our [Inventory](https://knowledge.travelgatex.com/channel-managers-benefits) and Distribution solutions.
+When combining buying from your contracted hotels and other Suppliers with no required API, your best alternative is combining our [Inventory](/kb/our-products/are-you-a-buyer/inventory/what-is-inventory) and Distribution solutions.
 
 ![distribution_soluion_1](https://storage.travelgate.com/kbase/distribution_solution_1.jpg)
 
  
 ### What are the different tools that are included in TravelgateX Distribution Solution?🛠️
 
-- [Inventory](https://docs.travelgatex.com/inventory-x/extranet/): Our simple extranet facilitates connections with over 50 Channel managers, enabling you to manage manual rates and create user profiles for your contract/loading team or hotels.
-- [Distribution](https://docs.travelgatex.com/distribution/): With our Distribution tool, you can consolidate your direct contracts and Channel Managers with other Pull Suppliers available on our Platform. Creating new connections and uploading master and [mapping files](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/plugins/mapping/) via FTP makes the process seamless.
+- [Inventory](/docs/apps/inventory/extranet/overview): Our simple extranet facilitates connections with over 50 Channel managers, enabling you to manage manual rates and create user profiles for your contract/loading team or hotels.
+- [Distribution](/docs/apps/distribution/overview): With our Distribution tool, you can consolidate your direct contracts and Channel Managers with other Pull Suppliers available on our Platform. Creating new connections and uploading master and [mapping files](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping) via FTP makes the process seamless.
 
 	Once your product setup is complete, you gain full control to manage your Agencies or Distribution Channels, apply specific or general business rules like markups, currency exchange, or blacklists, and conveniently check or download booking details. You can carry out these operations effortlessly using our **Distribution Extranet or rule files loaded via FTP**. 
-- [Hotel-X Buyers API](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/): Hotel-X appears twice in our Distribution schema because it serves as our Buyers API, allowing your customers to connect with you (some Buyers may still use our old Legacy API). Moreover, it is the API you will also utilize to buy product from your Sellers. The good news is that you won't need to develop the Hotel-X API as a Buyer since our Distribution layer is already internally connected with it.
+- [Hotel-X Buyers API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart): Hotel-X appears twice in our Distribution schema because it serves as our Buyers API, allowing your customers to connect with you (some Buyers may still use our old Legacy API). Moreover, it is the API you will also utilize to buy product from your Sellers. The good news is that you won't need to develop the Hotel-X API as a Buyer since our Distribution layer is already internally connected with it.
 
 ### How can I apply complex business rules to my Buyers?💡
 Enhance your API connectivity with Buyers by utilizing Distribution as an extra layer. Load complex business rules such as markup conditions, currency rules, blacklists, and multiple selling rules through FTP files or manually via our user-friendly Distribution Extranet. Customize your business rules with ease!
@@ -64,6 +64,6 @@ If you're interested in our Distribution Solution, simply reach out to our **Onb
 
  
 :::tip
-Remember to check out our [Distribution Documentation](https://docs.travelgatex.com/distribution/) and learn all about our Distribution solution!📝🚀
+Remember to check out our [Distribution Documentation](/docs/apps/distribution/overview) and learn all about our Distribution solution!📝🚀
 :::
  

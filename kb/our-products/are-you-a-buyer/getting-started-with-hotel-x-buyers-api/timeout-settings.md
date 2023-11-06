@@ -39,6 +39,7 @@ You can either set this information at a request level (in your query "settings"
         "auditTransactions": false,
         "timeout": 24700,
 ...
+  }
 ```
 Or you can set a **default timeout value** in your API Settings - more information here.
 
@@ -54,8 +55,4 @@ If you are using our Hotel Buyers Legacy API, note that the timeout setup should
 
 1. **HUB timeout**: this value indicates the time limit for a given request at TravelgateX.
 1. **Supplier timeout**: this value indicates the time limit for a given request to a Seller. Please note the HUB timeout value should be set at least 300 ms higher than the Supplier timeout value in order to have enough time to parse the Seller's response.
-
-
-```
-image
-```
+![timeout_settings](https://storage.travelgate.com/kbase/timeout_settings_1.jpg)

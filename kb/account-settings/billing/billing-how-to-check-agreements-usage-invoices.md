@@ -11,7 +11,7 @@ sidebar_position: 1
 	![billing_access_1](https://storage.travelgate.com/kbase/billing_access_billing_1.jpg)
 1. Use the tabs provided in order to check your Agreements, Usage or Invoices.
 
-	![billing_settings_2](https://stplaformwe.blob.core.windows.net/kbase/billing_settings_2.jpg)
+	![billing_settings_2](https://storage.travelgate.com/kbase/billing_settings_2.jpg)
 ### How can I manage my agreements? 📑
 
 1. Click on the "Agreements" (first tab).
@@ -29,16 +29,15 @@ sidebar_position: 1
 Only **owner** and **admin** users have access to the complete menu.
 :::
 
-![billing_manage_agreements](https://stplaformwe.blob.core.windows.net/kbase/billing_manage_agreements_3.jpg)
-
-### How can I request a payment type change for one of my Partners?💡
+![billing_manage_agreements](https://storage.travelgate.com/kbase/billing_manage_agreements_3.jpg)
 
 
-1. It's possible that you and your Partner are currently splitting the cost of the connection under a Standard Payment Agreement. If you're interested in switching to a free arrangement where your Partner takes on the payment responsibility, you'll need to **wait for their acceptance** before proceeding with the change. If needed, you can also cancel the request.
+### How can I request a payment type change for one of my Partners?
+It's possible that you and your Partner are currently splitting the cost of the connection under a Standard Payment Agreement. If you're interested in switching to a free arrangement where your Partner takes on the payment responsibility, you'll need to **wait for their acceptance** before proceeding with the change. If needed, you can also cancel the request.
 
-	![payment_change_4](https://storage.travelgate.com/kbase/billing_payment_change_4.jpg)
+![payment_change_4](https://storage.travelgate.com/kbase/billing_payment_change_4.jpg)
 
-	![payment_change_5](https://storage.travelgate.com/kbase/billing_payment_change_5.jpg)
+![payment_change_5](https://storage.travelgate.com/kbase/billing_payment_change_5.jpg)
 
 1. Other modifications, such as switching from **Free to Standard** or **Standard to Supplement**, do not require Partner confirmation as the total cost of the connection is assumed. These changes can be processed automatically.
 1. Additionally, you will have access to the **historical record** of changes made in each agreement:
@@ -48,6 +47,6 @@ Only **owner** and **admin** users have access to the complete menu.
 :::info Important:
 - Keep in mind that your Partner needs to log in through their Profile to **accept the payment change request**. They will receive a notification in the bell-shaped icon located on the right side of the settings menu.
 - Any changes made to the payment type will apply to all reservations with an entry date starting from the first day of the following calendar month after the notification.
-- Remember, if you have an agreement 2023, you will have the option to **choose the Payment Type** during the [auto-activation process](https://knowledge.travelgate.com/the-auto-activation-process). If you are not familiar with this process, we also recommend taking a look at the following article [Important points when requesting a new connection](https://knowledge.travelgate.com/before-activation-request).
+- Remember, if you have an agreement 2023, you will have the option to **choose the Payment Type** during the [auto-activation process](/kb/connections/my-connections/auto-activations-process). If you are not familiar with this process, we also recommend taking a look at the following article [Important points when requesting a new connection](/kb/connections/my-connections/important-points-when-requesting-a-new-connection).
 - A payment change **can only be requested if you're adhering to the Commercial Agreement 2023**.
 :::

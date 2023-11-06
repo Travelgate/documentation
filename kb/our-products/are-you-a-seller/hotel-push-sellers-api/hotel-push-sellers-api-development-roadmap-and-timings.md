@@ -7,9 +7,7 @@ sidebar_position: 2
 Starting a new development is always a tricky task due to the lack of information surrounding the project and the difficulty to estimate the resources and time required. That lack of information leads to an under or over estimation of the resources needed and consequently to the inefficiency and ineffectiveness of the project planning, as well as a waste of time and resources.
 At TravelgateX we want to ease that process by providing all the necessary information, roadmap and timings to effectively calculate the amount of resources and timing that will require to develop the Hotel Push Sellers API.
 
-```
-image
-```
+![hotel_push_sellers_api_development_roadmap_timings_1](https://storage.travelgate.com/kbase/hotel_push_sellers_api_development_roadmap_timings_1.jpg)
 
 
 The Hotel Push Sellers API onboarding process is composed of 5 milestones:
@@ -37,17 +35,15 @@ We've also added a hotel, so you can test the implemented methods with it:
 	On average, the Sellers developing Hotel Push Sellers API spend approximately **9 days** in this phase.
 
 	This is the phase where the Sellers needs to implement HotelRatePlanInventoryRetrieve messages to retrieve the hotelier inventory and map it into their system. Optionally, Sellers can set up the product using HotelRatePlanInventoryNotif messages.
-
-
 	:::info
-	Further information on our Hotel Push Sellers [API Documentation](https://docs.travelgatex.com/inventory-x/api-reference/messages/set-up/).
+	Further information on our Hotel Push Sellers [API Documentation](/docs/apis/for-sellers/hotel-push-sellers-api/availability-rates-and-inventory/inventory).
 	:::
 
 2. **The Product Upload Phase**  
 	Here, providers need to implement HotelRatePlanNotif and HotelAvailNotif messages in order to synchronize hotelier rates and availability. Optionally, Sellers can read all the properties of their product loaded on our system using HotelAvailRetrieve and HotelRatePlanRetrieve messages.
 
 	:::info
-	Further information on our Hotel Push Sellers [API Documentation](https://docs.travelgatex.com/inventory-x/api-reference/messages/product-load/).
+	Further information on our Hotel Push Sellers [API Documentation](/docs/apis/for-sellers/hotel-push-sellers-api/availability-rates-and-inventory/rates).
 	:::
 
 	The product upload phase takes, on average, **14 days** tour our Sellers.
@@ -56,7 +52,7 @@ We've also added a hotel, so you can test the implemented methods with it:
 	In this final phase providers can receive an instant API notification from TGX through HotelResNotif message (for bookings) and CancelNotif message (for cancellations). If the Seller doesn�t allow Push notifications to their system, it is possible to implement HotelResRetrieve messages in order to obtain a list of bookings from the Hotel Push Sellers API system.
 
 	:::info
-	Further information on our Hotel Push Sellers [API Documentation](https://docs.travelgatex.com/inventory-x/api-reference/messages/booking-flow/). 
+	Further information on our Hotel Push Sellers [API Documentation](/docs/apis/for-sellers/hotel-push-sellers-api/availability-rates-and-inventory/overview). 
 	:::
 
 Our booking management methods takes, on average, **7 days** to our Sellers.
@@ -67,13 +63,12 @@ Adding up the three phases, it takes **a total of 30 days** to develop our Hotel
 
 ### Hotel Push Sellers API certification
 In order to certify that Hotel Push Sellers API has been developed and all the implemented methods work correctly we will need you to provide a specific set of information - more information [here](/kb/our-products/are-you-a-seller/hotel-push-sellers-api/hotel-push-sellers-api-certification.md).
-
 On average, Sellers spend **15 days** approximately to certify Hotel Push Sellers API.
 
 ### Buyer activation
 Thanks to our automatic activation process, connecting a new Buyer takes on average **2 days**.
 
 Live
-Here the Buyer should perform the mapping work and the testings prior going live, so it has a noticeable impact in the total onboarding time (more information [here](https://knowledge.travelgatex.com/already-certified-now-what-1)). It takes, on average, **7 days**
+Here the Buyer should perform the mapping work and the testings prior going live, so it has a noticeable impact in the total onboarding time (more information [here](/kb/our-products/are-you-a-seller/hotel-push-sellers-api/hotel-push-sellers-api-already-certified)). It takes, on average, **7 days**
 
 Adding up all the milestones timings, it makes, on average, a total of **54 days** to fully develop Hotel Push Sellers API and go live with the first Buyer.   

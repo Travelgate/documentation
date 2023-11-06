@@ -4,16 +4,16 @@ sidebar_position: 3
 
 # Key concepts
 
-In order to successfully embark on the journey of finding and booking hotel rooms through the Travelgate APIs and APPs, it is essential to familiarize yourself with a few important concepts. By understanding these fundamental ideas, you will gain the necessary knowledge and skills to navigate through this process effortlessly.
+In order to successfully embark on the journey of finding and booking hotel rooms through the TravelgateX APIs and APPs, it is essential to familiarize yourself with a few important concepts. By understanding these fundamental ideas, you will gain the necessary knowledge and skills to navigate through this process effortlessly.
 
 ### Seller
-A Seller uses the TravelgateX platform to sell travel services such as hotels for their customers. Sellers include DMCs, channel managers, hotels, tour operators, niche travel service providers.
+A Seller uses the TravelgateX platform to sell travel services such as hotels for their customers. Sellers include DMCs, Hotels, Channel Managers, Tour Operators, niche travel service providers etc.
 
 ### `Supplier`
 A `supplier` refers to the API integration used by the Seller to establish a connection, enabling the Seller to offer accommodation services. Each `supplier` is assigned a unique supplier code, which serves as a distinct identifier. It's important to note that one Seller can have multiple supplier codes. For instance, a Seller might have separate supplier codes if they provide their product via both PULL and PUSH integrations at the same time.
 
 ### Buyer
-A Buyer uses the TravelgateX platform to book travel services such as hotels for their customers. Buyers include online travel agents, tour operators, niche travel service providers, and travel and pricing apps.
+A Buyer uses the TravelgateX platform to book travel services such as hotels for their customers. Buyers include Travel Agencies, Tour Operators, Tech Platforms etc.
 
 ### `Client`
 A `client` is a tag or label that Buyers use to categorize their traffic. The `client` is the entity that purchases accommodation services via the Hotel-X API. These codes also ensure that the business has a designated configuration assigned to it.
@@ -24,7 +24,7 @@ You can have multiple client codes, for instance, to separate traffic for B2B an
 `Context` is a term used to describe the content codes used by both Buyers and Sellers. Every Supplier has their own unique `context`, which consists of specific codes for items like hotels, boards, and rooms. Buyers can either adopt their own `context` or the ones provided by the Supplier. When employing their own `context`, Buyers can either apply their own codes or engage a content provider (e.g. GIATA), in both cases creating their own `context` using our [Mapping Plugin](../apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping.mdx).
 
 ### `Access`
-An `access` is the set of credentials and the authentication configuration that enables a Buyer to connect to a Seller. It is used to differentiate among Sellers and also to filter different credentials and configurations from the same Seller (e.g. B2B and B2C feeds). 
+An `access` is the set of credentials and the authentication configuration that enables a Buyer to connect to a Partner. It is used to differentiate among Sellers and also to filter different credentials and configurations from the same Partner (e.g. B2B and B2C feeds). 
 
 For Hotel-X implementation and testing purposes, we recommend using the following 
 accesses:

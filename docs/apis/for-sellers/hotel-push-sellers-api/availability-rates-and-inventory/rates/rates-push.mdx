@@ -1,14 +1,14 @@
 ---
-sidebar_position: 4
+sidebar_position: 1
 ---
 
-# Rates
+# Rate Push
 
-The `HotelRatePlanNotif` message contains information about rate prices and supplements. No rate information will be returned except code, currency and status.
+The `HotelRatePlanNotif` request message pushes rate plans for the [inventory](../inventory/inventory-push) that has been previously setup.
 
 ## Request
 
-[Añadir ejemplos]
+[Añadir ejemplo]
 
 ### Request Data Breakdown
 
@@ -58,7 +58,6 @@ The `HotelRatePlanNotif` message contains information about rate prices and supp
 | ../SellableProduct          | 1..n |         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | @InvCode                    | 1    | Integer | Room code                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | @InvType                    | 1    | Integer | `ROOM`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-
 
 ### Price Use Cases
 
@@ -865,39 +864,32 @@ When a price is charged **per Occupancy** means that this price will only be ava
 
 ## Response
 
-After each request, a response should be provided from your side. If a `HotelRatePlanNotif` request is received, a corresponding `HotelRatePlanNotif` response should be sent. There are two response options, **success** or **error**.
+After each request, Travelgate will process the data and provide you with a response. Upon receiving a `HotelRatePlanNotif` request, Travelgate will send you a corresponding `HotelRatePlanNotif` response. The response options include either **success** or an **error**.
 
-:::caution
-
-Our system has a timeout of 5000ms. If no response occurs within this timeframe, we won't attempt to resend the request. It is recommended that your system processes our requests with an average handling time of 100ms.
-
-:::
-
-
-**Success:**
+### Success
 
 ```html
-<HotelRatePlanNotifResponse xmlns = "http://schemas.xmltravelgate.com/hubpush/provider/2012/10">
+<HotelRatePlanNotifResponse xmlns="http://schemas.xmltravelgate.com/hubpush/provider/2012/10">
     <HotelRatePlanNotifResult>
-        <Success xmlns = "http://www.opentravel.org/OTA/2003/05"/>
+        <Success xmlns="http://www.opentravel.org/OTA/2003/05"/>
     </HotelRatePlanNotifResult>
 </HotelRatePlanNotifResponse>
 ```
 
-**Error:**
+### Error
 
 ```html
-<HotelRatePlanNotifResponse xmlns = "http://schemas.xmltravelgate.com/hubpush/provider/2012/10">
+<HotelRatePlanNotifResponse xmlns="http://schemas.xmltravelgate.com/hubpush/provider/2012/10">
     <HotelRatePlanNotifResult>
-        <Errors xmlns = "http://www.opentravel.org/OTA/2003/05">
-            <Error ShortText = "HotelCode or RatePlanList not found" Code = "2"/>
+        <Errors xmlns="http://www.opentravel.org/OTA/2003/05">
+            <Error ShortText="Incomplete AdditionalGuestAmount values" Code="7"/>
         </Errors>
     </HotelRatePlanNotifResult>
 </HotelRatePlanNotifResponse>
 ```
 
 <details>
-    <summary>Error codes that you need to include in the response in case of an error</summary>
+    <summary>Error codes you could receive in the response while setting up and loading the product</summary>
     <div>
         <div>
          <table>
@@ -914,66 +906,110 @@ Our system has a timeout of 5000ms. If no response occurs within this timeframe,
 				<tbody>
 					<tr>
 						<td>-1</td>
-						<td>Validation error</td>
+						<td>Unexpected error</td>
 					</tr>
 					<tr>
 						<td>1</td>
-						<td>POS credentials not found</td>
+						<td>Invalid request</td>
 					</tr>
 					<tr>
-						<td>2</td>
-						<td>HotelCode or RatePlanList not found</td>
+						<td>10</td>
+						<td>Invalid hotel id</td>
 					</tr>
                     <tr>
-						<td>3</td>
+						<td>11</td>
+						<td>Invalid dates</td>
+					</tr>
+					<tr>
+						<td>12</td>
+						<td>Invalid rate plan code</td>
+					</tr>
+					<tr>
+						<td>13</td>
+						<td>Invalid reservation id</td>
+					</tr>
+                    <tr>
+						<td>14</td>
+						<td>Invalid derived rate adjust values</td>
+					</tr>
+					<tr>
+						<td>15</td>
+						<td>Invalid id</td>
+					</tr>
+					<tr>
+						<td>16</td>
+						<td>Invalid amount type</td>
+					</tr>
+                    <tr>
+						<td>17</td>
+						<td>Invalid supplement type</td>
+					</tr>
+                    <tr>
+						<td>18</td>
+						<td>Invalid number of hotel</td>
+					</tr>
+                    <tr>
+						<td>19</td>
+						<td>Invalid rate currency code</td>
+					</tr>
+                    <tr>
+						<td>20</td>
+						<td>Requestor id not found</td>
+					</tr>
+                    <tr>
+						<td>21</td>
+						<td>Provider id not found</td>
+					</tr>
+                    <tr>
+						<td>22</td>
+						<td>Rooms not found</td>
+					</tr>
+                    <tr>
+						<td>23</td>
 						<td>Rates not found</td>
 					</tr>
-					<tr>
-						<td>4</td>
-						<td>Incomplete Rate values</td>
-					</tr>
-					<tr>
-						<td>6</td>
-						<td>Incomplete AvailStatusMessage StatusApplicationControl Values</td>
+                    <tr>
+						<td>30</td>
+						<td>Occupation error</td>
 					</tr>
                     <tr>
-						<td>7</td>
-						<td>Incomplete AdditionalGuestAmount values</td>
+						<td>31</td>
+						<td>Rate error</td>
 					</tr>
-					<tr>
-						<td>8</td>
-						<td>SellableProduct not found</td>
+                    <tr>
+						<td>32</td>
+						<td>Avail rq error</td>
 					</tr>
-					<tr>
-						<td>9</td>
-						<td>Room not found in SellableProduct</td>
+                    <tr>
+						<td>33</td>
+						<td>Data Base error</td>
+					</tr>
+                    <tr>
+						<td>34</td>
+						<td>Cancel error</td>
+					</tr>
+                    <tr>
+						<td>35</td>
+						<td>Confirmation error</td>
+					</tr>
+                    <tr>
+						<td>36</td>
+						<td>Valuation_error</td>
+					</tr>
+                    <tr>
+						<td>37</td>
+						<td>Authorization error</td>
+					</tr>
+                    <tr>
+						<td>38</td>
+						<td>Authentication error</td>
+					</tr>
+                    <tr>
+						<td>90</td>
+						<td>Connection time out</td>
 					</tr>
 				</tbody>
 			</table>
         </div>
-    </div>
-</details>
-
-## Frequently asked questions
-
-<details>
-<summary>How can I calculate the final price, AmountAfterTax, taking into account the taxes?</summary>
-<p>Note that there are two types of taxes (and that taxes are optional): Inclusive taxes must be included in the final price. While taxes different from inclusive or not specified, are paid directly at the hotel, they are provided for informational purposes only.</p> 
-<p>Taxes are found in HotelRatePlanInventoryNotif, and prices in HotelRatePlanNotif. To calculate the total price, you'll need information from both sources.</p>
-<p><b>·</b> If this rate plan (for which you already know the price) includes <b>inclusive</b> taxes, you'll need to add them to the price to get the total.</p> 
-<p><b>·</b> However, if taxes are <b>different from inclusive or not specified</b>, your final price will remain as you originally knew it.</p>
-</details>
-
-<details>
-    <summary>When a Supplement is added to a RatePlan, what is its purpose?</summary>
-    <div>
-        <div>Rate plans have only one meal plan associated with them. In the event that additional meal plan options are desired to add for the same rate plan, they are included as supplements to this rate plan.</div>
-    </div>
-</details>
-
-<details>
-    <summary>What happens if more than one price type is loaded for the same day or range of days and for the same room(s)?</summary>
-    <div>
-        <div>If the same request contains two different price types (for example, price per room and price per standard occupancy), the cheapest one is returned.</div>
     </div>
 </details>

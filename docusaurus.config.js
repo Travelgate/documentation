@@ -99,7 +99,8 @@ const config = {
         indexBlog: false,
         explicitSearchResultPath: true,
         docsDir: ["docs", "api", "kb"],
-        // searchContextByPaths: ["docs", "api", "kb"],
+        docsRouteBasePath: "/",
+        //searchContextByPaths: ["docs", "api", "kb"],
         highlightSearchTermsOnTargetPage: true,
         // docsPluginIdForPreferredVersion: "docs",
         // For Docs using Chinese, The `language` is recommended to set to:

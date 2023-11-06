@@ -32,7 +32,13 @@ The following request headers are essential for all request methods and must be 
 
 2. **POS Level**
 
-   The POS level is incorporated into the body of all requests. It comprises two fields: RequestorID, which represents the seller code assigned to initiate the request, and CompanyName, which signifies the buyer code assigned to receive the updates
+   The POS level is incorporated into the body of all requests. It comprises two fields: RequestorID, which represents the seller code assigned to initiate the request, and CompanyName, which signifies the buyer code assigned to receive the updates.
+
+   :::caution
+
+   You will find the RequestorID (Seller Code) and CompanyName (Buyer Code) values in the email we will send you once the connection is established.
+
+   :::
 
    ```html
    <SOAP-ENV:Envelope xmlns:SOAP-ENV = "http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1 = "http://www.opentravel.org/OTA/2003/05" xmlns:ns2 = "http://schemas.xmltravelgate.com/hubpush/provider/2012/10" xmlns:ns3 = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">

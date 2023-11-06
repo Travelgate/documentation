@@ -4,6 +4,17 @@ sidebar_position: 1
 
 # Overview
 
-Providers need to implement the `HotelRatePlanInventoryNotif` message to set up the product (hotel, rate, room). Using the `HotelRatePlanInventoryRetrieve` message, they will be able to retrieve the static product (hotel, rate, room) to map the hotelier inventory into their system.
+In the context of the Hotel Push Sellers API, you can both push and retrieve information about **Availability**, **Rates**, and **Inventory** (ARI).
 
-The `HotelRatePlanNotif` and `HotelAvailNotif` messages allow providers to synchronize hotelier rates and availability. Optionally, providers can retrieve all the properties of their product loaded on our system using the `HotelAvailRetrieve` and `HotelRatePlanRetrieve` messages.
+When you **push data**, you'll need to submit a request to Travelgate's system with all the necessary information. If everything goes smoothly, you'll receive a successful response; otherwise, you'll receive an error message.
+
+On the other hand, when you **retrieve data**, you need to send a request to Travelgate's system to get the information you're looking for. If everything goes well, we'll send you the data that was previously stored in our system as a response; otherwise, we'll notify you of an error.
+
+As a result, here are the specific methods you need to implement:
+
+* [Inventory Push](inventory/inventory-push.mdx) (`HotelRatePlanInventoryNotif`): This is used to send details about the product setup (hotel, rate plan, room).
+* [Inventory Retrieval](inventory/inventory-retrieval.mdx) (`HotelRatePlanInventoryRetrieve`): Use this to get static product information (hotel, rate plan, room).
+* [Availability Push](availability/availability-push.mdx) (`HotelAvailNotif`): Send hotel availability data to the product.
+* [Availability Retrieval](availability/availability-retrieval.mdx) (`HotelAvailRetrieve`): Retrieve information about the product's availability.
+* [Rate Push](rates/rates-push.mdx) (`HotelRatePlanNotif`): Send hotel rate data to the product.
+* [Rate Retrieval](rates/rates-retrieve.mdx) (`HotelRatePlanRetrieve`): Retrieve information about the product's rates.

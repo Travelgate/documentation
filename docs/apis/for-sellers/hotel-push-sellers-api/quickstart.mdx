@@ -6,17 +6,17 @@ sidebar_position: 1
 
 ## Introduction
 
-By combining Inventory Tool and the Hotel Push Sellers API, Channel Managers and Hotel Product Distributors can **push** their products into a TravelgateX database, making them accessible to TravelgateX Buyers.
+By combining the Hotel Push Sellers API and [Inventory Tool](https://inventory.xmltravelgate.com/Account/Login?ReturnUrl=%2f), Channel Managers and Hotel Product Distributors can **push** their product into a TravelgateX database, making it accessible to TravelgateX Buyers.
 
-Inventory Tool receives the data from the different channels and stores it in a common structure. Then, this product can be consumed in 3 different ways by TravelgateX Buyers: via Pull with our [Hotel-X solution](../../for-buyers/hotel-x-pull-buyers-api/quickstart), via Push with our [Channel-X solution](../../for-buyers/channel-x-push-buyers-api/quickstart) or via a Flat File solution.
+As a common practice, Buyers frequently configure the setup (hotels, rates, and rooms) within the Inventory Extranet. Subsequently, Sellers typically push both availability and rates. Consequently, TravelgateX Buyers gain access to this product through three distinct methods: either through Pull, using our [Hotel-X solution](../../for-buyers/hotel-x-pull-buyers-api/quickstart), through Push, utilizing our [Channel-X solution](../../for-buyers/channel-x-push-buyers-api/quickstart), or via a Flat File solution.
+
+&nbsp;
+![Hotel Push Seller Overview](https://storage.travelgate.com/docs/push_seller_api.svg)
 
 
-![Hotel Push Seller Overview](../../../../static/img/docs/push-api/push_seller_api.svg)
+## Let's Get Started: How to Make your First Sale!
 
-
-## Let's get started: How to make your first sale!
-
-If you're a Channel Manager or Supplier seeking a push integration follow the next steps:
+The Hotel Push Sellers API provides a robust XML-based API that will enable you to push all your products to our Inventory tool, making them accessible for buyers. If you're a Channel Manager or Supplier seeking a push integration, please follow the next steps.
 
 ### Prerequisites
 
@@ -30,7 +30,7 @@ https://pushprovider.xmltravelgate.com/Service/Hotel/Provider/ProviderGEN.svc
 
 #### Request Headers
 
-To interact with the API, you'll need to include the following essential request header:
+To interact with the API, you'll need to include the Authentication request header:
 
 Authentication: Authentication header employs two levels of authentication, namely "Security" and "POS"
 
@@ -76,15 +76,21 @@ You will find the RequestorID (Seller Code) and CompanyName (Buyer Code) values 
 
 In the context of the Hotel Push Sellers API, you can both push and retrieve information about **Availability**, **Rates**, and **Inventory** (ARI).
 
-* When you **push data**, you'll need to submit a request to Travelgate's system with all the necessary information. If everything goes smoothly, you'll receive a successful response; otherwise, you'll receive an error message.
+* When you **push data**, you'll need to submit a request to Travelgate's system with all the necessary information about inventory, availability or rate. If everything goes smoothly, you'll receive a successful response and the data will be stored in a TravelgateX database; otherwise, you'll receive an error message.
 
-* On the other hand, when you **retrieve data**, you need to send a request to Travelgate's system to get the information you're looking for. If everything goes well, we'll send you the data that was previously stored in our system as a response; otherwise, we'll notify you of an error.
+* On the other hand, when you **retrieve data**, you'll need to send a request to Travelgate's system to get the information you're looking for. If everything goes well, we'll send you the data that was previously stored in our system as a response; otherwise, we'll notify you of an error.
 
-But now, this quickstart guide will focus on the basics of using the Hotel Push Sellers API to push the ARI to our system and begin making the first sales, so let's dive in and get started!
+But now, this quickstart guide will focus on the basics of using the Hotel Push Sellers API to push the ARI (Availability, Rates, and Inventory) to Travelgate's system and begin making the first sales, so let's dive in and get started!
 
 ### 1. Retrieve the setup of the product (Hotel, Rate Plan, Room).
 
-The Inventory message is where the adventure starts! Our aim here is to set up the inventory, which includes the hotel, rate plans, and rooms. This step is typically performed by the Buyer. The Buyer usually accesses our [Inventory Extranet](https://inventory.xmltravelgate.com/Account/Login?ReturnUrl=%2f) to complete the setup there. Consequently, the Seller typically only needs to retrieve the data to map it into their system and subsequently push the availability and rates. If you wish to handle the Inventory push yourself, that is also an option.
+The Inventory message is where the adventure starts! The aim of this step is to setup (hotel, rate plans, and rooms) your inventory. This step is typically performed by the Buyer; who usually accesses our [Inventory Extranet](https://inventory.xmltravelgate.com/Account/Login?ReturnUrl=%2f) to complete the setup there. Consequently, the Seller typically only needs to retrieve the data to map it into their system and subsequently push the availability and rates. 
+
+:::info
+
+If the Seller prefers to take charge of the inventory setup, it is also possible through [inventory push](availability-rates-and-inventory/inventory/inventory-push) method.
+
+:::
 
 [añadir ejemplo de retrieve]
 
@@ -96,7 +102,7 @@ After a careful review of all the inventory setup retrieved in the previous step
 
 ### 3. Push the rates
 
-You're almost there! After pushing the availability, it's time to finish the process by pushing the rates. Once this is done, all the information will be in our database, and the Buyer can start making their first reservations.
+You're almost there! After pushing the availability, it's time to finish the process by pushing the rates. Once this is done, all the information will be in our database, and Buyers will be able to start making their first reservations.
 
 [añadir ejemplo de push]
 

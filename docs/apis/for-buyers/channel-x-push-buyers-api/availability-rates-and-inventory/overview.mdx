@@ -4,11 +4,27 @@ sidebar_position: 1
 
 # Overview
 
-In the case of the Channel-X API, TravelgateX will send requests to the Buyer's system, to your system. This API has three main methods; your task will be to configure your system to handle the following requests:
+In the case of the Channel-X API, TravelgateX will send requests to the Buyer's system, to your system. This API has three main methods; your task will be to configure your system to handle the requests of each of the methods:
 
-* `HotelRatePlanInventoryNotif`, which contains information about the inventory setup: hotel, rate and room.
-* `HotelAvailNotif`, which contains information about rate availability and allotment conditions.
-* `HotelRatePlanNotif`, which contains information about rate prices and supplements.
+<div className="shortcuts-overview">
+    <div className="shortcuts-overview__content">
+        <a className="item" href="inventory">
+            <icon icon="fa-brands fa-github" size="lg" />
+            <p className="item__title">Inventory</p>
+            <p className="item__subtitle">Retrieve information about the inventory setup: hotel, rate and room.</p>
+        </a>
+        <a className="item" href="availability">
+            <icon icon="fa-brands fa-github" size="lg" />
+            <p className="item__title">Availability</p>
+            <p className="item__subtitle">Retrieve information about rate availability and allotment conditions.</p>
+        </a>
+        <a className="item" href="rates">
+            <icon icon="fa-brands fa-github" size="lg" />
+            <p className="item__title">Rates</p>
+            <p className="item__subtitle">Retrieve information about rate prices and supplements.</p>
+        </a>
+    </div> 
+</div>
 
 After each request, a response should be provided from your side. For instance, if a `HotelAvailNotif` request is received, a corresponding `HotelAvailNotif` response should be sent, and so forth. There are two response options, success or error.
 

@@ -10,4 +10,4 @@ For Buyers, the [Hotel-X Pull Buyers API](./for-buyers/hotel-x-pull-buyers-api/q
 
 On the other side, for Sellers, the [Hotel Pull Sellers API](./for-sellers/hotel-pull-sellers-api/quickstart.mdx) supports real-time interactions, while the [Hotel Push Sellers API](./for-sellers/hotel-push-sellers-api/quickstart.mdx) retrieves content statically while ensuring real-time reservation capabilities.
 
-![API Overview](../../static/img/docs/APIs_Overview.svg)
+![API Overview](https://storage.travelgate.com/docs/APIs_Overview.svg)

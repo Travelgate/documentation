@@ -6,7 +6,7 @@ sidebar_position: 10
 ## How to set your timeout values in order to make the most of your connections
 
 ### Is it mandatory to specify a timeout in my request?⌛
-Yes, you should set a timeout value in all Booking Flow queries and mutations.
+Yes, you should set a timeout value in all Booking Flow queries and mutations. If no timeout value is specified at a request level, our system will utilize the timeout configured by default.
 
 ### Which timeout should I establish in each step?🔢
 It will depend on your preferences and needs. Our recommendation is to test which timeout fits your needs better, taking into account the number of hotels requested and the Seller specifications/restrictions.

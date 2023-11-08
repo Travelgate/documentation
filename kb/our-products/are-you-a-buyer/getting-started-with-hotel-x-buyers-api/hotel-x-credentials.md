@@ -9,6 +9,7 @@ sidebar_position: 8
 Once you have configured your account, you can access our App and check your Hotel-X credentials and accesses by following this simple guide:
 
 ### Apikey☑️
+An Apikey is a unique alphanumeric code that serves as a form of authentication required for accessing Hotel-X API. This key must be included in the HTTP Authorization request header to verify and authenticate the user agent with the server. It acts as a secure identifier, ensuring that only authorized users can make requests and access the API's functionalities. You can find your Apikey on the Travelgate website in Connections > [Connections Settings](https://app.travelgatex.com/connections/settings).
 1. **Log onto our website**: Log in with your credentials [here](https://www.travelgatex.com/).
 1. **Connections**: Click on "Connections" in the top menu. Then, click on "[Connections Settings](https://www.travelgatex.com/)".
 1. **API Settings**: Your Apikey will be displayed in a yellow box at the top of the page.
@@ -34,7 +35,7 @@ It is advisable to avoid making live bookings during the Hotel-X implementation 
 
 ### Client☑️
 
-A client refers to a Party that buys accommodation services through the Hotel-X API implementation. Client codes remain consistent throughout all TravelgateX implementations and they are used to identify the business that is making the request and to confirm that they have a configuration assigned to it.
+A Client is a tag or label that Buyers use to categorize their traffic. The client is the entity that purchases accommodation services via the Hotel-X API. These codes also ensure that the business has a designated configuration assigned to it.
 
 It is possible to have multiple client codes, for instance, in order to differentiate traffic between B2B and B2C credentials (e.g., client_b2b, client_b2c). As all accesses are compatible with any of your client codes, it is important to use the appropriate one according to your needs. You can find this information in your [Connections Settings](/kb/connections/api-settings/connections-settings).
 
@@ -42,7 +43,7 @@ It is possible to have multiple client codes, for instance, in order to differen
 
 Context refers to the content codes utilized by both Buyers and Sellers. Each Seller has its own unique context, which may differ between test and production environments. The context includes specific codes for hotels, boards, rooms, etc.
 
-Buyers have the flexibility to either use their own codes or choose content providers. In either case, they can create their own context using our [Mapping Plugin](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping). This allows Buyers to align their own context with the Suppliers' context. 
+Buyers have the flexibility to either use their own context or choose the Supplier's. In either case, they can create their own context using our [Mapping Plugin](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping). This allows Buyers to align their own context with the Suppliers' context. 
 
 To access the context, simply navigate to the Connections menu and click on "My Connections".
 ![hotelx_credentials_2](https://storage.travelgate.com/kbase/hotelx_credentials_2.jpg)

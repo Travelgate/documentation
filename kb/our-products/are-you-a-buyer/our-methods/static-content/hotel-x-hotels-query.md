@@ -9,7 +9,7 @@ sidebar_position: 1
 Hotels Query returns a hotel list from a Supplier’s access, so that you are able to retrieve all the properties the Seller has configured for a given set of credentials.
 
 ### How can I retrieve the Seller's Hotel List through Hotel-X?💡
-You just need to follow the specifications in our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/hotel) and [API Playground](/playground) and build your own Hotels Query, as easy as that! Also, remember you are able to **personalize** the fields requested in order to receive only the information that matters to you in the response.
+You just need to follow the specifications in our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/hotels) and [API Playground](/playground) and build your own Hotels Query, as easy as that! Also, remember you are able to **personalize** the fields requested in order to receive only the information that matters to you in the response.
 
 **Hotels Query example:**
 
@@ -70,5 +70,5 @@ You should **always map the "hotelCode"** since it is the one you should use whe
 No, the Hotel List response includes all the hotels that a Seller has configured for your account. However, it is possible that there may be no availability for the specific dates or distribution that you are requesting.
 
 :::tip
-More information on our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/hotel) and [API Playground](/playground)
+More information on our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/hotels) and [API Playground](/playground)
 :::

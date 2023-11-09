@@ -16,21 +16,18 @@ Content-Type: text/xml;charset=UTF-8
 
 **SOAPAction**: All requests come with a SOAPAction header corresponding to the transmitted message:
 
-In the case of `HotelRatePlanInventoryNotif` request:
 
-```html
+```html title="HotelRatePlanInventoryNotif"
 SOAPAction: http://schemas.xmltravelgate.com/hubpush/provider/2012/10/IProviderGen/HotelRatePlanInventoryNotif
 ```
 
-In the case of `HotelAvailNotif` request:
 
-```html
+```html title="HotelAvailNotif"
 SOAPAction: http://schemas.xmltravelgate.com/hubpush/provider/2012/10/IProviderGen/HotelAvailNotif
 ```
 
-In the case of `HotelRatePlanNotif` request:
 
-```html
+```html title="HotelRatePlanNotif"
 SOAPAction: http://schemas.xmltravelgate.com/hubpush/provider/2012/10/IProviderGen/HotelRatePlanNotif
 ```
 
@@ -44,20 +41,17 @@ Authorization: Basic xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 **Compression**: By default, requests are not compressed. However, you can choose to compress requests using the following compression methods: `gzip`, `deflate`, and `br`. If you are interested in receiving compressed requests, please let us know by opening a [ticket](https://app.travelgatex.com/tickets) to our customer team.
 
-In the case of `gzip`:
 
-```html
+```html title="gzip"
 Content-Encoding: gzip
 ```     
 
-In the case of `dflate`:
 
-```html
+```html title="dflate"
 Content-Encoding: dflate
 ```  
 
-In the case of `br`:
 
-```html
+```html title="br"
 Content-Encoding: br
 ```  

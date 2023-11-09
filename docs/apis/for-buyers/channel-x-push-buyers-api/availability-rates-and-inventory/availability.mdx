@@ -6,19 +6,164 @@ sidebar_position: 3
 
 The `HotelAvailNotif` message contains information about rate availability and allotment conditions. No rate information will be returned except code.
 
+As explained before, Channel-X extracts the product loaded between the Buyer and the Channel Managers into our [Inventory tool](../inventory-tool) and sends it to the Buyer's system, to your system.
+
+So, in this case, Travelgate will send `HotelAvailNotif` requests to your system, and you will respond with either success or error.
+
+
 ## Request
 
-[Añadir ejemplos]
+In the following examples, you will observe the requests that Travelgate will send you. All the examples presented here are [Deltas](../fullcopy-and-deltas) (smaller product requests). 
+
+If you want to explore all possible scenarios of information that may come your way, head over to [More Request Examples section](availability#more-request-examples); there you will find examples of [Full Copys](../fullcopy-and-deltas) (full product details requests).
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+<TabItem value="inventory" label="Inventory">
+
+```html
+<s:Envelope xmlns:s = "http://schemas.xmlsoap.org/soap/envelope/" xmlns:u = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <s:Header>
+        <o:Security s:mustUnderstand = "1" xmlns:o = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+            <o:UsernameToken u:Id = "uuid-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx-x">
+                <o:Username>username</o:Username>
+                <o:Password Type = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">password</o:Password>
+            </o:UsernameToken>
+        </o:Security>
+    </s:Header>
+    <s:Body xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
+        <HotelAvailNotif xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmltravelgate.com/hubpush/provider/2012/10">
+            <request>
+                <POS xmlns="http://www.opentravel.org/OTA/2003/05">
+                    <Source>
+                        <RequestorID ID="PTEST" />
+                        <BookingChannel>
+                            <CompanyName Code="CTEST" />
+                        </BookingChannel>
+                    </Source>
+                </POS>
+                <AvailStatusMessages HotelCode="2" xmlns="http://www.opentravel.org/OTA/2003/05">
+                    <AvailStatusMessage BookingLimit="100" BookingSold="4">
+                        <StatusApplicationControl Start="2023-11-10" End="2023-11-14" RatePlanCode="BAR" InvCode="SNG" InvType="ROOM" Mon="true" Tue="true" Weds="true" Thur="true" Fri="true" Sat="true" Sun="true" />
+                        <LengthsOfStay ArrivalDateBased="false">
+                            <LengthOfStay Time="1" TimeUnit="Day" MinMaxMessageType="MinLOS" />
+                            <LengthOfStay Time="2" TimeUnit="Day" MinMaxMessageType="MaxLOS" />                        
+						</LengthsOfStay>
+                        <RestrictionStatus />
+                    </AvailStatusMessage>
+                    <AvailStatusMessage BookingLimit="100">
+                        <StatusApplicationControl Start="2023-11-22" End="2023-11-24" RatePlanCode="BAR" InvCode="SNG" InvType="ROOM" Mon="true" Tue="true" Weds="true" Thur="true" Fri="true" Sat="true" Sun="true" />
+                        <LengthsOfStay ArrivalDateBased="false">
+                            <LengthOfStay Time="5" TimeUnit="Day" MinMaxMessageType="MinLOS" />
+                        </LengthsOfStay>
+                        <RestrictionStatus />
+                    </AvailStatusMessage>
+                    <AvailStatusMessage BookingLimit="100">
+                        <StatusApplicationControl Start="2023-11-22" End="2023-11-24" RatePlanCode="BAR" InvCode="SNG" InvType="ROOM" Mon="true" Tue="true" Weds="true" Thur="true" Fri="true" Sat="true" Sun="true" />
+                        <LengthsOfStay ArrivalDateBased="false">
+                            <LengthOfStay Time="5" TimeUnit="Day" MinMaxMessageType="MinLOS" />
+                        </LengthsOfStay>
+                        <RestrictionStatus Restriction="Arrival" Status="Close" />
+                    </AvailStatusMessage>
+                    <AvailStatusMessage BookingLimit="100">
+                        <StatusApplicationControl Start="2023-11-27" End="2023-11-28" RatePlanCode="BAR" InvCode="SNG" InvType="ROOM" Mon="true" Tue="true" Weds="true" Thur="true" Fri="true" Sat="true" Sun="true" />
+                        <LengthsOfStay ArrivalDateBased="false">
+                            <LengthOfStay Time="1" TimeUnit="Day" MinMaxMessageType="MinLOS" />
+                            <LengthOfStay Time="2" TimeUnit="Day" MinMaxMessageType="MaxLOS" />                        
+						</LengthsOfStay>
+                        <RestrictionStatus Restriction="Departure" Status="Close" />
+                    </AvailStatusMessage>
+                    <AvailStatusMessage BookingLimit="20">
+                        <StatusApplicationControl Start="2024-01-07" End="2024-01-31" RatePlanCode="BAR" InvCode="SNG" InvType="ROOM" Mon="true" Tue="true" Weds="true" Thur="true" Fri="true" Sat="true" Sun="true" />
+                        <RestrictionStatus MaxAdvancedBookingOffset="5" MinAdvancedBookingOffset="3" />
+                    </AvailStatusMessage>
+                </AvailStatusMessages>
+            </request>
+        </HotelAvailNotif>
+    </s:Body>
+</s:Envelope>
+```
+
+</TabItem>
+<TabItem value="derived" label="Derived RatePlan">
+
+```html
+a
+```
+
+</TabItem>
+<TabItem value="offer" label="Offers">
+
+```html
+<s:Envelope xmlns:s = "http://schemas.xmlsoap.org/soap/envelope/" xmlns:u = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <s:Header>
+        <o:Security s:mustUnderstand = "1" xmlns:o = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+            <o:UsernameToken u:Id = "uuid-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx-x">
+                <o:Username>username</o:Username>
+                <o:Password Type = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">password</o:Password>
+            </o:UsernameToken>
+        </o:Security>
+    </s:Header>
+    <s:Body xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
+        <HotelAvailNotif xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmltravelgate.com/hubpush/provider/2012/10">
+            <request>
+                <POS xmlns="http://www.opentravel.org/OTA/2003/05">
+                    <Source>
+                        <RequestorID ID="PTEST" />
+                        <BookingChannel>
+                            <CompanyName Code="CTEST" />
+                        </BookingChannel>
+                    </Source>
+                </POS>
+                <AvailStatusMessages HotelCode="2" xmlns="http://www.opentravel.org/OTA/2003/05">
+                    <AvailStatusMessage >
+					    // highlight-start
+                        <StatusApplicationControl Start="2023-11-10" End="2023-11-14" RatePlanCode="PCK" PromotionCode="OFFER" Mon="true" Tue="true" Weds="true" Thur="true" Fri="false" Sat="false" Sun="false" />
+                        // highlight-end
+						<LengthsOfStay ArrivalDateBased="false">
+                            <LengthOfStay Time="3" TimeUnit="Day" MinMaxMessageType="MinLOS" />
+                            <LengthOfStay Time="4" TimeUnit="Day" MinMaxMessageType="MaxLOS" />                        
+						</LengthsOfStay>
+                        <RestrictionStatus />
+                    </AvailStatusMessage>
+                    <AvailStatusMessage >
+                        // highlight-start
+						<StatusApplicationControl Start="2023-11-22" End="2023-11-24" RatePlanCode="PCK" PromotionCode="OFFER" Mon="true" Tue="true" Weds="true" Thur="true" Fri="false" Sat="false" Sun="false" />
+                        // highlight-end
+						<LengthsOfStay ArrivalDateBased="false">
+                            <LengthOfStay Time="4" TimeUnit="Day" MinMaxMessageType="MinLOS" />
+                            <LengthOfStay Time="5" TimeUnit="Day" MinMaxMessageType="MaxLOS" />  
+                        </LengthsOfStay>
+                        <RestrictionStatus />
+                    </AvailStatusMessage>
+                </AvailStatusMessages>
+            </request>
+        </HotelAvailNotif>
+    </s:Body>
+</s:Envelope>
+```
+
+</TabItem>
+</Tabs>
 
 ### Request Data Breakdown
 
 | Element                                     | Rel  | Type    | Description                                                                                                                                                                                                                            |
 |---------------------------------------------|------|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | HotelAvailNotif                             | 1    |         |                                                                                                                                                                                                                                        |
-| ../request                                  | 1    |         |                                                                                                                                                                                                                                        |
+| request                                     | 1    |         |                                                                                                                                                                                                                                        |
+| request/POS                                 | 1    |         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| POS/Source                                  | 1    |         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| Source/RequestorID                          | 1    |         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| @ID                                         | 1    | String  | Seller Code                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| Source/BookingChannel                       | 1    |         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| BookingChannel/CompanyName                  | 1    |         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| @Code                                       | 1    | String  | Buyer Code                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | request/AvailStatusMessages                 | 1    |         |                                                                                                                                                                                                                                        |
 | @HotelCode                                  | 1    | String  | Hotel code                                                                                                                                                                                                                             |
-| ../AvailStatusMessage                       | 1..n |         |                                                                                                                                                                                                                                        |
+| AvailStatusMessages/AvailStatusMessage      | 1..n |         |                                                                                                                                                                                                                                        |
 | @BookingLimit                               | 0..1 | Integer | The number of rooms available per Room-RatePlan for the specified dates. This field is exclusively used for Derivated Rates.                                                                                                                                     |
 | @BookingSold                                | 0..1 | Integer | The number of rooms booked per Room-RatePlan for the specified dates. The available allotment is calculated as the difference between @BookingLimit and @BookingSold. This field is exclusively used for Derivated Rates                                                        |
 | AvailStatusMessage/StatusApplicationControl | 1    |         |                                                                                                                                                                                                                                        |
@@ -37,16 +182,29 @@ The `HotelAvailNotif` message contains information about rate availability and a
 | @Sat                                        | 0..1 | Boolean | If true or attribute is not present, there is availability on Sunday.                                                                                                                                                                   |
 | AvailStatusMessage/LengthsOfStay            | 0..1 |         |                                                                                                                                                                                                                                        |
 | @ArrivalDateBased                           | 0..1 | Boolean | If true, the Minimum and Maximum Stay is checked ONLY the first day of the availability. If false or null, the Minimum and Maximum Stay is checked all the availability days. If both values are needed, two @AvailStatusMessage will be sent. |
-| ../LengthOfStay                             | 1..2 |         |                                                                                                                                                                                                                                        |
+| LengthsOfStay/LengthOfStay                  | 1..2 |         |                                                                                                                                                                                                                                        |
 | @Time                                       | 1    | Integer | Indicates the number of @TimeUnit for this stay. When value is 0 or -1, condition should be deleted from the system.                                                                                                                    |
 | @TimeUnit                                   | 1    | String  | `Day`                                                                                                                                                                                                                             |
 | @MinMaxMessageType                          | 1    | String  | `MinLOS` (minimum) or `MaxLOS` (maximum) @LenghtOfSaty.                                                                                                                                                                                      |
 | AvailStatusMessage/RestrictionStatus        | 0..1 |         |                                                                                                                                                                                                                                        |
-| @Status                                     | 0..1 | String  | `Open` or `Close`                                                                                                                                                                                                                          |
 | @Restriction                                | 0..1 | String  | `Master`, `Arrival` or `Departure`                                                                                                                                                                                                           |
+| @Status                                     | 0..1 | String  | `Open` or `Close`                                                                                                                                                                                                                          |
 | @MinAdvancedBookingOffset                   | 0..1 | Integer | Minimum number of days before the check-in date to be available to be booked. This restriction is usually used to offer discounts on early bookings. When value is 0 or -1, condition should be deleted from the system.                |
 | @MaxAdvancedBookingOffset                   | 0..1 | Integer | Maximum number of days before the check-in date to be available to be booked. This restriction is usually used to offer last minute discounts on unsold inventory. When value is -1, condition should be deleted from the system.       |
 | @SellThroughOpenIndicator                   | 0..1 | Boolean | Room-RatePlan can be sold with no limit if @Status is 'Open'. This field is exclusively used for Basic Rates.                                                                                                                                                                         |
+
+### More Request Examples
+
+Download the following requests to explore all possible scenarios of information that may come your way.
+
+```mdx-code-block
+<BrowserWindow>
+
+**📄[Example request of HotelAvailNotif Full Copy](#)**  
+**📄[Example request of HotelAvailNotif Delta](#)**  
+
+</BrowserWindow>
+```
 
 ## Response
 
@@ -59,7 +217,7 @@ Our system has a timeout of 5000ms. If no response occurs within this timeframe,
 :::
 
 
-**Success:**
+### Success
 
 ```html
 <HotelAvailNotifResponse xmlns = "http://schemas.xmltravelgate.com/hubpush/provider/2012/10">
@@ -69,7 +227,7 @@ Our system has a timeout of 5000ms. If no response occurs within this timeframe,
 </HotelAvailNotifResponse>
 ```
 
-**Error:**
+### Error
 
 ```html
 <HotelAvailNotifResponse xmlns = "http://schemas.xmltravelgate.com/hubpush/provider/2012/10">

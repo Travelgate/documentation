@@ -42,15 +42,15 @@ Content-Type: text/xml;charset=UTF-8
 
 * SOAPAction: SOAPAction header corresponding to the transmitted message, there are 3 different ones, one for each request.
 
-```html
+```html title="HotelRatePlanInventoryNotif"
 SOAPAction: http://schemas.xmltravelgate.com/hubpush/provider/2012/10/IProviderGen/HotelRatePlanInventoryNotif
 ```
 
-```html
+```html title="HotelAvailNotif"
 SOAPAction: http://schemas.xmltravelgate.com/hubpush/provider/2012/10/IProviderGen/HotelAvailNotif
 ```
 
-```html
+```html title="HotelRatePlanNotif"
 SOAPAction: http://schemas.xmltravelgate.com/hubpush/provider/2012/10/IProviderGen/HotelRatePlanNotif
 ```
 
@@ -71,15 +71,139 @@ Channel-X has three main methods. You will have to configure your system to acce
 * `HotelAvailNotif`, which contains information about rate availability and allotment conditions.
 * `HotelRatePlanNotif`, which contains information about rate prices and supplements.
 
-[Añadir ejemplos]
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+<TabItem value="HotelRatePlanInventoryNotif" label="HotelRatePlanInventoryNotif">
+
+```html
+<s:Envelope xmlns:s = "http://schemas.xmlsoap.org/soap/envelope/" xmlns:u = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <s:Header>
+        <o:Security s:mustUnderstand = "1" xmlns:o = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+            <o:UsernameToken u:Id = "uuid-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx-x">
+                <o:Username>username</o:Username>
+                <o:Password Type = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">password</o:Password>
+            </o:UsernameToken>
+        </o:Security>
+    </s:Header>
+    <s:Body xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
+        <HotelRatePlanInventoryNotif xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmltravelgate.com/hubpush/provider/2012/10">
+            <request Version="0">
+                <POS xmlns="http://www.opentravel.org/OTA/2003/05">
+                    <Source>
+                        <RequestorID ID="PTEST" />
+                        <BookingChannel>
+                            <CompanyName Code="CTEST" />
+                        </BookingChannel>
+                    </Source>
+                </POS>
+                <RatePlans HotelStatusType="Active" HotelCode="2" xmlns="http://www.opentravel.org/OTA/2003/05">
+                    <RatePlan Start="2023-11-08" End="2023-11-25" CurrencyCode="EUR" PromotionCode="25" RatePlanType="0" RatePlanCode="BAR" RateReturn="false" FreeChild="false" FreeBaby="false" RatePlanNotifType="Delta" RatePlanStatusType="Active" YieldableIndicator="false">
+                        <BookingRules>
+                            <BookingRule>
+                                <CancelPenalties>
+								    <CancelPenalty NonRefundable="false" />
+                                    <CancelPenalty Start="2023-10-09" End="2023-10-09">
+                                        <Deadline OffsetTimeUnit="Day" OffsetUnitMultiplier="2" OffsetDropTime="BeforeArrival" />
+                                        <AmountPercent Amount="10" />
+                                    </CancelPenalty>
+                                </CancelPenalties>
+								<Viewerships>
+                                    <Viewership>
+                                        <LocationCodes LocationCodesInclusive="false">
+                                            <LocationCode CountryCode="ES" />
+                                        </LocationCodes>
+                                    </Viewership>
+                                </Viewerships>
+                            </BookingRule>
+                        </BookingRules>
+                        <Rates>
+                            <Rate>
+                                <AdditionalGuestAmounts>
+                                    <AdditionalGuestAmount AgeQualifyingCode="8" MaxAge="12" />
+                                    <AdditionalGuestAmount AgeQualifyingCode="7" MaxAge="2" />
+                                </AdditionalGuestAmounts>
+                                <PaymentPolicies>
+                                    <GuaranteePayment PaymentCode="DirectPayment">
+                                        <AcceptedPayments>
+                                            <AcceptedPayment>
+                                                <PaymentCard CardCode="VI">
+                                                    <IsVCC>false</IsVCC>
+                                                </PaymentCard>
+                                            </AcceptedPayment>
+                                            <AcceptedPayment>
+                                                <PaymentCard CardCode="CA">
+                                                    <IsVCC>false</IsVCC>
+                                                </PaymentCard>
+                                            </AcceptedPayment>
+                                        </AcceptedPayments>
+                                    </GuaranteePayment>
+                                </PaymentPolicies>
+                                <MealsIncluded MealPlanCodes="14" />
+                            </Rate>
+                        </Rates>
+                        <SellableProducts>
+                            <SellableProduct InvCode="SNG" InvType="ROOM" InvNotifType="New" InvStatusType="Active" InvTypeCode="1234">
+                                <GuestRoom>
+                                    <Quantities StandardNumBeds="2" />
+                                    <Occupancy MinOccupancy="2" MaxOccupancy="2" AgeQualifyingCode="10" />
+                                    <Room RoomTypeCode="SNG" />
+                                    <Description>
+                                        <Text>Single Room Test</Text>
+                                    </Description>
+                                </GuestRoom>
+                            </SellableProduct>
+                        </SellableProducts>
+                        <Commission Percent="20" />
+                        <Description>
+                            <Text>BAR</Text>
+                        </Description>
+                        <Taxes>
+                            <Tax Percent="10" ChargeUnit="false" ChargeFrequency="false" Type="Inclusive">
+                                <TaxDescription>
+                                    <Text>city</Text>
+                                </TaxDescription>
+                            </Tax>
+                        </Taxes>
+                        <AdditionalDetails>
+                            <AdditionalDetail Code="hola" Type="39">
+                                <DetailDescription>
+                                    <Text>hola</Text>
+                                </DetailDescription>
+                            </AdditionalDetail>
+                        </AdditionalDetails>
+                    </RatePlan>
+				</RatePlans>
+			</request>
+        </HotelRatePlanInventoryNotif>
+    </s:Body>
+</s:Envelope>
+```
+
+</TabItem>
+<TabItem value="HotelAvailNotif" label="HotelAvailNotif">
+
+```html
+a
+```
+
+</TabItem>
+<TabItem value="HotelRatePlanNotif" label="HotelRatePlanNotif">
+
+```html
+a
+```
+
+</TabItem>
+</Tabs>
 
 **Responses**
 
 After each request, a response should be provided from your side. For instance, if a `HotelAvailNotif` request is received, a corresponding `HotelAvailNotif` response should be sent, and so forth. There are two response options, **success** or **error**.
 
-Success:
 
-```html
+```html title="Success"
 <HotelAvailNotifResponse xmlns = "http://schemas.xmltravelgate.com/hubpush/provider/2012/10">
     <HotelAvailNotifResult>
         <Success xmlns = "http://www.opentravel.org/OTA/2003/05"/>
@@ -87,9 +211,8 @@ Success:
 </HotelAvailNotifResponse>
 ```
 
-Error:
 
-```html
+```html title="Error"
 <HotelAvailNotifResponse xmlns = "http://schemas.xmltravelgate.com/hubpush/provider/2012/10">
     <HotelAvailNotifResult>
         <Errors xmlns = "http://www.opentravel.org/OTA/2003/05">

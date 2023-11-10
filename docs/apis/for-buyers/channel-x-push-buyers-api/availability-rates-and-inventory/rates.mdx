@@ -6,16 +6,20 @@ sidebar_position: 4
 
 The `HotelRatePlanNotif` message contains information about rate prices and supplements. No rate information will be returned except code, currency and status.
 
-As explained before, Channel-X extracts the product loaded between the Buyer and the Channel Managers into our [Inventory tool](../inventory-tool) and sends it to the Buyer's system, to your system.
-
-So, in this case, Travelgate will send `HotelRatePlanNotif` requests to your system, and you will respond with either success or error.
+As explained before, Channel-X extracts the product loaded between the Buyer (inventory) and the Channel Managers (availability and rates) into our [Inventory tool](../inventory-tool) and sends it to the Buyer's system, to your system. So, in this case, TravelgateX will send `HotelRatePlanNotif` requests to your system, and you will respond with either success or error.
 
 
 ## Request
 
-In the following examples, you will observe the requests that Travelgate will send you. All the examples presented here are [Deltas](../fullcopy-and-deltas) (smaller product requests). 
+In the following examples, you will observe the requests that TravelgateX will send you. All the examples presented here are [Deltas](../fullcopy-and-deltas) (smaller product requests). 
 
-If you want to explore all possible scenarios of information that may come your way, head over to [More Request Examples section](rates#more-request-examples); there you will find examples of [Full Copys](../fullcopy-and-deltas) (full product details requests).
+If you want to explore all possible scenarios of information that may come your way, head over to [More Request Examples](rates#more-request-examples) section; there you will find [Full Copys](../fullcopy-and-deltas) (full product details requests) examples.
+
+:::info
+
+Note that our system works with up to 3 types of prices: per room, per standard occupancy, and per occupancy. To learn how to calculate the price for each case, go to [Price Use Cases](rates#price-use-cases).
+
+:::
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -82,7 +86,7 @@ import TabItem from '@theme/TabItem';
 ```
 
 </TabItem>
-<TabItem value="standard" label="Price per Pax/Guest (Standard Occupancy)">
+<TabItem value="standard" label="Price per Standard Occupancy">
 
 ```html
 <s:Envelope xmlns:s = "http://schemas.xmlsoap.org/soap/envelope/" xmlns:u = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
@@ -279,8 +283,10 @@ Download the following requests to explore all possible scenarios of information
 ```mdx-code-block
 <BrowserWindow>
 
-**📄[Example request of HotelRatePlanNotif Full Copy](#)**  
-**📄[Example request of HotelRatePlanNotif Delta](#)**  
+**📄[Price per Room](https://storage.travelgate.com/docs/PricePerRoomMealPlanSupplementsHotelRatePlanNotif)**  
+**📄[Price per Standard Occupancy](https://storage.travelgate.com/docs/OcupacionStandarHotelRatePlanNotif)**  
+**📄[Price per Occupancy](https://storage.travelgate.com/docs/PricePerOcupacionHotelRatePlanNotif)**  
+**📄[Derived Rate](https://storage.travelgate.com/docs/DerivedRateHotelRatePlanNotif)**  
 
 </BrowserWindow>
 ```
@@ -465,11 +471,11 @@ When a price is charged **per Room**, it means that all occupancies allowed in t
 </details>
 
 
-#### **Price per Pax/Guest** (Standard Occupancy)
+#### **Price per Standard Occupancy** (Pax/Guest)
 When a price is charged **per Pax** means, it means that the price is based on the specified number of guests. If the `NumberOfGuests` is equal to or below the standard occupancy, the returned price must be the same as the charged price. If the `NumberOfGuests` exceeds the standard occupancy, the price is calculated based on the standard occupancy price and the `AdditionalGuestAmount` charged.
 
 <details>
-    <summary>Sample scenarios for "Price per Pax/Guest" price calculations.</summary>
+    <summary>Sample scenarios for "Price per Standard Occupancy (Pax/Guest)" price calculations.</summary>
     <div>
         <div><b>Case 1</b>
         <br></br> 
@@ -1102,23 +1108,47 @@ Our system has a timeout of 5000ms. If no response occurs within this timeframe,
 ### Success
 
 ```html
-<HotelRatePlanNotifResponse xmlns = "http://schemas.xmltravelgate.com/hubpush/provider/2012/10">
-    <HotelRatePlanNotifResult>
-        <Success xmlns = "http://www.opentravel.org/OTA/2003/05"/>
-    </HotelRatePlanNotifResult>
-</HotelRatePlanNotifResponse>
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" xmlns:U="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+    <s:Header>
+        <wsse:Security>
+            <U:Timestamp>
+                <U:Created>2023-11-10T11:16:19.206</U:Created>
+                <U:Expires>2023-11-10T11:46:19.206</U:Expires>
+            </U:Timestamp>
+        </wsse:Security>
+    </s:Header>
+    <s:Body>
+        <HotelRatePlanNotifResponse xmlns="http://schemas.xmltravelgate.com/hubpush/provider/2012/10">
+            <HotelRatePlanNotifResult Version="0" TransactionIdentifier="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx">
+                <Success xmlns="http://www.opentravel.org/OTA/2003/05" />
+            </HotelRatePlanNotifResult>
+        </HotelRatePlanNotifResponse>
+    </s:Body>
+</s:Envelope>
 ```
 
 ### Error
 
 ```html
-<HotelRatePlanNotifResponse xmlns = "http://schemas.xmltravelgate.com/hubpush/provider/2012/10">
-    <HotelRatePlanNotifResult>
-        <Errors xmlns = "http://www.opentravel.org/OTA/2003/05">
-            <Error ShortText = "HotelCode or RatePlanList not found" Code = "2"/>
-        </Errors>
-    </HotelRatePlanNotifResult>
-</HotelRatePlanNotifResponse>
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" xmlns:U="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+    <s:Header>
+        <wsse:Security>
+            <U:Timestamp>
+                <U:Created>2023-11-10T11:15:37.445</U:Created>
+                <U:Expires>2023-11-10T11:45:37.445</U:Expires>
+            </U:Timestamp>
+        </wsse:Security>
+    </s:Header>
+    <s:Body>
+        <HotelRatePlanNotifResponse xmlns="http://schemas.xmltravelgate.com/hubpush/provider/2012/10">
+            <HotelRatePlanNotifResult Version="0" TransactionIdentifier="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx">
+                <Errors xmlns="http://www.opentravel.org/OTA/2003/05">
+                    <Error ShortText="Validation error" Code="-1" Language="en">Invalid MinLOS/MaxLOS: 30/1</Error>
+                </Errors>
+            </HotelRatePlanNotifResult>
+        </HotelRatePlanNotifResponse>
+    </s:Body>
+</s:Envelope>
 ```
 
 <details>

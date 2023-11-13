@@ -25,7 +25,7 @@ A new access is categorized as "**Not Working**" in those cases our Connectivity
 
 ### As a Seller, I have been contacted regarding an activation, what should I do?⚠️
 Sellers will also receive an email requesting their collaboration to resolve any issues that prevent a connection from being completed automatically. The email provides a link where [they can fix the problem](https://community.travelgatex.com/t/empower-your-selling-experience-with-our-latest-feature-manage-and-correct-failed-activations-as-a-seller/3724) by modifying the access configuration provided by the Buyer.
-### My access is "Not Working" and I cannot edit it, what can I do?✔️
+### My access is "Not Working" and I cannot edit it, what can I do?
 It's important to note that when an access is "Not Working", the "Edit access" feature remains blocked while our Connectivity Team checks the connection. To avoid creating duplicate tickets on our Platform, **we strongly advise against requesting the connection again**. It's best to wait until our Connectivity Team contacts you and asks for assistance. 
  
 

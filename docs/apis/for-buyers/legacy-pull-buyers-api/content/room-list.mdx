@@ -1,0 +1,171 @@
+---
+sidebar_position: 6
+---
+
+# Room List
+
+The Room List method returns a comprehensive room list from a supplier's access that may include translations to other languages, granting you access to all the rooms configured by the Seller for a given set of credentials. The returned fields include:
+
+* `Code`
+* `Name`
+
+
+## Request
+
+:::caution
+
+The maximum time permitted in our system before the connection is closed is 240000 milliseconds.
+
+This message must be implemented solely in case the supplier does not return room description in Avail. This requirement will be indicated in [MetaData](meta-data).
+
+:::
+
+```html
+<soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns = "http://schemas.xmltravelgate.com/hub/2012/06" xmlns:wsse = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+    <soapenv:Header>
+        <wsse:Security>
+            <wsse:UsernameToken>
+                <wsse:Username>username</wsse:Username>
+                <wsse:Password>password</wsse:Password>
+            </wsse:UsernameToken>
+        </wsse:Security>
+    </soapenv:Header>
+    <soapenv:Body>
+        <ns:RoomList>
+            <ns:roomListRQ>
+                <ns:timeoutMilliseconds>180000</ns:timeoutMilliseconds>
+                <ns:version>1</ns:version>
+                <ns:providerRQ>
+                    <ns:code>code</ns:code>
+                    <ns:id>1</ns:id>
+                    <ns:rqXML>
+                        <RoomListRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
+                            <timeoutMilliseconds>20000</timeoutMilliseconds>
+                            <source>
+                                <languageCode>en</languageCode>
+                            </source>
+                            <filterAuditData>
+                                <registerTransactions>false</registerTransactions>
+                            </filterAuditData>
+                            <ContinuationToken expectedRange = "6000"></ContinuationToken>
+                            <Configuration>
+                                <User>user</User>
+                                <Password>password</Password>
+                                <UrlGeneric>www.supplier.com</UrlGeneric>
+                                <Parameters>
+                                    <Parameter key = "SegundoPW" value = "PWXML"></Parameter>
+                                </Parameters>
+                            </Configuration>
+                        </RoomListRQ>
+                    </ns:rqXML>
+                </ns:providerRQ>
+            </ns:roomListRQ>
+        </ns:RoomList>
+    </soapenv:Body>
+</soapenv:Envelope>
+```
+
+### Request Data Breakdown
+
+| Element                                    | Rel  | Type    | Description                                                                 |
+|--------------------------------------------|------|---------|-----------------------------------------------------------------------------|
+| RuntimeConfigurationRQ                     | 1    |         |                                                                             |
+| RuntimeConfigurationRQ/timeoutMilliseconds | 1    | Integer | Maximum time for a response from the supplier’s system.                     |
+| RuntimeCOnfigurationRQ/source              | 1    |         |                                                                             |
+| source/languageCode                        | 1    | String  | Language code (ISO 3166-1 alpha-2) format lowercase.                        |
+| RuntimeConfigurationRQ/filterAuditData     | 1    |         | Activates transaction data sent & received in the supplier’s native format. |
+| filterAuditData/registerTransactions       | 1    | Boolean | Returns all the transactions (XMLs) exchanged with the supplier.            |
+| ContinuationToken                          | 0..1 | String  | Internal Token to identify the next set of HotelList or RoomList.            |
+| @expectedRange	                         | 0..1 | Integer | Number of rooms expected in RoomList call.            |
+| RuntimeConfigurationRQ/Configuration       | 1    |         | The info required to access the supplier’s system.                          |
+| Configuration/User                         | 0..1 | String  | User code to connect to supplier.                                           |
+| Configuration/Password                     | 0..1 | String  | Password for the connection.                                                |
+| Configuration/UrlGeneric                   | 0..1 | String  | Supplier URL used for multiple methods.                                     |
+| Configuration/Parameters                   | 0..1 |         | Parameters for additional information.                                      |
+| Parameters/Parameter                       | 0..n |         |                                                                             |
+| @key                                       | 1    | String  | Contains the keyword/Id to identify a parameter.                            |
+| @value                                     | 1    | String  | Contains the parameter values.                                              |
+
+
+### Token
+
+The Legacy Pull Buyers API provides paginated responses to handle cases where the number of rooms from the selected supplier exceeds 200000. The default response page contains a maximum of 200000 rooms, but you can specify the number of objects returned per page using the `ContinuationToken` and the attribute `expectedRange` fields in the request.
+
+To include the ContinuationToken in your request, all you need to do is:
+
+1. Add the ContinuationToken and expectedRange fields to the request.
+
+2. After receiving a response, you will only receive a portion of the full list. To access the next page, simply copy the ContinuationToken tag from the response and include it in your next request. This will allow you to obtain a new set of objects in the following response.
+
+3. Repeat these steps until the token is no longer included in the response.
+
+
+:::note
+
+If the client requests 1000 rooms, the response may contain a range between 1000 to 1999 rooms.
+
+:::
+
+**Request variables**
+
+First, in your room list request you will add `ContinuationTokentoken` field and specify in `expectedRange` field the number of rooms expected to receive in the response:
+
+```html
+<RoomListRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">                
+  <ContinuationToken expectedRange = "1200"></ContinuationToken>
+</RoomListRQ>
+```
+
+You will obtain a response with 1200 rooms per page:
+
+**Response**
+
+```html
+<RoomListRS xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">                
+  <ContinuationToken expectedRange = "1200">&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;ContinuationToken&gt;&lt;ContinuationToken&gt;&lt;Version&gt;2.0&lt;/Version&gt;&lt;Type&gt;Table&lt;/Type&gt;&lt;NextPartitionKey&gt;1!24!bG93Y29zdGhvbGlkYXlfWk1U&lt;/NextPartitionKey&gt;&lt;NextRowKey&gt;1!40!bG93Y29zdGhvbGlkYXlfWk1UXzBoNFIlMjNvcXBr&lt;/NextRowKey&gt;&lt;TargetLocation&gt;Primary&lt;/TargetLocation&gt;&lt;/ContinuationToken&gt;&lt;/ContinuationToken&gt;</ContinuationToken>
+</RoomListRS>
+```
+
+This token should be used as input in your next rooms list request, inside the `ContinuationToken` field:
+
+
+```html
+<RoomListRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">                
+  <ContinuationToken>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;ContinuationToken&gt;&lt;ContinuationToken&gt;&lt;Version&gt;2.0&lt;/Version&gt;&lt;Type&gt;Table&lt;/Type&gt;&lt;NextPartitionKey&gt;1!24!bG93Y29zdGhvbGlkYXlfWk1U&lt;/NextPartitionKey&gt;&lt;NextRowKey&gt;1!40!bG93Y29zdGhvbGlkYXlfWk1UXzBoNFIlMjNvcXBr&lt;/NextRowKey&gt;&lt;TargetLocation&gt;Primary&lt;/TargetLocation&gt;&lt;/ContinuationToken&gt;&lt;/ContinuationToken&gt;</ContinuationToken>
+</RoomListRQ>
+```
+
+
+## Response
+
+```html
+<RoomListRS>
+    <UpgradeUTCDate>2016-10-18T13:18:03+02:00</UpgradeUTCDate>
+    <RoomsInfo>
+        <RoomInfo>
+            <Code>STD</Code>
+            <Name>Standard</Name>
+        </RoomInfo>
+        <RoomInfo>
+            <Code>ST</Code>
+            <Name>Suite</Name>
+        </RoomInfo>
+    </RoomsInfo>
+</RoomListRS>
+```
+
+### Response Data Breakdown
+
+| Element                   | Rel  | Type     | Description                                                 |
+|---------------------------|------|----------|-------------------------------------------------------------|
+| RoomListRS/UpgradeUTCDate | 1    | DateTime | Indicates the update date of the information in UTC format. |
+| RoomListRS/RoomsInfo      | 1    |          | Root node, list of rooms                                    |
+| RoomsInfo/RoomInfo        | 1..n |          |                                                             |
+| RoomInfo/Code             | 1    | String   | Room code                                                   |
+| RoomInfo/Name             | 1    | String   | Room name                                                   |
+
+:::note
+
+In AvailRQ (Common Elements), you have the option to specify the language for the room description you want to receive. You can choose any language supported by the supplier; otherwise, the default language, typically English, will be used. The standard language options include English and Spanish.
+
+:::

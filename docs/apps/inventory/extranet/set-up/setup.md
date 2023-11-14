@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Set Up
+# SetUp
 
 The SetUp section enables you to configure the hotels you are going to buy from your connected channel managers or to create the main structure of your own product is you are going to use the extranet to load your static contracts.
 

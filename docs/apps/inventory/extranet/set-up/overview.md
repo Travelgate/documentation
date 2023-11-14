@@ -7,7 +7,7 @@ sidebar_position: 1
 
 <div className="shortcuts-overview">
     <div className="shortcuts-overview__content">
-        <a className="item" href="set-up">
+        <a className="item" href="setup">
             <icon icon="fa-brands fa-github" size="lg" />
             <p className="item__title">SetUp</p>
             <p className="item__subtitle">a</p>

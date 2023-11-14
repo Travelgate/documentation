@@ -15,7 +15,7 @@ You will find the following 4 sections in your “General Settings”:
             <p className="item__title">Configuration</p>
             <p className="item__subtitle">a</p>
         </a>
-        <a className="item" href="selling-princing-rules">
+        <a className="item" href="selling-pricing-rules">
             <icon icon="fa-brands fa-github" size="lg" />
             <p className="item__title">Selling Pricing Rules</p>
             <p className="item__subtitle">a</p>

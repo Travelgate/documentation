@@ -10,7 +10,7 @@ After selecting the client, the Channel Manager and the hotel you will be able t
 
 In the following panel you will be able to load different stop sales for your offers. 
 
-[IMAGEN]
+![Inventory Manual Load](https://storage.travelgate.com/docs/inventory_manual-load-offers1.png)
 
 * **From - To:** Date range when the conditions will be applied.
 * **Close On Arrival:** Stop sales on arrival date: in the date range specified before is not possible to do a check-in with the offer. If you check "On" you will apply the close on arrival condition, if you check "Off" you will delete a close on arrival condition if it was previously load and if you check *unspecified* you won't apply any change (on/off) in the close on arrival condition.

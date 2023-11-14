@@ -1,12 +1,12 @@
 ---
-sidebar_position: 5
+sidebar_position: 3
 ---
 
 # Delete Product
 
 In order to delete the availability conditions and prices loaded in Inventory-X for a specific hotel, you will need to go to the `Product` tab and then select the `Delete Product` option in the Inventory-X extranet.
 
-[IMAGEN]
+![Inventory Delete Product](https://storage.travelgate.com/docs/inventory_delete-product1.png)
 
 :::info
 
@@ -24,8 +24,8 @@ First step will be to indicate the desired Client-Provider connection and then t
 
 * **Availability:** With this option you will be able to delete, by date range, availability conditions like ‘*booking limit (allotment)*’, ‘*minimum or maximum length of stay*’, ‘*minimum or maximum length of stay on arrival*’ and ‘*minimum or maximum release*’.
 
-[IMAGEN]
+![Inventory Delete Product](https://storage.travelgate.com/docs/inventory_delete-product2.png)
 
 * **Price:** With this option you will be able to delete, by date range, all kinds of prices (price per room, prices per pax and price per occupancy) and occupancy and meal plan supplements. Bear in mind that the meal plan supplements will be deleted for all types of passengers (Adult, child and baby).
 
-[IMAGEN]
+![Inventory Delete Product](https://storage.travelgate.com/docs/inventory_delete-product3.png)

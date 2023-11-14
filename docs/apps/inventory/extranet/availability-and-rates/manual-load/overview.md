@@ -11,7 +11,7 @@ The aim of the Manual Load section is to control the conditions of the rates and
 
 <div className="shortcuts-overview">
     <div className="shortcuts-overview__content">
-        <a className="item" href="delete-product">
+        <a className="item" href="availability-and-price">
             <icon icon="fa-brands fa-github" size="lg" />
             <p className="item__title">Availability and Price Load</p>
             <p className="item__subtitle">a</p>

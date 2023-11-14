@@ -6,7 +6,7 @@ sidebar_position: 2
 
 The SetUp section enables you to configure the hotels you are going to buy from your connected channel managers or to create the main structure of your own product is you are going to use the extranet to load your static contracts.
 
-[IMAGEN]
+![Inventory SetUp](https://storage.travelgate.com/docs/inventory_setup1.png)
 
 The configuration of the main structure used in Inventory is as follows:
 
@@ -29,7 +29,7 @@ All these structures can be activated/deactivated or deleted. See Activate/Deact
 
 There are two ways of checking hotels already configured: you can view all the hotels for a relation `Client – Supplier`, as in the previous image. Alternatively, you can search  suppliers or channel managers that have a specific hotel. To filter is faster if you want to search for a particular hotel - tick the checkbox of `filter by hotels`, type either the hotel code or name and complete it with one of the options that the autocomplete offers (the field left as blank would be filled automatically).
 
-[IMAGEN]
+![Inventory SetUp](https://storage.travelgate.com/docs/inventory_setup2.png)
 
 Click the button `Filter Providers` and a list of providers that offer the selected hotel will appear in the drop-down menu. Once you select one of those channels, only the configuration done for this hotel with this supplier will appear.
 
@@ -37,7 +37,7 @@ Click the button `Filter Providers` and a list of providers that offer the selec
 
 To add a new hotel in your configuration you should click the `Add Hotel` button. A pop-up window will appear with information to fill in relation to the hotel you are about to add:
 
-[IMAGEN]
+![Inventory SetUp](https://storage.travelgate.com/docs/inventory_setup3.png)
 
 * **Hotel name:** This autocomplete field makes suggestions while you are typing the hotel’s name. Inventory's system works with a master hotel database where we store all the basic information of the hotels setup by our Partners . If the hotel you require is not available in the autocomplete field you can create it yourself by clicking  the `Create Hotel` button. *See [How to create a new hotel](#) section to learn the basics on how to create a hotel.* Notice that if the hotel you want to add has already been added to this client-channel relation, it will not appear as a suggestion in the autocomplete field.
 
@@ -51,7 +51,7 @@ Once added, the hotel will appear in a row in the SetUp menu, where you will be 
 
 The following image is an example of an email notification and the information it contains such as the locators, client, room, price, etc. This email is only **informative**. 
 
-[IMAGEN]
+![Inventory SetUp](https://storage.travelgate.com/docs/inventory_setup4.png)
 
 :::note
 
@@ -61,9 +61,9 @@ It is possible to add your logo to this email. To implement this functionality, 
 
 ### How to create a new hotel
 
-If you cannotfind the hotel you want to add in the autocomplete field you'll be given the option to create this hotel in our DataBase by clicking the button ``Create Hotel``. You will need to indicate the **hotel's** basic information in the following form: 
+If you cannotfind the hotel you want to add in the autocomplete field you'll be given the option to create this hotel in our DataBase by clicking the button `Create Hotel`. You will need to indicate the **hotel's** basic information in the following form: 
 
-[IMAGEN]
+![Inventory SetUp](https://storage.travelgate.com/docs/inventory_setup5.png)
 
 :::note
 
@@ -79,7 +79,7 @@ Now that you have added the hotel it is time to add the rates and then the rooms
 
 In order to add a new rate, click in the `Add Rate` button in the hotel row:
 
-[IMAGEN]
+![Inventory SetUp](https://storage.travelgate.com/docs/inventory_setup6.png)
 
 The information needed to add a rate is listed below:
 
@@ -99,7 +99,7 @@ The information needed to add a rate is listed below:
 * **All dates:** By default it is checked. If it is checked, the rate will be available always. If you uncheck the checkbox, two new fields will appear: From and To. These fields are the initial and final dates for when the rate is available (dates when the availability request is done, not the stay dates). For example: if there is a date range from: `24/02/2020` to: `28/02/2020`:
     * If an availability request is made between February 24 and February 28 (both days included) and if there is price and allotment loaded for this rate, there will be availability returned correctly in the search response.
      * If the availability request is made before February 24 or after February 29 there will be no availability because the request would not have been made in the indicated range.
-* **Markets:** This is a market filter. Clicking the ``+`` button on both Include or Exclude, allows you to add the country code of the market that you want to include or exclude. For example, if a rate includes the market "ES" and an availability search is made for the market "IT", there will not be availability returned, because "IT" is not an included market. On the other hand, if one market is excluded, for example "ES", there will be availability returned for all other markets except the Spanish. In case no market is indicated in these fields, no market filter will be applied.
+* **Markets:** This is a market filter. Clicking the `+` button on both Include or Exclude, allows you to add the country code of the market that you want to include or exclude. For example, if a rate includes the market "ES" and an availability search is made for the market "IT", there will not be availability returned, because "IT" is not an included market. On the other hand, if one market is excluded, for example "ES", there will be availability returned for all other markets except the Spanish. In case no market is indicated in these fields, no market filter will be applied.
 * **Payment Type:** Indicate the payment type to work with. If you don't have this field in your panel it means that the supplier or Channel Manager your are working with doesn´t allow credit payment and by default *"MerchantPayment"* is selected.
     * **MerchantPayment:** The customer pays the client and the client will pay the provider.
     * **DirectPayment:** The customer will have to use a credit card as a guarantee for the hotel and the payment will be done by the customer at check-in.
@@ -108,13 +108,13 @@ The information needed to add a rate is listed below:
 * **Card Type:** List with different card types. Select the cards allowed between the client and the provider.
 * **Taxes:** Taxes that can be added to the rate. By default, there are no taxes in a rate, but they could be freely
 added once the checkbox of "Taxes" is checked: 
-    * **Type:** the type that would take the value of the tax, it can be a % or an amount.
-    * **Value:** the value of the tax.
-    * **Description:** the description that can be indicated for a tax: "City", "Local", "Resort fee" and "Supplement to be paid on spot".
-    * **Per Night:** if checked, the tax will be applied for every night.
-    * **Per Pax:** if checked, the tax will be applied for every pax.
-    * **Add to final price:** if checked, the tax price will be included in the final price that the client will pay. If it is not checked, the tax will be informative to the final customer and should be paid for them at the hotel.
-* **Cancellation policy – Base:** Cancellation policies that can be applied to the rate. The rate will be non refundable if the checkbox ``No refund`` is checked. It is possible to apply a different type of cancellation policy by clicking the `+` button. You can add as many policies as you need, all you need to do is indicate the days in advance before the arrival date, the type and the value of the policy. See [How to configurate different cancel policies](#) section for some examples.
+   * **Type:** the type that would take the value of the tax, it can be a % or an amount.
+   * **Value:** the value of the tax.
+   * **Description:** the description that can be indicated for a tax: "City", "Local", "Resort fee" and "Supplement to be paid on spot".
+   * **Per Night:** if checked, the tax will be applied for every night.
+   * **Per Pax:** if checked, the tax will be applied for every pax.
+   * **Add to final price:** if checked, the tax price will be included in the final price that the client will pay. If it is not checked, the tax will be informative to the final customer and should be paid for them at the hotel.
+* **Cancellation policy – Base:** Cancellation policies that can be applied to the rate. The rate will be non refundable if the checkbox `No refund` is checked. It is possible to apply a different type of cancellation policy by clicking the `+` button. You can add as many policies as you need, all you need to do is indicate the days in advance before the arrival date, the type and the value of the policy. See [How to configurate different cancel policies](#) section for some examples.
 * **Cancellation policy - Calendar:** This option will only appear once you have created your rate previously with base cancel policies. The cancellation policy by calendar allows you to create specific cancel policies by day or date range. You can click the `Add range` button to specify a date range and the cancel policies. This new cancel policies by day will override the base cancel policies specified at rate level. If you want to remove a cancel policy by date you can click the `Delete range` button and specify your dates. You can also delete or check the cancel policies by day clicking in the day's number of the month.
 * **Specific Clients:** If you want to inform that this rate is only for a list of specific clients check this option and add both Code (code that represent your client) and Description (normally the name of the client). You can add maximum 15 clients. The client codes have to be unique on the same rate.
 * **Amendments policy:** Informs if a Rate is modifiable and their fees if any is applied. When the checkbox `Amendments allowed` is checked, the rate allows modifications. If the modifications implies fees, they can be added through the `+` button to setup the rate amend fees. All you need to do is to indicate the days in advance before the arrival date, type (between amount and percent) and amount. If no fee is required, then you don't need to specify it. 
@@ -137,11 +137,11 @@ In order to add a new room, click in the ``Add Room`` button in the hotel row an
 
 1. **All room types:** Select from the autocomplete field a room code and description from your own room master list. Room code can be modified for this rate.
 
-[IMAGEN]
+![Inventory SetUp](https://storage.travelgate.com/docs/inventory_setup8.png)
 
 2. **New room type:** Create a new room type, enter a code and a description for your own reference. Once saved, this room type will be added to the room master list and will appear as an option in `All room types`.
 
-[IMAGEN]
+![Inventory SetUp](https://storage.travelgate.com/docs/inventory_setup9.png)
 
 * **Code:** Room code. Must be unique per rate and has to coincide with the code used by the channel.
 * **Name:** Room name. Text field that allows you to introduce the room description that will be shown to your buyers. This field is just informative.
@@ -156,7 +156,7 @@ In Inventory you can create your own discounts or supplements using what we call
 
 To add a derived rate, first it is necessary to click the `Add Derived Rate` button for the same rate for which you want to create a derived rate and a pop-up window will appear for you to fill in the derived rate information.
 
-[IMAGEN]
+![Inventory SetUp](https://storage.travelgate.com/docs/inventory_setup10.png)
 
 The information needed to add a derived rate is listed below:
 
@@ -191,7 +191,7 @@ The Inventory extranet allows you to add free night offers to the rates and its 
 
 Firs step would be to click in the `Add Offer` button over the base rate for which you want to add the offer. A pop-up window appears for you to complete the following information.
 
-[IMAGEN]
+![Inventory SetUp](https://storage.travelgate.com/docs/inventory_setup11.png)
 
 * **Code:** Offer code. It must be unique at rate level (it can not match with any other offer code in the same rate).
 * **Name:** Offer name.
@@ -200,99 +200,3 @@ Firs step would be to click in the `Add Offer` button over the base rate for whi
 * **Applicable Days of Week:** Days of the week that the offer will apply to.
 * **Available Dates:** Used to specify whether the offer is available for all the dates or just for a particular date range.
 * **Apply to all rooms:** Used to specify whether the offer will apply to all the rooms of the rate or just to some of them.
-
-## Copy Tool
-
-If you to do a lot of configurations in the SetUp process, this might become boring, so in order to make the SetUp easier and faster you will be able to user the `Copy Tool` in the `Inventory` tab of the extranet.
-
-[IMAGEN]
-
-This option will copy the complete SetUp from one or more hotels to a different provider connection. This can be useful if you have the same hotel configurated in different Channel Managers and you want to use the same configurarion (Rates and rooms).
-
-To copy the SetUp you will only need to indicate the provider to add the new hotels in the `Target Provider` field. Then, you will be able to mark with the check fields the hotels you want to copy and click on the `Copy` button.
-
-[IMAGEN]
-
-### Rate in same hotel
-
-This option is used to copy rates within the same hotel. You'll need to indicate the hotel ID or name and check the rate to be copied. Once selected the rate you should click on the `Copy` button and  you will be asked to introduce a new rate code (remember that this code must be unique per hotel), a new name and a new meal plan.
-
-Once the new values are set, click the `SEND` button to save the changes or the `CANCEL` button if you want to reject them.
-
-[IMAGEN]
-
-### Rate Information
-
-This option allows you to copy rate information from one hotel to a different one or within the same hotel as the original. As an example, this tool can be used in case you want to substitute the cancellation policies of a rate with those of a preexisting rate.
-
-First you need to indicate the hotel ID or name and the source rate. After that, all its information fields will shown so you will be able to select which information you want to copy. By last, select the hotel and rate destination and click on the `Copy` button.
-
-[IMAGEN]
-
-### Price & Allotments
-
-This option allows you to copy the prices or the allotment that have been loaded for a certain room to other rooms in other hotels. Those two options will also include the copy of the supplements, conditions or restrictions that may be
-loaded.
-
-You can copy a specific range of dates or all the dates for which the product has been loaded. By default, the information will be copied for all dates, unless a date range is specified. You can also copy both allotment and prices at the same time or just one of the two. This method allows you to copy multiple destination rooms from multiple rates and multiple hotels.
-
-[IMAGEN]
-
-:::note
-
-In case of copying prices, it is important to check that the destination rooms are configured with the same occupancies as the selected room. This tool does not take responsibility for differences in occupancy prices that could appear if this rule is not followed.
-
-:::
-
-### Derived Rates
-
-This option allows you to copy derived rates from a source hotel to a destination hotel. Notice that the source hotel can be the same as the destination hotel. In addition, it is also possible to copy more than one derived rate from more than one source base rate to several destination rates in different destination hotels.
-
-[IMAGEN]
-
-When you click the `Copy` button, a pop up window will appear where you will be able to select the rooms that you want to apply this derived rate to. You would have to select at least one room.
-
-[IMAGEN]
-
-In case you want to copy the derived rate to a rate without rooms, the following pop-up window will appear:
-
-[IMAGEN]
-
-In this case, you will have to select All rooms,in order to indicate that the derived rate will be applied to all rooms that will be added to this rate in the future. If you don't want the derived rate to be applied to all future rates, you will first have to add the rooms you want the derived rate to apply to, then select them when copying the derived rate.
-
-:::note
-
-It should be pointed out that derived rates can have the same meal plan as the base rate or they can have their own. If it copies the same meal plan as the base rate, when you copy the derived rate, it will assume the meal plan of the new base rate it has been copied to. If the derived rate has its own meal plan, the new derived rate will retain it. If you want to change the meal plan of a derived rate it can be done in the [SetUp](#) section.
-
-:::
-
-### Rates & Rooms
-
-This option allows you to copy rates and rooms from one hotel to another one. To use it, you have to select the source hotel and the rates and rooms you want to copy from the `From` tab and then select the hotels to which you want to copy the information to.
-
-[IMAGEN]
-
-### Rooms
-
-This option allows you to copy the selected rooms from one rate to another within the same hotel. You have to indicate the hotel ID or name and then the rate and rooms you want to copy. By last, select the rate destination and click the `Copy` button.
-
-[IMAGEN]
-
-### Offers
-
-This option allows you to copy offers from a source hotel to a destination hotel. Notice that the source hotel can be the same as the destination hotel. In addition, it is also possible to copy one offer to several destination rates in different destination hotels.
-
-[IMAGEN]
-
-
-## Activate/Deactivate/Delete
-
-If a hotel, rate or room is deleted, it is erased in the system, and it's not possible to retrieve it. The information is not recoverable, so if you deleted it by mistake, you will have to set it up it again and reload prices, allotment(number of rooms available), etc.
-
-If you deactivate a hotel, rate or room it will remain in the system but it will not be visible when doing an availability search request. To have the hotel, rate or room available again you will have to re-activate it.
-
-In the following image you will see the three action buttons to activate, deactivate or delete a element.
-
-[IMAGEN]
-
-In case there are any hotels, rates, derived rates or rooms deactivated, they will appear on a red background, as you can see in the previous image for hotel *"Just Sleep Jiaoxi"* 

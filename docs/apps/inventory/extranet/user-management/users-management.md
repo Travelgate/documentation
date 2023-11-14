@@ -2,7 +2,11 @@
 sidebar_position: 2
 ---
 
-# Maintenance Users
+# Users Management
+
+The Manage section allows you to manage users from your team or hoteliers and also allows you to check hotels details as address, telephone, email…
+
+![Inventory Hotels Management](https://storage.travelgate.com/docs/inventory_hotels-management1.png)
 
 This tool allows you to create, modify or delete users. This users can be created for your team or for the hoteliers that you believe should have access to the Inventory system.  Creating users for hoteliers is not mandatory, but in some cases they ask for it in order to check that all is loaded correctly in the system. In other cases, it is the Channel Manager who demands that the hotelier be given a credential, so the hotelier has to ask the client for a user.
 
@@ -12,11 +16,11 @@ In case that the hotelier asks for access to the Inventory extranet, it will be 
 
 :::
 
-[IMAGEN]
+![Inventory Users Management](https://storage.travelgate.com/docs/inventory_users-management1.png)
 
 To create a new username click on `Add new User` and a pop up window will appear to introduce the username, type of user and a password. You would also need to indicate an email address for this username in case the password is forgotten and has to be recovered.
 
-[IMAGEN]
+![Inventory Users Management](https://storage.travelgate.com/docs/inventory_users-management2.png)
 
 The type of user, or user role, allows the user to do certain actions and view certain sections of the extranet. The different roles or types of users are:
 
@@ -34,7 +38,7 @@ Usually, the kind of user that will be create for a hotelier is *Provider Viewer
 
 When selecting the kind of role, a new field will appear in order for the Channel Manager which it relates to can be indicated, as you can see in the following image:
 
-[IMAGEN]
+![Inventory Users Management](https://storage.travelgate.com/docs/inventory_users-management3.png)
 
 Once the form is filled and verified, you will be able to save the changes by clicking the `Save` button. If you want to reject the changes, click the `Cancel` button.
 

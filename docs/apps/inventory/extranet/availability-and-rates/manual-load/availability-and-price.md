@@ -2,18 +2,16 @@
 sidebar_position: 2
 ---
 
-# Availability and Price load
+# Availability and Price Load
 
 First, please select the client and the Channel Manager in order to continue the process of loading conditions. Then indicate the hotel to which you want to load availability conditions or prices and finally select `Rates` in the `Choose your Load` field. Once the rate is specified in the selectable, select either prices or conditions using the `Load Type` field. 
 
-* [Load availability/allotment](#)
-* [Load prices](#)
 
 ## How to load Availability
 
 To load availability, select `Availability`.
 
-[IMAGEN]
+![Inventory Manual Load](https://storage.travelgate.com/docs/inventory_manual-load-rate1.png)
 
 The new panel allows you to indicate the date range, rooms, allotment (number of rooms available) and conditions to be applied. Once you have introduced the data you want to apply, clicking ``Load Rate`` saves the changes. Doing this will overwrites the data loaded previously for those dates, if any.
 
@@ -36,7 +34,7 @@ The new panel allows you to indicate the date range, rooms, allotment (number of
 
 To load price you should select `Price` in the load type field.
 
-[IMAGEN]
+![Inventory Manual Load](https://storage.travelgate.com/docs/inventory_manual-load-rate2.png)
 
 This allows you to load the 3 different types of price and extra passengers and meal plan supplements.
 
@@ -44,15 +42,15 @@ This allows you to load the 3 different types of price and extra passengers and 
 * **Applicable Days of Week:** Days of week that the price in the previous date range applies
 * **All Rooms:** Rooms to which the prices apply. In case the checkbox is not selected, a new field pops up to allow you to select the rooms you want the prices to apply.
 * **Price Type**: Inventory-X system allows three different types of price: 
-    * [Price per Room](#)
-    * [Price per Standard Occupancy](#)
-    * [Price per Occupancy](#)
+    * Price per Room
+    * Price per Standard Occupancy
+    * Price per Occupancy
 
 ### Price per Room
 
 Price per room allows you to load a price for the whole room and the option to add occupancy and meal plan supplements.
 
-[IMAGEN]
+![Inventory Manual Load](https://storage.travelgate.com/docs/inventory_manual-load-rate3.png)
 
 If you want a unique price for the whole room and you don't use occupancy supplements, you can load your price in the `Room Price` field. That way, no matter the occupancy uses your room has, the final price will be the one indicated in the `Room Price` field.
 
@@ -113,13 +111,13 @@ For example, if the room standard occupancy is 2 and the occupancy use is 1 adul
 
 Let's check some examples to know how prices are calculated for different occupancy uses. First, we'll check the standard occupancy and uses from our *Double Room* set in the SetUp section:
 
-[IMAGEN]
+![Inventory Manual Load](https://storage.travelgate.com/docs/inventory_manual-load-rate4.png)
 
 In this case, our standard occupancy is 2 adults, but the room allows different occupancy uses as 3 adults, 1 adult, 2 adults and 1 child, 2 adults and 1 baby...
 
 If we load price for this room using price per standard occupancy we will be able to load price for all occupancies under or equal the standard occupancy: 
 
-[IMAGEN]
+![Inventory Manual Load](https://storage.travelgate.com/docs/inventory_manual-load-rate5.png)
 
 If we load 50€ for 1 adult and 100€ for 2 adults, let's check how all occupancy uses will be priced:
 
@@ -145,6 +143,6 @@ Check the [occupancy supplements sections](#) explained earlier to know how diff
 
 Price per occupancy allows you to load exactly the amount for each occupancy use that your room allows. In this case, our system doesn't do any calculation and we don't use the standard occupancy, only the occupancy uses. 
 
-[IMAGEN]
+![Inventory Manual Load](https://storage.travelgate.com/docs/inventory_manual-load-rate6.png)
 
 As you can indicate an specific amount for each occupancy, it doesn't make sense to have occupancy supplements, but you can load [meal plan supplements](#) explained before. 

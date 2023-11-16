@@ -4,8 +4,6 @@ sidebar_position: 2
 
 # Hotel-X Content Certification
 
-## Find out what you need to do to get your Content step certified.
-
 ### Why is Content Certification important?📑
 
 Content Certification is important to ensure a successful collaboration, since it is crucial for our Partners to have a comprehensive understanding of our API, be able to effectively utilize it, and transmit accurate information. That's why we have made it mandatory for all Partners, whether they are buying or selling in our Marketplace, to undergo a certification process.

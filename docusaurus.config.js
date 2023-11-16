@@ -32,6 +32,23 @@ const config = {
     locales: ['en'],
   },
 
+  headTags: [
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap',
+      },
+    },
+  ],
+
   scripts: [
     'https://kit.fontawesome.com/e1e13599a5.js',
   ],
@@ -227,7 +244,7 @@ const config = {
           //   ],
           // },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Travelgate. Built for humans, by humans.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Travelgate.`,
       },
       prism: {
         theme: lightCodeTheme,

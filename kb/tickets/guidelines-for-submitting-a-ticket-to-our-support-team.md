@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 # Guidelines for Submitting a Ticket to Our Support Team

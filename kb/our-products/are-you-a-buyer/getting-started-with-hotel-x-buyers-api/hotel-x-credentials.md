@@ -2,7 +2,7 @@
 sidebar_position: 8
 ---
 
-# Hotel-X Credentials
+# Hotel-X API Credentials
 
 ## Review your API Key, Clients, Accesses and Contexts.
 

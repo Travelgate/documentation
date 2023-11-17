@@ -4,8 +4,6 @@ sidebar_position: 5
 
 # Resources and Best Practices
 
-## Read on for resources, tips and best practices that will help you make the most of your connection
-
 ### Main Resources🏆
 
 - [Hotel-X Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart)

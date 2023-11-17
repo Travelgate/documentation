@@ -32,7 +32,7 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--lg"
             to="/docs/get-started/introduction">
-            Documentationxxx <i class="fa-solid fa-chevron-right"></i>
+            Documentation <i class="fa-solid fa-chevron-right"></i>
           </Link>
           <Link
             className="button button--secondary button--lg margin-left--md button--outline"

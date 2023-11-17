@@ -3,3 +3,230 @@ sidebar_position: 3
 ---
 
 # Valuation
+
+Valuation operation evaluates the rate before reservation, providing the same information as the Avail response for a hotel rate, including up-to-date pricing. Additionally, it offers further details such as rate breakdown and cancellation policies. The returned fields include:
+
+* `Status`
+* `Price`
+* `CancelPenalities`
+* `Fees`
+* `PaymentOptions`
+
+## Request
+
+:::caution
+
+The maximum time permitted in our system before the connection is closed is 180000 milliseconds.
+
+:::
+
+```xml
+<soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" 
+    xmlns:ns = "http://schemas.xmltravelgate.com/hub/2012/06" 
+    xmlns:wsse = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+      <soapenv:Header>
+        <wsse:Security>
+          <wsse:UsernameToken>
+            <wsse:Username>username</wsse:Username>
+            <wsse:Password>password</wsse:Password>
+          </wsse:UsernameToken>
+        </wsse:Security>
+      </soapenv:Header>
+      <soapenv:Body>
+        <ns:Valuation>
+          <ns:valuationRQ>
+            <ns:timeoutMilliseconds>180000</ns:timeoutMilliseconds>
+            <ns:version>1</ns:version>
+            <ns:providerRQ>
+              <ns:code>code</ns:code>
+              <ns:id>1</ns:id>
+              <ns:rqXML>
+                <ValuationRQ>
+                  <timeoutMilliseconds>10000</timeoutMilliseconds>
+                  <source>
+                    <languageCode>en</languageCode>
+                  </source>
+                  <filterAuditData>
+                    <registerTransactions>true</registerTransactions>
+                  </filterAuditData>
+                  <Configuration>
+                    <User></User>
+                    <Password></Password>
+                    <UrlValuation>www.supplier.com/valuation</UrlAvail>
+                    <Parameters>
+                      <Parameter key = "UrlListHoteles" value = "http://www.test.net/scr/searchxml/location.php?"></Parameter>
+                      <Parameter key = "UrlConsulta" value = "https://www.test.net/scr/xml/travelgate.php?"></Parameter>
+                      <Parameter key = "office" value = "55555"></Parameter>
+                      <Parameter key = "password" value = "XXXXXX"></Parameter>
+                    </Parameters>
+                  </Configuration>
+                  <StartDate>04/07/2016</StartDate>
+                  <EndDate>11/07/2016</EndDate>
+                  <MealPlanCode>15</MealPlanCode>
+                  <HotelCode>6259</HotelCode>
+                  <PaymentType>MerchantPay</PaymentType>
+                  <OptionType>Hotel</OptionType>
+                  <OnRequest>false</OnRequest>
+                  <BlockOption>false</BlockOption>
+                  <Nationality>ES</Nationality>
+                  <Parameters>
+                      <Parameter key = "ID1" value = "ID#1#VR"/>
+                      <Parameter key = "ID2" value = "ID#2#FGR#45187#10-5"/>
+                      <Parameter key = "PSR" value = "511.28"/>
+                  </Parameters>
+                  <Rooms>
+                      <Room id = "ITD10" roomCandidateRefId = "1" code = "TW" description = "Twinn"/>
+                      <Room id = "IOG22" roomCandidateRefId = "2" code = "IND" description = "Individual"/>
+                  </Rooms>
+                  <RoomCandidates>
+                      <RoomCandidate id = "1">
+                          <Paxes>
+                              <Pax age = "30" id = "1"/>
+                              <Pax age = "30" id = "2"/>
+                          </Paxes>
+                      </RoomCandidate>
+                      <RoomCandidate id = "2">
+                          <Paxes>
+                              <Pax age = "30" id = "1"/>
+                          </Paxes>
+                      </RoomCandidate>
+                  </RoomCandidates>
+                </ValuationRQ>
+              </ns:rqXML>
+            </ns:providerRQ>
+          </ns:valuationRQ>
+        </ns:Valuation>
+      </soapenv:Body>
+</soapenv:Envelope>
+```
+
+### Request Data Breakdown
+
+| Element                            | Rel | Type | Description |
+| -------------------------------------- | ---------- | -------- | --------------- |
+| ValuationRQ                            | 1          |          | Root node.      |
+| ValuationRQ/StartDate                              | 1          | String   | Start date of rate search. |
+| ValuationRQ/EndDate                                | 1          | String   | End date of rates search. |
+| ValuationRQ/OnRequest                              | 1          | Boolean  | Indicates if you want to receive the on request options in AvailRS, as long as the supplier returns it in this method (see [MetaData](../content/meta-data/)). |
+| ValuationRQ/BlockOption                            | 1          | Boolean  | Indicates if you want to block the option selected in AvailRS, as long as the supplier allows it in this method (see [MetaData](../content/meta-data/)). |
+| ValuationRQ/MealPlanCode                           | 1          | String   | MealPlan code.  |
+| ValuationRQ/HotelCode                              | 1          | String   | Hotel code.     |
+| ValuationRQ/PaymentType                            | 1          | String   | <details>     <summary>Payment Types</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Code</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>MerchantPay</td>  						 <td>The payment is managed by the supplier.</td>  					 </tr>  					 <tr>  						 <td>LaterPay</td>  						 <td>The payment is managed by the hotel. The customer will use a credit-card as a guarantee for the hotel and the payment will be completed at check in.</td>  					 </tr>           <tr>  						 <td>CardBookingPay</td>  						 <td>The payment is managed by the supplier. The payment is effectuated at the time of booking.</td>  					 </tr>				 <tr>  						 <td>CardCheckInPay</td>  						 <td>The payment is managed by the supplier. The payment is effectuated at check in in the hotel.</td>  					 </tr><tr>  						 <td>PayX</td>  						 <td>The payment is managed by TravelgateX’s payment system.</td>  					 </tr>         </tbody>  			</table>         </div>     </div> </details> |
+| ValuationRQ/OptionType                             | 1          | String   | Indicates option types. |
+| ValuationRQ/Nationality                            | 1       | String   | Guest nationality (use ISO3166_1_alfa_2). |
+| ValuationRQ/Rooms                                | 1          |          | Rooms in this option (room list). |
+| Rooms/Room                            | 1..n       |          | Room Details. |
+| @id                                    | 1          | String   | Room Identifier. |
+| @roomCandidateRefId                    | 1          | Integer  | Room candidate Identifier. |
+| @code                                  | 1          | String   | Room code.      |
+| @description                           | 1          | String   | Room description. |
+| ValuationRQ/RoomCandidates          | 1..n       |          |  |
+| RoomCandidates/RoomCandidate          | 1..n       |          | Room required.  |
+| @id                                    | 1          | Integer  | Id of requested room (starting at 1). |
+| RoomCandidate/Paxes | 1..n       |          |    |
+| Paxes/Pax | 1..n       |          | Pax required.   |
+| @age                                   | 1          | Integer  | Passenger age on the day of check-in. |
+| @id                                    | 1          | Integer  | Passenger id (starting at 1). |
+| ValuationRQ/Parameters              | 0..1       |          | Additional parameters reported in AvailRS. **If you receive parameters in AvailRS it is mandatory to send them exactly the same as received.** If you don't send exactly the same parameters as received the Valuation could fail. |
+| Parameters/Parameter                  | 0..n       |          | Additional parameter requiring integration. |
+| @key                                   | 1          | String   | Contains keyword/Id to identify a parameter. |
+| @value                                 | 1          | String   | Contains parameter value. |
+
+
+## Response
+
+```xml
+<ValuationRS xmlns:xsd = "http://www.w3.org/2001/XMLSchema" xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance">
+    <Parameters>
+        <Parameter key = "bd1" value = "43"/>
+    </Parameters>
+    <Status>OK</Status>
+    <Price currency = "EUR" amount = "106.20" binding = "false" commission = "-1"/>
+    <CancelPenalties nonRefundable = "false">
+        <CancelPenalty>
+            <HoursBefore>72</HoursBefore>
+            <Deadline>2016-07-01T05:00:00Z</Deadline>
+            <CalculatedDeadline>false</CalculatedDeadline>
+            <Penalty type = "Importe" paymentType = "MerchantPay" currency = "EUR">25.00</Penalty>
+        </CancelPenalty>
+        <CancelPenalty>
+            <HoursBefore>48</HoursBefore>
+            <Deadline>2016-07-02T05:00:00Z</Deadline>
+            <CalculatedDeadline>false</CalculatedDeadline>
+            <Penalty type = "Importe" paymentType = "MerchantPay" currency = "EUR">72.40</Penalty>
+        </CancelPenalty>
+    </CancelPenalties>
+    <Fees>
+        <Fee includedPriceOption = "true" description = "TaxAndServiceFee">
+            <Price currency = "EUR" amount = "8.11" binding = "false" commission = "-1"/>
+            <Code>SPE</Code>
+        </Fee>
+    </Fees>
+    <Remarks/>
+    <PaymentOptions cash = "false" bankAcct = "false">
+        <Cards>
+            <Card code = "VI"/>
+            <Card code = "AX"/>
+            <Card code = "CA"/>
+        </Cards>
+    </PaymentOptions>
+    <CancelPoliciesDescription/>
+</ValuationRS>
+```
+
+### Response Data Breakdown
+
+| Element                               | Rel | Type | Description |
+| ----------------------------------------- | ---------- | -------- | --------------- |
+| ValuationRS                               | 1          |          | Root node.      |
+| ValuationRS/Parameters                              | 0..1       |          | Parameters for additional information. |
+| Parameters/Parameter                     | 1..n       |          | List of parameters. |
+| @key                                      | 1          | String   | Contains the keyword/Id to identify a parameter. |
+| @value                                    | 1          | String   | Contains parameter value. |
+| ValuationRS/Status                                    | 1          |          | Status option (OK = available, RQ = on request). |
+| ValuationRS/Price                                     | 1          |          | Total price of this valuation. |
+| @currency				    | 1          | String   | Currency code (Our system uses a standard ISO - 3 for all suppliers). |
+| @amount                                   | 1          | Decimal  | Option Amount. |
+| @binding                                  | 1          | Boolean  | If binding is set as true, then the client can’t sell the product for a lower price that the one set by the supplier. If it set as as false, the client can sell the product for a lower price. |
+| @commission                               | 1          | Decimal  | <details>     <summary>Commission Scenarios</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Commission</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>0</td>  						 <td>The price returned is net.</td>  					 </tr>  					 <tr>  						 <td>-1</td>  						 <td>The supplier has not supplied the sale price nor the commission. This information is in the commercial contract with the supplier.</td>  					 </tr>           <tr>  						 <td>Greater than 0</td>  						 <td>X = % of the commission applied to the amount.</td>  					 </tr>				 </tbody>  			</table>         </div>     </div> </details> |
+| ValuationRS/CancelPenalties                        | 1          |          | Cancellation policy details. |
+| @nonRefundable                            | 1          | Boolean  | Indicate if this option is refundable or not. |
+| CancelPenalties/CancelPenalty            | 0..n       |          | Listing cancellation penalties. |
+| CancelPenalty/HoursBefore | 1          | String   | Number of hours prior to checkin date in which this Cancellation policy applies . |
+| CancelPenalty/Deadline    | 1          | String   | Date on UTC Standard TimeZone in which this Cancellation policy applies (ISO 8601 e.g: 2016-07-01T05:00:00Z)  |
+| CancelPenalty/CalculatedDeadline | 1          | Boolean  |  Indicate if the Deadline is returned by the supplier or it's been calculated by Travelgate.If true, the deadline has been converted to UTC-0 by Travelgate. If False, the supplier returns the deadline on UTC-0, so no calculation is needed. |
+| CancelPenalty/Penalty     | 1          |          | Contains the value to be applied in net price. |
+| @type					    | 1          | String   | <details>     <summary>Types of penalties</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Penalty</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>Noches</td>  						 <td>Indicates the number of nights to be penalized.</td>  					 </tr>  					 <tr>  						 <td>Porcentaje</td>  						 <td>Indicates the percentage to pay based on the option price.</td>  					 </tr>           <tr>  						 <td>Importe</td>  						 <td> Indicates the exact amount payable.</td>  					 </tr>				 </tbody>  			</table>         </div>     </div> </details> |
+| @currency				    | 1          | String   | Currency code (Our system uses a standard ISO - 3 for all suppliers). |
+| @paymentType                            | 1          | String   | <details>     <summary>Payment Types</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Code</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>MerchantPay</td>  						 <td>The payment is managed by the supplier.</td>  					 </tr>  					 <tr>  						 <td>LaterPay</td>  						 <td>The payment is managed by the hotel. The customer will use a credit-card as a guarantee for the hotel and the payment will be completed at check in.</td>  					 </tr>           <tr>  						 <td>CardBookingPay</td>  						 <td>The payment is managed by the supplier. The payment is effectuated at the time of booking.</td>  					 </tr>				 <tr>  						 <td>CardCheckInPay</td>  						 <td>The payment is managed by the supplier. The payment is effectuated at check in in the hotel.</td>  					 </tr><tr>  						 <td>PayX</td>  						 <td>The payment is managed by TravelgateX’s payment system.</td>  					 </tr>         </tbody>  			</table>         </div>     </div> </details> |
+| CancelPenalty/Deadline | 0..1          | String   | Cancellation fees will be applicabled between this date and check-in date. |
+| ValuationRS/Remarks 				    | 0..1       | String   | Remarks (see [MetaData](../content/meta-data/) in order to verify if a supplier implements it).       |
+| ValuationRS/PaymentOptions		       | 0..1       | String   | Payment Types allowed by the supplier. This tag  is mandatory only if payment type is different than MerchantPay. |
+| PaymentOptions/Cards			   | 0..1		 | 	    | List of cards allowed. |
+| Cards/Card	   | 1..n       |          | Details of card. |
+| @code   				    | 1          | String   | <details>     <summary>Credit Card codes</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Code</strong>  						 </th>  						 <th>  							 <strong>Name</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>VI</td>  						 <td>Visa</td>  					 </tr>  					 <tr>  						 <td>AX</td>  						 <td>American Express</td>  					 </tr>                     <tr>  						 <td>BC</td>  						 <td>BC Card</td>  					 </tr>  					 <tr>  						 <td>CA</td>  						 <td>MasterCard</td>  					 </tr>  					 <tr>  						 <td>CB</td>  						 <td>Carte Blanche</td>  					 </tr>                     <tr>  						 <td>CU</td>  						 <td>China Union Pay</td>  					 </tr>  					 <tr>  						 <td>DS</td>  						 <td>Discover</td>  					 </tr>  					 <tr>  						 <td>DC</td>  						 <td>Diners Club</td>  					 </tr>                     <tr>  						 <td>T</td>  						 <td>Carta Si</td>  					 </tr>                     <tr>  						 <td>R</td>  						 <td>Carte Bleue</td>  					 </tr>                     <tr>  						 <td>N</td>  						 <td>Dankort</td>  					 </tr>                     <tr>  						 <td>L</td>  						 <td>Delta</td>  					 </tr>                     <tr>  						 <td>E</td>  						 <td>Electron</td>  					 </tr>                     <tr>  						 <td>JC</td>  						 <td>Japan Credit Bureau</td>  					 </tr>                     <tr>  						 <td>TO</td>  						 <td>Maestro</td>  					 </tr>                     <tr>  						 <td>S</td>  						 <td>Switch</td>  					 </tr>                     <tr>  						 <td>EC</td>  						 <td>Electronic Cash</td>  					 </tr>                     <tr>  						 <td>EU</td>  						 <td>EuroCard</td>  					 </tr>                     <tr>  						 <td>TP</td>  						 <td>Universal air travel card</td>  					 </tr>                     <tr>  						 <td>OP</td>  						 <td>optima</td>  					 </tr>                     <tr>  						 <td>ER</td>  						 <td>Air Canada/RnRoute</td>  					 </tr>                     <tr>  						 <td>XS</td>  						 <td>access</td>  					 </tr>                     <tr>  						 <td>O</td>  						 <td>others</td>  					 </tr>  				 </tbody>  			</table>         </div>     </div> </details> |
+| ValuationRS/Fees				    | 0..1       | 	    | Contains a list of fees. |
+| Fees/Fee				    | 1..n       |          | Contains details of the fee. |
+| Fee/Code		    	    | 1          |   String | Specifies the fee code in case it has one. |
+| @includedPriceOption			    | 1		 | Boolean  | Indicates if the fee is included or not in the final price (value indicated in the node Price in ValuationRS). |
+| @description				    | 1          | String   | Remarks regarding fee. |
+| Fee/Price			    | 1          |          | Contains details of price. |
+| @currency 				    | 1          | String   | Currency code (Our system uses a standard ISO - 3 for all suppliers). |
+| @amount 				    | 1          | Decimal  | Fee Amount. |
+| @binding				    | 1          | Boolean  | If binding is set as true, then the client can’t sell the product for a lower price that the one set by the supplier. If it set as as false, the client can sell the product for a lower price. |
+| @commission				    | 1          | Decimal  | <details>     <summary>Commission Scenarios</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Commission</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>0</td>  						 <td>The price returned is net.</td>  					 </tr>  					 <tr>  						 <td>-1</td>  						 <td>The supplier has not supplied the sale price nor the commission. This information is in the commercial contract with the supplier.</td>  					 </tr>           <tr>  						 <td>Greater than 0</td>  						 <td>X = % of the commission applied to the amount.</td>  					 </tr>				 </tbody>  			</table>         </div>     </div> </details> |
+| ValuationRS/CancelPoliciesDescription                 | 0..1       | String   | Contains the cancellation penalties in free text (see [MetaData](../content/meta-data/) in order to verify if a supplier implements it). |
+| ValuationRS/Option 	|0..1	| Option quoted
+| Option/Rooms | 0..1 		| 		| Rooms in the option (room list).				|
+| Rooms/Room | 1..n 	| 		| Room details.						|
+| @id 					| 1 		| String 	| Room ID.					|
+| @roomCandidateRefId 			| 1 		| Integer 	| Room candidate ID.					|
+| @code 				| 1 		| String 	| Room code has to be unique to identify a specific room type. If the RoomList Method is implemented, you can find the description of the room type in the RoomList. 							|
+| @description 				| 0..1 		| String 	| Room description. Mandatory if the supplier doesn't allow RoomList Method. If the supplier implements RoomList Method, this field could be empty.						|
+
+
+:::caution Suppliers with block allotment
+
+There are some suppliers who use block allotments, sometimes called pre-confirmation or quote. In that case, you will have 30 minutes to complete the booking, if not, you will have to re-launch Valuation 30 minutes after the last request, normally just before booking request.
+
+:::

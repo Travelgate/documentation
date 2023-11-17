@@ -1,5 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
+
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
@@ -31,7 +32,7 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--lg"
             to="/docs/get-started/introduction">
-            Documentation <i class="fa-solid fa-chevron-right"></i>
+            Documentationxxx <i class="fa-solid fa-chevron-right"></i>
           </Link>
           <Link
             className="button button--secondary button--lg margin-left--md button--outline"
@@ -52,7 +53,9 @@ export default function Home() {
       description="Description will go into a meta tag in <head />">
       <HomepageHeader />
       <main>
-        
+      {/*
+        <HomepageFeatures />
+      */}
         <div className="container">
           <div className="browse-articles">
             <div className="row">
@@ -121,7 +124,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="hero-kb">
+        <div className="subhero-kb">
           <div className="container">
             <div className="aux">
               <div className="wrap-text">

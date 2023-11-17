@@ -2,7 +2,7 @@
 sidebar_position: 6
 ---
 
-# How to delete conditions and prices loaded in Inventory
+# How to delete conditions and prices
 
 ### How can I access the "Delete Product" functionality?💡
 To remove the availability conditions and prices that have been loaded in Inventory for a particular hotel, follow these steps:

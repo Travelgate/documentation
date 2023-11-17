@@ -37,16 +37,11 @@ In Hotel-X, Multimode refers to the capability for Partners to search multiple S
 
                                     "xx",
 
-                                    "xxx",
-
-                                    "xxxx"
-
                                 ]
 
                             }
 
                         }
-
             ```
         1. **Not specifying any access codes**: The Query will be sent to all the accesses connected to your account as Buyer, taking into account the following information:
             + The request will be sent only to the Sellers' accesses for whom you have already uploaded the [mapping file](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping).

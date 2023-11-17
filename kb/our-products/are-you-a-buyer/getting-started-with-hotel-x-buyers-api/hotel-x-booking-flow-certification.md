@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Hotel-X Booking Flow Certification
 
-## Find out what you need to do to get your Booking Flow step certified.
+### Find out what you need to do to get your Booking Flow step certified.
 
 To ensure a successful collaboration, it is crucial that our Partners have a full understanding of our API, can effectively utilize it, and transmit accurate information. That's why we require all Partners connecting to our Platform, whether they are buying or selling in our Marketplace, to undergo a certification process.
 

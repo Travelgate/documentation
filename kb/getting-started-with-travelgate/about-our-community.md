@@ -22,7 +22,7 @@ At TravelgateX, we understand *Product Development* as any kind of development w
 * API New Major Version release for an existing integration (e.g. v1.0 to v2.0).
 * I have developed a new functionality for my API and I would like TravelgateX to implement it.
 
-### How do I disable e-mail notifications from Community?🛠️
+### How do I disable e-mail notifications from Community?
 To disable e-mail notifications from TravelgateX Community, just follow the steps below:
 
 1. Access your account.

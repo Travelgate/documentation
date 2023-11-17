@@ -7,13 +7,13 @@ sidebar_position: 3
 ### What is Hotel-X Rooms Query?🏨
 Rooms Query returns a simple rooms map for a given set of credentials (access) that may include translations to other languages. You should bear in mind that the response object roomData is shared with Hotels Query but will not necessarily contain the same data.
 
-### How can I retrieve the Seller's Room List through Hotel-X?💡
+### How can I retrieve the Seller's Room List via Hotel-X?
 You just need to follow the specifications in our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/rooms) and build your own Rooms Query, as easy as that! Also, remember you are able to **personalize** the fields requested in order to receive only the information that matters to you in the response.
 
-**Rooms Query example:**
-```
-{"query":"query($criteria: HotelXRoomQueryInput!, $relay: RelayInput!){\n hotelX{\n rooms (criteria: $criteria, relay: $relay) {\n edges{\n node{\n code\n roomData{\n code\n roomCode\n texts{\n text\n text\n }\n source\n occupancies{\n total{\n min\n max\n }\n infants{\n min\n max\n }\n children{\n min\n max\n }\n adults{\n min\n min\n }\n }\n amenities{\n type\n code\n texts{\n text\n language\n }\n }\n views{\n texts{\n text\n language\n }\n viewCode\n }\n medias{\n code\n order\n type\n updatedAt\n url\n texts{\n text\n language\n }\n }\n beds{\n type\n count\n shared\n }\n area\n allAmenities{\n edges{\n node{\n code\n amenityData{\n code\n amenityCode\n type\n }\n }\n }\n }\n }\n adviseMessage{\n code\n description\n external{\n code\n code\n }\n }\n \n }\n }\n }\n }\n}\n\n","variables":{"criteria":{"access":""},"relay":{}}}
-```
+:::tip
+Don't forget to check our [Hotel-X Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/rooms#requests-examples) for a full example of a Hotel-X Rooms Query!🚀
+:::
+
 ### How can I filter my Rooms Query?🔎
 To filter your results and receive specific room/s, you can include the "roomCodes" field in your criteria and specify the desired room/s.
 

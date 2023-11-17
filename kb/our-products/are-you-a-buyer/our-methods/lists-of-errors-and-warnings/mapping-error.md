@@ -2,7 +2,7 @@
 sidebar_position: 22
 ---
 
-# "MAPPING_ERROR"
+# MAPPING_ERROR
 
 ### What does a "MAPPING_ERROR" mean?💡
 "MAPPING_NOT_FOUND" errors occur when our system cannot find a match between the requested hotel/s and the Seller information. It can also be returned in those cases there is some mismatch between the context code used in your request and the context code or data configured in the mapping files uploaded to your FTP (hotels, boards, rooms).

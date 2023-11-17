@@ -2,9 +2,7 @@
 sidebar_position: 1
 ---
 
-# Overview
-
-Quickstart
+# Quickstart
 
 Distribution empowers you, as a Seller, to manage pricing rules, filters, and blacklists for each of your Buyers connected through Travelgate. These rules can be enforced at both agency (Buyer) and provider (Seller) tiers, and can also be applied to designated hotels, date ranges, or markets. This level of control empowers you to finely tailor your company's distribution strategy.
 

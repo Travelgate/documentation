@@ -6,6 +6,8 @@ sidebar_position: 4
 
 Distribution Master files contain the product you will buy and sell in our Marketplace: hotels, mealplans and other required data to apply your business rules subsequently.
 
+Create and update your destinations and destinations groups.
+
 :::info
 
 On the Destination Code you'll need to add the same codes that you have specified or will specify in the [Hotel Master File](hotels). This code should be match the city code in the Hotel Master File.
@@ -14,7 +16,7 @@ On the Destination Code you'll need to add the same codes that you have specifie
 
 ## Create and Upload your Destinations Master File
 
-To get started, create your destinations master file in the correct format and then upload it to your FTP account. We've provided a template file below ⬇️ to help you with this process. Just click on the file name, add your own rules, save it in CSV format, and then upload it to the corresponding folder in your FTP.
+To get started, create your destinations master file in the correct format and then upload it to your FTP account. We've provided a template file below ⬇️ to help you with this process. Just click on the file name, add your data, save it in CSV format, and then upload it to the corresponding folder in your FTP.
 
 
 ```mdx-code-block
@@ -23,7 +25,7 @@ To get started, create your destinations master file in the correct format and t
 📁F0  _0000  
 &nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX  _0000  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁Masters  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[Master_Destinations.csv](https://storage.travelgate.com/docs/BuyerContext_SupplierContext_hotel_map.csv)**  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[Master_Destinations.csv](https://storage.travelgate.com/docs/Master_Destinations.csv)**  
 
 </BrowserWindow>
 ```
@@ -33,19 +35,20 @@ To get started, create your destinations master file in the correct format and t
 
 * **File Name:** Master_Destinations.csv
 * **Directory:** F0\_0000/HotelX\_0000/Masters
-* **Delimiter:** Comma (`#`)
+* **Delimiter:** Hashtag (`#`)
 * **Data:**
    * **Destination Code (mandatory)**: It can’t be set to zero value. It is the code of the destination and it will be used for reference the node on the tree. 
-   * **Empty field (mandatory)**: It will be ignored.
-   * **Destination name (mandatory)**
+   * **Empty Field (mandatory)**: It will be ignored.
+   * **Destination Name (mandatory)**
    * **ISO Country Code (mandatory)**: 2 chars
-   * **Parent destination code (mandatory)**: If the destination has no parent then it has to be set to zero. 
+   * **Parent Festination Code (mandatory)**: If the destination has no parent then it has to be set to zero. 
 * **Note:**
    * The first line is not a header line: it contains data directly.
    * The data of the fields is not encapsulated by " or any other character.
    * Each line represents a unique destination and contains all the information (fields) about it.
    * Any blank line will be skipped.
    * All fields are mandatory.
+   * The file and its data have to be encoded using UTF-8. Otherwise there can be stored strange characters.
 
 
 <details>
@@ -77,7 +80,7 @@ To get started, create your destination group master file in the correct format 
 📁F0  _0000  
 &nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX  _0000  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁Masters  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[Master_DestinationsGroups.csv](https://storage.travelgate.com/docs/BuyerContext_SupplierContext_hotel_map.csv)**  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[Master_DestinationsGroups.csv](https://storage.travelgate.com/docs/Master_DestinationsGroups.csv)**  
 
 </BrowserWindow>
 ```
@@ -87,7 +90,7 @@ To get started, create your destination group master file in the correct format 
 
 * **File Name:** Master_DestinationsGroups.csv
 * **Directory:** F0\_0000/HotelX\_0000/Masters
-* **Delimiter:** Comma (`#`)
+* **Delimiter:** Hashtag (`#`)
 * **Data:**
    * **Group ID (mandatory)**: Unique group identifier.
    * **Group Name/Description (mandatory)**: If not given then it will be used the group ID as name.
@@ -99,7 +102,7 @@ To get started, create your destination group master file in the correct format 
    * Each line represents a unique destination group and contains all the information (fields) about it.
    * Any blank line will be skipped.
    * All fields are mandatory.
-
+   * The file and its data have to be encoded using UTF-8. Otherwise there can be stored strange characters.
 
 <details>
     <summary>📹 Learn how to change the format of the csv file in order to edit and save it</summary>

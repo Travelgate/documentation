@@ -6,6 +6,8 @@ sidebar_position: 5
 
 Distribution Master files contain the product you will buy and sell in our Marketplace: hotels, mealplans and other required data to apply your business rules subsequently.
 
+Create and update your room list.
+
 :::info
 
 On the Destination Code you'll need to add the same codes that you have specified or will specify in the [Hotel Master File](hotels). This code should be match the city code in the Hotel Master File.
@@ -14,16 +16,16 @@ On the Destination Code you'll need to add the same codes that you have specifie
 
 ## Create and Upload your Room List Master File
 
-To get started, create your room list master file in the correct format and then upload it to your FTP account. We've provided a template file below ⬇️ to help you with this process. Just click on the file name, add your own rules, save it in CSV format, and then upload it to the corresponding folder in your FTP.
+To get started, create your room list master file in the correct format and then upload it to your FTP account. We've provided a template file below ⬇️ to help you with this process. Just click on the file name, add your data, save it in CSV format, and then upload it to the corresponding folder in your FTP.
 
 
 ```mdx-code-block
 <BrowserWindow>
 
-📁F0  _0000  
-&nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX  _0000  
+📁F0_0000  
+&nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX_0000  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁Masters  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[Master_RoomList.csv](https://storage.travelgate.com/docs/BuyerContext_SupplierContext_hotel_map.csv)**  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[Master_RoomList.csv](https://storage.travelgate.com/docs/Master_RoomList.csv)**  
 
 </BrowserWindow>
 ```
@@ -33,7 +35,7 @@ To get started, create your room list master file in the correct format and then
 
 * **File Name:** Master_RoomList.csv
 * **Directory:** F0\_0000/HotelX\_0000/Masters
-* **Delimiter:** Comma (`#`)
+* **Delimiter:** Hashtag (`#`)
 * **Header Row:**
    * **RoomCode (mandatory)**
    * **RoomDescription (mandatory)**
@@ -42,7 +44,7 @@ To get started, create your room list master file in the correct format and then
    * Each line represents a room.
    * Any blank line will be skipped.
    * If a field’s data is not mandatory and we don’t want to set it then we just keep it empty: e.g. …##…
-
+   * The file and its data have to be encoded using UTF-8. Otherwise there can be stored strange characters.
 
 <details>
     <summary>📹 Learn how to change the format of the csv file in order to edit and save it</summary>

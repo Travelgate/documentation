@@ -19,96 +19,11 @@ Some of the fields returned are:
 ![booking_query_3](https://storage.travelgate.com/kbase/booking_query_3.jpg)
 
 ### How can I find out if a Seller only accepts a specific type of Booking Query?✅
-Please note that **the queryable fields available by a Seller may vary between Sellers**. You can check the restrictions and fields returned/allowed for a specific Seller via our [Metadata Query](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata):
+Please note that **the queryable fields available by a Seller may vary between Sellers**. You can check the restrictions and fields returned/allowed for a specific Seller via our [Metadata Query](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata).
 
-**Metadata Query request:**
-```
-{
-  hotelX {
-    metadata(criteria: {supplierCodes: ["supplierCode"]}, relay: {}) {
-      adviseMessage {
-        code
-        level
-        description
-      }
-      edges {
-        node {
-          metadataData {
-            supplierCode
-            booking {
-              queryableBySupplierReference {
-                reviewDate
-                value
-              }
-              queryableByClientReference {
-                reviewDate
-                value
-              }
-              requiresCheckInDateInReferencesSearchType {
-                reviewDate
-                value
-              }
-              requiresCheckOutDateInReferencesSearchType {
-                reviewDate
-                value
-              }
-              requiresCheckInDateInReferencesSearchType {
-                reviewDate
-                value
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-```
-
-**Metadata Query response:**
-
-```
-{
-  "data": {
-    "hotelX": {
-      "metadata": {
-        "adviseMessage": null,
-        "edges": [
-          {
-            "node": {
-              "metadataData": {
-              "supplierCode": "supplierCode",
-                "booking": {
-                  "queryableBySupplierReference": {
-                    "reviewDate": "2018-12-27",
-                    "value": true
-                  },
-                  "queryableByClientReference": {
-                    "reviewDate": "2018-12-27",
-                    "value": true
-                  },
-                  "requiresCheckInDateInReferences": {
-                    "reviewDate": "2021-10-11",
-                    "value": false
-                  },
-                  "requiresCheckOutDateInReferences": {
-                    "reviewDate": "2021-10-11",
-                    "value": false
-                  },
-                  "requiresReservationDateInReferences": {
-                    "reviewDate": "2021-10-11",
-                    "value": false
-                  }
-                }
-              }
-            }
-          }
-        ]
-      }
-    }
-  }
-}
-```
+:::tip
+Don't forget to check our [Hotel-X Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata#requests-examples) for a full example of a Hotel-X Metadata Query!🚀
+:::
 
 - **"queryableBy"** indicates that the Seller allows searching through a given field.
 - **"requires"** indicates whether receiving this information is mandatory on the Seller's API.
@@ -116,6 +31,6 @@ Please note that **the queryable fields available by a Seller may vary between S
 - **"reviewDate"** indicates the last time this value was checked against the Seller.
 
 
-::info
-*If you are not using Hotel-X bookingID input, you should indicate your accessCode in the HotelCriteriaBookingInput. Language is optional, but we recommend adding this information for optimal results.
+:::info
+If you are not using Hotel-X bookingID input, you should indicate your accessCode in the HotelCriteriaBookingInput. Language is optional, but we recommend adding this information for optimal results.
 :::

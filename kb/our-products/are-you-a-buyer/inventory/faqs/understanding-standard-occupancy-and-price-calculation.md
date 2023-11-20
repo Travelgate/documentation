@@ -42,7 +42,7 @@ Standard Occupancy is the **standard number of adult paxes of the room**.
 
 	The price of one pax will be 50 (100⁄2), the price of two paxes will be 100, and the price for three paxes will be 200 = 100 + (100⁄2 + 50).
 
-### How can I modify the Standard Occupancy in Inventory?🛠️
+### How can I modify the Standard Occupancy in Inventory?
 Our Inventory Extranet allows for prices to be loaded in 3 different ways:
 
 - Price per Room

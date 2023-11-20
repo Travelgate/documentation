@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Hotel Sellers API - Cancel Policies
 
-We have updated our [Quote (Valuation)](/docs/apis/for-sellers/hotel-pull-sellers-api/booking-flow/valuation) method in order to provide more precise information regarding cancellationPolicies.
+In TravelgateX [Quote (Valuation)](/docs/apis/for-sellers/hotel-pull-sellers-api/booking-flow/valuation) response, you'll find a number of fields that offer detailed insights. Among these, we've included specific fields that give you clearer information about cancellation policies, so you can have a more precise understanding of your options.
 
 - **TIMEZONE:**  
     We have added the new field “Timezone” in our Metadata method:

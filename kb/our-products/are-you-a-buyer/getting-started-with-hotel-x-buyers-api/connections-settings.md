@@ -36,5 +36,3 @@ It displays your [API Key](/kb/our-products/are-you-a-buyer/getting-started-with
 :::warning Important
 Please be aware that you will have **separate API Keys for your roles as a Seller and as a Buyer** in our Platform. For example, if you are currently browsing as a Buyer and require access to your Seller API Key, you can easily switch your Partner profile type to Seller.
 :::
-
-_Still using our Legacy API? Connect to [Hotel-X API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart) and enjoy this functionality and many more!🚀_

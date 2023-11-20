@@ -32,8 +32,8 @@ As you may know, Inventory works with three different types of price, and each C
 	![how_to_load_free_of_charge_children_babies_2](https://storage.travelgate.com/kbase/how_to_load_free_of_charge_children_babies_2.jpg)
 
 1. Equal to Standard Occupancy:
-	![Alt text](image.png)
-	![how_to_load_free_of_charge_children_babies_3](https://storage.travelgate.com/kbase/how_to_load_free_of_charge_children_babies_3.jpg)
+
+	![free_of_charge_babies_equal_standard](https://storage.travelgate.com/kbase/free_of_charge_babies_equal_standard.jpg)
 
 
 1. Above Standard Occupancy:
@@ -62,22 +62,23 @@ For example, for a Standard Occupancy of 3:
 When the Channel Manager updates a product for a specific rate that has Free of Charge configured, the set Free of Charge value will always prevail over the update. This means that our system will always treat the particular passenger as a free passenger, **regardless of any updates made by the Channel Manager**.
 
 ### DETAILED PRICE CALCULATION STUDY CASE🔎
-For the following room occupations:
+
+**For the following room occupations:**  
 ![how_to_load_free_of_charge_children_babies_9](https://storage.travelgate.com/kbase/how_to_load_free_of_charge_children_babies_9.jpg)
 
 
-And the same occupancy price for all the rates:
+**And the same occupancy price for all the rates:**
 ![how_to_load_free_of_charge_children_babies_10](https://storage.travelgate.com/kbase/how_to_load_free_of_charge_children_babies_10.jpg)
 
 
-The following price calculation logic will be applied: 
+**The following price calculation logic will be applied:** 
 
 - **Occupancy 1-2-0**
 	![how_to_load_free_of_charge_children_babies_11](https://storage.travelgate.com/kbase/how_to_load_free_of_charge_children_babies_11.jpg)
 
 - **Occupancy 1-3-0**
 ![how_to_load_free_of_charge_children_babies_12](https://storage.travelgate.com/kbase/how_to_load_free_of_charge_children_babies_12.jpg)
-![Alt text](image-1.png)
+![free_of_charge_babies_1_3_0](https://storage.travelgate.com/kbase/free_of_charge_babies_1_3_0.jpg)
 
  
 :::info

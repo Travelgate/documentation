@@ -6,6 +6,8 @@ sidebar_position: 2
 
 Distribution Master files contain the product you will buy and sell in our Marketplace: hotels, mealplans and other required data to apply your business rules subsequently.
 
+Create and update your hotels.
+
 :::info
 
 On the HotelCode you'll need to add the same codes that you have specified or will specify in the [Mapping Files](../mapping-files/mapping).
@@ -14,7 +16,7 @@ On the HotelCode you'll need to add the same codes that you have specified or wi
 
 ## Create and Upload your Hotel Master File
 
-To get started, create your hotel master file in the correct format and then upload it to your FTP account. We've provided a template file below ⬇️ to help you with this process. Just click on the file name, add your own rules, save it in CSV format, and then upload it to the corresponding folder in your FTP.
+To get started, create your hotel master file in the correct format and then upload it to your FTP account. We've provided a template file below ⬇️ to help you with this process. Just click on the file name, add your data, save it in CSV format, and then upload it to the corresponding folder in your FTP.
 
 
 ```mdx-code-block
@@ -23,7 +25,7 @@ To get started, create your hotel master file in the correct format and then upl
 📁F0  _0000  
 &nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX  _0000  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁Masters  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[Master_Hotels.csv](https://storage.travelgate.com/docs/BuyerContext_SupplierContext_hotel_map.csv)**  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[Master_Hotels.csv](https://storage.travelgate.com/docs/Master_Hotels.csv)**  
 
 </BrowserWindow>
 ```
@@ -33,7 +35,7 @@ To get started, create your hotel master file in the correct format and then upl
 
 * **File Name:** Master_Hotels.csv
 * **Directory:** F0\_0000/HotelX\_0000/Masters
-* **Delimiter:** Comma (`|`)
+* **Delimiter:** Vertical line (`|`)
 * **Header Row:**
    * **HotelCode (mandatory)**
    * **HotelName (mandatory)**
@@ -54,7 +56,7 @@ To get started, create your hotel master file in the correct format and then upl
    * Each line represents a unique hotel and contains all the information (fields) about it.
    * Any blank line will be skipped.
    * If a field’s data is not mandatory and we don’t want to set it then we just keep it empty: e.g. …||…
-
+   * The file and its data have to be encoded using UTF-8. Otherwise there can be stored strange characters.
 
 <details>
     <summary>📹 Learn how to change the format of the csv file in order to edit and save it</summary>

@@ -12,7 +12,7 @@ Hotels Query returns a hotel list from a Supplier’s access, so that you are ab
 You just need to follow the specifications in our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/hotels) and [API Playground](/playground) and build your own Hotels Query, as easy as that! Also, remember you are able to **personalize** the fields requested in order to receive only the information that matters to you in the response.
 
 :::tip
-Don't forget to check our [Hotel-X Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/hotel#requests-examples) for a full example of a Hotel-X Hotels Query!🚀
+Don't forget to check our [Hotel-X Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/hotels#requests-examples) for a full example of a Hotel-X Hotels Query!🚀
 :::
 
 ### Can I search hotels by destination?🔎

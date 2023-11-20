@@ -7,60 +7,19 @@ sidebar_position: 2
 ### What is Hotel-X Destinations Query?🌍
 Destinations Query returns the list of destinations from a Supplier’s access, so that you are able to retrieve all the destinations the Seller has configured for a given set of credentials.
 
-### How can I retrieve the Seller's Destinations List?💡
-You just need to follow the specifications in our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/destinations) and [API Playground](/playground) and build your own Destinations Query, as easy as that! Also, remember you are able to **personalize** the fields requested in order to receive only the information that matters to you in the response.
+:::tip
+Don't forget to check our [Hotel-X Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/destinations#requests-examples) for a full example of a Hotel-X Destinations Query!🚀
+:::
 
-**Destinations Query example:**
-
-![destinations_query_1](https://storage.travelgate.com/kbase/destinations_query_1.jpg)
-
-
-```
-query {
-  hotelX {
-    destinations(
-  criteria: {
-    access: "xxx",
-    maxSize: 500,
-   destinationCodes: ["ES"]
-  },
-  relay:{}
-) {
-      token
-      edges {
-        cursor
-        node {
-          code
-          destinationData {
-            code
-            available
-            destinationLeaf
-            closestDestinations
-            parent
-            type
-            texts {
-              language
-              text
-            }
-          }
-          createdAt
-          updatedAt
-        }
-      }
-    }
-  }
-}
-```
 ### What can I expect to receive in Destinations Query response?✔️
-Some of the fields returned are: 
-
-- Code
-- Available
-- DestinationLeaf
-- Texts
-- ClosestDestinations
-- Parent
-- Type
+Some of the fields returned are:
+* Code
+* Available
+* DestinationLeaf
+* Texts
+* ClosestDestinations
+* Parent
+* Type
 
   ![destinations_query_2](https://storage.travelgate.com/kbase/destinations_query_2.jpg)
 

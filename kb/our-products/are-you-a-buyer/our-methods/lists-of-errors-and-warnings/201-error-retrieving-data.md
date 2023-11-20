@@ -4,7 +4,7 @@ sidebar_position: 8
 
 # 201 error - Error retrieving data
 
-## What does a 201 error mean?💡
+### What does a 201 error mean?💡
 The 201 error is returned in those cases your Static Content data needs to be updated.
 
 ```
@@ -13,7 +13,6 @@ The 201 error is returned in those cases your Static Content data needs to be up
     <description>Error retrieving data</description>
     <httpStatusCode>0</httpStatusCode>
 </applicationErrors>
-
 ```
 
 ### What can I do if I receive a 201 error in my response?✔️

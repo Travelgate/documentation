@@ -6,4 +6,4 @@ sidebar_position: 1
 
 Welcome to this section where we'll provide you with a comprehensive list of errors and warnings that users may come across while using our Hotel Buyers API. These errors and warnings can be received in responses during the booking flow, management, and content methods.
 
-Let's dive right in!
+**Let's dive right in!**

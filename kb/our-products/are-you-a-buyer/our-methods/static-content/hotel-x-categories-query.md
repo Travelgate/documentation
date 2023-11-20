@@ -7,14 +7,12 @@ sidebar_position: 5
 ### What is Hotel-X Categories Query?⭐
 The Categories Query retrieves the list of categories associated with the given credentials (access). E.g. 5 stars, 1 key, and others.
 
-### How can I retrieve the Seller's Category List through Hotel-X?💡
+### How can I retrieve the Seller's Category List via Hotel-X?
 You just need to follow the specifications in our [API Playground](https://api.travelgatex.com/) and build your own Categories Query, as easy as that! Also, remember you are able to **personalize** the fields requested, so only the information that matters to you is returned in the response.
 
-**Categories Query example:**
-
-```
-{"query":"query ($criteria: HotelXCategoryQueryInput!, $relay: RelayInput!) {\n hotelX {\n categories(criteria: $criteria, relay: $relay) {\n edges {\n cursor\n node {\n code\n categoryData {\n code\n categoryCode\n texts {\n text\n language\n }\n }\n error {\n code\n type\n description\n }\n createdAt\n updatedAt\n }\n }\n }\n }\n}\n","variables":{"criteria":{"access":"","categoryCodes":[]},"relay":{}}}
-```
+:::tip
+Don't forget to check our [Hotel-X Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/categories#requests-examples) for a full example of a Hotel-X Categories Query!🚀
+:::
 
 ### How can I know the total amount of categories returned by a Seller?🔢
 To determine the total number of categories provided by a Seller, it's crucial to download the complete categories list.
@@ -27,7 +25,7 @@ Some of the fields returned are:
 - Text
 
 :::note
-**Please note that the amount of information and content returned may vary between Sellers.**
+Please note that the amount of information and content returned may vary between Sellers.
 :::
 
 

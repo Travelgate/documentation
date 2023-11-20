@@ -37,7 +37,6 @@ This error is returned whenever the size of the response by the Seller surpasses
                         "description": "Access `xxx` returned:  Payload too high, received 122000.3818359375 KB"
                     }
                 ]
-
 ```
  
 ### What can I do if I receive a 105 - "Payload to high" error in my response?✔️

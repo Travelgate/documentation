@@ -11,7 +11,7 @@ sidebar_position: 1
             <p className="item__title">Hotels</p>
             <p className="item__subtitle">Retrieve information about the inventory setup: hotel, rate and room.</p>
         </a>
-        <a className="item" href="hotel-info">
+        <a className="item" href="hotels-info">
             <icon icon="fa-brands fa-github" size="lg" />
             <p className="item__title">Hotel-info</p>
             <p className="item__subtitle">Retrieve information about rate availability and allotment conditions.</p>

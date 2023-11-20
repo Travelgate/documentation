@@ -4,22 +4,32 @@ sidebar_position: 1
 
 # Overview
 
-In the case of the Channel-X API, Travelgate will send requests to the Buyer's system, and the Buyer will reply with either success or error. Channel-X has three main methods; you need to configure your system to manage the following requests:
+In the case of the Channel-X API, TravelgateX will send requests to the Buyer's system, to your system. This API has three main methods; your task will be to configure your system to handle the requests of each of the methods:
 
-* `HotelRatePlanInventoryNotif`, which contains information about the inventory setup: Hotel, Rate and Room.
-* `HotelAvailNotif`, which contains information about rate availability and allotment conditions.
-* `HotelRatePlanNotif`, which contains information about rate prices and supplements.
+<div className="shortcuts-overview">
+    <div className="shortcuts-overview__content">
+        <a className="item" href="inventory">
+            <icon icon="fa-brands fa-github" size="lg" />
+            <p className="item__title">Inventory</p>
+            <p className="item__subtitle">Retrieve information about the inventory setup: hotel, rate and room.</p>
+        </a>
+        <a className="item" href="availability">
+            <icon icon="fa-brands fa-github" size="lg" />
+            <p className="item__title">Availability</p>
+            <p className="item__subtitle">Retrieve information about rate availability and allotment conditions.</p>
+        </a>
+        <a className="item" href="rates">
+            <icon icon="fa-brands fa-github" size="lg" />
+            <p className="item__title">Rates</p>
+            <p className="item__subtitle">Retrieve information about rate prices and supplements.</p>
+        </a>
+    </div> 
+</div>
 
-:::note
+After each request, a response should be provided from your side. For instance, if a `HotelAvailNotif` request is received, a corresponding `HotelAvailNotif` response should be sent, and so forth. There are two response options, success or error.
 
-Keep in mind that after configuring your system to handle the requests, you will need to access the [Full Copy](../fullcopy-and-deltas/fullcopy-and-deltas.mdx) tab to obtain all product details. Subsequently, Channel-X will send [Delta](../fullcopy-and-deltas/fullcopy-and-deltas.mdx) requests for updates made by the Channel Manager.
+:::info
 
-:::
-
-After each request, a response should be provided from the Buyer's side. For instance, if a `HotelAvailNotif` request is received, a corresponding `HotelAvailNotif` response should be sent, and so forth. There are two response options, success or error.
-
-:::caution
-
-If you don't retrieve information for a specific range of dates that were previously loaded into the system, refrain from overwriting them. This indicates that the conditions for those days, which do not appear in the request, remain unchanged.
+Keep in mind that after configuring your system to handle the requests, you will need to access the [Full Copy tab](../fullcopy-and-deltas.mdx) to obtain all product details. Subsequently, Channel-X will send [Delta](../fullcopy-and-deltas.mdx) requests for updates made by the Channel Manager.
 
 :::

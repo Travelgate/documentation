@@ -14,4 +14,4 @@ Sellers, get ready to expand your reach! Our Network offers unmatched distributi
 
 Tech Platforms, such as Channel Managers, PMS, CRS, Tour Operation Platforms and other tech providers can benefit from our APIs not only to expand their offerings, but also to reach an unprecedented number of Partners and generate more business to boost their revenue. Please check our Reseller and Affiliate programs to learn more about how to make money using our APIs.
 
-![Marketplace](../../static/img/docs/marketplace_TGX.svg)
+![Marketplace](https://storage.travelgate.com/docs/Marketplace_TGX.svg)

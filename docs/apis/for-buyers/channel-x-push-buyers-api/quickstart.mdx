@@ -8,33 +8,33 @@ sidebar_position: 1
 
 Channel-X extracts the product loaded between the Buyer and the Channel Managers into our Inventory tool and sends it to the Buyer's system. To get all the product details into their system, Buyers just need to go to the **Full Copy** tab in the Inventory's extranet. Once that's done, when the Channel Manager makes changes, Channel-X sends a smaller request **(Delta)** to let Buyers know about the updates.
 
-Please, note that connecting with Channel Managers through TravelgateX requires a previous step in which the Buyer configures the setup of the hotels, rates, and rooms contracted with the hoteliers in the Inventory extranet. This configuration allows the Channel Manager to map all this information and push availability and prices for the Buyer.
+Please, note that connecting with Channel Managers through TravelgateX requires a previous step in which the Buyer configures the setup of the hotels, rate plans, and rooms contracted with the hoteliers in the [Inventory extranet](https://inventory.xmltravelgate.com/Account/Login?ReturnUrl=%2f). This configuration allows the Channel Manager to map all this information and push availability and prices for the Buyer.
 
-
-![Channel-X Overview](../../../../static/img/docs/channel-x/channel-x_overview.svg)
+&nbsp;
+![Channel-X Overview](https://storage.travelgate.com/docs/channel-X.svg)
 
 
 :::caution
 
-Channel-X Push Buyers API is a non-standalone API that exclusively retrieves to the Buyer's system product that have been previously pushed to the [Inventory tool](https://inventory.xmltravelgate.com/Account/Login?ReturnUrl=%2f). To enable bookings, it is essential to also develop [Hotel-X Pull Buyers API](../hotel-x-pull-buyers-api/quickstart) (if you already have the Legacy Pull Buyers API developed, it is also possible to work with it).
+Channel-X Push Buyers API is a non-standalone API that exclusively retrieves to the Buyer's system product that have been previously pushed to the [Inventory tool](https://inventory.xmltravelgate.com/Account/Login?ReturnUrl=%2f). To enable bookings, it is essential to also develop [Hotel-X Pull Buyers API](../hotel-x-pull-buyers-api/quickstart) (if you already have the [Legacy Pull Buyers API](../legacy-pull-buyers-api/overview) developed, it is also possible to work with it).
 
 :::
 
-## Let's get started: How to push product to your system!
+## Let's Get Started: How to Push Product to your System!
 
-Channel-X provides a robust XML-based API that will enable you to push all the product to your system, allowing you to create and display price calendars. Additionally, you will have full synchronization of products whenever needed, reducing network latency for availability searches, as there is no need to access an external system.
+Channel-X provides a robust XML-based API that will enable you to push all the product to your system, allowing you to create and display price calendars. Additionally, you will have full synchronization of products whenever needed, reducing network latency for availability searches.
 
 ### 1. Configure your system to operate with Channel-X
 
 #### API Endpoint
 
-For the Channel-X API, it is essential that you send the endpoint to Travelgate.
+For the Channel-X API, it is essential that you [send your endpoint to TravelgateX](making-requests/endpoint).
 
 #### Request Headers
 
 To interact with the API, you'll need to configure your system to accept the following headers:
 
-* Content Type: Content-Type header provides with the actual content type of the returned content.
+* Content Type: Content-Type header provides information about the actual content type of the returned content.
 
 ```html
 Content-Type: text/xml;charset=UTF-8
@@ -42,66 +42,326 @@ Content-Type: text/xml;charset=UTF-8
 
 * SOAPAction: SOAPAction header corresponding to the transmitted message, there are 3 different ones, one for each request.
 
-```html
+```html title="HotelRatePlanInventoryNotif"
 SOAPAction: http://schemas.xmltravelgate.com/hubpush/provider/2012/10/IProviderGen/HotelRatePlanInventoryNotif
 ```
 
-```html
+```html title="HotelAvailNotif"
 SOAPAction: http://schemas.xmltravelgate.com/hubpush/provider/2012/10/IProviderGen/HotelAvailNotif
 ```
 
-```html
+```html title="HotelRatePlanNotif"
 SOAPAction: http://schemas.xmltravelgate.com/hubpush/provider/2012/10/IProviderGen/HotelRatePlanNotif
 ```
 
-* Authentication: Combination of username and password (which you should have sent to us beforehand) encoded in Base64 format.
+* Authentication: Combination of username and password ([which you should have previously sent to us](making-requests/endpoint)) encoded in Base64 format.
 
 ```html
-Authorization: Basic aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1RWWg2bVlJSkcyWQ==
+Authorization: Basic xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ``` 
 
 #### Supported Operations
 
-In the case of the Channel-X API, Travelgate will send requests to the Buyer's system, and the Buyer will respond with either success or error.
+In the case of the Channel-X API, TravelgateX will send requests to the Buyer's system, and the Buyer will respond with either success or error.
 
 **Requests**
 
 Channel-X has three main methods. You will have to configure your system to accept the following requests: 
-* `HotelRatePlanInventoryNotif`, which contains information about the inventory setup: Hotel, Rate and Room.
+* `HotelRatePlanInventoryNotif`, which contains information about the inventory setup: Hotel, Rate Plan and Room.
 * `HotelAvailNotif`, which contains information about rate availability and allotment conditions.
 * `HotelRatePlanNotif`, which contains information about rate prices and supplements.
 
-[Añadir ejemplos]
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+<TabItem value="HotelRatePlanInventoryNotif" label="HotelRatePlanInventoryNotif">
+
+```html
+<s:Envelope xmlns:s = "http://schemas.xmlsoap.org/soap/envelope/" xmlns:u = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <s:Header>
+        <o:Security s:mustUnderstand = "1" xmlns:o = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+            <o:UsernameToken u:Id = "uuid-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx-x">
+                <o:Username>username</o:Username>
+                <o:Password Type = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">password</o:Password>
+            </o:UsernameToken>
+        </o:Security>
+    </s:Header>
+    <s:Body xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
+        <HotelRatePlanInventoryNotif xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmltravelgate.com/hubpush/provider/2012/10">
+            <request Version="0">
+                <POS xmlns="http://www.opentravel.org/OTA/2003/05">
+                    <Source>
+                        <RequestorID ID="PTEST" />
+                        <BookingChannel>
+                            <CompanyName Code="CTEST" />
+                        </BookingChannel>
+                    </Source>
+                </POS>
+                <RatePlans HotelStatusType="Active" HotelCode="2" xmlns="http://www.opentravel.org/OTA/2003/05">
+                    <RatePlan Start="2023-11-08" End="2023-11-25" CurrencyCode="EUR" PromotionCode="25" RatePlanType="0" RatePlanCode="BAR" RateReturn="false" FreeChild="false" FreeBaby="false" RatePlanNotifType="Delta" RatePlanStatusType="Active" YieldableIndicator="false">
+                        <BookingRules>
+                            <BookingRule>
+                                <CancelPenalties>
+								    <CancelPenalty NonRefundable="false" />
+                                    <CancelPenalty Start="2023-10-09" End="2023-10-09">
+                                        <Deadline OffsetTimeUnit="Day" OffsetUnitMultiplier="2" OffsetDropTime="BeforeArrival" />
+                                        <AmountPercent Amount="10" />
+                                    </CancelPenalty>
+                                </CancelPenalties>
+								<Viewerships>
+                                    <Viewership>
+                                        <LocationCodes LocationCodesInclusive="false">
+                                            <LocationCode CountryCode="ES" />
+                                        </LocationCodes>
+                                    </Viewership>
+                                </Viewerships>
+                            </BookingRule>
+                        </BookingRules>
+                        <Rates>
+                            <Rate>
+                                <AdditionalGuestAmounts>
+                                    <AdditionalGuestAmount AgeQualifyingCode="8" MaxAge="12" />
+                                    <AdditionalGuestAmount AgeQualifyingCode="7" MaxAge="2" />
+                                </AdditionalGuestAmounts>
+                                <PaymentPolicies>
+                                    <GuaranteePayment PaymentCode="DirectPayment">
+                                        <AcceptedPayments>
+                                            <AcceptedPayment>
+                                                <PaymentCard CardCode="VI">
+                                                    <IsVCC>false</IsVCC>
+                                                </PaymentCard>
+                                            </AcceptedPayment>
+                                            <AcceptedPayment>
+                                                <PaymentCard CardCode="CA">
+                                                    <IsVCC>false</IsVCC>
+                                                </PaymentCard>
+                                            </AcceptedPayment>
+                                        </AcceptedPayments>
+                                    </GuaranteePayment>
+                                </PaymentPolicies>
+                                <MealsIncluded MealPlanCodes="14" />
+                            </Rate>
+                        </Rates>
+                        <SellableProducts>
+                            <SellableProduct InvCode="SNG" InvType="ROOM" InvNotifType="New" InvStatusType="Active" InvTypeCode="1234">
+                                <GuestRoom>
+                                    <Quantities StandardNumBeds="2" />
+                                    <Occupancy MinOccupancy="2" MaxOccupancy="2" AgeQualifyingCode="10" />
+                                    <Room RoomTypeCode="SNG" />
+                                    <Description>
+                                        <Text>Single Room Test</Text>
+                                    </Description>
+                                </GuestRoom>
+                            </SellableProduct>
+                        </SellableProducts>
+                        <Commission Percent="20" />
+                        <Description>
+                            <Text>BAR</Text>
+                        </Description>
+                        <Taxes>
+                            <Tax Percent="10" ChargeUnit="false" ChargeFrequency="false" Type="Inclusive">
+                                <TaxDescription>
+                                    <Text>city</Text>
+                                </TaxDescription>
+                            </Tax>
+                        </Taxes>
+                        <AdditionalDetails>
+                            <AdditionalDetail Code="hola" Type="39">
+                                <DetailDescription>
+                                    <Text>hola</Text>
+                                </DetailDescription>
+                            </AdditionalDetail>
+                        </AdditionalDetails>
+                    </RatePlan>
+				</RatePlans>
+			</request>
+        </HotelRatePlanInventoryNotif>
+    </s:Body>
+</s:Envelope>
+```
+
+</TabItem>
+<TabItem value="HotelAvailNotif" label="HotelAvailNotif">
+
+```html
+<s:Envelope xmlns:s = "http://schemas.xmlsoap.org/soap/envelope/" xmlns:u = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <s:Header>
+        <o:Security s:mustUnderstand = "1" xmlns:o = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+            <o:UsernameToken u:Id = "uuid-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx-x">
+                <o:Username>username</o:Username>
+                <o:Password Type = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">password</o:Password>
+            </o:UsernameToken>
+        </o:Security>
+    </s:Header>
+    <s:Body xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
+        <HotelAvailNotif xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmltravelgate.com/hubpush/provider/2012/10">
+            <request>
+                <POS xmlns="http://www.opentravel.org/OTA/2003/05">
+                    <Source>
+                        <RequestorID ID="PTEST" />
+                        <BookingChannel>
+                            <CompanyName Code="CTEST" />
+                        </BookingChannel>
+                    </Source>
+                </POS>
+                <AvailStatusMessages HotelCode="2" xmlns="http://www.opentravel.org/OTA/2003/05">
+                    <AvailStatusMessage BookingLimit="100" BookingSold="4">
+                        <StatusApplicationControl Start="2023-11-10" End="2023-11-14" RatePlanCode="BAR" InvCode="SNG" InvType="ROOM" Mon="true" Tue="true" Weds="true" Thur="true" Fri="true" Sat="true" Sun="true" />
+                        <LengthsOfStay ArrivalDateBased="false">
+                            <LengthOfStay Time="1" TimeUnit="Day" MinMaxMessageType="MinLOS" />
+                            <LengthOfStay Time="2" TimeUnit="Day" MinMaxMessageType="MaxLOS" />                        
+						</LengthsOfStay>
+                        <RestrictionStatus />
+                    </AvailStatusMessage>
+                    <AvailStatusMessage BookingLimit="100">
+                        <StatusApplicationControl Start="2023-11-22" End="2023-11-24" RatePlanCode="BAR" InvCode="SNG" InvType="ROOM" Mon="true" Tue="true" Weds="true" Thur="true" Fri="true" Sat="true" Sun="true" />
+                        <LengthsOfStay ArrivalDateBased="false">
+                            <LengthOfStay Time="5" TimeUnit="Day" MinMaxMessageType="MinLOS" />
+                        </LengthsOfStay>
+                        <RestrictionStatus />
+                    </AvailStatusMessage>
+                    <AvailStatusMessage BookingLimit="100">
+                        <StatusApplicationControl Start="2023-11-22" End="2023-11-24" RatePlanCode="BAR" InvCode="SNG" InvType="ROOM" Mon="true" Tue="true" Weds="true" Thur="true" Fri="true" Sat="true" Sun="true" />
+                        <LengthsOfStay ArrivalDateBased="false">
+                            <LengthOfStay Time="5" TimeUnit="Day" MinMaxMessageType="MinLOS" />
+                        </LengthsOfStay>
+                        <RestrictionStatus Restriction="Arrival" Status="Close" />
+                    </AvailStatusMessage>
+                    <AvailStatusMessage BookingLimit="100">
+                        <StatusApplicationControl Start="2023-11-27" End="2023-11-28" RatePlanCode="BAR" InvCode="SNG" InvType="ROOM" Mon="true" Tue="true" Weds="true" Thur="true" Fri="true" Sat="true" Sun="true" />
+                        <LengthsOfStay ArrivalDateBased="false">
+                            <LengthOfStay Time="1" TimeUnit="Day" MinMaxMessageType="MinLOS" />
+                            <LengthOfStay Time="2" TimeUnit="Day" MinMaxMessageType="MaxLOS" />                        
+						</LengthsOfStay>
+                        <RestrictionStatus Restriction="Departure" Status="Close" />
+                    </AvailStatusMessage>
+                    <AvailStatusMessage BookingLimit="20">
+                        <StatusApplicationControl Start="2024-01-07" End="2024-01-31" RatePlanCode="BAR" InvCode="SNG" InvType="ROOM" Mon="true" Tue="true" Weds="true" Thur="true" Fri="true" Sat="true" Sun="true" />
+                        <RestrictionStatus MaxAdvancedBookingOffset="5" MinAdvancedBookingOffset="3" />
+                    </AvailStatusMessage>
+                </AvailStatusMessages>
+            </request>
+        </HotelAvailNotif>
+    </s:Body>
+</s:Envelope>
+```
+
+</TabItem>
+<TabItem value="HotelRatePlanNotif" label="HotelRatePlanNotif">
+
+```html
+<s:Envelope xmlns:s = "http://schemas.xmlsoap.org/soap/envelope/" xmlns:u = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <s:Header>
+        <o:Security s:mustUnderstand = "1" xmlns:o = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+            <o:UsernameToken u:Id = "uuid-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx-x">
+                <o:Username>username</o:Username>
+                <o:Password Type = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">password</o:Password>
+            </o:UsernameToken>
+        </o:Security>
+    </s:Header>
+    <s:Body xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
+        <HotelRatePlanNotif xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmltravelgate.com/hubpush/provider/2012/10">
+            <request>
+                <POS xmlns="http://www.opentravel.org/OTA/2003/05">
+                    <Source>
+                        <RequestorID ID="PTEST" />
+                        <BookingChannel>
+                            <CompanyName Code="CTEST" />
+                        </BookingChannel>
+                    </Source>
+                </POS>
+                <RatePlans HotelCode="2" xmlns="http://www.opentravel.org/OTA/2003/05">
+                    <RatePlan CurrencyCode="EUR" RatePlanCode="BAR" RateReturn="false" FreeChild="false" FreeBaby="false" RatePlanStatusType="Active">
+                        <Rates>
+                            <Rate Start="2024-01-01" End="2024-01-01">
+                                <BaseByGuestAmts>
+                                    <BaseByGuestAmt AmountAfterTax="100" Type="25" />
+                                </BaseByGuestAmts>
+                            </Rate>
+                        </Rates>
+                        <SellableProducts>
+                            <SellableProduct InvCode="SNG" InvType="ROOM" />
+                        </SellableProducts>
+                    </RatePlan>
+                    <RatePlan CurrencyCode="EUR" RatePlanCode="BAR" RateReturn="false" FreeChild="false" FreeBaby="false" RatePlanStatusType="Active">
+                        <Rates>
+                            <Rate Start="2024-01-02" End="2024-01-02">
+                                <BaseByGuestAmts>
+                                    <BaseByGuestAmt AmountAfterTax="100" Type="25" />
+                                </BaseByGuestAmts>
+                            </Rate>
+                        </Rates>
+                        <Supplements>
+                            <Supplement AgeQualifyingCode="10" Amount="10" Start="2024-01-02" End="2024-01-02" SupplementType="Board" InvCode="19" />
+                            <Supplement AgeQualifyingCode="8" Amount="5" Start="2024-01-02" End="2024-01-02" SupplementType="Board" InvCode="19" />
+                            <Supplement AgeQualifyingCode="7" Amount="0" Start="2024-01-02" End="2024-01-02" SupplementType="Board" InvCode="19" />
+                        </Supplements>
+                        <SellableProducts>
+                            <SellableProduct InvCode="SNG" InvType="ROOM" />
+                        </SellableProducts>
+                    </RatePlan>
+                </RatePlans>
+            </request>
+        </HotelRatePlanNotif>
+    </s:Body>
+</s:Envelope>
+```
+
+</TabItem>
+</Tabs>
 
 **Responses**
 
-After each request, a response should be provided from the Buyer's side. For instance, if a `HotelAvailNotif` request is received, a corresponding `HotelAvailNotif` response should be sent, and so forth. There are two response options, success or error.
+After each request, a response should be provided from your side. For instance, if a `HotelAvailNotif` request is received, a corresponding `HotelAvailNotif` response should be sent, and so forth. There are two response options, **success** or **error**.
 
-Success:
 
-```html
-<HotelAvailNotifResponse xmlns = "http://schemas.xmltravelgate.com/hubpush/provider/2012/10">
-    <HotelAvailNotifResult>
-        <Success xmlns = "http://www.opentravel.org/OTA/2003/05"/>
-    </HotelAvailNotifResult>
-</HotelAvailNotifResponse>
+```html title="Success"
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" xmlns:U="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+    <s:Header>
+        <wsse:Security>
+            <U:Timestamp>
+                <U:Created>2023-11-10T11:16:19.206</U:Created>
+                <U:Expires>2023-11-10T11:46:19.206</U:Expires>
+            </U:Timestamp>
+        </wsse:Security>
+    </s:Header>
+    <s:Body>
+        <HotelAvailNotifResponse xmlns="http://schemas.xmltravelgate.com/hubpush/provider/2012/10">
+            <HotelAvailNotifResult Version="0" TransactionIdentifier="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx">
+                <Success xmlns="http://www.opentravel.org/OTA/2003/05" />
+            </HotelAvailNotifResult>
+        </HotelAvailNotifResponse>
+    </s:Body>
+</s:Envelope>
 ```
 
-Error:
 
-```html
-<HotelAvailNotifResponse xmlns = "http://schemas.xmltravelgate.com/hubpush/provider/2012/10">
-    <HotelAvailNotifResult>
-        <Errors xmlns = "http://www.opentravel.org/OTA/2003/05">
-            <Error ShortText = "AvailStatusMessages not found" Code = "2"/>
-        </Errors>
-    </HotelAvailNotifResult>
-</HotelAvailNotifResponse>
+```html title="Error"
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" xmlns:U="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+    <s:Header>
+        <wsse:Security>
+            <U:Timestamp>
+                <U:Created>2023-11-10T11:15:37.445</U:Created>
+                <U:Expires>2023-11-10T11:45:37.445</U:Expires>
+            </U:Timestamp>
+        </wsse:Security>
+    </s:Header>
+    <s:Body>
+        <HotelAvailNotifResponse xmlns="http://schemas.xmltravelgate.com/hubpush/provider/2012/10">
+            <HotelAvailNotifResult Version="0" TransactionIdentifier="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx">
+                <Errors xmlns="http://www.opentravel.org/OTA/2003/05">
+                    <Error ShortText="Validation error" Code="-1" Language="en">Invalid MinLOS/MaxLOS: 30/1</Error>
+                </Errors>
+            </HotelAvailNotifResult>
+        </HotelAvailNotifResponse>
+    </s:Body>
+</s:Envelope>
 ```
 
 ### 2. Inventory tool SetUp
 
-Since Channel-X solution is integrated with the Inventory tool, you should use our [Inventory Extranet](https://inventory.xmltravelgate.com/Account/Login?ReturnUrl=%2f) in order to configure the setup for the hotels, rates and rooms contracted with the hoteliers, so that your Channel Managers can map them as well. Once mapped, the Channel Manager will load and update availability and prices for the hotels, rates and rooms configured.
+Since Channel-X solution is integrated with the Inventory tool, you must use our [Inventory extranet](https://inventory.xmltravelgate.com/Account/Login?ReturnUrl=%2f) in order to configure the setup for the hotels, rates and rooms contracted with the hoteliers, so that the Channel Managers can map them as well. Once mapped, the Channel Manager will load and update availability and prices for the hotels, rates and rooms configured beforehand.
 
 ![SetUp Inventory](../../../../static/img/docs/channel-x/setup-inventory.png)
 
@@ -128,11 +388,11 @@ Congratulations on completing this quickstart tutorial! 🎉 You've successfully
 - Discover various methods/messages grouped by the following actions:
     - [Inventory](./availability-rates-and-inventory/inventory): Retrieve the inventory setup (hotel, rate, room).
     - [Availability](./availability-rates-and-inventory/availability) and [Rate](./availability-rates-and-inventory/rates): Retrieve rate availability, allotment conditions and rate prices and supplements.
-- Don't forget to perform the [SetUp in the Inventory Tool](./inventory-tool/inventory-tool.mdx) before proceeding with your first [Full Copy](./fullcopy-and-deltas/fullcopy-and-deltas.mdx)!
+- Don't forget to perform the [SetUp in the Inventory Tool](inventory-tool) before proceeding with your first [Full Copy](fullcopy-and-deltas)!
 
 :::caution
 
-To enable bookings, it is essential to develop [Hotel-X Pull Buyers API](../hotel-x-pull-buyers-api/quickstart.mdx) (if you already have the Legacy Pull Buyers API developed, it is also possible to work with it).
+To enable bookings, it is essential to develop [Hotel-X Pull Buyers API](../hotel-x-pull-buyers-api/quickstart.mdx) (if you already have the [Legacy Pull Buyers API](../legacy-pull-buyers-api/overview) developed, it is also possible to work with it).
 
 :::
 

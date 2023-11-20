@@ -6,6 +6,8 @@ sidebar_position: 3
 
 Distribution Master files contain the product you will buy and sell in our Marketplace: hotels, mealplans and other required data to apply your business rules subsequently.
 
+Add extra information to your hotels: images, descriptions...
+
 :::info
 
 On the HotelCode you'll need to add the same codes that you have specified or will specify in the [Mapping Files](../mapping-files/mapping).
@@ -14,7 +16,7 @@ On the HotelCode you'll need to add the same codes that you have specified or wi
 
 ## Create and Upload your Hotel Info Master File
 
-To get started, create your hotel info master file in the correct format and then upload it to your FTP account. We've provided a template file below ⬇️ to help you with this process. Just click on the file name, add your own rules, save it in CSV format, and then upload it to the corresponding folder in your FTP.
+To get started, create your hotel info master file in the correct format and then upload it to your FTP account. We've provided a template file below ⬇️ to help you with this process. Just click on the file name, add your data, save it in CSV format, and then upload it to the corresponding folder in your FTP.
 
 
 ```mdx-code-block
@@ -23,7 +25,7 @@ To get started, create your hotel info master file in the correct format and the
 📁F0  _0000  
 &nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX  _0000  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁Masters  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[Master_HotelInfo.csv](https://storage.travelgate.com/docs/BuyerContext_SupplierContext_hotel_map.csv)**  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[Master_HotelInfo.csv](https://storage.travelgate.com/docs/Master_HotelInfo.csv)**  
 
 </BrowserWindow>
 ```
@@ -33,7 +35,7 @@ To get started, create your hotel info master file in the correct format and the
 
 * **File Name:** Master_HotelInfo.csv
 * **Directory:** F0\_0000/HotelX\_0000/Masters
-* **Delimiter:** Comma (`#`)
+* **Delimiter:** Hashtag (`#`)
 * **Header Row:**
    * **Hotel code (mandatory)**
    * **ResourceType (mandatory)**:
@@ -51,6 +53,7 @@ To get started, create your hotel info master file in the correct format and the
    * Each line represents a resource for a hotel.
    * Any blank line will be skipped.
    * If a field’s data is not mandatory and we don’t want to set it then we just keep it empty: s.g. …||…
+   * The file and its data have to be encoded using UTF-8. Otherwise there can be stored strange characters.
 
 
 <details>

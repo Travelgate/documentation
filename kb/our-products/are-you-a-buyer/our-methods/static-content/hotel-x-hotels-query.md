@@ -8,14 +8,12 @@ sidebar_position: 1
 ### What is Hotel-X Hotels Query?🏨
 Hotels Query returns a hotel list from a Supplier’s access, so that you are able to retrieve all the properties the Seller has configured for a given set of credentials.
 
-### How can I retrieve the Seller's Hotel List through Hotel-X?💡
+### How can I retrieve the Seller's Hotel List via Hotel-X?  
 You just need to follow the specifications in our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/hotels) and [API Playground](/playground) and build your own Hotels Query, as easy as that! Also, remember you are able to **personalize** the fields requested in order to receive only the information that matters to you in the response.
 
-**Hotels Query example:**
-
-```
-{"query":"query ($criteria: HotelXHotelListInput!, $language: [Language!], $token: String) {\n hotelX {\n hotels(criteria: $criteria, token: $token, relay: {}) {\n count\n \n\t\t\tpageInfo{\n\t\t\t\thasNextPage\n\t\t\t\thasPreviousPage\n\t\t\t}\n token\n count\n edges {\n node {\n error {\n code\n type\n description\n \n }\n createdAt\n updatedAt\n \n hotelData {\n rooms{\n edges{\n node{\n roomData{\n medias{\n url\n }\n }\n }\n }\n }\n hotelCode\n hotelCodeSupplier\n hotelName\n categoryCode\n chainCode\n exclusiveDeal\n allAmenities{\n edges{\n cursor\n node{\n adviseMessage{\n code\n description\n \n }\n }\n }\n }\n checkIn{\n instructions{\n text\n language\n }\n specialInstructions{\n text\n language\n }\n minAge\n schedule{\n startTime\n endTime\n }\n }\n checkOut{\n instructions{\n text\n language\n }\n specialInstructions{\n text\n language\n __typename\n }\n }\n \n property {\n name\n code\n }\n exclusiveDeal\n location {\n address\n city\n country\n airports{\n code\n airportData{\n code\n name\n }\n }\n state\n coordinates {\n latitude\n longitude\n }\n closestDestination {\n code\n available\n texts(languages: $language) {\n text\n language\n }\n }\n }\n contact {\n email\n telephone\n fax\n web\n }\n rank\n cardTypes\n amenities {\n code\n type\n texts(languages: $language) {\n \n text\n language\n }\n }\n medias {\n code\n order\n type\n updatedAt\n url\n texts(languages: $language) {\n text\n \n language\n }\n }\n descriptions(types: GENERAL,languages:$language) {\n type\n __typename\n texts {\n text\n language\n }\n }\n }\n }\n }\n }\n }\n}\n","variables":{"criteria":{"access":"","maxSize":100,"destinationCodes":[""],"ranks":[]},"language":["en"],"token":""}}
-```
+:::tip
+Don't forget to check our [Hotel-X Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/hotels#requests-examples) for a full example of a Hotel-X Hotels Query!🚀
+:::
 
 ### Can I search hotels by destination?🔎
 Of course! You can also **search hotels by destination by adding the "destinationCodes"** field in your Query criteria:
@@ -23,7 +21,7 @@ Of course! You can also **search hotels by destination by adding the "destinatio
 ![hotels_query_1](https://storage.travelgate.com/kbase/hotels_query_1.jpg)
 
 
-### What can I expect to receive in Hotels Query response?✔️
+### What can I expect to receive in Hotels Query response?
 Some of the fields returned are: 
 
 - Hotel code

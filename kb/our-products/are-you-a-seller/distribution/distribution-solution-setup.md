@@ -68,7 +68,7 @@ File names:
 **Master files definition**  
 With the Master files, you can easily customize the Static Content that your Buyers will download when they connect to you. This includes your own codes for hotels, rooms, boards, and more.
 
-There are up to 10 [master files](/docs/apps/distribution/files/external-files/masters/overview), but we suggest starting with at least the following:
+There are up to 10 [master files](/docs/apps/distribution/files/master-files/overview), but we suggest starting with at least the following:
 
 - Hotels
 - Rooms
@@ -84,14 +84,14 @@ You should upload the Master files into the **Distribution folder** as per below
 
 You should follow the format detailed for each of them:
 
-- [Master Hotels](/docs/apps/distribution/files/external-files/masters/hotels) 
-- [Master MealPlans](/docs/apps/distribution/files/external-files/masters/meal-plans)
-- [Master Room List](/docs/apps/distribution/files/external-files/masters/room-list)
+- [Master Hotels](/docs/apps/distribution/files/master-files/hotels) 
+- [Master MealPlans](/docs/apps/distribution/files/master-files/meal-plans)
+- [Master Room List](/docs/apps/distribution/files/master-files/room-list)
 
 We have introduced a new feature that allows you to upload your Master and Mapping files directly from our website using our Distribution APP. It's now easier than ever to manage your files. Don't forget to give it a try!🚀
 
 ### 4. Distribution Setup🛠️
-In order to connect your first Buyer, it is necessary to [create](/docs/apps/distribution/extranet/agencies) the Agency or Agencies that will represent your Buyer's credentials in our [Distribution Extranet](/docs/apps/distribution/extranet/overview). Once the agency is created, you will have the ability to configure the [Distribution Rules](/docs/apps/distribution/extranet/general-settings/configuration) that apply to that specific Agency.
+In order to connect your first Buyer, it is necessary to [create](/docs/apps/distribution/extranet/agencies) the Agency or Agencies that will represent your Buyer's credentials in our [Distribution Extranet](/docs/apps/distribution/extranet/overview). Once the agency is created, you will have the ability to configure the [Distribution Rules](/docs/apps/distribution/extranet/general-settings/configuration/overview) that apply to that specific Agency.
 
 ### 5. Activate your Buyers and sell your product🚀
 Now, all that's left is to request the activation of the Buyers you have an agreement with through our [Connect Form](/kb/connections/my-connections/guick-guide-to-auto-activations):
@@ -121,7 +121,7 @@ Check out our articles [How to connect to a Channel Manager via TravelgateX](/kb
 
 
 :::tip
-Don't forget to check our [Documentation](/docs/apps/distribution/overview) in order to learn all about Distribution and make the most of your connections!
+Don't forget to check our [Documentation](/docs/apps/distribution/quickstart) in order to learn all about Distribution and make the most of your connections!
 :::
 
  

@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 # Error code 15 - RoomCode or RateplanCode no exists in hotel
@@ -13,7 +13,7 @@ When Channel Managers encounter a "code 15" error stating "RoomCode or RateplanC
 </Errors>
 ```
 
-### What can I do if I receive a 15 error code in my response?✔️
+### What can I do if I receive a 15 error code in my RS?
 To address this issue, you should follow the following steps:
 
 1. Examine your setup and verify if the roomCode or rateplanCode exists.

@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # Hotel-X Booking Management Certification
 
-## Find out what you need to get your Booking Management step certified.
+### Find out what you need to get your Booking Management step certified.
 
 To ensure a successful collaboration, it is crucial that our Partners have a full understanding of our API, can effectively utilize it, and transmit accurate information. That's why we require all Partners connecting to our platform, whether they are buying or selling in our Marketplace, to undergo a certification process.
 

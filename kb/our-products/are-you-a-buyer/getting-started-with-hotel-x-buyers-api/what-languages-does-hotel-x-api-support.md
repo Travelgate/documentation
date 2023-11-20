@@ -2,9 +2,9 @@
 sidebar_position: 7
 ---
 
-# What languages does Hotel-X API support?
+# Hotel-X API Languages
 
-## Language Flexibility in Hotel-X API
+### What languages does Hotel-X API support?
 
 Hotel-X API does not impose any restrictions or limitations on language usage. However, it is important to note that each Seller may have their own specific set of supported languages.
 

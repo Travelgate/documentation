@@ -4,10 +4,10 @@ sidebar_position: 9
 
 # Market List
 
-The Market List method returns a comprehensive hotel categories list from a supplier's access that may include translations to other languages, granting you access to all the categories configured by the Seller for a given set of credentials. The returned fields include:
+The Market List method returns a comprehensive market list from a supplier's access that may include translations to other languages, granting you access to all the categories configured by the Seller for a given set of credentials. The returned fields include:
 
-* `Code`
-* `Name`
+* Market `code`
+* Market `name`
 * `GroupCode`
 
 
@@ -21,7 +21,7 @@ Most suppliers use a standard ISO-3166_1_alfa_2, but it depends on each individu
 
 :::
 
-```html
+```xml
 <soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns = "http://schemas.xmltravelgate.com/hub/2012/06" xmlns:wsse = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
     <soapenv:Header>
         <wsse:Security>
@@ -88,7 +88,7 @@ Most suppliers use a standard ISO-3166_1_alfa_2, but it depends on each individu
 
 ## Response
 
-```html
+```xml
 <MarketListRS>
     <UpgradeUTCDate>2016-10-18T13:18:03+02:00</UpgradeUTCDate>
     <Markets>

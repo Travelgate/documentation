@@ -1,12 +1,16 @@
 ---
-sidebar_position: 3
+sidebar_position: 5
 ---
 
 # Hotels Management
 
+The Manage section allows you to manage users from your team or hoteliers and also allows you to check hotels details as address, telephone, email…
+
+![Inventory Hotels Management](https://storage.travelgate.com/docs/inventory_hotels-management1.png)
+
 This section allows you to access the master hotels. Introducing the ID or name and clicking the `Filter` button will give you the information of that hotel.
 
-[IMAGEN]
+![Inventory Hotels Management](https://storage.travelgate.com/docs/inventory_hotels-management2.png)
 
 As you can see in the previous image, the basic information for each hotel is:
 
@@ -17,4 +21,4 @@ As you can see in the previous image, the basic information for each hotel is:
 
 If you want to get all the detail information of the hotel, you should click on the pencil icon located on the right of the masterhotel row. A pop up window will appear:
 
-[IMAGEN]
+![Inventory Hotels Management](https://storage.travelgate.com/docs/inventory_hotels-management3.png)

@@ -18,5 +18,5 @@ Each user role defines the **actions** that can be performed and the **sections*
 1. **User to hotels:** if the hotelier asks for an access to the Extranet, the Client will be in charge of creating the username through our Extranet (not TravelgateX). Usually, the kind of user created for a hotelier is Provider or Provider Viewer with permissions only to some specific hotel.
 
 :::info
-You will find more information on Inventory - Permissions in our Documentation Site: [Management](/docs/apps/inventory/extranet/user-management/maintenance-users) and [Permissions](/docs/apps/inventory/extranet/user-management/permissions).
+You will find more information on Inventory - Permissions in our Documentation Site: [Management](/docs/apps/inventory/extranet/user-management/users-management) and [Permissions](/docs/apps/inventory/extranet/user-management/permissions).
 :::

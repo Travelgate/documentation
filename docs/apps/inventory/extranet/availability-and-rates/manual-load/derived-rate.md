@@ -10,7 +10,7 @@ After selecting the client, the Channel Manager and the hotel you will be able t
 
 In the following panel you will be able to load all conditions for your derived rates.
 
-[IMAGEN]
+![Inventory Manual Load](https://storage.travelgate.com/docs/inventory_manual-load-derived-rate1.png)
 
 * **From - To:** Date range when the conditions will be applied.
 * **Applicable Days of Week:** Days of week that will apply the condition in the previous date range.

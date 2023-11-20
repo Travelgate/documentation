@@ -2,29 +2,22 @@
 sidebar_position: 21
 ---
 
-# "WRONG_FIELD" - "PLUGIN_ERROR" - Commission Files
+# PLUGIN_ERROR - Commission Files
 
-### Why do I receive this warning in my Hotel-X response?💡
-You will receive a commission warning "some of the options have been discarded because we don't know if price is gross or net" in those cases a Seller does not return the price commission via the integration (it has been established at contractual level).
+### Why do I receive this warning in my Hotel-X response?
+You will receive a **commission warning "some of the options have been discarded because we don't know if price is gross or net"** in those cases a Seller does not return the price commission via the integration (it has been established at contractual level).
 
 ### What can I do if I receive a commission (some options discarded) warning?🛠️
 In these cases, the Buyer should upload the FTP commission file in order to avoid the following warning in the response:
 
 ```
 "warnings": [
-
 {
-
 "code": "WRONG_FIELD",
-
 "type": "PLUGIN_ERROR",
-
 "description": "some options [x] of access xxxx have been discarded because we don't
-
 know if price is gross or net. Please, load your commission file in FTP"
-
 }
-
 ]
 ```
 

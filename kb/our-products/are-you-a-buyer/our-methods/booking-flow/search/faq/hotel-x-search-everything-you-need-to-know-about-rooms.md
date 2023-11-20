@@ -30,8 +30,8 @@ To prevent errors when performing a Query Search for more than one room, here is
         ],
         "language" : "EN",
         "currency" : "EUR",
-        "market" : "XX",
-        "nationality" : "XX",
+        "markets" : "ES",
+        "nationality" : "ES",
         "occupancies" : [
             {
                 "paxes" : [
@@ -68,14 +68,14 @@ To prevent errors when performing a Query Search for more than one room, here is
     "filterSearch" : {
         "access" : {
             "includes" : [
-                "XXXX"
+                "XXX"
             ]
         }
     },
     "settings" : {
-        "timeout" : 18000,
+        "timeout" : 24700,
         "auditTransactions" : false,
-        "client" : "XXXXXXXX",
+        "client" : "XXX",
         "context" : "XXX",
         "testMode" : false
     }

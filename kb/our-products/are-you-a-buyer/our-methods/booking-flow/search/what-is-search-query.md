@@ -48,10 +48,9 @@ Yes, nationality and market might affect the rates received in Search response. 
 ### Why there are so many fields with null value in the Search response?❎
 The number of "null" values returned is determined by the information provided by Sellers. For example, if you include certain fields in your Search Query but the Seller does not have that information available on their side, the value will be returned in our response as "null".
 
-For example, if following data has been declared in your Search Query, it is possible that a Seller may return:
+For example, if following data has been declared in your Search Query:
 
 ```
-... 
 rooms {
           occupancyRefId
           code
@@ -86,13 +85,11 @@ beds {
             count
             shared
           }
-...
-
 ```
 
-For this request, the Seller may return the occupancyRefId, room description, refundable information and price but not the beds description (if that information is not available on their side, it would be returned as "null" in TravelgateX response).
+The Seller may return the occupancyRefId, room description, refundable information and price but not the beds description - if that information is not available on their side, it would be returned as "null" in TravelgateX response.
 
-### Can we define our own context for 2 or more Suppliers?🚀
+### Can we define our own context for 2 or more Suppliers?
 Certainly! You have the option to create your own [Context](/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/hotel-x-credentials). To do this, simply follow the instructions in our Documentation and upload the mapping files accordingly in order to use it in your requests. For more detailed information, please refer to our [Documentation on Mapping](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping).
 
 ### How can we differentiate a child from an infant? What is the age range of each of them?👶
@@ -106,7 +103,7 @@ Yes, if the Seller provides the information, you can receive daily prices in Sea
 
 ![search_query_2](https://storage.travelgate.com/kbase/search_query_2.jpg)
 
-### Can I filter the Hotel-X Search results by payment type?❓
+### Can I filter the Hotel-X Search results by payment type?
 Unfortunately, Hotel-X API does not currently offer the capability to filter search results by payment type. 
 
 ### What is the lifespan of the Search id?🕗

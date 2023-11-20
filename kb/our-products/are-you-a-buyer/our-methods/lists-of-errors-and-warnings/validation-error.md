@@ -2,7 +2,7 @@
 sidebar_position: 19
 ---
 
-# "VALIDATION_ERROR"
+# VALIDATION_ERROR
 
 ### What does a "VALIDATION_ERROR" mean?💡
 A "VALIDATION_ERROR" occurs when the validation information provided in your Hotel-X request does not match the information set for your account or is not valid for that specific request.
@@ -28,170 +28,94 @@ Since this error serves as an indication that there is a discrepancy or issue wi
     ```
     {
         "data": {
-
             "hotelX": {
-
                 "search": {
-
                     "auditData": {
-
                         "transactions": []
-
                     },
-
                   "context": "xxxx",
-
                     "options": null,
-
                     "errors": [
-
                         {
-
                             "code": "ACCESS_ERROR",
-
                             "type": "VALIDATION_ERROR",
-
                             "description": "No valid accesses found"
-
                         }
-
                     ],
-
                     "warnings": null
-
                 }
-
             }
-
         }
-
     }
      ```
+
      ```
-
     {
-
         "data" : {
-
             "hotelX" : {
-
                 "search" : {
-
                     "auditData" : null,
-
                     "context" : "xxx",
-
                     "options" : null,
-
                     "errors" : [
-
                         {
-
                             "code" : "ACCESS_ERROR",
-
                             "type" : "VALIDATION_ERROR",
-
                             "description" : "this group does not have execution permission over src"
-
                         }
-
                     ],
-
                     "warnings" : null
-
                 }
-
             }
-
         }
-
     }
     ```
 
 1. **Too many options to return** (in relation to your [optionsQuota](/kb/our-products/are-you-a-buyer/our-methods/booking-flow/search/how-tos/how-to-limit-and-filter-options-through-business-rules)) - **"QUOTA_EXCEEDED"; "VALIDATION_ERROR"**
 
     ```
-
     {
-
         "data" : {
-
             "hotelX" : {
-
                 "search" : {
-
                     "auditData" : null,
-
                     "context" : "xxx",
-
                     "options" : null,
-
                     "errors" : [
-
                         {
-
                             "code" : "QUOTA_EXCEEDED",
-
                             "type" : "VALIDATION_ERROR",
-
                             "description" : "description":"too many options to return"
-
                         }
-
                     ],
-
                     "warnings" : null
-
                 }
-
             }
-
         }
-
     }
-
     ```
 
 1. **Incorrect Search criteria** (e.g. invalid dates): **"WRONG_FIELD"; "VALIDATION_ERROR"**
 ```
 {
-
     "data" : {
-
         "hotelX" : {
-
             "search" : {
-
                 "auditData" : null,
-
                 "context" : "xxx",
-
                 "options" : null,
-
                 "errors" : [
-
                     {
-
                       "code" : "WRONG_FIELD",
-
                         "type" : "VALIDATION_ERROR",
-
                       "description" : "description":"check-in date must be from now on"
-
                     }
-
                 ],
-
                 "warnings" : null
-
             }
-
         }
-
     }
-
 }
- 
 ```
 
 :::tip

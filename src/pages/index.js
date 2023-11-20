@@ -88,7 +88,7 @@ export default function Home() {
                   <img src="https://storage.travelgate.com/docs/home_docs_browse_hotelpush.svg" />
                   <h4>Hotel Push Sellers API</h4>
                   <p>By combining Inventory tool and the Hotel Push Sellers API, Sellers can push their products into Travelgate database, making them accessible to Buyers.</p>
-                  <p><a href="/docs/apis/for-sellers/hotel-pull-sellers-api/quickstart">Quickstart guide <i class="fa-solid fa-chevron-right"></i></a></p>
+                  <p><a href="/docs/apis/for-sellers/hotel-push-sellers-api/quickstart">Quickstart guide <i class="fa-solid fa-chevron-right"></i></a></p>
                 </div>
               </div>
             </div>
@@ -109,7 +109,7 @@ export default function Home() {
                   <img src="https://storage.travelgate.com/docs/home_docs_browse_inventory.svg" />
                   <h4>Inventory</h4>
                   <p>In our Inventory extranet we will give you the tools to setup hotels, rates and rooms contracted with the hoteliers, allowing channel managers to push availability and prices.</p>
-                  <p><a href="¡/docs/apps/inventory/overview">Quickstart guide <i class="fa-solid fa-chevron-right"></i></a></p>
+                  <p><a href="/docs/apps/inventory/quickstart">Quickstart guide <i class="fa-solid fa-chevron-right"></i></a></p>
                 </div>
               </div>
               <div className="col col--4">
@@ -117,7 +117,7 @@ export default function Home() {
                   <img src="https://storage.travelgate.com/docs/home_docs_browse_distribution.svg" />
                   <h4>Distribution</h4>
                   <p>With Distribution you will be able to configure distribution rules to connect your B2B Buyers effortless and access all Sellers from our Marketplace.</p>
-                  <p><a href="/docs/apps/distribution/overview">Quickstart guide <i class="fa-solid fa-chevron-right"></i></a></p>
+                  <p><a href="/docs/apps/distribution/quickstart">Quickstart guide <i class="fa-solid fa-chevron-right"></i></a></p>
                 </div>
               </div>
             </div>

@@ -3,10 +3,9 @@ sidebar_position: 10
 ---
 
 # Timeout Settings
-## How to set your timeout values in order to make the most of your connections
 
 ### Is it mandatory to specify a timeout in my request?⌛
-Yes, you should set a timeout value in all Booking Flow queries and mutations.
+Yes, you should set a timeout value in all Booking Flow queries and mutations. If no timeout value is specified at a request level, our system will utilize the timeout configured by default.
 
 ### Which timeout should I establish in each step?🔢
 It will depend on your preferences and needs. Our recommendation is to test which timeout fits your needs better, taking into account the number of hotels requested and the Seller specifications/restrictions.
@@ -21,24 +20,19 @@ It will depend on your preferences and needs. Our recommendation is to test whic
 Unlock the potential of our connection by including the Seller in the process of establishing the ideal timeouts!
 :::
 
-## What happens if I set a higher timeout than the ones allowed at TravelgateX API?⚠️
+### What happens if I set a higher timeout than the ones allowed at TravelgateX API?
 Please note that timeout values higher than those recommended will not be applied.
-
 For example: for a timeout over 25000ms in SearchRQ, our system will apply a maximum of 25000ms.
 
 ### Timeout Settings in Hotel-X Buyers API🚀
-You can either set this information at a request level (in your query "settings"):
-
+You can either set this information at a **request level** (in your query "settings"):
 ```
-...
-
-  "settings": {
+"settings": {
         "context": "xxx",
         "client": "xxx",
         "testMode": true,
         "auditTransactions": false,
         "timeout": 24700,
-...
   }
 ```
 Or you can set a **default timeout value** in your API Settings - more information here.

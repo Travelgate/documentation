@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Hotel-X Booking Flow Certification
 
-## Find out what you need to do to get your Booking Flow step certified.
+### Find out what you need to do to get your Booking Flow step certified.
 
 To ensure a successful collaboration, it is crucial that our Partners have a full understanding of our API, can effectively utilize it, and transmit accurate information. That's why we require all Partners connecting to our Platform, whether they are buying or selling in our Marketplace, to undergo a certification process.
 
@@ -71,4 +71,4 @@ You can also activate any Seller you have an agreement with, even their producti
 
 ### How to apply for the Hotel-X Booking Flow certification 
 After completing all the cases, you must submit a ticket through the Booking Flow step certification in our Connectivity setup panel.
-![Alt text](image-13.png)
+![hotelx_booking_flow_certification_last](https://storage.travelgate.com/kbase/hotelx_booking_flow_certification_last.jpg)

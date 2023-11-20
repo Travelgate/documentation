@@ -11,7 +11,7 @@ sidebar_position: 1
             <p className="item__title">Hotels</p>
             <p className="item__subtitle">Create and update your hotels.</p>
         </a>
-        <a className="item" href="hotel-info">
+        <a className="item" href="hotels-info">
             <icon icon="fa-brands fa-github" size="lg" />
             <p className="item__title">Hotel-info</p>
             <p className="item__subtitle">Add extra information to your hotels: images, descriptions...</p>

@@ -2,11 +2,9 @@
 sidebar_position: 3
 ---
 
-# How to limit and filter options through Business Rules
+# How to limit options through Business Rules
 
-## Business Rules for Efficient Option Filtering
-
-### What are the business rules that I can incorporate into my requests?💡
+### What are the Business Rules that I can incorporate into my requests?💡
 1. **CHEAPER_AMOUNT**: The cheapest options is returned without exceeding the optionsQuota limit.
 1. **ROOM_TYPE**: It groups the option by room type without exceeding the optionsQuota limit.
 
@@ -16,8 +14,8 @@ sidebar_position: 3
 The **optionsQuota** makes reference to the maximum number of options per mealplan returned in search response.
 :::
 
-### How can I set up business rules in my requests?🛠️
-To configure business rules in your Search Query, simply include the **BusinessRulesInput** in your request settings:
+### How can I set up Business Rules in my requests?🛠️
+To configure Business Rules in your Search Query, simply include the **BusinessRulesInput** in your request settings:
  
 ![limit_and_filter_2](https://storage.travelgate.com/kbase/limit_and_filter_2.jpg)
 
@@ -30,7 +28,7 @@ Please note that we filter options by utilizing a limited combination of room ty
 
 1. Initially, we group **options with the same room type/classification** together. For instance, you may receive options like Standard-Standard-Standard-Standard or Junior-Junior-Junior-Junior.
 1. Subsequently, we **combine the cheapest rooms with the remaining ones**, ensuring that duplicates are checked and the options do not exceed the specified optionsQuota limit.
-If a Buyer specifies a businessRules value, it will be implemented when the number of returned options surpasses the optionsQuota. However, if the Buyer does not provide any businessRules values, the default businessRules of CheaperAmount will be applied.
+If a Buyer specifies a BusinessRules value, it will be implemented when the number of returned options surpasses the optionsQuota. However, if the Buyer does not provide any businessRules values, the default businessRules of CheaperAmount will be applied.
 
  
 

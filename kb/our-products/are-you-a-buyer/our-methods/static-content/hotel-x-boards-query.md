@@ -7,32 +7,26 @@ sidebar_position: 4
 ### What is Hotel-X Boards Query?🏨
 Boards Query returns a simple boards map for a given set of credentials (access) that may include translations to other languages.
 
-### How can I retrieve the Seller's Board List through Hotel-X?💡
+### How can I retrieve the Seller's Board List via Hotel-X?
 You just need to follow the specifications in our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/boards) and [API Playground](https://api.travelgatex.com/) and build your own Boards Query, as easy as that! Also, remember you are able to personalize the fields requested in order to receive only the information that matters to you in the response.
 
-**Boards Query example:**
-```
-{"query":"query ($criteria: HotelXBoardQueryInput!) {\n hotelX {\n boards(criteria: $criteria, relay: {}) {\n edges {\n cursor\n node {\n code\n boardData {\n boardCode\n texts {\n text\n language \n }\n }\n error {\n description\n code\n }\n }\n }\n }\n }\n}\n","variables":{"criteria":{"access":""}}}
-```
-
-:::info
-Please keep in mind that you won't be able to determine the total number of boards offered by the Seller unless you download the complete boards list.
+:::tip
+Don't forget to check our [Hotel-X Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/boards#requests-examples) for a full example of a Hotel-X Boards Query!🚀
 :::
+
 
 ### How can I filter my Boards Query?🔎
 To filter your results and receive specific board/s, you can include the "boardCodes" field in your criteria and specify the desired board/s.
 
 ![boards_query_1](https://storage.travelgate.com/kbase/boards_query_1.jpg)
 
-### What can I expect to receive in Boards Query response?✔️
-The fields returned are: 
-
+### What can I expect to receive in Boards Query response?
 - Code
 - Board Code
 - Text
 
 :::note
-The amount of information and content returned might vary between Sellers.
+Please keep in mind that you won't be able to determine the total number of boards offered by the Seller unless you download the complete boards list. The amount of information and content returned might also vary between Sellers.
 :::
 
 

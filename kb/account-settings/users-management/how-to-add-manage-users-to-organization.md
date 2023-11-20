@@ -19,14 +19,15 @@ In order to add new users simply follow the steps below:
 
 	![create_new_user_2](https://storage.travelgate.com/kbase/add_users_create_new_user_2.jpg)
 
-	:::info
-	**User roles:**
-	- Admin: User with complete permissions.
-	- User: User with read permissions. This users will not be able to visualize the API key information.
+	:::info User roles:
+	- **Admin**: User with complete permissions.
+	- **User**: User with read permissions. This users will not be able to visualize the API key information.
 
 1. Complete the sign-up process: The new user will receive an e-mail in order to set their password and they will be able to explore our website.
 
-### How can I modify the role assigned to a user in my Organization?  1. Click on Settings - Users Management
+
+### How can I modify the roles assigned to users within an Organization?
+1. Click on Settings - Users Management
 1. Filter the user to be updated
 1. Use the drop-down menu in order to modify their role  - please note that this feature is only available for **Admin or Owner** users.
 

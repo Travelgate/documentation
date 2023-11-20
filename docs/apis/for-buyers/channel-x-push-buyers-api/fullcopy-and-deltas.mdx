@@ -1,0 +1,52 @@
+---
+sidebar_position: 5
+---
+
+# Full Copy and Deltas
+
+### Full Copy
+
+Once you have your system configured to handle our Availability, Rate Plans, and Inventory (ARI) requests, and both you have completed the setup of the hotel, rates, and rooms, while the Seller has pushed availability and rates to inventory; you will need to perform a Full Copy to load the products into your system. 
+
+To do this, go to the [Inventory Extranet](https://inventory.xmltravelgate.com/Account/Login?ReturnUrl=%2f) and click on Channel-X > Full Copy. The purpose of this is to receive the products into your system initially and then obtain a complete refresh of the product.
+
+![FullCopy Inventory](https://storage.travelgate.com/docs/fullcopy-inventory.png)
+
+### Deltas
+
+After the first Full Copy, when the Seller makes an update, Channel-X will send a smaller product request (Delta) to notify you of the change. Each `Delta` element can have one of these three states: `New`, `Delta`, `Remove` (It will be indicated in its correspondent tag).
+
+* `New`: It means the element was not added before, you should add the element in your system with the information provided.
+
+* `Delta` (modification): It means the element was created previously but has been edited. The element should already exist in your system, and you should update its information with the new data. You will receive all element information, although not all the information sent may have changed. You can choose to either overwrite all existing data or selectively update the changed aspects.
+
+* `Remove`: It means the element has been removed. You should delete the element from your system along with all its dependencies. When deleting an element (hotel, rate, or room), you will only receive the code in the request. In such cases, it's necessary to remove all elements from your system that depend on the one being deleted.
+
+:::caution
+
+If you don't retrieve information for a specific range of dates that were previously loaded into the system, refrain from overwriting them. This indicates that the conditions for those days, which do not appear in the request, remain unchanged.
+
+:::
+
+## Frequently asked questions
+
+<details>
+    <summary>How do I know whether it is a Full Copy or a Delta?</summary>
+    <div>
+        <div>Full Copy will transmit significantly more information than a simple Delta. Additionally, it will be indicated in the attribute value as "FullCopy" or "Delta."</div>
+    </div>
+</details>
+
+<details>
+    <summary>What does New, Delta and Remove mean?</summary>
+    <div>
+        <div>Rates can be created, deleted or modified. "New" means a newly added rate, "Delta" is for a changed rate, and "Removed" is used when a rate is deleted.</div>
+    </div>
+</details>
+
+<details>
+    <summary>What happens if a rate is deleted, does TravelgateX inform us of this in the Full Copy?</summary>
+    <div>
+        <div>Not in the Full Copy. If a rate is deleted and you run a Full Copy, you'll only receive the currently loaded information. Notification about the removed rate will come through a Delta after its deletion.</div>
+    </div>
+</details>

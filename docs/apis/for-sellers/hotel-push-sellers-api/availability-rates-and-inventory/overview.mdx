@@ -4,6 +4,45 @@ sidebar_position: 1
 
 # Overview
 
-Providers need to implement the `HotelRatePlanInventoryNotif` message to set up the product (hotel, rate, room). Using the `HotelRatePlanInventoryRetrieve` message, they will be able to retrieve the static product (hotel, rate, room) to map the hotelier inventory into their system.
+In the context of the Hotel Push Sellers API, you can both push and retrieve information about **Availability**, **Rates**, and **Inventory** (ARI).
 
-The `HotelRatePlanNotif` and `HotelAvailNotif` messages allow providers to synchronize hotelier rates and availability. Optionally, providers can retrieve all the properties of their product loaded on our system using the `HotelAvailRetrieve` and `HotelRatePlanRetrieve` messages.
+When you **push data**, you'll need to submit a request to Travelgate's system with all the necessary information. If everything goes smoothly, you'll receive a successful response; otherwise, you'll receive an error message.
+
+On the other hand, when you **retrieve data**, you need to send a request to Travelgate's system to get the information you're looking for. If everything goes well, we'll send you the data that was previously stored in our system as a response; otherwise, we'll notify you of an error.
+
+As a result, here are the specific methods you need to implement:
+
+<div className="shortcuts-overview">
+    <div className="shortcuts-overview__content">
+        <a className="item" href="inventory/inventory-push">
+            <icon icon="fa-brands fa-github" size="lg" />
+            <p className="item__title">Inventory Push</p>
+            <p className="item__subtitle">Send details about the product setup (hotel, rate plan, room).</p>
+        </a>
+        <a className="item" href="inventory/inventory-retrieval">
+            <icon icon="fa-brands fa-github" size="lg" />
+            <p className="item__title">Inventory Retrieval</p>
+            <p className="item__subtitle">Get static product information (hotel, rate plan, room).</p>
+        </a>
+        <a className="item" href="availability/availability-push">
+            <icon icon="fa-brands fa-github" size="lg" />
+            <p className="item__title">Availability Push</p>
+            <p className="item__subtitle">Send hotel availability data to the product.</p>
+        </a>
+        <a className="item" href="availability/availability-retrieval">
+            <icon icon="fa-brands fa-github" size="lg" />
+            <p className="item__title">Availablity Retrieval</p>
+            <p className="item__subtitle">Get information about the product's availability.</p>
+        </a>
+        <a className="item" href="rates/rates-push">
+            <icon icon="fa-brands fa-github" size="lg" />
+            <p className="item__title">Rates Push</p>
+            <p className="item__subtitle">Send hotel rate data to the product.</p>
+        </a>
+        <a className="item" href="rates/rates-retrieve">
+            <icon icon="fa-brands fa-github" size="lg" />
+            <p className="item__title">Rates Retrieval</p>
+            <p className="item__subtitle">Get information about the product's rates.</p>
+        </a>
+    </div> 
+</div>

@@ -23,7 +23,6 @@ In the aforementioned example, the Buyer sets a timeout of 24700 milliseconds (2
     <description>Connection Timeout With Provider</description>
     <httpStatusCode>0</httpStatusCode>
 </applicationErrors>
-
 ```
 
 ### How can I solve timeout errors?💡

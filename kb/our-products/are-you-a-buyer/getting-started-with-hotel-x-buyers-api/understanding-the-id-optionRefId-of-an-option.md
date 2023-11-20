@@ -2,8 +2,7 @@
 sidebar_position: 11
 ---
 
-# Understanding the id (optionRefId) of an option
-## Identifying options throughout TravelgateX Booking Flow
+# Option Identifiers (optionRefId)
 
 ### What is the id (optionRefId) of an option?💡
 The "id" or "optionRefId" serves as a unique identifier for each option. It is important not to modify this identifier for any reason, as it is used extensively throughout the Booking Flow.

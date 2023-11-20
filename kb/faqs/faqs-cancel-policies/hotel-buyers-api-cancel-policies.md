@@ -2,9 +2,9 @@
 sidebar_position: 2
 ---
 
-# Hotel Buyers API (Legacy) - Cancel Policies
+# Hotel Buyers API - Cancel Policies
 
-We have updated our [Quote (Valuation)](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/quote) response in order to provide more precise information regarding cancellationPolicies.
+In TravelgateX [Quote (Valuation)](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/quote) response, you'll find a number of fields that offer detailed insights. Among these, we've included specific fields that give you clearer information about cancellation policies, so you can have a more precise understanding of your options.
 
 - **TIMEZONE:**  
     We have added the new field “Timezone” in our Metadata method:

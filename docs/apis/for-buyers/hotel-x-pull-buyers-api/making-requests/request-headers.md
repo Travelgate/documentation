@@ -1,8 +1,9 @@
 ---
+title: Request Headers
 sidebar_position: 2
 ---
 
-# Request Headers
+# Hotel-X Request Headers
 
 The following HTTP request headers are essential for all request methods and must be included in every API request.
 

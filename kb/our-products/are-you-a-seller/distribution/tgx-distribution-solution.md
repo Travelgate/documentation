@@ -6,9 +6,10 @@ sidebar_position: 1
 
 ### What can I expect from the TravelgateX Distribution solution and how will it boost my business?🚀
 As a Seller, we know that your top priority is to reach multiple Buyers and **manage distribution channels seamlessly** while implementing diverse business rules. However, limited technical resources or system constraints can hinder your sales growth and your ability to apply customized business rules or aggregate Suppliers.
-Without the appropriate tools, these tasks can be challenging to accomplish efficiently. If you are seeking to apply different mark-ups based on various conditions or consolidate direct contracts with hotels and third-party Suppliers, our Distribution solution provides a range of tools to **optimize your technical resources**. Let's explore some ideas and use cases together!
+Without the appropriate tools, these tasks can be challenging to accomplish efficiently.  
+If you are seeking to apply different mark-ups based on various conditions or consolidate direct contracts with hotels and third-party Suppliers, our Distribution solution provides a range of tools to **optimize your technical resources**. Let's explore some ideas and use cases together!
 
-### Benefits and features of TravelgateX Distribution Solution:🌟
+### Benefits and features of TravelgateX Distribution Solution:
 - Expand your product offerings by buying from third-party Suppliers without the hassle of developing APIs. Sell these products using your own distribution rules.
 - Seamlessly access and manage your contracted product with Channel Managers.
 - Define both general and specific pricing rules, including commissions or markups.
@@ -18,8 +19,8 @@ Without the appropriate tools, these tasks can be challenging to accomplish effi
 
 :::note
 **Looking to dive deeper into currency exchange?** Check out these handy links for more information on how to work with it:
-- [Distribution Extranet Documentation](/docs/apps/distribution/extranet/overview): Apply and configure currency business rules.
-- [FTP files](/docs/apps/distribution/files/external-files/masters/currencies): Create a file with your very own currency exchange and take control of your currency conversions!
+- [**Distribution Extranet Documentation**](/docs/apps/distribution/extranet/overview): Apply and configure currency business rules.
+- [**FTP files**](/docs/apps/distribution/files/external-files/masters/currencies): Create a file with your very own currency exchange and take control of your currency conversions!
 :::
 
 ### How can I aggregate my direct contracts with hotel and third-party Suppliers?🏨
@@ -36,7 +37,7 @@ When combining buying from your contracted hotels and other Suppliers with no re
 	Once your product setup is complete, you gain full control to manage your Agencies or Distribution Channels, apply specific or general business rules like markups, currency exchange, or blacklists, and conveniently check or download booking details. You can carry out these operations effortlessly using our **Distribution Extranet or rule files loaded via FTP**. 
 - [Hotel-X Buyers API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart): Hotel-X appears twice in our Distribution schema because it serves as our Buyers API, allowing your customers to connect with you (some Buyers may still use our old Legacy API). Moreover, it is the API you will also utilize to buy product from your Sellers. The good news is that you won't need to develop the Hotel-X API as a Buyer since our Distribution layer is already internally connected with it.
 
-### How can I apply complex business rules to my Buyers?💡
+### How can I apply complex Business Rules to my Buyers?
 Enhance your API connectivity with Buyers by utilizing Distribution as an extra layer. Load complex business rules such as markup conditions, currency rules, blacklists, and multiple selling rules through FTP files or manually via our user-friendly Distribution Extranet. Customize your business rules with ease!
 
 ![distribution_solution_2](https://storage.travelgate.com/kbase/distribution_solution_2.jpg)

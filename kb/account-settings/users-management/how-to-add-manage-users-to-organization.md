@@ -13,7 +13,7 @@ In order to add new users simply follow the steps below:
 
 	![add_users_management](https://storage.travelgate.com/kbase/add_users_users_management.jpg)
 
-1. Click on "Create user" and fill in the information requested in the form. Please note that **only Owner and Admin members** can add users to an Organization.
+1. Click on "Create user" and fill in the information requested in the form. Please note that only **Owner and Admin** members can add users to an Organization.
 
 	![create_new_user_1](https://storage.travelgate.com/kbase/add_users_create_new_user_1.jpg)
 

@@ -8,25 +8,49 @@ The `HotelResRetrieve` request message allows you to retrieve a list of bookings
 
 ## HotelResRetrieve Request
 
-[Añadir ejemplo]
+```html
+<Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/soap/envelope/">
+   <Header>
+      <o:Security xmlns:o="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+         <o:UsernameToken Id="xnExysS120i8nwXu90DOToFTjoyuWpFe">
+            <o:Username>username</o:Username>
+            <o:Password>password</o:Password>
+         </o:UsernameToken>
+      </o:Security>
+   </Header>
+   <Body>
+      <HotelResRetrieve xmlns="http://schemas.xmltravelgate.com/hubpush/provider/2012/10">
+         <request Version="0">
+            <POS xmlns="http://www.opentravel.org/OTA/2003/05">
+               <Source>
+                  <RequestorID ID="Seller Code"/>
+                  <BookingChannel>
+                     <CompanyName Code="Buyer Code"/>
+                  </BookingChannel>
+               </Source>
+            </POS>
+            <UniqueID ID = "123456" ID_Context = "Client"/> 
+            <ReadRequests>
+                <HotelReadRequest HotelCode="1608">
+                    <SelectionCriteria Start="2023-11-25" End="2023-11-28" DateType="DepartureDate"/>
+                </HotelReadRequest>
+            </ReadRequests>
+         </request>
+      </HotelResRetrieve>
+   </Body>
+</Envelope>
+```
 
 ### Request Data Breakdown
 
 | Element                            | Rel  | Type     | Description                                                                                |
 |------------------------------------|------|----------|--------------------------------------------------------------------------------------------|
 | HotelResRetrieve                   | 1    |          |                                                                                            |
-| ../request                         | 1    |          |                                                                                            |
-| ../POS                             | 1    |          |                                                                                            |
-| ../Source                          | 1    |          |                                                                                            |
-| Source/RequestorID                 |      |          |                                                                                            |
-| @ID                                | ?    | String   | ???Provider ID                                                                             |
-| Source/BookingChannel              |      |          |                                                                                            |
-| BookingChannel/CompanyName         |      |          |                                                                                            |
-| @Code                              | ?    | String   | ???Client ID                                                                               |
-| UniqueID                           | 0..1 |          | If present filter by UniqueID content.                                                     |
+| HotelResRetrieve/request           | 1    |          |                                                                                            |
+| request/UniqueID                   | 0..1 |          | If present filter by UniqueID content.                                                     |
 | @ID                                | 1    | String   | Booking ID.                                                                                |
 | @IDContext                         | 1    | String   | (Client, Provider, Internal).                                                              |
-| ReadRequests                       | 0..1 |          | If present filter by its content.                                                          |
+| request/ReadRequests               | 0..1 |          | If present filter by its content.                                                          |
 | ReadRequests/HotelReadRequest      | 1..n |          | Node containing the read request data.                                                     |
 | @HotelCode                         | 0..1 | String   | Hotel code.                                                                                |
 | HotelReadRequest/SelectionCriteria | 1    |          |                                                                                            |
@@ -40,7 +64,147 @@ After each request, Travelgate processes the data and provides a response to the
 
 ### Success
 
-[Añadir ejemplo]
+```html
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" xmlns:u="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+   <s:Header>
+      <o:Security s:mustUnderstand="1" xmlns:o="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+         <u:Timestamp u:Id="_0">
+            <u:Created>2023-11-22T10:59:26.629Z</u:Created>
+            <u:Expires>2023-11-22T11:04:26.629Z</u:Expires>
+         </u:Timestamp>
+      </o:Security>
+   </s:Header>
+   <s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <HotelResRetrieveResponse xmlns = "http://schemas.xmltravelgate.com/hubpush/client/2012/10">
+       <HotelResRetrieveResult Version = "0">
+        <Success xmlns = "http://www.opentravel.org/OTA/2003/05"/>
+        <HotelReservations xmlns = "http://www.opentravel.org/OTA/2003/05">
+          <HotelReservation ResStatus = "Confirmed" CreateDateTime = "2013-09-01T11:09:57.5387811Z">
+            <RoomStays>
+              <RoomStay>
+                <RoomTypes>
+                  <RoomType RoomTypeCode = "STD1" RoomID = "1">
+                    <RoomDescription>
+                      <Text>Standard</Text>
+                    </RoomDescription>
+                  </RoomType>
+                </RoomTypes>
+                <RatePlans>
+                  <RatePlan RatePlanCode = "BAR">
+                    <RatePlanDescription>
+                      <Text>Best Available Rate</Text>
+                    </RatePlanDescription>
+                    <Commission Percent = "15.00"/>
+                  </RatePlan>
+                </RatePlans>
+                <RoomRates>
+                  <RoomRate BookingCode="1|30#30|12|2013-09-03|13|4510741|4510747|3|0|0" EffectiveDate = "2013-09-03" ExpireDate = "2013-09-07" RoomTypeCode = "STD1" InvBlockCode = "7" NumberOfUnits="5" RatePlanCode = "BAR" RoomID = "1">
+                    <Rates>
+                      <Rate EffectiveDate = "2013-09-03" ExpireDate = "2013-09-07">
+                        <Base AmountBeforeTax = "200.00" AmountAfterTax = "200.00" CurrencyCode = "EUR"/>
+                        <CancelPolicies>
+                          <CancelPenalty PolicyCode = "0912f3bc-40cc-4566-a5d7-0d2833ab62de"/>
+                          <CancelPenalty PolicyCode = "cd4aa15e-82e4-420a-937e-63e802ba352a"/>
+                        </CancelPolicies>
+                      </Rate>
+                    </Rates>
+                    <Total AmountBeforeTax = "200.00" AmountAfterTax = "200.00" CurrencyCode = "EUR"/>
+                  </RoomRate>
+                </RoomRates>
+                <CancelPenalties>
+                  <CancelPenalty PolicyCode = "0912f3bc-40cc-4566-a5d7-0d2833ab62de" NonRefundable = "false">
+                    <Deadline AbsoluteDeadline = "2013-08-29" OffsetTimeUnit = "Day" OffsetUnitMultiplier = "5" OffsetDropTime = "BeforeArrival"/>
+                    <AmountPercent Percent = "15.00" CurrencyCode = "EUR"/>
+                  </CancelPenalty>
+                  <CancelPenalty PolicyCode = "cd4aa15e-82e4-420a-937e-63e802ba352a" NonRefundable = "false">
+                    <Deadline AbsoluteDeadline = "2013-08-31" OffsetTimeUnit = "Day" OffsetUnitMultiplier = "3" OffsetDropTime = "BeforeArrival"/>
+                    <AmountPercent NmbrOfNights = "2" CurrencyCode = "EUR"/>
+                  </CancelPenalty>
+                </CancelPenalties>
+                <BasicPropertyInfo HotelCode = "12" HotelName = "Adagio City Aparthotel Annecy Centre"/>
+                <ServiceRPHs>
+                  <ServiceRPH RPH = "1"/>
+                  <ServiceRPH RPH = "2"/>
+                </ServiceRPHs>
+              </RoomStay>
+            </RoomStays>
+            <ResGuests>
+              <ResGuest ResGuestRPH = "1" AgeQualifyingCode = "10">
+                <Profiles>
+                  <ProfileInfo>
+                    <Profile>
+                      <Customer>
+                        <PersonName>
+                          <NamePrefix>Mr</NamePrefix>
+                          <GivenName>Test11</GivenName>
+                          <Surname>TestAp11</Surname>
+                        </PersonName>
+                      </Customer>
+                    </Profile>
+                  </ProfileInfo>
+                </Profiles>
+                <GuestCounts>
+                  <GuestCount Age = "30"/>
+                </GuestCounts>
+              </ResGuest>
+              <ResGuest ResGuestRPH = "2" AgeQualifyingCode = "10">
+                <Profiles>
+                  <ProfileInfo>
+                    <Profile>
+                      <Customer>
+                        <PersonName>
+                          <NamePrefix>Mr</NamePrefix>
+                          <GivenName>Test22</GivenName>
+                          <Surname>TestAp22</Surname>
+                        </PersonName>
+                      </Customer>
+                    </Profile>
+                  </ProfileInfo>
+                </Profiles>
+                <GuestCounts>
+                  <GuestCount Age = "30"/>
+                </GuestCounts>
+              </ResGuest>
+            </ResGuests>
+            <ResGlobalInfo>
+              <Total AmountBeforeTax = "200.00" AmountAfterTax = "200.00" CurrencyCode = "USD"/>
+              <Guarantee PaymentCode = "MerchantPayment"/>
+              <HotelReservationIDs>
+                <HotelReservationID ResID_Value = "123456" ResID_SourceContext = "Client"/>
+                <HotelReservationID ResID_Value = "124" ResID_SourceContext = "Internal"/>
+                <HotelReservationID ResID_Value = "115137" ResID_SourceContext = "Provider"/>
+              </HotelReservationIDs>
+              <Profiles>
+                <ProfileInfo>
+                  <Profile>
+                    <Customer>
+                      <PersonName>
+                        <NamePrefix>Mr</NamePrefix>
+                        <GivenName>Test12</GivenName>
+                        <Surname>TestAp12</Surname>
+                      </PersonName>
+                      <Telephone PhoneTechType = "1" PhoneNumber = "1212121212" FormattedInd = "false" DefaultInd = "true"/>
+                      <Email DefaultInd = "true" EmailType = "1">test@yourdomain.com</Email>
+                      <Address Type = "1">
+                        <AddressLine>B-15, Sector-57</AddressLine>
+                        <CityName>NOIDA</CityName>
+                        <PostalCode>201301</PostalCode>
+                        <StateProv StateCode = "UP">Uttar Pradesh</StateProv>
+                        <CountryName Code = "IN">INDIA</CountryName>
+                      </Address>
+                    </Customer>
+                  </Profile>
+                </ProfileInfo>
+              </Profiles>
+            </ResGlobalInfo>
+          </HotelReservation>
+        </HotelReservations>
+       </HotelResRetrieveResult>
+      </HotelResRetrieveResponse>
+   </s:Body>
+</s:Envelope>
+```
+
 
 #### Success Response Data Breakdown
 
@@ -183,81 +347,32 @@ After each request, Travelgate processes the data and provides a response to the
 ### Error
 
 ```html
-<HotelResRetrieveResponse xmlns="http://schemas.xmltravelgate.com/hubpush/provider/2012/10">
-    <HotelResRetrieveResult>
-        <Errors xmlns="http://www.opentravel.org/OTA/2003/05">
-            <Error ShortText="Incomplete AdditionalGuestAmount values" Code="7"/>
-        </Errors>
-    </HotelResRetrieveResult>
-</HotelResRetrieveResponse>
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" xmlns:u="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+   <s:Header>
+      <o:Security s:mustUnderstand="1" xmlns:o="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+         <u:Timestamp u:Id="_0">
+            <u:Created>2023-11-22T11:11:00.838Z</u:Created>
+            <u:Expires>2023-11-22T11:16:00.838Z</u:Expires>
+         </u:Timestamp>
+      </o:Security>
+   </s:Header>
+   <s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <HotelResRetrieveResponse xmlns="http://schemas.xmltravelgate.com/hubpush/provider/2012/10">
+         <HotelResRetrieveResult>
+            <Errors xmlns="http://www.opentravel.org/OTA/2003/05">
+                <Error ShortText="Invalid hotel id" Code="10"/>
+             </Errors>
+         </HotelResRetrieveResult>
+      </HotelResRetrieveResponse>
+   </s:Body>
+</s:Envelope>
 ```
+#### Error Response Data Breakdown
 
-<details>
-    <summary>Error codes you could receive in the response during the booking flow</summary>
-    <div>
-        <div>
-         <table>
-				<thead>
-					<tr>
-						<th>
-							<strong>Error Code</strong>
-						</th>
-						<th>
-							<strong>Error Description</strong>
-						</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>-1</td>
-						<td>Unexpected error</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>Validation error</td>
-					</tr>
-					<tr>
-						<td>10</td>
-						<td>HotelCode not found</td>
-					</tr>
-                    <tr>
-						<td>11</td>
-						<td>Invalid dates</td>
-					</tr>
-                    <tr>
-						<td>14</td>
-						<td>Invalid Derived Rate</td>
-					</tr>
-                    <tr>
-						<td>22</td>
-						<td>Rooms not found</td>
-					</tr>
-                    <tr>
-						<td>23</td>
-						<td>Rates not found</td>
-					</tr>
-                    <tr>
-						<td>30</td>
-						<td>Occupation error</td>
-					</tr>
-                    <tr>
-						<td>31</td>
-						<td>RatePlan_Rate Error</td>
-					</tr>
-                    <tr>
-						<td>38</td>
-						<td>POS credentials not found</td>
-					</tr>
-                    <tr>
-						<td>50</td>
-						<td>Confirmation error</td>
-					</tr>
-                    <tr>
-						<td>50</td>
-						<td>Cancellation error</td>
-					</tr>
-				</tbody>
-			</table>
-        </div>
-    </div>
-</details>
+|                    Element                   |  Rel |   Type  |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+|----------------------------------------------|------|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| HotelResRetrieveResult                       | 1    |         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| HotelResRetrieveResult/Errors                | 0..1 |         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| Errors/Error                                 | 1    |         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| @ShortText                                   | 1    | String  |  <details>     <summary>Error Codes and Description</summary>     <div>         <div>          <table> 				<thead> 					<tr> 						<th> 							<strong>Error Code</strong> 						</th> 						<th> 							<strong>Error Description</strong> 						</th> 					</tr> 				</thead> 				<tbody> 					<tr> 						<td>-1</td> 						<td>Unexpected error</td> 					</tr> 					<tr> 						<td>1</td> 						<td>Validation error</td> 					</tr> 					<tr> 						<td>10</td> 						<td>HotelCode not found</td> 					</tr>                     <tr> 						<td>11</td> 						<td>Invalid dates</td> 					</tr>                   <tr> 						<td>14</td> 						<td>Invalid derived rate</td> 					</tr> 					<tr> 						<td>22</td> 						<td>Rooms not found</td> 					</tr>               <tr> 						<td>23</td> 						<td>Rates not found</td> 					</tr>              <tr> 						<td>30</td> 						<td>Occupancy error</td> 					</tr>              <tr> 						<td>31</td> 						<td>RatePlan_Rate Error</td> 					</tr>             <tr> 						<td>38</td> 						<td>POS credentials not found</td> 					</tr>                      <tr> 						<td>50</td> 						<td>Confirmation error</td> 					</tr>                     <tr> 						<td>60</td> 						<td>Cancellation error</td> 					</tr>      </tbody> 			</table>         </div>     </div> </details>    |
+| @Code                                        | 1    | String  |  <details>     <summary>Error Codes and Description</summary>     <div>         <div>          <table> 				<thead> 					<tr> 						<th> 							<strong>Error Code</strong> 						</th> 						<th> 							<strong>Error Description</strong> 						</th> 					</tr> 				</thead> 				<tbody> 					<tr> 						<td>-1</td> 						<td>Unexpected error</td> 					</tr> 					<tr> 						<td>1</td> 						<td>Validation error</td> 					</tr> 					<tr> 						<td>10</td> 						<td>HotelCode not found</td> 					</tr>                     <tr> 						<td>11</td> 						<td>Invalid dates</td> 					</tr>                   <tr> 						<td>14</td> 						<td>Invalid derived rate</td> 					</tr> 					<tr> 						<td>22</td> 						<td>Rooms not found</td> 					</tr>               <tr> 						<td>23</td> 						<td>Rates not found</td> 					</tr>              <tr> 						<td>30</td> 						<td>Occupancy error</td> 					</tr>              <tr> 						<td>31</td> 						<td>RatePlan_Rate Error</td> 					</tr>             <tr> 						<td>38</td> 						<td>POS credentials not found</td> 					</tr>                      <tr> 						<td>50</td> 						<td>Confirmation error</td> 					</tr>                     <tr> 						<td>60</td> 						<td>Cancellation error</td> 					</tr>      </tbody> 			</table>         </div>     </div> </details>   |

@@ -10,7 +10,131 @@ Keep in mind that if the cancellation fails in your system, we'll consider it as
 
 ## CancelNotif Request
 
-[Añadir ejemplo]
+```html
+    <OTA_HotelResRS xmlns:xsd = "http://www.w3.org/2001/XMLSchema" xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" ResResponseType = "Cancelled" xmlns = "http://www.opentravel.org/OTA/2003/05">
+      <HotelReservations>
+        <HotelReservation CreateDateTime = "2018-08-01T09:07:28.5074165Z" ResStatus = "Cancelled">
+          <RoomStays>
+            <RoomStay>
+              <RoomTypes>
+                <RoomType RoomTypeCode = "STD" RoomID = "1">
+                  <RoomDescription>
+                    <Text>Standard</Text>
+                  </RoomDescription>
+                </RoomType>
+              </RoomTypes>
+              <RatePlans>
+                <RatePlan RatePlanCode = "BAR" PriceViewableInd = "false">
+                  <RatePlanDescription>
+                    <Text>Best Available Rate</Text>
+                  </RatePlanDescription>
+                  <Commission Percent = "20"/>
+                </RatePlan>
+              </RatePlans>
+              <RoomRates>
+                <RoomRate BookingCode = "1|30#30|1|2018-08-17|5|488654|38644|3|0|0" EffectiveDate = "2018-08-17" ExpireDate = "2018-08-22" RoomTypeCode = "STD" InvBlockCode = "3" NumberOfUnits = "37" RatePlanCode = "BAR" RoomID = "1">
+                  <Rates>
+                    <Rate EffectiveDate = "2018-08-17" ExpireDate = "2018-08-18">
+                      <Base AmountBeforeTax = "201.37" AmountAfterTax = "201.37" CurrencyCode = "EUR" Type = "25"/>
+                      <CancelPolicies>
+                        <CancelPenalty PolicyCode = "c25b8026-5ca2-49ce-b62c-fe0b4945de01"/>
+                      </CancelPolicies>
+                    </Rate>
+                  </Rates>
+                  <Total AmountBeforeTax = "873.20" AmountAfterTax = "873.20" CurrencyCode = "EUR"/>
+                </RoomRate>
+              </RoomRates>
+              <CancelPenalties>
+                <CancelPenalty PolicyCode = "c25b8026-5ca2-49ce-b62c-fe0b4945de01" NonRefundable = "false">
+                  <Deadline AbsoluteDeadline = "2018-08-16" OffsetTimeUnit = "Day" OffsetUnitMultiplier = "1" OffsetDropTime = "BeforeArrival"/>
+                  <AmountPercent NmbrOfNights = "1" CurrencyCode = "EUR"/>
+                </CancelPenalty>
+              </CancelPenalties>
+              <BasicPropertyInfo HotelCode = "1" HotelName = "Test Hotel"/>
+              <Comments>
+                <Comment>
+                  <Text>Customer comments...</Text>
+                </Comment>
+              </Comments>
+              <ServiceRPHs>
+                <ServiceRPH RPH = "1"/>
+                <ServiceRPH RPH = "2"/>
+              </ServiceRPHs>
+            </RoomStay>
+          </RoomStays>
+          <ResGuests>
+            <ResGuest ResGuestRPH = "1" AgeQualifyingCode = "10">
+              <Profiles>
+                <ProfileInfo>
+                  <Profile>
+                    <Customer>
+                      <PersonName>
+                        <NamePrefix>Mr</NamePrefix>
+                        <GivenName>Name</GivenName>
+                        <Surname>Surname</Surname>
+                      </PersonName>
+                    </Customer>
+                  </Profile>
+                </ProfileInfo>
+              </Profiles>
+              <GuestCounts>
+                <GuestCount Age = "30"/>
+              </GuestCounts>
+            </ResGuest>
+            <ResGuest ResGuestRPH = "2" AgeQualifyingCode = "10">
+              <Profiles>
+                <ProfileInfo>
+                  <Profile>
+                    <Customer>
+                      <PersonName>
+                        <NamePrefix>Mr</NamePrefix>
+                        <GivenName>Name</GivenName>
+                        <Surname>Surname</Surname>
+                      </PersonName>
+                    </Customer>
+                  </Profile>
+                </ProfileInfo>
+              </Profiles>
+              <GuestCounts>
+                <GuestCount Age = "30"/>
+              </GuestCounts>
+            </ResGuest>
+          </ResGuests>
+          <ResGlobalInfo>
+            <Guarantee PaymentCode = "MerchantPayment"/>
+            <Total AmountBeforeTax = "873.20" AmountAfterTax = "873.20" CurrencyCode = "EUR"/>
+            <HotelReservationIDs>
+              <HotelReservationID ResID_Value = "**clientLocator**" ResID_SourceContext = "Client"/>
+              <HotelReservationID ResID_Value = "**internalLocator**" ResID_SourceContext = "Internal"/>
+            </HotelReservationIDs>
+            <Profiles>
+              <ProfileInfo>
+                <Profile>
+                  <Customer>
+                    <PersonName>
+                      <NamePrefix>Mr</NamePrefix>
+                      <GivenName>Name</GivenName>
+                      <Surname>Surname</Surname>
+                    </PersonName>
+                    <Telephone PhoneTechType = "1" PhoneNumber = "900000000"/>
+                    <Email EmailType = "1">"***agency_email@agency.com***"</Email>
+                    <Address Type = "1">
+                      <AddressLine>Address</AddressLine>
+                      <CityName>Address</CityName>
+                      <PostalCode>07121</PostalCode>
+                      <CountryName>ES</CountryName>
+                    </Address>
+                  </Customer>
+                </Profile>
+              </ProfileInfo>
+            </Profiles>
+          </ResGlobalInfo>
+        </HotelReservation>
+      </HotelReservations>
+      <Success/>
+    </OTA_HotelResRS>
+```
+
 
 ### Request Headers
 
@@ -52,7 +176,7 @@ Authorization: Basic xxxxxxxxxxxxxxxxx
 | RatePlan/RatePlanDescription           | 1    |          | Node containing information the RatePlan description one RatePlan.                                                                                                                          |
 | RatePlanDescription/Text               | 1    | String   | Description of the RatePlan.                                                                                                                                                                |
 | RatePlan/Commission                    | 1    |          | Node containing the commission of the RatePlan.                                                                                                                                             |
-| Percent                                | 1    | Decimal  | Commission of the RatePlane.                                                                                                                                                                |
+| @Percent                                | 1    | Decimal  | Commission of the RatePlane.                                                                                                                                                                |
 | RoomStay/RoomRates                     | 1    |          | Node containing information about RoomRates.                                                                                                                                                |
 | RoomRates/RoomRate                     | 1    |          | Node containing information about one RoomRate.                                                                                                                                             |
 | @EffectiveDate                         | 1    | Date     | Effective date when the RoomRate start applying.                                                                                                                                            |
@@ -167,7 +291,11 @@ Authorization: Basic xxxxxxxxxxxxxxxxx
 
 After each request, a response should be provided from yours side. If a `CancelNotif` request is received, a corresponding `CancelNotif` response should be sent. There are two response options, **success** or **error**.
 
-### Success
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+<TabItem value="sucess" label="Success">
 
 ```html
 <OTA_HotelResNotifRS xmlns = "http://www.opentravel.org/OTA/2003/05" Timestamp = "2018-09-12T23:09:08+03:00">
@@ -175,7 +303,8 @@ After each request, a response should be provided from yours side. If a `CancelN
 </OTA_HotelResNotifRS>
 ```
 
-### Error
+</TabItem>
+<TabItem value="error" label="Error">
 
 ```html
 <OTA_HotelResNotifRS xmlns = "http://www.opentravel.org/OTA/2003/05" Timestamp = "2018-09-12T23:09:08+03:00">
@@ -185,72 +314,16 @@ After each request, a response should be provided from yours side. If a `CancelN
 </OTA_HotelResNotifRS>
 ```
 
-<details>
-    <summary>Error codes you could receive in the response during the booking flow</summary>
-    <div>
-        <div>
-         <table>
-				<thead>
-					<tr>
-						<th>
-							<strong>Error Code</strong>
-						</th>
-						<th>
-							<strong>Error Description</strong>
-						</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>-1</td>
-						<td>Unexpected error</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>Validation error</td>
-					</tr>
-					<tr>
-						<td>10</td>
-						<td>HotelCode not found</td>
-					</tr>
-                    <tr>
-						<td>11</td>
-						<td>Invalid dates</td>
-					</tr>
-                    <tr>
-						<td>14</td>
-						<td>Invalid Derived Rate</td>
-					</tr>
-                    <tr>
-						<td>22</td>
-						<td>Rooms not found</td>
-					</tr>
-                    <tr>
-						<td>23</td>
-						<td>Rates not found</td>
-					</tr>
-                    <tr>
-						<td>30</td>
-						<td>Occupation error</td>
-					</tr>
-                    <tr>
-						<td>31</td>
-						<td>RatePlan_Rate Error</td>
-					</tr>
-                    <tr>
-						<td>38</td>
-						<td>POS credentials not found</td>
-					</tr>
-                    <tr>
-						<td>50</td>
-						<td>Confirmation error</td>
-					</tr>
-                    <tr>
-						<td>50</td>
-						<td>Cancellation error</td>
-					</tr>
-				</tbody>
-			</table>
-        </div>
-    </div>
-</details>
+</TabItem>
+</Tabs>
+
+### Response Data Breakdown
+
+|                    Element                   |  Rel |   Type  |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+|----------------------------------------------|------|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| OTA_HotelResNotifRS                          | 1    |         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| OTA_HotelResNotifRS/Success                  | 0..1 |         |  If SUCCESS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| OTA_HotelResNotifRS/Errors                   | 0..1 |         |  If ERROR                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| Errors/Error                                 | 1    |         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| @ShortText                                   | 1    | String  |  <details>     <summary>Error Codes and Description</summary>     <div>         <div>          <table> 				<thead> 					<tr> 						<th> 							<strong>Error Code</strong> 						</th> 						<th> 							<strong>Error Description</strong> 						</th> 					</tr> 				</thead> 				<tbody> 					<tr> 						<td>-1</td> 						<td>Unexpected error</td> 					</tr> 					<tr> 						<td>1</td> 						<td>Validation error</td> 					</tr> 					<tr> 						<td>10</td> 						<td>HotelCode not found</td> 					</tr>                     <tr> 						<td>11</td> 						<td>Invalid dates</td> 					</tr>                   <tr> 						<td>14</td> 						<td>Invalid derived rate</td> 					</tr> 					<tr> 						<td>22</td> 						<td>Rooms not found</td> 					</tr>               <tr> 						<td>23</td> 						<td>Rates not found</td> 					</tr>              <tr> 						<td>30</td> 						<td>Occupancy error</td> 					</tr>              <tr> 						<td>31</td> 						<td>RatePlan_Rate Error</td> 					</tr>             <tr> 						<td>38</td> 						<td>POS credentials not found</td> 					</tr>                      <tr> 						<td>50</td> 						<td>Confirmation error</td> 					</tr>                     <tr> 						<td>60</td> 						<td>Cancellation error</td> 					</tr>      </tbody> 			</table>         </div>     </div> </details>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| @Code                                        | 1    | String  |  <details>     <summary>Error Codes and Description</summary>     <div>         <div>          <table> 				<thead> 					<tr> 						<th> 							<strong>Error Code</strong> 						</th> 						<th> 							<strong>Error Description</strong> 						</th> 					</tr> 				</thead> 				<tbody> 					<tr> 						<td>-1</td> 						<td>Unexpected error</td> 					</tr> 					<tr> 						<td>1</td> 						<td>Validation error</td> 					</tr> 					<tr> 						<td>10</td> 						<td>HotelCode not found</td> 					</tr>                     <tr> 						<td>11</td> 						<td>Invalid dates</td> 					</tr> 					<tr> 						<td>14</td> 						<td>Invalid derived rate</td> 					</tr> 					<tr> 						<td>22</td> 						<td>Rooms not found</td> 					</tr>               <tr> 						<td>23</td> 						<td>Rates not found</td> 					</tr>              <tr> 						<td>30</td> 						<td>Occupancy error</td> 					</tr>              <tr> 						<td>31</td> 						<td>RatePlan_Rate Error</td> 					</tr>             <tr> 						<td>38</td> 						<td>POS credentials not found</td> 					</tr>                      <tr> 						<td>50</td> 						<td>Confirmation error</td> 					</tr>                     <tr> 						<td>60</td> 						<td>Cancellation error</td> 					</tr>   </tbody> 			</table>         </div>     </div> </details>                                                                                                                                                                                                                                                                                                                                                            |

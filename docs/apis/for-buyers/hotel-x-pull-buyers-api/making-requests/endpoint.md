@@ -1,8 +1,9 @@
 ---
+title: Endpoint
 sidebar_position: 1
 ---
 
-# Endpoint
+# Hotel-X Endpoint
 
 
 One significant advantage of GraphQL is the simplicity of having a single endpoint for all operations. Regardless of whether you're in a testing or production environment, you can access the Hotel-X API methods effortlessly using this primary endpoint:

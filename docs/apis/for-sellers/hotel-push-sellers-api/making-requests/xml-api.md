@@ -1,7 +1,8 @@
 ---
+title: XML API
 sidebar_position: 3
 ---
 
-# XML API
+# Push Sellers API XML API
 
 Hotel Push Sellers API is a travel API based on XML. 

@@ -4,13 +4,17 @@ sidebar_position: 2
 
 # Hotel Push Sellers API Development Roadmap and Timings
 
-Starting a new development is always a tricky task due to the lack of information surrounding the project and the difficulty to estimate the resources and time required. That lack of information leads to an under or over estimation of the resources needed and consequently to the inefficiency and ineffectiveness of the project planning, as well as a waste of time and resources.
+Starting a new development is always a tricky task due to the lack of information surrounding the project and the difficulty to estimate the resources and time required. That lack of information leads to an under or over estimation of the resources needed and consequently to the inefficiency and ineffectiveness of the project planning, as well as a waste of time and resources.  
 At TravelgateX we want to ease that process by providing all the necessary information, roadmap and timings to effectively calculate the amount of resources and timing that will require to develop the Hotel Push Sellers API.
 
 ![hotel_push_sellers_api_development_roadmap_timings_1](https://storage.travelgate.com/kbase/hotel_push_sellers_api_development_roadmap_timings_1.jpg)
 
 
-The Hotel Push Sellers API onboarding process is composed of 5 milestones:
+**The Hotel Push Sellers API onboarding process is composed of 4 milestones:**
+1. Account configuration
+2. Hotel Push Sellers API development
+3. Hotel Push Sellers API certification
+4. Buyer activation
 
 ### Account configuration
 Learn how to edit and customize your Company's Profile [here](/kb/account-settings/company-profile/how-to-edit-and-customize-profile.md).

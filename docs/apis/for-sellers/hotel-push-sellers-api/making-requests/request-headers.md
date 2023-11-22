@@ -1,8 +1,9 @@
 ---
+title: Request Headers
 sidebar_position: 2
 ---
 
-# Request Headers
+# Push Sellers API Request Headers
 
 The following request headers are essential for all request methods and must be included in every API request.
 

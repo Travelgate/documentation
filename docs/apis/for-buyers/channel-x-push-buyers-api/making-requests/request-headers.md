@@ -1,8 +1,9 @@
 ---
+title: Request Headers
 sidebar_position: 2
 ---
 
-# Request Headers
+# Channel-X Request Headers
 
 The following request headers will be sent in all request methods. It is essential that you configure your system to accept these headers, as they will be included in the requests we will make to your system.
 

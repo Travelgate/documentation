@@ -11,7 +11,7 @@ We're beyond excited that you've chosen to partner with us for expanding your ho
 Whether you have technical questions or need some guidance, we've got you covered. Just head over to [TGX Community](https://community.travelgatex.com/), where you can connect with other developers, or get ready to dig into our [Knowledge Base](/kb), packed with awesome articles and FAQs! And for a deeper dive, our comprehensive [Documentation](/docs/get-started/connectivity-products) is at your fingertips.
 
 :::info Resources.
-- [Hotel Pull Sellers API Documentation](/docs/apis/for-sellers/hotel-pull-sellers-api/quickstart).
+- [Hotel Pull Sellers API Documentation](/docs/apis/for-sellers/hotel-pull-sellers-api/overview).
 - [Hotel Push Sellers API Documentation](/docs/apis/for-sellers/hotel-push-sellers-api/quickstart).
 :::
 

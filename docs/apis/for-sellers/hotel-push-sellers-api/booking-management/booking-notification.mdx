@@ -6,7 +6,7 @@ sidebar_position: 2
 
 During the booking process, we'll send you a `HotelResNotif` request message to share reservation details. You just need to check and let us know the reservation status. After that, Travelgate will handle the response from your system, moving forward with the reservation and updating you on the status.
 
-:::note
+:::tip
 
 If you have the booking locator, include it in the `HotelResNotif` response, this way we'll include it in our response.
 
@@ -16,7 +16,373 @@ Keep in mind that if there's an issue with the reservation in your system, we'll
 
 ## HotelResNotif Request
 
-[Añadir ejemplo]
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+<TabItem value="MerchantPayment" label="MerchantPayment">
+
+```html
+    <OTA_HotelResRS xmlns:xsd = "http://www.w3.org/2001/XMLSchema" xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" ResResponseType = "Committed" xmlns = "http://www.opentravel.org/OTA/2003/05">
+      <HotelReservations>
+        <HotelReservation CreateDateTime = "2018-08-01T09:07:28.5074165Z" ResStatus = "Confirmed">
+          <RoomStays>
+            <RoomStay>
+              <RoomTypes>
+                <RoomType RoomTypeCode = "STD" RoomID = "1">
+                  <RoomDescription>
+                    <Text>Standard</Text>
+                  </RoomDescription>
+                </RoomType>
+              </RoomTypes>
+              <RatePlans>
+                <RatePlan RatePlanCode = "BAR" PriceViewableInd = "false">
+                  <RatePlanDescription>
+                    <Text>Best Available Rate</Text>
+                  </RatePlanDescription>
+                  <Commission Percent = "20"/>
+                </RatePlan>
+              </RatePlans>
+              <RoomRates>
+                <RoomRate BookingCode = "1|30#30|1|2018-08-17|5|488654|38644|3|0|0" EffectiveDate = "2018-08-17" ExpireDate = "2018-08-22" RoomTypeCode = "STD" InvBlockCode = "3" NumberOfUnits = "37" RatePlanCode = "BAR" RoomID = "1">
+                  <Rates>
+                    <Rate EffectiveDate = "2018-08-17" ExpireDate = "2018-08-18">
+                      <Base AmountBeforeTax = "201.37" AmountAfterTax = "201.37" CurrencyCode = "EUR" Type = "25"/>
+                      <CancelPolicies>
+                        <CancelPenalty PolicyCode = "c25b8026-5ca2-49ce-b62c-fe0b4945de01"/>
+                      </CancelPolicies>
+                    </Rate>
+                  </Rates>
+                  <Total AmountBeforeTax = "873.20" AmountAfterTax = "873.20" CurrencyCode = "EUR"/>
+                </RoomRate>
+              </RoomRates>
+              <CancelPenalties>
+                <CancelPenalty PolicyCode = "c25b8026-5ca2-49ce-b62c-fe0b4945de01" NonRefundable = "false">
+                  <Deadline AbsoluteDeadline = "2018-08-16" OffsetTimeUnit = "Day" OffsetUnitMultiplier = "1" OffsetDropTime = "BeforeArrival"/>
+                  <AmountPercent NmbrOfNights = "1" CurrencyCode = "EUR"/>
+                </CancelPenalty>
+              </CancelPenalties>
+              <BasicPropertyInfo HotelCode = "1" HotelName = "Test Hotel"/>
+              <Comments>
+                <Comment>
+                  <Text>Customer comments...</Text>
+                </Comment>
+              </Comments>
+              <ServiceRPHs>
+                <ServiceRPH RPH = "1"/>
+                <ServiceRPH RPH = "2"/>
+              </ServiceRPHs>
+            </RoomStay>
+          </RoomStays>
+          <ResGuests>
+            <ResGuest ResGuestRPH = "1" AgeQualifyingCode = "10">
+              <Profiles>
+                <ProfileInfo>
+                  <Profile>
+                    <Customer>
+                      <PersonName>
+                        <NamePrefix>Mr</NamePrefix>
+                        <GivenName>Name</GivenName>
+                        <Surname>Surname</Surname>
+                      </PersonName>
+                    </Customer>
+                  </Profile>
+                </ProfileInfo>
+              </Profiles>
+              <GuestCounts>
+                <GuestCount Age = "30"/>
+              </GuestCounts>
+            </ResGuest>
+            <ResGuest ResGuestRPH = "2" AgeQualifyingCode = "10">
+              <Profiles>
+                <ProfileInfo>
+                  <Profile>
+                    <Customer>
+                      <PersonName>
+                        <NamePrefix>Mr</NamePrefix>
+                        <GivenName>Name</GivenName>
+                        <Surname>Surname</Surname>
+                      </PersonName>
+                    </Customer>
+                  </Profile>
+                </ProfileInfo>
+              </Profiles>
+              <GuestCounts>
+                <GuestCount Age = "30"/>
+              </GuestCounts>
+            </ResGuest>
+          </ResGuests>
+          <ResGlobalInfo>
+		    // highlight-start
+            <Guarantee PaymentCode = "MerchantPayment"/>
+            <Total AmountBeforeTax = "873.20" AmountAfterTax = "873.20" CurrencyCode = "EUR"/>
+            <HotelReservationIDs>
+              <HotelReservationID ResID_Value = "**clientLocator**" ResID_SourceContext = "Client"/>
+              <HotelReservationID ResID_Value = "**internalLocator**" ResID_SourceContext = "Internal"/>
+            </HotelReservationIDs>
+            <Profiles>
+              <ProfileInfo>
+                <Profile>
+                  <Customer>
+                    <PersonName>
+                      <NamePrefix>Mr</NamePrefix>
+                      <GivenName>Name</GivenName>
+                      <Surname>Surname</Surname>
+                    </PersonName>
+                    <Telephone PhoneTechType = "1" PhoneNumber = "900000000"/>
+                    <Email EmailType = "1">"***agency_email@agency.com***"</Email>
+                    <Address Type = "1">
+                      <AddressLine>Address</AddressLine>
+                      <CityName>Address</CityName>
+                      <PostalCode>07121</PostalCode>
+                      <CountryName>ES</CountryName>
+                    </Address>
+                  </Customer>
+                </Profile>
+              </ProfileInfo>
+            </Profiles>
+			// highlight-end
+          </ResGlobalInfo>
+        </HotelReservation>
+      </HotelReservations>
+      <Success/>
+    </OTA_HotelResRS>
+```
+
+</TabItem>
+<TabItem value="VCC Payment" label="VCC Payment">
+
+```html
+    <OTA_HotelResRS xmlns:xsd = "http://www.w3.org/2001/XMLSchema" xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" ResResponseType = "Committed" xmlns = "http://www.opentravel.org/OTA/2003/05">
+      <HotelReservations>
+        <HotelReservation CreateDateTime = "2018-08-01T09:07:28.5074165Z" ResStatus = "Confirmed">
+          <RoomStays>
+            <RoomStay>
+              <RoomTypes>
+                <RoomType RoomTypeCode = "STD" RoomID = "1">
+                  <RoomDescription>
+                    <Text>Standard</Text>
+                  </RoomDescription>
+                </RoomType>
+              </RoomTypes>
+              <RatePlans>
+                <RatePlan RatePlanCode = "BAR" PriceViewableInd = "false">
+                  <RatePlanDescription>
+                    <Text>Best Available Rate</Text>
+                  </RatePlanDescription>
+                  <Commission Percent = "20"/>
+                </RatePlan>
+              </RatePlans>
+              <RoomRates>
+                <RoomRate BookingCode = "1|30#30|1|2018-08-17|5|488654|38644|3|0|0" EffectiveDate = "2018-08-17" ExpireDate = "2018-08-22" RoomTypeCode = "STD" InvBlockCode = "3" NumberOfUnits = "37" RatePlanCode = "BAR" RoomID = "1">
+                  <Rates>
+                    <Rate EffectiveDate = "2018-08-17" ExpireDate = "2018-08-18">
+                      <Base AmountBeforeTax = "201.37" AmountAfterTax = "201.37" CurrencyCode = "EUR" Type = "25"/>
+                      <CancelPolicies>
+                        <CancelPenalty PolicyCode = "c25b8026-5ca2-49ce-b62c-fe0b4945de01"/>
+                      </CancelPolicies>
+                    </Rate>
+                  </Rates>
+                  <Total AmountBeforeTax = "873.20" AmountAfterTax = "873.20" CurrencyCode = "EUR"/>
+                </RoomRate>
+              </RoomRates>
+              <CancelPenalties>
+                <CancelPenalty PolicyCode = "c25b8026-5ca2-49ce-b62c-fe0b4945de01" NonRefundable = "false">
+                  <Deadline AbsoluteDeadline = "2018-08-16" OffsetTimeUnit = "Day" OffsetUnitMultiplier = "1" OffsetDropTime = "BeforeArrival"/>
+                  <AmountPercent NmbrOfNights = "1" CurrencyCode = "EUR"/>
+                </CancelPenalty>
+              </CancelPenalties>
+              <BasicPropertyInfo HotelCode = "1" HotelName = "Test Hotel"/>
+              <Comments>
+                <Comment>
+                  <Text>Customer comments...</Text>
+                </Comment>
+              </Comments>
+              <ServiceRPHs>
+                <ServiceRPH RPH = "1"/>
+                <ServiceRPH RPH = "2"/>
+              </ServiceRPHs>
+            </RoomStay>
+          </RoomStays>
+          <ResGuests>
+            <ResGuest ResGuestRPH = "1" AgeQualifyingCode = "10">
+              <Profiles>
+                <ProfileInfo>
+                  <Profile>
+                    <Customer>
+                      <PersonName>
+                        <NamePrefix>Mr</NamePrefix>
+                        <GivenName>Name</GivenName>
+                        <Surname>Surname</Surname>
+                      </PersonName>
+                    </Customer>
+                  </Profile>
+                </ProfileInfo>
+              </Profiles>
+              <GuestCounts>
+                <GuestCount Age = "30"/>
+              </GuestCounts>
+            </ResGuest>
+            <ResGuest ResGuestRPH = "2" AgeQualifyingCode = "10">
+              <Profiles>
+                <ProfileInfo>
+                  <Profile>
+                    <Customer>
+                      <PersonName>
+                        <NamePrefix>Mr</NamePrefix>
+                        <GivenName>Name</GivenName>
+                        <Surname>Surname</Surname>
+                      </PersonName>
+                    </Customer>
+                  </Profile>
+                </ProfileInfo>
+              </Profiles>
+              <GuestCounts>
+                <GuestCount Age = "30"/>
+              </GuestCounts>
+            </ResGuest>
+          </ResGuests>
+          <ResGlobalInfo>
+		    // highlight-start
+            <Guarantee PaymentCode = "DirectPayment">
+              <GuaranteesAccepted>
+                <GuaranteeAccepted>
+                  <PaymentCard ExpireDate = "0000" CardCode = "VI">
+                    <CardHolderName>Name Surname</CardHolderName>
+                    <CardNumber>
+                      <PlainText>0000000000000000</PlainText>
+                    </CardNumber>
+                    <SeriesCode>
+                      <PlainText>000</PlainText>
+                    </SeriesCode>
+                  </PaymentCard>
+                </GuaranteeAccepted>
+              </GuaranteesAccepted>
+            </Guarantee>
+			// highlight-end
+          </ResGlobalInfo>
+        </HotelReservation>
+      </HotelReservations>
+      <Success/>
+    </OTA_HotelResRS>
+```
+
+</TabItem>
+<TabItem value="VCC Payment with URL" label="VCC Payment with URL">
+
+```html
+    <OTA_HotelResRS xmlns:xsd = "http://www.w3.org/2001/XMLSchema" xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" ResResponseType = "Committed" xmlns = "http://www.opentravel.org/OTA/2003/05">
+      <HotelReservations>
+        <HotelReservation CreateDateTime = "2018-08-01T09:07:28.5074165Z" ResStatus = "Confirmed">
+          <RoomStays>
+            <RoomStay>
+              <RoomTypes>
+                <RoomType RoomTypeCode = "STD" RoomID = "1">
+                  <RoomDescription>
+                    <Text>Standard</Text>
+                  </RoomDescription>
+                </RoomType>
+              </RoomTypes>
+              <RatePlans>
+                <RatePlan RatePlanCode = "BAR" PriceViewableInd = "false">
+                  <RatePlanDescription>
+                    <Text>Best Available Rate</Text>
+                  </RatePlanDescription>
+                  <Commission Percent = "20"/>
+                </RatePlan>
+              </RatePlans>
+              <RoomRates>
+                <RoomRate BookingCode = "1|30#30|1|2018-08-17|5|488654|38644|3|0|0" EffectiveDate = "2018-08-17" ExpireDate = "2018-08-22" RoomTypeCode = "STD" InvBlockCode = "3" NumberOfUnits = "37" RatePlanCode = "BAR" RoomID = "1">
+                  <Rates>
+                    <Rate EffectiveDate = "2018-08-17" ExpireDate = "2018-08-18">
+                      <Base AmountBeforeTax = "201.37" AmountAfterTax = "201.37" CurrencyCode = "EUR" Type = "25"/>
+                      <CancelPolicies>
+                        <CancelPenalty PolicyCode = "c25b8026-5ca2-49ce-b62c-fe0b4945de01"/>
+                      </CancelPolicies>
+                    </Rate>
+                  </Rates>
+                  <Total AmountBeforeTax = "873.20" AmountAfterTax = "873.20" CurrencyCode = "EUR"/>
+                </RoomRate>
+              </RoomRates>
+              <CancelPenalties>
+                <CancelPenalty PolicyCode = "c25b8026-5ca2-49ce-b62c-fe0b4945de01" NonRefundable = "false">
+                  <Deadline AbsoluteDeadline = "2018-08-16" OffsetTimeUnit = "Day" OffsetUnitMultiplier = "1" OffsetDropTime = "BeforeArrival"/>
+                  <AmountPercent NmbrOfNights = "1" CurrencyCode = "EUR"/>
+                </CancelPenalty>
+              </CancelPenalties>
+              <BasicPropertyInfo HotelCode = "1" HotelName = "Test Hotel"/>
+              <Comments>
+                <Comment>
+                  <Text>Customer comments...</Text>
+                </Comment>
+              </Comments>
+              <ServiceRPHs>
+                <ServiceRPH RPH = "1"/>
+                <ServiceRPH RPH = "2"/>
+              </ServiceRPHs>
+            </RoomStay>
+          </RoomStays>
+          <ResGuests>
+            <ResGuest ResGuestRPH = "1" AgeQualifyingCode = "10">
+              <Profiles>
+                <ProfileInfo>
+                  <Profile>
+                    <Customer>
+                      <PersonName>
+                        <NamePrefix>Mr</NamePrefix>
+                        <GivenName>Name</GivenName>
+                        <Surname>Surname</Surname>
+                      </PersonName>
+                    </Customer>
+                  </Profile>
+                </ProfileInfo>
+              </Profiles>
+              <GuestCounts>
+                <GuestCount Age = "30"/>
+              </GuestCounts>
+            </ResGuest>
+            <ResGuest ResGuestRPH = "2" AgeQualifyingCode = "10">
+              <Profiles>
+                <ProfileInfo>
+                  <Profile>
+                    <Customer>
+                      <PersonName>
+                        <NamePrefix>Mr</NamePrefix>
+                        <GivenName>Name</GivenName>
+                        <Surname>Surname</Surname>
+                      </PersonName>
+                    </Customer>
+                  </Profile>
+                </ProfileInfo>
+              </Profiles>
+              <GuestCounts>
+                <GuestCount Age = "30"/>
+              </GuestCounts>
+            </ResGuest>
+          </ResGuests>
+          <ResGlobalInfo>
+		    // highlight-start
+            <Guarantee PaymentCode = "DirectPayment">
+              <GuaranteesAccepted>
+                <GuaranteeAccepted>
+                  <PaymentCard>
+                    <TPA_Extensions>
+                      <Param key = "URL" value = "http://www.exampleUrl.com/"/>
+                    </TPA_Extensions>
+                  </PaymentCard>
+                </GuaranteeAccepted>
+              </GuaranteesAccepted>
+            </Guarantee>
+			// highlight-end
+          </ResGlobalInfo>
+        </HotelReservation>
+      </HotelReservations>
+    </OTA_HotelResRS>
+```
+
+</TabItem>
+</Tabs>
+
 
 ### Request Headers
 
@@ -38,11 +404,10 @@ Authorization: Basic xxxxxxxxxxxxxxxxx
 
 | Element                                | Rel  | Type     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 |----------------------------------------|------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| OTA_HotelResRS                         | 1    |          | Root Node.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| OTA_HotelResRS/Success                 | 0..1 |          | Should only be present if it was a successful response. The Errors node should not be present if the Success node is present.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| OTA_HotelResRS/HotelReservations       | 0..1 |          | Node containing the reservation.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| OTA_HotelResRQ                         | 1    |          | Root Node.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| OTA_HotelResRQ/HotelReservations       | 0..1 |          | Node containing the reservation.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | HotelReservations/HotelReservation     | 1    |          | Node containing information about the reservation.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| @ResStatus                             | 1    | String   | Status of the reservation. The possible status value is: ‘Confirmed’                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| @ResStatus                             | 1    | String   | Status of the reservation. The possible status value is: `Confirmed`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | @CreateDateTime                        | 1    | DateTime | Date and time when the reservation was made.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | HotelReservation/RoomStays             | 1    |          | Node containing the RoomStays of the reservation.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | RoomStays/RoomStay                     | 1..n |          | Node containing RoomStay information.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
@@ -58,7 +423,7 @@ Authorization: Basic xxxxxxxxxxxxxxxxx
 | RatePlan/RatePlanDescription           | 1    |          | Node containing information the RatePlan description one RatePlan.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | RatePlanDescription/Text               | 1    | String   | Description of the RatePlan.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | RatePlan/Commission                    | 1    |          | Node containing the commission of the RatePlan.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| Percent                                | 1    | Decimal  | Commission of the RatePlane.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| @Percent                               | 1    | Decimal  | Commission of the RatePlane.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | RoomStay/RoomRates                     | 1    |          | Node containing information about RoomRates.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | RoomRates/RoomRate                     | 1    |          | Node containing information about one RoomRate.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | @EffectiveDate                         | 1    | Date     | Effective date when the RoomRate start applying.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
@@ -173,11 +538,13 @@ Authorization: Basic xxxxxxxxxxxxxxxxx
 
 After each request, a response should be provided from yours side. If a `HotelResNotif` request is received, a corresponding `HotelResNotif` response should be sent. There are two response options, **success** or **error**.
 
-### Success
+<Tabs>
+<TabItem value="sucess" label="Success">
 
 ```html
 <OTA_HotelResNotifRS xmlns = "http://www.opentravel.org/OTA/2003/05" Timestamp = "2018-09-12T23:09:08+03:00">
-    <HotelReservations>
+    // highlight-start
+	<HotelReservations>
         <HotelReservation ResStatus = "Confirmed">
             <ResGlobalInfo>
                 <HotelReservationIDs>
@@ -187,85 +554,41 @@ After each request, a response should be provided from yours side. If a `HotelRe
         </HotelReservation>
     </HotelReservations>
     <Success/>
+	// highlight-end
 /OTA_HotelResNotifRS>
 ```
 
-### Error
+</TabItem>
+<TabItem value="error" label="Error">
 
 ```html
 <OTA_HotelResNotifRS xmlns = "http://www.opentravel.org/OTA/2003/05" Timestamp = "2018-09-12T23:09:08+03:00">
-    <Errors>
+    // highlight-start
+	<Errors>
         <Error ShortText = "Confirmation error" Code = "50">Hotel doesn't exist</Error>
     </Errors>
+	// highlight-end
 </OTA_HotelResNotifRS>
 ```
 
-<details>
-    <summary>Error codes you could receive in the response during the booking flow</summary>
-    <div>
-        <div>
-         <table>
-				<thead>
-					<tr>
-						<th>
-							<strong>Error Code</strong>
-						</th>
-						<th>
-							<strong>Error Description</strong>
-						</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>-1</td>
-						<td>Unexpected error</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>Validation error</td>
-					</tr>
-					<tr>
-						<td>10</td>
-						<td>HotelCode not found</td>
-					</tr>
-                    <tr>
-						<td>11</td>
-						<td>Invalid dates</td>
-					</tr>
-                    <tr>
-						<td>14</td>
-						<td>Invalid Derived Rate</td>
-					</tr>
-                    <tr>
-						<td>22</td>
-						<td>Rooms not found</td>
-					</tr>
-                    <tr>
-						<td>23</td>
-						<td>Rates not found</td>
-					</tr>
-                    <tr>
-						<td>30</td>
-						<td>Occupation error</td>
-					</tr>
-                    <tr>
-						<td>31</td>
-						<td>RatePlan_Rate Error</td>
-					</tr>
-                    <tr>
-						<td>38</td>
-						<td>POS credentials not found</td>
-					</tr>
-                    <tr>
-						<td>50</td>
-						<td>Confirmation error</td>
-					</tr>
-                    <tr>
-						<td>50</td>
-						<td>Cancellation error</td>
-					</tr>
-				</tbody>
-			</table>
-        </div>
-    </div>
-</details>
+</TabItem>
+</Tabs>
+
+### Response Data Breakdown
+
+|                    Element                   |  Rel |   Type  |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+|----------------------------------------------|------|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| OTA_HotelResNotifRS                          | 1    |         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| OTA_HotelResNotifRS/HotelReservations        | 0..1 |         |  If SUCCESS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| HotelReservations/HotelReservation           | 1    |         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| @ResStatus                                   | 1    |         |  Status of the reservation. The possible status value is: `Confirmed`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| HotelReservation/ResGlobalInfo               | 1    |         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| ResGlobalInfo/HotelReservationIDs            | 1    |         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| HotelReservationIDs/HotelReservationID       | 1    |         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| @ResID_Value                                 | 1    |         |  Provider Locator                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| @ResID_SourceContext                         | 1    |         |  Provider                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| HotelRatePlanInventoryNotifResult/Success    | 1    |         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| OTA_HotelResNotifRS/Errors                   | 0..1 |         |  If ERROR                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| Errors/Error                                 | 1    |         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| @ShortText                                   | 1    | String  |  <details>     <summary>Error Codes and Description</summary>     <div>         <div>          <table> 				<thead> 					<tr> 						<th> 							<strong>Error Code</strong> 						</th> 						<th> 							<strong>Error Description</strong> 						</th> 					</tr> 				</thead> 				<tbody> 					<tr> 						<td>-1</td> 						<td>Unexpected error</td> 					</tr> 					<tr> 						<td>1</td> 						<td>Validation error</td> 					</tr> 					<tr> 						<td>10</td> 						<td>HotelCode not found</td> 					</tr>                     <tr> 						<td>11</td> 						<td>Invalid dates</td> 					</tr>                   <tr> 						<td>14</td> 						<td>Invalid derived rate</td> 					</tr> 					<tr> 						<td>22</td> 						<td>Rooms not found</td> 					</tr>               <tr> 						<td>23</td> 						<td>Rates not found</td> 					</tr>              <tr> 						<td>30</td> 						<td>Occupancy error</td> 					</tr>              <tr> 						<td>31</td> 						<td>RatePlan_Rate Error</td> 					</tr>             <tr> 						<td>38</td> 						<td>POS credentials not found</td> 					</tr>                      <tr> 						<td>50</td> 						<td>Confirmation error</td> 					</tr>                     <tr> 						<td>60</td> 						<td>Cancellation error</td> 					</tr>      </tbody> 			</table>         </div>     </div> </details>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| @Code                                        | 1    | String  |  <details>     <summary>Error Codes and Description</summary>     <div>         <div>          <table> 				<thead> 					<tr> 						<th> 							<strong>Error Code</strong> 						</th> 						<th> 							<strong>Error Description</strong> 						</th> 					</tr> 				</thead> 				<tbody> 					<tr> 						<td>-1</td> 						<td>Unexpected error</td> 					</tr> 					<tr> 						<td>1</td> 						<td>Validation error</td> 					</tr> 					<tr> 						<td>10</td> 						<td>HotelCode not found</td> 					</tr>                     <tr> 						<td>11</td> 						<td>Invalid dates</td> 					</tr> 					<tr> 						<td>14</td> 						<td>Invalid derived rate</td> 					</tr> 					<tr> 						<td>22</td> 						<td>Rooms not found</td> 					</tr>               <tr> 						<td>23</td> 						<td>Rates not found</td> 					</tr>              <tr> 						<td>30</td> 						<td>Occupancy error</td> 					</tr>              <tr> 						<td>31</td> 						<td>RatePlan_Rate Error</td> 					</tr>             <tr> 						<td>38</td> 						<td>POS credentials not found</td> 					</tr>                      <tr> 						<td>50</td> 						<td>Confirmation error</td> 					</tr>                     <tr> 						<td>60</td> 						<td>Cancellation error</td> 					</tr>   </tbody> 			</table>         </div>     </div> </details>                                                                                                                                                                                                                                                                                                                                                            |

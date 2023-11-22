@@ -13,15 +13,23 @@ The following request headers are essential for all request methods and must be 
 
 1. **Security Level**
 
-   The Security level is situated in the SOAP envelope header of all requests, where the user and password of our Inventory system are transmitted.
+   The Security level is situated in the SOAP envelope header of all requests, where the user and password of our Inventory Tool System are transmitted.
+
+   :::caution NOTE
+
+   We will send you your username and password during the onboarding process.
+
+   :::
 
    ```html
    <SOAP-ENV:Envelope xmlns:SOAP-ENV = "http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1 = "http://www.opentravel.org/OTA/2003/05" xmlns:ns2 = "http://schemas.xmltravelgate.com/hubpush/provider/2012/10" xmlns:ns3 = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
     <SOAP-ENV:Header>
         <ns3:Security SOAP-ENV:mustUnderstand = "1">
             <ns3:UsernameToken>
-                <ns3:Username>XXXXX</ns3:Username>
-                <ns3:Password>XXXXXXX</ns3:Password>
+                // highlight-start
+                <ns3:Username>username</ns3:Username>
+                <ns3:Password>password</ns3:Password>
+                // highlight-end
             </ns3:UsernameToken>
         </ns3:Security>
     </SOAP-ENV:Header>
@@ -35,7 +43,7 @@ The following request headers are essential for all request methods and must be 
 
    The POS level is incorporated into the body of all requests. It comprises two fields: RequestorID, which represents the seller code assigned to initiate the request, and CompanyName, which signifies the buyer code assigned to receive the updates.
 
-   :::caution
+   :::caution NOTE
 
    You will find the RequestorID (Seller Code) and CompanyName (Buyer Code) values in the email we will send you once the connection is established.
 
@@ -46,8 +54,8 @@ The following request headers are essential for all request methods and must be 
     <SOAP-ENV:Header>
         <ns3:Security SOAP-ENV:mustUnderstand = "1">
             <ns3:UsernameToken>
-                <ns3:Username>XXXXX</ns3:Username>
-                <ns3:Password>XXXXXXX</ns3:Password>
+                <ns3:Username>username</ns3:Username>
+                <ns3:Password>password</ns3:Password>
             </ns3:UsernameToken>
         </ns3:Security>
     </SOAP-ENV:Header>
@@ -56,10 +64,12 @@ The following request headers are essential for all request methods and must be 
             <ns:request>
                 <ns1:POS>
                     <ns1:Source>
+                        // highlight-start
                         <ns1:RequestorID ID="Seller Code"/>
                         <ns1:BookingChannel>
                             <ns1:CompanyName Code="Buyer Code"/>
                         </ns1:BookingChannel>
+                        // highlight-end
                     </ns1:Source>
                 </ns1:POS>
                 ...

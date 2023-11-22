@@ -8,28 +8,66 @@ The `HotelAvailRetrieve` request message is sent to retrieve a complete breakdow
 
 ## HotelAvailRetrieve Request
 
-[Añadir ejemplo]
+```html
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://schemas.xmltravelgate.com/hubpush/provider/2012/10" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:ns1="http://www.opentravel.org/OTA/2003/05">
+   <s:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>username</wsse:Username>
+            <wsse:Password>password</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </s:Header>
+   <s:Body>
+      <ns:HotelAvailRetrieve>
+         <ns:request PrimaryLangID="EN">
+            <ns1:POS>
+               <ns1:Source>
+                  <ns1:RequestorID ID="Seller Code"/>
+                  <ns1:BookingChannel>
+                     <ns1:CompanyName Code="Buyer Code"/>
+                  </ns1:BookingChannel>
+                  <ns1:TPA_Extensions>
+                       <ns1:Param key = "onlyActive" value = "0"/>
+                   </ns1:TPA_Extensions>
+               </ns1:Source>
+            </ns1:POS>
+            <ns1:HotelAvailRequests>
+               <ns1:HotelAvailRequest>
+                   <ns1:DateRange Start="2023-12-01" End="2023-12-31"/>
+                   <ns1:RatePlanCandidates>
+                       <ns1:RatePlanCandidate RatePlanCode="BAR" PromotionCode="" />
+                   </ns1:RatePlanCandidates>
+                   <ns1:HotelRef HotelCode="2"/>
+               </ns1:HotelAvailRequest>
+           </ns1:HotelAvailRequests>
+         </ns:request>
+      </ns:HotelAvailRetrieve>
+   </s:Body>
+</s:Envelope>
+```
 
 ### Request Data Breakdown
+
+:::note
+
+During the onboarding process, your username and password will be provided. After each connection is established, you'll receive an email with RequestorID (Seller Code) and CompanyName (Buyer Code) values.
+
+:::
 
 | Element                              | Rel  | Type   | Description                                                                                                                                        |
 |--------------------------------------|------|--------|----------------------------------------------------------------------------------------------------------------------------------------------------|
 | HotelAvailRetrieve                   | 1    |        |                                                                                                                                                    |
-| ../request                           | 1    |        |                                                                                                                                                    |
-| ../POS                               | 0..1 |        |                                                                                                                                                    |
-| ../Source                            | 0..1 |        |                                                                                                                                                    |
-| Source/RequestorID                   | ?    |        |                                                                                                                                                    |
-| @ID                                  | ?    | String | ???Provider ID                                                                                                                                     |
-| Source/BookingChannel                | ?    |        |                                                                                                                                                    |
-| ../CompanyName                       | ?    |        |                                                                                                                                                    |
-| @Code                                | ?    | String | ???Client ID                                                                                                                                       |
-| Source/TPA_Extensions                | 0..1 |        | Optional, if empty only active RatePlans/Rooms will be received                                                                                          |
-| ../Params                            | 0..1 |        |                                                                                                                                                    |
-| ../Param                             | 0..N |        |                                                                                                                                                    |
+| HotelAvailRetrieve/request           | 1    |        |                                                                                                                                                    |
+| request/POS                          | 1    |        |                                                                                                                                                    |
+| POS/Source                           | 1    |        |                                                                                                                                                    |
+| Source/TPA_Extensions                | 0..1 |        | Optional, if empty only active inventory will be received                                                                                          |
+| TPA_Extensions/Params                | 0..1 |        |                                                                                                                                                    |
+| Params/Param                         | 0..N |        |                                                                                                                                                    |
 | @key                                 | 1    | String | `onlyActive`                                                                                                                                         |
-| @value                               | 1    | String | 1 - You will receive all active RatePlans/Rooms data. 0 - Active and deactivated RatePlans/Rooms will be received. (Same case as without TPA_Extensions node.) |
+| @value                               | 1    | String | 1 - You will receive all active inventory data. 0 - Active and deactivated inventory will be received. (Same case as without TPA_Extensions node.) |
 | HotelAvailRequests                   |      |        |                                                                                                                                                    |
-| ../HotelAvailRequest                 |      |        |                                                                                                                                                    |
+| HotelAvailRequests/HotelAvailRequest | 1    |        |                                                                                                                                                    |
 | HotelAvailRequest/DateRange          |      |        |                                                                                                                                                    |
 | @Start                               | 1    | Date   | Start date to search rates.                                                                                                                        |
 | @End                                 | 1    | Date   | End date to search rates.                                                                                                                          |
@@ -39,6 +77,7 @@ The `HotelAvailRetrieve` request message is sent to retrieve a complete breakdow
 | RatePlanCandidates/RatePlanCandidate | 1..n |        |                                                                                                                                                    |
 | @RatePlanCode                        | 1    | String | Rate Plan Code to search rates.                                                                                                                  |
 
+
 ## HotelAvailRetrieve Response
 
 After each request, Travelgate will process the data and provide you with a response. Upon receiving a `HotelRatePlanRetrieve` request, Travelgate will send you a corresponding `HotelRatePlanRetrieve` response. 
@@ -47,18 +86,49 @@ The response options include either **success** or an **error**. In the event of
 
 ### Success
 
-[Añadir ejemplo]
+```html
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" xmlns:u="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+   <s:Header>
+      <o:Security s:mustUnderstand="1" xmlns:o="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+         <u:Timestamp u:Id="_0">
+            <u:Created>2023-11-22T11:11:00.838Z</u:Created>
+            <u:Expires>2023-11-22T11:16:00.838Z</u:Expires>
+         </u:Timestamp>
+      </o:Security>
+   </s:Header>
+   <s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <HotelAvailRetrieveResponse xmlns="http://schemas.xmltravelgate.com/hubpush/provider/2012/10">
+         <HotelAvailRetrieveResult>
+            <Success xmlns="http://www.opentravel.org/OTA/2003/05"/>
+            <AvailStatusMessages HotelCode="2" xmlns="http://www.opentravel.org/OTA/2003/05">
+               <AvailStatusMessage>
+                  <StatusApplicationControl Start="2023-12-01" End="2023-12-31" RatePlanCode="BARDEV" Mon="true" Tue="true" Weds="true" Thur="true" Fri="true" Sat="true" Sun="true"/>
+                  <RestrictionStatus Status="Open"/>
+               </AvailStatusMessage>
+               <AvailStatusMessage BookingLimit="14" BookingSold="0">
+                  <StatusApplicationControl Start="2023-12-20" End="2023-12-22" RatePlanCode="BAR" InvCode="STD3" InvType="ROOM" Mon="false" Tue="false" Weds="true" Thur="true" Fri="true" Sat="false" Sun="false"/>
+                  <LengthsOfStay ArrivalDateBased="false">
+                     <LengthOfStay Time="1" TimeUnit="Day" MinMaxMessageType="MinLOS"/>
+                     <LengthOfStay Time="28" TimeUnit="Day" MinMaxMessageType="MaxLOS"/>
+                  </LengthsOfStay>
+                  <RestrictionStatus Status="Open" SellThroughOpenIndicator="false" MaxAdvancedBookingOffset="2" MinAdvancedBookingOffset="1"/>
+               </AvailStatusMessage>
+            </AvailStatusMessages>
+         </HotelAvailRetrieveResult>
+      </HotelAvailRetrieveResponse>
+   </s:Body>
+</s:Envelope>
+```
 
 #### Sucess Response Data Breakdown
 
 | Element                                     | Rel  | Type    | Description                                                                                                                                                                                                                            |
 |---------------------------------------------|------|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| HotelAvailRetrieveResponse                  | 1    |         |                                                                                                                                                                                                                                        |
-| ../HotelAvailRetrieveResult                 | 1    |         |                                                                                                                                                                                                                                        |
+|HotelAvailRetrieveResult                     | 1    |         |                                                                                                                                                                                                                                        |
 | HotelAvailRetrieveResult/Success            | 1    |         |                                                                                                                                                                                                                                        |
-| HotelAvailRetrieveResult/AvailStatusMessages                 | 1    |         |                                                                                                                                                                                                                                        |
+| HotelAvailRetrieveResult/AvailStatusMessages| 1    |         |                                                                                                                                                                                                                                        |
 | @HotelCode                                  | 1    | String  | Hotel code                                                                                                                                                                                                                             |
-| ../AvailStatusMessage                       | 1..n |         |                                                                                                                                                                                                                                        |
+| AvailStatusMessages/AvailStatusMessage      | 1..n |         |                                                                                                                                                                                                                                        |
 | @BookingLimit                               | 0..1 | Integer | The number of rooms available per Room-RatePlan for the specified dates. This field is exclusively used for Derivated Rates.                                                                                                                                     |
 | @BookingSold                                | 0..1 | Integer | The number of rooms booked per Room-RatePlan for the specified dates. The available allotment is calculated as the difference between @BookingLimit and @BookingSold. This field is exclusively used for Derivated Rates                                                        |
 | AvailStatusMessage/StatusApplicationControl | 1    |         |                                                                                                                                                                                                                                        |
@@ -77,7 +147,7 @@ The response options include either **success** or an **error**. In the event of
 | @Sat                                        | 0..1 | Boolean | If true or attribute is not present, there is availability on Sunday.                                                                                                                                                                   |
 | AvailStatusMessage/LengthsOfStay            | 0..1 |         |                                                                                                                                                                                                                                        |
 | @ArrivalDateBased                           | 0..1 | Boolean | If true, the Minimum and Maximum Stay is checked ONLY the first day of the availability. If false or null, the Minimum and Maximum Stay is checked all the availability days. If both values are needed, two @AvailStatusMessage will be sent. |
-| ../LengthOfStay                             | 1..2 |         |                                                                                                                                                                                                                                        |
+| LengthsOfStay/LengthOfStay                  | 1..2 |         |                                                                                                                                                                                                                                        |
 | @Time                                       | 1    | Integer | Indicates the number of @TimeUnit for this stay. When value is 0 or -1, condition should be deleted from the system.                                                                                                                    |
 | @TimeUnit                                   | 1    | String  | `Day`                                                                                                                                                                                                                             |
 | @MinMaxMessageType                          | 1    | String  | `MinLOS` (minimum) or `MaxLOS` (maximum) @LenghtOfSaty.                                                                                                                                                                                      |
@@ -92,137 +162,33 @@ The response options include either **success** or an **error**. In the event of
 ### Error
 
 ```html
-<HotelAvailRetrieveResponse xmlns="http://schemas.xmltravelgate.com/hubpush/provider/2012/10">
-    <HotelAvailRetrieveResult>
-        <Errors xmlns="http://www.opentravel.org/OTA/2003/05">
-            <Error ShortText="Incomplete AdditionalGuestAmount values" Code="7"/>
-        </Errors>
-    </HotelAvailRetrieveResult>
-</HotelAvailRetrieveResponse>
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" xmlns:u="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+   <s:Header>
+      <o:Security s:mustUnderstand="1" xmlns:o="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+         <u:Timestamp u:Id="_0">
+            <u:Created>2023-11-22T11:11:00.838Z</u:Created>
+            <u:Expires>2023-11-22T11:16:00.838Z</u:Expires>
+         </u:Timestamp>
+      </o:Security>
+   </s:Header>
+   <s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <HotelAvailRetrieveResponse xmlns="http://schemas.xmltravelgate.com/hubpush/provider/2012/10">
+         <HotelAvailRetrieveResult>
+            <Errors xmlns="http://www.opentravel.org/OTA/2003/05">
+                <Error ShortText="Invalid hotel id" Code="10"/>
+             </Errors>
+         </HotelAvailRetrieveResult>
+      </HotelAvailRetrieveResponse>
+   </s:Body>
+</s:Envelope>
 ```
 
-<details>
-    <summary>Error codes you could receive in the response while setting up and loading the product</summary>
-    <div>
-        <div>
-         <table>
-				<thead>
-					<tr>
-						<th>
-							<strong>Error Code</strong>
-						</th>
-						<th>
-							<strong>Error Description</strong>
-						</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>-1</td>
-						<td>Unexpected error</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>Invalid request</td>
-					</tr>
-					<tr>
-						<td>10</td>
-						<td>Invalid hotel id</td>
-					</tr>
-                    <tr>
-						<td>11</td>
-						<td>Invalid dates</td>
-					</tr>
-					<tr>
-						<td>12</td>
-						<td>Invalid rate plan code</td>
-					</tr>
-					<tr>
-						<td>13</td>
-						<td>Invalid reservation id</td>
-					</tr>
-                    <tr>
-						<td>14</td>
-						<td>Invalid derived rate adjust values</td>
-					</tr>
-					<tr>
-						<td>15</td>
-						<td>Invalid id</td>
-					</tr>
-					<tr>
-						<td>16</td>
-						<td>Invalid amount type</td>
-					</tr>
-                    <tr>
-						<td>17</td>
-						<td>Invalid supplement type</td>
-					</tr>
-                    <tr>
-						<td>18</td>
-						<td>Invalid number of hotel</td>
-					</tr>
-                    <tr>
-						<td>19</td>
-						<td>Invalid rate currency code</td>
-					</tr>
-                    <tr>
-						<td>20</td>
-						<td>Requestor id not found</td>
-					</tr>
-                    <tr>
-						<td>21</td>
-						<td>Provider id not found</td>
-					</tr>
-                    <tr>
-						<td>22</td>
-						<td>Rooms not found</td>
-					</tr>
-                    <tr>
-						<td>23</td>
-						<td>Rates not found</td>
-					</tr>
-                    <tr>
-						<td>30</td>
-						<td>Occupation error</td>
-					</tr>
-                    <tr>
-						<td>31</td>
-						<td>Rate error</td>
-					</tr>
-                    <tr>
-						<td>32</td>
-						<td>Avail rq error</td>
-					</tr>
-                    <tr>
-						<td>33</td>
-						<td>Data Base error</td>
-					</tr>
-                    <tr>
-						<td>34</td>
-						<td>Cancel error</td>
-					</tr>
-                    <tr>
-						<td>35</td>
-						<td>Confirmation error</td>
-					</tr>
-                    <tr>
-						<td>36</td>
-						<td>Valuation_error</td>
-					</tr>
-                    <tr>
-						<td>37</td>
-						<td>Authorization error</td>
-					</tr>
-                    <tr>
-						<td>38</td>
-						<td>Authentication error</td>
-					</tr>
-                    <tr>
-						<td>90</td>
-						<td>Connection time out</td>
-					</tr>
-				</tbody>
-			</table>
-        </div>
-    </div>
-</details>
+#### Error Response Data Breakdown
+
+|                    Element                   |  Rel |   Type  |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+|----------------------------------------------|------|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| HotelAvailRetrieveResult                     | 1    |         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| HotelAvailRetrieveResult/Errors              | 0..1 |         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| Errors/Error                                 | 1    |         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| @ShortText                                   | 1    | String  |  <details>     <summary>Error Codes and Description</summary>     <div>         <div>          <table> 				<thead> 					<tr> 						<th> 							<strong>Error Code</strong> 						</th> 						<th> 							<strong>Error Description</strong> 						</th> 					</tr> 				</thead> 				<tbody> 					<tr> 						<td>-1</td> 						<td>Unexpected error</td> 					</tr> 					<tr> 						<td>1</td> 						<td>Invalid request</td> 					</tr> 					<tr> 						<td>10</td> 						<td>Invalid hotel id</td> 					</tr>                     <tr> 						<td>11</td> 						<td>Invalid dates</td> 					</tr> 					<tr> 						<td>12</td> 						<td>Invalid rate plan code</td> 					</tr> 					<tr> 						<td>13</td> 						<td>Invalid reservation id</td> 					</tr>                     <tr> 						<td>14</td> 						<td>Invalid derived rate adjust values</td> 					</tr> 					<tr> 						<td>15</td> 						<td>Invalid id</td> 					</tr> 					<tr> 						<td>16</td> 						<td>Invalid amount type</td> 					</tr> 				<tr> 						<td>17</td> 						<td>Invalid supplement type</td> 					</tr>          <tr> 						<td>18</td> 						<td>Invalid number of hotel</td> 					</tr>        <tr> 						<td>19</td> 						<td>Invalid rate currency code</td> 					</tr>         <tr> 						<td>20</td> 						<td>Requestor id not found</td> 					</tr>           <tr> 						<td>21</td> 						<td>Provider id not found</td> 					</tr>               <tr> 						<td>22</td> 						<td>Rooms not found</td> 					</tr>               <tr> 						<td>23</td> 						<td>Rates not found</td> 					</tr>              <tr> 						<td>30</td> 						<td>Occupation error</td> 					</tr>              <tr> 						<td>31</td> 						<td>Rate error</td> 					</tr>             <tr> 						<td>32</td> 						<td>Avail rq error</td> 					</tr>           <tr> 						<td>33</td> 						<td>Data Base error</td> 					</tr>              <tr> 						<td>34</td> 						<td>Cancel error</td> 					</tr>               <tr> 						<td>35</td> 						<td>Confirmation error</td> 					</tr>                  <tr> 						<td>36</td> 						<td>Valuation_error</td> 					</tr>                    <tr> 						<td>37</td> 						<td>Authorization error</td> 					</tr>                    <tr> 						<td>38</td> 						<td>Authentication error</td> 					</tr>                      <tr> 						<td>90</td> 						<td>Connection time out</td> 					</tr>                      </tbody> 			</table>         </div>     </div> </details>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| @Code                                        | 1    | String  |  <details>     <summary>Error Codes and Description</summary>     <div>         <div>          <table> 				<thead> 					<tr> 						<th> 							<strong>Error Code</strong> 						</th> 						<th> 							<strong>Error Description</strong> 						</th> 					</tr> 				</thead> 				<tbody> 					<tr> 						<td>-1</td> 						<td>Unexpected error</td> 					</tr> 					<tr> 						<td>1</td> 						<td>Invalid request</td> 					</tr> 					<tr> 						<td>10</td> 						<td>Invalid hotel id</td> 					</tr>                     <tr> 						<td>11</td> 						<td>Invalid dates</td> 					</tr> 					<tr> 						<td>12</td> 						<td>Invalid rate plan code</td> 					</tr> 					<tr> 						<td>13</td> 						<td>Invalid reservation id</td> 					</tr>                     <tr> 						<td>14</td> 						<td>Invalid derived rate adjust values</td> 					</tr> 					<tr> 						<td>15</td> 						<td>Invalid id</td> 					</tr> 					<tr> 						<td>16</td> 						<td>Invalid amount type</td> 					</tr> 				<tr> 						<td>17</td> 						<td>Invalid supplement type</td> 					</tr>          <tr> 						<td>18</td> 						<td>Invalid number of hotel</td> 					</tr>        <tr> 						<td>19</td> 						<td>Invalid rate currency code</td> 					</tr>         <tr> 						<td>20</td> 						<td>Requestor id not found</td> 					</tr>           <tr> 						<td>21</td> 						<td>Provider id not found</td> 					</tr>               <tr> 						<td>22</td> 						<td>Rooms not found</td> 					</tr>               <tr> 						<td>23</td> 						<td>Rates not found</td> 					</tr>              <tr> 						<td>30</td> 						<td>Occupation error</td> 					</tr>              <tr> 						<td>31</td> 						<td>Rate error</td> 					</tr>             <tr> 						<td>32</td> 						<td>Avail rq error</td> 					</tr>           <tr> 						<td>33</td> 						<td>Data Base error</td> 					</tr>              <tr> 						<td>34</td> 						<td>Cancel error</td> 					</tr>               <tr> 						<td>35</td> 						<td>Confirmation error</td> 					</tr>                  <tr> 						<td>36</td> 						<td>Valuation_error</td> 					</tr>                    <tr> 						<td>37</td> 						<td>Authorization error</td> 					</tr>                    <tr> 						<td>38</td> 						<td>Authentication error</td> 					</tr>                      <tr> 						<td>90</td> 						<td>Connection time out</td> 					</tr>                      </tbody> 			</table>         </div>     </div> </details>                                                                                                                                                                                                                                                                                                                                                            |

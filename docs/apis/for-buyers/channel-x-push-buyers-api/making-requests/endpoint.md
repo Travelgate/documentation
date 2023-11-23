@@ -1,8 +1,9 @@
 ---
+title: Endpoint
 sidebar_position: 1
 ---
 
-# Endpoint
+# Channel-X Endpoint
 
 In the case of Channel-X, it is the responsibility of the Buyer to provide TravelgateX with the **endpoint** that will receive the requests, as well as the **username** and **password**.
 

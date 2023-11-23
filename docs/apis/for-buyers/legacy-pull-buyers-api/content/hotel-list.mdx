@@ -6,7 +6,7 @@ sidebar_position: 2
 
 The Hotel List method returns a comprehensive hotel list from a supplier's access, granting you access to all the properties configured by the Seller for a given set of credentials. The returned fields include:
 
-* `Code`
+* Hotel `code`
 * `GiataId`
 * `Name`
 * `Address`
@@ -22,7 +22,7 @@ The maximum time permitted in our system before the connection is closed is 2400
 
 :::
 
-```html
+```xml
 <soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" 
    xmlns:ns = "http://schemas.xmltravelgate.com/hub/2012/06" 
    xmlns:wsse = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
@@ -114,7 +114,7 @@ If the client requests 1000 hotels, the response may contain a range between 100
 
 First, in your hotel list request you will add `ContinuationTokentoken` field and specify in `expectedRange` field the number of hotels expected to receive in the response:
 
-```html
+```xml
 <HotelListRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">                
   <ContinuationToken expectedRange = "1200"></ContinuationToken>
 </HotelListRQ>
@@ -124,7 +124,7 @@ You will obtain a response with 1200 hotels per page:
 
 **Response**
 
-```html
+```xml
 <HotelListRS xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">                
   <ContinuationToken expectedRange = "1200">&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;ContinuationToken&gt;&lt;ContinuationToken&gt;&lt;Version&gt;2.0&lt;/Version&gt;&lt;Type&gt;Table&lt;/Type&gt;&lt;NextPartitionKey&gt;1!24!bG93Y29zdGhvbGlkYXlfWk1U&lt;/NextPartitionKey&gt;&lt;NextRowKey&gt;1!40!bG93Y29zdGhvbGlkYXlfWk1UXzBoNFIlMjNvcXBr&lt;/NextRowKey&gt;&lt;TargetLocation&gt;Primary&lt;/TargetLocation&gt;&lt;/ContinuationToken&gt;&lt;/ContinuationToken&gt;</ContinuationToken>
 </HotelListRS>
@@ -133,7 +133,7 @@ You will obtain a response with 1200 hotels per page:
 This token should be used as input in your next hotel list request, inside the `ContinuationToken` field:
 
 
-```html
+```xml
 <HotelListRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">                
   <ContinuationToken>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;ContinuationToken&gt;&lt;ContinuationToken&gt;&lt;Version&gt;2.0&lt;/Version&gt;&lt;Type&gt;Table&lt;/Type&gt;&lt;NextPartitionKey&gt;1!24!bG93Y29zdGhvbGlkYXlfWk1U&lt;/NextPartitionKey&gt;&lt;NextRowKey&gt;1!40!bG93Y29zdGhvbGlkYXlfWk1UXzBoNFIlMjNvcXBr&lt;/NextRowKey&gt;&lt;TargetLocation&gt;Primary&lt;/TargetLocation&gt;&lt;/ContinuationToken&gt;&lt;/ContinuationToken&gt;</ContinuationToken>
 </HotelListRQ>
@@ -142,7 +142,7 @@ This token should be used as input in your next hotel list request, inside the `
 
 ## Response
 
-```html
+```xml
 <HotelListRS>
         <UpgradeUTCDate>2016-10-18T13:18:03+02:00</UpgradeUTCDate>
         <Hotels>

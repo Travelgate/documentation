@@ -12,7 +12,7 @@ It is available for free to all wholesalers and travel companies. Now you have t
 
 Imagine having a valuable and easily manageable source of fresh content readily available to you.
 You'll have access to up-to-date and validated content directly from the properties themselves. No more outdated or unreliable information.
-**Simplify** your content management strategy and save valuable time and effort. No more struggling to keep your content consistent across multiple Platforms. With this solution, you can effortlessly manage your content and ensure it's always up-to-date.
+Simplify your content management strategy and save valuable time and effort. No more struggling to keep your content consistent across multiple Platforms. With this solution, you can effortlessly manage your content and ensure it's always up-to-date.
 
 ![giata_hotel_directory_1](https://storage.travelgate.com/kbase/giata_hotel_directory_1.jpg)
 
@@ -30,6 +30,6 @@ You'll have access to up-to-date and validated content directly from the propert
 	![giata_hotel_directory_4](https://storage.travelgate.com/kbase/giata_hotel_directory_4.jpg)
 
 :::tip
-Are you interested in **GIATA Multicodes** as well?
+*Are you interested in GIATA Multicodes as well?*
 Simply follow the easy steps outlined in the following [link](/kb/getting-started-with-travelgate/About-our-Connectivity/explore-and-discover-giata-products-in-our-marketplace).
 :::

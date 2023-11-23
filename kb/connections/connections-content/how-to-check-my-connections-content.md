@@ -7,7 +7,7 @@ sidebar_position: 1
 ### Why is content important?🚀
 Efficiently managing your content without relying on TravelgateX intervention is key to speeding up your time-to-market and driving increased sales! We prioritize transparency and believe that providing our Partners with the tools to manage their static content is absolutely crucial.
 
-### What can I do in order to check my Connections Content?🔎
+### How can I check my Connections Content?
 1. First of all, log in to our [website](https://www.travelgatex.com/).
 
 	![connections_content_step2_1](https://storage.travelgate.com/kbase/connections_content_step2_1.jpg)
@@ -18,11 +18,11 @@ Efficiently managing your content without relying on TravelgateX intervention is
 	![connections_content_3](https://storage.travelgate.com/kbase/connections_content_3.jpg)
 
 1. There, you will be able to check and review the following details:
-	1. Portfolio information at credentials/access level.
-	1. Filter by country
-	1. Total properties
-	1. Last update date
-	1. Property details:
+	* Portfolio information at credentials/access level.
+	* Filter by country
+	* Total properties
+	* Last update date
+	* Property details:
 		- Code
 		- Name
 		- Country
@@ -30,11 +30,11 @@ Efficiently managing your content without relying on TravelgateX intervention is
 		- GIATA ID
 		- Last upload
 		- Additional information: you can visualize it by clicking on a property.
-	1. "[Force update](/kb/connections/connections-content/how-to-force-portfolio-update)" functionality.
-	1. "Get CSV" functionality
+	* "[Force update](/kb/connections/connections-content/how-to-force-portfolio-update)" functionality.
+	* "Get CSV" functionality
 
 
-### How can I download the Seller's portfolio in CSV format?💡
+### How can I download the Seller's portfolio in CSV?
 1. Access "My Connections Content" section (follow the steps above) and filter by access/Seller credentials.
 1. Look for the "Get CSV" option next to the Get Content button on the screen.
 1. Click on "Get CSV".

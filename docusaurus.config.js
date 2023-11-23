@@ -168,7 +168,9 @@ const config = {
         },
         items: [
           {
-            type: 'docSidebar',
+            to: '/',
+            activeBasePath: 'docs',
+            //type: 'docSidebar',
             sidebarId: 'docsSidebar',
             position: 'left',
             label: 'Documentation',

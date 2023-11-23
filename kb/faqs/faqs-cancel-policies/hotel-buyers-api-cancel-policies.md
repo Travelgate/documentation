@@ -23,7 +23,7 @@ If you have any doubts about the timezone returned by your Seller (for example, 
 
     This field is not subjected to any ambiguity as it is a date in **UTC-0 Standard**. The conversion of the date is made according to the value specified on the Metadata TimeZone.
 
-    ![hotel_buyers_api_cancelpolicies2](https://storage.travelgate.com/kbase/hotel_buyers_api_cancelpolicies2.jpg)
+    ![deadline-format-updated](https://storage.travelgate.com/kbase/deadline-format-updated.jpg)
 
 - **CALCULATED DEADLINE:**  
     Finally, we have also added a "CalculatedDeadline" field to specify if the Deadline has been taken from the Seller’s response or if it has been calculated by TravelgateX.

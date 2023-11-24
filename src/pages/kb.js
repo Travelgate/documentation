@@ -26,7 +26,7 @@ function KbHeader() {
       <header className={clsx('hero hero--primary hero-kb', styles.heroBanner)}>
         <div className="container">
           <h1 className="hero__title">Knowledge Base</h1>
-          <p className="hero__subtitle">Master the essentials of seamless connectivity – Explore the most popular articles in TravelgateX's Knowledge Base and uncover the full potential of our solutions!</p>
+          <p className="hero__subtitle">What is Travelgate and how can it help me?</p>
           <div className={styles.buttons}>
             <Link
               className="button button--secondary button--lg"
@@ -58,7 +58,7 @@ export default function Home() {
                       <div className="col col--12">
                         <div className="section-title">
                           <h3>Most read articles in Travelgate's Knowledge Base</h3>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                          <p>Master the essentials of seamless connectivity – Explore the most popular articles in TravelgateX's Knowledge Base and uncover the full potential of our solutions!</p>
                         </div>
                       </div>
                     </div>

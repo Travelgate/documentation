@@ -31,9 +31,9 @@ export default function FooterLayout({style, links, logo, copyright}) {
           <div className="col col--3">
             <h6>Knowledge Base Articles</h6>
             <ul>
-              <li><a href="https://knowledge.travelgatex.com/buying-on-travelgatex" target="_blank">Buying on Travelgate</a></li>
-              <li><a href="https://knowledge.travelgatex.com/selling-on-travelgatex" target="_blank">Selling on Travelgate</a></li>
-              <li><a href="https://knowledge.travelgatex.com/faqs" target="_blank">FAQS</a></li>
+              <li><a href="/kb/our-products/are-you-a-buyer/getting-started-as-a-new-buyer/essential-tech-requirements-before-connecting-with-travelgate-as-a-buyer/">Buying on Travelgate</a></li>
+              <li><a href="/kb/our-products/are-you-a-seller/getting-started-as-a-new-seller/essential-requirements-before-connecting-as-seller/">Selling on Travelgate</a></li>
+              <li><a href="/kb/faqs/faqs-all/">FAQS</a></li>
             </ul>
           </div>
         </div>

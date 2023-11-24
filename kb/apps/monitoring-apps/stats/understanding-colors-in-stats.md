@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Interpreting Colors in Stats APP
+# Stats: Color Guide
 
 You might have noticed that some of your connections sport a yellow or red background. Don't worry, we're here to provide you with a heads-up on their status. In our bustling Marketplace, where thousands of connections generate over 5 billion searches and more than 30,000 bookings each day, we have a wealth of data at our disposal. With this rich information, we can calculate the typical error ratios for each step of the booking flow, and we're thrilled to share those insights with you!
 

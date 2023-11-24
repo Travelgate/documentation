@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Speed: our smart cache solution to reduce traffic and response times
+# Speed: Streamline traffic with our smart cache solution
 
 
 At TravelgateX, we always strive to adapt our tech solutions to our Partners’ evolving needs, and one such need is to minimize traffic and improve response times. Thanks to our dynamic cache solution, Speed, you can now save up to 80% of total hits to the Seller's system and experience reduced response times.

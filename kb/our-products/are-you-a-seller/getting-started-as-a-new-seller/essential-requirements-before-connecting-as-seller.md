@@ -23,6 +23,6 @@ TravelgateX is purely focused on connectivity so to be able to work with us via 
 1. **Mapping (Hotel Pull Sellers Generic API):** TravelgateX works with your native codes for transparency, allowing the mapping between Buyers and Sellers to be easily optimized without interference from TravelgateX. Our Buyers work with a variety of mapping providers and they can choose to load their mapping file to our system in order to receive their own codes in the response.
 
 :::note Mapping:
-*When a Seller returns the **same hotel id for different properties**, we concatenate those hotel ids with their destination code in order to make them unique. That will be the only exception where we modify the Seller information.  
+When a Seller returns the **same hotel id for different properties**, we concatenate those hotel ids with their destination code in order to make them unique. That will be the only exception where we modify the Seller information.  
 In that case, the hotelCode will be the one returned through our API (concatenated if needed) and the hotelCodeSupplier will be the native code of the supplier.
 :::

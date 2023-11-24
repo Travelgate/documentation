@@ -29,7 +29,7 @@ When combining buying from your contracted hotels and other Suppliers with no re
 ![distribution_soluion_1](https://storage.travelgate.com/kbase/distribution_solution_1.jpg)
 
  
-### What are the different tools that are included in TravelgateX Distribution Solution?🛠️
+### What are the different tools that are included in TravelgateX Distribution Solution?
 
 - [Inventory](/docs/apps/inventory/extranet/overview): Our simple extranet facilitates connections with over 50 Channel managers, enabling you to manage manual rates and create user profiles for your contract/loading team or hotels.
 - [Distribution](/docs/apps/distribution/quickstart): With our Distribution tool, you can consolidate your direct contracts and Channel Managers with other Pull Suppliers available on our Platform. Creating new connections and uploading master and [mapping files](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping) via FTP makes the process seamless.

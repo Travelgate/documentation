@@ -4,20 +4,9 @@ sidebar_position: 4
 
 # Cancel
 
-The Cancel operation allows you to cancel a booking made via TravelgateX. The returned fields include:
+The Cancel operation allows you to cancel a booking made via TravelgateX. The returned fields include: `ProviderLocator`, `CancelId`, `TransactionStatus`, `Price` etc.
 
-* `ProviderLocator`
-* `CancelId`
-* `TransactionStatus`
-* `Price`
-
-## Request
-
-:::caution
-
-The maximum time permitted in our system before the connection is closed is 180000 milliseconds.
-
-:::
+## Cancel Request
 
 ```xml
 <soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" 
@@ -34,31 +23,34 @@ The maximum time permitted in our system before the connection is closed is 1800
     <soapenv:Body>
       <ns:Cancel>
         <ns:cancelRQ>
-          <ns:timeoutMilliseconds>180000</ns:timeoutMilliseconds>
+          <ns:timeoutMilliseconds>17900</ns:timeoutMilliseconds>
           <ns:version>1</ns:version>
           <ns:providerRQ>
-            <ns:code>code</ns:code>
+            <ns:code>suppliercode</ns:code>
             <ns:id>1</ns:id>
             <ns:rqXML>
               <CancelRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema" hotelCode = "">
-                <timeoutMilliseconds>10000</timeoutMilliseconds>
-                <source>
+                <timeoutMilliseconds>18000</timeoutMilliseconds>
+                  <source>
                     <languageCode>en</languageCode>
-                </source>
-                <filterAuditData>
+                  </source>
+                  <filterAuditData>
                     <registerTransactions>true</registerTransactions>
-                </filterAuditData>
-                <Configuration>
-                    <User></User>
-                    <Password></Password>
-                    <UrlGeneric>www.supplier.com</UrlGeneric>
+                  </filterAuditData>
+                  <Configuration>
+                    <User>user</User>
+                    <Password>password</Password>
+                    <UrlAvail>www.supplier.com/avail</UrlAvail>
+                    <UrlReservation>www.supplier.com/reservation</UrlReservation>
+                    <UrlValuation>www.supplier.com/valuation</UrlValuation>
+                    <UrlGeneric>www.supplier.com/generic</UrlGeneric>
                     <Parameters>
-                        <Parameter key = "UrlListHoteles" value = "http://www.test.net/scr/searchxml/location.php?"></Parameter>
-                        <Parameter key = "UrlConsulta" value = "https://www.test.net/scr/xml/travelgate.php?"></Parameter>
-                        <Parameter key = "office" value = "55555"></Parameter>
-                        <Parameter key = "password" value = "XXXXXX"></Parameter>
-                     </Parameters>
-                </Configuration>
+                      <Parameter key = "UrlListHoteles" value = "http://www.test.net/scr/searchxml/location.php?"></Parameter>
+                      <Parameter key = "UrlConsulta" value = "https://www.test.net/scr/xml/travelgate.php?"></Parameter>
+                      <Parameter key = "office" value = "55555"></Parameter>
+                      <Parameter key = "password" value = "XXXXXX"></Parameter>
+                    </Parameters>
+                  </Configuration>
                   <Locators>
                     <Client>XXXXXXX</Client>
                     <Provider>XXXXXXX</Provider>
@@ -77,6 +69,12 @@ The maximum time permitted in our system before the connection is closed is 1800
 
 ### Request Data Breakdown
 
+:::note
+
+Header y common elements
+
+:::
+
 | **Element**			| **Number**	| **Type**	| **Description**					|
 | ----------------------------- | ------------- | ------------- | ----------------------------------------------------- |
 | CancelRQ   			| 1          	|		| Root node.						|
@@ -91,7 +89,7 @@ The maximum time permitted in our system before the connection is closed is 1800
 | @name   				| 1		|		| Holder's name.  |
 | @surname   				| 1		|		| Holder's surname.  |
 
-## Response
+## Cancel Response
 
 ```xml
 <CancelRS>

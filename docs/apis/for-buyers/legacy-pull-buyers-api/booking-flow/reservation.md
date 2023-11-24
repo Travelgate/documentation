@@ -5,20 +5,9 @@ sidebar_position: 4
 # Reservation
 
 The Reservation operation requests a booking confirmation for a specific list of passengers. It provides 
-the booking locator (booking code), which could be the supplier’s own code or the one sent in request, along with all the charges associated with the booking as well as its status. The returned fields include:
-
-* `ProviderLocator`
-* `PropertyReservationNumber`
-* `ResStatus`
-* `Price`
+the booking locator (booking code), which could be the supplier’s own code or the one sent in request, along with all the charges associated with the booking as well as its status. The returned fields include: `ProviderLocator`, `PropertyReservationNumber`, `ResStatus`, `Price` etc.
 
 ## Request
-
-:::caution
-
-The maximum time permitted in our system before the connection is closed is 180000 milliseconds.
-
-:::
 
 ```xml
 <soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" 
@@ -35,14 +24,14 @@ The maximum time permitted in our system before the connection is closed is 1800
       <soapenv:Body>
         <ns:Reservation>
           <ns:reservationRQ>
-            <ns:timeoutMilliseconds>180000</ns:timeoutMilliseconds>
+            <ns:timeoutMilliseconds>17900</ns:timeoutMilliseconds>
             <ns:version>1</ns:version>
             <ns:providerRQ>
-              <ns:code>code</ns:code>
+              <ns:code>suppliercode</ns:code>
               <ns:id>1</ns:id>
               <ns:rqXML>
                 <ReservationRQ>
-                  <timeoutMilliseconds>10000</timeoutMilliseconds>
+                  <timeoutMilliseconds>18000</timeoutMilliseconds>
                   <source>
                     <languageCode>en</languageCode>
                   </source>
@@ -50,9 +39,12 @@ The maximum time permitted in our system before the connection is closed is 1800
                     <registerTransactions>true</registerTransactions>
                   </filterAuditData>
                   <Configuration>
-                    <User></User>
-                    <Password></Password>
-                    <UrlReservation>www.supplier.com/reservation</UrlAvail>
+                    <User>user</User>
+                    <Password>password</Password>
+                    <UrlAvail>www.supplier.com/avail</UrlAvail>
+                    <UrlReservation>www.supplier.com/reservation</UrlReservation>
+                    <UrlValuation>www.supplier.com/valuation</UrlValuation>
+                    <UrlGeneric>www.supplier.com/generic</UrlGeneric>
                     <Parameters>
                       <Parameter key = "UrlListHoteles" value = "http://www.test.net/scr/searchxml/location.php?"></Parameter>
                       <Parameter key = "UrlConsulta" value = "https://www.test.net/scr/xml/travelgate.php?"></Parameter>
@@ -71,19 +63,19 @@ The maximum time permitted in our system before the connection is closed is 1800
                   <MealPlanCode>D</MealPlanCode>
                   <HotelCode>10</HotelCode>
                   <Nationality>ES</Nationality>
-                  <Holder title = "Miss" name = "Test11" surname = "TestAp11" email = "hotelemail@email.com"/>
+                  <Holder title = "Miss" name = "name" surname = "surname" email = "hotelemail@email.com"/>
                   <Price currency = "EUR" amount = "36.20" binding = "false" commission = "-1"/>
                   <ResGuests> 
                       <Guests>
                           <Guest roomCandidateId = "1" paxId = "1">
                               <Title>Miss</Title>  
-                              <GivenName>Test11</GivenName>
-                              <SurName>TestAp11</SurName>
+                              <GivenName>name</GivenName>
+                              <SurName>surname</SurName>
                           </Guest>
                           <Guest roomCandidateId = "1" paxId = "2">
                               <Title>Mr</Title>  
-                              <GivenName>Test12</GivenName>
-                              <SurName>TestAp12</SurName>
+                              <GivenName>name</GivenName>
+                              <SurName>surname</SurName>
                            </Guest>
                       </Guests>
                   </ResGuests>
@@ -91,7 +83,7 @@ The maximum time permitted in our system before the connection is closed is 1800
                   <CardInfo>
                       <CardCode>VI</CardCode>
                       <Number>4321432143214327</Number>
-                      <Holder>Test11 TestAp11</Holder>
+                      <Holder>name surname</Holder>
                       <ValidityDate>   
                           <Month>06</Month>
                           <Year>14</Year>
@@ -127,6 +119,12 @@ The maximum time permitted in our system before the connection is closed is 1800
 ```
 
 ### Request Data Breakdown
+
+:::note
+
+Header y common elements
+
+:::
 
 | Element					| Number	| Type	| Description					|
 | --------------------------------------------- | ------------- | ------------- | ----------------------------------------------------- |
@@ -192,25 +190,25 @@ The maximum time permitted in our system before the connection is closed is 1800
 | ThreeDomainSecurity/SignatureStatus  | 0..1  		| String	| <details>     <summary>Signature Verification Status</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Status Value</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>Y</td>  						 <td>Signature of the PARes has been validated successfully.</td>  					 </tr>              <tr>  						 <td>N</td>  						 <td>PARes could not be validated.</td>  					 </tr>	     </tbody>  			</table>         </div>     </div> </details>	|
 | ThreeDomainSecurity/MerchantName     | 0..1  		| String	| Merchant name.	|
 | ReservationRQ/Rooms         				| 1      	|		| Rooms within this option (room list).			|
-| Rooms/Room    				| 1..n    	|		| Detail of room. 					|
+| Rooms/Room    				| 1..n    	|		|  					|
 | @id      					| 1  		| String	| Room identifier.				|
 | @roomCandidateRefId				| 1  		| Integer	| Room candidate identifier.				|
 | @code    					| 1  		| String	| Room code.						|
 | @description					| 1  		| String	| Room description.					|
 | Rooms/Preferences    				| 0..1    	|		| Preference filters at room level. 					|
 | Preferences/Preference   				| 1..n    	|		| Each filter of preference and its values. 		|
-| @type   				| 1    	|		| Type of preference allowed. See types allowed in **PreferenceType** further down this page 					|
+| @type   				| 1    	|		| <details>     <summary>Preference types</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Preference Type</strong>  						 </th>   					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>Smoker</td>  				</tr>   	     <tr>  						 <td>NonSmoker</td>  				</tr>     <tr>  						 <td>ExtraBed</td>  				</tr>      <tr>  						 <td>Cradle</td>  				</tr>    <tr>  						 <td>DoubleBed</td>  				</tr>      <tr>  						 <td>TwinBeds</td>  				</tr>    <tr>  						 <td>ContigousRoom</td>  				</tr>     <tr>  						 <td>Wedding</td>  				</tr>     <tr>  						 <td>LateArrival</td>  				</tr>      <tr>  						 <td>LateCheckOut</td>  				</tr>    <tr>  						 <td>EarlyCheckIn</td>  				</tr>      <tr>  						 <td>GroundFloor</td>  				</tr>     <tr>  						 <td>TopFloor</td>  				</tr>     <tr>  						 <td>WithoutBoucher</td>  				</tr>  </tbody>  			</table>         </div>     </div> </details>			|
 | ReservationRQ/RoomCandidatese			| 1..n    	|		| 					|
-| RoomCandidates/RoomCandidate			| 1..n    	|		| Room required.					|
+| RoomCandidates/RoomCandidate			| 1..n    	|		| 					|
 | @id      					| 1  		| Integer	| Id of the requested room (starting at 1).		|
-| RoomCandidate/Paxes	| 1..n    	|		| Pax required.						|
+| RoomCandidate/Paxes	| 1..n    	|		| 						|
 | Paxes/Pax	| 1..n    	|		| 						|
 | @age     					| 1  		| Integer	| Passenger age on the day of check-in. 					|
 | @id      					| 1  		| Integer	| Passenger id (starting at 1). 			|
 | ReservationRQ/Remarks       				| 0..1    	| 		| Any customer comments for the supplier to consider (see [MetaData](../content/meta-data/) in order to verify if a supplier implements it).	|
 | ReservationRQ/Preferences   				| 0..1    	|		| Preference filters at the option / general level. 					|
 | Preferences/Preference  				| 1..n    	|		| Each filter of preference and its values. 		|
-| @type   				| 1    	|		| <details>     <summary>Preferences</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Preference Type</strong>  						 </th>   					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>Smoker</td>  				</tr>   	     <tr>  						 <td>NonSmoker</td>  				</tr>     <tr>  						 <td>ExtraBed</td>  				</tr>      <tr>  						 <td>Cradle</td>  				</tr>    <tr>  						 <td>DoubleBed</td>  				</tr>      <tr>  						 <td>TwinBeds</td>  				</tr>    <tr>  						 <td>ContigousRoom</td>  				</tr>     <tr>  						 <td>Wedding</td>  				</tr>     <tr>  						 <td>LateArrival</td>  				</tr>      <tr>  						 <td>LateCheckOut</td>  				</tr>    <tr>  						 <td>EarlyCheckIn</td>  				</tr>      <tr>  						 <td>GroundFloor</td>  				</tr>     <tr>  						 <td>TopFloor</td>  				</tr>     <tr>  						 <td>WithoutBoucher</td>  				</tr>  </tbody>  			</table>         </div>     </div> </details>					|
+| @type   				| 1    	|		| <details>     <summary>Preference types</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Preference Type</strong>  						 </th>   					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>Smoker</td>  				</tr>   	     <tr>  						 <td>NonSmoker</td>  				</tr>     <tr>  						 <td>ExtraBed</td>  				</tr>      <tr>  						 <td>Cradle</td>  				</tr>    <tr>  						 <td>DoubleBed</td>  				</tr>      <tr>  						 <td>TwinBeds</td>  				</tr>    <tr>  						 <td>ContigousRoom</td>  				</tr>     <tr>  						 <td>Wedding</td>  				</tr>     <tr>  						 <td>LateArrival</td>  				</tr>      <tr>  						 <td>LateCheckOut</td>  				</tr>    <tr>  						 <td>EarlyCheckIn</td>  				</tr>      <tr>  						 <td>GroundFloor</td>  				</tr>     <tr>  						 <td>TopFloor</td>  				</tr>     <tr>  						 <td>WithoutBoucher</td>  				</tr>  </tbody>  			</table>         </div>     </div> </details>					|
 
 
 ## Response

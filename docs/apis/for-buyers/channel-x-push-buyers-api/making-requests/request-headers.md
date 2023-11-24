@@ -7,13 +7,16 @@ sidebar_position: 2
 
 The following request headers will be sent in all request methods. It is essential that you configure your system to accept these headers, as they will be included in the requests we will make to your system.
 
+
 ### Mandatory Request Headers
+
 
 **Content Type**: Content-Type header provides information about the actual content type of the returned content. In this case, the header is set to:
 
 ```html
 Content-Type: text/xml;charset=UTF-8
 ```                           
+
 
 **SOAPAction**: All requests come with a SOAPAction header corresponding to the transmitted message:
 
@@ -32,13 +35,16 @@ SOAPAction: http://schemas.xmltravelgate.com/hubpush/provider/2012/10/IProviderG
 SOAPAction: http://schemas.xmltravelgate.com/hubpush/provider/2012/10/IProviderGen/HotelRatePlanNotif
 ```
 
+
 **Authentication**: Requests are authenticated using Base64 encoding. This means that the [username and password you have provided us](endpoint.md) will be encoded and sent in a Base64 format, as demonstrated in the following example:
 
 ```html
 Authorization: Basic xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```              
 
+
 ### Optional Request Headers
+
 
 **Compression**: By default, requests are not compressed. However, you can choose to compress requests using the following compression methods: `gzip`, `deflate`, and `br`. If you are interested in receiving compressed requests, please let us know by opening a [ticket](https://app.travelgatex.com/tickets) to our customer team.
 

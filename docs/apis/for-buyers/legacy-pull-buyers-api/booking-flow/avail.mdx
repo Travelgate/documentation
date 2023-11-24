@@ -4,23 +4,9 @@ sidebar_position: 2
 
 # Avail
 
-Avail serves as the initial step in our booking flow, with the objective of verifying availability within the specified date range, itinerary and the requested number of guests. It provides a comprehensive list of available options based on your search criteria. The returned fields include:
-
-* Hotel `code`
-* Hotel `name`
-* Meal Plan `code`
-* `paymentType`
-* `Rooms`
-* `Price`
-* `CancelPenalties`
+Avail serves as the initial step in our booking flow, with the objective of verifying availability within the specified date range, itinerary and the requested number of guests. It provides a comprehensive list of available options based on your search criteria. The returned fields include:  `Hotel code`, `Hotel name`, `Meal Plan code`, `paymentType`, `Rooms`, `Price`, `CancelPenalties` etc.
 
 ## Request
-
-:::caution
-
-The maximum time permitted in our system before the connection is closed is 25000 milliseconds.
-
-:::
 
 ```xml
 <soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" 
@@ -37,14 +23,14 @@ The maximum time permitted in our system before the connection is closed is 2500
       <soapenv:Body>
         <ns:Avail>
           <ns:availRQ>
-            <ns:timeoutMilliseconds>180000</ns:timeoutMilliseconds>
+            <ns:timeoutMilliseconds>17900</ns:timeoutMilliseconds>
             <ns:version>1</ns:version>
             <ns:providerRQ>
-              <ns:code>code</ns:code>
+              <ns:code>suppliercode</ns:code>
               <ns:id>1</ns:id>
               <ns:rqXML>
                 <AvailRQ>
-                  <timeoutMilliseconds>10000</timeoutMilliseconds>
+                  <timeoutMilliseconds>18000</timeoutMilliseconds>
                   <source>
                     <languageCode>en</languageCode>
                   </source>
@@ -52,9 +38,12 @@ The maximum time permitted in our system before the connection is closed is 2500
                     <registerTransactions>true</registerTransactions>
                   </filterAuditData>
                   <Configuration>
-                    <User></User>
-                    <Password></Password>
+                    <User>user</User>
+                    <Password>password</Password>
                     <UrlAvail>www.supplier.com/avail</UrlAvail>
+                    <UrlReservation>www.supplier.com/reservation</UrlReservation>
+                    <UrlValuation>www.supplier.com/valuation</UrlValuation>
+                    <UrlGeneric>www.supplier.com/generic</UrlGeneric>
                     <Parameters>
                       <Parameter key = "UrlListHoteles" value = "http://www.test.net/scr/searchxml/location.php?"></Parameter>
                       <Parameter key = "UrlConsulta" value = "https://www.test.net/scr/xml/travelgate.php?"></Parameter>
@@ -62,10 +51,12 @@ The maximum time permitted in our system before the connection is closed is 2500
                       <Parameter key = "password" value = "XXXXXX"></Parameter>
                     </Parameters>
                   </Configuration>
+                  <SearchType>Combined</SearchType>
                   <CancellationPolicies>false</CancellationPolicies>
                   <RoomCancellationPolicies>false</RoomCancellationPolicies>
                   <DailyPrices>false</DailyPrices>
                   <DailyRatePlans>false</DailyRatePlans>
+                  <Attributes>false</Attributes>
                   <OnRequest>false</OnRequest>
                   <BusinessRules>CheaperAmount</BusinessRules>
                   <AvailDestinations>
@@ -106,13 +97,21 @@ The maximum time permitted in our system before the connection is closed is 2500
 
 ### Request Data Breakdown
 
+:::note
+
+Header y common elements
+
+:::
+
 | Element				| Rel	| Type	| Description						|
 | ------------------------------------- | ------------- | ------------- | ------------------------------------------------------------- |
 | AvailRQ               		| 1            	|		| Root node.							|
+| AvailRQ/SearchType 			| 1     	| 	|  	|
 | AvailRQ/CancellationPolicies 			| 1     	| Boolean	| Indicates if you want to receive the cancellation policies in AvailRS, as long as the parameter is set as true in the request and the supplier returns it in this method (see [MetaData](../content/meta-data/) in order to verify if a supplier implements it). 	|
 | AvailRQ/RoomCancellationPolicies 			| 1     	| Boolean	| Indicates if you want to receive the cancellation policies at room level in AvailRS, as long as the supplier returns it in this method (see [MetaData](../content/meta-data/) in order to verify if a supplier implements it).	|
 | AvailRQ/DailyPrices					| 0..1			| Boolean	|  Indicates if you want to receive the daily prices at room level in AvailRS, as long as the supplier returns it in this method (see [MetaData](../content/meta-data/) in order to verify if a supplier implements it).		|
 | AvailRQ/DailyRatePlans				| 0..1			| Boolean	|  Indicates if you want to receive the daily rate plans at room level in AvailRS, as long as the supplier returns it in this method (see [MetaData](../content/meta-data/) in order to verify if a supplier implements it).		|
+| AvailRQ/Attributes            			|      	|    | 		|
 | AvailRQ/OnRequest            			| 1     	| Boolean	| Indicates if you want to receive the onrequest options in AvailRS, as long as the supplier returns it in this method (see [MetaData](../content/meta-data/) in order to verify if a supplier implements it).		|
 | AvailRQ/BusinessRules        			| 1            	| String	| Indicates the business rules the client wants to apply in availability, as long as the supplier returns it in this method (see [MetaData](../content/meta-data/) in order to verify if a supplier implements it). <details>     <summary>Business Rules Options</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Business Rule</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>CheaperAmount</td>  						 <td>The cheapest options is returned without exceeding the optionsQuota limit. If the client sets BusinessRules, they will be implemented when the number of options surpasses optionsQuota. If no BusinessRules values are set by the client, the CheaperAmount BusinessRule is automatically applied.</td>  					 </tr>  					 <tr>  						 <td>RoomType</td>  						 <td>Options are filtered based on a restricted combination of room types. Initially, similar room types are grouped to present options with the same classification (e.g., Standard-Standard-Standard-Standard, Junior-Junior-Junior-Junior). The process involves combining the most affordable rooms with the remaining ones, ensuring no duplicates and staying within the optionsQuota limit.</td>  					 </tr>				 </tbody>  			</table>         </div>     </div> </details>	|
 | AvailRQ/AvailDestinations		| 1..n         	|		| Indicates what destinations will be requested to the supplier. Hotel codes or other destination codes must be defined using information specified in[MetaData](../content/meta-data/).	|
@@ -326,9 +325,9 @@ The response will be structured hierarchically, starting with essential details 
 | @code 				                | 1 		    | String 	    | Hotel code.							                                                        |
 | @name 				                | 0..1 		    | String 	    | Hotel name.							                                                        |
 | Hotel/MealPlans 				            | 1 		    | 		        | Retrieves a list of available mealplans for this hotel.		                                |
-| MealPlans/MealPlan 			        | 1..n 		    | 		        | List of mealplan types.				                                                        |
+| MealPlans/MealPlan 			        | 1..n 		    | 		        | 				                                                        |
 | @code 				                | 1 		    | String 	    | MealPlan code.						                                                        |
-| MealPlan/Options		    | 1 		    | 		        | List of options					                                                            |
+| MealPlan/Options		    | 1 		    | 		        | 					                                                            |
 | Options/Option 	| 1..n 		    | 		        | Detail of option.						                                                        |
 | @type 				                | 1 		    | String 	    | Indicates option type (only hotel, hotel with ski pass, hotel with entrance...).              |
 | @paymentType 				            | 1 		    | String 	    | <details>     <summary>Payment Types</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Code</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>MerchantPay</td>  						 <td>The payment is managed by the supplier.</td>  					 </tr>  					 <tr>  						 <td>LaterPay</td>  						 <td>The payment is managed by the hotel. The customer will use a credit-card as a guarantee for the hotel and the payment will be completed at check in.</td>  					 </tr>           <tr>  						 <td>CardBookingPay</td>  						 <td>The payment is managed by the supplier. The payment is effectuated at the time of booking.</td>  					 </tr>				 <tr>  						 <td>CardCheckInPay</td>  						 <td>The payment is managed by the supplier. The payment is effectuated at check in in the hotel.</td>  					 </tr><tr>  						 <td>PayX</td>  						 <td>The payment is managed by TravelgateX’s payment system.</td>  					 </tr>         </tbody>  			</table>         </div>     </div> </details> |
@@ -346,19 +345,19 @@ The response will be structured hierarchically, starting with essential details 
 | CancelPenalty/CalculatedDeadline | 0..1 | Boolean | Indicate if the Deadline is returned by the supplier or it's been calculated by Travelgate. If True, has been calculated by Travelgate. If False, bypass of supplier data without calculation. |
 | CancelPenalty/Deadline | 0..1 | String | Date on UTC Standard TimeZone in which this Cancellation policy applies (ISO 8601 e.g: 2016-07-01T05:00:00Z). |
 | Option/RateRules | 0..1 | 		    | Option rate rules.					                                                        |
-| RateRules/Rules | 1 | 		| Rules.							                                                            |
-| Rules/Rule | 1..n | | Rule.								                                                            |
+| RateRules/Rules | 1 | 		| 							                                                            |
+| Rules/Rule | 1..n | | 								                                                            |
 | @type 				                | 1 		    | String 	    | <details>     <summary>Rate Conditions</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Code</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>NonRefundable</td>  						 <td>Cancellation fee is a 100% from the moment the reservation is create.</td>  					 </tr>  					 <tr>  						 <td>Custom</td>  						 <td>A way of setting less standardized rates. Can specify the restrictions that it deems convenient and that are not typified by TGX.</td>  					 </tr>           <tr>  						 <td>Older55</td>  						 <td>Rate that can only be sold to people who are 55 yeasrs or older.</td>  					 </tr>	         <tr>  						 <td>Older60</td>  						 <td>Rate that can only be sold to people who are 60 yeasrs or older.</td>  					 </tr>			 <tr>  						 <td>Older65</td>  						 <td>Rate that can only be sold to people who are 65 yeasrs or older.</td>  					 </tr>               <tr>  						 <td>Package</td>  						 <td>Rate can’t be sold separately from another product attached to it, such as a flight.</td>  					 </tr>             <tr>  						 <td>CanaryResident</td>  						 <td>Rate applicable to Canary Islands residents only.</td>  					 </tr>            <tr>  						 <td>BalearicResident</td>  						 <td>Rate applicable to Balearic Islands residents only.</td>  					 </tr>              <tr>  						 <td>LargeFamily</td>  						 <td>Rate applied to large families and is determined by each supplier.Check remarks for more details.</td>  					 </tr>              <tr>  						 <td>Honeymoon</td>  						 <td>Rate applied to those who just got married and is determined by each supplier. Check remarks for more details.</td>  					 </tr>             <tr>  						 <td>PublicServant</td>  						 <td>Rate applicable to public servants only.</td>  					 </tr>            <tr>  						 <td>Unemployed</td>  						 <td>Rate applied to those without work.</td>  					 </tr>               <tr>  						 <td>Mobile</td>  						 <td>Rate applicable to options booked by mobile.</td>  					 </tr>             <tr>  						 <td>Warranty</td>  						 <td>Rate applicable to options with cancellation warranty.</td>  					 </tr>           </tbody>  			</table>         </div>     </div> </details> |
-| Rule/Rates/ | 0..1 |  | Rates.							                                                    |
-| Rates/Rate | 1..n |  | Rate.							                                                |
+| Rule/Rates/ | 0..1 |  | 							                                                    |
+| Rates/Rate | 1..n |  | 							                                                |
 | @code 				                | 0..1 		    | String 	    | Contains the rate rule code.	                                                                |
 | Rate/Description | 0..1 | String | Contains the rate rule description.	                        |
 | Rule/Restrictions | 0..n | 	| Restrictions for the rate rule.							                    |
-| Restrictions/Restriction | 1..n | 	| Restriction for this rate rule.							        |
+| Restrictions/Restriction | 1..n | 	| 							        |
 | @type 				                | 1 		    | Enum 	        | This restriction affects: 1 -> Company, 2 -> Market, 3 -> Others... |
 | @code 				                | 1 		    | String 	    | Contains the restriction code.	                                                            |
 | Option/Rooms | 1 		| 		        | Rooms in this option (room list).				                                                |
-| Rooms/Room | 1..n 	| 		    | Room details.						                                                            |
+| Rooms/Room | 1..n 	| 		    | 						                                                            |
 | @id 					                | 1 		    | String 	    | Room ID.					                                                                    |
 | @roomCandidateRefId 			        | 1 		    | Integer 	    | Room candidate ID.					                                                        |
 | @code 				                | 1 		    | String 	    | Room code has to be unique to identify a specific room type. If the RoomList Method is implemented, you can find the description of the room type in the RoomList. |
@@ -375,7 +374,7 @@ The response will be structured hierarchically, starting with essential details 
 | @numberOfBeds 			            | 0..1 		    | String 	    | Indicates number of beds in the room.				                                            |
 | @type 				                | 0..1 		    | String 	    | Indicates the type of bed.					                                                |
 | Room/Features | 0..1 | 	| Features of this room (features list).	                                                | 
-| Features/Feature | 1..n |  | Detail of feature.	                                                                | 
+| Features/Feature | 1..n |  | 	                                                                | 
 |@code                                  | 1             | String        | Feature code or text.                                                                         |
 | Room/DailyPrices/ | 0..1 | 	| Specifies daily price, as long as the supplier returns it in this method (see [MetaData](../content/meta-data/) in order to verify if a supplier implements it). | 
 | DailyPrices/DailyPrice | 1..n |  | Specifies the price for each day.			                                    |
@@ -397,13 +396,13 @@ The response will be structured hierarchically, starting with essential details 
 | @amount 				                | 1 		    | Decimal 	    | Room Amount.							                                                        |
 | @binding 				                | 1 		    | Boolean 	    | 	If binding is set as true, then the client can’t sell the product for a lower price that the one set by the supplier. If it set as as false, the client can sell the product for a lower price. |
 | @commission 				            | 1 		    | Decimal 	    | <details>     <summary>Commission Scenarios</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Commission</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>0</td>  						 <td>The price returned is net.</td>  					 </tr>  					 <tr>  						 <td>-1</td>  						 <td>The supplier has not supplied the sale price nor the commission. This information is in the commercial contract with the supplier.</td>  					 </tr>           <tr>  						 <td>Greater than 0</td>  						 <td>X = % of the commission applied to the amount.</td>  					 </tr>				 </tbody>  			</table>         </div>     </div> </details> |
-| Room/Fees | 0..1 |     | Contains a list of fees.                                                                      |
-| Fees/Fee | 1..n | | Contains details of the fee.                                                                  |
+| Room/Fees | 0..1 |     |                                                                       |
+| Fees/Fee | 1..n | |                                                                   |
 | @includedPriceOption			        | 1		        | Boolean       | Indicates if the fee is included or not in the final price. <details>     <summary>How to interpret includePriceOption Scenarios</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Payment Type</strong>  						 </th>  						 <th>  							 <strong>includedPriceOption</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>MerchantPay, CardBookingPay, CardCheckInPay</td>  						 <td>If True the amount of the fee is already included in the price and is paid at the time of booking. If False, said fee have to be paid in the hotel.</td>  					 </tr>  					 <tr>  						 <td>LaterPay</td>  						 <td>In both cases if True or False, the amount of the fee has to be paid in the hotel, as the type of payment is LaterPay. The difference is that if includedPriceOption = False the client would have to sum the amount on their end. This is done if the supplier does not include it. This way, the client can show the fee on their web separated from the option price, and it’s now the client’s own decision how they should treat it.</td>  					 </tr>			 </tbody>  			</table>         </div>     </div> </details>                                   |
 | @description				            | 1             | String        | Remarks regarding fee.                                                                        |
 | @mandatory 				            | 1             | Boolean       | If the fee is obligatory, depending on the includedPriceOption to know if it is paid at the time of booking or at the hotel. In case it is false, it could be a fee such as "cleaning" that the consumer could hire if he wanted. |
 | @refundable 				            | 1             | Boolean       | This field will serve to know if the rate to be paid is returned, for example when it is a deposit type that is returned once the stay ends. |
-| Fee/Price | 1 | | Contains details of price.                                                                |
+| Fee/Price | 1 | |                                                                 |
 | @currency 				            | 1             | String        | Currency code (Our system uses a standard ISO - 3 for all suppliers).                                                                                |
 | @amount 				                | 1             | Decimal       | Fee Amount.                                                                                   |
 | @binding				                | 1             | Boolean       | If binding is set as true, then the client can’t sell the product for a lower price that the one set by the supplier. If it set as as false, the client can sell the product for a lower price. |
@@ -412,7 +411,7 @@ The response will be structured hierarchically, starting with essential details 
 | Room/CancelPenalties | 0..1|  | List of cancellation penalties. (see [MetaData](../content/meta-data/) in order to verify if a supplier implements it). |
 | CancelPenalties/CancelPenalty | 0..1|  |  |
 | CancelPenalty/HoursBefore | 1 | String | Number of hours prior to arrival day in which this Cancellation policy applies. |
-| CancelPenalty/Penalty | 1..n |  | Contains the value to apply.				                            |
+| CancelPenalty/Penalty | 1..n |  | 				                            |
 | @type 				                | 1 		    | String 	    | <details>     <summary>Types of penalties</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Penalty</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>Noches</td>  						 <td>Indicates the number of nights to be penalized.</td>  					 </tr>  					 <tr>  						 <td>Porcentaje</td>  						 <td>Indicates the percentage to pay based on the option price.</td>  					 </tr>           <tr>  						 <td>Importe</td>  						 <td> Indicates the exact amount payable.</td>  					 </tr>				 </tbody>  			</table>         </div>     </div> </details> |
 | @currency 				            | 1 		    | String 	    | Currency code (Our system uses a standard ISO - 3 for all suppliers).						                                                        |
 | CancelPenalty/CalculatedDeadline | 0..1 | Boolean | Indicate if the Deadline is returned by the supplier or it's been calculated by Travelgate. If True, has been calculated by Travelgate. If False, bypass of supplier data without calculation. |
@@ -424,11 +423,11 @@ The response will be structured hierarchically, starting with essential details 
 | @commission 				            | 1 		    | Decimal 	    | <details>     <summary>Commission Scenarios</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Commission</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>0</td>  						 <td>The price returned is net.</td>  					 </tr>  					 <tr>  						 <td>-1</td>  						 <td>The supplier has not supplied the sale price nor the commission. This information is in the commercial contract with the supplier.</td>  					 </tr>           <tr>  						 <td>Greater than 0</td>  						 <td>X = % of the commission applied to the amount.</td>  					 </tr>				 </tbody>  			</table>         </div>     </div> </details>	|
 | Option/Detail | 0..1 	| 		        | Detail of option (if the option is different from the type Hotel, see [MetaData](../content/meta-data/) in order to verify if a supplier implements it). |
 | Detail/POIs | 1 | 		    | Points of interest.						                                                    |
-| POIs/POI | 1..n | 	| Point of interest.						                                                    |
+| POIs/POI | 1..n | 	| 						                                                    |
 | @code 				                | 1 		    | String 	    | POI code.							                                                            |
 | @description 				            | 1 		    | String 	    | POI description.						                                                        |
 | POI/Services | 1 | | Services containing this POI.				                                                |
-| Services/Service | 1..n | | Service detail.					                                                |
+| Services/Service | 1..n | | 					                                                |
 | @type 				                | 1 		    | String 	    | Service type (SkiPass, Lessons, Meals, Equipment, Ticket, Transfers or Gala).	                |
 | @code 				                | 1 		    | String 	    | Service code.							                                                        |
 | @description 				            | 1 		    | String 	    | Service description.						                                                    |
@@ -439,20 +438,104 @@ The response will be structured hierarchically, starting with essential details 
 | @startDate 				            | 1 		    | String 	    | Start date of service.					                                                    |
 | @endDate 				                | 1 		    | String 	    | End date of service.						                                                    |
 | Option/Remarks | 0..1  |               | List of remarks (see [MetaData](../content/meta-data/) in order to verify if a supplier implements it). |
-| Remarks/Remark | 1..n | 		| Remark.							                                                            |
+| Remarks/Remark | 1..n | 		| 							                                                            |
 | Option/Offers | 0..1 	| 		        | The supplier returns in response which offer is applicable for each option (see [MetaData](../content/meta-data/) in order to verify if a supplier implements it). Depending on the supplier, the information concerning offers can be displayed at a room level or in the option level in AvailRS. |
-| Offers/Offer | 1..n | 		    | List of offers.						                                                        |
+| Offers/Offer | 1..n | 		    | 						                                                        |
 | @code 				                | 1 		    | String 	    | Contains the code to identify a offer.			                                            |
 | @name 				                | 1 		    | String 	    | Contains the name of the offer.				                                                |
-| Option/Fees/ | 0..1    |               | Contains a list of fees.                                                                      |
-| Fees/Fee | 1..n |              | Contains details of the fee.                                                                  |
+| Option/Fees/ | 0..1    |               |                                                                       |
+| Fees/Fee | 1..n |              |                                                                   |
 | @includedPriceOption			        | 1		        | Boolean       | Indicates if the fee is included or not in the final price.                                   |
 | @description				            | 1             | String        | Remarks regarding fee.                                                                        |
 | @mandatory 				            | 1             | Boolean       | If the fee is obligatory, depending on the includedPriceOption to know if it is paid at the time of booking or at the hotel. In case it is false, it could be a fee such as "cleaning" that the consumer could hire if he wanted. |
 | @refundable 				            | 1             | Boolean       | This field will serve to know if the rate to be paid is returned, for example when it is a deposit type that is returned once the stay ends. |
-| Fee/Price | 1 |          | Contains details of price.                                                                    |
+| Fee/Price | 1 |          |                                                                     |
 | @currency 				            | 1             | String        | Currency code (Our system uses a standard ISO - 3 for all suppliers).                                                                                |
 | @amount 				                | 1             | Decimal       | Fee Amount.                                                                                   |
 | @binding				                | 1             | Boolean       | If binding is set as true, then the client can’t sell the product for a lower price that the one set by the supplier. If it set as as false, the client can sell the product for a lower price. |
 | @commission	                        | 1             | Decimal       | <details>     <summary>Commission Scenarios</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Commission</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>0</td>  						 <td>The price returned is net.</td>  					 </tr>  					 <tr>  						 <td>-1</td>  						 <td>The supplier has not supplied the sale price nor the commission. This information is in the commercial contract with the supplier.</td>  					 </tr>           <tr>  						 <td>Greater than 0</td>  						 <td>X = % of the commission applied to the amount.</td>  					 </tr>				 </tbody>  			</table>         </div>     </div> </details> |
 | Fee/Code | 1 | String    | Specifies the fee code in case it has one.                                                    |
+
+
+```xml
+<AvailRS>
+    <operationImplemented>true</operationImplemented>
+    <hoteles/>
+        <applicationError>
+            <code/>
+            <type>204</type>
+            <description>Proveedor devuelve 0 resultados en disponibilidad</description>
+            <httpStatusCode>0</httpStatusCode>
+        </applicationError>
+</AvailRS>
+```
+
+<details>
+    <summary>Error codes that will be included in the response in the event of an error</summary>
+    <div>
+        <div>
+         <table>
+				<thead>
+					<tr>
+						<th>
+							<strong>Error Code</strong>
+						</th>
+						<th>
+							<strong>Error Description</strong>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>101</td>
+						<td>System Exception (Exception not controlled or not classified as general exception).</td>
+					</tr>
+					<tr>
+						<td>102</td>
+						<td>Supplier Error.</td>
+					</tr>
+					<tr>
+						<td>103</td>
+						<td>Too many requests to the supplier.</td>
+					</tr>
+          <tr>
+						<td>104</td>
+						<td>Timeout (Timeout during the execution of an operation (look in the common attribute timeout )).</td>
+					</tr>
+					<tr>
+						<td>105</td>
+						<td>Communication Error.</td>
+					</tr>
+					<tr>
+						<td>204</td>
+						<td>Supplier returns 0 results in availability.</td>
+					</tr>
+          <tr>
+						<td>205</td>
+						<td>The Supplier doesn’t accept the distribution RQ.</td>
+					</tr>
+					<tr>
+						<td>206</td>
+						<td>The Supplier doesn’t accept the dates RQ.</td>
+					</tr>
+					<tr>
+						<td>207</td>
+						<td>The Supplier doesn’t accept the request RQ.</td>
+					</tr>
+          <tr>
+						<td>301</td>
+						<td>Option not found in policies.</td>
+					</tr>
+          <tr>
+						<td>302</td>
+						<td>Hotel Not Found in DescriptiveInfo.</td>
+					</tr>
+          <tr>
+						<td>303</td>
+						<td>Booking not confirmed in the supplier’s system.</td>
+					</tr>
+				</tbody>
+			</table>
+        </div>
+    </div>
+</details>

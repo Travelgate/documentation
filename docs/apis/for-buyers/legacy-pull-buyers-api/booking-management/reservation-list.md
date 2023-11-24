@@ -4,21 +4,10 @@ sidebar_position: 2
 
 # Reservation List
 
-Reservation List allows you to obtain a list of bookings that were made within a specific arrival date range or a specific booking date range. The returned fields for each booking in the list include:
+Reservation List allows you to obtain a list of bookings that were made within a specific arrival date range or a specific booking date range. The returned fields for each booking in the list include: `Locators`, `Hotel`, `TransactionStatus`, `Holder`, `Price` etc.
 
-* `Locators`
-* `Hotel`
-* `TransactionStatus`
-* `Holder`
-* `Price`
+## ReservationList Request
 
-## Request
-
-:::caution
-
-The maximum time permitted in our system before the connection is closed is 240000 milliseconds.
-
-:::
 
 ```xml
 <soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" 
@@ -35,14 +24,14 @@ The maximum time permitted in our system before the connection is closed is 2400
       <soapenv:Body>
         <ns:ReservationList>
           <ns:reservationListRQ>
-            <ns:timeoutMilliseconds>15000</ns:timeoutMilliseconds>
+            <ns:timeoutMilliseconds>17900</ns:timeoutMilliseconds>
             <ns:version>1</ns:version>
             <ns:providerRQ>
-              <ns:code>code</ns:code>
+              <ns:code>suppliercode</ns:code>
               <ns:id>1</ns:id>
               <ns:rqXML>
                 <ReservationListRQ>
-                  <timeoutMilliseconds>10000</timeoutMilliseconds>
+                  <timeoutMilliseconds>18000</timeoutMilliseconds>
                   <source>
                     <languageCode>en</languageCode>
                   </source>
@@ -50,9 +39,12 @@ The maximum time permitted in our system before the connection is closed is 2400
                     <registerTransactions>true</registerTransactions>
                   </filterAuditData>
                   <Configuration>
-                    <User></User>
-                    <Password></Password>
-                    <UrlGeneric>www.supplier.com</UrlGeneric>
+                    <User>user</User>
+                    <Password>password</Password>
+                    <UrlAvail>www.supplier.com/avail</UrlAvail>
+                    <UrlReservation>www.supplier.com/reservation</UrlReservation>
+                    <UrlValuation>www.supplier.com/valuation</UrlValuation>
+                    <UrlGeneric>www.supplier.com/generic</UrlGeneric>
                     <Parameters>
                       <Parameter key = "UrlListHoteles" value = "http://www.test.net/scr/searchxml/location.php?"></Parameter>
                       <Parameter key = "UrlConsulta" value = "https://www.test.net/scr/xml/travelgate.php?"></Parameter>
@@ -74,6 +66,12 @@ The maximum time permitted in our system before the connection is closed is 2400
 
 ### Request Data Breakdown
 
+:::note
+
+Header y common elements
+
+:::
+
 | Element		| Rel	| Type	| Description					|
 | --------------------- | ------------- | ------------- | ----------------------------------------------------- |
 | ReservationListRQ	| 1             |		| Root node.						|
@@ -82,7 +80,7 @@ The maximum time permitted in our system before the connection is closed is 2400
 | ReservationListRQ/End            	| 1      	| String 	| End date. 						|
 
 
-## Response
+## ReservationList Response
 
 ```xml
 <ReservationListRS>

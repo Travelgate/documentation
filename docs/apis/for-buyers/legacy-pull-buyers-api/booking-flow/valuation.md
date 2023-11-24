@@ -4,21 +4,9 @@ sidebar_position: 3
 
 # Valuation
 
-Valuation operation evaluates the rate before reservation, providing the same information as the Avail response for a hotel rate, including up-to-date pricing. Additionally, it offers further details such as rate breakdown and cancellation policies. The returned fields include:
-
-* `Status`
-* `Price`
-* `CancelPenalities`
-* `Fees`
-* `PaymentOptions`
+Valuation operation evaluates the rate before reservation, providing the same information as the Avail response for a hotel rate, including up-to-date pricing. Additionally, it offers further details such as rate breakdown and cancellation policies. The returned fields include: `Status`, `Price`, `CancelPenalities`, `Fees`, `PaymentOptions` etc.
 
 ## Request
-
-:::caution
-
-The maximum time permitted in our system before the connection is closed is 180000 milliseconds.
-
-:::
 
 ```xml
 <soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" 
@@ -35,14 +23,14 @@ The maximum time permitted in our system before the connection is closed is 1800
       <soapenv:Body>
         <ns:Valuation>
           <ns:valuationRQ>
-            <ns:timeoutMilliseconds>180000</ns:timeoutMilliseconds>
+            <ns:timeoutMilliseconds>17900</ns:timeoutMilliseconds>
             <ns:version>1</ns:version>
             <ns:providerRQ>
-              <ns:code>code</ns:code>
+              <ns:code>suppliercode</ns:code>
               <ns:id>1</ns:id>
               <ns:rqXML>
                 <ValuationRQ>
-                  <timeoutMilliseconds>10000</timeoutMilliseconds>
+                  <timeoutMilliseconds>18000</timeoutMilliseconds>
                   <source>
                     <languageCode>en</languageCode>
                   </source>
@@ -50,9 +38,12 @@ The maximum time permitted in our system before the connection is closed is 1800
                     <registerTransactions>true</registerTransactions>
                   </filterAuditData>
                   <Configuration>
-                    <User></User>
-                    <Password></Password>
-                    <UrlValuation>www.supplier.com/valuation</UrlAvail>
+                    <User>user</User>
+                    <Password>password</Password>
+                    <UrlAvail>www.supplier.com/avail</UrlAvail>
+                    <UrlReservation>www.supplier.com/reservation</UrlReservation>
+                    <UrlValuation>www.supplier.com/valuation</UrlValuation>
+                    <UrlGeneric>www.supplier.com/generic</UrlGeneric>
                     <Parameters>
                       <Parameter key = "UrlListHoteles" value = "http://www.test.net/scr/searchxml/location.php?"></Parameter>
                       <Parameter key = "UrlConsulta" value = "https://www.test.net/scr/xml/travelgate.php?"></Parameter>
@@ -102,6 +93,12 @@ The maximum time permitted in our system before the connection is closed is 1800
 
 ### Request Data Breakdown
 
+:::note
+
+Header y common elements
+
+:::
+
 | Element                            | Rel | Type | Description |
 | -------------------------------------- | ---------- | -------- | --------------- |
 | ValuationRQ                            | 1          |          | Root node.      |
@@ -115,7 +112,7 @@ The maximum time permitted in our system before the connection is closed is 1800
 | ValuationRQ/OptionType                             | 1          | String   | Indicates option types. |
 | ValuationRQ/Nationality                            | 1       | String   | Guest nationality (use ISO3166_1_alfa_2). |
 | ValuationRQ/Rooms                                | 1          |          | Rooms in this option (room list). |
-| Rooms/Room                            | 1..n       |          | Room Details. |
+| Rooms/Room                            | 1..n       |          |  |
 | @id                                    | 1          | String   | Room Identifier. |
 | @roomCandidateRefId                    | 1          | Integer  | Room candidate Identifier. |
 | @code                                  | 1          | String   | Room code.      |
@@ -203,14 +200,14 @@ The maximum time permitted in our system before the connection is closed is 1800
 | ValuationRS/Remarks 				    | 0..1       | String   | Remarks (see [MetaData](../content/meta-data/) in order to verify if a supplier implements it).       |
 | ValuationRS/PaymentOptions		       | 0..1       | String   | Payment Types allowed by the supplier. This tag  is mandatory only if payment type is different than MerchantPay. |
 | PaymentOptions/Cards			   | 0..1		 | 	    | List of cards allowed. |
-| Cards/Card	   | 1..n       |          | Details of card. |
+| Cards/Card	   | 1..n       |          |  |
 | @code   				    | 1          | String   | <details>     <summary>Credit Card codes</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Code</strong>  						 </th>  						 <th>  							 <strong>Name</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>VI</td>  						 <td>Visa</td>  					 </tr>  					 <tr>  						 <td>AX</td>  						 <td>American Express</td>  					 </tr>                     <tr>  						 <td>BC</td>  						 <td>BC Card</td>  					 </tr>  					 <tr>  						 <td>CA</td>  						 <td>MasterCard</td>  					 </tr>  					 <tr>  						 <td>CB</td>  						 <td>Carte Blanche</td>  					 </tr>                     <tr>  						 <td>CU</td>  						 <td>China Union Pay</td>  					 </tr>  					 <tr>  						 <td>DS</td>  						 <td>Discover</td>  					 </tr>  					 <tr>  						 <td>DC</td>  						 <td>Diners Club</td>  					 </tr>                     <tr>  						 <td>T</td>  						 <td>Carta Si</td>  					 </tr>                     <tr>  						 <td>R</td>  						 <td>Carte Bleue</td>  					 </tr>                     <tr>  						 <td>N</td>  						 <td>Dankort</td>  					 </tr>                     <tr>  						 <td>L</td>  						 <td>Delta</td>  					 </tr>                     <tr>  						 <td>E</td>  						 <td>Electron</td>  					 </tr>                     <tr>  						 <td>JC</td>  						 <td>Japan Credit Bureau</td>  					 </tr>                     <tr>  						 <td>TO</td>  						 <td>Maestro</td>  					 </tr>                     <tr>  						 <td>S</td>  						 <td>Switch</td>  					 </tr>                     <tr>  						 <td>EC</td>  						 <td>Electronic Cash</td>  					 </tr>                     <tr>  						 <td>EU</td>  						 <td>EuroCard</td>  					 </tr>                     <tr>  						 <td>TP</td>  						 <td>Universal air travel card</td>  					 </tr>                     <tr>  						 <td>OP</td>  						 <td>optima</td>  					 </tr>                     <tr>  						 <td>ER</td>  						 <td>Air Canada/RnRoute</td>  					 </tr>                     <tr>  						 <td>XS</td>  						 <td>access</td>  					 </tr>                     <tr>  						 <td>O</td>  						 <td>others</td>  					 </tr>  				 </tbody>  			</table>         </div>     </div> </details> |
 | ValuationRS/Fees				    | 0..1       | 	    | Contains a list of fees. |
-| Fees/Fee				    | 1..n       |          | Contains details of the fee. |
+| Fees/Fee				    | 1..n       |          |  |
 | Fee/Code		    	    | 1          |   String | Specifies the fee code in case it has one. |
 | @includedPriceOption			    | 1		 | Boolean  | Indicates if the fee is included or not in the final price (value indicated in the node Price in ValuationRS). |
 | @description				    | 1          | String   | Remarks regarding fee. |
-| Fee/Price			    | 1          |          | Contains details of price. |
+| Fee/Price			    | 1          |          |  |
 | @currency 				    | 1          | String   | Currency code (Our system uses a standard ISO - 3 for all suppliers). |
 | @amount 				    | 1          | Decimal  | Fee Amount. |
 | @binding				    | 1          | Boolean  | If binding is set as true, then the client can’t sell the product for a lower price that the one set by the supplier. If it set as as false, the client can sell the product for a lower price. |
@@ -218,7 +215,7 @@ The maximum time permitted in our system before the connection is closed is 1800
 | ValuationRS/CancelPoliciesDescription                 | 0..1       | String   | Contains the cancellation penalties in free text (see [MetaData](../content/meta-data/) in order to verify if a supplier implements it). |
 | ValuationRS/Option 	|0..1	| Option quoted
 | Option/Rooms | 0..1 		| 		| Rooms in the option (room list).				|
-| Rooms/Room | 1..n 	| 		| Room details.						|
+| Rooms/Room | 1..n 	| 		| 						|
 | @id 					| 1 		| String 	| Room ID.					|
 | @roomCandidateRefId 			| 1 		| Integer 	| Room candidate ID.					|
 | @code 				| 1 		| String 	| Room code has to be unique to identify a specific room type. If the RoomList Method is implemented, you can find the description of the room type in the RoomList. 							|

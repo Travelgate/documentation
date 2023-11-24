@@ -4,22 +4,10 @@ sidebar_position: 3
 
 # Reservation Read
 
-Reservation Read allows you to retrieve a specific booking with all its details using the lovators, booking codes. The returned fields for each booking in the list include:
-
-* `Locators`
-* `Hotel`
-* `TransactionStatus`
-* `Holder`
-* `Price`
+Reservation Read allows you to retrieve a specific booking with all its details using the lovators, booking codes. The returned fields for each booking in the list include: `Locators`, `Hotel`, `TransactionStatus`, `Holder`, `Price` etc.
 
 
-## Request
-
-:::caution
-
-The maximum time permitted in our system before the connection is closed is 180000 milliseconds.
-
-:::
+## ReservationRead Request
 
 ```xml
 <soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" 
@@ -36,30 +24,33 @@ The maximum time permitted in our system before the connection is closed is 1800
     <soapenv:Body>
     <ns:ReservationRead>
       <ns:reservationReadRQ>
-        <ns:timeoutMilliseconds>180000</ns:timeoutMilliseconds>
+        <ns:timeoutMilliseconds>17900</ns:timeoutMilliseconds>
         <ns:version>1</ns:version>
         <ns:providerRQ>
-          <ns:code>code</ns:code>
+          <ns:code>suppliercode</ns:code>
           <ns:id>1</ns:id>
           <ns:rqXML>
             <ReservationReadRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
-              <timeoutMilliseconds>10000</timeoutMilliseconds>
+              <timeoutMilliseconds>18000</timeoutMilliseconds>
               <source>
-                  <languageCode>en</languageCode>
+                <languageCode>en</languageCode>
               </source>
               <filterAuditData>
-                  <registerTransactions>true</registerTransactions>
+                <registerTransactions>true</registerTransactions>
               </filterAuditData>
               <Configuration>
-                  <User></User>
-                  <Password></Password>
-                  <UrlGeneric>www.supplier.com</UrlGeneric>
-                  <Parameters>
-                    <Parameter key = "UrlListHoteles" value = "http://www.test.net/scr/searchxml/location.php?"></Parameter>
-                    <Parameter key = "UrlConsulta" value = "https://www.test.net/scr/xml/travelgate.php?"></Parameter>
-                    <Parameter key = "office" value = "55555"></Parameter>
-                    <Parameter key = "password" value = "XXXXXX"></Parameter>
-                  </Parameters>
+                <User>user</User>
+                <Password>password</Password>
+                <UrlAvail>www.supplier.com/avail</UrlAvail>
+                <UrlReservation>www.supplier.com/reservation</UrlReservation>
+                <UrlValuation>www.supplier.com/valuation</UrlValuation>
+                <UrlGeneric>www.supplier.com/generic</UrlGeneric>
+                <Parameters>
+                  <Parameter key = "UrlListHoteles" value = "http://www.test.net/scr/searchxml/ocation.php?"></Parameter>
+                  <Parameter key = "UrlConsulta" value = "https://www.test.net/scr/xml/travelgate.php?"></Parameter>
+                  <Parameter key = "office" value = "55555"></Parameter>
+                  <Parameter key = "password" value = "XXXXXX"></Parameter>
+                </Parameters>
               </Configuration>
               <Locators>
                   <Client>XXXXXXX</Client>
@@ -82,6 +73,12 @@ The maximum time permitted in our system before the connection is closed is 1800
 
 ### Request Data Breakdown
 
+:::note
+
+Header y common elements
+
+:::
+
 | Element 		| Rel	| Type	| Description					|
 | --------------------- | ------------- | ------------- | ----------------------------------------------------- |
 | ReservationReadRQ	| 1		|		| Root node.						|
@@ -98,7 +95,7 @@ The maximum time permitted in our system before the connection is closed is 1800
 | @name   				| 1		|		| Holder's name.  |
 | @surname   				| 1		|		| Holder's surname.  |
 
-## Response
+## ReservationRead Response
 
 ```xml
 <ReservationReadRS>

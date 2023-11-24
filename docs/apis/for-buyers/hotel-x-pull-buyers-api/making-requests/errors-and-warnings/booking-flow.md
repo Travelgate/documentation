@@ -42,15 +42,15 @@ If the errors originate from the connection with the Seller's system, you will r
 
 | Code   | Type | Description                                                                                                                                                          |
 | -----  |------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| _Depens on the Seller_       | 101  | Unspecified Error (Exception not controlled or not classified as controlled error). This could be caused by an integration error or an unexpected supplier response.         |
-| _Depens on the Seller_       | 102  | Supplier Error.                                                                                                                                |
-| _Depens on the Seller_       | 103  | Too many requests to the supplier.                                                                                                             |
-| _Depens on the Seller_       | 104  | Timeout (Timeout during the execution of an operation (look in the common attribute timeout )).                                                |
-| _Depens on the Seller_       | 105  | Communication Error.                                                                                                                           |
-| _Depens on the Seller_       | 204  | Supplier returns 0 results in availability.                                                                                                    |
-| _Depens on the Seller_       | 205  | The Supplier doesn’t accept the distribution RQ.                                                                                               |
-| _Depens on the Seller_       | 206  | The Supplier doesn’t accept the dates RQ.                                                                                                      |
-| _Depens on the Seller_       | 207  | The Supplier doesn’t accept the request RQ.                                                                                                    |
-| _Depens on the Seller_       | 301  | Option not found in policies.                                                                                                                  |
-| _Depens on the Seller_       | 302  | Hotel Not Found in DescriptiveInfo.                                                                                                            |
-| _Depens on the Seller_       | 303  | Booking not confirmed in the supplier’s system.                                                                                                |
+| _Depends on the Seller_       | 101  | Unspecified Error (Exception not controlled or not classified as controlled error). This could be caused by an integration error or an unexpected supplier response.         |
+| _Depends on the Seller_       | 102  | Supplier Error.                                                                                                                                |
+| _Depends on the Seller_       | 103  | Too many requests to the supplier.                                                                                                             |
+| _Depends on the Seller_       | 104  | Error indicating that the operation exceeded the allotted time for execution (refer to the common attribute timeout).                                            |
+| _Depends on the Seller_       | 105  | Communication Error.                                                                                                                           |
+| _Depends on the Seller_       | 204  | Supplier returns 0 results in availability.                                                                                                    |
+| _Depends on the Seller_       | 205  | The Supplier doesn’t accept the distribution RQ.                                                                                               |
+| _Depends on the Seller_       | 206  | The Supplier doesn’t accept the dates RQ.                                                                                                      |
+| _Depends on the Seller_       | 207  | The Supplier doesn’t accept the request RQ.                                                                                                    |
+| _Depends on the Seller_       | 301  | Option not found in policies.                                                                                                                  |
+| _Depends on the Seller_       | 302  | Hotel Not Found in DescriptiveInfo.                                                                                                            |
+| _Depends on the Seller_       | 303  | Booking not confirmed in the supplier’s system.                                                                                                |

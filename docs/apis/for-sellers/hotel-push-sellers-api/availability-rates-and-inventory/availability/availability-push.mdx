@@ -8,19 +8,102 @@ The `HotelAvailNotif` request message pushes availabilities for the [inventory](
 
 ## HotelAvailNotif Request
 
-[Añadir ejemplo]
+In the following examples, you will see the requests that you need to send in order to Push Availability.
+
+
+```html
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="http://www.opentravel.org/OTA/2003/05" xmlns:ns2="http://schemas.xmltravelgate.com/hubpush/provider/2012/10" xmlns:ns3="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+   <SOAP-ENV:Header>
+      <ns3:Security SOAP-ENV:mustUnderstand="1">
+         <ns3:UsernameToken>
+            <ns3:Username>username</ns3:Username>
+            <ns3:Password>password</ns3:Password>
+         </ns3:UsernameToken>
+      </ns3:Security>
+   </SOAP-ENV:Header>
+   <SOAP-ENV:Body>
+      <ns2:HotelAvailNotif>
+         <ns2:request>
+            <ns1:POS>
+               <ns1:Source>
+                  <ns1:RequestorID ID="Seller Code"/>
+                  <ns1:BookingChannel>
+                     <ns1:CompanyName Code="Buyer Code"/>
+                  </ns1:BookingChannel>
+               </ns1:Source>
+            </ns1:POS>
+            <ns1:AvailStatusMessages HotelCode="2">
+               <ns1:AvailStatusMessage BookingLimit="13">
+                  <ns1:StatusApplicationControl Start="2023-12-20" End="2023-12-22" PromotionCode = "25" RatePlanCode="BAR" Mon="true" Tue="true" Weds="true" Thur="true" Fri="true" Sat="true" Sun="true"/>
+               </ns1:AvailStatusMessage>
+               <ns1:AvailStatusMessage>
+                  <ns1:StatusApplicationControl Start="2023-12-20" End="2023-12-22" RatePlanCode="BAR" InvCode="STD3" Mon="true" Tue="true" Weds="true" Thur="true" Fri="true" Sat="true" Sun="true"/>
+                  <ns1:LengthsOfStay>
+                     <ns1:LengthOfStay Time="1" TimeUnit="Day" MinMaxMessageType="MinLOS"/>
+                     <ns1:LengthOfStay Time="28" TimeUnit="Day" MinMaxMessageType="MaxLOS"/>
+                  </ns1:LengthsOfStay>
+                  <ns1:RestrictionStatus Restriction="Master" Status="Open"/>
+               </ns1:AvailStatusMessage>
+               <ns1:AvailStatusMessage>
+                  <ns1:StatusApplicationControl Start="2023-12-20" End="2023-12-22" RatePlanCode="BAR" InvCode="STD3" Mon="true" Tue="true" Weds="true" Thur="true" Fri="true" Sat="true" Sun="true"/>
+                  <ns1:RestrictionStatus Restriction="Arrival" Status="Open"/>
+               </ns1:AvailStatusMessage>
+               <ns1:AvailStatusMessage>
+                  <ns1:StatusApplicationControl Start="2023-12-20" End="2023-12-22" RatePlanCode="BAR" InvCode="STD3" Mon="true" Tue="true" Weds="true" Thur="true" Fri="true" Sat="true" Sun="true"/>
+                  <ns1:RestrictionStatus Restriction="Departure" Status="Open"/>
+               </ns1:AvailStatusMessage>
+               <ns1:AvailStatusMessage>
+                  <ns1:StatusApplicationControl Start="2023-12-20" End="2023-12-22" RatePlanCode="BAR" InvCode="STD3" Mon="true" Tue="true" Weds="true" Thur="true" Fri="true" Sat="true" Sun="true"/>
+                  <ns1:RestrictionStatus SellThroughOpenIndicator="false" MaxAdvancedBookingOffset="2" MinAdvancedBookingOffset="1"/>
+               </ns1:AvailStatusMessage>
+               <ns1:AvailStatusMessage BookingLimit="14">
+                  <ns1:StatusApplicationControl Start="2023-12-20" End="2023-12-22" RatePlanCode="BAR" InvCode="STD3" Mon="true" Tue="true" Weds="true" Thur="true" Fri="true" Sat="true" Sun="true"/>
+               </ns1:AvailStatusMessage>
+               <ns1:AvailStatusMessage>
+                  <ns1:StatusApplicationControl Start="2023-12-20" End="2023-12-22" RatePlanCode="BAR" InvCode="STD3" Mon="true" Tue="true" Weds="true" Thur="true" Fri="true" Sat="true" Sun="true"/>
+                  <ns1:LengthsOfStay>
+                     <ns1:LengthOfStay Time="1" TimeUnit="Day" MinMaxMessageType="MinLOS"/>
+                     <ns1:LengthOfStay Time="28" TimeUnit="Day" MinMaxMessageType="MaxLOS"/>
+                  </ns1:LengthsOfStay>
+                  <ns1:RestrictionStatus Restriction="Master" Status="Open"/>
+               </ns1:AvailStatusMessage>
+               <ns1:AvailStatusMessage>
+                  <ns1:StatusApplicationControl Start="2023-12-20" End="2023-12-22" RatePlanCode="BAR" InvCode="STD3" Mon="true" Tue="true" Weds="true" Thur="true" Fri="true" Sat="true" Sun="true"/>
+                  <ns1:RestrictionStatus Restriction="Arrival" Status="Open"/>
+               </ns1:AvailStatusMessage>
+               <ns1:AvailStatusMessage>
+                  <ns1:StatusApplicationControl Start="2023-12-20" End="2023-12-22" RatePlanCode="BAR" InvCode="STD3" Mon="true" Tue="true" Weds="true" Thur="true" Fri="true" Sat="true" Sun="true"/>
+                  <ns1:RestrictionStatus Restriction="Departure" Status="Open"/>
+               </ns1:AvailStatusMessage>
+               <ns1:AvailStatusMessage>
+                  <ns1:StatusApplicationControl Start="2023-12-20" End="2023-12-22" RatePlanCode="BAR" InvCode="STD3" Mon="true" Tue="true" Weds="true" Thur="true" Fri="true" Sat="true" Sun="true"/>
+                  <ns1:RestrictionStatus SellThroughOpenIndicator="false" MaxAdvancedBookingOffset="2" MinAdvancedBookingOffset="1"/>
+               </ns1:AvailStatusMessage>
+            </ns1:AvailStatusMessages>
+         </ns2:request>
+      </ns2:HotelAvailNotif>
+   </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+```
+
 
 ### Request Data Breakdown
+
+:::note
+
+During the onboarding process, your username and password will be provided. After each connection is established, you'll receive an email with RequestorID (Seller Code) and CompanyName (Buyer Code) values.
+
+:::
 
 | Element                                     | Rel  | Type    | Description                                                                                                                                                                                                                            |
 |---------------------------------------------|------|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | HotelAvailNotif                             | 1    |         |                                                                                                                                                                                                                                        |
-| ../request                                  | 1    |         |                                                                                                                                                                                                                                        |
+| HotelAvailNotif/request                     | 1    |         |                                                                                                                                                                                                                                        |
 | request/AvailStatusMessages                 | 1    |         |                                                                                                                                                                                                                                        |
 | @HotelCode                                  | 1    | String  | Hotel code                                                                                                                                                                                                                             |
-| ../AvailStatusMessage                       | 1..n |         |                                                                                                                                                                                                                                        |
-| @BookingLimit                               | 0..1 | Integer | The number of rooms available per Room-RatePlan for the specified dates. This field is exclusively used for Derivated Rates.                                                                                                                                     |
-| @BookingSold                                | 0..1 | Integer | The number of rooms booked per Room-RatePlan for the specified dates. The available allotment is calculated as the difference between @BookingLimit and @BookingSold. This field is exclusively used for Derivated Rates                                                        |
+| AvailStatusMessages/AvailStatusMessage      | 1..n |         |                                                                                                                                                                                                                                        |
+| @BookingLimit                               | 0..1 | Integer | The number of rooms available per Room-RatePlan for the specified dates. In the case of Derivated Rates this element will not be returned.                                                                                                                                     |
+| @BookingSold                                | 0..1 | Integer | The number of rooms booked per Room-RatePlan for the specified dates. The available allotment is calculated as the difference between @BookingLimit and @BookingSold.                                                       |
 | AvailStatusMessage/StatusApplicationControl | 1    |         |                                                                                                                                                                                                                                        |
 | @Start                                      | 1    | Date    | Start date                                                                                                                                                                                                                             |
 | @End                                        | 1    | Date    | End date                                                                                                                                                                                                                               |
@@ -37,13 +120,13 @@ The `HotelAvailNotif` request message pushes availabilities for the [inventory](
 | @Sat                                        | 0..1 | Boolean | If true or attribute is not present, there is availability on Sunday.                                                                                                                                                                   |
 | AvailStatusMessage/LengthsOfStay            | 0..1 |         |                                                                                                                                                                                                                                        |
 | @ArrivalDateBased                           | 0..1 | Boolean | If true, the Minimum and Maximum Stay is checked ONLY the first day of the availability. If false or null, the Minimum and Maximum Stay is checked all the availability days. If both values are needed, two @AvailStatusMessage will be sent. |
-| ../LengthOfStay                             | 1..2 |         |                                                                                                                                                                                                                                        |
+| LengthsOfStay/LengthOfStay                  | 1..2 |         |                                                                                                                                                                                                                                        |
 | @Time                                       | 1    | Integer | Indicates the number of @TimeUnit for this stay. When value is 0 or -1, condition should be deleted from the system.                                                                                                                    |
 | @TimeUnit                                   | 1    | String  | `Day`                                                                                                                                                                                                                             |
 | @MinMaxMessageType                          | 1    | String  | `MinLOS` (minimum) or `MaxLOS` (maximum) @LenghtOfSaty.                                                                                                                                                                                      |
 | AvailStatusMessage/RestrictionStatus        | 0..1 |         |                                                                                                                                                                                                                                        |
-| @Status                                     | 0..1 | String  | `Open` or `Close`                                                                                                                                                                                                                          |
 | @Restriction                                | 0..1 | String  | `Master`, `Arrival` or `Departure`                                                                                                                                                                                                           |
+| @Status                                     | 0..1 | String  | `Open` or `Close`                                                                                                                                                                                                                          |
 | @MinAdvancedBookingOffset                   | 0..1 | Integer | Minimum number of days before the check-in date to be available to be booked. This restriction is usually used to offer discounts on early bookings. When value is 0 or -1, condition should be deleted from the system.                |
 | @MaxAdvancedBookingOffset                   | 0..1 | Integer | Maximum number of days before the check-in date to be available to be booked. This restriction is usually used to offer last minute discounts on unsold inventory. When value is -1, condition should be deleted from the system.       |
 | @SellThroughOpenIndicator                   | 0..1 | Boolean | Room-RatePlan can be sold with no limit if @Status is 'Open'. This field is exclusively used for Basic Rates.                                                                                                                                                                         |
@@ -53,150 +136,73 @@ The `HotelAvailNotif` request message pushes availabilities for the [inventory](
 
 After each request, Travelgate will process the data and provide you with a response. Upon receiving a `HotelAvailNotif` request, Travelgate will send you a corresponding `HotelAvailNotif` response. The response options include either **success** or an **error**.
 
-### Success
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+<TabItem value="sucess" label="Success">
 
 ```html
-<HotelAvailNotifResponse xmlns="http://schemas.xmltravelgate.com/hubpush/provider/2012/10">
-    <HotelAvailNotifResult>
-        <Success xmlns="http://www.opentravel.org/OTA/2003/05"/>
-    </HotelAvailNotifResult>
-</HotelAvailNotifResponse>
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" xmlns:u="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+   <s:Header>
+      <o:Security s:mustUnderstand="1" xmlns:o="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+         <u:Timestamp u:Id="_0">
+            <u:Created>2023-11-22T11:03:26.904Z</u:Created>
+            <u:Expires>2023-11-22T11:08:26.904Z</u:Expires>
+         </u:Timestamp>
+      </o:Security>
+   </s:Header>
+   <s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <HotelAvailNotifResultResponse xmlns="http://schemas.xmltravelgate.com/hubpush/provider/2012/10">
+         <HotelAvailNotifResultResult>
+            // highlight-start
+            <Success xmlns="http://www.opentravel.org/OTA/2003/05"/>
+            // highlight-end
+         </HotelAvailNotifResultResult>
+      </HotelAvailNotifResultResponse>
+   </s:Body>
+</s:Envelope>
 ```
 
-### Error
+</TabItem>
+<TabItem value="error" label="Error">
 
 ```html
-<HotelAvailNotifResponse xmlns="http://schemas.xmltravelgate.com/hubpush/provider/2012/10">
-    <HotelAvailNotifResult>
-        <Errors xmlns="http://www.opentravel.org/OTA/2003/05">
-            <Error ShortText="AvailStatusMessages not found" Code="2"/>
-        </Errors>
-    </HotelAvailNotifResult>
-</HotelAvailNotifResponse>
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" xmlns:u="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+   <s:Header>
+      <o:Security s:mustUnderstand="1" xmlns:o="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+         <u:Timestamp u:Id="_0">
+            <u:Created>2023-11-22T11:03:26.904Z</u:Created>
+            <u:Expires>2023-11-22T11:08:26.904Z</u:Expires>
+         </u:Timestamp>
+      </o:Security>
+   </s:Header>
+   <s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <HotelAvailNotifResponse xmlns="http://schemas.xmltravelgate.com/hubpush/provider/2012/10">
+         <HotelAvailNotifResult>
+            // highlight-start
+			   <Errors xmlns="http://www.opentravel.org/OTA/2003/05">
+                <Error ShortText="Unexpected error" Code="-1"/>
+            </Errors>
+			   // highlight-end
+          </HotelAvailNotifResult>
+      </HotelAvailNotifResponse>
+    </s:Body>
+</s:Envelope>
 ```
 
-<details>
-    <summary>Error codes you could receive in the response while setting up and loading the product</summary>
-    <div>
-        <div>
-         <table>
-				<thead>
-					<tr>
-						<th>
-							<strong>Error Code</strong>
-						</th>
-						<th>
-							<strong>Error Description</strong>
-						</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>-1</td>
-						<td>Unexpected error</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>Invalid request</td>
-					</tr>
-					<tr>
-						<td>10</td>
-						<td>Invalid hotel id</td>
-					</tr>
-                    <tr>
-						<td>11</td>
-						<td>Invalid dates</td>
-					</tr>
-					<tr>
-						<td>12</td>
-						<td>Invalid rate plan code</td>
-					</tr>
-					<tr>
-						<td>13</td>
-						<td>Invalid reservation id</td>
-					</tr>
-                    <tr>
-						<td>14</td>
-						<td>Invalid derived rate adjust values</td>
-					</tr>
-					<tr>
-						<td>15</td>
-						<td>Invalid id</td>
-					</tr>
-					<tr>
-						<td>16</td>
-						<td>Invalid amount type</td>
-					</tr>
-                    <tr>
-						<td>17</td>
-						<td>Invalid supplement type</td>
-					</tr>
-                    <tr>
-						<td>18</td>
-						<td>Invalid number of hotel</td>
-					</tr>
-                    <tr>
-						<td>19</td>
-						<td>Invalid rate currency code</td>
-					</tr>
-                    <tr>
-						<td>20</td>
-						<td>Requestor id not found</td>
-					</tr>
-                    <tr>
-						<td>21</td>
-						<td>Provider id not found</td>
-					</tr>
-                    <tr>
-						<td>22</td>
-						<td>Rooms not found</td>
-					</tr>
-                    <tr>
-						<td>23</td>
-						<td>Rates not found</td>
-					</tr>
-                    <tr>
-						<td>30</td>
-						<td>Occupation error</td>
-					</tr>
-                    <tr>
-						<td>31</td>
-						<td>Rate error</td>
-					</tr>
-                    <tr>
-						<td>32</td>
-						<td>Avail rq error</td>
-					</tr>
-                    <tr>
-						<td>33</td>
-						<td>Data Base error</td>
-					</tr>
-                    <tr>
-						<td>34</td>
-						<td>Cancel error</td>
-					</tr>
-                    <tr>
-						<td>35</td>
-						<td>Confirmation error</td>
-					</tr>
-                    <tr>
-						<td>36</td>
-						<td>Valuation_error</td>
-					</tr>
-                    <tr>
-						<td>37</td>
-						<td>Authorization error</td>
-					</tr>
-                    <tr>
-						<td>38</td>
-						<td>Authentication error</td>
-					</tr>
-                    <tr>
-						<td>90</td>
-						<td>Connection time out</td>
-					</tr>
-				</tbody>
-			</table>
-        </div>
-    </div>
-</details>
+</TabItem>
+</Tabs>
+
+
+### Response Data Breakdown
+
+|                    Element                   |  Rel |   Type  |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+|----------------------------------------------|------|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| HotelAvailNotifResult                        | 1    |         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| HotelAvailNotifResult/Success                | 0..1 |         |  If SUCESS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| HotelAvailNotifResult/Errors                 | 0..1 |         |  If ERROR                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| Errors/Error                                 | 1    |         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| @ShortText                                   | 1    | String  |  <details>     <summary>Error Codes and Description</summary>     <div>         <div>          <table> 				<thead> 					<tr> 						<th> 							<strong>Error Code</strong> 						</th> 						<th> 							<strong>Error Description</strong> 						</th> 					</tr> 				</thead> 				<tbody> 					<tr> 						<td>-1</td> 						<td>Unexpected error</td> 					</tr> 					<tr> 						<td>1</td> 						<td>Invalid request</td> 					</tr> 					<tr> 						<td>10</td> 						<td>Invalid hotel id</td> 					</tr>                     <tr> 						<td>11</td> 						<td>Invalid dates</td> 					</tr> 					<tr> 						<td>12</td> 						<td>Invalid rate plan code</td> 					</tr> 					<tr> 						<td>13</td> 						<td>Invalid reservation id</td> 					</tr>                     <tr> 						<td>14</td> 						<td>Invalid derived rate adjust values</td> 					</tr> 					<tr> 						<td>15</td> 						<td>Invalid id</td> 					</tr> 					<tr> 						<td>16</td> 						<td>Invalid amount type</td> 					</tr> 				<tr> 						<td>17</td> 						<td>Invalid supplement type</td> 					</tr>          <tr> 						<td>18</td> 						<td>Invalid number of hotel</td> 					</tr>        <tr> 						<td>19</td> 						<td>Invalid rate currency code</td> 					</tr>         <tr> 						<td>20</td> 						<td>Requestor id not found</td> 					</tr>           <tr> 						<td>21</td> 						<td>Provider id not found</td> 					</tr>               <tr> 						<td>22</td> 						<td>Rooms not found</td> 					</tr>               <tr> 						<td>23</td> 						<td>Rates not found</td> 					</tr>              <tr> 						<td>30</td> 						<td>Occupation error</td> 					</tr>              <tr> 						<td>31</td> 						<td>Rate error</td> 					</tr>             <tr> 						<td>32</td> 						<td>Avail rq error</td> 					</tr>           <tr> 						<td>33</td> 						<td>Data Base error</td> 					</tr>              <tr> 						<td>34</td> 						<td>Cancel error</td> 					</tr>               <tr> 						<td>35</td> 						<td>Confirmation error</td> 					</tr>                  <tr> 						<td>36</td> 						<td>Valuation_error</td> 					</tr>                    <tr> 						<td>37</td> 						<td>Authorization error</td> 					</tr>                    <tr> 						<td>38</td> 						<td>Authentication error</td> 					</tr>                      <tr> 						<td>90</td> 						<td>Connection time out</td> 					</tr>                      </tbody> 			</table>         </div>     </div> </details>                     |
+| @Code                                        | 1    | String  |  <details>     <summary>Error Codes and Description</summary>     <div>         <div>          <table> 				<thead> 					<tr> 						<th> 							<strong>Error Code</strong> 						</th> 						<th> 							<strong>Error Description</strong> 						</th> 					</tr> 				</thead> 				<tbody> 					<tr> 						<td>-1</td> 						<td>Unexpected error</td> 					</tr> 					<tr> 						<td>1</td> 						<td>Invalid request</td> 					</tr> 					<tr> 						<td>10</td> 						<td>Invalid hotel id</td> 					</tr>                     <tr> 						<td>11</td> 						<td>Invalid dates</td> 					</tr> 					<tr> 						<td>12</td> 						<td>Invalid rate plan code</td> 					</tr> 					<tr> 						<td>13</td> 						<td>Invalid reservation id</td> 					</tr>                     <tr> 						<td>14</td> 						<td>Invalid derived rate adjust values</td> 					</tr> 					<tr> 						<td>15</td> 						<td>Invalid id</td> 					</tr> 					<tr> 						<td>16</td> 						<td>Invalid amount type</td> 					</tr> 				<tr> 						<td>17</td> 						<td>Invalid supplement type</td> 					</tr>          <tr> 						<td>18</td> 						<td>Invalid number of hotel</td> 					</tr>        <tr> 						<td>19</td> 						<td>Invalid rate currency code</td> 					</tr>         <tr> 						<td>20</td> 						<td>Requestor id not found</td> 					</tr>           <tr> 						<td>21</td> 						<td>Provider id not found</td> 					</tr>               <tr> 						<td>22</td> 						<td>Rooms not found</td> 					</tr>               <tr> 						<td>23</td> 						<td>Rates not found</td> 					</tr>              <tr> 						<td>30</td> 						<td>Occupation error</td> 					</tr>              <tr> 						<td>31</td> 						<td>Rate error</td> 					</tr>             <tr> 						<td>32</td> 						<td>Avail rq error</td> 					</tr>           <tr> 						<td>33</td> 						<td>Data Base error</td> 					</tr>              <tr> 						<td>34</td> 						<td>Cancel error</td> 					</tr>               <tr> 						<td>35</td> 						<td>Confirmation error</td> 					</tr>                  <tr> 						<td>36</td> 						<td>Valuation_error</td> 					</tr>                    <tr> 						<td>37</td> 						<td>Authorization error</td> 					</tr>                    <tr> 						<td>38</td> 						<td>Authentication error</td> 					</tr>                      <tr> 						<td>90</td> 						<td>Connection time out</td> 					</tr>                      </tbody> 			</table>         </div>     </div> </details>                      |
+

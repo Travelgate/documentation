@@ -6,6 +6,12 @@ sidebar_position: 2
 
 The Hotel List method returns a comprehensive hotel list from a supplier's access, granting you access to all the properties configured by the Seller for a given set of credentials. The returned fields include:
 
+:::info NOTE
+
+The amount of information and content returned might vary between Sellers.
+
+:::
+
 * Hotel `code`
 * `GiataId`
 * `Name`
@@ -14,7 +20,8 @@ The Hotel List method returns a comprehensive hotel list from a supplier's acces
 * `Contact`
 * `CategoryCode`
 
-## Request
+
+## Hotel List Request
 
 :::caution
 
@@ -140,10 +147,36 @@ This token should be used as input in your next hotel list request, inside the `
 ```
 
 
-## Response
+## Hotel List Response
+
+After each request, the Seller will have to process the data and provide a response. Upon receiving a `HotelList` request, the Seller will send you a corresponding `HotelList` response. The response options include either success or an error.
+
+### Success
 
 ```xml
-<HotelListRS>
+<soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" 
+   xmlns:ns = "http://schemas.xmltravelgate.com/hub/2012/06" 
+   xmlns:wsse = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+     <soapenv:Header>
+       <wsse:Security>
+         <wsse:UsernameToken>
+           <wsse:Username>username</wsse:Username>
+           <wsse:Password>password</wsse:Password>
+         </wsse:UsernameToken>
+       </wsse:Security>
+     </soapenv:Header>
+     <soapenv:Body>
+       <ns:HotelList>
+         <ns:hotelListRS>
+           <ns:timeoutMilliseconds>180000</ns:timeoutMilliseconds>
+           <ns:version>1</ns:version>
+           <ns:providerRQ>
+             <ns:code>code</ns:code>
+             <ns:id>1</ns:id>
+             <ns:rqXML>
+               <HotelListRS xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
+                  <OperationImplemented>true</OperationImplemented>
+
         <UpgradeUTCDate>2016-10-18T13:18:03+02:00</UpgradeUTCDate>
         <Hotels>
             <Hotel>
@@ -232,3 +265,109 @@ This token should be used as input in your next hotel list request, inside the `
 | Hotel/PropertyCategory      | 0..1 |          | Hotels property type. Similar to Type, but on supplier’s side.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | PropertyCategory/Code       | 1    | String   | Supplier’s property code.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | PropertyCategory/Name       | 1    | String   | Supplier’s property name.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+
+### Error
+
+```xml
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" xmlns:U="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+    <s:Header>
+        <wsse:Security>
+            <U:Timestamp>
+                <U:Created>2023-11-10T11:15:37.445</U:Created>
+                <U:Expires>2023-11-10T11:45:37.445</U:Expires>
+            </U:Timestamp>
+        </wsse:Security>
+    </s:Header>
+    <s:Body>
+        <HotelListResponse>
+          <HotelListResult>
+            <operationImplemented>true</operationImplemented>
+            <applicationErrors>
+                <type>103</type>
+                <code>XXX</code>
+                <description>Too many requests to the supplier.</description>
+              </applicationErrors>
+              <auditData>
+                <transactions>
+                   <timeStamp>2011-10-6T15:19:45.3544495+02:00</timeStamp>
+                   <RQ/>
+                   <RS/>
+                </transactions>
+              <timeStamp>2011-10-26T15:19:43.4014745+02:00</timeStamp>
+              <processTimeMilliseconds>19532</processTimeMilliseconds>
+              </auditData>
+          </HotelListResult>
+        </HotelListResponse>
+    </s:Body>
+</s:Envelope>
+```
+
+<details>
+    <summary>Error codes that should be included in the response in the event of an error</summary>
+    <div>
+        <div>
+         <table>
+				<thead>
+					<tr>
+						<th>
+							<strong>Error Code</strong>
+						</th>
+						<th>
+							<strong>Error Description</strong>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>101</td>
+						<td>System Exception (Exception not controlled or not classified as general exception).</td>
+					</tr>
+					<tr>
+						<td>102</td>
+						<td>Supplier Error.</td>
+					</tr>
+					<tr>
+						<td>103</td>
+						<td>Too many requests to the supplier.</td>
+					</tr>
+          <tr>
+						<td>104</td>
+						<td>Timeout (Timeout during the execution of an operation (look in the common attribute timeout )).</td>
+					</tr>
+					<tr>
+						<td>105</td>
+						<td>Communication Error.</td>
+					</tr>
+					<tr>
+						<td>204</td>
+						<td>Supplier returns 0 results in availability.</td>
+					</tr>
+          <tr>
+						<td>205</td>
+						<td>The Supplier doesn’t accept the distribution RQ.</td>
+					</tr>
+					<tr>
+						<td>206</td>
+						<td>The Supplier doesn’t accept the dates RQ.</td>
+					</tr>
+					<tr>
+						<td>207</td>
+						<td>The Supplier doesn’t accept the request RQ.</td>
+					</tr>
+          <tr>
+						<td>301</td>
+						<td>Option not found in policies.</td>
+					</tr>
+          <tr>
+						<td>302</td>
+						<td>Hotel Not Found in DescriptiveInfo.</td>
+					</tr>
+          <tr>
+						<td>303</td>
+						<td>Booking not confirmed in the supplier’s system.</td>
+					</tr>
+				</tbody>
+			</table>
+        </div>
+    </div>
+</details>

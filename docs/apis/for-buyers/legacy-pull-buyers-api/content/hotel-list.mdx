@@ -16,54 +16,52 @@ The amount of information and content returned might vary between Sellers.
 ## HotelList Request
 
 ```xml
-<soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" 
-   xmlns:ns = "http://schemas.xmltravelgate.com/hub/2012/06" 
-   xmlns:wsse = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
-     <soapenv:Header>
-       <wsse:Security>
+<soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns = "http://schemas.xmltravelgate.com/hub/2012/06" xmlns:wsse = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+   <soapenv:Header>
+      <wsse:Security>
          <wsse:UsernameToken>
-           <wsse:Username>username</wsse:Username>
-           <wsse:Password>password</wsse:Password>
+            <wsse:Username>username</wsse:Username>
+            <wsse:Password>password</wsse:Password>
          </wsse:UsernameToken>
-       </wsse:Security>
-     </soapenv:Header>
-     <soapenv:Body>
-       <ns:HotelList>
+      </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <ns:HotelList>
          <ns:hotelListRQ>
-           <ns:timeoutMilliseconds>17900</ns:timeoutMilliseconds>
-           <ns:version>1</ns:version>
-           <ns:providerRQ>
-             <ns:code>suppliercode</ns:code>
-             <ns:id>1</ns:id>
-             <ns:rqXML>
-               <HotelListRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
-                  <timeoutMilliseconds>18000</timeoutMilliseconds>
-                  <source>
-                    <languageCode>en</languageCode>
-                  </source>
-                  <filterAuditData>
-                    <registerTransactions>true</registerTransactions>
-                  </filterAuditData>
-                  <Configuration>
-                    <User>user</User>
-                    <Password>password</Password>
-                    <UrlAvail>www.supplier.com/avail</UrlAvail>
-                    <UrlReservation>www.supplier.com/reservation</UrlReservation>
-                    <UrlValuation>www.supplier.com/valuation</UrlValuation>
-                    <UrlGeneric>www.supplier.com/generic</UrlGeneric>
-                    <Parameters>
-                      <Parameter key = "UrlListHoteles" value = "http://www.test.net/scr/searchxml/location.php?"></Parameter>
-                      <Parameter key = "UrlConsulta" value = "https://www.test.net/scr/xml/travelgate.php?"></Parameter>
-                      <Parameter key = "office" value = "55555"></Parameter>
-                      <Parameter key = "password" value = "XXXXXX"></Parameter>
-                    </Parameters>
-                  </Configuration>
-               </HotelListRQ>
-             </ns:rqXML>
-           </ns:providerRQ>
+            <ns:timeoutMilliseconds>17900</ns:timeoutMilliseconds>
+            <ns:version>1</ns:version>
+            <ns:providerRQ>
+               <ns:code>suppliercode</ns:code>
+               <ns:id>1</ns:id>
+               <ns:rqXML>
+                  <HotelListRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
+                     <timeoutMilliseconds>18000</timeoutMilliseconds>
+                     <source>
+                        <languageCode>en</languageCode>
+                     </source>
+                     <filterAuditData>
+                        <registerTransactions>true</registerTransactions>
+                     </filterAuditData>
+                     <Configuration>
+                        <User>user</User>
+                        <Password>password</Password>
+                        <UrlAvail>www.supplier.com/avail</UrlAvail>
+                        <UrlReservation>www.supplier.com/reservation</UrlReservation>
+                        <UrlValuation>www.supplier.com/valuation</UrlValuation>
+                        <UrlGeneric>www.supplier.com/generic</UrlGeneric>
+                        <Parameters>
+                           <Parameter key = "UrlListHoteles" value = "http://www.test.net/scr/searchxml/location.php?"></Parameter>
+                           <Parameter key = "UrlConsulta" value = "https://www.test.net/scr/xml/travelgate.php?"></Parameter>
+                           <Parameter key = "office" value = "55555"></Parameter>
+                           <Parameter key = "password" value = "XXXXXX"></Parameter>
+                        </Parameters>
+                     </Configuration>
+                  </HotelListRQ>
+               </ns:rqXML>
+            </ns:providerRQ>
          </ns:hotelListRQ>
-        </ns:HotelList>
-     </soapenv:Body>
+      </ns:HotelList>
+   </soapenv:Body>
 </soapenv:Envelope>
 ```
 
@@ -96,7 +94,7 @@ If the client requests 1000 hotels, the response may contain a range between 100
 
 :::
 
-**Request variables**
+**1. Indicate the `continuationToken` and `expectedRange` in the Request**
 
 First, in your hotel list request you will add `ContinuationTokentoken` field and specify in `expectedRange` field the number of hotels expected to receive in the response:
 
@@ -106,15 +104,17 @@ First, in your hotel list request you will add `ContinuationTokentoken` field an
 </HotelListRQ>
 ```
 
-You will obtain a response with 1200 hotels per page:
+**2. You will recieve the Response**
 
-**Response**
+You will obtain a response with 1200 hotels per page:
 
 ```xml
 <HotelListRS xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">                
   <ContinuationToken expectedRange = "1200">&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;ContinuationToken&gt;&lt;ContinuationToken&gt;&lt;Version&gt;2.0&lt;/Version&gt;&lt;Type&gt;Table&lt;/Type&gt;&lt;NextPartitionKey&gt;1!24!bG93Y29zdGhvbGlkYXlfWk1U&lt;/NextPartitionKey&gt;&lt;NextRowKey&gt;1!40!bG93Y29zdGhvbGlkYXlfWk1UXzBoNFIlMjNvcXBr&lt;/NextRowKey&gt;&lt;TargetLocation&gt;Primary&lt;/TargetLocation&gt;&lt;/ContinuationToken&gt;&lt;/ContinuationToken&gt;</ContinuationToken>
 </HotelListRS>
 ```
+
+**3. Add the Token in the Request**
 
 This token should be used as input in your next hotel list request, inside the `ContinuationToken` field:
 
@@ -132,46 +132,46 @@ After each request, the Seller will have to process the data and provide a respo
 
 ```xml
 <HotelListRS xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
-  <UpgradeUTCDate>2016-10-18T13:18:03+02:00</UpgradeUTCDate>
-  <Hotels>
-    <Hotel>
-      <Code>5</Code>  
-      <ProviderCode>27</ProviderCode>                          
-      <GiataId source = "http://urlGiata">1200</GiataId>
-      <Name>BADAJOZ</Name>
-      <Address>CTRA.NACIONAL V, KM 393</Address>
-      <Airports>
-        <Airport>
-          <IATACode>BJZ</IATACode>
-        </Airport>
-      </Airports>
-      <Town>BADAJOZ</Town>
-      <ZipCode>06002</ZipCode>
-      <CountryISOCode>ES</CountryISOCode>
-      <AvailDestination code = "06" name = "BADAJOZ"/>
-      <GeographicDestination code = "06" name = "BADAJOZ" avail = "true"/>
-      <Latitude>38.893839</Latitude>
-      <Longitude>-7.014112</Longitude>
-      <Contact>
-        <Email>badajoz@xxx.com</Email>
-        <Telephone>91425891</Telephone>
-        <Fax>910200200</Fax>
-      </Contact>
-      <CategoryCode>4 Estrellas</CategoryCode>
-      <PaymentOptions cash="false" bankAcct="false">
-        <Cards>
-          <Card code="VI"/>
-          <Card code="AX"/>
-          <Card code="CA"/>  
-        </Cards> 
-      </PaymentOptions>               
-      <ExclusiveDeal>true</ExclusiveDeal>     
-      <PropertyCategory>
-        <Code>1</Code>
-        <Name>Hotel</Name>             
-      </PropertyCategory>                 
-    </Hotel>
-  </Hotels>
+   <UpgradeUTCDate>2016-10-18T13:18:03+02:00</UpgradeUTCDate>
+   <Hotels>
+      <Hotel>
+         <Code>5</Code>  
+         <ProviderCode>27</ProviderCode>                          
+         <GiataId source = "http://urlGiata">1200</GiataId>
+         <Name>BADAJOZ</Name>
+         <Address>CTRA.NACIONAL V, KM 393</Address>
+         <Airports>
+            <Airport>
+               <IATACode>BJZ</IATACode>
+            </Airport>
+         </Airports>
+         <Town>BADAJOZ</Town>
+         <ZipCode>06002</ZipCode>
+         <CountryISOCode>ES</CountryISOCode>
+         <AvailDestination code = "06" name = "BADAJOZ"/>
+         <GeographicDestination code = "06" name = "BADAJOZ" avail = "true"/>
+         <Latitude>38.893839</Latitude>
+         <Longitude>-7.014112</Longitude>
+         <Contact>
+            <Email>badajoz@xxx.com</Email>
+            <Telephone>91425891</Telephone>
+            <Fax>910200200</Fax>
+         </Contact>
+         <CategoryCode>4 Estrellas</CategoryCode>
+         <PaymentOptions cash="false" bankAcct="false">
+            <Cards>
+               <Card code="VI"/>
+               <Card code="AX"/>
+               <Card code="CA"/>  
+            </Cards> 
+         </PaymentOptions>               
+         <ExclusiveDeal>true</ExclusiveDeal>     
+         <PropertyCategory>
+            <Code>1</Code>
+            <Name>Hotel</Name>             
+         </PropertyCategory>                 
+      </Hotel>
+   </Hotels>
 </HotelListRS>
 ```
 

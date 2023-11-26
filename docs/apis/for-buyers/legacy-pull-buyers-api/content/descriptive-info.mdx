@@ -16,48 +16,54 @@ The amount of information and content returned might vary between Sellers.
 
 ```xml
 <soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns = "http://schemas.xmltravelgate.com/hub/2012/06" xmlns:wsse = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
-    <soapenv:Header>
-        <wsse:Security>
-            <wsse:UsernameToken>
-                <wsse:Username>username</wsse:Username>
-                <wsse:Password>password</wsse:Password>
-            </wsse:UsernameToken>
-        </wsse:Security>
-    </soapenv:Header>
-    <soapenv:Body>
-        <ns:DescriptiveInfo>
-            <ns:descriptiveInfoRQ>
-                <ns:timeoutMilliseconds>180000</ns:timeoutMilliseconds>
-                <ns:version>1</ns:version>
-                <ns:providerRQ>
-                    <ns:code>code</ns:code>
-                    <ns:id>1</ns:id>
-                    <ns:rqXML>
-                        <DescriptiveInfoRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
-                            <timeoutMilliseconds>20000</timeoutMilliseconds>
-                            <source>
-                                <languageCode>en</languageCode>
-                            </source>
-                            <filterAuditData>
-                                <registerTransactions>false</registerTransactions>
-                            </filterAuditData>
-                            <Configuration>
-                                <User>user</User>
-                                <Password>password</Password>
-                                <UrlGeneric>www.supplier.com</UrlGeneric>
-                                <Parameters>
-                                    <Parameter key = "SegundoPW" value = "PWXML"></Parameter>
-                                </Parameters>
-                            </Configuration>
-                            <Hotel>
-                                <Code>1234AC</Code>
-                            </Hotel>
-                        </DescriptiveInfoRQ>
-                    </ns:rqXML>
-                </ns:providerRQ>
-            </ns:descriptiveInfoRQ>
-        </ns:DescriptiveInfo>
-    </soapenv:Body>
+   <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>username</wsse:Username>
+            <wsse:Password>password</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <ns:DescriptiveInfo>
+         <ns:descriptiveInfoRQ>
+            <ns:timeoutMilliseconds>17900</ns:timeoutMilliseconds>
+            <ns:version>1</ns:version>
+            <ns:providerRQ>
+               <ns:code>suppliercode</ns:code>
+               <ns:id>1</ns:id>
+               <ns:rqXML>
+                  <DescriptiveInfoRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
+                     <timeoutMilliseconds>18000</timeoutMilliseconds>
+                     <source>
+                        <languageCode>en</languageCode>
+                     </source>
+                     <filterAuditData>
+                        <registerTransactions>true</registerTransactions>
+                     </filterAuditData>
+                     <Configuration>
+                        <User>user</User>
+                        <Password>password</Password>
+                        <UrlAvail>www.supplier.com/avail</UrlAvail>
+                        <UrlReservation>www.supplier.com/reservation</UrlReservation>
+                        <UrlValuation>www.supplier.com/valuation</UrlValuation>
+                        <UrlGeneric>www.supplier.com/generic</UrlGeneric>
+                        <Parameters>
+                           <Parameter key = "UrlListHoteles" value = "http://www.test.net/scr/searchxml/location.php?"></Parameter>
+                           <Parameter key = "UrlConsulta" value = "https://www.test.net/scr/xml/travelgate.php?"></Parameter>
+                           <Parameter key = "office" value = "55555"></Parameter>
+                           <Parameter key = "password" value = "XXXXXX"></Parameter>
+                        </Parameters>
+                     </Configuration>
+                     <Hotel>
+                        <Code>1234AC</Code>
+                     </Hotel>
+                  </DescriptiveInfoRQ>
+               </ns:rqXML>
+            </ns:providerRQ>
+         </ns:descriptiveInfoRQ>
+      </ns:DescriptiveInfo>
+   </soapenv:Body>
 </soapenv:Envelope>
 ```
 
@@ -81,135 +87,135 @@ Header y common elements
 
 ```xml
 <DescriptiveInfoRS>
-    <UpgradeUTCDate>2016-10-18T13:18:03+02:00</UpgradeUTCDate>
-    <Hotel>
-        <Code>70</Code>
-        <Name>Nice Stay</Name>
-        <PropertyCategory>
-             <Code>1</Code>
-             <Name>Hotel</Name>
-        </PropertyCategory>
-        <Address>Avenue Doctor Brown S/N</Address>
-        <Airports>
-            <Airport>
-                <IATACode>LON</IATACode>
-            </Airport>
-        </Airports>
-        <Town>London</Town>
-        <ZipCode>21449</ZipCode>
-        <CountryISOCode>UK</CountryISOCode>
-        <AvailDestination code = "2" name = "London"/>
-        <GeographicDestination code = "2" name = "London" avail = "true"/>
-        <LocationType>City</LocationType>
-        <Contact>
-            <Email>emailhotel@xxx.com</Email>
-            <Telephone>91547892</Telephone>
-            <Fax></Fax>
-        </Contact>
-        <BookingContact>
-            <Email>bookinghotel@xxx.com</Email>
-            <Telephone>91547880</Telephone>
-            <Fax>910200200</Fax>
-        </BookingContact>
-        <CategoryCode>4 Stars</CategoryCode>    
-        <ShortDescription>the hotel.....</ShortDescription>
-        <LongDescription>the hotel....</LongDescription>
-        <SituationDescription>....</SituationDescription>
-        <HowToGet></HowToGet>
-        <Attributes>
-            <Attribute>
-                <Code>90</Code>
-                <Classification>GRAL</Classification>
-                <Description>Restaurant</Description>
-            </Attribute>
-            <Attribute>
-                <Code>31</Code>
-                <Classification>HOT</Classification>
-                <Description>Pool</Description>
-            </Attribute>
-        </Attributes>
-        <Images>
-            <Picture>
-                <URL>http://www.images.net/infor/work/imagen/hotel_07/mapa.jpg</URL>
-                <Classification>GRAL</Classification>
-                <Description>Map view</Description>
-                <Ordered>1</Ordered>
-                <Code>50</Code>
-                <UpgradeUTCDate>2016-10-18T13:18:03+02:00</UpgradeUTCDate>
-            </Picture>
-            <Picture>
-                <URL>http://www.images.net/infor/work/imagen/hotel_02/M.jpg</URL>
-                <Classification>GRAL</Classification>
-                <Description>External view</Description>
-                <Ordered>2</Ordered>
-                <Code>100</Code>
-                <UpgradeUTCDate>2016-10-18T13:18:03+02:00</UpgradeUTCDate>
-            </Picture>
-        </Images>
-        <PaymentOptions cash="false" bankAcct="false">
-            <Cards>
-                <Card code="VI"/>
-                <Card code="AX"/>
-                <Card code="CA"/>
-            </Cards>
-        </PaymentOptions>
-        <ExclusiveDeal>true</ExclusiveDeal>
-        <Rooms>
-            <Room code = "201232338" size = "0" viewCode = "Others" classificationCode = "Others" occupancy = "0">
-                <Beds>
-                    <Bed numberOfBeds = "1" type = "SINGLE"/>
-                </Beds>
-                <RoomOccupancy>
-                    <Adults>
-                        <Min>1</Min>
-                        <Max>1</Max>
-                    </Adults>
-                    <Children>
-                        <Min>0</Min>
-                        <Max>0</Max>
-                    </Children>
-                    <Infants>
-                        <Min>0</Min>
-                        <Max>0</Max>
-                    </Infants>
-                    <Total>
-                        <Min>1</Min>
-                        <Max>1</Max>
-                    </Total>
-                </RoomOccupancy>
-                <Attributes>                      
-                    <Attribute>
-                        <Code>2403</Code>
-                        <Classification>HAB</Classification>
-                        <Description>Free WiFi</Description>
-                    </Attribute>
-                    <Attribute>
-                        <Code>318</Code>
-                        <Classification>HAB</Classification>
-                        <Description>Balcony</Description>
-                    </Attribute>
-                </Attributes>
-                <Images>
-                    <Picture>
-                        <Code>01</Code>
-                        <URL>http://www.images.net/infor/work/imagen/hotel_room_02/M.jpg</URL>
-                        <Classification>HAB</Classification>
-                        <Ordered>1</Ordered>
-                        <Description>Room</Description>
-                        <UpgradeUTCDate>0001-01-01T00:00:00</UpgradeUTCDate>
-                    </Picture>
-                </Images>
-                <Description>Standard Single room</Description>
-                <Views>
-                    <View>
-                        <Code>01</Code>
-                        <Name>Sea view</Name>
-                    </View>
-                </Views>
-                <Area>25</Area>
-            </Room>
-        </Rooms>
-    </Hotel>
+   <UpgradeUTCDate>2016-10-18T13:18:03+02:00</UpgradeUTCDate>
+   <Hotel>
+      <Code>70</Code>
+      <Name>Nice Stay</Name>
+      <PropertyCategory>
+         <Code>1</Code>
+         <Name>Hotel</Name>
+      </PropertyCategory>
+      <Address>Avenue Doctor Brown S/N</Address>
+      <Airports>
+         <Airport>
+            <IATACode>LON</IATACode>
+         </Airport>
+      </Airports>
+      <Town>London</Town>
+      <ZipCode>21449</ZipCode>
+      <CountryISOCode>UK</CountryISOCode>
+      <AvailDestination code = "2" name = "London"/>
+      <GeographicDestination code = "2" name = "London" avail = "true"/>
+      <LocationType>City</LocationType>
+      <Contact>
+         <Email>emailhotel@xxx.com</Email>
+         <Telephone>91547892</Telephone>
+         <Fax></Fax>
+      </Contact>
+      <BookingContact>
+         <Email>bookinghotel@xxx.com</Email>
+         <Telephone>91547880</Telephone>
+         <Fax>910200200</Fax>
+      </BookingContact>
+      <CategoryCode>4 Stars</CategoryCode>    
+      <ShortDescription>the hotel.....</ShortDescription>
+      <LongDescription>the hotel....</LongDescription>
+      <SituationDescription>....</SituationDescription>
+      <HowToGet></HowToGet>
+      <Attributes>
+         <Attribute>
+            <Code>90</Code>
+            <Classification>GRAL</Classification>
+            <Description>Restaurant</Description>
+         </Attribute>
+         <Attribute>
+            <Code>31</Code>
+            <Classification>HOT</Classification>
+            <Description>Pool</Description>
+         </Attribute>
+      </Attributes>
+      <Images>
+         <Picture>
+            <URL>http://www.images.net/infor/work/imagen/hotel_07/mapa.jpg</URL>
+            <Classification>GRAL</Classification>
+            <Description>Map view</Description>
+            <Ordered>1</Ordered>
+            <Code>50</Code>
+            <UpgradeUTCDate>2016-10-18T13:18:03+02:00</UpgradeUTCDate>
+         </Picture>
+         <Picture>
+            <URL>http://www.images.net/infor/work/imagen/hotel_02/M.jpg</URL>
+            <Classification>GRAL</Classification>
+            <Description>External view</Description>
+            <Ordered>2</Ordered>
+            <Code>100</Code>
+            <UpgradeUTCDate>2016-10-18T13:18:03+02:00</UpgradeUTCDate>
+         </Picture>
+      </Images>
+      <PaymentOptions cash="false" bankAcct="false">
+         <Cards>
+            <Card code="VI"/>
+            <Card code="AX"/>
+            <Card code="CA"/>
+         </Cards>
+      </PaymentOptions>
+      <ExclusiveDeal>true</ExclusiveDeal>
+      <Rooms>
+         <Room code = "201232338" size = "0" viewCode = "Others" classificationCode = "Others" occupancy = "0">
+            <Beds>
+               <Bed numberOfBeds = "1" type = "SINGLE"/>
+            </Beds>
+            <RoomOccupancy>
+               <Adults>
+                  <Min>1</Min>
+                  <Max>1</Max>
+                </Adults>
+             <Children>
+               <Min>0</Min>
+               <Max>0</Max>
+             </Children>
+             <Infants>
+               <Min>0</Min>
+               <Max>0</Max>
+             </Infants>
+             <Total>
+               <Min>1</Min>
+               <Max>1</Max>
+             </Total>
+           </RoomOccupancy>
+           <Attributes>                      
+              <Attribute>
+                 <Code>2403</Code>
+                 <Classification>HAB</Classification>
+                 <Description>Free WiFi</Description>
+              </Attribute>
+              <Attribute>
+                 <Code>318</Code>
+                 <Classification>HAB</Classification>
+                 <Description>Balcony</Description>
+              </Attribute>
+           </Attributes>
+           <Images>
+              <Picture>
+                 <Code>01</Code>
+                 <URL>http://www.images.net/infor/work/imagen/hotel_room_02/M.jpg</URL>
+                 <Classification>HAB</Classification>
+                 <Ordered>1</Ordered>
+                 <Description>Room</Description>
+                 <UpgradeUTCDate>0001-01-01T00:00:00</UpgradeUTCDate>
+              </Picture>
+           </Images>
+           <Description>Standard Single room</Description>
+           <Views>
+              <View>
+                 <Code>01</Code>
+                 <Name>Sea view</Name>
+              </View>
+            </Views>
+            <Area>25</Area>
+         </Room>
+      </Rooms>
+   </Hotel>
 </DescriptiveInfoRS>
 ```
 
@@ -329,14 +335,13 @@ Header y common elements
 
 ```xml
 <DescriptiveInfoRS>
-    <operationImplemented>true</operationImplemented>
-    <hotel/>
-        <applicationError>
-            <code/>
-            <type>204</type>
-            <description>Supplier returns 0 results in availability.</description>
-            <httpStatusCode>0</httpStatusCode>
-        </applicationError>
+   <operationImplemented>true</operationImplemented>
+   <applicationError>
+      <code/>
+      <type>302</type>
+      <description>Hotel Not Found in DescriptiveInfo.</description>
+      <httpStatusCode>0</httpStatusCode>
+   </applicationError>
 </DescriptiveInfoRS>
 ```
 

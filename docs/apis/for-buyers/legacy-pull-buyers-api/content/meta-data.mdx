@@ -16,51 +16,51 @@ The amount of information and content returned might vary between Sellers.
 
 ```xml
 <soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns = "http://schemas.xmltravelgate.com/hub/2012/06" xmlns:wsse = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
-    <soapenv:Header>
-        <wsse:Security>
-            <wsse:UsernameToken>
-                <wsse:Username>username</wsse:Username>
-                <wsse:Password>password</wsse:Password>
-            </wsse:UsernameToken>
-        </wsse:Security>
-    </soapenv:Header>
-    <soapenv:Body>
-        <ns:MetaData>
-            <ns:metaDataRQ>
-                <ns:timeoutMilliseconds>180000</ns:timeoutMilliseconds>
-                <ns:version>1</ns:version>
-                <ns:providerRQ>
-                    <ns:code>suppliercode</ns:code>
-                    <ns:id>1</ns:id>
-                    <ns:rqXML>
-                        <MetaDataRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
-                            <timeoutMilliseconds>18000</timeoutMilliseconds>
-                            <source>
-                                <languageCode>en</languageCode>
-                            </source>
-                            <filterAuditData>
-                                <registerTransactions>true</registerTransactions>
-                            </filterAuditData>
-                            <Configuration>
-                                <User>user</User>
-                                <Password>password</Password>
-                                <UrlAvail>www.supplier.com/avail</UrlAvail>
-                                <UrlReservation>www.supplier.com/reservation</UrlReservation>
-                                <UrlValuation>www.supplier.com/valuation</UrlValuation>
-                                <UrlGeneric>www.supplier.com/generic</UrlGeneric>
-                                <Parameters>
-                                    <Parameter key = "UrlListHoteles" value = "http://www.test.net/scr/searchxml/location.php?"></Parameter>
-                                    <Parameter key = "UrlConsulta" value = "https://www.test.net/scr/xml/travelgate.php?"></Parameter>
-                                    <Parameter key = "office" value = "55555"></Parameter>
-                                    <Parameter key = "password" value = "XXXXXX"></Parameter>
-                                </Parameters>
-                            </Configuration>
-                        </MetaDataRQ>
-                    </ns:rqXML>
-                </ns:providerRQ>
-            </ns:metaDataRQ>
-        </ns:MetaData>
-    </soapenv:Body>
+   <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>username</wsse:Username>
+            <wsse:Password>password</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <ns:MetaData>
+         <ns:metaDataRQ>
+            <ns:timeoutMilliseconds>17900</ns:timeoutMilliseconds>
+            <ns:version>1</ns:version>
+            <ns:providerRQ>
+               <ns:code>suppliercode</ns:code>
+               <ns:id>1</ns:id>
+               <ns:rqXML>
+                  <MetaDataRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
+                     <timeoutMilliseconds>18000</timeoutMilliseconds>
+                     <source>
+                        <languageCode>en</languageCode>
+                     </source>
+                     <filterAuditData>
+                        <registerTransactions>true</registerTransactions>
+                     </filterAuditData>
+                     <Configuration>
+                        <User>user</User>
+                        <Password>password</Password>
+                        <UrlAvail>www.supplier.com/avail</UrlAvail>
+                        <UrlReservation>www.supplier.com/reservation</UrlReservation>
+                        <UrlValuation>www.supplier.com/valuation</UrlValuation>
+                        <UrlGeneric>www.supplier.com/generic</UrlGeneric>
+                        <Parameters>
+                           <Parameter key = "UrlListHoteles" value = "http://www.test.net/scr/searchxml/location.php?"></Parameter>
+                           <Parameter key = "UrlConsulta" value = "https://www.test.net/scr/xml/travelgate.php?"></Parameter>
+                           <Parameter key = "office" value = "55555"></Parameter>
+                           <Parameter key = "password" value = "XXXXXX"></Parameter>
+                        </Parameters>
+                     </Configuration>
+                  </MetaDataRQ>
+               </ns:rqXML>
+            </ns:providerRQ>
+         </ns:metaDataRQ>
+      </ns:MetaData>
+   </soapenv:Body>
 </soapenv:Envelope>
 ```
 
@@ -79,203 +79,203 @@ Header y common elements
 
 ```xml
 <MetaDataRS>
-    <operationImplemented>true</operationImplemented>
-    <Avail>
-        <Destinations>
-            <MaxNumberHotels reviewDate = "20/06/2022">0</MaxNumberHotels>
-            <MaxNumberHotelsRecommended reviewDate = "20/06/2022">0</MaxNumberHotelsRecommended>
-            <MaxNumberCities reviewDate = "20/06/2022">0</MaxNumberCities>
-            <MaxNumberCitiesRecommended reviewDate = "20/06/2022">0</MaxNumberCitiesRecommended>
-            <MaxNumberZones reviewDate = "20/06/2022">0</MaxNumberZones>
-            <MaxNumberZonesRecommended reviewDate = "20/06/2022">0</MaxNumberZonesRecommended>
-            <MaxNumberGeoCodes reviewDate = "20/06/2022">0</MaxNumberGeoCodes>
-            <MaxNumberGeoCodesRecommended reviewDate = "20/06/2022">0</MaxNumberGeoCodesRecommended>
-            <HotelSameDestinationRestriction reviewDate = "20/06/2022">false</HotelSameDestinationRestriction>
-            <DestinationSameCountryRestriction reviewDate = "20/06/2022">false</DestinationSameCountryRestriction>
-        </Destinations>
-        <AllowsCurrency reviewDate = "20/06/2022">false</AllowsCurrency>
-        <AllowsBusinessRules reviewDate = "20/06/2022">false</AllowsBusinessRules>
-        <NumMarketsAllowed reviewDate = "20/06/2022">0</NumMarketsAllowed>
-        <Release reviewDate = "20/06/2022">0</Release>
-        <MinimumStay reviewDate = "20/06/2022">0</MinimumStay>
-        <MaxStay reviewDate = "20/06/2022">0</MaxStay>
-        <RoomCandidates>
-            <MaxNumberRoomCandidates reviewDate = "20/06/2022">0</MaxNumberRoomCandidates>
-            <PaxTypeRangeInRoomCandidates reviewDate = "20/06/2022">
-                <Candidate max = "3" min = "1" type = "Adult"/>
-                <Candidate max = "2" min = "0" type = "Child"/>
-                <Candidate max = "0" min = "0" type = "Infant"/>
-            </PaxTypeRangeInRoomCandidates>
-            <MaxPaxInRoomCandidates reviewDate = "20/06/2022">0</MaxPaxInRoomCandidates>
-            <MaxPaxInAllRooms reviewDate = "20/06/2022">0</MaxPaxInAllRooms>
-            <RequiredRoomWithSamePaxConfiguration>
-                <SamePaxNumber reviewDate = "20/06/2022">false</SamePaxNumber>
-                <SamePaxAge reviewDate = "20/06/2022">false</SamePaxAge>
-            </RequiredRoomWithSamePaxConfiguration>
-            <AgeRange reviewDate = "11/11/2016">
-                <Age max = "5" min = "2" type = "Child"/>
-            </AgeRange>
-            <RateRules>
-                <RateRule reviewDate = "20/06/2022">NonRefundable</RateRule>
-                <RateRule reviewDate = "20/06/2022">largeFamily</RateRule>
-            </RateRules>
-            <Beds>
-                <InformNumberOfUnits reviewDate = "20/06/2022">false</InformNumberOfUnits>
-                <InformSharedBed reviewDate = "20/06/2022">false</InformSharedBed>
-                <InformBedType reviewDate = "20/06/2022">false</InformBedType>
-                <InformNumberOfBeds reviewDate = "20/06/2022">false</InformNumberOfBeds>
-            </Beds>
-        </RoomCandidates>
-        <InformBindingPrice reviewDate = "20/06/2022">false</InformBindingPrice>
-        <InformCancelPolicies reviewDate = "20/06/2022">false</InformCancelPolicies>
-        <InformRoomCancelPolicies reviewDate = "20/06/2022">false</InformRoomCancelPolicies>
-        <ImplementsCombination reviewDate = "20/06/2022">false</ImplementsCombination>
-        <InformRoomFees reviewDate = "20/06/2022">false</InformRoomFees>
-        <InformRemarks reviewDate = "20/06/2022">false</InformRemarks>
-        <PaymentTypes>
-            <PaymentType reviewDate = "20/06/2022">MerchantPay</PaymentType>
-            <PaymentType reviewDate = "20/06/2022">LaterPay</PaymentType>
-        </PaymentTypes>
-        <OptionTypes>
-            <OptionType reviewDate = "20/06/2022">Hotel</OptionType>
-        </OptionTypes>
-        <Languages>
+   <operationImplemented>true</operationImplemented>
+   <Avail>
+      <Destinations>
+         <MaxNumberHotels reviewDate = "20/06/2022">0</MaxNumberHotels>
+         <MaxNumberHotelsRecommended reviewDate = "20/06/2022">0</MaxNumberHotelsRecommended>
+         <MaxNumberCities reviewDate = "20/06/2022">0</MaxNumberCities>
+         <MaxNumberCitiesRecommended reviewDate = "20/06/2022">0</MaxNumberCitiesRecommended>
+         <MaxNumberZones reviewDate = "20/06/2022">0</MaxNumberZones>
+         <MaxNumberZonesRecommended reviewDate = "20/06/2022">0</MaxNumberZonesRecommended>
+         <MaxNumberGeoCodes reviewDate = "20/06/2022">0</MaxNumberGeoCodes>
+         <MaxNumberGeoCodesRecommended reviewDate = "20/06/2022">0</MaxNumberGeoCodesRecommended>
+         <HotelSameDestinationRestriction reviewDate = "20/06/2022">false</HotelSameDestinationRestriction>
+         <DestinationSameCountryRestriction reviewDate = "20/06/2022">false</DestinationSameCountryRestriction>
+      </Destinations>
+      <AllowsCurrency reviewDate = "20/06/2022">false</AllowsCurrency>
+      <AllowsBusinessRules reviewDate = "20/06/2022">false</AllowsBusinessRules>
+      <NumMarketsAllowed reviewDate = "20/06/2022">0</NumMarketsAllowed>
+      <Release reviewDate = "20/06/2022">0</Release>
+      <MinimumStay reviewDate = "20/06/2022">0</MinimumStay>
+      <MaxStay reviewDate = "20/06/2022">0</MaxStay>
+      <RoomCandidates>
+         <MaxNumberRoomCandidates reviewDate = "20/06/2022">0</MaxNumberRoomCandidates>
+         <PaxTypeRangeInRoomCandidates reviewDate = "20/06/2022">
+            <Candidate max = "3" min = "1" type = "Adult"/>
+            <Candidate max = "2" min = "0" type = "Child"/>
+            <Candidate max = "0" min = "0" type = "Infant"/>
+         </PaxTypeRangeInRoomCandidates>
+         <MaxPaxInRoomCandidates reviewDate = "20/06/2022">0</MaxPaxInRoomCandidates>
+         <MaxPaxInAllRooms reviewDate = "20/06/2022">0</MaxPaxInAllRooms>
+         <RequiredRoomWithSamePaxConfiguration>
+            <SamePaxNumber reviewDate = "20/06/2022">false</SamePaxNumber>
+            <SamePaxAge reviewDate = "20/06/2022">false</SamePaxAge>
+         </RequiredRoomWithSamePaxConfiguration>
+         <AgeRange reviewDate = "11/11/2016">
+            <Age max = "5" min = "2" type = "Child"/>
+         </AgeRange>
+         <RateRules>
+            <RateRule reviewDate = "20/06/2022">NonRefundable</RateRule>
+            <RateRule reviewDate = "20/06/2022">largeFamily</RateRule>
+         </RateRules>
+         <Beds>
+            <InformNumberOfUnits reviewDate = "20/06/2022">false</InformNumberOfUnits>
+            <InformSharedBed reviewDate = "20/06/2022">false</InformSharedBed>
+            <InformBedType reviewDate = "20/06/2022">false</InformBedType>
+            <InformNumberOfBeds reviewDate = "20/06/2022">false</InformNumberOfBeds>
+         </Beds>
+      </RoomCandidates>
+      <InformBindingPrice reviewDate = "20/06/2022">false</InformBindingPrice>
+      <InformCancelPolicies reviewDate = "20/06/2022">false</InformCancelPolicies>
+      <InformRoomCancelPolicies reviewDate = "20/06/2022">false</InformRoomCancelPolicies>
+      <ImplementsCombination reviewDate = "20/06/2022">false</ImplementsCombination>
+      <InformRoomFees reviewDate = "20/06/2022">false</InformRoomFees>
+      <InformRemarks reviewDate = "20/06/2022">false</InformRemarks>
+      <PaymentTypes>
+         <PaymentType reviewDate = "20/06/2022">MerchantPay</PaymentType>
+         <PaymentType reviewDate = "20/06/2022">LaterPay</PaymentType>
+      </PaymentTypes>
+      <OptionTypes>
+         <OptionType reviewDate = "20/06/2022">Hotel</OptionType>
+      </OptionTypes>
+      <Languages>
+         <Language reviewDate = "20/06/2022">en</Language>
+         <Language reviewDate = "20/06/2022">es</Language>
+      </Languages>
+      <InformDailyPrice reviewDate = "20/06/2022">false</InformDailyPrice>
+      <InformDailyRatePlan reviewDate = "20/06/2022">false</InformDailyRatePlan>
+      <InformOffers reviewDate = "20/06/2022">false</InformOffers>
+      <InformNRFRateByRoom reviewDate = "20/06/2022">false</InformNRFRateByRoom>
+      <InformFees reviewDate = "20/06/2022">false</InformFees>
+   </Avail>
+   <Valuation>
+      <AllowsBlockOption reviewDate = "20/06/2022">false</AllowsBlockOption>
+      <InformBindingPrice reviewDate = "20/06/2022">false</InformBindingPrice>
+      <InformNRFRate reviewDate = "20/06/2022">false</InformNRFRate>
+      <InformRemarks reviewDate = "20/06/2022">false</InformRemarks>
+      <InformCancelPolicies reviewDate = "20/06/2022">false</InformCancelPolicies>
+      <InformCancelPoliciesDescription reviewDate = "20/06/2022">false</InformCancelPoliciesDescription>
+      <InformFees reviewDate = "20/06/2022">false</InformFees>
+      <TimeZone reviewDate = "04/01/2022">[eUtc.Utc_Unknown|eUtc.HotelLocalTime|eUtc.Utc_-14|...|eUtc.Utc_0|...|eUtc.Utc_14]</TimeZone>
+   </Valuation>
+   <Reservation>
+      <AllowsDeltaPrice reviewDate = "20/06/2022">false</AllowsDeltaPrice>
+      <InformPropertyReservationNumber reviewDate = "20/06/2022">false</InformPropertyReservationNumber>
+      <RequiredAllPassengers reviewDate = "20/06/2022">false</RequiredAllPassengers>
+      <AllowsRemarks reviewDate = "20/06/2022">false</AllowsRemarks>
+      <AllowsUrlCard reviewDate = "20/06/2022">false</AllowsUrlCard>
+      <InformBillingSupplier reviewDate = "20/06/2022">false</InformBillingSupplier>
+      <InformPrice reviewDate = "20/06/2022">false</InformPrice>
+      <AllowsPreferences>
+         <Preference hotel = "true" room = "false">
+            <PreferenceType>LateArrival</PreferenceType>
+            <Value mandatory = "true" type = "numeric"/>
+         </Preference>
+      </AllowsPreferences>
+   </Reservation>
+   <ReservationRead>
+      <Implements reviewDate = "20/06/2022">false</Implements>
+      <InformPropertyReservationNumber reviewDate = "20/06/2022">false</InformPropertyReservationNumber>
+      <AllowsProvideLocator reviewDate = "20/06/2022">false</AllowsProvideLocator>
+      <AllowsClientLocator reviewDate = "20/06/2022">false</AllowsClientLocator>
+      <InformCancelPolicies reviewDate = "20/06/2022">false</InformCancelPolicies>
+      <InformPriceCancel reviewDate = "20/06/2022">false</InformPriceCancel>
+      <RequiredCheckInDate reviewDate = "18/10/2021">false</RequiredCheckInDate>
+      <RequiredCheckOutDate reviewDate = "18/10/2021">false</RequiredCheckOutDate>
+      <RequiredReservationDate reviewDate = "18/10/2021">false</RequiredReservationDate>
+   </ReservationRead>
+   <ReservationList>
+      <Implements reviewDate = "20/06/2022">false</Implements>
+      <InformPropertyReservationNumber reviewDate = "20/06/2022">false</InformPropertyReservationNumber>
+      <AllowsCreationDate reviewDate = "20/06/2022">false</AllowsCreationDate>
+      <AllowsCheckDate reviewDate = "20/06/2022">false</AllowsCheckDate>
+      <InformCancelPolicies reviewDate = "20/06/2022">false</InformCancelPolicies>
+      <InformPriceCancel reviewDate = "20/06/2022">false</InformPriceCancel>
+   </ReservationList>
+   <Cancel>
+      <Implements reviewDate = "20/06/2022">false</Implements>
+      <AllowsProvideLocator reviewDate = "20/06/2022">false</AllowsProvideLocator>
+      <AllowsClientLocator reviewDate = "20/06/2022">false</AllowsClientLocator>
+      <InformPriceCancel reviewDate = "20/06/2022">false</InformPriceCancel>
+   </Cancel>
+   <Batch>
+      <InformExclusiveDeal reviewDate = "20/06/2022">false</InformExclusiveDeal>
+      <HotelList>
+         <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
+         <Languages>
             <Language reviewDate = "20/06/2022">en</Language>
             <Language reviewDate = "20/06/2022">es</Language>
-        </Languages>
-        <InformDailyPrice reviewDate = "20/06/2022">false</InformDailyPrice>
-        <InformDailyRatePlan reviewDate = "20/06/2022">false</InformDailyRatePlan>
-        <InformOffers reviewDate = "20/06/2022">false</InformOffers>
-        <InformNRFRateByRoom reviewDate = "20/06/2022">false</InformNRFRateByRoom>
-        <InformFees reviewDate = "20/06/2022">false</InformFees>
-    </Avail>
-    <Valuation>
-        <AllowsBlockOption reviewDate = "20/06/2022">false</AllowsBlockOption>
-        <InformBindingPrice reviewDate = "20/06/2022">false</InformBindingPrice>
-        <InformNRFRate reviewDate = "20/06/2022">false</InformNRFRate>
-        <InformRemarks reviewDate = "20/06/2022">false</InformRemarks>
-        <InformCancelPolicies reviewDate = "20/06/2022">false</InformCancelPolicies>
-        <InformCancelPoliciesDescription reviewDate = "20/06/2022">false</InformCancelPoliciesDescription>
-        <InformFees reviewDate = "20/06/2022">false</InformFees>
-        <TimeZone reviewDate = "04/01/2022">[eUtc.Utc_Unknown|eUtc.HotelLocalTime|eUtc.Utc_-14|...|eUtc.Utc_0|...|eUtc.Utc_14]</TimeZone>
-    </Valuation>
-    <Reservation>
-        <AllowsDeltaPrice reviewDate = "20/06/2022">false</AllowsDeltaPrice>
-        <InformPropertyReservationNumber reviewDate = "20/06/2022">false</InformPropertyReservationNumber>
-        <RequiredAllPassengers reviewDate = "20/06/2022">false</RequiredAllPassengers>
-        <AllowsRemarks reviewDate = "20/06/2022">false</AllowsRemarks>
-        <AllowsUrlCard reviewDate = "20/06/2022">false</AllowsUrlCard>
-        <InformBillingSupplier reviewDate = "20/06/2022">false</InformBillingSupplier>
-        <InformPrice reviewDate = "20/06/2022">false</InformPrice>
-        <AllowsPreferences>
-            <Preference hotel = "true" room = "false">
-                <PreferenceType>LateArrival</PreferenceType>
-                <Value mandatory = "true" type = "numeric"/>
-            </Preference>
-        </AllowsPreferences>
-    </Reservation>
-    <ReservationRead>
-        <Implements reviewDate = "20/06/2022">false</Implements>
-        <InformPropertyReservationNumber reviewDate = "20/06/2022">false</InformPropertyReservationNumber>
-        <AllowsProvideLocator reviewDate = "20/06/2022">false</AllowsProvideLocator>
-        <AllowsClientLocator reviewDate = "20/06/2022">false</AllowsClientLocator>
-        <InformCancelPolicies reviewDate = "20/06/2022">false</InformCancelPolicies>
-        <InformPriceCancel reviewDate = "20/06/2022">false</InformPriceCancel>
-        <RequiredCheckInDate reviewDate = "18/10/2021">false</RequiredCheckInDate>
-        <RequiredCheckOutDate reviewDate = "18/10/2021">false</RequiredCheckOutDate>
-        <RequiredReservationDate reviewDate = "18/10/2021">false</RequiredReservationDate>
-    </ReservationRead>
-    <ReservationList>
-        <Implements reviewDate = "20/06/2022">false</Implements>
-        <InformPropertyReservationNumber reviewDate = "20/06/2022">false</InformPropertyReservationNumber>
-        <AllowsCreationDate reviewDate = "20/06/2022">false</AllowsCreationDate>
-        <AllowsCheckDate reviewDate = "20/06/2022">false</AllowsCheckDate>
-        <InformCancelPolicies reviewDate = "20/06/2022">false</InformCancelPolicies>
-        <InformPriceCancel reviewDate = "20/06/2022">false</InformPriceCancel>
-    </ReservationList>
-    <Cancel>
-        <Implements reviewDate = "20/06/2022">false</Implements>
-        <AllowsProvideLocator reviewDate = "20/06/2022">false</AllowsProvideLocator>
-        <AllowsClientLocator reviewDate = "20/06/2022">false</AllowsClientLocator>
-        <InformPriceCancel reviewDate = "20/06/2022">false</InformPriceCancel>
-    </Cancel>
-    <Batch>
-        <InformExclusiveDeal reviewDate = "20/06/2022">false</InformExclusiveDeal>
-        <HotelList>
-            <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
-            <Languages>
-                <Language reviewDate = "20/06/2022">en</Language>
-                <Language reviewDate = "20/06/2022">es</Language>
-            </Languages>
-        </HotelList>
-        <DescriptiveInfo>
-            <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
-            <Languages>
-                <Language reviewDate = "20/06/2022">en</Language>
-                <Language reviewDate = "20/06/2022">es</Language>
-            </Languages>
-        </DescriptiveInfo>
-        <GeographicDestinationTree>
-            <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
-            <Languages>
-                <Language reviewDate = "20/06/2022">en</Language>
-                <Language reviewDate = "20/06/2022">es</Language>
-            </Languages>
-        </GeographicDestinationTree>
-        <AvailDestinationTree>
-            <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
-            <Languages>
-                <Language reviewDate = "20/06/2022">en</Language>
-            </Languages>
-        </AvailDestinationTree>
-        <RoomList>
-            <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
-            <Languages>
-                <Language reviewDate = "20/06/2022">en</Language>
-                <Language reviewDate = "20/06/2022">es</Language>
-            </Languages>
-        </RoomList>
-        <MealPlanList>
-            <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
-            <Languages>
-                <Language reviewDate = "20/06/2022">en</Language>
-                <Language reviewDate = "20/06/2022">es</Language>
-            </Languages>
-        </MealPlanList>
-        <CategoryList>
-            <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
-            <Languages>
-                <Language reviewDate = "20/06/2022">en</Language>
-                <Language reviewDate = "20/06/2022">es</Language>
-            </Languages>
-        </CategoryList>
-        <DescriptiveInfoExtended>
-            <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
-            <Languages>
-                <Language reviewDate = "20/06/2022">en</Language>
-                <Language reviewDate = "20/06/2022">es</Language>
-            </Languages>
-        </DescriptiveInfoExtended>
-        <MarketList>
-            <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
-            <Languages>
-                <Language reviewDate = "20/06/2022">en</Language>
-                <Language reviewDate = "20/06/2022">es</Language>
-            </Languages>
-        </MarketList>
-        <CurrencyList>
-            <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
-            <Languages>
-                <Language reviewDate = "20/06/2022">en</Language>
-                <Language reviewDate = "20/06/2022">es</Language>
-            </Languages>
-        </CurrencyList>
-    </Batch>
-    <Generic>
-        <RequiredNationality reviewDate = "20/06/2022">false</RequiredNationality>
-        <AllowsNationality reviewDate = "20/06/2022">true</AllowsNationality>
-        <AllowsOnRequest reviewDate = "20/06/2022">false</AllowsOnRequest>
-    </Generic>
+         </Languages>
+      </HotelList>
+      <DescriptiveInfo>
+         <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
+         <Languages>
+            <Language reviewDate = "20/06/2022">en</Language>
+            <Language reviewDate = "20/06/2022">es</Language>
+         </Languages>
+      </DescriptiveInfo>
+      <GeographicDestinationTree>
+         <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
+         <Languages>
+            <Language reviewDate = "20/06/2022">en</Language>
+            <Language reviewDate = "20/06/2022">es</Language>
+         </Languages>
+      </GeographicDestinationTree>
+      <AvailDestinationTree>
+         <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
+         <Languages>
+            <Language reviewDate = "20/06/2022">en</Language>
+         </Languages>
+      </AvailDestinationTree>
+      <RoomList>
+         <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
+         <Languages>
+            <Language reviewDate = "20/06/2022">en</Language>
+            <Language reviewDate = "20/06/2022">es</Language>
+         </Languages>
+      </RoomList>
+      <MealPlanList>
+         <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
+         <Languages>
+            <Language reviewDate = "20/06/2022">en</Language>
+            <Language reviewDate = "20/06/2022">es</Language>
+         </Languages>
+      </MealPlanList>
+      <CategoryList>
+         <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
+         <Languages>
+            <Language reviewDate = "20/06/2022">en</Language>
+            <Language reviewDate = "20/06/2022">es</Language>
+         </Languages>
+      </CategoryList>
+      <DescriptiveInfoExtended>
+         <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
+         <Languages>
+            <Language reviewDate = "20/06/2022">en</Language>
+            <Language reviewDate = "20/06/2022">es</Language>
+         </Languages>
+      </DescriptiveInfoExtended>
+      <MarketList>
+         <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
+         <Languages>
+            <Language reviewDate = "20/06/2022">en</Language>
+            <Language reviewDate = "20/06/2022">es</Language>
+         </Languages>
+      </MarketList>
+      <CurrencyList>
+         <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
+         <Languages>
+            <Language reviewDate = "20/06/2022">en</Language>
+            <Language reviewDate = "20/06/2022">es</Language>
+         </Languages>
+      </CurrencyList>
+   </Batch>
+   <Generic>
+      <RequiredNationality reviewDate = "20/06/2022">false</RequiredNationality>
+      <AllowsNationality reviewDate = "20/06/2022">true</AllowsNationality>
+      <AllowsOnRequest reviewDate = "20/06/2022">false</AllowsOnRequest>
+   </Generic>
 </MetaDataRS>
 ```
 

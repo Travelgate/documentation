@@ -6,62 +6,72 @@ sidebar_position: 2
 
 Reservation List allows you to obtain a list of bookings that were made within a specific arrival date range or a specific booking date range. The returned fields for each booking in the list include: `Locators`, `Hotel`, `TransactionStatus`, `Holder`, `Price` etc.
 
+:::caution
+
+The amount of information returned might vary between Sellers.
+
+:::
+
 ## ReservationList Request
 
-
 ```xml
-<soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" 
-    xmlns:ns = "http://schemas.xmltravelgate.com/hub/2012/06" 
-    xmlns:wsse = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
-      <soapenv:Header>
-        <wsse:Security>
-          <wsse:UsernameToken>
+<soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns = "http://schemas.xmltravelgate.com/hub/2012/06" xmlns:wsse = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+   <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
             <wsse:Username>username</wsse:Username>
             <wsse:Password>password</wsse:Password>
-          </wsse:UsernameToken>
-        </wsse:Security>
-      </soapenv:Header>
-      <soapenv:Body>
-        <ns:ReservationList>
-          <ns:reservationListRQ>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <ns:ReservationList>
+         <ns:reservationListRQ>
             <ns:timeoutMilliseconds>17900</ns:timeoutMilliseconds>
             <ns:version>1</ns:version>
             <ns:providerRQ>
-              <ns:code>suppliercode</ns:code>
-              <ns:id>1</ns:id>
-              <ns:rqXML>
-                <ReservationListRQ>
-                  <timeoutMilliseconds>18000</timeoutMilliseconds>
-                  <source>
-                    <languageCode>en</languageCode>
-                  </source>
-                  <filterAuditData>
-                    <registerTransactions>true</registerTransactions>
-                  </filterAuditData>
-                  <Configuration>
-                    <User>user</User>
-                    <Password>password</Password>
-                    <UrlAvail>www.supplier.com/avail</UrlAvail>
-                    <UrlReservation>www.supplier.com/reservation</UrlReservation>
-                    <UrlValuation>www.supplier.com/valuation</UrlValuation>
-                    <UrlGeneric>www.supplier.com/generic</UrlGeneric>
-                    <Parameters>
-                      <Parameter key = "UrlListHoteles" value = "http://www.test.net/scr/searchxml/location.php?"></Parameter>
-                      <Parameter key = "UrlConsulta" value = "https://www.test.net/scr/xml/travelgate.php?"></Parameter>
-                      <Parameter key = "office" value = "55555"></Parameter>
-                      <Parameter key = "password" value = "XXXXXX"></Parameter>
-                    </Parameters>
-                  </Configuration>
-                  <DateType>A</DateType>
-                  <Start>28/11/2014</Start>
-                  <End>28/11/2014</End>
-                </ReservationListRQ>
-              </ns:rqXML>
+               <ns:code>suppliercode</ns:code>
+               <ns:id>1</ns:id>
+               <ns:rqXML>
+                  <ReservationListRQ>
+            <ns:timeoutMilliseconds>17900</ns:timeoutMilliseconds>
+            <ns:version>1</ns:version>
+            <ns:providerRQ>
+               <ns:code>suppliercode</ns:code>
+               <ns:id>1</ns:id>
+               <ns:rqXML>
+                  <AvailRQ>
+                      <timeoutMilliseconds>18000</timeoutMilliseconds>
+                     <source>
+                        <languageCode>en</languageCode>
+                     </source>
+                     <filterAuditData>
+                        <registerTransactions>true</registerTransactions>
+                     </filterAuditData>
+                     <Configuration>
+                        <User>user</User>
+                        <Password>password</Password>
+                        <UrlAvail>www.supplier.com/avail</UrlAvail>
+                        <UrlReservation>www.supplier.com/reservation</UrlReservation>
+                        <UrlValuation>www.supplier.com/valuation</UrlValuation>
+                        <UrlGeneric>www.supplier.com/generic</UrlGeneric>
+                        <Parameters>
+                           <Parameter key = "UrlListHoteles" value = "http://www.test.net/scr/searchxml/location.php?"></Parameter>
+                           <Parameter key = "UrlConsulta" value = "https://www.test.net/scr/xml/travelgate.php?"></Parameter>
+                           <Parameter key = "office" value = "55555"></Parameter>
+                           <Parameter key = "password" value = "XXXXXX"></Parameter>
+                        </Parameters>
+                     </Configuration>
+                     <DateType>A</DateType>
+                     <Start>28/11/2014</Start>
+                     <End>28/11/2014</End>
+                  </ReservationListRQ>
+               </ns:rqXML>
             </ns:providerRQ>
-          </ns:reservationListRQ>
-        </ns:ReservationList>
-      </soapenv:Body>
-    </soapenv:Envelope>
+         </ns:reservationListRQ>
+      </ns:ReservationList>
+   </soapenv:Body>
+</soapenv:Envelope>
 ```
 
 ### Request Data Breakdown
@@ -82,87 +92,89 @@ Header y common elements
 
 ## ReservationList Response
 
+### Success
+
 ```xml
 <ReservationListRS>
-    <Reservations>
-        <Reservation>
-            <auditData>
-                <timeStamp>2014-01-21T15:12:12.0558866+00:00</timeStamp>
-                <processTimeMilliseconds>0</processTimeMilliseconds>
-            </auditData>
-            <operationImplemented>true</operationImplemented>
-            <Locators>
-                <Client>2196</Client>
-                <Provider>1AAAA966</Provider>
-                <Property>HCN8273</Property>
-            </Locators>
-            <Hotel>
-                <Name>LAS VEGAS (BENIDORM)</Name>
-                <Code>58475</Code>
-                <CreationDate>30/09/2013</CreationDate>
-                <StartDate>25/01/2014</StartDate>
-                <EndDate>16/02/2014</EndDate>
-                <Holder name = "AAAA" surname = "Test"/>
-                <Price currency = "EUR" amount = "658.94" binding = "false" commission = "-1"/>
-                <Rooms>
-                    <Room id = "27441" roomCandidateRefId = "1" description = "Doble Standard"/>
-                </Rooms>
-                <CancelPenalties nonRefundable = "false">
-                    <CancelPenalty>
-                        <HoursBefore>72</HoursBefore>
-                        <Deadline>2014-01-01T05:00:00Z</Deadline>
-                        <CalculatedDeadline>false</CalculatedDeadline>
-                        <Penalty type = "Importe" paymentType = "pagoMinorista" currency = "EUR">29.95</Penalty>
-                    </CancelPenalty>
-                </CancelPenalties>
-            </Hotel>
-            <TransactionStatus>
-                <ComunicationStatus>OK</ComunicationStatus>
-                <RSStatus>EXISTE</RSStatus>
-                <ResStatus>OK</ResStatus>
-            </TransactionStatus>
-        </Reservation>
-        <Reservation>
-            <auditData>
-                <timeStamp>2014-01-21T15:12:12.6657414+00:00</timeStamp>
-                <processTimeMilliseconds>0</processTimeMilliseconds>
-            </auditData>
-            <operationImplemented>true</operationImplemented>
-            <Locators>
-                <Client>2578478</Client>
-                <Provider>10TTT31</Provider>
-            </Locators>
-            <Hotel>
-                <Name>LEO</Name>
-                <Code>10</Code>
-                <CreationDate>17/01/2014</CreationDate>
-                <StartDate>28/01/2014</StartDate>
-                <EndDate>29/01/2014</EndDate>
-                <Holder name = "Test11" surname = "TestAp11"/>
-                <Price currency = "EUR" amount = "36.20" binding = "false" commission = "-1"/>
-                <Rooms>
-                    <Room id = "4582" roomCandidateRefId = "1" description = "Doble Standard.."/>
-                </Rooms>
-                <CancelPenalties nonRefundable = "false">
-                    <CancelPenalty>
-                        <HoursBefore>120</HoursBefore>
-                        <Deadline>2014-01-01T05:00:00Z</Deadline>
-                        <CalculatedDeadline>false</CalculatedDeadline>
-                        <Penalty type = "Importe" paymentType = "pagoMinorista" currency = "EUR">72.40</Penalty>
-                    </CancelPenalty>
-                </CancelPenalties>
-            </Hotel>
-            <TransactionStatus>
-                <ComunicationStatus>OK</ComunicationStatus>
-                <RSStatus>EXISTE</RSStatus>
-                <ResStatus>OK</ResStatus>
-            </TransactionStatus>
-        </Reservation>
-    </Reservations>
+   <Reservations>
+      <Reservation>
+         <auditData>
+            <timeStamp>2014-01-21T15:12:12.0558866+00:00</timeStamp>
+            <processTimeMilliseconds>0</processTimeMilliseconds>
+         </auditData>
+         <operationImplemented>true</operationImplemented>
+         <Locators>
+            <Client>2196</Client>
+            <Provider>1AAAA966</Provider>
+            <Property>HCN8273</Property>
+         </Locators>
+         <Hotel>
+            <Name>LAS VEGAS (BENIDORM)</Name>
+            <Code>58475</Code>
+            <CreationDate>30/09/2013</CreationDate>
+            <StartDate>25/01/2014</StartDate>
+            <EndDate>16/02/2014</EndDate>
+            <Holder name = "name" surname = "surname"/>
+            <Price currency = "EUR" amount = "658.94" binding = "false" commission = "-1"/>
+            <Rooms>
+               <Room id = "27441" roomCandidateRefId = "1" description = "Doble Standard"/>
+            </Rooms>
+            <CancelPenalties nonRefundable = "false">
+               <CancelPenalty>
+                  <HoursBefore>72</HoursBefore>
+                  <Deadline>2014-01-01T05:00:00Z</Deadline>
+                  <CalculatedDeadline>false</CalculatedDeadline>
+                  <Penalty type = "Importe" paymentType = "pagoMinorista" currency = "EUR">29.95</Penalty>
+               </CancelPenalty>
+            </CancelPenalties>
+         </Hotel>
+         <TransactionStatus>
+            <ComunicationStatus>OK</ComunicationStatus>
+            <RSStatus>EXISTE</RSStatus>
+            <ResStatus>OK</ResStatus>
+         </TransactionStatus>
+      </Reservation>
+      <Reservation>
+         <auditData>
+            <timeStamp>2014-01-21T15:12:12.6657414+00:00</timeStamp>
+            <processTimeMilliseconds>0</processTimeMilliseconds>
+         </auditData>
+         <operationImplemented>true</operationImplemented>
+         <Locators>
+            <Client>2578478</Client>
+            <Provider>10TTT31</Provider>
+         </Locators>
+         <Hotel>
+            <Name>LEO</Name>
+            <Code>10</Code>
+            <CreationDate>17/01/2014</CreationDate>
+            <StartDate>28/01/2014</StartDate>
+            <EndDate>29/01/2014</EndDate>
+            <Holder name = "name" surname = "surname"/>
+            <Price currency = "EUR" amount = "36.20" binding = "false" commission = "-1"/>
+            <Rooms>
+               <Room id = "4582" roomCandidateRefId = "1" description = "Doble Standard.."/>
+            </Rooms>
+            <CancelPenalties nonRefundable = "false">
+               <CancelPenalty>
+                  <HoursBefore>120</HoursBefore>
+                  <Deadline>2014-01-01T05:00:00Z</Deadline>
+                  <CalculatedDeadline>false</CalculatedDeadline>
+                  <Penalty type = "Importe" paymentType = "pagoMinorista" currency = "EUR">72.40</Penalty>
+               </CancelPenalty>
+            </CancelPenalties>
+         </Hotel>
+         <TransactionStatus>
+            <ComunicationStatus>OK</ComunicationStatus>
+            <RSStatus>EXISTE</RSStatus>
+            <ResStatus>OK</ResStatus>
+         </TransactionStatus>
+      </Reservation>
+   </Reservations>
 </ReservationListRS>
 ```
 
-### Response Data Breakdown
+### Success Response Data Breakdown
 
 | Element					| Rel	| Type | Description				|
 | --------------------------------------------- | ------------- | -------- | ------------------------------------------ |
@@ -217,3 +229,87 @@ Header y common elements
 | TransactionStatus/ComunicationStatus	| 1    		| String	| Status communication (OFFLINE, OK and KO).	|
 | TransactionStatus/RSStatus		| 1    		| String	| <details>     <summary>Response Status</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Status</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>DESCONOCIDO</td>  						 <td>Unknown</td>  					 </tr>  					 <tr>  						 <td>EXISTE</td>  						 <td>Exists</td>  					 </tr>           <tr>  						 <td>EXISTECANCELADA</td>  						 <td>exists but it's cancelled</td>  					 </tr>				 <tr>  						 <td>NO_EXISTE</td>  						 <td>Does not exist</td>  					 </tr>       </tbody>  			</table>         </div>     </div> </details>|
 | TransactionStatus/ResStatus		| 1    		| String	| <details>     <summary>Reservation Status</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Status Code</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>OK</td>  						 <td>The reservation was completed with no problems.</td>  					 </tr>  					 <tr>  						 <td>RQ</td>  						 <td>The reservation was completed but the product is still not available, so the reservation goes into a waiting list (Request).</td>  					 </tr>           <tr>  						 <td>CN</td>  						 <td>The reservation was completed but due to a supplier error or a timeout the system will immediately cancel the reservation to prevent further possible errors.</td>  					 </tr>				 <tr>  						 <td>UN</td>  						 <td>The reservation was completed but due to a supplier error or a timeout, the reservation status is unknown. It is the client’s responsibility to check if the booking is OK.</td>  					 </tr>       </tbody>  			</table>         </div>     </div> </details>|
+
+### Error
+
+```xml
+<ReservationListRS>
+   <operationImplemented>true</operationImplemented>
+   <applicationError>
+      <code/>
+      <type>105</type>
+      <description>Communication Error.</description>
+      <httpStatusCode>0</httpStatusCode>
+   </applicationError>
+</ReservationListRS>
+```
+
+<details>
+    <summary>Error codes that will be included in the response in the event of an error</summary>
+    <div>
+        <div>
+         <table>
+				<thead>
+					<tr>
+						<th>
+							<strong>Error Code</strong>
+						</th>
+						<th>
+							<strong>Error Description</strong>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>101</td>
+						<td>System Exception (Exception not controlled or not classified as general exception).</td>
+					</tr>
+					<tr>
+						<td>102</td>
+						<td>Supplier Error.</td>
+					</tr>
+					<tr>
+						<td>103</td>
+						<td>Too many requests to the supplier.</td>
+					</tr>
+          <tr>
+						<td>104</td>
+						<td>Timeout (Timeout during the execution of an operation (look in the common attribute timeout )).</td>
+					</tr>
+					<tr>
+						<td>105</td>
+						<td>Communication Error.</td>
+					</tr>
+					<tr>
+						<td>204</td>
+						<td>Supplier returns 0 results in availability.</td>
+					</tr>
+                    <tr>
+						<td>205</td>
+						<td>The Supplier doesn’t accept the distribution RQ.</td>
+					</tr>
+					<tr>
+						<td>206</td>
+						<td>The Supplier doesn’t accept the dates RQ.</td>
+					</tr>
+					<tr>
+						<td>207</td>
+						<td>The Supplier doesn’t accept the request RQ.</td>
+					</tr>
+          <tr>
+						<td>301</td>
+						<td>Option not found in policies.</td>
+					</tr>
+          <tr>
+						<td>302</td>
+						<td>Hotel Not Found in DescriptiveInfo.</td>
+					</tr>
+          <tr>
+						<td>303</td>
+						<td>Booking not confirmed in the supplier’s system.</td>
+					</tr>
+				</tbody>
+			</table>
+        </div>
+    </div>
+</details>

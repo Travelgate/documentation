@@ -6,88 +6,105 @@ sidebar_position: 3
 
 Valuation operation evaluates the rate before reservation, providing the same information as the Avail response for a hotel rate, including up-to-date pricing. Additionally, it offers further details such as rate breakdown and cancellation policies. The returned fields include: `Status`, `Price`, `CancelPenalities`, `Fees`, `PaymentOptions` etc.
 
-## Request
+:::caution
+
+The amount of information returned might vary between Sellers.
+
+:::
+
+:::caution Suppliers with block allotment
+
+There are some suppliers who use block allotments, sometimes called pre-confirmation or quote. In that case, you will have 30 minutes to complete the booking, if not, you will have to re-launch Valuation 30 minutes after the last request, normally just before booking request.
+
+:::
+
+## Valuation Request
 
 ```xml
-<soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" 
-    xmlns:ns = "http://schemas.xmltravelgate.com/hub/2012/06" 
-    xmlns:wsse = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
-      <soapenv:Header>
-        <wsse:Security>
-          <wsse:UsernameToken>
+<soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns = "http://schemas.xmltravelgate.com/hub/2012/06" xmlns:wsse = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+   <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
             <wsse:Username>username</wsse:Username>
             <wsse:Password>password</wsse:Password>
-          </wsse:UsernameToken>
-        </wsse:Security>
-      </soapenv:Header>
-      <soapenv:Body>
-        <ns:Valuation>
-          <ns:valuationRQ>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <ns:Valuation>
+         <ns:valuationRQ>
             <ns:timeoutMilliseconds>17900</ns:timeoutMilliseconds>
             <ns:version>1</ns:version>
             <ns:providerRQ>
-              <ns:code>suppliercode</ns:code>
-              <ns:id>1</ns:id>
-              <ns:rqXML>
-                <ValuationRQ>
-                  <timeoutMilliseconds>18000</timeoutMilliseconds>
-                  <source>
-                    <languageCode>en</languageCode>
-                  </source>
-                  <filterAuditData>
-                    <registerTransactions>true</registerTransactions>
-                  </filterAuditData>
-                  <Configuration>
-                    <User>user</User>
-                    <Password>password</Password>
-                    <UrlAvail>www.supplier.com/avail</UrlAvail>
-                    <UrlReservation>www.supplier.com/reservation</UrlReservation>
-                    <UrlValuation>www.supplier.com/valuation</UrlValuation>
-                    <UrlGeneric>www.supplier.com/generic</UrlGeneric>
-                    <Parameters>
-                      <Parameter key = "UrlListHoteles" value = "http://www.test.net/scr/searchxml/location.php?"></Parameter>
-                      <Parameter key = "UrlConsulta" value = "https://www.test.net/scr/xml/travelgate.php?"></Parameter>
-                      <Parameter key = "office" value = "55555"></Parameter>
-                      <Parameter key = "password" value = "XXXXXX"></Parameter>
-                    </Parameters>
-                  </Configuration>
-                  <StartDate>04/07/2016</StartDate>
-                  <EndDate>11/07/2016</EndDate>
-                  <MealPlanCode>15</MealPlanCode>
-                  <HotelCode>6259</HotelCode>
-                  <PaymentType>MerchantPay</PaymentType>
-                  <OptionType>Hotel</OptionType>
-                  <OnRequest>false</OnRequest>
-                  <BlockOption>false</BlockOption>
-                  <Nationality>ES</Nationality>
-                  <Parameters>
-                      <Parameter key = "ID1" value = "ID#1#VR"/>
-                      <Parameter key = "ID2" value = "ID#2#FGR#45187#10-5"/>
-                      <Parameter key = "PSR" value = "511.28"/>
-                  </Parameters>
-                  <Rooms>
-                      <Room id = "ITD10" roomCandidateRefId = "1" code = "TW" description = "Twinn"/>
-                      <Room id = "IOG22" roomCandidateRefId = "2" code = "IND" description = "Individual"/>
-                  </Rooms>
-                  <RoomCandidates>
-                      <RoomCandidate id = "1">
-                          <Paxes>
+               <ns:code>suppliercode</ns:code>
+               <ns:id>1</ns:id>
+               <ns:rqXML>
+                  <ValuationRQ>
+            <ns:timeoutMilliseconds>17900</ns:timeoutMilliseconds>
+            <ns:version>1</ns:version>
+            <ns:providerRQ>
+               <ns:code>suppliercode</ns:code>
+               <ns:id>1</ns:id>
+               <ns:rqXML>
+                  <AvailRQ>
+                      <timeoutMilliseconds>18000</timeoutMilliseconds>
+                     <source>
+                        <languageCode>en</languageCode>
+                     </source>
+                     <filterAuditData>
+                        <registerTransactions>true</registerTransactions>
+                     </filterAuditData>
+                     <Configuration>
+                        <User>user</User>
+                        <Password>password</Password>
+                        <UrlAvail>www.supplier.com/avail</UrlAvail>
+                        <UrlReservation>www.supplier.com/reservation</UrlReservation>
+                        <UrlValuation>www.supplier.com/valuation</UrlValuation>
+                        <UrlGeneric>www.supplier.com/generic</UrlGeneric>
+                        <Parameters>
+                           <Parameter key = "UrlListHoteles" value = "http://www.test.net/scr/searchxml/location.php?"></Parameter>
+                           <Parameter key = "UrlConsulta" value = "https://www.test.net/scr/xml/travelgate.php?"></Parameter>
+                           <Parameter key = "office" value = "55555"></Parameter>
+                           <Parameter key = "password" value = "XXXXXX"></Parameter>
+                        </Parameters>
+                     </Configuration>
+                     <StartDate>04/07/2016</StartDate>
+                     <EndDate>11/07/2016</EndDate>
+                     <MealPlanCode>15</MealPlanCode>
+                     <HotelCode>6259</HotelCode>
+                     <PaymentType>MerchantPay</PaymentType>
+                     <OptionType>Hotel</OptionType>
+                     <OnRequest>false</OnRequest>
+                     <BlockOption>false</BlockOption>
+                     <Nationality>ES</Nationality>
+                     <Parameters>
+                        <Parameter key = "ID1" value = "ID#1#VR"/>
+                        <Parameter key = "ID2" value = "ID#2#FGR#45187#10-5"/>
+                        <Parameter key = "PSR" value = "511.28"/>
+                     </Parameters>
+                     <Rooms>
+                        <Room id = "ITD10" roomCandidateRefId = "1" code = "TW" description = "Twinn"/>
+                        <Room id = "IOG22" roomCandidateRefId = "2" code = "IND" description = "Individual"/>
+                     </Rooms>
+                     <RoomCandidates>
+                        <RoomCandidate id = "1">
+                           <Paxes>
                               <Pax age = "30" id = "1"/>
                               <Pax age = "30" id = "2"/>
-                          </Paxes>
-                      </RoomCandidate>
-                      <RoomCandidate id = "2">
-                          <Paxes>
+                           </Paxes>
+                        </RoomCandidate>
+                        <RoomCandidate id = "2">
+                           <Paxes>
                               <Pax age = "30" id = "1"/>
-                          </Paxes>
-                      </RoomCandidate>
-                  </RoomCandidates>
-                </ValuationRQ>
-              </ns:rqXML>
+                           </Paxes>
+                        </RoomCandidate>
+                     </RoomCandidates>
+                  </ValuationRQ>
+               </ns:rqXML>
             </ns:providerRQ>
-          </ns:valuationRQ>
-        </ns:Valuation>
-      </soapenv:Body>
+         </ns:valuationRQ>
+      </ns:Valuation>
+   </soapenv:Body>
 </soapenv:Envelope>
 ```
 
@@ -130,48 +147,50 @@ Header y common elements
 | @value                                 | 1          | String   | Contains parameter value. |
 
 
-## Response
+## Valuation Response
+
+### Success
 
 ```xml
 <ValuationRS xmlns:xsd = "http://www.w3.org/2001/XMLSchema" xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance">
-    <Parameters>
-        <Parameter key = "bd1" value = "43"/>
-    </Parameters>
-    <Status>OK</Status>
-    <Price currency = "EUR" amount = "106.20" binding = "false" commission = "-1"/>
-    <CancelPenalties nonRefundable = "false">
-        <CancelPenalty>
-            <HoursBefore>72</HoursBefore>
-            <Deadline>2016-07-01T05:00:00Z</Deadline>
-            <CalculatedDeadline>false</CalculatedDeadline>
-            <Penalty type = "Importe" paymentType = "MerchantPay" currency = "EUR">25.00</Penalty>
-        </CancelPenalty>
-        <CancelPenalty>
-            <HoursBefore>48</HoursBefore>
-            <Deadline>2016-07-02T05:00:00Z</Deadline>
-            <CalculatedDeadline>false</CalculatedDeadline>
-            <Penalty type = "Importe" paymentType = "MerchantPay" currency = "EUR">72.40</Penalty>
-        </CancelPenalty>
-    </CancelPenalties>
-    <Fees>
-        <Fee includedPriceOption = "true" description = "TaxAndServiceFee">
-            <Price currency = "EUR" amount = "8.11" binding = "false" commission = "-1"/>
-            <Code>SPE</Code>
-        </Fee>
-    </Fees>
-    <Remarks/>
-    <PaymentOptions cash = "false" bankAcct = "false">
-        <Cards>
-            <Card code = "VI"/>
-            <Card code = "AX"/>
-            <Card code = "CA"/>
-        </Cards>
-    </PaymentOptions>
-    <CancelPoliciesDescription/>
+   <Parameters>
+      <Parameter key = "bd1" value = "43"/>
+   </Parameters>
+   <Status>OK</Status>
+   <Price currency = "EUR" amount = "106.20" binding = "false" commission = "-1"/>
+   <CancelPenalties nonRefundable = "false">
+      <CancelPenalty>
+         <HoursBefore>72</HoursBefore>
+         <Deadline>2016-07-01T05:00:00Z</Deadline>
+         <CalculatedDeadline>false</CalculatedDeadline>
+         <Penalty type = "Importe" paymentType = "MerchantPay" currency = "EUR">25.00</Penalty>
+      </CancelPenalty>
+      <CancelPenalty>
+         <HoursBefore>48</HoursBefore>
+         <Deadline>2016-07-02T05:00:00Z</Deadline>
+         <CalculatedDeadline>false</CalculatedDeadline>
+         <Penalty type = "Importe" paymentType = "MerchantPay" currency = "EUR">72.40</Penalty>
+      </CancelPenalty>
+   </CancelPenalties>
+   <Fees>
+      <Fee includedPriceOption = "true" description = "TaxAndServiceFee">
+         <Price currency = "EUR" amount = "8.11" binding = "false" commission = "-1"/>
+         <Code>SPE</Code>
+      </Fee>
+   </Fees>
+   <Remarks/>
+   <PaymentOptions cash = "false" bankAcct = "false">
+      <Cards>
+         <Card code = "VI"/>
+         <Card code = "AX"/>
+         <Card code = "CA"/>
+      </Cards>
+   </PaymentOptions>
+   <CancelPoliciesDescription/>
 </ValuationRS>
 ```
 
-### Response Data Breakdown
+#### Success Response Data Breakdown
 
 | Element                               | Rel | Type | Description |
 | ----------------------------------------- | ---------- | -------- | --------------- |
@@ -222,8 +241,86 @@ Header y common elements
 | @description 				| 0..1 		| String 	| Room description. Mandatory if the supplier doesn't allow RoomList Method. If the supplier implements RoomList Method, this field could be empty.						|
 
 
-:::caution Suppliers with block allotment
+### Error
 
-There are some suppliers who use block allotments, sometimes called pre-confirmation or quote. In that case, you will have 30 minutes to complete the booking, if not, you will have to re-launch Valuation 30 minutes after the last request, normally just before booking request.
+```xml
+<ValuationRS>
+   <operationImplemented>true</operationImplemented>
+   <applicationError>
+      <code/>
+      <type>204</type>
+      <description>Supplier returns 0 results in availability.</description>
+      <httpStatusCode>0</httpStatusCode>
+   </applicationError>
+</ValuationRS>
+```
 
-:::
+<details>
+    <summary>Error codes that will be included in the response in the event of an error</summary>
+    <div>
+        <div>
+         <table>
+				<thead>
+					<tr>
+						<th>
+							<strong>Error Code</strong>
+						</th>
+						<th>
+							<strong>Error Description</strong>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>101</td>
+						<td>System Exception (Exception not controlled or not classified as general exception).</td>
+					</tr>
+					<tr>
+						<td>102</td>
+						<td>Supplier Error.</td>
+					</tr>
+					<tr>
+						<td>103</td>
+						<td>Too many requests to the supplier.</td>
+					</tr>
+                    <tr>
+						<td>104</td>
+						<td>Timeout (Timeout during the execution of an operation (look in the common attribute timeout )).</td>
+					</tr>
+					<tr>
+						<td>105</td>
+						<td>Communication Error.</td>
+					</tr>
+					<tr>
+						<td>204</td>
+						<td>Supplier returns 0 results in availability.</td>
+					</tr>
+                    <tr>
+						<td>205</td>
+						<td>The Supplier doesn’t accept the distribution RQ.</td>
+					</tr>
+					<tr>
+						<td>206</td>
+						<td>The Supplier doesn’t accept the dates RQ.</td>
+					</tr>
+					<tr>
+						<td>207</td>
+						<td>The Supplier doesn’t accept the request RQ.</td>
+					</tr>
+          <tr>
+						<td>301</td>
+						<td>Option not found in policies.</td>
+					</tr>
+          <tr>
+						<td>302</td>
+						<td>Hotel Not Found in DescriptiveInfo.</td>
+					</tr>
+          <tr>
+						<td>303</td>
+						<td>Booking not confirmed in the supplier’s system.</td>
+					</tr>
+				</tbody>
+			</table>
+        </div>
+    </div>
+</details>

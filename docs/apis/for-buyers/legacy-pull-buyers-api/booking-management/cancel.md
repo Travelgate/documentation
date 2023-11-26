@@ -6,64 +6,75 @@ sidebar_position: 4
 
 The Cancel operation allows you to cancel a booking made via TravelgateX. The returned fields include: `ProviderLocator`, `CancelId`, `TransactionStatus`, `Price` etc.
 
+:::caution
+
+The amount of information returned might vary between Sellers.
+
+:::
+
 ## Cancel Request
 
 ```xml
-<soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" 
-    xmlns:ns = "http://schemas.xmltravelgate.com/hub/2012/06" 
-    xmlns:wsse = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
-    <soapenv:Header>
+<soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns = "http://schemas.xmltravelgate.com/hub/2012/06" xmlns:wsse = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+   <soapenv:Header>
       <wsse:Security>
-        <wsse:UsernameToken>
-          <wsse:Username>username</wsse:Username>
-          <wsse:Password>password</wsse:Password>
-        </wsse:UsernameToken>
+         <wsse:UsernameToken>
+            <wsse:Username>username</wsse:Username>
+            <wsse:Password>password</wsse:Password>
+         </wsse:UsernameToken>
       </wsse:Security>
-    </soapenv:Header>
-    <soapenv:Body>
+   </soapenv:Header>
+   <soapenv:Body>
       <ns:Cancel>
-        <ns:cancelRQ>
-          <ns:timeoutMilliseconds>17900</ns:timeoutMilliseconds>
-          <ns:version>1</ns:version>
-          <ns:providerRQ>
-            <ns:code>suppliercode</ns:code>
-            <ns:id>1</ns:id>
-            <ns:rqXML>
-              <CancelRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema" hotelCode = "">
-                <timeoutMilliseconds>18000</timeoutMilliseconds>
-                  <source>
-                    <languageCode>en</languageCode>
-                  </source>
-                  <filterAuditData>
-                    <registerTransactions>true</registerTransactions>
-                  </filterAuditData>
-                  <Configuration>
-                    <User>user</User>
-                    <Password>password</Password>
-                    <UrlAvail>www.supplier.com/avail</UrlAvail>
-                    <UrlReservation>www.supplier.com/reservation</UrlReservation>
-                    <UrlValuation>www.supplier.com/valuation</UrlValuation>
-                    <UrlGeneric>www.supplier.com/generic</UrlGeneric>
-                    <Parameters>
-                      <Parameter key = "UrlListHoteles" value = "http://www.test.net/scr/searchxml/location.php?"></Parameter>
-                      <Parameter key = "UrlConsulta" value = "https://www.test.net/scr/xml/travelgate.php?"></Parameter>
-                      <Parameter key = "office" value = "55555"></Parameter>
-                      <Parameter key = "password" value = "XXXXXX"></Parameter>
-                    </Parameters>
-                  </Configuration>
-                  <Locators>
-                    <Client>XXXXXXX</Client>
-                    <Provider>XXXXXXX</Provider>
-                  </Locators>
-                  <StartDate>28/11/2014</StartDate>
-                  <EndDate>28/11/2014</EndDate>
-                  <Holder title = "Miss" name = "Test11" surname = "TestAp11"/>
-              </CancelRQ>
-            </ns:rqXML>
-          </ns:providerRQ>
-        </ns:cancelRQ>
+         <ns:cancelRQ>
+            <ns:timeoutMilliseconds>17900</ns:timeoutMilliseconds>
+            <ns:version>1</ns:version>
+            <ns:providerRQ>
+               <ns:code>suppliercode</ns:code>
+               <ns:id>1</ns:id>
+               <ns:rqXML>
+                  <CancelRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema" hotelCode = "">
+            <ns:timeoutMilliseconds>17900</ns:timeoutMilliseconds>
+            <ns:version>1</ns:version>
+            <ns:providerRQ>
+               <ns:code>suppliercode</ns:code>
+               <ns:id>1</ns:id>
+               <ns:rqXML>
+                  <AvailRQ>
+                      <timeoutMilliseconds>18000</timeoutMilliseconds>
+                     <source>
+                        <languageCode>en</languageCode>
+                     </source>
+                     <filterAuditData>
+                        <registerTransactions>true</registerTransactions>
+                     </filterAuditData>
+                     <Configuration>
+                        <User>user</User>
+                        <Password>password</Password>
+                        <UrlAvail>www.supplier.com/avail</UrlAvail>
+                        <UrlReservation>www.supplier.com/reservation</UrlReservation>
+                        <UrlValuation>www.supplier.com/valuation</UrlValuation>
+                        <UrlGeneric>www.supplier.com/generic</UrlGeneric>
+                        <Parameters>
+                           <Parameter key = "UrlListHoteles" value = "http://www.test.net/scr/searchxml/location.php?"></Parameter>
+                           <Parameter key = "UrlConsulta" value = "https://www.test.net/scr/xml/travelgate.php?"></Parameter>
+                           <Parameter key = "office" value = "55555"></Parameter>
+                           <Parameter key = "password" value = "XXXXXX"></Parameter>
+                        </Parameters>
+                     </Configuration>
+                     <Locators>
+                        <Client>XXXXXXX</Client>
+                        <Provider>XXXXXXX</Provider>
+                     </Locators>
+                     <StartDate>28/11/2014</StartDate>
+                     <EndDate>28/11/2014</EndDate>
+                     <Holder title = "Miss" name = "Test11" surname = "TestAp11"/>
+                  </CancelRQ>
+               </ns:rqXML>
+            </ns:providerRQ>
+         </ns:cancelRQ>
       </ns:Cancel>
-    </soapenv:Body>
+   </soapenv:Body>
 </soapenv:Envelope>
 ```
 
@@ -91,20 +102,22 @@ Header y common elements
 
 ## Cancel Response
 
+### Success
+
 ```xml
 <CancelRS>
-    <ProviderLocator>YYYYYYYY</ProviderLocator> 
-    <CancelId>0000000</CancelId>
-        <TransactionStatus>
-            <ComunicationStatus>OK</ComunicationStatus>
-            <RSStatus>EXISTE</RSStatus>
-            <ResStatus>CN</ResStatus>
-        </TransactionStatus>
-    <Price  currency="EUR" amount="120.5" binding="false" commission="-1"/>
+   <ProviderLocator>YYYYYYYY</ProviderLocator> 
+   <CancelId>0000000</CancelId>
+   <TransactionStatus>
+      <ComunicationStatus>OK</ComunicationStatus>
+      <RSStatus>EXISTE</RSStatus>
+      <ResStatus>CN</ResStatus>
+   </TransactionStatus>
+   <Price  currency="EUR" amount="120.5" binding="false" commission="-1"/>
 </CancelRS>
 ```
 
-### Response Data Breakdown
+#### Success Response Data Breakdown
 
 | Element				| Rel	| Type	| Description						|
 | ------------------------------------- | ------------- | ------------- | ------------------------------------------------------------- |
@@ -120,3 +133,87 @@ Header y common elements
 | TransactionStatus /ComunicationStatus	| 1    		| String	| Status communication (OFFLINE, OK and KO).			|
 | TransactionStatus /RSStatus		| 1    		| String	| <details>     <summary>Response Status</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Status</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>DESCONOCIDO</td>  						 <td>Unknown</td>  					 </tr>  					 <tr>  						 <td>EXISTE</td>  						 <td>Exists</td>  					 </tr>           <tr>  						 <td>EXISTECANCELADA</td>  						 <td>exists but it's cancelled</td>  					 </tr>				 <tr>  						 <td>NO_EXISTE</td>  						 <td>Does not exist</td>  					 </tr>       </tbody>  			</table>         </div>     </div> </details>	|
 | TransactionStatus /ResStatus		| 1    		| String	| <details>     <summary>Reservation Status</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Status Code</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>OK</td>  						 <td>The reservation was completed with no problems.</td>  					 </tr>  					 <tr>  						 <td>RQ</td>  						 <td>The reservation was completed but the product is still not available, so the reservation goes into a waiting list (Request).</td>  					 </tr>           <tr>  						 <td>CN</td>  						 <td>The reservation was completed but due to a supplier error or a timeout the system will immediately cancel the reservation to prevent further possible errors.</td>  					 </tr>				 <tr>  						 <td>UN</td>  						 <td>The reservation was completed but due to a supplier error or a timeout, the reservation status is unknown. It is the client’s responsibility to check if the booking is OK.</td>  					 </tr>       </tbody>  			</table>         </div>     </div> </details>	|
+
+### Error
+
+```xml
+<CancelRS>
+   <operationImplemented>true</operationImplemented>
+   <applicationError>
+      <code/>
+      <type>105</type>
+      <description>Communication Error.</description>
+      <httpStatusCode>0</httpStatusCode>
+   </applicationError>
+</CancelRS>
+```
+
+<details>
+    <summary>Error codes that will be included in the response in the event of an error</summary>
+    <div>
+        <div>
+         <table>
+				<thead>
+					<tr>
+						<th>
+							<strong>Error Code</strong>
+						</th>
+						<th>
+							<strong>Error Description</strong>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>101</td>
+						<td>System Exception (Exception not controlled or not classified as general exception).</td>
+					</tr>
+					<tr>
+						<td>102</td>
+						<td>Supplier Error.</td>
+					</tr>
+					<tr>
+						<td>103</td>
+						<td>Too many requests to the supplier.</td>
+					</tr>
+               <tr>
+						<td>104</td>
+						<td>Timeout (Timeout during the execution of an operation (look in the common attribute timeout )).</td>
+					</tr>
+					<tr>
+						<td>105</td>
+						<td>Communication Error.</td>
+					</tr>
+					<tr>
+						<td>204</td>
+						<td>Supplier returns 0 results in availability.</td>
+					</tr>
+                    <tr>
+						<td>205</td>
+						<td>The Supplier doesn’t accept the distribution RQ.</td>
+					</tr>
+					<tr>
+						<td>206</td>
+						<td>The Supplier doesn’t accept the dates RQ.</td>
+					</tr>
+					<tr>
+						<td>207</td>
+						<td>The Supplier doesn’t accept the request RQ.</td>
+					</tr>
+               <tr>
+						<td>301</td>
+						<td>Option not found in policies.</td>
+					</tr>
+               <tr>
+						<td>302</td>
+						<td>Hotel Not Found in DescriptiveInfo.</td>
+					</tr>
+               <tr>
+						<td>303</td>
+						<td>Booking not confirmed in the supplier’s system.</td>
+					</tr>
+				</tbody>
+			</table>
+        </div>
+    </div>
+</details>

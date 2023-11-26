@@ -6,92 +6,96 @@ sidebar_position: 2
 
 Avail serves as the initial step in our booking flow, with the objective of verifying availability within the specified date range, itinerary and the requested number of guests. It provides a comprehensive list of available options based on your search criteria. The returned fields include:  `Hotel code`, `Hotel name`, `Meal Plan code`, `paymentType`, `Rooms`, `Price`, `CancelPenalties` etc.
 
-## Request
+:::caution
+
+The amount of information returned might vary between Sellers.
+
+:::
+
+## Avail Request
 
 ```xml
-<soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" 
-    xmlns:ns = "http://schemas.xmltravelgate.com/hub/2012/06" 
-    xmlns:wsse = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
-      <soapenv:Header>
-        <wsse:Security>
-          <wsse:UsernameToken>
+<soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns = "http://schemas.xmltravelgate.com/hub/2012/06" xmlns:wsse = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+   <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
             <wsse:Username>username</wsse:Username>
             <wsse:Password>password</wsse:Password>
-          </wsse:UsernameToken>
-        </wsse:Security>
-      </soapenv:Header>
-      <soapenv:Body>
-        <ns:Avail>
-          <ns:availRQ>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <ns:Avail>
+         <ns:availRQ>
             <ns:timeoutMilliseconds>17900</ns:timeoutMilliseconds>
             <ns:version>1</ns:version>
             <ns:providerRQ>
-              <ns:code>suppliercode</ns:code>
-              <ns:id>1</ns:id>
-              <ns:rqXML>
-                <AvailRQ>
-                  <timeoutMilliseconds>18000</timeoutMilliseconds>
-                  <source>
-                    <languageCode>en</languageCode>
-                  </source>
-                  <filterAuditData>
-                    <registerTransactions>true</registerTransactions>
-                  </filterAuditData>
-                  <Configuration>
-                    <User>user</User>
-                    <Password>password</Password>
-                    <UrlAvail>www.supplier.com/avail</UrlAvail>
-                    <UrlReservation>www.supplier.com/reservation</UrlReservation>
-                    <UrlValuation>www.supplier.com/valuation</UrlValuation>
-                    <UrlGeneric>www.supplier.com/generic</UrlGeneric>
-                    <Parameters>
-                      <Parameter key = "UrlListHoteles" value = "http://www.test.net/scr/searchxml/location.php?"></Parameter>
-                      <Parameter key = "UrlConsulta" value = "https://www.test.net/scr/xml/travelgate.php?"></Parameter>
-                      <Parameter key = "office" value = "55555"></Parameter>
-                      <Parameter key = "password" value = "XXXXXX"></Parameter>
-                    </Parameters>
-                  </Configuration>
-                  <SearchType>Combined</SearchType>
-                  <CancellationPolicies>false</CancellationPolicies>
-                  <RoomCancellationPolicies>false</RoomCancellationPolicies>
-                  <DailyPrices>false</DailyPrices>
-                  <DailyRatePlans>false</DailyRatePlans>
-                  <Attributes>false</Attributes>
-                  <OnRequest>false</OnRequest>
-                  <BusinessRules>CheaperAmount</BusinessRules>
-                  <AvailDestinations>
-                      <Destination type = "CTY" code = "5"/>
-                      <Destination type = "CTY" code = "15"/>
-                  </AvailDestinations>
-                  <StartDate>28/01/2014</StartDate>
-                  <EndDate>29/01/2014</EndDate>
-                  <Currency>EUR</Currency>
-                  <Nationality>ES</Nationality>
-                  <Markets>
-                      <Market>ES</Market>
-                      <Market>EN</Market>
-                  </Markets>
-                  <RoomCandidates>
-                      <RoomCandidate id = "1">
-                          <Paxes>
+               <ns:code>suppliercode</ns:code>
+               <ns:id>1</ns:id>
+               <ns:rqXML>
+                  <AvailRQ>
+                      <timeoutMilliseconds>18000</timeoutMilliseconds>
+                     <source>
+                        <languageCode>en</languageCode>
+                     </source>
+                     <filterAuditData>
+                        <registerTransactions>true</registerTransactions>
+                     </filterAuditData>
+                     <Configuration>
+                        <User>user</User>
+                        <Password>password</Password>
+                        <UrlAvail>www.supplier.com/avail</UrlAvail>
+                        <UrlReservation>www.supplier.com/reservation</UrlReservation>
+                        <UrlValuation>www.supplier.com/valuation</UrlValuation>
+                        <UrlGeneric>www.supplier.com/generic</UrlGeneric>
+                        <Parameters>
+                           <Parameter key = "UrlListHoteles" value = "http://www.test.net/scr/searchxml/location.php?"></Parameter>
+                           <Parameter key = "UrlConsulta" value = "https://www.test.net/scr/xml/travelgate.php?"></Parameter>
+                           <Parameter key = "office" value = "55555"></Parameter>
+                           <Parameter key = "password" value = "XXXXXX"></Parameter>
+                        </Parameters>
+                     </Configuration>
+                     <SearchType>Combined</SearchType>
+                     <CancellationPolicies>false</CancellationPolicies>
+                     <RoomCancellationPolicies>false</RoomCancellationPolicies>
+                     <DailyPrices>false</DailyPrices>
+                     <DailyRatePlans>false</DailyRatePlans>
+                     <Attributes>false</Attributes>
+                     <OnRequest>false</OnRequest>
+                     <BusinessRules>CheaperAmount</BusinessRules>
+                     <AvailDestinations>
+                        <Destination type = "CTY" code = "5"/>
+                        <Destination type = "CTY" code = "15"/>
+                     </AvailDestinations>
+                     <StartDate>28/01/2014</StartDate>
+                     <EndDate>29/01/2014</EndDate>
+                     <Currency>EUR</Currency>
+                     <Nationality>ES</Nationality>
+                     <Markets>
+                        <Market>ES</Market>
+                        <Market>EN</Market>
+                     </Markets>
+                     <RoomCandidates>
+                        <RoomCandidate id = "1">
+                           <Paxes>
                               <Pax age = "30" id = "1"/>
                               <Pax age = "30" id = "2"/>
-                          </Paxes>
-                      </RoomCandidate>
-                      <RoomCandidate id = "2">
-                          <Paxes>
+                           </Paxes>
+                        </RoomCandidate>
+                        <RoomCandidate id = "2">
+                           <Paxes>
                               <Pax age = "35" id = "1"/>
                               <Pax age = "42" id = "2"/>
                               <Pax age = "5" id = "3"/>
-                          </Paxes>
-                      </RoomCandidate>
-                  </RoomCandidates>
-                </AvailRQ>
-              </ns:rqXML>
+                           </Paxes>
+                        </RoomCandidate>
+                     </RoomCandidates>
+                  </AvailRQ>
+               </ns:rqXML>
             </ns:providerRQ>
-          </ns:availRQ>
-        </ns:Avail>
-      </soapenv:Body>
+         </ns:availRQ>
+      </ns:Avail>
+   </soapenv:Body>
 </soapenv:Envelope>
 ```
 
@@ -132,191 +136,189 @@ Header y common elements
 | @age            			| 1     	| Integer	| Passenger age on the day of check-in (The range of what is considered an adult, infant or baby is particular to each supplier).							|
 | @id             			| 1     	| Integer	| Pax id (starts at 1).						|
 
-## Response
+## Avail Response
 
 The response will be structured hierarchically, starting with essential details about hotels like name, code, and meal plans from the supplier. Below that, MealPlans and their codes will be detailed, with options for each availability. The Options section will provide specifics for each option, including the total "all-inclusive" price covering fares, taxes, and discounts.
 
+### Success
 
 ```xml
 <AvailRS xmlns:xsd = "http://www.w3.org/2001/XMLSchema" xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance">
-    <Hotels>
-        <Hotel code = "10" name = "LEO">
-            <MealPlans>
-                <MealPlan code = "D">
-                    <Options>
-                        <Option type = "Hotel" paymentType = "MerchantPay" status = "OK">
-                            <Rooms>
-                                <Room id = "4145" roomCandidateRefId = "1" code = "DBL#STAND" description = "Doble Standard" nonRefundable = "false" numberOfUnits = "5">
-                                    <Price currency = "EUR" amount = "36.20" binding = "false" commission = "-1"/>
-                                    <Fees>
-                                        <Fee includedPriceOption = "true" description = "TaxAndServiceFee" mandatory = "true" refundable = "false">
-                                            <Price currency = "EUR" amount = "8.11" binding = "false" commission = "-1"/>
-                                            <Code>SPE</Code>
-                                        </Fee>
-                                    </Fees>
-                                    <CancelPenalties nonRefundable = "false">
-                                        <CancelPenalty>
-                                            <HoursBefore>24</HoursBefore>
-                                            <Penalty type = "Importe" currency = "EUR">20</Penalty>
-                                            <Deadline>2016-07-01T05:00:00Z</Deadline>
-                                            <CalculatedDeadline>false</CalculatedDeadline>
-                                        </CancelPenalty>
-                                    </CancelPenalties>
-                                    <Beds sharedBed = "false">
-                                        <Bed numberOfBeds = "1" type = "Doble"/>
-                                    </Beds>
-                                    <Features>
-                                        <Feature code = "Double with spa"/>
-                                    </Features>
-                                    <DailyPrices>
-                                        <DailyPrice effectiveDate = "28/01/2014" expireDate = "29/01/2014">
-                                            <Price currency = "EUR" amount = "36.20" binding = "false" commission = "-1"/>
-                                        </DailyPrice>
-                                    </DailyPrices>
-                                    <DailyRatePlans>
-                                        <DailyRatePlan effectiveDate = "28/01/2014" expireDate = "29/01/2014" code = "XAD" name = "Flexy Rate Only Adults"/>
-                                    </DailyRatePlans>
-                                </Room>
-                            </Rooms>
-                            <Price currency = "EUR" amount = "36.20" binding = "false" commission = "-1"/>
-                            <Offers>
-                                <Offer code = "EBI" name = "Early booking"/>
-                            </Offers>
-                            <Fees>
-                                <Fee includedPriceOption = "true" description = "TaxAndServiceFee" mandatory = "true" refundable = "false">
-                                    <Price currency = "EUR" amount = "8.11" binding = "false" commission = "-1"/>
-                                    <Code>SPE</Code>
-                                </Fee>
-                            </Fees>
-                        </Option>
-                    </Options>
-                </MealPlan>
-                <MealPlan code = "M">
-                    <Options>
-                        <Option type = "Hotel" paymentType = "MerchantPay" status = "OK">
-                            <Rooms>
-                                <Room id = "4146" roomCandidateRefId = "1" code = "TWN#STAND" description = "Twin Standard" nonRefundable = "false" numberOfUnits = "5">
-                                    <Price currency = "EUR" amount = "42.90" binding = "false" commission = "-1"/>
-                                    <Offers>
-                                        <Offer code = "EBI" name = "Early booking"/>
-                                    </Offers>
-                                    <Beds sharedBed = "false">
-                                        <Bed numberOfBeds = "2" type = "Twin"/>
-                                    </Beds>
-                                    <DailyPrices>
-                                        <DailyPrice effectiveDate = "28/01/2014" expireDate = "29/01/2014">
-                                            <Price currency = "EUR" amount = "42.90" binding = "false" commission = "-1"/>
-                                        </DailyPrice>
-                                    </DailyPrices>
-                                    <DailyRatePlans>
-                                        <DailyRatePlan effectiveDate = "28/01/2014" expireDate = "29/01/2014" code = "XAT" name = "Flexy Rate"/>
-                                    </DailyRatePlans>
-                                </Room>
-                            </Rooms>
-                            <Price currency = "EUR" amount = "42.90" binding = "false" commission = "-1"/>
-                        </Option>
-                    </Options>
-                    ...
-                </MealPlan>
-                <MealPlan code = "MP">
-                    <Options>
-                        <Option type = "HotelSkiPass" paymentType = "MerchantPay" status = "OK">
-                            <Rooms>
-                                <Room id = "4145" roomCandidateRefId = "1" code = "DBL#STAND" description = "Doble Standard" nonRefundable = "false">
-                                    <Price currency = "EUR" amount = "636.80" binding = "false" commission = "-1"/>
-                                </Room>
-                            </Rooms>
-                            <Detail>
-                                <POIs>
-                                    <POI code = "8A" Description = "Andorra">
-                                        <Services>
-                                            <Service type = "SkiPass" code = "F1" description = "Forfait" durationType = "Range" quantity = "0" unit = "Day">
-                                                <RangeDates startDate = "28/01/2014" endDate = "29/01/2014"/>
-                                            </Service>
-                                        </Services>
-                                    </POI>
-                                </POIs>
-                            </Detail>
-                            <Price currency = "EUR" amount = "636.80" binding = "false" commission = "-1"/>
-                            <Parameters>
-                                <Parameter key = "sesion" value = "888de014"/>
-                            </Parameters>
-                        </Option>
-                        <Option type = "HotelSkiPass" paymentType = "MerchantPay" status = "OK">
-                            <Rooms>
-                                <Room id = "4145" roomCandidateRefId = "1" code = "DBL#STAND" description = "Doble Standard" nonRefundable = "false">
-                                    <Price currency = "EUR" amount = "636.80" binding = "false" commission = "-1"/>
-                                </Room>
-                            </Rooms>
-                            <Detail>
-                                <POIs>
-                                    <POI code = "8A" Description = "Andorra">
-                                        <Services>
-                                            <Service type = "SkiPass" code = "F1" description = "Forfait" durationType = "Open" quantity = "5" unit = "Hour"></Service>
-                                        </Services>
-                                    </POI>
-                                </POIs>
-                            </Detail>
-                            <Price currency = "EUR" amount = "636.80" binding = "false" commission = "-1"/>
-                            <Parameters>
-                                <Parameter key = "sesion" value = "888de014"/>
-                            </Parameters>
-                            <RateRules>
-                                <Rules>
-                                    <Rule type = "NonRefundable"/>
-                                    <Rule type = "Negotiated">
-                                        <Rates>
-                                            <Rate Code = "BAR">
-                                                <Description>Bar descr</Description>
-                                                <Restrictions>
-                                                    <Restriction type = "Company" Code = "REP">Repsol</Restriction>
-                                                    <Restriction type = "Company" Code = "PEP">Cedipsa</Restriction>
-                                                </Restrictions>
-                                            </Rate>
-                                        </Rates>
-                                    </Rule>
-                                </Rules>
-                            </RateRules>
-                        </Option>
-                        <Option type = "HotelSkiPass" paymentType = "MerchantPay" status = "OK">
-                            <Rooms>
-                                <Room id = "4145" roomCandidateRefId = "1" code = "DBL#STAND" description = "Doble Standard" nonRefundable = "false">
-                                    <Price currency = "EUR" amount = "636.80" binding = "false" commission = "-1"/>
-                                </Room>
-                            </Rooms>
-                            <Detail>
-                                <POIs>
-                                    <POI code = "8A" Description = "Andorra">
-                                        <Services>
-                                            <Service type = "SkiPass" code = "F1" description = "Forfait" durationType = "Open" quantity = "2" unit = "Day"></Service>
-                                        </Services>
-                                    </POI>
-                                </POIs>
-                            </Detail>
-                            <Price currency = "EUR" amount = "636.80" binding = "false" commission = "-1"/>
-                            <Parameters>
-                                <Parameter key = "sesion" value = "888de014"/>
-                            </Parameters>
-                            <CancelPenalties nonRefundable = "false">
-                                <CancelPenalty>
-                                    <HoursBefore>24</HoursBefore>
-                                    <Penalty type = "Importe" currency = "EUR">20</Penalty>
-                                    <Deadline>2016-07-01T05:00:00Z</Deadline>
-                                    <CalculatedDeadline>false</CalculatedDeadline>
-                                </CancelPenalty>
-                            </CancelPenalties>
-                        </Option>
-                    </Options>
-                </MealPlan>
-                ...
-            </MealPlans>
-        </Hotel>
-        ...
-    </Hotels>
+   <Hotels>
+      <Hotel code = "10" name = "LEO">
+         <MealPlans>
+            <MealPlan code = "D">
+               <Options>
+                  <Option type = "Hotel" paymentType = "MerchantPay" status = "OK">
+                     <Rooms>
+                        <Room id = "4145" roomCandidateRefId = "1" code = "DBL#STAND" description = "Doble Standard" nonRefundable = "false" numberOfUnits = "5">
+                           <Price currency = "EUR" amount = "36.20" binding = "false" commission = "-1"/>
+                           <Fees>
+                              <Fee includedPriceOption = "true" description = "TaxAndServiceFee" mandatory = "true" refundable = "false">
+                                 <Price currency = "EUR" amount = "8.11" binding = "false" commission = "-1"/>
+                                 <Code>SPE</Code>
+                              </Fee>
+                           </Fees>
+                           <CancelPenalties nonRefundable = "false">
+                              <CancelPenalty>
+                                 <HoursBefore>24</HoursBefore>
+                                 <Penalty type = "Importe" currency = "EUR">20</Penalty>
+                                 <Deadline>2016-07-01T05:00:00Z</Deadline>
+                                 <CalculatedDeadline>false</CalculatedDeadline>
+                              </CancelPenalty>
+                           </CancelPenalties>
+                           <Beds sharedBed = "false">
+                              <Bed numberOfBeds = "1" type = "Doble"/>
+                           </Beds>
+                           <Features>
+                              <Feature code = "Double with spa"/>
+                           </Features>
+                           <DailyPrices>
+                              <DailyPrice effectiveDate = "28/01/2014" expireDate = "29/01/2014">
+                                 <Price currency = "EUR" amount = "36.20" binding = "false" commission = "-1"/>
+                              </DailyPrice>
+                           </DailyPrices>
+                           <DailyRatePlans>
+                              <DailyRatePlan effectiveDate = "28/01/2014" expireDate = "29/01/2014" code = "XAD" name = "Flexy Rate Only Adults"/>
+                           </DailyRatePlans>
+                        </Room>
+                     </Rooms>
+                     <Price currency = "EUR" amount = "36.20" binding = "false" commission = "-1"/>
+                     <Offers>
+                        <Offer code = "EBI" name = "Early booking"/>
+                     </Offers>
+                     <Fees>
+                        <Fee includedPriceOption = "true" description = "TaxAndServiceFee" mandatory = "true" refundable = "false">
+                           <Price currency = "EUR" amount = "8.11" binding = "false" commission = "-1"/>
+                           <Code>SPE</Code>
+                        </Fee>
+                     </Fees>
+                  </Option>
+               </Options>
+            </MealPlan>
+            <MealPlan code = "M">
+               <Options>
+                  <Option type = "Hotel" paymentType = "MerchantPay" status = "OK">
+                     <Rooms>
+                        <Room id = "4146" roomCandidateRefId = "1" code = "TWN#STAND" description = "Twin Standard" nonRefundable = "false" numberOfUnits = "5">
+                           <Price currency = "EUR" amount = "42.90" binding = "false" commission = "-1"/>
+                           <Offers>
+                              <Offer code = "EBI" name = "Early booking"/>
+                           </Offers>
+                           <Beds sharedBed = "false">
+                              <Bed numberOfBeds = "2" type = "Twin"/>
+                           </Beds>
+                           <DailyPrices>
+                              <DailyPrice effectiveDate = "28/01/2014" expireDate = "29/01/2014">
+                                 <Price currency = "EUR" amount = "42.90" binding = "false" commission = "-1"/>
+                              </DailyPrice>
+                           </DailyPrices>
+                           <DailyRatePlans>
+                              <DailyRatePlan effectiveDate = "28/01/2014" expireDate = "29/01/2014" code = "XAT" name = "Flexy Rate"/>
+                           </DailyRatePlans>
+                        </Room>
+                     </Rooms>
+                     <Price currency = "EUR" amount = "42.90" binding = "false" commission = "-1"/>
+                  </Option>
+               </Options>
+            </MealPlan>
+            <MealPlan code = "MP">
+               <Options>
+                  <Option type = "HotelSkiPass" paymentType = "MerchantPay" status = "OK">
+                     <Rooms>
+                        <Room id = "4145" roomCandidateRefId = "1" code = "DBL#STAND" description = "Doble Standard" nonRefundable = "false">
+                           <Price currency = "EUR" amount = "636.80" binding = "false" commission = "-1"/>
+                        </Room>
+                     </Rooms>
+                     <Detail>
+                        <POIs>
+                           <POI code = "8A" Description = "Andorra">
+                              <Services>
+                                 <Service type = "SkiPass" code = "F1" description = "Forfait" durationType = "Range" quantity = "0" unit = "Day">
+                                    <RangeDates startDate = "28/01/2014" endDate = "29/01/2014"/>
+                                 </Service>
+                              </Services>
+                           </POI>
+                        </POIs>
+                     </Detail>
+                     <Price currency = "EUR" amount = "636.80" binding = "false" commission = "-1"/>
+                        <Parameters>
+                           <Parameter key = "sesion" value = "888de014"/>
+                        </Parameters>
+                  </Option>
+                  <Option type = "HotelSkiPass" paymentType = "MerchantPay" status = "OK">
+                     <Rooms>
+                        <Room id = "4145" roomCandidateRefId = "1" code = "DBL#STAND" description = "Doble Standard" nonRefundable = "false">
+                           <Price currency = "EUR" amount = "636.80" binding = "false" commission = "-1"/>
+                        </Room>
+                     </Rooms>
+                     <Detail>
+                        <POIs>
+                           <POI code = "8A" Description = "Andorra">
+                              <Services>
+                                 <Service type = "SkiPass" code = "F1" description = "Forfait" durationType = "Open" quantity = "5" unit = "Hour"></Service>
+                              </Services>
+                           </POI>
+                        </POIs>
+                     </Detail>
+                     <Price currency = "EUR" amount = "636.80" binding = "false" commission = "-1"/>
+                     <Parameters>
+                        <Parameter key = "sesion" value = "888de014"/>
+                     </Parameters>
+                     <RateRules>
+                        <Rules>
+                           <Rule type = "NonRefundable"/>
+                           <Rule type = "Negotiated">
+                              <Rates>
+                                 <Rate Code = "BAR">
+                                    <Description>Bar descr</Description>
+                                    <Restrictions>
+                                       <Restriction type = "Company" Code = "REP">Repsol</Restriction>
+                                       <Restriction type = "Company" Code = "PEP">Cedipsa</Restriction>
+                                    </Restrictions>
+                                 </Rate>
+                              </Rates>
+                           </Rule>
+                        </Rules>
+                     </RateRules>
+                  </Option>
+                  <Option type = "HotelSkiPass" paymentType = "MerchantPay" status = "OK">
+                     <Rooms>
+                        <Room id = "4145" roomCandidateRefId = "1" code = "DBL#STAND" description = "Doble Standard" nonRefundable = "false">
+                           <Price currency = "EUR" amount = "636.80" binding = "false" commission = "-1"/>
+                        </Room>
+                     </Rooms>
+                     <Detail>
+                        <POIs>
+                           <POI code = "8A" Description = "Andorra">
+                              <Services>
+                                 <Service type = "SkiPass" code = "F1" description = "Forfait" durationType = "Open" quantity = "2" unit = "Day"></Service>
+                              </Services>
+                           </POI>
+                        </POIs>
+                     </Detail>
+                     <Price currency = "EUR" amount = "636.80" binding = "false" commission = "-1"/>
+                     <Parameters>
+                        <Parameter key = "sesion" value = "888de014"/>
+                     </Parameters>
+                     <CancelPenalties nonRefundable = "false">
+                        <CancelPenalty>
+                           <HoursBefore>24</HoursBefore>
+                           <Penalty type = "Importe" currency = "EUR">20</Penalty>
+                           <Deadline>2016-07-01T05:00:00Z</Deadline>
+                           <CalculatedDeadline>false</CalculatedDeadline>
+                        </CancelPenalty>
+                     </CancelPenalties>
+                  </Option>
+               </Options>
+            </MealPlan>
+         </MealPlans>
+      </Hotel>
+   </Hotels>
 </AvailRS>
 ```
 
-### Response Data Breakdown
+#### Success Response Data Breakdown
 
 | Element				            | Rel    | Type	    | Description						                                                        |
 | ------------------------------------- | ------------- | ------------- | --------------------------------------------------------------------------------------------- |
@@ -457,16 +459,17 @@ The response will be structured hierarchically, starting with essential details 
 | Fee/Code | 1 | String    | Specifies the fee code in case it has one.                                                    |
 
 
+### Error
+
 ```xml
 <AvailRS>
-    <operationImplemented>true</operationImplemented>
-    <hoteles/>
-        <applicationError>
-            <code/>
-            <type>204</type>
-            <description>Proveedor devuelve 0 resultados en disponibilidad</description>
-            <httpStatusCode>0</httpStatusCode>
-        </applicationError>
+   <operationImplemented>true</operationImplemented>
+   <applicationError>
+      <code/>
+      <type>204</type>
+      <description>Supplier returns 0 results in availability.</description>
+      <httpStatusCode>0</httpStatusCode>
+   </applicationError>
 </AvailRS>
 ```
 
@@ -498,7 +501,7 @@ The response will be structured hierarchically, starting with essential details 
 						<td>103</td>
 						<td>Too many requests to the supplier.</td>
 					</tr>
-          <tr>
+                    <tr>
 						<td>104</td>
 						<td>Timeout (Timeout during the execution of an operation (look in the common attribute timeout )).</td>
 					</tr>
@@ -510,7 +513,7 @@ The response will be structured hierarchically, starting with essential details 
 						<td>204</td>
 						<td>Supplier returns 0 results in availability.</td>
 					</tr>
-          <tr>
+                    <tr>
 						<td>205</td>
 						<td>The Supplier doesn’t accept the distribution RQ.</td>
 					</tr>
@@ -522,15 +525,15 @@ The response will be structured hierarchically, starting with essential details 
 						<td>207</td>
 						<td>The Supplier doesn’t accept the request RQ.</td>
 					</tr>
-          <tr>
+                    <tr>
 						<td>301</td>
 						<td>Option not found in policies.</td>
 					</tr>
-          <tr>
+                    <tr>
 						<td>302</td>
 						<td>Hotel Not Found in DescriptiveInfo.</td>
 					</tr>
-          <tr>
+                    <tr>
 						<td>303</td>
 						<td>Booking not confirmed in the supplier’s system.</td>
 					</tr>

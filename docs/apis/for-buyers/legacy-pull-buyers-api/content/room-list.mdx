@@ -4,87 +4,75 @@ sidebar_position: 6
 
 # Room List
 
-The Room List method returns a comprehensive room list from a supplier's access that may include translations to other languages, granting you access to all the rooms configured by the Seller for a given set of credentials. The returned fields include:
-
-* Room `code`
-* Room `name`
-
-
-## Request
+The Room List method returns a comprehensive room list from a supplier's access that may include translations to other languages, granting you access to all the rooms configured by the Seller for a given set of credentials. The returned fields include: `Room code`, `Room name` etc.
 
 :::caution
 
-The maximum time permitted in our system before the connection is closed is 240000 milliseconds.
-
-This message must be implemented solely in case the supplier does not return room description in Avail. This requirement will be indicated in [MetaData](meta-data).
+The amount of information and content returned might vary between Sellers.
 
 :::
 
+## RoomList Request
+
 ```xml
 <soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns = "http://schemas.xmltravelgate.com/hub/2012/06" xmlns:wsse = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
-    <soapenv:Header>
-        <wsse:Security>
-            <wsse:UsernameToken>
-                <wsse:Username>username</wsse:Username>
-                <wsse:Password>password</wsse:Password>
-            </wsse:UsernameToken>
-        </wsse:Security>
-    </soapenv:Header>
-    <soapenv:Body>
-        <ns:RoomList>
-            <ns:roomListRQ>
-                <ns:timeoutMilliseconds>180000</ns:timeoutMilliseconds>
-                <ns:version>1</ns:version>
-                <ns:providerRQ>
-                    <ns:code>code</ns:code>
-                    <ns:id>1</ns:id>
-                    <ns:rqXML>
-                        <RoomListRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
-                            <timeoutMilliseconds>20000</timeoutMilliseconds>
-                            <source>
-                                <languageCode>en</languageCode>
-                            </source>
-                            <filterAuditData>
-                                <registerTransactions>false</registerTransactions>
-                            </filterAuditData>
-                            <ContinuationToken expectedRange = "6000"></ContinuationToken>
-                            <Configuration>
-                                <User>user</User>
-                                <Password>password</Password>
-                                <UrlGeneric>www.supplier.com</UrlGeneric>
-                                <Parameters>
-                                    <Parameter key = "SegundoPW" value = "PWXML"></Parameter>
-                                </Parameters>
-                            </Configuration>
-                        </RoomListRQ>
-                    </ns:rqXML>
-                </ns:providerRQ>
-            </ns:roomListRQ>
-        </ns:RoomList>
-    </soapenv:Body>
+   <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>username</wsse:Username>
+            <wsse:Password>password</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <ns:RoomList>
+         <ns:roomListRQ>
+            <ns:timeoutMilliseconds>17900</ns:timeoutMilliseconds>
+            <ns:version>1</ns:version>
+            <ns:providerRQ>
+               <ns:code>suppliercode</ns:code>
+               <ns:id>1</ns:id>
+               <ns:rqXML>
+                  <RoomListRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
+                     <timeoutMilliseconds>18000</timeoutMilliseconds>
+                     <source>
+                        <languageCode>en</languageCode>
+                     </source>
+                     <filterAuditData>
+                        <registerTransactions>true</registerTransactions>
+                     </filterAuditData>
+                     <Configuration>
+                        <User>user</User>
+                        <Password>password</Password>
+                        <UrlAvail>www.supplier.com/avail</UrlAvail>
+                        <UrlReservation>www.supplier.com/reservation</UrlReservation>
+                        <UrlValuation>www.supplier.com/valuation</UrlValuation>
+                        <UrlGeneric>www.supplier.com/generic</UrlGeneric>
+                        <Parameters>
+                           <Parameter key = "UrlListHoteles" value = "http://www.test.net/scr/searchxml/location.php?"></Parameter>
+                           <Parameter key = "UrlConsulta" value = "https://www.test.net/scr/xml/travelgate.php?"></Parameter>
+                           <Parameter key = "office" value = "55555"></Parameter>
+                           <Parameter key = "password" value = "XXXXXX"></Parameter>
+                        </Parameters>
+                     </Configuration>
+                  </RoomListRQ>
+               </ns:rqXML>
+            </ns:providerRQ>
+         </ns:roomListRQ>
+      </ns:RoomList>
+   </soapenv:Body>
 </soapenv:Envelope>
 ```
 
 ### Request Data Breakdown
 
-| Element                                    | Rel  | Type    | Description                                                                 |
-|--------------------------------------------|------|---------|-----------------------------------------------------------------------------|
-| RuntimeConfigurationRQ                     | 1    |         |                                                                             |
-| RuntimeConfigurationRQ/timeoutMilliseconds | 1    | Integer | Maximum time for a response from the supplier’s system.                     |
-| RuntimeCOnfigurationRQ/source              | 1    |         |                                                                             |
-| source/languageCode                        | 1    | String  | Language code (ISO 3166-1 alpha-2) format lowercase.                        |
-| RuntimeConfigurationRQ/filterAuditData     | 1    |         | Activates transaction data sent & received in the supplier’s native format. |
-| filterAuditData/registerTransactions       | 1    | Boolean | Returns all the transactions (XMLs) exchanged with the supplier.            |
-| ContinuationToken                          | 0..1 | String  | Internal Token to identify the next set of HotelList or RoomList.            |
-| @expectedRange	                         | 0..1 | Integer | Number of rooms expected in RoomList call.            |
-| RuntimeConfigurationRQ/Configuration       | 1    |         | The info required to access the supplier’s system.                          |
-| Configuration/User                         | 0..1 | String  | User code to connect to supplier.                                           |
-| Configuration/Password                     | 0..1 | String  | Password for the connection.                                                |
-| Configuration/UrlGeneric                   | 0..1 | String  | Supplier URL used for multiple methods.                                     |
-| Configuration/Parameters                   | 0..1 |         | Parameters for additional information.                                      |
-| Parameters/Parameter                       | 0..n |         |                                                                             |
-| @key                                       | 1    | String  | Contains the keyword/Id to identify a parameter.                            |
-| @value                                     | 1    | String  | Contains the parameter values.                                              |
+:::note
+
+Header y common elements
+
+:::
+
+`RoomList` request does not require any elements. 
 
 
 ### Token
@@ -106,7 +94,7 @@ If the client requests 1000 rooms, the response may contain a range between 1000
 
 :::
 
-**Request variables**
+**1. Indicate the `continuationToken` and `expectedRange` in the Request**
 
 First, in your room list request you will add `ContinuationTokentoken` field and specify in `expectedRange` field the number of rooms expected to receive in the response:
 
@@ -116,9 +104,9 @@ First, in your room list request you will add `ContinuationTokentoken` field and
 </RoomListRQ>
 ```
 
-You will obtain a response with 1200 rooms per page:
+**2. You will recieve the Response**
 
-**Response**
+You will obtain a response with 1200 rooms per page:
 
 ```xml
 <RoomListRS xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">                
@@ -126,8 +114,9 @@ You will obtain a response with 1200 rooms per page:
 </RoomListRS>
 ```
 
-This token should be used as input in your next rooms list request, inside the `ContinuationToken` field:
+**3. Add the Token in the Request**
 
+This token should be used as input in your next rooms list request, inside the `ContinuationToken` field:
 
 ```xml
 <RoomListRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">                
@@ -136,21 +125,21 @@ This token should be used as input in your next rooms list request, inside the `
 ```
 
 
-## Response
+## RoomList Response
 
 ```xml
 <RoomListRS>
-    <UpgradeUTCDate>2016-10-18T13:18:03+02:00</UpgradeUTCDate>
-    <RoomsInfo>
-        <RoomInfo>
-            <Code>STD</Code>
-            <Name>Standard</Name>
-        </RoomInfo>
-        <RoomInfo>
-            <Code>ST</Code>
-            <Name>Suite</Name>
-        </RoomInfo>
-    </RoomsInfo>
+   <UpgradeUTCDate>2016-10-18T13:18:03+02:00</UpgradeUTCDate>
+   <RoomsInfo>
+      <RoomInfo>
+         <Code>STD</Code>
+         <Name>Standard</Name>
+      </RoomInfo>
+      <RoomInfo>
+         <Code>ST</Code>
+         <Name>Suite</Name>
+      </RoomInfo>
+   </RoomsInfo>
 </RoomListRS>
 ```
 

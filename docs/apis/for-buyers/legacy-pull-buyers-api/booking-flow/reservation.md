@@ -5,128 +5,137 @@ sidebar_position: 4
 # Reservation
 
 The Reservation operation requests a booking confirmation for a specific list of passengers. It provides 
-the booking locator (booking code), which could be the supplier’s own code or the one sent in request, along with all the charges associated with the booking as well as its status. The returned fields include:
-
-* `ProviderLocator`
-* `PropertyReservationNumber`
-* `ResStatus`
-* `Price`
-
-## Request
+the booking locator (booking code), which could be the supplier’s own code or the one sent in request, along with all the charges associated with the booking as well as its status. The returned fields include: `ProviderLocator`, `PropertyReservationNumber`, `ResStatus`, `Price` etc.
 
 :::caution
 
-The maximum time permitted in our system before the connection is closed is 180000 milliseconds.
+The amount of information returned might vary between Sellers.
 
 :::
 
+## Reservation Request
+
 ```xml
-<soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" 
-    xmlns:ns = "http://schemas.xmltravelgate.com/hub/2012/06" 
-    xmlns:wsse = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
-      <soapenv:Header>
-        <wsse:Security>
-          <wsse:UsernameToken>
+<soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns = "http://schemas.xmltravelgate.com/hub/2012/06" xmlns:wsse = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+   <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
             <wsse:Username>username</wsse:Username>
             <wsse:Password>password</wsse:Password>
-          </wsse:UsernameToken>
-        </wsse:Security>
-      </soapenv:Header>
-      <soapenv:Body>
-        <ns:Reservation>
-          <ns:reservationRQ>
-            <ns:timeoutMilliseconds>180000</ns:timeoutMilliseconds>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <ns:Reservation>
+         <ns:reservationRQ>
+            <ns:timeoutMilliseconds>17900</ns:timeoutMilliseconds>
             <ns:version>1</ns:version>
             <ns:providerRQ>
-              <ns:code>code</ns:code>
-              <ns:id>1</ns:id>
-              <ns:rqXML>
-                <ReservationRQ>
-                  <timeoutMilliseconds>10000</timeoutMilliseconds>
-                  <source>
-                    <languageCode>en</languageCode>
-                  </source>
-                  <filterAuditData>
-                    <registerTransactions>true</registerTransactions>
-                  </filterAuditData>
-                  <Configuration>
-                    <User></User>
-                    <Password></Password>
-                    <UrlReservation>www.supplier.com/reservation</UrlAvail>
-                    <Parameters>
-                      <Parameter key = "UrlListHoteles" value = "http://www.test.net/scr/searchxml/location.php?"></Parameter>
-                      <Parameter key = "UrlConsulta" value = "https://www.test.net/scr/xml/travelgate.php?"></Parameter>
-                      <Parameter key = "office" value = "55555"></Parameter>
-                      <Parameter key = "password" value = "XXXXXX"></Parameter>
-                    </Parameters>
-                  </Configuration>
-                  <ClientLocator>2537459</ClientLocator>
-                  <OnRequest>false</OnRequest>
-                  <Parameters>
-                      <Parameter key = "extra" value = "31"/>
-                  </Parameters>
-                  <DeltaPrice amount="10" percent="5" applyBoth="false"/>
-                  <StartDate>28/01/2014</StartDate>
-                  <EndDate>29/01/2014</EndDate>
-                  <MealPlanCode>D</MealPlanCode>
-                  <HotelCode>10</HotelCode>
-                  <Nationality>ES</Nationality>
-                  <Holder title = "Miss" name = "Test11" surname = "TestAp11" email = "hotelemail@email.com"/>
-                  <Price currency = "EUR" amount = "36.20" binding = "false" commission = "-1"/>
-                  <ResGuests> 
-                      <Guests>
-                          <Guest roomCandidateId = "1" paxId = "1">
+               <ns:code>suppliercode</ns:code>
+               <ns:id>1</ns:id>
+               <ns:rqXML>
+                  <ReservationRQ>
+            <ns:timeoutMilliseconds>17900</ns:timeoutMilliseconds>
+            <ns:version>1</ns:version>
+            <ns:providerRQ>
+               <ns:code>suppliercode</ns:code>
+               <ns:id>1</ns:id>
+               <ns:rqXML>
+                  <AvailRQ>
+                      <timeoutMilliseconds>18000</timeoutMilliseconds>
+                     <source>
+                        <languageCode>en</languageCode>
+                     </source>
+                     <filterAuditData>
+                        <registerTransactions>true</registerTransactions>
+                     </filterAuditData>
+                     <Configuration>
+                        <User>user</User>
+                        <Password>password</Password>
+                        <UrlAvail>www.supplier.com/avail</UrlAvail>
+                        <UrlReservation>www.supplier.com/reservation</UrlReservation>
+                        <UrlValuation>www.supplier.com/valuation</UrlValuation>
+                        <UrlGeneric>www.supplier.com/generic</UrlGeneric>
+                        <Parameters>
+                           <Parameter key = "UrlListHoteles" value = "http://www.test.net/scr/searchxml/location.php?"></Parameter>
+                           <Parameter key = "UrlConsulta" value = "https://www.test.net/scr/xml/travelgate.php?"></Parameter>
+                           <Parameter key = "office" value = "55555"></Parameter>
+                           <Parameter key = "password" value = "XXXXXX"></Parameter>
+                        </Parameters>
+                     </Configuration>
+                     <ClientLocator>2537459</ClientLocator>
+                     <OnRequest>false</OnRequest>
+                     <Parameters>
+                        <Parameter key = "extra" value = "31"/>
+                     </Parameters>
+                     <DeltaPrice amount="10" percent="5" applyBoth="false"/>
+                     <StartDate>28/01/2014</StartDate>
+                     <EndDate>29/01/2014</EndDate>
+                     <MealPlanCode>D</MealPlanCode>
+                     <HotelCode>10</HotelCode>
+                     <Nationality>ES</Nationality>
+                     <Holder title = "Miss" name = "name" surname = "surname" email = "hotelemail@email.com"/>
+                     <Price currency = "EUR" amount = "36.20" binding = "false" commission = "-1"/>
+                     <ResGuests> 
+                        <Guests>
+                           <Guest roomCandidateId = "1" paxId = "1">
                               <Title>Miss</Title>  
-                              <GivenName>Test11</GivenName>
-                              <SurName>TestAp11</SurName>
-                          </Guest>
-                          <Guest roomCandidateId = "1" paxId = "2">
-                              <Title>Mr</Title>  
-                              <GivenName>Test12</GivenName>
-                              <SurName>TestAp12</SurName>
+                              <GivenName>name</GivenName>
+                              <SurName>surname</SurName>
                            </Guest>
-                      </Guests>
-                  </ResGuests>
-                  <PaymentType>CardCheckInPay</PaymentType>
-                  <CardInfo>
-                      <CardCode>VI</CardCode>
-                      <Number>4321432143214327</Number>
-                      <Holder>Test11 TestAp11</Holder>
-                      <ValidityDate>   
-                          <Month>06</Month>
-                          <Year>14</Year>
-                      </ValidityDate>
-                      <CVC>123</CVC>
-                  </CardInfo>
-                  <Rooms>
-                      <Room id = "4582" roomCandidateRefId = "1" code = "506" description = "Double Standard.."/>
-                      <Preferences>
-                          <Preference type = "NonSmoker"/>
-                          <Preference type = "ExtraBed"/>
-                      </Preferences>
-                  </Rooms>
-                  <RoomCandidates>
-                      <RoomCandidate id = "1">
-                          <Paxes>
+                           <Guest roomCandidateId = "1" paxId = "2">
+                              <Title>Mr</Title>  
+                              <GivenName>name</GivenName>
+                              <SurName>surname</SurName>
+                           </Guest>
+                        </Guests>
+                     </ResGuests>
+                     <PaymentType>CardCheckInPay</PaymentType>
+                     <CardInfo>
+                        <CardCode>VI</CardCode>
+                        <Number>4321432143214327</Number>
+                        <Holder>name surname</Holder>
+                        <ValidityDate>   
+                           <Month>06</Month>
+                           <Year>14</Year>
+                        </ValidityDate>
+                        <CVC>123</CVC>
+                     </CardInfo>
+                     <Rooms>
+                        <Room id = "4582" roomCandidateRefId = "1" code = "506" description = "Double Standard.."/>
+                        <Preferences>
+                           <Preference type = "NonSmoker"/>
+                           <Preference type = "ExtraBed"/>
+                        </Preferences>
+                     </Rooms>
+                     <RoomCandidates>
+                        <RoomCandidate id = "1">
+                           <Paxes>
                               <Pax age = "30" id = "1"/>
                               <Pax age = "30" id = "2"/>
-                          </Paxes>
-                      </RoomCandidate>
-                  </RoomCandidates>
-                  <Remarks>I want it a double bed.</Remarks>
-                  <Preferences>
-                      <Preference type = "LateArrival">14:00</Preference>
-                  </Preferences>
-                </ReservationRQ>
-              </ns:rqXML>
+                           </Paxes>
+                        </RoomCandidate>
+                     </RoomCandidates>
+                     <Remarks>I want it a double bed.</Remarks>
+                     <Preferences>
+                        <Preference type = "LateArrival">14:00</Preference>
+                     </Preferences>
+                  </ReservationRQ>
+               </ns:rqXML>
             </ns:providerRQ>
-          </ns:reservationRQ>
-        </ns:Reservation>
-      </soapenv:Body>
+         </ns:reservationRQ>
+      </ns:Reservation>
+   </soapenv:Body>
 </soapenv:Envelope>
 ```
 
 ### Request Data Breakdown
+
+:::note
+
+Header y common elements
+
+:::
 
 | Element					| Number	| Type	| Description					|
 | --------------------------------------------- | ------------- | ------------- | ----------------------------------------------------- |
@@ -192,28 +201,37 @@ The maximum time permitted in our system before the connection is closed is 1800
 | ThreeDomainSecurity/SignatureStatus  | 0..1  		| String	| <details>     <summary>Signature Verification Status</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Status Value</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>Y</td>  						 <td>Signature of the PARes has been validated successfully.</td>  					 </tr>              <tr>  						 <td>N</td>  						 <td>PARes could not be validated.</td>  					 </tr>	     </tbody>  			</table>         </div>     </div> </details>	|
 | ThreeDomainSecurity/MerchantName     | 0..1  		| String	| Merchant name.	|
 | ReservationRQ/Rooms         				| 1      	|		| Rooms within this option (room list).			|
-| Rooms/Room    				| 1..n    	|		| Detail of room. 					|
+| Rooms/Room    				| 1..n    	|		|  					|
 | @id      					| 1  		| String	| Room identifier.				|
 | @roomCandidateRefId				| 1  		| Integer	| Room candidate identifier.				|
 | @code    					| 1  		| String	| Room code.						|
 | @description					| 1  		| String	| Room description.					|
 | Rooms/Preferences    				| 0..1    	|		| Preference filters at room level. 					|
 | Preferences/Preference   				| 1..n    	|		| Each filter of preference and its values. 		|
-| @type   				| 1    	|		| Type of preference allowed. See types allowed in **PreferenceType** further down this page 					|
+| @type   				| 1    	|		| <details>     <summary>Preference types</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Preference Type</strong>  						 </th>   					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>Smoker</td>  				</tr>   	     <tr>  						 <td>NonSmoker</td>  				</tr>     <tr>  						 <td>ExtraBed</td>  				</tr>      <tr>  						 <td>Cradle</td>  				</tr>    <tr>  						 <td>DoubleBed</td>  				</tr>      <tr>  						 <td>TwinBeds</td>  				</tr>    <tr>  						 <td>ContigousRoom</td>  				</tr>     <tr>  						 <td>Wedding</td>  				</tr>     <tr>  						 <td>LateArrival</td>  				</tr>      <tr>  						 <td>LateCheckOut</td>  				</tr>    <tr>  						 <td>EarlyCheckIn</td>  				</tr>      <tr>  						 <td>GroundFloor</td>  				</tr>     <tr>  						 <td>TopFloor</td>  				</tr>     <tr>  						 <td>WithoutBoucher</td>  				</tr>  </tbody>  			</table>         </div>     </div> </details>			|
 | ReservationRQ/RoomCandidatese			| 1..n    	|		| 					|
-| RoomCandidates/RoomCandidate			| 1..n    	|		| Room required.					|
+| RoomCandidates/RoomCandidate			| 1..n    	|		| 					|
 | @id      					| 1  		| Integer	| Id of the requested room (starting at 1).		|
-| RoomCandidate/Paxes	| 1..n    	|		| Pax required.						|
+| RoomCandidate/Paxes	| 1..n    	|		| 						|
 | Paxes/Pax	| 1..n    	|		| 						|
 | @age     					| 1  		| Integer	| Passenger age on the day of check-in. 					|
 | @id      					| 1  		| Integer	| Passenger id (starting at 1). 			|
 | ReservationRQ/Remarks       				| 0..1    	| 		| Any customer comments for the supplier to consider (see [MetaData](../content/meta-data/) in order to verify if a supplier implements it).	|
 | ReservationRQ/Preferences   				| 0..1    	|		| Preference filters at the option / general level. 					|
 | Preferences/Preference  				| 1..n    	|		| Each filter of preference and its values. 		|
-| @type   				| 1    	|		| <details>     <summary>Preferences</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Preference Type</strong>  						 </th>   					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>Smoker</td>  				</tr>   	     <tr>  						 <td>NonSmoker</td>  				</tr>     <tr>  						 <td>ExtraBed</td>  				</tr>      <tr>  						 <td>Cradle</td>  				</tr>    <tr>  						 <td>DoubleBed</td>  				</tr>      <tr>  						 <td>TwinBeds</td>  				</tr>    <tr>  						 <td>ContigousRoom</td>  				</tr>     <tr>  						 <td>Wedding</td>  				</tr>     <tr>  						 <td>LateArrival</td>  				</tr>      <tr>  						 <td>LateCheckOut</td>  				</tr>    <tr>  						 <td>EarlyCheckIn</td>  				</tr>      <tr>  						 <td>GroundFloor</td>  				</tr>     <tr>  						 <td>TopFloor</td>  				</tr>     <tr>  						 <td>WithoutBoucher</td>  				</tr>  </tbody>  			</table>         </div>     </div> </details>					|
+| @type   				| 1    	|		| <details>     <summary>Preference types</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Preference Type</strong>  						 </th>   					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>Smoker</td>  				</tr>   	     <tr>  						 <td>NonSmoker</td>  				</tr>     <tr>  						 <td>ExtraBed</td>  				</tr>      <tr>  						 <td>Cradle</td>  				</tr>    <tr>  						 <td>DoubleBed</td>  				</tr>      <tr>  						 <td>TwinBeds</td>  				</tr>    <tr>  						 <td>ContigousRoom</td>  				</tr>     <tr>  						 <td>Wedding</td>  				</tr>     <tr>  						 <td>LateArrival</td>  				</tr>      <tr>  						 <td>LateCheckOut</td>  				</tr>    <tr>  						 <td>EarlyCheckIn</td>  				</tr>      <tr>  						 <td>GroundFloor</td>  				</tr>     <tr>  						 <td>TopFloor</td>  				</tr>     <tr>  						 <td>WithoutBoucher</td>  				</tr>  </tbody>  			</table>         </div>     </div> </details>					|
 
 
-## Response
+## Reservation Response
+
+:::caution
+
+Be aware that you can receive an error and a reservation status OK in the same response, in this case the booking is confirmed. You should always consider the reservation status returned.
+
+:::
+
+
+### Success
 
 ```xml
 <ReservationRS>
@@ -224,7 +242,7 @@ The maximum time permitted in our system before the connection is closed is 1800
 </ReservationRS>
 ```
 
-### Response Data Breakdown
+#### Success Response Data Breakdown
 
 | Element					| Number	| Type	| Description					|
 | --------------------------------------------- | ------------- | ------------- | ----------------------------------------------------- |
@@ -243,8 +261,86 @@ The maximum time permitted in our system before the connection is closed is 1800
 | @value					| 1       	|		| Informs Payable.					|
 
 
-:::caution
+### Error
 
-Be aware that you can receive an error and a reservation status OK in the same response, in this case the booking is confirmed. You should always consider the reservation status returned.
+```xml
+<ReservationRS>
+   <operationImplemented>true</operationImplemented>
+   <applicationError>
+      <code/>
+      <type>204</type>
+      <description>Supplier returns 0 results in availability.</description>
+      <httpStatusCode>0</httpStatusCode>
+   </applicationError>
+</ReservationRS>
+```
 
-:::
+<details>
+    <summary>Error codes that will be included in the response in the event of an error</summary>
+    <div>
+        <div>
+         <table>
+				<thead>
+					<tr>
+						<th>
+							<strong>Error Code</strong>
+						</th>
+						<th>
+							<strong>Error Description</strong>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>101</td>
+						<td>System Exception (Exception not controlled or not classified as general exception).</td>
+					</tr>
+					<tr>
+						<td>102</td>
+						<td>Supplier Error.</td>
+					</tr>
+					<tr>
+						<td>103</td>
+						<td>Too many requests to the supplier.</td>
+					</tr>
+                    <tr>
+						<td>104</td>
+						<td>Timeout (Timeout during the execution of an operation (look in the common attribute timeout )).</td>
+					</tr>
+					<tr>
+						<td>105</td>
+						<td>Communication Error.</td>
+					</tr>
+					<tr>
+						<td>204</td>
+						<td>Supplier returns 0 results in availability.</td>
+					</tr>
+                    <tr>
+						<td>205</td>
+						<td>The Supplier doesn’t accept the distribution RQ.</td>
+					</tr>
+					<tr>
+						<td>206</td>
+						<td>The Supplier doesn’t accept the dates RQ.</td>
+					</tr>
+					<tr>
+						<td>207</td>
+						<td>The Supplier doesn’t accept the request RQ.</td>
+					</tr>
+                    <tr>
+						<td>301</td>
+						<td>Option not found in policies.</td>
+					</tr>
+                    <tr>
+						<td>302</td>
+						<td>Hotel Not Found in DescriptiveInfo.</td>
+					</tr>
+                    <tr>
+						<td>303</td>
+						<td>Booking not confirmed in the supplier’s system.</td>
+					</tr>
+				</tbody>
+			</table>
+        </div>
+    </div>
+</details>

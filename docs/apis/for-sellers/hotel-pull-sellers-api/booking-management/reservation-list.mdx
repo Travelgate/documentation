@@ -1,18 +1,13 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 ---
 
-# Reservation Read
+# Reservation List
 
-Reservation Read allows you to retrieve a specific booking with all its details using the lovators, booking codes. The returned fields for each booking in the list include: `Locators`, `Hotel`, `TransactionStatus`, `Holder`, `Price` etc.
+Reservation List allows to obtain a list of bookings that were made within a specific arrival date range or a specific booking date range. The returned fields for each booking in the list include: `Locators`, `Hotel`, `TransactionStatus`, `Holder`, `Price` etc.
 
-:::caution
 
-The amount of information returned might vary between Sellers.
-
-:::
-
-## ReservationRead Request
+## ReservationList Request
 
 ```xml
 <soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns = "http://schemas.xmltravelgate.com/hub/2012/06" xmlns:wsse = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
@@ -25,15 +20,15 @@ The amount of information returned might vary between Sellers.
       </wsse:Security>
    </soapenv:Header>
    <soapenv:Body>
-      <ns:ReservationRead>
-         <ns:reservationReadRQ>
+      <ns:ReservationList>
+         <ns:reservationListRQ>
             <ns:timeoutMilliseconds>20000</ns:timeoutMilliseconds>
             <ns:version>1</ns:version>
             <ns:providerRQ>
                <ns:code>suppliercode</ns:code>
                <ns:id>1</ns:id>
                <ns:rqXML>
-                  <ReservationReadRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
+                  <ReservationListRQ>
                       <timeoutMilliseconds>19700</timeoutMilliseconds>
                      <source>
                         <languageCode>en</languageCode>
@@ -53,101 +48,127 @@ The amount of information returned might vary between Sellers.
                            <Parameter key = "Access" value = "22334"></Parameter>
                         </Parameters>
                      </Configuration>
-                     <Locators>
-                        <Client>XXXXXXX</Client>
-                        <Provider>XXXXXXX</Provider>
-                     </Locators>
-                     <Currency>EUR</Currency>
-                     <StartDate>28/01/2014</StartDate>
-                     <EndDate>29/01/2014</EndDate>
-                     <CreationDate>17/01/2014</CreationDate>
-                     <HotelCode>AAA</HotelCode>
-                     <Holder title = "Miss" name = "Test11" surname = "TestAp11"/>
-                  </ReservationReadRQ>
+                     <DateType>A</DateType>
+                     <Start>28/11/2014</Start>
+                     <End>28/11/2014</End>
+                  </ReservationListRQ>
                </ns:rqXML>
             </ns:providerRQ>
-         </ns:reservationReadRQ>
-      </ns:ReservationRead>
+         </ns:reservationListRQ>
+      </ns:ReservationList>
    </soapenv:Body>
 </soapenv:Envelope>
 ```
 
 ### Request Data Breakdown
 
-:::info
-
-Check the values you need to add in the [header](../making-requests/request-headers) and [common elements](../making-requests/common-elements).
-
-:::
-
-| Element 		| Rel	| Type	| Description					|
+| Element		| Rel	| Type	| Description					|
 | --------------------- | ------------- | ------------- | ----------------------------------------------------- |
-| ReservationReadRQ	| 1		|		| Root node.						|
-| ReservationReadRQ/Locators | 1 |		| Information about the locators (it is mandatory to indicate either client or supplier's locator). |
-| Locators/Client	| 0..1		| String	| Client locator.					|
-| Locators/Provider	| 0..1		| String	| Supplier locator.					|
-| ReservationReadRQ/Currency   		| 1    		| String	| Currency code.					|
-| ReservationReadRQ/StartDate  		| 0..1    		| String	| Start date of booking. 				|
-| ReservationReadRQ/EndDate    		| 0..1    		| String	| End date of booking.					|
-| ReservationReadRQ/CreationDate		| 0..1    		| String	| Creation date of booking.				|
-| ReservationReadRQ/HotelCode		| 1    		| String	| Hotel code.				|
-| ReservationReadRQ/Holder   				| 0..1		|		| Holder of the booking.  |
-| @title   				| 1		| String	| Holder’s title. Possible values: Mr, Mrs, Miss, Ms |
-| @name   				| 1		|		| Holder's name.  |
-| @surname   				| 1		|		| Holder's surname.  |
+| ReservationListRQ	| 1             |		| Root node.						|
+| ReservationListRQ/DateType       	| 1      	| String 	| Type search (A = arrival date, B = booking creation). |
+| ReservationListRQ/Start          	| 1      	| String 	| Start date.						|
+| ReservationListRQ/End            	| 1      	| String 	| End date. 						|
 
-## ReservationRead Response
 
-After each request, the Seller will process the data and provide you with a response. Upon receiving a `ReservationRead` request, the Seller will send you a corresponding `ReservatonRead` response. 
+## ReservationList Response
 
-The response options include either **success** or an **error**. In the event of success, you will receive all the details of the specific booking that you have requested.
+After each request, you will process the data and provide a response. Upon receiving a `ReservationList` request, you will send a corresponding `ReservatonList` response. 
+
+The response options include either **success** or an **error**. In the event of success, you will send a booking list with all the details.
 
 ### Success
 
 ```xml
-<ReservationReadRS>
-   <Locators>
-      <Client>2578478</Client>
-      <Provider>10TTT31</Provider>
-      <Property>HCN8273</Property>
-   </Locators>
-   <Hotel>
-      <Name>LEO</Name>
-      <Code>10</Code>
-      <CreationDate>17/12/2015</CreationDate>
-      <StartDate>28/01/2016</StartDate>
-      <EndDate>29/01/2016</EndDate>
-      <Holder name = "name" surname = "surname"/>
-      <Price currency = "EUR" amount = "36.20" binding = "false" commission = "-1"/>
-      <Rooms>
-         <Room id = "4582" roomCandidateRefId = "1" description = "Standard.."/>
-      </Rooms>
-      <CancelPenalties nonRefundable = "false">
-         <CancelPenalty>
-            <HoursBefore>120</HoursBefore>
-            <Deadline>2016-07-01T05:00:00Z</Deadline>
-            <CalculatedDeadline>false</CalculatedDeadline>
-            <Penalty type = "Importe" paymentType = "MerchantPay" currency = "EUR">72.40</Penalty>
-         </CancelPenalty>
-      </CancelPenalties>
-   </Hotel>
-   <TransactionStatus>
-      <ComunicationStatus>OK</ComunicationStatus>
-      <RSStatus>EXISTE</RSStatus>
-      <ResStatus>OK</ResStatus>
-   </TransactionStatus>
-</ReservationReadRS>
+<ReservationListRS>
+   <Reservations>
+      <Reservation>
+         <auditData>
+            <timeStamp>2014-01-21T15:12:12.0558866+00:00</timeStamp>
+            <processTimeMilliseconds>0</processTimeMilliseconds>
+         </auditData>
+         <operationImplemented>true</operationImplemented>
+         <Locators>
+            <Client>2196</Client>
+            <Provider>1AAAA966</Provider>
+            <Property>HCN8273</Property>
+         </Locators>
+         <Hotel>
+            <Name>LAS VEGAS (BENIDORM)</Name>
+            <Code>58475</Code>
+            <CreationDate>30/09/2013</CreationDate>
+            <StartDate>25/01/2014</StartDate>
+            <EndDate>16/02/2014</EndDate>
+            <Holder name = "name" surname = "surname"/>
+            <Price currency = "EUR" amount = "658.94" binding = "false" commission = "-1"/>
+            <Rooms>
+               <Room id = "27441" roomCandidateRefId = "1" description = "Doble Standard"/>
+            </Rooms>
+            <CancelPenalties nonRefundable = "false">
+               <CancelPenalty>
+                  <HoursBefore>72</HoursBefore>
+                  <Deadline>2014-01-01T05:00:00Z</Deadline>
+                  <CalculatedDeadline>false</CalculatedDeadline>
+                  <Penalty type = "Importe" paymentType = "pagoMinorista" currency = "EUR">29.95</Penalty>
+               </CancelPenalty>
+            </CancelPenalties>
+         </Hotel>
+         <TransactionStatus>
+            <ComunicationStatus>OK</ComunicationStatus>
+            <RSStatus>EXISTE</RSStatus>
+            <ResStatus>OK</ResStatus>
+         </TransactionStatus>
+      </Reservation>
+      <Reservation>
+         <auditData>
+            <timeStamp>2014-01-21T15:12:12.6657414+00:00</timeStamp>
+            <processTimeMilliseconds>0</processTimeMilliseconds>
+         </auditData>
+         <operationImplemented>true</operationImplemented>
+         <Locators>
+            <Client>2578478</Client>
+            <Provider>10TTT31</Provider>
+         </Locators>
+         <Hotel>
+            <Name>LEO</Name>
+            <Code>10</Code>
+            <CreationDate>17/01/2014</CreationDate>
+            <StartDate>28/01/2014</StartDate>
+            <EndDate>29/01/2014</EndDate>
+            <Holder name = "name" surname = "surname"/>
+            <Price currency = "EUR" amount = "36.20" binding = "false" commission = "-1"/>
+            <Rooms>
+               <Room id = "4582" roomCandidateRefId = "1" description = "Doble Standard.."/>
+            </Rooms>
+            <CancelPenalties nonRefundable = "false">
+               <CancelPenalty>
+                  <HoursBefore>120</HoursBefore>
+                  <Deadline>2014-01-01T05:00:00Z</Deadline>
+                  <CalculatedDeadline>false</CalculatedDeadline>
+                  <Penalty type = "Importe" paymentType = "pagoMinorista" currency = "EUR">72.40</Penalty>
+               </CancelPenalty>
+            </CancelPenalties>
+         </Hotel>
+         <TransactionStatus>
+            <ComunicationStatus>OK</ComunicationStatus>
+            <RSStatus>EXISTE</RSStatus>
+            <ResStatus>OK</ResStatus>
+         </TransactionStatus>
+      </Reservation>
+   </Reservations>
+</ReservationListRS>
 ```
 
 #### Success Response Data Breakdown
 
-| **Element**				| **Number**	| **Type**	| **Description**				|
-| ------------------------------------- | ------------- | ------------- | --------------------------------------------- |
-| ReservationReadRS			| 1 |   	| Root node.					|
-| ReservationReadRS/Locators   | 1 |		|Information about the locators.|
+| Element					| Rel	| Type | Description				|
+| --------------------------------------------- | ------------- | -------- | ------------------------------------------ |
+| ReservationListRS              		| 1             |	   | Root node.					|
+| ReservationListRS/Reservations		| 0..1          |	   | Reservations.				|
+| Reservations/Reservation	| 1             |	   | 	|
+| Reservation/Locators   | 1 |		|Information about the locators.|
 | Locators/Client			| 0..1 		| String	| Client locator.				|
 | Locators/Provider		| 0..1 		| String	| Supplier locator.				|
-| Locators/Property		| 0..1 		| String	| Property locator (see [MetaData](../content/meta-data/) method in order to verify if the supplier implements it).				|
+| Locators/Property		| 0..1 		| String	| Property locator(see [MetaData](../content/meta-data/) method in order to verify if the supplier implements it).				|
 | ReservationReadRS/Hotel	| 0..1       	|		| Hotel reservation.				|
 | Hotel/Code 				| 0..1 		| String	| Hotel Code.					|
 | Hotel/Name 				| 0..1 		| String	| Hotel Name.					|
@@ -196,7 +217,7 @@ The response options include either **success** or an **error**. In the event of
 ### Error
 
 ```xml
-<ReservationReadRS>
+<ReservationListRS>
    <operationImplemented>true</operationImplemented>
    <applicationError>
       <code/>
@@ -204,11 +225,11 @@ The response options include either **success** or an **error**. In the event of
       <description>Communication Error.</description>
       <httpStatusCode>0</httpStatusCode>
    </applicationError>
-</ReservationReadRS>
+</ReservationListRS>
 ```
 
 <details>
-    <summary>Error codes that will be included in the response in the event of an error</summary>
+    <summary>Error codes that you will need to include in the response in the event of an error</summary>
     <div>
         <div>
          <table>

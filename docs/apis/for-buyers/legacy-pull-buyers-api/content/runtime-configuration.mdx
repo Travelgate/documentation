@@ -28,14 +28,14 @@ The amount of information and content returned might vary between Sellers.
    <soapenv:Body>
       <ns:RuntimeConfiguration>
          <ns:runtimeConfigurationRQ>
-            <ns:timeoutMilliseconds>17900</ns:timeoutMilliseconds>
+            <ns:timeoutMilliseconds>20000</ns:timeoutMilliseconds>
             <ns:version>1</ns:version>
             <ns:providerRQ>
                <ns:code>suppliercode</ns:code>
                <ns:id>1</ns:id>
                <ns:rqXML>
                   <RuntimeConfigurationRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
-                     <timeoutMilliseconds>18000</timeoutMilliseconds>
+                     <timeoutMilliseconds>19700</timeoutMilliseconds>
                      <source>
                         <languageCode>en</languageCode>
                      </source>
@@ -50,10 +50,8 @@ The amount of information and content returned might vary between Sellers.
                         <UrlValuation>www.supplier.com/valuation</UrlValuation>
                         <UrlGeneric>www.supplier.com/generic</UrlGeneric>
                         <Parameters>
-                           <Parameter key = "UrlListHoteles" value = "http://www.test.net/scr/searchxml/location.php?"></Parameter>
-                           <Parameter key = "UrlConsulta" value = "https://www.test.net/scr/xml/travelgate.php?"></Parameter>
-                           <Parameter key = "office" value = "55555"></Parameter>
-                           <Parameter key = "password" value = "XXXXXX"></Parameter>
+                           <Parameter key = "UrlListHotels" value = "http://www.supplier.com/ListHotels"></Parameter>
+                           <Parameter key = "Access" value = "22334"></Parameter>
                         </Parameters>
                      </Configuration>
                   </RuntimeConfigurationRQ>
@@ -67,9 +65,9 @@ The amount of information and content returned might vary between Sellers.
 
 ### Request Data Breakdown
 
-:::note
+:::info
 
-Header y common elements
+Check the values you need to add in the [header](../making-requests/request-headers) and [common elements](../making-requests/common-elements).
 
 :::
 
@@ -83,14 +81,16 @@ After each request, the Seller will have to process the data and provide a respo
 ```xml
 <RuntimeConfigurationRS>
    <Configuration>
-      <User>username</User>
+      <User>user</User>
       <Password>password</Password>
-      <UrlGeneric>http://api.endpoint.es/service/production</UrlGeneric>
+      <UrlAvail>www.supplier.com/avail</UrlAvail>
+      <UrlReservation>www.supplier.com/reservation</UrlReservation>
+      <UrlValuation>www.supplier.com/valuation</UrlValuation>
+      <UrlGeneric>www.supplier.com/generic</UrlGeneric>
       <Parameters>
-         <Parameter key = "ApiKey" value = "123456789tx"/>
-         <Parameter key = "StaticUrl" value = "http://api.endpoint.es/service/static"/>
+         <Parameter key = "UrlListHotels" value = "http://www.supplier.com/ListHotels"></Parameter>
+         <Parameter key = "Access" value = "22334"></Parameter>
       </Parameters>
-   </Configuration>
 </RuntimeConfigurationRS>
 ```
 
@@ -99,10 +99,13 @@ After each request, the Seller will have to process the data and provide a respo
 | Element                       | Rel  | Type     | Description                                                 |
 |-------------------------------|------|----------|-------------------------------------------------------------|
 | RuntimeConfigurationRS/Configuration | 1     |  |                                        |
-| Configuration/User            | 1    | String   | Username                              |
-| Configuration/Password        | 1    | String   | Password                                                            |
-| Configuration/UrlGeneric      | 1    | String   | Url Generic                                              |
-| Configuration/Parameters      | 0..1 | String   | Specific configurations of the Seller.                                      |
-| Parameters/Parameter          | 0..n | String   |                                        |
-| @key                          | 1    | String   | Parameter type                                       |
-| @value                        | 1    | String   | Parameter value                                 |
+| Configuration/User            | 0..1 | String  | User code to connect to supplier.                                           |
+| Configuration/Password        | 0..1 | String  | Password for the connection.                                                |
+| Configuration/UrlAvail        | 0..1 | String  | Specific Url for Avail method.                                              |
+| Configuration/UrlReservation  | 0..1 | String  | Specific Url for Reservation method.                                        |
+| Configuration/UrlValuation    | 0..1 | String  | Specific Url for Valuation method.                                          |
+| Configuration/UrlGeneric      | 0..1 | String  | Supplier Url used for multiple methods.                                     |
+| Configuration/Parameters      | 0..1 |         | Parameters for additional information.                                      |
+| Parameters/Parameter          | 0..n |         |                                                                             |
+| @key                          | 1    | String  | Contains the keyword to identify a parameter.                            |
+| @value                        | 1    | String  | Contains the parameter values.                                              |

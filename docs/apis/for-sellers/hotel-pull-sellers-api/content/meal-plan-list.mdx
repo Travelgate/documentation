@@ -1,18 +1,13 @@
 ---
-sidebar_position: 10
+sidebar_position: 7
 ---
 
-# Currency List
+# Meal Plan List
 
-The Currency List method returns a comprehensive currencies list a supplier's supports in Avail method. The returned fields include: `Currency code`, `Currency name` etc.
+The Meal Plan List method returns a comprehensive meal plans list from a supplier's access that may include translations to other languages, granting access to all the meal plans configured by the Seller for a given set of credentials. The returned fields include: `MealPlan code`, `MealPlan name` etc.
 
-:::caution
 
-The amount of information and content returned might vary between Sellers.
-
-:::
-
-## CurrencyList Request
+## MealPlanList Request
 
 ```xml
 <soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns = "http://schemas.xmltravelgate.com/hub/2012/06" xmlns:wsse = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
@@ -25,15 +20,15 @@ The amount of information and content returned might vary between Sellers.
       </wsse:Security>
    </soapenv:Header>
    <soapenv:Body>
-      <ns:CurrencyList>
-         <ns:currencyListRQ>
+      <ns:MealPlanList>
+         <ns:mealPlanListRQ>
             <ns:timeoutMilliseconds>20000</ns:timeoutMilliseconds>
             <ns:version>1</ns:version>
             <ns:providerRQ>
                <ns:code>suppliercode</ns:code>
                <ns:id>1</ns:id>
                <ns:rqXML>
-                  <CurrencyListRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
+                  <MealPlanListRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
                      <timeoutMilliseconds>19700</timeoutMilliseconds>
                      <source>
                         <languageCode>en</languageCode>
@@ -53,52 +48,52 @@ The amount of information and content returned might vary between Sellers.
                            <Parameter key = "Access" value = "22334"></Parameter>
                         </Parameters>
                      </Configuration>
-                  </CurrencyListRQ>
+                  </MealPlanListRQ>
                </ns:rqXML>
             </ns:providerRQ>
-         </ns:currencyListRQ>
-      </ns:CurrencyList>
+         </ns:mealPlanListRQ>
+      </ns:MealPlanList>
    </soapenv:Body>
 </soapenv:Envelope>
 ```
 
 ### Request Data Breakdown
 
-:::info
 
-Check the values you need to add in the [header](../making-requests/request-headers) and [common elements](../making-requests/common-elements).
+`MealPlanList` request does not require any elements. 
+
+## MealPlanList Response
+
+After each request, you will have to process the data and provide a response. Upon receiving a `MealPlanList` request, you will need to send a corresponding `MealPlanList` response.
+
+:::note
+
+If you have over 100 meal plan codes or more than 20 codes for a single meal plan, the mapping for these codes will depend on you.
 
 :::
 
-`CurrencyList` request does not require any elements. 
-
-
-## CurrencyList Response
-
-After each request, the Seller will have to process the data and provide a response. Upon receiving a `CurrencyList` request, the Seller will send you a corresponding `CurrencyList` response.
-
 ```xml
-<CurrencyListRS>
-   <UpgradeUTCDate>2016-10-18T13:18:03+02:00</UpgradeUTCDate>
-   <Currencies>
-      <Currency>
-         <Code>EUR</Code>
-         <Name>Euro</Name>
-      </Currency>
-      <Currency>
-         <Code>USD</Code>
-         <Name>Dollar</Name>
-      </Currency>
-   </Currencies>
-</CurrencyListRS>
+<MealPlanListRS>
+   <UpgradeUTCDate>2023-10-18T13:18:03+02:00</UpgradeUTCDate>
+   <MealPlans>
+      <MealPlan>
+         <Code>BB</Code>
+         <Name>Bed and breakfast</Name>
+      </MealPlan>
+      <MealPlan>
+         <Code>HB</Code>
+         <Name>Half board</Name>
+      </MealPlan>
+    </MealPlans>
+</MealPlanListRS>
 ```
 
 ### Response Data Breakdown
 
 | Element                       | Rel  | Type     | Description                                                 |
 |-------------------------------|------|----------|-------------------------------------------------------------|
-| CurrencyListRS/UpgradeUTCDate | 1    | DateTime | Indicates the update date of the information in UTC format. |
-| CurrencyListRS/Currencies     | 1    |          | Root node, list of currencies.                              |
-| Currencies/Currency           | 0..n |          |                                                             |
-| @code                         | 1    | String   | ISO - 3 Code.                                               |
-| @Name                         | 1    | String   | Name of the currency.                                       |
+| MealPlanListRS/UpgradeUTCDate | 1    | DateTime | Indicates the update date of the information in UTC format. |
+| MealPlanListRS/MealPlans      | 1    |          | Root node, list of mealplans.                               |
+| MealPlans/MealPlan            | 1..n |          |                                                             |
+| MealPlan/Code                 | 1    | String   | Mealplan code                                               |
+| MealPlan/Name                 | 1    | String   | Mealplan name                                               |

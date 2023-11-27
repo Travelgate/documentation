@@ -1,18 +1,13 @@
 ---
-sidebar_position: 10
+sidebar_position: 6
 ---
 
-# Currency List
+# Room List
 
-The Currency List method returns a comprehensive currencies list a supplier's supports in Avail method. The returned fields include: `Currency code`, `Currency name` etc.
+The Room List method returns a comprehensive room list from a supplier's access that may include translations to other languages, granting access to all the rooms configured by the Seller for a given set of credentials. The returned fields include: `Room code`, `Room name` etc.
 
-:::caution
 
-The amount of information and content returned might vary between Sellers.
-
-:::
-
-## CurrencyList Request
+## RoomList Request
 
 ```xml
 <soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns = "http://schemas.xmltravelgate.com/hub/2012/06" xmlns:wsse = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
@@ -25,15 +20,15 @@ The amount of information and content returned might vary between Sellers.
       </wsse:Security>
    </soapenv:Header>
    <soapenv:Body>
-      <ns:CurrencyList>
-         <ns:currencyListRQ>
+      <ns:RoomList>
+         <ns:roomListRQ>
             <ns:timeoutMilliseconds>20000</ns:timeoutMilliseconds>
             <ns:version>1</ns:version>
             <ns:providerRQ>
                <ns:code>suppliercode</ns:code>
                <ns:id>1</ns:id>
                <ns:rqXML>
-                  <CurrencyListRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
+                  <RoomListRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
                      <timeoutMilliseconds>19700</timeoutMilliseconds>
                      <source>
                         <languageCode>en</languageCode>
@@ -53,52 +48,46 @@ The amount of information and content returned might vary between Sellers.
                            <Parameter key = "Access" value = "22334"></Parameter>
                         </Parameters>
                      </Configuration>
-                  </CurrencyListRQ>
+                  </RoomListRQ>
                </ns:rqXML>
             </ns:providerRQ>
-         </ns:currencyListRQ>
-      </ns:CurrencyList>
+         </ns:roomListRQ>
+      </ns:RoomList>
    </soapenv:Body>
 </soapenv:Envelope>
 ```
 
 ### Request Data Breakdown
 
-:::info
-
-Check the values you need to add in the [header](../making-requests/request-headers) and [common elements](../making-requests/common-elements).
-
-:::
-
-`CurrencyList` request does not require any elements. 
+`RoomList` request does not require any elements. 
 
 
-## CurrencyList Response
+## RoomList Response
 
-After each request, the Seller will have to process the data and provide a response. Upon receiving a `CurrencyList` request, the Seller will send you a corresponding `CurrencyList` response.
+After each request, you will have to process the data and provide a response. Upon receiving a `RoomList` request, you will need to send a corresponding `RoomList` response.
 
 ```xml
-<CurrencyListRS>
+<RoomListRS>
    <UpgradeUTCDate>2016-10-18T13:18:03+02:00</UpgradeUTCDate>
-   <Currencies>
-      <Currency>
-         <Code>EUR</Code>
-         <Name>Euro</Name>
-      </Currency>
-      <Currency>
-         <Code>USD</Code>
-         <Name>Dollar</Name>
-      </Currency>
-   </Currencies>
-</CurrencyListRS>
+   <RoomsInfo>
+      <RoomInfo>
+         <Code>STD</Code>
+         <Name>Standard</Name>
+      </RoomInfo>
+      <RoomInfo>
+         <Code>ST</Code>
+         <Name>Suite</Name>
+      </RoomInfo>
+   </RoomsInfo>
+</RoomListRS>
 ```
 
 ### Response Data Breakdown
 
-| Element                       | Rel  | Type     | Description                                                 |
-|-------------------------------|------|----------|-------------------------------------------------------------|
-| CurrencyListRS/UpgradeUTCDate | 1    | DateTime | Indicates the update date of the information in UTC format. |
-| CurrencyListRS/Currencies     | 1    |          | Root node, list of currencies.                              |
-| Currencies/Currency           | 0..n |          |                                                             |
-| @code                         | 1    | String   | ISO - 3 Code.                                               |
-| @Name                         | 1    | String   | Name of the currency.                                       |
+| Element                   | Rel  | Type     | Description                                                 |
+|---------------------------|------|----------|-------------------------------------------------------------|
+| RoomListRS/UpgradeUTCDate | 1    | DateTime | Indicates the update date of the information in UTC format. |
+| RoomListRS/RoomsInfo      | 1    |          | Root node, list of rooms                                    |
+| RoomsInfo/RoomInfo        | 1..n |          |                                                             |
+| RoomInfo/Code             | 1    | String   | Room code                                                   |
+| RoomInfo/Name             | 1    | String   | Room name                                                   |

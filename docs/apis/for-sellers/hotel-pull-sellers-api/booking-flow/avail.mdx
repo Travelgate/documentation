@@ -6,11 +6,6 @@ sidebar_position: 2
 
 Avail serves as the initial step in our booking flow, with the objective of verifying availability within the specified date range, itinerary and the requested number of guests. It provides a comprehensive list of available options based on your search criteria. The returned fields include:  `Hotel code`, `Hotel name`, `Meal Plan code`, `paymentType`, `Rooms`, `Price`, `CancelPenalties` etc.
 
-:::caution
-
-The amount of information returned might vary between Sellers.
-
-:::
 
 ## Avail Request
 
@@ -100,12 +95,6 @@ The amount of information returned might vary between Sellers.
 
 ### Request Data Breakdown
 
-:::info
-
-Check the values you need to add in the [header](../making-requests/request-headers) and [common elements](../making-requests/common-elements).
-
-:::
-
 | Element				| Rel	| Type	| Description						|
 | ------------------------------------- | ------------- | ------------- | ------------------------------------------------------------- |
 | AvailRQ               		| 1            	|		| Root node.							|
@@ -136,78 +125,9 @@ Check the values you need to add in the [header](../making-requests/request-head
 | @id             			| 1     	| Integer	| Pax id (starts at 1).						|
 
 
-### How to Set Options Returned by MealPlan
-
-The Legacy Pull Buyers API allows to set the number of options returned by MealPlan for suppliers who provide a large number of options, about 20.000+ in a single response.
-
-This functionality is applicable as long as the supplier permits it. You can verify it in the [MetaData call](../content/meta-data/) under `AllowsBusinessRules`. If the supplier has AllowsBusinessRules = True, you can then choose from between different `BusinessRules` (CheaperAmount or RoomType) to filter the options based on your preferences.
-
-:::note
-
-We have implemented a system-level limit. If the `optionsQuota` set by the client exceeds this limit, the smaller of the two values will be used.
-
-:::
-
-To include the optionsQuota in your request, follow these steps:
-
-1. Add the optionsQuota field to the request and specify the desired quantity of options per MealPlan.
-
-2. Specify the BusinessRules you want to apply in the request: CheaperAmount or RoomType.
-
-3. Upon receiving a response, you will only obtain a portion of the complete list. The number of options per MealPlan will be in accordance with your defined optionsQuota, considering the specified BusinessRules.
-
-
-**1. Add optionsQuota in the Request**
-
-First, in your Avail request you will add `optionsQuota` field and specify the desired quantity of options per MealPlan expected to receive in the response:
-
-```xml
-<AvailRQ>
-   <timeoutMilliseconds>18000</timeoutMilliseconds>
-   <source>
-      <languageCode>en</languageCode>
-   </source>
-   <filterAuditData>
-      <registerTransactions>true</registerTransactions>
-   </filterAuditData>
-   //highlight-start
-   <optionsQuota>500</optionsQuota>
-   //highlight-end
-   <Configuration>
-      ...
-   </Configuration>
-```
-
-**2. Specify the BusinessRules in the request**
-
-Then, specify the `BusinessRules` you want to apply in the request: CheaperAmount or RoomType.
-
-```xml
-<AvailRQ>
-   <timeoutMilliseconds>18000</timeoutMilliseconds>
-   <source>
-      <languageCode>en</languageCode>
-   </source>
-   <filterAuditData>
-      <registerTransactions>true</registerTransactions>
-   </filterAuditData>
-   <optionsQuota>500</optionsQuota>
-   <Configuration>
-      ...
-   </Configuration>
-   //highlight-start
-   <BusinessRules>CheaperAmount</BusinessRules>
-   //highlight-end
-```
-
-**3. You will recieve the Response**
-
-You will recieve the Response with 500 options per MealPlan in accordance with your defined `optionsQuota`, considering the specified `BusinessRules`.
-
-
 ## Avail Response
 
-After each request, the Seller will process the data and provide you with a response. Upon receiving a `Avail` request, the Seller will send you a corresponding `Avail` response. 
+After each request, you will process the data and provide with a response. Upon receiving a `Avail` request, you will send you a corresponding `Avail` response. 
 
 The response options include either **success** or an **error**. In the event of success, the response will be structured hierarchically, beginning with key Hotel details such as names and codes. Subsequently, there is a breakdown of MealPlans and their associated codes. Within the MealPlans, the Options section offers comprehensive information on various choices. Each option is a unique combination of  rooms, prices, and policies, providing a comprehensive view of the available selections.
 
@@ -545,7 +465,7 @@ The response options include either **success** or an **error**. In the event of
 ```
 
 <details>
-    <summary>Error codes that will be included in the response in the event of an error</summary>
+    <summary>Error codes that you will need to include in the response in the event of an error</summary>
     <div>
         <div>
          <table>

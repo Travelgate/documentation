@@ -1,18 +1,13 @@
 ---
-sidebar_position: 10
+sidebar_position: 8
 ---
 
-# Currency List
+# Category List
 
-The Currency List method returns a comprehensive currencies list a supplier's supports in Avail method. The returned fields include: `Currency code`, `Currency name` etc.
+The Category List method returns a comprehensive hotel categories list from a supplier's access that may include translations to other languages, granting access to all the categories configured by the Seller for a given set of credentials. The returned fields include: `Category code`, `Category name` etc.
 
-:::caution
 
-The amount of information and content returned might vary between Sellers.
-
-:::
-
-## CurrencyList Request
+## CategoryList Request
 
 ```xml
 <soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns = "http://schemas.xmltravelgate.com/hub/2012/06" xmlns:wsse = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
@@ -25,15 +20,15 @@ The amount of information and content returned might vary between Sellers.
       </wsse:Security>
    </soapenv:Header>
    <soapenv:Body>
-      <ns:CurrencyList>
-         <ns:currencyListRQ>
+      <ns:CategoryList>
+         <ns:categoryListRQ>
             <ns:timeoutMilliseconds>20000</ns:timeoutMilliseconds>
             <ns:version>1</ns:version>
             <ns:providerRQ>
                <ns:code>suppliercode</ns:code>
                <ns:id>1</ns:id>
                <ns:rqXML>
-                  <CurrencyListRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
+                  <CategoryListRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
                      <timeoutMilliseconds>19700</timeoutMilliseconds>
                      <source>
                         <languageCode>en</languageCode>
@@ -53,52 +48,45 @@ The amount of information and content returned might vary between Sellers.
                            <Parameter key = "Access" value = "22334"></Parameter>
                         </Parameters>
                      </Configuration>
-                  </CurrencyListRQ>
+                  </CategoryListRQ>
                </ns:rqXML>
             </ns:providerRQ>
-         </ns:currencyListRQ>
-      </ns:CurrencyList>
+         </ns:categoryListRQ>
+      </ns:CategoryList>
    </soapenv:Body>
 </soapenv:Envelope>
 ```
 
 ### Request Data Breakdown
 
-:::info
+`CategoryList` request does not require any elements. 
 
-Check the values you need to add in the [header](../making-requests/request-headers) and [common elements](../making-requests/common-elements).
+## CategoryList Response
 
-:::
-
-`CurrencyList` request does not require any elements. 
-
-
-## CurrencyList Response
-
-After each request, the Seller will have to process the data and provide a response. Upon receiving a `CurrencyList` request, the Seller will send you a corresponding `CurrencyList` response.
+After each request, you will have to process the data and provide a response. Upon receiving a `CategoryList` request, you will need to send a corresponding `CategoryList` response.
 
 ```xml
-<CurrencyListRS>
+<CategoryListRS>
    <UpgradeUTCDate>2016-10-18T13:18:03+02:00</UpgradeUTCDate>
-   <Currencies>
-      <Currency>
-         <Code>EUR</Code>
-         <Name>Euro</Name>
-      </Currency>
-      <Currency>
-         <Code>USD</Code>
-         <Name>Dollar</Name>
-      </Currency>
-   </Currencies>
-</CurrencyListRS>
+   <Categories>
+      <Category>
+         <Code>3*</Code>
+         <Name>3 stars</Name>
+      </Category>
+      <Category>
+         <Code>3L</Code>
+         <Name>3 keys</Name>
+      </Category>
+   </Categories>
+</CategoryListRS>
 ```
 
 ### Response Data Breakdown
 
 | Element                       | Rel  | Type     | Description                                                 |
 |-------------------------------|------|----------|-------------------------------------------------------------|
-| CurrencyListRS/UpgradeUTCDate | 1    | DateTime | Indicates the update date of the information in UTC format. |
-| CurrencyListRS/Currencies     | 1    |          | Root node, list of currencies.                              |
-| Currencies/Currency           | 0..n |          |                                                             |
-| @code                         | 1    | String   | ISO - 3 Code.                                               |
-| @Name                         | 1    | String   | Name of the currency.                                       |
+| CategoryListRS/UpgradeUTCDate | 1    | DateTime | Indicates the update date of the information in UTC format. |
+| CategoryListRS/Categories     | 1    |          | Root node, list of categories.                              |
+| Categorues/Category           | 1..n |          |                                                             |
+| Category/Code                 | 1    | String   | Category code                                               |
+| Category/Name                 | 1    | String   | Category name                                               |

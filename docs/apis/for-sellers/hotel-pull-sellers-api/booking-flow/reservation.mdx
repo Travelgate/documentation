@@ -7,11 +7,6 @@ sidebar_position: 4
 The Reservation operation requests a booking confirmation for a specific list of passengers. It provides 
 the booking locator (booking code), which could be the supplier’s own code or the one sent in request, along with all the charges associated with the booking as well as its status. The returned fields include: `ProviderLocator`, `PropertyReservationNumber`, `ResStatus`, `Price` etc.
 
-:::caution
-
-The amount of information returned might vary between Sellers.
-
-:::
 
 ## Reservation Request
 
@@ -122,12 +117,6 @@ The amount of information returned might vary between Sellers.
 
 ### Request Data Breakdown
 
-:::info
-
-Check the values you need to add in the [header](../making-requests/request-headers) and [common elements](../making-requests/common-elements).
-
-:::
-
 | Element					| Number	| Type	| Description					|
 | --------------------------------------------- | ------------- | ------------- | ----------------------------------------------------- |
 | ReservationRQ 				| 1      	|		| Root node.						|
@@ -215,15 +204,9 @@ Check the values you need to add in the [header](../making-requests/request-head
 
 ## Reservation Response
 
-After each request, the Seller will process the data and provide you with a response. Upon receiving a `Reservation` request, the Seller will send you a corresponding `Reservation` response. 
+After each request, you will process the data and provide a response. Upon receiving a `Reservation` request, you will send you a corresponding `Reservation` response. 
 
 The response options include either **success** or an **error**. If successful, it will indicate that the reservation has been completed successfully.
-
-:::caution
-
-Be aware that you can receive an error and a reservation status OK in the same response, in this case the booking is confirmed. You should always consider the reservation status returned.
-
-:::
 
 
 ### Success
@@ -271,7 +254,7 @@ Be aware that you can receive an error and a reservation status OK in the same r
 ```
 
 <details>
-    <summary>Error codes that will be included in the response in the event of an error</summary>
+    <summary>Error codes that you will need to include in the response in the event of an error</summary>
     <div>
         <div>
          <table>

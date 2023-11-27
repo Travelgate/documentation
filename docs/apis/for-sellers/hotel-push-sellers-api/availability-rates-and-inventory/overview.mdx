@@ -10,37 +10,7 @@ The Hotel Push Sellers API allows to both push and retrieve information related 
 
 As a result, here are the specific methods you need to implement:
 
-<div className="shortcuts-overview">
-    <div className="shortcuts-overview__content">
-        <a className="item" href="inventory/inventory-push">
-            <icon icon="fa-brands fa-github" size="lg" />
-            <p className="item__title">Inventory Push</p>
-            <p className="item__subtitle">Send details about the product setup (hotel, rate plan, room).</p>
-        </a>
-        <a className="item" href="inventory/inventory-retrieval">
-            <icon icon="fa-brands fa-github" size="lg" />
-            <p className="item__title">Inventory Retrieval</p>
-            <p className="item__subtitle">Get static product information (hotel, rate plan, room).</p>
-        </a>
-        <a className="item" href="availability/availability-push">
-            <icon icon="fa-brands fa-github" size="lg" />
-            <p className="item__title">Availability Push</p>
-            <p className="item__subtitle">Send hotel availability data to the product.</p>
-        </a>
-        <a className="item" href="availability/availability-retrieval">
-            <icon icon="fa-brands fa-github" size="lg" />
-            <p className="item__title">Availablity Retrieval</p>
-            <p className="item__subtitle">Get information about the product's availability.</p>
-        </a>
-        <a className="item" href="rates/rates-push">
-            <icon icon="fa-brands fa-github" size="lg" />
-            <p className="item__title">Rates Push</p>
-            <p className="item__subtitle">Send hotel rate data to the product.</p>
-        </a>
-        <a className="item" href="rates/rates-retrieve">
-            <icon icon="fa-brands fa-github" size="lg" />
-            <p className="item__title">Rates Retrieval</p>
-            <p className="item__subtitle">Get information about the product's rates.</p>
-        </a>
-    </div> 
-</div>
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items.filter((item, i) => i > 0)}/>

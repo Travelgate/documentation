@@ -77,7 +77,7 @@ Header y common elements
 
 ### How to Paginate Responses
 
-The Legacy Pull Buyers API provides paginated responses to handle cases where the number of rooms from the selected supplier exceeds 200000. The default response page contains a maximum of 200000 rooms, but you can specify the number of objects returned per page using the `ContinuationToken` and the attribute `expectedRange` fields in the request.
+The Legacy Pull Buyers API provides paginated responses to handle cases where the number of rooms from the selected supplier exceeds 200.000. The default response page contains a maximum of 200.000 rooms, but you can specify the number of objects returned per page using the `ContinuationToken` and the attribute `expectedRange` fields in the request.
 
 To include the ContinuationToken in your request, all you need to do is:
 
@@ -100,17 +100,17 @@ First, in your room list request you will add `ContinuationTokentoken` field and
 
 ```xml
 <RoomListRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">                
-  <ContinuationToken expectedRange = "1200"></ContinuationToken>
+  <ContinuationToken expectedRange = "1000"></ContinuationToken>
 </RoomListRQ>
 ```
 
 **2. You will recieve the Response**
 
-You will obtain a response with 1200 rooms per page:
+You will obtain a response with 1000 rooms per page:
 
 ```xml
 <RoomListRS xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">                
-  <ContinuationToken expectedRange = "1200">&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;ContinuationToken&gt;&lt;ContinuationToken&gt;&lt;Version&gt;2.0&lt;/Version&gt;&lt;Type&gt;Table&lt;/Type&gt;&lt;NextPartitionKey&gt;1!24!bG93Y29zdGhvbGlkYXlfWk1U&lt;/NextPartitionKey&gt;&lt;NextRowKey&gt;1!40!bG93Y29zdGhvbGlkYXlfWk1UXzBoNFIlMjNvcXBr&lt;/NextRowKey&gt;&lt;TargetLocation&gt;Primary&lt;/TargetLocation&gt;&lt;/ContinuationToken&gt;&lt;/ContinuationToken&gt;</ContinuationToken>
+  <ContinuationToken expectedRange = "1000">&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;ContinuationToken&gt;&lt;ContinuationToken&gt;&lt;Version&gt;2.0&lt;/Version&gt;&lt;Type&gt;Table&lt;/Type&gt;&lt;NextPartitionKey&gt;1!24!bG93Y29zdGhvbGlkYXlfWk1U&lt;/NextPartitionKey&gt;&lt;NextRowKey&gt;1!40!bG93Y29zdGhvbGlkYXlfWk1UXzBoNFIlMjNvcXBr&lt;/NextRowKey&gt;&lt;TargetLocation&gt;Primary&lt;/TargetLocation&gt;&lt;/ContinuationToken&gt;&lt;/ContinuationToken&gt;</ContinuationToken>
 </RoomListRS>
 ```
 
@@ -126,6 +126,8 @@ This token should be used as input in your next rooms list request, inside the `
 
 
 ## RoomList Response
+
+After each request, the Seller will have to process the data and provide a response. Upon receiving a `RoomList` request, the Seller will send you a corresponding `RoomList` response.
 
 ```xml
 <RoomListRS>

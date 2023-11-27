@@ -4,7 +4,14 @@ sidebar_position: 11
 
 # Runtime Configuration
 
-The Runtime Configuration method returns a template of the supplier’s configuration. 
+The Runtime Configuration method returns a template of the supplier’s configuration. In it you will find all the necessary information related to the connection configuration. The returned fields include: `User`, `Password`, `UrlGeneric` etc.
+
+:::caution
+
+The amount of information and content returned might vary between Sellers.
+
+:::
+
 
 ## RuntimeConfiguration Request
 
@@ -70,6 +77,8 @@ Header y common elements
 
 
 ## RuntimeConfiguration Response
+
+After each request, the Seller will have to process the data and provide a response. Upon receiving a `RuntimeConfiguration` request, the Seller will send you a corresponding `RuntimeConfiguration` response.
 
 ```xml
 <RuntimeConfigurationRS>

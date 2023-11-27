@@ -76,6 +76,8 @@ Header y common elements
 
 ## GeographicDestinationTree Response
 
+After each request, the Seller will have to process the data and provide a response. Upon receiving a `GeographicDestinationTree` request, the Seller will send you a corresponding `GeographicDestinationTree` response.
+
 ```xml
 <GeographicDestinationTreeRS>
    <UpgradeUTCDate>2016-10-18T13:18:03+02:00</UpgradeUTCDate>
@@ -110,7 +112,7 @@ Header y common elements
 | @code                                       | 1    | String   | Destination code                                            |
 | @name                                       | 1    | String   | Destination name                                            |
 | @avail                                      | 1    | Boolean  | Destination available                                       |
-| DestinationTree/DestinationLeaf             | 0..n |          | Childs node                                                 |
+| DestinationTree/DestinationLeaf             | 0..n |          | Child nodes                                                 |
 | @code                                       | 1    | String   | Sub-destination code                                        |
 
 ### Geographic Destination Tree Logic
@@ -118,7 +120,7 @@ Header y common elements
 Once you run a Geograpich Destination Tree Request, you will receive the Seller's native geographic destination codes in the response. These codes can be classified into 2 categories:
 
 1. Zone (DestinationTree code)
-2. City (DentinationLeaf code)
+2. City (DestinationLeaf code)
 
 Sellers build their own Geographic Destination Tree based on both nodes. Consequently, when you request their geographic destination list, you will receive a structured categorized response that can help you with the mapping process.
 

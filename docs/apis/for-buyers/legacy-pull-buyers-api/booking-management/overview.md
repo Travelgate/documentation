@@ -4,7 +4,9 @@ sidebar_position: 1
 
 # Overview
 
-The Booking Management operations provide a streamlined approach to handle bookings with a specific Seller. These operations include reservation list and read, and cancel. The Booking Read and List facilitates retrieval of detailed booking information. Cancellation offers a straightforward way to cancel bookings when needed. Utilizing these operations streamlines the booking process and empowers you to manage bookings effectively with your designated Seller.
+The Booking Management operations provide a streamlined approach to handle bookings with a specific Seller. These operations include `Reservation List`, `Reservation Read`, and `Cancel`. The Booking Read and List facilitates retrieval of detailed booking information. Cancellation offers a straightforward way to cancel bookings when needed. Utilizing these operations streamlines the booking process and empowers you to manage bookings effectively with your designated Seller.
+
+EJEMPLO CARDS ACTUAL 
 
 <div className="shortcuts-overview">
     <div className="shortcuts-overview__content">
@@ -25,3 +27,35 @@ The Booking Management operations provide a streamlined approach to handle booki
         </a>
     </div> 
 </div>
+
+EJEMPLO CARDS EL QUE ME GUSTARÍA 
+
+<CardSection id="Booking Management" description="The Booking Management operations provide a streamlined approach to handle bookings with a specific Seller." HeadingTag="h2">
+    <Card title="Reservation List" to="reservation-list" description="Retrieves a list of bookings." />
+    <Card title="Reservation Read" to="reservation-read" description="Retrieves booking details." />
+    <Card title="Cancel" to="cancel" description="Cancels a booking." />
+</CardSection>
+
+EJEMPLO CARDS EL QUE ME GUSTARÍA 2 
+
+<CardSection
+    id="Booking Management"
+    description="The Booking Management operations provide a streamlined approach to handle bookings with a specific Seller."
+    HeadingTag="h2"
+>
+    <Card
+        title="Reservation List"
+        to="reservation-list"
+        description="Retrieves a list of bookings."
+    />
+    <Card
+        title="Reservation Read"
+        to="reservation-read"
+        description="Retrieves booking details."
+    />
+    <Card
+        title="Cancel"
+        to="cancel"
+        description="Cancels a booking."
+    />
+</CardSection>

@@ -6,7 +6,7 @@ sidebar_position: 1
 
 # Overview
 
-In order to book a hotel room, booking flow methods must be executed sequentially: `avail`, `valuation` and `reservation`.
+In order to book a hotel room, booking flow methods must be executed sequentially: `Avail`, `Valuation` and `Reservation`.
 
 <div className="shortcuts-overview">
     <div className="shortcuts-overview__content">

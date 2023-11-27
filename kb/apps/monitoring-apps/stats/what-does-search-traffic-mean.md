@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# How to Differentiate between Traffic Types
+# Traffic Types
 
 You might have noticed a handy feature in the Search tab known as the "Search Traffic Type" filter. This filter comes into play when you're using our Speed Cache APP. By default, traffic flows directly from the Buyer to the Seller systems, which we refer to as "Basic" traffic. However, when Speed is activated for a specific connection, the traffic is split into two types: the traffic that the Buyer sends and the Speed cache handles, and the traffic that Speed sends to the Seller system to fill its cache.
 

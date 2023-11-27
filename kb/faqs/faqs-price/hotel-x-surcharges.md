@@ -4,8 +4,8 @@ sidebar_position: 3
 
 # Hotel-X Surcharges
 
-### What is a surcharge?💡
-A surcharge refers to an **extra fee** that is added to the option price. Sellers may provide this additional fee when it is applicable on their side, such as city tax or resort fees.
+### What is a Surcharge?💡
+A Surcharge refers to an **extra fee** that is added to the option price. Sellers may provide this additional fee when it is applicable on their side, such as city tax or resort fees.
 
 :::info
 Please keep in mind that this information is subject to variation based on the specific property and the individual processes followed by each Seller.
@@ -19,6 +19,6 @@ Please keep in mind that this information is subject to variation based on the s
 ![hotelx_surcharges](https://storage.travelgate.com/kbase/hotelx_surcharges.jpg)
 
 :::info
-Don't forget to check our API Documentation and Hotel-X Schema for further information🚀🌟
+Don't forget to check our API Documentation and [Hotel-X Playground](/playground) for further information🚀
 :::
  

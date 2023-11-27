@@ -14,7 +14,7 @@ In TravelgateX [Quote (Valuation)](/docs/apis/for-buyers/hotel-x-pull-buyers-api
     Timezone (see the [Metadata](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata) docs to check all possible values) will specify the timezone in UTC in which the cancellation policies are located.
 
 
-:::info
+:::tip
 If you have any doubts about the timezone returned by your Seller (for example, if TimeZone is set as Unknown) we advise you to add an offset of +14 hours in order to avoid unexpected penalties caused by timezone difference.
 :::
 
@@ -38,7 +38,7 @@ If you have any doubts about the timezone returned by your Seller (for example, 
 - **deadline node:** TravelgateX returns the calculated deadline information - please check above chart. *Please make sure you use this node*.
 
 
-:::info Why?
+:::info
 The limit in which a booking can be cancelled without penalty is specified on the field **HoursBefore**. This parameter informs about the maximum hours that could pass before the penalty starts to apply.
 
 Transparency is a fundamental value in our culture and as such we avoid modifying the information provided by our partners. For this reason, hoursBefore value from cancellationPolicies will be returned without adding extra hours.

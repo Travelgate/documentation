@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Retrieving Seller transactions in their own API format
+# How to retrieve Seller transactions
 
 ### How can I obtain the Seller transactions of my request?🔎
 By adding the "auditTransactions" field to your queries and mutations you will be able to obtain, packed in the response, TravelgateX transactions with the Seller (both the raw request and response).

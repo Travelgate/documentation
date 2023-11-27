@@ -28,34 +28,11 @@ EJEMPLO CARDS ACTUAL
     </div> 
 </div>
 
-EJEMPLO CARDS EL QUE ME GUSTARÍA 
+EJEMPLO CARDS 3
 
-<CardSection id="Booking Management" description="The Booking Management operations provide a streamlined approach to handle bookings with a specific Seller." HeadingTag="h2">
-    <Card title="Reservation List" to="reservation-list" description="Retrieves a list of bookings." />
-    <Card title="Reservation Read" to="reservation-read" description="Retrieves booking details." />
-    <Card title="Cancel" to="cancel" description="Cancels a booking." />
-</CardSection>
+## Category Content
 
-EJEMPLO CARDS EL QUE ME GUSTARÍA 2 
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
 
-<CardSection
-    id="Booking Management"
-    description="The Booking Management operations provide a streamlined approach to handle bookings with a specific Seller."
-    HeadingTag="h2"
->
-    <Card
-        title="Reservation List"
-        to="reservation-list"
-        description="Retrieves a list of bookings."
-    />
-    <Card
-        title="Reservation Read"
-        to="reservation-read"
-        description="Retrieves booking details."
-    />
-    <Card
-        title="Cancel"
-        to="cancel"
-        description="Cancels a booking."
-    />
-</CardSection>
+<DocCardList items={useCurrentSidebarCategory().items}/>

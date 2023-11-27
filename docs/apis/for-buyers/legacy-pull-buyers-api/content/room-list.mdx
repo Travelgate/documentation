@@ -75,7 +75,7 @@ Header y common elements
 `RoomList` request does not require any elements. 
 
 
-### Token
+### How to Paginate Responses
 
 The Legacy Pull Buyers API provides paginated responses to handle cases where the number of rooms from the selected supplier exceeds 200000. The default response page contains a maximum of 200000 rooms, but you can specify the number of objects returned per page using the `ContinuationToken` and the attribute `expectedRange` fields in the request.
 
@@ -94,7 +94,7 @@ If the client requests 1000 rooms, the response may contain a range between 1000
 
 :::
 
-**1. Indicate the `continuationToken` and `expectedRange` in the Request**
+**1. Indicate the ContinuationToken and expectedRange in the Request**
 
 First, in your room list request you will add `ContinuationTokentoken` field and specify in `expectedRange` field the number of rooms expected to receive in the response:
 

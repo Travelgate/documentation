@@ -152,7 +152,7 @@ Header y common elements
 | ReservationReadRS/Locators   | 1 |		|Information about the locators.|
 | Locators/Client			| 0..1 		| String	| Client locator.				|
 | Locators/Provider		| 0..1 		| String	| Supplier locator.				|
-| Locators/Property		| 0..1 		| String	| Property locator (see [MetaData](../content/meta-data/) method in order to verify if a supplier implements it).				|
+| Locators/Property		| 0..1 		| String	| Property locator (see [MetaData](../content/meta-data/) method in order to verify if the supplier implements it).				|
 | ReservationReadRS/Hotel	| 0..1       	|		| Hotel reservation.				|
 | Hotel/Code 				| 0..1 		| String	| Hotel Code.					|
 | Hotel/Name 				| 0..1 		| String	| Hotel Name.					|

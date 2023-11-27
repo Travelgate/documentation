@@ -4,6 +4,11 @@ sidebar_position: 1
 
 # Overview
 
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items.filter((item, i) => i > 0)}/>
+
 ## FTP Files
 
 Upon receiving your Onboarding Welcome Pack, you will be granted access credentials to the FTP server. In the event that you need assistance or have not received your credentials, kindly open a [ticket](https://app.travelgatex.com/tickets) to our Customer Care team to obtain your FTP credentials and initiate your journey.

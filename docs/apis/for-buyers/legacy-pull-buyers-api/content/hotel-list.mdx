@@ -4,99 +4,76 @@ sidebar_position: 2
 
 # Hotel List
 
-The Hotel List method returns a comprehensive hotel list from a supplier's access, granting you access to all the properties configured by the Seller for a given set of credentials. The returned fields include:
+The Hotel List method returns a comprehensive hotel list from a supplier's access to the Buyer, granting access to all the properties configured by the Seller for a given set of credentials. The returned fields include: `Hotel Code`, `GiataId`, `Name`, `Address`, `ZipCode`, `Contact`, `CategoryCode` etc.
 
-:::info NOTE
+:::caution
 
 The amount of information and content returned might vary between Sellers.
 
 :::
 
-* Hotel `code`
-* `GiataId`
-* `Name`
-* `Address`
-* `ZipCode`
-* `Contact`
-* `CategoryCode`
 
-
-## Hotel List Request
-
-:::caution
-
-The maximum time permitted in our system before the connection is closed is 240000 milliseconds.
-
-:::
+## HotelList Request
 
 ```xml
-<soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" 
-   xmlns:ns = "http://schemas.xmltravelgate.com/hub/2012/06" 
-   xmlns:wsse = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
-     <soapenv:Header>
-       <wsse:Security>
+<soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns = "http://schemas.xmltravelgate.com/hub/2012/06" xmlns:wsse = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+   <soapenv:Header>
+      <wsse:Security>
          <wsse:UsernameToken>
-           <wsse:Username>username</wsse:Username>
-           <wsse:Password>password</wsse:Password>
+            <wsse:Username>username</wsse:Username>
+            <wsse:Password>password</wsse:Password>
          </wsse:UsernameToken>
-       </wsse:Security>
-     </soapenv:Header>
-     <soapenv:Body>
-       <ns:HotelList>
+      </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <ns:HotelList>
          <ns:hotelListRQ>
-           <ns:timeoutMilliseconds>180000</ns:timeoutMilliseconds>
-           <ns:version>1</ns:version>
-           <ns:providerRQ>
-             <ns:code>code</ns:code>
-             <ns:id>1</ns:id>
-             <ns:rqXML>
-               <HotelListRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
-                  <timeoutMilliseconds>20000</timeoutMilliseconds>
-                  <source>
-                    <languageCode>en</languageCode>
-                  </source>
-                  <filterAuditData>
-                    <registerTransactions>false</registerTransactions>
-                  </filterAuditData>
-                  <ContinuationToken expectedRange = "6000"></ContinuationToken>
-                  <Configuration>
-                    <User>user</User>
-                    <Password>password</Password>
-                    <UrlGeneric>www.supplier.com</UrlGeneric>
-                    <Parameters>
-                      <Parameter key = "SegundoPW" value = "PWXML"></Parameter>
-                    </Parameters>
-                  </Configuration>
-               </HotelListRQ>
-             </ns:rqXML>
-           </ns:providerRQ>
+            <ns:timeoutMilliseconds>17900</ns:timeoutMilliseconds>
+            <ns:version>1</ns:version>
+            <ns:providerRQ>
+               <ns:code>suppliercode</ns:code>
+               <ns:id>1</ns:id>
+               <ns:rqXML>
+                  <HotelListRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
+                     <timeoutMilliseconds>18000</timeoutMilliseconds>
+                     <source>
+                        <languageCode>en</languageCode>
+                     </source>
+                     <filterAuditData>
+                        <registerTransactions>true</registerTransactions>
+                     </filterAuditData>
+                     <Configuration>
+                        <User>user</User>
+                        <Password>password</Password>
+                        <UrlAvail>www.supplier.com/avail</UrlAvail>
+                        <UrlReservation>www.supplier.com/reservation</UrlReservation>
+                        <UrlValuation>www.supplier.com/valuation</UrlValuation>
+                        <UrlGeneric>www.supplier.com/generic</UrlGeneric>
+                        <Parameters>
+                           <Parameter key = "UrlListHoteles" value = "http://www.test.net/scr/searchxml/location.php?"></Parameter>
+                           <Parameter key = "UrlConsulta" value = "https://www.test.net/scr/xml/travelgate.php?"></Parameter>
+                           <Parameter key = "office" value = "55555"></Parameter>
+                           <Parameter key = "password" value = "XXXXXX"></Parameter>
+                        </Parameters>
+                     </Configuration>
+                  </HotelListRQ>
+               </ns:rqXML>
+            </ns:providerRQ>
          </ns:hotelListRQ>
-        </ns:HotelList>
-     </soapenv:Body>
+      </ns:HotelList>
+   </soapenv:Body>
 </soapenv:Envelope>
 ```
 
 ### Request Data Breakdown
 
-| Element                                    | Rel  | Type    | Description                                                                 |
-|--------------------------------------------|------|---------|-----------------------------------------------------------------------------|
-| RuntimeConfigurationRQ                     | 1    |         |                                                                             |
-| RuntimeConfigurationRQ/timeoutMilliseconds | 1    | Integer | Maximum time for a response from the supplier’s system.                     |
-| RuntimeCOnfigurationRQ/source              | 1    |         |                                                                             |
-| source/languageCode                        | 1    | String  | Language code (ISO 3166-1 alpha-2) format lowercase.                        |
-| RuntimeConfigurationRQ/filterAuditData     | 1    |         | Activates transaction data sent & received in the supplier’s native format. |
-| filterAuditData/registerTransactions       | 1    | Boolean | Returns all the transactions (XMLs) exchanged with the supplier.            |
-| ContinuationToken                          | 0..1 | String  | Internal Token to identify the next set of HotelList or RoomList.            |
-| @expectedRange	                           | 0..1 | Integer | Number of hotels expected in HotelList call.            |
-| RuntimeConfigurationRQ/Configuration       | 1    |         | The info required to access the supplier’s system.                          |
-| Configuration/User                         | 0..1 | String  | User code to connect to supplier.                                           |
-| Configuration/Password                     | 0..1 | String  | Password for the connection.                                                |
-| Configuration/UrlGeneric                   | 0..1 | String  | Supplier URL used for multiple methods.                                     |
-| Configuration/Parameters                   | 0..1 |         | Parameters for additional information.                                      |
-| Parameters/Parameter                       | 0..n |         |                                                                             |
-| @key                                       | 1    | String  | Contains the keyword/Id to identify a parameter.                            |
-| @value                                     | 1    | String  | Contains the parameter values.                                              |
+:::note
 
+Header y common elements
+
+:::
+
+`HotelList` request does not require any elements. 
 
 ### Token
 
@@ -117,7 +94,7 @@ If the client requests 1000 hotels, the response may contain a range between 100
 
 :::
 
-**Request variables**
+**1. Indicate the `continuationToken` and `expectedRange` in the Request**
 
 First, in your hotel list request you will add `ContinuationTokentoken` field and specify in `expectedRange` field the number of hotels expected to receive in the response:
 
@@ -127,15 +104,17 @@ First, in your hotel list request you will add `ContinuationTokentoken` field an
 </HotelListRQ>
 ```
 
-You will obtain a response with 1200 hotels per page:
+**2. You will recieve the Response**
 
-**Response**
+You will obtain a response with 1200 hotels per page:
 
 ```xml
 <HotelListRS xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">                
   <ContinuationToken expectedRange = "1200">&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;ContinuationToken&gt;&lt;ContinuationToken&gt;&lt;Version&gt;2.0&lt;/Version&gt;&lt;Type&gt;Table&lt;/Type&gt;&lt;NextPartitionKey&gt;1!24!bG93Y29zdGhvbGlkYXlfWk1U&lt;/NextPartitionKey&gt;&lt;NextRowKey&gt;1!40!bG93Y29zdGhvbGlkYXlfWk1UXzBoNFIlMjNvcXBr&lt;/NextRowKey&gt;&lt;TargetLocation&gt;Primary&lt;/TargetLocation&gt;&lt;/ContinuationToken&gt;&lt;/ContinuationToken&gt;</ContinuationToken>
 </HotelListRS>
 ```
+
+**3. Add the Token in the Request**
 
 This token should be used as input in your next hotel list request, inside the `ContinuationToken` field:
 
@@ -147,80 +126,56 @@ This token should be used as input in your next hotel list request, inside the `
 ```
 
 
-## Hotel List Response
+## HotelList Response
 
 After each request, the Seller will have to process the data and provide a response. Upon receiving a `HotelList` request, the Seller will send you a corresponding `HotelList` response. The response options include either success or an error.
 
-### Success
-
 ```xml
-<soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" 
-   xmlns:ns = "http://schemas.xmltravelgate.com/hub/2012/06" 
-   xmlns:wsse = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
-     <soapenv:Header>
-       <wsse:Security>
-         <wsse:UsernameToken>
-           <wsse:Username>username</wsse:Username>
-           <wsse:Password>password</wsse:Password>
-         </wsse:UsernameToken>
-       </wsse:Security>
-     </soapenv:Header>
-     <soapenv:Body>
-       <ns:HotelList>
-         <ns:hotelListRS>
-           <ns:timeoutMilliseconds>180000</ns:timeoutMilliseconds>
-           <ns:version>1</ns:version>
-           <ns:providerRQ>
-             <ns:code>code</ns:code>
-             <ns:id>1</ns:id>
-             <ns:rqXML>
-               <HotelListRS xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
-                  <OperationImplemented>true</OperationImplemented>
-
-        <UpgradeUTCDate>2016-10-18T13:18:03+02:00</UpgradeUTCDate>
-        <Hotels>
-            <Hotel>
-                <Code>5</Code>  
-                <ProviderCode>27</ProviderCode>                          
-                <GiataId source = "http://urlGiata">1200</GiataId>
-                <Name>BADAJOZ</Name>
-                <Address>CTRA.NACIONAL V, KM 393</Address>
-                <Airports>
-                    <Airport>
-                        <IATACode>BJZ</IATACode>
-                    </Airport>
-                </Airports>
-                <Town>BADAJOZ</Town>
-                <ZipCode>06002</ZipCode>
-                <CountryISOCode>ES</CountryISOCode>
-                <AvailDestination code = "06" name = "BADAJOZ"/>
-                <GeographicDestination code = "06" name = "BADAJOZ" avail = "true"/>
-                <Latitude>38.893839</Latitude>
-                <Longitude>-7.014112</Longitude>
-                <Contact>
-                    <Email>badajoz@xxx.com</Email>
-                    <Telephone>91425891</Telephone>
-                    <Fax>910200200</Fax>
-                </Contact>
-                <CategoryCode>4 Estrellas</CategoryCode>
-                <PaymentOptions cash="false" bankAcct="false">
-                    <Cards>
-                        <Card code="VI"/>
-                        <Card code="AX"/>
-                        <Card code="CA"/>  
-                    </Cards> 
-                </PaymentOptions>               
-                <ExclusiveDeal>true</ExclusiveDeal>     
-                <PropertyCategory>
-                     <Code>1</Code>
-                     <Name>Hotel</Name>             
-                </PropertyCategory>                 
-            </Hotel>
-        </Hotels>
-    </HotelListRS>
+<HotelListRS xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
+   <UpgradeUTCDate>2016-10-18T13:18:03+02:00</UpgradeUTCDate>
+   <Hotels>
+      <Hotel>
+         <Code>5</Code>  
+         <ProviderCode>27</ProviderCode>                          
+         <GiataId source = "http://urlGiata">1200</GiataId>
+         <Name>BADAJOZ</Name>
+         <Address>CTRA.NACIONAL V, KM 393</Address>
+         <Airports>
+            <Airport>
+               <IATACode>BJZ</IATACode>
+            </Airport>
+         </Airports>
+         <Town>BADAJOZ</Town>
+         <ZipCode>06002</ZipCode>
+         <CountryISOCode>ES</CountryISOCode>
+         <AvailDestination code = "06" name = "BADAJOZ"/>
+         <GeographicDestination code = "06" name = "BADAJOZ" avail = "true"/>
+         <Latitude>38.893839</Latitude>
+         <Longitude>-7.014112</Longitude>
+         <Contact>
+            <Email>badajoz@xxx.com</Email>
+            <Telephone>91425891</Telephone>
+            <Fax>910200200</Fax>
+         </Contact>
+         <CategoryCode>4 Estrellas</CategoryCode>
+         <PaymentOptions cash="false" bankAcct="false">
+            <Cards>
+               <Card code="VI"/>
+               <Card code="AX"/>
+               <Card code="CA"/>  
+            </Cards> 
+         </PaymentOptions>               
+         <ExclusiveDeal>true</ExclusiveDeal>     
+         <PropertyCategory>
+            <Code>1</Code>
+            <Name>Hotel</Name>             
+         </PropertyCategory>                 
+      </Hotel>
+   </Hotels>
+</HotelListRS>
 ```
 
-### Response Data Breakdown
+#### Response Data Breakdown
 
 | Element                     | Rel  | Type     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 |-----------------------------|------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -254,7 +209,7 @@ After each request, the Seller will have to process the data and provide a respo
 | Contact/Telephone           | 0..1 | String   | Contact telephone                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | Contact/Fax                 | 0..1 | String   | Contact fax                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | Hotel/CategoryCode          | 1    | String   | Hotel category code.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| ????Type                    | 0..1 | String   | <details>     <summary>Hotel Type codes</summary>     <div>         <div>          <table>   				  <thead>   					  <tr>   						  <th>   							  <strong>Code</strong>   						  </th>   						  <th>   							  <strong>Name</strong>   						  </th>   					  </tr>   				  </thead>   				  <tbody>   					  <tr>   						  <td>H</td>   						  <td>Hotel</td>   					  </tr>   					  <tr>   						  <td>A</td>   						  <td>Apartment</td>   					  </tr>                     <tr>   						  <td>AH</td>   						  <td>Apartment Hotel</td>   					  </tr>   					  <tr>   						  <td>C</td>   						  <td>Club</td>   					  </tr>   					  <tr>   						  <td>AT</td>   						  <td>Agrotourism</td>   					  </tr>                     <tr>   						  <td>HS</td>   						  <td>Hostel</td>   					  </tr>   					  <tr>   						  <td>CA</td>   						  <td>House</td>   					  </tr>   					  <tr>   						  <td>V</td>   						  <td>Ville</td>   					  </tr>                     <tr>   						  <td>B</td>   						  <td>Bungalows</td>   					  </tr>                     <tr>   						  <td>D</td>   						  <td>Disco Club</td>   					  </tr>			 				   </tbody>   			</table>         </div>     </div> </details>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Type                        | 0..1 | String   | <details>     <summary>Hotel Type codes</summary>     <div>         <div>          <table>   				  <thead>   					  <tr>   						  <th>   							  <strong>Code</strong>   						  </th>   						  <th>   							  <strong>Name</strong>   						  </th>   					  </tr>   				  </thead>   				  <tbody>   					  <tr>   						  <td>H</td>   						  <td>Hotel</td>   					  </tr>   					  <tr>   						  <td>A</td>   						  <td>Apartment</td>   					  </tr>                     <tr>   						  <td>AH</td>   						  <td>Apartment Hotel</td>   					  </tr>   					  <tr>   						  <td>C</td>   						  <td>Club</td>   					  </tr>   					  <tr>   						  <td>AT</td>   						  <td>Agrotourism</td>   					  </tr>                     <tr>   						  <td>HS</td>   						  <td>Hostel</td>   					  </tr>   					  <tr>   						  <td>CA</td>   						  <td>House</td>   					  </tr>   					  <tr>   						  <td>V</td>   						  <td>Ville</td>   					  </tr>                     <tr>   						  <td>B</td>   						  <td>Bungalows</td>   					  </tr>                     <tr>   						  <td>D</td>   						  <td>Disco Club</td>   					  </tr>			 				   </tbody>   			</table>         </div>     </div> </details>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | Hotel/PaymentOptions        | 0..1 |          | Type of cards allowed by the supplier. This tag is only mandatory if payment type is different than MerchantPay.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | @cash                       |      |          |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | @bankAcct                   |      |          |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
@@ -265,109 +220,3 @@ After each request, the Seller will have to process the data and provide a respo
 | Hotel/PropertyCategory      | 0..1 |          | Hotels property type. Similar to Type, but on supplier’s side.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | PropertyCategory/Code       | 1    | String   | Supplier’s property code.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | PropertyCategory/Name       | 1    | String   | Supplier’s property name.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-
-### Error
-
-```xml
-<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" xmlns:U="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
-    <s:Header>
-        <wsse:Security>
-            <U:Timestamp>
-                <U:Created>2023-11-10T11:15:37.445</U:Created>
-                <U:Expires>2023-11-10T11:45:37.445</U:Expires>
-            </U:Timestamp>
-        </wsse:Security>
-    </s:Header>
-    <s:Body>
-        <HotelListResponse>
-          <HotelListResult>
-            <operationImplemented>true</operationImplemented>
-            <applicationErrors>
-                <type>103</type>
-                <code>XXX</code>
-                <description>Too many requests to the supplier.</description>
-              </applicationErrors>
-              <auditData>
-                <transactions>
-                   <timeStamp>2011-10-6T15:19:45.3544495+02:00</timeStamp>
-                   <RQ/>
-                   <RS/>
-                </transactions>
-              <timeStamp>2011-10-26T15:19:43.4014745+02:00</timeStamp>
-              <processTimeMilliseconds>19532</processTimeMilliseconds>
-              </auditData>
-          </HotelListResult>
-        </HotelListResponse>
-    </s:Body>
-</s:Envelope>
-```
-
-<details>
-    <summary>Error codes that should be included in the response in the event of an error</summary>
-    <div>
-        <div>
-         <table>
-				<thead>
-					<tr>
-						<th>
-							<strong>Error Code</strong>
-						</th>
-						<th>
-							<strong>Error Description</strong>
-						</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>101</td>
-						<td>System Exception (Exception not controlled or not classified as general exception).</td>
-					</tr>
-					<tr>
-						<td>102</td>
-						<td>Supplier Error.</td>
-					</tr>
-					<tr>
-						<td>103</td>
-						<td>Too many requests to the supplier.</td>
-					</tr>
-          <tr>
-						<td>104</td>
-						<td>Timeout (Timeout during the execution of an operation (look in the common attribute timeout )).</td>
-					</tr>
-					<tr>
-						<td>105</td>
-						<td>Communication Error.</td>
-					</tr>
-					<tr>
-						<td>204</td>
-						<td>Supplier returns 0 results in availability.</td>
-					</tr>
-          <tr>
-						<td>205</td>
-						<td>The Supplier doesn’t accept the distribution RQ.</td>
-					</tr>
-					<tr>
-						<td>206</td>
-						<td>The Supplier doesn’t accept the dates RQ.</td>
-					</tr>
-					<tr>
-						<td>207</td>
-						<td>The Supplier doesn’t accept the request RQ.</td>
-					</tr>
-          <tr>
-						<td>301</td>
-						<td>Option not found in policies.</td>
-					</tr>
-          <tr>
-						<td>302</td>
-						<td>Hotel Not Found in DescriptiveInfo.</td>
-					</tr>
-          <tr>
-						<td>303</td>
-						<td>Booking not confirmed in the supplier’s system.</td>
-					</tr>
-				</tbody>
-			</table>
-        </div>
-    </div>
-</details>

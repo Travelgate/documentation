@@ -1,13 +1,15 @@
 ---
+title: Endpoint
 sidebar_position: 1
 ---
 
-# Endpoint
+# Legacy Endpoint
 
-For shopping flow:
-HTTPS: https://hubxtghotel.xmltravelgate.com/Service/Travel/v2/HotelSecure.svc
-HTTP: http://hubxtghotel.xmltravelgate.com/Service/Travel/v2/Hotel.svc
+With the Legacy Pull Buyers API, we utilize distinct endpoints for static content and booking flow calls:
 
 For static content calls:
 HTTPS: https://hubhotelbatch.xmltravelgate.com/Service/Travel/v2/HotelBatchSecure.svc
-HTTP: http://hubhotelbatch.xmltravelgate.com/Service/Travel/v2/HotelBatch.svc
+
+
+For shopping flow:
+HTTPS: https://hubxtghotel.xmltravelgate.com/Service/Travel/v2/HotelSecure.svc

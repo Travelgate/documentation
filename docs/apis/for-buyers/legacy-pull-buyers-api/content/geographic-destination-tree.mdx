@@ -27,14 +27,14 @@ The amount of information and content returned might vary between Sellers.
    <soapenv:Body>
       <ns:GeographicDestinationTree>
          <ns:geographicDestinationTreeRQ>
-            <ns:timeoutMilliseconds>17900</ns:timeoutMilliseconds>
+            <ns:timeoutMilliseconds>20000</ns:timeoutMilliseconds>
             <ns:version>1</ns:version>
             <ns:providerRQ>
                <ns:code>suppliercode</ns:code>
                <ns:id>1</ns:id>
                <ns:rqXML>
                   <GeographicDestinationTreeRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
-                    <timeoutMilliseconds>18000</timeoutMilliseconds>
+                    <timeoutMilliseconds>19700</timeoutMilliseconds>
                      <source>
                         <languageCode>en</languageCode>
                      </source>
@@ -49,10 +49,8 @@ The amount of information and content returned might vary between Sellers.
                         <UrlValuation>www.supplier.com/valuation</UrlValuation>
                         <UrlGeneric>www.supplier.com/generic</UrlGeneric>
                         <Parameters>
-                           <Parameter key = "UrlListHoteles" value = "http://www.test.net/scr/searchxml/location.php?"></Parameter>
-                           <Parameter key = "UrlConsulta" value = "https://www.test.net/scr/xml/travelgate.php?"></Parameter>
-                           <Parameter key = "office" value = "55555"></Parameter>
-                           <Parameter key = "password" value = "XXXXXX"></Parameter>
+                           <Parameter key = "UrlListHotels" value = "http://www.supplier.com/ListHotels"></Parameter>
+                           <Parameter key = "Access" value = "22334"></Parameter>
                         </Parameters>
                      </Configuration>
                   </GeographicDestinationTreeRQ>
@@ -66,15 +64,17 @@ The amount of information and content returned might vary between Sellers.
 
 ### Request Data Breakdown
 
-:::note
+:::info
 
-Header y common elements
+Check the values you need to add in the [header](../making-requests/request-headers) and [common elements](../making-requests/common-elements).
 
 :::
 
 `GeographicDestinationTree` request does not require any elements. 
 
 ## GeographicDestinationTree Response
+
+After each request, the Seller will have to process the data and provide a response. Upon receiving a `GeographicDestinationTree` request, the Seller will send you a corresponding `GeographicDestinationTree` response.
 
 ```xml
 <GeographicDestinationTreeRS>
@@ -110,7 +110,7 @@ Header y common elements
 | @code                                       | 1    | String   | Destination code                                            |
 | @name                                       | 1    | String   | Destination name                                            |
 | @avail                                      | 1    | Boolean  | Destination available                                       |
-| DestinationTree/DestinationLeaf             | 0..n |          | Childs node                                                 |
+| DestinationTree/DestinationLeaf             | 0..n |          | Child nodes                                                 |
 | @code                                       | 1    | String   | Sub-destination code                                        |
 
 ### Geographic Destination Tree Logic
@@ -118,7 +118,7 @@ Header y common elements
 Once you run a Geograpich Destination Tree Request, you will receive the Seller's native geographic destination codes in the response. These codes can be classified into 2 categories:
 
 1. Zone (DestinationTree code)
-2. City (DentinationLeaf code)
+2. City (DestinationLeaf code)
 
 Sellers build their own Geographic Destination Tree based on both nodes. Consequently, when you request their geographic destination list, you will receive a structured categorized response that can help you with the mapping process.
 

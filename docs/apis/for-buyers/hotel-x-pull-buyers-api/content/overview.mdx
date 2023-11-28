@@ -1,0 +1,14 @@
+---
+sidebar_position: 1
+---
+
+# Overview
+
+The Content methods provide access to essential static information from Sellers, including details like hotel and destination lists. To effectively manage these methods, familiarize yourself with calls such as `hotels`, `categories`, `destinations`, `rooms`, `boards`, and `metadata`.
+
+We strongly recommend that our Buyers incorporate these content calls into their systems. This is crucial because Supplier codes might differ from those obtained through our API. This step is essential for ensuring smooth integration and accurate data retrieval. The metadata call is especially significant when establishing a connection with a Seller. It provides comprehensive information about restrictions and settings specific to that Seller, ensuring a well-informed and efficient partnership.
+
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items.filter((item, i) => i > 0)}/>

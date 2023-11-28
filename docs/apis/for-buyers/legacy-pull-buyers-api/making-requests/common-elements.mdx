@@ -1,29 +1,56 @@
 ---
 title: Common Elements
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 # Legacy Common Elements
 
+There are certain elements that need to be included in every request, namely common elements. These common elements include `timeoutMilliseconds`, `languageCode`, `registerTransactions`, and the supplier's `Configuration` etc.
+
+```xml
+<echoToken>TEST</echoToken>
+<timeoutMilliseconds>18000</timeoutMilliseconds>
+<source>
+   <languageCode>en</languageCode>
+</source>
+<filterAuditData>
+   <registerTransactions>true</registerTransactions>
+</filterAuditData>
+<ContinuationToken expectedRange = "1000"></ContinuationToken>
+<optionsQuota>500</optionsQuota>
+<Configuration>
+   <User>user</User>
+   <Password>password</Password>
+   <UrlAvail>www.supplier.com/avail</UrlAvail>
+   <UrlReservation>www.supplier.com/reservation</UrlReservation>
+   <UrlValuation>www.supplier.com/valuation</UrlValuation>
+   <UrlGeneric>www.supplier.com/generic</UrlGeneric>
+   <Parameters>
+      <Parameter key = "UrlListHotels" value = "http://www.supplier.com/ListHotels"></Parameter>
+      <Parameter key = "Access" value = "22334"></Parameter>
+   </Parameters>
+</Configuration>
+```
 
 | Element                                    | Rel  | Type    | Description                                                                 |
 |--------------------------------------------|------|---------|-----------------------------------------------------------------------------|
-| RuntimeConfigurationRQ                     | 1    |         |                                                                             |
-| RuntimeConfigurationRQ/timeoutMilliseconds | 1    | Integer | Maximum time for a response from the supplier’s system.                     |
-| RuntimeCOnfigurationRQ/source              | 1    |         |                                                                             |
+| echoToken                                  | 0..1 | String  | Echo token to be returned in response (used for test purposes only).        |
+| timeoutMilliseconds                        | 1    | Integer | Maximum time for a response from the supplier’s system.                     |
+| source                                     | 1    |         |                                                                             |
 | source/languageCode                        | 1    | String  | Language code (ISO 3166-1 alpha-2) format lowercase.                        |
-| RuntimeConfigurationRQ/filterAuditData     | 1    |         | Activates transaction data sent & received in the supplier’s native format. |
+| filterAuditData                            | 1    |         | Activates transaction data sent & received in the supplier’s native format. |
 | filterAuditData/registerTransactions       | 1    | Boolean | Returns all the transactions (XMLs) exchanged with the supplier.            |
-| ContinuationToken                          | 0..1 | String  | Internal Token to identify the next set of HotelList or RoomList.            |
-| @expectedRange	                           | 0..1 | Integer | Number of hotels expected in HotelList call.            |
-| RuntimeConfigurationRQ/Configuration       | 1    |         | The info required to access the supplier’s system.                          |
+| ContinuationToken                          | 0..1 | String  | To paginate the response of [HotelList](../content/hotel-list#how-to-paginate-responses) and [RoomList](../content/room-list#how-to-paginate-responses) content calls.      |
+| @expectedRange	                         | 0..1 | Integer | To paginate the response of [HotelList](../content/hotel-list#how-to-paginate-responses) and [RoomList](../content/room-list#how-to-paginate-responses) content calls.      |
+| optionsQuota   	                         | 0..1 | Integer | To set the max number of options by MealPlan in [Avail method](../booking-flow/avail#how-to-set-options-returned-by-mealplan).                  |
+| Configuration                              | 1    |         | The info required to access the supplier’s system. You will be able to see this information when connecting with the seller. Afterward, you will find the values to add in Configuration in the [RuntimeConfiguration](../content/runtime-configuration#runtimeconfiguration-response) content call.                         |
 | Configuration/User                         | 0..1 | String  | User code to connect to supplier.                                           |
 | Configuration/Password                     | 0..1 | String  | Password for the connection.                                                |
-| Configuration/UrlGeneric                   | 0..1 | String  | Supplier URL used for multiple methods.                                     |
+| Configuration/UrlAvail                     | 0..1 | String  | Specific Url for Avail method.                                              |
+| Configuration/UrlReservation               | 0..1 | String  | Specific Url for Reservation method.                                        |
+| Configuration/UrlValuation                 | 0..1 | String  | Specific Url for Valuation method.                                          |
+| Configuration/UrlGeneric                   | 0..1 | String  | Supplier Url used for multiple methods.                                     |
 | Configuration/Parameters                   | 0..1 |         | Parameters for additional information.                                      |
 | Parameters/Parameter                       | 0..n |         |                                                                             |
-| @key                                       | 1    | String  | Contains the keyword/Id to identify a parameter.                            |
+| @key                                       | 1    | String  | Contains the keyword to identify a parameter.                            |
 | @value                                     | 1    | String  | Contains the parameter values.                                              |
-
-https://knowledge.travelgate.com/timeout-settings
-https://docs.travelgatex.com/connectiontypesbuyers/legacy/methods/common-elements/

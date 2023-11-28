@@ -125,11 +125,13 @@ After each request, the Seller will have to process the data and provide a respo
       <Attributes>
          <Attribute>
             <Code>90</Code>
+            <Value>RES</Value>
             <Classification>GRAL</Classification>
             <Description>Restaurant</Description>
          </Attribute>
          <Attribute>
             <Code>31</Code>
+            <Value>RES</Value>
             <Classification>HOT</Classification>
             <Description>Pool</Description>
          </Attribute>
@@ -186,11 +188,13 @@ After each request, the Seller will have to process the data and provide a respo
            <Attributes>                      
               <Attribute>
                  <Code>2403</Code>
+                 <Value>RES</Value>
                  <Classification>HAB</Classification>
                  <Description>Free WiFi</Description>
               </Attribute>
               <Attribute>
                  <Code>318</Code>
+                 <Value>RES</Value>
                  <Classification>HAB</Classification>
                  <Description>Balcony</Description>
               </Attribute>
@@ -282,6 +286,8 @@ After each request, the Seller will have to process the data and provide a respo
 | Picture/UpgradeUTCDate           | 0..1 | DateTime | Indicates the upgrade date of the picture in UTC format.                                                         |
 | Hotel/PaymentOptions             | 0..1 | String   | Type of cards allowed by the supplier. This tag is only mandatory if payment type is different than MerchantPay. |
 | PaymentOptions/Cards             | 1    |          |                                                                                                                  |
+| @cash                            | 1    | Boolean  | Cash indicates whether payment will be made in cash (true) or by card (false).
+| @bankAcct                        | 1    | Boolean  | BankAcct specifies whether payment will be made via bank transfer (true) or not (false).                                                                                                                 |
 | Cards/Card                       | 1..n |          |                                                                                                                  |
 | @code                            | 1    | String   | <details>     <summary>Credit Card codes</summary>     <div>         <div>          <table>   				  <thead>   					  <tr>   						  <th>   							  <strong>Code</strong>   						  </th>   						  <th>   							  <strong>Name</strong>   						  </th>   					  </tr>   				  </thead>   				  <tbody>   					  <tr>   						  <td>VI</td>   						  <td>Visa</td>   					  </tr>   					  <tr>   						  <td>AX</td>   						  <td>American Express</td>   					  </tr>                     <tr>   						  <td>BC</td>   						  <td>BC Card</td>   					  </tr>   					  <tr>   						  <td>CA</td>   						  <td>MasterCard</td>   					  </tr>   					  <tr>   						  <td>CB</td>   						  <td>Carte Blanche</td>   					  </tr>                     <tr>   						  <td>CU</td>   						  <td>China Union Pay</td>   					  </tr>   					  <tr>   						  <td>DS</td>   						  <td>Discover</td>   					  </tr>   					  <tr>   						  <td>DC</td>   						  <td>Diners Club</td>   					  </tr>                     <tr>   						  <td>T</td>   						  <td>Carta Si</td>   					  </tr>                     <tr>   						  <td>R</td>   						  <td>Carte Bleue</td>   					  </tr>                     <tr>   						  <td>N</td>   						  <td>Dankort</td>   					  </tr>                     <tr>   						  <td>L</td>   						  <td>Delta</td>   					  </tr>                     <tr>   						  <td>E</td>   						  <td>Electron</td>   					  </tr>                     <tr>   						  <td>JC</td>   						  <td>Japan Credit Bureau</td>   					  </tr>                     <tr>   						  <td>TO</td>   						  <td>Maestro</td>   					  </tr>                     <tr>   						  <td>S</td>   						  <td>Switch</td>   					  </tr>                     <tr>   						  <td>EC</td>   						  <td>Electronic Cash</td>   					  </tr>                     <tr>   						  <td>EU</td>   						  <td>EuroCard</td>   					  </tr>                     <tr>   						  <td>TP</td>   						  <td>Universal air travel card</td>   					  </tr>                     <tr>   						  <td>OP</td>   						  <td>optima</td>   					  </tr>                     <tr>   						  <td>ER</td>   						  <td>Air Canada/RnRoute</td>   					  </tr>                     <tr>   						  <td>XS</td>   						  <td>access</td>   					  </tr>                     <tr>   						  <td>O</td>   						  <td>others</td>   					  </tr>   				  </tbody>   			</table>         </div>     </div> </details>                                                                                                                 |
 | Hotel/ExclusiveDeal              | 0..1 | Boolean  | Indicates that a Hotel is an Exlusive Deal.                                                                      |
@@ -329,6 +335,7 @@ After each request, the Seller will have to process the data and provide a respo
 | Views/View                       | 1..n |          |                                                                                                                  |
 | View/Code                        | 1..n | String   | View code                                                                                                       |
 | View/Name                        | 1..n | String   | Name of the view.                                                                                                |
+| Room/Area                        | 0..1 | String   | Room area.                                                                                                |
 
 
 ### Error

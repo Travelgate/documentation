@@ -3,9 +3,9 @@ title: Common Elements
 sidebar_position: 4
 ---
 
-# Legacy Buyers Common Elements
+# Legacy Sellers Common Elements
 
-There are certain elements that need to be included in every request, namely common elements. These common elements include `timeoutMilliseconds`, `languageCode`, `registerTransactions`, and the supplier's `Configuration`.
+There are certain elements that will be included in every request, namely common elements. These common elements include `timeoutMilliseconds`, `languageCode`, `registerTransactions`, and the supplier's `Configuration`.
 
 ```xml
 <echoToken>TEST</echoToken>
@@ -40,10 +40,10 @@ There are certain elements that need to be included in every request, namely com
 | source/languageCode                        | 1    | String  | Language code (ISO 3166-1 alpha-2) format lowercase.                        |
 | filterAuditData                            | 1    |         | Activates transaction data sent & received in the supplier’s native format. |
 | filterAuditData/registerTransactions       | 1    | Boolean | Returns all the transactions (XMLs) exchanged with the supplier.            |
-| ContinuationToken                          | 0..1 | String  | To paginate the response of [HotelList](../content/hotel-list#how-to-paginate-responses) and [RoomList](../content/room-list#how-to-paginate-responses) content calls.      |
-| @expectedRange	                         | 0..1 | Integer | To paginate the response of [HotelList](../content/hotel-list#how-to-paginate-responses) and [RoomList](../content/room-list#how-to-paginate-responses) content calls.      |
-| optionsQuota   	                         | 0..1 | Integer | To set the max number of options by MealPlan in [Avail method](../booking-flow/avail#how-to-set-options-returned-by-mealplan).                  |
-| Configuration                              | 1    |         | The info required to access the supplier’s system. You will be able to see this information when connecting with the seller. Afterward, you will find the values to add in Configuration in the [RuntimeConfiguration](../content/runtime-configuration#runtimeconfiguration-response) content call.                         |
+| ContinuationToken                          | 0..1 | String  | Used by the Buyer to paginate the response of HotelList and RoomList.      |
+| @expectedRange	                         | 0..1 | Integer | Used by the Buyer to paginate the response of HotelList and RoomList.      |
+| optionsQuota   	                         | 0..1 | Integer | Used by the Buyer to set the max number of options by MealPlan in Avail method.             |
+| Configuration                              | 1    |         | The info required to access the supplier’s system.                         |
 | Configuration/User                         | 0..1 | String  | User code to connect to supplier.                                           |
 | Configuration/Password                     | 0..1 | String  | Password for the connection.                                                |
 | Configuration/UrlAvail                     | 0..1 | String  | Specific Url for Avail method.                                              |

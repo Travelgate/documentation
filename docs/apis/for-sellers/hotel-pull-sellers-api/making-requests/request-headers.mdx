@@ -1,0 +1,43 @@
+---
+title: Request Headers
+sidebar_position: 2
+---
+
+# Legacy Sellers Request Headers
+
+The following HTTP request headers are essential for all request methods and must be included in every POST request.
+
+
+**Content Type**: Content-Type header provides with the actual content type of the returned content. In this case, the header is set to:
+
+```html
+Content-Type: text/xml; charset=utf-8
+```  
+
+
+**Request Pre-Approval**: In HTTP, it signals to the server that the client seeks approval before transmitting the request body, and a 100 (Continue) response indicates permission to proceed.
+
+```html
+Expect: 100-continue
+```                           
+
+
+**Content Format**: Specifies the expected content format, specifically requesting content in XML format in this instance.
+
+```html
+Accept: application/xml
+```              
+
+
+**Gzip Compression**: In order to increase performance and save bandwidth, all the live traffic must enable GZIP compression in the HTTP header. 
+
+```html
+Accept-Encoding: gzip
+```             
+
+
+**Keep Alive**: In order to increase performance and improve response times, you can add the keep-alive header to all our transactions. 
+
+```html
+Connection: Keep-Alive 
+```  

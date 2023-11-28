@@ -1,0 +1,99 @@
+---
+sidebar_position: 7
+---
+
+# Meal Plan List
+
+The Meal Plan List method returns a comprehensive meal plans list from a supplier's access that may include translations to other languages, granting access to all the meal plans configured by the Seller for a given set of credentials. The returned fields include: `MealPlan code`, `MealPlan name` etc.
+
+
+## MealPlanList Request
+
+```xml
+<soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns = "http://schemas.xmltravelgate.com/hub/2012/06" xmlns:wsse = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+   <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>username</wsse:Username>
+            <wsse:Password>password</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <ns:MealPlanList>
+         <ns:mealPlanListRQ>
+            <ns:timeoutMilliseconds>20000</ns:timeoutMilliseconds>
+            <ns:version>1</ns:version>
+            <ns:providerRQ>
+               <ns:code>suppliercode</ns:code>
+               <ns:id>1</ns:id>
+               <ns:rqXML>
+                  <MealPlanListRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
+                     <timeoutMilliseconds>19700</timeoutMilliseconds>
+                     <source>
+                        <languageCode>en</languageCode>
+                     </source>
+                     <filterAuditData>
+                        <registerTransactions>true</registerTransactions>
+                     </filterAuditData>
+                     <Configuration>
+                        <User>user</User>
+                        <Password>password</Password>
+                        <UrlAvail>www.supplier.com/avail</UrlAvail>
+                        <UrlReservation>www.supplier.com/reservation</UrlReservation>
+                        <UrlValuation>www.supplier.com/valuation</UrlValuation>
+                        <UrlGeneric>www.supplier.com/generic</UrlGeneric>
+                        <Parameters>
+                           <Parameter key = "UrlListHotels" value = "http://www.supplier.com/ListHotels"></Parameter>
+                           <Parameter key = "Access" value = "22334"></Parameter>
+                        </Parameters>
+                     </Configuration>
+                  </MealPlanListRQ>
+               </ns:rqXML>
+            </ns:providerRQ>
+         </ns:mealPlanListRQ>
+      </ns:MealPlanList>
+   </soapenv:Body>
+</soapenv:Envelope>
+```
+
+### Request Data Breakdown
+
+
+`MealPlanList` request does not require any elements. 
+
+## MealPlanList Response
+
+After each request, you will have to process the data and provide a response. Upon receiving a `MealPlanList` request, you will need to send a corresponding `MealPlanList` response.
+
+:::note
+
+If you have over 100 meal plan codes or more than 20 codes for a single meal plan, the mapping for these codes will depend on you.
+
+:::
+
+```xml
+<MealPlanListRS>
+   <UpgradeUTCDate>2023-10-18T13:18:03+02:00</UpgradeUTCDate>
+   <MealPlans>
+      <MealPlan>
+         <Code>BB</Code>
+         <Name>Bed and breakfast</Name>
+      </MealPlan>
+      <MealPlan>
+         <Code>HB</Code>
+         <Name>Half board</Name>
+      </MealPlan>
+    </MealPlans>
+</MealPlanListRS>
+```
+
+### Response Data Breakdown
+
+| Element                       | Rel  | Type     | Description                                                 |
+|-------------------------------|------|----------|-------------------------------------------------------------|
+| MealPlanListRS/UpgradeUTCDate | 1    | DateTime | Indicates the update date of the information in UTC format. |
+| MealPlanListRS/MealPlans      | 1    |          | Root node, list of mealplans.                               |
+| MealPlans/MealPlan            | 1..n |          |                                                             |
+| MealPlan/Code                 | 1    | String   | Mealplan code                                               |
+| MealPlan/Name                 | 1    | String   | Mealplan name                                               |

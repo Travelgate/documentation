@@ -1,0 +1,94 @@
+---
+sidebar_position: 1
+---
+
+# Overview
+
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items.filter((item, i) => i > 0)}/>
+
+## FTP Files
+
+Upon receiving your Onboarding Welcome Pack, you will be granted access credentials to the FTP server. In the event that you need assistance or have not received your credentials, kindly open a [ticket](https://app.travelgatex.com/tickets) to our Customer Care team to obtain your FTP credentials and initiate your journey.
+
+### FTP Endpoint
+
+```
+ftp://ftp.xmltravelgate.com
+```
+
+### Directory Format
+
+The structure of the directory should be in the below format, all files should be inside this directory:
+
+```mdx-code-block
+<BrowserWindow>
+
+📁F[Folder code]\_[Unique code]  
+&nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX  _[Unique code]
+
+</BrowserWindow>
+```
+
+F[Folder code]_[Unique code]
+* Folder code: corresponds to the folder number.
+* Unique code: corresponds to the folder unique code in our system.
+
+HotelX_[Unique code]
+* Unique code: corresponds to the Hotel-X unique code in our system.
+
+Example: 
+
+```mdx-code-block
+<BrowserWindow>
+
+📁F0_1781  
+&nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX_1790
+
+</BrowserWindow>
+```
+
+### Upload FTP Data
+
+To upload an FTP file, follow these simple steps:
+
+1. **Upload the File:**
+   - Once you've decided on the plugin you want to use, and if it's necessary, simply upload the required CSV file.
+
+2. **Wait for Processing:**
+   - Once you've uploaded the file, our system will take care of the rest.
+   - We'll automatically add the "_processed" tagline to the end of the file name when the processing is complete.
+
+   For example, if you uploaded a file for hotel mapping plugin with the name:
+   ```
+   BuyerContext_SupplierContext_hotel_map_.csv
+   ```
+
+   After our system processes it, it will look like this:
+   ```
+   BuyerContext_SupplierContext_hotel_map_processed.csv
+   ```
+
+### Update FTP Data
+
+To update an FTP file, follow these simple steps:
+
+1. If you need to update the information in the file, simply delete the old file.
+2. Upload the new file with the updated information, using the correct name. You don't need to add the "_processed_" tagline to the name; we'll take care of that on our end.
+
+That's it! Updating FTP files is as easy as that.
+
+
+### Delete FTP Data
+
+To delete all the information stored in our system, follow these straightforward steps:
+
+1. **Prepare an empty file:**
+   - Create a new file with empty content, including only the headers.
+   - Ensure that the file structure, such as column headers, remains intact.
+
+2. **Load the empty file in the FTP folder.**
+
+That's it! By replacing the existing data with an empty file containing headers only, you effectively delete all the information previously loaded into our system.

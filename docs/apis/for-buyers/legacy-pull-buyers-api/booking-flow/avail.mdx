@@ -27,20 +27,21 @@ The amount of information returned might vary between Sellers.
    <soapenv:Body>
       <ns:Avail>
          <ns:availRQ>
-            <ns:timeoutMilliseconds>17900</ns:timeoutMilliseconds>
+            <ns:timeoutMilliseconds>20000</ns:timeoutMilliseconds>
             <ns:version>1</ns:version>
             <ns:providerRQ>
                <ns:code>suppliercode</ns:code>
                <ns:id>1</ns:id>
                <ns:rqXML>
                   <AvailRQ>
-                      <timeoutMilliseconds>18000</timeoutMilliseconds>
+                      <timeoutMilliseconds>19700</timeoutMilliseconds>
                      <source>
                         <languageCode>en</languageCode>
                      </source>
                      <filterAuditData>
                         <registerTransactions>true</registerTransactions>
                      </filterAuditData>
+                     <optionsQuota>500</optionsQuota>
                      <Configuration>
                         <User>user</User>
                         <Password>password</Password>
@@ -49,10 +50,8 @@ The amount of information returned might vary between Sellers.
                         <UrlValuation>www.supplier.com/valuation</UrlValuation>
                         <UrlGeneric>www.supplier.com/generic</UrlGeneric>
                         <Parameters>
-                           <Parameter key = "UrlListHoteles" value = "http://www.test.net/scr/searchxml/location.php?"></Parameter>
-                           <Parameter key = "UrlConsulta" value = "https://www.test.net/scr/xml/travelgate.php?"></Parameter>
-                           <Parameter key = "office" value = "55555"></Parameter>
-                           <Parameter key = "password" value = "XXXXXX"></Parameter>
+                           <Parameter key = "UrlListHotels" value = "http://www.supplier.com/ListHotels"></Parameter>
+                           <Parameter key = "Access" value = "22334"></Parameter>
                         </Parameters>
                      </Configuration>
                      <SearchType>Combined</SearchType>
@@ -101,9 +100,9 @@ The amount of information returned might vary between Sellers.
 
 ### Request Data Breakdown
 
-:::note
+:::info
 
-Header y common elements
+Check the values you need to add in the [header](../making-requests/request-headers) and [common elements](../making-requests/common-elements).
 
 :::
 
@@ -111,13 +110,13 @@ Header y common elements
 | ------------------------------------- | ------------- | ------------- | ------------------------------------------------------------- |
 | AvailRQ               		| 1            	|		| Root node.							|
 | AvailRQ/SearchType 			| 1     	| 	|  	|
-| AvailRQ/CancellationPolicies 			| 1     	| Boolean	| Indicates if you want to receive the cancellation policies in AvailRS, as long as the parameter is set as true in the request and the supplier returns it in this method (see [MetaData](../content/meta-data/) in order to verify if a supplier implements it). 	|
-| AvailRQ/RoomCancellationPolicies 			| 1     	| Boolean	| Indicates if you want to receive the cancellation policies at room level in AvailRS, as long as the supplier returns it in this method (see [MetaData](../content/meta-data/) in order to verify if a supplier implements it).	|
-| AvailRQ/DailyPrices					| 0..1			| Boolean	|  Indicates if you want to receive the daily prices at room level in AvailRS, as long as the supplier returns it in this method (see [MetaData](../content/meta-data/) in order to verify if a supplier implements it).		|
-| AvailRQ/DailyRatePlans				| 0..1			| Boolean	|  Indicates if you want to receive the daily rate plans at room level in AvailRS, as long as the supplier returns it in this method (see [MetaData](../content/meta-data/) in order to verify if a supplier implements it).		|
+| AvailRQ/CancellationPolicies 			| 1     	| Boolean	| Indicates if you want to receive the cancellation policies in AvailRS, as long as the parameter is set as true in the request and the supplier returns it in this method (see [MetaData](../content/meta-data/) in order to verify if the supplier implements it). 	|
+| AvailRQ/RoomCancellationPolicies 			| 1     	| Boolean	| Indicates if you want to receive the cancellation policies at room level in AvailRS, as long as the supplier returns it in this method (see [MetaData](../content/meta-data/) in order to verify if the supplier implements it).	|
+| AvailRQ/DailyPrices					| 0..1			| Boolean	|  Indicates if you want to receive the daily prices at room level in AvailRS, as long as the supplier returns it in this method (see [MetaData](../content/meta-data/) in order to verify if the supplier implements it).		|
+| AvailRQ/DailyRatePlans				| 0..1			| Boolean	|  Indicates if you want to receive the daily rate plans at room level in AvailRS, as long as the supplier returns it in this method (see [MetaData](../content/meta-data/) in order to verify if the supplier implements it).		|
 | AvailRQ/Attributes            			|      	|    | 		|
-| AvailRQ/OnRequest            			| 1     	| Boolean	| Indicates if you want to receive the onrequest options in AvailRS, as long as the supplier returns it in this method (see [MetaData](../content/meta-data/) in order to verify if a supplier implements it).		|
-| AvailRQ/BusinessRules        			| 1            	| String	| Indicates the business rules the client wants to apply in availability, as long as the supplier returns it in this method (see [MetaData](../content/meta-data/) in order to verify if a supplier implements it). <details>     <summary>Business Rules Options</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Business Rule</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>CheaperAmount</td>  						 <td>The cheapest options is returned without exceeding the optionsQuota limit. If the client sets BusinessRules, they will be implemented when the number of options surpasses optionsQuota. If no BusinessRules values are set by the client, the CheaperAmount BusinessRule is automatically applied.</td>  					 </tr>  					 <tr>  						 <td>RoomType</td>  						 <td>Options are filtered based on a restricted combination of room types. Initially, similar room types are grouped to present options with the same classification (e.g., Standard-Standard-Standard-Standard, Junior-Junior-Junior-Junior). The process involves combining the most affordable rooms with the remaining ones, ensuring no duplicates and staying within the optionsQuota limit.</td>  					 </tr>				 </tbody>  			</table>         </div>     </div> </details>	|
+| AvailRQ/OnRequest            			| 1     	| Boolean	| Indicates if you want to receive the onrequest options in AvailRS, as long as the supplier returns it in this method (see [MetaData](../content/meta-data/) in order to verify if the supplier implements it).		|
+| AvailRQ/BusinessRules        			| 1            	| String	| Indicates the business rules the client wants to apply in availability, as long as the supplier allows it (see [MetaData](../content/meta-data/) to verify if the supplier has implemented this option). <details>     <summary>Business Rules Options</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Business Rule</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>CheaperAmount</td>  						 <td>The cheapest options is returned without exceeding the optionsQuota limit. If the client sets BusinessRules, they will be implemented when the number of options surpasses optionsQuota. If no BusinessRules values are set by the client, the CheaperAmount BusinessRule is automatically applied.</td>  					 </tr>  					 <tr>  						 <td>RoomType</td>  						 <td>Options are filtered based on a restricted combination of room types. Initially, similar room types are grouped to present options with the same classification (e.g., Standard-Standard-Standard-Standard, Junior-Junior-Junior-Junior). The process involves combining the most affordable rooms with the remaining ones, ensuring no duplicates and staying within the optionsQuota limit.</td>  					 </tr>				 </tbody>  			</table>         </div>     </div> </details>	|
 | AvailRQ/AvailDestinations		| 1..n         	|		| Indicates what destinations will be requested to the supplier. Hotel codes or other destination codes must be defined using information specified in[MetaData](../content/meta-data/).	|
 | AvailDestinations/Destination		| 1..n         	|		| 	|
 | @type           			| 1     	| String	| Destination type (HOT, CTY, ZON, GEO). Clarification: ZONs contains CTYs. ZONs are higher nodes and CTY are lower nodes. It is not possible to mix types of destinations in the same request.  | 
@@ -125,7 +124,7 @@ Header y common elements
 | AvailRQ/StartDate            			| 1     	| String	| 'Search from' date.						|
 | AvailRQ/EndDate              			| 1     	| String	| 'Search til' date.						|
 | AvailRQ/Currency             			| 1  	| String	| The currency node in your request signals your preferred currency, but its inclusion depends on the supplier's allowance. However, even if permitted, the response may not align with your requested currency, as it adheres to the supplier's native code. For example, if you ask for EUR but the supplier operates in GBP, the response will be in GBP. 	|
-| AvailRQ/Nationality          			| 1  	| String	| Nationality of the guest (use ISO3166_1_alfa_2). This information is mandatory (see [MetaData](../content/meta-data/) in order to verify if a supplier implements it).	|
+| AvailRQ/Nationality          			| 1  	| String	| Nationality of the guest (use ISO3166_1_alfa_2). This information is mandatory (see [MetaData](../content/meta-data/) in order to verify if the supplier implements it).	|
 | AvailRQ/Markets              			| 1         	|		| List of Market requested (see [MetaData](../content/meta-data/) in order to verify if a supplier implements it).				|
 | Markets/Market       			| 1..n  	| String	| Targeted zone/Country/Point of sale (Most suppliers use a standard ISO - 3166_1_alfa_2, but it depends on each individual supplier).			|
 | AvailRQ/RoomCandidates 		| 1..n         	|		| 						|
@@ -136,9 +135,81 @@ Header y common elements
 | @age            			| 1     	| Integer	| Passenger age on the day of check-in (The range of what is considered an adult, infant or baby is particular to each supplier).							|
 | @id             			| 1     	| Integer	| Pax id (starts at 1).						|
 
+
+### How to Set Options Returned by MealPlan
+
+The Legacy Pull Buyers API allows to set the number of options returned by MealPlan for suppliers who provide a large number of options, about 20.000+ in a single response.
+
+This functionality is applicable as long as the supplier permits it. You can verify it in the [MetaData call](../content/meta-data/) under `AllowsBusinessRules`. If the supplier has AllowsBusinessRules = True, you can then choose from between different `BusinessRules` (CheaperAmount or RoomType) to filter the options based on your preferences.
+
+:::note
+
+We have implemented a system-level limit. If the `optionsQuota` set by the client exceeds this limit, the smaller of the two values will be used.
+
+:::
+
+To include the optionsQuota in your request, follow these steps:
+
+1. Add the optionsQuota field to the request and specify the desired quantity of options per MealPlan.
+
+2. Specify the BusinessRules you want to apply in the request: CheaperAmount or RoomType.
+
+3. Upon receiving a response, you will only obtain a portion of the complete list. The number of options per MealPlan will be in accordance with your defined optionsQuota, considering the specified BusinessRules.
+
+
+**1. Add optionsQuota in the Request**
+
+First, in your Avail request you will add `optionsQuota` field and specify the desired quantity of options per MealPlan expected to receive in the response:
+
+```xml
+<AvailRQ>
+   <timeoutMilliseconds>18000</timeoutMilliseconds>
+   <source>
+      <languageCode>en</languageCode>
+   </source>
+   <filterAuditData>
+      <registerTransactions>true</registerTransactions>
+   </filterAuditData>
+   //highlight-start
+   <optionsQuota>500</optionsQuota>
+   //highlight-end
+   <Configuration>
+      ...
+   </Configuration>
+```
+
+**2. Specify the BusinessRules in the request**
+
+Then, specify the `BusinessRules` you want to apply in the request: CheaperAmount or RoomType.
+
+```xml
+<AvailRQ>
+   <timeoutMilliseconds>18000</timeoutMilliseconds>
+   <source>
+      <languageCode>en</languageCode>
+   </source>
+   <filterAuditData>
+      <registerTransactions>true</registerTransactions>
+   </filterAuditData>
+   <optionsQuota>500</optionsQuota>
+   <Configuration>
+      ...
+   </Configuration>
+   //highlight-start
+   <BusinessRules>CheaperAmount</BusinessRules>
+   //highlight-end
+```
+
+**3. You will recieve the Response**
+
+You will recieve the Response with 500 options per MealPlan in accordance with your defined `optionsQuota`, considering the specified `BusinessRules`.
+
+
 ## Avail Response
 
-The response will be structured hierarchically, starting with essential details about hotels like name, code, and meal plans from the supplier. Below that, MealPlans and their codes will be detailed, with options for each availability. The Options section will provide specifics for each option, including the total "all-inclusive" price covering fares, taxes, and discounts.
+After each request, the Seller will process the data and provide you with a response. Upon receiving a `Avail` request, the Seller will send you a corresponding `Avail` response. 
+
+The response options include either **success** or an **error**. In the event of success, the response will be structured hierarchically, beginning with key Hotel details such as names and codes. Subsequently, there is a breakdown of MealPlans and their associated codes. Within the MealPlans, the Options section offers comprehensive information on various choices. Each option is a unique combination of  rooms, prices, and policies, providing a comprehensive view of the available selections.
 
 ### Success
 
@@ -338,7 +409,7 @@ The response will be structured hierarchically, starting with essential details 
 | Parameters/Parameter | 0..n | 	| Additional parameter requiring integration.		                                            |
 | @key 					                | 1 		    | String 	    | Contains the keyword/Id to identify a parameter.		                                        |
 | @value 				                | 1 		    | String 	    | Contains  parameter value.				                                                    |
-| Option/CancelPenalties | 0..1 |  | List of cancellation penalties (see [MetaData](../content/meta-data/) in order to verify if a supplier implements it). |
+| Option/CancelPenalties | 0..1 |  | List of cancellation penalties (see [MetaData](../content/meta-data/) in order to verify if the supplier implements it). |
 | CancelPenalties/CancelPenalty | 0..1 |  |     |
 | CancelPenalty/HoursBefore| 1 | String | Number of hours prior to arrival day in which this Cancellation policy applies. | 
 | CancelPenalty/Penalty | 1..n |  | Contains the value to be applied in net price.				                                            |
@@ -365,7 +436,7 @@ The response will be structured hierarchically, starting with essential details 
 | @code 				                | 1 		    | String 	    | Room code has to be unique to identify a specific room type. If the RoomList Method is implemented, you can find the description of the room type in the RoomList. |
 | @description 				            | 0..1 		    | String 	    | Room description. Mandatory if the supplier doesn't allow RoomList Method. If the supplier implements RoomList Method, this field could be empty.	|
 | @nonRefundable 			            | 0..1 		    | String 	    | Identifies if the room is refundable or not.			                                        |
-| @numberOfUnits 			            | 0..1 		    | Integer 	    | Number of rooms available with the same type (see [MetaData](../content/meta-data/) in order to verify if a supplier implements it). |
+| @numberOfUnits 			            | 0..1 		    | Integer 	    | Number of rooms available with the same type (see [MetaData](../content/meta-data/) in order to verify if the supplier implements it). |
 | Room/Offers | 1..n |  | List of offers. Depending on the supplier, the information concerning offers can be displayed at a room level or in the option level in AvailRS.             |
 | Offers/Offer | 1..n |  | 						                                                    |
 | @code 				                | 1 		    | String 	    | Contains the code to identify a offer.			                                            |
@@ -378,7 +449,7 @@ The response will be structured hierarchically, starting with essential details 
 | Room/Features | 0..1 | 	| Features of this room (features list).	                                                | 
 | Features/Feature | 1..n |  | 	                                                                | 
 |@code                                  | 1             | String        | Feature code or text.                                                                         |
-| Room/DailyPrices/ | 0..1 | 	| Specifies daily price, as long as the supplier returns it in this method (see [MetaData](../content/meta-data/) in order to verify if a supplier implements it). | 
+| Room/DailyPrices/ | 0..1 | 	| Specifies daily price, as long as the supplier returns it in this method (see [MetaData](../content/meta-data/) in order to verify if the supplier implements it). | 
 | DailyPrices/DailyPrice | 1..n |  | Specifies the price for each day.			                                    |
 | @effectiveDate 			            | 1 		    | String 	    | Start date in which the price becomes effective.		                                        |
 | @expireDate 				            | 1 		    | String 	    | Expiry date of price.						                                                    |
@@ -387,7 +458,7 @@ The response will be structured hierarchically, starting with essential details 
 | @amount 				                | 1 		    | Decimal 	    | Day Amount.							                                                        |
 | @binding 				                | 1 		    | Boolean 	    | If binding is set as true, then the client can’t sell the product for a lower price that the one set by the supplier. If it set as as false, the client can sell the product for a lower price. |
 | @commission 				            | 1 		    | Decimal 	    | <details>     <summary>Commission Scenarios</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Commission</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>0</td>  						 <td>The price returned is net.</td>  					 </tr>  					 <tr>  						 <td>-1</td>  						 <td>The supplier has not supplied the sale price nor the commission. This information is in the commercial contract with the supplier.</td>  					 </tr>           <tr>  						 <td>Greater than 0</td>  						 <td>X = % of the commission applied to the amount.</td>  					 </tr>				 </tbody>  			</table>         </div>     </div> </details>  |
-| Room/DailyRatePlans/ | 0..1 |  | Specifies the daily rate, as long as the supplier returns it in this method (see [MetaData](../content/meta-data/) in order to verify if a supplier implements it). |
+| Room/DailyRatePlans/ | 0..1 |  | Specifies the daily rate, as long as the supplier returns it in this method (see [MetaData](../content/meta-data/) in order to verify if the supplier implements it). |
 | DailyRatePlans/DailyRatePlan | 1..n |  | Specifies the rates for each day.		                                |
 | @effectiveDate 			            | 1 		    | String 	    | Start date in which the rate becomes effective.		                                        |
 | @expireDate 				            | 1 		    | String 	    | Expirty date of rate.			                                                                |
@@ -410,7 +481,7 @@ The response will be structured hierarchically, starting with essential details 
 | @binding				                | 1             | Boolean       | If binding is set as true, then the client can’t sell the product for a lower price that the one set by the supplier. If it set as as false, the client can sell the product for a lower price. |
 | @commission				            | 1             | Decimal       | <details>     <summary>Commission Scenarios</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Commission</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>0</td>  						 <td>The price returned is net.</td>  					 </tr>  					 <tr>  						 <td>-1</td>  						 <td>The supplier has not supplied the sale price nor the commission. This information is in the commercial contract with the supplier.</td>  					 </tr>           <tr>  						 <td>Greater than 0</td>  						 <td>X = % of the commission applied to the amount.</td>  					 </tr>				 </tbody>  			</table>         </div>     </div> </details> |
 | Fee/Code | 1 | String | Specifies the fee code in case it has one.                                          |
-| Room/CancelPenalties | 0..1|  | List of cancellation penalties. (see [MetaData](../content/meta-data/) in order to verify if a supplier implements it). |
+| Room/CancelPenalties | 0..1|  | List of cancellation penalties. (see [MetaData](../content/meta-data/) in order to verify if the supplier implements it). |
 | CancelPenalties/CancelPenalty | 0..1|  |  |
 | CancelPenalty/HoursBefore | 1 | String | Number of hours prior to arrival day in which this Cancellation policy applies. |
 | CancelPenalty/Penalty | 1..n |  | 				                            |
@@ -423,7 +494,7 @@ The response will be structured hierarchically, starting with essential details 
 | @amount 				                | 1 		    | Decimal 	    | Option Amount.						|
 | @binding 				                | 1 		    | Boolean 	    | If binding is set as true, then the client can’t sell the product for a lower price that the one set by the supplier. If it set as as false, the client can sell the product for a lower price. |
 | @commission 				            | 1 		    | Decimal 	    | <details>     <summary>Commission Scenarios</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Commission</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>0</td>  						 <td>The price returned is net.</td>  					 </tr>  					 <tr>  						 <td>-1</td>  						 <td>The supplier has not supplied the sale price nor the commission. This information is in the commercial contract with the supplier.</td>  					 </tr>           <tr>  						 <td>Greater than 0</td>  						 <td>X = % of the commission applied to the amount.</td>  					 </tr>				 </tbody>  			</table>         </div>     </div> </details>	|
-| Option/Detail | 0..1 	| 		        | Detail of option (if the option is different from the type Hotel, see [MetaData](../content/meta-data/) in order to verify if a supplier implements it). |
+| Option/Detail | 0..1 	| 		        | Detail of option (if the option is different from the type Hotel, see [MetaData](../content/meta-data/) in order to verify if the supplier implements it). |
 | Detail/POIs | 1 | 		    | Points of interest.						                                                    |
 | POIs/POI | 1..n | 	| 						                                                    |
 | @code 				                | 1 		    | String 	    | POI code.							                                                            |
@@ -439,9 +510,9 @@ The response will be structured hierarchically, starting with essential details 
 | Service/RangeDates | 0..1 | | Service date range (Only specified if durationType=Range).	        |
 | @startDate 				            | 1 		    | String 	    | Start date of service.					                                                    |
 | @endDate 				                | 1 		    | String 	    | End date of service.						                                                    |
-| Option/Remarks | 0..1  |               | List of remarks (see [MetaData](../content/meta-data/) in order to verify if a supplier implements it). |
+| Option/Remarks | 0..1  |               | List of remarks (see [MetaData](../content/meta-data/) in order to verify if the supplier implements it). |
 | Remarks/Remark | 1..n | 		| 							                                                            |
-| Option/Offers | 0..1 	| 		        | The supplier returns in response which offer is applicable for each option (see [MetaData](../content/meta-data/) in order to verify if a supplier implements it). Depending on the supplier, the information concerning offers can be displayed at a room level or in the option level in AvailRS. |
+| Option/Offers | 0..1 	| 		        | The supplier returns in response which offer is applicable for each option (see [MetaData](../content/meta-data/) in order to verify if the supplier implements it). Depending on the supplier, the information concerning offers can be displayed at a room level or in the option level in AvailRS. |
 | Offers/Offer | 1..n | 		    | 						                                                        |
 | @code 				                | 1 		    | String 	    | Contains the code to identify a offer.			                                            |
 | @name 				                | 1 		    | String 	    | Contains the name of the offer.				                                                |

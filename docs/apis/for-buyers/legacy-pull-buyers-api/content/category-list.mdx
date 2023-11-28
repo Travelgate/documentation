@@ -27,14 +27,14 @@ The amount of information and content returned might vary between Sellers.
    <soapenv:Body>
       <ns:CategoryList>
          <ns:categoryListRQ>
-            <ns:timeoutMilliseconds>17900</ns:timeoutMilliseconds>
+            <ns:timeoutMilliseconds>20000</ns:timeoutMilliseconds>
             <ns:version>1</ns:version>
             <ns:providerRQ>
                <ns:code>suppliercode</ns:code>
                <ns:id>1</ns:id>
                <ns:rqXML>
                   <CategoryListRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
-                     <timeoutMilliseconds>18000</timeoutMilliseconds>
+                     <timeoutMilliseconds>19700</timeoutMilliseconds>
                      <source>
                         <languageCode>en</languageCode>
                      </source>
@@ -49,10 +49,8 @@ The amount of information and content returned might vary between Sellers.
                         <UrlValuation>www.supplier.com/valuation</UrlValuation>
                         <UrlGeneric>www.supplier.com/generic</UrlGeneric>
                         <Parameters>
-                           <Parameter key = "UrlListHoteles" value = "http://www.test.net/scr/searchxml/location.php?"></Parameter>
-                           <Parameter key = "UrlConsulta" value = "https://www.test.net/scr/xml/travelgate.php?"></Parameter>
-                           <Parameter key = "office" value = "55555"></Parameter>
-                           <Parameter key = "password" value = "XXXXXX"></Parameter>
+                           <Parameter key = "UrlListHotels" value = "http://www.supplier.com/ListHotels"></Parameter>
+                           <Parameter key = "Access" value = "22334"></Parameter>
                         </Parameters>
                      </Configuration>
                   </CategoryListRQ>
@@ -66,15 +64,17 @@ The amount of information and content returned might vary between Sellers.
 
 ### Request Data Breakdown
 
-:::note
+:::info
 
-Header y common elements
+Check the values you need to add in the [header](../making-requests/request-headers) and [common elements](../making-requests/common-elements).
 
 :::
 
 `CategoryList` request does not require any elements. 
 
 ## CategoryList Response
+
+After each request, the Seller will have to process the data and provide a response. Upon receiving a `CategoryList` request, the Seller will send you a corresponding `CategoryList` response.
 
 ```xml
 <CategoryListRS>

@@ -410,9 +410,10 @@ The response options include either **success** or an **error**. In the event of
 | @key 					                | 1 		    | String 	    | Contains the keyword/Id to identify a parameter.		                                        |
 | @value 				                | 1 		    | String 	    | Contains  parameter value.				                                                    |
 | Option/CancelPenalties | 0..1 |  | List of cancellation penalties (see [MetaData](../content/meta-data/) in order to verify if the supplier implements it). |
+| @nonRefundable | 1 |  Boolean | Indicates if it is refundable or no. |
 | CancelPenalties/CancelPenalty | 0..1 |  |     |
 | CancelPenalty/HoursBefore| 1 | String | Number of hours prior to arrival day in which this Cancellation policy applies. | 
-| CancelPenalty/Penalty | 1..n |  | Contains the value to be applied in net price.				                                            |
+| CancelPenalty/Penalty | 1..n | String | Contains the value to be applied in net price.				                                            |
 | @type 				                | 1 		    | String 	    | <details>     <summary>Types of penalties</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Penalty</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>Noches</td>  						 <td>Indicates the number of nights to be penalized.</td>  					 </tr>  					 <tr>  						 <td>Porcentaje</td>  						 <td>Indicates the percentage to pay based on the option price.</td>  					 </tr>           <tr>  						 <td>Importe</td>  						 <td> Indicates the exact amount payable.</td>  					 </tr>				 </tbody>  			</table>         </div>     </div> </details> |
 | @currency 				            | 1 		    | String 	    | Currency code (Our system uses a standard ISO - 3 for all suppliers).						                                                        |
 | CancelPenalty/CalculatedDeadline | 0..1 | Boolean | Indicate if the Deadline is returned by the supplier or it's been calculated by Travelgate. If True, has been calculated by Travelgate. If False, bypass of supplier data without calculation. |
@@ -449,7 +450,7 @@ The response options include either **success** or an **error**. In the event of
 | Room/Features | 0..1 | 	| Features of this room (features list).	                                                | 
 | Features/Feature | 1..n |  | 	                                                                | 
 |@code                                  | 1             | String        | Feature code or text.                                                                         |
-| Room/DailyPrices/ | 0..1 | 	| Specifies daily price, as long as the supplier returns it in this method (see [MetaData](../content/meta-data/) in order to verify if the supplier implements it). | 
+| Room/DailyPrices | 0..1 | 	| Specifies daily price, as long as the supplier returns it in this method (see [MetaData](../content/meta-data/) in order to verify if the supplier implements it). | 
 | DailyPrices/DailyPrice | 1..n |  | Specifies the price for each day.			                                    |
 | @effectiveDate 			            | 1 		    | String 	    | Start date in which the price becomes effective.		                                        |
 | @expireDate 				            | 1 		    | String 	    | Expiry date of price.						                                                    |
@@ -458,7 +459,7 @@ The response options include either **success** or an **error**. In the event of
 | @amount 				                | 1 		    | Decimal 	    | Day Amount.							                                                        |
 | @binding 				                | 1 		    | Boolean 	    | If binding is set as true, then the client can’t sell the product for a lower price that the one set by the supplier. If it set as as false, the client can sell the product for a lower price. |
 | @commission 				            | 1 		    | Decimal 	    | <details>     <summary>Commission Scenarios</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Commission</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>0</td>  						 <td>The price returned is net.</td>  					 </tr>  					 <tr>  						 <td>-1</td>  						 <td>The supplier has not supplied the sale price nor the commission. This information is in the commercial contract with the supplier.</td>  					 </tr>           <tr>  						 <td>Greater than 0</td>  						 <td>X = % of the commission applied to the amount.</td>  					 </tr>				 </tbody>  			</table>         </div>     </div> </details>  |
-| Room/DailyRatePlans/ | 0..1 |  | Specifies the daily rate, as long as the supplier returns it in this method (see [MetaData](../content/meta-data/) in order to verify if the supplier implements it). |
+| Room/DailyRatePlans | 0..1 |  | Specifies the daily rate, as long as the supplier returns it in this method (see [MetaData](../content/meta-data/) in order to verify if the supplier implements it). |
 | DailyRatePlans/DailyRatePlan | 1..n |  | Specifies the rates for each day.		                                |
 | @effectiveDate 			            | 1 		    | String 	    | Start date in which the rate becomes effective.		                                        |
 | @expireDate 				            | 1 		    | String 	    | Expirty date of rate.			                                                                |
@@ -482,6 +483,7 @@ The response options include either **success** or an **error**. In the event of
 | @commission				            | 1             | Decimal       | <details>     <summary>Commission Scenarios</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Commission</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>0</td>  						 <td>The price returned is net.</td>  					 </tr>  					 <tr>  						 <td>-1</td>  						 <td>The supplier has not supplied the sale price nor the commission. This information is in the commercial contract with the supplier.</td>  					 </tr>           <tr>  						 <td>Greater than 0</td>  						 <td>X = % of the commission applied to the amount.</td>  					 </tr>				 </tbody>  			</table>         </div>     </div> </details> |
 | Fee/Code | 1 | String | Specifies the fee code in case it has one.                                          |
 | Room/CancelPenalties | 0..1|  | List of cancellation penalties. (see [MetaData](../content/meta-data/) in order to verify if the supplier implements it). |
+| @nonRefundable | 1 |  Boolean | Indicates if it is refundable or no. |
 | CancelPenalties/CancelPenalty | 0..1|  |  |
 | CancelPenalty/HoursBefore | 1 | String | Number of hours prior to arrival day in which this Cancellation policy applies. |
 | CancelPenalty/Penalty | 1..n |  | 				                            |

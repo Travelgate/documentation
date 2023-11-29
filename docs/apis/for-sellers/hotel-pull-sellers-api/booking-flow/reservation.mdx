@@ -137,9 +137,9 @@ the booking locator (booking code), which could be the supplier’s own code or 
 | ReservationRQ/Nationality   				| 1		| String	| Nationality of the Holder (use ISO3166_1_alfa_2 , see [MetaData](../content/meta-data/) in order to verify if the supplier implements it).  |
 | ReservationRQ/Holder   				| 1		|		| Holder of the booking.  |
 | @title   				| 1		| Enum	| <details>     <summary>Titles</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Code</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>0</td>  						 <td>Mr</td>  					 </tr>  					 <tr>  						 <td>1</td>  						 <td>Mrs</td>  					 </tr>           <tr>  						 <td>2</td>  						 <td>Miss</td>  					 </tr>				 <tr>  						 <td>3</td>  						 <td>Ms</td>  					 </tr>               </tbody>  			</table>         </div>     </div> </details> |
-| @name   				| 1		|		| Holder's name.  |
-| @surname   				| 1		|		| Holder's surname.  |
-| @email   				| 0..1		|		| Holder's email.  |
+| @name   				| 1		|String		| Holder's name.  |
+| @surname   				| 1		|	String	| Holder's surname.  |
+| @email   				| 0..1		|	String	| Holder's email.  |
 | ReservationRQ/Price         				| 1      	|		| Total price of this valuation.			|
 | @currency					| 1  		| String	| Currency code (Our system uses a standard ISO - 3 for all suppliers).					|
 | @amount  					| 1  		| Decimal	| Option Amount.					|
@@ -188,18 +188,18 @@ the booking locator (booking code), which could be the supplier’s own code or 
 | @description					| 1  		| String	| Room description.					|
 | Rooms/Preferences    				| 0..1    	|		| Preference filters at room level. 					|
 | Preferences/Preference   				| 1..n    	|		| Each filter of preference and its values. 		|
-| @type   				| 1    	|		| <details>     <summary>Preference types</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Preference Type</strong>  						 </th>   					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>Smoker</td>  				</tr>   	     <tr>  						 <td>NonSmoker</td>  				</tr>     <tr>  						 <td>ExtraBed</td>  				</tr>      <tr>  						 <td>Cradle</td>  				</tr>    <tr>  						 <td>DoubleBed</td>  				</tr>      <tr>  						 <td>TwinBeds</td>  				</tr>    <tr>  						 <td>ContigousRoom</td>  				</tr>     <tr>  						 <td>Wedding</td>  				</tr>     <tr>  						 <td>LateArrival</td>  				</tr>      <tr>  						 <td>LateCheckOut</td>  				</tr>    <tr>  						 <td>EarlyCheckIn</td>  				</tr>      <tr>  						 <td>GroundFloor</td>  				</tr>     <tr>  						 <td>TopFloor</td>  				</tr>     <tr>  						 <td>WithoutBoucher</td>  				</tr>  </tbody>  			</table>         </div>     </div> </details>			|
-| ReservationRQ/RoomCandidatese			| 1..n    	|		| 					|
+| @type   				| 1    	|	String	| <details>     <summary>Preference types</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Preference Type</strong>  						 </th>   					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>Smoker</td>  				</tr>   	     <tr>  						 <td>NonSmoker</td>  				</tr>     <tr>  						 <td>ExtraBed</td>  				</tr>      <tr>  						 <td>Cradle</td>  				</tr>    <tr>  						 <td>DoubleBed</td>  				</tr>      <tr>  						 <td>TwinBeds</td>  				</tr>    <tr>  						 <td>ContigousRoom</td>  				</tr>     <tr>  						 <td>Wedding</td>  				</tr>     <tr>  						 <td>LateArrival</td>  				</tr>      <tr>  						 <td>LateCheckOut</td>  				</tr>    <tr>  						 <td>EarlyCheckIn</td>  				</tr>      <tr>  						 <td>GroundFloor</td>  				</tr>     <tr>  						 <td>TopFloor</td>  				</tr>     <tr>  						 <td>WithoutBoucher</td>  				</tr>  </tbody>  			</table>         </div>     </div> </details>			|
+| ReservationRQ/RoomCandidates			| 1..n    	|		| 					|
 | RoomCandidates/RoomCandidate			| 1..n    	|		| 					|
 | @id      					| 1  		| Integer	| Id of the requested room (starting at 1).		|
 | RoomCandidate/Paxes	| 1..n    	|		| 						|
 | Paxes/Pax	| 1..n    	|		| 						|
 | @age     					| 1  		| Integer	| Passenger age on the day of check-in. 					|
 | @id      					| 1  		| Integer	| Passenger id (starting at 1). 			|
-| ReservationRQ/Remarks       				| 0..1    	| 		| Any customer comments for the supplier to consider (see [MetaData](../content/meta-data/) in order to verify if the supplier implements it).	|
+| ReservationRQ/Remarks       				| 0..1    	| String Any customer comments for the supplier to consider (see [MetaData](../content/meta-data/) in order to verify if the supplier implements it).	|
 | ReservationRQ/Preferences   				| 0..1    	|		| Preference filters at the option / general level. 					|
 | Preferences/Preference  				| 1..n    	|		| Each filter of preference and its values. 		|
-| @type   				| 1    	|		| <details>     <summary>Preference types</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Preference Type</strong>  						 </th>   					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>Smoker</td>  				</tr>   	     <tr>  						 <td>NonSmoker</td>  				</tr>     <tr>  						 <td>ExtraBed</td>  				</tr>      <tr>  						 <td>Cradle</td>  				</tr>    <tr>  						 <td>DoubleBed</td>  				</tr>      <tr>  						 <td>TwinBeds</td>  				</tr>    <tr>  						 <td>ContigousRoom</td>  				</tr>     <tr>  						 <td>Wedding</td>  				</tr>     <tr>  						 <td>LateArrival</td>  				</tr>      <tr>  						 <td>LateCheckOut</td>  				</tr>    <tr>  						 <td>EarlyCheckIn</td>  				</tr>      <tr>  						 <td>GroundFloor</td>  				</tr>     <tr>  						 <td>TopFloor</td>  				</tr>     <tr>  						 <td>WithoutBoucher</td>  				</tr>  </tbody>  			</table>         </div>     </div> </details>					|
+| @type   				| 1    	| String		| <details>     <summary>Preference types</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Preference Type</strong>  						 </th>   					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>Smoker</td>  				</tr>   	     <tr>  						 <td>NonSmoker</td>  				</tr>     <tr>  						 <td>ExtraBed</td>  				</tr>      <tr>  						 <td>Cradle</td>  				</tr>    <tr>  						 <td>DoubleBed</td>  				</tr>      <tr>  						 <td>TwinBeds</td>  				</tr>    <tr>  						 <td>ContigousRoom</td>  				</tr>     <tr>  						 <td>Wedding</td>  				</tr>     <tr>  						 <td>LateArrival</td>  				</tr>      <tr>  						 <td>LateCheckOut</td>  				</tr>    <tr>  						 <td>EarlyCheckIn</td>  				</tr>      <tr>  						 <td>GroundFloor</td>  				</tr>     <tr>  						 <td>TopFloor</td>  				</tr>     <tr>  						 <td>WithoutBoucher</td>  				</tr>  </tbody>  			</table>         </div>     </div> </details>					|
 
 
 ## Reservation Response

@@ -62,6 +62,13 @@ const config = {
     // ],
     'docusaurus-plugin-sass',
     [
+      '@docusaurus/plugin-google-gtag',
+      {
+        trackingID: 'G-ECHYSGVN82',
+        anonymizeIP: true,
+      },
+    ],
+    [
       "@graphql-markdown/docusaurus",
       {
         // ... other options
@@ -192,7 +199,7 @@ const config = {
           {
             to: '/playground',
             //type: 'docSidebar',
-            //sidebarId: 'schemaSidebar',
+            sidebarId: 'playgroundSidebar',
             label: 'GraphQL Playground',
             position: 'left'
           },

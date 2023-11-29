@@ -177,10 +177,10 @@ The response options include either **success** or an **error**. In the event of
 | Hotel/StartDate			| 0..1    		| String	| Check-in date.			|
 | Hotel/EndDate				| 0..1    		| String	| Check out date.				|
 | Hotel/MealPlanCode			| 0..1 		| String	| Booking Mealplan code.			|
-| Hotel/Holder				| 0..1 		| String	| Reservation Holder .				|
+| Hotel/Holder				| 0..1 		| 	| Reservation Holder .				|
 | @name				| 1    		| String	| Holder name.					|
 | @surname				| 1    		| String	| Holder surname.				|
-| Hotel/Price				| 1    		| String	| Price of the reservation.   				|
+| Hotel/Price				| 1    		| 	| Price of the reservation.   				|
 | @currency				| 1    		| String	| Currency code (Our system uses a standard ISO - 3 for all suppliers).				|
 | @amount				| 1    		| Decimal	| Total amount for the booking.					|
 | @binding				| 1    		| Boolean	| If binding is set as true, then the client can’t sell the product for a lower price that the one set by the supplier. If it set as as false, the client can sell the product for a lower price. |
@@ -198,18 +198,18 @@ The response options include either **success** or an **error**. In the event of
 | Paxes/Pax | 1..n       	|		| Pax required.					|
 | @age					| 0..1 		| Integer	| Passenger age on the day of check-in.				|
 | @id					| 0..1 		| Integer	| Id of the requested room (starting at 1).	|
-| Hotel/CancelPenaltiesCancelPenalties	| 0..1       	|		| Information of cancellation policies.		|
+| Hotel/CancelPenalties	| 0..1       	|		| Information of cancellation policies.		|
 | @nonRefundable			| 1    		| Boolean	| Indicate if this option is nonRefundable (true or false). |
 | CancelPenalties/CancelPenalty	| 0..n       	|		| Listing of cancellation penalties.		|
 | CancelPenalty/HoursBefore | 1	|	String	|Number of hours prior to arrival day in which this Cancellation policy applies. |
 | CancelPenalty/Deadline    | 1          | String   | Date on UTC Standard TimeZone in which this Cancellation policy applies (ISO 8601 e.g: 2016-07-01T05:00:00Z)  |
 | CancelPenalty/CalculatedDeadline | 1          | Boolean  |  Indicate if the Deadline is returned by the supplier or it's been calculated by Travelgate.If true, the deadline has been converted to UTC-0 by Travelgate. If False, the supplier returns the deadline on UTC-0, so no calculation is needed. |
-| CancelPenalty/Penalty |   1 	|         	| CContains the value to be applied in net price.			|
+| CancelPenalty/Penalty |   1 	|         	| Contains the value to be applied in net price.			|
 | @type 				| 1    		| String	| <details>     <summary>Types of penalties</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Penalty</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>Noches</td>  						 <td>Indicates the number of nights to be penalized.</td>  					 </tr>  					 <tr>  						 <td>Porcentaje</td>  						 <td>Indicates the percentage to pay based on the option price.</td>  					 </tr>           <tr>  						 <td>Importe</td>  						 <td> Indicates the exact amount payable.</td>  					 </tr>				 </tbody>  			</table>         </div>     </div> </details> |
 | @paymentType				| 1    		| String	| Indicates payment type.		|
 | @currency				| 1    		| String	| Currency code (Our system uses a standard ISO - 3 for all suppliers).				|
 | Hotel/Remarks				| 0..1 		| String	| Remarks.					|
-| ReservationReadRS/TransactionStatus	| 1    		| Trans.	| Status.					|
+| ReservationReadRS/TransactionStatus	| 1    		| 	| Status.					|
 | TransactionStatus/ComunicationStatus	| 1    		| String	| Status communication (OFFLINE, OK and KO).	|
 | TransactionStatus/RSStatus		| 1    		| String	| <details>     <summary>Response Status</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Status</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>DESCONOCIDO</td>  						 <td>Unknown</td>  					 </tr>  					 <tr>  						 <td>EXISTE</td>  						 <td>Exists</td>  					 </tr>           <tr>  						 <td>EXISTECANCELADA</td>  						 <td>exists but it's cancelled</td>  					 </tr>				 <tr>  						 <td>NO_EXISTE</td>  						 <td>Does not exist</td>  					 </tr>       </tbody>  			</table>         </div>     </div> </details>|
 | TransactionStatus/ResStatus		| 1    		| String	| <details>     <summary>Reservation Status</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Status Code</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>OK</td>  						 <td>The reservation was completed with no problems.</td>  					 </tr>  					 <tr>  						 <td>RQ</td>  						 <td>The reservation was completed but the product is still not available, so the reservation goes into a waiting list (Request).</td>  					 </tr>           <tr>  						 <td>CN</td>  						 <td>The reservation was completed but due to a supplier error or a timeout the system will immediately cancel the reservation to prevent further possible errors.</td>  					 </tr>				 <tr>  						 <td>UN</td>  						 <td>The reservation was completed but due to a supplier error or a timeout, the reservation status is unknown. It is the client’s responsibility to check if the booking is OK.</td>  					 </tr>       </tbody>  			</table>         </div>     </div> </details>|

@@ -1,0 +1,89 @@
+---
+sidebar_position: 1
+---
+
+# Quickstart
+
+## Introduction
+
+Distribution empowers you, as a Seller, to manage pricing rules, filters, and blacklists for each of your Buyers connected through Travelgate. These rules can be enforced at both agency (Buyer) and provider (Seller) tiers, and can also be applied to designated hotels, date ranges, or markets. This level of control empowers you to finely tailor your company's distribution strategy.
+
+All rules can be manually uploaded and updated through the [Distribution extranet](https://travelb2b.travelgatex.com/login), or alternatively, you have the option to utilize various CSV files that can be stored within our FTP. Our system will then automatically load the predefined rules based on a set frequency.
+
+It's crucial to understand that Distribution relies on static content information related to your hotels, rooms, meal plans, providers, destinations etc. This data must be integrated into the tool using master and mapping files. These master and mapping files need to be loaded onto our FTP, enabling us to effectively process this vital information.
+
+:::tip
+
+By combining our two apps, [Inventory](inventory/quickstart) and [Distribution](distribution/quickstart), Sellers can market their products to an extensive array of Travelgate Buyers. 
+
+You will be able to add hotels on the Inventory Extranet + connect with third-party vendors, and utilize the Distribution Extranet for engaging with Buyers and implementing business rules.
+
+:::
+
+## Let's Get Started: How to Set Up the Distribution APP!
+
+In this quickstart guide, we will show you the main steps to set up your Distribution account, allowing you to start selling and applying business rules as quickly as possible.
+
+Distribution serves Sellers in managing pricing rules, filters, blacklists, etc., for each of their buyers. It also enables Sellers without an API to sell both their own products and those of third parties, in combination with our Inventory app.
+
+* If you'll **only be using it as a layer of rules**, proceed directly to [step 2](quickstart#2-create-your-mapping-and-master-files) of this quick start.
+
+* If you'll be **selling both your product and third-party products without your own API**, go to [step 1](#) of this quick start.
+
+### 1. Conectate con los 3 party
+
+### 2. Create your Mapping and Master files
+
+As said before, Distribution relies on static content information related to your hotels, rooms, meal plans, providers, destinations etc. This data must be integrated into Distribution tool using Master and Mapping files. Note that both the [Mapping files](../distribution/files/mapping-files/mapping) and the [Hotels Master file](../distribution/files/master-files/hotels) are mandatory. We recommend you to follow these steps:
+
+**2.1. Begin by Mapping both your own hotels and those you plan to purchase from third-party Sellers.**
+
+**2.2. Afterward, create the Hotels Master with all the hotels already mapped in advance.**
+
+:::info NOTE
+
+For Sellers **exclusively selling their own products, a single Mapping file** is needed where the same code is added to both the Seller and Buyer columns.
+
+For Sellers planning to **sell both their own products and third-party products, a separate Mapping file is required for each supplier** they plan to buy from.
+
+However, **in both cases**, it is always necessary to create **a single Master file**, encompassing all products intended for sale. In essence, the Master file consolidates all mapped products, whether purchased from the Seller, third parties, or both, forming a unified portfolio for sale.
+
+:::
+
+These Master and Mapping files need to be [loaded onto your FTP](../distribution/files/overview), enabling us to effectively process this vital information:
+
+```mdx-code-block
+<BrowserWindow>
+
+📁F0  _0000  
+&nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX  _0000  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁Maps  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁Hotel  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[BuyerContext_SupplierContext_hotel_map.csv](https://storage.travelgate.com/docs/BuyerContext_SupplierContext_hotel_map.csv)**  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁Masters  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[Master_Hotels.csv](https://storage.travelgate.com/docs/Master_Hotels.csv)**  
+
+</BrowserWindow>
+```
+
+### 3. Conectate con los Buyers + crea las agencias
+
+
+### 4. Comienza a definir reglas de negocio
+
+
+## Next Steps
+
+Congratulations on completing this quickstart tutorial! 🎉 You've successfully learned the basics of setting up the Distribution App. But there's a world of knowledge waiting for you:
+
+- Explore the [Files](../distribution/files/overview) section to learn how to create and upload your files.
+    - [Mapping Files](../distribution/files/mapping-files/mapping): To apply rules to levels other than hotels, such as rooms, meal plans, etc., learn how to map these elements.
+    - [Master Files](../distribution/files/master-files/overview): To apply rules to levels other than hotels, for example, rooms, meal plans, etc., discover how to create the master files for these elements.
+- Explore the [Extranet](../distribution/extranet/overview) section to dive deep into all the rules that Distribution allows you to create:
+    - [General Settings](../distribution/extranet/general-settings/overview): Explore all the rule options available in Distribution extranet.
+    - [Tools](../distribution/extranet/tools/overview): Search for hotels, currencies, and meal plans, and generate CSV reports for product and rule information.
+    - [Bookings](../distribution/extranet/bookings): Visualize all the data from your bookings.
+    - [Agencies](../distribution/extranet/agencies): Create an agency for each buyer to set specific rules.
+- If you prefer to implement these rules using CSV files rather than through our extranet, explore the [Rules files](../distribution/files/rules-files/overview) option.
+
+Our documentation is a treasure trove of additional features and functionalities to enhance your business. To uncover these valuable resources, explore our documentation further and make the most of these methods. Enjoy your journey!

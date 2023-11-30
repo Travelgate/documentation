@@ -107,7 +107,7 @@ The response options include either **success** or an **error**. In the event of
       <StartDate>28/01/2016</StartDate>
       <EndDate>29/01/2016</EndDate>
       <Holder name = "name" surname = "surname"/>
-      <Price currency = "EUR" amount = "36.20" binding = "false" commission = "-1"/>
+      <Price currency = "EUR" amount = "36.20" binding = "false" commission = "-1" minimumSellingPrice="-1"/>
       <Rooms>
          <Room id = "4582" roomCandidateRefId = "1" description = "Standard.."/>
       </Rooms>
@@ -153,6 +153,7 @@ The response options include either **success** or an **error**. In the event of
 | @amount				| 1    		| Decimal	| Total amount for the booking.					|
 | @binding				| 1    		| Boolean	| If binding is set as true, then the client can’t sell the product for a lower price that the one set by the supplier. If it set as as false, the client can sell the product for a lower price. |
 | @commission				| 1    		| Decimal	| <details>     <summary>Commission Scenarios</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Commission</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>0</td>  						 <td>The price returned is net.</td>  					 </tr>  					 <tr>  						 <td>-1</td>  						 <td>The supplier has not supplied the sale price nor the commission. This information is in the commercial contract with the supplier.</td>  					 </tr>           <tr>  						 <td>Greater than 0</td>  						 <td>X = % of the commission applied to the amount.</td>  					 </tr>				 </tbody>  			</table>         </div>     </div> </details> |
+| @minimumSellingPrice 				   | 1 		    | Decimal 	    | Indicates the minimum selling price it can be sold (determined by the Seller). If is specified (different than "-1"), that field takes preference to amount.		<details>     <summary>Minimum Selling Price Scenarios</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Minimum Selling Price</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody> <tr>  						 <td>0</td>  						 <td>No minimum selling price is provided.</td>  					 </tr>       <tr>  						 <td>-1</td>  						 <td>We have no information about MSP from the Seller.</td>  					 </tr>     <tr>  						 <td>Greater than 0</td>  						 <td>The lowest possible amount that can be sold commercially.</td>  					 </tr>				 </tbody>  			</table>         </div>     </div> </details> |
 | Hotel/Rooms			| 0..1       	|		| List of rooms reserved				|
 | Rooms/Room		| 1..n       	|		| Details of room reserved.				|
 | @id   				| 0..1 		| String	| Identifier of the room.			|

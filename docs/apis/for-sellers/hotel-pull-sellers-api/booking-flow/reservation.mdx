@@ -61,7 +61,7 @@ the booking locator (booking code), which could be the supplier’s own code or 
                      <HotelCode>10</HotelCode>
                      <Nationality>ES</Nationality>
                      <Holder title = "Miss" name = "name" surname = "surname" email = "hotelemail@email.com"/>
-                     <Price currency = "EUR" amount = "36.20" binding = "false" commission = "-1"/>
+                     <Price currency = "EUR" amount = "36.20" binding = "false" commission = "-1" minimumSellingPrice="-1"/>
                      <ResGuests> 
                         <Guests>
                            <Guest roomCandidateId = "1" paxId = "1">
@@ -146,6 +146,7 @@ the booking locator (booking code), which could be the supplier’s own code or 
 | @amount  					| 1  		| Decimal	| Option Amount.					|
 | @binding 					| 1  		| Boolean	| If binding is set as true, then the client can’t sell the product for a lower price that the one set by the supplier. If it set as as false, the client can sell the product for a lower price.  |
 | @commission					| 1  		| Decimal	| <details>     <summary>Commission Scenarios</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Commission</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>0</td>  						 <td>The price returned is net.</td>  					 </tr>  					 <tr>  						 <td>-1</td>  						 <td>The supplier has not supplied the sale price nor the commission. This information is in the commercial contract with the supplier.</td>  					 </tr>           <tr>  						 <td>Greater than 0</td>  						 <td>X = % of the commission applied to the amount.</td>  					 </tr>				 </tbody>  			</table>         </div>     </div> </details>	|
+| @minimumSellingPrice 				   | 1 		    | Decimal 	    | Indicates the minimum selling price it can be sold (determined by the Seller). If is specified (different than "-1"), that field takes preference to amount.		<details>     <summary>Minimum Selling Price Scenarios</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Minimum Selling Price</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody> <tr>  						 <td>0</td>  						 <td>No minimum selling price is provided.</td>  					 </tr>       <tr>  						 <td>-1</td>  						 <td>We have no information about MSP from the Seller.</td>  					 </tr>     <tr>  						 <td>Greater than 0</td>  						 <td>The lowest possible amount that can be sold commercially.</td>  					 </tr>				 </tbody>  			</table>         </div>     </div> </details> |
 | ReservationRQ/ResGuests     				| 1      	|		| List of passengers.				|
 | ResGuests/Guests			| 1      	|		| Passengers.					|
 | Guests/Guest			| 1..n    	|		| Detail of each passenger.	If the holder is also a passenger you need to add his/hers information in the gest list.			|
@@ -217,7 +218,7 @@ The response options include either **success** or an **error**. If successful, 
    <ProviderLocator>102</ProviderLocator>
    <PropertyReservationNumber>HCN8273</PropertyReservationNumber>
    <ResStatus>OK</ResStatus>
-   <Price currency = "EUR" amount = "36.20" binding = "false" commission = "-1"/>
+   <Price currency = "EUR" amount = "36.20" binding = "false" commission = "-1" minimumSellingPrice="-1"/>
 </ReservationRS>
 ```
 
@@ -234,6 +235,7 @@ The response options include either **success** or an **error**. If successful, 
 | @amount					| 1  		| Decimal	| Book Amount.						|
 | @binding					| 1  		| Boolean	| If binding is set as true, then the client can’t sell the product for a lower price that the one set by the supplier. If it set as as false, the client can sell the product for a lower price. |
 | @commission					| 1  		| Decimal	| <details>     <summary>Commission Scenarios</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Commission</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>0</td>  						 <td>The price returned is net.</td>  					 </tr>  					 <tr>  						 <td>-1</td>  						 <td>The supplier has not supplied the sale price nor the commission. This information is in the commercial contract with the supplier.</td>  					 </tr>           <tr>  						 <td>Greater than 0</td>  						 <td>X = % of the commission applied to the amount.</td>  					 </tr>				 </tbody>  			</table>         </div>     </div> </details>	|
+| @minimumSellingPrice 				   | 1 		    | Decimal 	    | Indicates the minimum selling price it can be sold (determined by the Seller). If is specified (different than "-1"), that field takes preference to amount.		<details>     <summary>Minimum Selling Price Scenarios</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Minimum Selling Price</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody> <tr>  						 <td>0</td>  						 <td>No minimum selling price is provided.</td>  					 </tr>       <tr>  						 <td>-1</td>  						 <td>We have no information about MSP from the Seller.</td>  					 </tr>     <tr>  						 <td>Greater than 0</td>  						 <td>The lowest possible amount that can be sold commercially.</td>  					 </tr>				 </tbody>  			</table>         </div>     </div> </details> |
 | Remarks					| 0..1		| String	| Any remarks about this reservation			|
 | BillingSupplierCode				| 0..1		| String	| Supplier's billing code. Will be returned if the supplier has different billing accounts and this is informed in the reservation (see [MetaData](../content/meta-data/) in order to verify if the supplier implements it).	|
 | Payable					| 0..1     	|		| Payable.						|

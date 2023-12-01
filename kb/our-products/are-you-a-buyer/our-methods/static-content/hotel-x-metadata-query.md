@@ -1,4 +1,5 @@
 ﻿---
+title: Metadata
 sidebar_position: 6
 ---
 

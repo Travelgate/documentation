@@ -1,4 +1,5 @@
 ﻿---
+title: Categories
 sidebar_position: 5
 ---
 

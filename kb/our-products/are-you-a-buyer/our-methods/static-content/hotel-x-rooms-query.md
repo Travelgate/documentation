@@ -1,4 +1,5 @@
 ﻿---
+title: Rooms
 sidebar_position: 3
 ---
 

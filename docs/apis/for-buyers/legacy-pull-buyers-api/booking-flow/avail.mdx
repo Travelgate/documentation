@@ -403,7 +403,7 @@ The response options include either **success** or an **error**. In the event of
 | MealPlan/Options		    | 1 		    | 		        | 					                                                            |
 | Options/Option 	| 1..n 		    | 		        | Detail of option.						                                                        |
 | @type 				                | 1 		    | String 	    | Indicates option type (only hotel, hotel with ski pass, hotel with entrance...).              |
-| @paymentType 				            | 1 		    | String 	    | <details>     <summary>Payment Types</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Code</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>MerchantPay</td>  						 <td>The payment is managed by the supplier.</td>  					 </tr>  					 <tr>  						 <td>LaterPay</td>  						 <td>The payment is managed by the hotel. The customer will use a credit-card as a guarantee for the hotel and the payment will be completed at check in.</td>  					 </tr>           <tr>  						 <td>CardBookingPay</td>  						 <td>The payment is managed by the supplier. The payment is effectuated at the time of booking.</td>  					 </tr>				 <tr>  						 <td>CardCheckInPay</td>  						 <td>The payment is managed by the supplier. The payment is effectuated at check in in the hotel.</td>  					 </tr><tr>  						 <td>PayX</td>  						 <td>The payment is managed by TravelgateX’s payment system.</td>  					 </tr>         </tbody>  			</table>         </div>     </div> </details> |
+| @paymentType 				            | 1 		    | String 	    | <details>     <summary>Payment Types</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Code</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>MerchantPay</td>  						 <td>The payment is managed by the supplier.</td>  					 </tr>  					 <tr>  						 <td>LaterPay</td>  						 <td>The payment is managed by the hotel. The customer will use a credit-card as a guarantee for the hotel and the payment will be completed at check in.</td>  					 </tr>           <tr>  						 <td>CardBookingPay</td>  						 <td>The payment is managed by the supplier. The payment is effectuated at the time of booking.</td>  					 </tr>				 <tr>  						 <td>CardCheckInPay</td>  						 <td>The payment is managed by the supplier. The payment is effectuated at check in in the hotel.</td>  					 </tr><tr>  						 <td>PayX</td>  						 <td>The payment is managed by Travelgate’s payment system.</td>  					 </tr>         </tbody>  			</table>         </div>     </div> </details> |
 | @status 				                | 1 		    | String 	    | Status option (OK = available, RQ = on request).		                                        |
 | Option/Parameters | 0..1 |  | Additional parameters that must be reported on the ValuationRQ. Parameters, if this option is required. |
 | Parameters/Parameter | 0..n | 	| Additional parameter requiring integration.		                                            |
@@ -619,4 +619,91 @@ The response options include either **success** or an **error**. In the event of
 			</table>
         </div>
     </div>
+</details>
+
+## Frequently Asked Questions
+
+<details>
+<summary>How should I interpret "binding" and "commission" to figure out what kind of price it is?</summary>
+
+```xml
+<Price currency = "EUR" amount = "200" binding = "false" commission = "-1"/>
+```
+
+<p>We have no way of knowing if the price is PVP or net, given that the commission is not sent to us via XML. The commission is established by contract.</p>
+
+```xml
+<Price currency = "EUR" amount = "300" binding = "true" commission = "-1"/>
+```
+
+<p>The price is PVP, the commission is not sent to us via XML. The commission is established by contract.</p>
+
+```xml
+<Price currency = "EUR" amount = "150" binding = "true/false" commission = "20"/>
+```
+
+<p>The price is PVP with a commission of 20%. The binding in this case can be true or false.</p>
+
+```xml
+<Price currency = "EUR" amount = "100" binding = "false" commission = "0"/>
+```
+
+<p>The price is net.</p>
+
+</details>
+
+
+<details>
+<summary>Why does the "quantity" sometimes show as 0 in a service linked to a point of interest?</summary>
+<b>Quantity = 0</b>
+
+```xml
+<POIs>
+   <POI code = "8A" Description = "Andorra">
+      <Services>
+         <Service type = "SkiPass" code = "F1"
+         description = "Forfait" durationType = "Range"
+         quantity = "0" unit = "Day">
+            <RangeDates startDate = "28/01/2014"
+            endDate = "29/01/2014"/>
+         </Service>
+      </Services>
+   </POI>
+</POIs>
+```
+
+<p>Specifying the quantity is unnecessary as the start and end dates for the service have already been set.</p>
+
+<b>Quantity > 0</b>
+
+```xml
+<POIs>
+   <POI code = "8A" Description = "Andorra">
+      <Services>
+         <Service type = "SkiPass" code = "F1"
+         description = "Forfait" durationType = "open"
+         quantity = "5" unit = "Hour">
+         </Service>
+      </Services>
+   </POI>
+</POIs>
+```
+
+<p>In this case, quantity is applicable for the entire stay, i.e., the client can enjoy the skipass for 5 hours any day of the stay.</p>
+
+```xml
+<POIs>
+   <POI code = "8A" Description = "Andorra">
+      <Services>
+         <Service type = "SkiPass" code = "F1"
+         description = "Forfait" durationType = "open"
+         quantity = "2" unit = "Day">
+         </Service>
+      </Services>
+   </POI>
+</POIs>
+```
+
+<p>In this case, quantity is applicable for the entire stay, i.e., the client can enjoy until 2 days of skipass in between the check in and check out.</p>
+
 </details>

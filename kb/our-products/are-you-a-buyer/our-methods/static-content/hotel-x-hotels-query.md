@@ -1,4 +1,5 @@
 ﻿---
+title: Hotels
 sidebar_position: 1
 ---
 

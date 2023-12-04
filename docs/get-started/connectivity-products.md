@@ -4,16 +4,16 @@ sidebar_position: 2
 
 # Connectivity products
 
-At TravelgateX, Partners can either be Buyers or Sellers. Depending on their role, they have the option to connect via a Pull or Push API or utilize our dedicated Apps for seamless integration.
+At Travelgate, Partners can either be Buyers or Sellers. Depending on their role, they have the option to connect via a Pull or Push API or utilize our dedicated Apps for seamless integration.
 
 ## API Connections
 
-TravelgateX provides two main types of API connectivity for Buyers and Sellers, Pull APIs and Push APIs.
+Travelgate provides two main types of API connectivity for Buyers and Sellers, Pull APIs and Push APIs.
 
 ### For Buyers
 
 * [Hotel-X Pull Buyers API](../apis/for-buyers/hotel-x-pull-buyers-api/quickstart.mdx) and
- [Legacy Pull Buyers API](../apis/for-buyers/legacy-pull-buyers-api/overview.mdx): Through Pull integration, Buyers send Availability requests to TravelgateX. Upon receiving the request, TravelgateX consults the Seller and gets an immediate response. This response also includes static data like Hotel Lists, Room Lists, etc., fetched from the Seller's API. Pull integrations emphasize real-time communication between Buyers and Sellers. They are relatively simple to develop but necessitate significant system resources due to potentially higher traffic, in contrast to Push integrations.
+ [Legacy Pull Buyers API](../apis/for-buyers/legacy-pull-buyers-api/overview.mdx): Through Pull integration, Buyers send Availability requests to Travelgate. Upon receiving the request, Travelgate consults the Seller and gets an immediate response. This response also includes static data like Hotel Lists, Room Lists, etc., fetched from the Seller's API. Pull integrations emphasize real-time communication between Buyers and Sellers. They are relatively simple to develop but necessitate significant system resources due to potentially higher traffic, in contrast to Push integrations.
 
 * [Channel-X Push Buyers API](../apis/for-buyers/channel-x-push-buyers-api/quickstart.mdx): Through Push integration, Buyers configure the Hotel Setup on our Inventory Extranet. Subsequently, the Seller pushes the availability and pricing data to our System. Channel-X extracts this data and sends it to the Buyer's system, allowing you to create and display price calendars and reducing network latency for availability searches. To enable bookings, it is essential to also develop the Pull API.
 
@@ -25,6 +25,6 @@ TravelgateX provides two main types of API connectivity for Buyers and Sellers, 
 
 ## APP Connections
 
-If an API isn't part of your tech stack, or you aren't integrated with any tech platform, worry not! TravelgateX has user-friendly APPs tailored for you.
+If an API isn't part of your tech stack, or you aren't integrated with any tech platform, worry not! Travelgate has user-friendly APPs tailored for you.
 
-* [Inventory](../apps/inventory/quickstart) + [Distribution](../apps/distribution/quickstart): This combined solution empowers Sellers to effortlessly market their products to an extensive array of TravelgateX Buyers. Sellers can straightforwardly establish their hotels on our Inventory Extranet and manually input data on availability and pricing. They also have the privilege of connecting with third-party vendors to broaden their product spectrum. Once everything's set up, Sellers can leverage our Distribution Extranet to engage with various Buyers and enforce bespoke business regulations. Although this mode of connectivity might demand more developmental and maintenance effort, it's a brilliant substitute for Sellers who don't have an API.
+* [Inventory](../apps/inventory/quickstart) + [Distribution](../apps/distribution/quickstart): This combined solution empowers Sellers to effortlessly market their products to an extensive array of Travelgate Buyers. Sellers can straightforwardly establish their hotels on our Inventory Extranet and manually input data on availability and pricing. They also have the privilege of connecting with third-party vendors to broaden their product spectrum. Once everything's set up, Sellers can leverage our Distribution Extranet to engage with various Buyers and enforce bespoke business regulations. Although this mode of connectivity might demand more developmental and maintenance effort, it's a brilliant substitute for Sellers who don't have an API.

@@ -1,4 +1,5 @@
 ﻿---
+title: Destinations
 sidebar_position: 2
 ---
 

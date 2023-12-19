@@ -49,7 +49,7 @@ export default function NavbarContent() {
   const items = useNavbarItems();
   const [leftItems, rightItems] = splitNavbarItems(items);
   const searchBarItem = items.find((item) => item.type === 'search');
-  const { loginWithRedirect } = useAuth0();
+  const { loginWithRedirect, isAuthenticated, logout } = useAuth0();
 
   return (
     <NavbarContentLayout
@@ -66,7 +66,15 @@ export default function NavbarContent() {
         // Ask the user to add the respective navbar items => more flexible
         <>
           <NavbarItems items={rightItems} />
-          <NavbarItem label={`Login`} position="right" to={`#!`} onClick={() => loginWithRedirect()} />
+            {isAuthenticated ? (
+                <NavbarItem label={`Logout`} position="right" to={`#!`} onClick={() => logout({
+                    logoutParams: {
+                        returnTo: window.location.origin
+                    }
+                })} />
+            ) : (
+                <NavbarItem label={`Login`} position="right" to={`#!`} onClick={() => loginWithRedirect()} />
+            )}
           {/*<NavbarColorModeToggle className={styles.colorModeToggle} />*/}
           {!searchBarItem && (
             <NavbarSearch>

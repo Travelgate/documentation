@@ -10,8 +10,8 @@ const Root = ({children}) => {
     const configuration = {
         domain: 'xtg.eu.auth0.com',
         clientID: 'z5bs7Yo5L5tZ18hU7aHskyQu7nutyagO',
-        // redirectUri: 'http://localhost:4200',
-        redirectUri: 'https://docs.travelgate.com',
+        redirectUri: 'http://localhost:4200',
+        //redirectUri: 'https://docs.travelgate.com',
         responseType: 'token id_token',
         scope: 'openid profile email picture name',
         responseMode: 'form_post',

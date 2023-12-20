@@ -118,6 +118,15 @@ added once the checkbox of "Taxes" is checked:
 * **Cancellation policy - Calendar:** This option will only appear once you have created your rate previously with base cancel policies. The cancellation policy by calendar allows you to create specific cancel policies by day or date range. You can click the `Add range` button to specify a date range and the cancel policies. This new cancel policies by day will override the base cancel policies specified at rate level. If you want to remove a cancel policy by date you can click the `Delete range` button and specify your dates. You can also delete or check the cancel policies by day clicking in the day's number of the month.
 * **Specific Clients:** If you want to inform that this rate is only for a list of specific clients check this option and add both Code (code that represent your client) and Description (normally the name of the client). You can add maximum 15 clients. The client codes have to be unique on the same rate.
 * **Amendments policy:** Informs if a Rate is modifiable and their fees if any is applied. When the checkbox `Amendments allowed` is checked, the rate allows modifications. If the modifications implies fees, they can be added through the `+` button to setup the rate amend fees. All you need to do is to indicate the days in advance before the arrival date, type (between amount and percent) and amount. If no fee is required, then you don't need to specify it. 
+* **BusinessRules:** The business rules explained below have the peculiarity that some parameters need to be added to the client's access to use this functionality correctly.
+The parameters that must be added are the following:
+    "DistributionTypeFilter":"B2C/B2B"
+    "BillingCompanyFilter": "one of the companies indicated in the initial listing"
+    "ClientFilter":"client1""client requesting availability"
+To be able to hot-change these parameters, you must use the [hotelX plugin](../apis/for-buyers/hotel-x-pull-buyers-api/plugins/add-parameter).
+    * **Billing Companies:** Informs the company with which this option is billed. In order to use this feature, billing companies must be pre-loaded into the travelgate system.
+    * **Selling Clients:** Inform which clients are included or excluded from this option. To use this function, you have to send us a file with a list of all the clients you work with. We preload these clients into the Travelgate system.
+    * **Distribution Type:** Select the type of distribution you work with for this option.
 
 :::note
 

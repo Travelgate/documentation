@@ -32,7 +32,7 @@ const GraphqlSample = ({token, query, variables}) => {
 
     useEffect(() => {
         if (variables) {
-            setParsedVariables(replaceClient(variables, localStorage.getItem('client') ?? 'client_demoX'));
+            setParsedVariables(replaceClient(variables, localStorage.getItem('client') ?? 'client_demo'));
         }
     }, [variables]);
 

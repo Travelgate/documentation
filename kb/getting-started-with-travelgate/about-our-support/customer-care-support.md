@@ -21,7 +21,6 @@ Nevertheless, we have established partnerships with numerous affiliates who spec
 	- "I would like to have the option to download more than 50 logs at once from our logs manager"
 	- API New Major Version release for an existing integration (e.g. v1.0 to v2.0).
 
-
 1. **Product Maintenance:** This encompasses any development efforts focused on ensuring the proper performance of an existing product and/or service. For example:
 	- Booking flow data discrepancy.
 	- Static data download error/discrepancy.

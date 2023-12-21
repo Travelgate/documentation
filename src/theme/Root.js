@@ -2,7 +2,29 @@ import React, {useEffect} from 'react';
 import 'graphiql/graphiql.css';
 import {Auth0Provider} from '@auth0/auth0-react';
 import useIsBrowser from "@docusaurus/useIsBrowser";
+import {ApolloProvider, ApolloClient, InMemoryCache, useQuery, gql, createHttpLink} from "@apollo/client";
+import {setContext} from "@apollo/client/link/context";
 
+const httpLink = createHttpLink({
+    uri: 'https://api.travelgatex.com/',
+});
+
+const authLink = setContext((_, { headers }) => {
+    // get the authentication token from local storage if it exists
+    const token = localStorage.getItem('token');
+    // return the headers to the context so httpLink can read them
+    return {
+        headers: {
+            ...headers,
+            authorization: token ? `Bearer ${token}` : "",
+        }
+    }
+});
+
+const client = new ApolloClient({
+    link: authLink.concat(httpLink),
+    cache: new InMemoryCache()
+});
 
 const Root = ({children}) => {
     const {isBrowser} = useIsBrowser();
@@ -10,8 +32,8 @@ const Root = ({children}) => {
     const configuration = {
         domain: 'xtg.eu.auth0.com',
         clientID: 'z5bs7Yo5L5tZ18hU7aHskyQu7nutyagO',
-        // redirectUri: 'http://localhost:4200',
-        redirectUri: 'https://animated-adventure-8k6mlky.pages.github.io',
+        //redirectUri: 'http://localhost:4200',
+        redirectUri: 'https://docs.travelgate.com',
         responseType: 'token id_token',
         scope: 'openid profile email picture name',
         responseMode: 'form_post',
@@ -37,7 +59,9 @@ const Root = ({children}) => {
                     cacheLocation: 'localstorage',
                 }}
             >
-                {children}
+                <ApolloProvider client={client}>
+                    {children}
+                </ApolloProvider>
             </Auth0Provider>
         </>
     );

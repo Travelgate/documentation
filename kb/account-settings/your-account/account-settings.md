@@ -14,6 +14,6 @@ In the 'Account Settings' section, you can configure and edit your personal user
 - Department
 - Password
 
-![account_settings_1](https://storage.travelgate.com/kbase/account_settings_1.jpg)
-
 Just adjust these fields to set up your customized user profile on TravelgateX!
+
+![account_settings_1](https://storage.travelgate.com/kbase/account_settings_1.jpg)

@@ -2,11 +2,11 @@
 sidebar_position: 1
 ---
 
-# Billing: View your agreements, control your usage, and check your invoices
+# Billing: View and Manage your Agreements
 
 ### How can access Billing? 🖱️
 
-1. Log onto [TravelgateX](https://www.travelgatex.com/), click on "Settings" and then select **"Billing"**.
+1. Log onto [TravelgateX](https://www.travelgatex.com/), click on "Settings" and then select "Billing".
 
 	![billing_access_1](https://storage.travelgate.com/kbase/billing_access_billing_1.jpg)
 1. Use the tabs provided in order to check your Agreements, Usage or Invoices.
@@ -25,7 +25,7 @@ sidebar_position: 1
 	1.  Pdf: Download the signed agreement in Pdf format (only available for Comm. Agreement 2023).
 	1. Change history: View the history of payment type changes (only available for Comm. Agreement 2023).
 
-:::note
+:::info
 Only **owner** and **admin** users have access to the complete menu.
 :::
 
@@ -39,12 +39,13 @@ It's possible that you and your Partner are currently splitting the cost of the 
 
 ![payment_change_5](https://storage.travelgate.com/kbase/billing_payment_change_5.jpg)
 
-1. Other modifications, such as switching from **Free to Standard** or **Standard to Supplement**, do not require Partner confirmation as the total cost of the connection is assumed. These changes can be processed automatically.
-1. Additionally, you will have access to the **historical record** of changes made in each agreement:
+Other modifications, such as switching from **Free to Standard** or **Standard to Supplement**, do not require Partner confirmation as the total cost of the connection is assumed. These changes can be processed automatically.
 
-	![historical_record](https://storage.travelgate.com/kbase/billing_historical_record_6.jpg)
+Additionally, you will have access to the **historical record** of changes made in each agreement:
 
-:::info Important:
+![historical_record](https://storage.travelgate.com/kbase/billing_historical_record_6.jpg)
+
+:::info
 - Keep in mind that your Partner needs to log in through their Profile to **accept the payment change request**. They will receive a notification in the bell-shaped icon located on the right side of the settings menu.
 - Any changes made to the payment type will apply to all reservations with an entry date starting from the first day of the following calendar month after the notification.
 - Remember, if you have an agreement 2023, you will have the option to **choose the Payment Type** during the [auto-activation process](/kb/connections/my-connections/auto-activations-process). If you are not familiar with this process, we also recommend taking a look at the following article [Important points when requesting a new connection](/kb/connections/my-connections/important-points-when-requesting-a-new-connection).

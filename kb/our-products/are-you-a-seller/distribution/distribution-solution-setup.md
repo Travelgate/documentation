@@ -54,8 +54,8 @@ Our mapping formats share a common structure, so you just need to follow the ins
 		- [Context Destination](/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/hotel-x-credentials): it corresponds to the supplier code
 		- 1 file for each Supplier
 	- **Header Row:** Code Source, Code Destination
-		- Context Source: it corresponds to your own codes
-		- Context Destination: it corresponds to the supplier codes
+		- Code Source: it corresponds to your own codes
+		- Code Destination: it corresponds to the supplier codes
 	- **Delimiter:** Comma (“,”)
 	- **Directory:** /F[folder code]_[unique code]/HotelX_[unique code]/Maps/[entity]/
 

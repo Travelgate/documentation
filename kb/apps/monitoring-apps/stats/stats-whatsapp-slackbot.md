@@ -2,7 +2,7 @@
 sidebar_position: 5
 ---
 
-# Stats: WhatsApp and Slack Bot (Beta)
+# WhatsApp and Slack Bot (Beta)
 
 Monitoring and improving your Business performance is absolutely essential. Here at TravelgateX, we completely understand this and we couldn't be more excited to introduce a fantastic new way for you to interact with our Platform. Now, accessing real-time connectivity performance data from our Stats APP is as easy as starting a conversation with our Bot on WhatsApp or Slack. No need to access the web page!
 

@@ -1,7 +1,7 @@
 export const hotelsListQuerySampleA = `
     query {
       hotelX {
-        hotels(criteria: {access: 7245}, relay: {}) {
+        hotels(criteria: {access: 7245}) {
           edges {
             node {
               hotelData {

@@ -5,46 +5,28 @@ sidebar_position: 2
 # All about price, commission and binding prices
 
 ### Overview: Price information in TravelgateX API response
-As quick intro, let’s consider that in each API Search response, we return the options available, detailing the following information, among other fields: 
-
+As quick introduction, let’s consider that in each API Search response, we return the options available, detailing the following information, among other fields: 
 ```
 "code": "5683",
-
 "description": "Double Suite Deluxe",
-
 "refundable": false,
-
 "roomPrice": {
-
-"price": {
-
-“currency” : “USD”,
-
-“binding” : true,
-
-“net” : 150
-
-“gross” : 170,
-
-“exchange” : {
-
-“currency” : “USD”,
-
-“rate” : 1
-
-},
-
-“minimumSellingPrice” : 160,
-
-“markups” : null
-
-}
-
+    "price": {
+        “currency” : “USD”,
+        “binding” : true,
+        “net” : 150
+        “gross” : 170,
+        “exchange” : {
+        “currency” : “USD”,
+        “rate” : 1
+        },
+    “minimumSellingPrice” : 160,
+    “markups” : null
+    }
 ```
 
-**What information will you receive in the "price" of an option?**  
+**What information can you receive in the "price" of an option?**  
 Every option has a price and every price indicates:
-
 1. Currency
 1. Amount (net and gross in [Hotel-X Pull Buyers API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart))
 1. Binding
@@ -54,8 +36,8 @@ Every option has a price and every price indicates:
 When a price is tagged as "binding", it means it’s mandatory to sell over the amount indicated, gross or Minimum Selling Price if informed. It’s also called as mandatory price or PVP in Spain. 
 
 **How does "binding" information work?**  
-- If **binding** is set as **true**: it means that the Buyer must sell the hotel at least at the price provided by the Seller, not less.
-- If **binding** is set as **false**: the Buyer can sell the product for a lower price than the one returned by them.
+- If binding is set as **true**: it means that the Buyer must sell the hotel at least at the price provided by the Seller, not less.
+- If binding is set as **false**: the Buyer can sell the product for a lower price than the one returned by them.
 ### How should I interpret the value in the field "minimumSellingPrice"?🔎
 **What does minimumSellingPrice (MSP) mean?**  
 The minimumSellingPrice (MSP) represents the *lowest price at which the Buyer can sell the Supplier's product* to their Customers. This feature was introduced in TravelgateX in 2022, as mentioned in the [implementation update](https://community.travelgatex.com/t/minor-update-notification-minimum-selling-price/2236). Previously, we relied on the binding tag to identify mandatory gross amounts that served as minimum selling prices.
@@ -71,14 +53,10 @@ This parameter holds significant value since it helps us determine the exact amo
 
 Taking our previous example from Search:
 ```
-“binding” : true
-
+“binding” : true,
 “net” : 150
-
 “gross” : 170,
-
 “currency” : “USD”,
-
 “minimumSellingPrice” : 160,
 ```
 In this case, we cannot sell lower than 160; and if we had no MSP field, we would need to inform gross as the binding minimum amount and will not be so competitive.
@@ -90,39 +68,27 @@ For instance:
 
 1. Hotel chain sells to a Bedbank with rates 10% commissionable:
     ```
-    “binding” : true
-
-    “net” : 180
-
+    “binding” : true,
+    “net” : 180,
     “gross” : 200,
-
     “currency” : “USD”,
-
-    “minimumSellingPrice” : 200
+    “minimumSellingPrice” : 200,
     ```
 2. Bedbank sells to a B2B wholesaler and applies 9% markup, selling with net rates:
     ```
-    “binding”: true
-
-    “net”: 196.2
-
-    “gross”: 196.2
-
+    “binding”: true,
+    “net”: 196.2,
+    “gross”: 196.2,
     “currency” : “USD”,
-
-    “minimumSellingPrice” : 200
+    “minimumSellingPrice” : 200,
     ```
 3. B2B wholesaler sells to an OTA with 3% markup and net rates:
     ```
-    “binding”: true
-
-    “net”: 202.08
-
-    “gross”: 202.08
-
+    “binding”: true,
+    “net”: 202.08,
+    “gross”: 202.08,
     “currency” : “USD”,
-
-    “minimumSellingPrice” : 200
+    “minimumSellingPrice” : 200,
     ```
 As you can see, we always provide and maintain the minimum selling price as a reference. However, when multiple parties sell the same product, it's possible for the gross price to exceed the MSP initially set by the hotel chain.
 
@@ -133,9 +99,9 @@ Since this field is relatively new, not all Sellers will have implemented this f
 
 **Minimum Selling Price values:**
 
-- **“minimumSellingPrice” = amount:** the lowest possible amount that can be sold commercially
-- **“minimumSellingPrice” = 0:** no minimum selling price is provided.
-- **“minimumSellingPrice” = -1:** we have no information about MSP from the Seller
+- “minimumSellingPrice” = amount: the lowest possible amount that can be sold commercially
+- “minimumSellingPrice” = 0: no minimum selling price is provided.
+- “minimumSellingPrice” = -1: we have no information about MSP from the Seller
 
 ### Should I ignore the binding field when using Minimum Selling Price?
 Since we are handling highly sensitive information that can have a significant impact on your business, we strongly recommend that you always make *proper use of both fields.*
@@ -147,23 +113,22 @@ Minimum Selling Price = Gross
 - If you receive **binding = false** and the Seller **does not return** the Minimum Selling Price (MSP):
 There is pricing freedom
 ### How should I interpret the value in the field "commission" in Hotel Buyers API (Legacy)?
-In Hotel-X, we provide both the "Net" and "Gross" prices for each rate to help with calculations. However, in our legacy API, we only provide the amount, commission, and binding information. For instance:
+In Hotel-X, we provide both the "Net" and "Gross" prices for each rate to help with calculations. However, in our Legacy Pull Buyers API, we only provide the amount, commission, and binding information. For instance:
 ```
 <Room id = "4145" roomCandidateRefId = "1" code = "DBL#STAND" description = "Doble Standard" nonRefundable = "false" numberOfUnits = "5">
 <Price currency = "EUR" amount = "36.20" binding = "false" commission = "-1"/>
 ```
-
 **Commission values:**
-- **Commission = 0:** the price returned is a net price.
-- **Commission = -1:** the Seller has not provided the Selling price nor the commission. In case it exists, commission has been agreed at a contractual level with the Seller and it is not traveling via TravelgateX. 
-- **Commission is greater than 0:** X = % of the commission that is applied to the amount.
+- Commission = 0: the price returned is a net price.
+- Commission = -1: the Seller has not provided the Selling price nor the commission. In case it exists, commission has been agreed at a contractual level with the Seller and it is not traveling via TravelgateX. 
+- Commission is greater than 0: X = % of the commission that is applied to the amount.
 
 **How can I check the commission amount in Hotel-X Buyers API?**  
-There is **no commission field in Hotel-X Pull Buyers API**, as we simplify the process by calculating net amount.If you need to know the specific amount deducted as commission, you just need to subtract the net from the gross amount: **Gross - net = commission**
+There is *no commission field in Hotel-X Pull Buyers API*, as we simplify the process by calculating net amount. If you need to know the specific amount deducted as commission, you just need to subtract the net from the gross amount: **Gross - net = commission**
 
  
 :::warning Important:
-Please, keep in mind that if you don't follow these rules, you may put at risk your commercial agreement with the Seller.
+Please keep in mind that if you don't follow these rules, you may put at risk your commercial agreement with the Seller.
 :::
 
  

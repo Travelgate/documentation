@@ -32,12 +32,12 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--lg"
             to="/docs/get-started/introduction">
-            Documentation <i class="fa-solid fa-chevron-right"></i>
+            Documentation <i className="fa-solid fa-chevron-right"></i>
           </Link>
           <Link
             className="button button--secondary button--lg margin-left--md button--outline"
             to="/kb">
-            Knowledge Base <i class="fa-solid fa-chevron-right"></i>
+            Knowledge Base <i className="fa-solid fa-chevron-right"></i>
           </Link>
         </div>
       </div>
@@ -68,27 +68,27 @@ export default function Home() {
             </div>
             <div className="row">
               <div className="col col--4">
-                <div class="item">
+                <div className="item">
                   <img src="https://storage.travelgate.com/docs/home_docs_browse_api_hotelx.svg" />
                   <h4>Hotel-X Pull Buyers API</h4>
                   <p>Hotel-X API allows you to get results from the largest network of Sellers in a single request. It enables access to static information, booking and reservation management.</p>
-                  <p><a href="/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart">Quickstart guide <i class="fa-solid fa-chevron-right"></i></a></p>
+                  <p><a href="/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart">Quickstart guide <i className="fa-solid fa-chevron-right"></i></a></p>
                 </div>
               </div>
               <div className="col col--4">
-                <div class="item">
+                <div className="item">
                   <img src="https://storage.travelgate.com/docs/home_docs_browse_channelx.svg" />
                   <h4>Channel-X Push Buyers API</h4>
                   <p>Channel-X API extracts products loaded into our Inventory tool and pushes them to the Buyer’s system. Note that to enable bookings, it is essential to also develop Hotel-X API.</p>
-                  <p><a href="/docs/apis/for-buyers/channel-x-push-buyers-api/quickstart">Quickstart guide <i class="fa-solid fa-chevron-right"></i></a></p>
+                  <p><a href="/docs/apis/for-buyers/channel-x-push-buyers-api/quickstart">Quickstart guide <i className="fa-solid fa-chevron-right"></i></a></p>
                 </div>
               </div>
               <div className="col col--4">
-                <div class="item">
+                <div className="item">
                   <img src="https://storage.travelgate.com/docs/home_docs_browse_hotelpush.svg" />
                   <h4>Hotel Push Sellers API</h4>
                   <p>By combining Inventory tool and the Hotel Push Sellers API, Sellers can push their products into Travelgate database, making them accessible to Buyers.</p>
-                  <p><a href="/docs/apis/for-sellers/hotel-push-sellers-api/quickstart">Quickstart guide <i class="fa-solid fa-chevron-right"></i></a></p>
+                  <p><a href="/docs/apis/for-sellers/hotel-push-sellers-api/quickstart">Quickstart guide <i className="fa-solid fa-chevron-right"></i></a></p>
                 </div>
               </div>
             </div>
@@ -105,19 +105,19 @@ export default function Home() {
             </div>
             <div className="row">
               <div className="col col--4">
-                <div class="item">
+                <div className="item">
                   <img src="https://storage.travelgate.com/docs/home_docs_browse_inventory.svg" />
                   <h4>Inventory</h4>
                   <p>In our Inventory extranet we will give you the tools to setup hotels, rates and rooms contracted with the hoteliers, allowing channel managers to push availability and prices.</p>
-                  <p><a href="/docs/apps/inventory/quickstart">Quickstart guide <i class="fa-solid fa-chevron-right"></i></a></p>
+                  <p><a href="/docs/apps/inventory/quickstart">Quickstart guide <i className="fa-solid fa-chevron-right"></i></a></p>
                 </div>
               </div>
               <div className="col col--4">
-                <div class="item">
+                <div className="item">
                   <img src="https://storage.travelgate.com/docs/home_docs_browse_distribution.svg" />
                   <h4>Distribution</h4>
                   <p>With Distribution you will be able to configure distribution rules to connect your B2B Buyers effortless and access all Sellers from our Marketplace.</p>
-                  <p><a href="/docs/apps/distribution/quickstart">Quickstart guide <i class="fa-solid fa-chevron-right"></i></a></p>
+                  <p><a href="/docs/apps/distribution/quickstart">Quickstart guide <i className="fa-solid fa-chevron-right"></i></a></p>
                 </div>
               </div>
             </div>
@@ -133,7 +133,7 @@ export default function Home() {
                 <Link
                   className="button button--secondary button--lg"
                   to="/kb">
-                  Knowledge Base <i class="fa-solid fa-chevron-right"></i>
+                  Knowledge Base <i className="fa-solid fa-chevron-right"></i>
                 </Link>
               </div>
               <img src="https://stplaformwe.blob.core.windows.net/docs/home_docs_hero_kb.svg" />
@@ -152,7 +152,7 @@ export default function Home() {
                   <img src="https://stplaformwe.blob.core.windows.net/docs/home_join_community_a.svg" />
                   <h6>Community</h6>
                   <p>Explore the latest feature releases and share your ideas and suggestions.</p>
-                  <p><a href="https://community.travelgatex.com/" target="_blank">More information <i class="fa-solid fa-chevron-right"></i></a></p>
+                  <p><a href="https://community.travelgatex.com/" target="_blank">More information <i className="fa-solid fa-chevron-right"></i></a></p>
                 </div>
               </div>
               <div className="col col--3">
@@ -160,7 +160,7 @@ export default function Home() {
                   <img src="https://stplaformwe.blob.core.windows.net/docs/home_join_community_b.svg" />
                   <h6>Status page</h6>
                   <p>Check the status of our services in real time.</p>
-                  <p><a href="https://status.travelgatex.com/" target="_blank">More information <i class="fa-solid fa-chevron-right"></i></a></p>
+                  <p><a href="https://status.travelgatex.com/" target="_blank">More information <i className="fa-solid fa-chevron-right"></i></a></p>
                 </div>
               </div>
               <div className="col col--3">
@@ -168,7 +168,7 @@ export default function Home() {
                   <img src="https://stplaformwe.blob.core.windows.net/docs/home_join_community_c.svg" />
                   <h6>Integrations Roadmap</h6>
                   <p>Take a look at Travelgate’s Seller API Development Roadmap.</p>
-                  <p><a href="https://docs.travelgatex.com/integrations-roadmap/" target="_blank">More information <i class="fa-solid fa-chevron-right"></i></a></p>
+                  <p><a href="https://docs.travelgatex.com/integrations-roadmap/" target="_blank">More information <i className="fa-solid fa-chevron-right"></i></a></p>
                 </div>
               </div>
             </div>

@@ -23,7 +23,7 @@ If you have any doubts about the timezone returned (for example, if TimeZone is 
 
     This field is not subjected to any ambiguity as it is a date in **UTC-0 Standard**. The conversion of the date is made according to the value specified on the Metadata TimeZone.
 
-    ![hotel_sellers_api_cancelpolicies2](https://storage.travelgate.com/kbase/hotel_sellers_api_cancelpolicies2.jpg)
+    ![deadline-format-updated](https://storage.travelgate.com/kbase/deadline-format-updated.jpg)
 
 - **CALCULATED DEADLINE:**  
     Finally, we have also added a "CalculatedDeadline" field to specify if the Deadline has been taken from the Seller’s response or if it has been calculated by TravelgateX.
@@ -32,7 +32,7 @@ If you have any doubts about the timezone returned (for example, if TimeZone is 
 
     ![hotel_sellers_api_cancelpolicies3](https://storage.travelgate.com/kbase/hotel_sellers_api_cancelpolicies3.jpg)
 
-:::info Why?
+:::info
 The limit in which a booking can be cancelled without penalty is specified on the field **HoursBefore**. This parameter informs about the maximum hours that could pass before the penalty starts to apply.
 
 Transparency is a fundamental value in our culture and as such we avoid modifying the information provided by our partners. For this reason, hoursBefore value from cancellationPolicies will be returned without adding extra hours.

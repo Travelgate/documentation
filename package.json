@@ -5,7 +5,7 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start --port=4200",
-    "build": "docusaurus build",
+    "build": "docusaurus build && cp CNAME build/CNAME",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
@@ -14,11 +14,13 @@
     "write-heading-ids": "docusaurus write-heading-ids"
   },
   "dependencies": {
+    "@apollo/client": "^3.8.8",
     "@auth0/auth0-react": "^2.2.1",
     "@cmfcmf/docusaurus-search-local": "^1.1.0",
     "@codemirror/lang-json": "^6.0.1",
     "@codemirror/lang-xml": "^6.0.2",
     "@docusaurus/core": "^2.4.3",
+    "@docusaurus/plugin-google-gtag": "^2.4.3",
     "@docusaurus/preset-classic": "^2.4.3",
     "@easyops-cn/docusaurus-search-local": "^0.36.0",
     "@fortawesome/fontawesome-svg-core": "^6.4.2",

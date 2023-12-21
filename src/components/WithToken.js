@@ -12,12 +12,11 @@ const withToken = (WrappedComponent) => {
         useEffect(() => {
             if (isAuthenticated) {
                 getIdTokenClaims().then(token => {
-                    console.debug(user, token);
                     setToken(token?.__raw)
                 });
             }
 
-        }, []);
+        }, [isAuthenticated]);
 
         // Merge the extraProps with the existing props
         const combinedProps = {

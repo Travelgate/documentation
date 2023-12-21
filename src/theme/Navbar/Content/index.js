@@ -54,7 +54,7 @@ function NavbarContentLayout({left, right}) {
 const LogoutAndName = () => {
     const { logout, getIdTokenClaims } = useAuth0();
     const [email, setEmail] = React.useState(null);
-    //const { data, loading, error } = useQuery(gql(allClientsListQuery));
+    const { data, loading, error } = useQuery(gql(allClientsListQuery));
 
     useEffect(() => {
         (async () => {
@@ -66,8 +66,13 @@ const LogoutAndName = () => {
                 console.error(e);
             }
         })();
-
     }, []);
+
+    useEffect(() => {
+        if (!loading && !error && data) {
+            localStorage.setItem('client', data?.admin?.allClients?.edges[0]?.node?.clientData?.name);
+        }
+    }, [loading, error, data]);
 
     return (
         <>

@@ -18,7 +18,7 @@ To get started, create your commission file in the correct format and then uploa
 📁F0  _0000  
 &nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX_0000  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁BusinessRules  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[BuyerContext_sequential_commission.csv](https://storage.travelgate.com/docs/BuyerContext_sequential_commission.csv)**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[RequestContext_sequential_commission.csv](https://storage.travelgate.com/docs/BuyerContext_sequential_commission.csv)**
 
 </BrowserWindow>
 ```
@@ -31,7 +31,7 @@ If you need assistance with requesting your credentials to access the FTP server
 
 ### File Format Specification
 
-* **File Name:** BuyerContext_sequential_commission.csv
+* **File Name:** RequestContext_sequential_commission.csv 
 * **Directory:** F0_0000/HotelX0000/BusinessRules
 * **Delimiter:** Comma (`,`)
 * **Header Row:**
@@ -62,6 +62,11 @@ If you need assistance with requesting your credentials to access the FTP server
       * **True:** The rule will be applied if matching all its conditions criteria, regardless of a commission being received or not from the supplier through the integration.
       * **False:** The rule will not be applied despite of matching all its conditions criteria if a commission is received from the supplier through the integration.
 
+:::info File Name
+"RequestContext" on the file name depends on the context you use in your query:
+* If you use your own Buyer context (multi mode search) you only need to load 1 file with your context in the name (BuyerContext_sequential_commission.csv).
+* If you use the Supplier context (single mode search) you will need to load 1 file for each supplier with the Supplier context in the name (SupplierContext_sequential_commission.csv).
+:::
 
 <details>
     <summary>📹Learn how to change the format of the csv file in order to edit and save it</summary>

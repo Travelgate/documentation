@@ -32,12 +32,13 @@ Every option has a price and every price indicates:
 1. Binding
 1. In the case of TravelgateX [Legacy Pull Buyers API](/docs/apis/for-buyers/legacy-pull-buyers-api/overview), we also provide the commission.
 1. Markup applied over the supplier price, whenever provided.
+1. Minimum Sellng Price (if specified by the Supplier).
 ### What is a Binding price?
 When a price is tagged as "binding", it means it’s mandatory to sell over the amount indicated, gross or Minimum Selling Price if informed. It’s also called as mandatory price or PVP in Spain. 
 
 **How does "binding" information work?**  
 - If binding is set as **true**: it means that the Buyer must sell the hotel at least at the price provided by the Seller, not less.
-- If binding is set as **false**: the Buyer can sell the product for a lower price than the one returned by them.
+- If binding is set as **false**: the Buyer can sell the product for a lower price than the one returned by the Seller.
 ### How should I interpret the value in the field "minimumSellingPrice"?🔎
 **What does minimumSellingPrice (MSP) mean?**  
 The minimumSellingPrice (MSP) represents the *lowest price at which the Buyer can sell the Supplier's product* to their Customers. This feature was introduced in TravelgateX in 2022, as mentioned in the [implementation update](https://community.travelgatex.com/t/minor-update-notification-minimum-selling-price/2236). Previously, we relied on the binding tag to identify mandatory gross amounts that served as minimum selling prices.
@@ -48,6 +49,10 @@ MSP field informs the *amount to be set as mandatory price* and allows Buyers to
 - **Gross price:** gross amount to be subject to commission subtracting.
 - **Net price:** net amount with no commission included, amount payable to the Seller.
 - **Minimum Selling Price:** lowest price allowed to be marked up by the Buyer when selling to their own Customers.  
+
+Every time a supplier confirms that they will return a 'MinimumSellingPrice' in their response, we will take that 'MinimumSellingPrice' and display it in our own 'MinimumSellingPrice' node. Additionally, we will return 'Binding=true'*
+
+_*This may not apply to some instances for Legacy API users who have not implemented the MinimumSellingPrice (MSP). Remember to implement the MSP to ensure that you are able to read this information on your side._
 
 This parameter holds significant value since it helps us determine the exact amount we should use as a *reference for pricing*. Before, we could only use the gross amount as the minimum price and couldn't take other factors into account. But now, with this parameter, we have the awesome opportunity to set prices based on the exact amount needed to be competitive. It's a game-changer for making sure our prices are accurate and give us an edge in the market.  
 
@@ -60,6 +65,10 @@ Taking our previous example from Search:
 “minimumSellingPrice” : 160,
 ```
 In this case, we cannot sell lower than 160; and if we had no MSP field, we would need to inform gross as the binding minimum amount and will not be so competitive.
+
+In regards to **Net and Gross Prices**: If a supplier returns distinct 'net' and 'gross' nodes from their end, we will return those values in the same manner. However, if they return only a single 'totalprice' node in addition to the Minimum Selling Price, we will inquire whether this 'total' represents a gross amount or a net amount to ensure accurate values are returned in both the 'net' and 'gross' nodes.
+
+Should a supplier not provide a Minimum Selling Price, we will query whether we must designate any of the prices returned in their response as the Minimum Selling Price, for example, MSP = net or MSP = gross (or any specific treatment they request). If they confirm that no Minimum Selling Price needs to be set, we will process the net, gross or both accordingly, and the binding will default to 'false' unless the Supplier indicates otherwise in a specific node of their response.
 
 ### Could a Minimum Selling Price be lower than the gross amount? 
 It's not something that happens often, but it's important to be aware that *it can occur*. When reselling hotel products, the final price is determined by the business rules agreed upon by all parties involved. So, if the Minimum Selling Price (MSP) is communicated and followed, a wholesaler might sell to a B2B Partner at a rate higher than the MSP in order to apply a larger markup. This strategy can still lead to sales due to is a high demand for the product.
@@ -101,16 +110,16 @@ Since this field is relatively new, not all Sellers will have implemented this f
 
 - “minimumSellingPrice” = amount: the lowest possible amount that can be sold commercially
 - “minimumSellingPrice” = 0: no minimum selling price is provided.
-- “minimumSellingPrice” = -1: we have no information about MSP from the Seller
+- “minimumSellingPrice” = -1: we have no information about MSP from the Seller (only applicable to  Legacy Pull Buyers API).
 
 ### Should I ignore the binding field when using Minimum Selling Price?
 Since we are handling highly sensitive information that can have a significant impact on your business, we strongly recommend that you always make *proper use of both fields.*
 - **Binding field:** used in order to determine whether the amount is mandatory or not.
 - **Minimum Selling Price field:** used in order to build your prices based on price restrictions and competitiveness.
 ### What should I do if I haven't implemented the Minimum Selling Price yet as a Buyer and I receive NET=Gross?
-- If you receive **binding = true** and the Seller **returns** the Minimum Selling Price (MSP):
+- If you receive **binding = true** and the Seller *returns* the Minimum Selling Price (MSP):
 Minimum Selling Price = Gross
-- If you receive **binding = false** and the Seller **does not return** the Minimum Selling Price (MSP):
+- If you receive **binding = false** and the Seller *does not return* the Minimum Selling Price (MSP):
 There is pricing freedom
 ### How should I interpret the value in the field "commission" in Hotel Buyers API (Legacy)?
 In Hotel-X, we provide both the "Net" and "Gross" prices for each rate to help with calculations. However, in our Legacy Pull Buyers API, we only provide the amount, commission, and binding information. For instance:

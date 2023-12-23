@@ -77,8 +77,9 @@ Don't forget to check our [API Documentation](/docs/apis/for-buyers/hotel-x-pull
  
 ### List of VCC Suppliers📑
 - Amadeus Virtual Account
-- Ixaris
-- eNett
+- Ixaris (IXA)
+- Ixaris - Voxel (VIXA)
+- eNett (NET)
 - WEX
 
 <TipContactCustomerCare/>

@@ -49,21 +49,22 @@ Our mapping formats share a common structure, so you just need to follow the ins
 
 
 - **Hotel-X Mapping Files format:** You should follow the below [format](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping) when generating the mapping files:
-	- **File Name:** [Context Source]_[Context Destination]_[entity]_map.csv
-		- [Context Source](/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/hotel-x-credentials): it corresponds to your own codes
-		- [Context Destination](/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/hotel-x-credentials): it corresponds to the supplier code
+	- **File Name:** BuyerContext_SupplierContext_entity_map.csv
+		- [BuyerContext](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping/): it corresponds to your own codes.
+		- [SupplierContext](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping/): it corresponds to the Supplier codes.
+		- [Entity](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping/): the field to be mapped (hotel, board, room, etc.).
 		- 1 file for each Supplier
-	- **Header Row:** Code Source, Code Destination
-		- Code Source: it corresponds to your own codes
-		- Code Destination: it corresponds to the supplier codes
+	- **Header Row:**
+		- Buyer Context: Buyer's context code
+		- Supplier Context: Supplier's (Seller's) context code. This code can be found in the My Connections section on the TravelgateX website.
 	- **Delimiter:** Comma (“,”)
-	- **Directory:** /F[folder code]_[unique code]/HotelX_[unique code]/Maps/[entity]/
+	- **Directory:** /F0_0000/HotelX_0000/Maps/[entity]
 
 File names:
 
-- Hotel Map: [Context Source]_[Context Destination]_hotel_map.csv
-- Board Map: [Context Source]_[Context Destination]_board_map.csv
-- Room Map: [Context Source]_[Context Destination]_room_map.csv 
+- Hotel Map: BuyerContext_SupplierContext_hotel_map.csv
+- Board Map: BuyerContext_SupplierContext_board_map.csv
+- Room Map: BuyerContext_SupplierContext_room_map.csv 
 
 **Master files definition**  
 With the Master files, you can easily customize the Static Content that your Buyers will download when they connect to you. This includes your own codes for hotels, rooms, boards, and more.

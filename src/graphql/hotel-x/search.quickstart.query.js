@@ -139,6 +139,7 @@ export const searchQuickStartQuery =
 					code
 					chargeType
 					description
+					mandatory
 					price {
 						currency
 						binding

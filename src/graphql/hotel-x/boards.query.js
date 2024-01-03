@@ -1,7 +1,7 @@
 export const boardsQuery = 
-`query ($criteria: HotelXBoardQueryInput!, $relay: RelayInput!) {
+`query ($criteria: HotelXBoardQueryInput!) {
 	hotelX {
-		boards(criteria: $criteria, relay: $relay) {
+		boards(criteria: $criteria) {
 			edges {
 				node {
 					createdAt

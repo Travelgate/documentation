@@ -140,6 +140,7 @@ export const searchMultipleHotelsQuery =
 					code
 					chargeType
 					description
+					mandatory
 					price {
 						currency
 						binding

@@ -80,7 +80,7 @@ To specify your search criteria you need to use the input `HotelCriteriaSearchIn
 * `checkIn` (yyyy-mm-dd)
 * `checkOut` (yyyy-mm-dd)
 * `hotels` (We recommend a maximum of 200 hotel codes per request.)
-* `destinations`
+* `destinations` (Only if you use the [Search by destination plugin](../plugins/search-by-destination) and you don't use the `hotels` field.)
 * `occupancies` (For multi-room bookings, this array will contain multiple elements, each representing a room, and you'll need to provide occupancy details for each requested room.)
 
 **Optional criteria:**
@@ -111,7 +111,6 @@ To specify your settings you need to use the input `HotelSettingsInput` in your 
 * `client`
 * `context` (You have the flexibility to choose between using the supplier's context or your own, depending on which hotel codes you want to use in the query input. If you choose to search for different suppliers using the same query, you must use your own context code and mapping functionality.)
 * `timeout` (Timeout in milliseconds for supplier connections. Applied to all suppliers; won't close client connection if exceeded.)
-* `businessRules`
 
 **Optional Settings:**
 * `group`
@@ -119,6 +118,7 @@ To specify your settings you need to use the input `HotelSettingsInput` in your 
 * `suppliers` (Each one contains its own code, settings and accesses.)
 * `plugins`
 * `testMode` (This flag allows only the accesses checked as test.)
+* `businessRules`
 * `clientTokens` (Used to identify the origin of the request, this is only used with some [plugins](../plugins/overview).)
 
 :::tip Key Recommendations

@@ -10,7 +10,7 @@ export default function FooterLayout({style, links, logo, copyright}) {
         <div className="row">
           <div className="col col--3">
             <img src="https://storage.travelgate.com/assets/logo_tgx_negative.svg" className="logo" />
-            <p className="copyright">© 2023 Travelgate</p>
+            <p className="copyright">© {(new Date()).getFullYear()} Travelgate</p>
           </div>
           <div className="col col--3">
             <h6>Company</h6>

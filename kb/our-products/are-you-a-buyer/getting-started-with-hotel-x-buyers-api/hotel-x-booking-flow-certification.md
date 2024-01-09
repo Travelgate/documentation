@@ -72,3 +72,8 @@ You can also activate any Seller you have an agreement with, even their producti
 ### How to apply for the Hotel-X Booking Flow certification 
 After completing all the cases, you must submit a ticket through the Booking Flow step certification in our Connectivity setup panel.
 ![hotelx_booking_flow_certification_last](https://storage.travelgate.com/kbase/hotelx_booking_flow_certification_last.jpg)
+
+:::warning important
+To ensure seamless billing, **it's important that you handle all cancellations via our API**.  
+Should you face any issues, please don't hesitate to get in touch with our [Customer Care team](https://app.travelgatex.com/tickets) for assistance. Additionally, please make sure to cancel any test bookings with Sellers and to check that such bookings are refundable.
+:::

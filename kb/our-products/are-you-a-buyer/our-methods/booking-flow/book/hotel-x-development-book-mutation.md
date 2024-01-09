@@ -21,6 +21,11 @@ The information returned in Book response may vary between Sellers, so please ch
 - Holder
 - Hotel
 
+:::warning important
+To ensure seamless billing, **it's important that you handle all cancellations via our API**.  
+Should you face any issues, please don't hesitate to get in touch with our [Customer Care team](https://app.travelgatex.com/tickets) for assistance. Additionally, please make sure to cancel any test bookings with Sellers and to check that such bookings are refundable.
+:::
+
 ### What is the DeltaPrice? Why should I use it?💡
 
 The [Delta Price](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/book) indicates the price variation permitted by the Buyer (amount or percentage), so that an error will be returned if the new price does not abide to DeltaPrice. If DeltaPrice is not sent and the integration implements it, we assume that the price range is 0 and the process will continue (price is lower or equal to the price returned in Quote).

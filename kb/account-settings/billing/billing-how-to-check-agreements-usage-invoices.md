@@ -12,6 +12,12 @@ sidebar_position: 1
 1. Use the tabs provided in order to check your Agreements, Usage or Invoices.
 
 	![billing_settings_2](https://storage.travelgate.com/kbase/billing_settings_2.jpg)
+
+:::warning important
+To ensure seamless billing, **it's important that you handle all cancellations via our API**.  
+Should you face any issues, please don't hesitate to get in touch with our [Customer Care team](https://app.travelgatex.com/tickets) for assistance. Additionally, please make sure to cancel any test bookings with Sellers and to check that such bookings are refundable.
+:::
+
 ### How can I manage my agreements? 📑
 
 1. Click on the "Agreements" (first tab).

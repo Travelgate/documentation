@@ -38,6 +38,11 @@ Depending on the specifications provided by a Seller, cancellation costs can be 
 - **PERCENT:** It indicates the percentage to pay based on the option price (possible values between 0 and 100).
 - **IMPORT:** It Indicates the exact amount payable.
 
+:::warning important
+To ensure seamless billing, **it's important that you handle all cancellations via our API**.  
+Should you face any issues, please don't hesitate to get in touch with our [Customer Care team](https://app.travelgatex.com/tickets) for assistance. Additionally, please make sure to cancel any test bookings with Sellers and to check that such bookings are refundable.
+:::
+
 ### Can I apply any filters to my Hotel-X Cancel Mutation?💡
 Unfortunately, there are no filters in the Cancel Mutation.
 

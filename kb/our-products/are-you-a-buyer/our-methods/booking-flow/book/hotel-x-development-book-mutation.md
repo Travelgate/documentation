@@ -55,6 +55,9 @@ The currency used for the transaction will remain the same throughout the entire
 ### Do I have to provide real names and ages for all the passengers?
 No, you are not required to provide real ages and names for all passengers. You can use default values for each age group and name. The only information that should be real is the holder's information.
 
+### How can I add remarks to a Book request?
+Remarks are comments from the customer for the Seller to take into account. They can be included in the Book request (details can be found in our [Hotel-X Schema](https://api.travelgatex.com/playground)) provided that the Supplier allows for remarks in their reservations - you can check their [Metadata](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-metadata-query) for further information.
+
 ### How do I define the total number of rooms in my Book request?
 To define the number of rooms in your reservation, you need to utilize the occupancyRefId previously returned in Search response.
 For instance, for a room of two adults:

@@ -11,13 +11,13 @@ In order to add new users simply follow the steps below:
 1. Click on Settings
 1. Click on Users Management: Here you will be able to visualize the list of users linked to your Organization.
 
-	![add_users_management](https://storage.travelgate.com/kbase/add_users_users_management.jpg)
+	![settings-menu](https://storage.travelgate.com/kbase/settings-menu.jpg)
 
-1. Click on "Create user" and fill in the information requested in the form. Please note that only **Owner and Admin** members can add users to an Organization.
+1. Click on "Invite a User" and fill in the information requested in the form. Please note that only **Owner and Admin** members can invite users to an Organization.
 
-	![create_new_user_1](https://storage.travelgate.com/kbase/add_users_create_new_user_1.jpg)
+	![invite-user-1](https://storage.travelgate.com/kbase/invite-user-1.jpg)
 
-	![create_new_user_2](https://storage.travelgate.com/kbase/add_users_create_new_user_2.jpg)
+	![invite-user-2](https://storage.travelgate.com/kbase/invite-user-2.jpg)
 
 	:::info User roles:
 	- **Admin**: User with complete permissions.

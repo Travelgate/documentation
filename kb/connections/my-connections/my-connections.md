@@ -14,7 +14,7 @@ To check, activate, and keep track of your connections via TravelgateX, simply f
 
 2. Click on Connections>**My Connections**:
 
-	![my_connections_1](https://storage.travelgate.com/kbase/my_connections_1.jpg)
+	![mmy_connections-1](https://storage.travelgate.com/kbase/my_connections-1.jpg)
 
 ### What can I find in My Connections?🔎
 In [My Connections](https://app.travelgatex.com/connections/myconnections) section you will find a list of all your connections. You may filter your accesses based on their status, type, and whether they are active or not.

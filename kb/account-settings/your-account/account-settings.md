@@ -10,10 +10,10 @@ In the 'Account Settings' section, you can configure and edit your personal user
 - First name
 - Last name
 - Email
-- Job title
-- Department
 - Password
+- Job title
+- Department area
 
 Just adjust these fields to set up your customized user profile on TravelgateX!
 
-![account_settings_1](https://storage.travelgate.com/kbase/account_settings_1.jpg)
+![settings-your-account](https://storage.travelgate.com/kbase/settings-your-account.jpg)

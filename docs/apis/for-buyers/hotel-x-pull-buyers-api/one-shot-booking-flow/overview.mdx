@@ -5,21 +5,21 @@ sidebar_position: 1
 # Overview
 
 
-If you're a Buyer using our [Channel-X Push Buyers API](../../channel-x-push-buyers-api/quickstart), it means you already have the availability information of hotels offered by your suppliers in your own system.
+If you're a Buyer using our [Channel-X Push Buyers API](/docs/apis/for-buyers/channel-x-push-buyers-api/quickstart), it means you already have the availability information of hotels offered by your suppliers in your own system.
 
 To complete a booking for one of these options, you need to be connected to TravelgateX using our Hotel-X Pull Buyers API. If you're already connected through the standard booking flow (search, quote, and book), you can continue using it. However, we recommend using some special calls that will avoid extra requests and streamline the flow in your system.
 
 For this purpose, we've introduced the 'oneStepQuote' and 'oneStepBook' methods, allowing you to simplify your booking flow. Depending on your business behavior, you can use either call:
 
 1. **Direct Booking:**
-   If you want to directly book an option available in your system, use the `oneStepBook` mutation. Provide all the option details (rate, room, board, price), and we will handle the standard booking flow internally. This means with just one mutation from your end, we'll internally perform the search, quote, and book processes to ensure the option is still available and directly attempt to confirm it. We'll only confirm the option if the price matches or is lower than the one specified in the input.
+   If you want to directly book an option available in your system, use the `oneStepBook` mutation. Provide all the option details (rate, room, board, price), and we will handle the standard booking flow internally. This means with just one mutation from your end, we'll internally perform the search, quote, and book processes to ensure the option is still available and directly attempt to confirm it. We will only confirm the option if it matches the conditions you specified and if the price is either the same or lower than the one you provided in the input.
 
 2. **Quote and Confirm:**
-   If you prefer to first get a quote to evaluate your option and receive updated conditions, use the `oneStepQuote` query. With this query, we internally perform a search and a quote, returning the updated details of the option, such as price and cancellation policies. To confirm the option, then perform a standard [book mutation](../booking-flow/book) with the optionID we provide in the 'oneStepQuote'.
+   If you prefer to first get a quote to evaluate your option and receive updated conditions, use the `oneStepQuote` query. With this query, we internally perform a search and a quote, returning the updated details of the option, such as price and cancellation policies. To confirm the option, then perform a standard [book mutation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/book) with the optionID we provide in the 'oneStepQuote'.
 
 :::note
 
-To cancel or check the booking status, you can review the various operations in the [Booking Management section](../booking-management/overview).
+To cancel or check the booking status, you can review the various operations in the [Booking Management section](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/overview).
 
 :::
 

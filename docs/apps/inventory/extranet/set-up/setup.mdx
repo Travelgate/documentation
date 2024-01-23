@@ -39,7 +39,7 @@ To add a new hotel in your configuration you should click the `Add Hotel` button
 
 ![Inventory SetUp](https://storage.travelgate.com/docs/inventory_setup3.png)
 
-* **Hotel name:** This autocomplete field makes suggestions while you are typing the hotel’s name. Inventory's system works with a master hotel database where we store all the basic information of the hotels setup by our Partners . If the hotel you require is not available in the autocomplete field you can create it yourself by clicking  the `Create Hotel` button. Notice that if the hotel you want to add has already been added to this client-channel relation, it will not appear as a suggestion in the autocomplete field.
+* **Hotel Name:** This autocomplete field makes suggestions while you are typing the hotel’s name. Inventory's system works with a master hotel database where we store all the basic information of the hotels setup by our Partners . If the hotel you require is not available in the autocomplete field you can create it yourself by clicking  the `Create Hotel` button. Notice that the hotel you want to add will only appear as a suggestion in the autocomplete field if it the hotel is not already added to this client-channel relation and it has assigned the correspondent `Context`. 
 
 * **Hotel Email:** Hotel email configurated in Inventory's system. This is the email address that will be used to notify the hotel when a booking or cancellation is made. If you don't want our system to send this notification to the hotel, you can uncheck the checkbox `Notify Booking`.
 
@@ -61,15 +61,36 @@ It is possible to add your logo to this email. To implement this functionality, 
 
 ### How to create a new hotel
 
-If you cannotfind the hotel you want to add in the autocomplete field you'll be given the option to create this hotel in our DataBase by clicking the button `Create Hotel`. You will need to indicate the **hotel's** basic information in the following form: 
+If you cannot find the hotel you want to add in the autocomplete field you'll be given the option to create this hotel in our DataBase by clicking the button `Create Hotel`. You will need to indicate the **hotel's** basic information in the following form: 
 
-![Inventory SetUp](https://storage.travelgate.com/docs/inventory_setup5.png)
+![Inventory SetUp empty form](https://storage.travelgate.com/docs/inventory_setup5.png)
+
+The information needed to create a hotel is listed below:
+
+* **Name:** Hotel name.
+* **Category:** Hotel category.
+* **Code:**  (Optional) Provider/Channel Manager Hotel Code. Only required if channel manager works with their own hotel codes, otherwise leave this field empty. It needs to be unique per `Context`.
+* **Context:** (Optional) Provider/Channel Manager that has the hotel. A hotel will only have a specific Context if `Code` has been specified.
+* **eMail:** Hotel contact eMail address.
+* **Telephone:** Hotel contact telephone number.
+* **ZIP code:** Hotel postal code.
+* **Address:** Hotel location.
+* **Country:** Country where hotel is located.
+* **Locality:** Area where the hotel is located.
+* **Latitude:** Hotel exact latitude.
+* **Longitude:** Hotel exact longitude.
+
+![Inventory SetUp filled form](https://storage.travelgate.com/docs/inventory_code.png)
 
 :::note
 
-Please complete the form using the hotel's actual information. It's mandatory that the email and telephone are those of the hotel and not from the supplier. Coordinates should be as accurate as possible. This feature is available for client and provider administrator users.
+Please complete the form using the hotel's actual information. It's mandatory that the email and telephone are those of the hotel and not from the Channel Manager.  
+Bear in mind that a specific `Context` cannot have duplicate hotel codes.
+
+This feature is available for client and provider administrator users.
 
 :::
+
 
 ## Rate
 

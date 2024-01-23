@@ -42,16 +42,27 @@ To get started, create your credit card file in the correct format and then uplo
 * **Delimiter:** Comma (`,`)
 * **Header Row:**
     * **IdRule:** Rule’s identifier
-    * **ClientToken:** List of ClientTokens allowed for this rule
-    * **NoClientToken:** List of ClientTokens not allowed for this rule
-    * **Supplier:** List of hotel Suppliers allowed for this rule
-    * **NoSupplier:** List of hotel Suppliers not allowed for this rule
+    * **ClientToken:** List of clientTokens allowed for this rule
+    * **NoClientToken:** List of clientTokens not allowed for this rule
+    * **Supplier:** List of hotel suppliers allowed for this rule
+    * **NoSupplier:** List of hotel suppliers not allowed for this rule
     * **Hotels:** List of hotels for this rule which codes are in Context_Source context
     * **NotHotels:** List of hotels not allowed for this rule which codes are in Context_Source context
-    * **Access:** Access that will be selected if this rule is matched to generate/cancel card
-    * **NoAccess**
-    * **CardType:** CardType that will be used to generate the virtual credit card
-    * **VccAccess**
+    * **Access:** List of accesses allowed for this rule
+    * **NoAccess** List of accesses not allowed for this rule
+    * **Currencies:** List of currencies allowed for this rule
+    * **NoCurrencies** List of currencies not allowed for this rule
+    * **CardType:** The CardType to be utilized for generating the virtual credit card
+    * **VccAccess** Payment access used to generate the virtual credit card with the VCC supplier
+
+
+:::note
+
+All lists are represented as a unique string separated by semicolons (';'). Each element within a list is a distinct value relevant to the specific criterion. For instance, a list of permissible currencies may include multiple currency codes, and each currency code is separated by a semicolon within the string representation.
+Example: 
+    Currency list => "EUR;USD;MXN" 
+
+:::
 
 <details>
     <summary>List of available card types</summary>

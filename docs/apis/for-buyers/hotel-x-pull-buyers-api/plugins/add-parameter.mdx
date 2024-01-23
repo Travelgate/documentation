@@ -20,10 +20,10 @@ To use the plugin add the following field to the `settings` node of your request
 * **`type`**: "PRE_STEP"
 * **`name`**: "add_parameterX"
 * **`parameters`**:
-	* **`key`**: "JSONConfiguration"
-	* **`value`**: JSON structure with parameters that you add by access, supplier or parameter.
+	* **`key`**: "parameter_name"
+	* **`value`**: "paramenter_value"
 
-For example, for the supplier "HOTELTEST" you add the parameter with key "D" and value "4".
+For example, for a specific search request you need to send an extra parameter "client" with the value "TEST".
 
 ```json
 {
@@ -37,8 +37,8 @@ For example, for the supplier "HOTELTEST" you add the parameter with key "D" and
                         "type" : "POST_STEP",
                         "parameters" : [
                             {
-                                "key" : "JSONConfiguration",
-                                "value" : "{ \"suppliers\": [{ \"codes\": [\"HOTELTEST\"], \"parameters\": [{ \"key\": \"D\", \"value\": \"4\" }] }] }"
+                                "key" : "client",
+                                "value" : "TEST"
                             }
                         ]
                     }

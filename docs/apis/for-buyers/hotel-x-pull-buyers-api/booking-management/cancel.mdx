@@ -45,7 +45,7 @@ To specify your cancel input you need to use the input `HotelCancelInput` in you
 
 If you decide to cancel using only the `bookingID` from the booking response, here's how you should structure your input:
 
-```json
+```js
 {
     "input" : {
         "bookingID" : "1@1[241028[241029[230918[1[es[EUR[2[test_0123456789[2596391"
@@ -55,7 +55,7 @@ If you decide to cancel using only the `bookingID` from the booking response, he
 
 On the other hand, if you prefer to cancel using the `accessCode`, `hotelCode`, and `reference` from the booking response, here's the format you should follow:
 
-```json
+```js
 {
     "input" : {
         "accessCode" : "2",
@@ -87,7 +87,7 @@ Settings are the common configurations used to construct requests to the supplie
 
 To specify your cancel settings you need to use the input `HotelSettingsInput` in your mutation variables:
 
-```json
+```js
 {
 	"settings": {
 		"client": "client_demo",
@@ -166,7 +166,10 @@ Cancellation always takes into account the day and time of the destination in or
 <details>
     <summary>How are cancellation costs calculated and displayed?</summary>
     <div>
-        <div>Depending on the specifications provided by a Seller, cancellation costs can be calculated using three different penalty types. It is important to keep in mind that a booking may have more than one penalty type associated with it.
+        <div>
+            Depending on the specifications provided by a Seller, cancellation costs can be calculated using three
+            different penalty types. It is important to keep in mind that a booking may have more than one penalty type
+            associated with it.
 		   <ul>
 				<li>NIGHTS: It indicates the number of nights to be penalized.</li>
 				<li>PERCENT: It indicates the percentage to pay based on the option price (possible values between 0 and 100).</li>

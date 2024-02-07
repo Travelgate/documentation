@@ -47,7 +47,7 @@ The search query offers versatility in search options, with certain fields marke
 
 To specify your search criteria you need to use the input `HotelCriteriaSearchInput` in your query variables:
 
-```json
+```js
 {
 	"criteriaSearch": {
 		"checkIn": "2024-10-28",
@@ -95,7 +95,7 @@ Settings are the common configurations used to construct requests to the supplie
 
 To specify your settings you need to use the input `HotelSettingsInput` in your query variables:
 
-```json
+```js
 {
 	"settings": {
 		"client": "client_demo",
@@ -150,7 +150,7 @@ To specify your filters you need to use the input `HotelXFilterSearchInput` in y
 * `access`: By using the access filter, our system will exclusively include or exclude options from the selected accesses. If you choose not to set any access at all, requests will be made to all available accesses.
 
 
-```json
+```js
 {
     "filterSearch": {
 		"access": {
@@ -221,7 +221,7 @@ Some Sellers may not include cancellation policies in their availability data. Y
 
 <p>When running your Search, you should add the Seller's access code you would like to query.</p>
 
-```json
+```js
 "filterSearch": {
     "access": {
         "includes": ["2"]
@@ -230,8 +230,11 @@ Some Sellers may not include cancellation policies in their availability data. Y
 ```
 
 <b>Multimode search</b>
-<p>The multimode query allows our Partners to search multiple Sellers at the same time in just one request. To search in multimode, start by uploading your <a href="../plugins/mapping">hotel mapping files</a> to your FTP. 
-Once the files are processed, you'll have the ability to search multiple Sellers simultaneously by using your own context and hotel codes.
+<p>
+    The multimode query allows our Partners to search multiple Sellers at the same time in just one request. To search
+    in multimode, start by uploading your <a href="../plugins/mapping">hotel mapping files</a> to your FTP. Once the
+    files are processed, you'll have the ability to search multiple Sellers simultaneously by using your own context
+    and hotel codes.
 </p>
 
 ![Hotel-X Shopping Flow](https://storage.travelgate.com/docs/hotel-x_multi_mode.svg)
@@ -240,7 +243,7 @@ Once the files are processed, you'll have the ability to search multiple Sellers
     <b>1. Specifying the access codes in the filter node in your variables:</b> the query will only be sent to the accesses specified.
 </p>
 
-```json
+```js
 "filterSearch": {
     "access": {
         "includes": ["2", "3"]
@@ -276,10 +279,16 @@ Once the files are processed, you'll have the ability to search multiple Sellers
     <div>
         <div>
             <ul>
-                <li><b>optionsQuota, how to limit the number of options in SearchRS:</b> Thanks to the optionsQuota tag, you are able to control and limit the number of options per Mealplan returned in SearchRS in those cases the Seller allows business rules (<i>you will be able to check this information through our Metadata Query</i>). 
-                Note that we have established a system-level limit so that if the OptionsQuota set on your side is higher than the limit established, we will use the one with the lowest value.</li>
+                <li>
+                    <b>optionsQuota, how to limit the number of options in SearchRS:</b> Thanks to the optionsQuota tag,
+                    you are able to control and limit the number of options per Mealplan returned in SearchRS in those
+                    cases the Seller allows business rules (<i>you will be able to check this information through our Metadata Query</i>).
+                    Note that we have established a system-level limit so that if the OptionsQuota set on your side is higher than the
+                    limit established, we will use the one with the lowest value.
+                </li>
                 <br></br>
-                <li><b>businessRulesType, how to filter options through Business Rules:</b> These are the 2 types of businessRules that may be applied.
+                <li>
+                    <b>businessRulesType, how to filter options through Business Rules:</b> These are the 2 types of businessRules that may be applied.
                     <ul>
                         <li>CHEAPER_AMOUNT: The cheapest options are returned without exceeding the optionsQuota limit.</li>
                         <li>ROOM_TYPE: It groups the options by room type without exceeding the optionsQuota limit.</li>

@@ -12,7 +12,7 @@ If you've ever had to submit a Tech Support ticket, you know how important it is
 
 ### Ticket Status Types🔎
 
-1. **Customer Care Tickets:**💬
+1. **Customer Care Tickets:** 💬
     - **Open:** Once you've submitted your ticket, you'll receive an **automatic response** with a reference number, subject, and description. You can also add additional participants to the ticket by replying to the email and adding them in copy.  
     When creating a ticket, make sure to **select the appropriate option or category** that best describes your issue or request. This helps us categorize and prioritize tickets, making it easier and faster for our team to address the problem:
       ![ticket status](https://storage.travelgate.com//kbase/ticket_status.jpg)
@@ -28,7 +28,7 @@ If you've ever had to submit a Tech Support ticket, you know how important it is
     ![tickets-closed-reopen](https://storage.travelgate.com//kbase/tickets-closed-reopen.jpg)
     :::
 
-1. **Auto-Activations Tickets:**🚀
+1. **Auto-Activations Tickets:** 🚀
     - **Open**: After you've submitted your Auto-Activation request, you'll receive an automated response that includes a reference number, subject, and description. If the activation has not been processed automatically, our Connectivity Team will proceed to reviewing the New Connection manually.
     - **In progress**: Our Connectivity Team is already working on the requested activation. If your ticket requires escalation, it will be sent to one of our Product teams. While your ticket is in this status, you won't be able to see all the internal processes we're using to solve it, but please be patient as our Product teams work on it.
     - **Partner's feedback required**: If we need more information or are waiting for comments from the Buyer or Seller, your ticket will be in this status.

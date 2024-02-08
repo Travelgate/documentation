@@ -29,7 +29,7 @@ When creating your hotels query, you have three different inputs to fill based o
 
 This query offers versatility, with certain fields marked as mandatory (`access`) and others as optional (`hotelCodes`, `countries`, `destinationCodes`, etc.). This flexibility empowers you to create a personalized Hotels Query, tailoring the requested fields to your specific needs. Consequently, the response will only include information that is highly relevant to you, streamlining the retrieval process and ensuring the data you receive meets your exact requirements.
 
-```json
+```js
 {
 	"criteriaHotels": {
 		"access": "2",
@@ -68,7 +68,7 @@ To include the token in your request, all you need to do is:
 
 First, in your hotels query you won't indicate any `token` input:
 
-```json
+```js
 {
     "criteriaHotels" : {
         "access" : "2",
@@ -82,7 +82,7 @@ You will obtain a response with 5 hotels per page:
 
 **Response**
 
-```json
+```js
 {
 	"data": {
 		"hotelX": {
@@ -102,7 +102,7 @@ You will obtain a response with 5 hotels per page:
 This token should be used as input in your next hotels query, inside the `token` input:
 
 
-```json
+```js
 {
     "criteriaHotels" : {
         "access" : "2",
@@ -121,7 +121,7 @@ This token should be used as input in your next hotels query, inside the `token`
 
 * **Field filters** (boolean: true or false): These filters allow searching hotels that have information in indicated fields, such as country (`country_in`), category (`category_in`), destination (`destination_in`), name (`name_in`), and coordinates (`coordinates_in`).
 
-```json
+```js
 {
 	"criteriaHotels": {
 		"access": "2"

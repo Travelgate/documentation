@@ -111,7 +111,7 @@ In this scenario, there's no need to specify a plugin in your query. Just provid
 
 On the other hand, please note that it's absolutely mandatory to use the plugin in your search query to map amenities and promotions:
 
-```json
+```js
 "settings": {
 	"plugins": [
 		{
@@ -125,7 +125,7 @@ On the other hand, please note that it's absolutely mandatory to use the plugin 
 }
 ```
 
-```json
+```js
 "settings": {
 	"plugins": [
 		{
@@ -153,28 +153,28 @@ Remember, you can only change the context for the board, amenity and promotion e
 
 * **`step`**: "RESPONSE_OPTION"
 * **`type`**: "PRE_STEP"
-* **`name`**: "{entity}_mapX"
+* **`name`**: "\{entity\}_mapX"
 * **`parameters`**: 
 	* **`key`**: "context"
-	* **`value`**: {BuyerContext}
+	* **`value`**: \{BuyerContext\}
 
-```json
+```js
 "settings": {
-	"plugins": [
-		{
-			"step": "RESPONSE_OPTION",
-			"pluginsType": {
-				"type": "PRE_STEP",
-				"name": "{entity}_mapX",
-				"parameters": [
-					{
-						"key": "context",
-						"value": "{BuyerContext}"
-					}
-				]
-			}
-		}
-	]
+    "plugins": [
+        {
+            "step": "RESPONSE_OPTION",
+            "pluginsType": {
+                "type": "PRE_STEP",
+                "name": "{entity}_mapX",
+                "parameters": [
+                    {
+                        "key": "context",
+                        "value": "{BuyerContext}"
+                    }
+                ]
+            }
+        }
+    ]
 }
 ```
 

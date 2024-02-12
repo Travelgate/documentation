@@ -150,15 +150,23 @@ To specify your filters you need to use the input `HotelXFilterSearchInput` in y
 * `access`: By using the access filter, our system will exclusively include or exclude options from the selected accesses. If you choose not to set any access at all, requests will be made to all available accesses.
 
 
+All these filters are optional. Example to request only search results from access "2" and options "PACKAGE" 
+
+
 ```js
 {
-    "filterSearch": {
-		"access": {
-			"includes": [
-				"2"
-			]
-		}
-	}
+    "filterSearch" : {
+        "access" : {
+            "includes" : [
+                "2"
+            ]
+        },
+        "rateRules" : {
+            "includes" : [
+                "PACKAGE"
+            ]
+        }
+    }
 }
 ```
 
@@ -175,7 +183,14 @@ You would need to apply the same approach for filtering by specific rate rule (`
 
 ## Search Response
 
-In the response to your search query, you'll receive all the available options that match your criteria. Each option provides various details, such as room type, price, and cancellation policies. Here are some key points to keep in mind:
+In the response to your search query, you'll receive all the available options that match your criteria. Each option provides various details, such as room type, price, and cancellation policies. 
+
+:::tip Search output fields
+Explore all the search results output fields and their descriptions in our detailed Graphql API Reference section [here](/api/objects/hotel-search/). 
+:::
+
+
+Here are some key points to keep in mind:
 
 ### Cancel Policies: Refundable Field
 
@@ -185,7 +200,6 @@ In the room structure response, there is a `refundable` field. If this field is 
 Some Sellers may not include cancellation policies in their availability data. You can learn more about each Seller's specific details in their [metadata](../content/metadata).
 :::
 
-![Hotel-X Shopping Flow](../../../../../static/img/docs/hotel-x/hotel-x_single_mode.svg)
 
 ## Frequently Asked Questions
 

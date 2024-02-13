@@ -1,11 +1,11 @@
 # Travelgate Documenation
 
-This website is built using [Docusaurus 2](https://docusaurus.io/)
+This website is built using [Docusaurus 3](https://docusaurus.io/)
 
 ## Requirements
-* Node.js version 16.14 or above
+* Node.js version 18 or above
 
-### Installation
+## Installation
 
 ```
 $ npm install
@@ -35,7 +35,7 @@ module.exports = {
 ```
 
 
-### Local Development
+## Local Development
 
 ```
 $ npm run start
@@ -51,7 +51,13 @@ $ npm run build
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
-### Deployment
+### Test `.mdx` structure before commit/push
 
-This repository is being automatically deployed to GitHub Pages using GitHub Actions. 
+```bash
+npx docusaurus-mdx-checker
+```
+
+## Deployment
+
+This repository is being automatically deployed to GitHub Pages using GitHub Actions.
 The deployment script is located in `.github/workflows/main.yml`.

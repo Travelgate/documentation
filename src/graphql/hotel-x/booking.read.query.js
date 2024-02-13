@@ -57,7 +57,8 @@ export const bookingQuery =
 				cancelPolicy {
 					refundable
 					cancelPenalties {
-						hoursBefore
+						deadline
+						isCalculatedDeadline
 						penaltyType
 						currency
 						value

@@ -48,7 +48,8 @@ export const quoteQuickStartQuery =
 					refundable
 					description
 					cancelPenalties {
-						hoursBefore
+						deadline
+						isCalculatedDeadline
 						penaltyType
 						currency
 						value

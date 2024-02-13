@@ -169,7 +169,6 @@ export const searchMultipleHotelsQuery =
 					cancelPenalties {
 						deadline
 						isCalculatedDeadline
-						hoursBefore
 						penaltyType
 						currency
 						value

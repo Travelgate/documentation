@@ -38,7 +38,8 @@ export const bookQuickStartMutation =
 				cancelPolicy {
 					refundable
 					cancelPenalties {
-						hoursBefore
+						deadline
+						isCalculatedDeadline
 						penaltyType
 						currency
 						value

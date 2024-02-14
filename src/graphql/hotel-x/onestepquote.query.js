@@ -34,7 +34,6 @@ export const oneStepQuoteQuery =
 					cancelPenalties {
 						currency
 						deadline
-						hoursBefore
 						isCalculatedDeadline
 						penaltyType
 						value

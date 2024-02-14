@@ -168,7 +168,6 @@ export const searchQuickStartQuery =
 					cancelPenalties {
 						deadline
 						isCalculatedDeadline
-						hoursBefore
 						penaltyType
 						currency
 						value

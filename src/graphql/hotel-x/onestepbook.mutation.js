@@ -53,7 +53,6 @@ export const oneStepBookMutation =
 					cancelPenalties {
 						deadline
 						isCalculatedDeadline
-						hoursBefore
 						penaltyType
 						currency
 						value

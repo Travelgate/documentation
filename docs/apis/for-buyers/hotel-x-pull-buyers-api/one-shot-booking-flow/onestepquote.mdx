@@ -1,0 +1,219 @@
+---
+sidebar_position: 3
+---
+
+import {oneStepQuoteQuery, oneStepQuoteVariables} from "../../../../../src/graphql/hotel-x/onestepquote.query";
+
+# One Step Quote
+
+One step quote operation evaluates the rate before booking, checking if the option is still available and including up-to-date pricing and cancellation policies. The returned fields include:
+
+* `status`
+* `price`
+* `cancelPolicy`
+* `rooms`
+* `surcharges`
+
+
+## One Step Quote Inputs
+
+When creating your one step quote query, you have three different inputs to fill based on your specific needs:
+
+1. Criteria
+2. Settings
+3. Filter
+
+```graphql
+query {
+    hotelX {
+    oneStepQuote
+      input: {}
+      settings: {}
+      filter: {}
+	}
+}
+```
+
+<CautionSettingsHotelX />
+
+### 1. Input 
+
+This query offers versatility in quote options, with certain fields marked as mandatory and others as optional. 
+
+To specify your one step quote criteria you need to use the input `HotelOneStepQuoteInput` in your query variables:
+
+
+```js
+{
+	"input": {
+		"language": "es",
+		"market": "ES",
+		"nationality": "ES",
+		"checkIn": "2024-10-28",
+		"checkOut": "2024-10-29",
+		"hotel": "1",
+		"board": "1",
+		"price": {
+			"currency": "EUR",
+			"binding": false,
+			"net": 450.6,
+			"gross": 460.6
+		},
+		"ratePlan": "BAR",
+		"rooms": [
+			{
+				"occupancyRefId": 1,
+				"code": "2269",
+				"paxes": []
+			}
+		],
+		"rateRulesExtended": [
+			{
+				"type": "PACKAGE"
+			},
+			{
+				"type": "NON_REFUNDABLE"
+			}
+		],
+		"occupancies": [
+			{
+				"paxes": [
+					{
+						"age": 30
+					},
+					{
+						"age": 30
+					}
+				]
+			}
+		],
+		"cancelPolicy": {
+			"refundable": false,
+			"cancelPenalties": []
+		}
+	}
+}
+```
+
+**Mandatory criteria:**
+
+* `checkIn`
+* `checkOut`
+* `hotel`
+* `board`
+* `occupancies`
+* `rooms`
+* `price`
+* `cancelPolicy`
+
+**Optional criteria:**
+* `language`
+* `nationality`
+* `market`
+* `ratePlan`
+* `rateRulesExtended`
+* `surcharges` 
+* `supplements`
+
+### 2. Settings 
+
+Settings are the common configurations used to construct requests to the supplier/s. By default, we apply the same configuration to all Hotel-X clients.
+
+To specify your quote settings you need to use the input `HotelSettingsInput` in your query variables:
+
+```js
+{
+	"settings": {
+		"client": "client_demo",
+		"context": "HOTELTEST",
+		"testMode": true,
+		"timeout": 180000
+	}
+}
+```
+
+
+**Mandatory Settings:**
+* `client`
+* `context` (You have the flexibility to choose between using the supplier's context or your own, depending on which codes you want to see in the response. If you prefer to receive responses with your custom codes, please ensure that your context code is linked to the mapping files that you've previously uploaded to your FTP account.)
+* `timeout` (Timeout in milliseconds for supplier connections. Applied to all suppliers; won't close client connection if exceeded.)
+
+
+:::tip Key Recommendations
+
+* Customize the `timeout` according to your needs, taking into consideration **the maximum values in One Step Quote is 180,000ms**.
+
+* Set the `audiTransaction` to "true" in One Step Quote when investigating errors.
+
+:::
+
+### 3. Filter
+
+Filter allow you to precisely tailor the response according to your preferences. 
+
+To specify your filters you need to use the input `HotelFilterInput` in your query variables. The available filters inside this input are:
+
+* `access` (mandatory): Specify the supplier access you want to use to quote the option.
+* `excludeComparisonFields` (optional): If there are specific rate characteristics you prefer not to use internally for finding the option, indicate them here. For example, you may not want us to specifically check for a non-refundable option. You may want us to quote an option with the same other characteristics (hotel, rate, board), and whether the option is refundable or not doesn't matter to you.
+
+
+```js
+{
+    "filter": {
+		"access": "2",
+        "excludeComparisonFields": [
+            "CANCEL_POLICY"
+        ]
+	}
+}
+```
+
+
+### Requests Examples
+
+#### Quote option without checking the surcharges
+
+<GraphqlSample query={oneStepQuoteQuery} variables={oneStepQuoteVariables}/>
+
+
+## Quote Response
+
+As mentioned earlier, the quote response will provide you with updated information about the option found with the criteria indicated in the input. In this one step quote response, **there are some essential details that you should carefully review and consider** when providing information to your final customers:
+
+* **Cancellation Policies:** Within the `cancelPolicy` structure response, you will find a `refundable` field. If this field is marked as "false," it means that the room has a 100% cancellation cost, making it non-refundable.
+
+* **Remarks:** Pay attention to any remarks or additional notes provided in the response.
+
+* **Taxes:** Ensure you are aware of any applicable taxes associated with the selected option.
+
+The next step is to confirm the booking using the standard [book mutation](../booking-flow/book) in the Hotel-X API, utilizing the `optionRefId` obtained from the results.
+
+## Frequently Asked Questions
+
+<details>
+    <summary>Are there any limitations on the number of Hotel-X One Step Quote requests allowed per minute?</summary>
+    <div>
+        <div>Not from Travelgate side, we don't have any limitations on the RPM ("Requests for Minute") in any of our methods. However, some Sellers may have some limitations so we suggest you contact directly with them in order to discuss this information.</div>
+    </div>
+</details>
+
+<details>
+    <summary>Do options get blocked in Hotel-X Quote Query?</summary>
+    <div>
+        <div>Some Sellers may block the options when performing a Quote Query so we strongly recommend to contact them directly regarding this topic in order to prevent future issues.</div>
+    </div>
+</details>
+
+<details>
+    <summary>Is there any possibility to obtain RoomCodes in Quote?</summary>
+    <div>
+        <div>If the Seller provides this information, you can obtain the room code by including the rooms node in the HotelOptionQuote node.</div>
+    </div>
+</details>
+
+<details>
+    <summary>What should I do if I receive a status RQ in Quote response?</summary>
+    <div>
+        <div>You may receive a status On Request (status RQ) in Quote response in those cases the availability of the option previously selected is pending to be confirmed by the Seller. If you receive status RQ in Quote response, you should run a new Search request and restart the Booking Flow.</div>
+    </div>
+</details>

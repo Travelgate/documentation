@@ -1,0 +1,414 @@
+---
+sidebar_position: 3
+---
+
+# Read
+
+This method allows retrieving complete information about reservations primarily based on locators filters, returning complete information for each matching reservation. Please be aware that only 50 reservations can be retrieved at once; requesting more than this limit will result in an error.
+
+## Request
+
+**Mandatory criteria:**
+
+To make a read, it is essential to set either a tgxLocators, providerLocators and clientsLocators, but not all three at the same time (as this will result in an error). 
+
+**Optional criteria:**
+
+Optionally, you can filter your read by specifying specific searchCancellationsCorrelationID. You can also choose to filter by isTest.
+
+```html
+{
+    "access" : {
+        "accessToken" : "xxxx",
+        "user" : "xxxx",
+        "password" : "xxxx"
+    },
+    "tgxLocators" : [
+        "123"
+    ]
+}
+```
+
+### Request Data Breakdown
+
+| Element				| Rel | Type	| Description					|
+| ------------------------------------- | ---------- | -------- | ----------------------------------------------------- |
+| access		| 1  |	node  | Acces information: <ul><li>It will be validated to grant acces to the API and to the operation.</li><li>If there is any problem then an error will be returned.</li></ul>
+| access/accessToken 		| 1  |	string  | Key to acces to the API.
+| access/user        		| 1  |	string  | User.
+| access/password    		| 1  |	string  | Password related to the user.
+| tgxLocators    		    |0..N|list(string)| TGX locators to search for.
+| providerLocators    		|0..N|list(string)| Provider locators to search for.
+| clientLocators    		|0..N|list(string)| Agency/Client locators to search for.
+| correlationIDs    		|0..N|list(string)| CorrelationIDs to search for.
+| isTest                    | 0,1| boolean  | Test mode:<ul><li>If set to **_true_** the operation will be executed in "*test mode*". This means that the response will include dummy information (no real reservations information).</li><li>If not set to **_true_** or not given then the operation will execute as normally.</li></ul> *In order to test the API, we still need to give a real access information. Note that even in test mode all operations will execute its own request validations, so the requests must be well formed.*
+
+## Response
+
+```html
+{
+    "reservationReadRS" : [
+        {
+            "locators" : {
+                "tgx" : "1",
+                "client" : "111-222",
+                "provider" : "12312313"
+            },
+            "bookingDate" : "2018-07-11 8:50:48",
+            "checkinDate" : "2018-08-14",
+            "checkoutDate" : "2018-08-21",
+            "status" : "OK",
+            "mainGuestName" : "Smith, Martin",
+            "hotelCode" : "h1",
+            "hotelName" : "Hotel 1 Name",
+            "clientCode" : "c1",
+            "clientName" : "Client 1 Name",
+            "providerCode" : "p1",
+            "providerName" : "Provider 1 Name",
+            "cityCode" : "Hotel 1 City Code",
+            "cityName" : "Hotel 1 City Name",
+            "chainCode" : "Hotel 1 Chain Code",
+            "chainName" : "Hotel 1 Chain Name",
+            "countryCode" : "ES",
+            "mealPlanCode" : "MP",
+            "mealPlanName" : "Half board",
+            "market" : "ES",
+            "sellingPrice" : {
+                "currency" : "EUR",
+                "amount" : 234.5,
+                "binding" : false,
+                "commission" : 0
+            },
+            "providerPrice" : {
+                "currency" : "EUR",
+                "amount" : 204.99,
+                "binding" : false,
+                "commission" : 0
+            },
+            "quoteSellingPrice" : {
+                "currency" : "EUR",
+                "amount" : 234.5,
+                "binding" : false,
+                "commission" : 0
+            },
+            "quoteProviderPrice" : {
+                "currency" : "EUR",
+                "amount" : 204.99,
+                "binding" : false,
+                "commission" : 0
+            },
+            "rooms" : [
+                {
+                    "code" : "R14",
+                    "description" : "test room 1",
+                    "pax" : [
+                        {
+                            "name" : "Martin",
+                            "surname" : "Smith",
+                            "age" : "30"
+                        },
+                        {
+                            "name" : "Susan",
+                            "surname" : "Smith",
+                            "age" : "30"
+                        }
+                    ]
+                },
+                {
+                    "code" : "R32",
+                    "description" : "test room 2",
+                    "pax" : [
+                        {
+                            "name" : "Rob",
+                            "surname" : "Conors",
+                            "age" : "30"
+                        },
+                        {
+                            "name" : "Sara",
+                            "surname" : "Conors",
+                            "age" : "30"
+                        }
+                    ]
+                }
+            ],
+            "quoteNonRefundable" : false,
+            "quoteCancelPenalties" : [
+                {
+                    "penaltyType" : "Amount",
+                    "paymentType" : "MerchantPay",
+                    "hoursBefore" : "24",
+                    "currency" : "EUR",
+                    "value" : 25.5
+                }
+            ]
+        },
+        {
+            "locators" : {
+                "tgx" : "2",
+                "client" : "222-333",
+                "provider" : "456456456"
+            },
+            "bookingDate" : "2018-08-21 10:11:17",
+            "checkinDate" : "2018-12-01",
+            "checkoutDate" : "2018-12-07",
+            "cancellationDate" : "2018-08-26 11:01:47",
+            "status" : "CN",
+            "mainGuestName" : "Redford, Charles",
+            "hotelCode" : "h2",
+            "hotelName" : "Hotel 2 Name",
+            "clientCode" : "c2",
+            "clientName" : "Client 2 Name",
+            "providerCode" : "p2",
+            "providerName" : "Provider 2 Name",
+            "cityCode" : "Hotel 2 City Code",
+            "cityName" : "Hotel 2 City Name",
+            "chainCode" : "Hotel 2 Chain Code",
+            "chainName" : "Hotel 2 Chain Name",
+            "countryCode" : "ES",
+            "mealPlanCode" : "MP",
+            "mealPlanName" : "Half board",
+            "market" : "ES",
+            "sellingPrice" : {
+                "currency" : "EUR",
+                "amount" : 234.5,
+                "binding" : false,
+                "commission" : 0
+            },
+            "providerPrice" : {
+                "currency" : "EUR",
+                "amount" : 204.99,
+                "binding" : false,
+                "commission" : 0
+            },
+            "quoteSellingPrice" : {
+                "currency" : "EUR",
+                "amount" : 234.5,
+                "binding" : false,
+                "commission" : 0
+            },
+            "quoteProviderPrice" : {
+                "currency" : "EUR",
+                "amount" : 204.99,
+                "binding" : false,
+                "commission" : 0
+            },
+            "rooms" : [
+                {
+                    "code" : "Rd45",
+                    "description" : "test room 2-b",
+                    "pax" : [
+                        {
+                            "name" : "Charles",
+                            "surname" : "Redford",
+                            "age" : "40"
+                        }
+                    ]
+                }
+            ],
+            "quoteNonRefundable" : true
+        },
+        {
+            "locators" : {
+                "tgx" : "3",
+                "client" : "444-555",
+                "provider" : "789-987-789"
+            },
+            "bookingDate" : "2018-08-09 18:00:00",
+            "checkinDate" : "2019-01-26",
+            "checkoutDate" : "2019-01-27",
+            "status" : "OK",
+            "mainGuestName" : "Clancy, Tom",
+            "hotelCode" : "h3",
+            "hotelName" : "Hotel 3 Name",
+            "clientCode" : "c3",
+            "clientName" : "Client 3 Name",
+            "providerCode" : "p3",
+            "providerName" : "Provider 3 Name",
+            "cityCode" : "Hotel 3 City Code",
+            "cityName" : "Hotel 3 City Name",
+            "chainCode" : "Hotel 3 Chain Code",
+            "chainName" : "Hotel 3 Chain Name",
+            "countryCode" : "IT",
+            "mealPlanCode" : "HD",
+            "mealPlanName" : "Bed & breakfast",
+            "market" : "UK",
+            "sellingPrice" : {
+                "currency" : "EUR",
+                "amount" : 234.5,
+                "binding" : false,
+                "commission" : 0
+            },
+            "providerPrice" : {
+                "currency" : "EUR",
+                "amount" : 204.99,
+                "binding" : false,
+                "commission" : 0
+            },
+            "quoteSellingPrice" : {
+                "currency" : "EUR",
+                "amount" : 234.5,
+                "binding" : false,
+                "commission" : 0
+            },
+            "quoteProviderPrice" : {
+                "currency" : "EUR",
+                "amount" : 204.99,
+                "binding" : false,
+                "commission" : 0
+            },
+            "rooms" : [
+                {
+                    "code" : "R14",
+                    "description" : "test room 3-c",
+                    "pax" : [
+                        {
+                            "name" : "Tom",
+                            "surname" : "Clancy",
+                            "age" : "35"
+                        },
+                        {
+                            "name" : "Ingrid",
+                            "surname" : "Clancy",
+                            "age" : "38"
+                        }
+                    ]
+                }
+            ],
+            "quoteNonRefundable" : false,
+            "quoteCancelPenalties" : [
+                {
+                    "penaltyType" : "Amount",
+                    "paymentType" : "MerchantPay",
+                    "hoursBefore" : "48",
+                    "currency" : "EUR",
+                    "value" : 54.75
+                },
+                {
+                    "penaltyType" : "Amount",
+                    "paymentType" : "MerchantPay",
+                    "hoursBefore" : "24",
+                    "currency" : "EUR",
+                    "value" : 25.5
+                }
+            ]
+        },
+        {
+            "locators" : {
+                "tgx" : "4",
+                "client" : "555-666",
+                "provider" : "888-999-777"
+            },
+            "bookingDate" : "2018-08-09 18:00:00",
+            "checkinDate" : "2019-01-26",
+            "checkoutDate" : "2019-01-27",
+            "status" : "ERROR",
+            "mainGuestName" : "Fisher, Sam",
+            "hotelCode" : "h4",
+            "clientCode" : "c4",
+            "rooms" : [
+            ],
+            "quoteNonRefundable" : false
+        },
+        {
+            "locators" : {
+                "provider" : "1010-2020-3030"
+            },
+            "status" : "NOTFOUND",
+            "quoteNonRefundable" : false
+        }
+    ]
+}
+```
+
+### Response Data Breakdown
+
+| Element				| Rel | Type	| Description					|
+| ------------------------------------- | ---------- | -------- | ----------------------------------------------------- |
+| reservationReadRS 		| 1  |	list  | Root node with the list of reservations.
+| locators		            | 1  |	node  | This node contains the different locators of the reservation.
+| locators/tgx      		| 1  | string | Travelgate locator.
+| locators/client    		| 1  | string | Client locator.
+| locators/provider    	    | 0,1| string | Provider locator. If the reservation has no provider locator then this node will be null.
+| bookingDate    	        | 1  |dateTime| Booking date.
+| checkinDate    	        | 1  | date   | Check-in date.
+| checkoutDate    	        | 1  | date   | Check-out date.
+| cancellationDate    	    | 0,1|dateTime| If the reservation has been canceled this will be the cancelation date. If the reservation is not canceled this node will be **_null_**.
+| status            		| 1  | string | <details>     <summary>Reservation Status</summary>     <div>         <div>          <table> 				<thead> 					<tr> 						<th> 							<strong>Code</strong> 						</th> 						<th> 							<strong>Explanation</strong> 						</th> 					</tr> 				</thead> 				<tbody> 					<tr> 						<td>OK</td> 						<td>The reservation was created successfully.</td> 					</tr> 										<tr> 						<td>KO</td> 						<td>The reservation process failed and the reservation was not created on the provider.</td> 					</tr>                     <tr> 						<td>KOP</td> 						<td>The reservation process failed but the reservation was created on the provider.</td> 					</tr> 					<tr> 						<td>KUN</td> 						<td>The reservation process failed and we don’t know the final status on the provider.</td> 					</tr> 					<tr> 						<td>CN</td> 						<td>The reservation was cancelled successfully.</td> 					</tr>                     <tr> 						<td>CK</td> 						<td>The cancellation process failed and the reservation was not cancelled on the provider.</td> 					</tr> 				    <tr> 						<td>CKP</td> 						<td>The cancellation process failed but the reservation was cancelled on the provider.</td> 					</tr>             <tr> 						<td>CUN</td> 						<td>The cancellation process failed and we don’t know the final status on the provider.</td> 					</tr>          <tr> 						<td>ERROR</td> 						<td>There has been an error while recovering the reservation from the system. Returned data can be incompleted.</td> 					</tr> <tr> 						<td>NOTFOUND</td> 						<td>The reservation has not been found on the system. Returned data has to be ignored.</td> 					</tr> 	</tbody> 			</table>         </div>     </div> </details> 
+| summaryStatus            	| 1  | string |  <details>     <summary>Reservation Summary Status</summary>     <div>         <div>          <table> 				<thead> 					<tr> 						<th> 							<strong>Code</strong> 						</th> 						<th> 							<strong>Explanation</strong> 						</th> 					</tr> 				</thead> 				<tbody> 					<tr> 						<td>OK</td> 						<td>The reservation was created successfully.</td> 					</tr> 					<tr> 						<td>CN</td> 						<td>The reservation was cancelled successfully.</td> 					</tr> 					<tr> 						<td>RQ</td> 						<td>The reservation was created successfully put is pending on provider.</td> 					</tr>                     <tr> 						<td>UN</td> 						<td>The reservation is on an unknown status because some error on the last operation executed on it.</td> 					</tr>					</tbody> 			</table>         </div>     </div> </details> 
+| mainGuestName      		| 1  | string | Reservation's main guest name.
+| hotelCode      		    | 1  | string | Code of the hotel of the reservation.
+| hotelName      		    | 1  | string | Name of the hotel of the reservation.
+| clientCode      		    | 1  | string | Code of the agency/client.
+| clientName      		    | 1  | string | Name of the agency/client.
+| providerCode      		| 1  | string | Code of the provider of the reservation.
+| providerName      		| 1  | string | Name of the provider of the reservation.
+| cityCode           		| 0,1| string | Code of the city corresponding to the hotel.
+| cityName           		| 0,1| string | Name of the city corresponding to the hotel.
+| chainCode           		| 0,1| string | Code of the hotel's chain.
+| chainName           		| 0,1| string | Name of the hotel's chain.
+| countryCode               | 0,1| string | Country code corresponding to the hotel.
+| mealPlanCode           	| 0,1| string | Meal plan code for the reservation.
+| mealPlanName           	| 0,1| string | Meal plan name for the reservation.
+| market                   	| 0,1| string | Market corresponding to the reservation.
+| sellingPrice      		| 1  |       | Selling price information.
+| sellingPrice/amount  		| 1  |decimal| Price amount.
+| sellingPrice/currency    	| 1  |string| Price currency.
+| sellingPrice/binding    	| 1  |boolean| Indicates if the price is binding.
+| sellingPrice/commision  	| 1  |decimal| Commission related to the price.
+| quoteSellingPrice      	| 1  |    | Selling price at the quote/pre-booking step.
+| quoteSellingPrice/amount  		| 1  |decimal| Price amount.
+| quoteSellingPrice/currency    	| 1  |string| Price currency.
+| quoteSellingPrice/binding    	| 1  |boolean| Indicates if the price is binding.
+| quoteSellingPrice/commision  	| 1  |decimal| Commission related to the price.
+| providerPrice      		| 1  |    | Provider price information.
+| providerPrice/amount  		| 1  |decimal| Price amount.
+| providerPrice/currency    	| 1  |string| Price currency.
+| providerPrice/binding    	| 1  |boolean| Indicates if the price is binding.
+| providerPrice/commision  	| 1  |decimal| Commission related to the price.
+| quoteProviderPrice        | 1  |  | Provider price at the quote/pre-booking step.
+| quoteProviderPrice/amount  		| 1  |decimal| Price amount.
+| quoteProviderPrice/currency    	| 1  |string| Price currency.
+| quoteProviderPrice/binding    	| 1  |boolean| Indicates if the price is binding.
+| quoteProviderPrice/commision  	| 1  |decimal| Commission related to the price.
+| rooms                     |1..N| list   | List of rooms of the reservation.
+| rooms/code                | 1  | string | Room code.
+| rooms/description         | 1  | string | Room description.
+| rooms/pax                 | 1  | list   | List of pax of the room.
+| rooms/pax/name            | 1  | string | Name of the pax.
+| rooms/pax/surname         | 1  | string | Surname of the pax.
+| rooms/pax/age             | 1  | string | Age of the pax.
+| quoteNonRefundable        | 1  | boolean | Indicates if the reservation was non refundable (true) or if it was refundable (false) on the quote/pre-booking step:<ul><li>If the reservation was refundable then we can have a list of penalties related to the cancellation.</li><li>If the reservation was non refundable then we will not have a list of penalties (the list node will be null).</li></ul>*This information can have changed on the booking step.*
+| quoteCancelPenalties      |0..N|CP node| List of cancel penalties on the quote/pre-booking step. Only if the reservation was refundable (nonRefundable = false).
+| quoteCancelPenalties/penaltyType	| 1  |	enum     | Type of penalty:<ul><li>Nights</li><li>Percentage</li><li>Amount</li></ul>
+| quoteCancelPenalties/paymentType	| 1  |	enum     | Type of payment:<ul><li>LaterPay</li><li>MerchantPay</li><li>MixedPay</li><li>CardBookingPay</li><li>CardCheckInPay</li></ul>
+| quoteCancelPenalties/hoursBefore	| 1  |	int      | Number of hour before the check-in, in which this penalty is applied.
+| quoteCancelPenalties/currency		| 1  |	string   | Currency of the penalty
+| quoteCancelPenalties/value     	| 1  |	decimal  | Value of the pentalty: will depend on the type of penalty.
+| officeCode               	| 0,1| string | If returned then this will be the code of the office.
+| officeName               	| 0,1| string | If returned then this will be the name of the office.
+| accessCodeHX              | 1  | string | Code of the access used in HotelX layer to access the provider.
+| hotelProvCodeHX           | 1  | string | Code of the hotel on the provider system (used by HotelX).
+| correlationID           	| 0,1| string | Correlation ID.
+| priceBreakdown           	| 0,1| node   | Information about how selling price has been calculated.
+| priceBreakdown/comissionMarkupType | 1 | enum | Type of calculation:<ul><li>**C** → Commission</li><li>**M** → Markup</li></ul>
+| priceBreakdown/totalComission | 1 | decimal |Total Commission/Markup applied to obtain the selling price. It is calculated as the sumatory of:<ul><li>**_baseCommission_**</li><li>**_baseRappel_**</li><li>**_rulesCommission_**</li><li>**_officeCommission_**</li></ul>*There are some distribution rules that can affect this calculation.*
+| priceBreakdown/baseComission | 1  | decimal | Base commission/markup (if any).
+| priceBreakdown/baseRappel    | 1  | decimal | Base rappel (if any).
+| priceBreakdown/rulesComission| 1  | decimal | Commission/Markup obtained from applying the "Selling Pricing Rules".
+| priceBreakdown/officeComission| 1  | decimal | Commission/markup of the office (if any).
+| priceBreakdown/tax           | 1  | decimal | Tax (if any). It is applied apart from the **_totalCommission_**.
+| priceBreakdown/currencyExchange | 0,1| node   | If there has been a currency change then this field will give information about the exchange.*Currency conversion is done before aplying any pricing calculation.*
+| currencyExchange/fromCurrency | 1 | string | Purchasing currency (ISO "Alpha-3").
+| currencyExchange/toCurrency | 1 | string | Selling currency (ISO "Alpha-3").
+| currencyExchange/exchange | 1 | decimal | Exchange used on the conversion. *New currency amount = original currency amount * exchange*.
+| paymentInfo | 0,1 | node | Information about payment (includes VCC payment info).
+| paymentInfo/paymentTypeProvider | 1 | enum | Type of payment obtained from the final provider:<ul><li>LaterPay</li><li>MerchantPay</li><li>MixedPay</li><li>CardBookingPay</li><li>CardCheckInPay</li></ul>
+| paymentInfo/paymentTypeClient | 1 | enum | Type of payment returned to the client:<ul><li>LaterPay</li><li>MerchantPay</li><li>MixedPay</li><li>CardBookingPay</li><li>CardCheckInPay</li></ul>
+| paymentInfo/vccInfo | 0,1 | string | Textual information about VCC payment.
+| paymentInfo/vccCardType | 0,1 | string | VCC card type.
+| paymentInfo/vccSupplierCode | 0,1 | string | VCC supplier code.
+| paymentInfo/vccTransactionId | 0,1 | string | Identifier of VCC transaction.
+| reservationError | 0,1 | string | If the reservation is not on a well finished status (reservation or cancellation) then we can have some textual information about the error that caused that not well finished status.
+| error		                | 0,1|	node  | If there has been any error executing the operation we can receive this node with information about that error. *We can also receive errors with the http status.*
+| error/code      		    | 1  | string |  <details>     <summary>Error Codes and Description</summary>     <div>         <div>      <p>The following errors will be returned as Http Status Errors:</p>    <table> 				<thead> 					<tr> 						<th> 							<strong>Code</strong> 						</th> 	<th> 							<strong>Description</strong> 						</th>					<th> 							<strong>Explanation</strong> 						</th> 					</tr> 				</thead> 				<tbody> 					<tr> 						<td>400</td> 						<td>Bad Request</td> 		<td>There is a problem on the request data.</td>			</tr> 					<tr> 						<td>401</td> 						<td>Unauthorized</td> 			<td>There is an access problem.</td>		</tr> 					<tr> 						<td>500</td> 						<td>Internal Server Error</td> 		<td>Internal undefined error.</td>			</tr>              					</tbody> 			</table>       <p>The following errors will be returned as Http Status Errors:</p>    <table> 				<thead> 					<tr> 						<th> 							<strong>Code</strong> 						</th> 					<th> 							<strong>Explanation</strong> 						</th> 					</tr> 				</thead> 				<tbody> 					<tr> 						<td>010</td> 						<td>Exception/Unexpected Error.</td> 					</tr> 					<tr> 						<td>020</td> 						<td>Error validating the RQ.</td> 			</tr> 					<tr> 						<td>030</td> 						<td>No results.</td>			</tr>              <tr> 						<td>040</td> 						<td>Incorrect AccessToken.</td>			</tr>					</tbody> 			</table>    </div>     </div> </details> 
+| error/description 	    | 1  | string | <details>     <summary>Error Codes and Description</summary>     <div>         <div>      <p>The following errors will be returned as Http Status Errors:</p>    <table> 				<thead> 					<tr> 						<th> 							<strong>Code</strong> 						</th> 	<th> 							<strong>Description</strong> 						</th>					<th> 							<strong>Explanation</strong> 						</th> 					</tr> 				</thead> 				<tbody> 					<tr> 						<td>400</td> 						<td>Bad Request</td> 		<td>There is a problem on the request data.</td>			</tr> 					<tr> 						<td>401</td> 						<td>Unauthorized</td> 			<td>There is an access problem.</td>		</tr> 					<tr> 						<td>500</td> 						<td>Internal Server Error</td> 		<td>Internal undefined error.</td>			</tr>              					</tbody> 			</table>       <p>The following errors will be returned as Http Status Errors:</p>    <table> 				<thead> 					<tr> 						<th> 							<strong>Code</strong> 						</th> 					<th> 							<strong>Explanation</strong> 						</th> 					</tr> 				</thead> 				<tbody> 					<tr> 						<td>010</td> 						<td>Exception/Unexpected Error.</td> 					</tr> 					<tr> 						<td>020</td> 						<td>Error validating the RQ.</td> 			</tr> 					<tr> 						<td>030</td> 						<td>No results.</td>			</tr>              <tr> 						<td>040</td> 						<td>Incorrect AccessToken.</td>			</tr>					</tbody> 			</table>    </div>     </div> </details> 

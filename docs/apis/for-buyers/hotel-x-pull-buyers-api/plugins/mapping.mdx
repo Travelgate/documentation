@@ -9,6 +9,12 @@ To do this, you need a file that shows how the Buyer's and Seller's codes relate
 
 This feature includes Hotel Map, Board Map, Room Map, Rate Map, Amenity Map, Promotion Map and Room Description Map categories.
 
+:::warning Keep in mind
+
+Please be aware that by default, options where board, rates, or room codes maps are not found will still be returned with the supplier's original code. If you would rather not receive options in your search results where those entities couldn't be mapped, please reach out to our team to configure it from our side.
+
+:::
+
 To get started with the Mapping plugin, follow these simple steps:
 
 ## 1. Create and Upload your Mapping File
@@ -47,6 +53,7 @@ You should create one file for each supplier that you want to map an entity.
 
 :::
 
+
 :::note
 
 If you need assistance with requesting your credentials to access the FTP server, determining the endpoint and directory format, or learning how to upload, update, and delete FTP files, please refer to the [overview](../plugins/overview) section of Plugins.
@@ -60,7 +67,7 @@ If you need assistance with requesting your credentials to access the FTP server
 * **Delimiter:** Comma (`,`)
 * **Header Row:**
    * Buyer Context: Buyer's context code
-   * Supplier Context: Supplier's (Seller's) context code. This code can be found in the [My Connections](https://app.travelgatex.com/connections/myconnections) section on the TravelgateX website.
+   * Supplier Context: Supplier's (Seller's) context code. This code can be found in the [My Connections](https://app.travelgatex.com/connections/myconnections) section on the Travelgate website.
 
 
 <details>
@@ -111,7 +118,7 @@ In this scenario, there's no need to specify a plugin in your query. Just provid
 
 On the other hand, please note that it's absolutely mandatory to use the plugin in your search query to map amenities and promotions:
 
-```json
+```js
 "settings": {
 	"plugins": [
 		{
@@ -125,7 +132,7 @@ On the other hand, please note that it's absolutely mandatory to use the plugin 
 }
 ```
 
-```json
+```js
 "settings": {
 	"plugins": [
 		{
@@ -153,28 +160,28 @@ Remember, you can only change the context for the board, amenity and promotion e
 
 * **`step`**: "RESPONSE_OPTION"
 * **`type`**: "PRE_STEP"
-* **`name`**: "{entity}_mapX"
+* **`name`**: "\{entity\}_mapX"
 * **`parameters`**: 
 	* **`key`**: "context"
-	* **`value`**: {BuyerContext}
+	* **`value`**: \{BuyerContext\}
 
-```json
+```js
 "settings": {
-	"plugins": [
-		{
-			"step": "RESPONSE_OPTION",
-			"pluginsType": {
-				"type": "PRE_STEP",
-				"name": "{entity}_mapX",
-				"parameters": [
-					{
-						"key": "context",
-						"value": "{BuyerContext}"
-					}
-				]
-			}
-		}
-	]
+    "plugins": [
+        {
+            "step": "RESPONSE_OPTION",
+            "pluginsType": {
+                "type": "PRE_STEP",
+                "name": "{entity}_mapX",
+                "parameters": [
+                    {
+                        "key": "context",
+                        "value": "{BuyerContext}"
+                    }
+                ]
+            }
+        }
+    ]
 }
 ```
 

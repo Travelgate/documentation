@@ -1,0 +1,65 @@
+---
+sidebar_position: 5
+---
+
+# Room List
+
+Distribution Master files contain the product you will buy and sell in our Marketplace: hotels, mealplans and other required data to apply your business rules subsequently.
+
+Create and update your room list.
+
+:::info
+
+On the Destination Code you'll need to add the same codes that you have specified or will specify in the [Hotel Master File](hotels). This code should be match the city code in the Hotel Master File.
+
+:::
+
+## Create and Upload your Room List Master File
+
+To get started, create your room list master file in the correct format and then upload it to your FTP account. We've provided a template file below ⬇️ to help you with this process. Just click on the file name, add your data, save it in CSV format, and then upload it to the corresponding folder in your FTP.
+
+
+```mdx-code-block
+<BrowserWindow>
+
+📁F0_0000  
+&nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX_0000  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁Masters  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[Master_RoomList.csv](https://storage.travelgate.com/docs/Master_RoomList.csv)**  
+
+</BrowserWindow>
+```
+
+
+### File Format Specification
+
+* **File Name:** Master_RoomList.csv
+* **Directory:** F0\_0000/HotelX\_0000/Masters
+* **Delimiter:** Hashtag (`#`)
+* **Header Row:**
+   * **RoomCode (mandatory)**
+   * **RoomDescription (mandatory)**
+* **Note:**
+   * The data of the fields is not encapsulated by " or any other character.
+   * Each line represents a room.
+   * Any blank line will be skipped.
+   * If a field’s data is not mandatory and we don’t want to set it then we just keep it empty: e.g. …##…
+   * The file and its data have to be encoded using UTF-8. Otherwise there can be stored strange characters.
+
+<details>
+    <summary>📹 Learn how to change the format of the csv file in order to edit and save it</summary>
+    <div>
+        <div><iframe width="560" height="315" src="https://www.youtube.com/embed/XkOk3SkZ0Sg?si=TYhN1QfMwYE1fusw&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+    </div>
+</details>
+
+
+:::tip TAKE INTO CONSIDERATION
+
+* If a room exists then it is updated.
+* If a room does not exist then it is created.
+* Existing rooms that are not referenced are not removed.
+* If an existing room has to be removed from system then you have to contact with Travelgate.
+* If there is any problem with a room's information then it is omitted (and logged) but the load continues.
+
+:::

@@ -44,9 +44,11 @@ Remember that you can choose the information you want displayed:
 
 This query offers versatility in booking search, with all fields marked as optional (`accessCode`, `typeSearch`, `language` etc.). This flexibility empowers you to create a personalized Booking List Query, tailoring the requested fields to your specific needs. 
 
-To specify your booking criteria you need to use the input `HotelCriteriaBookingInput` in your query variables:
+To specify your booking criteria you need to use the input `HotelCriteriaBookingInput` in your query variables.
 
-```json
+Booking read using the `bookingID` input:
+
+```js
 {
     "criteria" : {
         "bookingID" : "1@1[241028[241029[230918[1[es[EUR[2[test_0123456789[2596391"
@@ -54,7 +56,9 @@ To specify your booking criteria you need to use the input `HotelCriteriaBooking
 }
 ```
 
-```json
+Booking read using the `accessCode`, `hotelCode` and `references` inputs:
+
+```js
 {
     "criteria" : {
         "accessCode" : "2",
@@ -72,7 +76,9 @@ To specify your booking criteria you need to use the input `HotelCriteriaBooking
 }
 ```
 
-```json
+Booking list by dates: 
+
+```js
 {
     "criteria" : {
         "accessCode" : "2",
@@ -106,7 +112,7 @@ Settings are the common configurations used to construct requests to the supplie
 
 To specify your booking settings you need to use the input `HotelSettingsInput` in your query variables:
 
-```json
+```js
 {
 	"settings": {
 		"client": "client_demo",
@@ -154,3 +160,7 @@ To specify your booking settings you need to use the input `HotelSettingsInput` 
 ## Booking Read and List Response
 
 Keep in mind that the content of the Booking response can differ depending on the Sellers. For instance, some Sellers might provide details about the hotel or cancel policies, while others may only offer information about the status and locators/references.
+
+:::tip Booking read output fields
+Explore all the booking read output fields and their descriptions in our detailed Graphql API Reference section [here](/api/objects/hotel-booking/). 
+:::

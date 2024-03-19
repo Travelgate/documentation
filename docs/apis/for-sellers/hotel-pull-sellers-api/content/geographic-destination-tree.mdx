@@ -1,0 +1,120 @@
+---
+sidebar_position: 5
+---
+
+# Geographic Destination Tree
+
+The Geographic Destination Tree method returns a comprehensive destination list from a supplier's access, granting access to all the destinations configured by the Seller for a given set of credentials. The returned fields include: `Destination code`, `Destiantion name` etc.
+
+
+## GeographicDestinationTree Request
+
+```xml
+<soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns = "http://schemas.xmltravelgate.com/hub/2012/06" xmlns:wsse = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+   <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>username</wsse:Username>
+            <wsse:Password>password</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <ns:GeographicDestinationTree>
+         <ns:geographicDestinationTreeRQ>
+            <ns:timeoutMilliseconds>20000</ns:timeoutMilliseconds>
+            <ns:version>1</ns:version>
+            <ns:providerRQ>
+               <ns:code>suppliercode</ns:code>
+               <ns:id>1</ns:id>
+               <ns:rqXML>
+                  <GeographicDestinationTreeRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
+                    <timeoutMilliseconds>19700</timeoutMilliseconds>
+                     <source>
+                        <languageCode>en</languageCode>
+                     </source>
+                     <filterAuditData>
+                        <registerTransactions>true</registerTransactions>
+                     </filterAuditData>
+                     <Configuration>
+                        <User>user</User>
+                        <Password>password</Password>
+                        <UrlAvail>www.supplier.com/avail</UrlAvail>
+                        <UrlReservation>www.supplier.com/reservation</UrlReservation>
+                        <UrlValuation>www.supplier.com/valuation</UrlValuation>
+                        <UrlGeneric>www.supplier.com/generic</UrlGeneric>
+                        <Parameters>
+                           <Parameter key = "UrlListHotels" value = "http://www.supplier.com/ListHotels"></Parameter>
+                           <Parameter key = "Access" value = "22334"></Parameter>
+                        </Parameters>
+                     </Configuration>
+                  </GeographicDestinationTreeRQ>
+               </ns:rqXML>
+            </ns:providerRQ>
+         </ns:geographicDestinationTreeRQ>
+      </ns:GeographicDestinationTree>
+   </soapenv:Body>
+</soapenv:Envelope>
+```
+
+### Request Data Breakdown
+
+`GeographicDestinationTree` request does not require any elements. 
+
+## GeographicDestinationTree Response
+
+After each request, you will have to process the data and provide a response. Upon receiving a `GeographicDestinationTree` request, you will need to send a corresponding `GeographicDestinationTree` response.
+
+```xml
+<GeographicDestinationTreeRS>
+   <UpgradeUTCDate>2016-10-18T13:18:03+02:00</UpgradeUTCDate>
+   <DestinationTree code = "ES" name = "España" avail = "False">
+      <DestinationLeaf code = "BAL"/>
+      <DestinationLeaf code = "AST"/>
+      <DestinationLeaf code = "AND"/>
+   </DestinationTree>
+   <DestinationTree code= "IT" name = "Italia" avail = "False">
+      <DestinationLeaf code = "AA"/>
+      <DestinationLeaf code = "BB"/>
+   </DestinationTree>
+   <DestinationTree code = "EN" name = "England" avail = "False">
+   </DestinationTree>
+   <DestinationTree code = "BAL" name = "Baleares" avail = "True">
+      <DestinationLeaf code = "PAL0"/>
+      <DestinationLeaf code = "ALC0"/>
+   </DestinationTree>
+   <DestinationTree code = "AST" name = "Asturias" avail = "True"/>
+   <DestinationTree code = "AND" name = "Andalucia" avail = "True"/>
+   <DestinationTree code = "PAL0" name = "Palma de Mallorca" avail = " True"/>
+   <DestinationTree code = "ALC0" name = "Alcudia" avail = " True"/>
+</GeographicDestinationTreeRS>
+```
+
+### Response Data Breakdown
+
+| Element                                     | Rel  | Type     | Description                                                 |
+|---------------------------------------------|------|----------|-------------------------------------------------------------|
+| GeographicDestinationTreeRS/UpgradeUTCDate  | 1    | DateTime | Indicates the update date of the information in UTC format. |
+| GeographicDestinationTreeRS/DestinationTree | 1..n |          | Father node                                                 |
+| @code                                       | 1    | String   | Destination code                                            |
+| @name                                       | 1    | String   | Destination name                                            |
+| @avail                                      | 1    | Boolean  | Destination available                                       |
+| DestinationTree/DestinationLeaf             | 0..n |          | Child nodes                                                 |
+| @code                                       | 1    | String   | Sub-destination code                                        |
+
+### Geographic Destination Tree Logic
+
+Once you run a Geograpich Destination Tree Request, you will receive the Seller's native geographic destination codes in the response. These codes can be classified into 2 categories:
+
+1. Zone (DestinationTree code)
+2. City (DestinationLeaf code)
+
+Sellers build their own Geographic Destination Tree based on both nodes. Consequently, when you request their geographic destination list, you will receive a structured categorized response that can help you with the mapping process.
+
+:::note
+
+A parent can have zero to n children ( 0..n ) and a child can only one parent ( 1..1 ). 
+
+For example, the DestinationTree code = “ES” is the parent of the DestinationLeaf code = “BAL”, “AST” and “AND” and at the same time DestinationTree code = “BAL” is also a the parent of the DestinationLeaf code = “PAL0” and “ALC0”, and so on.
+
+:::

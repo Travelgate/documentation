@@ -90,7 +90,7 @@ The payment type and details to be added in your Book request depend on the paym
 1. **No Credit Card Details**:  
     When the option to be booked was flagged as "paymentType": MERCHANT, no credit card details are required. E.g.:
 
-    ```json
+    ```js
     {"query":"mutation ($bookInput: HotelBookInput!, $settings: HotelSettingsInput) {  n hotelX {  n book(input: $bookInput, settings: $settings) {  n booking {  n  t  t  t  thotel {  n  t  t  t  t  thotelCode  n  t  t  t  t}  n price {  n currency  n binding  n net  n gross  n exchange {  n currency  n rate  n }  n markups {  n channel  n currency  n binding  n net  n gross  n exchange {  n currency  n rate  n }  n }  n }  n status  n remarks  n reference {  n client  n supplier  n }  n holder {  n name  n surname  n }  n hotel {  n creationDate  n checkIn  n checkOut  n hotelCode  n hotelName  n boardCode  n occupancies {  n id  n paxes {  n age  n }  n }  n rooms {  n code  n description  n occupancyRefId  n price {  n currency  n binding  n net  n gross  n exchange {  n currency  n rate  n }  n markups {  n channel  n currency  n binding  n net  n gross  n exchange {  n currency  n rate  n }  n }  n }  n }  n }  n }  n errors {  n code  n type  n description  n }  n warnings {  n code  n type  n description  n }  n }  n }  n}  n","variables":{"bookInput":{"optionRefId":"","clientReference":"","deltaPrice":{"amount":0,"percent":0,"applyBoth":true},"holder":{"name":"Test TGX","surname":"Test TGX"},"rooms":[{"occupancyRefId":1,"paxes":[{"name":"Test1","surname":"Test1","age":36},{"name":"Test2","surname":"Test2","age":36}]}]},"settings":{"client":"","testMode":true,"context":"","auditTransactions":true}}}
     ```
 2. **Credit Card Details**:  

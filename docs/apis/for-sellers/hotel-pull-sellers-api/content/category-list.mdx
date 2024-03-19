@@ -1,0 +1,92 @@
+---
+sidebar_position: 8
+---
+
+# Category List
+
+The Category List method returns a comprehensive hotel categories list from a supplier's access that may include translations to other languages, granting access to all the categories configured by the Seller for a given set of credentials. The returned fields include: `Category code`, `Category name` etc.
+
+
+## CategoryList Request
+
+```xml
+<soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns = "http://schemas.xmltravelgate.com/hub/2012/06" xmlns:wsse = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+   <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>username</wsse:Username>
+            <wsse:Password>password</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <ns:CategoryList>
+         <ns:categoryListRQ>
+            <ns:timeoutMilliseconds>20000</ns:timeoutMilliseconds>
+            <ns:version>1</ns:version>
+            <ns:providerRQ>
+               <ns:code>suppliercode</ns:code>
+               <ns:id>1</ns:id>
+               <ns:rqXML>
+                  <CategoryListRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
+                     <timeoutMilliseconds>19700</timeoutMilliseconds>
+                     <source>
+                        <languageCode>en</languageCode>
+                     </source>
+                     <filterAuditData>
+                        <registerTransactions>true</registerTransactions>
+                     </filterAuditData>
+                     <Configuration>
+                        <User>user</User>
+                        <Password>password</Password>
+                        <UrlAvail>www.supplier.com/avail</UrlAvail>
+                        <UrlReservation>www.supplier.com/reservation</UrlReservation>
+                        <UrlValuation>www.supplier.com/valuation</UrlValuation>
+                        <UrlGeneric>www.supplier.com/generic</UrlGeneric>
+                        <Parameters>
+                           <Parameter key = "UrlListHotels" value = "http://www.supplier.com/ListHotels"></Parameter>
+                           <Parameter key = "Access" value = "22334"></Parameter>
+                        </Parameters>
+                     </Configuration>
+                  </CategoryListRQ>
+               </ns:rqXML>
+            </ns:providerRQ>
+         </ns:categoryListRQ>
+      </ns:CategoryList>
+   </soapenv:Body>
+</soapenv:Envelope>
+```
+
+### Request Data Breakdown
+
+`CategoryList` request does not require any elements. 
+
+## CategoryList Response
+
+After each request, you will have to process the data and provide a response. Upon receiving a `CategoryList` request, you will need to send a corresponding `CategoryList` response.
+
+```xml
+<CategoryListRS>
+   <UpgradeUTCDate>2016-10-18T13:18:03+02:00</UpgradeUTCDate>
+   <Categories>
+      <Category>
+         <Code>3*</Code>
+         <Name>3 stars</Name>
+      </Category>
+      <Category>
+         <Code>3L</Code>
+         <Name>3 keys</Name>
+      </Category>
+   </Categories>
+</CategoryListRS>
+```
+
+### Response Data Breakdown
+
+| Element                       | Rel  | Type     | Description                                                 |
+|-------------------------------|------|----------|-------------------------------------------------------------|
+| CategoryListRS/UpgradeUTCDate | 1    | DateTime | Indicates the update date of the information in UTC format. |
+| CategoryListRS/Categories     | 1    |          | Root node, list of categories.                              |
+| Categorues/Category           | 1..n |          |                                                             |
+| Category/Code                 | 1    | String   | Category code                                               |
+| Category/Name                 | 1    | String   | Category name                                               |

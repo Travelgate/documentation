@@ -1,0 +1,72 @@
+---
+sidebar_position: 10
+---
+
+# Offices
+
+Distribution Master files contain the product you will buy and sell in our Marketplace: hotels, mealplans and other required data to apply your business rules subsequently.
+
+Create and configurate offices for your agencies.
+
+:::info
+
+An office is a lower level than an agency. An agency can have several offices.
+
+:::
+
+
+## Create and Upload your Offices Master File
+
+To get started, create your offices master file in the correct format and then upload it to your FTP account. We've provided a template file below ⬇️ to help you with this process. Just click on the file name, add your data, save it in CSV format, and then upload it to the corresponding folder in your FTP.
+
+
+```mdx-code-block
+<BrowserWindow>
+
+📁F0  _0000  
+&nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX  _0000  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁Masters  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[Master_Offices.csv](https://storage.travelgate.com/docs/Master_Offices.csv)**  
+
+</BrowserWindow>
+```
+
+
+### File Format Specification
+
+* **File Name:** Master_Offices.csv
+* **Directory:** F0\_0000/HotelX\_0000/Masters
+* **Delimiter:** Hashtag (`#`)
+* **Data:**
+   * **Office Code (mandatory)**
+   * **Office Name (mandatory)**
+   * **Agency Code (mandatory)**: To which the office belongs to.
+   * **Is Active (mandatory)**: Boolean.
+   * **Markup (mandatory)**
+        * If there is a decimal, the value has to be set using ‘.’ as separator.
+* **Note:**
+   * The first line is not a header line: it contains data directly.
+   * The data of the fields is not encapsulated by " or any other character.
+   * Each line represents a room.
+   * Any blank line will be skipped.
+   * If a field’s data is not mandatory and we don’t want to set it then we just keep it empty: e.g. …##…
+   * The file and its data have to be encoded using UTF-8. Otherwise there can be stored strange characters.
+
+
+<details>
+    <summary>📹 Learn how to change the format of the csv file in order to edit and save it</summary>
+    <div>
+        <div><iframe width="560" height="315" src="https://www.youtube.com/embed/XkOk3SkZ0Sg?si=TYhN1QfMwYE1fusw&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+    </div>
+</details>
+
+
+:::tip TAKE INTO CONSIDERATION
+
+* If an office exists then it is updated.
+* If an office does not exist then it is created.
+* Existing offices that are not referenced are not removed.
+* If an existing office has to be removed from system then you have to contact with Travelgate.
+* If there is any problem with a office's information then it is omitted (and logged) but the load continues.
+
+:::

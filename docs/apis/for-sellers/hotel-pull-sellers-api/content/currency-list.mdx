@@ -1,0 +1,93 @@
+---
+sidebar_position: 10
+---
+
+# Currency List
+
+The Currency List method returns a comprehensive currencies list a supplier's supports in Avail method. The returned fields include: `Currency code`, `Currency name` etc.
+
+
+## CurrencyList Request
+
+```xml
+<soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns = "http://schemas.xmltravelgate.com/hub/2012/06" xmlns:wsse = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+   <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>username</wsse:Username>
+            <wsse:Password>password</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <ns:CurrencyList>
+         <ns:currencyListRQ>
+            <ns:timeoutMilliseconds>20000</ns:timeoutMilliseconds>
+            <ns:version>1</ns:version>
+            <ns:providerRQ>
+               <ns:code>suppliercode</ns:code>
+               <ns:id>1</ns:id>
+               <ns:rqXML>
+                  <CurrencyListRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
+                     <timeoutMilliseconds>19700</timeoutMilliseconds>
+                     <source>
+                        <languageCode>en</languageCode>
+                     </source>
+                     <filterAuditData>
+                        <registerTransactions>true</registerTransactions>
+                     </filterAuditData>
+                     <Configuration>
+                        <User>user</User>
+                        <Password>password</Password>
+                        <UrlAvail>www.supplier.com/avail</UrlAvail>
+                        <UrlReservation>www.supplier.com/reservation</UrlReservation>
+                        <UrlValuation>www.supplier.com/valuation</UrlValuation>
+                        <UrlGeneric>www.supplier.com/generic</UrlGeneric>
+                        <Parameters>
+                           <Parameter key = "UrlListHotels" value = "http://www.supplier.com/ListHotels"></Parameter>
+                           <Parameter key = "Access" value = "22334"></Parameter>
+                        </Parameters>
+                     </Configuration>
+                  </CurrencyListRQ>
+               </ns:rqXML>
+            </ns:providerRQ>
+         </ns:currencyListRQ>
+      </ns:CurrencyList>
+   </soapenv:Body>
+</soapenv:Envelope>
+```
+
+### Request Data Breakdown
+
+`CurrencyList` request does not require any elements. 
+
+
+## CurrencyList Response
+
+After each request, you will have to process the data and provide a response. Upon receiving a `CurrencyList` request, you will need to send a corresponding `CurrencyList` response.
+
+```xml
+<CurrencyListRS>
+   <UpgradeUTCDate>2016-10-18T13:18:03+02:00</UpgradeUTCDate>
+   <Currencies>
+      <Currency>
+         <Code>EUR</Code>
+         <Name>Euro</Name>
+      </Currency>
+      <Currency>
+         <Code>USD</Code>
+         <Name>Dollar</Name>
+      </Currency>
+   </Currencies>
+</CurrencyListRS>
+```
+
+### Response Data Breakdown
+
+| Element                       | Rel  | Type     | Description                                                 |
+|-------------------------------|------|----------|-------------------------------------------------------------|
+| CurrencyListRS/UpgradeUTCDate | 1    | DateTime | Indicates the update date of the information in UTC format. |
+| CurrencyListRS/Currencies     | 1    |          | Root node, list of currencies.                              |
+| Currencies/Currency           | 0..n |          |                                                             |
+| @code                         | 1    | String   | ISO - 3 Code.                                               |
+| @Name                         | 1    | String   | Name of the currency.                                       |

@@ -1,0 +1,22 @@
+---
+sidebar_position: 1
+---
+
+# Overview
+
+The Amendment operations allow you to amend different aspects of a booking. There are currently five amendment operations available:
+
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items.filter((item, i) => i > 0)}/>
+
+Each amendment type must be performed in two steps, `Query` (quotes the amendment) and `Mutation` (commits the amendment). In both steps the returned fields include:
+
+* The booking detail with the amendment applied
+* Amendment fees if applicable
+* AmendmentID (Only returned in the query response)
+
+:::warning
+Please note that amendments are not available for all suppliers. To verify whether your supplier allows modifications, please refer to the [metadata](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata) configuration.
+:::

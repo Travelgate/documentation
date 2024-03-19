@@ -1,0 +1,38 @@
+---
+title: Request Headers
+sidebar_position: 2
+---
+
+# Legacy Buyers Request Headers
+
+The following request headers are essential for all request methods and must be included in every API request.
+
+### Mandatory Request Header
+
+**Authentication**: Authentication is required for every request to the Travelgate XML API. The authentication header employs one level of authentication, namely "Security". 
+
+The Security level header is situated in the SOAP envelope header of all requests, where the user and password are transmitted.
+
+```xml
+<soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" 
+   xmlns:ns = "http://schemas.xmltravelgate.com/hub/2012/06" 
+   xmlns:wsse = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+     <soapenv:Header>
+       <wsse:Security>
+         <wsse:UsernameToken>
+           <wsse:Username>username</wsse:Username>
+           <wsse:Password>password</wsse:Password>
+         </wsse:UsernameToken>
+       </wsse:Security>
+     </soapenv:Header>
+```
+
+:::info Where can I find my username and password??
+
+1. We will send you your username and password during the onboarding process.
+
+2. Every time you create a new client on the Travelgate website under Connections > [API Settings](https://app.travelgatex.com/connections/settings), the password will be displayed on the website only once.
+
+3. If you need to recover any passwords, please [open a ticket](https://app.travelgatex.com/tickets) to our Customer Care team.
+
+:::

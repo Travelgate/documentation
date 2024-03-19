@@ -1,0 +1,412 @@
+---
+sidebar_position: 3
+---
+
+# Descriptive Info
+
+The Descriptive Info method returns the details of a hotel (pictures, descriptions…) in a given language from a supplier's access, granting access to all the properties configured by the Seller for a given set of credentials. The returned fields include: `Images`, `Description`, `Views`, `Attributes` etc.
+
+
+## DescriptiveInfo Request
+
+```xml
+<soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns = "http://schemas.xmltravelgate.com/hub/2012/06" xmlns:wsse = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+   <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>username</wsse:Username>
+            <wsse:Password>password</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <ns:DescriptiveInfo>
+         <ns:descriptiveInfoRQ>
+            <ns:timeoutMilliseconds>20000</ns:timeoutMilliseconds>
+            <ns:version>1</ns:version>
+            <ns:providerRQ>
+               <ns:code>suppliercode</ns:code>
+               <ns:id>1</ns:id>
+               <ns:rqXML>
+                  <DescriptiveInfoRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
+                     <timeoutMilliseconds>19700</timeoutMilliseconds>
+                     <source>
+                        <languageCode>en</languageCode>
+                     </source>
+                     <filterAuditData>
+                        <registerTransactions>true</registerTransactions>
+                     </filterAuditData>
+                     <Configuration>
+                        <User>user</User>
+                        <Password>password</Password>
+                        <UrlAvail>www.supplier.com/avail</UrlAvail>
+                        <UrlReservation>www.supplier.com/reservation</UrlReservation>
+                        <UrlValuation>www.supplier.com/valuation</UrlValuation>
+                        <UrlGeneric>www.supplier.com/generic</UrlGeneric>
+                        <Parameters>
+                           <Parameter key = "UrlListHotels" value = "http://www.supplier.com/ListHotels"></Parameter>
+                           <Parameter key = "Access" value = "22334"></Parameter>
+                        </Parameters>
+                     </Configuration>
+                     <Hotel>
+                        <Code>1234AC</Code>
+                     </Hotel>
+                  </DescriptiveInfoRQ>
+               </ns:rqXML>
+            </ns:providerRQ>
+         </ns:descriptiveInfoRQ>
+      </ns:DescriptiveInfo>
+   </soapenv:Body>
+</soapenv:Envelope>
+```
+
+### Request Data Breakdown
+
+| Element                                    | Rel  | Type    | Description                                                                 |
+|--------------------------------------------|------|---------|-----------------------------------------------------------------------------|
+| RuntimeConfigurationRQ/Hotel               | 1    |         |                                               |
+| Hotel/Code                                 | 1    | String  | Hotel code requested.                                              |
+
+
+## DescriptiveInfo Response
+
+After each request, you will have to process the data and provide a response. Upon receiving a `DescriptiveInfo` request, you will need to send a corresponding `DescriptiveInfo` response. There are two response options, **success** or **error**.
+
+### Success
+
+```xml
+<DescriptiveInfoRS>
+   <UpgradeUTCDate>2016-10-18T13:18:03+02:00</UpgradeUTCDate>
+   <Hotel>
+      <Code>70</Code>
+      <Name>Nice Stay</Name>
+      <PropertyCategory>
+         <Code>1</Code>
+         <Name>Hotel</Name>
+      </PropertyCategory>
+      <Address>Avenue Doctor Brown S/N</Address>
+      <Airports>
+         <Airport>
+            <IATACode>LON</IATACode>
+         </Airport>
+      </Airports>
+      <Town>London</Town>
+      <ZipCode>21449</ZipCode>
+      <CountryISOCode>UK</CountryISOCode>
+      <AvailDestination code = "2" name = "London"/>
+      <GeographicDestination code = "2" name = "London" avail = "true"/>
+      <LocationType>City</LocationType>
+      <Contact>
+         <Email>emailhotel@xxx.com</Email>
+         <Telephone>91547892</Telephone>
+         <Fax></Fax>
+      </Contact>
+      <BookingContact>
+         <Email>bookinghotel@xxx.com</Email>
+         <Telephone>91547880</Telephone>
+         <Fax>910200200</Fax>
+      </BookingContact>
+      <CategoryCode>4 Stars</CategoryCode>    
+      <ShortDescription>the hotel.....</ShortDescription>
+      <LongDescription>the hotel....</LongDescription>
+      <SituationDescription>....</SituationDescription>
+      <HowToGet></HowToGet>
+      <Attributes>
+         <Attribute>
+            <Code>90</Code>
+            <Value>RES</Value>
+            <Classification>GRAL</Classification>
+            <Description>Restaurant</Description>
+         </Attribute>
+         <Attribute>
+            <Code>31</Code>
+            <Value>RES</Value>
+            <Classification>HOT</Classification>
+            <Description>Pool</Description>
+         </Attribute>
+      </Attributes>
+      <Images>
+         <Picture>
+            <URL>http://www.images.net/infor/work/imagen/hotel_07/mapa.jpg</URL>
+            <Classification>GRAL</Classification>
+            <Description>Map view</Description>
+            <Ordered>1</Ordered>
+            <Code>50</Code>
+            <UpgradeUTCDate>2016-10-18T13:18:03+02:00</UpgradeUTCDate>
+         </Picture>
+         <Picture>
+            <URL>http://www.images.net/infor/work/imagen/hotel_02/M.jpg</URL>
+            <Classification>GRAL</Classification>
+            <Description>External view</Description>
+            <Ordered>2</Ordered>
+            <Code>100</Code>
+            <UpgradeUTCDate>2016-10-18T13:18:03+02:00</UpgradeUTCDate>
+         </Picture>
+      </Images>
+      <PaymentOptions cash="false" bankAcct="false">
+         <Cards>
+            <Card code="VI"/>
+            <Card code="AX"/>
+            <Card code="CA"/>
+         </Cards>
+      </PaymentOptions>
+      <ExclusiveDeal>true</ExclusiveDeal>
+      <Rooms>
+         <Room code = "201232338" size = "0" viewCode = "Others" classificationCode = "Others" occupancy = "0">
+            <Beds>
+               <Bed numberOfBeds = "1" type = "SINGLE"/>
+            </Beds>
+            <RoomOccupancy>
+               <Adults>
+                  <Min>1</Min>
+                  <Max>1</Max>
+                </Adults>
+             <Children>
+               <Min>0</Min>
+               <Max>0</Max>
+             </Children>
+             <Infants>
+               <Min>0</Min>
+               <Max>0</Max>
+             </Infants>
+             <Total>
+               <Min>1</Min>
+               <Max>1</Max>
+             </Total>
+           </RoomOccupancy>
+           <Attributes>                      
+              <Attribute>
+                 <Code>2403</Code>
+                 <Value>RES</Value>
+                 <Classification>HAB</Classification>
+                 <Description>Free WiFi</Description>
+              </Attribute>
+              <Attribute>
+                 <Code>318</Code>
+                 <Value>RES</Value>
+                 <Classification>HAB</Classification>
+                 <Description>Balcony</Description>
+              </Attribute>
+           </Attributes>
+           <Images>
+              <Picture>
+                 <Code>01</Code>
+                 <URL>http://www.images.net/infor/work/imagen/hotel_room_02/M.jpg</URL>
+                 <Classification>HAB</Classification>
+                 <Ordered>1</Ordered>
+                 <Description>Room</Description>
+                 <UpgradeUTCDate>0001-01-01T00:00:00</UpgradeUTCDate>
+              </Picture>
+           </Images>
+           <Description>Standard Single room</Description>
+           <Views>
+              <View>
+                 <Code>01</Code>
+                 <Name>Sea view</Name>
+              </View>
+            </Views>
+            <Area>25</Area>
+         </Room>
+      </Rooms>
+   </Hotel>
+</DescriptiveInfoRS>
+```
+
+#### Success Response Data Breakdown
+
+| Element                          | Rel  | Type     | Description                                                                                                      |
+|----------------------------------|------|----------|------------------------------------------------------------------------------------------------------------------|
+| DescriptiveInfoRS/UpgradeUTCDate | 1    | DateTime | Indicates the update date of the information in UTC format.                                                      |
+| DescriptiveInfoRS/Hotel          | 0..n |          |                                                                                                                  |
+| Hotel/Code                       | 1    | String   | Hotel Code                                                                                                       |
+| Hotel/Name                       | 1    | String   | Hote Name                                                                                                        |
+| Hotel/PropertyCategory           | 0..1 |          |                                                                                                                  |
+| PropertyCategory/Code            | 1    | String   | Supplier property code.                                                                                          |
+| PropertyCategory/Name            | 1    | String   | Supplier property name.                                                                                          |
+| Hotel/Address                    | 1    | String   | Hotel Adress                                                                                                                 |
+| Hotel/Airports                   | 0..1 |          |                                                                                                                  |
+| Airports/Airport                 | 1..n |          |                                                                                                                  |
+| Airport/IATACode                 | 1    | String   | IATA airport Code (airport near the hotel).                                                                      |
+| Hotel/Town                       | 1    | String   | Town                                                                                                             |
+| Hotel/ZipCode                    | 1    | String   | ZipCode                                                                                                          |
+| Hotel/CountryISOCode             | 1    | String   | Country ISOCode                                                                                                  |
+| Hotel/AvailDestination           | 0..1 |          |                                                                                                                  |
+| @code                            | 1    | String   | Avail destination code (lowest destination level).                                                               |
+| @name                            | 1    | String   | Avail destination name (lowest destination level).                                                               |
+| Hotel/GeographicDestination      | 1    |          |                                                                                                                  |
+| @code                            | 1    | String   | Geographic Destination code (lowest destination level).                                                          |
+| @name                            | 1    | String   | Geographic Destination name (lowest destination level).                                                          |
+| @avail                           | 1    | Boolean  | Indicates if it is allowed in availability.                                                                      |
+| Hotel/Latitude                      | 0..1 | String   | Latitude. Format is Decimal Degrees (e.g. 37.207295).                                                            |
+| Hotel/Longitude                     | 0..1 | String   | Longitude. Format is Decimal Degrees (e.g. -7.23768).                                                            |
+| Hotel/LocationType               | 0..1 | String   | Location type                                                                                                    |
+| Hotel/Contact                    | 0..1 |          |                                                                                                                  |
+| Contact/Email                    | 1    | String   | Hotel contact email.                                                                                             |
+| Contact/Telephone                | 1    | String   | Hotel contact telephone.                                                                                         |
+| Contact/Fax                      | 1    | String   | Hotel contact fax.                                                                                               |
+| Hotel/BookingContact             | 0..1 |          |                                                                                                                  |
+| BookingContact/Email             | 1    | String   | Booking dept email.                                                                                              |
+| BookingContact/Telephone         | 1    | String   | Booking dept telephone.                                                                                          |
+| BookingContact/Fax               | 1    | String   | Booking dept fax.                                                                                                |
+| Hotel/CategoryCode               | 1    | String   | Hotel category code.                                                                                             |
+| Hotel/Chaincode                     | 0..1 | String   | Hotel chain code.                                                                                                |
+| Hotel/ShortDescription           | 0..1 | String   | Hotel short description.                                                                                         |
+| Hotel/LongDescription            | 0..1 | String   | Hotel long description.                                                                                          |
+| Hotel/SituationDescription       | 0..1 | String   | Hotel area description.                                                                                          |
+| Hotel/RestaurantsDescription        | 0..1 | String   | Restaurants description                                                                                         |
+| Hotel/PoolsDescription              | 0..1 | String   | Pools description                                                                                               |
+| Hotel/ActivitiesDescription         | 0..1 | String   | Activities description                                                                                          |
+| Hotel/ServicesDescription           | 0..1 | String   | Services description                                                                                            |
+| Hotel/AdditionalDetails             | 0..1 | String   | Additional details                                                                                              |
+| Hotel/HowToGet                   | 0..1 | String   | Directions to the hotel.                                                                                         |
+| Hotel/Attributes                 | 1..n |          |                                                                                                                  |
+| Attributes/Attribute             | 1..n |          | Specific attributes of the hotel.                                                                                |
+| Attribute/Code                   | 1    | String   | Attribute code                                                                                                  |
+| Attribute/Value               | 1    | String   | Attribute value                                                                                                 |
+| Attribute/Classification         | 1    | String   | <details>     <summary>Classification codes</summary>     <div>         <div>          <table>   				  <thead>   					  <tr>   						  <th>   							  <strong>Code</strong>   						  </th>   						  <th>   							  <strong>Name</strong>   						  </th>   					  </tr>   				  </thead>   				  <tbody>   					  <tr>   						  <td>HOT</td>   						  <td>Hotel</td>   					  </tr>   					  <tr>   						  <td>HAB</td>   						  <td>Room</td>   					  </tr>                     <tr>   						  <td>SER</td>   						  <td>Service</td>   					  </tr>   					  <tr>   						  <td>GRAL</td>   						  <td>Generic</td>   					  </tr> 				   </tbody>   			</table>         </div>     </div> </details>                                            |
+| Attribute/Description            | 0..1 | String   | Attribute description                                                                                           |
+| Hotel/Images                     | 0..1 |          |                                                                                                                  |
+| Images/Picture                   | 1..n |          | Specific pictures of the hotel.                                                                                  |
+| Picture/Url                      | 1    | String   | Picture url                                                                                                     |
+| Picture/Classification           | 1    | String   | <details>     <summary>Classification codes</summary>     <div>         <div>          <table>   				  <thead>   					  <tr>   						  <th>   							  <strong>Code</strong>   						  </th>   						  <th>   							  <strong>Name</strong>   						  </th>   					  </tr>   				  </thead>   				  <tbody>   					  <tr>   						  <td>HOT</td>   						  <td>Hotel</td>   					  </tr>   					  <tr>   						  <td>HAB</td>   						  <td>Room</td>   					  </tr>                     <tr>   						  <td>SER</td>   						  <td>Service</td>   					  </tr>   					  <tr>   						  <td>GRAL</td>   						  <td>Generic</td>   					  </tr> 				   </tbody>   			</table>         </div>     </div> </details>                                              |
+| Picture/Description              | 0..1 | String   | Picture description                                                                                             |
+| Picture/Ordered                  | 0..1 | String   | Images should be ordered from 1 onward. 1 is top.                                                                |
+| Picture/Code                     | 0..1 | String   | Picture code                                                                                                    |
+| Picture/UpgradeUTCDate           | 0..1 | DateTime | Indicates the upgrade date of the picture in UTC format.                                                         |
+| Hotel/PaymentOptions             | 0..1 | String   | Type of cards allowed by the supplier. This tag is only mandatory if payment type is different than MerchantPay. |
+| PaymentOptions/Cards             | 1    |          |                                                                                                                  |
+| @cash                            | 1    | Boolean  | Cash indicates whether payment will be made in cash (true) or by card (false).
+| @bankAcct                        | 1    | Boolean  | BankAcct specifies whether payment will be made via bank transfer (true) or not (false).                                                                                                                 |
+| Cards/Card                       | 1..n |          |                                                                                                                  |
+| @code                            | 1    | String   | <details>     <summary>Credit Card codes</summary>     <div>         <div>          <table>   				  <thead>   					  <tr>   						  <th>   							  <strong>Code</strong>   						  </th>   						  <th>   							  <strong>Name</strong>   						  </th>   					  </tr>   				  </thead>   				  <tbody>   					  <tr>   						  <td>VI</td>   						  <td>Visa</td>   					  </tr>   					  <tr>   						  <td>AX</td>   						  <td>American Express</td>   					  </tr>                     <tr>   						  <td>BC</td>   						  <td>BC Card</td>   					  </tr>   					  <tr>   						  <td>CA</td>   						  <td>MasterCard</td>   					  </tr>   					  <tr>   						  <td>CB</td>   						  <td>Carte Blanche</td>   					  </tr>                     <tr>   						  <td>CU</td>   						  <td>China Union Pay</td>   					  </tr>   					  <tr>   						  <td>DS</td>   						  <td>Discover</td>   					  </tr>   					  <tr>   						  <td>DC</td>   						  <td>Diners Club</td>   					  </tr>                     <tr>   						  <td>T</td>   						  <td>Carta Si</td>   					  </tr>                     <tr>   						  <td>R</td>   						  <td>Carte Bleue</td>   					  </tr>                     <tr>   						  <td>N</td>   						  <td>Dankort</td>   					  </tr>                     <tr>   						  <td>L</td>   						  <td>Delta</td>   					  </tr>                     <tr>   						  <td>E</td>   						  <td>Electron</td>   					  </tr>                     <tr>   						  <td>JC</td>   						  <td>Japan Credit Bureau</td>   					  </tr>                     <tr>   						  <td>TO</td>   						  <td>Maestro</td>   					  </tr>                     <tr>   						  <td>S</td>   						  <td>Switch</td>   					  </tr>                     <tr>   						  <td>EC</td>   						  <td>Electronic Cash</td>   					  </tr>                     <tr>   						  <td>EU</td>   						  <td>EuroCard</td>   					  </tr>                     <tr>   						  <td>TP</td>   						  <td>Universal air travel card</td>   					  </tr>                     <tr>   						  <td>OP</td>   						  <td>optima</td>   					  </tr>                     <tr>   						  <td>ER</td>   						  <td>Air Canada/RnRoute</td>   					  </tr>                     <tr>   						  <td>XS</td>   						  <td>access</td>   					  </tr>                     <tr>   						  <td>O</td>   						  <td>others</td>   					  </tr>   				  </tbody>   			</table>         </div>     </div> </details>                                                                                                                 |
+| Hotel/ExclusiveDeal              | 0..1 | Boolean  | Indicates that a Hotel is an Exlusive Deal.                                                                      |
+| Hotel/Rooms                      | 0..1 |          |                                                                                                                  |
+| Rooms/Room                       | 1..n |          |                                                                                                                  |
+| @code                            | 1    | String   | Room Code                                                                                                       |
+| @size                            | 1    | Integer  | Size of the room.                                                                                                |
+| @viewCode                        | 1    | String   | Main view of the room.                                          |
+| @classificationCode              | 1    | String   | Room classification code.                                      |
+| @occupancy                       | 1    | Integer  | Number of rooms availables at the hotel.                                                                         |
+| Room/Beds                        | 0..1 |          |                                                                                                                  |
+| @sharedBed                    | 1    | Boolean  | Indicates if it’s a shared bed.                                                                                  |
+| Beds/Bed                         | 1..n |          |                                                                             |
+| @numberOfBeds                    | 1    | String   | Number of beds allocated in the room.                                                                            |
+| @type                            | 1    | String   | Type of bed (Queen Bed, Single…).                                                                                |
+| Room/RoomOccupancy               | 0..1 |          | Indicates the amount of each occupant type staying in the room.                                                  |
+| RoomOccupancy/Adults             | 1    |          |                                                                                                                  |
+| Adults/Min                       | 1    | Integer  | Indicates the minimum amount of adults staying in the room.                                                      |
+| Adults/Max                       | 1    | Integer  | Indicates the maximum amount of adults staying in the room.                                                      |
+| RoomOccupancy/Children           | 1    |          |                                                                                                                  |
+| Children/Min                     | 1    | Integer  | Indicates the minimum amount of children staying in the room.                                                    |
+| Children/Max                     | 1    | Integer  | Indicates the maximum amount of children staying in the room.                                                    |
+| RoomOccupancy/Infants            | 1    |          |                                                                                                                  |
+| Infants/Min                      | 1    | Integer  | Indicates the minimum amount of infants staying in the room.                                                     |
+| Infants/Max                      | 1    | Integer  | Indicates the maximum amount of infants staying in the room.                                                     |
+| RoomOccupancy/Total              | 1    |          |                                                                                                                  |
+| Total/Min                        | 1    | Integer  | Indicates the minimum total amount of occupants staying in the room.                                             |
+| Total/Max                        | 1    | Integer  | Indicates the maximum total amount of occupants staying in the room.                                             |
+| Room/Attributes                  | 1    |          |                                                                                                                  |
+| Attributes/Attribute             | 1..n |          | Specific attributes of the room.                                                                                 |
+| Attribute/Code                   | 1    | String   | Attribute code                                                                                                  |
+| Attribute/Value               | 1    | String   | Attribute value                                                                                                 |
+| Attribute/Classification         | 1    | String   | <details>     <summary>Classification codes</summary>     <div>         <div>          <table>   				  <thead>   					  <tr>   						  <th>   							  <strong>Code</strong>   						  </th>   						  <th>   							  <strong>Name</strong>   						  </th>   					  </tr>   				  </thead>   				  <tbody>   					  <tr>   						  <td>HOT</td>   						  <td>Hotel</td>   					  </tr>   					  <tr>   						  <td>HAB</td>   						  <td>Room</td>   					  </tr>                     <tr>   						  <td>SER</td>   						  <td>Service</td>   					  </tr>   					  <tr>   						  <td>GRAL</td>   						  <td>Generic</td>   					  </tr> 				   </tbody>   			</table>         </div>     </div> </details>                                             |
+| Attribute/Description            | 0..1 | String   | Attribute description                                                                                           |
+| Room/Images                      | 1    |          |                                                                                                                  |
+| Images/Picture                   |      |          | Specific pictures of the room.                                                                                   |
+| Picture/Code                     | 0..1 | String   | Picture code                                                                                                    |
+| Picture/Url                      | 1    | String   | Picture url                                                                                                     |
+| Picture/Classification           | 1    | String   | <details>     <summary>Classification codes</summary>     <div>         <div>          <table>   				  <thead>   					  <tr>   						  <th>   							  <strong>Code</strong>   						  </th>   						  <th>   							  <strong>Name</strong>   						  </th>   					  </tr>   				  </thead>   				  <tbody>   					  <tr>   						  <td>HOT</td>   						  <td>Hotel</td>   					  </tr>   					  <tr>   						  <td>HAB</td>   						  <td>Room</td>   					  </tr>                     <tr>   						  <td>SER</td>   						  <td>Service</td>   					  </tr>   					  <tr>   						  <td>GRAL</td>   						  <td>Generic</td>   					  </tr> 				   </tbody>   			</table>         </div>     </div> </details>                        |
+| Picture/Ordered                  | 0..1 | String   | Images should be ordered from 1 onward. 1 is top.                                                                |
+| Picture/Description              | 0..1 | String   | Picture description                                                                                             |
+| Picture/UpgradeUTCDate           | 0..1 | DateTime | Indicates the upgrade date of the picture in UTC format.                                                         |
+| Room/Description                 | 1    | String   | Room Description                                                                                                |
+| Room/Views                       | 0..1 |          | Views of the room.                                                                                               |
+| Views/View                       | 1..n |          |                                                                                                                  |
+| View/Code                        | 1..n | String   | View code                                                                                                       |
+| View/Name                        | 1..n | String   | Name of the view.                                                                                                |
+| Room/Area                        | 0..1 | String   | Room area.                                                                                                |
+
+
+### Error
+
+```xml
+<DescriptiveInfoRS>
+   <operationImplemented>true</operationImplemented>
+   <applicationError>
+      <code/>
+      <type>302</type>
+      <description>Hotel Not Found in DescriptiveInfo.</description>
+      <httpStatusCode>0</httpStatusCode>
+   </applicationError>
+</DescriptiveInfoRS>
+```
+
+<details>
+    <summary>Error codes that you will need to include in the response in the event of an error</summary>
+    <div>
+        <div>
+         <table>
+				<thead>
+					<tr>
+						<th>
+							<strong>Error Code</strong>
+						</th>
+						<th>
+							<strong>Error Description</strong>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>101</td>
+						<td>System Exception (Exception not controlled or not classified as general exception).</td>
+					</tr>
+					<tr>
+						<td>102</td>
+						<td>Supplier Error.</td>
+					</tr>
+					<tr>
+						<td>103</td>
+						<td>Too many requests to the supplier.</td>
+					</tr>
+          <tr>
+						<td>104</td>
+						<td>Timeout (Timeout during the execution of an operation (look in the common attribute timeout )).</td>
+					</tr>
+					<tr>
+						<td>105</td>
+						<td>Communication Error.</td>
+					</tr>
+					<tr>
+						<td>204</td>
+						<td>Supplier returns 0 results in availability.</td>
+					</tr>
+          <tr>
+						<td>205</td>
+						<td>The Supplier doesn’t accept the distribution RQ.</td>
+					</tr>
+					<tr>
+						<td>206</td>
+						<td>The Supplier doesn’t accept the dates RQ.</td>
+					</tr>
+					<tr>
+						<td>207</td>
+						<td>The Supplier doesn’t accept the request RQ.</td>
+					</tr>
+          <tr>
+						<td>301</td>
+						<td>Option not found in policies.</td>
+					</tr>
+          <tr>
+						<td>302</td>
+						<td>Hotel Not Found in DescriptiveInfo.</td>
+					</tr>
+          <tr>
+						<td>303</td>
+						<td>Booking not confirmed in the supplier’s system.</td>
+					</tr>
+				</tbody>
+			</table>
+        </div>
+    </div>
+</details>

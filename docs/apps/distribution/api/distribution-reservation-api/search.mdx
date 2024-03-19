@@ -1,0 +1,247 @@
+---
+sidebar_position: 2
+---
+
+# Search
+
+This method allows searching for reservations primarily based on date filters, returning basic information for each matching reservation. 
+
+## Request
+
+**Mandatory criteria:**
+
+To make a search, it is essential to set either a bookingDate filter or a checkinDate filter, but not both at the same time (as this will result in an error). In both cases, the date range for the bookingDate filter and the checkinDate filter cannot exceed one week.
+
+**Optional criteria:**
+
+Optionally, you can filter your search by specifying specific hotels, providers, and clients. You can also choose to includeCancellations, onlyCancellations, onlyErrors, onlyLocators, orderBy and/or isTest.
+
+```html
+{
+    "access" : {
+        "accessToken" : "xxxx",
+        "user" : "xxxx",
+        "password" : "xxxx"
+    },
+    "bookingDate" : {
+        "from" : "2018-07-18",
+        "to" : "2018-07-20"
+    },
+    "hotels" : [
+        "1234",
+        "4534"
+    ],
+    "includeCancellations" : true
+}
+```
+
+### Request Data Breakdown
+
+| Element				| Rel | Type	| Description					|
+| ------------------------------------- | ---------- | -------- | ----------------------------------------------------- |
+| access		| 1  |	node  | Acces information: <ul><li>It will be validated to grant acces to the API and to the operation.</li><li>If there is any problem then an error will be returned.</li></ul>
+| access/accessToken 		| 1  |	string  | Key to acces to the API.
+| access/user        		| 1  |	string  | User.
+| access/password    		| 1  |	string  | Password related to the user.
+| checkinDate       		| 0..1|  node    | Check-in filter. This node is set if we want to filter by check-in date.
+| checkinDate/from  		| 1  |	date    | Check-in date range filter: from (inclusive).
+| checkinDate/to     		| 1  |	date    | Check-in date range filter: to (inclusive).
+| bookingDate        		| 0..1|	node    | Booking filter. This node is set if we want to filter by booking date. (inclusive).
+| bookingDate/from     		| 1  |	dateTime| Booking date range filter: from (inclusive).
+| bookingDate/to     		| 1  |	dateTime| Booking date range filter: to (inclusive).
+| hotels            		|0..N|list(string)| Hotels filter:<ul><li>If we just want the reservations of concret hotels then we can set this list with the codes of those hotels.</li><li>If not given or if it is empty then it will not be applied the filter by hotel code.</li></ul>
+| providers            		|0..N|list(string)| Providers filter:<ul><li>If we just want the reservations of a specific set of providers then we can set this list with the codes of those providers.</li><li>If not given or if it is empty then the filter by provider code will not be applied.</li></ul>
+| clients            		|0..N|list(string)| Clients filter:<ul><li>If we just want the reservations of a specific set of clients then we can set this list with the codes of those clients.</li><li>If not given or if it is empty then the filter by client code will not be applied.</li></ul>
+| includeCancellations      | 0..1| boolean  | Cancelations inclusion filter:<ul><li>If set to **_true_** then cancelled reservations that match the filters will be included in the response.</li><li>If not set to **_true_** or not given then only not cancelled bookings will be returned.</li></ul>
+| onlyCancellations         | 0..1| boolean  | Cancellations filter:<ul><li>If set to **_true_** then only the bookings that have been cancelled in the specific time interval indicated will be returned.</li><li>If not set to **_true_**, then (depending on the value of the **_includeCancellations_** tag) only the reservations booked between the time interval indicated will be returned.</li></ul>
+| onlyErrors                | 0..1| boolean  | Only Errors filter:<ul><li>If set to **_true_** then only the bookings that have a status indicating some type of error will be returned (bookings with status **_OK_** or **_CN_** will not be returned). Also, if this filter is applied, both **_includeCancellations_** and **_onlyCancellations_** will be ingnored.</li><li>If not set to **_true_**, then (depending on the value of the *includeCancellations* tag) only the reservations booked between the time interval indicated will be returned.</li></ul>
+| isTest                    | 0..1| boolean  | Test mode:<ul><li>If set to **_true_** the operation will be executed in *test mode*. This means that the response will include dummy information (no real reservations information.)</li><li>If not set to **_true_** or not given then the operation will execute as normally.</li></ul> *In order to test the API, we still need to gie a real access information. Note that even in test mode all operations will execute its own request validations, so the requests must be well formed.*
+
+## Response
+
+```html
+{
+    "reservationSearchRS" : [
+        {
+            "locators" : {
+                "tgx" : "1",
+                "client" : "111-222",
+                "provider" : "12312313"
+            },
+            "bookingDate" : "2018-07-11 8:50:48",
+            "checkinDate" : "2018-08-14",
+            "checkoutDate" : "2018-08-21",
+            "status" : "OK",
+            "mainGuestName" : "Smith, Martin",
+            "hotelCode" : "h1",
+            "clientCode" : "c1",
+            "providerCode" : "p1",
+            "sellingPrice" : {
+                "currency" : "EUR",
+                "amount" : 234.5,
+                "binding" : false,
+                "commission" : 0
+            },
+            "providerPrice" : {
+                "currency" : "EUR",
+                "amount" : 204.99,
+                "binding" : false,
+                "commission" : 0
+            },
+            "quoteSellingPrice" : {
+                "currency" : "EUR",
+                "amount" : 234.5,
+                "binding" : false,
+                "commission" : 0
+            },
+            "quoteProviderPrice" : {
+                "currency" : "EUR",
+                "amount" : 204.99,
+                "binding" : false,
+                "commission" : 0
+            }
+        },
+        {
+            "locators" : {
+                "tgx" : "2",
+                "client" : "222-333",
+                "provider" : "456456456"
+            },
+            "bookingDate" : "2018-08-21 10:11:17",
+            "checkinDate" : "2018-12-01",
+            "checkoutDate" : "2018-12-07",
+            "cancellationDate" : "2018-08-26 11:01:47",
+            "status" : "CN",
+            "mainGuestName" : "Redford, Charles",
+            "hotelCode" : "h2",
+            "clientCode" : "c2",
+            "providerCode" : "p2",
+            "sellingPrice" : {
+                "currency" : "EUR",
+                "amount" : 234.5,
+                "binding" : false,
+                "commission" : 0
+            },
+            "providerPrice" : {
+                "currency" : "EUR",
+                "amount" : 204.99,
+                "binding" : false,
+                "commission" : 0
+            },
+            "quoteSellingPrice" : {
+                "currency" : "EUR",
+                "amount" : 234.5,
+                "binding" : false,
+                "commission" : 0
+            },
+            "quoteProviderPrice" : {
+                "currency" : "EUR",
+                "amount" : 204.99,
+                "binding" : false,
+                "commission" : 0
+            }
+        },
+        {
+            "locators" : {
+                "tgx" : "3",
+                "client" : "444-555",
+                "provider" : "789-987-789"
+            },
+            "bookingDate" : "2018-08-09 18:00:00",
+            "checkinDate" : "2019-01-26",
+            "checkoutDate" : "2019-01-27",
+            "status" : "OK",
+            "mainGuestName" : "Clancy, Tom",
+            "hotelCode" : "h3",
+            "clientCode" : "c3",
+            "providerCode" : "p3",
+            "sellingPrice" : {
+                "currency" : "EUR",
+                "amount" : 234.5,
+                "binding" : false,
+                "commission" : 0
+            },
+            "providerPrice" : {
+                "currency" : "EUR",
+                "amount" : 204.99,
+                "binding" : false,
+                "commission" : 0
+            },
+            "quoteSellingPrice" : {
+                "currency" : "EUR",
+                "amount" : 234.5,
+                "binding" : false,
+                "commission" : 0
+            },
+            "quoteProviderPrice" : {
+                "currency" : "EUR",
+                "amount" : 204.99,
+                "binding" : false,
+                "commission" : 0
+            }
+        },
+        {
+            "locators" : {
+                "tgx" : "45",
+                "client" : "232-555",
+                "provider" : "283-212-334"
+            },
+            "status" : "ERROR"
+        }
+    ]
+}
+```
+
+### Response Data Breakdown
+
+| Element				| Rel |    Type  	| Description					|
+| ------------------------------------- | ---------- | ----------- | ----------------------------------------------------- |
+| reservationSearchRS		| 1  |	list  | Root node with the list of reservations.
+| locators		            | 1  |	node  | This node contains the different locators of the reservation.
+| locators/tgx      		| 1  | string | Travelgate locator.
+| locators/client    		| 1  | string | Client locator.
+| locators/provider    	    | 0..1| string | Provider locator. If the reservation has no provider locator then this node will be null.
+| bookingDate    	        | 1  |dateTime| Booking date.
+| checkinDate    	        | 1  | date   | Check-in date.
+| checkoutDate    	        | 1  | date   | Check-out date.
+| cancellationDate    	    | 0..1|dateTime| If the reservation has been canceled this will be the cancelation date. If the reservation is not canceled this node will be null.
+| status            		| 1  | string | <details>     <summary>Reservation Status</summary>     <div>         <div>          <table> 				<thead> 					<tr> 						<th> 							<strong>Code</strong> 						</th> 						<th> 							<strong>Explanation</strong> 						</th> 					</tr> 				</thead> 				<tbody> 					<tr> 						<td>OK</td> 						<td>The reservation was created successfully.</td> 					</tr> 										<tr> 						<td>KO</td> 						<td>The reservation process failed and the reservation was not created on the provider.</td> 					</tr>                     <tr> 						<td>KOP</td> 						<td>The reservation process failed but the reservation was created on the provider.</td> 					</tr> 					<tr> 						<td>KUN</td> 						<td>The reservation process failed and we don’t know the final status on the provider.</td> 					</tr> 					<tr> 						<td>CN</td> 						<td>The reservation was cancelled successfully.</td> 					</tr>                     <tr> 						<td>CK</td> 						<td>The cancellation process failed and the reservation was not cancelled on the provider.</td> 					</tr> 				    <tr> 						<td>CKP</td> 						<td>The cancellation process failed but the reservation was cancelled on the provider.</td> 					</tr>             <tr> 						<td>CUN</td> 						<td>The cancellation process failed and we don’t know the final status on the provider.</td> 					</tr>          <tr> 						<td>ERROR</td> 						<td>There has been an error while recovering the reservation from the system. Returned data can be incompleted.</td> 					</tr> <tr> 						<td>NOTFOUND</td> 						<td>The reservation has not been found on the system. Returned data has to be ignored.</td> 					</tr> 	</tbody> 			</table>         </div>     </div> </details> 
+| summaryStatus            	| 1  | string |  <details>     <summary>Reservation Summary Status</summary>     <div>         <div>          <table> 				<thead> 					<tr> 						<th> 							<strong>Code</strong> 						</th> 						<th> 							<strong>Explanation</strong> 						</th> 					</tr> 				</thead> 				<tbody> 					<tr> 						<td>OK</td> 						<td>The reservation was created successfully.</td> 					</tr> 					<tr> 						<td>CN</td> 						<td>The reservation was cancelled successfully.</td> 					</tr> 					<tr> 						<td>RQ</td> 						<td>The reservation was created successfully put is pending on provider.</td> 					</tr>                     <tr> 						<td>UN</td> 						<td>The reservation is on an unknown status because some error on the last operation executed on it.</td> 					</tr>					</tbody> 			</table>         </div>     </div> </details> 
+| mainGuestName      		| 1  | string | Reservation's main guest name.
+| hotelCode      		    | 1  | string | Code of the hotel of the reservation.
+| clientCode      		    | 1  | string | Code of the agency/client.
+| providerCode      		| 1  | string | Code of the provider of the reservation.
+| sellingPrice      		| 1  |        | Selling price information.
+| sellingPrice/amount  		| 1  |decimal| Price amount.
+| sellingPrice/currency    	| 1  |string| Price currency.
+| sellingPrice/binding    	| 1  |boolean| Indicates if the price is binding.
+| sellingPrice/commision  	| 1  |decimal| Commission related to the price.
+| quoteSellingPrice      	| 1  |       | Selling price at the quote/pre-booking step.
+| quoteSellingPrice/amount  		| 1  |decimal| Price amount.
+| quoteSellingPrice/currency    	| 1  |string| Price currency.
+| quoteSellingPrice/binding    	| 1  |boolean| Indicates if the price is binding.
+| quoteSellingPrice/commision  	| 1  |decimal| Commission related to the price.
+| providerPrice      		| 1  |       | Provider price information.
+| providerPrice/amount  		| 1  |decimal| Price amount.
+| providerPrice/currency    	| 1  |string| Price currency.
+| providerPrice/binding    	| 1  |boolean| Indicates if the price is binding.
+| providerPrice/commision  	| 1  |decimal| Commission related to the price.
+| quoteProviderPrice        | 1  |       | Provider price at the quote/pre-booking step.
+| quoteProviderPrice/amount  		| 1  |decimal| Price amount.
+| quoteProviderPrice/currency    	| 1  |string| Price currency.
+| quoteProviderPrice/binding    	| 1  |boolean| Indicates if the price is binding.
+| quoteProviderPrice/commision  	| 1  |decimal| Commission related to the price.
+| officeCode               	| 0..1| string | If returned then this will be the code of the office.
+| accessCodeHX              | 1  | string | Code of the access used in Hotel-X layer to access the provider.
+| hotelProvCodeHX           | 1  | string | Code of the hotel on the provider system (used by Hotel-X).
+| correlationID           	| 0..1| string | Correlation ID.
+| reservationError          | 0..1| string | If the reservation is not on a well finished status (reservation or cancellation) then we can have some textual information about the error that caused that not well finished status.
+| reservationWarnings      	| 0,1|list string| If returned then it contains a list of tgx locators of reservations that have had problems registering on the main system and that have been stored on an auxiliary system. This information is indepent from the searching dates (will be given for any dates range).
+| cancellationWarnings      | 0..1|      | If returned then it contains a list of tgx locators of cancellations that have had problems registering on the main system and that have been stored on an auxiliary system. This information is indepent from the searching dates (will be given for any dates range).
+| cancellationWarnings/amount  		| 1  |decimal| Price amount.
+| cancellationWarnings/currency    	| 1  |string| Price currency.
+| cancellationWarnings/binding    	| 1  |boolean| Indicates if the price is binding.
+| cancellationWarnings/commision  	| 1  |decimal| Commission related to the price.
+| error		                | 0..1|	node  | If there has been any error executing the operation we can receive this node with information about that error.
+| error/code      		    | 1  | string | <details>     <summary>Error Codes and Description</summary>     <div>         <div>      <p>The following errors will be returned as Http Status Errors:</p>    <table> 				<thead> 					<tr> 						<th> 							<strong>Code</strong> 						</th> 	<th> 							<strong>Description</strong> 						</th>					<th> 							<strong>Explanation</strong> 						</th> 					</tr> 				</thead> 				<tbody> 					<tr> 						<td>400</td> 						<td>Bad Request</td> 		<td>There is a problem on the request data.</td>			</tr> 					<tr> 						<td>401</td> 						<td>Unauthorized</td> 			<td>There is an access problem.</td>		</tr> 					<tr> 						<td>500</td> 						<td>Internal Server Error</td> 		<td>Internal undefined error.</td>			</tr>              					</tbody> 			</table>       <p>The following errors will be returned as Http Status Errors:</p>    <table> 				<thead> 					<tr> 						<th> 							<strong>Code</strong> 						</th> 					<th> 							<strong>Explanation</strong> 						</th> 					</tr> 				</thead> 				<tbody> 					<tr> 						<td>010</td> 						<td>Exception/Unexpected Error.</td> 					</tr> 					<tr> 						<td>020</td> 						<td>Error validating the RQ.</td> 			</tr> 					<tr> 						<td>030</td> 						<td>No results.</td>			</tr>              <tr> 						<td>040</td> 						<td>Incorrect AccessToken.</td>			</tr>					</tbody> 			</table>    </div>     </div> </details> 
+| error/description 	    | 1  | string | <details>     <summary>Error Codes and Description</summary>     <div>         <div>      <p>The following errors will be returned as Http Status Errors:</p>    <table> 				<thead> 					<tr> 						<th> 							<strong>Code</strong> 						</th> 	<th> 							<strong>Description</strong> 						</th>					<th> 							<strong>Explanation</strong> 						</th> 					</tr> 				</thead> 				<tbody> 					<tr> 						<td>400</td> 						<td>Bad Request</td> 		<td>There is a problem on the request data.</td>			</tr> 					<tr> 						<td>401</td> 						<td>Unauthorized</td> 			<td>There is an access problem.</td>		</tr> 					<tr> 						<td>500</td> 						<td>Internal Server Error</td> 		<td>Internal undefined error.</td>			</tr>              					</tbody> 			</table>       <p>The following errors will be returned as Http Status Errors:</p>    <table> 				<thead> 					<tr> 						<th> 							<strong>Code</strong> 						</th> 					<th> 							<strong>Explanation</strong> 						</th> 					</tr> 				</thead> 				<tbody> 					<tr> 						<td>010</td> 						<td>Exception/Unexpected Error.</td> 					</tr> 					<tr> 						<td>020</td> 						<td>Error validating the RQ.</td> 			</tr> 					<tr> 						<td>030</td> 						<td>No results.</td>			</tr>              <tr> 						<td>040</td> 						<td>Incorrect AccessToken.</td>			</tr>					</tbody> 			</table>    </div>     </div> </details> 

@@ -1,0 +1,56 @@
+---
+title: Common Elements
+sidebar_position: 4
+---
+
+# Legacy Sellers Common Elements
+
+There are certain elements that will be included in every request, namely common elements. These common elements include `timeoutMilliseconds`, `languageCode`, `registerTransactions`, and the supplier's `Configuration`.
+
+```xml
+<echoToken>TEST</echoToken>
+<timeoutMilliseconds>18000</timeoutMilliseconds>
+<source>
+   <languageCode>en</languageCode>
+</source>
+<filterAuditData>
+   <registerTransactions>true</registerTransactions>
+</filterAuditData>
+<ContinuationToken expectedRange = "1000"></ContinuationToken>
+<optionsQuota>500</optionsQuota>
+<Configuration>
+   <User>user</User>
+   <Password>password</Password>
+   <UrlAvail>www.supplier.com/avail</UrlAvail>
+   <UrlReservation>www.supplier.com/reservation</UrlReservation>
+   <UrlValuation>www.supplier.com/valuation</UrlValuation>
+   <UrlGeneric>www.supplier.com/generic</UrlGeneric>
+   <Parameters>
+      <Parameter key = "UrlListHotels" value = "http://www.supplier.com/ListHotels"></Parameter>
+      <Parameter key = "Access" value = "22334"></Parameter>
+   </Parameters>
+</Configuration>
+```
+
+| Element                                    | Rel  | Type    | Description                                                                 |
+|--------------------------------------------|------|---------|-----------------------------------------------------------------------------|
+| echoToken                                  | 0..1 | String  | Echo token to be returned in response (used for test purposes only).        |
+| timeoutMilliseconds                        | 1    | Integer | Maximum time for a response from the supplier’s system.                     |
+| source                                     | 1    |         |                                                                             |
+| source/languageCode                        | 1    | String  | Language code (ISO 3166-1 alpha-2) format lowercase.                        |
+| filterAuditData                            | 1    |         | Activates transaction data sent & received in the supplier’s native format. |
+| filterAuditData/registerTransactions       | 1    | Boolean | Returns all the transactions (XMLs) exchanged with the supplier.            |
+| ContinuationToken                          | 0..1 | String  | Used by the Buyer to paginate the response of HotelList and RoomList.      |
+| @expectedRange	                         | 0..1 | Integer | Used by the Buyer to paginate the response of HotelList and RoomList.      |
+| optionsQuota   	                         | 0..1 | Integer | Used by the Buyer to set the max number of options by MealPlan in Avail method.             |
+| Configuration                              | 1    |         | The info required to access the supplier’s system.                         |
+| Configuration/User                         | 0..1 | String  | User code to connect to supplier.                                           |
+| Configuration/Password                     | 0..1 | String  | Password for the connection.                                                |
+| Configuration/UrlAvail                     | 0..1 | String  | Specific Url for Avail method.                                              |
+| Configuration/UrlReservation               | 0..1 | String  | Specific Url for Reservation method.                                        |
+| Configuration/UrlValuation                 | 0..1 | String  | Specific Url for Valuation method.                                          |
+| Configuration/UrlGeneric                   | 0..1 | String  | Supplier Url used for multiple methods.                                     |
+| Configuration/Parameters                   | 0..1 |         | Parameters for additional information.                                      |
+| Parameters/Parameter                       | 0..n |         |                                                                             |
+| @key                                       | 1    | String  | Contains the keyword to identify a parameter.                            |
+| @value                                     | 1    | String  | Contains the parameter values.                                              |

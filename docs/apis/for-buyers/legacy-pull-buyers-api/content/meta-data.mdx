@@ -4,287 +4,284 @@ sidebar_position: 8
 
 # Metadata
 
-The MetaData method returns a clear and summarized view of the Seller's main characteristics, as well as the methods implemented through their integration and the limitations and restrictions associated with their connection. The returned fields include:
+The MetaData method returns a clear and summarized view of the Seller's main characteristics, as well as the methods implemented through their integration and the limitations and restrictions associated with their connection. The returned fields include:`MaxNumberHotels`, `AllowsCurrency`, `MinimumStay`, `PaymentTypes`, `InformFees`, `TimeZone`, `AllowsDeltaPrice`, `AllowsProvideLocator ` etc.
 
-* `MaxNumberHotels`
-* `AllowsCurrency`
-* `MinimumStay`
-* `PaymentTypes`
-* `InformFees`
-* `TimeZone`
-* `AllowsDeltaPrice`
-* `AllowsProvideLocator `
-* `InformCancelPolicies`
-* `InformPropertyReservationNumber`
-* `RequiredNationality`
+:::caution
 
-## Request
+The amount of information and content returned might vary between Sellers.
+
+:::
+
+## MetaData Request
 
 ```xml
 <soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns = "http://schemas.xmltravelgate.com/hub/2012/06" xmlns:wsse = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
-    <soapenv:Header>
-        <wsse:Security>
-            <wsse:UsernameToken>
-                <wsse:Username>username</wsse:Username>
-                <wsse:Password>password</wsse:Password>
-            </wsse:UsernameToken>
-        </wsse:Security>
-    </soapenv:Header>
-    <soapenv:Body>
-        <ns:MetaData>
-            <ns:metaDataRQ>
-                <ns:timeoutMilliseconds>180000</ns:timeoutMilliseconds>
-                <ns:version>1</ns:version>
-                <ns:providerRQ>
-                    <ns:code>code</ns:code>
-                    <ns:id>1</ns:id>
-                    <ns:rqXML>
-                        <MetaDataRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
-                            <timeoutMilliseconds>20000</timeoutMilliseconds>
-                            <source>
-                                <languageCode>en</languageCode>
-                            </source>
-                            <filterAuditData>
-                                <registerTransactions>false</registerTransactions>
-                            </filterAuditData>
-                            <Configuration>
-                                <User>user</User>
-                                <Password>password</Password>
-                                <UrlGeneric>www.supplier.com</UrlGeneric>
-                                <Parameters>
-                                    <Parameter key = "SegundoPW" value = "PWXML"></Parameter>
-                                </Parameters>
-                            </Configuration>
-                        </MetaDataRQ>
-                    </ns:rqXML>
-                </ns:providerRQ>
-            </ns:metaDataRQ>
-        </ns:MetaData>
-    </soapenv:Body>
+   <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>username</wsse:Username>
+            <wsse:Password>password</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <ns:MetaData>
+         <ns:metaDataRQ>
+            <ns:timeoutMilliseconds>20000</ns:timeoutMilliseconds>
+            <ns:version>1</ns:version>
+            <ns:providerRQ>
+               <ns:code>suppliercode</ns:code>
+               <ns:id>1</ns:id>
+               <ns:rqXML>
+                  <MetaDataRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
+                     <timeoutMilliseconds>19700</timeoutMilliseconds>
+                     <source>
+                        <languageCode>en</languageCode>
+                     </source>
+                     <filterAuditData>
+                        <registerTransactions>true</registerTransactions>
+                     </filterAuditData>
+                     <Configuration>
+                        <User>user</User>
+                        <Password>password</Password>
+                        <UrlAvail>www.supplier.com/avail</UrlAvail>
+                        <UrlReservation>www.supplier.com/reservation</UrlReservation>
+                        <UrlValuation>www.supplier.com/valuation</UrlValuation>
+                        <UrlGeneric>www.supplier.com/generic</UrlGeneric>
+                        <Parameters>
+                           <Parameter key = "UrlListHotels" value = "http://www.supplier.com/ListHotels"></Parameter>
+                           <Parameter key = "Access" value = "22334"></Parameter>
+                        </Parameters>
+                     </Configuration>
+                  </MetaDataRQ>
+               </ns:rqXML>
+            </ns:providerRQ>
+         </ns:metaDataRQ>
+      </ns:MetaData>
+   </soapenv:Body>
 </soapenv:Envelope>
 ```
 
 ### Request Data Breakdown
 
-| Element                                    | Rel  | Type    | Description                                                                 |
-|--------------------------------------------|------|---------|-----------------------------------------------------------------------------|
-| RuntimeConfigurationRQ                     | 1    |         |                                                                             |
-| RuntimeConfigurationRQ/timeoutMilliseconds | 1    | Integer | Maximum time for a response from the supplier’s system.                     |
-| RuntimeCOnfigurationRQ/source              | 1    |         |                                                                             |
-| source/languageCode                        | 1    | String  | Language code (ISO 3166-1 alpha-2) format lowercase.                        |
-| RuntimeConfigurationRQ/filterAuditData     | 1    |         | Activates transaction data sent & received in the supplier’s native format. |
-| filterAuditData/registerTransactions       | 1    | Boolean | Returns all the transactions (XMLs) exchanged with the supplier.            |
-| RuntimeConfigurationRQ/Configuration       | 1    |         | The info required to access the supplier’s system.                          |
-| Configuration/User                         | 0..1 | String  | User code to connect to supplier.                                           |
-| Configuration/Password                     | 0..1 | String  | Password for the connection.                                                |
-| Configuration/UrlGeneric                   | 0..1 | String  | Supplier URL used for multiple methods.                                     |
-| Configuration/Parameters                   | 0..1 |         | Parameters for additional information.                                      |
-| Parameters/Parameter                       | 0..n |         |                                                                             |
-| @key                                       | 1    | String  | Contains the keyword/Id to identify a parameter.                            |
-| @value                                     | 1    | String  | Contains the parameter values.                                              |
+:::info
+
+Check the values you need to add in the [header](../making-requests/request-headers) and [common elements](../making-requests/common-elements).
+
+:::
+
+`MetaData` request does not require any elements. 
 
 
-## Response
+## MetaData Response
+
+After each request, the Seller will have to process the data and provide a response. Upon receiving a `MetaData` request, the Seller will send you a corresponding `MetaData` response.
+
+:::caution
+
+Values can be -1, this means the supplier has no restriction. For example, if MaxNumberHotels returns -1 means there is no maximum number of hotels to be set in a request.
+
+:::
 
 ```xml
 <MetaDataRS>
-    <operationImplemented>true</operationImplemented>
-    <Avail>
-        <Destinations>
-            <MaxNumberHotels reviewDate = "20/06/2022">0</MaxNumberHotels>
-            <MaxNumberHotelsRecommended reviewDate = "20/06/2022">0</MaxNumberHotelsRecommended>
-            <MaxNumberCities reviewDate = "20/06/2022">0</MaxNumberCities>
-            <MaxNumberCitiesRecommended reviewDate = "20/06/2022">0</MaxNumberCitiesRecommended>
-            <MaxNumberZones reviewDate = "20/06/2022">0</MaxNumberZones>
-            <MaxNumberZonesRecommended reviewDate = "20/06/2022">0</MaxNumberZonesRecommended>
-            <MaxNumberGeoCodes reviewDate = "20/06/2022">0</MaxNumberGeoCodes>
-            <MaxNumberGeoCodesRecommended reviewDate = "20/06/2022">0</MaxNumberGeoCodesRecommended>
-            <HotelSameDestinationRestriction reviewDate = "20/06/2022">false</HotelSameDestinationRestriction>
-            <DestinationSameCountryRestriction reviewDate = "20/06/2022">false</DestinationSameCountryRestriction>
-        </Destinations>
-        <AllowsCurrency reviewDate = "20/06/2022">false</AllowsCurrency>
-        <AllowsBusinessRules reviewDate = "20/06/2022">false</AllowsBusinessRules>
-        <NumMarketsAllowed reviewDate = "20/06/2022">0</NumMarketsAllowed>
-        <Release reviewDate = "20/06/2022">0</Release>
-        <MinimumStay reviewDate = "20/06/2022">0</MinimumStay>
-        <MaxStay reviewDate = "20/06/2022">0</MaxStay>
-        <RoomCandidates>
-            <MaxNumberRoomCandidates reviewDate = "20/06/2022">0</MaxNumberRoomCandidates>
-            <PaxTypeRangeInRoomCandidates reviewDate = "20/06/2022">
-                <Candidate max = "3" min = "1" type = "Adult"/>
-                <Candidate max = "2" min = "0" type = "Child"/>
-                <Candidate max = "0" min = "0" type = "Infant"/>
-            </PaxTypeRangeInRoomCandidates>
-            <MaxPaxInRoomCandidates reviewDate = "20/06/2022">0</MaxPaxInRoomCandidates>
-            <MaxPaxInAllRooms reviewDate = "20/06/2022">0</MaxPaxInAllRooms>
-            <RequiredRoomWithSamePaxConfiguration>
-                <SamePaxNumber reviewDate = "20/06/2022">false</SamePaxNumber>
-                <SamePaxAge reviewDate = "20/06/2022">false</SamePaxAge>
-            </RequiredRoomWithSamePaxConfiguration>
-            <AgeRange reviewDate = "11/11/2016">
-                <Age max = "5" min = "2" type = "Child"/>
-            </AgeRange>
-            <RateRules>
-                <RateRule reviewDate = "20/06/2022">NonRefundable</RateRule>
-                <RateRule reviewDate = "20/06/2022">largeFamily</RateRule>
-            </RateRules>
-            <Beds>
-                <InformNumberOfUnits reviewDate = "20/06/2022">false</InformNumberOfUnits>
-                <InformSharedBed reviewDate = "20/06/2022">false</InformSharedBed>
-                <InformBedType reviewDate = "20/06/2022">false</InformBedType>
-                <InformNumberOfBeds reviewDate = "20/06/2022">false</InformNumberOfBeds>
-            </Beds>
-        </RoomCandidates>
-        <InformBindingPrice reviewDate = "20/06/2022">false</InformBindingPrice>
-        <InformCancelPolicies reviewDate = "20/06/2022">false</InformCancelPolicies>
-        <InformRoomCancelPolicies reviewDate = "20/06/2022">false</InformRoomCancelPolicies>
-        <ImplementsCombination reviewDate = "20/06/2022">false</ImplementsCombination>
-        <InformRoomFees reviewDate = "20/06/2022">false</InformRoomFees>
-        <InformRemarks reviewDate = "20/06/2022">false</InformRemarks>
-        <PaymentTypes>
-            <PaymentType reviewDate = "20/06/2022">MerchantPay</PaymentType>
-            <PaymentType reviewDate = "20/06/2022">LaterPay</PaymentType>
-        </PaymentTypes>
-        <OptionTypes>
-            <OptionType reviewDate = "20/06/2022">Hotel</OptionType>
-        </OptionTypes>
-        <Languages>
+   <operationImplemented>true</operationImplemented>
+   <Avail>
+      <Destinations>
+         <MaxNumberHotels reviewDate = "20/06/2022">0</MaxNumberHotels>
+         <MaxNumberHotelsRecommended reviewDate = "20/06/2022">0</MaxNumberHotelsRecommended>
+         <MaxNumberCities reviewDate = "20/06/2022">0</MaxNumberCities>
+         <MaxNumberCitiesRecommended reviewDate = "20/06/2022">0</MaxNumberCitiesRecommended>
+         <MaxNumberZones reviewDate = "20/06/2022">0</MaxNumberZones>
+         <MaxNumberZonesRecommended reviewDate = "20/06/2022">0</MaxNumberZonesRecommended>
+         <MaxNumberGeoCodes reviewDate = "20/06/2022">0</MaxNumberGeoCodes>
+         <MaxNumberGeoCodesRecommended reviewDate = "20/06/2022">0</MaxNumberGeoCodesRecommended>
+         <HotelSameDestinationRestriction reviewDate = "20/06/2022">false</HotelSameDestinationRestriction>
+         <DestinationSameCountryRestriction reviewDate = "20/06/2022">false</DestinationSameCountryRestriction>
+      </Destinations>
+      <AllowsCurrency reviewDate = "20/06/2022">false</AllowsCurrency>
+      <AllowsBusinessRules reviewDate = "20/06/2022">false</AllowsBusinessRules>
+      <NumMarketsAllowed reviewDate = "20/06/2022">0</NumMarketsAllowed>
+      <Release reviewDate = "20/06/2022">0</Release>
+      <MinimumStay reviewDate = "20/06/2022">0</MinimumStay>
+      <MaxStay reviewDate = "20/06/2022">0</MaxStay>
+      <RoomCandidates>
+         <MaxNumberRoomCandidates reviewDate = "20/06/2022">0</MaxNumberRoomCandidates>
+         <PaxTypeRangeInRoomCandidates reviewDate = "20/06/2022">
+            <Candidate max = "3" min = "1" type = "Adult"/>
+            <Candidate max = "2" min = "0" type = "Child"/>
+            <Candidate max = "0" min = "0" type = "Infant"/>
+         </PaxTypeRangeInRoomCandidates>
+         <MaxPaxInRoomCandidates reviewDate = "20/06/2022">0</MaxPaxInRoomCandidates>
+         <MaxPaxInAllRooms reviewDate = "20/06/2022">0</MaxPaxInAllRooms>
+         <RequiredRoomWithSamePaxConfiguration>
+            <SamePaxNumber reviewDate = "20/06/2022">false</SamePaxNumber>
+            <SamePaxAge reviewDate = "20/06/2022">false</SamePaxAge>
+         </RequiredRoomWithSamePaxConfiguration>
+         <AgeRange reviewDate = "11/11/2016">
+            <Age max = "5" min = "2" type = "Child"/>
+         </AgeRange>
+         <RateRules>
+            <RateRule reviewDate = "20/06/2022">NonRefundable</RateRule>
+            <RateRule reviewDate = "20/06/2022">largeFamily</RateRule>
+         </RateRules>
+         <Beds>
+            <InformNumberOfUnits reviewDate = "20/06/2022">false</InformNumberOfUnits>
+            <InformSharedBed reviewDate = "20/06/2022">false</InformSharedBed>
+            <InformBedType reviewDate = "20/06/2022">false</InformBedType>
+            <InformNumberOfBeds reviewDate = "20/06/2022">false</InformNumberOfBeds>
+         </Beds>
+      </RoomCandidates>
+      <InformBindingPrice reviewDate = "20/06/2022">false</InformBindingPrice>
+      <InformCancelPolicies reviewDate = "20/06/2022">false</InformCancelPolicies>
+      <InformRoomCancelPolicies reviewDate = "20/06/2022">false</InformRoomCancelPolicies>
+      <ImplementsCombination reviewDate = "20/06/2022">false</ImplementsCombination>
+      <InformRoomFees reviewDate = "20/06/2022">false</InformRoomFees>
+      <InformRemarks reviewDate = "20/06/2022">false</InformRemarks>
+      <PaymentTypes>
+         <PaymentType reviewDate = "20/06/2022">MerchantPay</PaymentType>
+         <PaymentType reviewDate = "20/06/2022">LaterPay</PaymentType>
+      </PaymentTypes>
+      <OptionTypes>
+         <OptionType reviewDate = "20/06/2022">Hotel</OptionType>
+      </OptionTypes>
+      <Languages>
+         <Language reviewDate = "20/06/2022">en</Language>
+         <Language reviewDate = "20/06/2022">es</Language>
+      </Languages>
+      <InformDailyPrice reviewDate = "20/06/2022">false</InformDailyPrice>
+      <InformDailyRatePlan reviewDate = "20/06/2022">false</InformDailyRatePlan>
+      <InformOffers reviewDate = "20/06/2022">false</InformOffers>
+      <InformNRFRateByRoom reviewDate = "20/06/2022">false</InformNRFRateByRoom>
+      <InformFees reviewDate = "20/06/2022">false</InformFees>
+   </Avail>
+   <Valuation>
+      <AllowsBlockOption reviewDate = "20/06/2022">false</AllowsBlockOption>
+      <InformBindingPrice reviewDate = "20/06/2022">false</InformBindingPrice>
+      <InformNRFRate reviewDate = "20/06/2022">false</InformNRFRate>
+      <InformRemarks reviewDate = "20/06/2022">false</InformRemarks>
+      <InformCancelPolicies reviewDate = "20/06/2022">false</InformCancelPolicies>
+      <InformCancelPoliciesDescription reviewDate = "20/06/2022">false</InformCancelPoliciesDescription>
+      <InformFees reviewDate = "20/06/2022">false</InformFees>
+      <TimeZone reviewDate = "04/01/2022">[eUtc.Utc_Unknown|eUtc.HotelLocalTime|eUtc.Utc_-14|...|eUtc.Utc_0|...|eUtc.Utc_14]</TimeZone>
+   </Valuation>
+   <Reservation>
+      <AllowsDeltaPrice reviewDate = "20/06/2022">false</AllowsDeltaPrice>
+      <InformPropertyReservationNumber reviewDate = "20/06/2022">false</InformPropertyReservationNumber>
+      <RequiredAllPassengers reviewDate = "20/06/2022">false</RequiredAllPassengers>
+      <AllowsRemarks reviewDate = "20/06/2022">false</AllowsRemarks>
+      <AllowsUrlCard reviewDate = "20/06/2022">false</AllowsUrlCard>
+      <InformBillingSupplier reviewDate = "20/06/2022">false</InformBillingSupplier>
+      <InformPrice reviewDate = "20/06/2022">false</InformPrice>
+      <AllowsPreferences>
+         <Preference hotel = "true" room = "false">
+            <PreferenceType>LateArrival</PreferenceType>
+            <Value mandatory = "true" type = "numeric"/>
+         </Preference>
+      </AllowsPreferences>
+   </Reservation>
+   <ReservationRead>
+      <Implements reviewDate = "20/06/2022">false</Implements>
+      <InformPropertyReservationNumber reviewDate = "20/06/2022">false</InformPropertyReservationNumber>
+      <AllowsProvideLocator reviewDate = "20/06/2022">false</AllowsProvideLocator>
+      <AllowsClientLocator reviewDate = "20/06/2022">false</AllowsClientLocator>
+      <InformCancelPolicies reviewDate = "20/06/2022">false</InformCancelPolicies>
+      <InformPriceCancel reviewDate = "20/06/2022">false</InformPriceCancel>
+      <RequiredCheckInDate reviewDate = "18/10/2021">false</RequiredCheckInDate>
+      <RequiredCheckOutDate reviewDate = "18/10/2021">false</RequiredCheckOutDate>
+      <RequiredReservationDate reviewDate = "18/10/2021">false</RequiredReservationDate>
+   </ReservationRead>
+   <ReservationList>
+      <Implements reviewDate = "20/06/2022">false</Implements>
+      <InformPropertyReservationNumber reviewDate = "20/06/2022">false</InformPropertyReservationNumber>
+      <AllowsCreationDate reviewDate = "20/06/2022">false</AllowsCreationDate>
+      <AllowsCheckDate reviewDate = "20/06/2022">false</AllowsCheckDate>
+      <InformCancelPolicies reviewDate = "20/06/2022">false</InformCancelPolicies>
+      <InformPriceCancel reviewDate = "20/06/2022">false</InformPriceCancel>
+   </ReservationList>
+   <Cancel>
+      <Implements reviewDate = "20/06/2022">false</Implements>
+      <AllowsProvideLocator reviewDate = "20/06/2022">false</AllowsProvideLocator>
+      <AllowsClientLocator reviewDate = "20/06/2022">false</AllowsClientLocator>
+      <InformPriceCancel reviewDate = "20/06/2022">false</InformPriceCancel>
+   </Cancel>
+   <Batch>
+      <InformExclusiveDeal reviewDate = "20/06/2022">false</InformExclusiveDeal>
+      <HotelList>
+         <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
+         <Languages>
             <Language reviewDate = "20/06/2022">en</Language>
             <Language reviewDate = "20/06/2022">es</Language>
-        </Languages>
-        <InformDailyPrice reviewDate = "20/06/2022">false</InformDailyPrice>
-        <InformDailyRatePlan reviewDate = "20/06/2022">false</InformDailyRatePlan>
-        <InformOffers reviewDate = "20/06/2022">false</InformOffers>
-        <InformNRFRateByRoom reviewDate = "20/06/2022">false</InformNRFRateByRoom>
-        <InformFees reviewDate = "20/06/2022">false</InformFees>
-    </Avail>
-    <Valuation>
-        <AllowsBlockOption reviewDate = "20/06/2022">false</AllowsBlockOption>
-        <InformBindingPrice reviewDate = "20/06/2022">false</InformBindingPrice>
-        <InformNRFRate reviewDate = "20/06/2022">false</InformNRFRate>
-        <InformRemarks reviewDate = "20/06/2022">false</InformRemarks>
-        <InformCancelPolicies reviewDate = "20/06/2022">false</InformCancelPolicies>
-        <InformCancelPoliciesDescription reviewDate = "20/06/2022">false</InformCancelPoliciesDescription>
-        <InformFees reviewDate = "20/06/2022">false</InformFees>
-        <TimeZone reviewDate = "04/01/2022">[eUtc.Utc_Unknown|eUtc.HotelLocalTime|eUtc.Utc_-14|...|eUtc.Utc_0|...|eUtc.Utc_14]</TimeZone>
-    </Valuation>
-    <Reservation>
-        <AllowsDeltaPrice reviewDate = "20/06/2022">false</AllowsDeltaPrice>
-        <InformPropertyReservationNumber reviewDate = "20/06/2022">false</InformPropertyReservationNumber>
-        <RequiredAllPassengers reviewDate = "20/06/2022">false</RequiredAllPassengers>
-        <AllowsRemarks reviewDate = "20/06/2022">false</AllowsRemarks>
-        <AllowsUrlCard reviewDate = "20/06/2022">false</AllowsUrlCard>
-        <InformBillingSupplier reviewDate = "20/06/2022">false</InformBillingSupplier>
-        <InformPrice reviewDate = "20/06/2022">false</InformPrice>
-        <AllowsPreferences>
-            <Preference hotel = "true" room = "false">
-                <PreferenceType>LateArrival</PreferenceType>
-                <Value mandatory = "true" type = "numeric"/>
-            </Preference>
-        </AllowsPreferences>
-    </Reservation>
-    <ReservationRead>
-        <Implements reviewDate = "20/06/2022">false</Implements>
-        <InformPropertyReservationNumber reviewDate = "20/06/2022">false</InformPropertyReservationNumber>
-        <AllowsProvideLocator reviewDate = "20/06/2022">false</AllowsProvideLocator>
-        <AllowsClientLocator reviewDate = "20/06/2022">false</AllowsClientLocator>
-        <InformCancelPolicies reviewDate = "20/06/2022">false</InformCancelPolicies>
-        <InformPriceCancel reviewDate = "20/06/2022">false</InformPriceCancel>
-        <RequiredCheckInDate reviewDate = "18/10/2021">false</RequiredCheckInDate>
-        <RequiredCheckOutDate reviewDate = "18/10/2021">false</RequiredCheckOutDate>
-        <RequiredReservationDate reviewDate = "18/10/2021">false</RequiredReservationDate>
-    </ReservationRead>
-    <ReservationList>
-        <Implements reviewDate = "20/06/2022">false</Implements>
-        <InformPropertyReservationNumber reviewDate = "20/06/2022">false</InformPropertyReservationNumber>
-        <AllowsCreationDate reviewDate = "20/06/2022">false</AllowsCreationDate>
-        <AllowsCheckDate reviewDate = "20/06/2022">false</AllowsCheckDate>
-        <InformCancelPolicies reviewDate = "20/06/2022">false</InformCancelPolicies>
-        <InformPriceCancel reviewDate = "20/06/2022">false</InformPriceCancel>
-    </ReservationList>
-    <Cancel>
-        <Implements reviewDate = "20/06/2022">false</Implements>
-        <AllowsProvideLocator reviewDate = "20/06/2022">false</AllowsProvideLocator>
-        <AllowsClientLocator reviewDate = "20/06/2022">false</AllowsClientLocator>
-        <InformPriceCancel reviewDate = "20/06/2022">false</InformPriceCancel>
-    </Cancel>
-    <Batch>
-        <InformExclusiveDeal reviewDate = "20/06/2022">false</InformExclusiveDeal>
-        <HotelList>
-            <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
-            <Languages>
-                <Language reviewDate = "20/06/2022">en</Language>
-                <Language reviewDate = "20/06/2022">es</Language>
-            </Languages>
-        </HotelList>
-        <DescriptiveInfo>
-            <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
-            <Languages>
-                <Language reviewDate = "20/06/2022">en</Language>
-                <Language reviewDate = "20/06/2022">es</Language>
-            </Languages>
-        </DescriptiveInfo>
-        <GeographicDestinationTree>
-            <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
-            <Languages>
-                <Language reviewDate = "20/06/2022">en</Language>
-                <Language reviewDate = "20/06/2022">es</Language>
-            </Languages>
-        </GeographicDestinationTree>
-        <AvailDestinationTree>
-            <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
-            <Languages>
-                <Language reviewDate = "20/06/2022">en</Language>
-            </Languages>
-        </AvailDestinationTree>
-        <RoomList>
-            <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
-            <Languages>
-                <Language reviewDate = "20/06/2022">en</Language>
-                <Language reviewDate = "20/06/2022">es</Language>
-            </Languages>
-        </RoomList>
-        <MealPlanList>
-            <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
-            <Languages>
-                <Language reviewDate = "20/06/2022">en</Language>
-                <Language reviewDate = "20/06/2022">es</Language>
-            </Languages>
-        </MealPlanList>
-        <CategoryList>
-            <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
-            <Languages>
-                <Language reviewDate = "20/06/2022">en</Language>
-                <Language reviewDate = "20/06/2022">es</Language>
-            </Languages>
-        </CategoryList>
-        <DescriptiveInfoExtended>
-            <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
-            <Languages>
-                <Language reviewDate = "20/06/2022">en</Language>
-                <Language reviewDate = "20/06/2022">es</Language>
-            </Languages>
-        </DescriptiveInfoExtended>
-        <MarketList>
-            <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
-            <Languages>
-                <Language reviewDate = "20/06/2022">en</Language>
-                <Language reviewDate = "20/06/2022">es</Language>
-            </Languages>
-        </MarketList>
-        <CurrencyList>
-            <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
-            <Languages>
-                <Language reviewDate = "20/06/2022">en</Language>
-                <Language reviewDate = "20/06/2022">es</Language>
-            </Languages>
-        </CurrencyList>
-    </Batch>
-    <Generic>
-        <RequiredNationality reviewDate = "20/06/2022">false</RequiredNationality>
-        <AllowsNationality reviewDate = "20/06/2022">true</AllowsNationality>
-        <AllowsOnRequest reviewDate = "20/06/2022">false</AllowsOnRequest>
-    </Generic>
+         </Languages>
+      </HotelList>
+      <DescriptiveInfo>
+         <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
+         <Languages>
+            <Language reviewDate = "20/06/2022">en</Language>
+            <Language reviewDate = "20/06/2022">es</Language>
+         </Languages>
+      </DescriptiveInfo>
+      <GeographicDestinationTree>
+         <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
+         <Languages>
+            <Language reviewDate = "20/06/2022">en</Language>
+            <Language reviewDate = "20/06/2022">es</Language>
+         </Languages>
+      </GeographicDestinationTree>
+      <AvailDestinationTree>
+         <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
+         <Languages>
+            <Language reviewDate = "20/06/2022">en</Language>
+         </Languages>
+      </AvailDestinationTree>
+      <RoomList>
+         <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
+         <Languages>
+            <Language reviewDate = "20/06/2022">en</Language>
+            <Language reviewDate = "20/06/2022">es</Language>
+         </Languages>
+      </RoomList>
+      <MealPlanList>
+         <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
+         <Languages>
+            <Language reviewDate = "20/06/2022">en</Language>
+            <Language reviewDate = "20/06/2022">es</Language>
+         </Languages>
+      </MealPlanList>
+      <CategoryList>
+         <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
+         <Languages>
+            <Language reviewDate = "20/06/2022">en</Language>
+            <Language reviewDate = "20/06/2022">es</Language>
+         </Languages>
+      </CategoryList>
+      <DescriptiveInfoExtended>
+         <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
+         <Languages>
+            <Language reviewDate = "20/06/2022">en</Language>
+            <Language reviewDate = "20/06/2022">es</Language>
+         </Languages>
+      </DescriptiveInfoExtended>
+      <MarketList>
+         <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
+         <Languages>
+            <Language reviewDate = "20/06/2022">en</Language>
+            <Language reviewDate = "20/06/2022">es</Language>
+         </Languages>
+      </MarketList>
+      <CurrencyList>
+         <StaticType reviewDate = "20/06/2022">NotImplemented</StaticType>
+         <Languages>
+            <Language reviewDate = "20/06/2022">en</Language>
+            <Language reviewDate = "20/06/2022">es</Language>
+         </Languages>
+      </CurrencyList>
+   </Batch>
+   <Generic>
+      <RequiredNationality reviewDate = "20/06/2022">false</RequiredNationality>
+      <AllowsNationality reviewDate = "20/06/2022">true</AllowsNationality>
+      <AllowsOnRequest reviewDate = "20/06/2022">false</AllowsOnRequest>
+   </Generic>
 </MetaDataRS>
 ```
 
@@ -376,7 +373,7 @@ The MetaData method returns a clear and summarized view of the Seller's main cha
 | Avail/InformRemarks                                 | 1          | Boolean | Space available for any remarks or comments aimed at the client.                                                                           |
 | @reviewDate                                         | 1          | String  | Informs of the date when the field was last reviewed.                                                                                      |
 | Avail/PaymentTypes                                  | 1          |         | List of payment types accepted by the supplier.                                                                                            |
-| PaymentTypes/PaymentType                            | 1..n       |         | <details>     <summary>Payment Type codes</summary>     <div>         <div>          <table>   				  <thead>   					  <tr>   						  <th>   							  <strong>Code</strong>   						  </th>   						  <th>   							  <strong>Name</strong>   						  </th>   					  </tr>   				  </thead>   				  <tbody>   					  <tr>   						  <td>MerchantPay</td>   						  <td>The payment is managed by the supplier.</td>   					  </tr>   					  <tr>   						  <td>LaterPay</td>   						  <td>The payment is managed by the hotel. The customer will use a credit-card as a guarantee for the hotel and the payment will be completed at check in.</td>   					  </tr>                     <tr>   						  <td>CardBookingPay</td>   						  <td>The payment is managed by the supplier. The payment is effectuated at the time of booking.</td>   					  </tr>   					  <tr>   						  <td>CardCheckInPay</td>   						  <td>The payment is managed by the supplier. The payment is effectuated at check in in the hotel.</td>   					  </tr>                     <tr>   						  <td>PayX</td>   						  <td>The payment is managed by TravelgateX’s payment system.</td>   					  </tr>                    </tbody>   			</table>         </div>     </div> </details>                                                                                      |
+| PaymentTypes/PaymentType                            | 1..n       |         | <details>     <summary>Payment Type codes</summary>     <div>         <div>          <table>   				  <thead>   					  <tr>   						  <th>   							  <strong>Code</strong>   						  </th>   						  <th>   							  <strong>Name</strong>   						  </th>   					  </tr>   				  </thead>   				  <tbody>   					  <tr>   						  <td>MerchantPay</td>   						  <td>The payment is managed by the supplier.</td>   					  </tr>   					  <tr>   						  <td>LaterPay</td>   						  <td>The payment is managed by the hotel. The customer will use a credit-card as a guarantee for the hotel and the payment will be completed at check in.</td>   					  </tr>                     <tr>   						  <td>CardBookingPay</td>   						  <td>The payment is managed by the supplier. The payment is effectuated at the time of booking.</td>   					  </tr>   					  <tr>   						  <td>CardCheckInPay</td>   						  <td>The payment is managed by the supplier. The payment is effectuated at check in in the hotel.</td>   					  </tr>                     <tr>   						  <td>PayX</td>   						  <td>The payment is managed by Travelgate’s payment system.</td>   					  </tr>                    </tbody>   			</table>         </div>     </div> </details>                                                                                      |
 | @reviewDate                                         | 1          | String  | Informs of the date when the field was last reviewed.                                                                                      |
 | Avail/OptionTypes                                   | 1          |         | List of option types accepted by the supplier.                                                                                             |
 | OptionTypes/OptionType                              | 1..n       |         | Indicates the types of option.                                                                                                             |
@@ -409,7 +406,7 @@ The MetaData method returns a clear and summarized view of the Seller's main cha
 | @reviewDate                                         | 1          | String  | Informs of the date when the field was last reviewed.                                                                                      |
 | Valuation/InformFees                                | 1          | Boolean | Informs if the supplier returns fees.                                                                                                      |
 | @reviewDate                                         | 1          | String  | Informs of the date when the field was last reviewed.                                                                                      |
-| Valuation/TimeZone                                  | 1          | Enum    | Informs in which TimeZone are the hoursBefore of cancelation policies.                                              |
+| Valuation/TimeZone                                  | 1          | Enum    | Informs in which TimeZone are the hoursBefore of cancelation policies. <details>     <summary>TimeZone possible values</summary>     <div>         <div>          <table>   				  <tbody>   					  <tr>   						  <td>Unknown</td>   				</tr>             <tr>   						  <td>HotelLocalTime</td>   				</tr>         <tr>   						  <td>UTC-12</td>   				</tr>          <tr>   						  <td>UTC-11</td>   				</tr>         <tr>   						  <td>UTC-10</td>   				</tr>           <tr>   						  <td>UTC-9</td>   				</tr>         <tr>   						  <td>UTC-8</td>   				</tr>       <tr>   						  <td>UTC-7</td>   				</tr>         <tr>   						  <td>UTC-6</td>   				</tr>                    <tr>   						  <td>UTC-5</td>   				</tr>               <tr>   						  <td>UTC-4</td>   				</tr>        <tr>   						  <td>UTC-3</td>   				</tr>             <tr>   						  <td>UTC-2</td>   				</tr>                   <tr>   						  <td>UTC-1</td>   				</tr>              <tr>   						  <td>UTC+0</td>   				</tr>                         <tr>   						  <td>UTC+1</td>   				</tr>               <tr>   						  <td>UTC+2</td>   				</tr>           <tr>   						  <td>UTC+3</td>   				</tr>            <tr>   						  <td>UTC+4</td>   				</tr>          <tr>   						  <td>UTC+5</td>   				</tr>              <tr>   						  <td>UTC+6</td>   				</tr>              <tr>   						  <td>UTC+7</td>   				</tr>              <tr>   						  <td>UTC+8</td>   				</tr>     <tr>   						  <td>UTC+9</td>   				</tr>         <tr>   						  <td>UTC+10</td>   				</tr>           <tr>   						  <td>UTC+11</td>   				</tr>            <tr>   						  <td>UTC+12</td>   				</tr>                <tr>   						  <td>UTC+13</td>   				</tr>          <tr>   						  <td>UTC+14</td>   				</tr>            </tbody>   			</table>         </div>     </div> </details>    If `Unknown` or `HotelLocalTime` are selected we’ll add an offset of +14 only to the Deadline in case it’s calculated and not returned directly by the supplier on UTC Standard.                                                          |
 | @reviewDate                                         | 1          | String  | Informs of the date when the field was last reviewed.                                                                                      |
 | MetaDataRS/Reservation                              | 1          |         |                                                                                                                                            |
 | Reservation/AllowsDeltaPrice                        | 1          | Boolean | Allows a margin stipulated by the client for booking with a higher price (delta).                                                          |
@@ -430,7 +427,7 @@ The MetaData method returns a clear and summarized view of the Seller's main cha
 | AllowsPreferences/Preference                        | 1          |         | Each filter of preference and its values.                                                                                                  |
 | @hotel                                              | 1          | Boolean | At the option / general level.                                                                                                             |
 | @room                                               | 1          | Boolean | At the room level.                                                                                                                         |
-| Preference/PreferenceType                           | 1          | String  | Type of preference allowed.                                                                       |
+| Preference/PreferenceType                           | 1          | String  | <details>  <summary>Preference types</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Preference Type</strong>  						 </th>   					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>Smoker</td>  				</tr>   	     <tr>  						 <td>NonSmoker</td>  				</tr>     <tr>  						 <td>ExtraBed</td>  				</tr>      <tr>  						 <td>Cradle</td>  				</tr>    <tr>  						 <td>DoubleBed</td>  				</tr>      <tr>  						 <td>TwinBeds</td>  				</tr>    <tr>  						 <td>ContigousRoom</td>  				</tr>     <tr>  						 <td>Wedding</td>  				</tr>     <tr>  						 <td>LateArrival</td>  				</tr>      <tr>  						 <td>LateCheckOut</td>  				</tr>    <tr>  						 <td>EarlyCheckIn</td>  				</tr>      <tr>  						 <td>GroundFloor</td>  				</tr>     <tr>  						 <td>TopFloor</td>  				</tr>     <tr>  						 <td>WithoutBoucher</td>  				</tr>  </tbody>  			</table>         </div>     </div> </details>                                                                       |
 | Preference/Value                                    | 1          |         | Definition of the type of preference.                                                                                                      |
 | @mandatory                                          | 1          | Boolean | If it is necessary to pass a value in the Preference tag in reservation request.                                                           |
 | @type                                               | 0..1       | String  | Type of the required value. (string, numeric, boolean)                                                                                     |
@@ -443,7 +440,7 @@ The MetaData method returns a clear and summarized view of the Seller's main cha
 | @reviewDate                                         | 1          | String  | Informs of the date when the field was last reviewed.                                                                                      |
 | ReservationRead/AllowsClientLocator                 | 1          | Boolean | The supplier allows client locator.                                                                                                        |
 | @reviewDate                                         | 1          | String  | Informs of the date when the field was last reviewed.                                                                                      |
-| ReservationRead/InformCancelPolicies                | 1          | Boolean | Informs cancellation policies.                                                                                                             |
+| ReservationRead/InformCancelPolicies                | 1          | Boolean | Informs cancellation policies. In case the booking status is CN, this field allows us to show the price of the cancellation and not the price of the booking.                                                                                                            |
 | @reviewDate                                         | 1          | String  | Informs of the date when the field was last reviewed.                                                                                      |
 | ReservationRead/InformPriceCancel                   | 1          | Boolean | The supplier informs the cancellation price.                                                                                               |
 | @reviewDate                                         | 1          | String  | Informs of the date when the field was last reviewed.                                                                                      |
@@ -462,7 +459,7 @@ The MetaData method returns a clear and summarized view of the Seller's main cha
 | @reviewDate                                         | 1          | String  | Informs of the date when the field was last reviewed.                                                                                      |
 | ReservationList/AllowsCheckDate                     | 1          | Boolean | The supplier allows search by check in date.                                                                                               |
 | @reviewDate                                         | 1          | String  | Informs of the date when the field was last reviewed.                                                                                      |
-| ReservationList/InformCancelPolicies                | 1          | Boolean | Informs cancellation policies.                                                                                                             |
+| ReservationList/InformCancelPolicies                | 1          | Boolean | Informs cancellation policies. In case the booking status is CN, this field allows us to show the price of the cancellation and not the price of the booking.                                                                                                    |
 | @reviewDate                                         | 1          | String  | Informs of the date when the field was last reviewed.                                                                                      |
 | ReservationList/InformPriceCancel                   | 1          | Boolean | The supplier informs the cancellation price.                                                                                               |
 | @reviewDate                                         | 1          | String  | Informs of the date when the field was last reviewed.                                                                                      |

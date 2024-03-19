@@ -1,8 +1,9 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const {themes} = require('prism-react-renderer');
+const lightTheme = themes.github;
+const darkTheme = themes.dracula;
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -54,13 +55,14 @@ const config = {
   ],
 
   plugins:[
-    // [
-    //   require.resolve("@cmfcmf/docusaurus-search-local"),
-    //   {
-    //     indexDocSidebarParentCategories: 10,
-    //   }
-    // ],
     'docusaurus-plugin-sass',
+    [
+      '@docusaurus/plugin-google-gtag',
+      {
+        trackingID: 'G-ECHYSGVN82',
+        anonymizeIP: true,
+      },
+    ],
     [
       "@graphql-markdown/docusaurus",
       {
@@ -95,9 +97,6 @@ const config = {
         path: 'api',
         routeBasePath: 'api',
         sidebarPath: require.resolve('./api/sidebar-schema.js'),
-        admonitions: {
-          tag: ':::'
-        }
         // ... other options
       },
     ],
@@ -141,13 +140,6 @@ const config = {
             'https://github.com/Travelgate/documentation/tree/main',
         },
         blog: false,
-        // blog: {
-        //   showReadingTime: true,
-        //   // Please change this to your repo.
-        //   // Remove this to remove the "edit this page" links.
-        //   editUrl:
-        //     'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-        // },
         theme: {
           customCss: require.resolve('./src/scss/custom.scss'),
         },
@@ -168,9 +160,9 @@ const config = {
         },
         items: [
           {
-            to: '/',
-            activeBasePath: 'docs',
-            //type: 'docSidebar',
+            //to: '/',
+            //activeBasePath: 'docs',
+            type: 'docSidebar',
             sidebarId: 'docsSidebar',
             position: 'left',
             label: 'Documentation',
@@ -192,65 +184,20 @@ const config = {
           {
             to: '/playground',
             //type: 'docSidebar',
-            //sidebarId: 'schemaSidebar',
+            sidebarId: 'playgroundSidebar',
             label: 'GraphQL Playground',
             position: 'left'
           },
-          // {
-          //   href: 'https://github.com/facebook/docusaurus',
-          //   label: 'GitHub',
-          //   position: 'right',
-          // },
         ],
       },
       footer: {
         style: 'dark',
-        links: [
-          // {
-          //   title: 'Docs',
-          //   items: [
-          //     {
-          //       label: 'Tutorial',
-          //       to: '/docs/intro',
-          //     },
-          //   ],
-          // },
-          // {
-          //   title: 'Community',
-          //   items: [
-          //     {
-          //       label: 'Stack Overflow',
-          //       href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-          //     },
-          //     {
-          //       label: 'Discord',
-          //       href: 'https://discordapp.com/invite/docusaurus',
-          //     },
-          //     {
-          //       label: 'Twitter',
-          //       href: 'https://twitter.com/docusaurus',
-          //     },
-          //   ],
-          // },
-          // {
-          //   title: 'More',
-          //   items: [
-          //     {
-          //       label: 'Blog',
-          //       to: '/blog',
-          //     },
-          //     {
-          //       label: 'GitHub',
-          //       href: 'https://github.com/facebook/docusaurus',
-          //     },
-          //   ],
-          // },
-        ],
+        links: [],
         copyright: `Copyright © ${new Date().getFullYear()} Travelgate.`,
       },
       prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
+        theme: lightTheme,
+        darkTheme: darkTheme,
       },
     }),
 };

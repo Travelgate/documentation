@@ -1,0 +1,371 @@
+---
+sidebar_position: 4
+---
+
+# Reservation
+
+The Reservation operation requests a booking confirmation for a specific list of passengers. It provides 
+the booking locator (booking code), which could be the supplier’s own code or the one sent in request, along with all the charges associated with the booking as well as its status. The returned fields include: `ProviderLocator`, `PropertyReservationNumber`, `ResStatus`, `Price` etc.
+
+
+## Reservation Request
+
+```xml
+<soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns = "http://schemas.xmltravelgate.com/hub/2012/06" xmlns:wsse = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+   <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>username</wsse:Username>
+            <wsse:Password>password</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <ns:Reservation>
+         <ns:reservationRQ>
+            <ns:timeoutMilliseconds>20000</ns:timeoutMilliseconds>
+            <ns:version>1</ns:version>
+            <ns:providerRQ>
+               <ns:code>suppliercode</ns:code>
+               <ns:id>1</ns:id>
+               <ns:rqXML>
+                  <ReservationRQ>
+                      <timeoutMilliseconds>19700</timeoutMilliseconds>
+                     <source>
+                        <languageCode>en</languageCode>
+                     </source>
+                     <filterAuditData>
+                        <registerTransactions>true</registerTransactions>
+                     </filterAuditData>
+                     <Configuration>
+                        <User>user</User>
+                        <Password>password</Password>
+                        <UrlAvail>www.supplier.com/avail</UrlAvail>
+                        <UrlReservation>www.supplier.com/reservation</UrlReservation>
+                        <UrlValuation>www.supplier.com/valuation</UrlValuation>
+                        <UrlGeneric>www.supplier.com/generic</UrlGeneric>
+                        <Parameters>
+                           <Parameter key = "UrlListHotels" value = "http://www.supplier.com/ListHotels"></Parameter>
+                           <Parameter key = "Access" value = "22334"></Parameter>
+                        </Parameters>
+                     </Configuration>
+                     <ClientLocator>2537459</ClientLocator>
+                     <OnRequest>false</OnRequest>
+                     <Parameters>
+                        <Parameter key = "extra" value = "31"/>
+                     </Parameters>
+                     <DeltaPrice amount="10" percent="5" applyBoth="false"/>
+                     <StartDate>28/01/2014</StartDate>
+                     <EndDate>29/01/2014</EndDate>
+                     <MealPlanCode>D</MealPlanCode>
+                     <HotelCode>10</HotelCode>
+                     <Nationality>ES</Nationality>
+                     <Holder title = "Miss" name = "name" surname = "surname" email = "hotelemail@email.com"/>
+                     <Price currency = "EUR" amount = "36.20" binding = "false" commission = "-1" minimumSellingPrice="-1"/>
+                     <ResGuests> 
+                        <Guests>
+                           <Guest roomCandidateId = "1" paxId = "1">
+                              <Title>Miss</Title>  
+                              <GivenName>name</GivenName>
+                              <SurName>surname</SurName>
+                           </Guest>
+                           <Guest roomCandidateId = "1" paxId = "2">
+                              <Title>Mr</Title>  
+                              <GivenName>name</GivenName>
+                              <SurName>surname</SurName>
+                           </Guest>
+                        </Guests>
+                     </ResGuests>
+                     <PaymentType>CardCheckInPay</PaymentType>
+                     <CardInfo>
+                        <CardCode>VI</CardCode>
+                        <Number>4321432143214327</Number>
+                        <Holder>name surname</Holder>
+                        <ValidityDate>   
+                           <Month>06</Month>
+                           <Year>14</Year>
+                        </ValidityDate>
+                        <CVC>123</CVC>
+                        <isVCC>false</isVCC>
+                     </CardInfo>
+                     <Rooms>
+                        <Room id = "4582" roomCandidateRefId = "1" code = "506" description = "Double Standard.."/>
+                        <Preferences>
+                           <Preference type = "NonSmoker"/>
+                           <Preference type = "ExtraBed"/>
+                        </Preferences>
+                     </Rooms>
+                     <RoomCandidates>
+                        <RoomCandidate id = "1">
+                           <Paxes>
+                              <Pax age = "30" id = "1"/>
+                              <Pax age = "30" id = "2"/>
+                           </Paxes>
+                        </RoomCandidate>
+                     </RoomCandidates>
+                     <Remarks>I want it a double bed.</Remarks>
+                     <Preferences>
+                        <Preference type = "LateArrival">14:00</Preference>
+                     </Preferences>
+                  </ReservationRQ>
+               </ns:rqXML>
+            </ns:providerRQ>
+         </ns:reservationRQ>
+      </ns:Reservation>
+   </soapenv:Body>
+</soapenv:Envelope>
+```
+
+### Request Data Breakdown
+
+| Element					| Number	| Type	| Description					|
+| --------------------------------------------- | ------------- | ------------- | ----------------------------------------------------- |
+| ReservationRQ 				| 1      	|		| Root node.						|
+| ReservationRQ/ClientLocator 				| 1  		| String	| Booking ID in client's system.					|
+| ReservationRQ/OnRequest     				| 1  		| Boolean	| Indicates if you want to receive the onrequest options in AvailRS, as long as the supplier returns it in this method (see [MetaData](../content/meta-data/) in order to verify if the supplier implements it).	|
+| ReservationRQ/Parameters   				| 0..1    	|		| List of parameters.	|
+| Parameters/Parameter				| 1..n    	|		| Parameters for additional information that have been reported in ValuationRS. 	|
+| @key     					| 1  		| String	| Contains the keyword/Id to identify a parameter.	|
+| @value   					| 1  		| String	| Contains the value of the parameter.			|
+| ReservationRQ/DeltaPrice    				| 0..1    	|		| Indicates price variation permitted by the client (see [MetaData](../content/meta-data/) in order to verify if the supplier implements it). If the newly entered price doesn't meet the DeltaPrice criteria, an error will occur. In case you omit the DeltaPrice tag, and the integration supports it, we'll consider the price range as 0. Under this condition, the process will proceed as long as the price is the same or lower than the one indicated in the valuation.	|
+| @amount  					| 0..1		| String	| Amount (in the currency returned into the option) that is accepted by the client to be higher than the valuation price. |
+| @percent 					| 0..1		| String	| Percentage accepted by the client to be higher than the valuation price.	|
+| @applyBoth					| 1  		| Boolean	| Indicates that the range between valuation price and the new price does not exceed the amount and/or porcentage indicated by the client. <details>     <summary>DeltaPrice Cases</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>applyBoth</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>False</td>  						 <td> Indicates that one of the conditions (amount or percentage) has to meet the criteria before reservation.</td>  					 </tr>  					 <tr>  						 <td>True</td>  						 <td>Indicates that the new price cannot exceed the amount or percentage indicated by the client.</td>  					 </tr>           </tbody>  			</table>         </div>     </div> </details>  |
+| ReservationRQ/StartDate     				| 1  		| String 	| Start date to search rates.				|
+| ReservationRQ/EndDate       				| 1  		| String	| End date to search rates.				|
+| ReservationRQ/MealPlanCode  				| 1  		| String	| MealPlan code.					|
+| ReservationRQ/HotelCode     				| 1  		| String	| Hotel code.						|
+| ReservationRQ/Nationality   				| 1		| String	| Nationality of the Holder (use ISO3166_1_alfa_2 , see [MetaData](../content/meta-data/) in order to verify if the supplier implements it).  |
+| ReservationRQ/Holder   				| 1		|		| Holder of the booking.  |
+| @title   				| 1		| Enum	| <details>     <summary>Titles</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Code</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>0</td>  						 <td>Mr</td>  					 </tr>  					 <tr>  						 <td>1</td>  						 <td>Mrs</td>  					 </tr>           <tr>  						 <td>2</td>  						 <td>Miss</td>  					 </tr>				 <tr>  						 <td>3</td>  						 <td>Ms</td>  					 </tr>               </tbody>  			</table>         </div>     </div> </details> |
+| @name   				| 1		|String		| Holder's name.  |
+| @surname   				| 1		|	String	| Holder's surname.  |
+| @email   				| 0..1		|	String	| Holder's email.  |
+| ReservationRQ/Price         				| 1      	|		| Total price of this valuation.			|
+| @currency					| 1  		| String	| Currency code (Our system uses a standard ISO - 3 for all suppliers).					|
+| @amount  					| 1  		| Decimal	| Option Amount.					|
+| @binding 					| 1  		| Boolean	| If binding is set as true, then the client can’t sell the product for a lower price that the one set by the supplier. If it set as as false, the client can sell the product for a lower price.  |
+| @commission					| 1  		| Decimal	| <details>     <summary>Commission Scenarios</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Commission</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>0</td>  						 <td>The price returned is net.</td>  					 </tr>  					 <tr>  						 <td>-1</td>  						 <td>The supplier has not supplied the sale price nor the commission. This information is in the commercial contract with the supplier.</td>  					 </tr>           <tr>  						 <td>Greater than 0</td>  						 <td>X = % of the commission applied to the amount.</td>  					 </tr>				 </tbody>  			</table>         </div>     </div> </details>	|
+| @minimumSellingPrice 				   | 1 		    | Decimal 	    | Indicates the minimum selling price it can be sold (determined by the Seller). If is specified (different than "-1"), that field takes preference to amount.		<details>     <summary>Minimum Selling Price Scenarios</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Minimum Selling Price</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody> <tr>  						 <td>0</td>  						 <td>No minimum selling price is provided.</td>  					 </tr>       <tr>  						 <td>-1</td>  						 <td>We have no information about MSP from the Seller.</td>  					 </tr>     <tr>  						 <td>Greater than 0</td>  						 <td>The lowest possible amount that can be sold commercially.</td>  					 </tr>				 </tbody>  			</table>         </div>     </div> </details> |
+| ReservationRQ/ResGuests     				| 1      	|		| List of passengers.				|
+| ResGuests/Guests			| 1      	|		| Passengers.					|
+| Guests/Guest			| 1..n    	|		| Detail of each passenger.	If the holder is also a passenger you need to add his/hers information in the gest list.			|
+| @roomCandidateId				| 1  		| Integer	| Room candidate Identifier				|
+| @paxId   					| 1  		| Integer	| Passenger id (starting at 1).				|
+| Guest/Title		| 1 	 	| Enum	| <details>     <summary>Titles</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Code</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>0</td>  						 <td>Mr</td>  					 </tr>  					 <tr>  						 <td>1</td>  						 <td>Mrs</td>  					 </tr>           <tr>  						 <td>2</td>  						 <td>Miss</td>  					 </tr>				 <tr>  						 <td>3</td>  						 <td>Ms</td>  					 </tr>               </tbody>  			</table>         </div>     </div> </details>	|
+| Guest/GivenName		| 1 	 	| String	| Guest's given name.						|
+| Guest/SurName		| 1   		| String	| Guest's last name.						|
+| ReservationRQ/PaymentType   				| 1  		| String	| <details>     <summary>Payment Types</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Code</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>MerchantPay</td>  						 <td>The payment is managed by the supplier.</td>  					 </tr>  					 <tr>  						 <td>LaterPay</td>  						 <td>The payment is managed by the hotel. The customer will use a credit-card as a guarantee for the hotel and the payment will be completed at check in.</td>  					 </tr>           <tr>  						 <td>CardBookingPay</td>  						 <td>The payment is managed by the supplier. The payment is effectuated at the time of booking.</td>  					 </tr>				 <tr>  						 <td>CardCheckInPay</td>  						 <td>The payment is managed by the supplier. The payment is effectuated at check in in the hotel.</td>  					 </tr><tr>  						 <td>PayX</td>  						 <td>The payment is managed by Travelgate’s payment system.</td>  					 </tr>         </tbody>  			</table>         </div>     </div> </details>	|
+| ReservationRQ/CardInfo		| 0..1  		|		| Credit card details.			|
+| CardInfo/CardCode   				| 1  		| String	| <details>     <summary>Credit Card codes</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Code</strong>  						 </th>  						 <th>  							 <strong>Name</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>VI</td>  						 <td>Visa</td>  					 </tr>  					 <tr>  						 <td>AX</td>  						 <td>American Express</td>  					 </tr>                     <tr>  						 <td>BC</td>  						 <td>BC Card</td>  					 </tr>  					 <tr>  						 <td>CA</td>  						 <td>MasterCard</td>  					 </tr>  					 <tr>  						 <td>CB</td>  						 <td>Carte Blanche</td>  					 </tr>                     <tr>  						 <td>CU</td>  						 <td>China Union Pay</td>  					 </tr>  					 <tr>  						 <td>DS</td>  						 <td>Discover</td>  					 </tr>  					 <tr>  						 <td>DC</td>  						 <td>Diners Club</td>  					 </tr>                     <tr>  						 <td>T</td>  						 <td>Carta Si</td>  					 </tr>                     <tr>  						 <td>R</td>  						 <td>Carte Bleue</td>  					 </tr>                     <tr>  						 <td>N</td>  						 <td>Dankort</td>  					 </tr>                     <tr>  						 <td>L</td>  						 <td>Delta</td>  					 </tr>                     <tr>  						 <td>E</td>  						 <td>Electron</td>  					 </tr>                     <tr>  						 <td>JC</td>  						 <td>Japan Credit Bureau</td>  					 </tr>                     <tr>  						 <td>TO</td>  						 <td>Maestro</td>  					 </tr>                     <tr>  						 <td>S</td>  						 <td>Switch</td>  					 </tr>                     <tr>  						 <td>EC</td>  						 <td>Electronic Cash</td>  					 </tr>                     <tr>  						 <td>EU</td>  						 <td>EuroCard</td>  					 </tr>                     <tr>  						 <td>TP</td>  						 <td>Universal air travel card</td>  					 </tr>                     <tr>  						 <td>OP</td>  						 <td>optima</td>  					 </tr>                     <tr>  						 <td>ER</td>  						 <td>Air Canada/RnRoute</td>  					 </tr>                     <tr>  						 <td>XS</td>  						 <td>access</td>  					 </tr>                     <tr>  						 <td>O</td>  						 <td>others</td>  					 </tr>  				 </tbody>  			</table>         </div>     </div> </details>			|
+| CardInfo/Number   				| 1  		| String	| Credit card number.			| 
+| CardInfo/Holder   				| 1  		| String	| Credit card holder.			|
+| CardInfo/ValidityDate   				| 1  		|		| 			|
+| ValidityDate/Month   				| 1  		| String	| Expiration month (2 characters).			|
+| ValidityDate/Year   				| 1  		| String	| Expiration year (2 characters).			|
+| CardInfo/CVC   				| 1  		| String	| Credit card security code.			|
+| CardInfo/isVCC   				| 1  		| Boolean	| Indicates if the card information provided is from a Virtual Credit Card or not.			|
+| CardInfo/VirtualCreditCard   				| 0..1  		|		|  Extra information if the card is a virtual credit card.			|
+| VirtualCreditCard/VCCActivationDate   				| 1  		| String	| Date from when the card can be charged. Format: DD/MM/YYYY.	|
+| VirtualCreditCard/VCCDeactivationDate   				| 1  		| String	| Date from when the card will no longer be chargeable. Format: DD/MM/YYYY.	|
+| VirtualCreditCard/VCCCurrentBalance   				| 1  		| String	| The amount which can be charged to the card.	|
+| VirtualCreditCard/VCCCurrencyCode   				| 1  		| String	| The ISO currency code of the VCCCurrentBalance.	|
+| CardInfo/ThreeDomainSecurity   				| 0..1  		|		| 3DS data and transaction results.			|
+| ThreeDomainSecurity/ThreeDSVersion   | 1  		| String	| Three Domain Security version used.	|
+| ThreeDomainSecurity/DSTransactionID  | 0..1 		| String	| Unique transaction identifier assigned by the Directory Server (DS) to identify a single transaction.	|
+| ThreeDomainSecurity/XID              | 0..1 		| String	| Transaction identifier resulting from authentication processing.	|
+| ThreeDomainSecurity/ECI              | 1  		| String	| For Visa, American Express, Diners Club and JCB <details>     <summary>ECI Codes</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>ECI Value</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>05</td>  						 <td>3DS authentication was successful, transactions are secured by 3DS.</td>  					 </tr>              <tr>  						 <td>06</td>  						 <td>Authentication was attempted but was not or could not be completed; possible reasons being either the card or its Issuing Bank has yet to participate in 3DS.</td>  					 </tr>				 <tr>  						 <td>07</td>  						 <td>3DS authentication is either failed or could not be attempted; possible reasons being both card and Issuing Bank are not secured by 3DS, technical errors, or improper configuration.</td>  					 </tr>               </tbody>  			</table>         </div>     </div> </details>  For MasterCard <details>     <summary>ECI Codes</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>ECI Value</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>00</td>  						 <td>3DS authentication is either failed or could not be attempted; possible reasons being both card and Issuing Bank are not secured by 3DS, technical errors, or improper configuration.</td>  					 </tr>              <tr>  						 <td>01</td>  						 <td>3DS authentication was attempted but was not or could not be completed; possible reasons being either the card or its Issuing Bank has yet to participate in 3DS, or cardholder ran out of time to authorize.</td>  					 </tr>				 <tr>  						 <td>02</td>  						 <td>3DS authentication is successful.</td>  					 </tr>               </tbody>  			</table>         </div>     </div> </details>|
+| ThreeDomainSecurity/CAVV             | 0..1  		| String	| Cardholder Authentication Verification Value.	|
+| ThreeDomainSecurity/PARes            | 0..1  		| String	| Payer Authentication Response.	|
+| ThreeDomainSecurity/PAResStatus      | 0..1  		| String	| <details>     <summary>Payer Authentication Response status</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Status Code</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>Y</td>  						 <td>Successful Authentication.</td>  					 </tr>  					 <tr>  						 <td>N</td>  						 <td>Failed Authentication.</td>  					 </tr>           <tr>  						 <td>U</td>  						 <td>Unable to complete Authentication.</td>  					 </tr>				 <tr>  						 <td>A</td>  						 <td>Successful Attempts Transaction.</td>  					 </tr><tr>  						 <td>B</td>  						 <td>You can proceed to authorisation using the information received.</td>  					 </tr>         <tr>  						 <td>R</td>  						 <td>Authentication Rejected.</td>  					 </tr>               </tbody>  			</table>         </div>     </div> </details>|
+| ThreeDomainSecurity/PARes            | 0..1  		| String	| Payer Authentication Response.	|
+| ThreeDomainSecurity/CardEnrolledStatus | 0..1  		| String	| <details>     <summary>Card Enrollment Status</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Status Value</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>Y</td>  						 <td>Cardholder is enrolled. Bank is participating in 3-D Secure protocol and will return the ACSUrl.</td>  					 </tr>              <tr>  						 <td>N</td>  						 <td>Cardholder Not Participating – Cardholder is not enrolled.</td>  					 </tr>				 <tr>  						 <td>U</td>  						 <td>Unavailable. The DS or ACS is not available for authentication at the time of the request.</td>  					 </tr>               </tbody>  			</table>         </div>     </div> </details>	|
+| ThreeDomainSecurity/SignatureStatus  | 0..1  		| String	| <details>     <summary>Signature Verification Status</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Status Value</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>Y</td>  						 <td>Signature of the PARes has been validated successfully.</td>  					 </tr>              <tr>  						 <td>N</td>  						 <td>PARes could not be validated.</td>  					 </tr>	     </tbody>  			</table>         </div>     </div> </details>	|
+| ThreeDomainSecurity/MerchantName     | 0..1  		| String	| Merchant name.	|
+| ReservationRQ/Rooms         				| 1      	|		| Rooms within this option (room list).			|
+| Rooms/Room    				| 1..n    	|		|  					|
+| @id      					| 1  		| String	| Room identifier.				|
+| @roomCandidateRefId				| 1  		| Integer	| Room candidate identifier.				|
+| @code    					| 1  		| String	| Room code.						|
+| @description					| 1  		| String	| Room description.					|
+| Rooms/Preferences    				| 0..1    	|		| Preference filters at room level. 					|
+| Preferences/Preference   				| 1..n    	|		| Each filter of preference and its values. 		|
+| @type   				| 1    	|	String	| <details>     <summary>Preference types</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Preference Type</strong>  						 </th>   					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>Smoker</td>  				</tr>   	     <tr>  						 <td>NonSmoker</td>  				</tr>     <tr>  						 <td>ExtraBed</td>  				</tr>      <tr>  						 <td>Cradle</td>  				</tr>    <tr>  						 <td>DoubleBed</td>  				</tr>      <tr>  						 <td>TwinBeds</td>  				</tr>    <tr>  						 <td>ContigousRoom</td>  				</tr>     <tr>  						 <td>Wedding</td>  				</tr>     <tr>  						 <td>LateArrival</td>  				</tr>      <tr>  						 <td>LateCheckOut</td>  				</tr>    <tr>  						 <td>EarlyCheckIn</td>  				</tr>      <tr>  						 <td>GroundFloor</td>  				</tr>     <tr>  						 <td>TopFloor</td>  				</tr>     <tr>  						 <td>WithoutBoucher</td>  				</tr>  </tbody>  			</table>         </div>     </div> </details>			|
+| ReservationRQ/RoomCandidates			| 1..n    	|		| 					|
+| RoomCandidates/RoomCandidate			| 1..n    	|		| 					|
+| @id      					| 1  		| Integer	| Id of the requested room (starting at 1).		|
+| RoomCandidate/Paxes	| 1..n    	|		| 						|
+| Paxes/Pax	| 1..n    	|		| 						|
+| @age     					| 1  		| Integer	| Passenger age on the day of check-in. 					|
+| @id      					| 1  		| Integer	| Passenger id (starting at 1). 			|
+| ReservationRQ/Remarks       				| 0..1    	| String Any customer comments for the supplier to consider (see [MetaData](../content/meta-data/) in order to verify if the supplier implements it).	|
+| ReservationRQ/Preferences   				| 0..1    	|		| Preference filters at the option / general level. 					|
+| Preferences/Preference  				| 1..n    	|		| Each filter of preference and its values. 		|
+| @type   				| 1    	| String		| <details>     <summary>Preference types</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Preference Type</strong>  						 </th>   					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>Smoker</td>  				</tr>   	     <tr>  						 <td>NonSmoker</td>  				</tr>     <tr>  						 <td>ExtraBed</td>  				</tr>      <tr>  						 <td>Cradle</td>  				</tr>    <tr>  						 <td>DoubleBed</td>  				</tr>      <tr>  						 <td>TwinBeds</td>  				</tr>    <tr>  						 <td>ContigousRoom</td>  				</tr>     <tr>  						 <td>Wedding</td>  				</tr>     <tr>  						 <td>LateArrival</td>  				</tr>      <tr>  						 <td>LateCheckOut</td>  				</tr>    <tr>  						 <td>EarlyCheckIn</td>  				</tr>      <tr>  						 <td>GroundFloor</td>  				</tr>     <tr>  						 <td>TopFloor</td>  				</tr>     <tr>  						 <td>WithoutBoucher</td>  				</tr>  </tbody>  			</table>         </div>     </div> </details>					|
+
+
+## Reservation Response
+
+After each request, you will process the data and provide a response. Upon receiving a `Reservation` request, you will send you a corresponding `Reservation` response. 
+
+The response options include either **success** or an **error**. If successful, it will indicate that the reservation has been completed successfully.
+
+
+### Success
+
+```xml
+<ReservationRS>
+   <ProviderLocator>102</ProviderLocator>
+   <PropertyReservationNumber>HCN8273</PropertyReservationNumber>
+   <ResStatus>OK</ResStatus>
+   <Price currency = "EUR" amount = "36.20" binding = "false" commission = "-1" minimumSellingPrice="-1"/>
+</ReservationRS>
+```
+
+#### Success Response Data Breakdown
+
+| Element					| Number	| Type	| Description					|
+| --------------------------------------------- | ------------- | ------------- | ----------------------------------------------------- |
+| ReservationRS					| 1       	|		| Root node.						|
+| ProviderLocator 				| 0..1  		| String	| Booking ID in the Supplier´s system. It will always be returned if the ResStatus is OK or RQ. It could not be returned when the ResStatus is CN or UN, depending if the supplier returns it. 					|
+| PropertyReservationNumber 				| 0..1  		| String	| Booking Number in the property´s system (see Metadata method in order to verify if the supplier implements it).	|
+| ResStatus					| 1  		| String	| <details>     <summary>Reservation Status</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Status Code</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>OK</td>  						 <td>The reservation was completed with no problems.</td>  					 </tr>  					 <tr>  						 <td>RQ</td>  						 <td>The reservation was completed but the product is still not available, so the reservation goes into a waiting list (Request).</td>  					 </tr>           <tr>  						 <td>CN</td>  						 <td>The reservation was completed but due to a supplier error or a timeout the system will immediately cancel the reservation to prevent further possible errors.</td>  					 </tr>				 <tr>  						 <td>UN</td>  						 <td>The reservation was completed but due to a supplier error or a timeout, the reservation status is unknown. It is the client’s responsibility to check if the booking is OK.</td>  					 </tr>       </tbody>  			</table>         </div>     </div> </details>		|
+| Price  					| 0..1     	|		| Total price of this reservation (see [MetaData](../content/meta-data/) in order to verify if the supplier implements it).				|
+| @currency					| 1  		| String	| Currency code (Our system uses a standard ISO - 3 for all suppliers).					|
+| @amount					| 1  		| Decimal	| Book Amount.						|
+| @binding					| 1  		| Boolean	| If binding is set as true, then the client can’t sell the product for a lower price that the one set by the supplier. If it set as as false, the client can sell the product for a lower price. |
+| @commission					| 1  		| Decimal	| <details>     <summary>Commission Scenarios</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Commission</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>0</td>  						 <td>The price returned is net.</td>  					 </tr>  					 <tr>  						 <td>-1</td>  						 <td>The supplier has not supplied the sale price nor the commission. This information is in the commercial contract with the supplier.</td>  					 </tr>           <tr>  						 <td>Greater than 0</td>  						 <td>X = % of the commission applied to the amount.</td>  					 </tr>				 </tbody>  			</table>         </div>     </div> </details>	|
+| @minimumSellingPrice 				   | 1 		    | Decimal 	    | Indicates the minimum selling price it can be sold (determined by the Seller). If is specified (different than "-1"), that field takes preference to amount.		<details>     <summary>Minimum Selling Price Scenarios</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Minimum Selling Price</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody> <tr>  						 <td>0</td>  						 <td>No minimum selling price is provided.</td>  					 </tr>       <tr>  						 <td>-1</td>  						 <td>We have no information about MSP from the Seller.</td>  					 </tr>     <tr>  						 <td>Greater than 0</td>  						 <td>The lowest possible amount that can be sold commercially.</td>  					 </tr>				 </tbody>  			</table>         </div>     </div> </details> |
+| Remarks					| 0..1		| String	| Any remarks about this reservation			|
+| BillingSupplierCode				| 0..1		| String	| Supplier's billing code. Will be returned if the supplier has different billing accounts and this is informed in the reservation (see [MetaData](../content/meta-data/) in order to verify if the supplier implements it).	|
+| Payable					| 0..1     	|		| Payable.						|
+| @value					| 1       	|		| Informs Payable.					|
+
+
+### Error
+
+```xml
+<ReservationRS>
+   <operationImplemented>true</operationImplemented>
+   <applicationError>
+      <code/>
+      <type>204</type>
+      <description>Supplier returns 0 results in availability.</description>
+      <httpStatusCode>0</httpStatusCode>
+   </applicationError>
+</ReservationRS>
+```
+
+<details>
+    <summary>Error codes that you will need to include in the response in the event of an error</summary>
+    <div>
+        <div>
+         <table>
+				<thead>
+					<tr>
+						<th>
+							<strong>Error Code</strong>
+						</th>
+						<th>
+							<strong>Error Description</strong>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>101</td>
+						<td>System Exception (Exception not controlled or not classified as general exception).</td>
+					</tr>
+					<tr>
+						<td>102</td>
+						<td>Supplier Error.</td>
+					</tr>
+					<tr>
+						<td>103</td>
+						<td>Too many requests to the supplier.</td>
+					</tr>
+                    <tr>
+						<td>104</td>
+						<td>Timeout (Timeout during the execution of an operation (look in the common attribute timeout )).</td>
+					</tr>
+					<tr>
+						<td>105</td>
+						<td>Communication Error.</td>
+					</tr>
+					<tr>
+						<td>204</td>
+						<td>Supplier returns 0 results in availability.</td>
+					</tr>
+                    <tr>
+						<td>205</td>
+						<td>The Supplier doesn’t accept the distribution RQ.</td>
+					</tr>
+					<tr>
+						<td>206</td>
+						<td>The Supplier doesn’t accept the dates RQ.</td>
+					</tr>
+					<tr>
+						<td>207</td>
+						<td>The Supplier doesn’t accept the request RQ.</td>
+					</tr>
+                    <tr>
+						<td>301</td>
+						<td>Option not found in policies.</td>
+					</tr>
+                    <tr>
+						<td>302</td>
+						<td>Hotel Not Found in DescriptiveInfo.</td>
+					</tr>
+                    <tr>
+						<td>303</td>
+						<td>Booking not confirmed in the supplier’s system.</td>
+					</tr>
+				</tbody>
+			</table>
+        </div>
+    </div>
+</details>
+
+## Frequently Asked Questions
+
+<details>
+<summary>In what cases might there be a price difference between Reservation and Valuation methods?</summary>
+
+<p>We cannot guarantee that the price will be returned in Reservation, given that this is something which depends on the supplier, and unless they provide us the price in their response, there is no way for us to return it to you.</p>
+<p>If the price returned in Reservation method is different than the one returned in the Valuation method, 4 cases could occur. Below, we have explained each of these cases and what should be done if either of them occur:</p>
+
+<b>Case 1</b>
+
+<p>The price in Reservation is lower than the price in Valuation. The selling price for the final customer will be the one in valuation, as this is the one that will be accepted by them at the time of booking.</p>
+
+<b>Case 2</b>
+
+<p>The price in Reservation is higher than the price in valuation:</p>
+
+<b>Case 2.1</b>
+
+<p>The supplier allows DeltaPrice and you allow a price change of, for example, up to €10, indicating it in through our DeltaPrice field (explained in the previous section):</p>
+
+<p>Valuation:</p>
+
+```xml
+<Price currency = "EUR" amount = "110" binding = "false" commission = "0"/>
+```
+
+<p>Reservation:</p>
+
+```xml
+<Price currency = "EUR" amount = "110" binding = "false" commission = "0"/>
+```
+
+<p>When making reservation, you must pay the supplier €110, given that you have decided not to lose the booking even though the price has increased with €10 compared to Valuation.</p>
+
+<b>Case 2.2</b>
+
+<p>The supplier allows DeltaPrice and you DO NOT allow price change. In this case we will return an error, as you do not permit a higher reservation price than the one already established in Valuation.</p>
+
+<b>Case 2.3</b>
+
+<p>The supplier DOES NOT allow DeltaPrice. If the supplier returns a higher price in Reservation than he does in Valuation, then the difference should be reported, as you have not specified in any way that the price can be changed. In this case the supplier has to cover the price change.</p>
+
+</details>

@@ -1,0 +1,93 @@
+---
+sidebar_position: 6
+---
+
+# Room List
+
+The Room List method returns a comprehensive room list from a supplier's access that may include translations to other languages, granting access to all the rooms configured by the Seller for a given set of credentials. The returned fields include: `Room code`, `Room name` etc.
+
+
+## RoomList Request
+
+```xml
+<soapenv:Envelope xmlns:soapenv = "http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns = "http://schemas.xmltravelgate.com/hub/2012/06" xmlns:wsse = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+   <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>username</wsse:Username>
+            <wsse:Password>password</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <ns:RoomList>
+         <ns:roomListRQ>
+            <ns:timeoutMilliseconds>20000</ns:timeoutMilliseconds>
+            <ns:version>1</ns:version>
+            <ns:providerRQ>
+               <ns:code>suppliercode</ns:code>
+               <ns:id>1</ns:id>
+               <ns:rqXML>
+                  <RoomListRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
+                     <timeoutMilliseconds>19700</timeoutMilliseconds>
+                     <source>
+                        <languageCode>en</languageCode>
+                     </source>
+                     <filterAuditData>
+                        <registerTransactions>true</registerTransactions>
+                     </filterAuditData>
+                     <Configuration>
+                        <User>user</User>
+                        <Password>password</Password>
+                        <UrlAvail>www.supplier.com/avail</UrlAvail>
+                        <UrlReservation>www.supplier.com/reservation</UrlReservation>
+                        <UrlValuation>www.supplier.com/valuation</UrlValuation>
+                        <UrlGeneric>www.supplier.com/generic</UrlGeneric>
+                        <Parameters>
+                           <Parameter key = "UrlListHotels" value = "http://www.supplier.com/ListHotels"></Parameter>
+                           <Parameter key = "Access" value = "22334"></Parameter>
+                        </Parameters>
+                     </Configuration>
+                  </RoomListRQ>
+               </ns:rqXML>
+            </ns:providerRQ>
+         </ns:roomListRQ>
+      </ns:RoomList>
+   </soapenv:Body>
+</soapenv:Envelope>
+```
+
+### Request Data Breakdown
+
+`RoomList` request does not require any elements. 
+
+
+## RoomList Response
+
+After each request, you will have to process the data and provide a response. Upon receiving a `RoomList` request, you will need to send a corresponding `RoomList` response.
+
+```xml
+<RoomListRS>
+   <UpgradeUTCDate>2016-10-18T13:18:03+02:00</UpgradeUTCDate>
+   <RoomsInfo>
+      <RoomInfo>
+         <Code>STD</Code>
+         <Name>Standard</Name>
+      </RoomInfo>
+      <RoomInfo>
+         <Code>ST</Code>
+         <Name>Suite</Name>
+      </RoomInfo>
+   </RoomsInfo>
+</RoomListRS>
+```
+
+### Response Data Breakdown
+
+| Element                   | Rel  | Type     | Description                                                 |
+|---------------------------|------|----------|-------------------------------------------------------------|
+| RoomListRS/UpgradeUTCDate | 1    | DateTime | Indicates the update date of the information in UTC format. |
+| RoomListRS/RoomsInfo      | 1    |          | Root node, list of rooms                                    |
+| RoomsInfo/RoomInfo        | 1..n |          |                                                             |
+| RoomInfo/Code             | 1    | String   | Room code                                                   |
+| RoomInfo/Name             | 1    | String   | Room name                                                   |

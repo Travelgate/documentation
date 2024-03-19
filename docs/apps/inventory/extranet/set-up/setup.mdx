@@ -1,0 +1,347 @@
+---
+sidebar_position: 2
+---
+
+# SetUp
+
+The SetUp section enables you to configure the hotels you are going to buy from your connected channel managers or to create the main structure of your own product is you are going to use the extranet to load your static contracts.
+
+![Inventory SetUp](https://storage.travelgate.com/docs/inventory_setup1.png)
+
+The configuration of the main structure used in Inventory is as follows:
+
+* Hotel
+* Rate
+* Room
+
+There are a series of hotels available that can have one or more rates. Each rate can also have one or more rooms.
+
+Optionally, you will be able to configurate different discounts, supplements or night offers with the following:
+
+* Derived Rate (Discounts/Supplements)
+* Free night offers
+
+All these structures can be activated/deactivated or deleted. See Activate/Deactivate/Delete section for more details.
+
+## Hotel
+
+### How to view hotels already setup
+
+There are two ways of checking hotels already configured: you can view all the hotels for a relation `Client – Supplier`, as in the previous image. Alternatively, you can search  suppliers or channel managers that have a specific hotel. To filter is faster if you want to search for a particular hotel - tick the checkbox of `filter by hotels`, type either the hotel code or name and complete it with one of the options that the autocomplete offers (the field left as blank would be filled automatically).
+
+![Inventory SetUp](https://storage.travelgate.com/docs/inventory_setup2.png)
+
+Click the button `Filter Providers` and a list of providers that offer the selected hotel will appear in the drop-down menu. Once you select one of those channels, only the configuration done for this hotel with this supplier will appear.
+
+### How to add a hotel
+
+To add a new hotel in your configuration you should click the `Add Hotel` button. A pop-up window will appear with information to fill in relation to the hotel you are about to add:
+
+![Inventory SetUp](https://storage.travelgate.com/docs/inventory_setup3.png)
+
+* **Hotel Name:** This autocomplete field makes suggestions while you are typing the hotel’s name. Inventory's system works with a master hotel database where we store all the basic information of the hotels setup by our Partners . If the hotel you require is not available in the autocomplete field you can create it yourself by clicking  the `Create Hotel` button. Notice that the hotel you want to add will only appear as a suggestion in the autocomplete field if it the hotel is not already added to this client-channel relation and it has assigned the correspondent `Inventory Context` in case the Channel uses their own hotel codes. 
+
+* **Hotel Email:** Hotel email configurated in Inventory's system. This is the email address that will be used to notify the hotel when a booking or cancellation is made. If you don't want our system to send this notification to the hotel, you can uncheck the checkbox `Notify Booking`.
+
+* **CC Address:** CC email address to which a notification is sent when a booking or cancellation is made. If the checkbox `Use Client Email` is checked, by default, the client email is added. If you want to change the cc email address, you have to uncheck the checkbox and then modify the email address.
+
+* **From Address:** The notification email is always sent from a *no-reply* email address. Note that at the bottom of the email there is a message warning the reader that for any questions or queries, they should contact a specific email address. If the box is checked, the Buyer's email is added there by default. If you want to configure the email that will be indicated at the bottom of the notification email, uncheck the checkbox.
+
+Once added, the hotel will appear in a row in the SetUp menu, where you will be able to see its name and ID. You will be able to see this in a list among other hotels you have configured.
+
+The following image is an example of an email notification and the information it contains such as the locators, client, room, price, etc. This email is only **informative**. 
+
+![Inventory SetUp](https://storage.travelgate.com/docs/inventory_setup4.png)
+
+:::note
+
+It is possible to add your logo to this email. To implement this functionality, please, contact with our CC landing page [CC landing page](#) sending the logo you want to use.
+
+:::
+
+### How to create a new hotel
+
+If you cannot find the hotel you want to add in the autocomplete field you'll be given the option to create this hotel in our DataBase by clicking the button `Create Hotel`. You will need to indicate the **hotel's** basic information in the following form: 
+
+![Inventory SetUp empty form](https://storage.travelgate.com/docs/inventory_setup_empty.png)
+
+The information needed to create a hotel is listed below:
+
+* **Name:** Hotel name.
+* **Category:** Hotel category.
+* **Code:**  (Optional) Channel Manager's Hotel Code. Only required if channel manager works with their own hotel codes, otherwise leave this field empty. 
+* **Inventory Context:** Channel Manager owner of the hotel. Only required if `Code` specified.
+* **eMail:** Hotel contact eMail address.
+* **Telephone:** Hotel contact telephone number.
+* **ZIP code:** Hotel postal code.
+* **Address:** Hotel location.
+* **Country:** Country where hotel is located.
+* **Locality:** Area where the hotel is located.
+* **Latitude:** Hotel exact latitude.
+* **Longitude:** Hotel exact longitude.
+
+![Inventory SetUp filled form](https://storage.travelgate.com/docs/inventory_setup_code.png)
+
+:::note
+
+Please complete the form using the hotel's actual information. It's mandatory that the email and telephone are those of the hotel and not from the Channel Manager.  
+Bear in mind that a specific `Inventory Context` cannot have duplicate hotel codes.
+
+This feature is available for client and provider administrator users.
+
+:::
+
+
+## Rate
+
+Now that you have added the hotel it is time to add the rates and then the rooms.
+
+### How to add a rate
+
+In order to add a new rate, click in the `Add Rate` button in the hotel row:
+
+![Inventory SetUp](https://storage.travelgate.com/docs/inventory_setup6.png)
+
+The information needed to add a rate is listed below:
+
+* **Code:** Rate code. It needs to be unique per hotel. This code need to coincide with the rate code of the channel manager.
+* **Name:** Rate name.
+* **Included board:** Meal plan.
+* **Age Max Baby:** The maximum age for a passenger to be considered a baby (indicated age not included, meaning if the *Max Age* for a baby is 3 you should indicate 4, that way any passenger aged 0-3 will be considered a baby).
+* **Free Baby:** Check to indicate that babies are free of charge if you are working with Channel Managers that can't load this kind of free baby condition. Use only if the Channel Manager works with *Standard Occupancy* price.  
+* **Age Max Child** The maximum age for a passenger to be considered a child (indicated age not included, same as the maximum age for a baby).
+* **Free Child:** Check to indicate that children are free of charge if you are working with Channel Managers that can't load this kind of free child condition. Use only if the Channel Manager works with *Standard Occupancy* price.
+* **Currency:** Currency applied to the rate.
+* **Commission:** Percentage of commission applied. This is only informative.
+* **Binding Price:** Must be checked if the price is binding.
+* **Rate Rule:** Rate rule to apply to this rate. Not Selected (0), Large Family (7), Public Servant (8), Negotiated (10), Package (11), Canary Resident (34), Balearic Resident (35), Honeymoon (36). The default value is *Not selected*.
+* **Senior Rates:** You must select the correct value if the rate is for people over 55, 60 or 65 years of age. The default value is *Not selected*.
+* **Active:** Indicates whether or not the rate is active.
+* **All dates:** By default it is checked. If it is checked, the rate will be available always. If you uncheck the checkbox, two new fields will appear: From and To. These fields are the initial and final dates for when the rate is available (dates when the availability request is done, not the stay dates). For example: if there is a date range from: `24/02/2020` to: `28/02/2020`:
+    * If an availability request is made between February 24 and February 28 (both days included) and if there is price and allotment loaded for this rate, there will be availability returned correctly in the search response.
+     * If the availability request is made before February 24 or after February 29 there will be no availability because the request would not have been made in the indicated range.
+* **Markets:** This is a market filter. Clicking the `+` button on both Include or Exclude, allows you to add the country code of the market that you want to include or exclude. For example, if a rate includes the market "ES" and an availability search is made for the market "IT", there will not be availability returned, because "IT" is not an included market. On the other hand, if one market is excluded, for example "ES", there will be availability returned for all other markets except the Spanish. In case no market is indicated in these fields, no market filter will be applied.
+* **Payment Type:** Indicate the payment type to work with. If you don't have this field in your panel it means that the supplier or Channel Manager your are working with doesn´t allow credit payment and by default *"MerchantPayment"* is selected.
+    * **MerchantPayment:** The customer pays the client and the client will pay the provider.
+    * **DirectPayment:** The customer will have to use a credit card as a guarantee for the hotel and the payment will be done by the customer at check-in.
+    * **BookingDatePayment:** The client will use a credit card with the exact amount of the booking so they can pay the provider/hotel. The provider will charge the payment on the day of the reservation.
+    * **ArrivalDatePayment:** The client will use a credit card with the exact amount of the booking so they can pay the provider/hotel. The provider will charge the payment on the day of the check-in.
+* **Card Type:** List with different card types. Select the cards allowed between the client and the provider.
+* **Taxes:** Taxes that can be added to the rate. By default, there are no taxes in a rate, but they could be freely
+added once the checkbox of "Taxes" is checked: 
+   * **Type:** the type that would take the value of the tax, it can be a % or an amount.
+   * **Value:** the value of the tax.
+   * **Description:** the description that can be indicated for a tax: "City", "Local", "Resort fee" and "Supplement to be paid on spot".
+   * **Per Night:** if checked, the tax will be applied for every night.
+   * **Per Pax:** if checked, the tax will be applied for every pax.
+   * **Add to final price:** if checked, the tax price will be included in the final price that the client will pay. If it is not checked, the tax will be informative to the final customer and should be paid for them at the hotel.
+* **Cancellation policy – Base:** Cancellation policies that can be applied to the rate. The rate will be non refundable if the checkbox `No refund` is checked. It is possible to apply a different type of cancellation policy by clicking the `+` button. You can add as many policies as you need, all you need to do is indicate the days in advance before the arrival date, the type and the value of the policy. 
+* **Cancellation policy - Calendar:** This option will only appear once you have created your rate previously with base cancel policies. The cancellation policy by calendar allows you to create specific cancel policies by day or date range. You can click the `Add range` button to specify a date range and the cancel policies. This new cancel policies by day will override the base cancel policies specified at rate level. If you want to remove a cancel policy by date you can click the `Delete range` button and specify your dates. You can also delete or check the cancel policies by day clicking in the day's number of the month.
+* **Specific Clients:** If you want to inform that this rate is only for a list of specific clients check this option and add both Code (code that represent your client) and Description (normally the name of the client). You can add maximum 15 clients. The client codes have to be unique on the same rate.
+* **Amendments policy:** Informs if a Rate is modifiable and their fees if any is applied. When the checkbox `Amendments allowed` is checked, the rate allows modifications. If the modifications implies fees, they can be added through the `+` button to setup the rate amend fees. All you need to do is to indicate the days in advance before the arrival date, type (between amount and percent) and amount. If no fee is required, then you don't need to specify it. 
+* **BusinessRules:** The business rules explained below have the peculiarity that some parameters need to be added to the client's access to use this functionality correctly. The parameters that must be added are the following:
+    
+      "DistributionTypeFilter": "B2C/B2B".
+      "BillingCompanyFilter": "one of the companies indicated in the initial listing".
+      "ClientFilter": "client1"(client requesting availability).
+
+ To be able to hot-change these parameters, if you use the Hotel-X Pull Buyer API, you must use the ["Add parameters" Hotel-X plugin](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/add-parameter).
+
+    * **Billing Companies:** Informs the company with which this option is billed. In order to use this feature, billing companies must be pre-loaded into the travelgate system.
+    * **Selling Clients:** Inform which clients are included or excluded from this option. To use this function, you have to send us a file with a list of all the clients you work with. We preload these clients into the Travelgate system.
+    * **Distribution Type:** Select the type of distribution you work with for this option.
+
+:::note
+
+As a reminder, the total amount of a **modification** is the addition of amend fee, applicable cancellation changes and rate variance. This criteria will build the new amount to be quoted in any Amend request. Total amended price = cancellation policy fee i(if applicable) + amend fee + new price
+
+:::
+
+When a rate is added, it appears in the hotel node when you click the arrow that appears on the left side of the hotel name.
+
+## Room
+
+The next step is to add and configurate rooms to each rate. 
+
+### How to add a room
+
+In order to add a new room, click in the ``Add Room`` button in the hotel row and a pop-up window appears where you will find two options:
+
+1. **All room types:** Select from the autocomplete field a room code and description from your own room master list. Room code can be modified for this rate.
+
+![Inventory SetUp](https://storage.travelgate.com/docs/inventory_setup8.png)
+
+2. **New room type:** Create a new room type, enter a code and a description for your own reference. Once saved, this room type will be added to the room master list and will appear as an option in `All room types`.
+
+![Inventory SetUp](https://storage.travelgate.com/docs/inventory_setup9.png)
+
+* **Code:** Room code. Must be unique per rate and has to coincide with the code used by the channel.
+* **Name:** Room name. Text field that allows you to introduce the room description that will be shown to your buyers. This field is just informative.
+* **Standard Occupancy:** This field is useful to calculate the room amount when prices are loaded per passenger. Normally, it indicates the maximum number of adults (only adults) allowed for the room. 
+* **Occupancy only Adults:** Defines the occupancies of adults allowed for this room. (Dark Blue icons are adults).
+* **Occupancy Adults with Children:** Defines occupancies of adults and children allowed for this room. (Light Blue icons are children).
+* **Occupancy Adults with Babies (and children):** Defines the occupancies of adults, children and babies allowed for this room. (Green icons are babies).
+
+## Derived Rates
+
+In Inventory you can create your own discounts or supplements using what we call *Derived Rates*. These are rates that descend from non-derived rates and they may or may not modify some of the values of the base rate, such as cancellation policies or markets. The main use of the derived rates is to permit the loading of supplements or discounts for specific rooms from its base rate.
+
+To add a derived rate, first it is necessary to click the `Add Derived Rate` button for the same rate for which you want to create a derived rate and a pop-up window will appear for you to fill in the derived rate information.
+
+![Inventory SetUp](https://storage.travelgate.com/docs/inventory_setup10.png)
+
+The information needed to add a derived rate is listed below:
+
+* **Code:** Derived rate code. Must be unique per hotel. (it cannot coincide with any other rate or derived rate code in the same hotel).
+* **Name:** Derived rate name.
+* **Cancel policies from base rate:** Checkbox that will apply the cancel policies from the base rate to the derived rate depending on whether it is checked or not. If it is not checked, a form appears like the one seen previously when adding a rate, letting you add the cancel policies you may want for this derived rate.
+* **Markets from base rate:** Checkbox that will apply the markets from the base rate to the derived rate depending on whether it is checked or not. If unchecked, a form appears like the one seen previously when adding a rate, letting you select any markets you may want included or excluded for this derived rate.
+* **Apply Rate Rule from base rate:** Checkbox that will apply the same rate rule from the base rate depending on whether it is checked or not.
+* **Rate Rule:** Rate rule to select if you do not want apply the same than the base rate.
+* **Apply Senior Rate from base rate:** Checkbox that will apply the same senior rate from the base rate depending on whether it is checked or not.
+* **Senior Rates:** Senior rate to select if you do not want apply the same than the base rate.
+* **Active:** Checkbox to activate or deactivate the derived rate. If it is checked the derived rate is active.
+* **Apply Dates from base rate:** Checkbox used to apply the effective dates from the base rate. If unchecked, a form like the one explained previously when creating a rate will pop up.
+* **Board from base rate:** Checkbox used to apply the meal plan from the base rate. If unchecked, the meal plan list will be enabled and you will be able to select the board of the derived rate.
+* **Apply to all rooms:** Checkbox that will indicate whether the derived rate applies to all the rooms existing (or that will be added in the future) to the base rate. In case it is not selected, a list of rooms will appear, allowing you to select which rooms will be affected by the derived rate. It is mandatory to select at least one
+room in order to be able to save the derived rate. Bear in mind that if the derived rate only applies to a set of rooms, when a new room is added to the base rate, it will not have the derived rate’s conditions applied to it. To apply the conditions of the derived rate to said room, you have to edit the derived rate.
+* **Apply Payments from Base Rate:** Checkbox that indicates if the *“Payment Type”* and *“Card Type"* are the same as the base rate. If so, it has to be selected. If not, you need to select this information from drop down menus, so that the derived rate can have its own payment types.
+* **Inform Base Rate:** Checkbox that indicates that the retrieve functions would return the name of the Base Rate instead of the derived rate’s name, if checked.
+* **Apply MealPlan Supplement from Base Rate:** Checkbox that allows the derived rate to have its own MealPlan Supplements. If checked, the derived rate would get the MealPlans of the base rate if any.
+* **Apply Specific Clients from Base Rate:** Checkbox that allows the derived rate to have its own Specific Clients. If checked, the derived rate would get them of the base rate if any.
+* **Apply Amend Fees from Base Rate:** Checkbox that allows the derived rate to be modifiable and to have its own Amends Fees. If checked, the derived rate will inherit from the base rate, if any.
+* **Booking Window:** Booking dates for which the rate will be available.
+
+:::note
+
+See [how to create discounts and supplements](../availability-and-rates/manual-load/derived-rate#frequently-asked-questions).
+
+:::
+
+## Free Night Offers
+
+The Inventory extranet allows you to add free night offers to the rates and its rooms, indicating that in case the end customer stays a specific number of nights, they will get another number of nights for free. 
+
+Firs step would be to click in the `Add Offer` button over the base rate for which you want to add the offer. A pop-up window appears for you to complete the following information.
+
+![Inventory SetUp](https://storage.travelgate.com/docs/inventory_setup11.png)
+
+* **Code:** Offer code. It must be unique at rate level (it can not match with any other offer code in the same rate).
+* **Name:** Offer name.
+* **Offer Type:** Type of offer to apply. Currently the only available type is free night.
+* **Length Of Stay:** Minimum and maximum length of stay that the booking has to comply with.
+* **Applicable Days of Week:** Days of the week that the offer will apply to.
+* **Available Dates:** Used to specify whether the offer is available for all the dates or just for a particular date range.
+* **Apply to all rooms:** Used to specify whether the offer will apply to all the rooms of the rate or just to some of them.
+
+## Frequently Asked Questions
+
+<details>
+<summary>How can I load free charges for child/baby pax?</summary>
+<p>Currently, there are some Channel Managers that are not able to load their prices indicating free charges for child and baby occupancies. To avoid this problem, we have developed a new functionality that allows buyers to indicate that specific rates work with free child/baby.</p>
+<p>When creating/editing a rate you will be allowed to set passenger conditions in contract terms.</p>
+<p>In order to avoid any disruption with the existing product, both check-boxes are going to be <b>unchecked by default</b>. It means that, by default, the system behaviour will remain the same as now.</p>
+
+![Setup_FAQs_1](https://storage.travelgate.com/docs/Setup_FAQs_1.png)
+
+<b>Price Calculation</b>
+<p>As you may know, Inventory-X works with three different types of price, and each Channel Manager loads their product using one of them.</p>
+
+<b>1.Room Price</b>
+<p>The Room Price <b>is not going to be affected</b> by this new feature.</p>
+<p>All the room occupancies have the same price unless there are pax supplements loaded.</p>
+
+<b>2.Occupancy Price</b>
+<p>The Occupancy Price <b>is not going to be affected</b> by this new feature.</p>
+<p>This price already allows to update the final price for each occupancy with no additional calculations from the InventoryX system.</p>
+
+<b>3.Standard Occupancy Price</b>
+<p>On the contrary, this type of price <b>is going to be affected</b>. The child and baby passengers are going to be considered as a free pax depending on the Free of Charge set value.</p>
+
+<p>Please, see the below study case for the new price calculation. <b>Study case:The Standard Occupancy value is 3.</b></p>
+
+![Setup_FAQs_2](https://storage.travelgate.com/docs/Setup_FAQs_2.png)
+
+![Setup_FAQs_3](https://storage.travelgate.com/docs/Setup_FAQs_3.png)
+
+![Setup_FAQs_4](https://storage.travelgate.com/docs/Setup_FAQs_4.png)
+
+<b>Pax supplements</b>
+
+<p>When a free of charge checkbox is checked, the pax supplement is always going to be considered as an Exclusive type regardless of if the supplement is Amount or Percent type.</p>
+<p>Example:</p>
+<li>The Standard Occupancy value is 3</li>
+<li>3-0-0 = 300€</li>
+<li>Child supplement = 50€</li>
+<li>Baby supplement = 10€</li>
+
+![Setup_FAQs_5](https://storage.travelgate.com/docs/Setup_FAQs_5.png)
+
+<b>Channel Manager Updates</b>
+
+<p>When the Channel Manager updates product for a particular rate that has Free of Charge configured, the Free of Charge value set will always prevail over the update. It means that our system always will consider the specific pax as a free pax regardless of the Channel Manager update.</p>
+
+<b>Detail Price Calculation Study Case</b>
+
+<p>Using the following room occupations:</p>
+
+![Setup_FAQs_6](https://storage.travelgate.com/docs/Setup_FAQs_6.png)
+
+<p>And the same occupancy price for all the rates:</p>
+
+![Setup_FAQs_7](https://storage.travelgate.com/docs/Setup_FAQs_7.png)
+
+<p>The following price calculation logic will be applied for these example occupations:</p>
+
+![Setup_FAQs_8](https://storage.travelgate.com/docs/Setup_FAQs_8.png)
+
+![Setup_FAQs_9](https://storage.travelgate.com/docs/Setup_FAQs_9.png)
+
+</details>
+
+<details>
+<summary>How can I load cancellation policies different cancel policies?</summary>
+<p>In the Setup section you are able to add cancel policies when you create your rates. You will be able to add as many policies as you need. All that is necessary is to indicate the days in advance before the arrival date, the type and the value of the policy.</p>
+
+<b>1.Refundable policy</b>
+<p>Here you can see some examples of different refundable cancel policies:</p>
+
+<b>1.1 Nigths and Percentage</b>
+
+![Setup_FAQs_10](https://storage.travelgate.com/docs/Setup_FAQs_10.png)
+
+
+<p>Based on the screenshot above you can determine that:</p>
+<ul>
+<li>5 days before the arrival date, the cancellation penalty will be of one night (the cost is the average price for all nights prices included in the reservation).</li>
+<li>3 days before the arrival date, the cancellation penalty will be 50% of the total amount of the booking.</li>
+<li>1 day before the arrival date, the cancellation penalty will be 100% of the total amount of the booking.</li>
+<li>If the cancellation is done prior to the 5 days before the arrival date, there will not be cancellation penalty at all.</li>
+</ul>
+
+<b>1.2 Import and Percentage</b>
+
+![Setup_FAQs_11](https://storage.travelgate.com/docs/Setup_FAQs_11.png)
+
+<ul>
+<li>1000 days before the arrival date, the cancellation penalty will be 10% of the total amount. Technically, this means that if you cancel there will always be a penalty.</li>
+<li>20 days before the arrival date, the cancellation penalty will be 50 € (or the kind of currency applied to the rate).</li>
+<li>2 days before the arrival date, the cancellation penalty will be 80% of the total amount.</li>
+</ul>
+
+<b>2 Non-Refundable policy</b>
+
+![Setup_FAQs_12](https://storage.travelgate.com/docs/Setup_FAQs_12.png)
+
+<p>There is no cancellation penalty, the total amount of the reservation is charged no matter when is cancelled.</p>
+
+<b>3. No-Show policy</b>
+
+![Setup_FAQs_12](https://storage.travelgate.com/docs/Setup_FAQs_12.png)
+
+<ul>
+<li>3 days before the arrival date, the cancellation penalty will be of one night (the cost is the average price for all nights prices included in the reservation).</li>
+<li>0 days before the arrival (if the customer doesn’t appear the check-in day) the cancellation penalty will be the 121% of the reservation, that means the total booking import plus a charge for not showing.</li>
+</ul>
+
+</details>

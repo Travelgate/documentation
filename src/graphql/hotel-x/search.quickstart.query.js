@@ -139,6 +139,7 @@ export const searchQuickStartQuery =
 					code
 					chargeType
 					description
+					mandatory
 					price {
 						currency
 						binding
@@ -167,7 +168,6 @@ export const searchQuickStartQuery =
 					cancelPenalties {
 						deadline
 						isCalculatedDeadline
-						hoursBefore
 						penaltyType
 						currency
 						value

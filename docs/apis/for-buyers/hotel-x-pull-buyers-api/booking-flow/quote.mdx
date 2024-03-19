@@ -6,7 +6,7 @@ import {quoteQuickStartQuery, quoteQuickStartVariables} from "../../../../../src
 
 # Quote
 
-Quote operation evaluates the rate before booking, providing the same information as the Search response for a hotel rate, including up-to-date pricing. Additionally, it offers further details such as rate breakdown and cancellation policies. The returned fields include:
+Quote operation evaluates the rate before booking, providing the same information as the Search response for a hotel rate, including up-to-date pricing and cancellation policies. The returned fields include:
 
 * `status`
 * `price`
@@ -41,7 +41,7 @@ This query offers versatility in quote options, with certain fields marked as ma
 To specify your quote criteria you need to use the input `HotelCriteriaQuoteInput` in your query variables:
 
 
-```json
+```js
 {
 		"optionRefId": "13[%!03!~|3[%@241028!~|241029!~|1!~|1!~|0!~|ES!~|ES!~|es!~|EUR!~|0!~|2!~|1!~|1!~|1!~|0!~|15091141!~|BAR[%@BAR!~|146[%@0[%@false[%@EUR[%@[%@0[%@!~|1|30#30|1|2024-10-28|1|4132467|4132468|1|11|0!~|2269[%!2269!~|30[%@30!~|!~|Double Standard!~|1!~|!~|mercado[%@ES[%!ExpireDate[%@29/10/2024[%!tarifaNRF[%@true[%!RateRule[%@tarifaNoRefundablePorHabitacion!~|OK!~|Sith!~|0!~|"
 }
@@ -59,7 +59,7 @@ Settings are the common configurations used to construct requests to the supplie
 
 To specify your quote settings you need to use the input `HotelSettingsInput` in your query variables:
 
-```json
+```js
 {
 	"settings": {
 		"client": "client_demo",
@@ -76,7 +76,6 @@ To specify your quote settings you need to use the input `HotelSettingsInput` in
 * `client`
 * `context` (You have the flexibility to choose between using the supplier's context or your own, depending on which codes you want to see in the response. If you prefer to receive responses with your custom codes, please ensure that your context code is linked to the mapping files that you've previously uploaded to your FTP account.)
 * `timeout` (Timeout in milliseconds for supplier connections. Applied to all suppliers; won't close client connection if exceeded.)
-* `businessRules`
 
 **Optional Settings:**
 * `group`
@@ -85,6 +84,8 @@ To specify your quote settings you need to use the input `HotelSettingsInput` in
 * `plugins`
 * `testMode` (This flag allows only the accesses checked as test.)
 * `clientTokens` (Used to identify the origin of the request, this is only used with some [plugins](../plugins/overview).)
+* `businessRules`
+
 
 :::tip Key Recommendations
 
@@ -110,6 +111,10 @@ As mentioned earlier, the quote response will provide you with updated informati
 
 * **Taxes:** Ensure you are aware of any applicable taxes associated with the selected option.
 
+:::tip Quote output fields
+Explore all the quote output fields and their descriptions in our detailed Graphql API Reference section [here](/api/objects/hotel-quote/). 
+:::
+
 
 ## Frequently Asked Questions
 
@@ -123,7 +128,7 @@ As mentioned earlier, the quote response will provide you with updated informati
 <details>
     <summary>Are there any limitations on the number of Hotel-X Quote requests allowed per minute?</summary>
     <div>
-        <div>Not from TravelgateX side, we don't have any limitations on the RPM ("Requests for Minute") in any of our methods. However, some Sellers may have some limitations so we suggest you contact directly with them in order to discuss this information.</div>
+        <div>Not from Travelgate side, we don't have any limitations on the RPM ("Requests for Minute") in any of our methods. However, some Sellers may have some limitations so we suggest you contact directly with them in order to discuss this information.</div>
     </div>
 </details>
 

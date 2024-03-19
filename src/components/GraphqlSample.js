@@ -7,6 +7,7 @@ import useIsBrowser from '@docusaurus/useIsBrowser';
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 import withToken from "../components/WithToken";
 import {hotelsListQuerySampleA} from "../graphql/sample-queries/hotels.list.query";
+import {replaceClient} from "../utils";
 
 let fetcher = null;
 
@@ -21,14 +22,19 @@ const GraphqlSample = ({token, query, variables}) => {
     const [headers, setHeaders] = useState(`{
         "Authorization": "Apikey test0000-0000-0000-0000-000000000000"
     }`);
+    const [parsedVariables, setParsedVariables] = useState(variables);
 
     useEffect(() => {
         if (token) {
             setHeaders(`{"Authorization": "Bearer ${token}"}`);
-        } else {
-
         }
     }, [token]);
+
+    useEffect(() => {
+        if (variables) {
+            setParsedVariables(replaceClient(variables, localStorage.getItem('client') ?? 'client_demo'));
+        }
+    }, [variables]);
 
     return (
         <>
@@ -41,7 +47,7 @@ const GraphqlSample = ({token, query, variables}) => {
                                     fetcher={fetcher}
                                     headers={headers}
                                     query={query??hotelsListQuerySampleA}
-                                    variables={variables??''}
+                                    variables={parsedVariables??''}
                                     onTabChange={(tabState) => { tabState.tabs = []; return false; }}
 
                                 >

@@ -7,7 +7,7 @@ import {cancelMutation, cancelByBookingIDVariables, cancelByReferenceVariables} 
 
 # Cancel
 
-The cancel operation allows you to cancel a booking made via TravelgateX. The returned fields include:
+The cancel operation allows you to cancel a booking made via Travelgate. The returned fields include:
 
 * `status`
 * `reference`
@@ -45,7 +45,7 @@ To specify your cancel input you need to use the input `HotelCancelInput` in you
 
 If you decide to cancel using only the `bookingID` from the booking response, here's how you should structure your input:
 
-```json
+```js
 {
     "input" : {
         "bookingID" : "1@1[241028[241029[230918[1[es[EUR[2[test_0123456789[2596391"
@@ -55,7 +55,7 @@ If you decide to cancel using only the `bookingID` from the booking response, he
 
 On the other hand, if you prefer to cancel using the `accessCode`, `hotelCode`, and `reference` from the booking response, here's the format you should follow:
 
-```json
+```js
 {
     "input" : {
         "accessCode" : "2",
@@ -87,7 +87,7 @@ Settings are the common configurations used to construct requests to the supplie
 
 To specify your cancel settings you need to use the input `HotelSettingsInput` in your mutation variables:
 
-```json
+```js
 {
 	"settings": {
 		"client": "client_demo",
@@ -103,7 +103,7 @@ To specify your cancel settings you need to use the input `HotelSettingsInput` i
 * `client`
 * `context`
 * `timeout` (Timeout in milliseconds for supplier connections. Applied to all suppliers; won't close client connection if exceeded)
-* `businessRules`
+
 
 **Optional Settings:**
 * `group`
@@ -113,6 +113,7 @@ To specify your cancel settings you need to use the input `HotelSettingsInput` i
 * `testMode` (This flag allows only the accesses checked as test)
 * `clientTokens` (Used to identify the origin of the request, this is only used in plugins)
 * `commitRequired` (Indicates if the book will be confirmed in 1 or 2 steps. It only should be used in Book)
+* `businessRules`
 
 :::caution Remember
 Keep in mind that if you leave some of the fields in the `settings` inputs unspecified, we will use the values from your default settings. You can review and control your default API settings by visiting the [API Settings section](https://app.travelgatex.com/connections/settings) on our website.
@@ -134,6 +135,10 @@ Keep in mind that if you leave some of the fields in the `settings` inputs unspe
 
 Keep in mind that the content of the Cancel response can differ depending on the Sellers. For instance, some Sellers might provide details about the hotel, while others may only offer information about the status and locators/references.
 
+:::tip Cancel output fields
+Explore all the cancel output fields and their descriptions in our detailed Graphql API Reference section [here](/api/objects/hotel-cancel-payload/). 
+:::
+
 Next, we'll provide important information about some of the returned fields.
 
 ### Cancel Status
@@ -145,7 +150,7 @@ Once a Cancel method is run, our API response will provide its cancel status. Th
 | `CANCELLED`    | The reservation is cancelled.                                                                                                                                    |
 | `OK`           | The reservation status is OK, is not cancelled.
 | `ON_REQUEST`   | The reservation was completed but the product is still not available by the Seller, so the reservation goes into a waiting list. It is the Buyer’s responsibility to check if the booking is OK. |
-| `UNKNOWN`      | The cancellation process through TravelgateX was completed but due to a supplier error or a timeout, the reservation status is unknown. It is the Buyer’s responsibility to check if the booking is cancelled.   
+| `UNKNOWN`      | The cancellation process through Travelgate was completed but due to a supplier error or a timeout, the reservation status is unknown. It is the Buyer’s responsibility to check if the booking is cancelled.   
 
 :::danger Important
 
@@ -165,7 +170,10 @@ Cancellation always takes into account the day and time of the destination in or
 <details>
     <summary>How are cancellation costs calculated and displayed?</summary>
     <div>
-        <div>Depending on the specifications provided by a Seller, cancellation costs can be calculated using three different penalty types. It is important to keep in mind that a booking may have more than one penalty type associated with it.
+        <div>
+            Depending on the specifications provided by a Seller, cancellation costs can be calculated using three
+            different penalty types. It is important to keep in mind that a booking may have more than one penalty type
+            associated with it.
 		   <ul>
 				<li>NIGHTS: It indicates the number of nights to be penalized.</li>
 				<li>PERCENT: It indicates the percentage to pay based on the option price (possible values between 0 and 100).</li>

@@ -16,10 +16,10 @@ sidebar_position: 1
 1. There, you will access our Alerts Dashboard, which allows you to check all the alerts configured for your Organization, as well as the following details:
     - **ID:** Alert ID.
     - **Status:** OK/Alerting. 
-    - **Name:** Alert name
+    - **Name:** Alert name.
     - **Description:** Alert description, if available.
     - **Alert type:** Status error code, L2B or Traffic Peak.
-    - **Active:** activate or deactivate an alert without deleting
+    - **Active:** activate or deactivate an alert without deleting.
     - **Actions:** edit or delete an Alert.
 
 ![alerts-real-time](https://storage.travelgate.com/kbase/alerts-real-time.jpg)

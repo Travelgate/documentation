@@ -18,7 +18,7 @@ sidebar_position: 1
     - **Status:** OK/Alerting. 
     - **Name:** Alert name
     - **Description:** Alert description, if available.
-    - **Alert type:** Status error code, L2B or Traffic Peak.
+    - **Alert type:** Status error code, L2B or Traffic Peak
     - **Active:** activate or deactivate an alert without deleting
     - **Actions:** edit or delete an Alert.
 

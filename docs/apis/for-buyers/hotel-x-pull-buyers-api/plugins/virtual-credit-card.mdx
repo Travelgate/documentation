@@ -212,29 +212,29 @@ Once you've uploaded your genvcc file, to use the plugin add the following field
 
 ```js
 "settings": {
-	"plugins": [
-		{
-			"step": "REQUEST",
-			"pluginsType": {
-				"type": "PRE_STEP",
-				"name": "genvcc"
-                "parameters": [
-						{
-							"key": "activationDate",
-							"value": "yyyy-mm-dd"
-						},
-						{
-							"key": "expirationDate",
-							"value": "yyyy-mm-dd"
-						},
-						{
-							"key" : "useGross",
-							"value" : "true"
-						}
-					]
-			}
-		}
-	]
+    "plugins" : [
+        {
+            "step" : "REQUEST",
+            "pluginsType" : {
+                "type" : "PRE_STEP",
+                "name" : "genvcc",
+                "parameters" : [
+                    {
+                        "key" : "activationDate",
+                        "value" : "yyyy-mm-dd"
+                    },
+                    {
+                        "key" : "expirationDate",
+                        "value" : "yyyy-mm-dd"
+                    },
+                    {
+                        "key" : "useGross",
+                        "value" : "true"
+                    }
+                ]
+            }
+        }
+    ]
 }
 ```
 
@@ -253,23 +253,28 @@ In the case of canvcc, since it is a cancellation, there is no need to upload an
 * **`name`**: `canvcc`
 * **`parameters`**:
     * **`id`**: The id of the virtual credit card that you want to cancel.
+    * **`currency`**: (Optional) A currency can be added. This is particularly useful if you use different VCC accesses depending on the currency used. Currency code format must be ISO4217 code format (i.e. “EUR”, “USD”, “GBP”,…)
 
 ```js
-"settings": {
-	"plugins": [
-		{
-			"step": "RESPONSE",
-			"pluginsType": {
-				"type": "PRE_STEP",
-				"name": "canvcc"
-                "parameters": [
-						{
-							"key": "id",
-							"value": "virtualCreditCardID"
-						}
-					]
-			}
-		}
-	]
+"settings" : {
+    "plugins" : [
+        {
+            "step" : "RESPONSE",
+            "pluginsType" : {
+                "type" : "PRE_STEP",
+                "name" : "canvcc",
+                "parameters" : [
+                    {
+                        "key" : "id",
+                        "value" : "virtualCreditCardID"
+                    },
+                    {
+                        "key" : "currency",
+                        "value" : "USD"
+                    }
+                ]
+            }
+        }
+    ]
 }
 ```

@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Billing: View and Manage your Agreements
+# Billing: View your agreements, control your usage, and check your invoices 
 
 ### How can access Billing? 🖱️
 
@@ -28,8 +28,11 @@ Should you face any issues, please don't hesitate to get in touch with our [Cust
 1. Click on "Options" (three dots) of a specific agreement and you will be able to visualize the following actions:
 	1. Update billing e-mail: Update your billing email or add new ones.
 	1. View fees (by type, amount or ranges)
-	1.  Pdf: Download the signed agreement in Pdf format (only available for Comm. Agreement 2023).
-	1. Change history: View the history of payment type changes (only available for Comm. Agreement 2023).
+	1.  Pdf: Download the signed agreement in Pdf format (only available for Commercial Agreement 2023).
+	1. Change history: View the history of payment type changes (only available for Commercial Agreement 2023).
+2. Click in the arrow beside the Agreement to review your connections and understand the various payment types in more detail:
+   1. This will display a comprehensive list of your connections and detailed descriptions for each payment type will be accessible.
+   2. Should you want to modify the payment arrangement with a Partner, you have the option to request it from here.
 
 :::info
 Only **owner** and **admin** users have access to the complete menu.
@@ -57,3 +60,32 @@ Additionally, you will have access to the **historical record** of changes made 
 - Remember, if you have an agreement 2023, you will have the option to **choose the Payment Type** during the [auto-activation process](/kb/connections/my-connections/auto-activations-process). If you are not familiar with this process, we also recommend taking a look at the following article [Important points when requesting a new connection](/kb/connections/my-connections/important-points-when-requesting-a-new-connection).
 - A payment change **can only be requested if you're adhering to the Commercial Agreement 2023**.
 :::
+
+### How can I control my usage?⚠️
+
+At Travelgate, we offer essential data that enables you to review your invoices and evaluate the cost per connection. You have the option to filter by:
+
+1. Agreement: The drop-box menu shows the existing agreements. 
+1. Time range: It is important to note that invoices at Travelgate are calculated on a monthly basis, following the calendar month.
+
+Additionally, you can easily download the necessary data for your analysis.
+
+![billing_usage_1](https://storage.travelgate.com/kbase/billing_usage_1.jpg)
+
+### How can I check my invoices?🔎
+Each monthly invoice provides comprehensive and relevant data specific to your contract type, enabling you to gain a more detailed understanding of your billing information.
+
+In order to check your invoices, you just need to click on the 'Invoices' tab. There, you will be able to visualize your monthly invoices by Agreement Status:
+
+1. All 
+1. Active 
+1. Expired
+   
+Additionally, you can click on "Options" (drop-down menu) in order to access the following information from a specific invoice:
+
+1. View details
+1. Download PDF invoice documents
+1. Access CSV bookings locator
+
+![billing_checkinvoices](https://storage.travelgate.com/kbase/billing_checkinvoices.jpg)
+

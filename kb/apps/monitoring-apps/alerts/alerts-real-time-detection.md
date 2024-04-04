@@ -27,9 +27,9 @@ sidebar_position: 1
 ### How can I create a new alert?💡
 In order to create and configure a new alert just click on the 'New alert' button and a pop up form will appear. Creating a new alert is really easy and it will only take 3 steps:
 
-1. Select Connection/s and access/es
-2. Configure the Alert
-3. Notifications set up
+1. Select Connection/s and access/es.
+2. Configure the Alert.
+3. Notifications set up.
 
 ![alerts-real-time_2](https://storage.travelgate.com/kbase/alerts-real-time_2.jpg)
 

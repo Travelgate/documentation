@@ -28,7 +28,7 @@ An access refers to the combination of credentials and authentication configurat
 * Smyrooms Test: Access 5647 with context LOGITEST
 
 **How can I obtain an access code from an actual Seller?**
-To get your access code, simply establish a commercial agreement with the desired Partner and request activation through our website using the [Auto-Activations Form](/kb/connections/my-connections/auto-activations-process).
+To get your access code, simply establish a commercial agreement with the desired Partner and request activation through our website using the [Auto-Activations Form](/kb/connections/my-connections/guick-guide-to-auto-activations).
 
 :::info
 Please note it is highly advisable to **avoid making live bookings during the Hotel-X implementation process** until your development has been certified by TravelgateX.

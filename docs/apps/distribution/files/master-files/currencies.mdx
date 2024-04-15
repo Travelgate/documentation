@@ -33,8 +33,8 @@ To get started, create your currencies master file in the correct format and the
 * **Delimiter:** Hashtag (`#`)
 * **Data:**
    * **ISO Currency Code (mandatory)**: 3 chars (e.g. EUR, USD,GBP etc.)
-   * **Meal Plan Name (mandatory)**: Exchange value. It indicates the equivalence of this currency with 1 unit of the base currency.
-       * A decimal value has to be set using ‘.’ as separator.
+   * **Exchange value (mandatory)**: It indicates the equivalence of this currency with 1 unit of the base currency.
+       * Decimal value has to be set using ‘.’ as separator. 
    * **Agency Code**: To create specific currencies. If the agency doesn't specify a currency, it defaults to global currency; otherwise, it uses the specified currencies.
 * **Base Currency:**
    * The file must be created on a base currency, and all other currencies have to be defined with their exchange with this base currency.
@@ -44,10 +44,10 @@ To get started, create your currencies master file in the correct format and the
 * **Note:**
    * The first line is not a header line: it contains data directly.
    * The data of the fields is not encapsulated by " or any other character.
-   * Each line represents a room.
+   * Each line represents a currency exchange.
    * Any blank line will be skipped.
    * If a field’s data is not mandatory and we don’t want to set it then we just keep it empty: e.g. …##…
-   * The file and its data have to be encoded using UTF-8. Otherwise there can be stored strange characters.
+   * The file and its data have to be encoded using UTF-8. Otherwise strange characters can be stored.
 
 
 <details>

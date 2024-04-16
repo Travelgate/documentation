@@ -16,7 +16,7 @@ sidebar_position: 1
 	![new_logging_1](https://storage.travelgate.com/kbase/new_logging_1.jpg)
 
 :::info
-Please be aware that operation type “Search” will only return results when the search has been **audited first**.
+Please be aware that operation type “Search” will only return results when the search has been **audited first**
 :::
 
 ### What information does Logging provide me? 📤

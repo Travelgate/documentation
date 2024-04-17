@@ -6,7 +6,7 @@ sidebar_position: 2
 
 ### Grow your business connections by exploring our Network!
 
-At TravelgateX, we provide tailored recommendations for new connections based on your usage data within our Marketplace. Our advanced algorithms ensure that you not only **expand your Network**, but also increase your booking volume by connecting you with Partners that are most relevant to your trading patterns. 
+At TravelgateX, we provide tailored recommendations for new connections based on your usage data within our Marketplace. Our advanced algorithms ensure that you not only **expand your network**, but also increase your booking volume by connecting you with Partners that are most relevant to your trading patterns. 
 
 ### How does TravelgateX Partner recommendation work? 🌟
 Our suggested connections are carefully selected **based on your performance** and data-driven algorithms. InsightsX thoroughly analyzes your data and cross-references it with global data stored in our Platform. This ensures that Partners who meet your business criteria (listed below) will appear as "Recommended" connections.
@@ -19,7 +19,7 @@ And if you want to expand your business:
 * **New Destinations**: Expand your business to new destinations!
 * **New Markets**: Expand your business to new markets!
 ### Where do I find recommendations for my Company?  🔍
-You can access your recommended connections through both your [Dashboard](https://app.travelgatex.com/dashboard) and our [Network](https://app.travelgatex.com/network). Once you've identified a Partner you'd like to connect with, simply arrange your own contract and request their activation. It's that simple!
+You can access your recommended connections through both your [Dashboard](https://app.travelgatex.com/dashboard) and our [Network](https://app.travelgate.com/network/partners). Once you've identified a Partner you'd like to connect with, simply arrange your own contract and request their activation. It's that simple!
 ![network_1](https://storage.travelgate.com/kbase/network_1.jpg)
 
 ### Discover ideal Partners effortlessly with our Network upgrade!

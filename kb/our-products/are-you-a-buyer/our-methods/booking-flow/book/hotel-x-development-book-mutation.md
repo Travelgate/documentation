@@ -53,7 +53,12 @@ In the test environment, it is common for some Sellers to consistently return an
 The currency used for the transaction will remain the same throughout the entire Booking Flow, including cancellation policies.
 
 ### Do I have to provide real names and ages for all the passengers?
-No, you are not required to provide real ages and names for all passengers. You can use default values for each age group and name. The only information that should be real is the holder's information.
+No, you are not required to provide real ages and names for all passengers. You can use default values for each name and age group if the actual information is not available (e.g., 30 for an adult or 12 for a child). The only information that should be real and accurate is the holder's details.
+
+:::info
+Infants and Children: If you do collect ages for infants and children, this information can be utilized to apply any relevant rates or conditions, such as complimentary stays for babies or children, which some channel managers might not be able to load directly.
+Booking Holder as a Passenger: If the holder of the booking is also a passenger, their details should be included in the list of passengers (ResGuests/Guests) to ensure they are accounted for in room occupancy.
+:::
 
 ### How can I add remarks to a Book request?
 Remarks are comments from the customer for the Seller to take into account. They can be included in the Book request (details can be found in our [Hotel-X Schema](https://api.travelgatex.com/playground)) provided that the Supplier allows for remarks in their reservations - you can check their [Metadata](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-metadata-query) for further information.

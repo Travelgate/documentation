@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # How to edit & customize your Company Profile
 
-Our [Partner Network Directory](https://app.travelgatex.com/network) was born with the purpose of not only to increase the visibility of our connections, but also to build an environment that fosters networking and business opportunities. Your [Company Profile](https://app.travelgatex.com/settings/company-profile) is your chance to stand out with engaging content designed to attract attention!
+Our [Partner Network Directory](https://app.travelgate.com/network/partners) was born with the purpose of not only to increase the visibility of our connections, but also to build an environment that fosters networking and business opportunities. Your [Company Profile](https://app.travelgatex.com/settings/company-profile) is your chance to stand out with engaging content designed to attract attention!
 
 ### How can I set up my Company Profile?🛠️
 1. Log onto our [website](https://www.travelgatex.com/).

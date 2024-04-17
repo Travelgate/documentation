@@ -10,7 +10,7 @@ sidebar_position: 7
 
     ![quickguide_to_autoactivations_1](https://storage.travelgate.com/kbase/quickguide_autoactivations_1.jpg)
 
-1. Explore our [Network Directory](https://app.travelgatex.com/network) to discover which Partners are available.
+1. Explore our [Network Directory](https://app.travelgate.com/network/partners) to discover which Partners are available.
 1. Then, click on the Company Profile of the Partner you are interested in connecting with, and then click on "Connect" when you find a Partner with whom you have an existing commercial contract. Please note that you should also have a commercial contract with TravelgateX in order to request a new connection. Feel free to contact our Sales Team (sales.support@travelgate.com) if necessary.
 
 1. You'll be redirected to section My Connections. Click on "Create a new connection" and fill in the Automated Connection Form for a seamless connection process.

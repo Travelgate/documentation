@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # How to download Search logs
 
-Just imagine the enormous task of storing the astounding number of search transactions, exceeding 3 billion, that occur daily at TravelgateX. As a result, **we have opted not to store search transaction logs by default**.
+Just imagine the enormous task of storing the astounding number of search transactions, exceeding 6 billion, that occur daily at TravelgateX. As a result, **we have opted not to store search transaction logs by default**.
 
 ### What can I do if I need Search logs in order to identify an error or to solve a dispute?💡
 1. Head to the “Audit Search Logs” option.

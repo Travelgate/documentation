@@ -11,12 +11,12 @@ sidebar_position: 1
 1. Then, select the connection(s) and adjust the filters:
 	- Time range (UTC)
 	- Operation type: Book, Quote, Cancel, Search, Other.
-	- Status/Error code: list of errors
+	- Status/Error code: list of errors.
 1. Click on **Search**
 	![new_logging_1](https://storage.travelgate.com/kbase/new_logging_1.jpg)
 
 :::info
-Please be aware that operation type “Search” will only return results when the search has been **audited first**.
+Please be aware that operation type “Search” will only return results when the search has been **audited first**
 :::
 
 ### What information does Logging provide me? 📤

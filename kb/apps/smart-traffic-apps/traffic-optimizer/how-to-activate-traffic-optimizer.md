@@ -7,9 +7,9 @@ sidebar_position: 2
 ### How do I activate Traffic Optimizer?
 1. Log onto [TravelgateX](https://www.travelgatex.com/)
 1. Click on APPs > [Traffic Optimizer](https://app.travelgatex.com/traffic-optimizer). This will take you to your Traffic Optimizer Dashboard, where you can review the connections and accesses currently active on Traffic Optimizer, as well as those that were previously optimized.
-![traffic_optimizer_1](https://storage.travelgate.com/kbase/traffic_optimizer_1.jpg)
+![to_updated_1](https://storage.travelgate.com/kbase/to_updated_1.jpg)
 1. Click on the "Optimize a connection" button.
-![traffic_optimizer_2](https://storage.travelgate.com/kbase/traffic_optimizer_2.jpg)
+![to_updated_2](https://storage.travelgate.com/kbase/to_updated_2.jpg)
 1. Select the connection or access to be optimized.
 1. Configure the optimization criteria (s), which include the connection or access details and the criteria you want to use for optimization, and you're good to go!
 ![traffic_optimizer_3](https://storage.travelgate.com/kbase/traffic_optimizer_3.jpg)
@@ -20,18 +20,24 @@ The activation for the 'No availability' and 'Zero booking' criteria will be aut
 :::
 
 ### What kind of information is displayed in the Traffic Optimizer Dashboard?
-- Connection name and code
-- Access name and code (when using the 'Optimized by access' section)
-- Last update of the Traffic Optimizer configuration
-- Criteria: a list of all the active criteria for this connection or access
-- Number of hotels blocked today
-- Searches completely blocked and saved by the APP in the last 24h
-- Active: check and change your Traffic Optimizer status (active/inactive).
-- Actions:
+
+At the top of the page, you will find three cards that summarize the performance of the Traffic Optimizer across all active connections.
+
+- **Searches 100% blocked (yesterday)**: searches completely blocked and saved the day before.
+- **Δ L2B Improvement (yesterday)**: This metric estimates the improvement in the Look-to-Book (L2B) ratio thanks to the activation and the reduction in search traffic. Accompanying this metric is the L2B value, recalculated exclusively for connections where the app is active. Note that this L2B figure is distinct from the one you see in the Stats section.
+- **Δ Search NOK improvement (yesterday)**: this metric indicates the improvement in %Searches NOK  as a result of blocking hotels that matched the criteria (no availability, no bookings, not in portfolio).long with this metric, the total number of Searches with no availability is presented, again calculated only for connections with the active app. It is important to remember that the value of this metric differs from the one visible in the Stats section.
+- **Connection**: Access name and code (when using the 'Optimized by access' section)
+- **Last Update (UTC) and Requester**: this indicates the date and time of the latest configuration update (UTC). 'Requester' identifies who made the last change, whether it was the Buyer, the Seller, or an automated optimization process (Auto opt).
+- **Criteria**: a list of all the active criteria for this connection or access.
+- **Hotels blocked (today)**: number of hotels blocked today.
+- **Searches 100% blocked (yesterday)**.
+- **Active**: check and change your Traffic Optimizer status (active/inactive).
+- **Actions**:
     - View blocked hotels: review the complete list of hotels blocked today.
     - View performance: examine how search traffic is being optimized.
     - Edit configuration: add or delete specific criteria for this connection or access.
 
+![to_updated_4](https://storage.travelgate.com/kbase/to_updated_4.jpg)
 
 :::info
 Traffic Optimizer can work in two modes:

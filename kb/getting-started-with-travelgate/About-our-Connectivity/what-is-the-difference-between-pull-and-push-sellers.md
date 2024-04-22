@@ -28,14 +28,14 @@ In regards to static content information (portfolio, destination list, room list
 
 **Pull Connectivity  Disadvantages**
 
-These integrations need to be able to support higher traffic so they require a higher system investment than PUSH integrations.
+These integrations need to be able to support higher traffic so they require a higher system investment than Push integrations.
 
 ### Push Integration➡️
 
 **What are Push integrations?**  
 A Push Integration is a connection where Channel Managers "push" their product to TravelgateX Database/System.
 
-Once a PUSH connection is activated, the Buyer (Client) configures their SetUp in our Inventory Extranet according to what they have previously agreed with the hotels. The hotel SetUp is the structure of the hotel:
+Once a Push connection is activated, the Buyer (Client) configures their SetUp in our Inventory Extranet according to what they have previously agreed with the hotels. The hotel SetUp is the structure of the hotel:
 
 - Hotel
 - Rates
@@ -52,8 +52,8 @@ Buyers, Hotels and Channel Managers should **always be in touch** in order to be
 In regards to static content information, it is generated and stored directly at TravelgateX system, which means that hotel codes and room codes will be TravelgateX' (and not the Sellers', as in Pull Connections), and they will be the same for any Channel Manager/Push Supplier connected to TravelgateX. For Push Connections, content like images, hotel descriptions, amenities is not provided.
 
 **Push Connectivity Advantages:**
-- Sellers don't have to support as much traffic, so they don't require such high systems investment.
-- Great response times
+- Sellers aren't required to handle as much traffic, which means they don’t need to invest as heavily in their systems.
+- Great response times.
 
 **Push Connectivity Disadvantages:**
 - Availability doesn't occur in real time. Once the Seller updates their availability, they do not communicate with the Buyer until the available products are sold.

@@ -11,7 +11,7 @@ sidebar_position: 2
 
 ### How can I connect to a Channel Manager?💡
 1. Log onto our website and browse as a Buyer. Please keep in mind that to connect to a Channel Manager, you need to be a registered Buyer on TravelgateX. If you haven't integrated with us yet, please refer to our articles on how to [Get Started as a New Buyer on TravelgateX](/kb/our-products/are-you-a-buyer/getting-started-as-a-new-buyer/essential-tech-requirements-before-connecting-with-travelgate-as-a-buyer).
-1. Check out the Channel Managers available in our [Network](https://app.travelgatex.com/network) , selecting the Partner category Tech Platform>Channel Manager.
+1. Check out the Channel Managers available in our [Network](https://app.travelgate.com/network/partners) , selecting the Partner category Tech Platform>Channel Manager.
 1. Make sure you check with the hotel and the Channel the commercials (agreement, financial terms, etc.) and don't forget to inform them that you will connect to them via TravelgateX.
 1. Request your activation via our website>My Connections. You will find a complete guideline on how to request an activation [here](/kb/connections/my-connections/guick-guide-to-auto-activations).
 1. We will generate all the necessary credentials for you to access our Inventory Extranet and we will process your activation to the Channel Manager.

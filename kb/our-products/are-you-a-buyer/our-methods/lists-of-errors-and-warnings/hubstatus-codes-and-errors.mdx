@@ -5,10 +5,10 @@ sidebar_position: 16
 # HubStatus codes and errors
 
 ### What are the potential hubStatus codes that can be returned in a method response?💡
-- **OK = 1**: This code indicates that the request has been successfully executed without any Hub errors.
-- **EXCEPTION = 2**: If you receive this code, it means that the request has encountered an uncontrolled exception at the Hub level.
-- **TIMEOUT = 3**: This code indicates that the request has encountered a timeout error. A hubStatus code of 3 indicates that the hub timeout set by the Buyer in their request was insufficient to parse the Seller's response.
-- **UNDEFINED = 4**: If you receive this code, it means that the request has encountered an unspecified Hub error.
+- **Hubstatus 1: OK** - This code indicates that the request has been successfully executed without any Hub errors.
+- **Hubstatus 2: EXCEPTION** - If you receive this code, it means that the request has encountered an uncontrolled exception at the Hub level.
+- **Hubstatus 3: TIMEOUT** - This code indicates that the request has encountered a timeout error. A hubStatus code of 3 indicates that the hub timeout set by the Buyer in their request was insufficient to parse the Seller's response.
+- **Hubstatus 4: UNDEFINED** - If you receive this code, it means that the request has encountered an unspecified Hub error.
 ### I have received a hubStatus 3 error in my Legacy Pull Buyers API response, what can I do?⚠️
 To prevent hubStatus 3 errors, it is important to ensure that the Hub timeout set by the Buyer is **at least 300ms higher** than the provider timeout tag. This additional time allows for sufficient parsing of the Seller's response.
 

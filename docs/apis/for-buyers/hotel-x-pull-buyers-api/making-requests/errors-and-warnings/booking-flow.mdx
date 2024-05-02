@@ -17,10 +17,11 @@ Errors are situations where the service has been terminated for some reason. Eac
 | ACCESS_ERROR         | VALIDATION_ERROR | No valid accesses found           | The access is not found or it has no permission, or you are using a test access and you need to add the  `testMode` field to "true".                                                                                                                                 |
 | MISSING_FIELD        | VALIDATION_ERROR | _Depending on the scenario_       | Some mandatory fields are missing in input.                                 |
 | WRONG_FIELD          | VALIDATION_ERROR | _Depending on the scenario_       | A field or fields in the request are not correct.                           |
-| ALL_PROCESSES_FAILED | PROCESS_ERROR    | See warnings for more information | This occurs when no options are returned for all access attempts after applying a plugin (such as blacklist, filter, mapping code), commission adjustments, etc. It can also be triggered by incorrect default settings. Detailed information about the cause can be found in the warning node.   |
+| ALL_PROCESSES_FAILED | PROCESS_ERROR    | See warnings for more information | This happens when our system has to make more than one request to the supplier's system. For example, in a search query, if we're checking availability for many hotels or suppliers, or in a booking query when we're asking about reservations for multiple bookings. If none of these requests get a successful response, we show this error. You can find more details about why it happened in the warning message. Sometimes, it can also happen if there's something wrong with the default settings.   |
 | INTERNAL_ERROR       | API_ERROR        | _Depending on the scenario_       | Covers any unexpected error or errors due to internal service.              |
+| NOT_IMPLEMENTED      | API_ERROR        | _Depending on the scenario_       | The requested operation is currently unavailable and has not been implemented for this supplier integration.             |
 | TIMEOUT              | CONNECTION_ERROR | _Depending on the scenario_       | This occurs due to a connection timeout.                                    |
-| REFERENCE_NOT_EXISTS | BOOKING_ERROR    | _Depending on the scenario_       | This occurs when the provided booking reference is not available in the supplier's system. |
+| INTERNAL_ERROR       | REQUEST_CANCELED | _Depending on the scenario_       |                                    |
 
 ### Warning List
 
@@ -31,9 +32,11 @@ Warnings are potentially harmful situations or errors that do not require the se
 | Code                 | Type             | Description             | Explanation                                                                             |
 |----------------------|------------------|-------------------------|-----------------------------------------------------------------------------------------|
 | WRONG_FIELD          | PLUGIN_ERROR     | _According to the case_ | It occurs when the input of the plugin is misintroduced or misconstructed.              |
-| INTERNAL_ERROR       | MAPPING_ERROR    | _According to the case_ | Error produced when mapping codes, it usually happens regarding hotel mapping.          |
-| COMMISSION_NOT_FOUND | API_ERROR        | _According to the case_ | This occurs when the options are discarded because the supplier returns options with a negative commission that does not allow the calculation of the net price. You need to upload the commission file to solve it.                                                          |
 | BLACKLIST            | PLUGIN_ERROR     | _According to the case_ | It occurs when the hotels or accesses are blacklisted.                                  |
+| MAPPING_NOT_FOUND    | MAPPING_ERROR    | _According to the case_ | The option couldn't be processed due to the absence of mapping codes for the supplier context.  |
+| INTERNAL_ERROR       | MAPPING_ERROR    | _According to the case_ | Internal error produced when mapping codes, it usually happens regarding hotel mapping.          |
+| COMMISSION_NOT_FOUND | API_ERROR        | _According to the case_ | This occurs when the options are discarded because the supplier returns options with a negative commission that does not allow the calculation of the net price. You need to upload the commission file to solve it.                                                          |
+| REFERENCE_NOT_EXISTS | BOOKING_ERROR    | _According to the case_ | This occurs when the provided booking reference is not available in the supplier's system. |
 
 
 #### Connection warnings

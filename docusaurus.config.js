@@ -188,6 +188,13 @@ const config = {
             label: 'GraphQL Playground',
             position: 'left'
           },
+          {
+            to: 'https://app.travelgate.com/tickets',
+            //type: 'docSidebar',
+            sidebarId: 'supportCenterSidebar',
+            label: 'Support Center',
+            position: 'left'
+          },
         ],
       },
       footer: {

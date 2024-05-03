@@ -108,11 +108,13 @@ export default function NavbarContent() {
         // Ask the user to add the respective navbar items => more flexible
         <>
           <NavbarItems items={rightItems} />
+            <NavbarItem label={`Support Center`} position="right" to={`#!`} onClick={() => window.location = 'https://app.travelgate.com/tickets'} />
             {isAuthenticated ? (
                 <LogoutAndName />
             ) : (
                 <NavbarItem label={`Login`} position="right" to={`#!`} onClick={() => loginWithRedirect()} />
             )}
+
           {/*<NavbarColorModeToggle className={styles.colorModeToggle} />*/}
           {!searchBarItem && (
             <NavbarSearch>

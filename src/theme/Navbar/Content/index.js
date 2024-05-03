@@ -108,7 +108,6 @@ export default function NavbarContent() {
         // Ask the user to add the respective navbar items => more flexible
         <>
           <NavbarItems items={rightItems} />
-            <NavbarItem label={`Support Center`} position="right" to={`#!`} onClick={() => window.location = 'https://app.travelgate.com/tickets'} />
             {isAuthenticated ? (
                 <LogoutAndName />
             ) : (

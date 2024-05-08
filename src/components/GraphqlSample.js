@@ -20,8 +20,8 @@ if (ExecutionEnvironment.canUseDOM) {
 const GraphqlSample = ({token, query, variables}) => {
     const isBrowser = useIsBrowser();
     const [headers, setHeaders] = useState(`{
-        "Authorization": "Apikey test0000-0000-0000-0000-000000000000"
-    }`);
+    "Authorization": "Apikey test0000-0000-0000-0000-000000000000"
+}`);
     const [parsedVariables, setParsedVariables] = useState(variables);
 
     useEffect(() => {

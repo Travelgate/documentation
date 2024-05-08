@@ -31,6 +31,10 @@ You can have multiple client codes, for instance, to separate traffic for B2B an
 
 ![Context](https://storage.travelgate.com/docs/Context.png)
 
+### `Inventory Context`
+`Inventory Context` is a term used to describe hotel codes used in Inventory. This should not be confused with the previous Context; the new one is exclusively related to the Inventory scope.  
+Some Channel Managers work with their native hotel codes instead of mapping in their system the Inventory hotel IDs. Therefore, these Channels will require a special `Inventory Context`.  
+To retrieve the `Inventory Context` values, you can use the [Inventory Contexts Query](../apis/for-buyers-sellers/inventory-push-buyers-sellers-api/masters/inventory-contexts.mdx) from Inventory-Push API.
 
 ### `Access`
 An `access` is the set of credentials and the authentication configuration that enables a Buyer to connect to a Seller. It is used to differentiate among Sellers and also to filter different credentials and configurations from the same Seller (e.g. B2B and B2C feeds). 

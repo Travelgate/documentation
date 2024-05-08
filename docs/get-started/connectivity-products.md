@@ -23,6 +23,10 @@ Travelgate provides two main types of API connectivity for Buyers and Sellers, P
 
 * [Legacy Pull Sellers API](../apis/for-sellers/hotel-pull-sellers-api/overview): This works similarly to the Pull Buyers API, where the Seller receives real-time requests and sends back immediate responses.
 
+### For Buyers and Sellers
+
+* [Inventory-Push Buyers and Sellers API](../apis/for-buyers-sellers/inventory-push-buyers-sellers-api/quickstart.mdx): Buyers can configure via API the Hotel Setup on our Inventory. Subsequently, the Seller can push the availability and pricing data directly to our System without the need of a Push integration.
+
 ## APP Connections
 
 If an API isn't part of your tech stack, or you aren't integrated with any tech platform, worry not! Travelgate has user-friendly APPs tailored for you.

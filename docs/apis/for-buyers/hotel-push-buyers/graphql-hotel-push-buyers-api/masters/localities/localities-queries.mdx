@@ -1,0 +1,50 @@
+---
+sidebar_position: 1
+---
+
+import {localitiesQuery, localitiesSearchQuery, localitiesVariables, localitiesByCountryCodesVariables, localitiesSearchVariables} from "../../../../../../../src/graphql/inventory-push/master/localities.query";
+
+
+# Localities Queries
+
+The localities Query returns a list of all the possible localities that a hotel can have assigned in Inventory. The returned fields include:
+
+* `id`
+* `name`
+* `countryCode`
+* `unLocode`
+
+
+## Localities Queries Inputs
+
+When creating your localities query, you have 1 input to fill based on your specific needs:
+
+1. Criteria
+
+
+### 1. Criteria   
+
+This query offers versatility, with an optional field `countryCodes` that can be filled with the ISO 2-character country code associated with the localities to retrieve. This flexibility empowers you to create a personalized localities Query, tailoring the requested fields to your specific needs. Consequently, the response will only include information that is highly relevant to you, streamlining the retrieval process and ensuring the data you receive meets your exact requirements.
+
+**Optional input**
+* `countryCodes`
+
+### Requests Examples
+
+#### Search for the full list of Localities available
+
+<GraphqlSample query={localitiesQuery} variables={localitiesVariables} />
+
+
+#### Search for Localities of specific countries
+
+When utilizing the localities Query, for more personalized results, filter specific localities based on your interests. For example, to focus solely the Spanish Localities, add the `countryCodes` field with "ES" in your input:
+
+<GraphqlSample query={localitiesQuery} variables={localitiesByCountryCodesVariables} />
+
+#### Search for Localities by name
+
+We provide you with the searchLocalities Query to retrieve Localities based on their names. If you wanted to refine your result, you could also specify the country code (ISO 2-character) associated with the Localities to retrieve.
+For example, to search for Localities that contain "Washington" in their name and are located in the United States, add the `localityName` field with "Washington" and the `countryCode`field with "US" in your input. 
+
+<GraphqlSample query={localitiesSearchQuery} variables={localitiesSearchVariables} />

@@ -16,7 +16,7 @@ export default function FooterLayout({style, links, logo, copyright}) {
             <h6>Company</h6>
             <ul>
               <li><a href="https://www.travelgate.com/" target="_blank">TravelgateX</a></li>
-              <li><a href="https://docs.travelgatex.com/integrations-roadmap/" target="_blank">Integrations Roadmap</a></li>
+              <li><a href="https://app.travelgate.com/network/roadmap" target="_blank">Integrations Roadmap</a></li>
               <li><a href="https://blog.travelgatex.com/en?hsLang=en" target="_blank">Blog</a></li>
               <li><a href="https://community.travelgatex.com/" target="_blank">TGX Community</a></li>
             </ul>

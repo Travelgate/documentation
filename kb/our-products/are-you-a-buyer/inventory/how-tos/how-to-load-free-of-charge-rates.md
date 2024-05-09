@@ -73,10 +73,12 @@ When the Channel Manager updates a product for a specific rate that has Free of 
 
 **The following price calculation logic will be applied:** 
 
-- **Occupancy 1-2-0**
-	![how_to_load_free_of_charge_children_babies_11](https://storage.travelgate.com/kbase/how_to_load_free_of_charge_children_babies_11.jpg)
+**Occupancy 1-2-0**
 
-- **Occupancy 1-3-0**
+![how_to_load_free_of_charge_children_babies_11](https://storage.travelgate.com/kbase/how_to_load_free_of_charge_children_babies_11.jpg)
+
+**Occupancy 1-3-0**
+
 ![how_to_load_free_of_charge_children_babies_12](https://storage.travelgate.com/kbase/how_to_load_free_of_charge_children_babies_12.jpg)
 ![free_of_charge_babies_1_3_0](https://storage.travelgate.com/kbase/free_of_charge_babies_1_3_0.jpg)
 

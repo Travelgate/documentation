@@ -51,6 +51,7 @@ Reservation Read allows to retrieve a specific booking with all its details usin
                      <Locators>
                         <Client>XXXXXXX</Client>
                         <Provider>XXXXXXX</Provider>
+                        <Property>XXXXXXX</Property>
                      </Locators>
                      <Currency>EUR</Currency>
                      <StartDate>28/01/2014</StartDate>
@@ -75,6 +76,7 @@ Reservation Read allows to retrieve a specific booking with all its details usin
 | ReservationReadRQ/Locators | 1 |		| Information about the locators (it is mandatory to indicate either client or supplier's locator). |
 | Locators/Client	| 0..1		| String	| Client locator.					|
 | Locators/Provider	| 0..1		| String	| Supplier locator.					|
+| Locators/Property		| 0..1 		| String	| Property locator (see [MetaData](/docs/apis/for-buyers/legacy-pull-buyers-api/content/meta-data) method in order to verify if the supplier implements it).				|
 | ReservationReadRQ/Currency   		| 1    		| String	| Currency code.					|
 | ReservationReadRQ/StartDate  		| 0..1    		| String	| Start date of booking. 				|
 | ReservationReadRQ/EndDate    		| 0..1    		| String	| End date of booking.					|

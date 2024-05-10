@@ -30,7 +30,11 @@ If you have any doubts about the timezone returned (for example, if TimeZone is 
 
     Please check the following table for a clear view of how we will treat the Cancellation Policies returned by the Seller according to the TimeZone established on the Metadata:
 
-    ![hotel_sellers_api_cancelpolicies3](https://storage.travelgate.com/kbase/hotel_sellers_api_cancelpolicies3.jpg)
+    | Metadata TimeZone | HoursBefore | Deadline |
+    |-------------------|-------------|----------|
+    | Hotel Local Time        | Bypass   | Conversion to UTC-0 |
+    | TimeZone        | Bypass   | Conversion to UTC-0 |
+    | Unknown        | Bypass   | +14 hours offset |
 
 :::info
 The limit in which a booking can be cancelled without penalty is specified on the field **HoursBefore**. This parameter informs about the maximum hours that could pass before the penalty starts to apply.

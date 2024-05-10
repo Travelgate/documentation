@@ -26,8 +26,9 @@ Given a rate with Check-In date on 25/08/2022. If the Seller informs us that the
 - Example 4:  
     If the Seller provides the Cancel Penalties as "HoursPriorCheckIn:48", it will be reflected as "2022-08-22T19:00:00Z" in the "Deadline" node.
 
+
 ### Case 3 ✅
-If the Seller indicates (via ticket or email) that their **Timezone is unknown or based on HotelTimezone or the Buyer's Timezone**, we will apply a buffer of +14 hours to the Deadline node. This precautionary measure is taken to prevent any potential issues or charges.  
+If the Seller indicates (via ticket or email) that their **Timezone is unknown or based on the Buyer's Timezone**, we will apply a buffer of +14 hours to the Deadline node. This precautionary measure is taken to prevent any potential issues or charges.  
 
 Given a rate with Check-In date on 25/08/2022:
 

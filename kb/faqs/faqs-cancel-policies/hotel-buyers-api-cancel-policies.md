@@ -30,8 +30,11 @@ If you have any doubts about the timezone returned by your Seller (for example, 
 
     Please check the following table for a clear view of how we will treat the Cancellation Policies returned by the Seller according to the TimeZone established on the Metadata:
 
-    ![hotel_buyers_api_cancelpolicies3](https://storage.travelgate.com/kbase/hotel_buyers_api_cancelpolicies3.jpg)
-
+    | Metadata TimeZone | HoursBefore | Deadline |
+    |-------------------|-------------|----------|
+    | Hotel Local Time        | Bypass   | Conversion to UTC-0 |
+    | TimeZone        | Bypass   | Conversion to UTC-0 |
+    | Unknown        | Bypass   | +14 hours offset |
 
 **What do I need to do?**
 - **hoursBefore node:** TravelgateX returns the information as provided by the Seller - no extra hours added on our side. The logic regarding this information should be managed on your side.

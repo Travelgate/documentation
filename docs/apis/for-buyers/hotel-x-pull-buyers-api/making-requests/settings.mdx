@@ -9,13 +9,13 @@ In all booking flow and booking management requests, you'll find certain fields 
 
 You have the flexibility to fill in these settings with different values for each of your `query` and `mutation` requests. However, to make things easier, you can also choose not to fill them in every time, especially if you know the values will remain the same. In such cases, we have default settings. These default settings are the values we'll use in the background if you don't specify the fields that are part of these settings.
 
-:::info
+:::info Remember!
 
 When you begin using TravelgateX, these settings are automatically created, but it's essential to review and update them according to your preferences in our [API Settings](https://app.travelgatex.com/connections/settings) website section.
 
 :::
 
-## Default Settings
+## Settings fields
 
 We'll clarify which fields are categorized as `settings` and where you can locate them. We'll also specify whether it's mandatory to provide a value for each field or if you have the option to leave it empty, in which case the default settings will be applied:
 
@@ -29,3 +29,20 @@ We'll clarify which fields are categorized as `settings` and where you can locat
 | `currency`             | Mandatory            | Query (Criteria input) or Default Settings will be used |
 | `nationality`          | Mandatory            | Query (Criteria input) or Default Settings will be used |
 | `markets`              | Mandatory            | Query (Criteria input) or Default Settings will be used |
+
+
+
+## Default settings levels
+
+Understanding the various levels at which default settings can be applied is crucial for tailoring your configurations precisely to your needs:
+
+1. **Organization Level**: Settings at this level apply to the entire organization or group. You can adjust these settings at the [API Settings](https://app.travelgatex.com/connections/settings) section on our website.
+
+2. **Client Level**: Settings at this level are specific to individual clients. This means that default settings set for a particular client will only affect that client. You can manage these settings within the Clients section of the [API Settings](https://app.travelgatex.com/connections/settings) on our website.
+
+3. **Supplier Level**: These settings are tailored to specific suppliers. Default settings set for a particular supplier will impact all accesses associated with that supplier. If you want to configure default settings at this level, please reach out to our [Customer Care team](https://app.travelgatex.com/tickets).
+
+4. **Access Level**: Settings set at this level apply to a specific access. This implies that they will only affect that access. These settings take precedence over settings at the organization/group, client, and supplier levels. If you want to configure default settings at this level, please reach out to our [Customer Care team](https://app.travelgatex.com/tickets).
+
+5. **Query/Mutation Level**: These settings are those you, as a Buyer, specify in your query or mutation. Regardless of the default settings configured at other levels, these settings take precedence and will override them.
+

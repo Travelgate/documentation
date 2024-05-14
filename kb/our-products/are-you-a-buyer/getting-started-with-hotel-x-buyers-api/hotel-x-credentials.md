@@ -13,7 +13,7 @@ An Apikey is a unique alphanumeric code that serves as a form of authentication 
 
 1. APP access: Log in with your credentials [here](https://www.travelgatex.com/).
 1. Connections: Click on "Connections" in the top menu. Then, click on "[API Settings](https://app.travelgatex.com/connections/settings)".
-1. API Settings: List of API Keys associated with your Organization (encrypted). Simply click in the ["You can manage your API Keys here"](/kb/connections/api-settings/connections-settings) in the yellow callout in order to visualize this information. Please note that API Keys cannot be retrieved; therefore, ensure you keep a record of yours once created.
+1. API Settings: List of API Keys associated with your Organization (encrypted). Simply click in the ["You can manage your API Keys here"](/kb/connections/connections-settings) in the yellow callout in order to visualize this information. Please note that API Keys cannot be retrieved; therefore, ensure you keep a record of yours once created.
 
 	:::info
 	Please keep in mind that the Apikey will remain consistent across both test and production environments.
@@ -37,7 +37,7 @@ Please note it is highly advisable to **avoid making live bookings during the Ho
 
 A client refers to a party that buys accommodation services through the Hotel-X API implementation. Client codes remain consistent throughout all TravelgateX implementations and they are used to identify the business that is making the request and to confirm that they have a configuration assigned to it.
 
-It is possible to have multiple client codes, for instance, in order to differentiate traffic between B2B and B2C credentials (e.g., client_b2b, client_b2c). As all accesses are compatible with any of your client codes, it is important to use the appropriate one according to your needs. You can find this information in your [API Settings](/kb/connections/api-settings/connections-settings).
+It is possible to have multiple client codes, for instance, in order to differentiate traffic between B2B and B2C credentials (e.g., client_b2b, client_b2c). As all accesses are compatible with any of your client codes, it is important to use the appropriate one according to your needs. You can find this information in your [API Settings](/kb/connections/connections-settings).
 
 ### Context☑️
 

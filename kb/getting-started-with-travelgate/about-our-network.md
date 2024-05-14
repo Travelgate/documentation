@@ -19,8 +19,9 @@ And if you want to expand your business:
 * **New Destinations**: Expand your business to new destinations!
 * **New Markets**: Expand your business to new markets!
 ### Where do I find recommendations for my Company?  🔍
-You can access your recommended connections through both your [Dashboard](https://app.travelgatex.com/dashboard) and our [Network](https://app.travelgate.com/network/partners). Once you've identified a Partner you'd like to connect with, simply arrange your own contract and request their activation. It's that simple!
-![network_1](https://storage.travelgate.com/kbase/network_1.jpg)
+You can access your recommended connections through both your [Dashboard](https://app.travelgatex.com/dashboard) and our [Network's Partner List](https://app.travelgate.com/network/partners). Once you've identified a Partner you'd like to connect with, simply arrange your own contract and request their activation. It's that simple!
+
+![network_updated_1](https://storage.travelgate.com/kbase/network_updated_1.jpg)
 
 ### Discover ideal Partners effortlessly with our Network upgrade!
 Now you have greater control over search results and access to relevant information in one convenient place. This feature is situated on the left-hand side of the page and includes new filtering options such as:
@@ -32,11 +33,9 @@ Destination markets
 * Companies already connected to your Company via TravelgateX
 * Seller connection type
 
-And that's not all - when it comes to markets, you'll find a menu in the upper right corner with even more thrilling options to explore:
+And that's not all! You will be able to visualize the top source markets and destinations for each company directly from their card at a single glance!
 
-![network_2](https://storage.travelgate.com/kbase/network_2.jpg)
-
-![network_3](https://storage.travelgate.com/kbase/network_3.jpg)
+![network_updated_2](https://storage.travelgate.com/kbase/network_updated_2.jpg)
  
 ### Are you on the hunt for a particular Partner?🔎
 Our system now suggests Company names as you type, displaying their logo and type. To visualize or exclude Companies that are currently in the Onboarding status at TravelgateX, you can simply activate or deactivate the "Onboarding partners" option located in the top right corner of the screen.

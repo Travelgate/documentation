@@ -15,8 +15,7 @@ export const localitiesQuery =
 export const localitiesSearchQuery = 
 `query($criteria: InventoryLocalitiesSearchFilterInput) {
     inventory {
-      searchLocalities(
-        localitiesSearchFilterInput: $criteria) {
+      searchLocalities(localitiesSearchFilterInput: $criteria) {
         localities {
           name
           countryCode
@@ -29,7 +28,9 @@ export const localitiesSearchQuery =
 
 export const localitiesVariables = 
 `{
-    "criteria":{}
+    "criteria":{
+      "countryCodes": []
+    }
 }`
 
 

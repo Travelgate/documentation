@@ -1,10 +1,10 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
-# Localities Mutations
+# Create Localities
 
-The localities mutation allows you to create new localities that a hotel can have assigned in Inventory. The returned fields include:
+The `createLocalities` mutation allows you to create new localities that a hotel can have assigned in Inventory. The returned fields include:
 
 * `id`
 * `name`
@@ -27,15 +27,15 @@ mutation ($input: [InventoryLocalitiesCreateInput]) {
 }
 ```
 
-## Localities Mutation Inputs
+## Mutation Inputs
 
-When creating your localities mutation, you have 1 input to fill:
+When building your mutation, you have 1 input to fill:
 
 1. Input
 
 
 ### 1. Input   
-To specify your createLocalities input you need yo use `input` in your mutation variables, filling the ISO 2-character country code associated with the locality to create.
+To build your `createLocalities` input you need fill the name of the locality in the field `name`and the ISO 2-character country code where the locality is located in the field `countryCode`.
 You can also specify the United Nations code for Trade and Transport Locations in the field `unLocode` to identify the locality unequivocally.
 
 ```js

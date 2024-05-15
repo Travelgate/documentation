@@ -13,7 +13,9 @@ export const hotelCategoriesQuery =
 
 export const hotelCategoriesVariables = 
 `{
-  "criteria":{}
+  "criteria":{
+    "categoryIds": []
+  }
 }`
 
 

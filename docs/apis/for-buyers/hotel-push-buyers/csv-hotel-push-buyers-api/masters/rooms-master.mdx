@@ -1,0 +1,49 @@
+---
+sidebar_position: 2
+---
+
+# Rooms
+
+The Rooms Master file is designed to facilitate the creation of new master entries for rooms within the TravelgateX platform. This file is essential as it defines unique master codes for each room, which are required when managing room-specific data.
+
+### Retrieving Existing Master Data
+:::note
+**Attention Room Managers:**  
+Before adding new room masters, ensure that the room does not already exist in your specific client master. Room masters are unique for each client, and verifying the existing rooms in your master is important to prevent duplication of room entries. It's recommended to establish the room master if you are a new user on inventory before proceeding with the setups.
+:::
+
+To view existing master room data, clients can retrieve current details using the following queries: [Rooms Master](/docs/apis/for-buyers/hotel-push-buyers/graphql-hotel-push-buyers-api/masters/rooms-master)
+
+
+### Filename Format
+
+The file naming format for the Rooms Master is as follows: **clientCode(Inventory)-roomsMaster.csv**.
+
+If you have any questions about how to add the requested information to create the file name, you can check the following link:  
+[File Naming Importance for TravelgateX FTP Uploads](/docs/apis/for-buyers/hotel-push-buyers/csv-hotel-push-buyers-api/quickstart#3-file-naming-importance-for-travelgatex-ftp-uploads)
+
+
+### Room Master
+
+| Element     | Mandatory | Description                                                                                       |
+|-------------|-----|---------------------------------------------------------------------------------------------------|
+| Code        |	  1   | A unique identifier for each room. This code is critical as it is used across the platform to uniquely identify and reference the room. |
+| Name        |   1   | A descriptive name of the room, providing an easy identification and reference for users.                                                                      |
+
+
+#### Sheet Format Example
+
+Imagen del sheet de hotelMaster
+
+#### CSV Format Example for Channel Managers with context
+
+```
+Code;Name
+"12345";"Double Deluxe"
+```
+
+#### Data Uniqueness
+Master Room Codes: Each Code must be unique; duplication of master room codes within the same file or across multiple files for the same client is not permitted. Ensuring uniqueness is crucial for maintaining data integrity and avoiding conflicts in room identification within the platform.
+
+
+

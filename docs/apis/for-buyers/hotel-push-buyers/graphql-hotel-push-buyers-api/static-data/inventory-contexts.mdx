@@ -1,0 +1,40 @@
+---
+sidebar_position: 8
+---
+
+import {inventoryContextsQuery, inventoryContextsVariables, inventoryContextsSuppliersVariables} from "/src/graphql/inventory-push/master/inventory-contexts.query";
+
+
+# Inventory Contexts
+
+The `inventoryContexts` query returns a list of all the existing Inventory Contexts created. The returned fields include:
+
+* `contextId`
+* `contextCode`
+* `supplierCodes`
+
+
+## Query Inputs
+
+When creating your `inventoryContexts` query, you have 1 input to fill based on your specific needs:
+
+1. Criteria
+
+
+### 1. Criteria   
+
+This query offers versatility, with an optional field `supplierCodes` that can be filled with the supplierCodes to retrieve their Inventory Context.
+
+**Optional input**
+* `supplierCodes`
+
+### Requests Examples
+
+#### Retrieve full list of Invetory Contexts
+
+<GraphqlSample query={inventoryContextsQuery} variables={inventoryContextsVariables} />
+
+
+#### Retrieve the Inventory Context from specific suppliers
+
+<GraphqlSample query={inventoryContextsQuery} variables={inventoryContextsSuppliersVariables} />

@@ -19,13 +19,9 @@ Travelgate provides two main types of API connectivity for Buyers and Sellers, P
 
 ### For Sellers
 
-* [Hotel Push Sellers API](../apis/for-sellers/hotel-push-sellers-api/quickstart.mdx): Through Push integration, Sellers transmit their product data to the TGX Database/System. Push integrations are characterized by reduced traffic demands and swifter response times. However, they don't support real-time interactions and demand more developmental effort.
+* [Hotel Push Sellers API](../apis/for-sellers/hotel-push-sellers/ota-hotel-push-sellers-api/quickstart.mdx): Through Push integration, Sellers transmit their product data to the TGX Database/System. Push integrations are characterized by reduced traffic demands and swifter response times. However, they don't support real-time interactions and demand more developmental effort.
 
 * [Legacy Pull Sellers API](../apis/for-sellers/hotel-pull-sellers-api/overview): This works similarly to the Pull Buyers API, where the Seller receives real-time requests and sends back immediate responses.
-
-### For Buyers and Sellers
-
-* [Inventory-Push Buyers and Sellers API](../apis/for-buyers-sellers/inventory-push-buyers-sellers-api/quickstart.mdx): Buyers can configure via API the Hotel Setup on our Inventory. Subsequently, the Seller can push the availability and pricing data directly to our System without the need of a Push integration.
 
 ## APP Connections
 

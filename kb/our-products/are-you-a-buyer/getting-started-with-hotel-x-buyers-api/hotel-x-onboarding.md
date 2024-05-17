@@ -76,7 +76,7 @@ The [Booking Management](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-m
 Through this pivotal step, we facilitate the establishment of the initial connection between you and the Seller you have an agreement with. Ensuring seamless communication and data exchange between the two platforms.
 
 :::info
-For a comprehensive understanding of how to establish your first connection, please refer to our [Quick guide to auto-connections](kb/connections/my-connections/guick-guide-to-auto-activations).
+For a comprehensive understanding of how to establish your first connection, please refer to our [Quick guide to auto-connections](/kb/connections/my-connections/guick-guide-to-auto-activations).
 :::
 
 Upon successful testing of the methods during the auto-connection process, the connection of a new Partner can be swiftly established within a matter of minutes or hours. However, in the event that any issues arise during this process, our diligent Activations team will conduct a manual review to resolve them. Please note that this manual review may extend the delivery time for the connection.
@@ -99,7 +99,7 @@ To provide you with valuable insights and transparency, we have implemented an a
 
 ## Account configuration 🛠️
 
-As part of the Hotel-X onboarding process, we kindly request that you update your Company Profile information. This ensures that your details are accurate and up to date, enabling us to provide you with the best possible support and tailored experience. In oder to do so, please follow the indications provided in the article "[How to edit & customize your Company Profile](/kb/account-settings/company-profile/how-to-edit-and-customize-profiles)".
+As part of the Hotel-X onboarding process, we kindly request that you update your Company Profile information. This ensures that your details are accurate and up to date, enabling us to provide you with the best possible support and tailored experience. In oder to do so, please follow the indications provided in the article "[How to edit & customize your Company Profile](/kb/account-settings/company-profile/how-to-edit-and-customize-profile)".
 
 
 By taking the time to update your profile information, you contribute to a smoother onboarding process and ensure that our communication and services are personalized to your needs.

@@ -168,7 +168,7 @@ export default function Home() {
                   <img src="https://stplaformwe.blob.core.windows.net/docs/home_join_community_c.svg" />
                   <h6>Integrations Roadmap</h6>
                   <p>Take a look at Travelgate’s Seller API Development Roadmap.</p>
-                  <p><a href="https://docs.travelgatex.com/integrations-roadmap/" target="_blank">More information <i className="fa-solid fa-chevron-right"></i></a></p>
+                  <p><a href="https://app.travelgate.com/network/roadmap" target="_blank">More information <i className="fa-solid fa-chevron-right"></i></a></p>
                 </div>
               </div>
             </div>

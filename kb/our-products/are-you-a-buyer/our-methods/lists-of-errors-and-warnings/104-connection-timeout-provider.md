@@ -7,7 +7,7 @@ sidebar_position: 5
 This error occurs when the Seller's response time has exceeded the timeout set in the Buyer's request.
 
 ### Hotel-X Buyers API
-You may find the timeout value at a request level (in your Settings) or at a Default Settings level (in our website>Conections>[Connections Settings](/kb/connections/api-settings/connections-settings)).
+You may find the timeout value at a request level (in your Settings) or at a Default Settings level (in our website>Conections>[Connections Settings](/kb/connections/connections-settings)).
 
 ### Legacy Buyers API
 This timeout is included as a [Common Element]8v) ("timeoutMilliseconds") in every request:

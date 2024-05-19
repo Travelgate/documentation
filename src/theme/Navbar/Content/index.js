@@ -113,6 +113,7 @@ export default function NavbarContent() {
             ) : (
                 <NavbarItem label={`Login`} position="right" to={`#!`} onClick={() => loginWithRedirect()} />
             )}
+
           {/*<NavbarColorModeToggle className={styles.colorModeToggle} />*/}
           {!searchBarItem && (
             <NavbarSearch>

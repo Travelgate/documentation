@@ -428,6 +428,11 @@ article .graphiql-sidebar {
   &.hero {
     .hero__title {
       font-family: 'Inter', sans-serif;
+      //Custom title size 
+      //-------------------------------------------
+      @media (max-width: 480px) {
+        font-size: 2.5rem;
+      }
     }
     .hero__subtitle {
       font-family: 'Inter', sans-serif;
@@ -655,5 +660,16 @@ footer {
         }
       }
     }
+  }
+}
+
+//Custom Navbar to show Login link in tablet and phone
+//-------------------------------------------
+@media (max-width: 996px) {
+  .navbar__inner .navbar__items--right .navbar__link{
+    display: block !important;
+  }
+   .navbarSearchContainer_Bca1 {
+    position: relative !important;
   }
 }

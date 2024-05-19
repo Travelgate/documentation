@@ -39,9 +39,11 @@ Hotel-X, being a GraphQL-based API, utilizes a single endpoint for all operation
 https://api.travelgatex.com
 ```
 
+Or `https://api-cn.travelgatex.com` if your servers are situated in China for better system's performance.
+
 #### Request Headers
 
-To interact with the API, you'll need to include two essential request headers:
+To interact with the API, you'll need to include three essential request headers:
 
 
 * Gzip Compression: This header helps optimize data transfer between your application and the API.
@@ -49,17 +51,23 @@ To interact with the API, you'll need to include two essential request headers:
 
 ```html
 Accept-Encoding: gzip.
-```
+```   
 
+* Keep Alive: In order to increase performance and improve response times.
+
+
+```html
+Connection: keep-alive
+```
 
 * API Key: You can find your API Key on the Travelgate website in Connections > [API Settings](https://app.travelgatex.com/connections/settings).
 
 
 ```html
 Authorization: ApiKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-```    
+``` 
 
-If you don't have an API key yet, you will be able to test the query and mutation examples with a test API key we've added to the playground.
+If you don't have an API key yet, you will be able to test the query and mutation examples with a test API key we've added to the playground in the next sections.
 
 #### Supported Operations
 

@@ -1,0 +1,48 @@
+---
+sidebar_position: 2
+---
+
+# Hotels
+
+The Hotels file is designed to facilitate the setup of hotels within the Inventory platform. It's necessary for managing hotel-specific data and relate to the appropriate channel manager.
+
+### Hotel Search in Inventory
+:::note
+**Attention**  
+Before setting up new hotels, ensure that the hotel does not already exist in the inventory. To verify the existence of the hotel code, you should launch a query in the inventory. If the hotel exists, you should copy the code to add it to the .csv file.
+
+Note that the hotel master is shared for all inventory customers, all hotels created are shared between customers.
+:::
+
+To view existing hotel data, clients can retrieve the current details using the following queries: [Inventory Hotel Search](/docs/apis/for-buyers/inventory-buyers/inventory-set-up-graphql-api/masters/hotels-master/search-hotels-master)
+
+### File Name Format
+
+The file name format for the Hotel Setup is as follows: **clientCode-providerCode-hotels.csv**.
+
+If you have any questions about how to add the requested information to create the file name, you can consult the following link:  
+[Importance of the file name for TravelgateX's FTP uploads](../quickstart#3-file-naming-importance-for-travelgatex-ftp-uploads)
+
+### Hotel
+
+| Element     | Mandatory | Description                                                                                       |
+|-------------|-----|---------------------------------------------------------------------------------------------------|
+| Id        |	  1   | Numeric Travelgate unique Code that identifies the hotel. Hotel code in inventory, travelgate system.  |
+| Code        |   0   | Alphanumeric Code from Provider that identifies the hotel, is unique by Context. *Code and Context are related.* |
+| Context        |   0   | Code that specifies the framework, relation or connection of the HotelCode. *Code and Context are related.*|
+| Active        |   1   | Indicate if the hotel is operational or not. Example: (**0 - False** (hotel no active)) or (**1 - True** (hotel active)). |
+| SendNotification        |   1   | Indicate if the system has to send an email when booking or canceling. Example: (**0 - False** (no notification sent)) or (**1 - True** (notification is sent)).|
+| EmailNotification        |   0   | List of hotel emails separated by pipe (\|) to send the notification. Example: **test@gmail.com\|test1@gmail.com**. |
+| EmailNotificationCC        |   0   | List of emails separated by pipe (\|) that would be in copy when the notification is sended.  Example: **test@gmail.com\|test1@gmail.com**. |
+| EmailNotificationInfo        |   0   | The from list of emails separated by pipe (\|). Example: **test@gmail.com\|test1@gmail.com**. |
+
+#### Sheet Format Example
+
+![inventory_csv_hotel-setup](https://storage.travelgate.com/docs/inventory_csv_hotel-setup.png)
+
+#### CSV Format Example for Channel Managers
+```
+Id;Code;Context;Active;SendNotification;EmailNotification;EmailNotificationCC;EmailNotificationInfo
+"1";;;"1";"1";"email1@hotel.com|email2@hotel.com";;"
+```
+

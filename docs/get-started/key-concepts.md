@@ -33,8 +33,10 @@ You can have multiple client codes, for instance, to separate traffic for B2B an
 
 ### `Inventory Context`
 `Inventory Context` is a term used to describe hotel codes used in Inventory. This should not be confused with the previous Context; the new one is exclusively related to the Inventory scope.  
-Some Channel Managers work with their native hotel codes instead of mapping in their system the Inventory hotel IDs. Therefore, these Channels will require a special `Inventory Context`.  
-To retrieve the `Inventory Context` values, you can use the query [Inventory Contexts](../apis/for-buyers/hotel-push-buyers/graphql-hotel-push-buyers-api/static-data/inventory-contexts.mdx) from Inventory-Push API.
+Some Channel Managers need to work with their native hotel codes instead of mapping the Inventory hotel IDs that we autogenerate. Therefore, these Channels will require a special `Inventory Context` for Set Up and Product Load operations.  
+As a buyer connected to a Push seller, the only alteration if the seller is a Channel Manager configured with a `Inventory Context`, will be that in the hotel list you will receive the native hotel codes instead of the hotel IDs.
+
+To retrieve the `Inventory Context` values, you can use the query [Inventory Contexts](/docs/apis/for-buyers/inventory-buyers/inventory-set-up-graphql-api/static-data/inventory-contexts).
 
 ### `Access`
 An `access` is the set of credentials and the authentication configuration that enables a Buyer to connect to a Seller. It is used to differentiate among Sellers and also to filter different credentials and configurations from the same Seller (e.g. B2B and B2C feeds). 

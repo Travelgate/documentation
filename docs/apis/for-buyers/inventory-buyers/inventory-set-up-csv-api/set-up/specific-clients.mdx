@@ -1,0 +1,35 @@
+---
+sidebar_position: 6
+---
+
+# Specific Clients
+
+The Specific Clients file is designed to facilitate the setup of specific clients within the Inventory platform. It's necessary for managing specific client data and relate to the rates created previously.
+
+If you want to inform that this rate is only for a list of specific clients this is your csv: code (represent your client) and Description (name of the client). You can add maximum 15 clients. The client codes have to be unique on the same rate.
+
+### File Name Format
+
+The file name format for the Specific Client Setup is as follows: **clientCode-providerCode-HotelCode#ContextCode-specificclients.csv**.
+
+If you have any questions about how to add the requested information to create the file name, you can consult the following link:  
+[Importance of the file name for TravelgateX's FTP uploads](../quickstart#3-file-naming-importance-for-travelgatex-ftp-uploads)
+
+### Specific Client
+
+| Element     | Mandatory | Description                                                                                       |
+|-------------|-----|---------------------------------------------------------------------------------------------------|
+| Rate Code        |	  1   | Unique identifier that associate this specific client to a unique rate. |
+| Code        |   1   | Identifier of this specific client. |
+| Descriptions        |   1   | Detailed name of the specific client. |
+
+#### Sheet Format Example
+
+![inventory_csv_specificClients-setup](https://storage.travelgate.com/docs/inventory_csv_specificClients-setup.png)
+
+#### CSV Format Example for Channel Managers
+```
+Rate Code;Code;Descriptions
+"123RATE_TEST";"123_Ctest";"Client test"
+```
+

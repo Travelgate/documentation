@@ -1,0 +1,52 @@
+---
+sidebar_position: 1
+---
+
+import {roomsSetUpQuery, roomsSetUpVariables, roomsSetUpByCodesVariables} from "/src/graphql/inventory/set-up/rooms-set-up.query";
+
+
+# Rooms
+
+The `roomsSetUp` query returns the rooms added to a hotel rate in Inventory. The returned fields include:
+
+* `code`
+* `master`
+	* `id`
+	* `code`
+	* `name`
+* `active`
+* `externalCode`
+* `standard`
+* `uses`
+	* `numberOfGuests`
+	* `minAge`
+	* `maxAge`
+	* `paxType`
+
+## Query Inputs
+
+When creating your `roomsSetUp` query, you have 1 input to fill based on your specific needs:
+
+1. Criteria
+
+### 1. Criteria   
+
+**Mandatory input**
+* `clientCode`
+* `supplierCode`
+* `hotelCode`
+* `rateCode`
+
+**Optional input**
+* `contextCode`
+* `roomCodes`
+
+### Requests Examples
+
+#### Retrieve all rooms from a rate
+
+<GraphqlSample query={roomsSetUpQuery} variables={roomsSetUpVariables} />
+
+#### Retrieve specific rooms from a rate
+
+<GraphqlSample query={roomsSetUpQuery} variables={roomsSetUpByCodesVariables} />

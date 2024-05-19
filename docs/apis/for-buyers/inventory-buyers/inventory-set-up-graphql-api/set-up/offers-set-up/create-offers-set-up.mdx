@@ -1,0 +1,73 @@
+---
+sidebar_position: 3
+---
+
+import {createOffersSetUpMutation, createOffersSetUpVariables} from "/src/graphql/inventory/set-up/offers-set-up.mutation";
+
+
+# Create Offers
+
+The `createOffersSetUp` mutation allows you to create new offers for an existing hotel rate in Inventory. The returned fields include:
+
+* `code`
+* `description`
+* `isActive`
+* `rateCode`
+* `roomCodes`
+* `mon`
+* `tue`
+* `wed`
+* `thu`
+* `fri`
+* `sat`
+* `sun`
+* `applyFrom`
+* `applyTo`
+* `numberOfNights`
+* `minLos`
+* `maxLos`
+* `nightsType`
+
+## Mutation Inputs
+
+When creating your `createOfferssSetUp` mutation, you have 1 input to fill based on your specific needs:
+
+1. Input
+
+### 1. Input   
+
+**Mandatory input**
+* `clientCode`
+* `supplierCode`
+* `hotelCode`
+* `rateCode`
+* `offers`
+	* `code`
+	* `description`
+	* `isActive`
+	* `nightsType`
+	* `numberOfNights`
+
+**Optional input**
+* `contextCode`
+* `offers`
+	* `roomCodes`
+	* `mon`
+	* `tue`
+	* `wed`
+	* `thu`
+	* `fri`
+	* `sat`
+	* `sun`
+	* `applyFrom`
+	* `applyTo`
+	* `minLos`
+	* `maxLos`
+
+### Requests Examples
+
+#### Create a new offer for a rate
+
+With the following mutation, we are going to create a new offer available for all rooms linked to a rate that gives away the cheapest night of the booking if the lenght of stay of the reservation is at least a week.
+
+<GraphqlSample query={createOffersSetUpMutation} variables={createOffersSetUpVariables} />

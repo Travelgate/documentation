@@ -9,7 +9,6 @@ sidebar_position: 5
 - [Hotel-X Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart)
 - [Hotel-X Playground](/playground): You can use Playground as a client to test your queries and mutations. Additionally, you can access our SDL by clicking on the "Docs" tab ("Export SDL") and examine the structure and definition of each API methods available.
 - [Community](/kb/getting-started-with-travelgate/about-our-community): We regularly update and improve our Documentation, so make sure to check back often to stay up-to-date with the latest updates and changes.
-- FAQs
 - [How to retrieve your Hotel-X Credentials](/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/hotel-x-credentials)
 - [How do I add more users to my Company's account?](/kb/account-settings/users-management/how-to-add-manage-users-to-organization)
 - For Hotel-X implementation and testing purposes, we recommend using the following [accesses](/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/hotel-x-credentials):
@@ -18,9 +17,6 @@ sidebar_position: 5
 	
 	These have already been activated on your account and are ready to use.
 
-- [Insomnia collection](https://2825176.fs1.hubspotusercontent-na1.net/hubfs/2825176/Insomnia%20Customers%202023.json)
-- [Postman collection](https://2825176.fs1.hubspotusercontent-na1.net/hubfs/2825176/Hotel-X.postman_collection%20Customers%202023.json)
-- [Query and mutation examples](https://2825176.fs1.hubspotusercontent-na1.net/hubfs/2825176/Examples%20Customers%202023.docx)
 - [Apollo GraphQL query Best Practices](https://www.apollographql.com/docs/react/data/operation-best-practices/)
 
 ### Hotel-X endpoint🌍

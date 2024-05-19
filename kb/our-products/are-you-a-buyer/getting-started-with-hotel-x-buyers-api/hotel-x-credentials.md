@@ -9,15 +9,14 @@ sidebar_position: 8
 Once you have configured your account, you can access our APP and check your Hotel-X credentials and accesses by following this simple guide:
 
 ### Apikey☑️
-An Apikey is a unique alphanumeric code that serves as a form of authentication required for accessing Hotel-X API. This key must be included in the HTTP Authorization request header to verify and authenticate the user agent with the server. It acts as a secure identifier, ensuring that only authorized users can make requests and access the API's functionalities. You can find your Apikey on the Travelgate website in Connections > [API Settings](https://app.travelgatex.com/connections/settings).
+An Apikey is a unique alphanumeric code that serves as a form of authentication required for accessing Hotel-X API. This key must be included in the HTTP Authorization request header to verify and authenticate the user agent with the server. It acts as a secure identifier, ensuring that only authorized users can make requests and access the API's functionalities. You can find your Apikey (**encrypted**) and generate new ones in section Connections > [API Settings](https://app.travelgatex.com/connections/settings).
 
-1. **APP access**: Log in with your credentials [here](https://www.travelgatex.com/).
-1. **Connections**: Click on "Connections" in the top menu. Then, click on "[API Settings](https://app.travelgatex.com/connections/settings)".
-1. **API Settings**: Your Apikey will be displayed in a yellow box at the top of the page.
-	![hotelx-credentials-new-updated-1](https://storage.travelgate.com/kbase/hotelx-credentials-new-updated-1.jpg)
+1. APP access: Log in with your credentials [here](https://www.travelgatex.com/).
+1. Connections: Click on "Connections" in the top menu. Then, click on "[API Settings](https://app.travelgatex.com/connections/settings)".
+1. API Settings: List of API Keys associated with your Organization (encrypted). Simply click in the ["You can manage your API Keys here"](/kb/connections/connections-settings) in the yellow callout in order to visualize this information. Please note that API Keys cannot be retrieved; therefore, ensure you keep a record of yours once created.
 
 	:::info
-	**Please keep in mind that the Apikey will remain consistent across both test and production environments for all Sellers.**
+	Please keep in mind that the Apikey will remain consistent across both test and production environments.
 	:::
 
 ### Access☑️
@@ -28,7 +27,7 @@ An access refers to the combination of credentials and authentication configurat
 * Smyrooms Test: Access 5647 with context LOGITEST
 
 **How can I obtain an access code from an actual Seller?**
-To get your access code, simply establish a commercial agreement with the desired Partner and request activation through our website using the [Auto-Activations Form](/kb/connections/my-connections/auto-activations-process).
+To get your access code, simply establish a commercial agreement with the desired Partner and request activation through our website using the [Auto-Activations Form](/kb/connections/my-connections/guick-guide-to-auto-activations).
 
 :::info
 Please note it is highly advisable to **avoid making live bookings during the Hotel-X implementation process** until your development has been certified by TravelgateX.
@@ -38,7 +37,7 @@ Please note it is highly advisable to **avoid making live bookings during the Ho
 
 A client refers to a party that buys accommodation services through the Hotel-X API implementation. Client codes remain consistent throughout all TravelgateX implementations and they are used to identify the business that is making the request and to confirm that they have a configuration assigned to it.
 
-It is possible to have multiple client codes, for instance, in order to differentiate traffic between B2B and B2C credentials (e.g., client_b2b, client_b2c). As all accesses are compatible with any of your client codes, it is important to use the appropriate one according to your needs. You can find this information in your [API Settings](/kb/connections/api-settings/connections-settings).
+It is possible to have multiple client codes, for instance, in order to differentiate traffic between B2B and B2C credentials (e.g., client_b2b, client_b2c). As all accesses are compatible with any of your client codes, it is important to use the appropriate one according to your needs. You can find this information in your [API Settings](/kb/connections/connections-settings).
 
 ### Context☑️
 

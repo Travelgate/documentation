@@ -1,0 +1,89 @@
+---
+sidebar_position: 1
+---
+
+import {hotelsMasterQuery, hotelsMasterByHotelCodesVariables, hotelsMasterByContextCodeVariables, hotelsMasterByCountryCodeVariables, hotelsMasterByLocalityIdVariables} from "/src/graphql/inventory/masters/hotels-master.query";
+
+
+# Hotels Master
+
+The `hotelsMaster` query returns a list of all the hotel masters created in Inventory. The returned fields include:
+
+* `id`
+* `name`
+* `email`
+* `phones`
+* `fax`
+* `address`
+* `postalCode`
+* `latitude`
+* `longitude`
+* `externalCode`
+* `category`
+    * `id`
+	* `name`
+* `locality`
+    * `id`
+    * `name`
+    * `countryCode`
+* `hotelCode`
+* `contextCode`
+
+
+## Query Inputs
+
+When building your `hotelsMaster` query, you have 1 input to fill based on your specific needs:
+
+1. Criteria
+
+
+### 1. Criteria   
+
+This query offers 3 alternative ways of retrieving hotel masters:
+
+- By Hotel code and context
+- By country
+- By locality
+
+
+**Optional input**
+* `countryCodes`
+
+### Requests Examples
+
+#### Search for Hotel masters by their code
+
+When searching by hotel code, it is important to know that the default value of the field `contextCode` will be "TGX_PUSH", so if the hotels to retrieve
+are from a supplier that works with native codes, their respective Inventory Context must be passed in the field  `contextCode`. 
+
+:::note
+
+The possible values for `contextCode` can be retrieved using the query [Inventory Contexts](../../static-data/inventory-contexts).
+
+:::
+
+<GraphqlSample query={hotelsMasterQuery} variables={hotelsMasterByHotelCodesVariables} />
+
+#### Search for the full list of Hotel masters linked to a specific Inventory Context
+
+Another possibility is to retrieve directly all the hotels linked to a specific Inventory Context. For that, fill in your input just the Inventory Context in the field `contextCode`.
+
+<GraphqlSample query={hotelsMasterQuery} variables={hotelsMasterByContextCodeVariables} />
+
+#### Search for Hotel masters by country
+
+When utilizing the Hotels Query, for more personalized results, filter specific hotels based on your interests. For example, to focus solely on hotels located in Spain, add the `countryCode` field with "ES" in your input:
+
+<GraphqlSample query={hotelsMasterQuery} variables={hotelsMasterByCountryCodeVariables} />
+
+#### Search for Hotel masters by locality
+
+Similarly to the previous query, to filter the results and retrieve only hotels from a specific Locality, for example, Palma de Mallorca, set your query variables as follows:
+
+:::note
+
+The `localityId` value from the desired Locality, can be retrieved using the queries [Localities](../../static-data/localities/) or [Search Localities](../../static-data/localities/search-localities).  
+
+:::
+
+<GraphqlSample query={hotelsMasterQuery} variables={hotelsMasterByLocalityIdVariables} />

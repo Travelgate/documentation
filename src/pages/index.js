@@ -80,15 +80,15 @@ export default function Home() {
                   <img src="https://storage.travelgate.com/docs/home_docs_browse_channelx.svg" />
                   <h4>Channel-X Push Buyers API</h4>
                   <p>Channel-X API extracts products loaded into our Inventory tool and pushes them to the Buyer’s system. Note that to enable bookings, it is essential to also develop Hotel-X API.</p>
-                  <p><a href="/docs/apis/for-buyers/channel-x-push-buyers-api/quickstart">Quickstart guide <i className="fa-solid fa-chevron-right"></i></a></p>
+                  <p><a href="/docs/apis/for-buyers/inventory-buyers/channel-x-push-buyers-api/quickstart">Quickstart guide <i className="fa-solid fa-chevron-right"></i></a></p>
                 </div>
               </div>
               <div className="col col--4">
                 <div className="item">
                   <img src="https://storage.travelgate.com/docs/home_docs_browse_hotelpush.svg" />
                   <h4>Hotel Push Sellers API</h4>
-                  <p>By combining Inventory tool and the GraphQL Hotel Push Sellers API, Sellers can push their products into Travelgate database, making them accessible to Buyers.</p>
-                  <p><a href="/docs/apis/for-sellers/hotel-push-sellers/graphql-hotel-push-sellers-api/quickstart">Quickstart guide <i className="fa-solid fa-chevron-right"></i></a></p>
+                  <p>By combining Inventory tool and the Hotel Push Sellers API, Sellers can push their products into Travelgate database, making them accessible to Buyers.</p>
+                  <p><a href="/docs/apis/for-sellers/hotel-push-sellers-api/quickstart">Quickstart guide <i className="fa-solid fa-chevron-right"></i></a></p>
                 </div>
               </div>
             </div>

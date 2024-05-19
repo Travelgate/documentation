@@ -1,0 +1,143 @@
+---
+sidebar_position: 1
+---
+
+# Quickstart
+
+## Introduction
+
+Our CSV API provides an intuitive solution for inventory clients to manage and configure their hotel products, including rooms, rates, and other related details, directly within our robust inventory system.
+
+This API is designed to streamline the process of updating and maintaining large datasets, making it easier for clients to quickly integrate their data via a well-defined CSV file format. The API supports a range of operations essential for the effective management of hotel inventories, all through the convenience of CSV uploads.
+
+Whether you are looking to initial upload your inventory data, make comprehensive updates, or simply fine-tune specific details, this API affords you the flexibility and control needed to manage your product listings efficiently and accurately.  
+
+It is ideal for:
+- **Bulk Updates**: Easily upload or modify large sets of data, such as room types, rates, and availability in one go.
+- **Simplified Integration**: Use a standard CSV file format for data import and export, facilitating easy preparation and processing of data.
+- **Less Technical Complexity**: Avoid the intricacies of coding detailed API requests by using prepared CSV templates.
+
+In the following sections, you will find detailed guidance on how to prepare your CSV files, the specific fields and formats required, and step-by-step instructions on how to submit your data through the API. We also provide troubleshooting tips and best practices to help you optimize your use of this tool and achieve seamless integration with our inventory system.
+
+Let's get started on simplifying and enhancing your inventory management process with our CSV API.
+
+## Let's Get Started: How to use the CSV!
+
+  ### 1. Download and prepare the files on your drive
+
+ Here's a quickstart guide for accessing and organizing files needed for operations available on the CSV API:
+
+
+#### Step 1: Access the File Repository
+ 
+ * **Follow the Link**: Click on this [link](https://drive.google.com/drive/folders/1GmfBZ2Aqpg963TtZMDsRJsEyMqHaQR08?usp=drive_link) which will direct you to the Google Drive folder containing all necessary files.  
+ * **Review Files**: Once you open the link, you will find multiple files required for operations via the CSV API.
+
+#### Step 2: Make Copies of the Necessary Files
+  
+* **Read-only Access**: Note that the files are in 'read-only' mode, which means you cannot directly edit or use them for uploads.
+* **Create Copies**: Right-click on the file you need. Select "Make a copy". The copy will automatically be saved in your Drive, usually in the 'My Drive' main folder.
+
+#### Step 3: Organize Your Files "recommended"
+
+* **Create a New Folder**: In your Google Drive, click "New" > "Folder". Name the folder after the channel you will be working with (e.g., "Travelgate_Channel_Files"). Click "Create".  
+* **Move Copied Files**: Navigate back to 'My Drive' or wherever your copies were saved. Click and drag your copied files into the new folder you created, or right-click each file, select "Move to", and choose your new folder.
+
+#### Step 4: Prepare for Operations
+
+* **Organize and Customize**: Within your channel-specific folder, organize and edit the CSV files as needed for uploading products or any other operations.  
+* **Follow API Guidelines**: Ensure all CSV modifications align with the requirements and standards provided by the CSV API documentation.
+
+#### Helpful Tips
+ 
+* Regularly update your copied files if the original source files are updated.
+* Check permissions when sharing your folder or files with teammates to ensure data security.
+* Always verify your data for accuracy and completeness before using the files for uploads or any important tasks.
+
+This guide should help you efficiently access and manage the necessary files for using the CSV API. Happy working!
+
+### 2. Enhanced Spreadsheet Features
+	The spreadsheets you are using have been equipped with custom scripts designed to perform several functions, such as data validation, mandatory field checks, and exporting to a specific CSV format. These enhancements help ensure data consistency and ease the data handling process.
+
+#### 1. Data Validation Scripts
+   
+Mandatory Fields: As you fill out the spreadsheet, scripts automatically check whether all required fields have been completed. If a mandatory field is missing, a prompt will appear, indicating which data is required in that particular row.
+Format Validation: If data entered into a field with a specified format is incorrect, a message will be sent explaining the required format, often accompanied by an example. This ensures that all data adheres to expected standards before processing or exporting.
+
+#### 2. Export Functionality
+   
+CSV Export with Custom Separator: A new function has been added to allow exporting the spreadsheet data as a CSV file using a semicolon (;) as a delimiter. This feature is particularly useful for maintaining compatibility with systems that require this specific CSV format.
+
+#### 3. Interactive Column Descriptions
+   
+Guidance on Data Entry: To understand what type of information should be entered in each column, simply hover your cursor over the header row of each column. A tooltip will appear providing a brief description of the data expected in that column. This feature serves as an in-built guide to aid in correct data entry.
+
+How to Use These Features
+#### Completing the Spreadsheet
+Fill out each cell carefully, adhering to the instructions and format guidelines provided.
+Pay attention to prompts and error messages.
+These are designed to help you correct entries before proceeding.
+
+#### Exporting Data
+Locate the export button or option within the spreadsheet tools.
+Choose the CSV export option, ensuring that the semicolon (;) delimiter is selected or set.
+Save or download the file to your desired location.
+
+Tips for Effective Use
+Regularly save your progress to avoid data loss.
+Familiarize yourself with the format requirements and tooltips before beginning intensive data entry.
+If repeated errors occur, review the data formats and requirements in the tooltips or documentation to ensure understanding.
+
+These tools and features are designed to streamline your workflow and enhance data accuracy. By following these guidelines, you can effectively manage and prepare your data using the enhanced capabilities of the speadsheet.
+
+### 3. File Naming Importance for TravelgateX FTP Uploads
+
+Understanding the significance of file naming is crucial for successful file uploads to TravelgateX's FTP. Below is a summary of the required elements to correctly name your file, which are detailed through examples shared in the file schema:
+
+#### clientCode(Inventory):  
+This is TravelgateX's native code for the client in the inventory system.
+:::note
+
+Your ClientCode can be retrieved from any TravelgateX's access with a Channel Manager.
+See [My Connections](https://app.travelgate.com/connections/myconnections) and click "Get form data" in the selected access, the code in Password is equivalent to the ClientCode.
+
+:::
+#### providerCode(Inventory):  
+This is TravelgateX's native code for the provider in the inventory.
+:::note
+
+Your ProviderCode can be retrieved from any TravelgateX's access with a Channel Manager.
+See [My Connections](https://app.travelgate.com/connections/myconnections) and click "Get form data" in the selected access, the code in User is equivalent to the ProviderCode.
+
+:::
+
+#### HotelCode#ContextCode:  
+Depending on the type of connection to a Channel Manager, there are two scenarios to consider for naming your file: 
+
+* **Scenario 1:** Connecting to a Channel Manager Using Its Own Codes:
+
+	* **HotelCode**: Use the native code provided by the Channel Manager.
+	* **ContextCode**: This part must be filled in, as it is essential for the Channel Manager that uses its own unique codes. It is mandatory to include both the hotel code and the context code in the file name.
+
+* **Scenario 2:** Connecting to a Channel Manager Using TravelgateX Inventory Codes:
+
+	* **HotelCode**: Use the code from TravelgateX's inventory.   
+	To check if the hotel exists in inventory you can retrieve current details using the following queries: [Hotels Master](../inventory-set-up-graphql-api/masters/hotels-master/), [Search Hotels Master](../inventory-set-up-graphql-api/masters/hotels-master/search-hotels-master)
+	* **ContextCode**: This part should be ignored as the Channel Manager works with TravelgateX's inventory codes, and no additional contextual code is needed.
+
+**Examples:**  
+* **Example for Scenario 1:**
+Example:
+Imagine you are the client "travelClient (TGX)" connected to the channel manager "travelgateChannelManagerNativeCode (TGXCMNC)", which uses natives hotel codes (Native1234). If you are completing the "rooms" file, the download file name should be: clientCode(Inventory)-providerCode(Inventory)-HotelCode#ContextCode-rooms.csv. In this Case, you would name the file "TGX-TGXCMNC-Native1234#TRV-rooms.csv". The ContextCode can be found in the same sheet, in the column "context", you have a dropdown with the current values of the channels managers that work with native hotel codes.
+
+* **Example for Scenario 2:**
+Imagine you are the client "travelClient (TGX)" connected to the channel manager "travelgateChannelManager (TGXCM)", which uses hotel codes from the inventory. If you are completing the "rooms" file, the download file name should be: "clientCode(Inventory)-providerCode(Inventory)-HotelCode#ContextCode-rooms.csv. In this case, you would name the file "TGX-TRVCM-1234-rooms.csv", omitting the #ContextCode since the connected channel does not use native codes but relies on TravelgateX's inventory codes.
+
+### 4. Uploading Files to SFTP and Configuration 
+
+After completing the necessary preliminary steps, the next stage involves uploading your files to the SFTP server. A detailed explanation on how to access and operate the SFTP server can be found through the following link: [How to Access and Use the SFTP](#) (Note: Replace the placeholder with the actual URL providing the detailed instructions).
+
+#### File Checking Frequency
+It is important to note that our CSV API checks the SFTP server every 10 seconds for new files. This frequent scanning ensures that any files you upload are quickly detected and processed, minimizing delay in data handling.
+
+This guide will ensure you can securely transfer your files to the appropriate destination without any issues.

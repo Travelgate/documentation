@@ -1,0 +1,245 @@
+---
+sidebar_position: 1
+---
+
+# Quickstart
+
+## Introduction
+
+By combining the Hotel Push Sellers API and [Inventory Tool](/docs/apps/inventory/extranet/overview), Channel Managers and Hotel Distributors can effectively **push** their products into a Travelgate database, thereby making them accessible to Travelgate Buyers.
+
+As a standard practice, Buyers usually configure the setup (hotels, rate plans, and rooms) within the [Inventory Extranet](https://inventory.xmltravelgate.com/Account/Login?ReturnUrl=%2f). Subsequently, Sellers push both availability and rates. Consequently, Travelgate Buyers gain access to these products through three distinct methods: either through Pull, using our [Hotel-X solution](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart); through Push, utilizing our [Channel-X solution](/docs/apis/for-buyers/inventory-buyers/channel-x-push-buyers-api/quickstart); or via a Flat File solution.
+
+&nbsp;
+![Hotel Push Seller Overview](https://storage.travelgate.com/docs/push_seller_api.svg)
+
+
+## Let's Get Started: How to Make your First Sale!
+
+The Hotel Push Sellers API provides a robust XML-based API that will enable you to push all your products to our Inventory Tool, making them accessible for Buyers. If you're a Channel Manager or Supplier seeking a push integration, please follow the next steps.
+
+### Prerequisites
+
+#### API Endpoint
+
+Hotel Push Seller API, being a XML-based API, utilizes a single endpoint for all operations:
+
+```html
+https://pushprovider.xmltravelgate.com/Service/Hotel/Provider/ProviderGEN.svc
+```
+
+#### Request Headers
+
+To interact with the API, you'll need to include the Authentication request header, which employs two levels of authentication, namely "Security" and "POS":
+
+1. Security Level: User and password of our Inventory Tool System.
+
+2. POS Level: It comprises two fields: RequestorID, which represents the Seller code assigned to initiate the request, and CompanyName, which signifies the buyer code assigned to receive the updates.
+
+```html
+<SOAP-ENV:Envelope xmlns:SOAP-ENV = "http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1 = "http://www.opentravel.org/OTA/2003/05" xmlns:ns2 = "http://schemas.xmltravelgate.com/hubpush/provider/2012/10" xmlns:ns3 = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+ <SOAP-ENV:Header>
+     <ns3:Security SOAP-ENV:mustUnderstand = "1">
+         <ns3:UsernameToken>
+             <ns3:Username>username</ns3:Username>
+             <ns3:Password>password</ns3:Password>
+         </ns3:UsernameToken>
+     </ns3:Security>
+ </SOAP-ENV:Header>
+ <SOAP-ENV:Body>
+     <ns:HotelRatePlanNotif><!--Your request, ex: HotelAvailNotif, HotelRatePlanInventoryRetrieve ...-->
+         <ns:request>
+             <ns1:POS>
+                 <ns1:Source>
+                     <ns1:RequestorID ID="Seller Code"/>
+                     <ns1:BookingChannel>
+                         <ns1:CompanyName Code="Buyer Code"/>
+                     </ns1:BookingChannel>
+                 </ns1:Source>
+             </ns1:POS>
+             ...
+             ...
+         </ns:request>
+   </ns:HotelRatePlanNotif>
+ </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+``` 
+:::caution
+
+During the onboarding process, your username and password will be provided. After each connection is established, you'll receive an email with  RequestorID (Seller Code) and CompanyName (Buyer Code) values.
+
+:::
+
+#### Supported Operations
+
+In the context of the Hotel Push Sellers API, you can both push and retrieve information about **Availability**, **Rates**, and **Inventory** (ARI).
+
+* When you **push data**, you'll need to submit a request to Travelgate's system with all the necessary information about inventory, availability or rate. If everything goes smoothly, you'll receive a successful response and the data will be stored in a Travelgate database; otherwise, you'll receive an error message.
+
+* On the other hand, when you **retrieve data**, you'll need to send a request to Travelgate's system to get the information you're looking for. If everything goes well, we'll send you the data that was previously stored in our system as a response; otherwise, we'll notify you of an error.
+
+But now, this quickstart guide will focus on the basics of using the Hotel Push Sellers API to push the ARI (Availability, Rates, and Inventory) to Travelgate's system and begin making the first sales, so let's dive in and get started!
+
+### 1. Retrieve the setup of the product (Hotel, Rate Plan, Room).
+
+The `HotelRatePlanInventory` message is where the adventure starts! The aim of this step is to setup (hotel, rate plans, and rooms) your inventory. This step is typically performed by the Buyer; who usually accesses our [Inventory Extranet](https://inventory.xmltravelgate.com/Account/Login?ReturnUrl=%2f) to complete the setup there. Consequently, the Seller only needs to retrieve the data to map it into their system and subsequently push the availability and rates. 
+
+:::info
+
+If the Seller prefers to take charge of the inventory setup, it is also possible through [inventory push](availability-rates-and-inventory/inventory/inventory-push) method.
+
+:::
+
+```html
+<Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/soap/envelope/">
+   <Header>
+      <o:Security xmlns:o="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+         <o:UsernameToken Id="xnExysS120i8nwXu90DOToFTjoyuWpFe">
+            <o:Username>username</o:Username>
+            <o:Password>password</o:Password>
+         </o:UsernameToken>
+      </o:Security>
+   </Header>
+   <Body>
+      <HotelRatePlanInventoryRetrieve xmlns="http://schemas.xmltravelgate.com/hubpush/provider/2012/10">
+         <request Version="0">
+            <POS xmlns="http://www.opentravel.org/OTA/2003/05">
+               <Source>
+                  <RequestorID ID="Seller Code"/>
+                  <BookingChannel>
+                     <CompanyName Code="Buyer Code"/>
+                  </BookingChannel>
+               </Source>
+            </POS>
+            <RatePlans xmlns="http://www.opentravel.org/OTA/2003/05">
+               <RatePlan>
+                  <HotelRef HotelCode="2"/>
+               </RatePlan>
+            </RatePlans>
+         </request>
+      </HotelRatePlanInventoryRetrieve>
+   </Body>
+</Envelope>
+```
+
+### 2. Push the availability
+
+After a careful review of all the inventory setup retrieved in the previous step, it's time to proceed and push availability to the product.
+
+```html
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="http://www.opentravel.org/OTA/2003/05" xmlns:ns2="http://schemas.xmltravelgate.com/hubpush/provider/2012/10" xmlns:ns3="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+   <SOAP-ENV:Header>
+      <ns3:Security SOAP-ENV:mustUnderstand="1">
+         <ns3:UsernameToken>
+            <ns3:Username>username</ns3:Username>
+            <ns3:Password>password</ns3:Password>
+         </ns3:UsernameToken>
+      </ns3:Security>
+   </SOAP-ENV:Header>
+   <SOAP-ENV:Body>
+      <ns2:HotelAvailNotif>
+         <ns2:request>
+            <ns1:POS>
+               <ns1:Source>
+                  <ns1:RequestorID ID="Seller Code"/>
+                  <ns1:BookingChannel>
+                     <ns1:CompanyName Code="Buyer Code"/>
+                  </ns1:BookingChannel>
+               </ns1:Source>
+            </ns1:POS>
+            <ns1:AvailStatusMessages HotelCode="2">
+               <ns1:AvailStatusMessage BookingLimit="13">
+                  <ns1:StatusApplicationControl Start="2023-12-20" End="2023-12-22" PromotionCode = "25" RatePlanCode="BAR" Mon="true" Tue="true" Weds="true" Thur="true" Fri="true" Sat="true" Sun="true"/>
+               </ns1:AvailStatusMessage>
+               <ns1:AvailStatusMessage>
+                  <ns1:StatusApplicationControl Start="2023-12-20" End="2023-12-22" RatePlanCode="BAR" InvCode="STD3" Mon="true" Tue="true" Weds="true" Thur="true" Fri="true" Sat="true" Sun="true"/>
+                  <ns1:LengthsOfStay>
+                     <ns1:LengthOfStay Time="1" TimeUnit="Day" MinMaxMessageType="MinLOS"/>
+                     <ns1:LengthOfStay Time="28" TimeUnit="Day" MinMaxMessageType="MaxLOS"/>
+                  </ns1:LengthsOfStay>
+                  <ns1:RestrictionStatus Restriction="Master" Status="Open"/>
+               </ns1:AvailStatusMessage>
+               <ns1:AvailStatusMessage>
+                  <ns1:StatusApplicationControl Start="2023-12-20" End="2023-12-22" RatePlanCode="BAR" InvCode="STD3" Mon="true" Tue="true" Weds="true" Thur="true" Fri="true" Sat="true" Sun="true"/>
+                  <ns1:RestrictionStatus Restriction="Arrival" Status="Open"/>
+               </ns1:AvailStatusMessage>
+            </ns1:AvailStatusMessages>
+         </ns2:request>
+      </ns2:HotelAvailNotif>
+   </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+```
+
+### 3. Push the rates
+
+You're almost there! After pushing the availability, it's time to finish the process by pushing the rates. Once this is done, all the information will be in our database, and Buyers will be able to start making their first reservations.
+
+```html
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://schemas.xmltravelgate.com/hubpush/provider/2012/10" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:ns1="http://www.opentravel.org/OTA/2003/05">
+   <s:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>username</wsse:Username>
+            <wsse:Password>password</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </s:Header>
+   <s:Body>
+      <ns:HotelRatePlanNotif>
+         <ns:request>
+            <ns1:POS>
+               <ns1:Source>
+                  <ns1:RequestorID ID="Seller Code"/>
+                  <ns1:BookingChannel>
+                     <ns1:CompanyName Code="Buyer Code"/>
+                  </ns1:BookingChannel>
+               </ns1:Source>
+            </ns1:POS>
+            <ns1:RatePlans HotelCode="2">
+                <RatePlan CurrencyCode="EUR" RatePlanCode="BAR" RateReturn="false" FreeChild="false" FreeBaby="false" RatePlanStatusType="Active">
+                    <Rates>
+                        <Rate Start="2024-01-01" End="2024-01-01">
+                            <BaseByGuestAmts>
+                                <BaseByGuestAmt AmountAfterTax="100" Type="25" />
+                            </BaseByGuestAmts>
+                        </Rate>
+                    </Rates>
+                    <SellableProducts>
+                        <SellableProduct InvCode="SNG" InvType="ROOM" />
+                    </SellableProducts>
+                </RatePlan>
+                <RatePlan CurrencyCode="EUR" RatePlanCode="BAR" RateReturn="false" FreeChild="false" FreeBaby="false" RatePlanStatusType="Active">
+                    <Rates>
+                        <Rate Start="2024-01-02" End="2024-01-02">
+                            <BaseByGuestAmts>
+                                <BaseByGuestAmt AmountAfterTax="100" Type="25" />
+                            </BaseByGuestAmts>
+                        </Rate>
+                    </Rates>
+                    <Supplements>
+                        <Supplement AgeQualifyingCode="10" Amount="10" Start="2024-01-02" End="2024-01-02" SupplementType="Board" InvCode="19" />
+                        <Supplement AgeQualifyingCode="8" Amount="5" Start="2024-01-02" End="2024-01-02" SupplementType="Board" InvCode="19" />
+                        <Supplement AgeQualifyingCode="7" Amount="0" Start="2024-01-02" End="2024-01-02" SupplementType="Board" InvCode="19" />
+                    </Supplements>
+                    <SellableProducts>
+                        <SellableProduct InvCode="SNG" InvType="ROOM" />
+                    </SellableProducts>
+                </RatePlan>
+            </RatePlans>
+         </request>
+      </HotelRatePlanNotif>
+  </s:Body>
+</s:Envelope>
+```
+
+## Next steps
+
+Congratulations on completing this quickstart tutorial! 🎉 You've successfully learned the basics of making your first sale. But there's a world of knowledge waiting for you:
+
+- Explore the [Making Requests](./making-requests/endpoint) section to dive deep into how a XML API works and maximize its performance.
+- Discover various methods/messages grouped by the following actions:
+    - [Inventory](./availability-rates-and-inventory/inventory/inventory-push): Push the inventory setup (hotel, rate, room).
+    - [Availability](./availability-rates-and-inventory/availability/availability-push) and [Rate](./availability-rates-and-inventory/rates/rates-push): Push rate availability, allotment conditions and rate prices and supplements.
+    - [Manage reservations](./booking-management/overview): Get the hang of reservation management.
+
+Our documentation is a treasure trove of additional features and functionalities to enhance your business. To uncover these valuable resources, explore our documentation further and make the most of these methods. Enjoy your journey!

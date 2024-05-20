@@ -4,6 +4,8 @@ sidebar_position: 11
 
 # Virtual Credit Card
 
+The Virtual Credit Card plugin allows you to connect with a VCC supplier who can create virtual credit cards for you at the time of reservation. For each hotel booking where you indicate the plugin, our system will connect with your VCC supplier to obtain the virtual credit card and use this information to complete the reservation with the hotel supplier.
+
 Virtual Credit Card plugin adds the possibility to:
 
 * **Create a virtual credit card (VCCGen):** The VCC generator plugin empowers Buyers to generate virtual credit cards featuring activation and expiration dates of their choosing. You can apply rules using the `genvcc.csv` rules file to determine whether or not to utilize a specific VCC. This decision is based on the rules defined within the file and the parameters specified in the request.
@@ -11,10 +13,8 @@ Virtual Credit Card plugin adds the possibility to:
 * **Cancel a virtual credit card (VCCCan):** The VCC cancel plugin is responsible for cancelling a virtual credit card identified by the id returned in the book response. The service will return the status of the payment card inside status field. This plugin should be utilized exclusively within the [Cancel](../booking-management/cancel) operation, contingent on the successful completion of the booking cancellation. To specify the virtual credit card to be used for cancellation, a rule that returns an access key will be employed, utilizing the same rule file as the VCC generator. You can establish rules within the `genvcc.csv` rule file to determine the utilization of a particular VCC based on rules within the file and request parameters.
 
 
-:::note
-
-In order to activate this payment type for your connection or connections, open a [ticket](https://app.travelgatex.com/tickets) to our dedicated Customer Care team.
-
+:::warning Bear in mind
+You need to have an agreement with a VCC supplier integrated with TravelgateX to start using this plugin. Please check our [VCC Payments article](/kb/our-products/are-you-a-buyer/getting-started-as-a-new-buyer/how-to-activate-vcc-payments) to learn all the steps before configuring the plugin in your book mutations.
 :::
 
 
@@ -278,3 +278,6 @@ In the case of canvcc, since it is a cancellation, there is no need to upload an
     ]
 }
 ```
+
+
+

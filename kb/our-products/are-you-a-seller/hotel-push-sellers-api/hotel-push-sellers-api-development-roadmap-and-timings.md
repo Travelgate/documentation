@@ -40,23 +40,23 @@ We've also added a hotel, so you can test the implemented methods with it:
 
 	This is the phase where the Sellers needs to implement HotelRatePlanInventoryRetrieve messages to retrieve the hotelier inventory and map it into their system. Optionally, Sellers can set up the product using HotelRatePlanInventoryNotif messages.
 	:::info
-	Further information on our Hotel Push Sellers [API Documentation](/docs/apis/for-sellers/hotel-push-sellers/ota-hotel-push-sellers-api/availability-rates-and-inventory/inventory/inventory-push).
+	Further information on our Hotel Push Sellers [API Documentation](/docs/apis/for-sellers/hotel-push-sellers-api/availability-rates-and-inventory/inventory/inventory-push).
 	:::
 
 2. **The Product Upload Phase**  
 	Here, providers need to implement HotelRatePlanNotif and HotelAvailNotif messages in order to synchronize hotelier rates and availability. Optionally, Sellers can read all the properties of their product loaded on our system using HotelAvailRetrieve and HotelRatePlanRetrieve messages.
 
 	:::info
-	Further information on our Hotel Push Sellers [API Documentation](/docs/apis/for-sellers/hotel-push-sellers/ota-hotel-push-sellers-api/availability-rates-and-inventory/rates/rates-push).
+	Further information on our Hotel Push Sellers [API Documentation](/docs/apis/for-sellers/hotel-push-sellers-api/availability-rates-and-inventory/rates/rates-push).
 	:::
 
 	The product upload phase takes, on average, **14 days** tour our Sellers.
 
 3. **The Booking Management Phase**  
-	In this final phase providers can receive an instant API notification from TGX through HotelResNotif message (for bookings) and CancelNotif message (for cancellations). If the Seller doesn�t allow Push notifications to their system, it is possible to implement HotelResRetrieve messages in order to obtain a list of bookings from the Hotel Push Sellers API system.
+	In this final phase providers can receive an instant API notification from TGX through HotelResNotif message (for bookings) and CancelNotif message (for cancellations). If the Seller doesn'st allow Push notifications to their system, it is possible to implement HotelResRetrieve messages in order to obtain a list of bookings from the Hotel Push Sellers API system.
 
 	:::info
-	Further information on our Hotel Push Sellers [API Documentation](/docs/apis/for-sellers/hotel-push-sellers/ota-hotel-push-sellers-api/availability-rates-and-inventory/overview). 
+	Further information on our Hotel Push Sellers [API Documentation](/docs/apis/for-sellers/hotel-push-sellers-api/booking-management/overview). 
 	:::
 
 Our booking management methods takes, on average, **7 days** to our Sellers.

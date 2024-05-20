@@ -12,7 +12,7 @@ Whether you have technical questions or need some guidance, we've got you covere
 
 :::info Resources.
 - [Hotel Pull Sellers API Documentation](/docs/apis/for-sellers/hotel-pull-sellers-api/overview).
-- [Hotel Push Sellers API Documentation](/docs/apis/for-sellers/hotel-push-sellers/ota-hotel-push-sellers-api/quickstart).
+- [Hotel Push Sellers API Documentation](/docs/apis/for-sellers/hotel-push-sellers-api/quickstart).
 :::
 
 ### What do I need to have in place before joining TravelgateX?💡

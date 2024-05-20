@@ -19,9 +19,6 @@ If the Seller does not provide an error description, it will be typified as a 10
 
 ```
 
-### Example of a 102 error description: "The start date must be a future date"🔎
-"The start date must be a future date" means that the Buyer is searching for a date in the past and the Seller cannot respond with any availability for past dates. The solution here is to adjust the search to reflect dates in the future.
-
 ### What can I do if I receive a 102 error in my response?✔️
 We strongly recommend you **contact your Seller** directly if the 102 error description is not clear for you and for further information regarding the cause of the error.
 

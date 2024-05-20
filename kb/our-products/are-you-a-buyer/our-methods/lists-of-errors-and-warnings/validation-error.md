@@ -15,7 +15,7 @@ Since this error serves as an indication that there is a discrepancy or issue wi
     - If your access is not active: Please make sure you activate it in order to run requests via our Platform.
 - Access type **Test/Live**: Verify that the "testMode" tag in your request matches the Test/Live settings for that specific access.
 - **Verify Client**: the Client set in your request should be one of those configured for your account. More information on Hotel-X Clients can be found [here](https://knowledge.travelgatex.com/api-settings).
-- **Verify Apikey**: the Apikey set in your request should be the one configured for your account as Buyer. You will find more information on your account settings [here](/kb/connections/api-settings/connections-settings).
+- **Verify Apikey**: the Apikey set in your request should be the one configured for your account. You will find more information on your API Settings [here](/kb/connections/connections-settings).
 - **Verify Context**: the Context code set in your request should match the mapping expected in your request:
     - [Single Mode request](/kb/our-products/are-you-a-buyer/our-methods/booking-flow/search/hotel-x-single-mode-and-multimode-search): you may either request with the Supplier context (you can check this information in [My Connections](/kb/connections/my-connections/), at an access level) or with your own Client context (Mapping uploaded to the FTP).
     - [Multi-mode request](/kb/our-products/are-you-a-buyer/our-methods/booking-flow/search/hotel-x-single-mode-and-multimode-search): you should use your own Client context.

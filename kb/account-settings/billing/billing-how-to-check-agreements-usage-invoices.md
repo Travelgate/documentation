@@ -57,7 +57,7 @@ Additionally, you will have access to the **historical record** of changes made 
 :::info
 - Keep in mind that your Partner needs to log in through their Profile to **accept the payment change request**. They will receive a notification in the bell-shaped icon located on the right side of the settings menu.
 - Any changes made to the payment type will apply to all reservations with an entry date starting from the first day of the following calendar month after the notification.
-- Remember, if you have an agreement 2023, you will have the option to **choose the Payment Type** during the [auto-activation process](/kb/connections/my-connections/auto-activations-process). If you are not familiar with this process, we also recommend taking a look at the following article [Important points when requesting a new connection](/kb/connections/my-connections/important-points-when-requesting-a-new-connection).
+- Remember, if you have an agreement 2023, you will have the option to **choose the Payment Type** during the [auto-activation process](/kb/connections/my-connections/guick-guide-to-auto-activations).
 - A payment change **can only be requested if you're adhering to the Commercial Agreement 2023**.
 :::
 

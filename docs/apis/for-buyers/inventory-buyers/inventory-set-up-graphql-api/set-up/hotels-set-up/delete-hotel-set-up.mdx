@@ -1,0 +1,35 @@
+---
+sidebar_position: 4
+---
+
+import {deleteHotelSetUpMutation, deleteHotelSetUpVariables} from "/src/graphql/inventory/set-up/hotels-set-up.mutation";
+
+
+# Delete Hotel
+
+The `deleteHotelSetUp` is designed to remove a specific hotel from a client - seller relation in Inventory. The returned fields include:
+
+* `success`
+* `adviseMessages`
+
+## Mutation Inputs
+
+When creating your `deleteHotelSetUp` mutation, you have 1 input to fill based on your specific needs:
+
+1. Input
+
+### 1. Input   
+
+**Mandatory input**
+* `clientCode`
+* `supplierCode`
+* `hotelCode`
+
+**Optional input**
+* `contextCode`
+
+### Requests Examples
+
+#### Delete a Hotel
+
+<GraphqlSample query={deleteHotelSetUpMutation} variables={deleteHotelSetUpVariables} />

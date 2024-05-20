@@ -1,0 +1,118 @@
+﻿---
+sidebar_position: 2
+---
+
+# Hotels
+
+This document outlines the structure and required fields for two types of master hotel records represented in CSV files: (1) new hotels native to the Channel Manager and (2) new hotels with a TravelgateX inventory code.
+
+### Retrieving Existing Master Data
+
+:::note
+**Attention Hotel Managers:**  
+Before creating new hotel masters, it is crucial to verify whether the hotel already exists in the inventory system. Remember that hotels are shared assets across all users of the platform. Always check the existing inventory to avoid duplication before adding a new hotel.
+:::
+
+To view existing master hotels data, clients can retrieve current details using the following queries: [Hotels Master](/docs/apis/for-buyers/inventory-buyers/inventory-set-up-graphql-api/masters/hotels-master/), [Search Hotels Master](/docs/apis/for-buyers/inventory-buyers/inventory-set-up-graphql-api/masters/hotels-master/search-hotels-master)
+
+
+### Filename Format
+
+The file naming format for the Hotels Master is as follows: **clientCode-providerCode-hotelsMaster.csv**. 
+
+If you have any questions about how to add the requested information to create the file name, you can check the following link:  
+[File Naming Importance for TravelgateX FTP Uploads](../quickstart#3-file-naming-importance-for-travelgatex-ftp-uploads)
+
+### 1. Hotel Master with native Channel Manager hotel codes 
+
+| Element     | Mandatory | Description                                                                                       |
+|-------------|-----|---------------------------------------------------------------------------------------------------|
+| Code        |	  1   | Alphanumeric code from the Provider that uniquely identifies the hotel within a specific context. |
+| Context     |	  1   | Specifies the framework, relation, or connection of the HotelCode.                                |
+| Name        |   1   | Official name of the hotel.                                                                       |
+| HotelEmail  |   1   | Contact email address for the hotel.                                                              |
+| Locality    |   1   | Locality or city where the hotel is located.                                                      |
+| Country     |   1   | Country where the hotel is located, in ISO 3166-1 alpha-2 format.                                 |
+| Phones      |   1   | Contact phone number(s) for the hotel.                                                            |
+| Address     |   1   | Street address of the hotel.                                                                      |
+| PostalCode  |   1   | Postal code for the hotel's location.                                                             |
+| Latitude    |   1   | Latitude of the hotel's geographical position in WGS84 standard format.                           |
+| Longitude   |   1   | Longitude of the hotel's geographical position in WGS84 standard format.                          |
+| Category    |   1   | Classification or category of the hotel. [Check the list of hotel categories](#list-of-hotel-categories) |
+
+#### Sheet Format Example
+
+
+![inventory_csv_hotel-master-context](https://storage.travelgate.com/docs/inventory_csv_hotel-master_context.png)
+
+#### CSV Format Example for Channel Managers with context
+
+```
+Code;Context;Name;HotelEmail;Locality;Country;Phones;Address;PostalCode;Latitude;Longitude;Category
+1234Phobs;Phobs;hotel test travelgate;abcd@travelgate.com;Palma de Mallorca;ES;971858585;"Parc Bit, Edificio Europa, Local 1, bajos, Nord";07121;39.6476488;2.6032357;Villa 
+```
+
+### 2. Hotel Master with inventory hotel codes
+
+
+| Element     | Mandatory | Description                                                                                       |
+|-------------|-----|---------------------------------------------------------------------------------------------------|
+| Code        |	  0   | Alphanumeric code from the Provider that uniquely identifies the hotel within a specific context. |
+| Context     |	  0   | Specifies the framework, relation, or connection of the HotelCode.                                |
+| Name        |   1   | Official name of the hotel.                                                                       |
+| HotelEmail  |   1   | Contact email address for the hotel.                                                              |
+| Locality    |   1   | Locality or city where the hotel is located.                                                      |
+| Country     |   1   | Country where the hotel is located, in ISO 3166-1 alpha-2 format.                                 |
+| Phones      |   1   | Contact phone number(s) for the hotel.                                                            |
+| Address     |   1   | Street address of the hotel.                                                                      |
+| PostalCode  |   1   | Postal code for the hotel's location.                                                             |
+| Latitude    |   1   | Latitude of the hotel's geographical position in WGS84 standard format.                           |
+| Longitude   |   1   | Longitude of the hotel's geographical position in WGS84 standard format.                          |
+| Category    |   1   | Classification or category of the hotel. [Check the list of hotel categories](#list-of-hotel-categories). |
+
+#### Sheet Format Example
+
+![inventory_csv_hotel-master](https://storage.travelgate.com/docs/inventory_csv_hotel-master.png)
+
+#### CSV Format Example for Channel Managers with context
+
+```
+Code;Context;Name;HotelEmail;Locality;Country;Phones;Address;PostalCode;Latitude;Longitude;Category
+;;hotel test travelgate;abcd@travelgate.com;Palma de Mallorca;ES;971858585;"Parc Bit, Edificio Europa, Local 1, bajos, Nord";07121;39.6476488;2.6032357;Villa 
+```
+
+#### Data Uniqueness
+Master hotels Codes: Each Code must be unique; duplication of master hotels codes within the same file or across multiple files for the same client is not permitted. Ensuring uniqueness is crucial for maintaining data integrity and avoiding conflicts in hotels identification within the platform. 
+
+### Additional information
+
+#### List of hotel categories
+
+The table below displays the list of available hotel categories. In addition, you have at your disposal the `hotelCategories` query to retrieve these categories. We recommend using this query to fetch the categories in real-time.
+
+| Category         
+|------------------------------------
+| 1 Espigas        
+| 1 Llaves         
+| 1*               
+| 2 Espigas        
+| 2 Llaves         
+| 2*               
+| 2*Sup            
+| 3 Espigas        
+| 3 Llaves         
+| 3*               
+| 3*Sup            
+|4 Espigas
+|4 Llaves
+|4*
+|4*Sup
+|5 Espigas
+|5 Llaves
+|5*
+|5*Sup
+|Apartment
+|Luxury Apartments
+|Villa
+
+To retrieve these categories in real-time, you can use the `hotelCategories` query. For more information on how to use this query, refer to the [Hotel Categories](/docs/apis/for-buyers/inventory-buyers/inventory-set-up-graphql-api/static-data/hotel-categories) documentation.

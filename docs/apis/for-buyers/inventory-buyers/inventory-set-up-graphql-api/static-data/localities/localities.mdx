@@ -1,0 +1,43 @@
+---
+sidebar_position: 1
+---
+
+import {localitiesQuery, localitiesVariables, localitiesByCountryCodesVariables} from "/src/graphql/inventory/static-data/localities.query";
+
+
+# Localities
+
+The `localities` query returns a list of all the possible localities that a hotel can have assigned in Inventory. The returned fields include:
+
+* `id`
+* `name`
+* `countryCode`
+* `unLocode`
+
+
+## Query Inputs
+
+When creating your query, you have 1 input to fill based on your specific needs:
+
+1. Criteria
+
+
+### 1. Criteria   
+
+This query offers versatility, with an optional field `countryCodes` that can be filled with the ISO 2-character country code associated with the localities to retrieve. This flexibility empowers you to create a personalized localities query, tailoring the requested fields to your specific needs. Consequently, the response will only include information that is highly relevant to you, streamlining the retrieval process and ensuring the data you receive meets your exact requirements.
+
+**Optional input**
+* `countryCodes`
+
+### Requests Examples
+
+#### Retrieve the full list of localities available
+
+<GraphqlSample query={localitiesQuery} variables={localitiesVariables} />
+
+
+#### Retrieve localities from specific countries
+
+When utilizing the localities Query, for more personalized results, filter specific localities based on your interests. For example, to focus solely on Spanish localities, add the `countryCodes` field with "ES" in your input:
+
+<GraphqlSample query={localitiesQuery} variables={localitiesByCountryCodesVariables} />

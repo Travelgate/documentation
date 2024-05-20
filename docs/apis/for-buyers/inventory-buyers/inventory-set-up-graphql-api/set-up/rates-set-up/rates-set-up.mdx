@@ -1,0 +1,101 @@
+---
+sidebar_position: 1
+---
+
+import {ratesSetUpQuery, ratesSetUpVariables, ratesSetUpByCodesVariables} from "/src/graphql/inventory/set-up/rates-set-up.query";
+
+
+# Rates
+
+The `ratesSetUp` query returns the rates added to a hotel of a specific client - seller relation in Inventory. The returned fields include:
+
+* `code`
+* `name`
+* `hotelCode`
+* `active`
+* `mealPlanIncluded`
+* `agePolicies`
+	* `maxAgeChildren`
+	* `maxAgeInfants`
+	* `freeInfants`
+	* `freeChildren`
+* `paymentPolicies`
+	* `currency`
+	* `commission`
+	* `priceIsBinding`
+	* `acceptedPayments`
+		* `type`
+		* `cardTypes`
+* `bookingRules`
+	* `bookingWindow`
+		* `start`
+		* `end`
+	* `markets`
+		* `included`
+		* `excluded`
+	* `rateRule`
+	* `seniorRule`
+* `cancelPolicies`
+	* `baseCancelPolicy`
+		* `refundable`
+		* `cancelPenalties`
+			* `daysBeforeArrival`
+			* `penaltyType`
+			* `value`
+	* `cancelPoliciesByDate`
+		* `start`
+		* `end`
+		* `cancelPolicy`
+			* `refundable`
+			* `cancelPenalties`
+				* `daysBeforeArrival`
+				* `penaltyType`
+				* `value`
+* `surcharges`
+	* `chargeType`
+	* `taxType`
+	* `value`
+	* `applyType`
+	* `perNight`
+	* `perPax`
+* `rooms`
+	* `code`
+	* `master`
+		* `id`
+		* `code`
+		* `name`
+	* `active`
+	* `externalCode`
+	* `standard`
+	* `uses`
+		* `numberOfGuests`
+		* `minAge`
+		* `maxAge`
+		* `paxType`
+
+## Query Inputs
+
+When creating your `ratesSetUp` query, you have 1 input to fill based on your specific needs:
+
+1. Criteria
+
+### 1. Criteria   
+
+**Mandatory input**
+* `clientCode`
+* `supplierCode`
+* `hotelCode`
+
+**Optional input**
+* `contextCode`
+* `rateCodes`
+
+### Requests Examples
+
+#### Retrieve all rates from a hotel
+
+<GraphqlSample query={ratesSetUpQuery} variables={ratesSetUpVariables} />
+
+#### Retrieve specific rates from a hotel
+
+<GraphqlSample query={ratesSetUpQuery} variables={ratesSetUpByCodesVariables} />

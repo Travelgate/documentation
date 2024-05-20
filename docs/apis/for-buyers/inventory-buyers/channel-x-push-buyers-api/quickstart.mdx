@@ -6,9 +6,11 @@ sidebar_position: 1
 
 ## Introduction
 
-Channel-X extracts the product loaded between the Buyer and the Channel Managers into our [Inventory Tool](../../../apps/inventory/extranet/overview) and sends it to the Buyer's system. To get all the product details into their system, Buyers just need to go to the **Full Copy** tab in the Inventory's extranet. Once that's done, when the Channel Manager makes changes, Channel-X sends a smaller request **(Delta)** to let Buyers know about the updates.
+Channel-X extracts the product loaded between the Buyer and the Channel Managers into our [Inventory Tool](/docs/apps/inventory/extranet/overview) and sends it to the Buyer's system. To get all the product details into their system, Buyers just need to go to the **Full Copy** tab in the Inventory's extranet. Once that's done, when the Channel Manager makes changes, Channel-X sends a smaller request **(Delta)** to let Buyers know about the updates.
 
-Please, note that connecting with Channel Managers through Travelgate requires a previous step in which the Buyer configures the setup of the hotels, rate plans, and rooms contracted with the hoteliers in the [Inventory extranet](https://inventory.xmltravelgate.com/Account/Login?ReturnUrl=%2f). This configuration allows the Channel Manager to map all this information and push availability and prices for the Buyer.
+Please, note that connecting with Channel Managers through Travelgate requires a previous step in which the Buyer configures the setup of the hotels, rate plans, and rooms contracted with the hoteliers in the [Inventory extranet](https://inventory.xmltravelgate.com/Account/Login?ReturnUrl=%2f). 
+This can be done manually in the Extranet or with one of our two newly [Inventory Set Up GraphQL API](/docs/apis/for-buyers/inventory-buyers/inventory-set-up-graphql-api/quickstart.mdx) and [Inventory Set Up CSV API](/docs/apis/for-buyers/inventory-buyers/inventory-set-up-csv-api/quickstart.mdx).  
+This configuration allows the Channel Manager to map all this information and push availability and prices for the Buyer.
 
 &nbsp;
 ![Channel-X Overview](https://storage.travelgate.com/docs/channel-X.svg)
@@ -16,9 +18,9 @@ Please, note that connecting with Channel Managers through Travelgate requires a
 
 :::caution
 
-Channel-X Push Buyers API is a non-standalone API that exclusively retrieves to the Buyer's system product that have been previously pushed to the [Inventory Tool](https://inventory.xmltravelgate.com/Account/Login?ReturnUrl=%2f). To enable bookings, it is essential to also develop [Hotel-X Pull Buyers API](../hotel-x-pull-buyers-api/quickstart) 
-Explore the special methods we've designed to simplify the process of directly booking an option you already have in your system in the [One-Shot requests](../hotel-x-pull-buyers-api/one-shot-booking-flow/overview) section.
-If you already have the [Legacy Pull Buyers API](../legacy-pull-buyers-api/overview) developed, it is also possible to work with it.
+Channel-X Push Buyers API is a non-standalone API that exclusively retrieves to the Buyer's system product that have been previously pushed to the [Inventory Tool](https://inventory.xmltravelgate.com/Account/Login?ReturnUrl=%2f). To enable bookings, it is essential to also develop [Hotel-X Pull Buyers API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart) 
+Explore the special methods we've designed to simplify the process of directly booking an option you already have in your system in the [One-Shot requests](/docs/apis/for-buyers/hotel-x-pull-buyers-api/one-shot-booking-flow/overview) section.
+If you already have the [Legacy Pull Buyers API](/docs/apis/for-buyers/legacy-pull-buyers-api/overview) developed, it is also possible to work with it.
 
 :::
 
@@ -318,13 +320,13 @@ After each request, a response should be provided from your side. For instance, 
 
 ### 2. Inventory tool SetUp
 
-Since Channel-X solution is integrated with the [Inventory Tool](../../../apps/inventory/extranet/overview), you must use our [Inventory extranet](https://inventory.xmltravelgate.com/Account/Login?ReturnUrl=%2f) in order to configure the setup for the hotels, rate plans and rooms contracted with the hoteliers, so that the Channel Managers can map them as well. Once mapped, the Channel Manager will load and update availability and prices for that inventory setup configured beforehand.
+Since Channel-X solution is integrated with the [Inventory Tool](/docs/apps/inventory/extranet/overview), you must use our [Inventory extranet](https://inventory.xmltravelgate.com/Account/Login?ReturnUrl=%2f) in order to configure the setup for the hotels, rate plans and rooms contracted with the hoteliers, so that the Channel Managers can map them as well. Once mapped, the Channel Manager will load and update availability and prices for that inventory setup configured beforehand.
 
-![SetUp Inventory](../../../../static/img/docs/channel-x/setup-inventory.png)
+![SetUp Inventory](../../../../../static/img/docs/channel-x/setup-inventory.png)
 
 :::tip
 
-To learn how to setup hotels, rate plans, and rooms in the Inventory Tool, please refer to the [Inventory SetUp section](../../../apps/inventory/extranet/set-up/overview).
+To learn how to setup hotels, rate plans, and rooms in the Inventory Tool, please refer to the [Inventory SetUp section](/docs/apps/inventory/extranet/set-up/overview).
 
 :::
 
@@ -332,7 +334,7 @@ To learn how to setup hotels, rate plans, and rooms in the Inventory Tool, pleas
 
 You will have two options for loading products into your system: you can either select the **Full Copy** tab in the Inventory's extranet to load all the products, or you can choose specific hotels to copy. The purpose of this is to initially receive the products into your system, and subsequently, to obtain a complete refresh of the product.
 
-![FullCopy Inventory](../../../../static/img/docs/channel-x/fullcopy-inventory.png)
+![FullCopy Inventory](../../../../../static/img/docs/channel-x/fullcopy-inventory.png)
 
 Afterward, each update received from the Channel Manager will be pushed into your system. These smaller product requests, aimed at notifying Buyers of changes (such as price, availability, or inventory level), are referred to as **Delta**. Their purpose is to receive real-time changes to ensure that the product information is kept up to date.
 
@@ -349,7 +351,7 @@ Congratulations on completing this quickstart tutorial! 🎉 You've successfully
 
 :::caution
 
-To enable bookings, it is essential to develop [Hotel-X Pull Buyers API](../hotel-x-pull-buyers-api/quickstart.mdx) (if you already have the [Legacy Pull Buyers API](../legacy-pull-buyers-api/overview) developed, it is also possible to work with it).
+To enable bookings, it is essential to develop [Hotel-X Pull Buyers API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart.mdx) (if you already have the [Legacy Pull Buyers API](/docs/apis/for-buyers/legacy-pull-buyers-api/overview) developed, it is also possible to work with it).
 
 :::
 

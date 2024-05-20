@@ -1,0 +1,40 @@
+---
+sidebar_position: 2
+---
+
+import {hotelCategoriesQuery, hotelCategoriesVariables, hotelCategoriesByCategoryIdsVariables} from "/src/graphql/inventory/static-data/hotel-categories.query";
+
+
+# Hotel Categories
+
+The `hotelCategories` query returns a list of the categories that a hotel can have assigned in Inventory. The returned fields include:
+
+* `id`
+* `name`
+
+
+## Query Inputs
+
+When creating your `hotelCategories` query, you have 1 input to fill based on your specific needs:
+
+1. Criteria
+
+### 1. Criteria   
+
+This query offers versatility, with an optional field `categoryIds` that can be filled with the categories to retrieve.
+
+**Optional input**
+* `categoryIds`
+
+### Requests Examples
+
+#### Retrieve full list of Hotel Categories
+
+<GraphqlSample query={hotelCategoriesQuery} variables={hotelCategoriesVariables} />
+
+
+#### Retrieve a specific list of Hotel Categories
+
+When utilizing the `hotelCategories` query, for more personalized results, filter specific categories based on your interests. For example, to retrieve only the Hotel Categories stars-related, add the `categoryIds` field with the following codes in your input:
+
+<GraphqlSample query={hotelCategoriesQuery} variables={hotelCategoriesByCategoryIdsVariables} />

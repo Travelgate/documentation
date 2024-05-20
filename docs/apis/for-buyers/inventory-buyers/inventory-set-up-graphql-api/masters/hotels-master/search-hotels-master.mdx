@@ -1,0 +1,65 @@
+---
+sidebar_position: 2
+---
+
+import {hotelsMasterSearchQuery, hotelsMasterSearchVariables, hotelsMasterSearchHotelNameVariables} from "/src/graphql/inventory/masters/hotels-master.query";
+
+
+# Search Hotels Master
+
+The `searchHotelsMaster` query allows you to search for hotels created in Inventory based on their geocoordinates. The returned fields include:
+
+* `id`
+* `name`
+* `email`
+* `phones`
+* `fax`
+* `address`
+* `postalCode`
+* `latitude`
+* `longitude`
+* `externalCode`
+* `category`
+    * `id`
+	* `name`
+* `locality`
+    * `id`
+    * `name`
+    * `countryCode`
+* `hotelCode`
+* `contextCode`
+
+
+## Query Inputs
+
+When building your `searchHotelsMster` query, you have 1 input to fill based on your specific needs:
+
+1. Criteria
+
+
+### 1. Criteria   
+
+This query will allow you to enter specific coordinates in the fields `latitude` and `longitude` and a distance parameter `radiusKm` to define a search area for hotels. 
+Additionally, you can filter the search results based on the hotel name or a part of the hotel name with the field `hotelName`. 
+
+**Mandatory input**
+* `latitude`
+* `longitude`
+* `radiusKm`
+
+**Optional input**
+* `hotelName`
+
+### Requests Examples
+
+#### Search for Hotel masters by their geolocation
+
+With this example, we are going to search for hotels that are located in a 10km radius from TravelgateX's office located in Palma de Mallorca. 
+
+<GraphqlSample query={hotelsMasterSearchQuery} variables={hotelsMasterSearchVariables} />
+
+#### Search for Hotel masters by their geolocation and filter by Hotel name
+
+Now, we want to filter previous results by introducing the filter `hotelName` and we are trying to search for hotels that are close to the sea, so we will asume that some hotels have "mar" in their name.
+
+<GraphqlSample query={hotelsMasterSearchQuery} variables={hotelsMasterSearchHotelNameVariables} />

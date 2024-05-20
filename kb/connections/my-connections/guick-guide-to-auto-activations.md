@@ -1,51 +1,93 @@
 ﻿---
-sidebar_position: 7
+sidebar_position: 2
 ---
 
-# Quick Guide to Auto-Activations 
+# Quick guide to auto-connections
 
-### **I want to request a new connection, what should I do?**
+In this guide, we'll walk you through the process of requesting a connection with one of our Partners via the TravelgateX Marketplace. We aim to make this journey as straightforward and seamless as possible, ensuring you can easily connect with your chosen partners and enhance your business opportunities. We had, and still have, only one objective: to make connecting a Partner easier and faster. 
+
+:::info Keep in mind
+It's worth noting that having a commercial contract with TravelgateX is a must to request a new connection. If you have any questions or need assistance, feel free to reach out to our friendly Sales Team at sales.support@travelgate.com.
+:::
+
+## **How can I request a new connection?**
+
 1. Log onto [TravelgateX](https://www.travelgatex.com/).
-1. Before starting, ensure you are logged into the correct Organization and Partner profile type. For instance, if you wish to connect as a Seller, browse as a Seller, and vice versa. You can find this information in the top right corner of your screen.
 
-    ![quickguide_to_autoactivations_1](https://storage.travelgate.com/kbase/quickguide_autoactivations_1.jpg)
+2. Head over to the "Connections" > "My connections" section. Before you begin, double-check that you're logged into the correct Organization and Partner profile type (Buyer or Seller). If you're unsure, you can find this information in the top right corner of your screen.
 
-1. Explore our [Network Directory](https://app.travelgate.com/network/partners) to discover which Partners are available.
-1. Then, click on the Company Profile of the Partner you are interested in connecting with, and then click on "Connect" when you find a Partner with whom you have an existing commercial contract. Please note that you should also have a commercial contract with TravelgateX in order to request a new connection. Feel free to contact our Sales Team (sales.support@travelgate.com) if necessary.
+    ![quickguide_to_autoconnections_step2](https://storage.travelgate.com/kbase/autoconnections_step2.png)
 
-1. You'll be redirected to section My Connections. Click on "Create a new connection" and fill in the Automated Connection Form for a seamless connection process.
+3. Click on "Create a new connection" and let's get started with the steps for a smooth connection process.
+    * **Step 1 (Partner):** Choose the Partner you want to connect with. Some Sellers may offer multiple connection types ([Pull or Push](/kb/getting-started-with-travelgate/About-our-Connectivity/what-is-the-difference-between-pull-and-push-sellers)), so pick the one that suits you best.
 
-    ![https://storage.travelgate.com/kbase/quickguide_autoactivations_2.jpg](https://stplaformwe.blob.core.windows.net/kbase/quickguide_autoactivations_2.jpg)
+    ![quickguide_to_autoconnections_step3_1](https://storage.travelgate.com/kbase/autoconnections_step3_1.png)
 
-    :::warning Important
-    Please keep in mind that when requesting the activation of a connection, you are assuming financial responsibility with TravelgateX for this connection.
-    :::
-    
-1. Click on Create a new Connection and select the Partner you want to connect to.
-![quickguide_to_autoactivations_3](https://storage.travelgate.com/kbase/quickguide_autoactivations_3.jpg)
+    * **Step 2 (Access configuration):** Let's dive into configuring your access with the Partner! Firstly, assign a distinctive name to your access, perhaps indicating whether it's intended for B2B or B2C operations. Next, specify whether it's for testing purposes or if it's ready to go live. Then, complete the form with the credentials provided by the Seller. Keep in mind that each Seller may require different information based on their system's specifications. It's important to note that activating your access with credentials that haven't been greenlit by the Seller can disrupt the workflow and cause delays. Therefore, ensure that your credentials are active and fully operational before proceeding.
 
-1.  Provide your Connection Information: access name, notification emails, and connection type:
+    ![quickguide_to_autoconnections_step3_2](https://storage.travelgate.com/kbase/autoconnections_step3_2.png)
 
-1. Then, fill in the Partner Credentials and parameters:
+    * **Step 3 (Notification setup):** Let us know where you'd like to receive notifications once the activation is created and access is granted.
 
-    ![quickguide_to_autoactivations_4](https://storage.travelgate.com/kbase/quickguide_autoactivations_4.jpg)
+    ![quickguide_to_autoconnections_step3_2](https://storage.travelgate.com/kbase/autoconnections_step3_3.png)
 
-1. Simply click on "Review and create". You'll receive a notification confirming the acceptance of your request. Once the activation is complete, we'll send you an email containing all the information you need to set the connection live. Easy, right?
+    * **Step 4 (Review and confirm):**  Double-check all the provided information and confirm to kick off the auto-activation process. Once complete, we'll send you an email containing all the necessary information to set the connection live. Additionally, you can monitor the information and activation status from the "My Connection" section for your convenience. Easy peasy!
 
-    ![quickguide_to_autoactivations_5](https://storage.travelgate.com/kbase/quickguide_autoactivations_5.jpg)
+    ![quickguide_to_autoconnections_step3_2](https://storage.travelgate.com/kbase/autoconnections_step3_4.png)
+
+
+:::warning Important
+Please bear in mind that by requesting the activation of a connection, you are assuming financial responsibility with TravelgateX for this connection.
+:::
 
 :::info
-We're continuously enhancing our Activation Process, so much of the data will be auto-completed for your convenience. However, you'll still need to configure some details for each new connection. Ensuring the *accuracy of these details* will help speed up the process. Keep those specifics precise, and you'll breeze through the setup! 🚀
+We're constantly improving our Activation Process to make it smoother for you. While much of the data is auto-completed, you'll still need to configure some details for each new connection. Ensuring the accuracy of these details will help speed up the process. Keep those specifics precise, and you'll breeze through the setup! 🚀
 :::
- 
 
-### I want to request an activation of some new credentials with a Seller, what should I do?☑️
+## Auto-connection Status
 
-Just access section [My Connections](/kb/connections/my-connections/), click on the Partner for which you want to activate additional credentials, and then click on "Add new access".
+Once you've requested a new connection with your partner, you can track its progress in the 'My Connections' section. Here's what each status means:
 
-Then, you will be redirected to our Automated Connection Form (step 5 above) and follow the steps previously explained. Easy, right?
+| Status                    | Description        |
+|---------------------------|--------------------|
+| 🟢 Working                | Your access is all set!   |
+| 🟡 Pending                | Our automatic process is still setting things up, but it'll be ready soon. Once it is, it'll switch to 'Working' automatically.   |
+| 🟡 Pending Seller         | We're waiting on final details from either the seller or buyer to keep things moving smoothly. Sometimes we need a bit more info, like search criteria, to ensure the process passes our test.   |
+| 🔴 Not Working            | Uh-oh, something didn't quite go as planned. Our team will step in to sort it out manually, and we'll reach out to you with updates soon.   |
 
- 
-:::tip
-Interested in diving deeper into TravelgateX's auto-activation process? For more in-depth information, simply access the following [link](/kb/connections/my-connections/auto-activations-process)! 📚🔗
+
+
+## Frequently Asked Questions
+
+<details>
+    <summary>My access is "Not Working" and I cannot edit it, what can I do?</summary>
+    <div>
+        <div>When an access is "Not Working," the "Edit access" feature remains blocked while our Connectivity Team checks the connection. To avoid creating duplicate tickets on our Platform, we strongly advise against requesting the connection again. It's best to wait until our Connectivity Team contacts you and asks for assistance.</div>
+    </div>
+</details>
+
+<details>
+    <summary>As a Seller, I have been contacted regarding an activation, what should I do?⚠️</summary>
+    <div>
+        <div>Sellers will receive an email requesting their collaboration to resolve any issues preventing a connection from being completed automatically. The email provides a link where they can fix the problem by modifying the access configuration provided by the Buyer.</div>
+    </div>
+</details>
+
+<details>
+    <summary>What is the activation testing phase?🚀</summary>
+    <div>
+        <div>When activating a connection, whether automatically or manually, a testing phase is necessary to ensure the new credentials function properly. This involves going through a Booking Flow (using the Search and Quote queries) and downloading Static Content information such as hotels and destinations. Once everything checks out, the connection will be set to "Working" and you'll be notified.</div>
+    </div>
+</details>
+
+<details>
+    <summary>What happens if there are any contact mismatches?🔎</summary>
+    <div>
+        <div>If there are contact mismatches between the information provided in the Connection Form and our database, we may need the Partner to share the connection details with you.</div>
+    </div>
+</details>
+
+
+:::note
+If you have any activation-related updates or details to share, please avoid creating additional tickets for our Customer Care team. Instead, kindly reply to our Connectivity Team email thread. Your cooperation in streamlining our communication process is highly appreciated!
 :::

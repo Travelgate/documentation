@@ -31,4 +31,4 @@ In order for us to certify your Booking Management implementation, we require th
 
 After completing the certification template, please submit a ticket via the Booking Management step certification in our Connectivity Set Up.
 
-![hotelx_booking_management_certification_2](https://storage.travelgate.com/kbase/hotelx_booking_management_certification_2.jpg)
+![onboarding_54](https://storage.travelgate.com/kbase/onboarding_5.jpg)

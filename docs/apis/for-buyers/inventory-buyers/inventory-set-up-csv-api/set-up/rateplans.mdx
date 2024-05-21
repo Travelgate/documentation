@@ -1,0 +1,116 @@
+---
+sidebar_position: 3
+---
+
+# Rateplans
+
+The Rateplans file is designed to facilitate the setup of rate plans within the Inventory platform. It's necessary for managing rate plan-specific data and relate to the hotels created previosly.
+
+### File Name Format
+
+The file name format for the Rate Plan Setup is as follows: **clientCode-providerCode-HotelCode#ContextCode-rateplans.csv**.
+
+If you have any questions about how to add the requested information to create the file name, you can consult the following link:  
+[Importance of the file name for TravelgateX's FTP uploads](../quickstart#3-file-naming-importance-for-travelgatex-ftp-uploads)
+
+### Rate Plan
+
+| Element     | Mandatory | Description                                                                                       |
+|-------------|-----|---------------------------------------------------------------------------------------------------|
+| Code        |	  1   | Unique identifier for the rate. |
+| Name        |   1   | Descriptive name of the rate. |
+| Rate Rule        |   0   | Code of the rate rule ([Check the Rate Rule Codes](#rate-rule-codes)). |
+| Active        |   1   | Indicate if the rate is operational or not. Example: (**0 - False** (rate not active)) or (**1 - True** (rate active)). |
+| Max Age Child        |   1   | Age limit for child, inclusive. |
+| Max Age Infant        |   1   | Age limit for infant, inclusive. |
+| Booking From        |   0   | Starting Date which the rate will be available. Format date: dd/MM/yyyy. |
+| Booking To        |   0   | Ending Date which the rate will be available. Format date: dd/MM/yyyy. |
+| PaymentType        |   0   | List of accepted payment types for this rate ([Check the Payment Types Codes](#payment-types-codes)). |
+| Commission        |   0   | Value of the rate's commission in the range 0-100. |
+| Currency        |   1   | ISO code that identifies the currency of the rate, format code: ISO 4217 |
+| Markets Included        |   0   | List of included markets (ISO 3166-1 alpha-2) separated by pipe for this rate. |
+| Markets Excluded        |   0   | List of excluded markets (ISO 3166-1 alpha-2) separated by pipe for this rate. |
+| Meal Plan        |   0   | Meal plan included in rate ([Check the Meal Plan Codes](#meal-plan-codes)). |
+| Binding        |   0   | Indicate if the rate's price could be sold under the price shown. Example: (**0 - False** (binding price false)) or (**1 - True** (binding price true)). |
+| Senior Rule        |   0   | Sets the rate for senior citizens ([Check the Senior Rule Codes](#senior-rule-codes)). |
+
+#### Sheet Format Example
+
+![inventory_csv_rateplans-setup](https://storage.travelgate.com/docs/inventory_csv_rateplans-setup.png)
+
+#### CSV Format Example for Channel Managers
+
+```
+Code;Name;Rate Rule;Active;Max Age Child;Max Age Infant;Booking From;Booking To;PaymentType;Commission;Currency;Markets Included;Markets Excluded;Meal Plan;Binding;Senior Rule
+123RATE_TEST;NameRate_test;;1;18;1;;;MerchantPay;;EUR;;;All inclusive;;
+```
+
+### Additional information
+
+#### Rate Rule Codes
+
+| Description |
+|-------------|
+| NoRatePlanType |
+| LargeFamily |
+| PublicServant |
+| Negotiated |
+| Package |
+| CanaryResident |
+| BalearicResident |
+| HoneyMoon |
+
+#### Payment Types Codes
+
+| Description |
+|-------------|
+| LaterPay |
+| MerchantPay |
+| CardBookingPay |
+| CardCheckInPay |
+
+#### Meal Plan Codes
+
+The table below displays the list of available Meal Plan codes for the rate plan. In addition, you have at your disposal the `mealplansQuery` to retrieve these Meal Plan codes.  
+We recommend using this query to fetch the Meal Plan codes in real-time.
+
+| Description |
+|-------------|
+| All inclusive |
+| American |
+| Bed and breakfast |
+| Buffet and breakfast |
+| Caribbean breakfast |
+| Continental breakfast |
+| English breakfast |
+| European plan |
+| Family plan |
+| Full board |
+| Full breakfast |
+| Half board |
+| As brochured |
+| Room only |
+| Self catering |
+| Bermuda |
+| Dinner and breakfast |
+| Family American |
+| Breakfast |
+| Modified |
+| Full board and drink |
+| Half board and drink |
+| All Inclusive Premium |
+| Gala Dinner |
+| All Inclusive Light |
+| Bed and breakfast and Half board |
+| All Inclusive Limited |
+
+To retrieve these Meal Plan codes in real-time, you can use the `mealplansQuery`. For more information on how to use this query, refer to the [Meal Plans](/docs/apis/for-buyers/inventory-buyers/inventory-set-up-graphql-api/static-data/mealplans) documentation.
+
+#### Senior Rule Codes
+
+| Description |
+|-------------|
+| No Senior Rate |
+| Senior Rate 55 |
+| Senior Rate 60 |
+| Senior Rate 65 |

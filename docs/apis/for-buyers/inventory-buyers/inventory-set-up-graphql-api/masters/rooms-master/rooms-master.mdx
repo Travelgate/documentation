@@ -1,0 +1,54 @@
+---
+sidebar_position: 1
+---
+
+import {roomsMasterQuery, roomsMasterVariables, roomsMasterCodesVariables} from "/src/graphql/inventory/masters/rooms-master.query";
+
+
+# Rooms Master
+
+The `roomsMaster` query returns a list of all the hotel masters created in Inventory. The returned fields include:
+
+* `id`
+* `code`
+* `name`
+
+
+## Query Inputs
+
+When building your `roomsMaster` query, you have 1 input to fill based on your specific needs:
+
+1. Criteria
+
+
+### 1. Criteria   
+
+This query offers versatility, with an optional field `codes` that can be filled with the Room masters' codes to retrieve. This flexibility empowers you to create a personalized hotelCategories Query, tailoring the requested fields to your specific needs. Consequently, the response will only include information that is highly relevant to you, streamlining the retrieval process and ensuring the data you receive meets your exact requirements.
+
+**Mandatory input**
+* `clientCode`
+
+**Optional input**
+* `codes`
+
+:::note
+
+Your `ClientCode` can be retrieved from any TravelgateX's access with a Channel Manager.  
+See [My Connections](https://app.travelgate.com/connections/myconnections) and click "Get form data" in the selected access, the code in `Password` is equivalent to the `ClientCode`.
+
+:::
+
+### Requests Examples
+
+#### Retrieve full list of Room masters
+
+<GraphqlSample query={roomsMasterQuery} variables={roomsMasterVariables} />
+
+
+#### Retrieve a specific list of Room master
+
+For more personalized results, filter specific Room masters based on your interests.
+
+<GraphqlSample query={roomsMasterQuery} variables={roomsMasterCodesVariables} />
+
+ 

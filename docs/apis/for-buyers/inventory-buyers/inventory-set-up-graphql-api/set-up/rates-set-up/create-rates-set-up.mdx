@@ -1,0 +1,139 @@
+---
+sidebar_position: 3
+---
+
+import {createRatesSetUpMutation, createRatesSetUpVariables} from "/src/graphql/inventory/set-up/rates-set-up.mutation";
+
+
+# Create Rates
+
+The `createRateSetUp` mutation allows you tu create new rates for a hotel in a specific client - seller relation in Inventory. The returned fields include:
+
+* `code`
+* `name`
+* `hotelCode`
+* `active`
+* `mealPlanIncluded`
+* `agePolicies`
+	* `maxAgeChildren`
+	* `maxAgeInfants`
+	* `freeInfants`
+	* `freeChildren`
+* `paymentPolicies`
+	* `currency`
+	* `commission`
+	* `priceIsBinding`
+	* `acceptedPayments`
+		* `type`
+		* `cardTypes`
+* `bookingRules`
+	* `bookingWindow`
+		* `start`
+		* `end`
+	* `markets`
+		* `included`
+		* `excluded`
+	* `rateRule`
+	* `seniorRule`
+* `cancelPolicies`
+	* `baseCancelPolicy`
+		* `refundable`
+		* `cancelPenalties`
+			* `daysBeforeArrival`
+			* `penaltyType`
+			* `value`
+	* `cancelPoliciesByDate`
+		* `start`
+		* `end`
+		* `cancelPolicy`
+			* `refundable`
+			* `cancelPenalties`
+				* `daysBeforeArrival`
+				* `penaltyType`
+				* `value`
+* `surcharges`
+	* `chargeType`
+	* `taxType`
+	* `value`
+	* `applyType`
+	* `perNight`
+	* `perPax`
+* `rooms`
+	* `code`
+	* `master`
+		* `id`
+		* `code`
+		* `name`
+	* `active`
+	* `externalCode`
+	* `standard`
+	* `uses`
+		* `numberOfGuests`
+		* `minAge`
+		* `maxAge`
+		* `paxType`
+
+## Mutation Inputs
+
+When creating your `createRatesSetUp` mutation, you have 1 input to fill based on your specific needs:
+
+1. Input
+
+### 1. Input   
+
+**Mandatory input**
+* `clientCode`
+* `supplierCode`
+* `hotelCode`
+* `rates`
+	* `code`
+	* `name`
+	* `active`
+	* `mealPlanIncluded`
+	* `agePolicies`
+		* `maxAgeChildren`
+		* `maxAgeInfants`
+		* `freeInfants`
+		* `freeChildren`
+	* `paymentPolicies`
+		* `currency`
+		* `commission`
+		* `priceIsBinding`
+		* `acceptedPayments`
+			* `type`
+			* `cardTypes`
+	* `cancelPolicies`
+
+**Optional input**
+* `contextCode`
+* `rates`
+	* `bookingRules`
+		* `bookingWindow`
+			* `start`
+			* `end`
+		* `markets`
+			* `included`
+			* `excluded`
+		* `rateRule`
+		* `seniorRule`
+	* `surcharges`
+		* `chargeType`
+		* `taxType`
+		* `value`
+		* `applyType`
+		* `perNight`
+		* `perPax`
+
+### Requests Examples
+
+#### Create a new rate
+
+With the following mutation, we are going to create a new rate for the hotel 2 filling its basic properties.
+
+:::note
+
+The possible values for `mealPlanIncluded` can be retrieved using the query [Mealplans](../../static-data/mealplans).
+
+:::
+
+<GraphqlSample query={createRatesSetUpMutation} variables={createRatesSetUpVariables} />

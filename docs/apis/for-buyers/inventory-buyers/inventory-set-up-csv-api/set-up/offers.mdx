@@ -1,0 +1,49 @@
+---
+sidebar_position: 8
+---
+
+# Offers
+
+The Offers file is designed to facilitate the setup of offers within the Inventory platform. It's necessary for managing offer-specific data and relate to the rates created previously.
+
+### File Name Format
+
+The file name format for the Offer Setup is as follows: **clientCode-providerCode-HotelCode#ContextCode-offers.csv**.
+
+If you have any questions about how to add the requested information to create the file name, you can consult the following link:  
+[Importance of the file name for TravelgateX's FTP uploads](../quickstart#3-file-naming-importance-for-travelgatex-ftp-uploads)
+
+### Offer
+
+| Element     | Mandatory | Description                                                                                       |
+|-------------|-----|---------------------------------------------------------------------------------------------------|
+| Rate Code        |	  1   | Unique identifier that associate this offer to a unique rate code. |
+| Offer Code        |   1   | Unique identifier for this offer. |
+| Offer Description        |   1   | Name for this offer. |
+| Is Active        |   1   | Indicate if the offer is active or not. Example: (**0 - False** (offer not active)) or (**1 - True** (offer active)). |
+| Offer Type        |   1   | Indicate the type of the offer. (**0 - First**, **1 - Last**, **2- Cheapest**) |
+| Mon        |   0   | Indicate if the offer is applied on Mondays. Example: (**0 - False** (not apply on Mondays)) or (**1 - True** (apply on Mondays)). |
+| Tue        |   0   | Indicate if the offer is applied on Tuesdays. Example: (**0 - False** (not apply on Tuesdays)) or (**1 - True** (apply on Tuesdays)). |
+| Wed        |   0   | Indicate if the offer is applied on Wednesdays. Example: (**0 - False** (not apply on Wednesdays)) or (**1 - True** (apply on Wednesdays)). |
+| Thu        |   0   | Indicate if the offer is applied on Thursdays. Example: (**0 - False** (not apply on Thursdays)) or (**1 - True** (apply on Thursdays)). |
+| Fri        |   0   | Indicate if the offer is applied on Fridays. Example: (**0 - False** (not apply on Fridays)) or (**1 - True** (apply on Fridays)). |
+| Sat        |   0   | Indicate if the offer is applied on Saturdays. Example: (**0 - False** (not apply on Saturdays)) or (**1 - True** (apply on Saturdays)). |
+| Sun        |   0   | Indicate if the offer is applied on Sundays. Example: (**0 - False** (not apply on Sundays)) or (**1 - True** (apply on Sundays)). |
+| Apply From        |   1   | Indicate the starting date to apply for this offer. Format date: dd/MM/yyyy. |
+| Apply To        |   1   | Indicate the ending date to apply for this offer. Format date: dd/MM/yyyy. |
+| MinLOS        |   1   | Indicate the minimum number of days of stay to apply this offer. (Number) |
+| MaxLOS        |   1   | Indicate the maximum number of days of stay to apply this offer. (Number) |
+| Number Of Nights        |   1   | Indicate how many nights the offer applies. (Number) |
+| Room Codes        |   1   | List of Room Codes where the offer applies and separated by pipes (|), Example: 123|456|789 |
+
+#### Sheet Format Example
+
+![inventory_csv_offers-setup](https://storage.travelgate.com/docs/inventory_csv_offers-setup.png)
+
+#### CSV Format Example for Channel Managers
+
+```
+Rate Code;Offer Code;Offer Description;Is Active;Offer Type;Mon;Tue;Wed;Thu;Fri;Sat;Sun;Apply From;Apply To;MinLOS;MaxLOS;Number Of Nights;Room Codes
+"123RATE_TEST";"Test_offer";"free test";"1";First";"1";"1";"1";"1";"1";"1";"1";"20/05/2024";"25/05/2024";"2";"6";"5";"DBLSTD"
+```
+This file provides an overview of the CSV setup files that are used to set up offers in the inventory. Users should familiarize themselves with these files to effectively manage these data.

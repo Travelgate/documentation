@@ -1,0 +1,59 @@
+---
+sidebar_position: 2
+---
+
+import {updateRoomsSetUpMutation, updateRoomsSetUpVariables} from "/src/graphql/inventory/set-up/rooms-set-up.mutation";
+
+
+# Update Rooms
+
+The `updateRoomsSetUp` mutation allows you to update existing rooms' properties (except the room code). The returned fields include:
+
+* `code`
+* `master`
+	* `id`
+	* `code`
+	* `name`
+* `active`
+* `externalCode`
+* `standard`
+* `uses`
+	* `numberOfGuests`
+	* `minAge`
+	* `maxAge`
+	* `paxType`
+
+## Mutation Inputs
+
+When creating your `updateRoomsSetUp` mutation, you have 1 input to fill based on your specific needs:
+
+1. Input
+
+### 1. Input   
+
+**Mandatory input**
+* `clientCode`
+* `supplierCode`
+* `hotelCode`
+* `rateCode`
+* `rooms`
+	* `code`
+
+**Optional input**
+* `contextCode`
+* `rooms`
+	* `masterCode`
+	* `active`
+	* `standard`
+	* `externalCode`
+	* `uses`
+		* `numberOfGuests`
+		* `paxType`
+
+### Requests Examples
+
+#### Update a room
+
+With the following mutation, we are going to update the room standard occupancy
+
+<GraphqlSample query={updateRoomsSetUpMutation} variables={updateRoomsSetUpVariables} />

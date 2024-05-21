@@ -1,81 +1,45 @@
 ﻿---
 sidebar_position: 4
+title: "VCC Payments"
 ---
-# How to Activate VCC Payments
+# VCC Payments
 
-## VCC Payments Activation and Usage Guide
+## How can I pay bookings using Virtual Credit Cards? 💳
 
-### How can I activate VCC payments with my Sellers?💡
-1. **Reach an agreement** with the VCC Payment Provider of your choice. This crucial step sets the foundation for seamless VCC transactions.
-1. **Open a ticket to our Customer Care team** and provide the required information regarding the VCC supplier, the credentials provided by them, and the Seller/s for whom you wish to activate VCC payments. They will notify you once the VCC activation is complete.
-1. **Create your VCC Rules file and upload it to your FTP**.
-1. **Finish the VCC Setup:**
-    1. If you are connected to TravelgateX via our **Hotel-X Pull Buyers API**: Simply add the VCC Plugin to your Hotel-X Book and Cancel mutations.
-    1. If you are connected to TravelgateX via **TravelgateX Distribution Solution**: Just access our Distribution Extranet and configure the "Allow VCC" Rule in the configuration section (at an Agency level).  
-        ![vcc_activation_1](https://storage.travelgate.com/kbase/vcc_activation_1.jpg)
+To pay for bookings within the TravelgateX platform, you have various methods available depending on the [payment type](/kb/faqs/faqs-price/payment-types-at-tgx) returned by the supplier. Some of these methods require a credit card.
 
+- **If you obtain or generate your own credit card**: Simply send the credit card information through our book mutation card input [`paymentCard`](/api/inputs/hotel-book-input), including the card type, number, CVC, and other relevant details.
+
+- **If you cannot generate virtual credit cards (VCC)**: TravelgateX offers integration with several VCC suppliers who can create virtual credit cards for you at the time of reservation. For each hotel booking where you indicate in your request that a VCC is needed for payment, the system will connect with your VCC supplier to obtain the virtual credit card and use this information to complete the reservation with the hotel supplier. 
+
+Check the following sections to see how our integrated VCC suppliers work in the TravelgateX Marketplace:
+
+### Available actions with your VCC Supplier
+
+Our VCC Generation plugin offers a range of features to enhance your payment experience:
+
+1. **VccGen - Create a virtual credit card**: The [VCC Generator plugin](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/virtual-credit-card) allows clients to create virtual credit cards with custom activation and expiration dates. This service provides all necessary card information, including cardholder name, card number, CVC, expiration date, and card type (e.g., VI). You can apply rules using the ‘genvcc.csv’ rules file to determine whether to use a specific VCC based on the rules and request parameters. More details about the rules file can be found [here](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/virtual-credit-card#file-format-specification).
+
+2. **VccCan - Cancel a virtual credit card**: The [VCC Cancel plugin](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/virtual-credit-card) cancels a virtual credit card identified by the ID returned in the Book response. The status of the card is returned in the `paymentInfo` field. Use rules in the 'genvcc.csv' file to specify the virtual credit card for cancellation. More details about the rules file can be found [here](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/virtual-credit-card#file-format-specification).
+
+
+### Guide: Activating VCC Payments with Integrated VCC Suppliers
+
+1. **Reach an agreement** with your chosen VCC payment provider to ensure seamless VCC transactions.
+2. **Open a ticket with our [Customer Care team](https://app.travelgate.com/tickets)**, providing details about the VCC supplier, the credentials they provided, and the hotel Sellers for whom you wish to activate VCC payments. You will be notified once the activation is complete.
+3. **Create your VCC Rules file and upload it to your FTP**.
+4. **Finish the VCC Setup**:
+    - **If you are using our Hotel-X Pull Buyers API**: Add the VCC Plugin to your Hotel-X Book and Cancel mutations.
+    - **If you are using our Distribution Solution**: Access the Distribution Extranet and configure the "Allow VCC" rule in the configuration section at the agency level.  
+      ![vcc_activation_1](https://storage.travelgate.com/kbase/vcc_activation_1.jpg)
 
 :::note
-Keep in mind that the VCC plugin is **optional** and it depends on the Seller's willingness to accept VCC payments for both bookings and cancellations.
+The VCC plugin is **optional** and depends on the seller's willingness to accept VCC payments for both bookings and cancellations.
 :::
 
-### What is the goal of our VCC plugin?🚀
-Our VCC Generation plugin is designed to revolutionize your payment experience. Here's what it brings to the table:
 
-1. **VccGen - Create a virtual credit card**: Say goodbye to limitations. With [VccGen](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/virtual-credit-card), you can effortlessly generate a virtual credit card during the booking process. This means you can pay for your reservation using this virtual card.
-1. **VccCan - Cancel a virtual credit card**: Plans change, and we get it. That's why we've included [VccCan](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/virtual-credit-card), a feature that allows you to cancel a virtual credit card as part of the cancellation process.
+### List of VCC Suppliers 📑
 
-## VCC Generator✔️
-The VCC Generator plugin allows clients to easily **create virtual credit cards** with customized activation and expiration dates. This service provides all the necessary information about the newly generated payment card, including the cardholder's name, credit card number, CVC, expiration date, and card type (e.g., VI). It also reveals the source or Supplier responsible for creating the virtual credit card.
-
-You can apply rules using the ‘genvcc.csv’ rules file to determine whether or not to utilize a specific VCC. This decision is based on the rules defined within the file and the parameters specified in the request. More details about rules’s file [here](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/virtual-credit-card#file-format-specification).
-
-### How to use the VCC Generator plugin:**  
-Use this plugin by adding it to the settings in your Hotel-X Book Operation.
-
-## VCC Cancel❌
-The VCC Cancel plugin is responsible for **cancelling a virtual credit card** identified by the id returned in the Book response. The service will return the status of the payment card inside status field (in paymentInfo field). The utilization of this plugin is dependent on the successful completion of the booking cancellation.
-
-To specify the virtual credit card to use for cancellation, you can set up a rule in the 'genvcc.csv' rule file. This rule will generate an access key, similar to the 'VCC generator' rule. You can establish rules within the ‘genvcc.csv’ rule file to determine the utilization of a particular VCC based on rules within the file and request parameters. More details about rule’s file [here](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/virtual-credit-card#file-format-specification).
-
-### How to use the VCC Cancel plugin**
-
-Use this plugin by adding it to the settings in your Hotel-X Cancel Operation.
-
-:::tip
-Don't forget to check our [API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/virtual-credit-card#file-format-specification) for further details on the VCC Plugin File format and specifications🔎
-:::
-
-### List of available card types💡
-
-| Codes  | Names  |
-| ---  |  --- |
-| VI  |  Visa |
-| AX  |  American Express |
-| BC  |  BC Card |
-| CA  |  MasterCard |
-| CB  |  Carte Blanche |
-| CU  |  China Union Pay |
-| DS  |  Discover |
-| DC  |  Diners Club |
-| T  |  Carta Si |
-| R	  |  Carte Bleue |
-| N  |  Dankort |
-| L  |  Delta |
-| E  |  Electron |
-| JC  |  Japan Credit Bureau |
-| TO  |  Maestro |
-| S	  |  Switch |
-| EC  |  Electronic Cash |
-| EU  |  EuroCard |
-| TP  |  Universal Air Travel Card |
-| OP  |  Optima |
-| ER  |  Air Canada/RnRoute |
-| XS  |  Access |
-| O  |  Others |
-
- 
-### List of VCC Suppliers📑
 - Amadeus Virtual Account
 - Ixaris (IXA)
 - Ixaris - Voxel (VIXA)

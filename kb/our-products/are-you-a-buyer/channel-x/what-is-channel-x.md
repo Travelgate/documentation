@@ -33,5 +33,5 @@ In order to activate and work via Channel-X, you should take into account the fo
 
 
 :::tip
-For more information on Channel-X functionalities and API specifications, don't forget to check out our [Documentation](/docs/apis/for-buyers/channel-x-push-buyers-api/quickstart)!🚀
+For more information on Channel-X functionalities and API specifications, don't forget to check out our [Documentation](/docs/apis/for-buyers/inventory-buyers/channel-x-push-buyers-api/quickstart)!🚀
 :::

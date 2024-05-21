@@ -1,0 +1,64 @@
+---
+sidebar_position: 3
+---
+
+import {createRoomsSetUpMutation, createRoomsSetUpVariables} from "/src/graphql/inventory/set-up/rooms-set-up.mutation";
+
+
+# Create Rooms
+
+The `createRoomsSetUp` mutation allows you to create new rooms for an existing hotel rate in Inventory. The returned fields include:
+
+* `code`
+* `master`
+	* `id`
+	* `code`
+	* `name`
+* `active`
+* `externalCode`
+* `standard`
+* `uses`
+	* `numberOfGuests`
+	* `minAge`
+	* `maxAge`
+	* `paxType`
+
+## Mutation Inputs
+
+When creating your `createRoomsSetUp` mutation, you have 1 input to fill based on your specific needs:
+
+1. Input
+
+### 1. Input   
+
+**Mandatory input**
+* `clientCode`
+* `supplierCode`
+* `hotelCode`
+* `rateCode`
+* `rooms`
+	* `code`
+	* `masterCode`
+	* `active`
+	* `standard`
+	* `uses`
+		* `numberOfGuests`
+		* `paxType`
+
+**Optional input**
+* `contextCode`
+* `rooms`
+	* `externalCode`
+
+### Requests Examples
+
+#### Create a new room for a rate
+
+With the following mutation, we are going to create a new room with standard occupancy 2 with the following occupancy uses:  
+* 1 adult (1-0-0)
+* 2 adults (2-0-0)
+* 1 adult and 1 child (1-1-0)
+* 1 adult and 1 infant (1-0-1)
+* 1 adult, 1 child and 1 infant (1-1-1)
+
+<GraphqlSample query={createRoomsSetUpMutation} variables={createRoomsSetUpVariables} />

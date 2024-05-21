@@ -1,0 +1,39 @@
+---
+sidebar_position: 2
+---
+
+import {localitiesSearchQuery, localitiesSearchVariables} from "/src/graphql/inventory/static-data/localities.query";
+
+
+# Search localities
+
+The `searchLocalities` query allows you to search for localities created in Inventory based on their names. The returned fields include:
+
+* `id`
+* `name`
+* `countryCode`
+* `unLocode`
+
+
+## Query Inputs
+
+When creating your query, you have 1 input to fill based on your specific needs:
+
+1. Criteria
+
+
+### 1. Criteria   
+
+This query offers versatility, with an optional field `countryCode` that can be filled with the ISO 2-character country code associated with the localities to search for.
+
+**Mandatory input**
+* `localityName`
+
+**Optional input**
+* `countryCode`
+
+### Request Example
+
+Let's try to search for localities that contain "Washington" in their name and are located in the United States. 
+
+<GraphqlSample query={localitiesSearchQuery} variables={localitiesSearchVariables} />

@@ -4,10 +4,10 @@ sidebar_position: 9
 
 # Timeout Settings
 
-### Is it mandatory to specify a timeout in my request?⌛
+### Is it mandatory to specify a timeout in my request?
 Yes, you should set a timeout value in all Booking Flow queries and mutations. If no timeout value is specified at a request level, our system will utilize the timeout configured by default.
 
-### Which timeout should I establish in each step?🔢
+### Which timeout should I establish in each step?
 It will depend on your preferences and needs. Our recommendation is to test which timeout fits your needs better, taking into account the number of hotels requested and the Seller specifications/restrictions.
 
 **TravelgateX Buyers API allows:**
@@ -16,15 +16,11 @@ It will depend on your preferences and needs. Our recommendation is to test whic
 * A maximum of 180000ms in Quote.
 * A maximum of 180000ms in Book.
 
-:::tip
-Unlock the potential of our connection by including the Seller in the process of establishing the ideal timeouts!
-:::
-
 ### What happens if I set a higher timeout than the ones allowed at TravelgateX API?
 Please note that timeout values higher than those recommended will not be applied.
 For example: for a timeout over 25000ms in SearchRQ, our system will apply a maximum of 25000ms.
 
-### Timeout Settings in Hotel-X Buyers API🚀
+### Timeout Settings in Hotel-X Buyers API
 You can either set this information at a **request level** (in your query "settings"):
 ```
 "settings": {
@@ -42,11 +38,16 @@ Setting a different timeout value for each Seller is not possible when requestin
 :::
 
 
-### Timeout Settings in Hotel Buyers Legacy API🏨
+### Timeout Settings in Hotel Buyers Legacy API
 If you are using our Hotel Buyers Legacy API, note that the timeout setup should be set on your side **at a request level** through the timeout tag "timeoutMilliseconds".
 
-***"There are 2 timeout tags in my request, what is the different between them?"***
+### My Legacy API request contains two timeout tags, what distinguishes one from the other?
 
-1. **HUB timeout**: this value indicates the time limit for a given request at TravelgateX.
-1. **Supplier timeout**: this value indicates the time limit for a given request to a Seller. Please note the HUB timeout value should be set at least 300 ms higher than the Supplier timeout value in order to have enough time to parse the Seller's response.
-![timeout_settings](https://storage.travelgate.com/kbase/timeout_settings_1.jpg)
+1. **HUB timeout**: This value sets the timeout limit for a request at Travelgate.
+2. **Supplier timeout**: this value specifies the timeout limit for a request sent to a Seller. It's important to set the HUB timeout at least 300 ms higher than the Supplier timeout to ensure there is sufficient time to parse the Seller's response.
+   
+   ![timeouts_updated](https://storage.travelgate.com/kbase/timeouts_updated.jpg)
+
+:::tip
+Unlock the potential of our connection by including the Seller in the process of establishing the ideal timeouts!
+:::

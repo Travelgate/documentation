@@ -53,10 +53,10 @@ We've also added a hotel, so you can test the implemented methods with it:
 	The product upload phase takes, on average, **14 days** tour our Sellers.
 
 3. **The Booking Management Phase**  
-	In this final phase providers can receive an instant API notification from TGX through HotelResNotif message (for bookings) and CancelNotif message (for cancellations). If the Seller doesn�t allow Push notifications to their system, it is possible to implement HotelResRetrieve messages in order to obtain a list of bookings from the Hotel Push Sellers API system.
+	In this final phase providers can receive an instant API notification from TGX through HotelResNotif message (for bookings) and CancelNotif message (for cancellations). If the Seller doesn'st allow Push notifications to their system, it is possible to implement HotelResRetrieve messages in order to obtain a list of bookings from the Hotel Push Sellers API system.
 
 	:::info
-	Further information on our Hotel Push Sellers [API Documentation](/docs/apis/for-sellers/hotel-push-sellers-api/availability-rates-and-inventory/overview). 
+	Further information on our Hotel Push Sellers [API Documentation](/docs/apis/for-sellers/hotel-push-sellers-api/booking-management/overview). 
 	:::
 
 Our booking management methods takes, on average, **7 days** to our Sellers.

@@ -1,0 +1,47 @@
+---
+sidebar_position: 4
+---
+
+# Rooms
+
+The Rooms file is designed to facilitate the setup of rooms within the Inventory platform. It's necessary for managing room-specific data and relate to the appropriate channel manager.
+
+### Room Search in Inventory
+:::note
+**Attention**  
+Before setting up new rooms, ensure that the room does not already exist in the inventory. To verify the existence of the room code, you should launch a query in the inventory. If the room exists, you should use the existing code when adding it to the .csv file.
+
+Please note that the room master is unique for each customer, if you start working with us, we recommend to start by creating the room master before setting up the rooms
+:::
+To check if a room already exists, clients can retrieve the current details using the following query: [Inventory Room Search](/docs/apis/for-buyers/inventory-buyers/inventory-set-up-graphql-api/masters/rooms-master)
+
+### File Name Format
+
+The file name format for the Room Setup is as follows: **clientCode-providerCode-HotelCode#ContextCode-rooms.csv**.
+
+If you have any questions about how to add the requested information to create the file name, you can consult the following link:  
+[Importance of the file name for TravelgateX's FTP uploads](../quickstart#3-file-naming-importance-for-travelgatex-ftp-uploads)
+
+### Room
+
+| Element     | Mandatory | Description                                                                                       |
+|-------------|-----|---------------------------------------------------------------------------------------------------|
+| Rate Code        |	  1   | Unique identifier that associate this room to a unique rate. |
+| Code        |   1   | Must be unique per rate and has to coincide with the code used by the channel. |
+| Master Code        |   1   | Unique identifier for the master room. |
+| Active        |   1   | Indicate if the rooms is operational or not. Example: (**0 - False** (Room not operative)) or (**1 - True** (Room operative)). |
+| Standard        |   1   | Number to set the default standard occupancy of the room (integer). Usually, it indicates the maximum number of allowed passengers. |
+| Uses        |   1   | List of combinations of occupancies of the room composed of 3 digits splitted by "-" and separated by pipes (\|). The meaning of every number is "adults-childs-infants". Example: 2-0-0\|2-0-1\|3-1-1\|2-2-1. |
+
+#### Sheet Format Example
+
+![inventory_csv_rooms-setup](https://storage.travelgate.com/docs/inventory_csv_rooms-setup.png)
+
+#### CSV Format Example for Channel Managers
+```
+Rate Code;Code;Master Code;Active;Standard;Uses
+"123RATE_TEST";"DBLSTD_VistaMar";"DBLSTD";"1";"2";"1-0-0|2-0-0|1-1-0|1-0-1"
+```
+
+#### Data Uniqueness
+Master rooms Codes: Each Room Code must be unique; duplication of master rooms codes is not permitted. Ensuring uniqueness is crucial for maintaining data integrity and avoiding conflicts in rooms identification within the platform.

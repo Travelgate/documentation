@@ -1,0 +1,41 @@
+---
+sidebar_position: 1
+---
+
+import {hotelsSetUpQuery, hotelsSetUpVariables} from "/src/graphql/inventory/set-up/hotels-set-up.query";
+
+
+# Hotels
+
+The `hotelsSetUp` query returns configurations from hotels of a specific client - seller relation in Inventory. The returned fields include:
+
+* `id`
+* `hotelCode`
+* `contextCode`
+* `active`
+* `sendNotification`
+* `emailNotification`
+* `emailNotificationCc`
+* `emailNotificationSupport`
+
+## Query Inputs
+
+When creating your `hotelsSetUp` query, you have 1 input to fill based on your specific needs:
+
+1. Criteria
+
+### 1. Criteria   
+
+**Mandatory input**
+* `clientCode`
+* `supplierCode`
+* `hotelCodes`
+
+**Optional input**
+* `contextCode`
+
+### Requests Examples
+
+#### Retrieve configurations from Hotels
+
+<GraphqlSample query={hotelsSetUpQuery} variables={hotelsSetUpVariables} />

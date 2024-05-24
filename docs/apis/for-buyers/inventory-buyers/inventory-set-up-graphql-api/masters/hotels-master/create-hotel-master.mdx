@@ -1,0 +1,163 @@
+---
+sidebar_position: 3
+---
+
+# Create Hotel Master
+
+The `createHotelMaster` mutation allows you to create a new hotel master in Inventory. The returned fields include:
+
+* `id`
+* `name`
+* `email`
+* `phones`
+* `fax`
+* `address`
+* `postalCode`
+* `latitude`
+* `longitude`
+* `externalCode`
+* `category`
+    * `id`
+	* `name`
+* `locality`
+    * `id`
+    * `name`
+    * `countryCode`
+* `hotelCode`
+* `contextCode`
+
+
+```js
+mutation ($input: InventoryHotelMasterCreateInput!) {
+  inventory {
+    createHotelMaster(hotelMasterCreateInput: $input) {
+      hotels {
+        id
+        name
+        hotelCode
+        contextCode
+        email
+        phones
+        fax
+        address
+        postalCode
+        latitude
+        longitude
+        category {
+          id
+          name
+        }
+        locality{
+          id
+          name
+          countryCode
+          unLocode
+        }
+      }
+      success
+      adviseMessages {
+        code
+        description
+        level
+        external{
+            code
+            message
+        }
+      }
+    }
+  }
+}
+```
+
+## Mutation Inputs
+
+When building your mutation, you have 1 input to fill:
+
+1. Input
+
+
+### 1. Input   
+To build your `createHotelMaster` input you need to fill the hotel's basic information (name, contact details, location, etc.) in their respective fields.
+In case this new hotel is for a specific supplier that requires native hotel codes to properly work, the fields `hotelCode` and `contextCode` must be filled.
+
+
+:::note
+
+The `localityId` value from the desired Locality, can be retrieved using the queries [Localities](../../static-data/localities/) or [Search Localities](../../static-data/localities/search-localities).  
+The possible values for `contextCode` can be retrieved using the query [Inventory Contexts](../../static-data/inventory-contexts).
+
+:::
+
+```js
+{
+  "input":{
+    "name": "hotel test",
+    "email":"hotelpush@xmltravelgate.com",
+    "phones": ["971858585"],
+    "postalCode":"07121",
+    "latitude": 50.07,
+    "longitude": 14.14,
+    "localityId": 1042,
+    "address":"Calle Prueba TEST"
+  }
+}
+```
+
+**Mandatory input**
+* `name`
+* `email`
+* `phones`
+* `postalCode`
+* `latitude`
+* `longitude`
+* `localityId`
+
+
+**Optional input**
+* `name`
+* `fax`
+* `address`
+* `externalCode`
+* `category`
+* `hotelCode`
+* `contextCode`
+* `unLocode`
+
+## Example response
+```js
+{
+  "data": {
+    "inventory": {
+      "hotelsMaster": {
+        "hotels": [
+          {
+            "id": 1,
+            "name": "hotel test",
+            "hotelCode": "1",
+            "contextCode": "TGX_PUSH",
+            "email": "hotelpush@xmltravelgate.com",
+            "phones": [
+              "971858585"
+            ],
+            "fax": null,
+            "address": "Calle Prueba TEST",
+            "postalCode": "07121",
+            "latitude": 50.07,
+            "longitude": 14.4
+            "category": {
+              "id": 1,
+              "name": "1*"
+            },
+            "locality": {
+              "id": 1042,
+              "name": "Andorra la Vella",
+              "countryCode": "AD"
+              "unLocode": null
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+```

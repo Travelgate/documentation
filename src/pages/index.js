@@ -80,7 +80,7 @@ export default function Home() {
                   <img src="https://storage.travelgate.com/docs/home_docs_browse_channelx.svg" />
                   <h4>Channel-X Push Buyers API</h4>
                   <p>Channel-X API extracts products loaded into our Inventory tool and pushes them to the Buyer’s system. Note that to enable bookings, it is essential to also develop Hotel-X API.</p>
-                  <p><a href="/docs/apis/for-buyers/channel-x-push-buyers-api/quickstart">Quickstart guide <i className="fa-solid fa-chevron-right"></i></a></p>
+                  <p><a href="/docs/apis/for-buyers/inventory-buyers/channel-x-push-buyers-api/quickstart">Quickstart guide <i className="fa-solid fa-chevron-right"></i></a></p>
                 </div>
               </div>
               <div className="col col--4">

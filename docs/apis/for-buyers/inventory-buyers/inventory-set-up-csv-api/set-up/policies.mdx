@@ -1,0 +1,46 @@
+---
+sidebar_position: 5
+---
+
+# Policies
+
+The Policies file is designed to facilitate the setup of policies within the Inventory platform. It's necessary for managing policy-specific data and relate to the rates created previously.
+
+### File Name Format
+
+The file name format for the Policy Setup is as follows: **clientCode-providerCode-HotelCode#ContextCode-policies.csv**.
+
+If you have any questions about how to add the requested information to create the file name, you can consult the following link:  
+[Importance of the file name for TravelgateX's FTP uploads](../quickstart#3-file-naming-importance-for-travelgatex-ftp-uploads)
+
+### Policy
+
+| Element     | Mandatory | Description                                                                                       |
+|-------------|-----|---------------------------------------------------------------------------------------------------|
+| Rate Code        |	  1   | Unique identifier that associate this policies to a unique rate. |
+| Refundable        |   1   | Indicate if it is a refundable policy or not. Example: (**0 - False** (not refundable)) or (**1 - True** (refundable)). |
+| Days Before        |   0   | Number of days prior to check-in when the cancellation policy takes effect. |
+| Penalty Value        |   0   | Amount to be paid if the book is canceled in the range of days that this policy is effective.([Check the Penalty Type Codes](#penalty-type)). |
+| Penalty Type        |   0   | Type of penalty to be chosen between: Percentage, Amount and Nights. |
+| Start Date        |   0   | Indicate the starting date of the policy. Format date: dd/MM/yyyy. |
+| End Date        |   0   | Indicate the ending date of the policy. Format date: dd/MM/yyyy. |
+
+#### Sheet Format Example
+
+![inventory_csv_policies-setup](https://storage.travelgate.com/docs/inventory_csv_policies-setup.png)
+
+#### CSV Format Example for Channel Managers
+```
+Rate Code;Refundable;Days Before Arrival;Penalty Value;Penalty Type;Start Date;End Date
+"123RATE_TEST";"1";"2";"100";"Amount";"20/05/2024";"25/05/2024"
+```
+
+### Additional information
+
+#### Penalty Type
+
+| Description |
+|-------------|
+| Amount |
+| Nights |
+| Percentage |

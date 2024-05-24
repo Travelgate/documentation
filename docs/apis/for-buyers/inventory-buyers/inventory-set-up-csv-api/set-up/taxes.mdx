@@ -1,0 +1,59 @@
+---
+sidebar_position: 7
+---
+
+# Taxes
+
+The Taxes file is designed to facilitate the setup of taxes within the Inventory platform. It's necessary for managing tax-specific data and relate to the rates created previously.
+
+### File Name Format
+
+The file name format for the Tax Setup is as follows: **clientCode-providerCode-HotelCode#ContextCode-taxes.csv**.
+
+If you have any questions about how to add the requested information to create the file name, you can consult the following link:  
+[Importance of the file name for TravelgateX's FTP uploads](../quickstart#3-file-naming-importance-for-travelgatex-ftp-uploads)
+
+### Tax
+
+| Element     | Mandatory | Description                                                                                       |
+|-------------|-----|---------------------------------------------------------------------------------------------------|
+| Rate Code        |	  1   | Unique identifier that associate this surcharge to a unique rate code. |
+| Charge Type        |   1   | Indicate if the surcharge is included or not in the final price. Example: (**0** - Included (included in the final price)) or (**1** - Excluded (excluded the final price)). |
+| ApplyType        |   1   | Number of days prior to check-in when the cancellation policy takes effect. Type of payment to be chosen between: ([Check the ApplyType Codes](#apply-type)) |
+| Value        |   1   | Amount to be paid. |
+| Type        |   1   | Indicate the surcharge type ([Check the Penalty Type Codes](#penalty-type)). |
+| Is Per Night        |   0   | Indicate if it is a surcharge that applies per day or not. Example: (**0** - False (not apply per day)) or (**1** - True (apply per day)). |
+| Is Per Pax        |   0   | Indicate if it is a surcharge that applies per pax or not. Example: (**0** - False (not apply per pax)) or (**1** - True (apply per pax)). |
+
+#### Sheet Format Example
+
+![inventory_csv_taxes-setup](https://storage.travelgate.com/docs/inventory_csv_taxes-setup.png)
+
+#### CSV Format Example for Channel Managers
+
+```
+Rate Code;Charge Type;ApplyType;Value;Type;Is Per Night;Is Per Pax
+"123RATE_TEST";"1";"Amount";"20";"City";"1";"1"
+```
+### Additional information
+
+#### Apply Type
+
+| Description |
+|-------------|
+|PerCent|
+| Amount |
+
+
+#### Penalty Type
+
+| Description |
+|-------------|
+|City|
+| Local |
+| Resort Fee |
+| Supplement To Be Paid On Spot |
+
+:::note
+**Note:** If ApplyType is PerCent, Is Per Night and Is Per Pax cannot be true.
+:::

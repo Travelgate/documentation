@@ -174,7 +174,31 @@ To specify your quote settings you need to use the input `HotelSettingsInput` in
 
 :::
 
+### 3. Filter
+
+Filter allow you to precisely tailor the response according to your preferences. 
+
+To specify your filters you need to use the input `HotelFilterInput` in your query variables. The available filters inside this input are:
+
+* `access` (mandatory): Specify the supplier access you want to use to book the option.
+* `excludeComparisonFields` (optional): If there are specific rate characteristics you prefer not to use internally for finding the option, indicate them here. For example, you may not want us to specifically check for a non-refundable option. You may want us to quote an option with the same other characteristics (hotel, rate, board), and whether the option is refundable or not doesn't matter to you.
+
+
+```js
+{
+    "filter" : {
+        "access" : "2",
+        "excludeComparisonFields" : [
+            "CANCEL_POLICY"
+        ]
+    }
+}
+```
+
+
 ### Requests Examples
+
+#### Book option without checking the surcharges
 
 <GraphqlSample query={oneStepBookMutation} variables={oneStepBookVariables} />
 

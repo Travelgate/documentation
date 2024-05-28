@@ -30,17 +30,11 @@ In Hotel-X, Multimode refers to the capability for Partners to search multiple S
         1. **Specifying the Hotel-X access codes** in your the filterSearch node: the query will only be sent to the accesses specified:
             ```
                     "filterSearch": {
-
                             "access": {
-
                                 "includes": [
-
-                                    "xx",
-
+                                    "xx"
                                 ]
-
                             }
-
                         }
             ```
         1. **Not specifying any access codes**: The Query will be sent to all the accesses connected to your account as Buyer, taking into account the following information:

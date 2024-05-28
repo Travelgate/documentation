@@ -28,14 +28,23 @@ Remember to upload your mapping files to our FTP in those cases you run requests
 Of course! You will find more information about our Search by Destination [plugin](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/search-by-destination) here.
 
 ### What are the minimum recommended fields to be added to a Search Query?✔️
-Since the amount of information requested in Hotel-X Search Query will depend on your needs and preferences, our recommendation is to check all the the fields available in our [Hotel-X Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart). For instance:
+Since the amount of information requested in Hotel-X Search Query will depend on your needs and preferences, our recommendation is to check all the the fields available in our [Hotel-X Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/search). For instance:
 
-![search_query_1](https://storage.travelgate.com/kbase/search_query_1.jpg)
+- hotelCode
+- hotelName
+- boardCode
+- paymentType
+- occupancies
+- rooms
+- price
+- rateRule
+- cancelPolicy
+- id
 
 ### How many hotel codes per request can I request in Search?🔢
 We recommend a maximum of 200 hotels: the new aggregator will split them in batches in order to request all of them to each Seller.
 
-:::note 
+:::info 
 Please take note the current formula and rate limit are subject to change.
 :::
 
@@ -48,46 +57,56 @@ Yes, nationality and market might affect the rates received in Search response. 
 ### Why there are so many fields with null value in the Search response?❎
 The number of "null" values returned is determined by the information provided by Sellers. For example, if you include certain fields in your Search Query but the Seller does not have that information available on their side, the value will be returned in our response as "null".
 
-For example, if following data has been declared in your Search Query:
+For example, if the following data has been declared in your Search Query, the Seller may return the occupancyRefId, room description, refundable information and price but not the bed description. If that information is not available on their side, it would be returned as "null" in TravelgateX response:
 
 ```
-rooms {
-          occupancyRefId
-          code
-          description
-          refundable
-          units
-          roomPrice {
-            price {
-              currency
-              binding
-              net
-              gross
-              exchange {
-                currency
-                rate
-              }
-              markups {
-                channel
-                currency
-                binding
-                net
-                gross
-                exchange {
-                  currency
-                  rate
-                }
-              }
-            }
-beds {
-            type
-            description
-            count
-            shared
+{
+  rooms {
+    occupancyRefId
+    code
+    description
+    refundable
+    roomPrice {
+      price {
+        currency
+        binding
+        net
+        gross
+        exchange {
+          currency
+          rate
+        }
+      }
+      breakdown {
+        start
+        end
+        price {
+          currency
+          binding
+          net
+          gross
+          exchange {
+            currency
+            rate
           }
+          minimumSellingPrice
+        }
+      }
+    }
+    beds {
+      type
+      count
+    }
+    ratePlans {
+      start
+      end
+      code
+      name
+    }
+  }
+}
 ```
 
-The Seller may return the occupancyRefId, room description, refundable information and price but not the beds description - if that information is not available on their side, it would be returned as "null" in TravelgateX response.
 
 ### Can we define our own context for 2 or more Suppliers?
 Certainly! You have the option to create your own [Context](/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/hotel-x-credentials). To do this, simply follow the instructions in our Documentation and upload the mapping files accordingly in order to use it in your requests. For more detailed information, please refer to our [Documentation on Mapping](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping).
@@ -101,7 +120,6 @@ The age range for children and infants may vary depending on the Seller's restri
 ### Can I receive daily prices in Search response?📅
 Yes, if the Seller provides the information, you can receive daily prices in Search response through the roomPrice>**breakdown**:
 
-![search_query_2](https://storage.travelgate.com/kbase/search_query_2.jpg)
 
 ### Can I filter the Hotel-X Search results by payment type?
 Unfortunately, Hotel-X API does not currently offer the capability to filter search results by payment type. 

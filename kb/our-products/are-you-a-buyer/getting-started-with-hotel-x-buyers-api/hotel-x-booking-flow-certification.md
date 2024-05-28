@@ -67,7 +67,7 @@ You can also activate any Seller you have an agreement with, even their producti
     ```
 
 - Make sure you do not modify paxes ages throughout the Booking Flow.
-- More information in our [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/methods/bookingflow/) and [Hotel-X API Schema](https://api.travelgatex.com/playground).
+- More information in our [Documentation](https://docs.travelgatex.com/connectiontypesbuyers/hotel-x/methods/bookingflow/) and [Hotel-X API Schema](https://docs.travelgate.com/playground/).
 
 ### How to apply for the Hotel-X Booking Flow certification 
 After completing all the cases, you must submit a ticket through the Booking Flow step certification in our Connectivity setup panel.

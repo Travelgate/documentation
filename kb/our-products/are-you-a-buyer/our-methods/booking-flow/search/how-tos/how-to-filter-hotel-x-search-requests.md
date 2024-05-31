@@ -7,9 +7,9 @@ sidebar_position: 2
 ## Refining Search Requests for Precise and Relevant Results
 
 ### How can I filter my Search requests?🚀
-You can filter your Search requests though the **HotelXFilterSearchInput** and according to the access, plugin, rateRules and status specified in your request.
+You can filter your Search requests though the **HotelXFilterSearchInput** and according to the access, plugin, rateRules and status specified in your request.  
 
-![filter_hotelx_search_1](https://storage.travelgate.com/kbase/filter_hotelx_search_1.jpg)
+![filtersearch_playground](https://storage.travelgate.com/kbase/filtersearch_playground.png)
 
 ### 1. Access - AccessFilterInput✔️
 You can specify one access or none of them. In this latter case, all the accesses configured for a Buyer will be executed. You will find more information in the following articles:
@@ -42,12 +42,28 @@ Don't forget to check our Hotel-X Buyers API [Documentation](/docs/apis/for-buye
 :::
 
 ### 4. Status - StatusFilterInput✔️
-You can define/filter which status (OK or RQ) is to be excluded or included in your Search response. Note that this filter will depend on the Seller returning this information in their response.
+You can define/filter which status (OK or RQ) is to be excluded or included in your Search response. Note that this filter will depend on the Seller returning this information in their response. For example:
 
-![filter_hotelx_search_2](https://storage.travelgate.com/kbase/filter_hotelx_search_2.jpg)
+```
+{
+    "filterSearch" : {
+        "access" : {
+            "includes" : [
+                "2"
+            ]
+        },
+        "status" : {
+            "excludes" : [
+                "RQ"
+            ]
+        }
+    }
+}
+```
 
->**Aggregate and apply business rules to this field!🚀**  
->All you need to do is add either 'status' or 'notStatus' to the primary key of the aggregation and preference plugins. Both plugins follow the same behaviour, so it's a breeze to get started. For more details, don't forget to check out our [Developers Resources](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/overview).
+:::info Aggregate and apply business rules to this field!🚀
+All you need to do is add either 'status' or 'notStatus' to the primary key of the aggregation and preference plugins. Both plugins follow the same behaviour, so it's a breeze to get started. For more details, don't forget to check out our [Developers Resources](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/overview).
+:::
 
  
 

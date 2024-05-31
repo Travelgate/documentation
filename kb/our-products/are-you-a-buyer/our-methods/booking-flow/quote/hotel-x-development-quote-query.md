@@ -29,7 +29,7 @@ Yes, in order to confirm a reservation, it is necessary to complete all three Bo
 ### Is there any possibility to obtain RoomCodes in Quote?
 If the Seller provides this information, you can obtain the room code by including the rooms node in the HotelOptionQuote node.
 
-![quote_query_1](https://storage.travelgate.com/kbase/quote_query_1.jpg)
+![quote_1](https://storage.travelgate.com/kbase/quote_1.jpg)
 
 
 :::tip

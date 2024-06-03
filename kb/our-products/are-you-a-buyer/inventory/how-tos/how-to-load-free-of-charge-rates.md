@@ -26,21 +26,71 @@ As you may know, Inventory works with three different types of price, and each C
 
 	This type of price will be affected. Child and baby passengers will be considered as free pax depending on the Free of Charge set value.
 
-### STUDY CASE OF PRICE CALCULATION FOR A STANDARD OCCUPANCY OF 3🔎
-1. Under Standard Occupancy:
+:::info
+For clarity in the following cases, please use the occupancy distribution format of **Adult-Child-Baby**. For example, '2-0-0' represents 2 adults, zero children, and zero babies.
+:::
 
-	![how_to_load_free_of_charge_children_babies_2](https://storage.travelgate.com/kbase/how_to_load_free_of_charge_children_babies_2.jpg)
+### Study Case of Price Calculation for a Standard Occupancy of 3:
+1. **Under Standard Occupancy:**
 
-1. Equal to Standard Occupancy:
+	| Occupancy  |  Comments  | Occupancy Price  |
+	|-----------|-----------|-----------|
+	| 1-0-0 | - |1-0-0 |
+	| 1-0-1 | - | 1-0-0 |
+	| 1-1-0 | If free child checked. | 1-0-0 |
+	| 1-1-0 | If free child unchecked. | 2-0-0 |
+	| 2-0-0 | - | 2-0-0 |
 
-	![free_of_charge_babies_equal_standard](https://storage.travelgate.com/kbase/free_of_charge_babies_equal_standard.jpg)
+
+2. **Equal to Standard Occupancy:**
+
+	| Occupancy  | Comments  | Occupancy Price |
+	|-----------|-----------|-----------|
+	| 1-1-1 | If free baby checked: Child is considered as an adult and the baby as a free pax. | 2-0-0 |
+	| 1-1-1 | If free child checked: Both paxes are coing to be considered as a free pax. | 1-0-0 |
+	| 1-1-1 | If both free child and free baby checked: Both paxes are coing to be considered as a free pax. | 1-0-0 |
+	| 1-1-1 | If neither of them are checked as free: No changes. | 3-0-0 |
+	| 3-0-0 | - | 3-0-0 |
 
 
-1. Above Standard Occupancy:
 
-	![how_to_load_free_of_charge_children_babies_4](https://storage.travelgate.com/kbase/how_to_load_free_of_charge_children_babies_4.jpg)
-	![how_to_load_free_of_charge_children_babies_5](https://storage.travelgate.com/kbase/how_to_load_free_of_charge_children_babies_5.jpg)
+3. **Above Standard Occupancy:**
+   
+	**Occupancy 3-0-1**
 
+	| Occupancy | Supplements  |Comments  | Occupancy Price  |
+	|-----------|-----------|-----------|-----------|
+	| 3-0-1 | No | If free baby checked: The baby is considered as a free pax. | 3-0-0 |
+	| 3-0-1 | No | If free baby unchecked: The baby is considered as an adult. | 4-0-0 |
+	| 3-0-1 | Yes | If free baby checked: Check the [Pax Supplements section](/kb/our-products/are-you-a-buyer/inventory/how-tos/how-to-load-free-of-charge-rates#pax-supplements) for further details. | 3-0-1 |
+	| 3-0-1 | Yes | If free child unchecked: No changes. | 3-0-1 |
+
+	**Occupancy 3-1-0**
+
+	 Occupancy  | Supplements  |Comments  | Occupancy Price  |
+	|-----------|-----------|-----------|-----------|
+	| 3-1-0 | No | If free child checked: The child is considered as a free pax. | 3-0-0 |
+	| 3-1-0 | No | If free child unchecked: The child is considered as an adult. | 4-0-0 |
+	| 3-1-0 | Yes | If free child unchecked: The child is considered as an adult. | 3-1-0 |
+	| 3-1-0 | Yes | If free child checked: Check the [Pax Supplements section](/kb/our-products/are-you-a-buyer/inventory/how-tos/how-to-load-free-of-charge-rates#pax-supplements) for further details. | 3-1-0 |
+
+
+	**Occupancy 3-1-1**
+
+	 Occupancy  | Supplements  |Comments  | Occupancy Price  |
+	|-----------|-----------|-----------|-----------|
+	| 3-1-1 | No | If free baby checked: The child is considered as an adult and the baby as a free pax. | 4-0-0 |
+	| 3-1-1 | No | If free child checked: The child is considered as a free pax. | 3-0-1 |
+	| 3-1-1 | No | If both free child and free baby checked: Both child and baby are free of charge. | 3-0-0 |
+	| 3-1-1 | No | If neither of them are checked as free: All the paxes are considered as adults. | 5-0-0 |
+	| 3-1-1 | Yes | Check the [Pax Supplements section](/kb/our-products/are-you-a-buyer/inventory/how-tos/how-to-load-free-of-charge-rates#pax-supplements) for further details. | 3-1-1 |
+
+
+	**Occupancy 4-0-0**
+
+	 Occupancy  | Supplements  |Comments  | Occupancy Price  |
+	|-----------|-----------|-----------|-----------|
+	| 4-0-0 | - | No changes | 4-0-0 |
 
 ### Pax Supplements💡
 If the free of charge checkbox is selected, the passenger supplement will always be treated as an **Exclusive** type, regardless of whether the supplement is specified as an **Amount or Percent**.
@@ -52,10 +102,31 @@ For example, for a Standard Occupancy of 3:
 - Child Supplement = 50€
 - Baby Supplement = 10€
 
-![how_to_load_free_of_charge_children_babies_6](https://storage.travelgate.com/kbase/how_to_load_free_of_charge_children_babies_6.jpg)
-![how_to_load_free_of_charge_children_babies_7](https://storage.travelgate.com/kbase/how_to_load_free_of_charge_children_babies_7.jpg)
-![how_to_load_free_of_charge_children_babies_8](https://storage.travelgate.com/kbase/how_to_load_free_of_charge_children_babies_8.jpg)
 
+	**Occupancy 3-0-1**
+
+	| Type  | Pax  |Comments  | Supplement  |
+	|-----------|-----------|-----------|-----------|
+	| Exclusive | Baby | If free baby checked. | 10 |
+	| Exclusive | Baby | If free baby unchecked. | 10 |
+
+
+	**Occupancy 3-1-0**
+
+	| Type  | Pax  |Comments  | Supplement  |
+	|-----------|-----------|-----------|-----------|
+	| Exclusive | Child | If free child checked. | 50 |
+	| Exclusive | Child | If free child unchecked. | 50 |
+
+
+	**Occupancy 3-1-1**
+
+	| Type  | Pax  |Comments  | Supplement  |
+	|-----------|-----------|-----------|-----------|
+	| Exclusive | Baby | If free baby checked. | 10 |
+	| Exclusive | Baby | If free baby unchecked. | 10 |
+	| Exclusive | Child | If free child checked. | 50 |
+	| Exclusive | Child | If free child unchecked. | 50 |
 
 
 ### Channel Manager Updates💡
@@ -73,15 +144,23 @@ When the Channel Manager updates a product for a specific rate that has Free of 
 
 **The following price calculation logic will be applied:** 
 
-**Occupancy 1-2-0**
+	**Occupancy 1-2-0**
 
-![how_to_load_free_of_charge_children_babies_11](https://storage.travelgate.com/kbase/how_to_load_free_of_charge_children_babies_11.jpg)
+	| Rate  | Occupancy  | Occupancy Price  | Price  | Comments  |
+	|-----------|-----------|-----------|-----------|-----------|
+	| All Free | 1-2-0 | 1-0-0 | 10€ | Since the child is excluded from the price calculation and a price is already loaded for 1 adult, we use this price. If no price were set for 1 adult, there would be no availability for this occupancy. |
+	| Child Free | 1-2-0 | 1-0-0 | 10€ | Since the child is excluded from the price calculation and a price is already loaded for 1 adult, we use this price. If no price were set for 1 adult, there would be no availability for this occupancy. |
+	| Baby Free | 1-2-0 | 3-0-0 | 12€ | The rate does not include "Free children" so the price pushed for 3 adults is returned. |
+	| None Free | 1-2-0 | 3-0-0 | 12€ | The rate does not include "Free children" so the price pushed for 3 adults is returned. |
 
-**Occupancy 1-3-0**
+	**Occupancy 1-3-0**
 
-![how_to_load_free_of_charge_children_babies_12](https://storage.travelgate.com/kbase/how_to_load_free_of_charge_children_babies_12.jpg)
-![free_of_charge_babies_1_3_0](https://storage.travelgate.com/kbase/free_of_charge_babies_1_3_0.jpg)
-
+	| Rate  | Occupancy  | Occupancy Price  | Price  | Comments  |
+	|-----------|-----------|-----------|-----------|-----------|
+	| All Free | 1-3-0 | 1-0-0 | 10€ | Since the child is excluded from the price calculation and a price is already loaded for 1 adult, we use this price. In this case, we avoid the specific price calculation for standard occupancy and use the price loaded for 1 adult. |
+	| Child Free | 1-3-0 | 1-0-0 | 10€ | Since the child is excluded from the price calculation and a price is already loaded for 1 adult, we use this price. In this case, we avoid the specific price calculation for standard occupancy and use the price loaded for 1 adult. |
+	| Baby Free | 1-3-0 | 1-3-0* (with child supplement) | 19€ | The rate does not include "Free children" so the calculation uses the standard occupancy price and adds the child supplement. |
+	| None Free | 1-3-0 | 1-3-0* (with child supplement) | 19€ | The rate does not include "Free children" so the calculation uses the standard occupancy price and adds the child supplement. |
  
 :::info
 Discover more by diving into our Inventory [Documentation](/docs/apps/inventory/extranet/overview) 🚀

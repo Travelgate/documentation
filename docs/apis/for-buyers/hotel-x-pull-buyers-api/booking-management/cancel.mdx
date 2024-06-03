@@ -102,7 +102,7 @@ To specify your cancel settings you need to use the input `HotelSettingsInput` i
 **Mandatory Settings:**
 * `client`
 * `context`
-* `timeout` (Timeout in milliseconds for supplier connections. Applied to all suppliers; won't close client connection if exceeded)
+* `timeout` (Timeout in milliseconds for all supplier connections. Won't close client connection if exceeded.)
 
 
 **Optional Settings:**
@@ -114,6 +114,8 @@ To specify your cancel settings you need to use the input `HotelSettingsInput` i
 * `clientTokens` (Used to identify the origin of the request, this is only used in plugins)
 * `commitRequired` (Indicates if the book will be confirmed in 1 or 2 steps. It only should be used in Book)
 * `businessRules`
+* `operationTimeout` (Timeout in milliseconds for Hotel-X connection. Will close Buyer connection if exceeded. Must be higher than `timeout`.)
+
 
 :::caution Remember
 Keep in mind that if you leave some of the fields in the `settings` inputs unspecified, we will use the values from your default settings. You can review and control your default API settings by visiting the [API Settings section](https://app.travelgatex.com/connections/settings) on our website.

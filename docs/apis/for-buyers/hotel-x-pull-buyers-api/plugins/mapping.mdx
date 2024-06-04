@@ -19,13 +19,13 @@ To get started with the Mapping plugin, follow these simple steps:
 
 ## 1. Create and Upload your Mapping File
 
-To get started, create your mapping file for the desired entity (hotel, board, room...) in the correct format and then upload it to your FTP account. We've provided a template file below ⬇️ to help you with this process. Just click on the file name, add your own rules, save it in CSV format, and then upload it to the corresponding folder in your FTP.
+To get started, create your mapping file for the desired entity (hotel, board, room...) in the correct format and then upload it to your SFTP account. We've provided a template file below ⬇️ to help you with this process. Just click on the file name, add your own rules, save it in CSV format, and then upload it to the corresponding folder in your SFTP.
 
 
 ```mdx-code-block
 <BrowserWindow>
 
-📁F0  _0000  
+📁HotelX  
 &nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX  _0000  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁Maps  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁Hotel  
@@ -56,14 +56,14 @@ You should create one file for each supplier that you want to map an entity.
 
 :::note
 
-If you need assistance with requesting your credentials to access the FTP server, determining the endpoint and directory format, or learning how to upload, update, and delete FTP files, please refer to the [overview](../plugins/overview) section of Plugins.
+If you need assistance with requesting your credentials to access the SFTP server, determining the endpoint and directory format, or learning how to upload, update, and delete SFTP files, please refer to the [overview](../plugins/overview) section of Plugins.
 
 :::
 
 ### File Format Specification
 
 * **File Name:** BuyerContext_SupplierContext_entity_map.csv
-* **Directory:** F0\_0000/HotelX\_0000/Maps/[entity]
+* **Directory:** HotelX/HotelX\_0000/Maps/[entity]
 * **Delimiter:** Comma (`,`)
 * **Header Row:**
    * Buyer Context: Buyer's context code
@@ -109,12 +109,12 @@ Room Only, *
 
 When working with your search query, you have two distinct ways to implement mapping:
 
-#### Option 1: Mapping only with Buyer context and FTP files
+#### Option 1: Mapping only with Buyer context and SFTP files
 
 If your search query's context is defined as your own Buyer context (meaning it differs from the supplier's context), Hotel-X will make an effort to map all entities (such as hotels, boards, etc., excluding amenities and promotions) to align with the query's context.
 
 :::caution Important
-In this scenario, there's no need to specify a plugin in your query. Just provide your own context in the context field and upload the mapping files to your FTP account.
+In this scenario, there's no need to specify a plugin in your query. Just provide your own context in the context field and upload the mapping files to your SFTP account.
 
 On the other hand, please note that it's absolutely mandatory to use the plugin in your search query to map amenities and promotions:
 
@@ -150,7 +150,7 @@ On the other hand, please note that it's absolutely mandatory to use the plugin 
 
 #### Option 2: Mapping with mixed contexts for specific entities
 
-While you can use either the Supplier's context or your own Buyer's context via FTP files in your search query, you can also mix both contexts for specific entities like boards, amenities, and promotions. For instance, you can keep using the Supplier's context for hotels or rooms but switch to your Buyer context for boards, amenities, and promotions. 
+While you can use either the Supplier's context or your own Buyer's context via SFTP files in your search query, you can also mix both contexts for specific entities like boards, amenities, and promotions. For instance, you can keep using the Supplier's context for hotels or rooms but switch to your Buyer context for boards, amenities, and promotions. 
 This approach lets Hotel-X exclusively focus on mapping the entities you've specified in your query.
 
 To enable this, just include the plugin in your query. After uploading your mapping file, add the following field to the settings node of your request. To make the most of the mapping plugin, configure the request with the appropriate variables based on the type of mapping you intend to perform:

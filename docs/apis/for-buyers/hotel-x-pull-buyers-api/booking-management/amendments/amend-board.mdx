@@ -52,7 +52,7 @@ Settings are the common configurations used to construct requests to the supplie
 **Mandatory Settings:**
 * `client`
 * `context`
-* `timeout` (Timeout in milliseconds for supplier connections. Applied to all suppliers; won't close client connection if exceeded)
+* `timeout` (Timeout in milliseconds for the supplier connection. Won't close client connection if exceeded.)
 
 **Optional Settings:**
 * `group`
@@ -62,6 +62,8 @@ Settings are the common configurations used to construct requests to the supplie
 * `testMode` (This flag allows only the accesses checked as test)
 * `clientTokens` (Used to identify the origin of the request, this is only used in plugins)
 * `businessRules`
+* `operationTimeout` (Timeout in milliseconds for Hotel-X connection. Will close Buyer connection if exceeded. Must be higher than `timeout`.)
+
 
 
 

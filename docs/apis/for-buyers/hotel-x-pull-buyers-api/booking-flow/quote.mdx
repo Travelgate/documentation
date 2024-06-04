@@ -57,7 +57,7 @@ To specify your quote criteria you need to use the input `HotelCriteriaQuoteInpu
 
 Settings are the common configurations used to construct requests to the supplier/s. By default, we apply the same configuration to all Hotel-X clients.
 
-To specify your quote settings you need to use the input `HotelSettingsInput` in your query variables:
+To specify your quote settings you need to use the [`HotelSettingsInput` input](/api/inputs/hotel-settings-input) in your query variables:
 
 ```js
 {
@@ -75,7 +75,7 @@ To specify your quote settings you need to use the input `HotelSettingsInput` in
 **Mandatory Settings:**
 * `client`
 * `context` (You have the flexibility to choose between using the supplier's context or your own, depending on which codes you want to see in the response. If you prefer to receive responses with your custom codes, please ensure that your context code is linked to the mapping files that you've previously uploaded to your FTP account.)
-* `timeout` (Timeout in milliseconds for supplier connections. Applied to all suppliers; won't close client connection if exceeded.)
+* `timeout` (Timeout in milliseconds for the supplier connection. Won't close client connection if exceeded.)
 
 **Optional Settings:**
 * `group`
@@ -85,6 +85,7 @@ To specify your quote settings you need to use the input `HotelSettingsInput` in
 * `testMode` (This flag allows only the accesses checked as test.)
 * `clientTokens` (Used to identify the origin of the request, this is only used with some [plugins](../plugins/overview).)
 * `businessRules`
+* `operationTimeout` (Timeout in milliseconds for Hotel-X connection. Will close Buyer connection if exceeded. Must be higher than `timeout`.)
 
 
 :::tip Key Recommendations

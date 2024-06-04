@@ -13,17 +13,15 @@ Don't forget to check our [Hotel-X Pull Buyers API Documentation](/docs/apis/for
 :::
 
 ### What can I expect to receive in Destinations Query response?✔️
+
 Some of the fields returned are:
-* Code
-* Available
-* DestinationLeaf
-* Texts
-* ClosestDestinations
-* Parent
-* Type
-
-  ![destinations_query_2](https://storage.travelgate.com/kbase/destinations_query_2.jpg)
-
+  - Code
+  - Available
+  - DestinationLeaf
+  - Texts
+  - ClosestDestinations
+  - Parent
+  - Type
 
 ### Destination List Logic🔎
 Once you run a Destinations Query, you will receive the Seller's native destination codes in the response. These codes can be classified into 2 categories:

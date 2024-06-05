@@ -31,9 +31,7 @@ Please note that the amount of information and content returned may vary between
 
 
 ### Can I filter by category code?✔️
-Yes! You can filter your results by adding the "categoryCode" field to your criteria and specifying the category or categories you want to receive.
-
-![categories_query_1](https://storage.travelgate.com/kbase/categories_query_1.jpg)
+Yes! You can filter your results by adding the "**categoryCodes**" field to your criteria and specifying the category or categories you want to receive.
 
 
 ### What category codes should I map as Buyer? Does TravelgateX map for us?❓

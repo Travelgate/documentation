@@ -26,6 +26,9 @@ Not from TravelgateX side - we don't have any limitations on the RPM in any of o
 ### Do I have to perform a Quote Query in order to Book an option?
 Yes, in order to confirm a reservation, it is necessary to complete all three Booking Flow methods: Search, Quote, and Book.
 
+### In a reservation for 2 rooms, if two rooms have the same cancellation policy, should the cancellation penalties be summed up in the node for the option?  
+Yes, an option is a combination of rooms. Cancelling the option implies the cancellation of all rooms, and therefore, the charges for all the rooms are incurred.
+
 ### Is there any possibility to obtain RoomCodes in Quote?
 If the Seller provides this information, you can obtain the room code by including the rooms node in the HotelOptionQuote node.
 

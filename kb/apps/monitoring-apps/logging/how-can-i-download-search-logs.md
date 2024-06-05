@@ -10,8 +10,11 @@ Just imagine the enormous task of storing the astounding number of search transa
 1. Head to the “Audit Search Logs” option.
 1. Indicate the connection or access you need Search logs from. You will also be able to check the Audit Searches History for further details on your previous audits.
 1. Our APP will start saving **5% of your Search traffic for 5 minutes**.
+   
     ![new_logging_4](https://storage.travelgate.com/kbase/new_logging_4.jpg)
 
-:::info
-The audit process may no be immediate, please wait a few minutes to recover the logs in the Logging APP and remember to filter by **“Search”** Operation type.
+2. The audit process may no be immediate, please wait a few minutes to recover the logs in the Logging APP and remember to filter by **“Search”** Operation type.
+
+:::warning Requirements to Use the 'Audit Searches' Functionality
+Our system requires a **steady flow of traffic** (not just isolated requests) to accurately register your Search transactions with this functionality. If you are in a testing phase and/or your traffic is low, you can retrieve your complete Search transactions on a request level by following the guidelines in this [article](/kb/apps/monitoring-apps/logging/how-can-i-receive-seller-transactions-in-their-api-format).
 :::

@@ -87,6 +87,13 @@ Once you've requested a new connection with your partner, you can track its prog
     </div>
 </details>
 
+<details>
+    <summary>I can't find a Partner in the dropdown menu of the New Connection form, what can I do?⚠️</summary>
+    <div>
+        <div>If you cannot find a specific Partner (either Buyer or Seller) in the dropdown menu for a new connection, it may be because they are either not available or inactive on our Platform. We recommend contacting them directly for more details.</div>
+    </div>
+</details>
+
 
 :::note
 If you have any activation-related updates or details to share, please avoid creating additional tickets for our Customer Care team. Instead, kindly reply to our Connectivity Team email thread. Your cooperation in streamlining our communication process is highly appreciated!

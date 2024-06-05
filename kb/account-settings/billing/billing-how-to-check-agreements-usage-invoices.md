@@ -6,9 +6,9 @@ sidebar_position: 1
 
 ### How can access Billing? 🖱️
 
-1. Log onto [TravelgateX](https://www.travelgatex.com/), click on "Settings" and then select "Billing".
+1. Log onto [TravelgateX](https://www.travelgatex.com/), click on your initials in the top right corner, and then select 'Billing'.
 
-	![billing_access_1](https://storage.travelgate.com/kbase/billing_access_billing_1.jpg)
+	![billing_1](https://storage.travelgate.com/kbase/billing_1.jpg)
 1. Use the tabs provided in order to check your Agreements, Usage or Invoices.
 
 	![billing_settings_2](https://storage.travelgate.com/kbase/billing_settings_2.jpg)

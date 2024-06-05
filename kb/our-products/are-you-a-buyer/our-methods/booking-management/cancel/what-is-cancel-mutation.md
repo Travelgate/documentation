@@ -48,6 +48,9 @@ Unfortunately, there are no filters in the Cancel Mutation.
 
 ### Is it possible to retrieve the cancellation costs without canceling the option?🔎
 If the Seller provides cancel policies information, you can access it either through Hotel-X Quote Query or Hotel-X Booking Query.
+
+### In a reservation for 2 rooms, if two rooms have the same cancellation policy, should the cancellation penalties be summed up in the node for the option?  
+Yes, an option is a combination of rooms. Cancelling the option implies the cancellation of all rooms, and therefore, the charges for all the rooms are incurred.
  
 :::tip
 Don't forget to check our [Hotel-X API Playground](/playground) and [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/cancel) for further information on Cancel Mutation. Interested in cancel penalties information as well? We've got you covered with some awesome [articles](/kb/faqs/faqs-cancel-policies/hotel-buyers-api-cancel-policies) that dive deep into the topic!🚀

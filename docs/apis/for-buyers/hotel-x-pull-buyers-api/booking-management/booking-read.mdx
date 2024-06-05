@@ -110,7 +110,7 @@ Even if not all criteria are marked as mandatory, you must either use the `booki
 
 Settings are the common configurations used to construct requests to the supplier/s. By default, we apply the same configuration to all Hotel-X clients.
 
-To specify your booking settings you need to use the input `HotelSettingsInput` in your query variables:
+To specify your booking settings you need to use the [`HotelSettingsInput` input](/api/inputs/hotel-settings-input) in your query variables:
 
 ```js
 {
@@ -127,7 +127,7 @@ To specify your booking settings you need to use the input `HotelSettingsInput` 
 **Mandatory Settings:**
 * `client`
 * `context`
-* `timeout` (Timeout in milliseconds for supplier connections. Applied to all suppliers; won't close client connection if exceeded)
+* `timeout` (Timeout in milliseconds for the supplier connection. Won't close client connection if exceeded.)
 * `businessRules`
 
 **Optional Settings:**
@@ -137,6 +137,7 @@ To specify your booking settings you need to use the input `HotelSettingsInput` 
 * `plugins`
 * `testMode` (This flag allows only the accesses checked as test)
 * `clientTokens` (Used to identify the origin of the request, this is only used in plugins)
+* `operationTimeout` (Timeout in milliseconds for Hotel-X connection. Will close Buyer connection if exceeded. Must be higher than `timeout`.)
 
 
 ### Requests Examples

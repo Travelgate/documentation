@@ -4,18 +4,18 @@ sidebar_position: 5
 
 # Commission
 
-Commission plugin defines the contracted/expected commission in cases where the Supplier is not able to send it via integration. The commission loaded in the FTP is considered as a Gross commission, meaning that the commission or profit is already included in the price.
+Commission plugin defines the contracted/expected commission in cases where the Supplier is not able to send it via integration. The commission loaded in the SFTP is considered as a Gross commission, meaning that the commission or profit is already included in the price.
 
 To get started with the Commission plugin, follow these simple steps:
 
 ## 1. Create and Upload your Commission File
 
-To get started, create your commission file in the correct format and then upload it to your FTP account. We've provided a template file below ⬇️ to help you with this process. Just click on the file name, add your own rules, save it in CSV format, and then upload it to the corresponding folder in your FTP.
+To get started, create your commission file in the correct format and then upload it to your SFTP account. We've provided a template file below ⬇️ to help you with this process. Just click on the file name, add your own rules, save it in CSV format, and then upload it to the corresponding folder in your SFTP.
 
 ```mdx-code-block
 <BrowserWindow>
 
-📁F0  _0000  
+📁HotelX  
 &nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX_0000  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁BusinessRules  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[RequestContext_sequential_commission.csv](https://storage.travelgate.com/docs/BuyerContext_sequential_commission.csv)**
@@ -25,14 +25,14 @@ To get started, create your commission file in the correct format and then uploa
 
 :::note
 
-If you need assistance with requesting your credentials to access the FTP server, determining the endpoint and directory format, or learning how to upload, update, and delete FTP files, please refer to the [overview](../plugins/overview) section of Plugins.
+If you need assistance with requesting your credentials to access the SFTP server, determining the endpoint and directory format, or learning how to upload, update, and delete SFTP files, please refer to the [overview](../plugins/overview) section of Plugins.
 
 :::
 
 ### File Format Specification
 
 * **File Name:** RequestContext_sequential_commission.csv 
-* **Directory:** F0_0000/HotelX0000/BusinessRules
+* **Directory:** HotelX/HotelX\_0000/BusinessRules
 * **Delimiter:** Comma (`,`)
 * **Header Row:**
    * **RuleId (mandatory):** Unique identifier of the rule (assign one)
@@ -87,4 +87,4 @@ Here are some common use cases for the Commission plugin, along with the CSV tem
 
 ## 2.  Execute Commission Plugin in your Request
 
-In the case of the commission plugin, there is no need to indicate it in the requests. Simply uploading the file to the FTP it will start working, no further action is required.
+In the case of the commission plugin, there is no need to indicate it in the requests. Simply uploading the file to the SFTP it will start working, no further action is required.

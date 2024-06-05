@@ -14,7 +14,7 @@ To determine matches, the plugin uses the `clientTokens` field, which identifies
 
 2. Gets the rules stored in database which will establish which options will be added or discarted based on several factors as % of tolerance of the price, options status, hotelcodes, supplier, etc.
 
-3. Builds a group function which will help to clasify the options slice in n different groups based on the primary key established in the query by the client and the rules stored in the data base (ftp preference file).Sorts the options in price order (from cheap to expensive).
+3. Builds a group function which will help to clasify the options slice in n different groups based on the primary key established in the query by the client and the rules stored in the data base (SFTP preference file).Sorts the options in price order (from cheap to expensive).
 
 4. Go over each option and group them by primary key index. However not all the options will be filled in these aggrupations. This is where the rules come into play.
 To determine if an option will be discarted or not we have to check the group function which does the following: 
@@ -42,12 +42,12 @@ To get started with the Preference plugin, follow these simple steps:
 
 ## 1. Create and Upload your Preference File
 
-To get started, create your preference file in the correct format and then upload it to your FTP account. We've provided a template file below ⬇️ to help you with this process. Just click on the file name, add your own rules, save it in CSV format, and then upload it to the corresponding folder in your FTP.
+To get started, create your preference file in the correct format and then upload it to your SFTP account. We've provided a template file below ⬇️ to help you with this process. Just click on the file name, add your own rules, save it in CSV format, and then upload it to the corresponding folder in your SFTP.
 
 ```mdx-code-block
 <BrowserWindow>
 
-📁F0  _0000  
+📁HotelX  
 &nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX_0000  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁BusinessRules  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[BuyerContext_sequential_preference.csv](https://storage.travelgate.com/docs/BuyerContext_sequential_preference.csv)**
@@ -58,7 +58,7 @@ To get started, create your preference file in the correct format and then uploa
 ### File Format Specification
 
 * **File Name:** BuyerContext_sequential_preference.csv
-* **Directory:** F0_0000/HotelX0000/BusinessRules
+* **Directory:** HotelX/HotelX\_0000/BusinessRules
 * **Delimiter:** Comma (`,`)
 * **Header Row:**
    * **RuleId (mandatory):** Rule identifier

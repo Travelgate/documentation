@@ -4,18 +4,18 @@ sidebar_position: 7
 
 # Currency Converter
 
-The Currency Converter plugin enables the application of currency conversion to all the prices within a single option. This plugin takes an option and a currency as input and provides the same option with currency conversion applied to all the prices. It obtains rate information from a file located on our FTP server. It's important to note that the existence of this file on the FTP server and its compliance with specific requirements are mandatory. Otherwise, an error will be returned.
+The Currency Converter plugin enables the application of currency conversion to all the prices within a single option. This plugin takes an option and a currency as input and provides the same option with currency conversion applied to all the prices. It obtains rate information from a file located on our SFTP server. It's important to note that the existence of this file on the SFTP server and its compliance with specific requirements are mandatory. Otherwise, an error will be returned.
 
 To get started with the Currency Converter plugin, follow these simple steps:
 
 ##  1.Create and Upload your Currency Converter File
 
-To get started, create your currency converter file in the correct format and then upload it to your FTP account. We've provided a template file below ⬇️ to help you with this process. Just click on the file name, add your own rules, save it in CSV format, and then upload it to the corresponding folder in your FTP.
+To get started, create your currency converter file in the correct format and then upload it to your SFTP account. We've provided a template file below ⬇️ to help you with this process. Just click on the file name, add your own rules, save it in CSV format, and then upload it to the corresponding folder in your SFTP.
 
 ```mdx-code-block
 <BrowserWindow>
 
-📁F0  _0000  
+📁HotelX  
 &nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX_0000  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁BusinessRules  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[currency_map.csv](https://storage.travelgate.com/docs/currency_map.csv)**
@@ -27,7 +27,7 @@ To get started, create your currency converter file in the correct format and th
 ### File Format Specification
 
 * **File Name:** currency_map.csv
-* **Directory:** F0_0000/HotelX0000/BusinessRules
+* **Directory:** HotelX/HotelX0000/BusinessRules
 * **Delimiter:** Comma (`,`)
 * **Header Row:**
     * Code
@@ -59,7 +59,7 @@ Once you've uploaded your currency converter file, to use the plugin add the fol
 * **`name`**: "currency_exchange"
 * **`parameters`**:
     * **`currency`**: The currency to which you want to convert, ISO 4217.
-	* **`exclude`**: True or false. Determinates if the options on which the currency change cannot be applied (no currency found in ftp) are excluded.
+	* **`exclude`**: True or false. Determinates if the options on which the currency change cannot be applied (no currency found in SFTP) are excluded.
 
 ```js
 "settings": {

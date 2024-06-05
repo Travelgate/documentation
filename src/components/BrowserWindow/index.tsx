@@ -21,7 +21,7 @@ interface Props {
 export default function BrowserWindow({
                                           children,
                                           minHeight,
-                                          url = 'ftp.xmltravelgate.com',
+                                          url = 'sftp.xmltravelgate.com',
                                           style,
                                           bodyStyle,
                                       }: Props): JSX.Element {

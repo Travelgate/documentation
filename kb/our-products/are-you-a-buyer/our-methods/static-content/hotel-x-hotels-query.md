@@ -19,7 +19,7 @@ Don't forget to check our [Hotel-X Pull Buyers API Documentation](/docs/apis/for
 ### Can I search hotels by destination?🔎
 Of course! You can also **search hotels by destination by adding the "destinationCodes"** field in your Query criteria:
 
-![hotels_query_1](https://storage.travelgate.com/kbase/hotels_query_1.jpg)
+![hotels_query_destinations](https://storage.travelgate.com/kbase/hotels_query_destinations.jpg)
 
 
 ### What can I expect to receive in Hotels Query response?
@@ -40,14 +40,7 @@ Static content fetching is always sequential and **the amount of information and
 ### How can I know the total amount of properties returned in Hotels Query?📑
 Just add the "**count**" field to your Hotels Query in order to retrieve the total amount of properties in the list:
 
-Query request:
-
-![hotels_query_2](https://storage.travelgate.com/kbase/hotels_query_2.jpg)
-
-
-Query response:
-
-![hotels_query_3](https://storage.travelgate.com/kbase/hotels_query_3.jpg)
+![hotelcount](https://storage.travelgate.com/kbase/hotelcount.jpg)
 
 
 ### Can I paginate content methods? 🔢

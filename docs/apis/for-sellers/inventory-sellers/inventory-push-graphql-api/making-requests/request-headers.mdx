@@ -1,0 +1,27 @@
+---
+sidebar_position: 2
+---
+
+# Request Headers
+
+The following HTTP request headers are essential for all request methods and must be included in every API request.
+
+### Mandatory Request Headers
+
+**Gzip Compression**: In order to increase performance and save bandwidth, all the live traffic must enable GZIP compression in the HTTP header. 
+
+```html
+Accept-Encoding: gzip
+```                           
+
+**API Key**: Authentication is required for every request to the Travelgate GraphQL API. An API Key must be included in the HTTP Authorization request header to authenticate the user agent with the server. You can find your API Key on the Travelgate website in Connections > [Connections Settings](https://app.travelgatex.com/connections/settings).
+
+```html
+Authorization: ApiKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```
+
+:::caution
+
+By default, your API Key will not have the Inventory Set Up GraphQL API enabled, so if you are interested in using this tool please create a [Ticket](https://app.travelgatex.com/tickets) indicating the access that you would like to enable it for. 
+
+:::

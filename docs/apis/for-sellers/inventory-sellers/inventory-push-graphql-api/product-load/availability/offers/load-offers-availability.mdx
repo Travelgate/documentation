@@ -1,0 +1,88 @@
+---
+sidebar_position: 3
+---
+import {availOffersLoadMutation, availOffersLoadVariables} from "/src/graphql/inventory/product-load/load-offers-availability.mutation";
+
+# Load Offers Availability
+
+The `loadOffersAvailability` mutation allows you to load the availability of specific offers in the Inventory. The returned fields include:
+
+## Mutation Fields
+
+* `success`
+* `offers`
+    * `rateCode`
+    * `offers`
+        * `code`
+        * `stopSales`
+            * `closeMaster`
+            * `closeOnArrival`
+            * `closeOnDeparture`
+    * `dateRange`
+        * `start`
+        * `end`
+* `adviseMessages`
+    * `code`
+    * `description`
+    * `level`
+    * `correlationID`
+    * `external`
+        * `code`
+        * `message`
+
+### 2. Returned Field Explanations
+
+* **`success`:** A boolean that indicates whether the mutation was successful.
+* **`offers`:** The details of the offers for which the availability was loaded. It includes the `rateCode` of the offer, the `code` of the specific offer, and any `stopSales` conditions.
+* **`stopSales`:** This field contains conditions that can restrict the availability of the offer. 
+    * **`closeMaster`:** A boolean that indicates whether the offer is closed for the entire date range.
+    * **`closeOnArrival`:** A boolean that indicates whether the offer is closed on arrival.
+    * **`closeOnDeparture`:** A boolean that indicates whether the offer is closed on departure.
+* **`dateRange`:** The date range during which the conditions will be applied. It includes the `start` and `end` dates.
+* **`adviseMessages`:** An array of messages that provide information about the mutation. Each message includes a `code`, `description`, `level`, `correlationID`, and `external` fields, which indicate whether the message is internal or external and provide the code and message of the external message.
+
+
+## Mutation Inputs
+
+When building your `loadOffersAvailability` mutation, you have 1 input to fill based on your specific needs:
+
+1. Criteria
+
+### 1. Criteria   
+
+This mutation will allow you to enter specific details in the fields `clientCode`, `supplierCode`, `hotelCode`, `offers`, and `dateRange` to load the availability of specific offers. 
+
+**Mandatory input**
+* `clientCode`
+* `supplierCode`
+* `hotelCode`
+* `offers`
+    * `rateCode`
+    * `offers`
+        * `code`
+        * `stopSales`
+            * `closeMaster`
+            * `closeOnArrival`
+            * `closeOnDeparture`
+    * `dateRange`
+        * `start`
+        * `end`
+
+### 2. Field Explanations
+
+* **`clientCode`, `supplierCode`, `hotelCode`:** These fields identify the client, supplier, and hotel for which the offer availability is being loaded.
+* **`offers`:** This field contains the details of the offers for which the availability is being loaded. It includes the `rateCode` of the offer, the `code` of the specific offer, and any `stopSales` conditions.
+* **`stopSales`:** This field contains conditions that can restrict the availability of the offer. 
+    * **`closeMaster`:** in the date range specified before is not possible to stay with the offer, so the client will not receive availability with free night offers for any stay that include those days. If you check "true" you will apply the close master condition, if you check "false" you will delete a close master condition if it was previously load and if you check unspecified you won't apply any change (true/false) in the close master condition.
+    * **`closeOnArrival`:** in the date range specified before is not possible to do a check-in with the offer. If you check "true" you will apply the close on arrival condition, if you check "false" you will delete a close on arrival condition if it was previously load and if you check unspecified you won't apply any change (true/false) in the close on arrival condition.
+    * **`closeOnDeparture`:** in the date range specified before is not possible to do a check-out with the offer. If you check "true" you will apply the close on departure condition, if you check "false" you will delete a close on departure condition if it was previously load and if you check unspecified you won't apply any change (true/false) in the close on departure condition.
+* **`dateRange`:** This field specifies the date range during which the conditions will be applied.
+
+
+### Requests Examples
+
+#### Load availability for a specific offer
+
+With this example, we are going to load the availability for a specific offer within a specific date range.
+
+<GraphqlSample query={availOffersLoadMutation} variables={availOffersLoadVariables} />

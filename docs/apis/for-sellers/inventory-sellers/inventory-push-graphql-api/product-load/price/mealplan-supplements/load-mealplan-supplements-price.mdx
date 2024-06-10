@@ -1,0 +1,95 @@
+---
+sidebar_position: 3
+---
+
+import {PriceMealplansSupplementsLoadMutation, PriceMealplansSupplementsLoadVariables} from "/src/graphql/inventory/product-load/load-mealplan-supplements-price.mutation";
+
+# Load Meal Plan Supplements Price
+
+The `loadPriceMealPlanSupplements` mutation allows you to load the price of meal plan supplements in the Inventory.
+
+## Mutation Fields
+
+* `success`
+* `mealPlanSupplements`
+    * `rateCode`
+    * `rooms`
+    * `paxType`
+    * `mealPlan`
+    * `amountPerPax`
+    * `dateRange`
+        * `start`
+        * `end`
+    * `applicableWeekdays`
+        * `all`
+        * `monday`
+        * `tuesday`
+        * `wednesday`
+        * `thursday`
+        * `friday`
+        * `saturday`
+        * `sunday`
+* `adviseMessages`
+    * `code`
+    * `description`
+    * `level`
+    * `correlationID`
+    * `external`
+        * `code`
+        * `message`
+
+### Returned Field Explanations
+
+* **`success`:** A boolean that indicates whether the mutation was successful.
+* **`mealPlanSupplements`:** The details of the meal plan supplements for which the price was loaded. It includes the `rateCode`, the `rooms` available, and the `prices`.
+* **`rateCode`:** The code of the rate for which the price is being loaded.
+* **`rooms`:** The number of rooms available for the rate.
+* **`paxType`:** The type of passenger for which the supplement applies.
+* **`mealPlan`:** The meal plan for which the supplement is being loaded.
+* **`amountPerPax`:** The price of the supplement per passenger.
+* **`dateRange`:** The date range during which the conditions will be applied. It includes the `start` and `end` dates.
+* **`applicableWeekdays`:** The days of the week for which the price is being loaded. It includes the `all`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, and `sunday` fields.
+* **`adviseMessages`:** An array of messages that provide information about the mutation. Each message includes a `code`, `description`, `level`, `correlationID`, and `external` fields, which indicate whether the message is internal or external and provide the code and message of the external message.
+
+## Mutation Inputs
+
+When creating your `loadPriceMealPlanSupplements` mutation, you have 1 input to fill based on your specific needs:
+
+1. Criteria
+
+### 1. Criteria   
+
+This mutation will allow you to enter specific details in the fields `clientCode`, `supplierCode`, `mealPlanSupplements`, and `hotelCode` to load the price of specific meal plan supplements.
+
+**Mandatory input**
+* `clientCode`
+* `supplierCode`
+* `hotelCode`
+* `mealPlanSupplements`
+    * `rateCode`
+    * `paxType`
+    * `mealPlan`
+    * `amountPerPax`
+    * `rooms`
+    * `dateRange`
+        * `start`
+        * `end`
+
+### Field Explanations
+
+* **`clientCode`, `supplierCode`, `hotelCode`:** These fields identify the client, supplier, and hotel for which the meal plan supplement price is being loaded.
+* **`mealPlanSupplements`:** This field contains the details of the meal plan supplements for which the price is being loaded. It includes the `rateCode` of the rate, the `paxType`, the `mealPlan`, the `amountPerPax`, the `rooms` available, and the `dateRange` for which the price is being loaded.
+* **`rateCode`:** The code of the rate for which the price is being loaded.
+* **`paxType`:** The type of passenger for which the supplement applies.
+* **`mealPlan`:** The meal plan for which the supplement is being loaded.
+* **`amountPerPax`:** The price of the supplement per passenger.
+* **`rooms`:** The number of rooms available for the rate.
+* **`dateRange`:** This field specifies the date range for which the price is being loaded.
+
+### Requests Examples
+
+#### Load price for a specific meal plan supplement
+
+With this example, we are going to load the price for a specific meal plan supplement within a specific date range.
+
+<GraphqlSample query={PriceMealplansSupplementsLoadMutation} variables={PriceMealplansSupplementsLoadVariables} />

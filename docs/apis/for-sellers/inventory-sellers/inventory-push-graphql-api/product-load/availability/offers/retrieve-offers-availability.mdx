@@ -1,0 +1,83 @@
+---
+sidebar_position: 4
+---
+
+import {availOffersQuery, availOffersOneRateVariables,availOffersMultiplesRatesVariables} from "/src/graphql/inventory/product-load/retrieve-offers-availability.query";
+
+# Retrieve Offers Availability
+
+The `availOffers` query allows you to retrieve the availability of specific offers in the Inventory. 
+
+## Query Fields
+
+* `success`
+* `offers`
+    * `rateCode`
+    * `offers`
+        * `code`
+        * `stopSales`
+            * `closeMaster`
+            * `closeOnArrival`
+            * `closeOnDeparture`
+    * `dateRange`
+        * `start`
+        * `end`
+* `adviseMessages`
+    * `code`
+    * `description`
+    * `level`
+    * `correlationID`
+    * `external`
+        * `code`
+        * `message`
+
+### Returned Field Explanations
+
+* **`success`:** A boolean that indicates whether the query was successful.
+* **`offers`:** The details of the offers for which the availability was retrieved. It includes the `rateCode` of the offer, the `code` of the specific offer, and any `stopSales` conditions.
+* **`stopSales`:** This field contains conditions that can restrict the availability of the offer. 
+    * **`closeMaster`:** A boolean that indicates whether the offer is closed for the entire date range.
+    * **`closeOnArrival`:** A boolean that indicates whether the offer is closed on arrival.
+    * **`closeOnDeparture`:** A boolean that indicates whether the offer is closed on departure.
+* **`dateRange`:** The date range during which the conditions will be applied. It includes the `start` and `end` dates.
+* **`adviseMessages`:** An array of messages that provide information about the query. Each message includes a `code`, `description`, `level`, `correlationID`, and `external` fields, which indicate whether the message is internal or external and provide the code and message of the external message.
+
+## Query Inputs
+
+When building your `availOffers` query, you have 1 input to fill based on your specific needs:
+
+1. Criteria
+
+### 1. Criteria   
+
+This query will allow you to enter specific details in the fields `clientCode`, `supplierCode`, `hotelCode`, `offers`, and `dateRange` to retrieve the availability of specific offers. 
+
+**Mandatory input**
+* `clientCode`
+* `supplierCode`
+* `hotelCode`
+* `offers`
+    * `rateCode`
+    * `dateRange`
+        * `start`
+        * `end`
+
+### Field Explanations
+
+* **`clientCode`, `supplierCode`, `hotelCode`:** These fields identify the client, supplier, and hotel for which the offer availability is being retrieved.
+* **`offers`:** This field contains the details of the offers for which the availability is being retrieved. It includes the `rateCode` of the offer and the `dateRange` for which the availability is being retrieved.
+* **`dateRange`:** This field specifies the date range for which the availability is being retrieved.
+
+### Requests Examples
+
+#### Retrieve availability for a specific offer
+
+With this example, we are going to retrieve the availability for a specific offer within a specific date range.
+
+<GraphqlSample query={availOffersQuery} variables={availOffersOneRateVariables} />
+
+#### Retrieve availability for multiple offers
+
+With this example, we are going to retrieve the availability for multiple offers within a specific date range.
+
+<GraphqlSample query={availOffersQuery} variables={availOffersMultiplesRatesVariables} />

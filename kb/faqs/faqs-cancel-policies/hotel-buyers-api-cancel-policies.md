@@ -37,13 +37,11 @@ If you have any doubts about the timezone returned by your Seller (for example, 
     | Unknown        | Bypass   | +14 hours offset |
 
 **What do I need to do?**
-- **hoursBefore node:** TravelgateX returns the information as provided by the Seller - no extra hours added on our side. The logic regarding this information should be managed on your side.
+- **hoursBefore node (deprecated):** TravelgateX returns the information as provided by the Seller - no extra hours added on our side. The logic regarding this information should be managed on your side.
 - **deadline node:** TravelgateX returns the calculated deadline information - please check above chart. *Please make sure you use this node*.
 
+:::warning Important:
+The field "HoursBefore" specified the maximum number of hours that could pass before the penalty would apply. To provide more accurate information and maintain competitiveness, we introduced the **"Deadline" node**, which eliminates any ambiguity as it represents a specific date in UTC-0 Standard.
 
-:::info
-The limit in which a booking can be cancelled without penalty is specified on the field **HoursBefore**. This parameter informs about the maximum hours that could pass before the penalty starts to apply.
-
-Transparency is a fundamental value in our culture and as such we avoid modifying the information provided by our partners. For this reason, hoursBefore value from cancellationPolicies will be returned without adding extra hours.
+It is important that you update your logic and **discontinue the use of the hoursBefore node**. Instead, you should utilize the deadline node. This update is applicable to both Hotel-X and Legacy Hotel Buyers API.
 :::
-

@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Channel-X
+# Channel-X Overview
 
 Consolidate contracted products from different Channel Managers into your own system through a standardized API!
 

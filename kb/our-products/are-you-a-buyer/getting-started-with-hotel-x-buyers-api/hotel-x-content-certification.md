@@ -32,4 +32,4 @@ In order for us to be  able to certify the content implementation, we will need 
 
 After completing the certification template, please submit a ticket via the Content step certification in our Connectivity Set Up panel.
 
-![hotelx_content_certification_2](https://storage.travelgate.com/kbase/hotelx_content_certification_2.jpg)
+![onboarding_3](https://storage.travelgate.com/kbase/onboarding_3.jpg)

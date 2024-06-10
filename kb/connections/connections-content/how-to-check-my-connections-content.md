@@ -31,13 +31,13 @@ Efficiently managing your content without relying on TravelgateX intervention is
 		- Last upload
 		- Additional information: you can visualize it by clicking on a property.
 	* "[Force update](/kb/connections/connections-content/how-to-force-portfolio-update)" functionality.
-	* "Get CSV" functionality
+	* "Dowload CSV" functionality
 
 
 ### How can I download the Seller's portfolio in CSV?
 1. Access "My Connections Content" section (follow the steps above) and filter by access/Seller credentials.
-1. Look for the "Get CSV" option next to the Get Content button on the screen.
-1. Click on "Get CSV".
+1. Look for the "Download CSV" option next to the Get Content button on the screen.
+1. Click on "Download CSV".
 
 	![connections_content_4](https://storage.travelgate.com/kbase/connections_content_4.jpg)
 

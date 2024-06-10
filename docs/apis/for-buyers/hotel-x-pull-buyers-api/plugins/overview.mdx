@@ -13,7 +13,7 @@ import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
 <DocCardList items={useCurrentSidebarCategory().items.filter((item, i) => i > 0)}/>
 
 
-To utilize these plugins, simply add and configure the one that suits your needs in your requests. In some cases, you may be required to upload a specific file to your FTP account, which we provide.
+To utilize these plugins, simply add and configure the one that suits your needs in your requests. In some cases, you may be required to upload a specific file to your SFTP account, which we provide.
 
 :::note
 
@@ -22,14 +22,14 @@ There's an option to load default plugins into our database. To explore this, ki
 :::
 
 
-## FTP Files
+## SFTP Files
 
-Upon receiving your Onboarding Welcome Pack, you will be granted access credentials to the FTP server. In the event that you need assistance or have not received your credentials, kindly [open a ticket](https://app.travelgatex.com/tickets) to our Customer Care team to obtain your FTP credentials and initiate your journey.
+Upon receiving your Onboarding Welcome Pack, you will be granted access credentials to the SFTP server. In the event that you need assistance or have not received your credentials, kindly [open a ticket](https://app.travelgatex.com/tickets) to our Customer Care team to obtain your SFTP credentials and initiate your journey.
 
-### FTP Endpoint
+### SFTP Endpoint
 
 ```
-ftp://ftp.xmltravelgate.com
+sftp://sftp.xmltravelgate.com
 ```
 
 ### Directory Format
@@ -39,33 +39,28 @@ The structure of the directory should be in the below format, all files should b
 ```mdx-code-block
 <BrowserWindow>
 
-📁F[Folder code]\_[Unique code]  
+📁HotelX  
 &nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX  _[Unique code]
 
 </BrowserWindow>
 ```
 
-F[Folder code]_[Unique code]
-* Folder code: corresponds to the folder number.
-* Unique code: corresponds to the folder unique code in our system.
-
-HotelX_[Unique code]
-* Unique code: corresponds to the Hotel-X unique code in our system.
+Where "unique code" corresponds to the Hotel-X unique code in our system.
 
 Example: 
 
 ```mdx-code-block
 <BrowserWindow>
 
-📁F0_1781  
+📁HotelX  
 &nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX_1790
 
 </BrowserWindow>
 ```
 
-### Upload FTP Data
+### Upload SFTP Data
 
-To upload an FTP file, follow these simple steps:
+To upload an SFTP file, follow these simple steps:
 
 1. **Upload the File:**
    - Once you've decided on the plugin you want to use, and if it's necessary, simply upload the required CSV file.
@@ -84,17 +79,17 @@ To upload an FTP file, follow these simple steps:
    BuyerContext_SupplierContext_hotel_map_processed.csv
    ```
 
-### Update FTP Data
+### Update SFTP Data
 
-To update an FTP file, follow these simple steps:
+To update an SFTP file, follow these simple steps:
 
 1. If you need to update the information in the file, simply delete the old file.
 2. Upload the new file with the updated information, using the correct name. You don't need to add the "_processed_" tagline to the name; we'll take care of that on our end.
 
-That's it! Updating FTP files is as easy as that.
+That's it! Updating SFTP files is as easy as that.
 
 
-### Delete FTP Data
+### Delete SFTP Data
 
 To delete all the information stored in our system, follow these straightforward steps:
 
@@ -102,13 +97,13 @@ To delete all the information stored in our system, follow these straightforward
    - Create a new file with empty content, including only the headers.
    - Ensure that the file structure, such as column headers, remains intact.
 
-2. **Load the empty file in the FTP folder.**
+2. **Load the empty file in the SFTP folder.**
 
 That's it! By replacing the existing data with an empty file containing headers only, you effectively delete all the information previously loaded into our system.
 
 
 ## How to Execute a Plugin
 
-To execute the plugins, in some cases it is enough to upload the file to the FTP, in other cases you just have to indicate it in the request, and in some cases both actions need to be done, uploading the file to the FTP and indicating it in the request.
+To execute the plugins, in some cases it is enough to upload the file to the SFTP, in other cases you just have to indicate it in the request, and in some cases both actions need to be done, uploading the file to the SFTP and indicating it in the request.
 
 In each of the plugins, you will see a section called "_Execute plugin in your request_", where it will be indicated how to execute that specific plugin.

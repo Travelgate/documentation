@@ -42,8 +42,7 @@ This field is implemented if it’s native to the Seller or if another Search/Qu
 - applyBoth: false: It indicates that one of the conditions (amount or percentage) has to meet the DeltaPrice criteria before reservation.
 - applyBoth: true: It indicates that the new price cannot exceed the amount and percentage indicated by the Buyer.  
 
-
-**Example:**
+Example: Consider that the deltaPrice sets the price tolerance between Quote and Book. For instance, if the Quote stage displays a price of 100€ and the deltaPrice is 5, a change up to 105€ will still secure a confirmed booking.
 
 
 ### Why do I receive a status "ON_REQUEST" and holder name "test" in my test reservations?💡
@@ -56,12 +55,13 @@ The currency used for the transaction will remain the same throughout the entire
 No, you are not required to provide real ages and names for all passengers. You can use default values for each name and age group if the actual information is not available (e.g., 30 for an adult or 12 for a child). The only information that should be real and accurate is the holder's details.
 
 :::info
-Infants and Children: If you do collect ages for infants and children, this information can be utilized to apply any relevant rates or conditions, such as complimentary stays for babies or children, which some channel managers might not be able to load directly.
-Booking Holder as a Passenger: If the holder of the booking is also a passenger, their details should be included in the list of passengers (ResGuests/Guests) to ensure they are accounted for in room occupancy.
+**Infants and Children:** If you do collect ages for infants and children, this information can be utilized to apply any relevant rates or conditions, such as complimentary stays for babies or children, which some channel managers might not be able to load directly.
+
+**Booking Holder as a Passenger:** If the holder of the booking is also a passenger, their details should be included in the list of passengers (ResGuests/Guests) to ensure they are accounted for in room occupancy.
 :::
 
 ### How can I add remarks to a Book request?
-Remarks are comments from the customer for the Seller to take into account. They can be included in the Book request (details can be found in our [Hotel-X Schema](https://api.travelgatex.com/playground)) provided that the Supplier allows for remarks in their reservations - you can check their [Metadata](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-metadata-query) for further information.
+Remarks are comments from the customer for the Seller to take into account. They can be included in the Book request (details can be found in our [Hotel-X Schema](https://docs.travelgate.com/playground/)) provided that the Supplier allows for remarks in their reservations - you can check their [Metadata](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-metadata-query) for further information.
 
 ### How do I define the total number of rooms in my Book request?
 To define the number of rooms in your reservation, you need to utilize the occupancyRefId previously returned in Search response.
@@ -74,35 +74,29 @@ For instance, for a room of two adults:
                     {
                         "name": "TestName",
                         "surname": "Surname",
+                        "title": "Title",
                         "age": 30
                     },
                     {
                         "name": "TestName",
                         "surname": "Surname",
+                        "title": "Title",
                         "age": 30
                     }
                 ]
             }
         ]
-    }
+    
 
 ```
 
 ### What payment details should I add to my Book request?
 The payment type and details to be added in your Book request depend on the payment type returned for the option to be booked - note that payment types depend on the commercial agreement established by a Buyer with their Sellers.
 
-### How can I add the payment details to my Book request?  
-1. **No Credit Card Details**:  
-    When the option to be booked was flagged as "paymentType": MERCHANT, no credit card details are required. E.g.:
-
-    ```js
-    {"query":"mutation ($bookInput: HotelBookInput!, $settings: HotelSettingsInput) {  n hotelX {  n book(input: $bookInput, settings: $settings) {  n booking {  n  t  t  t  thotel {  n  t  t  t  t  thotelCode  n  t  t  t  t}  n price {  n currency  n binding  n net  n gross  n exchange {  n currency  n rate  n }  n markups {  n channel  n currency  n binding  n net  n gross  n exchange {  n currency  n rate  n }  n }  n }  n status  n remarks  n reference {  n client  n supplier  n }  n holder {  n name  n surname  n }  n hotel {  n creationDate  n checkIn  n checkOut  n hotelCode  n hotelName  n boardCode  n occupancies {  n id  n paxes {  n age  n }  n }  n rooms {  n code  n description  n occupancyRefId  n price {  n currency  n binding  n net  n gross  n exchange {  n currency  n rate  n }  n markups {  n channel  n currency  n binding  n net  n gross  n exchange {  n currency  n rate  n }  n }  n }  n }  n }  n }  n errors {  n code  n type  n description  n }  n warnings {  n code  n type  n description  n }  n }  n }  n}  n","variables":{"bookInput":{"optionRefId":"","clientReference":"","deltaPrice":{"amount":0,"percent":0,"applyBoth":true},"holder":{"name":"Test TGX","surname":"Test TGX"},"rooms":[{"occupancyRefId":1,"paxes":[{"name":"Test1","surname":"Test1","age":36},{"name":"Test2","surname":"Test2","age":36}]}]},"settings":{"client":"","testMode":true,"context":"","auditTransactions":true}}}
-    ```
-2. **Credit Card Details**:  
-    When the option to be booked was flagged with any of the following payment types (DIRECT, CARD_BOOKING, CARD_CHECK_IN).
-    ```
-     {"query":"mutation ($bookInput: HotelBookInput!, $settings: HotelSettingsInput) {  n hotelX {  n book(input: $bookInput, settings: $settings) {  n  t  t  tauditData {  n  t  t  t  ttransactions {  n  t  t  t  t  trequest  n  t  t  t  t  tresponse  n  t  t  t  t}  n  t  t  t  ttimeStamp  n  t  t  t}  n booking {  n price {  n currency  n binding  n net  n gross  n exchange {  n currency  n rate  n }  n markups {  n channel  n currency  n binding  n net  n gross  n exchange {  n currency  n rate  n }  n }  n }  n status  n remarks  n reference {  n client  n supplier  n }  n holder {  n name  n surname  n }  n hotel {  n creationDate  n checkIn  n checkOut  n hotelCode  n hotelName  n boardCode  n occupancies {  n id  n paxes {  n age  n }  n }  n rooms {  n code  n description  n occupancyRefId  n price {  n currency  n binding  n net  n gross  n exchange {  n currency  n rate  n }  n markups {  n channel  n currency  n binding  n net  n gross  n exchange {  n currency  n rate  n }  n }  n }  n }  n }  n }  n errors {  n code  n type  n description  n }  n warnings {  n code  n type  n description  n }  n }  n }  n}  n","variables":{"bookInput":{"optionRefId":"","clientReference":"","remarks":"","paymentCard":{"type":"","holder":{"name":"Test1","surname":"Test1"},"number":"","CVC":"","expire":{"month":3,"year":25}},"deltaPrice":{"amount":10,"percent":10,"applyBoth":true},"holder":{"name":"Test KL","surname":"Test KL"},"rooms":[{"occupancyRefId":1,"paxes":[{"name":"Test1","surname":"Test1","age":30},{"name":"Test1","surname":"Test1","age":30}]}]},"settings":{"client":"","testMode":true,"context":"","auditTransactions":true}}}
-    ```
+### How can I add the payment details to my Book request?
+You will be able to find an example of HotelBookInput both for a "paymentType": MERCHANT (no credit card details needed) and for a "paymentType": DIRECT, CARD_BOOKING or CARD_CHECK_IN (credit card details required) in the following links to our Documentation.
+- [**No Credit Card Details** - "paymentType": MERCHANT](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/book#1-input)
+- [**Credit card details required** - "paymentType": DIRECT, CARD_BOOKING or CARD_CHECK_IN](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/book#payment-card)
 
  :::tip
  Don't forget to check our [article](/kb/faqs/faqs-price/payment-types-at-tgx) on Payment Types at TravelgateX!🚀

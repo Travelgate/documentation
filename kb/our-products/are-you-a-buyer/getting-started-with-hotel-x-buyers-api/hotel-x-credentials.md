@@ -4,7 +4,7 @@ sidebar_position: 8
 
 # Hotel-X API Credentials
 
-## Review your API Key, Clients, Accesses and Contexts.
+## Review your API Key, Clients, Accesses and Contexts
 
 Once you have configured your account, you can access our APP and check your Hotel-X credentials and accesses by following this simple guide:
 
@@ -41,22 +41,12 @@ It is possible to have multiple client codes, for instance, in order to differen
 
 ### Context☑️
 
-Context refers to the content codes utilized by both Buyers and Sellers. Each Seller has its own unique context, which may differ between test and production environments. The context includes specific codes for hotels, boards, rooms, etc.
+Context refers to the content codes utilized by both Buyers and Sellers. Each Seller has its own unique context, which may differ between test and production environments. The context includes specific codes for hotels, boards, rooms, etc. You can check this information in [My Connections](https://app.travelgatex.com/connections/myconnections). Additionally, when you activate a new Seller, you will receive the context information along with the credentials in the confirmation email.
 
 Buyers also have the flexibility to either use their own context or choose content providers. In either case, they can create their own context using our [Mapping Plugin](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping). This allows Buyers to align their own context with the Suppliers' context. 
 
-To access the context, simply navigate to the Connections menu and click on "My Connections".
-![hotelx-credentials-new-updated-2](https://storage.travelgate.com/kbase/hotelx-credentials-new-updated-2.jpg)
+:::info What is the difference between access and context?
+The distinction between the two is that an access holds your *credentials* for a specific connection, while a context is the *internal TravelgateX code required to request either the original Supplier hotel codes or your own hotel codes* (previously mapped and uploaded to our FTP).
 
-Then, select the Seller and the information will be displayed.
-
-![hotelx-credentials-new-updated-3](https://storage.travelgate.com/kbase/hotelx-credentials-new-updated-3.jpg)
-
-When you activate a new Seller, the context information will be provided to you along with the credentials in the confirmation email.
-
-### What is the difference between access and context?💡
-The distinction between the two is that an access holds your credentials for a specific connection, while a context is the internal TravelgateX code required to request either the original Supplier hotel codes or your own hotel codes (previously mapped and uploaded to our FTP).
-
-:::info 
-Feel free to check our [Hotel-X Buyers API Documentation](/docs/get-started/key-concepts) for additional information on Hotel-X credentials.
+Explore our Hotel-X Buyers API Documentation to learn more about [Hotel-X credentials](/docs/get-started/key-concepts) and [API Settings](/kb/connections/connections-settings).
 :::

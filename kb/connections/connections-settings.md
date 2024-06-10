@@ -54,7 +54,7 @@ In API Settings, you have the power to view and tweak your Hotel-X Pull Buyers A
 :::info
 Using our Legacy Pull Buyers API? Your clients (or 'hub users') come with an associated password. Retrieve it easily with the "Get password" option:
 
-![api-settings-new-updated-7](https://storage.travelgate.com/kbase/api-settings-new-updated-7.jpg)
+![api-settings-new-updated-7](https://storage.travelgate.com/kbase/apisettings_9.png)
 :::
 
 Now that you've got the hang of it, feel free to explore and customize your API settings to suit your needs. Happy configuring! 🎉

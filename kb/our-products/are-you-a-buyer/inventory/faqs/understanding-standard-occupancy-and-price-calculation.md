@@ -5,7 +5,7 @@ sidebar_position: 2
 # Standard Occupancy and Price Calculation in Inventory
 
 ### What does Standard Occupancy mean?💡
-Standard Occupancy is the **standard number of adult paxes of the room**.
+The Standard Occupancy is the **standard number of adult paxes of the room**.
 
 ### How can I calculate prices according to the Standard Occupancy?💡
 - **Case 1:**
@@ -14,12 +14,11 @@ Standard Occupancy is the **standard number of adult paxes of the room**.
 
 	```
 	<BaseByGuestAmts>
-	   <BaseByGuestAmt NumberOfGuests = "1" AmountAfterTax="50.00"/>
-	   <BaseByGuestAmt NumberOfGuests = "2" AmountAfterTax="100.00"/>
-	</BaseByGuestAmts>
+		<BaseByGuestAmt NumberOfGuests = "2" AmountAfterTax="100.00"/>
+	</BaseByGuestAmts> 
 	```
 
-	The price of two paxes will be 100, and the price for one pax will be 50.
+	The price of two paxes will be 100 (2*(100⁄2) ), and the price for one pax won't be returned.
 
 	:::warning Important:
 	Note that prices per pax under the Standard Occupancy must be specified and prices for babies under the Standard Occupancy will be 0.
@@ -33,14 +32,18 @@ Standard Occupancy is the **standard number of adult paxes of the room**.
 
 	```
 	<BaseByGuestAmts>
-	   <BaseByGuestAmt NumberOfGuests = "2" AmountAfterTax="100.00"/>
-	   </BaseByGuestAmts>
-	   <AdditionalGuestAmounts>
-	   <AdditionalGuestAmount MaxAdditionalGuests = "1" Amount = "50.00" AgeQualifyingCode = "10"/>
+		<BaseByGuestAmt NumberOfGuests = "2" AmountAfterTax="100.00"/>
+	</BaseByGuestAmts>
+	<AdditionalGuestAmounts>
+		<AdditionalGuestAmount MaxAdditionalGuests = "1" Amount = "40.00" AgeQualifyingCode = "10"/>
 	</AdditionalGuestAmounts>
 	``` 
 
-	The price of one pax will be 50 (100⁄2), the price of two paxes will be 100, and the price for three paxes will be 200 = 100 + (100⁄2 + 50).
+	The price of one pax won't be returned, the price of two paxes will be 100 (2*(100⁄2)), and the price for three paxes will be 190 ((100⁄2) + (100⁄2) + ((100⁄2) + 40))
+
+:::info
+Don't forget to check our ['Availability and Price Load'](/docs/apps/inventory/extranet/availability-and-rates/manual-load/availability-and-price) section in the Inventory Documentation for more examples of price calculation.
+:::
 
 ### How can I modify the Standard Occupancy in Inventory?
 Our Inventory Extranet allows for prices to be loaded in 3 different ways:

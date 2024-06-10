@@ -18,5 +18,5 @@ Once you've successfully integrated our "Hotel Push Sellers API," you'll have th
 1. **Fast Connectivity:** Once a connection is requested, the activation process becomes simple and faster. You no longer need to manually load your product through our Extranet for your clients.
 
 :::tip
-Don't forget to check our Full [Documentation](/docs/apis/for-sellers/hotel-push-sellers-api/quickstart) for more information on our Inventory Extranet and all its functionalities!🚀
+Don't forget to check our Full [Documentation](/docs/apis/for-sellers/inventory-sellers/hotel-push-sellers-api/quickstart) for more information on our Inventory Extranet and all its functionalities!🚀
 :::

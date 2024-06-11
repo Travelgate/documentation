@@ -151,7 +151,7 @@ The response options include either **success** or an **error**. In the event of
       </CancelPenalty>
    </CancelPenalties>
    <Fees>
-      <Fee includedPriceOption = "true" description = "TaxAndServiceFee">
+      <Fee includedPriceOption = "true" description = "TaxAndServiceFee" mandatory = "true" refundable = "false">
          <Price currency = "EUR" amount = "8.11" binding = "false" commission = "-1" minimumSellingPrice="-1"/>
          <Code>SPE</Code>
       </Fee>
@@ -203,9 +203,11 @@ The response options include either **success** or an **error**. In the event of
 | @code   				    | 1          | String   | <details>     <summary>Credit Card codes</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Code</strong>  						 </th>  						 <th>  							 <strong>Name</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>VI</td>  						 <td>Visa</td>  					 </tr>  					 <tr>  						 <td>AX</td>  						 <td>American Express</td>  					 </tr>                     <tr>  						 <td>BC</td>  						 <td>BC Card</td>  					 </tr>  					 <tr>  						 <td>CA</td>  						 <td>MasterCard</td>  					 </tr>  					 <tr>  						 <td>CB</td>  						 <td>Carte Blanche</td>  					 </tr>                     <tr>  						 <td>CU</td>  						 <td>China Union Pay</td>  					 </tr>  					 <tr>  						 <td>DS</td>  						 <td>Discover</td>  					 </tr>  					 <tr>  						 <td>DC</td>  						 <td>Diners Club</td>  					 </tr>                     <tr>  						 <td>T</td>  						 <td>Carta Si</td>  					 </tr>                     <tr>  						 <td>R</td>  						 <td>Carte Bleue</td>  					 </tr>                     <tr>  						 <td>N</td>  						 <td>Dankort</td>  					 </tr>                     <tr>  						 <td>L</td>  						 <td>Delta</td>  					 </tr>                     <tr>  						 <td>E</td>  						 <td>Electron</td>  					 </tr>                     <tr>  						 <td>JC</td>  						 <td>Japan Credit Bureau</td>  					 </tr>                     <tr>  						 <td>TO</td>  						 <td>Maestro</td>  					 </tr>                     <tr>  						 <td>S</td>  						 <td>Switch</td>  					 </tr>                     <tr>  						 <td>EC</td>  						 <td>Electronic Cash</td>  					 </tr>                     <tr>  						 <td>EU</td>  						 <td>EuroCard</td>  					 </tr>                     <tr>  						 <td>TP</td>  						 <td>Universal air travel card</td>  					 </tr>                     <tr>  						 <td>OP</td>  						 <td>optima</td>  					 </tr>                     <tr>  						 <td>ER</td>  						 <td>Air Canada/RnRoute</td>  					 </tr>                     <tr>  						 <td>XS</td>  						 <td>access</td>  					 </tr>                     <tr>  						 <td>O</td>  						 <td>others</td>  					 </tr>  				 </tbody>  			</table>         </div>     </div> </details> |
 | ValuationRS/Fees				    | 0..1       | 	    | Contains a list of fees. |
 | Fees/Fee				    | 1..n       |          |  |
-| Fee/Code		    	    | 1          |   String | Specifies the fee code in case it has one. |
 | @includedPriceOption			    | 1		 | Boolean  | Indicates if the fee is included or not in the final price (value indicated in the node Price in ValuationRS). |
 | @description				    | 1          | String   | Remarks regarding fee. |
+| @mandatory 				            | 1             | Boolean       | If the fee is obligatory, depending on the includedPriceOption to know if it is paid at the time of booking or at the hotel. In case it is false, it could be a fee such as "cleaning" that the consumer could hire if he wanted. |
+| @refundable 				            | 1             | Boolean       | This field will serve to know if the rate to be paid is returned, for example when it is a deposit type that is returned once the stay ends. |
+| Fee/Code		    	    | 1          |   String | Specifies the fee code in case it has one. |
 | Fee/Price			    | 1          |          |  |
 | @currency 				    | 1          | String   | Currency code (Our system uses a standard ISO - 3 for all suppliers). |
 | @amount 				    | 1          | Decimal  | Fee Amount. |

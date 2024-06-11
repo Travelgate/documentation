@@ -31,7 +31,7 @@ Each amendment type must be performend in two steps: a Query and a Mutation:
 
 To learn more about Amendments, including which modifications a Seller allows and what can or cannot be changed through mutations, please review the Seller's **[Metadata](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-metadata-query)** response.
 
-![metadata-amends-1](https://storage.travelgate.com/kbase/metadata-amends-1.jpg)
+![amendments_upd](https://storage.travelgate.com/kbase/amendments_upd.jpg)
 
 :::info
 You will find further information and examples about booking modifications in our [Hotel-X Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/amendments/).

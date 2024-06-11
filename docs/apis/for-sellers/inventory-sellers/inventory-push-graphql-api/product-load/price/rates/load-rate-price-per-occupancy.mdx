@@ -1,0 +1,107 @@
+---
+sidebar_position: 3
+---
+
+import {priceRatesPerOccupancyLoadMutation, priceRatesPerOccupancyLoadVariables} from "/src/graphql/inventory/product-load/load-rate-price-per-occupancy.mutation";
+
+# Load Rate Price Per Occupancy
+
+The `loadPriceRates` mutation allows you to load the price of specific rates per occupancy in the Inventory.
+
+## Mutation Fields
+
+* `success`
+* `rates`
+    * `rateCode`
+    * `currency`
+    * `rooms`
+    * `dateRange`
+        * `start`
+        * `end`
+    * `prices`
+        * `pricesPerOccupancy`
+            * `prices`
+                * `amount`
+                * `numberOfAdults`
+                * `numberOfChildren`
+                * `numberOfInfants`
+    * `applicableWeekdays`
+        * `all`
+        * `monday`
+        * `tuesday`
+        * `wednesday`
+        * `thursday`
+        * `friday`
+        * `saturday`
+        * `sunday`
+* `adviseMessages`
+    * `code`
+    * `description`
+    * `level`
+    * `correlationID`
+    * `external`
+        * `code`
+        * `message`
+
+### Returned Field Explanations
+
+* **`success`:** A boolean that indicates whether the mutation was successful.
+* **`rates`:** The details of the rates for which the price was loaded. It includes the `rateCode` of the rate, the `rooms` available, and the `prices`.
+* **`rateCode`:** The code of the rate for which the price is being loaded.
+* **`currency`:** The currency in which the price is being loaded.
+* **`rooms`:** The number of rooms available for the rate.
+* **`dateRange`:** The date range during which the conditions will be applied. It includes the `start` and `end` dates.
+* **`prices`:** This field contains the price details for the rate. It includes the `pricesPerOccupancy`.
+* **`pricesPerOccupancy`:** The price details per occupancy. It includes the `prices`.
+* **`prices`:** The price details for each occupancy. It includes the `amount`, `numberOfAdults`, `numberOfChildren`, and `numberOfInfants`.
+* **`applicableWeekdays`:** The days of the week for which the price is being loaded. It includes the `all`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, and `sunday` fields.
+* **`adviseMessages`:** An array of messages that provide information about the mutation. Each message includes a `code`, `description`, `level`, `correlationID`, and `external` fields, which indicate whether the message is internal or external and provide the code and message of the external message.
+
+## Mutation Inputs
+
+When creating your `loadPriceRates` mutation, you have 1 input to fill based on your specific needs:
+
+1. Criteria
+
+### 1. Criteria   
+
+This mutation will allow you to enter specific details in the fields `clientCode`, `supplierCode`, `rates`, and `hotelCode` to load the price of specific rates per occupancy.
+
+**Mandatory input**
+* `clientCode`
+* `supplierCode`
+* `hotelCode`
+* `rates`
+    * `rateCode`
+    * `currency`
+    * `rooms`
+    * `prices`
+        * `pricesPerOccupancy`
+            * `prices`
+                * `amount`
+                * `numberOfAdults`
+                * `numberOfChildren`
+                * `numberOfInfants`
+    * `dateRange`
+        * `start`
+        * `end`
+
+### Field Explanations
+
+* **`clientCode`, `supplierCode`, `hotelCode`:** These fields identify the client, supplier, and hotel for which the rate price is being loaded.
+* **`rates`:** This field contains the details of the rates for which the price is being loaded. It includes the `rateCode` of the rate, the `currency`, the `rooms` available, the `prices`, and the `dateRange` for which the price is being loaded.
+* **`rateCode`:** The code of the rate for which the price is being loaded.
+* **`currency`:** The currency in which the price is being loaded.
+* **`rooms`:** The number of rooms available for the rate.
+* **`prices`:** This field contains the price details for the rate. It includes the `pricesPerOccupancy`.
+* **`pricesPerOccupancy`:** The price details per occupancy. It includes the `prices`.
+* **`prices`:** The price details for each occupancy. It includes the `amount`, `numberOfAdults`, `numberOfChildren`, and `numberOfInfants`.
+* **`dateRange`:** This field specifies the date range for which the price is being loaded.
+
+### Requests Examples
+
+#### Load price for a specific rate per occupancy
+
+With this example, we are going to load the price for a specific rate per occupancy within a specific date range.
+
+<GraphqlSample query={priceRatesPerOccupancyLoadMutation} variables={priceRatesPerOccupancyLoadVariables} />

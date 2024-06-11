@@ -36,8 +36,3 @@ If you have any doubts about the timezone returned (for example, if TimeZone is 
     | TimeZone        | Bypass   | Conversion to UTC-0 |
     | Unknown        | Bypass   | +14 hours offset |
 
-:::info
-The limit in which a booking can be cancelled without penalty is specified on the field **HoursBefore**. This parameter informs about the maximum hours that could pass before the penalty starts to apply.
-
-Transparency is a fundamental value in our culture and as such we avoid modifying the information provided by our partners. For this reason, hoursBefore value from cancellationPolicies will be returned without adding extra hours.
-:::

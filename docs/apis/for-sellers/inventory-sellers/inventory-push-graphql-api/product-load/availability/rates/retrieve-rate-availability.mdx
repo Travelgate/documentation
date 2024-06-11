@@ -1,0 +1,101 @@
+---
+sidebar_position: 3
+---
+
+import {availRatesQuery, availRatesVariables, availRatesVariablesWithRooms} from "/src/graphql/inventory/product-load/retrieve-rate-availability.query";
+
+# Retrieve Rate Availability
+
+The `availRates` query allows you to retrieve the availability of specific rates in the Inventory. 
+
+## Query Fields
+
+* `success`
+* `rates`
+    * `rateCode`
+    * `rooms`
+    * `restrictions`
+        * `bookingLimit`
+        * `minRelease`
+        * `maxRelease`
+        * `freeSales`
+        * `lengthOfStay`
+            * `fullStay`
+                * `minimum`
+                * `maximum`
+            * `arrival`
+                * `minimum`
+                * `maximum`
+    * `applicableWeekdays`
+        * `all`
+        * `monday`
+        * `tuesday`
+        * `wednesday`
+        * `thursday`
+        * `friday`
+        * `saturday`
+        * `sunday`
+    * `dateRange`
+        * `start`
+        * `end`
+* `adviseMessages`
+    * `code`
+    * `description`
+    * `level`
+    * `correlationID`
+    * `external`
+        * `code`
+        * `message`
+
+### Returned Field Explanations
+
+* **`success`:** A boolean that indicates whether the query was successful.
+* **`rates`:** The details of the rates for which the availability was retrieved. It includes the `rateCode` of the rate, the `rooms` available, and any `restrictions`.
+* **`restrictions`:** This field contains conditions that can restrict the availability of the rate. 
+    * **`bookingLimit`:** The maximum number of rooms that can be booked.
+    * **`minRelease`:** The minimum number of days before the arrival date that the rate can be booked.
+    * **`maxRelease`:** The maximum number of days before the arrival date that the rate can be booked.
+    * **`freeSales`:** A boolean that indicates whether the rate is available for free sale.
+    * **`lengthOfStay`:** The minimum and maximum length of stay for the rate.
+* **`dateRange`:** The date range during which the conditions will be applied. It includes the `start` and `end` dates.
+* **`adviseMessages`:** An array of messages that provide information about the query. Each message includes a `code`, `description`, `level`, `correlationID`, and `external` fields, which indicate whether the message is internal or external and provide the code and message of the external message.
+
+## Query Inputs
+
+When building your `availRates` query, you have 1 input to fill based on your specific needs:
+
+1. Criteria
+
+### 1. Criteria   
+
+This query will allow you to enter specific details in the fields `clientCode`, `supplierCode`, `rates`, and `hotelCode` to retrieve the availability of specific rates. 
+
+**Mandatory input**
+* `clientCode`
+* `supplierCode`
+* `hotelCode`
+* `rates`
+    * `rateCode`
+    * `dateRange`
+        * `start`
+        * `end`
+
+### Field Explanations
+
+* **`clientCode`, `supplierCode`, `hotelCode`:** These fields identify the client, supplier, and hotel for which the rate availability is being retrieved.
+* **`rates`:** This field contains the details of the rates for which the availability is being retrieved. It includes the `rateCode` of the rate and the `dateRange` for which the availability is being retrieved.
+* **`dateRange`:** This field specifies the date range for which the availability is being retrieved.
+
+### Requests Examples
+
+#### Retrieve availability for a specific rate
+
+With this example, we are going to retrieve the availability for a specific rate within a specific date range.
+
+<GraphqlSample query={availRatesQuery} variables={availRatesVariables} />
+
+#### Retrieve availability for a specific rate and room
+
+With this example, we are going to retrieve the availability for a specific rate and specific room within a specific date range.
+
+<GraphqlSample query={availRatesQuery} variables={availRatesVariablesWithRooms} />

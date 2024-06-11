@@ -109,7 +109,7 @@ The amount of information returned might vary between Sellers.
 
 :::info
 
-Check the values you need to add in the [header](../making-requests/request-headers) and [common elements](../making-requests/common-elements).
+Check the values you need to add in the [header](/docs/apis/for-buyers/legacy-pull-buyers-api/making-requests/request-headers) and [common elements](/docs/apis/for-buyers/legacy-pull-buyers-api/making-requests/common-elements).
 
 :::
 
@@ -485,13 +485,13 @@ The response options include either **success** or an **error**. In the event of
 | @description				            | 1             | String        | Remarks regarding fee.                                                                        |
 | @mandatory 				            | 1             | Boolean       | If the fee is obligatory, depending on the includedPriceOption to know if it is paid at the time of booking or at the hotel. In case it is false, it could be a fee such as "cleaning" that the consumer could hire if he wanted. |
 | @refundable 				            | 1             | Boolean       | This field will serve to know if the rate to be paid is returned, for example when it is a deposit type that is returned once the stay ends. |
+| Fee/Code | 1 | String | Specifies the fee code in case it has one.                                          |
 | Fee/Price | 1 | |                                                                 |
 | @currency 				            | 1             | String        | Currency code (Our system uses a standard ISO - 3 for all suppliers).                                                                                |
 | @amount 				                | 1             | Decimal       | Fee Amount.                                                                                   |
 | @binding				                | 1             | Boolean       | If binding is set as true, then the client can’t sell the product for a lower price that the one set by the supplier. If it set as as false, the client can sell the product for a lower price. |
 | @commission				            | 1             | Decimal       | <details>     <summary>Commission Scenarios</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Commission</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>0</td>  						 <td>The price returned is net.</td>  					 </tr>  					 <tr>  						 <td>-1</td>  						 <td>The supplier has not supplied the sale price nor the commission. This information is in the commercial contract with the supplier.</td>  					 </tr>           <tr>  						 <td>Greater than 0</td>  						 <td>X = % of the commission applied to the amount.</td>  					 </tr>				 </tbody>  			</table>         </div>     </div> </details> |
 | @minimumSellingPrice 				   | 1 		    | Decimal 	    | Indicates the minimum selling price it can be sold (determined by the Seller). If is specified (different than "-1"), that field takes preference to amount.		<details>     <summary>Minimum Selling Price Scenarios</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Minimum Selling Price</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody> <tr>  						 <td>0</td>  						 <td>No minimum selling price is provided.</td>  					 </tr>       <tr>  						 <td>-1</td>  						 <td>We have no information about MSP from the Seller.</td>  					 </tr>     <tr>  						 <td>Greater than 0</td>  						 <td>The lowest possible amount that can be sold commercially.</td>  					 </tr>				 </tbody>  			</table>         </div>     </div> </details> |
-| Fee/Code | 1 | String | Specifies the fee code in case it has one.                                          |
 | Room/CancelPenalties | 0..1|  | List of cancellation penalties. (see [MetaData](../content/meta-data/) in order to verify if the supplier implements it). |
 | @nonRefundable | 1 |  Boolean | Indicates if it is refundable or no. |
 | CancelPenalties/CancelPenalty | 0..1|  |  |

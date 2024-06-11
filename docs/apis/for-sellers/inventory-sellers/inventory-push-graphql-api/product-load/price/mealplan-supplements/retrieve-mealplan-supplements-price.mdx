@@ -1,0 +1,95 @@
+---
+sidebar_position: 3
+---
+
+import {priceMealplanSupplementsQuery, priceMealplanSupplementsRoomVariables, priceMealplanSupplementsRoomsVariables} from "/src/graphql/inventory/product-load/retrieve-mealplan-supplements-price.query";
+
+# Retrieve Mealplan Supplements Price
+
+The `priceMealPlanSupplements` query allows you to retrieve the price of specific meal plan supplements in the Inventory. 
+
+## Query Fields
+
+* `success`
+* `mealPlanSupplements`
+    * `rateCode`
+    * `rooms`
+    * `paxType`
+    * `mealPlan`
+    * `amountPerPax`
+    * `applicableWeekdays`
+        * `all`
+        * `monday`
+        * `tuesday`
+        * `wednesday`
+        * `thursday`
+        * `friday`
+        * `saturday`
+        * `sunday`
+    * `dateRange`
+        * `start`
+        * `end`
+* `adviseMessages`
+    * `code`
+    * `description`
+    * `level`
+    * `correlationID`
+    * `external`
+        * `code`
+        * `message`
+
+### Returned Field Explanations
+
+* **`success`:** A boolean that indicates whether the query was successful.
+* **`mealPlanSupplements`:** The details of the meal plan supplements for which the price was retrieved. It includes the `rateCode` of the rate, the `rooms` available, and the `amountPerPax`.
+* **`rateCode`:** The code of the rate for which the meal plan supplement price is being retrieved.
+* **`rooms`:** The number of rooms available for the rate.
+* **`paxType`:** The type of passenger for which the meal plan supplement price is being retrieved.
+* **`mealPlan`:** The type of meal plan for which the supplement price is being retrieved.
+* **`amountPerPax`:** The price per passenger for the meal plan supplement.
+* **`applicableWeekdays`:** The days of the week for which the meal plan supplement price is being retrieved.
+* **`dateRange`:** The date range during which the conditions will be applied. It includes the `start` and `end` dates.
+* **`adviseMessages`:** An array of messages that provide information about the query. Each message includes a `code`, `description`, `level`, `correlationID`, and `external` fields, which indicate whether the message is internal or external and provide the code and message of the external message.
+
+## Query Inputs
+
+When building your `priceMealPlanSupplements` query, you have 1 input to fill based on your specific needs:
+
+1. Criteria
+
+### 1. Criteria   
+
+This query will allow you to enter specific details in the fields `clientCode`, `supplierCode`, `mealPlanSupplements`, and `hotelCode` to retrieve the price of specific meal plan supplements. 
+
+**Mandatory input**
+* `clientCode`
+* `supplierCode`
+* `hotelCode`
+* `mealPlanSupplements`
+    * `rateCode`
+    * `rooms`
+    * `dateRange`
+        * `start`
+        * `end`
+
+### Field Explanations
+
+* **`clientCode`, `supplierCode`, `hotelCode`:** These fields identify the client, supplier, and hotel for which the meal plan supplement price is being retrieved.
+* **`mealPlanSupplements`:** This field contains the details of the meal plan supplements for which the price is being retrieved. It includes the `rateCode` of the rate and the `dateRange` for which the price is being retrieved.
+* **`rateCode`:** The code of the rate for which the meal plan supplement price is being retrieved.
+* **`rooms`:** The number of rooms available for the rate.
+* **`dateRange`:** This field specifies the date range for which the price is being retrieved.
+
+### Requests Examples
+
+#### Retrieve price for a specific meal plan supplement
+
+With this example, we are going to retrieve the price for a specific meal plan supplement within a specific date range.
+
+<GraphqlSample query={priceMealplanSupplementsQuery} variables={priceMealplanSupplementsRoomVariables} />
+
+#### Retrieve price for multiple meal plan supplements
+
+In this example, we are going to retrieve the price for multiple meal plan supplements for more than one room and a specific rate within a certain date range.
+
+<GraphqlSample query={priceMealplanSupplementsQuery} variables={priceMealplanSupplementsRoomsVariables} />

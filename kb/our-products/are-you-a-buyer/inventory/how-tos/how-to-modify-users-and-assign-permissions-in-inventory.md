@@ -2,12 +2,12 @@
 sidebar_position: 2
 ---
 
-# How to modify users and assign permissions in Inventory
+# How to modify users and assign permissions in our Inventory Extranet
 
 
 TravelgateX Inventory Extranet empowers Buyers to manage usernames for hoteliers and other users, allowing them to create, modify, or delete their accounts.
 
-Each user role defines the **actions** that can be performed and the **sections** of the Extranet that can be accessed.
+Each user role defines the **actions** that can be performed and the **sections** of the Inventory Extranet that can be accessed.
 
 ### What are the different user roles that can be assigned in our Inventory Extranet?🛠️
 1. **Client:** they are able to see all the information regarding hotels assigned to them regardless of the provider. They are able to make changes to these hotels.

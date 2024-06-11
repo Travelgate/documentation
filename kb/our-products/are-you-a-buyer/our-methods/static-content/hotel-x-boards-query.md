@@ -17,9 +17,7 @@ Don't forget to check our [Hotel-X Pull Buyers API Documentation](/docs/apis/for
 
 
 ### How can I filter my Boards Query?🔎
-To filter your results and receive specific board/s, you can include the "boardCodes" field in your criteria and specify the desired board/s.
-
-![boards_query_1](https://storage.travelgate.com/kbase/boards_query_1.jpg)
+To filter your results and receive specific board/s, you can include the "**boardCodes**" field in your criteria and specify the desired board/s.
 
 ### What can I expect to receive in Boards Query response?
 - Code

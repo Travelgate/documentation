@@ -88,7 +88,7 @@ export default function Home() {
                   <img src="https://storage.travelgate.com/docs/home_docs_browse_hotelpush.svg" />
                   <h4>Hotel Push Sellers API</h4>
                   <p>By combining Inventory tool and the Hotel Push Sellers API, Sellers can push their products into Travelgate database, making them accessible to Buyers.</p>
-                  <p><a href="/docs/apis/for-sellers/hotel-push-sellers-api/quickstart">Quickstart guide <i className="fa-solid fa-chevron-right"></i></a></p>
+                  <p><a href="/docs/apis/for-sellers/inventory-sellers/hotel-push-sellers-api/quickstart">Quickstart guide <i className="fa-solid fa-chevron-right"></i></a></p>
                 </div>
               </div>
             </div>

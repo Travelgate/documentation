@@ -52,6 +52,15 @@ const config = {
 
   scripts: [
     'https://kit.fontawesome.com/e1e13599a5.js',
+    {
+      src: 'https://widget.kapa.ai/kapa-widget.bundle.js',
+      defer: true,
+      'data-website-id': '22c9d321-f9d2-48e3-958b-a5789f17c4b7',
+      'data-project-name': 'Travelgate',
+      'data-project-color': '#0B59DE',
+      'data-project-logo': 'https://cdn-images-1.medium.com/v2/resize:fit:1200/1*_Y8EEzS2C00NePogZVB2vQ.png',
+      'data-modal-disclaimer': 'This is a custom LLM for answering questions about Travelgate. Answers are based on the contents of the documentation. This feature is experimental - rate the answers to let us know what you think!',
+    }
   ],
 
   plugins:[
@@ -76,6 +85,11 @@ const config = {
         loaders: {
           UrlLoader: {
             module: "@graphql-tools/url-loader",
+            options: {
+              headers: {
+                Authorization: `Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik5UZzBPREJGTVRSQ1JURXdOVFEyUkRBek9UbEJRemN4TkVZMU5EUkRPVVJCTVVNMlJqZzVPQSJ9.eyJodHRwczovL3RyYXZlbGdhdGV4LmNvbS9pYW0iOlt7ImEiOm51bGwsImMiOiJ4dGciLCJnIjpbeyJhIjp7ImFsbCI6eyJhbGwiOnsiYWxsIjpbImNydWQxeGEiXX19fSwiYyI6InN0YWZmIiwiZyI6bnVsbCwicCI6eyJpYW0iOnsiZ3JwIjpbInIxIl0sIm1iciI6WyJyMSJdfX0sInQiOiJURUFNIn0seyJhIjp7ImFsbCI6eyJhbGwiOnsiYWxsIjpbImNydWQxYSJdfX19LCJjIjoiYWRtaW4iLCJnIjpudWxsLCJwIjp7ImlhbSI6eyJncnAiOlsicjEiXSwibWJyIjpbInIxIl19fSwidCI6IlRFQU0ifV0sInAiOm51bGwsInQiOiJST09UIn1dLCJodHRwczovL3RyYXZlbGdhdGV4LmNvbS9tZW1iZXJfaWQiOiJjYWxpbkB0cmF2ZWxnYXRlLmNvbSIsImh0dHBzOi8vdHJhdmVsZ2F0ZXguY29tL2lzX3RneCI6dHJ1ZSwiaHR0cHM6Ly90cmF2ZWxnYXRleC5jb20vb3JnIjpbeyJvIjoidGd4IiwiciI6IkVESVRPUiJ9XSwibmlja25hbWUiOiJjYWxpbiIsIm5hbWUiOiJjYWxpbkB0cmF2ZWxnYXRlLmNvbSIsInBpY3R1cmUiOiJodHRwczovL3MuZ3JhdmF0YXIuY29tL2F2YXRhci9iMDkwYmQ5Zjk2ZmU3MmRiMWMyM2NiNDkzZmVhYzAyYj9zPTQ4MCZyPXBnJmQ9aHR0cHMlM0ElMkYlMkZjZG4uYXV0aDAuY29tJTJGYXZhdGFycyUyRmNhLnBuZyIsInVwZGF0ZWRfYXQiOiIyMDI0LTA1LTMxVDA1OjM2OjAyLjQ3M1oiLCJlbWFpbCI6ImNhbGluQHRyYXZlbGdhdGUuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImlzcyI6Imh0dHBzOi8veHRnLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJERGtyNTZ3bmZxWW5PTjZMZHZUT21aQlJrZXZZZ1lNdiIsImlhdCI6MTcxNzEzMzc5NiwiZXhwIjoxNzE3MTY5Nzk2LCJzdWIiOiJhdXRoMHw2M2I1ODExNWJiNDU5NmRkNmRmMGVjYzAiLCJhY3IiOiJodHRwOi8vc2NoZW1hcy5vcGVuaWQubmV0L3BhcGUvcG9saWNpZXMvMjAwNy8wNi9tdWx0aS1mYWN0b3IiLCJhbXIiOlsibWZhIl0sImF0X2hhc2giOiJXQ0xCUkVZMFJibnh5SlFKdE1ZQTB3Iiwic2lkIjoiLVlqQnVKd0hiOGdoODdzd1pDc1hXRVZ2WWtpZ0c3UW8iLCJub25jZSI6Im1-Ui1NMy1mWDUxUE8tYlZsUW1lUWVIdmd5OHh4OVBOIn0.N39mjt4_01JJAT6zn1e48vVn9swHN9aunuRnPJM24Fz87rqKDWYy35gQogJ_k7yItyIYdg7j2nUQNsNjUZIwU2Y3ZuXBFXskNlVa1RmXF36nQ4VYiFy22bCnLc8nxQ9gfAXETwOyKhqLXYK0k8NuePcVCILWC1TU2Dy6yLUj_v24HmAwmBUIvlDctTn-0uNdAaHbwx_rRwERAvpRupslBpEOTlWYRWxf1Nx4H7oCeXcal2-ttIzPJjuzZVPkC0nF513sl9A9GJrYbuTP9a7vefvVpxXrwlyAQkS6SYeEt8SSsMRjD3mC9MObB_S0_isD4gzVOk8iFWIvN9_KcoONgw`,
+              }
+            }
           }
         }
       },

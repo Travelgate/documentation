@@ -52,6 +52,15 @@ const config = {
 
   scripts: [
     'https://kit.fontawesome.com/e1e13599a5.js',
+    {
+      src: 'https://widget.kapa.ai/kapa-widget.bundle.js',
+      defer: true,
+      'data-website-id': '22c9d321-f9d2-48e3-958b-a5789f17c4b7',
+      'data-project-name': 'Travelgate',
+      'data-project-color': '#0B59DE',
+      'data-project-logo': 'https://cdn-images-1.medium.com/v2/resize:fit:1200/1*_Y8EEzS2C00NePogZVB2vQ.png',
+      'data-modal-disclaimer': 'This is a custom LLM for answering questions about Travelgate. Answers are based on the contents of the documentation. This feature is experimental - rate the answers to let us know what you think!',
+    }
   ],
 
   plugins:[
@@ -75,7 +84,7 @@ const config = {
         //homepage: "./docs/api-reference.md",
         loaders: {
           UrlLoader: {
-            module: "@graphql-tools/url-loader",
+            module: "@graphql-tools/url-loader"
           }
         }
       },

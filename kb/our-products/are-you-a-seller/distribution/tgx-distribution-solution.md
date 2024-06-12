@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 # TravelgateX Distribution Solution
@@ -57,6 +57,32 @@ Once you acquire new incremental product from other Suppliers that require aggre
 1. Map the properties with those already existing in your mapping files.
 1. Upload the new Supplier mapping file with your master ID and the Supplier code.
 Once you've established your connections, agencies, and business rules, you're all set to start selling through your very own Bedbank without the hassle of API development! It's that simple!
+
+### As a Seller using the Distribution solution, is there any way to control the currency that we return to our Buyers?
+
+Yes, as a Seller using the Distribution solution, you have several ways to control the currency that you return to your Buyers/Agencies. Here are some of the rules you can set:
+
+1. **Force Requested Currency:**  
+   If the requested currency is forced to be returned, all the sellings of the response have to be returned with the currency received on the request. If a selling is not received from the supplier with the correct currency then it must be exchanged to it. If it cannot be exchanged then the selling will be discarded. By default, the requested currency is not forced. This rule can only be set by the agency. More details [here](/docs/apps/distribution/extranet/general-settings/configuration/currencies/#force-requested-currency).
+
+2. **Allowed Currencies:**  
+	With this rule, you can set a default currency and a list of currencies and so force all the sellings of the response to be returned with any of these currencies.  
+
+	If a selling is not received from the supplier for a currency of the list then it will be exchanged to the default currency. If it cannot be exchanged then the selling will be discarded. 
+
+	By default, this rule is not set for any currency. This rule can only be set by the agency. More details [here](/docs/apps/distribution/extranet/general-settings/configuration/currencies/#allowed-currencies).
+
+3. **Allow Currency Exchange:**  
+	This rule has two modes of operation - "Do not allow exchange and apply filters" and "Allow only custom exchange". The first mode allows you to set a list of currencies and force all the sellings of the response to be returned with any of these currencies. The second mode allows you to set a default currency and a list of admitted currencies.
+	
+	If a selling is received from the supplier with a currency not included on the admitted ones then this currency must be exchanged to the default currency. If it cannot be exchanged then the selling will be discarded.
+	
+	By default, this rule is not set for none of the modes. This rule can only be set by the agency. More details [here](/docs/apps/distribution/extranet/general-settings/configuration/currencies/#allow-currency-exchange).
+
+	:::warning
+	Remember to be careful when setting various currency rules as they can create a conflict and some sellings can be discarded unwittingly. It is strongly recommended to use only the 'Allow Currency Exchange' rule if possible.
+	:::
+
 
 ### How can I start working as a Distribution Seller?🌟
 By becoming a Distribution Seller and setting up your account, you'll have the opportunity to showcase your product to numerous Buyers within the vibrant TravelgateX Ecosystem. Get ready to unlock new possibilities and expand your reach!

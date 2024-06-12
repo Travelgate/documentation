@@ -37,7 +37,7 @@ export default function AskAi() {
     return (
         <Layout title="Ask AI" description="AI assistant for Travelgate documenatation">
             <div className={clsx('na', styles.customContainer)}>
-            <iframe src="/ask-ai.html" title="Ask AI"></iframe>
+            <iframe src="/kapa.html" title="Ask AI"></iframe>
             </div>
         </Layout>
     );

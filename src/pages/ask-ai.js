@@ -11,12 +11,33 @@ export default function AskAi() {
             if (element) {
                 element.classList.add('d-none');
             }
+
+            // Search for footer > .container and add d-none class
+            const footerContainer = document.querySelector('footer > .container');
+            if (footerContainer) {
+                footerContainer.classList.add('d-none');
+            }
+
+            const footer = document.querySelector('footer');
+            if (footer) {
+                footer.classList.add('p-20');
+            }
         };
 
         const showElement = () => {
             const element = document.getElementById('kapa-widget-container'); // Use the appropriate ID
             if (element) {
                 element.classList.remove('d-none');
+            }
+
+            const footerContainer = document.querySelector('footer > .container');
+            if (footerContainer) {
+                footerContainer.classList.remove('d-none');
+            }
+
+            const footer = document.querySelector('footer');
+            if (footer) {
+                footer.classList.remove('p-20');
             }
         };
 

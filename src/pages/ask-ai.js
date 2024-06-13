@@ -57,6 +57,15 @@ export default function AskAi() {
     }, []);
     return (
         <Layout title="Ask AI" description="AI assistant for Travelgate documenatation">
+            <div className='container'>
+                <div className='row'>
+                    <div className='col col--12'>
+                        <div className='section-title margin-top--lg margin-bottom--none'>
+                            <h3>Travelgate Developer AI Assistant.</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div className={clsx('na', styles.customContainer)}>
             <iframe src="/kapa.html" title="Ask AI"></iframe>
             </div>

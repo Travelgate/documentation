@@ -2,6 +2,9 @@
 sidebar_position: 6
 ---
 
+import {remarksAmendmentQuoteQuery, remarksAmendmentQuoteVariables} from "../../../../../../src/graphql/hotel-x/remarks.amendment.quote.query";
+import {remarksAmendmentCommitMutation, remarksAmendmentCommitVariables} from "../../../../../../src/graphql/hotel-x/remarks.amendment.commit.mutation";
+
 # Amend Remarks
 
 The Amend Dates operation enables you to change the booking's remarks. To make a modification to your booking accurately, you should begin by executing the 'quote amend' query to confirm the feasibility of the change and its associated price. After obtaining this information, you can proceed to implement the amendment using the 'commit' mutation, which will finalize the modification in the Seller's system.
@@ -32,7 +35,7 @@ When creating your quote amend query, you have two different inputs to fill base
 
 ### 1. Criteria 
 
-You can perform the `query` (simulation) of the amendment sending all the booking information (`reference`, `dates`, `hotelode`) or sending the `bookingID` got in the booking flow:
+You can perform the `query` (simulation) of the amendment sending all the booking information (`reference`, `dates`, `hotelcode`) or sending the `bookingID` got in the booking flow:
 
 * Booking information:
    * `accessCode`
@@ -43,6 +46,21 @@ You can perform the `query` (simulation) of the amendment sending all the bookin
 
 * BookingID got in the booking flow:
    * `bookingID`
+
+You can decide between the two options either by booking information or directly by `bookingID`, empowering you with the choice that suits you best.
+
+Additionally you'll need to indicate the new remark you want to include in your reservation with the `remarks` input. For example:
+
+
+```js
+{
+    "criteria" : {
+        "bookingID" : "n1@1[241128[241129[240516[1[es[EUR[2[test_09052024_test[3128791[",
+        "remarks" : "Non-smoking room, Connecting rooms"
+    }
+}
+```
+
 
 
 ### 2. Settings 
@@ -63,6 +81,20 @@ Settings are the common configurations used to construct requests to the supplie
 * `clientTokens` (Used to identify the origin of the request, this is only used in plugins)
 * `businessRules`
 * `operationTimeout` (Timeout in milliseconds for Hotel-X connection. Will close Buyer connection if exceeded. Must be higher than `timeout`.)
+
+
+:::caution Remember
+Keep in mind that if you leave some of the fields in the `settings` inputs unspecified, we will use the values from your default settings. You can review and control your default API settings by visiting the [API Settings section](https://app.travelgatex.com/connections/settings) on our website.
+:::
+
+
+### Requests Examples
+
+#### Remarks amendment quote with the `bookingID` from the book response
+
+<GraphqlSample query={remarksAmendmentQuoteQuery} variables={remarksAmendmentQuoteVariables} />
+
+
 
 
 
@@ -96,11 +128,11 @@ You must perform the `mutation` (commit) of the amendment sending the `amendment
 
 ### 2. Settings 
 
-Settings are the common configurations used to construct requests to the supplier/s. By default, we apply the same configuration to all Hotel-X clients.
+Settings are the common configurations used to construct requests to the supplier/s.
 
 **Mandatory Settings**
 * `context`
-* `timeout` (Timeout in milliseconds for supplier connections. Applied to all suppliers; won't close client connection if exceeded)
+* `timeout` (Timeout in milliseconds for the supplier connection. Won't close client connection if exceeded.)
 * `businessRules`
 * `language`
 * `currency`
@@ -114,3 +146,9 @@ Settings are the common configurations used to construct requests to the supplie
 * `plugins`
 * `testMode` (This flag allows only the accesses checked as test)
 * `clientTokens` (Used to identify the origin of the request, this is only used in plugins)
+* `businessRules`
+* `operationTimeout` (Timeout in milliseconds for Hotel-X connection. Will close Buyer connection if exceeded. Must be higher than `timeout`.)
+
+### Requests Examples
+
+<GraphqlSample query={remarksAmendmentCommitMutation} variables={remarksAmendmentCommitVariables} />

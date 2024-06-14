@@ -7,27 +7,41 @@
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #0B59DE;
-  --ifm-color-primary-dark: #073AB0;        /* Darker shade */
-  --ifm-color-primary-darker: #04287D;     /* Even darker */
-  --ifm-color-primary-darkest: #021640;    /* Darkest */
-  --ifm-color-primary-light: #397BFF;      /* Lighter shade */
-  --ifm-color-primary-lighter: #6FA2FF;    /* Even lighter */
-  --ifm-color-primary-lightest: #A9C9FF;   /* Lightest */
+  --ifm-color-primary-dark: #073AB0;
+  /* Darker shade */
+  --ifm-color-primary-darker: #04287D;
+  /* Even darker */
+  --ifm-color-primary-darkest: #021640;
+  /* Darkest */
+  --ifm-color-primary-light: #397BFF;
+  /* Lighter shade */
+  --ifm-color-primary-lighter: #6FA2FF;
+  /* Even lighter */
+  --ifm-color-primary-lightest: #A9C9FF;
+  /* Lightest */
   --ifm-code-font-size: 95%;
-  --ifm-code-secondary: #0C2340;     /* Blue Dark */
+  --ifm-code-secondary: #0C2340;
+  /* Blue Dark */
   --ifm-code-white: #FFFFFF;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
 
 [data-theme='dark'] {
-  --ifm-color-primary: #0B59DE;            /* Use the same primary color */
-  --ifm-color-primary-dark: #2E7DFF;       /* Slightly lighter than the normal dark shade */
-  --ifm-color-primary-darker: #529AFF;     /* Lighter */
-  --ifm-color-primary-darkest: #7BB2FF;    /* Lightest */
-  --ifm-color-primary-light: #0079E0;      /* Slightly darker than the normal light shade */
-  --ifm-color-primary-lighter: #0057A7;    /* Darker */
-  --ifm-color-primary-lightest: #003575;   /* Darkest */
+  --ifm-color-primary: #0B59DE;
+  /* Use the same primary color */
+  --ifm-color-primary-dark: #2E7DFF;
+  /* Slightly lighter than the normal dark shade */
+  --ifm-color-primary-darker: #529AFF;
+  /* Lighter */
+  --ifm-color-primary-darkest: #7BB2FF;
+  /* Lightest */
+  --ifm-color-primary-light: #0079E0;
+  /* Slightly darker than the normal light shade */
+  --ifm-color-primary-lighter: #0057A7;
+  /* Darker */
+  --ifm-color-primary-lightest: #003575;
+  /* Darkest */
   --ifm-code-secondary: var(--ifm-code-white);
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
@@ -46,7 +60,8 @@
 }
 
 article .graphiql-sidebar {
-  display: none !important;;
+  display: none !important;
+  ;
 }
 
 .graphiql-container .graphiql-session {
@@ -68,7 +83,8 @@ article .graphiql-sidebar {
   }
 
   article .graphiql-sidebar {
-    display: inherit !important;;
+    display: inherit !important;
+    ;
   }
 
   .graphiql-container .graphiql-session {
@@ -81,19 +97,20 @@ article .graphiql-sidebar {
 }
 
 //BREADCRUMB
-.theme-doc-breadcrumbs{
-  .breadcrumbs__item{
-    &--active{
-      .breadcrumbs__link{
-        background-color:rgba(15, 100, 243, 0.20);
+.theme-doc-breadcrumbs {
+  .breadcrumbs__item {
+    &--active {
+      .breadcrumbs__link {
+        background-color: rgba(15, 100, 243, 0.20);
         color: var(--ifm-code-secondary);
         font-weight: 500;
       }
     }
-    .breadcrumbs__link{
-      &:any-link{
-        &:hover{
-          background-color:rgba(15, 100, 243, 0.20);
+
+    .breadcrumbs__link {
+      &:any-link {
+        &:hover {
+          background-color: rgba(15, 100, 243, 0.20);
         }
       }
     }
@@ -105,114 +122,137 @@ article .graphiql-sidebar {
   .theme-doc-sidebar-item-category {
     .menu__link {
       color: var(--ifm-code-secondary);
+
       &--active {
         font-weight: 700;
         color: var(--ifm-code-secondary);
       }
     }
+
     //LEVEL 1
     &.theme-doc-sidebar-item-category-level-1 {
       .menu__list-item-collapsible {
         &:hover {
           background-color: var(--ifm-color-primary);
-          .menu__link{
+
+          .menu__link {
             color: #FFFFFF;
           }
         }
+
         .menu__link[aria-expanded='true'] {
           background-color: var(--ifm-color-primary) !important;
           color: var(--ifm-code-white);
         }
       }
+
       //LEVEL 2
       .theme-doc-sidebar-item-link-level-2 {
         .menu__link {
+
           &--active,
-          &:hover{
-            background-color:rgba(15, 100, 243, 0.20);
+          &:hover {
+            background-color: rgba(15, 100, 243, 0.20);
           }
         }
       }
-      .theme-doc-sidebar-item-category-level-2{
+
+      .theme-doc-sidebar-item-category-level-2 {
         .menu__list-item-collapsible {
           &:hover {
-            background-color:rgba(15, 100, 243, 0.20);
-            .menu__link{
+            background-color: rgba(15, 100, 243, 0.20);
+
+            .menu__link {
               color: var(--ifm-code-secondary) !important;
             }
           }
+
           .menu__link[aria-expanded='true'] {
-            background-color:rgba(15, 100, 243, 0.20) !important;
+            background-color: rgba(15, 100, 243, 0.20) !important;
             color: var(--ifm-code-secondary);
           }
         }
+
         //LEVEL 3
-        .theme-doc-sidebar-item-category-level-3{
+        .theme-doc-sidebar-item-category-level-3 {
           .menu__list-item-collapsible {
             &:hover {
-              background-color:rgba(206, 222, 248, 0.50);
+              background-color: rgba(206, 222, 248, 0.50);
             }
+
             .menu__link[aria-expanded='true'] {
-              background-color:rgba(206, 222, 248, 0.50) !important;
+              background-color: rgba(206, 222, 248, 0.50) !important;
               color: var(--ifm-code-secondary);
             }
           }
+
           //LEVEL 4
           .theme-doc-sidebar-item-link-level-4 {
             .menu__link {
+
               &--active,
-              &:hover{
-                background-color:rgba(243, 246, 254, 1);
+              &:hover {
+                background-color: rgba(243, 246, 254, 1);
               }
             }
           }
+
           .theme-doc-sidebar-item-category-level-4 {
             .menu__list-item-collapsible {
               &:hover {
-                background-color:rgba(243, 246, 254, 1);
+                background-color: rgba(243, 246, 254, 1);
               }
+
               .menu__link[aria-expanded='true'] {
-                background-color:rgba(243, 246, 254, 1) !important;
+                background-color: rgba(243, 246, 254, 1) !important;
                 color: var(--ifm-code-secondary);
               }
             }
           }
+
           //LEVEL 5
           .theme-doc-sidebar-item-link-level-5 {
             .menu__link {
+
               &--active,
-              &:hover{
-                background-color:rgba(243, 246, 254, 0.8);
+              &:hover {
+                background-color: rgba(243, 246, 254, 0.8);
               }
             }
           }
+
           .theme-doc-sidebar-item-category-level-5 {
             .menu__list-item-collapsible {
               &:hover {
-                background-color:rgba(243, 246, 254, 0.8);
+                background-color: rgba(243, 246, 254, 0.8);
               }
+
               .menu__link[aria-expanded='true'] {
-                background-color:rgba(243, 246, 254, 0.8) !important;
+                background-color: rgba(243, 246, 254, 0.8) !important;
                 color: var(--ifm-code-secondary);
               }
             }
           }
+
           //LEVEL 6
           .theme-doc-sidebar-item-link-level-6 {
             .menu__link {
+
               &--active,
-              &:hover{
-                background-color:rgba(243, 246, 254, 0.4);
+              &:hover {
+                background-color: rgba(243, 246, 254, 0.4);
               }
             }
           }
+
           .theme-doc-sidebar-item-category-level-6 {
             .menu__list-item-collapsible {
               &:hover {
-                background-color:rgba(243, 246, 254, 0.4);
+                background-color: rgba(243, 246, 254, 0.4);
               }
+
               .menu__link[aria-expanded='true'] {
-                background-color:rgba(243, 246, 254, 0.4) !important;
+                background-color: rgba(243, 246, 254, 0.4) !important;
                 color: var(--ifm-code-secondary);
               }
             }
@@ -225,13 +265,14 @@ article .graphiql-sidebar {
 
 //SHORTCUTS OVERVIEW
 .shortcuts-overview {
-  .shortcuts-overview__content{
+  .shortcuts-overview__content {
     display: flex;
     margin-bottom: 20px !important;
     flex-wrap: wrap;
-    
+
   }
-  .item{
+
+  .item {
     border: 1px solid #E6E6E6;
     border-radius: 2px;
     padding: 20px;
@@ -240,9 +281,11 @@ article .graphiql-sidebar {
     width: 31%;
     margin-right: 20px;
     margin-bottom: 20px;
+
     &:hover {
       border: 1px solid var(--ifm-color-primary);
     }
+
     .hexagono {
       width: 50px;
       height: 30px;
@@ -253,33 +296,37 @@ article .graphiql-sidebar {
       margin-top: 10px;
       margin-left: 5px;
     }
+
     .hexagono::before {
-        content: "";
-        position: absolute;
-        top: -20px;
-        left: 0;
-        width: 0;
-        height: 0;
-        border-left: 25px solid transparent;
-        border-right: 25px solid transparent;
-        border-bottom: 20px solid var(--ifm-color-primary);
+      content: "";
+      position: absolute;
+      top: -20px;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 25px solid transparent;
+      border-right: 25px solid transparent;
+      border-bottom: 20px solid var(--ifm-color-primary);
     }
+
     .hexagono::after {
-        content: "";
-        position: absolute;
-        bottom: -20px;
-        left: 0;
-        width: 0;
-        height: 0;
-        border-left: 25px solid transparent;
-        border-right: 25px solid transparent;
-        border-top: 20px solid var(--ifm-color-primary);
+      content: "";
+      position: absolute;
+      bottom: -20px;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 25px solid transparent;
+      border-right: 25px solid transparent;
+      border-top: 20px solid var(--ifm-color-primary);
     }
-    .item__title{
+
+    .item__title {
       font-size: 20px;
       margin: 0;
     }
-    .item__subtitle{
+
+    .item__subtitle {
       color: #686868;
       margin: 0;
     }
@@ -291,7 +338,7 @@ article .graphiql-sidebar {
 //-------------------------------------------
 .playground-wrap {
   div {
-    margin-bottom:20px;
+    margin-bottom: 20px;
 
     &.post-method {
       float: left;
@@ -308,6 +355,7 @@ article .graphiql-sidebar {
       display: none;
     }
   }
+
   textarea {
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -425,35 +473,42 @@ article .graphiql-sidebar {
   margin-bottom: 80px;
   background: url("https://stplaformwe.blob.core.windows.net/docs/home_docs_bg_hero.svg") no-repeat left top, linear-gradient(320deg, #0C2340 -11.35%, #0B59DE 75.3%);
   font-weight: 500;
+
   &.hero {
     .hero__title {
       font-family: 'Inter', sans-serif;
+
       //Custom title size 
       //-------------------------------------------
       @media (max-width: 480px) {
         font-size: 2.5rem;
       }
     }
+
     .hero__subtitle {
       font-family: 'Inter', sans-serif;
     }
   }
+
   .button {
     border-radius: 2px;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
+
     &--secondary {
       background-color: #fff;
-      border-color:#fff;
+      border-color: #fff;
       color: #0B59DE !important;
       font-size: 14px;
-      padding:15px 20px;
+      padding: 15px 20px;
     }
+
     &--outline {
       background-color: transparent;
       color: #fff !important;
     }
   }
+
   &:after {
     content: "";
     display: block;
@@ -469,32 +524,37 @@ article .graphiql-sidebar {
 }
 
 .section-title {
-  margin-bottom:40px;
+  margin-bottom: 40px;
+
   h3 {
     font-family: 'Inter', sans-serif;
     font-weight: 500;
     margin: 0 0 10px 0;
     font-size: 35px;
   }
+
   p {
     font-family: 'Roboto', sans-serif;
   }
 }
 
 .browse-articles {
-  margin-bottom:80px;
+  margin-bottom: 80px;
+
   .item {
     img {
-      max-width:100%;
-      margin-bottom:20px;
+      max-width: 100%;
+      margin-bottom: 20px;
     }
+
     h4 {
       font-size: 24px;
       font-family: 'Inter', sans-serif;
       font-weight: 500;
     }
+
     p {
-      font-family: 'Roboto', sans-serif;   
+      font-family: 'Roboto', sans-serif;
     }
   }
 }
@@ -504,12 +564,15 @@ article .graphiql-sidebar {
   margin-bottom: 100px;
   background: linear-gradient(319deg, #19CFBD -19.76%, #635FB8 47.21%);
   position: relative;
+
   .aux {
-    min-height:300px;
+    min-height: 300px;
     position: relative;
+
     .wrap-text {
       width: 45%;
       padding: 40px 0;
+
       h3 {
         font-family: 'Inter', sans-serif;
         font-weight: 500;
@@ -517,30 +580,35 @@ article .graphiql-sidebar {
         font-size: 35px;
         color: #fff;
       }
+
       p {
-        font-family: 'Roboto', sans-serif;   
+        font-family: 'Roboto', sans-serif;
         color: #fff;
-        margin:20px 0;
+        margin: 20px 0;
       }
+
       .button {
         border-radius: 2px;
         font-family: 'Roboto', sans-serif;
         font-weight: 400;
+
         &--secondary {
           background-color: #fff;
-          border-color:#fff;
+          border-color: #fff;
           color: #0B59DE !important;
           font-size: 14px;
-          padding:15px 20px;
+          padding: 15px 20px;
         }
       }
     }
+
     img {
       position: absolute;
       right: 0;
       bottom: 0;
     }
   }
+
   &:after {
     content: "";
     display: block;
@@ -558,60 +626,70 @@ article .graphiql-sidebar {
 
 .join-community {
   margin-bottom: 40px;
+
   h5 {
     font-family: 'Inter', sans-serif;
     font-weight: 500;
     margin: 0;
     font-size: 35px;
   }
+
   .item {
     border-radius: 15px;
     background-color: #F3F6FE;
     padding: 20px;
     height: 300px;
+
     h6 {
       font-family: 'Inter', sans-serif;
       font-weight: 500;
       margin: 20px 0 0 0;
       font-size: 25px;
     }
-   p {
-      font-family: 'Roboto', sans-serif;   
-      margin:20px 0;
+
+    p {
+      font-family: 'Roboto', sans-serif;
+      margin: 20px 0;
     }
-  } 
+  }
 }
 
 //Home KB
 //-------------------------------------------
 .hero-kb {
   margin-bottom: 80px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192' viewBox='0 0 192 192'%3E%3Cpath fill='%23ffffff' fill-opacity='0.13' d='M192 15v2a11 11 0 0 0-11 11c0 1.94 1.16 4.75 2.53 6.11l2.36 2.36a6.93 6.93 0 0 1 1.22 7.56l-.43.84a8.08 8.08 0 0 1-6.66 4.13H145v35.02a6.1 6.1 0 0 0 3.03 4.87l.84.43c1.58.79 4 .4 5.24-.85l2.36-2.36a12.04 12.04 0 0 1 7.51-3.11 13 13 0 1 1 .02 26 12 12 0 0 1-7.53-3.11l-2.36-2.36a4.93 4.93 0 0 0-5.24-.85l-.84.43a6.1 6.1 0 0 0-3.03 4.87V143h35.02a8.08 8.08 0 0 1 6.66 4.13l.43.84a6.91 6.91 0 0 1-1.22 7.56l-2.36 2.36A10.06 10.06 0 0 0 181 164a11 11 0 0 0 11 11v2a13 13 0 0 1-13-13 12 12 0 0 1 3.11-7.53l2.36-2.36a4.93 4.93 0 0 0 .85-5.24l-.43-.84a6.1 6.1 0 0 0-4.87-3.03H145v35.02a8.08 8.08 0 0 1-4.13 6.66l-.84.43a6.91 6.91 0 0 1-7.56-1.22l-2.36-2.36A10.06 10.06 0 0 0 124 181a11 11 0 0 0-11 11h-2a13 13 0 0 1 13-13c2.47 0 5.79 1.37 7.53 3.11l2.36 2.36a4.94 4.94 0 0 0 5.24.85l.84-.43a6.1 6.1 0 0 0 3.03-4.87V145h-35.02a8.08 8.08 0 0 1-6.66-4.13l-.43-.84a6.91 6.91 0 0 1 1.22-7.56l2.36-2.36A10.06 10.06 0 0 0 107 124a11 11 0 0 0-22 0c0 1.94 1.16 4.75 2.53 6.11l2.36 2.36a6.93 6.93 0 0 1 1.22 7.56l-.43.84a8.08 8.08 0 0 1-6.66 4.13H49v35.02a6.1 6.1 0 0 0 3.03 4.87l.84.43c1.58.79 4 .4 5.24-.85l2.36-2.36a12.04 12.04 0 0 1 7.51-3.11A13 13 0 0 1 81 192h-2a11 11 0 0 0-11-11c-1.94 0-4.75 1.16-6.11 2.53l-2.36 2.36a6.93 6.93 0 0 1-7.56 1.22l-.84-.43a8.08 8.08 0 0 1-4.13-6.66V145H11.98a6.1 6.1 0 0 0-4.87 3.03l-.43.84c-.79 1.58-.4 4 .85 5.24l2.36 2.36a12.04 12.04 0 0 1 3.11 7.51A13 13 0 0 1 0 177v-2a11 11 0 0 0 11-11c0-1.94-1.16-4.75-2.53-6.11l-2.36-2.36a6.93 6.93 0 0 1-1.22-7.56l.43-.84a8.08 8.08 0 0 1 6.66-4.13H47v-35.02a6.1 6.1 0 0 0-3.03-4.87l-.84-.43c-1.59-.8-4-.4-5.24.85l-2.36 2.36A12 12 0 0 1 28 109a13 13 0 1 1 0-26c2.47 0 5.79 1.37 7.53 3.11l2.36 2.36a4.94 4.94 0 0 0 5.24.85l.84-.43A6.1 6.1 0 0 0 47 84.02V49H11.98a8.08 8.08 0 0 1-6.66-4.13l-.43-.84a6.91 6.91 0 0 1 1.22-7.56l2.36-2.36A10.06 10.06 0 0 0 11 28 11 11 0 0 0 0 17v-2a13 13 0 0 1 13 13c0 2.47-1.37 5.79-3.11 7.53l-2.36 2.36a4.94 4.94 0 0 0-.85 5.24l.43.84A6.1 6.1 0 0 0 11.98 47H47V11.98a8.08 8.08 0 0 1 4.13-6.66l.84-.43a6.91 6.91 0 0 1 7.56 1.22l2.36 2.36A10.06 10.06 0 0 0 68 11 11 11 0 0 0 79 0h2a13 13 0 0 1-13 13 12 12 0 0 1-7.53-3.11l-2.36-2.36a4.93 4.93 0 0 0-5.24-.85l-.84.43A6.1 6.1 0 0 0 49 11.98V47h35.02a8.08 8.08 0 0 1 6.66 4.13l.43.84a6.91 6.91 0 0 1-1.22 7.56l-2.36 2.36A10.06 10.06 0 0 0 85 68a11 11 0 0 0 22 0c0-1.94-1.16-4.75-2.53-6.11l-2.36-2.36a6.93 6.93 0 0 1-1.22-7.56l.43-.84a8.08 8.08 0 0 1 6.66-4.13H143V11.98a6.1 6.1 0 0 0-3.03-4.87l-.84-.43c-1.59-.8-4-.4-5.24.85l-2.36 2.36A12 12 0 0 1 124 13a13 13 0 0 1-13-13h2a11 11 0 0 0 11 11c1.94 0 4.75-1.16 6.11-2.53l2.36-2.36a6.93 6.93 0 0 1 7.56-1.22l.84.43a8.08 8.08 0 0 1 4.13 6.66V47h35.02a6.1 6.1 0 0 0 4.87-3.03l.43-.84c.8-1.59.4-4-.85-5.24l-2.36-2.36A12 12 0 0 1 179 28a13 13 0 0 1 13-13zM84.02 143a6.1 6.1 0 0 0 4.87-3.03l.43-.84c.8-1.59.4-4-.85-5.24l-2.36-2.36A12 12 0 0 1 83 124a13 13 0 1 1 26 0c0 2.47-1.37 5.79-3.11 7.53l-2.36 2.36a4.94 4.94 0 0 0-.85 5.24l.43.84a6.1 6.1 0 0 0 4.87 3.03H143v-35.02a8.08 8.08 0 0 1 4.13-6.66l.84-.43a6.91 6.91 0 0 1 7.56 1.22l2.36 2.36A10.06 10.06 0 0 0 164 107a11 11 0 0 0 0-22c-1.94 0-4.75 1.16-6.11 2.53l-2.36 2.36a6.93 6.93 0 0 1-7.56 1.22l-.84-.43a8.08 8.08 0 0 1-4.13-6.66V49h-35.02a6.1 6.1 0 0 0-4.87 3.03l-.43.84c-.79 1.58-.4 4 .85 5.24l2.36 2.36a12.04 12.04 0 0 1 3.11 7.51A13 13 0 1 1 83 68a12 12 0 0 1 3.11-7.53l2.36-2.36a4.93 4.93 0 0 0 .85-5.24l-.43-.84A6.1 6.1 0 0 0 84.02 49H49v35.02a8.08 8.08 0 0 1-4.13 6.66l-.84.43a6.91 6.91 0 0 1-7.56-1.22l-2.36-2.36A10.06 10.06 0 0 0 28 85a11 11 0 0 0 0 22c1.94 0 4.75-1.16 6.11-2.53l2.36-2.36a6.93 6.93 0 0 1 7.56-1.22l.84.43a8.08 8.08 0 0 1 4.13 6.66V143h35.02z'%3E%3C/path%3E%3C/svg%3E")  left bottom, linear-gradient(319deg, #19CFBD -19.76%, #635FB8 47.21%);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192' viewBox='0 0 192 192'%3E%3Cpath fill='%23ffffff' fill-opacity='0.13' d='M192 15v2a11 11 0 0 0-11 11c0 1.94 1.16 4.75 2.53 6.11l2.36 2.36a6.93 6.93 0 0 1 1.22 7.56l-.43.84a8.08 8.08 0 0 1-6.66 4.13H145v35.02a6.1 6.1 0 0 0 3.03 4.87l.84.43c1.58.79 4 .4 5.24-.85l2.36-2.36a12.04 12.04 0 0 1 7.51-3.11 13 13 0 1 1 .02 26 12 12 0 0 1-7.53-3.11l-2.36-2.36a4.93 4.93 0 0 0-5.24-.85l-.84.43a6.1 6.1 0 0 0-3.03 4.87V143h35.02a8.08 8.08 0 0 1 6.66 4.13l.43.84a6.91 6.91 0 0 1-1.22 7.56l-2.36 2.36A10.06 10.06 0 0 0 181 164a11 11 0 0 0 11 11v2a13 13 0 0 1-13-13 12 12 0 0 1 3.11-7.53l2.36-2.36a4.93 4.93 0 0 0 .85-5.24l-.43-.84a6.1 6.1 0 0 0-4.87-3.03H145v35.02a8.08 8.08 0 0 1-4.13 6.66l-.84.43a6.91 6.91 0 0 1-7.56-1.22l-2.36-2.36A10.06 10.06 0 0 0 124 181a11 11 0 0 0-11 11h-2a13 13 0 0 1 13-13c2.47 0 5.79 1.37 7.53 3.11l2.36 2.36a4.94 4.94 0 0 0 5.24.85l.84-.43a6.1 6.1 0 0 0 3.03-4.87V145h-35.02a8.08 8.08 0 0 1-6.66-4.13l-.43-.84a6.91 6.91 0 0 1 1.22-7.56l2.36-2.36A10.06 10.06 0 0 0 107 124a11 11 0 0 0-22 0c0 1.94 1.16 4.75 2.53 6.11l2.36 2.36a6.93 6.93 0 0 1 1.22 7.56l-.43.84a8.08 8.08 0 0 1-6.66 4.13H49v35.02a6.1 6.1 0 0 0 3.03 4.87l.84.43c1.58.79 4 .4 5.24-.85l2.36-2.36a12.04 12.04 0 0 1 7.51-3.11A13 13 0 0 1 81 192h-2a11 11 0 0 0-11-11c-1.94 0-4.75 1.16-6.11 2.53l-2.36 2.36a6.93 6.93 0 0 1-7.56 1.22l-.84-.43a8.08 8.08 0 0 1-4.13-6.66V145H11.98a6.1 6.1 0 0 0-4.87 3.03l-.43.84c-.79 1.58-.4 4 .85 5.24l2.36 2.36a12.04 12.04 0 0 1 3.11 7.51A13 13 0 0 1 0 177v-2a11 11 0 0 0 11-11c0-1.94-1.16-4.75-2.53-6.11l-2.36-2.36a6.93 6.93 0 0 1-1.22-7.56l.43-.84a8.08 8.08 0 0 1 6.66-4.13H47v-35.02a6.1 6.1 0 0 0-3.03-4.87l-.84-.43c-1.59-.8-4-.4-5.24.85l-2.36 2.36A12 12 0 0 1 28 109a13 13 0 1 1 0-26c2.47 0 5.79 1.37 7.53 3.11l2.36 2.36a4.94 4.94 0 0 0 5.24.85l.84-.43A6.1 6.1 0 0 0 47 84.02V49H11.98a8.08 8.08 0 0 1-6.66-4.13l-.43-.84a6.91 6.91 0 0 1 1.22-7.56l2.36-2.36A10.06 10.06 0 0 0 11 28 11 11 0 0 0 0 17v-2a13 13 0 0 1 13 13c0 2.47-1.37 5.79-3.11 7.53l-2.36 2.36a4.94 4.94 0 0 0-.85 5.24l.43.84A6.1 6.1 0 0 0 11.98 47H47V11.98a8.08 8.08 0 0 1 4.13-6.66l.84-.43a6.91 6.91 0 0 1 7.56 1.22l2.36 2.36A10.06 10.06 0 0 0 68 11 11 11 0 0 0 79 0h2a13 13 0 0 1-13 13 12 12 0 0 1-7.53-3.11l-2.36-2.36a4.93 4.93 0 0 0-5.24-.85l-.84.43A6.1 6.1 0 0 0 49 11.98V47h35.02a8.08 8.08 0 0 1 6.66 4.13l.43.84a6.91 6.91 0 0 1-1.22 7.56l-2.36 2.36A10.06 10.06 0 0 0 85 68a11 11 0 0 0 22 0c0-1.94-1.16-4.75-2.53-6.11l-2.36-2.36a6.93 6.93 0 0 1-1.22-7.56l.43-.84a8.08 8.08 0 0 1 6.66-4.13H143V11.98a6.1 6.1 0 0 0-3.03-4.87l-.84-.43c-1.59-.8-4-.4-5.24.85l-2.36 2.36A12 12 0 0 1 124 13a13 13 0 0 1-13-13h2a11 11 0 0 0 11 11c1.94 0 4.75-1.16 6.11-2.53l2.36-2.36a6.93 6.93 0 0 1 7.56-1.22l.84.43a8.08 8.08 0 0 1 4.13 6.66V47h35.02a6.1 6.1 0 0 0 4.87-3.03l.43-.84c.8-1.59.4-4-.85-5.24l-2.36-2.36A12 12 0 0 1 179 28a13 13 0 0 1 13-13zM84.02 143a6.1 6.1 0 0 0 4.87-3.03l.43-.84c.8-1.59.4-4-.85-5.24l-2.36-2.36A12 12 0 0 1 83 124a13 13 0 1 1 26 0c0 2.47-1.37 5.79-3.11 7.53l-2.36 2.36a4.94 4.94 0 0 0-.85 5.24l.43.84a6.1 6.1 0 0 0 4.87 3.03H143v-35.02a8.08 8.08 0 0 1 4.13-6.66l.84-.43a6.91 6.91 0 0 1 7.56 1.22l2.36 2.36A10.06 10.06 0 0 0 164 107a11 11 0 0 0 0-22c-1.94 0-4.75 1.16-6.11 2.53l-2.36 2.36a6.93 6.93 0 0 1-7.56 1.22l-.84-.43a8.08 8.08 0 0 1-4.13-6.66V49h-35.02a6.1 6.1 0 0 0-4.87 3.03l-.43.84c-.79 1.58-.4 4 .85 5.24l2.36 2.36a12.04 12.04 0 0 1 3.11 7.51A13 13 0 1 1 83 68a12 12 0 0 1 3.11-7.53l2.36-2.36a4.93 4.93 0 0 0 .85-5.24l-.43-.84A6.1 6.1 0 0 0 84.02 49H49v35.02a8.08 8.08 0 0 1-4.13 6.66l-.84.43a6.91 6.91 0 0 1-7.56-1.22l-2.36-2.36A10.06 10.06 0 0 0 28 85a11 11 0 0 0 0 22c1.94 0 4.75-1.16 6.11-2.53l2.36-2.36a6.93 6.93 0 0 1 7.56-1.22l.84.43a8.08 8.08 0 0 1 4.13 6.66V143h35.02z'%3E%3C/path%3E%3C/svg%3E") left bottom, linear-gradient(319deg, #19CFBD -19.76%, #635FB8 47.21%);
   font-weight: 500;
+
   &.hero {
     .hero__title {
       font-family: 'Inter', sans-serif;
     }
+
     .hero__subtitle {
       font-family: 'Inter', sans-serif;
     }
   }
+
   .button {
     border-radius: 2px;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
+
     &--secondary {
       background-color: #fff;
-      border-color:#fff;
+      border-color: #fff;
       color: #0B59DE !important;
       font-size: 14px;
-      padding:15px 20px;
+      padding: 15px 20px;
     }
+
     &--outline {
       background-color: transparent;
       color: #fff !important;
     }
   }
+
   &:after {
     content: "";
     display: block;
@@ -628,8 +706,8 @@ article .graphiql-sidebar {
 
 hr {
   background-color: #E6E6E6;
-  margin:0 0 80px 0;
-  height:1px;
+  margin: 0 0 80px 0;
+  height: 1px;
 }
 
 //Footer
@@ -638,23 +716,29 @@ footer {
 
   &:not(.theme-doc-footer) {
     background-color: #0C2340 !important;
+
     .logo {
-      width:200px;
+      width: 200px;
     }
+
     .copyright {
-      color:#fff;
+      color: #fff;
       font-size: 12px;
     }
+
     h6 {
       font-size: 18px;
     }
+
     ul {
-      margin:0;
-      padding:0;
+      margin: 0;
+      padding: 0;
+
       li {
         list-style: none;
-        margin:0;
-        padding:0;
+        margin: 0;
+        padding: 0;
+
         a {
           color: #fff;
         }
@@ -666,10 +750,46 @@ footer {
 //Custom Navbar to show Login link in tablet and phone
 //-------------------------------------------
 @media (max-width: 996px) {
-  .navbar__inner .navbar__items--right .navbar__link{
+  .navbar__inner .navbar__items--right .navbar__link {
     display: block !important;
   }
-   .navbarSearchContainer_Bca1 {
+
+  .navbarSearchContainer_Bca1 {
     position: relative !important;
   }
+}
+
+.d-none {
+  display: none !important;
+}
+
+.p-20 {
+  padding: 20px !important;
+}
+
+// Ask IA button
+
+#kapa-widget-container {
+  .mantine-f1fjxp {
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .mantine-1uwoaul {
+    display: none !important;
+  }
+
+  .mantine-yxmaw9 {
+    width: 4rem !important;
+  }
+
+  .mantine-1sc70ew {
+    width: 4rem !important;
+    height: 4rem !important;
+  }
+}
+
+.title-ia {
+  margin-bottom: -35px !important;
+  z-index: 1 !important;
 }

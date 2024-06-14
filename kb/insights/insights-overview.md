@@ -8,9 +8,9 @@ Gain access to insightful reports designed to enhance your business performance,
 
 Reports available for Buyers and Sellers connected through Travelgate Marketplace:
 
-- [Hotel Portfolio](/kb/insights/hotel-portfolio) 
+- [Hotel Portfolio](/kb/insights/hotel-portfolio)
+- [Errors Overview](/kb/insights/errors-overview)
 
 Coming soon:
-- Errors Overview
 - Competitive Benchmarking
 - Hotel Portfolio Premium

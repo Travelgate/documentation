@@ -60,6 +60,7 @@ const config = {
       'data-project-color': '#0B59DE',
       'data-project-logo': '/img/ask_ia.svg',
       'data-modal-disclaimer': 'This is a custom LLM for answering questions about Travelgate. Answers are based on the contents of the documentation. This feature is experimental - rate the answers to let us know what you think!',
+      'data-user-analytics-fingerprint-enabled': 'true'
     }
   ],
 

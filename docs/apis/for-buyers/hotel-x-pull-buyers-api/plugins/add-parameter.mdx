@@ -12,33 +12,37 @@ Additionally, you have the option to replace the value of an existing parameter 
 You don't need to create any files for this plugin. Just specify it in the `settings` > `plugins` field in your search query.
 :::
 
-## 1. Execute Add Parameter Plugin in your Query
+## 1. Execute Add Parameter Plugin in Your Query
 
-To use the plugin add the following field to the `settings` node of your request. Note that add paramenter plugin can be executed in `search`, `quote`, `book`, `booking` and `cancel` requests. In order to successfully execute the add paramenter plugin, you will need to create the request with the following variables.
+To use the plugin, add the following field to the `settings` node of your request. Note that the add parameter plugin can be executed in `search`, `quote`, `book`, `booking`, and `cancel` requests. To successfully execute the add parameter plugin, you will need to create the request with the following variables:
 
 * **`step`**: "REQUEST_ACCESS"
 * **`type`**: "PRE_STEP"
 * **`name`**: "add_parameterX"
 * **`parameters`**:
 	* **`key`**: "parameter_name"
-	* **`value`**: "paramenter_value"
+	* **`value`**: "parameter_value"
 
-For example, for a specific search request you need to send an extra parameter "client" with the value "TEST".
+You may be using the Hotel-X Pull Buyers API in single mode (request for a specific supplier) or in multi mode (request for different suppliers at the same time). Depending on your mode, you might want to use this plugin in different ways:
 
-```js
+### A. Single mode example
+
+In single mode, for a specific supplier search request, if you need to send an extra parameter "client" with the value "TEST", you could it as follow:
+
+```json
 {
-    "settings" : {
-        "plugins" : [
+    "settings": {
+        "plugins": [
             {
-                "step" : "REQUEST_ACCESS",
-                "pluginsType" : [
+                "step": "REQUEST_ACCESS",
+                "pluginsType": [
                     {
-                        "name" : "add_parameterX",
-                        "type" : "POST_STEP",
-                        "parameters" : [
+                        "name": "add_parameter",
+                        "type": "PRE_STEP",
+                        "parameters": [
                             {
-                                "key" : "client",
-                                "value" : "TEST"
+                                "key": "client",
+                                "value": "TEST"
                             }
                         ]
                     }
@@ -48,3 +52,47 @@ For example, for a specific search request you need to send an extra parameter "
     }
 }
 ```
+
+### B. Multi mode examples
+
+In multi mode, the search request will be replicated to different suppliers, and you may want to add specific parameters to only a specific access. In such cases, you need to send "JSONConfiguration" as the key input and indicate a JSON with the changes you want to apply in the value input. For instance, you want to add a parameter with key 'A' and value '1' for access 123 and parameters 'B' and 'C' with values '2' and '3' respectively for accesses 456 and 789. The following example shows this:
+
+```json
+{
+    "step": "REQUEST_ACCESS",
+    "pluginsType": [
+        {
+            "name": "add_parameterX",
+            "type": "POST_STEP",
+            "parameters": [
+                {
+                    "key": "JSONConfiguration",
+                    "value": "{\"accesses\": [{\"codes\": [\"123\"], \"parameters\": [{\"key\": \"A\", \"value\": \"1\"}]}, {\"codes\": [\"456\", \"789\"], \"parameters\": [{\"key\": \"B\", \"value\": \"2\"}, {\"key\": \"C\", \"value\": \"3\"}]}]}"
+                }
+            ]
+        }
+    ]
+}
+```
+
+Another case could be adding parameters by supplier. For example, for supplier XXX, you add the parameter with key 'D' and value '4'.
+
+```json
+{
+    "step": "REQUEST_ACCESS",
+    "pluginsType": [
+        {
+            "name": "add_parameterX",
+            "type": "POST_STEP",
+            "parameters": [
+                {
+                    "key": "JSONConfiguration",
+                    "value": "{\"suppliers\": [{\"codes\": [\"XXX\"], \"parameters\": [{\"key\": \"D\", \"value\": \"4\"}]}]}"
+                }
+            ]
+        }
+    ]
+}
+```
+
+	

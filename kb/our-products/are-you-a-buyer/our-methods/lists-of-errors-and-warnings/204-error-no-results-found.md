@@ -16,7 +16,7 @@ You will find more information on how to audit Seller's transactions [here](/kb/
 :::
 
 ### What can I do if I receive a 204 error in my response?✔️
-1. First of all, you should check that the **product requested** is returned within your Seller's portfolio, otherwise, please [force an update](/kb/connections/connections-content/how-to-force-portfolio-update) in order to receive their latest information.
+1. First of all, you should check that the **product requested** is returned within your Seller's portfolio, otherwise, please [force an update](/kb/connections/connections-content/how-to-check-my-connections-content#how-can-i-use-the-force-update-now-functionality) in order to receive their latest information.
 1. If you're connected to TravelgateX via our Hotel-X API and use your own [context](/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/hotel-x-credentials), it's important you ensure that your **mapping file** is updated (more information on Hotel-X Mapping files, [here](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/overview)).
 1. If the product requested is included within the Seller's portfolio, you should then check that the Seller returns **availability for your credentials** via the integration. For further information about the Seller's response, remember to set the auditTransactions to true in your Search request (more information on retrieving Seller transactions, [here](/kb/apps/monitoring-apps/logging/how-can-i-download-search-logs)).
 1. If the Seller **does not return results for your credentials** via the integration (auditData information), please contact them directly to confirm that your request is valid for both:		

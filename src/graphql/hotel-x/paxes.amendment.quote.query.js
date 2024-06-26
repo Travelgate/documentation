@@ -1,10 +1,10 @@
-export const boardAmendmentQuoteQuery = 
+export const paxesAmendmentQuoteQuery = 
 `query (
-	$criteria: HotelCriteriaAmendBoardQuoteInput!
+	$criteria: HotelCriteriaAmendPaxesQuoteInput!
 	$settings: HotelSettingsInput!
 ) {
 	hotelX {
-		quoteBoardAmendment(criteria: $criteria, settings: $settings) {
+		quotePaxesAmendment(criteria: $criteria, settings: $settings) {
 			amendFee {
 				currency
 				binding
@@ -51,11 +51,27 @@ export const boardAmendmentQuoteQuery =
 	}
 }`
 
-export const boardAmendmentQuoteVariables = 
+export const paxesAmendmentQuoteVariables = 
 `{
 	"criteria": {
 		"bookingID": "n1@1[241128[241129[240516[1[es[EUR[2[test_09052024_test[3128791[",
-		"board": "AI"
+		"rooms": [
+			{
+				"occupancyRefId": 1,
+				"paxes": [
+					{
+						"name": "Juan",
+						"surname": "Smith",
+						"age": 30
+					},
+					{
+						"name": "Tom",
+						"surname": "Jones",
+						"age": 30
+					}
+				]
+			}
+		]
 	},
 	"settings": {
 		"context": "HOTELTEST",

@@ -1,10 +1,10 @@
-export const boardAmendmentQuoteQuery = 
-`query (
-	$criteria: HotelCriteriaAmendBoardQuoteInput!
+export const roomsAmendmentCommitMutation = 
+`mutation (
+	$data: HotelAmendRoomsCommitInput!
 	$settings: HotelSettingsInput!
 ) {
 	hotelX {
-		quoteBoardAmendment(criteria: $criteria, settings: $settings) {
+		amendRooms(data: $data, settings: $settings) {
 			amendFee {
 				currency
 				binding
@@ -51,11 +51,10 @@ export const boardAmendmentQuoteQuery =
 	}
 }`
 
-export const boardAmendmentQuoteVariables = 
+export const roomsAmendmentCommitVariables = 
 `{
-	"criteria": {
-		"bookingID": "n1@1[241128[241129[240516[1[es[EUR[2[test_09052024_test[3128791[",
-		"board": "AI"
+	"data": {
+		"amendmentID": "xxx"
 	},
 	"settings": {
 		"context": "HOTELTEST",

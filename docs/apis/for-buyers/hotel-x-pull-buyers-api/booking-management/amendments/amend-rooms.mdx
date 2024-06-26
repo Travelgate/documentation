@@ -2,6 +2,10 @@
 sidebar_position: 4
 ---
 
+import {roomsAmendmentQuoteQuery, roomsAmendmentQuoteVariables} from "../../../../../../src/graphql/hotel-x/rooms.amendment.quote.query";
+import {roomsAmendmentCommitMutation, roomsAmendmentCommitVariables} from "../../../../../../src/graphql/hotel-x/rooms.amendment.commit.mutation";
+
+
 # Amend Rooms
 
 The Amend Rooms operation allows you to modify your booking's rooms. You can add or remove rooms or change the room type. To make a modification to your booking accurately, you should begin by executing the 'quote amend' query to confirm the feasibility of the change and its associated price. After obtaining this information, you can proceed to implement the amendment using the 'commit' mutation, which will finalize the modification in the Seller's system.
@@ -30,7 +34,7 @@ When creating your quote amend query, you have two different inputs to fill base
 
 <CautionSettingsHotelX />
 
-#### 1. Criteria 
+### 1. Criteria 
 
 You can perform the `query` (simulation) of the amendment sending all the booking information (`reference`, `dates`, `hotelCode`) or sending the bookingID got in the booking flow:
 
@@ -43,6 +47,46 @@ You can perform the `query` (simulation) of the amendment sending all the bookin
 
 * BookingID got in the booking flow:
    * `bookingID`
+
+
+You can decide between the two options either by booking information or directly by `bookingID`, empowering you with the choice that suits you best.
+
+Additionally you'll need to indicate the new room/s information you want for your reservation with the `rooms` input. For example:
+
+
+```js
+{
+    "criteria" : {
+        "bookingID" : "n1@1[241128[241129[240516[1[es[EUR[2[test_09052024_test[3128791[",
+        "rooms" : [
+            {
+                "occupancyID" : 1,
+                "code" : "2269",
+                "paxes" : [
+                    {
+                        "age" : 30,
+                        "name" : "Juan",
+                        "surname" : "Smith",
+                        "title" : null
+                    },
+                    {
+                        "age" : 30,
+                        "name" : "Tom",
+                        "surname" : "Jones",
+                        "title" : null
+                    },
+                    {
+                        "age" : 8,
+                        "name" : "Jacob",
+                        "surname" : "Jones",
+                        "title" : null
+                    }
+                ]
+            }
+        ]
+    }
+}
+```
 
 
 ### 2. Settings 
@@ -63,6 +107,14 @@ Settings are the common configurations used to construct requests to the supplie
 * `clientTokens` (Used to identify the origin of the request, this is only used in plugins)
 * `businessRules`
 * `operationTimeout` (Timeout in milliseconds for Hotel-X connection. Will close Buyer connection if exceeded. Must be higher than `timeout`.)
+
+
+
+### Requests Examples
+
+#### Rooms amendment quote with the `bookingID` from the book response
+
+<GraphqlSample query={roomsAmendmentQuoteQuery} variables={roomsAmendmentQuoteVariables} />
 
 
 
@@ -100,7 +152,7 @@ Settings are the common configurations used to construct requests to the supplie
 
 **Mandatory Settings**
 * `context`
-* `timeout` (Timeout in milliseconds for supplier connections. Applied to all suppliers; won't close client connection if exceeded)
+* `timeout` (Timeout in milliseconds for the supplier connection. Won't close client connection if exceeded.)
 * `businessRules`
 * `language`
 * `currency`
@@ -114,3 +166,9 @@ Settings are the common configurations used to construct requests to the supplie
 * `plugins`
 * `testMode` (This flag allows only the accesses checked as test)
 * `clientTokens` (Used to identify the origin of the request, this is only used in plugins)
+* `businessRules`
+* `operationTimeout` (Timeout in milliseconds for Hotel-X connection. Will close Buyer connection if exceeded. Must be higher than `timeout`.)
+
+### Requests Examples
+
+<GraphqlSample query={roomsAmendmentCommitMutation} variables={roomsAmendmentCommitVariables} />

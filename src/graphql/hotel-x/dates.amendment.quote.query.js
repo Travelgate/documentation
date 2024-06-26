@@ -1,10 +1,10 @@
-export const boardAmendmentQuoteQuery = 
+export const datesAmendmentQuoteQuery = 
 `query (
-	$criteria: HotelCriteriaAmendBoardQuoteInput!
+	$criteria: HotelCriteriaAmendDatesQuoteInput!
 	$settings: HotelSettingsInput!
 ) {
 	hotelX {
-		quoteBoardAmendment(criteria: $criteria, settings: $settings) {
+		quoteDatesAmendment(criteria: $criteria, settings: $settings) {
 			amendFee {
 				currency
 				binding
@@ -51,11 +51,14 @@ export const boardAmendmentQuoteQuery =
 	}
 }`
 
-export const boardAmendmentQuoteVariables = 
+export const datesAmendmentQuoteVariables = 
 `{
 	"criteria": {
 		"bookingID": "n1@1[241128[241129[240516[1[es[EUR[2[test_09052024_test[3128791[",
-		"board": "AI"
+		"dates": {
+			"start": "2025-12-01",
+			"end": "2025-12-04"
+		}
 	},
 	"settings": {
 		"context": "HOTELTEST",

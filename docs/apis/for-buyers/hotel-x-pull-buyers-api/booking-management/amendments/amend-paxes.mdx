@@ -2,6 +2,10 @@
 sidebar_position: 5
 ---
 
+import {paxesAmendmentQuoteQuery, paxesAmendmentQuoteVariables} from "../../../../../../src/graphql/hotel-x/paxes.amendment.quote.query";
+import {paxesAmendmentCommitMutation, paxesAmendmentCommitVariables} from "../../../../../../src/graphql/hotel-x/paxes.amendment.commit.mutation";
+
+
 # Amend Paxes
 
 The Amend Paxes operation lets you update your booking's paxes. You can change names, surnames, ages, and add or remove paxes. To make a modification to your booking accurately, you should begin by executing the 'quote amend' query to confirm the feasibility of the change and its associated price. After obtaining this information, you can proceed to implement the amendment using the 'commit' mutation, which will finalize the modification in the Seller's system.
@@ -45,6 +49,37 @@ You can perform the `query` (simulation) of the amendment sending all the bookin
    * `bookingID`
 
 
+You can decide between the two options either by booking information or directly by `bookingID`, empowering you with the choice that suits you best.
+
+Additionally you'll need to indicate the new paxes information you want for your reservation with the `rooms` input. For example:
+
+
+```js
+{
+    "criteria" : {
+        "bookingID" : "n1@1[241128[241129[240516[1[es[EUR[2[test_09052024_test[3128791[",
+        "rooms" : [
+            {
+                "occupancyRefId" : 1,
+                "paxes" : [
+                    {
+                        "name" : "Juan",
+                        "surname" : "Smith",
+                        "age" : 30
+                    },
+                    {
+                        "name" : "Tom",
+                        "surname" : "Jones",
+                        "age" : 30
+                    }
+                ]
+            }
+        ]
+    }
+}
+```
+
+
 ### 2. Settings 
 
 Settings are the common configurations used to construct requests to the supplier/s. By default, we apply the same configuration to all Hotel-X clients.
@@ -63,6 +98,14 @@ Settings are the common configurations used to construct requests to the supplie
 * `clientTokens` (Used to identify the origin of the request, this is only used in plugins)
 * `businessRules`
 * `operationTimeout` (Timeout in milliseconds for Hotel-X connection. Will close Buyer connection if exceeded. Must be higher than `timeout`.)
+
+
+### Requests Examples
+
+#### Paxes amendment quote with the `bookingID` from the book response
+
+<GraphqlSample query={paxesAmendmentQuoteQuery} variables={paxesAmendmentQuoteVariables} />
+
 
 
 ## Commit Amend Paxes 
@@ -99,7 +142,7 @@ Settings are the common configurations used to construct requests to the supplie
 
 **Mandatory Settings**
 * `context`
-* `timeout` (Timeout in milliseconds for supplier connections. Applied to all suppliers; won't close client connection if exceeded)
+* `timeout` (Timeout in milliseconds for the supplier connection. Won't close client connection if exceeded.)
 * `businessRules`
 * `language`
 * `currency`
@@ -113,3 +156,11 @@ Settings are the common configurations used to construct requests to the supplie
 * `plugins`
 * `testMode` (This flag allows only the accesses checked as test)
 * `clientTokens` (Used to identify the origin of the request, this is only used in plugins)
+* `businessRules`
+* `operationTimeout` (Timeout in milliseconds for Hotel-X connection. Will close Buyer connection if exceeded. Must be higher than `timeout`.)
+
+
+
+### Requests Examples
+
+<GraphqlSample query={paxesAmendmentCommitMutation} variables={paxesAmendmentCommitVariables} />

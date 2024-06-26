@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 4
+sidebar_position: 3
 ---
 
 # Can I see the content of a Seller before activating them?

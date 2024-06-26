@@ -2,6 +2,10 @@
 sidebar_position: 2
 ---
 
+import {datesAmendmentQuoteQuery, datesAmendmentQuoteVariables} from "../../../../../../src/graphql/hotel-x/dates.amendment.quote.query";
+import {datesAmendmentCommitMutation, datesAmendmentCommitVariables} from "../../../../../../src/graphql/hotel-x/dates.amendment.commit.mutation";
+
+
 # Amend Dates
 
 The Amend Dates operation enables you to change the booking's check-in dates. To make a modification to your booking accurately, you should begin by executing the 'quote amend' query to confirm the feasibility of the change and its associated price. After obtaining this information, you can proceed to implement the amendment using the 'commit' mutation, which will finalize the modification in the Seller's system.
@@ -44,6 +48,23 @@ You can perform the `query` (simulation) of the amendment sending all the bookin
 * BookingID got in the booking flow:
    * `bookingID`
 
+You can decide between the two options either by booking information or directly by `bookingID`, empowering you with the choice that suits you best.
+
+Additionally you'll need to indicate the new dates you want for your reservation with the `dates` input. For example:
+
+
+```js
+{
+    "criteria" : {
+        "bookingID" : "n1@1[241128[241129[240516[1[es[EUR[2[test_09052024_test[3128791[",
+        "dates" : {
+            "start" : "2025-12-01",
+            "end" : "2025-12-04"
+        }
+    }
+}
+```
+
 
 ### 2. Settings 
 
@@ -63,6 +84,14 @@ Settings are the common configurations used to construct requests to the supplie
 * `clientTokens` (Used to identify the origin of the request, this is only used in plugins)
 * `businessRules`
 * `operationTimeout` (Timeout in milliseconds for Hotel-X connection. Will close Buyer connection if exceeded. Must be higher than `timeout`.)
+
+### Requests Examples
+
+#### Dates amendment quote with the `bookingID` from the book response
+
+<GraphqlSample query={datesAmendmentQuoteQuery} variables={datesAmendmentQuoteVariables} />
+
+
 
 
 
@@ -100,7 +129,7 @@ Settings are the common configurations used to construct requests to the supplie
 
 **Mandatory Settings**
 * `context`
-* `timeout` (Timeout in milliseconds for supplier connections. Applied to all suppliers; won't close client connection if exceeded)
+* `timeout` (Timeout in milliseconds for the supplier connection. Won't close client connection if exceeded.)
 * `businessRules`
 * `language`
 * `currency`
@@ -114,3 +143,10 @@ Settings are the common configurations used to construct requests to the supplie
 * `plugins`
 * `testMode` (This flag allows only the accesses checked as test)
 * `clientTokens` (Used to identify the origin of the request, this is only used in plugins)
+* `businessRules`
+* `operationTimeout` (Timeout in milliseconds for Hotel-X connection. Will close Buyer connection if exceeded. Must be higher than `timeout`.)
+
+
+### Requests Examples
+
+<GraphqlSample query={datesAmendmentCommitMutation} variables={datesAmendmentCommitVariables} />

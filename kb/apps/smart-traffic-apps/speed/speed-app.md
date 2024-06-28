@@ -14,7 +14,13 @@ At TravelgateX, we always strive to adapt our tech solutions to our Partners’ 
 	- Those aiming to reduce traffic (hits) to mitigate additional infrastructure costs.
 - **Buyers:** 
 	- Those requiring exceptionally low response times for their business, such as XML, B2B, metasearch Partners, etc.
-	- Those in need of faster access to products beyond the limitations of the Seller's system.
+	- Those in need of faster access to products beyond the limitations of the Seller's system.  
+
+
+:::tip Consistent Traffic, Optimal Results!
+To get the best results from Speed and unlock its full potential, it is crucial to maintain a **high volume of requests and a consistent flow of traffic**. Also, keep an eye on Speed's performance after activation, and **adjust the TTL** if needed.  
+Boost your connections and enjoy enhanced performance with our Speed APP!
+:::
 
 ### How can I use Speed? ⚡
 Once you're logged into [TravelgateX](https://www.travelgatex.com/), navigate to APPs > **Speed**. There, you'll find your Speed Dashboard, displaying the **accesses** currently active on Speed and those that were optimized at some point. 

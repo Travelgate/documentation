@@ -23,16 +23,7 @@ Please note we are only able to provide this code if the Seller returns it in th
 
 
 ### How can I identify the Sellers that return HCN information?🔎
-You can check if your Seller returns HCN through their [Metadata](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-metadata-query). These are **some of the Sellers** that currently return the HCN in BookRS:
-
-- Allbeds
-- GRN Connect
-- Ostrovok
-- Sabre Hospitality Solutions
-- Veturis
-- Smyrooms
-- MagicRooms
-- Expedia
+You can check if your Seller returns the HCN through their [Metadata](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-metadata-query).
 
 :::info
 The Seller has confirmed they return HCN information but you are still not receiving it? Please submit a [ticket](https://app.travelgatex.com/tickets) to our Customer Care team for further information.✔️

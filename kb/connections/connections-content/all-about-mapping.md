@@ -23,8 +23,8 @@ If you are a Buyer connected to our Hotel-X Buyers API, you have the option to u
 ### Can we use Universally Unique Identifier Codes (UUIDs) in our mapping?☑️
 Yes! We don't have any limitation on the amount (and type) of characters used to map the Seller's hotel codes.
 
-### Can I map different portfolios for the same Seller?💡
-Absolutely! You can map multiple portfolios for the same Seller (B2B, B2C, different markets, etc.) as long as **each portfolio is provided by the Seller through a specific Hotel-X Access Code**.
+### Can I map different portfolios for the same connection?💡
+Absolutely! You can map multiple portfolios for the same connection (B2B, B2C, different markets, etc.) as long as **each portfolio is provided by the Seller through a specific Hotel-X Access Code**.
 
 :::tip
 And don't forget to check our Hotels Query article for further details on the hotel content returned!

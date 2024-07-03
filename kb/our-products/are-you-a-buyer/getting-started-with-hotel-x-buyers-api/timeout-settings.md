@@ -41,10 +41,12 @@ Setting a different timeout value for each Seller is not possible when requestin
 ### Timeout Settings in Hotel Buyers Legacy API
 If you are using our Hotel Buyers Legacy API, note that the timeout setup should be set on your side **at a request level** through the timeout tag "timeoutMilliseconds".
 
-### My Legacy API request contains two timeout tags, what distinguishes one from the other?
+### My Legacy API requests contain two timeout tags, what distinguishes one from the other?
 
-1. **HUB timeout**: This value sets the timeout limit for a request at Travelgate.
-2. **Supplier timeout**: this value specifies the timeout limit for a request sent to a Seller. It's important to set the HUB timeout at least 300 ms higher than the Supplier timeout to ensure there is sufficient time to parse the Seller's response.
+Legacy Pull Buyers API requests include 2 timeout tags: The HUB timeout and the Supplier timeout.
+
+  1. **HUB timeout**: This value sets the timeout limit for a request at Travelgate.
+  2. **Supplier timeout**: this value specifies the timeout limit for a request sent to a Seller. It's important to set the HUB timeout at least 300 ms higher than the Supplier timeout to ensure there is sufficient time to parse the Seller's response.
    
    ![timeouts_updated](https://storage.travelgate.com/kbase/timeouts_updated.jpg)
 

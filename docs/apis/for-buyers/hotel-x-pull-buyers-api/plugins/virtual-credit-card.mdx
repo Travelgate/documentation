@@ -249,7 +249,7 @@ Please note, if your reservation fails due to connection or supplier error, a VC
 In the case of canvcc, since it is a cancellation, there is no need to upload any file. You just have to indicate it in the request. Please note that the canvcc plugin can only be executed in the `cancel` `mutation`. To successfully execute the canvcc plugin, you will need to create the request with the following variables.
 
 * **`step`**: `RESPONSE`
-* **`type`**: `PRE_STEP`
+* **`type`**: `POST_STEP`
 * **`name`**: `canvcc`
 * **`parameters`**:
     * **`id`**: The id of the virtual credit card that you want to cancel.
@@ -261,7 +261,7 @@ In the case of canvcc, since it is a cancellation, there is no need to upload an
         {
             "step" : "RESPONSE",
             "pluginsType" : {
-                "type" : "PRE_STEP",
+                "type" : "POST_STEP",
                 "name" : "canvcc",
                 "parameters" : [
                     {

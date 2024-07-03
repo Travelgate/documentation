@@ -7,11 +7,9 @@ sidebar_position: 1
 In TravelgateX [Quote (Valuation)](/docs/apis/for-sellers/hotel-pull-sellers-api/booking-flow/valuation) response, you'll find a number of fields that offer detailed insights. Among these, we've included specific fields that give you clearer information about cancellation policies, so you can have a more precise understanding of your options.
 
 - **TIMEZONE:**  
-    We have added the new field “Timezone” in our Metadata method:
+    It will specify the timezone in UTC in which the cancellation policies are located. See the [Metadata](/docs/apis/for-sellers/hotel-pull-sellers-api/content/meta-data) docs to check all possible values.
 
     ![hotel_sellers_api_cancelpolicies1](https://storage.travelgate.com/kbase/hotel_sellers_api_cancelpolicies1.jpg)
-
-    Timezone (see the [Metadata](/docs/apis/for-sellers/hotel-pull-sellers-api/content/meta-data) docs to check all possible values) will specify the timezone in UTC in which the cancellation policies are located.
 
 
 :::info
@@ -36,3 +34,6 @@ If you have any doubts about the timezone returned (for example, if TimeZone is 
     | TimeZone        | Bypass   | Conversion to UTC-0 |
     | Unknown        | Bypass   | +14 hours offset |
 
+### Does the same timezone apply to the cancellation policies for all Buyers connected to a Supplier?
+
+In TravelgateX, the timezone settings for cancellation policies are managed in the Supplier's Metadata, so they will apply uniformly across all their Buyers.

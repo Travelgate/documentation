@@ -4,25 +4,19 @@ sidebar_position: 2
 
 # Two-factor Authentication (2FA)
 
+:::warning Important
+Effective **September 10th, 2024**, our website will require 2FA for all users.
+:::
+
 ### What is the Two-factor Authentication?
 
 Two-factor authentication (2FA) is a security feature that adds an extra layer of protection to your Travelgate account. Once enabled, you will be required to enter a security code in addition to your password whenever you sign in.
 
 This code will be newly generated each time by an authenticator application (we call it a “One-Time Password”). This is why a prerequisite is that you have an authenticator app already installed (we recommend having Google Authenticator in your phone, but this is only one of many existing apps). Some examples:
+- Google Authenticator ([Android](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2) & [iOS](https://apps.apple.com/us/app/google-authenticator/id388497605)).
+- Microsoft Authenticator ([Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) & [iOS](https://apps.apple.com/es/app/microsoft-authenticator/id983156458)).
+- Cisco Duo Mobile ([Android](https://play.google.com/store/apps/details?id=com.duosecurity.duomobile) & [iOS](https://apps.apple.com/us/app/duo-mobile/id422663827)).
 
-- Google Authenticator (Android & iOS) 
-- - https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2
-- - https://apps.apple.com/us/app/google-authenticator/id388497605
-
-
-- Microsoft Authenticator (Android & iOS)
-- -https://play.google.com/store/apps/details?id=com.azure.authenticator
-- -https://apps.apple.com/es/app/microsoft-authenticator/id983156458
-
-
-- Cisco Duo Mobile (Android & iOS) 
-- -ttps://play.google.com/store/apps/details?id=com.duosecurity.duomobile
-- -https://apps.apple.com/us/app/duo-mobile/id422663827
 
 ### My authenticator app is ready. How do I start?
 
@@ -47,8 +41,3 @@ This code will be newly generated each time by an authenticator application (we 
    2. The next screen will confirm that everything is set up correctly and you will be redirected to your new log-in page.  
 
 		![2FA_4](https://storage.travelgate.com/kbase/2FA_4.jpg)
-
-
-:::warning Important
-Effective **September 10th, 2024**, our website will require 2FA for all users.
-:::

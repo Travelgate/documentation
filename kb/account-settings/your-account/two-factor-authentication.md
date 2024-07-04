@@ -14,6 +14,7 @@ Two-factor authentication (2FA) is a security feature that adds an extra layer o
 
 This code will be newly generated each time by an authenticator application (we call it a “One-Time Password”). This is why a prerequisite is that you have an authenticator app already installed (we recommend having Google Authenticator in your phone, but this is only one of many existing apps). Some examples:
 
+<<<<<<< HEAD:kb/account-settings/your-account/two-factor-authentication.md
 - Google Authenticator ([Android](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2) & [iOS](https://apps.apple.com/us/app/google-authenticator/id388497605)).
 
 
@@ -21,6 +22,21 @@ This code will be newly generated each time by an authenticator application (we 
 
 
 - Cisco Duo Mobile ([Android](https://play.google.com/store/apps/details?id=com.duosecurity.duomobile) & [iOS](https://apps.apple.com/us/app/duo-mobile/id422663827)).
+=======
+- Google Authenticator (Android & iOS) 
+- - https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2
+- - https://apps.apple.com/us/app/google-authenticator/id388497605
+
+
+- Microsoft Authenticator (Android & iOS)
+- -https://play.google.com/store/apps/details?id=com.azure.authenticator
+- -https://apps.apple.com/es/app/microsoft-authenticator/id983156458
+
+
+- Cisco Duo Mobile (Android & iOS) 
+- -ttps://play.google.com/store/apps/details?id=com.duosecurity.duomobile
+- -https://apps.apple.com/us/app/duo-mobile/id422663827
+>>>>>>> 578f68e0d57a255b1f01117fb86b8e749cf118cd:kb/account-settings/users-management/two-factor-authentication.md
 
 ### My authenticator app is ready. How do I start?
 

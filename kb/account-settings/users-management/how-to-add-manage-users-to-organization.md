@@ -22,7 +22,7 @@ In order to add new users simply follow the steps below:
 1. Complete the sign-up process: The new user will receive an e-mail in order to set their password and they will be able to explore our website. Please ensure that the initial login is done using the **username and password**, not through the Google account.
 
 :::warning Important
-Effective **September 10th, 2024**, our website will require 2FA for all users. Please check this [article](/kb/account-settings/users-management/two-factor-authentication) for further information.
+Effective **September 10th, 2024**, our website will require 2FA for all users. Please check this [article](/kb/account-settings/your-account/two-factor-authentication) for further information.
 :::
 
 ### How can I modify the roles assigned to users within an Organization?

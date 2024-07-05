@@ -64,7 +64,7 @@ export default function AskAi() {
         <div className="row">
           <div className="col col--12 browse-articles title-ia">
             <div className="item margin-top--lg margin-bottom--sm">
-              <h4>Travelgate Developer AI Assistant.</h4>
+              <h4>Travelgate AI Assistant.</h4>
             </div>
           </div>
           <div className={clsx("na", styles.customContainer)}>

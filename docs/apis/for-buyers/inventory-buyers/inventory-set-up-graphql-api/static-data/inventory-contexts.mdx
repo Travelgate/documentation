@@ -7,7 +7,11 @@ import {inventoryContextsQuery, inventoryContextsVariables, inventoryContextsSup
 
 # Inventory Contexts
 
-The `inventoryContexts` query returns a list of all the existing Inventory Contexts created. The returned fields include:
+`Inventory Context` is a term used to describe hotel codes used in Inventory. This should not be confused with the standard concept [Context](/docs/get-started/key-concepts#context); as this `Inventory Context` is exclusively related to the Inventory scope.  
+Some Channel Managers need to work with their native hotel codes instead of mapping the Inventory hotel IDs that we autogenerate. Therefore, these Channels will require a special `Inventory Context` for Set Up and Product Load operations.  
+As a Buyer connected to a Push Seller, the only alteration if the seller is a Channel Manager configured with a `Inventory Context`, will be that in the hotel list you will receive the native hotel codes instead of the hotel IDs.
+
+To retrieve the `Inventory Context` values, you can use the `inventoryContexts` query that returns a list of all the existing Inventory Contexts created. The returned fields include:
 
 * `contextId`
 * `contextCode`

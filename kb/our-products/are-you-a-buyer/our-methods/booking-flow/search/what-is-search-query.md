@@ -42,10 +42,11 @@ Since the amount of information requested in Hotel-X Search Query will depend on
 - id
 
 ### How many hotel codes per request can I request in Search?🔢
-We recommend a maximum of 200 hotels: the new aggregator will split them in batches in order to request all of them to each Seller.
+- If you are connected to Travelgate via our **Hotel-X Pull Buyers API**, we recommend a maximum of 200 hotels: the new aggregator will split these into batches to request them from each Supplier efficiently.
+- If you are connected via our **Legacy Pull Buyers API**, our system does not automatically split the hotels according to the Supplier’s specifications. Therefore, you should adhere to the value assigned to the MaxNumberHotels node in the Supplier’s Metadata.
 
 :::info 
-Please take note the current formula and rate limit are subject to change.
+Please take note the current formula and limit are subject to change.
 :::
 
 ### Are there any limitations on the number of searches/minute?❓

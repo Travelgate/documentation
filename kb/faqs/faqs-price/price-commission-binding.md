@@ -41,7 +41,7 @@ When a price is tagged as "binding", it means it’s mandatory to sell over the 
 - If binding is set as **false**: the Buyer can sell the product for a lower price than the one returned by the Seller.
 ### How should I interpret the value in the field "minimumSellingPrice"?🔎
 **What does minimumSellingPrice (MSP) mean?**  
-The minimumSellingPrice (MSP) represents the *lowest price at which the Buyer can sell the Supplier's product* to their Customers. This feature was introduced in TravelgateX in 2022, as mentioned in the [implementation update](https://community.travelgatex.com/t/minor-update-notification-minimum-selling-price/2236). Previously, we relied on the binding tag to identify mandatory gross amounts that served as minimum selling prices.
+The minimumSellingPrice (MSP) represents the *lowest price at which the Buyer can sell the Supplier's product* to their Customers. This feature was introduced in TravelgateX in 2022. Previously, we relied on the binding tag to identify mandatory gross amounts that served as minimum selling prices.
 
 **What Information does MSP return?**  
 MSP field informs the *amount to be set as mandatory price* and allows Buyers to get a competitive pricing reference, especially valuable when we have have in place 3 different pricing amounts: 

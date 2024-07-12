@@ -4,7 +4,15 @@ sidebar_position: 5
 
 # About our Community
 
-### Who We Are
+At Travelgate, we cherish the value of community. We're excited to launch our latest initiative: a **[Discord Server (ideas-hub)](https://discord.com/invite/travelgate)** designed specifically for our active network of users, partners, and developers. This platform is more than a communication tool; it's a hub for cultivating ideas, fostering collaboration, and driving innovation forward.
+
+Discord’s versatility perfectly complements our vision at TravelgateX. The platform supports real-time communication through instant messaging, voice chats, and video calls, ensuring rapid and efficient interactions. Additionally, it offers high-quality streaming capabilities crucial for hosting webinars, live demonstrations, and other virtual events. This ensures our community can enjoy rich, interactive experiences, irrespective of their physical location.
+
+:::info
+Curious about TravelgateX’s new Discord Server for its community? Learn more [here](https://blog.travelgate.com/en/why-travelgatex-has-set-up-a-discord-server-for-its-community)! 🚀
+:::
+
+### Who we are
 Our community includes Travelgate employees, Partners, travel tech enthusiasts, product experts, and, anyone passionate about travel technology.
 
 ### How Your Ideas and Reactions Impact TravelgateX

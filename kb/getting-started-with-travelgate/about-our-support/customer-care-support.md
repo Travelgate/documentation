@@ -9,7 +9,7 @@ sidebar_position: 1
 ### What resources are offered to Partners once they connect to our Marketplace?🌟
 1. **Help Center:** the home to our Knowledge Base & FAQs.
 1. **[Tickets](https://app.travelgatex.com/tickets):** open tickets to our Customer Care team and manage them through our APP section "Tickets".
-3. **[TravelgateX Community](https://discord.com/channels/1121158946074402916/1202366240673505400):** post ideas & suggestions.
+2. **[TravelgateX Community](https://discord.com/invite/travelgate):** post ideas & suggestions.
 
 ### What does TravelgateX not do?🛠️
 Our core focus lies in providing **seamless connectivity solutions**. As a result, we don't offer services like booking engine, voucher generator system, front/back-office systems, website design, etc.
@@ -28,7 +28,7 @@ Nevertheless, we have established partnerships with numerous affiliates who spec
 
 :::info
 
-* To share your *Product Development* requests, please use [TravelgateX Community](https://discord.com/channels/1121158946074402916/1202366240673505400). Our Product team will give a detailed evaluation to each idea, suggestion, and request.
+* To share your *Product Development* requests, please use [TravelgateX Community](https://discord.com/invite/travelgate). Our Product team will give a detailed evaluation to each idea, suggestion, and request.
 * For any *Product Maintenance requests*, kindly submit them through [Tickets](https://app.travelgatex.com/tickets).
 
 :::

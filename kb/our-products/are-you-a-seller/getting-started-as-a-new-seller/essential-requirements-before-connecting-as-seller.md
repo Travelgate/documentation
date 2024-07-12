@@ -8,7 +8,7 @@ Welcome aboard to TravelgateX!
 
 We're beyond excited that you've chosen to partner with us for expanding your hotel inventory. Starting out on a new venture can be challenging, but fear not! Our team is dedicated to walking alongside you throughout the onboarding process.
 
-Whether you have technical questions or need some guidance, we've got you covered. Just head over to [TGX Community](https://discord.com/channels/1121158946074402916/1202366240673505400), where you can connect with other developers, or get ready to dig into our [Knowledge Base](/kb), packed with awesome articles and FAQs! And for a deeper dive, our comprehensive [Documentation](/docs/get-started/connectivity-products) is at your fingertips.
+Whether you have technical questions or need some guidance, we've got you covered. Just head over to [TGX Community](https://discord.com/invite/travelgate), where you can connect with other developers, or get ready to dig into our [Knowledge Base](/kb), packed with awesome articles and FAQs! And for a deeper dive, our comprehensive [Documentation](/docs/get-started/connectivity-products) is at your fingertips.
 
 :::info Resources.
 - [Hotel Pull Sellers API Documentation](/docs/apis/for-sellers/hotel-pull-sellers-api/overview).

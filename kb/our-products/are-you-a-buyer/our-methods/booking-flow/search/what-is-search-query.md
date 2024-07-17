@@ -21,7 +21,7 @@ Search is the first method in our Booking Flow. Search Query aims to return all 
 Feel free to check this [article](/kb/our-products/are-you-a-buyer/our-methods/booking-flow/search/how-tos/how-to-filter-hotel-x-search-requests) for further information on How to filter Search requests.✔️
 
 :::note
-Remember to upload your mapping files to our FTP in those cases you run requests with your own context codes. That way, you will receive results from all your Sellers with your own hotel codes. You will find more information about Mapping on TravelgateX here.
+Remember to upload your mapping files to our SFTP in those cases you run requests with your own context codes. That way, you will receive results from all your Sellers with your own hotel codes. You will find more information about Mapping on TravelgateX here.
 :::
 
 ### Can I search by destination?🔎

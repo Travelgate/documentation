@@ -27,7 +27,7 @@ Our VCC Generation plugin offers a range of features to enhance your payment exp
 
 1. **Reach an agreement** with your chosen VCC payment provider to ensure seamless VCC transactions.
 2. **Open a ticket with our [Customer Care team](https://app.travelgate.com/tickets)**, providing details about the VCC supplier, the credentials they provided, and the hotel Sellers for whom you wish to activate VCC payments. You will be notified once the activation is complete.
-3. **Create your VCC Rules file and upload it to your FTP**.
+3. **Create your VCC Rules file and upload it to your SFTP**.
 4. **Finish the VCC Setup**:
     - **If you are using our Hotel-X Pull Buyers API**: Add the VCC Plugin to your Hotel-X Book and Cancel mutations.
     - **If you are using our Distribution Solution**: Access the Distribution Extranet and configure the "Allow VCC" rule in the configuration section at the agency level.  

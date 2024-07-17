@@ -16,7 +16,7 @@ Our Hotel-X Pull Buyers API is packed with lots of features and one of them is t
     1. **Add the access code** of the Seller you wish to query in your HotelXFilterSearchInput.
     
 :::note
-You should use the [Seller context](/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/hotel-x-credentials) in your Search requests unless you have previously uploaded your [mapping files to our FTP](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping).
+You should use the [Seller context](/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/hotel-x-credentials) in your Search requests unless you have previously uploaded your [mapping files to our SFTP](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping).
 :::
 
 ### Multimode Search🚀
@@ -25,7 +25,7 @@ You should use the [Seller context](/kb/our-products/are-you-a-buyer/getting-sta
 In Hotel-X, Multimode refers to the capability for Partners to search multiple Sellers at the same time in just one request.
 
 * **How does Hotel-X Multimode work?**
-    1. To search in Multimode, you should start by uploading your [hotel mapping files](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping) to your FTP.
+    1. To search in Multimode, you should start by uploading your [hotel mapping files](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping) to your SFTP.
     1. Once the files are processed, you'll have the ability to search multiple Sellers simultaneously by using your [own context](/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/hotel-x-credentials) and hotel codes. You can search Multimode in two ways:
         1. **Specifying the Hotel-X access codes** in your the filterSearch node: the query will only be sent to the accesses specified:
             ```

@@ -46,7 +46,7 @@ Context refers to the content codes utilized by both Buyers and Sellers. Each Se
 Buyers also have the flexibility to either use their own context or choose content providers. In either case, they can create their own context using our [Mapping Plugin](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping). This allows Buyers to align their own context with the Suppliers' context. 
 
 :::info What is the difference between access and context?
-The distinction between the two is that an access holds your *credentials* for a specific connection, while a context is the *internal TravelgateX code required to request either the original Supplier hotel codes or your own hotel codes* (previously mapped and uploaded to our FTP).
+The distinction between the two is that an access holds your *credentials* for a specific connection, while a context is the *internal TravelgateX code required to request either the original Supplier hotel codes or your own hotel codes* (previously mapped and uploaded to our SFTP).
 
 Explore our Hotel-X Buyers API Documentation to learn more about [Hotel-X credentials](/docs/get-started/key-concepts) and [API Settings](/kb/connections/connections-settings).
 :::

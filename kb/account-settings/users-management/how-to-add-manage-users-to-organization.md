@@ -15,11 +15,10 @@ In order to add new users simply follow the steps below:
 
 1. Click on "Invite a User" and fill in the information requested in the form. Please note that only **Owner and Admin** members can invite users to an Organization.
 
-	![invite-user-1](https://storage.travelgate.com/kbase/invite-user-1.jpg)
+	![members_invite_user_07_1](https://storage.travelgate.com/kbase/members_invite_user_07_1.jpg)
+	![members_invite_user_07_2](https://storage.travelgate.com/kbase/members_invite_user_07_2.jpg)
 
-	![invite-user-2](https://storage.travelgate.com/kbase/invite-user-2.jpg)
-
-1. Complete the sign-up process: The new user will receive an e-mail in order to set their password and they will be able to explore our website. Please ensure that the initial login is done using the **username and password**, not through the Google account.
+2. Complete the sign-up process: The new user will receive an e-mail in order to set their password and they will be able to explore our website. Please ensure that the initial login is done using the **username and password**, not through the Google account.
 
 :::warning Important
 Effective **September 10th, 2024**, our website will require 2FA for all users. Please check this [article](/kb/account-settings/your-account/two-factor-authentication) for further information.
@@ -28,11 +27,13 @@ Effective **September 10th, 2024**, our website will require 2FA for all users. 
 ### How can I modify the roles assigned to users within an Organization?
 1. Click on Settings - Users Management
 1. Filter the user to be updated
-1. Use the drop-down menu in order to modify their role  - please note that this feature is only available for **Admin or Owner** users.
+1. Click on 3 dots to edit user information  - please note that this feature is only available for **Admin or Owner** users.
 
-![modify_role](https://storage.travelgate.com/kbase/add_users_can_i_modify_role.jpg)
+![members_invite_user_07_3](https://storage.travelgate.com/kbase/members_invite_user_07_3.jpg)
 
 :::info User roles:
-- **Admin**: User with complete permissions.
-- **User**: User with read permissions. This users will not be able to visualize the API key information.
+The role will determine which actions a user can perform within the Travelgate APP:
+- **Admin**: User that can create new connections and make reservations in the Travelgate APP and API.
+- **Editor**: User that can review and update existing connections and make reservations in the Travelgate APP and API.
+- **Viewer**: User that can view existing connections and perform searches and quotes in the Travelgate APP and API.
 :::

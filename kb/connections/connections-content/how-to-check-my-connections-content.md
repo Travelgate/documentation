@@ -77,8 +77,11 @@ In order to force an update of your portfolio, you should simply follow the step
     <summary>How often is a Seller's portfolio updated?</summary>
     <div>
         <div>
-            Static content updates are carried out every 7-14 days, depending on the type of content. Our system updates a Seller's portfolio (adding new hotels) every 7-14 days.
-		Hotels that the Seller no longer provides are removed every 30 days. For example, for a portfolio of 100K hotels:
+            - Hotel portfolio updates for Sellers are launched every 7 days (adding new hotels).
+            - Hotels DescriptiveInfo is updated every 15 days.
+			- Hotels that the Seller no longer provides are removed every 30 days.  
+
+			For example, for a portfolio of 100K hotels:
             <ul>
                 <li>If the Seller removes 50K, those hotels will be automatically removed from our side within the next 30 days.</li>
                 <li>If the Seller adds 50K, those new hotels will be automatically added to the Seller's portfolio within the following 7-14 days.</li>

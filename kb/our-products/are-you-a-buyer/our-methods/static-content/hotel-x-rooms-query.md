@@ -48,7 +48,7 @@ Our primary goal is to ensure that our Partners receive the Seller's native info
 Don't worry, connecting with a new Seller doesn't mean you have to be interested in their entire rooms portfolio. You have the flexibility to map only the specific rooms that catch your interest.
 
 :::info
-Remember that if you are utilizing the Hotel-X API, you have the option to [upload your own mapping files to our FTP](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping). Take advantage of our FTP mapping and make the Booking Flow truly your own!🚀
+Remember that if you are utilizing the Hotel-X API, you have the option to [upload your own mapping files to our SFTP](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping). Take advantage of our SFTP mapping and make the Booking Flow truly your own!🚀
 :::
 
 ### Is it possible to receive GIATA codes in Hotel-X Rooms Query response?💡

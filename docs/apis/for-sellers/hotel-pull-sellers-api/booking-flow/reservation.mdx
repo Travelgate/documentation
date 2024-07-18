@@ -257,68 +257,88 @@ The response options include either **success** or an **error**. If successful, 
 ```
 
 <details>
-    <summary>Error codes that you will need to include in the response in the event of an error</summary>
+    <summary>Error types that you will need to include in the response in the event of an error</summary>
     <div>
         <div>
          <table>
 				<thead>
 					<tr>
 						<th>
-							<strong>Error Code</strong>
+							<strong>Error Type</strong>
 						</th>
 						<th>
 							<strong>Error Description</strong>
+						</th>
+                  <th>
+							<strong>Comments</strong>
 						</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
 						<td>101</td>
-						<td>System Exception (Exception not controlled or not classified as general exception).</td>
+						<td>System Exception.</td>
+                  <td>Exception not controlled or not classified as general exception.</td>
 					</tr>
 					<tr>
 						<td>102</td>
-						<td>Supplier Error.</td>
+						<td>Provider Error.</td>
+                  <td>You return a particular code/description for an error, which is then transmitted to the Buyer in our response.</td>
 					</tr>
 					<tr>
 						<td>103</td>
 						<td>Too many requests to the supplier.</td>
+                  <td>Your Buyer has surpassed the agreed-upon request limit with you.</td>
 					</tr>
-                    <tr>
+               <tr>
 						<td>104</td>
-						<td>Timeout (Timeout during the execution of an operation (look in the common attribute timeout )).</td>
+						<td>Connection Timeout With Provider.</td>
+                  <td>Your response time has exceeded the timeout set in the Buyer's request.</td>
 					</tr>
 					<tr>
 						<td>105</td>
 						<td>Communication Error.</td>
+                  <td>The connection with your system has been refused.</td>
+					</tr>
+               <tr>
+						<td>105</td>
+						<td>Payload too high.</td>
+                  <td>The size of your response surpasses the size limitation established on our side for optimal performance (20000 options or 15MB).</td>
 					</tr>
 					<tr>
 						<td>204</td>
-						<td>Supplier returns 0 results in availability.</td>
+						<td>No results found.</td>
+                  <td>You don't return any results for the specific availability criteria set in the Buyer's request (e.g. hotel, dates, market, etc.).</td>
 					</tr>
                     <tr>
 						<td>205</td>
-						<td>The Supplier doesn’t accept the distribution RQ.</td>
+						<td>Room Candidate Not Supported.</td>
+                  <td>The number of room candidates in Buyer's request exceeds the maximum set by you.</td>
 					</tr>
 					<tr>
 						<td>206</td>
-						<td>The Supplier doesn’t accept the dates RQ.</td>
+						<td>Dates Not Supported.</td>
+                  <td>Buyer availability request does not align with your date specifications.</td>
 					</tr>
 					<tr>
 						<td>207</td>
-						<td>The Supplier doesn’t accept the request RQ.</td>
+						<td>Request XML not accepted by Supplier.</td>
+                  <td>Buyer availability request does not align with your specifications.</td>
 					</tr>
                     <tr>
 						<td>301</td>
-						<td>Option not found in policies.</td>
+						<td>Option Not Found In Valuation.</td>
+                  <td>You fail to return the option previously chosen by the Buyer in Search response (the option is no longer available). This error can be encountered in Quote response and Book response (whenever the integration requires an additional Quote to the Seller).</td>
 					</tr>
-                    <tr>
+               <tr>
 						<td>302</td>
-						<td>Hotel Not Found in DescriptiveInfo.</td>
+						<td>Hotel not found.</td>
+                  <td>Our system is unable to locate the hotel the Buyer requested in your Hotels (DescriptiveInfo) method.</td>
 					</tr>
                     <tr>
 						<td>303</td>
-						<td>Booking not confirmed in the supplier’s system.</td>
+						<td>Booking not confirmed.</td>
+                  <td>You haven't been able to confirm a booking for some reason (is not very common and might be returned in reservation response).</td>
 					</tr>
 				</tbody>
 			</table>

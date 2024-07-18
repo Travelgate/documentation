@@ -14,6 +14,19 @@ Let [Stats](https://app.travelgatex.com/apps/stats) empower you with data-driven
 ### How can I use Stats? 🔍
 Once you're logged into [TravelgateX](https://www.travelgatex.com/), simply click on APPs and then select **Stats**. By default, you'll see your Organization's statistics for the last hour. But don't worry, you have the flexibility to adjust the time range as per your requirements using the convenient selector in the top right corner.
 
+**About the Time Range and Time Zone:**  
+
+- If the selected period is *less than 7 days*, Stats will use your browser's time zone.
+- If the selected period is *more than 7 days*, Stats will use the UTC time zone and display aggregated daily data.  
+Let's clarify this with an example:  
+
+    As of June 25, 2024, it is 12:00 PM, and the user is located in Madrid, Spain (time Zone: GMT +2 / UTC +2).
+    - To see Stats for the last hour: Stats will use the browser's time zone and display data from 11:00 AM to 12:00 PM (UTC+2).
+    - To see Stats for yesterday between 10:00 AM and 3:00 PM: Stats will the browser's time zone (UTC+2).
+    - To see Stats for the last 7 days: Stats will display results considering browser's time zone up to 12:00 PM today (UTC+2).
+    - When selecting a period older than the previous 7 days (eg: 2024-06-01  – 2024-06-12), Stats will show data for complete days (UTC).
+
+
 ![stats_dashboard_2](https://storage.travelgate.com/kbase/stats_dashboard_2.jpg)
 
 All the information you need is neatly arranged into different tabs. The first tab, "All," presents a comprehensive view of your Organization's entire booking flow, with key insights displayed through intuitive cards. For a deeper analysis, explore each connection in detail using the table below. And if you crave even more data, simply select the "View accesses" option for any connection to access detailed statistics at the access level.

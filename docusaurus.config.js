@@ -59,7 +59,7 @@ const config = {
       'data-project-name': 'Travelgate',
       'data-project-color': '#0B59DE',
       'data-project-logo': '/img/ask_ia.svg',
-      'data-modal-disclaimer': 'This is a custom Language Learning Model (LLM) designed to answer questions specifically about Travelgate. The responses provided are based on the contents of the official documentation. To ensure you receive the most accurate and helpful answer, please include as much relevant context as possible in your questions. For example, make sure to explain your problem clearly and in detail. This feature is experimental, and we value your feedback. Please rate the answers you receive to help us improve the service. Thank you for your cooperation!',
+      'data-modal-disclaimer': 'This is a custom Language Learning Model (LLM) designed to answer questions specifically about Travelgate. The responses provided are based on the contents of the official documentation. To ensure you receive the most accurate and helpful answer, please include as much relevant context as possible in your questions. For example, make sure to explain your problem clearly and in detail.',
       'data-user-analytics-fingerprint-enabled': 'true'
     }
   ],

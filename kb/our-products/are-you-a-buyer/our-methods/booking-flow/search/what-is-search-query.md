@@ -21,7 +21,7 @@ Search is the first method in our Booking Flow. Search Query aims to return all 
 Feel free to check this [article](/kb/our-products/are-you-a-buyer/our-methods/booking-flow/search/how-tos/how-to-filter-hotel-x-search-requests) for further information on How to filter Search requests.✔️
 
 :::note
-Remember to upload your mapping files to our FTP in those cases you run requests with your own context codes. That way, you will receive results from all your Sellers with your own hotel codes. You will find more information about Mapping on TravelgateX here.
+Remember to upload your mapping files to our SFTP in those cases you run requests with your own context codes. That way, you will receive results from all your Sellers with your own hotel codes. You will find more information about Mapping on TravelgateX here.
 :::
 
 ### Can I search by destination?🔎
@@ -42,10 +42,11 @@ Since the amount of information requested in Hotel-X Search Query will depend on
 - id
 
 ### How many hotel codes per request can I request in Search?🔢
-We recommend a maximum of 200 hotels: the new aggregator will split them in batches in order to request all of them to each Seller.
+- If you are connected to Travelgate via our **Hotel-X Pull Buyers API**, we recommend a maximum of 200 hotels: the new aggregator will split these into batches to request them from each Supplier efficiently.
+- If you are connected via our **Legacy Pull Buyers API**, our system does not automatically split the hotels according to the Supplier’s specifications. Therefore, you should adhere to the value assigned to the MaxNumberHotels node in the Supplier’s Metadata.
 
 :::info 
-Please take note the current formula and rate limit are subject to change.
+Please take note the current formula and limit are subject to change.
 :::
 
 ### Are there any limitations on the number of searches/minute?❓

@@ -17,7 +17,7 @@ Since this error serves as an indication that there is a discrepancy or issue wi
 - **Verify Client**: the Client set in your request should be one of those configured for your account. More information on Hotel-X Clients can be found [here](/kb/connections/connections-settings/).
 - **Verify Apikey**: the Apikey set in your request should be the one configured for your account. You will find more information on your API Settings [here](/kb/connections/connections-settings).
 - **Verify Context**: the Context code set in your request should match the mapping expected in your request:
-    - [Single Mode request](/kb/our-products/are-you-a-buyer/our-methods/booking-flow/search/hotel-x-single-mode-and-multimode-search): you may either request with the Supplier context (you can check this information in [My Connections](/kb/connections/my-connections/), at an access level) or with your own Client context (Mapping uploaded to the FTP).
+    - [Single Mode request](/kb/our-products/are-you-a-buyer/our-methods/booking-flow/search/hotel-x-single-mode-and-multimode-search): you may either request with the Supplier context (you can check this information in [My Connections](/kb/connections/my-connections/), at an access level) or with your own Client context (Mapping uploaded to the SFTP).
     - [Multi-mode request](/kb/our-products/are-you-a-buyer/our-methods/booking-flow/search/hotel-x-single-mode-and-multimode-search): you should use your own Client context.
 - **Verify criteria**: you should check the criteria in your request is valid. For example, do not set check-in and check-out dates from the past.
 

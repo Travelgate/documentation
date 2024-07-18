@@ -41,3 +41,8 @@ This code will be newly generated each time by an authenticator application (we 
    2. The next screen will confirm that everything is set up correctly and you will be redirected to your new log-in page.  
 
 		![2FA_4](https://storage.travelgate.com/kbase/2FA_4.jpg)
+
+
+:::info
+For comprehensive guidance on how to add and manage new users in your Organization, don’t miss this [article](/kb/account-settings/users-management/how-to-add-manage-users-to-organization)!
+:::

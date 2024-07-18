@@ -12,7 +12,7 @@ A "PLUGIN_ERROR" occurs when our system cannot validate the plugin information a
 	It mostly occurs when there is an issue with the input or structure of the plugin. To resolve this, make sure that the Plugin format you have set up aligns with our Hotel-X API [Specifications](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/overview).   
 
 	Another scenario where you might encounter this warning is when the integration doesn't receive commission details from the Seller. In such cases, you may see a warning message saying "commission: commission not found".
-	1. If this happens during a Search, we will inform the Buyer to upload the [commission file to our FTP](/kb/our-products/are-you-a-buyer/our-methods/lists-of-errors-and-warnings/wrong-field-plugin-error) so that accurate results can be obtained.
+	1. If this happens during a Search, we will inform the Buyer to upload the [commission file to our SFTP](/kb/our-products/are-you-a-buyer/our-methods/lists-of-errors-and-warnings/wrong-field-plugin-error) so that accurate results can be obtained.
 	1. If commission information is not received through other methods, the Buyer will be notified through the aforementioned "commission: commission not found" warning.
 			
 			```

@@ -35,7 +35,7 @@ Our primary goal is to ensure that our Partners receive the Seller's native info
 Don't worry, connecting with a new Seller doesn't mean you have to be interested in their entire boards portfolio. You have the flexibility to map only the specific boards that catch your interest.
 
 :::note
-Remember that if you are utilizing the Hotel-X API, you have the option to [upload your own mapping files to our FTP](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping). Take advantage of our FTP mapping and make the Booking Flow truly your own!🚀
+Remember that if you are utilizing the Hotel-X API, you have the option to [upload your own mapping files to our SFTP](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping). Take advantage of our SFTP mapping and make the Booking Flow truly your own!🚀
 :::
 
 ### Does the presence of a board in the Hotel-X Boards Query ensure its availability during a Search?⚠️

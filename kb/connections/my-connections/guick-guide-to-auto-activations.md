@@ -31,7 +31,14 @@ It's worth noting that having a commercial contract with TravelgateX is a must t
 
     ![quickguide_to_autoconnections_step3_2](https://storage.travelgate.com/kbase/autoconnections_step3_3.png)
 
-    * **Step 4 (Review and confirm):**  Double-check all the provided information and confirm to kick off the auto-activation process. Once complete, we'll send you an email containing all the necessary information to set the connection live. Additionally, you can monitor the information and activation status from the "My Connection" section for your convenience. Easy peasy!
+    * **Step 4 (Review and confirm):** Double-check all the provided information and confirm to kick off the auto-activation process. Once complete, we'll send you an email containing all the necessary information to set the connection live. Additionally, you can monitor the information and activation status from the "My Connection" section for your convenience. Easy peasy!
+
+    * **Step 4 (Review and confirm):** Double-check all the provided information and confirm to start the auto-activation process. Also, only if you and your Partner have a Commercial Agreement 2023, the form will show you the available payment types for this new connection:
+        * **FREE:** This connection has no cost for you. Your Partner must confirm the full payment of the connectivity from its side.
+        * **STD:** Standard booking fee applies for you and your Partner, share costs.
+        * **SUP:** Both standard booking fees and supplement apply to this connection for you. For your Partner, it will be free.
+
+    Once complete, we'll send you an email containing all the necessary information to set the connection live. Additionally, you can monitor the information and activation status from the "My Connection" section for your convenience. Easy peasy!
 
     ![quickguide_to_autoconnections_step3_2](https://storage.travelgate.com/kbase/autoconnections_step3_4.png)
 

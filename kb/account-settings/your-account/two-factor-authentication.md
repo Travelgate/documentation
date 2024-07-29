@@ -5,7 +5,7 @@ sidebar_position: 2
 # Two-factor Authentication (2FA)
 
 :::warning Important
-Effective **September 10th, 2024**, our website will require 2FA for all users.
+Effective **September 10th, 2024**, our website will require 2FA for all users. If you want to activate it earlier, please request it through a ticket to our [Customer Care team](https://app.travelgate.com/tickets).
 :::
 
 ### What is the Two-factor Authentication?
@@ -20,10 +20,7 @@ This code will be newly generated each time by an authenticator application (we 
 
 ### My authenticator app is ready. How do I start?
 
-1. **Enable Two-Factor Authentication (2FA)**:
-
-   1. When 2FA is enabled for the first time, access our log-in page.
-   2. Enter your email and password as usual, or log in with your Google account.  
+1. **Log in to our [website](https://www.travelgatex.com/).**
 
 		![2FA_1](https://storage.travelgate.com/kbase/2FA_1.jpg)
 

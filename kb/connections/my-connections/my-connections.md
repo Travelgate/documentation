@@ -10,7 +10,7 @@ View, activate and monitor your connections in TravelgateX
 ### How can I check My Connections?💡
 To check, activate, and keep track of your connections via TravelgateX, simply follow the steps below:
 
-1. Log onto our [website](https://www.travelgatex.com/) - Make sure you **browsing either as Buyer or Seller** depending on the information you need to check.
+1. Log in to our [website](https://www.travelgatex.com/) - Make sure you **browsing either as Buyer or Seller** depending on the information you need to check.
 
 2. Click on Connections > **My Connections**:
 

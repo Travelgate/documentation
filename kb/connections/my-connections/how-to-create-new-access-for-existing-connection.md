@@ -2,11 +2,14 @@
 sidebar_position: 3
 ---
 
-# How to create a new access for an existing connection
+# How to add a new access for an existing connection
 
-In order to create a new access for an existing Partner connection, you just need to follow the steps below:
-1. Access the section Connections>My Connections
-1. Filter the Connection of your choice.
-1. Click on the "Add Access" button at the end of the connection panel and you will be redirected to our [Auto-Activations form](/kb/connections/my-connections/guick-guide-to-auto-activations).
+In cases where you already have a connection with one of our Partners and only need to **add additional credentials (new accesses)**, you can do so directly at the connection level in "My Connections."
 
-    ![add_access](https://storage.travelgate.com/kbase/my_connections_8.jpg)
+Simply follow these steps:
+1. Go to the "My Connections" section on our website and filter for the desired connection.
+2. Click on the blue “Add New Access” button next to the found accesses.
+3. Fill out the [connection form](/kb/connections/my-connections/guick-guide-to-auto-activations) to add the information for your new credentials with that Partner.
+4. That's it! You have requested the activation of a new access for the selected connection. Easy, right?
+
+![myconnections_aug_5](https://storage.travelgate.com/kbase/myconnections_aug_5.jpg)

@@ -9,7 +9,15 @@ sidebar_position: 23
 
 **Example:**
 
-![mapping_error](https://storage.travelgate.com/kbase/mapping_error.jpg)
+```
+[
+    {
+        "code" : "MAPPING_NOT_FOUND",
+        "type" : "MAPPING_ERROR",
+        "description" : "Access: 'xxx' couldn't process hotel codes [123456] due to not finding mapping codes for supplier context [xxx]"
+    }
+]
+```
 
 ### What can I do if I receive a "MAPPING_ERROR" in my response?🔎
 Since this error serves as an indication that there is a discrepancy or issue with the mapping validation, you should check the following information:

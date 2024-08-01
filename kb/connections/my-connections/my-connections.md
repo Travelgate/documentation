@@ -4,81 +4,78 @@ sidebar_position: 1
 
 # My Connections
 
-View, activate and monitor your connections in TravelgateX
+Welcome to the **My Connections** section! Here, we'll guide you through all the essential information you need to fully leverage your connections and accesses at Travelgate.
 
 
-### How can I check My Connections?💡
-To check, activate, and keep track of your connections via TravelgateX, simply follow the steps below:
+### How can I check My Connections?
+To check, activate, and keep track of your connections via Travelgate, simply follow the steps below:
 
-1. Log in to our [website](https://www.travelgatex.com/) - Make sure you **browsing either as Buyer or Seller** depending on the information you need to check.
+1. Log in to our [website](https://www.travelgate.com/) and make sure you are browsing as either a Buyer or a Seller, depending on your Partner type and the information you need to check.
+2. Click on Connections in the top menu, and then, click on My Connections:  
+	![myconnections_aug_1](https://storage.travelgate.com/kbase/myconnections_aug_1.jpg)
 
-2. Click on Connections > **My Connections**:
+### What can I find in My Connections?
+In the [My Connections](https://app.travelgatex.com/connections/myconnections) section, you will find a list of all your connections and their accesses.
 
-	![my_connections-1](https://storage.travelgate.com/kbase/my_connections-1.jpg)
+You can quickly **filter** your [Accesses](/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/hotel-x-credentials#access%EF%B8%8F) based on status, type, and whether they are active or not, or also filter directly by Hotel-X access Code, Supplier code, or Access name:
 
-### What can I find in My Connections?🔎
-In [My Connections](https://app.travelgatex.com/connections/myconnections) section you will find a list of all your connections. You may filter your accesses based on their status, type, and whether they are active or not.
-
-1. **Hotel-X access code**: Id of a given access.
-
-1. **Supplier and Context code**: Supplier code and Supplier Context code of a given access. Don't forget to check our article on [Hotel-X credentials](/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/hotel-x-credentials) for further information.
-
-1. **Access name**: The name of a given access.
-
-1. **Last update and Creation date**: Last modification on a given access and its creation date.
-
-1. **Actions**: Edit access, copy access, Delete access, View Logs and Get form data.
-
-1. **Access Status**:
+- **Access Status**:
 	- Working: The activation process was completed successfully and the access is available for use.
-	- Pending: The access is in validation status and will switch to working or not working after validation.
+	- Pending: The Access is in validation status and will switch to working or not working after validation.
 	- Not Working: One or more processes in the activation have failed and our connectivity team needs to review it manually.
-1. **Access Type**:
+    	- Extended information on "Not Working" status: additional information to speed up the [Auto-Activation process](/kb/connections/my-connections/guick-guide-to-auto-activations):
+        	- Informative popup: Hover over the 'Not working' status to see an informative popup explaining why the auto-activation could not be completed.
+        	- Activation ticket: ticket information assigned to the activation of that access. You can open the ticket reference link to section "Tickets" for more details about the current status of the activation. 
+
+				![myconnections_aug_4](https://storage.travelgate.com/kbase/myconnections_aug_4.jpg)
+- **Access Type**:
 	- Live: This is an access created with production credentials.
 	- Test: This is an access created with test credentials.
 
-	:::info
-	The type of access (live or test) is determined by the credentials agreed upon by both the Buyer and Seller. It is the responsibility of both the BUYER and the SELLER to agree on the type of credentials to be used for a given access.
-	:::
+:::warning Access Type information
+The access type (live or test) is determined by the credentials agreed upon by both the Buyer and Seller. It is the responsibility of both the Buyer and the Seller to agree on the type of credentials to be used for a given access.
+:::
 
-1. **Access Active:**  
-	You can enable or disable your Hotel-X connections and accesses. Please note that you can only use accesses while they are active in our system. Still using our Legacy API? Connect to [Hotel-X API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart) and enjoy this functionality and many more!
-	- Yes: Active and operational access
-	- No: Active and non-operational access
+- **Access Active:**  
+	You can enable or disable your Hotel-X Accesses. Please note that you can only use Hotel-X Access Codes while they are active in our system.  
+	- Yes: Active and operational access.
+	- No: Active and non-operational access.  
 
-	<img src="https://storage.travelgate.com/kbase/my_connections_2.jpg" width="200" />
+:::tip
+Still using our Legacy Pull Buyers API? **Connect to [Hotel-X API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart)** and enjoy this functionality and many more!
+:::
 
-	![my_connections_3](https://storage.travelgate.com/kbase/my_connections_3.jpg)
+- **Hotel-X Access Code**: Id of a given access.
+- **Supplier code**: Supplier code of a given access. Don't forget to check our article on [Hotel-X credentials](/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/hotel-x-credentials) for further information.
+- **Access name**: The name identifier of a given access.
+- **Partner name**: The name of the Partner connected through that access (either Seller or Buyer name).
 
-	:::warning Legacy Pull Buyers API
-	Please remember that when Buyer connections are established through our Legacy Pull Buyers API, the management of credential disconnections must be addressed not only through My Connections (at the access level) but also directly between the Buyer and Seller to ensure effectiveness—it is not sufficient to merely disable the Hotel-X Access Code in My Connections.
-	
-	If you wish to permanently deactivate a Legacy connection on our Platform, please submit a ticket via our Portal - Remember, the deactivation of a Legacy connection would occur at the **connection level**, not at the credential level.  
-	
-	If you need to deactivate a **specific set of credentials**, the deactivation should be managed directly between Buyer and Seller. This ensures that the Buyer stops sending traffic from their system using those particular credentials - please make sure to activate/deactivate the Hotel-X Access Code as well, so that it reflects the actual traffic sent by the Buyer.
-	
-	**How can I determine if a Buyer’s connection is Legacy or Hotel-X?**  
-	As a general guideline, you can verify if a given connection is Legacy or Hotel-X via our [Stats](/kb/apps/monitoring-apps/stats/stats-connectivity-dashboard) APP. Simply filter by the Buyer and select Actions > View Accesses. If you see **“clientname#suppliercode”** instead of a Hotel-X Access Code, the connection is utilizing our Hotel Pull Legacy API.
-	
-	**Important:**  
-	Some Buyers may be transitioning from the Legacy Pull Buyers API to the Hotel-X API, which means they could have traffic via both APIs. **If in doubt, we strongly encourage you to reach out to your Buyers for more detailed information.**
-	:::
+	![myconnections_aug_2](https://storage.travelgate.com/kbase/myconnections_aug_2.jpg)
 
-2. **Accomodations**: the number of properties available for a given access.
+In addition to the aforementioned information, you will also be able to view the following information at the access level:
+- **Updated and Created date**: Information about the last modification made to a given access and its creation date.
+- **Accomodations**: the number of properties available for a given access.
+- **Context code**: [content codes](/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/hotel-x-credentials#context%EF%B8%8F) utilized.
+- **Actions**:
+  - Edit access: Edit your current credentials for an access.
+  - Copy access: Copy a pre-existing access.
+  - Delete access: Remove unnecessary or invalid accesses.
+  - View Logs: View the history of changes made to an access.
+  - Get form data: View your configuration in JSON or XML format, so you can easily consume or store it on your end.
 
-	![my_connections_4](https://storage.travelgate.com/kbase/my_connections_4.jpg)
+![myconnections_aug_3](https://storage.travelgate.com/kbase/myconnections_aug_3.jpg)
 
-3. **APPs**: Links to the Stats, Logging, Alerts, Speed and Traffic Optimizer APPs for that specific access.
 
-	![my connections_5](https://storage.travelgate.com/kbase/my_connections_5.jpg)
+### Connections via Legacy Pull Buyers API
 
-4. **Extended information on "Not Working" status:**
-	We have also added the following information in order to speed up the Auto-Activation process:
+Please remember that when Buyer connections are established through our Legacy Pull Buyers API, the management of credential disconnections must be addressed not only through My Connections (at the access level) but also **directly between the Buyer and Seller to ensure effectiveness** — it is not enough to merely disable the Hotel-X Access Code in My Connections.
 
-	- Informative PopUp: To find out why the auto-activation could not be carried out, hover over the "Not working" status to see an informative PopUp explaining the error.
+- If you wish to permanently deactivate a Legacy connection on our Platform, please submit a ticket via our Portal - Remember, the deactivation of a Legacy connection would occur at the **connection level**, not at the credential level.  
+- If you need to deactivate a **specific set of credentials**, the deactivation should be managed directly between Buyer and Seller. This ensures that the Buyer stops sending traffic from their system using those particular credentials - please make sure to activate/deactivate the Hotel-X Access Code as well, so that it reflects the actual traffic sent by the Buyer.
 
-		![my_connections_6](https://storage.travelgate.com/kbase/my_connections_6.jpg)
+:::info How can I determine if a Buyer’s connection is Legacy or Hotel-X?  
+As a general guideline, you can verify if a given connection is Legacy or Hotel-X via our [Stats](/kb/apps/monitoring-apps/stats/stats-connectivity-dashboard) APP. Simply filter by the Buyer and select Actions > View Accesses. If you see **“clientname#suppliercode”** instead of a Hotel-X Access Code, the connection is utilizing our Hotel Pull Legacy API.
 
-	- Assigned ticket and link to it: You can view the ticket information assigned to the access and open the ticket in the MyTickets section for more details about the current status of the access. 
-
-		<img src="https://storage.travelgate.com/kbase/my_connections_7.jpg" width="500" />
+**Important:**  
+Some Buyers may be transitioning from the Legacy Pull Buyers API to the Hotel-X API, which means they could have traffic via both APIs. If in doubt, we strongly encourage you to **reach out to your Buyers** for more detailed information.
+:::

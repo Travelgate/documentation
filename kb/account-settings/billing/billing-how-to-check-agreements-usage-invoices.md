@@ -42,6 +42,13 @@ Only **owner** and **admin** users have access to the complete menu.
 
 
 ### How can I request a payment type change for one of my Partners?
+
+Remember that if both you and your Partner are under the **Commercial Agreement 2023**, the [Auto-Activations form](/kb/connections/my-connections/guick-guide-to-auto-activations/) to request a new connection on our Platform will display these [available payment types](/kb/account-settings/billing/billing-payment-types):
+
+- **FREE:** This connection has no cost for you. Your Partner must confirm the full payment of the connectivity from its side.
+- **STD:** Standard booking fee applies for you and your Partner, share costs.
+- **SUP:** Both standard booking fees and supplement apply to this connection for you. For your Partner, it will be free.
+
 It's possible that you and your Partner are currently splitting the cost of the connection under a Standard Payment Agreement. If you're interested in switching to a free arrangement where your Partner takes on the payment responsibility, you'll need to **wait for their acceptance** before proceeding with the change. If needed, you can also cancel the request.
 
 ![payment_change_4](https://storage.travelgate.com/kbase/billing_payment_change_4.jpg)

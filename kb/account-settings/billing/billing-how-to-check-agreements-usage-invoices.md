@@ -43,7 +43,7 @@ Only **owner** and **admin** users have access to the complete menu.
 
 ### How can I request a payment type change for one of my Partners?
 
-Remember that if both you and your Partner are under the **Commercial Agreement 2023**, the [Auto-Activations form](/kb/connections/my-connections/guick-guide-to-auto-activations/) to request a new connection on our Platform will display these [available payment types](/account-settings/billing/billing-payment-types):
+Remember that if both you and your Partner are under the **Commercial Agreement 2023**, the [Auto-Activations form](/kb/connections/my-connections/guick-guide-to-auto-activations/) to request a new connection on our Platform will display these [available payment types](/kb/account-settings/billing/billing-payment-types):
 
 - **FREE:** This connection has no cost for you. Your Partner must confirm the full payment of the connectivity from its side.
 - **STD:** Standard booking fee applies for you and your Partner, share costs.

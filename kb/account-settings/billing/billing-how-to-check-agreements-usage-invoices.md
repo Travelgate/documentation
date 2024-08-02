@@ -5,41 +5,34 @@ sidebar_position: 1
 # Billing: View your agreements, control your usage, and check your invoices 
 
 ### How can access Billing? 🖱️
-
 1. Log onto [TravelgateX](https://www.travelgatex.com/), click on your initials in the top right corner, and then select 'Billing'.
-
-	![billing_1](https://storage.travelgate.com/kbase/billing_1.jpg)
-1. Use the tabs provided in order to check your Agreements, Usage or Invoices.
-
-	![billing_settings_2](https://storage.travelgate.com/kbase/billing_settings_2.jpg)
-
-:::warning important
-To ensure seamless billing, **it's important that you handle all cancellations via our API**.  
-Should you face any issues, please don't hesitate to get in touch with our [Customer Care team](https://app.travelgatex.com/tickets) for assistance. Additionally, please make sure to cancel any test bookings with Sellers and to check that such bookings are refundable.
-:::
+2. Use the tabs provided in order to check your Agreements, Usage or Invoices.
+	![billing_aug_2](https://storage.travelgate.com/kbase/billing_aug_2.jpg)
 
 ### How can I manage my agreements? 📑
 
-1. Click on the "Agreements" (first tab).
+1. Click on the "Agreements" tab.
 1. Here, you will be able to filter your agreements by:	
-	1. Active
-	1. Expired
-	1. All
-1. Click on "Options" (three dots) of a specific agreement and you will be able to visualize the following actions:
-	1. Update billing e-mail: Update your billing email or add new ones.
-	1. View fees (by type, amount or ranges)
-	1.  Pdf: Download the signed agreement in Pdf format (only available for Commercial Agreement 2023).
-	1. Change history: View the history of payment type changes (only available for Commercial Agreement 2023).
-2. Click in the arrow beside the Agreement to review your connections and understand the various payment types in more detail:
-   1. This will display a comprehensive list of your connections and detailed descriptions for each payment type will be accessible.
-   2. Should you want to modify the payment arrangement with a Partner, you have the option to request it from here.
+   - Active
+   - Expired
+   - All
+   
+2. Click on "Options" (three dots) of a specific agreement and you will be able to visualize the following actions:
+   - Update billing e-mail: Update your billing email or add new ones.
+   - View fees (by type, amount or ranges)
+   - Pdf: Download the signed agreement in Pdf format (only available for Commercial Agreement 2023).
+   - Change history: View the history of payment type changes (only available for Commercial Agreement 2023).
+
+	![billing_aug](https://storage.travelgate.com/kbase/billing_aug.jpg)
+
+3. Click in the arrow beside the Agreement to review your connections and understand the various payment types in more detail:
+   - This will display a comprehensive list of your connections and detailed descriptions for each payment type will be accessible.
+   - Should you want to modify the payment arrangement with a Partner, you have the option to request it from here.
+
 
 :::info
 Only **owner** and **admin** users have access to the complete menu.
 :::
-
-![billing_manage_agreements](https://storage.travelgate.com/kbase/billing_manage_agreements_3.jpg)
-
 
 ### How can I request a payment type change for one of my Partners?
 
@@ -77,7 +70,7 @@ At Travelgate, we offer essential data that enables you to review your invoices 
 
 Additionally, you can easily download the necessary data for your analysis.
 
-![billing_usage_1](https://storage.travelgate.com/kbase/billing_usage_1.jpg)
+![billing_aug_3](https://storage.travelgate.com/kbase/billing_aug_3.jpg)
 
 ### How can I check my invoices?🔎
 Each monthly invoice provides comprehensive and relevant data specific to your contract type, enabling you to gain a more detailed understanding of your billing information.
@@ -96,3 +89,7 @@ Additionally, you can click on "Options" (drop-down menu) in order to access the
 
 ![billing_checkinvoices](https://storage.travelgate.com/kbase/billing_checkinvoices.jpg)
 
+:::warning important
+To ensure seamless billing, **it's important that you handle all cancellations via our API**.  
+Should you face any issues, please don't hesitate to get in touch with our [Customer Care team](https://app.travelgatex.com/tickets) for assistance. Additionally, please make sure to cancel any test bookings with Sellers and to check that such bookings are refundable.
+:::

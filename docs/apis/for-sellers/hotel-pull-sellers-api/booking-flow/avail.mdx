@@ -115,7 +115,7 @@ Avail serves as the initial step in our booking flow, with the objective of veri
 | AvailRQ/Currency             			| 1  	| String	| The currency node in your request signals your preferred currency, but its inclusion depends on the supplier's allowance. However, even if permitted, the response may not align with your requested currency, as it adheres to the supplier's native code. For example, if you ask for EUR but the supplier operates in GBP, the response will be in GBP. 	|
 | AvailRQ/Nationality          			| 1  	| String	| Nationality of the guest (use ISO3166_1_alfa_2). This information is mandatory (see [MetaData](../content/meta-data/) in order to verify if the supplier implements it).	|
 | AvailRQ/Markets              			| 1         	|		| List of Market requested (see [MetaData](../content/meta-data/) in order to verify if a supplier implements it).				|
-| Markets/Market       			| 1..n  	| String	| Targeted zone/Country/Point of sale (Most suppliers use a standard ISO - 3166_1_alfa_2, but it depends on each individual supplier).			|
+| Markets/Market       			| 1..n  	| String	| Targeted zone/Country/Point of sale (use standard ISO3166_1_alfa_2).			|
 | AvailRQ/RoomCandidates 		| 1..n         	|		| 						|
 |RoomCandidates/RoomCandidate 		| 1..n         	|		| Room required.
 | @id             			| 1     	| Integer	| Id of the requested room (starting at 1).			|

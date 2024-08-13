@@ -34,3 +34,8 @@ If your search criteria returns logs, Logging will display the following informa
 	![new_logging_2](https://storage.travelgate.com/kbase/new_logging_2.jpg)
 - If your search returns many results, we recommend you use additional **filters** on the right: “Filter by Supplier”, “Filter by Access” or “Duration”:
 	![new_logging_3](https://storage.travelgate.com/kbase/new_logging_3.jpg)
+
+:::info Legacy Pull Buyers API information
+Please remember that for Buyer connections through our Legacy Pull Buyers API, filtering by Hotel-X Access Code is not available. Connections will be identified through the Buyer's **clientname#suppliercode** relationship.  
+Note that some Buyers may be transitioning from the Legacy Pull Buyers API to the Hotel-X API, which means they could have traffic via both APIs. If in doubt, we strongly encourage you to **reach out to your Buyers** for more detailed information.
+:::

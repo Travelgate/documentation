@@ -23,9 +23,13 @@ So, let's establish that connection and start harnessing the potential of the Ma
 	- Look-to-Book (L2B): total number of Search requests by total number of bookings OK, minus cancellations OK.
 	- Gross Merchandise Value: total value (€) of all bookings with status OK.
 
+		:::info
+		For a TravelgateX partner, GMV stands for "Gross Market Value". Similar to the general definition in B2B contexts, it refers to the total sales value of all transactions processed through the TravelgateX Platform. This metric is crucial for partners as it indicates the volume of business conducted via the Platform, reflecting the scale and financial performance of the partnership.
+		:::
+
 	![dashboard_1](https://storage.travelgate.com/kbase/dashboard_1.jpg)
 
-1. **Latest Status of my Reported Issues**  
+2. **Latest Status of my Reported Issues**  
 Overview of the status of the most recent issues raised on your side in our Platform:
 ![dashboard_2](https://storage.travelgate.com/kbase/dashboard_2.jpg)
 

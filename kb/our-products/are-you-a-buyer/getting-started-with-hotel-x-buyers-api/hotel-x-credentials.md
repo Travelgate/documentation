@@ -6,7 +6,7 @@ sidebar_position: 8
 
 ## Review your API Key, Clients, Accesses and Contexts
 
-Once you have configured your account, you can access our APP and check your Hotel-X credentials and accesses by following this simple guide:
+Once you have configured your account as a Hotel-X Buyer in our Platform, you can access our APP and check your Hotel-X credentials and accesses by following this simple guide:
 
 ### Apikey☑️
 An Apikey is a unique alphanumeric code that serves as a form of authentication required for accessing Hotel-X API. This key must be included in the HTTP Authorization request header to verify and authenticate the user agent with the server. It acts as a secure identifier, ensuring that only authorized users can make requests and access the API's functionalities. You can find your Apikey (**encrypted**) and generate new ones in section Connections > [API Settings](https://app.travelgatex.com/connections/settings).

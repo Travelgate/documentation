@@ -17,23 +17,10 @@ You can specify one access or none of them. In this latter case, all the accesse
 - [Hotel-X Development - Search Query](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/search)
 - [Hotel-X Credentials](/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/hotel-x-credentials)
 ### 2. RateRules - RateRulesFilterInput✔️
-If requested, only options with the specified rateRules will be returned. Some of the rateRules that can be filtered are:
+Rate Rules refer to the specific terms and conditions that define the pricing, availability, and booking policies for rooms or accommodations at a hotel. You can include or exclude specific rate rules in order to request only the information that matters to your business.  
 
-- NORMAL
-- PACKAGE
-- OLDER55
-- OLDER60
-- OLDER65
-- ANARY_RESIDENT
-- BALEARIC_RESIDENT
-- LARGE_FAMILY
-- HONEYMOON
-- PUBLIC_SERVANT
-- UNEMPLOYED
-- NON_REFUNDABLE
-- MOBILE
-- WARRANTY
-- ESSENTIAL_WORKER
+Don't forget to check our [GraphQL API Reference](/api/enums/rate-rules-type) for further information regarding all the RateRules types available!
+
 ### 3. Plugin - HotelXPluginFilterInput✔️
 Thanks to Hotel-X Plugins you can customize your requests and responses to meet your business needs. You can filter which plugins have to be executed (included) or excluded.
 

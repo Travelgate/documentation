@@ -89,6 +89,9 @@ Additionally, you can click on "Options" (drop-down menu) in order to access the
 
 ![billing_checkinvoices](https://storage.travelgate.com/kbase/billing_checkinvoices.jpg)
 
+### Can your system send payment reminders?
+Our system doesn't send reminders, but it does automatically email invoices to you. To make sure you receive them, please keep your **billing contact information** up to date. You can easily update this information and add any additional contacts through the ['Agreements'](/kb/account-settings/billing/billing-how-to-check-agreements-usage-invoices#how-can-i-manage-my-agreements-) tab.
+
 :::warning important
 To ensure seamless billing, **it's important that you handle all cancellations via our API**.  
 Should you face any issues, please don't hesitate to get in touch with our [Customer Care team](https://app.travelgatex.com/tickets) for assistance. Additionally, please make sure to cancel any test bookings with Sellers and to check that such bookings are refundable.

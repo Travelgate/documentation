@@ -57,4 +57,5 @@ Using our Legacy Pull Buyers API? Your clients (or 'hub users') come with an ass
 ![api-settings-new-updated-7](https://storage.travelgate.com/kbase/apisettings_9.png)
 :::
 
-Now that you've got the hang of it, feel free to explore and customize your API settings to suit your needs. Happy configuring! 🎉
+
+Now that you've got the hang of it, feel free to explore and customize your [API settings](https://app.travelgate.com/connections/settings) to suit your needs. Happy configuring! 🎉

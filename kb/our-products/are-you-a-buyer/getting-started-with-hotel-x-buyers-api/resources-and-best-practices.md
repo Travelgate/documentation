@@ -84,6 +84,10 @@ Learn all about Book (Reservation) status [here](/kb/our-products/are-you-a-buye
 ### Cancel Status
 Learn all about Cancel (Cancellation) status [here](/kb/our-products/are-you-a-buyer/our-methods/booking-management/cancel/cancel-status).
 
+### Is it possible to combine several Hotel-X methods into a single Hotel-X request?
+It is not possible to combine several methods into a single Hotel-X request to Travelgate. You should send an individual request per query or mutation to our API, regardless of the processes you may have established internally in your system. For instance, you might have an internal flow that runs a Booking query for every Book mutation, or a Cancel mutation for every Book error. However, both calls should be sent separately to our API.
+
+
 ### Other Tools and Resources
 - [GraphQL official Documentation](http://graphql.org/learn/)
 - [Schema design](https://github.com/APIs-guru/graphql-faker)

@@ -36,6 +36,11 @@ All the information you need is neatly arranged into different tabs. The first t
 
 Delve into other tabs like "Search," "Quote," "Book," "Cancel" and "Other" for specific details about each booking step. These tabs offer more detailed insights, categorizing information based on different error types that may occur during each phase. Scorecards summarize data for your Organization as a whole, while tables display data for each connection. Additionally, a user-friendly temporal chart is provided to help you visualize traffic patterns over time.
 
+:::info Legacy Pull Buyers API information
+Please remember that for Buyer connections through our Legacy Pull Buyers API, filtering by Hotel-X Access Code is not available. Connections will be identified through the Buyer's **clientname#suppliercode** relationship.  
+Note that some Buyers may be transitioning from the Legacy Pull Buyers API to the Hotel-X API, which means they could have traffic via both APIs. If in doubt, we strongly encourage you to **reach out to your Buyers** for more detailed information.
+:::
+
 **With Stats, you can easily track:**
 
 - The total volume of requests for each booking flow step.

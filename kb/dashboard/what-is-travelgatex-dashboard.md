@@ -14,6 +14,10 @@ These informative reports can provide data from the previous day, the last week,
 
 So, let's establish that connection and start harnessing the potential of the Marketplace Dashboard!
 
+:::tip
+If you're looking for a truly immersive performance monitoring experience, we strongly encourage you to check out our incredible [Stats APP](https://app.travelgatex.com/stats). It offers a comprehensive range of features that will take your monitoring to the next level! 🚀
+:::
+
 ### What kind of reports can I find in my Dashboard?🔎
 1. **Quick Overview of your Connections**
 
@@ -22,10 +26,6 @@ So, let's establish that connection and start harnessing the potential of the Ma
 	- Total cancellations OK: total volume of all cancelled booking transactions.
 	- Look-to-Book (L2B): total number of Search requests by total number of bookings OK, minus cancellations OK.
 	- Gross Merchandise Value: total value (€) of all bookings with status OK.
-
-		:::info
-		For a TravelgateX partner, GMV stands for "Gross Market Value". Similar to the general definition in B2B contexts, it refers to the total sales value of all transactions processed through the TravelgateX Platform. This metric is crucial for partners as it indicates the volume of business conducted via the Platform, reflecting the scale and financial performance of the partnership.
-		:::
 
 	![dashboard_1](https://storage.travelgate.com/kbase/dashboard_1.jpg)
 
@@ -49,7 +49,7 @@ TravelgateX Smart Traffic APPs personalized recommendations to optimize your tra
 
 	![dashboard_4](https://storage.travelgate.com/kbase/dashboard_4.jpg)
 
- 
-:::tip
-If you're looking for a truly immersive performance monitoring experience, we strongly encourage you to check out our incredible **[Stats APP](https://app.travelgatex.com/stats)**. It offers a comprehensive range of features that will take your monitoring to the next level! 🚀
+:::info
+- For a TravelgateX partner, GMV stands for "Gross Market Value". Similar to the general definition in B2B contexts, it refers to the total sales value of all transactions processed through the TravelgateX Platform. This metric is crucial for partners as it indicates the volume of business conducted via the Platform, reflecting the scale and financial performance of the partnership.
+- For a TravelgateX partner, TTV stands for "Total Transaction Value." It refers to the total value of sales transactions over a certain period, including the sum of all transactions processed through our platform. TTV is an important measure as it reflects the overall volume of business conducted via Travelgate.
 :::

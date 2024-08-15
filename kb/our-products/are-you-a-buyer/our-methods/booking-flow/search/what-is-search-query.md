@@ -127,6 +127,9 @@ It is not possible to obtain a hotel description using the Search Query in the T
 ### Can I filter the Hotel-X Search results by payment type?
 Unfortunately, Hotel-X API does not currently offer the capability to filter search results by payment type. 
 
+### Why am I not receiving cancellation policies in Search response?
+Cancellation policies are not mandatory in Search, so some Sellers may choose not to include this information in their availability data. To learn more about each Seller's specific details, please refer to their [Metadata](https://docs.travelgate.com/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-metadata-query).
+
 ### How many parallel requests can Travelgate handle from a single Buyer?
 On Travelgate's side, there is no limitation regarding the maximum number of parallel requests per Buyer. We adjust this value at an integration level according to the recommendations provided by the Seller.
 

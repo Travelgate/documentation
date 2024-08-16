@@ -259,6 +259,12 @@ In the case of canvcc, since it is a cancellation, there is no need to upload an
     * **`id`**: The id of the virtual credit card that you want to cancel.
     * **`currency`**: (Optional) A currency can be added. This is particularly useful if you use different VCC accesses depending on the currency used. Currency code format must be ISO4217 code format (i.e. “EUR”, “USD”, “GBP”,…)
 
+:::caution Currency parameter when cancel VCC
+
+Although it is optional, if you have VCC rules related to a currency, you must include this parameter when canceling to ensure the correct rule is applied and to avoid further issues.
+
+:::
+
 ```js
 "settings" : {
     "plugins" : [

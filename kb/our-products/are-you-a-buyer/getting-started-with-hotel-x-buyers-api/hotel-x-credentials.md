@@ -22,15 +22,16 @@ An Apikey is a unique alphanumeric code that serves as a form of authentication 
 ### Access☑️
 An access refers to the combination of credentials and authentication configuration that allows a Buyer to establish a connection with a Seller. It serves the purpose of distinguishing between different Sellers and filtering different credentials and configurations from the same Seller (e.g., B2B and B2C feeds). You can check this information in [My Connections](https://app.travelgatex.com/connections/myconnections).
 
->For **Hotel-X implementation and testing**, we recommend using the following accesses (they have already been activated on your account and are ready to use):
-* TravelgateX Test Seller (tgx): Access 2 with context HOTELTEST
-* Smyrooms Test: Access 5647 with context LOGITEST
+For **Hotel-X implementation and testing**, we recommend using the following accesses (they have already been activated on your account and are ready to use):
+   * TravelgateX Test Seller (tgx): Access 2 with context HOTELTEST
+   * Smyrooms Test: Access 5647 with context LOGITEST
 
 **How can I obtain an access code from an actual Seller?**
 To get your access code, simply establish a commercial agreement with the desired Partner and request activation through our website using the [Auto-Activations Form](/kb/connections/my-connections/guick-guide-to-auto-activations).
 
-:::info
-Please note it is highly advisable to **avoid making live bookings during the Hotel-X implementation process** until your development has been certified by TravelgateX.
+:::warning important
+- Please note it is highly advisable to **avoid making live bookings during the Hotel-X implementation process** until your development has been certified by TravelgateX. dditionally, please make sure to cancel any test bookings and to check that such bookings are refundable.
+- To ensure seamless billing, **it's important that you handle all cancellations via our API**. Should you face any issues, please don't hesitate to get in touch with our [Customer Care team](https://app.travelgatex.com/tickets) for assistance.
 :::
 
 ### Client☑️
@@ -43,7 +44,7 @@ It is possible to have multiple client codes, for instance, in order to differen
 
 Context refers to the content codes utilized by both Buyers and Sellers. Each Seller has its own unique context, which may differ between test and production environments. The context includes specific codes for hotels, boards, rooms, etc. You can check this information in [My Connections](https://app.travelgatex.com/connections/myconnections). Additionally, when you activate a new Seller, you will receive the context information along with the credentials in the confirmation email.
 
-Buyers also have the flexibility to either use their own context or choose content providers. In either case, they can create their own context using our [Mapping Plugin](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping). This allows Buyers to align their own context with the Suppliers' context. 
+Buyers have the flexibility to either use their own context or choose content providers. Buyer context codes are generated directly by the Buyer (not provided by Travelgate) and are used in the mapping file names to align the mapping between the Supplier codes and the corresponding codes mapped by the Buyer ([Mapping Plugin](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping)).
 
 :::info What is the difference between access and context?
 The distinction between the two is that an access holds your *credentials* for a specific connection, while a context is the *internal TravelgateX code required to request either the original Supplier hotel codes or your own hotel codes* (previously mapped and uploaded to our SFTP).

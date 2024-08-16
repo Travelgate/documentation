@@ -16,9 +16,13 @@ Don't forget to check our article on [Book Mutation](/kb/our-products/are-you-a-
 :::
 
 ### What information can I expect in Cancel response?✔️
-The information returned in Cancel response may vary between Sellers, so please check our [Hotel-X Playground Documentation](/playground) in order to add to your Cancel the fields expected on your side. Additionally, you may check the Sellers' [Metadata](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-metadata-query) for further details on the specifications established on their side for this Method.
+The information returned in Cancel response may vary between Sellers, so please check our [Hotel-X Playground Documentation](/playground) in order to add to your Cancel the fields expected on your side. Additionally, you may check the Sellers' [Metadata](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-metadata-query) for further details on the specifications established on their side for this Method and the data returned on their end.
 
 ![cancel_mutation_1](https://storage.travelgate.com/kbase/cancel_mutation_1.jpg)
+
+:::info
+Please note that Travelgate cannot make reservations or cancellations on behalf of our Partners; these actions should be carried out directly by the Partner.
+:::
 
 
 **Some of the fields returned once a booking is cancelled are:**
@@ -27,9 +31,6 @@ The information returned in Cancel response may vary between Sellers, so please 
 1. Price
 1. Holder
 
-:::tip
-Remember to check the Sellers' [Metadata](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-metadata-query) for further details on their specifications and information returned on their side in Cancel response.🔎
-:::
 
 ### How are cancellation costs calculated and displayed?🔢
 Depending on the specifications provided by a Seller, cancellation costs can be calculated using three different penalty types. It is important to keep in mind that a booking may have more than one penalty type associated with it.

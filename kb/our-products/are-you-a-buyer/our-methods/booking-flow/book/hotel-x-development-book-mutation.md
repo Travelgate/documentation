@@ -11,6 +11,10 @@ Book operation requests a booking confirmation for the specified optionRefId ret
 ### What information can I expect in Book response?✔️
 The information returned in Book response may vary between Sellers, so please check our [Hotel-X Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart) in order to add to your Book the fields expected on your side. Additionally, you may check the [Metadata](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-metadata-query) of your Sellers for further details on the specifications established on their side for this Method.
 
+:::info
+Please note that Travelgate cannot make reservations or cancellations on behalf of our Partners; these actions should be carried out directly by the Partner.
+:::
+
 **Some of the fields to be declared/added to Book mutation request are:**
 
 - Status - make sure you add this field in order to receive the reservation status in the response.

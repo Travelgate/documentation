@@ -7,7 +7,7 @@ sidebar_position: 2
 First of all, congratulations on getting your development of the Hotel Pull Sellers API certified! You are now part of the TGX Network, and as a Seller you can proceed to supply your hotel inventory to the Buyers you have established a commercial relationship with.
 
 :::info
-At Travelgate, only one side pays for any given connectivity, and whoever assumes financial responsibility for the connection should request the activation of the connection to Travelgate - either the Buyer or the Seller.
+Learn more about how to choose your payment type at Travelgate [here](/kb/account-settings/billing/billing-payment-types).
 :::
 
 ### Mapping

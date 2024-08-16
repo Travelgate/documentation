@@ -43,10 +43,6 @@ It's worth noting that having a commercial contract with TravelgateX is a must t
     ![quickguide_to_autoconnections_step3_2](https://storage.travelgate.com/kbase/autoconnections_step3_4.png)
 
 
-:::warning Important
-Please bear in mind that by requesting the activation of a connection, you are assuming financial responsibility with TravelgateX for this connection.
-:::
-
 :::info
 We're constantly improving our Activation Process to make it smoother for you. While much of the data is auto-completed, you'll still need to configure some details for each new connection. Ensuring the accuracy of these details will help speed up the process. Keep those specifics precise, and you'll breeze through the setup! 🚀
 :::

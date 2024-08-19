@@ -23,7 +23,9 @@ In case you encounter an error in the Hotel-X Quote response, you should initiat
 
 ### Is it possible to use the OptionRefId to implement any logic in my API?🛠️
 
-You should not use the OptionRefId to implement any logic in your API. The OptionRefId is a unique identifier for an option and may differ among connections. It's best to avoid relying on it for implementing specific logic in your system.
+You must not use the `OptionRefID` to implement any logic in your API. The `OptionRefID` is a unique identifier for an option and may vary across different connections. **Avoid relying on it for implementing specific logic in your system**, as doing so may result in errors.
+
+
 
 ### But what if I'm still using TravelgateX Hotel Buyers Legacy API?
 If you are still connected to our Legacy API here's what you need to do:

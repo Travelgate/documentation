@@ -50,6 +50,12 @@ Legacy Pull Buyers API requests include 2 timeout tags: The HUB timeout and the 
    
    ![timeouts_updated](https://storage.travelgate.com/kbase/timeouts_updated.jpg)
 
+
+### Why does Hotel-X add 150 milliseconds to my requests?
+The 150 ms is the default operationTimeout value set in the Hotel-X layer. The operationTimeout defines the maximum time, in milliseconds, before an operation is cancelled by our system. Once this time is reached, the operation will be aborted and an error will be returned.
+
+This timeout should be set to a higher value than the timeout for suppliers and if operationTimeout is not specified, it will default to the timeout value plus 150 milliseconds. For example, you could specify timeout as 20000 ms and operationTimeout as 22000 ms. This means that we will send a timeout of 20000 ms to the suppliers and will close the connection at 22000 ms if the operationTimeout is exceeded.
+
 :::tip
 Unlock the potential of our connection by including the Seller in the process of establishing the ideal timeouts!
 :::

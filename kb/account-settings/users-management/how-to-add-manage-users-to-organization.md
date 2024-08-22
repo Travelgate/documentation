@@ -5,7 +5,7 @@ sidebar_position: 1
 # How to add and manage users in my Organization
 
 :::warning Important
-Effective **September 10th, 2024**, our website will require 2FA for all users. Please check this [article](/kb/account-settings/your-account/two-factor-authentication) for further information.
+Effective **September 10th, 2024**, our website will require 2FA for all users. Please note that shared accounts must transition to individual accounts to comply with this security update. If you want to activate it earlier, please request it through a ticket to our [Customer Care team](https://app.travelgate.com/tickets).
 :::
 
 ### How can I add more users to my Organization?

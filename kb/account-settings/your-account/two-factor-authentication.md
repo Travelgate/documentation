@@ -5,7 +5,7 @@ sidebar_position: 2
 # Two-factor Authentication (2FA)
 
 :::warning Important
-Effective **September 10th, 2024**, our website will require 2FA for all users. If you want to activate it earlier, please request it through a ticket to our [Customer Care team](https://app.travelgate.com/tickets).
+Effective **September 10th, 2024**, our website will require 2FA for all users. Please note that shared accounts must transition to individual accounts to comply with this security update. If you want to activate it earlier, please request it through a ticket to our [Customer Care team](https://app.travelgate.com/tickets).
 :::
 
 ### What is the Two-factor Authentication?

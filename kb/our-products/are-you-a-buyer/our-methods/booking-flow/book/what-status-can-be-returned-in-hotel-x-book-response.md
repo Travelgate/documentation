@@ -5,7 +5,7 @@ sidebar_position: 2
 # Status in Book response
 
 ### What does the status in a reservation response indicate?
-Once a Book (Reservation) method is run, our API response will provide its **Book status**. This status represents the current status of the reservation and can be categorized into four possible values: OK, ON_REQUEST, UNKNOWN and PENDING_COMMIT.
+Once a Book (Reservation) method is run, our API response will provide its **Book status**. This status represents the current status of the reservation and can be categorized into three possible values: OK, ON_REQUEST and UNKNOWN.
 
 ### What are the different values that can be assigned to the Book status?🔎
 1. **OK:** The reservation was completed with no problems.

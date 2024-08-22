@@ -135,3 +135,9 @@ On Travelgate's side, there is no limitation regarding the maximum number of par
 
 ### What is the lifespan of the Search id?
 Search ids do not expire, however, we **strongly recommend to transition from Search to Quote as quickly as possible**. This will ensure a smoother and more efficient booking process.
+
+### What does the status in a Search response indicate?
+When a Search query is successful and the Seller returns results, each option will include a status field indicating its current state. Status can be categorized into two possible values: OK and RQ:
+
+1. **OK:** The option is available.
+2. **RQ:** The option is still not available by the Seller, so it goes into a waiting list. You can filter which status (OK or RQ) is to be excluded or included in your Search response through the Hotel-X StatusFilterInput. More information can be found in this [article](/kb/our-products/are-you-a-buyer/our-methods/booking-flow/search/how-tos/how-to-filter-hotel-x-search-requests).

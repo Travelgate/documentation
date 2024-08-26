@@ -54,8 +54,9 @@ Our Inventory Extranet allows for prices to be loaded in 3 different ways:
 
 1. First of all, we need you to confirm that you are aware that modifying the Standard Occupancy without the Channel remapping and refreshing on their side may result in a price discrepancy. That is, if the Standard Occupancy is modified and the Channel does not map and load again, **price discrepancy is a distinct possibility**. 
 
-	:::warning Important:
-	⚠️Please make sure of informing the Channel Manager of this modification so that they can map again and refresh. 
+	:::danger Important:
+	Please ensure you inform the Channel Manager of any standard occupancy modifications so they can remap and refresh.  
+	We strongly recommend deleting the previously loaded prices before the Channel Manager remaps and loads their product to avoid price discrepancies. 
 	:::
 
 2. Once you have informed the Channel, you just need to [contact](https://app.travelgatex.com/tickets) our Customer Care team and confirm exactLy for which **hotel, rate and room** you need us to modify the Standard Occupancy. That's it!

@@ -6,9 +6,9 @@ sidebar_position: 11
 
 
 ### What does a 206 error mean?💡
-You will encounter a 206 error in those cases your Search request does not align with the Seller's date specifications.
+You will encounter a 206 error in those cases the dates in your Search request don't align with the Seller's date specifications.
 
-### How can I obtain information about the Seller's date specifications and minimize errors?🚫
+### How can I obtain information about the Seller's date requirements and minimize errors?🚫
 To check the dates specifications set by the Seller and prevent errors and unnecessary traffic, we strongly advise utilizing our [Metadata Query](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-metadata-query).
  
 **Some of the fields validated:**

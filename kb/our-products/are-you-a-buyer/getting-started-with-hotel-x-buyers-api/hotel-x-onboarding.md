@@ -10,15 +10,15 @@ sidebar_position: 1
 Starting a new development project can be challenging. Accurate estimation of required resources and time is crucial to avoid inefficiencies and wasted resources. At TravelgateX, our goal is to simplify this process by providing comprehensive information, roadmap, timing for Hotel-X API development and assigning you an Onboarding Manager to support you all along the process. 
 
 
-That's why we created the following step by step guide to guide you through the development journey, ensuring efficient and timely project completion. 
+That's why we created the following step by step guide to guide you through the Development Roadmap as Buyers in our Platform, ensuring efficient and timely project completion. 
  
  ## Connectivity Set Up panel
 
 Our Hotel-X onboarding process consists of three distinct steps:
 
 1. Hotel-X Development
-1. First Partner Connection
-1. Go Live
+2. First Partner Connection
+3. Go Live
 
 By following these three steps, we ensure that you have the necessary knowledge and tools to successfully utilize Hotel-X and manage your operations independently through our Network.
 
@@ -35,7 +35,7 @@ Once you are ready to resume the onboarding click the "Continue your onboarding"
 
 ![onboarding_2_](https://storage.travelgate.com/kbase/onboarding_2_.jpg)
 
-## Hotel-X Development
+## Hotel-X Development Roadmap
 
 As part of our onboarding process, each step undergoes a certification process to ensure its quality and effectiveness. However, it is important to note that only the Booking Flow step is mandatory for certification.
 
@@ -49,7 +49,7 @@ The completion of the entire development process typically takes an average of 2
 
 It is worth mentioning that certain projects may require more extensive development and, consequently, a longer time frame extending into months. Rest assured, our team will work closely with you to assess your specific needs and allocate the appropriate resources to ensure a timely and efficient completion of the development phase.
 
-The development of Hotel-X API comprises **three essential steps**, each focusing on specific aspects:
+The development roadmap of Hotel-X Pull Buyers API comprises **three essential steps**, each focusing on specific aspects:
 
 1. Content
 1. Booking Flow

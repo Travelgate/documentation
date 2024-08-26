@@ -5,7 +5,7 @@ sidebar_position: 2
 # Two-factor Authentication (2FA)
 
 :::warning Important
-Effective **September 10th, 2024**, our website will require 2FA for all users. If you want to activate it earlier, please request it through a ticket to our [Customer Care team](https://app.travelgate.com/tickets).
+Effective **September 10th, 2024**, our website will require 2FA for all users. Please be advised that we will no longer be liable for any issues, losses, or damages arising from the use of shared accounts. To ensure uninterrupted access and maintain security, all users are required to transition to individual accounts by this date. Non-compliance may result in service disruptions or restricted access. If you want to activate it earlier, please request it through a ticket to our [Customer Care team](https://app.travelgate.com/tickets).
 :::
 
 ### What is the Two-factor Authentication?
@@ -13,10 +13,14 @@ Effective **September 10th, 2024**, our website will require 2FA for all users. 
 Two-factor authentication (2FA) is a security feature that adds an extra layer of protection to your Travelgate account. Once enabled, you will be required to enter a security code in addition to your password whenever you sign in.
 
 This code will be newly generated each time by an authenticator application (we call it a “One-Time Password”). This is why a prerequisite is that you have an authenticator app already installed (we recommend having Google Authenticator in your phone, but this is only one of many existing apps). Some examples:
-- Google Authenticator ([Android](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2) & [iOS](https://apps.apple.com/us/app/google-authenticator/id388497605)).
-- Microsoft Authenticator ([Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) & [iOS](https://apps.apple.com/es/app/microsoft-authenticator/id983156458)).
-- Cisco Duo Mobile ([Android](https://play.google.com/store/apps/details?id=com.duosecurity.duomobile) & [iOS](https://apps.apple.com/us/app/duo-mobile/id422663827)).
-
+- **Mobile apps**:
+   - Google Authenticator ([Android](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2) & [iOS](https://apps.apple.com/us/app/google-authenticator/id388497605)).
+   - Microsoft Authenticator ([Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) & [iOS](https://apps.apple.com/es/app/microsoft-authenticator/id983156458)).
+   - Cisco Duo Mobile ([Android](https://play.google.com/store/apps/details?id=com.duosecurity.duomobile) & [iOS](https://apps.apple.com/us/app/duo-mobile/id422663827)).
+- **Browser extensions**:
+   - Google Chrome ([Chrome Extensions](https://chromewebstore.google.com/detail/authenticator/bhghoamapcdpbohphigoooaddinpkbai?pli=1)).
+   - Microsoft Edge ([Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/authenticator-2fa-client/ocglkepbibnalbgmbachknglpdipeoio)).
+   - Mozilla Firefox ([Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/auth-helper/?utm_source=addons.mozilla.org)).
 
 ### My authenticator app is ready. How do I start?
 

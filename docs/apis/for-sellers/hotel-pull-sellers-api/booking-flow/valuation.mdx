@@ -215,13 +215,7 @@ The response options include either **success** or an **error**. In the event of
 | @commission				    | 1          | Decimal  | <details>     <summary>Commission Scenarios</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Commission</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>0</td>  						 <td>The price returned is net.</td>  					 </tr>  					 <tr>  						 <td>-1</td>  						 <td>The supplier has not supplied the sale price nor the commission. This information is in the commercial contract with the supplier.</td>  					 </tr>           <tr>  						 <td>Greater than 0</td>  						 <td>X = % of the commission applied to the amount.</td>  					 </tr>				 </tbody>  			</table>         </div>     </div> </details> |
 | @minimumSellingPrice 				   | 1 		    | Decimal 	    | Indicates the minimum selling price it can be sold (determined by the Seller). If is specified (different than "-1"), that field takes preference to amount.		<details>     <summary>Minimum Selling Price Scenarios</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Minimum Selling Price</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody> <tr>  						 <td>0</td>  						 <td>No minimum selling price is provided.</td>  					 </tr>       <tr>  						 <td>-1</td>  						 <td>We have no information about MSP from the Seller.</td>  					 </tr>     <tr>  						 <td>Greater than 0</td>  						 <td>The lowest possible amount that can be sold commercially.</td>  					 </tr>				 </tbody>  			</table>         </div>     </div> </details> |
 | ValuationRS/CancelPoliciesDescription                 | 0..1       | String   | Contains the cancellation penalties in free text (see [MetaData](../content/meta-data/) in order to verify if the supplier implements it). |
-| ValuationRS/Option 	|0..1	| Option quoted
-| Option/Rooms | 0..1 		| 		| Rooms in the option (room list).				|
-| Rooms/Room | 1..n 	| 		| 						|
-| @id 					| 1 		| String 	| Room ID.					|
-| @roomCandidateRefId 			| 1 		| Integer 	| Room candidate ID.					|
-| @code 				| 1 		| String 	| Room code has to be unique to identify a specific room type. If the RoomList Method is implemented, you can find the description of the room type in the RoomList. 							|
-| @description 				| 0..1 		| String 	| Room description. Mandatory if the supplier doesn't allow RoomList Method. If the supplier implements RoomList Method, this field could be empty.						|
+
 
 
 ### Error

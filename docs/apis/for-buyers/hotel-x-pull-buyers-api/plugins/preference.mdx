@@ -4,7 +4,11 @@ sidebar_position: 9
 
 # Preference
 
-The Preference plugin works by prioritizing options that align with your preferences and presenting them in a preferred order. It follows a sequential process, where rules are checked one by one until a matching rule is found. When a match is found, the process stops, and your preference is applied. If no matching rule is found, the option will be validated.
+The Preference plugin works by prioritizing options that align with your preferences and presenting them in a preferred order. 
+This plugin is particularly useful if you're using Hotel-X in aggregation mode and want to prioritize certain options over others, thereby aligning the search results with your preferences. For instance, if you aggregate your search options by hotel and board, and there are three providers offering different prices for the same hotel and board, the system would typically return the cheapest option. However, you might want to give preference to one provider over another for certain hotels. With this plugin, you can load a rule that applies a percentage tolerance to a specific provider for those hotels. 
+There are various criteria for applying these preferences, which are detailed below.
+
+This plugin follows a sequential process, where rules are checked one by one until a matching rule is found. When a match is found, the process stops, and your preference is applied. If no matching rule is found, the option will be validated.
 
 To determine matches, the plugin uses the `clientTokens` field, which identifies the provider and helps filter which business rules can be applied to the request you send.
 
@@ -68,13 +72,13 @@ To get started, create your preference file in the correct format and then uploa
       * Separator for multiples codes in the same row: Semicolon `;`
    * **NotSupplierCodes (mandatory):** Supplier codes you don't want the preference to be applied to.
       * Separator for multiples codes in the same row: Semicolon `;`
-   * **BookingDateFrom:** Booking date (yyyy-mm-dd)
+   * **BookingDateFrom:** Booking date from (yyyy-mm-dd)
    * **BookingDateTo:** Booking date to (yyyy-mm-dd)
    * **StartDateFrom:** Start date from (yyyy-mm-dd)
    * **StartDateTo:** Start date to (yyyy-mm-dd)
    * **HotelCodes:** Hotel codes you want the preference to be applied to.
       * Separator for multiples codes in the same row: Semicolon `;`
-   * **NothotelCodes:** Hotel codes you don't want the preference to be applied to.
+   * **NotHotelCodes:** Hotel codes you don't want the preference to be applied to.
       * Separator for multiples codes in the same row: Semicolon `;`
    * **ChainsCodes:** Chain codes you want the preference to be applied to.
       * Separator for multiples codes in the same row: Semicolon `;`
@@ -88,8 +92,8 @@ To get started, create your preference file in the correct format and then uploa
       * Separator for multiples codes in the same row: Semicolon `;`
    * **NotStatus:** Option status (OK, RQ) you don't want the preference to be applied to.
       * Separator for multiples codes in the same row: Semicolon `;`
-   * **Percentage (mandatory):** Commission value, decimal separator must be point `.`
-   * **FilterCompetitors (mandatory):** Filter competitors
+   * **Percentage (mandatory):** Commission value, decimal separator must be point `.`. Percentage represents the tolerance you allow over the net price to avoid discarding the option. In other words, options that meet the criteria of this rule will not be discarded, even if they are up to X% more expensive than the cheapest option.
+   * **FilterCompetitors (mandatory):** true/false value. If set to true, it means that if an option exists that meets the criteria of this rule, only that option will be kept, and all others will be discarded. This ensures you only retain the option that follows the rule's criteria.
 
 
 <details>

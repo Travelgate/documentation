@@ -112,6 +112,24 @@ Once you've uploaded your preference file, to use the plugin add the following f
 * **`step`**: "RESPONSE"
 * **`type`**: "PRE_STEP"
 * **`name`**: "preference"
+* **`parameters`**:
+	* **`primaryKey`**: Criteria used to aggregate, separated by commas. For example: "hotel, supplier, board". Possible values are: 
+		* hotel
+		* supplier
+		* board
+		* binding
+		* cancelPolicy
+		* currency
+		* market
+		* payment
+		* promotion
+		* rateRules
+		* refundable
+		* room 
+		* supplement
+		* surcharges
+		* ratePlan
+		* status
 
 ```js
 "settings": {
@@ -120,9 +138,18 @@ Once you've uploaded your preference file, to use the plugin add the following f
 			"step": "RESPONSE",
 			"pluginsType": {
 				"type": "PRE_STEP",
-				"name": "preference"
+				"name": "preference",
+            "parameters" : [
+                        {
+                            "key" : "primaryKey",
+                            "value" : "hotel,board,room"
+                        }
+                    ]
 			}
 		}
 	]
 }
 ```
+
+
+

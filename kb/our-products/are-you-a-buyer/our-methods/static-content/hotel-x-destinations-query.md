@@ -24,10 +24,13 @@ Some of the fields returned are:
   - Type
 
 ### Destination List Logic🔎
-Once you run a Destinations Query, you will receive the Seller's native destination codes in the response. These codes can be classified into 2 categories:
+Once you run a Destinations Query, you will receive the Seller's native destination codes in the response. These codes can be classified into 3 categories:
 
 1. Zone
 1. City
+2. Country
+
+
 ### How should I utilize the zone and city nodes in my Destinations Query response?💡
 Sellers build their own Destination Tree based on both nodes: zone and city. Consequently, when you request their destination list, you will receive a structured categorized response that can help you with the mapping process.
 
@@ -56,5 +59,5 @@ To ensure the availability of hotels, we suggest performing a Search query to fi
 
  
 :::tip
-Don't forget to check out our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/destinations) for Destinations Query and our [Resources and Best Practices article](/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/resources-and-best-practices), where you'll find Insomnia and Postman collections with Query examples🚀🌟
+Don't forget to explore our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/destinations) on Destinations Query for more information and examples!🚀🌟
 :::

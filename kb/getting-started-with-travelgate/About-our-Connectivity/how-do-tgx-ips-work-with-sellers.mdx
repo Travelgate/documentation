@@ -2,97 +2,102 @@
 sidebar_position: 2
 ---
 
-# TravelgateX lists of fixed IPs
+# TravelgateX Fixed IP Lists
 
-### How do TravelgateX IPs work with Sellers?
+### How Do TravelgateX IPs Work with Sellers?
 
-You may already be aware that as a Seller, the requests you receive from TGX originate from various IPs. Different Sellers have different approaches when it comes to filtering IPs on their systems.
+When you work as a Seller with TravelgateX, the requests we send to you come from different IP addresses. Depending on your system’s configuration, you might handle these IPs in various ways:
 
-Typically, if a Seller's system doesn't filter by IP, our system operates dynamically. This means that our environments utilize new IPs as they scale up or down, leveraging dynamic environments from various cloud providers.
+- **No IP Filtering:** If your system doesn’t filter or block certain IP addresses, our system works dynamically. This means that we use different IPs that can change as our environment scales up or down. This flexibility comes from using dynamic environments in the cloud.
 
-If a Seller's system does filter by IP, we have a fixed IP configuration in place. This ensures that the Seller consistently receives the same IPs from us. If there are any additions or deletions of new IPs, we will promptly notify the Seller, so that they can stay informed and whitelist the new IPs as needed.
+- **IP Filtering:** If your system does filter or allow only specific IP addresses, we have a set list of fixed IPs that we use. This ensures that all requests you receive from us always come from the same IPs. If we ever need to add or remove IPs from this list, we will let you know immediately, so you can update your system and allow the new IPs.
 
-If you're a Seller who **doesn't filter by IP** but wants to direct all traffic from the same IPs, simply reach out to our Customer Care team and let us know about your specific requirement and why it's important for you. Our dedicated Teams will carefully assess the feasibility of adjusting your configuration accordingly.
+If you don’t currently filter by IP but would like all traffic to come from the same IP addresses, simply reach out to our Customer Care team. Let them know about your specific needs, and we’ll work together to see if we can adjust your setup to meet your requirements.
 
-### List of fixed IPs for Hotel Suppliers☑️(updated on 25/10/2023):
+### Fixed IP List as an Hotel Suppliers ☑️
+Here is a list of the IP addresses that Hotel Suppliers should allow in their system (updated on 30/08/2024):
 
-- **Azure:**  
-13.94.250.159  
-23.99.178.8  
-104.43.214.41  
-40.113.198.242  
-191.233.87.117  
-104.40.254.121  
-23.100.6.214  
-23.100.56.254  
-104.45.19.173  
-104.45.23.211  
-104.45.18.110  
-40.118.12.91  
-23.100.57.116  
-104.45.89.112  
+| **IP Address**                     |   Explanation (if needed)               |  
+| :--------------------------------: |  :------------------------------------: |  
+| 13.94.250.159                      |                                         |  
+| 23.99.178.8                        |                                         |  
+| 23.100.6.214                       |                                         |  
+| 23.100.57.116                      |                                         |  
+| 35.193.109.73                      |                                         |  
+| 35.192.57.119                      |                                         |  
+| 40.113.198.242                     |                                         |  
+| 40.118.12.91                       |                                         |  
+| 52.48.131.154                      |                                         |  
+| 79.98.220.55                       |                                         |  
+| 95.217.46.57                       |                                         |  
+| 101.46.136.21 - 101.46.136.32      | from `101.46.136.21` to `101.46.136.32` |  
+| 104.43.214.41                      |                                         |  
+| 104.45.18.110                      |                                         |  
+| 104.45.19.173                      |                                         |  
+| 104.45.23.211                      |                                         |  
+| 104.155.75.74                      |                                         |  
+| 104.155.96.34                      |                                         |  
+| 144.76.195.49                      |                                         |  
+| 146.148.17.151                     |                                         |  
+| 146.148.21.32                      |                                         |  
+| 172.98.36.0/27                     | from `172.98.36.0` to `172.98.36.31`    |  
+| 191.233.87.117                     |                                         |  
+| 216.59.58.52                       |                                         |  
+| 216.59.58.248/29                   | from `216.59.58.248` to `216.59.58.255` |
 
+#### Understanding IP Ranges
 
-- **GCloud:**  
-146.148.21.32  
-104.155.75.74  
-104.155.96.34  
-146.148.17.151  
-35.193.109.73  
-35.192.57.119  
+Some of the IP addresses listed above are shown as ranges, like `172.98.36.0/27` or `216.59.58.248/29`. These ranges are provided as shorthand, and it's important to know that they cover multiple IP addresses, not just one.
 
-- **TotalUptime:**  
-216.59.58.52  
-172.98.36.0/27 (from 172.98.36.0 to 172.98.36.31)  
-216.59.58.248/29 (from 216.59.58.248 to 216.59.58.255)  
+If you are not familiar with how IP ranges work, you can learn more about them [in this technical explanation](https://www.cloudflare.com/learning/network-layer/what-is-an-ip-address/).
 
-- **Huawei Cloud:**  
-101.46.136.21 - 101.46.136.32 (from 101.46.136.21 to 101.46.136.32)
+### Fixed IP List as an Inventory Buyer 🏨
+Please add **only** these IPs (Updated on 15/11/2021):
 
-- **Other:**  
-79.98.220.55  
-144.76.195.49  
-95.217.46.57  
-52.48.131.154  
+| **IP Address**         |  
+| :--------------------: |  
+| 13.81.113.68           |  
+| 13.94.250.159          |  
+| 40.68.193.47           |  
+| 40.68.197.218          |  
+| 79.98.220.55           |
 
-### List of fixed IPs as an Inventory Buyer🏨
-You should add **only** the following IP list (updated on 15/11/2021):
+### Fixed IP List as an Inventory Seller 🏘️
+Please add **only** these IPs (Updated on 02/05/2024):
 
-40.68.193.47  
-40.68.197.218  
-13.81.113.68
+| **IP Address**         |  
+| :--------------------: |  
+| 13.94.250.159          |  
+| 20.234.226.0           |  
+| 51.144.2.130           |  
+| 52.148.208.57          |  
+| 79.98.220.55           |  
+| 108.143.13.154         |
 
-### List of fixed IPs as an Inventory Seller🏘️
-You should add **only** the following IP list (updated on 02/05/2024):
+### Fixed IP List as a Channel-X Buyer 🚀
+Please add **only** these IPs (Updated on 08/03/2023):
 
-52.148.208.57  
-51.144.2.130  
-108.143.13.154  
-20.234.226.0  
+| **IP Address**         |    
+| :--------------------: |  
+| 13.94.250.159          |  
+| 52.157.105.119         |  
+| 52.178.68.49           |  
+| 79.98.220.55           |
 
-### List of fixed IPs as a Channel-X Buyer🚀
-You should add **only** the following IP list (updated on 08/03/2023):
+### Fixed IP List as a Payment/VCC Supplier 📑
+Please add **only** these IPs (Updated on 29/08/2024):
 
-52.178.68.49  
-52.157.105.119 
+| **IP Address**         |  
+| :--------------------: |  
+| 13.94.250.159          |   
+| 40.91.245.226          |  
+| 79.98.220.55           |  
+| 98.71.173.241          |  
+| 104.40.178.121         |  
+| 108.142.130.32         |
 
-### List of fixed IPs as a Payment/VCC Supplier📑
-You should add **only** the following IP list (updated on 17/04/2024):
-
-79.98.220.55  
-13.94.250.159  
-104.40.224.113  
-137.116.228.15  
-137.116.228.224  
-104.40.224.212  
-146.148.21.32  
-104.40.178.121  
-108.142.130.32  
-98.71.173.241  
-40.91.245.226
-
-## Does TravelgateX need to whitelist my IPs?💡
-At TravelgateX we ensure that all our IPs are whitelisted at the Seller's system. It's important to note that **our system doesn't filter by IP**, and that there is no need for us to whitelist them. If you encounter any errors, rest assured that they are not caused by the IPs.
-
+## Does TravelgateX Need to Whitelist My IPs? 💡
+At TravelgateX, we make sure all our IPs are whitelisted on the Seller’s system. However, **our system doesn’t filter by IP**, so there’s no need for us to whitelist your IPs. If you experience any issues, it’s not likely to be due to IP filtering.
+If you have any questions or need help, don’t hesitate to contact our Customer Care team!
 
 <TipContactCustomerCare/>

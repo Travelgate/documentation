@@ -17,8 +17,6 @@ sidebar_position: 5
 	
 	These have already been activated on your account and are ready to use.
 
-- [Apollo GraphQL query Best Practices](https://www.apollographql.com/docs/react/data/operation-best-practices/)
-
 ### Hotel-X endpoint🌍
 
 To access all the methods available through our Hotel-X API, please use the endpoint **https://api.travelgatex.com** (both test and production environments).
@@ -92,12 +90,11 @@ It is not possible to combine several methods into a single Hotel-X request to T
 - [GraphQL official Documentation](http://graphql.org/learn/)
 - [Schema design](https://github.com/APIs-guru/graphql-faker)
 - Go packages: [Redis](https://godoc.org/github.com/garyburd/redigo/redis) and [GraphQL server](https://github.com/graph-gophers/graphql-go)
-- [Apollo](http://dev.apollodata.com/)
-- Some of our architecture is written in NodeJS. This is because some packages are either not yet available in Go, or because Node alternatives perform better than Go packages. [Here](https://github.com/apollographql/apollo-server) you will find the packages we use.
 - [Relay official Documentation](https://relay.dev/docs/)
 - [Schema-first development - Johannes Schickling](https://www.youtube.com/watch?v=SdWI7XaAeeY)
 - [Schema-first development with GraphQL](https://conferences.oreilly.com/fluent/fl-ca-2017/public/schedule/detail/58715)
-- [GraphQL-first in practice at Quri](https://dev-blog.apollodata.com/graphql-first-in-practice-at-quri-7bf84b260135)
-- [GraphQL-first: A better way to build modern apps](https://dev-blog.apollodata.com/graphql-first-a-better-way-to-build-modern-apps-b5a04f7121a0)
 - [GraphQL User List](http://graphql.org/users/)
 
+
+### Can I find Travelgate's code on GitHub? Is it public?
+No, Travelgate's code is proprietary and not shared in any public repositories.

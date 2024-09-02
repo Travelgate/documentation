@@ -24,8 +24,18 @@ Our [Partner Network Directory](https://app.travelgate.com/network/partners) was
 	- Description
 	- Headquarters Country
 
+	Take your time to compose a **clear and concise** description of your Company. Once your Profile is published, all the players in our Marketplace (both Buyers and Sellers), will have easy access to this information through our extensive Network 
+
+
 1. After making the necessary changes, you can activate the option "This profile is published on the Travelgate Network" on the left side of the screen. Don't forget to click on "Save changes" to save your updates.
 
-:::tip
-Take your time to compose a **clear and concise** description of your Company. Once your Profile is published, all the players in our Marketplace (both Buyers and Sellers), will have easy access to this information through our extensive Network 🚀
+:::info
+If you are already a Partner at TravelgateX and find yourself in any of the following situations:  
+- You are a Buyer at Travelgate looking to start working as a Seller or via Distribution. 
+- You are a Buyer at Travelgate wanting to connect via Inventory.
+- You are a Seller at Travelgate wanting to start working as a Buyer.
+- General doubts or comercial information.
+
+You can reach out to our team via email at sales.support@travelgate.com. 
+Please note that this email is **exclusively for existing Partners**. If you are interested in starting a Partnership with TravelgateX, simply fill out our ["Contact Travelgate" form](https://docs.travelgate.com/kb/getting-started-with-travelgate/about-us#how-can-i-become-a-partner-at-travelgatex), and our team will get in touch with you shortly.
 :::

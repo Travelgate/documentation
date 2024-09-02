@@ -37,9 +37,9 @@ The access type (live or test) is determined by the credentials agreed upon by b
 :::
 
 - **Access Active:**  
-	You can enable or disable your Hotel-X Accesses. Please note that you can only use Hotel-X Access Codes while they are active in our system.  
+	You can activate or deactivate your Hotel-X Accesses. Please note that you can only use Hotel-X Access Codes while they are active in our system.  
 	- Yes: Active and operational access.
-	- No: Active and non-operational access.  
+	- No: Inactive and non-operational access.  
 
 :::tip
 Still using our Legacy Pull Buyers API? **Connect to [Hotel-X API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart)** and enjoy this functionality and many more!
@@ -68,7 +68,7 @@ In addition to the aforementioned information, you will also be able to view the
 
 ### Connections via Legacy Pull Buyers API
 
-Please remember that when Buyer connections are established through our Legacy Pull Buyers API, the management of credential disconnections must be addressed not only through My Connections (at the access level) but also **directly between the Buyer and Seller to ensure effectiveness** — it is not enough to merely disable the Hotel-X Access Code in My Connections.
+Please remember that when Buyer connections are established through our Legacy Pull Buyers API, the management of credential disconnections must be addressed not only through My Connections (at the access level) but also **directly between the Buyer and Seller to ensure effectiveness** — it is not enough to merely deactivate the Hotel-X Access Code in My Connections.
 
 - If you wish to permanently deactivate a Legacy connection on our Platform, please submit a ticket via our Portal - Remember, the deactivation of a Legacy connection would occur at the **connection level**, not at the credential level.  
 - If you need to deactivate a **specific set of credentials**, the deactivation should be managed directly between Buyer and Seller. This ensures that the Buyer stops sending traffic from their system using those particular credentials - please make sure to activate/deactivate the Hotel-X Access Code as well, so that it reflects the actual traffic sent by the Buyer.

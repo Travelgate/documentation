@@ -19,9 +19,6 @@ In order to **edit or update an access**, simply follow the steps below:
 
 Please remember that when Buyer connections are established through our Legacy Pull Buyers API, updates to a given set of credentials (Hotel-X Access Codes) must be addressed not only through My Connections (at the access level), but also directly at the **Buyer's system** (Legacy configuration stored on their end) to ensure the information is consistent. It is not enough to merely update the Hotel-X Access Code in My Connections.
 
-:::info How can I determine if a Buyer’s connection is Legacy or Hotel-X?  
-As a general guideline, you can verify if a given connection is Legacy or Hotel-X via our [Stats](/kb/apps/monitoring-apps/stats/stats-connectivity-dashboard) APP. Simply filter by the Buyer and select Actions > View Accesses. If you see **“clientname#suppliercode”** instead of a Hotel-X Access Code, the connection is utilizing our Hotel Pull Legacy API.
-
-**Important:**  
-Some Buyers may be transitioning from the Legacy Pull Buyers API to the Hotel-X API, which means they could have traffic via both APIs. If in doubt, we strongly encourage you to **reach out to your Buyers** for more detailed information.
+:::info
+As a Seller, you can determine if your Buyers are using the Hotel-X Pull Buyers API by checking the label on their Buyer card in the ["My Connections"](/kb/connections/my-connections/#what-can-i-find-in-my-connections) section.
 :::

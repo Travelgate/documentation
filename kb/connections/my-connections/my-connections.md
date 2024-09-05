@@ -51,6 +51,9 @@ Still using our Legacy Pull Buyers API? **Connect to [Hotel-X API](/docs/apis/fo
 - **Partner name**: The name of the Partner connected through that access (either Seller or Buyer name).
 
 	![myconnections_aug_2](https://storage.travelgate.com/kbase/myconnections_aug_2.jpg)
+- **Buyer Integration Type**: If you are browsing as a Seller, you can identify if your Buyers are integrated with our Marketplace using the latest version of the Buyer API: Hotel-X.  
+
+	![buyerintegrationtype_myconnections](https://storage.travelgate.com/kbase/buyerintegrationtype_myconnections.jpg)
 
 In addition to the aforementioned information, you will also be able to view the following information at the access level:
 - **Updated and Created date**: Information about the last modification made to a given access and its creation date.
@@ -72,10 +75,3 @@ Please remember that when Buyer connections are established through our Legacy P
 
 - If you wish to permanently deactivate a Legacy connection on our Platform, please submit a ticket via our Portal - Remember, the deactivation of a Legacy connection would occur at the **connection level**, not at the credential level.  
 - If you need to deactivate a **specific set of credentials**, the deactivation should be managed directly between Buyer and Seller. This ensures that the Buyer stops sending traffic from their system using those particular credentials - please make sure to activate/deactivate the Hotel-X Access Code as well, so that it reflects the actual traffic sent by the Buyer.
-
-:::info How can I determine if a Buyer’s connection is Legacy or Hotel-X?  
-As a general guideline, you can verify if a given connection is Legacy or Hotel-X via our [Stats](/kb/apps/monitoring-apps/stats/stats-connectivity-dashboard) APP. Simply filter by the Buyer and select Actions > View Accesses. If you see **“clientname#suppliercode”** instead of a Hotel-X Access Code, the connection is utilizing our Hotel Pull Legacy API.
-
-**Important:**  
-Some Buyers may be transitioning from the Legacy Pull Buyers API to the Hotel-X API, which means they could have traffic via both APIs. If in doubt, we strongly encourage you to **reach out to your Buyers** for more detailed information.
-:::

@@ -39,9 +39,9 @@ The role will determine which actions a user can perform within the Travelgate A
 
 ### How can I reset a configured 2FA method for a user in my organization?
 1. Log onto our [website](https://www.travelgate.com/).
-1. Click on Settings.
-1. Click on Users Management: Here you will be able to visualize the list of users linked to your Organization.
-1. Filter the user to be updated.
-1.Click on the three dots to reset 2FA and confirm. The next time the user logs into our [website](https://www.travelgate.com/), they will receive a new QR code to set up their new device. - please note that this feature is only available for **Admin or Owner** users
+2. Click on Settings.
+3. Click on Users Management: Here you will be able to visualize the list of users linked to your Organization.
+4. Filter the user to be updated.
+5. Click on the three dots to reset 2FA and confirm. The next time the user logs into our [website](https://www.travelgate.com/), they will receive a new QR code to set up their new device. - please note that this feature is only available for **Admin or Owner** users
 
 ![members_invite_user_07_3](https://storage.travelgate.com/kbase/reset2fa.png)

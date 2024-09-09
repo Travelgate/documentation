@@ -17,7 +17,7 @@ Uncover the full range of TravelgateX [APIs and APPs](/docs/get-started/introduc
 Our [Knowledge Base](/kb) is a valuable resource filled with detailed articles on various topics. Whether you're looking for information on specific errors or tips on using our apps effectively, we've got you covered.
 
 ### Status page✔️
-Stay informed about the [real-time status of our services](https://status.travelgatex.com/status).
+Stay informed about the [real-time status of our services](https://app.travelgate.com/status).
 
 
 ### Community✔️

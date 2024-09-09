@@ -43,6 +43,8 @@ This code will be newly generated each time by an authenticator application (we 
 
 		![2FA_4](https://storage.travelgate.com/kbase/2FA_4.jpg)
 
+### My 2FA method is set up. How can I reset it?
+If you need to change your device or have lost it, it's possible to reset your 2FA method to add a new one. For more information, please refer to the support [page](/kb/account-settings/users-management/how-to-add-manage-users-to-organization).
 
 :::info
 For comprehensive guidance on how to add and manage new users in your Organization, don’t miss this [article](/kb/account-settings/users-management/how-to-add-manage-users-to-organization)!

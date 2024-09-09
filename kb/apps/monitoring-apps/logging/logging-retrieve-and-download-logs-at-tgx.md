@@ -13,6 +13,7 @@ sidebar_position: 1
 	- Operation type: Book, Quote, Cancel, Search, Other.
 	- Status/Error code: list of errors.
 1. Click on **Search**
+
 	![new_logging_1](https://storage.travelgate.com/kbase/new_logging_1.jpg)
 
 :::info
@@ -30,9 +31,10 @@ If your search criteria returns logs, Logging will display the following informa
 - Operation type
 - Session ID (as unique identifier for this transaction)
 - Traffic Type (Basic, Optimized, Scheduler, Speed)
-- Actions: Download link, as logs can be downloaded individually or in bulk using the "Download All" option above the table.
-	![new_logging_2](https://storage.travelgate.com/kbase/new_logging_2.jpg)
+- Actions: Book Download and Quote Download. You can directly download the Quote transactions used for a specific booking flow. You can also download the logs visible on your screen by clicking the "Download All" button above the table.
+	![quotedownload_functionality](https://storage.travelgate.com/kbase/quotedownload_functionality.jpg)
 - If your search returns many results, we recommend you use additional **filters** on the right: “Filter by Supplier”, “Filter by Access” or “Duration”:
+
 	![new_logging_3](https://storage.travelgate.com/kbase/new_logging_3.jpg)
 
 :::info Legacy Pull Buyers API information

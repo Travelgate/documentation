@@ -11,16 +11,6 @@ export const searchQuickStartQuery =
 			filterSearch: $filterSearch
 		) {
 			context
-			errors {
-				code
-				type
-				description
-			}
-			warnings {
-				code
-				type
-				description
-			}
 			options {
 				id
 				accessCode
@@ -174,6 +164,16 @@ export const searchQuickStartQuery =
 					}
 				}
 				remarks
+			}
+			errors {
+				code
+				type
+				description
+			}
+			warnings {
+				code
+				type
+				description
 			}
 		}
 	}

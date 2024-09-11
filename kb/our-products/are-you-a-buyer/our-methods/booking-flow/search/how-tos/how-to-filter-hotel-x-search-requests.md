@@ -48,7 +48,7 @@ You can define/filter which status (OK or RQ) is to be excluded or included in y
 }
 ```
 
-If you're still using our **Legacy Pull Buyer API**, don’t worry! You can find all the necessary information on filtering the status of availability options using the ```OnRequest``` tag through this [link](/docs/apis/for-buyers/legacy-pull-buyers-api/booking-flow/avail). However, we highly recommend exploring the [Hotel-X Pull Buyers API documentation](/kb/getting-started-with-travelgate/About-our-Connectivity/what-exactly-is-hotel-x-and-why-should-i-develop-it) to discover all the advantages and new features that Hotel-X has to offer!
+If you're still using our **Legacy Pull Buyer API**, don’t worry! You can find all the necessary information on filtering the status of availability options using the ```OnRequest``` tag through this [link](/docs/apis/for-buyers/legacy-pull-buyers-api/booking-flow/avail). However, we highly recommend exploring the [Hotel-X Pull Buyers API documentation](/kb/getting-started-with-travelgate/about-our-connectivity/what-exactly-is-hotel-x-and-why-should-i-develop-it) to discover all the advantages and new features that Hotel-X has to offer!
 
 :::info Aggregate and apply business rules to this field!🚀
 All you need to do is add either 'status' or 'notStatus' to the primary key of the aggregation and preference plugins. Both plugins follow the same behaviour, so it's a breeze to get started. For more details, don't forget to check out our [Developers Resources](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/overview).

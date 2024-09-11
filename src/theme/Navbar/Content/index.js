@@ -76,7 +76,7 @@ const LogoutAndName = () => {
 
     return (
         <>
-            <NavbarItem label={`Logout ${email}`} position="right" to={`#!`} onClick={() => logout({
+            <NavbarItem label={`Logout ${email}`} position="right" to={`#`} onClick={() => logout({
                 logoutParams: {
                     returnTo: window.location.origin
                 }
@@ -111,7 +111,7 @@ export default function NavbarContent() {
             {isAuthenticated ? (
                 <LogoutAndName />
             ) : (
-                <NavbarItem label={`Login`} position="right" to={`#!`} onClick={() => loginWithRedirect()} />
+                <NavbarItem label={`Login`} position="right" to={`#`} onClick={() => loginWithRedirect()} />
             )}
 
           {/*<NavbarColorModeToggle className={styles.colorModeToggle} />*/}

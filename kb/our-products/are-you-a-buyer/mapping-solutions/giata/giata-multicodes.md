@@ -31,5 +31,5 @@ Hotel-X API fully supports GIATA Multicodes in **Hotel-X Hotels Query** response
 
 :::tip
 Are you interested in **GIATA Hotel Directory** as well?
-Simply follow the easy steps outlined in the following [link](/kb/getting-started-with-travelgate/About-our-Connectivity/explore-and-discover-giata-products-in-our-marketplace).
+Simply follow the easy steps outlined in the following [link](/kb/getting-started-with-travelgate/about-our-connectivity/explore-and-discover-giata-products-in-our-marketplace).
 :::

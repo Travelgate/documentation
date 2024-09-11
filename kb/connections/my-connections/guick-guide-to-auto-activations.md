@@ -19,7 +19,7 @@ It's worth noting that having a commercial contract with TravelgateX is a must t
     ![quickguide_to_autoconnections_step2](https://storage.travelgate.com/kbase/autoconnections_step2.png)
 
 3. Click on "Create a new connection" and let's get started with the steps for a smooth connection process.
-    * **Step 1 (Partner):** Choose the Partner you want to connect with. Some Sellers may offer multiple connection types ([Pull or Push](/kb/getting-started-with-travelgate/About-our-Connectivity/what-is-the-difference-between-pull-and-push-sellers)), so pick the one that suits you best.
+    * **Step 1 (Partner):** Choose the Partner you want to connect with. Some Sellers may offer multiple connection types ([Pull or Push](/kb/getting-started-with-travelgate/about-our-connectivity/what-is-the-difference-between-pull-and-push-sellers)), so pick the one that suits you best.
 
     ![quickguide_to_autoconnections_step3_1](https://storage.travelgate.com/kbase/autoconnections_step3_1.png)
 

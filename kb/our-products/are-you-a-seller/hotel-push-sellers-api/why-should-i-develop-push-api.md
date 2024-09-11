@@ -5,7 +5,7 @@ sidebar_position: 1
 # Why should I develop Hotel Push Sellers API?
 
 ### Boost Your Business with TravelgateX🚀
-TravelgateX provides Channel Managers with the opportunity to integrate our Hotel Push Sellers API, allowing them to quickly start selling to our network of Buyers (to understand the distinction between a PULL and a PUSH Connection, click [here](/kb/getting-started-with-travelgate/About-our-Connectivity/what-is-the-difference-between-pull-and-push-sellers)).
+TravelgateX provides Channel Managers with the opportunity to integrate our Hotel Push Sellers API, allowing them to quickly start selling to our network of Buyers (to understand the distinction between a PULL and a PUSH Connection, click [here](/kb/getting-started-with-travelgate/about-our-connectivity/what-is-the-difference-between-pull-and-push-sellers)).
 
 Once you've successfully integrated our "Hotel Push Sellers API," you'll have the power to effortlessly push your product to multiple client connections via TravelgateX. And the best part? You can start selling to our extensive network of Buyers as soon as you finish the development process. It's a seamless and efficient way to expand your reach and boost your sales in no time!
 

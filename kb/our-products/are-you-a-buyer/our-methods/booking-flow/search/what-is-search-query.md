@@ -121,6 +121,13 @@ The age range for children and infants may vary depending on the Seller's restri
 ### Can I receive daily prices in Search response?
 Yes, if the Seller provides the information, you can receive daily prices in Search response through the roomPrice>**breakdown**.
 
+### Can I still get availability if the hotel code is not found in the Connections Content section?
+Yes, in some cases you might still receive availability for a hotel even if its code isn’t listed in the Connections Content section, provided that the Supplier returns options based on your credentials and search criteria (hotel, dates, pax distribution, etc.).
+
+This can occasionally happen when a Supplier has added new hotels to your portfolio, but the changes are not yet reflected in the Connections Content section because they did not coincide with the scheduled content update. During these times, a hotel may show availability through the integration, even though it is not yet reflected in the Connections Content section.
+
+In these scenarios, we recommend using the [Force Update Now](/kb/connections/connections-content/how-to-check-my-connections-content#how-can-i-use-the-force-update-now-functionality) functionality to update your portfolio and reaching out to the Supplier for further information if needed.
+
 ### Can I get a hotel description in Search response?
 It is not possible to obtain a hotel description using the Search Query in the Travelgate API. However, the detailed hotel description can be obtained through the [Hotels Query](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-hotels-query), which returns details about a hotel. The returned fields include images, descriptions, views, attributes, and more (as long as this information is provided by the Supplier via the integration).
 

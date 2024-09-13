@@ -25,12 +25,18 @@ In the aforementioned example, the Buyer sets a timeout of 24700 milliseconds (2
 </applicationErrors>
 ```
 
-### How can I solve timeout errors?💡
-1. Increase the Seller's timeout allowed
-1. Contact the Seller directly in order to let them know about your response time expectations.
-1. Reduce the number of hotels/destinations requested.
-1. Retry the operation.
+### What should I do as a Buyer if I detect an increase in timeout errors from a Seller?
+1. **Increase the Seller's timeout allowed:** Adjust the timeout settings to give the Seller more time to respond.
+2. **Contact the Seller directly:** Let the Seller know about your response time expectations. They might be able to optimize their system to respond more quickly.
+3. **Reduce the number of hotels or destinations requested:** Requesting information for a large number of hotels or destinations at once could be slowing down the Seller's response time. Reducing the number of requests might help.
+4. **Retry the operation:** Sometimes, network issues or temporary system problems can cause a timeout and retrying the operation might resolve the issue. Note that this action applies to Search. If you detect a timeout error in Quote or Book, you should start the booking flow from scratch.
+
+### What should I do as a Seller if one of my Buyers reports timeout errors?
+1. **Check System Performance:** Review your system's performance for any issues causing slow response times, such as server overload, network problems, or software inefficiencies.
+2. **Optimize Your System:** Consider upgrading your system to boost response times.
+3. **Communicate with the Buyer:** They might be able to increase the request timeout value or reduce the number of hotels or destinations in their request.
+4. **Monitor Performance:** Utilize monitoring tools to track your system's performance over time, helping you identify any recurring issues or trends that cause delays. You can also access Travelgate’s monitoring tools ([Stats](/kb/apps/monitoring-apps/stats/stats-connectivity-dashboard), [Alerts](https://docs.travelgate.com/kb/apps/monitoring-apps/alerts/alerts-real-time-detection)) to help you keep track of the Buyer’s performance.
 
 :::tip
-If you have followed the tips mentioned above and the Seller's performance is still not optimal, you can try activating **[Speed](/kb/apps/smart-traffic-apps/speed/speed-app)**, our caching solution. By enabling Speed, you may be able to improve the response time and overall performance of the Seller's system (learn more here).
+If you’ve followed the above tips and the performance is still not optimal, consider activating **[Speed](/kb/apps/smart-traffic-apps/speed/speed-app)**, our caching solution. Enabling Speed can help improve response times and enhance the overall performance of the Seller's system.
 :::

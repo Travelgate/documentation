@@ -70,7 +70,9 @@ You can also monitor the performance of your optimized connections directly from
 ![traffic_optimizer_6](https://storage.travelgate.com/kbase/traffic_optimizer_6.jpg)
  
 ### Can I exclude some hotels from being blocked by Traffic Optimizer?🗒️
-Of course! You have the flexibility to exclude hotels from the blacklist for specific connections. Additionally, each hotel on the blacklist can be made temporarily available for a preset amount of time to re-check conversion. This grace period is automatically activated by default for the "Zero bookings" criteria.  
+Of course! You have the flexibility to exclude hotels from the blacklist for specific connections. Simply [open a ticket](/kb/tickets/guidelines-for-submitting-a-ticket-to-our-support-team) with our Customer Support team, and we will be happy to assist!
+
+Additionally, each hotel on the blacklist can be made temporarily available for a preset amount of time to re-check conversion. This grace period is automatically activated by default for the "Zero bookings" criteria.  
 
 Use cases:
 1. **Buyer X activates Traffic Optimizer for n connections with the "No Availability" criteria**"

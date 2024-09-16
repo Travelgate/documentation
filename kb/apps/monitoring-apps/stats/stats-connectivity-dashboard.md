@@ -29,12 +29,15 @@ Let's clarify this with an example:
 
 ![stats_dashboard_2](https://storage.travelgate.com/kbase/stats_dashboard_2.jpg)
 
-All the information you need is neatly arranged into different tabs. The first tab, "All," presents a comprehensive view of your Organization's entire booking flow, with key insights displayed through intuitive cards. For a deeper analysis, explore each connection in detail using the table below. And if you crave even more data, simply select the "View accesses" option for any connection to access detailed statistics at the access level.
+### What can I find in Stats?☑️
+
+In Stats, all the information you need is neatly arranged into different tabs. The first tab, "**All**", presents a comprehensive view of your Organization's entire booking flow, with key insights displayed through intuitive cards. For a deeper analysis, explore each connection in detail using the table below. And if you crave even more data, simply select the "**View accesses**" option for any connection to access detailed statistics at the access level.
 
 ![stats_dashboard_3](https://storage.travelgate.com/kbase/stats_dashboard_3.jpg)
 
+Delve into **other tabs** like "Search," "Quote," "Book," "Cancel" and "Other" for specific details about each booking step. These tabs offer more detailed insights, categorizing information based on different error types that may occur during each phase. Scorecards summarize data for your Organization as a whole, while tables display data for each connection. Additionally, a user-friendly temporal chart is provided to help you visualize traffic patterns over time.
 
-Delve into other tabs like "Search," "Quote," "Book," "Cancel" and "Other" for specific details about each booking step. These tabs offer more detailed insights, categorizing information based on different error types that may occur during each phase. Scorecards summarize data for your Organization as a whole, while tables display data for each connection. Additionally, a user-friendly temporal chart is provided to help you visualize traffic patterns over time.
+**Download CSV option"**: Above each table, you will find a 'Download CSV' button, allowing you to download the data most relevant to your business.
 
 :::info Legacy Pull Buyers API information
 Please remember that for Buyer connections through our Legacy Pull Buyers API, filtering by Hotel-X Access Code is not available. Connections will be identified through the Buyer's **clientname#suppliercode** relationship.  

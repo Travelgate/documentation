@@ -22,6 +22,15 @@ The requested hotels are grouped into two statuses:
 
 ![hotel-portfolio-table](https://storage.travelgate.com//kbase/hotel-portfolio-table.jpg)
 
+### What should I do next?
+If you have identified requested hotels that are not available in your portfolio, we recommend two optimal solutions to reduce unnecessary traffic and improve your performance:
+
+1. **Activate Traffic Optimizer:** this solution allows you to block traffic for hotels that return no availability.
+1. **Update your portfolio:** review and update your portfolio to ensure you have the latest version.
+
+Both options are simple and will bring you great results!
+
+
 :::tip
 Remember, an updated portfolio will improve your performance and booking volume with your connections!
 :::

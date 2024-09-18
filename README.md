@@ -61,3 +61,22 @@ npx docusaurus-mdx-checker
 
 This repository is being automatically deployed to GitHub Pages using GitHub Actions.
 The deployment script is located in `.github/workflows/main.yml`.
+
+# Update / Upgrade
+
+To update the Docusaurus version, its dependencies and the rest of the dependencies, run the following commands:
+
+```bash
+rm -rf node_modules
+npm update --save
+```
+
+You can avoid removing the `node_modules` but it's recommended to do so to avoid any conflicts.
+
+Before pushing the changes, make sure to test the website locally and check if everything is working as expected:
+
+```bash
+npm run build && npm run start
+```
+
+Be patient, the build process can take a while.

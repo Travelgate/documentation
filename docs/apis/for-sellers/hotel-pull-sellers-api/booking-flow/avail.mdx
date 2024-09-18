@@ -568,29 +568,17 @@ The response options include either **success** or an **error**. In the event of
 <details>
 <summary>How should I interpret "binding" and "commission" to figure out what kind of price it is?</summary>
 
-```xml
-<Price currency = "EUR" amount = "200" binding = "false" commission = "-1"/>
-```
-
-<p>We have no way of knowing if the price is PVP or net, given that the commission is not sent to us via XML. The commission is established by contract.</p>
-
-```xml
-<Price currency = "EUR" amount = "300" binding = "true" commission = "-1"/>
-```
-
-<p>The price is PVP, the commission is not sent to us via XML. The commission is established by contract.</p>
-
-```xml
-<Price currency = "EUR" amount = "150" binding = "true/false" commission = "20"/>
-```
-
-<p>The price is PVP with a commission of 20%. The binding in this case can be true or false.</p>
-
-```xml
-<Price currency = "EUR" amount = "100" binding = "false" commission = "0"/>
-```
-
-<p>The price is net.</p>
+<b>Examples:</b>
+| **Category**                                           | **Price (Price curr.)**      | **Amount**                      | **Binding** | **Commission**            | **MSP (Minimum Selling Price)** | **Notes**                                     |
+|--------------------------------------------------------|------------------------------|---------------------------------|-------------|----------------------------|----------------------------------|----------------------------------------------|
+| **Cases without binding prices and MSP**               | Unknown Price                | EUR 200                         | False       | -1                         | N/A                              | Unknown price                                |
+|                                                        | Net Price                    | EUR 100                         | False       | 0                          | N/A                              | Net price                                    |
+|                                                        | Gross Price                  | EUR 150                         | False       | 20                         | N/A                              | Gross price                                  |
+| **Cases with binding prices (MSP version)**            | Net + Binding=True + MSP     | EUR 100                         | True        | 0                          | 120                              | Net price with binding and MSP               |
+|                                                        | Gross + Binding=True + MSP   | EUR 150                         | True        | 20                         | 180                              | Gross price with binding and MSP             |
+|                                                        | Unknown + Binding=True + MSP | EUR 100                         | True        | -1                         | 120                              | Unknown price with binding and MSP           |
+| **Cases with binding prices (No MSP "deprecated")**    | Net + Binding=True           | EUR 120 (Supplier MSP value)    | True        | 10                         | N/A                              | Net price with binding, no MSP (deprecated)  |
+|  
 
 </details>
 

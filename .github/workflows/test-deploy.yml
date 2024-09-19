@@ -24,6 +24,10 @@ jobs:
         run: npx docusaurus graphql-to-doc --force
         env:
           NODE_OPTIONS: "--max_old_space_size=4096"
+      # This step is needed because the graphql-to-doc script
+      # generates a sidebar-schema file which has an invalid dirName
+      - name: Copy api-sidebar-schema.dis to api/sidebar-schema.js
+        run: cp api-sidebar-schema.dist api/sidebar-schema.js
       - name: Test build website
         env:
           NODE_OPTIONS: "--max_old_space_size=4096"

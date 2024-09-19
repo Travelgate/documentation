@@ -19,7 +19,7 @@ You can specify one access or none of them. In this latter case, all the accesse
 ### 2. RateRules - RateRulesFilterInput✔️
 Rate Rules refer to the specific terms and conditions that define the pricing, availability, and booking policies for rooms or accommodations at a hotel. You can include or exclude specific rate rules in order to request only the information that matters to your business.  
 
-Don't forget to check our [GraphQL API Reference](/api/enums/rate-rules-type) for further information regarding all the RateRules types available!
+Don't forget to check our [GraphQL API Reference](/api/types/enums/rate-rules-type) for further information regarding all the RateRules types available!
 
 ### 3. Plugin - HotelXPluginFilterInput✔️
 Thanks to Hotel-X Plugins you can customize your requests and responses to meet your business needs. You can filter which plugins have to be executed (included) or excluded.

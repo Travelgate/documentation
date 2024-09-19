@@ -8,7 +8,7 @@ title: "VCC Payments"
 
 To pay for bookings within the TravelgateX platform, you have various methods available depending on the [payment type](/kb/faqs/faqs-price/payment-types-at-tgx) returned by the supplier. Some of these methods require a credit card.
 
-- **If you obtain or generate your own credit card**: Simply send the credit card information through our book mutation card input [`paymentCard`](/api/inputs/hotel-book-input), including the card type, number, CVC, and other relevant details.
+- **If you obtain or generate your own credit card**: Simply send the credit card information through our book mutation card input [`paymentCard`](/api/types/inputs/hotel-book-input), including the card type, number, CVC, and other relevant details.
 
 - **If you cannot generate virtual credit cards (VCC)**: TravelgateX offers integration with several VCC suppliers who can create virtual credit cards for you at the time of reservation. For each hotel booking where you indicate in your request that a VCC is needed for payment, the system will connect with your VCC supplier to obtain the virtual credit card and use this information to complete the reservation with the hotel supplier. 
 

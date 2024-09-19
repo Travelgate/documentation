@@ -20,6 +20,10 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+      - name: Generate api reference from Graphql schema
+        run: npx docusaurus graphql-to-doc
+        env:
+          NODE_OPTIONS: "--max_old_space_size=4096"
       - name: Test build website
         env:
           NODE_OPTIONS: "--max_old_space_size=4096"

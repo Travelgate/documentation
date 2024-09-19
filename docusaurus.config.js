@@ -82,6 +82,8 @@ const config = {
         baseURL: "/",
         linkRoot: "/api",
         pretty: true,
+        forceSchema: true,
+        force: true,
         //homepage: "./docs/api-reference.md",
         loaders: {
           UrlLoader: {

@@ -80,3 +80,12 @@ npm run build && npm run start
 ```
 
 Be patient, the build process can take a while.
+
+**IMPORTANT:** If you are upgrading `@graphql-markdown/docusaurus` version, make sure to run `graphql-to-doc` command 
+to check the generated API reference locally before pushing the changes. If your locally generated API reference 
+structure is different from the one in live, you need to inform the team about the changes in #documenters channel.
+
+This step is important, because the generated links are also used to train Aina bot. If the links are 
+not working, Aina will not be able to provide the correct information.
+
+```bash 

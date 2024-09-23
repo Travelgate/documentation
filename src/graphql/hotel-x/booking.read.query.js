@@ -95,7 +95,8 @@ export const bookingByReferenceVariables =
 			"currency": "EUR",
 			"references": [
 				{
-					"client": "test_01234567890"
+					"client": "test_01234567890",
+					"supplier": "2636944"
 				}
 			]
 		}

@@ -1,0 +1,48 @@
+name: Trigger build
+on:
+  schedule:
+    - cron: "00 12 * * 1" # Every monday at 12:00
+
+jobs:
+  write-empty-commit:
+    name: Write empty commit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Write empty commit
+        run: git commit --allow-empty -m "Trigger build" && git push
+
+  deploy:
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Generate api reference from Graphql schema
+        run: npx docusaurus graphql-to-doc --force
+        env:
+          NODE_OPTIONS: "--max_old_space_size=4096"
+
+      - name: Copy api-sidebar-schema.dis to api/sidebar-schema.js
+        run: cp api-sidebar-schema.dist api/sidebar-schema.js
+
+      - name: Build website
+        env:
+          NODE_OPTIONS: "--max_old_space_size=4096"
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
+          user_name: github-actions[bot]
+          user_email: 41898282+github-actions[bot]@users.noreply.github.com

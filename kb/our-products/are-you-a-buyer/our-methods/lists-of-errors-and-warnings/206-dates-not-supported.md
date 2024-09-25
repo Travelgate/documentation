@@ -19,5 +19,5 @@ To check the dates specifications set by the Seller and prevent errors and unnec
 :::info Date format for check-in and check-out
 Please remember, the date format for check-in and check-out should be:
 - In the Legacy Pull Buyers API, the format for "StartDate" and "EndDate" is: dd/mm/yyyy.
-- In the Hotel-X Pull Buyers API, the format for "checkIn" and "checkOut" is: yyyy/mm/dd.
+- In the Hotel-X Pull Buyers API, the format for "checkIn" and "checkOut" is: yyyy-mm-dd.
 :::

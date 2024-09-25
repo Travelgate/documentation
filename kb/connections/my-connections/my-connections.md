@@ -51,7 +51,7 @@ Still using our Legacy Pull Buyers API? **Connect to [Hotel-X API](/docs/apis/fo
 - **Partner name**: The name of the Partner connected through that access (either Seller or Buyer name).
 
 	![myconnections_aug_2](https://storage.travelgate.com/kbase/myconnections_aug_2.jpg)
-- **Buyer Integration Type**: If you are browsing as a Seller, you can identify if your Buyers are integrated with our Marketplace using the latest version of the Buyer API: Hotel-X.  
+- **Buyer Integration Type**: If you are browsing as a Seller, you can determine whether your Buyers are integrated with our Marketplace via the Legacy Pull Buyers API or the Hotel-X Pull Buyers API by checking the Buyer Integration type information. If the Buyer is using the latest version, Hotel-X, you'll see the "Hotel-X" label. If they are connected through our Legacy API, no label will be displayed.
 
 	![buyerintegrationtype_myconnections](https://storage.travelgate.com/kbase/buyerintegrationtype_myconnections.jpg)
 

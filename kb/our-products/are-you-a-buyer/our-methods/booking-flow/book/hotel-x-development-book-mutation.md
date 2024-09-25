@@ -67,8 +67,11 @@ No, you are not required to provide real ages and names for all passengers. You 
 ### How can I add remarks to a Book request?
 Remarks are comments from the customer for the Seller to take into account. They can be included in the Book request (details can be found in our [Hotel-X Schema](https://docs.travelgate.com/playground/)) provided that the Supplier allows for remarks in their reservations - you can check their [Metadata](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-metadata-query) for further information.
 
-### How do I define the total number of rooms in my Book request?
-To define the number of rooms in your reservation, you need to utilize the occupancyRefId previously returned in Search response.
+### How do I define the total number of rooms and paxes in my Book request?
+To define the number of rooms in your Book request, use the same "occupancies" data provided in your Search request. For instance, if your Search was for a room with two adults, the room information in your Book request should reflect that same Search data.
+
+To define passenger details, simply add the "paxes" array in the "rooms" object of your "bookInput," matching the data from your Search request. Each passenger is represented as an object with "name," "surname,", "age" fields ("title" is optional). Remember, the number of rooms and pax distribution specified in your Book request should always match what was requested in the Search and it's not possible to extend the "paxes" array in the "rooms" object of your "bookInput".
+
 For instance, for a room of two adults:
 ```
 "rooms": [
@@ -99,8 +102,11 @@ The payment type and details to be added in your Book request depend on the paym
 
 ### How can I add the payment details to my Book request?
 You will be able to find an example of HotelBookInput both for a "paymentType": MERCHANT (no credit card details needed) and for a "paymentType": DIRECT, CARD_BOOKING or CARD_CHECK_IN (credit card details required) in the following links to our Documentation.
-- [**No Credit Card Details** - "paymentType": MERCHANT](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/book#1-input)
-- [**Credit card details required** - "paymentType": DIRECT, CARD_BOOKING or CARD_CHECK_IN](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/book#payment-card)
+- **No Credit Card Details** - "paymentType": MERCHANT
+- **Credit card details required** - "paymentType": DIRECT, CARD_BOOKING or CARD_CHECK_IN
+
+### Should I fill in the payment card input in the Book request when using the VCC plugin?
+No, when using the Virtual Credit Card (VCC) plugin, you should not provide payment card information in the [PaymentCardInput](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/book/#1-input) of your Book request. If the payment is made by a regular credit card, it is mandatory to specify the payment type and provide the credit card details, unless you are using our VCC plugin to generate virtual credit cards. Learn more about VCC payments [here](/kb/our-products/are-you-a-buyer/getting-started-as-a-new-buyer/how-to-activate-vcc-payments/).
 
  :::tip
  Don't forget to check our [article](/kb/faqs/faqs-price/payment-types-at-tgx) on Payment Types at TravelgateX!🚀

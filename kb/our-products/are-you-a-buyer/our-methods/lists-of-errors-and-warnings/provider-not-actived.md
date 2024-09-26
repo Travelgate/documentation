@@ -20,5 +20,5 @@ To resolve the issue, please ensure that you have inserted the provider code in 
 ![provided_not_actived](https://storage.travelgate.com/kbase/provided_not_actived.jpg)
 
 :::tip
-Should the error persist after checking the aforementioned information please contact our [Customer Care team](https://app.travelgatex.com/tickets).
+Should the error persist after checking the aforementioned information please contact our [Customer Care team](https://app.travelgate.com/support).
 :::

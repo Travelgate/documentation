@@ -32,7 +32,7 @@ The activation for the 'No availability' and 'Zero booking' criteria will be aut
 
 ### Is it possible to edit the configuration?
 
-To edit the optimization criteria for connections or access, click on the three dots under 'Actions' and then choose “Edit configuration”. To change the configuration from access to connection, or from connection to access, it is necessary to open a [ticket](https://app.travelgatex.com/tickets).
+To edit the optimization criteria for connections or access, click on the three dots under 'Actions' and then choose “Edit configuration”. To change the configuration from access to connection, or from connection to access, it is necessary to open a [ticket](https://app.travelgate.com/support).
 
 ![TO_edit_actions](https://storage.travelgate.com/kbase/TO_edit_actions.jpg)
 ![TO_edit_actions_2](https://storage.travelgate.com/kbase/TO_edit_actions_2.jpg)

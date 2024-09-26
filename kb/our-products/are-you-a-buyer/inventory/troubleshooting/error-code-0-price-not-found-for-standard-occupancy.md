@@ -17,7 +17,7 @@ For example:
 
 In the avove scenario, the standard occupancy is set to **1 adult** so in order to resolve the issue you should simply update the information by loading prices for 1 adult and resend your request.
 
-Should the error persist or need further support after checking this information, do not hesitate to contact us again through a [ticket](https://app.travelgatex.com/tickets) in our Portal and our team will be happy to help.
+Should the error persist or need further support after checking this information, do not hesitate to contact us again through a [ticket](https://app.travelgate.com/support) in our Portal and our team will be happy to help.
  
 :::info
 Discover more by diving into our [Inventory Documentation](/docs/apps/inventory/quickstart) 🚀

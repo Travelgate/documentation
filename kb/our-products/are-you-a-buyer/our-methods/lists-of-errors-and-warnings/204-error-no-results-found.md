@@ -22,7 +22,7 @@ You will find more information on how to audit Seller's transactions [here](/kb/
 1. If the Seller **does not return results for your credentials** via the integration (auditData information), please contact them directly to confirm that your request is valid for both:		
 	1. Your credentials
 	1. The Search criteria set in your request
-1. Should the Seller confirm that **they are returning results** (for your credentials and specific Search criteria) but you are still receiving a 204 error, please do not hesitate to contact our [Customer Care team](https://app.travelgatex.com/tickets) and provide us the complete RQ/RS logs run on your side, plus the availability OK transactions by the Seller for further investigation.
+1. Should the Seller confirm that **they are returning results** (for your credentials and specific Search criteria) but you are still receiving a 204 error, please do not hesitate to contact our [Customer Care team](https://app.travelgate.com/support) and provide us the complete RQ/RS logs run on your side, plus the availability OK transactions by the Seller for further investigation.
 
 ### What can I do as a Seller if my Buyers receive 204 errors in Search response?
 1. **Check Credentials:** Verify that the Buyer’s credentials are properly configured on your side and confirm with the Buyer that they match the ones being used on their end.

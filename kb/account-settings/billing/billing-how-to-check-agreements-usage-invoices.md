@@ -97,5 +97,5 @@ Travelgate invoices need to be settled through **bank transfer**, so credit card
 
 :::warning important
 To ensure seamless billing, **it's important that you handle all cancellations via our API**.  
-Should you face any issues, please don't hesitate to get in touch with our [Customer Care team](https://app.travelgatex.com/tickets) for assistance. Additionally, please make sure to cancel any test bookings with Sellers and to check that such bookings are refundable.
+Should you face any issues, please don't hesitate to get in touch with our [Customer Care team](https://app.travelgate.com/support) for assistance. Additionally, please make sure to cancel any test bookings with Sellers and to check that such bookings are refundable.
 :::

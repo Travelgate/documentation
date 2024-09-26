@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # TravelgateX Tickets Lifecycle
 
-If you've ever had to submit a Tech Support ticket, you know how important it is to stay informed about its status. At TravelgateX, we understand this and have a specific process in place to ensure that your ticket is handled efficiently and effectively.  If you submit a ticket through section [Tickets](https://app.travelgatex.com/tickets), here's what you can anticipate:
+If you've ever had to submit a Tech Support ticket, you know how important it is to stay informed about its status. At TravelgateX, we understand this and have a specific process in place to ensure that your ticket is handled efficiently and effectively.  If you submit a ticket through section [Tickets](https://app.travelgate.com/support), here's what you can anticipate:
 
 ## Ticket Categories💡
 

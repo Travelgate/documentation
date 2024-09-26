@@ -31,7 +31,7 @@ To get your access code, simply establish a commercial agreement with the desire
 
 :::warning important
 - Please note it is highly advisable to **avoid making live bookings during the Hotel-X implementation process** until your development has been certified by TravelgateX. dditionally, please make sure to cancel any test bookings and to check that such bookings are refundable.
-- To ensure seamless billing, **it's important that you handle all cancellations via our API**. Should you face any issues, please don't hesitate to get in touch with our [Customer Care team](https://app.travelgatex.com/tickets) for assistance.
+- To ensure seamless billing, **it's important that you handle all cancellations via our API**. Should you face any issues, please don't hesitate to get in touch with our [Customer Care team](https://app.travelgate.com/support) for assistance.
 :::
 
 ### Client☑️

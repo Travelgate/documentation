@@ -4,6 +4,10 @@ sidebar_position: 1
 
 # Hotel Pull Sellers Generic API Certification
 
+:::danger deprecated API
+The Legacy Pull Sellers API was our first Sellers API, launched back in 2012. It is now deprecated and should not be further developed. Since then, we have launched a new Pull Sellers API, in which Travelgate currently plays a proactive role in [developing API integrations](/kb/our-products/are-you-a-seller/getting-started-as-a-new-seller/seller-api-development-roadmap) on behalf of the Seller.
+:::
+
 Ensuring that our Partners fully understand our API, can make good use of it and that the information transmitted is correct is essential for a successful collaboration. That's why all the Partners connecting to our Platform are required to pass a certification process, whether they are buying or selling in our Marketplace.
 
 ### When should I apply for certification?✔️

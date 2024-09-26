@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 8
+sidebar_position: 6
 ---
 
 # Hotel-X API Credentials
@@ -11,9 +11,9 @@ Once you have configured your account as a Hotel-X Buyer in our Platform, you ca
 ### Apikey☑️
 An Apikey is a unique alphanumeric code that serves as a form of authentication required for accessing Hotel-X API. This key must be included in the HTTP Authorization request header to verify and authenticate the user agent with the server. It acts as a secure identifier, ensuring that only authorized users can make requests and access the API's functionalities. You can find your Apikey (**encrypted**) and generate new ones in section Connections > [API Settings](https://app.travelgatex.com/connections/settings).
 
-1. APP access: Log in with your credentials [here](https://www.travelgatex.com/).
-1. Connections: Click on "Connections" in the top menu. Then, click on "[API Settings](https://app.travelgatex.com/connections/settings)".
-1. API Settings: List of API Keys associated with your Organization (encrypted). Simply click in the ["You can manage your API Keys here"](/kb/connections/connections-settings) in the yellow callout in order to visualize this information. Please note that API Keys cannot be retrieved; therefore, ensure you keep a record of yours once created.
+1. APP access: Log in with your credentials [here](https://www.travelgate.com/).
+2. Click on the 'Manage > API Keys' section. You can find it in the menu that appears when you click on your user icon in the top right corner of the screen.
+3. API Settings list: List of API Keys associated with your Organization (encrypted). You can also generate new API keys by clicking the 'Create New API Key' button and completing the required form. Please note that API Keys cannot be retrieved; therefore, ensure you keep a record of yours once created.
 
 	:::info
 	Please keep in mind that the Apikey will remain consistent across both test and production environments.

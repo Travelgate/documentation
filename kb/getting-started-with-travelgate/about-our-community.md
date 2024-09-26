@@ -4,41 +4,43 @@ sidebar_position: 5
 
 # About our Community
 
-At Travelgate, we cherish the value of community. We're excited to launch our latest initiative: a **[Discord Server (ideas-hub)](https://discord.com/invite/travelgate)** designed specifically for our active network of users, partners, and developers. This platform is more than a communication tool; it's a hub for cultivating ideas, fostering collaboration, and driving innovation forward.
+At TravelgateX, we highly value the power of Community. We're excited to launch our new [Discord Server](https://discord.com/invite/travelgate), specifically designed for our Network of users, Partners, and developers. This platform is not just a communication tool; it's a hub for sharing ideas, collaborating, and driving innovation.
 
-Discord’s versatility perfectly complements our vision at TravelgateX. The platform supports real-time communication through instant messaging, voice chats, and video calls, ensuring rapid and efficient interactions. Additionally, it offers high-quality streaming capabilities crucial for hosting webinars, live demonstrations, and other virtual events. This ensures our community can enjoy rich, interactive experiences, irrespective of their physical location.
+Discord’s versatile features perfectly match our vision. It enables real-time communication through instant messaging, voice chats, and video calls, ensuring swift and efficient interactions. Additionally, its high-quality streaming capabilities are ideal for hosting webinars, live demos, and virtual events, providing our community with rich, interactive experiences, regardless of location.
 
-:::info
-Curious about TravelgateX’s new Discord Server for its community? Learn more [here](https://blog.travelgate.com/en/why-travelgatex-has-set-up-a-discord-server-for-its-community)! 🚀
+:::info Who we are
+Our Community includes Travelgate employees, Partners, travel tech enthusiasts, product experts, and anyone passionate about travel technology.
+Curious about TravelgateX’s new Discord Server? Learn more [here](https://blog.travelgate.com/en/why-travelgatex-has-set-up-a-discord-server-for-its-community)! 🚀
 :::
 
-### Who we are
-Our community includes Travelgate employees, Partners, travel tech enthusiasts, product experts, and, anyone passionate about travel technology.
+### Our Discord Channels
+- **Announcements:** Channel for important Travelgate events, releases, and Community updates.
+- **Seller Releases:** Notifies users about every seller integration install/rollback, new versions, and updates.
+- **Status:** Provides current system status notifications.
+- **Ideas Hub:** Got a fantastic idea to enhance our Marketplace and products? Share it here!
 
-### How Your Ideas and Reactions Impact TravelgateX
-While we can’t implement every suggestion, we value each one and take them seriously. Every idea and comment is reviewed, and the community can react with a ⭐ to the ideas that most resonate with their challenges and needs. Your input is essential, so keep it coming!
+### Ideas Hub
 
-### Join the Conversation!
-We’re thrilled to provide this space for our Partners to collaborate with us. The feedback, engagement, and collaboration so far have been fantastic, and we’re excited about the journey ahead. This forum will continually evolve and improve, thanks to your contributions.
-
-### Submitting Your Ideas
+#### Submitting Your Ideas
 1. **Search Before You Post**: Before submitting your idea, ensure it hasn’t already been suggested. If a similar idea exists, react with a ⭐ and add your comments to enhance it further.
 2. **Be Clear and Concise**: When posting, clearly describe the problem your idea addresses and what you aim to achieve.
 
-### Reacting and Commenting
-1. **Show Your Support**: Click the ⭐ to support ideas you like. This helps us understand what’s important to our community.
+#### Reacting and Commenting
+1. **Show Your Support**: Click the ⭐ to support ideas you like. This helps us understand what’s important to our Community.
 2. **Add Context**: Share your thoughts in the comments to help us understand the context and nuances of your idea.
 
-### What Happens Next?
+#### What Happens Next?
 Your feedback is key to influencing our product teams. Here’s how your contributions shape our development process: 
 1. **Idea Review**: We review each idea and consider it alongside feedback from other teams and systems.
 2. **Prioritization**: Ideas are evaluated based on various criteria, including company vision, strategy, and broader business needs.
 3. **Feedback Integration**: While we may not implement every idea, we aim to address the underlying issues you highlight.
 
-### Implementation Possibilities
-Your idea could be prioritized and implemented, or it may inspire us to make changes that address the core issue you’re pointing out. While we can’t promise specific timelines or implementations, we assure you that your feedback will be taken seriously and considered in our product discovery process.
+#### Impact and Implementation of Your Ideas
+Your ideas and reactions are essential to us at TravelgateX. While we cannot promise specific timelines or implementations, every suggestion you provide is taken seriously and considered in our product discovery process. Your feedback could inspire us to prioritize and implement changes that address the core issues you highlight.
 
-Thank you for contributing to the Travelgate Ideas Hub. Your insights help us build better products and and create a more impactful customer experience.
+Each idea and comment is reviewed carefully, and the Community can react with a ⭐ to those that resonate most with their challenges and needs. Keep your input coming, as it plays a crucial role in driving improvements and innovations.
 
-**Let’s innovate together!** 🚀
 
+:::tip
+Join the conversation and let’s innovate together! 🚀
+:::

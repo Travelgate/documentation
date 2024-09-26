@@ -47,15 +47,13 @@ We're constantly improving our Activation Process to make it smoother for you. W
 
 ## Auto-connection Status
 
-Once you've requested a new connection with your partner, you can track its progress in the 'My Connections' section. Here's what each status means:
+Once you've requested a new connection with your Partner, you can track its progress in the 'My Connections' section. Here's what each status means:
 
 | Status                    | Description        |
 |---------------------------|--------------------|
-| 🟢 Working                | Your access is all set!   |
-| 🟡 Pending                | Our automatic process is still setting things up, but it'll be ready soon. Once it is, it'll switch to 'Working' automatically.   |
-| 🟡 Pending Seller         | We're waiting on final details from either the seller or buyer to keep things moving smoothly. Sometimes we need a bit more info, like search criteria, to ensure the process passes our test.   |
-| 🔴 Not Working            | Uh-oh, something didn't quite go as planned. Our team will step in to sort it out manually, and we'll reach out to you with updates soon.   |
-
+| 🟢 Working                 | Your access is all set and ready to be used! |
+| 🟡 In progress             | Our automatic process is still setting things up, but it'll be ready soon. Once it is, it'll switch to 'Working' automatically. It may also happen that something didn't quite go as planned in the automatic process, but don't worry because our team will step in to sort it out manually, and we'll reach out to you with updates soon. |
+| 🔵 Pending Seller's Feedback | We're waiting on final details from either the seller or buyer to keep things moving smoothly. Sometimes we need a bit more info, like search criteria, to ensure the process passes our test. |
 
 
 ## Frequently Asked Questions

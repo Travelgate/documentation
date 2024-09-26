@@ -22,4 +22,4 @@ To solve this error, follow these simple steps:
 2. Navigate to the Connections section and click on [Connections Content](/kb/connections/connections-content/how-to-check-my-connections-content).
 4. [Force an update](/kb/connections/connections-content/how-to-check-my-connections-content#how-can-i-use-the-force-update-now-functionality) to ensure you receive the latest information from your Seller.
 5. After completing the update, check if the error still persists.
-6. If the error persists, don't hesitate to reach out to our [Customer Care](https://app.travelgatex.com/tickets) team. They'll be more than happy to assist you!
+6. If the error persists, don't hesitate to reach out to our [Customer Care](https://app.travelgate.com/support) team. They'll be more than happy to assist you!

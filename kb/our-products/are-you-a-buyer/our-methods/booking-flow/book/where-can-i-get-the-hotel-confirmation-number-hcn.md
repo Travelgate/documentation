@@ -26,7 +26,7 @@ Please note we are only able to provide this code if the Seller returns it in th
 You can check if your Seller returns the HCN through their [Metadata](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-metadata-query).
 
 :::info
-The Seller has confirmed they return HCN information but you are still not receiving it? Please submit a [ticket](https://app.travelgatex.com/tickets) to our Customer Care team for further information.✔️
+The Seller has confirmed they return HCN information but you are still not receiving it? Please submit a [ticket](https://app.travelgate.com/support) to our Customer Care team for further information.✔️
 :::
 
  

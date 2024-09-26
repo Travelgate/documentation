@@ -18,5 +18,5 @@ You will encounter a 302 error in those cases our system is unable to locate the
 ### What can I do if I receive a 302 error in my response?✔️
 1. Make sure your portfolio is updated, otherwise, please make sure you update it accordingly.
 1. Get in touch with the Seller to verify if the property that is causing the error has been added to the portfolio generated for your account on their side.
-1. If the issue persists even after checking the above information, feel free to contact our [Customer Care team](https://app.travelgatex.com/tickets). We are here to assist you!
+1. If the issue persists even after checking the above information, feel free to contact our [Customer Care team](https://app.travelgate.com/support). We are here to assist you!
 

@@ -27,7 +27,7 @@ Please note that Travelgate cannot make reservations or cancellations on behalf 
 
 :::warning important
 To ensure seamless billing, **it's important that you handle all cancellations via our API**.  
-Should you face any issues, please don't hesitate to get in touch with our [Customer Care team](https://app.travelgatex.com/tickets) for assistance. Additionally, please make sure to cancel any test bookings with Sellers and to check that such bookings are refundable.
+Should you face any issues, please don't hesitate to get in touch with our [Customer Care team](https://app.travelgate.com/support) for assistance. Additionally, please make sure to cancel any test bookings with Sellers and to check that such bookings are refundable.
 :::
 
 ### What is the DeltaPrice? Why should I use it?💡

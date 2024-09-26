@@ -59,7 +59,7 @@ Manage agreements, invoices, and usage quickly and efficiently. More information
 
 ### Step 7: Ticketing✔️
 
-At TravelgateX, we’re dedicated to providing top-notch support and take your tickets seriously. To help us address your issues quickly and effectively, you can easily contact our Customer Care team by opening tickets in the ['Tickets'](https://app.travelgatex.com/tickets) section of our APP.
+At TravelgateX, we’re dedicated to providing top-notch support and take your tickets seriously. To help us address your issues quickly and effectively, you can easily contact our Customer Care team by opening tickets in the ['Tickets'](https://app.travelgate.com/support) section of our APP.
 
 :::tip
 Don't forget to check our [Guidelines for Submitting a Ticket to Our Support Team](/kb/tickets/guidelines-for-submitting-a-ticket-to-our-support-team) for tips and recommendations for raising tickets in our Portal!

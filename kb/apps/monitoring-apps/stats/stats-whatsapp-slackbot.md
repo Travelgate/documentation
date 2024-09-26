@@ -26,7 +26,7 @@ TravelgateX Bot for WhatsApp and Slack allows you to:
 
 ### Want to be among the first to try it? ☑️
 
-If you're already a TravelgateX Partner, we have some exciting news for you! You can be among the first to experience the Beta version of our Stats Bot by reaching out to us through [Tickets](https://app.travelgatex.com/tickets). It's as simple as letting us know that you're interested in accessing the Beta version and providing us with a contact phone number.
+If you're already a TravelgateX Partner, we have some exciting news for you! You can be among the first to experience the Beta version of our Stats Bot by reaching out to us through [Tickets](https://app.travelgate.com/support). It's as simple as letting us know that you're interested in accessing the Beta version and providing us with a contact phone number.
 
 By gaining early access to the Beta version of our Stats Bot, you'll have the opportunity to explore its features and benefits before anyone else. We value your Partnership and want to ensure you have the best tools at your disposal to enhance your business performance. So don't hesitate to get in touch with us and be a part of this exciting new development!
 

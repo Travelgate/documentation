@@ -2,14 +2,15 @@
 sidebar_position: 1
 ---
 
-# Customer Care Support
+# Customer Support
 
-## Understand how your tech requests are handled at TravelgateX
+## Handling Tech Requests at TravelgateX
 
-### What resources are offered to Partners once they connect to our Marketplace?🌟
-1. **Help Center:** the home to our Knowledge Base & FAQs.
-1. **[Tickets](https://app.travelgate.com/support):** open tickets to our Customer Care team and manage them through our APP section "Tickets".
-2. **[TravelgateX Community](https://discord.com/invite/travelgate):** post ideas & suggestions.
+### What Support Options and Resources Does Travelgate Provide?🌟
+1. **[Travelgate Documentation](https://docs.travelgate.com/):** A comprehensive resource featuring our developers' documentation and Knowledge Base.
+2. **[AIna](/kb/getting-started-with-travelgate/about-our-support/aina):** Our custom LLM answers your TravelgateX questions using official documentation.
+3. **[Support Portal](https://app.travelgate.com/support):** Open, view, and manage tech issues at both Company and user levels through our Customer Support team.
+4. **[Travelgate Community](https://discord.com/invite/travelgate):** Join our Discord Server: a collaborative hub for Travelgate Community.
 
 ### What does TravelgateX not do?🛠️
 Our core focus lies in providing **seamless connectivity solutions**. As a result, we don't offer services like booking engine, voucher generator system, front/back-office systems, website design, etc.
@@ -18,18 +19,16 @@ Nevertheless, we have established partnerships with numerous affiliates who spec
 
 ### How are Partner requests categorized at TravelgateX?💡
 1. **Product Development:** This involves any development work aimed at enhancing, adding, or modifying functionalities of an existing product and/or service. For example:
-	- "I would like to have the option to download more than 50 logs at once from our logs manager"
-	- API New Major Version release for an existing integration (e.g. v1.0 to v2.0).
+	- "I would like to have the option to download more than 50 logs at once from the Logging APP".
+	- API Major Version release for an existing integration (e.g. v1.0 to v2.0).
 
-1. **Product Maintenance:** This encompasses any development efforts focused on ensuring the proper performance of an existing product and/or service. For example:
+2. **Product Maintenance:** This encompasses any development efforts focused on ensuring the proper performance of an existing product and/or service. For example:
 	- Booking flow data discrepancy.
 	- Static data download error/discrepancy.
 	- "As a Seller, I can now return cancel policies in Search, please update this information".
 
 :::info
-
-* To share your *Product Development* requests, please use [TravelgateX Community](https://discord.com/invite/travelgate). Our Product team will give a detailed evaluation to each idea, suggestion, and request.
-* For any *Product Maintenance requests*, kindly submit them through [Tickets](https://app.travelgate.com/support).
-
+* To share your Product Development ideas for our Platform, please use [TravelgateX Community](https://discord.com/invite/travelgate). Our Product team will give a detailed evaluation to each suggestion and request.
+* For any Product Maintenance requests, kindly submit them through our [Support Portal](https://app.travelgate.com/support).
 :::
 

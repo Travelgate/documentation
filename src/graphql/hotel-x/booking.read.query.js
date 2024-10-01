@@ -16,6 +16,8 @@ export const bookingQuery =
 				description
 			}
 			bookings {
+				supplierCode
+				accessCode
 				status
 				reference {
 					bookingID

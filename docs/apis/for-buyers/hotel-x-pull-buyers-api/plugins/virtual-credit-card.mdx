@@ -30,14 +30,14 @@ To get started, create your credit card file in the correct format and then uplo
 📁HotelX  
 &nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX_0000  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁BusinessRules  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[BuyerContext_sequential_genvcc.csv](https://storage.travelgate.com/docs/BuyerContext_sequential_genvcc.csv)**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[RequestContext_sequential_genvcc.csv](https://storage.travelgate.com/docs/RequestContext_sequential_genvcc.csv)**
 
 </BrowserWindow>
 ```
 
 ### File format specification
 
-* **File Name:** BuyerContext_sequential_genvcc.csv
+* **File Name:** RequestContext_sequential_genvcc.csv
 * **Directory:** HotelX/HotelX\_0000/BusinessRules
 * **Delimiter:** Comma (`,`)
 * **Header Row:**
@@ -46,8 +46,8 @@ To get started, create your credit card file in the correct format and then uplo
     * **NoClientToken:** List of clientTokens not allowed for this rule
     * **Supplier:** List of hotel suppliers allowed for this rule
     * **NoSupplier:** List of hotel suppliers not allowed for this rule
-    * **Hotels:** List of hotels for this rule which codes are in Context_Source context
-    * **NotHotels:** List of hotels not allowed for this rule which codes are in Context_Source context
+    * **Hotels:** List of hotels for this rule which codes are in request context (Buyer or Supplier)
+    * **NotHotels:** List of hotels not allowed for this rule which codes are in request context (Buyer or Supplier)
     * **Access:** List of accesses allowed for this rule
     * **NoAccess** List of accesses not allowed for this rule
     * **Currencies:** List of currencies allowed for this rule
@@ -55,6 +55,14 @@ To get started, create your credit card file in the correct format and then uplo
     * **CardType:** The CardType to be utilized for generating the virtual credit card
     * **VccAccess** Payment access used to generate the virtual credit card with the VCC supplier
 
+
+:::info File Name
+"RequestContext" on the file name depends on the context you use in your query:
+* If you use your own Buyer context (multi mode search) you only need to load 1 file with your context in the name (BuyerContext_sequential_commission.csv).
+* If you use the Supplier context (single mode search) you will need to load 1 file for each supplier with the Supplier context in the name (SupplierContext_sequential_commission.csv).
+
+Also, if you include rules inside the file to use one VCC access or another for different hotel codes, those hotel codes should be indicated in the context of the file (Buyer or Supplier).
+:::
 
 :::note
 

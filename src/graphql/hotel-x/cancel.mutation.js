@@ -107,7 +107,8 @@ export const cancelByReferenceVariables =
 		"accessCode": "2",
 		"hotelCode": "1",
 		"reference": {
-			"supplier": "2636944"
+			"supplier": "2636944",
+			"client": "test_01234567890"
 		}
 	},
 	"settings": {

@@ -26,7 +26,7 @@ Connectivity is a fundamental aspect of any business, and finding the right Part
 At TravelgateX, we take pride in having **one of the largest networks of Partners worldwide**. Check out our [website](https://www.travelgate.com/) for a full list.
 
 ### How can I become a Partner at TravelgateX?🌟
-If you haven't connected with TravelgateX yet, don't worry. Simply sign up with us on our [website](https://www.travelgatex.com/) by clicking on "Contact Travelgate" and filling out the form (it only takes 2 minutes). Our team will contact you as soon as possible.
+If you haven't connected with TravelgateX yet, don't worry. Simply sign up with us in our [Portal](https://www.travelgate.com/) by clicking on "Contact Travelgate" and filling out the form (it only takes 2 minutes). Our team will contact you as soon as possible.
 
 ![contact-form](https://storage.travelgate.com/kbase/contact-form.jpg)
 

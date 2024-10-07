@@ -24,7 +24,7 @@ This code will be newly generated each time by an authenticator application (we 
 
 ### My authenticator app is ready. How do I start?
 
-1. **Log in to our [website](https://www.travelgatex.com/).**
+1. **Log into our [Portal](https://www.travelgate.com/).**
 
 		![2FA_1](https://storage.travelgate.com/kbase/2FA_1.jpg)
 

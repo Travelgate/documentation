@@ -51,7 +51,7 @@ Stay informed about the real-time performance of our services with our [Status p
 ### TravelgateX Plugins🔨
 Hotel-X provides customizable [Plugins](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/overview) that enable you to integrate your own business logic seamlessly, without the need for separate implementation. With Hotel-X Plugins, you have full control over customizing your requests and responses to align with your specific requirements and easily enhance your functionalities as your business grows and evolves.
 
-In order to configure a Plugin, you'll need to upload a specific set of files to our SFTP. Don't have your SFTP credentials yet? No worries! Just raise contact our Support Team via ["Tickets"](https://app.travelgate.com/support) and we will be happy to help you!
+In order to configure a Plugin, you'll need to upload a specific set of files to our SFTP. Don't have your SFTP credentials yet? No worries! Just raise contact our Support Team through our ["Support Portal"](https://app.travelgate.com/support) and we will be happy to help you!
 
 
 ### Content Calls🏨

@@ -12,7 +12,7 @@ It's worth noting that having a commercial contract with TravelgateX is a must t
 
 ## **How can I request a new connection?**
 
-1. Log onto [TravelgateX](https://www.travelgatex.com/).
+1. Log into [our Portal](https://www.travelgate.com/).
 
 2. Head over to the "Connections" > "My connections" section. Before you begin, double-check that you're logged into the correct Organization and Partner profile type (Buyer or Seller). If you're unsure, you can find this information in the top right corner of your screen.
 
@@ -61,7 +61,7 @@ Once you've requested a new connection with your Partner, you can track its prog
 <details>
     <summary>My access is "Not Working" and I cannot edit it, what can I do?</summary>
     <div>
-        <div>When an access is "Not Working," the "Edit access" feature remains blocked while our Connectivity Team checks the connection. To avoid creating duplicate tickets on our Platform, we strongly advise against requesting the connection again. It's best to wait until our Connectivity Team contacts you and asks for assistance.</div>
+        <div>When an access is "Not Working," the "Edit access" feature remains blocked while our Connectivity Team checks the connection. To avoid creating duplicate Cases on our Platform, we strongly advise against requesting the connection again. It's best to wait until our Connectivity Team contacts you and asks for assistance.</div>
     </div>
 </details>
 
@@ -95,5 +95,5 @@ Once you've requested a new connection with your Partner, you can track its prog
 
 
 :::note
-If you have any activation-related updates or details to share, please avoid creating additional tickets for our Customer Care team. Instead, kindly reply to our Connectivity Team email thread. Your cooperation in streamlining our communication process is highly appreciated!
+If you have any activation-related updates or details to share, please avoid submitting additional Cases for our Customer Support team. Instead, kindly reply to our Connectivity Team email thread. Your cooperation in streamlining our communication process is highly appreciated!
 :::

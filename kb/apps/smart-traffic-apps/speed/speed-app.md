@@ -25,7 +25,7 @@ Boost your connections and enjoy enhanced performance with our Speed APP!
 
 
 ### How can I use Speed? ⚡
-Once you're logged into [TravelgateX](https://www.travelgatex.com/), navigate to APPs > **Speed**. There, you'll find your Speed Dashboard, displaying the **accesses** currently active on Speed and those that were optimized at some point. 
+Once you're logged into [our Portal](https://www.travelgate.com/), navigate to APPs > **Speed**. There, you'll find your Speed Dashboard, displaying the **accesses** currently active on Speed and those that were optimized at some point. 
 
 ![speed_1](https://storage.travelgate.com/kbase/speed_1.jpg)
 

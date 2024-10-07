@@ -32,7 +32,7 @@ The activation for the 'No availability' and 'Zero booking' criteria will be aut
 
 ### Is it possible to edit the configuration?
 
-To edit the optimization criteria for connections or access, click on the three dots under 'Actions' and then choose “Edit configuration”. To change the configuration from access to connection, or from connection to access, it is necessary to open a [ticket](https://app.travelgate.com/support).
+To edit the optimization criteria for connections or access, click on the three dots under 'Actions' and then choose “Edit configuration”. To change the configuration from access to connection, or from connection to access, it is necessary to open a [Case](https://app.travelgate.com/support).
 
 ![TO_edit_actions](https://storage.travelgate.com/kbase/TO_edit_actions.jpg)
 ![TO_edit_actions_2](https://storage.travelgate.com/kbase/TO_edit_actions_2.jpg)
@@ -70,7 +70,7 @@ You can also monitor the performance of your optimized connections directly from
 ![traffic_optimizer_6](https://storage.travelgate.com/kbase/traffic_optimizer_6.jpg)
  
 ### Can I exclude some hotels from being blocked by Traffic Optimizer?🗒️
-Of course! You have the flexibility to exclude hotels from the blacklist for specific connections. Simply [open a ticket](/kb/tickets/guidelines-for-submitting-a-ticket-to-our-support-team) with our Customer Support team, and we will be happy to assist!
+Of course! You have the flexibility to exclude hotels from the blacklist for specific connections. Simply [open a Case](/kb/tickets/guidelines-for-submitting-a-ticket-to-our-support-team) with our Customer Support team, and we will be happy to assist!
 
 Additionally, each hotel on the blacklist can be made temporarily available for a preset amount of time to re-check conversion. This grace period is automatically activated by default for the "Zero bookings" criteria.  
 

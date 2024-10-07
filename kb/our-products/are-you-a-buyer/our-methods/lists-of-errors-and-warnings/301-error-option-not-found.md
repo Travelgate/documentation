@@ -17,4 +17,4 @@ If a **204 error** is returned in Quote response, it indicates that the Seller d
 ### What can I do if I receive a 301 error in my response?✔️
 Since 301 errors indicate that the option you selected is no longer offered by the Seller, you should **begin a new Booking Flow** starting from Search. Additionally, and in order to minimize the occurrence of 301 errors, we suggest reducing the time gap between Search and Quote queries.
 
-If you notice a sudden and consistent rise in the number of 301 errors from a Seller, please reach out to our [Customer Care](https://app.travelgate.com/support) team for assistance, we'll be happy to help!
+If you notice a sudden and consistent rise in the number of 301 errors from a Seller, please reach out to our [Customer Support](https://app.travelgate.com/support) team for assistance, we'll be happy to help!

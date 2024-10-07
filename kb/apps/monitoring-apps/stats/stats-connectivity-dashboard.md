@@ -12,7 +12,7 @@ Let [Stats](https://app.travelgatex.com/apps/stats) empower you with data-driven
 ![stats_dashboard_1](https://storage.travelgate.com/kbase/stats_dashboard_1.jpg)
 
 ### How can I use Stats? 🔍
-Once you're logged into [TravelgateX](https://www.travelgatex.com/), simply click on APPs and then select **Stats**. By default, you'll see your Organization's statistics for the last hour. But don't worry, you have the flexibility to adjust the time range as per your requirements using the convenient selector in the top right corner.
+Once you're logged into [our Portal](https://www.travelgate.com/), simply click on APPs and then select **Stats**. By default, you'll see your Organization's statistics for the last hour. But don't worry, you have the flexibility to adjust the time range as per your requirements using the convenient selector in the top right corner.
 
 **About the Time Range and Time Zone:**  
 

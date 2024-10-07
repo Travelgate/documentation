@@ -25,7 +25,7 @@ You can quickly **filter** your [Accesses](/kb/our-products/are-you-a-buyer/gett
 	- Not Working: One or more processes in the activation have failed and our connectivity team needs to review it manually.
     	- Extended information on "Not Working" status: additional information to speed up the [Auto-Activation process](/kb/connections/my-connections/guick-guide-to-auto-activations):
         	- Informative popup: Hover over the 'Not working' status to see an informative popup explaining why the auto-activation could not be completed.
-        	- Activation ticket: ticket information assigned to the activation of that access. You can open the ticket reference link to section "Tickets" for more details about the current status of the activation. 
+        	- Activation Cases: Case information assigned to the activation of that access. You can open the Case reference link to section "Support Portal" for more details about the current status of the activation. 
 
 				![myconnections_aug_4](https://storage.travelgate.com/kbase/myconnections_aug_4.jpg)
 - **Access Type**:
@@ -73,5 +73,5 @@ In addition to the aforementioned information, you will also be able to view the
 
 Please remember that when Buyer connections are established through our Legacy Pull Buyers API, the management of credential disconnections must be addressed not only through My Connections (at the access level) but also **directly between the Buyer and Seller to ensure effectiveness** — it is not enough to merely deactivate the Hotel-X Access Code in My Connections.
 
-- If you wish to permanently deactivate a Legacy connection on our Platform, please submit a ticket via our Portal - Remember, the deactivation of a Legacy connection would occur at the **connection level**, not at the credential level.  
+- If you wish to permanently deactivate a Legacy connection on our Platform, please submit a Case via our Portal - Remember, the deactivation of a Legacy connection would occur at the **connection level**, not at the credential level.  
 - If you need to deactivate a **specific set of credentials**, the deactivation should be managed directly between Buyer and Seller. This ensures that the Buyer stops sending traffic from their system using those particular credentials - please make sure to activate/deactivate the Hotel-X Access Code as well, so that it reflects the actual traffic sent by the Buyer.

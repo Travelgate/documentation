@@ -59,7 +59,7 @@ Our Inventory Extranet allows for prices to be loaded in 3 different ways:
 	We strongly recommend deleting the previously loaded prices before the Channel Manager remaps and loads their product to avoid price discrepancies. 
 	:::
 
-2. Once you have informed the Channel, you just need to [contact](https://app.travelgate.com/support) our Customer Care team and confirm exactLy for which **hotel, rate and room** you need us to modify the Standard Occupancy. That's it!
+2. Once you have informed the Channel, you just need to [contact](https://app.travelgate.com/support) our Customer Support team and confirm exactLy for which **hotel, rate and room** you need us to modify the Standard Occupancy. That's it!
 
  
 :::info

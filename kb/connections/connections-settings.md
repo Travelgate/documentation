@@ -10,7 +10,7 @@ Welcome to the API Settings section! Here, you'll find everything you need to ma
 
 In API Settings, you have the power to view and tweak your Hotel-X Pull Buyers API account settings effortlessly. Here's a simple guide to get you started:
 
-1. Begin by logging onto [TravelgateX](https://www.travelgatex.com/).
+1. Begin by logging into [our Portal](https://www.travelgate.com/).
 
 2. Navigate to the "Connections" > "API Settings" section.
 

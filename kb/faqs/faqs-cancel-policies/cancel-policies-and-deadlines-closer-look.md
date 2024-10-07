@@ -12,7 +12,7 @@ Given a rate with Check-In date on 25/08/2022:
 - If the Supplier returns the deadline 2022-08-24T09:00:00.00+03, this is what we will return in the “Deadline” node in TravelgateX response: 2022-08-24T06:00:00Z
 
 ### Case 2 ✅
-In cases where **we do not receive a complete deadline (including the Timezone)** from the Seller via API Response, **but they confirm their working Timezone** via ticket, we will establish and utilize that specific Timezone to convert the deadline to UTC-0.
+In cases where **we do not receive a complete deadline (including the Timezone)** from the Seller via API Response, **but they confirm their working Timezone** through a Support Case, we will establish and utilize that specific Timezone to convert the deadline to UTC-0.
 
 Given a rate with Check-In date on 25/08/2022. If the Seller informs us that they always work in UTC+5:
 
@@ -28,7 +28,7 @@ Given a rate with Check-In date on 25/08/2022. If the Seller informs us that the
 
 
 ### Case 3 ✅
-If the Seller indicates (via ticket) that their **Timezone is unknown or based on the Buyer's Timezone**, we will apply a buffer of +14 hours to the Deadline node. This precautionary measure is taken to prevent any potential issues or charges.  
+If the Seller indicates (through a Support Case) that their **Timezone is unknown or based on the Buyer's Timezone**, we will apply a buffer of +14 hours to the Deadline node. This precautionary measure is taken to prevent any potential issues or charges.  
 
 Given a rate with Check-In date on 25/08/2022:
 

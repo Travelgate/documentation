@@ -18,7 +18,7 @@ If you think that the Seller should implement this method, you can follow the st
 
 1. **Contact the Seller directly**: Reach out to the Seller and discuss your request for implementing the method. They will be able to check if it can be implemented on their side.
 1. **Seller's implementation**: If the Seller decides to implement the method, they should proceed with the necessary development and integration.
-1. **Contact us**: Once the Seller has implemented the method, they should contact us through a new ticket on our Platform.
+1. **Contact us**: Once the Seller has implemented the method, they should contact us through our Support Portal.
 1. **Provide API Documentation**: The Seller should provide us with their complete API Documentation. This Documentation will help our team analyze the implementation and understand the functionality.
 1. **Analysis and implementation**: Our team will carefully analyze the provided API Documentation and work on implementing the method on our side.
 

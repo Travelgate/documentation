@@ -8,7 +8,20 @@ sidebar_position: 2
 
 At TravelgateX, we understand the importance of efficient support, which is why we're thrilled to introduce AIna. AIna is our custom Language Learning Model (LLM) designed to answer your questions specifically about TravelgateX, with responses based on the contents of our Official Documentation.
 
-You can easily reach AIna from any section of our website and Support Portal with just one click. Available 24/7, AIna is here to help you out by answering common inquiries, offering usage tips, and providing App information.
+You can easily interact with AIna from any section of our website with just one click. Available 24/7, AIna is ready to assist you by answering common questions, offering usage tips, and providing App information.
+
+**Our [website](https://app.travelgate.com/):**
+
+![aina-1](https://storage.travelgate.com//kbase/aina-1.jpg)
+
+**Our [Documentation](https://docs.travelgate.com/):**
+
+![aina-2](https://storage.travelgate.com//kbase/aina-2.jpg)
+
+**Our [Support Portal](/kb/tickets/travelgatex-tickets):**
+
+![cases-2](https://storage.travelgate.com//kbase/cases-2.jpg)
+
 
 ### Experience a new level of Support
 AIna is seamlessly integrated into our [Customer Support Portal](/kb/tickets/guidelines-for-submitting-a-ticket-to-our-support-team/) to enhance your experience and make it more intuitive. Here's what it brings:

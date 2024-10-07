@@ -10,7 +10,7 @@ In the Connections Content section, you can easily check and force updates for y
 
 ## How can I check my Connections Content?
 
-1. First of all, log in to our [website](https://www.travelgatex.com/).
+1. First of all, log into our [Portal](https://www.travelgate.com/).
 
 	![connections_content_step2_1](https://storage.travelgate.com/kbase/connections_content_step2_1.jpg)
 

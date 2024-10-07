@@ -5,10 +5,10 @@ sidebar_position: 1
 # TravelgateX Dashboard
 
 ### How can I access my Dashboard?💡
-1. Log onto our [website](https://www.travelgatex.com/).
+1. Log into our [Portal](https://www.travelgate.com/).
 1. Make sure you are browsing as a Buyer or as a Seller depending on the information you want to visualize.
 1. Click on "Dashboard" in the top menu.
-1. Once in your Dashboard, you'll find a detailed summary of your connections' performance, the latest status of your tickets, information on our Smart Traffic APPs, and a variety of reports that can be customized based on specific date ranges.
+1. Once in your Dashboard, you'll find a detailed summary of your connections' performance, the latest status of your Cases, information on our Smart Traffic APPs, and a variety of reports that can be customized based on specific date ranges.
 
 These informative reports can provide data from the previous day, the last week, or even the past month. Remember, you'll **only be able to access these Dashboard reports once you've set up your initial connection**.
 

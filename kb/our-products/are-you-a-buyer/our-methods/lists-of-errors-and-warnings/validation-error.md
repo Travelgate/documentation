@@ -11,7 +11,7 @@ A "VALIDATION_ERROR" occurs when the validation information provided in your Hot
 Since this error serves as an indication that there is a discrepancy or issue with the validation process, you should check the following information:
 
 - **Verify access**: You should check [My Connections](/kb/connections/my-connections/) in order to make sure that the access/es set in your request have already been configured for your account (status "working") and are active:
-    - If your access displays a "not working" status: One or more processes in the activation have failed and our connectivity team needs to review it manually. You can [contact](/kb/connections/my-connections/guick-guide-to-auto-activations) our Activations Team if necessary via the [Auto-Activations ticket](/kb/tickets/travelgatex-tickets).
+    - If your access displays a "not working" status: One or more processes in the activation have failed and our connectivity team needs to review it manually. You can [contact](/kb/connections/my-connections/guick-guide-to-auto-activations) our Activations Team if necessary via the [Auto-Activations Case](/kb/tickets/travelgatex-tickets).
     - If your access is not active: Please make sure you activate it in order to run requests via our Platform.
 - Access type **Test/Live**: Verify that the "testMode" tag in your request matches the Test/Live settings for that specific access.
 - **Verify Client**: the Client set in your request should be one of those configured for your account. More information on Hotel-X Clients can be found [here](/kb/connections/connections-settings/).
@@ -119,5 +119,5 @@ Since this error serves as an indication that there is a discrepancy or issue wi
 ```
 
 :::tip
-If you're still experiencing the error after going through the information mentioned above, don't hesitate to contact our Customer Care team. We are here to help you!🚀
+If you're still experiencing the error after going through the information mentioned above, don't hesitate to contact our Customer Support team. We are here to help you!🚀
 :::

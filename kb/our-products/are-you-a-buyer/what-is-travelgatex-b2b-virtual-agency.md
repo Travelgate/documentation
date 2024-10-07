@@ -9,7 +9,7 @@ Welcome to our B2B Virtual Agency tool, your gateway to effortless booking exper
 
 ### How to search availability and book with B2B Virtual Agency?
 
-1. Begin by logging onto [TravelgateX](https://www.travelgatex.com/).
+1. Begin by logging into [our Portal](https://www.travelgate.com/).
 
 2. Navigate to the "Solutions" > "B2B Virtual Agency" section.
 
@@ -45,7 +45,7 @@ Welcome to our B2B Virtual Agency tool, your gateway to effortless booking exper
 
 ### How to check and cancel bookings with B2B Virtual Agency?
 
-1. Start by logging onto [TravelgateX](https://www.travelgatex.com/).
+1. Start by logging into [our Portal](https://www.travelgate.com/).
 
 2. Navigate to the "Solutions" > "B2B Virtual Agency" section.
 

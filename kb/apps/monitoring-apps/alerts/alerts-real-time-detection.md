@@ -11,7 +11,7 @@ sidebar_position: 1
 - **Traffic Peak**: Alert when traffic increases or decreases compared to the levels established in the configuration.
 
 ### How can I use Alerts?⚠️
-1. Log onto [TravelgateX](https://www.travelgatex.com/)
+1. Log into [our Portal](https://www.travelgate.com/)
 1. Click on APPs > [Alerts](https://app.travelgatex.com/alerts)
 1. There, you will access our Alerts Dashboard, which allows you to check all the alerts configured for your Organization, as well as the following details:
     - **ID:** Alert ID.

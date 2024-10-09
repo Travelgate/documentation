@@ -33,7 +33,7 @@ You can quickly **filter** your [Accesses](/kb/our-products/are-you-a-buyer/gett
 	- Test: This is an access created with test credentials.
 
 :::warning Access Type information
-The access type (live or test) is determined by the credentials agreed upon by both the Buyer and Seller. It is the responsibility of both the Buyer and the Seller to agree on the type of credentials to be used for a given access.
+The access type (live or test) is determined by the credentials agreed upon by the Buyer and Seller. It is their responsibility to ensure consensus on these credentials, as the access type is editable, for each specific access.
 :::
 
 - **Access Active:**  

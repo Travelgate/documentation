@@ -27,20 +27,6 @@ Remember to upload your mapping files to our SFTP in those cases you run request
 ### Can I search by destination?
 Of course! You will find more information about our Search by Destination [plugin](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/search-by-destination) here.
 
-### What are the minimum recommended fields to be added to a Search Query?
-Since the amount of information requested in Hotel-X Search Query will depend on your needs and preferences, our recommendation is to check all the the fields available in our [Hotel-X Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/search). For instance:
-
-- hotelCode
-- hotelName
-- boardCode
-- paymentType
-- occupancies
-- rooms
-- price
-- rateRule
-- cancelPolicy
-- id
-
 ### How many hotel codes per request can I request in Search?
 - If you are connected to Travelgate via our **Hotel-X Pull Buyers API**, we recommend a maximum of 200 hotels: the new aggregator will split these into batches to request them from each Supplier efficiently.
 - If you are connected via our **Legacy Pull Buyers API**, our system does not automatically split the hotels according to the Supplier’s specifications. Therefore, you should adhere to the value assigned to the MaxNumberHotels node in the Supplier’s Metadata.

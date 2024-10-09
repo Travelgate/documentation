@@ -9,8 +9,8 @@ The token, also referred to as the ContinuationToken in the Hotel Buyers API (Le
 ### Which queries support pagination?💡
 You can effortlessly paginate the Hotel, Destination, and Room Lists, making it a breeze to navigate through the content.
 
-### What is the expiration time for the ContinuationToken?⏱️
-The ContinuationToken has a time limit of 4 minutes, but each time a page request is made, the timer is reset, so the total time allowed will depend on the size of the list.
+### What is the expiration time for the token (ContinuationToken)?⏱️
+The content token (ContinuationToken) has a time limit of 4 minutes, but each time a page request is made, the timer is reset, so the total time allowed will depend on the size of the list.
 
 ### A Quick Guide for Users of Hotel-X Pull Buyers API🚀
 

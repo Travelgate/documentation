@@ -5,22 +5,14 @@ sidebar_position: 4
 
 # Hotel-X Development - Admin  Query
 
-### What is Hotel-X Admin Query?🛠️
-The main purpose of the Admin Query is to return a summarized view of all the details related to your account.
+### What is Hotel-X Admin Query?
+The primary purpose of the Admin Query is to provide a summarized view of all account-related details. With the Admin API, you can access a comprehensive list of all entities within your Organization, ensuring seamless connectivity.
 
-### What can I expect to receive in Admin Query response?
-Some of the fields returned through the Admin Query are:
+### allAccesses Query
 
-- Client names and codes
-- Linked accesses and access detailed information: active/inactive, test/live, credentials, parameters, contexts, etc.
-- Linked Products
-- Linked Sellers
-- Linked Profiles
-
-### How can I retrieve Admin Query details via Hotel-X?
-You just need to follow the specifications in our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/admin/overview) and [API Playground](/playground) and build your own Admin Query, as easy as that! Also, remember you are able to **personalize** the fields requested in order to receive only the information that matters to you in the response.
+The `allAccesses` Query gives you a list of all your available accesses along with their basic information. For security reasons, the password value will be returned as "null." However, if necessary, you can retrieve this information in the "[My Connections](/kb/connections/my-connections/)" section by filtering at the access level.
  
 
 :::tip
-Don't forget to check our Documentation and API Playground for further details about Hotel-X Admin Query!🚀
+Don't forget to check our [Hotel-X Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/admin/overview) for further details!🚀
 :::

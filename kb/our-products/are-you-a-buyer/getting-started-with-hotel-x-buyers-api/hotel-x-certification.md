@@ -61,7 +61,7 @@ The following table outlines the names corresponding to each part of the certifi
 ```
 
 ### Is It Necessary to Complete All Certification Cases?
-No, it's only necessary to complete the cases that will be used by the user. However, Case 1 (Refundable Option) is always mandatory.
+No, you only need to complete the cases relevant to your business. However, Case 1 (Refundable Option) is always required.
 
 ### What Credentials and Connections Should I Use for Certification?
 It is recommended to always use the [demo connections provided](/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/hotel-x-credentials#access%EF%B8%8F) (Travelgate test and Smyrooms test) along with your client and API Key.

@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 # Support Cases Lifecycle
@@ -21,9 +21,11 @@ If you've ever had to submit a Tech Support case, you know how important it is t
 ![cases-1](https://storage.travelgate.com//kbase/cases-1.jpg)
 
 ### AIna and Customer Support Cases
-Here's what you can expect after clicking on the 'Create New Case' button:
+After clicking on the 'Create New Case' button, this will happen:
 
-1. [AIna Support](/kb/getting-started-with-travelgate/about-our-support/aina) screen: Enter the issue or information needed via the subject and a detailed description. Then, click the "Continue" button, and AIna will search the Knowledge Base and Documentation to provide you with a response. Please be as accurate as possible so we can assist you better.
+1. [AIna Support](/kb/getting-started-with-travelgate/about-our-support/aina) screen: Enter the issue or information needed via the subject and a detailed description. Make sure to include as many details as possible about the issue you're experiencing or the information you need.  
+
+   If there's an error, **always specify the type of error** to help ensure our response accurately addresses your report. Then, click the "Continue" button, and AIna will search the Knowledge Base and Documentation to provide you with a response.
    ![cases-2](https://storage.travelgate.com//kbase/cases-2.jpg)
    ![cases-3](https://storage.travelgate.com//kbase/cases-3.jpg)
 2. Once AIna has searched our documentation and knowledge resources, you will receive a response that includes reference links, step-by-step guides, and relevant information.

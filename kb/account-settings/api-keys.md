@@ -15,7 +15,7 @@ An API key (Apikey) is a unique alphanumeric code that serves as a form of authe
 
 In API Keys, you have the power to view and generate API Keys gor your organization. Here's a simple guide to get you started:
 
-1. Begin by logging onto [TravelgateX](https://www.travelgatex.com/).
+1. Begin by logging into [Travelgate](https://www.travelgate.com/).
 
 2. Click on your user profile section and go to "API Keys".
 

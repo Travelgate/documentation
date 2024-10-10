@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 # Guidelines for Submitting Support Cases
@@ -7,7 +7,7 @@ sidebar_position: 1
 At Travelgate, we are committed to providing top-notch support. To ensure your cases are addressed efficiently and effectively, please follow these valuable guidelines:
 
 ### Check our Knowledge Base first🔎
-Before raising a case through our "[Support Portal](/kb/tickets/travelgatex-tickets)", we recommend checking our Knowledge Base, as someone may have already reported your issue. You might find a solution or procedure to follow, saving you time and enabling you to resolve the issue autonomously.
+Before raising a case through our [Support Portal](/kb/tickets/travelgatex-tickets), we recommend checking our Knowledge Base, as someone may have already reported your issue. You might find a solution or procedure to follow, saving you time and enabling you to resolve the issue autonomously.
 
 ### Ask AIna💡
 AIna is our custom Language Learning Model (LLM) designed to answer your questions specifically about Travelgate, with responses based on the contents of our Official Documentation. AIna is seamlessly integrated into our Customer Support Portal to [enhance your experience](/kb/getting-started-with-travelgate/about-our-support/aina#experience-a-new-level-of-support) and make it more intuitive.

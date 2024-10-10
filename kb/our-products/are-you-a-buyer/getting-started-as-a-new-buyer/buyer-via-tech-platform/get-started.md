@@ -57,12 +57,12 @@ Manage agreements, invoices, and usage quickly and efficiently. More information
 
 ![billing_usage_1](https://storage.travelgate.com/kbase/billing_usage_1.jpg)
 
-### Step 7: Ticketing✔️
+### Step 7: Support Portal✔️
 
-At TravelgateX, we’re dedicated to providing top-notch support and take your tickets seriously. To help us address your issues quickly and effectively, you can easily contact our Customer Care team by opening tickets in the ['Tickets'](https://app.travelgate.com/support) section of our APP.
+At TravelgateX, we’re dedicated to providing top-notch support and take your Support Cases seriously. To help us address your issues quickly and effectively, you can easily contact our Customer Support team by submitting a Case in the ['Support Portal'](https://app.travelgate.com/support) section of our APP.
 
 :::tip
-Don't forget to check our [Guidelines for Submitting a Ticket to Our Support Team](/kb/tickets/guidelines-for-submitting-a-ticket-to-our-support-team) for tips and recommendations for raising tickets in our Portal!
+Don't forget to check our [Guidelines for Submitting a Case to Our Support Team](/kb/tickets/guidelines-for-submitting-a-ticket-to-our-support-team) for tips and recommendations for submitting Cases in our Portal!
 :::
 
 ![ticketing-07](https://storage.travelgate.com/kbase/ticketing-07.jpg)

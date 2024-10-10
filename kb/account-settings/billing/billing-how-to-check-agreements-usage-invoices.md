@@ -5,7 +5,7 @@ sidebar_position: 1
 # Billing: View your agreements, control your usage, and check your invoices 
 
 ### How can access Billing? 🖱️
-1. Log onto [TravelgateX](https://www.travelgatex.com/), click on your initials in the top right corner, and then select 'Billing'.
+1. Log into [our Portal](https://www.travelgate.com/), click on your initials in the top right corner, and then select 'Billing'.
 2. Use the tabs provided in order to check your Agreements, Usage or Invoices.
 	![billing_aug_2](https://storage.travelgate.com/kbase/billing_aug_2.jpg)
 
@@ -97,5 +97,5 @@ Travelgate invoices need to be settled through **bank transfer**, so credit card
 
 :::warning important
 To ensure seamless billing, **it's important that you handle all cancellations via our API**.  
-Should you face any issues, please don't hesitate to get in touch with our [Customer Care team](https://app.travelgate.com/support) for assistance. Additionally, please make sure to cancel any test bookings with Sellers and to check that such bookings are refundable.
+Should you face any issues, please don't hesitate to get in touch with our [Customer Support team](https://app.travelgate.com/support) for assistance. Additionally, please make sure to cancel any test bookings with Sellers and to check that such bookings are refundable.
 :::

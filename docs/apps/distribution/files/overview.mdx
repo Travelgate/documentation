@@ -9,14 +9,14 @@ import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
 
 <DocCardList items={useCurrentSidebarCategory().items.filter((item, i) => i > 0)}/>
 
-## FTP Files
+## SFTP Files
 
-Upon receiving your Onboarding Welcome Pack, you will be granted access credentials to the FTP server. In the event that you need assistance or have not received your credentials, kindly open a [ticket](https://app.travelgate.com/support) to our Customer Care team to obtain your FTP credentials and initiate your journey.
+Upon receiving your Onboarding Welcome Pack, you will be granted access credentials to the SFTP server. If you require assistance or have not received your credentials, please open a ticket with our Customer Care team to obtain your SFTP credentials and begin your onboarding process.
 
-### FTP Endpoint
+### SFTP Endpoint
 
 ```
-ftp://ftp.xmltravelgate.com
+sftp.xmltravelgate.com
 ```
 
 ### Directory Format
@@ -50,9 +50,9 @@ Example:
 </BrowserWindow>
 ```
 
-### Upload FTP Data
+### Upload SFTP Data
 
-To upload an FTP file, follow these simple steps:
+To upload a file to the SFTP, follow these steps:
 
 1. **Upload the File:**
    - Once you've decided on the plugin you want to use, and if it's necessary, simply upload the required CSV file.
@@ -71,17 +71,17 @@ To upload an FTP file, follow these simple steps:
    BuyerContext_SupplierContext_hotel_map_processed.csv
    ```
 
-### Update FTP Data
+### Update SFTP Data
 
-To update an FTP file, follow these simple steps:
+To update a file on the SFTP, follow these steps:
 
-1. If you need to update the information in the file, simply delete the old file.
-2. Upload the new file with the updated information, using the correct name. You don't need to add the "_processed_" tagline to the name; we'll take care of that on our end.
+1. **Delete the Old File:** Remove the outdated file from the directory.
+2. **Upload the Updated File:** Upload the new file with the updated information, ensuring you use the correct file name. There is no need to add "_processed" to the name; the system will handle this automatically.
 
-That's it! Updating FTP files is as easy as that.
+That's it! Updating SFTP files is as easy as that.
 
 
-### Delete FTP Data
+### Delete SFTP Data
 
 To delete all the information stored in our system, follow these straightforward steps:
 
@@ -89,6 +89,6 @@ To delete all the information stored in our system, follow these straightforward
    - Create a new file with empty content, including only the headers.
    - Ensure that the file structure, such as column headers, remains intact.
 
-2. **Load the empty file in the FTP folder.**
+2. **Load the empty file in the SFTP folder.**
 
 That's it! By replacing the existing data with an empty file containing headers only, you effectively delete all the information previously loaded into our system.

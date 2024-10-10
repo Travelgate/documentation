@@ -135,8 +135,19 @@ Imagine you are the client "travelClient (TGX)" connected to the channel manager
 
 ### 4. Uploading Files to SFTP and Configuration 
 
-After completing the necessary preliminary steps, the next stage involves uploading your files to the SFTP server. A detailed explanation on how to access and operate the SFTP server can be found through the following link: [How to Access and Use the SFTP](#) (Note: Replace the placeholder with the actual URL providing the detailed instructions).
+After completing the necessary preliminary steps, the next stage involves uploading your files to the SFTP server. 
 
+When accessing the SFTP, you will find three folders in the main directory, each referring to different Travelgate services that can use the SFTP for mappings, setups, etc. In this case, we focus on the Inventory section, where you should upload the CSV files needed for setup.
+
+:::note
+**sftp.xmltravelgate.com**
+
+
+![Structure SFTP](https://storage.travelgate.com/docs/SFTP_structure.png)
+:::
+:::caution
+**IMPORTANT**: It is essential to use the correct file naming conventions to ensure the files can be processed via the SFTP.
+:::
 #### File Checking Frequency
 It is important to note that our CSV API checks the SFTP server every 10 seconds for new files. This frequent scanning ensures that any files you upload are quickly detected and processed, minimizing delay in data handling.
 

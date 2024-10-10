@@ -4,27 +4,28 @@ sidebar_position: 1
 
 # Mapping
 
-Mapping serves to convert either the Supplier's native codes to the Buyer's codes or vice versa. Mapping files will be required whenever you buy and aggregate from multiple suppliers in our marketplace, so that you can apply specific selling and purchasing rules in our Distribution site.
+Mapping plugin serves to convert either the Supplier's native codes to the Buyer's codes or vice versa. 
+To do this, you need a file that shows how the Buyer's and Seller's codes relate, so our system can do the conversion automatically.
 
-To do this, you need a file that shows how the Seller's and Buyer's codes relate, so our system can do the conversion automatically. On the Seller side, you'll need to add the Supplier codes. On the Buyer's side, on your side, you'll need to add the same codes that you have specified or will specify in the [Master Files](../master-files/overview).
+This feature includes Hotel Map, Board Map, Room Map, Rate Map, Amenity Map, Promotion Map and Room Description Map categories.
 
-:::info
+:::warning Keep in mind
 
-If you are a Seller that only plans to sell your own product, you will need to create a single mapping file in which you must add the same code in both columns, Seller and Buyer.
+Please be aware that by default, options where board, rates, or room codes maps are not found will still be returned with the supplier's original code. If you would rather not receive options in your search results where those entities couldn't be mapped, please reach out to our team to configure it from our side.
 
 :::
 
-To get started with the Mapping, follow these simple steps:
+To get started with the Mapping plugin, follow these simple steps:
 
-## Create and Upload your Mapping File
+## 1. Create and Upload your Mapping File
 
-To get started, create your mapping file for the desired entity (hotel, board, room...) in the correct format and then upload it to your FTP account. We've provided a template file below ⬇️ to help you with this process. Just click on the file name, add your own rules, save it in CSV format, and then upload it to the corresponding folder in your FTP.
+To get started, create your mapping file for the desired entity (hotel, board, room...) in the correct format and then upload it to your SFTP account. We've provided a template file below ⬇️ to help you with this process. Just click on the file name, add your own rules, save it in CSV format, and then upload it to the corresponding folder in your SFTP.
 
 
 ```mdx-code-block
 <BrowserWindow>
 
-📁F0  _0000  
+📁HotelX  
 &nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX  _0000  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁Maps  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁Hotel  
@@ -52,10 +53,17 @@ You should create one file for each supplier that you want to map an entity.
 
 :::
 
+
+:::note
+
+If you need assistance with requesting your credentials to access the SFTP server, determining the endpoint and directory format, or learning how to upload, update, and delete SFTP files, please refer to the [overview](https://docs.travelgate.com/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/overview) section of Plugins.
+
+:::
+
 ### File Format Specification
 
 * **File Name:** BuyerContext_SupplierContext_entity_map.csv
-* **Directory:** F0\_0000/HotelX\_0000/Maps/[entity]
+* **Directory:** HotelX/HotelX\_0000/Maps/[entity]
 * **Delimiter:** Comma (`,`)
 * **Header Row:**
    * Buyer Context: Buyer's context code
@@ -66,5 +74,32 @@ You should create one file for each supplier that you want to map an entity.
     <summary>📹 Learn how to change the format of the csv file in order to edit and save it</summary>
     <div>
         <div><iframe width="560" height="315" src="https://www.youtube.com/embed/XkOk3SkZ0Sg?si=TYhN1QfMwYE1fusw&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+    </div>
+</details>
+
+
+<details>
+    <summary>Can I use a default code for un-mapped Supplier codes?</summary>
+    <div>
+		<p>
+			Imagine you've created a board mapping file for your Supplier's connection, but there are cases where you want to use a consistent code like 'RoomOnly' for meal plans that couldn't be mapped or for new board codes added by the supplier. 
+			To achieve this, you can utilize the 'Default Code' feature.
+			<br></br>
+			<br></br>
+			This feature allows you to define a default code for each code in the source (supplier) context. The entities that can have default codes include: Board, Room, Rate, Amenity, Promotion and Room Description.
+			To use this feature, simply add a new row in the BuyerContext column with your default code and place an asterisk (*) in the Supplier context column:
+		</p>
+<p>
+
+```bash
+Buyer Context, Supplier Context
+Room Only, RO
+All Inclusive, AI
+Room Only, *
+```
+
+</p>
+		In the example above, all the codes of entity board of supplier that are not found in the mapping file, will be "Room Only" in the response.
+		Please note that you can assign only one default code to each Supplier context.
     </div>
 </details>

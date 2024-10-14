@@ -19,7 +19,7 @@ npx docusaurus graphql-to-doc
 
 The GraphQL API reference is generated from the TravelgateX GraphQL schema but 
 the `sidebar-schema.js` needs to be updated. Copy + paste the following code in your 
-`api/sidebar-schema.js` file:
+`api/sidebar-schema.js` file: (***create the file manually if necessary**)
 
 ```javascript
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */

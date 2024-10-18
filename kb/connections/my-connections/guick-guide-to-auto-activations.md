@@ -12,6 +12,8 @@ It's worth noting that having a commercial contract with TravelgateX is a must t
 
 ## **How can I request a new connection?**
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/yb8FeFRsQ1A?si=P0QkdwBiOQIxgwuo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 1. Log into [our Portal](https://www.travelgate.com/).
 
 2. Head over to the "Connections" > "My connections" section. Before you begin, double-check that you're logged into the correct Organization and Partner profile type (Buyer or Seller). If you're unsure, you can find this information in the top right corner of your screen.

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 2
 ---
 
 # About our Discord Server
@@ -39,7 +39,7 @@ Upon entering our Server, you'll see the welcome screen, which includes importan
 To verify your account on our Discord server, follow these steps:
 1. **Locate the Notification**: At the top of the channel menu on the left, you'll see a message notification (above the TravelgateX logo). Click on this notification to start the verification process.
 
-    ![discord_9a](https://storage.travelgate.com/kbase/discord_9a.jpg)
+    ![discord_9ab](https://storage.travelgate.com/kbase/discord_9ab.jpg)
 1. **Verify Your Account**: Copy the message displayed on the screen and paste it into the @onboarding bot (you'll find the link to the bot in the same notification message).
    
     ![discord_10a](https://storage.travelgate.com/kbase/discord_10a.jpg)
@@ -49,6 +49,6 @@ After verifying your account, you'll gain full access to all the benefits and op
 
 **Welcome to our Community experience!🚀**
 
-:::tip Explore Our Bots
-Remember, on the right side of the screen, designed to enhance your experience and leverage the platform's opportunities: [AIna](/kb/getting-started-with-travelgate/about-our-support/aina), Travelgate Community, and more!
+:::tip
+Remember, on the right side of the screen, you'll find bots designed to enhance your experience and leverage the platform's opportunities, including [AIna](/kb/getting-started-with-travelgate/about-our-support/aina), the Travelgate Community bot, and more!
 :::

@@ -22,8 +22,8 @@ You can easily interact with AIna from any section of our website with just one 
 
 ![cases-2](https://storage.travelgate.com//kbase/cases-2.jpg)
 
-**Our [Discord Server](https://discord.com/channels/1121158946074402916/1245294813134458910)**:  
-Remember that you can interact with AIna directly through our Discord channel [-ask-ai](https://discord.com/channels/1121158946074402916/1245294813134458910). It functions like traditional support channels but with a powerful twist: **[AIna](/kb/getting-started-with-travelgate/about-our-support/aina), our custom Language Learning Model (LLM)**. AIna is designed to answer your questions about Travelgate, providing responses based on our official documentation. If you prefer, you can also mention @aina in the private channels. Whatever your preference, give it a try! 🚀
+**Our [Discord Server](/kb/getting-started-with-travelgate/travelgate-community/about-our-discord-server)**:  
+Remember that you can interact with AIna directly through our Discord channel [-ask-ai](https://discord.com/channels/1121158946074402916/1245294813134458910). It functions like traditional support channels but is enhanced with AIna. If you prefer, you can also mention @aina in the private channels. Whatever your preference, give it a try! 🚀
 
 
 ### Experience a new level of Support

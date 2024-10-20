@@ -8,7 +8,7 @@ sidebar_position: 3
 
 - [Hotel-X Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart)
 - [Hotel-X Playground](/playground): You can use Playground as a client to test your queries and mutations. Additionally, you can access our SDL by clicking on the "Docs" tab ("Export SDL") and examine the structure and definition of each API methods available.
-- [Community](/kb/getting-started-with-travelgate/about-our-community): We regularly update and improve our Documentation, so make sure to check back often to stay up-to-date with the latest updates and changes.
+- [Community](kb/getting-started-with-travelgate/travelgate-community/about-our-community.md): We regularly update and improve our Documentation, so make sure to check back often to stay up-to-date with the latest updates and changes.
 - [How to retrieve your Hotel-X Credentials](/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/hotel-x-credentials)
 - [How do I add more users to my Company's account?](/kb/account-settings/users-management/how-to-add-manage-users-to-organization)
 - For Hotel-X implementation and testing purposes, we recommend using the following [accesses](/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/hotel-x-credentials):

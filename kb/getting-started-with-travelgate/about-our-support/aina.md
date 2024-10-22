@@ -34,3 +34,7 @@ AIna is seamlessly integrated into our [Customer Support Portal](/kb/tickets/gui
 - **Always Up-to-Date:** AIna continuously learns from interactions to stay up to date, ensuring our support keeps improving, just like how leading companies keep their AI solutions fresh and effective by constantly feeding them new data and insights.
 - **Constant Improvement and Human Touch:** Our team reviews all conversations to enhance our documentation and refine AIna's responses, ensuring we maintain a human touch while leveraging cutting-edge AI.
 - **Simplified Process:** We’ve improved the system to make it even easier and more intuitive for you, enhancing the overall user experience. Our focus is on making complex issues easier to solve with streamlined, user-friendly interactions.
+
+:::tip
+Don't forget to check out our [AIna User Guide](/kb/tickets/aina-guide) for tips and techniques to engage with AIna efficiently🚀
+:::

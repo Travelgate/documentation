@@ -18,7 +18,8 @@ Curious about TravelgateX’s new Discord Server? Learn more [here](https://blog
 - **[Seller Releases](https://discord.com/channels/1121158946074402916/1247873300491927632):** Notifies users about every seller integration install/rollback, new versions, and updates.
 - **[Status](https://discord.com/channels/1121158946074402916/1238058167385067601):** Provides current system status notifications.
 - **[Ideas Hub](https://discord.com/channels/1121158946074402916/1202366240673505400):** Got a fantastic idea to enhance our Marketplace and products? Share it here!
-- **[Ask-AI](https://discord.com/channels/1121158946074402916/1245294813134458910):** This channel (-ask-ai) operates like traditional support channels, but with a powerful twist: [AIna](/kb/getting-started-with-travelgate/about-our-support/aina), our custom Language Learning Model (LLM). AIna is designed to answer your questions about Travelgate, providing responses based on our official documentation. Give it a try!
+- **[Spotlights](https://discord.com/channels/1121158946074402916/1175863226416779325):** If you are a verified Partner in our platform, this channel is for you. Stay tuned for exclusive highlights from the Travelgate Network, including important announcements, updates, and much more!
+- **[Ask-AI](https://discord.com/channels/1121158946074402916/1245294813134458910):** This channel (-ask-ai) operates like traditional support channels, but with a powerful twist: [AIna](/kb/getting-started-with-travelgate/about-our-support/aina), our multilingual AI assistant. Powered by Large Language Models (LLMs), AIna is designed to specifically address your questions about Travelgate, providing responses based on our Official Documentation. Give it a try!
 
 ### Ideas Hub
 

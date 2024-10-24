@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# How to download Search logs
+# How to audit Search logs
 
 Just imagine the enormous task of storing the astounding number of search transactions, exceeding 6 billion, that occur daily at TravelgateX. As a result, **we have opted not to store search transaction logs by default**.
 

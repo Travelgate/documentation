@@ -6,7 +6,7 @@ sidebar_position: 2
 
 ### Say hello to AIna, your multilingual AI Assistant!
 
-At TravelgateX, we understand the importance of efficient support, which is why we're thrilled to introduce AIna. AIna is our custom Language Learning Model (LLM) designed to answer your questions specifically about TravelgateX, with responses based on the contents of our Official Documentation.
+At Travelgate, we recognize the importance of efficient support. That's why we're excited to introduce AIna, our multilingual AI assistant. Powered by Large Language Models (LLMs). AIna is designed to specifically address your questions about Travelgate, providing responses based on our Official Documentation.
 
 You can easily interact with AIna from any section of our website with just one click. Available 24/7, AIna is ready to assist you by answering common questions, offering usage tips, and providing App information.
 

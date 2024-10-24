@@ -64,6 +64,9 @@ No, you are not required to provide real ages and names for all passengers. You 
 **Booking Holder as a Passenger:** If the holder of the booking is also a passenger, their details should be included in the list of passengers (ResGuests/Guests) to ensure they are accounted for in room occupancy.
 :::
 
+### Is there a maximum number of characters allowed for a guest's name and surname in a reservation?
+Travelgate does not impose a character limit on guest names and surnames in reservations. However, some Sellers may have their own restrictions. For more information, please contact the Seller directly.
+
 ### How can I add remarks to a Book request?
 Remarks are comments from the customer for the Seller to take into account. They can be included in the Book request (details can be found in our [Hotel-X Schema](https://docs.travelgate.com/playground/)) provided that the Supplier allows for remarks in their reservations - you can check their [Metadata](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-metadata-query) for further information.
 

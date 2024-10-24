@@ -8,7 +8,7 @@ sidebar_position: 1
 
 ### What Support Options and Resources Does Travelgate Provide?🌟
 1. **[Travelgate Documentation](https://docs.travelgate.com/):** A comprehensive resource featuring our developers' documentation and Knowledge Base.
-2. **[AIna](/kb/getting-started-with-travelgate/about-our-support/aina):** Our custom LLM answers your TravelgateX questions using official documentation.
+2. **[AIna](/kb/getting-started-with-travelgate/about-our-support/aina):** Our multilingual assistant, AIna, is powered by Large Language Models (LLMs) and is specifically designed to address your questions about Travelgate, providing responses based on our Official Documentation.
 3. **[Support Portal](https://app.travelgate.com/support):** Open, view, and manage tech issues at both Company and user levels through our Customer Support team.
 4. **[Travelgate Community](https://discord.com/invite/travelgate):** Join our Discord Server: a collaborative hub for Travelgate Community.
 

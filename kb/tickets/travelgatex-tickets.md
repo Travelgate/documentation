@@ -10,7 +10,7 @@ If you've ever had to submit a Tech Support case, you know how important it is t
 - You can access our Support Portal Dashboard by clicking on the 'ticket' icon in the upper right corner of the screen, next to the bell icon.
 - Once there, you will see an overview of all open cases for both your user and your Company, organized into different tabs. You can sort the cases by various criteria such as status, creation date, or update date. Additionally, you can view or close cases by clicking on “Actions > View case” or “Actions > Close case.”
 - Regarding filters: On the left panel, you can filter by Case ID, name, or category: Customer Care, Connections, and Billing. This allows you to view only the information that interests you at any given moment.
-- If you have already reviewed the [Guidelines for opening a case in our Support Portal](/kb/tickets/guidelines-for-submitting-a-ticket-to-our-support-team) and [AIna User Guide](/kb/tickets/aina-guide) but still need assistance, you can create a case by clicking on the 'Create New Case' button and following the instructions in the form.
+- If you have already reviewed the [Guidelines for opening a case in our Support Portal](/kb/tickets/guidelines-for-submitting-a-ticket-to-our-support-team) and [AIna User Guide](/kb/getting-started-with-travelgate/about-our-support/aina-guide) but still need assistance, you can create a case by clicking on the 'Create New Case' button and following the instructions in the form.
 
 :::info Case Categories💡
 - **Customer Care**: These cases cover [product maintenance](/kb/getting-started-with-travelgate/about-our-support/customer-care-support#how-are-partner-requests-categorized-at-travelgatex) and minor Seller API updates.
@@ -23,7 +23,7 @@ If you've ever had to submit a Tech Support case, you know how important it is t
 ### AIna and Customer Support Cases
 After clicking on the 'Create New Case' button, this will happen:
 
-1. [AIna Support](/kb/getting-started-with-travelgate/about-our-support/aina) screen: Enter the issue or information needed via the subject and a detailed description. Make sure to include as many details as possible about the issue you're experiencing or the information you need. Don't forget to check out our [AIna User Guide](/kb/tickets/aina-guide) for tips and techniques to engage with AIna efficiently.  
+1. [AIna Support](/kb/getting-started-with-travelgate/about-our-support/aina) screen: Enter the issue or information needed via the subject and a detailed description. Make sure to include as many details as possible about the issue you're experiencing or the information you need. Don't forget to check out our [AIna User Guide](/kb/getting-started-with-travelgate/about-our-support/aina-guide) for tips and techniques to engage with AIna efficiently.  
 
    Then, click the "Continue" button, and AIna will search the Knowledge Base and Documentation to provide you with a response.
    ![cases-2](https://storage.travelgate.com//kbase/cases-2.jpg)

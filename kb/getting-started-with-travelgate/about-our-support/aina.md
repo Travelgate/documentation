@@ -36,5 +36,5 @@ AIna is seamlessly integrated into our [Customer Support Portal](/kb/tickets/gui
 - **Simplified Process:** We’ve improved the system to make it even easier and more intuitive for you, enhancing the overall user experience. Our focus is on making complex issues easier to solve with streamlined, user-friendly interactions.
 
 :::tip
-Don't forget to check out our [AIna User Guide](/kb/tickets/aina-guide) for tips and techniques to engage with AIna efficiently🚀
+Don't forget to check out our [AIna User Guide](/kb/getting-started-with-travelgate/about-our-support/aina-guide) for tips and techniques to engage with AIna efficiently🚀
 :::

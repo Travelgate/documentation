@@ -40,6 +40,20 @@ AIna is your go-to resource for quick answers and guidance on troubleshooting er
 
 **Correct Example:**
 
+"Hi AIna, I'm currently working on my Hotel-X development and I need to know if there are any character limitations for the passenger names and surnames in a booking. Could you provide this information or direct me to where I can find it?"
+
+- The query is clear and concise, specifying the information needed. It includes specific keywords such as "Hotel-X development", "booking", "passenger names and surnames" and "character limitations," which assist AIna in identifying the query. By providing a complete question in full sentences, it helps AIna understand the user's intent more effectively.
+
+**Incorrect Example:**
+
+"Hi, I have a question about the character limit."
+
+- The query lacks specificity, as it does not clarify what the character limit pertains to, which makes it challenging for AIna to provide an accurate response. Additionally, it lacks context since it does not mention the Hotel-X development or relate to the booking situation, further complicating AIna's ability to assist effectively.
+
+### Case 2
+
+**Correct Example:**
+
 "Hello AIna, I'm trying to make a booking in Hotel-X Pull Buyers API but I'm getting a 102 error - Provider error message in Book response. I've checked our configuration but couldn't find the reason. Could you help me look into this? The specific error message I'm receiving is: [insert complete error information/snippet here]."
 
 - The question is clear and concise, providing specific context (API used, method), detailing any efforts made to resolve the issue independently, sharing the exact error message, and mentioning relevant logs (provided).
@@ -50,7 +64,7 @@ AIna is your go-to resource for quick answers and guidance on troubleshooting er
 
 - The question lacks important details and context that AIna needs to understand and effectively address the query (e.g., no information regarding the error, the method by which you detected it, or the API or solution you are using).
 
-### Case 2
+### Case 3
 
 **Correct Example:**
 
@@ -64,7 +78,7 @@ AIna is your go-to resource for quick answers and guidance on troubleshooting er
 
 - This is a direct request for information without context or acknowledgment of AIna's access limitations.
 
-### Case 3
+### Case 4
 
 **Correct Example:**
 

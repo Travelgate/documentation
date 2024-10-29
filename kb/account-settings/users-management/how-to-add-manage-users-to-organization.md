@@ -37,6 +37,16 @@ The role will determine which actions a user can perform within the Travelgate A
 ![members_invite_user_07_3](https://storage.travelgate.com/kbase/members_invite_user_07_3.png)
 
 
+### Can I assign roles by service instead of using a single role for the entire Organization??
+1. Click on 3 dots to edit user information  - please note that this feature is only available for **Admin or Owner** users.
+2. Select "Modify services permissions".
+![editservicerole_1](https://storage.travelgate.com/kbase/editservicerole_1.jpg)
+3. Assign different roles to each desired service.
+![editservicerole_2](https://storage.travelgate.com/kbase/editservicerole_2.jpg)
+
+Note: It is not possible to assign a role lower than the user's organization-wide role.
+
+
 ### How can I reset a configured 2FA method for a user in my organization?
 1. Log onto our [website](https://www.travelgate.com/).
 2. Click on Settings.

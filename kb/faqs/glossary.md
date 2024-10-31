@@ -163,7 +163,7 @@ A document or dataset that defines the contracted/expected commission in cases w
 The Network of users, Partners, and developers that interact within the TravelgateX ecosystem, sharing resources, knowledge, and business opportunities.
 
 - **Concatenation**  
-The process of joining two or more strings of text or data together into a single sequence. For instnace, when a Seller returns the same hotel id for different properties, we concatenate those hotel ids with their destination code in order to make them unique.  
+The process of joining two or more strings of text or data together into a single sequence. For instance, when a Seller returns the same hotel id for different properties, we concatenate those hotel ids with their destination code in order to make them unique.  
 
 - **Configuration**  
 The settings and parameters that define how a system or service operates. It also refers to the set of credentials, endpoints and parameters required to access a supplier's system.

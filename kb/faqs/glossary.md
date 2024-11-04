@@ -10,10 +10,10 @@ Discover the TravelgateX Glossary, designed to help you navigate the specialized
 A security process requiring two different forms of identification to verify a user's identity before accessing a system. It adds an additional layer of security to your Travelgate account compared to traditional login methods.
 
 - **Access**  
-It refers to the permission granted to users or systems to view, modify, or interact with specific resources, such as APIs, services, or data. In Hotel-X, an access is the set of credentials and the authentication configuration that enables a Buyer to connect to a Seller. It is used to differentiate among Sellers and also to filter different credentials and configurations from the same Seller (e.g. B2B and B2C feeds) 
+It refers to the permission granted to users or systems to view, modify, or interact with specific resources, such as APIs, services, or data. In Hotel-X, an access is the set of credentials and the authentication configuration that enables a Buyer to connect to a Seller. It is used to differentiate among Sellers and also to filter different credentials and configurations from the same Seller (e.g. B2B and B2C credentials).
 
 - **Account**  
-A collection of information pertaining to a company registered in the TravelgateX ecosystem. This includes credentials for accessing services, company-specific configurations, business details, and technical contact information used for interactions between companies on the platform.
+A collection of information pertaining to a company or user registered in the TravelgateX Platform. This includes credentials for accessing services, company-specific configurations, business details, and contact information.
 
 - **Activation**  
 The process of enabling an access, user, or connection. 
@@ -28,10 +28,10 @@ The process of gathering and combining data from multiple sources into a single,
 Travelgate's multilingual AI assistant. Powered by Large Language Models (LLMs), AIna is designed to specifically address your questions about Travelgate, providing responses based on our Official Documentation. 
 
 - **Alerts (APP)**  
-Alerts Monitoring APP that sends notifications from Travelgate's system to inform users about important events, such as L2B booking confirmations, errors, or system status changes traffic peaks.
+Alerts Monitoring APP is a feature provided by TravelgateX that allows users to set up and manage real-time notifications for potential issues in their travel transactions, including status error codes, L2B (Look-to-Book) ratios, and traffic peaks.
 
 - **Amendment Query**  
-A request operation that allows the Buyer to modify details of an existing booking or reservation. Common amendments might include changes to dates, rooms, guest information, remarks or boards.
+A request operation that allows the Buyer to modify details of an existing reservation. Common amendments include changes to dates, rooms, guest information, remarks or boards.
 
 - **API (Application Programming Interface)**  
 A set of rules and tools that allow different software applications to communicate with each other.
@@ -43,10 +43,10 @@ A unique alphanumeric identifier that serves as a form of authentication require
 A data structure that stores multiple elements (such as the number of occupancies in a Search) in a single variable. Arrays allow efficient handling of lists of information, making it easier to process bulk data in queries or responses.
 
 - **Ask-AI**  
-It is Travelgate's Discord channel that allows users to interact with AIna, Travelgate’s multilingual assistant, to ask questions or retrieve information.
+The "Ask-AI" channel on Travelgate’s Discord allows users to connect with AIna, Travelgate’s multilingual assistant, to seek answers and gather information.
 
 - **Auto-connection (auto-activation)**  
-A feature that automates the setup and activation of connections and credentials between Buyers and Sellers, removing the need for manual configuration.
+A process that automates the setup and activation of connections and credentials between Buyers and Sellers, reducing or eliminating the need for manual configuration.
 
 - **Availability**  
 Refers to whether a product, such as a hotel room, is open for booking during a specific search period. Availability data is essential for determining whether a reservation can be made.
@@ -55,13 +55,13 @@ Refers to whether a product, such as a hotel room, is open for booking during a 
 A commercial transaction or relationship between two businesses. In TravelgateX, B2B credentials are used to authenticate business entities engaging in business-to-business transactions within the system. The B2B credentials are dependent on the data provided by the Seller.
 
 - **B2B Virtual Agency (Solution)**  
-User-friendly web interface through which Buyers can access our API to manage everything from searching for available options to booking and even canceling reservations, all from one convenient platform. 
+User-friendly web interface through which Buyers can access our API to manage everything from searching for available options to booking and even canceling reservations. 
 
 - **B2C (Business-to-Consumer)**  
 A commercial transaction where a business sells directly to individual customers. In the context of TravelgateX, B2C credentials authenticate businesses interacting with end consumers. The B2C credentials are dependent on the data provided by the Seller.
 
 - **Billing**  
-A Travelgate feature that allows you our Partners to view their agreements, control their usage, and check their invoices.
+A Travelgate feature that allows our Partners to view their agreements, control their usage, and check their invoices.
 
 - **Binding**  
 When a price is tagged as "binding", it means it’s mandatory to sell at or above the indicated amount, gross or Minimum Selling Price if informed.
@@ -91,31 +91,31 @@ The maximum number of rooms available to be sold for a specific date range.
 The process of handling and modifying bookings, including cancellations, amendments and retrieving the information from reservations.
 
 - **Booking Query (ReservationRead, ReservationList)**  
-The Booking query allows you to retrieve a specific booking with all its details using the booking ID or reference locator. You can also obtain a list of bookings that were made within a specific arrival date range or a specific booking date range.  
+The Booking query allows you to retrieve a specific booking with all its details using the booking ID or reference locator. You can also obtain a list of bookings that were made within a specific arrival or booking date range.  
 
 - **BookingID**  
 A Hotel-X unique booking identifier. It is used to reference and manage individual bookings within the TravelgateX system. 
 
 - **Business Rules**  
-A set of conditions or criteria that determine the options returned in Hotel-X Search response. This includes optionsQuota, as well as BusinessRulesTypes CHEAPER_AMOUNT and ROOM_TYPE. 
+A set of conditions or criteria that determines the options returned in Hotel-X Search response. This includes optionsQuota, as well as BusinessRulesTypes CHEAPER_AMOUNT and ROOM_TYPE. 
 
 - **Buyer**  
-The entity or business that uses the Travelgate platform to book travel services such as hotels for their customers. Buyers include Travel Agencies, Tour Operators, Tech Platforms etc. 
+The entity or business that uses the Travelgate platform to book travel services such as hotels for their customers. Buyers include Travel Agencies, Tour Operators, Tech Platforms, etc. 
 
 - **Buyer Context**  
-Context is a term used to describe the content codes used throughout the Booking Flow. When employing their own context, Buyers can either apply their own codes or engage a content provider-
+Context is a term used to describe the content codes used throughout the Booking Flow. When employing their own context, Buyers can either apply their own codes or engage a content provider.
 
 - **Balancing (Load Balancing)**  
 The process of distributing incoming traffic or requests across multiple servers or systems to ensure optimal performance and prevent any single server from becoming overwhelmed.
 
 - **Calendar (Inventory)**  
-The Calendar tool will allow you to check the information loaded in a hotel: conditions, supplements, amount per room, amount per passenger, amount per occupancy, final amount that will be shown in Search. 
+The Calendar tool allows Inventory Buyers to check the information loaded in a hotel, such as conditions, supplements, amount per room, amount per passenger, amount per occupancy, as well as the final amount that will be shown in Search. 
 
 - **Cancel Mutation (Cancel method)**  
 The cancel operation allows you to cancel a booking made via Travelgate.
 
 - **Channel-X**  
-Channel-X API extracts the product loaded between the Buyer and the Channel Managers into our Inventory Tool and sends it to the Buyer's system.
+Channel-X API extracts the product loaded between the Buyer and the Channel Managers into our Inventory Tool, and sends it to the Buyer's system.
 
 - **Close Sales**  
 The process of stopping sales for a particular period, typically when all available inventory has been booked or when the hotel is no longer available.
@@ -127,10 +127,10 @@ A status indicating that a booking has been cancelled.
 Rules that dictate the terms and conditions under which a booking can be cancelled, including any associated fees or penalties.
 
 - **CARD_BOOKING (payment)**  
-A payment method using a credit or debit card to secure a booking, managed by the seller and made during the booking process. Credit card details are required in the reservation request.
+A payment method using a credit or debit card to secure a booking. This payment managed by the Seller and made during the booking process (credit card details are required in the reservation request).
 
 - **CARD_CHECK_IN (payment)**  
-A payment method using a credit or debit card during check-in at a property. The payment is managed by the seller and performed at the hotel. Credit card details are required in the reservation request.
+A payment method using a credit or debit card during check-in at a property. The payment is managed by the Seller and performed at the hotel (credit card details are required in the reservation request).
 
 - **Certification**  
 The process of verifying that a Partner meets certain Travelgate’s requirements before being allowed to operate within the TravelgateX ecosystem.
@@ -148,7 +148,7 @@ A tag or label that Buyers use to categorize their traffic. The client is the 
 A unique identifier or code provided by a client (such as a travel agency) to track bookings or transactions within their own systems.
 
 - **Code**  
-A unique identifier assigned to specific entities, such as hotels, rooms, or services, used to differentiate them in the system.
+A unique identifier assigned to specific entities, such as hotels, rooms, or accesses, used to differentiate them in the system.
 
 - **Commercial Agreement**  
 A formal contract between two parties outlining the terms of their business relationship, including pricing, commissions, and services provided.
@@ -156,7 +156,7 @@ A formal contract between two parties outlining the terms of their business rela
 - **Commission**  
 A fee or percentage of the transaction value that is paid to intermediaries (such as travel agents) for facilitating bookings or sales.
 
-- **Commission File**  
+- **Commission File (Sequential Commission File)**  
 A document or dataset that defines the contracted/expected commission in cases where the supplier is not able to send it via integration.
 
 - **Community**  
@@ -193,7 +193,7 @@ The combination of username, password (or API key) and configuration parameters 
 The specific conditions or parameters used to refine or filter a query or mutation in TravelgateX, ensuring relevant data is requested.
 
 - **Customer**  
-An individual or company that purchases or uses services on the TravelgateX platform.
+The end-consumer who purchases and/or enjoys a travel product.
 
 - **Dashboard**  
 Travelgate's user-friendly interface that provides an overview of key metrics, performance, and data related to TravelgateX services, often used by users to monitor system activity and performance.
@@ -211,10 +211,10 @@ Price variation allowed by the Buyer between Quote and Book.
 A hotel rate that is calculated based on another rate, often with specific rules or formulas, such as discounts applied.
 
 - **Destination**  
-The location or city where a hotel or property, or service is situated.
+The location or city where a hotel or property is situated.
 
 - **Development**  
-The process of creating or implmementing, and testing software or systems, such as TravelgateX APIs.
+The process of creating or implementing, and testing software or systems, such as TravelgateX APIs.
 
 - **Direct (payment)**  
 A payment method where funds are transferred directly from the customer to the service provider (eg. hotel) without intermediaries. The payment will be completed at check-in and credit card details are required in Book (Reservation) request. 
@@ -241,16 +241,16 @@ A message, type or code indicating that something has gone wrong in a process or
 A centralized platform for managing the business configuration of Distribution Organizations and their corresponding agencies.
 
 - **Extranet (Inventory)**  
-A tool that allows Inventory Buyers to connect with major Channel Managers. It provides Buyers with tools to set up hotels, rates, and rooms contracted with hoteliers, create user accesses for your providers, and check your bookings, among other options
+A tool that allows Inventory Buyers to connect with major Channel Managers. It provides Buyers with tools to set up hotels, rates, and rooms contracted with hoteliers, create user accesses, and check bookings, among other options.
 
 - **Feed**  
-A continuous stream of data provided to or from a system. In travelgate’s context, this can also make reference to the traffic flow from a given set of Buyer credentials.
+A continuous stream of data provided to or from a system. In Travelgate’s context, this can also make reference to the traffic flow from a given set of Buyer's credentials.
 
 - **Force Update Now**  
 A Travelgate’s functionality that forces an immediate update of static content data, overriding the normal update schedule.
 
 - **FREE (TGX Payment Type)**  
-A payment type in the TravelgateX system indicating that a Partner connection has no cost for them. The other Party in the connection must confirm the full payment of the connectivity from its side. 
+A payment type in the TravelgateX Platform indicating that a Partner connection has no cost for them. The other Party in the connection must confirm the full payment of the connectivity from their side. 
 
 - **Front Solution**  
 A solution or interface directly used by customers, such as a website or App.
@@ -297,13 +297,13 @@ The owner or manager of a hotel or accommodation service, responsible for overse
 A query used to retrieve a list of hotels or properties from the TravelgateX system.
 
 - **Hotel-X**  
-It's a powerful GraphQL-based aggregation API specifically designed to meet the unique needs of Buyers on our platform, providing key benefits such as multimode searches and plugins.
+Powerful GraphQL-based aggregation API specifically designed to meet the unique needs of Buyers on TravelgateX platform, providing key benefits such as multimode searches and plugins.
 
 - **HTTP Authorization**  
 A method of verifying a user's identity in HTTP requests, typically using tokens, API keys, or credentials in the header of a request.
 
 - **HTTP Status**  
-A code returned by a server in response to an HTTP request, indicating whether the request was successful (e.g., 200 OK) or encountered an error (e.g., 404 Not Found).
+A code returned by a server in response to an HTTP request, indicating whether the request was successful or encountered an error.
 
 - **Hubstatus**  
 A status indicator within TravelgateX that shows the operational status of our hub for a given request.
@@ -342,7 +342,7 @@ A ratio or metric that compares the number of views a travel product receives to
 The delay before a transfer of data begins following an instruction for its transfer, often measured to assess network speed.
 
 - **Legacy**  
-Older systems or technology in context of newer advancements. E.g. Legacy Pull Buyers API (deprecated) vs. Hotel-X Pull Buyers API.
+Older systems or technology in the context of newer advancements. In TravelgateX's context, this can be seen as the Legacy Pull Buyers API (deprecated) versus the Hotel-X Pull Buyers API.
 
 - **Live (production)**  
 It refers to the environment where software applications or integrations are fully operational and accessible to end-users. It is the opposite of a test environment.
@@ -369,13 +369,13 @@ A file that holds definitions and correlations between two datasets, used during
 Specific geographic or demographic area targeted for services or marketing efforts.
 
 - **Markup**  
-- The amount added to the cost of a product to cover expenses and profit.
+The amount added to the cost of a product to cover expenses and profit.
 
 - **Marshalling**  
 The process of transforming and organizing data structures or objects into a specific format for storage or transmission.
 
-- **Master Files (Hotels, Mealplans, Rooms; ref. Distribution)**  
-Comprehensive files or datasets containing essential information about entities such as hotels, meal plans, and rooms used for inventory management and distribution.
+- **Master Files (ref. Distribution Solution)**  
+Comprehensive files or datasets containing essential information about entities such as hotels, meal plans and rooms, used for inventory management and distribution.
 
 - **MaxSize (expectedRange)**  
 The maximum size or range anticipated for a dataset or parameter, used to determine the number of objects returned per page in content pagination.
@@ -383,8 +383,8 @@ The maximum size or range anticipated for a dataset or parameter, used to determ
 - **Member**  
 An individual that is part of a network or platform with specific access privileges.
 
-- **Merchant (payment)**  
-A retailer or service provider that accepts payments for travel products using various payment gateways. The payment is managed by the Seller. 
+- **MERCHANT (payment)**  
+Payment type where the payment is managed by the Seller. When using MERCHANT as a payment type, no credit card details are needed in Book request.
 
 - **Metadata Query**  
 Query that returns a clear and summarized view of the Supplier's main characteristics, as well as the methods implemented through their integration and the limitations and restrictions associated with their connection. 
@@ -396,7 +396,7 @@ An operation used to perform a specific action or retrieve data.
 The lowest price at which a product can be sold to ensure profitability. It indicates the amount to be set as the mandatory price and allows Buyers to obtain a competitive pricing reference. 
 
 - **Monitoring (APPs)**  
-Continuous tracking and observation of APP performance and behavior to ensure optimal operation.
+A set of tools provided to help TravelgateX Partners track, analyze, and optimize their connections and performance within the Travelgate ecosystem.
 
 - **Multimode**  
 Supporting multiple modes or methods of operation within a system or service. In Hotel-X, Multimode refers to the capability for Buyers to search multiple Sellers at the same time in just one request. 
@@ -438,7 +438,7 @@ A standard acknowledgment or confirmation of successful operation or status with
 The process of making a system or operation as efficient and effective as possible, often in terms of performance or resource usage.
 
 - **Option**  
-A choice available to users or partners, often referring to product types. In the context of Travelgate's Booking Flow, Buyers receive all the available options that match their Search criteria. Each option provides various details, such as room type, price, and cancellation policies. 
+A choice available to users or partners, often referring to product types. In the context of Travelgate's Booking Flow, Buyers receive all the available options that match their Search criteria.
 
 - **OptionRefId**  
 A unique identifier for each option. It is important not to modify this identifier for any reason, as it is used extensively throughout the Booking Flow. 
@@ -461,8 +461,8 @@ A tool that interprets data formats like JSON for system processing.
 - **Partner**  
 A business working with TravelgateX, such as Buyers and Sellers.
 
-- **Pax (passenger, guest)**  
-- Refers to guests or travelers in a booking.
+- **Pax (passenger)**  
+Refers to guests or travelers in a booking.
 
 - **Payment Type (enum)**  
 Predefined payment methods, such as like MERCHANT or DIRECT.
@@ -483,16 +483,16 @@ The underlying technology infrastructure or bridge allowing interactions and tra
 A testing environment to experiment with APIs and queries.
 
 - **Plugin**  
-A software component adding specific features to the system..
+A software component adding specific features to the system.
 
 - **Price**  
 The cost for a service, influenced by factors like room type or season.
 
 - **Profile**  
-User or system settings customizing TravelgateX interactions.
+Customizable representation of a company within the Partner Network Directory.
 
 - **Provider**  
-An entity that supplies travel products or services available on the platform.
+An entity that supplies travel products or services available on the Platform.
 
 - **Pull Connection**  
 Connection where data is retrieved on demand. TravelgateX retrieves (pulls) data from a supplier as needed.
@@ -506,13 +506,14 @@ Integration where data is fetched from external systems.
 - **Push Integration**  
 Integration where data is sent from suppliers to TravelgateX.
 
-- **Query**  Data request to retrieve information.
+- **Query**  
+Data request to retrieve information.
 
 - **Quote  Query (Valuation)**  
 This operation evaluates the rate before booking, providing the same information as the Search response for a hotel rate, including up-to-date pricing and cancellation policies.
 
 - **Rate**  
-Price charged for a travel service, based on certain conditions, room type, season, guest count, etc.
+Price charged for a travel service, based on certain conditions, such as room type, season or guest count.
 
 - **RateRule**  
 Conditions for applying rates or discounts.
@@ -542,7 +543,7 @@ Permissions defining user actions.
 Content Query that returns a comprehensive room list from a supplier's access.
 
 - **RQ (On Request, ON_REQUEST)**  
-Availability or confirmation status requiring Seller confirmation.
+Option status requiring Seller confirmation.
 
 - **Rule (rel. plugin rules, pricing rules)**  
 Conditions for system actions.
@@ -557,7 +558,7 @@ Structure blueprint of a GraphQL API.
 Language defining GraphQL schemas.
 
 - **Search Query (Avail)**  
-Query that aims to return all the available options for a given date and itinerary (and for one or more Seller's accesses).  
+Query that aims to return all the available options for a specific search criteria, for one or more Seller's accesses.  
 
 - **Seller**  
 Entity providing products or services.
@@ -566,19 +567,19 @@ Entity providing products or services.
 System hosting applications and data.
 
 - **Settings**  
-Options defining API or account operation.
+Options defining an API or account operation.
 
 - **SFTP**  
 Secure protocol for file transfers.
 
 - **Single Mode**  
-System operating in one mode for simplicity. In Hotel-X, Single Mode refers to the capability for Partners to conduct a single search per Seller at any given time (default mode).
+System operating in one mode for simplicity. In Hotel-X, Single Mode refers to the capability for Buyers to conduct a single search per Seller at any given time (default mode).
 
 - **Smart Traffic (APPs)**  
 Tools to optimize the traffic flow through TravelgateX.
 
 - **Speed (APP)**  
-Dynamic cache solution offered by TravelgateX that aims to streamline traffic and improve Search response times for travel suppliers and buyers
+Dynamic cache solution offered by TravelgateX that aims to streamline traffic and improve Search response times for travel suppliers and Buyers
 
 - **Standard Occupancy:**  
 The standard number of adult paxes of a room. Default room occupancy for pricing.
@@ -587,10 +588,10 @@ The standard number of adult paxes of a room. Default room occupancy for prici
 Metrics on system usage and performance.
 
 - **STD (TGX payment type)**  
-A payment type in the TravelgateX system indicating that the standard booking fee applies for both partners in a connection (they share costs). 
+A payment type in the TravelgateX system indicating that the standard booking fee applies for both Partners in a connection (they share costs). 
 
 - **SUP (TGX payment type)**  
-A payment type in the TravelgateX system indicating that both standard booking fees and supplement apply to this connection only for a partner (for the other party, it will be free). 
+A payment type in the TravelgateX system indicating that both standard booking fees and supplement apply to this connection only for a Partner (for the other party, it will be free). 
 
 - **Supplement**  
 Additional charge for extras.
@@ -653,7 +654,7 @@ Unique identifiers that can be used in mapping hotel codes within the Travelgate
 Virtual Credit Card, a temporary card number for secure transactions.
 
 - **VCCCan**  
-Plugin executed to cancel virtual credit card transaction.
+Plugin executed to cancel a virtual credit card transaction.
 
 - **VCCGen**  
 Plugin executed to generate a virtual credit card for a specific transaction.
@@ -668,7 +669,7 @@ A message or alert indicating potential issues or risks.
 Records of web activity for analysis or troubleshooting.
 
 - **Working (Auto-connection Status)**  
-Status indicating an operative credentials connection
+Status indicating an operative credentials connection.
 
 - **XML**  
 Extensible Markup Language, a format for encoding documents, often used in data exchange.

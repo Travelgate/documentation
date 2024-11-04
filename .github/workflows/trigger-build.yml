@@ -10,12 +10,11 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - name: Configure git
-        run: |
-            git config user.name "Calin Rada [bot]"
-            git config user.email "calin@travelgate.com"  
-
-      - name: Write empty commit
-        run: git commit --allow-empty -m "Trigger build" && git push origin main
+      - uses: velocibear/create-empty-commit@v1.0.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          email: calin@travelgate.com
+          name: Calin Rada [bot]
+          message: Trigger build

@@ -323,7 +323,7 @@ Data analysis and reporting features that provide valuable information and trend
 - **Integration**  
 The process of linking different systems to work together seamlessly.
 
-- **Inventory (Portfolio)** 
+- **Inventory (Portfolio)**  
 The total available stock of travel products (eg. hotels) that make up a portfolio.
 
 - **IP**  

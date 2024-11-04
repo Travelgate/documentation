@@ -25,10 +25,11 @@ Nevertheless, we have established partnerships with numerous affiliates who spec
 2. **Product Maintenance:** This encompasses any development efforts focused on ensuring the proper performance of an existing product and/or service. For example:
 	- Booking flow data discrepancy.
 	- Static data download error/discrepancy.
-	- "As a Seller, I can now return cancel policies in Search, please update this information".
+	- Minor API Updates: "As a Seller, I can now return cancel policies in Search, please update this information".
 
 :::info
 * To share your Product Development ideas for our Platform, please use [TravelgateX Community](https://discord.com/invite/travelgate). Our Product team will give a detailed evaluation to each suggestion and request.
 * For any Product Maintenance requests, kindly submit them through our [Support Portal](https://app.travelgate.com/support).
+* Any changes or requests for changes in the integration of a supplier must **always be initiated by the Seller**, not the Buyer. The Seller should also provide us with their updated API documentation so that our IT team can analyze the potential implementation at the integration level.
 :::
 

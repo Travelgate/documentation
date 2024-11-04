@@ -11,7 +11,7 @@ Please check our article on [204 error - No results found](/kb/our-products/are-
 
 ### What are the typical causes of a "no availability" error for Push Sellers?🔎
 Here are the possible causes for availability not being displayed for Push Sellers in our Extranet, along with the corresponding solutions:
-1. **Deactivated rates/rooms:** Check the SetUp section and ensure that rates and rooms are not deactivated. They will be highlighted in red if they are.
+1. **Deactivated hotel/rates/rooms:** Check the SetUp section and ensure that the hotel/rates/rooms are not deactivated. They will be highlighted in red if they are.
 
 	![204_error_inventory_1](https://storage.travelgate.com/kbase/204_error_inventory_1.jpg)
 

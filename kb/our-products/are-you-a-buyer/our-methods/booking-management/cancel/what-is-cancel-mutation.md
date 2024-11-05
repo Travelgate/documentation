@@ -20,7 +20,7 @@ The information returned in Cancel response may vary between Sellers, so please 
 
 ![cancel_mutation_1](https://storage.travelgate.com/kbase/cancel_mutation_1.jpg)
 
-:::info
+:::warning
 Please note that Travelgate cannot make reservations or cancellations on behalf of our Partners; these actions should be carried out directly by the Partner.
 :::
 

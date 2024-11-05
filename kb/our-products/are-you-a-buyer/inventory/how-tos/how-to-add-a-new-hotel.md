@@ -18,10 +18,10 @@ Inventory's system works with its own **master hotel database** where we store a
 
 If the hotel you require is not found within the autocomplete field, click on **"Create Hotel"** and provide the hotel's basic information to create it in our database:
 
-- Name: Hotel name.
+- Name: Hotel name. Notice that the hotel you want to add will only appear as a suggestion in the autocomplete field if it the hotel is not already added to this client-channel relation and it has assigned the correspondent Inventory Context (in case the Channel uses their own hotel codes).
 - Category: Hotel category.
-- Code: (Optional) Channel Manager's Hotel Code. Only required if channel manager works with their own hotel codes, otherwise leave this field empty.
-- Inventory Context: Channel Manager owner of the hotel. Only required if Code specified.
+- Code: Channel Manager's Hotel Code. Only required if a channel manager works with their own hotel codes, otherwise leave this field empty.
+- Inventory Context: Channel Manager owner of the hotel. Only required if "Code" is specified.
 - eMail: Hotel contact eMail address.
 - Telephone: Hotel contact telephone number.
 - ZIP code: Hotel postal code.

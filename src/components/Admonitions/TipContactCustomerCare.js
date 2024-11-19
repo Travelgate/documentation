@@ -6,8 +6,7 @@ const TipContactCustomerCare = () => {
     return (
         <>
             <Admonition type={`info`}>
-                Have any doubts or inquiries? Our amazing Customer Care team is just a ticket away. Reach out to them
-                via <a href={`https://app.travelgatex.com/tickets`} target={`_blank`}>Tickets</a>, and they will be more than happy to help you out &#128640;
+            Got questions or need additional support? Feel free to reach out to our team through our <a href={`https://app.travelgate.com/support`} target={`_blank`}>Support Portal</a>, and we'll be happy to help you out! &#128640;
             </Admonition>
         </>
     )

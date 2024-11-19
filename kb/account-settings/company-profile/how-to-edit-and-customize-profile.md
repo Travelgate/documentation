@@ -31,10 +31,11 @@ Our [Partner Network Directory](https://app.travelgate.com/network/partners) was
 
 :::info
 If you are already a Partner at TravelgateX and find yourself in any of the following situations:  
-- You are a Buyer at Travelgate looking to start working as a Seller or via Distribution. 
-- You are a Buyer at Travelgate wanting to connect via Inventory.
+- You are a Buyer at Travelgate wanting to connect via our Inventory Solution.
 - You are a Seller at Travelgate wanting to start working as a Buyer.
-- General doubts or comercial information.
+- You are a Pull Seller at Travelgate looking to start working as a Push Seller.
+- You are a Buyer or a Seller at Travelgate looking to start working via Distribution. 
+- General doubts or commercial information.
 
 You can reach out to our team via email at sales.support@travelgate.com. 
 Please note that this email is **exclusively for existing Partners**. If you are interested in starting a Partnership with TravelgateX, simply fill out our ["Contact Travelgate" form](https://docs.travelgate.com/kb/getting-started-with-travelgate/about-us#how-can-i-become-a-partner-at-travelgatex), and our team will get in touch with you shortly.

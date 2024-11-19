@@ -50,6 +50,9 @@ Unfortunately, there are no filters in the Cancel Mutation.
 ### Is it possible to retrieve the cancellation costs without canceling the option?🔎
 If the Seller provides cancel policies information, you can access it either through Hotel-X Quote Query or Hotel-X Booking Query.
 
+### Can Travelgate remove cancellation fees from a booking after it has been canceled, in cases where hotels waive these fees?
+As cancellation policies are returned by the Supplier via the integration, it is not possible to remove cancellation fees from a booking that already includes them.
+
 ### In a reservation for 2 rooms, if two rooms have the same cancellation policy, should the cancellation penalties be summed up in the node for the option?  
 Yes, an option is a combination of rooms. Cancelling the option implies the cancellation of all rooms, and therefore, the charges for all the rooms are incurred.
  

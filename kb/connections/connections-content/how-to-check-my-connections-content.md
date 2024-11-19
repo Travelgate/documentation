@@ -56,9 +56,15 @@ In order to force an update of your static content, you should simply follow the
 
 1. Filter a specific connection and access, ensuring you are browsing as a Seller or Buyer as needed. There, you will also see the total number of hotels and last update information.
 
-1. To force an update immediately, click on "**Force update now**" and your content will be refreshed within a few hours - Note that the time it takes may vary based on the total properties of a specific portfolio or overall static content information returned.
+2. To force an update immediately, click on "**Force update now**" and your content will be refreshed within a few hours - Note that the time may vary based on the total properties or overall static content returned.
 
 	![force_portfolio_update_2](https://storage.travelgate.com/kbase/force_portfolio_update_2.jpg)
+
+:::info Force Content Updates
+When performing a "Force content now" update to refresh a Seller's portfolio, please note that **the duration depends on the size of the content**. We recommend waiting a reasonable amount of time, such as a couple of hours, to ensure the update is fully processed. If the update is not completed after this period, consider running the force update again if necessary.
+
+In cases where you've followed the steps above and still do not have the most up-to-date content, please don't hesitate to reach out through our [Support Portal](/kb/tickets/guidelines-for-submitting-a-ticket-to-our-support-team) for further help. We're here to ensure you have the best possible experience!
+:::
 
 
 

@@ -10,7 +10,7 @@ sidebar_position: 1
 1. Decide if you prefer to search by connection, reference or session ID.
 1. Then, select the connection(s) and adjust the filters:
 	- Time range (UTC)
-	- Operation type: Book, Quote, Cancel, Search, Other.
+	- Operation type: Search, Quote, Book, Cancel, Other (Booking List/Booking Read).
 	- Status/Error code: list of errors.
 1. Click on **Search**
 

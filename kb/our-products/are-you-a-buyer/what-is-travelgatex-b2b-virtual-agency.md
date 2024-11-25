@@ -70,3 +70,8 @@ Welcome to our B2B Virtual Agency tool, your gateway to effortless booking exper
 
 	![b2b_virtual_agency_cancel_1](https://storage.travelgate.com/kbase/b2b_cancel_1.png)
 
+
+### No results are showing in 'My Bookings', what can I do?
+If you encounter the message "No results found! Try updating your search criteria" when accessing bookings in the My Bookings section of the B2B Virtual Agency, consider these two potential causes:
+1. **Mismatched Filters:** There may be no bookings that match the filters you've applied. Review your filter settings to ensure they align with actual bookings.
+2. **Supplier Restrictions:** The supplier might not support booking searches based on the filters you’ve applied, or might not allow booking searches at all (reservation read or reservation list). Check that your filter choices are supported by the supplier’s [Metadata](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata) for reservation read and reservation list, like searching bookings by creation date or client locator. If your needed filters or methods are unsupported, contact the supplier to explore the possibility of them making this data available.

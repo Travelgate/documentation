@@ -4,6 +4,10 @@ sidebar_position: 1
 
 # Why should I develop Hotel Push Sellers API?
 
+:::danger deprecated API
+The Hotel Push Sellers API was our first Sellers API, launched back in 2012. It is now deprecated and should not be further developed. Since then, we have launched a new Push Sellers API, in which Travelgate currently plays a proactive role in [developing API integrations](/kb/our-products/are-you-a-seller/getting-started-as-a-new-seller/seller-api-development-roadmap) on behalf of the Seller.
+:::
+
 ### Boost Your Business with TravelgateX🚀
 TravelgateX provides Channel Managers with the opportunity to integrate our Hotel Push Sellers API, allowing them to quickly start selling to our network of Buyers (to understand the distinction between a PULL and a PUSH Connection, click [here](/kb/getting-started-with-travelgate/about-our-connectivity/what-is-the-difference-between-pull-and-push-sellers)).
 

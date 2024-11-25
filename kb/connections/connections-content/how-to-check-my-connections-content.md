@@ -61,7 +61,7 @@ In order to force an update of your static content, you should simply follow the
 	![force_portfolio_update_2](https://storage.travelgate.com/kbase/force_portfolio_update_2.jpg)
 
 :::info Force Content Updates
-When performing a "Force content now" update to refresh a Seller's portfolio, please note that **the duration depends on the size of the content**. We recommend waiting a reasonable amount of time, such as a couple of hours, to ensure the update is fully processed. If the update is not completed after this period, consider running the force update again if necessary.
+When conducting a 'Force content now' update to refresh a Seller's portfolio, note that the duration of the update depends on the **size of the content**. The update is managed through a queue system and will proceed when it reaches its turn (this could take anywhere from a few minutes to several hours, or potentially even a day). If the update has not completed after this time, you may initiate the force update again if necessary.
 
 In cases where you've followed the steps above and still do not have the most up-to-date content, please don't hesitate to reach out through our [Support Portal](/kb/tickets/guidelines-for-submitting-a-ticket-to-our-support-team) for further help. We're here to ensure you have the best possible experience!
 :::

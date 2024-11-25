@@ -12,7 +12,7 @@ _Connecting new Sellers has never been so easy - no extra developments, no maint
 ### What makes Hotel-X different?🚀
 The Hotel-X API **aggregates results** from multiple Sellers. Whether you prefer to aggregate at hotel level or at hotel and room type level, or even hotel, room type and rate plan level or don’t aggregate at all, we got you covered. It’s your business, it’s your call.
 
-And it doesn’t stop there: Hotel-X functionalities can be easily extended by adding our [Plugins](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/overview). Any business need you might think of can be easily implemented. Do you want to avoid duplicate bookings? Add the [Booking Persistence](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/overview) plugin. Want to search by Destination? No worries! Leverage the power and flexibility of Hotel-X to get an edge over your competitors. Simple. Flexible. Beautiful.
+Enhance your Hotel-X experience by adding [Plugins](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/overview), making it simple to integrate custom logic for business needs like currency conversion, hotel blacklisting, and choosing the cheapest meal plans. Simple. Flexible. Beautiful.
 
 :::info
 Hotel-X is the Industry’s **first non-opinionated API** that is fast becoming the new standard in Travel connectivity.

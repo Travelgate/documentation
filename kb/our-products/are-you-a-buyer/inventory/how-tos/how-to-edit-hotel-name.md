@@ -14,5 +14,5 @@ If a hotel changes its name and you need to update it in our Extranet, you can e
 4. That’s it! Once our team processes your request, you’ll be able to manage this information directly.
 
 :::info
-Do you already have permission to modify hotel names but are experiencing issues with a specific hotel? Don't worry! Feel free to contact our team through our [Support Portal](https://app.travelgate.com/support), and they will be happy to assist you!
+Please note that even if your user has Admin permissions, only the Travelgate team can modify the hotel name if it is also assigned to another client. If this is the case, don’t worry! Feel free to contact our team through our [Support Portal](https://app.travelgate.com/support), and we will be happy to assist you!
 :::

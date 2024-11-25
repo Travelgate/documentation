@@ -36,7 +36,7 @@ Please take note the current formula and limit are subject to change.
 :::
 
 ### Are there any limitations on the number of searches/minute?
-Not from TravelgateX side - we don't have any limitations on the RPM in any of our methods. However, some Sellers may have some limitations so we suggest you contact directly with them in order to discuss this information.
+Not from TravelgateX side - we don't have any limitations on the RPM/TPM in any of our methods. However, some Sellers may have some limitations so we suggest you contact directly with them in order to discuss this information.
 
 ### Does nationality or market affect the price returned?
 Yes, nationality and market might affect the rates received in Search response. This depends on the Seller so if you consider that you should get (or not) different rates depending on the nationality or market, please contact them directly.

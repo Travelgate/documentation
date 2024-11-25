@@ -18,7 +18,7 @@ Simplify your content management strategy and save valuable time and effort. No 
 
 ### How can I request an activation for GIATA Hotel Directory?✔️
 1. Log onto TravelgateX (browse as Buyer)
-1. Click on Connections&rarr;[My Conections](/kb/connections/my-connections/)&rarr;Create a new Connection
+1. Click on Connections&rarr;[My Connections](/kb/connections/my-connections/)&rarr;Create a new Connection
 1. Request an activation for GIATA (Seller) following the indications from our [Auto-Activations Quick-guide](/kb/connections/my-connections/guick-guide-to-auto-activations)
 
 	![giata_hotel_directory_2](https://storage.travelgate.com/kbase/giata_hotel_directory_2.jpg)

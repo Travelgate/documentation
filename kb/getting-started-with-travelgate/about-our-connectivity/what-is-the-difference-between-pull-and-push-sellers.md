@@ -6,7 +6,7 @@ sidebar_position: 3
 
 
 ### But first things first: what's an XML integration?💡
-An XML integration is basically a **connector** that acts as a "translator" between the systems of Buyers and Sellers, allowing different formats or programming languages ​​(usually XML) to be compatible. This way, the information from a hotel provider, a Rent a Car, an airline, a railway company, or a shipping company is available on the website of an online travel agency, even if the information in their databases is structured differently.
+An XML integration is basically a **connector** that acts as a "translator" between the systems of Buyers and Sellers, allowing different formats or programming languages ​​(usually XML) to be compatible. This way, the information from a hotel provider is available on the website of an online travel agency, even if the information in their databases is structured differently.
 
 ### Pull Integration⬅️
 

@@ -10,10 +10,8 @@ A "VALIDATION_ERROR" occurs when the validation information provided in your Hot
 ### What can I do if I receive a "VALIDATION_ERROR" in my response?🔎
 Since this error serves as an indication that there is a discrepancy or issue with the validation process, you should check the following information:
 
-- **Verify access**: You should check [My Connections](/kb/connections/my-connections/) in order to make sure that the access/es set in your request have already been configured for your account (status "working") and are active:
-    - If your access displays a "not working" status: One or more processes in the activation have failed and our connectivity team needs to review it manually. You can [contact](/kb/connections/my-connections/guick-guide-to-auto-activations) our Activations Team if necessary via the [Auto-Activations Case](/kb/tickets/travelgatex-tickets).
-    - If your access is not active: Please make sure you activate it in order to run requests via our Platform.
-- Access type **Test/Live**: Verify that the "testMode" tag in your request matches the Test/Live settings for that specific access.
+- **Verify access status**: You should check [My Connections](/kb/connections/my-connections/) in order to make sure that the access or accesses set in your request have already been configured for your account (status "working") and are active. If your access is not active: Please make sure you activate it in order to run requests via our Platform.
+- **Verify access type (Test/Live)**: Verify that the "testMode" tag in your request matches the Test/Live settings for that specific access.
 - **Verify Client**: the Client set in your request should be one of those configured for your account. More information on Hotel-X Clients can be found [here](/kb/connections/connections-settings/).
 - **Verify Apikey**: the Apikey set in your request should be the one configured for your account. You will find more information on your API Settings [here](/kb/connections/connections-settings).
 - **Verify Context**: the Context code set in your request should match the mapping expected in your request:

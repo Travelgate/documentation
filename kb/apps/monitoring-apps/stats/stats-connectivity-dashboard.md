@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Stats: Real-time connectivity performance Dashboard
 
-### How might Stats streamline my choices?  📊
+### How can Stats streamline my choices?  📊
 Welcome to Stats, your ultimate ally for business success! With its user-friendly interface, you can effortlessly monitor your performance and swiftly address any traffic or connection hiccups that may come your way. By offering valuable insights on a per-connection and per-method basis (Search, Quote, Book, Cancel, and Other), Stats grants you a comprehensive overview, along with detailed performance information.
 
 Let [Stats](https://app.travelgatex.com/apps/stats) empower you with data-driven decisions and take your business to new heights! 📊🚀
@@ -37,12 +37,19 @@ In Stats, all the information you need is neatly arranged into different tabs. T
 
 Delve into **other tabs** like "Search," "Quote," "Book," "Cancel" and "Other" for specific details about each booking step. These tabs offer more detailed insights, categorizing information based on different error types that may occur during each phase. Scorecards summarize data for your Organization as a whole, while tables display data for each connection. Additionally, a user-friendly temporal chart is provided to help you visualize traffic patterns over time.
 
-**Download CSV option"**: Above each table, you will find a 'Download CSV' button, allowing you to download the data most relevant to your business.
-
-:::info Legacy Pull Buyers API information
-Please remember that for Buyer connections through our Legacy Pull Buyers API, filtering by Hotel-X Access Code is not available. Connections will be identified through the Buyer's **clientname#suppliercode** relationship.  
-Note that some Buyers may be transitioning from the Legacy Pull Buyers API to the Hotel-X API, which means they could have traffic via both APIs. If in doubt, we strongly encourage you to **reach out to your Buyers** for more detailed information.
+:::info OperationType 'Other'
+The operation type 'Other' refers to operations that don't fall into the categories of Search, Quote, Book, or Cancel. This category can include various types of operations, such as, but not limited to:
+- ReservationRead
+- ReservationList
+- DescriptiveInfo
+- HotelList
+- GeographicalTree
+- RoomList
+- MealPlanList
 :::
+
+
+**Download CSV option"**: Above each table, you will find a 'Download CSV' button, allowing you to download the data most relevant to your business.
 
 **With Stats, you can easily track:**
 
@@ -59,4 +66,7 @@ Additionally, in case any transactions encounter errors, fret not! You can easil
 
 ![stats_dashboard_5](https://storage.travelgate.com/kbase/stats_dashboard_5.jpg)
 
- 
+:::info Legacy Pull Buyers API information
+Please remember that for Buyer connections through our Legacy Pull Buyers API, filtering by Hotel-X Access Code is not available. Connections will be identified through the Buyer's **clientname#suppliercode** relationship.  
+Note that some Buyers may be transitioning from the Legacy Pull Buyers API to the Hotel-X API, which means they could have traffic via both APIs. If in doubt, we strongly encourage you to **reach out to your Buyers** for more detailed information.
+:::

@@ -31,7 +31,7 @@ You can either set this information at a **request level** (in your query "setti
         "timeout": 24700,
   }
 ```
-Or you can set a **default timeout value** in your API Settings - more information here.
+Or you can set a **default timeout value** in your API Settings - more information [here](/kb/connections/connections-settings).
 
 :::info 
 Setting a different timeout value for each Seller is not possible when requesting multimode - the timeout value set on your side will be applied to all of your Sellers.

@@ -10,11 +10,6 @@ We're beyond excited that you've chosen to partner with us for expanding your ho
 
 Whether you have technical questions or need some guidance, we've got you covered. Just head over to [TGX Community](https://discord.com/invite/travelgate), where you can connect with other developers, or get ready to dig into our [Knowledge Base](/kb), packed with awesome articles and FAQs! And for a deeper dive, our comprehensive [Documentation](/docs/get-started/connectivity-products) is at your fingertips.
 
-:::info Resources.
-- [Hotel Pull Sellers API Documentation](/docs/apis/for-sellers/hotel-pull-sellers-api/overview).
-- [Hotel Push Sellers API Documentation](/docs/apis/for-sellers/inventory-sellers/hotel-push-sellers-api/quickstart).
-:::
-
 ### What do I need to have in place before joining TravelgateX?💡
 TravelgateX is purely focused on connectivity so to be able to work with us via API and make the most of our Platform, you should ensure the following solutions are set up, whether in-house or outsourced:
 

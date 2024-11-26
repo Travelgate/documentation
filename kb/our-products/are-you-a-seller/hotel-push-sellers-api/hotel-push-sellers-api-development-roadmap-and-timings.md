@@ -4,7 +4,12 @@ sidebar_position: 2
 
 # Hotel Push Sellers API Development Roadmap and Timings
 
+:::danger deprecated API
+The Hotel Push Sellers API was our first Sellers API, launched back in 2012. It is now deprecated and should not be further developed. Since then, we have launched a new Push Sellers API, in which Travelgate currently plays a proactive role in [developing API integrations](/kb/our-products/are-you-a-seller/getting-started-as-a-new-seller/seller-api-development-roadmap) on behalf of the Seller.
+:::
+
 Starting a new development is always a tricky task due to the lack of information surrounding the project and the difficulty to estimate the resources and time required. That lack of information leads to an under or over estimation of the resources needed and consequently to the inefficiency and ineffectiveness of the project planning, as well as a waste of time and resources.  
+
 At TravelgateX we want to ease that process by providing all the necessary information, roadmap and timings to effectively calculate the amount of resources and timing that will require to develop the Hotel Push Sellers API.
 
 ![hotel_push_sellers_api_development_roadmap_timings_1](https://storage.travelgate.com/kbase/hotel_push_sellers_api_development_roadmap_timings_1.jpg)

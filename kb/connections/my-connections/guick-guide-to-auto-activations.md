@@ -7,7 +7,8 @@ sidebar_position: 2
 In this guide, we'll walk you through the process of requesting a connection with one of our Partners via the TravelgateX Marketplace. We aim to make this journey as straightforward and seamless as possible, ensuring you can easily connect with your chosen partners and enhance your business opportunities. We had, and still have, only one objective: to make connecting a Partner easier and faster. 
 
 :::info Keep in mind
-It's worth noting that having a commercial contract with TravelgateX is a must to request a new connection. If you have any questions or need assistance, feel free to reach out to our friendly Sales Team at sales.support@travelgate.com.
+- **Having a commercial contract with Travelgate** is essential to request a new connection. If you have any questions or need assistance, feel free to reach out to our team at sales.support@travelgate.com.  
+- Similarly, remember that **activations of connections with Channel Managers via Travelgate should always be requested by the Buyers**, not by the Channel Managers themselves.
 :::
 
 ## **How can I request a new connection?**
@@ -25,7 +26,9 @@ It's worth noting that having a commercial contract with TravelgateX is a must t
 
     ![quickguide_to_autoconnections_step3_1](https://storage.travelgate.com/kbase/autoconnections_step3_1.png)
 
-    * **Step 2 (Access configuration):** Let's dive into configuring your access with the Partner! Firstly, assign a distinctive name to your access, perhaps indicating whether it's intended for B2B or B2C operations. Next, specify whether it's for testing purposes or if it's ready to go live. Then, complete the form with the credentials provided by the Seller. Keep in mind that each Seller may require different information based on their system's specifications. It's important to note that activating your access with credentials that haven't been greenlit by the Seller can disrupt the workflow and cause delays. Therefore, ensure that your credentials are active and fully operational before proceeding.
+    * **Step 2 (Access configuration):** Let's dive into configuring your access with the Partner! Firstly, assign a distinctive name to your access, perhaps indicating whether it's intended for B2B or B2C operations. Next, specify whether it's for testing purposes or if it's ready to go live. Then, complete the form with the credentials provided by the Seller.  
+
+        Keep in mind that each Seller may require different information based on their system's specifications. It's important to note that activating your access with credentials that haven't been greenlit by the Seller can disrupt the workflow and cause delays. Therefore, ensure that your credentials are active and fully operational before proceeding.
 
     ![quickguide_to_autoconnections_step3_2](https://storage.travelgate.com/kbase/autoconnections_step3_2.png)
 
@@ -59,13 +62,6 @@ Once you've requested a new connection with your Partner, you can track its prog
 
 
 ## Frequently Asked Questions
-
-<details>
-    <summary>My access is "Not Working" and I cannot edit it, what can I do?</summary>
-    <div>
-        <div>When an access is "Not Working," the "Edit access" feature remains blocked while our Connectivity Team checks the connection. To avoid creating duplicate Cases on our Platform, we strongly advise against requesting the connection again. It's best to wait until our Connectivity Team contacts you and asks for assistance.</div>
-    </div>
-</details>
 
 <details>
     <summary>As a Seller, I have been contacted regarding an activation, what should I do?⚠️</summary>

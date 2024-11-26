@@ -20,14 +20,10 @@ In the [My Connections](https://app.travelgatex.com/connections/myconnections) s
 You can quickly **filter** your [Accesses](/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/hotel-x-credentials#access%EF%B8%8F) based on status, type, and whether they are active or not, or also filter directly by Hotel-X access Code, Supplier code, or Access name:
 
 - **Access Status**:
-	- Working: The activation process was completed successfully and the access is available for use.
-	- Pending: The Access is in validation status and will switch to working or not working after validation.
-	- Not Working: One or more processes in the activation have failed and our connectivity team needs to review it manually.
-    	- Extended information on "Not Working" status: additional information to speed up the [Auto-Activation process](/kb/connections/my-connections/guick-guide-to-auto-activations):
-        	- Informative popup: Hover over the 'Not working' status to see an informative popup explaining why the auto-activation could not be completed.
-        	- Activation Cases: Case information assigned to the activation of that access. You can open the Case reference link to section "Support Portal" for more details about the current status of the activation. 
+	- Working: Your access is all set and ready to be used!
+	- In progress: Our automatic activation process is still setting things up, but it'll be ready soon. Once it is, it'll switch to 'Working' automatically. It may also happen that something didn't quite go as planned in the automatic process, but don't worry because our team will step in to sort it out manually, and we'll reach out to you with updates soon.
+	- Pending Seller's Feedback: The Access is in validation status. We're waiting on final details from either the Seller or Buyer to keep things moving smoothly. Sometimes we need a bit more info, like search criteria, to ensure the activation process passes our tests.
 
-				![myconnections_aug_4](https://storage.travelgate.com/kbase/myconnections_aug_4.jpg)
 - **Access Type**:
 	- Live: This is an access created with production credentials.
 	- Test: This is an access created with test credentials.
@@ -64,7 +60,7 @@ In addition to the aforementioned information, you will also be able to view the
   - Copy access: Copy a pre-existing access.
   - Delete access: Remove unnecessary or invalid accesses.
   - View Logs: View the history of changes made to an access.
-  - Get form data: View your configuration in JSON or XML format, so you can easily consume or store it on your end.
+  - Get form data: View your configuration in JSON or XML format, so you can easily consume or store it on your end. Note that to retrieve the password for a configuration, ADMIN permissions are required. Otherwise, the value will be null. More information on user permissions [here](/kb/account-settings/users-management/how-to-add-manage-users-to-organization).
 
 ![myconnections_aug_3](https://storage.travelgate.com/kbase/myconnections_aug_3.jpg)
 

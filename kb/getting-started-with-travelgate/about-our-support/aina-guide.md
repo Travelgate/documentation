@@ -9,9 +9,16 @@ So, let's dive in and unlock the full potential of your AIna experience!🚀
 
 ### Clarity is Key
 - Clearly state the reason for your inquiry and what prompts you to contact support. Formulate your queries in full sentences to help AIna comprehend your intent (purpose) better and respond accurately.
-- Always specify any errors you encounter to ensure AIna’s response addresses your issue.
+- Always specify any errors and warnings you encounter to ensure AIna’s response addresses your issue.
 - If provided, ensure logs are properly referenced and relevant to your question. 
 - When interacting with AIna through the Support Cases section, be sure to provide all relevant details in the **"Description"** field, as AIna relies on this information rather than the "Subject".
+
+:::info Error details
+When reporting an error, please **include a relevant snippet from the error and warning logs** (or applicationError for responses via the Legacy Pull Buyers API) to help us provide the best possible assistance. For detailed information on error lists and the expected error and warning structures at Travelgate, refer to the following links in our documentation:
+ - [List of errors and warnings](/kb/our-products/are-you-a-buyer/our-methods/lists-of-errors-and-warnings/overview)
+ - [Hotel-X Booking Flow and Management errors](/docs/apis/for-buyers/hotel-x-pull-buyers-api/making-requests/errors-and-warnings/booking-flow) and [Hotel-X Content errors](/docs/apis/for-buyers/hotel-x-pull-buyers-api/making-requests/errors-and-warnings/content)
+ - [Legacy Pull Buyers API Booking Flow and Management errors](/docs/apis/for-buyers/legacy-pull-buyers-api/making-requests/errors-and-warnings/booking-flow) and [Legacy Pull Buyers API Content errors](/docs/apis/for-buyers/legacy-pull-buyers-api/making-requests/errors-and-warnings/content)
+ :::
 
 ### Use Specific Keywords
 Include specific terms or keywords related to your inquiry to help AIna find the most relevant information. These can include, but are not limited to:

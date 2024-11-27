@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Connections Content
 
-Managing your content efficiently without relying on TravelgateX helps you get to market faster and boost sales. We value transparency and believe in giving our partners the right tools to manage their static content.
+Managing your content efficiently without relying on Travelgate helps you get to market faster and boost sales. We value transparency and believe in giving our partners the right tools to manage their static content.
 
 In the Connections Content section, you can easily check and force updates for your connections' static content, like hotel lists. This allows for timely updates and better market responsiveness, making your operations smoother and more effective.
 
@@ -71,7 +71,7 @@ In cases where you've followed the steps above and still do not have the most up
 ## Frequently Asked Questions
 
 <details>
-    <summary>Is the Seller's content stored in TravelgateX database?</summary>
+    <summary>Is the Seller's content stored in Travelgate's database?</summary>
     <div>
         <div>Yes, we store the Seller's static content in our database to enhance response times and performance.</div>
     </div>

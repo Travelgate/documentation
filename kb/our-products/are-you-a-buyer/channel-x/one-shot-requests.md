@@ -8,7 +8,7 @@ sidebar_position: 2
 
 As a Buyer utilizing our [Channel-X Push Buyers API](https://docs.travelgate.com/docs/apis/for-buyers/inventory-buyers/channel-x-push-buyers-api/quickstart/), you already possess the hotel availability data from your suppliers directly in your system.
 
-To proceed with booking any of these options, you should be connected to TravelgateX via our Hotel-X Pull Buyers API. If you are currently connected and following the usual booking process (Search, Quote, and Book), you may continue in this manner. Nonetheless, we recommend implementing some specific methods designed to reduce redundant requests and enhance the efficiency of the booking process in your system.
+To proceed with booking any of these options, you should be connected to Travelgate via our Hotel-X Pull Buyers API. If you are currently connected and following the usual booking process (Search, Quote, and Book), you may continue in this manner. Nonetheless, we recommend implementing some specific methods designed to reduce redundant requests and enhance the efficiency of the booking process in your system.
 
 To enable a more streamlined booking approach, we have developed the **'oneStepQuote' and 'oneStepBook'** methods. You may select the most appropriate one according to your own operational needs.
 

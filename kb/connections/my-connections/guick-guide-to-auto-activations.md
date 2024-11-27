@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Quick guide to auto-connections
 
-In this guide, we'll walk you through the process of requesting a connection with one of our Partners via the TravelgateX Marketplace. We aim to make this journey as straightforward and seamless as possible, ensuring you can easily connect with your chosen partners and enhance your business opportunities. We had, and still have, only one objective: to make connecting a Partner easier and faster. 
+In this guide, we'll walk you through the process of requesting a connection with one of our Partners via the Travelgate Marketplace. We aim to make this journey as straightforward and seamless as possible, ensuring you can easily connect with your chosen partners and enhance your business opportunities. We had, and still have, only one objective: to make connecting a Partner easier and faster. 
 
 :::info Keep in mind
 - **Having a commercial contract with Travelgate** is essential to request a new connection. If you have any questions or need assistance, feel free to reach out to our team at sales.support@travelgate.com.  

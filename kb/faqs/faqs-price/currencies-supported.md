@@ -2,7 +2,7 @@
 sidebar_position: 5
 ---
 
-# Currencies at TravelgateX
+# Currencies at Travelgate
 
 ### How can I know the currencies supported by a Seller?🔎
 To determine the currencies supported by a particular Seller, you can utilize our [Metadata Query](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-metadata-query) method or request this information directly to the Seller.

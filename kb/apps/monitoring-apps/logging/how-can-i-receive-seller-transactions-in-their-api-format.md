@@ -5,7 +5,7 @@ sidebar_position: 3
 # How to retrieve Seller transactions
 
 ### How can I obtain the Seller transactions of my request?🔎
-By adding the "auditTransactions" field to your queries and mutations you will be able to obtain, packed in the response, TravelgateX transactions with the Seller (both the raw request and response).
+By adding the "auditTransactions" field to your queries and mutations you will be able to obtain, packed in the response, Travelgate's transactions with the Seller (both the raw request and response).
 
 ### Application and recommendations on the "auditTransactions" field💡
 Even though it is a great feature to add to all your Booking Flow and Booking Management methods, make sure you follow the recommendations below:

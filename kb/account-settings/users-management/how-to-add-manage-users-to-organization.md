@@ -8,6 +8,8 @@ sidebar_position: 1
 As of **September 10th, 2024**, our website requires 2FA for all users. Please note that shared accounts must transition to individual accounts to comply with this security update.
 :::
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/EQSzhhZn6e8?si=tIbJLeczcm-ZUej7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ### How can I add more users to my Organization?
 In order to add new users simply follow the steps below:
 1. Log onto our [website](https://www.travelgate.com/).

@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Hotel Sellers API - Cancel Policies
 
-In TravelgateX [Quote (Valuation)](/docs/apis/for-sellers/hotel-pull-sellers-api/booking-flow/valuation) response, you'll find a number of fields that offer detailed insights. Among these, we've included specific fields that give you clearer information about cancellation policies, so you can have a more precise understanding of your options.
+In Travelgate [Quote (Valuation)](/docs/apis/for-sellers/hotel-pull-sellers-api/booking-flow/valuation) response, you'll find a number of fields that offer detailed insights. Among these, we've included specific fields that give you clearer information about cancellation policies, so you can have a more precise understanding of your options.
 
 - **TIMEZONE:**  
     It will specify the timezone in UTC in which the cancellation policies are located. See the [Metadata](/docs/apis/for-sellers/hotel-pull-sellers-api/content/meta-data) docs to check all possible values.
@@ -24,7 +24,7 @@ If you have any doubts about the timezone returned (for example, if TimeZone is 
     ![deadline-format-updated](https://storage.travelgate.com/kbase/deadline-format-updated.jpg)
 
 - **CALCULATED DEADLINE:**  
-    Finally, we have also added a "CalculatedDeadline" field to specify if the Deadline has been taken from the Seller’s response or if it has been calculated by TravelgateX.
+    Finally, we have also added a "CalculatedDeadline" field to specify if the Deadline has been taken from the Seller’s response or if it has been calculated by Travelgate.
 
     Please check the following table for a clear view of how we will treat the Cancellation Policies returned by the Seller according to the TimeZone established on the Metadata:
 
@@ -36,4 +36,4 @@ If you have any doubts about the timezone returned (for example, if TimeZone is 
 
 ### Does the same timezone apply to the cancellation policies for all Buyers connected to a Supplier?
 
-In TravelgateX, the timezone settings for cancellation policies are managed in the Supplier's Metadata, so they will apply uniformly across all their Buyers.
+In Travelgate, the timezone settings for cancellation policies are managed in the Supplier's Metadata, so they will apply uniformly across all their Buyers.

@@ -5,9 +5,9 @@ sidebar_position: 4
 # System Degradation Notifications
 
 
-### What is TravelgateX Status Page?⚠️
+### What is Travelgate Status Page?⚠️
 
-[Travelgatex Status Page](https://app.travelgate.com/status) provides **real-time information** on the status of various TravelgateX services, including our Hotel-X API, Hotel Push and Hotel Pull APIs, TravelgateX website, and other services like Distribution or other Applications.
+[Travelgate Status Page](https://app.travelgate.com/status) provides **real-time information** on the status of various Travelgate services, including our Hotel-X API, Hotel Push and Hotel Pull APIs, Travelgate website, and other services like Distribution or other Applications.
 
 It allows you to check the real-time status of our API, including any outages, service degradations, and updates. To stay updated, we recommend **subscribing** to our status notification service, which will send you an email notification in case of any service disruption.
 

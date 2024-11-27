@@ -27,7 +27,7 @@ Every option has a price and every price indicates:
 1. Currency
 2. Amount (net and gross in [Hotel-X Pull Buyers API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart))
 3. Binding
-4. In the case of TravelgateX [Legacy Pull Buyers API](/docs/apis/for-buyers/legacy-pull-buyers-api/overview), we also provide the commission.
+4. In the case of Travelgate [Legacy Pull Buyers API](/docs/apis/for-buyers/legacy-pull-buyers-api/overview), we also provide the commission.
 5. Markup applied over the supplier price, whenever provided.
 6. Minimum Sellng Price (if specified by the Supplier).
    
@@ -40,7 +40,7 @@ When a price is tagged as "binding", it means it’s mandatory to sell at or abo
 :::
 
 ### Understanding the Minimum Selling Price (MSP)  
-The minimumSellingPrice (MSP) represents the **lowest price at which the Buyer can sell the Supplier's product to their customers**. This feature was introduced in TravelgateX in 2022. Previously, we relied on the binding tag to identify mandatory gross amounts that served as minimum selling prices.
+The minimumSellingPrice (MSP) represents the **lowest price at which the Buyer can sell the Supplier's product to their customers**. This feature was introduced in Travelgate in 2022. Previously, we relied on the binding tag to identify mandatory gross amounts that served as minimum selling prices.
 
 **What information does the MSP return?**  
 The MSP field indicates the amount to be set as the mandatory price and allows Buyers to obtain a competitive pricing reference. This is especially valuable when there are three different pricing amounts in place:
@@ -130,7 +130,7 @@ In Hotel-X, we provide both the "Net" and "Gross" prices for each rate to assist
 
 **Commission values:**
 - Commission = 0: the price returned is a net price.
-- Commission = -1: the Seller has not provided the Selling price nor the commission. In case it exists, commission has been agreed at a contractual level with the Seller and it is not traveling via TravelgateX. 
+- Commission = -1: the Seller has not provided the Selling price nor the commission. In case it exists, commission has been agreed at a contractual level with the Seller and it is not traveling via Travelgate. 
 - Commission is greater than 0: X = % of the commission that is applied to the amount.
 
 Note that there is no "commission" field in the Hotel-X Pull Buyers API because we simplify the process by calculating the net amount directly. If you need to determine the specific commission deducted, you can simply subtract the net amount from the gross amount: **Gross - Net = Commission**.

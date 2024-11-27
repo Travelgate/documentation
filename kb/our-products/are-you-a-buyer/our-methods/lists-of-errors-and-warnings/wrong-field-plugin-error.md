@@ -22,4 +22,4 @@ You will receive a commission warning **"some of the options have been discarded
 
 ### What can I do if I receive a commission (some options discarded) warning?
 
-To resolve this issue, you should **upload the SFTP commission file** (RequestContext_sequential_commission.csv) following the instructions in both our [Commission Plugin](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/commision) and [Format Files](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/overview) documentation.
+To resolve this issue, you should **upload the SFTP commission file** (RequestContext_sequential_commission.csv) following the instructions in both our [Commission Plugin](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/commission) and [Format Files](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/overview) documentation.

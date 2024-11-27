@@ -35,30 +35,30 @@ If you need assistance with requesting your credentials to access the SFTP serve
 * **Directory:** HotelX/HotelX\_0000/BusinessRules
 * **Delimiter:** Comma (`,`)
 * **Header Row:**
-   * **RuleId (mandatory):** Unique identifier of the rule (assign one)
-   * **ClientTokens:** Client token used for index the rule
-   * **SupplierCodes (mandatory if 'NotSupplierCodes' is not used):** List of the supplier codes you want the commission to be applied to. 
+   * **RuleId (mandatory):** Unique identifier of the rule (assign one).
+   * **ClientTokens:** Client token used for index the rule.
+   * **SupplierCodes (mandatory if 'NotSupplierCodes' is not used.):** List of the supplier codes you want the commission to be applied to. This field cannot be used simultaneously with the "NotSupplierCodes" column.
       * Separator for multiples codes in the same row: Semicolon (“;”)
-   * **NotSupplierCodes (mandatory if 'SupplierCodes' is not used):** List of the supplier codes you don't want the commission to be applied to. 
+   * **NotSupplierCodes (mandatory if 'SupplierCodes' is not used):** List of the supplier codes you don't want the commission to be applied to. This field cannot be used simultaneously with the "SupplierCodes" column.
+      * Separator for multiples codes in the same row: Semicolon (“;”).
+   * **CreationDateFrom:** Start creation date (yyyy-mm-dd).
+   * **CreationDateTo:** End creation date (yyyy-mm-dd).
+   * **CheckInFrom:** Checkin date (yyyy-mm-dd).
+   * **CheckInTo:** Checkout date (yyyy-mm-dd).
+   * **HotelCodes:** List of the hotel codes you want the commission to be applied to. This field cannot be used simultaneously with the "NotHotelCodes" column.
       * Separator for multiples codes in the same row: Semicolon (“;”)
-   * **CreationDateFrom:** Start creation date (yyyy-mm-dd)
-   * **CreationDateTo:** End creation date (yyyy-mm-dd)
-   * **CheckInFrom:** Checkin date (yyyy-mm-dd)
-   * **CheckInTo:** Checkout date (yyyy-mm-dd)
-   * **HotelCodes:** List of the hotel codes you want the commission to be applied to. 
+   * **NotHotelCodes:** List of the hotel codes you don't want the commission to be applied to. This field cannot be used simultaneously with the "HotelCodes" column.
       * Separator for multiples codes in the same row: Semicolon (“;”)
-   * **NothotelCodes:** List of the hotel codes you don't want the commission to be applied to. 
+   * **ChainsCodes:** List of the chain codes you want the commission to be applied to. This field cannot be used simultaneously with the "NotChainCodes" column.
       * Separator for multiples codes in the same row: Semicolon (“;”)
-   * **ChainsCodes:** List of the chain codes you want the commission to be applied to. 
+   * **NotChainCodes:** List of the chain codes you don't want the commission to be applied to. This field cannot be used simultaneously with the "ChainCodes" column.
       * Separator for multiples codes in the same row: Semicolon (“;”)
-   * **NotChainCodes:** List of the chain codes you don't want the commission to be applied to. 
+   * **DestinationCodes:** List of the destination codes you want the commission to be applied to. This field cannot be used simultaneously with the "NotDestinationCodes" column.
       * Separator for multiples codes in the same row: Semicolon (“;”)
-   * **DestinationCodes:** List of the destination codes you want the commission to be applied to. 
+   * **NotDestinationCodes:** List of the destination codes you don't want the commission to be applied to. This field cannot be used simultaneously with the "DestinationCodes" column.
       * Separator for multiples codes in the same row: Semicolon (“;”)
-   * **NotDestinationCodes:** List of the destination codes you don't want the commission to be applied to. 
-      * Separator for multiples codes in the same row: Semicolon (“;”)
-   * **Percentage (mandatory):** Commission value (decimal separator must be point (“.”))
-   * **Force (mandatory):** Boolean value true/false
+   * **Percentage (mandatory):** Commission value (decimal separator must be point (“.”)).
+   * **Force (mandatory):** Boolean value true/false.
       * **True:** The rule will be applied if matching all its conditions criteria, regardless of a commission being received or not from the supplier through the integration.
       * **False:** The rule will not be applied despite of matching all its conditions criteria if a commission is received from the supplier through the integration.
 

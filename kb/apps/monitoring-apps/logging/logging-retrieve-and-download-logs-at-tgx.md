@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Logging: Access your logs via TravelgateX
+# Logging: Access your logs via Travelgate
 
 ### How can I use Logging? 🔍
 1. Log into [our Portal](https://www.travelgate.com/).

@@ -2,9 +2,9 @@
 sidebar_position: 1
 ---
 
-# Payment Types at TravelgateX
+# Payment Types at Travelgate
 
-### What are the payment types supported by TravelgateX?💡
+### What are the payment types supported by Travelgate?💡
 
 1. **MERCHANT:** The payment is managed by the Seller.
 1. **DIRECT:** Payment is made directly to the actual payee (e.g., the hotel), without involving an intermediary or third party. The payment will be completed at check-in. Credit card details are required in Book (Reservation) request.

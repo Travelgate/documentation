@@ -9,7 +9,7 @@ Our [Partner Network Directory](https://app.travelgate.com/network/partners) was
 ### How can I set up my Company Profile?🛠️
 1. Log into our [Portal](https://www.travelgate.com/).
 1. Click on "Settings" and select "Company Profile".
-1. Alternatively, you can access your Profile directly from TravelgateX Network, filtering by Company.
+1. Alternatively, you can access your Profile directly from Travelgate Network, filtering by Company.
 
 	:::info
 	Please note that you can only edit your profile if you are an **Owner or Admin** user in your Organization. If you have a different role, you will see a message stating that your current role restricts company editing. In that case, please contact the Administrator or Owner for profile adjustments. You can find more information on user roles [here](/kb/account-settings/users-management/how-to-add-manage-users-to-organization).
@@ -30,7 +30,7 @@ Our [Partner Network Directory](https://app.travelgate.com/network/partners) was
 1. After making the necessary changes, you can activate the option "This profile is published on the Travelgate Network" on the left side of the screen. Don't forget to click on "Save changes" to save your updates.
 
 :::info
-If you are already a Partner at TravelgateX and find yourself in any of the following situations:  
+If you are already a Partner at Travelgate and find yourself in any of the following situations:  
 - You are a Buyer at Travelgate wanting to connect via our Inventory Solution.
 - You are a Seller at Travelgate wanting to start working as a Buyer.
 - You are a Pull Seller at Travelgate looking to start working as a Push Seller.
@@ -38,5 +38,5 @@ If you are already a Partner at TravelgateX and find yourself in any of the foll
 - General doubts or commercial information.
 
 You can reach out to our team via email at sales.support@travelgate.com. 
-Please note that this email is **exclusively for existing Partners**. If you are interested in starting a Partnership with TravelgateX, simply fill out our ["Contact Travelgate" form](https://docs.travelgate.com/kb/getting-started-with-travelgate/about-us#how-can-i-become-a-partner-at-travelgatex), and our team will get in touch with you shortly.
+Please note that this email is **exclusively for existing Partners**. If you are interested in starting a Partnership with Travelgate, simply fill out our ["Contact Travelgate" form](https://docs.travelgate.com/kb/getting-started-with-travelgate/about-us#how-can-i-become-a-partner-at-travelgatex), and our team will get in touch with you shortly.
 :::

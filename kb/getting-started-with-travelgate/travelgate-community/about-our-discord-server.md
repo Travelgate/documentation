@@ -6,8 +6,8 @@ sidebar_position: 2
 
 ### How to Join Travelgate on Discord
 
-To join the TravelgateX Discord server, follow these steps:
-1. **Click the Invitation Link**: Clicking the [invitation link](https://discord.com/invite/travelgate) to the TravelgateX Discord server will open a new window.
+To join the Travelgate Discord server, follow these steps:
+1. **Click the Invitation Link**: Clicking the [invitation link](https://discord.com/invite/travelgate) to the Travelgate Discord server will open a new window.
 
     <img src="https://storage.travelgate.com/kbase/discord_2a.jpg" alt="discord_2a" width="500" height="300"/>
 
@@ -37,7 +37,7 @@ Upon entering our Server, you'll see the welcome screen, which includes importan
 
 ### User Verification
 To verify your account on our Discord server, follow these steps:
-1. **Locate the Notification**: At the top of the channel menu on the left, you'll see a message notification (above the TravelgateX logo). Click on this notification to start the verification process.
+1. **Locate the Notification**: At the top of the channel menu on the left, you'll see a message notification (above the Travelgate logo). Click on this notification to start the verification process.
 
     <img src="https://storage.travelgate.com/kbase/discord_9ab.jpg" alt="discord_9ab" width="500" height="300"/>
 

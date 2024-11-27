@@ -6,7 +6,7 @@ sidebar_position: 2
 
 ### How do I activate Traffic Optimizer?
 
-1. Log onto [TravelgateX](https://www.travelgate.com/)
+1. Log onto [Travelgate](https://www.travelgate.com/)
 2. Click on APPs > [Traffic Optimizer](https://app.travelgatex.com/traffic-optimizer). This will take you to your Traffic Optimizer Dashboard, where you can review the connections and accesses currently active on Traffic Optimizer, as well as those that were previously optimized.
 3. Click on the "Optimize a connection" button.
 ![to_updated_2](https://storage.travelgate.com/kbase/to_updated_2.jpg)
@@ -84,7 +84,7 @@ Use cases:
     - Day 1: Traffic Optimizer notifies that "Hotel A" has never been booked by any Buyers connected to that specific Seller.
     - Day 2: "Zero bookings" criteria is applied for "Hotel A," and it gets blocked, except for a limited time (temporary whitelist) that day, when it can receive requests.
     - Day 3: "Hotel A" remains blacklisted but temporarily whitelisted to give it a chance to convert.
-    - Day _n_: If "Hotel A" gets booked during the temporary whitelisted window or receives a booking from any other Buyer in TravelgateX the previous day, it is automatically removed from the blacklist. 
+    - Day _n_: If "Hotel A" gets booked during the temporary whitelisted window or receives a booking from any other Buyer in Travelgate the previous day, it is automatically removed from the blacklist. 
 
 
 :::info

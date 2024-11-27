@@ -6,9 +6,11 @@ sidebar_position: 5
 
 In the API Keys section, you'll be able to check how many API keys you have configured for your organization, when they were created, and generate new ones.
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/1g-NisQ2IKE?si=UDmuzve3TEkfQlq-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ## What is an API Key?
 
-An API key (Apikey) is a unique alphanumeric code that serves as a form of authentication required for accessing our TravelgateX APIs, such as the Hotel-X Pull Buyers API. This key must be included in the HTTP Authorization request header to verify and authenticate the user agent with the server. It acts as a secure identifier, ensuring that only authorized users can make requests and access the API's functionalities.
+An API key (Apikey) is a unique alphanumeric code that serves as a form of authentication required for accessing our Travelgate APIs, such as the Hotel-X Pull Buyers API. This key must be included in the HTTP Authorization request header to verify and authenticate the user agent with the server. It acts as a secure identifier, ensuring that only authorized users can make requests and access the API's functionalities.
 
 
 ## What's inside API Keys? 🔍

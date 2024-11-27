@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # How to choose your payment type at Travelgate
 
-Welcome to our comprehensive guide for selecting the payment type at TravelgateX!
+Welcome to our comprehensive guide for selecting the payment type at Travelgate!
 
 If both you and your Partner are under the **Commercial Agreement 2023**, the [Auto-Activations form](/kb/connections/my-connections/guick-guide-to-auto-activations/) to request a new connection on our Platform will display these available payment types:
 

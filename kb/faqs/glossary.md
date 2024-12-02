@@ -626,8 +626,8 @@ It refers to the total value of sales transactions over a certain period, includ
 - **Status (rel. Book and Cancel)**  
 Booking or Cancel status indicator.
 
-- **Status Page**  
-Page showing real-time information on the status of various Travelgate services.
+- **Status (Discord Channel)**  
+Discord Channel showing real-time information on the status of various Travelgate services.
 
 - **Timezone**  
 Time standard for local time calculation.

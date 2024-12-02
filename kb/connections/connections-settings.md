@@ -20,6 +20,10 @@ In API Settings, you have the power to view and tweak your Hotel-X Pull Buyers A
 
 	![apisettings_1](https://storage.travelgate.com/kbase/apisettings_1.png)
 
+	:::info Can I set a default setting for a specific supplier or access?
+	Yes, you can configure default settings at the supplier or access level to apply to the accesses associated with that supplier or to a specific access. If you need to configure default settings at these levels, please contact our [Customer Support](https://app.travelgate.com/support) team for assistance.
+	:::
+
     - **Clients** tab: Here you can manage your Hotel-X clients, both existing ones and create new ones. Clients are like tags or labels that help you organize your traffic efficiently.
 
     	![apisettings_2](https://storage.travelgate.com/kbase/apisettings_2.png)

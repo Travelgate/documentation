@@ -37,6 +37,12 @@ To edit the optimization criteria for connections or access, click on the three 
 ![TO_edit_actions](https://storage.travelgate.com/kbase/TO_edit_actions.jpg)
 ![TO_edit_actions_2](https://storage.travelgate.com/kbase/TO_edit_actions_2.jpg)
 
+### Why can't I find a specific connection/access on my Traffic Optimizer dashboard or in the optimization dropdown?
+If a connection/access is not visible in the Traffic Optimizer, it could be because the Buyer is not connected to Travelgate via our **Hotel-X API**. Remember, only connections made through the Hotel-X API will be displayed in the Traffic Optimizer.  
+
+Additionally, if a connection or access was activated in the past but later disconnected, it will not appear on the dashboard nor in the dropdown to optimize a new connection. To reactivate it in the Traffic Optimizer, make sure to **uncheck the "Show only active"** option on the left side of the Traffic Optimizer dashboard screen. With this option unchecked, you will be able to view both currently active connections/accesses and those activated in the past, and reactivate them if necessary.
+
+
 ### What kind of information is displayed in the Traffic Optimizer Dashboard?
 
 At the top of the page, you will find three cards that summarize the performance of the Traffic Optimizer across all active connections.

@@ -34,7 +34,7 @@ If your search criteria returns logs, Logging will display the following informa
 	![new_logging_3](https://storage.travelgate.com/kbase/new_logging_3.jpg)
 
 ### Is it possible to download my Hotel-X logs through Logging?
-Currently, it is not possible to retrieve Hotel-X logs directly from Logging, so we recommend capturing them directly on your end at the request level if necessary. Please make sure not to set the ["auditTransactions"](/kb/apps/monitoring-apps/logging/how-can-i-receive-seller-transactions-in-their-api-format?_highlight=auditdata#application-and-recommendations-on-the-audittransactions-field) value to "true" by default.
+Currently, it is not possible to retrieve Hotel-X logs directly from Logging, so we recommend capturing them directly on your end at the request level if necessary. Please make sure not to set the ["auditTransactions"](/kb/apps/monitoring-apps/logging/how-can-i-receive-seller-transactions-in-their-api-format#application-and-recommendations-on-the-audittransactions-field) value to "true" by default.
 
 
 ### Is it possible to obtain the logs from a One Step Book operation?

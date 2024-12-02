@@ -101,7 +101,7 @@ For instance, for a room of two adults:
 ```
 
 ### Can I change the guest details for an existing booking?
-Yes, you can modify the guest details in a reservation, provided that the Supplier's [Metadata](/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-metadata-query) allows these changes. While the number of rooms and guest distribution specified in your Book request must match what was requested in the Search, modifications are still achievable through Travelgate's [Amendments operations](/kb/our-products/are-you-a-buyer/our-methods/booking-management/amendments/what-is-hotel-x-amendments-query).
+Yes, you can modify the guest details in a reservation, provided that the Supplier's [Metadata](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-metadata-query) allows these changes. While the number of rooms and guest distribution specified in your Book request must match what was requested in the Search, modifications are still achievable through Travelgate's [Amendments operations](/kb/our-products/are-you-a-buyer/our-methods/booking-management/amendments/what-is-hotel-x-amendments-query).
 
 
 ### What payment details should I add to my Book request?

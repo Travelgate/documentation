@@ -18,6 +18,9 @@ At Travelgate, we always strive to adapt our tech solutions to our Partners’ e
 	- Those requiring exceptionally low Search response times for their business, such as XML, B2B, metasearch Partners, etc.
 	- Those in need of faster access to products beyond the limitations of the Seller's system.  
 
+### Who can activate Speed?✅
+Both **Buyers and Sellers** have the ability to activate Speed, the smart caching solution in Travelgate. It is important to note that activating Speed requires specific configurations, such as selecting the operational mode and setting the cache storage time (TTL). Therefore, both the Buyer and the Seller may need to collaborate to tailor the Speed setup according to their specific needs.
+
 :::tip Consistent Traffic, Optimal Results!
 To get the best results from Speed and unlock its full potential, it is crucial to maintain a **high volume of requests and a consistent flow of traffic**. Also, keep an eye on Speed's performance after activation, and **adjust the TTL** if needed.  
 Boost your connections and enjoy enhanced performance with our Speed APP!

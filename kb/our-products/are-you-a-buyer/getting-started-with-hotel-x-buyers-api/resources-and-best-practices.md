@@ -44,9 +44,9 @@ To implement this feature, please follow the steps below:
 
 Feel free to visit our [blog](https://blog.travelgatex.com/en/how-to-improve-graphql-performance) for tips on improving GraphQL performance when dealing with responses that have over 10,000 nodes or weigh more than 1Mb
 
-### TravelgateX Status✅
+### Status Discord Channel✅
 
-Stay informed about the real-time performance of our services with our [Status page](https://status.travelgatex.com/). Our event tracker and reliable metrics allow you to effortlessly track and monitor our performance.
+Stay informed about the real-time performance of our services with our [Status Discord Channel](https://status.travelgatex.com/). Our event tracker and reliable metrics allow you to effortlessly track and monitor our performance.
 
 ### TravelgateX Plugins🔨
 Hotel-X provides customizable [Plugins](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/overview) that enable you to integrate your own business logic seamlessly, without the need for separate implementation. With Hotel-X Plugins, you have full control over customizing your requests and responses to align with your specific requirements and easily enhance your functionalities as your business grows and evolves.

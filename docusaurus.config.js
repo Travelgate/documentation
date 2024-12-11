@@ -4,6 +4,8 @@
 const {themes} = require('prism-react-renderer');
 const lightTheme = themes.github;
 const darkTheme = themes.dracula;
+const TRAVELGATE_API_KEY = process.env.TRAVELGATE_API_KEY;
+
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -89,7 +91,12 @@ const config = {
         //homepage: "./docs/api-reference.md",
         loaders: {
           UrlLoader: {
-            module: "@graphql-tools/url-loader"
+            module: "@graphql-tools/url-loader",
+            options: {
+              headers: {
+                Authorization: "Apikey " + TRAVELGATE_API_KEY,
+              }
+            }
           }
         }
       },

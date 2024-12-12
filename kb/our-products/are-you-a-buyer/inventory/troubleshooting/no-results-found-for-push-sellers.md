@@ -15,13 +15,14 @@ Here are the possible causes for availability not being displayed for Push Selle
 
 	![204_error_inventory_1](https://storage.travelgate.com/kbase/204_error_inventory_1.jpg)
 
-1. **No product loaded for requested rates/rooms:** If no product is loaded, availability results will not be obtained.
-1. **Close Sales, Close On Arrival, or Close On Departure enabled for requested dates:** Days with Close Sales will be highlighted in red, while days with sales Closed On Arrival and/or Closed On Departure will be highlighted in a different shade of green and a checkbutton will be also applied.
+2. **No product loaded for requested rates/rooms/occupancies:** If no product is loaded, availability results will not be obtained.
+3. **Ensure Room Setup Matches Desired Occupancies:** Remember to verify that the [rooms](/docs/apps/inventory/extranet/set-up/setup#room)  are configured in the setup for all the occupancies you want them to be available for.
+4. **Close Sales, Close On Arrival, or Close On Departure enabled for requested dates:** Days with Close Sales will be highlighted in red, while days with sales Closed On Arrival and/or Closed On Departure will be highlighted in a different shade of green and a checkbutton will be also applied.
 
 	![204_error_inventory_2](https://storage.travelgate.com/kbase/204_error_inventory_2.jpg)
 
-1. **Incorrectly loaded booking limit:** Verify that the booking limit has been loaded correctly.
-1. **Mismatch in search criteria:** Ensure that the search criteria in your request matches the criteria previously loaded for those rates/rooms.
+5. **Incorrectly loaded booking limit:** Verify that the booking limit has been loaded correctly.
+6. **Mismatch in search criteria:** Ensure that the search criteria in your request matches the criteria previously loaded for those rates/rooms.
 
 :::info
 Don't forget to check our [Documentation](/docs/apps/inventory/extranet/overview) for further information on our Inventory Extranet🚀

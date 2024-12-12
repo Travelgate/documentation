@@ -13,7 +13,7 @@ An Apikey is a unique alphanumeric code that serves as a form of authentication 
 
 1. APP access: Log in with your credentials [here](https://www.travelgate.com/).
 2. Click on the 'Manage > API Keys' section. You can find it in the menu that appears when you click on your user icon in the top right corner of the screen.
-3. API Settings list: List of API Keys associated with your Organization (encrypted). You can also generate new API keys by clicking the 'Create New API Key' button and completing the required form. Please note that API Keys cannot be retrieved; therefore, ensure you keep a record of yours once created.
+3. API Settings list: List of API Keys associated with your Organization (encrypted). You can also generate new API keys by clicking the 'Create New API Key' button and completing the required form. Once generated, copy the API key value. Remember, this is the only time when the full API key will be displayed, so ensure you store it securely. **The generated API keys are not retrievable**, so if needed, a new one must be created. Previously used API keys will remain active.
 
 	:::info
 	Please keep in mind that the Apikey will remain consistent across both test and production environments.

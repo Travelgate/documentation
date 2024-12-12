@@ -69,7 +69,7 @@ Since this error serves as an indication that there is a discrepancy or issue wi
     }
     ```
 
-1. **Too many options to return** (in relation to your [optionsQuota](/kb/our-products/are-you-a-buyer/our-methods/booking-flow/search/how-tos/how-to-limit-and-filter-options-through-business-rules)) - **"QUOTA_EXCEEDED"; "VALIDATION_ERROR"**
+2. **Too many options to return** (in relation to the [optionsQuota](/kb/our-products/are-you-a-buyer/our-methods/booking-flow/search/how-tos/how-to-limit-and-filter-options-through-business-rules) value) - **"QUOTA_EXCEEDED"; "VALIDATION_ERROR"**
 
     ```
     {
@@ -93,7 +93,7 @@ Since this error serves as an indication that there is a discrepancy or issue wi
     }
     ```
 
-1. **Incorrect Search criteria** (e.g. invalid dates): **"WRONG_FIELD"; "VALIDATION_ERROR"**
+3. **Incorrect Search criteria** (e.g. invalid dates): **"WRONG_FIELD"; "VALIDATION_ERROR"**
 ```
 {
     "data" : {

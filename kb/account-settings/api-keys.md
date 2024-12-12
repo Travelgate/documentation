@@ -41,7 +41,7 @@ You can generate a new API Key . Creating a new API key for your organization is
 
 ![apikey_1](https://storage.travelgate.com/kbase/apikey_1.png)
 
-2. **Copy the API Key Value**: Once generated, copy the Apikey value. Remember, this is the only moment when the full Apikey will be displayed, so ensure you store it securely.
+2. **Copy the API Key Value**: Once generated, copy the API key value. Remember, this is the only time when the full API key will be displayed, so ensure you store it securely. **The generated API keys are not retrievable**, so if needed, a new one must be created. Previously used API keys will remain active.
 
 ![apikey_2](https://storage.travelgate.com/kbase/apikey_2.png)
 

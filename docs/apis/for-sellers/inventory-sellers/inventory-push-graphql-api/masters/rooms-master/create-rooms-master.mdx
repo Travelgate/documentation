@@ -1,0 +1,87 @@
+---
+sidebar_position: 2
+---
+
+# Create Room Master
+
+The `createRoomMaster` mutation allows you to create a new room master in Inventory. The returned fields include:
+
+* `id`
+* `code`
+* `name`
+
+
+```js
+mutation ($input: InventoryRoomMasterCreateInput!) {
+  inventory {
+    createRoomMaster(roomMasterCreateInput: $input) {
+      rooms {
+        id
+        code
+        name
+      }
+      success
+      adviseMessages {
+        code
+        description
+        level
+        external{
+            code
+            message
+        }
+      }
+    }
+  }
+}
+```
+
+## Mutation Inputs
+
+When building your mutation, you have 1 input to fill:
+
+1. Input
+
+
+### 1. Input   
+To build your `createRoomMaster` input you need to fill your client code in the field `clientCode` and the `code` and `name` you wish to set for the new room type.
+
+:::note
+
+Your `ClientCode` can be retrieved from any TravelgateX's access with a Channel Manager.  
+See [My Connections](https://app.travelgate.com/connections/myconnections) and click "Get form data" in the selected access, the code in `Password` is equivalent to the `ClientCode`.
+
+:::
+
+```js
+{
+  "input":{
+    "clientCode": "CDOC",
+    "code": "STD",
+    "name": "Standard"
+  }
+}
+```
+
+**Mandatory input**
+* `clientCode`
+* `code`
+* `name`
+
+## Example response
+```js
+{
+  "data": {
+    "inventory": {
+      "roomsMaster": {
+        "rooms": [
+          {
+            "id": 47915,
+            "code": "STD",
+            "name": "Standard"
+          }
+        ]
+      }
+    }
+  }
+}
+```

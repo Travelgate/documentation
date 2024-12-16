@@ -70,13 +70,13 @@ const config = {
 
   plugins:[
     'docusaurus-plugin-sass',
-    //[
-    //  '@docusaurus/plugin-google-gtag',
-    //  {
-    //    trackingID: 'G-ECHYSGVN82',
-    //    anonymizeIP: true,
-    //  },
-    //],
+    [
+      '@docusaurus/plugin-google-gtag',
+      {
+        trackingID: 'G-ECHYSGVN82',
+        anonymizeIP: true,
+      },
+    ],
     [
       "@graphql-markdown/docusaurus",
       {

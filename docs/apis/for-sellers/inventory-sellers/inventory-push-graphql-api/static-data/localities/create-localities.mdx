@@ -1,0 +1,88 @@
+---
+sidebar_position: 3
+---
+
+# Create Localities
+
+The `createLocalities` mutation allows you to create new localities that a hotel can have assigned in Inventory. The returned fields include:
+
+* `id`
+* `name`
+* `countryCode`
+* `unLocode`
+
+
+```js
+mutation ($input: [InventoryLocalitiesCreateInput]) {
+  inventory {
+    createLocalities(localitiesCreateInput: $input) {
+      localities {
+        id
+        name
+        countryCode
+        unLocode
+      }
+      success
+      adviseMessages {
+        code
+        description
+        level
+        external{
+            code
+            message
+        }
+      }
+    }
+  }
+}
+```
+
+## Mutation Inputs
+
+When building your mutation, you have 1 input to fill:
+
+1. Input
+
+
+### 1. Input   
+To build your `createLocalities` input you need fill the name of the locality in the field `name`and the ISO 2-character country code where the locality is located in the field `countryCode`.
+You can also specify the United Nations code for Trade and Transport Locations in the field `unLocode` to identify the locality unequivocally.
+
+```js
+{
+  "input":[
+    {
+        "name": "Palma de Mallorca",
+        "countryCode": "ES",
+        "unLocode": "ES-PMI"
+    }
+  ]
+}
+```
+
+**Mandatory input**
+* `countryCode`
+* `name`
+
+**Optional input**
+* `unLocode`
+
+## Example response
+```js
+{
+  "data": {
+    "inventory": {
+      "createLocalities": {
+        "localities": [
+          {
+            "name": "Palma de Mallorca",
+            "countryCode": "ES",
+            "id": 31104,
+            "unLocode": "ES-PMI"
+          }
+        ]
+      }
+    }
+  }
+}
+```

@@ -4,7 +4,7 @@
 const {themes} = require('prism-react-renderer');
 const lightTheme = themes.github;
 const darkTheme = themes.dracula;
-const TRAVELGATE_API_KEY = 'test0000-0000-0000-0000-000000000000';
+const TRAVELGATE_API_KEY = process.env.TRAVELGATE_API_KEY;
 
 
 /** @type {import('@docusaurus/types').Config} */
@@ -70,13 +70,13 @@ const config = {
 
   plugins:[
     'docusaurus-plugin-sass',
-    //[
-    //  '@docusaurus/plugin-google-gtag',
-    //  {
-    //    trackingID: 'G-ECHYSGVN82',
-    //    anonymizeIP: true,
-    //  },
-    //],
+    [
+      '@docusaurus/plugin-google-gtag',
+      {
+        trackingID: 'G-ECHYSGVN82',
+        anonymizeIP: true,
+      },
+    ],
     [
       "@graphql-markdown/docusaurus",
       {

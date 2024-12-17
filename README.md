@@ -13,12 +13,22 @@ $ npm install
 
 ### Generate GraphQL API reference
 
+To run this command, you need to have a Travelgate api key called `TRAVELGATE_API_KEY`  in
+your environment variables. You can get the key from the team. The way you set the environment
+variable depends on your operating system.
+
 ```
 npx docusaurus graphql-to-doc
 ```
 
-The GraphQL API reference is generated from the TravelgateX GraphQL schema but 
-the `sidebar-schema.js` needs to be updated. Copy + paste the following code in your 
+or with a temporary environment variable:
+
+```
+TRAVELGATE_API_KEY=your_api_key npx docusaurus graphql-to-doc
+```
+
+The GraphQL API reference is generated from the TravelgateX GraphQL schema but
+the `sidebar-schema.js` needs to be updated. Copy + paste the following code in your
 `api/sidebar-schema.js` file: (***create the file manually if necessary**)
 
 ```javascript
@@ -81,11 +91,11 @@ npm run build && npm run start
 
 Be patient, the build process can take a while.
 
-**IMPORTANT:** If you are upgrading `@graphql-markdown/docusaurus` version, make sure to run `graphql-to-doc` command 
-to check the generated API reference locally before pushing the changes. If your locally generated API reference 
+**IMPORTANT:** If you are upgrading `@graphql-markdown/docusaurus` version, make sure to run `graphql-to-doc` command
+to check the generated API reference locally before pushing the changes. If your locally generated API reference
 structure is different from the one in live, you need to inform the team about the changes in #documenters channel.
 
-This step is important, because the generated links are also used to train Aina bot. If the links are 
+This step is important, because the generated links are also used to train Aina bot. If the links are
 not working, Aina will not be able to provide the correct information.
 
 ```bash 

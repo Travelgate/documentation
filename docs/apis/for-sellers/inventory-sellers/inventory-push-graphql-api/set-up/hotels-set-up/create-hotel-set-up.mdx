@@ -1,0 +1,46 @@
+---
+sidebar_position: 3
+---
+
+import {createHotelSetUpMutation, createHotelSetUpVariables} from "/src/graphql/inventory/set-up/hotels-set-up.mutation";
+
+
+# Create Hotel
+
+The `createHotelSetUp` allows you to add a new hotel, with its configuration, to a specific client - seller relation in Inventory. The returned fields include:
+
+* `id`
+* `hotelCode`
+* `contextCode`
+* `active`
+* `sendNotification`
+* `emailNotification`
+* `emailNotificationCc`
+* `emailNotificationSupport`
+
+## Mutation Inputs
+
+When creating your `createHotelSetUp` mutation, you have 1 input to fill based on your specific needs:
+
+1. Input
+
+### 1. Input   
+
+**Mandatory input**
+* `clientCode`
+* `supplierCode`
+* `hotelCode`
+* `active`
+* `sendNotification`
+
+**Optional input**
+* `contextCode`
+* `emailNotification`
+* `emailNotificationCc`
+* `emailNotificationSupport`
+
+### Requests Examples
+
+#### Add a new Hotel
+
+<GraphqlSample query={createHotelSetUpMutation} variables={createHotelSetUpVariables} />

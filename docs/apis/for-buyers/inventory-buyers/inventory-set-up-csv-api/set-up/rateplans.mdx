@@ -19,20 +19,20 @@ If you have any questions about how to add the requested information to create t
 |-------------|-----|---------------------------------------------------------------------------------------------------|
 | Code        |	  1   | Unique identifier for the rate. |
 | Name        |   1   | Descriptive name of the rate. |
-| Rate Rule        |   0   | Code of the rate rule ([Check the Rate Rule Codes](#rate-rule-codes)). |
+| Rate Rule        |   0   | Code of the rate rule ([Check the Rate Rule Codes](/docs/apis/for-buyers/inventory-buyers/inventory-set-up-csv-api/set-up/rateplans#rate-rules)). |
 | Active        |   1   | Indicate if the rate is operational or not. Example: (**0 - False** (rate not active)) or (**1 - True** (rate active)). |
 | Max Age Child        |   1   | Age limit for child, inclusive. |
 | Max Age Infant        |   1   | Age limit for infant, inclusive. |
 | Booking From        |   0   | Starting Date which the rate will be available. Format date: dd/MM/yyyy. |
 | Booking To        |   0   | Ending Date which the rate will be available. Format date: dd/MM/yyyy. |
-| PaymentType        |   0   | List of accepted payment types for this rate ([Check the Payment Types Codes](#payment-types-codes)). |
+| PaymentType        |   0   | List of accepted payment types for this rate ([Check the Payment Types Codes](/docs/apis/for-buyers/inventory-buyers/inventory-set-up-csv-api/set-up/rateplans#paymenttype)). |
 | Commission        |   0   | Value of the rate's commission in the range 0-100. |
 | Currency        |   1   | ISO code that identifies the currency of the rate, format code: ISO 4217 |
 | Markets Included        |   0   | List of included markets (ISO 3166-1 alpha-2) separated by pipe for this rate. |
 | Markets Excluded        |   0   | List of excluded markets (ISO 3166-1 alpha-2) separated by pipe for this rate. |
-| Meal Plan        |   0   | Meal plan included in rate ([Check the Meal Plan Codes](#meal-plan-codes)). |
+| Meal Plan        |   0   | Meal plan included in rate ([Check the Meal Plan Codes](/docs/apis/for-buyers/inventory-buyers/inventory-set-up-csv-api/set-up/rateplans#meal-plan)). |
 | Binding        |   0   | Indicate if the rate's price could be sold under the price shown. Example: (**0 - False** (binding price false)) or (**1 - True** (binding price true)). |
-| Senior Rule        |   0   | Sets the rate for senior citizens ([Check the Senior Rule Codes](#senior-rule-codes)). |
+| Senior Rule        |   0   | Sets the rate for senior citizens ([Check the Senior Rule Codes](/docs/apis/for-buyers/inventory-buyers/inventory-set-up-csv-api/set-up/rateplans#senior-rule)). |
 
 #### Sheet Format Example
 
@@ -47,6 +47,7 @@ Code;Name;Rate Rule;Active;Max Age Child;Max Age Infant;Booking From;Booking To;
 
 ### Additional information
 
+#### Rate Rules
 | Rate Rule |
 |-------------|
 | NoRatePlanType |
@@ -58,7 +59,7 @@ Code;Name;Rate Rule;Active;Max Age Child;Max Age Infant;Booking From;Booking To;
 | BalearicResident |
 | HoneyMoon |
 
-
+#### PaymentType
 | PaymentType |
 |-------------|
 | LaterPay |
@@ -69,6 +70,7 @@ Code;Name;Rate Rule;Active;Max Age Child;Max Age Infant;Booking From;Booking To;
 The table below displays the list of available Meal Plan codes for the rate plan. In addition, you have at your disposal the `mealplansQuery` to retrieve these Meal Plan codes.  
 We recommend using this query to fetch the Meal Plan codes in real-time.
 
+#### Meal Plan
 | Meal Plan |
 |-------------|
 | All inclusive |
@@ -101,6 +103,7 @@ We recommend using this query to fetch the Meal Plan codes in real-time.
 
 To retrieve these Meal Plan codes in real-time, you can use the `mealplansQuery`. For more information on how to use this query, refer to the [Meal Plans](/docs/apis/for-buyers/inventory-buyers/inventory-set-up-graphql-api/static-data/mealplans) documentation.
 
+#### Senior Rule
 | Senior Rule |
 |-------------|
 | No Senior Rate |

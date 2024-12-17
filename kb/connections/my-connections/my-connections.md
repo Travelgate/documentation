@@ -15,7 +15,7 @@ To check, activate, and keep track of your connections via Travelgate, simply fo
 	![myconnections_aug_1](https://storage.travelgate.com/kbase/myconnections_aug_1.jpg)
 
 ### What can I find in My Connections?
-In the [My Connections](https://app.travelgatex.com/connections/myconnections) section, you will find a list of all your connections and their accesses.
+In the [My Connections](https://app.travelgate.com/connections/myconnections) section, you will find a list of all your connections and their accesses.
 
 You can quickly **filter** your [Accesses](/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/hotel-x-credentials#access%EF%B8%8F) based on status, type, and whether they are active or not, or also filter directly by Hotel-X access Code, Supplier code, or Access name:
 

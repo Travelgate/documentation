@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # How to edit & customize your Company Profile
 
-Our [Partner Network Directory](https://app.travelgate.com/network/partners) was born with the purpose of not only to increase the visibility of our connections, but also to build an environment that fosters networking and business opportunities. Your [Company Profile](https://app.travelgatex.com/settings/company-profile) is your chance to stand out with engaging content designed to attract attention!
+Our [Partner Network Directory](https://app.travelgate.com/network/partners) was born with the purpose of not only to increase the visibility of our connections, but also to build an environment that fosters networking and business opportunities. Your [Company Profile](https://app.travelgate.com/settings/company-profile) is your chance to stand out with engaging content designed to attract attention!
 
 ### How can I set up my Company Profile?🛠️
 1. Log into our [Portal](https://www.travelgate.com/).
@@ -17,7 +17,7 @@ Our [Partner Network Directory](https://app.travelgate.com/network/partners) was
 
 ![edit_customize_profile](https://storage.travelgate.com/kbase/edit_customize_profile.jpg)
 
-1. Once in your [Company Profile](https://app.travelgatex.com/settings/company-profile) page, you will visualize a yellow box and an "Edit page" button. Click on it to start editing your Company details:
+1. Once in your [Company Profile](https://app.travelgate.com/settings/company-profile) page, you will visualize a yellow box and an "Edit page" button. Click on it to start editing your Company details:
 	- Company Name
 	- Website URL
 	- Logo

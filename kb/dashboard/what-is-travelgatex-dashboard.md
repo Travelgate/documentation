@@ -15,7 +15,7 @@ These informative reports can provide data from the previous day, the last week,
 So, let's establish that connection and start harnessing the potential of the Marketplace Dashboard!
 
 :::tip
-If you're looking for a truly immersive performance monitoring experience, we strongly encourage you to check out our incredible [Stats APP](https://app.travelgatex.com/stats). It offers a comprehensive range of features that will take your monitoring to the next level! 🚀
+If you're looking for a truly immersive performance monitoring experience, we strongly encourage you to check out our incredible [Stats APP](https://app.travelgate.com/stats). It offers a comprehensive range of features that will take your monitoring to the next level! 🚀
 :::
 
 ### What kind of reports can I find in my Dashboard?🔎

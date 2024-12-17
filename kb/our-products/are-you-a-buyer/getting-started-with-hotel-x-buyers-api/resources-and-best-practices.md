@@ -19,10 +19,10 @@ sidebar_position: 3
 
 ### Hotel-X endpoint🌍
 
-To access all the methods available through our Hotel-X API, please use the endpoint **https://api.travelgatex.com** (both test and production environments).
+To access all the methods available through our Hotel-X API, please use the endpoint **https://api.travelgate.com** (both test and production environments).
 
 :::note
-**China endpoint**: If your servers are located in China, you can improve performance by using the following URL: **https://api-cn.travelgatex.com**
+**China endpoint**: If your servers are located in China, you can improve performance by using the following URL: **https://api-cn.travelgate.com**
 :::
 
 ### GZIP Compression📦
@@ -42,11 +42,11 @@ To implement this feature, please follow the steps below:
 
 ### Improve GraphQL Performance🏅
 
-Feel free to visit our [blog](https://blog.travelgatex.com/en/how-to-improve-graphql-performance) for tips on improving GraphQL performance when dealing with responses that have over 10,000 nodes or weigh more than 1Mb
+Feel free to visit our [blog](https://blog.travelgate.com/en/how-to-improve-graphql-performance) for tips on improving GraphQL performance when dealing with responses that have over 10,000 nodes or weigh more than 1Mb
 
 ### Status Discord Channel✅
 
-Stay informed about the real-time performance of our services with our [Status Discord Channel](https://status.travelgatex.com/). Our event tracker and reliable metrics allow you to effortlessly track and monitor our performance.
+Stay informed about the real-time performance of our services with our [Status Discord Channel](https://status.travelgate.com/). Our event tracker and reliable metrics allow you to effortlessly track and monitor our performance.
 
 ### TravelgateX Plugins🔨
 Hotel-X provides customizable [Plugins](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/overview) that enable you to integrate your own business logic seamlessly, without the need for separate implementation. With Hotel-X Plugins, you have full control over customizing your requests and responses to align with your specific requirements and easily enhance your functionalities as your business grows and evolves.

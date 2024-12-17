@@ -6,7 +6,7 @@ sidebar_position: 1
 
 ### How can I use Logging? 🔍
 1. Log into [our Portal](https://www.travelgate.com/).
-1. Click on APPs > [Logging](https://app.travelgatex.com/logging).
+1. Click on APPs > [Logging](https://app.travelgate.com/logging).
 1. Decide if you prefer to search by connection, reference or session ID.
 1. Then, select the connection(s) and adjust the filters:
 	- Time range (UTC)

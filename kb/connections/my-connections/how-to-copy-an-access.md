@@ -4,7 +4,7 @@ sidebar_position: 5
 
 # How to copy an access
 
-In order to **speed up the process of copying a pre-existing access and minimize typographical errors** when filling in the access form, we have enabled the "Copy Access" feature in the section [My Connections](https://app.travelgatex.com/connections/myconnections).
+In order to **speed up the process of copying a pre-existing access and minimize typographical errors** when filling in the access form, we have enabled the "Copy Access" feature in the section [My Connections](https://app.travelgate.com/connections/myconnections).
 
 In order to copy an access, simply follow the steps below:
 

@@ -19,7 +19,7 @@ And if you want to expand your business:
 * **New Destinations**: Expand your business to new destinations!
 * **New Markets**: Expand your business to new markets!
 ### Where do I find recommendations for my Company?  🔍
-You can access your recommended connections through both your [Dashboard](https://app.travelgatex.com/dashboard) and our [Network's Partner List](https://app.travelgate.com/network/partners). Once you've identified a Partner you'd like to connect with, simply arrange your own contract and request their activation. It's that simple!
+You can access your recommended connections through both your [Dashboard](https://app.travelgate.com/dashboard) and our [Network's Partner List](https://app.travelgate.com/network/partners). Once you've identified a Partner you'd like to connect with, simply arrange your own contract and request their activation. It's that simple!
 
 ![network_updated_1](https://storage.travelgate.com/kbase/network_updated_1.jpg)
 

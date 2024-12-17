@@ -9,7 +9,7 @@ Understanding and managing technical performance errors is crucial for maintaini
 Additionally, users can change the data range (last month / last 7 days), apply filters and download the data for detailed analysis.
 
 ### How can I access the Errors Overview Report?
-Just log in to our App, click on Insights and choose [“Errors Overview”](https://app.travelgatex.com/insights/errors-overview).
+Just log in to our App, click on Insights and choose [“Errors Overview”](https://app.travelgate.com/insights/errors-overview).
 
 ![errors_overview_1](https://storage.travelgate.com/kbase/errors_overview_1.jpg)
 

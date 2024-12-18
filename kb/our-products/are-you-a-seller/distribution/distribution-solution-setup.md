@@ -30,7 +30,7 @@ You can access our FTP from any FTP application by configuring the following inf
 
 - Port: 21
 - Host: ftp.xmltravelgate.com
-- Credentials: Provided to the Organization Owner at TravelgateX.com, along with the Welcome Email (from: jenkins-ci) 
+- Credentials: Provided to the Organization Owner at travelgate.com, along with the Welcome Email (from: jenkins-ci) 
 
 **Hotel-X Mapping files**
 Hotel-X utilizes six mapping files to enhance the accuracy of your aggregation. We suggest starting with at least the following:

@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Hotel Portfolio
 
-The [hotel portfolio report](https://app.travelgatex.com/insights/hotel-portfolio) shows how hotels are requested within your connections for a specific period of time and enables connections to identify the volume of hotels that are no longer available in the Sellers’ portfolio.
+The [hotel portfolio report](https://app.travelgate.com/insights/hotel-portfolio) shows how hotels are requested within your connections for a specific period of time and enables connections to identify the volume of hotels that are no longer available in the Sellers’ portfolio.
 
 ### Who can access this report?
 

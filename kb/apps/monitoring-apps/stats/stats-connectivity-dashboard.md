@@ -7,7 +7,7 @@ sidebar_position: 1
 ### How can Stats streamline my choices?  📊
 Welcome to Stats, your ultimate ally for business success! With its user-friendly interface, you can effortlessly monitor your performance and swiftly address any traffic or connection hiccups that may come your way. By offering valuable insights on a per-connection and per-method basis (Search, Quote, Book, Cancel, and Other), Stats grants you a comprehensive overview, along with detailed performance information.
 
-Let [Stats](https://app.travelgatex.com/apps/stats) empower you with data-driven decisions and take your business to new heights! 📊🚀
+Let [Stats](https://app.travelgate.com/apps/stats) empower you with data-driven decisions and take your business to new heights! 📊🚀
 
 ![stats_dashboard_1](https://storage.travelgate.com/kbase/stats_dashboard_1.jpg)
 

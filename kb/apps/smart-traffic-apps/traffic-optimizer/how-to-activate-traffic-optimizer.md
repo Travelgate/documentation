@@ -7,7 +7,7 @@ sidebar_position: 2
 ### How do I activate Traffic Optimizer?
 
 1. Log onto [Travelgate](https://www.travelgate.com/)
-2. Click on APPs > [Traffic Optimizer](https://app.travelgatex.com/traffic-optimizer). This will take you to your Traffic Optimizer Dashboard, where you can review the connections and accesses currently active on Traffic Optimizer, as well as those that were previously optimized.
+2. Click on APPs > [Traffic Optimizer](https://app.travelgate.com/traffic-optimizer). This will take you to your Traffic Optimizer Dashboard, where you can review the connections and accesses currently active on Traffic Optimizer, as well as those that were previously optimized.
 3. Click on the "Optimize a connection" button.
 ![to_updated_2](https://storage.travelgate.com/kbase/to_updated_2.jpg)
 1. Select the connection or access to optimize: Connections or accesses that were already configured will not be displayed in the menu. If you can’t find the connection/access, check the dashboard and review the filters. They may have been configured previously.

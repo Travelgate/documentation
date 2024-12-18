@@ -1,0 +1,57 @@
+---
+sidebar_position: 1
+---
+
+import {offersSetUpQuery, offersSetUpVariables, offersSetUpByCodesVariables} from "/src/graphql/inventory/set-up/offers-set-up.query";
+
+
+# Offers
+
+The `offersSetUp` query returns the offers created for a hotel rate in Inventory. The returned fields include:
+
+* `code`
+* `description`
+* `isActive`
+* `rateCode`
+* `roomCodes`
+* `mon`
+* `tue`
+* `wed`
+* `thu`
+* `fri`
+* `sat`
+* `sun`
+* `applyFrom`
+* `applyTo`
+* `numberOfNights`
+* `minLos`
+* `maxLos`
+* `nightsType`
+
+## Query Inputs
+
+When creating your `offersSetUp` query, you have 1 input to fill based on your specific needs:
+
+1. Criteria
+
+### 1. Criteria   
+
+**Mandatory input**
+* `clientCode`
+* `supplierCode`
+* `hotelCode`
+* `rateCode`
+
+**Optional input**
+* `contextCode`
+* `offerCodes`
+
+### Requests Examples
+
+#### Retrieve all offers from a rate
+
+<GraphqlSample query={offersSetUpQuery} variables={offersSetUpVariables} />
+
+#### Retrieve specific offers from a rate
+
+<GraphqlSample query={offersSetUpQuery} variables={offersSetUpByCodesVariables} />

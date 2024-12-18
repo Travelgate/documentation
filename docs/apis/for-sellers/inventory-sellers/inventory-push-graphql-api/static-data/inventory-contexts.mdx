@@ -1,0 +1,44 @@
+---
+sidebar_position: 5
+---
+
+import {inventoryContextsQuery, inventoryContextsVariables, inventoryContextsSuppliersVariables} from "/src/graphql/inventory/static-data/inventory-contexts.query";
+
+
+# Inventory Contexts
+
+`Inventory Context` is a term used to describe hotel codes used in Inventory. This should not be confused with the standard concept [Context](/docs/get-started/key-concepts#context); as this `Inventory Context` is exclusively related to the Inventory scope.  
+Some Channel Managers need to work with their native hotel codes instead of mapping the Inventory hotel IDs that we autogenerate. Therefore, these Channels will require a special `Inventory Context` for Set Up and Product Load operations.  
+As a Buyer connected to a Push Seller, the only alteration if the seller is a Channel Manager configured with a `Inventory Context`, will be that in the hotel list you will receive the native hotel codes instead of the hotel IDs.
+
+To retrieve the `Inventory Context` values, you can use the `inventoryContexts` query that returns a list of all the existing Inventory Contexts created. The returned fields include:
+
+* `contextId`
+* `contextCode`
+* `supplierCodes`
+
+
+## Query Inputs
+
+When creating your `inventoryContexts` query, you have 1 input to fill based on your specific needs:
+
+1. Criteria
+
+
+### 1. Criteria   
+
+This query offers versatility, with an optional field `supplierCodes` that can be filled with the supplierCodes to retrieve their Inventory Context.
+
+**Optional input**
+* `supplierCodes`
+
+### Requests Examples
+
+#### Retrieve full list of Inventory Contexts
+
+<GraphqlSample query={inventoryContextsQuery} variables={inventoryContextsVariables} />
+
+
+#### Retrieve the Inventory Context from specific suppliers
+
+<GraphqlSample query={inventoryContextsQuery} variables={inventoryContextsSuppliersVariables} />

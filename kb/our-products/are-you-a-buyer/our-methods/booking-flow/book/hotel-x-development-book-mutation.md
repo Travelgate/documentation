@@ -11,24 +11,16 @@ Book operation requests a booking confirmation for the specified optionRefId ret
 ### What information can I expect in Book response?✔️
 The information returned in Book response may vary between Sellers, so please check our [Hotel-X Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart) in order to add to your Book the fields expected on your side. Additionally, you may check the [Metadata](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-metadata-query) of your Sellers for further details on the specifications established on their side for this Method.
 
-:::info
-Please note that Travelgate cannot make reservations or cancellations on behalf of our Partners; these actions should be carried out directly by the Partner.
-:::
-
 **Some of the fields to be declared/added to Book mutation request are:**
 
 - Status - make sure you add this field in order to receive the reservation status in the response.
 - Price
-- Client reference: the booking locator in your system (alphanumerical value).
+- Client reference: the booking locator in your system (alphanumerical value). It should be unique to avoid errors on the Supplier's side.
 - Supplier reference: the booking locator in the Seller's system.
 - BookingID
 - Holder
 - Hotel
 
-:::warning important
-To ensure seamless billing, **it's important that you handle all cancellations via our API**.  
-Should you face any issues, please don't hesitate to get in touch with our [Customer Support team](https://app.travelgate.com/support) for assistance. Additionally, please make sure to cancel any test bookings with Sellers and to check that such bookings are refundable.
-:::
 
 ### What is the DeltaPrice? Why should I use it?💡
 
@@ -105,16 +97,13 @@ Yes, you can modify the guest details in a reservation, provided that the Suppli
 
 
 ### What payment details should I add to my Book request?
-The payment type and details to be added in your Book request depend on the payment type returned for the option to be booked - note that payment types depend on the commercial agreement established by a Buyer with their Sellers.
-
-### How can I add the payment details to my Book request?
-You will be able to find an example of HotelBookInput both for a "paymentType": MERCHANT (no credit card details needed) and for a "paymentType": DIRECT, CARD_BOOKING or CARD_CHECK_IN (credit card details required) in the following links to our Documentation.
-- **No Credit Card Details** - "paymentType": MERCHANT
-- **Credit card details required** - "paymentType": DIRECT, CARD_BOOKING or CARD_CHECK_IN
+The payment type and details to be added in your Book request depend on the payment type returned for the option to be booked - note that [payment types](/kb/faqs/faqs-price/payment-types-at-tgx) depend on the commercial agreement established by a Buyer with their Sellers.
 
 ### Should I fill in the payment card input in the Book request when using the VCC plugin?
 No, when using the Virtual Credit Card (VCC) plugin, you should not provide payment card information in the [PaymentCardInput](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/book/#1-input) of your Book request. If the payment is made by a regular credit card, it is mandatory to specify the payment type and provide the credit card details, unless you are using our VCC plugin to generate virtual credit cards. Learn more about VCC payments [here](/kb/our-products/are-you-a-buyer/getting-started-as-a-new-buyer/how-to-activate-vcc-payments/).
 
- :::tip
- Don't forget to check our [article](/kb/faqs/faqs-price/payment-types-at-tgx) on Payment Types at TravelgateX!🚀
- :::
+ :::warning important
+- Please note that Travelgate cannot make reservations or cancellations on behalf of our Partners; these actions should be carried out directly by the Partner.
+- To ensure seamless billing, **it's important that you handle all cancellations via our API**.  
+Should you face any issues, please don't hesitate to get in touch with our [Customer Support team](https://app.travelgate.com/support) for assistance. Additionally, please make sure to cancel any test bookings with Sellers and to check that such bookings are refundable.
+:::

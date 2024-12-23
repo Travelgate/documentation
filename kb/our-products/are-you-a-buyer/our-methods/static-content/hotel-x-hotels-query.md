@@ -54,6 +54,8 @@ You can also check this information through our **[Metadata Query](/docs/apis/fo
 ### What is the difference between "hotelCode" and "hotelCodeSupplier"?☑️
 Both "hotelCode" and "hotelCodeSupplier" are typically the same because we do not have our own hotel codes. However, there are instances where Sellers may return the same hotel code for different properties. In those cases, we concatenate the destination code with the hotel code to ensure a unique code (TravelgateX "hotelCode" vs. the Seller "hotelCodeSupplier").
 
+### Is it possible for the same hotel to have different hotel codes?
+Yes, a single hotel may have different hotel codes based on the supplier/connection providing the data. For instance, the hotel 'La Plaza' could be assigned hotel code 1 by Supplier A, and hotel code 2342334 by Supplier B.
 
 ### What hotel codes should I map as Buyer?❓
 You should **always map the "hotelCode"** since it is the one you should use when performing Searches via our API.

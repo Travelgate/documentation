@@ -35,7 +35,7 @@ You can easily check the status and details of your API keys, including:
 
 ### Creating a New API Key
 
-You can generate a new API Key . Creating a new API key for your organization is a straightforward process involving just two steps:
+In order to generate a new API Key, your user must have Admin permissions on our platform (you can find more information on user roles [here](/kb/account-settings/users-management/how-to-add-manage-users-to-organization)). Creating a new API key for your Organization involves a straightforward two-step process:
 
 1. **Provide a Name and Description**: Enter a name and description for the new API key. This helps in identifying and managing multiple keys.
 

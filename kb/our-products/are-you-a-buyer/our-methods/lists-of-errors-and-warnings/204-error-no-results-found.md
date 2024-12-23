@@ -12,7 +12,7 @@ This error is mostly returned in Search response, but it can also be returned in
 Remember that, as a Buyer, you can also check the Seller's response by setting the auditTransactions to "true" in your Search request.
 
 :::info
-You will find more information on how to audit Seller's transactions [here](/kb/apps/monitoring-apps/logging/how-can-i-download-search-logs).
+You will find more information on how to audit Seller transactions [here](/kb/apps/monitoring-apps/logging/how-can-i-download-search-logs).
 :::
 
 ### What can I do as a Buyer if I receive 204 errors in Search response?

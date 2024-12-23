@@ -6,7 +6,9 @@ sidebar_position: 1
 
 ## All about Hotel-X Search Query
 
-Search is the first method in our Booking Flow. Search Query aims to return all the available options for a given date and itinerary (and for one or more Seller's accesses). You will find more information and examples in our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/search).
+Search is the first method in our Booking Flow. Search Query aims to return all the available options for a given date and itinerary (and for one or more Seller's accesses).  
+
+An 'option' refers to the different combinations of rooms, prices, and policies available in a hotel. Each option has a unique identifier known as 'id' (in Search) or 'optionRefId' (in Quote and Book). This identifier is essential for the booking flow and must not be altered for any reason.
 
 :::info The Booking Flow at Travelgate
 The Booking Flow involves a sequence of methods necessary for booking a hotel room, each executed sequentially:
@@ -16,7 +18,6 @@ The Booking Flow involves a sequence of methods necessary for booking a hotel ro
 
 
 ### Can I apply any filters to my Search request?
-
 
  Of course! You have the option to apply the following filters to your Search Query:
 
@@ -143,3 +144,11 @@ When a Search query is successful and the Seller returns results, each option wi
 
 1. **OK:** The option is available.
 2. **RQ:** The option is still not available by the Seller, so it goes into a waiting list. You can filter which status (OK or RQ) is to be excluded or included in your Search response through the Hotel-X StatusFilterInput. More information can be found in this [article](/kb/our-products/are-you-a-buyer/our-methods/booking-flow/search/how-tos/how-to-filter-hotel-x-search-requests).
+
+### Can I check the availability calendar of a Pull Supplier?
+You cannot review the availability calendar of a Pull Supplier. The Inventory tool and its Calendar function are designed for Buyers who connect with Sellers using the Push method. For Pull Suppliers, Buyers should use the Search Query to verify hotel room availability within a specific date range.
+
+
+:::info
+You will find more detailed information on Hotel-X Search Query in our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/search).
+:::

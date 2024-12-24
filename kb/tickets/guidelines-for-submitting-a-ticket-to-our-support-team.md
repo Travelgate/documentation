@@ -34,7 +34,7 @@ If you're reporting an issue, please provide the following details:
 ### Minor API Updates by Sellers🚀
 If you're a Seller and need to inform us about an API update (minor API update/maintenance API update), please make sure to provide your updated API Documentation for thorough analysis.
 
-### The Support Portal page fails to load, what caN I do?
+### The Support Portal page fails to load, what can I do?
 If the Support Portal page isn't loading, here are some suggestions you could try:
 1. **Check Your Internet Connection:** Ensure that your device is connected to the internet and that the connection is stable.
 2. **Try a Different Browser:** Sometimes, page loading issues can be browser-specific. Try opening the page in a different browser to see if that solves the problem.

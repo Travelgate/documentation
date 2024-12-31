@@ -17,11 +17,12 @@ This can occur for the following reasons:
 2. If the issue persists, you may [force an update of your content](/kb/connections/connections-content/how-to-check-my-connections-content#how-can-i-use-the-force-update-now-functionality).
 3. If the problem continues even after forcing an update of your content, please [open a Case](/kb/tickets/guidelines-for-submitting-a-ticket-to-our-support-team.md) to our Customer Support Team for further investigation.
 
-### What can I do if I receive an error while downloading my content?💡
+### What can I do if I receive an error or an empty response while downloading my content?💡
 1. Make sure the credentials in your request (Hotel-X Access Code or Legacy Configuration) are active and operative.
-2. Check our [list of errors and warnings](/kb/our-products/are-you-a-buyer/our-methods/lists-of-errors-and-warnings/overview) for further information. 
-3. If you encounter an error while downloading your content, we recommend [forcing an update](/kb/connections/connections-content/how-to-check-my-connections-content#how-can-i-use-the-force-update-now-functionality). Once it's complete, restart the download process.
-4. If the issue persists or the error code received is not listed, please open a Case through our [Support Portal](/kb/tickets/guidelines-for-submitting-a-ticket-to-our-support-team.md) for further investigation.
+2. Ensure that your request complies with our API requirements. Also, when querying hotel information for portfolios with concatenated hotel codes, ensure that the hotel codes are included in the request with the specified concatenation. For more details regarding concatenated hotel codes, click [here](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-hotels-query/#what-is-the-difference-between-hotelcode-and-hotelcodesupplier%EF%B8%8F).
+3. Check our [list of errors and warnings](/kb/our-products/are-you-a-buyer/our-methods/lists-of-errors-and-warnings/overview) for further information. 
+4. If you encounter an error or an empty response while downloading your content, we recommend [forcing an update](/kb/connections/connections-content/how-to-check-my-connections-content#how-can-i-use-the-force-update-now-functionality). Once it's complete, restart the download process.
+5. If the issue persists or the error code received is not listed, please open a Case through our [Support Portal](/kb/tickets/guidelines-for-submitting-a-ticket-to-our-support-team.md) for further investigation.
 
 :::info Force Content Updates
 When conducting a 'Force content now' update to refresh a Seller's portfolio, note that the duration of the update depends on the **size of the content**. The update is managed through a **queue system** and will proceed when it reaches its turn - This could take anywhere from a few minutes to 24-72 hours. If the update has not completed after this time, you may attempt to force the update again.

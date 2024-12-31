@@ -29,7 +29,7 @@ In the aforementioned example, the Buyer sets a timeout of 24700 milliseconds (2
 1. **Increase the Seller's timeout allowed:** Adjust the timeout settings to give the Seller more time to respond.
 2. **Contact the Seller directly:** Let the Seller know about your response time expectations. They might be able to optimize their system to respond more quickly.
 3. **Reduce the number of hotels or destinations requested:** Requesting information for a large number of hotels or destinations at once could be slowing down the Seller's response time. Reducing the number of requests might help.
-4. **Retry the operation:** Sometimes, network issues or temporary system problems can cause a timeout and retrying the operation might resolve the issue. Note that this action applies to Search. If you detect a timeout error in Quote or Book, you should start the booking flow from scratch.
+4. **Retry the operation:** Network issues or temporary system problems can occasionally lead to a timeout, and retrying the operation may resolve this. Note that this approach is applicable to the Search method. For timeouts occurring in Book, ensure you restart the booking flow beginning at Search. Similarly, if you encounter an error in Book response, ensure to consult the guidelines in the 'Status in Book Response' article [here](/kb/our-products/are-you-a-buyer/our-methods/booking-flow/book/what-status-can-be-returned-in-hotel-x-book-response).
 
 ### What should I do as a Seller if one of my Buyers reports timeout errors?
 1. **Check System Performance:** Review your system's performance for any issues causing slow response times, such as server overload, network problems, or software inefficiencies.

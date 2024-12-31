@@ -29,7 +29,7 @@ Some of the fields returned are:
 - Hotel name
 - Location
 - Amenities
-- Medias
+- Medias (images)
 - Descriptions
 - Room Information and max./min. occupancy and pax ranges (if provided)
 

@@ -24,7 +24,7 @@ If you are a Buyer connected to our Hotel-X Buyers API, you have the option to u
 Yes! We don't have any limitation on the amount (and type) of characters used to map the Seller's hotel codes.
 
 ### Can I map different portfolios for the same connection?💡
-Absolutely! You can map multiple portfolios for the same connection (B2B, B2C, different markets, etc.) as long as **each portfolio is provided by the Seller through a specific Hotel-X Access Code**.
+Absolutely! You can map multiple portfolios for the same connection (B2B, B2C, different markets, etc.) as long as **each portfolio is provided by the Seller through a specific Hotel-X Access Code** (specific set of credentials).
 
 :::tip
 And don't forget to check our Hotels Query article for further details on the hotel content returned!

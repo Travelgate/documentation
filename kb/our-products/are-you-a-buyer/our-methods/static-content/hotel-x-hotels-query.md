@@ -29,7 +29,7 @@ Some of the fields returned are:
 - Hotel name
 - Location
 - Amenities
-- Medias
+- Medias (images)
 - Descriptions
 - Room Information and max./min. occupancy and pax ranges (if provided)
 
@@ -54,12 +54,20 @@ You can also check this information through our **[Metadata Query](/docs/apis/fo
 ### What is the difference between "hotelCode" and "hotelCodeSupplier"?☑️
 Both "hotelCode" and "hotelCodeSupplier" are typically the same because we do not have our own hotel codes. However, there are instances where Sellers may return the same hotel code for different properties. In those cases, we concatenate the destination code with the hotel code to ensure a unique code (TravelgateX "hotelCode" vs. the Seller "hotelCodeSupplier").
 
+### Is it possible for the same hotel to have different hotel codes?
+Yes, a single hotel may have different hotel codes based on the supplier/connection providing the data. For instance, the hotel 'La Plaza' could be assigned hotel code 1 by Supplier A, and hotel code 2342334 by Supplier B.
 
 ### What hotel codes should I map as Buyer?❓
 You should **always map the "hotelCode"** since it is the one you should use when performing Searches via our API.
 
 ### Will I receive availability results for all the properties within a Seller's portfolio?⚠️
-No, the Hotel List response includes all the hotels that a Seller has configured for your account. However, it is possible that there may be no availability for the specific dates or distribution that you are requesting.
+No, the Hotel List response includes all the hotels that a Seller has configured for your account, but it does not include their prices or availability. Therefore, it is possible that there may be no availability for the specific dates or distribution that you are requesting.
+
+### Can I exclude hotels with no availability from the portfolio download?
+As a Buyer, you cannot directly exclude hotels with no availability through the product download (Hotels Query response). The content methods provide static information about the product available from a Seller, including hotel details, destinations, or meal plans. To check real-time availability, you should use the Booking flow Search Query. This method allows you to inquire about specific product and retrieve current availability, depending on the Seller's response to your search criteria.
+
+On an additional note, you can exclude hotels with no availability using the Traffic Optimizer tool. This tool enables you to blacklist hotels for specific connections based on set criteria, preventing hotels marked as 'No Availability' from receiving requests. This optimizes your search results and enhances query efficiency. For additional details, please consult the [Traffic Optimizer documentation](/kb/apps/smart-traffic-apps/traffic-optimizer/traffic-optimizer-app).
+
 
 :::tip
 More information on our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/hotels) and [API Playground](/playground)

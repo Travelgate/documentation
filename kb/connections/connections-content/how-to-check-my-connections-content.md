@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Connections Content
 
-Managing your content efficiently without relying on TravelgateX helps you get to market faster and boost sales. We value transparency and believe in giving our partners the right tools to manage their static content.
+Managing your content efficiently without relying on Travelgate helps you get to market faster and boost sales. We value transparency and believe in giving our partners the right tools to manage their static content.
 
 In the Connections Content section, you can easily check and force updates for your connections' static content, like hotel lists. This allows for timely updates and better market responsiveness, making your operations smoother and more effective.
 
@@ -56,12 +56,16 @@ In order to force an update of your static content, you should simply follow the
 
 1. Filter a specific connection and access, ensuring you are browsing as a Seller or Buyer as needed. There, you will also see the total number of hotels and last update information.
 
-2. To force an update immediately, click on "**Force update now**" and your content will be refreshed within a few hours - Note that the time may vary based on the total properties or overall static content returned.
+2. Click on **'Force update now',** and our system will immediately run a content update. Note that the duration may vary based on the size of the content and the time it takes for our system to process the requested update. See the callout below for more information.
 
 	![force_portfolio_update_2](https://storage.travelgate.com/kbase/force_portfolio_update_2.jpg)
 
 :::info Force Content Updates
-When conducting a 'Force content now' update to refresh a Seller's portfolio, note that the duration of the update depends on the **size of the content**. The update is managed through a queue system and will proceed when it reaches its turn (this could take anywhere from a few minutes to several hours, or potentially even a day). If the update has not completed after this time, you may initiate the force update again if necessary.
+When conducting a 'Force content now' update to refresh a Seller's portfolio, note that the duration of the update depends on the **size of the content**. The update is managed through a **queue system** and will proceed when it reaches its turn - This could take anywhere from a few minutes to 24-72 hours. If the update has not completed after this time, you may attempt to force the update again.
+
+Please note that **updates within 72 hours fall within the expected update time frame**, so there is no need to contact the Support Team before this period ends.
+
+Besides, keep in mind that if you force an update for a large set of accesses, such as updating all accesses for a Supplier across all Buyers, will result in **a longer queue**, thereby increasing the overall update duration.
 
 In cases where you've followed the steps above and still do not have the most up-to-date content, please don't hesitate to reach out through our [Support Portal](/kb/tickets/guidelines-for-submitting-a-ticket-to-our-support-team) for further help. We're here to ensure you have the best possible experience!
 :::
@@ -71,7 +75,7 @@ In cases where you've followed the steps above and still do not have the most up
 ## Frequently Asked Questions
 
 <details>
-    <summary>Is the Seller's content stored in TravelgateX database?</summary>
+    <summary>Is the Seller's content stored in Travelgate's database?</summary>
     <div>
         <div>Yes, we store the Seller's static content in our database to enhance response times and performance.</div>
     </div>

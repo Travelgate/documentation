@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 # Error code 15 - RoomCode or RateplanCode no exists in hotel

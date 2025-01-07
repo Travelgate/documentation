@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Hotel Buyers API - Cancel Policies
 
-In TravelgateX [Quote (Valuation)](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/quote) response, you'll find a number of fields that offer detailed insights. Among these, we've included specific fields that give you clearer information about cancellation policies, so you can have a more precise understanding of your options.
+In Travelgate [Quote (Valuation)](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/quote) response, you'll find a number of fields that offer detailed insights. Among these, we've included specific fields that give you clearer information about cancellation policies, so you can have a more precise understanding of your options.
 
 - **TIMEZONE:**  
     It will specify the timezone in UTC in which the cancellation policies are located. See the [Metadata](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata) docs to check all possible values.
@@ -25,7 +25,7 @@ If you have any doubts about the timezone returned by your Seller (for example, 
     ![deadline-format-updated](https://storage.travelgate.com/kbase/deadline-format-updated.jpg)
 
 - **CALCULATED DEADLINE:**  
-    Finally, we have also added a "CalculatedDeadline" field to specify if the Deadline has been taken from the Seller’s response or if it has been calculated by TravelgateX.
+    Finally, we have also added a "CalculatedDeadline" field to specify if the Deadline has been taken from the Seller’s response or if it has been calculated by Travelgate.
 
     Please check the following table for a clear view of how we will treat the Cancellation Policies returned by the Seller according to the TimeZone established on the Metadata:
 
@@ -36,8 +36,8 @@ If you have any doubts about the timezone returned by your Seller (for example, 
     | Unknown        | Bypass   | +14 hours offset |
 
 **What do I need to do?**
-- **hoursBefore node (deprecated):** TravelgateX returns the information as provided by the Seller - no extra hours added on our side. The logic regarding this information should be managed on your side.
-- **deadline node:** TravelgateX returns the calculated deadline information - please check above chart. *Please make sure you use this node*.
+- **hoursBefore node (deprecated):** Travelgate returns the information as provided by the Seller - no extra hours added on our side. The logic regarding this information should be managed on your side.
+- **deadline node:** Travelgate returns the calculated deadline information - please check above chart. *Please make sure you use this node*.
 
 :::warning Important:
 The field "HoursBefore" specified the maximum number of hours that could pass before the penalty would apply. To provide more accurate information and maintain competitiveness, we introduced the **"Deadline" node**, which eliminates any ambiguity as it represents a specific date in UTC-0 Standard.

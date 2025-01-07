@@ -4,13 +4,13 @@ sidebar_position: 1
 
 # Overview
 
-At TravelgateX, we highly value the power of Community. We're excited to launch our new [Discord Server](https://discord.com/invite/travelgate), specifically designed for our Network of users, Partners, and developers. This platform is not just a communication tool; it's a hub for sharing ideas, collaborating, and driving innovation.
+At Travelgate, we highly value the power of Community. We're excited to launch our new [Discord Server](https://discord.com/invite/travelgate), specifically designed for our Network of users, Partners, and developers. This platform is not just a communication tool; it's a hub for sharing ideas, collaborating, and driving innovation.
 
 Discord’s versatile features perfectly match our vision. It enables real-time communication through instant messaging, voice chats, and video calls, ensuring swift and efficient interactions. Additionally, its high-quality streaming capabilities are ideal for hosting webinars, live demos, and virtual events, providing our community with rich, interactive experiences, regardless of location.
 
 :::info Who we are
 Our Community includes Travelgate employees, Partners, travel tech enthusiasts, product experts, and anyone passionate about travel technology.
-Curious about TravelgateX’s new Discord Server? Learn more [here](https://blog.travelgate.com/en/why-travelgatex-has-set-up-a-discord-server-for-its-community)! 🚀
+Curious about Travelgate’s new Discord Server? Learn more [here](https://blog.travelgate.com/en/why-travelgatex-has-set-up-a-discord-server-for-its-community)! 🚀
 :::
 
 ### Our Discord Channels
@@ -38,7 +38,7 @@ Your feedback is key to influencing our product teams. Here’s how your contrib
 3. **Feedback Integration**: While we may not implement every idea, we aim to address the underlying issues you highlight.
 
 #### Impact and Implementation of Your Ideas
-Your ideas and reactions are essential to us at TravelgateX. While we cannot promise specific timelines or implementations, every suggestion you provide is taken seriously and considered in our product discovery process. Your feedback could inspire us to prioritize and implement changes that address the core issues you highlight.
+Your ideas and reactions are essential to us at Travelgate. While we cannot promise specific timelines or implementations, every suggestion you provide is taken seriously and considered in our product discovery process. Your feedback could inspire us to prioritize and implement changes that address the core issues you highlight.
 
 Each idea and comment is reviewed carefully, and the Community can react with a ⭐ to those that resonate most with their challenges and needs. Keep your input coming, as it plays a crucial role in driving improvements and innovations.
 

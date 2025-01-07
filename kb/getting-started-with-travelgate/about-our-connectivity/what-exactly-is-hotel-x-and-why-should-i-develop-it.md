@@ -30,7 +30,7 @@ Some of Hotel-X key benefits are:
 - **Performance**: We know that every second counts, that's why our Partners can choose to operate with GraphQLX (REST JSON) in order to increase performance and squeeze all out of every second.
 - **Multiple feeds and portfolios**: Hotel-X allows to consume multiple feeds (B2B and B2C) and having different portfolios through different accesses.
 - **Storing**: Hotel-X API stores every set of configurations in the form of accesses, so it is much easier and convenient for our Partners and less expensive (in terms of maintenance).
-- **Malformed requests**: Hotel-X automatically returns an error and avoids malformed request to be sent to the Seller (e.g. requesting more days or paxes per room than those supported by the Seller).
+- **Request validation**: Hotel-X automatically returns an error and avoids malformed request to be sent to the Seller (e.g. requesting more days or paxes per room than those supported by the Seller).
 
 ### What do our Partners think about the Hotel-X development?⭐
 - **70%** of our Partners said Hotel-X development took less time than expected.

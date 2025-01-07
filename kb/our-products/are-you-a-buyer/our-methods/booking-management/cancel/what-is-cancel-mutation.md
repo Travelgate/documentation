@@ -55,6 +55,12 @@ As cancellation policies are returned by the Supplier via the integration, it is
 
 ### In a reservation for 2 rooms, if two rooms have the same cancellation policy, should the cancellation penalties be summed up in the node for the option?  
 Yes, an option is a combination of rooms. Cancelling the option implies the cancellation of all rooms, and therefore, the charges for all the rooms are incurred.
+
+### Is it possible to restore a booking that was mistakenly canceled?
+Unfortunately, a booking that has been canceled cannot be reinstated. However, you can initiate a new booking flow to create a new reservation. It's important to treat each booking individually, as they are part of separate booking flows.
+
+If you require more information about a reservation that was canceled mistakenly, please contact the Seller. keep in mind that any booking management conducted directly with the Supplier will not be recorded in our system. Our platform only tracks bookings and cancellations made through it.
+
  
 :::tip
 Don't forget to check our [Hotel-X API Playground](/playground) and [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/cancel) for further information on Cancel Mutation. Interested in cancel penalties information as well? We've got you covered with some awesome [articles](/kb/faqs/faqs-cancel-policies/hotel-buyers-api-cancel-policies) that dive deep into the topic!🚀

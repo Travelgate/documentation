@@ -16,11 +16,11 @@ Pull integrations (like Pull integrations), always involve **two agents**:
 1. A Seller
 1. A Buyer
 
-The Pull integration functions as a **two-way system** where Buyers, like OTAs (Online Travel Agencies), Tour Operators, and others, send availability requests to TravelgateX. Once we receive these requests, we query the Seller and they respond instantly.
+The Pull integration functions as a **two-way system** where Buyers, like OTAs (Online Travel Agencies), Tour Operators, and others, send availability requests to Travelgate. Once we receive these requests, we query the Seller and they respond instantly.
 
 **Static content information:**
 
-In regards to static content information (portfolio, destination list, room list, etc.), it will also be downloaded from the Seller's API.  Please note the quantity and quality of this information will depend on the data returned by Sellers via the integration (TravelgateX acts as a bypass).
+In regards to static content information (portfolio, destination list, room list, etc.), it will also be downloaded from the Seller's API.  Please note the quantity and quality of this information will depend on the data returned by Sellers via the integration (Travelgate acts as a bypass).
 
 **Pull Connectivity Advantages**
 - Real-time communication between Buyers and Sellers.
@@ -33,7 +33,7 @@ These integrations need to be able to support higher traffic so they require a h
 ### Push Integration➡️
 
 **What are Push integrations?**  
-A Push Integration is a connection where Channel Managers "push" their product to TravelgateX Database/System.
+A Push Integration is a connection where Channel Managers "push" their product to Travelgate's Database/System.
 
 Once a Push connection is activated, the Buyer (Client) configures their SetUp in our Inventory Extranet according to what they have previously agreed with the hotels. The hotel SetUp is the structure of the hotel:
 
@@ -49,7 +49,7 @@ Buyers, Hotels and Channel Managers should **always be in touch** in order to be
 
 **Static content information:**
 
-In regards to static content information, it is generated and stored directly at TravelgateX system, which means that hotel codes and room codes will be TravelgateX' (and not the Sellers', as in Pull Connections), and they will be the same for any Channel Manager/Push Supplier connected to TravelgateX. For Push Connections, content like images, hotel descriptions, amenities is not provided.
+In regards to static content information, it is generated and stored directly at Travelgate's system, which means that hotel codes and room codes will be Travelgate' (and not the Sellers', as in Pull Connections), and they will be the same for any Channel Manager/Push Supplier connected to Travelgate. For Push Connections, content like images, hotel descriptions, amenities is not provided.
 
 **Push Connectivity Advantages:**
 - Sellers aren't required to handle as much traffic, which means they don’t need to invest as heavily in their systems.

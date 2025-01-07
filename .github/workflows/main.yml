@@ -27,6 +27,7 @@ jobs:
         run: npx docusaurus graphql-to-doc --force
         env:
           NODE_OPTIONS: "--max_old_space_size=4096"
+          TRAVELGATE_API_KEY: ${{ secrets.TRAVELGATE_API_KEY }}
       # This step is needed because the graphql-to-doc script
       # generates a sidebar-schema file which has an invalid dirName
       - name: Copy api-sidebar-schema.dis to api/sidebar-schema.js

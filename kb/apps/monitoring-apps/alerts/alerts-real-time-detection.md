@@ -12,7 +12,7 @@ sidebar_position: 1
 
 ### How can I use Alerts?⚠️
 1. Log into [our Portal](https://www.travelgate.com/)
-1. Click on APPs > [Alerts](https://app.travelgatex.com/alerts)
+1. Click on APPs > [Alerts](https://app.travelgate.com/alerts)
 1. There, you will access our Alerts Dashboard, which allows you to check all the alerts configured for your Organization, as well as the following details:
     - **ID:** Alert ID.
     - **Status:** OK/Alerting. 

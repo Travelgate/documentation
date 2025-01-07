@@ -1,0 +1,74 @@
+---
+sidebar_position: 2
+---
+
+import {updateOffersSetUpMutation, updateOffersSetUpVariables} from "/src/graphql/inventory/set-up/offers-set-up.mutation";
+
+
+# Update Offers
+
+The `updateOffersSetUp` mutation allows you to update existing offers' properties (except the offer code). The returned fields include:
+
+* `code`
+* `description`
+* `isActive`
+* `rateCode`
+* `roomCodes`
+* `mon`
+* `tue`
+* `wed`
+* `thu`
+* `fri`
+* `sat`
+* `sun`
+* `applyFrom`
+* `applyTo`
+* `numberOfNights`
+* `minLos`
+* `maxLos`
+* `nightsType`
+
+## Mutation Inputs
+
+When creating your `updateOffersSetUp` mutation, you have 1 input to fill based on your specific needs:
+
+1. Input
+
+### 1. Input   
+
+**Mandatory input**
+* `clientCode`
+* `supplierCode`
+* `hotelCode`
+* `rateCode`
+* `offers`
+	* `code`
+
+**Optional input**
+* `contextCode`
+* `offers`
+	* `description`
+	* `isActive`
+	* `rateCode`
+	* `roomCodes`
+	* `mon`
+	* `tue`
+	* `wed`
+	* `thu`
+	* `fri`
+	* `sat`
+	* `sun`
+	* `applyFrom`
+	* `applyTo`
+	* `numberOfNights`
+	* `minLos`
+	* `maxLos`
+	* `nightsType`
+
+### Requests Examples
+
+#### Update a offer
+
+With the following mutation, we are going set that the offer "TEST_OFFER" only applies for room "STD3".
+
+<GraphqlSample query={updateOffersSetUpMutation} variables={updateOffersSetUpVariables} />

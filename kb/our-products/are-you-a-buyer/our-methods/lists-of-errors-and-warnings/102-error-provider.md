@@ -20,6 +20,10 @@ If the Seller does not provide an error description, it will be typified as a 10
 ```
 
 ### What can I do if I receive a 102 error in my response?✔️
-We strongly recommend you **contact your Seller** directly if the 102 error description is not clear for you and for further information regarding the cause of the error.
+1. **Align Request Configurations**  
+For connections through our Legacy Pull Buyers API, confirm that the configuration in your requests aligns with the access configuration for those credentials in [My Connections](/kb/connections/my-connections/).
+2. **Contact the Seller**  
+We strongly recommend contacting your Seller directly if the error description 102 is unclear. Please ensure to provide them with the complete logs, including the transactions with their system, for more detailed analysis on their end.
 
- 
+### How can I obtain the Seller logs in their own format?✔️
+To obtain Seller logs (in their own system format), use the `auditData` parameter in the Hotel-X Pull Buyers API or the `registerTransactions` feature in the Legacy Pull Buyers API. For detailed instructions on retrieving these transactions, please refer to the following [article](/kb/apps/monitoring-apps/logging/how-can-i-receive-seller-transactions-in-their-api-format).

@@ -12,10 +12,10 @@ To help you visualize these different traffic types, we created the diagram belo
 
 - **BASIC** (Blue): It is the standard transaction. A Buyer is connected to a Seller without any other solution to the connection.
 - **SPEED** (Green): It is the transaction sent by a Buyer when their connection uses Speed. Our cache solution blocks the request from reaching the Seller's system. 
-- **SCHEDULER** (Red): This kind of transaction only refers to static content (Hotel List, Hotel Information, etc). A transaction is tagged as "Scheduler" when the information requested is stored in TravelgateX Database (Offline).
-- **OPTIMIZED** (Gray): These are the requests sent by TravelgateX to feed our internal databases. There are two sources:
-	- **Speed**: When the information requested by the Buyer in a Speed connection is not already stored in our DB. TravelgateX sends a request to the Seller to obtain it.
-	- **Scheduler**: When the time it takes to get all the static information from a Seller is too high, TravelgateX downloads it asynchronously in order to return it to their Buyers in a shorter, more acceptable time frame.
+- **SCHEDULER** (Red): This kind of transaction only refers to static content (Hotel List, Hotel Information, etc). A transaction is tagged as "Scheduler" when the information requested is stored in Travelgate Database (Offline).
+- **OPTIMIZED** (Gray): These are the requests sent by Travelgate to feed our internal databases. There are two sources:
+	- **Speed**: When the information requested by the Buyer in a Speed connection is not already stored in our DB. Travelgate sends a request to the Seller to obtain it.
+	- **Scheduler**: When the time it takes to get all the static information from a Seller is too high, Travelgate downloads it asynchronously in order to return it to their Buyers in a shorter, more acceptable time frame.
 
 - By default, Stats displays the combined traffic sent by the Buyer, regardless of whether it is handled by the Seller (Basic Traffic) or the Speed cache (Speed Traffic). However, if you're interested in viewing only the traffic that the Seller system actively manages, you can use the filter and select the 'Optimize' + 'Basic' options:
 

@@ -8,8 +8,10 @@ sidebar_position: 12
 A 207 error will occur if your request does not conform to the Seller's specifications.
 
 ### What can I do as a Buyer if I receive 207 errors in my response?
-1. **Review the Supplier’s Metadata**: 207 errors occur when a Buyer’s request does not align with the Seller’s specifications. If you receive a 207 error, [check their metadata](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata) for the method to ensure your request meets the specified limitations.
-2. If there is a discrepancy between the supplier’s metadata and the specifications confirmed on their end, contact the Seller directly to have them report the issue through our portal. They should provide the most updated API documentation, allowing our IT team to review and update their metadata accordingly.
+
+If you receive a 207 error in your response, follow these steps:
+1. **Verify Request Compliance:** Ensure that your request adheres to Travelgate's API specifications and aligns with the Supplier’s requirements. If you encounter a 207 error, **review the Seller's [Metadata](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata)** for the respective method to confirm that your request complies with the established limitations.
+2. **Metadata Alignment:** If you find inconsistencies between the Supplier’s metadata and the specifications they have confirmed, directly contact the Seller to have them address the issue through our Support Portal. They should provide the latest API documentation, which will allow our IT team to review and update their metadata as needed.
 
 :::tip
 Remember to **check the limitations set by the Seller for each method** using our [Metadata Query](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-metadata-query) to avoid errors and unnecessary traffic.

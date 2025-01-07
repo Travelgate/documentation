@@ -9,7 +9,7 @@ sidebar_position: 4
 Boards Query returns a simple boards map for a given set of credentials (access) that may include translations to other languages.
 
 ### How can I retrieve the Seller's Board List via Hotel-X?
-You just need to follow the specifications in our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/boards) and [API Playground](https://api.travelgatex.com/) and build your own Boards Query, as easy as that! Also, remember you are able to personalize the fields requested in order to receive only the information that matters to you in the response.
+You just need to follow the specifications in our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/boards) and [API Playground](https://api.travelgate.com/) and build your own Boards Query, as easy as that! Also, remember you are able to personalize the fields requested in order to receive only the information that matters to you in the response.
 
 :::tip
 Don't forget to check our [Hotel-X Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/boards#requests-examples) for a full example of a Hotel-X Boards Query!🚀

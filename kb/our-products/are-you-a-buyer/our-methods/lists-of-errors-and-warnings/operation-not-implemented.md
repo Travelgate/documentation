@@ -5,7 +5,7 @@ sidebar_position: 19
 # OperationImplemented Information
 
 ### What does the operationImplemented tag mean?💡
-The operationimplemented tag is a part of the [Common Elements](https://docs.travelgatex.com/connectiontypessellers/hotelpullsellers/methods/common-elements/) (Boolean) that you receive in our API response. Its purpose is to let you know if the Seller has implemented the requested method.
+The operationimplemented tag is a part of the [Common Elements](https://docs.travelgate.com/connectiontypessellers/hotelpullsellers/methods/common-elements/) (Boolean) that you receive in our API response. Its purpose is to let you know if the Seller has implemented the requested method.
 ```
 <operationImplemented>false</operationImplemented>
 ```

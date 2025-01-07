@@ -12,12 +12,12 @@ Since this error serves as an indication that there is a discrepancy or issue wi
 
 - **Verify access status**: You should check [My Connections](/kb/connections/my-connections/) in order to make sure that the access or accesses set in your request have already been configured for your account (status "working") and are active. If your access is not active: Please make sure you activate it in order to run requests via our Platform.
 - **Verify access type (Test/Live)**: Verify that the "testMode" tag in your request matches the Test/Live settings for that specific access.
-- **Verify Client**: the Client set in your request should be one of those configured for your account. More information on Hotel-X Clients can be found [here](/kb/connections/connections-settings/).
-- **Verify Apikey**: the Apikey set in your request should be the one configured for your account. You will find more information on your API Settings [here](/kb/connections/connections-settings).
-- **Verify Context**: the Context code set in your request should match the mapping expected in your request:
+- **Verify Client**: The Client set in your request should be one of those configured for your account. More information on Hotel-X Clients can be found [here](/kb/connections/connections-settings/).
+- **Verify Apikey**: The Apikey set in your request should be the one configured for your account. You will find more information on your API Settings [here](/kb/connections/connections-settings).
+- **Verify Context**: The Context code set in your request should match the mapping expected in your request:
     - [Single Mode request](/kb/our-products/are-you-a-buyer/our-methods/booking-flow/search/hotel-x-single-mode-and-multimode-search): you may either request with the Supplier context (you can check this information in [My Connections](/kb/connections/my-connections/), at an access level) or with your own Client context (Mapping uploaded to the SFTP).
-    - [Multi-mode request](/kb/our-products/are-you-a-buyer/our-methods/booking-flow/search/hotel-x-single-mode-and-multimode-search): you should use your own Client context.
-- **Verify criteria**: you should check the criteria in your request is valid. For example, do not set check-in and check-out dates from the past.
+    - [Multi-mode request](/kb/our-products/are-you-a-buyer/our-methods/booking-flow/search/hotel-x-single-mode-and-multimode-search): You should use your own Client context.
+- **Verify criteria**: Ensure that the criteria in your request are valid. For instance, do not set check-in and check-out dates that are in the past. Additionally, make sure that your request complies with the supplier's specifications as outlined in their [Metadata](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-metadata-query).
 
 
 ### VALIDATION_ERROR examples⚠️
@@ -69,7 +69,7 @@ Since this error serves as an indication that there is a discrepancy or issue wi
     }
     ```
 
-1. **Too many options to return** (in relation to your [optionsQuota](/kb/our-products/are-you-a-buyer/our-methods/booking-flow/search/how-tos/how-to-limit-and-filter-options-through-business-rules)) - **"QUOTA_EXCEEDED"; "VALIDATION_ERROR"**
+2. **Too many options to return** (in relation to the [optionsQuota](/kb/our-products/are-you-a-buyer/our-methods/booking-flow/search/how-tos/how-to-limit-and-filter-options-through-business-rules) value) - **"QUOTA_EXCEEDED"; "VALIDATION_ERROR"**
 
     ```
     {
@@ -93,7 +93,7 @@ Since this error serves as an indication that there is a discrepancy or issue wi
     }
     ```
 
-1. **Incorrect Search criteria** (e.g. invalid dates): **"WRONG_FIELD"; "VALIDATION_ERROR"**
+3. **Incorrect Search criteria** (e.g. invalid dates): **"WRONG_FIELD"; "VALIDATION_ERROR"**
 ```
 {
     "data" : {

@@ -15,7 +15,7 @@ To check, activate, and keep track of your connections via Travelgate, simply fo
 	![myconnections_aug_1](https://storage.travelgate.com/kbase/myconnections_aug_1.jpg)
 
 ### What can I find in My Connections?
-In the [My Connections](https://app.travelgatex.com/connections/myconnections) section, you will find a list of all your connections and their accesses.
+In the [My Connections](https://app.travelgate.com/connections/myconnections) section, you will find a list of all your connections and their accesses.
 
 You can quickly **filter** your [Accesses](/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/hotel-x-credentials#access%EF%B8%8F) based on status, type, and whether they are active or not, or also filter directly by Hotel-X access Code, Supplier code, or Access name:
 
@@ -35,7 +35,7 @@ The access type (live or test) is determined by the credentials agreed upon by t
 - **Access Active:**  
 	You can activate or deactivate your Hotel-X Accesses. Please note that you can only use Hotel-X Access Codes while they are active in our system.  
 	- Yes: Active and operational access.
-	- No: Inactive and non-operational access.  
+	- No: Inactive and non-operational access. Please note that deactivating an access will prevent any further requests from being processed through that access. However, it may take some time for the changes to propagate through the system, so you might still see some requests in the Stats that were made before the access was deactivated.  
 
 :::tip
 Still using our Legacy Pull Buyers API? **Connect to [Hotel-X API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart)** and enjoy this functionality and many more!
@@ -47,7 +47,7 @@ Still using our Legacy Pull Buyers API? **Connect to [Hotel-X API](/docs/apis/fo
 - **Partner name**: The name of the Partner connected through that access (either Seller or Buyer name).
 
 	![myconnections_aug_2](https://storage.travelgate.com/kbase/myconnections_aug_2.jpg)
-- **Buyer Integration Type**: If you are browsing as a Seller, you can determine whether your Buyers are integrated with our Marketplace via the Legacy Pull Buyers API or the Hotel-X Pull Buyers API by checking the Buyer Integration type information. If the Buyer is using the latest version, Hotel-X, you'll see the "Hotel-X" label. If they are connected through our Legacy API, no label will be displayed.
+- **Buyer Integration Type**: If you are browsing as a Seller, you can determine whether your Buyers are integrated with our Marketplace via the **Legacy Pull Buyers API or the Hotel-X Pull Buyers API** by checking the Buyer Integration type information. If the Buyer is using the latest version, Hotel-X, you'll see the "Hotel-X" label. If they are connected through our Legacy API, no label will be displayed.
 
 	![buyerintegrationtype_myconnections](https://storage.travelgate.com/kbase/buyerintegrationtype_myconnections.jpg)
 
@@ -71,3 +71,4 @@ Please remember that when Buyer connections are established through our Legacy P
 
 - If you wish to permanently deactivate a Legacy connection on our Platform, please submit a Case via our Portal - Remember, the deactivation of a Legacy connection would occur at the **connection level**, not at the credential level.  
 - If you need to deactivate a **specific set of credentials**, the deactivation should be managed directly between Buyer and Seller. This ensures that the Buyer stops sending traffic from their system using those particular credentials - please make sure to activate/deactivate the Hotel-X Access Code as well, so that it reflects the actual traffic sent by the Buyer.
+- If, as a Seller, you still see requests from credentials linked to a deactivated access, consider reaching out to the Buyer to ensure they have also deactivated the credentials on their end.

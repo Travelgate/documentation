@@ -23,11 +23,11 @@ sidebar_position: 23
 Since this error serves as an indication that there is a discrepancy or issue with the mapping validation, you should check the following information:
 
 1. **Hotel codes**: Make sure that the hotels in your request are returned through the Hotels Query of that specific Seller.
-1. **Context**: [content codes](/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/hotel-x-credentials) utilized by both Buyers and Sellers.
-	1. **Supplier context**: make sure you use the Supplier's context if you are requesting the Seller's hotelcodes.
-	1. **Buyer context**: make sure you use your Buyer context if you are requesting your own hotelcodes (previously mapped and uploaded to your SFTP).
+2. **Context**: [Content codes](/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/hotel-x-credentials#context%EF%B8%8F) utilized by both Buyers and Sellers. You can check the context codes of your connected suppliers in the [My Connections](/kb/connections/my-connections/#what-can-i-find-in-my-connections) section.
+	1. **Supplier context**: Make sure you use the Supplier's context if you are requesting the Seller's hotelcodes.
+	2. **Buyer context**: Make sure you use your Buyer context if you are requesting your own hotelcodes (previously mapped and uploaded to your SFTP).
 
-1. **SFTP files and Mapping**: If you are using our Mapping plugin, make sure that the hotel requested have been added to your [mapping file](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping) and it has been processed correctly.
+3. **SFTP files and Mapping**: If you are using our Mapping plugin, make sure that the hotel requested have been added to your [mapping file](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping) and it has been processed correctly.
 
 :::tip
 Don't forget to check our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping) for further information on Hotel-X Mapping plugin!🚀

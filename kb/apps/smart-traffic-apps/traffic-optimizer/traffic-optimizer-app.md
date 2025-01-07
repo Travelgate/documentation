@@ -23,6 +23,6 @@ Traffic Optimizer can be applied to a specific connection between Buyer and Sell
 - **No availability:** Blocks hotels with 100% "no availability" results during the previous day. This criteria will block hotels that have reported 100% “no availability” the previous day for all requested dates.  
   For example, if searches were performed for the month of September and the hotel has 100% non-availability, it will be blocked the next day. If the hotel had availability in December but that date was not searched the previous day, it will not be considered, and the searched dates with unavailability will prevail. However, on the day the hotel is blocked, it will be granted a grace period to receive new searches, and as soon as it shows availability, it will be unblocked.
 
-- **Zero bookings:** Blocks a particular hotel offered by a Seller that has never recorded any bookings with TravelgateX. 
+- **Zero bookings:** Blocks a particular hotel offered by a Seller that has never recorded any bookings with Travelgate. 
 - **Not in portfolio:** Identifies and blocks hotel codes that are no longer offered by the Seller. 
 Hotels meeting the criteria will be added to the blacklist, and if requested, searches for those hotels will be blocked, reducing unnecessary traffic. The blacklist is updated daily, ensuring the optimization is always up to date!

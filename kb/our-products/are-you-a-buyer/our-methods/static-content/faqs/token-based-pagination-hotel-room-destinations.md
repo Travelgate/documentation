@@ -5,7 +5,7 @@ sidebar_position: 1
 # Token-based Pagination for Hotels, Rooms, and Destinations
 
 ### What is a token (ContinuationToken)?🔄
-The token, also referred to as the ContinuationToken in the Hotel Buyers API (Legacy), plays a crucial role in downloading large lists of objects.Its primary purpose is to divide the content list into smaller parts, effectively preventing any potential timeout errors that may arise.
+The token, also referred to as the ContinuationToken in the Hotel Buyers API (Legacy), plays a crucial role in downloading large lists of objects. Its primary purpose is to divide the content list into smaller parts, effectively preventing any potential timeout errors that may arise.
 ### Which queries support pagination?💡
 You can effortlessly paginate the Hotel, Destination, and Room Lists, making it a breeze to navigate through the content.
 

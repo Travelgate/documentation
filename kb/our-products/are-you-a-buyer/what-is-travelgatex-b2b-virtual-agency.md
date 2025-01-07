@@ -71,6 +71,12 @@ Welcome to our B2B Virtual Agency tool, your gateway to effortless booking exper
 	![b2b_virtual_agency_cancel_1](https://storage.travelgate.com/kbase/b2b_cancel_1.png)
 
 
+:::info Hotel information not available
+In instances where the supplier does not provide hotel information during the Booking query (My Bookings/Booking Details), a warning "Hotel information not available. Please contact your supplier. Hotel code: Not available" will be displayed on the left side of the screen.  
+
+Remember, you can still check the status of your bookings on the main My Bookings screen by consulting the 'Status' label for each reservation.
+:::
+
 ### No results are showing in 'My Bookings', what can I do?
 If you encounter the message "No results found! Try updating your search criteria" when accessing bookings in the My Bookings section of the B2B Virtual Agency, consider these two potential causes:
 1. **Mismatched Filters:** There may be no bookings that match the filters you've applied. Review your filter settings to ensure they align with actual bookings.

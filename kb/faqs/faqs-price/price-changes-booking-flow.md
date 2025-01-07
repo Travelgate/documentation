@@ -20,7 +20,7 @@ The selling price to consider is the one returned in Quote, as it reflects the p
     - The *Seller does not allow DeltaPrice*: If the Seller provides a higher price in the Book response compared to the one returned in the Quote, it is necessary to report the difference since the price change was not specified. In such cases, the Seller is responsible for covering the price difference.
 
 ### Is the price of the reservation always included in Book response?
-Please keep in mind that **TravelgateX cannot guarantee the return of the price in Book**, as it depends on the Seller. Unless the Seller provides us with the price in their response, we have no means of returning it to you.
+Please keep in mind that **Travelgate cannot guarantee the return of the price in Book**, as it depends on the Seller. Unless the Seller provides us with the price in their response, we have no means of returning it to you.
 
  
 :::info What is the Delta Price?

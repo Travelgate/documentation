@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# AIna: TravelgateX AI Assistant
+# AIna: Travelgate AI Assistant
 
 ### Say hello to AIna, your multilingual AI Assistant!
 

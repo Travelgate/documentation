@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# TravelgateX Dashboard
+# Travelgate Dashboard
 
 ### How can I access my Dashboard?💡
 1. Log into our [Portal](https://www.travelgate.com/).
@@ -15,7 +15,7 @@ These informative reports can provide data from the previous day, the last week,
 So, let's establish that connection and start harnessing the potential of the Marketplace Dashboard!
 
 :::tip
-If you're looking for a truly immersive performance monitoring experience, we strongly encourage you to check out our incredible [Stats APP](https://app.travelgatex.com/stats). It offers a comprehensive range of features that will take your monitoring to the next level! 🚀
+If you're looking for a truly immersive performance monitoring experience, we strongly encourage you to check out our incredible [Stats APP](https://app.travelgate.com/stats). It offers a comprehensive range of features that will take your monitoring to the next level! 🚀
 :::
 
 ### What kind of reports can I find in my Dashboard?🔎
@@ -34,7 +34,7 @@ Overview of the status of the most recent issues raised on your side in our Plat
 ![dashboard_2](https://storage.travelgate.com/kbase/dashboard_2.jpg)
 
 1. **Smart Traffic APPs**  
-TravelgateX Smart Traffic APPs personalized recommendations to optimize your traffic and improve your overall performance in our Platform:
+Travelgate Smart Traffic APPs personalized recommendations to optimize your traffic and improve your overall performance in our Platform:
 ![dashboard_3](https://storage.travelgate.com/kbase/dashboard_3.jpg)
 
 1. **Additional Performance Reports**
@@ -50,6 +50,6 @@ TravelgateX Smart Traffic APPs personalized recommendations to optimize your tra
 	![dashboard_4](https://storage.travelgate.com/kbase/dashboard_4.jpg)
 
 :::info
-- For a TravelgateX partner, GMV stands for "Gross Market Value". Similar to the general definition in B2B contexts, it refers to the total sales value of all transactions processed through the TravelgateX Platform. This metric is crucial for partners as it indicates the volume of business conducted via the Platform, reflecting the scale and financial performance of the partnership.
-- For a TravelgateX partner, TTV stands for "Total Transaction Value." It refers to the total value of sales transactions over a certain period, including the sum of all transactions processed through our platform. TTV is an important measure as it reflects the overall volume of business conducted via Travelgate.
+- For a Travelgate Partner, GMV stands for "Gross Market Value". Similar to the general definition in B2B contexts, it refers to the total sales value of all transactions processed through the Travelgate Platform. This metric is crucial for partners as it indicates the volume of business conducted via the Platform, reflecting the scale and financial performance of the partnership.
+- For a Travelgate Partner, TTV stands for "Total Transaction Value." It refers to the total value of sales transactions over a certain period, including the sum of all transactions processed through our platform. TTV is an important measure as it reflects the overall volume of business conducted via Travelgate.
 :::

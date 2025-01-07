@@ -33,3 +33,12 @@ If you're reporting an issue, please provide the following details:
 - **Additional snapshots or information**: We highly value your contribution and appreciate any extra snapshots or information you can share.
 ### Minor API Updates by Sellers🚀
 If you're a Seller and need to inform us about an API update (minor API update/maintenance API update), please make sure to provide your updated API Documentation for thorough analysis.
+
+### The Support Portal page fails to load, what can I do?
+If the Support Portal page isn't loading, here are some suggestions you could try:
+1. **Check Your Internet Connection:** Ensure that your device is connected to the internet and that the connection is stable.
+2. **Try a Different Browser:** Sometimes, page loading issues can be browser-specific. Try opening the page in a different browser to see if that solves the problem.
+3. **Clear Your Browser’s Cache and Cookies:** Page loading issues can sometimes be caused by corrupt data in your browser’s cache or cookies. Try clearing your browser's cache and cookies, then reload the page.
+4. **Disable Browser Extensions:** Some browser extensions can interfere with web page loading. Try disabling all browser extensions and then reload the page.
+
+If you still cannot load the Support Portal page after trying these steps, I recommend seeking assistance from [AIna](/kb/getting-started-with-travelgate/about-our-support/aina), our multilingual AI assistant, consulting the official [Travelgate documentation](https://docs.travelgate.com/), or checking the [Status Channel](https://discord.com/channels/1121158946074402916/1238058167385067601) on your Discord server.

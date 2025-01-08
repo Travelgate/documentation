@@ -120,7 +120,6 @@ To specify your settings you need to use the [`HotelSettingsInput` input](/api/t
 * `testMode` (This flag allows only the accesses checked as test.)
 * `businessRules`
 * `clientTokens` (Used to identify the origin of the request, this is only used with some [plugins](../plugins/overview).)
-* `operationTimeout` (Timeout in milliseconds for Hotel-X connection. Will close Buyer connection if exceeded. Must be higher than `timeout`.)
 
 :::tip Key Recommendations
 
@@ -234,25 +233,43 @@ Some Sellers may not include cancellation policies in their availability data. Y
 
 <details>
 <summary>How can I search in single or multi mode?</summary>
-<p>You have the possibility to choose between searching in a single mode vs searching in a multi mode.</p>
+<p>Hotel-X offers two modes for searching: single mode and multi mode. Both modes provide flexibility depending on how you want to query Sellers and their accesses.</p>
 <b>Singlemode search</b>
-<p>The default mode in Hotel-X allows our Partners to perform one search per Seller connected to their account at a time.</p>
+<p>Single mode is the default way to search in Hotel-X. It’s designed for querying Sellers individually.</p>
 
 ![Hotel-X Shopping Flow](https://storage.travelgate.com/docs/hotel-x_single_mode.svg)
 
-<p>When running your Search, you should add the Seller's access code you would like to query.</p>
+<p> 
+    You can include multiple accesses from the same Seller in a single search, as long as they share the same context. 
+    Example: If a Seller has different access points for the same hotel inventory, you can query them together.
+</p>
+
+<p>
+    When running your Search, you should add the Seller's access code you would like to query. 
+    Remember that they should have the same context code (in other words, they share the same hotel codes).
+    For example, if I want to make a request for access "2" of the supplier TravelgateX Test with the context "HOTELTEST", I would specify it as follows. 
+    (If I had more than one access or credential configured for the same supplier, I could include them as well, as long as they share the same context.)
+</p>
 
 ```js
-"filterSearch": {
+"settings": {
+    "client": "client_demo",
+    "context": "HOTELTEST",
+    "testMode": true,
+    "timeout": 25000
+  },
+  "filterSearch": {
     "access": {
-        "includes": ["2"]
+      "includes": [
+        "2"
+      ]
     }
-}
+  }
 ```
 
 <b>Multimode search</b>
 <p>
-    The multimode query allows our Partners to search multiple Sellers at the same time in just one request. To search
+    The multimode query allows our Partners to search multiple Sellers or accesses with different contexts at the same time in just one request. To search
     in multimode, start by uploading your <a href="../plugins/mapping">hotel mapping files</a> to your FTP. Once the
     files are processed, you'll have the ability to search multiple Sellers simultaneously by using your own context
     and hotel codes.
@@ -260,14 +277,35 @@ Some Sellers may not include cancellation policies in their availability data. Y
 
 ![Hotel-X Shopping Flow](https://storage.travelgate.com/docs/hotel-x_multi_mode.svg)
 
+
+<p> 
+    You can query different Sellers or different accesses from the same Seller (even if they have different contexts). 
+    This is useful if you need results from diverse configurations in one go.
+</p>
+
+<p> 
+    For example, if you map your hotel and board codes to two different suppliers with different contexts, you can include both in the same request. 
+    You’ll specify your context code, and in the access section, you can include the accesses from different suppliers. 
+    Hotel-X will use your mapping files to send the correct request to each supplier with the appropriate codes, so you can make the request using your own codes.
+</p>
+
+<p> 
+    You can choose to:
+</p>
 <p> 
     <b>1. Specifying the access codes in the filter node in your variables:</b> the query will only be sent to the accesses specified.
 </p>
 
 ```js
+"settings": {
+    "client": "client_demo",
+    "context": "BUYER_CONTEXT",
+    "testMode": true,
+    "timeout": 25000
+  },
 "filterSearch": {
     "access": {
-        "includes": ["2", "3"]
+        "includes": ["2", "5647"]
     }
 }
 ```
@@ -278,6 +316,15 @@ Some Sellers may not include cancellation policies in their availability data. Y
     query will also check the value of the "testMode" tag in order to request only the test or production accesses,
     accordingly.
 </p>
+
+```js
+"settings": {
+    "client": "client_demo",
+    "context": "BUYER_CONTEXT",
+    "testMode": true,
+    "timeout": 25000
+  }
+```
 
 </details>
 

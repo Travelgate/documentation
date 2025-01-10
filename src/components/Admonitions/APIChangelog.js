@@ -1,10 +1,10 @@
 import React from 'react';
 
 const typeColors = {
-  Added: '#4CAF50',    // Verde para adiciones
-  Changed: '#007bff',  // Azul para cambios
-  Deprecated: '#f39c12',   // Naranja para deprecaciones
-  Removed: '#f44336',   // Rojo para eliminaciones
+  Added: '#4CAF50',    // Green
+  Changed: '#007bff',  // Blue
+  Deprecated: '#f39c12',   // Orange
+  Removed: '#f44336',   // Red
 };
 
 const processLinks = (text) => {
@@ -32,7 +32,6 @@ const APIChangelog = ({ changelog }) => (
   <div style={{ maxWidth: '900px', margin: '0 auto', padding: '2rem', backgroundColor: '#fff', borderRadius: '8px' }}>
     {changelog.map((entry, entryIndex) => {
       const formattedDate = new Date(entry.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: '2-digit' });
-      // Crear un ID único a partir de la fecha formateada
       const dateId = `${formattedDate.replace(/[^\w\s]/gi, '').replace(/\s+/g, '-').toLowerCase()}`;
 
       return (

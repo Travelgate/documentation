@@ -201,9 +201,6 @@ Travelgate's user-friendly interface that provides an overview of key metrics, p
 - **Database**  
 A structured collection of data that is stored and accessed electronically.
 
-- **Deadline**  
-The latest date or time by which an action must be completed. E.g. "Deadline" node in the cancellation penalties refers to the deadline of a cancellation, which eliminates any ambiguity as it represents a specific date in UTC-0 Standard. 
-
 - **DeltaPrice**  
 Price variation allowed by the Buyer between Quote and Book. 
 

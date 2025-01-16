@@ -5,6 +5,8 @@ sidebar_position: 3
 
 # Cancel Policies and Deadlines: A Closer Look
 
+## How we calculate the deadline timezone
+
 ### Case 1 ✅
 If the Seller provides a **complete deadline with Timezone information in their API Response**, we will utilize that data to convert the deadline to UTC-0.
 Example:  
@@ -48,4 +50,35 @@ Interested in learning more about cancel penalties in Travelgate? Don't forget t
 :::
 
 
- 
+
+## Example: Cancellation Policy Interpretation
+
+The **deadline** is the specific date and time when the cancellation policy starts to apply. It marks the point after which a penalty will be charged if the booking is cancelled. 
+
+Given the following cancellation policies for a booking with check-in on **2025-11-20**:
+
+```json
+ "cancelPolicy": {
+                    "refundable": true,
+                    "cancelPenalties": [
+                        {
+                            "deadline": "2025-11-02T09:00:01Z",
+                            "penaltyType": "IMPORT",
+                            "currency": "EUR",
+                            "value": 431.96
+                        },
+                        {
+                            "deadline": "2025-11-16T09:00:01Z",
+                            "penaltyType": "IMPORT",
+                            "currency": "EUR",
+                            "value": 863.92
+                        }
+                    ]
+                }
+```
+
+- **Before 2025-11-02 09:00 UTC**: No penalty
+- **From 2025-11-02 09:00 UTC to 2025-11-16 09:00 UTC**: Penalty of €431.96
+- **From 2025-11-16 09:00 UTC onwards**: Penalty of €863.92
+
+

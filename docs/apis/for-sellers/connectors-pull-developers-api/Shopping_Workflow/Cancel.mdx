@@ -1,0 +1,46 @@
+---
+title: "Cancel"
+sidebar_position: 5
+---
+
+## **Overview**
+
+The `Cancel` operation allows clients to terminate a previously confirmed booking. It uses the client and supplier locators to identify the reservation and process the cancellation. Depending on the supplier's policies, penalties or fees may apply.
+
+## **Purpose**
+The `Cancel` operation ensures:
+- **Reservation Termination**: Enables clients to cancel bookings through the supplier's API.
+- **Penalty Calculation**: Returns any applicable cancellation fees based on the supplier's policies provided during `Quote`.
+- **Status Confirmation**: Confirms the success or failure of the cancellation request.
+
+## **When to Use**
+- **Client-Initiated Cancellations**: When the end-user requests to cancel their reservation.
+- **Penalty Validation**: To verify if a cancellation incurs fees before finalizing the process.
+
+> **Note**: Always check the cancellation policies returned during `Quote` to inform the client about any penalties.
+
+## **Response Details**
+The `Cancel` operation provides:
+- **Cancellation Status**:
+  - `Canceled`: Indicates the reservation has been successfully canceled.
+  - `Unknown`: The cancellation could not be processed by the supplier.
+- **Cancellation Fees**: If applicable, the supplier may return a penalty fee for the cancellation.
+- **Warnings or Remarks**: Additional details from the supplier about the cancellation process.
+
+## **Common Scenarios**
+- **Penalty-Based Cancellations**: Applies when the supplier charges fees for cancellations based on policies.
+- **Error Handling**: Common errors include:
+  - `SupplierError`: Indicates the cancellation could not be processed by the supplier.
+
+## **Technical Details**
+- **Request Object**:
+  - Includes client and supplier locators and any additional data required by the supplier.
+
+  [TODO inject `Connectors.Pull.Hotel.Domain.Contracts.Search.Cancel.CancelRq`]
+
+- **Response Object**:
+  - Provides the cancellation status, penalties (if any), and any warnings or remarks.
+
+  [TODO inject `Connectors.Pull.Hotel.Domain.Contracts.Search.Cancel.CancelRs`]
+
+---

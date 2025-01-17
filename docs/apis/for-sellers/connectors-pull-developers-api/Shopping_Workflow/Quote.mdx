@@ -1,0 +1,45 @@
+---
+title: "Quote"
+sidebar_position: 3
+---
+
+## **Overview**
+
+The `Quote` operation is a critical step in the booking workflow, used to confirm the details of an option previously retrieved in a `Search`. Since suppliers often rely on cached data or dynamic pricing, the `Quote` operation ensures that the selected option's price and policies are up-to-date before proceeding to a booking.
+
+## **Purpose**
+The `Quote` operation serves several purposes:
+- **Price Validation**: Confirms the price of the selected option to account for potential changes since the `Search` response.
+- **Policy Confirmation**: Validates the cancellation policies, payment terms, and other conditions tied to the selected option.
+- **Data Reliability**: Ensures that all data is accurate and aligned with the supplier’s current availability before proceeding to the `Book` operation.
+
+> **Note**: Always prioritize data from `Quote` over `Search`, as `Quote` reflects the most accurate and reliable information.
+
+## **When to Use**
+- **Dynamic Pricing**: Suppliers that update prices frequently require this step to confirm current rates.
+- **Session-Based Suppliers**: For suppliers with expiring sessions or tokens, `Quote` helps ensure that the data remains valid.
+- **Buyer Confidence**: Provides clients with an additional layer of assurance about the selected option’s details.
+
+## **Response Details**
+The `Quote` operation returns:
+- **Updated Price Details**: Reflects any adjustments to the price since the initial `Search`.
+- **Cancellation Policies**: Confirms the policies associated with the option, including penalties and deadlines.
+- **Additional Details**: May include supplier-specific remarks or notes.
+
+## **Common Scenarios**
+- **Price Changes**: If the supplier's price differs from the `Search` response, the `Quote` operation will provide the updated price. 
+  - Example: `PriceChanged` error code is returned if there’s a discrepancy. (See [Error Handling in Connectors](../Error_Handling_in_Connectors/)).
+- **Option No Longer Available**: If the selected option is no longer valid, the response may include an `ItemNotAvailable` error code.
+
+## **Technical Details**
+- **Request Object**:
+  - Represents the structure of the `Quote` request, including required fields such as `optionId` and `occupancy`.
+
+  [TODO inject `Connectors.Pull.Hotel.Domain.Contracts.Search.Quote.QuoteRq`]
+
+- **Response Object**:
+  - Represents the standardized structure of the `Quote` response, including price, cancellation policies, and other details.
+
+  [TODO inject `Connectors.Pull.Hotel.Domain.Contracts.Search.Quote.QuoteRs`]
+
+---

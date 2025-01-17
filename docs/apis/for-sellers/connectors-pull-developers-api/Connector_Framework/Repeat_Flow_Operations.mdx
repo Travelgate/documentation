@@ -1,0 +1,122 @@
+---
+title: "Repeat Flow Operations"
+sidebar_position: 4
+---
+
+# Repeat Flow Operations
+
+**Repeat Flow Operations** are additional calls required within a workflow to ensure validity or re-authentication. These operations typically occur when a previous step in the flow requires verification or when a supplier's session token expires.
+
+---
+
+## **Common Scenarios**
+- **From Quote to Search**: A second search is triggered to validate the option in a `Quote`.
+- **From Book to Quote**: Ensures the option is still valid and the price hasn’t changed before booking.
+- **From Cancel to CheckBookings**: Verifies the booking status before attempting a cancellation.
+
+---
+
+## **Configuration**
+Repeat Flow Operations are configured in the **PlatformOptions**. [View PlatformOptions](../Advanced_Configuration/PlatformOptions.mdx)
+
+Example configuration:
+```csharp
+public static PlatformOptions BuildDefaultPlatformOptions()
+{
+    return new PlatformOptions
+    {
+        Search = new SearchOptions
+        {
+            ConnectorsHttpClient = ConnectorsHttpClient.Default,
+        },
+        Quote = new QuoteOptions
+        {
+            ConnectorsHttpClient = ConnectorsHttpClient.Default,
+            SearchRequired = new SearchRequired
+            {
+                When = SearchRequiredWhen.Always
+            }
+        },
+        Book = new BookOptions
+        {
+            ConnectorsHttpClient = ConnectorsHttpClient.Default,
+            QuoteRequired = new QuoteRequired
+            {
+                When = QuoteRequiredWhen.Never
+            }
+        },
+        CheckBookings = new CheckBookingsOptions
+        {
+            ConnectorsHttpClient = ConnectorsHttpClient.Default,
+        },
+        Cancel = new CancelOptions
+        {
+            ConnectorsHttpClient = ConnectorsHttpClient.Default,
+            CheckBookingsByReferenceRequired = new CheckBookingsByReferenceRequired
+            {
+                When = CheckBookingsByReferenceRequiredWhen.Always
+            }
+        }
+    };
+}
+```
+
+---
+
+## **Quote Triggering a Search**
+A `Quote` operation might require a `Search` operation in the following cases:
+- **Suppliers Without a Dedicated Quote Operation**: Some suppliers ensure that the price and cancellation policies in the `Search` response will not change. In such cases, a second `Search` replaces the `Quote`.
+- **Suppliers Using Session Tokens**: If the token provided during the `Search` has expired by the time of the `Quote`, a second `Search` ensures the session is valid.
+
+To configure this, include the following in the **Extensions** for `Quote`:
+
+```csharp
+services.AddDefaultQuoteOnlySearchOperation<SearchResponse, CntAccessModel>(
+    TgxPlatform.PlatformName,
+    configuration);
+```
+
+If customization of the `ParseResponse` logic is required, use:
+
+```csharp
+services.AddQuoteOnlySearchOperation<SearchResponse, CntAccessModel>(
+    TgxPlatform.PlatformName,
+    configuration);
+```
+
+This requires implementing the `IQuoteOnlySearchOperation` interface, which includes:
+- **ParseResponse**: Custom response handling.
+- **TryValidateModelRequest**: Validates the model request.
+- **TryValidateSupplierResponses**: Validates supplier responses.
+
+### **Handling Mutable Parameters**
+In some cases, parameters passed during the first `Search` might change in subsequent operations. For instance, a supplier’s session token might expire, requiring it to be refreshed in the second `Search`.
+
+To handle such cases, set `immutable` to `false` when building parameters. This ensures they can be dynamically updated.
+
+Example:
+```csharp
+Parameter.BuildParameter(
+    OptionParameters.RoomId,
+    room.IdHabitacion,
+    ParameterType.Supplier,
+    immutable: false,
+    occupancyRefId
+);
+```
+
+---
+
+## **Business Logic and Error Management**
+Repeat operations follow **Travelgate's business standards**, ensuring:
+- **Validation**: Matching input parameters, room details, and descriptive elements.
+- **Error Handling**: Managing errors like `ItemNotAvailable` during the second `Search`. [View Error Handling in Connectors](../Error_Handling_in_Connectors/)
+
+---
+
+### **Key Takeaways**
+- Repeat Flow Operations enhance reliability and ensure compliance with supplier requirements.
+- They are easily configurable via **PlatformOptions** and can be customized using specialized service extensions.
+- Errors and business logic are automatically handled to align with Travelgate standards.
+
+---

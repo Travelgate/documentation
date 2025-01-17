@@ -1,0 +1,183 @@
+---
+title: "Operation Overview"
+sidebar_position: 2
+---
+
+
+# **Operation Overview**
+
+An operation in the **Travelgate Connectors** framework simulates an exchange of information between Travelgate and a supplier. This process transforms a client request into the supplier's format, validates responses, and parses the data back into a standardized format for the client.
+
+Operations are essential building blocks of any connector, ensuring seamless integration for functionalities like **Search**, **Quote**, **Book**, and more. They abstract the complexity of different supplier APIs and offer a unified interface to clients.
+
+---
+
+## **Purpose of an Operation**
+
+Operations bridge the gap between the **Travelgate system** and the supplier's API. Their main goals are:
+- **Validation**: Ensuring the request and response are valid and meet all requirements.
+- **Transformation**: Converting data between formats (Travelgate and supplier-specific).
+- **Error Handling**: Detecting and managing issues in the supplier's response.
+- **Consistency**: Providing clients with reliable and standardized data formats.
+
+---
+
+## **Components of an Operation**
+
+Every operation is divided into **four key steps**:
+
+### **1. TryValidateModelRequest**
+This step validates the incoming request from the client. While most validation is defined in the metadata, this step is used for **specific edge cases** that cannot be generalized.
+
+- **Example Use Case**: In a `Book` operation, validating that all passengers share the same last name. This type of validation would not be covered by metadata.
+
+```csharp
+public bool TryValidateModelRequest(
+    SearchConnectorRequest connectorsRequest, 
+    SearchParameters<CntAccessModel> connectorParameters,
+    out IEnumerable<AdviseMessage> adviseMessages)
+{
+    adviseMessages = default;
+    return true; // Validation passes if no issues are found.
+}
+```
+
+> **Important**: This step is optional and often not required for most operations.
+
+---
+
+### **2. BuildRequests**
+Transforms the client request (in **Connector format**) into the supplier's format. This ensures compatibility with the supplier's API.
+
+- **Details**:
+  - The `BuildRequests` method may map multiple fields, such as hotel codes, date ranges, or room types, into the supplier's required format.
+  - It wraps the supplier request into a `SupplierRequestWrapper`, which includes the supplier's endpoint URL.
+
+```csharp
+public IEnumerable<SupplierRequestWrapper<SearchRequest>> BuildRequests(
+    SearchConnectorRequest connectorsRequest, 
+    SearchParameters<CntAccessModel> connectorParameters)
+{
+    return
+    [
+        new SupplierRequestWrapper<SearchRequest>(
+            MapRequest(connectorsRequest, connectorParameters), // Maps the data to the supplier's format.
+            connectorParameters.ParametersModel.Url // Defines the target URL for the request.
+        )
+    ];
+}
+```
+
+> This step ensures that the supplier receives a request in the format it expects, avoiding compatibility issues.
+
+---
+
+### **3. TryValidateSupplierResponses**
+Once the supplier's response is received, this step validates it for errors or anomalies. Suppliers may return incomplete or erroneous data, so this step ensures only valid responses are processed further.
+
+- **Details**:
+  - Check for supplier-specific error fields.
+  - Ensure required fields (e.g., hotel list) are present.
+
+- **Example Use Case**: A supplier might return a response with an error code or an empty hotel list. This step would detect and handle such cases.
+
+```csharp
+public bool TryValidateSupplierResponses(
+    SearchParameters<CntAccessModel> connectorParameters,
+    IEnumerable<SupplierResponseWrapper<SearchResponse>> supplierResponses,
+    out IEnumerable<AdviseMessage> adviseMessages)
+{
+    var supplierResponseWrappers = supplierResponses as SupplierResponseWrapper<SearchResponse>[] ?? supplierResponses.ToArray();
+    
+    var success = ResponseValidator.TryValidateSupplierResponses(supplierResponseWrappers, out adviseMessages);
+
+    if (!success) return false;
+    
+    if (supplierResponseWrappers.ElementAt(0).Response.ListaHoteles?.Hotel is null)
+    {
+        adviseMessages =
+        [
+            AdviseMessage.BuildSupplierNoResults() // Indicates no results from the supplier.
+        ];
+
+        return false;
+    }
+
+    return true; // Validation passes if no issues are found.
+}
+```
+
+---
+
+### **4. ParseResponses**
+Transforms the supplier's response back into the **Connector format**. This step ensures clients receive standardized data, regardless of the supplier's API structure.
+
+- **Details**:
+  - Extracts key information from the supplier's response, such as hotel details, pricing, and availability.
+  - Combines results if necessary (e.g., when multiple responses are merged).
+
+```csharp
+public SearchConnectorResponse ParseResponses(
+    SearchConnectorRequest connectorsRequest,
+    SearchParameters<CntAccessModel> connectorParameters,
+    IEnumerable<SupplierResponseWrapper<SearchResponse>> supplierResponses,
+    CancellationToken cancellationToken)
+{
+    var firstResponse = supplierResponses.ElementAt(0);
+
+    MapAccommodations(
+        new SearchWrapper(connectorsRequest, connectorParameters, firstResponse.Response));
+
+    var accommodations = connectorParameters.OptionsFromRoomsGenerator.Combine();
+
+    return new SearchConnectorResponse(new SearchRs(accommodations)); // Returns standardized results.
+}
+```
+
+> Parsing ensures clients receive consistent data, regardless of the supplier's data structure or peculiarities.
+
+---
+
+## **Adding Operations to the Connector**
+
+To add a new operation, the Connector uses extensions. For example, to implement a `Search` operation:
+
+### **1. Define the Operation**
+Define the class for the operation by inheriting from the appropriate interface. For a search operation, inherit from `ISearchOperation`.
+
+```csharp
+public partial class SearchOperation : ISearchOperation<SearchRequest, SearchResponse, CntAccessModel>
+{
+    // Implement the methods for TryValidateModelRequest, BuildRequests, etc.
+}
+```
+
+### **2. Add the Operation to the Connector**
+In the `Extensions` class, add the operation using the relevant helper method. Ensure that the appropriate serializer (e.g., JSON, XML) is also configured.
+
+```csharp
+public static IServiceCollection AddSearchServices(this IServiceCollection services,
+    IConfiguration configuration)
+{
+    services.AddSearchOperation<SearchOperation, SearchRequest, SearchResponse, CntAccessModel>(
+        TgxPlatform.PlatformName,
+        configuration);
+    
+    services.AddJsonSerializer<SearchRequest, SearchResponse>(_ => { });
+
+    return services;
+}
+```
+
+### **3. Configure Serialization**
+Depending on the supplier, the operation may require JSON or XML serialization. Use the appropriate serializer:
+
+- `services.AddJsonSerializer<...>()`
+- `services.AddXmlSerializer<...>()`
+
+---
+
+## **Key Takeaways**
+- Operations provide a unified framework for handling supplier integrations.
+- Each step ensures the operation is robust, reliable, and standardized.
+- Serialization and extensions are critical for integrating operations into the Connector.

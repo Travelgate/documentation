@@ -1,0 +1,59 @@
+
+# Connectors Pull Hotel Framework
+
+The **Connectors Pull Hotel** is framework for building hotel connectors within the Travelgate ecosystem. It serves as a standardization and integration tool for connecting Sellers with Buyers, ensuring compliance with Travelgate's best practices, business rules, and operational standards. This document provides an overview of the framework's purpose, architecture, and tools, along with insights into developing connectors efficiently.
+
+## What Is a Connector?
+
+A "Connector" bridges the gap between external services or APIs (usually from hotel providers) and Travelgate's Marketplace, specifically focusing on the Seller side. Acting as a "translator," a connector transforms data between a Seller's system and the Travelgate platform, enabling seamless communication between disparate formats (e.g., XML, JSON) and structures.
+
+For example:
+- A hotel provider's API, structured in XML or JSON, may expose availability, pricing, and booking data.
+- A connector standardizes this information into the Travelgate format, making it accessible and usable for online travel agencies (OTAs) and other distribution channels.
+
+Each connector operates as an independent microservice, ensuring modularity, scalability, and maintainability.
+
+## Why Use Connectors Pull Hotel?
+
+The **Connectors Pull Hotel** framework provides developers with the tools and architecture needed to build robust and efficient connectors. It ensures:
+1. **Standardization:** Adherence to Travelgate's protocols, formats, and business rules.
+2. **Best Practices:** Built-in support for industry best practices, including error handling, logging, and performance optimization.
+3. **CI/CD and Testing Tools:** Seamless integration with CI/CD pipelines and automated business rule testing.
+4. **Efficiency:** Tools and patterns to maximize performance, minimize latency, and optimize resource usage.
+
+## Key Features
+
+- **Travelgate Standard Compliance:** Ensures data and operations adhere to Travelgate's specifications for uniformity and compatibility.
+- **Support for XML and JSON APIs:** Easily integrates with Sellers offering XML- or JSON-based APIs.
+- **Modular Design:** Enables connectors to function as independent microservices, simplifying deployment and scaling.
+- **Extensibility:** Provides a suite of extensions to implement core operations, including Search, Quote, Book, and Cancel.
+
+## How It Works
+
+The framework is designed in C# and distributed as a NuGet package. Once installed, it allows developers to create connectors that implement the required Travelgate operations using a set of predefined interfaces and tools. 
+
+### Core Workflow
+
+1. **Data Transformation:** 
+   - Converts the Seller's data format into the Travelgate standard.
+   - Handles mappings, validations, and format conversions.
+   
+2. **Operations Implementation:** 
+   - Provides interfaces and extensions for key hotel operations:
+     - `Search`: Retrieves hotel availability.
+     - `Quote`: Confirms the details of a specific option.
+     - `Book`: Completes a booking.
+     - `Cancel`: Cancels a reservation.
+     - `CheckBookings` : Gets the current information of one or more existing bookings.
+
+     
+3. **Testing and Validation:**
+   - Includes tools to validate connector behavior against Travelgate standards.
+   - Automated tests ensure data accuracy and adherence to business rules.
+
+## Benefits of Using Connectors Pull Hotel
+
+- **Faster Development:** Predefined patterns and tools simplify the connector creation process.
+- **Consistent Quality:** Standardized implementation ensures consistent, high-quality connectors across different Sellers.
+- **Scalability:** Microservice-based architecture supports large-scale deployments with minimal maintenance overhead.
+- **Flexibility:** Easily extend or customize functionality to meet unique Seller requirements or adapt to new APIs.

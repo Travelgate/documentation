@@ -1,0 +1,90 @@
+
+# **Develop from Scratch**
+
+## **Before Start**
+
+When implementing a Connector, it is essential to review the supplier's API to verify compatibility with Travelgate's Connectors format.
+
+### **Key Points to Analyze**
+- **Is the API for hotel products?**
+- **Does it include a search operation?**
+  - The API must allow searching for options (rooms) based on occupancy, hotel codes, and check-in dates. This corresponds to the **Search** operation in Connectors.
+- **Does it include a quote operation?**
+  - The API must allow confirming an option's characteristics or cancellation policies. This corresponds to the **Quote** operation.
+  - **Note**: If the API does not have a dedicated quote call, and search ensures that the option’s price and policies will not change, a second search can act as a quote. 
+    - [Repeat Flow Operations](../Connector_Framework/Repeat_Flow_Operations.mdx).
+- **Does it include a book operation?**
+  - The API must allow confirming a booking with passenger names. This corresponds to the **Book** operation.
+- **Does it include a cancel operation?**
+  - The API must allow canceling a booking. This corresponds to the **Cancel** operation.
+- **Does it include a query by reference operation?**
+  - If the API allows querying a booking by buyer or seller reference, this corresponds to the **CheckBookingsByReference** operation. 
+  - *Note*: This operation is optional but required by many buyers.
+- **Does it include a query by date range operation?**
+  - If the API allows listing bookings by check-in date or booking date range, this corresponds to the **CheckBookingsByDates** operation. 
+  - *Note*: This operation is optional but highly recommended for many buyers.
+
+### **Preoperations**
+It is also necessary to determine if preoperations are required. For example:
+- **Search**:
+  - Some APIs require a login call to generate a session token before performing the search.
+- **Quote**:
+  - Often requires a second search or multiple calls to fetch cancellation policies and prices.
+- **Book**:
+  - May require a second quote to confirm price and availability before booking.
+
+---
+
+## **Start a Connector**
+
+### **Step 1: Define the Binder (AccessModels)**
+The first step is to define the parameters required by the supplier. Analyze the API and credentials provided to identify if any **custom parameters** are needed. 
+- [View AccessData Documentation](../Access_Data/AccessData.mdx)
+
+### **Step 2: Review the Provided Project**
+Travelgate provides a template project with:
+- Operations defined but unimplemented (e.g., methods throwing `NotImplementedException`).
+- Empty models (requests and responses) for each supplier operation.
+
+#### **Example**
+Unimplemented method in an operation:
+```csharp
+public bool TryValidateModelRequest(
+    SearchConnectorRequest connectorsRequest, 
+    SearchParameters<CntAccessModel> connectorParameters,
+    out IEnumerable<AdviseMessage> adviseMessages)
+{
+    throw new NotImplementedException();
+}
+```
+
+### **Step 3: Implement Operations**
+1. Implement the models for the supplier's requests and responses for a specific operation.
+2. Define the methods for that operation.
+3. Add the appropriate serializer type (JSON, XML) in the **Extensions** class.
+
+[View Operations Overview](../Connector_Framework/Operation_Overview.mdx)
+
+---
+
+### **Step 4: Implement Preoperations (If Needed)**
+If preoperations are required (e.g., login, token refresh), implement them and register them in the **Extensions**.
+
+[View PreOperations Overview](../Connector_Framework/PreOperation_Overview.mdx)
+
+---
+
+## **Testing the Implementation**
+
+### **Option 1: Connector Integration Tests**
+Use the integration tests provided by Travelgate to validate your implementation:
+- Add the necessary use cases to the **MockServer** for each operation.
+  - [View MockServer Documentation](../Connector_Framework/MockServer_Documentation.mdx).
+- Execute the associated tests for the implemented operation.
+  - [View Running Integration Tests](../Connector_Framework/Running_Integration_Tests.mdx).
+
+### **Option 2: FormTest Tool**
+Use the **FormTest** application to test each operation manually:
+- Configure the tool to use your supplier's API settings.
+- Test specific scenarios not covered by predefined use cases.
+  - [View FormTest Documentation](../Tools_and_Helpers/FormTest_Documentation.mdx).

@@ -11,8 +11,9 @@ The MockServer is a project designed to simulate supplier responses for various 
 
 ## **Structure**
 
-### **/Config**
+### **MockServer Configuration**
 Defines the supplier's access configuration and simulates the Access object.
+This structure must be added to the mock server under the config path: `/Config<supplierCode>.json`.
 
 #### **Example Configuration**
 ```json
@@ -196,6 +197,15 @@ Simulates supplier error responses. For example:
 - **Purpose**: Tests the `Search` operation, including handling of various guest configurations, multi-room bookings, and extended stays.
 
 ---
+
+## **PreOperations Mock**
+
+To add a PreOperations mock, you need to create a mock file with the following naming convention:  
+`<use_case>_PreOperation_<preoperation_number>.txt`. Preoperation numbers start at 0.
+
+### Example:
+`Provider_Errors_PreOperation_0.txt
+
 
 ## **Dynamic Replacements**
 

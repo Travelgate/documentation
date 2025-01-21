@@ -1,0 +1,25 @@
+---
+sidebar_position: 0
+---
+
+# Legacy Sellers Application Error
+
+The "applicationErrors" is used to provide detailed information about errors that may occur during API operations. This object is crucial for error handling and debugging, as it offers specific details about the nature of the error, enabling developers and API users to identify and resolve issues efficiently.
+
+```xml
+    <applicationErrors>
+        <code>450</code>
+        <type>102</type>
+        <description>The chain does not support itinerary booking.</description>
+        <httpStatusCode>0</httpStatusCode>
+    </applicationErrors>
+```
+
+| Element                                    | Rel  | Type    | Description                                                                 |
+|--------------------------------------------|------|---------|-----------------------------------------------------------------------------|
+| applicationErrors                          | 0..1 |         | It contains detailed information about an application error.
+| code                                       | 0..1 | String  | Specific error code, provider error code.                                   |
+| type                                       | 1    | Integer | Error type. Indicates the general category of the error. These are the different error types to use: [Booking flow and management](../errors-and-warnings/booking-flow).|
+| description                                | 1    | String  | Detailed description of the error.                       |
+| httpStatusCode                             | 0..1 | Integer | HTTP status code associated with the error, if applicable. |
+

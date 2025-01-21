@@ -246,13 +246,14 @@ The response options include either **success** or an **error**. If successful, 
 
 ```xml
 <ReservationRS>
-   <operationImplemented>true</operationImplemented>
-   <applicationError>
-      <code/>
-      <type>204</type>
-      <description>Supplier returns 0 results in availability.</description>
-      <httpStatusCode>0</httpStatusCode>
-   </applicationError>
+    <operationImplemented>true</operationImplemented>
+    <applicationErrors>
+        <code>450</code>
+        <type>102</type>
+        <description>The chain does not support itinerary booking.</description>
+        <httpStatusCode>0</httpStatusCode>
+    </applicationErrors>
+    <ResStatus>UN</ResStatus>
 </ReservationRS>
 ```
 

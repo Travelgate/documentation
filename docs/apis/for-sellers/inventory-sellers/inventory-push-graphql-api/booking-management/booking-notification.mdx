@@ -1,0 +1,1221 @@
+---
+sidebar_position: 2
+---
+
+# Booking Notification
+
+During the booking process, we'll send you a `BookNotif` request message to share reservation details. You just need to check and let us know the reservation status. After that, Travelgate will handle the response from your system, moving forward with the reservation and updating you on the status.
+
+:::tip
+
+If you have the booking locator, include it in the `BookNotif` response, this way we'll include it in our response.
+
+:::
+
+Keep in mind that if there's an issue with the reservation in your system, we'll consider it as not successful (NOK) and we return an error message.
+
+## BookNotif Request
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+<TabItem value="MerchantPayment" label="MerchantPayment">
+
+```json
+{
+    "bookNotif" : {
+        "settings" : {
+            "Supplier" : "PTEST",
+            "Client" : "CTEST"
+        },
+        "bookDetails" : {
+            "status" : "Confirmed",
+            "references" : [
+                {
+                    "locator" : "CLIENTLOCATOR_1",
+                    "type" : "Client"
+                },
+                {
+                    "locator" : "12646464",
+                    "type" : "Internal"
+                }
+            ],
+            "holder" : {
+                "name" : "TestX",
+                "surName" : "TestX",
+                "personalTitleType" : "MR"
+            },
+            "hotel" : {
+                "bookingDate" : "2025-01-15T14:10:07.878425Z",
+                "lastModifyDate" : "2025-01-15T14:10:07.878425Z",
+                "checkIn" : "2025-02-10T00:00:00",
+                "checkOut" : "2025-02-12T00:00:00",
+                "hotelCode" : "85203",
+                "hotelName" : "TEST HOTEL NAME",
+                "context" : "TGX_PUSH",
+                "boardCode" : "1",
+                "occupancies" : [
+                    {
+                        "occupancyId" : 1,
+                        "paxes" : [
+                            {
+                                "name" : "TestA",
+                                "surName" : "TestA",
+                                "personalTitleType" : "MR",
+                                "age" : 20,
+                                "type" : "Adult"
+                            },
+                            {
+                                "name" : "TestB",
+                                "surName" : "TestB",
+                                "personalTitleType" : "MR",
+                                "age" : 20,
+                                "type" : "Adult"
+                            }
+                        ]
+                    }
+                ],
+                "rooms" : [
+                    {
+                        "occupancyRefId" : 1,
+                        "code" : "STDGV",
+                        "id" : "1|20#20|85203|2025-02-10|2|6436089|6436091|1|11|0",
+                        "type" : "58090",
+                        "description" : "Standard Garden View",
+                        "roomPrice" : {
+                            "price" : {
+                                "currency" : "EUR",
+                                "binding" : false,
+                                "net" : 480,
+                                "gross" : 480,
+                                "netSpecified" : true,
+                                "minimumSellingPrice" : 0
+                            },
+                            "priceBreakdown" : [
+                                {
+                                    "price" : {
+                                        "currency" : "EUR",
+                                        "binding" : false,
+                                        "net" : 200,
+                                        "gross" : 200,
+                                        "netSpecified" : true,
+                                        "minimumSellingPrice" : 0
+                                    },
+                                    "startDate" : "2025-02-10",
+                                    "endDate" : "2025-02-11",
+                                    "amountType" : "Room"
+                                },
+                                {
+                                    "price" : {
+                                        "currency" : "EUR",
+                                        "binding" : false,
+                                        "net" : 200,
+                                        "gross" : 200,
+                                        "netSpecified" : true,
+                                        "minimumSellingPrice" : 0
+                                    },
+                                    "startDate" : "2025-02-11",
+                                    "endDate" : "2025-02-12",
+                                    "amountType" : "Room"
+                                }
+                            ]
+                        },
+                        "units" : 5,
+                        "ratePlan" : {
+                            "code" : "BAR",
+                            "name" : "BAR RO",
+                            "type" : "Package",
+                            "senior" : "NoSeniorRate",
+                            "acceptedPayments" : [
+                                {
+                                    "type" : "MerchantPay"
+                                },
+                                {
+                                    "type" : "CardBookingPay",
+                                    "cardTypes" : [
+                                        "VI",
+                                        "MC"
+                                    ]
+                                }
+                            ],
+                            "additionalDetails" : {
+                                "SpecificClients" : [
+                                    {
+                                        "code" : "cli",
+                                        "description" : "cli"
+                                    }
+                                ]
+                            },
+                            "id" : 6436089
+                        },
+                        "remarks" : [
+                            {
+                                "text" : "Test booking"
+                            }
+                        ],
+                        "surcharges" : [
+                            {
+                                "chargeType" : "Included",
+                                "description" : "City",
+                                "price" : {
+                                    "currency" : "EUR",
+                                    "binding" : true,
+                                    "net" : 64,
+                                    "gross" : 64,
+                                    "netSpecified" : true,
+                                    "minimumSellingPrice" : 64
+                                },
+                                "code" : "0"
+                            },
+                            {
+                                "chargeType" : "Included",
+                                "description" : "Local",
+                                "price" : {
+                                    "currency" : "EUR",
+                                    "binding" : true,
+                                    "net" : 16,
+                                    "gross" : 16,
+                                    "netSpecified" : true,
+                                    "minimumSellingPrice" : 16
+                                },
+                                "code" : "1"
+                            },
+                            {
+                                "chargeType" : "Excluded",
+                                "description" : "Supplement to be paid on spot",
+                                "price" : {
+                                    "currency" : "EUR",
+                                    "binding" : true,
+                                    "net" : 8,
+                                    "gross" : 8,
+                                    "netSpecified" : true,
+                                    "minimumSellingPrice" : 8
+                                },
+                                "code" : "3"
+                            },
+                            {
+                                "chargeType" : "Excluded",
+                                "description" : "Resort Fee",
+                                "price" : {
+                                    "currency" : "EUR",
+                                    "binding" : true,
+                                    "net" : 30,
+                                    "gross" : 30,
+                                    "netSpecified" : true,
+                                    "minimumSellingPrice" : 30
+                                },
+                                "code" : "2"
+                            }
+                        ],
+                        "cancelPolicy" : {
+                            "refundable" : true,
+                            "cancelPenalties" : [
+                                {
+                                    "hoursBefore" : 72,
+                                    "penaltyType" : "Amount",
+                                    "currency" : "EUR",
+                                    "value" : 240,
+                                    "deadline" : "2025-02-06T10:00:00Z"
+                                },
+                                {
+                                    "hoursBefore" : 0,
+                                    "penaltyType" : "Amount",
+                                    "currency" : "EUR",
+                                    "value" : 480,
+                                    "deadline" : "2025-02-09T10:00:00Z"
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "boardName" : "All_inclusive"
+            },
+            "price" : {
+                "currency" : "EUR",
+                "binding" : false,
+                "net" : 480,
+                "gross" : 480,
+                "netSpecified" : true,
+                "minimumSellingPrice" : 0
+            },
+            "payment" : {
+                "type" : "MerchantPay"
+            },
+            "company" : {
+                "email" : "hotelpush@xmltravelgate.com",
+                "phone" : "123456789",
+                "address" : {
+                    "addressLine" : "Carrer ssss Testing ssss",
+                    "city" : "Palma",
+                    "postalCode" : "07121",
+                    "country" : "Spain"
+                }
+            }
+        }
+    }
+}
+```
+
+</TabItem>
+<TabItem value="VCC Payment" label="VCC Payment">
+
+```json
+{
+    "bookNotif" : {
+        "settings" : {
+            "Supplier" : "PTEST",
+            "Client" : "CTEST"
+        },
+        "bookDetails" : {
+            "status" : "Confirmed",
+            "references" : [
+                {
+                    "locator" : "CLIENTLOCATOR_1",
+                    "type" : "Client"
+                },
+                {
+                    "locator" : "12646464",
+                    "type" : "Internal"
+                }
+            ],
+            "holder" : {
+                "name" : "TestX",
+                "surName" : "TestX",
+                "personalTitleType" : "MR"
+            },
+            "hotel" : {
+                "bookingDate" : "2025-01-15T14:10:07.878425Z",
+                "lastModifyDate" : "2025-01-15T14:10:07.878425Z",
+                "checkIn" : "2025-02-10T00:00:00",
+                "checkOut" : "2025-02-12T00:00:00",
+                "hotelCode" : "85203",
+                "hotelName" : "TEST HOTEL NAME",
+                "context" : "TGX_PUSH",
+                "boardCode" : "1",
+                "occupancies" : [
+                    {
+                        "occupancyId" : 1,
+                        "paxes" : [
+                            {
+                                "name" : "TestA",
+                                "surName" : "TestA",
+                                "personalTitleType" : "MR",
+                                "age" : 20,
+                                "type" : "Adult"
+                            },
+                            {
+                                "name" : "TestB",
+                                "surName" : "TestB",
+                                "personalTitleType" : "MR",
+                                "age" : 20,
+                                "type" : "Adult"
+                            }
+                        ]
+                    }
+                ],
+                "rooms" : [
+                    {
+                        "occupancyRefId" : 1,
+                        "code" : "STDGV",
+                        "id" : "1|20#20|85203|2025-02-10|2|6436089|6436091|1|11|0",
+                        "type" : "58090",
+                        "description" : "Standard Garden View",
+                        "roomPrice" : {
+                            "price" : {
+                                "currency" : "EUR",
+                                "binding" : false,
+                                "net" : 480,
+                                "gross" : 480,
+                                "netSpecified" : true,
+                                "minimumSellingPrice" : 0
+                            },
+                            "priceBreakdown" : [
+                                {
+                                    "price" : {
+                                        "currency" : "EUR",
+                                        "binding" : false,
+                                        "net" : 200,
+                                        "gross" : 200,
+                                        "netSpecified" : true,
+                                        "minimumSellingPrice" : 0
+                                    },
+                                    "startDate" : "2025-02-10",
+                                    "endDate" : "2025-02-11",
+                                    "amountType" : "Room"
+                                },
+                                {
+                                    "price" : {
+                                        "currency" : "EUR",
+                                        "binding" : false,
+                                        "net" : 200,
+                                        "gross" : 200,
+                                        "netSpecified" : true,
+                                        "minimumSellingPrice" : 0
+                                    },
+                                    "startDate" : "2025-02-11",
+                                    "endDate" : "2025-02-12",
+                                    "amountType" : "Room"
+                                }
+                            ]
+                        },
+                        "units" : 5,
+                        "ratePlan" : {
+                            "code" : "BAR",
+                            "name" : "BAR RO",
+                            "type" : "Package",
+                            "senior" : "NoSeniorRate",
+                            "acceptedPayments" : [
+                                {
+                                    "type" : "MerchantPay"
+                                },
+                                {
+                                    "type" : "CardBookingPay",
+                                    "cardTypes" : [
+                                        "VI",
+                                        "MC"
+                                    ]
+                                }
+                            ],
+                            "additionalDetails" : {
+                                "SpecificClients" : [
+                                    {
+                                        "code" : "cli",
+                                        "description" : "cli"
+                                    }
+                                ]
+                            },
+                            "id" : 6436089
+                        },
+                        "remarks" : [
+                            {
+                                "text" : "Test booking"
+                            }
+                        ],
+                        "surcharges" : [
+                            {
+                                "chargeType" : "Included",
+                                "description" : "City",
+                                "price" : {
+                                    "currency" : "EUR",
+                                    "binding" : true,
+                                    "net" : 64,
+                                    "gross" : 64,
+                                    "netSpecified" : true,
+                                    "minimumSellingPrice" : 64
+                                },
+                                "code" : "0"
+                            },
+                            {
+                                "chargeType" : "Included",
+                                "description" : "Local",
+                                "price" : {
+                                    "currency" : "EUR",
+                                    "binding" : true,
+                                    "net" : 16,
+                                    "gross" : 16,
+                                    "netSpecified" : true,
+                                    "minimumSellingPrice" : 16
+                                },
+                                "code" : "1"
+                            },
+                            {
+                                "chargeType" : "Excluded",
+                                "description" : "Supplement to be paid on spot",
+                                "price" : {
+                                    "currency" : "EUR",
+                                    "binding" : true,
+                                    "net" : 8,
+                                    "gross" : 8,
+                                    "netSpecified" : true,
+                                    "minimumSellingPrice" : 8
+                                },
+                                "code" : "3"
+                            },
+                            {
+                                "chargeType" : "Excluded",
+                                "description" : "Resort Fee",
+                                "price" : {
+                                    "currency" : "EUR",
+                                    "binding" : true,
+                                    "net" : 30,
+                                    "gross" : 30,
+                                    "netSpecified" : true,
+                                    "minimumSellingPrice" : 30
+                                },
+                                "code" : "2"
+                            }
+                        ],
+                        "cancelPolicy" : {
+                            "refundable" : true,
+                            "cancelPenalties" : [
+                                {
+                                    "hoursBefore" : 72,
+                                    "penaltyType" : "Amount",
+                                    "currency" : "EUR",
+                                    "value" : 240,
+                                    "deadline" : "2025-02-06T10:00:00Z"
+                                },
+                                {
+                                    "hoursBefore" : 0,
+                                    "penaltyType" : "Amount",
+                                    "currency" : "EUR",
+                                    "value" : 480,
+                                    "deadline" : "2025-02-09T10:00:00Z"
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "boardName" : "All_inclusive"
+            },
+            "price" : {
+                "currency" : "EUR",
+                "binding" : false,
+                "net" : 480,
+                "gross" : 480,
+                "netSpecified" : true,
+                "minimumSellingPrice" : 0
+            },
+            "payment" : {
+                "type" : "CardBookingPay",
+                "card" : {
+                    "type" : "VI",
+                    "cardNumber" : "4111111111111111",
+                    "holder" : "John Doe",
+                    "expireDate" : "12/26",
+                    "cvv" : "123"
+                }
+            },
+            "company" : {
+                "email" : "hotelpush@xmltravelgate.com",
+                "phone" : "123456789",
+                "address" : {
+                    "addressLine" : "Carrer ssss Testing ssss",
+                    "city" : "Palma",
+                    "postalCode" : "07121",
+                    "country" : "Spain"
+                }
+            }
+        }
+    }
+}
+```
+
+</TabItem>
+<TabItem value="VCC Payment with URL" label="VCC Payment with URL">
+
+```json
+{
+    "bookNotif" : {
+        "settings" : {
+            "Supplier" : "PTEST",
+            "Client" : "CTEST"
+        },
+        "bookDetails" : {
+            "status" : "Confirmed",
+            "references" : [
+                {
+                    "locator" : "CLIENTLOCATOR_1",
+                    "type" : "Client"
+                },
+                {
+                    "locator" : "12646464",
+                    "type" : "Internal"
+                }
+            ],
+            "holder" : {
+                "name" : "TestX",
+                "surName" : "TestX",
+                "personalTitleType" : "MR"
+            },
+            "hotel" : {
+                "bookingDate" : "2025-01-15T14:10:07.878425Z",
+                "lastModifyDate" : "2025-01-15T14:10:07.878425Z",
+                "checkIn" : "2025-02-10T00:00:00",
+                "checkOut" : "2025-02-12T00:00:00",
+                "hotelCode" : "85203",
+                "hotelName" : "TEST HOTEL NAME",
+                "context" : "TGX_PUSH",
+                "boardCode" : "1",
+                "occupancies" : [
+                    {
+                        "occupancyId" : 1,
+                        "paxes" : [
+                            {
+                                "name" : "TestA",
+                                "surName" : "TestA",
+                                "personalTitleType" : "MR",
+                                "age" : 20,
+                                "type" : "Adult"
+                            },
+                            {
+                                "name" : "TestB",
+                                "surName" : "TestB",
+                                "personalTitleType" : "MR",
+                                "age" : 20,
+                                "type" : "Adult"
+                            }
+                        ]
+                    }
+                ],
+                "rooms" : [
+                    {
+                        "occupancyRefId" : 1,
+                        "code" : "STDGV",
+                        "id" : "1|20#20|85203|2025-02-10|2|6436089|6436091|1|11|0",
+                        "type" : "58090",
+                        "description" : "Standard Garden View",
+                        "roomPrice" : {
+                            "price" : {
+                                "currency" : "EUR",
+                                "binding" : false,
+                                "net" : 480,
+                                "gross" : 480,
+                                "netSpecified" : true,
+                                "minimumSellingPrice" : 0
+                            },
+                            "priceBreakdown" : [
+                                {
+                                    "price" : {
+                                        "currency" : "EUR",
+                                        "binding" : false,
+                                        "net" : 200,
+                                        "gross" : 200,
+                                        "netSpecified" : true,
+                                        "minimumSellingPrice" : 0
+                                    },
+                                    "startDate" : "2025-02-10",
+                                    "endDate" : "2025-02-11",
+                                    "amountType" : "Room"
+                                },
+                                {
+                                    "price" : {
+                                        "currency" : "EUR",
+                                        "binding" : false,
+                                        "net" : 200,
+                                        "gross" : 200,
+                                        "netSpecified" : true,
+                                        "minimumSellingPrice" : 0
+                                    },
+                                    "startDate" : "2025-02-11",
+                                    "endDate" : "2025-02-12",
+                                    "amountType" : "Room"
+                                }
+                            ]
+                        },
+                        "units" : 5,
+                        "ratePlan" : {
+                            "code" : "BAR",
+                            "name" : "BAR RO",
+                            "type" : "Package",
+                            "senior" : "NoSeniorRate",
+                            "acceptedPayments" : [
+                                {
+                                    "type" : "MerchantPay"
+                                },
+                                {
+                                    "type" : "CardBookingPay",
+                                    "cardTypes" : [
+                                        "VI",
+                                        "MC"
+                                    ]
+                                }
+                            ],
+                            "additionalDetails" : {
+                                "SpecificClients" : [
+                                    {
+                                        "code" : "cli",
+                                        "description" : "cli"
+                                    }
+                                ]
+                            },
+                            "id" : 6436089
+                        },
+                        "remarks" : [
+                            {
+                                "text" : "Test booking"
+                            }
+                        ],
+                        "surcharges" : [
+                            {
+                                "chargeType" : "Included",
+                                "description" : "City",
+                                "price" : {
+                                    "currency" : "EUR",
+                                    "binding" : true,
+                                    "net" : 64,
+                                    "gross" : 64,
+                                    "netSpecified" : true,
+                                    "minimumSellingPrice" : 64
+                                },
+                                "code" : "0"
+                            },
+                            {
+                                "chargeType" : "Included",
+                                "description" : "Local",
+                                "price" : {
+                                    "currency" : "EUR",
+                                    "binding" : true,
+                                    "net" : 16,
+                                    "gross" : 16,
+                                    "netSpecified" : true,
+                                    "minimumSellingPrice" : 16
+                                },
+                                "code" : "1"
+                            },
+                            {
+                                "chargeType" : "Excluded",
+                                "description" : "Supplement to be paid on spot",
+                                "price" : {
+                                    "currency" : "EUR",
+                                    "binding" : true,
+                                    "net" : 8,
+                                    "gross" : 8,
+                                    "netSpecified" : true,
+                                    "minimumSellingPrice" : 8
+                                },
+                                "code" : "3"
+                            },
+                            {
+                                "chargeType" : "Excluded",
+                                "description" : "Resort Fee",
+                                "price" : {
+                                    "currency" : "EUR",
+                                    "binding" : true,
+                                    "net" : 30,
+                                    "gross" : 30,
+                                    "netSpecified" : true,
+                                    "minimumSellingPrice" : 30
+                                },
+                                "code" : "2"
+                            }
+                        ],
+                        "cancelPolicy" : {
+                            "refundable" : true,
+                            "cancelPenalties" : [
+                                {
+                                    "hoursBefore" : 72,
+                                    "penaltyType" : "Amount",
+                                    "currency" : "EUR",
+                                    "value" : 240,
+                                    "deadline" : "2025-02-06T10:00:00Z"
+                                },
+                                {
+                                    "hoursBefore" : 0,
+                                    "penaltyType" : "Amount",
+                                    "currency" : "EUR",
+                                    "value" : 480,
+                                    "deadline" : "2025-02-09T10:00:00Z"
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "boardName" : "All_inclusive"
+            },
+            "price" : {
+                "currency" : "EUR",
+                "binding" : false,
+                "net" : 480,
+                "gross" : 480,
+                "netSpecified" : true,
+                "minimumSellingPrice" : 0
+            },
+            "payment" : {
+                "type" : "CardBookingPay",
+                "card" : {
+                    "urlPayment" : {
+                        "url" : "https://payment.example.com/authorize"
+                    }
+                }
+            },
+            "company" : {
+                "email" : "hotelpush@xmltravelgate.com",
+                "phone" : "123456789",
+                "address" : {
+                    "addressLine" : "Carrer ssss Testing ssss",
+                    "city" : "Palma",
+                    "postalCode" : "07121",
+                    "country" : "Spain"
+                }
+            }
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
+
+
+### Request Headers
+
+Our system sends `BookNotif` messages as POST request with the following headers.
+
+**Content Type**: Content-Type header provides information about the actual content type of the returned content. In this case, the header is set to:
+
+```html
+Content-Type: application/json;charset=UTF-8
+``` 
+
+**Authentication**:
+
+```html
+Authorization: Basic xxxxxxxxxxxxxxxxx
+```
+:::note
+You need to provide an endpoint to which we will send the `bookNotif` and a username and password.
+:::
+
+### Request Data Breakdown
+<details>
+ <summary>bookNotif</summary>
+
+  Root object containing all booking information.
+
+  <details>
+  <summary>settings</summary>
+
+  Settings for the booking notification:
+  - **`supplier`** (string): Your inventory supplier identifier.
+  - **`client`** (string): The inventory client identifier.
+
+  </details>
+
+  <details>
+  <summary>bookDetails</summary>
+
+  Main details of the booking:
+
+  - **`status`** (`BookStatus`): Status of the booking. Possible values are:
+    - `Confirmed`
+    - `Cancelled`
+  - **`references`** (array of `Reference`):
+    <details>
+    <summary>Reference Object</summary>
+    - **`locator`** (string): Unique identifier for the reference.
+    - **`type`** (`ReferenceType`): Type of reference. Possible values are:
+      - `Client`
+      - `Internal`
+    </details>
+  - **`holder`** (`Customer`):
+    <details>
+    <summary>Customer Object</summary>
+    - **`name`** (string): First name of the holder.
+    - **`surname`** (string): Last name of the holder.
+    - **`personalTitleType`** (`PersonalTitleType`): Title of the holder. Possible values are:
+      - `MR`
+      - `MRS`
+      - `MISS`
+      - `MS`
+    - **`age`** (integer, optional): Age of the holder.
+    - **`contactInfo`** (object, optional):
+      <details>
+      <summary>ContactInfo Object</summary>
+      - **`email`** (string, optional): Email address of the holder.
+      - **`phone`** (string, optional): Phone number of the holder.
+      </details>
+    </details>
+  - **`hotel`** (`HotelDetail`):
+    <details>
+    <summary>HotelDetail Object</summary>
+    - **`bookingDate`** (DateTime): Date when the booking was created.
+    - **`lastModifyDate`** (DateTime, optional): Date when the booking was last modified.
+    - **`checkIn`** (DateTime): Check-in date.
+    - **`checkOut`** (DateTime): Check-out date.
+    - **`hotelCode`** (string): Unique identifier for the hotel.
+    - **`context`** (string): Context for the hotel, usually `TGX_PUSH`. If you need to use your own hotel codes, please contact with us and we create your own context code. 
+    - **`hotelName`** (string): Name of the hotel. 
+    - **`boardCode`** (string): Code of the board.
+    - **`boardName`** (string): Name of the board.
+      <details>
+      <summary>List of possible board names with their corresponding codes:</summary>
+        - **1**: All_inclusive
+        - **2**: American  
+        - **3**: Bed_And_breakfast  
+        - **4**: Buffet_And_breakfast  
+        - **5**: Caribbean_breakfast  
+        - **6**: Continental_breakfast  
+        - **7**: English_breakfast  
+        - **8**: European_plan  
+        - **9**: Family_plan  
+        - **10**: Full_board  
+        - **11**: Full_breakfast  
+        - **12**: Half_board  
+        - **13**: As_brochured  
+        - **14**: Room_only  
+        - **15**: Self_catering  
+        - **16**: Bermuda  
+        - **17**: Dinner_And_breakfast  
+        - **18**: Family_American  
+        - **19**: Breakfast  
+        - **20**: Modified  
+        - **255**: Full_board_And_drink  
+        - **256**: Half_board_And_drink  
+        - **257**: All_Inclusive_Premium  
+        - **258**: Gala_Dinner  
+        - **259**: All_Inclusive_Light  
+        - **260**: Bed_And_breakfast_And_Half_board  
+        - **261**: All_Inclusive_Limited  
+        - **262**: Bed_and_Brunch
+        - **263**: Full_board_wine_and_water
+        - **264**: Half_board_wine_and_water
+        - **265**: All_Inclusive_Plus
+        - **266**: Half_board_Plus
+        - **267**: Full_board_Plus
+      </details>
+    - **`occupancies`** (array of `BookOccupancy`):
+      <details>
+      <summary>BookOccupancy Object</summary>
+      - **`occupancyId`** (integer): Identifier for the occupancy.
+      - **`paxes`** (array of `Pax`): List of passengers in the occupancy.
+        <details>
+        <summary>Pax Object</summary>
+        - **`name`** (string): First name of the passenger.
+        - **`surname`** (string): Last name of the passenger.
+        - **`personalTitleType`** (`PersonalTitleType`): Title of the passenger. Possible values are:
+          - `MR`
+          - `MRS`
+          - `MISS`
+          - `MS`
+        - **`age`** (integer): Age of the passenger.
+        - **`type`**: Passenger type. Possible values are:
+          - `Adult`
+          - `Child`
+          - `Infant`
+        </details>
+      </details>
+    - **`rooms`** (array of `Room`):
+      <details>
+      <summary>Room Object</summary>
+      - **`occupancyRefId`** (integer): Reference to the occupancy associated with the room.
+      - **`code`** (string): Code of the room.
+      - **`id`** (string): Booking token.
+      - **`type`** (string): Internal id type of the room.
+      - **`description`** (string, optional): Description of the room.
+      - **`roomPrice`** (`RoomPrice`):
+        <details>
+        <summary>RoomPrice Object</summary>
+        - **`price`** (`Price`): Total price for the room. See the [Price Object](#price-object) for more details.
+        - **`priceBreakdown`** (array of `PriceBreakdown`): Breakdown of the price by day.
+          <details>
+            <summary>PriceBreakdown Object</summary>
+
+            The `PriceBreakdown` object provides detailed pricing information for a specific period within a booking. It is used to divide the total price into smaller, date-specific segments.
+            
+            - **`price`** (`Price`):  Total day price. See the [Price Object](#price-object) for more details.
+            - **`startDate`** (`string`):  The start date for this price breakdown period in ISO 8601 format (e.g., `"2025-02-10"`).
+            - **`endDate`** (`string`): The end date for this price breakdown period in ISO 8601 format (e.g., `"2025-02-11"`).
+            - **`amountType`** (`AmountType`): Describes the type of amount the price represents. Possible values include:
+              - `Standard`
+              - `Room`
+              - `Occupancy`
+              - `AgeRange`
+              - `AgeRangeOccupancy`
+            - **`promotion`** (`Promotion`, optional): 
+               <details>
+                <summary>Promotion Object</summary>
+                
+                The `Promotion` object provides information about any discounts or special offers applied to the price breakdown.
+
+                - **`discount`** (`Price`): The discounted amount for the promotion. For more details, refer to the [Price Object](#price-object).
+                - **`code`** (`string`): A unique identifier for the promotion or discount.
+                - **`name`** (`string`): A descriptive name for the promotion.
+               </details>
+            - **`additionalPaxes`** (`AdditionalPaxes`, optional):
+                <details>
+                  <summary>AdditionalPaxes Object</summary>
+
+                  The `AdditionalPaxes` object represents the additional guest price supplements. It provides detailed breakdowns for extra adults, children, and infants.
+                  
+                  - **`extraAdults`** (`array` of `AdditionalPax`): A list of daily price supplements for additional adults in the booking. Each entry corresponds to one adult.
+                  - **`extraChildren`** (`array` of `AdditionalPax`): A list of daily price supplements for additional children in the booking. Each entry corresponds to one child.
+                  - **`extraInfants`** (`array` of `AdditionalPax`):  A list of daily price supplements for additional infants in the booking. Each entry corresponds to one infant.
+                  <details>
+                    <summary>AdditionalPax Object</summary>
+                    - **`position`** (`integer`):  The position of the pax in the booking.
+                    - **`amount`** (`number`): Price of the supplement for this passenger. This value is expressed in the currency defined in the parent `PriceBreakdown`.
+                  </details>
+                </details>
+          </details>
+        </details>
+      - **`units`**: Number of rooms left in our system.
+      - **`ratePlan`** (`RatePlan`):
+        <details>
+        <summary>RatePlan Object</summary>
+
+        The `RatePlan` object provides detailed information about the pricing plan associated with a room or booking. This includes specific rules, payment options, and additional details about the plan.
+
+        - **`code`** (`string`): 
+          A unique identifier for the rate plan (e.g., `"BAR"` for Best Available Rate).
+
+        - **`name`** (`string`, optional): 
+          A descriptive name for the rate plan (e.g., `"Standard Rate"` or `"Non-Refundable"`).
+
+        - **`type`** (`RatePlanType`, optional): 
+          Specifies the type of the rate plan or rate rule. Possible values include:
+          - `NoRatePlanType`
+          - `LargeFamily`
+          - `PublicServant`
+          - `Negotiated`
+          - `Package`
+          - `CanaryResident`
+          - `BalearicResident`
+          - `HoneyMoon`
+
+        - **`senior`** (`SeniorRate`, optional): 
+          Indicates whether the rate plan is tailored for senior customers. Possible values include:
+          - `NoSeniorRate`
+          - `SeniorRate_55`
+          - `SeniorRate_60`
+          - `SeniorRate_65`
+
+        - **`acceptedPayments`** (`array` of `AcceptedPayment`, optional): A list of accepted payment methods for this rate plan.
+          <details>
+          <summary>AcceptedPayment Object</summary>
+            - **`type`** (`PaymentType`): Type of payment method (e.g., `MerchantPay`, `CardBookingPay`). See the possible values [here](#payment-type)
+            - **`cardTypes`** (`array` of `CreditCardType`, optional): Specifies the types of credit cards accepted (e.g., `VI` for Visa, `CA` for Mastercard). See the possible values [here](#creditcard-type)
+          </details> 
+         
+        - **`additionalDetails`** (`AdditionalDetails`, optional): 
+          A dictionary of additional details related to the rate plan. Each key is an `AdditionalDetailType`, and the value is a list of `AdditionalDetail` objects. Common detail types include:
+          - `Others` (Not used)
+          - `SpecificClients`
+            <details>
+              <summary>AdditionalDetail Object</summary>
+
+              The `AdditionalDetail` object contains extra information about the rate plan:
+
+              - **`code`** (`string`): A unique identifier for the detail.
+              - **`description`** (`string`): A textual description of the additional detail.
+
+              Example:
+
+              ```json
+                ...
+
+                "additionalDetails": {
+                  "SpecificClients": [
+                    {
+                      "code": "CORP",
+                      "description": "Corporate clients only"
+                    }
+                  ]
+                }
+                ...
+              ```
+
+            </details>
+
+        - **`id`** (`integer`, optional): An internal numerical identifier for the rate plan.
+        </details>
+      - **`surcharges`** (`array` of `Surcharge`, optional): Additional fees applied to the room.
+        <details>
+          <summary>Surcharge Object</summary>
+            - **`chargeType`** (`ChargeType`): Specifies if the surcharge is `Included` or `Excluded` in the final price.
+            - **`description`** (`string`): A textual description of the surcharge.
+            - **`price`** (`Price`): The price associated with the surcharge. See [here](#price-object)
+            - **`code`** (`string`): Code identifying the surcharge. Possible values:
+
+              - `0` : City tax
+              - `1` : Loca tax
+              - `2` : Resort Fee
+              - `3` : Supplement to be paid on spot
+        </details>
+      - **`cancelPolicy`** (`CancelPolicy`, optional): The cancellation policy for the room.
+        <details>
+          <summary>CancelPolicy Object</summary>
+            - **`refundable`** (`boolean`): Indicates if the room is refundable or not.
+            - **`cancelPenalties`** (`array` of `CancelPenalty`): List of penalties that apply when the booking is canceled.
+              <details>
+                <summary>CancelPenalty Object</summary>
+                - **`hoursBefore`** (`integer`): The number of hours before the booking's check-in date when this penalty applies. For example, a penalty with `hoursBefore: 72` applies if the booking is canceled less than 72 hours before check-in.
+                - **`penaltyType`** (`PenaltyType`): The type of penalty applied. Possible values include:
+                  - **`Amount`**: A fixed monetary penalty.
+                  - **`Nights`**: A penalty based on the price of one or more nights.
+                  - **`Percentage`**: A percentage of the total booking price.
+                - **`currency`** (`string`, required for `Amount`): The currency in which the penalty is calculated, specified in ISO 4217 format (e.g., `"USD"`, `"EUR"`). Required if `penaltyType` is `Amount`.
+                - **`value`** (`number`): The value of the penalty. Its meaning depends on the `penaltyType`:
+                  - If `penaltyType` is `Amount`, this is the fixed monetary value (e.g., `100.0`).
+                  - If `penaltyType` is `Nights`, this represents the number of nights charged as a penalty.
+                  - If `penaltyType` is `Percentage`, this is the percentage of the total booking price (e.g., `25.0` for 25%).
+                - **`deadline`** (`string`, optional): A specific date and time (in ISO 8601 format) when this penalty takes effect. This is often used in addition to `hoursBefore` for clarity.
+              </details>
+        </details>
+      - **`remarks`** (`array` of `Remark`, optional): List of remarks or special instructions for the room.
+        <details>
+          <summary>Remark Object</summary>
+          - **`text`** (`string`): The remark or note related to the room.
+        </details>
+      </details>
+    </details>
+  - **`price`** (`Price`): Total price of the booking.
+    <details>
+      <summary><a id="price-object">Price Object. More information [here](/kb/faqs/faqs-price/price-commission-binding)</a></summary>
+      - **`currency`** (`string`): 
+        The currency in which the price is expressed, using the ISO 4217 standard (e.g., `"USD"` for US dollars, `"EUR"` for euros).
+      - **`binding`** (`boolean`): 
+        Indicates whether the price is binding (`true`) or not (`false`). A binding price means that the buyer must sell the product at least at the `minimumSellingPrice` or the `gross` price, depending on what the seller requires. If `binding` is `false`, the buyer has more flexibility to set the selling price.
+      - **`net`** (`number`): 
+        Represents the net amount of the price before adding any commission, taxes, or other charges. It is the base cost of the product that the buyer pays to the seller.
+      - **`gross`** (`number`): 
+        The gross amount of the price, including commissions, taxes, or other applicable fees. This represents the total cost of the product without discounts.
+      - **`minimumSellingPrice`** (`number`): 
+        Defines the minimum allowable selling price for the product. It serves as a restriction to ensure the buyer does not sell the product below this amount. This field is particularly useful for protecting the sellers's pricing policies and ensuring consistent pricing across sellers.
+    </details>
+  - **`payment`** (`Payment`): Payment method used.
+    <details>
+    <summary>Payment Object</summary>
+    - <a id="payment-type">**`type`** (`PaymentType`): Type of payment. Possible values are: </a>
+      - `LaterPay`: Payment is made at a later stage, such as during check-in or check-out.
+      - `MerchantPay`: Payment is processed by the merchant at the time of booking.
+      - `CardBookingPay`: Payment is made using a credit card at the time of booking.
+      - `CardCheckInPay`: Payment is made using a credit card at the time of check-in.
+    - **`card`** (CreditCard, optional): CreditCard used.
+      <details>
+      <summary>CreditCard Object</summary>
+      - **`type`** (`CreditCardType`): Type of the credit card.
+        <details>
+          <summary><a id = "creditcard-type">Possible values are:</a></summary>
+            - **`VI`**: Visa  
+            - **`AX`**: American Express  
+            - **`BC`**: BC Card  
+            - **`CA`**: MasterCard
+            - **`CB`**: Carte Blanche 
+            - **`CU`**: China Union Pay  
+            - **`DS`**: Discover Card
+            - **`DC`**: Diners Club  
+            - **`T`**: Carta Si  
+            - **`R`**: Carte Bleue  
+            - **`N`**: Dankort  
+            - **`L`**: Delta  
+            - **`E`**: Electron
+            - **`JC`**: Japan Credit Bureau  
+            - **`TO`**: Maestro
+            - **`S`**: Switch
+            - **`EC`**: Electronic Cash 
+            - **`EU`**: EuroCard 
+            - **`TP`**: Universal Air Travel Card  
+            - **`OP`**: Optima  
+            - **`ER`**: AirCanadaRnRoute  
+            - **`XS`**: Access
+            - **`O`**: Others  
+          </details>
+      - **`cardNumber`** (string): Credit card number.
+      - **`holder`** (string): Name of the cardholder.
+      - **`expireDate`** (string): Expiry date of the card. Format: `MMYY`
+      - **`cvv`** (string): CVV code of the card.
+      - **`parameters`** (`Parameters`, optional): Additional parameters related to the credit card, such as authorization tokens or custom attributes.
+        <details>
+          <summary>Parameters Object</summary>
+            - **`parameter`** (`array` of `Parameter`): A list of key-value pairs for additional credit card-related data.
+              <details>
+                <summary>Parameter Object</summary>
+                  - **`key`** (`string`): The parameter name.
+                  - **`value`** (`string`): The parameter value.
+              </details>
+        </details>
+      - **`urlPayment`** (`UrlPayment`, optional):
+        <details>
+        <summary>UrlPayment Object</summary>
+          - **`url`** (`string`): A URL for secure payment processing 
+        </details>
+      </details>
+    </details>
+  - **`company`** (`Company`): Information about the company that sends the booking.
+    <details>
+    <summary>Company Object</summary>
+    - **`email`** (string): Email address of the company.
+    - **`phone`** (string): Phone number of the company.
+    - **`address`** (`Address`):
+      <details>
+      <summary>Address Object</summary>
+      - **`addressLine`** (string): Address line.
+      - **`city`** (string): City name.
+      - **`postalCode`** (string): Postal code.
+      - **`country`** (string): Country name.
+      </details>
+    </details>
+  </details>
+</details>
+
+## BookNotif Response
+
+After each request, a response should be provided from yours side. If a `bookNotif` request is received, a corresponding `bookNotifRs` response should be sent. There are two response options, **success** or **error**.
+
+<Tabs>
+<TabItem value="sucess" label="Success">
+
+```json
+{
+    "bookNotifRs":{
+        "dateTime": "2025-01-15T14:10:07.878425Z",
+        "status": "Confirmed",
+        "references":[
+            {
+                "locator": "your_locator",
+                "type": "Provider"
+            }
+        ]
+    }
+}
+```
+
+</TabItem>
+<TabItem value="error" label="Error">
+
+```json
+{
+    "bookNotifRs":{
+        "dateTime": "2025-01-15T14:10:07.878425Z",
+        "adviseMessages":[
+            {
+                "code":"10",
+                "description":"HotelCode not found"
+            }
+        ]
+    }
+}
+```
+
+</TabItem>
+</Tabs>
+
+### Response Data Breakdown
+
+<details>
+ <summary>bookNotifRs</summary>
+
+  Root object containing the response information.
+ 
+  - **`dateTime`** (DateTime): Date time when the booking notification was received.
+  - **`status`** (`BookStatus`, optional): Status of the booking, mandatory if success response. Possible value are: 
+      - `Confirmed`: when bookNotif has bookDetails with status `Confirmed`
+      - `Cancelled`: when bookNotif has bookDetails with status `Cancelled`
+  - **`references`** (array of <u>one</u> `Reference`, optional):
+    <details>
+    <summary>Reference Object</summary>
+    - **`locator`** (string): Unique identifier for the reference.
+    - **`type`** (`ReferenceType`): Type of reference. Possible values is `Provider`
+    </details>
+  - **`adviseMessages`** (array of `AdviseMessage`, optional): Mandatory if error response.
+    <details>
+      <summary>AdviseMessage Object</summary>
+      - **`code`**: Possible values are:
+        - **`-1`**: Unexpected error
+        - **`1`**: 	Validation error
+        - **`10`**: HotelCode not found
+        - **`11`**: Invalid dates
+        - **`14`**: Invalid derived rate
+        - **`22`**: Rooms not found
+        - **`23`**: Rates not found
+        - **`30`**: Occupancy error
+        - **`31`**: RatePlan rate error
+        - **`38`**: Credetials not found
+        - **`50`**: Confirmation error
+        - **`60`**: Cancellation error 
+      - **`description`** (string): Description of the error.
+    </details>
+
+</details>

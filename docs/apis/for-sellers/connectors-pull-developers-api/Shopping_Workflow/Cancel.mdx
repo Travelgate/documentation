@@ -36,11 +36,27 @@ The `Cancel` operation provides:
 - **Request Object**:
   - Includes client and supplier locators and any additional data required by the supplier.
 
-  [TODO inject `Connectors.Pull.Hotel.Domain.Contracts.Search.Cancel.CancelRq`]
+<!-- TABLE BEGIN Connectors.Pull.Hotel.Domain.Contracts.Cancel.Request.CancelRq -->
+| Element | Rel | Type | Description |
+| ------- | --- | ---- | ----------- |
+| Input | 1 | Input | Gets or initializes the input details for the cancellation request,             including specific information about the booking to be canceled.             Such as the access, booking reference, and accommodation code. |
+| Settings | 1 | Settings | Gets or initializes the platform-specific settings required for processing the cancellation request.             These settings include credentials, API endpoints, parameters, and details about the client, supplier,             and platform involved in the request. |
+<!-- TABLE END -->
 
 - **Response Object**:
   - Provides the cancellation status, penalties (if any), and any warnings or remarks.
 
-  [TODO inject `Connectors.Pull.Hotel.Domain.Contracts.Search.Cancel.CancelRs`]
+<!-- TABLE BEGIN Connectors.Pull.Hotel.Domain.Contracts.Cancel.Response.CancelRs -->
+| Element | Rel | Type | Description |
+| ------- | --- | ---- | ----------- |
+| AuditData | 1 | AuditData | Gets or sets the audit data provided by the supplier or system for the operation. |
+| AdviseMessages | 1 | AdviseMessages | Gets the collection of advise messages related to the cancellation operation. |
+| Reference | 1 | Reference | Gets the reference information associated with the booking. |
+| CancelLocator | 1 | CancelLocator | Gets or sets the cancel locator value specific to the cancellation operation. |
+| Status | 1 | Status | Gets the status of the booking after the cancellation operation.             Possible values: Unknown, Ko, Ok, OnRequest, Cancelled or PendingCommit. |
+| BookPrice | 1 | BookPrice | Gets or sets the original booking price before cancellation. |
+| CancelPrice | 1 | CancelPrice | Gets or sets the price associated with the cancellation operation. |
+| AddOns | 1 | AddOns | Gets or sets additional supplier information as key-value pairs. |
+<!-- TABLE END -->
 
 ---

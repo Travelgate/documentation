@@ -35,11 +35,32 @@ The `Quote` operation returns:
 - **Request Object**:
   - Represents the structure of the `Quote` request, including required fields such as `optionId` and `occupancy`.
 
-  [TODO inject `Connectors.Pull.Hotel.Domain.Contracts.Search.Quote.QuoteRq`]
+<!-- TABLE BEGIN Connectors.Pull.Hotel.Domain.Contracts.Quote.Request.QuoteRq -->
+| Element | Rel | Type | Description |
+| ------- | --- | ---- | ----------- |
+| QuoteCriteria | 1 | QuoteCriteria | Criteria for the quote request, such as dates, selected rooms, or other search-related parameters. |
+| Settings | 1 | Settings | Access settings for connecting with the provider during the quote request. |
+<!-- TABLE END -->
 
 - **Response Object**:
   - Represents the standardized structure of the `Quote` response, including price, cancellation policies, and other details.
 
-  [TODO inject `Connectors.Pull.Hotel.Domain.Contracts.Search.Quote.QuoteRs`]
+
+<!-- TABLE BEGIN Connectors.Pull.Hotel.Domain.Contracts.Quote.Response.QuoteRs -->
+| Element | Rel | Type | Description |
+| ------- | --- | ---- | ----------- |
+| AuditData | 1 | AuditData | Contains the audit data detailing the requests and responses exchanged with the supplier.            This field is populated internally by the connector framework. |
+| AdviseMessages | 1 | AdviseMessages | Collection of advice messages, including errors or warnings encountered during the quote process. |
+| Price | 1 | Price | Contains the price details for the quoted option. |
+| Status | 1 | Status | Indicates the status of the quote. |
+| PaymentType | 1 | PaymentType | Payment types available for the Option. |
+| Rooms | 1 | Rooms | List of rooms included in the quoted option. |
+| CancelPolicy | 1 | CancelPolicy | Cancellation policy applicable to the quoted option. |
+| Surcharges | 1 | Surcharges | Collection of surcharges applied to the quoted option. |
+| Remarks | 1 | Remarks | Additional remarks associated with the quote. |
+| PaymentInfo | 1 | PaymentInfo | Payment information for the quoted option, such as accepted credit card types. |
+| Parameters | 1 | Parameters | Parameters associated with the quoted option for transferring data between operations. |
+| AddOns | 1 | AddOns | Additional information provided by the supplier for the quoted option. |
+<!-- TABLE END -->
 
 ---

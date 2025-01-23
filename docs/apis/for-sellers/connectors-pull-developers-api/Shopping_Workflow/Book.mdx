@@ -38,11 +38,23 @@ The `Book` operation returns:
 - **Request Object**:
   - Includes passenger details, payment information, client locator, and the selected option.
 
-  [TODO inject `Connectors.Pull.Hotel.Domain.Contracts.Search.Book.BookRq`]
+<!-- TABLE BEGIN Connectors.Pull.Hotel.Domain.Contracts.Book.Request.BookRq -->
+| Element | Rel | Type | Description |
+| ------- | --- | ---- | ----------- |
+| BookCriteria | 1 | BookCriteria | The booking criteria for the hotel reservation. |
+| Settings | 1 | Settings | The settings for the hotel booking. |
+<!-- TABLE END -->
 
 - **Response Object**:
   - Provides booking confirmation status, supplier locator, and any additional remarks or warnings.
 
-  [TODO inject `Connectors.Pull.Hotel.Domain.Contracts.Search.Book.BookRs`]
+<!-- TABLE BEGIN Connectors.Pull.Hotel.Domain.Contracts.Book.Response.BookRs -->
+| Element | Rel | Type | Description |
+| ------- | --- | ---- | ----------- |
+| AuditData | 1 | AuditData | Contains the requests and responses exchanged with the supplier.            This field is populated internally by the connector framework.             Integrators do not need to handle this field manually. |
+| AdviseMessages | 1 | AdviseMessages | The collection of advise messages associated with the booking response. |
+| BookDetails | 1 | BookDetails | The details of the booking. |
+| AddOns | 1 | AddOns | A dictionary containing supplier information for the option. |
+<!-- TABLE END -->
 
 ---

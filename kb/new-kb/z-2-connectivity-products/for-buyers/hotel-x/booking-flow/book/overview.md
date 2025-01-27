@@ -26,7 +26,7 @@ Some key fields to include in your Book mutation request:
 
 The [DeltaPrice](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/book) allows Buyers to define an acceptable price variation (amount or percentage) during the booking process. If the new price exceeds the specified DeltaPrice, an error is returned. If DeltaPrice is not provided and the Seller supports it, the default tolerance is 0, meaning the booking can proceed only if the price is equal to or lower than the quoted price.
 
-This field is implemented if it is native to the Supplier or if another Search-Quote request is needed during the booking process.
+This field is implemented if it is native to the Supplier or if another Search-Quote request is needed during the booking process (Book method).
 
 :::info
 **Interested in adding DeltaPrice to your requests?** Visit our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/book) for more details! 🚀
@@ -66,17 +66,25 @@ Example for a room with two adults:
                     {
                         "name": "John",
                         "surname": "Doe",
-                        "title": "Mr",
+                        "title": "MR",
                         "age": 30
                     },
                     {
                         "name": "Jane",
                         "surname": "Doe",
-                        "title": "Ms",
-                        "age": 28
+                        "title": "MS",
+                        "age": 30
                     }
                 ]
             }
         ]
 ```
 
+Here's a revised version with improved readability and reduced repetition:
+
+:::warning Important  
+- Travelgate does *not* process reservations or cancellations on behalf of our Partners. These actions must be handled directly by the Partner.  
+- For seamless billing, **all cancellations should be processed through our API.**  
+
+If you encounter any issues, feel free to contact our [Customer Support team](https://app.travelgate.com/support) for assistance. Additionally, please remember to cancel any test bookings with Sellers and verify their refund policies.  
+:::

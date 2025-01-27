@@ -1,0 +1,62 @@
+---
+title: "Cancel"
+sidebar_position: 5
+---
+
+## **Overview**
+
+The `Cancel` operation allows clients to terminate a previously confirmed booking. It uses the client and supplier locators to identify the reservation and process the cancellation. Depending on the supplier's policies, penalties or fees may apply.
+
+## **Purpose**
+The `Cancel` operation ensures:
+- **Reservation Termination**: Enables clients to cancel bookings through the supplier's API.
+- **Penalty Calculation**: Returns any applicable cancellation fees based on the supplier's policies provided during `Quote`.
+- **Status Confirmation**: Confirms the success or failure of the cancellation request.
+
+## **When to Use**
+- **Client-Initiated Cancellations**: When the end-user requests to cancel their reservation.
+- **Penalty Validation**: To verify if a cancellation incurs fees before finalizing the process.
+
+> **Note**: Always check the cancellation policies returned during `Quote` to inform the client about any penalties.
+
+## **Response Details**
+The `Cancel` operation provides:
+- **Cancellation Status**:
+  - `Canceled`: Indicates the reservation has been successfully canceled.
+  - `Unknown`: The cancellation could not be processed by the supplier.
+- **Cancellation Fees**: If applicable, the supplier may return a penalty fee for the cancellation.
+- **Warnings or Remarks**: Additional details from the supplier about the cancellation process.
+
+## **Common Scenarios**
+- **Penalty-Based Cancellations**: Applies when the supplier charges fees for cancellations based on policies.
+- **Error Handling**: Common errors include:
+  - `SupplierError`: Indicates the cancellation could not be processed by the supplier.
+
+## **Technical Details**
+- **Request Object**:
+  - Includes client and supplier locators and any additional data required by the supplier.
+
+<!-- TABLE BEGIN Connectors.Pull.Hotel.Domain.Contracts.Cancel.Request.CancelRq -->
+| Element | Rel | Type | Description |
+| ------- | --- | ---- | ----------- |
+| Input | 1 | Input | Gets or initializes the input details for the cancellation request,             including specific information about the booking to be canceled.             Such as the access, booking reference, and accommodation code. |
+| Settings | 1 | Settings | Gets or initializes the platform-specific settings required for processing the cancellation request.             These settings include credentials, API endpoints, parameters, and details about the client, supplier,             and platform involved in the request. |
+<!-- TABLE END -->
+
+- **Response Object**:
+  - Provides the cancellation status, penalties (if any), and any warnings or remarks.
+
+<!-- TABLE BEGIN Connectors.Pull.Hotel.Domain.Contracts.Cancel.Response.CancelRs -->
+| Element | Rel | Type | Description |
+| ------- | --- | ---- | ----------- |
+| AuditData | 1 | AuditData | Gets or sets the audit data provided by the supplier or system for the operation. |
+| AdviseMessages | 1 | AdviseMessages | Gets the collection of advise messages related to the cancellation operation. |
+| Reference | 1 | Reference | Gets the reference information associated with the booking. |
+| CancelLocator | 1 | CancelLocator | Gets or sets the cancel locator value specific to the cancellation operation. |
+| Status | 1 | Status | Gets the status of the booking after the cancellation operation.             Possible values: Unknown, Ko, Ok, OnRequest, Cancelled or PendingCommit. |
+| BookPrice | 1 | BookPrice | Gets or sets the original booking price before cancellation. |
+| CancelPrice | 1 | CancelPrice | Gets or sets the price associated with the cancellation operation. |
+| AddOns | 1 | AddOns | Gets or sets additional supplier information as key-value pairs. |
+<!-- TABLE END -->
+
+---

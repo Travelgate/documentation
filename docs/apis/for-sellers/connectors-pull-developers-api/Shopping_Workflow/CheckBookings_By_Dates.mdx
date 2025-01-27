@@ -1,0 +1,70 @@
+---
+title: "CheckBookings By Dates"
+sidebar_position: 7
+---
+
+## **Overview**
+
+The `CheckBookings By Dates` operation allows clients to retrieve the status of bookings that fall within a specified date range. It provides a way to list multiple bookings based on criteria such as check-in dates or booking creation dates. This operation is optional but can significantly enhance the functionality of a Connector by providing bulk booking insights.
+
+## **Purpose**
+
+- **Booking Retrieval by Date**: Enables clients to fetch booking details for a given range of dates.
+- **Data Insights**: Useful for operational analysis or customer service purposes, such as managing upcoming check-ins or tracking recent bookings.
+- **Supplier Compatibility**: Adapts to suppliers that support range-based booking queries.
+
+## **When to Use**
+
+- **Operational Monitoring**: To track all bookings for a specific date range, such as upcoming arrivals.
+- **Bulk Booking Insights**: To retrieve booking data for analysis or reporting purposes.
+- **Supplier-Specific Use Cases**: When suppliers provide additional insights or booking details for specific date ranges.
+
+## **Date Range Options**
+
+- **Check-in Date**: Fetch bookings based on the guest's check-in date.
+- **Booking Date**: Fetch bookings based on when the reservation was created in the supplier's system.
+
+> **Note**: This operation is not mandatory but is highly recommended for suppliers supporting this functionality, as it provides comprehensive booking management capabilities.
+
+## **Response Details**
+
+- **Booking Status**: Indicates whether bookings are active, canceled, or unknown.
+- **Locators**: Provides client and supplier locators for each booking.
+- **Optional Data**:
+  - Guest details.
+  - Room information.
+  - Payment or cancellation status, depending on the supplier's capabilities.
+
+## **Common Scenarios**
+
+- **Upcoming Arrivals**: Retrieve all bookings with check-ins scheduled for the upcoming week.
+- **Booking Analytics**: Generate reports for all bookings made during a promotional period.
+- **Error Handling**:
+  - `BookingNotFound`: No bookings found for the specified date range.
+  - `SupplierError`: Indicates an issue with the supplier's API, such as unavailability or invalid date formats.
+
+## **Technical Details**
+
+- **Request Object**:
+  - Includes date range criteria and any supplier-specific fields.
+
+<!-- TABLE BEGIN Connectors.Pull.Hotel.Domain.Contracts.CheckBookings.Request.ByDate.CheckBookingsByDateRq -->
+| Element | Rel | Type | Description |
+| ------- | --- | ---- | ----------- |
+| Input | 1 | Input | Contains the details for checking bookings within a specific date range. |
+<!-- TABLE END -->
+
+- **Response Object**:
+  - Provides a list of bookings within the specified date range, including their status, locators, and optional details.
+
+<!-- TABLE BEGIN Connectors.Pull.Hotel.Domain.Contracts.CheckBookings.Response.CheckBookingsRs -->
+| Element | Rel | Type | Description |
+| ------- | --- | ---- | ----------- |
+| AuditData | 1 | AuditData | Provides detailed audit data for the supplier transactions, including request and response logs. |
+| AdviseMessages | 1 | AdviseMessages | A collection of advice messages generated during the booking check operation. |
+| Bookings | 1 | Bookings | A list of detailed booking information retrieved during the operation. |
+| Parameters | 1 | Parameters | A collection of parameters used to transfer data across different operations. |
+| AddOns | 1 | AddOns | Additional metadata provided by the supplier for internal use. |
+<!-- TABLE END -->
+
+---

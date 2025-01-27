@@ -249,6 +249,7 @@ const config = {
       prism: {
         theme: lightTheme,
         darkTheme: darkTheme,
+        additionalLanguages: ['csharp'], // Agregar soporte para C#
       },
     }),
 };

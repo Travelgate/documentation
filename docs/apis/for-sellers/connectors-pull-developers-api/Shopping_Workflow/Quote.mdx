@@ -1,0 +1,66 @@
+---
+title: "Quote"
+sidebar_position: 3
+---
+
+## **Overview**
+
+The `Quote` operation is a critical step in the booking workflow, used to confirm the details of an option previously retrieved in a `Search`. Since suppliers often rely on cached data or dynamic pricing, the `Quote` operation ensures that the selected option's price and policies are up-to-date before proceeding to a booking.
+
+## **Purpose**
+The `Quote` operation serves several purposes:
+- **Price Validation**: Confirms the price of the selected option to account for potential changes since the `Search` response.
+- **Policy Confirmation**: Validates the cancellation policies, payment terms, and other conditions tied to the selected option.
+- **Data Reliability**: Ensures that all data is accurate and aligned with the supplier’s current availability before proceeding to the `Book` operation.
+
+> **Note**: Always prioritize data from `Quote` over `Search`, as `Quote` reflects the most accurate and reliable information.
+
+## **When to Use**
+- **Dynamic Pricing**: Suppliers that update prices frequently require this step to confirm current rates.
+- **Session-Based Suppliers**: For suppliers with expiring sessions or tokens, `Quote` helps ensure that the data remains valid.
+- **Buyer Confidence**: Provides clients with an additional layer of assurance about the selected option’s details.
+
+## **Response Details**
+The `Quote` operation returns:
+- **Updated Price Details**: Reflects any adjustments to the price since the initial `Search`.
+- **Cancellation Policies**: Confirms the policies associated with the option, including penalties and deadlines.
+- **Additional Details**: May include supplier-specific remarks or notes.
+
+## **Common Scenarios**
+- **Price Changes**: If the supplier's price differs from the `Search` response, the `Quote` operation will provide the updated price. 
+  - Example: `PriceChanged` error code is returned if there’s a discrepancy. (See [Error Handling in Connectors](../Connector_Framework/Error_Handling_in_Connectors.mdx)).
+- **Option No Longer Available**: If the selected option is no longer valid, the response may include an `ItemNotAvailable` error code.
+
+## **Technical Details**
+- **Request Object**:
+  - Represents the structure of the `Quote` request, including required fields such as `optionId` and `occupancy`.
+
+<!-- TABLE BEGIN Connectors.Pull.Hotel.Domain.Contracts.Quote.Request.QuoteRq -->
+| Element | Rel | Type | Description |
+| ------- | --- | ---- | ----------- |
+| QuoteCriteria | 1 | QuoteCriteria | Criteria for the quote request, such as dates, selected rooms, or other search-related parameters. |
+| Settings | 1 | Settings | Access settings for connecting with the provider during the quote request. |
+<!-- TABLE END -->
+
+- **Response Object**:
+  - Represents the standardized structure of the `Quote` response, including price, cancellation policies, and other details.
+
+
+<!-- TABLE BEGIN Connectors.Pull.Hotel.Domain.Contracts.Quote.Response.QuoteRs -->
+| Element | Rel | Type | Description |
+| ------- | --- | ---- | ----------- |
+| AuditData | 1 | AuditData | Contains the audit data detailing the requests and responses exchanged with the supplier.            This field is populated internally by the connector framework. |
+| AdviseMessages | 1 | AdviseMessages | Collection of advice messages, including errors or warnings encountered during the quote process. |
+| Price | 1 | Price | Contains the price details for the quoted option. |
+| Status | 1 | Status | Indicates the status of the quote. |
+| PaymentType | 1 | PaymentType | Payment types available for the Option. |
+| Rooms | 1 | Rooms | List of rooms included in the quoted option. |
+| CancelPolicy | 1 | CancelPolicy | Cancellation policy applicable to the quoted option. |
+| Surcharges | 1 | Surcharges | Collection of surcharges applied to the quoted option. |
+| Remarks | 1 | Remarks | Additional remarks associated with the quote. |
+| PaymentInfo | 1 | PaymentInfo | Payment information for the quoted option, such as accepted credit card types. |
+| Parameters | 1 | Parameters | Parameters associated with the quoted option for transferring data between operations. |
+| AddOns | 1 | AddOns | Additional information provided by the supplier for the quoted option. |
+<!-- TABLE END -->
+
+---

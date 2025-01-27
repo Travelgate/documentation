@@ -1,0 +1,163 @@
+---
+title: "Error Handling"
+sidebar_position: 8
+---
+
+# **Connectors Error Handling**
+
+This section outlines the error handling mechanism in Connectors, focusing on the use of `AdviseMessage` to represent errors, warnings, and informational messages. It describes the available error codes, helper methods for generating errors, and best practices for implementing error handling in your Connector.
+
+---
+
+## **AdviseMessage Overview**
+
+An `AdviseMessage` is used to convey information about the outcome of operations in a standardized manner. It consists of the following key properties:
+
+- **Code**: Represents the type of message (error, warning, or informational).
+- **Level**: Indicates the severity of the message (e.g., `Error`, `Warning`, `Info`).
+- **Description**: Provides a human-readable explanation of the message.
+- **CorrelationId**: Associates the message with specific operations or requests.
+- **External**: Includes additional external details, such as supplier-specific error information.
+
+---
+
+### **Example of an AdviseMessage**
+
+```json
+{
+  "Code": 11204,
+  "Level": "Warning",
+  "Description": "No results found from the supplier.",
+  "CorrelationId": "12345",
+  "External": {
+    "Code": "",
+    "Message": "Supplier returned empty response for search criteria.",
+    "HttpStatusCode": 200
+  }
+}
+```
+
+---
+
+## **Error Codes**
+
+### **Supplier Errors**
+| **Code**    | **Description**                                                                                  |
+|-------------|--------------------------------------------------------------------------------------------------|
+| `11102`     | **SupplierError**: Generic supplier error when no specific type fits.                            |
+| `11207`     | **SupplierBadRequest**: Indicates a malformed request was sent to the supplier.                  |
+| `11204`     | **SupplierNoResultsFound**: No results found for the given criteria (e.g., no availability).      |
+| `11205`     | **SupplierSessionExpired**: The supplier's session expired, requiring re-authentication.          |
+| `11206`     | **SupplierResponseNotSerializable**: The supplier's response could not be deserialized.          |
+| `11303`     | **SupplierBookingNotConfirmed**: The booking was not confirmed by the supplier.                  |
+| `31103`     | **SupplierTooManyRequests**: Indicates the supplier returned an HTTP status code for rate limiting.|
+| `31104`     | **SupplierTimeout**: The supplier did not respond within the specified timeout.                  |
+| `31105`     | **SupplierConnectionError**: Connection error with the supplier, usually due to non-200 status codes.|
+
+---
+
+### **Connector Errors (Internal)**
+| **Code**    | **Description**                                                              |
+|-------------|------------------------------------------------------------------------------|
+| `12207`     | **BadRequest**: Malformed client request to the Connector.                   |
+| `22101`     | **InternalError**: Internal error within the Connector.                      |
+| `22106`     | **SupplierResponseMaxSizeExceeded**: The supplier's response exceeded the maximum size limit. |
+| `22107`     | **MaxOptionsExceeded**: More than the allowed number of options were returned (e.g., >20,000).|
+
+---
+
+### **Booking and Quote Errors**
+| **Code**    | **Description**                                                                                  |
+|-------------|--------------------------------------------------------------------------------------------------|
+| `11301`     | **ItemNotAvailable**: The requested option is no longer available (e.g., during quote).          |
+| `11304`     | **PriceChanged**: The price changed between quote and book.                                      |
+| `11302`     | **ItemNotFoundInContent**: The requested item (e.g., hotel) was not found in the content database.|
+| `11305`     | **BookingNotFound**: The booking could not be located.                                           |
+
+---
+
+### **Warnings**
+| **Code**    | **Description**                                                                                  |
+|-------------|--------------------------------------------------------------------------------------------------|
+| `12290`     | **InternalWarning**: Internal warning within the Connector.                                      |
+| `11291`     | **SupplierWarning**: Supplier-specific warning.                                                 |
+
+---
+
+## **Using the `External` Class for Error Details**
+
+The `External` class provides additional context about supplier-specific errors. Each `AdviseMessage` can include an `External` object with details such as:
+
+### **`External` Class Definition**
+```csharp
+public class External
+{
+    public string Code { get; init; } // Supplier-specific error code
+    public string Message { get; init; } // Human-readable message from the supplier
+    public int HttpStatusCode { get; init; } // HTTP status code of the supplier's response
+}
+```
+
+### **Example: Adding External Details to Errors**
+Here's an example of creating an `AdviseMessage` with `External` details for a supplier timeout error:
+
+```csharp
+var externalDetails = new External(
+    code: "ERR-TIMEOUT",
+    message: "The supplier timed out after 30 seconds.",
+    httpStatusCode: 504
+);
+
+var adviseMessage = AdviseMessage.BuildSupplierTimeout(externalDetails);
+```
+
+---
+
+## **Helper Methods**
+
+### **Supplier Error Helpers**
+| **Method**                            | **Description**                                                                 |
+|---------------------------------------|---------------------------------------------------------------------------------|
+| `BuildSupplierError`                  | Creates a generic supplier error message.                                      |
+| `BuildSupplierBadRequest`             | Creates a message for bad requests to the supplier.                            |
+| `BuildSupplierBookingNotConfirmed`    | Indicates the supplier did not confirm the booking.                            |
+| `BuildSupplierTimeout`                | Indicates the supplier timed out during the operation.                         |
+| `BuildSupplierConnectionError`        | Creates a message for connection errors with the supplier.                     |
+| `BuildSupplierNoResults`              | Creates a warning message indicating no results were found.                    |
+
+---
+
+## **Implementation Best Practices**
+- **Use Helper Methods**: Always use the provided helper methods to generate `AdviseMessage` instances. This ensures consistency across all Connectors.
+- **Map Supplier Errors**: When processing supplier responses, map their error codes or messages to the appropriate `AdviseMessageCode`.
+- **Log Details**: Include detailed descriptions and external information in `AdviseMessage` instances to aid debugging.
+- **Validate Responses**: Use validation methods like `TryValidateSupplierResponses` to check supplier responses and generate appropriate messages.
+
+---
+
+## **Example Implementation**
+
+```csharp
+public static bool TryValidateSupplierResponses<TRs>(
+    IEnumerable<SupplierResponseWrapper<TRs>> supplierResponses,
+    out IEnumerable<AdviseMessage> adviseMessages) 
+    where TRs : BaseResponse
+{
+    var firstResponse = supplierResponses.First();
+
+    if (firstResponse.Response.Error?.Count > 0)
+    {
+        var messages = firstResponse.Response.Error.Select(error =>
+            error.Mensaje == "Sin disponibilidad"
+                ? AdviseMessage.BuildSupplierNoResults(new External("", error.Mensaje, 200))
+                : AdviseMessage.BuildSupplierError(new External("", error.Mensaje, 500))
+        ).ToList();
+
+        adviseMessages = messages;
+        return false;
+    }
+
+    adviseMessages = null;
+    return true;
+}
+```

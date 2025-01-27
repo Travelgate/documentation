@@ -1,0 +1,932 @@
+
+# Metadata
+
+The **Metadata** in a Connector serves as a configuration file that outlines the supplier's restrictions, supported features, and other operational details. This information is essential for buyers to evaluate if the supplier meets their specific requirements and for ensuring smooth integration.
+
+---
+
+## **What is Metadata?**
+- **Purpose**: Metadata defines key attributes of the supplier integration, such as:
+  - Supported currencies.
+  - Languages.
+  - Payment types.
+  - Operational restrictions.
+  - Informative fields returned in each operation.
+- **Utility**: Buyers can use the metadata to determine compatibility with their requirements before connecting to the supplier.
+
+---
+
+## **Field Details**
+- Each metadata field contains a `reviewDate`, indicating the last time the supplier validated the field. This ensures the metadata reflects the latest supplier configuration.
+
+---
+
+## **How is Metadata Configured?**
+- The metadata is stored within the Connector's structure as a JSON file.
+- **File Path**: `<ConnectorCode>/Metadata/<supplier>.Metadata.json`
+- This file is automatically loaded and referenced during operations.
+
+#### Example File Path:
+```plaintext
+/ConnectorsCode/Metadata/SupplierCode.Metadata.json
+```
+
+---
+
+## **Metadata in CI**
+- The **Continuous Integration (CI)** tests of a Connector are executed based on the metadata.
+- If any metadata field is invalid or outdated, related tests will fail.
+- Developers must correct and update the metadata file to ensure compatibility and compliance with the supplier's latest configurations.
+
+
+---
+
+## **Metadata Definition**
+
+<!-- TABLE BEGIN Connectors.Hotel.Metadata.Domain.Common.MetadataElement -->
+| Element | Rel | Type | Description |
+| ------- | --- | ---- | ----------- |
+| Shopping | 1 | Shopping | Gets or sets the shopping element. |
+| Content | 1 | Content | Gets or sets the content element. |
+<!-- TABLE END -->
+
+---
+
+# Metadata Sample
+
+Below is an example of a metadata file used in connectors. Metadata defines the supplier's restrictions, supported currencies, languages, payment types, and more.
+
+```json
+{
+    "shopping":
+    {
+        "languages":
+        {
+            "all": true,
+            "includes":
+            [],
+            "excludes":
+            [],
+            "reviewDate": "2025-01-14T10:30:58.6278493"
+        },
+        "currencies":
+        {
+            "all": false,
+            "includes":
+            [
+                "USD"
+            ],
+            "excludes":
+            [],
+            "reviewDate": "2025-01-14T10:30:58.6278493"
+        },
+        "price":
+        {
+            "binding":
+            {
+                "specified": "Always",
+                "reviewDate": "2025-01-14T10:30:58.6278493"
+            },
+            "net":
+            {
+                "specified": "Always",
+                "reviewDate": "2025-01-14T10:30:58.6278493"
+            },
+            "reviewDate": "2025-01-14T10:30:58.6278493"
+        },
+        "nationalities":
+        {
+            "all": true,
+            "includes":
+            [],
+            "excludes":
+            [],
+            "reviewDate": "2025-01-14T10:30:58.6278493"
+        },
+        "markets":
+        {
+            "all": true,
+            "includes":
+            [],
+            "excludes":
+            [],
+            "reviewDate": "2025-01-14T10:30:58.6278493"
+        },
+        "paymentTypes":
+        {
+            "includes":
+            [
+                "MerchantPay"
+            ],
+            "reviewDate": "2025-01-14T10:30:58.6278493"
+        },
+        "AccommodationTypes":
+        {
+            "includes":
+            [
+                "Hotel"
+            ],
+            "reviewDate": "2025-01-14T10:30:58.6278493"
+        },
+        "rateRules":
+        {
+            "includes":
+            [],
+            "specified": "Never",
+            "reviewDate": "2025-01-14T10:30:58.6278493"
+        },
+        "operations":
+        {
+            "search":
+            {
+                "restrictions":
+                {
+                    "destinations":
+                    {
+                        "locations":
+                        {
+                            "max": 0,
+                            "recommended": 0,
+                            "sameCountry": false,
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        },
+                        "hotels":
+                        {
+                            "sameLocation": false,
+                            "max": 100,
+                            "recommended": 100,
+                            "sameCountry": false,
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        }
+                    },
+                    "stay":
+                    {
+                        "maxStay": 15,
+                        "minimumStay": 1,
+                        "release": 0,
+                        "reviewDate": "2025-01-14T10:30:58.6278493"
+                    },
+                    "roomRestrictions":
+                    {
+                        "maxOccupancies": 3,
+                        "maxGuestsInAllRooms": 100,
+                        "requireSameGuestsInAllOccupancies":
+                        {
+                            "samePaxNumber": false,
+                            "samePaxAge": false,
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        },
+                        "guestsInOccupancy":
+                        {
+                            "maxGuestsInOccupancy": 100,
+                            "guests":
+                            [
+                                {
+                                    "guestType": "Adult",
+                                    "ageRange":
+                                    {
+                                        "max": 999,
+                                        "min": 13
+                                    },
+                                    "maxOccupancy":
+                                    {
+                                        "max": 100,
+                                        "min": 1
+                                    }
+                                },
+                                {
+                                    "guestType": "Child",
+                                    "ageRange":
+                                    {
+                                        "max": 12,
+                                        "min": 0
+                                    },
+                                    "maxOccupancy":
+                                    {
+                                        "max": 99,
+                                        "min": 0
+                                    }
+                                }
+                            ],
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        },
+                        "reviewDate": "2025-01-14T10:30:58.6278493"
+                    }
+                },
+                "optional":
+                {
+                    "hotel":
+                    {
+                        "surcharges":
+                        {
+                            "type": "PerRoomPerOption",
+                            "specified": "Never",
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        },
+                        "supplements":
+                        {
+                            "type": "PerOption",
+                            "specified": "Never",
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        },
+                        "promotions":
+                        {
+                            "type": "PerRoomPerOption",
+                            "specified": "Never",
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        },
+                        "amenities":
+                        {
+                            "type": "PerRoomPerOption",
+                            "specified": "Never",
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        },
+                        "remarks":
+                        {
+                            "type": "PerRoom",
+                            "specified": "Optional",
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        },
+                        "cancelPolicy":
+                        {
+                            "type": "PerRoomPerOption",
+                            "specified": "Always",
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        },
+                        "hotelName":
+                        {
+                            "specified": "Always",
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        },
+                        "hotelLocation":
+                        {
+                            "specified": "Never",
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        },
+                        "boardName":
+                        {
+                            "specified": "Always",
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        },
+                        "rooms":
+                        {
+                            "description":
+                            {
+                                "specified": "Always",
+                                "reviewDate": "2025-01-14T10:30:58.6278493"
+                            },
+                            "priceBreakdown":
+                            {
+                                "specified": "Always",
+                                "reviewDate": "2025-01-14T10:30:58.6278493"
+                            },
+                            "ratePlan":
+                            {
+                                "specified": "Never",
+                                "reviewDate": "2025-01-14T10:30:58.6278493"
+                            },
+                            "refundable":
+                            {
+                                "specified": "Always",
+                                "reviewDate": "2025-01-14T10:30:58.6278493"
+                            },
+                            "beds":
+                            {
+                                "InformNumberOfUnits": {
+                                    "Value": false,
+                                    "ReviewDate": "2025-01-11T18:03:02.752"
+                                },
+                                "InformSharedBed": {
+                                    "Value": false,
+                                    "ReviewDate": "2025-01-11T18:03:02.752"
+                                },
+                                "InformBedType": {
+                                    "Value": false,
+                                    "ReviewDate": "2025-01-11T18:03:02.752"
+                                },
+                                "InformNumberOfBeds": {
+                                    "Value": false,
+                                    "ReviewDate": "2025-01-11T18:03:02.752"
+                                }
+                            },
+                            "units":
+                            {
+                                "specified": "Never",
+                                "reviewDate": "2025-01-14T10:30:58.6278493"
+                            }
+                        }
+                    },
+                    "rental":
+                    {}
+                },
+                "status":
+                {
+                    "includes":
+                    [
+                        "OK",
+                        "RQ"
+                    ],
+                    "reviewDate": "2025-01-14T10:30:58.6278493"
+                },
+                "Combine": {
+                    "reviewDate": "2025-01-14T10:30:58.6278493",
+                    "UseCombinationKey": false,
+                    "CombineType": "Room"
+                },
+                "AllowsCurrency": {
+                    "reviewDate": "2025-01-14T10:30:58.6278493",
+                    "value": false
+                }
+            },
+            "quote":
+            {
+                "optional":
+                {
+                    "surcharges":
+                    {
+                        "specified": "Never",
+                        "reviewDate": "2025-01-14T10:30:58.6278493"
+                    },
+                    "remarks":
+                    {
+                        "specified": "Optional",
+                        "reviewDate": "2025-01-14T10:30:58.6278493"
+                    },
+                    "cancelPolicyDescription":
+                    {
+                        "specified": "Never",
+                        "reviewDate": "2025-01-14T10:30:58.6278493"
+                    },
+                    "paymentInfo":
+                    {
+                        "specified": "Never",
+                        "reviewDate": "2025-01-14T10:30:58.6278493"
+                    }
+                },
+                "status":
+                {
+                    "includes":
+                    [
+                        "OK",
+                        "RQ"
+                    ],
+                    "reviewDate": "2025-01-14T10:30:58.6278493"
+                }
+            },
+            "book":
+            {
+                "allowDeltaPrice":
+                {
+                    "value": false,
+                    "reviewDate": "2025-01-14T10:30:58.6278493"
+                },
+                "allowRemarks":
+                {
+                    "value": false,
+                    "reviewDate": "2025-01-14T10:30:58.6278493"
+                },
+                "restrictions":
+                {
+                    "requiredAllPassengers":
+                    {
+                        "value": true,
+                        "reviewDate": "2025-01-14T10:30:58.6278493"
+                    }
+                },
+                "optional":
+                {
+                    "reference": {
+                        "specified": "Always",
+                        "reviewDate": "2025-01-14T10:30:58.6278493"
+                    },
+                    "status":
+                    {
+                        "specified": "Always",
+                        "reviewDate": "2025-01-14T10:30:58.6278493"
+                    },
+                    "hotelLocator":
+                    {
+                        "specified": "Never",
+                        "reviewDate": "2025-01-14T10:30:58.6278493"
+                    },
+                    "clientLocator":
+                    {
+                        "specified": "Never",
+                        "reviewDate": "2025-01-14T10:30:58.6278493"
+                    },
+                    "holder":
+                    {
+                        "specified": "Never",
+                        "reviewDate": "2025-01-14T10:30:58.6278493"
+                    },
+                    "hotelDetail":
+                    {
+                        "bookingDate":
+                        {
+                            "specified": "Never",
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        },
+                        "dates":
+                        {
+                            "specified": "Never",
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        },
+                        "hotelCode":
+                        {
+                            "specified": "Never",
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        },
+                        "hotelName":
+                        {
+                            "specified": "Never",
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        },
+                        "boardCode":
+                        {
+                            "specified": "Never",
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        },
+                        "occupancies":
+                        {
+                            "specified": "Never",
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        },
+                        "rooms":
+                        {
+                            "specified": "Never",
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        }
+                    },
+                    "remarks":
+                    {
+                        "specified": "Never",
+                        "reviewDate": "2025-01-14T10:30:58.6278493"
+                    },
+                    "payable":
+                    {
+                        "specified": "Never",
+                        "reviewDate": "2025-01-14T10:30:58.6278493"
+                    }
+                },
+                "status":
+                {
+                    "includes":
+                    [
+                        "Ok",
+                        "Cancelled",
+                        "Unknown",
+                        "OnRequest"
+                    ],
+                    "reviewDate": "2025-01-14T10:30:58.6278493"
+                }
+            },
+            "checkBookings":
+            {
+                "byDate":
+                {
+                    "implemented":
+                    {
+                        "value": true,
+                        "reviewDate": "2025-01-14T10:30:58.6278493"
+                    },
+                    "restrictions":
+                    {
+                        "dateType":
+                        {
+                            "dateRangeType":
+                            [
+                                "Booking",
+                                "Arrival"
+                            ],
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        }
+                    },
+                    "optional":
+                    {
+                        "reference": {
+                            "specified": "Always",
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        },
+                        "status": {
+                            "specified": "Always",
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        },
+                        "hotelLocator":
+                        {
+                            "specified": "Never",
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        },
+                        "buyerLocator":
+                        {
+                            "specified": "Never",
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        },
+                        "sellerLocator":
+                        {
+                            "specified": "Always",
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        },
+                        "holder":
+                        {
+                            "specified": "Always",
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        },
+                        "hotelDetail":
+                        {
+                            "bookingDate":
+                            {
+                                "specified": "Never",
+                                "reviewDate": "2025-01-14T10:30:58.6278493"
+                            },
+                            "dates":
+                            {
+                                "specified": "Always",
+                                "reviewDate": "2025-01-14T10:30:58.6278493"
+                            },
+                            "hotelCode":
+                            {
+                                "specified": "Always",
+                                "reviewDate": "2025-01-14T10:30:58.6278493"
+                            },
+                            "hotelName":
+                            {
+                                "specified": "Always",
+                                "reviewDate": "2025-01-14T10:30:58.6278493"
+                            },
+                            "boardCode":
+                            {
+                                "specified": "Always",
+                                "reviewDate": "2025-01-14T10:30:58.6278493"
+                            },
+                            "occupancies":
+                            {
+                                "specified": "Never",
+                                "reviewDate": "2025-01-14T10:30:58.6278493"
+                            },
+                            "rooms":
+                            {
+                                "specified": "Always",
+                                "reviewDate": "2025-01-14T10:30:58.6278493"
+                            }
+                        },
+                        "price":
+                        {
+                            "specified": "Always",
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        },
+                        "cancelPolicy":
+                        {
+                            "specified": "Never",
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        },
+                        "remarks":
+                        {
+                            "specified": "Never",
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        },
+                        "billingSellerCode":
+                        {
+                            "specified": "Never",
+                            "reviewDate": "2022-06-05T06:31:08.6590852"
+                        },
+                        "payable":
+                        {
+                            "specified": "Never",
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        },
+                        "cancelPrice":
+                        {
+                            "value": false,
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        }
+                    }
+                },
+                "byReference":
+                {
+                    "implemented":
+                    {
+                        "value": true,
+                        "reviewDate": "2020-08-08T15:09:16.7201726"
+                    },
+                    "restrictions":
+                    {
+                        "references":
+                        {
+                            "buyerLocator":
+                            {
+                                "specified": "Optional",
+                                "reviewDate": "2023-08-23T16:18:00.0000000"
+                            },
+                            "sellerLocator":
+                            {
+                                "specified": "Always",
+                                "reviewDate": "2023-08-23T16:18:00.0000000"
+                            },
+                            "reviewDate": "2023-08-23T16:18:00.0000000"
+                        }
+                    },
+                    "optional":
+                    {
+                        "reference": {
+                            "specified": "Always",
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        },
+                        "status": {
+                            "specified": "Always",
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        },
+                        "buyerLocator":
+                        {
+                            "specified": "Never",
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        },
+                        "sellerLocator":
+                        {
+                            "specified": "Always",
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        },
+                        "hotelLocator":
+                        {
+                            "specified": "Never",
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        },
+                        "holder":
+                        {
+                            "specified": "Always",
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        },
+                        "hotelDetail":
+                        {
+                            "bookingDate":
+                            {
+                                "specified": "Never",
+                                "reviewDate": "2025-01-14T10:30:58.6278493"
+                            },
+                            "dates":
+                            {
+                                "specified": "Always",
+                                "reviewDate": "2022-02-17T04:30:58.6278493"
+                            },
+                            "hotelCode":
+                            {
+                                "specified": "Always",
+                                "reviewDate": "2025-01-14T10:30:58.6278493"
+                            },
+                            "hotelName":
+                            {
+                                "specified": "Always",
+                                "reviewDate": "2025-01-14T10:30:58.6278493"
+                            },
+                            "boardCode":
+                            {
+                                "specified": "Always",
+                                "reviewDate": "2025-01-14T10:30:58.6278493"
+                            },
+                            "occupancies":
+                            {
+                                "specified": "Never",
+                                "reviewDate": "2025-01-14T10:30:58.6278493"
+                            },
+                            "rooms":
+                            {
+                                "specified": "Always",
+                                "reviewDate": "2025-01-14T10:30:58.6278493"
+                            }
+                        },
+                        "price":
+                        {
+                            "specified": "Always",
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        },
+                        "cancelPolicy":
+                        {
+                            "specified": "Never",
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        },
+                        "remarks":
+                        {
+                            "specified": "Never",
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        },
+                        "billingSellerCode":
+                        {
+                            "specified": "Never",
+                            "reviewDate": "2022-06-05T06:31:08.6590852"
+                        },
+                        "payable":
+                        {
+                            "specified": "Never",
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        },
+                        "cancelPrice":
+                        {
+                            "value": false,
+                            "reviewDate": "2025-01-14T10:30:58.6278493"
+                        }
+                    }
+                },
+                "status":
+                {
+                    "includes":
+                    [
+                        "Unknown",
+                        "Cancelled",
+                        "Ok",
+                        "OnRequest"
+                    ],
+                    "reviewDate": "2025-01-14T10:30:58.6278493"
+                }
+            },
+            "cancel":
+            {
+                "implemented":
+                {
+                    "value": true,
+                    "reviewDate": "2025-01-14T10:30:58.6278493"
+                },
+                "optional":
+                {
+                    "cancelLocator":
+                    {
+                        "value": false,
+                        "reviewDate": "2021-02-23T18:48:22.9024324"
+                    },
+                    "bookPrice":
+                    {
+                        "value": false,
+                        "reviewDate": "2025-01-14T10:30:58.6278493"
+                    },
+                    "cancelPrice":
+                    {
+                        "value": false,
+                        "reviewDate": "2021-10-01T02:00:32.7775011"
+                    }
+                },
+                "restrictions":
+                {
+                    "reference":
+                    {
+                        "includes":
+                        [
+                            "SellerLocator"
+                        ],
+                        "reviewDate": "2025-01-14T10:30:58.6278493"
+                    }
+                },
+                "status":
+                {
+                    "includes":
+                    [
+                        "Unknown",
+                        "Cancelled",
+                        "Ok"
+                    ],
+                    "reviewDate": "2025-01-14T10:30:58.6278493"
+                }
+            },
+            "AmendBoard":
+            {
+                "ImplementsAmendBoard":
+                {
+                    "Value": false,
+                    "reviewDate": "2025-01-14T10:30:58.6278493"
+                }
+            },
+            "AmendDates":
+            {
+                "ImplementsAmendDates":
+                {
+                    "Value": false,
+                    "reviewDate": "2025-01-14T10:30:58.6278493"
+                }
+            },
+            "AmendPaxes":
+            {
+                "ImplementsAmendPaxes":
+                {
+                    "value": false,
+                    "reviewDate": "2025-01-14T10:30:58.6278493"
+                }
+            },
+            "AmendRemarks":
+            {
+                "ImplementsAmendRemarks":
+                {
+                    "value": false,
+                    "reviewDate": "2025-01-14T10:30:58.6278493"
+                }
+            },
+            "AmendRoom":
+            {
+                "ImplementsAmendRoom":
+                {
+                    "value": false,
+                    "reviewDate": "2023-07-10T17:52:17.0841089"
+                }
+            }
+        },
+        "implementsCombination":
+        {
+            "value": true,
+            "reviewDate": "2023-04-11T02:52:17.0841089"
+        },
+        "timeZone":
+        {
+            "timeZone": "Unknown",
+            "reviewDate": "2023-03-08T03:28:22.3979807"
+        }
+    },
+    "Content": {
+        "Languages": ["en", "es"],
+        "Operations": {
+            "HotelListBasicInfo": {
+                "Implemented": false,
+                "Active": false,
+                "ReviewDate": "2025-01-11T17:03:55.807"
+            },
+            "HotelListFull": {
+                "Implemented": false,
+                "Active": false,
+                "ReviewDate": "2025-01-11T17:03:55.807"
+            },
+            "HotelListDelta": {
+                "Implemented": false,
+                "Active": false,
+                "ReviewDate": "2025-01-11T17:03:55.807"
+            },
+            "HotelDetails": {
+                "Implemented": false,
+                "Active": false,
+                "ReviewDate": "2025-01-11T17:03:55.807"
+            },
+            "HotelDetailsByDates": {
+                "Implemented": false,
+                "Active": false,
+                "ReviewDate": "2025-01-11T17:03:55.807"
+            },
+            "HotelDetailsMultiCodes": {
+                "Implemented": false,
+                "Active": false,
+                "ReviewDate": "2025-01-11T17:03:55.807"
+            },
+            "HotelDetailsMultiLanguages": {
+                "Implemented": false,
+                "Active": false,
+                "ReviewDate": "2025-01-11T17:03:55.807"
+            },
+            "HotelDetailsMultiLanguagesMultiCodes": {
+                "Implemented": false,
+                "Active": false,
+                "ReviewDate": "2025-01-11T17:03:55.807"
+            },
+            "Destinations": {
+                "Implemented": false,
+                "Active": false,
+                "ReviewDate": "2025-01-11T17:03:55.807"
+            },
+            "Boards": {
+                "Implemented": false,
+                "Active": false,
+                "ReviewDate": "2025-01-11T17:03:55.807"
+            },
+            "Categories": {
+                "Implemented": false,
+                "Active": false,
+                "ReviewDate": "2025-01-11T17:03:55.807"
+            },
+            "Rooms": {
+                "Implemented": false,
+                "Active": false,
+                "ReviewDate": "2025-01-11T17:03:55.807"
+            },
+            "Currencies": {
+                "Implemented": false,
+                "Active": false,
+                "ReviewDate": "2025-01-11T17:03:55.807"
+            },
+            "Markets": {
+                "Implemented": false,
+                "Active": false,
+                "ReviewDate": "2025-01-11T17:03:55.807"
+            },
+            "Giata": {
+                "Implemented": false,
+                "Active": false,
+                "ReviewDate": "2025-01-11T17:03:55.807"
+            }
+        }
+    }
+}
+```
+
+## **Visual Reference**
+Below is an example directory structure for a Connector, highlighting the Metadata file:
+
+```plaintext
+/ConnectorsCode
+  /Metadata
+    ExampleSupplier.Metadata.json
+  /Operations
+```
+
+You can use this structure to ensure proper placement and loading of the metadata file in the Connector.

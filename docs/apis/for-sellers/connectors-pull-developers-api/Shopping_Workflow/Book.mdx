@@ -1,0 +1,60 @@
+---
+title: "Book"
+sidebar_position: 4
+---
+
+## **Overview**
+
+The `Book` operation is the final step in the booking workflow, used to confirm a reservation for a selected option. It involves providing detailed guest information, payment details (if required), and a client locator. Once completed, the supplier processes the reservation and returns its status.
+
+## **Purpose**
+The `Book` operation ensures:
+- **Guest Information Submission**: Transfers passenger details, including names, surnames, and any additional guest-specific data, to the supplier.
+- **Payment Validation**: Confirms and processes payment if the supplier requires it at the booking stage.
+- **Reservation Confirmation**: Secures the selected option and generates a unique supplier locator for future management (e.g., cancellation or check bookings).
+
+## **When to Use**
+- **Finalizing Reservations**: After `Quote`, when the selected option has been validated and confirmed.
+- **Session-Based Suppliers**: For suppliers requiring additional validation or token updates during the booking process.
+- **Immediate Confirmation**: For suppliers offering instant booking confirmation.
+
+> **Note**: If the booking status is returned as `Unknown`, the client must handle further investigation or contact the supplier to confirm the booking.
+
+## **Response Details**
+The `Book` operation returns:
+- **Booking Status**:
+  - `Confirmed`: The booking has been successfully processed.
+  - `Unknown`: The supplier could not finalize the booking. Further action may be required.
+- **Supplier Locator**: A unique identifier for the booking from the supplier, used for future operations like cancellation or check bookings.
+- **Additional Details**: May include booking remarks or warnings specific to the supplier.
+
+## **Common Scenarios**
+- **Payment-Required Suppliers**: Includes credit card information or other payment details as part of the `Book` request.
+- **Error Handling**: Common errors include:
+  - `SupplierBookingNotConfirmed`: Indicates that the booking could not be processed by the supplier.
+  - `ItemNotAvailable`: Returned if the selected option is no longer valid at the time of booking.
+
+## **Technical Details**
+- **Request Object**:
+  - Includes passenger details, payment information, client locator, and the selected option.
+
+<!-- TABLE BEGIN Connectors.Pull.Hotel.Domain.Contracts.Book.Request.BookRq -->
+| Element | Rel | Type | Description |
+| ------- | --- | ---- | ----------- |
+| BookCriteria | 1 | BookCriteria | The booking criteria for the hotel reservation. |
+| Settings | 1 | Settings | The settings for the hotel booking. |
+<!-- TABLE END -->
+
+- **Response Object**:
+  - Provides booking confirmation status, supplier locator, and any additional remarks or warnings.
+
+<!-- TABLE BEGIN Connectors.Pull.Hotel.Domain.Contracts.Book.Response.BookRs -->
+| Element | Rel | Type | Description |
+| ------- | --- | ---- | ----------- |
+| AuditData | 1 | AuditData | Contains the requests and responses exchanged with the supplier.            This field is populated internally by the connector framework.             Integrators do not need to handle this field manually. |
+| AdviseMessages | 1 | AdviseMessages | The collection of advise messages associated with the booking response. |
+| BookDetails | 1 | BookDetails | The details of the booking. |
+| AddOns | 1 | AddOns | A dictionary containing supplier information for the option. |
+<!-- TABLE END -->
+
+---

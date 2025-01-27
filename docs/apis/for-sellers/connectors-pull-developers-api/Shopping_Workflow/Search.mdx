@@ -1,0 +1,58 @@
+---
+title: "Search"
+sidebar_position: 2
+---
+
+## **Overview**
+
+The `Search` operation is the entry point in the booking workflow, enabling clients to retrieve available options based on their specific requirements. It allows buyers to query for availability, pricing, and other relevant details about accommodations offered by the supplier.
+
+## **Purpose**
+The `Search` operation is used to:
+- Fetch available options that match specific criteria provided by the client.
+- Provide detailed information about available rooms, prices, and policies.
+- Act as a foundation for subsequent operations like `Quote` and `Book`.
+
+## **Criteria for Search**
+Clients can define their search criteria to narrow down the available options. Common search parameters include:
+- **Hotel Codes**: Specific properties to search within.
+- **Occupations**: Number of guests, their ages, and nationalities.
+- **Markets**: Specific geographic or demographic markets targeted by the client.
+- **Check-in and Check-out Dates**: The desired date range for the stay.
+
+## **Response Details**
+The `Search` operation returns a list of available options matching the criteria. Each option includes:
+- **Price Details**: Comprehensive breakdowns of pricing, including base prices, taxes, and fees.
+- **Room Information**: Descriptions of the rooms, including amenities, room types, and occupancy limits.
+- **Cancellation Policies**: Policies related to cancellations, including deadlines and penalties.
+- **Remarks**: Supplier-specific notes or disclaimers.
+- **Rate Rules**: Conditions and restrictions associated with specific rates, such as minimum stay requirements.
+
+
+## **Technical Details**
+- **Request Object**: 
+  - Represents the structure of the search request as expected by the supplier.
+  - Includes required parameters such as `hotelCodes`, `occupancy`, and `checkInDate`.
+  
+<!-- TABLE BEGIN Connectors.Pull.Hotel.Domain.Contracts.Search.Request.SearchRq -->
+| Element | Rel | Type | Description |
+| ------- | --- | ---- | ----------- |
+| SearchCriteria | 1 | SearchCriteria | Gets the search criteria for the hotel search. |
+| Settings | 1 | Settings | Gets the search settings for the hotel search. |
+| Filters | 1 | Filters | Gets the filters to be applied to the hotel search results. |
+<!-- TABLE END -->
+  
+- **Response Object**: 
+  - Represents the standardized structure of the response returned by the supplier.
+  - Ensures consistency across different suppliers by conforming to the TravelgateX format.
+
+<!-- TABLE BEGIN Connectors.Pull.Hotel.Domain.Contracts.Search.Response.SearchRs -->
+| Element | Rel | Type | Description |
+| ------- | --- | ---- | ----------- |
+| AuditData | 1 | AuditData | Contains the requests and responses exchanged with the supplier.            This field is populated internally by the connector framework.             Integrators do not need to handle this field manually. |
+| AdviseMessages | 1 | AdviseMessages | Collection of advice messages, which may include errors or warnings generated during the search process. |
+| Accommodations | 1 | Accommodations | List of accommodations, meal plans, and options returned by the search.            These represent the available (hotel-mealPlans-options) that meet the client's criteria. |
+| GlobalOptionParameters | 1 | GlobalOptionParameters | Global parameters that the client must send in subsequent operations (e.g., in a quote request).             These parameters apply to all options returned in the response. |
+<!-- TABLE END -->
+
+---

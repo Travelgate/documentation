@@ -37,7 +37,7 @@ If you need assistance with requesting your credentials to access the SFTP serve
 * **Header Row:**
    * **RuleId (mandatory):** Unique identifier of the rule (assign one).
    * **ClientTokens:** Client token used for index the rule.
-   * **SupplierCodes (mandatory if 'NotSupplierCodes' is not used.):** List of the supplier codes you want the commission to be applied to. This field cannot be used simultaneously with the "NotSupplierCodes" column.
+   * **SupplierCodes (mandatory if 'NotSupplierCodes' is not used):** List of the supplier codes you want the commission to be applied to. This field cannot be used simultaneously with the "NotSupplierCodes" column.
       * Separator for multiples codes in the same row: Semicolon (“;”)
    * **NotSupplierCodes (mandatory if 'SupplierCodes' is not used):** List of the supplier codes you don't want the commission to be applied to. This field cannot be used simultaneously with the "SupplierCodes" column.
       * Separator for multiples codes in the same row: Semicolon (“;”).
@@ -87,4 +87,16 @@ Here are some common use cases for the Commission plugin, along with the CSV tem
 
 ## 2.  Execute Commission Plugin in your Request
 
-In the case of the commission plugin, there is no need to indicate it in the requests. Simply uploading the file to the SFTP it will start working, no further action is required.
+In the case of the commission plugin, there is no need to indicate it in the requests. Simply uploading the file to the SFTP will start working; no further action is required.
+
+However, if client tokens are specified in the file, remember to also include those in the settings for it to be applied in the request. This can be added as follows:
+
+```json
+{
+    "settings": {
+        "clientTokens": [
+            "testToken"
+        ]
+    }
+}
+```

@@ -26,7 +26,7 @@ The information returned in Book response may vary between Sellers, so please ch
 
 The [Delta Price](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/book) indicates the price variation permitted by the Buyer (amount or percentage), so that an error will be returned if the new price does not abide to DeltaPrice. If DeltaPrice is not sent and the integration implements it, we assume that the price range is 0 and the process will continue (price is lower or equal to the price returned in Quote).
 
-This field is implemented if it’s native to the Seller or if another Search/Quote request needs to be done in Book - please note DeltaPrice should be implemented by a Seller in order to be available to a Buyer.
+This field is implemented if it’s native to the Seller or if another Search/Quote request needs to be done in Book.
 
 :::info
 **Interested in adding DeltaPrice in your requests?** Feel free to access our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/book) for more information!🚀

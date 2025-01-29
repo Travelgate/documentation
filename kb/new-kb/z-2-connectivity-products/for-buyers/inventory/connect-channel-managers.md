@@ -1,16 +1,20 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 
 # Connect to Channel Managers via Travelgate
 
-### What to Expect When Connecting to a Channel Manager 🚀
+### What to Expect When Connecting to a Channel Manager 
 
 - **As a Buyer**, you can use our Inventory Extranet to create the setup and structure for hotels, rates, and rooms contracted with the Channel Manager/Hotels. The setup should align with the agreements made with each hotel. Additionally, you will have the ability to access and book inventory via our API.
 - **The Channel Manager** will extract the codes for hotels, rates, and rooms created and map them to their data, enabling them to load availability and rates into our system.
 
-### How to Connect to a Channel Manager 💡
+### Activation and Configuration
+
+Travelgate allows only **one credential (Hotel-X Access Code) per Channel Manager**. If you require multiple configurations, the Inventory Extranet offers flexible setup options to tailor your product settings efficiently.
+
+### How to Connect to a Channel Manager 
 
 1. **Log into Our Website:** Note that to connect to a Channel Manager, you must be a registered Buyer on Travelgate. If you haven't integrated with us yet, check out our guide on [Getting Started as a New Buyer](/kb/our-products/are-you-a-buyer/getting-started-as-a-new-buyer/essential-tech-requirements-before-connecting-with-travelgate-as-a-buyer).
 

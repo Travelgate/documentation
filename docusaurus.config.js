@@ -63,8 +63,11 @@ const config = {
       'data-project-logo': '/img/ask_ia.svg',
       'data-modal-disclaimer': 'This is a custom Language Learning Model (LLM) designed to answer questions specifically about Travelgate. The responses provided are based on the contents of the official documentation. To ensure you receive the most accurate and helpful answer, please include as much relevant context as possible in your questions. For example, make sure to explain your problem clearly and in detail.',
       'data-user-analytics-fingerprint-enabled': 'true',
-      'data-user-analytics-store-ip': 'true'
-
+      'data-user-analytics-store-ip': 'true',
+      'data-button-text': ' ',
+      'data-button-width': '13rem',
+      'data-button-height': '2.5rem',
+      'data-button-image-width': '170'
     }
   ],
 

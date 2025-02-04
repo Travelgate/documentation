@@ -18,28 +18,39 @@ To determine matches, the plugin uses the `clientTokens` field, which identifies
 
 2. Gets the rules stored in database which will establish which options will be added or discarted based on several factors as % of tolerance of the price, options status, hotelcodes, supplier, etc.
 
-3. Builds a group function which will help to clasify the options slice in n different groups based on the primary key established in the query by the client and the rules stored in the data base (SFTP preference file).Sorts the options in price order (from cheap to expensive).
+3. Builds a group function which will help to clasify the options slice in '*n*' different groups based on the primary key established in the query by the client and the rules stored in the data base (SFTP preference file).Sorts the options in price order (from cheap to expensive).
 
 4. Go over each option and group them by primary key index. However not all the options will be filled in these aggrupations. This is where the rules come into play.
 To determine if an option will be discarted or not we have to check the group function which does the following: 
    * If it is the first option in the pk index, this option will be automatically added.
    * If the rule says that the competitors has to be discarted, all the options of that pk index will be discarted except for the first (the cheapest).
-   * If it isnt the first option and there aren’t any rule that matches the option, this option will be discarted.
-   * If it isnt the first option and the price is higher than the tolerance % established in the rules for that pk index, the option will also be discarted.
+   * If it isn't the first option and there aren’t any rule that matches the option, this option will be discarted.
+   * If it isn't the first option and the price is higher than the tolerance % established in the rules for that pk index, the option will also be discarted.
 
 5. With the resulting options grouped by pk indexes, finally collects all of them and return them to the service process which has used the plugin.
 
-Some examples:
+### Example
 
-**Percentage = 1, Supplier A: 126 €, Supplier B: 125 €**  
-```
-126 - 126 * 0.01 = 124,74 < 125 €, then the selected one is supplier A
-```
+**Preference Rule Loaded:** Tolerance Percentage = **1%** for all **SUP1** hotels.  
 
-**Percentage = 1, Supplier A: 128 €, Supplier B: 125 €**  
-```
-128 - 128 * 0.01 = 126.72> 125 €, then the selected one is supplier B
-```
+**Scenario:**  
+- **Supplier SUP1** offers **126€** for Hotel Santo Domingo (Double Room, All Inclusive).  
+- **Supplier SUP2** offers **125€** for the same hotel and room type.  
+
+By default, **SUP2 wins** because it has the lowest price.  
+However, with the preference rule applied:  
+
+1. We first group all options with the same **aggregation primary key** (Hotel Santo Domingo - Double Room - All Inclusive).  
+2. Since there is a **preference rule for SUP1 hotels**, we apply the **tolerance check**:  
+
+   **Formula:**  
+   _Cheapest option price * (1 + tolerance%)_  
+   `125€ * (1 + 1/100) = 125€ * (1 + 1.01) = 126.25€`  
+
+3. Since **126.25€ is higher than 126€**, the SUP2 option is **discarded**, and SUP1 **wins** instead.  
+
+
+
 
 
 To get started with the Preference plugin, follow these simple steps:

@@ -10,7 +10,7 @@ There are various criteria for applying these preferences, which are detailed be
 
 This plugin follows a sequential process, where rules are checked one by one until a matching rule is found. When a match is found, the process stops, and your preference is applied. If no matching rule is found, the option will be validated.
 
-To determine matches, the plugin uses the `clientTokens` field, which identifies the provider and helps filter which business rules can be applied to the request you send.
+To determine matches, the plugin uses the `clientTokens` field, which identifies the provider and helps filter which business rules can be applied to a specific request you send.
 
 ## Preference Plugin Workflow
 
@@ -31,7 +31,7 @@ To determine if an option will be discarted or not we have to check the group fu
 
 ### Example
 
-**Preference Rule Loaded:** Tolerance Percentage = **1%** for all **SUP1** hotels.  
+**Preference Rule Loaded:** Tolerance Percentage = **1%** for all **SUP1** hotels and 'filterCompetitors' is enabled.  
 
 **Scenario:**  
 - **Supplier SUP1** offers **126€** for Hotel Santo Domingo (Double Room, All Inclusive).  
@@ -45,9 +45,11 @@ However, with the preference rule applied:
 
    **Formula:**  
    _Cheapest option price * (1 + tolerance%)_  
-   `125€ * (1 + 1/100) = 125€ * (1 + 1.01) = 126.25€`  
+   `125€ * (1 + 1/100) = 125€ * 1.01 = 126.25€`  
 
-3. Since **126.25€ is higher than 126€**, the SUP2 option is **discarded**, and SUP1 **wins** instead.  
+3. Since **126.25€ is higher than 126€** and **'filterCompetitors' is enabled**, the **SUP2 option is discarded**, making **SUP1 the only winner**.  
+
+If **'filterCompetitors' were disabled**, SUP1 would be added to the group, and **both options would be returned** in the results.
 
 
 

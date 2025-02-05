@@ -16,16 +16,16 @@ To determine matches, the plugin uses the `clientTokens` field, which identifies
 
 1. Starts getting all the args set by the client in the query, like options, parameters (primaryKey among others), client tokens, etc.
 
-2. Gets the rules stored in database which will establish which options will be added or discarted based on several factors as % of tolerance of the price, options status, hotelcodes, supplier, etc.
+2. Gets the rules stored in database which will establish which options will be added or discarded based on several factors as % of tolerance of the price, options status, hotelcodes, supplier, etc.
 
 3. Builds a group function which will help to clasify the options slice in '*n*' different groups based on the primary key established in the query by the client and the rules stored in the data base (SFTP preference file).Sorts the options in price order (from cheap to expensive).
 
 4. Go over each option and group them by primary key index. However not all the options will be filled in these aggrupations. This is where the rules come into play.
-To determine if an option will be discarted or not we have to check the group function which does the following: 
+To determine if an option will be discarded or not we have to check the group function which does the following: 
    * If it is the first option in the pk index, this option will be automatically added.
-   * If the rule says that the competitors has to be discarted, all the options of that pk index will be discarted except for the first (the cheapest).
-   * If it isn't the first option and there aren’t any rule that matches the option, this option will be discarted.
-   * If it isn't the first option and the price is higher than the tolerance % established in the rules for that pk index, the option will also be discarted.
+   * If the rule says that the competitors has to be discarded, all the options of that pk index will be discarded except for the first (the cheapest).
+   * If it isn't the first option and there aren’t any rule that matches the option, this option will be discarded.
+   * If it isn't the first option and the price is higher than the tolerance % established in the rules for that pk index, the option will also be discarded.
 
 5. With the resulting options grouped by pk indexes, finally collects all of them and return them to the service process which has used the plugin.
 

@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Hotel-X Certification Guide
+# Hotel-X Certification
 
 ### When to Apply
 You should apply once you've completed implementing the relevant methods.

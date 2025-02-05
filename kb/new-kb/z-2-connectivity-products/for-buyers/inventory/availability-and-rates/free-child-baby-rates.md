@@ -6,7 +6,7 @@ sidebar_position: 4
 
 ## Loading Free Child/Baby Rates in the Inventory Extranet
 
-Some **Channel Managers** do not support indicating free charges for child and baby occupancies in their pricing structures. To address this, we have introduced a feature allowing **Clients** to define free-of-charge rates for children and babies when creating or editing a rate. This option can be set within the **passenger conditions** under contract terms.
+Some **Channel Managers** do not support indicating free charges for child and baby occupancies in their pricing structures. To address this, we have introduced a feature allowing clients to define free-of-charge rates for children and babies when creating or editing a rate. This option can be set within the **passenger conditions** under contract terms.
 
 ## Configuring Free-of-Charge Rates
 

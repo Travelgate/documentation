@@ -39,22 +39,50 @@ The `Book` operation returns:
   - Includes passenger details, payment information, client locator, and the selected option.
 
 <!-- TABLE BEGIN Connectors.Pull.Hotel.Domain.Contracts.Book.Request.BookRq -->
-| Element | Rel | Type | Description |
-| ------- | --- | ---- | ----------- |
-| BookCriteria | 1 | BookCriteria | The booking criteria for the hotel reservation. |
-| Settings | 1 | Settings | The settings for the hotel booking. |
+| Element | Rel | Type | Optional | Description |
+| ------- | --- | ---- | ---------| ----------- |
+| BookCriteria | 1 | BookCriteria | No | The booking criteria for the hotel reservation. |
+| BookCriteria/Accommodation | 1 | AccommodationRQ | No | Accommodation details for the quote request, such as the hotel or rental being evaluated. |
+| BookCriteria/BoardCode | 1 | String | No | The board code specifies the type of board (e.g., "BB" for Bed and Breakfast) that the booking includes. |
+| BookCriteria/Occupancies | 1..n | BookOccupancy | No | Defines the details of room occupancies, including the number of adults, children, and their ages. |
+| BookCriteria/Market | 1 | String | No | Represents the target market, specified using an ISO 3166-1 alpha-2 country code. |
+| BookCriteria/Rooms | 1..n | Room | No | Each Room object represents a booked room with specific details. |
+| BookCriteria/PaymentType | 1 | PaymentType | No | The PaymentType enumeration defines the supported payment methods. |
+| BookCriteria/Remarks | 1..n | Remark | No | Additional comments or requests related to the booking. |
+| BookCriteria/ClientReference | 1 | String | No | A unique identifier provided by the client to track the booking request. |
+| BookCriteria/BookPrice | 1 | BookPrice | No | Includes details about the total cost of the booking, taxes, and currency. |
+| BookCriteria/Holder | 1 | Holder | No | Specifies the personal details of the booking holder, including their full name and contact information. |
+| BookCriteria/PaymentCardInput | 1 | CreditCardInput | No | Provides secure credit card information for payment. |
+| BookCriteria/Parameters | 1..n | Parameter | No | Specifies additional details or configurations for the booking request. |
+| Settings | 1 | Settings | No | The settings for the hotel booking. |
 <!-- TABLE END -->
 
 - **Response Object**:
   - Provides booking confirmation status, supplier locator, and any additional remarks or warnings.
 
 <!-- TABLE BEGIN Connectors.Pull.Hotel.Domain.Contracts.Book.Response.BookRs -->
-| Element | Rel | Type | Description |
-| ------- | --- | ---- | ----------- |
-| AuditData | 1 | AuditData | Contains the requests and responses exchanged with the supplier.            This field is populated internally by the connector framework.             Integrators do not need to handle this field manually. |
-| AdviseMessages | 1 | AdviseMessages | The collection of advise messages associated with the booking response. |
-| BookDetails | 1 | BookDetails | The details of the booking. |
-| AddOns | 1 | AddOns | A dictionary containing supplier information for the option. |
+| Element | Rel | Type | Optional | Description |
+| ------- | --- | ---- | ---------| ----------- |
+| AuditData | 1 | AuditData | No | Contains the requests and responses exchanged with the supplier. This field is populated internally by the connector framework. Integrators do not need to handle this field manually. |
+| AuditData/Request | 1..n | ProviderAuditRq | No | Collection of audit entries for provider requests. Each entry contains details about a specific request made to the provider. |
+| AuditData/Response | 1..n | ProviderAuditRs | No | Collection of audit entries for provider responses. Each entry contains details about a specific response received from the provider. |
+| AdviseMessages | 1 | AdviseMessages | No | The collection of advise messages associated with the booking response. |
+| AdviseMessages/Code | 1 | AdviseMessageCode | No | Provides a standardized way to categorize and identify the type of message, such as error, warning, or informational. |
+| AdviseMessages/Level | 1 | AdviseMessageLevel | No | Indicates the seriousness of the message, helping consumers prioritize or handle messages appropriately based on their severity. |
+| AdviseMessages/Description | 1 | String | No | A human-readable string that provides detailed context. |
+| AdviseMessages/CorrelationId | 1 | String | No | Allows tracing and associating the message with specific actions, requests, or operations for better debugging and monitoring. |
+| AdviseMessages/External | 1 | External | No | Includes supplementary information that might originate from external systems or providers. |
+| BookDetails | 1 | BookDetails | No | The details of the booking. |
+| BookDetails/Status | 1 | BookStatus | No | The current status of the booking. |
+| BookDetails/Reference | 1 | Reference | No | A collection of locators that identify the booking. |
+| BookDetails/Holder | 1 | Holder | No | Contains the full name and contact details of the person who holds the booking. |
+| BookDetails/Hotel | 1 | HotelDetail | No | Specific information about the hotel, including its name, code, check-in and check-out dates, and the rooms booked. |
+| BookDetails/Price | 1 | Price | No | Includes details such as the currency, gross and net amounts. |
+| BookDetails/CancelPolicy | 1 | CancelPolicy | No | Outlines the penalties and conditions for cancelling the booking. |
+| BookDetails/Remarks | 1..n | Remark | No | Provides supplementary information, such as special requests or comments. |
+| BookDetails/BillingSupplierCode | 1 | String | No | Identifies the agency or supplier handling the billing and reservation process. |
+| BookDetails/Payable | 1 | String | No | contains details about who is responsible for paying the booking amount, such as the client or a third party. |
+| AddOns | 1..n | Dictionary | No | A dictionary containing supplier information for the option. |
 <!-- TABLE END -->
 
 ---

@@ -116,6 +116,11 @@ The `Quote` operation returns:
 | PaymentInfo | 1 | PaymentInfo | No |Payment information for the quoted option, such as accepted credit card types. |
 | PaymentInfo/AcceptedCreditCards | 1..n | CreditCardType | No | A collection of accepted credit card types. This is required when the payment type requires a credit card. |
 | Parameters | 1..n | Parameter | No | Parameters associated with the quoted option for transferring data between operations. |
+| Parameters/Key | 1 | Integer | No | Identifies the parameter with a numeric key. |
+| Parameters/Value | 1 | String | No | Defines the value associated with the parameter. |
+| Parameters/ParameterType | 1 | ParameterType | No | Specifies the type of the parameter, whether it is internal or supplier-related. |
+| Parameters/Immutable | 1 | Boolean | No | Indicates whether the parameter remains constant throughout operations. |
+| Parameters/RoomId | 1 | Unsigned Integer | Yes | Associates the parameter with a specific room, identified by its ID. |
 | AddOns | 1..n | Dictionary | No | Additional information provided by the supplier for the quoted option. |
 <!-- TABLE END -->
 

@@ -7,31 +7,37 @@ sidebar_position: 2
 
 The following HTTP request headers are essential for all request methods and must be included in every API request.
 
-### Mandatory Request Headers
+## Mandatory Request Headers
 
-**Gzip Compression**: In order to increase performance and save bandwidth, all the live traffic must enable GZIP compression in the HTTP header. 
+### Gzip Compression
+
+In order to increase performance and save bandwidth, all the live traffic must enable GZIP compression in the HTTP header. 
 
 ```html
 Accept-Encoding: gzip
 ```                           
 
-**API Key**: Authentication is required for every request to the Travelgate GraphQL API. An API Key must be included in the HTTP Authorization request header to authenticate the user agent with the server. You can find your list of API Keys (encrypted) on the Travelgate website in [API Keys](https://app.travelgate.com/settings/apikeys).
+### Apikey
 
+Authentication is required for every request to the Travelgate GraphQL API. An API Key must be included in the HTTP Authorization request header to authenticate the user agent with the server. You can find your list of API Keys (encrypted) on the Travelgate website in [API Keys](https://app.travelgate.com/settings/apikeys).
 
 ```html
 Authorization: ApiKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```              
 
-**Keep Alive**: In order to increase performance and improve response times (in Search), you can add the keep-alive header to all our transactions. 
+### Keep Alive
+
+In order to increase performance and improve response times (in Search), you can add the keep-alive header to all our transactions. 
 
 ```html
 Connection: keep-alive 
 ``` 
 
-### Optional Request Headers
+## Optional Request Headers
 
-                                                       
-**GraphQL To Rest**: In case you expect to be returned +5k options per search response, we suggest using our GraphQL to Rest feature to keep performance at the highest level.
+### GraphQL To Rest                                                      
+
+In case you expect to be returned +5k options per search response, we suggest using our GraphQL to Rest feature to keep performance at the highest level.
 
 To implement this feature, please follow below steps:
 1. Check that your JSON parser is updated to the last schema as the Array Fields previously defined as single Scalars can produce unexpected JSON marshalling
@@ -40,3 +46,20 @@ To implement this feature, please follow below steps:
 TGX-Content-Type: graphqlx/json
 ```  
 3. Test a sample call for every request using the header.
+
+
+### Operation Timeout
+
+This optional header allows specifying a maximum waiting time for Travelgate to process a request in the Hotel-X Pull Buyers API.
+
+This value, expressed in milliseconds, defines how long Travelgate will wait for responses from suppliers, process those responses, and apply business rules (plugins) if used by the buyer. If this time is exceeded, Travelgate will terminate the request and return an error.
+
+```html
+TGX-Operation-Timeout: 5000
+``` 
+
+**This header should not be confused with the `timeout` field used in booking flow requests:**
+
+* TGX-Operation-Timeout sets the maximum time Travelgate will wait before cutting off the request.
+* The `timeout` field in the booking flow requests defines the time allocated for the final supplier to respond.
+* Since TGX-Operation-Timeout applies to the entire processing time (supplier response + Travelgate processing), it should always be set to a higher value than the timeout sent to the supplier.

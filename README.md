@@ -134,7 +134,7 @@ structure is different from the one in live, you need to inform the team about t
 This step is important, because the generated links are also used to train Aina bot. If the links are
 not working, Aina will not be able to provide the correct information.
 
-```bash 
+
 
 
 # 📘 Automated GraphQL Documentation Generation
@@ -171,7 +171,7 @@ The `updateDocs.js` script **uses this section as a reference** to insert the ge
 If `## Examples` is missing, **the documentation will be appended to the end of the file**, which may disrupt the expected structure.
 
 ### ✅ **Example of a Well-Structured `.mdx` File**
-```md
+
 # Hotel Master API
 
 General description of the hotel API.
@@ -199,23 +199,20 @@ mutation {
     name
   }
 }
-
+```
 
 ### ❌ **Example of a Poorly Structured `.mdx` File**
 If the `.mdx` file **does not** contain `## Examples`, the documentation **will be inserted at the end**:
 
-```md
+
 # Hotel Master API
 
 General description of the hotel API.
 
----
 (Automatically generated documentation will be inserted here, but at the end)
 
 ## 🛠 Solution
 To maintain a **clear structure**, always include the `## Examples` section before running `updateDocs.js`.
-
----
 
 ## 🚀 4. Fetch the GraphQL Schema (`fetchSchema.js`)
 
@@ -229,14 +226,12 @@ This script retrieves the GraphQL schema from the TravelgateX endpoint and **sto
 ### ▶️ Run the Script
 To fetch the schema, execute:
 
-```sh
+```bash
 node src/graphql/scripts/fetchSchema.js
-
+```
 ## 📌 Result  
 A JSON file will be generated at:  
 📂 `src/graphql/schema-json/inventory-schema.json`  
-
----
 
 ## 📝 5. Configure the Mapping (`fileNodeMap.js`)  
 
@@ -251,10 +246,9 @@ const FILE_NODE_MAP = {
     "for-sellers/inventory-sellers/inventory-push-graphql-api/set-up/hotels-set-up/update-hotel-set-up.mdx": ["InventoryHotelsSetupUpdateInput", "HotelsSetupRs"],
 };
 module.exports = FILE_NODE_MAP;
+```
 
 Ensure that **each entry in this mapping** corresponds to an existing `.mdx` file in `docs/apis`.
-
----
 
 ## 🔄 6. Generate the Documentation (`updateDocs.js`)
 
@@ -267,15 +261,14 @@ This script:
 ### ▶️ Run the Script  
 To generate the documentation, execute:  
 
-```sh
+```bash
 node src/graphql/scripts/updateDocs.js
+```
 
 ## 📌 Result  
 - Documentation is inserted into `.mdx` files.  
 - If documentation already exists, it is **updated** instead of duplicated.  
 - The documentation is **generated before** the `## Examples` section in each `.mdx` file.  
-
----
 
 ## 📋 7. Generated Documentation Format  
 
@@ -288,9 +281,11 @@ node src/graphql/scripts/updateDocs.js
   Hotel code.
   </summary>
 </details>
+```
 
 ### ✅ Example of an Enum Field 
 
+```md
 <details style={{ pointerEvents: "none" }}>
   <summary>
   **level**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of AdviseMessageLevel*)  
@@ -300,6 +295,7 @@ node src/graphql/scripts/updateDocs.js
   `INFO`  
   </summary>
 </details>
+```
 
 ## 🛠 8. Troubleshooting  
 
@@ -311,8 +307,9 @@ node src/graphql/scripts/updateDocs.js
 🔍 **Possible Cause:** The `fetchSchema.js` script was not executed properly.  
 ✔ **Solution:** Run:  
 
-```sh
+```bash
 node src/graphql/scripts/fetchSchema.js
+```
 
 ### ❌ Error: Enum Values Are Not Displaying Correctly  
 🔍 **Possible Cause:** The `updateDocs.js` script is not formatting enum values correctly.  
@@ -322,7 +319,8 @@ node src/graphql/scripts/fetchSchema.js
 Possible values:  
 `ERROR`  
 `WARN`  
-`INFO`  
+`INFO`
+```
 
 ## 🎯 9. Conclusion  
 
@@ -331,7 +329,4 @@ This process ensures that your documentation stays **consistent and up-to-date**
 
 🚀 **Start automating your GraphQL API documentation today!** 🚀  
 
----
 
-This **Markdown file follows best practices** for documentation, ensuring **correct rendering in Docusaurus, GitHub, or any Markdown-based platform**.  
-Let me know if you need any refinements! 😊🚀  

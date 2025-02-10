@@ -1,0 +1,102 @@
+
+# RuntimeConfiguration
+
+The **RuntimeConfiguration** in a Connector serves as a configuration file that contains the necessary parameters for the integration.
+
+---
+
+## **What is RuntimeConfiguration?**
+- **Purpose**: RuntimeConfiguration defines key parameters of the integration. These parameters will appear in the web access interface to be filled in, and their values can be either mandatory or optional. Here are some examples of possible parameters:
+  - User.
+  - Password.
+  - AnyUrlNotIncludedInOurUrlList.
+- **Utility**: RuntimeConfiguration defines the necessary parameters to call the supplier from the integration. These parameters may vary for each access, but this section specifies which ones are required and the rules they must follow.
+
+---
+
+## **How is RuntimeConfiguration Configured?**
+- The RuntimeConfiguration is stored within the Connector's structure as a JSON file.
+- **File Path**: `<ConnectorCode>/RuntimeConfiguration/<supplier>.RuntimeConfiguration.json`
+- This file is automatically loaded and referenced during operations.
+
+#### Example File Path:
+```plaintext
+/ConnectorsCode/RuntimeConfiguration/SupplierCode.RuntimeConfiguration.json
+```
+
+---
+
+## **RuntimeConfiguration in CI**
+- The **Continuous Integration (CI)** tests of a Connector are executed based on the RuntimeConfiguration.
+- If a RuntimeConfiguration does not exist, the related tests will fail.
+- Developers must create and implement the RuntimeConfiguration file.
+
+
+---
+
+## **RuntimeConfiguration Definition**
+
+<!-- TABLE BEGIN Connectors.Pull.Hotel.Application.RuntimeConfiguration.Model.RuntimeConfigurationModel -->
+| Element | Rel | Type | Optional | Description |
+| ------- | --- | ---- | ---------| ----------- |
+| Parameters | 1 | Parameters | No | Gets or sets the parameters list. |
+<!-- TABLE END -->
+
+---
+
+# RuntimeConfiguration Sample
+
+Below is an example of a RuntimeConfiguration file used in connectors. The RuntimeConfiguration defines the parameters of the integration.
+
+```json
+{
+  "Parameters": [
+    {
+      "TagRuntime": "PARAMETER",
+      "Mandatory": true,
+      "Show": false,
+      "Description": "Use Case to choose the type of response you want to receive",
+      "Key": "UseCase",
+      "DefaultValue": "Test/Two_Adults_Two_Days",
+      "Type": "STRING",
+      "ExampleValue": "algo",
+      "PossibleValues": [
+        "algo",
+        "otro"
+      ],
+      "Pattern": "^.{4}$",
+      "PatternDescription": "Value must match a string that has exactly 4 characters",
+      "ProviderTagName": "P1"
+    },
+    {
+      "TagRuntime": "PARAMETER",
+      "Mandatory": false,
+      "Show": false,
+      "Description": "Parameter1",
+      "Key": "p1",
+      "DefaultValue": "p1",
+      "Type": "STRING",
+      "ExampleValue": "p1",
+      "PossibleValues": [
+        "p1",
+        "p2"
+      ],
+      "Pattern": "^[A-Za-z][0-9]",
+      "PatternDescription": "Value must match a string where the first character is a letter and the second character is a number.",
+      "ProviderTagName": "Use Case"
+    }
+  ]
+}
+```
+
+## **Visual Reference**
+Below is an example directory structure for a Connector, highlighting the RuntimeConfiguration file:
+
+```plaintext
+/ConnectorsCode
+  /RuntimeConfiguration
+    ExampleSupplier.RuntimeConfiguration.json
+  /Operations
+```
+
+You can use this structure to ensure proper placement and loading of the RuntimeConfiguration file in the Connector.

@@ -49,22 +49,48 @@ The `CheckBookings By Dates` operation allows clients to retrieve the status of 
   - Includes date range criteria and any supplier-specific fields.
 
 <!-- TABLE BEGIN Connectors.Pull.Hotel.Domain.Contracts.CheckBookings.Request.ByDate.CheckBookingsByDateRq -->
-| Element | Rel | Type | Description |
-| ------- | --- | ---- | ----------- |
-| Input | 1 | Input | Contains the details for checking bookings within a specific date range. |
+| Element | Rel | Type | Optional | Description |
+| ------- | --- | ---- | ---------| ----------- |
+| Input | 1 | CheckBookingsByDateInput | No | Contains the details for checking bookings within a specific date range. |
+| Input/CheckIn | 1 | String | No | The check-in date for the booking check, specified as a string. This property is required and must be provided in the format yyyy-MM-dd. |
+| Input/CheckOut | 1 | String | No | The check-out date for the booking check, specified as a string. This property is required and must be provided in the format yyyy-MM-dd. |
+| Input/DateType | 1 | DateRangeType | No | Specifies the type of date range to use for the booking check. It can be Arrival or Booking |
+| Input/Language | 1 | String | Yes | The language code to be used for the booking check. This property must be a valid ISO 639-1 language code, exactly 2 characters long. |
+| Input/Currency | 1 | Currency | Yes | The currency to be used for the booking check. |
 <!-- TABLE END -->
 
 - **Response Object**:
   - Provides a list of bookings within the specified date range, including their status, locators, and optional details.
 
 <!-- TABLE BEGIN Connectors.Pull.Hotel.Domain.Contracts.CheckBookings.Response.CheckBookingsRs -->
-| Element | Rel | Type | Description |
-| ------- | --- | ---- | ----------- |
-| AuditData | 1 | AuditData | Provides detailed audit data for the supplier transactions, including request and response logs. |
-| AdviseMessages | 1 | AdviseMessages | A collection of advice messages generated during the booking check operation. |
-| Bookings | 1 | Bookings | A list of detailed booking information retrieved during the operation. |
-| Parameters | 1 | Parameters | A collection of parameters used to transfer data across different operations. |
-| AddOns | 1 | AddOns | Additional metadata provided by the supplier for internal use. |
+| Element | Rel | Type | Optional | Description |
+| ------- | --- | ---- | ---------| ----------- |
+| AuditData | 1 | AuditData | No | Provides detailed audit data for the supplier transactions, including request and response logs. |
+| AuditData/Request | 1..n | ProviderAuditRq | No | Collection of audit entries for provider requests. Each entry contains details about a specific request made to the provider. |
+| AuditData/Response | 1..n | ProviderAuditRs | No | Collection of audit entries for provider responses. Each entry contains details about a specific response received from the provider. |
+| AdviseMessages | 1 | AdviseMessages | No | A collection of advice messages generated during the booking check operation. |
+| AdviseMessages/Code | 1 | AdviseMessageCode | No | Provides a standardized way to categorize and identify the type of message, such as error, warning, or informational. |
+| AdviseMessages/Level | 1 | AdviseMessageLevel | No | Indicates the seriousness of the message, helping consumers prioritize or handle messages appropriately based on their severity. |
+| AdviseMessages/Description | 1 | String | No | A human-readable string that provides detailed context. |
+| AdviseMessages/CorrelationId | 1 | String | No | Allows tracing and associating the message with specific actions, requests, or operations for better debugging and monitoring. |
+| AdviseMessages/External | 1 | External | No | Includes supplementary information that might originate from external systems or providers. |
+| Bookings | 1..n | BookDetails | No | A list of detailed booking information retrieved during the operation. |
+| Bookings/Status | 1 | BookStatus | No | The current status of the booking. |
+| Bookings/Reference | 1 | Reference | No | A collection of locators that identify the booking. |
+| Bookings/Holder | 1 | Holder | No | The personal details of the booking holder. Contains the full name and contact details of the person who holds the booking. |
+| Bookings/Hotel | 1 | HotelDetail | No | The hotel details associated with the booking. Provides specific information about the hotel, including its name, code, check-in and check-out dates, and the rooms booked. |
+| Bookings/Price | 1 | Price | No | The total price of the booking. Includes details such as the currency, gross and net amounts. |
+| Bookings/CancelPolicy | 1 | CancelPolicy | No | The cancellation policy associated with the booking. Outlines the penalties and conditions for cancelling the booking. |
+| Bookings/Remarks | 1..n | Remark | No | Additional remarks or notes related to the booking. Provides supplementary information, such as special requests or comments. |
+| Bookings/BillingSupplierCode | 1 | String | No | The code of the agency responsible for the booking. Identifies the agency or supplier handling the billing and reservation process. |
+| Bookings/Payable | 1 | String | No | Information about the entity responsible for payment of the booking. Contains details about who is responsible for paying the booking amount, such as the client or a third party. |
+| Parameters | 1..n | Parameter | No | A collection of parameters used to transfer data across different operations. |
+| Parameters/Key | 1 | Integer | No | Identifies the parameter with a numeric key. |
+| Parameters/Value | 1 | String | No | Defines the value associated with the parameter. |
+| Parameters/ParameterType | 1 | ParameterType | No | Specifies the type of the parameter, whether it is internal or supplier-related. |
+| Parameters/Immutable | 1 | Boolean | No | Indicates whether the parameter remains constant throughout operations. |
+| Parameters/RoomId | 1 | Unsigned Integer | Yes | Associates the parameter with a specific room, identified by its ID. |
+| AddOns | 1 | Dictionary | No | Additional metadata provided by the supplier for internal use. |
 <!-- TABLE END -->
 
 ---

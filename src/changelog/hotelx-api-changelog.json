@@ -1,5 +1,30 @@
 [
   {
+    "date": "January 28, 2025",
+    "changes": [
+      {
+        "field": "hotelCode",
+        "type": "Added",
+        "description": "The 'hotelCode' field under HotelOptionQuote has been added. Code of the hotel in the context selected. The hotel code will be the same as the hotel code in the search request."
+      },
+      {
+        "field": "hotelCodeSupplier",
+        "type": "Added",
+        "description": "The 'hotelCodeSupplier' field under HotelOptionQuote has been added. Code of the hotel in supplier context. If the supplier does not provide the hotel code, then the hotel code will be the same as the hotel code in the search request."
+      },
+      {
+        "field": "occupancies",
+        "type": "Added",
+        "description": "The 'occupancies' field under HotelOptionQuote has been added. List of occupancies for the request. If the supplier does not provide the occupancies, then the occupancies will be the same as the occupancies in the search request."
+      },
+      {
+        "field": "rateRules",
+        "type": "Added",
+        "description": "The 'rateRules' field under HotelOptionQuote has been added. Specifies rate rules of the option returned. Note: If the option does not have any rate rule, then the option is NORMAL rate. If the supplier does not provide the rate rules, then the rate rules will be the same as the rate rules in the search request."
+      }
+    ]
+  },
+  {
     "date": "December 23, 2024",
     "changes": [
       {
@@ -11,7 +36,7 @@
         "field": "KO (value from BookStatusType)",
         "type": "Removed",
         "description": "The 'KO' status has been completely removed as a valid value for BookStatusType. If a booking fails, an error will be returned. For more details, please refer to the [connection error codes](docs/apis/for-buyers/hotel-x-pull-buyers-api/making-requests/errors-and-warnings/booking-flow)."
-      }      
+      }
     ]
   },
   {
@@ -103,7 +128,7 @@
         "description": "Deprecated description from Bed (search)."
       }
     ]
-    },
+  },
   {
     "date": "December 11, 2019",
     "changes": [
@@ -144,5 +169,4 @@
       }
     ]
   }
-  
 ]

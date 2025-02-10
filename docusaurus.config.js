@@ -4,7 +4,7 @@
 const {themes} = require('prism-react-renderer');
 const lightTheme = themes.github;
 const darkTheme = themes.dracula;
-const TRAVELGATE_API_KEY = process.env.TRAVELGATE_API_KEY;
+const TRAVELGATE_API_KEY ='test0000-0000-0000-0000-000000000000';
 
 
 /** @type {import('@docusaurus/types').Config} */
@@ -91,6 +91,16 @@ const config = {
         pretty: true,
         forceSchema: true,
         force: true,
+        include:{
+          fields: [
+            // Queries específicas
+            "Query.hotelX",
+            //'Query.inventory',
+            // // Mutations específicas
+            //'Mutation.HotelXMutation',
+            //'Mutation.InventoryMutation',
+          ],
+        },
         //homepage: "./docs/api-reference.md",
         loaders: {
           UrlLoader: {

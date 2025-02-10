@@ -12,11 +12,9 @@ The `deleteHotelSetUp` is designed to remove a specific hotel from a client - se
 * `success`
 * `adviseMessages`
 
-## Mutation Inputs
+## Mutation
 
 When creating your `deleteHotelSetUp` mutation, you have 1 input to fill based on your specific needs:
-
-1. Input
 
 ### 1. Input   
 
@@ -28,7 +26,199 @@ When creating your `deleteHotelSetUp` mutation, you have 1 input to fill based o
 **Optional input**
 * `contextCode`
 
-### Requests Examples
+## Mutation Inputs
+
+
+<details>
+  <summary>
+  **InventoryHotelSetupDeleteInput** (*INPUT_OBJECT*)  
+  Hotel setup delete input data  
+  </summary>
+  
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+    **clientCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+    Client code.  
+    </summary>
+  </details>
+
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+    **supplierCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+    Travelgate Supplier/Channel code.  
+    </summary>
+  </details>
+
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+    **hotelCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+    Hotel input data.  
+    </summary>
+  </details>
+
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+    **contextCode** (*String*)  
+    Context code related to the hotel.  
+    </summary>
+  </details>
+  
+</details>
+
+
+
+## Returned Fields
+
+
+<details>
+  <summary>
+  **HotelsSetupRs** (*OBJECT*)  
+  Represents the response object for hotel setup operations.  
+  </summary>
+  
+  
+  <details>
+    <summary>
+    **adviseMessages** (*AdviseMessage*)  
+    Collection of advise messages.  
+    </summary>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+      AM code: The following codes can be returned:  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **type**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+      Error type: The following types are valid:[type]  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **description**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+      Error description  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **level**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of AdviseMessageLevel*)  
+      Indicates the level of importance of the message.
+Possible values: ERROR, WARN, INFO.  
+      Possible values:  
+      `WARN`  
+      `ERROR`  
+      `INFO`  
+      </summary>
+    </details>
+
+    <details>
+      <summary>
+      **external** (*ExternalMessage*)  
+      Specify the external message.  
+      </summary>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **code** (*String*)  
+        External code.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **message**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+        External message.  
+        </summary>
+      </details>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **correlationID**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+      Identifier to investigate the cause of the error.  
+      </summary>
+    </details>
+  </details>
+
+  <details>
+    <summary>
+    **hotels** (*InventoryHotelSetup*)  
+    Collection of hotel responses.  
+    </summary>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **id**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+      Unique identifier of the hotel.  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **hotelCode** (*String*)  
+      Code associated with the hotel.  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **contextCode** (*String*)  
+      Context code related to the hotel.  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **active**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+      Indicates whether the hotel is active.  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **sendNotification**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+      Indicates whether booking notifications should be sent for this hotel.  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **emailNotification** (*String*)  
+      Email addresses for booking notifications related to this hotel.  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **emailNotificationCc** (*String*)  
+      Email addresses to be copied on booking notifications related to this hotel.  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **emailNotificationSupport** (*String*)  
+      Email addresses or contact information for support that will be displayed in the email notifications.  
+      </summary>
+    </details>
+  </details>
+
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+    **success**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+    Indicates whether the operation was successful based on the absence of advise messages.  
+    </summary>
+  </details>
+</details>
+
+
+
+## Examples
 
 #### Delete a Hotel
 

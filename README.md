@@ -99,3 +99,203 @@ This step is important, because the generated links are also used to train Aina 
 not working, Aina will not be able to provide the correct information.
 
 ```bash 
+
+
+# 📘 Automated GraphQL Documentation Generation
+
+This guide explains how to **automatically generate documentation** for the GraphQL API using scripts that extract information from the schema and insert it into `.mdx` documentation files.
+
+---
+
+## 📌 1. Prerequisites
+
+Before running the scripts, ensure that your environment meets the following requirements:
+
+- **Access to the TravelgateX GraphQL API endpoint**.
+- A **valid Bearer Token** for authentication.
+- The **GraphQL schema** must be available in the correct directory.
+
+---
+
+## 📂 2. Project Structure
+
+The documentation system follows this file structure:
+
+📂 src ├── 📂 graphql │ ├── 📂 scripts │ │ ├── fetchSchema.js # Script to fetch the GraphQL schema and save it as JSON │ │ ├── updateDocs.js # Script to generate documentation from the schema │ ├── 📂 schema-json │ │ ├── inventory-schema.json # JSON file containing the GraphQL schema │ ├── 📂 node-map │ │ ├── fileNodeMap.js # Mapping of GraphQL nodes to documentation files 📂 docs ├── 📂 apis │ ├── 📂 for-sellers │ ├── 📂 for-buyers │ │ ├── some-api-document.mdx # Documentation files in MDX format
+
+
+---
+
+## 📖 3. **MDX File Structure Guidelines**
+
+To ensure the **documentation is inserted correctly** within `.mdx` files, they must contain the **`## Examples`** section.
+
+### ❓ **Why is `## Examples` Important?**
+The `updateDocs.js` script **uses this section as a reference** to insert the generated documentation just **before** it.  
+If `## Examples` is missing, **the documentation will be appended to the end of the file**, which may disrupt the expected structure.
+
+### ✅ **Example of a Well-Structured `.mdx` File**
+```md
+# Hotel Master API
+
+General description of the hotel API.
+
+## Query Inputs
+
+(Automatically generated documentation will be inserted here)
+
+## Mutation Inputs
+
+(Automatically generated documentation will be inserted here)
+
+## Returned Fields
+
+(Automatically generated documentation will be inserted here)
+
+## Examples
+
+### Create a Hotel
+
+```graphql
+mutation {
+  createHotel(input: { name: "Hotel Example", email: "hotel@example.com" }) {
+    id
+    name
+  }
+}
+
+
+### ❌ **Example of a Poorly Structured `.mdx` File**
+If the `.mdx` file **does not** contain `## Examples`, the documentation **will be inserted at the end**:
+
+```md
+# Hotel Master API
+
+General description of the hotel API.
+
+---
+(Automatically generated documentation will be inserted here, but at the end)
+
+## 🛠 Solution
+To maintain a **clear structure**, always include the `## Examples` section before running `updateDocs.js`.
+
+---
+
+## 🚀 4. Fetch the GraphQL Schema (`fetchSchema.js`)
+
+### 🔹 Description
+This script retrieves the GraphQL schema from the TravelgateX endpoint and **stores it as a JSON file**.
+
+### 🛠 Configuration
+1. In `src/graphql/scripts/fetchSchema.js`, modify the `REQUIRED_TYPES` constant to include the **GraphQL types** you want to document.
+2. Set the correct **`GRAPHQL_ENDPOINT`** and **`BEARER_TOKEN`**.
+
+### ▶️ Run the Script
+To fetch the schema, execute:
+
+```sh
+node src/graphql/scripts/fetchSchema.js
+
+## 📌 Result  
+A JSON file will be generated at:  
+📂 `src/graphql/schema-json/inventory-schema.json`  
+
+---
+
+## 📝 5. Configure the Mapping (`fileNodeMap.js`)  
+
+The `fileNodeMap.js` file **maps GraphQL nodes to `.mdx` files**.  
+This mapping ensures that `updateDocs.js` inserts documentation into the correct location.  
+
+### 📍 Example of Mapping:  
+
+```js
+const FILE_NODE_MAP = {
+    "for-sellers/inventory-sellers/inventory-push-graphql-api/masters/hotels-master/create-hotel-master.mdx": ["InventoryHotelMasterCreateInput", "HotelsRs"],
+    "for-sellers/inventory-sellers/inventory-push-graphql-api/set-up/hotels-set-up/update-hotel-set-up.mdx": ["InventoryHotelsSetupUpdateInput", "HotelsSetupRs"],
+};
+module.exports = FILE_NODE_MAP;
+
+Ensure that **each entry in this mapping** corresponds to an existing `.mdx` file in `docs/apis`.
+
+---
+
+## 🔄 6. Generate the Documentation (`updateDocs.js`)
+
+### 🔹 Description  
+This script:  
+- Reads the `inventory-schema.json` file.  
+- Finds the GraphQL types in `fileNodeMap.js`.  
+- **Generates or updates** the documentation inside `.mdx` files.  
+
+### ▶️ Run the Script  
+To generate the documentation, execute:  
+
+```sh
+node src/graphql/scripts/updateDocs.js
+
+## 📌 Result  
+- Documentation is inserted into `.mdx` files.  
+- If documentation already exists, it is **updated** instead of duplicated.  
+- The documentation is **generated before** the `## Examples` section in each `.mdx` file.  
+
+---
+
+## 📋 7. Generated Documentation Format  
+
+### ✅ Example of a Normal Field  
+
+```md
+<details style={{ pointerEvents: "none" }}>
+  <summary>
+  **hotelCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+  Hotel code.
+  </summary>
+</details>
+
+### ✅ Example of an Enum Field 
+
+<details style={{ pointerEvents: "none" }}>
+  <summary>
+  **level**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of AdviseMessageLevel*)  
+  Indicates the level of importance of the message. Possible values:  
+  `ERROR`  
+  `WARN`  
+  `INFO`  
+  </summary>
+</details>
+
+## 🛠 8. Troubleshooting  
+
+### ❌ Error: Documentation is not inserted into `.mdx` files  
+🔍 **Possible Cause:** The `.mdx` files are not correctly mapped in `fileNodeMap.js`.  
+✔ **Solution:** Verify that the file names in `fileNodeMap.js` exactly match the `.mdx` files in `docs/apis`.  
+
+### ❌ Error: JSON Schema Not Found  
+🔍 **Possible Cause:** The `fetchSchema.js` script was not executed properly.  
+✔ **Solution:** Run:  
+
+```sh
+node src/graphql/scripts/fetchSchema.js
+
+### ❌ Error: Enum Values Are Not Displaying Correctly  
+🔍 **Possible Cause:** The `updateDocs.js` script is not formatting enum values correctly.  
+✔ **Solution:** Ensure that enum values are formatted using **backticks (`)**:  
+
+```md
+Possible values:  
+`ERROR`  
+`WARN`  
+`INFO`  
+
+## 🎯 9. Conclusion  
+
+By following these steps, you can **automate the generation and updating of GraphQL API documentation** in `.mdx` files.  
+This process ensures that your documentation stays **consistent and up-to-date** with the latest API schema.  
+
+🚀 **Start automating your GraphQL API documentation today!** 🚀  
+
+---
+
+This **Markdown file follows best practices** for documentation, ensuring **correct rendering in Docusaurus, GitHub, or any Markdown-based platform**.  
+Let me know if you need any refinements! 😊🚀  

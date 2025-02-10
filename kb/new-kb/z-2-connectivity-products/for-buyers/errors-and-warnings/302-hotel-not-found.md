@@ -2,11 +2,11 @@
 sidebar_position: 14
 ---
 
-# 302 error - Hotel not found
+# 302 Error - Hotel Not Found
 
+## What Does a 302 Error Mean?
+A 302 error occurs when our system is unable to locate the hotel you requested in your [Hotels](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-hotels-query) (DescriptiveInfo) method.
 
-### What does a 302 error mean?💡
-You will encounter a 302 error in those cases our system is unable to locate the hotel you requested in your [Hotels](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-hotels-query) (DescriptiveInfo) method.
 ```
 <applicationErrors>
     <type>302</type>
@@ -15,8 +15,11 @@ You will encounter a 302 error in those cases our system is unable to locate the
 </applicationErrors>
 ```
 
-### What can I do if I receive a 302 error in my response?✔️
-1. Make sure your portfolio is updated, otherwise, please make sure you update it accordingly.
-1. Get in touch with the Seller to verify if the property that is causing the error has been added to the portfolio generated for your account on their side.
-1. If the issue persists even after checking the above information, feel free to contact our [Customer Support team](https://app.travelgate.com/support). We are here to assist you!
+## What Can I Do If I Receive a 302 Error?
 
+1. **Ensure Your Portfolio Is Updated**
+   - Verify that your hotel portfolio is up to date. If it is outdated, update it accordingly. You can refer to the 'How can I use the ["Force update now" functionality'] article.
+2. **Contact the Seller**
+   - Reach out to the Seller to confirm whether the property causing the error has been included in the portfolio generated for your account.
+3. **Seek Assistance**
+   - If the issue persists after checking the above steps, contact our [Customer Support team](https://app.travelgate.com/support). We are here to assist you!

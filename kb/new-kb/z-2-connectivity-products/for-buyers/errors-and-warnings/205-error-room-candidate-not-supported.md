@@ -2,14 +2,14 @@
 sidebar_position: 10
 ---
 
-# 205 error - Room Candidate Not Supported
+# 205 Error - Room Candidate Not Supported
 
-### What does a 205 error mean?💡
-You will encounter a 205 error in those cases the number of room candidates in your request exceeds the maximum set by the Seller.
+## What Does a 205 Error Mean? 💡
+A 205 error occurs when the number of room candidates in your request exceeds the maximum allowed by the Seller.
 
-### How can I obtain information about the Seller's limitations and minimize errors?🚫
-To check the limitations set by the Seller and prevent errors and unnecessary traffic, we strongly advise utilizing our [Metadata Query](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata).
- 
+### How Can I Check the Seller's Limitations and Avoid Errors? 
+To prevent errors and reduce unnecessary traffic, we strongly recommend checking the Seller's limitations using our [Metadata Query](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata).
+
 :::tip
-Don't forget to check our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata) and [Hotel-X API Schema](https://api.travelgate.com/) for further information on Hotel-X Metadata Query🚀
+For more details, refer to our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata) and explore the [Hotel-X API Schema](https://api.travelgate.com/) for comprehensive information on Hotel-X Metadata Query. 
 :::

@@ -2,13 +2,19 @@
 sidebar_position: 15
 ---
 
-# 303 error - Booking not confirmed
+# 303 Error - Booking Not Confirmed
 
-### What does a 303 error mean?💡
-The 303 error is not very common and might be returned in Book response (Reservation response) whenever a Seller hasn't been able to confirm a booking for some reason.
+## What Does a 303 Error Mean?
+A 303 error is uncommon but may appear in the Book response (Reservation response) when a Seller is unable to confirm a booking.
+
 ```
 <type>303</type> <description>Booking not confirmed</description>
 ```
 
-### What can I do if I receive a 303 error in my response?✔️
-If you receive a 303 error in Book response, you should restart your Booking Flow from Search. If you need additional details about the error, please make sure to check directly with the Seller.
+## What Can I Do If I Receive a 303 Error?
+If you receive a 303 error in the Book response:
+1. **Restart Your Booking Flow**
+   - Begin again from the Search step to attempt a new booking.
+2. **Check With the Seller**
+   - If you need additional details about the error, reach out directly to the Seller for clarification.
+   - Remember that if you encounter an error in the Book’s response, be sure to consult the guidelines in the ‘Status in Book Response’ article.

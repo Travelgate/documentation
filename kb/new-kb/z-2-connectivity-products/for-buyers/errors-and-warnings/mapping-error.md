@@ -4,11 +4,10 @@ sidebar_position: 23
 
 # MAPPING_ERROR
 
-### What does a "MAPPING_ERROR" mean?💡
-"MAPPING_NOT_FOUND" errors occur when our system cannot find a match between the requested hotel/s and the Seller information. It can also be returned in those cases there is some mismatch between the context code used in your request and the context code or data configured in the mapping files uploaded to your SFTP (hotels, boards, rooms).
+## What Does a "MAPPING_ERROR" Mean?
+A "MAPPING_NOT_FOUND" error occurs when our system cannot find a match between your own codes (hotel codes, room codes, board codes, etc.) and the Supplier's information. This can also happen when there is a mismatch between the context code used in your request and the context code or data configured in the mapping files uploaded to your SFTP (hotels, boards, rooms).
 
-**Example:**
-
+### Example:
 ```
 [
     {
@@ -19,16 +18,17 @@ sidebar_position: 23
 ]
 ```
 
-### What can I do if I receive a "MAPPING_ERROR" in my response?🔎
-Since this error serves as an indication that there is a discrepancy or issue with the mapping validation, you should check the following information:
+## What Can I Do If I Receive a "MAPPING_ERROR"?
+Since this error indicates a discrepancy or issue with mapping validation, check the following:
 
-1. **Hotel codes**: Make sure that the hotels in your request are returned through the Hotels Query of that specific Seller.
-2. **Context**: [Content codes](/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/hotel-x-credentials#context%EF%B8%8F) utilized by both Buyers and Sellers. You can check the context codes of your connected suppliers in the [My Connections](/kb/connections/my-connections/#what-can-i-find-in-my-connections) section.
-	1. **Supplier context**: Make sure you use the Supplier's context if you are requesting the Seller's hotelcodes.
-	2. **Buyer context**: Make sure you use your Buyer context if you are requesting your own hotelcodes (previously mapped and uploaded to your SFTP).
-
-3. **SFTP files and Mapping**: If you are using our Mapping plugin, make sure that the hotel requested have been added to your [mapping file](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping) and it has been processed correctly.
+1. **Hotel Codes**
+   - Ensure the hotels in your request are returned through the Hotels Query for that specific Supplier.
+2. **Context Codes (Content Codes)**
+    - **Supplier Context**: Use the Supplier's context when requesting the Seller's hotel codes.
+    - **Buyer Context**: Use your Buyer context when requesting your own hotel codes (previously mapped and uploaded to your SFTP).
+3. **SFTP Files and Mapping**
+   - If using our Mapping plugin, ensure the requested hotel has been added to your [mapping file](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping) and processed correctly.
 
 :::tip
-Don't forget to check our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping) for further information on Hotel-X Mapping plugin!🚀
+Don't forget to check our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping) for more details on the Hotel-X Mapping plugin! 🚀
 :::

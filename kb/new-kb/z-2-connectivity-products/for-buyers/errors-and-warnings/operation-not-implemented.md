@@ -4,8 +4,10 @@ sidebar_position: 19
 
 # OperationImplemented Information
 
-### What does the operationImplemented tag mean?💡
-The operationimplemented tag is a part of the [Common Elements](https://docs.travelgate.com/connectiontypessellers/hotelpullsellers/methods/common-elements/) (Boolean) that you receive in our API response. Its purpose is to let you know if the Seller has implemented the requested method.
+## What Does the `operationImplemented` Tag Mean?
+The `operationImplemented` tag (Boolean) is part of the Common Elements in our API response. It indicates whether the Supplier has implemented the requested method.
+
+Example responses:
 ```
 <operationImplemented>false</operationImplemented>
 ```
@@ -13,12 +15,17 @@ or
 ```
 <operationImplemented>true</operationImplemented>
 ```
-### What can I do if I receive a operationImplemented "false" in my response?✔️
-If you think that the Seller should implement this method, you can follow the steps below:
 
-1. **Contact the Seller directly**: Reach out to the Seller and discuss your request for implementing the method. They will be able to check if it can be implemented on their side.
-1. **Seller's implementation**: If the Seller decides to implement the method, they should proceed with the necessary development and integration.
-1. **Contact us**: Once the Seller has implemented the method, they should contact us through our Support Portal.
-1. **Provide API Documentation**: The Seller should provide us with their complete API Documentation. This Documentation will help our team analyze the implementation and understand the functionality.
-1. **Analysis and implementation**: Our team will carefully analyze the provided API Documentation and work on implementing the method on our side.
+### What Can I Do If I Receive `operationImplemented: false` in My Response?
+If you believe the Seller should implement this method, follow these steps:
 
+1. **Contact the Seller Directly**
+   - Reach out to the Seller to discuss implementing the method. They can assess whether it is possible on their end.
+2. **Seller's Implementation**
+   - If the Seller agrees, they should proceed with the necessary development and integration.
+3. **Contact Us**
+   - Once the Seller has implemented the method, they should notify us through our Support Portal.
+4. **Provide API Documentation**
+   - The Seller must submit their complete API documentation, helping our team understand the implementation details.
+5. **Analysis and Implementation**
+   - Our team will review the provided API documentation and work on implementing the method on our side.

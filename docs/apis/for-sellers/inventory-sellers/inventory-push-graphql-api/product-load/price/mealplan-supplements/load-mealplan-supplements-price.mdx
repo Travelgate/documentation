@@ -51,11 +51,9 @@ The `loadPriceMealPlanSupplements` mutation allows you to load the price of meal
 * **`applicableWeekdays`:** The days of the week for which the price is being loaded. It includes the `all`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, and `sunday` fields.
 * **`adviseMessages`:** An array of messages that provide information about the mutation. Each message includes a `code`, `description`, `level`, `correlationID`, and `external` fields, which indicate whether the message is internal or external and provide the code and message of the external message.
 
-## Mutation Inputs
+## Mutation
 
 When creating your `loadPriceMealPlanSupplements` mutation, you have 1 input to fill based on your specific needs:
-
-1. Criteria
 
 ### 1. Criteria   
 
@@ -86,7 +84,396 @@ This mutation will allow you to enter specific details in the fields `clientCode
 * **`rooms`:** The number of rooms available for the rate.
 * **`dateRange`:** This field specifies the date range for which the price is being loaded.
 
-### Requests Examples
+## Mutation Inputs
+
+
+<details>
+  <summary>
+  **InventoryLoadPriceMealPlanSupplementsInput** (*INPUT_OBJECT*)  
+  Load price meal plan supplements mutation input  
+  </summary>
+  
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+    **clientCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+    Client code.  
+    </summary>
+  </details>
+
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+    **supplierCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+    Travelgate Supplier/Channel code.  
+    </summary>
+  </details>
+
+  <details>
+    <summary>
+    **mealPlanSupplements**&nbsp;<span class="required"> *</span>&nbsp; (*MealPlanSupplementLoadInput*)  
+    Hotel meal plan supplements input data.  
+    </summary>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **rateCode** (*String*)  
+      Code associated with the rate.  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **rooms** (*String*)  
+      List of room codes associated with the meal plan supplement.  
+      </summary>
+    </details>
+
+    <details>
+      <summary>
+      **applicableWeekdays** (*ApplicableWeekdaysInput*)  
+      Weekdays when the meal plan supplement is applicable. See ApplicableWeekdays.  
+      </summary>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **all** (*Boolean*)  
+        Indicates whether the price or rate is applicable on all days.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **monday** (*Boolean*)  
+        Indicates whether the price or rate is applicable on Mondays.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **tuesday** (*Boolean*)  
+        Indicates whether the price or rate is applicable on Tuesdays.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **wednesday** (*Boolean*)  
+        Indicates whether the price or rate is applicable on Wednesdays.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **thursday** (*Boolean*)  
+        Indicates whether the price or rate is applicable on Thursdays.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **friday** (*Boolean*)  
+        Indicates whether the price or rate is applicable on Fridays.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **saturday** (*Boolean*)  
+        Indicates whether the price or rate is applicable on Saturdays.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **sunday** (*Boolean*)  
+        Indicates whether the price or rate is applicable on Sundays.  
+        </summary>
+      </details>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **paxType**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of InventoryPaxType*)  
+      Type of passenger for the meal plan supplement. See PaxType.  
+      Possible values:  
+      `INFANT`  
+      `CHILD`  
+      `ADULT`  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **mealPlan**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+      Meal plan associated with the supplement.  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **amountPerPax**&nbsp;<span class="required"> *</span>&nbsp; (*Float*)  
+      Amount per passenger for the meal plan supplement.  
+      </summary>
+    </details>
+
+    <details>
+      <summary>
+      **dateRange** (*DateRangeProductInput*)  
+      Date range to apply  
+      </summary>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **start**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+        Start date.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **end**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+        End date.  
+        </summary>
+      </details>
+    </details>
+  </details>
+
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+    **hotelCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+    Code associated with the hotel.  
+    </summary>
+  </details>
+
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+    **contextCode** (*String*)  
+    Context code.  
+    </summary>
+  </details>
+  
+</details>
+
+
+
+## Returned Fields
+
+
+<details>
+  <summary>
+  **PriceMealPlanSupplementsRs** (*OBJECT*)  
+  Represents the response data for meal plan supplements price operations.  
+  </summary>
+  
+  
+  <details>
+    <summary>
+    **mealPlanSupplements** (*MealPlanSupplementLoad*)  
+    List of meal plan supplements prices. See MealPlanSupplementLoad.  
+    </summary>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **rateCode** (*String*)  
+      Code associated with the rate.  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **rooms** (*String*)  
+      List of room codes associated with the meal plan supplement.  
+      </summary>
+    </details>
+
+    <details>
+      <summary>
+      **applicableWeekdays** (*ApplicableWeekdays*)  
+      Weekdays when the meal plan supplement is applicable. See ApplicableWeekdays.  
+      </summary>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **all** (*Boolean*)  
+        Indicates whether the price or rate is applicable on all days.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **monday** (*Boolean*)  
+        Indicates whether the price or rate is applicable on Mondays.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **tuesday** (*Boolean*)  
+        Indicates whether the price or rate is applicable on Tuesdays.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **wednesday** (*Boolean*)  
+        Indicates whether the price or rate is applicable on Wednesdays.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **thursday** (*Boolean*)  
+        Indicates whether the price or rate is applicable on Thursdays.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **friday** (*Boolean*)  
+        Indicates whether the price or rate is applicable on Fridays.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **saturday** (*Boolean*)  
+        Indicates whether the price or rate is applicable on Saturdays.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **sunday** (*Boolean*)  
+        Indicates whether the price or rate is applicable on Sundays.  
+        </summary>
+      </details>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **paxType**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of InventoryPaxType*)  
+      Type of passenger for the meal plan supplement. See PaxType.  
+      Possible values:  
+      `INFANT`  
+      `CHILD`  
+      `ADULT`  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **mealPlan**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+      Meal plan associated with the supplement.  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **amountPerPax**&nbsp;<span class="required"> *</span>&nbsp; (*Float*)  
+      Amount per passenger for the meal plan supplement.  
+      </summary>
+    </details>
+
+    <details>
+      <summary>
+      **dateRange** (*DateRangeProduct*)  
+      Date range to apply  
+      </summary>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **start**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+        Start date.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **end**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+        End date.  
+        </summary>
+      </details>
+    </details>
+  </details>
+
+  <details>
+    <summary>
+    **adviseMessages** (*AdviseMessage*)  
+    List of advise messages associated with the operation. See AdviseMessage.  
+    </summary>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+      AM code: The following codes can be returned:  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **type**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+      Error type: The following types are valid:[type]  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **description**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+      Error description  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **level**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of AdviseMessageLevel*)  
+      Indicates the level of importance of the message.
+Possible values: ERROR, WARN, INFO.  
+      Possible values:  
+      `WARN`  
+      `ERROR`  
+      `INFO`  
+      </summary>
+    </details>
+
+    <details>
+      <summary>
+      **external** (*ExternalMessage*)  
+      Specify the external message.  
+      </summary>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **code** (*String*)  
+        External code.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **message**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+        External message.  
+        </summary>
+      </details>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **correlationID**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+      Identifier to investigate the cause of the error.  
+      </summary>
+    </details>
+  </details>
+
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+    **success**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+    Indicates whether the operation was successful.  
+    </summary>
+  </details>
+</details>
+
+
+
+## Examples
 
 #### Load price for a specific meal plan supplement
 

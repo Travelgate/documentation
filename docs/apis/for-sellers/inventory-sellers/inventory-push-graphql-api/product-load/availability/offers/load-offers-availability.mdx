@@ -42,11 +42,9 @@ The `loadOffersAvailability` mutation allows you to load the availability of spe
 * **`adviseMessages`:** An array of messages that provide information about the mutation. Each message includes a `code`, `description`, `level`, `correlationID`, and `external` fields, which indicate whether the message is internal or external and provide the code and message of the external message.
 
 
-## Mutation Inputs
+## Mutation
 
 When building your `loadOffersAvailability` mutation, you have 1 input to fill based on your specific needs:
-
-1. Criteria
 
 ### 1. Criteria   
 
@@ -79,7 +77,290 @@ This mutation will allow you to enter specific details in the fields `clientCode
 * **`dateRange`:** This field specifies the date range during which the conditions will be applied.
 
 
-### Requests Examples
+## Mutation Inputs
+
+
+<details>
+  <summary>
+  **InventoryLoadAvailOffersInput** (*INPUT_OBJECT*)  
+  Load availability offers mutation input  
+  </summary>
+  
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+    **clientCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+    Client code.  
+    </summary>
+  </details>
+
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+    **supplierCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+    Travelgate Supplier/Channel code.  
+    </summary>
+  </details>
+
+  <details>
+    <summary>
+    **offers**&nbsp;<span class="required"> *</span>&nbsp; (*OffersAvailLoadInput*)  
+    Hotel offers input data.  
+    </summary>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **rateCode** (*String*)  
+      List of rate codes associated with the offers.  
+      </summary>
+    </details>
+
+    <details>
+      <summary>
+      **offers** (*OfferAvailLoadInput*)  
+      List of offers to load. See OfferAvailLoad.  
+      </summary>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **code** (*String*)  
+        Code associated with the offer.  
+        </summary>
+      </details>
+
+      <details>
+        <summary>
+        **stopSales** (*StopSalesInput*)  
+        Stop sales associated with the offer. See StopSales.  
+        </summary>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **closeMaster** (*Boolean*)  
+          Indicates whether to close the master.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **closeOnArrival** (*Boolean*)  
+          Indicates whether to close on arrival. Null if not applicable.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **closeOnDeparture** (*Boolean*)  
+          Indicates whether to close on departure. Null if not applicable.  
+          </summary>
+        </details>
+      </details>
+    </details>
+
+    <details>
+      <summary>
+      **dateRange** (*DateRangeProductInput*)  
+      Date range to apply  
+      </summary>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **start**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+        Start date.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **end**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+        End date.  
+        </summary>
+      </details>
+    </details>
+  </details>
+
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+    **hotelCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+    Code associated with the hotel.  
+    </summary>
+  </details>
+
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+    **contextCode** (*String*)  
+    Context code.  
+    </summary>
+  </details>
+  
+</details>
+
+
+
+## Returned Fields
+
+
+<details>
+  <summary>
+  **AvailOffersRs** (*OBJECT*)  
+  Represents the response data for offers availability operations.  
+  </summary>
+  
+  
+  <details>
+    <summary>
+    **offers** (*OffersAvailLoad*)  
+    List of offers availabilities. See OffersAvailLoad.  
+    </summary>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **rateCode** (*String*)  
+      List of rate codes associated with the offers.  
+      </summary>
+    </details>
+
+    <details>
+      <summary>
+      **offers** (*OfferAvailLoad*)  
+      List of offers to load. See OfferAvailLoad.  
+      </summary>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **code** (*String*)  
+        Code associated with the offer.  
+        </summary>
+      </details>
+
+      <details>
+        <summary>
+        **stopSales** (*StopSales*)  
+        Stop sales associated with the offer. See StopSales.  
+        </summary>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **closeMaster** (*Boolean*)  
+          Indicates whether to close the master.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **closeOnArrival** (*Boolean*)  
+          Indicates whether to close on arrival. Null if not applicable.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **closeOnDeparture** (*Boolean*)  
+          Indicates whether to close on departure. Null if not applicable.  
+          </summary>
+        </details>
+      </details>
+    </details>
+
+    <details>
+      <summary>
+      **dateRange** (*DateRangeProduct*)  
+      Date range to apply  
+      </summary>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **start**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+        Start date.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **end**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+        End date.  
+        </summary>
+      </details>
+    </details>
+  </details>
+
+  <details>
+    <summary>
+    **adviseMessages** (*AdviseMessage*)  
+    List of advise messages associated with the operation. See AdviseMessage.  
+    </summary>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+      AM code: The following codes can be returned:  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **type**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+      Error type: The following types are valid:[type]  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **description**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+      Error description  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **level**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of AdviseMessageLevel*)  
+      Indicates the level of importance of the message.
+Possible values: ERROR, WARN, INFO.  
+      Possible values:  
+      `WARN`  
+      `ERROR`  
+      `INFO`  
+      </summary>
+    </details>
+
+    <details>
+      <summary>
+      **external** (*ExternalMessage*)  
+      Specify the external message.  
+      </summary>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **code** (*String*)  
+        External code.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **message**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+        External message.  
+        </summary>
+      </details>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **correlationID**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+      Identifier to investigate the cause of the error.  
+      </summary>
+    </details>
+  </details>
+
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+    **success**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+    Indicates whether the operation was successful.  
+    </summary>
+  </details>
+</details>
+
+
+
+## Examples
 
 #### Load availability for a specific offer
 

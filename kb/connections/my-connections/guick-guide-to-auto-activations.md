@@ -30,11 +30,11 @@ In this guide, we'll walk you through the process of requesting a connection wit
         Keep in mind that each Seller may require different information based on their system's specifications. It's important to note that activating your access with credentials that haven't been greenlit by the Seller can disrupt the workflow and cause delays. Therefore, ensure that your credentials are active and fully operational before proceeding.
         <img src="https://storage.travelgate.com/kbase/autoconnections_step3_2.png" alt="quickguide_to_autoconnections_step3_2" width="500" height="300"/>
 
-    * **Step 3 (Notification setup):** Let us know where you'd like to receive notifications once the activation is created and access is granted.
+    * **Step 3 (Notification setup):** Let us know where you'd like to receive notifications once the connection is created and access is granted.
 
         <img src="https://storage.travelgate.com/kbase/autoconnections_step3_3.png" alt="autoconnections_step3_3" width="500" height="300"/>
 
-    * **Step 4 (Review and confirm):** Double-check all the provided information and confirm to start the auto-activation process. Also, only if you and your Partner have a Commercial Agreement 2023, the form will show you the available payment types for this new connection:
+    * **Step 4 (Review and confirm):** Double-check all the provided information and confirm to start the auto-connection process. Also, only if you and your Partner have a Commercial Agreement 2023, the form will show you the available payment types for this new connection:
         * **FREE:** This connection has no cost for you. Your Partner must confirm the full payment of the connectivity from its side.
         * **STD:** Standard booking fee applies for you and your Partner, share costs.
         * **SUP:** Both standard booking fees and supplement apply to this connection for you. For your Partner, it will be free.  
@@ -59,9 +59,9 @@ Once you've requested a new connection with your Partner, you can track its prog
 
 | Status                    | Description        |
 |---------------------------|--------------------|
-| 🟢 Working                 | Your access is all set and ready to be used! |
+| 🟢 Working                 | Your access is all set and ready to be used! Please wait for the email from our activations team confirming that your credentials are ready before opening your feed. |
 | 🟡 In progress             | Our automatic process is still setting things up, but it'll be ready soon. Once it is, it'll switch to 'Working' automatically. It may also happen that something didn't quite go as planned in the automatic process, but don't worry because our team will step in to sort it out manually, and we'll reach out to you with updates soon. |
-| 🔵 Pending Seller's Feedback | We're waiting on final details from either the seller or buyer to keep things moving smoothly. Sometimes we need a bit more info, like search criteria, to ensure the process passes our test. |
+| 🔵 Partner's feedback required | We're waiting on final details from either the seller or buyer to keep things moving smoothly. Sometimes we need a bit more info, like search criteria, to ensure the process passes our test. |
 
 
 ## Frequently Asked Questions

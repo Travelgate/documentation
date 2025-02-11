@@ -15,7 +15,7 @@ One step quote operation evaluates the rate before booking, checking if the opti
 * `surcharges`
 
 
-## One Step Quote Inputs
+## Mutation Overview
 
 When creating your one step quote query, you have three different inputs to fill based on your specific needs:
 
@@ -169,14 +169,7 @@ To specify your filters you need to use the input `HotelFilterInput` in your que
 ```
 
 
-### Requests Examples
-
-#### Quote option without checking the surcharges
-
-<GraphqlSample query={oneStepQuoteQuery} variables={oneStepQuoteVariables}/>
-
-
-## Quote Response
+### Response Considerations
 
 As mentioned earlier, the quote response will provide you with updated information about the option found with the criteria indicated in the input. In this one step quote response, **there are some essential details that you should carefully review and consider** when providing information to your final customers:
 
@@ -187,6 +180,7 @@ As mentioned earlier, the quote response will provide you with updated informati
 * **Taxes:** Ensure you are aware of any applicable taxes associated with the selected option.
 
 The next step is to confirm the booking using the standard [book mutation](../booking-flow/book) in the Hotel-X API, utilizing the `optionRefId` obtained from the results.
+
 
 ## Frequently Asked Questions
 
@@ -217,3 +211,11 @@ The next step is to confirm the booking using the standard [book mutation](../bo
         <div>You may receive a status On Request (status RQ) in Quote response in those cases the availability of the option previously selected is pending to be confirmed by the Seller. If you receive status RQ in Quote response, you should run a new Search request and restart the Booking Flow.</div>
     </div>
 </details>
+
+
+
+## Examples
+
+#### Quote option without checking the surcharges
+
+<GraphqlSample query={oneStepQuoteQuery} variables={oneStepQuoteVariables}/>

@@ -19,7 +19,7 @@ The Rooms Query returns a comprehensive room list from a supplier's access that 
 
 
 
-## Rooms Inputs
+## Query Overview
 
 When creating your rooms query, you have two different inputs to fill based on your specific needs:
 
@@ -104,7 +104,28 @@ This token should be used as input in your next rooms query, inside the `token` 
 }
 ```
 
-### Requests Examples
+
+### Response Considerations
+
+:::note
+
+The amount of information and content returned might vary between Sellers.
+
+Hotel-X supports all languages, but receiving room descriptions in one or another depends entirely on the languages supported by the Seller.
+
+:::
+
+#### Mapping
+
+When utilizing the Room List Query, you will receive the Seller's native room codes. Connecting with a new Seller doesn't always mean that you are interested in the whole rooms portfolio, maybe you are just interested in some specific rooms. Since mapping depends entirely on your side, you can map only those rooms you are interested in.
+
+Additionally, you can upload your own mapping files to our FTP (credentials should be provided by our Customer Care team), and we will use your own room codes in the booking flow.
+
+You can find all the necessary information in the [mapping section](../plugins/mapping.mdx).
+
+
+
+## Examples
 
 #### Search for the complete rooms list from a supplier
 
@@ -116,24 +137,3 @@ This token should be used as input in your next rooms query, inside the `token` 
 When utilizing the Rooms List Query, for more personalized results, filter specific rooms based on your interests. For example, to focus solely on the twin room inventory of a Seller, add the `roomCodes` field with "2269" (this is the code that this Seller has assigned for the "Double Standard" room) in your criteria. This will provide you with highly targeted and relevant information.
 
 <GraphqlSample query={roomsQuery} variables={roomsByRoomCodeVariables} />
-
-
-
-
-## Rooms Response
-
-:::note
-
-The amount of information and content returned might vary between Sellers.
-
-Hotel-X supports all languages, but receiving room descriptions in one or another depends entirely on the languages supported by the Seller.
-
-:::
-
-### Mapping
-
-When utilizing the Room List Query, you will receive the Seller's native room codes. Connecting with a new Seller doesn't always mean that you are interested in the whole rooms portfolio, maybe you are just interested in some specific rooms. Since mapping depends entirely on your side, you can map only those rooms you are interested in.
-
-Additionally, you can upload your own mapping files to our FTP (credentials should be provided by our Customer Care team), and we will use your own room codes in the booking flow.
-
-You can find all the necessary information in the [mapping section](../plugins/mapping.mdx).

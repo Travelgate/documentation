@@ -14,7 +14,7 @@ The Booking query allows you to retrieve a specific booking with all its details
 * `remarks`
 * `status`
 
-## Booking Read and List Inputs
+## Query Overview
 
 When creating your booking query, you have two different inputs to fill based on your specific needs:
 
@@ -140,7 +140,12 @@ To specify your booking settings you need to use the [`HotelSettingsInput` input
 * `clientTokens` (Used to identify the origin of the request, this is only used in plugins)
 
 
-### Requests Examples
+### Response Considerations
+
+Keep in mind that the content of the Booking response can differ depending on the Sellers. For instance, some Sellers might provide details about the hotel or cancel policies, while others may only offer information about the status and locators/references.
+
+
+## Examples
 
 #### Booking read with the `bookingID` from the book response
 
@@ -160,12 +165,4 @@ To specify your booking settings you need to use the [`HotelSettingsInput` input
 
 :::info Booking list for multiple suppliers
 You can generate a booking list based on booking or arrival dates by simply specifying your client. This will provide a consolidated booking list from all suppliers associated with that client.
-:::
-
-## Booking Read and List Response
-
-Keep in mind that the content of the Booking response can differ depending on the Sellers. For instance, some Sellers might provide details about the hotel or cancel policies, while others may only offer information about the status and locators/references.
-
-:::tip Booking read output fields
-Explore all the booking read output fields and their descriptions in our detailed Graphql API Reference section [here](/api/types/objects/hotel-booking/).
 :::

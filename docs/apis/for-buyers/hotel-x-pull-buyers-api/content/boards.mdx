@@ -14,7 +14,7 @@ The Boards Query returns a comprehensive boards list from a supplier's access th
 * `language`
 
 
-## Boards Inputs
+## Query Overview
 
 When creating your boards query, you have 1 input to fill based on your specific needs:
 
@@ -32,7 +32,27 @@ This query offers versatility, with certain fields marked as mandatory (`access`
 * `boardCodes` (Search by board type)
 * `group`
 
-### Requests Examples
+
+### Response Considerations
+
+:::note
+
+The amount of information and content returned might vary between Sellers.
+
+Hotel-X supports all languages, but receiving board descriptions in one or another depends entirely on the languages supported by the Seller.
+
+:::
+
+#### Mapping
+
+When utilizing the Boards List Query, you will receive the Seller's native boards codes. Connecting with a new Seller doesn't always mean that you are interested in the whole board's portfolio, maybe you are just interested in some specific boards. Since mapping depends entirely on your side, you can map only those boards you are interested in.
+
+Additionally, you can upload your own mapping files to our FTP (credentials should be provided by our Customer Care team), and we will use your own boards codes in the booking flow.
+
+You can find all the necessary information in the [mapping section](../plugins/mapping.mdx).
+
+
+## Examples
 
 #### Search for the complete board list from a supplier
 
@@ -44,22 +64,3 @@ This query offers versatility, with certain fields marked as mandatory (`access`
 When utilizing the Boards List Query, for more personalized results, filter specific boards based on your interests. For example, to focus solely on the half board inventory of a Seller, add the `boardCodes` field with "2" and "256" (these are the codes this Seller has assigned for the half board from their side) in your criteria. This can provide you with highly targeted and relevant information.
 
 <GraphqlSample query={boardsQuery} variables={boardsByBoardCodeVariables} />
-
-
-## Boards Response
-
-:::note
-
-The amount of information and content returned might vary between Sellers.
-
-Hotel-X supports all languages, but receiving board descriptions in one or another depends entirely on the languages supported by the Seller.
-
-:::
-
-### Mapping
-
-When utilizing the Boards List Query, you will receive the Seller's native boards codes. Connecting with a new Seller doesn't always mean that you are interested in the whole board's portfolio, maybe you are just interested in some specific boards. Since mapping depends entirely on your side, you can map only those boards you are interested in.
-
-Additionally, you can upload your own mapping files to our FTP (credentials should be provided by our Customer Care team), and we will use your own boards codes in the booking flow.
-
-You can find all the necessary information in the [mapping section](../plugins/mapping.mdx).

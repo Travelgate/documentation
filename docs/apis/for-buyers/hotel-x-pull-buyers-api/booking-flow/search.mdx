@@ -20,7 +20,7 @@ Search serves as the initial step in our booking flow, with the objective of ver
 * [`id`](/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/understanding-the-id-optionRefId-of-an-option)
 
 
-## Search Inputs
+## Query Overview
 
 When creating your search query, you have three different inputs to fill based on your specific needs:
 
@@ -172,7 +172,22 @@ All these filters are optional. Example to request only search results from acce
 
 You would need to apply the same approach for filtering by specific rate rule (`rateRule`) and status (`status`).
 
-### Requests Examples
+### Response Considerations
+
+In the response to your search query, you'll receive all the available options that match your criteria. Each option provides various details, such as room type, price, and cancellation policies. 
+
+Here are some key points to keep in mind:
+
+#### Cancel Policies: Refundable Field
+
+In the room structure response, there is a `refundable` field. If this field is set to false, it means the room has a 100% cancellation cost, making it non-refundable. If the field returns a null value, it indicates that the Seller doesn't provide this information at this stage and you will obtain this information in the quote step. 
+
+:::caution Remember
+Some Sellers may not include cancellation policies in their availability data. You can learn more about each Seller's specific details in their [metadata](../content/metadata).
+:::
+
+
+## Examples
 
 #### Search query [1 hotel, 2 rooms: 3 adults 1 child]
 <GraphqlSample query={searchQuickStartQuery} variables={searchTwoRoomsVariables}/>
@@ -185,26 +200,6 @@ You would need to apply the same approach for filtering by specific rate rule (`
 As you can see in these responses, you have multiple options with different rates, meal plans, and room types. 
 Additionally, you  receive a warning for those options we couldn't return, as [the supplier does not provide the commission through the API](/kb/our-products/are-you-a-buyer/our-methods/lists-of-errors-and-warnings/wrong-field-plugin-error). 
 
-
-
-## Search Response
-
-In the response to your search query, you'll receive all the available options that match your criteria. Each option provides various details, such as room type, price, and cancellation policies. 
-
-:::tip Search output fields
-Explore all the search results output fields and their descriptions in our detailed Graphql API Reference section [here](/api/types/objects/hotel-search/).
-:::
-
-
-Here are some key points to keep in mind:
-
-### Cancel Policies: Refundable Field
-
-In the room structure response, there is a `refundable` field. If this field is set to false, it means the room has a 100% cancellation cost, making it non-refundable. If the field returns a null value, it indicates that the Seller doesn't provide this information at this stage and you will obtain this information in the quote step. 
-
-:::caution Remember
-Some Sellers may not include cancellation policies in their availability data. You can learn more about each Seller's specific details in their [metadata](../content/metadata).
-:::
 
 
 ## Frequently Asked Questions

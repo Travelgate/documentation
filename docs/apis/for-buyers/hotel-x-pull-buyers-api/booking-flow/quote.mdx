@@ -15,7 +15,7 @@ Quote operation evaluates the rate before booking, providing the same informatio
 * `surcharges`
 
 
-## Quote Inputs
+## Query Overview
 
 When creating your quote query, you have two different inputs to fill based on your specific needs:
 
@@ -97,12 +97,7 @@ To specify your quote settings you need to use the [`HotelSettingsInput` input](
 :::
 
 
-### Requests Examples
-
-<GraphqlSample query={quoteQuickStartQuery} variables={quoteQuickStartVariables}/>
-
-
-## Quote Response
+### Response Considerations
 
 As mentioned earlier, the quote response will provide you with updated information about the option you selected during the search step. In this quote response, **there are some essential details that you should carefully review and consider** when providing information to your final customers:
 
@@ -112,9 +107,11 @@ As mentioned earlier, the quote response will provide you with updated informati
 
 * **Surcharges (taxes):** Ensure you are aware of any applicable surcharges or taxes associated with the selected option.
 
-:::tip Quote output fields
-Explore all the quote output fields and their descriptions in our detailed Graphql API Reference section [here](/api/types/objects/hotel-quote/).
-:::
+
+
+## Examples
+
+<GraphqlSample query={quoteQuickStartQuery} variables={quoteQuickStartVariables}/>
 
 
 ## Frequently Asked Questions

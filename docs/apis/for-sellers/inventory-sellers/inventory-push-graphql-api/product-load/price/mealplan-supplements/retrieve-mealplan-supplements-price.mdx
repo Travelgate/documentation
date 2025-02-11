@@ -4,11 +4,11 @@ sidebar_position: 3
 
 import {priceMealplanSupplementsQuery, priceMealplanSupplementsRoomVariables, priceMealplanSupplementsRoomsVariables} from "/src/graphql/inventory/product-load/retrieve-mealplan-supplements-price.query";
 
-# Retrieve Mealplan Supplements Price
+# Retrieve Meal Plan Supplements Price
 
-The `priceMealPlanSupplements` query allows you to retrieve the price of specific meal plan supplements in the Inventory. 
+## Query Overview
 
-## Query Fields
+The `priceMealPlanSupplements` query allows you to retrieve the price of specific meal plan supplements in Inventory. The returned fields include:
 
 * `success`
 * `mealPlanSupplements`
@@ -17,6 +17,9 @@ The `priceMealPlanSupplements` query allows you to retrieve the price of specifi
     * `paxType`
     * `mealPlan`
     * `amountPerPax`
+    * `dateRange`
+        * `start`
+        * `end`
     * `applicableWeekdays`
         * `all`
         * `monday`
@@ -26,9 +29,6 @@ The `priceMealPlanSupplements` query allows you to retrieve the price of specifi
         * `friday`
         * `saturday`
         * `sunday`
-    * `dateRange`
-        * `start`
-        * `end`
 * `adviseMessages`
     * `code`
     * `description`
@@ -38,25 +38,11 @@ The `priceMealPlanSupplements` query allows you to retrieve the price of specifi
         * `code`
         * `message`
 
-### Returned Field Explanations
+### 1. Criteria
 
-* **`success`:** A boolean that indicates whether the query was successful.
-* **`mealPlanSupplements`:** The details of the meal plan supplements for which the price was retrieved. It includes the `rateCode` of the rate, the `rooms` available, and the `amountPerPax`.
-* **`rateCode`:** The code of the rate for which the meal plan supplement price is being retrieved.
-* **`rooms`:** The number of rooms available for the rate.
-* **`paxType`:** The type of passenger for which the meal plan supplement price is being retrieved.
-* **`mealPlan`:** The type of meal plan for which the supplement price is being retrieved.
-* **`amountPerPax`:** The price per passenger for the meal plan supplement.
-* **`applicableWeekdays`:** The days of the week for which the meal plan supplement price is being retrieved.
-* **`dateRange`:** The date range during which the conditions will be applied. It includes the `start` and `end` dates.
-* **`adviseMessages`:** An array of messages that provide information about the query. Each message includes a `code`, `description`, `level`, `correlationID`, and `external` fields, which indicate whether the message is internal or external and provide the code and message of the external message.
+When building your query, you need to provide the following input fields:
 
-## Query
-### 1. Criteria   
-
-This query will allow you to enter specific details in the fields `clientCode`, `supplierCode`, `mealPlanSupplements`, and `hotelCode` to retrieve the price of specific meal plan supplements. 
-
-**Mandatory input**
+#### Mandatory Input
 * `clientCode`
 * `supplierCode`
 * `hotelCode`
@@ -67,13 +53,50 @@ This query will allow you to enter specific details in the fields `clientCode`, 
         * `start`
         * `end`
 
-### Field Explanations
+### 2. Settings
 
-* **`clientCode`, `supplierCode`, `hotelCode`:** These fields identify the client, supplier, and hotel for which the meal plan supplement price is being retrieved.
-* **`mealPlanSupplements`:** This field contains the details of the meal plan supplements for which the price is being retrieved. It includes the `rateCode` of the rate and the `dateRange` for which the price is being retrieved.
-* **`rateCode`:** The code of the rate for which the meal plan supplement price is being retrieved.
-* **`rooms`:** The number of rooms available for the rate.
-* **`dateRange`:** This field specifies the date range for which the price is being retrieved.
+This query allows retrieving prices for specific meal plan supplements by defining relevant details such as `clientCode`, `supplierCode`, `hotelCode`, `mealPlan`, `rooms`, and `dateRange`.
+
+```js
+{
+  "input": {
+    "clientCode": "ABC123",
+    "supplierCode": "SUP001",
+    "hotelCode": "HTL567",
+    "mealPlanSupplements": [
+      {
+        "rateCode": "RATE001",
+        "rooms": ["ROOM1", "ROOM2"],
+        "dateRange": {
+          "start": "2024-03-01",
+          "end": "2024-03-10"
+        }
+      }
+    ]
+  }
+}
+```
+
+### Response Considerations
+
+The query returns the meal plan supplement prices along with success status and possible advise messages.
+
+#### `PriceMealPlanSupplementsRs` (*OBJECT*)
+* `mealPlanSupplements` (*MealPlanSupplementLoad*) - List of meal plan supplements with pricing information.
+    * `rateCode` (*String*) - The rate code for the supplement.
+    * `dateRange` (*DateRangeProduct*) - Date range applied.
+        * `start` (*DateTime*) - Start date.
+        * `end` (*DateTime*) - End date.
+    * `amountPerPax` (*Float*) - Price per passenger.
+    * `paxType` (*Enum of InventoryPaxType*) - Type of passenger (INFANT, CHILD, ADULT).
+* `success` (*Boolean*) - Indicates whether the operation was successful.
+* `adviseMessages` (*AdviseMessage*) - Messages related to the operation.
+    * `code` (*ID*) - AM code.
+    * `type` (*String*) - Error type.
+    * `description` (*String*) - Error description.
+    * `level` (*Enum of AdviseMessageLevel*) - Importance level (ERROR, WARN, INFO).
+    * `external` (*ExternalMessage*) - External message details.
+    * `correlationID` (*ID*) - Identifier for debugging.
 
 ## Query Inputs
 

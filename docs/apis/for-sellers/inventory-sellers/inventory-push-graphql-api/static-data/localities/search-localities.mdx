@@ -5,7 +5,9 @@ sidebar_position: 2
 import {localitiesSearchQuery, localitiesSearchVariables} from "/src/graphql/inventory/static-data/localities.query";
 
 
-# Search localities
+# Search Localities
+
+## Query Overview
 
 The `searchLocalities` query allows you to search for localities created in Inventory based on their names. The returned fields include:
 
@@ -14,42 +16,52 @@ The `searchLocalities` query allows you to search for localities created in Inve
 * `countryCode`
 * `unLocode`
 
+### 1. Criteria
 
-## Query
+When building your query, you need to provide the following input fields:
 
-When creating your query, you have 1 input to fill based on your specific needs:
+#### Mandatory Input
+* `localityName` - The name of the locality to search for.
 
+#### Optional Input
+* `countryCode` - The ISO 2-character country code to filter localities by country.
 
-### 1. Criteria   
+### 2. Settings
 
-This query offers versatility, with an optional field `countryCode` that can be filled with the ISO 2-character country code associated with the localities to search for.
+This query allows searching for localities by name and optionally filtering by country code to get more precise results.
 
-**Mandatory input**
-* `localityName`
+:::note
+The `countryCode` value follows the [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) standard.
+:::
 
-**Optional input**
-* `countryCode`
+```js
+{
+  "input": {
+    "localityName": "Washington",
+    "countryCode": "US"
+  }
+}
+```
 
-## Example
+### Response Considerations
 
-Let's try to search for localities that contain "Washington" in their name and are located in the United States. 
+The query returns a collection of localities along with success status and possible advise messages.
 
-<GraphqlSample query={localitiesSearchQuery} variables={localitiesSearchVariables} />
----
+#### `LocalitiesRs` (*OBJECT*)
+* `localities` (*InventoryLocality*) - A collection of retrieved localities.
+    * `id` (*Int*) - Unique identifier for the locality.
+    * `name` (*String*) - Name of the locality.
+    * `countryCode` (*String*) - ISO 2-character country code.
+    * `unLocode` (*String*) - UN/LOCODE associated with the locality.
+* `success` (*Boolean*) - Indicates whether the operation was successful.
+* `adviseMessages` (*AdviseMessage*) - Messages related to the operation.
+    * `code` (*ID*) - AM code.
+    * `type` (*String*) - Error type.
+    * `description` (*String*) - Error description.
+    * `level` (*Enum of AdviseMessageLevel*) - Importance level (ERROR, WARN, INFO).
+    * `external` (*ExternalMessage*) - External message details.
+    * `correlationID` (*ID*) - Identifier for debugging.
 
----
-
----
-
----
-
----
-
----
-
----
-
----
 ## Query Inputs
 
 
@@ -197,4 +209,12 @@ Possible values: ERROR, WARN, INFO.
     </summary>
   </details>
 </details>
+
+
+
+## Examples
+
+Let's try to search for localities that contain "Washington" in their name and are located in the United States. 
+
+<GraphqlSample query={localitiesSearchQuery} variables={localitiesSearchVariables} />
 

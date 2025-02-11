@@ -4,10 +4,11 @@ sidebar_position: 3
 
 import {createRatesSetUpMutation, createRatesSetUpVariables} from "/src/graphql/inventory/set-up/rates-set-up.mutation";
 
-
 # Create Rates
 
-The `createRateSetUp` mutation allows you tu create new rates for a hotel in a specific client - seller relation in Inventory. The returned fields include:
+## Mutation Overview
+
+The `createRateSetUp` mutation allows you to create new rates for a hotel in a specific client - seller relation in Inventory. The returned fields include:
 
 * `code`
 * `name`
@@ -15,98 +16,120 @@ The `createRateSetUp` mutation allows you tu create new rates for a hotel in a s
 * `active`
 * `mealPlanIncluded`
 * `agePolicies`
-	* `maxAgeChildren`
-	* `maxAgeInfants`
-	* `freeInfants`
-	* `freeChildren`
+  * `maxAgeChildren`
+  * `maxAgeInfants`
+  * `freeInfants`
+  * `freeChildren`
 * `paymentPolicies`
-	* `currency`
-	* `commission`
-	* `priceIsBinding`
-	* `acceptedPayments`
-		* `type`
-		* `cardTypes`
+  * `currency`
+  * `commission`
+  * `priceIsBinding`
+  * `acceptedPayments`
+    * `type`
+    * `cardTypes`
 * `bookingRules`
-	* `bookingWindow`
-		* `start`
-		* `end`
-	* `markets`
-		* `included`
-		* `excluded`
-	* `rateRule`
-	* `seniorRule`
+  * `bookingWindow`
+    * `start`
+    * `end`
+  * `markets`
+    * `included`
+    * `excluded`
+  * `rateRule`
+  * `seniorRule`
 * `cancelPolicies`
-	* `baseCancelPolicy`
-		* `refundable`
-		* `cancelPenalties`
-			* `daysBeforeArrival`
-			* `penaltyType`
-			* `value`
-	* `cancelPoliciesByDate`
-		* `start`
-		* `end`
-		* `cancelPolicy`
-			* `refundable`
-			* `cancelPenalties`
-				* `daysBeforeArrival`
-				* `penaltyType`
-				* `value`
+  * `baseCancelPolicy`
+    * `refundable`
+    * `cancelPenalties`
+      * `daysBeforeArrival`
+      * `penaltyType`
+      * `value`
+  * `cancelPoliciesByDate`
+    * `start`
+    * `end`
+    * `cancelPolicy`
+      * `refundable`
+      * `cancelPenalties`
+        * `daysBeforeArrival`
+        * `penaltyType`
+        * `value`
 * `surcharges`
-	* `chargeType`
-	* `taxType`
-	* `value`
-	* `applyType`
-	* `perNight`
-	* `perPax`
+  * `chargeType`
+  * `taxType`
+  * `value`
+  * `applyType`
+  * `perNight`
+  * `perPax`
 
-## Mutation
+### 1. Criteria
 
-When creating your `createRatesSetUp` mutation, you have 1 input to fill based on your specific needs:
+When building your mutation, you need to provide the following input fields:
 
-### 1. Input   
-
-**Mandatory input**
+#### Mandatory Input
 * `clientCode`
 * `supplierCode`
 * `hotelCode`
 * `rates`
-	* `code`
-	* `name`
-	* `active`
-	* `mealPlanIncluded`
-	* `agePolicies`
-		* `maxAgeChildren`
-		* `maxAgeInfants`
-		* `freeInfants`
-		* `freeChildren`
-	* `paymentPolicies`
-		* `currency`
-		* `commission`
-		* `priceIsBinding`
-		* `acceptedPayments`
-			* `type`
-			* `cardTypes`
-	* `cancelPolicies`
+  * `code`
+  * `name`
+  * `active`
+  * `mealPlanIncluded`
+  * `agePolicies`
+    * `maxAgeChildren`
+    * `maxAgeInfants`
+    * `freeInfants`
+    * `freeChildren`
+  * `paymentPolicies`
+    * `currency`
+    * `commission`
+    * `priceIsBinding`
+    * `acceptedPayments`
+      * `type`
+      * `cardTypes`
+  * `cancelPolicies`
 
-**Optional input**
+#### Optional Input
 * `contextCode`
 * `rates`
-	* `bookingRules`
-		* `bookingWindow`
-			* `start`
-			* `end`
-		* `markets`
-			* `included`
-			* `excluded`
-		* `rateRule`
-		* `seniorRule`
-	* `surcharges`
-		* `chargeType`
-		* `taxType`
-		* `value`
-		* `applyType`
-		* `perNight`
-		* `perPax`
+  * `bookingRules`
+    * `bookingWindow`
+      * `start`
+      * `end`
+    * `markets`
+      * `included`
+      * `excluded`
+    * `rateRule`
+    * `seniorRule`
+  * `surcharges`
+    * `chargeType`
+    * `taxType`
+    * `value`
+    * `applyType`
+    * `perNight`
+    * `perPax`
+
+### 2. Settings
+
+Ensure that the provided fields match the structure of existing hotel rates and that updates are relevant to your inventory setup.
+
+### Response Considerations
+
+The mutation returns the created rate details along with success status and possible advise messages.
+
+#### `RatesRs` (*OBJECT*)
+* `rates` (*InventoryRateSetup*) - A collection of created rates.
+  * `code` (*String*) - The rate code.
+  * `name` (*String*) - Name of the rate.
+  * `active` (*Boolean*) - Indicates if the rate is active.
+  * `hotelCode` (*String*) - The hotel code associated with the rate.
+  * `mealPlanIncluded` (*Int*) - Indicates if the meal plan is included.
+  * `agePolicies` (*AgePoliciesCreateInput*) - Age policies for the rate.
+  * `paymentPolicies` (*PaymentPoliciesCreateInput*) - Payment policies for the rate.
+  * `bookingRules` (*InventoryBookingRulesInput*) - Booking rules associated with the rate.
+  * `cancelPolicies` (*CancelPoliciesCreateInput*) - Cancel policies associated with the rate.
+  * `surcharges` (*InventorySurchargeInput*) - Surcharges associated with the rate.
+* `success` (*Boolean*) - Indicates if the operation was successful.
+* `adviseMessages` (*AdviseMessage*) - Messages related to the operation.
+
 
 ## Mutation Inputs
 

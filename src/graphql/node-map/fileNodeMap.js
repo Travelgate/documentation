@@ -78,7 +78,7 @@ const FILE_NODE_MAP = {
 "for-buyers/inventory-buyers/inventory-set-up-graphql-api/set-up/rates-set-up/create-rates-set-up.mdx": ["InventoryRatesSetupCreateInput", "RatesRs"],
 "for-buyers/inventory-buyers/inventory-set-up-graphql-api/set-up/rates-set-up/delete-rates-set-up.mdx": ["InventoryRateSetupDeleteInput", "RatesRs"],
 "for-buyers/inventory-buyers/inventory-set-up-graphql-api/set-up/rates-set-up/rates-set-up.mdx": ["InventoryRatesSetupFilterInput", "RatesRs"],
-"for-buyers/inventory-buyers/inventory-set-up-graphql-api/set-up/rates-set-up/update-rates-set-up.mdx": ["InventoryRatesSetupUpdateInput", "RatesSetUpRs"],
+"for-buyers/inventory-buyers/inventory-set-up-graphql-api/set-up/rates-set-up/update-rates-set-up.mdx": ["InventoryRateSetupUpdateInput", "RatesSetUpRs"],
 // **Configuración - Habitaciones**
 "for-buyers/inventory-buyers/inventory-set-up-graphql-api/set-up/rooms-set-up/create-rooms-set-up.mdx": ["InventoryRoomsSetupCreateInput", "RoomsSetUpRs"],
 "for-buyers/inventory-buyers/inventory-set-up-graphql-api/set-up/rooms-set-up/delete-rooms-set-up.mdx": ["InventoryRoomSetupDeleteInput", "RoomsSetUpRs"],

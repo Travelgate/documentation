@@ -7,7 +7,9 @@ import {ratesSetUpQuery, ratesSetUpVariables, ratesSetUpByCodesVariables} from "
 
 # Rates
 
-The `ratesSetUp` query returns the rates added to a hotel of a specific client - seller relation in Inventory. The returned fields include:
+## Query Overview
+
+The `ratesSetUp` query returns the rates added to a hotel for a specific client-seller relation in Inventory. The returned fields include:
 
 * `code`
 * `name`
@@ -73,20 +75,42 @@ The `ratesSetUp` query returns the rates added to a hotel of a specific client -
 		* `maxAge`
 		* `paxType`
 
-## Query
+### 1. Criteria
 
-When creating your `ratesSetUp` query, you have 1 input to fill based on your specific needs:
+When building your query, you need to provide the following input fields:
 
-### 1. Criteria   
-
-**Mandatory input**
+#### Mandatory Input
 * `clientCode`
 * `supplierCode`
 * `hotelCode`
 
-**Optional input**
+#### Optional Input
 * `contextCode`
 * `rateCodes`
+
+### 2. Settings
+
+Ensure that all required fields are properly set and match existing hotel rate configurations.
+
+### Response Considerations
+
+The query returns a collection of rates along with success status and possible advise messages.
+
+#### `RatesRs` (*OBJECT*)
+* `rates` (*InventoryRateSetup*) - A collection of retrieved rates.
+  * `code` (*String*) - The rate code.
+  * `name` (*String*) - The name of the rate.
+  * `active` (*Boolean*) - Indicates if the rate is active.
+  * `mealPlanIncluded` (*Int*) - Indicates if a meal plan is included.
+  * `hotelCode` (*String*) - The hotel code associated with the rate.
+  * `agePolicies` (*Object*) - Age restrictions and free child policies.
+  * `paymentPolicies` (*Object*) - Payment conditions including accepted payment methods.
+  * `bookingRules` (*Object*) - Booking window, market restrictions, and special rate rules.
+  * `cancelPolicies` (*Object*) - Refundability and penalty details.
+  * `surcharges` (*Object*) - Additional charges and their application types.
+  * `rooms` (*Object*) - Room associations for the rate.
+* `success` (*Boolean*) - Indicates if the operation was successful.
+* `adviseMessages` (*AdviseMessage*) - Messages related to the operation.
 
 ## Query Inputs
 

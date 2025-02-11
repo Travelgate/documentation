@@ -4,37 +4,47 @@ sidebar_position: 1
 
 import {roomsMasterQuery, roomsMasterVariables, roomsMasterCodesVariables} from "/src/graphql/inventory/masters/rooms-master.query";
 
-
 # Rooms Master
 
-The `roomsMaster` query returns a list of all the hotel masters created in Inventory. The returned fields include:
+## Query Overview
+
+The `roomsMaster` query returns a list of all the hotel room masters created in Inventory. The returned fields include:
 
 * `id`
 * `code`
 * `name`
 
+### 1. Criteria
 
-## Query
+This query offers versatility, with an optional field `codes` that can be filled with the Room masters' codes to retrieve. This allows for a tailored query, ensuring that only relevant data is retrieved.
 
-When building your `roomsMaster` query, you have 1 input to fill based on your specific needs:
-
-
-### 1. Criteria   
-
-This query offers versatility, with an optional field `codes` that can be filled with the Room masters' codes to retrieve. This flexibility empowers you to create a personalized hotelCategories Query, tailoring the requested fields to your specific needs. Consequently, the response will only include information that is highly relevant to you, streamlining the retrieval process and ensuring the data you receive meets your exact requirements.
-
-**Mandatory input**
+#### Mandatory Input
 * `clientCode`
 
-**Optional input**
+#### Optional Input
 * `codes`
 
 :::note
-
-Your `ClientCode` can be retrieved from any TravelgateX's access with a Channel Manager.  
-See [My Connections](https://app.travelgate.com/connections/myconnections) and click "Get form data" in the selected access, the code in `Password` is equivalent to the `ClientCode`.
-
+Your `ClientCode` can be retrieved from any TravelgateX access with a Channel Manager.  
+See [My Connections](https://app.travelgate.com/connections/myconnections) and click "Get form data" in the selected access. The code in `Password` is equivalent to the `ClientCode`.
 :::
+
+### 2. Settings
+
+To retrieve room masters, provide the `clientCode` and, optionally, specify `codes` to filter by specific room types.
+
+### Response Considerations
+
+The query returns a collection of room masters along with a success status and possible advise messages.
+
+#### `RoomsRs` (*OBJECT*)
+* `rooms` (*InventoryRoom*) - A collection of retrieved rooms.
+    * `id` (*Int*) - Unique identifier.
+    * `code` (*String*) - Room code.
+    * `name` (*String*) - Room name.
+* `success` (*Boolean*) - Indicates if the operation was successful.
+* `adviseMessages` (*AdviseMessage*) - Messages related to the operation.
+
 
 ## Query Inputs
 

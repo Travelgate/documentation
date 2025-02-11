@@ -7,9 +7,11 @@ import {inventoryContextsQuery, inventoryContextsVariables, inventoryContextsSup
 
 # Inventory Contexts
 
-`Inventory Context` is a term used to describe hotel codes used in Inventory. This should not be confused with the standard concept [Context](/docs/get-started/key-concepts#context); as this `Inventory Context` is exclusively related to the Inventory scope.  
-Some Channel Managers need to work with their native hotel codes instead of mapping the Inventory hotel IDs that we autogenerate. Therefore, these Channels will require a special `Inventory Context` for Set Up and Product Load operations.  
-As a Buyer connected to a Push Seller, the only alteration if the seller is a Channel Manager configured with a `Inventory Context`, will be that in the hotel list you will receive the native hotel codes instead of the hotel IDs.
+## Query Overview
+
+`Inventory Context` is a term used to describe hotel codes used in Inventory. This should not be confused with the standard concept [Context](/docs/get-started/key-concepts#context); as this `Inventory Context` is exclusively related to the Inventory scope.
+
+Some Channel Managers need to work with their native hotel codes instead of mapping the Inventory hotel IDs that we autogenerate. Therefore, these Channels will require a special `Inventory Context` for Set Up and Product Load operations.
 
 To retrieve the `Inventory Context` values, you can use the `inventoryContexts` query that returns a list of all the existing Inventory Contexts created. The returned fields include:
 
@@ -17,18 +19,46 @@ To retrieve the `Inventory Context` values, you can use the `inventoryContexts` 
 * `contextCode`
 * `supplierCodes`
 
+### 1. Criteria
 
-## Query
+When building your query, you can provide the following input field:
 
-When creating your `inventoryContexts` query, you have 1 input to fill based on your specific needs:
+#### Optional Input
+* `supplierCodes` - A list of supplier codes to retrieve their Inventory Context.
 
+### 2. Settings
 
-### 1. Criteria   
+This query allows retrieving all Inventory Contexts or filtering specific ones by providing supplier codes.
 
-This query offers versatility, with an optional field `supplierCodes` that can be filled with the supplierCodes to retrieve their Inventory Context.
+:::note
+The `supplierCodes` field can be used to filter contexts based on specific suppliers.
+:::
 
-**Optional input**
-* `supplierCodes`
+```js
+{
+  "input": {
+    "supplierCodes": ["SUP001", "SUP002"]
+  }
+}
+```
+
+### Response Considerations
+
+The query returns a collection of Inventory Contexts along with success status and possible advise messages.
+
+#### `InventoryContextsRs` (*OBJECT*)
+* `contexts` (*InventoryContext*) - A collection of retrieved Inventory Contexts.
+    * `contextId` (*Int*) - Unique identifier for the context.
+    * `contextCode` (*String*) - Code of the context.
+    * `supplierCodes` (*String*) - List of supplier codes associated with the context.
+* `success` (*Boolean*) - Indicates whether the operation was successful.
+* `adviseMessages` (*AdviseMessage*) - Messages related to the operation.
+    * `code` (*ID*) - AM code.
+    * `type` (*String*) - Error type.
+    * `description` (*String*) - Error description.
+    * `level` (*Enum of AdviseMessageLevel*) - Importance level (ERROR, WARN, INFO).
+    * `external` (*ExternalMessage*) - External message details.
+    * `correlationID` (*ID*) - Identifier for debugging.
 
 ## Query Inputs
 

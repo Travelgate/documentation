@@ -4,6 +4,8 @@ sidebar_position: 3
 
 # Create Hotel Master
 
+## Mutation Overview
+
 The `createHotelMaster` mutation allows you to create a new hotel master in Inventory. The returned fields include:
 
 * `id`
@@ -26,64 +28,37 @@ The `createHotelMaster` mutation allows you to create a new hotel master in Inve
 * `hotelCode`
 * `contextCode`
 
+### 1. Criteria
 
-```js
-mutation ($input: InventoryHotelMasterCreateInput!) {
-  inventory {
-    createHotelMaster(hotelMasterCreateInput: $input) {
-      hotels {
-        id
-        name
-        hotelCode
-        contextCode
-        email
-        phones
-        fax
-        address
-        postalCode
-        latitude
-        longitude
-        category {
-          id
-          name
-        }
-        locality{
-          id
-          name
-          countryCode
-          unLocode
-        }
-      }
-      success
-      adviseMessages {
-        code
-        description
-        level
-        external{
-            code
-            message
-        }
-      }
-    }
-  }
-}
-```
+When building your mutation, you need to provide the following input fields:
 
-## Mutation
+#### Mandatory Input
+* `name`
+* `email`
+* `phones`
+* `postalCode`
+* `latitude`
+* `longitude`
+* `localityId`
 
-When building your mutation, you have 1 input to fill:
+#### Optional Input
+* `fax`
+* `address`
+* `externalCode`
+* `category`
+* `hotelCode`
+* `contextCode`
+* `unLocode`
 
+### 2. Settings
 
-### 1. Input   
-To build your `createHotelMaster` input you need to fill the hotel's basic information (name, contact details, location, etc.) in their respective fields.
-In case this new hotel is for a specific supplier that requires native hotel codes to properly work, the fields `hotelCode` and `contextCode` must be filled.
+To build your `createHotelMaster` input, you need to fill in the hotel's basic information (name, contact details, location, etc.).
 
+If this new hotel is for a specific supplier that requires native hotel codes, the fields `hotelCode` and `contextCode` must be provided.
 
 :::note
-
-The `localityId` value from the desired Locality, can be retrieved using the queries [Localities](../../static-data/localities/) or [Search Localities](../../static-data/localities/search-localities).  
+The `localityId` value from the desired locality can be retrieved using the queries [Localities](../../static-data/localities/) or [Search Localities](../../static-data/localities/search-localities).  
 The possible values for `contextCode` can be retrieved using the query [Inventory Contexts](../../static-data/inventory-contexts).
-
 :::
 
 ```js
@@ -101,25 +76,32 @@ The possible values for `contextCode` can be retrieved using the query [Inventor
 }
 ```
 
-**Mandatory input**
-* `name`
-* `email`
-* `phones`
-* `postalCode`
-* `latitude`
-* `longitude`
-* `localityId`
+### Response Considerations
 
+The mutation returns the created hotel object along with success status and possible advise messages.
 
-**Optional input**
-* `name`
-* `fax`
-* `address`
-* `externalCode`
-* `category`
-* `hotelCode`
-* `contextCode`
-* `unLocode`
+#### `HotelsRs` (*OBJECT*)
+* `hotels` (*InventoryHotelMaster*) - A collection of created hotels.
+    * `id` (*Int*) - Unique identifier.
+    * `name` (*String*) - Hotel name.
+    * `email` (*String*) - Contact email.
+    * `phones` (*String*) - Phone numbers.
+    * `fax` (*String*) - Fax number.
+    * `address` (*String*) - Physical address.
+    * `postalCode` (*String*) - Postal code.
+    * `latitude` (*Decimal*) - Geographic latitude.
+    * `longitude` (*Decimal*) - Geographic longitude.
+    * `category` (*InventoryCategory*)
+        * `id` (*Int*) - Category ID.
+        * `name` (*String*) - Category name.
+    * `locality` (*InventoryLocality*)
+        * `id` (*Int*) - Locality ID.
+        * `name` (*String*) - Locality name.
+        * `countryCode` (*String*) - ISO country code.
+    * `hotelCode` (*String*) - Supplier's hotel code.
+    * `contextCode` (*String*) - Context code associated.
+* `success` (*Boolean*) - Indicates if the operation was successful.
+* `adviseMessages` (*AdviseMessage*) - Messages related to the operation.
 
 ## Mutation Inputs
 

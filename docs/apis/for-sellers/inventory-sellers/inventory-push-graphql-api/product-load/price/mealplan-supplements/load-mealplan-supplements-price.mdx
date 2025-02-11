@@ -6,9 +6,9 @@ import {PriceMealplansSupplementsLoadMutation, PriceMealplansSupplementsLoadVari
 
 # Load Meal Plan Supplements Price
 
-The `loadPriceMealPlanSupplements` mutation allows you to load the price of meal plan supplements in the Inventory.
+## Mutation Overview
 
-## Mutation Fields
+The `loadPriceMealPlanSupplements` mutation allows you to load the price of meal plan supplements in Inventory. The returned fields include:
 
 * `success`
 * `mealPlanSupplements`
@@ -38,28 +38,11 @@ The `loadPriceMealPlanSupplements` mutation allows you to load the price of meal
         * `code`
         * `message`
 
-### Returned Field Explanations
+### 1. Criteria
 
-* **`success`:** A boolean that indicates whether the mutation was successful.
-* **`mealPlanSupplements`:** The details of the meal plan supplements for which the price was loaded. It includes the `rateCode`, the `rooms` available, and the `prices`.
-* **`rateCode`:** The code of the rate for which the price is being loaded.
-* **`rooms`:** The number of rooms available for the rate.
-* **`paxType`:** The type of passenger for which the supplement applies.
-* **`mealPlan`:** The meal plan for which the supplement is being loaded.
-* **`amountPerPax`:** The price of the supplement per passenger.
-* **`dateRange`:** The date range during which the conditions will be applied. It includes the `start` and `end` dates.
-* **`applicableWeekdays`:** The days of the week for which the price is being loaded. It includes the `all`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, and `sunday` fields.
-* **`adviseMessages`:** An array of messages that provide information about the mutation. Each message includes a `code`, `description`, `level`, `correlationID`, and `external` fields, which indicate whether the message is internal or external and provide the code and message of the external message.
+When building your mutation, you need to provide the following input fields:
 
-## Mutation
-
-When creating your `loadPriceMealPlanSupplements` mutation, you have 1 input to fill based on your specific needs:
-
-### 1. Criteria   
-
-This mutation will allow you to enter specific details in the fields `clientCode`, `supplierCode`, `mealPlanSupplements`, and `hotelCode` to load the price of specific meal plan supplements.
-
-**Mandatory input**
+#### Mandatory Input
 * `clientCode`
 * `supplierCode`
 * `hotelCode`
@@ -73,16 +56,53 @@ This mutation will allow you to enter specific details in the fields `clientCode
         * `start`
         * `end`
 
-### Field Explanations
+### 2. Settings
 
-* **`clientCode`, `supplierCode`, `hotelCode`:** These fields identify the client, supplier, and hotel for which the meal plan supplement price is being loaded.
-* **`mealPlanSupplements`:** This field contains the details of the meal plan supplements for which the price is being loaded. It includes the `rateCode` of the rate, the `paxType`, the `mealPlan`, the `amountPerPax`, the `rooms` available, and the `dateRange` for which the price is being loaded.
-* **`rateCode`:** The code of the rate for which the price is being loaded.
-* **`paxType`:** The type of passenger for which the supplement applies.
-* **`mealPlan`:** The meal plan for which the supplement is being loaded.
-* **`amountPerPax`:** The price of the supplement per passenger.
-* **`rooms`:** The number of rooms available for the rate.
-* **`dateRange`:** This field specifies the date range for which the price is being loaded.
+This mutation allows loading prices for specific meal plan supplements by defining relevant details such as `clientCode`, `supplierCode`, `hotelCode`, `mealPlan`, `amountPerPax`, and `dateRange`.
+
+```js
+{
+  "input": {
+    "clientCode": "ABC123",
+    "supplierCode": "SUP001",
+    "hotelCode": "HTL567",
+    "mealPlanSupplements": [
+      {
+        "rateCode": "RATE001",
+        "paxType": "ADULT",
+        "mealPlan": 3,
+        "amountPerPax": 25.00,
+        "rooms": ["ROOM1", "ROOM2"],
+        "dateRange": {
+          "start": "2024-03-01",
+          "end": "2024-03-10"
+        }
+      }
+    ]
+  }
+}
+```
+
+### Response Considerations
+
+The mutation returns the processed meal plan supplement prices along with success status and possible advise messages.
+
+#### `PriceMealPlanSupplementsRs` (*OBJECT*)
+* `mealPlanSupplements` (*MealPlanSupplementLoad*) - List of meal plan supplements with pricing information.
+    * `rateCode` (*String*) - The rate code for the supplement.
+    * `dateRange` (*DateRangeProduct*) - Date range applied.
+        * `start` (*DateTime*) - Start date.
+        * `end` (*DateTime*) - End date.
+    * `amountPerPax` (*Float*) - Price per passenger.
+    * `paxType` (*Enum of InventoryPaxType*) - Type of passenger (INFANT, CHILD, ADULT).
+* `success` (*Boolean*) - Indicates whether the operation was successful.
+* `adviseMessages` (*AdviseMessage*) - Messages related to the operation.
+    * `code` (*ID*) - AM code.
+    * `type` (*String*) - Error type.
+    * `description` (*String*) - Error description.
+    * `level` (*Enum of AdviseMessageLevel*) - Importance level (ERROR, WARN, INFO).
+    * `external` (*ExternalMessage*) - External message details.
+    * `correlationID` (*ID*) - Identifier for debugging.
 
 ## Mutation Inputs
 

@@ -4,43 +4,94 @@ sidebar_position: 4
 
 import {deleteRoomsSetUpMutation, deleteRoomsSetUpVariables} from "/src/graphql/inventory/set-up/rooms-set-up.mutation";
 
-
 # Delete Rooms
 
-The `deleteRoomsSetUp` is designed to remove rooms from hotel rates in Inventory. The returned fields include:
+## Mutation Overview
+
+The `deleteRoomsSetUp` mutation is designed to remove rooms from hotel rates in Inventory. The returned fields include:
 
 * `success`
 * `adviseMessages`
 
-## Mutation
+### 1. Criteria
 
-When creating your `deleteRoomsSetUp` mutation, you have 1 input to fill based on your specific needs:
+When building your mutation, you need to provide the following input fields:
 
-### 1. Input   
-
-**Mandatory input**
+#### Mandatory Input
 * `clientCode`
 * `supplierCode`
 * `hotelCode`
 * `rateCode`
 * `roomCodes`
 
-**Optional input**
+#### Optional Input
 * `contextCode`
 
+### 2. Settings
+
+To delete a room, ensure that all mandatory fields are properly filled out and associate the room with the correct hotel and rate.
+
+### Response Considerations
+
+The mutation returns the deletion status along with success status and possible advise messages.
+
+#### `RoomsSetUpRs` (*OBJECT*)
+* `success` (*Boolean*) - Indicates if the operation was successful.
+* `adviseMessages` (*AdviseMessage*) - Messages related to the operation.
 
 
+## Mutation Inputs
 
 
+<details>
+  <summary>
+  **InventoryRoomSetupDeleteInput** (*INPUT_OBJECT*)  
+  Rooms setup delete input data  
+  </summary>
+  
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+    **clientCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+    Client code.  
+    </summary>
+  </details>
 
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+    **supplierCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+    Travelgate Supplier/Channel code.  
+    </summary>
+  </details>
 
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+    **roomCodes**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+    Rooms codes to delete.  
+    </summary>
+  </details>
 
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+    **rateCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+    Rate Code .  
+    </summary>
+  </details>
 
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+    **hotelCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+    Code associated with the hotel.  
+    </summary>
+  </details>
 
-
-
-
-
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+    **contextCode** (*String*)  
+    Context code.  
+    </summary>
+  </details>
+  
+</details>
 
 
 

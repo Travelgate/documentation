@@ -7,6 +7,8 @@ import {hotelsMasterQuery, hotelsMasterByHotelCodesVariables, hotelsMasterByCont
 
 # Hotels Master
 
+## Query Overview
+
 The `hotelsMaster` query returns a list of all the hotel masters created in Inventory. The returned fields include:
 
 * `id`
@@ -29,23 +31,52 @@ The `hotelsMaster` query returns a list of all the hotel masters created in Inve
 * `hotelCode`
 * `contextCode`
 
+### 1. Criteria
 
-## Query
-
-When building your `hotelsMaster` query, you have 1 input to fill based on your specific needs:
-
-
-### 1. Criteria   
-
-This query offers 3 alternative ways of retrieving hotel masters:
+This query offers three alternative ways of retrieving hotel masters:
 
 - By Hotel code and context
 - By country
 - By locality
 
-
-**Optional input**
+#### Optional Input
 * `countryCodes`
+
+### 2. Settings
+
+When building your `hotelsMaster` query, you can use one of the provided filtering methods based on your needs.
+
+:::note
+The `localityId` value from the desired locality can be retrieved using the queries [Localities](../../static-data/localities/) or [Search Localities](../../static-data/localities/search-localities).  
+The possible values for `contextCode` can be retrieved using the query [Inventory Contexts](../../static-data/inventory-contexts).
+:::
+
+### Response Considerations
+
+The query returns a collection of hotels along with success status and possible advise messages.
+
+#### `HotelsRs` (*OBJECT*)
+* `hotels` (*InventoryHotelMaster*) - A collection of retrieved hotels.
+    * `id` (*Int*) - Unique identifier.
+    * `name` (*String*) - Hotel name.
+    * `email` (*String*) - Contact email.
+    * `phones` (*String*) - Phone numbers.
+    * `fax` (*String*) - Fax number.
+    * `address` (*String*) - Physical address.
+    * `postalCode` (*String*) - Postal code.
+    * `latitude` (*Decimal*) - Geographic latitude.
+    * `longitude` (*Decimal*) - Geographic longitude.
+    * `category` (*InventoryCategory*)
+        * `id` (*Int*) - Category ID.
+        * `name` (*String*) - Category name.
+    * `locality` (*InventoryLocality*)
+        * `id` (*Int*) - Locality ID.
+        * `name` (*String*) - Locality name.
+        * `countryCode` (*String*) - ISO country code.
+    * `hotelCode` (*String*) - Supplier's hotel code.
+    * `contextCode` (*String*) - Context code associated.
+* `success` (*Boolean*) - Indicates if the operation was successful.
+* `adviseMessages` (*AdviseMessage*) - Messages related to the operation.
 
 ## Query Inputs
 

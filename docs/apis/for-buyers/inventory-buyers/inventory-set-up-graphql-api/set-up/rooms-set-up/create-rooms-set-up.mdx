@@ -4,49 +4,75 @@ sidebar_position: 3
 
 import {createRoomsSetUpMutation, createRoomsSetUpVariables} from "/src/graphql/inventory/set-up/rooms-set-up.mutation";
 
-
 # Create Rooms
+
+## Mutation Overview
 
 The `createRoomsSetUp` mutation allows you to create new rooms for an existing hotel rate in Inventory. The returned fields include:
 
 * `code`
 * `master`
-	* `id`
-	* `code`
-	* `name`
+  * `id`
+  * `code`
+  * `name`
 * `active`
 * `externalCode`
 * `standard`
 * `uses`
-	* `numberOfGuests`
-	* `minAge`
-	* `maxAge`
-	* `paxType`
+  * `numberOfGuests`
+  * `minAge`
+  * `maxAge`
+  * `paxType`
 
-## Mutation
+### 1. Criteria
 
-When creating your `createRoomsSetUp` mutation, you have 1 input to fill based on your specific needs:
+When building your mutation, you need to provide the following input fields:
 
-### 1. Input   
-
-**Mandatory input**
+#### Mandatory Input
 * `clientCode`
 * `supplierCode`
 * `hotelCode`
 * `rateCode`
 * `rooms`
-	* `code`
-	* `masterCode`
-	* `active`
-	* `standard`
-	* `uses`
-		* `numberOfGuests`
-		* `paxType`
+  * `code`
+  * `masterCode`
+  * `active`
+  * `standard`
+  * `uses`
+    * `numberOfGuests`
+    * `paxType`
 
-**Optional input**
+#### Optional Input
 * `contextCode`
 * `rooms`
-	* `externalCode`
+  * `externalCode`
+
+### 2. Settings
+
+To create a room, ensure that all mandatory fields are properly filled out and associate the room with the correct hotel and rate.
+
+### Response Considerations
+
+The mutation returns the created room along with success status and possible advise messages.
+
+#### `RoomsSetUpRs` (*OBJECT*)
+* `rooms` (*InventoryRoomSetUp*) - A collection of created rooms.
+  * `code` (*String*) - The room code.
+  * `master` (*InventoryMasterRoom*) - The master room details.
+    * `id` (*Int*) - The master room ID.
+    * `code` (*String*) - The master room code.
+    * `name` (*String*) - The master room name.
+  * `active` (*Boolean*) - Indicates if the room is active.
+  * `externalCode` (*String*) - The external code associated with the room.
+  * `standard` (*Int*) - The standard occupancy of the room.
+  * `uses` (*InventoryRoomUse*) - The list of guest types allowed in the room.
+    * `numberOfGuests` (*Int*) - The number of guests allowed.
+    * `minAge` (*Int*) - The minimum age allowed for guests.
+    * `maxAge` (*Int*) - The maximum age allowed for guests.
+    * `paxType` (*Enum of InventoryPaxType*) - The type of guests allowed.
+      * Possible values: `INFANT`, `CHILD`, `ADULT`
+* `success` (*Boolean*) - Indicates if the operation was successful.
+* `adviseMessages` (*AdviseMessage*) - Messages related to the operation.
 
 ## Mutation Inputs
 

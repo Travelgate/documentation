@@ -7,6 +7,8 @@ import {hotelsMasterSearchQuery, hotelsMasterSearchVariables, hotelsMasterSearch
 
 # Search Hotels Master
 
+## Query Overview
+
 The `searchHotelsMaster` query allows you to search for hotels created in Inventory based on their geocoordinates. The returned fields include:
 
 * `id`
@@ -29,24 +31,49 @@ The `searchHotelsMaster` query allows you to search for hotels created in Invent
 * `hotelCode`
 * `contextCode`
 
+### 1. Criteria
 
-## Query
+This query allows you to enter specific coordinates in the fields `latitude` and `longitude` and a distance parameter `radiusKm` to define a search area for hotels.
+Additionally, you can filter the search results based on the hotel name or a part of the hotel name using the field `hotelName`.
 
-When building your `searchHotelsMster` query, you have 1 input to fill based on your specific needs:
-
-
-### 1. Criteria   
-
-This query will allow you to enter specific coordinates in the fields `latitude` and `longitude` and a distance parameter `radiusKm` to define a search area for hotels. 
-Additionally, you can filter the search results based on the hotel name or a part of the hotel name with the field `hotelName`. 
-
-**Mandatory input**
+#### Mandatory Input
 * `latitude`
 * `longitude`
 * `radiusKm`
 
-**Optional input**
+#### Optional Input
 * `hotelName`
+
+### 2. Settings
+
+To perform a search, provide the geographical coordinates of the desired location along with the search radius in kilometers. Optionally, you may specify a hotel name to refine the search results.
+
+### Response Considerations
+
+The query returns a collection of hotels matching the criteria along with a success status and possible advise messages.
+
+#### `HotelsRs` (*OBJECT*)
+* `hotels` (*InventoryHotelMaster*) - A collection of retrieved hotels.
+    * `id` (*Int*) - Unique identifier.
+    * `name` (*String*) - Hotel name.
+    * `email` (*String*) - Contact email.
+    * `phones` (*String*) - Phone numbers.
+    * `fax` (*String*) - Fax number.
+    * `address` (*String*) - Physical address.
+    * `postalCode` (*String*) - Postal code.
+    * `latitude` (*Decimal*) - Geographic latitude.
+    * `longitude` (*Decimal*) - Geographic longitude.
+    * `category` (*InventoryCategory*)
+        * `id` (*Int*) - Category ID.
+        * `name` (*String*) - Category name.
+    * `locality` (*InventoryLocality*)
+        * `id` (*Int*) - Locality ID.
+        * `name` (*String*) - Locality name.
+        * `countryCode` (*String*) - ISO country code.
+    * `hotelCode` (*String*) - Supplier's hotel code.
+    * `contextCode` (*String*) - Context code associated.
+* `success` (*Boolean*) - Indicates if the operation was successful.
+* `adviseMessages` (*AdviseMessage*) - Messages related to the operation.
 
 ## Query Inputs
 

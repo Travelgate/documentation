@@ -4,10 +4,11 @@ sidebar_position: 2
 
 import {updateHotelSetUpMutation, updateHotelSetUpVariables} from "/src/graphql/inventory/set-up/hotels-set-up.mutation";
 
-
 # Update Hotel
 
-The `updateHotelSetUp` allows you to update a configuration from a hotel already added in a specific client - seller relation in Inventory. The returned fields include:
+## Mutation Overview
+
+The `updateHotelSetUp` allows you to update a configuration from a hotel already added in a specific client-seller relation in Inventory. The returned fields include:
 
 * `id`
 * `hotelCode`
@@ -18,24 +19,44 @@ The `updateHotelSetUp` allows you to update a configuration from a hotel already
 * `emailNotificationCc`
 * `emailNotificationSupport`
 
-## Mutation
+### 1. Criteria
 
-When creating your `updateHotelSetUp` mutation, you have 1 input to fill based on your specific needs:
+When building your mutation, you need to provide the following input fields:
 
-### 1. Input   
-
-**Mandatory input**
+#### Mandatory Input
 * `clientCode`
 * `supplierCode`
 * `hotelCode`
 
-**Optional input**
+#### Optional Input
 * `contextCode`
 * `active`
 * `sendNotification`
 * `emailNotification`
 * `emailNotificationCc`
 * `emailNotificationSupport`
+
+### 2. Settings
+
+To update an existing hotel setup, specify the necessary fields while ensuring that the `clientCode`, `supplierCode`, and `hotelCode` are correctly associated with the targeted hotel configuration.
+
+### Response Considerations
+
+The mutation returns the updated hotel setup along with success status and possible advise messages.
+
+#### `HotelsSetupRs` (*OBJECT*)
+* `hotels` (*InventoryHotelSetup*) - A collection of updated hotels.
+    * `id` (*Int*) - Unique identifier.
+    * `hotelCode` (*String*) - Associated hotel code.
+    * `contextCode` (*String*) - Context code for the hotel.
+    * `active` (*Boolean*) - Indicates if the hotel is active.
+    * `sendNotification` (*Boolean*) - Indicates if booking notifications should be sent.
+    * `emailNotification` (*String*) - Email addresses for notifications.
+    * `emailNotificationCc` (*String*) - CC email addresses for notifications.
+    * `emailNotificationSupport` (*String*) - Support contact emails.
+* `success` (*Boolean*) - Indicates if the operation was successful.
+* `adviseMessages` (*AdviseMessage*) - Messages related to the operation.
+
 
 ## Mutation Inputs
 

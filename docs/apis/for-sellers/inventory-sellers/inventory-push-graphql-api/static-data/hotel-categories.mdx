@@ -7,22 +7,52 @@ import {hotelCategoriesQuery, hotelCategoriesVariables, hotelCategoriesByCategor
 
 # Hotel Categories
 
+## Query Overview
+
 The `hotelCategories` query returns a list of the categories that a hotel can have assigned in Inventory. The returned fields include:
 
 * `id`
 * `name`
 
+### 1. Criteria
 
-## Query
+When building your query, you can provide the following input field:
 
-When creating your `hotelCategories` query, you have 1 input to fill based on your specific needs:
+#### Optional Input
+* `categoryIds` - A list of category IDs to retrieve specific hotel categories.
 
-### 1. Criteria   
+### 2. Settings
 
-This query offers versatility, with an optional field `categoryIds` that can be filled with the categories to retrieve.
+This query allows retrieving all hotel categories or filtering specific ones by providing category IDs.
 
-**Optional input**
-* `categoryIds`
+:::note
+The `categoryIds` field can be used to filter categories based on specific requirements.
+:::
+
+```js
+{
+  "input": {
+    "categoryIds": [1, 2, 3]
+  }
+}
+```
+
+### Response Considerations
+
+The query returns a collection of hotel categories along with success status and possible advise messages.
+
+#### `CategoriesRs` (*OBJECT*)
+* `categories` (*InventoryCategory*) - A collection of retrieved hotel categories.
+    * `id` (*Int*) - Unique identifier for the category.
+    * `name` (*String*) - Name of the category.
+* `success` (*Boolean*) - Indicates whether the operation was successful.
+* `adviseMessages` (*AdviseMessage*) - Messages related to the operation.
+    * `code` (*ID*) - AM code.
+    * `type` (*String*) - Error type.
+    * `description` (*String*) - Error description.
+    * `level` (*Enum of AdviseMessageLevel*) - Importance level (ERROR, WARN, INFO).
+    * `external` (*ExternalMessage*) - External message details.
+    * `correlationID` (*ID*) - Identifier for debugging.
 
 ## Query Inputs
 

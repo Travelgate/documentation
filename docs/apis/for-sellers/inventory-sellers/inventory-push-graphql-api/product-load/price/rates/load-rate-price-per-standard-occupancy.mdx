@@ -6,9 +6,9 @@ import {priceRatesPerStandardOccupancyLoadMutation, priceRatesPerStandardOccupan
 
 # Load Rate Price Per Standard Occupancy
 
-The `loadPriceRates` mutation allows you to load the price of specific rates per standard occupancy in the Inventory.
+## Mutation Overview
 
-## Mutation Fields
+The `loadPriceRates` mutation allows you to load the price of specific rates per standard occupancy in Inventory. The returned fields include:
 
 * `success`
 * `rates`
@@ -58,30 +58,11 @@ The `loadPriceRates` mutation allows you to load the price of specific rates per
         * `code`
         * `message`
 
-### Returned Field Explanations
+### 1. Criteria
 
-* **`success`:** A boolean that indicates whether the mutation was successful.
-* **`rates`:** The details of the rates for which the price was loaded. It includes the `rateCode` of the rate, the `rooms` available, and the `prices`.
-* **`rateCode`:** The code of the rate for which the price is being loaded.
-* **`currency`:** The currency in which the price is being loaded.
-* **`rooms`:** The number of rooms available for the rate.
-* **`dateRange`:** The date range during which the conditions will be applied. It includes the `start` and `end` dates.
-* **`prices`:** This field contains the price details for the rate. It includes the `pricePerStandardOccupancy`.
-* **`pricePerStandardOccupancy`:** The price details per standard occupancy. It includes the `amount`, `pricesUnderStandardOccupancy`, and `additionalGuestsSupplements`.
-* **`pricesUnderStandardOccupancy`:** The price details for each occupancy under the standard occupancy. It includes the `guests` and the `amount`.
-* **`additionalGuestsSupplements`:** The details of the supplements for additional guests. It includes `additionalAdults`, `additionalChildren`, and `additionalInfants`.
-* **`applicableWeekdays`:** The days of the week for which the price is being loaded. It includes the `all`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, and `sunday` fields.
-* **`adviseMessages`:** An array of messages that provide information about the mutation. Each message includes a `code`, `description`, `level`, `correlationID`, and `external` fields, which indicate whether the message is internal or external and provide the code and message of the external message.
+When building your mutation, you need to provide the following input fields:
 
-## Mutation
-
-When creating your `loadPriceRates` mutation, you have 1 input to fill based on your specific needs:
-
-### 1. Criteria   
-
-This mutation will allow you to enter specific details in the fields `clientCode`, `supplierCode`, `rates`, and `hotelCode` to load the price of specific rates per standard occupancy.
-
-**Mandatory input**
+#### Mandatory Input
 * `clientCode`
 * `supplierCode`
 * `hotelCode`
@@ -115,18 +96,83 @@ This mutation will allow you to enter specific details in the fields `clientCode
         * `start`
         * `end`
 
-### Field Explanations
+### 2. Settings
 
-* **`clientCode`, `supplierCode`, `hotelCode`:** These fields identify the client, supplier, and hotel for which the rate price is being loaded.
-* **`rates`:** This field contains the details of the rates for which the price is being loaded. It includes the `rateCode` of the rate, the `currency`, the `rooms` available, the `prices`, and the `dateRange` for which the price is being loaded.
-* **`rateCode`:** The code of the rate for which the price is being loaded.
-* **`currency`:** The currency in which the price is being loaded.
-* **`rooms`:** The number of rooms available for the rate.
-* **`prices`:** This field contains the price details for the rate. It includes the `pricePerStandardOccupancy`.
-* **`pricePerStandardOccupancy`:** The price details per standard occupancy. It includes the `amount`, `pricesUnderStandardOccupancy`, and `additionalGuestsSupplements`.
-* **`pricesUnderStandardOccupancy`:** The price details for each occupancy under the standard occupancy. It includes the `guests` and the `amount`.
-* **`additionalGuestsSupplements`:** The details of the supplements for additional guests. It includes `additionalAdults`, `additionalChildren`, and `additionalInfants`.
-* **`dateRange`:** This field specifies the date range for which the price is being loaded.
+This mutation allows loading rate prices per standard occupancy by defining relevant details such as `clientCode`, `supplierCode`, `hotelCode`, `rooms`, `prices`, and `dateRange`.
+
+```js
+{
+  "input": {
+    "clientCode": "ABC123",
+    "supplierCode": "SUP001",
+    "hotelCode": "HTL567",
+    "rates": [
+      {
+        "rateCode": "RATE001",
+        "currency": "USD",
+        "rooms": ["ROOM1", "ROOM2"],
+        "prices": {
+          "pricePerStandardOccupancy": {
+            "amount": 150.0,
+            "pricesUnderStandardOccupancy": [
+              {
+                "guests": 2,
+                "amount": 120.0
+              }
+            ],
+            "additionalGuestsSupplements": {
+              "additionalAdults": [
+                {
+                  "additionalGuestType": "ADULT",
+                  "guestPosition": 1,
+                  "amount": 30.0,
+                  "type": "ADDITIVE"
+                }
+              ],
+              "additionalChildren": [
+                {
+                  "additionalGuestType": "CHILD",
+                  "guestPosition": 1,
+                  "amount": 20.0,
+                  "type": "ADDITIVE"
+                }
+              ]
+            }
+          }
+        },
+        "dateRange": {
+          "start": "2024-03-01",
+          "end": "2024-03-10"
+        }
+      }
+    ]
+  }
+}
+```
+
+### Response Considerations
+
+The mutation returns the loaded rate prices along with success status and possible advise messages.
+
+#### `PriceRatesRs` (*OBJECT*)
+* `rates` (*RatePriceLoad*) - List of rate prices with details.
+    * `rateCode` (*String*) - The rate code for the price.
+    * `currency` (*String*) - The currency used.
+    * `dateRange` (*DateRangeProduct*) - Date range applied.
+        * `start` (*DateTime*) - Start date.
+        * `end` (*DateTime*) - End date.
+    * `prices` (*PricePerStandardOccupancy*) - Price details per standard occupancy.
+        * `amount` (*Float*) - Price amount.
+        * `pricesUnderStandardOccupancy` (*Array*) - Prices per guest.
+        * `additionalGuestsSupplements` (*AdditionalGuestsSupplements*) - Additional guest pricing.
+* `success` (*Boolean*) - Indicates whether the operation was successful.
+* `adviseMessages` (*AdviseMessage*) - Messages related to the operation.
+    * `code` (*ID*) - AM code.
+    * `type` (*String*) - Error type.
+    * `description` (*String*) - Error description.
+    * `level` (*Enum of AdviseMessageLevel*) - Importance level (ERROR, WARN, INFO).
+    * `external` (*ExternalMessage*) - External message details.
+    * `correlationID` (*ID*) - Identifier for debugging.
 
 ## Mutation Inputs
 

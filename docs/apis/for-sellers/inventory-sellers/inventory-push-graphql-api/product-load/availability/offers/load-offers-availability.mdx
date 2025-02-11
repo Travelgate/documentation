@@ -5,9 +5,9 @@ import {availOffersLoadMutation, availOffersLoadVariables} from "/src/graphql/in
 
 # Load Offers Availability
 
-The `loadOffersAvailability` mutation allows you to load the availability of specific offers in the Inventory. The returned fields include:
+## Mutation Overview
 
-## Mutation Fields
+The `loadOffersAvailability` mutation allows you to load the availability of specific offers in Inventory. The returned fields include:
 
 * `success`
 * `offers`
@@ -30,27 +30,11 @@ The `loadOffersAvailability` mutation allows you to load the availability of spe
         * `code`
         * `message`
 
-### 2. Returned Field Explanations
+### 1. Criteria
 
-* **`success`:** A boolean that indicates whether the mutation was successful.
-* **`offers`:** The details of the offers for which the availability was loaded. It includes the `rateCode` of the offer, the `code` of the specific offer, and any `stopSales` conditions.
-* **`stopSales`:** This field contains conditions that can restrict the availability of the offer. 
-    * **`closeMaster`:** A boolean that indicates whether the offer is closed for the entire date range.
-    * **`closeOnArrival`:** A boolean that indicates whether the offer is closed on arrival.
-    * **`closeOnDeparture`:** A boolean that indicates whether the offer is closed on departure.
-* **`dateRange`:** The date range during which the conditions will be applied. It includes the `start` and `end` dates.
-* **`adviseMessages`:** An array of messages that provide information about the mutation. Each message includes a `code`, `description`, `level`, `correlationID`, and `external` fields, which indicate whether the message is internal or external and provide the code and message of the external message.
+When building your mutation, you need to provide the following input fields:
 
-
-## Mutation
-
-When building your `loadOffersAvailability` mutation, you have 1 input to fill based on your specific needs:
-
-### 1. Criteria   
-
-This mutation will allow you to enter specific details in the fields `clientCode`, `supplierCode`, `hotelCode`, `offers`, and `dateRange` to load the availability of specific offers. 
-
-**Mandatory input**
+#### Mandatory Input
 * `clientCode`
 * `supplierCode`
 * `hotelCode`
@@ -66,16 +50,63 @@ This mutation will allow you to enter specific details in the fields `clientCode
         * `start`
         * `end`
 
-### 2. Field Explanations
+### 2. Settings
 
-* **`clientCode`, `supplierCode`, `hotelCode`:** These fields identify the client, supplier, and hotel for which the offer availability is being loaded.
-* **`offers`:** This field contains the details of the offers for which the availability is being loaded. It includes the `rateCode` of the offer, the `code` of the specific offer, and any `stopSales` conditions.
-* **`stopSales`:** This field contains conditions that can restrict the availability of the offer. 
-    * **`closeMaster`:** in the date range specified before is not possible to stay with the offer, so the client will not receive availability with free night offers for any stay that include those days. If you check "true" you will apply the close master condition, if you check "false" you will delete a close master condition if it was previously load and if you check unspecified you won't apply any change (true/false) in the close master condition.
-    * **`closeOnArrival`:** in the date range specified before is not possible to do a check-in with the offer. If you check "true" you will apply the close on arrival condition, if you check "false" you will delete a close on arrival condition if it was previously load and if you check unspecified you won't apply any change (true/false) in the close on arrival condition.
-    * **`closeOnDeparture`:** in the date range specified before is not possible to do a check-out with the offer. If you check "true" you will apply the close on departure condition, if you check "false" you will delete a close on departure condition if it was previously load and if you check unspecified you won't apply any change (true/false) in the close on departure condition.
-* **`dateRange`:** This field specifies the date range during which the conditions will be applied.
+This mutation allows you to load availability for specific offers by defining relevant details such as `clientCode`, `supplierCode`, `hotelCode`, and `dateRange`.
 
+```js
+{
+  "input": {
+    "clientCode": "ABC123",
+    "supplierCode": "SUP001",
+    "hotelCode": "HTL567",
+    "offers": [
+      {
+        "rateCode": "RATE001",
+        "offers": [
+          {
+            "code": "OFFER123",
+            "stopSales": {
+              "closeMaster": true,
+              "closeOnArrival": false,
+              "closeOnDeparture": true
+            }
+          }
+        ],
+        "dateRange": {
+          "start": "2024-03-01",
+          "end": "2024-03-10"
+        }
+      }
+    ]
+  }
+}
+```
+
+### Response Considerations
+
+The mutation returns the processed offers along with success status and possible advise messages.
+
+#### `AvailOffersRs` (*OBJECT*)
+* `offers` (*OffersAvailLoad*) - List of offers with availability information.
+    * `rateCode` (*String*) - The rate code for the offers.
+    * `offers` (*OfferAvailLoad*) - List of loaded offers.
+        * `code` (*String*) - Offer code.
+        * `stopSales` (*StopSales*) - Stop sales conditions.
+            * `closeMaster` (*Boolean*) - Close master flag.
+            * `closeOnArrival` (*Boolean*) - Close on arrival flag.
+            * `closeOnDeparture` (*Boolean*) - Close on departure flag.
+    * `dateRange` (*DateRangeProduct*) - Date range applied.
+        * `start` (*DateTime*) - Start date.
+        * `end` (*DateTime*) - End date.
+* `success` (*Boolean*) - Indicates whether the operation was successful.
+* `adviseMessages` (*AdviseMessage*) - Messages related to the operation.
+    * `code` (*ID*) - AM code.
+    * `type` (*String*) - Error type.
+    * `description` (*String*) - Error description.
+    * `level` (*Enum of AdviseMessageLevel*) - Importance level (ERROR, WARN, INFO).
+    * `external` (*ExternalMessage*) - External message details.
+    * `correlationID` (*ID*) - Identifier for debugging.
 
 ## Mutation Inputs
 

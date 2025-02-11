@@ -6,9 +6,9 @@ import {priceRateQuery, priceOneRateVariables, priceMultiplesRatesVariables} fro
 
 # Retrieve Rate Price
 
-The `priceRates` query allows you to retrieve the price of specific rates in the Inventory. 
+## Query Overview
 
-## Query Fields
+The `priceRates` query allows you to retrieve the price of specific rates in the Inventory. The returned fields include:
 
 * `success`
 * `rates`
@@ -82,27 +82,11 @@ The `priceRates` query allows you to retrieve the price of specific rates in the
         * `code`
         * `message`
 
-### Returned Field Explanations
+### 1. Criteria
 
-* **`success`:** A boolean that indicates whether the query was successful.
-* **`rates`:** The details of the rates for which the price was retrieved. It includes the `rateCode` of the rate, the `rooms` available, and the `prices`.
-* **`rateCode`:** The code of the rate for which the price is being retrieved.
-* **`currency`:** The currency in which the price is being retrieved.
-* **`rooms`:** The number of rooms available for the rate.
-* **`dateRange`:** The date range during which the conditions will be applied. It includes the `start` and `end` dates.
-* **`prices`:** This field contains the price details for the rate. It includes the `pricePerRoom`, `pricePerStandardOccupancy`, and `pricesPerOccupancy`.
-	* **`pricePerRoom`:** The price per room for the rate. It includes the `amount` and `additionalGuestsSupplements` fields. [More information on price per room.](/docs/apps/inventory/extranet/availability-and-rates/manual-load/availability-and-price#price-per-room)
-	* **`pricePerStandardOccupancy`:** The price per standard occupancy for the rate. It includes the `amount`, `pricesUnderStandardOccupancy`, and `additionalGuestsSupplements` fields. [More information on price per standard occupancy.](/docs/apps/inventory/extranet/availability-and-rates/manual-load/availability-and-price#price-per-standard-occupancy)
-	* **`pricesPerOccupancy`:** The price per occupancy for the rate. It includes the `prices` field, which contains the `amount`, `numberOfAdults`, `numberOfChildren`, and `numberOfInfants` fields. [More information on price per standard occupancy.](/docs/apps/inventory/extranet/availability-and-rates/manual-load/availability-and-price#price-per-occupancy)
-* **`applicableWeekdays`:** The days of the week for which the price is being retrieved. It includes the `all`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, and `sunday` fields.
-* **`adviseMessages`:** An array of messages that provide information about the query. Each message includes a `code`, `description`, `level`, `correlationID`, and `external` fields, which indicate whether the message is internal or external and provide the code and message of the external message.
+When building your query, you need to provide the following input fields:
 
-## Query
-### 1. Criteria   
-
-This query will allow you to enter specific details in the fields `clientCode`, `supplierCode`, `rates`, and `hotelCode` to retrieve the price of specific rates. 
-
-**Mandatory input**
+#### Mandatory Input
 * `clientCode`
 * `supplierCode`
 * `hotelCode`
@@ -112,11 +96,49 @@ This query will allow you to enter specific details in the fields `clientCode`, 
         * `start`
         * `end`
 
-### Field Explanations
+### 2. Settings
 
-* **`clientCode`, `supplierCode`, `hotelCode`:** These fields identify the client, supplier, and hotel for which the rate price is being retrieved.
-* **`rates`:** This field contains the details of the rates for which the price is being retrieved. It includes the `rateCode` of the rate and the `dateRange` for which the price is being retrieved.
-* **`dateRange`:** This field specifies the date range for which the price is being retrieved.
+This query allows retrieving rate prices by defining relevant details such as `clientCode`, `supplierCode`, `hotelCode`, `rates`, and `dateRange`.
+
+```js
+{
+  "input": {
+    "clientCode": "ABC123",
+    "supplierCode": "SUP001",
+    "hotelCode": "HTL567",
+    "rates": [
+      {
+        "rateCode": "RATE001",
+        "dateRange": {
+          "start": "2024-03-01",
+          "end": "2024-03-10"
+        }
+      }
+    ]
+  }
+}
+```
+
+### Response Considerations
+
+The query returns the retrieved rate prices along with success status and possible advise messages.
+
+#### `PriceRatesRs` (*OBJECT*)
+* `rates` (*RatePriceLoad*) - List of rate prices with details.
+    * `rateCode` (*String*) - The rate code for the price.
+    * `currency` (*String*) - The currency used.
+    * `dateRange` (*DateRangeProduct*) - Date range applied.
+        * `start` (*DateTime*) - Start date.
+        * `end` (*DateTime*) - End date.
+    * `prices` (*PricesLoad*) - Price details.
+* `success` (*Boolean*) - Indicates whether the operation was successful.
+* `adviseMessages` (*AdviseMessage*) - Messages related to the operation.
+    * `code` (*ID*) - AM code.
+    * `type` (*String*) - Error type.
+    * `description` (*String*) - Error description.
+    * `level` (*Enum of AdviseMessageLevel*) - Importance level (ERROR, WARN, INFO).
+    * `external` (*ExternalMessage*) - External message details.
+    * `correlationID` (*ID*) - Identifier for debugging.
 
 ## Query Inputs
 

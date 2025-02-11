@@ -4,28 +4,39 @@ sidebar_position: 4
 
 import {deleteRatesSetUpMutation, deleteRatesSetUpVariables} from "/src/graphql/inventory/set-up/rates-set-up.mutation";
 
-
 # Delete Rates
 
-The `deleteRatesSetUp` is designed to remove hotel rates from a client - seller relation in Inventory. The returned fields include:
+## Mutation Overview
+
+The `deleteRatesSetUp` mutation removes hotel rates from a client-seller relation in Inventory. The returned fields include:
 
 * `success`
 * `adviseMessages`
 
-## Mutation
+### 1. Criteria
 
-When creating your `deleteRatesSetUp` mutation, you have 1 input to fill based on your specific needs:
+When building your mutation, you need to provide the following input fields:
 
-### 1. Input   
-
-**Mandatory input**
+#### Mandatory Input
 * `clientCode`
 * `supplierCode`
 * `hotelCode`
 * `rateCodes`
 
-**Optional input**
+#### Optional Input
 * `contextCode`
+
+### 2. Settings
+
+Ensure that the provided rate codes correspond to existing rates in your inventory setup.
+
+### Response Considerations
+
+The mutation returns success status and potential advise messages regarding the operation.
+
+#### `RatesRs` (*OBJECT*)
+* `success` (*Boolean*) - Indicates if the operation was successful.
+* `adviseMessages` (*AdviseMessage*) - Messages related to the operation.
 
 ## Mutation Inputs
 

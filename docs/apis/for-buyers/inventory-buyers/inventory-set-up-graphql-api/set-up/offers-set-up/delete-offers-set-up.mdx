@@ -4,29 +4,41 @@ sidebar_position: 4
 
 import {deleteOffersSetUpMutation, deleteOffersSetUpVariables} from "/src/graphql/inventory/set-up/offers-set-up.mutation";
 
-
 # Delete Offers
 
-The `deleteOffersSetUp` is designed to remove offers from hotel rates in Inventory. The returned fields include:
+## Mutation Overview
+
+The `deleteOffersSetUp` mutation is designed to remove offers from hotel rates in Inventory. The returned fields include:
 
 * `success`
 * `adviseMessages`
 
-## Mutation
+### 1. Criteria
 
-When creating your `deleteOffersSetUp` mutation, you have 1 input to fill based on your specific needs:
+When building your mutation, you need to provide the following input fields:
 
-### 1. Input   
-
-**Mandatory input**
+#### Mandatory Input
 * `clientCode`
 * `supplierCode`
 * `hotelCode`
 * `rateCode`
 * `offerCodes`
 
-**Optional input**
+#### Optional Input
 * `contextCode`
+
+### 2. Settings
+
+To delete an offer, ensure that all required fields are provided correctly to target the specific offers to be removed.
+
+### Response Considerations
+
+The mutation returns a success status and possible advise messages.
+
+#### `OffersRs` (*OBJECT*)
+* `success` (*Boolean*) - Indicates if the operation was successful.
+* `adviseMessages` (*AdviseMessage*) - Messages related to the operation.
+
 
 ## Mutation Inputs
 

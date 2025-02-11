@@ -6,9 +6,9 @@ import {availOffersQuery, availOffersOneRateVariables,availOffersMultiplesRatesV
 
 # Retrieve Offers Availability
 
-The `availOffers` query allows you to retrieve the availability of specific offers in the Inventory. 
+## Query Overview
 
-## Query Fields
+The `availOffers` query allows you to retrieve the availability of specific offers in Inventory. The returned fields include:
 
 * `success`
 * `offers`
@@ -31,24 +31,11 @@ The `availOffers` query allows you to retrieve the availability of specific offe
         * `code`
         * `message`
 
-### Returned Field Explanations
+### 1. Criteria
 
-* **`success`:** A boolean that indicates whether the query was successful.
-* **`offers`:** The details of the offers for which the availability was retrieved. It includes the `rateCode` of the offer, the `code` of the specific offer, and any `stopSales` conditions.
-* **`stopSales`:** This field contains conditions that can restrict the availability of the offer. 
-    * **`closeMaster`:** A boolean that indicates whether the offer is closed for the entire date range.
-    * **`closeOnArrival`:** A boolean that indicates whether the offer is closed on arrival.
-    * **`closeOnDeparture`:** A boolean that indicates whether the offer is closed on departure.
-* **`dateRange`:** The date range during which the conditions will be applied. It includes the `start` and `end` dates.
-* **`adviseMessages`:** An array of messages that provide information about the query. Each message includes a `code`, `description`, `level`, `correlationID`, and `external` fields, which indicate whether the message is internal or external and provide the code and message of the external message.
+When building your query, you need to provide the following input fields:
 
-## Query
-
-### 1. Criteria   
-
-This query will allow you to enter specific details in the fields `clientCode`, `supplierCode`, `hotelCode`, `offers`, and `dateRange` to retrieve the availability of specific offers. 
-
-**Mandatory input**
+#### Mandatory Input
 * `clientCode`
 * `supplierCode`
 * `hotelCode`
@@ -58,11 +45,53 @@ This query will allow you to enter specific details in the fields `clientCode`, 
         * `start`
         * `end`
 
-### Field Explanations
+### 2. Settings
 
-* **`clientCode`, `supplierCode`, `hotelCode`:** These fields identify the client, supplier, and hotel for which the offer availability is being retrieved.
-* **`offers`:** This field contains the details of the offers for which the availability is being retrieved. It includes the `rateCode` of the offer and the `dateRange` for which the availability is being retrieved.
-* **`dateRange`:** This field specifies the date range for which the availability is being retrieved.
+This query allows retrieving availability for specific offers by defining relevant details such as `clientCode`, `supplierCode`, `hotelCode`, and `dateRange`.
+
+```js
+{
+  "input": {
+    "clientCode": "ABC123",
+    "supplierCode": "SUP001",
+    "hotelCode": "HTL567",
+    "offers": [
+      {
+        "rateCode": "RATE001",
+        "dateRange": {
+          "start": "2024-03-01",
+          "end": "2024-03-10"
+        }
+      }
+    ]
+  }
+}
+```
+
+### Response Considerations
+
+The query returns the retrieved offers along with success status and possible advise messages.
+
+#### `AvailRetrieveRs` (*OBJECT*)
+* `offers` (*OffersAvailLoad*) - List of retrieved offers with availability information.
+    * `rateCode` (*String*) - The rate code for the offers.
+    * `offers` (*OfferAvailLoad*) - List of retrieved offers.
+        * `code` (*String*) - Offer code.
+        * `stopSales` (*StopSales*) - Stop sales conditions.
+            * `closeMaster` (*Boolean*) - Close master flag.
+            * `closeOnArrival` (*Boolean*) - Close on arrival flag.
+            * `closeOnDeparture` (*Boolean*) - Close on departure flag.
+    * `dateRange` (*DateRangeProduct*) - Date range applied.
+        * `start` (*DateTime*) - Start date.
+        * `end` (*DateTime*) - End date.
+* `success` (*Boolean*) - Indicates whether the operation was successful.
+* `adviseMessages` (*AdviseMessage*) - Messages related to the operation.
+    * `code` (*ID*) - AM code.
+    * `type` (*String*) - Error type.
+    * `description` (*String*) - Error description.
+    * `level` (*Enum of AdviseMessageLevel*) - Importance level (ERROR, WARN, INFO).
+    * `external` (*ExternalMessage*) - External message details.
+    * `correlationID` (*ID*) - Identifier for debugging.
 
 ## Query Inputs
 

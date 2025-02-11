@@ -4,27 +4,39 @@ sidebar_position: 4
 
 import {deleteHotelSetUpMutation, deleteHotelSetUpVariables} from "/src/graphql/inventory/set-up/hotels-set-up.mutation";
 
-
 # Delete Hotel
 
-The `deleteHotelSetUp` is designed to remove a specific hotel from a client - seller relation in Inventory. The returned fields include:
+## Mutation Overview
+
+The `deleteHotelSetUp` mutation is designed to remove a specific hotel from a client-seller relation in Inventory. The returned fields include:
 
 * `success`
 * `adviseMessages`
 
-## Mutation
+### 1. Criteria
 
-When creating your `deleteHotelSetUp` mutation, you have 1 input to fill based on your specific needs:
+When building your mutation, you need to provide the following input fields:
 
-### 1. Input   
-
-**Mandatory input**
+#### Mandatory Input
 * `clientCode`
 * `supplierCode`
 * `hotelCode`
 
-**Optional input**
+#### Optional Input
 * `contextCode`
+
+### 2. Settings
+
+To execute the hotel deletion, specify the necessary fields, ensuring that `clientCode`, `supplierCode`, and `hotelCode` correspond to the correct relation in TravelgateX.
+
+### Response Considerations
+
+The mutation returns a success status along with possible advise messages.
+
+#### `HotelsSetupRs` (*OBJECT*)
+* `success` (*Boolean*) - Indicates whether the operation was successful.
+* `adviseMessages` (*AdviseMessage*) - Messages related to the operation.
+
 
 ## Mutation Inputs
 

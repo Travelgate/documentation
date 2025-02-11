@@ -3,6 +3,7 @@ sidebar_position: 2
 ---
 
 # Booking Notification
+## Overview
 
 During the booking process, we'll send you a `BookNotif` request message to share reservation details. You just need to check and let us know the reservation status. After that, Travelgate will handle the response from your system, moving forward with the reservation and updating you on the status.
 
@@ -13,8 +14,9 @@ If you have the booking locator, include it in the `BookNotif` response, this wa
 :::
 
 Keep in mind that if there's an issue with the reservation in your system, we'll consider it as not successful (NOK) and we return an error message.
+### 1. Criteria
 
-## BookNotif Request
+#### BookNotif Request
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
@@ -739,7 +741,9 @@ import TabItem from "@theme/TabItem";
 </TabItem>
 </Tabs>
 
-### Request Headers
+### 2. Settings
+
+#### Request Headers
 
 Our system sends `BookNotif` messages as POST request with the following headers.
 
@@ -759,7 +763,50 @@ Authorization: Basic xxxxxxxxxxxxxxxxx
 You need to provide an endpoint to which we will send the `bookNotif` and a username and password.
 :::
 
-### Request Data Breakdown
+### Response Considerations
+#### BookNotif Response
+
+After each request, a response should be provided from yours side. If a `bookNotif` request is received, a corresponding `bookNotifRs` response should be sent. There are two response options, **success** or **error**.
+
+<Tabs>
+<TabItem value="sucess" label="Success">
+
+```json
+{
+  "bookNotifRs": {
+    "dateTime": "2025-01-15T14:10:07.878425Z",
+    "status": "Confirmed",
+    "references": [
+      {
+        "locator": "your_locator",
+        "type": "Provider"
+      }
+    ]
+  }
+}
+```
+
+</TabItem>
+<TabItem value="error" label="Error">
+
+```json
+{
+  "bookNotifRs": {
+    "dateTime": "2025-01-15T14:10:07.878425Z",
+    "adviseMessages": [
+      {
+        "code": "10",
+        "description": "HotelCode not found"
+      }
+    ]
+  }
+}
+```
+
+</TabItem>
+</Tabs>
+
+## Inputs
 <details>
   <summary>
     **bookNotif**&nbsp;<span class="required"> *</span>&nbsp; (*Object*)    
@@ -795,6 +842,19 @@ You need to provide an endpoint to which we will send the `bookNotif` and a user
         `Confirmed`    
         `Cancelled`  
       </summary>
+    </details>
+      <details style={{ pointerEvents: "none" }}>
+      <summary>
+        **nationality**&nbsp; (*String*)      
+        Nationality of the guest (use ISO3166_1_alfa_2). 
+      </summary>
+    </details>
+      <details style={{ pointerEvents: "none" }}>
+      <summary>
+        **market**&nbsp; (*String*)      
+        Market of the guest (use ISO3166_1_alfa_2). 
+      </summary>
+    </details>
     </details>
     <details>
       <summary>
@@ -1678,6 +1738,12 @@ You need to provide an endpoint to which we will send the `bookNotif` and a user
           Phone number of the company.    
         </summary>
       </details>
+            <details style={{ pointerEvents: "none" }}>
+          <summary>
+            **bookingCreator**&nbsp; (*String*)  
+            Final Buyers code.     
+          </summary>
+        </details>
       <details>
         <summary>
           **address**&nbsp; (*Object*)  
@@ -1707,83 +1773,86 @@ You need to provide an endpoint to which we will send the `bookNotif` and a user
             Country name.      
           </summary>
         </details>
+  
       </details>
     </details>
   </details>
-</details> 
+
 
 
           
-          
 
-## BookNotif Response
 
-After each request, a response should be provided from yours side. If a `bookNotif` request is received, a corresponding `bookNotifRs` response should be sent. There are two response options, **success** or **error**.
+## Returned Fields
 
-<Tabs>
-<TabItem value="sucess" label="Success">
-
-```json
-{
-  "bookNotifRs": {
-    "dateTime": "2025-01-15T14:10:07.878425Z",
-    "status": "Confirmed",
-    "references": [
-      {
-        "locator": "your_locator",
-        "type": "Provider"
-      }
-    ]
-  }
-}
-```
-
-</TabItem>
-<TabItem value="error" label="Error">
-
-```json
-{
-  "bookNotifRs": {
-    "dateTime": "2025-01-15T14:10:07.878425Z",
-    "adviseMessages": [
-      {
-        "code": "10",
-        "description": "HotelCode not found"
-      }
-    ]
-  }
-}
-```
-
-</TabItem>
-</Tabs>
-
-### Response Data Breakdown
-
-<details>
- <summary>bookNotifRs</summary>
-
-Root object containing the response information.
-
-- **`dateTime`** (DateTime): Date time when the booking notification was received.
-- **`status`** (`BookStatus`, optional): Status of the booking, mandatory if success response. Possible value are:
-  - `Confirmed`: when bookNotif has bookDetails with status `Confirmed`
-  - `Cancelled`: when bookNotif has bookDetails with status `Cancelled`
-- **`references`** (array of <u>one</u> `Reference`, optional):
-  <details>
-    <summary>Reference Object</summary>- **`locator`** (string): Unique
-    identifier for the reference. - **`type`** (`ReferenceType`): Type of
-    reference. Possible values is `Provider`
-  </details>
-- **`adviseMessages`** (array of `AdviseMessage`, optional): Mandatory if error response.
-  <details>
-    <summary>AdviseMessage Object</summary>- **`code`**: Possible values are: -
-    **`-1`**: Unexpected error - **`1`**: Validation error - **`10`**: HotelCode
-    not found - **`11`**: Invalid dates - **`14`**: Invalid derived rate -
-    **`22`**: Rooms not found - **`23`**: Rates not found - **`30`**: Occupancy
-    error - **`31`**: RatePlan rate error - **`38`**: Credetials not found -
-    **`50`**: Confirmation error - **`60`**: Cancellation error -
-    **`description`** (string): Description of the error.
+     <details>
+  <summary>
+    **bookNotifRs**&nbsp;<span class="required"> *</span>&nbsp; (*Object*)  
+    Root object containing the response information.
+  </summary>
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+      **dateTime**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+      Date and time when the booking notification was received.
+    </summary>
   </details>
 
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+      **status**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of String*)  
+      Status of the booking. Mandatory if the response is successful. Possible values:  
+      `Confirmed`: when bookNotif has bookDetails with status Confirmed.  
+      `Cancelled`: when bookNotif has bookDetails with status Cancelled.  
+    </summary>
+  </details>
+
+  <details>
+    <summary>
+      **references** &nbsp; (*array of Reference*)  
+    </summary>
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        **locator**&nbsp;<span class="required"> *</span>&nbsp; (*String*)    
+        Unique identifier for the reference.
+      </summary>
+    </details>
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        **type**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of String*)      
+        Type of reference. Possible values:  
+        `Provider`
+      </summary>
+    </details>
+  </details>
+
+  <details>
+    <summary>
+      **adviseMessages** &nbsp; (*array of AdviseMessage*)  
+      List of advisory messages. Mandatory if the response contains an error.
+    </summary>
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        **code**&nbsp;<span class="required"> *</span>&nbsp; (*Integer*)  
+        Error code indicating the issue. Possible values:  
+        `-1` Unexpected error  
+        `1` Validation error  
+        `10` HotelCode not found  
+        `11` Invalid dates  
+        `14` Invalid derived rate  
+        `22` Rooms not found  
+        `23` Rates not found  
+        `30` Occupancy error  
+        `31` RatePlan rate error  
+        `38` Credentials not found  
+        `50` Confirmation error  
+        `60` Cancellation error  
+        </summary>
+      </details>
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        **description**&nbsp;<span class="required"> *</span>&nbsp; (*String*)    
+        Description of the error.
+      </summary>
+    </details>
+  </details>
 </details>

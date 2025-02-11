@@ -18,7 +18,7 @@ The cancel operation allows you to cancel a booking made via Travelgate. The ret
 * `rates`
 
 
-## Cancel Inputs
+## Mutation Overview
 
 When creating your cancel query, you have two different inputs to fill based on your specific needs:
 
@@ -120,29 +120,14 @@ To specify your cancel settings you need to use the [`HotelSettingsInput` input]
 Keep in mind that if you leave some of the fields in the `settings` inputs unspecified, we will use the values from your default settings. You can review and control your default API settings by visiting the [API Settings section](https://app.travelgatex.com/connections/settings) on our website.
 :::
 
-### Requests Examples
 
-#### Cancel with the `bookingID` from the book response
-
-<GraphqlSample query={cancelMutation} variables={cancelByBookingIDVariables} />
-
-#### Cancel using the `accessCode`, `hotelCode` and `reference` from the book response
-
-<GraphqlSample query={cancelMutation} variables={cancelByReferenceVariables} />
-
-
-## Cancel Response
-
+### Response Considerations
 
 Keep in mind that the content of the Cancel response can differ depending on the Sellers. For instance, some Sellers might provide details about the hotel, while others may only offer information about the status and locators/references.
 
-:::tip Cancel output fields
-Explore all the cancel output fields and their descriptions in our detailed Graphql API Reference section [here](/api/types/objects/hotel-cancel-payload/).
-:::
-
 Next, we'll provide important information about some of the returned fields.
 
-### Cancel Status
+#### Cancel Status
 
 Once a Cancel method is run, our API response will provide its cancel status. This status represents the current status of the cancellation and can be categorized into four possible values:
 
@@ -159,11 +144,20 @@ If you receive any of the "common errors" or a status other than "CANCELLED", it
 
 :::
 
-### Cancel Penalty
+#### Cancel Penalty
 
 Cancellation always takes into account the day and time of the destination in order to calculate what cancellation policy should be applied. UTC time.
 
 
+## Examples
+
+#### Cancel with the `bookingID` from the book response
+
+<GraphqlSample query={cancelMutation} variables={cancelByBookingIDVariables} />
+
+#### Cancel using the `accessCode`, `hotelCode` and `reference` from the book response
+
+<GraphqlSample query={cancelMutation} variables={cancelByReferenceVariables} />
 
 
 ## Frequently Asked Questions

@@ -18,8 +18,7 @@ The Destinations Query returns a comprehensive destination list from a supplier'
 * `type`
 
 
-
-## Destinations Inputs
+## Query Overview
 
 When creating your destinations query, you have two different inputs to fill based on your specific needs:
 
@@ -116,24 +115,9 @@ This token should be used as input in your next destinations query, inside the `
 
 
 
-### Requests Examples
+### Response Considerations
 
-#### Search for the complete destination list from a supplier
-
-<GraphqlSample query={destinationsQuery} variables={destinationsVariables} />
-
-
-#### Search for a specific destination code from a supplier
-
-When utilizing the Destination List Query, for more personalized results, filter specific destinations based on your interests. For example, to focus solely on the Spanish inventory of a Seller, add the `destinationCodes` field with "ES" in your criteria. This will ensure you receive destinations directly related to the "ES" zone, providing you with highly targeted and relevant information.
-
-<GraphqlSample query={destinationsQuery} variables={destinationsByDestinationCodeVariables} />
-
-
-
-## Destinations Response
-
-### Destination List Logic
+#### Destination List Logic
 
 Once you run a Destinations Query, you will receive the Seller's native destination codes in the response. These codes can be classified into 3 categories:
 
@@ -152,10 +136,26 @@ Hotel-X supports all languages, but receiving destination descriptions in one or
 
 :::
 
-### Mapping
+#### Mapping
 
 When utilizing the Destination List Query, you will receive the Seller's native destination codes. Connecting with a new Seller doesn't always mean that you are interested in the whole destination portfolio, maybe you are just interested in some specific destinations. Since mapping depends entirely on your side, you can map only those destinations you are interested in.
 
 Additionally, you can upload your own mapping files to our FTP (credentials should be provided by our Customer Care team), and we will use your own destination codes in the booking flow.
 
 You can find all the necessary information in the [mapping section](../plugins/mapping.mdx).
+
+
+
+
+## Examples
+
+#### Search for the complete destination list from a supplier
+
+<GraphqlSample query={destinationsQuery} variables={destinationsVariables} />
+
+
+#### Search for a specific destination code from a supplier
+
+When utilizing the Destination List Query, for more personalized results, filter specific destinations based on your interests. For example, to focus solely on the Spanish inventory of a Seller, add the `destinationCodes` field with "ES" in your criteria. This will ensure you receive destinations directly related to the "ES" zone, providing you with highly targeted and relevant information.
+
+<GraphqlSample query={destinationsQuery} variables={destinationsByDestinationCodeVariables} />

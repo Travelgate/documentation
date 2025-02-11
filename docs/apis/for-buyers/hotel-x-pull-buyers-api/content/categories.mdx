@@ -14,7 +14,7 @@ The Categories Query returns a comprehensive hotel categories list from a suppli
 * `language`
 
 
-## Categories Inputs
+## Query Overview
 
 When creating your categories query, you have 1 input to fill based on your specific needs:
 
@@ -31,7 +31,27 @@ This query offers versatility, with certain fields marked as mandatory (`access`
 * `categoryCodes` (Search by category type)
 * `group`
 
-### Requests Examples
+
+### Response Considerations
+
+:::note
+
+The amount of information and content returned might vary between Sellers.
+
+Hotel-X supports all languages, but receiving categories descriptions in one or another depends entirely on the languages supported by the Seller.
+
+:::
+
+#### Mapping
+
+When utilizing the Categories List Query, you will receive the Seller's native categories codes. Connecting with a new Seller doesn't always mean that you are interested in the whole categories portfolio, maybe you are just interested in some specific categories. Since mapping depends entirely on your side, you can map only those categories you are interested in.
+
+Additionally, you can upload your own mapping files to our FTP (credentials should be provided by our Customer Care team), and we will use your own categories codes in the booking flow.
+
+You can find all the necessary information in the [mapping section](../plugins/mapping.mdx).
+
+
+## Examples
 
 #### Search for the complete categories list from a supplier
 
@@ -44,22 +64,3 @@ When utilizing the Categories List Query, for more personalized results, filter 
 
 <GraphqlSample query={categoriesQuery} variables={categoriesByCategoryCodeVariables} />
 
-
-
-## Categories Response
-
-:::note
-
-The amount of information and content returned might vary between Sellers.
-
-Hotel-X supports all languages, but receiving categories descriptions in one or another depends entirely on the languages supported by the Seller.
-
-:::
-
-### Mapping
-
-When utilizing the Categories List Query, you will receive the Seller's native categories codes. Connecting with a new Seller doesn't always mean that you are interested in the whole categories portfolio, maybe you are just interested in some specific categories. Since mapping depends entirely on your side, you can map only those categories you are interested in.
-
-Additionally, you can upload your own mapping files to our FTP (credentials should be provided by our Customer Care team), and we will use your own categories codes in the booking flow.
-
-You can find all the necessary information in the [mapping section](../plugins/mapping.mdx).

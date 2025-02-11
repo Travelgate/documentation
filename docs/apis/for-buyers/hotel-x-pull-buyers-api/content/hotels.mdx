@@ -17,7 +17,7 @@ The Hotels Query returns a comprehensive hotel list from a supplier's access, gr
 * `medias`
 * `descriptions`
 
-## Hotels Inputs
+## Query Overview
 
 When creating your hotels query, you have three different inputs to fill based on your specific needs:
 
@@ -134,49 +134,7 @@ This token should be used as input in your next hotels query, inside the `token`
 }
 ```
 
-:::note
-
-Take a look at the [API Playground](/playground/) to see all the filters.
-
-:::
-
-
-### Requests Examples
-
-#### Search for the complete hotel list from a supplier
-
-<GraphqlSample query={hotelsQuery} variables={hotelsVariables} />
-
-
-#### Search for a specific country from a supplier
-
-When utilizing the Hotels List Query, for more personalized results, filter specific hotels, countries or destinations based on your interests. For example, to focus solely on the inventory of a Seller in Greece, add the `countries` field with "GR" in your criteria. This will ensure you receive hotels directly related to that country, providing you with highly targeted and relevant information.
-
-<GraphqlSample query={hotelsQuery} variables={hotelsByCountryVariables} />
-
-
-You would need to apply the same approach for search for specific hotels (`hotelCodes`) and destinations (`destinationCodes`). 
-
-
-#### Search for a specific destination from a supplier
-
-For example, if you want to obtain only hotels from "Santorini", you can use the destination code for that zone. In the bellow case, test supplier have determined code "101402" as Santorini, so you need to specify this code in the `destinationCodes` field:
-
-<GraphqlSample query={hotelsQuery} variables={hotelsByDestinationCodeVariables} />
-
-#### Search for a specific hotel code from a supplier
-
-If you want to retrieve the information of specific hotel codes from a supplier, you will need to specify the codes in the `hotelCodes` field:
-
-<GraphqlSample query={hotelsQuery} variables={hotelsByHotelCodeVariables} />
-
-
-#### Search for a specific creation date from a supplier
-
-<GraphqlSample query={hotelsQuery} variables={hotelsByDateFilterVariables} />
-
-
-## Hotels Response
+### Response Considerations
 
 :::note
 
@@ -186,7 +144,7 @@ Hotel-X supports all languages, but receiving hotel descriptions in one or anoth
 
 :::
 
-### Know the Total Amount of Properties
+#### Know the Total Amount of Properties
 
 To obtain the total number of properties in the list, you can easily add the `count` field to your Hotels Query.
 
@@ -211,7 +169,7 @@ query {
 				"edges": [
 ```
 
-### Receive GIATA Codes
+#### Receive GIATA Codes
 
 Hotel-X API fully supports GIATA codes in Hotel-X Hotels Query response. Note that GIATA codes are only available at a hotel level.
 
@@ -256,11 +214,48 @@ query {
 ```
 
 
-
-### Mapping
+#### Mapping
 
 When utilizing the Hotel List Query, you will receive the Seller's native hotel codes. Connecting with a new Seller doesn't always mean that you are interested in the whole hotels portfolio, maybe you are just interested in some specific hotels. Since mapping depends entirely on your side, you can map only those hotels you are interested in.
 
 Additionally, you can upload your own mapping files to our FTP (credentials should be provided by our Customer Care team), and we will use your own hotel codes in the booking flow.
 
 You can find all the necessary information in the [mapping section](../plugins/mapping.mdx).
+
+
+
+## Examples
+
+#### Search for the complete hotel list from a supplier
+
+<GraphqlSample query={hotelsQuery} variables={hotelsVariables} />
+
+
+#### Search for a specific country from a supplier
+
+When utilizing the Hotels List Query, for more personalized results, filter specific hotels, countries or destinations based on your interests. For example, to focus solely on the inventory of a Seller in Greece, add the `countries` field with "GR" in your criteria. This will ensure you receive hotels directly related to that country, providing you with highly targeted and relevant information.
+
+<GraphqlSample query={hotelsQuery} variables={hotelsByCountryVariables} />
+
+
+You would need to apply the same approach for search for specific hotels (`hotelCodes`) and destinations (`destinationCodes`). 
+
+
+#### Search for a specific destination from a supplier
+
+For example, if you want to obtain only hotels from "Santorini", you can use the destination code for that zone. In the bellow case, test supplier have determined code "101402" as Santorini, so you need to specify this code in the `destinationCodes` field:
+
+<GraphqlSample query={hotelsQuery} variables={hotelsByDestinationCodeVariables} />
+
+#### Search for a specific hotel code from a supplier
+
+If you want to retrieve the information of specific hotel codes from a supplier, you will need to specify the codes in the `hotelCodes` field:
+
+<GraphqlSample query={hotelsQuery} variables={hotelsByHotelCodeVariables} />
+
+
+#### Search for a specific creation date from a supplier
+
+<GraphqlSample query={hotelsQuery} variables={hotelsByDateFilterVariables} />
+
+

@@ -1,0 +1,3920 @@
+
+<details>
+  <summary>
+  **HotelBookPayload** (*OBJECT*)  
+  
+  </summary>
+  
+  
+    <details>
+      <summary>
+      **stats** (*StatsRequest*)  
+      Application stats in string format  
+      </summary>
+  
+      <details>
+        <summary>
+        **total**&nbsp;<span class="required"> *</span>&nbsp; (*Stat*)  
+        Total transaction time  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **start**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+          Start UTC  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **end**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+          End UTC  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **duration** (*Float*)  
+          Difference between start and end in miliseconds  
+          </summary>
+        </details>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **validation**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+        Request validation time  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **process**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+        Process time. Contains communication time, parse time and plugin time.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **configuration**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+        Build access time  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **request**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+        Request time  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **response**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+        Response time  
+        </summary>
+      </details>
+
+      <details>
+        <summary>
+        **requestPlugin** (*StatPlugin*)  
+        Plugin execution time  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **name**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+          Plugin name  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **total**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+          total plugin time  
+          </summary>
+        </details>
+      </details>
+
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **hotels**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+        Number of hotels
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **zones**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+        Number of zones
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **cities**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+        Number of cities
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **dockerID**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+        Docker Id  
+        </summary>
+      </details>
+
+      <details>
+        <summary>
+        **Accesses**&nbsp;<span class="required"> *</span>&nbsp; (*StatAccess*)  
+        Detail access time  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **name**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+          Access name  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **total**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+          Total access time  
+          </summary>
+        </details>
+
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **hotels**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+          Number of hotels
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **zones**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+          Number of zones
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **cities**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+          Number of cities
+          </summary>
+        </details>
+
+
+
+        <details>
+          <summary>
+          **transactions**&nbsp;<span class="required"> *</span>&nbsp; (*StatTransaction*)  
+          Detail transaction time  
+          </summary>
+  
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **reference**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+            Extra information about transaction.  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **total**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+            Total transaction time  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **buildRequest**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+            Build request time  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **workerCommunication**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+            Worker connection time  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **parseResponse**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+            Parse response time  
+            </summary>
+          </details>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **plugins**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+          Plugin execution time  
+          </summary>
+        </details>
+      </details>
+    </details>
+
+    <details>
+      <summary>
+      **auditData** (*AuditData*)  
+      Data sent and received in the supplier's native format.  
+      </summary>
+  
+      <details>
+        <summary>
+        **transactions**&nbsp;<span class="required"> *</span>&nbsp; (*Transactions*)  
+        List of the transactions data.  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **request**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+          Transaction Request.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **response**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+          Transaction Response.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **timeStamp**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+          Time when the request has been processed.  
+          </summary>
+        </details>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **timeStamp**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+        Timestamp.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **processTime**&nbsp;<span class="required"> *</span>&nbsp; (*Float*)  
+        Process time of the transaction data in milliseconds (ms).  
+        </summary>
+      </details>
+    </details>
+
+    <details>
+      <summary>
+      **booking** (*HotelBookingDetail*)  
+      Information about booking  
+      </summary>
+  
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **supplierCode** (*String*)  
+        Supplier code of the booking  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **accessCode** (*String*)  
+        Access code of the booking  
+        </summary>
+      </details>
+
+      <details>
+        <summary>
+        **reference**&nbsp;<span class="required"> *</span>&nbsp; (*Reference*)  
+        Booking ID references codes.  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **client** (*String*)  
+          Client reference booking.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **supplier** (*String*)  
+          Supplier reference booking.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **hotel** (*String*)  
+          Hotel reference booking  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **hotelConfirmationNumberStatus** (*String*)  
+          Process Status in order to obtain the hotel confirmation number. If this field is null or empty that means that the status is UNKNOWN. Possible values:
+"P"   => (pending): The booking hasn't been assinged to any operator yet, or it has but the operator did not make the call yet.
+"R"   => (retrying): The operator tried to call the hotel but, for some reason, the call couldn't be completed because of external factors. This means the operator will try to call again later.
+"NA"  => (no answer): The operator tried to call the hotel several times but the hotel did not answer.
+"C"   => (cancelled): The operator has been informed by the hotel that the reservation has been cancelled.
+"DNE" => (does not exist): The operator has been informed by the hotel that the reservation does not exist.
+"F"   => (fetched): The operator called the hotel and they got the hotel confirmation number (a truly succesful call)
+"I"   => (issued): The operator called the hotel but there were issues. Maybe the hotel is closed, maybe natural disaster situations are alerted for the check-in date, etc.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **bookingID** (*String*)  
+          HotelX's booking reference. The BookingID is a unique identifier for each reservation that can be used to perform Booking queries and Cancel mutations in the system.
+It is not recommended to modify or use this value externally, although it may be useful for identifying and managing reservations within the system.
+It is important to note that the BookingID value should not be interpreted in any other way beyond its use within the system.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **amendmentID** (*String*)  
+          HotelX's amend booking reference  
+          </summary>
+        </details>
+      </details>
+
+      <details>
+        <summary>
+        **holder** (*Holder*)  
+        Holder's name and surname  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **name**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+          Holder's name.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **surname**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+          Holder's surname.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **title** (*Enum of PersonalTitleType*)  
+          Holder's title, if return.  
+          Possible values:  
+          `MR`  
+        `MRS`  
+        `MISS`  
+        `MS`  
+        `NOT_SPECIFIED`  
+          </summary>
+        </details>
+
+        <details>
+          <summary>
+          **contactInfo** (*ContactInfo*)  
+          Holder's contact information.  
+          </summary>
+  
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **email** (*String*)  
+            Email contact  
+            </summary>
+          </details>
+        </details>
+      </details>
+
+      <details>
+        <summary>
+        **hotel** (*BookingHotel*)  
+        Information about the hotel.  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **bookingDate** (*Date*)  
+          Creation date of the booking.
+Format: YYYY-MM-DD  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **start** (*Date*)  
+          Check-in date for booking
+Format: YYYY-MM-DD  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **end** (*Date*)  
+          Check-out date for the booking.
+Format: YYYY-MM-DD  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **hotelCode** (*String*)  
+          Code of the hotel in the context selected.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **hotelName** (*String*)  
+          Name of the hotel.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **boardCode** (*String*)  
+          Code of the board in the context selected.  
+          </summary>
+        </details>
+
+        <details>
+          <summary>
+          **occupancies**&nbsp;<span class="required"> *</span>&nbsp; (*Occupancy*)  
+          List of occupancies for the request  
+          </summary>
+  
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **id**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+            Unique ID room in this option.
+            </summary>
+          </details>
+
+          <details>
+            <summary>
+            **paxes**&nbsp;<span class="required"> *</span>&nbsp; (*Pax*)  
+            List of pax of this occupancy.  
+            </summary>
+  
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **age**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+              Passenger age on the day of check-in, which can vary for adults, infants, or babies depending on each supplier's particular age range.
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **name** (*String*)  
+              Specifies the pax name.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **surname** (*String*)  
+              Specifies the pax surname.  
+              </summary>
+            </details>
+
+          </details>
+        </details>
+
+        <details>
+          <summary>
+          **rooms**&nbsp;<span class="required"> *</span>&nbsp; (*BookingRoom*)  
+          List of rooms.  
+          </summary>
+  
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **occupancyRefId** (*Int*)  
+            ID reference to the occupancy
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **code** (*String*)  
+            Indicates the room code  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **description** (*String*)  
+            Description about the room  
+            </summary>
+          </details>
+
+          <details>
+            <summary>
+            **price** (*Price*)  
+            Total price for all days.  
+            </summary>
+  
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **currency**&nbsp;<span class="required"> *</span>&nbsp; (*Currency*)  
+              Currency code indicating which currency should be paid.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **binding**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+              It indicates whether the gross price must be honored, meaning the customer cannot sell the room/option at a price lower than the supplier's established rate.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **net**&nbsp;<span class="required"> *</span>&nbsp; (*Float*)  
+              It indicates the net price that the customer must pay to the supplier.
+The net price is calculated by substrating the included surcharges from the gross price. (For calculation purposes only)  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **gross**&nbsp;<span class="required"> *</span>&nbsp; (*Float*)  
+              Indicates the retail price that the supplier sells to the customer.  
+              </summary>
+            </details>
+
+            <details>
+              <summary>
+              **exchange**&nbsp;<span class="required"> *</span>&nbsp; (*Exchange*)  
+              Provides currency information and the applicable rate for the results returned by the Supplier  
+              </summary>
+  
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **currency**&nbsp;<span class="required"> *</span>&nbsp; (*Currency*)  
+                Provide information about the currency of origin  
+                </summary>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **rate**&nbsp;<span class="required"> *</span>&nbsp; (*Float*)  
+                Provides information about the rate applied over results  
+                </summary>
+              </details>
+            </details>
+
+            <details>
+              <summary>
+              **markups**&nbsp;<span class="required"> *</span>&nbsp; (*Markup*)  
+              Informs markup applied over supplier price.  
+              </summary>
+  
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **channel** (*String*)  
+                channel of markup application.  
+                </summary>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **currency**&nbsp;<span class="required"> *</span>&nbsp; (*Currency*)  
+                Currency code indicating which currency should be paid.
+This information is mandatory.  
+                </summary>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **binding**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+                It indicates if the price indicated in the gross must be respected. In case minimumSellingPrice is not empty, the binding indicates instead that the minimumSellingPrice must be respected.
+That is, the customer can not sell the room / option at a price lower than that established by the supplier.
+This information is mandatory.  
+                </summary>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **net**&nbsp;<span class="required"> *</span>&nbsp; (*Float*)  
+                Indicates the net price that the customer must pay to the supplier plus the markup.
+This information is mandatory.  
+                </summary>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **gross** (*Float*)  
+                Indicates the retail price that the supplier sells to the customer plus the markup.  
+                </summary>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **exchange**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                Informs about the currency of origin, and the rate applied over result.
+This information is mandatory.  
+                </summary>
+              </details>
+
+              <details>
+                <summary>
+                **rules**&nbsp;<span class="required"> *</span>&nbsp; (*Rule*)  
+                Breakdown of the applied rules for a markup  
+                </summary>
+  
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **id**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                  rule identifier  
+                  </summary>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **name** (*String*)  
+                  rule name  
+                  </summary>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **type**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of MarkupRuleType*)  
+                  type of the value  
+                  Possible values:  
+                  `PERCENT`  
+                `IMPORT`  
+                  </summary>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **value**&nbsp;<span class="required"> *</span>&nbsp; (*Float*)  
+                  value applied by this rule  
+                  </summary>
+                </details>
+              </details>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **minimumSellingPrice** (*Float*)  
+              Indicates the minimum selling price it can be sold (determined by the Seller). Is is specified (not null), that field takes preference to Gross and Binding.  
+              </summary>
+            </details>
+          </details>
+        </details>
+      </details>
+
+
+      <details>
+        <summary>
+        **quotePrice** (*PriceChange*)  
+        Specifies the price of the previous OptionQuote, returned only if it differs from the price shown at the Quote Option. If the price remains unchanged, this field will be returned as Null.  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **currency**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+          The currency of previous option.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **net**&nbsp;<span class="required"> *</span>&nbsp; (*Float*)  
+          The net value of previous option.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **gross**&nbsp;<span class="required"> *</span>&nbsp; (*Float*)  
+          The gross value of previous option.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **binding**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+          Indicates if previous option price was binding or not  
+          </summary>
+        </details>
+      </details>
+
+      <details>
+        <summary>
+        **cancelPolicy** (*CancelPolicy*)  
+        Specifies cancel policies of the returned option .  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **refundable**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+          Indicates if the option is refundable or non-refundable  
+          </summary>
+        </details>
+
+        <details>
+          <summary>
+          **cancelPenalties**&nbsp;<span class="required"> *</span>&nbsp; (*CancelPenalty*)  
+          List of cancellation penalties  
+          </summary>
+  
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **deadline** (*DateTime*)  
+            Cancellation fees will be applicable between this date and check-in date  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **isCalculatedDeadline**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+            Specifies if the deadline has been taken from the seller’s response (false) or has been calculated by TravelgateX (true)  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **penaltyType**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of CancelPenaltyType*)  
+            Type of penalty; this can be Nights, Percent or Import  
+            Possible values:  
+            `NIGHTS`  
+          `PERCENT`  
+          `IMPORT`  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **currency**&nbsp;<span class="required"> *</span>&nbsp; (*Currency*)  
+            Currency used in the cancellation policy  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **value**&nbsp;<span class="required"> *</span>&nbsp; (*Float*)  
+            Value of the cancellation policy  
+            </summary>
+          </details>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **description** (*String*)  
+          Extra details and information about supplier's cancel policies to give a further insight. This information is not supported for all the suppliers.  
+          </summary>
+        </details>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **remarks** (*String*)  
+        Additional information about the book.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **status**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of BookStatusType*)  
+        Booking Status.
+The possible values for this field are specified in our documentation.
+Possible values for book mutation and booking query: https://docs.travelgate.com/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/book#book-status
+Possible values for cancel mutation: https://docs.travelgate.com/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/cancel#cancel-status  
+        Possible values:  
+        `OK`  
+      `ON_REQUEST`  
+      `CANCELLED`  
+      `UNKNOWN`  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **billingSupplierCode** (*String*)  
+        Supplier’s billing code. It will be returned if the supplier has different billing accounts and this is informed in the reservation.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **payable** (*String*)  
+        Payable.  
+        </summary>
+      </details>
+
+      <details>
+        <summary>
+        **addOns** (*AddOns*)  
+        Additional information about the option.  
+        </summary>
+  
+        <details>
+          <summary>
+          **distribution**&nbsp;<span class="required"> *</span>&nbsp; (*AddOn*)  
+          Extra information from the Distribution layer.  
+          </summary>
+  
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **key**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+            Contains keyword/ID to identify the AddOn.  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **value**&nbsp;<span class="required"> *</span>&nbsp; (*JSON*)  
+            Contains AddOn values.  
+            </summary>
+          </details>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **supplier**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+          Extra information from the Supplier layer.  
+          </summary>
+        </details>
+      </details>
+
+      <details>
+        <summary>
+        **paymentInfo** (*GeneratedPaymentInfo*)  
+        Specifies the information about the payment generated at Book step.  
+        </summary>
+  
+        <details>
+          <summary>
+          **generatedCard** (*PaymentCardData*)  
+          Specifies the information of the payment card, and the source of it, that has been generated at Book step  
+          </summary>
+  
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **active**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
+            Contains the Payment Card activation date.  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **CVC**&nbsp;<span class="required"> *</span>&nbsp; (*CVC*)  
+            Contains Payment Card security code (CVC).  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **expire**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
+            Contains the Payment Card expiration date.  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **holder**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+            Contains owner's name.  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **id**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+            Contains the generated card ID. It is provided by a third party supplier.  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **number**&nbsp;<span class="required"> *</span>&nbsp; (*CardNumber*)  
+            Contains credit card number.  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **type**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of PaymentCardType*)  
+            Indicates the supported card type.  
+            Possible values:  
+            `VI`  
+          `AX`  
+          `BC`  
+          `CA`  
+          `CB`  
+          `CU`  
+          `DS`  
+          `DC`  
+          `T`  
+          `R`  
+          `N`  
+          `L`  
+          `E`  
+          `JC`  
+          `TO`  
+          `S`  
+          `EC`  
+          `EU`  
+          `TP`  
+          `OP`  
+          `ER`  
+          `XS`  
+          `O`  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **status** (*Enum of PaymentCardStatus*)  
+            Indicates the credit card status.  
+            Possible values:  
+            `CREATED`  
+          `CANCELED`  
+          `EXPIRED`  
+          `ACTIVE`  
+          `UNKNOWN`  
+            </summary>
+          </details>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **id**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+          Payment identification generated by the payment supplier. This field is only returned in Book step, when the card is generated.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **method** (*Enum of GeneratedPaymentMethodType*)  
+          Indicates the payment method used, which depends on the configured payment supplier.  
+          Possible values:  
+          `VIRTUAL_CARD`  
+          </summary>
+        </details>
+
+        <details>
+          <summary>
+          **supplier**&nbsp;<span class="required"> *</span>&nbsp; (*SupplierData*)  
+          Indicates the supplier information responsible of the payment card's creation  
+          </summary>
+  
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **id**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+            Supplier unique ID. Format: integer.  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+            Supplier unique code  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **name**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+            Supplier name  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **isActive**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+            Indicates whether a Supplier is active.
+This is a calculated field, a specific supplier can be activated or deactivated,
+but if its provider is deactivated, the value will be = false  
+            </summary>
+          </details>
+
+          <details>
+            <summary>
+            **provider**&nbsp;<span class="required"> *</span>&nbsp; (*ProviderData*)  
+            Instance to which this supllier is connected  
+            </summary>
+  
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **id**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+              Provider unique ID. Format: integer.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+              Provider unique code  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **name**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+              Provider name  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **isActive**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+              Indicates whether a Provider is active.
+If the Provider is deactivated, all its Suppliers will be deactivated  
+              </summary>
+            </details>
+
+            <details>
+              <summary>
+              **audits**&nbsp;<span class="required"> *</span>&nbsp; (*EntityAuditConnection*)  
+              Audits it shows the provider's change history  
+              </summary>
+  
+              <details>
+                <summary>
+                **edges** (*EntityAuditEdge*)  
+                
+                </summary>
+  
+                <details>
+                  <summary>
+                  **node** (*EntityAudit*)  
+                  
+                  </summary>
+  
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                    **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                    
+                    </summary>
+                  </details>
+
+                  <details>
+                    <summary>
+                    **entityAuditData** (*EntityAuditData*)  
+                    
+                    </summary>
+  
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **id**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                      
+                      </summary>
+                    </details>
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                      
+                      </summary>
+                    </details>
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **entityType**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of EntityType*)  
+                      
+                      Possible values:  
+                      `ACCESS`  
+                    `SUPPLIER`  
+                    `CLIENT`  
+                    `PROVIDER`  
+                    `MEMBER`  
+                    `API_KEY`  
+                      </summary>
+                    </details>
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **actionType**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of ActionType*)  
+                      
+                      Possible values:  
+                      `UPDATE`  
+                    `DELETE`  
+                    `CREATE`  
+                    `ARCHIVE`  
+                    `UNARCHIVE`  
+                    `ACTIVATE`  
+                    `DEACTIVATE`  
+                    `GRANT_TO_GROUPS`  
+                    `REVOKE_FROM_FROUPS`  
+                    `APPEND_PARAMETERS`  
+                    `DELETE_PARAMETERS`  
+                    `APPEND_MARKETS`  
+                    `DELETE_MARKETS`  
+                    `APPEND_RATERULES`  
+                    `DELETE_RATERULES`  
+                    `SET_FIELD`  
+                    `REMOVE_FIELD`  
+                    `ACTIVATE_SPEED`  
+                    `DEACTIVATE_SPEED`  
+                    `SET_IS_PUBLIC`  
+                    `REMOVE_MEMBER_SERVICE_ROLE`  
+                    `UPDATE_MEMBER_SERVICE_ROLE`  
+                    `REFRESH_TOKEN`  
+                      </summary>
+                    </details>
+
+                    <details>
+                      <summary>
+                      **auditDetails** (*AuditDetails*)  
+                      
+                      </summary>
+  
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **field**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                        
+                        </summary>
+                      </details>
+
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **current**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                        
+                        </summary>
+                      </details>
+
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **previous**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                        
+                        </summary>
+                      </details>
+                    </details>
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **modifiedBy**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                      
+                      </summary>
+                    </details>
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **correlationID** (*String*)  
+                      
+                      </summary>
+                    </details>
+                  </details>
+
+                  <details>
+                    <summary>
+                    **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*AdviseMessage*)  
+                    
+                    </summary>
+  
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                      AM code: The following codes can be returned:  
+                      </summary>
+                    </details>
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **description**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                      Error description  
+                      </summary>
+                    </details>
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **level**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of AdviseMessageLevel*)  
+                      Indicates the level of importance of the message.
+Possible values: ERROR, WARN, INFO.  
+                      Possible values:  
+                      `WARN`  
+                    `ERROR`  
+                    `INFO`  
+                      </summary>
+                    </details>
+
+                    <details>
+                      <summary>
+                      **external** (*ExternalMessage*)  
+                      Specify the external message.  
+                      </summary>
+  
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **code** (*String*)  
+                        External code.  
+                        </summary>
+                      </details>
+
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **message**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                        External message.  
+                        </summary>
+                      </details>
+                    </details>
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **correlationID**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                      Identifier to investigate the cause of the error.  
+                      </summary>
+                    </details>
+                  </details>
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                    **createdAt**&nbsp;<span class="required"> *</span>&nbsp; (*Time*)  
+                    
+                    </summary>
+                  </details>
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                    **updatedAt**&nbsp;<span class="required"> *</span>&nbsp; (*Time*)  
+                    
+                    </summary>
+                  </details>
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                    **deletedAt** (*Time*)  
+                    
+                    </summary>
+                  </details>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **cursor**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                  
+                  </summary>
+                </details>
+              </details>
+
+              <details>
+                <summary>
+                **pageInfo**&nbsp;<span class="required"> *</span>&nbsp; (*PageInfo*)  
+                
+                </summary>
+  
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **hasNextPage**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+                  
+                  </summary>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **hasPreviousPage**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+                  
+                  </summary>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **startCursor** (*String*)  
+                  
+                  </summary>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **endCursor** (*String*)  
+                  
+                  </summary>
+                </details>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                
+                </summary>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **totalCount**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+                
+                </summary>
+              </details>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **connectionType**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of ProviderConnectionType*)  
+              Indicates connection type of Supplier  
+              Possible values:  
+              `PULL`  
+            `PUSH`  
+              </summary>
+            </details>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **serviceApi**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+            ServiceAPI indicates the type of the connection
+          1. hotel
+          2. transportation
+          3. car
+          4. transfers
+          5. activities
+          6. virtualaccount
+          7. payment
+          8. package
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **api**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of APIName*)  
+            API name for service API  
+            Possible values:  
+            `HOTEL`  
+          `TRANSPORTATION`  
+          `CAR`  
+          `TRANSFERS`  
+          `ACTIVITIES`  
+          `VIRTUALACCOUNT`  
+          `PAYMENT`  
+          `PACKAGE`  
+            </summary>
+          </details>
+
+          <details>
+            <summary>
+            **owner** (*Organization*)  
+            Organization that owns the Supplier  
+            </summary>
+  
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+              
+              </summary>
+            </details>
+
+            <details>
+              <summary>
+              **organizationData** (*OrganizationData*)  
+              
+              </summary>
+  
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **id**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                
+                </summary>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                
+                </summary>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **label** (*String*)  
+                
+                </summary>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **type**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of GroupType*)  
+                
+                Possible values:  
+                `ROOT`  
+              `ORG`  
+              `GROUP`  
+              `TEAM`  
+              `FOLDER`  
+              `PRODUCT`  
+              `RESOURCE`  
+              `SPECIFIC_RESOURCE`  
+                </summary>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **info** (*String*)  
+                
+                </summary>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **crmID** (*String*)  
+                
+                </summary>
+              </details>
+
+              <details>
+                <summary>
+                **crmData** (*CompanyCrmData*)  
+                
+                </summary>
+  
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **crmID**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                  
+                  </summary>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **connectionType**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of ConnectionType*)  
+                  
+                  Possible values:  
+                  `HOTEL_X_BUYER_ONLY`  
+                `HOTEL_LEGACY_BUYER_ONLY`  
+                `CHANNEL_X_BUYER_ONLY`  
+                `HOTEL_PULL_LEGACY_SELLER_ONLY`  
+                `HOTEL_PULL_SELLER_GENERIC`  
+                `HOTEL_PUSH_LEGACY_SELLER_ONLY`  
+                `HOTEL_PUSH_SELLER_GENERIC`  
+                `DMC_X`  
+                `FLIGHTS_LEGACY_SELLER_ONLY`  
+                `PAYMENT_LEGACY_SELLER_ONLY`  
+                `B2B_VIRTUAL_AGENCY_TOOL_BUYER_ONLY`  
+                `TRANSPORTATION_FLIGHT_LEGACY_BUYER_ONLY`  
+                `FLIGHT_X_BUYER_ONLY`  
+                `DIRECT_X`  
+                `DISTRIBUTE`  
+                `INVENTORY`  
+                `ACTIVITIES_LEGACY`  
+                `CARS_LEGACY`  
+                `TRANSFERS_LEGACY`  
+                `VIRTUAL_ACCOUNT_LEGACY`  
+                  </summary>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **contract**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of Contract*)  
+                  
+                  Possible values:  
+                  `CONTRACT_TCP`  
+                `CONTRACT_AFFILIATE`  
+                `CONTRACT_RESELLER`  
+                `ANNEX_POWER_BUYER`  
+                `ANNEX_PREMIUM_SELLER`  
+                `ANNEX_SELECTIVE_PREMIUM_SELLER`  
+                `ANNEX_STANDARD_SELLER`  
+                `ANNEX_STANDARD_BUYER`  
+                `ANNEX_PREFERRED_SELLER`  
+                  </summary>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **techPlatformName** (*String*)  
+                  
+                  </summary>
+                </details>
+              </details>
+
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **isPublic** (*Boolean*)  
+                
+                </summary>
+              </details>
+
+              <details>
+                <summary>
+                **children** (*GroupConnection*)  
+                Only responses folders.(non-hierarchically)  
+                </summary>
+  
+                <details>
+                  <summary>
+                  **edges** (*GroupEdge*)  
+                  
+                  </summary>
+  
+                  <details>
+                    <summary>
+                    **node** (*Group*)  
+                    
+                    </summary>
+  
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                      
+                      </summary>
+                    </details>
+
+                    <details>
+                      <summary>
+                      **groupData** (*GroupData*)  
+                      
+                      </summary>
+  
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **id**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                        
+                        </summary>
+                      </details>
+
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                        
+                        </summary>
+                      </details>
+
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **label** (*String*)  
+                        
+                        </summary>
+                      </details>
+
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **folder** (*String*)  
+                        
+                        </summary>
+                      </details>
+
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **type**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                        
+                        </summary>
+                      </details>
+
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **info** (*String*)  
+                        
+                        </summary>
+                      </details>
+
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **isPublic**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+                        
+                        </summary>
+                      </details>
+
+
+
+
+
+                      <details>
+                        <summary>
+                        **owner** (*Member*)  
+                        
+                        </summary>
+  
+                        <details style={{ pointerEvents: "none" }}>
+                          <summary>
+                          **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                          
+                          </summary>
+                        </details>
+
+                        <details>
+                          <summary>
+                          **memberData** (*MemberData*)  
+                          
+                          </summary>
+  
+                          <details style={{ pointerEvents: "none" }}>
+                            <summary>
+                            **id**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                            
+                            </summary>
+                          </details>
+
+                          <details style={{ pointerEvents: "none" }}>
+                            <summary>
+                            **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                            
+                            </summary>
+                          </details>
+
+                          <details style={{ pointerEvents: "none" }}>
+                            <summary>
+                            **label** (*String*)  
+                            
+                            </summary>
+                          </details>
+
+                          <details style={{ pointerEvents: "none" }}>
+                            <summary>
+                            **isActive**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+                            Can members does queries in the platform?  
+                            </summary>
+                          </details>
+
+                          <details style={{ pointerEvents: "none" }}>
+                            <summary>
+                            **firstName** (*String*)  
+                            
+                            </summary>
+                          </details>
+
+                          <details style={{ pointerEvents: "none" }}>
+                            <summary>
+                            **lastName** (*String*)  
+                            
+                            </summary>
+                          </details>
+
+                          <details>
+                            <summary>
+                            **crmData** (*CrmData*)  
+                            CRM specific data  
+                            </summary>
+  
+                            <details style={{ pointerEvents: "none" }}>
+                              <summary>
+                              **crmID** (*String*)  
+                              
+                              </summary>
+                            </details>
+
+                            <details style={{ pointerEvents: "none" }}>
+                              <summary>
+                              **contactImportance** (*String*)  
+                              
+                              </summary>
+                            </details>
+
+                            <details style={{ pointerEvents: "none" }}>
+                              <summary>
+                              **companyRole** (*String*)  
+                              
+                              </summary>
+                            </details>
+                          </details>
+
+
+                          <details>
+                            <summary>
+                            **roles** (*RoleConnection*)  
+                            which roles the member has in?  
+                            </summary>
+  
+                            <details>
+                              <summary>
+                              **edges** (*RoleEdge*)  
+                              
+                              </summary>
+  
+                              <details>
+                                <summary>
+                                **node** (*Role*)  
+                                
+                                </summary>
+  
+                                <details style={{ pointerEvents: "none" }}>
+                                  <summary>
+                                  **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                                  
+                                  </summary>
+                                </details>
+
+                                <details>
+                                  <summary>
+                                  **roleData** (*RoleData*)  
+                                  
+                                  </summary>
+  
+                                  <details style={{ pointerEvents: "none" }}>
+                                    <summary>
+                                    **id**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                                    
+                                    </summary>
+                                  </details>
+
+                                  <details style={{ pointerEvents: "none" }}>
+                                    <summary>
+                                    **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                                    
+                                    </summary>
+                                  </details>
+
+                                  <details style={{ pointerEvents: "none" }}>
+                                    <summary>
+                                    **type**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of RoleType*)  
+                                    
+                                    Possible values:  
+                                    `VIEWER`  
+                                  `EDITOR`  
+                                  `ADMIN`  
+                                  `EXECUTOR`  
+                                  `SPECIFIC`  
+                                    </summary>
+                                  </details>
+
+                                  <details style={{ pointerEvents: "none" }}>
+                                    <summary>
+                                    **isEditable**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+                                    
+                                    </summary>
+                                  </details>
+
+                                  <details style={{ pointerEvents: "none" }}>
+                                    <summary>
+                                    **label** (*String*)  
+                                    
+                                    </summary>
+                                  </details>
+
+                                  <details style={{ pointerEvents: "none" }}>
+                                    <summary>
+                                    **isCreate**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+                                    Has resource Create permission?  
+                                    </summary>
+                                  </details>
+
+                                  <details style={{ pointerEvents: "none" }}>
+                                    <summary>
+                                    **isRead**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+                                    Has resource Create permission?  
+                                    </summary>
+                                  </details>
+
+                                  <details style={{ pointerEvents: "none" }}>
+                                    <summary>
+                                    **isUpdate**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+                                    Has resource Update permission?  
+                                    </summary>
+                                  </details>
+
+                                  <details style={{ pointerEvents: "none" }}>
+                                    <summary>
+                                    **isDelete**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+                                    Has resource Delete permission?  
+                                    </summary>
+                                  </details>
+
+                                  <details style={{ pointerEvents: "none" }}>
+                                    <summary>
+                                    **isEnable**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+                                    Is role enabled or not?  
+                                    </summary>
+                                  </details>
+
+                                  <details style={{ pointerEvents: "none" }}>
+                                    <summary>
+                                    **isExecutable**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+                                    Has resource Executable permission?  
+                                    </summary>
+                                  </details>
+
+                                  <details style={{ pointerEvents: "none" }}>
+                                    <summary>
+                                    **isSpecial**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+                                    Has any other non-basic permission/s?  
+                                    </summary>
+                                  </details>
+
+                                  <details style={{ pointerEvents: "none" }}>
+                                    <summary>
+                                    **special** (*String*)  
+                                    Special permission  
+                                    </summary>
+                                  </details>
+
+                                  <details>
+                                    <summary>
+                                    **resources** (*ResourceConnection*)  
+                                    Resources used  
+                                    </summary>
+  
+                                    <details>
+                                      <summary>
+                                      **edges** (*ResourceEdge*)  
+                                      
+                                      </summary>
+  
+                                      <details>
+                                        <summary>
+                                        **node** (*Resource*)  
+                                        
+                                        </summary>
+  
+                                        <details style={{ pointerEvents: "none" }}>
+                                          <summary>
+                                          **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                                          
+                                          </summary>
+                                        </details>
+
+                                        <details>
+                                          <summary>
+                                          **resourceData** (*ResourceData*)  
+                                          
+                                          </summary>
+  
+                                          <details style={{ pointerEvents: "none" }}>
+                                            <summary>
+                                            **id**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                                            
+                                            </summary>
+                                          </details>
+
+                                          <details style={{ pointerEvents: "none" }}>
+                                            <summary>
+                                            **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                                            
+                                            </summary>
+                                          </details>
+
+                                          <details style={{ pointerEvents: "none" }}>
+                                            <summary>
+                                            **isEditable**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+                                            
+                                            </summary>
+                                          </details>
+
+                                          <details style={{ pointerEvents: "none" }}>
+                                            <summary>
+                                            **label** (*String*)  
+                                            
+                                            </summary>
+                                          </details>
+
+                                          <details>
+                                            <summary>
+                                            **apis** (*APIConnection*)  
+                                            which API have asigned this resource?  
+                                            </summary>
+  
+                                            <details>
+                                              <summary>
+                                              **edges** (*APIEdge*)  
+                                              
+                                              </summary>
+  
+                                              <details>
+                                                <summary>
+                                                **node** (*API*)  
+                                                
+                                                </summary>
+  
+                                                <details style={{ pointerEvents: "none" }}>
+                                                  <summary>
+                                                  **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                                                  
+                                                  </summary>
+                                                </details>
+
+                                                <details style={{ pointerEvents: "none" }}>
+                                                  <summary>
+                                                  **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                                                  
+                                                  </summary>
+                                                </details>
+
+                                                <details>
+                                                  <summary>
+                                                  **apiData** (*APIData*)  
+                                                  
+                                                  </summary>
+  
+                                                  <details style={{ pointerEvents: "none" }}>
+                                                    <summary>
+                                                    **id**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                                                    
+                                                    </summary>
+                                                  </details>
+
+                                                  <details style={{ pointerEvents: "none" }}>
+                                                    <summary>
+                                                    **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                                                    
+                                                    </summary>
+                                                  </details>
+
+                                                  <details style={{ pointerEvents: "none" }}>
+                                                    <summary>
+                                                    **label** (*String*)  
+                                                    
+                                                    </summary>
+                                                  </details>
+
+                                                  <details>
+                                                    <summary>
+                                                    **errorCatalog**&nbsp;<span class="required"> *</span>&nbsp; (*ErrorCatalog*)  
+                                                    
+                                                    </summary>
+  
+                                                    <details style={{ pointerEvents: "none" }}>
+                                                      <summary>
+                                                      **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                                                      
+                                                      </summary>
+                                                    </details>
+
+                                                    <details style={{ pointerEvents: "none" }}>
+                                                      <summary>
+                                                      **description**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                                                      
+                                                      </summary>
+                                                    </details>
+
+                                                    <details style={{ pointerEvents: "none" }}>
+                                                      <summary>
+                                                      **type**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                                                      
+                                                      </summary>
+                                                    </details>
+
+                                                    <details style={{ pointerEvents: "none" }}>
+                                                      <summary>
+                                                      **level**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                                                      
+                                                      </summary>
+                                                    </details>
+                                                  </details>
+
+                                                  <details>
+                                                    <summary>
+                                                    **operations** (*OperationConnection*)  
+                                                    
+                                                    </summary>
+  
+                                                    <details>
+                                                      <summary>
+                                                      **edges** (*OperationEdge*)  
+                                                      
+                                                      </summary>
+  
+                                                      <details>
+                                                        <summary>
+                                                        **node** (*Operation*)  
+                                                        
+                                                        </summary>
+  
+                                                        <details style={{ pointerEvents: "none" }}>
+                                                          <summary>
+                                                          **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                                                          
+                                                          </summary>
+                                                        </details>
+
+                                                        <details style={{ pointerEvents: "none" }}>
+                                                          <summary>
+                                                          **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                                                          
+                                                          </summary>
+                                                        </details>
+
+                                                        <details>
+                                                          <summary>
+                                                          **operationData** (*OperationData*)  
+                                                          
+                                                          </summary>
+  
+                                                          <details style={{ pointerEvents: "none" }}>
+                                                            <summary>
+                                                            **id**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                                                            
+                                                            </summary>
+                                                          </details>
+
+                                                          <details style={{ pointerEvents: "none" }}>
+                                                            <summary>
+                                                            **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                                                            
+                                                            </summary>
+                                                          </details>
+
+                                                          <details style={{ pointerEvents: "none" }}>
+                                                            <summary>
+                                                            **label** (*String*)  
+                                                            
+                                                            </summary>
+                                                          </details>
+
+
+                                                          <details style={{ pointerEvents: "none" }}>
+                                                            <summary>
+                                                            **types**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of OperationType*)  
+                                                            
+                                                            Possible values:  
+                                                            `SEARCH`  
+                                                          `QUOTE`  
+                                                          `BOOKING`  
+                                                          `CANCEL`  
+                                                          `SCHEDULER`  
+                                                          `CREATE`  
+                                                          `READ`  
+                                                          `UPDATE`  
+                                                          `DELETE`  
+                                                          `EXECUTE`  
+                                                          `OTHER`  
+                                                            </summary>
+                                                          </details>
+                                                        </details>
+
+                                                        <details style={{ pointerEvents: "none" }}>
+                                                          <summary>
+                                                          **createdAt**&nbsp;<span class="required"> *</span>&nbsp; (*Time*)  
+                                                          
+                                                          </summary>
+                                                        </details>
+
+                                                        <details style={{ pointerEvents: "none" }}>
+                                                          <summary>
+                                                          **updatedAt**&nbsp;<span class="required"> *</span>&nbsp; (*Time*)  
+                                                          
+                                                          </summary>
+                                                        </details>
+                                                      </details>
+
+                                                      <details style={{ pointerEvents: "none" }}>
+                                                        <summary>
+                                                        **cursor**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                                                        
+                                                        </summary>
+                                                      </details>
+                                                    </details>
+
+                                                    <details style={{ pointerEvents: "none" }}>
+                                                      <summary>
+                                                      **pageInfo**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                                                      
+                                                      </summary>
+                                                    </details>
+
+                                                    <details style={{ pointerEvents: "none" }}>
+                                                      <summary>
+                                                      **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                                                      
+                                                      </summary>
+                                                    </details>
+
+                                                    <details style={{ pointerEvents: "none" }}>
+                                                      <summary>
+                                                      **totalCount**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+                                                      
+                                                      </summary>
+                                                    </details>
+                                                  </details>
+                                                </details>
+
+                                                <details style={{ pointerEvents: "none" }}>
+                                                  <summary>
+                                                  **createdAt**&nbsp;<span class="required"> *</span>&nbsp; (*Time*)  
+                                                  
+                                                  </summary>
+                                                </details>
+
+                                                <details style={{ pointerEvents: "none" }}>
+                                                  <summary>
+                                                  **updatedAt**&nbsp;<span class="required"> *</span>&nbsp; (*Time*)  
+                                                  
+                                                  </summary>
+                                                </details>
+                                              </details>
+
+                                              <details style={{ pointerEvents: "none" }}>
+                                                <summary>
+                                                **cursor**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                                                
+                                                </summary>
+                                              </details>
+                                            </details>
+
+                                            <details style={{ pointerEvents: "none" }}>
+                                              <summary>
+                                              **pageInfo**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                                              
+                                              </summary>
+                                            </details>
+                                          </details>
+
+                                        </details>
+
+                                        <details style={{ pointerEvents: "none" }}>
+                                          <summary>
+                                          **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                                          List of advise messages.  
+                                          </summary>
+                                        </details>
+
+                                        <details style={{ pointerEvents: "none" }}>
+                                          <summary>
+                                          **createdAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+                                          Date created  
+                                          </summary>
+                                        </details>
+
+                                        <details style={{ pointerEvents: "none" }}>
+                                          <summary>
+                                          **updatedAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+                                          Date updated  
+                                          </summary>
+                                        </details>
+                                      </details>
+
+                                      <details style={{ pointerEvents: "none" }}>
+                                        <summary>
+                                        **cursor**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                                        
+                                        </summary>
+                                      </details>
+                                    </details>
+
+                                    <details style={{ pointerEvents: "none" }}>
+                                      <summary>
+                                      **pageInfo**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                                      
+                                      </summary>
+                                    </details>
+                                  </details>
+                                </details>
+
+                                <details style={{ pointerEvents: "none" }}>
+                                  <summary>
+                                  **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                                  List of advise messages.  
+                                  </summary>
+                                </details>
+
+                                <details style={{ pointerEvents: "none" }}>
+                                  <summary>
+                                  **createdAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+                                  Date created  
+                                  </summary>
+                                </details>
+
+                                <details style={{ pointerEvents: "none" }}>
+                                  <summary>
+                                  **updatedAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+                                  Date updated  
+                                  </summary>
+                                </details>
+                              </details>
+
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **cursor**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                                
+                                </summary>
+                              </details>
+                            </details>
+
+                            <details style={{ pointerEvents: "none" }}>
+                              <summary>
+                              **pageInfo**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                              
+                              </summary>
+                            </details>
+                          </details>
+
+                          <details>
+                            <summary>
+                            **macroPermissions** (*MacroPermissionsConnection*)  
+                            
+                            </summary>
+  
+                            <details>
+                              <summary>
+                              **edges** (*MacroPermissionEdge*)  
+                              
+                              </summary>
+  
+                              <details>
+                                <summary>
+                                **node** (*MacroPermission*)  
+                                
+                                </summary>
+  
+                                <details style={{ pointerEvents: "none" }}>
+                                  <summary>
+                                  **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                                  
+                                  </summary>
+                                </details>
+
+                                <details>
+                                  <summary>
+                                  **macroPermissionData** (*MacroPermissionData*)  
+                                  
+                                  </summary>
+  
+                                  <details style={{ pointerEvents: "none" }}>
+                                    <summary>
+                                    **id**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                                    
+                                    </summary>
+                                  </details>
+
+                                  <details style={{ pointerEvents: "none" }}>
+                                    <summary>
+                                    **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                                    
+                                    </summary>
+                                  </details>
+
+                                  <details style={{ pointerEvents: "none" }}>
+                                    <summary>
+                                    **productID**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                                    
+                                    </summary>
+                                  </details>
+
+                                  <details style={{ pointerEvents: "none" }}>
+                                    <summary>
+                                    **group**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                                    
+                                    </summary>
+                                  </details>
+
+                                  <details style={{ pointerEvents: "none" }}>
+                                    <summary>
+                                    **label** (*String*)  
+                                    
+                                    </summary>
+                                  </details>
+
+                                  <details>
+                                    <summary>
+                                    **permissions** (*Permission*)  
+                                    
+                                    </summary>
+  
+                                    <details style={{ pointerEvents: "none" }}>
+                                      <summary>
+                                      **role**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                                      
+                                      </summary>
+                                    </details>
+
+                                    <details style={{ pointerEvents: "none" }}>
+                                      <summary>
+                                      **resource**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                                      
+                                      </summary>
+                                    </details>
+
+                                    <details style={{ pointerEvents: "none" }}>
+                                      <summary>
+                                      **api**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                                      
+                                      </summary>
+                                    </details>
+                                  </details>
+                                </details>
+
+                                <details style={{ pointerEvents: "none" }}>
+                                  <summary>
+                                  **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                                  
+                                  </summary>
+                                </details>
+
+                                <details style={{ pointerEvents: "none" }}>
+                                  <summary>
+                                  **createdAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+                                  
+                                  </summary>
+                                </details>
+
+                                <details style={{ pointerEvents: "none" }}>
+                                  <summary>
+                                  **updatedAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+                                  
+                                  </summary>
+                                </details>
+                              </details>
+
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **cursor**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                                
+                                </summary>
+                              </details>
+                            </details>
+
+                            <details style={{ pointerEvents: "none" }}>
+                              <summary>
+                              **pageInfo**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                              
+                              </summary>
+                            </details>
+                          </details>
+
+                          <details>
+                            <summary>
+                            **organizationMemberRoles**&nbsp;<span class="required"> *</span>&nbsp; (*OrganizationMemberRole*)  
+                            
+                            </summary>
+  
+                            <details style={{ pointerEvents: "none" }}>
+                              <summary>
+                              **organization**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                              
+                              </summary>
+                            </details>
+
+                            <details style={{ pointerEvents: "none" }}>
+                              <summary>
+                              **role**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of RoleMemberType*)  
+                              
+                              Possible values:  
+                              `ADMIN`  
+                            `GUEST`  
+                            `EDITOR`  
+                            `VIEWER`  
+                              </summary>
+                            </details>
+                          </details>
+
+                          <details style={{ pointerEvents: "none" }}>
+                            <summary>
+                            **phone** (*String*)  
+                            
+                            </summary>
+                          </details>
+                        </details>
+
+                        <details style={{ pointerEvents: "none" }}>
+                          <summary>
+                          **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                          List of advise messages.  
+                          </summary>
+                        </details>
+
+                        <details style={{ pointerEvents: "none" }}>
+                          <summary>
+                          **createdAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+                          Date created  
+                          </summary>
+                        </details>
+
+                        <details style={{ pointerEvents: "none" }}>
+                          <summary>
+                          **updatedAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+                          Date updated  
+                          </summary>
+                        </details>
+
+                        <details style={{ pointerEvents: "none" }}>
+                          <summary>
+                          **deletedAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+                          Date deleted. This value is used to include archived members.  
+                          </summary>
+                        </details>
+                      </details>
+
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **isEditable**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+                        
+                        </summary>
+                      </details>
+
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **productId** (*Int*)  
+                        
+                        </summary>
+                      </details>
+
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **resourceId** (*Int*)  
+                        
+                        </summary>
+                      </details>
+
+
+                      <details>
+                        <summary>
+                        **members** (*MemberConnection*)  
+                        Only responses members in this group  
+                        </summary>
+  
+                        <details>
+                          <summary>
+                          **edges** (*MemberEdge*)  
+                          
+                          </summary>
+  
+
+                          <details style={{ pointerEvents: "none" }}>
+                            <summary>
+                            **cursor**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                            
+                            </summary>
+                          </details>
+                        </details>
+
+                        <details style={{ pointerEvents: "none" }}>
+                          <summary>
+                          **pageInfo**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                          
+                          </summary>
+                        </details>
+
+                        <details style={{ pointerEvents: "none" }}>
+                          <summary>
+                          **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                          List of advise messages.  
+                          </summary>
+                        </details>
+
+                        <details style={{ pointerEvents: "none" }}>
+                          <summary>
+                          **totalCount**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+                          Identifies the total count of items in the connection.
+                          </summary>
+                        </details>
+                      </details>
+
+
+                      <details>
+                        <summary>
+                        **managedGroups** (*ManagedGroupConnection*)  
+                        Responses all managed groups by this group.  
+                        </summary>
+  
+                        <details>
+                          <summary>
+                          **edges** (*ManagedGroupEdge*)  
+                          
+                          </summary>
+  
+                          <details>
+                            <summary>
+                            **node** (*ManagedGroup*)  
+                            
+                            </summary>
+  
+                            <details style={{ pointerEvents: "none" }}>
+                              <summary>
+                              **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                              
+                              </summary>
+                            </details>
+
+                            <details>
+                              <summary>
+                              **managedGroupData** (*ManagedGroupData*)  
+                              
+                              </summary>
+  
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                                
+                                </summary>
+                              </details>
+
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **group**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                                
+                                </summary>
+                              </details>
+
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **api**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                                
+                                </summary>
+                              </details>
+
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **resource**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                                
+                                </summary>
+                              </details>
+
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **role**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                                
+                                </summary>
+                              </details>
+                            </details>
+
+                            <details style={{ pointerEvents: "none" }}>
+                              <summary>
+                              **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                              List of advise messages.  
+                              </summary>
+                            </details>
+
+                            <details style={{ pointerEvents: "none" }}>
+                              <summary>
+                              **createdAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+                              Date created  
+                              </summary>
+                            </details>
+
+                            <details style={{ pointerEvents: "none" }}>
+                              <summary>
+                              **updatedAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+                              Date updated  
+                              </summary>
+                            </details>
+                          </details>
+
+                          <details style={{ pointerEvents: "none" }}>
+                            <summary>
+                            **cursor**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                            
+                            </summary>
+                          </details>
+                        </details>
+
+                        <details style={{ pointerEvents: "none" }}>
+                          <summary>
+                          **pageInfo**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                          
+                          </summary>
+                        </details>
+                      </details>
+
+
+                      <details>
+                        <summary>
+                        **accesses** (*AccessConnection*)  
+                        Access resources in a group  
+                        </summary>
+  
+                        <details>
+                          <summary>
+                          **edges** (*AccessEdge*)  
+                          
+                          </summary>
+  
+                          <details>
+                            <summary>
+                            **node** (*Access*)  
+                            
+                            </summary>
+  
+                            <details style={{ pointerEvents: "none" }}>
+                              <summary>
+                              **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                              
+                              </summary>
+                            </details>
+
+                            <details>
+                              <summary>
+                              **accessData** (*AccessData*)  
+                              
+                              </summary>
+  
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **id**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                                Unique ID identifier  
+                                </summary>
+                              </details>
+
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                                Unique AccessConfiguration identifier  
+                                </summary>
+                              </details>
+
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **name**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                                Access descriptive name  
+                                </summary>
+                              </details>
+
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **isActive**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+                                Indicates if Access is active  
+                                </summary>
+                              </details>
+
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **isTest**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+                                Indicates if Access can be used for testing or not  
+                                </summary>
+                              </details>
+
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **isShared**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+                                Indicates if Access is Shared  
+                                </summary>
+                              </details>
+
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **isOpenAccess**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+                                Indicates if Access is open to all partners.  
+                                </summary>
+                              </details>
+
+                              <details>
+                                <summary>
+                                **supplier**&nbsp;<span class="required"> *</span>&nbsp; (*Supplier*)  
+                                Supplier for this Access  
+                                </summary>
+  
+                                <details style={{ pointerEvents: "none" }}>
+                                  <summary>
+                                  **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                                  Supplier unique code  
+                                  </summary>
+                                </details>
+
+
+                                <details style={{ pointerEvents: "none" }}>
+                                  <summary>
+                                  **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                                  List of advise messages.  
+                                  </summary>
+                                </details>
+
+                                <details style={{ pointerEvents: "none" }}>
+                                  <summary>
+                                  **createdAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+                                  Supplier creation date  
+                                  </summary>
+                                </details>
+
+                                <details style={{ pointerEvents: "none" }}>
+                                  <summary>
+                                  **updatedAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+                                  Supplier last update date  
+                                  </summary>
+                                </details>
+
+                                <details style={{ pointerEvents: "none" }}>
+                                  <summary>
+                                  **deletedAt** (*DateTime*)  
+                                  Supplier deleted date  
+                                  </summary>
+                                </details>
+                              </details>
+
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **user** (*String*)  
+                                User code to connect to supplier  
+                                </summary>
+                              </details>
+
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **password** (*String*)  
+                                Password for this Access. To retrieve this field, ADMIN permissions are required.
+Otherwise, the value will be null.  
+                                </summary>
+                              </details>
+
+                              <details>
+                                <summary>
+                                **urls** (*Urls*)  
+                                Specific URLs  
+                                </summary>
+  
+                                <details style={{ pointerEvents: "none" }}>
+                                  <summary>
+                                  **search** (*URI*)  
+                                  Specific URL for Availability method.  
+                                  </summary>
+                                </details>
+
+                                <details style={{ pointerEvents: "none" }}>
+                                  <summary>
+                                  **quote** (*URI*)  
+                                  Specific URL for Quote method.  
+                                  </summary>
+                                </details>
+
+                                <details style={{ pointerEvents: "none" }}>
+                                  <summary>
+                                  **book** (*URI*)  
+                                  Specific URL for Book method.  
+                                  </summary>
+                                </details>
+
+                                <details style={{ pointerEvents: "none" }}>
+                                  <summary>
+                                  **generic** (*URI*)  
+                                  Supplier URL used for multiple methods.  
+                                  </summary>
+                                </details>
+                              </details>
+
+                              <details>
+                                <summary>
+                                **parameters** (*Parameter*)  
+                                List of parameters for additional information  
+                                </summary>
+  
+                                <details style={{ pointerEvents: "none" }}>
+                                  <summary>
+                                  **key**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                                  Contains the keyword/Id to identify a parameter.
+This information is mandatory.  
+                                  </summary>
+                                </details>
+
+                                <details style={{ pointerEvents: "none" }}>
+                                  <summary>
+                                  **value**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                                  Contains the parameter values.
+This information is mandatory.  
+                                  </summary>
+                                </details>
+                              </details>
+
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **markets**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                                Markets allowed for the Access  
+                                </summary>
+                              </details>
+
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **rateRules**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of RateRulesType*)  
+                                Business rule types for the Access  
+                                Possible values:  
+                                `NORMAL`  
+                              `PACKAGE`  
+                              `OLDER55`  
+                              `OLDER60`  
+                              `OLDER65`  
+                              `CANARY_RESIDENT`  
+                              `BALEARIC_RESIDENT`  
+                              `LARGE_FAMILY`  
+                              `HONEYMOON`  
+                              `PUBLIC_SERVANT`  
+                              `UNEMPLOYED`  
+                              `NON_REFUNDABLE`  
+                              `MOBILE`  
+                              `WARRANTY`  
+                              `ESSENTIAL_WORKER`  
+                              `NEGOTIATED`  
+                              `CUSTOM`  
+                                </summary>
+                              </details>
+
+
+
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **updateDescriptiveInfo**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+                                Refresh time to update Despriptive Info
+                                </summary>
+                              </details>
+
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **descriptiveInfoLimit**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+                                Limit on DescriptiveInfo; 0 denotates no limit
+                                </summary>
+                              </details>
+
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **isSchedulerActive** (*Boolean*)  
+                                True if scheduler is active  
+                                </summary>
+                              </details>
+
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **updateList**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+                                Refresh time to update other batch lists
+                                </summary>
+                              </details>
+
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **updateDateRange**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                                Range on update date  
+                                </summary>
+                              </details>
+
+
+
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **audits**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                                Audits it shows the accesses change history  
+                                </summary>
+                              </details>
+                            </details>
+
+                            <details style={{ pointerEvents: "none" }}>
+                              <summary>
+                              **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                              List of advise messages.  
+                              </summary>
+                            </details>
+
+                            <details style={{ pointerEvents: "none" }}>
+                              <summary>
+                              **createdAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+                              Date created  
+                              </summary>
+                            </details>
+
+                            <details style={{ pointerEvents: "none" }}>
+                              <summary>
+                              **updatedAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+                              Date updated  
+                              </summary>
+                            </details>
+
+                            <details style={{ pointerEvents: "none" }}>
+                              <summary>
+                              **deletedAt** (*DateTime*)  
+                              Access deleted date  
+                              </summary>
+                            </details>
+                          </details>
+
+                          <details style={{ pointerEvents: "none" }}>
+                            <summary>
+                            **cursor**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                            
+                            </summary>
+                          </details>
+                        </details>
+
+                        <details style={{ pointerEvents: "none" }}>
+                          <summary>
+                          **pageInfo**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                          
+                          </summary>
+                        </details>
+
+                        <details style={{ pointerEvents: "none" }}>
+                          <summary>
+                          **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                          List of advise messages.  
+                          </summary>
+                        </details>
+
+                        <details style={{ pointerEvents: "none" }}>
+                          <summary>
+                          **totalCount**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+                          Identifies the total count of items in the connection.
+                          </summary>
+                        </details>
+                      </details>
+
+                      <details>
+                        <summary>
+                        **suppliers** (*SupplierConnection*)  
+                        Supplier resources in a group  
+                        </summary>
+  
+                        <details>
+                          <summary>
+                          **edges** (*SupplierEdge*)  
+                          Supplier edges of Supplier connection  
+                          </summary>
+  
+
+                          <details style={{ pointerEvents: "none" }}>
+                            <summary>
+                            **cursor**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                            Cursor to the next item  
+                            </summary>
+                          </details>
+                        </details>
+
+                        <details style={{ pointerEvents: "none" }}>
+                          <summary>
+                          **pageInfo**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                          Page info of the connection  
+                          </summary>
+                        </details>
+
+                        <details style={{ pointerEvents: "none" }}>
+                          <summary>
+                          **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                          List of advise messages.  
+                          </summary>
+                        </details>
+
+                        <details style={{ pointerEvents: "none" }}>
+                          <summary>
+                          **totalCount**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+                          Identifies the total count of items in the connection.
+                          </summary>
+                        </details>
+                      </details>
+
+                      <details>
+                        <summary>
+                        **clients** (*ClientConnection*)  
+                        Clients resources in a group  
+                        </summary>
+  
+                        <details>
+                          <summary>
+                          **edges** (*ClientEdge*)  
+                          Client edges of client connection  
+                          </summary>
+  
+                          <details>
+                            <summary>
+                            **node** (*Client*)  
+                            Client item  
+                            </summary>
+  
+                            <details style={{ pointerEvents: "none" }}>
+                              <summary>
+                              **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                              Client unique code, format: "cli000"  
+                              </summary>
+                            </details>
+
+                            <details>
+                              <summary>
+                              **clientData** (*ClientData*)  
+                              Extended Client information  
+                              </summary>
+  
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **id**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                                ID unique identifier of a Client. Format: integer.  
+                                </summary>
+                              </details>
+
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                                Client unique code. Format: "cliX" where X = ID  
+                                </summary>
+                              </details>
+
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **name**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                                Client unique name  
+                                </summary>
+                              </details>
+
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **password** (*String*)  
+                                Client's passowrd  
+                                </summary>
+                              </details>
+
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **legacyPassword** (*String*)  
+                                
+                                </summary>
+                              </details>
+
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **isActive**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+                                Indicates whether a Client is active or inactive  
+                                </summary>
+                              </details>
+
+
+
+
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **audits**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                                Audits it shows the client's change history  
+                                </summary>
+                              </details>
+                            </details>
+
+                            <details style={{ pointerEvents: "none" }}>
+                              <summary>
+                              **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                              List of advise messages.  
+                              </summary>
+                            </details>
+
+                            <details style={{ pointerEvents: "none" }}>
+                              <summary>
+                              **createdAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+                              Client creation date  
+                              </summary>
+                            </details>
+
+                            <details style={{ pointerEvents: "none" }}>
+                              <summary>
+                              **updatedAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+                              Client last update date  
+                              </summary>
+                            </details>
+
+                            <details style={{ pointerEvents: "none" }}>
+                              <summary>
+                              **deletedAt** (*DateTime*)  
+                              Client deleted date  
+                              </summary>
+                            </details>
+                          </details>
+
+                          <details style={{ pointerEvents: "none" }}>
+                            <summary>
+                            **cursor**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                            Cursor to the next item  
+                            </summary>
+                          </details>
+                        </details>
+
+                        <details style={{ pointerEvents: "none" }}>
+                          <summary>
+                          **pageInfo**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                          Page info of the connection  
+                          </summary>
+                        </details>
+
+                        <details style={{ pointerEvents: "none" }}>
+                          <summary>
+                          **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                          List of advise messages.  
+                          </summary>
+                        </details>
+
+                        <details style={{ pointerEvents: "none" }}>
+                          <summary>
+                          **totalCount**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+                          Identifies the total count of items in the connection.
+                          </summary>
+                        </details>
+                      </details>
+
+
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **isBuyer**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+                        
+                        </summary>
+                      </details>
+
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **isSeller**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+                        
+                        </summary>
+                      </details>
+
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **deleted_at** (*DateTime*)  
+                        
+                        </summary>
+                      </details>
+                    </details>
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                      List of advise messages.  
+                      </summary>
+                    </details>
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **createdAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+                      Date created  
+                      </summary>
+                    </details>
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **updatedAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+                      Date updated  
+                      </summary>
+                    </details>
+                  </details>
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                    **cursor**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                    
+                    </summary>
+                  </details>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **pageInfo**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                  
+                  </summary>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                  List of advise messages.  
+                  </summary>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **totalCount**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+                  Identifies the total count of items in the connection.
+                  </summary>
+                </details>
+              </details>
+
+
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **owner**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                
+                </summary>
+              </details>
+
+              <details>
+                <summary>
+                **contacts**&nbsp;<span class="required"> *</span>&nbsp; (*OrganizationContact*)  
+                Differents contacts in a organization.  
+                </summary>
+  
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **type**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of OrganizationContactType*)  
+                  
+                  Possible values:  
+                  `ADMIN`  
+                `BILLING`  
+                `SALES`  
+                `TECHNICAL`  
+                `OTHER`  
+                  </summary>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **user**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                  
+                  </summary>
+                </details>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **isEditable**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+                
+                </summary>
+              </details>
+
+
+
+              <details>
+                <summary>
+                **products** (*ProductConnection*)  
+                Products asign to a organization  
+                </summary>
+  
+                <details>
+                  <summary>
+                  **edges** (*ProductEdge*)  
+                  
+                  </summary>
+  
+                  <details>
+                    <summary>
+                    **node** (*Product*)  
+                    
+                    </summary>
+  
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                      
+                      </summary>
+                    </details>
+
+                    <details>
+                      <summary>
+                      **productData**&nbsp;<span class="required"> *</span>&nbsp; (*ProductData*)  
+                      
+                      </summary>
+  
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **id**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                        
+                        </summary>
+                      </details>
+
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                        
+                        </summary>
+                      </details>
+
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **label** (*String*)  
+                        
+                        </summary>
+                      </details>
+
+
+
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **adviseMessageCatalog**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                        
+                        </summary>
+                      </details>
+                    </details>
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                      List of advise messages.  
+                      </summary>
+                    </details>
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **createdAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+                      Date created  
+                      </summary>
+                    </details>
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **updatedAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+                      Date updated  
+                      </summary>
+                    </details>
+                  </details>
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                    **cursor**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                    
+                    </summary>
+                  </details>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **pageInfo**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                  
+                  </summary>
+                </details>
+              </details>
+
+
+
+
+
+              <details>
+                <summary>
+                **domains**&nbsp;<span class="required"> *</span>&nbsp; (*Domain*)  
+                
+                </summary>
+  
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                  
+                  </summary>
+                </details>
+
+                <details>
+                  <summary>
+                  **domainData** (*DomainData*)  
+                  
+                  </summary>
+  
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                    **id**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                    
+                    </summary>
+                  </details>
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                    **name**&nbsp;<span class="required"> *</span>&nbsp; (*DomainName*)  
+                    
+                    </summary>
+                  </details>
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                    **organization**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                    
+                    </summary>
+                  </details>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                  
+                  </summary>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **createdAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+                  
+                  </summary>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **updatedAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+                  
+                  </summary>
+                </details>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **template** (*String*)  
+                
+                </summary>
+              </details>
+
+
+
+
+              <details>
+                <summary>
+                **primaryPartner**&nbsp;<span class="required"> *</span>&nbsp; (*Partner*)  
+                
+                </summary>
+  
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                  
+                  </summary>
+                </details>
+
+                <details>
+                  <summary>
+                  **partnerData** (*PartnerData*)  
+                  
+                  </summary>
+  
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                    **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                    cusXYZ..  
+                    </summary>
+                  </details>
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                    **name**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                    
+                    </summary>
+                  </details>
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                    **isActive** (*Boolean*)  
+                    
+                    </summary>
+                  </details>
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                    **friendlyName** (*String*)  
+                    
+                    </summary>
+                  </details>
+
+                  <details>
+                    <summary>
+                    **organizations** (*OrganizationConnection*)  
+                    
+                    </summary>
+  
+                    <details>
+                      <summary>
+                      **edges** (*OrganizationEdge*)  
+                      
+                      </summary>
+  
+
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **cursor**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                        
+                        </summary>
+                      </details>
+                    </details>
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **pageInfo**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                      
+                      </summary>
+                    </details>
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                      List of advise messages.  
+                      </summary>
+                    </details>
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **totalCount**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+                      Identifies the total count of items in the connection.
+                      </summary>
+                    </details>
+                  </details>
+
+                  <details>
+                    <summary>
+                    **agents**&nbsp;<span class="required"> *</span>&nbsp; (*CustomerAgent*)  
+                    Differents agents from TravelgateX  
+                    </summary>
+  
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **type**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of CustomerAgentType*)  
+                      
+                      Possible values:  
+                      `KAM`  
+                    `TECH_KAM`  
+                    `CUSTOMER_CARE`  
+                    `OTHER`  
+                      </summary>
+                    </details>
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **user**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                      user@xmltravelgate.com o user@travelgatex.com  
+                      </summary>
+                    </details>
+                  </details>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                  List of advise messages.  
+                  </summary>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **createdAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+                  Date created  
+                  </summary>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **updatedAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+                  Date updated  
+                  </summary>
+                </details>
+              </details>
+
+              <details>
+                <summary>
+                **allPartners**&nbsp;<span class="required"> *</span>&nbsp; (*PartnerConnection*)  
+                
+                </summary>
+  
+                <details>
+                  <summary>
+                  **edges** (*PartnerEdge*)  
+                  
+                  </summary>
+  
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                    **cursor**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                    
+                    </summary>
+                  </details>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **pageInfo**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                  
+                  </summary>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                  List of advise messages.  
+                  </summary>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **totalCount**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+                  Identifies the total count of items in the connection.
+                  </summary>
+                </details>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **isBuyer**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+                
+                </summary>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **isSeller**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+                
+                </summary>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **deleted_at** (*DateTime*)  
+                
+                </summary>
+              </details>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              List of advise messages.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **createdAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+              Date created  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **updatedAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+              Date updated  
+              </summary>
+            </details>
+          </details>
+
+          <details>
+            <summary>
+            **groupContent** (*GroupContent*)  
+            Grouping of static content related to this Supplier.  
+            </summary>
+  
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+              GroupContent unique code  
+              </summary>
+            </details>
+
+            <details>
+              <summary>
+              **groupContentData** (*GroupContentData*)  
+              Extended GroupContent information  
+              </summary>
+  
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **id**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                GroupContent unique ID. Format: integer.  
+                </summary>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                GroupContent unique code  
+                </summary>
+              </details>
+
+              <details>
+                <summary>
+                **context**&nbsp;<span class="required"> *</span>&nbsp; (*Context*)  
+                GroupContent related Context  
+                </summary>
+  
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                  Context unique code  
+                  </summary>
+                </details>
+
+                <details>
+                  <summary>
+                  **contextData** (*ContextData*)  
+                  Extended Context information  
+                  </summary>
+  
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                    **id**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                    Context unique ID. Format: integer.  
+                    </summary>
+                  </details>
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                    **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                    Context unique code  
+                    </summary>
+                  </details>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                  List of advise messages.  
+                  </summary>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **createdAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+                  Context creation date  
+                  </summary>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **updatedAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+                  Context last update date  
+                  </summary>
+                </details>
+              </details>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              List of advise messages.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **createdAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+              GroupContent creation date  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **updatedAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+              GroupContent last update date  
+              </summary>
+            </details>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **supplierGroup** (*ID*)  
+            This is a calculated field that responds to groupContent > code  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **context** (*String*)  
+            This is a calculated field that responds to groupContent > groupContentData > context > code  
+            </summary>
+          </details>
+
+
+
+
+
+          <details>
+            <summary>
+            **system**&nbsp;<span class="required"> *</span>&nbsp; (*System*)  
+            
+            </summary>
+  
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+              
+              </summary>
+            </details>
+
+            <details>
+              <summary>
+              **systemData** (*SystemData*)  
+              
+              </summary>
+  
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                ID identifier of a System  
+                </summary>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **name**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                System complete name  
+                </summary>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **isActive**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+                Indicates whether a System is active or inactive  
+                </summary>
+              </details>
+
+
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **suppliers**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                Obtain all suppliers for a filter.  
+                </summary>
+              </details>
+            </details>
+
+            <details>
+              <summary>
+              **error**&nbsp;<span class="required"> *</span>&nbsp; (*Error*)  
+              Errors that abort services  
+              </summary>
+  
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **code**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                Error code.  
+                </summary>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **type**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                Error type.  
+                </summary>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **description**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                Error description.  
+                </summary>
+              </details>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **createdAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+              Date created  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **updatedAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+              Date updated  
+              </summary>
+            </details>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **audits**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+            Audits it shows the supplier's change history  
+            </summary>
+          </details>
+
+          <details>
+            <summary>
+            **serviceIntegrationData** (*ServiceIntegrationData*)  
+            Service Integration Data  
+            </summary>
+  
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **type** (*Enum of ServiceIntegrationType*)  
+              
+              Possible values:  
+              `SITH`  
+            `WORKER`  
+            `CONNECTORS`  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **group** (*String*)  
+              
+              </summary>
+            </details>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **isPublic**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+            
+            </summary>
+          </details>
+
+          <details>
+            <summary>
+            **giata** (*GiataSupplierConfiguration*)  
+            
+            </summary>
+  
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **giataType** (*String*)  
+              
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **giataCode** (*String*)  
+              
+              </summary>
+            </details>
+          </details>
+        </details>
+      </details>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **errors**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+      Errors that abort services  
+      </summary>
+    </details>
+
+    <details>
+      <summary>
+      **warnings**&nbsp;<span class="required"> *</span>&nbsp; (*Warning*)  
+      Potentially harmful situations or errors that won't force the service to abort.
+To identify if it is blocked one, you can check our documentation regards this matter.  
+      </summary>
+  
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **code**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+        Warning code  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **type**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+        Warning type  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **description**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+        Warning description  
+        </summary>
+      </details>
+    </details>
+</details>

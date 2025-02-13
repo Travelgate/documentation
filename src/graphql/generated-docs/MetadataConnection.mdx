@@ -1,0 +1,1010 @@
+
+<details>
+  <summary>
+  **MetadataConnection** (*OBJECT*)  
+  Metadata definition  
+  </summary>
+  
+  
+    <details>
+      <summary>
+      **edges** (*MetadataEdge*)  
+      contains informations of each metadata requested  
+      </summary>
+  
+      <details>
+        <summary>
+        **node** (*Metadata*)  
+        contain information of each metadata requested  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+          Metadata supplier ID  
+          </summary>
+        </details>
+
+        <details>
+          <summary>
+          **metadataData** (*MetadataData*)  
+          Metadata data  
+          </summary>
+  
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **supplierCode**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+            Requested supplier code  
+            </summary>
+          </details>
+
+          <details>
+            <summary>
+            **search**&nbsp;<span class="required"> *</span>&nbsp; (*MetadataSearch*)  
+            Search metadata  
+            </summary>
+  
+            <details>
+              <summary>
+              **destinations**&nbsp;<span class="required"> *</span>&nbsp; (*MetadataSearchDestinations*)  
+              Contains information regarding the destinations  
+              </summary>
+  
+              <details>
+                <summary>
+                **maxNumberHotels**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedInt*)  
+                Maximum number of hotels that can be requested.  
+                </summary>
+  
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
+                  Last reviewed date  
+                  </summary>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **value**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+                  
+                  </summary>
+                </details>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **recommendedNumberHotels**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                Recomended number of hotels.  
+                </summary>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **maxNumberCities**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                Maximum number of cities that can be requested.  
+                </summary>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **recommendedNumberCities**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                Recomended number of cities.  
+                </summary>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **maxNumberZones**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                Maximum number of zones that can be requested.  
+                </summary>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **recommendedNumberZones**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                Recomended number of zones.  
+                </summary>
+              </details>
+
+              <details>
+                <summary>
+                **hotelSameDestinationRestriction**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
+                Required all hotels from same destination  
+                </summary>
+  
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
+                  Last reviewed date  
+                  </summary>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+                  
+                  </summary>
+                </details>
+              </details>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **allowsCurrency**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              If true, it is possible to request the currency.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **implementsCombination**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              Informs whether the integration allows room combination or not.  
+              </summary>
+            </details>
+
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **release**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              Minimum days required in between booking date and checking date ( days in advance ). If the value is zero then there is no limitation.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **minimumStay**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              Minimum number of days required for booking. If the value is zero then there is no limitation.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **maxStay**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              Maximum number of days allowed for booking.  
+              </summary>
+            </details>
+
+            <details>
+              <summary>
+              **roomCandidates**&nbsp;<span class="required"> *</span>&nbsp; (*MetadataRoomCandidates*)  
+              Contains information about the restrictions of the rooms.  
+              </summary>
+  
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **maxNumberRoomCandidates**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                Maximum number of room candidates that can be requested in the same search request.  
+                </summary>
+              </details>
+
+              <details>
+                <summary>
+                **paxTypeRangeInRoomCandidates** (*ReviwedPaxTypeRangeInRoomCandidates*)  
+                Contains information about the age restrictions of the guests in a room.  
+                </summary>
+  
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
+                  Last reviewed date  
+                  </summary>
+                </details>
+
+                <details>
+                  <summary>
+                  **candidates**&nbsp;<span class="required"> *</span>&nbsp; (*MetadataCandidate*)  
+                  Guest restrictions for each candidate type in a room.  
+                  </summary>
+  
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                    **min**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+                    Minimum required number of guest of this type.
+                    </summary>
+                  </details>
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                    **max**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+                    Maximum number of guest of this type allowed.
+                    </summary>
+                  </details>
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                    **type**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of HotelPaxType*)  
+                    Candidate classification type.(Adult, Child, Infant)  
+                    Possible values:  
+                    `ADULT`  
+                  `CHILD`  
+                  `INFANT`  
+                    </summary>
+                  </details>
+                </details>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **maxPaxInRoomCandidates**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                Maximum number paxs in same room that can be requested in the same search request.  
+                </summary>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **maxPaxInAllRooms**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                Total amount of paxs that can be requested in the same search request.  
+                </summary>
+              </details>
+
+              <details>
+                <summary>
+                **requiredRoomWithSamePaxConfiguration**&nbsp;<span class="required"> *</span>&nbsp; (*RequiredRoomWithSamePaxConfiguration*)  
+                Indicates whether all of the distributions must have the same configuration.  
+                </summary>
+  
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **samePaxNumber**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                  Indicates whether it is necessary that the number of guests be the same in all of the configurations.  
+                  </summary>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **samePaxAge**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                  Indicates whether all of the guests in a particular distribution must be the same age.  
+                  </summary>
+                </details>
+              </details>
+
+              <details>
+                <summary>
+                **rateRules**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedRateRule*)  
+                List of rate rule types supported by the supplie  
+                </summary>
+  
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
+                  Informs of the date when the field was last reviewed.  
+                  </summary>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **value**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of RateRulesType*)  
+                  
+                  Possible values:  
+                  `NORMAL`  
+                `PACKAGE`  
+                `OLDER55`  
+                `OLDER60`  
+                `OLDER65`  
+                `CANARY_RESIDENT`  
+                `BALEARIC_RESIDENT`  
+                `LARGE_FAMILY`  
+                `HONEYMOON`  
+                `PUBLIC_SERVANT`  
+                `UNEMPLOYED`  
+                `NON_REFUNDABLE`  
+                `MOBILE`  
+                `WARRANTY`  
+                `ESSENTIAL_WORKER`  
+                `NEGOTIATED`  
+                `CUSTOM`  
+                  </summary>
+                </details>
+              </details>
+
+              <details>
+                <summary>
+                **beds**&nbsp;<span class="required"> *</span>&nbsp; (*MetadataBeds*)  
+                Information about beds.  
+                </summary>
+  
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **informNumberOfUnits**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                  Indicates the number of units available per room.  
+                  </summary>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **informSharedBed**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                  Informs in Search response if beds in the room are shared.  
+                  </summary>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **informBedType**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                  Informs if the supplier returns the beds types.  
+                  </summary>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **informNumberOfBeds**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                  Informs if the supplier returns the number of beds for each room.  
+                  </summary>
+                </details>
+              </details>
+
+              <details>
+                <summary>
+                **ageRange**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedAgeRanges*)  
+                The age range used by the supplier.  
+                </summary>
+  
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
+                  Last reviewed date  
+                  </summary>
+                </details>
+
+                <details>
+                  <summary>
+                  **ages**&nbsp;<span class="required"> *</span>&nbsp; (*AgeRange*)  
+                  list of  type of passenger with the age range  
+                  </summary>
+  
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                    **min**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+                    min age allowed
+                    </summary>
+                  </details>
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                    **max**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+                    max age allowed
+                    </summary>
+                  </details>
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                    **type**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                    PaxType  
+                    </summary>
+                  </details>
+                </details>
+              </details>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **informBindingPrice**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              Supplier returns binding PVPs.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **informCancelPolicies**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              Returns cancellation policies at search step  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **informRoomCancelPolicies**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              Returns cancellation policies at room level.  
+              </summary>
+            </details>
+
+            <details>
+              <summary>
+              **timeZone**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedTimeZone*)  
+              Specifies the timezone in UTC in which the cancellation policies are located.  
+              </summary>
+  
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
+                Last reviewed date  
+                </summary>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of TimeZoneType*)  
+                
+                Possible values:  
+                `UNKNOWN`  
+              `HOTEL_LOCAL_TIME`  
+              `UTC_MINUS_12`  
+              `UTC_MINUS_11`  
+              `UTC_MINUS_10`  
+              `UTC_MINUS_9`  
+              `UTC_MINUS_8`  
+              `UTC_MINUS_7`  
+              `UTC_MINUS_6`  
+              `UTC_MINUS_5`  
+              `UTC_MINUS_4`  
+              `UTC_MINUS_3`  
+              `UTC_MINUS_2`  
+              `UTC_MINUS_1`  
+              `UTC_0`  
+              `UTC_1`  
+              `UTC_2`  
+              `UTC_3`  
+              `UTC_4`  
+              `UTC_5`  
+              `UTC_6`  
+              `UTC_7`  
+              `UTC_8`  
+              `UTC_9`  
+              `UTC_10`  
+              `UTC_11`  
+              `UTC_12`  
+              `UTC_13`  
+              `UTC_14`  
+                </summary>
+              </details>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **informRemarks**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              Space available for any remarks or comments aimed at the client.  
+              </summary>
+            </details>
+
+            <details>
+              <summary>
+              **paymentTypes**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedPaymentType*)  
+              List of payment types accepted by the supplier with their reviewed date  
+              </summary>
+  
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
+                Last reviewed date  
+                </summary>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of PaymentType*)  
+                Indicates the types of payment suppoted  
+                Possible values:  
+                `MERCHANT`  
+              `DIRECT`  
+              `CARD_BOOKING`  
+              `CARD_CHECK_IN`  
+                </summary>
+              </details>
+            </details>
+
+            <details>
+              <summary>
+              **languages**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedText*)  
+              List of languages supported  
+              </summary>
+  
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
+                
+                </summary>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **value**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                
+                </summary>
+              </details>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **informDailyPrice**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              Informs if the supplier returns the daily price  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **informDailyRatePlan**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              Informs if the supplier returns the daily rate.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **informPromotions**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              If true, the supplier returns the promotions(offers) applied.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **informNRFRateByRoom**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              The supplier can inform in Search if the room is non-refundable.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **informSurcharges**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              Informs if the supplier returns surcharges.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **informRoomSurcharges**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              Returns surcharges at room level.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **informHotelName**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              inform Hotel name at search step  
+              </summary>
+            </details>
+
+          </details>
+
+          <details>
+            <summary>
+            **quote**&nbsp;<span class="required"> *</span>&nbsp; (*MetadataQuote*)  
+            Quote metadata  
+            </summary>
+  
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **informBindingPrice**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              Informs if the price is binding in Quote response.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **informNRFRate**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              The supplier can inform in Quote if the rate is non-refundable.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **informRemarks**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              Returns remarks.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **informCancelPolicies**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              Informs cancellation policies.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **informCancelPoliciesDescription**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              Specifies if the supplier informs the cancel policies in free text.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **timeZone**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              Specifies if the supplier inform the cancel policies in free text  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **informSurcharges**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              Informs if the supplier returns surcharges.  
+              </summary>
+            </details>
+
+          </details>
+
+          <details>
+            <summary>
+            **book**&nbsp;<span class="required"> *</span>&nbsp; (*MetadataBook*)  
+            Book metadata  
+            </summary>
+  
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **allowsDeltaPrice**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              Allows a margin stipulated by the client for booking with a higher price (delta).  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **requiredAllPassengers**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              Required data for all passengers (names and surnames).  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **allowsRemarks**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              Informs if the supplier allows send remarks.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **informBillingSupplier**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              Informs if the supplier billing code.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **informHotelReference**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              Informs if the supplier returns the hotel reference number.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **informPrice**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              The supplier informs the book price.  
+              </summary>
+            </details>
+
+          </details>
+
+          <details>
+            <summary>
+            **booking**&nbsp;<span class="required"> *</span>&nbsp; (*MetadataBooking*)  
+            Booking metadata  
+            </summary>
+  
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **queryableBySupplierReference**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              Specifies if booking can be performed using supplier reference.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **queryableByClientReference**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              Specifies if booking can be performed using client reference.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **queryableByCreationDate**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              Specifies if booking can be performed using creation dates.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **queryableByCheckinDate**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              Specifies if booking can be performed using check in dates.  
+              </summary>
+            </details>
+
+
+
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **requiresCheckInDateInReferences**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              Specifies if the supplier requires check-in date in reference.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **requiresCheckOutDateInReferences**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              Specifies if the supplier requires check-out date in reference.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **requiresReservationDateInReferences**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              Specifies if the supplier requires the reservation date in reference.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **timeZone**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              Specifies the timezone in UTC in which the cancellation policies are located.  
+              </summary>
+            </details>
+          </details>
+
+          <details>
+            <summary>
+            **cancel**&nbsp;<span class="required"> *</span>&nbsp; (*MetadataCancel*)  
+            Cancel metadata  
+            </summary>
+  
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **mutableBySupplierReference**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              The supplier allows cancellation with supplier reference.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **mutableByClientReference**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              The supplier allows cancellation with client reference.  
+              </summary>
+            </details>
+
+          </details>
+
+          <details>
+            <summary>
+            **amendBoard** (*MetadataAmendBoard*)  
+            Amend Board metadata  
+            </summary>
+  
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **allowsAmendBoard**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              
+              </summary>
+            </details>
+          </details>
+
+          <details>
+            <summary>
+            **amendDates** (*MetadataAmendDates*)  
+            Amend Dates metadata  
+            </summary>
+  
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **allowsAmendCheckIn**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **allowsAmendCheckOut**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              
+              </summary>
+            </details>
+          </details>
+
+          <details>
+            <summary>
+            **amendPaxes** (*MetadataAmendPaxes*)  
+            Amend Paxes metadata  
+            </summary>
+  
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **allowsDeletePaxes**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **allowsAmendAge**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **allowsAddPaxes**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **allowsAmendPersonalTitle**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **allowsAmendName**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **allowsAmendSurname**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              
+              </summary>
+            </details>
+          </details>
+
+          <details>
+            <summary>
+            **amendRemarks** (*MetadataAmendRemarks*)  
+            Amend Remarks metadata  
+            </summary>
+  
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **allowsAmendRemarks**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              
+              </summary>
+            </details>
+          </details>
+
+          <details>
+            <summary>
+            **amendRooms** (*MetadataAmendRooms*)  
+            Amend Rooms metadata  
+            </summary>
+  
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **implementsAmendRoom**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **requireSameGuestsInAllOccupancies**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **requireSameRooms**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **allowsAddRooms**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **allowsDeleteRooms**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **allowsAmendSurname**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              
+              </summary>
+            </details>
+          </details>
+
+          <details>
+            <summary>
+            **hotels** (*MetadataContent*)  
+            Contains information regarding Hotels, Hotels returns a list of hotels all information available (code, name,
+address, phone, etc.) for each hotel. Return null is not implemented  
+            </summary>
+  
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **languages**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              
+              </summary>
+            </details>
+          </details>
+
+
+
+
+
+
+
+        </details>
+
+        <details>
+          <summary>
+          **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*AdviseMessage*)  
+          List of messages  
+          </summary>
+  
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+            AM code: The following codes can be returned:  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **description**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+            Error description  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **level**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of AdviseMessageLevel*)  
+            Indicates the level of importance of the message.
+Possible values: ERROR, WARN, INFO.  
+            Possible values:  
+            `WARN`  
+          `ERROR`  
+          `INFO`  
+            </summary>
+          </details>
+
+          <details>
+            <summary>
+            **external** (*ExternalMessage*)  
+            Specify the external message.  
+            </summary>
+  
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **code** (*String*)  
+              External code.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **message**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+              External message.  
+              </summary>
+            </details>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **correlationID**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+            Identifier to investigate the cause of the error.  
+            </summary>
+          </details>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **createdAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+          Date created  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **updatedAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+          Date updated  
+          </summary>
+        </details>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **cursor**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+        cursor to the next item, used for pagination  
+        </summary>
+      </details>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+      List of messages, contain error message, such as invalid input, connection error  
+      </summary>
+    </details>
+</details>

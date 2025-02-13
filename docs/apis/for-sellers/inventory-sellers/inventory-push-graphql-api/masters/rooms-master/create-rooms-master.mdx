@@ -2,6 +2,9 @@
 sidebar_position: 2
 ---
 
+import RoomsRs from "../../../../../../../src/graphql/generated-docs/RoomsRs.mdx";
+import InventoryRoomMasterCreateInput from "../../../../../../../src/graphql/generated-docs/InventoryRoomMasterCreateInput.mdx";
+
 # Create Room Master
 
 ## Mutation Overview
@@ -55,152 +58,10 @@ The mutation returns the created room object along with success status and possi
 
 ## Mutation Inputs
 
-
-<details>
-  <summary>
-  **InventoryRoomMasterCreateInput** (*INPUT_OBJECT*)  
-  Room master create input data  
-  </summary>
-  
-  <details style={{ pointerEvents: "none" }}>
-    <summary>
-    **code**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-    Room code  
-    </summary>
-  </details>
-
-  <details style={{ pointerEvents: "none" }}>
-    <summary>
-    **name**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-    Room Name  
-    </summary>
-  </details>
-
-  <details style={{ pointerEvents: "none" }}>
-    <summary>
-    **clientCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-    Client Code  
-    </summary>
-  </details>
-  
-</details>
-
-
-
+<InventoryRoomMasterCreateInput />
 ## Returned Fields
 
-
-<details>
-  <summary>
-  **RoomsRs** (*OBJECT*)  
-  Represents the response data for retrieving rooms.  
-  </summary>
-  
-  
-  <details>
-    <summary>
-    **adviseMessages** (*AdviseMessage*)  
-    Collection of advise messages.  
-    </summary>
-
-    <details style={{ pointerEvents: "none" }}>
-      <summary>
-      **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-      AM code: The following codes can be returned:  
-      </summary>
-    </details>
-
-    <details style={{ pointerEvents: "none" }}>
-      <summary>
-      **type**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-      Error type: The following types are valid:[type]  
-      </summary>
-    </details>
-
-    <details style={{ pointerEvents: "none" }}>
-      <summary>
-      **description**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-      Error description  
-      </summary>
-    </details>
-
-    <details style={{ pointerEvents: "none" }}>
-      <summary>
-      **level**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of AdviseMessageLevel*)  
-      Indicates the level of importance of the message.
-Possible values: ERROR, WARN, INFO.  
-      Possible values:  
-      `WARN`  
-      `ERROR`  
-      `INFO`  
-      </summary>
-    </details>
-
-    <details>
-      <summary>
-      **external** (*ExternalMessage*)  
-      Specify the external message.  
-      </summary>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **code** (*String*)  
-        External code.  
-        </summary>
-      </details>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **message**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-        External message.  
-        </summary>
-      </details>
-    </details>
-
-    <details style={{ pointerEvents: "none" }}>
-      <summary>
-      **correlationID**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-      Identifier to investigate the cause of the error.  
-      </summary>
-    </details>
-  </details>
-
-  <details>
-    <summary>
-    **rooms** (*InventoryRoom*)  
-    Collection of rooms.  
-    </summary>
-
-    <details style={{ pointerEvents: "none" }}>
-      <summary>
-      **id**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
-      Unique identifier for the room.  
-      </summary>
-    </details>
-
-    <details style={{ pointerEvents: "none" }}>
-      <summary>
-      **code** (*String*)  
-      Code of the room.  
-      </summary>
-    </details>
-
-    <details style={{ pointerEvents: "none" }}>
-      <summary>
-      **name** (*String*)  
-      Name of the room.  
-      </summary>
-    </details>
-  </details>
-
-  <details style={{ pointerEvents: "none" }}>
-    <summary>
-    **success**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-    Indicates whether the response was successful based on the absence of advise messages.  
-    </summary>
-  </details>
-</details>
-
+<RoomsRs />
 
 
 ## Examples

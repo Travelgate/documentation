@@ -2,6 +2,11 @@
 sidebar_position: 2
 ---
 
+import HotelSettingsInput from "../../../../../src/graphql/generated-docs/HotelSettingsInput.mdx";
+import HotelXFilterInput from "../../../../../src/graphql/generated-docs/HotelXFilterInput.mdx";
+import HotelCancelInput from "../../../../../src/graphql/generated-docs/HotelCancelInput.mdx";
+import HotelCancelPayload from "../../../../../src/graphql/generated-docs/HotelCancelPayload.mdx";
+
 import {cancelMutation, cancelByBookingIDVariables, cancelByReferenceVariables} from "../../../../../src/graphql/hotel-x/cancel.mutation";
 
 
@@ -147,6 +152,16 @@ If you receive any of the "common errors" or a status other than "CANCELLED", it
 #### Cancel Penalty
 
 Cancellation always takes into account the day and time of the destination in order to calculate what cancellation policy should be applied. UTC time.
+
+
+## Query Inputs
+
+<HotelSettingsInput />
+<HotelXFilterInput />
+<HotelCancelInput />
+## Returned Fields
+
+<HotelCancelPayload />
 
 
 ## Examples

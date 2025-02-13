@@ -2,6 +2,9 @@
 sidebar_position: 1
 ---
 
+import InventoryLocalitiesFilterInput from "../../../../../../../src/graphql/generated-docs/InventoryLocalitiesFilterInput.mdx";
+import LocalitiesRs from "../../../../../../../src/graphql/generated-docs/LocalitiesRs.mdx";
+
 import {localitiesQuery, localitiesVariables, localitiesByCountryCodesVariables} from "/src/graphql/inventory/static-data/localities.query";
 
 
@@ -60,145 +63,10 @@ The query returns a collection of localities along with success status and possi
 
 ## Query Inputs
 
-
-<details>
-  <summary>
-  **InventoryLocalitiesFilterInput** (*INPUT_OBJECT*)  
-  Localities filter input.  
-  </summary>
-  
-  <details style={{ pointerEvents: "none" }}>
-    <summary>
-    **countryCodes** (*String*)  
-    Country codes of the localities to retrieve. https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2  
-    </summary>
-  </details>
-  
-</details>
-
-
-
+<InventoryLocalitiesFilterInput />
 ## Returned Fields
 
-
-<details>
-  <summary>
-  **LocalitiesRs** (*OBJECT*)  
-  Represents response data for localities.  
-  </summary>
-  
-  
-  <details>
-    <summary>
-    **adviseMessages** (*AdviseMessage*)  
-    Collection of advise messages.  
-    </summary>
-
-    <details style={{ pointerEvents: "none" }}>
-      <summary>
-      **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-      AM code: The following codes can be returned:  
-      </summary>
-    </details>
-
-    <details style={{ pointerEvents: "none" }}>
-      <summary>
-      **type**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-      Error type: The following types are valid:[type]  
-      </summary>
-    </details>
-
-    <details style={{ pointerEvents: "none" }}>
-      <summary>
-      **description**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-      Error description  
-      </summary>
-    </details>
-
-    <details style={{ pointerEvents: "none" }}>
-      <summary>
-      **level**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of AdviseMessageLevel*)  
-      Indicates the level of importance of the message.
-Possible values: ERROR, WARN, INFO.  
-      Possible values:  
-      `WARN`  
-      `ERROR`  
-      `INFO`  
-      </summary>
-    </details>
-
-    <details>
-      <summary>
-      **external** (*ExternalMessage*)  
-      Specify the external message.  
-      </summary>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **code** (*String*)  
-        External code.  
-        </summary>
-      </details>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **message**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-        External message.  
-        </summary>
-      </details>
-    </details>
-
-    <details style={{ pointerEvents: "none" }}>
-      <summary>
-      **correlationID**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-      Identifier to investigate the cause of the error.  
-      </summary>
-    </details>
-  </details>
-
-  <details>
-    <summary>
-    **localities** (*InventoryLocality*)  
-    Collection of localities.  
-    </summary>
-
-    <details style={{ pointerEvents: "none" }}>
-      <summary>
-      **id**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
-      Unique identifier for the locality.  
-      </summary>
-    </details>
-
-    <details style={{ pointerEvents: "none" }}>
-      <summary>
-      **name** (*String*)  
-      Name of the locality.  
-      </summary>
-    </details>
-
-    <details style={{ pointerEvents: "none" }}>
-      <summary>
-      **countryCode** (*String*)  
-      ISO 2-character country code associated with the locality.  
-      </summary>
-    </details>
-
-    <details style={{ pointerEvents: "none" }}>
-      <summary>
-      **unLocode** (*String*)  
-      UN/LOCODE associated with the locality.  
-      </summary>
-    </details>
-  </details>
-
-  <details style={{ pointerEvents: "none" }}>
-    <summary>
-    **success**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-    Indicates whether the response was successful based on the absence of advise messages.  
-    </summary>
-  </details>
-</details>
-
+<LocalitiesRs />
 
 
 ## Examples

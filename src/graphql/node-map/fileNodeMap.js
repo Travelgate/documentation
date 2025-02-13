@@ -93,7 +93,30 @@ const FILE_NODE_MAP = {
 // **Datos Estáticos - Contextos de Inventario**
 "for-buyers/inventory-buyers/inventory-set-up-graphql-api/static-data/inventory-contexts.mdx": ["InventoryContextsFilterInput", "InventoryContextsRs"],
 // **Datos Estáticos - Planes de Comidas**
-"for-buyers/inventory-buyers/inventory-set-up-graphql-api/static-data/mealplans.mdx": ["GetMealPlansRs"]
+"for-buyers/inventory-buyers/inventory-set-up-graphql-api/static-data/mealplans.mdx": ["GetMealPlansRs"],
+
+
+  // API hotelX
+//Flujo de reserva
+"for-buyers/hotel-x-pull-buyers-api/booking-flow/search.mdx": ["HotelCriteriaSearchInput", "HotelSettingsInput", "HotelXFilterSearchInput", "HotelSearch"],
+"for-buyers/hotel-x-pull-buyers-api/booking-flow/quote.mdx": ["HotelCriteriaQuoteInput", "HotelSettingsInput", "HotelXFilterInput", "HotelQuote"],
+"for-buyers/hotel-x-pull-buyers-api/booking-flow/book.mdx": ["HotelBookInput", "HotelSettingsInput", "HotelXFilterInput", "HotelBookPayload"],
+
+//Gestión de reservas
+"for-buyers/hotel-x-pull-buyers-api/booking-management/booking-read.mdx": ["HotelCriteriaBookingInput", "HotelSettingsInput", "HotelXFilterInput", "HotelBooking"],
+"for-buyers/hotel-x-pull-buyers-api/booking-management/cancel.mdx": ["HotelCancelInput", "HotelSettingsInput", "HotelXFilterInput", "HotelCancelPayload"],
+
+//Contenido
+"for-buyers/hotel-x-pull-buyers-api/content/boards.mdx": ["HotelXBoardQueryInput", "BoardConnection"],
+"for-buyers/hotel-x-pull-buyers-api/content/categories.mdx": ["HotelXCategoryQueryInput", "CategoryConnection"],
+"for-buyers/hotel-x-pull-buyers-api/content/hotels.mdx": ["HotelXHotelListInput", "token", "HotelXHotelFilterInput", "HotelConnection"],
+"for-buyers/hotel-x-pull-buyers-api/content/metadata.mdx": ["HotelXMetadataQueryInput", "MetadataConnection"],
+"for-buyers/hotel-x-pull-buyers-api/content/rooms.mdx": ["HotelXRoomQueryInput", "token", " RoomConnection"],
+"for-buyers/hotel-x-pull-buyers-api/content/destinations.mdx": ["HotelXDestinationListInput", "token", "DestinationConnection"],
+
+//One-shot
+"for-buyers/hotel-x-pull-buyers-api/one-shot-booking-flow/onestepquote.mdx": ["HotelOneStepQuoteInput", "HotelSettingsInput", "HotelFilterInput", "HotelOneStepQuote"],
+"for-buyers/hotel-x-pull-buyers-api/one-shot-booking-flow/onestepbook.mdx": ["HotelOneStepBookInput", "HotelSettingsInput", "HotelFilterInput", "HotelOneStepBook"]
 };
 
 module.exports = FILE_NODE_MAP;

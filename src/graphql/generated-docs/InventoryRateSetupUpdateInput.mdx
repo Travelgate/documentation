@@ -1,0 +1,452 @@
+
+<details>
+  <summary>
+  **InventoryRateSetupUpdateInput** (*INPUT_OBJECT*)  
+  Rates setup delete input data  
+  </summary>
+  
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **clientCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+      Client code.  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **supplierCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+      Travelgate Supplier/Channel code.  
+      </summary>
+    </details>
+
+    <details>
+      <summary>
+      **rates**&nbsp;<span class="required"> *</span>&nbsp; (*RateUpdateInput*)  
+      Rates input data. See RateUpdate.  
+      </summary>
+  
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **code**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+        Code associated with the rate.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **baseRateCode** (*String*)  
+        Base rate code of the rate.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **name** (*String*)  
+        Name of the rate.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **active** (*Boolean*)  
+        Indicates whether the rate is active.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **mealPlanIncluded** (*Int*)  
+        Meal plan included in the rate.
+        </summary>
+      </details>
+
+      <details>
+        <summary>
+        **agePolicies** (*AgePoliciesUpdateInput*)  
+        Age policies associated with the rate. See AgePoliciesUpdate.  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **maxAgeInfants** (*Int*)  
+          Maximum age for a baby, not inclusive.
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **freeInfants** (*Boolean*)  
+          If true, babies are free of charge.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **maxAgeChildren** (*Int*)  
+          Maximum age for a child, not inclusive.
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **freeChildren** (*Boolean*)  
+          If true, children are free of charge.  
+          </summary>
+        </details>
+      </details>
+
+      <details>
+        <summary>
+        **paymentPolicies** (*PaymentPoliciesUpdateInput*)  
+        Payment policies associated with the rate. See PaymentPoliciesUpdate.  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **currency** (*Currency*)  
+          Currency of the payment. See Currency.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **commission** (*Float*)  
+          Commission applied for all rooms in this rate, leave value 0 for net price. Only Informative.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **priceIsBinding** (*Boolean*)  
+          Informs if the prices are binding price. Only Informative.  
+          </summary>
+        </details>
+
+        <details>
+          <summary>
+          **acceptedPayments** (*AcceptedPaymentInput*)  
+          Rate Accepted Payments, if not informed it is MerchantPay. See AcceptedPayment.  
+          </summary>
+  
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **type**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of PaymentType*)  
+            
+            Possible values:  
+            `MERCHANT`  
+          `DIRECT`  
+          `CARD_BOOKING`  
+          `CARD_CHECK_IN`  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **cardTypes**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of PaymentCardType*)  
+            
+            Possible values:  
+            `VI`  
+          `AX`  
+          `BC`  
+          `CA`  
+          `CB`  
+          `CU`  
+          `DS`  
+          `DC`  
+          `T`  
+          `R`  
+          `N`  
+          `L`  
+          `E`  
+          `JC`  
+          `TO`  
+          `S`  
+          `EC`  
+          `EU`  
+          `TP`  
+          `OP`  
+          `ER`  
+          `XS`  
+          `O`  
+            </summary>
+          </details>
+        </details>
+      </details>
+
+      <details>
+        <summary>
+        **bookingRules** (*InventoryBookingRulesInput*)  
+        Booking rules associated with the rate. See BookingRules.  
+        </summary>
+  
+        <details>
+          <summary>
+          **bookingWindow** (*InventoryBookingWindowInput*)  
+          Booking Dates for which the rate will be available. Do not send it if you want the rate available for all dates.  
+          </summary>
+  
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **start**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+            Start date of the booking window.  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **end**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+            End date of the booking window.  
+            </summary>
+          </details>
+        </details>
+
+        <details>
+          <summary>
+          **markets** (*InventoryMarketsInput*)  
+          Markets included or excluded. Do not send if the rate is available for all markets. Only informative.  
+          </summary>
+  
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **included** (*String*)  
+            Included markets.  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **excluded** (*String*)  
+            Excluded markets.  
+            </summary>
+          </details>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **rateRule** (*Enum of RatePlanType*)  
+          "NoRatePlanType" indicates absence of a specific rate plan. "LargeFamily" and "PublicServant" denote rates tailored for those groups. "Negotiated" and "Package" signify negotiated rates and package deals, respectively. "CanaryResident" and "BalearicResident" are special rates for residents of the Canary Islands and the Balearic Islands, respectively. Lastly, "HoneyMoon" designates rates intended for honeymooners or couples celebrating their honeymoon.  
+          Possible values:  
+          `NO_RATE_PLAN_TYPE`  
+        `LARGE_FAMILY`  
+        `PUBLIC_SERVANT`  
+        `NEGOTIATED`  
+        `PACKAGE`  
+        `CANARY_RESIDENT`  
+        `BALEARIC_RESIDENT`  
+        `HONEY_MOON`  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **seniorRule** (*Enum of SeniorRate*)  
+          "NoSeniorRate" indicates the absence of a senior rate. "SeniorRate_55", "SeniorRate_60", and "SeniorRate_65" denote rates applicable to individuals aged 55, 60, and 65, respectively. These rates are typically offered to seniors as a special discount or incentive.  
+          Possible values:  
+          `NO_SENIOR_RATE`  
+        `SENIOR_RATE_55`  
+        `SENIOR_RATE_60`  
+        `SENIOR_RATE_65`  
+          </summary>
+        </details>
+      </details>
+
+      <details>
+        <summary>
+        **cancelPolicies** (*CancelPoliciesUpdateInput*)  
+        Cancel policies associated with the rate. See CancelPoliciesUpdate.  
+        </summary>
+  
+        <details>
+          <summary>
+          **baseCancelPolicy** (*InventoryCancelPolicyInput*)  
+          Defines the base cancel policies. Only Informative. See CancelPolicy.  
+          </summary>
+  
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **refundable**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+            Indicates if the rate is refundable.  
+            </summary>
+          </details>
+
+          <details>
+            <summary>
+            **cancelPenalties** (*InventoryCancelPenaltyInput*)  
+            List of penalties applicable for the rate. See CancelPenalty.  
+            </summary>
+  
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **daysBeforeArrival**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+              Number of days prior to arrival day in which this Cancellation policy applies.
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **penaltyType**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of PenaltyType*)  
+              Penalty type. See PenaltyType.  
+              Possible values:  
+              `AMOUNT`  
+            `NIGHTS`  
+            `PERCENTAGE`  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **value**&nbsp;<span class="required"> *</span>&nbsp; (*Float*)  
+              Penalty value.  
+              </summary>
+            </details>
+          </details>
+        </details>
+
+        <details>
+          <summary>
+          **cancelPoliciesByDate** (*InventoryCancelPolicyByDateInput*)  
+          Defines a calendar of cancel policies. Only Informative. See CancelPolicyByDate.  
+          </summary>
+  
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **start**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+            Start date where the cancel policy must apply.  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **end**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+            End date where the cancel policy must apply.  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **cancelPolicy**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+            Cancel policy. See CancelPolicy.  
+            </summary>
+          </details>
+        </details>
+      </details>
+
+      <details>
+        <summary>
+        **amendPolicy** (*AmendPolicyUpdateInput*)  
+        Amend policy associated with the rate. See AmendPolicyUpdate.  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **isAmendable** (*Boolean*)  
+          Indicates whether the policy is amendable.  
+          </summary>
+        </details>
+
+        <details>
+          <summary>
+          **amendPenalties** (*AmendPenaltyInput*)  
+          List of amend penalties associated with the policy. See AmendPenalty.  
+          </summary>
+  
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **daysBeforeArrival**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+            Number of days before arrival.
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **penaltyType**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+            Type of penalty.
+PenaltyType  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **value**&nbsp;<span class="required"> *</span>&nbsp; (*Float*)  
+            Value of the penalty.  
+            </summary>
+          </details>
+        </details>
+      </details>
+
+      <details>
+        <summary>
+        **surcharges** (*InventorySurchargeInput*)  
+        List of surcharges associated with the rate. See Surcharge.  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **chargeType**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of InventoryChargeType*)  
+          Indicates if the surcharge is included or not in the price.  
+          Possible values:  
+          `INCLUDED`  
+        `EXCLUDED`  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **taxType**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of InventoryTaxType*)  
+          The type of tax applied to the surcharge.  
+          Possible values:  
+          `CITY`  
+        `LOCAL`  
+        `RESORT_FEE`  
+        `SUPPLEMENT_TO_BE_PAID_ON_SPOT`  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **value**&nbsp;<span class="required"> *</span>&nbsp; (*Float*)  
+          The value of the surcharge.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **applyType**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of InventoryApplyType*)  
+          The type of application for the surcharge.  
+          Possible values:  
+          `PERCENTAGE`  
+        `AMOUNT`  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **perNight**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+          Indicates whether the surcharge is applied per night.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **perPax**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+          Indicates whether the surcharge is applied per person.  
+          </summary>
+        </details>
+      </details>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **hotelCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+      Code associated with the hotel.  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **contextCode** (*String*)  
+      Context code.  
+      </summary>
+    </details>
+  
+</details>

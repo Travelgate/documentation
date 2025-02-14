@@ -1,0 +1,99 @@
+
+<details>
+  <summary>
+  **CategoriesRs** (*OBJECT*)  
+  Represents a response object for categories.  
+  </summary>
+  
+  
+    <details>
+      <summary>
+      **adviseMessages** (*AdviseMessage*)  
+      List of advise messages.
+AdviseMessage  
+      </summary>
+  
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+        AM code: The following codes can be returned:  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **description**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+        Error description  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **level**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of AdviseMessageLevel*)  
+        Indicates the level of importance of the message.
+Possible values: ERROR, WARN, INFO.  
+        Possible values:  
+        `WARN`  
+      `ERROR`  
+      `INFO`  
+        </summary>
+      </details>
+
+      <details>
+        <summary>
+        **external** (*ExternalMessage*)  
+        Specify the external message.  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **code** (*String*)  
+          External code.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **message**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+          External message.  
+          </summary>
+        </details>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **correlationID**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+        Identifier to investigate the cause of the error.  
+        </summary>
+      </details>
+    </details>
+
+    <details>
+      <summary>
+      **categories** (*InventoryCategory*)  
+      List of categories.
+Category  
+      </summary>
+  
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **id**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+        Category Id.
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **name** (*String*)  
+        Category Name.  
+        </summary>
+      </details>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **success**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+      Indicates whether the operation was successful.  
+      </summary>
+    </details>
+</details>

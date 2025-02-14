@@ -1,0 +1,395 @@
+
+<details>
+  <summary>
+  **HotelBookInput** (*INPUT_OBJECT*)  
+  Offers versatility in book options, with certain fields marked as mandatory (optionRefId, clientReference, holder etc.) and others as optional (language, delta price, payment card etc.). This flexibility empowers you to create a personalized Book Multation, tailoring the requested fields to your specific needs.  
+  </summary>
+  
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **optionRefId**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+      OptionRefID is a unique identifier assigned to each option.
+It is important to note that this identifier should not be modified or used externally, as it is an internal system identifier.
+Additionally, it is crucial to understand that the OptionRefID value should not be interpreted in any other way beyond its use within the system.  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **language** (*Language*)  
+      Language to be used in the request.  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **clientReference**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+      Booking ID in the client's system.  
+      </summary>
+    </details>
+
+    <details>
+      <summary>
+      **deltaPrice** (*DeltaPriceInput*)  
+      Input delta price, indicates price variation permitted by the client
+An error will be returned if the new price does not abide to DeltaPrice. If DeltaPrice is not sent and the integration implements it, we assume that the price range is 0 and the process will continue
+price is lower or equal to the price showed in valuation.
+This field is implemented if its native to the supplier or if another availability/valuation request needs to be done in Reservation. In case the supplier blocks the option in valuation, reservation  
+      </summary>
+  
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **amount** (*Float*)  
+        The amount that will be accepted by the client to be higher than the Quote price. It is returned in the currency of the option.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **percent** (*Float*)  
+        The percentage accepted by the client to be higher than the Quote price.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **applyBoth**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+        If applyBoth = false: Indicates that one of the conditions (amount or percentage) has to meet the criteria before reservation.
+If applyBoth = true: Indicates that the new price cannot exceed the amount or percentage indicated by the client.  
+        </summary>
+      </details>
+    </details>
+
+    <details>
+      <summary>
+      **paymentCard** (*PaymentCardInput*)  
+      If the payment is done by credit card, it's mandatory to specify the payment type and the credit card information.  
+      </summary>
+  
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **type** (*Enum of PaymentCardType*)  
+        Indicates the supported card type, the supported card for this option is shown in Quote step.  
+        Possible values:  
+        `VI`  
+      `AX`  
+      `BC`  
+      `CA`  
+      `CB`  
+      `CU`  
+      `DS`  
+      `DC`  
+      `T`  
+      `R`  
+      `N`  
+      `L`  
+      `E`  
+      `JC`  
+      `TO`  
+      `S`  
+      `EC`  
+      `EU`  
+      `TP`  
+      `OP`  
+      `ER`  
+      `XS`  
+      `O`  
+        </summary>
+      </details>
+
+      <details>
+        <summary>
+        **holder**&nbsp;<span class="required"> *</span>&nbsp; (*HolderInput*)  
+        Contains owner's name.  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **name**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+          The card holder's name.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **surname**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+          The card holder's surname.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **title** (*Enum of PersonalTitleType*)  
+          Holder’s title.  
+          Possible values:  
+          `MR`  
+        `MRS`  
+        `MISS`  
+        `MS`  
+        `NOT_SPECIFIED`  
+          </summary>
+        </details>
+
+        <details>
+          <summary>
+          **contactInfo** (*ContactInfoInput*)  
+          Holder's contact info.  
+          </summary>
+  
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **email** (*Email*)  
+            Email contact  
+            </summary>
+          </details>
+
+          <details>
+            <summary>
+            **phone** (*PhoneInput*)  
+            Phone contact  
+            </summary>
+  
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **countryCode**&nbsp;<span class="required"> *</span>&nbsp; (*DialingCountryCode*)  
+              The combination of one, two or three digits identifying a specific country, countries in an integrated numbering plan, or a specific geographic area (1 to 3 digits)  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **number**&nbsp;<span class="required"> *</span>&nbsp; (*PhoneSubscriberNumber*)  
+              Identifies a subscriber for a particular global service  
+              </summary>
+            </details>
+          </details>
+        </details>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **number**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+        Contains credit card number.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **CVC**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+        Contains credit card CVC.  
+        </summary>
+      </details>
+
+      <details>
+        <summary>
+        **expire**&nbsp;<span class="required"> *</span>&nbsp; (*ExpireDateInput*)  
+        Contains credit card expiration date.  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **month**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+          Month MM
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **year**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+          Year yy
+          </summary>
+        </details>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **isVCC** (*Boolean*)  
+        Indicates if it is a virtual card  
+        </summary>
+      </details>
+
+      <details>
+        <summary>
+        **virtualCreditCard** (*VirtualCreditCardInput*)  
+        Virtual Credit Card data  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **activationDate** (*Date*)  
+          The Date from when the card can be charged  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **deactivationDate** (*Date*)  
+          The date from when the card will no longer be chargeable.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **currentBalance** (*Float*)  
+          The amount which can be charged to the card.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **currencyCode** (*Currency*)  
+          The ISO currency code of the CurrentBalance.  
+          </summary>
+        </details>
+      </details>
+
+      <details>
+        <summary>
+        **threeDomainSecurity** (*ThreeDomainSecurityInput*)  
+        Three Domain Security data  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **version** (*String*)  
+          Three Domain Security Version  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **DSTransactionID** (*String*)  
+          Universally unique transaction identifier assigned by the Directory Server (DS) to identify a single transaction.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **XID** (*String*)  
+          Transaction identifier resulting from authentication processing. Uniquely identifies a 3D Secure check request.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **ECI** (*String*)  
+          Electronic Commerce Indicator  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **CAVV** (*String*)  
+          Cardholder Authentication Verification Value  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **payerResponse** (*String*)  
+          Payer Authentication Response. It is the response to the Payer Authentication Request. The Payer Authentication Response has an XML structure with the information from the response of the authentication, and it contains a digital certificate as a sign of authenticity.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **payerResponseStatus** (*Enum of PayerResponseStatusType*)  
+          Payer Authentication Response status  
+          Possible values:  
+          `AUTHENTICATION_SUCCESS`  
+        `AUTHENTICATION_FAILED`  
+        `AUTHENTICATION_INCOMPLETE`  
+        `TRANSACTION_ATTEMPT_SUCCESS_A`  
+        `TRANSACTION_ATTEMPT_SUCCESS_B`  
+        `AUTHENTICATION_REJECTED`  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **cardEnrolledStatus** (*Enum of ThreeDSCardEnrolledStatusType*)  
+          Result of enrollment status of the service request  
+          Possible values:  
+          `CARD_ENROLLED`  
+        `CARD_NOT_ENROLLED`  
+        `CANT_AUTHENTICATE`  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **merchantName** (*String*)  
+          Merchant Name  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **signatureStatus** (*Enum of ThreeDSSignatureStatusType*)  
+          Signature value  
+          Possible values:  
+          `SIGNATURE_VALIDATED`  
+        `SIGNATURE_NOT_VALIDATED`  
+          </summary>
+        </details>
+      </details>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **remarks** (*String*)  
+      Any customer comments for the supplier to consider.  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **holder**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+      Holder's basic information.  
+      </summary>
+    </details>
+
+    <details>
+      <summary>
+      **rooms**&nbsp;<span class="required"> *</span>&nbsp; (*BookRoomInput*)  
+      Rooms within this option.  
+      </summary>
+  
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **occupancyRefId**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+        The room s reference in the booking
+        </summary>
+      </details>
+
+      <details>
+        <summary>
+        **paxes**&nbsp;<span class="required"> *</span>&nbsp; (*BookPaxInput*)  
+        The list or lists of paxes of the room  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **name**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+          Passenger first  name  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **surname**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+          Passenger last name  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **age**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+          Passenger age on the day of the check-in
+          </summary>
+        </details>
+
+      </details>
+    </details>
+  
+</details>

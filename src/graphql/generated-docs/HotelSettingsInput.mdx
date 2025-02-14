@@ -1,0 +1,331 @@
+
+<details>
+  <summary>
+  **HotelSettingsInput** (*INPUT_OBJECT*)  
+  Settings are the common configurations used to construct requests to the supplier/s. By default,
+we apply the same configuration to all Hotel-X clients in our back system.  
+  </summary>
+  
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **context** (*String*)  
+      Indicates the context of the I/O codes (hotel, board, room and rates)  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **client** (*ID*)  
+      Client name set in TGX, present only if the authorization header is of the JWT type. It is used to modify the user initially set in the preload.  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **timeout** (*Int*)  
+      Specifies the time limit, in milliseconds, for connecting with suppliers. If multiple suppliers are involved, this timeout applies to all of them. If a supplier exceeds this time limit, the connection to that supplier will be cut. However, Travelgate will keep the connection with the client even if this timeout is exceeded.
+    If not set, the value saved in your Hotel-X API default settings will be used.
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **operationTimeout** (*Int*)  
+      Defines the maximum time, in milliseconds, before an operation is cancelled by our system. Once this time is reached, the operation will be aborted and an error will be returned. This timeout is for the Hotel-X layer and should be set to a higher value than the timeout for suppliers. For example, you could specify timeout as 20000ms and operationTimeout as 22000ms. This means that we will send a timeout of 20000ms to the suppliers and will close the connection at 22000ms if the operationTimeout is exceeded. Optional.
+    @deprecated(reason: "deprecated from 2024-11-11.")
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **auditTransactions** (*Boolean*)  
+      Returns all the transactions exchanged with the supplier.  
+      </summary>
+    </details>
+
+    <details>
+      <summary>
+      **businessRules** (*BusinessRulesInput*)  
+      Business rules  
+      </summary>
+  
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **optionsQuota** (*Int*)  
+        The maximum number of options returned per board in the search query. If not set, the value saved in your Hotel-X API default settings will be used.
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **businessRulesType** (*Enum of BusinessRulesType*)  
+        Different business rules to filter the returned options.  
+        Possible values:  
+        `CHEAPER_AMOUNT`  
+      `ROOM_TYPE`  
+        </summary>
+      </details>
+    </details>
+
+    <details>
+      <summary>
+      **suppliers**&nbsp;<span class="required"> *</span>&nbsp; (*HotelXSupplierInput*)  
+      Array of suppliers. Each one contains its own code, settings and accesses.  
+      </summary>
+  
+      <details>
+        <summary>
+        **settings** (*SettingsBaseInput*)  
+        You can configure an special settings for any supplier. This level overwrites the avail settings level but not the
+access settings level.  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **timeout** (*Int*)  
+          Milliseconds before the connection is closed.
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **auditTransactions** (*Boolean*)  
+          Specifies if the exachanged transactions with the supplier have to be logged or not.  
+          </summary>
+        </details>
+
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **currency** (*Currency*)  
+          Currency in ISO 4217 standard  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **commitRequired** (*Boolean*)  
+          Indicates if the book will be confirmed in 1 or 2 steps  
+          </summary>
+        </details>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **code**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+        Code that represents a supplier in our system.
+This information is mandatory.  
+        </summary>
+      </details>
+
+      <details>
+        <summary>
+        **accesses**&nbsp;<span class="required"> *</span>&nbsp; (*HotelXAccessInput*)  
+        Array of accesses that can overwrite an existing access information or include a new access for this avail.  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **accessId**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+          The accessID used to identify the existing access in our Back Office in order to
+overwrite it. Acts as an identifier in this search. It can either exist or not.  
+          </summary>
+        </details>
+
+        <details>
+          <summary>
+          **configuration** (*ConfigurationInput*)  
+          Information required to access the supplier s system.  
+          </summary>
+  
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **username** (*String*)  
+            User name for the connection.  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **password** (*String*)  
+            Password for the connection  
+            </summary>
+          </details>
+
+          <details>
+            <summary>
+            **urls**&nbsp;<span class="required"> *</span>&nbsp; (*UrlsInput*)  
+            URL or endpoint for the connection.  
+            </summary>
+  
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **search** (*URI*)  
+              Specific URL for Availability method.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **quote** (*URI*)  
+              Specific URL for Reservation method.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **book** (*URI*)  
+              Specific URL for Valuation method.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **generic** (*URI*)  
+              Supplier URL used for multiple methods.  
+              </summary>
+            </details>
+          </details>
+
+          <details>
+            <summary>
+            **parameters**&nbsp;<span class="required"> *</span>&nbsp; (*ParameterInput*)  
+            List of parameters with additional required information.  
+            </summary>
+  
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **key**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+              Contains the keyword/Id to identify a parameter.
+This information is mandatory.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **value**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+              Contains the parameter values.
+This information is mandatory.  
+              </summary>
+            </details>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **markets**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+            Source Markets allowed for the Access (use ISO3166_1_alfa_2).  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **rateRules**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of RateRulesType*)  
+            RateRules allowed for the access.  
+            Possible values:  
+            `NORMAL`  
+          `PACKAGE`  
+          `OLDER55`  
+          `OLDER60`  
+          `OLDER65`  
+          `CANARY_RESIDENT`  
+          `BALEARIC_RESIDENT`  
+          `LARGE_FAMILY`  
+          `HONEYMOON`  
+          `PUBLIC_SERVANT`  
+          `UNEMPLOYED`  
+          `NON_REFUNDABLE`  
+          `MOBILE`  
+          `WARRANTY`  
+          `ESSENTIAL_WORKER`  
+          `NEGOTIATED`  
+          `CUSTOM`  
+            </summary>
+          </details>
+        </details>
+
+      </details>
+    </details>
+
+    <details>
+      <summary>
+      **plugins**&nbsp;<span class="required"> *</span>&nbsp; (*PluginStepInput*)  
+      Array of plugins to execute.  
+      </summary>
+  
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **step**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of PluginStepType*)  
+        Indicates where the plugin will be executed.  
+        Possible values:  
+        `REQUEST`  
+      `REQUEST_ACCESS`  
+      `RESPONSE_OPTION`  
+      `RESPONSE_ACCESS`  
+      `RESPONSE`  
+        </summary>
+      </details>
+
+      <details>
+        <summary>
+        **pluginsType**&nbsp;<span class="required"> *</span>&nbsp; (*PluginsInput*)  
+        Indicates the plugin that will be executed.  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **type**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of PluginType*)  
+          Type of the plugin to execute  
+          Possible values:  
+          `PRE_STEP`  
+        `HOTEL_MAP`  
+        `BOARD_MAP`  
+        `ROOM_MAP`  
+        `CURRENCY_CONVERSION`  
+        `MARKUP`  
+        `AGGREGATION`  
+        `POST_STEP`  
+        `COMMISSION`  
+        `MARKETS_GROUP`  
+        `AMENITY_MAP`  
+        `PROMOTION_MAP`  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **name**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+          Name of the plugin to execute  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **parameters**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+          Parameters of the plugin  
+          </summary>
+        </details>
+      </details>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **testMode** (*Boolean*)  
+      This flag is only allowed to be used for the access checked as 'TEST.' By default, it is set to 'LIVE.'  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **clientTokens**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+      Used to identify the origin of the request. This is solely used in plugins.  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **commitRequired** (*Boolean*)  
+      Indicates if the book will be confirmed in 1 or 2 steps. It only should be used in Book.  
+      </summary>
+    </details>
+  
+</details>

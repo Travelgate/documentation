@@ -85,7 +85,55 @@ const REQUIRED_TYPES = new Set([
   "InventoryRateSetupUpdateInput",
   "RatesRs",
   "InventoryRoomsSetupUpdateInput",
-  "RoomsSetUpRs"
+  "InventoryRoomSetupDeleteInput",
+  "RoomsSetUpRs",
+  "HotelCriteriaSearchInput",
+  "HotelSettingsInput",
+  "HotelXFilterSearchInput",
+  "HotelSearch",
+  "HotelCriteriaQuoteInput",
+  "HotelSettingsInput",
+  "HotelXFilterInput",
+  "HotelQuote",
+  "HotelBookInput",
+  "HotelSettingsInput",
+  "HotelXFilterInput",
+  "HotelBookPayload",
+  "HotelCancelInput",
+  "HotelSettingsInput",
+  "HotelXFilterInput",
+  "HotelCancelPayload",
+  "HotelCriteriaBookingInput",
+  "HotelSettingsInput",
+  "HotelXFilterInput",
+  "HotelBooking",
+  "HotelXBoardQueryInput",
+  "BoardConnection",
+  "HotelXCategoryQueryInput",
+  "CategoryConnection",
+  "HotelXDestinationListInput",
+  "token",
+  "DestinationConnection",
+  "HotelXHotelListInput",
+  "HotelXHotelFilterInput",
+  "HotelConnection",
+  "HotelXMetadataQueryInput",
+  "MetadataConnection",
+  "HotelXRoomQueryInput",
+  "HotelOneStepQuoteInput",
+  "HotelSettingsInput",
+  "HotelFilterInput",
+  "HotelOneStepQuote",
+  "HotelOneStepBookInput",
+  "HotelSettingsInput",
+  "HotelFilterInput",
+  "HotelOneStepBook",
+  "settings",
+  "price",
+  "master",
+  "rooms",
+  "categories",
+
   ]);
 
 async function fetchSchema() {
@@ -97,18 +145,19 @@ async function fetchSchema() {
         __schema {
           queryType { 
             name
-            fields {
+            fields(includeDeprecated: false) { # 🔹 Solo incluir campos no deprecados
               ...FullField
             }
           }
           mutationType {
             name
-            fields {
+            fields(includeDeprecated: false) { # 🔹 Solo incluir campos no deprecados
               ...FullField
             }
           }
           types {
             ...FullType
+            possibleTypes { ...TypeRef } # 🔹 Incluir posibles tipos de interfaces
           }
         }
       }
@@ -116,6 +165,7 @@ async function fetchSchema() {
       fragment FullField on __Field {  
         name
         description
+        isDeprecated # 🔹 Ahora verificamos si está deprecado
         type {
           ...TypeRef
         }
@@ -132,7 +182,7 @@ async function fetchSchema() {
         kind
         name
         description
-        fields(includeDeprecated: true) {
+        fields(includeDeprecated: false) { # 🔹 Excluir nodos deprecados
           ...FullField
         }
         inputFields {
@@ -145,6 +195,13 @@ async function fetchSchema() {
         enumValues {  
           name
           description
+          isDeprecated # 🔹 También verificamos si los valores de ENUM están deprecados
+        }
+        interfaces { 
+          name
+        }
+        possibleTypes { 
+          name
         }
       }
     
@@ -166,6 +223,7 @@ async function fetchSchema() {
       }
       `
     };
+    
 
     try {
         const response = await fetch(GRAPHQL_ENDPOINT, {
@@ -288,31 +346,40 @@ function getFullTypeInfo(typeName, typeMap, visited = new Set()) {
     return result;
 }
 
-// ✅ Función corregida para detectar `NON_NULL` y evitar pérdida de ENUMs
 function getTypeRef(type, typeMap, visited) {
-    if (!type) return null;
+  if (!type) {
+      console.warn("⚠️ Tipo recibido es `null` o `undefined`");
+      return null;
+  }
 
-    if (type.kind === "NON_NULL") {
-        const innerType = getTypeRef(type.ofType, typeMap, visited);
-        return { ...innerType, isRequired: true };
-    }
+  console.log(`📌 Analizando tipo: ${type.name || "N/A"} | Kind: ${type.kind}`);
 
-    if (type.kind === "ENUM") {
-        const enumInfo = getFullTypeInfo(type.name, typeMap, visited);
-        console.log(`📌 Procesando ENUM en getTypeRef: ${type.name}`, enumInfo);
-        return enumInfo;
-    }
+  if (type.kind === "NON_NULL") {
+      const innerType = getTypeRef(type.ofType, typeMap, visited);
+      console.log(`🔸 Tipo NON_NULL detectado: ${type.name} -> ${innerType?.name}`);
+      return { ...innerType, isRequired: true };
+  }
 
-    if (type.name && type.kind !== "SCALAR" && type.kind !== "ENUM") {
-        return getFullTypeInfo(type.name, typeMap, visited);
-    }
+  if (type.kind === "ENUM") {
+      const enumInfo = getFullTypeInfo(type.name, typeMap, visited);
+      console.log(`📌 Procesando ENUM en getTypeRef: ${type.name}`, enumInfo);
+      return enumInfo;
+  }
 
-    if (type.ofType) {
-        return getTypeRef(type.ofType, typeMap, visited);
-    }
+  if (type.name && type.kind !== "SCALAR" && type.kind !== "ENUM") {
+      console.log(`🔹 Buscando información para el tipo: ${type.name}`);
+      return getFullTypeInfo(type.name, typeMap, visited);
+  }
 
-    return { name: type.name, kind: type.kind, isRequired: false };
+  if (type.ofType) {
+      console.log(`🔸 Analizando ofType dentro de ${type.name || "N/A"}`);
+      return getTypeRef(type.ofType, typeMap, visited);
+  }
+
+  console.warn(`⚠️ Tipo desconocido: ${JSON.stringify(type, null, 2)}`);
+  return { name: type.name, kind: type.kind, isRequired: false };
 }
+
 
 // Ejecutar el script
 if (require.main === module) {

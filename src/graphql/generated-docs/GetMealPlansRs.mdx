@@ -1,0 +1,97 @@
+
+<details>
+  <summary>
+  **GetMealPlansRs** (*OBJECT*)  
+  Represents the response data for retrieving meal plans.  
+  </summary>
+  
+  
+    <details>
+      <summary>
+      **adviseMessages** (*AdviseMessage*)  
+      Collection of advise messages.  
+      </summary>
+  
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+        AM code: The following codes can be returned:  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **description**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+        Error description  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **level**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of AdviseMessageLevel*)  
+        Indicates the level of importance of the message.
+Possible values: ERROR, WARN, INFO.  
+        Possible values:  
+        `WARN`  
+      `ERROR`  
+      `INFO`  
+        </summary>
+      </details>
+
+      <details>
+        <summary>
+        **external** (*ExternalMessage*)  
+        Specify the external message.  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **code** (*String*)  
+          External code.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **message**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+          External message.  
+          </summary>
+        </details>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **correlationID**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+        Identifier to investigate the cause of the error.  
+        </summary>
+      </details>
+    </details>
+
+    <details>
+      <summary>
+      **mealPlans** (*InventoryMealPlan*)  
+      Collection of meal plans.  
+      </summary>
+  
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **code**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+        Code of the meal plan.
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **name** (*String*)  
+        Name of the meal plan.  
+        </summary>
+      </details>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **success**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+      Indicates whether the response was successful based on the absence of advise messages.  
+      </summary>
+    </details>
+</details>

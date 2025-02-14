@@ -2,6 +2,11 @@
 sidebar_position: 2
 ---
 
+import HotelSettingsInput from "../../../../../src/graphql/generated-docs/HotelSettingsInput.mdx";
+import HotelXFilterInput from "../../../../../src/graphql/generated-docs/HotelXFilterInput.mdx";
+import HotelCriteriaBookingInput from "../../../../../src/graphql/generated-docs/HotelCriteriaBookingInput.mdx";
+import HotelBooking from "../../../../../src/graphql/generated-docs/HotelBooking.mdx";
+
 import {bookingQuery, bookingByBookingIDVariables, bookingByReferenceVariables, bookingByArrivalDatesVariables, bookingByBookingDatesVariables} from "../../../../../src/graphql/hotel-x/booking.read.query";
 
 # Booking Read and List
@@ -143,6 +148,16 @@ To specify your booking settings you need to use the [`HotelSettingsInput` input
 ### Response Considerations
 
 Keep in mind that the content of the Booking response can differ depending on the Sellers. For instance, some Sellers might provide details about the hotel or cancel policies, while others may only offer information about the status and locators/references.
+
+
+## Query Inputs
+
+<HotelSettingsInput />
+<HotelXFilterInput />
+<HotelCriteriaBookingInput />
+## Returned Fields
+
+<HotelBooking />
 
 
 ## Examples

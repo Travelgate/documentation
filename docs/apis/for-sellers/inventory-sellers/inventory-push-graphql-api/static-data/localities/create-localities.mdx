@@ -2,6 +2,9 @@
 sidebar_position: 3
 ---
 
+import LocalitiesRs from "../../../../../../../src/graphql/generated-docs/LocalitiesRs.mdx";
+import InventoryLocalitiesCreateInput from "../../../../../../../src/graphql/generated-docs/InventoryLocalitiesCreateInput.mdx";
+
 
 # Create Localities
 
@@ -43,160 +46,10 @@ The mutation returns the created locality along with success status and possible
 * `adviseMessages` (*AdviseMessage*) - Messages related to the operation.
 ## Mutation Inputs
 
-
-<details>
-  <summary>
-  **InventoryLocalitiesCreateInput** (*INPUT_OBJECT*)  
-  Represents a request to create a locality.  
-  </summary>
-  
-  <details style={{ pointerEvents: "none" }}>
-    <summary>
-    **name**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-    Sets the name of the locality.  
-    </summary>
-  </details>
-
-  <details style={{ pointerEvents: "none" }}>
-    <summary>
-    **countryCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-    Sets the country code, as ISO2, of the locality.  
-    </summary>
-  </details>
-
-  <details style={{ pointerEvents: "none" }}>
-    <summary>
-    **unLocode** (*String*)  
-    United Nations code for Trade and Transport Locations.
-It is not mandatory but it is recommended in order to identify the locality unequivocally.  
-    </summary>
-  </details>
-  
-</details>
-
-
-
+<InventoryLocalitiesCreateInput />
 ## Returned Fields
 
-
-<details>
-  <summary>
-  **LocalitiesRs** (*OBJECT*)  
-  Represents response data for localities.  
-  </summary>
-  
-  
-  <details>
-    <summary>
-    **adviseMessages** (*AdviseMessage*)  
-    Collection of advise messages.  
-    </summary>
-
-    <details style={{ pointerEvents: "none" }}>
-      <summary>
-      **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-      AM code: The following codes can be returned:  
-      </summary>
-    </details>
-
-    <details style={{ pointerEvents: "none" }}>
-      <summary>
-      **type**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-      Error type: The following types are valid:[type]  
-      </summary>
-    </details>
-
-    <details style={{ pointerEvents: "none" }}>
-      <summary>
-      **description**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-      Error description  
-      </summary>
-    </details>
-
-    <details style={{ pointerEvents: "none" }}>
-      <summary>
-      **level**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of AdviseMessageLevel*)  
-      Indicates the level of importance of the message.
-Possible values: ERROR, WARN, INFO.  
-      Possible values:  
-      `WARN`  
-      `ERROR`  
-      `INFO`  
-      </summary>
-    </details>
-
-    <details>
-      <summary>
-      **external** (*ExternalMessage*)  
-      Specify the external message.  
-      </summary>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **code** (*String*)  
-        External code.  
-        </summary>
-      </details>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **message**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-        External message.  
-        </summary>
-      </details>
-    </details>
-
-    <details style={{ pointerEvents: "none" }}>
-      <summary>
-      **correlationID**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-      Identifier to investigate the cause of the error.  
-      </summary>
-    </details>
-  </details>
-
-  <details>
-    <summary>
-    **localities** (*InventoryLocality*)  
-    Collection of localities.  
-    </summary>
-
-    <details style={{ pointerEvents: "none" }}>
-      <summary>
-      **id**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
-      Unique identifier for the locality.  
-      </summary>
-    </details>
-
-    <details style={{ pointerEvents: "none" }}>
-      <summary>
-      **name** (*String*)  
-      Name of the locality.  
-      </summary>
-    </details>
-
-    <details style={{ pointerEvents: "none" }}>
-      <summary>
-      **countryCode** (*String*)  
-      ISO 2-character country code associated with the locality.  
-      </summary>
-    </details>
-
-    <details style={{ pointerEvents: "none" }}>
-      <summary>
-      **unLocode** (*String*)  
-      UN/LOCODE associated with the locality.  
-      </summary>
-    </details>
-  </details>
-
-  <details style={{ pointerEvents: "none" }}>
-    <summary>
-    **success**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-    Indicates whether the response was successful based on the absence of advise messages.  
-    </summary>
-  </details>
-</details>
-
+<LocalitiesRs />
 
 
 ## Examples

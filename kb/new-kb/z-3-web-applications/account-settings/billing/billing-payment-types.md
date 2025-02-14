@@ -2,23 +2,27 @@
 sidebar_position: 2
 ---
 
-# How to choose your payment type at Travelgate
+# Payment Types
 
-Welcome to our comprehensive guide for selecting the payment type at Travelgate!
+This guide will help you select the billing payment type for your connections on Travelgate.
 
-If both you and your Partner are under the **Commercial Agreement 2023**, the [Auto-Activations form](/kb/connections/my-connections/guick-guide-to-auto-activations/) to request a new connection on our Platform will display these available payment types:
+## Available Billing Payment Types
 
-- **FREE:** This connection has no cost for you. Your Partner must confirm the full payment of the connectivity from its side.
-- **STD:** Standard booking fee applies for you and your Partner, share costs.
-- **SUP:** Both standard booking fees and supplement apply to this connection for you. For your Partner, it will be free.
+If both you and your Partner are under the **Commercial Agreement 2023**, you will see the following billing payment types in the [Auto-Activations form](/kb/connections/my-connections/guick-guide-to-auto-activations/):
 
-Simply review these options with your Partner and choose the one that best suits your needs!
+- **FREE**: No cost for you. Your Partner must confirm the full payment of the connectivity from its side.
+- **STD**: Standard booking fee, shared between you and your Partner.
+- **SUP**: Standard booking fee and a supplement apply to you, while the connection remains free for your Partner.
 
-Remember, you can also **request a change in the payment type** through our ["Billing" section](/kb/account-settings/billing/billing-how-to-check-agreements-usage-invoices#how-can-i-request-a-payment-type-change-for-one-of-my-partners) by clicking on the "Agreements" tab and selecting the connection for which you want to request a change in the applicable payment type.
+Review these options with your Partner and choose the one that fits best.
+
+## Requesting a Payment Type Change
+
+You can request a payment type change by navigating to the **Billing** section in the Portal. Under the **Agreements** tab, find the connection for which you want to change the payment type and submit your request.
 
 :::info
-- If you're interested in switching to a free arrangement where your Partner takes on the payment responsibility, you'll need to wait for their acceptance before proceeding with the change. If needed, you can also cancel the request.
-- Other modifications, such as switching from Free to Standard or Standard to Supplement, do not require Partner confirmation as the total cost of the connection is assumed. These changes can be processed automatically. 
+- If you want to switch to **FREE** (where your Partner assumes full payment responsibility), your Partner will need to accept the request. You can cancel the request if necessary.
+- Changes between **Free** and **Standard**, or **Standard** and **Supplement**, can be processed automatically since the total cost is assumed.
 
-Don't forget to check the following [link](/kb/account-settings/billing/billing-how-to-check-agreements-usage-invoices#how-can-i-request-a-payment-type-change-for-one-of-my-partners) comprehensive information about our "Billing" section!
+For detailed information, refer to the [Billing section guide](https://www.travelgate.com/kbase/account-settings/billing).
 :::

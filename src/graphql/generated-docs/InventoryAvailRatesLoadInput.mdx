@@ -1,0 +1,253 @@
+
+<details>
+  <summary>
+  **InventoryAvailRatesLoadInput** (*INPUT_OBJECT*)  
+  Load availability rates mutation input  
+  </summary>
+  
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **clientCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+      Client code.  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **supplierCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+      Travelgate Supplier/Channel code.  
+      </summary>
+    </details>
+
+    <details>
+      <summary>
+      **rates**&nbsp;<span class="required"> *</span>&nbsp; (*RateAvailLoadInput*)  
+      Hotel rates input data.  
+      </summary>
+  
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **rateCode** (*String*)  
+        Code associated with the rate.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **rooms** (*String*)  
+        List of rooms associated with the rate.  
+        </summary>
+      </details>
+
+      <details>
+        <summary>
+        **restrictions** (*RestrictionsLoadInput*)  
+        Restrictions for the rate. See RestrictionsLoad.  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **bookingLimit** (*Int*)  
+          Booking limit associated with the product.
+          </summary>
+        </details>
+
+        <details>
+          <summary>
+          **lengthOfStay** (*LengthOfStayInput*)  
+          Length of stay associated with the product. See LengthOfStay.  
+          </summary>
+  
+          <details>
+            <summary>
+            **fullStay** (*FullStayInput*)  
+            Full stay associated with the product. See FullStay.  
+            </summary>
+  
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **minimum** (*Int*)  
+              Minimum length of the full stay.
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **maximum** (*Int*)  
+              Maximum length of the full stay.
+              </summary>
+            </details>
+          </details>
+
+          <details>
+            <summary>
+            **arrival** (*ArrivalInput*)  
+            Arrival associated with the product. See Arrival.  
+            </summary>
+  
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **minimum** (*Int*)  
+              Minimum length of the arrival period.
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **maximum** (*Int*)  
+              Maximum length of the arrival period.
+              </summary>
+            </details>
+          </details>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **minRelease** (*Int*)  
+          Minimum release period associated with the product.
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **maxRelease** (*Int*)  
+          Maximum release period associated with the product.
+          </summary>
+        </details>
+
+        <details>
+          <summary>
+          **stopSales** (*StopSalesInput*)  
+          Stop sales associated with the product. See StopSales.  
+          </summary>
+  
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **closeMaster** (*Boolean*)  
+            Indicates whether to close the master.  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **closeOnArrival** (*Boolean*)  
+            Indicates whether to close on arrival. Null if not applicable.  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **closeOnDeparture** (*Boolean*)  
+            Indicates whether to close on departure. Null if not applicable.  
+            </summary>
+          </details>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **freeSales** (*Boolean*)  
+          Indicates whether the product is available for free sales.  
+          </summary>
+        </details>
+      </details>
+
+      <details>
+        <summary>
+        **applicableWeekdays** (*ApplicableWeekdaysInput*)  
+        Weekdays when the rate is applicable. See ApplicableWeekdays.  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **all** (*Boolean*)  
+          Indicates whether the price or rate is applicable on all days.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **monday** (*Boolean*)  
+          Indicates whether the price or rate is applicable on Mondays.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **tuesday** (*Boolean*)  
+          Indicates whether the price or rate is applicable on Tuesdays.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **wednesday** (*Boolean*)  
+          Indicates whether the price or rate is applicable on Wednesdays.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **thursday** (*Boolean*)  
+          Indicates whether the price or rate is applicable on Thursdays.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **friday** (*Boolean*)  
+          Indicates whether the price or rate is applicable on Fridays.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **saturday** (*Boolean*)  
+          Indicates whether the price or rate is applicable on Saturdays.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **sunday** (*Boolean*)  
+          Indicates whether the price or rate is applicable on Sundays.  
+          </summary>
+        </details>
+      </details>
+
+      <details>
+        <summary>
+        **dateRange** (*DateRangeProductInput*)  
+        Date range to apply  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **start**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+          Start date.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **end**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+          End date.  
+          </summary>
+        </details>
+      </details>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **hotelCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+      Code associated with the hotel.  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **contextCode** (*String*)  
+      Context code.  
+      </summary>
+    </details>
+  
+</details>

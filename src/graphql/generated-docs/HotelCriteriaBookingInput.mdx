@@ -1,0 +1,156 @@
+
+<details>
+  <summary>
+  **HotelCriteriaBookingInput** (*INPUT_OBJECT*)  
+  Criteria of book contains basic information to find a book or books.
+If you are using our Hotelx locator (bookingID) you don t need to indicate any of the other fields  
+  </summary>
+  
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **accessCode** (*String*)  
+      Name of the access that have to use in the request. Necessary if your search if by references or by dates.  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **language** (*Language*)  
+      The language code.  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **typeSearch** (*Enum of BookingCriteriaType*)  
+      The search type criteria. Necessary if your search if by references or by dates.  
+      Possible values:  
+      `DATES`  
+    `REFERENCES`  
+      </summary>
+    </details>
+
+    <details>
+      <summary>
+      **references** (*CriteriaBookingReferencesInput*)  
+      The references criteria.  
+      </summary>
+  
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **hotelCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+        The hotel code.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **currency**&nbsp;<span class="required"> *</span>&nbsp; (*Currency*)  
+        The requested currency. The API will convert to this currency if supplier returns a different one.  
+        </summary>
+      </details>
+
+      <details>
+        <summary>
+        **references**&nbsp;<span class="required"> *</span>&nbsp; (*BookReferenceInput*)  
+        Contains all the reservation references.  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **client** (*String*)  
+          The client's booking reference  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **supplier** (*String*)  
+          The supplier's booking reference  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **hotel** (*String*)  
+          The hotel's reference  
+          </summary>
+        </details>
+
+        <details>
+          <summary>
+          **dates** (*BookReferenceDatesInput*)  
+          Used to receive a list of all the reservations made in a specific type frame. However, even if you are looking for a specific booking using references,
+this field may be mandatory for some suppliers.  
+          </summary>
+  
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **start** (*Date*)  
+            Start or check-in booking date
+Format: YYYY-MM-DD  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **end** (*Date*)  
+            End or check-out booking date
+Format: YYYY-MM-DD  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **creation** (*Date*)  
+            Booking creation date
+Format: YYYY-MM-DD  
+            </summary>
+          </details>
+        </details>
+      </details>
+    </details>
+
+    <details>
+      <summary>
+      **dates** (*CriteriaBookingDatesInput*)  
+      The dates criteria.  
+      </summary>
+  
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **dateType**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of DateType*)  
+        Type of date. Can be Arrival or Booking date.  
+        Possible values:  
+        `ARRIVAL`  
+      `BOOKING`  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **start**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
+        Start date.
+Format: YYYY-MM-DD.
+Start of date range  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **end**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
+        End date.
+Format: YYYY-MM-DD.
+End of date range  
+        </summary>
+      </details>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **bookingID** (*String*)  
+      HotelX s booking reference  
+      </summary>
+    </details>
+  
+</details>

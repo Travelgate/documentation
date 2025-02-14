@@ -1,0 +1,90 @@
+
+<details>
+  <summary>
+  **HotelCriteriaSearchInput** (*INPUT_OBJECT*)  
+  Search criteria offers versatility in search options, with certain fields marked as mandatory
+(checkIn, checkOut, hotels etc.) and others as optional (language, currency, nationality etc.).
+This flexibility empowers you to create a personalized Search Query, tailoring the requested fields to your specific needs.  
+  </summary>
+  
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **checkIn**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
+      Check-in date for booking.
+Format: YYYY-MM-DD  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **checkOut**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
+      Check-out for booking.
+Format: YYYY-MM-DD  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **hotels**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+      Hotel Codes.  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **destinations**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+      Destination codes.  
+      </summary>
+    </details>
+
+    <details>
+      <summary>
+      **occupancies**&nbsp;<span class="required"> *</span>&nbsp; (*RoomInput*)  
+      For multi-room bookings, this array will contain multiple elements (rooms).
+For each room you have to specify its own occupancy.  
+      </summary>
+  
+      <details>
+        <summary>
+        **paxes**&nbsp;<span class="required"> *</span>&nbsp; (*PaxInput*)  
+        Array of paxes ages. The number of items in the array will indicate the pax occupancy.  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **age**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+          Age of the pax on the check-in day.
+          </summary>
+        </details>
+      </details>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **language** (*Language*)  
+      Language to be used in the request. If not set, the value saved in your Hotel-X API default settings will be used.  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **currency** (*Currency*)  
+      Currency requested if supported by supplier. If not set, the value saved in your Hotel-X API default settings will be used.  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **nationality** (*Country*)  
+      Nationality of the guest (use ISO3166_1_alfa_2). If not set, the value saved in your Hotel-X API default settings will be used.  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **markets**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+      Targeted zones, countries or point-of-sale to be used in request (use ISO3166_1_alfa_2). If not set, the value saved in your Hotel-X API default settings will be used.  
+      </summary>
+    </details>
+  
+</details>

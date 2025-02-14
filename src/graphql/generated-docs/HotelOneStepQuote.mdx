@@ -1,0 +1,704 @@
+
+<details>
+  <summary>
+  **HotelOneStepQuote** (*OBJECT*)  
+  
+  </summary>
+  
+  
+    <details>
+      <summary>
+      **optionQuote** (*HotelOptionQuote*)  
+      
+      </summary>
+  
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **optionRefId**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+        It is an unique identifier for the option created by HotelX system. The ID is used to make the quote query, so it is important not to modify it by any reason.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **status**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of StatusType*)  
+        The possible values in the response's status are Available (OK) or On Request (RQ).  
+        Possible values:  
+        `OK`  
+      `RQ`  
+        </summary>
+      </details>
+
+      <details>
+        <summary>
+        **price**&nbsp;<span class="required"> *</span>&nbsp; (*Price*)  
+        Specifies the prices (Gross and Net) of the returned option.  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **currency**&nbsp;<span class="required"> *</span>&nbsp; (*Currency*)  
+          Currency code indicating which currency should be paid.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **binding**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+          It indicates whether the gross price must be honored, meaning the customer cannot sell the room/option at a price lower than the supplier's established rate.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **net**&nbsp;<span class="required"> *</span>&nbsp; (*Float*)  
+          It indicates the net price that the customer must pay to the supplier.
+The net price is calculated by substrating the included surcharges from the gross price. (For calculation purposes only)  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **gross**&nbsp;<span class="required"> *</span>&nbsp; (*Float*)  
+          Indicates the retail price that the supplier sells to the customer.  
+          </summary>
+        </details>
+
+        <details>
+          <summary>
+          **exchange**&nbsp;<span class="required"> *</span>&nbsp; (*Exchange*)  
+          Provides currency information and the applicable rate for the results returned by the Supplier  
+          </summary>
+  
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **currency**&nbsp;<span class="required"> *</span>&nbsp; (*Currency*)  
+            Provide information about the currency of origin  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **rate**&nbsp;<span class="required"> *</span>&nbsp; (*Float*)  
+            Provides information about the rate applied over results  
+            </summary>
+          </details>
+        </details>
+
+        <details>
+          <summary>
+          **markups**&nbsp;<span class="required"> *</span>&nbsp; (*Markup*)  
+          Informs markup applied over supplier price.  
+          </summary>
+  
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **channel** (*String*)  
+            channel of markup application.  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **currency**&nbsp;<span class="required"> *</span>&nbsp; (*Currency*)  
+            Currency code indicating which currency should be paid.
+This information is mandatory.  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **binding**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+            It indicates if the price indicated in the gross must be respected. In case minimumSellingPrice is not empty, the binding indicates instead that the minimumSellingPrice must be respected.
+That is, the customer can not sell the room / option at a price lower than that established by the supplier.
+This information is mandatory.  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **net**&nbsp;<span class="required"> *</span>&nbsp; (*Float*)  
+            Indicates the net price that the customer must pay to the supplier plus the markup.
+This information is mandatory.  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **gross** (*Float*)  
+            Indicates the retail price that the supplier sells to the customer plus the markup.  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **exchange**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+            Informs about the currency of origin, and the rate applied over result.
+This information is mandatory.  
+            </summary>
+          </details>
+
+          <details>
+            <summary>
+            **rules**&nbsp;<span class="required"> *</span>&nbsp; (*Rule*)  
+            Breakdown of the applied rules for a markup  
+            </summary>
+  
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **id**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+              rule identifier  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **name** (*String*)  
+              rule name  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **type**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of MarkupRuleType*)  
+              type of the value  
+              Possible values:  
+              `PERCENT`  
+            `IMPORT`  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **value**&nbsp;<span class="required"> *</span>&nbsp; (*Float*)  
+              value applied by this rule  
+              </summary>
+            </details>
+          </details>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **minimumSellingPrice** (*Float*)  
+          Indicates the minimum selling price it can be sold (determined by the Seller). Is is specified (not null), that field takes preference to Gross and Binding.  
+          </summary>
+        </details>
+      </details>
+
+      <details>
+        <summary>
+        **searchPrice** (*PriceChange*)  
+        Specifies the price of the previous Search option, returned only if it has changed. If not, this field will be returned as Null.  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **currency**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+          The currency of previous option.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **net**&nbsp;<span class="required"> *</span>&nbsp; (*Float*)  
+          The net value of previous option.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **gross**&nbsp;<span class="required"> *</span>&nbsp; (*Float*)  
+          The gross value of previous option.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **binding**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+          Indicates if previous option price was binding or not  
+          </summary>
+        </details>
+      </details>
+
+      <details>
+        <summary>
+        **cancelPolicy**&nbsp;<span class="required"> *</span>&nbsp; (*CancelPolicy*)  
+        Specifies cancel policies of the returned option.  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **refundable**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+          Indicates if the option is refundable or non-refundable  
+          </summary>
+        </details>
+
+        <details>
+          <summary>
+          **cancelPenalties**&nbsp;<span class="required"> *</span>&nbsp; (*CancelPenalty*)  
+          List of cancellation penalties  
+          </summary>
+  
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **deadline** (*DateTime*)  
+            Cancellation fees will be applicable between this date and check-in date  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **isCalculatedDeadline**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+            Specifies if the deadline has been taken from the seller’s response (false) or has been calculated by TravelgateX (true)  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **penaltyType**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of CancelPenaltyType*)  
+            Type of penalty; this can be Nights, Percent or Import  
+            Possible values:  
+            `NIGHTS`  
+          `PERCENT`  
+          `IMPORT`  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **currency**&nbsp;<span class="required"> *</span>&nbsp; (*Currency*)  
+            Currency used in the cancellation policy  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **value**&nbsp;<span class="required"> *</span>&nbsp; (*Float*)  
+            Value of the cancellation policy  
+            </summary>
+          </details>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **description** (*String*)  
+          Extra details and information about supplier's cancel policies to give a further insight. This information is not supported for all the suppliers.  
+          </summary>
+        </details>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **remarks** (*String*)  
+        Additional information about the option.  
+        </summary>
+      </details>
+
+      <details>
+        <summary>
+        **surcharges**&nbsp;<span class="required"> *</span>&nbsp; (*Surcharge*)  
+        List of surcharges of the returned option.  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **code** (*String*)  
+          Indicates the surcharge code  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **chargeType**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of ChargeType*)  
+          Indicates the charge type. We need to know whether the supplements have to be paid when the consumer gets to the hotel or beforehand.
+Possible charge types: INCLUDE or EXCLUDE.
+when  INCLUDE : this surcharge is mandatory and included in the option s price
+when  EXCLUDE : this surcharge is not included in the option s price  
+          Possible values:  
+          `INCLUDE`  
+        `EXCLUDE`  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **mandatory**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+          Indicates if the surcharge is mandatory or not. If mandatory, this surcharge will be applied to this option.
+If the chargeType is  EXCLUDE  the customer will have to pay it directly at the hotel.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **price**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+          Indicates the surcharge price.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **description** (*String*)  
+          Specifies the surcharge description.  
+          </summary>
+        </details>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **cardTypes**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of PaymentCardType*)  
+        List of credit cards allowed for this option  
+        Possible values:  
+        `VI`  
+      `AX`  
+      `BC`  
+      `CA`  
+      `CB`  
+      `CU`  
+      `DS`  
+      `DC`  
+      `T`  
+      `R`  
+      `N`  
+      `L`  
+      `E`  
+      `JC`  
+      `TO`  
+      `S`  
+      `EC`  
+      `EU`  
+      `TP`  
+      `OP`  
+      `ER`  
+      `XS`  
+      `O`  
+        </summary>
+      </details>
+
+      <details>
+        <summary>
+        **addOns** (*AddOns*)  
+        Additional information about the option.  
+        </summary>
+  
+        <details>
+          <summary>
+          **distribution**&nbsp;<span class="required"> *</span>&nbsp; (*AddOn*)  
+          Extra information from the Distribution layer.  
+          </summary>
+  
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **key**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+            Contains keyword/ID to identify the AddOn.  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **value**&nbsp;<span class="required"> *</span>&nbsp; (*JSON*)  
+            Contains AddOn values.  
+            </summary>
+          </details>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **supplier**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+          Extra information from the Supplier layer.  
+          </summary>
+        </details>
+      </details>
+
+      <details>
+        <summary>
+        **rooms**&nbsp;<span class="required"> *</span>&nbsp; (*RoomOptionQuote*)  
+        List of rooms of the selected option.  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **occupancyRefId**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+          ID reference to the occupancy.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **legacyRoomId**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+          Identifies the legacy room ID.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **code**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+          Indicates the room code.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **supplierCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+          Supplier's room code.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **description** (*String*)  
+          Description about the room. This field can be mapped.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **descriptionSupplier** (*String*)  
+          Description about the room in supplier's context.  
+          </summary>
+        </details>
+
+        <details>
+          <summary>
+          **features**&nbsp;<span class="required"> *</span>&nbsp; (*Feature*)  
+          Room features.  
+          </summary>
+  
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **code**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+            Feature code.  
+            </summary>
+          </details>
+        </details>
+
+        <details>
+          <summary>
+          **amenities**&nbsp;<span class="required"> *</span>&nbsp; (*Amenity*)  
+          Room level amenities provide information about features intended to enhance comfort and enjoyment.
+Examples include swimming pools, shopping centers, etc.  
+          </summary>
+  
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **code**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+            Code  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **amenityCodeSupplier**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+            Code in supplier context  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **type**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of ApplicationAreaType*)  
+            Indicates the type of Amenity.  
+            Possible values:  
+            `HOTEL`  
+          `ROOM`  
+          `SERVICE`  
+          `GENERAL`  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **value**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+            Contains the value of amenity.  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **texts**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+            Contains the descriptive of amenity.  
+            </summary>
+          </details>
+        </details>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **paymentType**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of PaymentType*)  
+        Indicates the payment type of the option returned. Possible options: MERCHANT, DIRECT, CARD_BOOKING and CARD_CHECK_IN.  
+        Possible values:  
+        `MERCHANT`  
+      `DIRECT`  
+      `CARD_BOOKING`  
+      `CARD_CHECK_IN`  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **boardCode** (*String*)  
+        Indicates the board code mapped.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **boardCodeSupplier** (*String*)  
+        Indicates the board code in supplier's context.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **hotelCode** (*String*)  
+        Code of the hotel in the context selected. If the supplier does not provide the hotel code, then the hotel code will be the same as the hotel code in the search request.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **hotelCodeSupplier** (*String*)  
+        Supplier's hotel code. If the supplier does not provide the hotel code, then the hotel code will be the same as the hotel code in the search request.  
+        </summary>
+      </details>
+
+      <details>
+        <summary>
+        **occupancies**&nbsp;<span class="required"> *</span>&nbsp; (*Occupancy*)  
+        List of occupancies for the request. If the supplier does not provide the occupancies, then the occupancies will be the same as the occupancies in the search request.  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **id**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+          Unique ID room in this option.
+          </summary>
+        </details>
+
+        <details>
+          <summary>
+          **paxes**&nbsp;<span class="required"> *</span>&nbsp; (*Pax*)  
+          List of pax of this occupancy.  
+          </summary>
+  
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **age**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+            Passenger age on the day of check-in, which can vary for adults, infants, or babies depending on each supplier's particular age range.
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **name** (*String*)  
+            Specifies the pax name.  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **surname** (*String*)  
+            Specifies the pax surname.  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **title** (*Enum of PersonalTitleType*)  
+            Specifies the pax title.  
+            Possible values:  
+            `MR`  
+          `MRS`  
+          `MISS`  
+          `MS`  
+          `NOT_SPECIFIED`  
+            </summary>
+          </details>
+        </details>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **rateRules**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of RateRulesType*)  
+        Specifies rate rules of the option returned. Note: If the option does not have any rate rule, then the option is NORMAL rate. If the supplier does not provide the rate rules, then the rate rules will be the same as the rate rules in the search request.  
+        Possible values:  
+        `NORMAL`  
+      `PACKAGE`  
+      `OLDER55`  
+      `OLDER60`  
+      `OLDER65`  
+      `CANARY_RESIDENT`  
+      `BALEARIC_RESIDENT`  
+      `LARGE_FAMILY`  
+      `HONEYMOON`  
+      `PUBLIC_SERVANT`  
+      `UNEMPLOYED`  
+      `NON_REFUNDABLE`  
+      `MOBILE`  
+      `WARRANTY`  
+      `ESSENTIAL_WORKER`  
+      `NEGOTIATED`  
+      `CUSTOM`  
+        </summary>
+      </details>
+    </details>
+
+    <details>
+      <summary>
+      **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*AdviseMessage*)  
+      
+      </summary>
+  
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+        AM code: The following codes can be returned:  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **description**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+        Error description  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **level**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of AdviseMessageLevel*)  
+        Indicates the level of importance of the message.
+Possible values: ERROR, WARN, INFO.  
+        Possible values:  
+        `WARN`  
+      `ERROR`  
+      `INFO`  
+        </summary>
+      </details>
+
+      <details>
+        <summary>
+        **external** (*ExternalMessage*)  
+        Specify the external message.  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **code** (*String*)  
+          External code.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **message**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+          External message.  
+          </summary>
+        </details>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **correlationID**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+        Identifier to investigate the cause of the error.  
+        </summary>
+      </details>
+    </details>
+</details>

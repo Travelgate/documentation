@@ -1,0 +1,223 @@
+
+<details>
+  <summary>
+  **HotelsRs** (*OBJECT*)  
+  The HotelsRs class represents the response object for hotel-related operations.  
+  </summary>
+  
+  
+    <details>
+      <summary>
+      **adviseMessages** (*AdviseMessage*)  
+      A collection of advise messages related to the operation. See AdviseMessage.  
+      </summary>
+  
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+        AM code: The following codes can be returned:  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **description**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+        Error description  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **level**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of AdviseMessageLevel*)  
+        Indicates the level of importance of the message.
+Possible values: ERROR, WARN, INFO.  
+        Possible values:  
+        `WARN`  
+      `ERROR`  
+      `INFO`  
+        </summary>
+      </details>
+
+      <details>
+        <summary>
+        **external** (*ExternalMessage*)  
+        Specify the external message.  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **code** (*String*)  
+          External code.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **message**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+          External message.  
+          </summary>
+        </details>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **correlationID**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+        Identifier to investigate the cause of the error.  
+        </summary>
+      </details>
+    </details>
+
+    <details>
+      <summary>
+      **hotels** (*InventoryHotelMaster*)  
+      A collection of hotels. See Hotel.  
+      </summary>
+  
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **id**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+        The unique identifier of the hotel.
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **name** (*String*)  
+        The name of the hotel.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **email** (*String*)  
+        The email address of the hotel.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **phones** (*String*)  
+        The list of phone numbers of the hotel.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **fax** (*String*)  
+        The fax number of the hotel.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **address** (*String*)  
+        The physical address of the hotel.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **postalCode** (*String*)  
+        The postal code of the hotel's location.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **latitude** (*Decimal*)  
+        The latitude of the hotel's location.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **longitude** (*Decimal*)  
+        The longitude of the hotel's location.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **externalCode** (*String*)  
+        The external code of the hotel.  
+        </summary>
+      </details>
+
+      <details>
+        <summary>
+        **category** (*InventoryCategory*)  
+        The category of the hotel.  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **id**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+          Category Id.
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **name** (*String*)  
+          Category Name.  
+          </summary>
+        </details>
+      </details>
+
+      <details>
+        <summary>
+        **locality** (*InventoryLocality*)  
+        The locality of the hotel.  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **id**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+          Unique identifier for the locality.
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **name** (*String*)  
+          Name of the locality.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **countryCode** (*String*)  
+          ISO 2-character country code associated with the locality.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **unLocode** (*String*)  
+          UN/LOCODE associated with the locality.  
+          </summary>
+        </details>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **hotelCode** (*String*)  
+        The code of the hotel.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **contextCode** (*String*)  
+        The context code of the hotel.  
+        </summary>
+      </details>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **success**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+      Indicates whether the operation was successful.  
+      </summary>
+    </details>
+</details>

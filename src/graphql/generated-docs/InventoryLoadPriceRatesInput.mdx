@@ -1,0 +1,299 @@
+
+<details>
+  <summary>
+  **InventoryLoadPriceRatesInput** (*INPUT_OBJECT*)  
+  Load price rates mutation input  
+  </summary>
+  
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **clientCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+      Client code.  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **supplierCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+      Travelgate Supplier/Channel code.  
+      </summary>
+    </details>
+
+    <details>
+      <summary>
+      **rates**&nbsp;<span class="required"> *</span>&nbsp; (*RatePriceLoadInput*)  
+      Hotel rates input data.  
+      </summary>
+  
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **rateCode** (*String*)  
+        Code associated with the rate.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **currency**&nbsp;<span class="required"> *</span>&nbsp; (*Currency*)  
+        Currency of the rate price. See Currency.  
+        </summary>
+      </details>
+
+      <details>
+        <summary>
+        **applicableWeekdays** (*ApplicableWeekdaysInput*)  
+        Weekdays when the rate price is applicable. See ApplicableWeekdays.  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **all** (*Boolean*)  
+          Indicates whether the price or rate is applicable on all days.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **monday** (*Boolean*)  
+          Indicates whether the price or rate is applicable on Mondays.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **tuesday** (*Boolean*)  
+          Indicates whether the price or rate is applicable on Tuesdays.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **wednesday** (*Boolean*)  
+          Indicates whether the price or rate is applicable on Wednesdays.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **thursday** (*Boolean*)  
+          Indicates whether the price or rate is applicable on Thursdays.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **friday** (*Boolean*)  
+          Indicates whether the price or rate is applicable on Fridays.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **saturday** (*Boolean*)  
+          Indicates whether the price or rate is applicable on Saturdays.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **sunday** (*Boolean*)  
+          Indicates whether the price or rate is applicable on Sundays.  
+          </summary>
+        </details>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **rooms** (*String*)  
+        List of rooms associated with the rate price.  
+        </summary>
+      </details>
+
+      <details>
+        <summary>
+        **prices** (*PricesLoadInput*)  
+        Prices to be loaded. See PricesLoad.  
+        </summary>
+  
+        <details>
+          <summary>
+          **pricePerRoom** (*PricePerRoomInput*)  
+          Price per room. See PricePerRoom.  
+          </summary>
+  
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **amount**&nbsp;<span class="required"> *</span>&nbsp; (*Float*)  
+            Amount associated with the room. This is the price for the room.  
+            </summary>
+          </details>
+
+          <details>
+            <summary>
+            **additionalGuestsSupplements** (*AdditionalGuestsSupplementsInput*)  
+            Price supplements for additional passengers. See AdditionalGuestsSupplements.  
+            </summary>
+  
+            <details>
+              <summary>
+              **additionalAdults** (*AdditionalGuestInput*)  
+              List of additional adults. See AdditionalGuest.  
+              </summary>
+  
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **additionalGuestType**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of AdditionalGuestType*)  
+                Type of the additional guest. See AdditionalGuestType.  
+                Possible values:  
+                `ADULT`  
+              `CHILD`  
+              `INFANT`  
+                </summary>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **guestPosition**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+                Position of the guest.
+                </summary>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **amount**&nbsp;<span class="required"> *</span>&nbsp; (*Float*)  
+                Amount associated with the additional guest.  
+                </summary>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **type** (*Enum of AmountApplyType*)  
+                Type of the amount application. See AmountApplyType.  
+                Possible values:  
+                `PERCENTAGE`  
+              `ADDITIVE`  
+              `ABSOLUTE`  
+                </summary>
+              </details>
+            </details>
+
+
+          </details>
+        </details>
+
+        <details>
+          <summary>
+          **pricePerStandardOccupancy** (*PricePerStandardOccupancyInput*)  
+          Price per standard occupancy. See PricePerStandardOccupancy.  
+          </summary>
+  
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **amount**&nbsp;<span class="required"> *</span>&nbsp; (*Float*)  
+            Amount associated with the standard occupancy of the room. This is the price for the standard guests.  
+            </summary>
+          </details>
+
+          <details>
+            <summary>
+            **pricesUnderStandardOccupancy** (*PriceUnderStandardOccupancyInput*)  
+            List of prices for passengers under the standard occupancy. See PriceUnderStandardOccupancy.  
+            </summary>
+  
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **amount**&nbsp;<span class="required"> *</span>&nbsp; (*Float*)  
+              Amount associated with the occupancy of the room. This is the price for the guests.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **guests**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+              Number of guests for occupancy.
+              </summary>
+            </details>
+          </details>
+
+        </details>
+
+        <details>
+          <summary>
+          **pricesPerOccupancy** (*PricesPerOccupancyInput*)  
+          Prices per occupancy. See PricesPerOccupancy.  
+          </summary>
+  
+          <details>
+            <summary>
+            **prices** (*PricePerOccupancyInput*)  
+            List of prices per occupancy. See PricePerOccupancy.  
+            </summary>
+  
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **amount**&nbsp;<span class="required"> *</span>&nbsp; (*Float*)  
+              Amount associated with the occupancy. This is the price for the occupancy.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **numberOfAdults**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+              Number of adults in the occupancy.
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **numberOfChildren** (*Int*)  
+              Number of children in the occupancy.
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **numberOfInfants** (*Int*)  
+              Number of children in the occupancy.
+              </summary>
+            </details>
+          </details>
+        </details>
+      </details>
+
+      <details>
+        <summary>
+        **dateRange** (*DateRangeProductInput*)  
+        Date range to apply  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **start**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+          Start date.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **end**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+          End date.  
+          </summary>
+        </details>
+      </details>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **hotelCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+      Code associated with the hotel.  
+      </summary>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+      **contextCode** (*String*)  
+      Context code.  
+      </summary>
+    </details>
+  
+</details>

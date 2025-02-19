@@ -22,8 +22,10 @@ The `Cancel` operation ensures:
 ## **Response Details**
 The `Cancel` operation provides:
 - **Cancellation Status**:
+  - `Confirmed`: The reservation status is OK, is not cancelled.
   - `Canceled`: Indicates the reservation has been successfully canceled.
-  - `Unknown`: The cancellation could not be processed by the supplier.
+  - `On_Request`: The reservation was completed but the product is still not available by the Seller, so the reservation goes into a waiting list. It is the Buyer’s responsibility to check if the booking is OK.
+  - `Unknown`: The cancellation process through Travelgate was completed but due to a supplier error or a timeout, the reservation status is unknown. It is the Buyer’s responsibility to check if the booking is cancelled..
 - **Cancellation Fees**: If applicable, the supplier may return a penalty fee for the cancellation.
 - **Warnings or Remarks**: Additional details from the supplier about the cancellation process.
 

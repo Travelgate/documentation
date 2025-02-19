@@ -55,7 +55,9 @@ The role will determine which actions a user can perform within the Travelgate A
 
 	<img src="https://storage.travelgate.com/kbase/users-management-10.jpg" alt="users-management-10" width="700" height="450"/>
 
-Note: It is not possible to assign a role lower than the user's organization-wide role.
+:::info
+It is not possible to assign a role lower than the user's organization-wide role.
+:::
 
 ### How can I assign a contact user to receive notifications from Travelgate?
 1. Log onto our [website](https://www.travelgate.com/).
@@ -66,7 +68,9 @@ Note: It is not possible to assign a role lower than the user's organization-wid
 	- Billing contact - Only available for **Admin or Owner** users.
 	- Tech support contact.
 
-Plesas note that website notifications will **only** be sent to contacts listed in the Contacts Management section.
+<img src="https://storage.travelgate.com/kbase/users-management-12.jpg" alt="users-management-12" width="700" height="400"/>
+
+Please note that website notifications will **only** be sent to contacts listed in the Contacts Management section.
 
 
 ### How can I reset a configured 2FA method for a user in my Organization?

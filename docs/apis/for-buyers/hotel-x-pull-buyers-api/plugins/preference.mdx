@@ -182,4 +182,21 @@ Once you've uploaded your preference file, to use the plugin add the following f
 ```
 
 
+### Special Aggregation Key: eqRates
 
+There is a special value for the aggregation key "eqRates" that  will combine the rateRules and ratePlans of an option and group all of the options, based on the file uploaded in the SFTP with the name:
+
+```mdx-code-block
+<BrowserWindow>
+
+📁HotelX  
+&nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX_0000  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁BusinessRules  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[SupplierContext_rateplanraterule.csv](../../../../../static/files/hotel-x/SupplierContext_rateplanraterule.csv)**
+
+</BrowserWindow>
+```
+
+
+
+With this uploaded CSV file, all the options with the ratePlan code "NOREEMBOLSABLE" and no rateRules will be compared with each other. Similarly, all the options without a ratePlan code or without a mapped ratePlan and with rateRules set to "NON_REFUNDABLE" will also be compared with each other.

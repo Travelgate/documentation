@@ -4,7 +4,17 @@ sidebar_position: 4
 
 # Cheapest Price
 
-The Cheapest Price plugin allows you to find the most affordable choice among your Suppliers using various aggregation criteria. This means you can, for example, aggregate the supplier options to discover the least expensive choice for each meal plan and hotel, or even the most budget-friendly option for each hotel, supplier, and room.
+The **Cheapest Price** plugin helps you find the **best price** among all your Suppliers by grouping similar options together.  
+
+You can decide how to group the options—for example:  
+- Return **only the cheapest option** for a specific meal plan.  
+- Return **only the cheapest option** for each hotel and room type.  
+
+This way, you always get the best price based on your selected criteria!  
+
+### Important considerations  
+- **If you use Hotel-X in multimode** (multiple suppliers at once), make sure to **map hotel codes and other entities**. This allows us to group and compare options correctly.  
+- If you need a **more advanced aggregation plugin**, which lets you compare options from different suppliers and set preference rules for specific suppliers, you can use the [**Preference Plugin**](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/preference) instead.  
 
 :::note
 You don't need to create any files for this plugin. Just specify it in the `settings` > `plugins` field in your search query.
@@ -18,7 +28,7 @@ To use the plugin add the following field to the `settings` node of your request
 * **`type`**: "PRE_STEP"
 * **`name`**: "cheapest_price"
 * **`parameters`**:
-	* **`primaryKey`**: Criteria used to aggregate, separated by commas. For example: "hotel, supplier, board". Possible values are: 
+	* **`primaryKey`**: Criteria used to aggregate and create groups to compare options, separated by commas. For example: "hotel, supplier, board". Possible values are: 
 		* hotel
 		* supplier
 		* board
@@ -37,11 +47,13 @@ To use the plugin add the following field to the `settings` node of your request
 		* status
 
 	* **`optionsPerKey`**: Limits the number of options per aggregation group, this being defined by the previous primakyKey parameter. Value: Integer.
+    * **`internalCurrencyConversion`**: Enables internal currency conversion for aggregation. Value: `true` or `false`. By default, aggregation considers the **currency**, meaning that only options sharing the same currency are grouped together. If you receive responses from multiple suppliers using different currencies but want to internally compare them, you can enable this option.  When set to **`true`**, Travelgate will apply an internal currency conversion to allow aggregation and comparison of options within the same `primaryKey` group, even if they have different currencies. This conversion is only used for aggregation purposes—**the final response will always return prices in their original currency**.  
+
 
 
 :::caution Remember
 
-`primaryKey` is a mandatory parameter in order to activate the plugin. `optionsPerKey` is optional and complementary of the first.
+`primaryKey` is a mandatory parameter in order to activate the plugin. `optionsPerKey` and `internalCurrencyConversion` are optional and complementary of the first.
 
 :::
 
@@ -84,8 +96,7 @@ There is a special value for the aggregation key "eqRates" that  will combine th
 📁HotelX  
 &nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX_0000  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁BusinessRules  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[SupplierContext_rateplanraterule.csv](../../../../../static/files/hotel-x/SupplierContext_rateplanraterule.csv)
-**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[SupplierContext_rateplanraterule.csv](../../../../../static/files/hotel-x/SupplierContext_rateplanraterule.csv)**
 
 </BrowserWindow>
 ```

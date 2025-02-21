@@ -1,22 +1,25 @@
 ---
-sidebar_position: 9
+sidebar_position: 5
 ---
 
 # Preference
 
-The Preference plugin works by prioritizing options that align with your preferences and presenting them in a preferred order. 
-This plugin is particularly useful if you're using Hotel-X in aggregation mode and want to prioritize certain options over others, thereby aligning the search results with your preferences. For instance, if you aggregate your search options by hotel and board, and there are three providers offering different prices for the same hotel and board, the system would typically return the cheapest option. However, you might want to give preference to one provider over another for certain hotels. With this plugin, you can load a rule that applies a percentage tolerance to a specific provider for those hotels. 
-There are various criteria for applying these preferences, which are detailed below.
+The **Preference Plugin** is a more advanced and configurable version of the [**Cheapest Price Plugin**](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/cheapest-price). While the Cheapest Price Plugin selects the lowest-priced option based on defined criteria, the Preference Plugin allows you to **prioritize certain options over others**, even if they are not the absolute cheapest.  
 
-This plugin follows a sequential process, where rules are checked one by one until a matching rule is found. When a match is found, the process stops, and your preference is applied. If no matching rule is found, the option will be validated.
+This is particularly useful when using **Hotel-X in multi mode**, where multiple suppliers may offer different prices for the same hotel, board, or room type. With the Preference Plugin, you can **set preference rules** that influence how results are ranked and selected.  
 
-To determine matches, the plugin uses the `clientTokens` field, which identifies the provider and helps filter which business rules can be applied to a specific request you send.
+For example, you might want to:  
+- Prioritize a specific supplier for certain hotels, even if their price is up to **X% higher**.  
+- Give preference to a supplier during specific **dates or destinations**.  
+- Customize selection rules based on **your business strategy**.  
+
+By leveraging the **Preference Plugin**, you gain greater control over how options are selected, allowing you to fine-tune your results based on your own **supplier relationships, pricing strategy, and business goals**.  
 
 ## Preference Plugin Workflow
 
 1. Starts getting all the args set by the client in the query, like options, parameters (primaryKey among others), client tokens, etc.
 
-2. Gets the rules stored in database which will establish which options will be added or discarded based on several factors as % of tolerance of the price, options status, hotelcodes, supplier, etc.
+2. Gets the rules stored in database which will establish which options will be added or discarded based on several factors as % of tolerance of the price, hotel codes, supplier, etc.
 
 3. Builds a group function which will help to clasify the options slice in '*n*' different groups based on the primary key established in the query by the client and the rules stored in the data base (SFTP preference file).Sorts the options in price order (from cheap to expensive).
 
@@ -53,8 +56,6 @@ If **'filterCompetitors' were disabled**, SUP1 would be added to the group, and 
 
 
 
-
-
 To get started with the Preference plugin, follow these simple steps:
 
 ## 1. Create and Upload your Preference File
@@ -85,7 +86,7 @@ If you need assistance with requesting your credentials to access the SFTP serve
 * **Delimiter:** Comma (`,`)
 * **Header Row:**
    * **RuleId (mandatory):** Rule identifier
-   * **ClientTokens (mandatory):** Identifier provided by the client that is used to filter which business rules can be applied for the sent request
+   * **ClientTokens:** Identifier provided by the client that is used to filter which business rules can be applied for the sent request.
       * Separator for multiples codes in the same row: Semicolon `;`
    * **SupplierCodes (mandatory):** Supplier codes you want the preference to be applied to.
       * Separator for multiples codes in the same row: Semicolon `;`
@@ -149,6 +150,16 @@ Once you've uploaded your preference file, to use the plugin add the following f
 		* surcharges
 		* ratePlan
 		* status
+
+   * **`optionsPerKey`**: Limits the number of options per aggregation group, this being defined by the previous primakyKey parameter. Value: Integer.
+   * **`internalCurrencyConversion`**: Enables internal currency conversion for aggregation. Value: `true` or `false`. By default, aggregation considers the **currency**, meaning that only options sharing the same currency are grouped together. If you receive responses from multiple suppliers using different currencies but want to internally compare them, you can enable this option.  When set to **`true`**, Travelgate will apply an internal currency conversion to allow aggregation and comparison of options within the same `primaryKey` group, even if they have different currencies. This conversion is only used for aggregation purposes—**the final response will always return prices in their original currency**.  
+
+:::caution Remember
+
+`primaryKey` is a mandatory parameter in order to activate the plugin. `optionsPerKey` and `internalCurrencyConversion` are optional and complementary of the first.
+
+:::
+   
 
 ```js
 "settings": {

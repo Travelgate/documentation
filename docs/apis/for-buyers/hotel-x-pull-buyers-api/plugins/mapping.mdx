@@ -124,7 +124,7 @@ On the other hand, please note that it's absolutely mandatory to use the plugin 
 		{
 			"step": "RESPONSE_OPTION",
 			"pluginsType": {
-				"type": "PRE_STEP",
+				"type": "AMENITY_MAP",
 				"name": "amenity_mapX"
 			}
 		}
@@ -138,7 +138,7 @@ On the other hand, please note that it's absolutely mandatory to use the plugin 
 		{
 			"step": "RESPONSE_OPTION",
 			"pluginsType": {
-				"type": "PRE_STEP",
+				"type": "PROMOTION_MAP",
 				"name": "promotion_mapX"
 			}
 		}
@@ -159,11 +159,23 @@ To enable this, just include the plugin in your query. After uploading your mapp
 Remember, you can only change the context for the board, amenity and promotion entities:
 
 * **`step`**: "RESPONSE_OPTION"
-* **`type`**: "PRE_STEP"
+* **`type`**: "\{ENTITY\}_MAP"
+	* **`type`**: Possible values:
+		* AMENITY_MAP
+		* BOARD_MAP
+		* PROMOTION_MAP
 * **`name`**: "\{entity\}_mapX"
+	* **`name`**: Possible values:
+		* amenity_mapX
+		* board_mapX
+		* promotion_mapX
 * **`parameters`**: 
 	* **`key`**: "context"
 	* **`value`**: \{BuyerContext\}
+
+:::caution Remember
+Bear in mind that the type and the name must contain the same entity for the mapping to work properly. They can't be interchanged.
+:::
 
 ```js
 "settings": {
@@ -171,7 +183,7 @@ Remember, you can only change the context for the board, amenity and promotion e
         {
             "step": "RESPONSE_OPTION",
             "pluginsType": {
-                "type": "PRE_STEP",
+                "type": "{ENTITY}_MAP",
                 "name": "{entity}_mapX",
                 "parameters": [
                     {

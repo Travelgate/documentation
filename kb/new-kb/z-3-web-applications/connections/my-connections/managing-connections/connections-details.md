@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Connections Details  [WIP]
+# Connections Details
 
 Welcome to the **My Connections** section! This guide will help you track, activate, and manage your connections at Travelgate.  
 
@@ -38,7 +38,7 @@ The access type (live or test) is based on the credentials agreed upon by the Bu
 
 - **Access Active Status**:  
   - **Yes**: The access is active and operational.  
-  - **No**: The access is inactive, meaning no further requests will be processed. **Note**: Deactivating an access may take time to fully propagate through the system.  
+  - **No**: The access is inactive, meaning no further Hotel-X requests will be processed. **Note**: Deactivating an access may take time to fully propagate through the system.  
 
    ![myconnections_aug_2](https://storage.travelgate.com/kbase/myconnections_aug_2.jpg)  
 
@@ -47,6 +47,9 @@ The access type (live or test) is based on the credentials agreed upon by the Bu
 - **Supplier Code**: The Supplier's specific code for that access.  
 - **Access Name**: Name identifier for the access.  
 - **Partner Name**: The Partner connected via the access (Buyer or Seller).  
+- **Updated & Created Date**: View the last modification date and the original creation date.  
+- **Accommodations**: Number of properties available for that access.  
+- **Context Code**: Check the [content codes](/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/hotel-x-credentials#context%EF%B8%8F) used.  
 - **Buyer Integration Type**: If you're a Seller, you can check if your Buyer is integrated via the **Hotel-X API** or the **Legacy Pull Buyers API**. If using **Hotel-X**, a label will be displayed.  
 
    ![buyerintegrationtype_myconnections](https://storage.travelgate.com/kbase/buyerintegrationtype_myconnections.jpg)  

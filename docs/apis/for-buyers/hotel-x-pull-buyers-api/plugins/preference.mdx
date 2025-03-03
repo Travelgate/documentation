@@ -4,7 +4,7 @@ sidebar_position: 5
 
 # Preference
 
-The **Preference Plugin** is a more advanced and configurable version of the [**Cheapest Price Plugin**](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/cheapest-price). While the Cheapest Price Plugin selects the lowest-priced option based on defined criteria, the Preference Plugin allows you to **prioritize certain options over others**, even if they are not the absolute cheapest.  
+The **Preference Plugin** is a more advanced and configurable version of the [**Cheapest Price Plugin**](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/cheapest-price). While the Cheapest Price Plugin selects the lowest-priced option/s based on defined criteria, the Preference Plugin allows you to **prioritize certain options over others**, even if they are not the absolute cheapest.  
 
 This is particularly useful when using **Hotel-X in multi mode**, where multiple suppliers may offer different prices for the same hotel, board, or room type. With the Preference Plugin, you can **set preference rules** that influence how results are ranked and selected.  
 
@@ -17,20 +17,15 @@ By leveraging the **Preference Plugin**, you gain greater control over how optio
 
 ## Preference Plugin Workflow
 
-1. Starts getting all the args set by the client in the query, like options, parameters (primaryKey among others), client tokens, etc.
+1. Gets the rules stored in database which will establish which options will be added or discarded based on several factors as % of tolerance of the price, hotel codes, supplier, etc.
 
-2. Gets the rules stored in database which will establish which options will be added or discarded based on several factors as % of tolerance of the price, hotel codes, supplier, etc.
+2. Go over each option returned by the suppliers and if it matches any of the rules recovered from database, their price will be recalculated by multiplying it by the tolerance factor set in the rule. For example, if the factor is 10%, the new price will be 90% of the original price. This recalculation of the price is only used for aggregation purposes—**the final response will always return the original prices**.  
 
-3. Builds a group function which will help to clasify the options slice in '*n*' different groups based on the primary key established in the query by the client and the rules stored in the data base (SFTP preference file).Sorts the options in price order (from cheap to expensive).
+3. Sorts the options in price order (from cheap to expensive) by the recalculated price.
 
-4. Go over each option and group them by primary key index. However not all the options will be filled in these aggrupations. This is where the rules come into play.
-To determine if an option will be discarded or not we have to check the group function which does the following: 
-   * If it is the first option in the pk index, this option will be automatically added.
-   * If the rule says that the competitors has to be discarded, all the options of that pk index will be discarded except for the first (the cheapest).
-   * If it isn't the first option and there aren’t any rule that matches the option, this option will be discarded.
-   * If it isn't the first option and the price is higher than the tolerance % established in the rules for that pk index, the option will also be discarded.
+4. Take the first '*n*' options (4 by default, configurable with the **`optionsPerKey`** parameter). That is, this will involve selecting the n cheapest options once the prices have been recalculated, taking the preference rules into account. There is one exception
 
-5. With the resulting options grouped by pk indexes, finally collects all of them and return them to the service process which has used the plugin.
+5. There is only one exception to this, which is when a rule states that competitors must be filtered out. Thus, if any of the options meet such a rule, for that group of options, the option that filters out competitors will be the only one returned.
 
 ### Example
 
@@ -44,13 +39,13 @@ By default, **SUP2 wins** because it has the lowest price.
 However, with the preference rule applied:  
 
 1. We first group all options with the same **aggregation primary key** (Hotel Santo Domingo - Double Room - All Inclusive).  
-2. Since there is a **preference rule for SUP1 hotels**, we apply the **tolerance check**:  
+2. Since there is a **preference rule for SUP1 hotels**, we recalculate the price and internally save it like:
 
    **Formula:**  
-   _Cheapest option price * (1 + tolerance%)_  
-   `125€ * (1 + 1/100) = 125€ * 1.01 = 126.25€`  
+   _Option price * (100 - tolerance%) / 100_  
+   `126€ * (100 - 1) / 100 = 124.74€
 
-3. Since **126.25€ is higher than 126€** and **'filterCompetitors' is enabled**, the **SUP2 option is discarded**, making **SUP1 the only winner**.  
+3. Since **124.74€ is lower than 125€** and **'filterCompetitors' is enabled**, the **SUP2 option is discarded**, making **SUP1 the only returned option**.  
 
 If **'filterCompetitors' were disabled**, SUP1 would be added to the group, and **both options would be returned** in the results.
 
@@ -151,7 +146,7 @@ Once you've uploaded your preference file, to use the plugin add the following f
 		* ratePlan
 		* status
 
-   * **`optionsPerKey`**: Limits the number of options per aggregation group, this being defined by the previous primakyKey parameter. Value: Integer.
+   * **`optionsPerKey`**: Limits the number of options per aggregation group, this being defined by the previous primakyKey parameter. Value: Integer. By default it is 4.
    * **`internalCurrencyConversion`**: Enables internal currency conversion for aggregation. Value: `true` or `false`. By default, aggregation considers the **currency**, meaning that only options sharing the same currency are grouped together. If you receive responses from multiple suppliers using different currencies but want to internally compare them, you can enable this option.  When set to **`true`**, Travelgate will apply an internal currency conversion (updated every day) to allow aggregation and comparison of options within the same `primaryKey` group, even if they have different currencies. This conversion is only used for aggregation purposes—**the final response will always return prices in their original currency**.  
 
 :::caution Remember

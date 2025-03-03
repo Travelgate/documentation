@@ -46,7 +46,7 @@ To use the plugin add the following field to the `settings` node of your request
 		* ratePlan
 		* status
 
-	* **`optionsPerKey`**: Limits the number of options per aggregation group, this being defined by the previous primakyKey parameter. Value: Integer.
+	* **`optionsPerKey`**: Limits the number of options per aggregation group, this being defined by the previous primakyKey parameter. Value: Integer. By default it is 1, so it returns only the cheapest option.
     * **`internalCurrencyConversion`**: Enables internal currency conversion for aggregation. Value: `true` or `false`. By default, aggregation considers the **currency**, meaning that only options sharing the same currency are grouped together. If you receive responses from multiple suppliers using different currencies but want to internally compare them, you can enable this option.  When set to **`true`**, Travelgate will apply an internal currency conversion (updated every day) to allow aggregation and comparison of options within the same `primaryKey` group, even if they have different currencies. This conversion is only used for aggregation purposes—**the final response will always return prices in their original currency**.  
 
 

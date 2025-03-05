@@ -47,7 +47,7 @@ Don't forget to check our ['Availability and Price Load'](/docs/apps/inventory/e
 
 ### Can I Modify the Standard Occupancy in Inventory?
 
-No, **the Standard Occupancy in Inventory cannot be modified**. To make changes, follow these steps:
+No, **the Standard Occupancy cannot be modified**. To make changes, follow these steps:
 
 1. Delete the affected room(s).
 2. Re-add the room(s) with the desired standard occupancy.

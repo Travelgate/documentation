@@ -45,23 +45,16 @@ The Standard Occupancy is the **standard number of adult paxes of the room**.
 Don't forget to check our ['Availability and Price Load'](/docs/apps/inventory/extranet/availability-and-rates/manual-load/availability-and-price) section in the Inventory Documentation for more examples of price calculation.
 :::
 
-### How can I modify the Standard Occupancy in Inventory?
-Our Inventory Extranet allows for prices to be loaded in 3 different ways:
+### Can I Modify the Standard Occupancy in Inventory?
 
-- Price per Room
-- Price based on Standard Occupancy
-- Price per Occupancy
+No, **the Standard Occupancy in Inventory cannot be modified**. To make changes, follow these steps:
 
-1. First of all, we need you to confirm that you are aware that modifying the Standard Occupancy without the Channel remapping and refreshing on their side may result in a price discrepancy. That is, if the Standard Occupancy is modified and the Channel does not map and load again, **price discrepancy is a distinct possibility**. 
+1. Delete the affected room(s).
+2. Re-add the room(s) with the desired standard occupancy.
+3. Contact the Channel Manager to request a remap and reload based on the updated information.
 
-	:::danger Important:
-	Please ensure you inform the Channel Manager of any standard occupancy modifications so they can remap and refresh.  
-	We strongly recommend deleting the previously loaded prices before the Channel Manager remaps and loads their product to avoid price discrepancies. 
-	:::
+This ensures the changes are correctly applied and reflected in the system.
 
-2. Once you have informed the Channel, you just need to [contact](https://app.travelgate.com/support) our Customer Support team and confirm exactLy for which **hotel, rate and room** you need us to modify the Standard Occupancy. That's it!
-
- 
 :::info
 Discover more by diving into our [Inventory Documentation](/docs/apps/inventory/quickstart) 🚀
 :::

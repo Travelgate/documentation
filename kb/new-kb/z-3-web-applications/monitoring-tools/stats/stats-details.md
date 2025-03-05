@@ -1,10 +1,10 @@
 ﻿---
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 # How to Use Stats
 
-### How Can Stats Streamline My Choices?
+## How Can Stats Streamline My Choices?
 
 Welcome to **Stats**, Travelgate's real-time connectivity performance dashboard and your ultimate tool for business success! Stats offers a user-friendly interface that allows you to easily monitor your performance and quickly address any traffic or connection issues. By providing valuable insights on a per-connection and per-method basis (Search, Quote, Book, Cancel, and Other), Stats gives you a comprehensive overview and detailed performance data.
 
@@ -12,7 +12,7 @@ Let [Stats](https://app.travelgate.com/apps/stats) help you make data-driven dec
 
 ![stats_dashboard_1](https://storage.travelgate.com/kbase/stats_dashboard_1.jpg)
 
-### How Can I Use Stats?
+## How Can I Use Stats?
 
 To use Stats, simply log in to [our Portal](https://www.travelgate.com/), click on **Monitoring** in the top menu, and select **Stats**. By default, Stats will display your organization’s statistics for the past hour. However, you can easily adjust the time range using the selector in the top right corner.
 

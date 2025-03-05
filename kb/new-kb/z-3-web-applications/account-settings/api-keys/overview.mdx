@@ -1,8 +1,18 @@
-﻿---
+---
 sidebar_position: 1
 ---
 
 # Overview
+
+(intro, enlace a doc y dentro artículos de KB/FAQs) Hotel Portfolio Overview.
+Error Analytics.
+
+
+
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items.filter((item, i) => i > 0)}/>
 
 In the **API Keys** section, you can manage and view the API keys configured for your Organization, including details such as their creation dates and the ability to generate new ones.
 
@@ -13,4 +23,3 @@ In the **API Keys** section, you can manage and view the API keys configured for
 An **API key** is a unique alphanumeric identifier used to authenticate requests to Travelgate’s APIs, such as the **Hotel-X Pull Buyers API**. The API key must be included in the **HTTP Authorization** header to verify the requestor’s identity and authenticate the user agent with the server.
 
 API keys ensure that only authorized users can interact with the system, acting as a secure authentication method.
-

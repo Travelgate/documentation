@@ -68,6 +68,12 @@ export const searchQuickStartQuery =
 						code
 						name
 					}
+					promotions{
+						start
+						end
+						code
+						name
+					}
 				}
 				price {
 					currency

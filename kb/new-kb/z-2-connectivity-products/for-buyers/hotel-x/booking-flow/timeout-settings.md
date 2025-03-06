@@ -10,7 +10,7 @@ Yes, you must set a timeout value for all Booking Flow queries and mutations. If
 ### What Timeout Values Should I Use for Each Step?
 The ideal timeout values depend on your preferences and operational needs. We recommend testing different timeout values based on the number of hotels requested and the Seller’s specifications or restrictions.
 
-**TravelgateX Buyers API allows the following maximum timeout values:**
+**Travelgate Buyers API allows the following maximum timeout values:**
 
 - **Search:** 25,000 ms
 - **Quote:** 180,000 ms

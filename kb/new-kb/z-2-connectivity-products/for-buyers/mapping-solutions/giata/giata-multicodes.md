@@ -6,7 +6,7 @@ sidebar_position: 2
 
 ### What is GIATA Multicodes? 💡
 
-GIATA Multicodes is a hotel mapping solution offered by GIATA, previously known as GIATA Universal Hotel Codes at TravelgateX. There are no costs associated with accessing your GIATA hotel codes through TravelgateX— all you need to provide are your GIATA credentials.
+GIATA Multicodes is a hotel mapping solution offered by GIATA, previously known as GIATA Universal Hotel Codes at Travelgate. There are no costs associated with accessing your GIATA hotel codes through Travelgate— all you need to provide are your GIATA credentials.
 
 ### Where Can I Expect to Receive GIATA Multicodes? ✔️
 

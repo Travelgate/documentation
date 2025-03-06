@@ -12,7 +12,7 @@ No, filters cannot be applied to the Cancel Mutation request.
 ### Is it possible to retrieve cancellation costs without canceling the booking?
 Yes, if the Seller provides cancellation policy details, you can retrieve this information through the **Hotel-X Quote Query** or the **Hotel-X Booking Query** without initiating a cancellation.
 
-### Can TravelgateX remove cancellation fees if the hotel waives them after the booking is canceled?
+### Can Travelgate remove cancellation fees if the hotel waives them after the booking is canceled?
 As cancellation policies are returned by the Supplier via the integration, it is not possible to remove cancellation fees from a booking that already includes them.
 
 ### In a reservation with two rooms, if both have the same cancellation policy, should the penalties be summed up under the option node?  

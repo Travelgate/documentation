@@ -1,8 +1,8 @@
 ﻿---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
-# Support Cases
+# How to Submit a Case
 
 If you've ever submitted a Tech Support case, you know how important it is to stay updated on its status. At Travelgate, we have a structured process to ensure your case is handled efficiently and effectively. When you submit a case through our [Support Portal](https://app.travelgate.com/support), here’s what you can expect:
 

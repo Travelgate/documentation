@@ -47,7 +47,7 @@ The amount of information returned may vary across different Sellers.
 ## Mapping Responsibilities
 
 ### Is It My Responsibility to Map Hotel-X Rooms, or Does Travelgate Provide Mapping Support? 
-TravelgateX delivers the Seller's native data without modifications, meaning the mapping process should be handled internally by your team.  You are not required to map the entire room portfolio from a Seller—focus only on the rooms relevant to your business needs.
+Travelgate delivers the Seller's native data without modifications, meaning the mapping process should be handled internally by your team.  You are not required to map the entire room portfolio from a Seller—focus only on the rooms relevant to your business needs.
 
 :::info
 If you're using the Hotel-X API, you can [upload your own mapping files to our SFTP](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping) to streamline your operations and improve efficiency. 🚀

@@ -29,7 +29,7 @@ The response may include the following fields:
 - Room details, including max/min occupancy and pax ranges (if available)
 
 :::info
-Static content fetching is always sequential and the amount of content returned may vary between Sellers. Learn more about mapping on TravelgateX [here](/kb/connections/connections-content/all-about-mapping).
+Static content fetching is always sequential and the amount of content returned may vary between Sellers. Learn more about mapping on Travelgate [here](/kb/connections/connections-content/all-about-mapping).
 :::
 
 ### Can I obtain the list of amenities available at Travelgate?

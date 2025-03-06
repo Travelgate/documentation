@@ -1,0 +1,174 @@
+---
+sidebar_position: 2
+---
+
+# Price, Commission and Binding
+
+## Overview
+
+Each API search response includes pricing details among other fields. Below is an example:
+
+```json
+{
+    "price": {
+        "currency": "USD",
+        "binding": true,
+        "net": 150,
+        "gross": 170,
+        "exchange": {
+            "currency": "USD",
+            "rate": 1
+        },
+        "minimumSellingPrice": 160,
+        "markups": null
+    }
+}
+```
+
+Every pricing option contains:
+1. **Currency**
+2. **Net and Gross** (Amount in [Legacy Pull Buyers API](/docs/apis/for-buyers/legacy-pull-buyers-api/overview))
+3. **Binding status**
+4. **Commission** (applicable in [Legacy Pull Buyers API](/docs/apis/for-buyers/legacy-pull-buyers-api/overview))
+5. **Markup** applied over the supplier price, if provided
+6. **Minimum Selling Price (MSP)** if specified by the Supplier
+
+## What Is a Binding Price?
+A 'binding' price means the Buyer must sell at or above the specified amount, gross or the Minimum Selling Price (MSP) if provided. In Spain, this is commonly referred to as the mandatory price or PVP.
+
+:::info Binding Price Rules
+- **Binding = true** → The Buyer must sell at or above the price set by the Seller.
+- **Binding = false** → The Buyer can sell the product at a lower price than the one returned by the Seller.
+:::
+
+## Understanding Minimum Selling Price (MSP)
+
+The **Minimum Selling Price (MSP)** is the lowest price at which the Buyer is allowed to sell the Supplier's product. Introduced in 2022, the MSP replaced the previous method of relying solely on the binding tag to enforce mandatory gross pricing.
+
+### What Information Does MSP Provide?
+The MSP field specifies the required minimum price, offering Buyers a competitive reference when pricing their offerings. This is particularly useful when differentiating among:
+
+- **Gross price** → The total price before commission deductions
+- **Net price** → The payable amount to the Seller, excluding commission
+- **Minimum Selling Price** → The lowest price the Buyer can set when reselling the product
+
+If a Supplier provides an MSP, we display it in the `MinimumSellingPrice` node and automatically set `Binding=true`.*
+
+*_Note: This does not apply to Legacy Pull Buyers API users who have not implemented the MSP. Ensure implementation to receive this information._
+
+### Example:
+```json
+{
+    "binding": true,
+    "net": 150,
+    "gross": 170,
+    "currency": "USD",
+    "minimumSellingPrice": 160
+}
+```
+
+In this case, the Buyer cannot sell below **160**. If the MSP field were absent, the gross price would be the default binding minimum, potentially making the product less competitive.
+
+## Handling Net and Gross Prices with MSP
+
+If a Supplier provides both `net` and `gross` values, we return them as received. However, if only a `totalprice` node is included along with the MSP, we determine whether the total represents a net or gross value to ensure accurate data in both the 'net' and 'gross' nodes.
+
+If no MSP is provided, we ask the Supplier whether one of the returned prices should be used as the MSP (e.g., MSP = net, MSP = gross, or another specified approach). If the Supplier does not specify an MSP, we process the net and gross values accordingly, with `Binding=false` unless explicitly defined otherwise.
+
+## Can MSP Be Lower Than the Gross Amount?
+
+While uncommon, it is possible. The final price depends on the commercial agreements among all involved parties. If an MSP is enforced, a wholesaler may sell at a higher rate to a B2B partner while maintaining compliance with the MSP.
+
+### Example:
+1. **Hotel Chain sells to a Bedbank (10% commissionable rate)**
+    ```json
+    {
+        "binding": true,
+        "net": 180,
+        "gross": 200,
+        "currency": "USD",
+        "minimumSellingPrice": 200
+    }
+    ```
+2. **Bedbank sells to a B2B Wholesaler (9% markup, net rates)**
+    ```json
+    {
+        "binding": true,
+        "net": 196.2,
+        "gross": 196.2,
+        "currency": "USD",
+        "minimumSellingPrice": 200
+    }
+    ```
+3. **B2B Wholesaler sells to a OTA (3% markup, net rates)**
+    ```json
+    {
+        "binding": true,
+        "net": 202.08,
+        "gross": 202.08,
+        "currency": "USD",
+        "minimumSellingPrice": 200
+    }
+    ```
+
+As shown, the Minimum Selling Price (MSP) is always provided as a reference. However, when multiple parties resell the same product, the gross price may sometimes exceed the MSP originally set by the hotel chain.
+
+**Does this make the product less competitive?**
+Not necessarily. In cases of high demand and limited inventory, even a rate slightly above the hotel's direct price can still present a valuable sales opportunity for distributors.
+
+## Do All Sellers Provide an MSP?
+Not all Sellers have implemented MSP in their APIs. However, whenever a Seller provides MSP details, we ensure Buyers can access them.
+
+:::info MSP Values
+- `minimumSellingPrice = amount` → The lowest permitted resale price
+- `minimumSellingPrice = 0` → No minimum selling price provided
+- `minimumSellingPrice = -1` → No MSP information available from the Seller (applicable to Legacy Pull Buyers API)
+:::
+
+## Should I Ignore the Binding Field When Using MSP?
+
+No, both fields are critical:
+- **Binding Field** → Determines whether a price restriction applies. It is used to determine whether the amount is mandatory.
+- **MSP Field** → Helps Buyers structure pricing while considering competitiveness.
+
+## Handling NET=Gross Without MSP
+- **Binding = true** + Seller provides MSP → **Minimum Selling Price = Gross**
+- **Binding = false** + No MSP provided → **Pricing flexibility**
+
+## Understanding Commission in Hotel-X and Legacy APIs
+
+In Hotel-X, both net and gross prices are provided for easy calculation. In the Legacy Pull Buyers API, only `amount`, `commission`, and `binding` information is available. Example:
+```xml
+<Price currency="EUR" amount="36.20" binding="false" commission="-1"/>
+```
+
+### Commission Values:
+- `commission = 0` → Price returned is a **net** price
+- `commission = -1` → Selling price and commission are not provided by the Seller. The Seller's contract defines the commission, which is handled separately from the integration.
+- `commission > 0` → Percentage commission applied to the amount
+
+Since the Hotel-X API does not include a commission field, you can calculate it using:
+```math
+Gross - Net = Commission
+```
+
+<details>
+<summary>How should I interpret "binding" and "commission"?</summary>
+
+| CATEGORY                                           | PRICE      | AMOUNT                      | BINDING | COMMISSION            | MSP | NOTES                                     |
+|--------------------------------------------------------|------------------------------|---------------------------------|-------------|----------------------------|----------------------------------|----------------------------------------------|
+| **No binding price and no MSP**               | Unknown Price                | EUR 200                         | False       | -1                         | N/A                              | Unknown price                                |
+|                                                        | Net Price                    | EUR 100                         | False       | 0                          | N/A                              | Net price                                    |
+|                                                        | Gross Price                  | EUR 150                         | False       | 20                         | N/A                              | Gross price                                  |
+| **Binding price (MSP version)**            | Net + Binding=True + MSP     | EUR 100                         | True        | 0                          | 120                              | Net price with binding and MSP               |
+|                                                        | Gross + Binding=True + MSP   | EUR 150                         | True        | 20                         | 180                              | Gross price with binding and MSP             |
+|                                                        | Unknown + Binding=True + MSP | EUR 100                         | True        | -1                         | 120                              | Unknown price with binding and MSP           |
+| **Binding prices (No MSP "deprecated")**    | Net + Binding=True           | EUR 120 (Supplier MSP value)    | True        | 10                         | N/A                              | Net price with binding, no MSP (deprecated)  |
+|                                                        | Gross + Binding=True         | EUR 180 (Supplier MSP value)    | True        | 20                         | N/A                              | Gross price with binding, no MSP (deprecated)|
+
+
+</details>
+
+:::warning Important
+Failing to follow these pricing rules may affect your commercial agreement with the Seller.
+:::

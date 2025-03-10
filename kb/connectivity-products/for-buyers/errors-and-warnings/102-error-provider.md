@@ -21,7 +21,7 @@ If the Seller does not provide an error description, the system categorizes it a
 ## How to Handle a 102 Error
 
 #### 1. Verify Request Configurations
-If you are using our **Legacy Pull Buyers API**, ensure that your request configurations match the access configurations associated with your credentials in [My Connections](/kb/connections/my-connections/).
+If you are using our **Legacy Pull Buyers API**, ensure that your request configurations match the access configurations associated with your credentials in [My Connections](/kb/web-features/connections/my-connections/managing-connections/connections-details).
 
 #### 2. Contact the Seller
 If the error description for a 102 error is unclear, we strongly recommend reaching out to the Seller directly. When doing so, provide them with complete logs, including transactions involving their system, to facilitate a detailed investigation.
@@ -32,4 +32,4 @@ To obtain Seller logs in their original system format, use one of the following 
 - **Hotel-X Pull Buyers API:** Utilize the `auditData` parameter.
 - **Legacy Pull Buyers API:** Use the `registerTransactions` feature.
 
-For step-by-step guidance on retrieving these transactions, refer to this [article](/kb/apps/monitoring-apps/logging/how-can-i-receive-seller-transactions-in-their-api-format).
+For step-by-step guidance on retrieving these transactions, refer to this [article](/kb/web-features/monitoring-tools/logging/audit-supplier-transactions).

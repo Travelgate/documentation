@@ -41,5 +41,5 @@ If you are still using the Travelgate's Legacy Pull Buyers API, follow these ste
 
 
 :::tip
-For further details, please refer to our [Hotel-X Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow).
+For further details, please refer to our [Hotel-X Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/overview).
 :::

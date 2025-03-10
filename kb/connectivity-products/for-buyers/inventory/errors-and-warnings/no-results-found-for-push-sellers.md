@@ -7,7 +7,7 @@ sidebar_position: 2
 ### What Does a 204 Error Mean? 
 A 204 error occurs when a Supplier does not return any results for the specific Search criteria set in the Buyer's request (e.g., hotel, dates, market, etc.).
 
-For more details, see our article on [204 error - No results found](/kb/our-products/are-you-a-buyer/our-methods/lists-of-errors-and-warnings/error-no-results-found).
+For more details, see our article on [204 error - No results found](/kb/connectivity-products/for-buyers/errors-and-warnings/error-no-results-found).
 
 ### What Are the Typical Causes of a "No Availability" Error for Push Suppliers? 
 Below are the possible reasons for availability not being displayed for Push Suppliers, along with their solutions:

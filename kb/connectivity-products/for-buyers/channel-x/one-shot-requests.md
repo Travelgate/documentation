@@ -18,7 +18,7 @@ To simplify bookings, we have introduced the **'oneStepQuote'** and **'oneStepBo
 - **Latest pricing**
 - **Cancellation policies**
 
-If you choose to proceed, simply execute a standard [Book mutation](/kb/our-products/are-you-a-buyer/our-methods/booking-flow/book/hotel-x-development-book-mutation) using the **optionID** returned in the **'oneStepQuote'** response.
+If you choose to proceed, simply execute a standard [Book mutation](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/book/book-mutation) using the **optionID** returned in the **'oneStepQuote'** response.
 
 ## oneStepBook
 

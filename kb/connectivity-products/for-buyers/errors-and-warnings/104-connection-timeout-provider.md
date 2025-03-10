@@ -10,7 +10,7 @@ A **104 error** occurs when the Seller's response time exceeds the timeout set i
 ## Timeout Configuration by API
 
 ### Hotel-X Buyers API
-The timeout value can be set at either the request level (in your **Settings**) or at the **Default Settings** level via our website under **Connections > [Connections Settings](/kb/connections/connections-settings)**.
+The timeout value can be set at either the request level (in your **Settings**) or at the **Default Settings** level via our website under **Connections > [Connections Settings](/kb/web-features/connections/api-settings/)**.
 
 ### Legacy Buyers API
 In the **Legacy Buyers API** (deprecated), the timeout is defined in every request as a Common Element (`timeoutMilliseconds`):
@@ -40,8 +40,8 @@ In the example above, the Buyer sets a timeout of **24,700 milliseconds (24.7 se
 1. **Check system performance:** Investigate server load, network stability, and software efficiency to identify potential delays.
 2. **Optimize system performance:** Consider upgrades or optimizations to improve response times.
 3. **Communicate with the Buyer:** Buyers may adjust their timeout settings or reduce the size of their requests.
-4. **Monitor performance:** Use monitoring tools to track system behavior over time and detect issues. Travelgate offers monitoring tools like **[Stats](/kb/apps/monitoring-apps/stats/stats-connectivity-dashboard)** and **[Alerts](https://docs.travelgate.com/kb/apps/monitoring-apps/alerts/alerts-real-time-detection)** to help track Buyer performance.
+4. **Monitor performance:** Use monitoring tools to track system behavior over time and detect issues. Travelgate offers monitoring tools like **[Stats](/kb/web-features/monitoring-tools/stats/stats-details)** and **[Alerts](/kb/web-features/monitoring-tools/alerts/alerts-details)** to help track Buyer performance.
 
 :::tip
-If performance issues persist despite following these steps, consider activating **[Speed](/kb/apps/smart-traffic-apps/speed/speed-app)**, our caching solution. Speed can improve response times and enhance overall system efficiency.
+If performance issues persist despite following these steps, consider activating **[Speed](/kb/web-features/smart-traffic/speed/speed-details)**, our caching solution. Speed can improve response times and enhance overall system efficiency.
 :::

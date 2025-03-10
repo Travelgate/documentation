@@ -8,7 +8,7 @@ Seamlessly consolidate contracted products from multiple **Channel Managers** in
 
 ## What is Channel-X? 
 
-**Channel-X** extracts product data loaded by **Channel Managers** into our **[Inventory](/kb/our-products/are-you-a-buyer/inventory/what-is-inventory)** tool and pushes it directly into the system of a **Travelgate Partner**, typically an OTA (Buyer).
+**Channel-X** extracts product data loaded by **Channel Managers** into our **[Inventory](/kb/connectivity-products/for-buyers/inventory/inventory-solution)** tool and pushes it directly into the system of a **Travelgate Partner**, typically an OTA (Buyer).
 
 With **Channel-X**, you have full control over **when** and **what** product data to refresh. This powerful tool ensures your **prices, availability, and inventory** stay up to date—acting as the perfect bridge between your system and the **Channel Managers** you're connected with!
 
@@ -31,7 +31,7 @@ To activate and use **Channel-X**, consider the following steps:
 
 2. **Setup via Inventory Extranet**  
    - Since **Channel-X** integrates with **Inventory**, you need to configure hotel, rate, and room setups using our **Inventory Extranet**. This enables **Channel Managers** to map the properties correctly.  
-   - Find more details on **[Inventory setup](https://knowledge.travelgate.com/inventory-set-up)**.
+   - Find more details on **[Inventory setup](/kb/connectivity-products/for-buyers/inventory/set-up/overview)**.
 
 3. **Inventory Data Reception & Storage**  
    - Once mapped, **Channel Managers** will load and update **availability and pricing** for the configured hotels and rates.

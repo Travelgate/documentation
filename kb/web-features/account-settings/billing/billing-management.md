@@ -41,7 +41,7 @@ Only **owner** and **admin** users have access to the complete menu.
 
 ## How to Request a Payment Type Change for a Partner
 
-If both you and your Partner are under the **Commercial Agreement 2023**, you can request a payment type change via the [Auto-Activations form](/kb/connections/my-connections/guick-guide-to-auto-activations/). The available payment types are:
+If both you and your Partner are under the **Commercial Agreement 2023**, you can request a payment type change via the [Auto-Activations form](/kb/web-features/connections/my-connections/guick-guide-to-auto-activations/). The available payment types are:
 
 - **FREE**: No cost to you. Your Partner is responsible for the full payment of the connectivity.
 - **STD**: Standard booking fee shared between you and your Partner.
@@ -58,7 +58,7 @@ Additionally, you can access a **historical record** of changes made in each agr
 :::info
 - Remember, your Partner must log in to their Profile to accept the payment change request. They will receive a notification in the bell icon located on the right side of the settings menu.
 - Any changes to the payment type will apply to all reservations with an entry date starting from the first day of the following calendar month after the notification.
-- For **Commercial Agreement 2023**, you can select the payment type during the [auto-activation process](/kb/connections/my-connections/guick-guide-to-auto-activations).
+- For **Commercial Agreement 2023**, you can select the payment type during the [auto-activation process](/kb/web-features/connections/my-connections/guick-guide-to-auto-activations).
 - Payment type changes are only available under the **Commercial Agreement 2023**.
 :::
 

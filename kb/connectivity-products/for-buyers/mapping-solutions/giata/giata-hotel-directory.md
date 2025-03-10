@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # GIATA Hotel Directory
@@ -25,8 +25,8 @@ With this solution, you can:
 Follow these simple steps to activate GIATA Hotel Directory:
 
 1. Log into Travelgate and browse as a Buyer.
-2. Navigate to **Connections** → [My Connections](/kb/connections/my-connections/) → **Create a New Connection**.
-3. Request activation for GIATA (Seller) by following the instructions in our [Auto-Activations Quick Guide](/kb/connections/my-connections/guick-guide-to-auto-activations).
+2. Navigate to **Connections** → [My Connections](/kb/web-features/connections/my-connections/managing-connections/connections-details) → **Create a New Connection**.
+3. Request activation for GIATA (Seller) by following the instructions in our [Auto-Activations Quick Guide](/kb/web-features/connections/my-connections/guick-guide-to-auto-activations).
 
    ![giata_hotel_directory_2](https://storage.travelgate.com/kbase/giata_hotel_directory_2.jpg)
 
@@ -37,5 +37,5 @@ Follow these simple steps to activate GIATA Hotel Directory:
 
 :::tip
 **Interested in GIATA Multicodes as well?**
-Follow the easy steps outlined in this [guide](/kb/getting-started-with-travelgate/about-our-connectivity/explore-and-discover-giata-products-in-our-marketplace).
+Follow the easy steps outlined in this [guide](/kb/connectivity-products/for-buyers/mapping-solutions/giata/giata-multicodes).
 :::

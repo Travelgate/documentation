@@ -18,7 +18,7 @@ Another scenario where this warning appears is when the integration does not rec
 "warnings":[{"external":null,"type":"PLUGIN_ERROR","code":"WRONG_FIELD","description":"commission: commission not found"}]
 ```
 
-- **If this happens during a Search**, we will inform the Buyer to upload the [commission file to our SFTP](/kb/our-products/are-you-a-buyer/our-methods/lists-of-errors-and-warnings/wrong-field-plugin-error) for accurate results.
+- **If this happens during a Search**, we will inform the Buyer to upload the [commission file to our SFTP](/kb/connectivity-products/for-buyers/errors-and-warnings/wrong-field-plugin-error) for accurate results.
 - **If commission details are missing in other methods**, the Buyer will receive the "commission: commission not found" warning.
 
 ### **2. PLUGIN_ERROR: BLACKLIST**

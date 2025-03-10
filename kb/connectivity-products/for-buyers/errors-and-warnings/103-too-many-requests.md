@@ -22,8 +22,8 @@ A **103 error** occurs when your account exceeds the agreed-upon request limit w
 #### 1. Contact the Seller
 Reach out to the Seller directly, as they can adjust the **Queries Per Second (QPS)** limit assigned to your account.
 
-#### 2. Use the Speed App
-Activate [Speed](/kb/apps/smart-traffic-apps/speed/speed-app), our intelligent caching solution, to reduce response times and minimize traffic load on the connection.
+#### 2. Use the Speed Solution
+Activate [Speed](/kb/web-features/smart-traffic/speed/speed-details), our intelligent caching solution, to reduce response times and minimize traffic load on the connection.
 
 :::info
 As a Buyer, you cannot check the Supplier’s **QPS (Queries Per Second) value** directly through the Travelgate API. If you need this information, please contact the Supplier.

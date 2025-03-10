@@ -20,7 +20,7 @@ A **201 error** occurs when your **Static Content data** needs to be updated.
 Follow these steps to resolve the error:
 
 1. **Access our website.**
-2. **Navigate to the Connections section** and click on [Connections Content](/kb/connections/connections-content/how-to-check-my-connections-content).
-3. **[Force an update](/kb/connections/connections-content/how-to-check-my-connections-content#how-can-i-use-the-force-update-now-functionality)** to ensure you receive the latest information from your Seller.
+2. **Navigate to the Connections section** and click on [Connections Content](/kb/web-features/connections/connections-content/content-management).
+3. **[Force an update](/kb/web-features/connections/connections-content/content-management#how-can-i-use-the-force-update-now-functionality)** to ensure you receive the latest information from your Seller.
 4. **Verify if the error persists** after completing the update.
 5. If the issue continues, contact our [Customer Support](https://app.travelgate.com/support) team for assistance.

@@ -6,11 +6,11 @@ sidebar_position: 2
 
 ## Quote Request Limitations
 
-### Do options get blocked in Hotel-X Quote Query? ⚠️
+### Do options get blocked in Hotel-X Quote Query?
 
 Some Sellers may block options when performing a Quote query. It is strongly recommended to contact them directly to prevent potential issues.
 
-### Are there any limitations on the number of Hotel-X Quote requests allowed per minute? 🔢
+### Are there any limitations on the number of Hotel-X Quote requests allowed per minute?
 
 There are no limitations on Requests Per Minute (RPM) or Transactions Per Minute (TPM) from Travelgate's side. However, some Sellers may impose their own restrictions, so it is advisable to contact them directly to confirm.
 
@@ -26,7 +26,7 @@ No, each Quote obtained through the Hotel-X API is linked to a unique option and
 
 ### What can I do if I have many Searches but no Quotes?
 
-A high number of searches without resulting quotes can negatively impact your Look-to-Book (L2B) ratio. To address this, consider using [Traffic Optimizer](https://docs.travelgate.com/kb/apps/smart-traffic-apps/traffic-optimizer/traffic-optimizer-app/). This tool enhances your connections by analyzing transaction data, improving the L2B ratio, reducing search traffic, and cutting costs by blacklisting non-converting hotels.
+A high number of searches without resulting quotes can negatively impact your Look-to-Book (L2B) ratio. To address this, consider using [Traffic Optimizer](/kb/web-features/smart-traffic/traffic-optimizer/traffic-optimizer-details). This tool enhances your connections by analyzing transaction data, improving the L2B ratio, reducing search traffic, and cutting costs by blacklisting non-converting hotels.
 
 ## Additional Information
 

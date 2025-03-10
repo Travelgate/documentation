@@ -15,7 +15,7 @@ You have two options to cancel a reservation:
 
 ## What Information Can I Expect in the Cancel Response?
 
-The information returned in the Cancel response may vary between Sellers. Please refer to our [Hotel-X Playground Documentation](/playground) to include the fields relevant to your needs. Additionally, check the Sellers' [Metadata](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-metadata-query) for details on their specifications and data returned.
+The information returned in the Cancel response may vary between Sellers. Please refer to our [Hotel-X Playground Documentation](/playground) to include the fields relevant to your needs. Additionally, check the Sellers' [Metadata](/kb/connectivity-products/for-buyers/hotel-x/content/metadata) for details on their specifications and data returned.
 
 ![cancel_mutation_1](https://storage.travelgate.com/kbase/cancel_mutation_1.jpg)
 
@@ -42,6 +42,6 @@ If you encounter any issues, feel free to contact our [Customer Support team](ht
 :::
 
 :::tip
-Don't forget to check our [Hotel-X API Playground](/playground) and [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/cancel) for further information on Cancel Mutation. Interested in learning more about cancellation penalties? Explore our in-depth [articles](/kb/faqs/faqs-cancel-policies/hotel-buyers-api-cancel-policies) on the topic!🚀
+Don't forget to check our [Hotel-X API Playground](/playground) and [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/cancel) for further information on Cancel Mutation. Interested in learning more about cancellation penalties? Explore our in-depth [articles](/kb/faqs/faqs-cancel-policies/overview) on the topic!🚀
 :::
 

@@ -8,7 +8,7 @@ The [Quote](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/quote) op
 
 The information returned in the Quote response may vary depending on the Seller. Some Sellers may provide cancellation policies only in the Search response, while others include them exclusively in the Quote response or both.
 
-To ensure you receive the necessary data, refer to our [Hotel-X API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart) to include the required fields (such as price, cancellation policies, rooms, status, etc.) in your request. Additionally, review the [Metadata](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-metadata-query) of your Sellers to understand their specifications for this method.
+To ensure you receive the necessary data, refer to our [Hotel-X API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart) to include the required fields (such as price, cancellation policies, rooms, status, etc.) in your request. Additionally, review the [Metadata](/kb/connectivity-products/for-buyers/hotel-x/content/metadata) of your Sellers to understand their specifications for this method.
 
 ## Status in Quote Response
 

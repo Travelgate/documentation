@@ -6,7 +6,7 @@ sidebar_position: 5
 
 ## Test Environment
 
-### Why do I receive a status "ON_REQUEST" and holder name "test" in my test reservations? 💡
+### Why do I receive a status "ON_REQUEST" and holder name "test" in my test reservations?
 
 In the test environment, some Sellers may consistently return an "ON_REQUEST" status. Additionally, as a standard practice, the holder and passenger names are automatically replaced with "test" during test reservations.
 
@@ -28,21 +28,21 @@ Travelgate does not impose a character limit on guest names and surnames; howeve
 
 ### How can I add remarks to a Book request?
 
-Remarks, which are customer comments for the Seller, can be included in the Book request if the Supplier supports them. For more information, refer to our [Hotel-X Schema](https://docs.travelgate.com/playground/) and check the Seller's [Metadata](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-metadata-query).
+Remarks, which are customer comments for the Seller, can be included in the Book request if the Supplier supports them. For more information, refer to our [Hotel-X Schema](/playground/) and check the Seller's [Metadata](/kb/connectivity-products/for-buyers/hotel-x/content/metadata).
 
 ### Can I change the guest details for an existing booking?
 
-Yes, guest details can be modified, provided the Supplier allows it. You can check the Supplier's [Metadata](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-metadata-query) for supported changes. The number of rooms and guest distribution must match the original request, and modifications can be processed through Travelgate's [Amendments operations](/kb/our-products/are-you-a-buyer/our-methods/booking-management/amendments/what-is-hotel-x-amendments-query).
+Yes, guest details can be modified, provided the Supplier allows it. You can check the Supplier's [Metadata](/kb/connectivity-products/for-buyers/hotel-x/content/metadata) for supported changes. The number of rooms and guest distribution must match the original request, and modifications can be processed through Travelgate's [Amendments Operations](/kb/connectivity-products/for-buyers/hotel-x/booking-management/amendments/amendments-method).
 
 ## Payment Details
 
 ### What payment details should I add to my Book request?
 
-The payment details required in your Book request depend on the payment type specified for the selected option. [Payment types](/kb/faqs/faqs-price/payment-types-at-tgx) are determined by the commercial agreements established between Buyers and Sellers.
+The payment details required in your Book request depend on the payment type specified for the selected option. [Payment types](/kb/faqs/faqs-price/travelgate-payment-types) are determined by the commercial agreements established between Buyers and Sellers.
 
 ### Should I fill in the payment card input in the Book request when using the VCC plugin?
 
-No, when using the Virtual Credit Card (VCC) plugin, payment card details should **not** be included in the [PaymentCardInput](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/book/#1-input) of your Book request. However, if paying with a regular credit card, it is mandatory to provide the payment type and credit card details unless the VCC plugin is enabled to generate virtual credit cards. Learn more about VCC payments [here](/kb/our-products/are-you-a-buyer/getting-started-as-a-new-buyer/how-to-activate-vcc-payments/).
+No, when using the Virtual Credit Card (VCC) plugin, payment card details should **not** be included in the [PaymentCardInput](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/book/#1-input) of your Book request. However, if paying with a regular credit card, it is mandatory to provide the payment type and credit card details unless the VCC plugin is enabled to generate virtual credit cards. Learn more about VCC payments [here](/kb/faqs/faqs-price/vcc-payments).
 
 ## Currency and Transactions
 

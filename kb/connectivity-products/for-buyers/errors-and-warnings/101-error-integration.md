@@ -12,5 +12,5 @@ A **101 error** (system exception) occurs when we do not receive a specific tag 
 2. **Seek Assistance** – If the issue persists, contact our [Customer Support Team](https://app.travelgate.com/support) for further guidance.
 
 :::tip
-Check our **[Documentation](#)** and **API Schema** for a complete list of mandatory fields required in our API. 🚀
+Check our **Documentation and API Schema** for a complete list of mandatory fields required in our API. 🚀
 :::

@@ -14,5 +14,5 @@ If you receive a 207 error in your response, follow these steps:
 2. **Metadata Alignment:** If you find inconsistencies between the Supplier’s metadata and the specifications they have confirmed, contact the Seller directly. They should address the issue through our Support Portal and provide their latest API documentation, allowing our IT team to review and update their metadata as needed.
 
 :::tip
-Remember to **check the limitations set by the Seller for each method** using our [Metadata Query](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-metadata-query) to avoid errors and unnecessary traffic.
+Remember to **check the limitations set by the Seller for each method** using our [Metadata Query](/kb/connectivity-products/for-buyers/hotel-x/content/metadata) to avoid errors and unnecessary traffic.
 :::

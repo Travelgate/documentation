@@ -27,8 +27,3 @@ Travelgate provides essential features to optimize your connectivity:
 - **User-friendly interface** for seamless navigation.
 - **Comprehensive inventory management** within the back office.
 - **Rapid go-to-market capabilities** to accelerate your sales.
-
-:::info
-Learn more by exploring our step-by-step **[how-to videos](/kb/our-products/are-you-a-buyer/inventory/how-tos/how-to-set-up-and-load-product-inventory)**.
-:::
-

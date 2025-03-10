@@ -50,7 +50,7 @@ For example, if you declare the following data in your Search Query, the Seller 
 }
 ```
 ### Why am I not receiving cancellation policies in the Search response?
-Cancellation policies are not mandatory in the Search response, and some Sellers may choose not to include this information in their availability data. To learn more about each Seller's specific policies, please refer to their [Metadata](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-metadata-query).
+Cancellation policies are not mandatory in the Search response, and some Sellers may choose not to include this information in their availability data. To learn more about each Seller's specific policies, please refer to their [Metadata](/kb/connectivity-products/for-buyers/hotel-x/content/metadata).
 
 ### Does nationality or market affect pricing?
 Yes, nationality and market might impact the rates in the Search response. This depends on the Seller, so it's advisable to verify with them directly.
@@ -91,7 +91,7 @@ Yes, availability may still be provided if the Supplier returns options based on
 
 This situation can occur when a Supplier has added new hotels to your portfolio, but the updates have not yet been reflected in the Connections Content section because they did not coincide with the scheduled content update. During such instances, a hotel might show availability through the integration before it appears in the Connections Content section.
 
-In these scenarios, consider using the [Force Update Now](/kb/connections/connections-content/how-to-check-my-connections-content#how-can-i-use-the-force-update-now-functionality) feature to update your portfolio and reaching out to the Supplier for further information if needed.
+In these scenarios, consider using the [Force Update Now](/kb/web-features/connections/connections-content/content-management#how-can-i-use-the-force-update-now-functionality) feature to update your portfolio and reaching out to the Supplier for further information if needed.
 
 ### What is the lifespan of the Search ID?
 Search IDs do not expire, but transitioning from Search to Quote quickly is recommended for a smoother booking process.
@@ -103,7 +103,7 @@ Yes! You have the option to create your own context. To do this, simply follow t
 
 
 ### Can I get a hotel description in the Search response?
-No, descriptions are retrieved using the [Hotels Query](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-hotels-query).
+No, descriptions are retrieved using the [Hotels Query](/kb/connectivity-products/for-buyers/hotel-x/content/hotels).
 
 ### Can I search for availability by board or room codes?
 Board and room codes are not directly searchable in the Search query. You can use the Boards and Rooms Query to retrieve specific codes from the Supplier’s access.

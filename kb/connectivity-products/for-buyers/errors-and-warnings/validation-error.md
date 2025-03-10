@@ -11,19 +11,19 @@ A "VALIDATION_ERROR" occurs when the validation information provided in your Hot
 Since this error indicates a discrepancy or issue with the validation process, check the following:
 
 - **Verify Access Status**
-  - Check [My Connections](/kb/connections/my-connections/) to ensure the access set in your request has been configured for your account (status "working") and is active. If inactive, activate it before running requests via our platform.
+  - Check [My Connections](/kb/web-features/connections/my-connections/managing-connections/connections-details) to ensure the access set in your request has been configured for your account (status "working") and is active. If inactive, activate it before running requests via our platform.
 - **Verify Access Type (Test/Live)**
   - Ensure that the "testMode" tag in your request matches the Test/Live settings for that specific access.
 - **Verify Client**
-  - The Client set in your request should be one configured for your account. More details on Hotel-X Clients can be found [here](/kb/connections/connections-settings/).
+  - The Client set in your request should be one configured for your account. More details on Hotel-X Clients can be found [here](/kb/web-features/connections/api-settings/).
 - **Verify API Key**
-  - Ensure the API key in your request matches the one configured for your account. You can find more information on your API settings [here](/kb/connections/connections-settings).
+  - Ensure the API key in your request matches the one configured for your account. You can find more information on your API settings [here](/kb/web-features/connections/api-settings/).
 - **Verify Context**
   - The context code in your request should match the expected mapping:
-    - **[Single Mode request](/kb/our-products/are-you-a-buyer/our-methods/booking-flow/search/hotel-x-single-mode-and-multimode-search)**: Use the Supplier context (available in [My Connections](/kb/connections/my-connections/)) or your own Client context (uploaded mapping to SFTP).
-    - **[Multi-mode request](/kb/our-products/are-you-a-buyer/our-methods/booking-flow/search/hotel-x-single-mode-and-multimode-search)**: Use your own Client context.
+    - **[Single Mode request](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/search/search-query#single-mode-and-multimode)**: Use the Supplier context (available in [My Connections](/kb/web-features/connections/my-connections/managing-connections/connections-details)) or your own Client context (uploaded mapping to SFTP).
+    - **[Multi-mode request](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/search/search-query#single-mode-and-multimode)**: Use your own Client context.
 - **Verify Criteria**
-  - Ensure your request criteria are valid. For example, do not set check-in and check-out dates in the past. Also, ensure compliance with the supplier's specifications as outlined in their [Metadata](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-metadata-query).
+  - Ensure your request criteria are valid. For example, do not set check-in and check-out dates in the past. Also, ensure compliance with the supplier's specifications as outlined in their [Metadata](/kb/connectivity-products/for-buyers/hotel-x/content/metadata).
 
 ### VALIDATION_ERROR Examples 
 
@@ -75,7 +75,7 @@ Since this error indicates a discrepancy or issue with the validation process, c
 ```
 
 ### 2. Too Many Options to Return (Quota Exceeded)
-- **"QUOTA_EXCEEDED"; "VALIDATION_ERROR"** (more information about OptionsQuota [here](/kb/our-products/are-you-a-buyer/our-methods/booking-flow/search/how-tos/how-to-limit-and-filter-options-through-business-rules/))
+- **"QUOTA_EXCEEDED"; "VALIDATION_ERROR"** (more information about OptionsQuota [here](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/search/business-rules))
 ```json
 {
     "data": {

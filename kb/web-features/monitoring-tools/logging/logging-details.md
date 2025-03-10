@@ -20,7 +20,7 @@ By leveraging Logging, you can gain valuable insights into your connection activ
 4. Apply filters to refine your search:
    - Time range (UTC)
    - Operation type: Search, Quote, Book, Cancel, Other (Booking List/Booking Read)  
-     - *Note:* The "Search" operation type will only return results if searches have been **[audited first](/kb/apps/monitoring-apps/logging/how-can-i-download-search-logs)**.
+     - *Note:* The "Search" operation type will only return results if searches have been **[audited first](/kb/web-features/monitoring-tools/logging/audit-searches-functionality)**.
    - Status/Error code: Select specific errors to filter results.
 5. Click on "Search" to retrieve the logs.
 
@@ -53,7 +53,7 @@ If your search returns a large number of results, use additional filters on the 
 
 ## Can I Download My Hotel-X Logs Through Logging?
 
-Currently, **Hotel-X logs cannot be retrieved directly through Logging**. We recommend capturing them at the request level on your end if needed. Additionally, ensure that the ["auditTransactions"](/kb/apps/monitoring-apps/logging/how-can-i-receive-seller-transactions-in-their-api-format#application-and-recommendations-on-the-audittransactions-field) value is **not set to "true" by default**.
+Currently, **Hotel-X logs cannot be retrieved directly through Logging**. We recommend capturing them at the request level on your end if needed. Additionally, ensure that the ["auditTransactions"](/kb/web-features/monitoring-tools/logging/audit-supplier-transactions#application-and-recommendations-on-the-audittransactions-field) value is **not set to "true" by default**.
 
 ## Can I Retrieve Logs from a One Step Book Operation?
 

@@ -24,5 +24,5 @@ These reports can provide data from the previous day, last week, or even the pas
 So, let's establish that connection and start harnessing the potential of the **Marketplace Dashboard**!
 
 :::tip
-For an immersive performance monitoring experience, check out our incredible [Stats APP](https://app.travelgate.com/stats). It offers a comprehensive range of features that will take your monitoring to the next level! 🚀
+For an immersive performance monitoring experience, check out our incredible [Stats](https://app.travelgate.com/stats). It offers a comprehensive range of features that will take your monitoring to the next level! 🚀
 :::

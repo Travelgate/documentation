@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 4
 ---
 
 # GIATA Multicodes
@@ -23,7 +23,7 @@ Follow these steps to activate GIATA Multicodes:
    - Submit a request via our [Support Portal](https://app.travelgate.com/support), providing your GIATA credentials. Our Customer Support team will verify your agreement with GIATA.
 
 3. **Retrieve GIATA Codes:**
-   - Once your account is validated, you can retrieve GIATA codes in the [Connections Content](/kb/connections/connections-content/how-to-check-my-connections-content) section and in your [Hotels Query](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/hotels) response.
+   - Once your account is validated, you can retrieve GIATA codes in the [Connections Content](/kb/web-features/connections/connections-content/content-management) section and in your [Hotels Query](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/hotels) response.
 
 Ensure you include `giataData` in your Hotels Query request to receive the information in your response.
 
@@ -44,6 +44,6 @@ Ensure you include `giataData` in your Hotels Query request to receive the infor
 
 :::tip
 **Interested in GIATA Hotel Directory as well?**
-Follow the easy steps outlined in this [guide](/kb/getting-started-with-travelgate/about-our-connectivity/explore-and-discover-giata-products-in-our-marketplace).
+Follow the easy steps outlined in this [guide](/kb/connectivity-products/for-buyers/mapping-solutions/giata/giata-multicodes).
 :::
 

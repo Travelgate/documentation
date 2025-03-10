@@ -13,8 +13,8 @@ Two-factor authentication (2FA) is a security feature that enhances account prot
 
 A unique security code, known as a **One-Time Password (OTP)**, is generated each time you log in using an authenticator application. To use 2FA, you must have an authenticator app installed. We recommend **Google Authenticator**, but there are multiple options available:
 
-### Recommended Authenticator Apps:
-- **Mobile Apps:**
+### Recommended Authenticator APPs:
+- **Mobile APPs:**
    - [Google Authenticator - Android](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2) | [iOS](https://apps.apple.com/us/app/google-authenticator/id388497605)
    - [Microsoft Authenticator - Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) | [iOS](https://apps.apple.com/es/app/microsoft-authenticator/id983156458)
    - [Cisco Duo Mobile - Android](https://play.google.com/store/apps/details?id=com.duosecurity.duomobile) | [iOS](https://apps.apple.com/us/app/duo-mobile/id422663827)
@@ -34,11 +34,11 @@ A unique security code, known as a **One-Time Password (OTP)**, is generated eac
 
    ![2FA_2](https://storage.travelgate.com/kbase/2FA_2.jpg)
 
-3. **Open Your Authenticator App**
+3. **Open Your Authenticator APP**
    - Select the option to add a new account.
 
 4. **Scan or Manually Enter the Key**
-   - Scan the QR code with your authenticator app.
+   - Scan the QR code with your authenticator APP.
    - If scanning is not possible, click **"Trouble Scanning?"** to manually enter the key provided.
 
    ![2FA_3](https://storage.travelgate.com/kbase/2FA_3.jpg)

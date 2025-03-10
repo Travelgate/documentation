@@ -24,5 +24,5 @@ If you are working with connections established through the Legacy Pull Buyers A
 Simply updating the Hotel-X Access Code in My Connections will not be sufficient.
 
 :::info
-As a Seller, you can check if your Buyers are using the Hotel-X Pull Buyers API by inspecting the label on their Buyer card in the [My Connections](https://yoururl.com/kb/connections/my-connections/#what-can-i-find-in-my-connections) section.
+As a Seller, you can check if your Buyers are using the Hotel-X Pull Buyers API by inspecting the label on their Buyer card in the [My Connections](https://yoururl.com/kb/web-features/connections/my-connections/managing-connections/connections-details#what-can-i-find-in-my-connections) section.
 :::

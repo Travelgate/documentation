@@ -30,5 +30,5 @@ To resolve this issue, follow these steps:
    - In either case, the Buyer should contact the hotelier to verify this information and take necessary actions.
 
 :::warning Status in Book and Cancel Response
-Don't forget to review the **[Book Status](/kb/our-products/are-you-a-buyer/our-methods/booking-flow/book/what-status-can-be-returned-in-hotel-x-book-response)** and **[Cancel Status](/kb/our-products/are-you-a-buyer/our-methods/booking-management/cancel/cancel-status)** articles for detailed instructions on handling booking or cancellation errors.
+Don't forget to review the **[Book Status](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/book/book-status)** and **[Cancel Status](/kb/connectivity-products/for-buyers/hotel-x/booking-management/cancel/cancel-status)** articles for detailed instructions on handling booking or cancellation errors.
 :::

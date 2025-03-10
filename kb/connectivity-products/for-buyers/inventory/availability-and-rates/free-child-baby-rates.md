@@ -63,7 +63,7 @@ When referencing occupancy distributions, use the format **Adult-Child-Baby** (e
 |-----------|-------------|-----------|------------|
 | 3-0-1 | No | If free baby checked: The baby is considered as a free pax | 3-0-0 |
 | 3-0-1 | No | If free baby unchecked: The baby is considered as an adult | 4-0-0 |
-| 3-0-1 | Yes | If free baby checked: Check the [Pax Supplements section](/kb/our-products/are-you-a-buyer/inventory/how-tos/how-to-load-free-of-charge-rates/#pax-supplements) for further details | 3-0-1 |
+| 3-0-1 | Yes | If free baby checked: Check the [Pax Supplements section](/kb/connectivity-products/for-buyers/inventory/availability-and-rates/free-child-baby-rates#pax-supplements) for further details | 3-0-1 |
 | 3-0-1 | Yes | Free baby unchecked | 3-0-1 |
 
 ##### **Occupancy 3-1-0**
@@ -73,7 +73,7 @@ When referencing occupancy distributions, use the format **Adult-Child-Baby** (e
 | 3-1-0 | No | If free child checked: The child is considered as a free pax | 3-0-0 |
 | 3-1-0 | No | If free child unchecked: The child is considered as an adult | 4-0-0 |
 | 3-1-0 | Yes | If free child unchecked: The child is considered as an adult | 3-1-0 |
-| 3-1-0 | Yes | If free baby checked: Check the [Pax Supplements section](/kb/our-products/are-you-a-buyer/inventory/how-tos/how-to-load-free-of-charge-rates/#pax-supplements) for further details | 3-1-0 |
+| 3-1-0 | Yes | If free baby checked: Check the [Pax Supplements section](/kb/connectivity-products/for-buyers/inventory/availability-and-rates/free-child-baby-rates#pax-supplements) for further details | 3-1-0 |
 
 ##### **Occupancy 3-1-1**
 
@@ -83,7 +83,7 @@ When referencing occupancy distributions, use the format **Adult-Child-Baby** (e
 | 3-1-1 | No | If free child checked: The child is considered as a free pax | 3-0-1 |
 | 3-1-1 | No | If both free child and free baby checked: Both child and baby are free of charge | 3-0-0 |
 | 3-1-1 | No | 	If neither of them are checked as free: All the paxes are considered as adults | 5-0-0 |
-| 3-1-1 | Yes | Check the [Pax Supplements section](/kb/our-products/are-you-a-buyer/inventory/how-tos/how-to-load-free-of-charge-rates/#pax-supplements) for further details | 3-1-1 |
+| 3-1-1 | Yes | Check the [Pax Supplements section](/kb/connectivity-products/for-buyers/inventory/availability-and-rates/free-child-baby-rates#pax-supplements) for further details | 3-1-1 |
 
 ##### **Occupancy 4-0-0**
 

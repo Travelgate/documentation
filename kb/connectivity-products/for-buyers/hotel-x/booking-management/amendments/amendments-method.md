@@ -33,7 +33,7 @@ To confirm the amendment, send the `amendmentID` received in the previous query 
 
 ## How Can I Check If a Seller Supports Amendments?
 
-To determine whether a Seller supports amendments and which modifications are allowed, review their [Metadata](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-metadata-query). This metadata provides insights into the Seller’s capabilities and any restrictions related to amendments.
+To determine whether a Seller supports amendments and which modifications are allowed, review their [Metadata](/kb/connectivity-products/for-buyers/hotel-x/content/metadata). This metadata provides insights into the Seller’s capabilities and any restrictions related to amendments.
 
 ![amendments_upd](https://storage.travelgate.com/kbase/amendments_upd.jpg)
 

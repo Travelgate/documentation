@@ -17,7 +17,7 @@ function KbHeader() {
         //         <div className={styles.buttons}>
         //             <Link
         //                 className="button button--secondary button--lg"
-        //                 to="/kb/getting-started-with-travelgate/about-us">
+        //                 to="/kb/welcome-to-travelgate/who-we-are/about-us">
         //                 Get Started with KB
         //             </Link>
         //         </div>
@@ -30,7 +30,7 @@ function KbHeader() {
           <div className={styles.buttons}>
             <Link
               className="button button--secondary button--lg"
-              to="/kb/getting-started-with-travelgate/about-us">
+              to="/kb/welcome-to-travelgate/who-we-are/about-us">
               Start browsing articles <i class="fa-solid fa-chevron-right"></i>
             </Link>
           </div>

@@ -23,7 +23,7 @@ You can refine your Rooms query results by including the **"roomCodes"** field i
 To specify the number of rooms returned in the response, include the **"maxSize"** field in your query criteria. The maximum value for "maxSize" is 10,000; however, we recommend requesting 500 rooms per page to optimize response times.
 
 ### How Can I Paginate My Rooms Query? 
-Note that it is not possible to determine the total number of rooms offered by the Seller without downloading the complete list using [pagination](/kb/our-products/are-you-a-buyer/our-methods/static-content/faqs/token-based-pagination-hotel-room-destinations). 
+Note that it is not possible to determine the total number of rooms offered by the Seller without downloading the complete list using [pagination](/kb/connectivity-products/for-buyers/hotel-x/content/token-pagination). 
 
 Pagination involves using the token provided in each response to fetch the next batch of rooms. The full list is retrieved only when you receive an error indicating "rooms not found."
 
@@ -56,7 +56,7 @@ If you're using the Hotel-X API, you can [upload your own mapping files to our S
 ## Additional Considerations
 
 ### Can I Receive GIATA Codes in the Rooms Query Response? 
-Unfortunately, GIATA codes are not included in the Rooms Query response. For specific details on GIATA codes in the **Hotels Query response**, please check our article on [GIATA Multicodes](/kb/our-products/are-you-a-buyer/mapping-solutions/giata/giata-multicodes).
+Unfortunately, GIATA codes are not included in the Rooms Query response. For specific details on GIATA codes in the **Hotels Query response**, please check our article on [GIATA Multicodes](/kb/connectivity-products/for-buyers/mapping-solutions/giata/giata-multicodes).
 
 ### Does the Presence of a Room in the Rooms Query Guarantee Its Availability During a Search?
 No, the Rooms Query response provides a list of all the rooms a Seller has configured for your account. However, availability may vary based on your requested dates and distribution criteria. Some rooms may not be available for specific searches.

@@ -22,7 +22,7 @@ For more details on auditing Seller transactions, see [this article](/kb/apps/mo
    - Ensure the requested product is included in the Seller's portfolio. If not, [force an update](/kb/connections/connections-content/how-to-check-my-connections-content#how-can-i-use-the-force-update-now-functionality) to receive the latest information.
 
 #### 2. **Check Mapping File**  
-   - If using the **Hotel-X Pull Buyers API** with your own [context](/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/hotel-x-credentials), ensure your mapping file is updated. More details on Hotel-X Mapping files can be found [here](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/overview).
+   - If using the **Hotel-X Pull Buyers API** with your own [context](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials), ensure your mapping file is updated. More details on Hotel-X Mapping files can be found [here](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/overview).
 
 #### 3. **Align Request Configurations**  
    - For **Legacy Pull Buyers API** users, confirm that your request configurations match the access configuration in [My Connections](/kb/connections/my-connections/).

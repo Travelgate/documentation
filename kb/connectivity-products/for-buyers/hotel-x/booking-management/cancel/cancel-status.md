@@ -14,5 +14,5 @@ Once a Cancel (Cancellation) method is run, our API response will provide its **
 - **UNKNOWN**: The cancellation process through Travelgate was completed, but due to a supplier error or timeout, the cancellation status is unknown. It is the Buyer’s responsibility to confirm if the booking has been canceled.
 
 ### What Should I Do if I Receive an Error in the Cancel Response?
-If you receive **any of the [common errors](/kb/our-products/are-you-a-buyer/our-methods/lists-of-errors-and-warnings/overview) or a status other than "CANCELLED"**, it will be your responsibility as a Buyer to check the final status of the cancellation in the Seller's system.
+If you receive **any of the [common errors](/kb/connectivity-products/for-buyers/errors-and-warnings/overview) or a status other than "CANCELLED"**, it will be your responsibility as a Buyer to check the final status of the cancellation in the Seller's system.
 

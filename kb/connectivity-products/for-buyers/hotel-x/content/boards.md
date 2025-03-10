@@ -47,5 +47,5 @@ If you're using the Hotel-X API, you can [upload your own mapping files to our S
 No, the Boards Query response provides a list of all board types configured by the Seller for your account. However, availability may vary based on your requested dates and distribution criteria. Some boards may not be available for specific searches.
 
 :::tip
-Check our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/boards) and [API Playground](https://api.travelgate.com/) for further details! 🚀
+Check our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/boards) and [API Playground](/playground) for further details! 🚀
 :::

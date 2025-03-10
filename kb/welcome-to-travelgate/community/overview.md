@@ -20,7 +20,7 @@ Curious about Travelgate’s new Discord Server? Learn more [here](https://blog.
 - **[Status](https://discord.com/channels/1121158946074402916/1238058167385067601):** Stay informed about the current system status.
 - **[Ideas Hub](https://discord.com/channels/1121158946074402916/1202366240673505400):** Have an idea to enhance our Marketplace and products? Share it here!
 - **[Spotlights](https://discord.com/channels/1121158946074402916/1175863226416779325):** If you're a verified Partner, stay tuned for exclusive updates and announcements from the Travelgate Network.
-- **[Ask-AI](https://discord.com/channels/1121158946074402916/1245294813134458910):** Powered by [AIna](/kb/getting-started-with-travelgate/about-our-support/aina), our multilingual AI assistant, this channel provides instant responses to your Travelgate-related queries based on our Official Documentation. Give it a try!
+- **[Ask-AI](https://discord.com/channels/1121158946074402916/1245294813134458910):** Powered by [AIna](/kb/welcome-to-travelgate/support-resources/aina-smart-ai), our multilingual AI assistant, this channel provides instant responses to your Travelgate-related queries based on our Official Documentation. Give it a try!
 
 ### Ideas Hub
 

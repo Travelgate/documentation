@@ -58,7 +58,7 @@ Yes, nationality and market might impact the rates in the Search response. This 
 ## Filtering Search Responses
 
 ### Can I receive a specific rate in the Search response?
-Yes, you can filter responses using the `rateRules` tag to receive rates that match your requirements. Learn more [here](/kb/our-products/are-you-a-buyer/our-methods/booking-flow/search/how-tos/how-to-filter-hotel-x-search-requests).
+Yes, you can filter responses using the `rateRules` tag to receive rates that match your requirements. Learn more [here](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/search/search-filters).
 
 ### Can I filter Search results by payment type?
 No, Hotel-X API does not currently support filtering by payment type.

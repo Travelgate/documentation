@@ -25,11 +25,11 @@ Our Hotel-X Pull Buyers API offers a range of features, including the flexibilit
   Single Mode allows Partners to perform a search with a single Seller at a time. This is the default search mode in Hotel-X.
 
 * **How does Hotel-X Single Mode work?**  
-    1. Review the tags included in your Hotel-X Search Query and ensure you add the **HotelXFilterSearchInput**. More details on filtering your searches by Hotel-X access code can be found [here](/kb/our-products/are-you-a-buyer/our-methods/booking-flow/search/how-tos/how-to-filter-hotel-x-search-requests).
+    1. Review the tags included in your Hotel-X Search Query and ensure you add the **HotelXFilterSearchInput**. More details on filtering your searches by Hotel-X access code can be found [here](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/search/search-filters).
     2. **Add the access code** of the Seller you wish to query within your `HotelXFilterSearchInput`.
 
 :::note
-You should use the [Supplier context](/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/hotel-x-credentials) in your Search requests unless you have previously uploaded your [mapping files to our SFTP](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping).
+You should use the [Supplier context](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials) in your Search requests unless you have previously uploaded your [mapping files to our SFTP](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping).
 :::
 
 ### Multimode Search 🚀
@@ -39,7 +39,7 @@ Multimode enables Partners to search across multiple Sellers simultaneously with
 
 * **How does Hotel-X Multimode work?**  
     1. Begin by uploading your [hotel mapping files](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping) to your SFTP.
-    2. Once processed, you can search across multiple Sellers using your [own context](/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/hotel-x-credentials) and hotel codes. You can perform Multimode search in two ways:  
+    2. Once processed, you can search across multiple Sellers using your [own context](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials) and hotel codes. You can perform Multimode search in two ways:  
 
         1. **Specifying the Hotel-X access codes** in the `filterSearch` node. This sends queries only to the specified accesses:
             ```
@@ -64,4 +64,4 @@ When a Search query is successful, and the Seller returns results, each option i
 1. **OK:** The option is available.
 2. **RQ:** The option is not yet available by the Seller and is placed on a waiting list.
 
-You can use the StatusFilterInput to specify which status (OK or RQ) to include or exclude in your Search response. For more details, please refer to this [article](/kb/our-products/are-you-a-buyer/our-methods/booking-flow/search/how-tos/how-to-filter-hotel-x-search-requests/).
+You can use the StatusFilterInput to specify which status (OK or RQ) to include or exclude in your Search response. For more details, please refer to this [article](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/search/search-filters).

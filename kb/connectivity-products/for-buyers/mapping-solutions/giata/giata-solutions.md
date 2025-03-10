@@ -2,8 +2,7 @@
 sidebar_position: 1
 ---
 
-
-# Overview
+# GIATA Solutions
 
 ## Explore GIATA in Our Marketplace
 

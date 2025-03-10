@@ -47,7 +47,7 @@ The destinations you choose to map depend on your business needs. If you're only
 For example, if you're focused on Spanish destinations, you can filter the Destinations Query using the **"destinationCodes"** field with the value **"ES"**, ensuring that only Spanish destinations are included in the response.
 
 ### How Can I Determine the Total Number of Destinations Provided by a Seller? 
-To retrieve the complete list of destinations, you need to use [pagination](/kb/our-products/are-you-a-buyer/our-methods/static-content/faqs/token-based-pagination-hotel-room-destinations).
+To retrieve the complete list of destinations, you need to use [pagination](/kb/connectivity-products/for-buyers/hotel-x/content/token-pagination).
 
 By utilizing the token provided in each response, you can fetch subsequent sets of destinations. When you encounter an error message stating **"destinations not found,"** it indicates that the entire list has been retrieved.
 

@@ -6,12 +6,7 @@ sidebar_position: 3
 
 ## Hotel-X Endpoint
 
-To access all methods available through the Hotel-X API, use the endpoint **https://api.travelgate.com** (for both test and production environments).
-
-:::note
-**China Endpoint:** If your servers are located in China, you can enhance performance by using the following URL:  
-**https://api-cn.travelgate.com**
-:::
+To access all methods available through the Hotel-X API, use the endpoint **https://api.travelgatex.com** (for both test and production environments).
 
 ## API Headers and Performance Optimization
 
@@ -45,7 +40,7 @@ Hotel-X API does not impose language restrictions, but individual **Sellers may 
 
 ### How to Check a Seller’s Supported Languages
 
-To determine which languages a specific Seller supports, use the [Metadata Query](https://knowledge.travelgate.com/hotel-x-development-metadata) method. Additionally, contact the Seller directly to confirm language support **before activation**.
+To determine which languages a specific Seller supports, use the [Metadata Query](/kb/connectivity-products/for-buyers/hotel-x/content/metadata) method. Additionally, contact the Seller directly to confirm language support **before activation**.
 
 :::tip
 For more information, check out our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart/).

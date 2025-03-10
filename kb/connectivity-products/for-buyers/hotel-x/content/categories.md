@@ -8,7 +8,7 @@ sidebar_position: 6
 The Categories Query retrieves the list of categories associated with a given set of credentials (access), such as "5 stars," "1 key," and others.
 
 ### How Can I Retrieve the Seller's Category List via Hotel-X?
-You can easily retrieve the category list by following the specifications outlined in our [API Playground](https://api.travelgate.com/) and creating your own Categories Query. 
+You can easily retrieve the category list by following the specifications outlined in our [API Playground](/playground) and creating your own Categories Query. 
 
 Additionally, you can **customize** the fields requested to receive only the information relevant to your business needs.
 

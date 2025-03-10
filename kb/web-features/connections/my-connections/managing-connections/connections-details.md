@@ -49,7 +49,7 @@ The access type (live or test) is based on the credentials agreed upon by the Bu
 - **Partner Name**: The Partner connected via the access (Buyer or Seller).  
 - **Updated & Created Date**: View the last modification date and the original creation date.  
 - **Accommodations**: Number of properties available for that access.  
-- **Context Code**: Check the [content codes](/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/hotel-x-credentials#context%EF%B8%8F) used.  
+- **Context Code**: Check the [content codes](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials#context%EF%B8%8F) used.  
 - **Buyer Integration Type**: If you're a Seller, you can check if your Buyer is integrated via the **Hotel-X API** or the **Legacy Pull Buyers API**. If using **Hotel-X**, a label will be displayed.  
 
    ![buyerintegrationtype_myconnections](https://storage.travelgate.com/kbase/buyerintegrationtype_myconnections.jpg)  

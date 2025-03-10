@@ -36,7 +36,7 @@ If you're receiving an error or an empty response while downloading content, try
 
 2. **Check API Request Compliance**: Make sure that your request adheres to our API requirements. If you're querying hotel information for portfolios with concatenated hotel codes, ensure the codes are included with the proper concatenation. For more details, read about [concatenated hotel codes here](/kb/our-products/are-you-a-buyer/our-methods/static-content/hotel-x-hotels-query/#what-is-the-difference-between-hotelcode-and-hotelcodesupplier%EF%B8%8F).
 
-3. **Consult the Error and Warning List**: Check our [list of errors and warnings](/kb/our-products/are-you-a-buyer/our-methods/lists-of-errors-and-warnings/overview) for additional troubleshooting steps.
+3. **Consult the Error and Warning List**: Check our [list of errors and warnings](/kb/connectivity-products/for-buyers/errors-and-warnings/overview) for additional troubleshooting steps.
 
 4. **Force an Update**: If you’re still encountering issues, try [forcing an update](https://kb/connections/connections-content/how-to-check-my-connections-content#how-can-i-use-the-force-update-now-functionality). After the update is complete, restart the download process.
 

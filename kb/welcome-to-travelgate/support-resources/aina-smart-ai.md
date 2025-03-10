@@ -18,16 +18,16 @@ You can easily interact with AIna from any section of our website with just one 
 
 ![aina-2](https://storage.travelgate.com//kbase/aina-2.jpg)
 
-**Our [Support Portal](/kb/tickets/travelgatex-tickets):**
+**Our [Support Portal](/kb/support-portal/how-to-submit-case):**
 
 ![cases-2](https://storage.travelgate.com//kbase/cases-2.jpg)
 
-**Our [Discord Server](/kb/getting-started-with-travelgate/travelgate-community/about-our-discord-server):**  
+**Our [Discord Server](/kb/welcome-to-travelgate/community/our-discord-server):**  
 Engage with AIna directly via our Discord channel [-ask-ai](https://discord.com/channels/1121158946074402916/1245294813134458910). It functions similarly to traditional support channels but is enhanced with AIna’s capabilities. Prefer private interactions? Simply mention @aina in private channels. Give it a try! 🚀
 
 ### Experience a New Level of Support
 
-AIna is seamlessly integrated into our [Customer Support Portal](/kb/tickets/guidelines-for-submitting-a-ticket-to-our-support-team/) to improve your experience and make support more intuitive. Key benefits include:
+AIna is seamlessly integrated into our [Customer Support Portal](/kb/support-portal/how-to-submit-case) to improve your experience and make support more intuitive. Key benefits include:
 
 - **AI Powered by Real Experience:** AIna leverages the extensive experience and documentation available on docs.travelgate.com, enabling quicker and more efficient case resolution.
 - **Enhanced Support with LLMs:** Our AI assistant provides personalized and adaptive responses using advanced Large Language Models (LLMs), improving response times and boosting user satisfaction.
@@ -36,6 +36,6 @@ AIna is seamlessly integrated into our [Customer Support Portal](/kb/tickets/gui
 - **Simplified Process:** Our system improvements make it easier and more intuitive for you to get the support you need, with user-friendly interactions that simplify complex issues.
 
 :::tip
-Don't forget to check out our [AIna User Guide](/kb/getting-started-with-travelgate/about-our-support/aina-guide) for tips and techniques to engage with AIna effectively. 🚀
+Don't forget to check out our [AIna User Guide](/kb/welcome-to-travelgate/support-resources/aina-user-guide) for tips and techniques to engage with AIna effectively. 🚀
 :::
 

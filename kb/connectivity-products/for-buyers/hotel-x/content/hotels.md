@@ -29,7 +29,7 @@ The response may include the following fields:
 - Room details, including max/min occupancy and pax ranges (if available)
 
 :::info
-Static content fetching is always sequential and the amount of content returned may vary between Sellers. Learn more about mapping on Travelgate [here](/kb/connections/connections-content/all-about-mapping).
+Static content fetching is always sequential and the amount of content returned may vary between Sellers. Learn more about mapping on Travelgate [here](/kb/web-features/connections/connections-content/mapping-at-travelgate).
 :::
 
 ### Can I obtain the list of amenities available at Travelgate?
@@ -41,7 +41,7 @@ To retrieve the total number of properties in the response, simply add the **"co
 ![hotelcount](https://storage.travelgate.com/kbase/hotelcount.jpg)
 
 ### Can I Paginate Content Methods? 
-Yes, you can! Check out our [pagination guide](/kb/our-products/are-you-a-buyer/our-methods/static-content/faqs/token-based-pagination-hotel-room-destinations) for more details.
+Yes, you can! Check out our [pagination guide](/kb/connectivity-products/for-buyers/hotel-x/content/token-pagination) for more details.
 
 ### What Languages Does Hotel-X Hotels Query Support? 
 Hotel-X supports all languages; however, the availability of hotel descriptions depends on the languages supported by the Seller. We recommend confirming this information with the Seller before activating the connection.
@@ -67,7 +67,7 @@ No, the hotel list includes all properties configured by the Seller for your acc
 ### Can I Exclude Hotels With No Availability From the Portfolio Download?
 No, it is not possible to exclude hotels with no availability from the portfolio download, as the Hotels Query provides static data about the Seller's product. 
 
-To check real-time availability, you should use the **Search Query** in the booking flow. Additionally, you can optimize search results using the **Traffic Optimizer** tool, which allows blacklisting of hotels with consistent no availability issues. For more details, check the [Traffic Optimizer documentation](/kb/apps/smart-traffic-apps/traffic-optimizer/traffic-optimizer-app).
+To check real-time availability, you should use the **Search Query** in the booking flow. Additionally, you can optimize search results using the **Traffic Optimizer** tool, which allows blacklisting of hotels with consistent no availability issues. For more details, check the [Traffic Optimizer documentation](/kb/web-features/smart-traffic/traffic-optimizer/traffic-optimizer-details).
 
 :::tip
 More information is available in our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/hotels) and [API Playground](/playground).

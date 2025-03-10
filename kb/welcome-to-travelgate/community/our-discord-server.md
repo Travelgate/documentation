@@ -53,6 +53,6 @@ Once your account is verified, you'll gain full access to all the benefits and o
 **Welcome to our Community experience! 🚀**
 
 :::tip
-On the right side of the screen, you'll find bots designed to enhance your experience and maximize platform opportunities, including [AIna](/kb/getting-started-with-travelgate/about-our-support/aina), the Travelgate Community bot, and more!
+On the right side of the screen, you'll find bots designed to enhance your experience and maximize platform opportunities, including [AIna](/kb/welcome-to-travelgate/support-resources/aina-smart-ai), the Travelgate Community bot, and more!
 :::
 

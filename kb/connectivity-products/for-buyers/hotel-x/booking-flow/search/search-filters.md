@@ -16,7 +16,7 @@ You can filter your Search requests through the **HotelXFilterSearchInput**, usi
 You can specify a particular access or none at all. If no access is specified, all configured accesses for the Buyer will be executed. In this case, please ensure you use your own context code to avoid mapping errors. Learn more in the following articles:
 
 - [Hotel-X Development - Search Query](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/search)
-- [Hotel-X Credentials](/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/hotel-x-credentials)
+- [Hotel-X Credentials](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials)
 
 ### 2. RateRules - RateRulesFilterInput ✔️
 Rate Rules refer to the specific terms and conditions that define the pricing, availability, and booking policies for hotel accommodations. You can include or exclude specific rate rules to request only the data that aligns with your business needs.

@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # AIna User Guide
 
-Welcome to your guide on getting the most out of [AIna](/kb/getting-started-with-travelgate/about-our-support/aina), our multilingual Customer Support Assistant! Whether you're troubleshooting an issue or seeking information, effective communication is key to a smooth and productive interaction. This guide will equip you with actionable tips and techniques to engage with AIna confidently and efficiently, ensuring your questions are answered accurately and swiftly.
+Welcome to your guide on getting the most out of [AIna](/kb/welcome-to-travelgate/support-resources/aina-smart-ai), our multilingual Customer Support Assistant! Whether you're troubleshooting an issue or seeking information, effective communication is key to a smooth and productive interaction. This guide will equip you with actionable tips and techniques to engage with AIna confidently and efficiently, ensuring your questions are answered accurately and swiftly.
 
 Let's dive in and unlock the full potential of your AIna experience! 🚀
 
@@ -17,7 +17,7 @@ Let's dive in and unlock the full potential of your AIna experience! 🚀
 :::warning Error Details
 When reporting an error, please include relevant snippets from the **error and warning logs in Travelgate's response** (or ‘applicationError’ for responses via the Legacy Pull Buyers API) to help us provide the best possible assistance. For more details on error structures and expected warnings, refer to:
 
-- [List of Errors and Warnings](/kb/our-products/are-you-a-buyer/our-methods/lists-of-errors-and-warnings/overview)
+- [List of Errors and Warnings](/kb/connectivity-products/for-buyers/errors-and-warnings/overview)
 - [Hotel-X Booking Flow and Management Errors](/docs/apis/for-buyers/hotel-x-pull-buyers-api/making-requests/errors-and-warnings/booking-flow) and [Hotel-X Content Errors](/docs/apis/for-buyers/hotel-x-pull-buyers-api/making-requests/errors-and-warnings/content)
 - [Legacy Pull Buyers API Booking Flow and Management Errors](/docs/apis/for-buyers/legacy-pull-buyers-api/making-requests/errors-and-warnings/booking-flow) and [Legacy Pull Buyers API Content Errors](/docs/apis/for-buyers/legacy-pull-buyers-api/making-requests/errors-and-warnings/content)
 :::
@@ -42,7 +42,7 @@ Offer necessary background information, such as the specific service or feature 
 
 ### Follow Up and Clarify
 
-If the initial response doesn't fully resolve your query, don't hesitate to ask again! Additionally, when engaging with AIna in the [Support Cases](/kb/tickets/travelgatex-tickets#aina-and-customer-support-cases) section, you can refine your question by selecting **'Go back and rephrase your question'** at the top of the response.
+If the initial response doesn't fully resolve your query, don't hesitate to ask again! Additionally, when engaging with AIna in the [Support Cases](/kb/support-portal/how-to-submit-case) section, you can refine your question by selecting **'Go back and rephrase your question'** at the top of the response.
 
 ### AIna: Your Support Ally
 

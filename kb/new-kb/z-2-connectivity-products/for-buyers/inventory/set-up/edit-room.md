@@ -21,6 +21,17 @@ Editing room types in Inventory is straightforward. Instead of creating a new ro
 - Provide a **code** and **description** for your reference.
 - Save it, and the new room type will be added to your master list, making it available in the **All Room Types** section.
 
+
+### Can I Modify the Standard Occupancy of a Room in Inventory?
+
+No, **the Standard Occupancy cannot be modified**. To make changes, follow these steps:
+
+1. Delete the affected room(s).
+2. Re-add the room(s) with the desired standard occupancy.
+3. Contact the Channel Manager to request a remap and reload based on the updated information.
+
+This ensures the changes are correctly applied and reflected in the system.
+
 :::info
 For a complete understanding of how the Inventory Extranet works and its full functionalities, check our [Documentation](/docs/apps/inventory/extranet/overview).
 :::

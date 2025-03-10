@@ -2,9 +2,7 @@
 sidebar_position: 1
 ---
 
-# Overview
-
-## Amendments
+# Amendments Operations
 
 ### What Are Amendments and How Can I Use Them?
 

@@ -2,9 +2,7 @@
 sidebar_position: 2
 ---
 
-# Overview
-
-## Cancel
+# Cancel Mutation
 
 You can use the Hotel-X Cancel Mutation to easily cancel a booking made through Travelgate.
 

@@ -3,11 +3,10 @@ sidebar_position: 2
 ---
 
 import HotelXHotelListInput from "../../../../../src/graphql/generated-docs/HotelXHotelListInput.mdx";
-import HotelXHotelFilterInput from "../../../../../src/graphql/generated-docs/HotelXHotelFilterInput.mdx";
 import HotelConnection from "../../../../../src/graphql/generated-docs/HotelConnection.mdx";
 import Token from "../../../../../src/graphql/generated-docs/token.mdx";
 
-import {hotelsQuery, hotelsVariables, hotelsByCountryVariables, hotelsByDestinationCodeVariables, hotelsByHotelCodeVariables, hotelsByDateFilterVariables} from "../../../../../src/graphql/hotel-x/hotels.query";
+import {hotelsQuery, hotelsVariables, hotelsByCountryVariables, hotelsByDestinationCodeVariables, hotelsByHotelCodeVariables} from "../../../../../src/graphql/hotel-x/hotels.query";
 
 
 # Hotels
@@ -212,7 +211,6 @@ You can find all the necessary information in the [mapping section](../plugins/m
 ## Query Inputs
 
 <HotelXHotelListInput />
-<HotelXHotelFilterInput />
 <Token />
 ## Returned Fields
 
@@ -247,10 +245,4 @@ For example, if you want to obtain only hotels from "Santorini", you can use the
 If you want to retrieve the information of specific hotel codes from a supplier, you will need to specify the codes in the `hotelCodes` field:
 
 <GraphqlSample query={hotelsQuery} variables={hotelsByHotelCodeVariables} />
-
-
-#### Search for a specific creation date from a supplier
-
-<GraphqlSample query={hotelsQuery} variables={hotelsByDateFilterVariables} />
-
 

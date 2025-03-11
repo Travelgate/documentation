@@ -119,26 +119,6 @@ This token should be used as input in your next hotels query, inside the `token`
 ```
 
 
-### 3. Filter
-
-`Filter` feature allows for more precise queries. It consists of two types of filters:
-
-* **Date filters:** These filters allow searching by dates in which the hotels have been created (`createdAt_in`, `createdAt_It`, `createdAt_gt` etc.), updated (`updatedAt_in`, `updatedAt_It`, `updatedAt_gt` etc.), or deleted (`deletedAt_in`, `deletedAt_It`, `deletAt_gt` etc.).
-
-* **Field filters** (boolean: true or false): These filters allow searching hotels that have information in indicated fields, such as country (`country_in`), category (`category_in`), destination (`destination_in`), name (`name_in`), and coordinates (`coordinates_in`).
-
-```js
-{
-	"criteriaHotels": {
-		"access": "2"
-	},
-	"token": "",
-	"filterHotel": {
-		"createdAt_gt": "2023-01-01T08:58:18.0117911Z"
-	}
-}
-```
-
 ### Response Considerations
 
 :::note

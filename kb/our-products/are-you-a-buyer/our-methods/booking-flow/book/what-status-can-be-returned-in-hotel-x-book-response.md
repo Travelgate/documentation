@@ -11,7 +11,7 @@ Once a Book (Reservation) method is run, our API response will provide its **Boo
 1. **OK:** The reservation was completed with no problems.
 1. **ON_REQUEST:** The reservation was completed but the product is still not available by the Seller, so the reservation goes into a waiting list. It is the Buyer’s responsibility to check if the booking is OK.  
 Please note that a Book status may change over time: you may receive an ON_REQUEST status in Book response, and after running a Booking Query some seconds later the status may have already changed to OK.
-1. **UNKNOWN:** The reservation process through TravelgateX was completed but due to a supplier error or a timeout, the reservation status is unknown (our system was unable to confirm if the booking has been confirmed or not the on Seller's system). It is the Buyer’s responsibility to check if the booking is OK.
+1. **UNKNOWN:** During the reservation process, an issue led to an unknown reservation status. The Buyer is responsible for verifying with the Seller that the booking has been confirmed.
 
 ### What should I do if I receive a reservation status other than OK in Book response?
 Although you may also run a Booking Query in order to check the status of a reservation, please note that you should always **contact the Seller** in order to check the actual status of a booking in those cases you receive a booking status other than OK or no response at all.

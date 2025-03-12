@@ -252,6 +252,10 @@ function insertIntoMdxFiles(schema) {
         content = insertDocumentation(content, documentation);
 
         // 🔹 Escribir de nuevo el archivo actualizado
+        const fileDir = path.dirname(filePath);
+        if (!fs.existsSync(fileDir)) {
+            fs.mkdirSync(fileDir, { recursive: true });
+        }
         fs.writeFileSync(filePath, content, "utf8");
         console.log(`✅ Se ha actualizado el archivo: ${filePath}`);
     });

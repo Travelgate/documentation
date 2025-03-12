@@ -43,5 +43,5 @@ Monitor all reservations, even those with date-range lists.
 Automate reconciliation and focus on growing your business.
 
 :::info
-🚀 **Ready to start?** Check out our [API integration section](/docs/apps/reconciliation/quickstart)!
+🚀 **Ready to start?** Check out our [API integration section](/docs/apps/reconciliation/quickstart/)!
 :::

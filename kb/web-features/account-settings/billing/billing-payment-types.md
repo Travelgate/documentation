@@ -23,6 +23,4 @@ You can request a payment type change by navigating to the **Billing** section i
 :::info
 - If you want to switch to **FREE** (where your Partner assumes full payment responsibility), your Partner will need to accept the request. You can cancel the request if necessary.
 - Changes between **Free** and **Standard**, or **Standard** and **Supplement**, can be processed automatically since the total cost is assumed.
-
-For detailed information, refer to the [Billing section guide](https://www.travelgate.com/kbase/account-settings/billing).
 :::

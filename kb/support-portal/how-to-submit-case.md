@@ -12,10 +12,10 @@ If you've ever submitted a Tech Support case, you know how important it is to st
 - The dashboard provides an **overview of all open cases** for both your user and your company, organized into different tabs.
 - You can **sort cases** by status, creation date, or update date, and view or close cases via **“Actions > View Case”** or **“Actions > Close Case.”**
 - **Filters**: Use the left panel to filter by **Case ID, name, or category**.
-- If you've reviewed the [Guidelines for Opening a Case](/kb/tickets/guidelines-for-submitting-a-ticket-to-our-support-team) and [AIna User Guide](/kb/getting-started-with-travelgate/about-our-support/aina-guide) but still need help, click **'Create New Case'** and follow the form instructions.
+- If you've reviewed the [Guidelines for Opening a Case](/kb/support-portal/case-guidelines) and [AIna User Guide](/kb/welcome-to-travelgate/support-resources/aina-user-guide) but still need help, click **'Create New Case'** and follow the form instructions.
 
 :::info Case Categories 💡
-- **Customer Care:** Covers [product maintenance](/kb/getting-started-with-travelgate/about-our-support/customer-care-support#how-are-partner-requests-categorized-at-travelgatex) and minor Seller API updates.
+- **Customer Care:** Covers [product maintenance](/kb/welcome-to-travelgate/support-resources/customer-support-resources) and minor Seller API updates.
 - **Connections:** Generated for new connection requests.
 - **Billing:** For billing-related support.
 :::
@@ -26,7 +26,7 @@ If you've ever submitted a Tech Support case, you know how important it is to st
 
 When you click **'Create New Case'**, the following happens:
 
-1. **AIna Support Screen**: Enter your issue in the subject and provide a *detailed description* (include snippets, method used, error descriptions, etc.). This enables our virtual assistant, AIna, to potentially resolve your issue more quickly, and ensures our support team has all the necessary information to assist you effectively if further help is needed. **Refer to our [AIna User Guide](/kb/getting-started-with-travelgate/about-our-support/aina-guide) for best practices**.  
+1. **AIna Support Screen**: Enter your issue in the subject and provide a *detailed description* (include snippets, method used, error descriptions, etc.). This enables our virtual assistant, AIna, to potentially resolve your issue more quickly, and ensures our support team has all the necessary information to assist you effectively if further help is needed. **Refer to our [AIna User Guide](/kb/welcome-to-travelgate/support-resources/aina-user-guide) for best practices**.  
 
    Click **“Continue”**, and AIna will search the Knowledge Base and Documentation for solutions.
    

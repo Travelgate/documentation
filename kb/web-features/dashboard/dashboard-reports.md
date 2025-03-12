@@ -29,7 +29,7 @@ sidebar_position: 2
    - **Top Booked Countries**: Most booked countries and their market share.
    - **Top Source Markets**: Top source markets and their market share.
    - **Download Your Latest Invoices**.
-   - **Recommended Partners for You**: [Suggestions](/kb/getting-started-with-travelgate/about-our-network) based on your account profile (Buyer/Seller).
+   - **Recommended Partners for You**: [Suggestions](/kb/welcome-to-travelgate/network-essentials/) based on your account profile (Buyer/Seller).
    - **Connections with the Highest Booking Volume**: Based on total bookings per connection and their corresponding TTV.
    - **Worst L2B Connections**: Connections with the worst L2B and their corresponding search requests, bookings, and cancellations.
    - **Worst Availability Ratio Connections**: Based on non-availability responses and their corresponding search requests.

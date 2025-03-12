@@ -9,7 +9,7 @@ This guide will walk you through the process of requesting a connection with one
 Our goal has always been to make connecting with a Partner easier and faster.
 
 :::info Keep in mind:
-- **Having a commercial contract with Travelgate** is essential to request a new connection. If you have any questions or need assistance, reach out to our team at sales.support@travelgate.com.
+- **Having a commercial contract with Travelgate** is essential to request a new connection.
 - **Activations of connections with Channel Managers via Travelgate** should always be requested by the Buyers, not the Channel Managers themselves.
 :::
 
@@ -24,7 +24,7 @@ Our goal has always been to make connecting with a Partner easier and faster.
     ![quickguide_to_autoconnections_step2](https://storage.travelgate.com/kbase/autoconnections_step2.png)
 
 3. **Click "Create a New Connection"** to begin the process.
-    - **Step 1 (Partner)**: Select the Partner you want to connect with. Some Sellers may offer multiple connection types ([Pull or Push](/kb/getting-started-with-travelgate/about-our-connectivity/what-is-the-difference-between-pull-and-push-sellers)), so choose the one that fits your needs.
+    - **Step 1 (Partner)**: Select the Partner you want to connect with. Some Sellers may offer multiple connection types ([Pull or Push](/kb/welcome-to-travelgate/connectivity-services/pull-and-push-connectivity)), so choose the one that fits your needs.
         <img src="https://storage.travelgate.com/kbase/autoconnections_step3_1.png" alt="quickguide_to_autoconnections_step3_1" width="500" height="300"/>
   
     - **Step 2 (Access Configuration)**: Assign a distinctive name for your access (e.g., B2B or B2C). Indicate whether it’s for testing or live use. Then, complete the form with the credentials provided by the Seller.

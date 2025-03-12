@@ -65,7 +65,7 @@ When performing a "Force Content Now" update to refresh a Seller's portfolio, ke
 - Updates within the 72-hour window are considered normal, and there’s no need to contact support until this period has passed.
 - **Large updates** (e.g., updating multiple accesses for a Supplier across all Buyers) will result in a longer queue and may take additional time.
 
-If you've followed all the steps and still do not have the most up-to-date content, feel free to [contact our Support Team](https://kb/tickets/guidelines-for-submitting-a-ticket-to-our-support-team.md). We’re here to ensure you have the best possible experience!
+If you've followed all the steps and still do not have the most up-to-date content, feel free to [contact our Support Team](/kb/support-portal/case-guidelines). We’re here to ensure you have the best possible experience!
 :::
 
 ## Frequently Asked Questions

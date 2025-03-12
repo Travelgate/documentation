@@ -4,6 +4,13 @@ sidebar_position: 3
 
 # How to Modify User Roles
 
+:::info User Roles
+Each user’s role determines what actions they can perform within the Travelgate APP:
+- **Admin**: Can create new connections and make reservations via the Travelgate APP and API.
+- **Editor**: Can review and update existing connections and make reservations.
+- **Viewer**: Can view existing connections and perform searches and quotes.
+:::
+
 If you need to change the roles of users in your Organization, follow these steps:
 
 1. **Log in** to the [Travelgate website](https://www.travelgate.com/).

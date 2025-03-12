@@ -28,7 +28,7 @@ Follow these steps to invite new users to your Organization:
 
 ### User Roles
 Each user’s role determines what actions they can perform within the Travelgate APP:
-- **Admin**: Can create new connections and make reservations via the Travelgate app and API.
+- **Admin**: Can create new connections and make reservations via the Travelgate APP and API.
 - **Editor**: Can review and update existing connections and make reservations.
 - **Viewer**: Can view existing connections and perform searches and quotes.
 

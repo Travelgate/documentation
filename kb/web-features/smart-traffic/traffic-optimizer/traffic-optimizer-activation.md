@@ -91,7 +91,7 @@ To monitor performance:
 
 Yes! You can exclude specific hotels from the blacklist.
 
-- Open a [Case](/kb/tickets/guidelines-for-submitting-a-ticket-to-our-support-team) with our Customer Support team.
+- Open a [Case](/kb/support-portal/case-guidelines) with our Customer Support team.
 - Some hotels are **temporarily whitelisted** to re-check conversion. This grace period is activated by default for the "Zero bookings" criteria.
 
 ### Use Cases:

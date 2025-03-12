@@ -23,5 +23,5 @@ Each scorecard displays the percentage of **NOK** (Not OK) transactions and incl
 ![stats_colors_3](https://storage.travelgate.com/kbase/stats_colors_3.jpg)
 
 :::info
-Looking to improve your connections’ performance? Explore our range of tools, like the [Traffic Optimizer](/kb/apps/smart-traffic-apps/traffic-optimizer/traffic-optimizer-app) and [Speed](/kb/web-features/smart-traffic/speed/speed-details), designed to boost your experience! 🚀
+Looking to improve your connections’ performance? Explore our range of tools, like the [Traffic Optimizer](/kb/web-features/smart-traffic/traffic-optimizer/traffic-optimizer-details) and [Speed](/kb/web-features/smart-traffic/speed/speed-details), designed to boost your experience! 🚀
 :::

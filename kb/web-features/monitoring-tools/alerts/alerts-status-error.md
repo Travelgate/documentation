@@ -10,7 +10,7 @@ sidebar_position: 3
 1. **Select Connection(s)**  
 
    ![alerts-error-code-1](https://storage.travelgate.com/kbase/alerts-error-code-1.jpg)
-2. **Configure the Alert**: Define the conditions and fields to set up your alert. Choose the [appropriate options](/kb/apps/monitoring-apps/alerts/alerts-status-error#use-cases-of-status-error-code-alerts) based on your needs.
+2. **Configure the Alert**: Define the conditions and fields to set up your alert. Choose the [appropriate options](/kb/web-features/monitoring-tools/alerts/alerts-status-error#use-cases-of-status-error-code-alerts) based on your needs.
 3. **Set Up Notifications**: Configure how you want to receive alert notifications
     - Alert name and description
     - Email recipients (TO and BCC)

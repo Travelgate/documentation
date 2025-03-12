@@ -4,7 +4,11 @@ sidebar_position: 3
 
 # How to Create API Keys
 
-Only users with **Admin permissions** can generate new API keys. Follow these steps to create a new key for your Organization:
+:::warning Important
+Only users with **Admin permissions** can generate new API keys.
+:::
+
+You can follow these steps to create a new API key for your Organization:
 
 1. **Provide a Name and Description**: Enter a name and description for your new API key. This helps in organizing and identifying different keys.
 
@@ -15,5 +19,5 @@ Only users with **Admin permissions** can generate new API keys. Follow these st
    ![apikey_2](https://storage.travelgate.com/kbase/apikey_2.png)
 
 :::info
-For more information on user roles and permissions, check our guide on [Managing Users](https://www.travelgate.com/kbase/account-settings/users-management/how-to-add-manage-users-to-organization).
+For more information on user roles and permissions, check our guide on [Modifying User Roles](/kb/web-features/account-settings/users-management/modify-user-roles).
 :::

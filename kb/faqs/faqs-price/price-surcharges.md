@@ -20,5 +20,5 @@ You can determine whether surcharges must be paid at the hotel upon arrival or i
 ![hotelx_surcharges](https://storage.travelgate.com/kbase/hotelx_surcharges.jpg)
 
 :::info
-For more details, explore our API Documentation and [Hotel-X Playground](/playground) 🚀
+For more details, explore our [API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart) and [Hotel-X Playground](/playground) 🚀
 :::

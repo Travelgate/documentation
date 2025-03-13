@@ -17,6 +17,7 @@ If the Channel Manager supports card payment, Travelgate accepts all payment opt
 Below is a list of some Channel Managers connected via Travelgate that support **VCC payment** by implementing a booking notification system. For the latest information, please contact the Channel Manager directly.
 
 - Allotz
+- Connectycs
 - D-EDGE / Availpro
 - BoccoGroup / Hotel Spider
 - Busy Rooms
@@ -30,6 +31,7 @@ Below is a list of some Channel Managers connected via Travelgate that support *
 - Hotetec
 - Iperbooking
 - Passepartout
+- Phobs
 - Primal-RES
 - Prestige
 - RoomCloud (Parity Rate)
@@ -40,6 +42,7 @@ Below is a list of some Channel Managers connected via Travelgate that support *
 - SmartHotel
 - Spider Hotels
 - STAAH
+- Synxis
 - Travelline
 - Omnibees
 - VerticalBooking

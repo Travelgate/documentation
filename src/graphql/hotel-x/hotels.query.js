@@ -1,7 +1,7 @@
 export const hotelsQuery = 
-`query ($criteriaHotels: HotelXHotelListInput!, $token: String, $filterHotel: HotelXHotelFilterInput) {
+`query ($criteriaHotels: HotelXHotelListInput!, $token: String) {
 	hotelX {
-	  hotels(criteria: $criteriaHotels, token: $token, filter: $filterHotel) {
+	  hotels(criteria: $criteriaHotels, token: $token) {
 			  token
 			  count
 			  edges {
@@ -139,15 +139,4 @@ export const hotelsByHotelCodeVariables =
 		]
 	},
 	"token": ""
-}`
-
-export const hotelsByDateFilterVariables = 
-`{
-	"criteriaHotels": {
-		"access": "2"
-	},
-	"token": "",
-	"filterHotel": {
-		"createdAt_gt": "2023-01-01T08:58:18.0117911Z"
-	}
 }`

@@ -24,7 +24,7 @@ The `Book` operation ensures:
 The `Book` operation returns:
 - **Booking Status**:
   - `Confirmed`: The reservation was successfully completed without any issues.
-  - `Unknown`: The cancellation process through Travelgate was completed but due to a supplier error or a timeout, the reservation status is unknown. It is the Buyer’s responsibility to check if the booking is cancelled.
+  - `Unknown`: During the reservation process, an issue led to an unknown reservation status. The Buyer is responsible for verifying with the Seller that the booking has been confirmed.
   - `Canceled`: The reservation was completed but due to a supplier error or a timeout the system will immediately cancel the reservation to prevent further possible errors.
   - `On_Request`: Please note that a Book status may change over time: you may receive an ON_REQUEST status in Book response, and after running a Booking Query some seconds later the status may have already changed to OK.
 - **Supplier Locator**: A unique identifier for the booking from the supplier, used for future operations like cancellation or check bookings.

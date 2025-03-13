@@ -79,6 +79,12 @@ export const searchMultipleHotelsQuery =
 						code
 						name
 					}
+					promotions{
+						start
+						end
+						code
+						name
+					}
 				}
 				price {
 					currency

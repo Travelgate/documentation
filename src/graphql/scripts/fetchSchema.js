@@ -115,7 +115,6 @@ const REQUIRED_TYPES = new Set([
   "token",
   "DestinationConnection",
   "HotelXHotelListInput",
-  "HotelXHotelFilterInput",
   "HotelConnection",
   "HotelXMetadataQueryInput",
   "MetadataConnection",

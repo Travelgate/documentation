@@ -2,12 +2,13 @@
 sidebar_position: 2
 ---
 
+
+
 import HotelXHotelListInput from "../../../../../src/graphql/generated-docs/HotelXHotelListInput.mdx";
-import HotelXHotelFilterInput from "../../../../../src/graphql/generated-docs/HotelXHotelFilterInput.mdx";
 import HotelConnection from "../../../../../src/graphql/generated-docs/HotelConnection.mdx";
 import Token from "../../../../../src/graphql/generated-docs/token.mdx";
 
-import {hotelsQuery, hotelsVariables, hotelsByCountryVariables, hotelsByDestinationCodeVariables, hotelsByHotelCodeVariables, hotelsByDateFilterVariables} from "../../../../../src/graphql/hotel-x/hotels.query";
+import {hotelsQuery, hotelsVariables, hotelsByCountryVariables, hotelsByDestinationCodeVariables, hotelsByHotelCodeVariables} from "../../../../../src/graphql/hotel-x/hotels.query";
 
 
 # Hotels
@@ -28,7 +29,6 @@ When creating your hotels query, you have three different inputs to fill based o
 
 1. Criteria
 2. Token
-3. Filter
 
 ### 1. Criteria 
 
@@ -118,26 +118,6 @@ This token should be used as input in your next hotels query, inside the `token`
 }
 ```
 
-
-### 3. Filter
-
-`Filter` feature allows for more precise queries. It consists of two types of filters:
-
-* **Date filters:** These filters allow searching by dates in which the hotels have been created (`createdAt_in`, `createdAt_It`, `createdAt_gt` etc.), updated (`updatedAt_in`, `updatedAt_It`, `updatedAt_gt` etc.), or deleted (`deletedAt_in`, `deletedAt_It`, `deletAt_gt` etc.).
-
-* **Field filters** (boolean: true or false): These filters allow searching hotels that have information in indicated fields, such as country (`country_in`), category (`category_in`), destination (`destination_in`), name (`name_in`), and coordinates (`coordinates_in`).
-
-```js
-{
-	"criteriaHotels": {
-		"access": "2"
-	},
-	"token": "",
-	"filterHotel": {
-		"createdAt_gt": "2023-01-01T08:58:18.0117911Z"
-	}
-}
-```
 
 ### Response Considerations
 
@@ -232,7 +212,6 @@ You can find all the necessary information in the [mapping section](../plugins/m
 ## Query Inputs
 
 <HotelXHotelListInput />
-<HotelXHotelFilterInput />
 <Token />
 ## Returned Fields
 
@@ -267,10 +246,4 @@ For example, if you want to obtain only hotels from "Santorini", you can use the
 If you want to retrieve the information of specific hotel codes from a supplier, you will need to specify the codes in the `hotelCodes` field:
 
 <GraphqlSample query={hotelsQuery} variables={hotelsByHotelCodeVariables} />
-
-
-#### Search for a specific creation date from a supplier
-
-<GraphqlSample query={hotelsQuery} variables={hotelsByDateFilterVariables} />
-
 

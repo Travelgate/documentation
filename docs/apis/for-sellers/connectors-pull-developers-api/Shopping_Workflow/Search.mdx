@@ -7,32 +7,131 @@ sidebar_position: 2
 
 The `Search` operation is the entry point in the booking workflow, enabling clients to retrieve available options based on their specific requirements. It allows buyers to query for availability, pricing, and other relevant details about accommodations offered by the supplier.
 
-## **Purpose**
 The `Search` operation is used to:
 - Fetch available options that match specific criteria provided by the client.
 - Provide detailed information about available rooms, prices, and policies.
 - Act as a foundation for subsequent operations like `Quote` and `Book`.
 
-## **Criteria for Search**
+## **Request**
+
+The Request is structured to accommodate various parameters that clients can specify to refine their search.
+
+### **Overview**
+
 Clients can define their search criteria to narrow down the available options. Common search parameters include:
 - **Hotel Codes**: Specific properties to search within.
 - **Occupations**: Number of guests, their ages, and nationalities.
 - **Markets**: Specific geographic or demographic markets targeted by the client.
 - **Check-in and Check-out Dates**: The desired date range for the stay.
 
-## **Response Details**
-The `Search` operation returns a list of available options matching the criteria. Each option includes:
-- **Price Details**: Comprehensive breakdowns of pricing, including base prices, taxes, and fees.
-- **Room Information**: Descriptions of the rooms, including amenities, room types, and occupancy limits.
-- **Cancellation Policies**: Policies related to cancellations, including deadlines and penalties.
-- **Remarks**: Supplier-specific notes or disclaimers.
-- **Rate Rules**: Conditions and restrictions associated with specific rates, such as minimum stay requirements.
+### **Sample**
 
+```json
+{
+    "searchCriteria":
+    {
+        "destinations":
+        {
+            "accommodations":
+            [
+                {
+                    "type": "Hotel",
+                    "code": "PAR001"
+                }
+            ]
+        },
+        "occupancies":
+        [
+            {
+                "occupancyId": 1,
+                "paxes":
+                [
+                    {
+                        "age": 35
+                    }
+                ]
+            }
+        ],
+        "markets":
+        [
+            "EU"
+        ],
+        "checkIn": "2025-06-10",
+        "checkOut": "2025-06-15",
+        "checkInAsDateTime": "2025-06-10T15:00:00",
+        "checkOutAsDateTime": "2025-06-15T11:00:00",
+        "totalNights": 5,
+        "language": "EN",
+        "currency": "EUR",
+        "nationality": "FR"
+    },
+    "settings":
+    {
+        "supplier": "HOTELTEST",
+        "platform": "HOTELTEST",
+        "client": "TravelAgency123",
+        "access":
+        {
+            "code": 1001,
+            "user": "agency_user",
+            "password": "secure_password",
+            "apiKey": "API_KEY_123456789",
+            "urls":
+            {
+                "book": "https://api.hotelsupplier.com/book",
+                "search": "https://api.hotelsupplier.com/search",
+                "quote": "https://api.hotelsupplier.com/quote",
+                "generic": "https://api.hotelsupplier.com/generic"
+            },
+            "parameters":
+            {
+                "maxResults": "50",
+                "cacheEnabled": "true",
+                "requestTimeout": "5000",
+                "preferredSupplier": "SupplierX"
+            }
+        },
+        "businessRules":
+        {
+            "optionsQuota": 10,
+            "businessRuleType": "CheaperAmount"
+        },
+        "timeout": "30s",
+        "timeoutAsTimeSpan": "00:00:30",
+        "includeProviderTransactions": true
+    },
+    "filters":
+    {
+        "status":
+        {
+            "includes":
+            [
+                "OK"
+            ],
+            "excludes":
+            [
+                "RQ"
+            ]
+        },
+        "rateRuleFilter":
+        {
+            "excludes":
+            [
+                "Older55"
+            ],
+            "includes":
+            [
+                "Older60"
+            ],
+            "includeEmptyRateRulesOptions": false
+        }
+    }
+}
+```
 
-## **Technical Details**
-- **Request Object**: 
-  - Represents the structure of the search request as expected by the supplier.
-  - Includes required parameters such as `hotelCodes`, `occupancy`, and `checkInDate`.
+### **Details**
+
+The object [SearchRq](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/connectors.pull.hotel.domain.contracts.search.request.searchrq) represents the structure of the search request as expected by the supplier.
   
 <!-- TABLE BEGIN Connectors.Pull.Hotel.Domain.Contracts.Search.Request.SearchRq -->
 | Element | Rel | Type | Optional | Description |
@@ -41,13 +140,13 @@ The `Search` operation returns a list of available options matching the criteria
 | SearchCriteria/CheckIn | 1 | String | No | The check-in date for the operation, represented as a string in ISO 8601 format (yyyy-MM-dd). |
 | SearchCriteria/CheckOut | 1 | String | No | The check-out date for the operation, represented as a string in ISO 8601 format (yyyy-MM-dd). |
 | SearchCriteria/Language | 1 | String | No | The language code for the operation, represented as a 2-character ISO 639-1 code (e.g., "en", "es"). |
-| SearchCriteria/Currency | 1 | Enum | Yes | This field specifies the currency in which prices should be displayed. If not provided, the system may use a default value. |
+| SearchCriteria/Currency | 1 | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/connectors.core.domain.currency) | Yes | This field specifies the currency in which prices should be displayed. If not provided, the system may use a default value. |
 | SearchCriteria/Nationality | 1 | String | No | The nationality code of the client, represented as a 2-character ISO 3166-1 alpha-2 country code (e.g., "US", "FR"). |
 | SearchCriteria/Destinations | 1 | [Destinations](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/connectors.pull.hotel.domain.contracts.search.request.destinations) | No | Gets the destinations for the search. These can be specific hotels or locations. |
 | SearchCriteria/Destinations/Accommodations | 1..n | [AccommodationRQ](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/connectors.pull.hotel.domain.contracts.common.accommodationrq) | No | Accommodations represent specific hotels or rentals. Although the structure allows for rentals, only hotels are supported at this time. This property cannot be used simultaneously with Locations. |
-| SearchCriteria/Destinations/Accommodations/Type | 1 | Enum | No | Specifies the type of accommodation being requested, such as Hotel or Rental. |
+| SearchCriteria/Destinations/Accommodations/Type | 1 | [AccommodationType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/connectors.pull.hotel.domain.contracts.common.accommodationtype) | No | Specifies the type of accommodation being requested, such as Hotel or Rental. |
 | SearchCriteria/Destinations/Accommodations/Code | 1 | String | No | Represents a unique code identifying the accommodation in the request. |
-| SearchCriteria/Destinations/Locations | 1..n | Location | No | Locations represent broader geographic areas (e.g., cities or regions). This property cannot be used simultaneously with Accommodations. |
+| SearchCriteria/Destinations/Locations | 1..n | [Location](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/connectors.pull.hotel.domain.contracts.common.location) | No | Locations represent broader geographic areas (e.g., cities or regions). This property cannot be used simultaneously with Accommodations. |
 | SearchCriteria/Destinations/Locations/Code | 1 | String | No | This code is used to reference the location in operations such as searches or bookings. |
 | SearchCriteria/Destinations/Locations/Country | 1 | String | No | The ISO 3166-1 alpha-2 country code where the location is situated. |
 | SearchCriteria/Destinations/Locations/Longitude | 1 | Double | Yes | The longitude coordinate of the location, expressed in decimal degrees. |
@@ -79,17 +178,333 @@ The `Search` operation returns a list of available options matching the criteria
 | Settings/IncludeProviderTransactions | 1 | Boolean | No | Indicates whether detailed traces of provider transactions should be included in the operation's response. If enabled, the ProviderAudit field in responses will contain the transaction logs (e.g., requests and responses exchanged with the supplier). |
 | Filters | 1 | [Filters](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/connectors.pull.hotel.domain.contracts.search.request.filters) | No | This property provides optional refinements for the search results, allowing for additional criteria such as filtering options by status, rate rules, or other custom parameters. |
 | Filters/Status | 1 | [StatusFilter](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/connectors.pull.hotel.domain.contracts.search.request.statusfilter)  | Yes | This filter allows fine-grained control over the statuses returned in the search results. |
-| Filters/Status/Includes | 1..n | Enum  | No | The statuses to include in the response. The values can be Unknown, OK or RQ. |
-| Filters/Status/Excludes | 1..n | Enum  | No | The statuses to exclude from the response. The values can be Unknown, OK or RQ. |
+| Filters/Status/Includes | 1..n | [Status](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/connectors.pull.hotel.domain.contracts.common.status) | No | The statuses to include in the response. The values can be Unknown, OK or RQ. |
+| Filters/Status/Excludes | 1..n | [Status](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/connectors.pull.hotel.domain.contracts.common.status)  | No | The statuses to exclude from the response. The values can be Unknown, OK or RQ. |
 | Filters/RateRuleFilter | 1 | [RateRuleFilter](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/connectors.pull.hotel.domain.contracts.search.request.raterulefilter) | Yes | This filter is useful for tailoring search results based on sales restrictions, such as "Canary Island resident" or "senior discounts.". |
-| Filters/RateRuleFilter/Excludes | 1..n | Enum | Yes | The collection of rate rules that should be excluded from the search results. |
-| Filters/RateRuleFilter/Includes | 1..n | Enum | Yes | The collection of rate rules that should be included in the search results. |
+| Filters/RateRuleFilter/Excludes | 1..n | [RateRule](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/connectors.core.domain.raterule) | Yes | The collection of rate rules that should be excluded from the search results. |
+| Filters/RateRuleFilter/Includes | 1..n | [RateRule](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/connectors.core.domain.raterule) | Yes | The collection of rate rules that should be included in the search results. |
 | Filters/RateRuleFilter/IncludeEmptyRateRulesOptions | 1 | Boolean | Yes | Specifies whether options without rate rules should be included in the results. |
 <!-- TABLE END -->
-  
-- **Response Object**: 
-  - Represents the standardized structure of the response returned by the supplier.
-  - Ensures consistency across different suppliers by conforming to the TravelgateX format.
+
+## **Response**
+
+The Response is structured to provide detailed information about the available options that match the search criteria.
+
+### **Overview**
+
+The `Search` operation returns a list of available options matching the criteria. Each option includes:
+- **Price Details**: Comprehensive breakdowns of pricing, including base prices, taxes, and fees.
+- **Room Information**: Descriptions of the rooms, including amenities, room types, and occupancy limits.
+- **Cancellation Policies**: Policies related to cancellations, including deadlines and penalties.
+- **Remarks**: Supplier-specific notes or disclaimers.
+- **Rate Rules**: Conditions and restrictions associated with specific rates, such as minimum stay requirements.
+
+### **Sample**
+
+```json
+{
+    "adviseMessages":
+    [
+        {
+            "code": "SupplierNoResultsFound",
+            "level": "Warning",
+            "description": "No results found for the selected supplier.",
+            "correlationId": "b9d1ab45-f18d-4d88-b7bd-185a40498a1b",
+            "external":
+            {
+                "code": "SUPPLIER_NOT_FOUND",
+                "message": "The requested supplier could not be found.",
+                "httpStatusCode": 404
+            }
+        }
+    ],
+    "accommodations":
+    [
+        {
+            "boards":
+            [
+                {
+                    "boardCode": "BB",
+                    "name": "Bed & Breakfast",
+                    "options":
+                    [
+                        {
+                            "formId": "BB12345",
+                            "status": "OK",
+                            "price":
+                            {
+                                "currency": "EUR",
+                                "binding": true,
+                                "net": 120,
+                                "gross": 130,
+                                "netSpecified": true,
+                                "minimumSellingPrice": 125
+                            },
+                            "paymentTypes":
+                            [
+                                "CardBookingPay"
+                            ],
+                            "rooms":
+                            [
+                                {
+                                    "occupancyRefId": 1,
+                                    "code": "DBL",
+                                    "description": "Double Room with Sea View",
+                                    "roomPrice":
+                                    {
+                                        "price":
+                                        {
+                                            "currency": "EUR",
+                                            "binding": true,
+                                            "net": 120,
+                                            "gross": 130,
+                                            "netSpecified": true,
+                                            "minimumSellingPrice": 125
+                                        },
+                                        "priceBreakdown":
+                                        [
+                                            {
+                                                "price":
+                                                {
+                                                    "currency": "EUR",
+                                                    "binding": true,
+                                                    "net": 60,
+                                                    "gross": 65,
+                                                    "netSpecified": true,
+                                                    "minimumSellingPrice": 62.5
+                                                },
+                                                "start": 0,
+                                                "end": 1
+                                            }
+                                        ]
+                                    },
+                                    "refundable": true,
+                                    "refundableSpecified": true,
+                                    "legacyRoomId": "DBL_SEA_01",
+                                    "units": 5,
+                                    "ratePlan":
+                                    {
+                                        "code": "STANDARD",
+                                        "name": "Standard Rate"
+                                    },
+                                    "promotions":
+                                    [
+                                        {
+                                            "code": "EARLYBIRD",
+                                            "name": "Early Bird Discount"
+                                        }
+                                    ],
+                                    "remarks":
+                                    [
+                                        {
+                                            "remarkType": "Room",
+                                            "text": "Non-smoking room with complimentary Wi-Fi."
+                                        }
+                                    ],
+                                    "surcharges":
+                                    [
+                                        {
+                                            "chargeType": "Excluded",
+                                            "mandatory": true,
+                                            "description": "City Tax per person per night",
+                                            "price":
+                                            {
+                                                "currency": "EUR",
+                                                "binding": true,
+                                                "net": 5,
+                                                "gross": 5,
+                                                "netSpecified": true,
+                                                "minimumSellingPrice": 5
+                                            },
+                                            "code": "CITY_TAX"
+                                        }
+                                    ],
+                                    "cancelPolicy":
+                                    {
+                                        "refundable": false,
+                                        "cancelPenalties":
+                                        [
+                                            {
+                                                "hoursBefore": 48,
+                                                "penaltyType": "Percentage",
+                                                "currency": "EUR",
+                                                "value": 50,
+                                                "deadline": "2025-05-30T23:59:59Z"
+                                            }
+                                        ],
+                                        "cancelPolicyDescription": "50% charge if canceled within 48 hours before check-in."
+                                    },
+                                    "beds":
+                                    [
+                                        {
+                                            "type": "Queen",
+                                            "description": "1 Queen-size Bed",
+                                            "count": 1,
+                                            "shared": false
+                                        }
+                                    ],
+                                    "amenities":
+                                    [
+                                        {
+                                            "code": "WIFI",
+                                            "type": "Room",
+                                            "value": "Free Wi-Fi",
+                                            "texts": "High-speed internet available in the room."
+                                        }
+                                    ],
+                                    "unitsSpecified": true,
+                                    "features":
+                                    [
+                                        {
+                                            "code": "BALCONY",
+                                            "name": "Private Balcony"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "parameters":
+                            [
+                                {
+                                    "key": 101,
+                                    "value": "HotelSupplierX",
+                                    "parameterType": "Supplier",
+                                    "immutable": false,
+                                    "roomId": 1
+                                }
+                            ],
+                            "cancelPolicy":
+                            {
+                                "roomCancelPolicyDescriptions":
+                                [
+                                    {
+                                        "occupancyRefId": 1,
+                                        "description": "Cancellations within 48 hours before check-in incur a 50% charge."
+                                    }
+                                ],
+                                "refundable": false,
+                                "cancelPenalties":
+                                [
+                                    {
+                                        "hoursBefore": 48,
+                                        "penaltyType": "Percentage",
+                                        "currency": "EUR",
+                                        "value": 50,
+                                        "deadline": "2025-05-30T23:59:59Z"
+                                    }
+                                ],
+                                "cancelPolicyDescription": "50% charge if canceled within 48 hours before check-in."
+                            },
+                            "promotions":
+                            [
+                                {
+                                    "code": "LASTMINUTE",
+                                    "name": "Last Minute Offer"
+                                }
+                            ],
+                            "rateRules":
+                            [
+                                {
+                                    "rateRuleType": "Honeymoon",
+                                    "code": "HONEYMOON",
+                                    "name": "Honeymoon Special",
+                                    "restrictions":
+                                    [
+                                        {
+                                            "code": "MARRIAGE_CERT",
+                                            "name": "Marriage Certificate Required",
+                                            "restrictionType": "Document"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "remarks":
+                            [
+                                {
+                                    "remarkType": "General",
+                                    "text": "Check-in from 3 PM, check-out by 11 AM."
+                                }
+                            ],
+                            "surcharges":
+                            [
+                                {
+                                    "chargeType": "Excluded",
+                                    "mandatory": true,
+                                    "description": "Resort Fee",
+                                    "price":
+                                    {
+                                        "currency": "EUR",
+                                        "binding": true,
+                                        "net": 10,
+                                        "gross": 10,
+                                        "netSpecified": true,
+                                        "minimumSellingPrice": 10
+                                    },
+                                    "code": "RESORT_FEE"
+                                }
+                            ],
+                            "amenities":
+                            [
+                                {
+                                    "code": "POOL",
+                                    "type": "General",
+                                    "value": "Outdoor Pool",
+                                    "texts": "Heated swimming pool available from 8 AM to 8 PM."
+                                }
+                            ],
+                            "supplements":
+                            [
+                                {
+                                    "code": "SPABUNDLE",
+                                    "name": "Spa Package",
+                                    "mandatory": false,
+                                    "price":
+                                    {
+                                        "currency": "EUR",
+                                        "binding": true,
+                                        "net": 50,
+                                        "gross": 55,
+                                        "netSpecified": true,
+                                        "minimumSellingPrice": 50
+                                    },
+                                    "supplementType": "Other",
+                                    "chargeType": "Excluded",
+                                    "durationType": "Session",
+                                    "quantity": 1,
+                                    "resort":
+                                    {
+                                        "code": "SPA123",
+                                        "name": "Luxury Spa Center"
+                                    },
+                                    "unit": "Hours"
+                                }
+                            ],
+                            "addOns":
+                            {
+                                "LATE_CHECKOUT": "Late Checkout Available Until 2 PM"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "location":
+            {
+                "code": "PAR",
+                "country": "France",
+                "longitude": 2.3522,
+                "latitude": 48.8566
+            },
+            "accommodationType": "Hotel",
+            "accommodationCode": "HOTEL_PARIS_001",
+            "accommodationName": "Hotel Le Parisien"
+        }
+    ],
+    "discardedItems": 0
+}
+```
+
+### **Details**
+
+The [SearchRs](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/connectors.pull.hotel.domain.contracts.search.response.searchrs) object represents the standardized structure of the response returned by the supplier.
 
 <!-- TABLE BEGIN Connectors.Pull.Hotel.Domain.Contracts.Search.Response.SearchRs -->
 | Element | Rel | Type | Optional | Description |

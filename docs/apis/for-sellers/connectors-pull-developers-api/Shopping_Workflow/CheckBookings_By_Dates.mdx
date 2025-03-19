@@ -7,35 +7,24 @@ sidebar_position: 7
 
 The `CheckBookings By Dates` operation allows clients to retrieve the status of bookings that fall within a specified date range. It provides a way to list multiple bookings based on criteria such as check-in dates or booking creation dates. This operation is optional but can significantly enhance the functionality of a Connector by providing bulk booking insights.
 
-## **Purpose**
-
 - **Booking Retrieval by Date**: Enables clients to fetch booking details for a given range of dates.
 - **Data Insights**: Useful for operational analysis or customer service purposes, such as managing upcoming check-ins or tracking recent bookings.
 - **Supplier Compatibility**: Adapts to suppliers that support range-based booking queries.
 
-## **When to Use**
+When to Use:
 
 - **Operational Monitoring**: To track all bookings for a specific date range, such as upcoming arrivals.
 - **Bulk Booking Insights**: To retrieve booking data for analysis or reporting purposes.
 - **Supplier-Specific Use Cases**: When suppliers provide additional insights or booking details for specific date ranges.
 
-## **Date Range Options**
+Date Range Options:
 
 - **Check-in Date**: Fetch bookings based on the guest's check-in date.
 - **Booking Date**: Fetch bookings based on when the reservation was created in the supplier's system.
 
 > **Note**: This operation is not mandatory but is highly recommended for suppliers supporting this functionality, as it provides comprehensive booking management capabilities.
 
-## **Response Details**
-
-- **Booking Status**: Indicates whether bookings are active, canceled, or unknown.
-- **Locators**: Provides client and supplier locators for each booking.
-- **Optional Data**:
-  - Guest details.
-  - Room information.
-  - Payment or cancellation status, depending on the supplier's capabilities.
-
-## **Common Scenarios**
+Common Scenarios:
 
 - **Upcoming Arrivals**: Retrieve all bookings with check-ins scheduled for the upcoming week.
 - **Booking Analytics**: Generate reports for all bookings made during a promotional period.
@@ -43,10 +32,64 @@ The `CheckBookings By Dates` operation allows clients to retrieve the status of 
   - `BookingNotFound`: No bookings found for the specified date range.
   - `SupplierError`: Indicates an issue with the supplier's API, such as unavailability or invalid date formats.
 
-## **Technical Details**
+## **Request**
 
-- **Request Object**:
-  - Includes date range criteria and any supplier-specific fields.
+### **Overview**
+
+The Request Object includes date range criteria and any supplier-specific fields.
+
+### **Sample**
+
+```json
+"checkBookingsByDateRq":
+    {
+        "input":
+        {
+            "checkIn": "2024-05-12",
+            "checkOut": "2024-05-14",
+            "dateType": "Arrival",
+            "language": "ES",
+            "currency": "EUR"
+        },
+        "settings":
+        {
+            "supplier": "HOTELTEST",
+            "platform": "HOTELTEST",
+            "client": "TravelAgency123",
+            "access":
+            {
+                "code": 1001,
+                "user": "agency_user",
+                "password": "secure_password",
+                "apiKey": "API_KEY_123456789",
+                "urls":
+                {
+                    "book": "https://api.hotelsupplier.com/book",
+                    "search": "https://api.hotelsupplier.com/search",
+                    "quote": "https://api.hotelsupplier.com/quote",
+                    "generic": "https://api.hotelsupplier.com/generic"
+                },
+                "parameters":
+                {
+                    "someParameter1": "50",
+                    "someParameter2": "true",
+                    "someParameter3": "5000",
+                    "someParameter4": "SupplierX"
+                }
+            },
+            "businessRules":
+            {
+                "optionsQuota": 170,
+                "businessRuleType": "CheaperAmount"
+            },
+            "timeout": "Timeout7d64fd74-9c49-46d7-aa62-2a14c9500e2f",
+            "timeoutAsTimeSpan": "00:00:00",
+            "includeProviderTransactions": true
+        }
+    }
+```
+
+### **Details**
 
 <!-- TABLE BEGIN Connectors.Pull.Hotel.Domain.Contracts.CheckBookings.Request.ByDate.CheckBookingsByDateRq -->
 | Name | Type | Description |
@@ -80,11 +123,231 @@ The `CheckBookings By Dates` operation allows clients to retrieve the status of 
 | **Input/DateType** | [DateRangeType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/daterangetype) | Specifies the type of date range to use for the booking check. |
 | **Input/Language** | String | The language code to be used for the booking check. |
 | **Input/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency to be used for the booking check. |
-
 <!-- TABLE END -->
 
-- **Response Object**:
-  - Provides a list of bookings within the specified date range, including their status, locators, and optional details.
+## **Response**
+
+The Response Object provides a list of bookings within the specified date range, including their status, locators, and optional details.
+
+### **Overview**
+
+- **Booking Status**: Indicates whether bookings are active, canceled, or unknown.
+- **Locators**: Provides client and supplier locators for each booking.
+- **Optional Data**:
+  - Guest details.
+  - Room information.
+  - Payment or cancellation status, depending on the supplier's capabilities.
+
+
+### **Sample**
+
+```json
+"checkBookingsByDateRs":
+    {
+        "auditData":
+        {
+            "request":
+            [
+                {
+                    "data": "<x>SupplierRequest</x>",
+                    "headers":
+                    {
+                        "Accept": "application/x-protobuf",
+                        "Accept-Encoding": "gzip,deflate,"
+                    },
+                    "httpMethod":
+                    {
+                        "method": "POST"
+                    },
+                    "sendAt": "2025-03-16 08:21:49Z",
+                    "url": "http://travelgate.com"
+                }
+            ],
+            "response":
+            [
+                {
+                    "data": "<x>SupplierResponse</x>",
+                    "headers":
+                    {
+                        "Content-Encoding": "gzip,"
+                    },
+                    "httpMethod":
+                    {
+                        "method": "POST"
+                    },
+                    "receivedAt": "2025-03-16 08:21:49Z",
+                    "statusCode": 200
+                }
+            ]
+        },
+        "adviseMessages":
+        [
+            {
+                "code": "SupplierError",
+                "level": "Error",
+                "description": "Supplier error, check external for more details",
+                "external":
+                {
+                    "code": "Code123",
+                    "message": "Supplier internal error",
+                    "httpStatusCode": 200
+                }
+            }
+        ],
+        "bookings":
+        [
+            {
+                "status": "Ok",
+                "reference":
+                {
+                    "clientLocator": "ClientReference12345",
+                    "supplierLocator": "SupplierLocator389b10ca-893b-4e7b-adf6-b067a1b1d9b3",
+                    "hotelLocator": "HotelLocator208c2b6f-1cdf-4204-9ebe-f147808218d9"
+                },
+                "holder":
+                {
+                    "name": "John",
+                    "surName": "Smith",
+                    "personalTitleType": "MR",
+                    "contactInfo":
+                    {
+                        "email": "someemail@travelgate.com",
+                        "phone": "66666666"
+                    }
+                },
+                "hotel":
+                {
+                    "bookingDate": "2024-05-10",
+                    "checkIn": "2024-05-12",
+                    "checkOut": "2024-05-14",
+                    "hotelCode": "12345",
+                    "hotelName": "Hotel Travelgate",
+                    "boardCode": "RO",
+                    "occupancies":
+                    [
+                        {
+                            "occupancyId": 1,
+                            "paxes":
+                            [
+                                {
+                                    "age": 30
+                                },
+                                {
+                                    "age": 30
+                                }
+                            ]
+                        }
+                    ],
+                    "rooms":
+                    [
+                        {
+                            "occupancyRefId": 1,
+                            "code": "DBL",
+                            "description": "Double standard",
+                            "roomPrice":
+                            {
+                                "price":
+                                {
+                                    "currency": "EUR",
+                                    "binding": true,
+                                    "net": 100,
+                                    "gross": 100,
+                                    "netSpecified": true,
+                                    "minimumSellingPrice": 100
+                                },
+                                "priceBreakdown":
+                                [
+                                    {
+                                        "price":
+                                        {
+                                            "currency": "EUR",
+                                            "binding": true,
+                                            "net": 50,
+                                            "gross": 50,
+                                            "netSpecified": true,
+                                            "minimumSellingPrice": 50
+                                        },
+                                        "start": 0,
+                                        "end": 1
+                                    },
+                                    {
+                                        "price":
+                                        {
+                                            "currency": "EUR",
+                                            "binding": true,
+                                            "net": 50,
+                                            "gross": 50,
+                                            "netSpecified": true,
+                                            "minimumSellingPrice": 50
+                                        },
+                                        "start": 1,
+                                        "end": 2
+                                    }
+                                ]
+                            },
+                            "refundable": true,
+                            "refundableSpecified": false
+                        }
+                    ]
+                },
+                "price":
+                {
+                    "currency": "EUR",
+                    "binding": true,
+                    "net": 100,
+                    "gross": 100,
+                    "netSpecified": true,
+                    "minimumSellingPrice": 100
+                },
+                "cancelPolicy":
+                {
+                    "roomCancelPolicyDescriptions":
+                    [
+                        {
+                            "occupancyRefId": 1,
+                            "description": "Cancellations within 48 hours before check-in incur a 50% charge."
+                        }
+                    ],
+                    "refundable": false,
+                    "cancelPenalties":
+                    [
+                        {
+                            "hoursBefore": 48,
+                            "penaltyType": "Percentage",
+                            "currency": "EUR",
+                            "value": 50,
+                            "deadline": "2025-05-30T23:59:59Z"
+                        }
+                    ],
+                    "cancelPolicyDescription": "50% charge if canceled within 48 hours before check-in."
+                },
+                "remarks":
+                [
+                    {
+                        "remarkType": "General",
+                        "text": "CheckIn at 10:00 AM"
+                    }
+                ]
+            }
+        ],
+        "parameters":
+        [
+            {
+                "key": 190,
+                "value": "Value81f30d88-28a1-46fc-bd49-f15e9e3448c0",
+                "parameterType": "Supplier",
+                "immutable": false,
+                "roomId": 32
+            }
+        ],
+        "addOns":
+        {
+            "keybd54429a-d5b4-40e4-9bbc-351520de3f96": "valuee436526f-b82e-4286-8351-dc345688bc6c"
+        }
+    }
+```
+
+### **Details**
 
 <!-- TABLE BEGIN Connectors.Pull.Hotel.Domain.Contracts.CheckBookings.Response.CheckBookingsRs -->
 | Name | Type | Description |
@@ -238,7 +501,6 @@ The `CheckBookings By Dates` operation allows clients to retrieve the status of 
 | **Parameters/Immutable** | Boolean | Indicates whether the parameter remains constant throughout operations (e.g., from Search to Quote and Book). In second searches or quotes, an immutable parameter is used to identify and match the same option. |
 | **Parameters/RoomId** | Integer | Associates the parameter with a specific room, identified by its ID. |
 | **AddOns** | Object | Additional metadata provided by the supplier for internal use. |
-
 <!-- TABLE END -->
 
 ---

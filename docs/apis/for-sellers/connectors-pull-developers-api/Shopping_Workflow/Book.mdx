@@ -7,38 +7,186 @@ sidebar_position: 4
 
 The `Book` operation is the final step in the booking workflow, used to confirm a reservation for a selected option. It involves providing detailed guest information, payment details (if required), and a client locator. Once completed, the supplier processes the reservation and returns its status.
 
-## **Purpose**
 The `Book` operation ensures:
 - **Guest Information Submission**: Transfers passenger details, including names, surnames, and any additional guest-specific data, to the supplier.
 - **Payment Validation**: Confirms and processes payment if the supplier requires it at the booking stage.
 - **Reservation Confirmation**: Secures the selected option and generates a unique supplier locator for future management (e.g., cancellation or check bookings).
 
-## **When to Use**
+When to Use:
 - **Finalizing Reservations**: After `Quote`, when the selected option has been validated and confirmed.
 - **Session-Based Suppliers**: For suppliers requiring additional validation or token updates during the booking process.
 - **Immediate Confirmation**: For suppliers offering instant booking confirmation.
 
 > **Note**: If the booking status is returned as `Unknown`, the client must handle further investigation or contact the supplier to confirm the booking.
 
-## **Response Details**
-The `Book` operation returns:
-- **Booking Status**:
-  - `Confirmed`: The reservation was successfully completed without any issues.
-  - `Unknown`: During the reservation process, an issue led to an unknown reservation status. The Buyer is responsible for verifying with the Seller that the booking has been confirmed.
-  - `Canceled`: The reservation was completed but due to a supplier error or a timeout the system will immediately cancel the reservation to prevent further possible errors.
-  - `On_Request`: Please note that a Book status may change over time: you may receive an ON_REQUEST status in Book response, and after running a Booking Query some seconds later the status may have already changed to OK.
-- **Supplier Locator**: A unique identifier for the booking from the supplier, used for future operations like cancellation or check bookings.
-- **Additional Details**: May include booking remarks or warnings specific to the supplier.
-
-## **Common Scenarios**
+Common Scenarios:
 - **Payment-Required Suppliers**: Includes credit card information or other payment details as part of the `Book` request.
 - **Error Handling**: Common errors include:
   - `SupplierBookingNotConfirmed`: Indicates that the booking could not be processed by the supplier.
   - `ItemNotAvailable`: Returned if the selected option is no longer valid at the time of booking.
 
-## **Technical Details**
-- **Request Object**:
-  - Includes passenger details, payment information, client locator, and the selected option.
+## **Request**
+
+The request object contains all necessary details to process the booking.
+
+### **Overview**
+
+The request object includes passenger details, payment information, client locator, and the selected option.
+
+### **Sample**
+
+```json
+"bookRq":
+    {
+        "bookCriteria":
+        {
+            "accommodation":
+            {
+                "type": "Hotel",
+                "code": "12345"
+            },
+            "boardCode": "RO",
+            "occupancies":
+            [
+                {
+                    "occupancyId": 1,
+                    "paxes":
+                    [
+                        {
+                            "age": 30
+                        },
+                        {
+                            "age": 30
+                        }
+                    ]
+                }
+            ],
+            "market": "ES",
+            "rooms":
+            [
+                {
+                    "occupancyRefId": 1,
+                    "code": "DBL",
+                    "description": "Double standard"
+                }
+            ],
+            "paymentType": "MerchantPay",
+            "remarks":
+            [
+                {
+                    "remarkType": "General",
+                    "text": "I want twin beds"
+                }
+            ],
+            "clientReference": "ClientReference12345",
+            "bookPrice":
+            {
+                "price":
+                {
+                    "currency": "EUR",
+                    "binding": true,
+                    "net": 100,
+                    "gross": 100,
+                    "netSpecified": true,
+                    "minimumSellingPrice": 100
+                },
+                "deltaPrice":
+                {
+                    "amount": 5,
+                    "percentage": 1
+                }
+            },
+            "holder":
+            {
+                "name": "John",
+                "surName": "Smith",
+                "personalTitleType": "MR",
+                "contactInfo":
+                {
+                    "email": "someemail@travelgate.com",
+                    "phone": "66666666"
+                }
+            },
+            "paymentCardInput":
+            {
+                "type": "VI",
+                "number": "4444444444444",
+                "cvc": "123",
+                "expiration":
+                {
+                    "month": 10,
+                    "year": 5,
+                    "yearFull": 2005
+                },
+                "isVcc": false,
+                "holder":
+                {
+                    "name": "John",
+                    "surName": "Smith",
+                    "personalTitleType": "MR",
+                    "contactInfo":
+                    {
+                        "email": "someemail@travelgate.com",
+                        "phone": "66666666"
+                    }
+                }
+            },
+            "parameters":
+            [
+                {
+                    "key": 4,
+                    "value": "Value5a3c4d96-8e0e-43e1-9524-81b0ffb9995d",
+                    "parameterType": "Supplier",
+                    "immutable": false,
+                    "roomId": 105
+                }
+            ],
+            "checkIn": "2024-05-12",
+            "checkOut": "2024-05-14",
+            "totalNights": 2,
+            "language": "ES",
+            "currency": "EUR",
+            "nationality": "ES"
+        },
+        "settings":
+        {
+            "supplier": "HOTELTEST",
+            "platform": "HOTELTEST",
+            "client": "TravelAgency123",
+            "access":
+            {
+                "code": 1001,
+                "user": "agency_user",
+                "password": "secure_password",
+                "apiKey": "API_KEY_123456789",
+                "urls":
+                {
+                    "book": "https://api.hotelsupplier.com/book",
+                    "search": "https://api.hotelsupplier.com/search",
+                    "quote": "https://api.hotelsupplier.com/quote",
+                    "generic": "https://api.hotelsupplier.com/generic"
+                },
+                "parameters":
+                {
+                    "someParameter1": "50",
+                    "someParameter2": "true",
+                    "someParameter3": "5000",
+                    "someParameter4": "SupplierX"
+                }
+            },
+            "businessRules":
+            {
+                "optionsQuota": 170,
+                "businessRuleType": "CheaperAmount"
+            },
+            "timeout": "Timeout7d64fd74-9c49-46d7-aa62-2a14c9500e2f",
+            "timeoutAsTimeSpan": "00:00:00",
+            "includeProviderTransactions": true
+        }
+    }
+```
+
+### **Details**
 
 <!-- TABLE BEGIN Connectors.Pull.Hotel.Domain.Contracts.Book.Request.BookRq -->
 | Name | Type | Description |
@@ -218,11 +366,216 @@ The `Book` operation returns:
 | **Settings/TimeoutAsTimeSpan** | String | Converts the timeout value from the string representation (Timeout) into a TimeSpan for use in time-based operations. |
 | **Settings**<br />**IncludeProviderTransactions** | Boolean | Indicates whether detailed traces of provider transactions should be included in the operation's response.If enabled, the ProviderAudit field in responses will contain the transaction logs (e.g., requests and responses exchanged with the supplier). |
 | **Settings/CommitRequired** | Boolean | Indicates whether a commit is required for the booking. |
-
 <!-- TABLE END -->
 
-- **Response Object**:
-  - Provides booking confirmation status, supplier locator, and any additional remarks or warnings.
+## **Response**
+
+The response object contains the results of the booking operation.
+
+### **Overview**
+
+The `Book` operation returns:
+- **Booking Status**:
+  - `Confirmed`: The reservation was successfully completed without any issues.
+  - `Unknown`: During the reservation process, an issue led to an unknown reservation status. The Buyer is responsible for verifying with the Seller that the booking has been confirmed.
+  - `Canceled`: The reservation was completed but due to a supplier error or a timeout the system will immediately cancel the reservation to prevent further possible errors.
+  - `On_Request`: Please note that a Book status may change over time: you may receive an ON_REQUEST status in Book response, and after running a Booking Query some seconds later the status may have already changed to OK.
+- **Supplier Locator**: A unique identifier for the booking from the supplier, used for future operations like cancellation or check bookings.
+- **Additional Details**: May include booking remarks or warnings specific to the supplier.
+
+### **Sample**
+
+```json
+"bookRs":
+    {
+        "auditData":
+        {
+            "request":
+            [
+                {
+                    "data": "<x>SupplierRequest</x>",
+                    "headers":
+                    {
+                        "Accept": "application/x-protobuf",
+                        "Accept-Encoding": "gzip,deflate,"
+                    },
+                    "httpMethod":
+                    {
+                        "method": "POST"
+                    },
+                    "sendAt": "2025-03-16 08:21:49Z",
+                    "url": "http://travelgate.com"
+                }
+            ],
+            "response":
+            [
+                {
+                    "data": "<x>SupplierResponse</x>",
+                    "headers":
+                    {
+                        "Content-Encoding": "gzip,"
+                    },
+                    "httpMethod":
+                    {
+                        "method": "POST"
+                    },
+                    "receivedAt": "2025-03-16 08:21:49Z",
+                    "statusCode": 200
+                }
+            ]
+        },
+        "adviseMessages":
+        [
+            {
+                "code": "SupplierError",
+                "level": "Error",
+                "description": "Supplier error, check external for more details",
+                "external":
+                {
+                    "code": "Code123",
+                    "message": "Supplier internal error",
+                    "httpStatusCode": 200
+                }
+            }
+        ],
+        "bookDetails":
+        {
+            "status": "Ok",
+            "reference":
+            {
+                "clientLocator": "ClientReference12345",
+                "supplierLocator": "SupplierLocator389b10ca-893b-4e7b-adf6-b067a1b1d9b3",
+                "hotelLocator": "HotelLocator208c2b6f-1cdf-4204-9ebe-f147808218d9"
+            },
+            "holder":
+            {
+                "name": "John",
+                "surName": "Smith",
+                "personalTitleType": "MR",
+                "contactInfo":
+                {
+                    "email": "someemail@travelgate.com",
+                    "phone": "66666666"
+                }
+            },
+            "hotel":
+            {
+                "bookingDate": "2024-05-10",
+                "checkIn": "2024-05-12",
+                "checkOut": "2024-05-14",
+                "hotelCode": "12345",
+                "hotelName": "Hotel Travelgate",
+                "boardCode": "RO",
+                "occupancies":
+                [
+                    {
+                        "occupancyId": 1,
+                        "paxes":
+                        [
+                            {
+                                "age": 30
+                            },
+                            {
+                                "age": 30
+                            }
+                        ]
+                    }
+                ],
+                "rooms":
+                [
+                    {
+                        "occupancyRefId": 1,
+                        "code": "DBL",
+                        "description": "Double standard",
+                        "roomPrice":
+                        {
+                            "price":
+                            {
+                                "currency": "EUR",
+                                "binding": true,
+                                "net": 100,
+                                "gross": 100,
+                                "netSpecified": true,
+                                "minimumSellingPrice": 100
+                            },
+                            "priceBreakdown":
+                            [
+                                {
+                                    "price":
+                                    {
+                                        "currency": "EUR",
+                                        "binding": true,
+                                        "net": 50,
+                                        "gross": 50,
+                                        "netSpecified": true,
+                                        "minimumSellingPrice": 50
+                                    },
+                                    "start": 0,
+                                    "end": 1
+                                },
+                                {
+                                    "price":
+                                    {
+                                        "currency": "EUR",
+                                        "binding": true,
+                                        "net": 50,
+                                        "gross": 50,
+                                        "netSpecified": true,
+                                        "minimumSellingPrice": 50
+                                    },
+                                    "start": 1,
+                                    "end": 2
+                                }
+                            ]
+                        },
+                        "refundable": true,
+                        "refundableSpecified": false
+                    }
+                ]
+            },
+            "price":
+            {
+                "currency": "EUR",
+                "binding": true,
+                "net": 100,
+                "gross": 100,
+                "netSpecified": true,
+                "minimumSellingPrice": 100
+            },
+            "cancelPolicy":
+            {
+                "roomCancelPolicyDescriptions":
+                [
+                    {
+                        "occupancyRefId": 1,
+                        "description": "Cancellations within 48 hours before check-in incur a 50% charge."
+                    }
+                ],
+                "refundable": false,
+                "cancelPenalties":
+                [
+                    {
+                        "hoursBefore": 48,
+                        "penaltyType": "Percentage",
+                        "currency": "EUR",
+                        "value": 50,
+                        "deadline": "2025-05-30T23:59:59Z"
+                    }
+                ],
+                "cancelPolicyDescription": "50% charge if canceled within 48 hours before check-in."
+            },
+            "remarks":
+            [
+                {
+                    "remarkType": "General",
+                    "text": "CheckIn at 10:00 AM"
+                }
+            ]
+        }
+    }
+```
+
+### **Details**
 
 <!-- TABLE BEGIN Connectors.Pull.Hotel.Domain.Contracts.Book.Response.BookRs -->
 | Name | Type | Description |
@@ -370,7 +723,6 @@ The `Book` operation returns:
 | **BookDetails/Payable** | String | Information about the entity responsible for payment of the booking. |
 | **BookDetails/AddOns** | Object | Additional metadata provided by the supplier for internal use. |
 | **AddOns** | Object | A dictionary containing supplier information for the option. |
-
 <!-- TABLE END -->
 
 ---

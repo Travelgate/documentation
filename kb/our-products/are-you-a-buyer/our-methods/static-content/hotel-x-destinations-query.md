@@ -27,8 +27,7 @@ Some of the fields returned are:
 Once you run a Destinations Query, you will receive the Seller's native destination codes in the response. These codes can be classified into 3 categories:
 
 1. Zone
-1. City
-2. Country
+2. City
 
 
 ### How should I utilize the zone and city nodes in my Destinations Query response?💡

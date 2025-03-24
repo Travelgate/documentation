@@ -24,7 +24,7 @@ Some of the fields returned are:
   - Type
 
 ### Destination List Logic🔎
-Once you run a Destinations Query, you will receive the Seller's native destination codes in the response. These codes can be classified into 3 categories:
+Once you run a Destinations Query, you will receive the Seller's native destination codes in the response. These codes can be classified into 2 categories:
 
 1. Zone
 2. City

@@ -30,7 +30,7 @@ In this guide, we'll walk you through the process of requesting a connection wit
         Keep in mind that each Seller may require different information based on their system's specifications. It's important to note that activating your access with credentials that haven't been greenlit by the Seller can disrupt the workflow and cause delays. Therefore, ensure that your credentials are active and fully operational before proceeding.
         <img src="https://storage.travelgate.com/kbase/autoconnections_step3_2.png" alt="quickguide_to_autoconnections_step3_2" width="500" height="300"/>
 
-    * **Step 3 (Notification setup):** Let us know where you'd like to receive notifications once the connection is created and access is granted.
+    * **Step 3 (Notification setup):** Provide one or more contact emails for the **Partner you are connecting with** so they can also be notified once the connection has been created and is ready for use. **The Partner contact must be registered in TravelgateX.**  In the **"Other Contacts"** field, you can include additional email addresses, such as colleagues or other relevant team members, who should also receive the notifications.
 
         <img src="https://storage.travelgate.com/kbase/autoconnections_step3_3.png" alt="autoconnections_step3_3" width="500" height="300"/>
 

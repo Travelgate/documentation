@@ -16,13 +16,13 @@ Travelgate allows only **one credential (Hotel-X Access Code) per Channel Manage
 
 ### How to Connect to a Channel Manager 
 
-1. **Log into Our Website:** Note that to connect to a Channel Manager, you must be a registered Buyer on Travelgate.
+1. **Log into Our Portal:** Note that to connect to a Channel Manager, you must be a registered Buyer on Travelgate.
 
 2. **Explore Available Channel Managers:** Visit our [Network](https://app.travelgate.com/network/partners) and select the "Tech Platform > Channel Manager" category to view available options.
 
 3. **Confirm Commercial Agreements:** Coordinate with both the hotel and the Channel Manager to finalize commercial agreements. Be sure to inform them that the connection will be made via Travelgate.
 
-4. **Request Activation:** Submit your activation request through our website under "My Connections." A complete guide on how to request activation can be found [here](/kb/web-features/connections/my-connections/guick-guide-to-auto-activations).
+4. **Request Activation:** Submit your activation request through our portal under "My Connections." A complete guide on how to request activation can be found [here](/kb/app-features/connections/my-connections/guick-guide-to-auto-activations).
 
 5. **Credentials Generation:** Once your request is processed, we will generate credentials for accessing the Inventory Extranet and finalize the activation with the Channel Manager.
 

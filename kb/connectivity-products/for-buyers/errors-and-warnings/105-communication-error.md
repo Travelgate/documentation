@@ -10,7 +10,7 @@ A **105 error** occurs when the connection to the Seller is refused, meaning Tra
 ## How to Handle a 105 Error
 
 #### 1. **Verify Your URLs**
-If you suddenly start receiving these errors, check that the URLs in your access configurations match the credentials stored in [My Connections](/kb/web-features/connections/my-connections/managing-connections/connections-details).
+If you suddenly start receiving these errors, check that the URLs in your access configurations match the credentials stored in [My Connections](/kb/app-features/connections/my-connections/managing-connections/connections-details).
 
 #### 2. **Contact the Seller**
 If your URLs are correct, reach out to the Seller to confirm whether they are experiencing any technical issues (e.g., server downtime or system crashes).

@@ -29,7 +29,7 @@ To facilitate testing, the following accesses have been pre-activated for your a
    - **Smyrooms Test:** Access 5647 with context `LOGITEST`
 
 #### How to Obtain an Access Code from an Actual Seller
-To obtain an access code from a Seller, you must establish a commercial agreement with the desired Partner and request activation via the [Auto-Activations Form](/kb/web-features/connections/my-connections/guick-guide-to-auto-activations).
+To obtain an access code from a Seller, you must establish a commercial agreement with the desired Partner and request activation via the [Auto-Activations Form](/kb/app-features/connections/my-connections/guick-guide-to-auto-activations).
 
 :::warning important
 - **Avoid making live bookings** during the Hotel-X implementation process until Travelgate has certified your development. If you create test bookings, ensure they are canceled and refundable.
@@ -40,7 +40,7 @@ To obtain an access code from a Seller, you must establish a commercial agreemen
 
 A client is an entity purchasing accommodation services through the Hotel-X API. Client codes remain consistent across all Travelgate implementations and help identify the requesting business and its assigned configurations.
 
-Multiple client codes may be used to distinguish different traffic types, such as B2B and B2C transactions (e.g., `client_b2b`, `client_b2c`). Since all accesses are compatible with any client code, selecting the appropriate one is essential. You can review client information in your [API Settings](/kb/web-features/connections/api-settings/).
+Multiple client codes may be used to distinguish different traffic types, such as B2B and B2C transactions (e.g., `client_b2b`, `client_b2c`). Since all accesses are compatible with any client code, selecting the appropriate one is essential. You can review client information in your [API Settings](/kb/app-features/connections/api-settings/).
 
 ## Context
 
@@ -52,5 +52,5 @@ Buyers can either use their own context or select content providers. Buyer conte
 - **Access** contains your authentication credentials for a specific connection.
 - **Context** is the internal Travelgate code required to request Supplier codes or mapped Buyer codes (uploaded to our SFTP).
 
-For more details, refer to the [Hotel-X Buyers API Documentation](/docs/get-started/key-concepts) and [API Settings](/kb/web-features/connections/api-settings/).
+For more details, refer to the [Hotel-X Buyers API Documentation](/docs/get-started/key-concepts) and [API Settings](/kb/app-features/connections/api-settings/).
 :::

@@ -34,7 +34,7 @@ You can configure timeout values in two ways:
     }
     ```
 
-2. **As a default timeout value in your API Settings**, more details are available [here](/kb/web-features/connections/api-settings/).
+2. **As a default timeout value in your API Settings**, more details are available [here](/kb/app-features/connections/api-settings/).
 
 :::info 
 When making a multimode request, it is not possible to set different timeout values for each Supplier. The timeout value you set will apply uniformly to all Suppliers.

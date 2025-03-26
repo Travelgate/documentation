@@ -8,9 +8,9 @@ sidebar_position: 3
 
 At Travelgate, we understand the importance of efficient support. That's why we're excited to introduce **AIna**, our multilingual AI assistant powered by Large Language Models (LLMs). AIna is designed to answer your Travelgate-related questions using our Official Documentation.
 
-You can easily interact with AIna from any section of our website with just one click. Available 24/7, AIna is here to assist you with common inquiries, usage tips, and App information.
+You can easily interact with AIna from any section of our portal with just one click. Available 24/7, AIna is here to assist you with common inquiries, usage tips, and App information.
 
-**Our [Website](https://app.travelgate.com/):**
+**Our [portal](https://app.travelgate.com/):**
 
 ![aina-1](https://storage.travelgate.com//kbase/aina-1.jpg)
 
@@ -18,7 +18,7 @@ You can easily interact with AIna from any section of our website with just one 
 
 ![aina-2](https://storage.travelgate.com//kbase/aina-2.jpg)
 
-**Our [Support Portal](/kb/support-portal/how-to-submit-case):**
+**Our [Support Portal](/kb/platform/support-portal/how-to-submit-case):**
 
 ![cases-2](https://storage.travelgate.com//kbase/cases-2.jpg)
 
@@ -27,7 +27,7 @@ Engage with AIna directly via our Discord channel [-ask-ai](https://discord.com/
 
 ### Experience a New Level of Support
 
-AIna is seamlessly integrated into our [Customer Support Portal](/kb/support-portal/how-to-submit-case) to improve your experience and make support more intuitive. Key benefits include:
+AIna is seamlessly integrated into our [Customer Support Portal](/kb/platform/support-portal/how-to-submit-case) to improve your experience and make support more intuitive. Key benefits include:
 
 - **AI Powered by Real Experience:** AIna leverages the extensive experience and documentation available on docs.travelgate.com, enabling quicker and more efficient case resolution.
 - **Enhanced Support with LLMs:** Our AI assistant provides personalized and adaptive responses using advanced Large Language Models (LLMs), improving response times and boosting user satisfaction.

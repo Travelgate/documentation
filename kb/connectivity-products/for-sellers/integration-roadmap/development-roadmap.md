@@ -14,7 +14,7 @@ Our roadmap highlights the **integrations** being added to our Marketplace, help
 
 To explore our roadmap:
 
-1. **Visit our website**.
+1. **Visit our portal**.
 2. **Navigate to "Network" in the top menu and select "Roadmap"**.
 3. On the **Roadmap** page, you can:
    - **View all ongoing Seller developments**.

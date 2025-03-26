@@ -42,7 +42,7 @@ Offer necessary background information, such as the specific service or feature 
 
 ### Follow Up and Clarify
 
-If the initial response doesn't fully resolve your query, don't hesitate to ask again! Additionally, when engaging with AIna in the [Support Cases](/kb/support-portal/how-to-submit-case) section, you can refine your question by selecting **'Go back and rephrase your question'** at the top of the response.
+If the initial response doesn't fully resolve your query, don't hesitate to ask again! Additionally, when engaging with AIna in the [Support Cases](/kb/platform/support-portal/how-to-submit-case) section, you can refine your question by selecting **'Go back and rephrase your question'** at the top of the response.
 
 ### AIna: Your Support Ally
 

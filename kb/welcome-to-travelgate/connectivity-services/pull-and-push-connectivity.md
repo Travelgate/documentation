@@ -6,7 +6,7 @@ sidebar_position: 4
 
 ## First Things First: What is an XML Integration? 💡
 
-An XML integration acts as a **connector**, functioning as a "translator" between the systems of Buyers and Sellers. It allows different formats or programming languages (typically XML) to be compatible, ensuring that information from a hotel provider is accessible on an online travel agency’s website—even if their databases are structured differently.
+An XML integration acts as a **connector**, functioning as a "translator" between the systems of Buyers and Sellers. It allows different formats or programming languages (typically XML) to be compatible, ensuring that information from a hotel provider is accessible on an online travel agency’s portal—even if their databases are structured differently.
 
 ## Pull Integration ⬅️
 

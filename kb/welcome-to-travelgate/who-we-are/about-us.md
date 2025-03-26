@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # About Us
 
-### What is Travelgate and how can it help me? 💡
+## What is Travelgate and how can it help me? 💡
 
 Travelgate is a **Connectivity Marketplace** that connects Buyers and Sellers of travel products. Our advanced technology has earned the trust of major industry players and specialized providers worldwide.
 
@@ -18,15 +18,43 @@ For Sellers, Travelgate offers an expansive distribution network. Whether you're
 **Discover how Travelgate came to be from our Founder [here](https://blog.travelgate.com/en/from-xml-travelgate-to-travelgatex).**
 :::
 
-### Who are our current partners? 🔎
+
+## Travelgate APP: Your Gateway to Endless Opportunities
+
+At Travelgate, we’re redefining how the travel industry connects. As a leading Connectivity Marketplace, our mission is to empower our partners—both Buyers and Sellers—to unlock the full potential of their connections through innovative, seamless technology.
+
+### Designed to Maximize Your Connections
+
+The **Travelgate Platform** has been built with one clear purpose: to help you get the most out of your partnerships and business opportunities. Over time, the platform has evolved to offer more powerful features, all centered around streamlining connectivity and enhancing collaboration within the travel ecosystem.
+
+### What Can You Do with the Travelgate APP?
+
+The **Travelgate APP** is your all-in-one access point for everything Travelgate-related. It consolidates a wide array of tools and features into a single, user-friendly interface—eliminating the need to navigate multiple systems or websites.
+
+Here’s what you can expect:
+
+- **Connection Monitoring & Optimization**: Keep track of your integrations in real time and ensure they’re performing at their best.
+- **Smart Reports**: Make data-driven decisions with detailed, customizable insights.
+- **Account Management**: Easily update your connection settings, credentials, and preferences.
+- **AI-Powered Assistant**: Get instant help powered by our extensive documentation, available right when you need it.
+- **Integrated Support Portal**: Reach out to our team or explore help articles—without ever leaving the platform.
+
+With everything centralized in one place, managing your Travelgate experience has never been easier. Just log in and start exploring.
+
+:::tip 
+Learn more about the Travelgate APP and its full feature set in [this section](/kb/platform/app-features/overview).
+:::
+
+
+## Who are our current partners? 🔎
 
 Connectivity is crucial for any travel business, and partnering with the right companies is key to success. We proudly collaborate with renowned industry leaders such as Agoda, Expedia, British Airways Holidays, Lastminute.com, Trip.com, Hotelbeds, On the Beach, Love Holidays, Avoris, Logitravel, and many more. These trusted partners are already benefiting from our extensive connectivity ecosystem.
 
 ### Who can we connect with? 🚀
 
-Travelgate boasts **one of the largest networks of partners worldwide.** Explore our [website](https://www.travelgate.com/) to view the full list of partners.
+Travelgate boasts **one of the largest networks of partners worldwide.** Explore our [portal](https://www.travelgate.com/) to view the full list of partners.
 
-### How can I become a Travelgate partner? 🌟
+## How can I become a Travelgate partner? 🌟
 
 If you haven't partnered with Travelgate yet, getting started is easy. Simply visit our [Portal](https://www.travelgate.com/), click "Contact Travelgate," and fill out the form—it takes just two minutes! Our team will get in touch with you promptly.
 

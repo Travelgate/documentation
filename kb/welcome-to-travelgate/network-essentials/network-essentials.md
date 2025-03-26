@@ -8,7 +8,7 @@ sidebar_position: 2
 
 At Travelgate, we provide personalized recommendations for new connections based on your activity within our Marketplace. Our advanced algorithms help you **grow your network** and boost your booking volume by connecting you with Partners that align with your trading patterns.
 
-### How Does Travelgate's Partner Recommendation Work? 🌟
+### How Does Travelgate's Partner Recommendation Work?
 
 Our suggested connections are carefully curated **based on your performance** and data-driven insights. InsightsX analyzes your data and cross-references it with global data stored on our platform. This ensures that Partners matching your business criteria (listed below) appear as "Recommended" connections:
 
@@ -20,7 +20,7 @@ Looking to expand further?
 * **New Destinations**: Enter new travel destinations.
 * **New Markets**: Explore untapped selling markets.
 
-### Where Can I Find Recommendations for My Company? 🔍
+### Where Can I Find Recommendations for My Company?
 
 You can access your recommended connections via your [Dashboard](https://app.travelgate.com/dashboard) and the [Network's Partner List](https://app.travelgate.com/network/partners). Once you find a Partner you're interested in, simply arrange your own contract and request their activation. It’s that easy!
 
@@ -42,7 +42,7 @@ Plus, you can now view the top source markets and destinations for each company 
 
 ![network_updated_2](https://storage.travelgate.com/kbase/network_updated_2.jpg)
 
-### Looking for a Specific Partner? 🔎
+### Looking for a Specific Partner?
 
 Our system suggests Company names as you type, displaying their logo and type. You can also filter to include or exclude Companies that are currently in the Onboarding process by toggling the "Onboarding partners" option in the top right corner of the screen.
 

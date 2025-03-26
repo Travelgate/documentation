@@ -1,8 +1,8 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 ---
 
-# Overview
+# Our Community
 
 At Travelgate, we highly value the power of Community. We're excited to launch our new [Discord Server](https://discord.com/invite/travelgate), designed specifically for our Network of users, Partners, and developers. This platform is more than just a communication tool—it's a hub for sharing ideas, collaborating, and driving innovation.
 

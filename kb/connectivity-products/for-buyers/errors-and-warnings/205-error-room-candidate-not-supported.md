@@ -4,7 +4,7 @@ sidebar_position: 10
 
 # 205 Error - Room Candidate Not Supported
 
-## What Does a 205 Error Mean? 💡
+## What Does a 205 Error Mean?
 A 205 error occurs when the number of room candidates in your request exceeds the maximum allowed by the Seller.
 
 ### How Can I Check the Seller's Limitations and Avoid Errors? 

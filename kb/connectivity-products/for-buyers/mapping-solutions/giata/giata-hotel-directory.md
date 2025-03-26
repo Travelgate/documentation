@@ -4,11 +4,11 @@ sidebar_position: 3
 
 # GIATA Hotel Directory
 
-### What is GIATA Hotel Directory? 🚀
+### What is GIATA Hotel Directory?
 
 With the rapid expansion of the hotel distribution landscape, hotels are facing challenges in managing their content across various B2C platforms. To address this issue, GIATA has introduced **GIATA Hotel Directory for B2B Partners**, a content solution available **free of charge** to wholesalers and travel companies seeking accurate, up-to-date content directly from the properties.
 
-### Benefits and Features of GIATA Hotel Directory 📷
+### Benefits and Features of GIATA Hotel Directory
 
 GIATA Hotel Directory is available for free to all wholesalers and travel companies, offering a vast collection of content and images for approximately **35,000 properties** at no cost.
 
@@ -20,7 +20,7 @@ With this solution, you can:
 
 ![giata_hotel_directory_1](https://storage.travelgate.com/kbase/giata_hotel_directory_1.jpg)
 
-### How to Request Activation for GIATA Hotel Directory ✔️
+### How to Request Activation for GIATA Hotel Directory
 
 Follow these simple steps to activate GIATA Hotel Directory:
 

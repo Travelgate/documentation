@@ -48,7 +48,7 @@ If the initial response doesn't fully resolve your query, don't hesitate to ask 
 
 AIna provides quick answers and guidance for troubleshooting errors but cannot modify platform settings or access Partner account details. However, it can direct you to the appropriate steps to review or update your account details effectively.
 
-## Interacting with AIna: Dos and Don’ts 💡
+## Interacting with AIna: Dos and Don’ts
 
 ### Case 1
 

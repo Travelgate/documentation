@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # About Us
 
-## What is Travelgate and how can it help me? 💡
+## What Is Travelgate And How Can It Help Me?
 
 Travelgate is a **Connectivity Marketplace** that connects Buyers and Sellers of travel products. Our advanced technology has earned the trust of major industry players and specialized providers worldwide.
 
@@ -46,15 +46,15 @@ Learn more about the Travelgate APP and its full feature set in [this section](/
 :::
 
 
-## Who are our current partners? 🔎
+## Who are our current partners?
 
 Connectivity is crucial for any travel business, and partnering with the right companies is key to success. We proudly collaborate with renowned industry leaders such as Agoda, Expedia, British Airways Holidays, Lastminute.com, Trip.com, Hotelbeds, On the Beach, Love Holidays, Avoris, Logitravel, and many more. These trusted partners are already benefiting from our extensive connectivity ecosystem.
 
-### Who can we connect with? 🚀
+### Who can we connect with?
 
 Travelgate boasts **one of the largest networks of partners worldwide.** Explore our [Platform](https://www.travelgate.com/) to view the full list of partners.
 
-## How can I become a Travelgate partner? 🌟
+## How can I become a Travelgate partner?
 
 If you haven't partnered with Travelgate yet, getting started is easy. Simply visit our [Platform](https://www.travelgate.com/), click "Contact Travelgate," and fill out the form—it takes just two minutes! Our team will get in touch with you promptly.
 

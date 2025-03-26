@@ -20,7 +20,7 @@ Some key fields to include in your Book mutation request:
 
 ## DeltaPrice
 
-### What is DeltaPrice and why should I use it? 💡
+### What is DeltaPrice and why should I use it?
 
 The [DeltaPrice](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/book) allows Buyers to define an acceptable price variation (amount or percentage) during the booking process. If the new price exceeds the specified DeltaPrice, an error is returned. If DeltaPrice is not provided and the Seller supports it, the default tolerance is 0, meaning the booking can proceed only if the price is equal to or lower than the quoted price.
 

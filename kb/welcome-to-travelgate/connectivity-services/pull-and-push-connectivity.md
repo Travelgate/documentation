@@ -4,11 +4,11 @@ sidebar_position: 4
 
 # Pull/Push Connection Types
 
-## First Things First: What is an XML Integration? 💡
+## First Things First: What is an XML Integration?
 
 An XML integration acts as a **connector**, functioning as a "translator" between the systems of Buyers and Sellers. It allows different formats or programming languages (typically XML) to be compatible, ensuring that information from a hotel provider is accessible on an online travel agency’s portal—even if their databases are structured differently.
 
-## Pull Integration ⬅️
+## Pull Integration
 
 ### What is a Pull Integration?
 
@@ -30,7 +30,7 @@ Static content information (e.g., portfolio, destination list, room list) is ret
 ### Disadvantages of Pull Connectivity
 - Requires handling a higher volume of traffic, demanding a greater system investment compared to Push integrations.
 
-## Push Integration ➡️
+## Push Integration
 
 ### What is a Push Integration?
 
@@ -54,7 +54,7 @@ In Push integrations, static content is generated and stored within Travelgate's
 
 ### Types of Push Integrations
 
-#### 1. Push Standard⭐
+#### 1. Push Standard
 
 In the Push Standard model, all availability, rates, and booking requests are managed through Travelgate’s internal database. The Buyer receives pre-loaded availability and pricing information, with no need for real-time queries to the Seller.
 
@@ -68,7 +68,7 @@ In the Push Standard model, all availability, rates, and booking requests are ma
     - Availability updates are not in real-time; Sellers communicate changes only when products are sold.
     - Requires more development time compared to Pull integrations.
 
-#### 2. Push Hybrid⭐
+#### 2. Push Hybrid
 
 The Push Hybrid model is similar to the Push Standard but with one key difference: **it only uses the Inventory system up to the availability stage**. After that, all remaining booking flow requests function like a Pull connection, meaning Travelgate sends queries directly to the provider for real-time responses.
 

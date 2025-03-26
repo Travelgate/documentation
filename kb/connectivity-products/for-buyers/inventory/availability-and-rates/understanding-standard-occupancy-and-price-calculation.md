@@ -4,10 +4,10 @@ sidebar_position: 3
 
 # Standard Occupancy and Price Calculation in Inventory
 
-### What does Standard Occupancy mean?💡
+### What does Standard Occupancy mean?
 The Standard Occupancy is the **standard number of adult paxes of the room**.
 
-### How can I calculate prices according to the Standard Occupancy?💡
+### How can I calculate prices according to the Standard Occupancy?
 - **Case 1:**
 
 	For a Standard Occupancy=2 and the following product loaded:

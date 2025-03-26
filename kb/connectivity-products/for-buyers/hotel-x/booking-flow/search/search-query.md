@@ -19,7 +19,7 @@ The booking flow consists of 3 sequential methods necessary to book a hotel room
 
 Our Hotel-X Pull Buyers API offers a range of features, including the flexibility to choose between **Single Mode** and **Multimode** searches.
 
-### Single Mode Search 🌟
+### Single Mode Search
 
 * **What does Single Mode mean?**  
 Single Mode allows Partners to search one Seller at a time. **Multiple accesses from the same Seller can be included in a single search, provided that they share the same context**. This is the default search mode in Hotel-X.
@@ -32,7 +32,7 @@ Single Mode allows Partners to search one Seller at a time. **Multiple accesses 
 You should use the [Supplier context](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials) in your Search requests unless you have previously uploaded your [mapping files to our SFTP](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping).
 :::
 
-### Multimode Search 🚀
+### Multimode Search
 
 * **What does Multimode mean?**  
 Multimode enables Partners to search multiple Sellers or accesses with different contexts simultaneously within a single request. This includes querying **different Sellers or multiple accesses from the same Seller, even if their contexts vary**.

@@ -3,7 +3,7 @@ sidebar_position: 2
 ---
 
 
-# About Our Discord Server
+# Our Discord Server
 
 ### How to Join Travelgate on Discord
 

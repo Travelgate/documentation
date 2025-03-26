@@ -62,7 +62,9 @@ Legacy Pull Buyers API requests include two types of timeout tags:
    - Specifies the timeout limit for requests sent to the Supplier.  
    - The HUB timeout should always be at least **300 ms higher** than the Supplier timeout to allow enough time for parsing the Supplier's response.
 
-   ![timeouts_updated](https://storage.travelgate.com/kbase/timeouts_updated.jpg)
+:::info
+For more information and examples of timeout settings in the Legacy Pull Buyers API, click [here](/docs/apis/for-buyers/legacy-pull-buyers-api/booking-flow/avail).
+:::
 
 ### What Happens If My System Discards Requests Before the Travelgate Timeout Expires?
 If your system discards requests earlier than the timeout set in Travelgate, our system will continue processing the request until the full timeout period is reached. Any responses received within this period will be returned, even if your system has already discarded them.

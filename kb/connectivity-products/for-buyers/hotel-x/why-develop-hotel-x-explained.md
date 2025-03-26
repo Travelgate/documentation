@@ -10,7 +10,7 @@ sidebar_position: 2
 
 _Connecting new Sellers has never been easier—no additional development, no maintenance._
 
-### What Makes Hotel-X Different? 🚀
+### What Makes Hotel-X Different?
 
 The Hotel-X API **aggregates results** from multiple Sellers. Whether you prefer aggregation at the hotel level, at the hotel and room type level, or even at the hotel, room type, and rate plan level—or if you choose not to aggregate at all—Hotel-X adapts to your business needs. 
 
@@ -20,7 +20,7 @@ Enhance your Hotel-X experience by incorporating [Plugins](/docs/apis/for-buyers
 Hotel-X is the industry’s **first non-opinionated API**, rapidly becoming the new standard in travel connectivity.
 :::
 
-### Key Benefits and Features ✔️
+### Key Benefits and Features
 
 Some of the standout benefits of Hotel-X include:
 
@@ -35,7 +35,7 @@ Some of the standout benefits of Hotel-X include:
 - **Configuration Storage:** Hotel-X stores all configurations as access points, simplifying maintenance and reducing costs.
 - **Request Validation:** Hotel-X automatically detects and prevents invalid requests (e.g., exceeding the number of guests or nights supported by the Seller).
 
-### What Do Our Partners Say About Hotel-X? ⭐
+### What Do Our Partners Say About Hotel-X?
 
 - **70%** of our Partners reported that Hotel-X development took less time than expected.
 - **85%** of our Partners found the API development process easy.

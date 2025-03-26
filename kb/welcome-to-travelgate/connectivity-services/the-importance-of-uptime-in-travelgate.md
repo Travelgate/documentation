@@ -10,7 +10,7 @@ In the competitive B2B travel industry, uninterrupted service is not a luxury—
 
 At Travelgate, we understand this need and have positioned ourselves as an indispensable traveltech ally.
 
-### Building Trust with Superior Infrastructure 🛠️
+### Building Trust with Superior Infrastructure
 
 When businesses partner with Travelgate, they aren't just accessing a service; they're forming a strategic alliance that ensures:
 
@@ -19,7 +19,7 @@ When businesses partner with Travelgate, they aren't just accessing a service; t
 - **Efficient Data Management**: In today's digital world, data is the cornerstone of any operation. Travelgate excels in data processing, providing businesses with seamless access to critical information, improving efficiency, and enabling data-driven decision-making.
 - **Transparent Traffic Management**: We prioritize our business partners' needs by accommodating all Buyer traffic. We encourage open communication to align requirements and ensure optimal connectivity for every Seller.
 
-### The B2B Advantage of Travelgate ⭐
+### The B2B Advantage of Travelgate
 
 In the vast landscape of B2B travel solutions, Travelgate stands out for its **reliability**. Our unwavering commitment to uptime reflects our deep understanding of business imperatives: steadfast reliability, unparalleled resilience, and a proactive vision.
 

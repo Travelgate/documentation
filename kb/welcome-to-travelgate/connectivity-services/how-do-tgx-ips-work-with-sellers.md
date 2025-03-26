@@ -13,7 +13,7 @@ When you partner with Travelgate as a Seller, the requests we send to your syste
 
 If you do not currently filter by IP but would like traffic to come from fixed addresses, contact our Customer Support team. We’ll assess your requirements and explore possible solutions.
 
-### Fixed IP List for Hotel Suppliers ☑️
+### Fixed IP List for Hotel Suppliers
 
 Below is the current list of IP addresses that Hotel Suppliers should allow (Updated on 16/12/2024):
 
@@ -54,7 +54,7 @@ Below is the current list of IP addresses that Hotel Suppliers should allow (Upd
 
 Some IP addresses are provided as ranges, such as `172.98.36.0/27`. These ranges encompass multiple IP addresses. If you're unfamiliar with how IP ranges work, refer to this [technical explanation](https://www.cloudflare.com/learning/network-layer/what-is-an-ip-address/).
 
-### Fixed IP List for Inventory Push 🏨
+### Fixed IP List for Inventory Push
 
 Please add **only** these IPs (Updated on 29/10/2024):
 
@@ -71,7 +71,7 @@ Please add **only** these IPs (Updated on 29/10/2024):
 | 52.148.208.57          |  
 | 108.143.13.154         |
 
-### Fixed IP List as a Channel-X Buyer 🚀
+### Fixed IP List as a Channel-X Buyer
 Please add **only** these IPs (Updated on 03/10/2024):
 
 | **IP Address**         |    
@@ -83,7 +83,7 @@ Please add **only** these IPs (Updated on 03/10/2024):
 | 79.98.220.55           | 
 | 108.143.13.154         |
 
-### Fixed IP List as a Payment/VCC Supplier 📑
+### Fixed IP List as a Payment/VCC Supplier
 Please add **only** these IPs (Updated on 29/08/2024):
 
 | **IP Address**         |  
@@ -95,5 +95,5 @@ Please add **only** these IPs (Updated on 29/08/2024):
 | 104.40.178.121         |  
 | 108.142.130.32         |
 
-## Does Travelgate Need to Whitelist My IPs? 💡
+## Does Travelgate Need to Whitelist My IPs?
 At Travelgate, we ensure that all our IPs are whitelisted in your system. However, our system **does not filter by IP**, meaning there's no need for us to whitelist your IPs. If you experience connectivity issues, they are unlikely to be caused by IP filtering.

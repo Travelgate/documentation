@@ -5,7 +5,7 @@ sidebar_position: 3
 
 # Business Rules
 
-## Which Business Rules Can Enhance My Search Requests? 💡
+## Which Business Rules Can Enhance My Search Requests?
 
 Discover how specific business rules can strategically optimize your search requests, ensuring efficient and targeted results. Below are key rules designed to refine and tailor your searches effectively:
 
@@ -18,7 +18,7 @@ Discover how specific business rules can strategically optimize your search requ
 The optionsQuota refers to the **maximum number of options per meal plan (board)** returned in a Search response. The default value is **50**, but it can be customized. The allowed values range from 1 to 300.
 :::
 
-## How Can I Set Up Business Rules in My Requests? 🛠️
+## How Can I Set Up Business Rules in My Requests?
 
 To configure Business Rules in your Search Query, simply include the **BusinessRulesInput** in your request settings:
 
@@ -28,7 +28,7 @@ To configure Business Rules in your Search Query, simply include the **BusinessR
 You can also configure your own Business Rules by implementing our [Aggregation plugin](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/overview). More details on Business Rules can be found in our [API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart).  
 :::
 
-## Additional Considerations on Business Rules ✔️
+## Additional Considerations on Business Rules
 
 When applying business rules, options are filtered using a limited combination of room types:
 

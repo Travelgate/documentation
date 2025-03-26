@@ -25,7 +25,7 @@ For Buyers using the **Legacy Pull Buyers API**, managing credential deactivatio
 ### **Steps to Disconnect a Legacy API Connection**  
 
 1. **Permanently Deactivating a Connection**:  
-   - Submit a **Case Request** via the Travelgate Portal.  
+   - Submit a **Case Request** via the Travelgate Platform.  
    - The deactivation will occur at the **connection level**, not just for specific credentials.  
 
 2. **Deactivating Specific Credentials**:  

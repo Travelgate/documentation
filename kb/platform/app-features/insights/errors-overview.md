@@ -17,7 +17,7 @@ Additionally, users can **adjust the date range (last month / last 7 days), appl
 
 ## How Can I Access the Errors Overview Report?
 
-To access the report, log in to our portal, go to **Insights**, and select [“Errors Overview”](https://app.travelgate.com/insights/errors-overview).
+To access the report, log in to our Platform, go to **Insights**, and select [“Errors Overview”](https://app.travelgate.com/insights/errors-overview).
 
 ![errors_overview_1](https://storage.travelgate.com/kbase/errors_overview_1.jpg)
 

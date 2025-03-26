@@ -42,8 +42,8 @@ For more details on auditing Seller transactions, see [this article](/kb/app-fea
 Use the `auditData` parameter in the **Hotel-X Pull Buyers API** or `registerTransactions` in the **Legacy Pull Buyers API**. Detailed instructions can be found [here](/kb/app-features/monitoring-tools/logging/audit-supplier-transactions).
 :::
 
-### Why Do I Receive No Availability Through Travelgate When the Supplier's Portal Returns Results?
-Travelgate displays results based on the Seller’s integration. A Supplier may return results in their own portal but not through Travelgate. If this happens, **contact the Supplier** directly to ensure product information for your credentials is correctly updated.
+### Why Do I Receive No Availability Through Travelgate When the Supplier's Platform Returns Results?
+Travelgate displays results based on the Seller’s integration. A Supplier may return results in their own Platform but not through Travelgate. If this happens, **contact the Supplier** directly to ensure product information for your credentials is correctly updated.
 
 ### How to Handle 204 Errors in Quote Responses
 

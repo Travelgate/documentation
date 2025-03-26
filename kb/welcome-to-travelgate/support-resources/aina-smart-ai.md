@@ -8,7 +8,7 @@ sidebar_position: 3
 
 At Travelgate, we understand the importance of efficient support. That's why we're excited to introduce **AIna**, our multilingual AI assistant powered by Large Language Models (LLMs). AIna is designed to answer your Travelgate-related questions using our Official Documentation.
 
-You can easily interact with AIna from any section of our portal with just one click. Available 24/7, AIna is here to assist you with common inquiries, usage tips, and App information.
+You can easily interact with AIna from any section of our Platform with just one click. Available 24/7, AIna is here to assist you with common inquiries, usage tips, and App information.
 
 **Our [portal](https://app.travelgate.com/):**
 

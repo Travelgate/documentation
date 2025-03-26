@@ -17,7 +17,7 @@ Our goal has always been to make connecting with a Partner easier and faster.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/yb8FeFRsQ1A?si=P0QkdwBiOQIxgwuo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-1. **Log into** [our Portal](https://www.travelgate.com/).
+1. **Log into** [our Platform](https://www.travelgate.com/).
 
 2. **Navigate to "Connections" > "My Connections"**. Ensure you're logged into the correct Organization and Partner profile (Buyer or Seller). You can find this information in the top right corner of your screen.
 

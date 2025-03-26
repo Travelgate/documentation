@@ -13,7 +13,7 @@ Monitoring your system's performance is crucial to ensuring smooth operations. T
 - **Traffic Peak**: Triggers an alert when traffic significantly increases or decreases compared to the configured levels.
 
 ## How Can I Use Alerts?
-1. Log into [our Portal](https://www.travelgate.com/).
+1. Log into [our Platform](https://www.travelgate.com/).
 2. Navigate to **Monitoring > [Alerts](https://app.travelgate.com/alerts)**.
 3. Access the **Alerts Dashboard**, where you can view all configured alerts for your organization and their details:
    - **ID**: Unique identifier for the alert.

@@ -10,7 +10,7 @@ In the **Connections Content** section, you can easily check and force updates f
 
 ## How Can I Check My Connections Content?
 
-1. **Log into** [our Portal](https://www.travelgate.com/).
+1. **Log into** [our Platform](https://www.travelgate.com/).
 
     ![connections_content_step2_1](https://storage.travelgate.com/kbase/connections_content_step2_1.jpg)
 

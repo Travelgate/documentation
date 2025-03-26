@@ -10,7 +10,7 @@ The **B2B Virtual Agency** is a web-based tool powered by the **Hotel-X Pull Buy
 
 Follow these steps to search for availability and make a booking:
 
-1. **Log in** to [our Portal](https://www.travelgate.com/).
+1. **Log in** to [our Platform](https://www.travelgate.com/).
 2. Navigate to **Solutions > B2B Virtual Agency**.
 3. The search form will appear. Enter the following details:
    - **Connection, supplier, and access**

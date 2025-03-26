@@ -8,7 +8,7 @@ sidebar_position: 3
 
 To check or manage existing reservations, follow these steps:
 
-1. **Log in** to [our Portal](https://www.travelgate.com/).
+1. **Log in** to [our Platform](https://www.travelgate.com/).
 2. Navigate to **Solutions > B2B Virtual Agency**.
 3. Go to the **My Bookings** tab.
 4. Apply search filters based on:

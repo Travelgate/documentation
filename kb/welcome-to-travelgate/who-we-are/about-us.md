@@ -37,7 +37,7 @@ Here’s what you can expect:
 - **Smart Reports**: Make data-driven decisions with detailed, customizable insights.
 - **Account Management**: Easily update your connection settings, credentials, and preferences.
 - **AI-Powered Assistant**: Get instant help powered by our extensive documentation, available right when you need it.
-- **Integrated Support Portal**: Reach out to our team or explore help articles—without ever leaving the platform.
+- **Integrated Support Platform**: Reach out to our team or explore help articles—without ever leaving the platform.
 
 With everything centralized in one place, managing your Travelgate experience has never been easier. Just log in and start exploring.
 
@@ -52,11 +52,11 @@ Connectivity is crucial for any travel business, and partnering with the right c
 
 ### Who can we connect with? 🚀
 
-Travelgate boasts **one of the largest networks of partners worldwide.** Explore our [portal](https://www.travelgate.com/) to view the full list of partners.
+Travelgate boasts **one of the largest networks of partners worldwide.** Explore our [Platform](https://www.travelgate.com/) to view the full list of partners.
 
 ## How can I become a Travelgate partner? 🌟
 
-If you haven't partnered with Travelgate yet, getting started is easy. Simply visit our [Portal](https://www.travelgate.com/), click "Contact Travelgate," and fill out the form—it takes just two minutes! Our team will get in touch with you promptly.
+If you haven't partnered with Travelgate yet, getting started is easy. Simply visit our [Platform](https://www.travelgate.com/), click "Contact Travelgate," and fill out the form—it takes just two minutes! Our team will get in touch with you promptly.
 
 ![contact-form](https://storage.travelgate.com/kbase/contact-form.jpg)
 

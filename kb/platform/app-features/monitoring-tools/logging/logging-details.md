@@ -14,7 +14,7 @@ By leveraging Logging, you can gain valuable insights into your connection activ
 
 ## How Can I Use Logging?
 
-1. Log into [our Portal](https://www.travelgate.com/).
+1. Log into [our Platform](https://www.travelgate.com/).
 2. Navigate to Monitoring (in the top menu) and select [Logging](https://app.travelgate.com/logging).
 3. Choose your search method: You can search by **connection, reference, or session ID**.
 4. Apply filters to refine your search:

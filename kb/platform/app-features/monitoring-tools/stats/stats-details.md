@@ -14,7 +14,7 @@ Let [Stats](https://app.travelgate.com/apps/stats) help you make data-driven dec
 
 ## How Can I Use Stats?
 
-To use Stats, simply log in to [our Portal](https://www.travelgate.com/), click on **Monitoring** in the top menu, and select **Stats**. By default, Stats will display your organization’s statistics for the past hour. However, you can easily adjust the time range using the selector in the top right corner.
+To use Stats, simply log in to [our Platform](https://www.travelgate.com/), click on **Monitoring** in the top menu, and select **Stats**. By default, Stats will display your organization’s statistics for the past hour. However, you can easily adjust the time range using the selector in the top right corner.
 
 **Time Range and Time Zone:**
 

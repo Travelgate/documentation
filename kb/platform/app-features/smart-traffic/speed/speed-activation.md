@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Speed Activation
 
-Once logged into [our Portal](https://www.travelgate.com/), navigate to **Smart Traffic > Speed**. The **Speed Dashboard** displays all active Speed accesses and those optimized previously.
+Once logged into [our Platform](https://www.travelgate.com/), navigate to **Smart Traffic > Speed**. The **Speed Dashboard** displays all active Speed accesses and those optimized previously.
 
 ![speed_1](https://storage.travelgate.com/kbase/speed_1.jpg)
 

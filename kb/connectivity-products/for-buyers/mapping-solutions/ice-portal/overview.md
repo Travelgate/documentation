@@ -15,13 +15,13 @@ For Buyers seeking fresh, high-quality content, IcePortal offers access to a vas
 Getting started is quick and simple! Just follow these steps:
 
 1. **Register for IcePortal** through this [link](https://share.hsforms.com/110mNHlCKQuitX6Iw8UmhsQ1ojx4). Our Sales team will assist you with the commercial agreement.
-2. **Request the connection** through the Travelgate Portal once the agreement is finalized. This process is as easy as any other activation.
+2. **Request the connection** through the Travelgate Platform once the agreement is finalized. This process is as easy as any other activation.
 
 For a detailed step-by-step guide, check out our [Quick Guide to Auto-Activations](/kb/app-features/connections/my-connections/guick-guide-to-auto-activations).
 
 ### Activating IcePortal in Travelgate
 
-1. **Log into the Travelgate Portal**, click on **New Connection**, and select **IcePortal** from the list of available options.
+1. **Log into the Travelgate Platform**, click on **New Connection**, and select **IcePortal** from the list of available options.
 
    ![iceportal_1](https://storage.travelgate.com/kbase/iceportal_1.jpg)
 

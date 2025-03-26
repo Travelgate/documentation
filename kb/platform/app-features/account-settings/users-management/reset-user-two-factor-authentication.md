@@ -6,7 +6,7 @@ sidebar_position: 5
 
 If a user needs to reset their 2FA (Two-Factor Authentication) method, follow these steps:
 
-1. **Log in** to the [Travelgate portal](https://www.travelgate.com/).
+1. **Log in** to the [Travelgate Platform](https://www.travelgate.com/).
 2. Click on **Settings**.
 3. Navigate to **Users Management** to view the list of users in your Organization.
 4. **Filter** the user you want to reset 2FA for.

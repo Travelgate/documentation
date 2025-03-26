@@ -8,7 +8,7 @@ Our [Partner Network Directory](https://app.travelgate.com/network/partners) is 
 
 ## How Can I Set Up My Company Profile? 
 
-1. **Log into the [Travelgate Portal](https://www.travelgate.com/).**
+1. **Log into the [Travelgate Platform](https://www.travelgate.com/).**
 2. **Navigate to Settings.**
    - Click on **"Settings"** and select **"Company Profile"**.
    - Alternatively, access your profile directly from **Travelgate Network** by filtering by Company.  

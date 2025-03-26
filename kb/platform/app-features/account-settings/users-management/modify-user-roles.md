@@ -13,7 +13,7 @@ Each user’s role determines what actions they can perform within the Travelgat
 
 If you need to change the roles of users in your Organization, follow these steps:
 
-1. **Log in** to the [Travelgate portal](https://www.travelgate.com/).
+1. **Log in** to the [Travelgate Platform](https://www.travelgate.com/).
 2. Click on **Settings**.
 3. Navigate to **Users Management** to view the list of users.
 4. **Filter** the user whose role you wish to modify.

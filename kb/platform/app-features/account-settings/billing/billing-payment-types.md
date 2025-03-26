@@ -18,7 +18,7 @@ Review these options with your Partner and choose the one that fits best.
 
 ## Requesting a Payment Type Change
 
-You can request a payment type change by navigating to the **Billing** section in the Portal. Under the **Agreements** tab, find the connection for which you want to change the payment type and submit your request.
+You can request a payment type change by navigating to the **Billing** section in the Platform. Under the **Agreements** tab, find the connection for which you want to change the payment type and submit your request.
 
 :::info
 - If you want to switch to **FREE** (where your Partner assumes full payment responsibility), your Partner will need to accept the request. You can cancel the request if necessary.

@@ -11,7 +11,7 @@ Welcome to the "Mapping" section in Travelgate's Marketplace! This tool is desig
 
 In API Settings, you have the power to view and tweak your Hotel-X Pull Buyers API account settings effortlessly. Here's a simple guide to get you started:
 
-1. Begin by logging into [our Portal](https://www.travelgate.com/).
+1. Begin by logging into [our Platform](https://www.travelgate.com/).
 
 2. Navigate to the "Connections" > "Mapping" section.
 

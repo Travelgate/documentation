@@ -10,7 +10,7 @@ Welcome to the **My Connections** section! This guide will help you track, activ
 
 To view and manage your connections, follow these steps:  
 
-1. **Log in** to the [Travelgate portal](https://www.travelgate.com/).  
+1. **Log in** to the [Travelgate Platform](https://www.travelgate.com/).  
 2. Ensure you are browsing as either a **Buyer** or a **Seller**, depending on your Partner type.  
 3. Click **Connections** in the top menu, then select **My Connections**.  
 

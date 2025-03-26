@@ -8,7 +8,7 @@ At Travelgate, we provide easy-to-use tools for managing your agreements, tracki
 
 ## How to Access the Billing Section
 
-1. Log into the [Travelgate Portal](https://www.travelgate.com/).
+1. Log into the [Travelgate Platform](https://www.travelgate.com/).
 2. Click on your profile initials in the top right corner and select **Billing**.
 3. Once in the Billing section, you can explore the following tabs:
    - **Agreements**

@@ -25,7 +25,7 @@ A unique security code, known as a **One-Time Password (OTP)**, is generated eac
 
 ## How to Set Up Two-Factor Authentication
 
-1. **Log into our [Portal](https://www.travelgate.com/).**
+1. **Log into our [Platform](https://www.travelgate.com/).**
 
    ![2FA_1](https://storage.travelgate.com/kbase/2FA_1.jpg)
 

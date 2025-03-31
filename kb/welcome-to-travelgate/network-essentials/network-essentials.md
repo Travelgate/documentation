@@ -24,7 +24,7 @@ Looking to expand further?
 
 You can access your recommended connections via your [Dashboard](https://app.travelgate.com/dashboard) and the [Network's Partner List](https://app.travelgate.com/network/partners). Once you find a Partner you're interested in, simply arrange your own contract and request their activation. It’s that easy!
 
-![network_updated_1](https://storage.travelgate.com/kbase/network_updated_1.jpg)
+![tg_network_1](https://storage.travelgate.com/kbase/tg_network_1.jpg)
 
 ### Discover Ideal Partners Easily with Our Network Upgrade!
 

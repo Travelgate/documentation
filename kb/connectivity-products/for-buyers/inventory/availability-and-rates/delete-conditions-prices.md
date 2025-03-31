@@ -32,7 +32,7 @@ You can delete availability conditions for a specific date range, including:
 - **Minimum or maximum length of stay on arrival**
 - **Minimum or maximum release periods**
 
-   ![how_to_delete_conditions_2](https://storage.travelgate.com/kbase/how_to_delete_conditions_2.jpg)
+   ![tg_delete_availability](https://storage.travelgate.com/kbase/tg_delete_availability.jpg)
 
 ## Deleting Prices 
 
@@ -44,7 +44,7 @@ You can delete **all types of pricing** (by date range), including:
 
 **Note:** Meal plan supplements will be removed for **all passenger types** (adults, children, and babies).
 
-   ![how_to_delete_conditions_3](https://storage.travelgate.com/kbase/how_to_delete_conditions_3.jpg)
+   ![tg_delete_price](https://storage.travelgate.com/kbase/tg_delete_price.jpg)
 
 :::info **Learn More**
 Explore our full **[Documentation](/docs/apps/inventory/extranet/overview)** to understand how the **Inventory Extranet** works and maximize its functionalities.

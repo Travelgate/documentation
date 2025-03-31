@@ -58,7 +58,7 @@ Travelgate boasts **one of the largest networks of partners worldwide.** Explore
 
 If you haven't partnered with Travelgate yet, getting started is easy. Simply visit our [Platform](https://www.travelgate.com/), click "Contact Travelgate," and fill out the form—it takes just two minutes! Our team will get in touch with you promptly.
 
-![contact-form](https://storage.travelgate.com/kbase/contact-form.jpg)
+![tg_about_us](https://storage.travelgate.com/kbase/tg_about_us.jpg)
 
 **Thank you for choosing Travelgate as your trusted travel partner!**
 

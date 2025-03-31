@@ -24,7 +24,7 @@ Monitoring your system's performance is crucial to ensuring smooth operations. T
    - **Active**: Allows activation or deactivation of an alert without deletion.
    - **Actions**: Provides options to edit or delete an alert.
 
-![alerts-real-time](https://storage.travelgate.com/kbase/alerts-real-time.jpg)
+![tg_alerts](https://storage.travelgate.com/kbase/tg_alerts.jpg)
 
 ## How Can I Create a New Alert?
 To create and configure a new alert, click on the **'New Alert'** button. A pop-up form will appear, allowing you to set up your alert in three simple steps:

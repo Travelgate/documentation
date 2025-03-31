@@ -25,23 +25,23 @@ Our goal has always been to make connecting with a Partner easier and faster.
 
 3. **Click "Create a New Connection"** to begin the process.
     - **Step 1 (Partner)**: Select the Partner you want to connect with. Some Sellers may offer multiple connection types ([Pull or Push](/kb/welcome-to-travelgate/connectivity-services/pull-and-push-connectivity)), so choose the one that fits your needs.
-        <img src="https://storage.travelgate.com/kbase/autoconnections_step3_1.png" alt="quickguide_to_autoconnections_step3_1" width="500" height="300"/>
+        <img src="https://storage.travelgate.com/kbase/autoconnections_step3_1.png" alt="quickguide_to_autoconnections_step3_1" width="500" height=""/>
   
     - **Step 2 (Access Configuration)**: Assign a distinctive name for your access (e.g., B2B or B2C). Indicate whether it’s for testing or live use. Then, complete the form with the credentials provided by the Seller.
 
         *Remember*: Each Seller may require different information, depending on their system’s specifications. Make sure your credentials are active and fully functional before proceeding, as using inactive credentials can cause delays.
-        <img src="https://storage.travelgate.com/kbase/autoconnections_step3_2.png" alt="quickguide_to_autoconnections_step3_2" width="500" height="300"/>
+        <img src="https://storage.travelgate.com/kbase/autoconnections_step3_2.png" alt="quickguide_to_autoconnections_step3_2" width="500" height=""/>
 
     - **Step 3 (Notification Setup)**: Choose where you'd like to receive notifications once the activation is processed.
 
-        <img src="https://storage.travelgate.com/kbase/autoconnections_step3_3.png" alt="autoconnections_step3_3" width="500" height="300"/>
+        <img src="https://storage.travelgate.com/kbase/autoconnections_step3_3.png" alt="autoconnections_step3_3" width="500" height=""/>
 
     - **Step 4 (Review and Confirm)**: Double-check your information before starting the auto-activation process. If you and your Partner have a Commercial Agreement for 2023, the form will show available payment types:
         - **FREE**: No cost to you. Your Partner will cover the connectivity fee.
         - **STD**: Standard booking fees apply for both you and your Partner.
         - **SUP**: Both standard fees and supplements apply to you, but it's free for your Partner.
 
-        <img src="https://storage.travelgate.com/kbase/autoconnections_step3_4.png" alt="autoconnections_step3_4" width="500" height="300"/>
+        <img src="https://storage.travelgate.com/kbase/autoconnections_step3_4.png" alt="autoconnections_step3_4" width="500" height=""/>
 
     Once complete, you'll receive an email with all the details to activate the connection. You can also monitor the activation status in the "My Connections" section.
 

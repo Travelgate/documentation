@@ -16,6 +16,8 @@ The **Inventory system** operates with a **master hotel database**, where we sto
 
 4. **Select** the desired property. The hotel will only appear as a suggestion in the autocomplete field if it is not already added to the client-provider relationship.
 
+   ![tg_add_hotel](https://storage.travelgate.com/kbase/tg_add_hotel.jpg)
+
 ## Adding a New Hotel to Travelgate’s Inventory Extranet
 
 :::warning **Important:**

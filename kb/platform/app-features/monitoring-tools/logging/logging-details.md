@@ -24,7 +24,7 @@ By leveraging Logging, you can gain valuable insights into your connection activ
    - Status/Error code: Select specific errors to filter results.
 5. Click on "Search" to retrieve the logs.
 
-![new_logging_1](https://storage.travelgate.com/kbase/new_logging_1.jpg)
+![tg_logging](https://storage.travelgate.com/kbase/tg_logging.jpg)
 
 ## What Information Does Logging Provide?
 

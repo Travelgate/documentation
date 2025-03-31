@@ -26,7 +26,7 @@ To configure user roles, follow these steps:
 
 2. Click on **Users**.
    
-   ![inventory_users-management1](https://storage.travelgate.com/docs/inventory_users-management1.png)
+   ![tg_manage_users](https://storage.travelgate.com/kbase/tg_manage_users.jpg)
 
 3. Click on **+ Add New User** (located on the right side of the screen). A pop-up window will appear where you can enter the following details:
    - **Username** – Create a unique username.

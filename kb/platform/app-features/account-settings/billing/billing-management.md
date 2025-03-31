@@ -47,13 +47,15 @@ If both you and your Partner are under the **Commercial Agreement 2023**, you ca
 - **STD**: Standard booking fee shared between you and your Partner.
 - **SUP**: Both standard booking fees and a supplement apply to you, while the connection is free for your Partner.
 
+![tg_paymenttype_change](https://storage.travelgate.com/kbase/tg_paymenttype_change.jpg)
+
 If you want to switch to a **FREE** arrangement (where your Partner takes on the payment responsibility), your Partner must confirm the change. You can cancel the request if needed.
 
 Changes between **Free to Standard** or **Standard to Supplement** payment types do not require Partner confirmation, as the cost is assumed by the parties involved. These changes are processed automatically.
 
 Additionally, you can access a **historical record** of changes made in each agreement.
 
-![historical_record](https://storage.travelgate.com/kbase/billing_historical_record_6.jpg)
+![tg_historical_record](https://storage.travelgate.com/kbase/tg_historical_record.jpg)
 
 :::info
 - Remember, your Partner must log in to their Profile to accept the payment change request. They will receive a notification in the bell icon located on the right side of the settings menu.

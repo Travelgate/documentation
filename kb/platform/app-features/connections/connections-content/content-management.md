@@ -12,13 +12,13 @@ In the **Connections Content** section, you can easily check and force updates f
 
 1. **Log into** [our Platform](https://www.travelgate.com/).
 
-    ![connections_content_step2_1](https://storage.travelgate.com/kbase/connections_content_step2_1.jpg)
+    ![tg_connections_content_1](https://storage.travelgate.com/kbase/tg_connections_content_1.jpg)
 
 2. **Click on** "Connections" > **Connections Content**  
 
-    ![connections_content_2](https://storage.travelgate.com/kbase/connections_content_2.jpg)
+    ![tg_connections_content_2](https://storage.travelgate.com/kbase/tg_connections_content_2.jpg)
 
-    ![connections_content_3](https://storage.travelgate.com/kbase/connections_content_3.jpg)
+    ![tg_connections_content_3](https://storage.travelgate.com/kbase/tg_connections_content_3.jpg)
 
 3. Review the following details:
     * Portfolio information at credentials/access level.
@@ -40,13 +40,13 @@ In the **Connections Content** section, you can easily check and force updates f
 2. Look for the **"Download CSV"** option next to the **Get Content** button on the screen.
 3. **Click on "Download CSV"**.
 
-    ![connections_content_4](https://storage.travelgate.com/kbase/connections_content_4.jpg)
+    ![tg_download_portfolio1](https://storage.travelgate.com/kbase/tg_download_portfolio1.jpg)
 
 4. Wait for a confirmation message that the CSV is being processed.
 5. Monitor the bell notification in the top-right corner for updates on the CSV status.
 6. Once processed, the file will be ready for download.
 
-    ![connections_content_5](https://storage.travelgate.com/kbase/connections_content_5.jpg)
+    ![tg_download_portfolio2](https://storage.travelgate.com/kbase/tg_download_portfolio2.jpg)
 
 ## How Can I Use the "Force Update Now" Functionality?
 
@@ -56,7 +56,7 @@ To force an update of your static content, follow these steps:
 2. Filter a specific connection and access, ensuring you are browsing as a Seller or Buyer.
 3. **Click on 'Force Update Now'** to trigger the content update. The time taken will depend on the content size and processing time.
 
-    ![force_portfolio_update_2](https://storage.travelgate.com/kbase/force_portfolio_update_2.jpg)
+    ![tg_force_update](https://storage.travelgate.com/kbase/tg_force_update.jpg)
 
 :::info Force Content Updates
 When performing a "Force Content Now" update to refresh a Seller's portfolio, keep in mind that the duration of the update depends on the **size of the content**. The update is processed through a **queue system** and will begin once it reaches its turn. This could take anywhere from a few minutes to 72 hours.

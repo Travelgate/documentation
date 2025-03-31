@@ -40,7 +40,7 @@ The access type (live or test) is based on the credentials agreed upon by the Bu
   - **Yes**: The access is active and operational.  
   - **No**: The access is inactive, meaning no further Hotel-X requests will be processed. **Note**: Deactivating an access may take time to fully propagate through the system.  
 
-   ![myconnections_aug_2](https://storage.travelgate.com/kbase/myconnections_aug_2.jpg)  
+   ![tg_filter_results](https://storage.travelgate.com/kbase/tg_filter_results.jpg)  
 
 ### **Additional Access Information**  
 - **Hotel-X Access Code**: Unique identifier for the access.  
@@ -52,7 +52,7 @@ The access type (live or test) is based on the credentials agreed upon by the Bu
 - **Context Code**: Check the [content codes](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials#context%EF%B8%8F) used.  
 - **Buyer Integration Type**: If you're a Seller, you can check if your Buyer is integrated via the **Hotel-X API** or the **Legacy Pull Buyers API**. If using **Hotel-X**, a label will be displayed.  
 
-   ![buyerintegrationtype_myconnections](https://storage.travelgate.com/kbase/buyerintegrationtype_myconnections.jpg)  
+   ![tg_hotelx_buyers](https://storage.travelgate.com/kbase/tg_hotelx_buyers.jpg)  
 
 :::tip  
 Still using our Legacy Pull Buyers API? **Upgrade to [Hotel-X API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart)** to access enhanced features!  

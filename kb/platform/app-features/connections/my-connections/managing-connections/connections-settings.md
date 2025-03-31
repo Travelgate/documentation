@@ -16,7 +16,7 @@ Within **My Connections**, you can perform several actions at the access level:
 - **View Logs**: Track historical changes made to an access.  
 - **Get Form Data**: Retrieve configuration details in **JSON or XML format** for storage or system integration. **Note**: Only users with **ADMIN permissions** can view stored passwords.  
 
-   ![myconnections_aug_3](https://storage.travelgate.com/kbase/myconnections_aug_3.jpg)  
+   ![tg_access_actions](https://storage.travelgate.com/kbase/tg_access_actions.jpg)  
 
 ## Handling Connections via the Legacy Pull Buyers API  
 

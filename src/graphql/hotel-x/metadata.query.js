@@ -44,6 +44,10 @@ export const metadataQuery =
 								reviewDate
 								value
 							}
+							maxRelease{
+								reviewDate
+								value
+							}
 							minimumStay {
 								reviewDate
 								value

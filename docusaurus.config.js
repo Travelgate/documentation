@@ -61,7 +61,7 @@ const config = {
       'data-project-name': 'Travelgate',
       'data-project-color': '#0B59DE',
       'data-project-logo': '/img/ask_ia.svg',
-      'data-modal-disclaimer': 'AIna, Travelgate´s multilingual AI assistant, provides quick answers and troubleshooting guidance based on our official documentation. For the most precise and helpful response, please describe your inquiry clearly and in detail. While we strive for thoroughness, AI-generated responses may not always be perfect. They are provided as is, and Travelgate disclaims any liability for inaccuracies. Please use discretion.',
+      'data-modal-disclaimer': "AIna, Travelgate's multilingual AI assistant, provides quick answers and troubleshooting guidance based on our official documentation. For the most precise and helpful response, please describe your inquiry clearly and in detail. While we strive for thoroughness, AI-generated responses may not always be perfect. They are provided as is, and Travelgate disclaims any liability for inaccuracies. Please use discretion.",
       'data-user-analytics-fingerprint-enabled': 'true',
       'data-user-analytics-store-ip': 'true',
       'data-button-text': ' ',

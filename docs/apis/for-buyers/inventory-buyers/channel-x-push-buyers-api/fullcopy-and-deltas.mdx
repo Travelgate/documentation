@@ -18,7 +18,12 @@ After the first Full Copy, when the Seller makes an update, Channel-X will send 
 
 * `New`: It means the element was not added before, you should add the element in your system with the information provided.
 
-* `Delta` (modification): It means the element was created previously but has been edited. The element should already exist in your system, and you should update its information with the new data. You will receive all element information, although not all the information sent may have changed. You can choose to either overwrite all existing data or selectively update the changed aspects.
+* Delta (update): These are **partial updates** provided by the supplier. Travelgate acts as a **bypass**, transparently forwarding only the data that has been loaded by the Channel Manager. This means that the information included in the message reflects **only the elements that were updated**.
+
+For example, if the supplier loads only availability (allotment) without a booking limit, the message will contain only the availability data. Later, if the Channel Manager sends a new update including the booking limit, Travelgate will notify only that specific change — in this case, the booking limit.
+
+It’s important to note that not all elements of the object are included — only those explicitly updated by the supplier.
+
 
 * `Remove`: It means the element has been removed. You should delete the element from your system along with all its dependencies. When deleting an element (hotel, rate, or room), you will only receive the code in the request. In such cases, it's necessary to remove all elements from your system that depend on the one being deleted.
 

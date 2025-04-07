@@ -20,16 +20,15 @@ The response typically includes the following fields:
 - **Texts** – Contains descriptions of the destination.
 - **ClosestDestinations** – Lists nearby destinations.
 - **Parent** – Indicates the parent destination in the hierarchy.
-- **Type** – Specifies whether the destination is a zone, city, or country.
+- **Type** – Specifies whether the destination is a zone or a city.
 
 ## Understanding Destination List Logic
 
 ### How Are Destinations Categorized? 
-When you run a Destinations Query, the Seller's native destination codes are classified into three categories:
+When you run a Destinations Query, the Seller's native destination codes are classified into two categories:
 
 1. **Zone**  
 2. **City**  
-3. **Country**  
 
 ### How Should I Use Zone and City Nodes in the Response? 
 Suppliers structure their Destination Tree using both zone and city nodes. When you request their destination list, the response is categorized to facilitate the mapping process.

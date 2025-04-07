@@ -32,7 +32,8 @@ Our goal has always been to make connecting with a Partner easier and faster.
         *Remember*: Each Seller may require different information, depending on their system’s specifications. Make sure your credentials are active and fully functional before proceeding, as using inactive credentials can cause delays.
         <img src="https://storage.travelgate.com/kbase/autoconnections_step3_2.png" alt="quickguide_to_autoconnections_step3_2" width="500" height=""/>
 
-    - **Step 3 (Notification Setup)**: Choose where you'd like to receive notifications once the activation is processed.
+    - **Step 3 (Notification Setup)**: Provide one or more contact email addresses for the Partner you are connecting with, so they can be notified once the connection is created and ready for use. The Partner contact must be **registered in Travelgate**.  
+    In the 'Other Contacts' field, you can add additional email addresses—such as colleagues or other relevant team members—who should also receive the notifications.
 
         <img src="https://storage.travelgate.com/kbase/autoconnections_step3_3.png" alt="autoconnections_step3_3" width="500" height=""/>
 

@@ -21,6 +21,8 @@ Review these options with your Partner and choose the one that fits best.
 You can request a payment type change by navigating to the **Billing** section in the Platform. Under the **Agreements** tab, find the connection for which you want to change the payment type and submit your request.
 
 :::info
-- If you want to switch to **FREE** (where your Partner assumes full payment responsibility), your Partner will need to accept the request. You can cancel the request if necessary.
-- Changes between **Free** and **Standard**, or **Standard** and **Supplement**, can be processed automatically since the total cost is assumed.
+- Remember, your Partner must log in to their Profile to accept the payment change request. They will receive a notification in the bell icon located on the right side of the settings menu.
+- Any changes to the payment type will apply to all reservations with an entry date starting from the first day of the following calendar month after the notification.
+- For **Commercial Agreement 2023**, you can select the payment type during the [auto-activation process](/kb/platform/app-features/connections/my-connections/guick-guide-to-auto-activations).
+- Payment type changes are only available under the **Commercial Agreement 2023**.
 :::

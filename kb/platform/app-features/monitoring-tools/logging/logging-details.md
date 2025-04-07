@@ -18,13 +18,14 @@ By leveraging Logging, you can gain valuable insights into your connection activ
 2. Navigate to Monitoring (in the top menu) and select [Logging](https://app.travelgate.com/logging).
 3. Choose your search method: You can search by **connection, reference, or session ID**.
 4. Apply filters to refine your search:
-   - Time range (UTC)
-   - Operation type: Search, Quote, Book, Cancel, Other (Booking List/Booking Read)  
+   - Time range.
+   - Access: Filter by Hotel-X Access (by Name or Code). This filter applies only to **Hotel-X connections**.
+   - Operation type: Search, Quote, Book, Cancel, Other (Booking List/Booking Read).  
      - *Note:* The "Search" operation type will only return results if searches have been **[audited first](/kb/app-features/monitoring-tools/logging/audit-searches-functionality)**.
    - Status/Error code: Select specific errors to filter results.
-5. Click on "Search" to retrieve the logs.
+5. Click on "Search logs" to retrieve the logs.
 
-![tg_logging](https://storage.travelgate.com/kbase/tg_logging.jpg)
+![logging_new_1](https://storage.travelgate.com/kbase/logging_new_1.jpg)
 
 ## What Information Does Logging Provide?
 
@@ -39,21 +40,29 @@ When your search returns logs, Logging will display the following details:
 - **Operation type** (Search, Quote, Book, Cancel, Other)
 - **Session ID** (unique identifier for the transaction)
 - **Traffic Type** (Basic, Optimized, Scheduler, Speed)
-- **Actions**: Book Download and Quote Download: Download Quote transactions related to a specific booking flow.
-- **Download All**: Export all logs visible on the screen.
+- **Actions**: Logs available for download include Hotel-X Logs/Legacy Logs, and Connector Logs. For Book transactions, you can directly download the corresponding Quote logs used in that specific booking flow. Additionally, you can download all visible logs on your screen by clicking the 'Download All' button above the table.
 
-![quotedownload_functionality](https://storage.travelgate.com/kbase/quotedownload_functionality.jpg)
+![logging_new_2](https://storage.travelgate.com/kbase/logging_new_2.jpg)
 
 If your search returns a large number of results, use additional filters on the right to refine your search:
-- **Filter by Supplier**
+- **Filter by Client/Supplier**
 - **Filter by Access**
 - **Filter by Duration**
 
-![new_logging_3](https://storage.travelgate.com/kbase/new_logging_3.jpg)
+![logging_new_3](https://storage.travelgate.com/kbase/logging_new_3.jpg)
 
-## Can I Download My Hotel-X Logs Through Logging?
+### Is it possible to download my Hotel-X logs through Logging?
+Yes, you can retrieve Hotel-X logs directly by selecting **'Hotel-X Logs'** under the Download options.
 
-Currently, **Hotel-X logs cannot be retrieved directly through Logging**. We recommend capturing them at the request level on your end if needed. Additionally, ensure that the ["auditTransactions"](/kb/app-features/monitoring-tools/logging/audit-supplier-transactions#application-and-recommendations-on-the-audittransactions-field) value is **not set to "true" by default**.
+## What is the difference between Hotel-X Logs, Legacy Logs, and Connector Logs?
+
+In the **Actions** section, you can download different types of transaction logs:
+
+- **Hotel-X Logs**: Transactions made by **Buyers** through our **Hotel-X API**.
+- **Legacy Logs**: Transactions made by **Buyers** through our **Legacy API**.
+- **Connector Logs**: Transactions made through our **integration** when directly interacting with the **Seller’s API**.  
+
+**Connector Logs** are always available, as they capture all activity between our integration and the Seller. However, you’ll see either **Hotel-X Logs or Legacy Logs**—never both—depending on which API the Buyer is using.
 
 ## Can I Retrieve Logs from a One Step Book Operation?
 

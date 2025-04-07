@@ -15,15 +15,14 @@ If you do not currently filter by IP but would like traffic to come from fixed a
 
 ### Fixed IP List for Hotel Suppliers
 
-Below is the current list of IP addresses that Hotel Suppliers should allow (Updated on 16/12/2024):
+Below is the current list of IP addresses that Hotel Suppliers should allow (Updated on 07/04/2025):
 
 
 | **IP Address**                     |   Explanation (if needed)               |  
 | :--------------------------------: |  :------------------------------------: |  
 | 13.94.250.159                      |                                         |  
 | 23.99.178.8                        |                                         |  
-| 23.100.6.214                       |                                         |  
-| 23.100.57.116                      |                                         |  
+| 23.100.6.214                       |                                         |    
 | 34.21.96.120/29                    | from `34.21.96.120` to `34.21.96.127`   |  
 | 35.193.109.73                      |                                         |  
 | 35.192.57.119                      |                                         |  
@@ -45,6 +44,7 @@ Below is the current list of IP addresses that Hotel Suppliers should allow (Upd
 | 172.98.36.0/27                     | from `172.98.36.0` to `172.98.36.31`    |  
 | 191.233.87.117                     |                                         |  
 | 216.59.58.52                       |                                         |  
+| 216.59.58.96/28                    | from `216.59.58.96` to `216.59.58.111`  |
 | 216.59.58.248/29                   | from `216.59.58.248` to `216.59.58.255` |  
 | 216.59.61.160/27                   | from `216.59.61.160` to `216.59.61.191` |
 | 101.46.140.136                     |                                         |

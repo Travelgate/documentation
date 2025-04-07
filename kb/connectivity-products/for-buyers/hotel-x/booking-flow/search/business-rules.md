@@ -15,7 +15,7 @@ Discover how specific business rules can strategically optimize your search requ
    ![businessRules_2](https://storage.travelgate.com/kbase/businessRules_2.jpg)
 
 :::info optionsquota
-The optionsQuota refers to the **maximum number of options per meal plan (board)** returned in a Search response. The default value is **50**, but it can be customized. The allowed values range from 1 to 300.
+The optionsQuota refers to the **maximum number of options per meal plan (board)** returned in a Search response. The default value is **300**, but it can be customized. The allowed values range from 1 to 300.
 :::
 
 ## How Can I Set Up Business Rules in My Requests?

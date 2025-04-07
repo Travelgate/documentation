@@ -57,42 +57,34 @@ export default function Home() {
                     <div className="row">
                       <div className="col col--12">
                         <div className="section-title">
-                          <h3>Most read articles in Travelgate's Knowledge Base</h3>
-                          <p>Master the essentials of seamless connectivity – Explore the most popular articles in TravelgateX's Knowledge Base and uncover the full potential of our solutions!</p>
+                          <h3>Travelgate’s Most Read Knowledge Base Articles</h3>
+                          <p>Unlock seamless connectivity with Travelgate – explore our top Knowledge Base articles and harness the full potential of our travel tech solutions.</p>
                         </div>
                       </div>
                     </div>
                     <div className="row">
-                      <div className="col col--3">
+                      <div className="col col--4">
                         <div class="item">
                           <img src="https://stplaformwe.blob.core.windows.net/kbase/home_kb_browse_myconnections.svg" />
-                          <h4>My Connections</h4>
-                          <p>Explore the 'My Connections' section to view and manage all of your current connections. Utilize advanced filters to sort them by status, type, and activity status, tailoring the display to your operational needs.</p>
-                          <p><a href="/kb/connections/my-connections/">Read article <i class="fa-solid fa-chevron-right"></i></a></p>
+                          <h4>Quick Guide to Auto-Connections</h4>
+                          <p>This guide will walk you through the process of requesting a connection with one of our Partners via the Travelgate Marketplace. We aim to make this process as straightforward and seamless as possible, helping you connect with Partners and enhance your business opportunities.</p>
+                          <p><a href="/kb/platform/app-features/connections/my-connections/guick-guide-to-auto-activations">Read article <i class="fa-solid fa-chevron-right"></i></a></p>
                         </div>
                       </div>
-                      <div className="col col--3">
+                      <div className="col col--4">
                         <div class="item">
                           <img src="https://stplaformwe.blob.core.windows.net/kbase/home_kb_browse_credentials.svg" />
-                          <h4>Hotel-X Credentials</h4>
-                          <p>Get your account up and running smoothly – visit our APP section for clear instructions on how to verify your Hotel-X credentials and manage your access details.</p>
-                          <p><a href="/kb/our-products/are-you-a-buyer/getting-started-with-hotel-x-buyers-api/hotel-x-credentials">Read article <i class="fa-solid fa-chevron-right"></i></a></p>
+                          <h4>Traffic Optimizer</h4>
+                          <p>At Travelgate, we understand the impact of handling useless traffic across the entire connectivity chain. That’s why we’ve developed Traffic Optimizer, an intelligent solution that enhances connection efficiency within our Marketplace.</p>
+                          <p><a href="/kb/platform/app-features/smart-traffic/traffic-optimizer/traffic-optimizer-details">Read article <i class="fa-solid fa-chevron-right"></i></a></p>
                         </div>
                       </div>
-                      <div className="col col--3">
+                      <div className="col col--4">
                         <div class="item">
                           <img src="https://stplaformwe.blob.core.windows.net/kbase/home_kb_browse_activations.svg" />
-                          <h4>Quick-Guide to Activations</h4>
-                          <p>I want to request a new connection, what should I do?</p>
-                          <p><a href="/kb/connections/my-connections/guick-guide-to-auto-activations">Read article <i class="fa-solid fa-chevron-right"></i></a></p>
-                        </div>
-                      </div>
-                      <div className="col col--3">
-                        <div class="item">
-                          <img src="https://stplaformwe.blob.core.windows.net/kbase/home_kb_browse_errors.svg" />
                           <h4>Errors and Warnings</h4>
-                          <p>Navigate through our detailed guide on errors and warnings – this section is dedicated to helping users effectively resolve any issues encountered while interacting with the Hotel Buyers API.</p>
-                          <p><a href="/kb/our-products/are-you-a-buyer/our-methods/lists-of-errors-and-warnings/overview">Read article <i class="fa-solid fa-chevron-right"></i></a></p>
+                          <p>Welcome to this section where we'll provide you with a comprehensive list of errors and warnings that users may come across while using our Hotel Buyers API. These errors and warnings can be received in responses during the booking flow, management, and content methods.</p>
+                          <p><a href="/kb/connectivity-products/for-buyers/errors-and-warnings/overview">Read article <i class="fa-solid fa-chevron-right"></i></a></p>
                         </div>
                       </div>
                     </div>
@@ -104,23 +96,23 @@ export default function Home() {
                     <div className="row">
                       <div className="col col--4">
                         <div class="item">
-                          <h4>Explore GIATA Products in our Marketplace</h4>
-                          <p>Our collaboration with GIATA has enriched the Marketplace with three innovative solutions: 'GIATA Multicodes' for efficient hotel mapping, 'GIATA Hotel Directory' (GIATA Drive) for detailed accommodations information, and the 'GIATA Multilingual Hotel Guide' (MHG) for expansive hotel descriptions.</p>
-                          <p><a href="/kb/getting-started-with-travelgate/About-our-Connectivity/explore-and-discover-giata-products-in-our-marketplace">Read article <i class="fa-solid fa-chevron-right"></i></a></p>
+                          <h4>Connections Content</h4>
+                          <p>In the Connections Content section, you can easily check and force updates for your connections' static content. This allows for timely updates and better market responsiveness, making your operations smoother and more effective.</p>
+                          <p><a href="/kb/platform/app-features/connections/connections-content/content-management">Read article <i class="fa-solid fa-chevron-right"></i></a></p>
                         </div>
                       </div>
                       <div className="col col--4">
                         <div class="item">
-                          <h4>What is Hotel-X and why should i develop it?</h4>
-                          <p>Hotel-X Pull Buyers API is a GraphQL-based powerful aggregating API. A single connection provides you a gateway to the largest Network of Buyers and Sellers, trusted by industry leaders and niche providers around the world.</p>
-                          <p><a href="/kb/getting-started-with-travelgate/About-our-Connectivity/what-exactly-is-hotel-x-and-why-should-i-develop-it">Read article <i class="fa-solid fa-chevron-right"></i></a></p>
+                          <h4>Logging: Logging: Monitor and Review Your Transactions</h4>
+                          <p>Travelgate’s Logging feature offers a powerful way to track and analyze transaction logs. Whether you need to review Booking Flow transactions or identify error codes, Logging provides access to critical data for troubleshooting and performance monitoring.</p>
+                          <p><a href="/kb/platform/app-features/monitoring-tools/logging/logging-details">Read article <i class="fa-solid fa-chevron-right"></i></a></p>
                         </div>
                       </div>
                       <div className="col col--4">
                         <div class="item">
-                          <h4>What is the difference between Pull and Push Sellers? </h4>
-                          <p>Learn about the mechanics of XML integration, the indispensable link that enables communication between Buyer and Seller systems. In this section, we break down the nuances between pull and push types of integrations, helping you understand which best fits your technical requirements.</p>
-                          <p><a href="/kb/getting-started-with-travelgate/About-our-Connectivity/what-is-the-difference-between-pull-and-push-sellers">Read article <i class="fa-solid fa-chevron-right"></i></a></p>
+                          <h4>Pull/Push Connection Types</h4>
+                          <p>Understanding the differences between Push and Pull connectivity is key to choosing the right integration strategy in the Travelgate ecosystem. In this article, we break down how each integration works, their pros and cons, and how they impact real-time communication between Buyers and Sellers through Travelgate.</p>
+                          <p><a href="/kb/welcome-to-travelgate/connectivity-services/pull-and-push-connectivity">Read article <i class="fa-solid fa-chevron-right"></i></a></p>
                         </div>
                       </div>
                     </div>

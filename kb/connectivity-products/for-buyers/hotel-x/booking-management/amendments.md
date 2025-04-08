@@ -1,8 +1,8 @@
 ---
-sidebar_position: 1
+sidebar_position: 4
 ---
 
-# Amendments Operations
+# Amendments
 
 ### What Are Amendments and How Can I Use Them?
 

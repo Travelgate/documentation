@@ -1,8 +1,10 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 ---
 
-# Booking Query
+# Booking Read and List
+
+## Booking Query
 
 The Hotel-X **Booking Query** operation allows you to retrieve specific reservation details (Booking Read) or a list of reservations made within a specified time frame (Booking List).
 

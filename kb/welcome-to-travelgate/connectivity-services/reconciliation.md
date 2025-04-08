@@ -1,8 +1,8 @@
 ---
-sidebar_position: 2
+sidebar_position: 6
 ---
 
-# Reconciliation API
+# Reconciliation
 
 ## Streamlining Booking Validation & Reconciliation
 

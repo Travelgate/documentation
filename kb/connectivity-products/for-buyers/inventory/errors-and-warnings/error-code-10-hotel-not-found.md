@@ -2,12 +2,12 @@
 sidebar_position: 4
 ---
 
-# Error Code 10 - HotelCode Not Found
+# HotelCode Not Found
 
-## What Does an Error Code 10 Mean? 
+### What Does an Error Code 10 (HotelCode Not Found) Mean? 
 When Channel Managers return an error code 10, **"HotelCode not found: Hotel [hotelcode] doesn't exist in [Channel Manager] or it's not mapped"**, it means that the Channel Manager has not been able to locate the hotel from the Buyer’s request in their system, or the hotel is not active in the Client's setup on the Inventory Extranet.
 
-### Buyer Response Example:
+#### Buyer Response Example:
 ```graphql
 "errors": [
     {
@@ -18,7 +18,7 @@ When Channel Managers return an error code 10, **"HotelCode not found: Hotel [ho
 ]
 ```
 
-## What Can I Do If I Receive an Error Code 10 in My Book or Cancel Response?
+### What Can I Do If I Receive an Error Code 10 in My Book or Cancel Response?
 To resolve this issue, follow these steps:
 
 1. **[Check Your Setup](/docs/apps/inventory/extranet/set-up/setup)**

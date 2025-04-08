@@ -2,15 +2,15 @@
 sidebar_position: 3
 ---
 
-# Error Code 0 - Price Not Found for Standard Occupancy
+# Price Not Found for Standard Occupancy
 
-## What Does an Error Code 0 Mean? 
+### What Does an Error Code 0 (Price Not Found for Standard Occupancy) Mean? 
 A "Price not found for standard occupancy (n Adults)" error occurs when attempting to load prices per standard occupancy without setting the price for the number of adults in the standard occupancy.
 
 The error message will indicate the mandatory requirement of specifying the number of adults for the standard occupancy.
 
-## What Can I Do If I Receive an Error Code 0 - Price Not Found for Standard Occupancy? 
-### Example:
+### What Can I Do If I Receive a "Price Not Found for Standard Occupancy" error? 
+#### Example:
 ```
 <Error Type="1" ShortText="Price not found for standard occupancy ( 1 Adults)." Code="0">Price not found for standard occupancy ( 1 Adults).</Error>
 ```

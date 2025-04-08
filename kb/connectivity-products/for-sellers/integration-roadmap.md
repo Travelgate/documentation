@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Seller API Development Roadmap
+# Development Roadmap
 
 At Travelgate, we are committed to collaboration and innovation. Our **[Seller API Development Roadmap](https://app.travelgate.com/network/roadmap)** provides **transparency**, allowing you to strategically schedule your product development with a clear view of our plans and progress.
 

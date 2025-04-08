@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # About Our Network
 
-### Expand Your Business Connections with Our Network!
+### Expand Your Business Connections with Our Network
 
 At Travelgate, we provide personalized recommendations for new connections based on your activity within our Marketplace. Our advanced algorithms help you **grow your network** and boost your booking volume by connecting you with Partners that align with your trading patterns.
 

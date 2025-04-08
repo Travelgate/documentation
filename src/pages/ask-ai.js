@@ -58,7 +58,7 @@ export default function AskAi() {
   return (
     <Layout
       title="Ask AI"
-      description="AI assistant for Travelgate documenatation"
+      description="AI assistant for Travelgate documentation"
     >
       <div className="container">
         <div className="row">

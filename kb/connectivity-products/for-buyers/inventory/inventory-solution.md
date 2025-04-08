@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Travelgate Inventory Solution
+# Our Inventory Solution
 
 ## Boost Your Business with Travelgate 
 

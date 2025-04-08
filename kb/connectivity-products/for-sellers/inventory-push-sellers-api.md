@@ -1,10 +1,10 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
-# Streamline Inventory Management
+# Inventory Push Sellers API
 
-## Streamline Your Inventory Operations
+## Streamline Inventory Management
 
 Say goodbye to outdated, inefficient inventory management! The **Inventory Push API** is your all-in-one **GraphQL-powered** solution for effortlessly handling static information and master data in the travel industry. Whether you're a **Buyer or a Seller**, this API empowers you to **set up, load, and retrieve** essential inventory data with ease. From **hotels and rooms to rates and offers**, everything is under your control.
 

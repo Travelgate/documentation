@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# 204 Error - No Results Found (Push Suppliers)
+# No Results Found (Push Suppliers)
 
 ### What Does a 204 Error Mean? 
 A 204 error occurs when a Supplier does not return any results for the specific Search criteria set in the Buyer's request (e.g., hotel, dates, market, etc.).

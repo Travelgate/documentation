@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Booking Management
 
-## Booking Search
+## Booking Search through the B2B Virtual Agency
 
 To check or manage existing reservations, follow these steps:
 
@@ -24,7 +24,7 @@ To check or manage existing reservations, follow these steps:
 
 6. To view details of a booking, select it and click **Actions > View details**.
 
-### No Results in "My Bookings"
+### No Results in "My Bookings" 
 
 If you see the message _"No results found! Try updating your search criteria"_ in 'My Bookings' consider the following causes:
 
@@ -34,7 +34,7 @@ If you see the message _"No results found! Try updating your search criteria"_ i
 If the necessary filters are unsupported, contact the supplier to explore the possibility of them making this data available.
 
 
-## How to Cancel a Booking
+## How to Cancel a Booking through the B2B Virtual Agency
 
 1. Find the booking you wish to cancel.
 2. Click **Cancel booking**.

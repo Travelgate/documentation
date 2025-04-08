@@ -15,6 +15,7 @@ When the Book (Reservation) method is executed, the API response will include a 
    
     _Important:_ The Book status can change over time. For example, you might initially receive an ON_REQUEST status, but after running a Booking Query a few moments later, the status may have updated to OK.
 3. **UNKNOWN:** During the reservation process, an issue led to an unknown reservation status. The Buyer is responsible for verifying with the Seller that the booking has been confirmed.
+4. **CANCELLED:** The booking attempt was unsuccessful, and due to a supplier error or timeout, the system has automatically canceled the reservation to prevent further issues.
 
 ### What should I do if I receive a reservation status other than 'OK' or no response at all in Book response?
 

@@ -65,7 +65,7 @@ export default function Home() {
                     <div className="row">
                       <div className="col col--4">
                         <div class="item">
-                          <img src="https://stplaformwe.blob.core.windows.net/kbase/home_kb_browse_myconnections.svg" />
+                          <img src="https://storage.travelgate.com/kbase/landing-autoconnections.jpg"/>
                           <h4>Quick Guide to Auto-Connections</h4>
                           <p>This guide will walk you through the process of requesting a connection with one of our Partners via the Travelgate Marketplace. We aim to make this process as straightforward and seamless as possible, helping you connect with Partners and enhance your business opportunities.</p>
                           <p><a href="/kb/platform/app-features/connections/my-connections/guick-guide-to-auto-activations">Read article <i class="fa-solid fa-chevron-right"></i></a></p>
@@ -73,7 +73,7 @@ export default function Home() {
                       </div>
                       <div className="col col--4">
                         <div class="item">
-                          <img src="https://stplaformwe.blob.core.windows.net/kbase/home_kb_browse_credentials.svg" />
+                          <img src="https://storage.travelgate.com/kbase/landing_trafficoptimizer.jpg"/>
                           <h4>Traffic Optimizer</h4>
                           <p>At Travelgate, we understand the impact of handling useless traffic across the entire connectivity chain. That’s why we’ve developed Traffic Optimizer, an intelligent solution that enhances connection efficiency within our Marketplace.</p>
                           <p><a href="/kb/platform/app-features/smart-traffic/traffic-optimizer/traffic-optimizer-details">Read article <i class="fa-solid fa-chevron-right"></i></a></p>
@@ -81,7 +81,7 @@ export default function Home() {
                       </div>
                       <div className="col col--4">
                         <div class="item">
-                          <img src="https://stplaformwe.blob.core.windows.net/kbase/home_kb_browse_activations.svg" />
+                          <img src="https://storage.travelgate.com/kbase/landing_errorsandwarnings.jpg"/>
                           <h4>Errors and Warnings</h4>
                           <p>Welcome to this section where we'll provide you with a comprehensive list of errors and warnings that users may come across while using our Hotel Buyers API. These errors and warnings can be received in responses during the booking flow, management, and content methods.</p>
                           <p><a href="/kb/connectivity-products/for-buyers/errors-and-warnings/overview">Read article <i class="fa-solid fa-chevron-right"></i></a></p>
@@ -96,6 +96,7 @@ export default function Home() {
                     <div className="row">
                       <div className="col col--4">
                         <div class="item">
+                          <img src="https://storage.travelgate.com/kbase/landing_connectionscontent.jpg" />
                           <h4>Connections Content</h4>
                           <p>In the Connections Content section, you can easily check and force updates for your connections' static content. This allows for timely updates and better market responsiveness, making your operations smoother and more effective.</p>
                           <p><a href="/kb/platform/app-features/connections/connections-content/content-management">Read article <i class="fa-solid fa-chevron-right"></i></a></p>
@@ -103,6 +104,7 @@ export default function Home() {
                       </div>
                       <div className="col col--4">
                         <div class="item">
+                          <img src="https://storage.travelgate.com/kbase/landing_logging.jpg"/>
                           <h4>Logging: Logging: Monitor and Review Your Transactions</h4>
                           <p>Travelgate’s Logging feature offers a powerful way to track and analyze transaction logs. Whether you need to review Booking Flow transactions or identify error codes, Logging provides access to critical data for troubleshooting and performance monitoring.</p>
                           <p><a href="/kb/platform/app-features/monitoring-tools/logging/logging-details">Read article <i class="fa-solid fa-chevron-right"></i></a></p>
@@ -110,6 +112,7 @@ export default function Home() {
                       </div>
                       <div className="col col--4">
                         <div class="item">
+                          <img src="https://storage.travelgate.com/kbase/landing_pullpush.jpg" />
                           <h4>Pull/Push Connection Types</h4>
                           <p>Understanding the differences between Push and Pull connectivity is key to choosing the right integration strategy in the Travelgate ecosystem. In this article, we break down how each integration works, their pros and cons, and how they impact real-time communication between Buyers and Sellers through Travelgate.</p>
                           <p><a href="/kb/welcome-to-travelgate/connectivity-services/pull-and-push-connectivity">Read article <i class="fa-solid fa-chevron-right"></i></a></p>

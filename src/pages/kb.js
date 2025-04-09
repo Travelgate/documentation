@@ -105,7 +105,7 @@ export default function Home() {
                       <div className="col col--4">
                         <div class="item">
                           <img src="https://storage.travelgate.com/kbase/landing_logging.jpg"/>
-                          <h4>Logging: Logging: Monitor and Review Your Transactions</h4>
+                          <h4>Logging: Monitor and Review Your Transactions</h4>
                           <p>Travelgate’s Logging feature offers a powerful way to track and analyze transaction logs. Whether you need to review Booking Flow transactions or identify error codes, Logging provides access to critical data for troubleshooting and performance monitoring.</p>
                           <p><a href="/kb/platform/app-features/monitoring-tools/logging/logging-details">Read article <i class="fa-solid fa-chevron-right"></i></a></p>
                         </div>

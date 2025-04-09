@@ -1,0 +1,14 @@
+﻿---
+sidebar_position: 16
+---
+
+# HubStatus Codes and Errors
+
+### What Are the Potential HubStatus Codes in a Method Response? 
+- **HubStatus 1: OK** - The request has been successfully executed without any Hub errors.
+- **HubStatus 2: EXCEPTION** - This code indicates that the request encountered an uncontrolled exception at the Hub level.
+- **HubStatus 3: TIMEOUT** - The request encountered a timeout error. A HubStatus code of 3 means the Hub timeout set by the Buyer in their request was insufficient to parse the Seller's response.
+- **HubStatus 4: UNDEFINED** - This code signifies that the request encountered an unspecified Hub error.
+
+#### I Received a HubStatus 3 Error in My Legacy Pull Buyers API Response. What Can I Do? 
+To prevent HubStatus 3 errors, ensure that the [Hub timeout](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/timeout-settings) set by the Buyer is **at least 300ms higher** than the provider timeout tag. This additional time allows for sufficient parsing of the Seller's response.

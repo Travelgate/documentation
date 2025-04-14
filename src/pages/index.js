@@ -129,7 +129,7 @@ export default function Home() {
             <div className="aux">
               <div className="wrap-text">
                 <h3>Knowledge Base</h3>
-                <p>Are your already engaged in buying and selling? Our Knowledge Base provides answers to all your doubts. Explore our articles for solutions to concerns, technical issues, web usage and beyond.</p>
+                <p>Maximize your buying and selling experience with our Knowledge Base! Discover expert tips, troubleshooting guides, and best practices to help you navigate technical features, optimize web usage, and unlock the full potential of our platform.</p>
                 <Link
                   className="button button--secondary button--lg"
                   to="/kb">

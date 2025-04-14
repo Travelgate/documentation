@@ -84,4 +84,4 @@ We will begin implementing this upgrade progressively, starting on March 24th 20
 
 ## Further Information and Support
 
-For additional details, technical inquiries, or assistance, please contact our [Technical Support team](/kb/tickets/travelgatex-tickets).
+For additional details, technical inquiries, or assistance, please contact our [Technical Support team](/kb/platform/support-portal/how-to-submit-case).

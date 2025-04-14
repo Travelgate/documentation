@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 # Glossary
@@ -27,8 +27,8 @@ The process of gathering and combining data from multiple sources into a single,
 - **AIna**  
 Travelgate's multilingual AI assistant. Powered by Large Language Models (LLMs), AIna is designed to specifically address your questions about Travelgate, providing responses based on our Official Documentation. 
 
-- **Alerts (APP)**  
-Alerts Monitoring APP is a feature provided by Travelgate that allows users to set up and manage real-time notifications for potential issues in their travel transactions, including status error codes, L2B (Look-to-Book) ratios, and traffic peaks.
+- **Alerts (Feature)**  
+Alerts is a feature provided by Travelgate that allows users to set up and manage real-time notifications for potential issues in their travel transactions, including status error codes, L2B (Look-to-Book) ratios, and traffic peaks.
 
 - **Amendment Query**  
 A request operation that allows the Buyer to modify details of an existing reservation. Common amendments include changes to dates, rooms, guest information, remarks or boards.
@@ -350,8 +350,8 @@ This type of AI is designed to understand and generate human-like text by learni
 - **Load**  
 The process of importing and handling data, typically associated with updating inventory or availability in push integrations.
 
-- **Logging (APP)**  
-Monitoring APP that allows users to access and analyze transaction logs though Travelgate platform.
+- **Logging (Feature)**  
+Monitoring feature that allows users to access and analyze transaction logs though Travelgate platform.
 
 - **Maintenance (product maintenance)**  
 Ongoing upkeep and updates to ensure product functionality and performance, encompassing any development efforts focused on maintaining the proper operation of existing products and services.
@@ -392,7 +392,7 @@ An operation used to perform a specific action or retrieve data.
 - **Minimum Selling Price (MSP)**  
 The lowest price at which a product can be sold to ensure profitability. It indicates the amount to be set as the mandatory price and allows Buyers to obtain a competitive pricing reference. 
 
-- **Monitoring (APPs)**  
+- **Monitoring (features)**  
 A set of tools provided to help Travelgate Partners track, analyze, and optimize their connections and performance within the Travelgate ecosystem.
 
 - **Multimode**  
@@ -572,10 +572,10 @@ Secure protocol for file transfers.
 - **Single Mode**  
 System operating in one mode for simplicity. In Hotel-X, Single Mode refers to the capability for Buyers to conduct a single search per Seller at any given time (default mode).
 
-- **Smart Traffic (APPs)**  
+- **Smart Traffic (features)**  
 Tools to optimize the traffic flow through Travelgate.
 
-- **Speed (APP)**  
+- **Speed (feature)**  
 Dynamic cache solution offered by Travelgate that aims to streamline traffic and improve Search response times for travel suppliers and Buyers
 
 - **Standard Occupancy:**  

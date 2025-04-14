@@ -10,7 +10,7 @@ A **104 error** occurs when the Seller's response time exceeds the timeout set i
 ## Timeout Configuration by API
 
 ### Hotel-X Buyers API
-The timeout value can be set at either the request level (in your **Settings**) or at the **Default Settings** level via our Platform under **Connections > [Connections Settings](kb\platform\app-features\connections\api-settings)**.
+The timeout value can be set at either the request level (in your **Settings**) or at the **Default Settings** level via our Platform under **Connections > Connections Settings**.
 
 ### Legacy Buyers API
 In the **Legacy Buyers API** (deprecated), the timeout is defined in every request as a Common Element (`timeoutMilliseconds`):

@@ -32,7 +32,7 @@ Remarks, which are customer comments for the Seller, can be included in the Book
 
 ### Can I change the guest details for an existing booking?
 
-Yes, guest details can be modified, provided the Supplier allows it. You can check the Supplier's [Metadata](/kb/connectivity-products/for-buyers/hotel-x/content/metadata) for supported changes. The number of rooms and guest distribution must match the original request, and modifications can be processed through Travelgate's [Amendments Operations](/kb/connectivity-products/for-buyers/hotel-x/booking-management/amendments/amendments-method).
+Yes, guest details can be modified, provided the Supplier allows it. You can check the Supplier's [Metadata](/kb/connectivity-products/for-buyers/hotel-x/content/metadata) for supported changes. The number of rooms and guest distribution must match the original request, and modifications can be processed through Travelgate's [Amendments Operations](/kb/connectivity-products/for-buyers/hotel-x/booking-management/amendments).
 
 ## Payment Details
 

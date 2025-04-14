@@ -26,7 +26,7 @@ No, each Quote obtained through the Hotel-X API is linked to a unique option and
 
 ### What can I do if I have many Searches but no Quotes?
 
-A high number of searches without resulting quotes can negatively impact your Look-to-Book (L2B) ratio. To address this, consider using [Traffic Optimizer](/kb/app-features/smart-traffic/traffic-optimizer/traffic-optimizer-details). This tool enhances your connections by analyzing transaction data, improving the L2B ratio, reducing search traffic, and cutting costs by blacklisting non-converting hotels.
+A high number of searches without resulting quotes can negatively impact your Look-to-Book (L2B) ratio. To address this, consider using [Traffic Optimizer](/kb/platform/app-features/smart-traffic/traffic-optimizer/traffic-optimizer-details). This tool enhances your connections by analyzing transaction data, improving the L2B ratio, reducing search traffic, and cutting costs by blacklisting non-converting hotels.
 
 ## Additional Information
 

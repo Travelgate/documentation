@@ -21,7 +21,7 @@ By leveraging Logging, you can gain valuable insights into your connection activ
    - Time range.
    - Access: Filter by Hotel-X Access (by Name or Code). This filter applies only to **Hotel-X connections**.
    - Operation type: Search, Quote, Book, Cancel, Other (Booking List/Booking Read).  
-     - *Note:* The "Search" operation type will only return results if searches have been **[audited first](/kb/app-features/monitoring-tools/logging/audit-searches-functionality)**.
+     - *Note:* The "Search" operation type will only return results if searches have been **[audited first](/kb/platform/app-features/monitoring-tools/logging/audit-searches-functionality)**.
    - Status/Error code: Select specific errors to filter results.
 5. Click on "Search logs" to retrieve the logs.
 

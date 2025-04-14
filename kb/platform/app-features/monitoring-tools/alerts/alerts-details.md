@@ -40,7 +40,7 @@ If an alert condition is met, you will receive an instant email notification. Yo
 
 :::info
 For detailed instructions on configuring specific alert types, refer to the following guides: 🚀
-- [How to Configure "Status Error Code" Alerts](/kb/app-features/monitoring-tools/alerts/alerts-status-error)
-- [How to Configure "Traffic Peak" Alerts](/kb/app-features/monitoring-tools/alerts/alerts-traffic-peak)
-- [How to Configure "L2B" Alerts](/kb/app-features/monitoring-tools/alerts/alerts-l2b)
+- [How to Configure "Status Error Code" Alerts](/kb/platform/app-features/monitoring-tools/alerts/alerts-status-error)
+- [How to Configure "Traffic Peak" Alerts](/kb/platform/app-features/monitoring-tools/alerts/alerts-traffic-peak)
+- [How to Configure "L2B" Alerts](/kb/platform/app-features/monitoring-tools/alerts/alerts-l2b)
 :::

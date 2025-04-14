@@ -42,7 +42,7 @@ These limits apply to **each room type individually**, not to the hotel as a who
 ## PMS & Channel Manager Integration
 
 - Travelgate does **not** have direct access to a hotel's **PMS (Property Management System)** or the **Channel Manager’s** internal system. If a booking does not appear in the PMS, the hotelier should contact the Channel Manager directly.
-- To check the status of your bookings via Travelgate, use the **[Logging Section](/kb/app-features/monitoring-tools/logging/logging-details)**.
+- To check the status of your bookings via Travelgate, use the **[Logging Section](/kb/platform/app-features/monitoring-tools/logging/logging-details)**.
 
 
 ## Troubleshooting & Support

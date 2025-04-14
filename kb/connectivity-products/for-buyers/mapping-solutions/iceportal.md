@@ -17,7 +17,7 @@ Getting started is quick and simple! Just follow these steps:
 1. **Register for IcePortal** through this [link](https://share.hsforms.com/110mNHlCKQuitX6Iw8UmhsQ1ojx4). Our Sales team will assist you with the commercial agreement.
 2. **Request the connection** through the Travelgate Platform once the agreement is finalized. This process is as easy as any other activation.
 
-For a detailed step-by-step guide, check out our [Quick Guide to Auto-Activations](/kb/app-features/connections/my-connections/guick-guide-to-auto-activations).
+For a detailed step-by-step guide, check out our [Quick Guide to Auto-Activations](/kb/platform/app-features/connections/my-connections/guick-guide-to-auto-activations).
 
 ### Activating IcePortal in Travelgate
 
@@ -26,8 +26,8 @@ For a detailed step-by-step guide, check out our [Quick Guide to Auto-Activation
    ![iceportal_1](https://storage.travelgate.com/kbase/iceportal_1.jpg)
 
 2. Once the Auto-Activation Process is complete, you can find IcePortal in:
-   - **[My Connections](/kb/app-features/connections/my-connections/managing-connections/connections-details)** – Manage and monitor your activated connections.
-   - **[Connections Content](/kb/app-features/connections/connections-content/content-management)** – Access and explore IcePortal’s available content.
+   - **[My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details)** – Manage and monitor your activated connections.
+   - **[Connections Content](/kb/platform/app-features/connections/connections-content/content-management)** – Access and explore IcePortal’s available content.
 
    ![iceportal_2](https://storage.travelgate.com/kbase/iceportal_2.jpg)
 

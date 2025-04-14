@@ -11,16 +11,16 @@ A "VALIDATION_ERROR" occurs when the validation information provided in your Hot
 Since this error indicates a discrepancy or issue with the validation process, check the following:
 
 - **Verify Access Status**
-  - Check [My Connections](/kb/app-features/connections/my-connections/managing-connections/connections-details) to ensure the access set in your request has been configured for your account (status "working") and is active. If inactive, activate it before running requests via our platform.
+  - Check [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details) to ensure the access set in your request has been configured for your account (status "working") and is active. If inactive, activate it before running requests via our platform.
 - **Verify Access Type (Test/Live)**
   - Ensure that the "testMode" tag in your request matches the Test/Live settings for that specific access.
 - **Verify Client**
-  - The Client set in your request should be one configured for your account. More details on Hotel-X Clients can be found [here](/kb/app-features/connections/api-settings/).
+  - The Client set in your request should be one configured for your account. More details on Hotel-X Clients can be found [here](/kb/platform/app-features/connections/api-settings/).
 - **Verify API Key**
-  - Ensure the API key in your request matches the one configured for your account. You can find more information on your API settings [here](/kb/app-features/connections/api-settings/).
+  - Ensure the API key in your request matches the one configured for your account. You can find more information on your API settings [here](/kb/platform/app-features/connections/api-settings/).
 - **Verify Context**
   - The context code in your request should match the expected mapping:
-    - **[Single Mode request](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/search/search-query#single-mode-and-multimode)**: Use the Supplier context (available in [My Connections](/kb/app-features/connections/my-connections/managing-connections/connections-details)) or your own Client context (uploaded mapping to SFTP).
+    - **[Single Mode request](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/search/search-query#single-mode-and-multimode)**: Use the Supplier context (available in [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details)) or your own Client context (uploaded mapping to SFTP).
     - **[Multi-mode request](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/search/search-query#single-mode-and-multimode)**: Use your own Client context.
 - **Verify Criteria**
   - Ensure your request criteria are valid. For example, do not set check-in and check-out dates in the past. Also, ensure compliance with the supplier's specifications as outlined in their [Metadata](/kb/connectivity-products/for-buyers/hotel-x/content/metadata).

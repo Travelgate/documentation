@@ -22,4 +22,4 @@ Follow these steps to audit Search logs:
 
 ## Requirements to Use the 'Audit Searches' Functionality
 - Travelgate's system needs a **steady flow of traffic** (not just isolated requests) to accurately register Search transactions.  
-- If you're in a **testing phase** or have **low traffic**, we recommend retrieving complete Search transactions **at the request level**. Follow the guidelines in this [article](/kb/app-features/monitoring-tools/logging/audit-supplier-transactions) for more information.
+- If you're in a **testing phase** or have **low traffic**, we recommend retrieving complete Search transactions **at the request level**. Follow the guidelines in this [article](/kb/platform/app-features/monitoring-tools/logging/audit-supplier-transactions) for more information.

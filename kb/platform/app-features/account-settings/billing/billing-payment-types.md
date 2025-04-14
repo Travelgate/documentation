@@ -8,7 +8,7 @@ This guide will help you select the billing payment type for your connections on
 
 ## Available Billing Payment Types
 
-If both you and your Partner are under the **Commercial Agreement 2023**, you will see the following billing payment types in the [Auto-Activations form](/kb/app-features/connections/my-connections/guick-guide-to-auto-activations/):
+If both you and your Partner are under the **Commercial Agreement 2023**, you will see the following billing payment types in the [Auto-Activations form](/kb/platform/app-features/connections/my-connections/guick-guide-to-auto-activations/):
 
 - **FREE**: No cost for you. Your Partner must confirm the full payment of the connectivity from its side.
 - **STD**: Standard booking fee, shared between you and your Partner.

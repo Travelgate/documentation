@@ -94,7 +94,7 @@ If you've followed all the steps and still do not have the most up-to-date conte
     <summary>Can I see the content of a Supplier before requesting its activation?</summary>
     <div>
         <div>
-            To access the content of any Seller, including hotels, rooms, and destinations, you need to establish an agreement with them and request their activation via our [Connect Form](/kb/app-features/connections/my-connections/guick-guide-to-auto-activations). Once the connection is established, you can access their content.
+            To access the content of any Seller, including hotels, rooms, and destinations, you need to establish an agreement with them and request their activation via our [Connect Form](/kb/platform/app-features/connections/my-connections/guick-guide-to-auto-activations). Once the connection is established, you can access their content.
         </div>
     </div>
 </details>

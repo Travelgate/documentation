@@ -5,7 +5,7 @@ sidebar_position: 18
 # ProviderNotActivated Warning
 
 ## What Does a ProviderNotActivated Warning Mean?
-This warning appears in the Legacy Pull Buyers API response when the connection with the Supplier has not yet been established. Before proceeding, ensure that you have a commercial agreement with them and have [requested their activation](/kb/app-features/connections/my-connections/guick-guide-to-auto-activations).
+This warning appears in the Legacy Pull Buyers API response when the connection with the Supplier has not yet been established. Before proceeding, ensure that you have a commercial agreement with them and have [requested their activation](/kb/platform/app-features/connections/my-connections/guick-guide-to-auto-activations).
 
 ### Example Response:
 ```

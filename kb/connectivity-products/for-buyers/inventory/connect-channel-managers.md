@@ -22,7 +22,7 @@ Travelgate allows only **one credential (Hotel-X Access Code) per Channel Manage
 
 3. **Confirm Commercial Agreements:** Coordinate with both the hotel and the Channel Manager to finalize commercial agreements. Be sure to inform them that the connection will be made via Travelgate.
 
-4. **Request Activation:** Submit your activation request through our Platform under "My Connections." A complete guide on how to request activation can be found [here](/kb/app-features/connections/my-connections/guick-guide-to-auto-activations).
+4. **Request Activation:** Submit your activation request through our Platform under "My Connections." A complete guide on how to request activation can be found [here](/kb/platform/app-features/connections/my-connections/guick-guide-to-auto-activations).
 
 5. **Credentials Generation:** Once your request is processed, we will generate credentials for accessing the Inventory Extranet and finalize the activation with the Channel Manager.
 

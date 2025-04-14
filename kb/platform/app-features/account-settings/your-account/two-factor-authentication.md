@@ -50,4 +50,4 @@ A unique security code, known as a **One-Time Password (OTP)**, is generated eac
    ![2FA_4](https://storage.travelgate.com/kbase/2FA_4.jpg)
 
 ## How to Reset Your 2FA Method
-If you need to switch devices or have lost access, you can reset your 2FA settings. For detailed steps, please see this [article](/kb/app-features/account-settings/users-management/reset-user-two-factor-authentication).
+If you need to switch devices or have lost access, you can reset your 2FA settings. For detailed steps, please see this [article](/kb/platform/app-features/account-settings/users-management/reset-user-two-factor-authentication).

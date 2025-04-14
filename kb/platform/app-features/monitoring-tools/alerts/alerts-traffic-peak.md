@@ -10,7 +10,7 @@ sidebar_position: 4
 1. **Select Connection(s)**
 
    ![alerts-error-code-1](https://storage.travelgate.com/kbase/alerts-error-code-1.jpg)
-2. **Configure the Alert**: Define the conditions and set up the fields for your alert. Choose the [appropriate options](/kb/app-features/monitoring-tools/alerts/alerts-traffic-peak#use-cases-of-traffic-peak-alerts) based on your needs.
+2. **Configure the Alert**: Define the conditions and set up the fields for your alert. Choose the [appropriate options](/kb/platform/app-features/monitoring-tools/alerts/alerts-traffic-peak#use-cases-of-traffic-peak-alerts) based on your needs.
 3. **Set Up Notifications**: Configure how you want to receive alert notifications:
     - Alert name and description
     - Email recipients (TO and BCC)

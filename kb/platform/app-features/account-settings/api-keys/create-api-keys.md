@@ -19,5 +19,5 @@ You can follow these steps to create a new API key for your Organization:
    ![apikey_2](https://storage.travelgate.com/kbase/apikey_2.png)
 
 :::info
-For more information on user roles and permissions, check our guide on [Modifying User Roles](/kb/app-features/account-settings/users-management/modify-user-roles).
+For more information on user roles and permissions, check our guide on [Modifying User Roles](/kb/platform/app-features/account-settings/users-management/modify-user-roles).
 :::

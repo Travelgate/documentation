@@ -13,7 +13,7 @@ Once a booking has been successfully confirmed in Travelgate, you will have acce
 
 Additionally, the Seller may provide a third type of locator, issued by the hotel upon booking confirmation. This is known as the **Hotel Confirmation Number (HCN)** or **Hotel Reference Booking (HRB)**, also referred to as `PropertyReservationNumber` in the [Legacy Pull Buyers API](/docs/apis/for-buyers/legacy-pull-buyers-api/booking-flow/reservation#success-response-data-breakdown).
 
-Please note that Travelgate can only provide this code if the Seller includes it in their response. If available, the HCN will be included in the [Book Response](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/book/book-mutation) and/or the [Booking Query Response](/kb/connectivity-products/for-buyers/hotel-x/booking-management/booking-read-list/booking-query), which cover the Reservation and ReservationRead/List methods.
+Please note that Travelgate can only provide this code if the Seller includes it in their response. If available, the HCN will be included in the [Book Response](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/book/book-mutation) and/or the [Booking Query Response](/kb/connectivity-products/for-buyers/hotel-x/booking-management/booking-query), which cover the Reservation and ReservationRead/List methods.
 
 ### Hotel-X Pull Buyers API
 

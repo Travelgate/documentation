@@ -42,6 +42,6 @@ If you encounter any issues, feel free to contact our [Customer Support team](ht
 :::
 
 :::tip
-Don't forget to check our [Hotel-X API Playground](/playground) and [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/cancel) for further information on Cancel Mutation. Interested in learning more about cancellation penalties? Explore our in-depth [articles](/kb/faqs/faqs-cancel-policies/overview) on the topic!🚀
+Don't forget to check our [Hotel-X API Playground](/playground) and [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/cancel) for further information on Cancel Mutation. Interested in learning more about cancellation penalties? Explore our in-depth [articles](/kb/faqs/faqs-cancel-policies/deadline-cases) on the topic!🚀
 :::
 

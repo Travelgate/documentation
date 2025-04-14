@@ -91,7 +91,7 @@ Yes, availability may still be provided if the Supplier returns options based on
 
 This situation can occur when a Supplier has added new hotels to your portfolio, but the updates have not yet been reflected in the Connections Content section because they did not coincide with the scheduled content update. During such instances, a hotel might show availability through the integration before it appears in the Connections Content section.
 
-In these scenarios, consider using the [Force Update Now](/kb/app-features/connections/connections-content/content-management#how-can-i-use-the-force-update-now-functionality) feature to update your portfolio and reaching out to the Supplier for further information if needed.
+In these scenarios, consider using the [Force Update Now](/kb/platform/app-features/connections/connections-content/content-management#how-can-i-use-the-force-update-now-functionality) feature to update your portfolio and reaching out to the Supplier for further information if needed.
 
 ### What is the lifespan of the Search ID?
 Search IDs do not expire, but transitioning from Search to Quote quickly is recommended for a smoother booking process.

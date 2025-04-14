@@ -29,7 +29,7 @@ The response may include the following fields:
 - Room details, including max/min occupancy and pax ranges (if available)
 
 :::info
-Static content fetching is always sequential and the amount of content returned may vary between Sellers. Learn more about mapping on Travelgate [here](/kb/app-features/connections/connections-content/mapping-at-travelgate).
+Static content fetching is always sequential and the amount of content returned may vary between Sellers. Learn more about mapping on Travelgate [here](/kb/platform/app-features/connections/connections-content/mapping-at-travelgate).
 :::
 
 ### Can I obtain the list of amenities available at Travelgate?
@@ -67,7 +67,7 @@ No, the hotel list includes all properties configured by the Seller for your acc
 ### Can I Exclude Hotels With No Availability From the Portfolio Download?
 No, it is not possible to exclude hotels with no availability from the portfolio download, as the Hotels Query provides static data about the Seller's product. 
 
-To check real-time availability, you should use the **Search Query** in the booking flow. Additionally, you can optimize search results using the **Traffic Optimizer** tool, which allows blacklisting of hotels with consistent no availability issues. For more details, check the [Traffic Optimizer documentation](/kb/app-features/smart-traffic/traffic-optimizer/traffic-optimizer-details).
+To check real-time availability, you should use the **Search Query** in the booking flow. Additionally, you can optimize search results using the **Traffic Optimizer** tool, which allows blacklisting of hotels with consistent no availability issues. For more details, check the [Traffic Optimizer documentation](/kb/platform/app-features/smart-traffic/traffic-optimizer/traffic-optimizer-details).
 
 :::tip
 More information is available in our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/hotels) and [API Playground](/playground).

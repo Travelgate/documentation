@@ -13,5 +13,5 @@ If you are **already a Travelgate customer** and need **commercial** assistance,
 - **General inquiries or commercial information.**
 
 :::warning Important
-This email is **_exclusively_ for commercial inquiries from existing customers**. For **technical support**, please refer to our [Support Portal](/kb/platform/support-portal/case-guidelines). If you are interested in becoming a Travelgate customer, please fill out our ["Contact Travelgate"](/kb/welcome-to-travelgate/who-we-are/about-us) form, and our team will get in touch with you soon.
+This email is **_exclusively_ for commercial inquiries from existing customers**. For **technical support**, please refer to our [Support Portal](/kb/platform/support-portal/case-guidelines). If you are interested in becoming a Travelgate customer, please fill out our ["Contact Travelgate"](/kb/welcome-to-travelgate/about-us) form, and our team will get in touch with you soon.
 :::

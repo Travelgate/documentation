@@ -14,7 +14,7 @@ Our [Partner Network Directory](https://app.travelgate.com/network/partners) is 
    - Alternatively, access your profile directly from **Travelgate Network** by filtering by Company.  
 
 :::info
-Only **Owner** or **Admin** users in your Organization can edit the profile. If your role restricts editing, please contact an Administrator or Owner for adjustments. More details on user roles can be found [here](/kb/account-settings/users-management/how-to-add-manage-users-to-organization).
+Only **Owner** or **Admin** users in your Organization can edit the profile. If your role restricts editing, please contact an Administrator or Owner for adjustments. More details on user roles can be found [here](/kb/platform/app-features/account-settings/users-management/add-users).
 :::
 
    ![edit_customize_profile](https://storage.travelgate.com/kbase/edit_customize_profile.jpg)

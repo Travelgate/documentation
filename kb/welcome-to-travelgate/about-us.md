@@ -42,7 +42,7 @@ Here’s what you can expect:
 With everything centralized in one place, managing your Travelgate experience has never been easier. Just log in and start exploring.
 
 :::tip 
-Learn more about the Travelgate APP and its full feature set in [this section](/kb/platform/app-features/overview).
+Learn more about the Travelgate APP and its full feature set in [this section](/kb/platform/app-features/dashboard/travelgate-dashboard).
 :::
 
 

@@ -37,7 +37,7 @@ To facilitate a faster resolution, please include the following details when rep
   - If you are a Buyer, share the [complete RQ/RS logs](/kb/platform/app-features/monitoring-tools/logging/audit-supplier-transactions) from your end.  
   - For Booking Flow and Management errors, include the timestamp of the method call, supplier/client references, and the booking ID (if applicable).  
   - Retrieve and download logs via our [Logging guide](/kb/platform/app-features/monitoring-tools/logging/logging-details).  
-- **Web Logs:** If the issue occurs on your Platform, follow the steps in our Knowledge Base to [retrieve web logs](/kb/platform/support-portal/how-to-retrieve-web-logs-from-portal).  
+- **Web Logs:** If the issue occurs on your Platform, follow the steps in our Knowledge Base to [retrieve web logs](/kb/platform/support-portal/how-to-retrieve-web-logs-from-website).  
 - **Additional Snapshots or Information (if necessary):** Any extra screenshots or relevant details you can provide will be helpful for troubleshooting.  
 
 ## Minor API Updates by Sellers

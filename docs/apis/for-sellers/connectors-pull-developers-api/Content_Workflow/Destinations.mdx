@@ -1,0 +1,183 @@
+---
+title: "Destinations"
+sidebar_position: 4
+---
+
+## **Overview**
+
+The `Destinations` method returns a comprehensive destination list from a supplier's access, granting you access to all the destinations configured by the Seller for a given set of credentials. The returned fields include: code, names, availability status, and parent-child relationships between zones and cities.
+
+## **Request**
+
+The Request is structured to accommodate access information for the content retrieval.
+
+### **Overview**
+
+The request that recieves the Connector is a Task with essential information that allows it to execute the operation properly:
+- **Access**: Represents access credentials and related information required for a connection.
+- **Operation**: Operation to be executed.
+
+### **Sample**
+
+```json
+{
+    "Task": {
+        "Access": {
+            "Code": 11111,
+            "User": "tgx",
+            "Password": "password",
+            "Urls": {
+                "Generic": "https://api.hotelsupplier.com/generic"
+            },
+            "Parameters": {
+                "maxResults": "50",
+                "cacheEnabled": "true",
+                "requestTimeout": "5000",
+                "preferredSupplier": "SupplierX"
+            }
+        },
+        "Operation": "Destinations",
+        "Languages": [ "en" ],
+        "Platform": "HOTELTEST",
+        "Supplier": "HOTELTEST",
+        "SupplierGroup": "HOTELTEST"
+    }
+}
+```
+
+### **Details**
+
+The object [ContentRq](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/contentrq) represents the structure of the content request as expected by the supplier.
+  
+<!-- TABLE BEGIN Connectors.Content.Pull.Domain.Contracts.Common.ContentRq -->
+
+| Name | Type | Description |
+|------|------|-------------|
+| **TaskId** | Integer | Unique identifier of the task, automatically assigned by the system. |
+| **Supplier** | String | Supplier code associated with the access. |
+| **SupplierGroup** | String | Supplier group associated with the access. |
+| **Platform** | String | The platform that this supplier belongs to. |
+| **Operation** | [ServiceOperationEnum](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/serviceoperationenum) | Operation to be executed. |
+| **Timeout** | String | Maximum time to wait for a supplier response before timing out.Specified as a timestamp string (e.g., "24:00:00" for 24 hours). |
+| **Access** | [Access](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/access) | Access information required for the operation, including API credentials, endpoints,and other integration-specific connection details. |
+| **Access/Code** | Integer | The unique code identifying the access configuration. |
+| **Access/User** | String | The username used for authentication with the supplier. |
+| **Access/Password** | String | The password used for authentication with the supplier. |
+| **Access/ApiKey** | String | The API key used for authentication or authorization. |
+| **Access/Urls** | [Urls](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/urls) | The URLs associated with the access configuration. |
+| **Access/Urls/Book** | String | The URL used for booking operations. |
+| **Access/Urls/Search** | String | The URL used for search operations. |
+| **Access/Urls/Quote** | String | The URL used for quote operations. |
+| **Access/Urls/Generic** | String | A generic URL for additional operations. |
+| **Access/Parameters** | [AccessParameters](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accessparameters) | Additional parameters related to the connection. |
+| **Languages** | List&lt;[Iso2LanguageEnum](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/iso2languageenum)&gt; | Language codes for the operation, represented as a list of ISO 639-1 2-character codes (e.g., "en", "es"). |
+
+<!-- TABLE END -->
+
+## **Response**
+
+The response contains the mapped destination information.
+
+### **Overview**
+
+The Destinations response provides a structured, hierarchical view of the supplier's destination data.
+Each destination entry includes information such as the code, names, availability status, and parent-child relationships between zones and cities.
+- `Zone`: Destinations with destination leafs.
+- `City`: Destinations without destination leafs.
+
+This hierarchical structure facilitates accurate mapping and organization of supplier destinations.
+
+### **Sample**
+
+Example with multiple destinations for better undestanding the hierarchical view.
+- The destination code ES (Spain) is a parent zone for BAL (Balearic Islands), AST (Asturias), and AND (Andalucia).
+- The destination code BAL (Balearic Islands) is itself a parent of the cities PAL0 (Palma de Mallorca) and ALC0 (Alcudia).
+
+```json
+{
+	"Code": "ES",
+	"Available": false,
+	"Names": {
+		"es": "España",
+        "en": "Spain"
+	},
+	"ParentCode": null,
+	"Type": 0,
+	"DestinationLeafCodes": [
+        "BAL",
+        "AST",
+        "AND"
+    ]
+},
+{
+	"Code": "BAL",
+	"Available": true,
+	"Names": {
+		"es": "Baleares"
+	},
+	"ParentCode": "ES",
+	"Type": 0,
+	"DestinationLeafCodes": [
+        "PAL0",
+        "ALC0"
+    ]
+},
+{
+	"Code": "AST",
+	"Available": true,
+	"Names": {
+		"es": "Asturias"
+	},
+	"ParentCode": "ES",
+	"Type": 0,
+	"DestinationLeafCodes": null
+},
+{
+	"Code": "AND",
+	"Available": true,
+	"Names": {
+		"es": "Andalucia"
+	},
+	"ParentCode": "ES",
+	"Type": 0,
+	"DestinationLeafCodes": null
+},
+{
+	"Code": "PAL0",
+	"Available": true,
+	"Names": {
+		"es": "Palma de Mallorca",
+        "en": "Balearic Islands"
+	},
+	"ParentCode": "BAL",
+	"Type": 1,
+	"DestinationLeafCodes": null
+},
+{
+	"Code": "ALC0",
+	"Available": true,
+	"Names": {
+		"es": "Alcudia"
+	},
+	"ParentCode": "BAL",
+	"Type": 1,
+	"DestinationLeafCodes": null
+}
+```
+
+### **Details**
+
+The [AccumulativeDestination](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accumulativedestination) object represents the standardized structure of the mapped destination element.
+
+<!-- TABLE BEGIN Content.Common.Domain.AccumulativeContracts.Destinations -->
+| Name | Type | Description |
+|------|------|-------------|
+| **Code** | String | Code of the destination. |
+| **Available** | Boolean | Value indicating whether the destinations can be requested in Search. |
+| **Names** | Dictionary&lt;[Iso2LanguageEnum](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/iso2languageenum), String&gt; | Names of the destination in different languages. |
+| **ParentCode** | String | Parent code of the destination. |
+| **Type** | [DestinationTypeEnum](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/destinationtypeenum) | Type of the destination. |
+| **DestinationLeafCodes** | List&lt;String&gt; | List of destination leaf codes. |
+<!-- TABLE END -->
+
+---

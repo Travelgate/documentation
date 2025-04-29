@@ -1,4 +1,4 @@
-# **Develop a Connector**
+# Develop a Connector
 
 ### **Implementation Steps**
 
@@ -91,8 +91,62 @@ Use the integration tests provided by Travelgate to validate your implementation
 - Execute the associated tests for the implemented operation.
   - [View Running Integration Tests](../Connector_Framework/Running_Integration_Tests.mdx).
 
-### **Option 2: FormTest Tool**
+### **Option 2: FormTest Tool (Shopping)**
 Use the **FormTest** application to test each operation manually:
 - Configure the tool to use your supplier's API settings.
 - Test specific scenarios not covered by predefined use cases.
   - [View FormTest Documentation](../Tools_and_Helpers/FormTest_Documentation.mdx).
+
+### **Option 3: Test each content operation locally (Content)**
+
+- **Set MessageSender as File.** In your `appsettings.Local`, configure `MessageSender` to `File` and specify the directory where you want to store the mapped responses:
+
+```json
+
+"MessageSender": "File",
+"FilesOptions": {
+  "Directory": "C:\\temp\\Content"
+}
+
+```
+
+- **Configure LocalTaskOptions as needed.** Update the `LocalTaskOptions` section in your `appsettings.Local` file with all the necessary information required to execute your content operations:
+
+```json
+
+"LocalTaskOptions": {
+  "Access": {
+    "Code": 11111,
+    "User": "tgx",
+    "Password": "password",
+    "Urls": {
+      "Generic": "https://api.hotelsupplier.com/generic"
+    },
+    "Parameters": {
+      "ftpUser": "user",
+      "ftpPassword": "password",
+      "ftpUrl": "ftp.example",
+    }
+  },
+  "Operation": "HotelListFull",
+  "Languages": [ "en" ],
+  "Supplier": "HOTELTEST",
+  "Platform": "HOTELTEST",
+  "SupplierGroup": "HOTELTEST"
+  "HotelCode": "123456",
+  "Timeout": "01:00:00",
+  "TaskId": "777"
+}
+```
+
+- **Generated Files.** After successfully executing the operation, the generated files will appear in the configured directory::
+![Option Selection](Content_File_Results.png)
+
+These files contain the mapped elements. If any file is empty, it may be that some mandatory information was missing during internal validation. **Check your terminal output for more detailed validation messages**.
+
+:::caution
+
+Ensure all fields are correctly populated to match the operation you intend to test.
+
+:::
+ 

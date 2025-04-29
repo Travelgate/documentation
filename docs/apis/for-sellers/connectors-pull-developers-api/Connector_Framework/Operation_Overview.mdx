@@ -136,6 +136,16 @@ public SearchConnectorResponse ParseResponses(
 
 > Parsing ensures clients receive consistent data, regardless of the supplier's data structure or peculiarities.
 
+:::info
+
+In our Content Workflow you are not expected to return the mapped element. You need to add all the mapped elements to our global variable `_accumulator`. This allows us to validate and process the content efficiently in small batches, before storing it in our database.
+
+```csharp
+_accumulator.AddValue(mappedElement);
+```
+
+:::
+
 ---
 
 ## **Adding Operations to the Connector**

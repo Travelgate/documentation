@@ -1,0 +1,373 @@
+---
+title: "HotelDetails"
+sidebar_position: 3
+---
+
+## **Overview**
+
+The `HotelDetails` method returns is used when the supplier has an API call for each hotel code. Once executed the `HotelList` the `HotelDetails` will retrieve all the hotel information from the supplier and add to the already existing hotel in our database. 
+
+There are 5 possible implementations: 
+
+| Implementations | Use case |
+|------|-------------|
+| **HotelDetails** | Standard HotelDetails operation that retrieves and updates all hotels individually from the database. |
+| **HotelDetailsByDates** | Retrieves and updates hotels based on specified dates without relying on existing database entries. |
+| **HotelDetailsMultiCodes** | Retrieves all hotel codes from the database but calls the integration in blocks of multiple hotels. |
+| **HotelDetailsMultiLanguages** | **Not yet implemented.** Retrieves all hotel codes from the database and calls the integration with multiple languages simultaneously. |
+| **HotelDetailsMultiLanguagesMultiCodes** | **Not yet implemented.** Retrieves all hotel codes from the database and calls the integration with multiple languages and multiple codes at once. |
+
+Common Scenarios:
+- **Supplier has a request per second/minute limit**: You can request us to decrease the parallelism for that supplier. 
+
+## **Request**
+
+The Request is structured to accommodate access information for the content retrieval.
+
+### **Overview**
+
+The request that recieves the Connector is a Task with essential information that allows it to execute the operation properly:
+- **Access**: Represents access credentials and related information required for a connection.
+- **Operation**: Operation to be executed.
+- **HotelCode**: The code that will be used **locally** to retrieve the information.
+- **Parallelism**: The level of parallelism used to retrieve hotels from the supplier. 
+
+### **Sample**
+
+```json
+{
+    "Task": {
+        "Access": {
+            "Code": 11111,
+            "User": "tgx",
+            "Password": "password",
+            "Urls": {
+                "Generic": "https://api.hotelsupplier.com/generic"
+            },
+            "Parameters": {
+                "maxResults": "50",
+                "cacheEnabled": "true",
+                "requestTimeout": "5000",
+                "preferredSupplier": "SupplierX"
+            }
+        },
+        "Operation": "HotelDetails",
+        "HotelCode": "12345",
+        "Parallelism": 50,
+        "Languages": [ "en" ],
+        "Platform": "HOTELTEST",
+        "Supplier": "HOTELTEST",
+        "SupplierGroup": "HOTELTEST"
+    }
+}
+```
+
+### **Details**
+
+The object [ContentRq](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/contentrq) represents the structure of the content request as expected by the supplier.
+  
+<!-- TABLE BEGIN Connectors.Content.Pull.Domain.Contracts.Common.ContentRq -->
+
+| Name | Type | Description |
+|------|------|-------------|
+| **TaskId** | Integer | Unique identifier of the task, automatically assigned by the system. |
+| **Supplier** | String | Supplier code associated with the access. |
+| **SupplierGroup** | String | Supplier group associated with the access. |
+| **Platform** | String | The platform that this supplier belongs to. |
+| **Operation** | [ServiceOperationEnum](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/serviceoperationenum) | Operation to be executed. |
+| **Timeout** | String | Maximum time to wait for a supplier response before timing out.Specified as a timestamp string (e.g., "24:00:00" for 24 hours). |
+| **Access** | [Access](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/access) | Access information required for the operation, including API credentials, endpoints,and other integration-specific connection details. |
+| **Access/Code** | Integer | The unique code identifying the access configuration. |
+| **Access/User** | String | The username used for authentication with the supplier. |
+| **Access/Password** | String | The password used for authentication with the supplier. |
+| **Access/ApiKey** | String | The API key used for authentication or authorization. |
+| **Access/Urls** | [Urls](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/urls) | The URLs associated with the access configuration. |
+| **Access/Urls/Book** | String | The URL used for booking operations. |
+| **Access/Urls/Search** | String | The URL used for search operations. |
+| **Access/Urls/Quote** | String | The URL used for quote operations. |
+| **Access/Urls/Generic** | String | A generic URL for additional operations. |
+| **Access/Parameters** | [AccessParameters](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accessparameters) | Additional parameters related to the connection. |
+| **Languages** | List&lt;[Iso2LanguageEnum](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/iso2languageenum)&gt; | Language codes for the operation, represented as a list of ISO 639-1 2-character codes (e.g., "en", "es"). |
+| **ObsoleteDays** | Integer | Applicable only to HotelDetails operations. Specifies the number of days to filter hotels that have not been updated recently. Default value: 15 days. Setting this to 0 retrieves all hotels available for the given access, regardless of update date. |
+| **Parallelism** | Integer | Degree of parallelism for HotelDetails tasks. |
+| **HotelCode** | String | Specific hotel code to be executed **locally** in HotelDetails operations. |
+
+<!-- TABLE END -->
+
+## **Response**
+
+The Response is structured to provide detailed information about the hotel.
+
+### **Overview**
+
+The `HotelDetails` response provides a comprehensive structure containing all the information for a specific hotel.
+It includes basic data such as name, location, and category, as well as enriched content like rooms, amenities, media, and more.
+
+### **Sample**
+
+```json
+{
+	"Code": "BADAJOZ#5",
+	"NativeSupplierCode": "5",
+	"Name": "BADAJOZ",
+	"CategoryCode": "4 Estrellas",
+	"ChainCode": null,
+	"ExclusiveDeal": null,
+	"Location": {
+		"Address": "CTRA.NACIONAL V, KM 393",
+		"City": "BADAJOZ",
+		"ZipCode": "06002",
+		"Descriptions": null,
+		"Indications": null,
+		"Country": 67,
+		"Coordinates": {
+			"Latitude": 38.893839,
+			"Longitude": -7.014112
+		},
+		"MinimumDestination": {
+			"Code": "06",
+			"Available": true,
+			"Names": {
+				"en": "BADAJOZ"
+			}
+		},
+		"Contact": {
+			"Email": "badajoz@xxx.com",
+			"Phone": "91425891",
+			"Fax": "910200200",
+			"Web": null
+		},
+		"Airports": null,
+		"State": null
+	},
+	"Amenities": null,
+	"CardTypes": null,
+	"Descriptions": null,
+	"Medias": [
+		{
+			"Code": "50",
+			"Url": "http://www.images.net/infor/work/imagen/hotel_07/mapa.jpg",
+			"Type": 3,
+			"Order": 1,
+			"Descriptions": {
+				"en": "Map view"
+			}
+		},
+		{
+			"Code": "100",
+			"Url": "http://www.images.net/infor/work/imagen/hotel_02/M.jpg",
+			"Type": 3,
+			"Order": 2,
+			"Descriptions": {
+				"en": "External view"
+			}
+		}
+	],
+	"Rooms": [
+		{
+			"Code": "201232338",
+			"Names": {
+				"en": "Standard Single room"
+			},
+			"Descriptions": {
+				"en": "Standard Single room"
+			},
+			"Area": 25.0,
+			"RoomOccupancy": {
+				"Adults": {
+					"Min": 1,
+					"Max": 1
+				},
+				"Children": {
+					"Min": 0,
+					"Max": 0
+				},
+				"Infants": {
+					"Min": 0,
+					"Max": 0
+				},
+				"Total": {
+					"Min": 1,
+					"Max": 1
+				}
+			},
+			"Beds": {
+				"NumberOfBeds": 1,
+				"Type": "SINGLE"
+			},
+			"Amenities": [
+				{
+					"Code": "2403",
+					"Type": 1,
+					"Descriptions": {
+						"en": [
+							"Free WiFi"
+						]
+					},
+					"Names": {
+						"en": "RES"
+					}
+				},
+				{
+					"Code": "318",
+					"Type": 1,
+					"Descriptions": {
+						"en": [
+							"Balcony"
+						]
+					},
+					"Names": {
+						"en": "RES"
+					}
+				}
+			],
+			"Medias": [
+				{
+					"Code": "01",
+					"Url": "http://www.images.net/infor/work/imagen/hotel_room_02/M.jpg",
+					"Type": 1,
+					"Order": 1,
+					"Descriptions": {
+						"en": "Room"
+					}
+				}
+			],
+			"Views": [
+				{
+					"Code": "01",
+					"Description": {
+						"en": "Sea view"
+					}
+				}
+			]
+		}
+	],
+	"PropertyType": null,
+	"MandatoryFees": null,
+	"CheckInData": null,
+	"CheckOutData": null
+}
+```
+
+### **Details**
+
+The [AccumulativeHotel](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accumulativehotel) object represents the standardized structure of the mapped hotel element.
+
+<!-- TABLE BEGIN Content.Common.Domain.AccumulativeContracts.Hotel -->
+| Name | Type | Description |
+|------|------|-------------|
+| **Code** | String | Hotel code. This code may have concatenated information. |
+| **NativeSupplierCode** | String | Native supplier code, without any concatenations. This code will be used to retrieve Giata information. |
+| **Name** | String | Hotel name. |
+| **CategoryCode** | String | Category code. |
+| **ChainCode** | String | Hotel chain code. |
+| **ExclusiveDeal** | Boolean | Indicates whether the hotel has an exclusive deal. |
+| **Location** | [AccumulativeLocation](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accumulativelocation) | Location of the hotel. |
+| **Location/Address** | String | Address of the hotel. |
+| **Location/City** | String | City of the hotel. |
+| **Location/ZipCode** | String | Zip code of the hotel. |
+| **Location/Descriptions** | Dictionary&lt;[Iso2LanguageEnum](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/iso2languageenum), List&lt;String&gt;&gt; | Dictionary containing location descriptions categorized by language. |
+| **Location/Indications** | Dictionary&lt;[Iso2LanguageEnum](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/iso2languageenum), List&lt;String&gt;&gt; | Dictionary containing location indications categorized by language. |
+| **Location/Country** | [Iso2CountryTypeEnum](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/iso2countrytypeenum) | Country represented by ISO alpha-2.  |
+| **Location/Coordinates** | [AccumulativeCoordinates](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accumulativecoordinates) | Coordinates of the hotel. |
+| **Location/Coordinates/Latitude** | Double | Latitude. |
+| **Location/Coordinates/Longitude** | Double | Longitude. |
+| **Location/MinimumDestination** | [AccumulativeHotelMinimumDestination](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accumulativehotelminimumdestination) | The lowest-level destination associated with the hotel. This value should match the one returned by the Destination call. |
+| **Location/MinimumDestination**<br />**Code** | String | Destination code. |
+| **Location/MinimumDestination**<br />**Available** | Boolean | Indicates whether it is available to request in Search. |
+| **Location/MinimumDestination**<br />**Names** | Dictionary&lt;[Iso2LanguageEnum](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/iso2languageenum), String&gt; | Dictionary containing names categorized by language. |
+| **Location/Contact** | [AccumulativeContact](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accumulativecontact) | Contact information of the hotel. |
+| **Location/Contact/Email** | String | Email address. |
+| **Location/Contact/Phone** | String | Phone number. |
+| **Location/Contact/Fax** | String | Fax number. |
+| **Location/Contact/Web** | String | Web address. |
+| **Location/Airports** | List&lt;[AccumulativeAirport](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accumulativeairport)&gt; | Nearby airports. |
+| **Location/Airports/IATACode** | String | IATA code. |
+| **Location/State** | String | State where the hotel is located. |
+| **Amenities** | List&lt;[AccumulativeAmenity](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accumulativeamenity)&gt; | List of amenities. |
+| **Amenities/Code** | String | Code of the amenity. |
+| **Amenities/Type** | [ApplicationAreaTypeEnum](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/applicationareatypeenum) | Type of the application area. |
+| **Amenities/Descriptions** | Dictionary&lt;[Iso2LanguageEnum](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/iso2languageenum), List&lt;String&gt;&gt; | Descriptions of the amenity, keyed by language. |
+| **Amenities/Names** | Dictionary&lt;[Iso2LanguageEnum](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/iso2languageenum), String&gt; | Names of the amenity, keyed by language. |
+| **CardTypes** | List&lt;[CreditCardType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/creditcardtype)&gt; | List of accepted credit card types. |
+| **Descriptions** | [AccumulativeDescriptions](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accumulativedescriptions) | Descriptions of the hotel. |
+| **Descriptions/Pool** | Dictionary&lt;[Iso2LanguageEnum](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/iso2languageenum), List&lt;String&gt;&gt; | Dictionary containing pool descriptions categorized by language. |
+| **Descriptions/Activities** | Dictionary&lt;[Iso2LanguageEnum](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/iso2languageenum), List&lt;String&gt;&gt; | Dictionary containing activities descriptions categorized by language. |
+| **Descriptions/Restaurants** | Dictionary&lt;[Iso2LanguageEnum](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/iso2languageenum), List&lt;String&gt;&gt; | Dictionary containing restaurants descriptions categorized by language. |
+| **Descriptions/General** | Dictionary&lt;[Iso2LanguageEnum](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/iso2languageenum), List&lt;String&gt;&gt; | Dictionary containing general descriptions categorized by language. |
+| **Descriptions/Rooms** | Dictionary&lt;[Iso2LanguageEnum](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/iso2languageenum), List&lt;String&gt;&gt; | Dictionary containing room descriptions categorized by language. |
+| **Descriptions/Amenities** | Dictionary&lt;[Iso2LanguageEnum](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/iso2languageenum), List&lt;String&gt;&gt; | Dictionary containing amenities descriptions categorized by language. |
+| **Medias** | List&lt;[AccumulativeMedia](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accumulativemedia)&gt; | List of medias. |
+| **Medias/Code** | String | Code of the media. |
+| **Medias/Url** | String | URL of the media. |
+| **Medias/Type** | [MediaTypeEnum](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/mediatypeenum) | Type of the media. |
+| **Medias/Order** | String | Order of the media. Should be ordered from 1 onward. |
+| **Medias/Descriptions** | Dictionary&lt;[Iso2LanguageEnum](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/iso2languageenum), String&gt; | Descriptions of the media, keyed by ISO 2 language code. |
+| **Rooms** | List&lt;[AccumulativeRoom](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accumulativeroom)&gt; | List of rooms. |
+| **Rooms/Code** | String | Gets or sets the code of the room. |
+| **Rooms/Area** | Double | Gets or sets the area of the room. |
+| **Rooms/Names** | Dictionary&lt;[Iso2LanguageEnum](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/iso2languageenum), String&gt; | Gets or sets the names of the room in different languages. |
+| **Rooms/Descriptions** | Dictionary&lt;[Iso2LanguageEnum](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/iso2languageenum), String&gt; | Gets or sets the descriptions of the room in different languages. |
+| **Rooms/RoomOccupancy** | [AccumulativeRoomOccupancy](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accumulativeroomoccupancy) | Gets or sets the room occupancy information. |
+| **Rooms/RoomOccupancy/Adults** | [AccumulativeMinMaxOccupancy](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accumulativeminmaxoccupancy) | Accumulative occupancy for adults. |
+| **Rooms/RoomOccupancy/Adults/Min** | Integer | Minimum occupancy. |
+| **Rooms/RoomOccupancy/Adults/Max** | Integer | Maximum occupancy. |
+| **Rooms/RoomOccupancy/Children** | [AccumulativeMinMaxOccupancy](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accumulativeminmaxoccupancy) | Accumulative occupancy for children. |
+| **Rooms/RoomOccupancy/Children**<br />**Min** | Integer | Minimum occupancy. |
+| **Rooms/RoomOccupancy/Children**<br />**Max** | Integer | Maximum occupancy. |
+| **Rooms/RoomOccupancy/Infants** | [AccumulativeMinMaxOccupancy](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accumulativeminmaxoccupancy) | Accumulative occupancy for infants. |
+| **Rooms/RoomOccupancy/Infants**<br />**Min** | Integer | Minimum occupancy. |
+| **Rooms/RoomOccupancy/Infants**<br />**Max** | Integer | Maximum occupancy. |
+| **Rooms/RoomOccupancy/Total** | [AccumulativeMinMaxOccupancy](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accumulativeminmaxoccupancy) | Accumulative total occupancy. |
+| **Rooms/RoomOccupancy/Total/Min** | Integer | Minimum occupancy. |
+| **Rooms/RoomOccupancy/Total/Max** | Integer | Maximum occupancy. |
+| **Rooms/Beds** | List&lt;[AccumulativeBed](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accumulativebed)&gt; | Gets or sets the list of beds in the room. |
+| **Rooms/Beds/NumberOfBeds** | Integer | Gets or sets the number of beds. |
+| **Rooms/Beds/Type** | String | Gets or sets the type of bed. |
+| **Rooms/Amenities** | List&lt;[AccumulativeAmenity](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accumulativeamenity)&gt; | Gets or sets the list of amenities in the room. |
+| **Rooms/Amenities/Code** | String | Code of the amenity. |
+| **Rooms/Amenities/Type** | [ApplicationAreaTypeEnum](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/applicationareatypeenum) | Type of the application area. |
+| **Rooms/Amenities/Descriptions** | Dictionary&lt;[Iso2LanguageEnum](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/iso2languageenum), List&lt;String&gt;&gt; | Descriptions of the amenity, keyed by language. |
+| **Rooms/Amenities/Names** | Dictionary&lt;[Iso2LanguageEnum](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/iso2languageenum), String&gt; | Names of the amenity, keyed by language. |
+| **Rooms/Medias** | List&lt;[AccumulativeMedia](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accumulativemedia)&gt; | Gets or sets the list of media associated with the room. |
+| **Rooms/Medias/Code** | String | Code of the media. |
+| **Rooms/Medias/Url** | String | URL of the media. |
+| **Rooms/Medias/Type** | [MediaTypeEnum](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/mediatypeenum) | Type of the media. |
+| **Rooms/Medias/Order** | String | Order of the media. Should be ordered from 1 onward. |
+| **Rooms/Medias/Descriptions** | Dictionary&lt;[Iso2LanguageEnum](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/iso2languageenum), String&gt; | Descriptions of the media, keyed by ISO 2 language code. |
+| **Rooms/Views** | List&lt;[AccumulativeView](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accumulativeview)&gt; | Gets or sets the list of views from the room. |
+| **Rooms/Views/Code** | String | Gets or sets the code. |
+| **Rooms/Views/Description** | Dictionary&lt;[Iso2LanguageEnum](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/iso2languageenum), String&gt; | Gets or sets the description. |
+| **PropertyType** | [AccumulativePropertyType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accumulativepropertytype) | Property type. |
+| **PropertyType/Code** | String | Property type code. |
+| **PropertyType/Name** | String | Property type name. |
+| **MandatoryFees** | List&lt;[AccumulativeMandatoryFee](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accumulativemandatoryfee)&gt; | Mandatory fees. |
+| **MandatoryFees/Code** | String | Fee code. |
+| **MandatoryFees/Description** | String | Fee description. |
+| **MandatoryFees/Name** | String | Fee name. |
+| **MandatoryFees/Scope** | String | Fee scope. |
+| **MandatoryFees/Duration** | String | Duration of the fee. |
+| **MandatoryFees/NetAmount** | Double | Net amount of the fee. |
+| **MandatoryFees/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | Currency of the fee represented by ISO_4217. |
+| **MandatoryFees/Included** | Boolean | Indicates whether the fee is included or not. |
+| **MandatoryFees/Refund** | Boolean | Indicates whether the fee is refundable or not. |
+| **CheckInData** | [AccumulativeCheckData](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accumulativecheckdata) | Check-in data for the hotel. |
+| **CheckInData/Instructions** | Dictionary&lt;[Iso2LanguageEnum](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/iso2languageenum), String&gt; | Dictionary containing check-in/check-out instructions categorized by language. |
+| **CheckInData**<br />**SpecialInstructions** | Dictionary&lt;[Iso2LanguageEnum](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/iso2languageenum), String&gt; | Dictionary containing special check-in/check-out instructions categorized by language. |
+| **CheckInData/MinAge** | Integer | Minimum age for check-in/check-out. |
+| **CheckInData/BeginTime** | [TimeOnlyModel](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/timeonlymodel) | Begin time for check-in/check-out. |
+| **CheckInData/BeginTime/Time** | String | Gets or sets the time. |
+| **CheckInData/EndTime** | [TimeOnlyModel](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/timeonlymodel) | Ending time for check-in/check-out. |
+| **CheckInData/EndTime/Time** | String | Gets or sets the time. |
+| **CheckOutData** | [AccumulativeCheckData](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accumulativecheckdata) | Check-out data for the hotel. |
+| **CheckOutData/Instructions** | Dictionary&lt;[Iso2LanguageEnum](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/iso2languageenum), String&gt; | Dictionary containing check-in/check-out instructions categorized by language. |
+| **CheckOutData**<br />**SpecialInstructions** | Dictionary&lt;[Iso2LanguageEnum](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/iso2languageenum), String&gt; | Dictionary containing special check-in/check-out instructions categorized by language. |
+| **CheckOutData/MinAge** | Integer | Minimum age for check-in/check-out. |
+| **CheckOutData/BeginTime** | [TimeOnlyModel](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/timeonlymodel) | Begin time for check-in/check-out. |
+| **CheckOutData/BeginTime/Time** | String | Gets or sets the time. |
+| **CheckOutData/EndTime** | [TimeOnlyModel](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/timeonlymodel) | Ending time for check-in/check-out. |
+| **CheckOutData/EndTime/Time** | String | Gets or sets the time. |
+
+<!-- TABLE END -->
+
+---

@@ -21,7 +21,8 @@ The Standard Occupancy is the **standard number of adult paxes of the room**.
 	The price of two paxes will be 100 (2*(100⁄2) ), and the price for one pax won't be returned.
 
 	:::warning Important:
-	Note that prices per pax under the Standard Occupancy must be specified and prices for babies under the Standard Occupancy will be 0.
+	- All prices for occupancy uses below and equal to the room standard occupancy must be loaded ir order to return availability to the Buyers.
+	- If no supplements are added for paxes above standard occupancy, each one will cost the average price per pax calculated by the system (equivalent to an amount supplement of 0).
 	:::
 
 - **Case 2:**

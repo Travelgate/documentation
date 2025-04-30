@@ -3,11 +3,11 @@ const path = require("path");
 const fetch = require("node-fetch");
 
 const GRAPHQL_ENDPOINT = "https://api.travelgatex.com";
-const BEARER_TOKEN = "Add your Bearer here"; // Reemplázalo con tu token real
+const BEARER_TOKEN = "Add your Bearer here"; // Replace with your actual token
 
 const OUTPUT_FILE = path.join(__dirname, "../schema-json/inventory-schema.json");
 
-// Lista de tipos que queremos extraer con todos sus subtipos
+// List of types to extract including all their subtypes
 const REQUIRED_TYPES = new Set([
   "InventoryAvailDerivedRatesInput",
   "AvailDerivedRatesRs",
@@ -136,7 +136,7 @@ const REQUIRED_TYPES = new Set([
   ]);
 
 async function fetchSchema() {
-    console.log("⏳ Descargando el esquema de GraphQL...");
+    console.log("⏳ Downloading GraphQL schema...");
 
     const QUERY_TYPES = {
       query: `
@@ -144,19 +144,19 @@ async function fetchSchema() {
         __schema {
           queryType { 
             name
-            fields(includeDeprecated: false) { # 🔹 Solo incluir campos no deprecados
+            fields(includeDeprecated: false) { # 🔹 Only include non-deprecated fields
               ...FullField
             }
           }
           mutationType {
             name
-            fields(includeDeprecated: false) { # 🔹 Solo incluir campos no deprecados
+            fields(includeDeprecated: false) { # 🔹 Only include non-deprecated fields
               ...FullField
             }
           }
           types {
             ...FullType
-            possibleTypes { ...TypeRef } # 🔹 Incluir posibles tipos de interfaces
+            possibleTypes { ...TypeRef } # 🔹 Include possible interface types
           }
         }
       }
@@ -164,7 +164,7 @@ async function fetchSchema() {
       fragment FullField on __Field {  
         name
         description
-        isDeprecated # 🔹 Ahora verificamos si está deprecado
+        isDeprecated # 🔹 Check if the field is deprecated
         type {
           ...TypeRef
         }
@@ -181,7 +181,7 @@ async function fetchSchema() {
         kind
         name
         description
-        fields(includeDeprecated: false) { # 🔹 Excluir nodos deprecados
+        fields(includeDeprecated: false) { # 🔹 Exclude deprecated fields
           ...FullField
         }
         inputFields {
@@ -194,7 +194,7 @@ async function fetchSchema() {
         enumValues {  
           name
           description
-          isDeprecated # 🔹 También verificamos si los valores de ENUM están deprecados
+          isDeprecated # 🔹 Also check if ENUM values are deprecated
         }
         interfaces { 
           name
@@ -235,25 +235,25 @@ async function fetchSchema() {
         });
 
         if (!response.ok) {
-            throw new Error(`❌ Error en la solicitud: ${response.status} ${response.statusText}`);
+            throw new Error(`❌ Request failed: ${response.status} ${response.statusText}`);
         }
 
         const data = await response.json();
 
-        console.log("✅ Esquema descargado correctamente. Filtrando información...");
+        console.log("✅ Schema downloaded successfully. Filtering information...");
 
         const filteredSchema = filterRequiredTypes(data);
 
-        // Guardar el esquema filtrado en un archivo JSON
+        // Save the filtered schema to a JSON file
         fs.writeFileSync(OUTPUT_FILE, JSON.stringify(filteredSchema, null, 2), "utf-8");
 
-        console.log(`✅ Esquema filtrado guardado en: ${OUTPUT_FILE}`);
+        console.log(`✅ Filtered schema saved at: ${OUTPUT_FILE}`);
     } catch (error) {
-        console.error(`❌ Error al obtener el esquema: ${error.message}`);
+        console.error(`❌ Failed to fetch schema: ${error.message}`);
     }
 }
 
-// ✅ Función corregida para filtrar y expandir ENUMs correctamente
+// ✅ Corrected function to filter and expand ENUMs properly
 function filterRequiredTypes(schema) {
   const allTypes = schema.data.__schema.types;
   const typeMap = {};
@@ -267,7 +267,7 @@ function filterRequiredTypes(schema) {
       if (!type) return;
 
       if (type.kind === "ENUM") {
-          console.log(`📌 Añadiendo ENUM: ${typeName}`);
+          console.log(`📌 Adding ENUM: ${typeName}`);
           filteredTypes.add(typeName);
       }
 
@@ -297,7 +297,7 @@ function filterRequiredTypes(schema) {
   return { types: result };
 }
 
-// ✅ Función corregida para procesar correctamente los tipos, incluyendo ENUMs
+// ✅ Corrected function to properly process types, including ENUMs
 function getFullTypeInfo(typeName, typeMap, visited = new Set()) {
     if (!typeName || visited.has(typeName)) return null;
     visited.add(typeName);
@@ -318,7 +318,7 @@ function getFullTypeInfo(typeName, typeMap, visited = new Set()) {
             name: ev.name,
             description: ev.description || ""
         })) : [];
-        console.log(`📌 ENUM procesado: ${type.name}`, result.enumValues); 
+        console.log(`📌 ENUM processed: ${type.name}`, result.enumValues); 
     }
 
     if (type.fields) {
@@ -347,40 +347,62 @@ function getFullTypeInfo(typeName, typeMap, visited = new Set()) {
 
 function getTypeRef(type, typeMap, visited) {
   if (!type) {
-      console.warn("⚠️ Tipo recibido es `null` o `undefined`");
+      console.warn("⚠️ Received a null or undefined type");
       return null;
   }
 
-  console.log(`📌 Analizando tipo: ${type.name || "N/A"} | Kind: ${type.kind}`);
+  console.log(`📌 Analyzing type: ${type.name || "N/A"} | Kind: ${type.kind}`);
 
-  if (type.kind === "NON_NULL") {
-      const innerType = getTypeRef(type.ofType, typeMap, visited);
-      console.log(`🔸 Tipo NON_NULL detectado: ${type.name} -> ${innerType?.name}`);
-      return { ...innerType, isRequired: true };
+  // Additional flags following your current logic
+  let isRequired = false;
+  let isList = false;
+  let isItemNonNull = false;
+
+  // Traverse the type to extract relevant flags
+  let current = type;
+
+  if (current.kind === "NON_NULL") {
+    isRequired = true;
+    current = current.ofType;
   }
 
-  if (type.kind === "ENUM") {
-      const enumInfo = getFullTypeInfo(type.name, typeMap, visited);
-      console.log(`📌 Procesando ENUM en getTypeRef: ${type.name}`, enumInfo);
-      return enumInfo;
+  if (current.kind === "LIST") {
+    isList = true;
+    if (current.ofType.kind === "NON_NULL") {
+      isItemNonNull = true;
+      current = current.ofType.ofType;
+    } else {
+      current = current.ofType;
+    }
   }
 
-  if (type.name && type.kind !== "SCALAR" && type.kind !== "ENUM") {
-      console.log(`🔹 Buscando información para el tipo: ${type.name}`);
-      return getFullTypeInfo(type.name, typeMap, visited);
+  // At this point, current should be the base type
+  let baseInfo;
+
+  if (current.kind === "ENUM") {
+    baseInfo = getFullTypeInfo(current.name, typeMap, visited);
+    console.log(`📌 Processing ENUM in getTypeRef: ${current.name}`, baseInfo);
+  } else if (current.name && current.kind !== "SCALAR") {
+    console.log(`🔹 Fetching info for type: ${current.name}`);
+    baseInfo = getFullTypeInfo(current.name, typeMap, visited);
+  } else {
+    baseInfo = {
+      name: current.name,
+      kind: current.kind
+    };
   }
 
-  if (type.ofType) {
-      console.log(`🔸 Analizando ofType dentro de ${type.name || "N/A"}`);
-      return getTypeRef(type.ofType, typeMap, visited);
-  }
-
-  console.warn(`⚠️ Tipo desconocido: ${JSON.stringify(type, null, 2)}`);
-  return { name: type.name, kind: type.kind, isRequired: false };
+  return {
+    ...baseInfo,
+    isRequired,
+    isList,
+    isItemNonNull
+  };
 }
 
 
-// Ejecutar el script
+
+// Run the script
 if (require.main === module) {
     fetchSchema();
 }

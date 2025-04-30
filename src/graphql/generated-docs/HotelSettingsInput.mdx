@@ -69,7 +69,7 @@ we apply the same configuration to all Hotel-X clients in our back system.
 
     <details>
       <summary>
-      **suppliers**&nbsp;<span class="required"> *</span>&nbsp; (*HotelXSupplierInput*)  
+      **suppliers** (*HotelXSupplierInput*)  
       Array of suppliers. Each one contains its own code, settings and accesses.  
       </summary>
   
@@ -94,6 +94,12 @@ access settings level.
           </summary>
         </details>
 
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **businessRules** (*undefined*)  
+          Business rules  
+          </summary>
+        </details>
 
         <details style={{ pointerEvents: "none" }}>
           <summary>
@@ -120,7 +126,7 @@ This information is mandatory.
 
       <details>
         <summary>
-        **accesses**&nbsp;<span class="required"> *</span>&nbsp; (*HotelXAccessInput*)  
+        **accesses** (*HotelXAccessInput*)  
         Array of accesses that can overwrite an existing access information or include a new access for this avail.  
         </summary>
   
@@ -189,7 +195,7 @@ overwrite it. Acts as an identifier in this search. It can either exist or not.
 
           <details>
             <summary>
-            **parameters**&nbsp;<span class="required"> *</span>&nbsp; (*ParameterInput*)  
+            **parameters** (*ParameterInput*)  
             List of parameters with additional required information.  
             </summary>
   
@@ -212,14 +218,14 @@ This information is mandatory.
 
           <details style={{ pointerEvents: "none" }}>
             <summary>
-            **markets**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+            **markets** (*String*)  
             Source Markets allowed for the Access (use ISO3166_1_alfa_2).  
             </summary>
           </details>
 
           <details style={{ pointerEvents: "none" }}>
             <summary>
-            **rateRules**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of RateRulesType*)  
+            **rateRules** (*Enum of RateRulesType*)  
             RateRules allowed for the access.  
             Possible values:  
             `NORMAL`  
@@ -243,12 +249,18 @@ This information is mandatory.
           </details>
         </details>
 
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **settings** (*undefined*)  
+          You can configure an special settings for any access. This level overwrites the search and supplier settings levels.  
+          </summary>
+        </details>
       </details>
     </details>
 
     <details>
       <summary>
-      **plugins**&nbsp;<span class="required"> *</span>&nbsp; (*PluginStepInput*)  
+      **plugins** (*PluginStepInput*)  
       Array of plugins to execute.  
       </summary>
   
@@ -267,7 +279,7 @@ This information is mandatory.
 
       <details>
         <summary>
-        **pluginsType**&nbsp;<span class="required"> *</span>&nbsp; (*PluginsInput*)  
+        **pluginsType** (*PluginsInput*)  
         Indicates the plugin that will be executed.  
         </summary>
   
@@ -300,7 +312,7 @@ This information is mandatory.
 
         <details style={{ pointerEvents: "none" }}>
           <summary>
-          **parameters**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+          **parameters** (*undefined*)  
           Parameters of the plugin  
           </summary>
         </details>
@@ -316,7 +328,7 @@ This information is mandatory.
 
     <details style={{ pointerEvents: "none" }}>
       <summary>
-      **clientTokens**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+      **clientTokens** (*String*)  
       Used to identify the origin of the request. This is solely used in plugins.  
       </summary>
     </details>

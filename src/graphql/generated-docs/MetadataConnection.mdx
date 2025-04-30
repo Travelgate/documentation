@@ -142,11 +142,24 @@
               </summary>
             </details>
 
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **numMarketsAllowed** (*undefined*)  
+              Number of markets supported by the supplier in the same request.  
+              </summary>
+            </details>
 
             <details style={{ pointerEvents: "none" }}>
               <summary>
               **release**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
               Minimum days required in between booking date and checking date ( days in advance ). If the value is zero then there is no limitation.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **maxRelease**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              Maximum days required in between booking date and checking date ( days in advance ).  
               </summary>
             </details>
 
@@ -550,6 +563,12 @@
               </summary>
             </details>
 
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **requiredNationality** (*undefined*)  
+              Informs if the supplier requires nationality  
+              </summary>
+            </details>
           </details>
 
           <details>
@@ -607,6 +626,12 @@
               </summary>
             </details>
 
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **requiredNationality** (*undefined*)  
+              Informs if the supplier requires nationality  
+              </summary>
+            </details>
           </details>
 
           <details>
@@ -657,6 +682,12 @@
               </summary>
             </details>
 
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **requiredNationality** (*undefined*)  
+              Informs if the supplier requires nationality  
+              </summary>
+            </details>
           </details>
 
           <details>
@@ -693,8 +724,26 @@
               </summary>
             </details>
 
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **informHotelReference** (*undefined*)  
+              Specifies if the supplier informs about Hotel Confirmation Number (HCN).  
+              </summary>
+            </details>
 
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **informCancelPolicies** (*undefined*)  
+              Specifies if the supplier informs about the cancellation policies.  
+              </summary>
+            </details>
 
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **informPriceCancel** (*undefined*)  
+              Specifies if the supplier informs about the cancellation price.  
+              </summary>
+            </details>
 
             <details style={{ pointerEvents: "none" }}>
               <summary>
@@ -745,6 +794,12 @@
               </summary>
             </details>
 
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **informPriceCancel** (*undefined*)  
+              The supplier informs the cancellation price.  
+              </summary>
+            </details>
           </details>
 
           <details>
@@ -909,17 +964,67 @@ address, phone, etc.) for each hotel. Return null is not implemented
             </details>
           </details>
 
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **destinations** (*undefined*)  
+            Contains information regarding Destinations, Destinations returns the supplier s destination list.
+Return null is not implemented  
+            </summary>
+          </details>
 
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **rooms** (*undefined*)  
+            Contains information regarding Rooms, RoomList aims to return a list of rooms, their codes as well as descriptions.
+Return null is not implemented  
+            </summary>
+          </details>
 
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **boards** (*undefined*)  
+            Contains information regarding Boards, Boards aims to return a list of the search boards,
+which will be used in the Search response. Return null is not implemented  
+            </summary>
+          </details>
 
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **categories** (*undefined*)  
+            Contains information regarding Categories, Categories returns a list of categories (codes and descriptions)
+used in Hotels List. Return null is not implemented  
+            </summary>
+          </details>
 
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **markets** (*undefined*)  
+            Contains information regarding Markets, Markets return a list of the available Markets, which will be
+used in the Search request. Return null is not implemented  
+            </summary>
+          </details>
 
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **currencies** (*undefined*)  
+            Contains information regarding Currencies, Currencies returns a list of currencies the supplier in booking flow.
+Return null is not implemented  
+            </summary>
+          </details>
 
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **amenities** (*undefined*)  
+            Contains information regarding Amenities, Amenities is defined as something intended to make life more
+pleasant or comfortable for people, Examples include: swimming pools, shopping centers, etc.
+Return null is not implemented  
+            </summary>
+          </details>
         </details>
 
         <details>
           <summary>
-          **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*AdviseMessage*)  
+          **adviseMessage** (*AdviseMessage*)  
           List of messages  
           </summary>
   
@@ -1003,7 +1108,7 @@ Possible values: ERROR, WARN, INFO.
 
     <details style={{ pointerEvents: "none" }}>
       <summary>
-      **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+      **adviseMessage** (*undefined*)  
       List of messages, contain error message, such as invalid input, connection error  
       </summary>
     </details>

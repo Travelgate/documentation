@@ -103,6 +103,12 @@
         </details>
       </details>
 
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **responsePlugin** (*undefined*)  
+        Plugin execution time  
+        </summary>
+      </details>
 
       <details style={{ pointerEvents: "none" }}>
         <summary>
@@ -152,6 +158,12 @@
           </summary>
         </details>
 
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **staticConfiguration** (*undefined*)  
+          Static configuration time  
+          </summary>
+        </details>
 
         <details style={{ pointerEvents: "none" }}>
           <summary>
@@ -174,7 +186,19 @@
           </summary>
         </details>
 
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **requestAccess** (*undefined*)  
+          Access request time  
+          </summary>
+        </details>
 
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **responseAccess** (*undefined*)  
+          Access response time  
+          </summary>
+        </details>
 
         <details>
           <summary>
@@ -220,7 +244,7 @@
 
         <details style={{ pointerEvents: "none" }}>
           <summary>
-          **plugins**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+          **plugins** (*undefined*)  
           Plugin execution time  
           </summary>
         </details>
@@ -385,7 +409,7 @@ For each room you have to specify its own occupancy.
 
     <details>
       <summary>
-      **options**&nbsp;<span class="required"> *</span>&nbsp; (*HotelOptionSearch*)  
+      **options** (*HotelOptionSearch*)  
       List of options returned according to the request.  
       </summary>
   
@@ -614,7 +638,7 @@ The net price is calculated by substrating the included surcharges from the gros
 
             <details>
               <summary>
-              **markups**&nbsp;<span class="required"> *</span>&nbsp; (*Markup*)  
+              **markups** (*Markup*)  
               Informs markup applied over supplier price.  
               </summary>
   
@@ -714,7 +738,7 @@ This information is mandatory.
 
           <details>
             <summary>
-            **breakdown**&nbsp;<span class="required"> *</span>&nbsp; (*PriceBreakdown*)  
+            **breakdown** (*PriceBreakdown*)  
             Daily break downs price.  
             </summary>
   
@@ -745,7 +769,7 @@ Format: YYYY-MM-DD
 
         <details>
           <summary>
-          **beds**&nbsp;<span class="required"> *</span>&nbsp; (*Bed*)  
+          **beds** (*Bed*)  
           List of beds.  
           </summary>
   
@@ -773,7 +797,7 @@ Format: YYYY-MM-DD
 
         <details>
           <summary>
-          **ratePlans**&nbsp;<span class="required"> *</span>&nbsp; (*RatePlan*)  
+          **ratePlans** (*RatePlan*)  
           List of the daily breakdowns of the specific rate plan  
           </summary>
   
@@ -817,7 +841,7 @@ Format: YYYY-MM-DD
 
         <details>
           <summary>
-          **promotions**&nbsp;<span class="required"> *</span>&nbsp; (*Promotion*)  
+          **promotions** (*Promotion*)  
           List of daily breakdowns for the promotions of the room.  
           </summary>
   
@@ -861,7 +885,7 @@ Format: YYYY-MM-DD
 
         <details>
           <summary>
-          **surcharges**&nbsp;<span class="required"> *</span>&nbsp; (*Surcharge*)  
+          **surcharges** (*Surcharge*)  
           List of surcharges of the option returned.  
           </summary>
   
@@ -910,7 +934,7 @@ If the chargeType is  EXCLUDE  the customer will have to pay it directly at the 
 
         <details>
           <summary>
-          **features**&nbsp;<span class="required"> *</span>&nbsp; (*Feature*)  
+          **features** (*Feature*)  
           List of features of this room  
           </summary>
   
@@ -924,7 +948,7 @@ If the chargeType is  EXCLUDE  the customer will have to pay it directly at the 
 
         <details>
           <summary>
-          **amenities**&nbsp;<span class="required"> *</span>&nbsp; (*Amenity*)  
+          **amenities** (*Amenity*)  
           Room level amenities provide information about features intended to enhance comfort and enjoyment.
 Examples include swimming pools, shopping centers, etc.  
           </summary>
@@ -985,7 +1009,7 @@ Examples include swimming pools, shopping centers, etc.
 
           <details>
             <summary>
-            **cancelPenalties**&nbsp;<span class="required"> *</span>&nbsp; (*CancelPenalty*)  
+            **cancelPenalties** (*CancelPenalty*)  
             List of cancellation penalties  
             </summary>
   
@@ -1054,7 +1078,7 @@ Examples include swimming pools, shopping centers, etc.
 
       <details>
         <summary>
-        **supplements**&nbsp;<span class="required"> *</span>&nbsp; (*Supplement*)  
+        **supplements** (*Supplement*)  
         List of supplements of the option returned.  
         </summary>
   
@@ -1185,18 +1209,24 @@ Format: YYYY-MM-DD
           </details>
         </details>
 
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **price** (*undefined*)  
+          Indicates the supplement price.  
+          </summary>
+        </details>
       </details>
 
       <details style={{ pointerEvents: "none" }}>
         <summary>
-        **surcharges**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+        **surcharges** (*undefined*)  
         List of surcharges of the option returned.  
         </summary>
       </details>
 
       <details style={{ pointerEvents: "none" }}>
         <summary>
-        **rateRules**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of RateRulesType*)  
+        **rateRules** (*Enum of RateRulesType*)  
         Specifies rate rules of the option returned. Note: If the option does not have any rate rule, then the option is NORMAL rate.  
         Possible values:  
         `NORMAL`  
@@ -1219,6 +1249,12 @@ Format: YYYY-MM-DD
         </summary>
       </details>
 
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **cancelPolicy** (*undefined*)  
+        Specifies cancel policies of the option returned.  
+        </summary>
+      </details>
 
       <details style={{ pointerEvents: "none" }}>
         <summary>
@@ -1235,7 +1271,7 @@ Format: YYYY-MM-DD
   
         <details>
           <summary>
-          **distribution**&nbsp;<span class="required"> *</span>&nbsp; (*AddOn*)  
+          **distribution** (*AddOn*)  
           Extra information from the Distribution layer.  
           </summary>
   
@@ -1256,7 +1292,7 @@ Format: YYYY-MM-DD
 
         <details style={{ pointerEvents: "none" }}>
           <summary>
-          **supplier**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+          **supplier** (*undefined*)  
           Extra information from the Supplier layer.  
           </summary>
         </details>
@@ -1271,14 +1307,14 @@ Format: YYYY-MM-DD
 
       <details style={{ pointerEvents: "none" }}>
         <summary>
-        **amenities**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+        **amenities** (*undefined*)  
         Option-level amenities provide information about features intended to enhance comfort and enjoyment. Examples include swimming pools, shopping centers, etc.  
         </summary>
       </details>
 
       <details>
         <summary>
-        **rateRulesExtended**&nbsp;<span class="required"> *</span>&nbsp; (*HotelOptionRateRule*)  
+        **rateRulesExtended** (*HotelOptionRateRule*)  
         RateRules contains all the rules that will be applied to book the option.  
         </summary>
   
@@ -1291,7 +1327,7 @@ Format: YYYY-MM-DD
 
         <details>
           <summary>
-          **rates**&nbsp;<span class="required"> *</span>&nbsp; (*HotelOptionRate*)  
+          **rates** (*HotelOptionRate*)  
           Rates applied to the option  
           </summary>
   
@@ -1318,7 +1354,7 @@ Format: YYYY-MM-DD
 
           <details>
             <summary>
-            **restrictions**&nbsp;<span class="required"> *</span>&nbsp; (*HotelOptionRateRestriction*)  
+            **restrictions** (*HotelOptionRateRestriction*)  
             Restrictions applied to the rate.  
             </summary>
   
@@ -1349,11 +1385,20 @@ Format: YYYY-MM-DD
           </details>
         </details>
       </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **aggregationGroupKey** (*String*)  
+        Key used to group options when an aggregation plugin is executed.
+This key is used to group options that are similar and can be aggregated.
+It should not be modified and should not be used externally, as it is an internal TGX system identifier.  
+        </summary>
+      </details>
     </details>
 
     <details>
       <summary>
-      **errors**&nbsp;<span class="required"> *</span>&nbsp; (*Error*)  
+      **errors** (*Error*)  
       List of errors that abort services.  
       </summary>
   
@@ -1381,7 +1426,7 @@ Format: YYYY-MM-DD
 
     <details>
       <summary>
-      **warnings**&nbsp;<span class="required"> *</span>&nbsp; (*Warning*)  
+      **warnings** (*Warning*)  
       Potentially harmful situations or errors that won't force the service to abort.
 To identify if it is blocked one, you can check our documentation regards this matter.  
       </summary>
@@ -1429,7 +1474,7 @@ To identify if it is blocked one, you can check our documentation regards this m
 
         <details>
           <summary>
-          **accessSpans**&nbsp;<span class="required"> *</span>&nbsp; (*HotelXAccessSpan*)  
+          **accessSpans** (*HotelXAccessSpan*)  
           
           </summary>
   
@@ -1727,7 +1772,7 @@ If the Provider is deactivated, all its Suppliers will be deactivated
 
                           <details>
                             <summary>
-                            **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*AdviseMessage*)  
+                            **adviseMessage** (*AdviseMessage*)  
                             
                             </summary>
   
@@ -1853,7 +1898,7 @@ Possible values: ERROR, WARN, INFO.
 
                       <details style={{ pointerEvents: "none" }}>
                         <summary>
-                        **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                        **adviseMessage** (*undefined*)  
                         
                         </summary>
                       </details>
@@ -1993,7 +2038,7 @@ Possible values: ERROR, WARN, INFO.
 
                         <details style={{ pointerEvents: "none" }}>
                           <summary>
-                          **connectionType**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of ConnectionType*)  
+                          **connectionType** (*Enum of ConnectionType*)  
                           
                           Possible values:  
                           `HOTEL_X_BUYER_ONLY`  
@@ -2021,7 +2066,7 @@ Possible values: ERROR, WARN, INFO.
 
                         <details style={{ pointerEvents: "none" }}>
                           <summary>
-                          **contract**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of Contract*)  
+                          **contract** (*Enum of Contract*)  
                           
                           Possible values:  
                           `CONTRACT_TCP`  
@@ -2044,6 +2089,12 @@ Possible values: ERROR, WARN, INFO.
                         </details>
                       </details>
 
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **partner** (*undefined*)  
+                        
+                        </summary>
+                      </details>
 
                       <details style={{ pointerEvents: "none" }}>
                         <summary>
@@ -2132,9 +2183,33 @@ Possible values: ERROR, WARN, INFO.
                                 </summary>
                               </details>
 
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **parent** (*undefined*)  
+                                
+                                </summary>
+                              </details>
 
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **children** (*undefined*)  
+                                Only responses children.(non-hierarchically)  
+                                </summary>
+                              </details>
 
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **descendents** (*undefined*)  
+                                Response all descendents groups nodes in this group (nom-hierarchically)  
+                                </summary>
+                              </details>
 
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **parents** (*undefined*)  
+                                Response all parents groups nodes for this group (nom-hierarchically)  
+                                </summary>
+                              </details>
 
                               <details>
                                 <summary>
@@ -2165,13 +2240,6 @@ Possible values: ERROR, WARN, INFO.
                                   <details style={{ pointerEvents: "none" }}>
                                     <summary>
                                     **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-                                    
-                                    </summary>
-                                  </details>
-
-                                  <details style={{ pointerEvents: "none" }}>
-                                    <summary>
-                                    **label** (*String*)  
                                     
                                     </summary>
                                   </details>
@@ -2225,6 +2293,12 @@ Possible values: ERROR, WARN, INFO.
                                     </details>
                                   </details>
 
+                                  <details style={{ pointerEvents: "none" }}>
+                                    <summary>
+                                    **groups** (*undefined*)  
+                                    which groups the member is in?  
+                                    </summary>
+                                  </details>
 
                                   <details>
                                     <summary>
@@ -2440,7 +2514,7 @@ Possible values: ERROR, WARN, INFO.
 
                                                         <details style={{ pointerEvents: "none" }}>
                                                           <summary>
-                                                          **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                                                          **adviseMessage** (*undefined*)  
                                                           
                                                           </summary>
                                                         </details>
@@ -2474,7 +2548,7 @@ Possible values: ERROR, WARN, INFO.
 
                                                           <details>
                                                             <summary>
-                                                            **errorCatalog**&nbsp;<span class="required"> *</span>&nbsp; (*ErrorCatalog*)  
+                                                            **errorCatalog** (*ErrorCatalog*)  
                                                             
                                                             </summary>
   
@@ -2534,7 +2608,7 @@ Possible values: ERROR, WARN, INFO.
 
                                                                 <details style={{ pointerEvents: "none" }}>
                                                                   <summary>
-                                                                  **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                                                                  **adviseMessage** (*undefined*)  
                                                                   
                                                                   </summary>
                                                                 </details>
@@ -2566,6 +2640,12 @@ Possible values: ERROR, WARN, INFO.
                                                                     </summary>
                                                                   </details>
 
+                                                                  <details style={{ pointerEvents: "none" }}>
+                                                                    <summary>
+                                                                    **api** (*undefined*)  
+                                                                    
+                                                                    </summary>
+                                                                  </details>
 
                                                                   <details style={{ pointerEvents: "none" }}>
                                                                     <summary>
@@ -2619,7 +2699,7 @@ Possible values: ERROR, WARN, INFO.
 
                                                             <details style={{ pointerEvents: "none" }}>
                                                               <summary>
-                                                              **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                                                              **adviseMessage** (*undefined*)  
                                                               
                                                               </summary>
                                                             </details>
@@ -2664,11 +2744,17 @@ Possible values: ERROR, WARN, INFO.
                                                     </details>
                                                   </details>
 
+                                                  <details style={{ pointerEvents: "none" }}>
+                                                    <summary>
+                                                    **roles** (*undefined*)  
+                                                    which roles are asigned or are possibles in this resource?  
+                                                    </summary>
+                                                  </details>
                                                 </details>
 
                                                 <details style={{ pointerEvents: "none" }}>
                                                   <summary>
-                                                  **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                                                  **adviseMessage** (*undefined*)  
                                                   List of advise messages.  
                                                   </summary>
                                                 </details>
@@ -2707,7 +2793,7 @@ Possible values: ERROR, WARN, INFO.
 
                                         <details style={{ pointerEvents: "none" }}>
                                           <summary>
-                                          **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                                          **adviseMessage** (*undefined*)  
                                           List of advise messages.  
                                           </summary>
                                         </details>
@@ -2840,7 +2926,7 @@ Possible values: ERROR, WARN, INFO.
 
                                         <details style={{ pointerEvents: "none" }}>
                                           <summary>
-                                          **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                                          **adviseMessage** (*undefined*)  
                                           
                                           </summary>
                                         </details>
@@ -2878,7 +2964,7 @@ Possible values: ERROR, WARN, INFO.
 
                                   <details>
                                     <summary>
-                                    **organizationMemberRoles**&nbsp;<span class="required"> *</span>&nbsp; (*OrganizationMemberRole*)  
+                                    **organizationMemberRoles** (*OrganizationMemberRole*)  
                                     
                                     </summary>
   
@@ -2912,7 +2998,7 @@ Possible values: ERROR, WARN, INFO.
 
                                 <details style={{ pointerEvents: "none" }}>
                                   <summary>
-                                  **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                                  **adviseMessage** (*undefined*)  
                                   List of advise messages.  
                                   </summary>
                                 </details>
@@ -2960,6 +3046,12 @@ Possible values: ERROR, WARN, INFO.
                                 </summary>
                               </details>
 
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **siblings** (*undefined*)  
+                                Sibilings of the group  
+                                </summary>
+                              </details>
 
                               <details>
                                 <summary>
@@ -2973,6 +3065,12 @@ Possible values: ERROR, WARN, INFO.
                                   
                                   </summary>
   
+                                  <details style={{ pointerEvents: "none" }}>
+                                    <summary>
+                                    **node** (*undefined*)  
+                                    
+                                    </summary>
+                                  </details>
 
                                   <details style={{ pointerEvents: "none" }}>
                                     <summary>
@@ -2991,7 +3089,7 @@ Possible values: ERROR, WARN, INFO.
 
                                 <details style={{ pointerEvents: "none" }}>
                                   <summary>
-                                  **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                                  **adviseMessage** (*undefined*)  
                                   List of advise messages.  
                                   </summary>
                                 </details>
@@ -3004,6 +3102,12 @@ Possible values: ERROR, WARN, INFO.
                                 </details>
                               </details>
 
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **apis** (*undefined*)  
+                                APIs assigned to this group. Products have APIs.  
+                                </summary>
+                              </details>
 
                               <details>
                                 <summary>
@@ -3074,7 +3178,7 @@ Possible values: ERROR, WARN, INFO.
 
                                     <details style={{ pointerEvents: "none" }}>
                                       <summary>
-                                      **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                                      **adviseMessage** (*undefined*)  
                                       List of advise messages.  
                                       </summary>
                                     </details>
@@ -3110,6 +3214,12 @@ Possible values: ERROR, WARN, INFO.
                                 </details>
                               </details>
 
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **allMembers** (*undefined*)  
+                                Response all members in this group s childrens (hierarchically),  
+                                </summary>
+                              </details>
 
                               <details>
                                 <summary>
@@ -3123,6 +3233,12 @@ Possible values: ERROR, WARN, INFO.
                                   
                                   </summary>
   
+                                  <details style={{ pointerEvents: "none" }}>
+                                    <summary>
+                                    **node** (*undefined*)  
+                                    
+                                    </summary>
+                                  </details>
 
                                   <details style={{ pointerEvents: "none" }}>
                                     <summary>
@@ -3141,7 +3257,7 @@ Possible values: ERROR, WARN, INFO.
 
                                 <details style={{ pointerEvents: "none" }}>
                                   <summary>
-                                  **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                                  **adviseMessage** (*undefined*)  
                                   List of advise messages.  
                                   </summary>
                                 </details>
@@ -3166,6 +3282,12 @@ Possible values: ERROR, WARN, INFO.
                                   Supplier edges of Supplier connection  
                                   </summary>
   
+                                  <details style={{ pointerEvents: "none" }}>
+                                    <summary>
+                                    **node** (*undefined*)  
+                                    Supplier item  
+                                    </summary>
+                                  </details>
 
                                   <details style={{ pointerEvents: "none" }}>
                                     <summary>
@@ -3184,7 +3306,7 @@ Possible values: ERROR, WARN, INFO.
 
                                 <details style={{ pointerEvents: "none" }}>
                                   <summary>
-                                  **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                                  **adviseMessage** (*undefined*)  
                                   List of advise messages.  
                                   </summary>
                                 </details>
@@ -3270,8 +3392,28 @@ Possible values: ERROR, WARN, INFO.
                                         </summary>
                                       </details>
 
+                                      <details style={{ pointerEvents: "none" }}>
+                                        <summary>
+                                        **group** (*undefined*)  
+                                        Indicates the group where the Client belongs. By definition a Client can belongs only to one group.  
+                                        </summary>
+                                      </details>
 
+                                      <details style={{ pointerEvents: "none" }}>
+                                        <summary>
+                                        **owner** (*undefined*)  
+                                        Organization that owns the Client  
+                                        </summary>
+                                      </details>
 
+                                      <details style={{ pointerEvents: "none" }}>
+                                        <summary>
+                                        **suppliers** (*undefined*)  
+                                        Suppliers that belong to the same group as the client.
+Used to find out which suppliers are likely to have connected with this client on some occasion.
+NOTE: Better to use the equivalent query suppliersByGroupCodes(groupCodes:["xxx"])  
+                                        </summary>
+                                      </details>
 
                                       <details style={{ pointerEvents: "none" }}>
                                         <summary>
@@ -3283,7 +3425,7 @@ Possible values: ERROR, WARN, INFO.
 
                                     <details style={{ pointerEvents: "none" }}>
                                       <summary>
-                                      **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                                      **adviseMessage** (*undefined*)  
                                       List of advise messages.  
                                       </summary>
                                     </details>
@@ -3327,7 +3469,7 @@ Possible values: ERROR, WARN, INFO.
 
                                 <details style={{ pointerEvents: "none" }}>
                                   <summary>
-                                  **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                                  **adviseMessage** (*undefined*)  
                                   List of advise messages.  
                                   </summary>
                                 </details>
@@ -3340,6 +3482,12 @@ Possible values: ERROR, WARN, INFO.
                                 </details>
                               </details>
 
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **roles** (*undefined*)  
+                                You can grant roles to members, which define the roles catalog for a group.  
+                                </summary>
+                              </details>
 
                               <details style={{ pointerEvents: "none" }}>
                                 <summary>
@@ -3365,7 +3513,7 @@ Possible values: ERROR, WARN, INFO.
 
                             <details style={{ pointerEvents: "none" }}>
                               <summary>
-                              **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                              **adviseMessage** (*undefined*)  
                               List of advise messages.  
                               </summary>
                             </details>
@@ -3402,7 +3550,7 @@ Possible values: ERROR, WARN, INFO.
 
                         <details style={{ pointerEvents: "none" }}>
                           <summary>
-                          **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                          **adviseMessage** (*undefined*)  
                           List of advise messages.  
                           </summary>
                         </details>
@@ -3415,7 +3563,19 @@ Possible values: ERROR, WARN, INFO.
                         </details>
                       </details>
 
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **descendents** (*undefined*)  
+                        Response all descendents groups nodes in this group (nom-hierarchically)  
+                        </summary>
+                      </details>
 
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **parents** (*undefined*)  
+                        Response all parents groups nodes for this group (nom-hierarchically)  
+                        </summary>
+                      </details>
 
                       <details style={{ pointerEvents: "none" }}>
                         <summary>
@@ -3426,7 +3586,7 @@ Possible values: ERROR, WARN, INFO.
 
                       <details>
                         <summary>
-                        **contacts**&nbsp;<span class="required"> *</span>&nbsp; (*OrganizationContact*)  
+                        **contacts** (*OrganizationContact*)  
                         Differents contacts in a organization.  
                         </summary>
   
@@ -3458,7 +3618,19 @@ Possible values: ERROR, WARN, INFO.
                         </summary>
                       </details>
 
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **members** (*undefined*)  
+                        
+                        </summary>
+                      </details>
 
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **apis** (*undefined*)  
+                        APIs assigned to this group. Products have APIs.  
+                        </summary>
+                      </details>
 
                       <details>
                         <summary>
@@ -3512,11 +3684,23 @@ Possible values: ERROR, WARN, INFO.
                                 </summary>
                               </details>
 
-
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **apis** (*undefined*)  
+                                A Product has many APIs  
+                                </summary>
+                              </details>
 
                               <details style={{ pointerEvents: "none" }}>
                                 <summary>
-                                **adviseMessageCatalog**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                                **macroPermissions** (*undefined*)  
+                                
+                                </summary>
+                              </details>
+
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **adviseMessageCatalog** (*undefined*)  
                                 
                                 </summary>
                               </details>
@@ -3524,7 +3708,7 @@ Possible values: ERROR, WARN, INFO.
 
                             <details style={{ pointerEvents: "none" }}>
                               <summary>
-                              **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                              **adviseMessage** (*undefined*)  
                               List of advise messages.  
                               </summary>
                             </details>
@@ -3560,9 +3744,33 @@ Possible values: ERROR, WARN, INFO.
                         </details>
                       </details>
 
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **allMembers** (*undefined*)  
+                        Response all members in this group s childrens (hierarchically)  
+                        </summary>
+                      </details>
 
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **accesses** (*undefined*)  
+                        Access resources in a group  
+                        </summary>
+                      </details>
 
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **suppliers** (*undefined*)  
+                        Supplier resources in a group  
+                        </summary>
+                      </details>
 
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **clients** (*undefined*)  
+                        Clients resources in a group  
+                        </summary>
+                      </details>
 
                       <details>
                         <summary>
@@ -3607,7 +3815,7 @@ Possible values: ERROR, WARN, INFO.
 
                         <details style={{ pointerEvents: "none" }}>
                           <summary>
-                          **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                          **adviseMessage** (*undefined*)  
                           
                           </summary>
                         </details>
@@ -3634,8 +3842,26 @@ Possible values: ERROR, WARN, INFO.
                         </summary>
                       </details>
 
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **allAccesses** (*undefined*)  
+                        Access resources in this organization  
+                        </summary>
+                      </details>
 
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **allSuppliers** (*undefined*)  
+                        Supplier resources in this organization  
+                        </summary>
+                      </details>
 
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **allClients** (*undefined*)  
+                        Clients resources in this organization  
+                        </summary>
+                      </details>
 
                       <details>
                         <summary>
@@ -3696,6 +3922,12 @@ Possible values: ERROR, WARN, INFO.
                               
                               </summary>
   
+                              <details style={{ pointerEvents: "none" }}>
+                                <summary>
+                                **node** (*undefined*)  
+                                
+                                </summary>
+                              </details>
 
                               <details style={{ pointerEvents: "none" }}>
                                 <summary>
@@ -3714,7 +3946,7 @@ Possible values: ERROR, WARN, INFO.
 
                             <details style={{ pointerEvents: "none" }}>
                               <summary>
-                              **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                              **adviseMessage** (*undefined*)  
                               List of advise messages.  
                               </summary>
                             </details>
@@ -3729,7 +3961,7 @@ Possible values: ERROR, WARN, INFO.
 
                           <details>
                             <summary>
-                            **agents**&nbsp;<span class="required"> *</span>&nbsp; (*CustomerAgent*)  
+                            **agents** (*CustomerAgent*)  
                             Differents agents from TravelgateX  
                             </summary>
   
@@ -3756,7 +3988,7 @@ Possible values: ERROR, WARN, INFO.
 
                         <details style={{ pointerEvents: "none" }}>
                           <summary>
-                          **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                          **adviseMessage** (*undefined*)  
                           List of advise messages.  
                           </summary>
                         </details>
@@ -3788,6 +4020,12 @@ Possible values: ERROR, WARN, INFO.
                           
                           </summary>
   
+                          <details style={{ pointerEvents: "none" }}>
+                            <summary>
+                            **node** (*undefined*)  
+                            
+                            </summary>
+                          </details>
 
                           <details style={{ pointerEvents: "none" }}>
                             <summary>
@@ -3806,7 +4044,7 @@ Possible values: ERROR, WARN, INFO.
 
                         <details style={{ pointerEvents: "none" }}>
                           <summary>
-                          **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                          **adviseMessage** (*undefined*)  
                           List of advise messages.  
                           </summary>
                         </details>
@@ -3843,7 +4081,7 @@ Possible values: ERROR, WARN, INFO.
 
                     <details style={{ pointerEvents: "none" }}>
                       <summary>
-                      **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                      **adviseMessage** (*undefined*)  
                       List of advise messages.  
                       </summary>
                     </details>
@@ -3932,7 +4170,7 @@ Possible values: ERROR, WARN, INFO.
 
                         <details style={{ pointerEvents: "none" }}>
                           <summary>
-                          **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                          **adviseMessage** (*undefined*)  
                           List of advise messages.  
                           </summary>
                         </details>
@@ -3955,7 +4193,7 @@ Possible values: ERROR, WARN, INFO.
 
                     <details style={{ pointerEvents: "none" }}>
                       <summary>
-                      **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                      **adviseMessage** (*undefined*)  
                       List of advise messages.  
                       </summary>
                     </details>
@@ -3989,9 +4227,34 @@ Possible values: ERROR, WARN, INFO.
                     </summary>
                   </details>
 
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                    **sharedDefault** (*undefined*)  
+                    Indicates if this supplier normally have a shared default access, means that the content is managed in one only site and this is because improve de efficiency  
+                    </summary>
+                  </details>
 
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                    **groups** (*undefined*)  
+                    Indicates the groups where the Supplier belongs. A supplier can be assigned to several groups  
+                    </summary>
+                  </details>
 
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                    **accesses** (*undefined*)  
+                    Accesses of this Supplier  
+                    </summary>
+                  </details>
 
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                    **clients** (*undefined*)  
+                    Clients that belongs to some of the groups of the Supplier
+Used to find out which Clients are likely to have connected with this Supplier on some occasion.  
+                    </summary>
+                  </details>
 
                   <details>
                     <summary>
@@ -4033,7 +4296,19 @@ Possible values: ERROR, WARN, INFO.
                         </summary>
                       </details>
 
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **group** (*undefined*)  
+                        Indicates the group where the System belongs  
+                        </summary>
+                      </details>
 
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **owner** (*undefined*)  
+                        System owner  
+                        </summary>
+                      </details>
 
                       <details style={{ pointerEvents: "none" }}>
                         <summary>
@@ -4045,7 +4320,7 @@ Possible values: ERROR, WARN, INFO.
 
                     <details style={{ pointerEvents: "none" }}>
                       <summary>
-                      **error**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                      **error** (*undefined*)  
                       Errors that abort services  
                       </summary>
                     </details>
@@ -4091,7 +4366,7 @@ Possible values: ERROR, WARN, INFO.
 
                     <details style={{ pointerEvents: "none" }}>
                       <summary>
-                      **group** (*String*)  
+                      **optionsQuota** (*Int*)  
                       
                       </summary>
                     </details>
@@ -4128,7 +4403,7 @@ Possible values: ERROR, WARN, INFO.
 
                 <details style={{ pointerEvents: "none" }}>
                   <summary>
-                  **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                  **adviseMessage** (*undefined*)  
                   List of advise messages.  
                   </summary>
                 </details>
@@ -4230,19 +4505,31 @@ This information is mandatory.
 
               <details style={{ pointerEvents: "none" }}>
                 <summary>
-                **markets**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                **markets** (*String*)  
                 Markets allowed for the Access  
                 </summary>
               </details>
 
               <details style={{ pointerEvents: "none" }}>
                 <summary>
-                **rateRules**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+                **rateRules** (*undefined*)  
                 Business rule types for the Access  
                 </summary>
               </details>
 
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **shared** (*undefined*)  
+                Parent Access if Shared Access  
+                </summary>
+              </details>
 
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **owner** (*undefined*)  
+                Access owner  
+                </summary>
+              </details>
 
               <details style={{ pointerEvents: "none" }}>
                 <summary>
@@ -4279,7 +4566,19 @@ This information is mandatory.
                 </summary>
               </details>
 
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **master** (*undefined*)  
+                Parent Master Access. null=>masterAccess, notNull=>slaveAccess  
+                </summary>
+              </details>
 
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **groups** (*undefined*)  
+                Groups where access belongs  
+                </summary>
+              </details>
 
               <details style={{ pointerEvents: "none" }}>
                 <summary>
@@ -4291,7 +4590,7 @@ This information is mandatory.
 
             <details style={{ pointerEvents: "none" }}>
               <summary>
-              **adviseMessage**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              **adviseMessage** (*undefined*)  
               List of advise messages.  
               </summary>
             </details>
@@ -4341,7 +4640,7 @@ This information is mandatory.
 
           <details>
             <summary>
-            **transactionSpans**&nbsp;<span class="required"> *</span>&nbsp; (*HotelXTransactionSpan*)  
+            **transactionSpans** (*HotelXTransactionSpan*)  
             
             </summary>
   
@@ -4359,6 +4658,93 @@ This information is mandatory.
               </summary>
             </details>
           </details>
+        </details>
+      </details>
+    </details>
+
+    <details>
+      <summary>
+      **aggregationData** (*AggregationData*)  
+      Contains the information about the aggregation process executed. This information is only available through internal request and, by default, it is not returned  
+      </summary>
+  
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **requestedAccecess**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+        List of access codes requested in the particular search request.  
+        </summary>
+      </details>
+
+      <details>
+        <summary>
+        **aggregationGroups**&nbsp;<span class="required"> *</span>&nbsp; (*AggregationGroup*)  
+        List of aggregation groups processed in the particular search request.
+Each group contains a list of processed options in the aggregation plugin.  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **groupKey**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+          Key used to group options when an aggregation plugin is executed.
+This key is used to group options that are similar and can be aggregated.
+It should not be modified and should not be used externally, as it is an internal TGX system identifier.  
+          </summary>
+        </details>
+
+        <details>
+          <summary>
+          **selected**&nbsp;<span class="required"> *</span>&nbsp; (*AggregationOption*)  
+          List of AggregationOption objects that represent the options selected as winners for this group.  
+          </summary>
+  
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **hotelCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+            Code of the hotel in the context selected.  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **boardCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+            Code of the board in the context selected.  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **price**&nbsp;<span class="required"> *</span>&nbsp; (*Float*)  
+            Specifies the Net prices of the option.  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **accessCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+            Access code of this option.  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **roomCodes**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+            Indicates the room codes of the option.  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **rateRules** (*undefined*)  
+            Specifies rate rules of the option.   
+            </summary>
+          </details>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **discarded**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+          List of AggregationOption objects that are considered discardable or least relevant for this group.  
+          </summary>
         </details>
       </details>
     </details>

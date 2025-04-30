@@ -14,14 +14,14 @@ If you opt not to set any access at all, requests will be made to all available 
   
       <details style={{ pointerEvents: "none" }}>
         <summary>
-        **includes**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+        **includes** (*ID*)  
         These Access IDs will overwrite the default configuration. Only the IDs on this list will be used in the search query.  
         </summary>
       </details>
 
       <details style={{ pointerEvents: "none" }}>
         <summary>
-        **excludes**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+        **excludes** (*ID*)  
         These Access IDs will overwrite the default configuration. The IDs on this list will be excluded from the search query.  
         </summary>
       </details>
@@ -35,7 +35,7 @@ If you opt not to set any access at all, requests will be made to all available 
   
       <details>
         <summary>
-        **includes**&nbsp;<span class="required"> *</span>&nbsp; (*HotelXFilterPluginTypeInput*)  
+        **includes** (*HotelXFilterPluginTypeInput*)  
         Plugins to be only executed  
         </summary>
   
@@ -69,7 +69,7 @@ If you opt not to set any access at all, requests will be made to all available 
 
       <details style={{ pointerEvents: "none" }}>
         <summary>
-        **excludes**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+        **excludes** (*undefined*)  
         Plugins to exclude  
         </summary>
       </details>
@@ -83,7 +83,7 @@ If you opt not to set any access at all, requests will be made to all available 
   
       <details style={{ pointerEvents: "none" }}>
         <summary>
-        **includes**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of RateRulesType*)  
+        **includes** (*Enum of RateRulesType*)  
         if includes not nil: only options without rate rules and options with rate rules found in includes will be returned  
         Possible values:  
         `NORMAL`  
@@ -108,7 +108,7 @@ If you opt not to set any access at all, requests will be made to all available 
 
       <details style={{ pointerEvents: "none" }}>
         <summary>
-        **excludes**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+        **excludes** (*undefined*)  
         if excludes not nil: only options without rate rules and options with rate rules that haven t been sent in excludes will be returned  
         </summary>
       </details>
@@ -122,7 +122,7 @@ If you opt not to set any access at all, requests will be made to all available 
   
       <details style={{ pointerEvents: "none" }}>
         <summary>
-        **includes**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of StatusType*)  
+        **includes** (*Enum of StatusType*)  
         When is not nil: only options with status found in includes will be returned  
         Possible values:  
         `OK`  
@@ -132,8 +132,29 @@ If you opt not to set any access at all, requests will be made to all available 
 
       <details style={{ pointerEvents: "none" }}>
         <summary>
-        **excludes**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+        **excludes** (*undefined*)  
         When is not nil: only options without status found in includes will be returned  
+        </summary>
+      </details>
+    </details>
+
+    <details>
+      <summary>
+      **currencies** (*CurrenciesFilterInput*)  
+      This filter enables you to narrow down the options returned by the suppliers based on the desired currencies you want to include or exclude.  
+      </summary>
+  
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **includes** (*Currency*)  
+        
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **excludes** (*Currency*)  
+        
         </summary>
       </details>
     </details>

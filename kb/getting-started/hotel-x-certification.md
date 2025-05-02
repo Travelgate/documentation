@@ -27,7 +27,7 @@ The following table outlines the names corresponding to each part of the certifi
 
 | Method                       | Request                  | Response              |
 | ---------------------------- | ------------------------ | --------------------- |
-| Content > hotels RQ and RS   | No required              | rs_hotels.json        |
+| Content > hotels RQ and RS   | Not required              | rs_hotels.json        |
 | C1 Booking flow > search RQ and RS | rq_search_rf.json     | rs_search_rf.json     |
 | C2 Booking flow > search RQ and RS | rq_search_nrf.json    | rs_search_nrf.json    |
 | C3 Booking flow > search RQ and RS | rq_search_direct.json | rs_search_direct.json |

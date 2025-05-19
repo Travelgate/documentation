@@ -36,6 +36,11 @@ Each user’s role determines what actions they can perform within the Travelgat
 - **Editor**: Can review and update existing connections and make reservations.
 - **Viewer**: Can view existing connections and perform searches and quotes.
 
+### Can I reactivate users in my Organization?
+**Yes, you can reactivate users if you have an Owner or Admin role**. To do so, follow the same steps used to add a new user: Navigate to the User Management screen, click "Invite a User," and complete the process.
+
+If you don’t have the required permissions, please reach out to someone in your Organization who does, so they can reactivate the user for you.
+
 ### How to Assign a Contact User to Receive Notifications from Travelgate
  1. Log onto our [Platform](https://www.travelgate.com/).
  1. Click on Settings.

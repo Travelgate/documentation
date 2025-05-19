@@ -28,6 +28,12 @@ Follow these steps to search for availability and make a booking:
 
    ![b2b_virtual_agency_search_4](https://storage.travelgate.com/kbase/b2b_search_4.png)
 
+   :::info B2B Virtual Agency Search Logs
+   You can access the logs of your availability requests through the B2B Virtual Agency, directly from the "Search Availability" screen. After clicking Search, a **"View Search Logs"** option will appear in the left-hand menu. Click it to open a new window where you can view both the request and response logs. To copy them, simply click the "Copy Logs button".  
+
+   ![b2b-virtual-agency-logs](https://storage.travelgate.com/kbase/b2b-virtual-agency-logs.jpg)
+   :::
+
 5. Select the best option and click **Book**. The system will retrieve an updated quote from the supplier.
    - **Review the final price and cancellation policy before proceeding.**
 
@@ -51,3 +57,17 @@ Follow these steps to search for availability and make a booking:
 9. To review a booking, navigate to **My Bookings**.
 
    ![b2b_virtual_agency_search_7](https://storage.travelgate.com/kbase/b2b_search_7.png)
+
+### I can’t find a hotel in the dropdown menu on the "Search Availability" screen in the B2B Virtual Agency. What can I do?
+
+If a hotel (or destination) doesn’t appear in the dropdown menu on the Search Availability screen, it may be due to outdated static content for that Supplier. To resolve this, go to the Connections > Content section and click the ["Force Update Now"](/kb/platform/app-features/connections/connections-content/content-management#how-can-i-use-the-force-update-now-functionality) button to **refresh the static content**.
+
+:::info Force Content Updates
+When performing a "Force Content Now" update to refresh a Seller's portfolio, keep in mind that the duration of the update depends on the **size of the content**. The update is processed through a **queue system** and will begin once it reaches its turn. This could take anywhere from a few minutes to 72 hours.
+
+- If the update hasn't completed after 72 hours, you may attempt the update again.
+- Updates within the 72-hour window are considered normal, and there’s no need to contact support until this period has passed.
+- **Large updates** (e.g., updating multiple accesses for a Supplier across all Buyers) will result in a longer queue and may take additional time.
+
+If you've followed all the steps and still do not have the most up-to-date content, feel free to [contact our Support Team](/kb/platform/support-portal/case-guidelines). We’re here to ensure you have the best possible experience!
+:::

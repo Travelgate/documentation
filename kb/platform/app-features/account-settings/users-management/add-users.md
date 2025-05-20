@@ -26,11 +26,20 @@ Follow these steps to invite new users to your Organization:
    ![inviteuser_4](https://storage.travelgate.com/kbase/inviteuser_4.jpg)
 5. **Complete the sign-up process**: The new user will receive an e-mail in order to set their password and they will be able to explore our Platform. Please ensure that the initial login is done using the **username and password**, not through the Google account.
 
+:::info Can I change the email address for an existing user?
+ No, you cannot update an existing user's email address. Instead, you'll need to **create a new user account** with the desired email and delete the old one.
+ :::
+
 ### User Roles
 Each user’s role determines what actions they can perform within the Travelgate APP:
 - **Admin**: Can create new connections and make reservations via the Travelgate APP and API.
 - **Editor**: Can review and update existing connections and make reservations.
 - **Viewer**: Can view existing connections and perform searches and quotes.
+
+### Can I reactivate users in my Organization?
+**Yes, you can reactivate users if you have an Owner or Admin role**. To do so, follow the same steps used to add a new user: Navigate to the User Management screen, click "Invite a User," and complete the process.
+
+If you don’t have the required permissions, please reach out to someone in your Organization who does, so they can reactivate the user for you.
 
 ### How to Assign a Contact User to Receive Notifications from Travelgate
  1. Log onto our [Platform](https://www.travelgate.com/).

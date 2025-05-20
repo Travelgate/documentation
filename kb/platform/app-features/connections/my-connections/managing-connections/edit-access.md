@@ -14,6 +14,10 @@ To **edit or update an access**, follow these simple steps:
 ![myconnections_aug_6](https://storage.travelgate.com/kbase/myconnections_aug_6.jpg)
 ![edit_access_2](https://storage.travelgate.com/kbase/edit_access_2.jpg)
 
+:::warning Inventory (Push) Access Code Modifications
+To edit the configuration credentials of an **Inventory (Push) Hotel-X Access Code**, please submit a case through our [Support Portal](/kb/platform/support-portal/how-to-submit-case). This ensures the necessary internal updates are properly handled.
+:::
+
 ### Connections via Legacy Pull Buyers API
 
 If you are working with connections established through the Legacy Pull Buyers API, please note that updates to credentials (such as Hotel-X Access Codes) must be made in two places:

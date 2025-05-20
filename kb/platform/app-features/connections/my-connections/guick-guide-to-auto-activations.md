@@ -29,8 +29,13 @@ Our goal has always been to make connecting with a Partner easier and faster.
   
     - **Step 2 (Access Configuration)**: Assign a distinctive name for your access (e.g., B2B or B2C). Indicate whether it’s for testing or live use. Then, complete the form with the credentials provided by the Seller.
 
-        *Remember*: Each Seller may require different information, depending on their system’s specifications. Make sure your credentials are active and fully functional before proceeding, as using inactive credentials can cause delays.
         <img src="https://storage.travelgate.com/kbase/autoconnections_step3_2.png" alt="quickguide_to_autoconnections_step3_2" width="500" height=""/>
+        
+        :::info
+        Depending on their system specifications, **each Seller may have different access credentials requirements**. For example, some may need specific fields, while others require designated URL endpoints for methods such as search, quote, book, or others. This information should always be provided and confirmed by each Seller.  
+        
+        Make sure your credentials are active and fully functional before proceeding, as using inactive credentials can cause delays.
+        :::
 
     - **Step 3 (Notification Setup)**: Provide one or more contact email addresses for the Partner you are connecting with, so they can be notified once the connection is created and ready for use. The Partner contact must be **registered in Travelgate**.  
     In the 'Other Contacts' field, you can add additional email addresses—such as colleagues or other relevant team members—who should also receive the notifications.

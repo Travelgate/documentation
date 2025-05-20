@@ -12,7 +12,8 @@ Follow these steps to configure your product in the **Travelgate Inventory** sys
 2. Navigate to **Solutions > Inventory**.
 3. Click on **Inventory > SetUp**.
 4. [Configure the Setup](/docs/apps/inventory/extranet/set-up/setup/) for your contracted hotels.
-5. Once the setup is complete, the Channel Manager will be able to retrieve all the information and map it to begin loading allotment and prices.
+5. Once the setup is complete, the Channel Manager will be able to retrieve all the information and map it to begin loading allotment and prices.  
+To prevent mapping issues by the Channel, please ensure your portfolio is up to date and includes all the hotels the Channel Manager plans to map before they retrieve your setup information. You can update your static content at any time by going to the Connections > Content section and clicking the ["Force Update Now"](/kb/platform/app-features/connections/connections-content/content-management) button.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/V_nJoDkMOTA?si=VHPDpuanWe5G8AmP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 

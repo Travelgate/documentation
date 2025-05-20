@@ -5,7 +5,7 @@ sidebar_position: 5
 # Currencies at Travelgate
 
 ## How Can I Check the Currencies Supported by a Seller?
-To find out which currencies a Seller supports, you can use our [Metadata Query](/kb/connectivity-products/for-buyers/hotel-x/content/metadata) method or contact the Seller directly.
+To find out which currencies a Seller supports, reach out to the Seller directly. Each Seller may support different currencies based on their configuration and agreements. This ensures you receive the most accurate and up-to-date information regarding supported currencies.
 
 ## Handling Unsupported Currencies
 If a Seller does not support the currency specified in the Search request, one of two things may happen:

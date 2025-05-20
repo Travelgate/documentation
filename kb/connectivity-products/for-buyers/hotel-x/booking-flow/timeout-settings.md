@@ -71,6 +71,12 @@ If your system discards requests earlier than the timeout set in Travelgate, our
 
 To avoid inconsistencies, **ensure that the timeout values set at Travelgate align with those configured in your own system**.
 
+### As a Seller, how can I check the timeout settings configured by my Buyers?
+Although some of your Buyers may use Travelgate’s default timeout settings, and you can observe timeout details in the logs from the Logging and Stats sections, these logs may not reflect the exact configurations applied by each Buyer.
+
+Timeout settings are configured directly by your Buyers and can vary by request, as they may be tailored to specific use cases. Therefore, we recommend **contacting your Buyers directly** for accurate information.
+
+
 :::tip
 For optimal performance, consider involving the Seller when determining the appropriate timeout values.  
 :::

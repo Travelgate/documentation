@@ -24,6 +24,12 @@ To check or manage existing reservations, follow these steps:
 
 6. To view details of a booking, select it and click **Actions > View details**.
 
+### CSV Booking Reports
+You can download your booking list reports directly from the **'My Bookings'** screen. First, perform a booking search. Then, click the 'Download CSV' button located above the booking results.
+
+![bb2b_virtual_agency_booking_report](https://storage.travelgate.com/kbase/b2b_virtual_agency_booking_report.jpg)
+
+
 ### No Results in "My Bookings" 
 
 If you see the message _"No results found! Try updating your search criteria"_ in 'My Bookings' consider the following causes:

@@ -53,8 +53,10 @@ You can also verify supported languages through our [Metadata Query](/docs/apis/
 ### What Is the Difference Between "hotelCode" and "hotelCodeSupplier"? 
 While both "hotelCode" and "hotelCodeSupplier" are often the same, some Sellers may assign the same hotel code to different properties. To avoid duplication, Travelgate concatenates the destination code with the hotel code to ensure uniqueness. If necessary, you can still find the supplier codes under the 'hotelCodeSupplier' node.
 
-### Which Hotel Codes Should I Use as a Buyer? 
-Buyers should always map and use the **"hotelCode"**, as this is the code required when performing queries via our API.
+### Can I run a Hotel-X Search Query using the "hotelCodeSupplier"?
+No, you cannot run a Hotel-X Search Query using the `hotelCodeSupplier` (the Supplier's native hotel code); you should use the `hotelCode` field.  
+
+If you want to use your own codes or map them to Supplier codes, you must upload [mapping files](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping/) and use your mapped codes in conjunction with your own context. However, even in this case, the mapping is done against the `hotelCode` field of the supplier connection, not the `hotelCodeSupplier` field.
 
 ### Can a Single Hotel Have Different Codes?  
 Yes, the same hotel may have different codes depending on the Seller. For example, the hotel "La Plaza" could have code "1" with Supplier A and "2342334" with Supplier B.

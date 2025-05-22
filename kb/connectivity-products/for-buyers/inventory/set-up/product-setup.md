@@ -17,6 +17,15 @@ To prevent mapping issues by the Channel, please ensure your portfolio is up to 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/V_nJoDkMOTA?si=VHPDpuanWe5G8AmP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
+### Retrieving a Hotel's Destination Code
+- To obtain the destination code of a specific hotel in your Inventory SetUp, run a **Hotel-X Hotels query** and check the response for the closestDestination field. For the Legacy Pull Buyers API, use the **Descriptive Info method** and look for the GeographicDestination node.
+- To retrieve the full list of destinations at the connection level, run a **Hotel-X Destinations query** and locate the relevant field in the response. For the Legacy Pull Buyers API, use the **Geographic Destination Tree method** and follow the same approach.
+
+    :::info
+    For details on destination-related fields in each query or method, please refer to the [Hotel-X](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/overview) and [Legacy Pull Buyers API](/docs/apis/for-buyers/legacy-pull-buyers-api/content/overview) documentation.
+    :::
+
+
 ## Room Combination & Booking Limits
 
 ### Room Combinations

@@ -35,8 +35,14 @@ For more details on auditing Seller transactions, see [this article](/kb/platfor
      - Your credentials are valid.
      - Your search criteria align with their availability.
 
-#### 6. **Handling Persistent 204 Errors**  
-   - If the Seller confirms availability but you still receive a 204 error, reach out to **Customer Support** with complete **request (RQ) and response (RS) logs**, along with the Seller’s successful availability transactions for further analysis.
+#### 6. **Speed Configuration**  
+   - If your connection/access is enabled through the [Speed](/kb/platform/app-features/smart-traffic/speed/speed-activation#2-choose-speed-mode) cache feature, review your current Speed mode settings.
+      - The **"Fast" mode increases the likelihood of no availability results** because it only displays cached responses.
+      - If the data isn’t already stored, no results will appear—though the request is still forwarded to the Seller for future caching.
+   - Switch to the Standard speed mode (recommended) and monitor whether the availability ratio improves.
+
+#### 7. **Handling Persistent 204 Errors**  
+   - If you’ve completed the previous steps but are still receiving a 204 error, please reach out to **Customer Support** with complete **request (RQ) and response (RS) logs**, along with the Seller’s successful availability transactions for further analysis.
 
 :::info How to Obtain Seller Logs in Their Own Format 
 Use the `auditData` parameter in the **Hotel-X Pull Buyers API** or `registerTransactions` in the **Legacy Pull Buyers API**. Detailed instructions can be found [here](/kb/platform/app-features/monitoring-tools/logging/audit-supplier-transactions).
@@ -67,12 +73,18 @@ Travelgate displays results based on the Seller’s integration. A Supplier may 
    - Verify that the Buyer’s credentials are correctly configured on your end and match what they are using.
 
 #### 2. **Verify Product Availability**  
-   - Ensure the requested product is available for the specified search criteria. If discrepancies exist, [force a portfolio update](/kb/platform/app-features/connections/connections-content/content-management#how-can-i-use-the-force-update-now-functionality) and ask the Buyer to remap.
+   - Ensure the requested product is part of your portfolio and is available based on the Buyer's specified search criteria. If discrepancies exist, [force a portfolio update](/kb/platform/app-features/connections/connections-content/content-management#how-can-i-use-the-force-update-now-functionality) and ask the Buyer to remap.
 
-#### 3. **Update Mapping File**  
+#### 3. **Speed Configuration**  
+   - If your connection/access is enabled through the [Speed](/kb/platform/app-features/smart-traffic/speed/speed-activation#2-choose-speed-mode) cache feature, review your current Speed mode settings.
+      - The **"Fast" mode increases the likelihood of no availability results** because it only displays cached responses.
+      - If the data isn’t already stored, no results will appear—though the request is still forwarded to the Seller for future caching.
+   - Switch to the Standard speed mode (recommended) and monitor whether the availability ratio improves.
+
+#### 4. **Update Mapping File**  
    - If the Buyer is using **Hotel-X API**, they should ensure their mapping file is current. More details can be found [here](https://docs.travelgate.com/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping).
 
-#### 4. **Confirm Request Validity**  
+#### 5. **Confirm Request Validity**  
    - If your system shows availability but the Buyer does not receive it, they should audit their **Search logs** by setting `auditTransactions` to `true`. If discrepancies persist, they should provide:
      - Complete **request and response no-availability logs**.
      - Matching transactions from your side.

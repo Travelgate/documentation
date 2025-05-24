@@ -20,6 +20,13 @@ Yes, an option represents a combination of rooms. Canceling an option results in
 
 ## Booking Management
 
+### Can I cancel individual rooms within a booking?
+No, **you cannot cancel individual rooms within a booking** using the Hotel-X API. Cancellations apply to the entire booking (option), which includes all rooms in that reservation. When you cancel the option, all associated rooms are canceled together.
+
+If you need to remove or change a specific room, you can use the [Amend Rooms](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/amendments/amend-rooms) operation. This allows you to modify the structure of the booking rather than cancel individual rooms. Note that this is not the same as a partial cancellation—it is a booking modification and may involve amendment fees or price changes, depending on the supplier’s policies.
+
+To determine whether a Seller supports amendments and which modifications are allowed, please review their [Metadata](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata).
+
 ### Is it possible to restore a booking that was mistakenly canceled?
 No, once a booking is canceled, it cannot be reinstated. However, you can initiate a new booking flow to create a new reservation. Each booking must be treated as a separate transaction, and it is not possible to recover the original booking.
 

@@ -4,7 +4,6 @@
 const {themes} = require('prism-react-renderer');
 const lightTheme = themes.github;
 const darkTheme = themes.dracula;
-const TRAVELGATE_API_KEY ='test0000-0000-0000-0000-000000000000';
 
 
 /** @type {import('@docusaurus/types').Config} */
@@ -83,35 +82,27 @@ const config = {
     [
       "@graphql-markdown/docusaurus",
       {
-        // ... other options
-        schema: 'https://api.travelgatex.com',
+        //schema: 'https://api.travelgatex.com',
+        schema: "./schemas/filtered-schema.graphql",
         rootPath: "./api",
         baseURL: "/",
         linkRoot: "/api",
-        pretty: true,
-        forceSchema: true,
-        force: true,
-        include:{
-          fields: [
-            // Queries específicas
-            "Query.hotelX",
-            //'Query.inventory',
-            // // Mutations específicas
-            //'Mutation.HotelXMutation',
-            //'Mutation.InventoryMutation',
-          ],
-        },
-        //homepage: "./docs/api-reference.md",
         loaders: {
-          UrlLoader: {
-            module: "@graphql-tools/url-loader",
-            options: {
-              headers: {
-                Authorization: "Apikey " + TRAVELGATE_API_KEY,
-              }
-            }
-          }
-        }
+          GraphQLFileLoader: "@graphql-tools/graphql-file-loader", // local file schema
+        },
+        // pretty: true,
+        // forceSchema: true,
+        // force: true,
+        // loaders: {
+        //   UrlLoader: {
+        //     module: "@graphql-tools/url-loader",
+        //     options: {
+        //       headers: {
+        //         Authorization: "Apikey " + TRAVELGATE_API_KEY,
+        //       }
+        //     }
+        //   }
+        // }
       },
     ],
     [

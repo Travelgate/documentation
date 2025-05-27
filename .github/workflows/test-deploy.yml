@@ -20,6 +20,11 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+      - name: Generate custom schema
+        run: node scripts/generateSchema.js
+        env:
+          NODE_OPTIONS: "--max_old_space_size=4096"
+          TRAVELGATE_API_KEY: ${{ secrets.TRAVELGATE_API_KEY }}
       - name: Generate api reference from Graphql schema
         run: npx docusaurus graphql-to-doc --force
         env:

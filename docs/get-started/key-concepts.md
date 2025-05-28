@@ -21,7 +21,7 @@ A Buyer uses the Travelgate platform to book travel services such as hotels for 
 ### Client
 A `client` is a tag or label that Buyers use to categorize their traffic. The `client` is the entity that purchases accommodation services via the Hotel-X API. These codes also ensure that the business has a designated configuration assigned to it.
 
-You can have multiple client codes, for instance, to separate traffic for B2B and B2C (e.g., client_b2b, client_b2c). All accesses work with any client code, so choose according to your needs. You can find your `client` on the Travelgate website in Connections > [API Settings](https://app.travelgatex.com/connections/settings).
+You can have multiple client codes, for instance, to separate traffic for B2B and B2C (e.g., client_b2b, client_b2c). All accesses work with any client code, so choose according to your needs. You can find your `client` on the Travelgate website in Connections > [API Settings](https://app.travelgate.com/connections/settings).
 
 ![Client](https://storage.travelgate.com/docs/Client.png)
 

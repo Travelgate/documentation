@@ -12,7 +12,7 @@ import {replaceClient} from "../utils";
 let fetcher = null;
 
 if (ExecutionEnvironment.canUseDOM) {
-    fetcher = createGraphiQLFetcher({url: 'https://api.travelgatex.com/'});
+    fetcher = createGraphiQLFetcher({url: 'https://api.travelgate.com/'});
 } else {
     fetcher = null;
 }

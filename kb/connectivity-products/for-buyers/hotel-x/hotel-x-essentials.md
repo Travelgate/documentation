@@ -6,7 +6,7 @@ sidebar_position: 3
 
 ## Hotel-X Endpoint
 
-To access all methods available through the Hotel-X API, use the endpoint **https://api.travelgatex.com** (for both test and production environments).
+To access all methods available through the Hotel-X API, use the endpoint **https://api.travelgate.com** (for both test and production environments).
 
 ## API Headers and Performance Optimization
 

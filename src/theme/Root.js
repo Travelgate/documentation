@@ -6,7 +6,7 @@ import {ApolloProvider, ApolloClient, InMemoryCache, useQuery, gql, createHttpLi
 import {setContext} from "@apollo/client/link/context";
 
 const httpLink = createHttpLink({
-    uri: 'https://api.travelgatex.com/',
+    uri: 'https://api.travelgate.com/',
 });
 
 const authLink = setContext((_, { headers }) => {

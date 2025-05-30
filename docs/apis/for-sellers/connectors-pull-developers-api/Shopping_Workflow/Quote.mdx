@@ -12,7 +12,9 @@ The `Quote` operation serves several purposes:
 - **Policy Confirmation**: Validates the cancellation policies, payment terms, and other conditions tied to the selected option.
 - **Data Reliability**: Ensures that all data is accurate and aligned with the supplier’s current availability before proceeding to the `Book` operation.
 
-> **Note**: Always prioritize data from `Quote` over `Search`, as `Quote` reflects the most accurate and reliable information.
+:::note
+Always prioritize data from `Quote` over `Search`, as `Quote` reflects the most accurate and reliable information.
+:::
 
 When to use `Quote`:
 - **Dynamic Pricing**: For suppliers that update prices frequently, this step confirms current rates.
@@ -23,6 +25,167 @@ Common Scenarios:
 - **Price Changes**: If the supplier's price differs from the `Search` response, the `Quote` operation will provide the updated price. 
   - Example: A `PriceChanged` error code is returned if there’s a discrepancy. (See [Error Handling in Connectors](../Connector_Framework/Error_Handling_in_Connectors.mdx)).
 - **Option No Longer Available**: If the selected option is no longer valid, the response may include an `ItemNotAvailable` error code.
+## **Cancel Policies in Quote**
+
+Cancellation policies provided during the **quote** step are critical for TravelgateX, as they offer clear and up-to-date information about cancellation terms, deadlines, and penalties. This transparency empowers buyers to make informed decisions and helps prevent misunderstandings or unexpected charges.
+
+The `quote` response includes key fields such as:
+
+- Whether the option is **refundable** or not.
+- A detailed list of **penalties** associated with cancellation.
+- The exact **cancellation deadline**, always expressed in **UTC (Coordinated Universal Time)**.
+
+By delivering this data in a consistent and precise format, TravelgateX ensures that all parties involved—buyers, sellers, and final customers—have a shared understanding of the financial implications before confirming a booking.
+
+:::important
+Accurate handling of cancellation policies is essential to avoid financial discrepancies and maintain trust across the TravelgateX ecosystem.
+:::
+
+
+### **Internal Cancellation Policy Model**
+
+At TravelgateX, we use a standardized model to represent cancellation policies, allowing us to consistently translate information coming from a wide range of suppliers. Below is a breakdown of the core components of this model.
+
+#### **Key Elements of a Cancellation Policy**
+
+A cancellation policy is composed of a list of penalties (`CancelPenalties`). Each penalty includes the following information:
+
+* **`PenaltyType`**: Specifies the type of penalty applied upon cancellation. It can be a fixed amount, a number of nights, or a percentage of the total cost.
+* **`Currency`**: Indicates the currency in which the penalty value is expressed.
+* **`Value`**: The amount of the penalty (either a monetary value, a number of nights, or a percentage).
+* **`Deadline`**: The exact UTC date and time when the penalty becomes effective. Format: `yyyy-MM-ddThh:mm:ssZ`, e.g., `2025-05-30T23:59:59Z`.
+
+:::note
+`Deadline` and `HoursBefore` represent the same concept—the time at which the penalty is triggered. The difference is that one is absolute (`Deadline`) and the other is relative (`HoursBefore`).
+:::
+
+#### **Internal Model Structure in C\#**
+
+```csharp
+public class CancelPolicy
+{
+    protected CancelPolicy() { }
+
+    public CancelPolicy(bool refundable, IEnumerable<CancelPenalty> cancelPenalties)
+    {
+        Refundable = refundable;
+
+        if (refundable)
+        {
+            CancelPenalties = cancelPenalties ?? throw new ArgumentNullException(nameof(cancelPenalties));
+        }
+    }
+
+    [DataMember(Order = 1)]
+    public bool Refundable { get; init; }
+
+    [DataMember(Order = 2)]
+    public IEnumerable<CancelPenalty> CancelPenalties { get; set; }
+
+    [DataMember(Order = 3)]
+    public string CancelPolicyDescription { get; set; }
+}
+
+[DataContract]
+[Serializable]
+public class CancelPenalty
+{
+    private CancelPenalty() { }
+
+    public CancelPenalty(uint hoursBefore, PenaltyType penaltyType, Currency currency, double value, string deadline = default)
+    {
+        HoursBefore = hoursBefore;
+        PenaltyType = penaltyType;
+        Currency = currency;
+        Value = value;
+        Deadline = deadline;
+    }
+
+    [DataMember(Order = 1)]
+    public uint HoursBefore { get; set; }
+
+    [DataMember(Order = 2)]
+    public PenaltyType PenaltyType { get; set; }
+
+    [DataMember(Order = 3)]
+    public Currency Currency { get; set; }
+
+    [DataMember(Order = 4)]
+    public double Value { get; set; }
+
+    [DataMember(Order = 5)]
+    public string Deadline { get; set; }
+}
+
+public enum PenaltyType
+{
+    Amount,    // Fixed amount
+    Nights,    // Number of nights
+    Percentage // Percentage of the total booking cost
+}
+```
+
+---
+
+### **Helpers for Mapping Supplier Data**
+
+To accurately map supplier cancellation policies to our internal model, you can use one of the following helper methods depending on the supplier data format:
+
+#### **CancelPenaltyFromDateWithoutTimeZone**
+
+Use this method when the supplier provides a deadline date **without time zone** information.
+
+```csharp
+public CancelPenalty CancelPenaltyFromDateWithoutTimeZone(
+    DateTime checkIn,
+    PenaltyType penaltyType,
+    Currency currency,
+    double value,
+    string deadLineWithoutTimeZone,
+    string dateFormat,
+    TimeZoneEnum timeZone
+);
+```
+
+* Assumes no time zone is present (e.g., no "Z" or UTC offset).
+* Requires manual timezone configuration. If the documentation does not specify it, use `TimeZoneEnum.Unknown`, which applies a -14h safety offset.
+
+#### **CancelPenaltyFromDateWithTimeZone**
+
+Use this method when the deadline value **includes time zone** information explicitly.
+
+```csharp
+public CancelPenalty CancelPenaltyFromDateWithTimeZone(
+    DateTime checkIn,
+    PenaltyType penaltyType,
+    Currency currency,
+    double value,
+    string deadLineWithTimeZone,
+    string dateFormat
+);
+```
+
+* Parses and respects the timezone embedded in the deadline string.
+* No additional time zone logic required.
+
+#### **CancelPenaltyFromHours**
+
+Use this method when the supplier defines penalties as a number of hours before check-in (not an absolute timestamp).
+
+```csharp
+public CancelPenalty CancelPenaltyFromHours(
+    uint hoursBefore,
+    PenaltyType penaltyType,
+    Currency currency,
+    double value,
+    DateTime date,
+    TimeZoneEnum timeZone
+);
+```
+
+* Converts a relative `hoursBefore` value into an absolute UTC deadline.
+* Time zone must be provided manually or as part of an integration agreement.
+
 
 ## **Request**
 

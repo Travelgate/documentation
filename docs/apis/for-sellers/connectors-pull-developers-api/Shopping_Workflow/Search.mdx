@@ -12,6 +12,24 @@ The `Search` operation is used to:
 - Provide detailed information about available rooms, prices, and policies.
 - Act as a foundation for subsequent operations like `Quote` and `Book`.
 
+## **Cancellation Policies in Search**
+
+Cancellation policies in the **availability (search)** step are important because they allow buyers to know—right from the start—whether an option is **refundable** and under what conditions.
+
+However, not all suppliers are required to provide cancellation policy details during the search response. Some suppliers only include this information in the **quote** step. In such cases, the `refundable` field may appear as `null` in the search response, indicating that the supplier will only provide cancellation information during the quote phase.
+
+To avoid confusion or incorrect assumptions, it is essential to check the supplier's metadata to understand what level of cancellation detail is provided at each stage of the booking flow.
+
+:::tip
+If `refundable` is `null` in the search response, make sure to handle cancellation logic in the **quote** step, where detailed policy data is guaranteed.
+:::
+
+For a complete reference on how cancellation policies should be handled in the quote phase, see:
+
+- [Internal Cancellation Policy Model](./Quote#internal-cancellation-policy-model)
+- [Helpers for Mapping Supplier Data](./Quote#helpers-for-mapping-supplier-data)
+
+
 ## **Request**
 
 The Request is structured to accommodate various parameters that clients can specify to refine their search.

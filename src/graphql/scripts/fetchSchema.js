@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const fetch = require("node-fetch");
 
-const GRAPHQL_ENDPOINT = "https://api.travelgatex.com";
+const GRAPHQL_ENDPOINT = "https://api.travelgate.com";
 const BEARER_TOKEN = "Add your Bearer here"; // Replace with your actual token
 
 const OUTPUT_FILE = path.join(__dirname, "../schema-json/inventory-schema.json");

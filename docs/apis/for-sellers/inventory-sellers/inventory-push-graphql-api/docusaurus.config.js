@@ -81,7 +81,7 @@ const config = {
       "@graphql-markdown/docusaurus",
       {
         // ... other options
-        schema: 'https://api.travelgatex.com',
+        schema: 'https://api.travelgate.com',
         rootPath: "./api",
         baseURL: "/",
         linkRoot: "/api",

@@ -90,23 +90,23 @@ If repeated errors occur, review the data formats and requirements in the toolti
 
 These tools and features are designed to streamline your workflow and enhance data accuracy. By following these guidelines, you can effectively manage and prepare your data using the enhanced capabilities of the speadsheet.
 
-### 3. File Naming Importance for TravelgateX FTP Uploads
+### 3. File Naming Importance for Travelgate FTP Uploads
 
-Understanding the significance of file naming is crucial for successful file uploads to TravelgateX's FTP. Below is a summary of the required elements to correctly name your file, which are detailed through examples shared in the file schema:
+Understanding the significance of file naming is crucial for successful file uploads to Travelgate's FTP. Below is a summary of the required elements to correctly name your file, which are detailed through examples shared in the file schema:
 
 #### clientCode(Inventory):  
-This is TravelgateX's native code for the client in the inventory system.
+This is Travelgate's native code for the client in the inventory system.
 :::note
 
-Your ClientCode can be retrieved from any TravelgateX's access with a Channel Manager.
+Your ClientCode can be retrieved from any Travelgate's access with a Channel Manager.
 See [My Connections](https://app.travelgate.com/connections/myconnections) and click "Get form data" in the selected access, the code in Password is equivalent to the ClientCode.
 
 :::
 #### providerCode(Inventory):  
-This is TravelgateX's native code for the provider in the inventory.
+This is Travelgate's native code for the provider in the inventory.
 :::note
 
-Your ProviderCode can be retrieved from any TravelgateX's access with a Channel Manager.
+Your ProviderCode can be retrieved from any Travelgate's access with a Channel Manager.
 See [My Connections](https://app.travelgate.com/connections/myconnections) and click "Get form data" in the selected access, the code in User is equivalent to the ProviderCode.
 
 :::
@@ -119,11 +119,11 @@ Depending on the type of connection to a Channel Manager, there are two scenario
 	* **HotelCode**: Use the native code provided by the Channel Manager.
 	* **ContextCode**: This part must be filled in, as it is essential for the Channel Manager that uses its own unique codes. It is mandatory to include both the hotel code and the context code in the file name.
 
-* **Scenario 2:** Connecting to a Channel Manager Using TravelgateX Inventory Codes:
+* **Scenario 2:** Connecting to a Channel Manager Using Travelgate Inventory Codes:
 
-	* **HotelCode**: Use the code from TravelgateX's inventory.   
+	* **HotelCode**: Use the code from Travelgate's inventory.   
 	To check if the hotel exists in inventory you can retrieve current details using the following queries: [Hotels Master](../inventory-set-up-graphql-api/masters/hotels-master/), [Search Hotels Master](../inventory-set-up-graphql-api/masters/hotels-master/search-hotels-master)
-	* **ContextCode**: This part should be ignored as the Channel Manager works with TravelgateX's inventory codes, and no additional contextual code is needed.
+	* **ContextCode**: This part should be ignored as the Channel Manager works with Travelgate's inventory codes, and no additional contextual code is needed.
 
 **Examples:**  
 * **Example for Scenario 1:**
@@ -131,7 +131,7 @@ Example:
 Imagine you are the client "travelClient (TGX)" connected to the channel manager "travelgateChannelManagerNativeCode (TGXCMNC)", which uses natives hotel codes (Native1234). If you are completing the "rooms" file, the download file name should be: clientCode(Inventory)-providerCode(Inventory)-HotelCode#ContextCode-rooms.csv. In this Case, you would name the file "TGX-TGXCMNC-Native1234#TRV-rooms.csv". The ContextCode can be found in the same sheet, in the column "context", you have a dropdown with the current values of the channels managers that work with native hotel codes.
 
 * **Example for Scenario 2:**
-Imagine you are the client "travelClient (TGX)" connected to the channel manager "travelgateChannelManager (TGXCM)", which uses hotel codes from the inventory. If you are completing the "rooms" file, the download file name should be: "clientCode(Inventory)-providerCode(Inventory)-HotelCode#ContextCode-rooms.csv. In this case, you would name the file "TGX-TRVCM-1234-rooms.csv", omitting the #ContextCode since the connected channel does not use native codes but relies on TravelgateX's inventory codes.
+Imagine you are the client "travelClient (TGX)" connected to the channel manager "travelgateChannelManager (TGXCM)", which uses hotel codes from the inventory. If you are completing the "rooms" file, the download file name should be: "clientCode(Inventory)-providerCode(Inventory)-HotelCode#ContextCode-rooms.csv. In this case, you would name the file "TGX-TRVCM-1234-rooms.csv", omitting the #ContextCode since the connected channel does not use native codes but relies on Travelgate's inventory codes.
 
 ### 4. Uploading Files to SFTP and Configuration 
 

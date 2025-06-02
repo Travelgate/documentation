@@ -62,11 +62,11 @@ export default function AskAi() {
     >
       <div className="container">
         <div className="row">
-          <div className="col col--12 browse-articles title-ia">
+          {/* <div className="col col--12 browse-articles title-ia">
             <div className="item margin-top--lg margin-bottom--sm">
               <h4>Travelgate AI Assistant.</h4>
             </div>
-          </div>
+          </div>*/}
           <div className={clsx("na", styles.customContainer)}>
             <iframe src="/kapa.html" title="Ask AI"></iframe>
           </div>

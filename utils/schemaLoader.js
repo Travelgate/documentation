@@ -48,7 +48,7 @@ async function loadFilteredSchema() {
             fetch = require('node-fetch');
         }
 
-        const response = await fetch('https://api.travelgatex.com', {
+        const response = await fetch('https://api.travelgate.com', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

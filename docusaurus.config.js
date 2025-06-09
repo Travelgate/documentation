@@ -82,7 +82,6 @@ const config = {
     [
       "@graphql-markdown/docusaurus",
       {
-        //schema: 'https://api.travelgatex.com',
         schema: "./schemas/filtered-schema.graphql",
         rootPath: "./api",
         baseURL: "/",

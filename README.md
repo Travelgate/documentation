@@ -40,7 +40,7 @@ or with a temporary environment variable:
 TRAVELGATE_API_KEY=your_api_key npx docusaurus graphql-to-doc
 ```
 
-The GraphQL API reference is generated from the TravelgateX GraphQL schema but
+The GraphQL API reference is generated from the Travelgate GraphQL schema but
 the `sidebar-schema.js` needs to be updated. Copy + paste the following code in your
 `api/sidebar-schema.js` file: (***create the file manually if necessary**)
 
@@ -89,7 +89,7 @@ module.exports = {
 };
 ```
 
-This process will generate the GraphQL API reference from the TravelgateX GraphQL schema.
+This process will generate the GraphQL API reference from the Travelgate GraphQL schema.
 
 
 ## Local Development
@@ -160,7 +160,7 @@ This guide explains how to **automatically generate documentation** for the Grap
 
 Before running the scripts, ensure that your environment meets the following requirements:
 
-- **Access to the TravelgateX GraphQL API endpoint**.
+- **Access to the Travelgate GraphQL API endpoint**.
 - A **valid Bearer Token** for authentication.
 - The **GraphQL schema** must be available in the correct directory.
 
@@ -230,7 +230,7 @@ To maintain a **clear structure**, always include the `## Examples` section befo
 ## 🚀 4. Fetch the GraphQL Schema (`fetchSchema.js`)
 
 ### 🔹 Description
-This script retrieves the GraphQL schema from the TravelgateX endpoint and **stores it as a JSON file**.
+This script retrieves the GraphQL schema from the Travelgate endpoint and **stores it as a JSON file**.
 
 ### 🛠 Configuration
 1. In `src/graphql/scripts/fetchSchema.js`, modify the `REQUIRED_TYPES` constant to include the **GraphQL types** you want to document.

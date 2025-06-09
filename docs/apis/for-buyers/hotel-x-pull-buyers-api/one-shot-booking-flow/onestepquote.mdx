@@ -2,42 +2,6 @@
 sidebar_position: 3
 ---
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import HotelSettingsInput from "../../../../../src/graphql/generated-docs/HotelSettingsInput.mdx";
 import HotelOneStepQuoteInput from "../../../../../src/graphql/generated-docs/HotelOneStepQuoteInput.mdx";
 import HotelFilterInput from "../../../../../src/graphql/generated-docs/HotelFilterInput.mdx";
@@ -81,7 +45,13 @@ query {
 
 This query offers versatility in quote options, with certain fields marked as mandatory and others as optional. 
 
-To specify your one step quote criteria you need to use the input `HotelOneStepQuoteInput` in your query variables:
+To specify your one step quote criteria you need to use the input `HotelOneStepQuoteInput` in your query variables. 
+Make sure the values sent in the OneStepQuote input match exactly the information received in the offer option you are trying to quote. 
+This includes fields such as rateRulesExtended, binding, and others.
+
+:::warning Important
+ Any mismatch between the data sent in this request and the details provided by Channel-X (e.g., promotion codes, rate types, refundability, etc.) may result in errors or unsuccessful quotes.
+:::
 
 
 ```js
@@ -144,17 +114,45 @@ To specify your one step quote criteria you need to use the input `HotelOneStepQ
 * `board`
 * `occupancies`
 * `rooms`
-* `price`
 * `cancelPolicy`
+* `price`: Note that there is a difference on the use of the `binding` field (inside price node) in the request.
+	- **In OneStepBook**:  
+  	The `binding` field is a **boolean** indicating whether the product **must be sold at the specified price or above**.
+  
+	- **In Channel-X**:  
+	The equivalent field is `YieldableIndicator`, which has an **opposite logic**:
+
+		- `YieldableIndicator = true` (or not present): the product **can** be sold **below the price**.  
+		- `YieldableIndicator = false`: the product **cannot** be sold below the price (**binding = true**).
 
 **Optional criteria:**
 * `language`
 * `nationality`
 * `market`
 * `ratePlan`
-* `rateRulesExtended`
 * `surcharges` 
 * `supplements`
+* `rateRulesExtended`: Make sure to correctly translate the Channel-X values before sending them in the `RateRulesExtended` input to avoid errors or mismatches.
+
+| Channel-X/Code | Channel-X/PromotionCode | Channel-X/RatePlanType | Channel-X/NonRefundable | OneStepBook/RateRulesType |
+|---------------|-------------------------|------------------------|------------------------|----------------------------------------|
+| 0             | No promotion            |                        |                        |                                        |
+| 25            | Senior 55               |                        |                        | OLDER55                                |
+| 26            | Senior 60               |                        |                        | OLDER60                                |
+| 27            | Senior 65               |                        |                        | OLDER65                                |
+| 0             |                         | No selected            |                        |                                        |
+| 7             |                         | Large Family           |                        | LARGE_FAMILY                           |
+| 8             |                         | Public Servant         |                        | PUBLIC_SERVANT                         |
+| 10            |                         | Negotiated             |                        | NEGOTIATED                             |
+| 11            |                         | Package                |                        | PACKAGE                                |
+| 34            |                         | Canary Resident        |                        | CANARY_RESIDENT                        |
+| 35            |                         | Balearic Resident      |                        | BALEARIC_RESIDENT                      |
+| 36            |                         | Honeymoon              |                        | HONEYMOON                              |
+|               |                         |                        | TRUE                   | NON_REFUNDABLE                         |
+
+
+
+
 
 ### 2. Settings 
 

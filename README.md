@@ -17,6 +17,19 @@ To run this command, you need to have a Travelgate api key called `TRAVELGATE_AP
 your environment variables. You can get the key from the team. The way you set the environment
 variable depends on your operating system.
 
+#### Before you continue
+
+Since June 2025 we only expose specific GraphQL APIs to the public. Because of that, we introduced a new command which 
+needs to be executed to generate the schema from remote GraphQL API. This command will generate a local copy of the 
+schema containing only the public APIs manually defined by us in `utils/schemaLoader.js` file, lines 75-76. Run 
+the following command to generate the schema:
+
+```bash
+npm run generate-schema
+```
+
+Once the schema is generated, you can run the command to generate the API docs based on the schema:
+
 ```
 npx docusaurus graphql-to-doc
 ```

@@ -145,6 +145,28 @@ public CancelPenalty CancelPenaltyFromDateWithoutTimeZone(
     string dateFormat,
     TimeZoneEnum timeZone
 );
+
+//Example of how should it be implemented:
+
+// Sample data
+DateTime checkIn = supplier.CheckIn //If supplier does not return checkIn, it can also be obtained by the request
+PenaltyType penaltyType = PenaltyType.Amount; // Example enum value
+Currency currency = Currency.USD; // Example enum value
+double value = supplier.Price // "150.00", Price given by the supplier;
+string deadLineWithoutTimeZone = supplier.DeadlineWithoutTimezone //"2025-07-10", Supplier penalty deadline without timezone;
+string dateFormat = "yyyy-MM-dd"; //Supplier date format
+TimeZoneEnum timeZone = TimeZoneEnum.UTC14; // Example enum value, check the real value with supplier
+
+// Method call
+CancelPenalty result = _connectorsUtilities.CancelPenaltyManager.CancelPenaltyFromDateWithoutTimeZone(
+    checkIn,
+    penaltyType,
+    currency,
+    value,
+    deadLineWithoutTimeZone,
+    dateFormat,
+    timeZone
+);
 ```
 
 * Assumes no time zone is present (e.g., no "Z" or UTC offset).
@@ -163,6 +185,26 @@ public CancelPenalty CancelPenaltyFromDateWithTimeZone(
     string deadLineWithTimeZone,
     string dateFormat
 );
+
+// Example of how should it be implemented:
+
+// Sample data
+DateTime checkIn = supplier.CheckIn; // If supplier does not return checkIn, it can also be obtained by the request
+PenaltyType penaltyType = PenaltyType.Amount; // Example enum value
+Currency currency = Currency.USD; // Example enum value
+double value = supplier.Price // "150.00", Price given by the supplier;
+string deadLineWithTimeZone = supplier.DeadlineWithTimezone //"2025-07-10T23:59:59+14:00" Supplier penalty deadline with timezone
+string dateFormat = "yyyy-MM-ddTHH:mm:sszzz"; // Supplier date format with timezone
+
+// Method call
+CancelPenalty result = _connectorsUtilities.CancelPenaltyManager.CancelPenaltyFromDateWithTimeZone(
+    checkIn,
+    penaltyType,
+    currency,
+    value,
+    deadLineWithTimeZone,
+    dateFormat
+);
 ```
 
 * Parses and respects the timezone embedded in the deadline string.
@@ -180,6 +222,26 @@ public CancelPenalty CancelPenaltyFromHours(
     double value,
     DateTime date,
     TimeZoneEnum timeZone
+);
+
+// Example of how should it be implemented:
+
+// Sample data
+uint hoursBefore = supplier.HoursBefore; //"48", Supplier states penalty applies 48 hours before the specified date
+PenaltyType penaltyType = PenaltyType.Amount; // Example enum value
+Currency currency = Currency.USD; // Example enum value
+double value = supplier.Price // "150.00", Price given by the supplier;
+DateTime date = supplier.CheckIn; // Penalty applies based on check-in date
+TimeZoneEnum timeZone = TimeZoneEnum.UTC14; // Example enum value, check the real value with supplier
+
+// Method call
+CancelPenalty result = _connectorsUtilities.CancelPenaltyManager.CancelPenaltyFromHours(
+    hoursBefore,
+    penaltyType,
+    currency,
+    value,
+    date,
+    timeZone
 );
 ```
 

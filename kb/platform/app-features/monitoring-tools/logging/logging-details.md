@@ -51,10 +51,16 @@ If your search returns a large number of results, use additional filters on the 
 
 ![logging_new_3](https://storage.travelgate.com/kbase/logging_new_3.jpg)
 
-### Is it possible to download my Hotel-X logs through Logging?
+:::info Reservation Status vs. Logging Status
+The "Status/Error Code" displayed in the Logging screen only shows whether the transaction was processed without errors—it does **not** reflect the actual status of a reservation. For example, a reservation may appear as OK in the Logging screen, even if its actual [Book status](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/book/book-status) is UNKNOWN, as long as the transaction completed without errors.  
+
+To determine the actual [status of a reservation](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/book/book-status), you should perform a [Booking Read](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/booking-read) operation.
+:::
+
+## Can I download my Hotel-X logs through Logging?
 Yes, you can retrieve Hotel-X logs directly by selecting **'Hotel-X Logs'** under the Download options.
 
-## What is the difference between Hotel-X Logs, Legacy Logs, and Connector Logs?
+### What is the difference between Hotel-X Logs, Legacy Logs, and Connector Logs?
 
 In the **Actions** section, you can download different types of transaction logs:
 
@@ -66,7 +72,7 @@ In the **Actions** section, you can download different types of transaction logs
 
 ## Can I Retrieve Logs from a One Step Book Operation?
 
-Yes! You can obtain **Quote and Book logs** for the **One Step Book** operation using Logging. Simply apply the appropriate filters (**connection, reference, or session ID**) to locate the relevant logs.
+Yes, you can obtain **Quote and Book logs** for the **One Step Book** operation using Logging. Simply apply the appropriate filters (**connection, reference, or session ID**) to locate the relevant logs.
 
 :::info Legacy Pull Buyers API Information  
 For Buyer connections through our **Legacy Pull Buyers API**, filtering by **Hotel-X Access Code** is **not available**. Instead, connections are identified through the Buyer's **clientname#suppliercode** relationship.  

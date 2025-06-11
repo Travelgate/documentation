@@ -40,6 +40,10 @@ If you see the message _"No results found! Try updating your search criteria"_ i
 If the necessary filters are unsupported, contact the supplier to explore the possibility of them making this data available.
 
 
+### Why does "My Bookings" show reservations not made through Travelgate?
+When Travelgate retrieves booking data from a supplier, it displays **all reservations the supplier returns based on your credentials**. This may include bookings made outside of Travelgate. If you'd rather not see those, you can ask the supplier to filter the list to show only Travelgate bookings.
+
+
 ## How to Cancel a Booking through the B2B Virtual Agency
 
 1. Find the booking you wish to cancel.

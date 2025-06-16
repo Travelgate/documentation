@@ -58,15 +58,20 @@ The operation type 'Other' covers operations that don’t fall under Search, Quo
 - Average response times.
 - L2B (Look-to-Book) ratio.
 
-:::info Download CSV Functionality
-Above each table, you’ll find a **'Download CSV'** button, which allows you to download the Stats data that is most relevant to your business. Give it a try! 🚀
-:::
-
 ![stats_dashboard_4](https://storage.travelgate.com/kbase/stats_dashboard_4.jpg)
+
+:::info Reservation Status vs. Transaction Status
+The "OK" data displayed in the Stats screen only shows whether the transaction was processed without errors—it does **not** reflect the actual status of a reservation. For example, a reservation may appear as OK in the Stats screen, even if its actual [Book status](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/book/book-status) is UNKNOWN, as long as the transaction completed without errors.  
+
+To determine the actual [status of a reservation](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/book/book-status), you should perform a [Booking Read](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/booking-read) operation.
+:::
 
 Additionally, if any transactions result in errors, you can easily identify the specific error code and download the log transactions for the Quote, Book, and Cancel steps. Stats provides you with all the data you need to stay on top of your performance.
 
 ![stats_dashboard_5](https://storage.travelgate.com/kbase/stats_dashboard_5.jpg)
+
+#### Download CSV Functionality
+Above each table, you’ll find a **'Download CSV'** button, which allows you to download the Stats data that is most relevant to your business. Give it a try! 🚀
 
 :::info Legacy Pull Buyers API Information
 For Buyer connections via our Legacy Pull Buyers API, filtering by Hotel-X Access Code is **not available**. Instead, connections are identified using the **clientname#suppliercode** relationship.  

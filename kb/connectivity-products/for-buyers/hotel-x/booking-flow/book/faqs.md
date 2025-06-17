@@ -44,6 +44,10 @@ The payment details required in your Book request depend on the payment type spe
 
 No, when using the Virtual Credit Card (VCC) plugin, payment card details should **not** be included in the [PaymentCardInput](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/book/#1-input) of your Book request. However, if paying with a regular credit card, it is mandatory to provide the payment type and credit card details unless the VCC plugin is enabled to generate virtual credit cards. Learn more about VCC payments [here](/kb/faqs/faqs-price/vcc-payments).
 
+### Is Travelgate PCI Certified?
+
+No, Travelgate is not PCI certified. However, we are committed to maintaining the highest standards of security and data protection. As an **ISO 27001 certified solution**, Travelgate follows rigorous security protocols that safeguard your business's sensitive information against potential threats. This allows you to focus on your core operations without worrying about data breaches. For more information, please refer to our documentation at [this link](https://docs.travelgate.com/docs/security/overview).
+
 ## Currency and Transactions
 
 ### Will the currency in Book be the same as the currency in Quote?

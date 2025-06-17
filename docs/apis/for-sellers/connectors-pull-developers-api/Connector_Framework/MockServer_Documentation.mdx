@@ -100,20 +100,86 @@ This structure must be added to the mock server under the config path: `/Config<
 
 ### **Provider_Errors**
 Simulates supplier error responses. For example:
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<Response>
-  <error mensaje="Authentication Failed - Wrong Password"/>
-</Response>
+```json
+{
+  "error": {
+    "description": "Authentication Failed - Wrong Password"
+  }
+}
 ```
 
----
-
-### **Detailed Test Scenarios**
 #### **Two_Adults_Two_Days**
 - **Purpose**: Tests a standard booking scenario for two adults over two nights.
 - **Scenario**:
   - Confirms correct handling of standard occupancy configurations.
+
+```json
+{
+  "Options": [
+    {
+      "Status": "Available",
+      "SupplierPrice": {
+        "Currency": "EUR",
+        "Net": 150.75,
+        "MinimumSellingPrice": 165.00
+      },
+      "SupplierPaymentType": "MerchantPay",
+      "Rooms": [
+        {
+          "OccupancyId": 1,
+          "RoomCode": "STDSUIT",
+          "SupplierPrice": {
+            "Currency": "EUR",
+            "Net": 75.00,
+            "MinimumSellingPrice": 82.50
+          },
+          "RoomDescription": "Standard Suite with city view"
+        },
+        {
+          "OccupancyId": 2,
+          "RoomCode": "DLXROOM",
+          "SupplierPrice": {
+            "Currency": "EUR",
+            "Net": 75.75,
+            "MinimumSellingPrice": 82.50
+          },
+          "RoomDescription": "Deluxe Room with king bed"
+        }
+      ],
+      "BoardCode": "BB"
+    },
+    {
+      "Status": "OnRequest",
+      "SupplierPrice": {
+        "Currency": "USD",
+        "Net": 200.00,
+        "MinimumSellingPrice": 220.00
+      },
+      "SupplierPaymentType": "MerchantPay",
+      "Rooms": [
+        {
+          "OccupancyId": 1,
+          "RoomCode": "PREMSUIT",
+          "SupplierPrice": {
+            "Currency": "USD",
+            "Net": 200.00,
+            "MinimumSellingPrice": 220.00
+          },
+          "RoomDescription": "Premium Suite with ocean view"
+        }
+      ],
+      "BoardCode": "HB"
+    }
+  ],
+  "HotelCode": "HLC12345",
+  "BoardName": "Bed and Breakfast",
+  "HotelName": "Grand Hyatt Madrid"
+}
+```
+---
+
+### **Detailed Test Scenarios**
+
 
 #### **Specific_Policies**
 - **Purpose**: Validates the Connector's ability to include exact cancellation policies in the `Quote` response.

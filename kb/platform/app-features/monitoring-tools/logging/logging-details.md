@@ -51,7 +51,7 @@ If your search returns a large number of results, use additional filters on the 
 
 ![logging_new_3](https://storage.travelgate.com/kbase/logging_new_3.jpg)
 
-:::info Reservation Status vs. Logging Status
+:::info Reservation Status vs. Transaction Status
 The "Status/Error Code" displayed in the Logging screen only shows whether the transaction was processed without errors—it does **not** reflect the actual status of a reservation. For example, a reservation may appear as OK in the Logging screen, even if its actual [Book status](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/book/book-status) is UNKNOWN, as long as the transaction completed without errors.  
 
 To determine the actual [status of a reservation](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/book/book-status), you should perform a [Booking Read](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/booking-read) operation.

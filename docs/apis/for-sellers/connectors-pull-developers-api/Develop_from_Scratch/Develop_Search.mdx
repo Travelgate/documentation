@@ -7,14 +7,16 @@ sidebar_position: 3
 ## **Mocked responses**
 
 ### **Step 1: Define your Search responses (Mocks)**
-For step 2 it is necessary to define the responses for your search operation, it is recommended is to insert a supplier response into every mock or at least, into the mocks of the operation you will be developing (hence, **the first one will always be search mocks**).
 
-We will be using the **TwoAdultTwoDays** mock in (in the "**tests -> MockServer -> Tests**" folder) through all the steps of the development (this **use case** is present in all operations)
+Define the responses for your search operation, it is recommended to insert a supplier response into every mock or at least, into the mocks of the operation you will be developing.
+
+We will be using the **TwoAdultTwoDays** mock (in the "**tests -> MockServer -> Tests**" folder) through all the steps of the development.
 
 ![Mock Example](MockTwoAdults.png)
 
 ### **Step 2: Define the Models of your response (Request and Response models)**
-Next, you'll define the search data models for your requests and responses. These models are crucial because they specify the structure of the objects contained within supplier responses. They'll also play a vital role in serializing and deserializing requests and responses during development.
+
+These models are crucial because they specify the structure of the objects contained within supplier responses. They'll also play a vital role in serializing and deserializing requests and responses during development.
 
 ![Response example](TemplateStructureModels.png)
 
@@ -90,7 +92,7 @@ public class SupplierRoom
 }
 ```
 
-## **Start the Search development**
+## **Development**
 
 ### **Step 1: Add the necessary serializers**
 To specify which serializer the developer will be using (based on the seller's API) we can specify it in our "**Extensions**":
@@ -123,7 +125,7 @@ This class can be found here:
 
 ![AccessModelStructure](AccessModel.png)
 
-For example, if the integration needs Generic and Search URLs, along with an Apikey, an AccessModel would look like this:
+If the integration needs Generic and Search URLs, along with an Apikey, an AccessModel would look like this:
 
 ```csharp
 public class AccessModel : IBindAccessModel
@@ -143,14 +145,15 @@ public class AccessModel : IBindAccessModel
         Password = access.Password;
         UrlGeneric = access.Urls.Generic;
         UrlSearch = access.Urls.Search;
-        ApiKey = access.Parameters.GetOrDefault("ApiKey");
+        //Parameter that if is not present, will throw and exception
+        ApiKey = access.Parameters.GetOrRquired("ApiKey");
     }
 }
 ```
 
-### **Step 3: About SearchOperation validators**
+### **Step 3: SearchOperation validators**
 
-Before proceeding to the BuildRequest and ParseResponse steps, it is important to know that before implementing them there are two previous validations that serve as a filter so the buildrequest and the parseresponse are as safe as possible. They can be found in the SearchOperation.cs class:
+There are two previous validations that serve as a filter so the buildrequest and the parseresponse are as safe as possible. They can be found in the SearchOperation.cs class:
 
 ![TryValidateSearch](TryValidateSearch.png)
 
@@ -210,9 +213,12 @@ public bool TryValidateSupplierResponses(
 ```
 
 ### **Step 4: Build the request towards the seller**
-Once all steps above have been done, it is time to really start building up the ConnectorIntegration.
 
-We will be implementing the "BuildRequest" step, in this case, it will be done inside SearchOperation, which will contain de object for the requests previously created (SearchRequest), the request that the buyer sends (connectorsRequest) and the parameters (connectorParameters) which will have some helpers:
+This class will contain a "BuildRequests" method that will have the following args: 
+
+- Object of the requests previously created (SearchRequest)
+- The request that the buyer sends (connectorsRequest)
+- Parameters (connectorParameters) which will have some helpers:
 
 ![Build Request Search](BuildRequestSearch.png)
 
@@ -285,7 +291,7 @@ internal partial class SearchOperation
 
 Once the request has been sent, we will have to control and parse the response returned by the seller.
 
-We will be implementing the "ParseResponse" step, in this case, it will be done inside SearchOperation:
+We will be implementing the "ParseResponse" step inside SearchOperation:
 
 ![Build Request Search](BuildRequestSearch.png)
 
@@ -404,7 +410,6 @@ internal partial class SearchOperation
         _ => PaymentType.MerchantPay
     };
 
-
     private static Status MapSellerToTgxStatus(string status) => status switch
     {
         "Available" => Status.OK,
@@ -444,4 +449,4 @@ Use the **FormTest** application to test each operation manually:
  
 ## **Changes Pull Request**
 
-Once finished, please commit your Search changes and push them to a new branch called "**SearchDevelopment**" into the original repository.
+Please commit your Search changes and push them to a new branch called "**SearchDevelopment**" into the original repository.

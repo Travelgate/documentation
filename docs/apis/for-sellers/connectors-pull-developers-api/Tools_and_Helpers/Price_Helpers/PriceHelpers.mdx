@@ -1,0 +1,124 @@
+### **Helpers for Mapping Supplier Price Data**
+
+To accurately map prices data to our internal model, you can use one of the following helper methods depending on the supplier data format:
+
+#### **BuildNetPrice**
+
+Use this method when the supplier provides a net price with no commission.
+
+```csharp
+public static Price BuildNetPrice(Currency currency, double net, double minimumPrice)
+{
+  return new Price(
+    currency, 
+    Price.CalculateBindingFromMinimumPrice(minimumPrice), 
+    net, 
+    net, 
+    minimumSellingPrice: minimumPrice);
+}
+
+//Example of how should it be implemented:
+
+// Sample data
+Currency currency = Currency.USD; // Example enum value
+double netAmount = supplier.NetPrice; // "150.00" Net price given by the supplier
+double mspAmount = supplier.MinimumSellingPrice; // "170.00" Minimum selling price given by the supplier
+
+// Method call
+
+Price price = Price.BuildNetPrice(currency, netAmount, mspAmount);
+```
+
+#### **BuildGrossWithCommissionPrice**
+
+Use this method when the supplier provides gross price with commission.
+
+```csharp
+public static Price BuildGrossWithCommissionPrice(
+  Currency currency,
+  double gross,
+  double commission,
+  double minimumPrice,
+  double priceSurchargesIncluded = 0.0)
+{
+  if (commission > 1.0 || commission < 0.0)
+  {
+    throw new ArgumentException("Commission should have a value between 0 and 1");
+  }
+  double net = Price.CalculateNetFromGrossAndCommission(gross - priceSurchargesIncluded, commission) + priceSurchargesIncluded;
+  return new Price(currency, Price.CalculateBindingFromMinimumPrice(minimumPrice), net, gross, minimumSellingPrice: minimumPrice);
+}
+
+//Example of how should it be implemented:
+
+// Sample data
+Currency currency = Currency.USD; // Example enum value
+double grossAmount = supplier.GrossPrice; // "170.00" Gross price given by the supplier
+double commission = supplier.Commisison; // "0.1176" Commission fraction given by the supplier
+double minimumPrice = supplier.MinimumSellingPrice; // "170.00" Minimum selling price given by the supplier
+
+// Method call
+
+Price price = Price.BuildGrossWithCommissionPrice(currency, grossAmount, commission, minimumPrice);
+```
+
+#### **BuildGrossUnknownNetPrice**
+
+Use this method when the supplier does return the gross without commission.
+
+```csharp
+public static Price BuildGrossUnknownNetPrice(
+  Currency currency,
+  double gross,
+  double minimumPrice)
+{
+  return new Price(
+    currency, 
+    Price.CalculateBindingFromMinimumPrice(minimumPrice), 
+    0.0, 
+    gross, 
+    false, 
+    minimumPrice);
+}
+
+// Example of how should it be implemented:
+
+// Sample data
+Currency currency = Currency.USD; // Example enum value
+double grossAmount = supplier.GrossPrice; // "170.00" Gross price given by the supplier
+double minimumPrice = supplier.MinimumSellingPrice; // "170.00" Minimum selling price given by the supplier
+
+// Method call
+Price price = Price.BuildGrossUnknownNetPrice(currency, grossAmount, minimumPrice);
+```
+
+#### **BuildNetGrossPrice**
+
+Use this method when the supplier returns both net and gross prices.
+
+```csharp
+public static Price BuildNetGrossPrice(
+  Currency currency,
+  double net,
+  double gross,
+  double minimumPrice)
+{
+  return new Price(
+    currency, 
+    Price.CalculateBindingFromMinimumPrice(minimumPrice), 
+    net, 
+    gross, 
+    minimumSellingPrice: minimumPrice);
+}
+
+// Example of how should it be implemented:
+
+// Sample data
+Currency currency = Currency.USD; // Example enum value
+double grossAmount = supplier.GrossPrice; // "170.00" Gross price given by the supplier
+double netAmount = supplier.NetPrice; // "150.00" Net price given by the supplier
+double minimumPrice = supplier.MinimumSellingPrice; // "170.00" Minimum selling price given by the supplier
+
+// Method call
+Price price = Price.BuildNetGrossPrice(currency, grossAmount, minimumPrice);
+```

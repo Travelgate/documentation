@@ -117,6 +117,8 @@ internal static class SearchExtensions
 }
 ```
 
+For XML details check [XML Extensions](../Advanced_Usages/Extensions)
+
 ### **Step 2: Define the AccessModel**
 
 The AccessModel is a class that will allow the integration to establish some information before launching the operations.
@@ -349,6 +351,7 @@ internal partial class SearchOperation
                 supplierResponse.BoardName);
         }
 
+        // Combine method will return a list of combined accomodation based on the options added
         return new SearchRs(_connectorsUtilities.OptionsGenerator.Combine());
     }
 

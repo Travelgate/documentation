@@ -33,8 +33,8 @@ public interface IOptionsFromRoomsGenerator
 
 //Real example of how can it be used (injected):
 
-var roomCombineExtended = MethodThatReturnsARoomCombineExtended(supplierRoomData)
-var location = MethodThatReturnsALocation(supplierLocationData)
+var roomCombineExtended = MethodThatReturnsARoomCombineExtended(supplierRoomData);
+var location = MethodThatReturnsALocation(supplierLocationData);
 
 _optionsFromRoomsGenerator.TryAddHotelRoom(
                     supplier.HotelCode,
@@ -44,6 +44,8 @@ _optionsFromRoomsGenerator.TryAddHotelRoom(
                     location,
                     supplier.HotelName,
                     supplier.BoardName);
+
+List<Accommodation> accomodationList = _optionsFromRoomsGenerator.Combine();
 ```
 
 ---
@@ -67,7 +69,7 @@ public interface IOptionsGenerator
 
 //Real example of how can it be used (injected):
 
-var option = MethodThatReturnsAnOption(supplierOptionData)
+var option = MethodThatReturnsAnOption(supplierOptionData);
 
 _optionsGenerator.TryAddHotelOption(
                     supplier.HotelCode,
@@ -75,6 +77,9 @@ _optionsGenerator.TryAddHotelOption(
                     option,
                     supplier.HotelName,
                     supplier.BoardName);
+
+List<Accommodation> accomodationList = _optionsGenerator.Combine();
+
 ```
 ---
 

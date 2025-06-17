@@ -4,9 +4,9 @@ sidebar_position: 3
 ---
 
 
-## **Start developing the Search operation**
+## **Mocked responses**
 
-### **Step 1: Insert your Search responses (Mocks)**
+### **Step 1: Define your Search responses (Mocks)**
 For step 2 it is necessary to define the responses for your search operation, it is recommended is to insert a supplier response into every mock or at least, into the mocks of the operation you will be developing (hence, **the first one will always be search mocks**).
 
 We will be using the **TwoAdultTwoDays** mock in (in the "**tests -> MockServer -> Tests**" folder) through all the steps of the development (this **use case** is present in all operations)
@@ -90,7 +90,9 @@ public class SupplierRoom
 }
 ```
 
-### **Step 3: Add the necessary serializers**
+## **Start the Search development**
+
+### **Step 1: Add the necessary serializers**
 To specify which serializer the developer will be using (based on the seller's API) we can specify it in our "**Extensions**":
 
 File: SearchExtensions.cs
@@ -113,7 +115,7 @@ internal static class SearchExtensions
 }
 ```
 
-### **Step 4: Define the AccessModel**
+### **Step 2: Define the AccessModel**
 
 The AccessModel is a class that will allow the integration to establish some information before launching the operations.
 
@@ -146,7 +148,7 @@ public class AccessModel : IBindAccessModel
 }
 ```
 
-### **Step 5: About SearchOperation validators**
+### **Step 3: About SearchOperation validators**
 
 Before proceeding to the BuildRequest and ParseResponse steps, it is important to know that before implementing them there are two previous validations that serve as a filter so the buildrequest and the parseresponse are as safe as possible. They can be found in the SearchOperation.cs class:
 
@@ -207,7 +209,7 @@ public bool TryValidateSupplierResponses(
 }
 ```
 
-### **Step 6: Build the request towards the seller**
+### **Step 4: Build the request towards the seller**
 Once all steps above have been done, it is time to really start building up the ConnectorIntegration.
 
 We will be implementing the "BuildRequest" step, in this case, it will be done inside SearchOperation, which will contain de object for the requests previously created (SearchRequest), the request that the buyer sends (connectorsRequest) and the parameters (connectorParameters) which will have some helpers:
@@ -279,7 +281,7 @@ internal partial class SearchOperation
 }
 ```
 
-### **Step 7: Parse the response towards the buyer**
+### **Step 5: Parse the response towards the buyer**
 
 Once the request has been sent, we will have to control and parse the response returned by the seller.
 
@@ -440,3 +442,6 @@ Use the **FormTest** application to test each operation manually:
 - Test specific scenarios not covered by predefined use cases.
   - [View FormTest Documentation](../Tools_and_Helpers/FormTest_Documentation.mdx).
  
+## **Github Pull Request**
+
+Once finished, please commit your Search changes and push them to a new branch called "SearchDevelopment" into the original repository.

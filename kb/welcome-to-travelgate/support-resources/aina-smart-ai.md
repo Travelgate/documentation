@@ -10,17 +10,17 @@ At Travelgate, we understand the importance of efficient support. That's why we'
 
 You can easily interact with AIna from any section of our Platform with just one click. Available 24/7, AIna is here to assist you with common inquiries, usage tips, and App information.
 
-**Our [portal](https://app.travelgate.com/):**
+**Our [Portal](https://app.travelgate.com/):**
 
-![aina-1](https://storage.travelgate.com//kbase/aina-1.jpg)
+![aina-1](https://storage.travelgate.com/kbase/aina-1.jpg)
 
 **Our [Documentation](https://docs.travelgate.com/):**
 
-![aina-2](https://storage.travelgate.com//kbase/aina-2.jpg)
+![aina-2](https://storage.travelgate.com/kbase/aina-2.jpg)
 
 **Our [Support Portal](/kb/platform/support-portal/how-to-submit-case):**
 
-![cases-2](https://storage.travelgate.com//kbase/cases-2.jpg)
+![aina-case-description](https://storage.travelgate.com/kbase/aina-case-description.jpg)
 
 **Our [Discord Server](/kb/welcome-to-travelgate/community/our-discord-server):**  
 Engage with AIna directly via our Discord channel [-ask-ai](https://discord.com/channels/1121158946074402916/1245294813134458910). It functions similarly to traditional support channels but is enhanced with AIna’s capabilities. Prefer private interactions? Simply mention @aina in private channels. Give it a try! 🚀

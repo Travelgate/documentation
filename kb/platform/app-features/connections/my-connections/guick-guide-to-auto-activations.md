@@ -37,8 +37,7 @@ Our goal has always been to make connecting with a Partner easier and faster.
         Make sure your credentials are active and fully functional before proceeding, as using inactive credentials can cause delays.
         :::
 
-    - **Step 3 (Notification Setup)**: Provide one or more contact email addresses for the Partner you are connecting with, so they can be notified once the connection is created and ready for use. The Partner contact must be **registered in Travelgate**.  
-    In the 'Other Contacts' field, you can add additional email addresses—such as colleagues or other relevant team members—who should also receive the notifications.
+    - **Step 3 (Notification Setup)**: Provide one or more contact email addresses for the Partner you are connecting with, so they can be notified once the connection is created and ready for use. **The Partner contact must be registered in Travelgate**. You can also use the 'Other Contacts' field to add additional email addresses—such as colleagues or relevant team members—who should receive the notifications.
 
         <img src="https://storage.travelgate.com/kbase/autoconnections_step3_3.png" alt="autoconnections_step3_3" width="500" height=""/>
 

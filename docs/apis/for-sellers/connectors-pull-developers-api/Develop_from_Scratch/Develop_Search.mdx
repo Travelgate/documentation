@@ -1,5 +1,5 @@
 ---
-title: "Develop a Search"
+title: "Search"
 sidebar_position: 3
 ---
 
@@ -332,6 +332,7 @@ internal partial class SearchOperation
 
             option.CancelPolicy = ParseSupplierCancelPolicies(checkIn, supplierOption.SupplierCancelPolicies);
 
+            //Helper to combine options
             _connectorsUtilities.OptionsGenerator.TryAddHotelOption(
                 supplierResponse.HotelCode,
                 supplierOption.BoardCode,

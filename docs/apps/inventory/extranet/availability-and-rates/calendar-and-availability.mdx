@@ -52,7 +52,7 @@ With this view you will be able to check the minimum and maximum stay length and
 * **Availability request from Friday 26/02 to Sunday 28/02 with 25 days of release:** There won't be availability for the *Junior Suite Deluxe* room because the minimum nights of stay is 3. There won't be availability for the *Double Room* because Friday 26/02 there is a close sales and the minimum nights of stay is 3.
 * **Availability request from Saturday 06/03 to Friday 12/03 with 10 days of release:** There will be availability only for the *Double Room* because the release condition. 
 
-### Price
+### Prices
 
 Inventory-X system allows prices to be loaded in 3 different ways: price per room, price based on standard occupancy and price per occupancy. You will see three options in the checkbox row. Also, you have the `Final Occupancies Amounts` that allows you to check the final amount for each occupancy loaded after the calculations done by the system depending on the price type used to load. 
 
@@ -66,6 +66,100 @@ In this example, the *Double room* has price loaded per room from Friday 26/02 t
 * **From 01/03 to 06/03:** There is price per occupancy loaded. In this case, the price loaded is the one loaded for each occupancy. In the example you can see price loaded for 1 adult, 2 adults, 2 adults and a baby and 2 adults and a child. Price for 3 adults has not been loaded, so there won't be availability response for those dates in this room for 3 adults.  
 * **From 07/03 to 17/03**: There is not price loaded, so there won't be availability for this room on those dates. 
 
+### Price Per Age Range
+
+This price type defines individual pricing per guest, separated into **adults** and **children grouped by age range**. Each row in the calendar displays a **unit price** that must be multiplied by the number of guests falling into that category.
+
+#### Adults
+
+Adult pricing may appear in two ways:
+- `Adult | Quantity: 1`, `2`, `3`... → Total price for exactly 1, 2, 3 adults
+- `Adult | Quantity: *` → Price per adult (multiply by the number of adults requested)
+
+#### Children
+
+Children are shown by age group:
+- `Child(4-13) | Quantity: *`
+- `Child(0-3) | Quantity: *`
+
+In these rows, the price represents the **unit cost per child** in the specified range. Multiply the unit price by the number of children that fall into each age bracket.
+
+![Image Price Per Age Range](Price_Per_Age_Range.png)
+
+#### ✅ Real Example
+
+![Image example](Zoom_Price_Per_Age_Range.png)
+
+**Date:** 15/06  
+**Room:** `2 Bedroom Family Room - FRQ (2)`  
+**Guest Distribution:**  
+- 2 Adults  
+- 2 Children aged 6 (→ fits in `Child(4-13)`)  
+- 1 Child aged 2 (→ fits in `Child(0-3)`)
+
+##### Calendar Prices:
+- `Adult | Quantity: 2 → 4054.75`
+- `Child(4-13) | Quantity: * → 324.62`
+- `Child(0-3) | Quantity: * → 0.00`
+
+##### Total Calculation:
+
+```text
+Adults:     2 × 4054.75   = 4054.75
+Children:   2 × 324.62    = 649.24
+Children:   1 × 0.00      = 0.00
+-------------------------------
+Total:                    = 4703.99
+```
+
+### Price Per Age Range and Occupancy
+
+This price model provides **total amounts based on the exact number of guests** within specific age ranges. It differs from "Price Per Age Range" in that the values are not unit prices, but totals for each exact quantity shown.
+
+#### Adults
+
+Adult pricing may appear as:
+- `Adult | Quantity: 1`, `2`, `3`... → Total price for that number of adults
+- `Adult | Quantity: *` → Price per adult (multiply by the number of adults requested)
+
+#### Children
+
+Children are grouped into age brackets, but each row also includes a quantity value:
+- `Child(6-11) | Quantity: 1`
+- `Child(6-11) | Quantity: 2`
+- `Child(6-11) | Quantity: 3`
+- ...
+- `Child(0-5) | Quantity: 1`, etc.
+
+In this structure, the price is already calculated for the **exact number of children** specified. You must find the row that matches your request **exactly**. No additional multiplication is needed.
+
+![Image Price Per Age Range And Occupancy](Price_Per_Age_Range_And_Occupancy.png)
+
+#### ✅ Real Example
+
+![Image Example](Zoom_Price_Per_Age_Range_And_Occupancy.png)
+
+**Date:** 16/08  
+**Room:** `Superior Suite - STE83 (2)`  
+**Guest Distribution:**  
+- 2 Adults  
+- 2 Children aged 6 (→ fits in `Child(6-11) | Quantity: 2`)  
+- 1 Child aged 2 (→ fits in `Child(0-5) | Quantity: 1`)
+
+##### Calendar Prices:
+- `Adult | Quantity: 2 → 1575.57`
+- `Child(6-11) | Quantity: 2 → 202.60`
+- `Child(0-5) | Quantity: 1 → 0.00`
+
+##### Total Calculation:
+
+```text
+Adults:         1575.57
+Children (6-11): 202.60
+Children (0-5):    0.00
+--------------------------
+Total:           1778.17
+```
 
 ### Board/MealPlan supplements
 

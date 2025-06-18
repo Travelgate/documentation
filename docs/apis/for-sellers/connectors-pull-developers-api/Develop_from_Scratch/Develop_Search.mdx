@@ -119,6 +119,8 @@ internal static class SearchExtensions
 
 For XML details check [XML Extensions](../Advanced_Usages/Extensions)
 
+For more details about operations, check [PreOperations](../Connector_Framework/PreOperation_Overview) and [Operations](../Connector_Framework/Operation_Overview)
+
 ### **Step 2: Define the AccessModel**
 
 The AccessModel is a class that will allow the integration to establish some information before launching the operations.
@@ -214,7 +216,7 @@ public bool TryValidateSupplierResponses(
 }
 ```
 
-### **Step 4: Build the request towards the seller**
+### **Step 4: Build the Seller's request**
 
 This class will contain a "BuildRequests" method that will have the following args: 
 
@@ -289,7 +291,7 @@ internal partial class SearchOperation
 }
 ```
 
-### **Step 5: Parse the response towards the buyer**
+### **Step 5: Build the Buyer's Response**
 
 Once the request has been sent, we will have to control and parse the response returned by the seller.
 
@@ -448,8 +450,8 @@ Use the integration tests provided by Travelgate to validate your implementation
 Use the **FormTest** application to test each operation manually:
 - Configure the tool to use your supplier's API settings.
 - Test specific scenarios not covered by predefined use cases.
-  - [View FormTest Documentation](../Tools_and_Helpers/FormTest_Documentation.mdx).
+- [View FormTest Documentation](../Tools_and_Helpers/FormTest_Documentation.mdx).
  
 ## **Changes Pull Request**
 
-Please commit your Search changes and push them to a new branch called "**SearchDevelopment**" into the original repository.
+Commit your Search changes and push them to a new branch called "**SearchDevelopment**" into the original repository.

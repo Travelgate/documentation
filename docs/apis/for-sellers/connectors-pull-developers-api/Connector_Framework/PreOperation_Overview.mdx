@@ -9,6 +9,27 @@ Preoperations are preparatory steps required by the supplier before executing a 
 
 These preoperations follow the same structure as regular operations and implement the `IPre<Operation>Operations<SupplierRequest, SupplierResponse, Binder>` interface. Preoperations can be applied to `Search`, `Quote`, `Book`, `CheckBookingsByReference`, `CheckBookingsByDates`, or `Cancel`.
 
+## **Adding a Preoperation**
+
+To register a preoperation, use the appropriate service extensions based on the operation type. For example, for a `Quote` preoperation:
+
+```csharp
+services.AddPreQuoteOperation<PriceOperation, PriceRq, PriceRs, CvcAccessModel>();
+```
+
+Specify the serializer to use for the request and response format (e.g., JSON, XML, or a custom serializer):
+
+```csharp
+services.AddJsonSerializer<PriceRq, PriceRs>(_ => { });
+```
+
+---
+
+## **Key Notes**
+- **Purpose**: Preoperations are crucial when suppliers require additional preparatory steps, such as fetching tokens or rules, before the main operation.
+- **Flexibility**: Use `IContextCache` to streamline data sharing across operations, reducing redundant calls.
+- **Modular Integration**: Register preoperations and serializers in the service collection, ensuring seamless integration with the Connector's architecture.
+
 ---
 
 ## **Example Preoperation: Quote**
@@ -102,24 +123,3 @@ _contextCache.TryGet<LoginTokenData>(out var response);
 ```
 
 ---
-
-## **Adding a Preoperation**
-
-To register a preoperation, use the appropriate service extensions based on the operation type. For example, for a `Quote` preoperation:
-
-```csharp
-services.AddPreQuoteOperation<PriceOperation, PriceRq, PriceRs, CvcAccessModel>();
-```
-
-Specify the serializer to use for the request and response format (e.g., JSON, XML, or a custom serializer):
-
-```csharp
-services.AddJsonSerializer<PriceRq, PriceRs>(_ => { });
-```
-
----
-
-## **Key Notes**
-- **Purpose**: Preoperations are crucial when suppliers require additional preparatory steps, such as fetching tokens or rules, before the main operation.
-- **Flexibility**: Use `IContextCache` to streamline data sharing across operations, reducing redundant calls.
-- **Modular Integration**: Register preoperations and serializers in the service collection, ensuring seamless integration with the Connector's architecture.

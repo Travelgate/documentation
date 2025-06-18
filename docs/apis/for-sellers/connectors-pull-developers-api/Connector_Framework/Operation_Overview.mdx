@@ -4,6 +4,50 @@ sidebar_position: 2
 ---
 
 
+## **Adding Operations to the Connector**
+
+To add a new operation, the Connector uses extensions. For example, to implement a `Search` operation:
+
+### **1. Define the Operation**
+Define the class for the operation by inheriting from the appropriate interface. For a search operation, inherit from `ISearchOperation`.
+
+```csharp
+public partial class SearchOperation : ISearchOperation<SearchRequest, SearchResponse, CntAccessModel>
+{
+    // Implement the methods for TryValidateModelRequest, BuildRequests, etc.
+}
+```
+
+### **2. Add the Operation to the Connector**
+In the `Extensions` class, add the operation using the relevant helper method. Ensure that the appropriate serializer (e.g., JSON, XML) is also configured.
+
+```csharp
+public static IServiceCollection AddSearchServices(this IServiceCollection services,
+    IConfiguration configuration)
+{
+    services.AddSearchOperation<SearchOperation, SearchRequest, SearchResponse, CntAccessModel>(
+        TgxPlatform.PlatformName,
+        configuration);
+    
+    services.AddJsonSerializer<SearchRequest, SearchResponse>(_ => { });
+
+    return services;
+}
+```
+
+### **3. Configure Serialization**
+Depending on the supplier, the operation may require JSON or XML serialization. Use the appropriate serializer:
+
+- `services.AddJsonSerializer<...>()`
+- `services.AddXmlSerializer<...>()`
+
+---
+
+## **Key Takeaways**
+- Operations provide a unified framework for handling supplier integrations.
+- Each step ensures the operation is robust, reliable, and standardized.
+- Serialization and extensions are critical for integrating operations into the Connector.
+
 # **Operation Overview**
 
 An operation in the **Travelgate Connectors** framework simulates an exchange of information between Travelgate and a supplier. This process transforms a client request into the supplier's format, validates responses, and parses the data back into a standardized format for the client.
@@ -147,47 +191,3 @@ _accumulator.AddValue(mappedElement);
 :::
 
 ---
-
-## **Adding Operations to the Connector**
-
-To add a new operation, the Connector uses extensions. For example, to implement a `Search` operation:
-
-### **1. Define the Operation**
-Define the class for the operation by inheriting from the appropriate interface. For a search operation, inherit from `ISearchOperation`.
-
-```csharp
-public partial class SearchOperation : ISearchOperation<SearchRequest, SearchResponse, CntAccessModel>
-{
-    // Implement the methods for TryValidateModelRequest, BuildRequests, etc.
-}
-```
-
-### **2. Add the Operation to the Connector**
-In the `Extensions` class, add the operation using the relevant helper method. Ensure that the appropriate serializer (e.g., JSON, XML) is also configured.
-
-```csharp
-public static IServiceCollection AddSearchServices(this IServiceCollection services,
-    IConfiguration configuration)
-{
-    services.AddSearchOperation<SearchOperation, SearchRequest, SearchResponse, CntAccessModel>(
-        TgxPlatform.PlatformName,
-        configuration);
-    
-    services.AddJsonSerializer<SearchRequest, SearchResponse>(_ => { });
-
-    return services;
-}
-```
-
-### **3. Configure Serialization**
-Depending on the supplier, the operation may require JSON or XML serialization. Use the appropriate serializer:
-
-- `services.AddJsonSerializer<...>()`
-- `services.AddXmlSerializer<...>()`
-
----
-
-## **Key Takeaways**
-- Operations provide a unified framework for handling supplier integrations.
-- Each step ensures the operation is robust, reliable, and standardized.
-- Serialization and extensions are critical for integrating operations into the Connector.

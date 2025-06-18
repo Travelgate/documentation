@@ -28,7 +28,7 @@ With the **Inventory Push API**, you’ll enjoy a **faster, more agile** workflo
 ## Get Started: Elevate Your Inventory Strategy
 Take full control of your inventory management with **powerful GraphQL methods** designed to simplify setup and updates.
 
-- Check out the [Making Requests](/docs/apis/for-sellers/inventory-sellers/inventory-push-graphql-api/making-requests/endpoint/) guide to master GraphQL API calls and optimize efficiency.
-- Explore various **queries and mutations** in the [Overview](/docs/apis/for-sellers/inventory-sellers/inventory-push-graphql-api/product-load/overview/) section.
+- Check out the [Making Requests](/docs/apis/for-sellers/inventory-push-graphql-api/making-requests/endpoint/) guide to master GraphQL API calls and optimize efficiency.
+- Explore various **queries and mutations** in the [Overview](/docs/apis/for-sellers/inventory-push-graphql-api/product-load/overview/) section.
 
-Click [here](/docs/apis/for-sellers/inventory-sellers/inventory-push-graphql-api/making-requests/graphql-api) to take the first step toward **smarter, more efficient inventory management** today!
+Click [here](/docs/apis/for-sellers/inventory-push-graphql-api/making-requests/graphql-api) to take the first step toward **smarter, more efficient inventory management** today!

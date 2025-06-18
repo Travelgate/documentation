@@ -1,0 +1,71 @@
+---
+sidebar_position: 1
+---
+
+import InventoryHotelSetupFilterInput from "../../../../../../src/graphql/generated-docs/InventoryHotelSetupFilterInput.mdx";
+import HotelsSetupRs from "../../../../../../src/graphql/generated-docs/HotelsSetupRs.mdx";
+
+import {hotelsSetUpQuery, hotelsSetUpVariables} from "/src/graphql/inventory/set-up/hotels-set-up.query";
+
+# Hotels
+
+## Query Overview
+
+The `hotelsSetUp` query returns configurations from hotels of a specific client-seller relation in Inventory. The returned fields include:
+
+* `id`
+* `hotelCode`
+* `contextCode`
+* `active`
+* `sendNotification`
+* `emailNotification`
+* `emailNotificationCc`
+* `emailNotificationSupport`
+
+### 1. Criteria
+
+When building your query, you need to provide the following input fields:
+
+#### Mandatory Input
+* `clientCode`
+* `supplierCode`
+* `hotelCodes`
+
+#### Optional Input
+* `contextCode`
+
+### 2. Settings
+
+To retrieve hotel configurations, provide the necessary client and supplier codes along with the hotel codes to filter results.
+
+### Response Considerations
+
+The query returns a collection of hotel configurations along with a success status and possible advise messages.
+
+#### `HotelsSetupRs` (*OBJECT*)
+* `hotels` (*InventoryHotelSetup*) - A collection of retrieved hotels.
+    * `id` (*Int*) - Unique identifier.
+    * `hotelCode` (*String*) - Associated hotel code.
+    * `contextCode` (*String*) - Context code for the hotel.
+    * `active` (*Boolean*) - Indicates if the hotel is active.
+    * `sendNotification` (*Boolean*) - Indicates if booking notifications should be sent.
+    * `emailNotification` (*String*) - Email addresses for notifications.
+    * `emailNotificationCc` (*String*) - CC email addresses for notifications.
+    * `emailNotificationSupport` (*String*) - Support contact emails.
+* `success` (*Boolean*) - Indicates if the operation was successful.
+* `adviseMessages` (*AdviseMessage*) - Messages related to the operation.
+
+
+## Query Inputs
+
+<InventoryHotelSetupFilterInput />
+## Returned Fields
+
+<HotelsSetupRs />
+
+
+## Examples
+
+#### Retrieve configurations from Hotels
+
+<GraphqlSample query={hotelsSetUpQuery} variables={hotelsSetUpVariables} />

@@ -1,0 +1,59 @@
+---
+sidebar_position: 4
+---
+
+
+import RoomsSetUpRs from "../../../../../../src/graphql/generated-docs/RoomsSetUpRs.mdx";
+import InventoryRoomSetupDeleteInput from "../../../../../../src/graphql/generated-docs/InventoryRoomSetupDeleteInput.mdx";
+
+import {deleteRoomsSetUpMutation, deleteRoomsSetUpVariables} from "/src/graphql/inventory/set-up/rooms-set-up.mutation";
+
+# Delete Rooms
+
+## Mutation Overview
+
+The `deleteRoomsSetUp` mutation is designed to remove rooms from hotel rates in Inventory. The returned fields include:
+
+* `success`
+* `adviseMessages`
+
+### 1. Criteria
+
+When building your mutation, you need to provide the following input fields:
+
+#### Mandatory Input
+* `clientCode`
+* `supplierCode`
+* `hotelCode`
+* `rateCode`
+* `roomCodes`
+
+#### Optional Input
+* `contextCode`
+
+### 2. Settings
+
+To delete a room, ensure that all mandatory fields are properly filled out and associate the room with the correct hotel and rate.
+
+### Response Considerations
+
+The mutation returns the deletion status along with success status and possible advise messages.
+
+#### `RoomsSetUpRs` (*OBJECT*)
+* `success` (*Boolean*) - Indicates if the operation was successful.
+* `adviseMessages` (*AdviseMessage*) - Messages related to the operation.
+
+
+## Mutation Inputs
+
+<InventoryRoomSetupDeleteInput />
+## Returned Fields
+
+<RoomsSetUpRs />
+
+
+## Examples
+
+#### Delete a Room
+
+<GraphqlSample query={deleteRoomsSetUpMutation} variables={deleteRoomsSetUpVariables} />

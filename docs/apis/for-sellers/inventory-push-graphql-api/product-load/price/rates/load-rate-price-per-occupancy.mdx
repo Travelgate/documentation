@@ -1,0 +1,149 @@
+---
+sidebar_position: 3
+---
+
+
+import PriceRatesRs from "../../../../../../../src/graphql/generated-docs/PriceRatesRs.mdx";
+import InventoryLoadPriceRatesInput from "../../../../../../../src/graphql/generated-docs/InventoryLoadPriceRatesInput.mdx";
+
+import {priceRatesPerOccupancyLoadMutation, priceRatesPerOccupancyLoadVariables} from "/src/graphql/inventory/product-load/load-rate-price-per-occupancy.mutation";
+
+# Load Rate Price Per Occupancy
+
+## Mutation Overview
+
+The `loadPriceRates` mutation allows you to load the price of specific rates per occupancy in Inventory. The returned fields include:
+
+* `success`
+* `rates`
+    * `rateCode`
+    * `currency`
+    * `rooms`
+    * `dateRange`
+        * `start`
+        * `end`
+    * `prices`
+        * `pricesPerOccupancy`
+            * `prices`
+                * `amount`
+                * `numberOfAdults`
+                * `numberOfChildren`
+                * `numberOfInfants`
+    * `applicableWeekdays`
+        * `all`
+        * `monday`
+        * `tuesday`
+        * `wednesday`
+        * `thursday`
+        * `friday`
+        * `saturday`
+        * `sunday`
+* `adviseMessages`
+    * `code`
+    * `description`
+    * `level`
+    * `correlationID`
+    * `external`
+        * `code`
+        * `message`
+
+### 1. Criteria
+
+When building your mutation, you need to provide the following input fields:
+
+#### Mandatory Input
+* `clientCode`
+* `supplierCode`
+* `hotelCode`
+* `rates`
+    * `rateCode`
+    * `currency`
+    * `rooms`
+    * `prices`
+        * `pricesPerOccupancy`
+            * `prices`
+                * `amount`
+                * `numberOfAdults`
+                * `numberOfChildren`
+                * `numberOfInfants`
+    * `dateRange`
+        * `start`
+        * `end`
+
+### 2. Settings
+
+This mutation allows loading rate prices per occupancy by defining relevant details such as `clientCode`, `supplierCode`, `hotelCode`, `rooms`, `prices`, and `dateRange`.
+
+```js
+{
+  "input": {
+    "clientCode": "ABC123",
+    "supplierCode": "SUP001",
+    "hotelCode": "HTL567",
+    "rates": [
+      {
+        "rateCode": "RATE001",
+        "currency": "USD",
+        "rooms": ["ROOM1", "ROOM2"],
+        "prices": {
+          "pricesPerOccupancy": {
+            "prices": [
+              {
+                "amount": 100.0,
+                "numberOfAdults": 2,
+                "numberOfChildren": 1,
+                "numberOfInfants": 0
+              }
+            ]
+          }
+        },
+        "dateRange": {
+          "start": "2024-03-01",
+          "end": "2024-03-10"
+        }
+      }
+    ]
+  }
+}
+```
+
+### Response Considerations
+
+The mutation returns the loaded rate prices along with success status and possible advise messages.
+
+#### `PriceRatesRs` (*OBJECT*)
+* `rates` (*RatePriceLoad*) - List of rate prices with details.
+    * `rateCode` (*String*) - The rate code for the price.
+    * `currency` (*String*) - The currency used.
+    * `dateRange` (*DateRangeProduct*) - Date range applied.
+        * `start` (*DateTime*) - Start date.
+        * `end` (*DateTime*) - End date.
+    * `prices` (*PricesPerOccupancy*) - Price details per occupancy.
+        * `amount` (*Float*) - Price amount.
+        * `numberOfAdults` (*Int*) - Number of adults.
+        * `numberOfChildren` (*Int*) - Number of children.
+        * `numberOfInfants` (*Int*) - Number of infants.
+* `success` (*Boolean*) - Indicates whether the operation was successful.
+* `adviseMessages` (*AdviseMessage*) - Messages related to the operation.
+    * `code` (*ID*) - AM code.
+    * `type` (*String*) - Error type.
+    * `description` (*String*) - Error description.
+    * `level` (*Enum of AdviseMessageLevel*) - Importance level (ERROR, WARN, INFO).
+    * `external` (*ExternalMessage*) - External message details.
+    * `correlationID` (*ID*) - Identifier for debugging.
+
+## Mutation Inputs
+
+<InventoryLoadPriceRatesInput />
+## Returned Fields
+
+<PriceRatesRs />
+
+
+## Examples
+
+#### Load price for a specific rate per occupancy
+
+With this example, we are going to load the price for a specific rate per occupancy within a specific date range.
+
+<GraphqlSample query={priceRatesPerOccupancyLoadMutation} variables={priceRatesPerOccupancyLoadVariables} />

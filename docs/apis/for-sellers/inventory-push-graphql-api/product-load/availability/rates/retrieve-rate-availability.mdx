@@ -1,0 +1,133 @@
+---
+sidebar_position: 3
+---
+
+
+import InventoryAvailRatesInput from "../../../../../../../src/graphql/generated-docs/InventoryAvailRatesInput.mdx";
+import AvailRatesRs from "../../../../../../../src/graphql/generated-docs/AvailRatesRs.mdx";
+
+import {availRatesQuery, availRatesVariables, availRatesVariablesWithRooms} from "/src/graphql/inventory/product-load/retrieve-rate-availability.query";
+
+# Retrieve Rate Availability
+
+## Query Overview
+
+The `availRates` query allows you to retrieve the availability of specific rates in Inventory. The returned fields include:
+
+* `success`
+* `rates`
+    * `rateCode`
+    * `rooms`
+    * `restrictions`
+        * `bookingLimit`
+        * `minRelease`
+        * `maxRelease`
+        * `freeSales`
+        * `lengthOfStay`
+            * `fullStay`
+                * `minimum`
+                * `maximum`
+            * `arrival`
+                * `minimum`
+                * `maximum`
+    * `applicableWeekdays`
+        * `all`
+        * `monday`
+        * `tuesday`
+        * `wednesday`
+        * `thursday`
+        * `friday`
+        * `saturday`
+        * `sunday`
+    * `dateRange`
+        * `start`
+        * `end`
+* `adviseMessages`
+    * `code`
+    * `description`
+    * `level`
+    * `correlationID`
+    * `external`
+        * `code`
+        * `message`
+
+### 1. Criteria
+
+When building your query, you need to provide the following input fields:
+
+#### Mandatory Input
+* `clientCode`
+* `supplierCode`
+* `hotelCode`
+* `rates`
+    * `rateCode`
+    * `dateRange`
+        * `start`
+        * `end`
+
+### 2. Settings
+
+This query allows retrieving availability for specific rates by defining relevant details such as `clientCode`, `supplierCode`, `hotelCode`, and `dateRange`.
+
+```js
+{
+  "input": {
+    "clientCode": "ABC123",
+    "supplierCode": "SUP001",
+    "hotelCode": "HTL567",
+    "rates": [
+      {
+        "rateCode": "RATE001",
+        "dateRange": {
+          "start": "2024-03-01",
+          "end": "2024-03-10"
+        }
+      }
+    ]
+  }
+}
+```
+
+### Response Considerations
+
+The query returns the retrieved rates along with success status and possible advise messages.
+
+#### `AvailRatesRs` (*OBJECT*)
+* `rates` (*RateAvailLoad*) - List of rates with availability information.
+    * `rateCode` (*String*) - The rate code for the rates.
+    * `dateRange` (*DateRangeProduct*) - Date range applied.
+        * `start` (*DateTime*) - Start date.
+        * `end` (*DateTime*) - End date.
+    * `restrictions` (*RestrictionsLoad*) - Restrictions applied to the rates.
+        * `bookingLimit`, `minRelease`, `maxRelease`, `freeSales`, `stopSales` conditions.
+* `success` (*Boolean*) - Indicates whether the operation was successful.
+* `adviseMessages` (*AdviseMessage*) - Messages related to the operation.
+    * `code` (*ID*) - AM code.
+    * `type` (*String*) - Error type.
+    * `description` (*String*) - Error description.
+    * `level` (*Enum of AdviseMessageLevel*) - Importance level (ERROR, WARN, INFO).
+    * `external` (*ExternalMessage*) - External message details.
+    * `correlationID` (*ID*) - Identifier for debugging.
+
+## Query Inputs
+
+<InventoryAvailRatesInput />
+## Returned Fields
+
+<AvailRatesRs />
+
+
+## Examples
+
+#### Retrieve availability for a specific rate
+
+With this example, we are going to retrieve the availability for a specific rate within a specific date range.
+
+<GraphqlSample query={availRatesQuery} variables={availRatesVariables} />
+
+#### Retrieve availability for a specific rate and room
+
+With this example, we are going to retrieve the availability for a specific rate and specific room within a specific date range.
+
+<GraphqlSample query={availRatesQuery} variables={availRatesVariablesWithRooms} />
+---

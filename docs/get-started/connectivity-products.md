@@ -27,12 +27,16 @@ The API mirrors the functionalities of our Inventory Extranet, but with the adde
 
 ### For Sellers
 
+#### Connectors Pull Sellers Framework
+
+* We have launched a new Pull Sellers API, in which Travelgate currently plays a proactive role in developing API integrations on behalf of the Seller. On this [website](https://app.travelgate.com/network/roadmap) you can find the roadmap and status of developments.
+
+
 #### Inventory Push Sellers API
-* [Inventory Graphql API](../apis/for-sellers/inventory-push-graphql-api/quickstart.mdx): We offer a comprehensive GraphQL API designed to optimize the management of static information and master data in the travel industry. This API enables both buyers and sellers to efficiently set up, load, and retrieve crucial data necessary for establishing and maintaining their inventory, including the complete configuration of hotels, rates, rooms, and offers.
+* [Inventory Push Sellers API](../apis/for-sellers/inventory-push-graphql-api/quickstart.mdx): We offer a comprehensive GraphQL API designed to optimize the management of static information and master data in the travel industry for our Push Suppliers. This API enables both Buyers and Sellers to efficiently set up, load, and retrieve crucial data necessary for establishing and maintaining their inventory, including the complete configuration of hotels, rates, rooms, and offers.
 This API is particularly related to the loading of prices and availability, known as ARI updates. It reflects the capabilities of our existing Inventory Extranet, but with the added benefits of API integration, such as automation, improved efficiency, and a reduced likelihood of human errors.
 
 
-* We have launched a new Pull Sellers API, in which Travelgate currently plays a proactive role in developing API integrations on behalf of the Seller. On this [website](https://app.travelgate.com/network/roadmap) you can find the roadmap and status of developments.
 
 
 ## APP Connections

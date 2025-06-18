@@ -39,3 +39,7 @@ To configure user roles, follow these steps:
 :::info
 If a **hotelier** requests access to the **Extranet**, it is the **Client's** responsibility to create the user and assign appropriate permissions (role). Travelgate does not manage hotelier user creation. Typically, hoteliers are assigned **Provider** or **Provider Viewer** roles with access limited to their hotel.
 :::
+
+## How do I reset my Inventory user password?
+
+On the Inventory login pop-up, click "Forgot Password?" and follow the steps to reset your password via email.

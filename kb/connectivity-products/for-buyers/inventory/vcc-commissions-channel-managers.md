@@ -14,7 +14,7 @@ If the Channel Manager supports card payment, Travelgate accepts all payment opt
 
 ## Channel Managers Offering VCC Payment via Travelgate
 
-Below is a list of some Channel Managers connected via Travelgate that support **VCC payment** by implementing a booking notification system. For the latest information, please contact the Channel Manager directly.
+Below is a list of some Channel Managers (Push Suppliers) connected via Travelgate that support **VCC payment** by implementing a booking notification system. For the latest information, please contact the Channel Manager directly.
 
 - Allotz
 - Connectycs

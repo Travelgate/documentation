@@ -118,3 +118,30 @@ CancelPenalty result = _connectorsUtilities.CancelPenaltyManager.CancelPenaltyFr
 
 * Converts a relative `hoursBefore` value into an absolute UTC deadline.
 * Time zone must be provided manually or as part of an integration agreement.
+
+---
+
+### **CancelPoliciesCombiner**
+Handles the transformation and management of supplier cancellation policies, ensuring compatibility with the standardized Travelgate format.
+
+> **Use Case**: Essential for operations like `Quote` or `Cancel` to standardize cancellation policies provided by the supplier.
+
+```csharp
+int numberOfRooms = supplier.NumberOfRooms; // 2 rooms
+bool policiesWithGross = supplier.IsGrossPrice; // Check if policies are with gross
+DateTime checkIn = supplier.CheckIn; //It can also be obtained by the request
+int nights = supplier.Nights;
+
+CancelPoliciesCombiner policiesCombiner = new CancelPoliciesCombiner(numberOfRooms, policiesWithGross, checkIn, nights);
+
+foreach (Room supplierRoom in supplier.Rooms)
+{
+    //Use policies and price helpers in order to build them
+    policiesCombiner.Add(new CancelPolicy(), new Price());
+}
+
+//TryGet method will return a valid OptionCancelPolicy
+policiesCombiner.TryGet(out OptionCancelPolicy cancelPolicy);
+```
+
+---

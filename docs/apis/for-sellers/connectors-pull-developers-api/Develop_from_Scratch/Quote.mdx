@@ -12,13 +12,13 @@ Define the responses for your quote operation, it is recommended to insert a sup
 
 We will be using the **TwoAdultTwoDays** mock (in the "**tests -> MockServer -> Tests**" folder) through all the steps of the development.
 
-![Mock Example](MockTwoAdults.png)
+![Mock Example](MockTwoAdultsQuote.png)
 
 ### **Step 2: Define the Models of your response (Request and Response models)**
 
 These models are crucial because they specify the structure of the objects contained within supplier responses. They'll also play a vital role in serializing and deserializing requests and responses during development.
 
-![Response example](TemplateStructureModels.png)
+![Response example](TemplateStructureModelsQuote.png)
 
 **Example of a QuoteRequest model** (File: QuoteRequest.cs):
 
@@ -187,7 +187,7 @@ This class will contain a "BuildRequests" method that will have the following ar
 - The request that the buyer sends (connectorsRequest)
 - Parameters (connectorParameters) which will have some helpers:
 
-![Build Request Search](BuildRequestSearch.png)
+![Build Request Quote](BuildRequestQuote.png)
 
 **Example of Build Request:**
 
@@ -270,7 +270,7 @@ Once the request has been sent, we will have to control and parse the response r
 
 We will be implementing the "ParseResponse" step inside QuoteOperation:
 
-![Build Request Search](BuildRequestSearch.png)
+![Build Response Quote](ParseResponseQuote.png)
 
 **Example of Parse Response:**
 

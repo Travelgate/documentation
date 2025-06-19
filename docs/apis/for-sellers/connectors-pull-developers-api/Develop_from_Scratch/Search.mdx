@@ -8,9 +8,11 @@ sidebar_position: 3
 
 ### **Step 1: Define your Search responses (Mocks)**
 
-Define the responses for your operation, it is recommended to insert a supplier response into every mock or at least, into the mocks of the operation you will be developing.
+Define the responses for your operation, it is mandatory to insert a supplier response into every mock or at least, into the mocks of the operation you will be developing.
 
-We will be using the **TwoAdultTwoDays** mock (in the "**tests -> MockServer -> Tests**" folder) through all the steps of the development.
+We will be using the **TwoAdultTwoDays** mock through all the steps of the development.
+
+File location: "**test\MockServer\Tests\Search\Two_Adults_Two_Days.txt**"
 
 ![Mock Example](MockTwoAdults.png)
 
@@ -18,9 +20,11 @@ We will be using the **TwoAdultTwoDays** mock (in the "**tests -> MockServer -> 
 
 These models are crucial because they specify the structure of the objects contained within supplier responses. They'll also play a vital role in serializing and deserializing requests and responses during development.
 
+File location: "**ConnectorsIntegration\Search\Models\Request\SearchRequest.cs**"
+
 ![Response example](TemplateStructureModels.png)
 
-**Example of a SearchRequest model** (File: SearchRequest.cs):
+**Example of a SearchRequest model**:
 
 ```csharp
 namespace ConnectorsIntegration.Search.Models.Request;
@@ -41,7 +45,9 @@ public class SupplierOccupancy
 }
 ```
 
-**Example of a SearchResponse model** (File: SearchResponse.cs):
+File location: "**ConnectorsIntegration\Search\Models\Response\SearchResponse.cs**"
+
+**Example of a SearchResponse model**:
 
 ```csharp
 namespace ConnectorsIntegration.Search.Models.Response;
@@ -94,10 +100,10 @@ public class SupplierRoom
 
 ## **Develop**
 
-### **Step 1: Add the necessary serializers**
-To specify which serializer the developer will be using (based on the seller's API) we can specify it in our "**Extensions**":
+### **Step 1: Register the serializers and operations**
+To specify which serializer and operations the developer will be using (based on the seller's API) we can specify it in our "**Extensions**":
 
-File: SearchExtensions.cs
+File location: "**ConnectorsIntegration\Search\SearchExtensions.cs**"
 
 If the seller works with **JSON** format, we can specify the integration to work with **JSON** with the following:
 
@@ -117,7 +123,7 @@ internal static class SearchExtensions
 }
 ```
 
-For XML details check [XML Extensions](../Advanced_Usages/Extensions)
+For XML details check [XML Extensions](../Advanced_Use/Extensions)
 
 For more details about operations, check [PreOperations](../Connector_Framework/PreOperation_Overview) and [Operations](../Connector_Framework/Operation_Overview)
 
@@ -125,7 +131,7 @@ For more details about operations, check [PreOperations](../Connector_Framework/
 
 The AccessModel is a class that will allow the integration to establish some information before launching the operations.
 
-This class can be found here:
+File location: "**ConnectorsIntegration\AccessModel.cs**"
 
 ![AccessModelStructure](AccessModel.png)
 
@@ -159,13 +165,16 @@ public class AccessModel : IBindAccessModel
 
 There are two previous validations that serve as a filter so the buildrequest and the parseresponse are as safe as possible. They can be found in the SearchOperation.cs class:
 
+File location: "**ConnectorsIntegration\Search\Operations\SearchOperation.cs**"
+
 ![TryValidateSearch](TryValidateSearch.png)
 
 **TryValidateModelRequest**
 
-This step validates the incoming request from the client. While most validation is defined in the metadata, this step is used for specific edge cases that cannot be generalized.
+This step validates the incoming request from the client. While most validation is defined in the [metadata](../Advanced_Configuration/Metadata_Definition), this step is used for specific edge cases that cannot be generalized.
 
 **Example Use Case:** In a Search operation, validating that hotel codes are numeric because supplier do not allow non-numeric hotels. This type of validation would not be covered by metadata.
+
 
 ```csharp
 public bool TryValidateModelRequest(
@@ -223,6 +232,8 @@ This class will contain a "BuildRequests" method that will have the following ar
 - Object of the requests previously created (SearchRequest)
 - The request that the buyer sends (connectorsRequest)
 - Parameters (connectorParameters) which will have some helpers:
+
+File location: "**ConnectorsIntegration\Search\Operations\SearchOperation.BuildRequest.cs**"
 
 ![Build Request Search](BuildRequestSearch.png)
 
@@ -298,7 +309,9 @@ Once the request has been sent, we will have to control and parse the response r
 
 We will be implementing the "ParseResponse" step inside SearchOperation:
 
-![Build Request Search](BuildRequestSearch.png)
+File location: "**ConnectorsIntegration\Search\Operations\SearchOperation.ParseResponse.cs**"
+
+![Build Buyer's Response](BuildBuyersResponseSearch.png)
 
 **Example of Parse Response:**
 
@@ -455,7 +468,7 @@ Use the **FormTest** application to test each operation manually:
  
 ## **Code Review**
 
-### **Create Pull Request**
+### **Step 1: Create Pull Request**
 
     - Commit your Search changes and push them to a new branch called "**SearchDevelopment**" into the original repository.
     - Separate the Pull Request into minimum these 4 commits:
@@ -464,5 +477,5 @@ Use the **FormTest** application to test each operation manually:
         - BuildRequest
         - ParseResponse
 
-### **Wait for Travelgate review**
+### **Step 2: Wait for Travelgate review**
     - This step involves waiting for the Travelgate team to review and approve the submitted pull request.

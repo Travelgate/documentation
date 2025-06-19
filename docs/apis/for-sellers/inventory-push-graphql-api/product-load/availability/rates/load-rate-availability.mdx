@@ -1,0 +1,154 @@
+---
+sidebar_position: 3
+---
+
+
+import AvailRatesRs from "../../../../../../../src/graphql/generated-docs/AvailRatesRs.mdx";
+import InventoryAvailRatesLoadInput from "../../../../../../../src/graphql/generated-docs/InventoryAvailRatesLoadInput.mdx";
+
+import {availRatesLoadMutation, availRatesLoadVariables} from "/src/graphql/inventory/product-load/load-rate-availability.mutation";
+
+# Load Rate Availability
+
+## Mutation Overview
+
+The `loadAvailRates` mutation allows you to load the availability of specific rates in Inventory. The returned fields include:
+
+* `success`
+* `rates`
+    * `rateCode`
+    * `dateRange`
+        * `start`
+        * `end`
+    * `rooms`
+    * `restrictions`
+        * `bookingLimit`
+        * `minRelease`
+        * `maxRelease`
+        * `freeSales`
+        * `lengthOfStay`
+            * `fullStay`
+                * `minimum`
+                * `maximum`
+            * `arrival`
+                * `minimum`
+                * `maximum`
+        * `stopSales`
+            * `closeMaster`
+            * `closeOnArrival`
+            * `closeOnDeparture`
+    * `applicableWeekdays`
+        * `all`
+        * `monday`
+        * `tuesday`
+        * `wednesday`
+        * `thursday`
+        * `friday`
+        * `saturday`
+        * `sunday`
+* `adviseMessages`
+    * `code`
+    * `description`
+    * `level`
+    * `correlationID`
+    * `external`
+        * `code`
+        * `message`
+
+### 1. Criteria
+
+When building your mutation, you need to provide the following input fields:
+
+#### Mandatory Input
+* `clientCode`
+* `supplierCode`
+* `hotelCode`
+* `rates`
+    * `rateCode`
+    * `rooms` 
+    * `restrictions`
+    * `dateRange`
+        * `start`
+        * `end`
+
+### 2. Settings
+
+This mutation allows loading availability for specific rates by defining relevant details such as `clientCode`, `supplierCode`, `hotelCode`, `dateRange`, and `restrictions`.
+
+```js
+{
+  "input": {
+    "clientCode": "ABC123",
+    "supplierCode": "SUP001",
+    "hotelCode": "HTL567",
+    "rates": [
+      {
+        "rateCode": "RATE001",
+        "rooms": ["ROOM1", "ROOM2"],
+        "restrictions": {
+          "bookingLimit": 10,
+          "minRelease": 2,
+          "maxRelease": 30,
+          "freeSales": true,
+          "lengthOfStay": {
+            "fullStay": {
+              "minimum": 2,
+              "maximum": 7
+            },
+            "arrival": {
+              "minimum": 1,
+              "maximum": 5
+            }
+          },
+          "stopSales": {
+            "closeMaster": false,
+            "closeOnArrival": true,
+            "closeOnDeparture": false
+          }
+        },
+        "dateRange": {
+          "start": "2024-03-01",
+          "end": "2024-03-10"
+        }
+      }
+    ]
+  }
+}
+```
+
+### Response Considerations
+
+The mutation returns the processed rates along with success status and possible advise messages.
+
+#### `AvailRatesRs` (*OBJECT*)
+* `rates` (*RateAvailLoad*) - List of rates with availability information.
+    * `rateCode` (*String*) - The rate code for the rates.
+    * `dateRange` (*DateRangeProduct*) - Date range applied.
+        * `start` (*DateTime*) - Start date.
+        * `end` (*DateTime*) - End date.
+    * `restrictions` (*RestrictionsLoad*) - Restrictions applied to the rates.
+        * `bookingLimit`, `minRelease`, `maxRelease`, `freeSales`, `stopSales` conditions.
+* `success` (*Boolean*) - Indicates whether the operation was successful.
+* `adviseMessages` (*AdviseMessage*) - Messages related to the operation.
+    * `code` (*ID*) - AM code.
+    * `type` (*String*) - Error type.
+    * `description` (*String*) - Error description.
+    * `level` (*Enum of AdviseMessageLevel*) - Importance level (ERROR, WARN, INFO).
+    * `external` (*ExternalMessage*) - External message details.
+    * `correlationID` (*ID*) - Identifier for debugging.
+    
+## Mutation Inputs
+
+<InventoryAvailRatesLoadInput />
+## Returned Fields
+
+<AvailRatesRs />
+
+
+## Examples
+
+#### Load availability for a specific rate
+
+With this example, we are going to load the availability for a specific rate within a specific date range.
+
+<GraphqlSample query={availRatesLoadMutation} variables={availRatesLoadVariables} />

@@ -19,7 +19,7 @@ When reporting an error, please include relevant snippets from the **error and w
 
 - [List of Errors and Warnings](/kb/connectivity-products/for-buyers/errors-and-warnings/overview)
 - [Hotel-X Booking Flow and Management Errors](/docs/apis/for-buyers/hotel-x-pull-buyers-api/making-requests/errors-and-warnings/booking-flow) and [Hotel-X Content Errors](/docs/apis/for-buyers/hotel-x-pull-buyers-api/making-requests/errors-and-warnings/content)
-- [Legacy Pull Buyers API Booking Flow and Management Errors](/docs/apis/for-buyers/legacy-pull-buyers-api/making-requests/errors-and-warnings/booking-flow) and [Legacy Pull Buyers API Content Errors](/docs/apis/for-buyers/legacy-pull-buyers-api/making-requests/errors-and-warnings/content)
+- [Legacy Pull Buyers API Booking Flow and Management Errors](/docs/apis/for-buyers/deprecated/legacy-pull-buyers-api/making-requests/errors-and-warnings/booking-flow) and [Legacy Pull Buyers API Content Errors](/docs/apis/for-buyers/deprecated/legacy-pull-buyers-api/making-requests/errors-and-warnings/content)
 :::
 
 ### Use Specific Keywords

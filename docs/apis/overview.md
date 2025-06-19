@@ -4,10 +4,16 @@ sidebar_position: 1
 
 # Overview
 
-Travelgate offers tailored API solutions to enhance travel operations.
+Travelgate offers powerful and flexible API solutions tailored to enhance travel connectivity and operations across the marketplace.
 
-For Buyers, the [Hotel-X Pull Buyers API](for-buyers/hotel-x-pull-buyers-api/quickstart.mdx) and [Legacy Pull Buyers API](for-buyers/legacy-pull-buyers-api/overview.mdx) enable real-time transactions, delivering immediate and comprehensive responses. In contrast, the [Channel-X Push Buyers API](for-buyers/inventory-buyers/channel-x-push-buyers-api/quickstart.mdx) delivers hotel product data to Buyers' systems in a static format, while still enabling real-time reservations with the support of Hotel-X.
+### For Buyers  
 
-On the other side, for Sellers, the [Legacy Pull Sellers API](for-sellers/hotel-pull-sellers-api/overview) supports real-time interactions, while the [Hotel Push Sellers API](for-sellers/inventory-sellers/hotel-push-sellers-api/quickstart.mdx) retrieves content statically while ensuring real-time reservation capabilities.
+- The [**Hotel-X Pull Buyers API**](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart.mdx) enables real-time transactions with Sellers, providing dynamic, on-demand responses for search, quote, and booking operations.  
+- The [**Channel-X Push Buyers API**](/docs/apis/for-buyers/channel-x-push-buyers-api/quickstart.mdx) delivers hotel product data — such as availability and prices — directly to the Buyer's system in a push-based format, while still enabling real-time bookings through Hotel-X.
+
+### For Sellers  
+
+- The [**Connectors Pull Sellers API Framework**](/docs/apis/for-sellers/connectors-pull-developers-api/Overview) supports real-time communication with the Seller's system, allowing dynamic product access for Buyers in the marketplace.  
+- The [**Inventory Push Sellers API**](/docs/apis/for-sellers/inventory-push-graphql-api/quickstart.mdx) allows Sellers to push availability and pricing into TravelgateX’s Inventory system, making their product accessible to all connected Buyers.
 
 ![API Overview](https://storage.travelgate.com/docs/APIs_Overview.svg)

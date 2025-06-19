@@ -8,9 +8,11 @@ sidebar_position: 4
 
 ### **Step 1: Define your Quote responses (Mocks)**
 
-Define the responses for your operation, it is recommended to insert a supplier response into every mock or at least, into the mocks of the operation you will be developing.
+Define the responses for your operation, it is mandatory to insert a supplier response into every mock or at least, into the mocks of the operation you will be developing.
 
-We will be using the **TwoAdultTwoDays** mock (in the "**tests -> MockServer -> Tests**" folder) through all the steps of the development.
+We will be using the **TwoAdultTwoDays** mock through all the steps of the development.
+
+File location: "**test\MockServer\Tests\Quote\Two_Adults_Two_Days.txt**"
 
 ![Mock Example](MockTwoAdultsQuote.png)
 
@@ -18,9 +20,11 @@ We will be using the **TwoAdultTwoDays** mock (in the "**tests -> MockServer -> 
 
 These models are crucial because they specify the structure of the objects contained within supplier responses. They'll also play a vital role in serializing and deserializing requests and responses during development.
 
+File location: "**ConnectorsIntegration\Quote\Models\Response\QuoteRequest.cs**"
+
 ![Response example](TemplateStructureModelsQuote.png)
 
-**Example of a QuoteRequest model** (File: QuoteRequest.cs):
+**Example of a QuoteRequest model**:
 
 ```csharp
 namespace ConnectorsIntegration.Quote.Models.Request;
@@ -42,7 +46,9 @@ public class SupplierOccupancy
 }
 ```
 
-**Example of a QuoteResponse model** (File: QuoteResponse.cs):
+File location: "**ConnectorsIntegration\Quote\Models\Response\QuoteResponse.cs**"
+
+**Example of a QuoteResponse model**:
 
 ```csharp
 namespace ConnectorsIntegration.Quote.Models.Response;
@@ -91,10 +97,10 @@ public class SupplierRoom
 
 ## **Develop**
 
-### **Step 1: Add the necessary serializers**
-To specify which serializer the developer will be using (based on the seller's API) we can specify it in our "**Extensions**":
+### **Step 1: Register the serializers and operations**
+To specify which serializer and operations the developer will be using (based on the seller's API) we can specify it in our "**Extensions**":
 
-File: QuoteExtensions.cs
+File location: "**ConnectorsIntegration\Quote\QuoteExtensions.cs**"
 
 If the seller works with **JSON** format, we can specify the integration to work with **JSON** with the following:
 
@@ -114,7 +120,7 @@ internal static class QuoteExtensions
 }
 ```
 
-For XML details check [XML Extensions](../Advanced_Usages/Extensions)
+For details about others serializers, check [Extensions](../Advanced_Usages/Extensions)
 
 For more details about operations, check [PreOperations](../Connector_Framework/PreOperation_Overview) and [Operations](../Connector_Framework/Operation_Overview)
 
@@ -122,11 +128,13 @@ For more details about operations, check [PreOperations](../Connector_Framework/
 
 There are two previous validations that serve as a filter so the buildrequest and the parseresponse are as safe as possible. They can be found in the QuoteOperation.cs class:
 
+File location: "**ConnectorsIntegration\Quote\Operations\QuoteOperation.cs**"
+
 ![TryValidateSearch](TryValidateSearch.png)
 
 **TryValidateModelRequest**
 
-This step validates the incoming request from the client. While most validation is defined in the metadata, this step is used for specific edge cases that cannot be generalized.
+This step validates the incoming request from the client. While most validation is defined in the [metadata](../Advanced_Configuration/Metadata_Definition), this step is used for specific edge cases that cannot be generalized.
 
 **Example Use Case:** In a operation, validating that hotel codes are numeric because supplier do not allow non-numeric hotels. This type of validation would not be covered by metadata.
 
@@ -186,6 +194,8 @@ This class will contain a "BuildRequests" method that will have the following ar
 - Object of the requests previously created (QuoteRequest)
 - The request that the buyer sends (connectorsRequest)
 - Parameters (connectorParameters) which will have some helpers:
+
+File location: "**ConnectorsIntegration\Quote\Operations\QuoteOperation.BuildRequest.cs**"
 
 ![Build Request Quote](BuildRequestQuote.png)
 
@@ -269,6 +279,8 @@ internal partial class QuoteOperation
 Once the request has been sent, we will have to control and parse the response returned by the seller.
 
 We will be implementing the "ParseResponse" step inside QuoteOperation:
+
+File location: "**ConnectorsIntegration\Quote\Operations\QuoteOperation.ParseResponse.cs**"
 
 ![Build Response Quote](ParseResponseQuote.png)
 
@@ -415,7 +427,7 @@ Use the **FormTest** application to test each operation manually:
  
 ## **Code Review**
 
-### **Create Pull Request**
+### **Step 1: Create Pull Request**
 
     - Commit your changes and push them to a new branch called "**QuoteDevelopment**" into the original repository.
     - Separate the Pull Request into minimum these 4 commits:
@@ -424,5 +436,5 @@ Use the **FormTest** application to test each operation manually:
         - BuildRequest
         - ParseResponse
 
-### **Wait for Travelgate review**
+### **Step 2: Wait for Travelgate review**
     - This step involves waiting for the Travelgate team to review and approve the submitted pull request.

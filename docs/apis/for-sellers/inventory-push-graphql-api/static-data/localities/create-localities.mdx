@@ -1,0 +1,74 @@
+---
+sidebar_position: 3
+---
+
+
+import LocalitiesRs from "../../../../../../src/graphql/generated-docs/LocalitiesRs.mdx";
+import InventoryLocalitiesCreateInput from "../../../../../../src/graphql/generated-docs/InventoryLocalitiesCreateInput.mdx";
+
+
+# Create Localities
+
+## Mutation Overview
+
+The `createLocalities` mutation allows you to create new localities that a hotel can have assigned in Inventory. The returned fields include:
+
+* `id`
+* `name`
+* `countryCode`
+* `unLocode`
+
+### 1. Criteria
+
+When building your mutation, you need to provide the following input fields:
+
+#### Mandatory Input
+* `countryCode`
+* `name`
+
+#### Optional Input
+* `unLocode`
+
+### 2. Settings
+
+To create a locality, ensure that all mandatory fields are properly filled out and provide accurate identifiers for the locality.
+
+### Response Considerations
+
+The mutation returns the created locality along with success status and possible advise messages.
+
+#### `LocalitiesRs` (*OBJECT*)
+* `localities` (*InventoryLocality*) - A collection of created localities.
+  * `id` (*Int*) - Unique identifier for the locality.
+  * `name` (*String*) - Name of the locality.
+  * `countryCode` (*String*) - ISO 2-character country code.
+  * `unLocode` (*String*) - UN/LOCODE for Trade and Transport Locations.
+* `success` (*Boolean*) - Indicates if the operation was successful.
+* `adviseMessages` (*AdviseMessage*) - Messages related to the operation.
+## Mutation Inputs
+
+<InventoryLocalitiesCreateInput />
+## Returned Fields
+
+<LocalitiesRs />
+
+
+## Examples
+```js
+{
+  "data": {
+    "inventory": {
+      "createLocalities": {
+        "localities": [
+          {
+            "name": "Palma de Mallorca",
+            "countryCode": "ES",
+            "id": 31104,
+            "unLocode": "ES-PMI"
+          }
+        ]
+      }
+    }
+  }
+}
+```

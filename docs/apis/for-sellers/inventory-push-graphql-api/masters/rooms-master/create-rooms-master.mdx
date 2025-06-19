@@ -1,0 +1,85 @@
+---
+sidebar_position: 2
+---
+
+
+import RoomsRs from "../../../../../../src/graphql/generated-docs/RoomsRs.mdx";
+import InventoryRoomMasterCreateInput from "../../../../../../src/graphql/generated-docs/InventoryRoomMasterCreateInput.mdx";
+
+# Create Room Master
+
+## Mutation Overview
+
+The `createRoomMaster` mutation allows you to create a new room master in Inventory. The returned fields include:
+
+* `id`
+* `code`
+* `name`
+
+### 1. Criteria
+
+When building your mutation, you need to provide the following input fields:
+
+#### Mandatory Input
+* `clientCode`
+* `code`
+* `name`
+
+### 2. Settings
+
+To build your `createRoomMaster` input, you need to provide your client code in the field `clientCode` and specify the `code` and `name` you wish to set for the new room type.
+
+:::note
+Your `ClientCode` can be retrieved from any Travelgate's access with a Channel Manager.  
+See [My Connections](https://app.travelgate.com/connections/myconnections) and click "Get form data" in the selected access. The code in `Password` is equivalent to the `ClientCode`.
+:::
+
+```js
+{
+  "input":{
+    "clientCode": "CDOC",
+    "code": "STD",
+    "name": "Standard"
+  }
+}
+```
+
+### Response Considerations
+
+The mutation returns the created room object along with success status and possible advise messages.
+
+#### `RoomsRs` (*OBJECT*)
+* `rooms` (*InventoryRoom*) - A collection of created rooms.
+    * `id` (*Int*) - Unique identifier.
+    * `code` (*String*) - Room code.
+    * `name` (*String*) - Room name.
+* `success` (*Boolean*) - Indicates if the operation was successful.
+* `adviseMessages` (*AdviseMessage*) - Messages related to the operation.
+
+
+## Mutation Inputs
+
+<InventoryRoomMasterCreateInput />
+## Returned Fields
+
+<RoomsRs />
+
+
+## Examples
+```js
+{
+  "data": {
+    "inventory": {
+      "roomsMaster": {
+        "rooms": [
+          {
+            "id": 47915,
+            "code": "STD",
+            "name": "Standard"
+          }
+        ]
+      }
+    }
+  }
+}
+```

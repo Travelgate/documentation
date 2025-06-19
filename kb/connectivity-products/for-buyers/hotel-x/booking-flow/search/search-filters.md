@@ -50,7 +50,7 @@ Define and filter which status (OK or RQ) should be included or excluded in your
 }
 ```
 
-If you're still using our Legacy Pull Buyers API (deprecated), you can find information on filtering availability status using the `OnRequest` tag through this [link](/docs/apis/for-buyers/legacy-pull-buyers-api/booking-flow/avail). However, we highly recommend exploring the [Hotel-X Pull Buyers API documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/overview) to benefit from all its [advanced features and improvements](/kb/connectivity-products/for-buyers/hotel-x/why-develop-hotel-x-explained).
+If you're still using our Legacy Pull Buyers API (deprecated), you can find information on filtering availability status using the `OnRequest` tag through this [link](/docs/apis/for-buyers/deprecated/legacy-pull-buyers-api/booking-flow/avail). However, we highly recommend exploring the [Hotel-X Pull Buyers API documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/overview) to benefit from all its [advanced features and improvements](/kb/connectivity-products/for-buyers/hotel-x/why-develop-hotel-x-explained).
 
 :::info Aggregate and Apply Business Rules to This Field 🚀
 To aggregate or apply business rules, simply add 'status' or 'notStatus' to the primary key of the aggregation and preference plugins. Both plugins operate similarly, making it easy to implement. For more details, visit our [Developers Resources](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/overview).

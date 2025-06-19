@@ -1,0 +1,66 @@
+---
+sidebar_position: 3
+---
+
+
+import GetMealPlansRs from "../../../../../src/graphql/generated-docs/GetMealPlansRs.mdx";
+
+import {mealplansQuery} from "/src/graphql/inventory/static-data/mealplans.query";
+
+
+# Mealplans
+
+## Query Overview
+
+The `mealplans` query returns a list of all the possible meal plans that a rate can have included in Inventory. The returned fields include:
+
+* `code`
+* `name`
+
+### 1. Criteria
+
+This query retrieves all available meal plans without requiring specific input parameters.
+
+### 2. Settings
+
+The query does not require any mandatory input fields, as it retrieves all available meal plans in Inventory.
+
+```js
+{
+  "input": {}
+}
+```
+
+### Response Considerations
+
+The query returns a collection of meal plans along with success status and possible advise messages.
+
+#### `GetMealPlansRs` (*OBJECT*)
+* `mealPlans` (*InventoryMealPlan*) - A collection of retrieved meal plans.
+    * `code` (*Int*) - Unique identifier for the meal plan.
+    * `name` (*String*) - Name of the meal plan.
+* `success` (*Boolean*) - Indicates whether the operation was successful.
+* `adviseMessages` (*AdviseMessage*) - Messages related to the operation.
+    * `code` (*ID*) - AM code.
+    * `type` (*String*) - Error type.
+    * `description` (*String*) - Error description.
+    * `level` (*Enum of AdviseMessageLevel*) - Importance level (ERROR, WARN, INFO).
+    * `external` (*ExternalMessage*) - External message details.
+    * `correlationID` (*ID*) - Identifier for debugging.
+
+
+
+
+
+
+
+## Returned Fields
+
+<GetMealPlansRs />
+
+
+## Examples
+
+#### Retrieve all Mealplans
+
+<GraphqlSample query={mealplansQuery} />

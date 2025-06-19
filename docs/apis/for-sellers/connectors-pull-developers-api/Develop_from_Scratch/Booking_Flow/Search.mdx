@@ -1,61 +1,63 @@
 ---
-title: "Quote"
-sidebar_position: 4
+title: "Search"
+sidebar_position: 3
 ---
 
 
 ## **Mock**
 
-### **Step 1: Define your Quote responses (Mocks)**
+### **Step 1: Define your Search responses (Mocks)**
 
 Define the responses for your operation, it is mandatory to insert a supplier response into every mock or at least, into the mocks of the operation you will be developing.
 
 We will be using the **TwoAdultTwoDays** mock through all the steps of the development.
 
-File location: "**test\MockServer\Tests\Quote\Two_Adults_Two_Days.txt**"
+File location: "**test\MockServer\Tests\Search\Two_Adults_Two_Days.txt**"
 
-![Mock Example](MockTwoAdultsQuote.png)
+![Mock Example](MockTwoAdults.png)
 
 ### **Step 2: Define the Models of your response (Request and Response models)**
 
 These models are crucial because they specify the structure of the objects contained within supplier responses. They'll also play a vital role in serializing and deserializing requests and responses during development.
 
-File location: "**ConnectorsIntegration\Quote\Models\Response\QuoteRequest.cs**"
+File location: "**ConnectorsIntegration\Search\Models\Request\SearchRequest.cs**"
 
-![Response example](TemplateStructureModelsQuote.png)
+![Response example](TemplateStructureModels.png)
 
-**Example of a QuoteRequest model**:
+**Example of a SearchRequest model**:
 
 ```csharp
-namespace ConnectorsIntegration.Quote.Models.Request;
+namespace ConnectorsIntegration.Search.Models.Request;
 
-public class QuoteRequest
+public class SearchRequest
 {
-    public string CheckIn { get; set; }
-    public string CheckOut { get; set; }
-    public string HotelCode { get; set; }
-    public List<SupplierOccupancy> Occupancy { get; set; }
-    public string RateId { get; set; }
+    public string CheckIn { get; internal set; }
+    public string CheckOut { get; internal set; }
+    public string HotelCode { get; internal set; }
+    public List<SupplierOccupancy> Occupancy { get; internal set; }
 }
 
 public class SupplierOccupancy
 {
-    public int Adults { get; set; }
-    public int Children { get; set; }
-    public IEnumerable<int> Infants { get; set; }
+    public int Adults { get; internal set; }
+    public int Children { get; internal set; }
+    public IEnumerable<int> Infants { get; internal set; }
 }
 ```
 
-File location: "**ConnectorsIntegration\Quote\Models\Response\QuoteResponse.cs**"
+File location: "**ConnectorsIntegration\Search\Models\Response\SearchResponse.cs**"
 
-**Example of a QuoteResponse model**:
+**Example of a SearchResponse model**:
 
 ```csharp
-namespace ConnectorsIntegration.Quote.Models.Response;
+namespace ConnectorsIntegration.Search.Models.Response;
 
-public class QuoteResponse
+public class SearchResponse
 {
-    public SupplierOption Option { get; set; }
+    public List<SupplierOption> Options { get; set; }
+    public string HotelCode { get; set; }
+    public string BoardName { get; set; }
+    public string HotelName { get; set; }
 }
 
 public class SupplierOption
@@ -64,6 +66,7 @@ public class SupplierOption
     public SupplierPrice SupplierPrice { get; set; }
     public string SupplierPaymentType { get; set; }
     public List<SupplierRoom> Rooms { get; set; }
+    public string BoardCode { get; set; }
     public List<SupplierCancelPolicy> SupplierCancelPolicies { get; set; }
 }
 
@@ -100,48 +103,83 @@ public class SupplierRoom
 ### **Step 1: Register the serializers and operations**
 To specify which serializer and operations the developer will be using (based on the seller's API) we can specify it in our "**Extensions**":
 
-File location: "**ConnectorsIntegration\Quote\QuoteExtensions.cs**"
+File location: "**ConnectorsIntegration\Search\SearchExtensions.cs**"
 
 If the seller works with **JSON** format, we can specify the integration to work with **JSON** with the following:
 
 ```csharp
-internal static class QuoteExtensions
+internal static class SearchExtensions
 {
-    public static void AddQuoteServices(this IServiceCollection services,
+    public static void AddSearchServices(this IServiceCollection services,
         IConfiguration configuration)
     {
         //A JsonSerializer service is added along with the request and response model
-        services.AddJsonSerializer<QuoteRequest, QuoteResponse>(ConfigureJSONOptions);
+        services.AddJsonSerializer<SearchRequest, SearchResponse>(ConfigureJSONOptions);
         //The operation is added, indicating what models should be used during the development of the operation
-        services.AddQuoteOperation<QuoteOperation, QuoteRequest, QuoteResponse, AccessModel>(TgxPlatform.Name,
+        services.AddSearchOperation<SearchOperation, SearchRequest, SearchResponse, AccessModel>(TgxPlatform.Name,
             configuration);
     }
     private static void ConfigureJSONOptions(JsonSerializerOptions options) { }
 }
 ```
 
-For details about others serializers, check [Extensions](../Advanced_Use/Extensions)
+For details about others serializers, check [Extensions](../../Advanced_Use/Extensions)
 
-For more details about operations, check [PreOperations](../Connector_Framework/PreOperation_Overview) and [Operations](../Connector_Framework/Operation_Overview)
+For more details about operations, check [PreOperations](../../Connector_Framework/PreOperation_Overview) and [Operations](../../Connector_Framework/Operation_Overview)
 
-### **Step 2: QuoteOperation validators**
+### **Step 2: Define the AccessModel**
 
-There are two previous validations that serve as a filter so the buildrequest and the parseresponse are as safe as possible. They can be found in the QuoteOperation.cs class:
+The AccessModel is a class that will allow the integration to establish some information before launching the operations.
 
-File location: "**ConnectorsIntegration\Quote\Operations\QuoteOperation.cs**"
+File location: "**ConnectorsIntegration\AccessModel.cs**"
+
+![AccessModelStructure](AccessModel.png)
+
+If the integration needs Generic and Search URLs, along with an Apikey, an AccessModel would look like this:
+
+```csharp
+public class AccessModel : IBindAccessModel
+{
+    public string User { get; private set; }
+    public string Password { get; private set; }
+
+    public string UrlGeneric { get; private set; }
+
+    public string UrlSearch { get; private set; }
+
+    public string ApiKey { get; private set; }
+
+    public void Bind(string supplier, Access access)
+    {
+        User = access.User;
+        Password = access.Password;
+        UrlGeneric = access.Urls.Generic;
+        UrlSearch = access.Urls.Search;
+        //Parameter that if is not present, will throw and exception
+        ApiKey = access.Parameters.GetOrRquired("ApiKey");
+    }
+}
+```
+
+### **Step 3: SearchOperation validators**
+
+There are two previous validations that serve as a filter so the buildrequest and the parseresponse are as safe as possible. They can be found in the SearchOperation.cs class:
+
+File location: "**ConnectorsIntegration\Search\Operations\SearchOperation.cs**"
 
 ![TryValidateSearch](TryValidateSearch.png)
 
 **TryValidateModelRequest**
 
-This step validates the incoming request from the client. While most validation is defined in the [metadata](../Advanced_Configuration/Metadata_Definition), this step is used for specific edge cases that cannot be generalized.
+This step validates the incoming request from the client. While most validation is defined in the [metadata](../../Advanced_Configuration/Metadata_Definition), this step is used for specific edge cases that cannot be generalized.
 
-**Example Use Case:** In a operation, validating that hotel codes are numeric because supplier do not allow non-numeric hotels. This type of validation would not be covered by metadata.
+**Example Use Case:** In a Search operation, validating that hotel codes are numeric because supplier do not allow non-numeric hotels. This type of validation would not be covered by metadata.
+
 
 ```csharp
 public bool TryValidateModelRequest(
-    QuoteConnectorRequest connectorsRequest, 
-    QuoteParameters<CntAccessModel> connectorParameters,
+    SearchConnectorRequest connectorsRequest, 
+    SearchParameters<CntAccessModel> connectorParameters,
     out IEnumerable<AdviseMessage> adviseMessages)
 {
     //AdviseMessages are used to specify errors, such as checking if the hotel code is numeric and if not, add an AdviseMessage
@@ -163,17 +201,17 @@ Once the supplier's response is received, this step validates it for errors or a
 
 ```csharp
 public bool TryValidateSupplierResponses(
-    QuoteParameters<CntAccessModel> connectorParameters,
-    IEnumerable<SupplierResponseWrapper<QuoteResponse>> supplierResponses,
+    SearchParameters<CntAccessModel> connectorParameters,
+    IEnumerable<SupplierResponseWrapper<SearchResponse>> supplierResponses,
     out IEnumerable<AdviseMessage> adviseMessages)
 {
-    var supplierResponseWrappers = supplierResponses as SupplierResponseWrapper<QuoteResponse>[] ?? supplierResponses.ToArray();
+    var supplierResponseWrappers = supplierResponses as SupplierResponseWrapper<SearchResponse>[] ?? supplierResponses.ToArray();
     
     var success = ResponseValidator.TryValidateSupplierResponses(supplierResponseWrappers, out adviseMessages);
 
     if (!success) return false;
     
-    if (supplierResponseWrappers.ElementAt(0).Response.HotelQuote?.Hotel is null)
+    if (supplierResponseWrappers.ElementAt(0).Response.HotelSearch?.Hotel is null)
     {
         adviseMessages =
         [
@@ -191,58 +229,50 @@ public bool TryValidateSupplierResponses(
 
 This class will contain a "BuildRequests" method that will have the following args: 
 
-- Object of the requests previously created (QuoteRequest)
+- Object of the requests previously created (SearchRequest)
 - The request that the buyer sends (connectorsRequest)
 - Parameters (connectorParameters) which will have some helpers:
 
-File location: "**ConnectorsIntegration\Quote\Operations\QuoteOperation.BuildRequest.cs**"
+File location: "**ConnectorsIntegration\Search\Operations\SearchOperation.BuildRequest.cs**"
 
-![Build Request Quote](BuildRequestQuote.png)
+![Build Request Search](BuildRequestSearch.png)
 
 **Example of Build Request:**
 
 ```csharp
 using Connectors.Core.Application.Connection;
 using Connectors.Pull.Hotel.Application.Metadata;
-using Connectors.Pull.Hotel.Application.Operations.Quote;
-using Connectors.Pull.Hotel.Domain.Contracts;
+using Connectors.Pull.Hotel.Application.Operations.Search;
 using Connectors.Pull.Hotel.Domain.Contracts.Common;
-using Connectors.Pull.Hotel.Domain.Contracts.Quote.Request;
-using ConnectorsIntegration.Quote.Models.Request;
-using static ConnectorsIntegration.Common.Constants.TgxPlatform;
+using ConnectorsIntegration.Search.Models.Request;
 
-namespace ConnectorsIntegration.Quote.Operations;
+namespace ConnectorsIntegration.Search.Operations;
 
-internal partial class QuoteOperation
+internal partial class SearchOperation
 {
-    public IEnumerable<SupplierRequestWrapper<QuoteRequest>> BuildRequests(
-        QuoteConnectorRequest connectorsRequest,
-        QuoteParameters<AccessModel> connectorParameters)
+    public IEnumerable<SupplierRequestWrapper<SearchRequest>> BuildRequests(
+        SearchConnectorRequest connectorsRequest,
+        SearchParameters<AccessModel> connectorParameters)
     {
-        QuoteCriteria quoteCriteria = connectorsRequest.QuoteRq.QuoteCriteria;
+        SearchCriteria searchCriteria = connectorsRequest.SearchRq.SearchCriteria;
         //Refers to the checkIn of the booking
-        string checkIn = quoteCriteria.CheckIn;
+        string checkIn = searchCriteria.CheckIn;
         //Refers to the checkOut of the booking
-        string checkOut = quoteCriteria.CheckOut;
-        string hotelCode = quoteCriteria.Accommodation.Code;
+        string checkOut = searchCriteria.CheckOut;
+        //Refers to the hotelCode of the booking. If the seller allows requests with multiple hotels, the Accomodations should be iterated
+        string hotelCode = searchCriteria.Destinations.Accommodations.First().Code;
         //Refers to the occupancy of the booking. If the seller allows requests with multiple occupancies, the Occupancies should be iterated
-        Occupancy firstOccupancy = quoteCriteria.Occupancies.First();
+        Occupancy firstOccupancy = searchCriteria.Occupancies.First();
         OccupancyInfoDetailed occupancyInfoDetailed = _connectorsUtilities.MetadataConnectorsService.GetDetailedOccupancyInfo(firstOccupancy);
 
-        var rateIdParameter = quoteCriteria.Parameters.GetParameter(SupplierParameters.RateId).Value;
-        QuoteRequest quoteRequest = BuildQuoteRequest(
-            checkIn,
-            checkOut,
-            hotelCode,
-            occupancyInfoDetailed,
-            rateIdParameter);
+        SearchRequest searchRequest = BuildSearchRequest(checkIn, checkOut, hotelCode, occupancyInfoDetailed);
 
-        //Generic URL we prepared back in the AccessModel, which will be passed by the buyer
-        string genericUrl = connectorParameters.ParametersModel.UrlGeneric;
+        //Search URL we prepared back in the AccessModel, which will be passed by the buyer
+        string searchUrl = connectorParameters.ParametersModel.UrlSearch;
 
-        SupplierRequestWrapper<QuoteRequest> supplierRequest = new(
-            quoteRequest,
-            new Uri(genericUrl),
+        SupplierRequestWrapper<SearchRequest> supplierRequest = new(
+            searchRequest,
+            new Uri(searchUrl),
             HttpMethod.Post);
 
         return
@@ -251,11 +281,11 @@ internal partial class QuoteOperation
         ];
     }
 
-    private static QuoteRequest BuildQuoteRequest(string checkIn, string checkOut, string hotelCode, OccupancyInfoDetailed occupancyInfoDetailed, string rateIdParameter)
+    private static SearchRequest BuildSearchRequest(string checkIn, string checkOut, string hotelCode, OccupancyInfoDetailed occupancyInfoDetailed)
     {
         //The request towards the seller system
       
-        return new QuoteRequest()
+        return new SearchRequest()
         {
             CheckIn = checkIn,
             CheckOut = checkOut,
@@ -267,22 +297,21 @@ internal partial class QuoteOperation
                     Children = occupancyInfoDetailed.NumberOfChildren,
                     Infants = occupancyInfoDetailed.InfantAges
                 }
-            },
-            RateId = rateIdParameter
+            } 
         };
     }
 }
 ```
 
-### **Step 5: Build the Buyer's Response**
+### **Step 5: Parse the Seller's response**
 
 Once the request has been sent, we will have to control and parse the response returned by the seller.
 
-We will be implementing the "ParseResponse" step inside QuoteOperation:
+We will be implementing the "ParseResponse" step inside SearchOperation:
 
-File location: "**ConnectorsIntegration\Quote\Operations\QuoteOperation.ParseResponse.cs**"
+File location: "**ConnectorsIntegration\Search\Operations\SearchOperation.ParseResponse.cs**"
 
-![Build Response Quote](ParseResponseQuote.png)
+![Build Buyer's Response](BuildBuyersResponseSearch.png)
 
 **Example of Parse Response:**
 
@@ -290,44 +319,56 @@ File location: "**ConnectorsIntegration\Quote\Operations\QuoteOperation.ParseRes
 using Connectors.Core.Application.Connection;
 using Connectors.Core.Application.Iso;
 using Connectors.Core.Domain;
-using Connectors.Pull.Hotel.Application.Operations.Quote;
+using Connectors.Pull.Hotel.Application.Operations.Search;
 using Connectors.Pull.Hotel.Domain.Contracts.Common;
-using Connectors.Pull.Hotel.Domain.Contracts.Quote.Response;
 using Connectors.Pull.Hotel.Domain.Contracts.Search.Response;
-using ConnectorsIntegration.Quote.Models.Response;
+using ConnectorsIntegration.Search.Models.Response;
 
-namespace ConnectorsIntegration.Quote.Operations;
+namespace ConnectorsIntegration.Search.Operations;
 
-internal partial class QuoteOperation
+internal partial class SearchOperation
 {
-    public QuoteConnectorResponse ParseResponses(
-        QuoteConnectorRequest connectorsRequest,
-        QuoteParameters<AccessModel> connectorParameters,
-        IEnumerable<SupplierResponseWrapper<QuoteResponse>> supplierResponses,
+    public SearchConnectorResponse ParseResponses(
+        SearchConnectorRequest connectorsRequest,
+        SearchParameters<AccessModel> connectorParameters,
+        IEnumerable<SupplierResponseWrapper<SearchResponse>> supplierResponses,
         CancellationToken cancellationToken)
     {
+        //We can safely do First() in case the seller only has one response because we check errors previously
         var supplierResponse = supplierResponses.First().Response;
-        return new QuoteConnectorResponse(ParseSupplierResponse(connectorsRequest, supplierResponse));
+        return new SearchConnectorResponse(ParseSupplierResponse(connectorsRequest, supplierResponse));
     }
 
-    private QuoteRs ParseSupplierResponse(QuoteConnectorRequest connectorsRequest, QuoteResponse supplierResponse)
+    private SearchRs ParseSupplierResponse(SearchConnectorRequest connectorsRequest, SearchResponse supplierResponse)
     {
-        var supplierOption = supplierResponse.Option;
-        
-        Status status = MapSellerToTgxStatus(supplierOption.Status);
-        Price price = ParseSupplierPrice(supplierOption.SupplierPrice);
-        PaymentType paymentType = MapSellerToTgxPaymentType(supplierOption.SupplierPaymentType);
-        List<Room> roomList = ParseSupplierRooms(supplierOption.Rooms);
-        var checkIn = connectorsRequest.QuoteRq.QuoteCriteria.CheckInAsDateTime;
+        foreach (SupplierOption supplierOption in supplierResponse.Options)
+        {
+            Status status = MapSellerToTgxStatus(supplierOption.Status);
+            Price price = ParseSupplierPrice(supplierOption.SupplierPrice);
+            PaymentType paymentType = MapSellerToTgxPaymentType(supplierOption.SupplierPaymentType);
+            List<Room> roomList = ParseSupplierRooms(supplierOption.Rooms);
+            var checkIn = connectorsRequest.SearchRq.SearchCriteria.CheckInAsDateTime;
 
-        var cancelPolicy = ParseSupplierCancelPolicies(checkIn, supplierOption.SupplierCancelPolicies);
-        
-        return new QuoteRs(
-            price,
-            status,
-            cancelPolicy,
-            paymentType,
-            roomList);
+            var option = new Option(
+                status,
+                price,
+                [paymentType],
+                roomList
+                );
+
+            option.CancelPolicy = ParseSupplierCancelPolicies(checkIn, supplierOption.SupplierCancelPolicies);
+
+            //Helper to combine options
+            _connectorsUtilities.OptionsGenerator.TryAddHotelOption(
+                supplierResponse.HotelCode,
+                supplierOption.BoardCode,
+                option,
+                supplierResponse.HotelName,
+                supplierResponse.BoardName);
+        }
+
+        // Combine method will return a list of combined accomodation based on the options added
+        return new SearchRs(_connectorsUtilities.OptionsGenerator.Combine());
     }
 
     private OptionCancelPolicy ParseSupplierCancelPolicies(DateTime checkIn, List<SupplierCancelPolicy> supplierCancelPolicies)
@@ -406,30 +447,30 @@ internal partial class QuoteOperation
 }
 ```
 
-For more details about helpers, check the - [Price helpers](../Tools_and_Helpers/Price_Helpers/PriceHelpers) and [Policies helpers](../Tools_and_Helpers/Policies_Helpers/PoliciesHelpers) 
+For more details about helpers, check the - [Price helpers](../../Tools_and_Helpers/Price_Helpers/PriceHelpers) and [Policies helpers](../../Tools_and_Helpers/Policies_Helpers/PoliciesHelpers) 
 
-For more details about the combinatory, check [Recommended Helpers](../Tools_and_Helpers/Recommended_Helpers)
+For more details about the combinatory, check [Recommended Helpers](../../Tools_and_Helpers/Recommended_Helpers)
 
 ## **Test**
 
 ### **Option 1: Connector Integration Tests**
 Use the integration tests provided by Travelgate to validate your implementation:
 - Add the necessary use cases to the **MockServer** for each operation.
-  - [View MockServer Documentation](../Connector_Framework/MockServer_Documentation.mdx).
+  - [View MockServer Documentation](../../Connector_Framework/MockServer_Documentation.mdx).
 - Execute the associated tests for the implemented operation.
-  - [View Running Integration Tests](../Connector_Framework/Running_Integration_Tests.mdx).
+  - [View Running Integration Tests](../../Connector_Framework/Running_Integration_Tests.mdx).
 
 ### **Option 2: FormTest Tool (Shopping)**
 Use the **FormTest** application to test each operation manually:
 - Configure the tool to use your supplier's API settings.
 - Test specific scenarios not covered by predefined use cases.
-- [View FormTest Documentation](../Tools_and_Helpers/FormTest_Documentation.mdx).
- 
+- [View FormTest Documentation](../../Tools_and_Helpers/FormTest_Documentation.mdx).
+
 ## **Code Review**
 
 ### **Step 1: Create Pull Request**
 
-    - Commit your changes and push them to a new branch called "**QuoteDevelopment**" into the original repository.
+    - Commit your Search changes and push them to a new branch called "**SearchDevelopment**" into the original repository.
     - Separate the Pull Request into minimum these 4 commits:
         - Mock responses
         - Request and Response models
@@ -437,4 +478,4 @@ Use the **FormTest** application to test each operation manually:
         - ParseResponse
 
 ### **Step 2: Wait for Travelgate review**
-    - This step involves waiting for the Travelgate team to review and approve the submitted pull request.
+    - This step involves waiting for the Travelgate team to review and approve the submitted pull request, for more details, check [Code Review Details](../Code_Review/Code_Review_Details.mdx)

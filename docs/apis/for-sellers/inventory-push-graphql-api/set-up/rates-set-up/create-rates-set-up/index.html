@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-apis/for-sellers/inventory-push-graphql-api/set-up/rates-set-up/create-rates-set-up" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.7.0">
+<title data-rh="true">Create Rates | Travelgate Docs</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.travelgate.com/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://docs.travelgate.com/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://docs.travelgate.com/docs/apis/for-sellers/inventory-push-graphql-api/set-up/rates-set-up/create-rates-set-up"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Create Rates | Travelgate Docs"><meta data-rh="true" name="description" content="Mutation Overview"><meta data-rh="true" property="og:description" content="Mutation Overview"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://docs.travelgate.com/docs/apis/for-sellers/inventory-push-graphql-api/set-up/rates-set-up/create-rates-set-up"><link data-rh="true" rel="alternate" href="https://docs.travelgate.com/docs/apis/for-sellers/inventory-push-graphql-api/set-up/rates-set-up/create-rates-set-up" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.travelgate.com/docs/apis/for-sellers/inventory-push-graphql-api/set-up/rates-set-up/create-rates-set-up" hreflang="x-default"><link rel="preconnect" href="https://www.google-analytics.com">
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ECHYSGVN82"></script>
+<script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-ECHYSGVN82",{anonymize_ip:!0})</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&amp;display=swap">
+<script src="https://kit.fontawesome.com/e1e13599a5.js"></script>
+<script src="https://widget.kapa.ai/kapa-widget.bundle.js" defer="defer" data-website-id="22c9d321-f9d2-48e3-958b-a5789f17c4b7" data-project-name="Travelgate" data-project-color="#0B59DE" data-project-logo="/img/ask_ia.svg" data-modal-disclaimer="AIna, Travelgate&#39;s multilingual AI assistant, provides quick answers and troubleshooting guidance based on our official documentation. For the most precise and helpful response, please describe your inquiry clearly and in detail. While we strive for thoroughness, AI-generated responses may not always be perfect. They are provided as is, and Travelgate disclaims any liability for inaccuracies. Please use discretion." data-user-analytics-fingerprint-enabled="true" data-user-analytics-store-ip="true" data-button-text=" " data-button-width="13rem" data-button-height="2.5rem" data-button-image-width="170"></script><link rel="stylesheet" href="/assets/css/styles.4b87acc9.css">
+<script src="/assets/js/runtime~main.4d5cdc5e.js" defer="defer"></script>
+<script src="/assets/js/main.c85541df.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo.svg" alt="Travelgate" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/logo.svg" alt="Travelgate" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Travelgate Docs</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/get-started/introduction">Documentation</a><a class="navbar__item navbar__link" sidebarid="kbSidebar" href="/kb">Knowledge Base</a><a class="navbar__item navbar__link" sidebarid="schemaSidebar" href="/api">GraphQL API Reference</a><a class="navbar__item navbar__link" sidebarid="playgroundSidebar" href="/playground">GraphQL Playground</a><a class="navbar__item navbar__link" sidebarid="askAiSidebar" href="/ask-ai">Ask AI</a><a href="https://app.travelgate.com/tickets" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link" sidebarid="supportCenterSidebar">Support Center</a></div><div class="navbar__items navbar__items--right"><a href="#" class="navbar__item navbar__link">Login</a><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z"><input placeholder="Search" aria-label="Search" class="navbar__search-input" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link">🚀 GET STARTED</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/introduction">Introduction</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/connectivity-products">Connectivity products</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/key-concepts">Key concepts</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--active">📚 APIs</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/apis/overview">Overview</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link" tabindex="0">For Buyers</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart">Hotel-X Pull Buyers API</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/apis/for-buyers/channel-x-push-buyers-api/quickstart">Channel-X Push Buyers API</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/apis/for-buyers/inventory-buyers/inventory-set-up-graphql-api/quickstart">Inventory Buyers</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/apis/for-buyers/deprecated/legacy-pull-buyers-api/overview">Deprecated</a></div></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--active" tabindex="0">For Sellers</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/apis/for-sellers/connectors-pull-developers-api/Overview/">Connectors Pull Sellers Framework</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" tabindex="0" href="/docs/apis/for-sellers/inventory-push-graphql-api/quickstart">Inventory Push Sellers API</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/apis/for-sellers/inventory-push-graphql-api/quickstart">Quickstart</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-4 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/apis/for-sellers/inventory-push-graphql-api/making-requests/endpoint">Making Requests</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-4 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/apis/for-sellers/inventory-push-graphql-api/product-load/overview">Product Load</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-4 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/apis/for-sellers/inventory-push-graphql-api/booking-management/overview">Booking Management</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-4 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" tabindex="0" href="/docs/apis/for-sellers/inventory-push-graphql-api/set-up/overview">Set Up</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-5 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/apis/for-sellers/inventory-push-graphql-api/set-up/overview">Overview</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-5 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/apis/for-sellers/inventory-push-graphql-api/set-up/hotels-set-up/">Hotels</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-5 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" tabindex="0" href="/docs/apis/for-sellers/inventory-push-graphql-api/set-up/rates-set-up/">Rates</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-6 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/apis/for-sellers/inventory-push-graphql-api/set-up/rates-set-up/">Rates</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-6 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/apis/for-sellers/inventory-push-graphql-api/set-up/rates-set-up/update-rates-set-up">Update Rates</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-6 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/apis/for-sellers/inventory-push-graphql-api/set-up/rates-set-up/create-rates-set-up">Create Rates</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-6 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/apis/for-sellers/inventory-push-graphql-api/set-up/rates-set-up/delete-rates-set-up">Delete Rates</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-5 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/apis/for-sellers/inventory-push-graphql-api/set-up/rooms-set-up/">Rooms</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-5 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/apis/for-sellers/inventory-push-graphql-api/set-up/offers-set-up/">Offers</a></div></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-4 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/apis/for-sellers/inventory-push-graphql-api/masters/overview">Masters</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-4 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/apis/for-sellers/inventory-push-graphql-api/static-data/overview">Static Data</a></div></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/apis/for-sellers/deprecated/hotel-pull-sellers-api/overview">Deprecated</a></div></li></ul></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/apps/overview">🧩 Solutions</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/security/overview">🛡️ Security</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/⚖️ Legislation/Publications/California Law/California-law">⚖️ Legislation</a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">📚 APIs</span><meta itemprop="position" content="1"></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">For Sellers</span><meta itemprop="position" content="2"></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Inventory Push Sellers API</span><meta itemprop="position" content="3"></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Set Up</span><meta itemprop="position" content="4"></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Rates</span><meta itemprop="position" content="5"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">Create Rates</span><meta itemprop="position" content="6"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Create Rates</h1></header>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="mutation-overview">Mutation Overview<a href="#mutation-overview" class="hash-link" aria-label="Direct link to Mutation Overview" title="Direct link to Mutation Overview">​</a></h2>
+<p>The <code>createRateSetUp</code> mutation allows you to create new rates for a hotel in a specific client - seller relation in Inventory. The returned fields include:</p>
+<ul>
+<li><code>code</code></li>
+<li><code>name</code></li>
+<li><code>hotelCode</code></li>
+<li><code>active</code></li>
+<li><code>mealPlanIncluded</code></li>
+<li><code>agePolicies</code>
+<ul>
+<li><code>maxAgeChildren</code></li>
+<li><code>maxAgeInfants</code></li>
+<li><code>freeInfants</code></li>
+<li><code>freeChildren</code></li>
+</ul>
+</li>
+<li><code>paymentPolicies</code>
+<ul>
+<li><code>currency</code></li>
+<li><code>commission</code></li>
+<li><code>priceIsBinding</code></li>
+<li><code>acceptedPayments</code>
+<ul>
+<li><code>type</code></li>
+<li><code>cardTypes</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>bookingRules</code>
+<ul>
+<li><code>bookingWindow</code>
+<ul>
+<li><code>start</code></li>
+<li><code>end</code></li>
+</ul>
+</li>
+<li><code>markets</code>
+<ul>
+<li><code>included</code></li>
+<li><code>excluded</code></li>
+</ul>
+</li>
+<li><code>rateRule</code></li>
+<li><code>seniorRule</code></li>
+</ul>
+</li>
+<li><code>cancelPolicies</code>
+<ul>
+<li><code>baseCancelPolicy</code>
+<ul>
+<li><code>refundable</code></li>
+<li><code>cancelPenalties</code>
+<ul>
+<li><code>daysBeforeArrival</code></li>
+<li><code>penaltyType</code></li>
+<li><code>value</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>cancelPoliciesByDate</code>
+<ul>
+<li><code>start</code></li>
+<li><code>end</code></li>
+<li><code>cancelPolicy</code>
+<ul>
+<li><code>refundable</code></li>
+<li><code>cancelPenalties</code>
+<ul>
+<li><code>daysBeforeArrival</code></li>
+<li><code>penaltyType</code></li>
+<li><code>value</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>surcharges</code>
+<ul>
+<li><code>chargeType</code></li>
+<li><code>taxType</code></li>
+<li><code>value</code></li>
+<li><code>applyType</code></li>
+<li><code>perNight</code></li>
+<li><code>perPax</code></li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="1-criteria">1. Criteria<a href="#1-criteria" class="hash-link" aria-label="Direct link to 1. Criteria" title="Direct link to 1. Criteria">​</a></h3>
+<p>When building your mutation, you need to provide the following input fields:</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="mandatory-input">Mandatory Input<a href="#mandatory-input" class="hash-link" aria-label="Direct link to Mandatory Input" title="Direct link to Mandatory Input">​</a></h4>
+<ul>
+<li><code>clientCode</code></li>
+<li><code>supplierCode</code></li>
+<li><code>hotelCode</code></li>
+<li><code>rates</code>
+<ul>
+<li><code>code</code></li>
+<li><code>name</code></li>
+<li><code>active</code></li>
+<li><code>mealPlanIncluded</code></li>
+<li><code>agePolicies</code>
+<ul>
+<li><code>maxAgeChildren</code></li>
+<li><code>maxAgeInfants</code></li>
+<li><code>freeInfants</code></li>
+<li><code>freeChildren</code></li>
+</ul>
+</li>
+<li><code>paymentPolicies</code>
+<ul>
+<li><code>currency</code></li>
+<li><code>commission</code></li>
+<li><code>priceIsBinding</code></li>
+<li><code>acceptedPayments</code>
+<ul>
+<li><code>type</code></li>
+<li><code>cardTypes</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>cancelPolicies</code></li>
+</ul>
+</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="optional-input">Optional Input<a href="#optional-input" class="hash-link" aria-label="Direct link to Optional Input" title="Direct link to Optional Input">​</a></h4>
+<ul>
+<li><code>contextCode</code></li>
+<li><code>rates</code>
+<ul>
+<li><code>bookingRules</code>
+<ul>
+<li><code>bookingWindow</code>
+<ul>
+<li><code>start</code></li>
+<li><code>end</code></li>
+</ul>
+</li>
+<li><code>markets</code>
+<ul>
+<li><code>included</code></li>
+<li><code>excluded</code></li>
+</ul>
+</li>
+<li><code>rateRule</code></li>
+<li><code>seniorRule</code></li>
+</ul>
+</li>
+<li><code>surcharges</code>
+<ul>
+<li><code>chargeType</code></li>
+<li><code>taxType</code></li>
+<li><code>value</code></li>
+<li><code>applyType</code></li>
+<li><code>perNight</code></li>
+<li><code>perPax</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="2-settings">2. Settings<a href="#2-settings" class="hash-link" aria-label="Direct link to 2. Settings" title="Direct link to 2. Settings">​</a></h3>
+<p>Ensure that the provided fields match the structure of existing hotel rates and that updates are relevant to your inventory setup.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="response-considerations">Response Considerations<a href="#response-considerations" class="hash-link" aria-label="Direct link to Response Considerations" title="Direct link to Response Considerations">​</a></h3>
+<p>The mutation returns the created rate details along with success status and possible advise messages.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="ratesrs-object"><code>RatesRs</code> (<em>OBJECT</em>)<a href="#ratesrs-object" class="hash-link" aria-label="Direct link to ratesrs-object" title="Direct link to ratesrs-object">​</a></h4>
+<ul>
+<li><code>rates</code> (<em>InventoryRateSetup</em>) - A collection of created rates.<!-- -->
+<ul>
+<li><code>code</code> (<em>String</em>) - The rate code.</li>
+<li><code>name</code> (<em>String</em>) - Name of the rate.</li>
+<li><code>active</code> (<em>Boolean</em>) - Indicates if the rate is active.</li>
+<li><code>hotelCode</code> (<em>String</em>) - The hotel code associated with the rate.</li>
+<li><code>mealPlanIncluded</code> (<em>Int</em>) - Indicates if the meal plan is included.</li>
+<li><code>agePolicies</code> (<em>AgePoliciesCreateInput</em>) - Age policies for the rate.</li>
+<li><code>paymentPolicies</code> (<em>PaymentPoliciesCreateInput</em>) - Payment policies for the rate.</li>
+<li><code>bookingRules</code> (<em>InventoryBookingRulesInput</em>) - Booking rules associated with the rate.</li>
+<li><code>cancelPolicies</code> (<em>CancelPoliciesCreateInput</em>) - Cancel policies associated with the rate.</li>
+<li><code>surcharges</code> (<em>InventorySurchargeInput</em>) - Surcharges associated with the rate.</li>
+</ul>
+</li>
+<li><code>success</code> (<em>Boolean</em>) - Indicates if the operation was successful.</li>
+<li><code>adviseMessages</code> (<em>AdviseMessage</em>) - Messages related to the operation.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="mutation-inputs">Mutation Inputs<a href="#mutation-inputs" class="hash-link" aria-label="Direct link to Mutation Inputs" title="Direct link to Mutation Inputs">​</a></h2>
+<details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>InventoryRatesSetupCreateInput</strong> (<em>INPUT_OBJECT</em>)<br>
+<!-- -->Rates Setup update mutation input</p></summary><div><div class="collapsibleContent_i85q"><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>clientCode</strong> <span class="required"> *</span>  (<em>String</em>)<br>
+<!-- -->Client code.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>supplierCode</strong> <span class="required"> *</span>  (<em>String</em>)<br>
+<!-- -->Travelgate Supplier/Channel code.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>rates</strong> <span class="required"> *</span>  (<em>InventoryRateSetupCreateInput</em>)<br>
+<!-- -->Hotel input data.</p></summary><div><div class="collapsibleContent_i85q"><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>code</strong> <span class="required"> *</span>  (<em>String</em>)<br>
+<!-- -->Code associated with the rate.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>name</strong> <span class="required"> *</span>  (<em>String</em>)<br>
+<!-- -->Name of the rate.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>active</strong> <span class="required"> *</span>  (<em>Boolean</em>)<br>
+<!-- -->Indicates whether the rate is active.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>mealPlanIncluded</strong> <span class="required"> *</span>  (<em>Int</em>)<br>
+<!-- -->Indicates if the meal plan is included in the rate.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>agePolicies</strong> <span class="required"> *</span>  (<em>AgePoliciesCreateInput</em>)<br>
+<!-- -->Age policies associated with the rate.</p></summary><div><div class="collapsibleContent_i85q"><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>maxAgeInfants</strong> <span class="required"> *</span>  (<em>Int</em>)<br>
+<!-- -->Maximum age for a baby, not inclusive.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>freeInfants</strong> <span class="required"> *</span>  (<em>Boolean</em>)<br>
+<!-- -->Indicates whether babies are free of charge.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>maxAgeChildren</strong> <span class="required"> *</span>  (<em>Int</em>)<br>
+<!-- -->Maximum age for a child, not inclusive.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>freeChildren</strong> <span class="required"> *</span>  (<em>Boolean</em>)<br>
+<!-- -->Indicates whether children are free of charge.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details></div></div></details><details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>paymentPolicies</strong> <span class="required"> *</span>  (<em>PaymentPoliciesCreateInput</em>)<br>
+<!-- -->Payment policies associated with the rate.</p></summary><div><div class="collapsibleContent_i85q"><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>currency</strong> <span class="required"> *</span>  (<em>Currency</em>)<br>
+<!-- -->Currency associated with the payment policies.
+Currency</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>commission</strong> <span class="required"> *</span>  (<em>Float</em>)<br>
+<!-- -->Commission applied for all rooms in this rate, leave value 0 for net price. Only Informative.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>priceIsBinding</strong> <span class="required"> *</span>  (<em>Boolean</em>)<br>
+<!-- -->Informs if the prices are binding price. Only Informative.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>acceptedPayments</strong> (<em>AcceptedPaymentInput</em>)<br>
+<!-- -->Rate Accepted Payments, if not informed it is MerchantPay.
+AcceptedPayment</p></summary><div><div class="collapsibleContent_i85q"><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>type</strong> <span class="required"> *</span>  (<em>Enum of PaymentType</em>)</p><p>Possible values:<br>
+<code>MERCHANT</code><br>
+<code>DIRECT</code><br>
+<code>CARD_BOOKING</code><br>
+<code>CARD_CHECK_IN</code></p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>cardTypes</strong> (<em>Enum of PaymentCardType</em>)</p><p>Possible values:<br>
+<code>VI</code><br>
+<code>AX</code><br>
+<code>BC</code><br>
+<code>CA</code><br>
+<code>CB</code><br>
+<code>CU</code><br>
+<code>DS</code><br>
+<code>DC</code><br>
+<code>T</code><br>
+<code>R</code><br>
+<code>N</code><br>
+<code>L</code><br>
+<code>E</code><br>
+<code>JC</code><br>
+<code>TO</code><br>
+<code>S</code><br>
+<code>EC</code><br>
+<code>EU</code><br>
+<code>TP</code><br>
+<code>OP</code><br>
+<code>ER</code><br>
+<code>XS</code><br>
+<code>O</code></p></summary><div><div class="collapsibleContent_i85q"></div></div></details></div></div></details></div></div></details><details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>bookingRules</strong> (<em>InventoryBookingRulesInput</em>)<br>
+<!-- -->Booking rules associated with the rate.</p></summary><div><div class="collapsibleContent_i85q"><details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>bookingWindow</strong> (<em>InventoryBookingWindowInput</em>)<br>
+<!-- -->Booking Dates for which the rate will be available. Do not send it if you want the rate available for all dates.</p></summary><div><div class="collapsibleContent_i85q"><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>start</strong> <span class="required"> *</span>  (<em>DateTime</em>)<br>
+<!-- -->Start date of the booking window.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>end</strong> <span class="required"> *</span>  (<em>DateTime</em>)<br>
+<!-- -->End date of the booking window.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details></div></div></details><details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>markets</strong> (<em>InventoryMarketsInput</em>)<br>
+<!-- -->Markets included or excluded. Do not send if the rate is available for all markets. Only informative.</p></summary><div><div class="collapsibleContent_i85q"><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>included</strong> (<em>String</em>)<br>
+<!-- -->Included markets.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>excluded</strong> (<em>String</em>)<br>
+<!-- -->Excluded markets.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>rateRule</strong> (<em>Enum of RatePlanType</em>)<br>
+<!-- -->&quot;NoRatePlanType&quot; indicates absence of a specific rate plan. &quot;LargeFamily&quot; and &quot;PublicServant&quot; denote rates tailored for those groups. &quot;Negotiated&quot; and &quot;Package&quot; signify negotiated rates and package deals, respectively. &quot;CanaryResident&quot; and &quot;BalearicResident&quot; are special rates for residents of the Canary Islands and the Balearic Islands, respectively. Lastly, &quot;HoneyMoon&quot; designates rates intended for honeymooners or couples celebrating their honeymoon.<br>
+<!-- -->Possible values:<br>
+<code>NO_RATE_PLAN_TYPE</code><br>
+<code>LARGE_FAMILY</code><br>
+<code>PUBLIC_SERVANT</code><br>
+<code>NEGOTIATED</code><br>
+<code>PACKAGE</code><br>
+<code>CANARY_RESIDENT</code><br>
+<code>BALEARIC_RESIDENT</code><br>
+<code>HONEY_MOON</code></p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>seniorRule</strong> (<em>Enum of SeniorRate</em>)<br>
+<!-- -->&quot;NoSeniorRate&quot; indicates the absence of a senior rate. &quot;SeniorRate_55&quot;, &quot;SeniorRate_60&quot;, and &quot;SeniorRate_65&quot; denote rates applicable to individuals aged 55, 60, and 65, respectively. These rates are typically offered to seniors as a special discount or incentive.<br>
+<!-- -->Possible values:<br>
+<code>NO_SENIOR_RATE</code><br>
+<code>SENIOR_RATE_55</code><br>
+<code>SENIOR_RATE_60</code><br>
+<code>SENIOR_RATE_65</code></p></summary><div><div class="collapsibleContent_i85q"></div></div></details></div></div></details><details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>cancelPolicies</strong> <span class="required"> *</span>  (<em>CancelPoliciesCreateInput</em>)<br>
+<!-- -->Cancel policies associated with the rate.</p></summary><div><div class="collapsibleContent_i85q"><details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>baseCancelPolicy</strong> (<em>InventoryCancelPolicyInput</em>)<br>
+<!-- -->Defines the base cancel policies. Only Informative.
+CancelPolicy</p></summary><div><div class="collapsibleContent_i85q"><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>refundable</strong> <span class="required"> *</span>  (<em>Boolean</em>)<br>
+<!-- -->Indicates if the rate is refundable.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>cancelPenalties</strong> (<em>InventoryCancelPenaltyInput</em>)<br>
+<!-- -->List of penalties applicable for the rate. See CancelPenalty.</p></summary><div><div class="collapsibleContent_i85q"><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>daysBeforeArrival</strong> <span class="required"> *</span>  (<em>Int</em>)<br>
+<!-- -->Number of days prior to arrival day in which this Cancellation policy applies.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>penaltyType</strong> <span class="required"> *</span>  (<em>Enum of PenaltyType</em>)<br>
+<!-- -->Penalty type. See PenaltyType.<br>
+<!-- -->Possible values:<br>
+<code>AMOUNT</code><br>
+<code>NIGHTS</code><br>
+<code>PERCENTAGE</code></p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>value</strong> <span class="required"> *</span>  (<em>Float</em>)<br>
+<!-- -->Penalty value.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details></div></div></details></div></div></details><details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>cancelPoliciesByDate</strong> (<em>InventoryCancelPolicyByDateInput</em>)<br>
+<!-- -->Defines a calendar of cancel policies. Only Informative.
+CancelPolicyByDate</p></summary><div><div class="collapsibleContent_i85q"><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>start</strong> <span class="required"> *</span>  (<em>DateTime</em>)<br>
+<!-- -->Start date where the cancel policy must apply.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>end</strong> <span class="required"> *</span>  (<em>DateTime</em>)<br>
+<!-- -->End date where the cancel policy must apply.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>cancelPolicy</strong> <span class="required"> *</span>  (<em>undefined</em>)<br>
+<!-- -->Cancel policy. See CancelPolicy.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details></div></div></details></div></div></details><details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>surcharges</strong> (<em>InventorySurchargeInput</em>)<br>
+<!-- -->Surcharges associated with the rate.</p></summary><div><div class="collapsibleContent_i85q"><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>chargeType</strong> <span class="required"> *</span>  (<em>Enum of InventoryChargeType</em>)<br>
+<!-- -->Indicates if the surcharge is included or not in the price.<br>
+<!-- -->Possible values:<br>
+<code>INCLUDED</code><br>
+<code>EXCLUDED</code></p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>taxType</strong> <span class="required"> *</span>  (<em>Enum of InventoryTaxType</em>)<br>
+<!-- -->The type of tax applied to the surcharge.<br>
+<!-- -->Possible values:<br>
+<code>CITY</code><br>
+<code>LOCAL</code><br>
+<code>RESORT_FEE</code><br>
+<code>SUPPLEMENT_TO_BE_PAID_ON_SPOT</code></p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>value</strong> <span class="required"> *</span>  (<em>Float</em>)<br>
+<!-- -->The value of the surcharge.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>applyType</strong> <span class="required"> *</span>  (<em>Enum of InventoryApplyType</em>)<br>
+<!-- -->The type of application for the surcharge.<br>
+<!-- -->Possible values:<br>
+<code>PERCENTAGE</code><br>
+<code>AMOUNT</code></p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>perNight</strong> <span class="required"> *</span>  (<em>Boolean</em>)<br>
+<!-- -->Indicates whether the surcharge is applied per night.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>perPax</strong> <span class="required"> *</span>  (<em>Boolean</em>)<br>
+<!-- -->Indicates whether the surcharge is applied per person.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details></div></div></details></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>hotelCode</strong> <span class="required"> *</span>  (<em>String</em>)<br>
+<!-- -->Hotel codes of the rooms to retrieve.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>contextCode</strong> (<em>String</em>)<br>
+<!-- -->Travelgate Supplier/Channel context code.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details></div></div></details>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="returned-fields">Returned Fields<a href="#returned-fields" class="hash-link" aria-label="Direct link to Returned Fields" title="Direct link to Returned Fields">​</a></h2>
+<details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>RatesRs</strong> (<em>OBJECT</em>)<br>
+<!-- -->Represents the response object for rates setup operations.</p></summary><div><div class="collapsibleContent_i85q"><details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>adviseMessages</strong> (<em>AdviseMessage</em>)<br>
+<!-- -->Collection of advise messages.</p></summary><div><div class="collapsibleContent_i85q"><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>code</strong> <span class="required"> *</span>  (<em>ID</em>)<br>
+<!-- -->AM code: The following codes can be returned:</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>description</strong> <span class="required"> *</span>  (<em>String</em>)<br>
+<!-- -->Error description</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>level</strong> <span class="required"> *</span>  (<em>Enum of AdviseMessageLevel</em>)<br>
+<!-- -->Indicates the level of importance of the message.
+Possible values: ERROR, WARN, INFO.<br>
+<!-- -->Possible values:<br>
+<code>WARN</code><br>
+<code>ERROR</code><br>
+<code>INFO</code></p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>external</strong> (<em>ExternalMessage</em>)<br>
+<!-- -->Specify the external message.</p></summary><div><div class="collapsibleContent_i85q"><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>code</strong> (<em>String</em>)<br>
+<!-- -->External code.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>message</strong> <span class="required"> *</span>  (<em>String</em>)<br>
+<!-- -->External message.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>correlationID</strong> <span class="required"> *</span>  (<em>ID</em>)<br>
+<!-- -->Identifier to investigate the cause of the error.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details></div></div></details><details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>rates</strong> (<em>InventoryRateSetup</em>)<br>
+<!-- -->Collection of rate output objects.</p></summary><div><div class="collapsibleContent_i85q"><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>code</strong> (<em>String</em>)<br>
+<!-- -->Code associated with the rate.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>name</strong> (<em>String</em>)<br>
+<!-- -->Name of the rate.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>active</strong> <span class="required"> *</span>  (<em>Boolean</em>)<br>
+<!-- -->Indicates whether the rate is active.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>mealPlanIncluded</strong> <span class="required"> *</span>  (<em>Int</em>)<br>
+<!-- -->Indicates if the meal plan included in the rate.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>baseCode</strong> (<em>String</em>)<br>
+<!-- -->Base rate code associated with the rate.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>agePolicies</strong> (<em>InventoryAgePolicies</em>)<br>
+<!-- -->Age policies associated with the rate.</p></summary><div><div class="collapsibleContent_i85q"><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>maxAgeInfants</strong> <span class="required"> *</span>  (<em>Int</em>)<br>
+<!-- -->Max age baby not inclusive</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>freeInfants</strong> <span class="required"> *</span>  (<em>Boolean</em>)<br>
+<!-- -->If true the babies are free of charge</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>maxAgeChildren</strong> <span class="required"> *</span>  (<em>Int</em>)<br>
+<!-- -->Max age child not inclusive</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>freeChildren</strong> <span class="required"> *</span>  (<em>Boolean</em>)<br>
+<!-- -->If true children are free of charge</p></summary><div><div class="collapsibleContent_i85q"></div></div></details></div></div></details><details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>paymentPolicies</strong> (<em>InventoryPaymentPolicies</em>)<br>
+<!-- -->Payment policies associated with the rate.</p></summary><div><div class="collapsibleContent_i85q"><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>currency</strong> <span class="required"> *</span>  (<em>Currency</em>)<br>
+<!-- -->Currency of the rate</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>commission</strong> <span class="required"> *</span>  (<em>Float</em>)<br>
+<!-- -->Commission applied for all rooms in this rate, leave value 0 for net price. Only Informative.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>priceIsBinding</strong> <span class="required"> *</span>  (<em>Boolean</em>)<br>
+<!-- -->Indicates whether the prices are binding prices, meaning they cannot be sold for a lower price. This information is for informative purposes only.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>acceptedPayments</strong> (<em>AcceptedPayment</em>)<br>
+<!-- -->Accepted payment methods for the rate. If not informed, it defaults to MerchantPay.</p></summary><div><div class="collapsibleContent_i85q"><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>type</strong> <span class="required"> *</span>  (<em>Enum of PaymentType</em>)</p><p>Possible values:<br>
+<code>MERCHANT</code><br>
+<code>DIRECT</code><br>
+<code>CARD_BOOKING</code><br>
+<code>CARD_CHECK_IN</code></p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>cardTypes</strong> (<em>Enum of PaymentCardType</em>)</p><p>Possible values:<br>
+<code>VI</code><br>
+<code>AX</code><br>
+<code>BC</code><br>
+<code>CA</code><br>
+<code>CB</code><br>
+<code>CU</code><br>
+<code>DS</code><br>
+<code>DC</code><br>
+<code>T</code><br>
+<code>R</code><br>
+<code>N</code><br>
+<code>L</code><br>
+<code>E</code><br>
+<code>JC</code><br>
+<code>TO</code><br>
+<code>S</code><br>
+<code>EC</code><br>
+<code>EU</code><br>
+<code>TP</code><br>
+<code>OP</code><br>
+<code>ER</code><br>
+<code>XS</code><br>
+<code>O</code></p></summary><div><div class="collapsibleContent_i85q"></div></div></details></div></div></details></div></div></details><details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>bookingRules</strong> (<em>InventoryBookingRules</em>)<br>
+<!-- -->Booking rules associated with the rate.</p></summary><div><div class="collapsibleContent_i85q"><details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>bookingWindow</strong> (<em>InventoryBookingWindow</em>)<br>
+<!-- -->Booking Dates for which the rate will be available. Do not send it if you want the rate available for all dates.</p></summary><div><div class="collapsibleContent_i85q"><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>start</strong> <span class="required"> *</span>  (<em>DateTime</em>)<br>
+<!-- -->Start date of the booking window.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>end</strong> <span class="required"> *</span>  (<em>DateTime</em>)<br>
+<!-- -->End date of the booking window.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details></div></div></details><details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>markets</strong> (<em>InventoryMarkets</em>)<br>
+<!-- -->Markets included or excluded. Do not send if the rate is available for all markets. Only informative.</p></summary><div><div class="collapsibleContent_i85q"><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>included</strong> (<em>String</em>)<br>
+<!-- -->Included markets.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>excluded</strong> (<em>String</em>)<br>
+<!-- -->Excluded markets.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>rateRule</strong> (<em>Enum of RatePlanType</em>)<br>
+<!-- -->&quot;NoRatePlanType&quot; indicates absence of a specific rate plan. &quot;LargeFamily&quot; and &quot;PublicServant&quot; denote rates tailored for those groups. &quot;Negotiated&quot; and &quot;Package&quot; signify negotiated rates and package deals, respectively. &quot;CanaryResident&quot; and &quot;BalearicResident&quot; are special rates for residents of the Canary Islands and the Balearic Islands, respectively. Lastly, &quot;HoneyMoon&quot; designates rates intended for honeymooners or couples celebrating their honeymoon.<br>
+<!-- -->Possible values:<br>
+<code>NO_RATE_PLAN_TYPE</code><br>
+<code>LARGE_FAMILY</code><br>
+<code>PUBLIC_SERVANT</code><br>
+<code>NEGOTIATED</code><br>
+<code>PACKAGE</code><br>
+<code>CANARY_RESIDENT</code><br>
+<code>BALEARIC_RESIDENT</code><br>
+<code>HONEY_MOON</code></p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>seniorRule</strong> (<em>Enum of SeniorRate</em>)<br>
+<!-- -->&quot;NoSeniorRate&quot; indicates the absence of a senior rate. &quot;SeniorRate_55&quot;, &quot;SeniorRate_60&quot;, and &quot;SeniorRate_65&quot; denote rates applicable to individuals aged 55, 60, and 65, respectively. These rates are typically offered to seniors as a special discount or incentive.<br>
+<!-- -->Possible values:<br>
+<code>NO_SENIOR_RATE</code><br>
+<code>SENIOR_RATE_55</code><br>
+<code>SENIOR_RATE_60</code><br>
+<code>SENIOR_RATE_65</code></p></summary><div><div class="collapsibleContent_i85q"></div></div></details></div></div></details><details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>cancelPolicies</strong> (<em>InventoryCancelPoliciesRate</em>)<br>
+<!-- -->Cancel policies associated with the rate.</p></summary><div><div class="collapsibleContent_i85q"><details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>baseCancelPolicy</strong> (<em>InventoryCancelPolicy</em>)<br>
+<!-- -->Defines the base cancel policies. Only Informative.</p></summary><div><div class="collapsibleContent_i85q"><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>refundable</strong> <span class="required"> *</span>  (<em>Boolean</em>)<br>
+<!-- -->Indicates if the rate is refundable.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>cancelPenalties</strong> (<em>InventoryCancelPenalty</em>)<br>
+<!-- -->List of penalties applicable for the rate. See CancelPenalty.</p></summary><div><div class="collapsibleContent_i85q"><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>daysBeforeArrival</strong> <span class="required"> *</span>  (<em>Int</em>)<br>
+<!-- -->Number of days prior to arrival day in which this Cancellation policy applies.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>penaltyType</strong> <span class="required"> *</span>  (<em>Enum of PenaltyType</em>)<br>
+<!-- -->Penalty type. See PenaltyType.<br>
+<!-- -->Possible values:<br>
+<code>AMOUNT</code><br>
+<code>NIGHTS</code><br>
+<code>PERCENTAGE</code></p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>value</strong> <span class="required"> *</span>  (<em>Float</em>)<br>
+<!-- -->Penalty value.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details></div></div></details></div></div></details><details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>cancelPoliciesByDate</strong> (<em>InventoryCancelPolicyByDate</em>)<br>
+<!-- -->This defines a calendar of cancel policies, serving as informational data. If base cancel policies exist for a particular day, the CancelPoliciesByDate take precedence.</p></summary><div><div class="collapsibleContent_i85q"><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>start</strong> <span class="required"> *</span>  (<em>DateTime</em>)<br>
+<!-- -->Start date where the cancel policy must apply.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>end</strong> <span class="required"> *</span>  (<em>DateTime</em>)<br>
+<!-- -->End date where the cancel policy must apply.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>cancelPolicy</strong> <span class="required"> *</span>  (<em>undefined</em>)<br>
+<!-- -->Cancel policy. See CancelPolicy.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details></div></div></details></div></div></details><details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>surcharges</strong> (<em>InventorySurcharge</em>)<br>
+<!-- -->Surcharges associated with the rate.</p></summary><div><div class="collapsibleContent_i85q"><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>chargeType</strong> <span class="required"> *</span>  (<em>Enum of InventoryChargeType</em>)<br>
+<!-- -->Indicates if the surcharge is included or not in the price.<br>
+<!-- -->Possible values:<br>
+<code>INCLUDED</code><br>
+<code>EXCLUDED</code></p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>taxType</strong> <span class="required"> *</span>  (<em>Enum of InventoryTaxType</em>)<br>
+<!-- -->The type of tax applied to the surcharge.<br>
+<!-- -->Possible values:<br>
+<code>CITY</code><br>
+<code>LOCAL</code><br>
+<code>RESORT_FEE</code><br>
+<code>SUPPLEMENT_TO_BE_PAID_ON_SPOT</code></p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>value</strong> <span class="required"> *</span>  (<em>Float</em>)<br>
+<!-- -->The value of the surcharge.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>applyType</strong> <span class="required"> *</span>  (<em>Enum of InventoryApplyType</em>)<br>
+<!-- -->The type of application for the surcharge.<br>
+<!-- -->Possible values:<br>
+<code>PERCENTAGE</code><br>
+<code>AMOUNT</code></p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>perNight</strong> <span class="required"> *</span>  (<em>Boolean</em>)<br>
+<!-- -->Indicates whether the surcharge is applied per night.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>perPax</strong> <span class="required"> *</span>  (<em>Boolean</em>)<br>
+<!-- -->Indicates whether the surcharge is applied per person.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details></div></div></details><details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>rooms</strong> (<em>InventoryRoomSetUp</em>)<br>
+<!-- -->Rooms associated with the rate.</p></summary><div><div class="collapsibleContent_i85q"><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>code</strong> (<em>String</em>)<br>
+<!-- -->Code associated with the room.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>master</strong> (<em>InventoryMasterRoom</em>)<br>
+<!-- -->Master of the room.</p></summary><div><div class="collapsibleContent_i85q"><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>id</strong> <span class="required"> *</span>  (<em>Int</em>)<br>
+<!-- -->Id associated with the room master.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>code</strong> (<em>String</em>)<br>
+<!-- -->Code associated with the room.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>name</strong> (<em>String</em>)<br>
+<!-- -->Name associated with the room.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>active</strong> <span class="required"> *</span>  (<em>Boolean</em>)<br>
+<!-- -->Indicates whether the room is active.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>externalCode</strong> (<em>String</em>)<br>
+<!-- -->External code associated with the room.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>standard</strong> <span class="required"> *</span>  (<em>Int</em>)<br>
+<!-- -->Standard of the room. Typically the number of guests.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>uses</strong> <span class="required"> *</span>  (<em>null</em>)<br>
+<!-- -->List of uses associated with the room.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>hotelCode</strong> (<em>String</em>)<br>
+<!-- -->Hotel code associated with the rate.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details></div></div></details><details style="pointer-events:none" class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p><strong>success</strong> <span class="required"> *</span>  (<em>Boolean</em>)<br>
+<!-- -->Indicates whether the operation was successful based on the absence of advise messages.</p></summary><div><div class="collapsibleContent_i85q"></div></div></details></div></div></details>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="examples">Examples<a href="#examples" class="hash-link" aria-label="Direct link to Examples" title="Direct link to Examples">​</a></h2>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="create-a-new-rate">Create a new rate<a href="#create-a-new-rate" class="hash-link" aria-label="Direct link to Create a new rate" title="Direct link to Create a new rate">​</a></h4>
+<p>With the following mutation, we are going to create a new rate for the hotel 2 filling its basic properties.</p>
+<div class="theme-admonition theme-admonition-note admonition_xJq3 alert alert--secondary"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>note</div><div class="admonitionContent_BuS1"><p>The possible values for <code>mealPlanIncluded</code> can be retrieved using the query <a href="/docs/apis/for-sellers/inventory-push-graphql-api/static-data/mealplans">Mealplans</a>.</p></div></div>
+</div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/Travelgate/documentation/tree/main/docs/apis/for-sellers/inventory-push-graphql-api/set-up/rates-set-up/create-rates-set-up.mdx" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/apis/for-sellers/inventory-push-graphql-api/set-up/rates-set-up/update-rates-set-up"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Update Rates</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/apis/for-sellers/inventory-push-graphql-api/set-up/rates-set-up/delete-rates-set-up"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Delete Rates</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#mutation-overview" class="table-of-contents__link toc-highlight">Mutation Overview</a><ul><li><a href="#1-criteria" class="table-of-contents__link toc-highlight">1. Criteria</a></li><li><a href="#2-settings" class="table-of-contents__link toc-highlight">2. Settings</a></li><li><a href="#response-considerations" class="table-of-contents__link toc-highlight">Response Considerations</a></li></ul></li><li><a href="#mutation-inputs" class="table-of-contents__link toc-highlight">Mutation Inputs</a></li><li><a href="#returned-fields" class="table-of-contents__link toc-highlight">Returned Fields</a></li><li><a href="#examples" class="table-of-contents__link toc-highlight">Examples</a></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row"><div class="col col--3"><img src="https://storage.travelgate.com/assets/logo_tgx_negative.svg" class="logo"><p class="copyright">© <!-- -->2025<!-- --> Travelgate</p></div><div class="col col--3"><h6>Company</h6><ul><li><a href="https://www.travelgate.com/" target="_blank">Travelgate</a></li><li><a href="https://app.travelgate.com/network/roadmap" target="_blank">Integrations Roadmap</a></li><li><a href="https://blog.travelgatex.com/en?hsLang=en" target="_blank">Blog</a></li><li><a href="https://community.travelgatex.com/" target="_blank">TGX Community</a></li></ul></div><div class="col col--3"><h6>Legal</h6><ul><li><a href="https://www.travelgate.com/cookies-policy" target="_blank">Cookies policy</a></li><li><a href="https://www.travelgate.com/privacy-policy" target="_blank">Privacy Policy</a></li><li><a href="https://www.travelgate.com/aviso-legal" target="_blank">Aviso legal</a></li></ul></div><div class="col col--3"><h6>Knowledge Base Articles</h6><ul><li><a href="/kb/our-products/are-you-a-buyer/getting-started-as-a-new-buyer/essential-tech-requirements-before-connecting-with-travelgate-as-a-buyer/">Buying on Travelgate</a></li><li><a href="/kb/our-products/are-you-a-seller/getting-started-as-a-new-seller/essential-requirements-before-connecting-as-seller/">Selling on Travelgate</a></li><li><a href="/kb/faqs/faqs-all/">FAQS</a></li></ul></div></div></div></footer></div>
+</body>
+</html>

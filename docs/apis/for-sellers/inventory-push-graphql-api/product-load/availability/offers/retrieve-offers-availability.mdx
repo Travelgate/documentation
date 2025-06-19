@@ -1,0 +1,121 @@
+---
+sidebar_position: 4
+---
+
+
+import InventoryAvailOffersInput from "../../../../../../../src/graphql/generated-docs/InventoryAvailOffersInput.mdx";
+import AvailRetrieveRs from "../../../../../../../src/graphql/generated-docs/AvailRetrieveRs.mdx";
+
+import {availOffersQuery, availOffersOneRateVariables,availOffersMultiplesRatesVariables} from "/src/graphql/inventory/product-load/retrieve-offers-availability.query";
+
+# Retrieve Offers Availability
+
+## Query Overview
+
+The `availOffers` query allows you to retrieve the availability of specific offers in Inventory. The returned fields include:
+
+* `success`
+* `offers`
+    * `rateCode`
+    * `offers`
+        * `code`
+        * `stopSales`
+            * `closeMaster`
+            * `closeOnArrival`
+            * `closeOnDeparture`
+    * `dateRange`
+        * `start`
+        * `end`
+* `adviseMessages`
+    * `code`
+    * `description`
+    * `level`
+    * `correlationID`
+    * `external`
+        * `code`
+        * `message`
+
+### 1. Criteria
+
+When building your query, you need to provide the following input fields:
+
+#### Mandatory Input
+* `clientCode`
+* `supplierCode`
+* `hotelCode`
+* `offers`
+    * `rateCode`
+    * `dateRange`
+        * `start`
+        * `end`
+
+### 2. Settings
+
+This query allows retrieving availability for specific offers by defining relevant details such as `clientCode`, `supplierCode`, `hotelCode`, and `dateRange`.
+
+```js
+{
+  "input": {
+    "clientCode": "ABC123",
+    "supplierCode": "SUP001",
+    "hotelCode": "HTL567",
+    "offers": [
+      {
+        "rateCode": "RATE001",
+        "dateRange": {
+          "start": "2024-03-01",
+          "end": "2024-03-10"
+        }
+      }
+    ]
+  }
+}
+```
+
+### Response Considerations
+
+The query returns the retrieved offers along with success status and possible advise messages.
+
+#### `AvailRetrieveRs` (*OBJECT*)
+* `offers` (*OffersAvailLoad*) - List of retrieved offers with availability information.
+    * `rateCode` (*String*) - The rate code for the offers.
+    * `offers` (*OfferAvailLoad*) - List of retrieved offers.
+        * `code` (*String*) - Offer code.
+        * `stopSales` (*StopSales*) - Stop sales conditions.
+            * `closeMaster` (*Boolean*) - Close master flag.
+            * `closeOnArrival` (*Boolean*) - Close on arrival flag.
+            * `closeOnDeparture` (*Boolean*) - Close on departure flag.
+    * `dateRange` (*DateRangeProduct*) - Date range applied.
+        * `start` (*DateTime*) - Start date.
+        * `end` (*DateTime*) - End date.
+* `success` (*Boolean*) - Indicates whether the operation was successful.
+* `adviseMessages` (*AdviseMessage*) - Messages related to the operation.
+    * `code` (*ID*) - AM code.
+    * `type` (*String*) - Error type.
+    * `description` (*String*) - Error description.
+    * `level` (*Enum of AdviseMessageLevel*) - Importance level (ERROR, WARN, INFO).
+    * `external` (*ExternalMessage*) - External message details.
+    * `correlationID` (*ID*) - Identifier for debugging.
+
+## Query Inputs
+
+<InventoryAvailOffersInput />
+## Returned Fields
+
+<AvailRetrieveRs />
+
+
+## Examples
+
+#### Retrieve availability for a specific offer
+
+With this example, we are going to retrieve the availability for a specific offer within a specific date range.
+
+<GraphqlSample query={availOffersQuery} variables={availOffersOneRateVariables} />
+
+#### Retrieve availability for multiple offers
+
+With this example, we are going to retrieve the availability for multiple offers within a specific date range.
+
+<GraphqlSample query={availOffersQuery} variables={availOffersMultiplesRatesVariables} />
+---

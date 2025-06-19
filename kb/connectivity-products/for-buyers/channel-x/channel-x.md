@@ -45,5 +45,5 @@ To activate and use Channel-X, consider the following steps:
    ![channel_x](https://storage.travelgate.com/kbase/channel_x.jpg)
 
 :::tip Learn More About Channel-X 📖  
-For detailed information on Channel-X functionalities and API specifications, check out our [Documentation](/docs/apis/for-buyers/inventory-buyers/channel-x-push-buyers-api/quickstart)!
+For detailed information on Channel-X functionalities and API specifications, check out our [Documentation](/docs/apis/for-buyers/channel-x-push-buyers-api/quickstart)!
 :::

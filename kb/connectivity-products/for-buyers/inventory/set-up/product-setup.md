@@ -22,7 +22,7 @@ To prevent mapping issues by the Channel, please ensure your portfolio is up to 
 - To retrieve the full list of destinations at the connection level, run a **Hotel-X Destinations query** and locate the relevant field in the response. For the Legacy Pull Buyers API, use the **Geographic Destination Tree method** and follow the same approach.
 
     :::info
-    For details on destination-related fields in each query or method, please refer to the [Hotel-X](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/overview) and [Legacy Pull Buyers API](/docs/apis/for-buyers/legacy-pull-buyers-api/content/overview) documentation.
+    For details on destination-related fields in each query or method, please refer to the [Hotel-X](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/overview) and [Legacy Pull Buyers API](/docs/apis/for-buyers/deprecated/legacy-pull-buyers-api/content/overview) documentation.
     :::
 
 

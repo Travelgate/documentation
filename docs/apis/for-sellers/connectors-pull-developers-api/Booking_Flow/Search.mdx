@@ -44,7 +44,197 @@ Clients can define their search criteria to narrow down the available options. C
 
 ### **Sample**
 
-```json
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+  <TabItem value="Criteria" label="Criteria" default>
+    ```csharp
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
+using Connectors.Core.Application.Helpers;
+using Connectors.Core.Domain;
+using Connectors.Pull.Hotel.Domain.Contracts.Book.Request;
+using Connectors.Pull.Hotel.Domain.Contracts.Quote.Request;
+using Connectors.Pull.Hotel.Domain.Contracts.Search.Request;
+using JetBrains.Annotations;
+using ProtoBuf;
+
+namespace Connectors.Pull.Hotel.Domain.Contracts.Common;
+
+/// <summary>
+/// Represents the base criteria for hotel-related operations.
+/// </summary>
+/// <remarks>
+/// This class serves as the foundation for specific request types, such as
+/// <see cref="SearchCriteria"/>, <see cref="QuoteCriteria"/>, and <see cref="BookCriteria"/>.
+/// It includes common fields such as check-in and check-out dates, language preferences,
+/// currency, and nationality.
+/// </remarks>
+[DataContract]
+[KnownType(typeof(SearchCriteria))]
+[ProtoInclude(20, typeof(SearchCriteria))]
+[KnownType(typeof(QuoteCriteria))]
+[ProtoInclude(40, typeof(QuoteCriteria))]
+[KnownType(typeof(BookCriteria))]
+[ProtoInclude(60, typeof(BookCriteria))]
+[HotChocolate.Types.InterfaceType]
+public class Criteria
+{
+        /// <summary>
+        /// The check-in date for the operation, represented as a string in ISO 8601 format (yyyy-MM-dd).
+        /// </summary>
+        /// <remarks>
+        /// This field is required and determines the start date of the client's stay.
+        /// Use <see cref="CheckInAsDateTime"/> to access the parsed DateTime representation.
+        /// </remarks>
+        [DataMember(Order = 1)]
+        [Required]
+        public string CheckIn { get; init; }
+
+        /// <summary>
+        /// The check-out date for the operation, represented as a string in ISO 8601 format (yyyy-MM-dd).
+        /// </summary>
+        /// <remarks>
+        /// This field is required and determines the end date of the client's stay.
+        /// Use <see cref="CheckOutAsDateTime"/> to access the parsed DateTime representation.
+        /// </remarks>
+        [DataMember(Order = 2)]
+        [Required]
+        public string CheckOut { get; init; }
+
+        private DateTime? _checkIn;
+        /// <summary>
+        /// The check-in date parsed as a <see cref="DateTime"/> object.
+        /// </summary>
+        /// <remarks>
+        /// This property leverages <see cref="DateTimeHelper.GetOrParse(ref DateTime?, string)"/> for parsing the string value
+        /// of <see cref="CheckIn"/>. Use this to perform date-related operations.
+        /// </remarks>
+        public DateTime CheckInAsDateTime => DateTimeHelper.GetOrParse(ref _checkIn, CheckIn);
+
+        private DateTime? _checkOut;
+        /// <summary>
+        /// The check-out date parsed as a <see cref="DateTime"/> object.
+        /// </summary>
+        /// <remarks>
+        /// Similar to <see cref="CheckInAsDateTime"/>, this property parses <see cref="CheckOut"/>
+        /// to provide a strongly typed representation of the check-out date.
+        /// </remarks>
+        public DateTime CheckOutAsDateTime => DateTimeHelper.GetOrParse(ref _checkOut, CheckOut);
+
+        private uint? _nights;
+        /// <summary>
+        /// The total number of nights for the stay, calculated as the difference between check-in and check-out dates.
+        /// </summary>
+        /// <remarks>
+        /// The value is computed using <see cref="DateTimeHelper.GetOrParse(ref DateTime?, string)"/> and assumes valid input
+        /// for <see cref="CheckIn"/> and <see cref="CheckOut"/>.
+        /// </remarks>
+        [PublicAPI]
+        public uint TotalNights => DateTimeHelper.GetOrParse(ref _nights, CheckInAsDateTime, CheckOutAsDateTime);
+
+        /// <summary>
+        /// The language code for the operation, represented as a 2-character ISO 639-1 code (e.g., "en", "es").
+        /// </summary>
+        /// <remarks>
+        /// This field is required and is used to tailor the response to the client's preferred language.
+        /// </remarks>
+        [DataMember(Order = 3)]
+        [Required]
+        [StringLength(2)]
+        public string Language { get; init; }
+
+        /// <summary>
+        /// The preferred currency for the operation, defined as an optional <see cref="Currency"/> value.
+        /// </summary>
+        /// <remarks>
+        /// This field specifies the currency in which prices should be displayed.
+        /// If not provided, the system may use a default value.
+        /// </remarks>
+        [DataMember(Order = 4)]
+        public Currency? Currency { get; set; }
+
+        /// <summary>
+        /// The nationality code of the client, represented as a 2-character ISO 3166-1 alpha-2 country code (e.g., "US", "FR").
+        /// </summary>
+        /// <remarks>
+        /// This field is optional but can be used to customize the search results based on the client's nationality.
+        /// </remarks>
+        [DataMember(Order = 5)]
+        [StringLength(2)]
+        public string Nationality { get; set; }
+}
+```
+  </TabItem>
+  <TabItem value="SearchCriteria" label="SearchCriteria">
+    ```csharp
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
+using Connectors.Pull.Hotel.Domain.Contracts.Common;
+
+namespace Connectors.Pull.Hotel.Domain.Contracts.Search.Request;
+
+/// <summary>
+/// Represents the search criteria specified by the client for a hotel search operation. 
+/// Inherits from <see cref="Criteria"/>.
+/// </summary>
+[DataContract]
+public class SearchCriteria : Criteria
+{
+        /// <summary>
+        /// Gets the destinations for the search. These can be specific hotels or locations.
+        /// </summary>
+        /// <remarks>
+        /// This property is required and determines the target accommodations or locations for the search.
+        /// It must conform to the <see cref="Destinations"/> validation attributes.
+        /// </remarks>
+        [DataMember(Order = 1)]
+        [Destinations]
+        [Required]
+        public Destinations Destinations { get; init; }
+
+        /// <summary>
+        /// Gets the occupancy details for the search.
+        /// Indicates the number of rooms, passengers, and their respective ages.
+        /// </summary>
+        /// <remarks>
+        /// Each occupancy specifies a combination of room count and the details of the occupants 
+        /// (e.g., number of adults, children, and their ages).
+        /// This property is required and must conform to the <see cref="Occupancy"/> validation attributes.
+        /// </remarks>
+        [DataMember(Order = 2)]
+        [Occupancy]
+        [Required]
+        public IEnumerable<Occupancy> Occupancies { get; init; }
+
+        /// <summary>
+        /// Gets the markets associated with the search.
+        /// Represents ISO 3166-1 alpha-2 country codes.
+        /// </summary>
+        /// <remarks>
+        /// The markets indicate the geographical or regulatory regions relevant to the search. 
+        /// This property is optional and can include multiple ISO2 codes.
+        /// </remarks>
+        [DataMember(Order = 3)]
+        public IEnumerable<string> Markets { get; set; }
+
+        /// <summary>
+        /// Sets new destinations for the search criteria. 
+        /// Updates the list of accommodations in the <see cref="Destinations"/> property.
+        /// </summary>
+        /// <param name="accs">The new accommodations to set.</param>
+        internal void SetNewDestinations(IEnumerable<AccommodationRQ> accs)
+        {
+                Destinations.Accommodations = accs;
+        }
+}
+    ```
+  </TabItem>
+  <TabItem value="SampleJsonRequest" label="Connector Sample JSON">
+    ```json
 {
     "searchCriteria":
     {
@@ -146,6 +336,8 @@ Clients can define their search criteria to narrow down the available options. C
     }
 }
 ```
+  </TabItem>
+</Tabs>
 
 ### **Details**
 
@@ -224,7 +416,115 @@ The `Search` operation returns a list of available options matching the criteria
 
 ### **Sample**
 
-```json
+<Tabs>
+  <TabItem value="SearchRs" label="SearchRs" default>
+    ```csharp
+using System;
+using System.Collections.Generic;
+using System.Runtime.Serialization;
+using Connectors.Core.Domain.AdviseMessages;
+using Connectors.Core.Domain.ProviderAudit;
+using Connectors.Pull.Hotel.Domain.Contracts.Common;
+
+namespace Connectors.Pull.Hotel.Domain.Contracts.Search.Response;
+
+/// <summary>
+/// Represents the response for a hotel search operation. 
+/// Contains the list of available options that match the client's search criteria.
+/// Additionally, it includes error or warning messages (<see cref="AdviseMessages"/>) and trace data (<see cref="AuditData"/>),
+/// which logs the transactions sent to and received from the supplier.
+/// </summary>
+[DataContract]
+[Serializable]
+public class SearchRs
+{
+    /// <summary>
+    /// Initializes a new instance of the <see cref="SearchRs"/> class.
+    /// This constructor is private and used internally for serialization purposes.
+    /// </summary>
+    private SearchRs()
+    {
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="SearchRs"/> class with the specified accommodations and optional advise messages.
+    /// </summary>
+    /// <param name="accommodations">The list of accommodations found in the search.</param>
+    /// <param name="adviseMessages">
+    /// Optional collection of <see cref="AdviseMessage"/> instances that provide warnings or errors related to the search operation.
+    /// </param>
+    public SearchRs(List<Accommodation> accommodations, IEnumerable<AdviseMessage> adviseMessages = null)
+    {
+        Accommodations = accommodations;
+        AdviseMessages = adviseMessages;
+    }
+
+    /// <summary>
+    /// Contains the requests and responses exchanged with the supplier.
+    /// This field is populated internally by the connector framework. 
+    /// Integrators do not need to handle this field manually.
+    /// </summary>
+    [DataMember(Order = 1)]
+    public ProviderAudit AuditData { get; set; }
+
+    /// <summary>
+    /// Collection of advice messages, which may include errors or warnings generated during the search process.
+    /// </summary>
+    [DataMember(Order = 2)]
+    public IEnumerable<AdviseMessage> AdviseMessages { get; init; }
+
+    /// <summary>
+    /// List of accommodations, meal plans, and options returned by the search.
+    /// These represent the available (hotel-mealPlans-options) that meet the client's criteria.
+    /// </summary>
+    [DataMember(Order = 3)]
+    public List<Accommodation> Accommodations { get; init; }
+
+    /// <summary>
+    /// Global parameters that the client must send in subsequent operations (e.g., in a quote request). 
+    /// These parameters apply to all options returned in the response.
+    /// </summary>
+    [DataMember(Order = 4)]
+    public IEnumerable<Parameter> GlobalOptionParameters { get; set; }
+
+    /// <summary>
+    /// Discarded items in the search response, can be rooms or options depending on the connector.
+    /// </summary>
+    [DataMember(Order = 5)]
+    public int DiscardedItems { get; set; }
+
+    /// <summary>
+    /// Builds an error response containing the specified collection of advice messages.
+    /// </summary>
+    /// <param name="adviseMessages">
+    /// A collection of <see cref="AdviseMessage"/> instances that describe the error or warnings encountered during the operation.
+    /// </param>
+    /// <returns>
+    /// A new instance of <see cref="SearchRs"/> configured as an error response.
+    /// </returns>
+    public static SearchRs BuildErrorResponse(IEnumerable<AdviseMessage> adviseMessages)
+    {
+        return new SearchRs(null, adviseMessages);
+    }
+
+    /// <summary>
+    /// Builds an error response containing a single advise message.
+    /// </summary>
+    /// <param name="adviseMessage">
+    /// A single <see cref="AdviseMessage"/> instance describing the error or warning encountered during the operation.
+    /// </param>
+    /// <returns>
+    /// A new instance of <see cref="SearchRs"/> configured as an error response.
+    /// </returns>
+    public static SearchRs BuildErrorResponse(AdviseMessage adviseMessage)
+    {
+        return new SearchRs(null, [adviseMessage]);
+    }
+}
+```
+  </TabItem>
+  <TabItem value="SampleJsonResponse" label="Connector Sample JSON">
+    ```json
 {
     "adviseMessages":
     [
@@ -524,6 +824,9 @@ The `Search` operation returns a list of available options matching the criteria
     "discardedItems": 0
 }
 ```
+  </TabItem>
+</Tabs>
+
 
 ### **Details**
 

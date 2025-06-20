@@ -416,7 +416,115 @@ The `Search` operation returns a list of available options matching the criteria
 
 ### **Sample**
 
-```json
+<Tabs>
+  <TabItem value="SearchRs" label="SearchRs" default>
+    ```csharp
+using System;
+using System.Collections.Generic;
+using System.Runtime.Serialization;
+using Connectors.Core.Domain.AdviseMessages;
+using Connectors.Core.Domain.ProviderAudit;
+using Connectors.Pull.Hotel.Domain.Contracts.Common;
+
+namespace Connectors.Pull.Hotel.Domain.Contracts.Search.Response;
+
+/// <summary>
+/// Represents the response for a hotel search operation. 
+/// Contains the list of available options that match the client's search criteria.
+/// Additionally, it includes error or warning messages (<see cref="AdviseMessages"/>) and trace data (<see cref="AuditData"/>),
+/// which logs the transactions sent to and received from the supplier.
+/// </summary>
+[DataContract]
+[Serializable]
+public class SearchRs
+{
+    /// <summary>
+    /// Initializes a new instance of the <see cref="SearchRs"/> class.
+    /// This constructor is private and used internally for serialization purposes.
+    /// </summary>
+    private SearchRs()
+    {
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="SearchRs"/> class with the specified accommodations and optional advise messages.
+    /// </summary>
+    /// <param name="accommodations">The list of accommodations found in the search.</param>
+    /// <param name="adviseMessages">
+    /// Optional collection of <see cref="AdviseMessage"/> instances that provide warnings or errors related to the search operation.
+    /// </param>
+    public SearchRs(List<Accommodation> accommodations, IEnumerable<AdviseMessage> adviseMessages = null)
+    {
+        Accommodations = accommodations;
+        AdviseMessages = adviseMessages;
+    }
+
+    /// <summary>
+    /// Contains the requests and responses exchanged with the supplier.
+    /// This field is populated internally by the connector framework. 
+    /// Integrators do not need to handle this field manually.
+    /// </summary>
+    [DataMember(Order = 1)]
+    public ProviderAudit AuditData { get; set; }
+
+    /// <summary>
+    /// Collection of advice messages, which may include errors or warnings generated during the search process.
+    /// </summary>
+    [DataMember(Order = 2)]
+    public IEnumerable<AdviseMessage> AdviseMessages { get; init; }
+
+    /// <summary>
+    /// List of accommodations, meal plans, and options returned by the search.
+    /// These represent the available (hotel-mealPlans-options) that meet the client's criteria.
+    /// </summary>
+    [DataMember(Order = 3)]
+    public List<Accommodation> Accommodations { get; init; }
+
+    /// <summary>
+    /// Global parameters that the client must send in subsequent operations (e.g., in a quote request). 
+    /// These parameters apply to all options returned in the response.
+    /// </summary>
+    [DataMember(Order = 4)]
+    public IEnumerable<Parameter> GlobalOptionParameters { get; set; }
+
+    /// <summary>
+    /// Discarded items in the search response, can be rooms or options depending on the connector.
+    /// </summary>
+    [DataMember(Order = 5)]
+    public int DiscardedItems { get; set; }
+
+    /// <summary>
+    /// Builds an error response containing the specified collection of advice messages.
+    /// </summary>
+    /// <param name="adviseMessages">
+    /// A collection of <see cref="AdviseMessage"/> instances that describe the error or warnings encountered during the operation.
+    /// </param>
+    /// <returns>
+    /// A new instance of <see cref="SearchRs"/> configured as an error response.
+    /// </returns>
+    public static SearchRs BuildErrorResponse(IEnumerable<AdviseMessage> adviseMessages)
+    {
+        return new SearchRs(null, adviseMessages);
+    }
+
+    /// <summary>
+    /// Builds an error response containing a single advise message.
+    /// </summary>
+    /// <param name="adviseMessage">
+    /// A single <see cref="AdviseMessage"/> instance describing the error or warning encountered during the operation.
+    /// </param>
+    /// <returns>
+    /// A new instance of <see cref="SearchRs"/> configured as an error response.
+    /// </returns>
+    public static SearchRs BuildErrorResponse(AdviseMessage adviseMessage)
+    {
+        return new SearchRs(null, [adviseMessage]);
+    }
+}
+```
+  </TabItem>
+  <TabItem value="SampleJsonResponse" label="Connector Sample JSON">
+    ```json
 {
     "adviseMessages":
     [
@@ -716,6 +824,9 @@ The `Search` operation returns a list of available options matching the criteria
     "discardedItems": 0
 }
 ```
+  </TabItem>
+</Tabs>
+
 
 ### **Details**
 

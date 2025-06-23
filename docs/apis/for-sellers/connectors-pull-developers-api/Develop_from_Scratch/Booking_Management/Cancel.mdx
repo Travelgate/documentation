@@ -49,21 +49,7 @@ public class SupplierOption
 {
     public string Status { get; set; }
     public SupplierPrice SupplierPrice { get; set; }
-    public string SupplierPaymentType { get; set; }
     public string supplierReference { get; set; }
-    public List<SupplierRoom> Rooms { get; set; }
-    public List<SupplierCancelPolicy> SupplierCancelPolicies { get; set; }
-}
-
-public class SupplierCancelPolicy
-{
-    public double PenaltyAmount { get; set; }
-
-    public string PenaltyType { get; set; }
-
-    public string PenaltyCurrency { get; set; }
-
-    public string PenaltyDeadline { get; set; }
 }
 
 public class SupplierPrice
@@ -71,15 +57,6 @@ public class SupplierPrice
     public string Currency { get; set; }
     public double Net { get; set; }
     public double MinimumSellingPrice { get; set; }
-}
-
-public class SupplierRoom
-{
-    public uint OccupancyId { get; set; }
-    public string RoomCode { get; set; }
-
-    public SupplierPrice SupplierPrice { get; set; }
-    public string RoomDescription { get; set; }
 }
 ```
 File location: "**ConnectorsIntegration\Cancel\Models\Response\CancelResponse.cs**"

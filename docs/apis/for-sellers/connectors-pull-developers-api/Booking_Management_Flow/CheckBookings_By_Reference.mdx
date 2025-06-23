@@ -36,6 +36,70 @@ The Request Object includes client and supplier locators, along with any additio
 
 ### **Sample**
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+  <TabItem value="CheckBookingsByReferenceRequest" label="C#">
+    ```csharp
+    var checkBookingsByReferenceRq = new CheckBookingsByReferenceRq
+    {
+        Input = new Input
+        {
+            Reference = new Reference
+            {
+                ClientLocator = "ClientLocatorff845a11-e53e-4ddb-92f5-2a8066978ed1",
+                SupplierLocator = "SupplierLocator00973bc7-70a4-420c-8fc4-2274f821c792",
+                HotelLocator = "HotelLocator611ee946-a153-4bba-a737-a41d285cdef1"
+            },
+            AccommodationRq = new AccommodationRq
+            {
+                Type = "Hotel",
+                Code = "12345"
+            },
+            Language = "ES",
+            Currency = "EUR"
+        },
+        Settings = new Settings
+        {
+            Supplier = "HOTELTEST",
+            Platform = "HOTELTEST",
+            Client = "TravelAgency123",
+            Access = new Access
+            {
+                Code = 1001,
+                User = "agency_user",
+                Password = "secure_password",
+                ApiKey = "API_KEY_123456789",
+                Urls = new Urls
+                {
+                    Book = "https://api.hotelsupplier.com/book",
+                    Search = "https://api.hotelsupplier.com/search",
+                    Quote = "https://api.hotelsupplier.com/quote",
+                    Generic = "https://api.hotelsupplier.com/generic"
+                },
+                Parameters = new Dictionary<string, string>
+                {
+                    { "someParameter1", "50" },
+                    { "someParameter2", "true" },
+                    { "someParameter3", "5000" },
+                    { "someParameter4", "SupplierX" }
+                }
+            },
+            BusinessRules = new BusinessRules
+            {
+                OptionsQuota = 170,
+                BusinessRuleType = "CheaperAmount"
+            },
+            Timeout = "Timeout7d64fd74-9c49-46d7-aa62-2a14c9500e2f",
+            TimeoutAsTimeSpan = "00:00:00",
+            IncludeProviderTransactions = true
+        }
+    };
+
+    ```
+  </TabItem>
+  <TabItem value="SampleJsonRequest" label="FormTest Sample JSON">
 ```json
 "checkBookingsByReferenceRq":
     {
@@ -92,6 +156,8 @@ The Request Object includes client and supplier locators, along with any additio
         }
     }
 ```
+  </TabItem>
+</Tabs>
 
 ### **Details**
 
@@ -145,6 +211,219 @@ The Response Object provides the booking status, optional details, and any warni
 
 ### **Sample**
 
+<Tabs>
+  <TabItem value="CheckBookingsByReferenceResponse" label="C#">
+    ```csharp
+    var checkBookingsByReferenceRs = new CheckBookingsByReferenceRs
+    {
+        AuditData = new AuditData
+        {
+            Request = new List<Request>
+            {
+                new Request
+                {
+                    Data = "<x>SupplierRequest</x>",
+                    Headers = new Dictionary<string, string>
+                    {
+                        { "Accept", "application/x-protobuf" },
+                        { "Accept-Encoding", "gzip,deflate," }
+                    },
+                    HttpMethod = new HttpMethod { Method = "POST" },
+                    SendAt = DateTime.Parse("2025-03-16T08:21:49Z"),
+                    Url = "http://travelgate.com"
+                }
+            },
+            Response = new List<Response>
+            {
+                new Response
+                {
+                    Data = "<x>SupplierResponse</x>",
+                    Headers = new Dictionary<string, string>
+                    {
+                        { "Content-Encoding", "gzip," }
+                    },
+                    HttpMethod = new HttpMethod { Method = "POST" },
+                    ReceivedAt = DateTime.Parse("2025-03-16T08:21:49Z"),
+                    StatusCode = 200
+                }
+            }
+        },
+        AdviseMessages = new List<AdviseMessage>
+        {
+            new AdviseMessage
+            {
+                Code = "SupplierError",
+                Level = "Error",
+                Description = "Supplier error, check external for more details",
+                External = new External
+                {
+                    Code = "Code123",
+                    Message = "Supplier internal error",
+                    HttpStatusCode = 200
+                }
+            }
+        },
+        Bookings = new List<Booking>
+        {
+            new Booking
+            {
+                Status = "Ok",
+                Reference = new Reference
+                {
+                    ClientLocator = "ClientReference12345",
+                    SupplierLocator = "SupplierLocator389b10ca-893b-4e7b-adf6-b067a1b1d9b3",
+                    HotelLocator = "HotelLocator208c2b6f-1cdf-4204-9ebe-f147808218d9"
+                },
+                Holder = new Holder
+                {
+                    Name = "John",
+                    SurName = "Smith",
+                    PersonalTitleType = "MR",
+                    ContactInfo = new ContactInfo
+                    {
+                        Email = "someemail@travelgate.com",
+                        Phone = "66666666"
+                    }
+                },
+                Hotel = new Hotel
+                {
+                    BookingDate = DateTime.Parse("2024-05-10"),
+                    CheckIn = DateTime.Parse("2024-05-12"),
+                    CheckOut = DateTime.Parse("2024-05-14"),
+                    HotelCode = "12345",
+                    HotelName = "Hotel Travelgate",
+                    BoardCode = "RO",
+                    Occupancies = new List<Occupancy>
+                    {
+                        new Occupancy
+                        {
+                            OccupancyId = 1,
+                            Paxes = new List<Pax>
+                            {
+                                new Pax { Age = 30 },
+                                new Pax { Age = 30 }
+                            }
+                        }
+                    },
+                    Rooms = new List<Room>
+                    {
+                        new Room
+                        {
+                            OccupancyRefId = 1,
+                            Code = "DBL",
+                            Description = "Double standard",
+                            RoomPrice = new RoomPrice
+                            {
+                                Price = new Price
+                                {
+                                    Currency = "EUR",
+                                    Binding = true,
+                                    Net = 100,
+                                    Gross = 100,
+                                    NetSpecified = true,
+                                    MinimumSellingPrice = 100
+                                },
+                                PriceBreakdown = new List<PriceBreakdown>
+                                {
+                                    new PriceBreakdown
+                                    {
+                                        Price = new Price
+                                        {
+                                            Currency = "EUR",
+                                            Binding = true,
+                                            Net = 50,
+                                            Gross = 50,
+                                            NetSpecified = true,
+                                            MinimumSellingPrice = 50
+                                        },
+                                        Start = 0,
+                                        End = 1
+                                    },
+                                    new PriceBreakdown
+                                    {
+                                        Price = new Price
+                                        {
+                                            Currency = "EUR",
+                                            Binding = true,
+                                            Net = 50,
+                                            Gross = 50,
+                                            NetSpecified = true,
+                                            MinimumSellingPrice = 50
+                                        },
+                                        Start = 1,
+                                        End = 2
+                                    }
+                                }
+                            },
+                            Refundable = true,
+                            RefundableSpecified = false
+                        }
+                    }
+                },
+                Price = new Price
+                {
+                    Currency = "EUR",
+                    Binding = true,
+                    Net = 100,
+                    Gross = 100,
+                    NetSpecified = true,
+                    MinimumSellingPrice = 100
+                },
+                CancelPolicy = new CancelPolicy
+                {
+                    RoomCancelPolicyDescriptions = new List<RoomCancelPolicyDescription>
+                    {
+                        new RoomCancelPolicyDescription
+                        {
+                            OccupancyRefId = 1,
+                            Description = "Cancellations within 48 hours before check-in incur a 50% charge."
+                        }
+                    },
+                    Refundable = false,
+                    CancelPenalties = new List<CancelPenalty>
+                    {
+                        new CancelPenalty
+                        {
+                            HoursBefore = 48,
+                            PenaltyType = "Percentage",
+                            Currency = "EUR",
+                            Value = 50,
+                            Deadline = DateTime.Parse("2025-05-30T23:59:59Z")
+                        }
+                    },
+                    CancelPolicyDescription = "50% charge if canceled within 48 hours before check-in."
+                },
+                Remarks = new List<Remark>
+                {
+                    new Remark
+                    {
+                        RemarkType = "General",
+                        Text = "CheckIn at 10:00 AM"
+                    }
+                }
+            }
+        },
+        Parameters = new List<Parameter>
+        {
+            new Parameter
+            {
+                Key = 190,
+                Value = "Value81f30d88-28a1-46fc-bd49-f15e9e3448c0",
+                ParameterType = "Supplier",
+                Immutable = false,
+                RoomId = 32
+            }
+        },
+        AddOns = new Dictionary<string, string>
+        {
+            { "keybd54429a-d5b4-40e4-9bbc-351520de3f96", "valuee436526f-b82e-4286-8351-dc345688bc6c" }
+        }
+    };
+
+
+    ```
+  </TabItem>
+  <TabItem value="SampleJsonRequest" label="FormTest Sample JSON">
 ```json
 "checkBookingsByReferenceRs":
     {
@@ -350,6 +629,8 @@ The Response Object provides the booking status, optional details, and any warni
         }
     }
 ```
+  </TabItem>
+</Tabs>
 
 ### **Details**
 

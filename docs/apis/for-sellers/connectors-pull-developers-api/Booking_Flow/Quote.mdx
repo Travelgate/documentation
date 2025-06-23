@@ -136,6 +136,102 @@ Represents the structure of the `Quote` request, including required fields such 
 
 ### **Sample**
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+  <TabItem value="QuoteRequest" label="C#">
+    ```csharp
+    var quoteRq = new QuoteRq
+    {
+        QuoteCriteria = new QuoteCriteria
+        {
+            Accommodation = new Accommodation
+            {
+                Type = "Hotel",
+                Code = "12345"
+            },
+            BoardCode = "RO",
+            Occupancies = new List<Occupancy>
+            {
+                new Occupancy
+                {
+                    OccupancyId = 1,
+                    Paxes = new List<Pax>
+                    {
+                        new Pax { Age = 30 },
+                        new Pax { Age = 30 }
+                    }
+                }
+            },
+            Market = "ES",
+            Rooms = new List<Room>
+            {
+                new Room
+                {
+                    OccupancyRefId = 1,
+                    Code = "DBL",
+                    Description = "Double standard"
+                }
+            },
+            PaymentType = "MerchantPay",
+            Parameters = new List<Parameter>
+            {
+                new Parameter
+                {
+                    Key = 3,
+                    Value = "SomeSupplierValue",
+                    ParameterType = "Supplier",
+                    Immutable = false,
+                    RoomId = 1
+                }
+            },
+            CheckIn = DateTime.Parse("2024-05-12"),
+            CheckOut = DateTime.Parse("2024-05-14"),
+            TotalNights = 2,
+            Language = "en",
+            Currency = "EUR",
+            Nationality = "ES"
+        },
+        Settings = new Settings
+        {
+            Supplier = "HOTELTEST",
+            Platform = "HOTELTEST",
+            Client = "TravelAgency123",
+            Access = new Access
+            {
+                Code = 1001,
+                User = "agency_user",
+                Password = "secure_password",
+                ApiKey = "API_KEY_123456789",
+                Urls = new Urls
+                {
+                    Book = "https://api.hotelsupplier.com/book",
+                    Search = "https://api.hotelsupplier.com/search",
+                    Quote = "https://api.hotelsupplier.com/quote",
+                    Generic = "https://api.hotelsupplier.com/generic"
+                },
+                Parameters = new Dictionary<string, string>
+                {
+                    { "someParameter1", "50" },
+                    { "someParameter2", "true" },
+                    { "someParameter3", "5000" },
+                    { "someParameter4", "SupplierX" }
+                }
+            },
+            BusinessRules = new BusinessRules
+            {
+                OptionsQuota = 170,
+                BusinessRuleType = "CheaperAmount"
+            },
+            Timeout = "Timeout7d64fd74-9c49-46d7-aa62-2a14c9500e2f",
+            TimeoutAsTimeSpan = TimeSpan.Parse("00:00:00"),
+            IncludeProviderTransactions = true
+        }
+    };
+    ```
+  </TabItem>
+  <TabItem value="SampleJsonRequest" label="FormTest Sample JSON">
 ```json
 "quoteRq":
 {
@@ -226,6 +322,8 @@ Represents the structure of the `Quote` request, including required fields such 
     }
 }
 ```
+  </TabItem>
+</Tabs>
 
 ### **Details**
 
@@ -384,6 +482,191 @@ The `Quote` operation returns:
 
 ### **Sample**
 
+<Tabs>
+  <TabItem value="QuoteResponse" label="C#">
+    ```csharp
+    var quoteRs = new QuoteRs
+    {
+        AuditData = new AuditData
+        {
+            Request = new List<RequestData>
+            {
+                new RequestData
+                {
+                    Data = "<x>SupplierRequest</x>",
+                    Headers = new Dictionary<string, string>
+                    {
+                        { "Accept", "application/x-protobuf" },
+                        { "Accept-Encoding", "gzip,deflate," }
+                    },
+                    HttpMethod = new HttpMethodData { Method = "POST" },
+                    SendAt = DateTime.Parse("2025-03-16T08:21:49Z"),
+                    Url = "http://travelgate.com"
+                }
+            },
+            Response = new List<ResponseData>
+            {
+                new ResponseData
+                {
+                    Data = "<x>SupplierResponse</x>",
+                    Headers = new Dictionary<string, string>
+                    {
+                        { "Content-Encoding", "gzip," }
+                    },
+                    HttpMethod = new HttpMethodData { Method = "POST" },
+                    ReceivedAt = DateTime.Parse("2025-03-16T08:21:49Z"),
+                    StatusCode = 200
+                }
+            }
+        },
+        AdviseMessages = new List<AdviseMessage>
+        {
+            new AdviseMessage
+            {
+                Code = "SupplierError",
+                Level = "Error",
+                Description = "Supplier error, check external for more details",
+                External = new ExternalMessage
+                {
+                    Code = "Code123",
+                    Message = "Supplier internal error",
+                    HttpStatusCode = 200
+                }
+            }
+        },
+        Price = new Price
+        {
+            Currency = "EUR",
+            Binding = true,
+            Net = 100,
+            Gross = 100,
+            NetSpecified = true,
+            MinimumSellingPrice = 100
+        },
+        Status = "OK",
+        PaymentType = "MerchantPay",
+        Rooms = new List<Room>
+        {
+            new Room
+            {
+                OccupancyRefId = 1,
+                Code = "DBL",
+                Description = "Double standard",
+                RoomPrice = new RoomPrice
+                {
+                    Price = new Price
+                    {
+                        Currency = "EUR",
+                        Binding = true,
+                        Net = 100,
+                        Gross = 100,
+                        NetSpecified = true,
+                        MinimumSellingPrice = 100
+                    },
+                    PriceBreakdown = new List<PriceBreakdown>
+                    {
+                        new PriceBreakdown
+                        {
+                            Price = new Price
+                            {
+                                Currency = "EUR",
+                                Binding = true,
+                                Net = 50,
+                                Gross = 50,
+                                NetSpecified = true,
+                                MinimumSellingPrice = 50
+                            },
+                            Start = 0,
+                            End = 1
+                        },
+                        new PriceBreakdown
+                        {
+                            Price = new Price
+                            {
+                                Currency = "EUR",
+                                Binding = true,
+                                Net = 50,
+                                Gross = 50,
+                                NetSpecified = true,
+                                MinimumSellingPrice = 50
+                            },
+                            Start = 1,
+                            End = 2
+                        }
+                    }
+                }
+            }
+        },
+        CancelPolicy = new CancelPolicy
+        {
+            RoomCancelPolicyDescriptions = new List<RoomCancelPolicyDescription>
+            {
+                new RoomCancelPolicyDescription
+                {
+                    OccupancyRefId = 1,
+                    Description = "Cancellations within 48 hours before check-in incur a 50% charge."
+                }
+            },
+            Refundable = false,
+            CancelPenalties = new List<CancelPenalty>
+            {
+                new CancelPenalty
+                {
+                    HoursBefore = 48,
+                    PenaltyType = "Percentage",
+                    Currency = "EUR",
+                    Value = 50,
+                    Deadline = DateTime.Parse("2025-05-30T23:59:59Z")
+                }
+            },
+            CancelPolicyDescription = "50% charge if canceled within 48 hours before check-in."
+        },
+        Surcharges = new List<Surcharge>
+        {
+            new Surcharge
+            {
+                ChargeType = "Excluded",
+                Mandatory = true,
+                Description = "Resort Fee",
+                Price = new Price
+                {
+                    Currency = "EUR",
+                    Binding = true,
+                    Net = 10,
+                    Gross = 10,
+                    NetSpecified = true,
+                    MinimumSellingPrice = 10
+                },
+                Code = "RESORT_FEE"
+            }
+        },
+        Remarks = new List<Remark>
+        {
+            new Remark
+            {
+                RemarkType = "General",
+                Text = "CheckIn at 10:00 AM"
+            }
+        },
+        PaymentInfo = new PaymentInfo
+        {
+            AcceptedCreditCards = new List<string> { "AX" }
+        },
+        Parameters = new List<Parameter>
+        {
+            new Parameter
+            {
+                Key = 2,
+                Value = "SomeSupplierValue",
+                ParameterType = "Supplier",
+                Immutable = true,
+                RoomId = 0
+            }
+        }
+    };
+    ```
+  </TabItem>
+  <TabItem value="SampleJsonRequest" label="FormTest Sample JSON">
 ```json
 "quoteRs":
     {
@@ -563,6 +846,8 @@ The `Quote` operation returns:
         ]
     }
 ```
+  </TabItem>
+</Tabs>
 
 ### **Details**
 

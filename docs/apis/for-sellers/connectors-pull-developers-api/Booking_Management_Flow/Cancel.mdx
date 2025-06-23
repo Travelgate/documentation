@@ -31,6 +31,69 @@ The request operation includes client and supplier locators and any additional d
 
 ### **Sample**
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+  <TabItem value="CancelRequest" label="C#">
+    ```csharp
+    var cancelRq = new CancelRq
+    {
+        Input = new CancelInput
+        {
+            Language = "99",
+            AccommodationRq = new Accommodation
+            {
+                Type = "Hotel",
+                Code = "12345"
+            },
+            Reference = new BookingReference
+            {
+                ClientLocator = "ClientReference12345",
+                SupplierLocator = "SupplierLocator389b10ca-893b-4e7b-adf6-b067a1b1d9b3",
+                HotelLocator = "HotelLocator208c2b6f-1cdf-4204-9ebe-f147808218d9"
+            }
+        },
+        Settings = new Settings
+        {
+            Supplier = "HOTELTEST",
+            Platform = "HOTELTEST",
+            Client = "TravelAgency123",
+            Access = new Access
+            {
+                Code = 1001,
+                User = "agency_user",
+                Password = "secure_password",
+                ApiKey = "API_KEY_123456789",
+                Urls = new Urls
+                {
+                    Book = "https://api.hotelsupplier.com/book",
+                    Search = "https://api.hotelsupplier.com/search",
+                    Quote = "https://api.hotelsupplier.com/quote",
+                    Generic = "https://api.hotelsupplier.com/generic"
+                },
+                Parameters = new Dictionary<string, string>
+                {
+                    { "someParameter1", "50" },
+                    { "someParameter2", "true" },
+                    { "someParameter3", "5000" },
+                    { "someParameter4", "SupplierX" }
+                }
+            },
+            BusinessRules = new BusinessRules
+            {
+                OptionsQuota = 170,
+                BusinessRuleType = "CheaperAmount"
+            },
+            Timeout = "Timeout7d64fd74-9c49-46d7-aa62-2a14c9500e2f",
+            TimeoutAsTimeSpan = TimeSpan.Parse("00:00:00"),
+            IncludeProviderTransactions = true
+        }
+    };
+
+    ```
+  </TabItem>
+  <TabItem value="SampleJsonRequest" label="FormTest Sample JSON">
 ```json
 "cancelRq":
     {
@@ -86,6 +149,8 @@ The request operation includes client and supplier locators and any additional d
         }
     }
 ```
+  </TabItem>
+</Tabs>
 
 ### **Details**
 
@@ -142,6 +207,95 @@ The `Cancel` operation provides:
 
 ### **Sample**
 
+<Tabs>
+  <TabItem value="CancelResponse" label="C#">
+    ```csharp
+    var cancelRs = new CancelRs
+    {
+        AuditData = new AuditData
+        {
+            Request = new List<RequestItem>
+            {
+                new RequestItem
+                {
+                    Data = "<x>SupplierRequest</x>",
+                    Headers = new Dictionary<string, string>
+                    {
+                        { "Accept", "application/x-protobuf" },
+                        { "Accept-Encoding", "gzip,deflate," }
+                    },
+                    HttpMethod = new HttpMethodType
+                    {
+                        Method = "POST"
+                    },
+                    SendAt = DateTime.Parse("2025-03-16T08:21:49Z"),
+                    Url = "http://travelgate.com"
+                }
+            },
+            Response = new List<ResponseItem>
+            {
+                new ResponseItem
+                {
+                    Data = "<x>SupplierResponse</x>",
+                    Headers = new Dictionary<string, string>
+                    {
+                        { "Content-Encoding", "gzip," }
+                    },
+                    HttpMethod = new HttpMethodType
+                    {
+                        Method = "POST"
+                    },
+                    ReceivedAt = DateTime.Parse("2025-03-16T08:21:49Z"),
+                    StatusCode = 200
+                }
+            }
+        },
+        AdviseMessages = new List<AdviseMessage>
+        {
+            new AdviseMessage
+            {
+                Code = "SupplierError",
+                Level = "Error",
+                Description = "Supplier error, check external for more details",
+                External = new ExternalError
+                {
+                    Code = "Code123",
+                    Message = "Supplier internal error",
+                    HttpStatusCode = 200
+                }
+            }
+        },
+        Reference = new BookingReference
+        {
+            ClientLocator = "ClientReference12345",
+            SupplierLocator = "SupplierLocator389b10ca-893b-4e7b-adf6-b067a1b1d9b3",
+            HotelLocator = "HotelLocator208c2b6f-1cdf-4204-9ebe-f147808218d9"
+        },
+        CancelLocator = "CancelLocator85bf83d1-2a63-4771-98d4-c61bb0d1097a",
+        Status = "Cancelled",
+        BookPrice = new Price
+        {
+            Currency = "EUR",
+            Binding = true,
+            Net = 100,
+            Gross = 100,
+            NetSpecified = true,
+            MinimumSellingPrice = 100
+        },
+        CancelPrice = new Price
+        {
+            Currency = "EUR",
+            Binding = true,
+            Net = 100,
+            Gross = 100,
+            NetSpecified = true,
+            MinimumSellingPrice = 100
+        }
+    };
+
+    ```
+  </TabItem>
+  <TabItem value="SampleJsonRequest" label="FormTest Sample JSON">
 ```json
 "cancelRs":
     {
@@ -223,6 +377,8 @@ The `Cancel` operation provides:
         }
     }
 ```
+  </TabItem>
+</Tabs>
 
 ### **Details**
 

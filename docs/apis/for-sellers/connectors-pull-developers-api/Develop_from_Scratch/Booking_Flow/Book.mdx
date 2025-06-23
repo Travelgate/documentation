@@ -1,39 +1,40 @@
 ---
-title: "Quote"
-sidebar_position: 4
+title: "Book"
+sidebar_position: 5
 ---
 
 
 ## **Mock**
 
-### **Step 1: Define your Quote responses (Mocks)**
+### **Step 1: Define your Book responses (Mocks)**
 
 Define the responses for your operation, it is mandatory to insert a supplier response into every mock or at least, into the mocks of the operation you will be developing.
 
 We will be using the **TwoAdultTwoDays** mock through all the steps of the development.
 
-File location: "**test\MockServer\Tests\Quote\Two_Adults_Two_Days.txt**"
+File location: "**test\MockServer\Tests\Book\Two_Adults_Two_Days.txt**"
 
-![Mock Example](MockTwoAdultsQuote.png)
+![Mock Example](MockTwoAdultsBook.png)
 
 ### **Step 2: Define the Models of your response (Request and Response models)**
 
 These models are crucial because they specify the structure of the objects contained within supplier responses. They'll also play a vital role in serializing and deserializing requests and responses during development.
 
-![Response example](TemplateStructureModelsQuote.png)
+![Response example](TemplateStructureModelsBook.png)
 
-**Example of a QuoteRequest model**:
+**Example of a BookRequest model**:
 
 ```csharp
-namespace ConnectorsIntegration.Quote.Models.Request;
+namespace ConnectorsIntegration.Book.Models.Request;
 
-public class QuoteRequest
+public class BookRequest
 {
     public string CheckIn { get; set; }
     public string CheckOut { get; set; }
     public string HotelCode { get; set; }
     public List<SupplierOccupancy> Occupancy { get; set; }
     public string RateId { get; set; }
+    public string ClientReference { get; set; }
 }
 
 public class SupplierOccupancy
@@ -43,14 +44,14 @@ public class SupplierOccupancy
     public IEnumerable<int> Infants { get; set; }
 }
 ```
-File location: "**ConnectorsIntegration\Quote\Models\Response\QuoteRequest.cs**"
+File location: "**ConnectorsIntegration\Book\Models\Response\BookRequest.cs**"
 
-**Example of a QuoteResponse model**:
+**Example of a BookResponse model**:
 
 ```csharp
-namespace ConnectorsIntegration.Quote.Models.Response;
+namespace ConnectorsIntegration.Book.Models.Response;
 
-public class QuoteResponse
+public class BookResponse
 {
     public SupplierOption Option { get; set; }
 }
@@ -60,6 +61,7 @@ public class SupplierOption
     public string Status { get; set; }
     public SupplierPrice SupplierPrice { get; set; }
     public string SupplierPaymentType { get; set; }
+    public string supplierReference { get; set; }
     public List<SupplierRoom> Rooms { get; set; }
     public List<SupplierCancelPolicy> SupplierCancelPolicies { get; set; }
 }
@@ -91,27 +93,27 @@ public class SupplierRoom
     public string RoomDescription { get; set; }
 }
 ```
-File location: "**ConnectorsIntegration\Quote\Models\Response\QuoteResponse.cs**"
+File location: "**ConnectorsIntegration\Book\Models\Response\BookResponse.cs**"
 
 ## **Develop**
 
 ### **Step 1: Register the serializers and operations**
 To specify which serializer and operations the developer will be using (based on the seller's API) we can specify it in our "**Extensions**":
 
-File location: "**ConnectorsIntegration\Quote\QuoteExtensions.cs**"
+File location: "**ConnectorsIntegration\Book\BookExtensions.cs**"
 
 If the seller works with **JSON** format, we can specify the integration to work with **JSON** with the following:
 
 ```csharp
-internal static class QuoteExtensions
+internal static class BookExtensions
 {
-    public static void AddQuoteServices(this IServiceCollection services,
+    public static void AddBookServices(this IServiceCollection services,
         IConfiguration configuration)
     {
         //A JsonSerializer service is added along with the request and response model
-        services.AddJsonSerializer<QuoteRequest, QuoteResponse>(ConfigureJSONOptions);
+        services.AddJsonSerializer<BookRequest, BookResponse>(ConfigureJSONOptions);
         //The operation is added, indicating what models should be used during the development of the operation
-        services.AddQuoteOperation<QuoteOperation, QuoteRequest, QuoteResponse, AccessModel>(TgxPlatform.Name,
+        services.AddBookOperation<BookOperation, BookRequest, BookResponse, AccessModel>(TgxPlatform.Name,
             configuration);
     }
     private static void ConfigureJSONOptions(JsonSerializerOptions options) { }
@@ -122,13 +124,13 @@ For details about others serializers, check [Extensions](../../Advanced_Use/Exte
 
 For more details about operations, check [PreOperations](../../Connector_Framework/PreOperation_Overview) and [Operations](../../Connector_Framework/Operation_Overview)
 
-### **Step 2: QuoteOperation validators**
+### **Step 2: BookOperation validators**
 
-There are two previous validations that serve as a filter so the buildrequest and the parseresponse are as safe as possible. They can be found in the QuoteOperation.cs class:
+There are two previous validations that serve as a filter so the buildrequest and the parseresponse are as safe as possible. They can be found in the BookOperation.cs class:
 
-File location: "**ConnectorsIntegration\Quote\Operations\QuoteOperation.cs**"
+File location: "**ConnectorsIntegration\Book\Operations\BookOperation.cs**"
 
-![TryValidateSearch](TryValidateSearch.png)
+![BookOperation](BookOperation.png)
 
 **TryValidateModelRequest**
 
@@ -138,8 +140,8 @@ This step validates the incoming request from the client. While most validation 
 
 ```csharp
 public bool TryValidateModelRequest(
-    QuoteConnectorRequest connectorsRequest, 
-    QuoteParameters<CntAccessModel> connectorParameters,
+    BookConnectorRequest connectorsRequest, 
+    BookParameters<CntAccessModel> connectorParameters,
     out IEnumerable<AdviseMessage> adviseMessages)
 {
     //AdviseMessages are used to specify errors, such as checking if the hotel code is numeric and if not, add an AdviseMessage
@@ -161,17 +163,17 @@ Once the supplier's response is received, this step validates it for errors or a
 
 ```csharp
 public bool TryValidateSupplierResponses(
-    QuoteParameters<CntAccessModel> connectorParameters,
-    IEnumerable<SupplierResponseWrapper<QuoteResponse>> supplierResponses,
+    BookParameters<CntAccessModel> connectorParameters,
+    IEnumerable<SupplierResponseWrapper<BookResponse>> supplierResponses,
     out IEnumerable<AdviseMessage> adviseMessages)
 {
-    var supplierResponseWrappers = supplierResponses as SupplierResponseWrapper<QuoteResponse>[] ?? supplierResponses.ToArray();
+    var supplierResponseWrappers = supplierResponses as SupplierResponseWrapper<BookResponse>[] ?? supplierResponses.ToArray();
     
     var success = ResponseValidator.TryValidateSupplierResponses(supplierResponseWrappers, out adviseMessages);
 
     if (!success) return false;
     
-    if (supplierResponseWrappers.ElementAt(0).Response.HotelQuote?.Hotel is null)
+    if (supplierResponseWrappers.ElementAt(0).Response.HotelBook?.Hotel is null)
     {
         adviseMessages =
         [
@@ -189,57 +191,61 @@ public bool TryValidateSupplierResponses(
 
 This class will contain a "BuildRequests" method that will have the following args: 
 
-- Object of the requests from the models previously created (QuoteRequest)
+- Object of the requests from the models previously created (BookRequest)
 - The request that the buyer sends (connectorsRequest)
 - Parameters (connectorParameters) which will have some helpers:
 
-File location: "**ConnectorsIntegration\Quote\Operations\QuoteOperation.BuildRequest.cs**"
+File location: "**ConnectorsIntegration\Book\Operations\BookOperation.BuildRequest.cs**"
 
-![Build Request Quote](BuildRequestQuote.png)
+![Build Request Book](BuildRequestBook.png)
 
 **Example of Build Request:**
 
 ```csharp
 using Connectors.Core.Application.Connection;
 using Connectors.Pull.Hotel.Application.Metadata;
-using Connectors.Pull.Hotel.Application.Operations.Quote;
+using Connectors.Pull.Hotel.Application.Operations.Book;
 using Connectors.Pull.Hotel.Domain.Contracts;
 using Connectors.Pull.Hotel.Domain.Contracts.Common;
-using Connectors.Pull.Hotel.Domain.Contracts.Quote.Request;
-using ConnectorsIntegration.Quote.Models.Request;
+using Connectors.Pull.Hotel.Domain.Contracts.Book.Request;
+using ConnectorsIntegration.Book.Models.Request;
 using static ConnectorsIntegration.Common.Constants.TgxPlatform;
 
-namespace ConnectorsIntegration.Quote.Operations;
+namespace ConnectorsIntegration.Book.Operations;
 
-internal partial class QuoteOperation
+internal partial class BookOperation
 {
-    public IEnumerable<SupplierRequestWrapper<QuoteRequest>> BuildRequests(
-        QuoteConnectorRequest connectorsRequest,
-        QuoteParameters<AccessModel> connectorParameters)
+    public IEnumerable<SupplierRequestWrapper<BookRequest>> BuildRequests(
+        BookConnectorRequest connectorsRequest,
+        BookParameters<AccessModel> connectorParameters)
     {
-        QuoteCriteria quoteCriteria = connectorsRequest.QuoteRq.QuoteCriteria;
+        BookCriteria bookCriteria = connectorsRequest.BookRq.BookCriteria;
         //Refers to the checkIn of the booking
-        string checkIn = quoteCriteria.CheckIn;
+        string checkIn = bookCriteria.CheckIn;
         //Refers to the checkOut of the booking
-        string checkOut = quoteCriteria.CheckOut;
-        string hotelCode = quoteCriteria.Accommodation.Code;
+        string checkOut = bookCriteria.CheckOut;
+        string hotelCode = bookCriteria.Accommodation.Code;
         //Refers to the occupancy of the booking. If the seller allows requests with multiple occupancies, the Occupancies should be iterated
-        Occupancy firstOccupancy = quoteCriteria.Occupancies.First();
+        Occupancy firstOccupancy = bookCriteria.Occupancies.First();
         OccupancyInfoDetailed occupancyInfoDetailed = _connectorsUtilities.MetadataConnectorsService.GetDetailedOccupancyInfo(firstOccupancy);
 
-        var rateIdParameter = quoteCriteria.Parameters.GetParameter(SupplierParameters.RateId).Value;
-        QuoteRequest quoteRequest = BuildQuoteRequest(
+        var rateIdParameter = bookCriteria.Parameters.GetParameter(SupplierParameters.RateId).Value;
+
+        var clientReference = connectorsRequest.BookRq.BookCriteria.ClientReference;
+
+        BookRequest bookRequest = BuildBookRequest(
             checkIn,
             checkOut,
             hotelCode,
-            occupancyInfoDetailed,
-            rateIdParameter);
+            rateIdParameter,
+            clientReference,
+            occupancyInfoDetailed);
 
         //Generic URL we prepared back in the AccessModel, which will be passed by the buyer
         string genericUrl = connectorParameters.ParametersModel.UrlGeneric;
 
-        SupplierRequestWrapper<QuoteRequest> supplierRequest = new(
-            quoteRequest,
+        SupplierRequestWrapper<BookRequest> supplierRequest = new(
+            bookRequest,
             new Uri(genericUrl),
             HttpMethod.Post);
 
@@ -249,11 +255,17 @@ internal partial class QuoteOperation
         ];
     }
 
-    private static QuoteRequest BuildQuoteRequest(string checkIn, string checkOut, string hotelCode, OccupancyInfoDetailed occupancyInfoDetailed, string rateIdParameter)
+    private static BookRequest BuildBookRequest(
+        string checkIn, 
+        string checkOut, 
+        string hotelCode, 
+        string rateIdParameter,
+        string clientReference,
+        OccupancyInfoDetailed occupancyInfoDetailed) 
     {
         //The request towards the seller system
       
-        return new QuoteRequest()
+        return new BookRequest()
         {
             CheckIn = checkIn,
             CheckOut = checkOut,
@@ -267,6 +279,7 @@ internal partial class QuoteOperation
                 }
             },
             RateId = rateIdParameter
+            ClientReference =
         };
     }
 }
@@ -276,11 +289,11 @@ internal partial class QuoteOperation
 
 Once the request has been sent, we will have to control and parse the response returned by the seller.
 
-We will be implementing the "ParseResponse" step inside QuoteOperation:
+We will be implementing the "ParseResponse" step inside BookOperation:
 
-File location: "**ConnectorsIntegration\Quote\Operations\QuoteOperation.ParseResponse.cs**"
+File location: "**ConnectorsIntegration\Book\Operations\BookOperation.ParseResponse.cs**"
 
-![Build Response Quote](ParseResponseQuote.png)
+![Build Response Book](ParseResponseBook.png)
 
 **Example of Parse Response:**
 
@@ -288,44 +301,43 @@ File location: "**ConnectorsIntegration\Quote\Operations\QuoteOperation.ParseRes
 using Connectors.Core.Application.Connection;
 using Connectors.Core.Application.Iso;
 using Connectors.Core.Domain;
-using Connectors.Pull.Hotel.Application.Operations.Quote;
+using Connectors.Pull.Hotel.Application.Operations.Book;
 using Connectors.Pull.Hotel.Domain.Contracts.Common;
-using Connectors.Pull.Hotel.Domain.Contracts.Quote.Response;
+using Connectors.Pull.Hotel.Domain.Contracts.Book.Response;
 using Connectors.Pull.Hotel.Domain.Contracts.Search.Response;
-using ConnectorsIntegration.Quote.Models.Response;
+using ConnectorsIntegration.Book.Models.Response;
 
-namespace ConnectorsIntegration.Quote.Operations;
+namespace ConnectorsIntegration.Book.Operations;
 
-internal partial class QuoteOperation
+internal partial class BookOperation
 {
-    public QuoteConnectorResponse ParseResponses(
-        QuoteConnectorRequest connectorsRequest,
-        QuoteParameters<AccessModel> connectorParameters,
-        IEnumerable<SupplierResponseWrapper<QuoteResponse>> supplierResponses,
+    public BookConnectorResponse ParseResponses(
+        BookConnectorRequest connectorsRequest,
+        BookParameters<AccessModel> connectorParameters,
+        IEnumerable<SupplierResponseWrapper<BookResponse>> supplierResponses,
         CancellationToken cancellationToken)
     {
         var supplierResponse = supplierResponses.First().Response;
-        return new QuoteConnectorResponse(ParseSupplierResponse(connectorsRequest, supplierResponse));
+        return new BookConnectorResponse(ParseSupplierResponse(connectorsRequest, supplierResponse));
     }
 
-    private QuoteRs ParseSupplierResponse(QuoteConnectorRequest connectorsRequest, QuoteResponse supplierResponse)
+    private BookRs ParseSupplierResponse(BookConnectorRequest connectorsRequest, BookResponse supplierResponse)
     {
         var supplierOption = supplierResponse.Option;
         
-        Status status = MapSellerToTgxStatus(supplierOption.Status);
+        BookStatus status = MapSellerToTgxStatus(supplierOption.Status);
         Price price = ParseSupplierPrice(supplierOption.SupplierPrice);
         PaymentType paymentType = MapSellerToTgxPaymentType(supplierOption.SupplierPaymentType);
         List<Room> roomList = ParseSupplierRooms(supplierOption.Rooms);
-        var checkIn = connectorsRequest.QuoteRq.QuoteCriteria.CheckInAsDateTime;
+        var checkIn = connectorsRequest.BookRq.BookCriteria.CheckInAsDateTime;
 
         var cancelPolicy = ParseSupplierCancelPolicies(checkIn, supplierOption.SupplierCancelPolicies);
-        
-        return new QuoteRs(
-            price,
-            status,
-            cancelPolicy,
-            paymentType,
-            roomList);
+
+        var clientReference = connectorsRequest.BookRq.BookCriteria.ClientReference;
+        var supplierReference = supplierOption.SupplierReference;
+
+        BookDetails bookDetails = new BookDetails(status, new Reference(clientReference, supplierReference), price);
+        return new BookRs(bookDetails);
     }
 
     private OptionCancelPolicy ParseSupplierCancelPolicies(DateTime checkIn, List<SupplierCancelPolicy> supplierCancelPolicies)
@@ -386,11 +398,11 @@ internal partial class QuoteOperation
         _ => PaymentType.MerchantPay
     };
 
-    private static Status MapSellerToTgxStatus(string status) => status switch
+    private static BookStatus MapSellerToTgxStatus(string status) => status switch
     {
-        "Available" => Status.OK,
-        "OnRequest" => Status.RQ,
-        _ => Status.Unknown
+        "Booked" => BookStatus.Ok,
+        "OnRequest" => BookStatus.OnRequest,
+        _ => BookStatus.Unknown
     };
 
     private static Price ParseSupplierPrice(SupplierPrice supplierPrice)
@@ -427,7 +439,7 @@ Use the **FormTest** application to test each operation manually:
 
 ### **Step 1: Create Pull Request**
 
-    - Commit your changes and push them to a new branch called "**QuoteDevelopment**" into the original repository.
+    - Commit your changes and push them to a new branch called "**BookDevelopment**" into the original repository.
     - Separate the Pull Request into minimum these 4 commits:
         - Mock responses
         - Request and Response models

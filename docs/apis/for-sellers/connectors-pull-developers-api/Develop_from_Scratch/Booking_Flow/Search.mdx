@@ -20,8 +20,6 @@ File location: "**test\MockServer\Tests\Search\Two_Adults_Two_Days.txt**"
 
 These models are crucial because they specify the structure of the objects contained within supplier responses. They'll also play a vital role in serializing and deserializing requests and responses during development.
 
-File location: "**ConnectorsIntegration\Search\Models\Request\SearchRequest.cs**"
-
 ![Response example](TemplateStructureModels.png)
 
 **Example of a SearchRequest model**:
@@ -44,8 +42,7 @@ public class SupplierOccupancy
     public IEnumerable<int> Infants { get; internal set; }
 }
 ```
-
-File location: "**ConnectorsIntegration\Search\Models\Response\SearchResponse.cs**"
+File location: "**ConnectorsIntegration\Search\Models\Request\SearchRequest.cs**"
 
 **Example of a SearchResponse model**:
 
@@ -97,6 +94,7 @@ public class SupplierRoom
     public string RoomDescription { get; set; }
 }
 ```
+File location: "**ConnectorsIntegration\Search\Models\Response\SearchResponse.cs**"
 
 ## **Develop**
 
@@ -229,7 +227,7 @@ public bool TryValidateSupplierResponses(
 
 This class will contain a "BuildRequests" method that will have the following args: 
 
-- Object of the requests previously created (SearchRequest)
+- Object of the requests from the models previously created (SearchRequest)
 - The request that the buyer sends (connectorsRequest)
 - Parameters (connectorParameters) which will have some helpers:
 

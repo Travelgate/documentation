@@ -59,16 +59,24 @@ These limits apply to **each room type individually**, not to the hotel as a who
 
 ### Missing Booking Notifications
 
-If you have not received a booking notification email, follow these steps:
+1. If you, as **the Client, or the hotel** have not received a booking notification email, follow these steps:
 
-1. **Check your Extranet setup:** Ensure that the **Hotel Email, CC Address, and From Address** are correctly configured. If needed, [update the information](/docs/apps/inventory/extranet/set-up/setup#how-to-add-a-hotel) to ensure notifications reach the right recipients. Keep in mind that changes to the notification email only apply to new reservations; prior bookings will still be sent to the previously set email.
-2. **Check Spam and Trash folders:** Sometimes emails are accidentally filtered. Verify that booking notifications haven’t been blocked or redirected.
-3. **Still not receiving emails?** If the issue persists, contact our **Customer Support Team** via the [Support Portal](https://app.travelgate.com/support) for further assistance.
+    1. **Check your Extranet setup:** Ensure that the **Hotel Email, CC Address, and From Address** are correctly configured. If needed, [update the information](/docs/apps/inventory/extranet/set-up/setup#how-to-add-a-hotel) to ensure notifications reach the right recipients. Keep in mind that changes to the notification email only apply to new reservations; prior bookings will still be sent to the previously set email.
+    2. **Check Spam and Trash folders:** Sometimes emails are accidentally filtered. Verify that booking notifications haven’t been blocked or redirected.
+    3. **Still not receiving emails?** If the issue persists, contact our **Customer Support Team** via the [Support Portal](https://app.travelgate.com/support) for further assistance.
+
+2. If a **Channel Manager** reports that they are not receiving booking notifications via API, follow these steps to troubleshoot the issue:
+    1. **Verify Activation:** Confirm that the Channel Manager has correctly implemented and activated the booking notification method for your account in their system.
+    2. **Check the Notification Endpoint:** Ensure the Channel Manager has provided Travelgate with the correct notification endpoint URL so that our system can deliver reservation data.
+    3. **Contact Support if Needed:** If both points are confirmed with the Channel Manager but they are still not receiving booking notifications, contact our [Customer Support Team](https://app.travelgate.com/support) for further assistance.
 
 ### Currency Not Available in Rate Setup
 
 While our **Inventory Extranet** offers an extensive list of currencies, if the one you need is missing, please reach out to us through our [Support Portal](https://app.travelgate.com/support). Our team will be happy to evaluate your request and assist you with the necessary configuration.
 
+
+### How can I remove a hotel from my hotel list if it’s no longer connected via Inventory?
+If you're no longer working with a property via Inventory but it still appears in your hotel list for a Channel Manager, the property is likely still active in your setup. To remove it, [**deactivate the property**](/docs/apps/inventory/extranet/set-up/delete-deactivate-activate/) in your setup for that specific Channel Manager. You can find step-by-step instructions in our [Inventory Documentation](/docs/apps/inventory/extranet/set-up/delete-deactivate-activate/).
 
 :::info
 Explore our **[Inventory Documentation](/docs/apps/inventory/extranet/set-up/setup)** for more details! 🚀

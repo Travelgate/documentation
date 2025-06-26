@@ -190,8 +190,8 @@ export const searchMultipleHotelsQuery =
 export const searchMultipleHotelsVariables = 
 `{
 	"criteriaSearch": {
-		"checkIn": "2025-10-28",
-		"checkOut": "2025-10-29",
+		"checkIn": "2027-05-28",
+		"checkOut": "2027-05-29",
 		"occupancies": [
 			{
 				"paxes": [

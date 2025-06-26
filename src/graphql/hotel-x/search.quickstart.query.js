@@ -189,8 +189,8 @@ export const searchQuickStartQuery =
 export const searchQuickStartVariables = 
 `{
 	"criteriaSearch": {
-		"checkIn": "2024-10-28",
-		"checkOut": "2024-10-29",
+		"checkIn": "2027-05-28",
+		"checkOut": "2027-05-29",
 		"occupancies": [
 			{
 				"paxes": [
@@ -232,8 +232,8 @@ export const searchQuickStartVariables =
 export const searchTwoRoomsVariables = 
 `{
 	"criteriaSearch": {
-		"checkIn": "2025-10-28",
-		"checkOut": "2025-10-29",
+		"checkIn": "2027-05-28",
+		"checkOut": "2027-05-29",
 		"occupancies": [
 			{
 				"paxes": [
@@ -285,8 +285,8 @@ export const searchTwoRoomsVariables =
 export const searchMultipleHotelsVariables = 
 `{
 	"criteriaSearch": {
-		"checkIn": "2024-10-28",
-		"checkOut": "2024-10-29",
+		"checkIn": "2027-05-28",
+		"checkOut": "2027-05-29",
 		"occupancies": [
 			{
 				"paxes": [

@@ -66,7 +66,7 @@ export const quoteQuickStartQuery =
 export const quoteQuickStartVariables = 
 `{
 	"criteriaQuote": {
-		"optionRefId": "13[%!03!~|3[%@241028!~|241029!~|1!~|1!~|0!~|ES!~|ES!~|es!~|EUR!~|0!~|2!~|1!~|1!~|0!~|0!~|10101446!~|BARRF[%@BARRF!~|210[%@0[%@false[%@EUR[%@[%@0[%@!~|1|30#30|1|2024-10-28|1|4247163|4247164|1|11|0!~|5683[%!5683!~|30[%@30!~|!~|Double Suite Deluxe!~|1!~|!~|mercado[%@ES[%!ExpireDate[%@29/10/2024!~|OK!~|Sith!~|0!~|"
+		"optionRefId": "33!~|a0!~|b270528!~|c270529!~|d1!~|e14!~|f0!~|gES!~|hES!~|ies!~|jEUR!~|k0!~|l2!~|m1!~|n14!~|o0!~|p0!~|x26060747!~|rBAR_USD!~|sBAR_USD!~|M79!~|N0!~|Ofalse!~|PUSD!~|Q!~|R0!~|S!~|T!~|z1|30#30|1|2027-05-28|1|5747340|5747342|14|11|0!~|A2269!~|B2269!~|C30|30!~|EDouble Standard!~|FDouble Standard!~|G1!~|H1!~|I1|30#30|1|2027-05-28|1|5747340|5747342|14|11|0!~|J1!~|K1!~|L1!~|H2!~|IES!~|J1!~|K0!~|L1!~|H703!~|I1#3@#!~|J0!~|K1!~|L0!~|H708!~|Ia8558279-a7a3-4b99-a527-dd39a37a68d6!~|J0!~|K0!~|L0!~|tOK!~|uConnectors!~|v0!~|w!~|yPACKAGE!~|"
 	},
 	"settings": {
 		"client": "client_demo",

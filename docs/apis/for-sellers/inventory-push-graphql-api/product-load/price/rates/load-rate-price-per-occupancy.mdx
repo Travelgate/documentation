@@ -132,6 +132,86 @@ The mutation returns the loaded rate prices along with success status and possib
     * `external` (*ExternalMessage*) - External message details.
     * `correlationID` (*ID*) - Identifier for debugging.
 
+## Understanding "Price Per Occupancy"
+
+The **Price Per Occupancy** model defines prices based on exact guest combinations. Each price entry represents the total amount for a specific mix of adults, children, and infants. This allows very precise control over how much should be charged depending on the occupancy configuration.
+
+### 🔍 How it works
+
+Each `price` block includes:
+- `amount` – total price for this combination
+- `numberOfAdults`
+- `numberOfChildren`
+- `numberOfInfants`
+
+This means that:
+> The price is **not per person**, but **per occupancy configuration**.
+
+If the combination requested in a booking matches the configuration stored in the system, that exact price is applied.
+
+### ✅ Example
+
+Imagine we load the following:
+
+#### **Price per Occupancy**
+When a price is charged **per Occupancy** means that this price will only be available for the specified occupancy. No `AdditionalGuestAmount` are applied.
+
+#### 📘 Case 1: Single valid configuration
+
+Room occupancy options (adults - children - infants):
+- `1-0-0` → ❌ No match
+- `2-0-0` → ✅ Match
+- `3-0-0` → ❌ No match
+```json
+{
+  "pricesPerOccupancy": {
+    "prices": [
+      {
+        "amount": 100.00,
+        "numberOfAdults": 2,
+        "numberOfChildren": 0,
+        "numberOfInfants": 0
+      }
+    ]
+  }
+}
+```
+| Occupancy | Price |
+| --------- | ----- |
+| 1-0-0     | Ø     |
+| 2-0-0     | 100   |
+| 3-0-0     | Ø     |
+
+#### 📘 Case 2: Multiple valid configurations
+
+Room occupancy options (adults - children - infants):
+- `2-1-0` → ✅ Match
+- `2-0-1` → ✅ Match
+```json
+{
+  "pricesPerOccupancy": {
+    "prices": [
+      {
+        "amount": 95.00,
+        "numberOfAdults": 2,
+        "numberOfChildren": 1,
+        "numberOfInfants": 0
+      },
+      {
+        "amount": 80.00,
+        "numberOfAdults": 2,
+        "numberOfChildren": 0,
+        "numberOfInfants": 1
+      }
+    ]
+  }
+}
+```
+| Occupancy | Price |
+| --------- | ----- |
+| 2-1-0     | 95    |
+| 2-0-1     | 80    |
+
 ## Mutation Inputs
 
 <InventoryLoadPriceRatesInput />

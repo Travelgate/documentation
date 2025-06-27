@@ -1,0 +1,225 @@
+---
+title: "Rooms"
+sidebar_position: 12
+---
+
+## Rooms
+
+This operation is designed for the comprehensive retrieval of full **Rooms** static data.
+
+## **Models**
+
+### **Step 1: Define the Models of your response (Request and Response models)**
+
+These models are crucial because they specify the structure of the objects contained within supplier responses. They'll also play a vital role in serializing and deserializing requests and responses during development.
+
+![Template Structure Models Rooms](TemplateStructureModelsRooms.png)
+
+**Rooms** usually do not require any request model, as they are HTTP GET methods.
+
+Response example:
+
+```csharp
+public class RoomsSupplierResponse
+{
+    public List<Rooms> Rooms { get; set; }
+}
+
+public class Rooms
+{
+    public string Code { get; set; }
+    public string Name { get; set; }
+}
+```
+
+## **Develop**
+
+### **Step 1: Register the serializers and operations**
+To specify which serializer and operations the developer will be using (based on the seller's API) we can specify it in our "**Extensions**":
+
+File location: "**Rooms\RoomsExtensions.cs**"
+
+If the seller works with **JSON** format, we can specify the integration to work with **JSON** with the following:
+
+```csharp
+using System.Text.Json;
+using Connectors.Content.Pull.Api.Extensions.Rooms;
+using Connectors.Core.App.Extensions;
+using ConnectorsTemplateContent.Common.Constants;
+using ConnectorsTemplateContent.Rooms.Models.Request;
+using ConnectorsTemplateContent.Rooms.Models.Response;
+using RoomsOperation = ConnectorsTemplateContent.Rooms.Operations.RoomsOperation;
+
+namespace ConnectorsTemplateContent.Rooms;
+
+public static class RoomsExtensions
+{
+    public static void AddRoomsServices(this IServiceCollection services,
+        IConfiguration configuration)
+    {
+        services.AddJsonSerializer<RoomsRequest, RoomsSupplierResponse>(ConfigureJSONOptions);
+        services.AddRoomsOperation<RoomsOperation, RoomsRequest, RoomsSupplierResponse, AccessModel>(
+            TgxPlatform.Name, configuration);
+    }
+    private static void ConfigureJSONOptions(JsonSerializerOptions options) { }
+}
+```
+
+### **Step 2: RoomsOperation validators**
+
+There are two previous validations that serve as a filter so the buildrequest and the parseresponse are as safe as possible. They can be found in the SearchOperation.cs class:
+
+File location: "**Rooms\Operations\RoomsOperation.cs**"
+
+![TryValidateRooms](RoomsOperation.png)
+
+**TryValidateModelRequest**
+
+This step validates the incoming request from the client. While most validation is defined in the [metadata](../../Advanced_Configuration/Metadata_Definition), this step is used for specific edge cases that cannot be generalized.
+
+```csharp
+public bool TryValidateModelRequest(ContentRequest connectorsRequest,
+    ContentOperationParameters<AccessModel> connectorParameters,
+    out IEnumerable<AdviseMessage> adviseMessages)
+{
+    adviseMessages = null;
+    return true;
+}
+```
+
+**TryValidateSupplierResponses**
+
+Once the supplier's response is received, this step validates it for errors or anomalies. Suppliers may return incomplete or erroneous data, so this step ensures only valid responses are processed further.
+
+**Details**:
+
+- Check for supplier-specific error fields.
+- Ensure required fields (e.g., rooms list) are present.
+- Example Use Case: A supplier might return a response with an error code or an empty rooms list. This step would detect and handle such cases.
+
+```csharp
+public bool TryValidateSupplierResponses(ContentOperationParameters<AccessModel> connectorParameters,
+    IEnumerable<SupplierResponseWrapper<RoomsSupplierResponse>> supplierResponses,
+    out IEnumerable<AdviseMessage> adviseMessages)
+    {
+    var supplierResponseWrappers = supplierResponses as SupplierResponseWrapper<RoomsSupplierResponse>[] ?? supplierResponses.ToArray();
+    
+    var success = ResponseValidator.TryValidateSupplierResponses(supplierResponseWrappers, out adviseMessages);
+
+    if (!success) return false;
+    
+    if (supplierResponseWrappers.ElementAt(0).Response.Rooms is null)
+    {
+        adviseMessages =
+        [
+            AdviseMessage.BuildSupplierNoResults() // Indicates no results from the supplier.
+        ];
+
+        return false;
+    }
+
+    return true; // Validation passes if no issues are found.
+}
+```
+### **Step 3: Build the Seller's request**
+
+This class will contain a "BuildRequests" method that will have the following args: 
+
+- Object of the requests from the models previously created (RoomsRequest).
+- The request that the buyer sends (connectorsRequest).
+- Parameters (connectorParameters) which will have some helpers.
+
+File location: "**Rooms\Operations\RoomsOperation.BuildRequest.cs**"
+
+![Build Request Rooms](RoomsBuildRequest.png)
+
+**Example of Build Request:**
+```csharp
+using Connectors.Content.Pull.Application.Operations;
+using Connectors.Core.Application.Connection;
+using ConnectorsTemplateContent.Rooms.Models.Request;
+namespace ConnectorsTemplateContent.Rooms.Operations;
+
+internal partial class RoomsOperation
+{
+    public IEnumerable<SupplierRequestWrapper<RoomsRequest>> BuildRequests(ContentRequest connectorsRequest,
+        ContentOperationParameters<AccessModel> connectorParameters)
+    {
+        string genericUrl = connectorParameters.ParametersModel.GenericUrl;
+
+        var request = new SupplierRequestWrapper<RoomsRequest>(
+            null,
+            new Uri(genericUrl),
+            HttpMethod.Post);
+
+        return new List<SupplierRequestWrapper<RoomsRequest>>()
+        {
+            request
+        };  
+    }
+}
+```
+
+### **Step 4: Parse the Seller's response**
+
+Once the request has been sent, we will have to control and parse the response returned by the seller.
+
+We will be implementing the "ParseResponse" step inside RoomsOperation:
+
+File location: "**Rooms\Operations\RoomsOperation.ParseResponse.cs**"
+
+![Build Buyer's Response](RoomsParseResponse.png)
+
+**Example of Parse Response:**
+
+```csharp
+using Connectors.Content.Pull.Application.Operations;
+using Connectors.Content.Pull.Application.Operations.Rooms;
+using Connectors.Content.Pull.Domain.Contracts.Rooms;
+using Connectors.Core.Application.Connection;
+using ConnectorsTemplateContent.Rooms.Models.Response;
+using Content.Common.Domain.AccumulativeContracts.Room;
+
+namespace ConnectorsTemplateContent.Rooms.Operations;
+
+internal partial class RoomsOperation
+{
+    public RoomsResponse ParseResponses(ContentRequest connectorsRequest,
+        ContentOperationParameters<AccessModel> connectorParameters,
+        IEnumerable<SupplierResponseWrapper<RoomsSupplierResponse>> supplierResponses,
+        CancellationToken cancellationToken)
+    {
+        ParseSupplierRooms(supplierResponses.First().Response);
+        return new RoomsResponse(new RoomsRs());
+    }
+
+    private void ParseSupplierRooms(RoomsSupplierResponse response)
+    {
+        foreach (var room in response.Rooms)
+        {
+            //Accumulator is used instead of returning an object with the response.
+           _accumulator.AddValue(new AccumulativeRoom()
+            {
+                Code = room.Code,
+                Names = new Dictionary<Iso2LanguageEnum, string>
+                {
+                    { Iso2LanguageEnum.EN, room.Name }
+                }
+            });
+        }
+    }
+}
+```
+
+## **Code Review**
+
+### **Step 1: Create Pull Request**
+
+    - Commit your Search changes and push them to a new branch called "**RoomsDevelopment**" into the original repository.
+    - Separate the Pull Request into minimum these 4 commits:
+        - Request and Response models
+        - BuildRequest
+        - ParseResponse
+
+### **Step 2: Wait for Travelgate review**
+    - This step involves waiting for the Travelgate team to review and approve the submitted pull request, for more details, check [Code Review Details](../Code_Review/Code_Review_Details.mdx)

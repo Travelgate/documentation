@@ -110,9 +110,15 @@ The information needed to add a rate is listed below:
   Allowed characters: Only letters **(a–z, A–Z)**, numbers **(0–9)**, **spaces**, and the following symbols: **(-, _, %, /, (, ), +, *, and uppercase M)**. Any other characters will be rejected. 
 * **Name:** Rate name.
 * **Included board:** Meal plan.
-* **Age Max Baby:** The maximum age for a passenger to be considered a baby (indicated age not included, meaning if the *Max Age* for a baby is 3 you should indicate 4, that way any passenger aged 0-3 will be considered a baby).
+* **Age Max Baby:** The maximum age for a passenger to be considered a baby (indicated age not included, meaning if the *Max Age* for a baby is 3 you should indicate 4, that way any passenger aged 0-3 will be considered a baby). 
+:::note
+ For the Age Range and Age Range/Occupancy price types, this field must always be set to 0. This is because these two pricing models work with child age ranges, and infants are included within those ranges. Therefore, the "infant" category is considered part of "children". [Age ranges prices](/docs/apps/inventory/extranet/availability-and-rates/calendar-and-availability#price-per-age-range)
+:::
 * **Free Baby:** Check to indicate that babies are free of charge if you are working with Channel Managers that can't load this kind of free baby condition. Use only if the Channel Manager works with *Standard Occupancy* price.  
 * **Age Max Child** The maximum age for a passenger to be considered a child (indicated age not included, same as the maximum age for a baby).
+:::note
+ For the Age Range and Age Range/Occupancy price types, this field must contain the age limit of the most restrictive child range (that is, the minimum adult age, as it is not inclusive). This is because these two pricing models work with child age ranges, and the different ranges will be notified in the calendar when prices are loaded.
+:::
 * **Free Child:** Check to indicate that children are free of charge if you are working with Channel Managers that can't load this kind of free child condition. Use only if the Channel Manager works with *Standard Occupancy* price.
 * **Currency:** Currency applied to the rate. If you need to use a currency not listed, please contact us through our [Support Portal](https://app.travelgate.com/support).
 * **Commission:** Percentage of commission applied. This is only informative.
@@ -188,6 +194,9 @@ In order to add a new room, click in the ``Add Room`` button in the hotel row an
 * **Occupancy only Adults:** Defines the occupancies of adults allowed for this room. (Dark Blue icons are adults).
 * **Occupancy Adults with Children:** Defines occupancies of adults and children allowed for this room. (Light Blue icons are children).
 * **Occupancy Adults with Babies (and children):** Defines the occupancies of adults, children and babies allowed for this room. (Green icons are babies).
+:::note
+ When a supplier uses Age Range or Age Range/Occupancy pricing, this section should not be filled in, as infants are included within the child age ranges in these pricing models.
+:::
 
 ## Derived Rates
 

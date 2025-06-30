@@ -169,6 +169,127 @@ The mutation returns the loaded rate prices along with success status and possib
     * `external` (*ExternalMessage*) - External message details.
     * `correlationID` (*ID*) - Identifier for debugging.
 
+## Understanding "Price Per Room"
+
+This pricing model defines a **base price per room**, regardless of occupancy. The base amount applies to the room as long as it does not exceed the standard occupancy.  
+If there are additional guests beyond this limit, a supplement is applied per person, and these can be defined separately for **adults**, **children**, and **infants**.
+
+### 🔎 How it works
+
+The GraphQL field `additionalGuestsSupplements` contains three arrays:
+- `additionalAdults`
+- `additionalChildren`
+- `additionalInfants`
+
+Each supplement entry includes:
+- `guestPosition`: position index (1 = first additional guest, 2 = second, etc.)
+- `amount`: amount to be added
+- `type`: type of calculation, typically `"ADDITIVE"`
+
+:::note  
+You can load up to **three additional passengers per group** (adult, child, infant).  
+:::
+
+
+### ✅ Example Scenario
+
+Imagine we load the following:
+
+#### **Price Per Room**
+When a price is charged **per Room**, all occupancies within the **standard occupancy** share the same base price.  
+If the number of guests exceeds this standard, **supplements** for additional adults, children, or infants are added using the field `additionalGuestsSupplements`.
+
+#### 📘 Case 1: Standard occupancy, no supplements
+
+**Standard occupancy:** 2  
+**Occupancy tested:**  
+- `1 adult`  
+- `2 adults`  
+- `1 adult + 1 child`
+
+```json
+{
+  "pricePerRoom": {
+    "amount": 100.0
+  }
+}
+```
+| Occupancy | Price |
+| --------- | ----- |
+| 1-0-0     | 100   |
+| 2-0-0     | 100   |
+| 1-1-0     | 100   |
+
+#### 📘 Case 2: Standard occupancy + supplements
+
+**Standard occupancy:** 2  
+**Supplements:**  
+- `1 additional adult → 20.00`  
+- `1 additional child → 10.00`  
+
+```json
+{
+  "pricePerRoom": {
+    "amount": 100.0,
+    "additionalGuestsSupplements": {
+      "additionalAdults": [
+        {
+          "additionalGuestType": "ADULT",
+          "guestPosition": 1,
+          "amount": 20.0,
+          "type": "ADDITIVE"
+        }
+      ],
+      "additionalChildren": [
+        {
+          "additionalGuestType": "CHILD",
+          "guestPosition": 1,
+          "amount": 10.0,
+          "type": "ADDITIVE"
+        }
+      ]
+    }
+  }
+}
+```
+| Occupancy | Price                           |
+| --------- | ------------------------------- |
+| 1-0-0     | 100                             |
+| 2-0-0     | 100                             |
+| 3-0-0     | 100 + (100 / 2 + 20) = 170      |
+| 1-1-0     | 100                             |
+| 3-1-0     | 100 + (100 / 2 + 20) + 10 = 180 |
+
+#### 📘 Case 3: Standard occupancy = 3, supplement for extra adult
+
+**Standard occupancy:** 3  
+**Supplements:**  
+- `1 additional adult → 20.00`  
+
+```json
+{
+  "pricePerRoom": {
+    "amount": 120.0,
+    "additionalGuestsSupplements": {
+      "additionalAdults": [
+        {
+          "additionalGuestType": "ADULT",
+          "guestPosition": 1,
+          "amount": 20.0,
+          "type": "ADDITIVE"
+        }
+      ]
+    }
+  }
+}
+```
+| Occupancy | Price                      |
+| --------- | -------------------------- |
+| 1-0-0     | 120                        |
+| 2-0-0     | 120                        |
+| 3-0-0     | 120                        |
+| 4-0-0     | 120 + (120 / 3 + 20) = 180 |
+
 ## Mutation Inputs
 
 <InventoryLoadPriceRatesInput />

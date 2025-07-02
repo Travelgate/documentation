@@ -125,3 +125,74 @@ public class ResponseXmlSerializer<TRequest, TResponse> : MultiResponseXmlSerial
 }
 
 ```
+
+## Polling
+
+In Connectors you may need polling for some sellers, this means a pagination is needed. In this case, a **AddSearchPollingOperationFor** extension can be used:
+
+- Specify Polling in the Search node in **appsettings.local.json**
+
+```json
+"Search": {
+    "ConnectorsHttpClient": "Default",
+    "Polling": {
+        "Margin": "00:00:00.000",
+        "Delay": "00:00:00.000"
+    }
+}
+```
+
+- Implement the Polling in the **SearchExtensions.cs**
+```csharp
+internal static class SearchExtensions
+{
+    public static void AddSearchServices(this IServiceCollection services,
+        IConfiguration configuration)
+    {
+        services.AddJsonSerializer<SearchRequest, SearchResponse>(JsonOptions.Configure);
+        services.AddSearchOperation<SearchOperation, SearchRequest, SearchResponse, AccessModel>(TgxPlatform.Name,
+            configuration).AddSearchPollingOperationFor<SearchRequest, SearchResponse, EhtAccessModel>();
+    }
+}
+```
+
+This will allow the operation to work with pagination, afterwards just use it your Search ParseResponse:
+```csharp
+public SearchConnectorResponse ParseResponses(
+    SearchConnectorRequest connectorsRequest,
+    SearchParameters<EhtAccessModel> connectorParameters,
+    IEnumerable<SupplierResponseWrapper<SearchResponse>> supplierResponses,
+    CancellationToken cancellationToken)
+{
+    var firstResponse = supplierResponses.First();
+
+    // Parses connector-specific options; not the focus here
+    ParseOptions(firstResponse);
+
+    var accommodations = connectorParameters.OptionsGenerator.Combine();
+
+    // Sets up the pagination context for the next page, if applicable
+    SetPaginationContext(searchWrapper.Pagination);
+
+    // Marks whether this is the last page of results
+    return new SearchConnectorResponse(new SearchRs(accommodations))
+    {
+        IsFinished = IsPaginationFinished(searchWrapper.Pagination)
+    };
+}
+
+private static bool IsPaginationFinished(Pagination pagination)
+{
+    // Pagination is finished when the current page is the last one
+    return pagination.currentPage >= pagination.totalPages;
+}
+
+private void SetPaginationContext(Pagination pagination)
+{
+    // If more pages exist, store the next page number in context for future requests
+    if (!IsPaginationFinished(pagination))
+    {
+        _contextCache.TryAdd(TgxPlatform.Pagination_Page, pagination.currentPage + 1);
+    }
+}
+```

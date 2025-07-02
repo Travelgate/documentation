@@ -23,11 +23,6 @@ sidebar_position: 3
 5. **Configure the optimization criteria**: Define the connection/access details and select the optimization criteria.
    ![traffic_optimizer_4](https://storage.travelgate.com/kbase/traffic_optimizer_4.jpg)
 
-   :::info
-   - 'No Availability' and 'Zero Bookings' criteria can be activated automatically.
-   - The 'Not in Portfolio' criteria requires manual activation by our team. We will notify you once it's set up.
-   :::
-
 ## Can I Edit the Configuration?
 
 Yes! To edit optimization criteria for connections or accesses:
@@ -110,7 +105,7 @@ Yes! You can exclude specific hotels from the blacklist.
 
 :::info
 - All criteria (**No Availability, Zero Bookings, and Not in Portfolio**) can be applied together. However, we recommend **starting with one at a time**.
-- To activate the "Zero Bookings" criterion, the connection/access must have **at least one booking per month for the past six months** (excluding the current month).
+- To activate the "Zero Bookings" criteria, the connection/access must have **at least one booking per month for the past six months** (excluding the current month).
 - When a Buyer requests a blacklisted hotel, the following **error/warning** appears:
   ```json
   {

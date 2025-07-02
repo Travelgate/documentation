@@ -1,0 +1,52 @@
+---
+title: "Configuring Content"
+sidebar_position: 8
+---
+
+Before you start the Content development, a couple things should be prepared and configured beforehand:
+
+## Local Task Simulation
+
+For efficient local testing and development, it is essential to configure the "**LocalTaskOptions**" within the **appsettings.local.json** file. This configuration enables the simulation of a task execution, thereby eliminating the dependency on live task environments during the development phase.
+
+```json
+  "LocalTaskOptions": {
+    "Access": {
+      "Code": 11111,
+      "User": "awesomeuser",
+      "Password": "supersecretpassword",
+      "Urls": {
+        "Generic": "www.exampletgx.com"
+      },
+      "Parameters": {
+        "xxxxxxx": "yyyyyyy",
+        "xxxxxxx": "yyyyyyy",
+        "xxxxxxx": "yyyyyyy",
+        "xxxxxxx": "yyyyyyy",
+        "xxxxxxx": "yyyyyyy",
+        "xxxxxxx": "yyyyyyy",
+        "xxxxxxx": "yyyyyyy",
+        "xxxxxxx": "yyyyyyy",
+        "xxxxxxx": "yyyyyyy",
+        "xxxxxxx": "yyyyyyy",
+        "xxxxxxx": "yyyyyyy"
+      }
+    },
+    "Operation": "HotelDetails",
+    "Languages": ["en"],
+    "Platform": "PlatformCode",
+    "Supplier": "SupplierCode",
+    "SupplierGroup": "SupplierCode",
+    "HotelCode": "1010192920192",
+    "Timeout": "01:00:00",
+    "TaskId": "777"
+  }
+```
+
+### Differences about Content and Booking Flow/Management
+
+Unlike a typical connector integration, the Connectors Content uses an **_accumulator** in the ParseResponse methods.
+
+Instead of parsing the full response at once, each item is parsed individually and added to the **_accumulator**.
+
+On success, ParseResponse returns a new empty instance of the required class; on error, it returns a list of AdviseMessages.

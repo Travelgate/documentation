@@ -33,22 +33,22 @@ If the seller sends different json response structures in their response, implem
 - Add the "AddMultiJsonSerializer" service in the extensions of the operation, for instance, in **Search** it would look like this:
 
 ```csharp
-AddSerializerDependencySearch<SearchRequest, ResponseWrapper<List<SearchResponse>>>(services); 
-services.AddSearchOperation<SearchOperation, SearchRequest, ResponseWrapper<List<SearchResponse>>, AccessModel>(TgxPlatform.Name, configuration);
+AddSerializerDependencySearch<SearchRequest, ResponseWrapper<SearchResponse>>(services); 
+services.AddSearchOperation<SearchOperation, SearchRequest, ResponseWrapper<SearchResponse>>, AccessModel>(TgxPlatform.Name, configuration);
 
 public static void AddSerializerDependencySearch<TRequest, TResponse>(IServiceCollection services)
 {
     MultiResponseJsonType[] multiResponseTypes = new MultiResponseJsonType[]
     {
-        new(typeof(SearchResponse)),
-        new(typeof(List<SearchResponse>)),
+        new(typeof(TResponse)),
+        new(typeof(List<TResponse>)),
         new(typeof(ErrorResponse))
     };
 
     IDictionary<Type, JsonSerializerOptions> serializerOptions = ConfigureJsonOptions(multiResponseTypes);
-    ResponseJsonSerializer<TRequest, List<SearchResponse>> serializer = new(multiResponseTypes, serializerOptions);
+    ResponseJsonSerializer<TRequest, TResponse> serializer = new(multiResponseTypes, serializerOptions);
 
-    services.AddMultiJsonSerializer<TRequest, ResponseWrapper<List<SearchResponse>>, MultiResponseJsonSerializer<TRequest, ResponseWrapper<List<SearchResponse>>>>(serializer, serializerOptions);
+    services.AddMultiJsonSerializer<TRequest, ResponseWrapper<TResponse>, MultiResponseJsonSerializer<TRequest, ResponseWrapper<TResponse>>>(serializer, serializerOptions);
 }
 
 //Add your JsonSerializerOptions as needed
@@ -87,8 +87,8 @@ If the seller sends different XML response structures in their response, impleme
 - Add the "AddMultiXmlSerializer" service in the extensions of the operation, for instance, in **Search** it would look like this:
 
 ```csharp
-AddMultiSerializer<SearchRequest, ResponseWrapper<List<SearchResponse>>>(services); 
-services.AddSearchOperation<SearchOperation, SearchRequest, ResponseWrapper<List<SearchResponse>>, AccessModel>(TgxPlatform.Name, configuration);
+AddMultiSerializer<SearchRequest, ResponseWrapper<SearchResponse>>(services); 
+services.AddSearchOperation<SearchOperation, SearchRequest, ResponseWrapper<SearchResponse>, AccessModel>(TgxPlatform.Name, configuration);
 
 public static void AddMultiSerializer<TRequest, TResponse>(this IServiceCollection services, string name)
 {

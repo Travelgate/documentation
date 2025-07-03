@@ -38,6 +38,7 @@ Below is the current list of IP addresses that Hotel Suppliers should allow (Upd
 | 104.45.23.211                      |                                         |  
 | 104.155.75.74                      |                                         |  
 | 104.155.96.34                      |                                         |  
+| 141.105.105.232                    |                                         |  
 | 144.76.195.49                      |                                         |  
 | 146.148.17.151                     |                                         |  
 | 146.148.21.32                      |                                         |  
@@ -70,6 +71,7 @@ Please add **only** these IPs (Updated on 29/10/2024):
 | 51.144.2.130           |  
 | 52.148.208.57          |  
 | 108.143.13.154         |
+| 141.105.105.232        |  
 
 ### Fixed IP List as a Channel-X Buyer
 Please add **only** these IPs (Updated on 03/10/2024):
@@ -82,6 +84,7 @@ Please add **only** these IPs (Updated on 03/10/2024):
 | 52.178.68.49           |  
 | 79.98.220.55           | 
 | 108.143.13.154         |
+| 141.105.105.232        |  
 
 ### Fixed IP List as a Payment/VCC Supplier
 Please add **only** these IPs (Updated on 29/08/2024):
@@ -94,6 +97,9 @@ Please add **only** these IPs (Updated on 29/08/2024):
 | 98.71.173.241          |  
 | 104.40.178.121         |  
 | 108.142.130.32         |
+| 141.105.105.232        |  
+
+
 
 ## Does Travelgate Need to Whitelist My IPs?
 At Travelgate, we ensure that all our IPs are whitelisted in your system. However, our system **does not filter by IP**, meaning there's no need for us to whitelist your IPs. If you experience connectivity issues, they are unlikely to be caused by IP filtering.

@@ -6,10 +6,10 @@ Represents a meal plan (board) option for accommodations in Search responses.
 
 | Name | Type | Description |
 |------|------|-------------|
-| **BoardCode** | String | The unique code identifying the meal plan option. |
-| **Name** | String | The name of the meal plan option. |
-| **Options** | Array&lt;[Option](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/option)&gt; | The collection of options associated with this meal plan. |
-| **Options/FormId** | String | Internal field for form test. Not serialized. DO NOT USE! |
+| **BoardCode** | String | The unique code identifying the board. |
+| **Name** | String | The name of the board. |
+| **Options** | Array&lt;[Option](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/option)&gt; | The collection of options associated with this board. |
+| **Options/FormId** | String | Internal field for FormTest. Not serialized. DO NOT USE! |
 | **Options/Status** | [Status](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/status) | Indicates the availability status of the option. |
 | **Options/Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | The price details associated with the option, including net, gross and minimum selling price. |
 | **Options/Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
@@ -52,7 +52,7 @@ Represents a meal plan (board) option for accommodations in Search responses.
 | **Options/Rooms/Promotions/Code** | String | The unique code identifying the promotion. |
 | **Options/Rooms/Promotions/Name** | String | The name of the promotion. |
 | **Options/Rooms/Remarks** | Array&lt;[Remark](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remark)&gt; | Additional remarks or notes about this room. |
-| **Options/Rooms/Remarks**<br />**RemarkType** | [RemarkType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remarktype) | The type of the remark, categorized by RemarkType.This specifies the nature or purpose of the remark: Related to the hotel as a whole. Specific to the room being booked. Related to services provided by the accommodation. General remarks not tied to a specific entity. |
+| **Options/Rooms/Remarks**<br />**RemarkType** | [RemarkType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remarktype) | The type of the remark, categorized by RemarkType, specifies its nature or purpose. It may refer to the hotel as a whole, a specific room being booked, services provided by the accommodation, or general remarks not tied to any particular entity. |
 | **Options/Rooms/Remarks/Text** | String | The text content of the remark, providing details or additional notes.This can include supplier-specific instructions, conditions, or general information. |
 | **Options/Rooms/Surcharges** | Array&lt;[Surcharge](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/surcharge)&gt; | Additional surcharges applied to this room. |
 | **Options/Rooms/Surcharges**<br />**ChargeType** | [ChargeType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/chargetype) | Specifies whether the surcharge is included in the room rate or must be paid separately at the property. See ChargeType for possible values. |
@@ -118,7 +118,7 @@ Represents a meal plan (board) option for accommodations in Search responses.
 | **Options/RateRules/Restrictions**<br />**Name** | String | A descriptive name for the restriction. |
 | **Options/RateRules/Restrictions**<br />**RestrictionType** | [RestrictionType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/restrictiontype) | The type of the restriction, categorizing its purpose or application. |
 | **Options/Remarks** | Array&lt;[Remark](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remark)&gt; | Additional remarks associated with the option, such as special conditions or information. |
-| **Options/Remarks/RemarkType** | [RemarkType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remarktype) | The type of the remark, categorized by RemarkType.This specifies the nature or purpose of the remark: Related to the hotel as a whole. Specific to the room being booked. Related to services provided by the accommodation. General remarks not tied to a specific entity. |
+| **Options/Remarks/RemarkType** | [RemarkType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remarktype) | The type of the remark, categorized by RemarkType, specifies its nature or purpose. It may refer to the hotel as a whole, a specific room being booked, services provided by the accommodation, or general remarks not tied to any particular entity. |
 | **Options/Remarks/Text** | String | The text content of the remark, providing details or additional notes.This can include supplier-specific instructions, conditions, or general information. |
 | **Options/Surcharges** | Array&lt;[Surcharge](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/surcharge)&gt; | Surcharges applied to the option, such as mandatory fees or taxes. |
 | **Options/Surcharges/ChargeType** | [ChargeType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/chargetype) | Specifies whether the surcharge is included in the room rate or must be paid separately at the property. See ChargeType for possible values. |
@@ -149,7 +149,7 @@ Represents a meal plan (board) option for accommodations in Search responses.
 | **Options/Supplements/Price**<br />**Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **Options/Supplements/Price**<br />**NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **Options/Supplements/Price**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
-| **Options/Supplements**<br />**SupplementType** | [SupplementType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/supplementtype) | The specific SupplementType of the supplement (e.g., meal plan, additional service). |
+| **Options/Supplements**<br />**SupplementType** | [SupplementType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/supplementtype) | The specific SupplementType of the supplement (e.g., board, additional service). |
 | **Options/Supplements/ChargeType** | [ChargeType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/chargetype) | Defines how the supplement is charged using ChargeType (e.g., per person, per stay). |
 | **Options/Supplements**<br />**DurationType** | [DurationType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/durationtype) | Specifies whether the supplement applies to a specific duration (Open or Range). |
 | **Options/Supplements/Quantity** | Integer | The quantity of the supplement included in the booking. |

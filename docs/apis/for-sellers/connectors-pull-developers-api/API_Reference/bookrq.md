@@ -60,7 +60,7 @@ Represents a hotel booking request.
 | **BookCriteria/Rooms/Promotions**<br />**Code** | String | The unique code identifying the promotion. |
 | **BookCriteria/Rooms/Promotions**<br />**Name** | String | The name of the promotion. |
 | **BookCriteria/Rooms/Remarks** | Array&lt;[Remark](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remark)&gt; | Additional remarks or notes about this room. |
-| **BookCriteria/Rooms/Remarks**<br />**RemarkType** | [RemarkType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remarktype) | The type of the remark, categorized by RemarkType.This specifies the nature or purpose of the remark: Related to the hotel as a whole. Specific to the room being booked. Related to services provided by the accommodation. General remarks not tied to a specific entity. |
+| **BookCriteria/Rooms/Remarks**<br />**RemarkType** | [RemarkType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remarktype) | The type of the remark, categorized by RemarkType, specifies its nature or purpose. It may refer to the hotel as a whole, a specific room being booked, services provided by the accommodation, or general remarks not tied to any particular entity. |
 | **BookCriteria/Rooms/Remarks**<br />**Text** | String | The text content of the remark, providing details or additional notes.This can include supplier-specific instructions, conditions, or general information. |
 | **BookCriteria/Rooms/Surcharges** | Array&lt;[Surcharge](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/surcharge)&gt; | Additional surcharges applied to this room. |
 | **BookCriteria/Rooms/Surcharges**<br />**ChargeType** | [ChargeType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/chargetype) | Specifies whether the surcharge is included in the room rate or must be paid separately at the property. See ChargeType for possible values. |
@@ -98,7 +98,7 @@ Represents a hotel booking request.
 | **BookCriteria/Rooms/Features**<br />**Code** | String | The unique code identifying the feature of the room. |
 | **BookCriteria/PaymentType** | [PaymentType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/paymenttype) | Gets the payment type for the booking. |
 | **BookCriteria/Remarks** | Array&lt;[Remark](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remark)&gt; | Gets the remarks for the booking. |
-| **BookCriteria/Remarks**<br />**RemarkType** | [RemarkType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remarktype) | The type of the remark, categorized by RemarkType.This specifies the nature or purpose of the remark: Related to the hotel as a whole. Specific to the room being booked. Related to services provided by the accommodation. General remarks not tied to a specific entity. |
+| **BookCriteria/Remarks**<br />**RemarkType** | [RemarkType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remarktype) | The type of the remark, categorized by RemarkType, specifies its nature or purpose. It may refer to the hotel as a whole, a specific room being booked, services provided by the accommodation, or general remarks not tied to any particular entity. |
 | **BookCriteria/Remarks/Text** | String | The text content of the remark, providing details or additional notes.This can include supplier-specific instructions, conditions, or general information. |
 | **BookCriteria/ClientReference** | String | Gets the client reference for the booking. |
 | **BookCriteria/BookPrice** | [BookPrice](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/bookprice) | Gets the book price for the booking. |
@@ -175,7 +175,7 @@ Represents a hotel booking request.
 | **Settings/Access/Urls/Generic** | String | A generic URL for additional operations. |
 | **Settings/Access/Parameters** | [AccessParameters](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accessparameters) | Additional parameters related to the connection. |
 | **Settings/BusinessRules** | [BusinessRules](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/businessrules) | Specifies the business rules to be applied during the operation. These rules define operational constraints and behavior, such as quota limits or prioritization criteria. |
-| **Settings/BusinessRules**<br />**OptionsQuota** | Integer | The maximum number of options that can be returned for a Search operation. |
+| **Settings/BusinessRules**<br />**OptionsQuota** | Integer | The maximum number of options returned for each board in the search query. |
 | **Settings/BusinessRules**<br />**BusinessRuleType** | [BusinessRulesType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/businessrulestype) | The business rule type that determines how Search results are prioritized or filtered. |
 | **Settings/Timeout** | String | Defines the timeout period for the operation as a string value.This indicates the maximum amount of time to wait for a supplier's response before timing out.The value must be provided in timestamp format (e.g., "00:05:00" for 5 minutes). |
 | **Settings/TimeoutAsTimeSpan** | String | Converts the timeout value from the string representation (Timeout) into a TimeSpan for use in time-based operations. |

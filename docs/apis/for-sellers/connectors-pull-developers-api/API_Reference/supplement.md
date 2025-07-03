@@ -17,7 +17,7 @@ Represents a supplementary service or feature in a hotel Search response event a
 | **Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **Price/NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **Price/MinimumSellingPrice** | Double | The minimum selling price. |
-| **SupplementType** | [SupplementType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/supplementtype) | The specific SupplementType of the supplement (e.g., meal plan, additional service). |
+| **SupplementType** | [SupplementType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/supplementtype) | The specific SupplementType of the supplement (e.g., board, additional service). |
 | **ChargeType** | [ChargeType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/chargetype) | Defines how the supplement is charged using ChargeType (e.g., per person, per stay). |
 | **DurationType** | [DurationType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/durationtype) | Specifies whether the supplement applies to a specific duration (Open or Range). |
 | **Quantity** | Integer | The quantity of the supplement included in the booking. |

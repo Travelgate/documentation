@@ -21,7 +21,7 @@ Represents the settings for a hotel booking request.
 | **Access/Urls/Generic** | String | A generic URL for additional operations. |
 | **Access/Parameters** | [AccessParameters](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accessparameters) | Additional parameters related to the connection. |
 | **BusinessRules** | [BusinessRules](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/businessrules) | Specifies the business rules to be applied during the operation. These rules define operational constraints and behavior, such as quota limits or prioritization criteria. |
-| **BusinessRules/OptionsQuota** | Integer | The maximum number of options that can be returned for a Search operation. |
+| **BusinessRules/OptionsQuota** | Integer | The maximum number of options returned for each board in the search query. |
 | **BusinessRules/BusinessRuleType** | [BusinessRulesType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/businessrulestype) | The business rule type that determines how Search results are prioritized or filtered. |
 | **Timeout** | String | Defines the timeout period for the operation as a string value.This indicates the maximum amount of time to wait for a supplier's response before timing out.The value must be provided in timestamp format (e.g., "00:05:00" for 5 minutes). |
 | **TimeoutAsTimeSpan** | String | Converts the timeout value from the string representation (Timeout) into a TimeSpan for use in time-based operations. |

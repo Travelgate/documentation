@@ -1,6 +1,6 @@
 # Feature
 
-Represents a feature of accommodation in search responses.
+Represents a feature of accommodation in Search responses.
 
 ## Properties
 

@@ -17,13 +17,13 @@ Represents a request to check bookings using a reference.
 | **Settings/Access/ApiKey** | String | The API key used for authentication or authorization. |
 | **Settings/Access/Urls** | [Urls](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/urls) | The URLs associated with the access configuration. |
 | **Settings/Access/Urls/Book** | String | The URL used for booking operations. |
-| **Settings/Access/Urls/Search** | String | The URL used for search operations. |
-| **Settings/Access/Urls/Quote** | String | The URL used for quote operations. |
+| **Settings/Access/Urls/Search** | String | The URL used for Search operations. |
+| **Settings/Access/Urls/Quote** | String | The URL used for Quote operations. |
 | **Settings/Access/Urls/Generic** | String | A generic URL for additional operations. |
 | **Settings/Access/Parameters** | [AccessParameters](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accessparameters) | Additional parameters related to the connection. |
 | **Settings/BusinessRules** | [BusinessRules](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/businessrules) | Specifies the business rules to be applied during the operation. These rules define operational constraints and behavior, such as quota limits or prioritization criteria. |
-| **Settings/BusinessRules**<br />**OptionsQuota** | Integer | The maximum number of options that can be returned for a search operation. |
-| **Settings/BusinessRules**<br />**BusinessRuleType** | [BusinessRulesType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/businessrulestype) | The business rule type that determines how search results are prioritized or filtered. |
+| **Settings/BusinessRules**<br />**OptionsQuota** | Integer | The maximum number of options that can be returned for a Search operation. |
+| **Settings/BusinessRules**<br />**BusinessRuleType** | [BusinessRulesType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/businessrulestype) | The business rule type that determines how Search results are prioritized or filtered. |
 | **Settings/Timeout** | String | Defines the timeout period for the operation as a string value.This indicates the maximum amount of time to wait for a supplier's response before timing out.The value must be provided in timestamp format (e.g., "00:05:00" for 5 minutes). |
 | **Settings/TimeoutAsTimeSpan** | String | Converts the timeout value from the string representation (Timeout) into a TimeSpan for use in time-based operations. |
 | **Settings**<br />**IncludeProviderTransactions** | Boolean | Indicates whether detailed traces of provider transactions should be included in the operation's response.If enabled, the ProviderAudit field in responses will contain the transaction logs (e.g., requests and responses exchanged with the supplier). |

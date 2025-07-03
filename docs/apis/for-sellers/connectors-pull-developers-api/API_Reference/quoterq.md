@@ -1,12 +1,12 @@
 # QuoteRq
 
-Represents a request for a hotel quote.
+Represents a request for a hotel Quote.
 
 ## Properties
 
 | Name | Type | Description |
 |------|------|-------------|
-| **QuoteCriteria** | [QuoteCriteria](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/quotecriteria) | Criteria for the quote request, such as dates, selected rooms, or other search-related parameters. |
+| **QuoteCriteria** | [QuoteCriteria](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/quotecriteria) | Criteria for the Quote request, such as dates, selected rooms, or other Search-related parameters. |
 | **QuoteCriteria/CheckIn** | String | The check-in date for the operation, represented as a string in ISO 8601 format (yyyy-MM-dd). |
 | **QuoteCriteria/CheckOut** | String | The check-out date for the operation, represented as a string in ISO 8601 format (yyyy-MM-dd). |
 | **QuoteCriteria**<br />**CheckInAsDateTime** | String | The check-in date parsed as a DateTime object. |
@@ -15,16 +15,16 @@ Represents a request for a hotel quote.
 | **QuoteCriteria/Language** | String | The language code for the operation, represented as a 2-character ISO 639-1 code (e.g., "en", "es"). |
 | **QuoteCriteria/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The preferred currency for the operation, defined as an optional Currency value. |
 | **QuoteCriteria/Nationality** | String | The nationality code of the client, represented as a 2-character ISO 3166-1 alpha-2 country code (e.g., "US", "FR"). |
-| **QuoteCriteria/Accommodation** | [AccommodationRQ](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accommodationrq) | Accommodation details for the quote request, such as the hotel or rental being evaluated. |
+| **QuoteCriteria/Accommodation** | [AccommodationRQ](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accommodationrq) | Accommodation details for the Quote request, such as the hotel or rental being evaluated. |
 | **QuoteCriteria/Accommodation**<br />**Type** | [AccommodationType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accommodationtype) | Specifies the type of accommodation being requested, such as Hotel or Rental. |
 | **QuoteCriteria/Accommodation**<br />**Code** | String | Represents a unique code identifying the accommodation in the request. |
-| **QuoteCriteria/BoardCode** | String | Board code indicating the meal plan for the quote. |
-| **QuoteCriteria/Occupancies** | Array&lt;[Occupancy](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/occupancy)&gt; | Details about the occupancy for the quote request, including rooms, passengers, and their ages. |
+| **QuoteCriteria/BoardCode** | String | Board code indicating the meal plan for the Quote. |
+| **QuoteCriteria/Occupancies** | Array&lt;[Occupancy](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/occupancy)&gt; | Details about the occupancy for the Quote request, including rooms, passengers, and their ages. |
 | **QuoteCriteria/Occupancies**<br />**OccupancyId** | Integer | The unique identifier for the occupancy. |
 | **QuoteCriteria/Occupancies**<br />**Paxes** | Array&lt;[PaxInput](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/paxinput)&gt; | The collection of passenger inputs (paxes) for the occupancy. |
 | **QuoteCriteria/Occupancies**<br />**Paxes/Age** | Integer | Age of the passenger. This value is required and plays a critical role in determining eligibility for child or adult pricing as defined by the supplier. |
-| **QuoteCriteria/Market** | String | The market code associated with the quote request. |
-| **QuoteCriteria/Rooms** | Array&lt;[Room](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/room)&gt; | List of selected rooms for the quote request. |
+| **QuoteCriteria/Market** | String | The market code associated with the Quote request. |
+| **QuoteCriteria/Rooms** | Array&lt;[Room](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/room)&gt; | List of selected rooms for the Quote request. |
 | **QuoteCriteria/Rooms**<br />**OccupancyRefId** | Integer | Numeric ID linking this room to its occupancy data in the Occupancy. |
 | **QuoteCriteria/Rooms/Code** | String | Unique code assigned to this room. |
 | **QuoteCriteria/Rooms**<br />**Description** | String | Description of the room's features or characteristics. |
@@ -32,16 +32,16 @@ Represents a request for a hotel quote.
 | **QuoteCriteria/Rooms/RoomPrice**<br />**Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | The total price of the room. |
 | **QuoteCriteria/Rooms/RoomPrice**<br />**Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **QuoteCriteria/Rooms/RoomPrice**<br />**Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **QuoteCriteria/Rooms/RoomPrice**<br />**Price/Net** | Double | The net price paid by the buyer to the seller. |
-| **QuoteCriteria/Rooms/RoomPrice**<br />**Price/Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **QuoteCriteria/Rooms/RoomPrice**<br />**Price/Net** | Double | The net price paid by the Buyer to the Seller. |
+| **QuoteCriteria/Rooms/RoomPrice**<br />**Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **QuoteCriteria/Rooms/RoomPrice**<br />**Price/NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **QuoteCriteria/Rooms/RoomPrice**<br />**Price/MinimumSellingPrice** | Double | The minimum selling price. |
 | **QuoteCriteria/Rooms/RoomPrice**<br />**PriceBreakdown** | Array&lt;[PriceBreakdown](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/pricebreakdown)&gt; | Breakdown of the room price over specific periods, such as daily rates. |
 | **QuoteCriteria/Rooms/RoomPrice**<br />**PriceBreakdown/Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | The price for each day of the room during the specified period. |
 | **QuoteCriteria/Rooms/RoomPrice**<br />**PriceBreakdown/Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **QuoteCriteria/Rooms/RoomPrice**<br />**PriceBreakdown/Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **QuoteCriteria/Rooms/RoomPrice**<br />**PriceBreakdown/Price/Net** | Double | The net price paid by the buyer to the seller. |
-| **QuoteCriteria/Rooms/RoomPrice**<br />**PriceBreakdown/Price/Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **QuoteCriteria/Rooms/RoomPrice**<br />**PriceBreakdown/Price/Net** | Double | The net price paid by the Buyer to the Seller. |
+| **QuoteCriteria/Rooms/RoomPrice**<br />**PriceBreakdown/Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **QuoteCriteria/Rooms/RoomPrice**<br />**PriceBreakdown/Price**<br />**NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **QuoteCriteria/Rooms/RoomPrice**<br />**PriceBreakdown/Price**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
 | **QuoteCriteria/Rooms/RoomPrice**<br />**PriceBreakdown/Start** | Integer | The starting day of the pricing period (inclusive). |
@@ -66,8 +66,8 @@ Represents a request for a hotel quote.
 | **QuoteCriteria/Rooms/Surcharges**<br />**Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | Represents the price of this surcharge, including the amount and currency. See Price for details about the price structure. |
 | **QuoteCriteria/Rooms/Surcharges**<br />**Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **QuoteCriteria/Rooms/Surcharges**<br />**Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **QuoteCriteria/Rooms/Surcharges**<br />**Price/Net** | Double | The net price paid by the buyer to the seller. |
-| **QuoteCriteria/Rooms/Surcharges**<br />**Price/Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **QuoteCriteria/Rooms/Surcharges**<br />**Price/Net** | Double | The net price paid by the Buyer to the Seller. |
+| **QuoteCriteria/Rooms/Surcharges**<br />**Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **QuoteCriteria/Rooms/Surcharges**<br />**Price/NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **QuoteCriteria/Rooms/Surcharges**<br />**Price/MinimumSellingPrice** | Double | The minimum selling price. |
 | **QuoteCriteria/Rooms/Surcharges**<br />**Code** | String | An optional code that uniquely identifies this surcharge for internal or external reference. This can be useful for tracking specific fees or integrating with supplier systems. |
@@ -93,26 +93,26 @@ Represents a request for a hotel quote.
 | **QuoteCriteria/Rooms**<br />**UnitsSpecified** | Boolean | Indicates whether the number of units has been explicitly specified. |
 | **QuoteCriteria/Rooms/Features** | Array&lt;[Feature](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/feature)&gt; | Features or custom attributes of the room, used for specific integrations. |
 | **QuoteCriteria/Rooms/Features**<br />**Code** | String | The unique code identifying the feature of the room. |
-| **QuoteCriteria/PaymentType** | [PaymentType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/paymenttype) | Payment type selected for the quote request. |
-| **QuoteCriteria/Parameters** | Array&lt;[Parameter](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/parameter)&gt; | Additional parameters required for the quote. |
+| **QuoteCriteria/PaymentType** | [PaymentType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/paymenttype) | Payment type selected for the Quote request. |
+| **QuoteCriteria/Parameters** | Array&lt;[Parameter](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/parameter)&gt; | Additional parameters required for the Quote. |
 | **QuoteCriteria/Parameters/Key** | Integer | Identifies the parameter with a numeric key. |
 | **QuoteCriteria/Parameters/Value** | String | Defines the value associated with the parameter. |
 | **QuoteCriteria/Parameters**<br />**ParameterType** | [ParameterType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/parametertype) | Specifies the type of the parameter (ParameterType), whether it is internal or supplier-related. |
 | **QuoteCriteria/Parameters**<br />**Immutable** | Boolean | Indicates whether the parameter remains constant throughout operations (e.g., from Search to Quote and Book). In second searches or quotes, an immutable parameter is used to identify and match the same option. |
 | **QuoteCriteria/Parameters**<br />**RoomId** | Integer | Associates the parameter with a specific room, identified by its ID. |
-| **QuoteCriteria/FromBookCriteria** | [FromBookCriteria](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/frombookcriteria) | Criteria used for creating a quote from a book request. |
+| **QuoteCriteria/FromBookCriteria** | [FromBookCriteria](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/frombookcriteria) | Criteria used for creating a Quote from a book request. |
 | **QuoteCriteria/FromBookCriteria**<br />**BookPrice** | [BookPrice](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/bookprice) | Contains the price details associated with the booking. |
 | **QuoteCriteria/FromBookCriteria**<br />**BookPrice/Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | The price of the booking. |
 | **QuoteCriteria/FromBookCriteria**<br />**BookPrice/Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **QuoteCriteria/FromBookCriteria**<br />**BookPrice/Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **QuoteCriteria/FromBookCriteria**<br />**BookPrice/Price/Net** | Double | The net price paid by the buyer to the seller. |
-| **QuoteCriteria/FromBookCriteria**<br />**BookPrice/Price/Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **QuoteCriteria/FromBookCriteria**<br />**BookPrice/Price/Net** | Double | The net price paid by the Buyer to the Seller. |
+| **QuoteCriteria/FromBookCriteria**<br />**BookPrice/Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **QuoteCriteria/FromBookCriteria**<br />**BookPrice/Price/NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **QuoteCriteria/FromBookCriteria**<br />**BookPrice/Price**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
 | **QuoteCriteria/FromBookCriteria**<br />**BookPrice/DeltaPrice** | [DeltaPrice](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/deltaprice) | The delta price, representing any allowable price changes or adjustments. |
 | **QuoteCriteria/FromBookCriteria**<br />**BookPrice/DeltaPrice/Amount** | Double | The fixed amount allowed for the delta price. |
 | **QuoteCriteria/FromBookCriteria**<br />**BookPrice/DeltaPrice**<br />**Percentage** | Double | The percentage allowed for the delta price. |
-| **QuoteCriteria/FromBookCriteria**<br />**DateQuote** | String | Represents the date when the quote is generated during the booking process. |
+| **QuoteCriteria/FromBookCriteria**<br />**DateQuote** | String | Represents the date when the Quote is generated during the booking process. |
 | **QuoteCriteria/FromBookCriteria**<br />**CancelPolicy** | [CancelPolicy](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/cancelpolicy) | Specifies the cancellation policy associated with the booking. |
 | **QuoteCriteria/FromBookCriteria**<br />**CancelPolicy/Refundable** | Boolean | Indicates whether the booking is refundable. |
 | **QuoteCriteria/FromBookCriteria**<br />**CancelPolicy/CancelPenalties** | Array&lt;[CancelPenalty](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/cancelpenalty)&gt; | A collection of penalties that apply if the booking is canceled. |
@@ -122,7 +122,7 @@ Represents a request for a hotel quote.
 | **QuoteCriteria/FromBookCriteria**<br />**CancelPolicy/CancelPenalties**<br />**Value** | Double | Indicates the value of the penalty. |
 | **QuoteCriteria/FromBookCriteria**<br />**CancelPolicy/CancelPenalties**<br />**Deadline** | String | Specifies the absolute deadline for the penalty in UTC format. |
 | **QuoteCriteria/FromBookCriteria**<br />**CancelPolicy**<br />**CancelPolicyDescription** | String | Provides additional details or a textual summary of the cancellation policy. |
-| **Settings** | [Settings](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/settings) | Access settings for connecting with the provider during the quote request. |
+| **Settings** | [Settings](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/settings) | Access settings for connecting with the provider during the Quote request. |
 | **Settings/Supplier** | String | Identifies the supplier associated with the hotel operation. This is a unique code generated by Travelgate within its system to represent the supplier. |
 | **Settings/Platform** | String | Represents the platform on which the hotel operation is performed.Platforms are collections of suppliers, and the platform code is generated by Travelgate to define the operational context. |
 | **Settings/Client** | String | Represents the client performing the hotel operation.This is a unique client code assigned by Travelgate to identify the client within its system. |
@@ -133,13 +133,13 @@ Represents a request for a hotel quote.
 | **Settings/Access/ApiKey** | String | The API key used for authentication or authorization. |
 | **Settings/Access/Urls** | [Urls](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/urls) | The URLs associated with the access configuration. |
 | **Settings/Access/Urls/Book** | String | The URL used for booking operations. |
-| **Settings/Access/Urls/Search** | String | The URL used for search operations. |
-| **Settings/Access/Urls/Quote** | String | The URL used for quote operations. |
+| **Settings/Access/Urls/Search** | String | The URL used for Search operations. |
+| **Settings/Access/Urls/Quote** | String | The URL used for Quote operations. |
 | **Settings/Access/Urls/Generic** | String | A generic URL for additional operations. |
 | **Settings/Access/Parameters** | [AccessParameters](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accessparameters) | Additional parameters related to the connection. |
 | **Settings/BusinessRules** | [BusinessRules](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/businessrules) | Specifies the business rules to be applied during the operation. These rules define operational constraints and behavior, such as quota limits or prioritization criteria. |
-| **Settings/BusinessRules**<br />**OptionsQuota** | Integer | The maximum number of options that can be returned for a search operation. |
-| **Settings/BusinessRules**<br />**BusinessRuleType** | [BusinessRulesType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/businessrulestype) | The business rule type that determines how search results are prioritized or filtered. |
+| **Settings/BusinessRules**<br />**OptionsQuota** | Integer | The maximum number of options that can be returned for a Search operation. |
+| **Settings/BusinessRules**<br />**BusinessRuleType** | [BusinessRulesType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/businessrulestype) | The business rule type that determines how Search results are prioritized or filtered. |
 | **Settings/Timeout** | String | Defines the timeout period for the operation as a string value.This indicates the maximum amount of time to wait for a supplier's response before timing out.The value must be provided in timestamp format (e.g., "00:05:00" for 5 minutes). |
 | **Settings/TimeoutAsTimeSpan** | String | Converts the timeout value from the string representation (Timeout) into a TimeSpan for use in time-based operations. |
 | **Settings**<br />**IncludeProviderTransactions** | Boolean | Indicates whether detailed traces of provider transactions should be included in the operation's response.If enabled, the ProviderAudit field in responses will contain the transaction logs (e.g., requests and responses exchanged with the supplier). |

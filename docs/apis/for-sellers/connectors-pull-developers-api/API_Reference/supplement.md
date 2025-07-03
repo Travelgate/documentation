@@ -1,6 +1,6 @@
 # Supplement
 
-Represents a supplementary service or feature in a hotel search response event access.
+Represents a supplementary service or feature in a hotel Search response event access.
 
 ## Properties
 
@@ -13,8 +13,8 @@ Represents a supplementary service or feature in a hotel search response event a
 | **Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | The Price associated with the supplement, including details such as currency and net price. |
 | **Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **Price/Net** | Double | The net price paid by the buyer to the seller. |
-| **Price/Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **Price/Net** | Double | The net price paid by the Buyer to the Seller. |
+| **Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **Price/NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **Price/MinimumSellingPrice** | Double | The minimum selling price. |
 | **SupplementType** | [SupplementType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/supplementtype) | The specific SupplementType of the supplement (e.g., meal plan, additional service). |

@@ -1,6 +1,6 @@
 # Board
 
-Represents a meal plan (board) option for accommodations in search responses.
+Represents a meal plan (board) option for accommodations in Search responses.
 
 ## Properties
 
@@ -14,8 +14,8 @@ Represents a meal plan (board) option for accommodations in search responses.
 | **Options/Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | The price details associated with the option, including net, gross and minimum selling price. |
 | **Options/Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **Options/Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **Options/Price/Net** | Double | The net price paid by the buyer to the seller. |
-| **Options/Price/Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **Options/Price/Net** | Double | The net price paid by the Buyer to the Seller. |
+| **Options/Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **Options/Price/NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **Options/Price**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
 | **Options/PaymentTypes** | Array&lt;[PaymentType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/paymenttype)&gt; | Specifies the accepted payment types for the option. |
@@ -27,16 +27,16 @@ Represents a meal plan (board) option for accommodations in search responses.
 | **Options/Rooms/RoomPrice/Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | The total price of the room. |
 | **Options/Rooms/RoomPrice/Price**<br />**Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **Options/Rooms/RoomPrice/Price**<br />**Binding** | Boolean | Indicates whether the price is binding. |
-| **Options/Rooms/RoomPrice/Price**<br />**Net** | Double | The net price paid by the buyer to the seller. |
-| **Options/Rooms/RoomPrice/Price**<br />**Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **Options/Rooms/RoomPrice/Price**<br />**Net** | Double | The net price paid by the Buyer to the Seller. |
+| **Options/Rooms/RoomPrice/Price**<br />**Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **Options/Rooms/RoomPrice/Price**<br />**NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **Options/Rooms/RoomPrice/Price**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
 | **Options/Rooms/RoomPrice**<br />**PriceBreakdown** | Array&lt;[PriceBreakdown](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/pricebreakdown)&gt; | Breakdown of the room price over specific periods, such as daily rates. |
 | **Options/Rooms/RoomPrice**<br />**PriceBreakdown/Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | The price for each day of the room during the specified period. |
 | **Options/Rooms/RoomPrice**<br />**PriceBreakdown/Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **Options/Rooms/RoomPrice**<br />**PriceBreakdown/Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **Options/Rooms/RoomPrice**<br />**PriceBreakdown/Price/Net** | Double | The net price paid by the buyer to the seller. |
-| **Options/Rooms/RoomPrice**<br />**PriceBreakdown/Price/Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **Options/Rooms/RoomPrice**<br />**PriceBreakdown/Price/Net** | Double | The net price paid by the Buyer to the Seller. |
+| **Options/Rooms/RoomPrice**<br />**PriceBreakdown/Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **Options/Rooms/RoomPrice**<br />**PriceBreakdown/Price**<br />**NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **Options/Rooms/RoomPrice**<br />**PriceBreakdown/Price**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
 | **Options/Rooms/RoomPrice**<br />**PriceBreakdown/Start** | Integer | The starting day of the pricing period (inclusive). |
@@ -61,8 +61,8 @@ Represents a meal plan (board) option for accommodations in search responses.
 | **Options/Rooms/Surcharges/Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | Represents the price of this surcharge, including the amount and currency. See Price for details about the price structure. |
 | **Options/Rooms/Surcharges/Price**<br />**Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **Options/Rooms/Surcharges/Price**<br />**Binding** | Boolean | Indicates whether the price is binding. |
-| **Options/Rooms/Surcharges/Price**<br />**Net** | Double | The net price paid by the buyer to the seller. |
-| **Options/Rooms/Surcharges/Price**<br />**Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **Options/Rooms/Surcharges/Price**<br />**Net** | Double | The net price paid by the Buyer to the Seller. |
+| **Options/Rooms/Surcharges/Price**<br />**Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **Options/Rooms/Surcharges/Price**<br />**NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **Options/Rooms/Surcharges/Price**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
 | **Options/Rooms/Surcharges/Code** | String | An optional code that uniquely identifies this surcharge for internal or external reference. This can be useful for tracking specific fees or integrating with supplier systems. |
@@ -127,8 +127,8 @@ Represents a meal plan (board) option for accommodations in search responses.
 | **Options/Surcharges/Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | Represents the price of this surcharge, including the amount and currency. See Price for details about the price structure. |
 | **Options/Surcharges/Price**<br />**Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **Options/Surcharges/Price**<br />**Binding** | Boolean | Indicates whether the price is binding. |
-| **Options/Surcharges/Price/Net** | Double | The net price paid by the buyer to the seller. |
-| **Options/Surcharges/Price/Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **Options/Surcharges/Price/Net** | Double | The net price paid by the Buyer to the Seller. |
+| **Options/Surcharges/Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **Options/Surcharges/Price**<br />**NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **Options/Surcharges/Price**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
 | **Options/Surcharges/Code** | String | An optional code that uniquely identifies this surcharge for internal or external reference. This can be useful for tracking specific fees or integrating with supplier systems. |
@@ -145,8 +145,8 @@ Represents a meal plan (board) option for accommodations in search responses.
 | **Options/Supplements/Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | The Price associated with the supplement, including details such as currency and net price. |
 | **Options/Supplements/Price**<br />**Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **Options/Supplements/Price**<br />**Binding** | Boolean | Indicates whether the price is binding. |
-| **Options/Supplements/Price/Net** | Double | The net price paid by the buyer to the seller. |
-| **Options/Supplements/Price**<br />**Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **Options/Supplements/Price/Net** | Double | The net price paid by the Buyer to the Seller. |
+| **Options/Supplements/Price**<br />**Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **Options/Supplements/Price**<br />**NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **Options/Supplements/Price**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
 | **Options/Supplements**<br />**SupplementType** | [SupplementType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/supplementtype) | The specific SupplementType of the supplement (e.g., meal plan, additional service). |

@@ -65,16 +65,16 @@ Represents the response for a hotel booking operation.
 | **BookDetails/Hotel/Rooms**<br />**RoomPrice/Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | The total price of the room. |
 | **BookDetails/Hotel/Rooms**<br />**RoomPrice/Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **BookDetails/Hotel/Rooms**<br />**RoomPrice/Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **BookDetails/Hotel/Rooms**<br />**RoomPrice/Price/Net** | Double | The net price paid by the buyer to the seller. |
-| **BookDetails/Hotel/Rooms**<br />**RoomPrice/Price/Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **BookDetails/Hotel/Rooms**<br />**RoomPrice/Price/Net** | Double | The net price paid by the Buyer to the Seller. |
+| **BookDetails/Hotel/Rooms**<br />**RoomPrice/Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **BookDetails/Hotel/Rooms**<br />**RoomPrice/Price/NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **BookDetails/Hotel/Rooms**<br />**RoomPrice/Price**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
 | **BookDetails/Hotel/Rooms**<br />**RoomPrice/PriceBreakdown** | Array&lt;[PriceBreakdown](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/pricebreakdown)&gt; | Breakdown of the room price over specific periods, such as daily rates. |
 | **BookDetails/Hotel/Rooms**<br />**RoomPrice/PriceBreakdown/Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | The price for each day of the room during the specified period. |
 | **BookDetails/Hotel/Rooms**<br />**RoomPrice/PriceBreakdown/Price**<br />**Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **BookDetails/Hotel/Rooms**<br />**RoomPrice/PriceBreakdown/Price**<br />**Binding** | Boolean | Indicates whether the price is binding. |
-| **BookDetails/Hotel/Rooms**<br />**RoomPrice/PriceBreakdown/Price**<br />**Net** | Double | The net price paid by the buyer to the seller. |
-| **BookDetails/Hotel/Rooms**<br />**RoomPrice/PriceBreakdown/Price**<br />**Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **BookDetails/Hotel/Rooms**<br />**RoomPrice/PriceBreakdown/Price**<br />**Net** | Double | The net price paid by the Buyer to the Seller. |
+| **BookDetails/Hotel/Rooms**<br />**RoomPrice/PriceBreakdown/Price**<br />**Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **BookDetails/Hotel/Rooms**<br />**RoomPrice/PriceBreakdown/Price**<br />**NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **BookDetails/Hotel/Rooms**<br />**RoomPrice/PriceBreakdown/Price**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
 | **BookDetails/Hotel/Rooms**<br />**RoomPrice/PriceBreakdown/Start** | Integer | The starting day of the pricing period (inclusive). |
@@ -99,8 +99,8 @@ Represents the response for a hotel booking operation.
 | **BookDetails/Hotel/Rooms**<br />**Surcharges/Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | Represents the price of this surcharge, including the amount and currency. See Price for details about the price structure. |
 | **BookDetails/Hotel/Rooms**<br />**Surcharges/Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **BookDetails/Hotel/Rooms**<br />**Surcharges/Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **BookDetails/Hotel/Rooms**<br />**Surcharges/Price/Net** | Double | The net price paid by the buyer to the seller. |
-| **BookDetails/Hotel/Rooms**<br />**Surcharges/Price/Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **BookDetails/Hotel/Rooms**<br />**Surcharges/Price/Net** | Double | The net price paid by the Buyer to the Seller. |
+| **BookDetails/Hotel/Rooms**<br />**Surcharges/Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **BookDetails/Hotel/Rooms**<br />**Surcharges/Price/NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **BookDetails/Hotel/Rooms**<br />**Surcharges/Price**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
 | **BookDetails/Hotel/Rooms**<br />**Surcharges/Code** | String | An optional code that uniquely identifies this surcharge for internal or external reference. This can be useful for tracking specific fees or integrating with supplier systems. |
@@ -129,8 +129,8 @@ Represents the response for a hotel booking operation.
 | **BookDetails/Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | The total price of the booking. |
 | **BookDetails/Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **BookDetails/Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **BookDetails/Price/Net** | Double | The net price paid by the buyer to the seller. |
-| **BookDetails/Price/Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **BookDetails/Price/Net** | Double | The net price paid by the Buyer to the Seller. |
+| **BookDetails/Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **BookDetails/Price/NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **BookDetails/Price**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
 | **BookDetails/CancelPolicy** | [CancelPolicy](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/cancelpolicy) | The cancellation policy associated with the booking. |

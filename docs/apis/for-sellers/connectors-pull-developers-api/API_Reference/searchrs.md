@@ -1,7 +1,7 @@
 # SearchRs
 
-Represents the response for a hotel search operation. 
-Contains the list of available options that match the client's search criteria.
+Represents the response for a hotel Search operation. 
+Contains the list of available options that match the client's Search criteria.
 Additionally, it includes error or warning messages (AdviseMessages) and trace data (AuditData),
 which logs the transactions sent to and received from the supplier.
 
@@ -22,7 +22,7 @@ which logs the transactions sent to and received from the supplier.
 | **AuditData/Response/Data** | String | The payload data contained in the provider's response. |
 | **AuditData/Response/Headers** | Object | A collection of headers included in the provider's response. |
 | **AuditData/Response/StatusCode** | Integer | The HTTP status code returned by the provider. |
-| **AdviseMessages** | Array&lt;[AdviseMessage](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/advisemessage)&gt; | Collection of advice messages, which may include errors or warnings generated during the search process. |
+| **AdviseMessages** | Array&lt;[AdviseMessage](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/advisemessage)&gt; | Collection of advice messages, which may include errors or warnings generated during the Search process. |
 | **AdviseMessages/Code** | [AdviseMessageCode](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/advisemessagecode) | Gets the code that represents the message type. |
 | **AdviseMessages/Level** | [AdviseMessageLevel](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/advisemessagelevel) | Gets the severity level of the message (e.g., Error, Warning, or Info). |
 | **AdviseMessages/Description** | String | Gets the message description providing additional context. |
@@ -31,7 +31,7 @@ which logs the transactions sent to and received from the supplier.
 | **AdviseMessages/External/Code** | String | The supplier's internal code for identifying the nature of the response or error. |
 | **AdviseMessages/External**<br />**Message** | String | A descriptive message returned by the supplier. |
 | **AdviseMessages/External**<br />**HttpStatusCode** | Integer | The HTTP status code of the supplier's response. |
-| **Accommodations** | Array | List of accommodations, meal plans, and options returned by the search.These represent the available (hotel-mealPlans-options) that meet the client's criteria. |
+| **Accommodations** | Array | List of accommodations, meal plans, and options returned by the Search.These represent the available (hotel-mealPlans-options) that meet the client's criteria. |
 | **Accommodations**<br />**AccommodationType** | [AccommodationType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accommodationtype) | Gets or initializes the type of accommodation. |
 | **Accommodations**<br />**AccommodationCode** | String | Gets the unique code identifying the accommodation. |
 | **Accommodations**<br />**AccommodationName** | String | Gets or initializes the name of the accommodation. |
@@ -44,8 +44,8 @@ which logs the transactions sent to and received from the supplier.
 | **Accommodations/Boards/Options**<br />**Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | The price details associated with the option, including net, gross and minimum selling price. |
 | **Accommodations/Boards/Options**<br />**Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **Accommodations/Boards/Options**<br />**Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **Accommodations/Boards/Options**<br />**Price/Net** | Double | The net price paid by the buyer to the seller. |
-| **Accommodations/Boards/Options**<br />**Price/Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **Accommodations/Boards/Options**<br />**Price/Net** | Double | The net price paid by the Buyer to the Seller. |
+| **Accommodations/Boards/Options**<br />**Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **Accommodations/Boards/Options**<br />**Price/NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **Accommodations/Boards/Options**<br />**Price/MinimumSellingPrice** | Double | The minimum selling price. |
 | **Accommodations/Boards/Options**<br />**PaymentTypes** | Array&lt;[PaymentType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/paymenttype)&gt; | Specifies the accepted payment types for the option. |
@@ -57,16 +57,16 @@ which logs the transactions sent to and received from the supplier.
 | **Accommodations/Boards/Options**<br />**Rooms/RoomPrice/Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | The total price of the room. |
 | **Accommodations/Boards/Options**<br />**Rooms/RoomPrice/Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **Accommodations/Boards/Options**<br />**Rooms/RoomPrice/Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **Accommodations/Boards/Options**<br />**Rooms/RoomPrice/Price/Net** | Double | The net price paid by the buyer to the seller. |
-| **Accommodations/Boards/Options**<br />**Rooms/RoomPrice/Price/Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **Accommodations/Boards/Options**<br />**Rooms/RoomPrice/Price/Net** | Double | The net price paid by the Buyer to the Seller. |
+| **Accommodations/Boards/Options**<br />**Rooms/RoomPrice/Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **Accommodations/Boards/Options**<br />**Rooms/RoomPrice/Price**<br />**NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **Accommodations/Boards/Options**<br />**Rooms/RoomPrice/Price**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
 | **Accommodations/Boards/Options**<br />**Rooms/RoomPrice/PriceBreakdown** | Array&lt;[PriceBreakdown](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/pricebreakdown)&gt; | Breakdown of the room price over specific periods, such as daily rates. |
 | **Accommodations/Boards/Options**<br />**Rooms/RoomPrice/PriceBreakdown**<br />**Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | The price for each day of the room during the specified period. |
 | **Accommodations/Boards/Options**<br />**Rooms/RoomPrice/PriceBreakdown**<br />**Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **Accommodations/Boards/Options**<br />**Rooms/RoomPrice/PriceBreakdown**<br />**Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **Accommodations/Boards/Options**<br />**Rooms/RoomPrice/PriceBreakdown**<br />**Price/Net** | Double | The net price paid by the buyer to the seller. |
-| **Accommodations/Boards/Options**<br />**Rooms/RoomPrice/PriceBreakdown**<br />**Price/Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **Accommodations/Boards/Options**<br />**Rooms/RoomPrice/PriceBreakdown**<br />**Price/Net** | Double | The net price paid by the Buyer to the Seller. |
+| **Accommodations/Boards/Options**<br />**Rooms/RoomPrice/PriceBreakdown**<br />**Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **Accommodations/Boards/Options**<br />**Rooms/RoomPrice/PriceBreakdown**<br />**Price/NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **Accommodations/Boards/Options**<br />**Rooms/RoomPrice/PriceBreakdown**<br />**Price/MinimumSellingPrice** | Double | The minimum selling price. |
 | **Accommodations/Boards/Options**<br />**Rooms/RoomPrice/PriceBreakdown**<br />**Start** | Integer | The starting day of the pricing period (inclusive). |
@@ -91,8 +91,8 @@ which logs the transactions sent to and received from the supplier.
 | **Accommodations/Boards/Options**<br />**Rooms/Surcharges/Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | Represents the price of this surcharge, including the amount and currency. See Price for details about the price structure. |
 | **Accommodations/Boards/Options**<br />**Rooms/Surcharges/Price**<br />**Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **Accommodations/Boards/Options**<br />**Rooms/Surcharges/Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **Accommodations/Boards/Options**<br />**Rooms/Surcharges/Price/Net** | Double | The net price paid by the buyer to the seller. |
-| **Accommodations/Boards/Options**<br />**Rooms/Surcharges/Price/Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **Accommodations/Boards/Options**<br />**Rooms/Surcharges/Price/Net** | Double | The net price paid by the Buyer to the Seller. |
+| **Accommodations/Boards/Options**<br />**Rooms/Surcharges/Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **Accommodations/Boards/Options**<br />**Rooms/Surcharges/Price**<br />**NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **Accommodations/Boards/Options**<br />**Rooms/Surcharges/Price**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
 | **Accommodations/Boards/Options**<br />**Rooms/Surcharges/Code** | String | An optional code that uniquely identifies this surcharge for internal or external reference. This can be useful for tracking specific fees or integrating with supplier systems. |
@@ -157,8 +157,8 @@ which logs the transactions sent to and received from the supplier.
 | **Accommodations/Boards/Options**<br />**Surcharges/Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | Represents the price of this surcharge, including the amount and currency. See Price for details about the price structure. |
 | **Accommodations/Boards/Options**<br />**Surcharges/Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **Accommodations/Boards/Options**<br />**Surcharges/Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **Accommodations/Boards/Options**<br />**Surcharges/Price/Net** | Double | The net price paid by the buyer to the seller. |
-| **Accommodations/Boards/Options**<br />**Surcharges/Price/Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **Accommodations/Boards/Options**<br />**Surcharges/Price/Net** | Double | The net price paid by the Buyer to the Seller. |
+| **Accommodations/Boards/Options**<br />**Surcharges/Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **Accommodations/Boards/Options**<br />**Surcharges/Price/NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **Accommodations/Boards/Options**<br />**Surcharges/Price**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
 | **Accommodations/Boards/Options**<br />**Surcharges/Code** | String | An optional code that uniquely identifies this surcharge for internal or external reference. This can be useful for tracking specific fees or integrating with supplier systems. |
@@ -175,8 +175,8 @@ which logs the transactions sent to and received from the supplier.
 | **Accommodations/Boards/Options**<br />**Supplements/Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | The Price associated with the supplement, including details such as currency and net price. |
 | **Accommodations/Boards/Options**<br />**Supplements/Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **Accommodations/Boards/Options**<br />**Supplements/Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **Accommodations/Boards/Options**<br />**Supplements/Price/Net** | Double | The net price paid by the buyer to the seller. |
-| **Accommodations/Boards/Options**<br />**Supplements/Price/Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **Accommodations/Boards/Options**<br />**Supplements/Price/Net** | Double | The net price paid by the Buyer to the Seller. |
+| **Accommodations/Boards/Options**<br />**Supplements/Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **Accommodations/Boards/Options**<br />**Supplements/Price/NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **Accommodations/Boards/Options**<br />**Supplements/Price**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
 | **Accommodations/Boards/Options**<br />**Supplements/SupplementType** | [SupplementType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/supplementtype) | The specific SupplementType of the supplement (e.g., meal plan, additional service). |
@@ -198,10 +198,10 @@ which logs the transactions sent to and received from the supplier.
 | **Accommodations/Location**<br />**Country** | String | The ISO 3166-1 alpha-2 country code where the location is situated. |
 | **Accommodations/Location**<br />**Longitude** | Double | The longitude coordinate of the location, expressed in decimal degrees. |
 | **Accommodations/Location**<br />**Latitude** | Double | The latitude coordinate of the location, expressed in decimal degrees. |
-| **GlobalOptionParameters** | Array&lt;[Parameter](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/parameter)&gt; | Global parameters that the client must send in subsequent operations (e.g., in a quote request). These parameters apply to all options returned in the response. |
+| **GlobalOptionParameters** | Array&lt;[Parameter](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/parameter)&gt; | Global parameters that the client must send in subsequent operations (e.g., in a Quote request). These parameters apply to all options returned in the response. |
 | **GlobalOptionParameters/Key** | Integer | Identifies the parameter with a numeric key. |
 | **GlobalOptionParameters/Value** | String | Defines the value associated with the parameter. |
 | **GlobalOptionParameters**<br />**ParameterType** | [ParameterType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/parametertype) | Specifies the type of the parameter (ParameterType), whether it is internal or supplier-related. |
 | **GlobalOptionParameters**<br />**Immutable** | Boolean | Indicates whether the parameter remains constant throughout operations (e.g., from Search to Quote and Book). In second searches or quotes, an immutable parameter is used to identify and match the same option. |
 | **GlobalOptionParameters/RoomId** | Integer | Associates the parameter with a specific room, identified by its ID. |
-| **DiscardedItems** | Integer | Discarded items in the search response, can be rooms or options depending on the connector. |
+| **DiscardedItems** | Integer | Discarded items in the Search response, can be rooms or options depending on the connector. |

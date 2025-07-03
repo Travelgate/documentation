@@ -1,6 +1,6 @@
 # Room
 
-Represents a room in a hotel search response.
+Represents a room in a hotel Search response.
 
 ## Properties
 
@@ -13,16 +13,16 @@ Represents a room in a hotel search response.
 | **RoomPrice/Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | The total price of the room. |
 | **RoomPrice/Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **RoomPrice/Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **RoomPrice/Price/Net** | Double | The net price paid by the buyer to the seller. |
-| **RoomPrice/Price/Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **RoomPrice/Price/Net** | Double | The net price paid by the Buyer to the Seller. |
+| **RoomPrice/Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **RoomPrice/Price/NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **RoomPrice/Price**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
 | **RoomPrice/PriceBreakdown** | Array&lt;[PriceBreakdown](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/pricebreakdown)&gt; | Breakdown of the room price over specific periods, such as daily rates. |
 | **RoomPrice/PriceBreakdown/Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | The price for each day of the room during the specified period. |
 | **RoomPrice/PriceBreakdown/Price**<br />**Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **RoomPrice/PriceBreakdown/Price**<br />**Binding** | Boolean | Indicates whether the price is binding. |
-| **RoomPrice/PriceBreakdown/Price**<br />**Net** | Double | The net price paid by the buyer to the seller. |
-| **RoomPrice/PriceBreakdown/Price**<br />**Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **RoomPrice/PriceBreakdown/Price**<br />**Net** | Double | The net price paid by the Buyer to the Seller. |
+| **RoomPrice/PriceBreakdown/Price**<br />**Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **RoomPrice/PriceBreakdown/Price**<br />**NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **RoomPrice/PriceBreakdown/Price**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
 | **RoomPrice/PriceBreakdown/Start** | Integer | The starting day of the pricing period (inclusive). |
@@ -47,8 +47,8 @@ Represents a room in a hotel search response.
 | **Surcharges/Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | Represents the price of this surcharge, including the amount and currency. See Price for details about the price structure. |
 | **Surcharges/Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **Surcharges/Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **Surcharges/Price/Net** | Double | The net price paid by the buyer to the seller. |
-| **Surcharges/Price/Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **Surcharges/Price/Net** | Double | The net price paid by the Buyer to the Seller. |
+| **Surcharges/Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **Surcharges/Price/NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **Surcharges/Price**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
 | **Surcharges/Code** | String | An optional code that uniquely identifies this surcharge for internal or external reference. This can be useful for tracking specific fees or integrating with supplier systems. |

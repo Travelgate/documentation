@@ -86,11 +86,11 @@ File location: "**ConnectorsIntegration\CheckBookingsByDate\Models\Response\Chec
 ## **Develop**
 
 ### **Step 1: Register the serializers and operations**
-To specify which serializer and operations the developer will be using (based on the seller's API) we can specify it in our "**Extensions**":
+To specify which serializer and operations the developer will be using (based on the Seller's API) we can specify it in our "**Extensions**":
 
 File location: "**ConnectorsIntegration\CheckBookingsByDate\CheckBookingsByDateExtensions.cs**".
 
-If the seller works with **JSON** format, we can specify the integration to work with **JSON** with the following:
+If the Seller works with **JSON** format, we can specify the integration to work with **JSON** with the following:
 
 ```csharp
 internal static class CheckBookingsByDateExtensions
@@ -180,7 +180,7 @@ public bool TryValidateSupplierResponses(
 This class will contain a "BuildRequests" method that will have the following args: 
 
 - Object of the requests from the models previously created (CheckBookingsByDateRequest).
-- The request that the buyer sends (connectorsRequest).
+- The request that the Buyer sends (connectorsRequest).
 - Parameters (connectorParameters) which will have some helpers:
 
 File location: "**ConnectorsIntegration\CheckBookingsByDate\Operations\CheckBookingsByDateOperation.BuildRequest.cs**"
@@ -209,7 +209,7 @@ internal partial class CheckBookingsByDateOperation
             checkIn,
             checkOut);
 
-        //Generic URL we prepared back in the AccessModel, which will be passed by the buyer
+        //Generic URL we prepared back in the AccessModel, which will be passed by the Buyer
         string genericUrl = connectorParameters.ParametersModel.UrlGeneric;
 
         SupplierRequestWrapper<CheckBookingsByDateRequest> supplierRequest = new(
@@ -227,7 +227,7 @@ internal partial class CheckBookingsByDateOperation
         string checkIn,
         string checkOut) 
     {
-        //The request towards the seller system
+        //The request towards the Seller system
       
         return new CheckBookingsByDateRequest()
         {
@@ -240,7 +240,7 @@ internal partial class CheckBookingsByDateOperation
 
 ### **Step 4: Parse the Seller's response**
 
-Once the request has been sent, we will have to control and parse the response returned by the seller.
+Once the request has been sent, we will have to control and parse the response returned by the Seller.
 
 We will be implementing the "ParseResponse" step inside CheckBookingsByDateOperation:
 
@@ -304,7 +304,7 @@ internal partial class CheckBookingsByDateOperation
             //Helper to map a string currency
             Currency supplierCurrency = CurrencyIso4217Mapper.Map(supplierCancelPolicy.PenaltyCurrency);
             PenaltyType penaltyType = MapSellerToTgxPenaltyType(supplierCancelPolicy.PenaltyType);
-            //Helper to create a policy based in a seller cancel penalty with deadline that has timezone
+            //Helper to create a policy based in a Seller cancel penalty with deadline that has timezone
             var penalty = _connectorsUtilities.CancelPenaltyManager.CancelPenaltyFromDateWithTimeZone(
                 checkIn,
                 penaltyType,

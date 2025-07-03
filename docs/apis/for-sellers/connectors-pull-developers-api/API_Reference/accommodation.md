@@ -1,6 +1,6 @@
 # Accommodation
 
-Represents an abstract base class for accommodation types in search responses.
+Represents an abstract base class for accommodation types in Search responses.
 This class is extended by specific types of accommodations such as Hotel and Rental.
 
 ## Properties

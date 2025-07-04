@@ -23,5 +23,5 @@ While you can run a Booking Query to check the status of a reservation, you shou
 
 ### What Should I Do if I Receive an OK Status and an Error in the Same Book Response?
 
-If the Book response returns both an OK status and an error message, **the reservation status takes precedence** over the error.
+If the Book response returns both an OK status and an error message, **the error takes precedence** over the reservation status. You should always check with the Booking Query and contact the Seller in order to check the actual status of the booking in those cases.
 

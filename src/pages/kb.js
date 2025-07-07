@@ -1,4 +1,5 @@
 import React from 'react';
+window.React = React
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -37,7 +38,7 @@ function KbHeader() {
         </div>
 
       </header>
-      
+
     );
 }
 

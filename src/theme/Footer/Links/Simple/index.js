@@ -1,4 +1,5 @@
 import React from 'react';
+window.React = React
 import LinkItem from '@theme/Footer/LinkItem';
 function Separator() {
   return <span className="footer__link-separator">·</span>;

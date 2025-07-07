@@ -1,4 +1,5 @@
 import React from 'react';
+window.React = React
 // Import the original mapper
 import MDXComponents from '@theme-original/MDXComponents';
 

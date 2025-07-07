@@ -1,5 +1,5 @@
 import React from 'react';
-
+window.React = React
 const typeColors = {
   Added: '#4CAF50',    // Green
   Changed: '#007bff',  // Blue

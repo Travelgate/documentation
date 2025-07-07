@@ -1,4 +1,5 @@
 import React from 'react';
+window.React = React
 import clsx from 'clsx';
 export default function FooterLayout({style, links, logo, copyright}) {
   return (

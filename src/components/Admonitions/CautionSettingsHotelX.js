@@ -1,4 +1,5 @@
 import React from 'react';
+window.React = React
 import Admonition from '@theme/Admonition';
 
 const CautionSettingsHotelX = () => {

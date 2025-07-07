@@ -1,4 +1,5 @@
 import React from 'react';
+window.React = React
 import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import isInternalUrl from '@docusaurus/isInternalUrl';

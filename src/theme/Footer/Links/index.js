@@ -1,4 +1,5 @@
 import React from 'react';
+window.React = React
 import {isMultiColumnFooterLinks} from '@docusaurus/theme-common';
 import FooterLinksMultiColumn from '@theme/Footer/Links/MultiColumn';
 import FooterLinksSimple from '@theme/Footer/Links/Simple';

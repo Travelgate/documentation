@@ -1,4 +1,5 @@
 import React from 'react';
+window.React = React
 import {useThemeConfig} from '@docusaurus/theme-common';
 import FooterLinks from '@theme/Footer/Links';
 import FooterLogo from '@theme/Footer/Logo';

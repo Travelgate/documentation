@@ -99,11 +99,11 @@ File location: "**ConnectorsIntegration\Quote\Models\Response\QuoteResponse.cs**
 ## **Develop**
 
 ### **Step 1: Register the serializers and operations**
-To specify which serializer and operations the developer will be using (based on the seller's API) we can specify it in our "**Extensions**":
+To specify which serializer and operations the developer will be using (based on the Seller's API) we can specify it in our "**Extensions**":
 
 File location: "**ConnectorsIntegration\Quote\QuoteExtensions.cs**"
 
-If the seller works with **JSON** format, we can specify the integration to work with **JSON** with the following:
+If the Seller works with **JSON** format, we can specify the integration to work with **JSON** with the following:
 
 ```csharp
 internal static class QuoteExtensions
@@ -190,10 +190,10 @@ public bool TryValidateSupplierResponses(
 
 ### **Step 3: Build the Seller's request**
 
-This class will contain a "BuildRequests" method that will have the following args: 
+This class will contain a "BuildRequests" method that will have the following arguments: 
 
 - Object of the requests from the models previously created (QuoteRequest)
-- The request that the buyer sends (connectorsRequest)
+- The request that the Buyer sends (connectorsRequest)
 - Parameters (connectorParameters) which will have some helpers:
 
 File location: "**ConnectorsIntegration\Quote\Operations\QuoteOperation.BuildRequest.cs**"
@@ -226,7 +226,7 @@ internal partial class QuoteOperation
         //Refers to the checkOut of the booking
         string checkOut = quoteCriteria.CheckOut;
         string hotelCode = quoteCriteria.Accommodation.Code;
-        //Refers to the occupancy of the booking. If the seller allows requests with multiple occupancies, the Occupancies should be iterated
+        //Refers to the occupancy of the booking. If the Seller allows requests with multiple occupancies, the Occupancies should be iterated
         Occupancy firstOccupancy = quoteCriteria.Occupancies.First();
         OccupancyInfoDetailed occupancyInfoDetailed = _connectorsUtilities.MetadataConnectorsService.GetDetailedOccupancyInfo(firstOccupancy);
 
@@ -238,8 +238,8 @@ internal partial class QuoteOperation
             occupancyInfoDetailed,
             rateIdParameter);
 
-        //Generic URL we prepared back in the AccessModel, which will be passed by the buyer
-        string genericUrl = connectorParameters.ParametersModel.GenericUrl;
+        //Generic URL we prepared back in the AccessModel, which will be passed by the Buyer
+        string genericUrl = connectorParameters.ParametersModel.UrlGeneric;
 
         SupplierRequestWrapper<QuoteRequest> supplierRequest = new(
             quoteRequest,
@@ -254,7 +254,7 @@ internal partial class QuoteOperation
 
     private static QuoteRequest BuildQuoteRequest(string checkIn, string checkOut, string hotelCode, OccupancyInfoDetailed occupancyInfoDetailed, string rateIdParameter)
     {
-        //The request towards the seller system
+        //The request towards the Seller system
       
         return new QuoteRequest()
         {
@@ -277,7 +277,7 @@ internal partial class QuoteOperation
 
 ### **Step 4: Parse the Seller's response**
 
-Once the request has been sent, we will have to control and parse the response returned by the seller.
+Once the request has been sent, we will have to control and parse the response returned by the Seller.
 
 We will be implementing the "ParseResponse" step inside QuoteOperation:
 
@@ -340,7 +340,7 @@ internal partial class QuoteOperation
             //Helper to map a string currency
             Currency supplierCurrency = CurrencyIso4217Mapper.Map(supplierCancelPolicy.PenaltyCurrency);
             PenaltyType penaltyType = MapSellerToTgxPenaltyType(supplierCancelPolicy.PenaltyType);
-            //Helper to create a policy based in a seller cancel penalty with deadline that has timezone
+            //Helper to create a policy based in a Seller cancel penalty with deadline that has timezone
             var penalty = _connectorsUtilities.CancelPenaltyManager.CancelPenaltyFromDateWithTimeZone(
                 checkIn,
                 penaltyType,

@@ -12,7 +12,7 @@ Represents access credentials and related information required for a connection.
 | **ApiKey** | String | The API key used for authentication or authorization. |
 | **Urls** | [Urls](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/urls) | The URLs associated with the access configuration. |
 | **Urls/Book** | String | The URL used for booking operations. |
-| **Urls/Search** | String | The URL used for search operations. |
-| **Urls/Quote** | String | The URL used for quote operations. |
+| **Urls/Search** | String | The URL used for Search operations. |
+| **Urls/Quote** | String | The URL used for Quote operations. |
 | **Urls/Generic** | String | A generic URL for additional operations. |
 | **Parameters** | [AccessParameters](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accessparameters) | Additional parameters related to the connection. |

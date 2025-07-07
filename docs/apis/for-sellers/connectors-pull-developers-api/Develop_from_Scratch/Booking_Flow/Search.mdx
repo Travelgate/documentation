@@ -120,7 +120,7 @@ internal static class SearchExtensions
 }
 ```
 
-For details about others serializers, check [Extensions](../../Advanced_Use/Extensions)
+For details about others serializers, check [Extensions](../../Advanced_Use/Booking_Extensions)
 
 For more details about operations, check [PreOperations](../../Connector_Framework/PreOperation_Overview) and [Operations](../../Connector_Framework/Operation_Overview)
 
@@ -140,9 +140,9 @@ public class AccessModel : IBindAccessModel
     public string User { get; private set; }
     public string Password { get; private set; }
 
-    public string UrlGeneric { get; private set; }
+    public string GenericUrl { get; private set; }
 
-    public string UrlSearch { get; private set; }
+    public string SearchUrl { get; private set; }
 
     public string ApiKey { get; private set; }
 
@@ -150,10 +150,10 @@ public class AccessModel : IBindAccessModel
     {
         User = access.User;
         Password = access.Password;
-        UrlGeneric = access.Urls.Generic;
-        UrlSearch = access.Urls.Search;
+        GenericUrl = access.Urls.Generic;
+        SearchUrl = access.Urls.Search;
         //Parameter that if is not present, will throw and exception
-        ApiKey = access.Parameters.GetOrRquired("ApiKey");
+        ApiKey = access.Parameters.GetOrRequired("ApiKey");
     }
 }
 ```

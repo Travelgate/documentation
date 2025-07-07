@@ -7,8 +7,6 @@ sidebar_position: 3
 
 To facilitate complex points in the Connector, the `IConnectorsUtilities` class provides several helpful utilities. These helpers simplify common tasks and ensure adherence to Travelgate standards.
 
----
-
 ## **Utilities Overview**
 
 ### **IOptionsFromRoomsGenerator**
@@ -31,7 +29,9 @@ public interface IOptionsFromRoomsGenerator
   );
 }
 
-//Real example of how can it be used (injected):
+// Real example of how can it be used (injected):
+
+// Assuming you have an instance of IConnectorsUtilities called '_connectorsUtilities'
 
 var roomCombineExtended = MethodThatReturnsARoomCombineExtended(supplierRoomData);
 var location = MethodThatReturnsALocation(supplierLocationData);
@@ -47,8 +47,6 @@ _optionsFromRoomsGenerator.TryAddHotelRoom(
 
 List<Accommodation> accomodationList = _optionsFromRoomsGenerator.Combine();
 ```
-
----
 
 ### **IOptionsGenerator**
 Similar to `IOptionsFromRoomsGenerator`, this utility accumulates pre-made options provided by the supplier. It applies Travelgate's business rules to ensure compliance with Travelgate standards.
@@ -67,7 +65,9 @@ public interface IOptionsGenerator
   );
 }
 
-//Real example of how can it be used (injected):
+// Real example of how can it be used (injected):
+
+// Assuming you have an instance of IConnectorsUtilities called '_connectorsUtilities'
 
 var option = MethodThatReturnsAnOption(supplierOptionData);
 
@@ -87,7 +87,117 @@ Converts ISO country codes and names, facilitating compatibility between supplie
 
 > **Use Case**: Applicable in `Search` or `Book` operations where supplier-specific country formats need to align with Travelgate standards.
 
-[TODO inject code of `ICountryConverter`]
+```csharp
+public interface ICountryConverter
+{
+    /// <summary>
+    /// Tries to map the ISO-2 country code from the ISO-3 country code.
+    /// </summary>
+    /// <param name="mappedCountry">The ISO-3 country code to map from.</param>
+    /// <param name="country">The mapped ISO-2 country code.</param>
+    /// <returns><c>true</c> if the mapping is successful; otherwise, <c>false</c>.</returns>
+    public bool TryMapIso2FromIso3(string mappedCountry, out string country);
+
+    /// <summary>
+    /// Tries to map the ISO-3 country code from the ISO-2 country code.
+    /// </summary>
+    /// <param name="mappedCountry">The ISO-2 country code to map from.</param>
+    /// <param name="country">The mapped ISO-3 country code.</param>
+    /// <returns><c>true</c> if the mapping is successful; otherwise, <c>false</c>.</returns>
+    public bool TryMapIso3FromIso2(string mappedCountry, out string country);
+
+    /// <summary>
+    /// Tries to get the ISO-2 country code from the country name.
+    /// </summary>
+    /// <param name="mappedCountry">The country name to map from.</param>
+    /// <param name="country">The mapped ISO-2 country code.</param>
+    /// <returns><c>true</c> if the mapping is successful; otherwise, <c>false</c>.</returns>
+    public bool TryCountryIso2FromCountryName(string mappedCountry, out string country);
+
+    /// <summary>
+    /// Tries to get the ISO-3 country code from the country name.
+    /// </summary>
+    /// <param name="mappedCountry">The country name to map from.</param>
+    /// <param name="country">The mapped ISO-3 country code.</param>
+    /// <returns><c>true</c> if the mapping is successful; otherwise, <c>false</c>.</returns>
+    public bool TryCountryIso3FromCountryName(string mappedCountry, out string country);
+
+    /// <summary>
+    /// Tries to get the English country name from the ISO 2-letter country code.
+    /// </summary>
+    /// <param name="mappedCountry">The ISO 2-letter country code.</param>
+    /// <param name="country">The English country name.</param>
+    /// <returns><c>true</c> if the conversion is successful; otherwise, <c>false</c>.</returns>
+    public bool TryMapNameEnFromIso2(string mappedCountry, out string country);
+
+    /// <summary>
+    /// Tries to get the English country name from the ISO 3-letter country code.
+    /// </summary>
+    /// <param name="mappedCountry">The ISO 3-letter country code.</param>
+    /// <param name="country">The English country name.</param>
+    /// <returns><c>true</c> if the conversion is successful; otherwise, <c>false</c>.</returns>
+    public bool TryMapNameEnFromIso3(string mappedCountry, out string country);
+
+    /// <summary>
+    /// Gets the ISO-2 country code from the country name.
+    /// </summary>
+    /// <param name="countryDesc">The country name.</param>
+    /// <returns>The ISO-2 country code.</returns>
+    public string GetCountryIso2FromCountryName(string countryDesc);
+
+    /// <summary>
+    /// Gets the ISO-3 country code from the country name.
+    /// </summary>
+    /// <param name="countryDesc">The country name.</param>
+    /// <returns>The ISO-3 country code.</returns>
+    public string GetCountryIso3FromCountryName(string countryDesc);
+
+    /// <summary>
+    /// Gets the ISO-2 country code from the ISO-3 country code.
+    /// </summary>
+    /// <param name="mappedCountry">The ISO-3 country code.</param>
+    /// <returns>The ISO-2 country code.</returns>
+    public string GetIso2FromIso3(string mappedCountry);
+
+    /// <summary>
+    /// Gets the ISO-3 country code from the ISO-2 country code.
+    /// </summary>
+    /// <param name="mappedCountry">The ISO-2 country code.</param>
+    /// <returns>The ISO-3 country code.</returns>
+    public string GetIso3FromIso2(string mappedCountry);
+
+    /// <summary>
+    /// Gets the English country name from the ISO 2-letter country code.
+    /// </summary>
+    /// <param name="mappedCountry">The ISO 2-letter country code.</param>
+    /// <returns>The English country name.</returns>
+    public string GetCountryNameEnFromIso2(string mappedCountry);
+
+    /// <summary>
+    /// Gets the English country name from the ISO 3-letter country code.
+    /// </summary>
+    /// <param name="mappedCountry">The ISO 3-letter country code.</param>
+    /// <returns>The English country name.</returns>
+    public string GetCountryNameEnFromIso3(string mappedCountry);
+}
+
+// Real example of how can it be used (injected):
+
+// Assuming you have an instance of IConnectorsUtilities called '_connectorsUtilities':
+_ = _connectorsUtilities.CountryConverter.TryMapIso2FromIso3("ESP", out string country);
+_ = _connectorsUtilities.CountryConverter.TryMapIso3FromIso2("ES", out string country);
+_ = _connectorsUtilities.CountryConverter.TryCountryIso2FromCountryName("Spain", out string country);
+_ = _connectorsUtilities.CountryConverter.TryCountryIso3FromCountryName("Spain", out string country);
+_ = _connectorsUtilities.CountryConverter.TryMapNameEnFromIso2("ES", out string country);
+_ = _connectorsUtilities.CountryConverter.TryMapNameEnFromIso3("ESP", out string country);
+
+string iso2CodeFromName = _connectorsUtilities.CountryConverter.GetCountryIso2FromCountryName("Spain");
+string iso3CodeFromName = _connectorsUtilities.CountryConverter.GetCountryIso3FromCountryName("Spain");
+string iso2CodeFromIso3 = _connectorsUtilities.CountryConverter.GetIso2FromIso3("ESP");
+string iso3CodeFromIso2 = _connectorsUtilities.CountryConverter.GetIso3FromIso2("ES");
+string countryNameFromIso2Code = _connectorsUtilities.CountryConverter.GetCountryNameEnFromIso2("ES");
+string countryNameFromIso3Code = _connectorsUtilities.CountryConverter.GetCountryNameEnFromIso3("ESP");
+```
 
 ---
 
@@ -96,7 +206,79 @@ Provides access to metadata utilities, allowing retrieval of supplier metadata, 
 
 > **Use Case**: Ideal for dynamic retrieval and use of metadata, enabling adaptable and consistent Connector operations.
 
-[TODO inject code of `IMetadataConnectorsService`]
+```csharp
+public interface IMetadataConnectorsService
+{
+    /// <summary>
+    /// Classifies an occupancy into adults, children, and infants based on the metadata, 
+    /// also providing detailed information about their ages.
+    /// This is particularly useful when the supplier requires this classification to process the request.
+    /// </summary>
+    /// <param name="occupancy">The <see cref="Occupancy"/> object to classify and extract information from.</param>
+    /// <returns>
+    /// An <see cref="OccupancyInfoDetailed"/> object containing detailed information about the occupancy, 
+    /// including the classification of adults, children, and infants, along with their respective ages.
+    /// </returns>
+    public OccupancyInfoDetailed GetDetailedOccupancyInfo(Occupancy occupancy);
+
+    /// <summary>
+    /// Classifies an occupancy from a booking request into adults, children, and infants based on the metadata, 
+    /// also providing detailed information about their ages.
+    /// This is particularly useful when the supplier requires this classification to process a booking request.
+    /// </summary>
+    /// <param name="occupancy">The <see cref="BookOccupancy"/> object to classify and extract information from.</param>
+    /// <returns>
+    /// An <see cref="OccupancyInfoDetailed"/> object containing detailed information about the booking occupancy, 
+    /// including the classification of adults, children, and infants, along with their respective ages.
+    /// </returns>
+    public OccupancyInfoDetailed GetDetailedOccupancyInfo(BookOccupancy occupancy);
+
+    /// <summary>
+    /// Classifies an occupancy from a booking request into adults, children, and infants based on metadata,
+    /// providing detailed information about their ages.
+    /// This classification is particularly useful when required by the supplier to process a booking request.
+    /// </summary>
+    /// <param name="occupancy">The <see cref="BookOccupancy"/> object to classify and extract information from.</param>
+    /// <returns>
+    /// A <see cref="BookOccupancyInfoDetailed"/> object containing detailed information about the booking occupancy,
+    /// including the classification of adults, children, and infants, along with their respective ages.
+    /// </returns>
+    public BookOccupancyInfoDetailed GetBookDetailedOccupancyInfo(BookOccupancy occupancy);
+
+    /// <summary>
+    /// Retrieves the time zone enumeration value defined in the connector's metadata.
+    /// This value is particularly useful in operations like cancellation policy management, such as those implemented in <see cref="ICancelPenaltyManager"/>.
+    /// </summary>
+    /// <param name="timeZoneEnum">
+    /// When this method returns, contains the <see cref="TimeZoneEnum"/> value if the operation succeeded, 
+    /// or the default value if the operation failed.
+    /// </param>
+    /// <returns>
+    /// <c>true</c> if the <see cref="TimeZoneEnum"/> value was successfully retrieved; otherwise, <c>false</c>.
+    /// </returns>
+    public bool TryGetTimeZoneEnum(out TimeZoneEnum timeZoneEnum);
+
+    /// <summary>
+    /// Retrieves the age ranges.
+    /// </summary>
+    /// <returns>An <see cref="AgeRanges"/> object representing the age ranges.</returns>
+    public AgeRanges GetAgeRanges();
+
+    /// <summary>
+    /// Retrieves the full metadata element.
+    /// </summary>
+    /// <returns>An <see cref="MetadataElement"/> object representing the metadata from the current supplier.</returns>
+    public MetadataElement GetMetadata();
+
+    // Real example of how can it be used (injected):
+
+    // Assuming you have an instance of IConnectorsUtilities called 'utilities':
+    OccupancyInfoDetailed occupancyInfoDetailed = _connectorsUtilities.MetadataConnectorsService.GetDetailedOccupancyInfo(firstOccupancy);
+    bool hasTimezoneSpecified = _connectorsUtilities.MetadataConnectorsService.TryGetTimeZoneEnum(out TimeZoneEnum timeZoneEnum);
+    AgeRanges ageRanges = _connectorsUtilities.MetadataConnectorsService.GetAgeRanges();
+    MetadataElement metadataElement = _connectorsUtilities.MetadataConnectorsService.GetMetadata();
+}
+```
 
 ---
 

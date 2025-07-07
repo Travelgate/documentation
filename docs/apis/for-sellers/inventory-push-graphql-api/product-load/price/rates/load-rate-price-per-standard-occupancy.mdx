@@ -182,6 +182,264 @@ The mutation returns the loaded rate prices along with success status and possib
     * `external` (*ExternalMessage*) - External message details.
     * `correlationID` (*ID*) - Identifier for debugging.
 
+## Understanding "Price Per Standard Occupancy"
+
+The **Price Per Standard Occupancy** model allows defining a fixed price for the **standard number of guests** in a room. This pricing logic supports:
+
+- A base `amount` for the standard occupancy
+- Optional `pricesUnderStandardOccupancy` to define reduced pricing if fewer guests are accommodated
+- Optional `additionalGuestsSupplements` to define surcharges for extra guests beyond the standard capacity
+
+### 🔎 How It Works
+
+- `amount`: price for the full standard occupancy
+- `pricesUnderStandardOccupancy`: optional prices when fewer than the standard number of guests occupy the room
+- `additionalGuestsSupplements`: supplements for extra guests above the standard
+
+:::note
+Standard occupancy is defined at the room level in the Inventory setup.  
+If the booking falls below or above the standard, alternate pricing or supplements may apply.
+:::
+
+---
+
+### ✅ Example Scenario
+
+Imagine we load the following:
+
+#### **Price Per Standard Occupancy**
+
+When a price is charged **per Standard Occupancy**, it means the rate is applied based on the configured standard number of guests in the room.  
+
+- If the number of guests **equals** the standard occupancy, the `amount` applies directly.  
+- If the number of guests is **less than** the standard, a discounted amount may be specified using `pricesUnderStandardOccupancy`.  
+- If the number of guests **exceeds** the standard, the base amount is divided equally and surcharges from `additionalGuestsSupplements` are applied.
+
+#### 📘 Case 1: Only valid for standard occupancy (2 pax)
+
+```json
+{
+  "pricePerStandardOccupancy": {
+    "amount": 100.00
+  }
+}
+```
+| Occupancy | Price               |
+| --------- | ------------------- |
+| 1-0-0     | Ø                   |
+| 2-0-0     | 2 × (100 / 2) = 100 |
+
+#### 📘 Case 2: Standard occupancy + supplements (2 pax)
+
+```json
+{
+  "pricePerStandardOccupancy": {
+    "amount": 130.00,
+    "pricesUnderStandardOccupancy": [
+      {
+        "guests": 1,
+        "amount": 100.00
+      }
+    ]
+  }
+}
+```
+| Occupancy | Price               |
+| --------- | ------------------- |
+| 1-0-0     | 100                 |
+| 2-0-0     | 2 × (130 / 2) = 130 |
+
+#### 📘 Case 3: Additional adult supplement over standard occupancy (2 pax)
+
+```json
+{
+  "pricePerStandardOccupancy": {
+    "amount": 100.00,
+    "additionalGuestsSupplements": {
+      "additionalAdults": [
+        {
+          "additionalGuestType": "ADULT",
+          "guestPosition": 1,
+          "amount": 40.00,
+          "type": "ADDITIVE"
+        }
+      ]
+    }
+  }
+}
+```
+| Occupancy | Price                     |
+| --------- | ------------------------- |
+| 1-0-0     | Ø                         |
+| 2-0-0     | 100                       |
+| 3-0-0     | 2 x (100 / 2) + (100 / 2 + 40) = 190 |
+
+#### 📘 Case 4: Exclusive supplement for 1 extra adult (2 pax)
+
+```json
+{
+  "pricePerStandardOccupancy": {
+    "amount": 100.00,
+    "additionalGuestsSupplements": {
+      "additionalAdults": [
+        {
+          "additionalGuestType": "ADULT",
+          "guestPosition": 1,
+          "amount": 40.00,
+          "type": "EXCLUSIVE"
+        }
+      ]
+    }
+  }
+}
+```
+| Occupancy | Price              |
+| --------- | ------------------ |
+| 3-0-0     | 2 x (100 / 2) + 40 = 140 |
+
+#### 📘 Case 5: Additional child supplement (2 pax)
+
+```json
+{
+  "pricePerStandardOccupancy": {
+    "amount": 100.00,
+    "additionalGuestsSupplements": {
+      "additionalChildren": [
+        {
+          "additionalGuestType": "CHILD",
+          "guestPosition": 1,
+          "amount": 40.00,
+          "type": "ADDITIVE"
+        }
+      ]
+    }
+  }
+}
+```
+| Occupancy | Price                     |
+| --------- | ------------------------- |
+| 2-1-0     | 2 x (100 / 2) + (100 / 2 + 40) = 190 |
+
+#### 📘 Case 5.1: Additional infant supplement (exclusive) (2 pax)
+
+```json
+{
+  "pricePerStandardOccupancy": {
+    "amount": 100.00,
+    "additionalGuestsSupplements": {
+      "additionalInfants": [
+        {
+          "additionalGuestType": "INFANT",
+          "guestPosition": 1,
+          "amount": 40.00,
+          "type": "EXCLUSIVE"
+        }
+      ]
+    }
+  }
+}
+```
+| Occupancy | Price              |
+| --------- | ------------------ |
+| 2-0-1     | 2 x (100 / 2) + 40 = 140 |
+
+#### 📘 Case 6: Negative supplement (child discount) (2 pax)
+
+```json
+{
+  "pricePerStandardOccupancy": {
+    "amount": 100.00,
+    "additionalGuestsSupplements": {
+      "additionalChildren": [
+        {
+          "additionalGuestType": "CHILD",
+          "guestPosition": 1,
+          "amount": -40.00,
+          "type": "ADDITIVE"
+        }
+      ]
+    }
+  }
+}
+```
+| Occupancy | Price                    |
+| --------- | ------------------------ |
+| 2-1-0     | 2 x (100 / 2) + (100 / 2 - 40) = 110 |
+
+#### 📘 Case 7: Multiple additional adults with mixed supplements (2 pax)
+```json
+{
+  "pricePerStandardOccupancy": {
+    "amount": 100.00,
+    "additionalGuestsSupplements": {
+      "additionalAdults": [
+        {
+          "guestPosition": 1,
+          "amount": 10.00
+        },
+        {
+          "guestPosition": 2,
+          "amount": -15.00
+        }
+      ]
+    }
+  }
+}
+```
+| Occupancy | Price                                 |
+| --------- | ------------------------------------- |
+| 3-0-0     | 2 x (100 / 2) + (100 / 2 + 10) = 160             |
+| 4-0-0     | 2 x (100 / 2) + (100 / 2 + 10) + (100 / 2 - 15) = 195 |
+
+#### 📘 Case 8: Single additional adult with a negative supplement (2 pax)
+
+```json
+{
+  "pricePerStandardOccupancy": {
+    "amount": 100.00,
+    "additionalGuestsSupplements": {
+      "additionalAdults": [
+        {
+          "guestPosition": 1,
+          "amount": -10.00
+        }
+      ]
+    }
+  }
+}
+```
+| Occupancy | Price                          |
+| --------- | ------------------------------ |
+| 3-0-0     | 2 x (100 / 2) + (100 / 2 - 10) = 140      |
+| 4-0-0     | 2 x (100 / 2) + (100 / 2 - 10) + (100 / 2) = 190 |
+
+#### 📘 Case 9: Standard occupancy = 3 + 2 extra adults with mixed supplements (3 pax)
+
+```json
+{
+  "pricePerStandardOccupancy": {
+    "amount": 150.00,
+    "additionalGuestsSupplements": {
+      "additionalAdults": [
+        {
+          "guestPosition": 1,
+          "amount": -10.00
+        },
+        {
+          "guestPosition": 2,
+          "amount": 15.00
+        }
+      ]
+    }
+  }
+}
+```
+| Occupancy | Price                                      |
+| --------- | ------------------------------------------ |
+| 3-0-0     | 3 x (150 / 3) = 150                         |
+| 4-0-0     | 3 x (150 / 3) + (150 / 3 - 10) = 190             |
+| 5-0-0     | 3 x (150 / 3) + (150 / 3 - 10) + (150 / 3 + 15) = 255 |
+
 ## Mutation Inputs
 
 <InventoryLoadPriceRatesInput />

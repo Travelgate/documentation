@@ -1,6 +1,6 @@
 # Hotel
 
-Represents a hotel accommodation in search responses.
+Represents a hotel accommodation in Search responses.
 
 ## Properties
 
@@ -9,17 +9,17 @@ Represents a hotel accommodation in search responses.
 | **AccommodationType** | [AccommodationType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accommodationtype) | Gets or initializes the type of accommodation. |
 | **AccommodationCode** | String | Gets the unique code identifying the accommodation. |
 | **AccommodationName** | String | Gets or initializes the name of the accommodation. |
-| **Boards** | Array&lt;[Board](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/board)&gt; | Gets the list of meal plan options (Board) available for the hotel. |
-| **Boards/BoardCode** | String | The unique code identifying the meal plan option. |
-| **Boards/Name** | String | The name of the meal plan option. |
-| **Boards/Options** | Array&lt;[Option](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/option)&gt; | The collection of options associated with this meal plan. |
-| **Boards/Options/FormId** | String | Internal field for form test. Not serialized. DO NOT USE! |
+| **Boards** | Array&lt;[Board](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/board)&gt; | Gets the list of boards available for the hotel. |
+| **Boards/BoardCode** | String | The unique code identifying the board. |
+| **Boards/Name** | String | The name of the board. |
+| **Boards/Options** | Array&lt;[Option](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/option)&gt; | The collection of options associated with this board. |
+| **Boards/Options/FormId** | String | Internal field for FormTest. Not serialized. DO NOT USE! |
 | **Boards/Options/Status** | [Status](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/status) | Indicates the availability status of the option. |
 | **Boards/Options/Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | The price details associated with the option, including net, gross and minimum selling price. |
 | **Boards/Options/Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **Boards/Options/Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **Boards/Options/Price/Net** | Double | The net price paid by the buyer to the seller. |
-| **Boards/Options/Price/Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **Boards/Options/Price/Net** | Double | The net price paid by the Buyer to the Seller. |
+| **Boards/Options/Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **Boards/Options/Price**<br />**NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **Boards/Options/Price**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
 | **Boards/Options/PaymentTypes** | Array&lt;[PaymentType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/paymenttype)&gt; | Specifies the accepted payment types for the option. |
@@ -31,16 +31,16 @@ Represents a hotel accommodation in search responses.
 | **Boards/Options/Rooms/RoomPrice**<br />**Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | The total price of the room. |
 | **Boards/Options/Rooms/RoomPrice**<br />**Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **Boards/Options/Rooms/RoomPrice**<br />**Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **Boards/Options/Rooms/RoomPrice**<br />**Price/Net** | Double | The net price paid by the buyer to the seller. |
-| **Boards/Options/Rooms/RoomPrice**<br />**Price/Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **Boards/Options/Rooms/RoomPrice**<br />**Price/Net** | Double | The net price paid by the Buyer to the Seller. |
+| **Boards/Options/Rooms/RoomPrice**<br />**Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **Boards/Options/Rooms/RoomPrice**<br />**Price/NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **Boards/Options/Rooms/RoomPrice**<br />**Price/MinimumSellingPrice** | Double | The minimum selling price. |
 | **Boards/Options/Rooms/RoomPrice**<br />**PriceBreakdown** | Array&lt;[PriceBreakdown](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/pricebreakdown)&gt; | Breakdown of the room price over specific periods, such as daily rates. |
 | **Boards/Options/Rooms/RoomPrice**<br />**PriceBreakdown/Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | The price for each day of the room during the specified period. |
 | **Boards/Options/Rooms/RoomPrice**<br />**PriceBreakdown/Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **Boards/Options/Rooms/RoomPrice**<br />**PriceBreakdown/Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **Boards/Options/Rooms/RoomPrice**<br />**PriceBreakdown/Price/Net** | Double | The net price paid by the buyer to the seller. |
-| **Boards/Options/Rooms/RoomPrice**<br />**PriceBreakdown/Price/Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **Boards/Options/Rooms/RoomPrice**<br />**PriceBreakdown/Price/Net** | Double | The net price paid by the Buyer to the Seller. |
+| **Boards/Options/Rooms/RoomPrice**<br />**PriceBreakdown/Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **Boards/Options/Rooms/RoomPrice**<br />**PriceBreakdown/Price**<br />**NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **Boards/Options/Rooms/RoomPrice**<br />**PriceBreakdown/Price**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
 | **Boards/Options/Rooms/RoomPrice**<br />**PriceBreakdown/Start** | Integer | The starting day of the pricing period (inclusive). |
@@ -56,7 +56,7 @@ Represents a hotel accommodation in search responses.
 | **Boards/Options/Rooms**<br />**Promotions/Code** | String | The unique code identifying the promotion. |
 | **Boards/Options/Rooms**<br />**Promotions/Name** | String | The name of the promotion. |
 | **Boards/Options/Rooms/Remarks** | Array&lt;[Remark](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remark)&gt; | Additional remarks or notes about this room. |
-| **Boards/Options/Rooms/Remarks**<br />**RemarkType** | [RemarkType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remarktype) | The type of the remark, categorized by RemarkType.This specifies the nature or purpose of the remark: Related to the hotel as a whole. Specific to the room being booked. Related to services provided by the accommodation. General remarks not tied to a specific entity. |
+| **Boards/Options/Rooms/Remarks**<br />**RemarkType** | [RemarkType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remarktype) | The type of the remark, categorized by RemarkType, specifies its nature or purpose. It may refer to the hotel as a whole, a specific room being booked, services provided by the accommodation, or general remarks not tied to any particular entity. |
 | **Boards/Options/Rooms/Remarks**<br />**Text** | String | The text content of the remark, providing details or additional notes.This can include supplier-specific instructions, conditions, or general information. |
 | **Boards/Options/Rooms**<br />**Surcharges** | Array&lt;[Surcharge](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/surcharge)&gt; | Additional surcharges applied to this room. |
 | **Boards/Options/Rooms**<br />**Surcharges/ChargeType** | [ChargeType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/chargetype) | Specifies whether the surcharge is included in the room rate or must be paid separately at the property. See ChargeType for possible values. |
@@ -65,8 +65,8 @@ Represents a hotel accommodation in search responses.
 | **Boards/Options/Rooms**<br />**Surcharges/Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | Represents the price of this surcharge, including the amount and currency. See Price for details about the price structure. |
 | **Boards/Options/Rooms**<br />**Surcharges/Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **Boards/Options/Rooms**<br />**Surcharges/Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **Boards/Options/Rooms**<br />**Surcharges/Price/Net** | Double | The net price paid by the buyer to the seller. |
-| **Boards/Options/Rooms**<br />**Surcharges/Price/Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **Boards/Options/Rooms**<br />**Surcharges/Price/Net** | Double | The net price paid by the Buyer to the Seller. |
+| **Boards/Options/Rooms**<br />**Surcharges/Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **Boards/Options/Rooms**<br />**Surcharges/Price/NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **Boards/Options/Rooms**<br />**Surcharges/Price**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
 | **Boards/Options/Rooms**<br />**Surcharges/Code** | String | An optional code that uniquely identifies this surcharge for internal or external reference. This can be useful for tracking specific fees or integrating with supplier systems. |
@@ -122,7 +122,7 @@ Represents a hotel accommodation in search responses.
 | **Boards/Options/RateRules**<br />**Restrictions/Name** | String | A descriptive name for the restriction. |
 | **Boards/Options/RateRules**<br />**Restrictions/RestrictionType** | [RestrictionType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/restrictiontype) | The type of the restriction, categorizing its purpose or application. |
 | **Boards/Options/Remarks** | Array&lt;[Remark](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remark)&gt; | Additional remarks associated with the option, such as special conditions or information. |
-| **Boards/Options/Remarks**<br />**RemarkType** | [RemarkType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remarktype) | The type of the remark, categorized by RemarkType.This specifies the nature or purpose of the remark: Related to the hotel as a whole. Specific to the room being booked. Related to services provided by the accommodation. General remarks not tied to a specific entity. |
+| **Boards/Options/Remarks**<br />**RemarkType** | [RemarkType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remarktype) | The type of the remark, categorized by RemarkType, specifies its nature or purpose. It may refer to the hotel as a whole, a specific room being booked, services provided by the accommodation, or general remarks not tied to any particular entity. |
 | **Boards/Options/Remarks/Text** | String | The text content of the remark, providing details or additional notes.This can include supplier-specific instructions, conditions, or general information. |
 | **Boards/Options/Surcharges** | Array&lt;[Surcharge](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/surcharge)&gt; | Surcharges applied to the option, such as mandatory fees or taxes. |
 | **Boards/Options/Surcharges**<br />**ChargeType** | [ChargeType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/chargetype) | Specifies whether the surcharge is included in the room rate or must be paid separately at the property. See ChargeType for possible values. |
@@ -131,8 +131,8 @@ Represents a hotel accommodation in search responses.
 | **Boards/Options/Surcharges**<br />**Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | Represents the price of this surcharge, including the amount and currency. See Price for details about the price structure. |
 | **Boards/Options/Surcharges**<br />**Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **Boards/Options/Surcharges**<br />**Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **Boards/Options/Surcharges**<br />**Price/Net** | Double | The net price paid by the buyer to the seller. |
-| **Boards/Options/Surcharges**<br />**Price/Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **Boards/Options/Surcharges**<br />**Price/Net** | Double | The net price paid by the Buyer to the Seller. |
+| **Boards/Options/Surcharges**<br />**Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **Boards/Options/Surcharges**<br />**Price/NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **Boards/Options/Surcharges**<br />**Price/MinimumSellingPrice** | Double | The minimum selling price. |
 | **Boards/Options/Surcharges/Code** | String | An optional code that uniquely identifies this surcharge for internal or external reference. This can be useful for tracking specific fees or integrating with supplier systems. |
@@ -149,11 +149,11 @@ Represents a hotel accommodation in search responses.
 | **Boards/Options/Supplements**<br />**Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | The Price associated with the supplement, including details such as currency and net price. |
 | **Boards/Options/Supplements**<br />**Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **Boards/Options/Supplements**<br />**Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **Boards/Options/Supplements**<br />**Price/Net** | Double | The net price paid by the buyer to the seller. |
-| **Boards/Options/Supplements**<br />**Price/Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **Boards/Options/Supplements**<br />**Price/Net** | Double | The net price paid by the Buyer to the Seller. |
+| **Boards/Options/Supplements**<br />**Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **Boards/Options/Supplements**<br />**Price/NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **Boards/Options/Supplements**<br />**Price/MinimumSellingPrice** | Double | The minimum selling price. |
-| **Boards/Options/Supplements**<br />**SupplementType** | [SupplementType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/supplementtype) | The specific SupplementType of the supplement (e.g., meal plan, additional service). |
+| **Boards/Options/Supplements**<br />**SupplementType** | [SupplementType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/supplementtype) | The specific SupplementType of the supplement (e.g., board, additional service). |
 | **Boards/Options/Supplements**<br />**ChargeType** | [ChargeType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/chargetype) | Defines how the supplement is charged using ChargeType (e.g., per person, per stay). |
 | **Boards/Options/Supplements**<br />**DurationType** | [DurationType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/durationtype) | Specifies whether the supplement applies to a specific duration (Open or Range). |
 | **Boards/Options/Supplements**<br />**Quantity** | Integer | The quantity of the supplement included in the booking. |

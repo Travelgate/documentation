@@ -86,11 +86,11 @@ File location: "**ConnectorsIntegration\CheckBookingsByReference\Models\Response
 ## **Develop**
 
 ### **Step 1: Register the serializers and operations**
-To specify which serializer and operations the developer will be using (based on the seller's API) we can specify it in our "**Extensions**":
+To specify which serializer and operations the developer will be using (based on the Seller's API) we can specify it in our "**Extensions**":
 
 File location: "**ConnectorsIntegration\CheckBookingsByReference\CheckBookingsByReferenceExtensions.cs**".
 
-If the seller works with **JSON** format, we can specify the integration to work with **JSON** with the following:
+If the Seller works with **JSON** format, we can specify the integration to work with **JSON** with the following:
 
 ```csharp
 internal static class CheckBookingsByReferenceExtensions
@@ -108,7 +108,7 @@ internal static class CheckBookingsByReferenceExtensions
 }
 ```
 
-For details about others serializers, check [Extensions](../../Advanced_Use/Extensions).
+For details about others serializers, check [Extensions](../../Advanced_Use/Booking_Extensions).
 
 For more details about operations, check [PreOperations](../../Connector_Framework/PreOperation_Overview) and [Operations](../../Connector_Framework/Operation_Overview).
 
@@ -177,10 +177,10 @@ public bool TryValidateSupplierResponses(
 
 ### **Step 3: Build the Seller's request**
 
-This class will contain a "BuildRequests" method that will have the following args: 
+This class will contain a "BuildRequests" method that will have the following arguments: 
 
 - Object of the requests from the models previously created (CheckBookingsByReferenceRequest).
-- The request that the buyer sends (connectorsRequest).
+- The request that the Buyer sends (connectorsRequest).
 - Parameters (connectorParameters) which will have some helpers:
 
 File location: "**ConnectorsIntegration\CheckBookingsByReference\Operations\CheckBookingsByReferenceOperation.BuildRequest.cs**"
@@ -209,7 +209,7 @@ internal partial class CheckBookingsByReferenceOperation
             clientReference,
             supplierReference);
 
-        //Generic URL we prepared back in the AccessModel, which will be passed by the buyer
+        //Generic URL we prepared back in the AccessModel, which will be passed by the Buyer
         string genericUrl = connectorParameters.ParametersModel.UrlGeneric;
 
         SupplierRequestWrapper<CheckBookingsByReferenceRequest> supplierRequest = new(
@@ -227,7 +227,7 @@ internal partial class CheckBookingsByReferenceOperation
         string clientReference,
         string sellerReference) 
     {
-        //The request towards the seller system
+        //The request towards the Seller system
       
         return new CheckBookingsByReferenceRequest()
         {
@@ -240,7 +240,7 @@ internal partial class CheckBookingsByReferenceOperation
 
 ### **Step 4: Parse the Seller's response**
 
-Once the request has been sent, we will have to control and parse the response returned by the seller.
+Once the request has been sent, we will have to control and parse the response returned by the Seller.
 
 We will be implementing the "ParseResponse" step inside CheckBookingsByReferenceOperation:
 
@@ -301,7 +301,7 @@ internal partial class CheckBookingsByReferenceOperation
             //Helper to map a string currency
             Currency supplierCurrency = CurrencyIso4217Mapper.Map(supplierCancelPolicy.PenaltyCurrency);
             PenaltyType penaltyType = MapSellerToTgxPenaltyType(supplierCancelPolicy.PenaltyType);
-            //Helper to create a policy based in a seller cancel penalty with deadline that has timezone
+            //Helper to create a policy based in a Seller cancel penalty with deadline that has timezone
             var penalty = _connectorsUtilities.CancelPenaltyManager.CancelPenaltyFromDateWithTimeZone(
                 checkIn,
                 penaltyType,

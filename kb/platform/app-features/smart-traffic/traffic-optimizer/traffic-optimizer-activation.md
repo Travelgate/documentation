@@ -21,7 +21,7 @@ sidebar_position: 3
    :::
 
 5. **Configure the optimization criteria**: Define the connection/access details and select the optimization criteria.
-   ![traffic_optimizer_4](https://storage.travelgate.com/kbase/traffic_optimizer_4.jpg)
+   ![traffic-optimizer-select-criteria](https://storage.travelgate.com/kbase/traffic-optimizer-select-criteria.jpg)
 
 ## Can I Edit the Configuration?
 
@@ -32,13 +32,13 @@ Yes! To edit optimization criteria for connections or accesses:
 If you need to switch from **access-level to connection-level optimization (or vice versa),** please open a [Case](https://app.travelgate.com/support).
 
 ![TO_edit_actions](https://storage.travelgate.com/kbase/TO_edit_actions.jpg)
-![TO_edit_actions_2](https://storage.travelgate.com/kbase/TO_edit_actions_2.jpg)
+![traffic-optimizer-update-criteria](https://storage.travelgate.com/kbase/traffic-optimizer-update-criteria.jpg)
 
 ## Why Can’t I Find a Specific Connection or Access?
 
 If a connection or access is missing from Traffic Optimizer, consider the following:
 - The Buyer must be connected via **Hotel-X API**—only these connections appear in Traffic Optimizer.
-- If a connection or access was previously activated but later deactivated, it will be hidden. To view and reactivate it, **uncheck "Show only active"** on the left side of the Traffic Optimizer dashboard.
+- **If a connection or access was previously activated but later deactivated, it will be hidden**. To view and reactivate it, **uncheck "Show only active"** on the left side of the Traffic Optimizer dashboard.
 
 ## What Information is Displayed in the Traffic Optimizer Dashboard?
 

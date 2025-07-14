@@ -1,6 +1,6 @@
 # Status
 
-Represents the availability status of a hotel or room option in search and quote operations.
+Represents the availability status of a hotel or room option in Search and Quote operations.
 
 ## Enum Values
 

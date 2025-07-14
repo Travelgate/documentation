@@ -1,6 +1,6 @@
 # PaymentInfo
 
-Represents payment information for a hotel quote response.
+Represents payment information for a hotel Quote response.
 This information is required only when the payment type requires a credit card.
 
 ## Properties

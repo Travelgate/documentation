@@ -8,15 +8,21 @@ Welcome to the **API Settings** section! Here, you'll find everything you need t
 
 ### What's Inside API Settings?
 
-In **API Settings**, you can easily view and modify your Hotel-X Pull Buyers API account settings. Follow this simple guide to get started:
+**API Settings** allow you to define default values for your Hotel-X Pull Buyers API requests. These values are applied **automatically** when a Buyer request (query or mutation) doesn't include these specific parameters.
+
+:::info
+You can configure defaults at multiple levels: Organization, Client, Supplier, and even Access. The more specific the level, the higher its priority.
+:::
+
+Follow this simple guide to get started:
 
 1. **Log into** [our Platform](https://www.travelgate.com/).
 
-2. **Navigate to** "Connections" > "API Settings."
+2. **Navigate to** "Connections" > "API Settings"
 
 3. Explore the following areas:
 
-    - **Organization Settings**: This is where you define the default settings at the organization level. If you don’t specify settings in your queries or mutations from the Hotel-X Pull Buyers API, these default values will be automatically applied. Check our documentation for more about [Hotel-X Settings](/docs/apis/for-buyers/hotel-x-pull-buyers-api/making-requests/settings).
+    - **Organization Settings**: This is the most general level of configuration. The settings defined here apply across your entire organization or Hotel-X Group. Check our documentation for more detailed information about [Hotel-X API Settings](/docs/apis/for-buyers/hotel-x-pull-buyers-api/making-requests/settings).
 
     ![apisettings_1](https://storage.travelgate.com/kbase/apisettings_1.png)
 
@@ -54,3 +60,18 @@ In **API Settings**, you can easily view and modify your Hotel-X Pull Buyers API
 	Your clients (or 'hub users') come with an associated password. Retrieve it easily using the **"Get Password"** option:
     ![api-settings-new-updated-7](https://storage.travelgate.com/kbase/apisettings_9.png)
     :::
+
+
+    - **Supplier Settings**: In this section, you can define default settings specifically for each supplier you’re connected to. These will apply to **all accesses** associated with that supplier. These configurations will override both **Organization** and **Client-level settings** for all accesses related to that supplier.
+
+    - **Access Settings**: If you need full control over a specific access connection between a Buyer and a Supplier, you can request **Access-level settings**. These override all others settings and are the most specific (except if settings are defined at query/mutation level).
+
+
+
+:::info Remember!
+
+Settings defined at query or mutation level (in your API request) take **absolute precedence** over any default settings at any other level.
+
+Query/Mutation > Access > Supplier > Client > Organization
+
+:::

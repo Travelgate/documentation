@@ -18,7 +18,7 @@ By leveraging Logging, you can gain valuable insights into your connection activ
 2. Navigate to Monitoring (in the top menu) and select [Logging](https://app.travelgate.com/logging).
 3. Choose your search method: You can search by **connection, reference, or session ID**.
 4. Apply filters to refine your search:
-   - Time range.
+   - Time range: Up to **2 months**.
    - Access: Filter by Hotel-X Access (by Name or Code). This filter applies only to **Hotel-X connections**.
    - Operation type: Search, Quote, Book, Cancel, Other (Booking List/Booking Read).  
      - *Note:* The "Search" operation type will only return results if searches have been **[audited first](/kb/platform/app-features/monitoring-tools/logging/audit-searches-functionality)**.

@@ -1,7 +1,7 @@
 # StatusFilter
 
-Represents a filter for hotel statuses in search requests.
-This filter allows specifying the statuses to include or exclude in the search results.
+Represents a filter for hotel statuses in Search requests.
+This filter allows specifying the statuses to include or exclude in the Search results.
 
 ## Properties
 

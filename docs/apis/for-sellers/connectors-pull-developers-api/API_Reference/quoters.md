@@ -1,7 +1,7 @@
 # QuoteRs
 
-Represents the response for a hotel quote request.
-This class provides details about the quoted price, status, rooms, and other relevant information for a hotel quote operation.
+Represents the response for a hotel Quote request.
+This class provides details about the quoted price, status, rooms, and other relevant information for a hotel Quote operation.
 
 ## Properties
 
@@ -20,7 +20,7 @@ This class provides details about the quoted price, status, rooms, and other rel
 | **AuditData/Response/Data** | String | The payload data contained in the provider's response. |
 | **AuditData/Response/Headers** | Object | A collection of headers included in the provider's response. |
 | **AuditData/Response/StatusCode** | Integer | The HTTP status code returned by the provider. |
-| **AdviseMessages** | Array&lt;[AdviseMessage](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/advisemessage)&gt; | Collection of advice messages, including errors or warnings encountered during the quote process. |
+| **AdviseMessages** | Array&lt;[AdviseMessage](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/advisemessage)&gt; | Collection of advice messages, including errors or warnings encountered during the Quote process. |
 | **AdviseMessages/Code** | [AdviseMessageCode](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/advisemessagecode) | Gets the code that represents the message type. |
 | **AdviseMessages/Level** | [AdviseMessageLevel](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/advisemessagelevel) | Gets the severity level of the message (e.g., Error, Warning, or Info). |
 | **AdviseMessages/Description** | String | Gets the message description providing additional context. |
@@ -32,11 +32,11 @@ This class provides details about the quoted price, status, rooms, and other rel
 | **Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | Contains the price details for the quoted option. |
 | **Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **Price/Net** | Double | The net price paid by the buyer to the seller. |
-| **Price/Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **Price/Net** | Double | The net price paid by the Buyer to the Seller. |
+| **Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **Price/NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **Price/MinimumSellingPrice** | Double | The minimum selling price. |
-| **Status** | [Status](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/status) | Indicates the status of the quote. |
+| **Status** | [Status](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/status) | Indicates the status of the Quote. |
 | **PaymentType** | [PaymentType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/paymenttype) | Payment types available for the Option. |
 | **Rooms** | Array&lt;[Room](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/room)&gt; | List of rooms included in the quoted option. |
 | **Rooms/OccupancyRefId** | Integer | Numeric ID linking this room to its occupancy data in the Occupancy. |
@@ -46,16 +46,16 @@ This class provides details about the quoted price, status, rooms, and other rel
 | **Rooms/RoomPrice/Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | The total price of the room. |
 | **Rooms/RoomPrice/Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **Rooms/RoomPrice/Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **Rooms/RoomPrice/Price/Net** | Double | The net price paid by the buyer to the seller. |
-| **Rooms/RoomPrice/Price/Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **Rooms/RoomPrice/Price/Net** | Double | The net price paid by the Buyer to the Seller. |
+| **Rooms/RoomPrice/Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **Rooms/RoomPrice/Price**<br />**NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **Rooms/RoomPrice/Price**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
 | **Rooms/RoomPrice/PriceBreakdown** | Array&lt;[PriceBreakdown](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/pricebreakdown)&gt; | Breakdown of the room price over specific periods, such as daily rates. |
 | **Rooms/RoomPrice/PriceBreakdown**<br />**Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | The price for each day of the room during the specified period. |
 | **Rooms/RoomPrice/PriceBreakdown**<br />**Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **Rooms/RoomPrice/PriceBreakdown**<br />**Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **Rooms/RoomPrice/PriceBreakdown**<br />**Price/Net** | Double | The net price paid by the buyer to the seller. |
-| **Rooms/RoomPrice/PriceBreakdown**<br />**Price/Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **Rooms/RoomPrice/PriceBreakdown**<br />**Price/Net** | Double | The net price paid by the Buyer to the Seller. |
+| **Rooms/RoomPrice/PriceBreakdown**<br />**Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **Rooms/RoomPrice/PriceBreakdown**<br />**Price/NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **Rooms/RoomPrice/PriceBreakdown**<br />**Price/MinimumSellingPrice** | Double | The minimum selling price. |
 | **Rooms/RoomPrice/PriceBreakdown**<br />**Start** | Integer | The starting day of the pricing period (inclusive). |
@@ -71,7 +71,7 @@ This class provides details about the quoted price, status, rooms, and other rel
 | **Rooms/Promotions/Code** | String | The unique code identifying the promotion. |
 | **Rooms/Promotions/Name** | String | The name of the promotion. |
 | **Rooms/Remarks** | Array&lt;[Remark](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remark)&gt; | Additional remarks or notes about this room. |
-| **Rooms/Remarks/RemarkType** | [RemarkType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remarktype) | The type of the remark, categorized by RemarkType.This specifies the nature or purpose of the remark: Related to the hotel as a whole. Specific to the room being booked. Related to services provided by the accommodation. General remarks not tied to a specific entity. |
+| **Rooms/Remarks/RemarkType** | [RemarkType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remarktype) | The type of the remark, categorized by RemarkType, specifies its nature or purpose. It may refer to the hotel as a whole, a specific room being booked, services provided by the accommodation, or general remarks not tied to any particular entity. |
 | **Rooms/Remarks/Text** | String | The text content of the remark, providing details or additional notes.This can include supplier-specific instructions, conditions, or general information. |
 | **Rooms/Surcharges** | Array&lt;[Surcharge](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/surcharge)&gt; | Additional surcharges applied to this room. |
 | **Rooms/Surcharges/ChargeType** | [ChargeType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/chargetype) | Specifies whether the surcharge is included in the room rate or must be paid separately at the property. See ChargeType for possible values. |
@@ -80,8 +80,8 @@ This class provides details about the quoted price, status, rooms, and other rel
 | **Rooms/Surcharges/Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | Represents the price of this surcharge, including the amount and currency. See Price for details about the price structure. |
 | **Rooms/Surcharges/Price**<br />**Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **Rooms/Surcharges/Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **Rooms/Surcharges/Price/Net** | Double | The net price paid by the buyer to the seller. |
-| **Rooms/Surcharges/Price/Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **Rooms/Surcharges/Price/Net** | Double | The net price paid by the Buyer to the Seller. |
+| **Rooms/Surcharges/Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **Rooms/Surcharges/Price**<br />**NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **Rooms/Surcharges/Price**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
 | **Rooms/Surcharges/Code** | String | An optional code that uniquely identifies this surcharge for internal or external reference. This can be useful for tracking specific fees or integrating with supplier systems. |
@@ -123,13 +123,13 @@ This class provides details about the quoted price, status, rooms, and other rel
 | **Surcharges/Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | Represents the price of this surcharge, including the amount and currency. See Price for details about the price structure. |
 | **Surcharges/Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **Surcharges/Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **Surcharges/Price/Net** | Double | The net price paid by the buyer to the seller. |
-| **Surcharges/Price/Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **Surcharges/Price/Net** | Double | The net price paid by the Buyer to the Seller. |
+| **Surcharges/Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **Surcharges/Price/NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **Surcharges/Price**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
 | **Surcharges/Code** | String | An optional code that uniquely identifies this surcharge for internal or external reference. This can be useful for tracking specific fees or integrating with supplier systems. |
-| **Remarks** | Array&lt;[Remark](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remark)&gt; | Additional remarks associated with the quote. |
-| **Remarks/RemarkType** | [RemarkType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remarktype) | The type of the remark, categorized by RemarkType.This specifies the nature or purpose of the remark: Related to the hotel as a whole. Specific to the room being booked. Related to services provided by the accommodation. General remarks not tied to a specific entity. |
+| **Remarks** | Array&lt;[Remark](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remark)&gt; | Additional remarks associated with the Quote. |
+| **Remarks/RemarkType** | [RemarkType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remarktype) | The type of the remark, categorized by RemarkType, specifies its nature or purpose. It may refer to the hotel as a whole, a specific room being booked, services provided by the accommodation, or general remarks not tied to any particular entity. |
 | **Remarks/Text** | String | The text content of the remark, providing details or additional notes.This can include supplier-specific instructions, conditions, or general information. |
 | **PaymentInfo** | [PaymentInfo](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/paymentinfo) | Payment information for the quoted option, such as accepted credit card types. |
 | **PaymentInfo**<br />**AcceptedCreditCards** | Array&lt;[CreditCardType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/creditcardtype)&gt; | A collection of accepted credit card types.This is required when the payment type requires a credit card. |

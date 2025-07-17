@@ -1,4 +1,7 @@
-##
+---
+title: "Booking Extensions"
+sidebar_position: 2
+---
 
 ## XML Extensions ##
 
@@ -33,22 +36,22 @@ If the seller sends different json response structures in their response, implem
 - Add the "AddMultiJsonSerializer" service in the extensions of the operation, for instance, in **Search** it would look like this:
 
 ```csharp
-AddSerializerDependencySearch<SearchRequest, ResponseWrapper<List<SearchResponse>>>(services); 
-services.AddSearchOperation<SearchOperation, SearchRequest, ResponseWrapper<List<SearchResponse>>, AccessModel>(TgxPlatform.Name, configuration);
+AddSerializerDependencySearch<SearchRequest, ResponseWrapper<SearchResponse>>(services); 
+services.AddSearchOperation<SearchOperation, SearchRequest, ResponseWrapper<SearchResponse>>, AccessModel>(TgxPlatform.Name, configuration);
 
 public static void AddSerializerDependencySearch<TRequest, TResponse>(IServiceCollection services)
 {
     MultiResponseJsonType[] multiResponseTypes = new MultiResponseJsonType[]
     {
-        new(typeof(SearchResponse)),
-        new(typeof(List<SearchResponse>)),
+        new(typeof(TResponse)),
+        new(typeof(List<TResponse>)),
         new(typeof(ErrorResponse))
     };
 
     IDictionary<Type, JsonSerializerOptions> serializerOptions = ConfigureJsonOptions(multiResponseTypes);
-    ResponseJsonSerializer<TRequest, List<SearchResponse>> serializer = new(multiResponseTypes, serializerOptions);
+    ResponseJsonSerializer<TRequest, TResponse> serializer = new(multiResponseTypes, serializerOptions);
 
-    services.AddMultiJsonSerializer<TRequest, ResponseWrapper<List<SearchResponse>>, MultiResponseJsonSerializer<TRequest, ResponseWrapper<List<SearchResponse>>>>(serializer, serializerOptions);
+    services.AddMultiJsonSerializer<TRequest, ResponseWrapper<TResponse>, MultiResponseJsonSerializer<TRequest, ResponseWrapper<TResponse>>>(serializer, serializerOptions);
 }
 
 //Add your JsonSerializerOptions as needed
@@ -87,8 +90,8 @@ If the seller sends different XML response structures in their response, impleme
 - Add the "AddMultiXmlSerializer" service in the extensions of the operation, for instance, in **Search** it would look like this:
 
 ```csharp
-AddMultiSerializer<SearchRequest, ResponseWrapper<List<SearchResponse>>>(services); 
-services.AddSearchOperation<SearchOperation, SearchRequest, ResponseWrapper<List<SearchResponse>>, AccessModel>(TgxPlatform.Name, configuration);
+AddMultiSerializer<SearchRequest, ResponseWrapper<SearchResponse>>(services); 
+services.AddSearchOperation<SearchOperation, SearchRequest, ResponseWrapper<SearchResponse>, AccessModel>(TgxPlatform.Name, configuration);
 
 public static void AddMultiSerializer<TRequest, TResponse>(this IServiceCollection services, string name)
 {
@@ -124,4 +127,76 @@ public class ResponseXmlSerializer<TRequest, TResponse> : MultiResponseXmlSerial
     };
 }
 
+```
+
+## Polling
+
+In some scenarios, polling is required to handle pagination. You can use the AddSearchPollingOperationFor extension to enable this behavior.
+
+- Specify Polling in the Search node in **appsettings.local.json**
+
+```json
+"Search": {
+    "ConnectorsHttpClient": "Default",
+    "Polling": {
+        "Margin": "00:00:00.000",
+        "Delay": "00:00:00.000"
+    }
+}
+```
+
+- Implement the Polling in the **SearchExtensions.cs**
+```csharp
+internal static class SearchExtensions
+{
+    public static void AddSearchServices(this IServiceCollection services,
+        IConfiguration configuration)
+    {
+        services.AddJsonSerializer<SearchRequest, SearchResponse>(JsonOptions.Configure);
+        services.AddSearchOperation<SearchOperation, SearchRequest, SearchResponse, AccessModel>(TgxPlatform.Name,
+            configuration).AddSearchPollingOperationFor<SearchRequest, SearchResponse, AccessModel>();
+    }
+}
+```
+
+This enables pagination support; you can then handle pages in your ParseResponses method as shown below:
+
+```csharp
+public SearchConnectorResponse ParseResponses(
+    SearchConnectorRequest connectorsRequest,
+    SearchParameters<AccessModel> connectorParameters,
+    IEnumerable<SupplierResponseWrapper<SearchResponse>> supplierResponses,
+    CancellationToken cancellationToken)
+{
+    var firstResponse = supplierResponses.First();
+
+    // Parses connector-specific options; not the focus here
+    ParseOptions(firstResponse);
+
+    var accommodations = connectorParameters.OptionsGenerator.Combine();
+
+    // Sets up the pagination context for the next page, if applicable
+    SetPaginationContext(firstResponse.header.Pagination);
+
+    // Marks whether this is the last page of results
+    return new SearchConnectorResponse(new SearchRs(accommodations))
+    {
+        IsFinished = IsPaginationFinished(firstResponse.header.Pagination)
+    };
+}
+
+private static bool IsPaginationFinished(Pagination pagination)
+{
+    // Pagination is finished when the current page is the last one
+    return pagination.currentPage >= pagination.totalPages;
+}
+
+private void SetPaginationContext(Pagination pagination)
+{
+    // If more pages exist, store the next page number in context for future requests
+    if (!IsPaginationFinished(pagination))
+    {
+        _contextCache.TryAdd(TgxPlatform.Pagination_Page, pagination.currentPage + 1);
+    }
+}
 ```

@@ -2,42 +2,6 @@
 sidebar_position: 4
 ---
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import HotelSettingsInput from "../../../../../src/graphql/generated-docs/HotelSettingsInput.mdx";
 import HotelXFilterInput from "../../../../../src/graphql/generated-docs/HotelXFilterInput.mdx";
 import HotelBookInput from "../../../../../src/graphql/generated-docs/HotelBookInput.mdx";
@@ -432,8 +396,8 @@ Once a Book (Reservation) method is run, our API response will provide its book 
 <details>
     <summary>What should I do if I receive both an OK status and an error in the same Book response?</summary>
     <div>
-        <div>If you receive an error and a booking status OK in the Book response, the reservation status prevails over the error.
-		Although you may also run a <a href="../booking-management/booking-read">Booking Query</a> in order to check the status of a reservation, please note that you should always contact the Seller in order to check the actual status of a booking in those cases you receive a booking status different than OK or no response at all.</div>
+        <div>If you receive an error and a booking status OK in the Book response, the error prevails over the reservation status.
+		Although you may also run a <a href="../booking-management/booking-read">Booking Query</a> in order to check the status of a reservation, please note that you should always contact the Seller in order to check the actual status of a booking in those cases you receive a booking status different than OK, no response at all or even a OK status with and error.</div>
     </div>
 </details>
 

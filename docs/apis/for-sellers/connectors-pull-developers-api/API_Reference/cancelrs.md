@@ -32,20 +32,20 @@ Represents the response for a hotel booking cancellation operation.
 | **Reference/ClientLocator** | String | The booking locator provided by the client.This is typically used to match the booking in the client's internal systems. |
 | **Reference/SupplierLocator** | String | The booking locator provided by the supplier.This identifier is used to reference the booking in the supplier's system. |
 | **Reference/HotelLocator** | String | The booking locator specific to the hotel, provided by the supplier. (Optional)This may be required in cases where the hotel system uses its own unique identifiers. |
-| **CancelLocator** | String | Gets or sets the cancel locator value specific to the cancellation operation. |
+| **CancelLocator** | String | Gets or sets the Cancel locator value specific to the cancellation operation. |
 | **Status** | [BookStatus](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/bookstatus) | Gets the status of the booking after the cancellation operation. Possible values: Unknown, Ko, Ok, OnRequest, Cancelled or PendingCommit. |
 | **BookPrice** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | Gets or sets the original booking price before cancellation. |
 | **BookPrice/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **BookPrice/Binding** | Boolean | Indicates whether the price is binding. |
-| **BookPrice/Net** | Double | The net price paid by the buyer to the seller. |
-| **BookPrice/Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **BookPrice/Net** | Double | The net price paid by the Buyer to the Seller. |
+| **BookPrice/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **BookPrice/NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **BookPrice/MinimumSellingPrice** | Double | The minimum selling price. |
 | **CancelPrice** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | Gets or sets the price associated with the cancellation operation. |
 | **CancelPrice/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **CancelPrice/Binding** | Boolean | Indicates whether the price is binding. |
-| **CancelPrice/Net** | Double | The net price paid by the buyer to the seller. |
-| **CancelPrice/Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **CancelPrice/Net** | Double | The net price paid by the Buyer to the Seller. |
+| **CancelPrice/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **CancelPrice/NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **CancelPrice**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
 | **AddOns** | Object | Gets or sets additional supplier information as key-value pairs. |

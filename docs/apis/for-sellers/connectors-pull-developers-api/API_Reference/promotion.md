@@ -1,6 +1,6 @@
 # Promotion
 
-Represents a promotion for a hotel accommodation in search responses.
+Represents a promotion for a hotel accommodation in Search responses.
 
 ## Properties
 

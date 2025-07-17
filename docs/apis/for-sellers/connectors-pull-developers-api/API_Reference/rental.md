@@ -1,6 +1,6 @@
 # Rental
 
-Represents a rental accommodation (e.g., vacation homes) in search responses.
+Represents a rental accommodation (e.g., vacation homes) in Search responses.
 
 ## Properties
 

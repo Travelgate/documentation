@@ -29,7 +29,7 @@ public interface IOptionsFromRoomsGenerator
   );
 }
 
-//Real example of how can it be used (injected):
+// Real example of how can it be used (injected):
 
 // Assuming you have an instance of IConnectorsUtilities called '_connectorsUtilities'
 
@@ -65,7 +65,7 @@ public interface IOptionsGenerator
   );
 }
 
-//Real example of how can it be used (injected):
+// Real example of how can it be used (injected):
 
 // Assuming you have an instance of IConnectorsUtilities called '_connectorsUtilities'
 
@@ -85,7 +85,7 @@ List<Accommodation> accomodationList = _optionsGenerator.Combine();
 ### **ICountryConverter**
 Converts ISO country codes and names, facilitating compatibility between supplier-specific formats and standardized ISO formats.
 
-> **Use Case**: Useful in `Search` or `Book` operations where supplier-specific country formats need to align with Travelgate standards.
+> **Use Case**: Applicable in `Search` or `Book` operations where supplier-specific country formats need to align with Travelgate standards.
 
 ```csharp
 public interface ICountryConverter
@@ -181,7 +181,7 @@ public interface ICountryConverter
     public string GetCountryNameEnFromIso3(string mappedCountry);
 }
 
-//Real example of how can it be used (injected):
+// Real example of how can it be used (injected):
 
 // Assuming you have an instance of IConnectorsUtilities called '_connectorsUtilities':
 _ = _connectorsUtilities.CountryConverter.TryMapIso2FromIso3("ESP", out string country);
@@ -270,13 +270,13 @@ public interface IMetadataConnectorsService
     /// <returns>An <see cref="MetadataElement"/> object representing the metadata from the current supplier.</returns>
     public MetadataElement GetMetadata();
 
-//Real example of how can it be used (injected):
+    // Real example of how can it be used (injected):
 
-// Assuming you have an instance of IConnectorsUtilities called 'utilities':
-OccupancyInfoDetailed occupancyInfoDetailed = _connectorsUtilities.MetadataConnectorsService.GetDetailedOccupancyInfo(firstOccupancy);
-bool hasTimezoneSpecified = _connectorsUtilities.MetadataConnectorsService.TryGetTimeZoneEnum(out TimeZoneEnum timeZoneEnum);
-AgeRanges ageRanges = _connectorsUtilities.MetadataConnectorsService.GetAgeRanges();
-MetadataElement metadataElement = _connectorsUtilities.MetadataConnectorsService.GetMetadata();
+    // Assuming you have an instance of IConnectorsUtilities called 'utilities':
+    OccupancyInfoDetailed occupancyInfoDetailed = _connectorsUtilities.MetadataConnectorsService.GetDetailedOccupancyInfo(firstOccupancy);
+    bool hasTimezoneSpecified = _connectorsUtilities.MetadataConnectorsService.TryGetTimeZoneEnum(out TimeZoneEnum timeZoneEnum);
+    AgeRanges ageRanges = _connectorsUtilities.MetadataConnectorsService.GetAgeRanges();
+    MetadataElement metadataElement = _connectorsUtilities.MetadataConnectorsService.GetMetadata();
 }
 ```
 

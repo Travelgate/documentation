@@ -1,7 +1,7 @@
 # FromBookCriteria
 
-Represents the criteria for creating a quote from a book request. 
-This is used internally by the framework when a booking operation requires a secondary quote.
+Represents the criteria for creating a Quote from a book request. 
+This is used internally by the framework when a booking operation requires a secondary Quote.
 
 ## Properties
 
@@ -11,14 +11,14 @@ This is used internally by the framework when a booking operation requires a sec
 | **BookPrice/Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | The price of the booking. |
 | **BookPrice/Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **BookPrice/Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **BookPrice/Price/Net** | Double | The net price paid by the buyer to the seller. |
-| **BookPrice/Price/Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **BookPrice/Price/Net** | Double | The net price paid by the Buyer to the Seller. |
+| **BookPrice/Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **BookPrice/Price/NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **BookPrice/Price**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
 | **BookPrice/DeltaPrice** | [DeltaPrice](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/deltaprice) | The delta price, representing any allowable price changes or adjustments. |
 | **BookPrice/DeltaPrice/Amount** | Double | The fixed amount allowed for the delta price. |
 | **BookPrice/DeltaPrice**<br />**Percentage** | Double | The percentage allowed for the delta price. |
-| **DateQuote** | String | Represents the date when the quote is generated during the booking process. |
+| **DateQuote** | String | Represents the date when the Quote is generated during the booking process. |
 | **CancelPolicy** | [CancelPolicy](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/cancelpolicy) | Specifies the cancellation policy associated with the booking. |
 | **CancelPolicy/Refundable** | Boolean | Indicates whether the booking is refundable. |
 | **CancelPolicy/CancelPenalties** | Array&lt;[CancelPenalty](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/cancelpenalty)&gt; | A collection of penalties that apply if the booking is canceled. |

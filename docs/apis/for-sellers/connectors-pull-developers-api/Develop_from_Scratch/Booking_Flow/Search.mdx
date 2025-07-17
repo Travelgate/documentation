@@ -98,11 +98,11 @@ File location: "**ConnectorsIntegration\Search\Models\Response\SearchResponse.cs
 ## **Develop**
 
 ### **Step 1: Register the serializers and operations**
-To specify which serializer and operations the developer will be using (based on the seller's API) we can specify it in our "**Extensions**":
+To specify which serializer and operations the developer will be using (based on the Seller's API) we can specify it in our "**Extensions**":
 
 File location: "**ConnectorsIntegration\Search\SearchExtensions.cs**"
 
-If the seller works with **JSON** format, we can specify the integration to work with **JSON** with the following:
+If the Seller works with **JSON** format, we can specify the integration to work with **JSON** with the following:
 
 ```csharp
 internal static class SearchExtensions
@@ -120,7 +120,7 @@ internal static class SearchExtensions
 }
 ```
 
-For details about others serializers, check [Extensions](../../Advanced_Use/Extensions)
+For details about others serializers, check [Extensions](../../Advanced_Use/Booking_Extensions)
 
 For more details about operations, check [PreOperations](../../Connector_Framework/PreOperation_Overview) and [Operations](../../Connector_Framework/Operation_Overview)
 
@@ -224,10 +224,10 @@ public bool TryValidateSupplierResponses(
 
 ### **Step 4: Build the Seller's request**
 
-This class will contain a "BuildRequests" method that will have the following args: 
+This class will contain a "BuildRequests" method that will have the following arguments: 
 
 - Object of the requests from the models previously created (SearchRequest)
-- The request that the buyer sends (connectorsRequest)
+- The request that the Buyer sends (connectorsRequest)
 - Parameters (connectorParameters) which will have some helpers:
 
 File location: "**ConnectorsIntegration\Search\Operations\SearchOperation.BuildRequest.cs**"
@@ -256,16 +256,16 @@ internal partial class SearchOperation
         string checkIn = searchCriteria.CheckIn;
         //Refers to the checkOut of the booking
         string checkOut = searchCriteria.CheckOut;
-        //Refers to the hotelCode of the booking. If the seller allows requests with multiple hotels, the Accomodations should be iterated
+        //Refers to the hotelCode of the booking. If the Seller allows requests with multiple hotels, the Accomodations should be iterated
         string hotelCode = searchCriteria.Destinations.Accommodations.First().Code;
-        //Refers to the occupancy of the booking. If the seller allows requests with multiple occupancies, the Occupancies should be iterated
+        //Refers to the occupancy of the booking. If the Seller allows requests with multiple occupancies, the Occupancies should be iterated
         Occupancy firstOccupancy = searchCriteria.Occupancies.First();
         OccupancyInfoDetailed occupancyInfoDetailed = _connectorsUtilities.MetadataConnectorsService.GetDetailedOccupancyInfo(firstOccupancy);
 
         SearchRequest searchRequest = BuildSearchRequest(checkIn, checkOut, hotelCode, occupancyInfoDetailed);
 
-        //Search URL we prepared back in the AccessModel, which will be passed by the buyer
-        string searchUrl = connectorParameters.ParametersModel.SearchUrl;
+        //Search URL we prepared back in the AccessModel, which will be passed by the Buyer
+        string searchUrl = connectorParameters.ParametersModel.UrlSearch;
 
         SupplierRequestWrapper<SearchRequest> supplierRequest = new(
             searchRequest,
@@ -280,7 +280,7 @@ internal partial class SearchOperation
 
     private static SearchRequest BuildSearchRequest(string checkIn, string checkOut, string hotelCode, OccupancyInfoDetailed occupancyInfoDetailed)
     {
-        //The request towards the seller system
+        //The request towards the Seller system
       
         return new SearchRequest()
         {
@@ -302,7 +302,7 @@ internal partial class SearchOperation
 
 ### **Step 5: Parse the Seller's response**
 
-Once the request has been sent, we will have to control and parse the response returned by the seller.
+Once the request has been sent, we will have to control and parse the response returned by the Seller.
 
 We will be implementing the "ParseResponse" step inside SearchOperation:
 
@@ -331,7 +331,7 @@ internal partial class SearchOperation
         IEnumerable<SupplierResponseWrapper<SearchResponse>> supplierResponses,
         CancellationToken cancellationToken)
     {
-        //We can safely do First() in case the seller only has one response because we check errors previously
+        //We can safely do First() in case the Seller only has one response because we check errors previously
         var supplierResponse = supplierResponses.First().Response;
         return new SearchConnectorResponse(ParseSupplierResponse(connectorsRequest, supplierResponse));
     }
@@ -377,7 +377,7 @@ internal partial class SearchOperation
             //Helper to map a string currency
             Currency supplierCurrency = CurrencyIso4217Mapper.Map(supplierCancelPolicy.PenaltyCurrency);
             PenaltyType penaltyType = MapSellerToTgxPenaltyType(supplierCancelPolicy.PenaltyType);
-            //Helper to create a policy based in a seller cancel penalty with deadline that has timezone
+            //Helper to create a policy based in a Seller cancel penalty with deadline that has timezone
             var penalty = _connectorsUtilities.CancelPenaltyManager.CancelPenaltyFromDateWithTimeZone(
                 checkIn,
                 penaltyType,

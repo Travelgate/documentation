@@ -1,6 +1,6 @@
 # Restriction
 
-Represents a restriction for a hotel accommodation in search responses.
+Represents a restriction for a hotel accommodation in Search responses.
 
 ## Properties
 

@@ -1,0 +1,66 @@
+---
+title: "Content Extensions"
+sidebar_position: 3
+---
+
+## MultiSerializer
+
+To use the MultiSerializer, configure it within the operation you need (it is commonly used for small CSV operations).
+
+### Basic Setup
+Start by configuring the main serializer (e.g., CSV):
+
+- In this case, a **CsvConfigFactory** class is created to establish the **CSV configuration**:
+
+
+```csharp
+public static class CsvConfigFactory
+{
+    // Returns a default configuration for the CsvSerializer
+    public static CsvSerializerConfiguration GetDefaultConfiguration()
+    {
+        // CsvSerializerConfiguration is a class defined in Connectors
+        return new CsvSerializerConfiguration
+        {
+            Delimiter = ",",
+            HasHeaderRecord = true,
+            IgnoreBlankLines = true
+        };
+    }
+}
+```
+
+Then use it in the operations **Extensions** class:
+```csharp
+var csvConfiguration = CsvSerializerConfiguration.GetDefaultConfiguration();
+
+services
+    .AddMultiSerializer(new CsvSerializer<FtpRequest, IEnumerable<Hotel>>(csvConfiguration))
+    .AddPreSerializer<CompressionSerializer, CompressionSerializerConfiguration>(o => {
+        o.CompressionType = CompressionType.TarGZ;
+        o.FileName = TgxPlatform.HOTEL_LIST;
+    });
+
+services.AddHotelListFullOperation<HotelListFullOperation, IEnumerable<Hotel>, AccessModel>(
+    TgxPlatform.Name, configuration);
+Advanced PreSerializer Usage
+```
+
+You can also dynamically select a file inside a compressed archive:
+
+```csharp
+services
+    .AddMultiSerializer(new CsvSerializer<FtpRequest, IEnumerable<Hotel>>(csvConfiguration))
+    .AddPreSerializer<CompressionSerializer, CompressionSerializerConfiguration>(o => {
+        o.CompressionType = CompressionType.TarGZ;
+        o.SelectFileFunction = fileList => {
+            foreach (var fileName in fileList)
+            {
+                if (fileName.Contains(DateTime.Now.ToShortDateString()))
+                    return fileName;
+            }
+            // FILE NOT FOUND
+            return null;
+        };
+    });
+```

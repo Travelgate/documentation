@@ -3,6 +3,10 @@ title: "Book"
 sidebar_position: 5
 ---
 
+:::caution
+If a second Quote is necessary before the Book operation, consult the [Repeat Operations](../../Connector_Framework/Repeat_Flow_Operations.mdx) section before developing the Book operation.
+:::
+
 ## **Mock**
 
 ### **Step 1: Define your Book responses (Mocks)**
@@ -97,11 +101,11 @@ File location: "**ConnectorsIntegration\Book\Models\Response\BookResponse.cs**"
 ## **Develop**
 
 ### **Step 1: Register the serializers and operations**
-To specify which serializer and operations the developer will be using (based on the seller's API) we can specify it in our "**Extensions**":
+To specify which serializer and operations the developer will be using (based on the Seller's API) we can specify it in our "**Extensions**":
 
 File location: "**ConnectorsIntegration\Book\BookExtensions.cs**"
 
-If the seller works with **JSON** format, we can specify the integration to work with **JSON** with the following:
+If the Seller works with **JSON** format, we can specify the integration to work with **JSON** with the following:
 
 ```csharp
 internal static class BookExtensions
@@ -119,7 +123,7 @@ internal static class BookExtensions
 }
 ```
 
-For details about others serializers, check [Extensions](../../Advanced_Use/Extensions)
+For details about others serializers, check [Extensions](../../Advanced_Use/Booking_Extensions)
 
 For more details about operations, check [PreOperations](../../Connector_Framework/PreOperation_Overview) and [Operations](../../Connector_Framework/Operation_Overview)
 
@@ -188,10 +192,10 @@ public bool TryValidateSupplierResponses(
 
 ### **Step 3: Build the Seller's request**
 
-This class will contain a "BuildRequests" method that will have the following args: 
+This class will contain a "BuildRequests" method that will have the following arguments: 
 
 - Object of the requests from the models previously created (BookRequest)
-- The request that the buyer sends (connectorsRequest)
+- The request that the Buyer sends (connectorsRequest)
 - Parameters (connectorParameters) which will have some helpers:
 
 File location: "**ConnectorsIntegration\Book\Operations\BookOperation.BuildRequest.cs**"
@@ -224,7 +228,7 @@ internal partial class BookOperation
         //Refers to the checkOut of the booking
         string checkOut = bookCriteria.CheckOut;
         string hotelCode = bookCriteria.Accommodation.Code;
-        //Refers to the occupancy of the booking. If the seller allows requests with multiple occupancies, the Occupancies should be iterated
+        //Refers to the occupancy of the booking. If the Seller allows requests with multiple occupancies, the Occupancies should be iterated
         Occupancy firstOccupancy = bookCriteria.Occupancies.First();
         OccupancyInfoDetailed occupancyInfoDetailed = _connectorsUtilities.MetadataConnectorsService.GetDetailedOccupancyInfo(firstOccupancy);
 
@@ -240,8 +244,8 @@ internal partial class BookOperation
             clientReference,
             occupancyInfoDetailed);
 
-        //Generic URL we prepared back in the AccessModel, which will be passed by the buyer
-        string genericUrl = connectorParameters.ParametersModel.GenericUrl;
+        //Generic URL we prepared back in the AccessModel, which will be passed by the Buyer
+        string genericUrl = connectorParameters.ParametersModel.UrlGeneric;
 
         SupplierRequestWrapper<BookRequest> supplierRequest = new(
             bookRequest,
@@ -262,7 +266,7 @@ internal partial class BookOperation
         string clientReference,
         OccupancyInfoDetailed occupancyInfoDetailed) 
     {
-        //The request towards the seller system
+        //The request towards the Seller system
       
         return new BookRequest()
         {
@@ -286,7 +290,7 @@ internal partial class BookOperation
 
 ### **Step 4: Parse the Seller's response**
 
-Once the request has been sent, we will have to control and parse the response returned by the seller.
+Once the request has been sent, we will have to control and parse the response returned by the Seller.
 
 We will be implementing the "ParseResponse" step inside BookOperation:
 
@@ -348,7 +352,7 @@ internal partial class BookOperation
             //Helper to map a string currency
             Currency supplierCurrency = CurrencyIso4217Mapper.Map(supplierCancelPolicy.PenaltyCurrency);
             PenaltyType penaltyType = MapSellerToTgxPenaltyType(supplierCancelPolicy.PenaltyType);
-            //Helper to create a policy based in a seller cancel penalty with deadline that has timezone
+            //Helper to create a policy based in a Seller cancel penalty with deadline that has timezone
             var penalty = _connectorsUtilities.CancelPenaltyManager.CancelPenaltyFromDateWithTimeZone(
                 checkIn,
                 penaltyType,

@@ -66,16 +66,16 @@ This response includes detailed booking information, advice messages, and any ad
 | **Bookings/Hotel/Rooms/RoomPrice**<br />**Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | The total price of the room. |
 | **Bookings/Hotel/Rooms/RoomPrice**<br />**Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **Bookings/Hotel/Rooms/RoomPrice**<br />**Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **Bookings/Hotel/Rooms/RoomPrice**<br />**Price/Net** | Double | The net price paid by the buyer to the seller. |
-| **Bookings/Hotel/Rooms/RoomPrice**<br />**Price/Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **Bookings/Hotel/Rooms/RoomPrice**<br />**Price/Net** | Double | The net price paid by the Buyer to the Seller. |
+| **Bookings/Hotel/Rooms/RoomPrice**<br />**Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **Bookings/Hotel/Rooms/RoomPrice**<br />**Price/NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **Bookings/Hotel/Rooms/RoomPrice**<br />**Price/MinimumSellingPrice** | Double | The minimum selling price. |
 | **Bookings/Hotel/Rooms/RoomPrice**<br />**PriceBreakdown** | Array&lt;[PriceBreakdown](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/pricebreakdown)&gt; | Breakdown of the room price over specific periods, such as daily rates. |
 | **Bookings/Hotel/Rooms/RoomPrice**<br />**PriceBreakdown/Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | The price for each day of the room during the specified period. |
 | **Bookings/Hotel/Rooms/RoomPrice**<br />**PriceBreakdown/Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **Bookings/Hotel/Rooms/RoomPrice**<br />**PriceBreakdown/Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **Bookings/Hotel/Rooms/RoomPrice**<br />**PriceBreakdown/Price/Net** | Double | The net price paid by the buyer to the seller. |
-| **Bookings/Hotel/Rooms/RoomPrice**<br />**PriceBreakdown/Price/Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **Bookings/Hotel/Rooms/RoomPrice**<br />**PriceBreakdown/Price/Net** | Double | The net price paid by the Buyer to the Seller. |
+| **Bookings/Hotel/Rooms/RoomPrice**<br />**PriceBreakdown/Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **Bookings/Hotel/Rooms/RoomPrice**<br />**PriceBreakdown/Price**<br />**NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **Bookings/Hotel/Rooms/RoomPrice**<br />**PriceBreakdown/Price**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
 | **Bookings/Hotel/Rooms/RoomPrice**<br />**PriceBreakdown/Start** | Integer | The starting day of the pricing period (inclusive). |
@@ -91,7 +91,7 @@ This response includes detailed booking information, advice messages, and any ad
 | **Bookings/Hotel/Rooms**<br />**Promotions/Code** | String | The unique code identifying the promotion. |
 | **Bookings/Hotel/Rooms**<br />**Promotions/Name** | String | The name of the promotion. |
 | **Bookings/Hotel/Rooms/Remarks** | Array&lt;[Remark](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remark)&gt; | Additional remarks or notes about this room. |
-| **Bookings/Hotel/Rooms/Remarks**<br />**RemarkType** | [RemarkType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remarktype) | The type of the remark, categorized by RemarkType.This specifies the nature or purpose of the remark: Related to the hotel as a whole. Specific to the room being booked. Related to services provided by the accommodation. General remarks not tied to a specific entity. |
+| **Bookings/Hotel/Rooms/Remarks**<br />**RemarkType** | [RemarkType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remarktype) | The type of the remark, categorized by RemarkType, specifies its nature or purpose. It may refer to the hotel as a whole, a specific room being booked, services provided by the accommodation, or general remarks not tied to any particular entity. |
 | **Bookings/Hotel/Rooms/Remarks**<br />**Text** | String | The text content of the remark, providing details or additional notes.This can include supplier-specific instructions, conditions, or general information. |
 | **Bookings/Hotel/Rooms**<br />**Surcharges** | Array&lt;[Surcharge](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/surcharge)&gt; | Additional surcharges applied to this room. |
 | **Bookings/Hotel/Rooms**<br />**Surcharges/ChargeType** | [ChargeType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/chargetype) | Specifies whether the surcharge is included in the room rate or must be paid separately at the property. See ChargeType for possible values. |
@@ -100,8 +100,8 @@ This response includes detailed booking information, advice messages, and any ad
 | **Bookings/Hotel/Rooms**<br />**Surcharges/Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | Represents the price of this surcharge, including the amount and currency. See Price for details about the price structure. |
 | **Bookings/Hotel/Rooms**<br />**Surcharges/Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **Bookings/Hotel/Rooms**<br />**Surcharges/Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **Bookings/Hotel/Rooms**<br />**Surcharges/Price/Net** | Double | The net price paid by the buyer to the seller. |
-| **Bookings/Hotel/Rooms**<br />**Surcharges/Price/Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **Bookings/Hotel/Rooms**<br />**Surcharges/Price/Net** | Double | The net price paid by the Buyer to the Seller. |
+| **Bookings/Hotel/Rooms**<br />**Surcharges/Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **Bookings/Hotel/Rooms**<br />**Surcharges/Price/NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **Bookings/Hotel/Rooms**<br />**Surcharges/Price**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
 | **Bookings/Hotel/Rooms**<br />**Surcharges/Code** | String | An optional code that uniquely identifies this surcharge for internal or external reference. This can be useful for tracking specific fees or integrating with supplier systems. |
@@ -130,8 +130,8 @@ This response includes detailed booking information, advice messages, and any ad
 | **Bookings/Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | The total price of the booking. |
 | **Bookings/Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **Bookings/Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **Bookings/Price/Net** | Double | The net price paid by the buyer to the seller. |
-| **Bookings/Price/Gross** | Double | The gross price, which includes the net price and the buyer's commission. |
+| **Bookings/Price/Net** | Double | The net price paid by the Buyer to the Seller. |
+| **Bookings/Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **Bookings/Price/NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
 | **Bookings/Price**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
 | **Bookings/CancelPolicy** | [CancelPolicy](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/cancelpolicy) | The cancellation policy associated with the booking. |
@@ -144,7 +144,7 @@ This response includes detailed booking information, advice messages, and any ad
 | **Bookings/CancelPolicy**<br />**CancelPenalties/Deadline** | String | Specifies the absolute deadline for the penalty in UTC format. |
 | **Bookings/CancelPolicy**<br />**CancelPolicyDescription** | String | Provides additional details or a textual summary of the cancellation policy. |
 | **Bookings/Remarks** | Array&lt;[Remark](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remark)&gt; | Additional remarks or notes related to the booking. |
-| **Bookings/Remarks/RemarkType** | [RemarkType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remarktype) | The type of the remark, categorized by RemarkType.This specifies the nature or purpose of the remark: Related to the hotel as a whole. Specific to the room being booked. Related to services provided by the accommodation. General remarks not tied to a specific entity. |
+| **Bookings/Remarks/RemarkType** | [RemarkType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remarktype) | The type of the remark, categorized by RemarkType, specifies its nature or purpose. It may refer to the hotel as a whole, a specific room being booked, services provided by the accommodation, or general remarks not tied to any particular entity. |
 | **Bookings/Remarks/Text** | String | The text content of the remark, providing details or additional notes.This can include supplier-specific instructions, conditions, or general information. |
 | **Bookings/BillingSupplierCode** | String | The code of the agency responsible for the booking. |
 | **Bookings/Payable** | String | Information about the entity responsible for payment of the booking. |

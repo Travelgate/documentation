@@ -57,18 +57,17 @@ To monitor improvements in response time and traffic reduction, select **"View D
 
 ## Can I skip cache for a specific request when Speed is active?
 
-Yes, the Buyer can choose to skip the cache for a specific request by setting the `useCache` parameter to `false` in the request configuration. 
+Yes. Buyers can skip the cache for a specific request by setting the `useCache` parameter to `false` in the request configuration. This feature is **available for both Legacy and Hotel-X Buyers**.
 
-    | Parameter Key | Type    | Possible Values  | Description                          |
-    |---------------|---------|------------------|--------------------------------------|
-    | `useCache`   | string | `false` | If set to `false`, skip the cache and forwards the request to the Seller. |
 
-:::warning Mandatory
-To enable this feature for a connection, please open a **case** in our [Support Portal](https://app.travelgate.com/support). Otherwise, the parameter will have no effect.
+| Parameter Key | Type   | Possible Values | Description                                                                 |
+|---------------|--------|-----------------|-----------------------------------------------------------------------------|
+| `useCache`    | string | `false`         | When set to `false`, bypasses the cache and forwards the request to the Seller. |
+
+
+**'useCache' for Hotel-X Buyers:**  
+Buyers using the Hotel-X Buyers Pull API **must include the `AddParameter` plugin** to enable the 'useCache' functionality. More details [here](../../../../../docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/add-parameter).
+
+:::warning Important  
+To enable the 'useCache' feature for your connection (either Legacy or Hotel-X), please **open a case** in our [Support Portal](https://app.travelgate.com/support). Otherwise, the parameter will have no effect.  
 :::
-
-:::info Hotel-X Buyers
-Buyers using the **Hotel-X Buyers Pull API** must use the `AddParameter` plugin. More information [here](../../../../../docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/add-parameter).
-:::
-
-

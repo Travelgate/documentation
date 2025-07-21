@@ -20,6 +20,11 @@ Follow these steps to audit Search logs:
 6. **Wait a few minutes** for the logs to be processed, then retrieve them in the Logging screen.  
 7. **Apply the correct filter** by selecting **“Search”** as the **Operation Type** to view the audited logs.
 
+:::info
+- Buyer connections using our **Legacy API** are audited as a whole — access-level auditing is not available. This means that when retrieving logs using the Logging tool, you **should not use the Access Filter**, as it will return no results.
+- If you're a Seller, you can check whether your Buyer is integrated via the Hotel-X API or the Legacy Pull Buyers API by looking for the “Hotel-X” label on the connection in the “My Connections” screen. If the Buyer is using the Hotel-X API, the [“Hotel-X” label](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details/#additional-access-information) will appear next to the “Buyer” label.
+:::
+
 ## Requirements to Use the 'Audit Searches' Functionality
 - Travelgate's system needs a **steady flow of traffic** (not just isolated requests) to accurately register Search transactions.  
 - If you're in a **testing phase** or have **low traffic**, we recommend retrieving complete Search transactions **at the request level**. Follow the guidelines in this [article](/kb/platform/app-features/monitoring-tools/logging/audit-supplier-transactions) for more information.

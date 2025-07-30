@@ -7,27 +7,19 @@ import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 import withToken from "../components/WithToken";
 import {hotelsListQuerySampleA} from "../graphql/sample-queries/hotels.list.query";
 import {replaceClient} from "../utils";
+import createJSONWorker from 'https://esm.sh/monaco-editor/esm/vs/language/json/json.worker.js?worker';
+import createGraphQLWorker from 'https://esm.sh/monaco-graphql/esm/graphql.worker.js?worker';
+import createEditorWorker from 'https://esm.sh/monaco-editor/esm/vs/editor/editor.worker.js?worker';
 
 globalThis.MonacoEnvironment = {
     getWorker(_workerId, label) {
-        // eslint-disable-next-line no-console
-        console.info('setup-workers/webpack', { label });
         switch (label) {
             case 'json':
-                return new Worker(
-                    new URL(
-                        'monaco-editor/esm/vs/language/json/json.worker.js',
-                        import.meta.url,
-                    ),
-                );
+                return createJSONWorker();
             case 'graphql':
-                return new Worker(
-                    new URL('monaco-graphql/esm/graphql.worker.js', import.meta.url),
-                );
+                return createGraphQLWorker();
         }
-        return new Worker(
-            new URL('monaco-editor/esm/vs/editor/editor.worker.js', import.meta.url),
-        );
+        return createEditorWorker();
     },
 };
 

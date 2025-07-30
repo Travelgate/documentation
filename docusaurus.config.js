@@ -186,7 +186,7 @@ const config = {
         },
         blog: false,
         theme: {
-          customCss: require.resolve('./src/scss/custom.scss'),
+          customCss: ['./node_modules/graphiql/dist/style.css', require.resolve('./src/scss/custom.scss')],
         },
       }),
     ],

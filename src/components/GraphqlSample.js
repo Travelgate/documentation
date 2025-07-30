@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import '@graphiql/react/setup-workers/webpack';
 import BrowserOnly from '@docusaurus/BrowserOnly';
 import {createGraphiQLFetcher} from '@graphiql/toolkit';
 import {GraphiQL} from 'graphiql';
@@ -8,6 +7,29 @@ import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 import withToken from "../components/WithToken";
 import {hotelsListQuerySampleA} from "../graphql/sample-queries/hotels.list.query";
 import {replaceClient} from "../utils";
+
+globalThis.MonacoEnvironment = {
+    getWorker(_workerId, label) {
+        // eslint-disable-next-line no-console
+        console.info('setup-workers/webpack', { label });
+        switch (label) {
+            case 'json':
+                return new Worker(
+                    new URL(
+                        'monaco-editor/esm/vs/language/json/json.worker.js',
+                        import.meta.url,
+                    ),
+                );
+            case 'graphql':
+                return new Worker(
+                    new URL('monaco-graphql/esm/graphql.worker.js', import.meta.url),
+                );
+        }
+        return new Worker(
+            new URL('monaco-editor/esm/vs/editor/editor.worker.js', import.meta.url),
+        );
+    },
+};
 
 let fetcher = null;
 

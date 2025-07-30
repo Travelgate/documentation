@@ -11,12 +11,7 @@ const config = {
   title: 'Travelgate Docs',
   tagline: 'For humans, by humans.',
   favicon: 'img/favicon.ico',
-  future: {
-    v4: {
-      removeLegacyPostBuildHeadAttribute: true, // required
-    },
-    experimental_faster: true,
-  },
+
   // Set the production url of your site here
   url: 'https://docs.travelgate.com',
   // Set the /<baseUrl>/ pathname under which your site is served

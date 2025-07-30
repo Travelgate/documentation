@@ -5,7 +5,7 @@ sidebar_position: 20
 # VALIDATION_ERROR
 
 ## What Does a "VALIDATION_ERROR" Mean? 
-A **"VALIDATION_ERROR"** occurs when the validation information provided in your Hotel-X request does not match the information set for your account or is invalid for that specific request.
+A "VALIDATION_ERROR" occurs when the validation information provided in your Hotel-X request does not match the information set for your account or is invalid for that specific request.
 
 ## What Can I Do If I Receive a "VALIDATION_ERROR"? 
 Since this error indicates a discrepancy or issue with the validation process, check the following:

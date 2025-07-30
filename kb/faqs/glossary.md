@@ -246,7 +246,7 @@ A continuous stream of data provided to or from a system. In Travelgate’s cont
 - **Force Update Now**  
 A Travelgate’s functionality that forces an immediate update of static content data, overriding the normal update schedule.
 
-- **FREE (TG Payment Type)**  
+- **FREE (TGX Payment Type)**  
 A payment type in the Travelgate Platform indicating that a Partner connection has no cost for them. The other Party in the connection must confirm the full payment of the connectivity from their side. 
 
 - **Front Solution**  
@@ -584,10 +584,10 @@ The standard number of adult paxes of a room. Default room occupancy for prici
 - **Stats**  
 Metrics on system usage and performance.
 
-- **STD (TG payment type)**  
+- **STD (TGX payment type)**  
 A payment type in the Travelgate system indicating that the standard booking fee applies for both Partners in a connection (they share costs). 
 
-- **SUP (TG payment type)**  
+- **SUP (TGX payment type)**  
 A payment type in the Travelgate system indicating that both standard booking fees and supplement apply to this connection only for a Partner (for the other party, it will be free). 
 
 - **Supplement**  
@@ -614,7 +614,7 @@ A specified duration that limits how long a process or operation should take bef
 - **Traffic Optimizer**  
 Intelligent optimization tool offered by Travelgate that aims to improve the Look-to-Book (L2B) ratio, reduce unnecessary search traffic, and cut costs for connections using the Hotel-X Buyers API.
 
-- **Travelgate Academy**  
+- **Travelgate Academy (TGX Academy)**  
 Training videos and resources for users.
 
 - **TTV (Total Transaction Value)**  

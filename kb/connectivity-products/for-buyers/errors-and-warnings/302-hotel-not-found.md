@@ -5,7 +5,7 @@ sidebar_position: 14
 # 302 Error - Hotel Not Found
 
 ## What Does a 302 Error Mean?
-A **302 error** occurs when our system is unable to locate the requested hotel in your [Hotels](/kb/connectivity-products/for-buyers/hotel-x/content/hotels) (Descriptive Info) content method.
+A 302 error occurs when our system is unable to locate the hotel you requested in your [Hotels](/kb/connectivity-products/for-buyers/hotel-x/content/hotels) (DescriptiveInfo) method.
 
 ```
 <applicationErrors>

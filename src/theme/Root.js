@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import 'graphiql/graphiql.css';
+import 'graphiql/setup-workers/webpack';
 import {Auth0Provider} from '@auth0/auth0-react';
 import useIsBrowser from "@docusaurus/useIsBrowser";
 import {ApolloProvider, ApolloClient, InMemoryCache, useQuery, gql, createHttpLink} from "@apollo/client";

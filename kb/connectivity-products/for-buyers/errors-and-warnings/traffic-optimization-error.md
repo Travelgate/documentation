@@ -5,7 +5,7 @@ sidebar_position: 24
 # TRAFFIC_OPTIMIZATION_ERROR
 
 ### What Does a "TRAFFIC_OPTIMIZATION_ERROR" Mean? 
-A **"TRAFFIC_OPTIMIZATION_ERROR"** occurs when a connection or access has been activated in Traffic Optimizer, and the Buyer requests only blacklisted hotels.
+A "TRAFFIC_OPTIMIZATION_ERROR" occurs when a connection or access has been activated in Traffic Optimizer, and the Buyer requests only blacklisted hotels.
 
 #### Example:
 ```json

@@ -18,9 +18,9 @@ This warning appears in the Legacy Pull Buyers API response when the connection 
 
 ### What Can I Do If I Receive a ProviderNotActivated warning in my Response?
 To resolve this issue:
-1. **Verify Supplier Code**
-   - Make sure you've included the correct provider code in your request. You can verify your Sellers' supplier codes directly in the ["My Connections"](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details#additional-access-information) section, at the Supplier and Access level.
-   - Your request's provider code should always match the supplier code shown in "My Connections.
+1. **Verify Provider Code**
+   - Ensure that you have included the correct provider code in your request.
+   - The provider code should match the one provided during activation.
 
 ![Provider Not Activated](https://storage.travelgate.com/kbase/provided_not_actived.jpg)
 

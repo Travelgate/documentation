@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import 'graphiql/setup-workers/webpack';
+import '@graphiql/react/setup-workers/webpack';
 import BrowserOnly from '@docusaurus/BrowserOnly';
 import {createGraphiQLFetcher} from '@graphiql/toolkit';
 import {GraphiQL} from 'graphiql';

@@ -14,6 +14,6 @@ Travelgate offers powerful and flexible API solutions tailored to enhance travel
 ### For Sellers  
 
 - The [**Connectors Pull Sellers API Framework**](/docs/apis/for-sellers/connectors-pull-developers-api/Overview) supports real-time communication with the Seller's system, allowing dynamic product access for Buyers in the marketplace.  
-- The [**Inventory Push Sellers API**](/docs/apis/for-sellers/inventory-push-graphql-api/quickstart.mdx) allows Sellers to push availability and pricing into Travelgate’s Inventory system, making their product accessible to all connected Buyers.
+- The [**Inventory Push Sellers API**](/docs/apis/for-sellers/inventory-push-graphql-api/quickstart.mdx) allows Sellers to push availability and pricing into TravelgateX’s Inventory system, making their product accessible to all connected Buyers.
 
 ![API Overview](https://storage.travelgate.com/docs/APIs_Overview.svg)

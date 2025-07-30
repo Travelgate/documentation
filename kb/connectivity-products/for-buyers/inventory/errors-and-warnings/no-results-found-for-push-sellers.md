@@ -33,7 +33,7 @@ Below are the possible reasons for availability not being displayed for Push Sup
    - Verify that the booking limit has been correctly set up.
 
 #### 6. **Mismatch in Search Criteria**
-   - Ensure that the Search criteria in your request match the criteria previously configured in your SetUp and loaded for the relevant hotels, rates, or rooms (e.g., dates, occupancy, market, nationality, currency, etc.).
+   - Ensure that the search criteria in your request match the criteria previously loaded for those rates/rooms.
 
 :::info
 For further information, check our [Documentation](/docs/apps/inventory/extranet/overview) on the Inventory Extranet. 🚀

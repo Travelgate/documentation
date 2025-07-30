@@ -71,10 +71,3 @@ When performing a "Force Content Now" update to refresh a Seller's portfolio, ke
 
 If you've followed all the steps and still do not have the most up-to-date content, feel free to [contact our Support Team](/kb/platform/support-portal/case-guidelines). We’re here to ensure you have the best possible experience!
 :::
-
-### The message “Multiple Warnings (click to see)” appears in my Search response — what should I do?
-[Warnings](/docs/apis/for-buyers/hotel-x-pull-buyers-api/making-requests/errors-and-warnings/booking-flow#warning-list) indicate potentially problematic situations or errors that do not require the service to be terminated. These warnings can originate either from the Hotel-X layer or from the Seller’s system.
-
-To better understand and resolve the warnings in your Search response, follow these steps:
-1. **Click on the “Multiple Warnings (click to see)” notification**. A list of all received warnings will be displayed. Review the details and refer to our documentation on [errors and warnings](/kb/connectivity-products/for-buyers/errors-and-warnings/overview) for more information and resolution steps.
-2. **Retrieve the Search logs by clicking “View Search Logs” in the left-hand menu**. These logs provide detailed insights to help you analyze the cause of the warnings and determine how to address them.

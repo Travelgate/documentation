@@ -53,7 +53,7 @@ const GraphqlSample = ({token, query, variables}) => {
                                     fetcher={fetcher}
                                     initialHeaders={headers}
                                     initialQuery={query??hotelsListQuerySampleA}
-                                    variables={parsedVariables??''}
+                                    initialVariables={parsedVariables??''}
                                     //onTabChange={(tabState) => { tabState.tabs = []; return false; }}
                                 >
                                     <GraphiQL.Logo><></></GraphiQL.Logo>

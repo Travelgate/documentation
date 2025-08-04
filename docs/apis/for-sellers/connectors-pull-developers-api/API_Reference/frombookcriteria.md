@@ -14,17 +14,17 @@ This is used internally by the framework when a booking operation requires a sec
 | **BookPrice/Price/Net** | Double | The net price paid by the Buyer to the Seller. |
 | **BookPrice/Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **BookPrice/Price/NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
-| **BookPrice/Price**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
+| **BookPrice/Price/**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
 | **BookPrice/DeltaPrice** | [DeltaPrice](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/deltaprice) | The delta price, representing any allowable price changes or adjustments. |
 | **BookPrice/DeltaPrice/Amount** | Double | The fixed amount allowed for the delta price. |
-| **BookPrice/DeltaPrice**<br />**Percentage** | Double | The percentage allowed for the delta price. |
+| **BookPrice/DeltaPrice/**<br />**Percentage** | Double | The percentage allowed for the delta price. |
 | **DateQuote** | String | Represents the date when the Quote is generated during the booking process. |
 | **CancelPolicy** | [CancelPolicy](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/cancelpolicy) | Specifies the cancellation policy associated with the booking. |
 | **CancelPolicy/Refundable** | Boolean | Indicates whether the booking is refundable. |
 | **CancelPolicy/CancelPenalties** | Array&lt;[CancelPenalty](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/cancelpenalty)&gt; | A collection of penalties that apply if the booking is canceled. |
-| **CancelPolicy/CancelPenalties**<br />**HoursBefore** | Integer | Indicates the number of hours before the check-in date when the penalty becomes applicable. |
-| **CancelPolicy/CancelPenalties**<br />**PenaltyType** | [PenaltyType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/penaltytype) | Specifies the type of penalty enforced upon cancellation. |
-| **CancelPolicy/CancelPenalties**<br />**Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | Specifies the currency in which the penalty value is expressed. |
-| **CancelPolicy/CancelPenalties**<br />**Value** | Double | Indicates the value of the penalty. |
-| **CancelPolicy/CancelPenalties**<br />**Deadline** | String | Specifies the absolute deadline for the penalty in UTC format. |
-| **CancelPolicy**<br />**CancelPolicyDescription** | String | Provides additional details or a textual summary of the cancellation policy. |
+| **CancelPolicy/CancelPenalties/**<br />**HoursBefore** | Integer | Indicates the number of hours before the check-in date when the penalty becomes applicable. |
+| **CancelPolicy/CancelPenalties/**<br />**PenaltyType** | [PenaltyType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/penaltytype) | Specifies the type of penalty enforced upon cancellation. |
+| **CancelPolicy/CancelPenalties/**<br />**Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | Specifies the currency in which the penalty value is expressed. |
+| **CancelPolicy/CancelPenalties/**<br />**Value** | Double | Indicates the value of the penalty. |
+| **CancelPolicy/CancelPenalties/**<br />**Deadline** | String | Specifies the absolute deadline for the penalty in UTC format. |
+| **CancelPolicy/**<br />**CancelPolicyDescription** | String | Provides additional details or a textual summary of the cancellation policy. |

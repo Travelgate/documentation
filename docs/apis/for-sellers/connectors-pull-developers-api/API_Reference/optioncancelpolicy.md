@@ -15,5 +15,5 @@ Represents a cancellation policy for a hotel option, extending the base CancelPo
 | **CancelPenalties/Deadline** | String | Specifies the absolute deadline for the penalty in UTC format. |
 | **CancelPolicyDescription** | String | Provides additional details or a textual summary of the cancellation policy. |
 | **RoomCancelPolicyDescriptions** | Array&lt;[RoomCancelPolicyDescriptions](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/roomcancelpolicydescriptions)&gt; | Gets or sets the list of room-specific cancellation policy descriptions. |
-| **RoomCancelPolicyDescriptions**<br />**OccupancyRefId** | Integer | Identifies the specific occupancy within the booking for which this cancellation policy applies. |
-| **RoomCancelPolicyDescriptions**<br />**Description** | String | Textual information detailing the cancellation policy applicable to the room associated with the OccupancyRefId. |
+| **RoomCancelPolicyDescriptions/**<br />**OccupancyRefId** | Integer | Identifies the specific occupancy within the booking for which this cancellation policy applies. |
+| **RoomCancelPolicyDescriptions/**<br />**Description** | String | Textual information detailing the cancellation policy applicable to the room associated with the OccupancyRefId. |

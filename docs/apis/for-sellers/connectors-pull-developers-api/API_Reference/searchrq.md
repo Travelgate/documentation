@@ -10,25 +10,25 @@ This class is used to define the parameters and settings for searching available
 | **SearchCriteria** | [SearchCriteria](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/searchcriteria) | Gets the Search criteria for the hotel Search. |
 | **SearchCriteria/CheckIn** | String | The check-in date for the operation, represented as a string in ISO 8601 format (yyyy-MM-dd). |
 | **SearchCriteria/CheckOut** | String | The check-out date for the operation, represented as a string in ISO 8601 format (yyyy-MM-dd). |
-| **SearchCriteria**<br />**CheckInAsDateTime** | String | The check-in date parsed as a DateTime object. |
-| **SearchCriteria**<br />**CheckOutAsDateTime** | String | The check-out date parsed as a DateTime object. |
+| **SearchCriteria/**<br />**CheckInAsDateTime** | String | The check-in date parsed as a DateTime object. |
+| **SearchCriteria/**<br />**CheckOutAsDateTime** | String | The check-out date parsed as a DateTime object. |
 | **SearchCriteria/TotalNights** | Integer | The total number of nights for the stay, calculated as the difference between check-in and check-out dates. |
 | **SearchCriteria/Language** | String | The language code for the operation, represented as a 2-character ISO 639-1 code (e.g., "en", "es"). |
 | **SearchCriteria/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The preferred currency for the operation, defined as an optional Currency value. |
 | **SearchCriteria/Nationality** | String | The nationality code of the client, represented as a 2-character ISO 3166-1 alpha-2 country code (e.g., "US", "FR"). |
 | **SearchCriteria/Destinations** | [Destinations](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/destinations) | Gets the destinations for the Search. These can be specific hotels or locations. |
-| **SearchCriteria/Destinations**<br />**Accommodations** | Array&lt;[AccommodationRQ](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accommodationrq)&gt; | Collection of accommodations for the Search request. |
-| **SearchCriteria/Destinations**<br />**Accommodations/Type** | [AccommodationType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accommodationtype) | Specifies the type of accommodation being requested, such as Hotel or Rental. |
-| **SearchCriteria/Destinations**<br />**Accommodations/Code** | String | Represents a unique code identifying the accommodation in the request. |
-| **SearchCriteria/Destinations**<br />**Locations** | Array&lt;[Location](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/location)&gt; | Collection of locations for the Search request. |
-| **SearchCriteria/Destinations**<br />**Locations/Code** | String | The unique code identifying the location. |
-| **SearchCriteria/Destinations**<br />**Locations/Country** | String | The ISO 3166-1 alpha-2 country code where the location is situated. |
-| **SearchCriteria/Destinations**<br />**Locations/Longitude** | Double | The longitude coordinate of the location, expressed in decimal degrees. |
-| **SearchCriteria/Destinations**<br />**Locations/Latitude** | Double | The latitude coordinate of the location, expressed in decimal degrees. |
+| **SearchCriteria/Destinations/**<br />**Accommodations** | Array&lt;[AccommodationRQ](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accommodationrq)&gt; | Collection of accommodations for the Search request. |
+| **SearchCriteria/Destinations/**<br />**Accommodations/Type** | [AccommodationType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accommodationtype) | Specifies the type of accommodation being requested, such as Hotel or Rental. |
+| **SearchCriteria/Destinations/**<br />**Accommodations/Code** | String | Represents a unique code identifying the accommodation in the request. |
+| **SearchCriteria/Destinations/**<br />**Locations** | Array&lt;[Location](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/location)&gt; | Collection of locations for the Search request. |
+| **SearchCriteria/Destinations/**<br />**Locations/Code** | String | The unique code identifying the location. |
+| **SearchCriteria/Destinations/**<br />**Locations/Country** | String | The ISO 3166-1 alpha-2 country code where the location is situated. |
+| **SearchCriteria/Destinations/**<br />**Locations/Longitude** | Double | The longitude coordinate of the location, expressed in decimal degrees. |
+| **SearchCriteria/Destinations/**<br />**Locations/Latitude** | Double | The latitude coordinate of the location, expressed in decimal degrees. |
 | **SearchCriteria/Occupancies** | Array&lt;[Occupancy](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/occupancy)&gt; | Gets the occupancy details for the Search.Indicates the number of rooms, passengers, and their respective ages. |
-| **SearchCriteria/Occupancies**<br />**OccupancyId** | Integer | The unique identifier for the occupancy. |
-| **SearchCriteria/Occupancies**<br />**Paxes** | Array&lt;[PaxInput](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/paxinput)&gt; | The collection of passenger inputs (paxes) for the occupancy. |
-| **SearchCriteria/Occupancies**<br />**Paxes/Age** | Integer | Age of the passenger. This value is required and plays a critical role in determining eligibility for child or adult pricing as defined by the supplier. |
+| **SearchCriteria/Occupancies/**<br />**OccupancyId** | Integer | The unique identifier for the occupancy. |
+| **SearchCriteria/Occupancies/**<br />**Paxes** | Array&lt;[PaxInput](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/paxinput)&gt; | The collection of passenger inputs (paxes) for the occupancy. |
+| **SearchCriteria/Occupancies/**<br />**Paxes/Age** | Integer | Age of the passenger. This value is required and plays a critical role in determining eligibility for child or adult pricing as defined by the supplier. |
 | **SearchCriteria/Markets** | Array | Gets the markets associated with the Search.Represents ISO 3166-1 alpha-2 country codes. |
 | **Settings** | [SearchSettings](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/searchsettings) | Gets the Search settings for the hotel Search. |
 | **Settings/Supplier** | String | Identifies the supplier associated with the hotel operation. This is a unique code generated by Travelgate within its system to represent the supplier. |
@@ -46,16 +46,16 @@ This class is used to define the parameters and settings for searching available
 | **Settings/Access/Urls/Generic** | String | A generic URL for additional operations. |
 | **Settings/Access/Parameters** | [AccessParameters](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accessparameters) | Additional parameters related to the connection. |
 | **Settings/BusinessRules** | [BusinessRules](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/businessrules) | Specifies the business rules to be applied during the operation. These rules define operational constraints and behavior, such as quota limits or prioritization criteria. |
-| **Settings/BusinessRules**<br />**OptionsQuota** | Integer | The maximum number of options returned for each board in the Search query. |
-| **Settings/BusinessRules**<br />**BusinessRuleType** | [BusinessRulesType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/businessrulestype) | The business rule type that determines how Search results are prioritized or filtered. |
+| **Settings/BusinessRules/**<br />**OptionsQuota** | Integer | The maximum number of options returned for each board in the Search query. |
+| **Settings/BusinessRules/**<br />**BusinessRuleType** | [BusinessRulesType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/businessrulestype) | The business rule type that determines how Search results are prioritized or filtered. |
 | **Settings/Timeout** | String | Defines the timeout period for the operation as a string value.This indicates the maximum amount of time to wait for a supplier's response before timing out.The value must be provided in timestamp format (e.g., "00:05:00" for 5 minutes). |
 | **Settings/TimeoutAsTimeSpan** | String | Converts the timeout value from the string representation (Timeout) into a TimeSpan for use in time-based operations. |
-| **Settings**<br />**IncludeProviderTransactions** | Boolean | Indicates whether detailed traces of provider transactions should be included in the operation's response.If enabled, the ProviderAudit field in responses will contain the transaction logs (e.g., requests and responses exchanged with the supplier). |
+| **Settings/**<br />**IncludeProviderTransactions** | Boolean | Indicates whether detailed traces of provider transactions should be included in the operation's response.If enabled, the ProviderAudit field in responses will contain the transaction logs (e.g., requests and responses exchanged with the supplier). |
 | **Filters** | [Filters](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/filters) | Gets the filters to be applied to the hotel Search results. |
 | **Filters/Status** | [StatusFilter](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/statusfilter) | Filter for hotel statuses to include or exclude specific booking statuses in the Search results. |
 | **Filters/Status/Includes** | Array&lt;[Status](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/status)&gt; | The statuses to include in the response. |
 | **Filters/Status/Excludes** | Array&lt;[Status](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/status)&gt; | The statuses to exclude from the response. |
 | **Filters/RateRuleFilter** | [RateRuleFilter](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/raterulefilter) | Filter for rate rules to include or exclude specific rate restrictions in the Search results. |
-| **Filters/RateRuleFilter**<br />**Excludes** | Array&lt;[RateRule](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/raterule)&gt; | The collection of rate rules that should be excluded from the Search results. |
-| **Filters/RateRuleFilter**<br />**Includes** | Array&lt;[RateRule](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/raterule)&gt; | The collection of rate rules that should be included in the Search results. |
-| **Filters/RateRuleFilter**<br />**IncludeEmptyRateRulesOptions** | Boolean | Specifies whether options without rate rules should be included in the results when Includes is null. |
+| **Filters/RateRuleFilter/**<br />**Excludes** | Array&lt;[RateRule](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/raterule)&gt; | The collection of rate rules that should be excluded from the Search results. |
+| **Filters/RateRuleFilter/**<br />**Includes** | Array&lt;[RateRule](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/raterule)&gt; | The collection of rate rules that should be included in the Search results. |
+| **Filters/RateRuleFilter/**<br />**IncludeEmptyRateRulesOptions** | Boolean | Specifies whether options without rate rules should be included in the results when Includes is null. |

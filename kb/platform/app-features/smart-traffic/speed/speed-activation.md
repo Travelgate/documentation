@@ -18,13 +18,10 @@ Once logged into [our Platform](https://www.travelgate.com/), navigate to **Smar
 - **Actions:** Edit Speed configurations or check detailed performance data
 
 ## How Does Speed Work?
-To configure Speed for a connection or one of your accesses, click on **'Speed a connection'** and complete these three steps:
+To configure Speed for one of your accesses, click on **'Speed an Access'** and complete these three steps:
 
-### 1. Select Connection or Access
-Choose the **connection**/**access** where you want to activate caching.
-
-- For **Hotel-X Buyers**, you must always select by **Access**.
-- For **Legacy Buyers**, you must always select by **Connection**.
+### 1. Select Connection and Access
+Choose the connection and access where you want to activate caching.
 
 ![speed_2](https://storage.travelgate.com/kbase/speed_2.jpg)
 
@@ -36,7 +33,7 @@ Speed operates in two modes when the requested data is **not already cached**:
 ![speed_3](https://storage.travelgate.com/kbase/speed_3.jpg)
 
 ### 3. Set Cache Storage Time (TTL)
-By default, stored cache default value is **24 hours**, but Speed allows customization at the **booking window level**. For example, you can store searches for the next two days in cache for 6 hours.
+By default, stored cache default value is **24 hours** (recommended), but Speed allows customization at the **booking window level**. For example, you can store searches for the next two days in cache for 6 hours.
 
 - **Booking Window:** Defines the applicable date range. Default time ranges are available, or you can customize your own.
 - **Storage Time (TTL - Time to Live):** Determines how long Supplier search results remain cached. Default TTL values are available, but you can adjust them as needed.
@@ -52,22 +49,6 @@ To monitor improvements in response time and traffic reduction, select **"View D
 
 ![speed_5](https://storage.travelgate.com/kbase/speed_5.jpg)
 
+Choose a date range to compare:
 - **Requests handled by Speed vs. requests sent to the Seller**
 - **Time reduction achieved (Speed vs. Seller response times)**
-
-## Can I skip cache for a specific request when Speed is active?
-
-Yes. Buyers can skip the cache for a specific request by setting the `useCache` parameter to `false` in the request configuration. This feature is **available for both Legacy and Hotel-X Buyers**.
-
-
-| Parameter Key | Type   | Possible Values | Description                                                                 |
-|---------------|--------|-----------------|-----------------------------------------------------------------------------|
-| `useCache`    | string | `false`         | When set to `false`, bypasses the cache and forwards the request to the Seller. |
-
-
-**'useCache' for Hotel-X Buyers:**  
-Buyers using the Hotel-X Buyers Pull API **must include the `AddParameter` plugin** to enable the 'useCache' functionality. More details [here](../../../../../docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/add-parameter).
-
-:::warning Important  
-To enable the 'useCache' feature for your connection (either Legacy or Hotel-X), please **open a case** in our [Support Portal](https://app.travelgate.com/support). Otherwise, the parameter will have no effect.  
-:::

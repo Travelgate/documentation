@@ -13,7 +13,7 @@ Represents the response for a hotel booking cancellation operation.
 | **AuditData/Request/Url** | String | The URL of the provider endpoint to which the request is sent. |
 | **AuditData/Request/Headers** | Object | A collection of headers included in the request. |
 | **AuditData/Request/HttpMethod** | [HttpMethod](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/httpmethod) | The HTTP method used to send the request. |
-| **AuditData/Request/HttpMethod**<br />**Method** | String | No description available. |
+| **AuditData/Request/HttpMethod/**<br />**Method** | String | No description available. |
 | **AuditData/Response** | Array&lt;[ProviderAuditRs](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/providerauditrs)&gt; | Collection of audit entries for provider responses.Each entry contains details about a specific response received from the provider. |
 | **AuditData/Response/ReceivedAt** | String | The timestamp indicating when the response was received. |
 | **AuditData/Response/Data** | String | The payload data contained in the provider's response. |
@@ -26,8 +26,8 @@ Represents the response for a hotel booking cancellation operation.
 | **AdviseMessages/CorrelationId** | String | Gets a unique identifier for correlating the message with specific operations. |
 | **AdviseMessages/External** | [External](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/external) | Gets additional external details associated with the message. |
 | **AdviseMessages/External/Code** | String | The supplier's internal code for identifying the nature of the response or error. |
-| **AdviseMessages/External**<br />**Message** | String | A descriptive message returned by the supplier. |
-| **AdviseMessages/External**<br />**HttpStatusCode** | Integer | The HTTP status code of the supplier's response. |
+| **AdviseMessages/External/**<br />**Message** | String | A descriptive message returned by the supplier. |
+| **AdviseMessages/External/**<br />**HttpStatusCode** | Integer | The HTTP status code of the supplier's response. |
 | **Reference** | [Reference](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/reference) | Gets the reference information associated with the booking. |
 | **Reference/ClientLocator** | String | The booking locator provided by the client.This is typically used to match the booking in the client's internal systems. |
 | **Reference/SupplierLocator** | String | The booking locator provided by the supplier.This identifier is used to reference the booking in the supplier's system. |
@@ -47,5 +47,5 @@ Represents the response for a hotel booking cancellation operation.
 | **CancelPrice/Net** | Double | The net price paid by the Buyer to the Seller. |
 | **CancelPrice/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **CancelPrice/NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
-| **CancelPrice**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
+| **CancelPrice/**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
 | **AddOns** | Object | Gets or sets additional supplier information as key-value pairs. |

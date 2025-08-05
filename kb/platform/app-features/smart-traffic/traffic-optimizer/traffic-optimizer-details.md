@@ -14,9 +14,7 @@ At Travelgate, we understand the impact of handling **useless traffic** across t
 
 ## Who Can Benefit from Traffic Optimizer and How
 
-**Every connection using our Hotel-X Buyers API!**
-
-Traffic Optimizer is available **exclusively** for connections using the **Hotel-X API**. Connections using our **Legacy API** do not support this functionality.
+Traffic Optimizer is available for all Buyers, connections using the **Hotel-X API** and connections using the **Legacy API**.
 
 ### Key Benefits:
 - **Improve your Look-to-Book (L2B) ratio** by filtering out low-converting searches.
@@ -35,15 +33,22 @@ It uses a **data-driven approach** to analyze past transactions and **automatica
 
 - **No Availability:**
   - Blocks hotels that returned **100% "no availability"** results the previous day for all requested dates.
-  - Example: If searches for September returned **100% unavailability**, the hotel will be **blacklisted the next day**.
-  - If a hotel had availability for December but wasn’t searched the previous day, it will **not** be considered.
-  - Hotels blocked under this criteria receive a **grace period** to accept new searches, and will be **unblocked automatically** when availability is detected.
+    - Example: If searches for January 13th return 100% no availability, the hotel will be blacklisted on the following day (January 14th).
+  - If a hotel wasn’t searched the previous day, it will **not** be considered.
+  - Hotels blocked under this criteria receive a **grace period** to accept new searches, and will be **unblocked automatically** when availability is detected (following day).
+      - Example:
+          - Day 1: "Hotel A" reports 100% no availability.
+          - Day 2:  "Hotel A" is marked as blocked, but a **grace period** allows it to still respond to searches.
+          - Day 3: If "Hotel A" returns availability during any of the grace periods on Day 2 it will not remain blocked. Otherwise, it will be blocked again.
 
 - **Zero Bookings:**
   - Blocks hotels that have **never recorded a booking** with Travelgate.
+  - Hotels blocked under this criteria receive a **grace period** to accept new searches, and will be **unblocked automatically** when a Booking is detected.
 
 - **Not in Portfolio:**
   - Identifies and blocks hotel codes that are **no longer offered by the Seller**.
+  - A hotel must be requested before it becomes eligible for blocking. As a result, there may be a time gap between the first request and the actual blocking.
+  - Once a hotel is blocked, it will never be unblocked unless it is included again by the Seller in the HotelList.
 
 Hotels that match these criteria are **blacklisted**, meaning searches for those properties will be blocked, reducing unnecessary traffic.
 

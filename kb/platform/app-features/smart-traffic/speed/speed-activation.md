@@ -66,7 +66,7 @@ Yes. Buyers can skip the cache for a specific request by setting the `useCache` 
 
 
 **'useCache' for Hotel-X Buyers:**  
-Buyers using the Hotel-X Buyers Pull API **must include the `AddParameter` plugin** to enable the 'useCache' functionality. More details [here](../../../../../docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/add-parameter).
+Buyers using the Hotel-X Buyers Pull API **must include the `AddParameter` plugin** to enable the 'useCache' functionality. More details [here](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/add-parameter).
 
 :::warning Important  
 To enable the 'useCache' feature for your connection (either Legacy or Hotel-X), please **open a case** in our [Support Portal](https://app.travelgate.com/support). Otherwise, the parameter will have no effect.  

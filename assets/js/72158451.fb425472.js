@@ -91,21 +91,23 @@
 			"surname": "Doe"
 		},
 		"remarks": "This is just a test booking! Feel free to include any extra information in the remarks section that you'd like the supplier to know.",
-		"rooms": {
-			"occupancyRefId": 1,
-			"paxes": [
-				{
-					"name": "Jane",
-					"surname": "Doe",
-					"age": 30
-				},
-				{
-					"name": "John",
-					"surname": "Smith",
-					"age": 30
-				}
-			]
-		}
+		"rooms": [
+			{
+				"occupancyRefId": 1,
+				"paxes": [
+					{
+						"name": "Jane",
+						"surname": "Doe",
+						"age": 30
+					},
+					{
+						"name": "John",
+						"surname": "Smith",
+						"age": 30
+					}
+				]
+			}
+		]
 	},
 	"settings": {
 		"client": "client_demo",

@@ -34,11 +34,12 @@ It uses a **data-driven approach** to analyze past transactions and **automatica
 - **No Availability:**
   - Blocks hotels that returned **100% "no availability"** results the previous day for all requested dates.
     - Example: If searches for January 13th return 100% no availability, the hotel will be blacklisted on the following day (January 14th).
-  - If a hotel wasn’t searched the previous day, it will **not** be considered.
+  - If a hotel was not searched the previous day, it will not be considered for blocking. Only hotels that were requested are eligible to be blocked.
   - Hotels blocked under this criteria receive a **grace period** to accept new searches, and will be **unblocked automatically** when availability is detected (following day).
+    - **Grace period**: Each hour, some blocked hotels will be allowed to be requested. All blocked hotels will be unblocked during two different grace periods per day.
       - Example:
           - Day 1: "Hotel A" reports 100% no availability.
-          - Day 2:  "Hotel A" is marked as blocked, but a **grace period** allows it to still respond to searches.
+          - Day 2:  "Hotel A" is marked as blocked, but **grace period** allows it to still respond to searches.
           - Day 3: If "Hotel A" returns availability during any of the grace periods on Day 2 it will not remain blocked. Otherwise, it will be blocked again.
 
 - **Zero Bookings:**

@@ -329,7 +329,7 @@ import TabItem from '@theme/TabItem';
 
 <!-- TABLE BEGIN Connectors.Pull.Hotel.Domain.Contracts.Quote.Request.QuoteRq -->
 | Name | Relation | Type | Description |
-|------|-----|------|-------------|
+|------|:--------:|:----:|-------------|
 | **QuoteCriteria** | 1 | [QuoteCriteria](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/quotecriteria) | Criteria for the Quote request, such as dates, selected rooms, or other Search-related parameters. | 
 | **QuoteCriteria/CheckIn** | 1 | String | The check-in date for the operation, represented as a string in ISO 8601 format (yyyy-MM-dd). | 
 | **QuoteCriteria/CheckOut** | 1 | String | The check-out date for the operation, represented as a string in ISO 8601 format (yyyy-MM-dd). | 
@@ -853,7 +853,7 @@ The `Quote` operation returns:
 
 <!-- TABLE BEGIN Connectors.Pull.Hotel.Domain.Contracts.Quote.Response.QuoteRs -->
 | Name | Relation | Type | Description |
-|------|-----|------|-------------|
+|------|:--------:|:----:|-------------|
 | **AuditData** | 1 | [ProviderAudit](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/provideraudit) | Contains the audit data detailing the requests and responses exchanged with the supplier.This field is populated internally by the connector framework. | 
 | **AuditData/Request** | 0 . . N | Array&lt;[ProviderAuditRq](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/providerauditrq)&gt; | Collection of audit entries for provider requests.Each entry contains details about a specific request made to the provider. | 
 | **AuditData/Request/SendAt** | 1 | String | The timestamp indicating when the request was sent. | 

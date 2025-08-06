@@ -156,7 +156,7 @@ import TabItem from '@theme/TabItem';
 
 <!-- TABLE BEGIN Connectors.Pull.Hotel.Domain.Contracts.Cancel.Request.CancelRq -->
 | Name | Relation | Type | Description |
-|------|----------|------|-------------|
+|------|:--------:|:----:|-------------|
 | **Input** | 1 | [CancelInput](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/cancelinput) |  Gets or initializes the input details for the cancellation request, including specific information about the booking to be canceled. Such as the access, booking reference, and accommodation code. |
 | **Input/AccessCode** | 0 . . 1 | String |  Access code associated with the cancellation request. This property is deprecated and should not be used in new implementations. |
 | **Input/Language** | 1 | String |  Gets or sets the language code for the cancellation request. |
@@ -384,7 +384,7 @@ The `Cancel` operation provides:
 
  <!-- TABLE BEGIN Connectors.Pull.Hotel.Domain.Contracts.Cancel.Response.CancelRs -->
 | Name | Relation | Type | Description |
-|------|----------|------|-------------|
+|------|:--------:|:----:|-------------|
 | **AuditData** | 1 | [ProviderAudit](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/provideraudit) | Gets or sets the audit data provided by the supplier or system for the operation. |
 | **AuditData/Request** | 0 . . N | Array&lt;[ProviderAuditRq](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/providerauditrq)&gt; |  Collection of audit entries for provider requests.Each entry contains details about a specific request made to the provider. |
 | **AuditData/Request/SendAt** | 1 | String |  The timestamp indicating when the request was sent. |

@@ -246,7 +246,7 @@ The object [SearchRq](/docs/apis/for-sellers/connectors-pull-developers-api/API_
   
 <!-- TABLE BEGIN Connectors.Pull.Hotel.Domain.Contracts.Search.Request.SearchRq -->
 | Name | Relation | Type | Description |
-|------|-----|------|-------------|
+|------|:--------:|:----:|-------------|
 | **SearchCriteria** | 1 | [SearchCriteria](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/searchcriteria) | Gets the Search criteria for the hotel Search. |
 | **SearchCriteria/CheckIn** | 1 | String | The check-in date for the operation, represented as a string in ISO 8601 format (yyyy-MM-dd). |
 | **SearchCriteria/CheckOut** | 1 | String | The check-out date for the operation, represented as a string in ISO 8601 format (yyyy-MM-dd). |
@@ -955,7 +955,7 @@ The [SearchRs](/docs/apis/for-sellers/connectors-pull-developers-api/API_Referen
 
 <!-- TABLE BEGIN Connectors.Pull.Hotel.Domain.Contracts.Search.Response.SearchRs -->
 | Name | Relation | Type | Description |
-|------|-----|------|------|
+|------|:--------:|:----:|-------------|
 | **AuditData** | 0 . . 1 | [ProviderAudit](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/provideraudit) | Contains the requests and responses exchanged with the supplier.This field is populated internally by the connector framework. Integrators do not need to handle this field manually. |
 | **AuditData/Request** | 0 . . N | Array&lt;[ProviderAuditRq](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/providerauditrq)&gt; | Collection of audit entries for provider requests.Each entry contains details about a specific request made to the provider. |
 | **AuditData/Request/SendAt** | 1 | String | The timestamp indicating when the request was sent. |

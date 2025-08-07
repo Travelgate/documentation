@@ -49,5 +49,21 @@ A unique security code, known as a **One-Time Password (OTP)**, is generated eac
 
    ![2FA_4](https://storage.travelgate.com/kbase/2FA_4.jpg)
 
+
+## Common Issue When Signing In With 2FA
+
+### Error message: “The credentials have expired. Looks like something went wrong. Please try logging again from the application.”
+
+This error commonly occurs when **your computer or device's clock is not properly synchronized**. Most authenticator apps (such as Google Authenticator, Authy, etc.) rely on accurate time synchronization to generate valid 2FA codes. If your system time is out of sync with the standard time, the generated codes may be considered invalid or "expired".
+
+#### What Can I Do If I Receive this 2FA Authentication error?  
+
+Ensure your device's clock is **automatically synchronized** with an internet time server. Here's how to do it:
+   - **Windows:** Go to Settings > Time & Language > Date & Time and enable "Set time automatically".
+   - **macOS:** Go to System Preferences > Date & Time and check "Set date and time automatically".
+- **Linux:** Make sure ntpd or systemd-timesyncd is enabled, depending on your distribution.
+
+Once the time is properly synchronized, try logging in again from the application.
+
 ## How to Reset Your 2FA Method
 If you need to switch devices or have lost access, you can reset your 2FA settings. For detailed steps, please see this [article](/kb/platform/app-features/account-settings/users-management/reset-user-two-factor-authentication).

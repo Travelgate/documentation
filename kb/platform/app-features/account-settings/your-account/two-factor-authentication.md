@@ -61,7 +61,7 @@ This error commonly occurs when **your computer or device's clock is not properl
 Ensure your device's clock is **automatically synchronized** with an internet time server. Here's how to do it:
    - **Windows:** Go to Settings > Time & Language > Date & Time and enable "Set time automatically".
    - **macOS:** Go to System Preferences > Date & Time and check "Set date and time automatically".
-- **Linux:** Make sure ntpd or systemd-timesyncd is enabled, depending on your distribution.
+   - **Linux:** Make sure ntpd or systemd-timesyncd is enabled, depending on your distribution.
 
 Once the time is properly synchronized, try logging in again from the application.
 

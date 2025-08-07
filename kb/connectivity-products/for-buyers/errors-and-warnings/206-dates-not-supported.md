@@ -5,7 +5,7 @@ sidebar_position: 11
 # 206 Error - Dates Not Supported
 
 ## What Does a 206 Error Mean?
-A 206 error occurs when the dates in your search request do not align with the Seller's date specifications.
+A **206 error** occurs when the dates in your search request do not align with the Seller's date specifications.
 
 ### How Can I Check the Seller's Date Requirements and Avoid Errors?
 To verify the Seller's date specifications and minimize errors and unnecessary traffic, we strongly recommend using our [Metadata Query](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata).

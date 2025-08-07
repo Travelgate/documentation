@@ -5,7 +5,7 @@ sidebar_position: 21
 # PLUGIN_ERROR
 
 ## What Does a "PLUGIN_ERROR" Mean? 
-A "PLUGIN_ERROR" occurs when our system cannot validate the plugin information added to a Hotel-X request.
+A **"PLUGIN_ERROR"** occurs when our system cannot validate the plugin information added to a Hotel-X request. It is classified as a [Hotel-X warning](/docs/apis/for-buyers/hotel-x-pull-buyers-api/making-requests/errors-and-warnings/booking-flow#warning-list).
 
 ## What Can I Do If I Receive a "PLUGIN_ERROR"? 
 

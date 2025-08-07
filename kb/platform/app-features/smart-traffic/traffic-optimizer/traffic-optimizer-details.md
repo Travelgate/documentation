@@ -12,11 +12,11 @@ At Travelgate, we understand the impact of handling **useless traffic** across t
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/3383vV-Ggu8?si=G9pmQ_bw72KeMmUM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-## Who Can Benefit from Traffic Optimizer and How
+## Who Can Activate Traffic Optimizer?
 
-Traffic Optimizer is available for all Buyers, connections using the **Hotel-X API** and connections using the **Legacy API**.
+Both **Buyers and Sellers** can enable Traffic Optimizer within Travelgate. It’s available for every connection regardless of the API used by the Buyer—it works with both the **Hotel-X API and the Legacy API**.
 
-### Key Benefits:
+## What Are the Benefits of Traffic Optimizer?
 - **Improve your Look-to-Book (L2B) ratio** by filtering out low-converting searches.
 - **Reduce unnecessary search traffic**, optimizing API performance and saving costs.
 - **Decrease response times**, improving efficiency for both Buyers and Sellers.

@@ -426,7 +426,7 @@ import TabItem from '@theme/TabItem';
 | **BookCriteria/Rooms/**<br />**CancelPolicy/CancelPenalties/**<br />**PenaltyType** | 1 | [PenaltyType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/penaltytype) | Specifies the type of penalty enforced upon cancellation. | 
 | **BookCriteria/Rooms/**<br />**CancelPolicy/CancelPenalties/**<br />**Currency** | 1 | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | Specifies the currency in which the penalty value is expressed. | 
 | **BookCriteria/Rooms/**<br />**CancelPolicy/CancelPenalties/**<br />**Value** | 1 | Double | Indicates the value of the penalty. | 
-| **BookCriteria/Rooms/**<br />**CancelPolicy/CancelPenalties/**<br />**Deadline** | 1 | String | Specifies the absolute deadline for the penalty in UTC format. | 
+| **BookCriteria/Rooms/**<br />**CancelPolicy/CancelPenalties/**<br />**Deadline** | 1 | String | Date on UTC Standard TimeZone in which this cancellation policy applies (ISO 8601 UTC `2025-11-01T05:00:00Z`) | 
 | **BookCriteria/Rooms/**<br />**CancelPolicy/**<br />**CancelPolicyDescription** | 0 . . 1 | String | Provides additional details or a textual summary of the cancellation policy. | 
 | **BookCriteria/Rooms/Beds** | 0 . . N | Array&lt;[Bed](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/bed)&gt; | List of beds available in the room, including types and configurations. | 
 | **BookCriteria/Rooms/Beds/Type** | 0 . . 1 | String | The type of the bed. | 
@@ -1046,7 +1046,7 @@ The `Book` operation returns:
 | **BookDetails/Hotel/Rooms/**<br />**CancelPolicy/CancelPenalties/**<br />**PenaltyType** | 1 | [PenaltyType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/penaltytype) | Specifies the type of penalty enforced upon cancellation. |
 | **BookDetails/Hotel/Rooms/**<br />**CancelPolicy/CancelPenalties/**<br />**Currency** | 1 | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) |  Specifies the currency in which the penalty value is expressed. |
 | **BookDetails/Hotel/Rooms/**<br />**CancelPolicy/CancelPenalties/**<br />**Value** | 1 | Double | Indicates the value of the penalty. |
-| **BookDetails/Hotel/Rooms/**<br />**CancelPolicy/CancelPenalties/**<br />**Deadline** | 1 | String | Specifies the absolute deadline for the penalty in UTC format. |
+| **BookDetails/Hotel/Rooms/**<br />**CancelPolicy/CancelPenalties/**<br />**Deadline** | 1 | String | Date on UTC Standard TimeZone in which this cancellation policy applies (ISO 8601 UTC `2025-11-01T05:00:00Z`) |
 | **BookDetails/Hotel/Rooms/**<br />**CancelPolicy/**<br />**CancelPolicyDescription** | 0 . . 1 | String | Provides additional details or a textual summary of the cancellation policy. |
 | **BookDetails/Hotel/Rooms/Beds** | 0 . . N | Array&lt;[Bed](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/bed)&gt; | List of beds available in the room, including types and configurations. |
 | **BookDetails/Hotel/Rooms/Beds/**<br />**Type** | 0 . . 1 | String | The type of the bed. |
@@ -1075,7 +1075,7 @@ The `Book` operation returns:
 | **BookDetails/CancelPolicy/**<br />**CancelPenalties/PenaltyType** | 1 | [PenaltyType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/penaltytype) | Specifies the type of penalty enforced upon cancellation. |
 | **BookDetails/CancelPolicy/**<br />**CancelPenalties/Currency** | 1 | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | Specifies the currency in which the penalty value is expressed. |
 | **BookDetails/CancelPolicy/**<br />**CancelPenalties/Value** | 1 | Double | Indicates the value of the penalty. |
-| **BookDetails/CancelPolicy/**<br />**CancelPenalties/Deadline** | 1 | String | Specifies the absolute deadline for the penalty in UTC format. |
+| **BookDetails/CancelPolicy/**<br />**CancelPenalties/Deadline** | 1 | String | Date on UTC Standard TimeZone in which this cancellation policy applies (ISO 8601 UTC `2025-11-01T05:00:00Z`) |
 | **BookDetails/CancelPolicy/**<br />**CancelPolicyDescription** | 0 . . 1 | String | Provides additional details or a textual summary of the cancellation policy. |
 | **BookDetails/Remarks** | 0 . . N | Array&lt;[Remark](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remark)&gt; | Additional remarks or notes related to the booking. |
 | **BookDetails/Remarks/RemarkType** | 1 | [RemarkType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remarktype) | The type of the remark, categorized by RemarkType, specifies its nature or purpose. It may refer to the hotel as a whole, a specific room being booked, services provided by the accommodation, or general remarks not tied to any particular entity. |

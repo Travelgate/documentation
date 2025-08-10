@@ -738,7 +738,7 @@ The Response Object provides the booking status, optional details, and any warni
 | **Bookings/Hotel/Rooms/**<br />**CancelPolicy** | 0 . . 1| [CancelPolicy](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/cancelpolicy) |  Cancellation policy specific to this room. |
 | **Bookings/Hotel/Rooms/**<br />**CancelPolicy/Refundable** | 1 | Boolean |  Indicates whether the booking is refundable. |
 | **Bookings/Hotel/Rooms/**<br />**CancelPolicy/CancelPenalties** | 0 . . N | Array&lt;[CancelPenalty](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/cancelpenalty)&gt; |  A collection of penalties that apply if the booking is canceled. |
-| **Bookings/Hotel/Rooms/**<br />**CancelPolicy/CancelPenalties/**<br />**HoursBefore** | 0 . . 1 | Integer |  Indicates the number of hours before the check-in date when the penalty becomes applicable. |
+| **Bookings/Hotel/Rooms/**<br />**CancelPolicy/CancelPenalties/**<br />**HoursBefore** | 0 . . 1 | Integer |  **[Deprecated]** This field is deprecated. Use `Deadline` instead. Indicates the number of hours before the check-in date when the penalty becomes applicable. |
 | **Bookings/Hotel/Rooms/**<br />**CancelPolicy/CancelPenalties/**<br />**PenaltyType** | 1 | [PenaltyType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/penaltytype) |  Specifies the type of penalty enforced upon cancellation. |
 | **Bookings/Hotel/Rooms/**<br />**CancelPolicy/CancelPenalties/**<br />**Currency** | 1 | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) |  Specifies the currency in which the penalty value is expressed. |
 | **Bookings/Hotel/Rooms/**<br />**CancelPolicy/CancelPenalties/**<br />**Value** | 1 | Double |  Indicates the value of the penalty. |
@@ -767,7 +767,7 @@ The Response Object provides the booking status, optional details, and any warni
 | **Bookings/CancelPolicy** | 0 . . 1 | [CancelPolicy](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/cancelpolicy) |  The cancellation policy associated with the booking. |
 | **Bookings/CancelPolicy/**<br />**Refundable** | 1 | Boolean |  Indicates whether the booking is refundable. |
 | **Bookings/CancelPolicy/**<br />**CancelPenalties** | 0 . . N | Array&lt;[CancelPenalty](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/cancelpenalty)&gt; |  A collection of penalties that apply if the booking is canceled. |
-| **Bookings/CancelPolicy/**<br />**CancelPenalties/HoursBefore** | 0 . . 1 | Integer |  Indicates the number of hours before the check-in date when the penalty becomes applicable. |
+| **Bookings/CancelPolicy/**<br />**CancelPenalties/HoursBefore** | 0 . . 1 | Integer |  **[Deprecated]** This field is deprecated. Use `Deadline` instead. Indicates the number of hours before the check-in date when the penalty becomes applicable. |
 | **Bookings/CancelPolicy/**<br />**CancelPenalties/PenaltyType** | 1 | [PenaltyType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/penaltytype) |  Specifies the type of penalty enforced upon cancellation. |
 | **Bookings/CancelPolicy/**<br />**CancelPenalties/Currency** | 1 | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) |  Specifies the currency in which the penalty value is expressed. |
 | **Bookings/CancelPolicy/**<br />**CancelPenalties/Value** | 1 | Double |  Indicates the value of the penalty. |

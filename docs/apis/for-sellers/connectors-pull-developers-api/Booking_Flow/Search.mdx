@@ -16,7 +16,16 @@ The `Search` operation is used to:
 
 Cancellation policies in the **availability (Search)** step are important because they allow buyers to know—right from the start—whether an option is **refundable** and under what conditions.
 
-However, not all suppliers are required to provide cancellation policy details during the Search response. Some suppliers only include this information in the **Quote** step. In such cases, the `refundable` field may appear as `null` in the Search response, indicating that the supplier will only provide cancellation information during the Quote phase.
+However, not all suppliers are required to provide cancellation policy details during the Search response. Some suppliers only include this information in the **Quote** step.
+
+:::note
+The cancellation policies shown in Search may differ from those shown in Quote.
+This can happen because some suppliers do not return cancellation policies during the search phase, or because conditions may change between the two calls.
+The valid and final cancellation policy will always be the one received in the Quote response.
+This behavior is expected and should be taken into account.
+:::
+
+In such cases, the `refundable` field may appear as `null` in the Search response, indicating that the supplier will only provide cancellation information during the Quote phase.
 
 To avoid confusion or incorrect assumptions, it is essential to check the supplier's metadata to understand what level of cancellation detail is provided at each stage of the booking flow.
 

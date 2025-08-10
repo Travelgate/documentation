@@ -5,8 +5,8 @@ sidebar_position: 4
 
 ## **Overview**
 
-The `Book` operation is the final step in the booking workflow, used to confirm a reservation for a selected option. It involves providing detailed guest information, payment details (if required), and a client locator. Once completed, the supplier processes the reservation and returns its status.
-
+The `Book` operation is the final step in the booking workflow, used to confirm a reservation for a selected option. It involves providing detailed guest information, a client locator, the payment type, and credit card information when required. Once completed, the supplier processes the reservation and returns its status.
+                                             
 The `Book` operation ensures:
 - **Guest Information Submission**: Transfers passenger details, including names, surnames, and any additional guest-specific data, to the supplier.
 - **Payment Validation**: Confirms and processes payment if the supplier requires it at the booking stage.
@@ -20,7 +20,7 @@ When to Use:
 > **Note**: If the booking status is returned as `Unknown`, the Buyer is responsible for verifying with the Seller that the booking has been confirmed.
 
 Common Scenarios:
-- **Payment-Required Suppliers**: Includes credit card information or other payment details as part of the `Book` request.
+- **Payment-Required Suppliers**: Includes credit card information as part of the `Book` request.
 - **Error Handling**: Common errors include:
   - `SupplierBookingNotConfirmed`: Indicates that the booking could not be processed by the supplier.
   - `ItemNotAvailable`: Returned if the selected option is no longer valid at the time of booking.

@@ -943,14 +943,14 @@ The `Book` operation returns:
 |------|:--------:|:----:|-------------|
 | **AuditData** | 1 | [ProviderAudit](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/provideraudit) | Contains the requests and responses exchanged with the supplier.This field is populated internally by the connector framework. Integrators do not need to handle this field manually. |
 | **AuditData/Request** | 0 . . N | Array&lt;[ProviderAuditRq](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/providerauditrq)&gt; | Collection of audit entries for provider requests.Each entry contains details about a specific request made to the provider. |
-| **AuditData/Request/SendAt** | 1 | String | The timestamp indicating when the request was sent. |
+| **AuditData/Request/SendAt** | 1 | String | The timestamp indicating when the request was sent. Date on UTC Standard (ISO 8601 UTC `2025-05-21T08:48:53.9744052+00:00`) |
 | **AuditData/Request/Data** | 1 | String | The payload data included in the request. |
 | **AuditData/Request/Url** | 1 | String | The URL of the provider endpoint to which the request is sent. |
 | **AuditData/Request/Headers** | 1 | Object | A collection of headers included in the request. |
 | **AuditData/Request/HttpMethod** | 1 | [HttpMethod](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/httpmethod) | The HTTP method used to send the request. |
 | **AuditData/Request/HttpMethod/**<br />**Method** | 1 | String |  No description available. |
 | **AuditData/Response** | 0 . . N | Array&lt;[ProviderAuditRs](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/providerauditrs)&gt; | Collection of audit entries for provider responses.Each entry contains details about a specific response received from the provider. |
-| **AuditData/Response/ReceivedAt** | 1 | String | The timestamp indicating when the response was received. |
+| **AuditData/Response/ReceivedAt** | 1 | String | The timestamp indicating when the response was received. Date on UTC Standard (ISO 8601 UTC `2025-05-21T08:48:53.9744052+00:00`) |
 | **AuditData/Response/Data** | 1 | String | The payload data contained in the provider's response. |
 | **AuditData/Response/Headers** | 1 | Object | A collection of headers included in the provider's response. |
 | **AuditData/Response/StatusCode** | 1 | Integer | The HTTP status code returned by the provider. |

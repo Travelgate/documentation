@@ -50,8 +50,8 @@ import TabItem from '@theme/TabItem';
     {
         Input = new CheckBookingsByDateInput
         {
-            CheckIn = DateTime.Parse("2024-05-12"),
-            CheckOut = DateTime.Parse("2024-05-14"),
+            CheckIn = "2024-05-12",
+            CheckOut = "2024-05-14",
             DateType = "Arrival",
             Language = "ES",
             Currency = "EUR"
@@ -176,8 +176,8 @@ import TabItem from '@theme/TabItem';
 | **Input** | 1 | [CheckBookingsByDateInput](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/checkbookingsbydateinput) |  Contains the details for checking bookings within a specific date range. |
 | **Input/CheckIn** | 1 | String |  The check-in date for the booking check, specified as a string. |
 | **Input/CheckOut** | 1 | String |  The check-out date for the booking check, specified as a string. |
-| **Input/CheckInAsDateTime** | 0 . . 1 | String |  Parses and returns the check-in date as a DateTime object. |
-| **Input/CheckOutAsDateTime** | 0 . . 1 | String |  Parses and returns the check-out date as a DateTime object. |
+| **Input/CheckInAsDateTime** | 0 . . 1 | String |  The check-in date parsed as a DateTime object, expressed in UTC 0 |
+| **Input/CheckOutAsDateTime** | 0 . . 1 | String |  The check-out date parsed as a DateTime object, expressed in UTC 0 |
 | **Input/DateType** | 1 | [DateRangeType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/daterangetype) |  Specifies the type of date range to use for the booking check. |
 | **Input/Language** | 0 . . 1 | String |  The language code to be used for the booking check. |
 | **Input/Currency** | 0 . . 1 | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) |  The currency to be used for the booking check. |
@@ -663,8 +663,8 @@ The Response Object provides a list of bookings within the specified date range,
 | **Bookings/Hotel/BookingDate** | 0 . . 1 | String |  The date when the booking was created. |
 | **Bookings/Hotel/CheckIn** | 0 . . 1 | String |  The check-in date for the booking. |
 | **Bookings/Hotel/CheckOut** | 0 . . 1 | String |  The check-out date for the booking. |
-| **Bookings/Hotel/**<br />**CheckInAsDateTime** | 0 . . 1 | String |  The check-in date as a DateTime object. |
-| **Bookings/Hotel/**<br />**CheckOutAsDateTime** | 0 . . 1 | String |  The check-out date as a DateTime object. |
+| **Bookings/Hotel/**<br />**CheckInAsDateTime** | 0 . . 1 | String |  The check-in date parsed as a DateTime object, expressed in UTC 0 |
+| **Bookings/Hotel/**<br />**CheckOutAsDateTime** | 0 . . 1 | String |  The check-out date parsed as a DateTime object, expressed in UTC 0 |
 | **Bookings/Hotel/HotelCode** | 0 . . 1 | String |  The unique code identifying the hotel. |
 | **Bookings/Hotel/HotelName** | 0 . . 1 | String |  The name of the hotel associated with the booking. |
 | **Bookings/Hotel/BoardCode** | 0 . . 1 | String |  The board code for the booking. |

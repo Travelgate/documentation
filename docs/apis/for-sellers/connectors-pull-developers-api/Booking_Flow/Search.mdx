@@ -73,10 +73,10 @@ var request = new SearchRequest
                 }
             },
             Markets = new List<string> { "EU" },
-            CheckIn = DateTime.Parse("2025-06-10"),
-            CheckOut = DateTime.Parse("2025-06-15"),
-            CheckInAsDateTime = DateTime.Parse("2025-06-10T15:00:00"),
-            CheckOutAsDateTime = DateTime.Parse("2025-06-15T11:00:00"),
+            CheckIn = "2025-06-10",
+            CheckOut = "2025-06-15",
+            CheckInAsDateTime = DateTime.Parse("2025-06-10", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal),
+            CheckOutAsDateTime = DateTime.Parse("2025-06-15", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal),
             TotalNights = 5,
             Language = "EN",
             Currency = "EUR",
@@ -167,8 +167,8 @@ var request = new SearchRequest
         ],
         "checkIn": "2025-06-10",
         "checkOut": "2025-06-15",
-        "checkInAsDateTime": "2025-06-10T15:00:00",
-        "checkOutAsDateTime": "2025-06-15T11:00:00",
+        "checkInAsDateTime": "2025-06-10T00:00:00",
+        "checkOutAsDateTime": "2025-06-15T00:00:00",
         "totalNights": 5,
         "language": "EN",
         "currency": "EUR",
@@ -250,8 +250,8 @@ The object [SearchRq](/docs/apis/for-sellers/connectors-pull-developers-api/API_
 | **SearchCriteria** | 1 | [SearchCriteria](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/searchcriteria) | Gets the Search criteria for the hotel Search. |
 | **SearchCriteria/CheckIn** | 1 | String | The check-in date for the operation, represented as a string in ISO 8601 format (yyyy-MM-dd). |
 | **SearchCriteria/CheckOut** | 1 | String | The check-out date for the operation, represented as a string in ISO 8601 format (yyyy-MM-dd). |
-| **SearchCriteria/**<br />**CheckInAsDateTime** | 0 . . 1 | String | The check-in date parsed as a DateTime object. |
-| **SearchCriteria/**<br />**CheckOutAsDateTime** | 0 . . 1 | String | The check-out date parsed as a DateTime object. |
+| **SearchCriteria/**<br />**CheckInAsDateTime** | 0 . . 1 | String | The check-in date parsed as a DateTime object, expressed in UTC 0 |
+| **SearchCriteria/**<br />**CheckOutAsDateTime** | 0 . . 1 | String | The check-out date parsed as a DateTime object, expressed in UTC 0 |
 | **SearchCriteria/TotalNights** | 0 . . 1 | Integer | The total number of nights for the stay, calculated as the difference between check-in and check-out dates. |
 | **SearchCriteria/Language** | 1 | String | The language code for the operation, represented as a 2-character ISO 639-1 code (e.g., "en", "es"). |
 | **SearchCriteria/Currency** | 0 . . 1 | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The preferred currency for the operation, defined as an optional Currency value. |

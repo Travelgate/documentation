@@ -146,8 +146,8 @@ import TabItem from '@theme/TabItem';
                     RoomId = 105
                 }
             },
-            CheckIn = DateTime.Parse("2024-05-12"),
-            CheckOut = DateTime.Parse("2024-05-14"),
+            CheckIn = "2024-05-12",
+            CheckOut = "2024-05-14",
             TotalNights = 2,
             Language = "ES",
             Currency = "EUR",
@@ -354,8 +354,8 @@ import TabItem from '@theme/TabItem';
 | **BookCriteria** | 1 | [BookCriteria](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/bookcriteria) | The booking criteria for the hotel reservation. | 
 | **BookCriteria/CheckIn** | 1 | String | The check-in date for the operation, represented as a string in ISO 8601 format (yyyy-MM-dd). | 
 | **BookCriteria/CheckOut** | 1 | String | The check-out date for the operation, represented as a string in ISO 8601 format (yyyy-MM-dd). | 
-| **BookCriteria/CheckInAsDateTime** | 0 . . 1 | String | The check-in date parsed as a DateTime object. | 
-| **BookCriteria/**<br />**CheckOutAsDateTime** | 0 . . 1 | String | The check-out date parsed as a DateTime object. | 
+| **BookCriteria/CheckInAsDateTime** | 0 . . 1 | String | The check-in date parsed as a DateTime object, expressed in UTC 0 | 
+| **BookCriteria/**<br />**CheckOutAsDateTime** | 0 . . 1 | String | The check-out date parsed as a DateTime object, expressed in UTC 0 | 
 | **BookCriteria/TotalNights** | 0 . . 1 | Integer | The total number of nights for the stay, calculated as the difference between check-in and check-out dates. | 
 | **BookCriteria/Language** | 1 | String | The language code for the operation, represented as a 2-character ISO 639-1 code (e.g., "en", "es"). | 
 | **BookCriteria/Currency** | 0 . . 1 | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The preferred currency for the operation, defined as an optional Currency value. | 

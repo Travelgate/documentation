@@ -17,8 +17,12 @@ If you do not currently filter by IP but would like traffic to come from fixed a
 
 Below is the current list of IP addresses that Hotel Suppliers should allow (Updated on 08/08/2025):
 
+:::note
+**A CIDR range is a way to group several IP addresses. The second column shows all the addresses in that range, if needed.**
+:::
 
-| **IP Address**                     |   List (if needed)                      |  
+
+| **Single IP Address or CIDR Range**                     |   **Included IP Addresses (if any)**                      |  
 | :--------------------------------: |  :------------------------------------: |  
 | 13.94.250.159                      |                                         |  
 | 23.99.178.8                        |                                         |  
@@ -59,7 +63,7 @@ Some IP addresses are provided as ranges, such as `172.98.36.0/27`. These ranges
 Please add **only** these IPs (Updated on 29/10/2024):
 
 
-| **IP Address**         |  
+| **Single IP Address or CIDR Range**         |  
 | :--------------------: |  
 | 13.81.113.68           |  
 | 13.94.250.159          |  
@@ -75,7 +79,7 @@ Please add **only** these IPs (Updated on 29/10/2024):
 ### Fixed IP List as a Channel-X Buyer
 Please add **only** these IPs (Updated on 03/10/2024):
 
-| **IP Address**         |    
+| **Single IP Address or CIDR Range**         |    
 | :--------------------: |  
 | 13.94.250.159          | 
 | 20.234.226.0           |
@@ -88,7 +92,7 @@ Please add **only** these IPs (Updated on 03/10/2024):
 ### Fixed IP List as a Payment/VCC Supplier
 Please add **only** these IPs (Updated on 29/08/2024):
 
-| **IP Address**         |  
+| **Single IP Address or CIDR Range**         |  
 | :--------------------: |  
 | 13.94.250.159          |   
 | 74.234.224.26          |  

@@ -18,7 +18,7 @@ If you do not currently filter by IP but would like traffic to come from fixed a
 Below is the current list of IP addresses that Hotel Suppliers should allow (Updated on 08/08/2025):
 
 :::note
-**A CIDR range is a way to group several IP addresses. The second column shows all the addresses in that range, if needed.**
+A CIDR range is a way to group several IP addresses. The second column shows all the addresses in that range, if needed.
 :::
 
 

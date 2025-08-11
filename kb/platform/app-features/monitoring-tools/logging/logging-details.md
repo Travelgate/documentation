@@ -18,12 +18,17 @@ By leveraging Logging, you can gain valuable insights into your connection activ
 2. Navigate to Monitoring (in the top menu) and select [Logging](https://app.travelgate.com/logging).
 3. Choose your search method: You can search by **connection, reference, or session ID**.
 4. Apply filters to refine your search:
-   - Time range.
+   - Time range: Up to **2 months**.
    - Access: Filter by Hotel-X Access (by Name or Code). This filter applies only to **Hotel-X connections**.
    - Operation type: Search, Quote, Book, Cancel, Other (Booking List/Booking Read).  
      - *Note:* The "Search" operation type will only return results if searches have been **[audited first](/kb/platform/app-features/monitoring-tools/logging/audit-searches-functionality)**.
    - Status/Error code: Select specific errors to filter results.
 5. Click on "Search logs" to retrieve the logs.
+
+:::info
+- Buyer connections using our **Legacy API** are audited at the **connection level** — access-level auditing is not available. This means that when retrieving logs using the Logging tool, you **should not use the Access Filter**, as it will return no results.
+- If you're a Seller, you can check whether your Buyer is integrated via the Hotel-X API or the Legacy Pull Buyers API by looking for the “Hotel-X” label on the connection in the “My Connections” screen. If the Buyer is using the Hotel-X API, the [“Hotel-X” label](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details/#additional-access-information) will appear next to the “Buyer” label.
+:::
 
 ![logging_new_1](https://storage.travelgate.com/kbase/logging_new_1.jpg)
 
@@ -32,7 +37,7 @@ By leveraging Logging, you can gain valuable insights into your connection activ
 When your search returns logs, Logging will display the following details:
 
 - **Timestamp** (date and time of the transaction)
-- **Transaction duration**
+- **Transaction duration** (at the integration level)
 - **Connection**
 - **Client**
 - **Access**

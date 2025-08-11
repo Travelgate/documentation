@@ -1,7 +1,8 @@
+import 'graphiql/setup-workers/webpack';
+
 import React, {useEffect, useState} from 'react';
 import BrowserOnly from '@docusaurus/BrowserOnly';
-import 'graphiql/graphiql.css';
-import {createGraphiQLFetcher} from '@graphiql/create-fetcher';
+import {createGraphiQLFetcher} from '@graphiql/toolkit';
 import {GraphiQL} from 'graphiql';
 import useIsBrowser from '@docusaurus/useIsBrowser';
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
@@ -12,7 +13,12 @@ import {replaceClient} from "../utils";
 let fetcher = null;
 
 if (ExecutionEnvironment.canUseDOM) {
-    fetcher = createGraphiQLFetcher({url: 'https://api.travelgate.com/'});
+    fetcher = createGraphiQLFetcher({
+        url: 'https://api.travelgate.com/',
+        headers: {
+            "Authorization": "Apikey test0000-0000-0000-0000-000000000000"
+        }
+    });
 } else {
     fetcher = null;
 }
@@ -20,8 +26,8 @@ if (ExecutionEnvironment.canUseDOM) {
 const GraphqlSample = ({token, query, variables}) => {
     const isBrowser = useIsBrowser();
     const [headers, setHeaders] = useState(`{
-    "Authorization": "Apikey test0000-0000-0000-0000-000000000000"
-}`);
+        "Authorization": "Apikey test0000-0000-0000-0000-000000000000"
+    }`);
     const [parsedVariables, setParsedVariables] = useState(variables);
 
     useEffect(() => {
@@ -38,18 +44,17 @@ const GraphqlSample = ({token, query, variables}) => {
 
     return (
         <>
-            {isBrowser && fetcher && (
+            {isBrowser && fetcher && headers && (
                 <BrowserOnly fallback={<div>Loading...</div>}>
                     {() => {
                         return (
                             <>
                                 <GraphiQL
                                     fetcher={fetcher}
-                                    headers={headers}
-                                    query={query??hotelsListQuerySampleA}
-                                    variables={parsedVariables??''}
-                                    onTabChange={(tabState) => { tabState.tabs = []; return false; }}
-
+                                    initialHeaders={headers}
+                                    initialQuery={query??hotelsListQuerySampleA}
+                                    initialVariables={parsedVariables??''}
+                                    //onTabChange={(tabState) => { tabState.tabs = []; return false; }}
                                 >
                                     <GraphiQL.Logo><></></GraphiQL.Logo>
                                 </GraphiQL>

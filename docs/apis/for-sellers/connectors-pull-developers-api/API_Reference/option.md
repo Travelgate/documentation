@@ -26,18 +26,18 @@ Represents an option for a hotel accommodation in Search responses.
 | **Rooms/RoomPrice/Price/Binding** | Boolean | Indicates whether the price is binding. |
 | **Rooms/RoomPrice/Price/Net** | Double | The net price paid by the Buyer to the Seller. |
 | **Rooms/RoomPrice/Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
-| **Rooms/RoomPrice/Price**<br />**NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
-| **Rooms/RoomPrice/Price**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
+| **Rooms/RoomPrice/Price/**<br />**NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
+| **Rooms/RoomPrice/Price/**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
 | **Rooms/RoomPrice/PriceBreakdown** | Array&lt;[PriceBreakdown](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/pricebreakdown)&gt; | Breakdown of the room price over specific periods, such as daily rates. |
-| **Rooms/RoomPrice/PriceBreakdown**<br />**Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | The price for each day of the room during the specified period. |
-| **Rooms/RoomPrice/PriceBreakdown**<br />**Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
-| **Rooms/RoomPrice/PriceBreakdown**<br />**Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **Rooms/RoomPrice/PriceBreakdown**<br />**Price/Net** | Double | The net price paid by the Buyer to the Seller. |
-| **Rooms/RoomPrice/PriceBreakdown**<br />**Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
-| **Rooms/RoomPrice/PriceBreakdown**<br />**Price/NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
-| **Rooms/RoomPrice/PriceBreakdown**<br />**Price/MinimumSellingPrice** | Double | The minimum selling price. |
-| **Rooms/RoomPrice/PriceBreakdown**<br />**Start** | Integer | The starting day of the pricing period (inclusive). |
-| **Rooms/RoomPrice/PriceBreakdown**<br />**End** | Integer | The ending day of the pricing period (inclusive). |
+| **Rooms/RoomPrice/PriceBreakdown/**<br />**Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | The price for each day of the room during the specified period. |
+| **Rooms/RoomPrice/PriceBreakdown/**<br />**Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
+| **Rooms/RoomPrice/PriceBreakdown/**<br />**Price/Binding** | Boolean | Indicates whether the price is binding. |
+| **Rooms/RoomPrice/PriceBreakdown/**<br />**Price/Net** | Double | The net price paid by the Buyer to the Seller. |
+| **Rooms/RoomPrice/PriceBreakdown/**<br />**Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
+| **Rooms/RoomPrice/PriceBreakdown/**<br />**Price/NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
+| **Rooms/RoomPrice/PriceBreakdown/**<br />**Price/MinimumSellingPrice** | Double | The minimum selling price. |
+| **Rooms/RoomPrice/PriceBreakdown/**<br />**Start** | Integer | The starting day of the pricing period (inclusive). |
+| **Rooms/RoomPrice/PriceBreakdown/**<br />**End** | Integer | The ending day of the pricing period (inclusive). |
 | **Rooms/Refundable** | Boolean | Indicates if the room is refundable based on the cancellation policy. |
 | **Rooms/RefundableSpecified** | Boolean | Indicates whether the refundable status has been explicitly specified. |
 | **Rooms/LegacyRoomId** | String | Legacy identifier for internal tracking. Automatically generated using OccupancyRefId and Code. |
@@ -56,22 +56,22 @@ Represents an option for a hotel accommodation in Search responses.
 | **Rooms/Surcharges/Mandatory** | Boolean | Indicates whether this surcharge is mandatory. Mandatory surcharges, such as government taxes, must always be paid, while optional surcharges may depend on the guest's preferences. |
 | **Rooms/Surcharges/Description** | String | Provides a description of the surcharge, giving context about the type of cost it represents.Examples: "Tourist Tax", "Resort Fee", or "Additional Bed Fee". |
 | **Rooms/Surcharges/Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | Represents the price of this surcharge, including the amount and currency. See Price for details about the price structure. |
-| **Rooms/Surcharges/Price**<br />**Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
+| **Rooms/Surcharges/Price/**<br />**Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
 | **Rooms/Surcharges/Price/Binding** | Boolean | Indicates whether the price is binding. |
 | **Rooms/Surcharges/Price/Net** | Double | The net price paid by the Buyer to the Seller. |
 | **Rooms/Surcharges/Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
-| **Rooms/Surcharges/Price**<br />**NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
-| **Rooms/Surcharges/Price**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
+| **Rooms/Surcharges/Price/**<br />**NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
+| **Rooms/Surcharges/Price/**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
 | **Rooms/Surcharges/Code** | String | An optional code that uniquely identifies this surcharge for internal or external reference. This can be useful for tracking specific fees or integrating with supplier systems. |
 | **Rooms/CancelPolicy** | [CancelPolicy](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/cancelpolicy) | Cancellation policy specific to this room. |
 | **Rooms/CancelPolicy/Refundable** | Boolean | Indicates whether the booking is refundable. |
-| **Rooms/CancelPolicy**<br />**CancelPenalties** | Array&lt;[CancelPenalty](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/cancelpenalty)&gt; | A collection of penalties that apply if the booking is canceled. |
-| **Rooms/CancelPolicy**<br />**CancelPenalties/HoursBefore** | Integer | Indicates the number of hours before the check-in date when the penalty becomes applicable. |
-| **Rooms/CancelPolicy**<br />**CancelPenalties/PenaltyType** | [PenaltyType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/penaltytype) | Specifies the type of penalty enforced upon cancellation. |
-| **Rooms/CancelPolicy**<br />**CancelPenalties/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | Specifies the currency in which the penalty value is expressed. |
-| **Rooms/CancelPolicy**<br />**CancelPenalties/Value** | Double | Indicates the value of the penalty. |
-| **Rooms/CancelPolicy**<br />**CancelPenalties/Deadline** | String | Specifies the absolute deadline for the penalty in UTC format. |
-| **Rooms/CancelPolicy**<br />**CancelPolicyDescription** | String | Provides additional details or a textual summary of the cancellation policy. |
+| **Rooms/CancelPolicy/**<br />**CancelPenalties** | Array&lt;[CancelPenalty](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/cancelpenalty)&gt; | A collection of penalties that apply if the booking is canceled. |
+| **Rooms/CancelPolicy/**<br />**CancelPenalties/HoursBefore** | Integer | Indicates the number of hours before the check-in date when the penalty becomes applicable. |
+| **Rooms/CancelPolicy/**<br />**CancelPenalties/PenaltyType** | [PenaltyType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/penaltytype) | Specifies the type of penalty enforced upon cancellation. |
+| **Rooms/CancelPolicy/**<br />**CancelPenalties/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | Specifies the currency in which the penalty value is expressed. |
+| **Rooms/CancelPolicy/**<br />**CancelPenalties/Value** | Double | Indicates the value of the penalty. |
+| **Rooms/CancelPolicy/**<br />**CancelPenalties/Deadline** | String | Specifies the absolute deadline for the penalty in UTC format. |
+| **Rooms/CancelPolicy/**<br />**CancelPolicyDescription** | String | Provides additional details or a textual summary of the cancellation policy. |
 | **Rooms/Beds** | Array&lt;[Bed](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/bed)&gt; | List of beds available in the room, including types and configurations. |
 | **Rooms/Beds/Type** | String | The type of the bed. |
 | **Rooms/Beds/Description** | String | A description of the bed. |
@@ -94,15 +94,15 @@ Represents an option for a hotel accommodation in Search responses.
 | **CancelPolicy** | [OptionCancelPolicy](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/optioncancelpolicy) | The cancellation policy associated with the option, detailing penalties and conditions. |
 | **CancelPolicy/Refundable** | Boolean | Indicates whether the booking is refundable. |
 | **CancelPolicy/CancelPenalties** | Array&lt;[CancelPenalty](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/cancelpenalty)&gt; | A collection of penalties that apply if the booking is canceled. |
-| **CancelPolicy/CancelPenalties**<br />**HoursBefore** | Integer | Indicates the number of hours before the check-in date when the penalty becomes applicable. |
-| **CancelPolicy/CancelPenalties**<br />**PenaltyType** | [PenaltyType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/penaltytype) | Specifies the type of penalty enforced upon cancellation. |
-| **CancelPolicy/CancelPenalties**<br />**Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | Specifies the currency in which the penalty value is expressed. |
-| **CancelPolicy/CancelPenalties**<br />**Value** | Double | Indicates the value of the penalty. |
-| **CancelPolicy/CancelPenalties**<br />**Deadline** | String | Specifies the absolute deadline for the penalty in UTC format. |
-| **CancelPolicy**<br />**CancelPolicyDescription** | String | Provides additional details or a textual summary of the cancellation policy. |
-| **CancelPolicy**<br />**RoomCancelPolicyDescriptions** | Array&lt;[RoomCancelPolicyDescriptions](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/roomcancelpolicydescriptions)&gt; | Gets or sets the list of room-specific cancellation policy descriptions. |
-| **CancelPolicy**<br />**RoomCancelPolicyDescriptions**<br />**OccupancyRefId** | Integer | Identifies the specific occupancy within the booking for which this cancellation policy applies. |
-| **CancelPolicy**<br />**RoomCancelPolicyDescriptions**<br />**Description** | String | Textual information detailing the cancellation policy applicable to the room associated with the OccupancyRefId. |
+| **CancelPolicy/CancelPenalties/**<br />**HoursBefore** | Integer | Indicates the number of hours before the check-in date when the penalty becomes applicable. |
+| **CancelPolicy/CancelPenalties/**<br />**PenaltyType** | [PenaltyType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/penaltytype) | Specifies the type of penalty enforced upon cancellation. |
+| **CancelPolicy/CancelPenalties/**<br />**Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | Specifies the currency in which the penalty value is expressed. |
+| **CancelPolicy/CancelPenalties/**<br />**Value** | Double | Indicates the value of the penalty. |
+| **CancelPolicy/CancelPenalties/**<br />**Deadline** | String | Specifies the absolute deadline for the penalty in UTC format. |
+| **CancelPolicy/**<br />**CancelPolicyDescription** | String | Provides additional details or a textual summary of the cancellation policy. |
+| **CancelPolicy/**<br />**RoomCancelPolicyDescriptions** | Array&lt;[RoomCancelPolicyDescriptions](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/roomcancelpolicydescriptions)&gt; | Gets or sets the list of room-specific cancellation policy descriptions. |
+| **CancelPolicy/**<br />**RoomCancelPolicyDescriptions/**<br />**OccupancyRefId** | Integer | Identifies the specific occupancy within the booking for which this cancellation policy applies. |
+| **CancelPolicy/**<br />**RoomCancelPolicyDescriptions/**<br />**Description** | String | Textual information detailing the cancellation policy applicable to the room associated with the OccupancyRefId. |
 | **Promotions** | Array&lt;[Promotion](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/promotion)&gt; | The promotions applied to the option, such as discounts or special offers. |
 | **Promotions/Code** | String | The unique code identifying the promotion. |
 | **Promotions/Name** | String | The name of the promotion. |
@@ -113,7 +113,7 @@ Represents an option for a hotel accommodation in Search responses.
 | **RateRules/Restrictions** | Array&lt;[Restriction](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/restriction)&gt; | Defines a collection of additional restrictions that further specify the conditions of the rate rule.Restrictions can include age limits, regional requirements, or special eligibility conditions. |
 | **RateRules/Restrictions/Code** | String | A unique identifier for the restriction. |
 | **RateRules/Restrictions/Name** | String | A descriptive name for the restriction. |
-| **RateRules/Restrictions**<br />**RestrictionType** | [RestrictionType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/restrictiontype) | The type of the restriction, categorizing its purpose or application. |
+| **RateRules/Restrictions/**<br />**RestrictionType** | [RestrictionType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/restrictiontype) | The type of the restriction, categorizing its purpose or application. |
 | **Remarks** | Array&lt;[Remark](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remark)&gt; | Additional remarks associated with the option, such as special conditions or information. |
 | **Remarks/RemarkType** | [RemarkType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remarktype) | The type of the remark, categorized by RemarkType, specifies its nature or purpose. It may refer to the hotel as a whole, a specific room being booked, services provided by the accommodation, or general remarks not tied to any particular entity. |
 | **Remarks/Text** | String | The text content of the remark, providing details or additional notes.This can include supplier-specific instructions, conditions, or general information. |
@@ -127,7 +127,7 @@ Represents an option for a hotel accommodation in Search responses.
 | **Surcharges/Price/Net** | Double | The net price paid by the Buyer to the Seller. |
 | **Surcharges/Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **Surcharges/Price/NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
-| **Surcharges/Price**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
+| **Surcharges/Price/**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
 | **Surcharges/Code** | String | An optional code that uniquely identifies this surcharge for internal or external reference. This can be useful for tracking specific fees or integrating with supplier systems. |
 | **Amenities** | Array&lt;[Amenity](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/amenity)&gt; | Amenities included with the option, such as "Free Wi-Fi" or "Parking." |
 | **Amenities/Code** | String | A unique code that identifies the amenity. |
@@ -145,13 +145,13 @@ Represents an option for a hotel accommodation in Search responses.
 | **Supplements/Price/Net** | Double | The net price paid by the Buyer to the Seller. |
 | **Supplements/Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
 | **Supplements/Price/NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
-| **Supplements/Price**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
+| **Supplements/Price/**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
 | **Supplements/SupplementType** | [SupplementType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/supplementtype) | The specific SupplementType of the supplement (e.g., board, additional service). |
 | **Supplements/ChargeType** | [ChargeType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/chargetype) | Defines how the supplement is charged using ChargeType (e.g., per person, per stay). |
 | **Supplements/DurationType** | [DurationType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/durationtype) | Specifies whether the supplement applies to a specific duration (Open or Range). |
 | **Supplements/Quantity** | Integer | The quantity of the supplement included in the booking. |
 | **Supplements/StartDate** | String | The start date for the supplement (if applicable). |
-| **Supplements**<br />**StartDateAsDateTime** | String | The start date as a DateTime object for easier manipulation. |
+| **Supplements/**<br />**StartDateAsDateTime** | String | The start date as a DateTime object for easier manipulation. |
 | **Supplements/EndDate** | String | The end date for the supplement (if applicable). |
 | **Supplements/EndDateAsDateTime** | String | The end date as a DateTime object for easier manipulation. |
 | **Supplements/Resort** | [Resort](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/resort) | The associated Resort where the supplement applies. |

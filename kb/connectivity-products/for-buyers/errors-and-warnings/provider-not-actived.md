@@ -1,11 +1,11 @@
-﻿---
+﻿﻿---
 sidebar_position: 18
 ---
 
 # ProviderNotActivated Warning
 
 ## What Does a ProviderNotActivated Warning Mean?
-This warning appears in the Legacy Pull Buyers API response when the connection with the Supplier has not yet been established. Before proceeding, ensure that you have a commercial agreement with them and have [requested their activation](/kb/platform/app-features/connections/my-connections/guick-guide-to-auto-activations).
+This warning appears in the Legacy Pull Buyers API response when a connection with the specified supplier hasn't been established or when the entered supplier code doesn't match the one assigned in [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details#additional-access-information). Before proceeding, ensure that you have a commercial agreement with them and have [requested their activation](/kb/platform/app-features/connections/my-connections/guick-guide-to-auto-activations).
 
 ### Example Response:
 ```
@@ -18,9 +18,9 @@ This warning appears in the Legacy Pull Buyers API response when the connection 
 
 ### What Can I Do If I Receive a ProviderNotActivated warning in my Response?
 To resolve this issue:
-1. **Verify Provider Code**
-   - Ensure that you have included the correct provider code in your request.
-   - The provider code should match the one provided during activation.
+1. **Verify Supplier Code**
+   - Make sure you've included the correct provider code in your request. You can verify your Sellers' supplier codes directly in the ["My Connections"](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details#additional-access-information) section, at the Supplier and Access level.
+   - Your request's provider code should always match the supplier code shown in "My Connections.
 
 ![Provider Not Activated](https://storage.travelgate.com/kbase/provided_not_actived.jpg)
 

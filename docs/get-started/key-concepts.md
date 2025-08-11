@@ -38,7 +38,7 @@ An `access` is the set of credentials and the authentication configuration that 
 For Hotel-X implementation and testing purposes, we recommend using the following 
 accesses:
 
-* **TGX Test Seller**: `Access` 2 with `context` HOTELTEST
+* **TG Test Seller**: `Access` 2 with `context` HOTELTEST
 * **Smyrooms Test**: `Access` 5647 with `context` LOGITEST
 
 These have already been activated on your account and are ready to use.

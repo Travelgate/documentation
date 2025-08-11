@@ -63,7 +63,7 @@ Some IP addresses are provided as ranges, such as `172.98.36.0/27`. These ranges
 Please add **only** these IPs (Updated on 29/10/2024):
 
 
-| **IP Address**         |  
+| **Single IP Address or CIDR Range**         |  
 | :--------------------: |  
 | 13.81.113.68           |  
 | 13.94.250.159          |  
@@ -79,7 +79,7 @@ Please add **only** these IPs (Updated on 29/10/2024):
 ### Fixed IP List as a Channel-X Buyer
 Please add **only** these IPs (Updated on 03/10/2024):
 
-| **IP Address**         |    
+| **Single IP Address or CIDR Range**         |    
 | :--------------------: |  
 | 13.94.250.159          | 
 | 20.234.226.0           |
@@ -92,7 +92,7 @@ Please add **only** these IPs (Updated on 03/10/2024):
 ### Fixed IP List as a Payment/VCC Supplier
 Please add **only** these IPs (Updated on 29/08/2024):
 
-| **IP Address**         |  
+| **Single IP Address or CIDR Range**         |  
 | :--------------------: |  
 | 13.94.250.159          |   
 | 74.234.224.26          |  

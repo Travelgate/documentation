@@ -5,8 +5,8 @@ sidebar_position: 4
 
 ## **Overview**
 
-The `Book` operation is the final step in the booking workflow, used to confirm a reservation for a selected option. It involves providing detailed guest information, payment details (if required), and a client locator. Once completed, the supplier processes the reservation and returns its status.
-
+The `Book` operation is the final step in the booking workflow, used to confirm a reservation for a selected option. It involves providing detailed guest information, a client locator, the payment type, and credit card information when required. Once completed, the supplier processes the reservation and returns its status.
+                                             
 The `Book` operation ensures:
 - **Guest Information Submission**: Transfers passenger details, including names, surnames, and any additional guest-specific data, to the supplier.
 - **Payment Validation**: Confirms and processes payment if the supplier requires it at the booking stage.
@@ -20,7 +20,7 @@ When to Use:
 > **Note**: If the booking status is returned as `Unknown`, the Buyer is responsible for verifying with the Seller that the booking has been confirmed.
 
 Common Scenarios:
-- **Payment-Required Suppliers**: Includes credit card information or other payment details as part of the `Book` request.
+- **Payment-Required Suppliers**: Includes credit card information as part of the `Book` request.
 - **Error Handling**: Common errors include:
   - `SupplierBookingNotConfirmed`: Indicates that the booking could not be processed by the supplier.
   - `ItemNotAvailable`: Returned if the selected option is no longer valid at the time of booking.
@@ -146,8 +146,8 @@ import TabItem from '@theme/TabItem';
                     RoomId = 105
                 }
             },
-            CheckIn = DateTime.Parse("2024-05-12"),
-            CheckOut = DateTime.Parse("2024-05-14"),
+            CheckIn = "2024-05-12",
+            CheckOut = "2024-05-14",
             TotalNights = 2,
             Language = "ES",
             Currency = "EUR",
@@ -184,8 +184,8 @@ import TabItem from '@theme/TabItem';
                 OptionsQuota = 170,
                 BusinessRuleType = "CheaperAmount"
             },
-            Timeout = "Timeout7d64fd74-9c49-46d7-aa62-2a14c9500e2f",
-            TimeoutAsTimeSpan = TimeSpan.Parse("00:00:00"),
+            Timeout = "00:00:10",
+            TimeoutAsTimeSpan = TimeSpan.Parse("00:00:10"),
             IncludeProviderTransactions = true
         }
     };
@@ -337,8 +337,8 @@ import TabItem from '@theme/TabItem';
                 "optionsQuota": 170,
                 "businessRuleType": "CheaperAmount"
             },
-            "timeout": "Timeout7d64fd74-9c49-46d7-aa62-2a14c9500e2f",
-            "timeoutAsTimeSpan": "00:00:00",
+            "timeout": "00:00:10",
+            "timeoutAsTimeSpan": "00:00:10",
             "includeProviderTransactions": true
         }
     }
@@ -352,10 +352,10 @@ import TabItem from '@theme/TabItem';
 | Name | Relation | Type | Description |
 |------|:--------:|:----:|-------------|
 | **BookCriteria** | 1 | [BookCriteria](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/bookcriteria) | The booking criteria for the hotel reservation. | 
-| **BookCriteria/CheckIn** | 1 | String | The check-in date for the operation, represented as a string in ISO 8601 format (yyyy-MM-dd). | 
-| **BookCriteria/CheckOut** | 1 | String | The check-out date for the operation, represented as a string in ISO 8601 format (yyyy-MM-dd). | 
-| **BookCriteria/CheckInAsDateTime** | 0 . . 1 | String | The check-in date parsed as a DateTime object. | 
-| **BookCriteria/**<br />**CheckOutAsDateTime** | 0 . . 1 | String | The check-out date parsed as a DateTime object. | 
+| **BookCriteria/CheckIn** | 1 | String | The check-in date for the operation, represented as a string in ISO 8601 format (YYYY-MM-DD). | 
+| **BookCriteria/CheckOut** | 1 | String | The check-out date for the operation, represented as a string in ISO 8601 format (YYYY-MM-DD). | 
+| **BookCriteria/CheckInAsDateTime** | 0 . . 1 | String | The check-in date parsed as a DateTime object, expressed in UTC 0 | 
+| **BookCriteria/**<br />**CheckOutAsDateTime** | 0 . . 1 | String | The check-out date parsed as a DateTime object, expressed in UTC 0 | 
 | **BookCriteria/TotalNights** | 0 . . 1 | Integer | The total number of nights for the stay, calculated as the difference between check-in and check-out dates. | 
 | **BookCriteria/Language** | 1 | String | The language code for the operation, represented as a 2-character ISO 639-1 code (e.g., "en", "es"). | 
 | **BookCriteria/Currency** | 0 . . 1 | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The preferred currency for the operation, defined as an optional Currency value. | 
@@ -522,7 +522,7 @@ import TabItem from '@theme/TabItem';
 | **Settings/BusinessRules** | 0 . . 1 | [BusinessRules](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/businessrules) | Specifies the business rules to be applied during the operation. These rules define operational constraints and behavior, such as quota limits or prioritization criteria. | 
 | **Settings/BusinessRules/**<br />**OptionsQuota** | 0 . . 1 | Integer | The maximum number of options returned for each board in the Search query. | 
 | **Settings/BusinessRules/**<br />**BusinessRuleType** | 1 | [BusinessRulesType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/businessrulestype) | The business rule type that determines how Search results are prioritized or filtered. | 
-| **Settings/Timeout** | 1 | String | Defines the timeout period for the operation as a string value.This indicates the maximum amount of time to wait for a supplier's response before timing out.The value must be provided in timestamp format (e.g., "00:05:00" for 5 minutes). | 
+| **Settings/Timeout** | 1 | String | Defines the timeout period for the operation as a string value.This indicates the maximum amount of time to wait for a supplier's response before timing out.The value must be provided in timestamp format (e.g., "00:00:10" for 10 seconds). | 
 | **Settings/TimeoutAsTimeSpan** | 0 . . 1 | String | Converts the timeout value from the string representation (Timeout) into a TimeSpan for use in time-based operations. | 
 | **Settings/**<br />**IncludeProviderTransactions** | 1 | Boolean | Indicates whether detailed traces of provider transactions should be included in the operation's response.If enabled, the ProviderAudit field in responses will contain the transaction logs (e.g., requests and responses exchanged with the supplier). | 
 | **Settings/CommitRequired** | 0 . . 1 | Boolean | Indicates whether a commit is required for the booking. | 
@@ -943,14 +943,14 @@ The `Book` operation returns:
 |------|:--------:|:----:|-------------|
 | **AuditData** | 1 | [ProviderAudit](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/provideraudit) | Contains the requests and responses exchanged with the supplier.This field is populated internally by the connector framework. Integrators do not need to handle this field manually. |
 | **AuditData/Request** | 0 . . N | Array&lt;[ProviderAuditRq](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/providerauditrq)&gt; | Collection of audit entries for provider requests.Each entry contains details about a specific request made to the provider. |
-| **AuditData/Request/SendAt** | 1 | String | The timestamp indicating when the request was sent. |
+| **AuditData/Request/SendAt** | 1 | String | The timestamp indicating when the request was sent. Date on UTC Standard (ISO 8601 UTC `2025-05-21T08:48:53.9744052+00:00`) |
 | **AuditData/Request/Data** | 1 | String | The payload data included in the request. |
 | **AuditData/Request/Url** | 1 | String | The URL of the provider endpoint to which the request is sent. |
 | **AuditData/Request/Headers** | 1 | Object | A collection of headers included in the request. |
 | **AuditData/Request/HttpMethod** | 1 | [HttpMethod](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/httpmethod) | The HTTP method used to send the request. |
 | **AuditData/Request/HttpMethod/**<br />**Method** | 1 | String |  No description available. |
 | **AuditData/Response** | 0 . . N | Array&lt;[ProviderAuditRs](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/providerauditrs)&gt; | Collection of audit entries for provider responses.Each entry contains details about a specific response received from the provider. |
-| **AuditData/Response/ReceivedAt** | 1 | String | The timestamp indicating when the response was received. |
+| **AuditData/Response/ReceivedAt** | 1 | String | The timestamp indicating when the response was received. Date on UTC Standard (ISO 8601 UTC `2025-05-21T08:48:53.9744052+00:00`) |
 | **AuditData/Response/Data** | 1 | String | The payload data contained in the provider's response. |
 | **AuditData/Response/Headers** | 1 | Object | A collection of headers included in the provider's response. |
 | **AuditData/Response/StatusCode** | 1 | Integer | The HTTP status code returned by the provider. |

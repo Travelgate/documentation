@@ -73,10 +73,10 @@ var request = new SearchRequest
                 }
             },
             Markets = new List<string> { "EU" },
-            CheckIn = DateTime.Parse("2025-06-10"),
-            CheckOut = DateTime.Parse("2025-06-15"),
-            CheckInAsDateTime = DateTime.Parse("2025-06-10T15:00:00"),
-            CheckOutAsDateTime = DateTime.Parse("2025-06-15T11:00:00"),
+            CheckIn = "2025-06-10",
+            CheckOut = "2025-06-15",
+            CheckInAsDateTime = DateTime.Parse("2025-06-10", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal),
+            CheckOutAsDateTime = DateTime.Parse("2025-06-15", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal),
             TotalNights = 5,
             Language = "EN",
             Currency = "EUR",
@@ -113,8 +113,8 @@ var request = new SearchRequest
                 OptionsQuota = 10,
                 BusinessRuleType = "CheaperAmount"
             },
-            Timeout = "30s",
-            TimeoutAsTimeSpan = TimeSpan.FromSeconds(30),
+            Timeout = "00:00:10",
+            TimeoutAsTimeSpan = TimeSpan.Parse("00:00:10"),
             IncludeProviderTransactions = true
         },
         Filters = new Filters
@@ -167,8 +167,8 @@ var request = new SearchRequest
         ],
         "checkIn": "2025-06-10",
         "checkOut": "2025-06-15",
-        "checkInAsDateTime": "2025-06-10T15:00:00",
-        "checkOutAsDateTime": "2025-06-15T11:00:00",
+        "checkInAsDateTime": "2025-06-10T00:00:00",
+        "checkOutAsDateTime": "2025-06-15T00:00:00",
         "totalNights": 5,
         "language": "EN",
         "currency": "EUR",
@@ -205,8 +205,8 @@ var request = new SearchRequest
             "optionsQuota": 10,
             "businessRuleType": "CheaperAmount"
         },
-        "timeout": "30s",
-        "timeoutAsTimeSpan": "00:00:30",
+        "timeout": "00:00:10",
+        "timeoutAsTimeSpan": "00:00:10",
         "includeProviderTransactions": true
     },
     "filters":
@@ -248,10 +248,10 @@ The object [SearchRq](/docs/apis/for-sellers/connectors-pull-developers-api/API_
 | Name | Relation | Type | Description |
 |------|:--------:|:----:|-------------|
 | **SearchCriteria** | 1 | [SearchCriteria](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/searchcriteria) | Gets the Search criteria for the hotel Search. |
-| **SearchCriteria/CheckIn** | 1 | String | The check-in date for the operation, represented as a string in ISO 8601 format (yyyy-MM-dd). |
-| **SearchCriteria/CheckOut** | 1 | String | The check-out date for the operation, represented as a string in ISO 8601 format (yyyy-MM-dd). |
-| **SearchCriteria/**<br />**CheckInAsDateTime** | 0 . . 1 | String | The check-in date parsed as a DateTime object. |
-| **SearchCriteria/**<br />**CheckOutAsDateTime** | 0 . . 1 | String | The check-out date parsed as a DateTime object. |
+| **SearchCriteria/CheckIn** | 1 | String | The check-in date for the operation, represented as a string in ISO 8601 format (YYYY-MM-DD). |
+| **SearchCriteria/CheckOut** | 1 | String | The check-out date for the operation, represented as a string in ISO 8601 format (YYYY-MM-DD). |
+| **SearchCriteria/**<br />**CheckInAsDateTime** | 0 . . 1 | String | The check-in date parsed as a DateTime object, expressed in UTC 0 |
+| **SearchCriteria/**<br />**CheckOutAsDateTime** | 0 . . 1 | String | The check-out date parsed as a DateTime object, expressed in UTC 0 |
 | **SearchCriteria/TotalNights** | 0 . . 1 | Integer | The total number of nights for the stay, calculated as the difference between check-in and check-out dates. |
 | **SearchCriteria/Language** | 1 | String | The language code for the operation, represented as a 2-character ISO 639-1 code (e.g., "en", "es"). |
 | **SearchCriteria/Currency** | 0 . . 1 | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The preferred currency for the operation, defined as an optional Currency value. |
@@ -288,7 +288,7 @@ The object [SearchRq](/docs/apis/for-sellers/connectors-pull-developers-api/API_
 | **Settings/BusinessRules** | 0 . . 1 | [BusinessRules](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/businessrules) | Specifies the business rules to be applied during the operation. These rules define operational constraints and behavior, such as quota limits or prioritization criteria. |
 | **Settings/BusinessRules/**<br />**OptionsQuota** | 0 . . 1 | Integer | The maximum number of options returned for each board in the Search query. |
 | **Settings/BusinessRules/**<br />**BusinessRuleType** | 0 . . 1 | [BusinessRulesType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/businessrulestype) | The business rule type that determines how Search results are prioritized or filtered. |
-| **Settings/Timeout** | 1 | String | Defines the timeout period for the operation as a string value.This indicates the maximum amount of time to wait for a supplier's response before timing out.The value must be provided in timestamp format (e.g., "00:05:00" for 5 minutes). |
+| **Settings/Timeout** | 1 | String | Defines the timeout period for the operation as a string value.This indicates the maximum amount of time to wait for a supplier's response before timing out.The value must be provided in TimeSpan format (e.g., ""00:00:10"" for 10 seconds). |
 | **Settings/TimeoutAsTimeSpan** | 0 . . 1 | String | Converts the timeout value from the string representation (Timeout) into a TimeSpan for use in time-based operations. |
 | **Settings/**<br />**IncludeProviderTransactions** | 1 | Boolean | Indicates whether detailed traces of provider transactions should be included in the operation's response.If enabled, the ProviderAudit field in responses will contain the transaction logs (e.g., requests and responses exchanged with the supplier). |
 | **Filters** | 1 | [Filters](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/filters) | Gets the filters to be applied to the hotel Search results. |
@@ -958,14 +958,14 @@ The [SearchRs](/docs/apis/for-sellers/connectors-pull-developers-api/API_Referen
 |------|:--------:|:----:|-------------|
 | **AuditData** | 0 . . 1 | [ProviderAudit](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/provideraudit) | Contains the requests and responses exchanged with the supplier.This field is populated internally by the connector framework. Integrators do not need to handle this field manually. |
 | **AuditData/Request** | 0 . . N | Array&lt;[ProviderAuditRq](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/providerauditrq)&gt; | Collection of audit entries for provider requests.Each entry contains details about a specific request made to the provider. |
-| **AuditData/Request/SendAt** | 1 | String | The timestamp indicating when the request was sent. |
+| **AuditData/Request/SendAt** | 1 | String | The timestamp indicating when the request was sent. Date on UTC Standard (ISO 8601 UTC `2025-05-21T08:48:53.9744052+00:00`) |
 | **AuditData/Request/Data** | 1 | String | The payload data included in the request. |
 | **AuditData/Request/Url** | 1 | String | The URL of the provider endpoint to which the request is sent. |
 | **AuditData/Request/Headers** | 1 | Object | A collection of headers included in the request. |
 | **AuditData/Request/HttpMethod** | 1 | [HttpMethod](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/httpmethod) | The HTTP method used to send the request. |
 | **AuditData/Request/HttpMethod/**<br />**Method** | 1 | String | No description available. |
 | **AuditData/Response** | 0 . . N | Array&lt;[ProviderAuditRs](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/providerauditrs)&gt; | Collection of audit entries for provider responses.Each entry contains details about a specific response received from the provider. |
-| **AuditData/Response/ReceivedAt** | 1 | String | The timestamp indicating when the response was received. |
+| **AuditData/Response/ReceivedAt** | 1 | String | The timestamp indicating when the response was received. Date on UTC Standard (ISO 8601 UTC `2025-05-21T08:48:53.9744052+00:00`) |
 | **AuditData/Response/Data** | 1 | String | The payload data contained in the provider's response. |
 | **AuditData/Response/Headers** | 1 | Object | A collection of headers included in the provider's response. |
 | **AuditData/Response/StatusCode** | 1 | Integer | The HTTP status code returned by the provider. |

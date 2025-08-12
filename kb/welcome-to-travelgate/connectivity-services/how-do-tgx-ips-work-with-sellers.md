@@ -15,23 +15,26 @@ If you do not currently filter by IP but would like traffic to come from fixed a
 
 ### Fixed IP List for Hotel Suppliers
 
-Below is the current list of IP addresses that Hotel Suppliers should allow (Updated on 07/04/2025):
+Below is the current list of IP addresses that Hotel Suppliers should allow (Updated on 08/08/2025):
+
+:::note
+A CIDR range is a way to group several IP addresses. The second column shows all the addresses in that range, if needed.
+:::
 
 
-| **IP Address**                     |   Explanation (if needed)               |  
+| **Single IP Address or CIDR Range**                     |   **Included IP Addresses (if any)**                      |  
 | :--------------------------------: |  :------------------------------------: |  
 | 13.94.250.159                      |                                         |  
 | 23.99.178.8                        |                                         |  
 | 23.100.6.214                       |                                         |    
-| 34.21.96.120/29                    | from `34.21.96.120` to `34.21.96.127`   |  
+| 34.21.96.120/29                    | 34.21.96.120&nbsp;<br />34.21.96.121&nbsp;<br /> 34.21.96.122&nbsp;<br /> 34.21.96.123&nbsp;<br /> 34.21.96.124&nbsp;<br /> 34.21.96.125&nbsp;<br /> 34.21.96.126&nbsp;<br /> 34.21.96.127 |  
 | 35.193.109.73                      |                                         |  
 | 35.192.57.119                      |                                         |  
 | 40.113.198.242                     |                                         |  
 | 40.118.12.91                       |                                         |  
-| 52.48.131.154                      |                                         |  
-| 79.98.220.55                       |                                         |  
+| 52.48.131.154                      |                                         |   
 | 95.217.46.57                       |                                         |  
-| 101.46.136.21 - 101.46.136.32      | from `101.46.136.21` to `101.46.136.32` |  
+| 101.46.136.21 - 101.46.136.32      | 101.46.136.21&nbsp;<br /> 101.46.136.22&nbsp;<br /> 101.46.136.23&nbsp;<br /> 101.46.136.24&nbsp;<br /> 101.46.136.25&nbsp;<br /> 101.46.136.26&nbsp;<br /> 101.46.136.27&nbsp;<br /> 101.46.136.28&nbsp;<br /> 101.46.136.29&nbsp;<br /> 101.46.136.30&nbsp;<br /> 101.46.136.31&nbsp;<br /> 101.46.136.32 |  
 | 104.43.214.41                      |                                         |  
 | 104.45.18.110                      |                                         |  
 | 104.45.19.173                      |                                         |  
@@ -42,12 +45,12 @@ Below is the current list of IP addresses that Hotel Suppliers should allow (Upd
 | 144.76.195.49                      |                                         |  
 | 146.148.17.151                     |                                         |  
 | 146.148.21.32                      |                                         |  
-| 172.98.36.0/27                     | from `172.98.36.0` to `172.98.36.31`    |  
+| 172.98.36.0/27                     | 172.98.36.0&nbsp;<br /> 172.98.36.1&nbsp;<br /> 172.98.36.2&nbsp;<br /> 172.98.36.3&nbsp;<br /> 172.98.36.4&nbsp;<br /> 172.98.36.5&nbsp;<br /> 172.98.36.6&nbsp;<br /> 172.98.36.7&nbsp;<br /> 172.98.36.8&nbsp;<br /> 172.98.36.9&nbsp;<br /> 172.98.36.10&nbsp;<br /> 172.98.36.11&nbsp;<br /> 172.98.36.12&nbsp;<br /> 172.98.36.13&nbsp;<br /> 172.98.36.14&nbsp;<br /> 172.98.36.15&nbsp;<br /> 172.98.36.16&nbsp;<br /> 172.98.36.17&nbsp;<br /> 172.98.36.18&nbsp;<br /> 172.98.36.19&nbsp;<br /> 172.98.36.20&nbsp;<br /> 172.98.36.21&nbsp;<br /> 172.98.36.22&nbsp;<br /> 172.98.36.23&nbsp;<br /> 172.98.36.24&nbsp;<br /> 172.98.36.25&nbsp;<br /> 172.98.36.26&nbsp;<br /> 172.98.36.27&nbsp;<br /> 172.98.36.28&nbsp;<br /> 172.98.36.29&nbsp;<br /> 172.98.36.30&nbsp;<br /> 172.98.36.31 |  
 | 191.233.87.117                     |                                         |  
 | 216.59.58.52                       |                                         |  
-| 216.59.58.96/28                    | from `216.59.58.96` to `216.59.58.111`  |
-| 216.59.58.248/29                   | from `216.59.58.248` to `216.59.58.255` |  
-| 216.59.61.160/27                   | from `216.59.61.160` to `216.59.61.191` |
+| 216.59.58.96/28                    | 216.59.58.96&nbsp;<br /> 216.59.58.97&nbsp;<br /> 216.59.58.98&nbsp;<br /> 216.59.58.99&nbsp;<br /> 216.59.58.100&nbsp;<br /> 216.59.58.101&nbsp;<br /> 216.59.58.102&nbsp;<br /> 216.59.58.103&nbsp;<br /> 216.59.58.104&nbsp;<br /> 216.59.58.105&nbsp;<br /> 216.59.58.106&nbsp;<br /> 216.59.58.107&nbsp;<br /> 216.59.58.108&nbsp;<br /> 216.59.58.109&nbsp;<br /> 216.59.58.110&nbsp;<br /> 216.59.58.111 |
+| 216.59.58.248/29                   | 216.59.58.248&nbsp;<br /> 216.59.58.249&nbsp;<br /> 216.59.58.250&nbsp;<br /> 216.59.58.251&nbsp;<br /> 216.59.58.252&nbsp;<br /> 216.59.58.253&nbsp;<br /> 216.59.58.254&nbsp;<br /> 216.59.58.255 |  
+| 216.59.61.160/27                   | 216.59.61.160&nbsp;<br /> 216.59.61.161&nbsp;<br /> 216.59.61.162&nbsp;<br /> 216.59.61.163&nbsp;<br /> 216.59.61.164&nbsp;<br /> 216.59.61.165&nbsp;<br /> 216.59.61.166&nbsp;<br /> 216.59.61.167&nbsp;<br /> 216.59.61.168&nbsp;<br /> 216.59.61.169&nbsp;<br /> 216.59.61.170&nbsp;<br /> 216.59.61.171&nbsp;<br /> 216.59.61.172&nbsp;<br /> 216.59.61.173&nbsp;<br /> 216.59.61.174&nbsp;<br /> 216.59.61.175&nbsp;<br /> 216.59.61.176&nbsp;<br /> 216.59.61.177&nbsp;<br /> 216.59.61.178&nbsp;<br /> 216.59.61.179&nbsp;<br /> 216.59.61.180&nbsp;<br /> 216.59.61.181&nbsp;<br /> 216.59.61.182&nbsp;<br /> 216.59.61.183&nbsp;<br /> 216.59.61.184&nbsp;<br /> 216.59.61.185&nbsp;<br /> 216.59.61.186&nbsp;<br /> 216.59.61.187&nbsp;<br /> 216.59.61.188&nbsp;<br /> 216.59.61.189&nbsp;<br /> 216.59.61.190&nbsp;<br /> 216.59.61.191 |
 | 101.46.140.136                     |                                         |
 | 101.46.142.234                     |                                         |
 
@@ -60,7 +63,7 @@ Some IP addresses are provided as ranges, such as `172.98.36.0/27`. These ranges
 Please add **only** these IPs (Updated on 29/10/2024):
 
 
-| **IP Address**         |  
+| **Single IP Address or CIDR Range**         |  
 | :--------------------: |  
 | 13.81.113.68           |  
 | 13.94.250.159          |  
@@ -76,7 +79,7 @@ Please add **only** these IPs (Updated on 29/10/2024):
 ### Fixed IP List as a Channel-X Buyer
 Please add **only** these IPs (Updated on 03/10/2024):
 
-| **IP Address**         |    
+| **Single IP Address or CIDR Range**         |    
 | :--------------------: |  
 | 13.94.250.159          | 
 | 20.234.226.0           |
@@ -89,7 +92,7 @@ Please add **only** these IPs (Updated on 03/10/2024):
 ### Fixed IP List as a Payment/VCC Supplier
 Please add **only** these IPs (Updated on 29/08/2024):
 
-| **IP Address**         |  
+| **Single IP Address or CIDR Range**         |  
 | :--------------------: |  
 | 13.94.250.159          |   
 | 74.234.224.26          |  

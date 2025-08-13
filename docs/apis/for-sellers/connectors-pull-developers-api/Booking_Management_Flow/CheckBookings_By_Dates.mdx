@@ -725,11 +725,11 @@ The Response Object provides a list of bookings within the specified date range,
 | **Bookings/Hotel/Rooms/**<br />**CancelPolicy** | 0 . . 1 | [CancelPolicy](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/cancelpolicy) |  Cancellation policy specific to this room. |
 | **Bookings/Hotel/Rooms/**<br />**CancelPolicy/Refundable** | 1 | Boolean |  Indicates whether the booking is refundable. |
 | **Bookings/Hotel/Rooms/**<br />**CancelPolicy/CancelPenalties** | 0 . . N | Array&lt;[CancelPenalty](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/cancelpenalty)&gt; |  A collection of penalties that apply if the booking is canceled. |
-| **Bookings/Hotel/Rooms/**<br />**CancelPolicy/CancelPenalties/**<br />**HoursBefore** | 0 . . 1 | Integer |  Indicates the number of hours before the check-in date when the penalty becomes applicable. |
+| **Bookings/Hotel/Rooms/**<br />**CancelPolicy/CancelPenalties/**<br />**HoursBefore** | 0 . . 1 | Integer | **[Deprecated]** This field is deprecated. Use `Deadline` instead. Indicates the number of hours before the check-in date when the penalty becomes applicable. |
 | **Bookings/Hotel/Rooms/**<br />**CancelPolicy/CancelPenalties/**<br />**PenaltyType** | 1 | [PenaltyType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/penaltytype) |  Specifies the type of penalty enforced upon cancellation. |
 | **Bookings/Hotel/Rooms/**<br />**CancelPolicy/CancelPenalties/**<br />**Currency** | 1 | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) |  Specifies the currency in which the penalty value is expressed. |
 | **Bookings/Hotel/Rooms/**<br />**CancelPolicy/CancelPenalties/**<br />**Value** | 1 | Double |  Indicates the value of the penalty. |
-| **Bookings/Hotel/Rooms/**<br />**CancelPolicy/CancelPenalties/**<br />**Deadline** | 1 | String |  Specifies the absolute deadline for the penalty in UTC format. |
+| **Bookings/Hotel/Rooms/**<br />**CancelPolicy/CancelPenalties/**<br />**Deadline** | 1 | String |  Date on UTC Standard TimeZone in which this cancellation policy applies (ISO 8601 UTC `2025-11-01T05:00:00Z`) |
 | **Bookings/Hotel/Rooms/**<br />**CancelPolicy/**<br />**CancelPolicyDescription** | 0 . . 1 | String |  Provides additional details or a textual summary of the cancellation policy. |
 | **Bookings/Hotel/Rooms/Beds** | 0 . . 1 | Array&lt;[Bed](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/bed)&gt; |  List of beds available in the room, including types and configurations. |
 | **Bookings/Hotel/Rooms/Beds/Type** | 0 . . 1 | String |  The type of the bed. |
@@ -754,11 +754,11 @@ The Response Object provides a list of bookings within the specified date range,
 | **Bookings/CancelPolicy** | 0 . . 1 | [CancelPolicy](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/cancelpolicy) |  The cancellation policy associated with the booking. |
 | **Bookings/CancelPolicy/**<br />**Refundable** | 1 | Boolean |  Indicates whether the booking is refundable. |
 | **Bookings/CancelPolicy/**<br />**CancelPenalties** | 0 . . N | Array&lt;[CancelPenalty](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/cancelpenalty)&gt; |  A collection of penalties that apply if the booking is canceled. |
-| **Bookings/CancelPolicy/**<br />**CancelPenalties/HoursBefore** | 0 . . 1 | Integer |  Indicates the number of hours before the check-in date when the penalty becomes applicable. |
+| **Bookings/CancelPolicy/**<br />**CancelPenalties/HoursBefore** | 0 . . 1 | Integer |  **[Deprecated]** This field is deprecated. Use `Deadline` instead. Indicates the number of hours before the check-in date when the penalty becomes applicable. |
 | **Bookings/CancelPolicy/**<br />**CancelPenalties/PenaltyType** | 1 | [PenaltyType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/penaltytype) |  Specifies the type of penalty enforced upon cancellation. |
 | **Bookings/CancelPolicy/**<br />**CancelPenalties/Currency** | 1 | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) |  Specifies the currency in which the penalty value is expressed. |
 | **Bookings/CancelPolicy/**<br />**CancelPenalties/Value** | 1 | Double |  Indicates the value of the penalty. |
-| **Bookings/CancelPolicy/**<br />**CancelPenalties/Deadline** | 1 | String |  Specifies the absolute deadline for the penalty in UTC format. |
+| **Bookings/CancelPolicy/**<br />**CancelPenalties/Deadline** | 1 | String |  Date on UTC Standard TimeZone in which this cancellation policy applies (ISO 8601 UTC `2025-11-01T05:00:00Z`) |
 | **Bookings/CancelPolicy/**<br />**CancelPolicyDescription** | 0 . . 1 | String |  Provides additional details or a textual summary of the cancellation policy. |
 | **Bookings/Remarks** | 0 . . N | Array&lt;[Remark](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remark)&gt; |  Additional remarks or notes related to the booking. |
 | **Bookings/Remarks/RemarkType** | 1 | [RemarkType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remarktype) |  The type of the remark, categorized by RemarkType, specifies its nature or purpose. It may refer to the hotel as a whole, a specific room being booked, services provided by the accommodation, or general remarks not tied to any particular entity. |

@@ -73,10 +73,10 @@ var request = new SearchRequest
                 }
             },
             Markets = new List<string> { "EU" },
-            CheckIn = DateTime.Parse("2025-06-10"),
-            CheckOut = DateTime.Parse("2025-06-15"),
-            CheckInAsDateTime = DateTime.Parse("2025-06-10T15:00:00"),
-            CheckOutAsDateTime = DateTime.Parse("2025-06-15T11:00:00"),
+            CheckIn = "2025-06-10",
+            CheckOut = "2025-06-15",
+            CheckInAsDateTime = DateTime.Parse("2025-06-10", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal),
+            CheckOutAsDateTime = DateTime.Parse("2025-06-15", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal),
             TotalNights = 5,
             Language = "EN",
             Currency = "EUR",
@@ -113,8 +113,8 @@ var request = new SearchRequest
                 OptionsQuota = 10,
                 BusinessRuleType = "CheaperAmount"
             },
-            Timeout = "30s",
-            TimeoutAsTimeSpan = TimeSpan.FromSeconds(30),
+            Timeout = "00:00:10",
+            TimeoutAsTimeSpan = TimeSpan.Parse("00:00:10"),
             IncludeProviderTransactions = true
         },
         Filters = new Filters
@@ -167,8 +167,8 @@ var request = new SearchRequest
         ],
         "checkIn": "2025-06-10",
         "checkOut": "2025-06-15",
-        "checkInAsDateTime": "2025-06-10T15:00:00",
-        "checkOutAsDateTime": "2025-06-15T11:00:00",
+        "checkInAsDateTime": "2025-06-10T00:00:00",
+        "checkOutAsDateTime": "2025-06-15T00:00:00",
         "totalNights": 5,
         "language": "EN",
         "currency": "EUR",
@@ -205,8 +205,8 @@ var request = new SearchRequest
             "optionsQuota": 10,
             "businessRuleType": "CheaperAmount"
         },
-        "timeout": "30s",
-        "timeoutAsTimeSpan": "00:00:30",
+        "timeout": "00:00:10",
+        "timeoutAsTimeSpan": "00:00:10",
         "includeProviderTransactions": true
     },
     "filters":
@@ -245,60 +245,60 @@ var request = new SearchRequest
 The object [SearchRq](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/searchrq) represents the structure of the Search request as expected by the supplier.
   
 <!-- TABLE BEGIN Connectors.Pull.Hotel.Domain.Contracts.Search.Request.SearchRq -->
-| Name | Type | Description |
-|------|------|-------------|
-| **SearchCriteria** | [SearchCriteria](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/searchcriteria) | Gets the Search criteria for the hotel Search. |
-| **SearchCriteria/CheckIn** | String | The check-in date for the operation, represented as a string in ISO 8601 format (yyyy-MM-dd). |
-| **SearchCriteria/CheckOut** | String | The check-out date for the operation, represented as a string in ISO 8601 format (yyyy-MM-dd). |
-| **SearchCriteria/**<br />**CheckInAsDateTime** | String | The check-in date parsed as a DateTime object. |
-| **SearchCriteria/**<br />**CheckOutAsDateTime** | String | The check-out date parsed as a DateTime object. |
-| **SearchCriteria/TotalNights** | Integer | The total number of nights for the stay, calculated as the difference between check-in and check-out dates. |
-| **SearchCriteria/Language** | String | The language code for the operation, represented as a 2-character ISO 639-1 code (e.g., "en", "es"). |
-| **SearchCriteria/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The preferred currency for the operation, defined as an optional Currency value. |
-| **SearchCriteria/Nationality** | String | The nationality code of the client, represented as a 2-character ISO 3166-1 alpha-2 country code (e.g., "US", "FR"). |
-| **SearchCriteria/Destinations** | [Destinations](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/destinations) | Gets the destinations for the search. These can be specific hotels or locations. |
-| **SearchCriteria/Destinations/**<br />**Accommodations** | Array&lt;[AccommodationRQ](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accommodationrq)&gt; | Collection of accommodations for the Search request. |
-| **SearchCriteria/Destinations/**<br />**Accommodations/Type** | [AccommodationType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accommodationtype) | Specifies the type of accommodation being requested, such as Hotel or Rental. |
-| **SearchCriteria/Destinations/**<br />**Accommodations/Code** | String | Represents a unique code identifying the accommodation in the request. |
-| **SearchCriteria/Destinations/**<br />**Locations** | Array&lt;[Location](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/location)&gt; | Collection of locations for the Search request. |
-| **SearchCriteria/Destinations/**<br />**Locations/Code** | String | The unique code identifying the location. |
-| **SearchCriteria/Destinations/**<br />**Locations/Country** | String | The ISO 3166-1 alpha-2 country code where the location is situated. |
-| **SearchCriteria/Destinations/**<br />**Locations/Longitude** | Double | The longitude coordinate of the location, expressed in decimal degrees. |
-| **SearchCriteria/Destinations/**<br />**Locations/Latitude** | Double | The latitude coordinate of the location, expressed in decimal degrees. |
-| **SearchCriteria/Occupancies** | Array&lt;[Occupancy](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/occupancy)&gt; | Gets the occupancy details for the Search.Indicates the number of rooms, passengers, and their respective ages. |
-| **SearchCriteria/Occupancies/**<br />**OccupancyId** | Integer | The unique identifier for the occupancy. |
-| **SearchCriteria/Occupancies/**<br />**Paxes** | Array&lt;[PaxInput](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/paxinput)&gt; | The collection of passenger inputs (paxes) for the occupancy. |
-| **SearchCriteria/Occupancies/**<br />**Paxes/Age** | Integer | Age of the passenger. This value is required and plays a critical role in determining eligibility for child or adult pricing as defined by the supplier. |
-| **SearchCriteria/Markets** | Array | Gets the markets associated with the Search.Represents ISO 3166-1 alpha-2 country codes. |
-| **Settings** | [SearchSettings](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/searchsettings) | Gets the Search settings for the hotel Search. |
-| **Settings/Supplier** | String | Identifies the supplier associated with the hotel operation. This is a unique code generated by Travelgate within its system to represent the supplier. |
-| **Settings/Platform** | String | Represents the platform on which the hotel operation is performed.Platforms are collections of suppliers, and the platform code is generated by Travelgate to define the operational context. |
-| **Settings/Client** | String | Represents the client performing the hotel operation.This is a unique client code assigned by Travelgate to identify the client within its system. |
-| **Settings/Access** | [Access](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/access) | Contains access information required for the operation, including API credentials, endpoints, and other connection details specific to the supplier's integration. |
-| **Settings/Access/Code** | Integer | The unique code identifying the access configuration. |
-| **Settings/Access/User** | String | The username used for authentication with the supplier. |
-| **Settings/Access/Password** | String | The password used for authentication with the supplier. |
-| **Settings/Access/ApiKey** | String | The API key used for authentication or authorization. |
-| **Settings/Access/Urls** | [Urls](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/urls) | The URLs associated with the access configuration. |
-| **Settings/Access/Urls/Book** | String | The URL used for booking operations. |
-| **Settings/Access/Urls/Search** | String | The URL used for Search operations. |
-| **Settings/Access/Urls/Quote** | String | The URL used for Quote operations. |
-| **Settings/Access/Urls/Generic** | String | A generic URL for additional operations. |
-| **Settings/Access/Parameters** | [AccessParameters](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accessparameters) | Additional parameters related to the connection. |
-| **Settings/BusinessRules** | [BusinessRules](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/businessrules) | Specifies the business rules to be applied during the operation. These rules define operational constraints and behavior, such as quota limits or prioritization criteria. |
-| **Settings/BusinessRules/**<br />**OptionsQuota** | Integer | The maximum number of options returned for each board in the Search query. |
-| **Settings/BusinessRules/**<br />**BusinessRuleType** | [BusinessRulesType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/businessrulestype) | The business rule type that determines how Search results are prioritized or filtered. |
-| **Settings/Timeout** | String | Defines the timeout period for the operation as a string value.This indicates the maximum amount of time to wait for a supplier's response before timing out.The value must be provided in timestamp format (e.g., "00:05:00" for 5 minutes). |
-| **Settings/TimeoutAsTimeSpan** | String | Converts the timeout value from the string representation (Timeout) into a TimeSpan for use in time-based operations. |
-| **Settings/**<br />**IncludeProviderTransactions** | Boolean | Indicates whether detailed traces of provider transactions should be included in the operation's response.If enabled, the ProviderAudit field in responses will contain the transaction logs (e.g., requests and responses exchanged with the supplier). |
-| **Filters** | [Filters](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/filters) | Gets the filters to be applied to the hotel Search results. |
-| **Filters/Status** | [StatusFilter](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/statusfilter) | Filter for hotel statuses to include or exclude specific booking statuses in the Search results. |
-| **Filters/Status/Includes** | Array&lt;[Status](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/status)&gt; | The statuses to include in the response. |
-| **Filters/Status/Excludes** | Array&lt;[Status](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/status)&gt; | The statuses to exclude from the response. |
-| **Filters/RateRuleFilter** | [RateRuleFilter](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/raterulefilter) | Filter for rate rules to include or exclude specific rate restrictions in the Search results. |
-| **Filters/RateRuleFilter/**<br />**Excludes** | Array&lt;[RateRule](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/raterule)&gt; | The collection of rate rules that should be excluded from the Search results. |
-| **Filters/RateRuleFilter/**<br />**Includes** | Array&lt;[RateRule](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/raterule)&gt; | The collection of rate rules that should be included in the Search results. |
-| **Filters/RateRuleFilter/**<br />**IncludeEmptyRateRulesOptions** | Boolean | Specifies whether options without rate rules should be included in the results when Includes is null. |
+| Name | Relation | Type | Description |
+|------|:--------:|:----:|-------------|
+| **SearchCriteria** | 1 | [SearchCriteria](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/searchcriteria) | Gets the Search criteria for the hotel Search. |
+| **SearchCriteria/CheckIn** | 1 | String | The check-in date for the operation, represented as a string in ISO 8601 format (YYYY-MM-DD). |
+| **SearchCriteria/CheckOut** | 1 | String | The check-out date for the operation, represented as a string in ISO 8601 format (YYYY-MM-DD). |
+| **SearchCriteria/**<br />**CheckInAsDateTime** | 0 . . 1 | String | The check-in date parsed as a DateTime object, expressed in UTC 0 |
+| **SearchCriteria/**<br />**CheckOutAsDateTime** | 0 . . 1 | String | The check-out date parsed as a DateTime object, expressed in UTC 0 |
+| **SearchCriteria/TotalNights** | 0 . . 1 | Integer | The total number of nights for the stay, calculated as the difference between check-in and check-out dates. |
+| **SearchCriteria/Language** | 1 | String | The language code for the operation, represented as a 2-character ISO 639-1 code (e.g., "en", "es"). |
+| **SearchCriteria/Currency** | 0 . . 1 | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The preferred currency for the operation, defined as an optional Currency value. |
+| **SearchCriteria/Nationality** | 0 . . 1 | String | The nationality code of the client, represented as a 2-character ISO 3166-1 alpha-2 country code (e.g., "US", "FR"). |
+| **SearchCriteria/Destinations** | 1 | [Destinations](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/destinations) | Gets the destinations for the search. These can be specific hotels or locations. |
+| **SearchCriteria/Destinations/**<br />**Accommodations** | 0 . . N | Array&lt;[AccommodationRQ](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accommodationrq)&gt; | Collection of accommodations for the Search request. |
+| **SearchCriteria/Destinations/**<br />**Accommodations/Type** | 1 | [AccommodationType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accommodationtype) | Specifies the type of accommodation being requested, such as Hotel or Rental. |
+| **SearchCriteria/Destinations/**<br />**Accommodations/Code** | 1 | String | Represents a unique code identifying the accommodation in the request. |
+| **SearchCriteria/Destinations/**<br />**Locations** | 0 . . N | Array&lt;[Location](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/location)&gt; | Collection of locations for the Search request. |
+| **SearchCriteria/Destinations/**<br />**Locations/Code** | 1 | String | The unique code identifying the location. |
+| **SearchCriteria/Destinations/**<br />**Locations/Country** | 0 . . 1 | String | The ISO 3166-1 alpha-2 country code where the location is situated. |
+| **SearchCriteria/Destinations/**<br />**Locations/Longitude** | 0 . . 1 | Double | The longitude coordinate of the location, expressed in decimal degrees. |
+| **SearchCriteria/Destinations/**<br />**Locations/Latitude** | 0 . . 1 | Double | The latitude coordinate of the location, expressed in decimal degrees. |
+| **SearchCriteria/Occupancies** | 1 . . N | Array&lt;[Occupancy](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/occupancy)&gt; | Gets the occupancy details for the Search.Indicates the number of rooms, passengers, and their respective ages. |
+| **SearchCriteria/Occupancies/**<br />**OccupancyId** | 1 | Integer | The unique identifier for the occupancy. |
+| **SearchCriteria/Occupancies/**<br />**Paxes** | 1 . . N | Array&lt;[PaxInput](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/paxinput)&gt; | The collection of passenger inputs (paxes) for the occupancy. |
+| **SearchCriteria/Occupancies/**<br />**Paxes/Age** | 1 | Integer | Age of the passenger. This value is required and plays a critical role in determining eligibility for child or adult pricing as defined by the supplier. |
+| **SearchCriteria/Markets** | 0 . . N | Array | Gets the markets associated with the Search.Represents ISO 3166-1 alpha-2 country codes. |
+| **Settings** | 1 | [SearchSettings](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/searchsettings) | Gets the Search settings for the hotel Search. |
+| **Settings/Supplier** | 1 | String | Identifies the supplier associated with the hotel operation. This is a unique code generated by Travelgate within its system to represent the supplier. |
+| **Settings/Platform** | 1 | String | Represents the platform on which the hotel operation is performed.Platforms are collections of suppliers, and the platform code is generated by Travelgate to define the operational context. |
+| **Settings/Client** | 1 | String | Represents the client performing the hotel operation.This is a unique client code assigned by Travelgate to identify the client within its system. |
+| **Settings/Access** | 1 | [Access](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/access) | Contains access information required for the operation, including API credentials, endpoints, and other connection details specific to the supplier's integration. |
+| **Settings/Access/Code** | 1 | Integer | The unique code identifying the access configuration. |
+| **Settings/Access/User** | 0 . . 1 | String | The username used for authentication with the supplier. |
+| **Settings/Access/Password** | 0 . . 1 | String | The password used for authentication with the supplier. |
+| **Settings/Access/ApiKey** | 0 . . 1 | String | The API key used for authentication or authorization. |
+| **Settings/Access/Urls** | 1 | [Urls](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/urls) | The URLs associated with the access configuration. |
+| **Settings/Access/Urls/Book** | 0 . . 1 | String | The URL used for booking operations. |
+| **Settings/Access/Urls/Search** | 0 . . 1 | String | The URL used for Search operations. |
+| **Settings/Access/Urls/Quote** | 0 . . 1 | String | The URL used for Quote operations. |
+| **Settings/Access/Urls/Generic** | 0 . . 1 | String | A generic URL for additional operations. |
+| **Settings/Access/Parameters** | 0 . . 1 | [AccessParameters](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accessparameters) | Additional parameters related to the connection. |
+| **Settings/BusinessRules** | 0 . . 1 | [BusinessRules](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/businessrules) | Specifies the business rules to be applied during the operation. These rules define operational constraints and behavior, such as quota limits or prioritization criteria. |
+| **Settings/BusinessRules/**<br />**OptionsQuota** | 0 . . 1 | Integer | The maximum number of options returned for each board in the Search query. |
+| **Settings/BusinessRules/**<br />**BusinessRuleType** | 0 . . 1 | [BusinessRulesType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/businessrulestype) | The business rule type that determines how Search results are prioritized or filtered. |
+| **Settings/Timeout** | 1 | String | Defines the timeout period for the operation as a string value.This indicates the maximum amount of time to wait for a supplier's response before timing out.The value must be provided in TimeSpan format (e.g., ""00:00:10"" for 10 seconds). |
+| **Settings/TimeoutAsTimeSpan** | 0 . . 1 | String | Converts the timeout value from the string representation (Timeout) into a TimeSpan for use in time-based operations. |
+| **Settings/**<br />**IncludeProviderTransactions** | 1 | Boolean | Indicates whether detailed traces of provider transactions should be included in the operation's response.If enabled, the ProviderAudit field in responses will contain the transaction logs (e.g., requests and responses exchanged with the supplier). |
+| **Filters** | 1 | [Filters](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/filters) | Gets the filters to be applied to the hotel Search results. |
+| **Filters/Status** | 0 . . 1 | [StatusFilter](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/statusfilter) | Filter for hotel statuses to include or exclude specific booking statuses in the Search results. |
+| **Filters/Status/Includes** | 0 . . N | Array&lt;[Status](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/status)&gt; | The statuses to include in the response. |
+| **Filters/Status/Excludes** | 0 . . N | Array&lt;[Status](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/status)&gt; | The statuses to exclude from the response. |
+| **Filters/RateRuleFilter** | 0 . . 1 | [RateRuleFilter](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/raterulefilter) | Filter for rate rules to include or exclude specific rate restrictions in the Search results. |
+| **Filters/RateRuleFilter/**<br />**Excludes** | 0 . . N | Array&lt;[RateRule](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/raterule)&gt; | The collection of rate rules that should be excluded from the Search results. |
+| **Filters/RateRuleFilter/**<br />**Includes** | 0 . . N | Array&lt;[RateRule](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/raterule)&gt; | The collection of rate rules that should be included in the Search results. |
+| **Filters/RateRuleFilter/**<br />**IncludeEmptyRateRulesOptions** | 0 . . 1 | Boolean | Specifies whether options without rate rules should be included in the results when Includes is null. |
 
 <!-- TABLE END -->
 
@@ -954,204 +954,204 @@ The `Search` operation returns a list of available options matching the criteria
 The [SearchRs](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/searchrs) object represents the standardized structure of the response returned by the supplier.
 
 <!-- TABLE BEGIN Connectors.Pull.Hotel.Domain.Contracts.Search.Response.SearchRs -->
-| Name | Type | Description |
-|------|------|-------------|
-| **AuditData** | [ProviderAudit](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/provideraudit) | Contains the requests and responses exchanged with the supplier.This field is populated internally by the connector framework. Integrators do not need to handle this field manually. |
-| **AuditData/Request** | Array&lt;[ProviderAuditRq](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/providerauditrq)&gt; | Collection of audit entries for provider requests.Each entry contains details about a specific request made to the provider. |
-| **AuditData/Request/SendAt** | String | The timestamp indicating when the request was sent. |
-| **AuditData/Request/Data** | String | The payload data included in the request. |
-| **AuditData/Request/Url** | String | The URL of the provider endpoint to which the request is sent. |
-| **AuditData/Request/Headers** | Object | A collection of headers included in the request. |
-| **AuditData/Request/HttpMethod** | [HttpMethod](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/httpmethod) | The HTTP method used to send the request. |
-| **AuditData/Request/HttpMethod/**<br />**Method** | String | No description available. |
-| **AuditData/Response** | Array&lt;[ProviderAuditRs](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/providerauditrs)&gt; | Collection of audit entries for provider responses.Each entry contains details about a specific response received from the provider. |
-| **AuditData/Response/ReceivedAt** | String | The timestamp indicating when the response was received. |
-| **AuditData/Response/Data** | String | The payload data contained in the provider's response. |
-| **AuditData/Response/Headers** | Object | A collection of headers included in the provider's response. |
-| **AuditData/Response/StatusCode** | Integer | The HTTP status code returned by the provider. |
-| **AdviseMessages** | Array&lt;[AdviseMessage](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/advisemessage)&gt; | Collection of advice messages, which may include errors or warnings generated during the Search process. |
-| **AdviseMessages/Code** | [AdviseMessageCode](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/advisemessagecode) | Gets the code that represents the message type. |
-| **AdviseMessages/Level** | [AdviseMessageLevel](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/advisemessagelevel) | Gets the severity level of the message (e.g., Error, Warning, or Info). |
-| **AdviseMessages/Description** | String | Gets the message description providing additional context. |
-| **AdviseMessages/CorrelationId** | String | Gets a unique identifier for correlating the message with specific operations. |
-| **AdviseMessages/External** | [External](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/external) | Gets additional external details associated with the message. |
-| **AdviseMessages/External/Code** | String | The supplier's internal code for identifying the nature of the response or error. |
-| **AdviseMessages/External/**<br />**Message** | String | A descriptive message returned by the supplier. |
-| **AdviseMessages/External/**<br />**HttpStatusCode** | Integer | The HTTP status code of the supplier's response. |
-| **Accommodations** | Array | List of accommodations, boards, and options returned by the Search.These represent the available (hotels-boards-options) that meet the client's criteria. |
-| **Accommodations/**<br />**AccommodationType** | [AccommodationType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accommodationtype) | Gets or initializes the type of accommodation. |
-| **Accommodations/**<br />**AccommodationCode** | String | Gets the unique code identifying the accommodation. |
-| **Accommodations/**<br />**AccommodationName** | String | Gets or initializes the name of the accommodation. |
-| **Accommodations/Boards** | Array&lt;[Board](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/board)&gt; | Gets the list of boards available for the hotel. |
-| **Accommodations/Boards/**<br />**BoardCode** | String | The unique code identifying the board. |
-| **Accommodations/Boards/Name** | String | The name of the board. |
-| **Accommodations/Boards/Options** | Array&lt;[Option](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/option)&gt; | The collection of options associated with this board. |
-| **Accommodations/Boards/Options/**<br />**FormId** | String | Internal field for FormTest. Not serialized. DO NOT USE! |
-| **Accommodations/Boards/Options/**<br />**Status** | [Status](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/status) | Indicates the availability status of the option. |
-| **Accommodations/Boards/Options/**<br />**Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | The price details associated with the option, including net, gross and minimum selling price. |
-| **Accommodations/Boards/Options/**<br />**Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
-| **Accommodations/Boards/Options/**<br />**Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **Accommodations/Boards/Options/**<br />**Price/Net** | Double | The net price paid by the Buyer to the Seller. |
-| **Accommodations/Boards/Options/**<br />**Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
-| **Accommodations/Boards/Options/**<br />**Price/NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
-| **Accommodations/Boards/Options/**<br />**Price/MinimumSellingPrice** | Double | The minimum selling price. |
-| **Accommodations/Boards/Options/**<br />**PaymentTypes** | Array&lt;[PaymentType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/paymenttype)&gt; | Specifies the accepted payment types for the option. |
-| **Accommodations/Boards/Options/**<br />**Rooms** | Array&lt;[Room](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/room)&gt; | The list of rooms included with the option, including type, description, and price. |
-| **Accommodations/Boards/Options/**<br />**Rooms/OccupancyRefId** | Integer | Numeric ID linking this room to its occupancy data in the Occupancy. |
-| **Accommodations/Boards/Options/**<br />**Rooms/Code** | String | Unique code assigned to this room. |
-| **Accommodations/Boards/Options/**<br />**Rooms/Description** | String | Description of the room's features or characteristics. |
-| **Accommodations/Boards/Options/**<br />**Rooms/RoomPrice** | [RoomPrice](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/roomprice) | Pricing information for the room, including total price and currency details. |
-| **Accommodations/Boards/Options/**<br />**Rooms/RoomPrice/Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | The total price of the room. |
-| **Accommodations/Boards/Options/**<br />**Rooms/RoomPrice/Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
-| **Accommodations/Boards/Options/**<br />**Rooms/RoomPrice/Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **Accommodations/Boards/Options/**<br />**Rooms/RoomPrice/Price/Net** | Double | The net price paid by the Buyer to the Seller. |
-| **Accommodations/Boards/Options/**<br />**Rooms/RoomPrice/Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
-| **Accommodations/Boards/Options/**<br />**Rooms/RoomPrice/Price/**<br />**NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
-| **Accommodations/Boards/Options/**<br />**Rooms/RoomPrice/Price/**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
-| **Accommodations/Boards/Options/**<br />**Rooms/RoomPrice/PriceBreakdown** | Array&lt;[PriceBreakdown](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/pricebreakdown)&gt; | Breakdown of the room price over specific periods, such as daily rates. |
-| **Accommodations/Boards/Options/**<br />**Rooms/RoomPrice/PriceBreakdown/**<br />**Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | The price for each day of the room during the specified period. |
-| **Accommodations/Boards/Options/**<br />**Rooms/RoomPrice/PriceBreakdown/**<br />**Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
-| **Accommodations/Boards/Options/**<br />**Rooms/RoomPrice/PriceBreakdown/**<br />**Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **Accommodations/Boards/Options/**<br />**Rooms/RoomPrice/PriceBreakdown/**<br />**Price/Net** | Double | The net price paid by the Buyer to the Seller. |
-| **Accommodations/Boards/Options/**<br />**Rooms/RoomPrice/PriceBreakdown/**<br />**Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
-| **Accommodations/Boards/Options/**<br />**Rooms/RoomPrice/PriceBreakdown/**<br />**Price/NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
-| **Accommodations/Boards/Options/**<br />**Rooms/RoomPrice/PriceBreakdown/**<br />**Price/MinimumSellingPrice** | Double | The minimum selling price. |
-| **Accommodations/Boards/Options/**<br />**Rooms/RoomPrice/PriceBreakdown/**<br />**Start** | Integer | The starting day of the pricing period (inclusive). |
-| **Accommodations/Boards/Options/**<br />**Rooms/RoomPrice/PriceBreakdown/**<br />**End** | Integer | The ending day of the pricing period (inclusive). |
-| **Accommodations/Boards/Options/**<br />**Rooms/Refundable** | Boolean | Indicates if the room is refundable based on the cancellation policy. |
-| **Accommodations/Boards/Options/**<br />**Rooms/RefundableSpecified** | Boolean | Indicates whether the refundable status has been explicitly specified. |
-| **Accommodations/Boards/Options/**<br />**Rooms/LegacyRoomId** | String | Legacy identifier for internal tracking. Automatically generated using OccupancyRefId and Code. |
-| **Accommodations/Boards/Options/**<br />**Rooms/Units** | Integer | Number of units available for this room type. |
-| **Accommodations/Boards/Options/**<br />**Rooms/RatePlan** | [RatePlan](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/rateplan) | Rate plan associated with this room. |
-| **Accommodations/Boards/Options/**<br />**Rooms/RatePlan/Code** | String | The unique code for the rate plan. |
-| **Accommodations/Boards/Options/**<br />**Rooms/RatePlan/Name** | String | The name of the rate plan. |
-| **Accommodations/Boards/Options/**<br />**Rooms/Promotions** | Array&lt;[Promotion](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/promotion)&gt; | Promotions or discounts applicable to this room. |
-| **Accommodations/Boards/Options/**<br />**Rooms/Promotions/Code** | String | The unique code identifying the promotion. |
-| **Accommodations/Boards/Options/**<br />**Rooms/Promotions/Name** | String | The name of the promotion. |
-| **Accommodations/Boards/Options/**<br />**Rooms/Remarks** | Array&lt;[Remark](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remark)&gt; | Additional remarks or notes about this room. |
-| **Accommodations/Boards/Options/**<br />**Rooms/Remarks/RemarkType** | [RemarkType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remarktype) | The type of the remark, categorized by RemarkType, specifies its nature or purpose. It may refer to the hotel as a whole, a specific room being booked, services provided by the accommodation, or general remarks not tied to any particular entity. |
-| **Accommodations/Boards/Options/**<br />**Rooms/Remarks/Text** | String | The text content of the remark, providing details or additional notes.This can include supplier-specific instructions, conditions, or general information. |
-| **Accommodations/Boards/Options/**<br />**Rooms/Surcharges** | Array&lt;[Surcharge](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/surcharge)&gt; | Additional surcharges applied to this room. |
-| **Accommodations/Boards/Options/**<br />**Rooms/Surcharges/ChargeType** | [ChargeType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/chargetype) | Specifies whether the surcharge is included in the room rate or must be paid separately at the property. See ChargeType for possible values. |
-| **Accommodations/Boards/Options/**<br />**Rooms/Surcharges/Mandatory** | Boolean | Indicates whether this surcharge is mandatory. Mandatory surcharges, such as government taxes, must always be paid, while optional surcharges may depend on the guest's preferences. |
-| **Accommodations/Boards/Options/**<br />**Rooms/Surcharges/Description** | String | Provides a description of the surcharge, giving context about the type of cost it represents.Examples: "Tourist Tax", "Resort Fee", or "Additional Bed Fee". |
-| **Accommodations/Boards/Options/**<br />**Rooms/Surcharges/Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | Represents the price of this surcharge, including the amount and currency. See Price for details about the price structure. |
-| **Accommodations/Boards/Options/**<br />**Rooms/Surcharges/Price/**<br />**Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
-| **Accommodations/Boards/Options/**<br />**Rooms/Surcharges/Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **Accommodations/Boards/Options/**<br />**Rooms/Surcharges/Price/Net** | Double | The net price paid by the Buyer to the Seller. |
-| **Accommodations/Boards/Options/**<br />**Rooms/Surcharges/Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
-| **Accommodations/Boards/Options/**<br />**Rooms/Surcharges/Price/**<br />**NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
-| **Accommodations/Boards/Options/**<br />**Rooms/Surcharges/Price/**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
-| **Accommodations/Boards/Options/**<br />**Rooms/Surcharges/Code** | String | An optional code that uniquely identifies this surcharge for internal or external reference. This can be useful for tracking specific fees or integrating with supplier systems. |
-| **Accommodations/Boards/Options/**<br />**Rooms/CancelPolicy** | [CancelPolicy](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/cancelpolicy) | Cancellation policy specific to this room. |
-| **Accommodations/Boards/Options/**<br />**Rooms/CancelPolicy/Refundable** | Boolean | Indicates whether the booking is refundable. |
-| **Accommodations/Boards/Options/**<br />**Rooms/CancelPolicy/**<br />**CancelPenalties** | Array&lt;[CancelPenalty](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/cancelpenalty)&gt; | A collection of penalties that apply if the booking is canceled. |
-| **Accommodations/Boards/Options/**<br />**Rooms/CancelPolicy/**<br />**CancelPenalties/HoursBefore** | Integer | Indicates the number of hours before the check-in date when the penalty becomes applicable. |
-| **Accommodations/Boards/Options/**<br />**Rooms/CancelPolicy/**<br />**CancelPenalties/PenaltyType** | [PenaltyType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/penaltytype) | Specifies the type of penalty enforced upon cancellation. |
-| **Accommodations/Boards/Options/**<br />**Rooms/CancelPolicy/**<br />**CancelPenalties/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | Specifies the currency in which the penalty value is expressed. |
-| **Accommodations/Boards/Options/**<br />**Rooms/CancelPolicy/**<br />**CancelPenalties/Value** | Double | This value represents the penalty amount that will be applied. Normally, it is the amount our client must pay without commission (net). However, if the supplier does not return the net amount during the booking and cancellation flow, and only provides the price with commission included (gross), then the penalty will also be calculated as gross. Some suppliers do not specify whether they work with net or gross prices. In those cases, Travelgate tries to detect it and applies the value that matches the one returned in the cancellation policy. The main goal is to keep consistency with the type of prices the supplier provides throughout the whole booking and cancellation process. |
-| **Accommodations/Boards/Options/**<br />**Rooms/CancelPolicy/**<br />**CancelPenalties/Deadline** | String | Specifies the absolute deadline for the penalty in UTC format. |
-| **Accommodations/Boards/Options/**<br />**Rooms/CancelPolicy/**<br />**CancelPolicyDescription** | String | Provides additional details or a textual summary of the cancellation policy. |
-| **Accommodations/Boards/Options/**<br />**Rooms/Beds** | Array&lt;[Bed](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/bed)&gt; | List of beds available in the room, including types and configurations. |
-| **Accommodations/Boards/Options/**<br />**Rooms/Beds/Type** | String | The type of the bed. |
-| **Accommodations/Boards/Options/**<br />**Rooms/Beds/Description** | String | A description of the bed. |
-| **Accommodations/Boards/Options/**<br />**Rooms/Beds/Count** | Integer | The number of beds of this type in the room. |
-| **Accommodations/Boards/Options/**<br />**Rooms/Beds/Shared** | Boolean | Indicates whether the bed is shared. |
-| **Accommodations/Boards/Options/**<br />**Rooms/Amenities** | Array&lt;[Amenity](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/amenity)&gt; | Amenities included with this room, such as Wi-Fi or parking. |
-| **Accommodations/Boards/Options/**<br />**Rooms/Amenities/Code** | String | A unique code that identifies the amenity. |
-| **Accommodations/Boards/Options/**<br />**Rooms/Amenities/Type** | [AmenityType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/amenitytype) | The type of the amenity, defined by AmenityType. |
-| **Accommodations/Boards/Options/**<br />**Rooms/Amenities/Value** | String | The value associated with the amenity. |
-| **Accommodations/Boards/Options/**<br />**Rooms/Amenities/Texts** | String | Additional textual information or description for the amenity. |
-| **Accommodations/Boards/Options/**<br />**Rooms/UnitsSpecified** | Boolean | Indicates whether the number of units has been explicitly specified. |
-| **Accommodations/Boards/Options/**<br />**Rooms/Features** | Array&lt;[Feature](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/feature)&gt; | Features or custom attributes of the room, used for specific integrations. |
-| **Accommodations/Boards/Options/**<br />**Rooms/Features/Code** | String | The unique code identifying the feature of the room. |
-| **Accommodations/Boards/Options/**<br />**Parameters** | Array&lt;[Parameter](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/parameter)&gt; | Parameters for transferring data between operations, such as from `Search` to `Quote` or `Quote` to `Book`. |
-| **Accommodations/Boards/Options/**<br />**Parameters/Key** | Integer | Identifies the parameter with a numeric key. |
-| **Accommodations/Boards/Options/**<br />**Parameters/Value** | String | Defines the value associated with the parameter. |
-| **Accommodations/Boards/Options/**<br />**Parameters/ParameterType** | [ParameterType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/parametertype) | Specifies the type of the parameter (ParameterType), whether it is internal or supplier-related. |
-| **Accommodations/Boards/Options/**<br />**Parameters/Immutable** | Boolean | Indicates whether the parameter remains constant throughout operations (e.g., from Search to Quote and Book). In second searches or quotes, an immutable parameter is used to identify and match the same option. |
-| **Accommodations/Boards/Options/**<br />**Parameters/RoomId** | Integer | Associates the parameter with a specific room, identified by its ID. |
-| **Accommodations/Boards/Options/**<br />**CancelPolicy** | [OptionCancelPolicy](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/optioncancelpolicy) | The cancellation policy associated with the option, detailing penalties and conditions. |
-| **Accommodations/Boards/Options/**<br />**CancelPolicy/Refundable** | Boolean | Indicates whether the booking is refundable. |
-| **Accommodations/Boards/Options/**<br />**CancelPolicy/CancelPenalties** | Array&lt;[CancelPenalty](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/cancelpenalty)&gt; | A collection of penalties that apply if the booking is canceled. |
-| **Accommodations/Boards/Options/**<br />**CancelPolicy/CancelPenalties/**<br />**HoursBefore** | Integer | Indicates the number of hours before the check-in date when the penalty becomes applicable. |
-| **Accommodations/Boards/Options/**<br />**CancelPolicy/CancelPenalties/**<br />**PenaltyType** | [PenaltyType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/penaltytype) | Specifies the type of penalty enforced upon cancellation. |
-| **Accommodations/Boards/Options/**<br />**CancelPolicy/CancelPenalties/**<br />**Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | Specifies the currency in which the penalty value is expressed. |
-| **Accommodations/Boards/Options/**<br />**CancelPolicy/CancelPenalties/**<br />**Value** | Double | Indicates the value of the penalty. |
-| **Accommodations/Boards/Options/**<br />**CancelPolicy/CancelPenalties/**<br />**Deadline** | String | Specifies the absolute deadline for the penalty in UTC format. |
-| **Accommodations/Boards/Options/**<br />**CancelPolicy/**<br />**CancelPolicyDescription** | String | Provides additional details or a textual summary of the cancellation policy. |
-| **Accommodations/Boards/Options/**<br />**CancelPolicy/**<br />**RoomCancelPolicyDescriptions** | Array&lt;[RoomCancelPolicyDescriptions](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/roomcancelpolicydescriptions)&gt; | Gets or sets the list of room-specific cancellation policy descriptions. |
-| **Accommodations/Boards/Options/**<br />**CancelPolicy/**<br />**RoomCancelPolicyDescriptions**<br />**OccupancyRefId** | Integer | Identifies the specific occupancy within the booking for which this cancellation policy applies. |
-| **Accommodations/Boards/Options/**<br />**CancelPolicy/**<br />**RoomCancelPolicyDescriptions**<br />**Description** | String | Textual information detailing the cancellation policy applicable to the room associated with the OccupancyRefId. |
-| **Accommodations/Boards/Options/**<br />**Promotions** | Array&lt;[Promotion](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/promotion)&gt; | The promotions applied to the option, such as discounts or special offers. |
-| **Accommodations/Boards/Options/**<br />**Promotions/Code** | String | The unique code identifying the promotion. |
-| **Accommodations/Boards/Options/**<br />**Promotions/Name** | String | The name of the promotion. |
-| **Accommodations/Boards/Options/**<br />**RateRules** | Array&lt;[RateRule2](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/raterule2)&gt; | The rate rules for the option, specifying sales restrictions such as "Senior Discount" or "Resident Rate." |
-| **Accommodations/Boards/Options/**<br />**RateRules/RateRuleType** | [RateRule](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/raterule) | Selling restrictions applied to the room. These define specific conditions or eligibility requirements that must be met to sell the room. Possible restrictions include: |
-| **Accommodations/Boards/Options/**<br />**RateRules/Code** | String | Represents a unique identifier for the rate rule, typically defined by the supplier.This code is used to reference and distinguish the rule from others. |
-| **Accommodations/Boards/Options/**<br />**RateRules/Name** | String | Provides a human-readable name or label for the rate rule.This name is typically used in user interfaces or reports to describe the rule. |
-| **Accommodations/Boards/Options/**<br />**RateRules/Restrictions** | Array&lt;[Restriction](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/restriction)&gt; | Defines a collection of additional restrictions that further specify the conditions of the rate rule.Restrictions can include age limits, regional requirements, or special eligibility conditions. |
-| **Accommodations/Boards/Options/**<br />**RateRules/Restrictions/Code** | String | A unique identifier for the restriction. |
-| **Accommodations/Boards/Options/**<br />**RateRules/Restrictions/Name** | String | A descriptive name for the restriction. |
-| **Accommodations/Boards/Options/**<br />**RateRules/Restrictions/**<br />**RestrictionType** | [RestrictionType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/restrictiontype) | The type of the restriction, categorizing its purpose or application. |
-| **Accommodations/Boards/Options/**<br />**Remarks** | Array&lt;[Remark](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remark)&gt; | Additional remarks associated with the option, such as special conditions or information. |
-| **Accommodations/Boards/Options/**<br />**Remarks/RemarkType** | [RemarkType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remarktype) | The type of the remark, categorized by RemarkType, specifies its nature or purpose. It may refer to the hotel as a whole, a specific room being booked, services provided by the accommodation, or general remarks not tied to any particular entity. |
-| **Accommodations/Boards/Options/**<br />**Remarks/Text** | String | The text content of the remark, providing details or additional notes.This can include supplier-specific instructions, conditions, or general information. |
-| **Accommodations/Boards/Options/**<br />**Surcharges** | Array&lt;[Surcharge](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/surcharge)&gt; | Surcharges applied to the option, such as mandatory fees or taxes. |
-| **Accommodations/Boards/Options/**<br />**Surcharges/ChargeType** | [ChargeType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/chargetype) | Specifies whether the surcharge is included in the room rate or must be paid separately at the property. See ChargeType for possible values. |
-| **Accommodations/Boards/Options/**<br />**Surcharges/Mandatory** | Boolean | Indicates whether this surcharge is mandatory. Mandatory surcharges, such as government taxes, must always be paid, while optional surcharges may depend on the guest's preferences. |
-| **Accommodations/Boards/Options/**<br />**Surcharges/Description** | String | Provides a description of the surcharge, giving context about the type of cost it represents.Examples: "Tourist Tax", "Resort Fee", or "Additional Bed Fee". |
-| **Accommodations/Boards/Options/**<br />**Surcharges/Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | Represents the price of this surcharge, including the amount and currency. See Price for details about the price structure. |
-| **Accommodations/Boards/Options/**<br />**Surcharges/Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
-| **Accommodations/Boards/Options/**<br />**Surcharges/Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **Accommodations/Boards/Options/**<br />**Surcharges/Price/Net** | Double | The net price paid by the Buyer to the Seller. |
-| **Accommodations/Boards/Options/**<br />**Surcharges/Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
-| **Accommodations/Boards/Options/**<br />**Surcharges/Price/NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
-| **Accommodations/Boards/Options/**<br />**Surcharges/Price/**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
-| **Accommodations/Boards/Options/**<br />**Surcharges/Code** | String | An optional code that uniquely identifies this surcharge for internal or external reference. This can be useful for tracking specific fees or integrating with supplier systems. |
-| **Accommodations/Boards/Options/**<br />**Amenities** | Array&lt;[Amenity](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/amenity)&gt; | Amenities included with the option, such as "Free Wi-Fi" or "Parking." |
-| **Accommodations/Boards/Options/**<br />**Amenities/Code** | String | A unique code that identifies the amenity. |
-| **Accommodations/Boards/Options/**<br />**Amenities/Type** | [AmenityType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/amenitytype) | The type of the amenity, defined by AmenityType. |
-| **Accommodations/Boards/Options/**<br />**Amenities/Value** | String | The value associated with the amenity. |
-| **Accommodations/Boards/Options/**<br />**Amenities/Texts** | String | Additional textual information or description for the amenity. |
-| **Accommodations/Boards/Options/**<br />**Supplements** | Array&lt;[Supplement](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/supplement)&gt; | Supplements available with the option, such as activity passes. |
-| **Accommodations/Boards/Options/**<br />**Supplements/Code** | String | The unique code identifying the supplement. |
-| **Accommodations/Boards/Options/**<br />**Supplements/Name** | String | The descriptive name of the supplement. |
-| **Accommodations/Boards/Options/**<br />**Supplements/Description** | String | An optional textual description providing additional details about the supplement. |
-| **Accommodations/Boards/Options/**<br />**Supplements/Mandatory** | Boolean | Indicates whether the supplement is mandatory for the booking. |
-| **Accommodations/Boards/Options/**<br />**Supplements/Price** | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | The Price associated with the supplement, including details such as currency and net price. |
-| **Accommodations/Boards/Options/**<br />**Supplements/Price/Currency** | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
-| **Accommodations/Boards/Options/**<br />**Supplements/Price/Binding** | Boolean | Indicates whether the price is binding. |
-| **Accommodations/Boards/Options/**<br />**Supplements/Price/Net** | Double | The net price paid by the Buyer to the Seller. |
-| **Accommodations/Boards/Options/**<br />**Supplements/Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
-| **Accommodations/Boards/Options/**<br />**Supplements/Price/NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
-| **Accommodations/Boards/Options/**<br />**Supplements/Price/**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
-| **Accommodations/Boards/Options/**<br />**Supplements/SupplementType** | [SupplementType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/supplementtype) | The specific SupplementType of the supplement (e.g., board, additional service). |
-| **Accommodations/Boards/Options/**<br />**Supplements/ChargeType** | [ChargeType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/chargetype) | Defines how the supplement is charged using ChargeType (e.g., per person, per stay). |
-| **Accommodations/Boards/Options/**<br />**Supplements/DurationType** | [DurationType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/durationtype) | Specifies whether the supplement applies to a specific duration (Open or Range). |
-| **Accommodations/Boards/Options/**<br />**Supplements/Quantity** | Integer | The quantity of the supplement included in the booking. |
-| **Accommodations/Boards/Options/**<br />**Supplements/StartDate** | String | The start date for the supplement (if applicable). |
-| **Accommodations/Boards/Options/**<br />**Supplements/**<br />**StartDateAsDateTime** | String | The start date as a DateTime object for easier manipulation. |
-| **Accommodations/Boards/Options/**<br />**Supplements/EndDate** | String | The end date for the supplement (if applicable). |
-| **Accommodations/Boards/Options/**<br />**Supplements/EndDateAsDateTime** | String | The end date as a DateTime object for easier manipulation. |
-| **Accommodations/Boards/Options/**<br />**Supplements/Resort** | [Resort](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/resort) | The associated Resort where the supplement applies. |
-| **Accommodations/Boards/Options/**<br />**Supplements/Resort/Code** | String | Unique code that identifies the resort in the system. |
-| **Accommodations/Boards/Options/**<br />**Supplements/Resort/Name** | String | Name of the resort. |
-| **Accommodations/Boards/Options/**<br />**Supplements/Resort/Description** | String | Optional description providing additional details about the resort. |
-| **Accommodations/Boards/Options/**<br />**Supplements/Unit** | [UnitTimeType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/unittimetype) | Specifies the unit of time for the supplement (e.g., per day, per stay) using UnitTimeType. |
-| **Accommodations/Boards/Options/**<br />**AddOns** | Object | Internal field for passing additional information across layers. |
-| **Accommodations/Location** | [Location](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/location) | Gets the geographical location of the hotel. |
-| **Accommodations/Location/Code** | String | The unique code identifying the location. |
-| **Accommodations/Location/**<br />**Country** | String | The ISO 3166-1 alpha-2 country code where the location is situated. |
-| **Accommodations/Location/**<br />**Longitude** | Double | The longitude coordinate of the location, expressed in decimal degrees. |
-| **Accommodations/Location/**<br />**Latitude** | Double | The latitude coordinate of the location, expressed in decimal degrees. |
-| **GlobalOptionParameters** | Array&lt;[Parameter](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/parameter)&gt; | Global parameters that the client must send in subsequent operations (e.g., in a Quote request). These parameters apply to all options returned in the response. |
-| **GlobalOptionParameters/Key** | Integer | Identifies the parameter with a numeric key. |
-| **GlobalOptionParameters/Value** | String | Defines the value associated with the parameter. |
-| **GlobalOptionParameters/**<br />**ParameterType** | [ParameterType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/parametertype) | Specifies the type of the parameter (ParameterType), whether it is internal or supplier-related. |
-| **GlobalOptionParameters/**<br />**Immutable** | Boolean | Indicates whether the parameter remains constant throughout operations (e.g., from Search to Quote and Book). In second searches or quotes, an immutable parameter is used to identify and match the same option. |
-| **GlobalOptionParameters/RoomId** | Integer | Associates the parameter with a specific room, identified by its ID. |
-| **DiscardedItems** | Integer | Discarded items in the Search response, can be rooms or options depending on the connector. |
+| Name | Relation | Type | Description |
+|------|:--------:|:----:|-------------|
+| **AuditData** | 0 . . 1 | [ProviderAudit](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/provideraudit) | Contains the requests and responses exchanged with the supplier.This field is populated internally by the connector framework. Integrators do not need to handle this field manually. |
+| **AuditData/Request** | 0 . . N | Array&lt;[ProviderAuditRq](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/providerauditrq)&gt; | Collection of audit entries for provider requests.Each entry contains details about a specific request made to the provider. |
+| **AuditData/Request/SendAt** | 1 | String | The timestamp indicating when the request was sent. Date on UTC Standard (ISO 8601 UTC `2025-05-21T08:48:53.9744052+00:00`) |
+| **AuditData/Request/Data** | 1 | String | The payload data included in the request. |
+| **AuditData/Request/Url** | 1 | String | The URL of the provider endpoint to which the request is sent. |
+| **AuditData/Request/Headers** | 1 | Object | A collection of headers included in the request. |
+| **AuditData/Request/HttpMethod** | 1 | [HttpMethod](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/httpmethod) | The HTTP method used to send the request. |
+| **AuditData/Request/HttpMethod/**<br />**Method** | 1 | String | No description available. |
+| **AuditData/Response** | 0 . . N | Array&lt;[ProviderAuditRs](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/providerauditrs)&gt; | Collection of audit entries for provider responses.Each entry contains details about a specific response received from the provider. |
+| **AuditData/Response/ReceivedAt** | 1 | String | The timestamp indicating when the response was received. Date on UTC Standard (ISO 8601 UTC `2025-05-21T08:48:53.9744052+00:00`) |
+| **AuditData/Response/Data** | 1 | String | The payload data contained in the provider's response. |
+| **AuditData/Response/Headers** | 1 | Object | A collection of headers included in the provider's response. |
+| **AuditData/Response/StatusCode** | 1 | Integer | The HTTP status code returned by the provider. |
+| **AdviseMessages** | 0 . . N | Array&lt;[AdviseMessage](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/advisemessage)&gt; | Collection of advice messages, which may include errors or warnings generated during the Search process. |
+| **AdviseMessages/Code** | 1 | [AdviseMessageCode](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/advisemessagecode) | Gets the code that represents the message type. |
+| **AdviseMessages/Level** | 1 | [AdviseMessageLevel](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/advisemessagelevel) | Gets the severity level of the message (e.g., Error, Warning, or Info). |
+| **AdviseMessages/Description** | 0 . . 1 | String | Gets the message description providing additional context. |
+| **AdviseMessages/CorrelationId** | 0 . . 1 | String | Gets a unique identifier for correlating the message with specific operations. |
+| **AdviseMessages/External** | 0 . . 1 | [External](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/external) | Gets additional external details associated with the message. |
+| **AdviseMessages/External/Code** | 0 . . 1 | String | The supplier's internal code for identifying the nature of the response or error. |
+| **AdviseMessages/External/**<br />**Message** | 1 | String | A descriptive message returned by the supplier. |
+| **AdviseMessages/External/**<br />**HttpStatusCode** | 1 | Integer | The HTTP status code of the supplier's response. |
+| **Accommodations** | 0 . . N | Array | List of accommodations, boards, and options returned by the Search.These represent the available (hotels-boards-options) that meet the client's criteria. |
+| **Accommodations/**<br />**AccommodationType** | 1 | [AccommodationType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/accommodationtype) | Gets or initializes the type of accommodation. |
+| **Accommodations/**<br />**AccommodationCode** | 1 | String | Gets the unique code identifying the accommodation. |
+| **Accommodations/**<br />**AccommodationName** | 0 . . 1 | String | Gets or initializes the name of the accommodation. |
+| **Accommodations/Boards** | 1 . . N | Array&lt;[Board](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/board)&gt; | Gets the list of boards available for the hotel. |
+| **Accommodations/Boards/**<br />**BoardCode** | 1 | String | The unique code identifying the board. |
+| **Accommodations/Boards/Name** | 0 . . 1 | String | The name of the board. |
+| **Accommodations/Boards/Options** | 1 . . N | Array&lt;[Option](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/option)&gt; | The collection of options associated with this board. |
+| **Accommodations/Boards/Options/**<br />**FormId** | 0 . . 1 | String | Internal field for FormTest. Not serialized. DO NOT USE! |
+| **Accommodations/Boards/Options/**<br />**Status** | 1 | [Status](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/status) | Indicates the availability status of the option. |
+| **Accommodations/Boards/Options/**<br />**Price** | 1 | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | The price details associated with the option, including net, gross and minimum selling price. |
+| **Accommodations/Boards/Options/**<br />**Price/Currency** | 1 | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
+| **Accommodations/Boards/Options/**<br />**Price/Binding** | 1 | Boolean | Indicates whether the price is binding. |
+| **Accommodations/Boards/Options/**<br />**Price/Net** | 1 | Double | The net price paid by the Buyer to the Seller. |
+| **Accommodations/Boards/Options/**<br />**Price/Gross** | 1 | Double | The gross price, which includes the net price and the Buyer's commission. |
+| **Accommodations/Boards/Options/**<br />**Price/NetSpecified** | 1 | Boolean | Indicates whether the net price is explicitly specified. |
+| **Accommodations/Boards/Options/**<br />**Price/MinimumSellingPrice** | 1 | Double | The minimum selling price. |
+| **Accommodations/Boards/Options/**<br />**PaymentTypes** | 1 . . N | Array&lt;[PaymentType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/paymenttype)&gt; | Specifies the accepted payment types for the option. |
+| **Accommodations/Boards/Options/**<br />**Rooms** | 1 . . N | Array&lt;[Room](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/room)&gt; | The list of rooms included with the option, including type, description, and price. |
+| **Accommodations/Boards/Options/**<br />**Rooms/OccupancyRefId** | 1 | Integer | Numeric ID linking this room to its occupancy data in the Occupancy. |
+| **Accommodations/Boards/Options/**<br />**Rooms/Code** | 1 | String | Unique code assigned to this room. |
+| **Accommodations/Boards/Options/**<br />**Rooms/Description** | 0 . . 1 | String | Description of the room's features or characteristics. |
+| **Accommodations/Boards/Options/**<br />**Rooms/RoomPrice** | 1 | [RoomPrice](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/roomprice) | Pricing information for the room, including total price and currency details. |
+| **Accommodations/Boards/Options/**<br />**Rooms/RoomPrice/Price** | 1 | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | The total price of the room. |
+| **Accommodations/Boards/Options/**<br />**Rooms/RoomPrice/Price/Currency** | 1 | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
+| **Accommodations/Boards/Options/**<br />**Rooms/RoomPrice/Price/Binding** | 1 | Boolean | Indicates whether the price is binding. |
+| **Accommodations/Boards/Options/**<br />**Rooms/RoomPrice/Price/Net** | 1 | Double | The net price paid by the Buyer to the Seller. |
+| **Accommodations/Boards/Options/**<br />**Rooms/RoomPrice/Price/Gross** | 1 | Double | The gross price, which includes the net price and the Buyer's commission. |
+| **Accommodations/Boards/Options/**<br />**Rooms/RoomPrice/Price/**<br />**NetSpecified** | 1 | Boolean | Indicates whether the net price is explicitly specified. |
+| **Accommodations/Boards/Options/**<br />**Rooms/RoomPrice/Price/**<br />**MinimumSellingPrice** | 1 | Double | The minimum selling price. |
+| **Accommodations/Boards/Options/**<br />**Rooms/RoomPrice/PriceBreakdown** | 0 . . N | Array&lt;[PriceBreakdown](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/pricebreakdown)&gt; | Breakdown of the room price over specific periods, such as daily rates. |
+| **Accommodations/Boards/Options/**<br />**Rooms/RoomPrice/PriceBreakdown/**<br />**Price** | 1 | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | The price for each day of the room during the specified period. |
+| **Accommodations/Boards/Options/**<br />**Rooms/RoomPrice/PriceBreakdown/**<br />**Price/Currency** | 1 | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
+| **Accommodations/Boards/Options/**<br />**Rooms/RoomPrice/PriceBreakdown/**<br />**Price/Binding** | 1 | Boolean | Indicates whether the price is binding. |
+| **Accommodations/Boards/Options/**<br />**Rooms/RoomPrice/PriceBreakdown/**<br />**Price/Net** | 1 | Double | The net price paid by the Buyer to the Seller. |
+| **Accommodations/Boards/Options/**<br />**Rooms/RoomPrice/PriceBreakdown/**<br />**Price/Gross** | 1 | Double | The gross price, which includes the net price and the Buyer's commission. |
+| **Accommodations/Boards/Options/**<br />**Rooms/RoomPrice/PriceBreakdown/**<br />**Price/NetSpecified** | 1 | Boolean | Indicates whether the net price is explicitly specified. |
+| **Accommodations/Boards/Options/**<br />**Rooms/RoomPrice/PriceBreakdown/**<br />**Price/MinimumSellingPrice** | 1 | Double | The minimum selling price. |
+| **Accommodations/Boards/Options/**<br />**Rooms/RoomPrice/PriceBreakdown/**<br />**Start** | 1 | Integer | The starting day of the pricing period (inclusive). |
+| **Accommodations/Boards/Options/**<br />**Rooms/RoomPrice/PriceBreakdown/**<br />**End** | 1 | Integer | The ending day of the pricing period (inclusive). |
+| **Accommodations/Boards/Options/**<br />**Rooms/Refundable** | 1 | Boolean | Indicates if the room is refundable based on the cancellation policy. |
+| **Accommodations/Boards/Options/**<br />**Rooms/RefundableSpecified** | 1 | Boolean | Indicates whether the refundable status has been explicitly specified. |
+| **Accommodations/Boards/Options/**<br />**Rooms/LegacyRoomId** | 1 | String | Legacy identifier for internal tracking. Automatically generated using OccupancyRefId and Code. |
+| **Accommodations/Boards/Options/**<br />**Rooms/Units** | 0 . . 1 | Integer | Number of units available for this room type. |
+| **Accommodations/Boards/Options/**<br />**Rooms/RatePlan** | 0 . . 1 | [RatePlan](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/rateplan) | Rate plan associated with this room. |
+| **Accommodations/Boards/Options/**<br />**Rooms/RatePlan/Code** | 1 | String | The unique code for the rate plan. |
+| **Accommodations/Boards/Options/**<br />**Rooms/RatePlan/Name** | 0 . . 1 | String | The name of the rate plan. |
+| **Accommodations/Boards/Options/**<br />**Rooms/Promotions** | 0 . . N | Array&lt;[Promotion](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/promotion)&gt; | Promotions or discounts applicable to this room. |
+| **Accommodations/Boards/Options/**<br />**Rooms/Promotions/Code** | 1 | String | The unique code identifying the promotion. |
+| **Accommodations/Boards/Options/**<br />**Rooms/Promotions/Name** | 0 . . 1 | String | The name of the promotion. |
+| **Accommodations/Boards/Options/**<br />**Rooms/Remarks** | 0 . . N | Array&lt;[Remark](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remark)&gt; | Additional remarks or notes about this room. |
+| **Accommodations/Boards/Options/**<br />**Rooms/Remarks/RemarkType** | 1 | [RemarkType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remarktype) | The type of the remark, categorized by RemarkType, specifies its nature or purpose. It may refer to the hotel as a whole, a specific room being booked, services provided by the accommodation, or general remarks not tied to any particular entity. |
+| **Accommodations/Boards/Options/**<br />**Rooms/Remarks/Text** | 1 | String | The text content of the remark, providing details or additional notes.This can include supplier-specific instructions, conditions, or general information. |
+| **Accommodations/Boards/Options/**<br />**Rooms/Surcharges** | 0 . . N | Array&lt;[Surcharge](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/surcharge)&gt; | Additional surcharges applied to this room. |
+| **Accommodations/Boards/Options/**<br />**Rooms/Surcharges/ChargeType** | 1 | [ChargeType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/chargetype) | Specifies whether the surcharge is included in the room rate or must be paid separately at the property. See ChargeType for possible values. |
+| **Accommodations/Boards/Options/**<br />**Rooms/Surcharges/Mandatory** | 1 | Boolean | Indicates whether this surcharge is mandatory. Mandatory surcharges, such as government taxes, must always be paid, while optional surcharges may depend on the guest's preferences. |
+| **Accommodations/Boards/Options/**<br />**Rooms/Surcharges/Description** | 1 | String | Provides a description of the surcharge, giving context about the type of cost it represents.Examples: "Tourist Tax", "Resort Fee", or "Additional Bed Fee". |
+| **Accommodations/Boards/Options/**<br />**Rooms/Surcharges/Price** | 1 | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | Represents the price of this surcharge, including the amount and currency. See Price for details about the price structure. |
+| **Accommodations/Boards/Options/**<br />**Rooms/Surcharges/Price/**<br />**Currency** | 1 | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
+| **Accommodations/Boards/Options/**<br />**Rooms/Surcharges/Price/Binding** | 1 | Boolean | Indicates whether the price is binding. |
+| **Accommodations/Boards/Options/**<br />**Rooms/Surcharges/Price/Net** | 1 | Double | The net price paid by the Buyer to the Seller. |
+| **Accommodations/Boards/Options/**<br />**Rooms/Surcharges/Price/Gross** | 1 | Double | The gross price, which includes the net price and the Buyer's commission. |
+| **Accommodations/Boards/Options/**<br />**Rooms/Surcharges/Price/**<br />**NetSpecified** | 1 | Boolean | Indicates whether the net price is explicitly specified. |
+| **Accommodations/Boards/Options/**<br />**Rooms/Surcharges/Price/**<br />**MinimumSellingPrice** | 1 | Double | The minimum selling price. |
+| **Accommodations/Boards/Options/**<br />**Rooms/Surcharges/Code** | 0 . . 1 | String | An optional code that uniquely identifies this surcharge for internal or external reference. This can be useful for tracking specific fees or integrating with supplier systems. |
+| **Accommodations/Boards/Options/**<br />**Rooms/CancelPolicy** | 0 . . 1 | [CancelPolicy](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/cancelpolicy) | Cancellation policy specific to this room. |
+| **Accommodations/Boards/Options/**<br />**Rooms/CancelPolicy/Refundable** | 1 | Boolean | Indicates whether the booking is refundable. |
+| **Accommodations/Boards/Options/**<br />**Rooms/CancelPolicy/**<br />**CancelPenalties** | 0 . . N | Array&lt;[CancelPenalty](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/cancelpenalty)&gt; | A collection of penalties that apply if the booking is canceled. |
+| **Accommodations/Boards/Options/**<br />**Rooms/CancelPolicy/**<br />**CancelPenalties/HoursBefore** | 0 . . 1 | Integer | Indicates the number of hours before the check-in date when the penalty becomes applicable. |
+| **Accommodations/Boards/Options/**<br />**Rooms/CancelPolicy/**<br />**CancelPenalties/PenaltyType** | 1 | [PenaltyType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/penaltytype) | Specifies the type of penalty enforced upon cancellation. |
+| **Accommodations/Boards/Options/**<br />**Rooms/CancelPolicy/**<br />**CancelPenalties/Currency** | 1 | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | Specifies the currency in which the penalty value is expressed. |
+| **Accommodations/Boards/Options/**<br />**Rooms/CancelPolicy/**<br />**CancelPenalties/Value** | 1 | Double | This value represents the penalty amount that will be applied. Normally, it is the amount our client must pay without commission (net). However, if the supplier does not return the net amount during the booking and cancellation flow, and only provides the price with commission included (gross), then the penalty will also be calculated as gross. Some suppliers do not specify whether they work with net or gross prices. In those cases, Travelgate tries to detect it and applies the value that matches the one returned in the cancellation policy. The main goal is to keep consistency with the type of prices the supplier provides throughout the whole booking and cancellation process. |
+| **Accommodations/Boards/Options/**<br />**Rooms/CancelPolicy/**<br />**CancelPenalties/Deadline** | 1 | String | Specifies the absolute deadline for the penalty in UTC format. |
+| **Accommodations/Boards/Options/**<br />**Rooms/CancelPolicy/**<br />**CancelPolicyDescription** | 0 . . 1 | String | Provides additional details or a textual summary of the cancellation policy. |
+| **Accommodations/Boards/Options/**<br />**Rooms/Beds** | 0 . . N | Array&lt;[Bed](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/bed)&gt; | List of beds available in the room, including types and configurations. |
+| **Accommodations/Boards/Options/**<br />**Rooms/Beds/Type** | 0 . . 1 | String | The type of the bed. |
+| **Accommodations/Boards/Options/**<br />**Rooms/Beds/Description** | 0 . . 1 | String | A description of the bed. |
+| **Accommodations/Boards/Options/**<br />**Rooms/Beds/Count** | 0 . . 1 | Integer | The number of beds of this type in the room. |
+| **Accommodations/Boards/Options/**<br />**Rooms/Beds/Shared** | 0 . . 1 | Boolean | Indicates whether the bed is shared. |
+| **Accommodations/Boards/Options/**<br />**Rooms/Amenities** | 0 . . N | Array&lt;[Amenity](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/amenity)&gt; | Amenities included with this room, such as Wi-Fi or parking. |
+| **Accommodations/Boards/Options/**<br />**Rooms/Amenities/Code** | 1 | String | A unique code that identifies the amenity. |
+| **Accommodations/Boards/Options/**<br />**Rooms/Amenities/Type** | 1 | [AmenityType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/amenitytype) | The type of the amenity, defined by AmenityType. |
+| **Accommodations/Boards/Options/**<br />**Rooms/Amenities/Value** | 1 | String | The value associated with the amenity. |
+| **Accommodations/Boards/Options/**<br />**Rooms/Amenities/Texts** | 0 . . 1 | String | Additional textual information or description for the amenity. |
+| **Accommodations/Boards/Options/**<br />**Rooms/UnitsSpecified** | 1 | Boolean | Indicates whether the number of units has been explicitly specified. |
+| **Accommodations/Boards/Options/**<br />**Rooms/Features** | 0 . . N | Array&lt;[Feature](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/feature)&gt; | Features or custom attributes of the room, used for specific integrations. |
+| **Accommodations/Boards/Options/**<br />**Rooms/Features/Code** | 1 | String | The unique code identifying the feature of the room. |
+| **Accommodations/Boards/Options/**<br />**Parameters** | 0 . . N | Array&lt;[Parameter](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/parameter)&gt; | Parameters for transferring data between operations, such as from `Search` to `Quote` or `Quote` to `Book`. |
+| **Accommodations/Boards/Options/**<br />**Parameters/Key** | 1 | Integer | Identifies the parameter with a numeric key. |
+| **Accommodations/Boards/Options/**<br />**Parameters/Value** | 1 | String | Defines the value associated with the parameter. |
+| **Accommodations/Boards/Options/**<br />**Parameters/ParameterType** | 1 | [ParameterType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/parametertype) | Specifies the type of the parameter (ParameterType), whether it is internal or supplier-related. |
+| **Accommodations/Boards/Options/**<br />**Parameters/Immutable** | 1 | Boolean | Indicates whether the parameter remains constant throughout operations (e.g., from Search to Quote and Book). In second searches or quotes, an immutable parameter is used to identify and match the same option. |
+| **Accommodations/Boards/Options/**<br />**Parameters/RoomId** | 1 | Integer | Associates the parameter with a specific room, identified by its ID. |
+| **Accommodations/Boards/Options/**<br />**CancelPolicy** | 0 . . 1 | [OptionCancelPolicy](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/optioncancelpolicy) | The cancellation policy associated with the option, detailing penalties and conditions. |
+| **Accommodations/Boards/Options/**<br />**CancelPolicy/Refundable** | 1 | Boolean | Indicates whether the booking is refundable. |
+| **Accommodations/Boards/Options/**<br />**CancelPolicy/CancelPenalties** | 0 . . N | Array&lt;[CancelPenalty](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/cancelpenalty)&gt; | A collection of penalties that apply if the booking is canceled. |
+| **Accommodations/Boards/Options/**<br />**CancelPolicy/CancelPenalties/**<br />**HoursBefore** | 0 . . 1 | Integer | Indicates the number of hours before the check-in date when the penalty becomes applicable. |
+| **Accommodations/Boards/Options/**<br />**CancelPolicy/CancelPenalties/**<br />**PenaltyType** | 1 | [PenaltyType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/penaltytype) | Specifies the type of penalty enforced upon cancellation. |
+| **Accommodations/Boards/Options/**<br />**CancelPolicy/CancelPenalties/**<br />**Currency** | 1 | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | Specifies the currency in which the penalty value is expressed. |
+| **Accommodations/Boards/Options/**<br />**CancelPolicy/CancelPenalties/**<br />**Value** | 1 | Double | Indicates the value of the penalty. |
+| **Accommodations/Boards/Options/**<br />**CancelPolicy/CancelPenalties/**<br />**Deadline** | 1 | String | Specifies the absolute deadline for the penalty in UTC format. |
+| **Accommodations/Boards/Options/**<br />**CancelPolicy/**<br />**CancelPolicyDescription** | 0 . . 1 | String | Provides additional details or a textual summary of the cancellation policy. |
+| **Accommodations/Boards/Options/**<br />**CancelPolicy/**<br />**RoomCancelPolicyDescriptions** | 0 . . N | Array&lt;[RoomCancelPolicyDescriptions](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/roomcancelpolicydescriptions)&gt; | Gets or sets the list of room-specific cancellation policy descriptions. |
+| **Accommodations/Boards/Options/**<br />**CancelPolicy/**<br />**RoomCancelPolicyDescriptions**<br />**OccupancyRefId** | 1 | Integer | Identifies the specific occupancy within the booking for which this cancellation policy applies. |
+| **Accommodations/Boards/Options/**<br />**CancelPolicy/**<br />**RoomCancelPolicyDescriptions**<br />**Description** | 1 | String | Textual information detailing the cancellation policy applicable to the room associated with the OccupancyRefId. |
+| **Accommodations/Boards/Options/**<br />**Promotions** | 0 . . N | Array&lt;[Promotion](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/promotion)&gt; | The promotions applied to the option, such as discounts or special offers. |
+| **Accommodations/Boards/Options/**<br />**Promotions/Code** | 1 | String | The unique code identifying the promotion. |
+| **Accommodations/Boards/Options/**<br />**Promotions/Name** | 0 . . 1 | String | The name of the promotion. |
+| **Accommodations/Boards/Options/**<br />**RateRules** | 0 . . N | Array&lt;[RateRule2](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/raterule2)&gt; | The rate rules for the option, specifying sales restrictions such as "Senior Discount" or "Resident Rate." |
+| **Accommodations/Boards/Options/**<br />**RateRules/RateRuleType** | 1 | [RateRule](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/raterule) | Selling restrictions applied to the room. These define specific conditions or eligibility requirements that must be met to sell the room. Possible restrictions include: |
+| **Accommodations/Boards/Options/**<br />**RateRules/Code** | 0 . . 1 | String | Represents a unique identifier for the rate rule, typically defined by the supplier.This code is used to reference and distinguish the rule from others. |
+| **Accommodations/Boards/Options/**<br />**RateRules/Name** | 0 . . 1 | String | Provides a human-readable name or label for the rate rule.This name is typically used in user interfaces or reports to describe the rule. |
+| **Accommodations/Boards/Options/**<br />**RateRules/Restrictions** | 0 . . N | Array&lt;[Restriction](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/restriction)&gt; | Defines a collection of additional restrictions that further specify the conditions of the rate rule.Restrictions can include age limits, regional requirements, or special eligibility conditions. |
+| **Accommodations/Boards/Options/**<br />**RateRules/Restrictions/Code** | 1 | String | A unique identifier for the restriction. |
+| **Accommodations/Boards/Options/**<br />**RateRules/Restrictions/Name** | 0 . . 1 | String | A descriptive name for the restriction. |
+| **Accommodations/Boards/Options/**<br />**RateRules/Restrictions/**<br />**RestrictionType** | 1 | [RestrictionType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/restrictiontype) | The type of the restriction, categorizing its purpose or application. |
+| **Accommodations/Boards/Options/**<br />**Remarks** | 0 . . N | Array&lt;[Remark](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remark)&gt; | Additional remarks associated with the option, such as special conditions or information. |
+| **Accommodations/Boards/Options/**<br />**Remarks/RemarkType** | 1 | [RemarkType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/remarktype) | The type of the remark, categorized by RemarkType, specifies its nature or purpose. It may refer to the hotel as a whole, a specific room being booked, services provided by the accommodation, or general remarks not tied to any particular entity. |
+| **Accommodations/Boards/Options/**<br />**Remarks/Text** | 1 | String | The text content of the remark, providing details or additional notes.This can include supplier-specific instructions, conditions, or general information. |
+| **Accommodations/Boards/Options/**<br />**Surcharges** | 0 . . N | Array&lt;[Surcharge](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/surcharge)&gt; | Surcharges applied to the option, such as mandatory fees or taxes. |
+| **Accommodations/Boards/Options/**<br />**Surcharges/ChargeType** | 1 | [ChargeType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/chargetype) | Specifies whether the surcharge is included in the room rate or must be paid separately at the property. See ChargeType for possible values. |
+| **Accommodations/Boards/Options/**<br />**Surcharges/Mandatory** | 1 | Boolean | Indicates whether this surcharge is mandatory. Mandatory surcharges, such as government taxes, must always be paid, while optional surcharges may depend on the guest's preferences. |
+| **Accommodations/Boards/Options/**<br />**Surcharges/Description** | 1 | String | Provides a description of the surcharge, giving context about the type of cost it represents.Examples: "Tourist Tax", "Resort Fee", or "Additional Bed Fee". |
+| **Accommodations/Boards/Options/**<br />**Surcharges/Price** | 1 | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | Represents the price of this surcharge, including the amount and currency. See Price for details about the price structure. |
+| **Accommodations/Boards/Options/**<br />**Surcharges/Price/Currency** | 1 | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
+| **Accommodations/Boards/Options/**<br />**Surcharges/Price/Binding** | 1 | Boolean | Indicates whether the price is binding. |
+| **Accommodations/Boards/Options/**<br />**Surcharges/Price/Net** | 1 | Double | The net price paid by the Buyer to the Seller. |
+| **Accommodations/Boards/Options/**<br />**Surcharges/Price/Gross** | 1 | Double | The gross price, which includes the net price and the Buyer's commission. |
+| **Accommodations/Boards/Options/**<br />**Surcharges/Price/NetSpecified** | 1 | Boolean | Indicates whether the net price is explicitly specified. |
+| **Accommodations/Boards/Options/**<br />**Surcharges/Price/**<br />**MinimumSellingPrice** | 1 | Double | The minimum selling price. |
+| **Accommodations/Boards/Options/**<br />**Surcharges/Code** | 0 . . 1 | String | An optional code that uniquely identifies this surcharge for internal or external reference. This can be useful for tracking specific fees or integrating with supplier systems. |
+| **Accommodations/Boards/Options/**<br />**Amenities** | 0 . . N | Array&lt;[Amenity](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/amenity)&gt; | Amenities included with the option, such as "Free Wi-Fi" or "Parking." |
+| **Accommodations/Boards/Options/**<br />**Amenities/Code** | 1 | String | A unique code that identifies the amenity. |
+| **Accommodations/Boards/Options/**<br />**Amenities/Type** | 1 | [AmenityType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/amenitytype) | The type of the amenity, defined by AmenityType. |
+| **Accommodations/Boards/Options/**<br />**Amenities/Value** | 1 | String | The value associated with the amenity. |
+| **Accommodations/Boards/Options/**<br />**Amenities/Texts** | 0 . . 1 | String | Additional textual information or description for the amenity. |
+| **Accommodations/Boards/Options/**<br />**Supplements** | 0 . . N | Array&lt;[Supplement](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/supplement)&gt; | Supplements available with the option, such as activity passes. |
+| **Accommodations/Boards/Options/**<br />**Supplements/Code** | 1 | String | The unique code identifying the supplement. |
+| **Accommodations/Boards/Options/**<br />**Supplements/Name** | 1 | String | The descriptive name of the supplement. |
+| **Accommodations/Boards/Options/**<br />**Supplements/Description** | 1 | String | An optional textual description providing additional details about the supplement. |
+| **Accommodations/Boards/Options/**<br />**Supplements/Mandatory** | 1 | Boolean | Indicates whether the supplement is mandatory for the booking. |
+| **Accommodations/Boards/Options/**<br />**Supplements/Price** | 1 | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/price) | The Price associated with the supplement, including details such as currency and net price. |
+| **Accommodations/Boards/Options/**<br />**Supplements/Price/Currency** | 1 | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) | The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
+| **Accommodations/Boards/Options/**<br />**Supplements/Price/Binding** | 1 | Boolean | Indicates whether the price is binding. |
+| **Accommodations/Boards/Options/**<br />**Supplements/Price/Net** | 1 | Double | The net price paid by the Buyer to the Seller. |
+| **Accommodations/Boards/Options/**<br />**Supplements/Price/Gross** | 1 | Double | The gross price, which includes the net price and the Buyer's commission. |
+| **Accommodations/Boards/Options/**<br />**Supplements/Price/NetSpecified** | 1 | Boolean | Indicates whether the net price is explicitly specified. |
+| **Accommodations/Boards/Options/**<br />**Supplements/Price/**<br />**MinimumSellingPrice** | 1 | Double | The minimum selling price. |
+| **Accommodations/Boards/Options/**<br />**Supplements/SupplementType** | 1 | [SupplementType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/supplementtype) | The specific SupplementType of the supplement (e.g., board, additional service). |
+| **Accommodations/Boards/Options/**<br />**Supplements/ChargeType** | 1 | [ChargeType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/chargetype) | Defines how the supplement is charged using ChargeType (e.g., per person, per stay). |
+| **Accommodations/Boards/Options/**<br />**Supplements/DurationType** | 1 | [DurationType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/durationtype) | Specifies whether the supplement applies to a specific duration (Open or Range). |
+| **Accommodations/Boards/Options/**<br />**Supplements/Quantity** | 1 | Integer | The quantity of the supplement included in the booking. |
+| **Accommodations/Boards/Options/**<br />**Supplements/StartDate** | 1 | String | The start date for the supplement (if applicable). |
+| **Accommodations/Boards/Options/**<br />**Supplements/**<br />**StartDateAsDateTime** | 0 . . 1 | String | The start date as a DateTime object for easier manipulation. |
+| **Accommodations/Boards/Options/**<br />**Supplements/EndDate** | 1 | String | The end date for the supplement (if applicable). |
+| **Accommodations/Boards/Options/**<br />**Supplements/EndDateAsDateTime** | 0 . . 1 | String | The end date as a DateTime object for easier manipulation. |
+| **Accommodations/Boards/Options/**<br />**Supplements/Resort** | 1 | [Resort](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/resort) | The associated Resort where the supplement applies. |
+| **Accommodations/Boards/Options/**<br />**Supplements/Resort/Code** | 1 | String | Unique code that identifies the resort in the system. |
+| **Accommodations/Boards/Options/**<br />**Supplements/Resort/Name** | 1 | String | Name of the resort. |
+| **Accommodations/Boards/Options/**<br />**Supplements/Resort/Description** | 0 . . 1 | String | Optional description providing additional details about the resort. |
+| **Accommodations/Boards/Options/**<br />**Supplements/Unit** | 1 | [UnitTimeType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/unittimetype) | Specifies the unit of time for the supplement (e.g., per day, per stay) using UnitTimeType. |
+| **Accommodations/Boards/Options/**<br />**AddOns** | 0 . . 1 | Object | Internal field for passing additional information across layers. |
+| **Accommodations/Location** | 0 . . 1 | [Location](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/location) | Gets the geographical location of the hotel. |
+| **Accommodations/Location/Code** | 1 | String | The unique code identifying the location. |
+| **Accommodations/Location/**<br />**Country** | 0 . . 1 | String | The ISO 3166-1 alpha-2 country code where the location is situated. |
+| **Accommodations/Location/**<br />**Longitude** | 0 . . 1 | Double | The longitude coordinate of the location, expressed in decimal degrees. |
+| **Accommodations/Location/**<br />**Latitude** | 0 . . 1 | Double | The latitude coordinate of the location, expressed in decimal degrees. |
+| **GlobalOptionParameters** | 1 . . N | Array&lt;[Parameter](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/parameter)&gt; | Global parameters that the client must send in subsequent operations (e.g., in a Quote request). These parameters apply to all options returned in the response. |
+| **GlobalOptionParameters/Key** | 1 | Integer | Identifies the parameter with a numeric key. |
+| **GlobalOptionParameters/Value** | 1 | String | Defines the value associated with the parameter. |
+| **GlobalOptionParameters/**<br />**ParameterType** | 1 | [ParameterType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/parametertype) | Specifies the type of the parameter (ParameterType), whether it is internal or supplier-related. |
+| **GlobalOptionParameters/**<br />**Immutable** | 1 | Boolean | Indicates whether the parameter remains constant throughout operations (e.g., from Search to Quote and Book). In second searches or quotes, an immutable parameter is used to identify and match the same option. |
+| **GlobalOptionParameters/RoomId** | 1 | Integer | Associates the parameter with a specific room, identified by its ID. |
+| **DiscardedItems** | 0 . . 1 | Integer | Discarded items in the Search response, can be rooms or options depending on the connector. |
 
 <!-- TABLE END -->
 

@@ -7,8 +7,8 @@ Represents a hotel booking request.
 | Name | Type | Description |
 |------|------|-------------|
 | **BookCriteria** | [BookCriteria](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/bookcriteria) | The booking criteria for the hotel reservation. |
-| **BookCriteria/CheckIn** | String | The check-in date for the operation, represented as a string in ISO 8601 format (yyyy-MM-dd). |
-| **BookCriteria/CheckOut** | String | The check-out date for the operation, represented as a string in ISO 8601 format (yyyy-MM-dd). |
+| **BookCriteria/CheckIn** | String | The check-in date for the operation, represented as a string in ISO 8601 format (YYYY-MM-DD). |
+| **BookCriteria/CheckOut** | String | The check-out date for the operation, represented as a string in ISO 8601 format (YYYY-MM-DD). |
 | **BookCriteria/CheckInAsDateTime** | String | The check-in date parsed as a DateTime object. |
 | **BookCriteria/**<br />**CheckOutAsDateTime** | String | The check-out date parsed as a DateTime object. |
 | **BookCriteria/TotalNights** | Integer | The total number of nights for the stay, calculated as the difference between check-in and check-out dates. |

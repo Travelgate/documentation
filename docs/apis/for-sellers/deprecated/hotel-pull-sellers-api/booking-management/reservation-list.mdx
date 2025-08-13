@@ -92,6 +92,8 @@ The response options include either **success** or an **error**. In the event of
             <Provider>1AAAA966</Provider>
             <Property>HCN8273</Property>
          </Locators>
+         <OptionType>soloHotel</OptionType>
+         <IsOptionTypeSpecified>false</IsOptionTypeSpecified>
          <Hotel>
             <Name>LAS VEGAS (BENIDORM)</Name>
             <Code>58475</Code>
@@ -103,6 +105,12 @@ The response options include either **success** or an **error**. In the event of
             <Rooms>
                <Room id = "27441" roomCandidateRefId = "1" description = "Doble Standard"/>
             </Rooms>
+            <Fees>
+                <Fee includedPriceOption = "true" description = "TaxAndServiceFee" mandatory = "true" refundable = "false">
+                    <Price currency = "EUR" amount = "8.11" binding = "false" commission = "-1" minimumSellingPrice="-1"/>
+                    <Code>SPE</Code>
+                </Fee>
+            </Fees>
             <CancelPenalties nonRefundable = "false">
                <CancelPenalty>
                   <HoursBefore>72</HoursBefore>
@@ -128,6 +136,8 @@ The response options include either **success** or an **error**. In the event of
             <Client>2578478</Client>
             <Provider>10TTT31</Provider>
          </Locators>
+         <OptionType>soloHotel</OptionType>
+         <IsOptionTypeSpecified>false</IsOptionTypeSpecified>
          <Hotel>
             <Name>LEO</Name>
             <Code>10</Code>
@@ -139,6 +149,12 @@ The response options include either **success** or an **error**. In the event of
             <Rooms>
                <Room id = "4582" roomCandidateRefId = "1" description = "Doble Standard.."/>
             </Rooms>
+            <Fees>
+                <Fee includedPriceOption = "true" description = "TaxAndServiceFee" mandatory = "true" refundable = "false">
+                    <Price currency = "EUR" amount = "8.11" binding = "false" commission = "-1" minimumSellingPrice="-1"/>
+                    <Code>SPE</Code>
+                </Fee>
+            </Fees>
             <CancelPenalties nonRefundable = "false">
                <CancelPenalty>
                   <HoursBefore>120</HoursBefore>
@@ -169,6 +185,8 @@ The response options include either **success** or an **error**. In the event of
 | Locators/Client			| 0..1 		| String	| Client locator.				|
 | Locators/Provider		| 0..1 		| String	| Supplier locator.				|
 | Locators/Property		| 0..1 		| String	| Property locator(see [MetaData](../content/meta-data/) method in order to verify if the supplier implements it).				|
+| ReservationReadRS/OptionType | 0..1 |	Enum |Defines the different types of hotel packages. <details><summary>OptionType</summary><div><div><table><thead><tr><th><strong>Code</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr><td>0</td><td>Hotel</td></tr><tr><td>1</td><td>HotelSkiPass</td></tr><tr><td>2</td><td>HotelSkiPassLessons</td></tr><tr><td>3</td><td>HotelSkiPassLessonsMeals</td></tr><tr><td>4</td><td>HotelSkiPassEquipmentLessons</td></tr><tr><td>5</td><td>HotelSkiPassEquipmentLessonsMeals</td></tr><tr><td>6</td><td>HotelTicket</td></tr><tr><td>7</td><td>HotelTicketTransfers</td></tr><tr><td>8</td><td>Gala</td></tr><tr><td>9</td><td>HotelSkiPassEquipment</td></tr><tr><td>10</td><td>HotelSkiPassMeals</td></tr><tr><td>11</td><td>HotelSkiPassEquipmentMeals</td></tr><tr><td>12</td><td>HotelActivity</td></tr></tbody></table></div></div></details> |
+| ReservationReadRS/IsOptionTypeSpecified | 0..1 |	Boolean |Indicates whether the `OptionType` field was specified or has the default value.|
 | ReservationReadRS/Hotel	| 0..1       	|		| Hotel reservation.				|
 | Hotel/Code 				| 0..1 		| String	| Hotel Code.					|
 | Hotel/Name 				| 0..1 		| String	| Hotel Name.					|
@@ -199,6 +217,18 @@ The response options include either **success** or an **error**. In the event of
 | Paxes/Pax | 1..n       	|		| Pax required.					|
 | @age					| 0..1 		| Integer	| Passenger age on the day of check-in.				|
 | @id					| 0..1 		| Integer	| Id of the requested room (starting at 1).	|
+| Hotel/Fees/Fee | 0..n | |                                                                   |
+| @includedPriceOption			        | 1		        | Boolean       | Indicates if the fee is included or not in the final price. <details>     <summary>How to interpret includePriceOption Scenarios</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Payment Type</strong>  						 </th>  						 <th>  							 <strong>includedPriceOption</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>MerchantPay, CardBookingPay, CardCheckInPay</td>  						 <td>If True the amount of the fee is already included in the price and is paid at the time of booking. If False, said fee have to be paid in the hotel.</td>  					 </tr>  					 <tr>  						 <td>LaterPay</td>  						 <td>In both cases if True or False, the amount of the fee has to be paid in the hotel, as the type of payment is LaterPay. The difference is that if includedPriceOption = False the client would have to sum the amount on their end. This is done if the supplier does not include it. This way, the client can show the fee on their web separated from the option price, and it’s now the client’s own decision how they should treat it.</td>  					 </tr>			 </tbody>  			</table>         </div>     </div> </details>                                   |
+| @description				            | 1             | String        | Remarks regarding fee.                                                                        |
+| @mandatory 				            | 1             | Boolean       | If the fee is obligatory, depending on the includedPriceOption to know if it is paid at the time of booking or at the hotel. In case it is false, it could be a fee such as "cleaning" that the consumer could hire if he wanted. |
+| @refundable 				            | 1             | Boolean       | This field will serve to know if the rate to be paid is returned, for example when it is a deposit type that is returned once the stay ends. |
+| Fee/Price | 1 | |                                                                 |
+| @currency 				            | 1             | String        | Currency code (Our system uses a standard ISO - 3 for all suppliers).                                                                                |
+| @amount 				                | 1             | Decimal       | Fee Amount.                                                                                   |
+| @binding				                | 1             | Boolean       | If binding is set as true, then the client can’t sell the product for a lower price that the one set by the supplier. If it set as as false, the client can sell the product for a lower price. |
+| @commission				            | 1             | Decimal       | <details>     <summary>Commission Scenarios</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Commission</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>0</td>  						 <td>The price returned is net.</td>  					 </tr>  					 <tr>  						 <td>-1</td>  						 <td>The supplier has not supplied the sale price nor the commission. This information is in the commercial contract with the supplier.</td>  					 </tr>           <tr>  						 <td>Greater than 0</td>  						 <td>X = % of the commission applied to the amount.</td>  					 </tr>				 </tbody>  			</table>         </div>     </div> </details> |
+| @minimumSellingPrice 				   | 1 		    | Decimal 	    | Indicates the minimum selling price it can be sold (determined by the Seller). If is specified (different than "-1"), that field takes preference to amount.		<details>     <summary>Minimum Selling Price Scenarios</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Minimum Selling Price</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody> <tr>  						 <td>0</td>  						 <td>No minimum selling price is provided.</td>  					 </tr>       <tr>  						 <td>-1</td>  						 <td>We have no information about MSP from the Seller.</td>  					 </tr>     <tr>  						 <td>Greater than 0</td>  						 <td>The lowest possible amount that can be sold commercially.</td>  					 </tr>				 </tbody>  			</table>         </div>     </div> </details> |
+| Fee/Code | 1 | String | Specifies the fee code in case it has one.                                          |
 | Hotel/CancelPenalties	| 0..1       	|		| Information of cancellation policies.		|
 | @nonRefundable			| 1    		| Boolean	| Indicate if this option is nonRefundable (true or false). |
 | CancelPenalties/CancelPenalty	| 0..n       	|		| Listing of cancellation penalties.		|

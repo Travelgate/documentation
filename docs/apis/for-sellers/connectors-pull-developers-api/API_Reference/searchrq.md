@@ -8,8 +8,8 @@ This class is used to define the parameters and settings for searching available
 | Name | Type | Description |
 |------|------|-------------|
 | **SearchCriteria** | [SearchCriteria](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/searchcriteria) | Gets the Search criteria for the hotel Search. |
-| **SearchCriteria/CheckIn** | String | The check-in date for the operation, represented as a string in ISO 8601 format (yyyy-MM-dd). |
-| **SearchCriteria/CheckOut** | String | The check-out date for the operation, represented as a string in ISO 8601 format (yyyy-MM-dd). |
+| **SearchCriteria/CheckIn** | String | The check-in date for the operation, represented as a string in ISO 8601 format (YYYY-MM-DD). |
+| **SearchCriteria/CheckOut** | String | The check-out date for the operation, represented as a string in ISO 8601 format (YYYY-MM-DD). |
 | **SearchCriteria/**<br />**CheckInAsDateTime** | String | The check-in date parsed as a DateTime object. |
 | **SearchCriteria/**<br />**CheckOutAsDateTime** | String | The check-out date parsed as a DateTime object. |
 | **SearchCriteria/TotalNights** | Integer | The total number of nights for the stay, calculated as the difference between check-in and check-out dates. |

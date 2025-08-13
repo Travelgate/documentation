@@ -116,6 +116,14 @@ For more details about operations, check [PreOperations](../../Connector_Framewo
 
 There are two previous validations that serve as a filter so the buildrequest and the parseresponse are as safe as possible. They can be found in the CheckBookingsByReferenceOperation.cs class:
 
+```chsarp
+internal partial class CheckBookingsByReferenceOperation :
+    ICheckBookingsByReferenceOperation<CheckBookingsByReferenceRequest, CheckBookingsByReferenceResponse, AccessModel>
+{
+    // Implement any services needed just like in SearchOperation.cs
+}
+```
+
 File location: "**ConnectorsIntegration\CheckBookingsByReference\Operations\CheckBookingsByReferenceOperation.cs**".
 
 ![CheckBookingsByReferenceOperation](CheckBookingsByReferenceOperation.png)

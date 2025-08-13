@@ -6,8 +6,8 @@ Represents the criteria for a hotel Quote request. Inherits from Criteria.
 
 | Name | Type | Description |
 |------|------|-------------|
-| **CheckIn** | String | The check-in date for the operation, represented as a string in ISO 8601 format (yyyy-MM-dd). |
-| **CheckOut** | String | The check-out date for the operation, represented as a string in ISO 8601 format (yyyy-MM-dd). |
+| **CheckIn** | String | The check-in date for the operation, represented as a string in ISO 8601 format (YYYY-MM-DD). |
+| **CheckOut** | String | The check-out date for the operation, represented as a string in ISO 8601 format (YYYY-MM-DD). |
 | **CheckInAsDateTime** | String | The check-in date parsed as a DateTime object. |
 | **CheckOutAsDateTime** | String | The check-out date parsed as a DateTime object. |
 | **TotalNights** | Integer | The total number of nights for the stay, calculated as the difference between check-in and check-out dates. |

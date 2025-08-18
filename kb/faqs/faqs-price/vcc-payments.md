@@ -48,8 +48,9 @@ The VCC plugin is **optional** and depends on the Seller's acceptance of VCC pay
 ## Supported VCC Providers
 
 Travelgate currently supports the following VCC providers:
-- **Amadeus Virtual Account**
-- **Ixaris (IXA)**
-- **Ixaris - Voxel (VIXA)**
-- **eNett (NET)**
-- **WEX**
+- **Amadeus Virtual Account** [Official link](https://amadeus.com/en)
+- **Ixaris - NIUM (IXA)** [Official link](https://www.nium.com/)
+- **Voxel - Ixaris (VIXA)** [Official link](https://www.voxelgroup.net/)
+- **Voxel (VOX)** [Official link](https://www.voxelgroup.net/)
+- **eNett (NET)** [Official link](https://portal.enett.com/eNett/)
+- **Citi (CITI)** [Official link](https://www.citi.com/) and [More info](https://www.citibank.com/tts/solutions/commercial-cards/assets/docs/case-studies/1135896_GTS25543_VirtualCardAcct_SS_vF_27Sept2013.pdf) 

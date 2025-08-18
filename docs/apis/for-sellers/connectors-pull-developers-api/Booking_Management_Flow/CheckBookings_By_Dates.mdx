@@ -50,8 +50,8 @@ import TabItem from '@theme/TabItem';
     {
         Input = new CheckBookingsByDateInput
         {
-            CheckIn = DateTime.Parse("2024-05-12"),
-            CheckOut = DateTime.Parse("2024-05-14"),
+            CheckIn = "2024-05-12",
+            CheckOut = "2024-05-14",
             DateType = "Arrival",
             Language = "ES",
             Currency = "EUR"
@@ -87,8 +87,8 @@ import TabItem from '@theme/TabItem';
                 OptionsQuota = 170,
                 BusinessRuleType = "CheaperAmount"
             },
-            Timeout = "Timeout7d64fd74-9c49-46d7-aa62-2a14c9500e2f",
-            TimeoutAsTimeSpan = TimeSpan.Parse("00:00:00"),
+            Timeout = "00:00:10",
+            TimeoutAsTimeSpan = TimeSpan.Parse("00:00:10"),
             IncludeProviderTransactions = true
         }
     };
@@ -138,8 +138,8 @@ import TabItem from '@theme/TabItem';
                 "optionsQuota": 170,
                 "businessRuleType": "CheaperAmount"
             },
-            "timeout": "Timeout7d64fd74-9c49-46d7-aa62-2a14c9500e2f",
-            "timeoutAsTimeSpan": "00:00:00",
+            "timeout": "00:00:10",
+            "timeoutAsTimeSpan": "00:00:10",
             "includeProviderTransactions": true
         }
     }
@@ -170,14 +170,14 @@ import TabItem from '@theme/TabItem';
 | **Settings/BusinessRules** | 0 . . 1 | [BusinessRules](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/businessrules) |  Specifies the business rules to be applied during the operation. These rules define operational constraints and behavior, such as quota limits or prioritization criteria. |
 | **Settings/BusinessRules/**<br />**OptionsQuota** | 0 . . 1 | Integer |  The maximum number of options returned for each board in the Search query. |
 | **Settings/BusinessRules/**<br />**BusinessRuleType** | 0 . . 1 | [BusinessRulesType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/businessrulestype) |  The business rule type that determines how Search results are prioritized or filtered. |
-| **Settings/Timeout** | 1 | String |  Defines the timeout period for the operation as a string value.This indicates the maximum amount of time to wait for a supplier's response before timing out.The value must be provided in timestamp format (e.g., "00:05:00" for 5 minutes). |
+| **Settings/Timeout** | 1 | String |  Defines the timeout period for the operation as a string value.This indicates the maximum amount of time to wait for a supplier's response before timing out.The value must be provided in timestamp format (e.g., "00:00:10" for 10 seconds). |
 | **Settings/TimeoutAsTimeSpan** | 0 . . 1 | String |  Converts the timeout value from the string representation (Timeout) into a TimeSpan for use in time-based operations. |
 | **Settings/**<br />**IncludeProviderTransactions** | 1 | Boolean |  Indicates whether detailed traces of provider transactions should be included in the operation's response.If enabled, the ProviderAudit field in responses will contain the transaction logs (e.g., requests and responses exchanged with the supplier). |
 | **Input** | 1 | [CheckBookingsByDateInput](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/checkbookingsbydateinput) |  Contains the details for checking bookings within a specific date range. |
 | **Input/CheckIn** | 1 | String |  The check-in date for the booking check, specified as a string. |
 | **Input/CheckOut** | 1 | String |  The check-out date for the booking check, specified as a string. |
-| **Input/CheckInAsDateTime** | 0 . . 1 | String |  Parses and returns the check-in date as a DateTime object. |
-| **Input/CheckOutAsDateTime** | 0 . . 1 | String |  Parses and returns the check-out date as a DateTime object. |
+| **Input/CheckInAsDateTime** | 0 . . 1 | String |  The check-in date parsed as a DateTime object, expressed in UTC 0 |
+| **Input/CheckOutAsDateTime** | 0 . . 1 | String |  The check-out date parsed as a DateTime object, expressed in UTC 0 |
 | **Input/DateType** | 1 | [DateRangeType](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/daterangetype) |  Specifies the type of date range to use for the booking check. |
 | **Input/Language** | 0 . . 1 | String |  The language code to be used for the booking check. |
 | **Input/Currency** | 0 . . 1 | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/currency) |  The currency to be used for the booking check. |
@@ -626,14 +626,14 @@ The Response Object provides a list of bookings within the specified date range,
 |------|:--------:|:----:|-------------|
 | **AuditData** | 1 | [ProviderAudit](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/provideraudit) |  Provides detailed audit data for the supplier transactions, including request and response logs. |
 | **AuditData/Request** | 0 . . N | Array&lt;[ProviderAuditRq](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/providerauditrq)&gt; |  Collection of audit entries for provider requests.Each entry contains details about a specific request made to the provider. |
-| **AuditData/Request/SendAt** | 1 | String |  The timestamp indicating when the request was sent. |
+| **AuditData/Request/SendAt** | 1 | String |  The timestamp indicating when the request was sent. Date on UTC Standard (ISO 8601 UTC `2025-05-21T08:48:53.9744052+00:00`) |
 | **AuditData/Request/Data** | 1 | String |  The payload data included in the request. |
 | **AuditData/Request/Url** | 1 | String |  The URL of the provider endpoint to which the request is sent. |
 | **AuditData/Request/Headers** | 1 | Object |  A collection of headers included in the request. |
 | **AuditData/Request/HttpMethod** | 1 | [HttpMethod](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/httpmethod) |  The HTTP method used to send the request. |
 | **AuditData/Request/HttpMethod/**<br />**Method** | 1 | String |  No description available. |
 | **AuditData/Response** | 0 . . N | Array&lt;[ProviderAuditRs](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/providerauditrs)&gt; |  Collection of audit entries for provider responses.Each entry contains details about a specific response received from the provider. |
-| **AuditData/Response/ReceivedAt** | 1 | String |  The timestamp indicating when the response was received. |
+| **AuditData/Response/ReceivedAt** | 1 | String |  The timestamp indicating when the response was received. Date on UTC Standard (ISO 8601 UTC `2025-05-21T08:48:53.9744052+00:00`) |
 | **AuditData/Response/Data** | 1 | String |  The payload data contained in the provider's response. |
 | **AuditData/Response/Headers** | 1 | Object |  A collection of headers included in the provider's response. |
 | **AuditData/Response/StatusCode** | 1 | Integer |  The HTTP status code returned by the provider. |
@@ -663,8 +663,8 @@ The Response Object provides a list of bookings within the specified date range,
 | **Bookings/Hotel/BookingDate** | 0 . . 1 | String |  The date when the booking was created. |
 | **Bookings/Hotel/CheckIn** | 0 . . 1 | String |  The check-in date for the booking. |
 | **Bookings/Hotel/CheckOut** | 0 . . 1 | String |  The check-out date for the booking. |
-| **Bookings/Hotel/**<br />**CheckInAsDateTime** | 0 . . 1 | String |  The check-in date as a DateTime object. |
-| **Bookings/Hotel/**<br />**CheckOutAsDateTime** | 0 . . 1 | String |  The check-out date as a DateTime object. |
+| **Bookings/Hotel/**<br />**CheckInAsDateTime** | 0 . . 1 | String |  The check-in date parsed as a DateTime object, expressed in UTC 0 |
+| **Bookings/Hotel/**<br />**CheckOutAsDateTime** | 0 . . 1 | String |  The check-out date parsed as a DateTime object, expressed in UTC 0 |
 | **Bookings/Hotel/HotelCode** | 0 . . 1 | String |  The unique code identifying the hotel. |
 | **Bookings/Hotel/HotelName** | 0 . . 1 | String |  The name of the hotel associated with the booking. |
 | **Bookings/Hotel/BoardCode** | 0 . . 1 | String |  The board code for the booking. |

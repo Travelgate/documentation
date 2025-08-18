@@ -7,8 +7,8 @@ Represents a request for a hotel Quote.
 | Name | Type | Description |
 |------|------|-------------|
 | **QuoteCriteria** | [QuoteCriteria](/docs/apis/for-sellers/connectors-pull-developers-api/API_Reference/quotecriteria) | Criteria for the Quote request, such as dates, selected rooms, or other Search-related parameters. |
-| **QuoteCriteria/CheckIn** | String | The check-in date for the operation, represented as a string in ISO 8601 format (yyyy-MM-dd). |
-| **QuoteCriteria/CheckOut** | String | The check-out date for the operation, represented as a string in ISO 8601 format (yyyy-MM-dd). |
+| **QuoteCriteria/CheckIn** | String | The check-in date for the operation, represented as a string in ISO 8601 format (YYYY-MM-DD). |
+| **QuoteCriteria/CheckOut** | String | The check-out date for the operation, represented as a string in ISO 8601 format (YYYY-MM-DD). |
 | **QuoteCriteria/**<br />**CheckInAsDateTime** | String | The check-in date parsed as a DateTime object. |
 | **QuoteCriteria/**<br />**CheckOutAsDateTime** | String | The check-out date parsed as a DateTime object. |
 | **QuoteCriteria/TotalNights** | Integer | The total number of nights for the stay, calculated as the difference between check-in and check-out dates. |

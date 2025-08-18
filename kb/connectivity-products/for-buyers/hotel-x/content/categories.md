@@ -13,7 +13,7 @@ You can easily retrieve the category list by following the specifications outlin
 Additionally, you can **customize** the fields requested to receive only the information relevant to your business needs.
 
 :::tip
-Check out our [Hotel-X Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/categories#requests-examples) for a full example of a Categories Query. 🚀
+Check out our [Hotel-X Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/categories#query-overview) for a full example of a Categories Query. 🚀
 :::
 
 ## Filtering and Pagination

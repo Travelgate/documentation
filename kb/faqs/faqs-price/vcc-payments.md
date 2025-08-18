@@ -48,9 +48,23 @@ The VCC plugin is **optional** and depends on the Seller's acceptance of VCC pay
 ## Supported VCC Providers
 
 Travelgate currently supports the following VCC providers:
-- **Amadeus Virtual Account** [Official link](https://amadeus.com/en)
-- **Ixaris - NIUM (IXA)** [Official link](https://www.nium.com/)
-- **Voxel - Ixaris (VIXA)** [Official link](https://www.voxelgroup.net/)
-- **Voxel (VOX)** [Official link](https://www.voxelgroup.net/)
-- **eNett (NET)** [Official link](https://portal.enett.com/eNett/)
-- **Citi (CITI)** [Official link](https://www.citi.com/) and [More info](https://www.citibank.com/tts/solutions/commercial-cards/assets/docs/case-studies/1135896_GTS25543_VirtualCardAcct_SS_vF_27Sept2013.pdf) 
+
+| Name                  | Code  | Description                                                                                                   | Product Info |
+|-----------------------|-------|---------------------------------------------------------------------------------------------------------------|--------------|
+| Amadeus Virtual Account | AMV   | A secure and flexible virtual card solution for travel payments, powered by Amadeus.                         | [Official Link](https://amadeus.com/en/travel-sellers/products/b2b-wallet) |
+| Ixaris - NIUM         | IXA   | Virtual cards by Ixaris (a NIUM company), designed to optimize B2B travel payments and reduce costs.         | [Official Link](https://www.nium.com/) |
+| Voxel - Ixaris        | VIXA  | Streamlined payment automation by Voxel, using Ixaris virtual cards for efficient travel industry transactions. | [Official Link](https://www.voxelgroup.net/) |
+| Voxel                 | VOX   | Voxel offers integrated virtual card payments to simplify financial workflows for travel businesses.         | [Official Link](https://www.voxelgroup.net/) |
+| eNeet                 | NET   | A virtual payment solution developed by Voxel for simplified and secure B2B transactions.                    | [Official Link](https://www.voxelgroup.net/) |
+| Citi                  | CITI  | Citi’s global virtual card solution helps businesses control spending, increase security, and improve reconciliation. | [Official link](https://www.citi.com/) and [More info](https://www.citibank.com/tts/solutions/commercial-cards/assets/docs/case-studies/1135896_GTS25543_VirtualCardAcct_SS_vF_27Sept2013.pdf) |
+
+
+Payment Gateway We Work With:
+
+  | <img width="379" height="133" alt="CaixaBank" src="https://github.com/user-attachments/assets/6beeb990-d0b8-4445-ab11-edfb289fcc9c" />  | <img width="379" height="133" alt="Ingenico" src="https://github.com/user-attachments/assets/4626cccb-3f6f-4bd6-b714-5814c6dc4b6e" /> | <img width="379" height="133" alt="Modulr" src="https://github.com/user-attachments/assets/6dd41899-8315-4908-8846-8c37bfb80cc4" /> |
+  |--------------------|-------------|-------------|
+  | <img width="379" height="133" alt="american-express" src="https://github.com/user-attachments/assets/98a850cb-3514-4bb8-9972-2b8cf5d8ee79" />  | <img width="379" height="133" alt="apiso" src="https://github.com/user-attachments/assets/54e9b1fd-65ed-4a0c-af62-8dfd495d2bd1" /> | <img width="379" height="133" alt="barclaycard" src="https://github.com/user-attachments/assets/a9bf69b9-875f-419e-9edc-5f0360b4fdef" /> |
+  | <img width="379" height="133" alt="nium" src="https://github.com/user-attachments/assets/d66611c6-5a49-41d7-a61b-6f4f90bee411" />  | <img width="379" height="133" alt="VISAlogo" src="https://github.com/user-attachments/assets/5f486eda-e802-4178-9f8d-7d8daf76b783" /> | <img width="379" height="133" alt="worldline-mint-horizontal" src="https://github.com/user-attachments/assets/bc67b18e-951f-4d25-8544-87bb47e886c9" /> |
+  | <img width="379" height="133" alt="pliant" src="https://github.com/user-attachments/assets/19ac39bb-b71c-48f7-a710-bb73388092ed" />  | <img width="379" height="133" alt="TripLink" src="https://github.com/user-attachments/assets/c9920d93-da7e-4c1d-b860-4973c73ee4cc" /> | <img width="379" height="133" alt="image" src="https://github.com/user-attachments/assets/8bf14a4c-9718-451b-87bb-7e1867b0fb01" /> |
+  | <img width="379" height="133" alt="image" src="https://github.com/user-attachments/assets/b53a4434-3931-4413-aa3e-979a7748e9ab" />  | <img width="379" height="133" alt="pax2pay" src="https://github.com/user-attachments/assets/0d059dce-6891-42b8-861a-ce8eb8d41e09" /> | <img width="379" height="133" alt="wex" src="https://github.com/user-attachments/assets/5abf9be8-c0ec-4e90-b860-086d139e2d8f" /> |
+  | <img width="379" height="133" alt="terrapay" src="https://github.com/user-attachments/assets/db8bc960-f643-4136-a5ad-b47effcf6f5d" />  | LOGO2 | LOGO3 |

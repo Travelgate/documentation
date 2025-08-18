@@ -45,6 +45,6 @@ If the Seller provides this information, you can obtain the room code by includi
 The Quote response does not include the hotel name. However, it can be retrieved from the Search Query response if the Supplier provides this information.
 
 :::tip
-Don't forget to check our [Hotel-X Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/quote#requests-examples) for a complete example of a Hotel-X Quote Query! 🚀
+Don't forget to check our [Hotel-X Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/quote#query-overview) for a complete example of a Hotel-X Quote Query! 🚀
 :::
 

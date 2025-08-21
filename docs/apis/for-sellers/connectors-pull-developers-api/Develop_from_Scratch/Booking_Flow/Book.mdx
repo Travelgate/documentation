@@ -61,10 +61,12 @@ public class BookResponse
 
 public class SupplierOption
 {
+    public DateTime Checkin {get; set;}
     public string Status { get; set; }
     public SupplierPrice SupplierPrice { get; set; }
     public string SupplierPaymentType { get; set; }
-    public string supplierReference { get; set; }
+    public string ClientReference { get; set; }
+    public string SupplierReference { get; set; }
     public List<SupplierRoom> Rooms { get; set; }
     public List<SupplierCancelPolicy> SupplierCancelPolicies { get; set; }
 }
@@ -289,7 +291,7 @@ internal partial class BookOperation
                 }
             },
             RateId = rateIdParameter
-            ClientReference =
+            ClientReference = clientReference
         };
     }
 }
@@ -339,14 +341,20 @@ internal partial class BookOperation
         Price price = ParseSupplierPrice(supplierOption.SupplierPrice);
         PaymentType paymentType = MapSellerToTgxPaymentType(supplierOption.SupplierPaymentType);
         List<Room> roomList = ParseSupplierRooms(supplierOption.Rooms);
-        var checkIn = connectorsRequest.BookRq.BookCriteria.CheckInAsDateTime;
 
-        var cancelPolicy = ParseSupplierCancelPolicies(checkIn, supplierOption.SupplierCancelPolicies);
+        var cancelPolicy = ParseSupplierCancelPolicies(supplierOption.CheckIn, supplierOption.SupplierCancelPolicies);
 
-        var clientReference = connectorsRequest.BookRq.BookCriteria.ClientReference;
+        var clientReference = supplierOption.clientReference;
         var supplierReference = supplierOption.SupplierReference;
 
-        BookDetails bookDetails = new BookDetails(status, new Reference(clientReference, supplierReference), price);
+        BookDetails bookDetails = new BookDetails(status, new Reference(clientReference, supplierReference), price)
+        {
+            CancelPolicy = cancelPolicy,
+            Hotel = new HotelDetail()
+            {
+                Rooms = roomList,
+            }
+        };
         return new BookRs(bookDetails);
     }
 

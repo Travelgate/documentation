@@ -257,8 +257,15 @@ internal partial class CancelOperation
         return new CancelConnectorResponse(ParseSupplierResponse(supplierResponse));
     }
 
-    private CancelRs ParseSupplierResponse( CancelResponse supplierResponse)
+    private CancelRs ParseSupplierResponse(CancelResponse supplierResponse)
     {
+        if (supplierResponse.Option == null)    
+        {
+            return CancelRs.BuildErrorResponse(new[]
+            {
+                AdviseMessage.BuildSupplierError(new External("", "Option null from supplier response"))
+            });
+        }
         var supplierOption = supplierResponse.Option;
         
         BookStatus status = MapSellerToTgxStatus(supplierOption.Status);

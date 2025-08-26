@@ -284,6 +284,13 @@ internal partial class CheckBookingsByReferenceOperation
 
     private CheckBookingsRs ParseSupplierResponse(CheckBookingsByReferenceResponse supplierResponse)
     {
+        if (supplierResponse.Option == null)    
+        {
+            return CheckBookingsRs.BuildErrorResponse(new[]
+            {
+                AdviseMessage.BuildSupplierError(new External("", "Option null from supplier response"))
+            });
+        }
         var supplierOption = supplierResponse.Option;
 
         BookStatus status = MapSellerToTgxStatus(supplierOption.Status);

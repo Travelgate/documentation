@@ -48,9 +48,12 @@ The VCC plugin is **optional** and depends on the Seller's acceptance of VCC pay
 ## Supported VCC Providers
 
 Travelgate currently supports the following VCC providers:
-- **Amadeus Virtual Account** [Official link](https://amadeus.com/en)
-- **Ixaris - NIUM (IXA)** [Official link](https://www.nium.com/)
-- **Voxel - Ixaris (VIXA)** [Official link](https://www.voxelgroup.net/)
-- **Voxel (VOX)** [Official link](https://www.voxelgroup.net/)
-- **eNett (NET)** [Official link](https://portal.enett.com/eNett/)
-- **Citi (CITI)** [Official link](https://www.citi.com/) and [More info](https://www.citibank.com/tts/solutions/commercial-cards/assets/docs/case-studies/1135896_GTS25543_VirtualCardAcct_SS_vF_27Sept2013.pdf) 
+
+| Name                  | Code  | Description                                                                                                   | Product Info |
+|-----------------------|-------|---------------------------------------------------------------------------------------------------------------|--------------|
+| Amadeus Virtual Account | AMV   | A secure and flexible virtual card solution for travel payments, powered by Amadeus.                         | [Official Link](https://amadeus.com/en/travel-sellers/products/b2b-wallet) |
+| Ixaris (part of NIUM)         | IXA   | Virtual cards by Ixaris (a NIUM company), designed to optimize B2B travel payments and reduce costs. Allow you to create virtual cards, load them with money, monitor virtual card transactions and receive notifications of card activity.         | [Official Link](https://docs.nium.com/travel/docs/quick-start-guide) |
+| Voxel       | VIXA  | Voxel offets B2B payment solution designed to orchestrate a fully digital, efficient, and frictionless payment process. It supports operations with 20+ payment providers and alternative payment methods, along with value-added services such as currency management and e-invoicing. | [Official Link](https://www.voxelgroup.net/bavel-pay-solution/) |
+| Voxel                 | VOX   | It is the same payment solution of Voxel as the previous one, but this is a **legacy connection** version.        | [Official Link](https://www.voxelgroup.net/bavel-pay-solution/) |
+| eNett (part of WEX)   | NET   | eNett (a WEX company) works with leading travel intermediaries to efficiently and securely pay travel suppliers anywhere in the world, helping its clients innovate at scale and win in a rapidly changing market. | [Official Link](https://www.wexinc.com/products/business-payments/virtual-cards/) |
+| Citi                  | CITI  | Citi’s global virtual card solution helps businesses control spending, increase security, and improve reconciliation. | [Official Link](https://www.citibank.com/tts/solutions/commercial-cards/assets/docs/case-studies/1135896_GTS25543_VirtualCardAcct_SS_vF_27Sept2013.pdf) |

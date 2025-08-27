@@ -34,5 +34,5 @@ The specific information returned depends on the Seller and may vary between Par
 Since Sellers update their Metadata only when major changes occur in their APIs, we recommend confirming directly with them to ensure the information provided is up to date.
 
 :::tip
-For a full example of a Hotel-X Metadata Query, check out our [Hotel-X Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata#requests-examples). 🚀
+For a full example of a Hotel-X Metadata Query, check out our [Hotel-X Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata#query-overview). 🚀
 :::

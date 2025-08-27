@@ -63,7 +63,7 @@ Travelgate displays results based on the Seller’s integration. A Supplier may 
    - High-occupancy periods or last-minute searches may result in limited availability.
 
 #### 4. **Review Speed Configuration**  
-   - If using **Speed**, check the **TTL (Time to Live) settings** and adjust them if needed. More details on Speed configuration can be found [here](/kb/platform/app-features/smart-traffic/speed/speed-details#how-does-it-work%EF%B8%8F).
+   - If using **Speed**, check the **TTL (Time to Live) settings** and adjust them if needed. More details on Speed configuration can be found [here](/kb/platform/app-features/smart-traffic/speed/speed-activation#how-does-speed-work).
 
 ## For Sellers
 

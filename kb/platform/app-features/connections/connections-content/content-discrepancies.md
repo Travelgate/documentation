@@ -43,7 +43,7 @@ If you're receiving an error or an empty response while downloading content, try
 5. **Open a Case with Support**: If the error persists or if you receive an unlisted error code, [open a case](/kb/platform/support-portal/case-guidelines) with our Support Team for further investigation.
 
 :::info Force Content Updates 
-When performing a "Force Content Now" update to refresh a Seller's portfolio, keep in mind that the duration of the update depends on the **size of the content**. The update is processed through a **queue system** and will begin once it reaches its turn. This could take anywhere from a few minutes to 72 hours.
+When using 'Force Content Now' to refresh a Seller's static content, note that the update duration **depends on the content size**. The update is processed through a **queue system** and will begin once it reaches its turn. This could take anywhere from a few minutes to 72 hours.
 
 - If the update hasn't completed after 72 hours, you may attempt the update again.
 - Updates within the 72-hour window are considered normal, and there’s no need to contact support until this period has passed.

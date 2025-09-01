@@ -398,7 +398,12 @@ internal partial class SearchOperation
     {
         foreach (SupplierOption supplierOption in supplierResponse.Options)
         {
+            if(supplierOption?.SupplierPrice?.Currency == null)
+            {
+                continue;
+            }
             Currency supplierCurrency = CurrencyIso4217Mapper.Map(supplierOption.SupplierPrice.Currency);
+            
             // PriceParser used from the dependency injection
             Price price = _priceParser.ParseSupplierPrice(supplierCurrency, supplierOption.SupplierPrice.Net, supplierOption.SupplierPrice.Net);
             Status status = MapSellerToTgxStatus(supplierOption.Status);

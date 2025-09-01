@@ -11,7 +11,7 @@ The Boards Query provides a comprehensive mapping of board types available for a
 To retrieve the board list, simply follow the specifications outlined in our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/boards) and build your own Board queries. You can also customize the fields you request to ensure you receive only the relevant information.
 
 :::tip
-Explore our [Hotel-X Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/boards#requests-examples) for a complete example of a Boards Query! 🚀
+Explore our [Hotel-X Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/boards#query-overview) for a complete example of a Boards Query! 🚀
 :::
 
 ## Filtering Board Queries

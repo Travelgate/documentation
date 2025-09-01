@@ -81,15 +81,13 @@ If you need assistance with requesting your credentials to access the SFTP serve
 <details>
     <summary>Can I use a default code for un-mapped Supplier codes?</summary>
     <div>
-		<p>
+		
 			Imagine you've created a board mapping file for your Supplier's connection, but there are cases where you want to use a consistent code like 'RoomOnly' for meal plans that couldn't be mapped or for new board codes added by the supplier. 
 			To achieve this, you can utilize the 'Default Code' feature.
-			<br></br>
-			<br></br>
+
 			This feature allows you to define a default code for each code in the source (supplier) context. The entities that can have default codes include: Board, Room, Rate, Amenity, Promotion and Room Description.
 			To use this feature, simply add a new row in the BuyerContext column with your default code and place an asterisk (*) in the Supplier context column:
-		</p>
-<p>
+		
 
 ```bash
 Buyer Context, Supplier Context
@@ -97,8 +95,6 @@ Room Only, RO
 All Inclusive, AI
 Room Only, *
 ```
-
-</p>
 		In the example above, all the codes of entity board of supplier that are not found in the mapping file, will be "Room Only" in the response.
 		Please note that you can assign only one default code to each Supplier context.
     </div>

@@ -48,6 +48,13 @@ Our system suggests Company names as you type, displaying their logo and type. Y
 
 ![network_4](https://storage.travelgate.com/kbase/network_4.jpg)
 
+### Why isn’t the Partner I need showing in Network?
+If you can't find a specific Partner in the Network section, it’s likely due to one of the following reasons:
+1. **The company isn't connected to Travelgate yet:** They may still be in contact with our team and not yet available for connection.
+2. **The Partner isn’t certified in the role you’re searching for:** For example, if you're a Buyer and the requested Partner is only certified as a Buyer (not a Seller), they won’t appear in the Seller list.
+
+In either case, we recommend reaching out directly to the Company for more information. They can confirm their status and let you know when they'll be available in Travelgate’s ecosystem.
+
 :::note Wondering why you're seeing recommended Partners you're already connected with?
 If there has been no activity in the last three months, these connections will be recommended as a reminder to reactivate them—because they’re still a great fit for your business!
 :::

@@ -3,8 +3,7 @@ const path = require("path");
 const fetch = require("node-fetch");
 
 const GRAPHQL_ENDPOINT = "https://api.travelgate.com";
-const BEARER_TOKEN = "Add your Bearer here"; // Replace with your actual token
-
+const TRAVELGATE_API_KEY = process.env.TRAVELGATE_API_KEY;
 const OUTPUT_FILE = path.join(__dirname, "../schema-json/inventory-schema.json");
 
 // List of types to extract including all their subtypes
@@ -225,18 +224,20 @@ async function fetchSchema() {
     
 
     try {
-        const response = await fetch(GRAPHQL_ENDPOINT, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${BEARER_TOKEN}`
-            },
-            body: JSON.stringify(QUERY_TYPES)
-        });
+    const response = await fetch(GRAPHQL_ENDPOINT, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Apikey " + TRAVELGATE_API_KEY,
+      },
+      body: JSON.stringify(QUERY_TYPES),
+    });
 
-        if (!response.ok) {
-            throw new Error(`❌ Request failed: ${response.status} ${response.statusText}`);
-        }
+    if (!response.ok) {
+      throw new Error(
+        `❌ Request failed: ${response.status} ${response.statusText}`
+      );
+    }
 
         const data = await response.json();
 

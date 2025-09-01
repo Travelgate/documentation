@@ -14,7 +14,11 @@ To check or manage existing reservations, follow these steps:
 4. Apply search filters based on:
    - **Dates** (arrival or booking creation)
    - **Reference** (supplier, client, or hotel)
-   - **Advanced filters** (some suppliers require specific details, such as hotel codes or currency)
+   - **Advanced filters**
+
+:::warning Supplier Restrictions
+Some suppliers require specific details—such as hotel codes or currency—or **may not support certain filters**, like searching by booking creation date or client locator. Always check the supplier’s **[Metadata](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata)** to confirm which filters are supported.
+:::
 
    ![b2b_virtual_agency_mybookings_1](https://storage.travelgate.com/kbase/b2b_mybookings_1.png)
 
@@ -39,24 +43,53 @@ If you see the message _"No results found! Try updating your search criteria"_ i
 
 If the necessary filters are unsupported, contact the supplier to explore the possibility of them making this data available.
 
+### The message “Multiple Warnings (click to see)” appears when searching for reservations on the 'My Bookings' screen — what should I do?
+[Warnings](/docs/apis/for-buyers/hotel-x-pull-buyers-api/making-requests/errors-and-warnings/booking-flow#warning-list) indicate potentially problematic situations or errors that do not require the service to be terminated. These warnings can originate either from the Hotel-X layer or from the Seller’s system.
+
+To better understand and resolve the warnings in your 'My Bookings' screen, follow these steps:
+1. **Click on the “Multiple Warnings (click to see)” notification**. A list of all received warnings will be displayed. Review the details and refer to our documentation on [errors and warnings](/kb/connectivity-products/for-buyers/errors-and-warnings/overview) for more information and resolution steps.
+2. **Retrieve the relevant logs by clicking “View Booking Logs” in the left-hand menu**. These logs provide detailed insights to help you analyze the cause of the warnings and determine how to address them.
+
+:::warning Important:
+Be sure to **check the suppliers’ [Metadata](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata)** for the [Booking Read method](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/booking-read) to confirm the supported search type. For example, using a date filter with a supplier that only allows reference-based booking searches will result in an error.
+:::
 
 ### Why does "My Bookings" show reservations not made through Travelgate?
 When Travelgate retrieves booking data from a supplier, it displays **all reservations the supplier returns based on your credentials**. This may include bookings made outside of Travelgate. If you'd rather not see those, you can ask the supplier to filter the list to show only Travelgate bookings.
-
-
-## How to Cancel a Booking through the B2B Virtual Agency
-
-1. Find the booking you wish to cancel.
-2. Click **Cancel booking**.
-
-   ![b2b_virtual_agency_cancel_2](https://storage.travelgate.com/kbase/b2b_cancel_2.png)
-
-3. A pop-up will display the cancellation costs. Click **Confirm** ('Yes, cancel booking') to proceed.
-
-   ![b2b_virtual_agency_cancel_1](https://storage.travelgate.com/kbase/b2b_cancel_1.png)
 
 :::info **Hotel Information Not Available**
 If the supplier does not provide hotel information when retrieving a booking, you will see a message stating: _"Hotel information not available. Please contact your supplier. Hotel code: Not available."_
 
 You can still check the **status** of your reservations on the **My Bookings** screen by referring to the _Status_ label.
 :::
+
+
+## How to Cancel a Booking through the B2B Virtual Agency
+
+1. **Log in** to [our Platform](https://www.travelgate.com/).
+2. Navigate to **Solutions > B2B Virtual Agency**.
+3. Go to the **My Bookings** tab and apply filters to find the booking you want to cancel.
+4. Click **Cancel booking**.
+
+   ![b2b_virtual_agency_cancel_2](https://storage.travelgate.com/kbase/b2b_cancel_2.png)
+
+5. A pop-up will display the cancellation costs. Click **Confirm** ('Yes, cancel booking') to proceed.
+
+   ![b2b_virtual_agency_cancel_1](https://storage.travelgate.com/kbase/b2b_cancel_1.png)
+
+:::tip Cancel Status
+Learn all about Cancel Status at Travelgate [here](/kb/connectivity-products/for-buyers/hotel-x/booking-management/cancel/cancel-status).
+:::
+
+### I’m receiving a ‘Booking cancellation failed: Empty hotel code’ error — what can I do?
+
+**To cancel a booking, our system requires the hotel code provided by the supplier**. Without it, the cancellation process cannot be completed.
+
+This hotel code is typically obtained through the **Booking Search Screen** (Booking Read method). However, whether it's provided depends on the supplier—if the supplier doesn't return the hotel code in that response, our system won’t be able to use it later for cancellations.
+
+If you encounter this error:
+- Go to the **Booking Search screen**.
+- Fill in the necessary fields and click on **Advanced Filter, where you can manually enter the Hotel Code**.
+- Proceed with the cancellation.
+
+We strongly recommend contacting your supplier to request that they include the hotel code in their Booking Read response. This ensures that Travelgate can retrieve it directly, so you won't need to input it manually in future cancellations.

@@ -308,6 +308,20 @@
 
       <details style={{ pointerEvents: "none" }}>
         <summary>
+        **supplierCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+        Indicates the supplier code of the selected option.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **accessCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+        Indicates the access code of the selected option.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
         **status**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of StatusType*)  
         The possible values in the response's status are Available (OK) or On Request (RQ).  
         Possible values:  
@@ -664,7 +678,7 @@ If the chargeType is  EXCLUDE  the customer will have to pay it directly at the 
       <details>
         <summary>
         **addOns** (*AddOns*)  
-        Additional information about the option.  
+        Additional details provided by the different layers involved in the transaction.  
         </summary>
   
         <details>
@@ -805,6 +819,201 @@ Examples include swimming pools, shopping centers, etc.
             </summary>
           </details>
         </details>
+
+        <details>
+          <summary>
+          **roomPrice** (*RoomPrice*)  
+          Specifies the room price.  
+          </summary>
+  
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **price**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+            Total price for all days.  
+            </summary>
+          </details>
+
+          <details>
+            <summary>
+            **breakdown** (*PriceBreakdown*)  
+            Daily break downs price.  
+            </summary>
+  
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **start**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
+              Start date in which the price becomes effective.
+Format: YYYY-MM-DD  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **end**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
+              Expire date of price.
+Format: YYYY-MM-DD  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **price**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+              Specifies the daily price.  
+              </summary>
+            </details>
+          </details>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **refundable** (*Boolean*)  
+          Identifies if the room is refundable or not.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **units** (*Int*)  
+          Number of rooms available with the same type.
+          </summary>
+        </details>
+
+        <details>
+          <summary>
+          **beds** (*Bed*)  
+          List of beds.  
+          </summary>
+  
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **type** (*String*)  
+            Specifies the bed type  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **count** (*Int*)  
+            Indicates number of beds in a room
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **shared** (*Boolean*)  
+            Specifies if the bed is shared or not  
+            </summary>
+          </details>
+        </details>
+
+        <details>
+          <summary>
+          **ratePlans** (*RatePlan*)  
+          Daily break downs rate plan.  
+          </summary>
+  
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **code**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+            Specifies the rate code.  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **supplierCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+            Supplier s rate code.  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **name** (*String*)  
+            Specifies the rate name.  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **start** (*Date*)  
+            Start date in which the rate becomes effective.
+Format: YYYY-MM-DD  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **end** (*Date*)  
+            Expire date of the rate.
+Format: YYYY-MM-DD  
+            </summary>
+          </details>
+        </details>
+
+        <details>
+          <summary>
+          **promotions** (*Promotion*)  
+          Daily break downs promotions.  
+          </summary>
+  
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **code**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+            Specifies the promotion code.  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **name** (*String*)  
+            Specifies the promotion name.  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **supplierCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+            Specifies the supplier s promotion code.  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **start** (*Date*)  
+            Promotion effective date.
+Format: YYYY-MM-DD  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **end** (*Date*)  
+            Promotion expire date.
+Format: YYYY-MM-DD  
+            </summary>
+          </details>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **surcharges** (*undefined*)  
+          List of surcharges of the option returned.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **cancelPolicy** (*undefined*)  
+          Specifies cancel policies of this room   
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **remarks** (*String*)  
+          Additional information about the room.  
+          </summary>
+        </details>
       </details>
 
       <details style={{ pointerEvents: "none" }}>
@@ -930,6 +1139,62 @@ Examples include swimming pools, shopping centers, etc.
 
     <details>
       <summary>
+      **apps** (*AppQuoteSolution*)  
+      Information about the apps solutions. Only returned if you have some app integrations enabled.  
+      </summary>
+  
+      <details>
+        <summary>
+        **requote** (*Requote*)  
+        Contains quote solutions returned by an app when a new quote is required. These solutions may partially or completely differ from the original quote response.    
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **appSupplierCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+          Code identifying the app supplier that generated the Requote answer.    
+          </summary>
+        </details>
+
+        <details>
+          <summary>
+          **options**&nbsp;<span class="required"> *</span>&nbsp; (*OptionRequote*)  
+          List of alternative options returned by the app during the Requote process.    
+          </summary>
+  
+          <details>
+            <summary>
+            **savings**&nbsp;<span class="required"> *</span>&nbsp; (*Savings*)  
+            Savings offered compared to the original quote.  
+            </summary>
+  
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **value**&nbsp;<span class="required"> *</span>&nbsp; (*Float*)  
+              Monetary value of the savings.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **currency**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+              Currency of the savings.  
+              </summary>
+            </details>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **optionQuote**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+            New quote option returned by the app.  
+            </summary>
+          </details>
+        </details>
+      </details>
+    </details>
+
+    <details>
+      <summary>
       **errors** (*Error*)  
       Errors that abort services  
       </summary>
@@ -981,6 +1246,13 @@ To identify if it is blocked one, you can check our documentation regards this m
         <summary>
         **description**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
         Warning description  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **accessCode** (*String*)  
+        Access code related to the warning  
         </summary>
       </details>
     </details>

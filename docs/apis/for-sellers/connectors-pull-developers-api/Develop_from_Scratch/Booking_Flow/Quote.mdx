@@ -129,6 +129,12 @@ For more details about operations, check [PreOperations](../../Connector_Framewo
 
 There are two previous validations that serve as a filter so the buildrequest and the parseresponse are as safe as possible. They can be found in the QuoteOperation.cs class:
 
+```chsarp
+internal partial class QuoteOperation : IQuoteOperation<QuoteRequest, QuoteResponse, AccessModel>
+{
+    // Implement any services needed just like in SearchOperation.cs
+}
+```
 File location: "**ConnectorsIntegration\Quote\Operations\QuoteOperation.cs**"
 
 ![TryValidateSearch](TryValidateSearch.png)
@@ -313,6 +319,12 @@ internal partial class QuoteOperation
 
     private QuoteRs ParseSupplierResponse(QuoteConnectorRequest connectorsRequest, QuoteResponse supplierResponse)
     {
+        if (supplierResponse.Option == null)
+        {
+            List<AdviseMessage> adviseMessages = new(){AdviseMessage.BuildOptionNotFoundInQuote()};
+            return QuoteRs.BuildErrorResponse(adviseMessages);
+        }
+
         var supplierOption = supplierResponse.Option;
         
         Status status = MapSellerToTgxStatus(supplierOption.Status);

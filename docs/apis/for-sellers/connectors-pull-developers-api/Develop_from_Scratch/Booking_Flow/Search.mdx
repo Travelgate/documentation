@@ -28,17 +28,18 @@ namespace ConnectorsIntegration.Search.Models.Request;
 
 public class SearchRequest
 {
-    public string CheckIn { get; internal set; }
-    public string CheckOut { get; internal set; }
-    public string HotelCode { get; internal set; }
-    public List<SupplierOccupancy> Occupancy { get; internal set; }
+    public string CheckIn { get; set; }
+    public string CheckOut { get; set; }
+    public string HotelCode { get; set; }
+    public List<SupplierOccupancy> Occupancy { get; set; }
 }
 
 public class SupplierOccupancy
 {
-    public int Adults { get; internal set; }
-    public int Children { get; internal set; }
-    public IEnumerable<int> Infants { get; internal set; }
+    public int Adults { get; set; }
+    public int Children { get; set; }
+    public int Infants { get; set; }
+    public IEnumerable<int> ChildrenAges { get; set; }
 }
 ```
 File location: "**ConnectorsIntegration\Search\Models\Request\SearchRequest.cs**"
@@ -64,8 +65,23 @@ public class SupplierOption
     public List<SupplierRoom> Rooms { get; set; }
     public string BoardCode { get; set; }
     public List<SupplierCancelPolicy> SupplierCancelPolicies { get; set; }
+    public List<SupplierSurcharge> SupplierSurcharges { get; internal set; }
 }
 
+public class SupplierPrice
+{
+    public string Currency { get; set; }
+    public double Net { get; set; }
+    public double MinimumSellingPrice { get; set; }
+}
+public class SupplierRoom
+{
+    public uint OccupancyId { get; set; }
+    public string RoomCode { get; set; }
+
+    public SupplierPrice SupplierPrice { get; set; }
+    public string RoomDescription { get; set; }
+}
 public class SupplierCancelPolicy
 {
     public double PenaltyAmount { get; set; }
@@ -77,20 +93,11 @@ public class SupplierCancelPolicy
     public string PenaltyDeadline { get; set; }
 }
 
-public class SupplierPrice
+public class SupplierSurcharge
 {
-    public string Currency { get; set; }
+    public string Type { get; set; }
     public double Net { get; set; }
-    public double MinimumSellingPrice { get; set; }
-}
-
-public class SupplierRoom
-{
-    public uint OccupancyId { get; set; }
-    public string RoomCode { get; set; }
-
-    public SupplierPrice SupplierPrice { get; set; }
-    public string RoomDescription { get; set; }
+    public string Currency { get; set; }
 }
 ```
 File location: "**ConnectorsIntegration\Search\Models\Response\SearchResponse.cs**"
@@ -115,8 +122,42 @@ internal static class SearchExtensions
         //The operation is added, indicating what models should be used during the development of the operation
         services.AddSearchOperation<SearchOperation, SearchRequest, SearchResponse, AccessModel>(TgxPlatform.Name,
             configuration);
+
+        //Register the IPriceParser service to use afterwards in the SearchOperation
+        services.TryAddSingleton<IPriceParser, PriceParser>();
     }
     private static void ConfigureJSONOptions(JsonSerializerOptions options) { }
+}
+```
+
+An example of an **interface** and **implementation** of the **PriceParser** service would be:
+
+**Interface**
+```csharp
+using Connectors.Core.Domain;
+
+namespace ConnectorsIntegration.Search.Interfaces;
+
+public interface IPriceParser
+{
+    Price ParseSupplierPrice(Currency currency, double net, double minimumSellingPrice);
+}
+```
+
+**Parser**
+```csharp
+using Connectors.Core.Domain;
+using ConnectorsIntegration.Search.Interfaces;
+
+namespace ConnectorsIntegration.Search.Parsers;
+
+public class PriceParser : IPriceParser
+{
+    public Price ParseSupplierPrice(Currency currency, double net, double minimumSellingPrice)
+    {
+        var price = Price.BuildNetPrice(currency, net, minimumSellingPrice);
+        return price;
+    }
 }
 ```
 
@@ -152,8 +193,8 @@ public class AccessModel : IBindAccessModel
         Password = access.Password;
         GenericUrl = access.Urls.Generic;
         SearchUrl = access.Urls.Search;
-        //Parameter that if is not present, will throw and exception
-        ApiKey = access.Parameters.GetOrRequired("ApiKey");
+        //Parameter that if is not present, will throw an exception
+        ApiKey = access.Parameters.GetRequiredOrException("ApiKey");
     }
 }
 ```
@@ -162,6 +203,23 @@ public class AccessModel : IBindAccessModel
 
 There are two previous validations that serve as a filter so the buildrequest and the parseresponse are as safe as possible. They can be found in the SearchOperation.cs class:
 
+```csharp
+internal partial class SearchOperation : ISearchOperation<SearchRequest, SearchResponse, AccessModel>
+{
+    // We will be using two services as an example in this search operation:
+
+    // This service is added internally and can be used to have such utilities as to get the timezone from the metadata.
+    private readonly IConnectorsUtilities _connectorsUtilities;
+
+    //This service is added in the extensions (see first step) and we will be using this as a helper to parse de supplier price
+    private readonly IPriceParser _priceParser;
+    public SearchOperation(IConnectorsUtilities connectorsUtilities, IPriceParser priceParser)
+    {
+        _connectorsUtilities = connectorsUtilities;
+        _priceParser = priceParser;
+    }
+}
+```
 File location: "**ConnectorsIntegration\Search\Operations\SearchOperation.cs**"
 
 ![TryValidateSearch](TryValidateSearch.png)
@@ -251,20 +309,19 @@ internal partial class SearchOperation
         SearchConnectorRequest connectorsRequest,
         SearchParameters<AccessModel> connectorParameters)
     {
-        SearchCriteria searchCriteria = connectorsRequest.SearchRq.SearchCriteria;
         //Refers to the checkIn of the booking
-        string checkIn = searchCriteria.CheckIn;
+        string checkIn = connectorsRequest.SearchRq.SearchCriteria.CheckIn;
         //Refers to the checkOut of the booking
-        string checkOut = searchCriteria.CheckOut;
-        //Refers to the hotelCode of the booking. If the Seller allows requests with multiple hotels, the Accomodations should be iterated
-        string hotelCode = searchCriteria.Destinations.Accommodations.First().Code;
-        //Refers to the occupancy of the booking. If the Seller allows requests with multiple occupancies, the Occupancies should be iterated
-        Occupancy firstOccupancy = searchCriteria.Occupancies.First();
+        string checkOut = connectorsRequest.SearchRq.SearchCriteria.CheckOut;
+        //Refers to the hotelCode of the booking. If the seller allows requests with multiple hotels, the Accomodations should be iterated
+        string hotelCode = connectorsRequest.SearchRq.SearchCriteria.Destinations.Accommodations.First().Code;
+        //Refers to the occupancy of the booking. If the seller allows requests with multiple occupancies, the Occupancies should be iterated
+        Occupancy firstOccupancy = connectorsRequest.SearchRq.SearchCriteria.Occupancies.First();
         OccupancyInfoDetailed occupancyInfoDetailed = _connectorsUtilities.MetadataConnectorsService.GetDetailedOccupancyInfo(firstOccupancy);
 
         SearchRequest searchRequest = BuildSearchRequest(checkIn, checkOut, hotelCode, occupancyInfoDetailed);
 
-        //Search URL we prepared back in the AccessModel, which will be passed by the Buyer
+        //Generic URL we prepared back in the AccessModel, which will be passed by the buyer
         string searchUrl = connectorParameters.ParametersModel.UrlSearch;
 
         SupplierRequestWrapper<SearchRequest> supplierRequest = new(
@@ -280,7 +337,7 @@ internal partial class SearchOperation
 
     private static SearchRequest BuildSearchRequest(string checkIn, string checkOut, string hotelCode, OccupancyInfoDetailed occupancyInfoDetailed)
     {
-        //The request towards the Seller system
+        //The request towards the seller system
       
         return new SearchRequest()
         {
@@ -292,7 +349,8 @@ internal partial class SearchOperation
                 new() {
                     Adults = occupancyInfoDetailed.NumberOfAdults,
                     Children = occupancyInfoDetailed.NumberOfChildren,
-                    Infants = occupancyInfoDetailed.InfantAges
+                    Infants = occupancyInfoDetailed.NumberOfInfants,
+                    ChildrenAges = occupancyInfoDetailed.ChildrenAges
                 }
             } 
         };
@@ -331,7 +389,7 @@ internal partial class SearchOperation
         IEnumerable<SupplierResponseWrapper<SearchResponse>> supplierResponses,
         CancellationToken cancellationToken)
     {
-        //We can safely do First() in case the Seller only has one response because we check errors previously
+        //We can safely do First() in case the seller only has one response because we check errors previously
         var supplierResponse = supplierResponses.First().Response;
         return new SearchConnectorResponse(ParseSupplierResponse(connectorsRequest, supplierResponse));
     }
@@ -340,8 +398,15 @@ internal partial class SearchOperation
     {
         foreach (SupplierOption supplierOption in supplierResponse.Options)
         {
+            if(supplierOption?.SupplierPrice?.Currency == null)
+            {
+                continue;
+            }
+            Currency supplierCurrency = CurrencyIso4217Mapper.Map(supplierOption.SupplierPrice.Currency);
+            
+            // PriceParser used from the dependency injection
+            Price price = _priceParser.ParseSupplierPrice(supplierCurrency, supplierOption.SupplierPrice.Net, supplierOption.SupplierPrice.Net);
             Status status = MapSellerToTgxStatus(supplierOption.Status);
-            Price price = ParseSupplierPrice(supplierOption.SupplierPrice);
             PaymentType paymentType = MapSellerToTgxPaymentType(supplierOption.SupplierPaymentType);
             List<Room> roomList = ParseSupplierRooms(supplierOption.Rooms);
             var checkIn = connectorsRequest.SearchRq.SearchCriteria.CheckInAsDateTime;
@@ -350,12 +415,13 @@ internal partial class SearchOperation
                 status,
                 price,
                 [paymentType],
-                roomList
-                );
+                roomList);
+
+            // Additional elements can be added to the option, such as important information like surcharges or cancel policies
 
             option.CancelPolicy = ParseSupplierCancelPolicies(checkIn, supplierOption.SupplierCancelPolicies);
+            option.Surcharges = ParseSupplierSurcharges(supplierOption.SupplierSurcharges);
 
-            //Helper to combine options
             _connectorsUtilities.OptionsGenerator.TryAddHotelOption(
                 supplierResponse.HotelCode,
                 supplierOption.BoardCode,
@@ -364,8 +430,26 @@ internal partial class SearchOperation
                 supplierResponse.BoardName);
         }
 
-        // Combine method will return a list of combined accomodation based on the options added
         return new SearchRs(_connectorsUtilities.OptionsGenerator.Combine());
+    }
+
+    private List<Surcharge> ParseSupplierSurcharges(List<SupplierSurcharge> surcharges)
+    {
+        List<Surcharge> surchargeList = [];
+
+        foreach (SupplierSurcharge supplierSurcharge in surcharges)
+        {
+            Currency supplierCurrency = CurrencyIso4217Mapper.Map(supplierSurcharge.Currency);
+            // PriceParser used from the dependency injection
+            Price price = _priceParser.ParseSupplierPrice(supplierCurrency, supplierSurcharge.Net, supplierSurcharge.Net);
+            surchargeList.Add(new Surcharge(
+                ChargeType.Included, // -> If it is included or excluded will totally depend on the seller
+                true,
+                "Seller surcharge",
+                price,
+                "SurchargeCode"));
+        }
+        return surchargeList;
     }
 
     private OptionCancelPolicy ParseSupplierCancelPolicies(DateTime checkIn, List<SupplierCancelPolicy> supplierCancelPolicies)
@@ -374,10 +458,8 @@ internal partial class SearchOperation
 
         foreach (SupplierCancelPolicy supplierCancelPolicy in supplierCancelPolicies)
         {
-            //Helper to map a string currency
             Currency supplierCurrency = CurrencyIso4217Mapper.Map(supplierCancelPolicy.PenaltyCurrency);
             PenaltyType penaltyType = MapSellerToTgxPenaltyType(supplierCancelPolicy.PenaltyType);
-            //Helper to create a policy based in a Seller cancel penalty with deadline that has timezone
             var penalty = _connectorsUtilities.CancelPenaltyManager.CancelPenaltyFromDateWithTimeZone(
                 checkIn,
                 penaltyType,
@@ -392,16 +474,23 @@ internal partial class SearchOperation
         return new OptionCancelPolicy(refundable, cancelPenalties);
     }
 
-    private static List<Room> ParseSupplierRooms(List<SupplierRoom> rooms)
+    private static PenaltyType MapSellerToTgxPenaltyType(string penaltyType) => penaltyType switch
+    {
+        "Percent" => PenaltyType.Percentage,
+        "Nights" => PenaltyType.Nights,
+        _ => PenaltyType.Amount
+    };
+
+    private List<Room> ParseSupplierRooms(List<SupplierRoom> rooms)
     {
         List<Room> roomList = [];
 
         foreach (SupplierRoom supplierRoom in rooms)
         {
-            var price = ParseSupplierPrice(supplierRoom.SupplierPrice);
-
+            Currency supplierCurrency = CurrencyIso4217Mapper.Map(supplierRoom.SupplierPrice.Currency);
+            // PriceParser used from the dependency injection
+            Price price = _priceParser.ParseSupplierPrice(supplierCurrency, supplierRoom.SupplierPrice.Net, supplierRoom.SupplierPrice.MinimumSellingPrice);
             RoomPrice roomPrice = new(price);
-
             roomList.Add(new Room(
                 supplierRoom.OccupancyId,
                 supplierRoom.RoomCode,
@@ -412,13 +501,6 @@ internal partial class SearchOperation
         return roomList;
     }
 
-    private static PenaltyType MapSellerToTgxPenaltyType(string penaltyType) => penaltyType switch
-    {
-        "Percent" => PenaltyType.Percentage,
-        "Nights" => PenaltyType.Nights,
-        _ => PenaltyType.Amount
-    };
-
     private static PaymentType MapSellerToTgxPaymentType(string supplierPaymentType) => supplierPaymentType switch
     {
         "MerchantPay" => PaymentType.MerchantPay,
@@ -426,21 +508,13 @@ internal partial class SearchOperation
         _ => PaymentType.MerchantPay
     };
 
+
     private static Status MapSellerToTgxStatus(string status) => status switch
     {
         "Available" => Status.OK,
         "OnRequest" => Status.RQ,
         _ => Status.Unknown
     };
-
-    private static Price ParseSupplierPrice(SupplierPrice supplierPrice)
-    {
-        Currency supplierCurrency = CurrencyIso4217Mapper.Map(supplierPrice.Currency);
-        //Helper that builds a net price
-        var price = Price.BuildNetPrice(supplierCurrency, supplierPrice.Net, supplierPrice.MinimumSellingPrice);
-
-        return price;
-    }
 }
 ```
 

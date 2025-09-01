@@ -46,10 +46,12 @@ public class CheckBookingsByDateResponse
 
 public class SupplierOption
 {
+    public DateTime Checkin {get; set;}
     public string Status { get; set; }
     public SupplierPrice SupplierPrice { get; set; }
     public string SupplierPaymentType { get; set; }
-    public string supplierReference { get; set; }
+    public string ClientReference { get; set; }
+    public string SupplierReference { get; set; }
     public List<SupplierRoom> Rooms { get; set; }
     public List<SupplierCancelPolicy> SupplierCancelPolicies { get; set; }
 }
@@ -115,6 +117,14 @@ For more details about operations, check [PreOperations](../../Connector_Framewo
 ### **Step 2: CheckBookingsByDateOperation validators**
 
 There are two previous validations that serve as a filter so the buildrequest and the parseresponse are as safe as possible. They can be found in the CheckBookingsByDateOperation.cs class:
+
+```chsarp
+internal partial class CheckBookingsByDateOperation : ICheckBookingsByDateOperation<CheckBookingsByDateRequest,
+    CheckBookingsByDateResponse, AccessModel>
+{
+    // Implement any services needed just like in SearchOperation.cs
+}
+```
 
 File location: "**ConnectorsIntegration\CheckBookingsByDate\Operations\CheckBookingsByDateOperation.cs**".
 
@@ -254,41 +264,52 @@ File location: "**ConnectorsIntegration\CheckBookingsByDate\Operations\CheckBook
 using Connectors.Core.Application.Connection;
 using Connectors.Core.Application.Iso;
 using Connectors.Core.Domain;
-using Connectors.Pull.Hotel.Application.Operations.CheckBookingsByDate;
 using Connectors.Pull.Hotel.Domain.Contracts.Common;
-using Connectors.Pull.Hotel.Domain.Contracts.CheckBookingsByDate.Response;
-using ConnectorsIntegration.CheckBookingsByDate.Models.Response;
+using Connectors.Pull.Hotel.Application.Operations.CheckBookings.ByDate;
+using Connectors.Pull.Hotel.Domain.Contracts.CheckBookings.Response;
 
 namespace ConnectorsIntegration.CheckBookingsByDate.Operations;
 
 internal partial class CheckBookingsByDateOperation
 {
     public CheckBookingsByDateConnectorResponse ParseResponses(
-        CheckBookingsByDateConnectorRequest connectorsRequest,
-        CheckBookingsByDateParameters<AccessModel> connectorParameters,
+        CheckBookingsByReferenceConnectorRequest connectorsRequest,
+        CheckBookingsByReferenceParameters<AccessModel> connectorParameters,
         IEnumerable<SupplierResponseWrapper<CheckBookingsByDateResponse>> supplierResponses,
-        CheckBookingsByDatelationToken checkBookingsByDatelationToken)
+        CancellationToken cancellationToken)
     {
         var supplierResponse = supplierResponses.First().Response;
         return new CheckBookingsByDateConnectorResponse(ParseSupplierResponse(supplierResponse));
     }
 
-    private CheckBookingsByDateRs ParseSupplierResponse( CheckBookingsByDateResponse supplierResponse)
+    private CheckBookingsRs ParseSupplierResponse(CheckBookingsByDateResponse supplierResponse)
     {
+        if (supplierResponse.Option == null)    
+        {
+            return CheckBookingsRs.BuildErrorResponse(new[]
+            {
+                AdviseMessage.BuildSupplierError(new External("", "Option null from supplier response"))
+            });
+        }
         var supplierOption = supplierResponse.Option;
-        
+
         BookStatus status = MapSellerToTgxStatus(supplierOption.Status);
         Price price = ParseSupplierPrice(supplierOption.SupplierPrice);
-        PaymentType paymentType = MapSellerToTgxPaymentType(supplierOption.SupplierPaymentType);
         List<Room> roomList = ParseSupplierRooms(supplierOption.Rooms);
-        var checkIn = connectorsRequest.BookRq.BookCriteria.CheckInAsDateTime;
 
-        var cancelPolicy = ParseSupplierCancelPolicies(checkIn, supplierOption.SupplierCancelPolicies);
+        var cancelPolicy = ParseSupplierCancelPolicies(supplierResponse.CheckIn, supplierOption.SupplierCancelPolicies);
 
-        var clientReference = connectorsRequest.BookRq.BookCriteria.ClientReference;
+        var clientReference = supplierOption.ClientReference;
         var supplierReference = supplierOption.SupplierReference;
 
-        BookDetails bookDetails = new BookDetails(status, new Reference(clientReference, supplierReference), price);
+        BookDetails bookDetails = new BookDetails(status, new Reference(clientReference, supplierReference), price)
+        {
+            CancelPolicy = cancelPolicy,
+            Hotel = new HotelDetail()
+            {
+                Rooms = roomList,
+            }
+        };
         return new CheckBookingsByDateRs(
             new[]
             {

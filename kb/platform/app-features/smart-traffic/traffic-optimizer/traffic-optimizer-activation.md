@@ -10,7 +10,7 @@ sidebar_position: 3
 2. Navigate to **Smart Traffic > [Traffic Optimizer](https://app.travelgate.com/traffic-optimizer)**. This will take you to the **Traffic Optimizer Dashboard**, where you can review connections and accesses currently active or previously optimized.
 3. Click on the **"Optimize a Connection"** button.
    ![to_updated_2](https://storage.travelgate.com/kbase/to_updated_2.jpg)
-4. **Select the connection or access to optimize**: Only unconfigured connections or accesses will appear in the menu. If you can't find a connection/access, check the dashboard and review the filters.
+4. **Select the connection or access to optimize**: Only unconfigured connections or accesses will appear in the menu. If you can't find a connection/access, check the dashboard and review the filters. Connections of Buyers using the **Legacy API** should not be configured per access but rather for the whole connection.
 
    ![traffic_optimizer_3](https://storage.travelgate.com/kbase/traffic_optimizer_3.jpg)
 
@@ -26,18 +26,16 @@ sidebar_position: 3
 ## Can I Edit the Configuration?
 
 Yes! To edit optimization criteria for connections or accesses:
-1. Click the **three dots** under 'Actions'.
+1. Click the **three dots** under 'Actions'. 
 2. Select **"Edit Configuration"**.
 
 If you need to switch from **access-level to connection-level optimization (or vice versa),** please open a [Case](https://app.travelgate.com/support).
 
 ![TO_edit_actions](https://storage.travelgate.com/kbase/TO_edit_actions.jpg)
-![TO_edit_actions_2](https://storage.travelgate.com/kbase/TO_edit_actions_2.jpg)
 
 ## Why Can’t I Find a Specific Connection or Access?
 
 If a connection or access is missing from Traffic Optimizer, consider the following:
-- The Buyer must be connected via **Hotel-X API**—only these connections appear in Traffic Optimizer.
 - If a connection or access was previously activated but later deactivated, it will be hidden. To view and reactivate it, **uncheck "Show only active"** on the left side of the Traffic Optimizer dashboard.
 
 ## What Information is Displayed in the Traffic Optimizer Dashboard?
@@ -106,7 +104,7 @@ Yes! You can exclude specific hotels from the blacklist.
 :::info
 - All criteria (**No Availability, Zero Bookings, and Not in Portfolio**) can be applied together. However, we recommend **starting with one at a time**.
 - To activate the "Zero Bookings" criteria, the connection/access must have **at least one booking per month for the past six months** (excluding the current month).
-- When a Buyer requests a blacklisted hotel, the following **error/warning** appears:
+- When a Buyer using **Hotel-X API** requests a blacklisted hotel, the following **error/warning** appears:
   ```json
   {
       "code": "BLACKLIST",
@@ -114,4 +112,5 @@ Yes! You can exclude specific hotels from the blacklist.
       "description": "Access: xxx has no codes left after filter hotel codes."
   }
   ```
+  - When a Buyer using **Legacy API** requests a blacklisted hotel, will return a 204 **error** (no availability). 
 :::

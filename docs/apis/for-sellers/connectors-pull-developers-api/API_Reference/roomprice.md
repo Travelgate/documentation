@@ -19,7 +19,7 @@ Represents the price information for a room in a hotel Search response.
 | **PriceBreakdown/Price/Binding** | Boolean | Indicates whether the price is binding. |
 | **PriceBreakdown/Price/Net** | Double | The net price paid by the Buyer to the Seller. |
 | **PriceBreakdown/Price/Gross** | Double | The gross price, which includes the net price and the Buyer's commission. |
-| **PriceBreakdown/Price**<br />**NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
-| **PriceBreakdown/Price**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
+| **PriceBreakdown/Price/**<br />**NetSpecified** | Boolean | Indicates whether the net price is explicitly specified. |
+| **PriceBreakdown/Price/**<br />**MinimumSellingPrice** | Double | The minimum selling price. |
 | **PriceBreakdown/Start** | Integer | The starting day of the pricing period (inclusive). |
 | **PriceBreakdown/End** | Integer | The ending day of the pricing period (inclusive). |

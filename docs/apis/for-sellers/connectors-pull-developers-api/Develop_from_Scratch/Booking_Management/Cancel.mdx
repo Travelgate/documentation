@@ -93,6 +93,13 @@ For more details about operations, check [PreOperations](../../Connector_Framewo
 
 There are two previous validations that serve as a filter so the buildrequest and the parseresponse are as safe as possible. They can be found in the CancelOperation.cs class:
 
+```chsarp
+internal partial class QuoteOperation : IQuoteOperation<QuoteRequest, QuoteResponse, AccessModel>
+{
+    // Implement any services needed just like in SearchOperation.cs
+}
+```
+
 File location: "**ConnectorsIntegration\Cancel\Operations\CancelOperation.cs**"
 
 ![CancelOperation](CancelOperation.png)
@@ -250,8 +257,15 @@ internal partial class CancelOperation
         return new CancelConnectorResponse(ParseSupplierResponse(supplierResponse));
     }
 
-    private CancelRs ParseSupplierResponse( CancelResponse supplierResponse)
+    private CancelRs ParseSupplierResponse(CancelResponse supplierResponse)
     {
+        if (supplierResponse.Option == null)    
+        {
+            return CancelRs.BuildErrorResponse(new[]
+            {
+                AdviseMessage.BuildSupplierError(new External("", "Option null from supplier response"))
+            });
+        }
         var supplierOption = supplierResponse.Option;
         
         BookStatus status = MapSellerToTgxStatus(supplierOption.Status);

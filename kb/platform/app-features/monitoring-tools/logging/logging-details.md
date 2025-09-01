@@ -18,12 +18,17 @@ By leveraging Logging, you can gain valuable insights into your connection activ
 2. Navigate to Monitoring (in the top menu) and select [Logging](https://app.travelgate.com/logging).
 3. Choose your search method: You can search by **connection, reference, or session ID**.
 4. Apply filters to refine your search:
-   - Time range.
+   - Time range: Up to **2 months**.
    - Access: Filter by Hotel-X Access (by Name or Code). This filter applies only to **Hotel-X connections**.
    - Operation type: Search, Quote, Book, Cancel, Other (Booking List/Booking Read).  
      - *Note:* The "Search" operation type will only return results if searches have been **[audited first](/kb/platform/app-features/monitoring-tools/logging/audit-searches-functionality)**.
    - Status/Error code: Select specific errors to filter results.
 5. Click on "Search logs" to retrieve the logs.
+
+:::info
+- Buyer connections using our **Legacy API** are audited at the **connection level** — access-level auditing is not available. This means that when retrieving logs using the Logging tool, you **should not use the Access Filter**, as it will return no results.
+- If you're a Seller, you can check whether your Buyer is integrated via the Hotel-X API or the Legacy Pull Buyers API by looking for the “Hotel-X” label on the connection in the “My Connections” screen. If the Buyer is using the Hotel-X API, the [“Hotel-X” label](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details/#additional-access-information) will appear next to the “Buyer” label.
+:::
 
 ![logging_new_1](https://storage.travelgate.com/kbase/logging_new_1.jpg)
 
@@ -32,7 +37,7 @@ By leveraging Logging, you can gain valuable insights into your connection activ
 When your search returns logs, Logging will display the following details:
 
 - **Timestamp** (date and time of the transaction)
-- **Transaction duration**
+- **Transaction duration** (at the integration level)
 - **Connection**
 - **Client**
 - **Access**
@@ -73,6 +78,27 @@ In the **Actions** section, you can download different types of transaction logs
 ## Can I Retrieve Logs from a One Step Book Operation?
 
 Yes, you can obtain **Quote and Book logs** for the **One Step Book** operation using Logging. Simply apply the appropriate filters (**connection, reference, or session ID**) to locate the relevant logs.
+
+
+## Why can’t I find my logs in the Logging App?
+If you can’t find the logs you need in the Logging App, try the following:
+  - **For booking or cancellation error logs:**  
+    Always search using the “Search by Connections” → **“Time Range” filter** and, if possible, filter by Error. Logs for failed bookings or cancellations cannot be retrieved by client reference, supplier reference, or session ID.
+  - **Reference filter for OK logs:**  
+    The search-by-reference filter won’t return results until the day after the booking is made. To find logs before then—or if the reference search doesn’t return results—use the 'Time Range' filter instead.
+    
+### When to Use the Access Filter  
+Do not use the Access Filter for Legacy Connections—it **only returns results for Hotel-X Connections**. If you apply it to a Legacy Connection, it will return no results even if transactions exist for that time frame.  
+
+**To check whether a Buyer is connected via Legacy or Hotel-X:**
+1. Go to Connections → My Connections.
+2. Filter by Buyer ([Buyer card](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details#additional-access-information)).
+3. Look at the **Buyer Card** to the right of the Buyer name and code.
+  - If **the Hotel-X label appears**, the Buyer uses the **Hotel-X API**.
+  - If **no Hotel-X label appears**, the Buyer uses the **Legacy API**, and the Access filter will not return results and you should **use the 'Time Range' filter instead**.
+
+Some Buyers may be transitioning from Legacy to Hotel-X. If you’re unsure, contact the Buyer for confirmation.
+    
 
 :::info Legacy Pull Buyers API Information  
 For Buyer connections through our **Legacy Pull Buyers API**, filtering by **Hotel-X Access Code** is **not available**. Instead, connections are identified through the Buyer's **clientname#suppliercode** relationship.  

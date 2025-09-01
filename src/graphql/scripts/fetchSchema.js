@@ -3,8 +3,7 @@ const path = require("path");
 const fetch = require("node-fetch");
 
 const GRAPHQL_ENDPOINT = "https://api.travelgate.com";
-const BEARER_TOKEN = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik5UZzBPREJGTVRSQ1JURXdOVFEyUkRBek9UbEJRemN4TkVZMU5EUkRPVVJCTVVNMlJqZzVPQSJ9.eyJodHRwczovL3RyYXZlbGdhdGV4LmNvbS9tZW1iZXJfaWQiOiJkYW5pZWwuY2Fub0B0cmF2ZWxnYXRlLmNvbSIsImh0dHBzOi8vdHJhdmVsZ2F0ZXguY29tL2lzX3RneCI6dHJ1ZSwiaHR0cHM6Ly90cmF2ZWxnYXRleC5jb20vb3JnIjpbeyJvIjoidGd4IiwiciI6IkVESVRPUiJ9XSwiZ2l2ZW5fbmFtZSI6IkRhbmllbCIsImZhbWlseV9uYW1lIjoiQ2FubyIsIm5pY2tuYW1lIjoiZGFuaWVsLmNhbm8iLCJuYW1lIjoiRGFuaWVsIENhbm8iLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jSlNFdnkyX01BUWtKc20xd3RJRUFpRFI3NjFUTEdRMlNoak1iVkdvX1VJWmlYZzZGZz1zOTYtYyIsInVwZGF0ZWRfYXQiOiIyMDI1LTA4LTE4VDExOjA2OjE2LjIyNloiLCJlbWFpbCI6ImRhbmllbC5jYW5vQHRyYXZlbGdhdGUuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImlzcyI6Imh0dHBzOi8veHRnLmV1LmF1dGgwLmNvbS8iLCJhdWQiOiJERGtyNTZ3bmZxWW5PTjZMZHZUT21aQlJrZXZZZ1lNdiIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTE1OTY5ODk3MjExNTgwODAzNDQ3IiwiaWF0IjoxNzU1NTE1MTkwLCJleHAiOjE3NTU1NTExOTAsInNpZCI6IklwczZmR2V6cDFjdk9jbEM4WW13aWVyT1RlR1JGMzZuIiwiYWNyIjoiaHR0cDovL3NjaGVtYXMub3BlbmlkLm5ldC9wYXBlL3BvbGljaWVzLzIwMDcvMDYvbXVsdGktZmFjdG9yIiwiYW1yIjpbIm1mYSJdLCJhdF9oYXNoIjoiWFF2Z0ljcUdoM3RsVmtfVzRvNUp4dyIsIm5vbmNlIjoiN1hNTERtR35mMVpKanAwZ096bGI0UUZMdkgwR21MMWsifQ.d6AWRJiLDKkCrRBgvXgugnj8GacND34thmdS1r3rG3TCAc0a5-APC3W_KNFMVxhNiQd-PdafE7rXsjtDGEWXIsgQQ2CJz5RHNRKxrkxZQDpz0UiRr1poFeRfqmUqlOq7uyNhBrt0w0v0-08M6isGT772an2gEp9gCHSh5uX9SRhnjf1Oi1S-KuQyNJ3Cg4cJzd9hW7RN421ouDHsqvrTc2JXiybs7LbqvWLZ53mj8wVbtNEm9aOcto1iDRY3FsgD1i2BS8rcflvuEcfhj51O6vc_Dc3R2IQideciMWtw9-YQsfG3V0inFa3mrZa5FgUA0AfZ0BL8ljRZYOLCuFiYwg"; // Replace with your actual token
-
+const TRAVELGATE_API_KEY = process.env.TRAVELGATE_API_KEY;
 const OUTPUT_FILE = path.join(__dirname, "../schema-json/inventory-schema.json");
 
 // List of types to extract including all their subtypes
@@ -225,18 +224,20 @@ async function fetchSchema() {
     
 
     try {
-        const response = await fetch(GRAPHQL_ENDPOINT, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${BEARER_TOKEN}`
-            },
-            body: JSON.stringify(QUERY_TYPES)
-        });
+    const response = await fetch(GRAPHQL_ENDPOINT, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Apikey " + TRAVELGATE_API_KEY,
+      },
+      body: JSON.stringify(QUERY_TYPES),
+    });
 
-        if (!response.ok) {
-            throw new Error(`❌ Request failed: ${response.status} ${response.statusText}`);
-        }
+    if (!response.ok) {
+      throw new Error(
+        `❌ Request failed: ${response.status} ${response.statusText}`
+      );
+    }
 
         const data = await response.json();
 

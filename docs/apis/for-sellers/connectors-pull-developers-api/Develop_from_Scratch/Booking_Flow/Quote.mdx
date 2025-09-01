@@ -319,6 +319,12 @@ internal partial class QuoteOperation
 
     private QuoteRs ParseSupplierResponse(QuoteConnectorRequest connectorsRequest, QuoteResponse supplierResponse)
     {
+        if (supplierResponse.Option == null)
+        {
+            List<AdviseMessage> adviseMessages = new(){AdviseMessage.BuildOptionNotFoundInQuote()};
+            return QuoteRs.BuildErrorResponse(adviseMessages);
+        }
+
         var supplierOption = supplierResponse.Option;
         
         Status status = MapSellerToTgxStatus(supplierOption.Status);

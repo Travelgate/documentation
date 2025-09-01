@@ -335,6 +335,13 @@ internal partial class BookOperation
 
     private BookRs ParseSupplierResponse(BookConnectorRequest connectorsRequest, BookResponse supplierResponse)
     {
+        if (supplierResponse.Option == null)    
+        {
+            return BookRs.BuildErrorResponse(new[]
+            {
+                AdviseMessage.BuildSupplierError(new External("", "Option null from supplier response"))
+            });
+        }
         var supplierOption = supplierResponse.Option;
         
         BookStatus status = MapSellerToTgxStatus(supplierOption.Status);

@@ -38,3 +38,24 @@ To update your password, follow these steps:
 :::info
 This feature is not available for users who log in via Google authentication.
 :::
+
+## Can I log in using my Google account?
+
+Yes. **Travelgate supports Google account login** for both new and existing users. Follow the steps below depending on your situation.
+
+### For New Users
+   1.	Open the invitation email sent by a member of your organization and follow the instructions provided.
+   2.	Visit [Travelgate](https://travelgate.com/).
+   3.	Click the 'Sign In' button in the top-right corner of the page.
+   4.	On the 'Log me in' screen, select **Log in with Google** and sign in with your Google account.
+   5.	**Set up Two-Factor Authentication (2FA)** by following the steps in [this article](/kb/platform/app-features/account-settings/your-account/two-factor-authentication/).
+
+### For Existing Travelgate Users
+   1.	Visit [Travelgate](https://travelgate.com/).
+   2.	Click the 'Sign In' button in the top-right corner of the page.
+   3.	On the 'Log me in' screen, select **Log in with Google** and sign in with your Google account.
+   4.	**Set up your Two-Factor Authentication (2FA) again** by following the steps in [this article](/kb/platform/app-features/account-settings/your-account/two-factor-authentication/).
+
+:::warning Important
+Once you switch to logging in with your Google account, the username-and-password login option will **no longer be available**.
+:::

@@ -24,7 +24,7 @@ Follow these steps to invite new users to your Organization:
    ![inviteuser_2](https://storage.travelgate.com/kbase/inviteuser_2.jpg)
    ![inviteuser_3](https://storage.travelgate.com/kbase/inviteuser_3.jpg)
    ![inviteuser_4](https://storage.travelgate.com/kbase/inviteuser_4.jpg)
-5. **Complete the sign-up process**: The new user will receive an e-mail in order to set their password and they will be able to explore our Platform. Please ensure that the initial login is done using the **username and password**, not through the Google account.
+5. **Complete the sign-up process**: The new user will receive an email with instructions to either [set a password or link their Google account](/kb/platform/app-features/account-settings/your-account/account-settings/) for future logins. Once completed, they will be able to access and explore the Travelgate platform.
 
 :::info Can I change the email address for an existing user?
  No, you cannot update an existing user's email address. Instead, you'll need to **create a new user account** with the desired email and delete the old one.

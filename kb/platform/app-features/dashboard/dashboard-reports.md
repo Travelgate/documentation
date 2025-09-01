@@ -13,7 +13,7 @@ Stay up to date with the most recent booking activity. This section includes:
    - **Latest Update:** Timestamp of the most recent data refresh.
    - **Today’s Bookings:** Total number of confirmed bookings as of the current date and time.
    - **Yesterday’s Bookings:** Total number of confirmed bookings as of the same time yesterday.
-   - **Total Bookings (Yesterday):** Complete count of bookings made during the full 24-hour period of the previous day.
+   - **Same day last week:** Total number of confirmed bookings as of the same time last week.
 
 ### Quick Overview
 Get a snapshot of your key metrics to evaluate overall platform activity and performance:
@@ -26,12 +26,13 @@ Get a snapshot of your key metrics to evaluate overall platform activity and per
 **Metrics are available for:**
 - Yesterday
 - Last 7 days
+- Same day last week
 
 **Each metric is also compared to:**
 - The previous day
-- The same day the week before
+- The same day last week
 
-![new-dashboard-1](https://storage.travelgate.com/kbase/new-dashboard-1.png)
+![tg-dashboard-1](https://storage.travelgate.com/kbase/tg-dashboard-1.png)
 
 :::tip
 For an immersive performance monitoring experience, check out our incredible [Stats](/kb/platform/app-features/monitoring-tools/stats/stats-details). It offers a comprehensive range of features that will take your monitoring to the next level! 🚀

@@ -23,8 +23,10 @@ To configure Speed for a connection or one of your accesses, click on **'Speed a
 ### 1. Select Connection or Access
 Choose the **connection**/**access** where you want to activate caching.
 
-- For **Hotel-X Buyers**, you must always select by **Access**.
-- For **Legacy Buyers**, you must always select by **Connection**.
+:::warning Important:
+- For **Hotel-X Buyers**, always select **Access**.
+- For **Legacy Buyers**, always select **Connection**.
+:::
 
 ![speed_2](https://storage.travelgate.com/kbase/speed_2.jpg)
 

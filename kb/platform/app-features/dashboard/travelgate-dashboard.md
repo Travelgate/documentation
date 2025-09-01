@@ -36,7 +36,7 @@ This section highlights tasks that require your attention. Examples include:
 
 ### Main Panel
 
-- **Performance Reports:** View real-time bookings compared to the previous day.
+- **Performance Reports:** View real-time bookings compared to the previous day and the same day last week.
 
 - **Top Connections Overview:** Get a snapshot of your top-performing connections, ranked by:
    - **Bookings** (yesterday and last 7 days)

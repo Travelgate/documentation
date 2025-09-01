@@ -50,7 +50,7 @@ In the **Connections Content** section, you can easily check and force updates f
 
 ## How Can I Use the "Force Update Now" Functionality?
 
-To force an update of your static content, follow these steps:
+Both **Buyers and Sellers** can force an update of static content, which is **applied across all content methods**. To do so, just follow these steps:
 
 1. Access the "My Connections Content" section (follow the steps above) and filter by access/Seller credentials.
 2. Filter a specific connection and access, ensuring you are browsing as a Seller or Buyer.
@@ -59,7 +59,7 @@ To force an update of your static content, follow these steps:
     ![tg_force_update](https://storage.travelgate.com/kbase/tg_force_update.jpg)
 
 :::info Force Content Updates
-When performing a "Force Content Now" update to refresh a Seller's portfolio, keep in mind that the duration of the update depends on the **size of the content**. The update is processed through a **queue system** and will begin once it reaches its turn. This could take anywhere from a few minutes to 72 hours.
+When using 'Force Content Now' to refresh a Seller's static content, note that the update duration **depends on the content size**. The update is processed through a **queue system** and will begin once it reaches its turn. This could take anywhere from a few minutes to 72 hours.
 
 - If the update hasn't completed after 72 hours, you may attempt the update again.
 - Updates within the 72-hour window are considered normal, and there’s no need to contact support until this period has passed.

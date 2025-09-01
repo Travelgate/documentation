@@ -14,7 +14,11 @@ To check or manage existing reservations, follow these steps:
 4. Apply search filters based on:
    - **Dates** (arrival or booking creation)
    - **Reference** (supplier, client, or hotel)
-   - **Advanced filters** (some suppliers require specific details, such as hotel codes or currency)
+   - **Advanced filters**
+
+:::warning Supplier Restrictions
+Some suppliers require specific details—such as hotel codes or currency—or **may not support certain filters**, like searching by booking creation date or client locator. Always check the supplier’s **[Metadata](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata)** to confirm which filters are supported.
+:::
 
    ![b2b_virtual_agency_mybookings_1](https://storage.travelgate.com/kbase/b2b_mybookings_1.png)
 
@@ -62,11 +66,30 @@ You can still check the **status** of your reservations on the **My Bookings** s
 
 ## How to Cancel a Booking through the B2B Virtual Agency
 
-1. Find the booking you wish to cancel.
-2. Click **Cancel booking**.
+1. **Log in** to [our Platform](https://www.travelgate.com/).
+2. Navigate to **Solutions > B2B Virtual Agency**.
+3. Go to the **My Bookings** tab and apply filters to find the booking you want to cancel.
+4. Click **Cancel booking**.
 
    ![b2b_virtual_agency_cancel_2](https://storage.travelgate.com/kbase/b2b_cancel_2.png)
 
-3. A pop-up will display the cancellation costs. Click **Confirm** ('Yes, cancel booking') to proceed.
+5. A pop-up will display the cancellation costs. Click **Confirm** ('Yes, cancel booking') to proceed.
 
    ![b2b_virtual_agency_cancel_1](https://storage.travelgate.com/kbase/b2b_cancel_1.png)
+
+:::tip Cancel Status
+Learn all about Cancel Status at Travelgate [here](/kb/connectivity-products/for-buyers/hotel-x/booking-management/cancel/cancel-status).
+:::
+
+### I’m receiving a ‘Booking cancellation failed: Empty hotel code’ error — what can I do?
+
+**To cancel a booking, our system requires the hotel code provided by the supplier**. Without it, the cancellation process cannot be completed.
+
+This hotel code is typically obtained through the **Booking Search Screen** (Booking Read method). However, whether it's provided depends on the supplier—if the supplier doesn't return the hotel code in that response, our system won’t be able to use it later for cancellations.
+
+If you encounter this error:
+- Go to the **Booking Search screen**.
+- Fill in the necessary fields and click on **Advanced Filter, where you can manually enter the Hotel Code**.
+- Proceed with the cancellation.
+
+We strongly recommend contacting your supplier to request that they include the hotel code in their Booking Read response. This ensures that Travelgate can retrieve it directly, so you won't need to input it manually in future cancellations.

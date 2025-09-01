@@ -79,6 +79,27 @@ In the **Actions** section, you can download different types of transaction logs
 
 Yes, you can obtain **Quote and Book logs** for the **One Step Book** operation using Logging. Simply apply the appropriate filters (**connection, reference, or session ID**) to locate the relevant logs.
 
+
+## Why can’t I find my logs in the Logging App?
+If you can’t find the logs you need in the Logging App, try the following:
+  - **For booking or cancellation error logs:**  
+    Always search using the “Search by Connections” → **“Time Range” filter** and, if possible, filter by Error. Logs for failed bookings or cancellations cannot be retrieved by client reference, supplier reference, or session ID.
+  - **Reference filter for OK logs:**  
+    The search-by-reference filter won’t return results until the day after the booking is made. To find logs before then—or if the reference search doesn’t return results—use the 'Time Range' filter instead.
+    
+### When to Use the Access Filter  
+Do not use the Access Filter for Legacy Connections—it **only returns results for Hotel-X Connections**. If you apply it to a Legacy Connection, it will return no results even if transactions exist for that time frame.  
+
+**To check whether a Buyer is connected via Legacy or Hotel-X:**
+1. Go to Connections → My Connections.
+2. Filter by Buyer ([Buyer card](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details#additional-access-information)).
+3. Look at the **Buyer Card** to the right of the Buyer name and code.
+  - If **the Hotel-X label appears**, the Buyer uses the **Hotel-X API**.
+  - If **no Hotel-X label appears**, the Buyer uses the **Legacy API**, and the Access filter will not return results and you should **use the 'Time Range' filter instead**.
+
+Some Buyers may be transitioning from Legacy to Hotel-X. If you’re unsure, contact the Buyer for confirmation.
+    
+
 :::info Legacy Pull Buyers API Information  
 For Buyer connections through our **Legacy Pull Buyers API**, filtering by **Hotel-X Access Code** is **not available**. Instead, connections are identified through the Buyer's **clientname#suppliercode** relationship.  
 

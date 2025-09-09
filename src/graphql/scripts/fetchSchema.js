@@ -1,9 +1,9 @@
 const fs = require("fs");
 const path = require("path");
-const fetch = require("node-fetch");
+const fetch = require("node-fetch").default;
 
 const GRAPHQL_ENDPOINT = "https://api.travelgate.com";
-const TRAVELGATE_API_KEY = process.env.TRAVELGATE_API_KEY;
+const TRAVELGATE_API_KEY = process.env.TRAVELGATE_API_KEY || "test0000-0000-0000-0000-000000000000";
 const OUTPUT_FILE = path.join(__dirname, "../schema-json/inventory-schema.json");
 
 // List of types to extract including all their subtypes
@@ -300,7 +300,12 @@ function filterRequiredTypes(schema) {
 
 // ✅ Corrected function to properly process types, including ENUMs
 function getFullTypeInfo(typeName, typeMap, visited = new Set()) {
-    if (!typeName || visited.has(typeName)) return null;
+    if (!typeName) return null;
+    if (visited.has(typeName)) {
+        // Prevent infinite recursion/cycles: just return a reference
+        const t = typeMap[typeName];
+        return t ? { name: t.name, kind: t.kind } : null;
+    }
     visited.add(typeName);
 
     const type = typeMap[typeName];
@@ -346,59 +351,79 @@ function getFullTypeInfo(typeName, typeMap, visited = new Set()) {
     return result;
 }
 
-function getTypeRef(type, typeMap, visited) {
-  if (!type) {
-      console.warn("⚠️ Received a null or undefined type");
-      return null;
-  }
-
-  console.log(`📌 Analyzing type: ${type.name || "N/A"} | Kind: ${type.kind}`);
-
-  // Additional flags following your current logic
-  let isRequired = false;
-  let isList = false;
-  let isItemNonNull = false;
-
-  // Traverse the type to extract relevant flags
-  let current = type;
-
-  if (current.kind === "NON_NULL") {
-    isRequired = true;
-    current = current.ofType;
-  }
-
-  if (current.kind === "LIST") {
-    isList = true;
-    if (current.ofType.kind === "NON_NULL") {
-      isItemNonNull = true;
-      current = current.ofType.ofType;
-    } else {
-      current = current.ofType;
+// Recursively unwrap all ofType layers and resolve full type info for complex types
+function getTypeRef(type, typeMap, visited = new Set()) {
+    if (!type) {
+        return { name: undefined, kind: undefined };
     }
-  }
 
-  // At this point, current should be the base type
-  let baseInfo;
+    let isRequired = false;
+    let isList = false;
+    let isItemNonNull = false;
+    let current = type;
 
-  if (current.kind === "ENUM") {
-    baseInfo = getFullTypeInfo(current.name, typeMap, visited);
-    console.log(`📌 Processing ENUM in getTypeRef: ${current.name}`, baseInfo);
-  } else if (current.name && current.kind !== "SCALAR") {
-    console.log(`🔹 Fetching info for type: ${current.name}`);
-    baseInfo = getFullTypeInfo(current.name, typeMap, visited);
-  } else {
-    baseInfo = {
-      name: current.name,
-      kind: current.kind
+    // Recursively unwrap all NON_NULL and LIST layers
+    while (current && (current.kind === "NON_NULL" || current.kind === "LIST")) {
+        if (current.kind === "NON_NULL") {
+            if (!isList) {
+                isRequired = true;
+            } else {
+                isItemNonNull = true;
+            }
+            current = current.ofType;
+        } else if (current.kind === "LIST") {
+            isList = true;
+            current = current.ofType;
+        }
+    }
+
+    if (!current) {
+        return { name: undefined, kind: undefined, isRequired, isList, isItemNonNull };
+    }
+
+    // Prevent cycles: if already visited, just return a reference
+    if (
+        (current.kind === "OBJECT" ||
+        current.kind === "INPUT_OBJECT" ||
+        current.kind === "INTERFACE" ||
+        current.kind === "UNION" ||
+        current.kind === "ENUM") &&
+        visited.has(current.name)
+    ) {
+        return {
+            name: current.name,
+            kind: current.kind,
+            isRequired,
+            isList,
+            isItemNonNull
+        };
+    }
+
+    // For complex types, always resolve full info recursively
+    if (
+        current.kind === "OBJECT" ||
+        current.kind === "INPUT_OBJECT" ||
+        current.kind === "INTERFACE" ||
+        current.kind === "UNION" ||
+        current.kind === "ENUM"
+    ) {
+        const typeInfo = getFullTypeInfo(current.name, typeMap, visited);
+        return {
+            ...typeInfo,
+            isRequired,
+            isList,
+            isItemNonNull
+        };
+    }
+
+    // For scalars, just return name/kind
+    return {
+        name: current.name,
+        kind: current.kind,
+        isRequired,
+        isList,
+        isItemNonNull
     };
-  }
-
-  return {
-    ...baseInfo,
-    isRequired,
-    isList,
-    isItemNonNull
-  };
 }
 
 

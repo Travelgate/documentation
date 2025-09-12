@@ -6,7 +6,7 @@ sidebar_position: 3
 # Checklist for Technical Analysis of an API
 
 | ID | Category | Mandatory Category | Checkpoint | Details | Mandatory Checkpoint | Result | Comments |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | 
+|-----|:---:|:---:|:---:|:---:|:---:|:---:|-------| 
 | **DOC-01** | Documentation | Mandatory | Verify completeness | Ensure documentation is complete and up-to-date. | Mandatory | ✅ / ❌ | Comment if needed |
 | **DOC-02** | | | Endpoint information | Verify clear information about the available endpoints. | Mandatory | |
 | **DOC-03** | | | Validate examples | Confirm that the documentation includes clear examples of requests and responses. | Highly recommended | |
@@ -15,12 +15,12 @@ sidebar_position: 3
 | **AUT-02** | | | Test authentication flow | Ensure the authentication flow works as expected. | Mandatory | |
 | **AUT-03** | | | Verify authorization mechanisms | Check authorization mechanisms and access control for different user roles. | Recommended | |
 | **FUN-01** | Functionality | Mandatory | Endpoint testing | Test each endpoint with various data sets to check correct responses and error handling. | Mandatory | |
-| **FUN-02** | | | | | | |
-| **FUN-03** | | | Business logic validation | Validate the underlying business logic for consistency and accuracy. Minimum shopping flow (search, quote?, book) | Mandatory | |
+| **FUN-02** | | | Business logic validation | Validate the underlying business logic for consistency and accuracy. Minimum shopping flow (search, quote?, book) | Mandatory | |
 | **PER-01** | Performance | Mandatory | Evaluate response times | Assess API response times to ensure they meet performance requirements. | Mandatory | |
 | **PER-02** | | | Scalability testing | Perform load tests to review the API's scalability, if applicable. | Mandatory | |
 | **PAY-01** | Payment Types | Mandatory | Verify compatible payments types | Check if at least one of these payment types is compatible: `MERCHANT`, `DIRECT`, `CARD_BOOKING` or `CARD_CHECKIN_IN`. | Mandatory | |
 | **CNP-01** | Cancellation Policies | Mandatory | Includes start date, end date, penalty amount and penalty type | Verify whether the API provides: a cancellation deadline, penalty amount and penalty type (amount, percentage or number of nights). | Mandatory | |
+| **CNP-01A** | | | Deadline meaning | Confirm that the deadline (if there is an attribute with this name) corresponds to the **start** of the policy. | Mandatory | |
 | **CNP-02** | | | Refundability Indicator | Confirm whether the cancellation policy includes an explicit field or flag indicating whether the option/room is refundable. | Recommended | |
 | **CNP-03** | | | Special policies (No-show, In-stay Cancellation, ...) | Check if the API indicates special types of policies. | Mandatory | |
 | **CNP-04** | | | Mapping Difficulty | Classify the complexity of mapping the cancellation policies to TravelgateX's model:**• 🟢 (Green): Direct entity mapping****• 🟡 (Yellow): Requires intermediate logic (e.g., uncommon date formats, policy identifiers, cross-referenced calculations)****• 🔴 (Red): Cannot be mapped (e.g., free-text descriptions without structure)** | Mandatory | |
@@ -31,6 +31,7 @@ sidebar_position: 3
 | **AVAI-05**| | | An option/room must have a defined meal plan | otherwise we will assume room only | Highly recommended | |
 | **AVAI-06**| | | Must be able to uniquely identify an option | | Mandatory | |
 | **AVAI-07**| | | The provider's API must be for accommodations for 1 checkin day | not packages, last-minute offers, checkin by hours... | Mandatory | |
+| **AVAI-08**| | | Only requires one HTTP call. | Mandatory | |
 | **QUO-01** | Quote | Not mandatory if there is a second availability that includes all necessary information | Price | | Mandatory | |
 | **QUO-02** | | | Policies | | Mandatory | |
 | **QUO-03** | | | Remarks | | Recommended | |
@@ -38,9 +39,11 @@ sidebar_position: 3
 | **BOO-01** | Booking | Mandatory | Reservation status | | Mandatory | |
 | **BOO-02** | | | Price | | Highly recommended | |
 | **CNX-01** | Cancellation | Highly recommended | Reservation status | | Mandatory | |
-| **CNX-02** | | | Amount to be paid (cancel penalty) | | Highly recommended | |
+| **CNX-02** | | | Amount to be paid (cancel penalty) | | Mandatory | |
 | **CHB-01** | CheckBookingsByReference | Highly recommended | Reservation status | | Mandatory | |
+| **CHB-02** | | | Updated cancellation price | Verify that when a booking is cancelled, the API returns the **updated cancellation price**. | Mandatory | |
 | **CHBD-01** | CheckBookingsByDate | Recommended | Reservation status | | Mandatory | |
+| **CHBD-02** | | | Updated cancellation price | Verify that when a booking is cancelled, the API returns the **updated cancellation price**. | Mandatory | |
 | **HLIS-01**| HotelList | Mandatory | Hotel code | | Mandatory | |
 | **HIN-01** | HotelInfo | Highly recommended | Hotel code, name, address, country, geocoding (lat,long) | | Mandatory | |
 | **HIN-02** | | | Hotel category, descriptions, images, amenities | | Recommended | |

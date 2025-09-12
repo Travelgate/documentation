@@ -4,11 +4,11 @@ const path = require("path");
 const SCHEMA_PATH = path.join(__dirname, "../../../src/graphql/schema-json/inventory-schema.json");
 const DOCS_BASE_PATH = path.join(__dirname, "../../../docs/apis");
 
-// Importar el mapeo de archivos `.mdx`
+// Import the mapping of .mdx files
 const FILE_NODE_MAP = require("../node-map/fileNodeMap");
 
 function loadSchema() {
-    console.log("🔄 Cargando el esquema GraphQL...");
+    console.log("🔄 Loading GraphQL schema...");
     return JSON.parse(fs.readFileSync(SCHEMA_PATH, "utf8"));
 }
 
@@ -20,17 +20,17 @@ function formatField(field, indent = 0) {
     const indentation = "  ".repeat(indent);
 
     if (!field.type) {
-        console.warn(`⚠️ Tipo no definido para el campo: ${field.name}`);
+        console.warn(`⚠️ Type not defined for field: ${field.name}`);
         return "";
     }
-  
+
     const requiredMark = field.type.isRequired ? "&nbsp;<span class=\"required\"> *</span>&nbsp;" : "";
-  
+
     if (field.type.kind === "OBJECT" || field.type.kind === "INPUT_OBJECT") {
-        const subFields = (field.type.fields || field.type.inputFields) 
+        const subFields = (field.type.fields || field.type.inputFields)
             ? [...(field.type.fields || []), ...(field.type.inputFields || [])]
                 .map(f => formatField(f, indent + 1))
-                .join("\n") 
+                .join("\n")
             : "";
         return `
   ${indentation}<details>
@@ -41,9 +41,9 @@ function formatField(field, indent = 0) {
   ${subFields}
   ${indentation}</details>`;
     } else if (field.type.kind === "ENUM") {
-        // ✅ Mejora: Separar los valores del enum en una lista clara
-        const enumValues = field.type.enumValues 
-            ? field.type.enumValues.map(v => `${indentation}  \`${v.name}\`  `).join("\n") 
+        // Display enum values as a clear list
+        const enumValues = field.type.enumValues
+            ? field.type.enumValues.map(v => `${indentation}  \`${v.name}\`  `).join("\n")
             : "";
         return `
   ${indentation}<details style={{ pointerEvents: "none" }}>
@@ -55,7 +55,7 @@ function formatField(field, indent = 0) {
   ${indentation}  </summary>
   ${indentation}</details>`;
     } else if (field.type.kind === "SCALAR" && field.type.name === "Int" && field.description) {
-        // ✅ Soporte especial para SCALAR de tipo Int con valores en la descripción
+        // Special support for Int SCALARs with values in the description
         const formattedDescription = field.description.replace(/\n/g, `\n${indentation}  `);
         return `
   ${indentation}<details style={{ pointerEvents: "none" }}>
@@ -73,9 +73,7 @@ function formatField(field, indent = 0) {
   ${indentation}  </summary>
   ${indentation}</details>`;
     }
-  }
-  
-
+}
 
 function removeOldDocumentation(content) {
     return content
@@ -92,7 +90,7 @@ function insertDocumentation(content, documentation) {
     return content + `\n---\n${documentation}`;
 }
 
-// 🔹 **Detección correcta de Queries y Mutations**
+// Correct detection of Queries and Mutations
 function categorizeInputType(nodeName) {
     const mutationKeywords = ["Create", "Update", "Delete", "Load"];
     return mutationKeywords.some(keyword => nodeName.includes(keyword)) ? "Mutation Inputs" : "Query Inputs";
@@ -134,11 +132,10 @@ function generateBreakdownSection(nodes) {
     };
 }
 
-
 function insertIntoMdxFiles(schema) {
     const GENERATED_DOCS_PATH = path.join(__dirname, "../../../src/graphql/generated-docs");
 
-    // Crear la carpeta donde se guardarán los archivos generados si no existe
+    // Create the folder for generated files if it doesn't exist
     if (!fs.existsSync(GENERATED_DOCS_PATH)) {
         fs.mkdirSync(GENERATED_DOCS_PATH, { recursive: true });
     }
@@ -147,26 +144,26 @@ function insertIntoMdxFiles(schema) {
         const filePath = path.join(DOCS_BASE_PATH, fileName);
 
         if (!fs.existsSync(filePath)) {
-            console.warn(`⚠️ Archivo no encontrado: ${filePath}`);
+            console.warn(`⚠️ File not found: ${filePath}`);
             return;
         }
 
-        console.log(`🔍 Procesando archivo: ${filePath}`);
+        console.log(`🔍 Processing file: ${filePath}`);
         const nodes = findMatchingNodes(schema, nodeNames);
 
         if (nodes.length === 0) {
-            console.warn(`⚠️ No se encontraron nodos en el esquema para: ${filePath}`);
+            console.warn(`⚠️ No nodes found in schema for: ${filePath}`);
             return;
         }
 
         let content = fs.readFileSync(filePath, "utf8");
 
-        // 🔹 Extraer imports actuales para evitar duplicados
+        // Extract current imports to avoid duplicates
         const existingImports = new Set(
             (content.match(/^import\s+.*from\s+["'][^"']+["'];/gm) || [])
         );
 
-        let imports = new Set(); // Usamos un Set para evitar duplicados
+        let imports = new Set(); // Use a Set to avoid duplicate imports
         let queryInputs = "";
         let mutationInputs = "";
         let responseFields = "";
@@ -175,19 +172,19 @@ function insertIntoMdxFiles(schema) {
             const docFileName = `${node.name}.mdx`;
             const docFilePath = path.join(GENERATED_DOCS_PATH, docFileName);
 
-            console.log(`📄 Generando documentación en: ${docFilePath}`);
+            console.log(`📄 Generating documentation in: ${docFilePath}`);
             let nodeDocumentation = generateBreakdownSection([node]);
 
-            // Guardamos la documentación en archivos individuales
+            // Save documentation in individual files
             fs.writeFileSync(
-                docFilePath, 
-                (nodeDocumentation.queryInputs || "") + 
-                (nodeDocumentation.mutationInputs || "") + 
+                docFilePath,
+                (nodeDocumentation.queryInputs || "") +
+                (nodeDocumentation.mutationInputs || "") +
                 (nodeDocumentation.responseFields || ""),
                 "utf8"
             );
 
-            // Generar import y componente JSX
+            // Generate import and JSX component
             const relativeImportPath = path.relative(path.dirname(filePath), docFilePath).replace(/\\/g, "/");
             const importStatement = `import ${node.name} from "${relativeImportPath}";`;
 
@@ -195,7 +192,7 @@ function insertIntoMdxFiles(schema) {
                 imports.add(importStatement);
             }
 
-            // Agregar el nodo a la sección correspondiente
+            // Add the node to the corresponding section
             if (node.kind === "INPUT_OBJECT") {
                 if (categorizeInputType(node.name) === "Mutation Inputs") {
                     mutationInputs += `\n<${node.name} />`;
@@ -207,9 +204,9 @@ function insertIntoMdxFiles(schema) {
             }
         });
 
-        // ✅ **Añadir el campo "token" si está en FILE_NODE_MAP**
+        // Add the "token" field if present in FILE_NODE_MAP
         if (nodeNames.includes("token")) {
-            console.log(`➕ Añadiendo campo "token" en: ${filePath}`);
+            console.log(`➕ Adding \"token\" field in: ${filePath}`);
             const tokenFileName = `token.mdx`;
             const tokenFilePath = path.join(GENERATED_DOCS_PATH, tokenFileName);
 
@@ -224,7 +221,7 @@ function insertIntoMdxFiles(schema) {
                 fs.writeFileSync(tokenFilePath, tokenInput, "utf8");
             }
 
-            // Agregar import y componente si no existe
+            // Add import and component if not present
             const tokenImport = `import Token from "../../../../../src/graphql/generated-docs/token.mdx";`;
             if (!existingImports.has(tokenImport)) {
                 imports.add(tokenImport);
@@ -232,32 +229,33 @@ function insertIntoMdxFiles(schema) {
             queryInputs += `\n<Token />`;
         }
 
-        // 🔹 Insertar los imports justo después del bloque `---`
+        // Insert the imports right after the YAML block
         const yamlBlockMatch = content.match(/(---\s*\n[\s\S]*?\n---)/);
         if (yamlBlockMatch) {
-            const yamlBlock = yamlBlockMatch[1]; // Extraer el bloque YAML
-            content = content.replace(yamlBlock, yamlBlock + "\n\n" + Array.from(imports).join("\n"));
+            const yamlBlock = yamlBlockMatch[1]; // Extract the YAML block
+            // Remove empty lines between the YAML block and the imports
+            const afterYaml = content.split(yamlBlock)[1] || "";
+            const cleanedAfterYaml = afterYaml.replace(/^\s*\n+/g, "");
+            content = yamlBlock + "\n" + Array.from(imports).join("\n") + cleanedAfterYaml;
         } else {
-            // Si no hay bloque YAML, añadir los imports al inicio (como último recurso)
-            content = Array.from(imports).join("\n") + "\n\n" + content;
+            // If there is no YAML block, add the imports at the beginning (as a last resort)
+            content = Array.from(imports).join("\n") + "\n" + content.replace(/^\s*\n+/g, "");
         }
 
-        // 🔹 Construir la documentación insertando los títulos solo una vez
+        // Build the documentation, inserting each section only once
         let documentation = "";
         if (queryInputs) documentation += `## Query Inputs\n${queryInputs}\n`;
         if (mutationInputs) documentation += `## Mutation Inputs\n${mutationInputs}\n`;
         if (responseFields) documentation += `## Returned Fields\n${responseFields}\n`;
 
-        // 🔹 Insertar la documentación antes de "## Examples"
+        // Insert documentation before "## Examples"
         content = insertDocumentation(content, documentation);
 
-        // 🔹 Escribir de nuevo el archivo actualizado
+        // Write the updated file back to disk
         fs.writeFileSync(filePath, content, "utf8");
-        console.log(`✅ Se ha actualizado el archivo: ${filePath}`);
+        console.log(`✅ File updated: ${filePath}`);
     });
 }
-
-
 
 (function main() {
     const schema = loadSchema();

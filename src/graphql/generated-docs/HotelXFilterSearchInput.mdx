@@ -73,6 +73,32 @@ If you opt not to set any access at all, requests will be made to all available 
         Plugins to exclude  
         </summary>
   
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **step** (*Enum of PluginStepType*)  
+          The Step of the plugin to filter. @deprecated(reason: "deprecated from 2025-08-25. This property is no longer recommended for use.")  
+          Possible values:  
+          `REQUEST`  
+        `REQUEST_ACCESS`  
+        `RESPONSE_OPTION`  
+        `RESPONSE_ACCESS`  
+        `RESPONSE`  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **type** (*String*)  
+          The Type of the plugin to filter. @deprecated(reason: "deprecated from 2025-08-25. This property is no longer recommended for use.")  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **name**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+          The Name of the plugin to filter  
+          </summary>
+        </details>
       </details>
     </details>
 
@@ -112,7 +138,23 @@ If you opt not to set any access at all, requests will be made to all available 
         **excludes** (*Enum of RateRulesType*)  
         if excludes not nil: only options without rate rules and options with rate rules that haven t been sent in excludes will be returned  
         Possible values:  
-  
+        `NORMAL`  
+      `PACKAGE`  
+      `OLDER55`  
+      `OLDER60`  
+      `OLDER65`  
+      `CANARY_RESIDENT`  
+      `BALEARIC_RESIDENT`  
+      `LARGE_FAMILY`  
+      `HONEYMOON`  
+      `PUBLIC_SERVANT`  
+      `UNEMPLOYED`  
+      `NON_REFUNDABLE`  
+      `MOBILE`  
+      `WARRANTY`  
+      `ESSENTIAL_WORKER`  
+      `NEGOTIATED`  
+      `CUSTOM`  
         </summary>
       </details>
     </details>
@@ -138,7 +180,8 @@ If you opt not to set any access at all, requests will be made to all available 
         **excludes** (*Enum of StatusType*)  
         When is not nil: only options without status found in includes will be returned  
         Possible values:  
-  
+        `OK`  
+      `RQ`  
         </summary>
       </details>
     </details>

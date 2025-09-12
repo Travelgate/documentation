@@ -376,6 +376,44 @@ Possible values: ERROR, WARN, INFO.
             Cancel policy. See CancelPolicy.  
             </summary>
   
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **refundable**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+              Indicates if the rate is refundable.  
+              </summary>
+            </details>
+
+            <details>
+              <summary>
+              **cancelPenalties** (*InventoryCancelPenalty*)  
+              List of penalties applicable for the rate. See CancelPenalty.  
+              </summary>
+  
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **daysBeforeArrival**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
+                Number of days prior to arrival day in which this Cancellation policy applies.
+                </summary>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **penaltyType**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of PenaltyType*)  
+                Penalty type. See PenaltyType.  
+                Possible values:  
+                `AMOUNT`  
+              `NIGHTS`  
+              `PERCENTAGE`  
+                </summary>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Float*)  
+                Penalty value.  
+                </summary>
+              </details>
+            </details>
           </details>
         </details>
       </details>

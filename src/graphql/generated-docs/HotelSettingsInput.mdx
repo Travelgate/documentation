@@ -100,6 +100,22 @@ access settings level.
           Business rules  
           </summary>
   
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **optionsQuota** (*Int*)  
+            The maximum number of options returned per board in the search query. If not set, the value saved in your Hotel-X API default settings will be used.
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **businessRulesType** (*Enum of BusinessRulesType*)  
+            Different business rules to filter the returned options.  
+            Possible values:  
+            `CHEAPER_AMOUNT`  
+          `ROOM_TYPE`  
+            </summary>
+          </details>
         </details>
 
         <details style={{ pointerEvents: "none" }}>
@@ -256,6 +272,57 @@ This information is mandatory.
           You can configure an special settings for any access. This level overwrites the search and supplier settings levels.  
           </summary>
   
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **timeout** (*Int*)  
+            Milliseconds before the connection is closed.
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **auditTransactions** (*Boolean*)  
+            Specifies if the exachanged transactions with the supplier have to be logged or not.  
+            </summary>
+          </details>
+
+          <details>
+            <summary>
+            **businessRules** (*BusinessRulesInput*)  
+            Business rules  
+            </summary>
+  
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **optionsQuota** (*Int*)  
+              The maximum number of options returned per board in the search query. If not set, the value saved in your Hotel-X API default settings will be used.
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **businessRulesType** (*Enum of BusinessRulesType*)  
+              Different business rules to filter the returned options.  
+              Possible values:  
+              `CHEAPER_AMOUNT`  
+            `ROOM_TYPE`  
+              </summary>
+            </details>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **currency** (*Currency*)  
+            Currency in ISO 4217 standard  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **commitRequired** (*Boolean*)  
+            Indicates if the book will be confirmed in 1 or 2 steps  
+            </summary>
+          </details>
         </details>
       </details>
     </details>
@@ -325,6 +392,21 @@ This information is mandatory.
           Parameters of the plugin  
           </summary>
   
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **key**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+            Contains the keyword/Id to identify a parameter.
+This information is mandatory.  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **value**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+            Contains the parameter values.
+This information is mandatory.  
+            </summary>
+          </details>
         </details>
       </details>
     </details>

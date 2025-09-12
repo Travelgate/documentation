@@ -254,7 +254,7 @@ async function fetchSchema() {
     }
 }
 
-// ✅ Corrected function to filter and expand ENUMs properly
+// Filters the schema to include only required types and their related ENUMs
 function filterRequiredTypes(schema) {
   const allTypes = schema.data.__schema.types;
   const typeMap = {};
@@ -262,168 +262,186 @@ function filterRequiredTypes(schema) {
 
   const filteredTypes = new Set(REQUIRED_TYPES);
 
+  // Recursively adds ENUM types related to the required types
   function addEnumsRecursively(typeName) {
-      if (!typeName || filteredTypes.has(typeName)) return;
-      const type = typeMap[typeName];
-      if (!type) return;
+    if (!typeName || filteredTypes.has(typeName)) return;
+    const type = typeMap[typeName];
+    if (!type) return;
 
-      if (type.kind === "ENUM") {
-          console.log(`📌 Adding ENUM: ${typeName}`);
-          filteredTypes.add(typeName);
-      }
+    if (type.kind === "ENUM") {
+      filteredTypes.add(typeName);
+    }
 
-      if (type.fields) {
-          type.fields.forEach(field => {
-              if (field.type.name) addEnumsRecursively(field.type.name);
-              if (field.type.ofType?.name) addEnumsRecursively(field.type.ofType.name);
-          });
-      }
+    if (type.fields) {
+      type.fields.forEach(field => {
+        if (field.type.name) addEnumsRecursively(field.type.name);
+        if (field.type.ofType?.name) addEnumsRecursively(field.type.ofType.name);
+      });
+    }
 
-      if (type.inputFields) {
-          type.inputFields.forEach(inputField => {
-              if (inputField.type.name) addEnumsRecursively(inputField.type.name);
-              if (inputField.type.ofType?.name) addEnumsRecursively(inputField.type.ofType.name);
-          });
-      }
+    if (type.inputFields) {
+      type.inputFields.forEach(inputField => {
+        if (inputField.type.name) addEnumsRecursively(inputField.type.name);
+        if (inputField.type.ofType?.name) addEnumsRecursively(inputField.type.ofType.name);
+      });
+    }
   }
 
   REQUIRED_TYPES.forEach(typeName => addEnumsRecursively(typeName));
 
+  const MAX_DEPTH = 10; // Maximum depth for type expansion
   let result = [];
   filteredTypes.forEach(typeName => {
-      const typeInfo = getFullTypeInfo(typeName, typeMap);
-      if (typeInfo) result.push(typeInfo);
+    const typeInfo = getFullTypeInfo(typeName, typeMap, new Set(), 0, MAX_DEPTH);
+    if (typeInfo) result.push(typeInfo);
   });
 
   return { types: result };
 }
 
-// ✅ Corrected function to properly process types, including ENUMs
+// Returns the full type information, expanding fields and inputFields up to maxDepth
 function getFullTypeInfo(typeName, typeMap, visited = new Set()) {
-    if (!typeName) return null;
-    if (visited.has(typeName)) {
-        // Prevent infinite recursion/cycles: just return a reference
-        const t = typeMap[typeName];
-        return t ? { name: t.name, kind: t.kind } : null;
-    }
-    visited.add(typeName);
+  // Adds maxDepth parameter to limit type expansion
+  if (arguments.length < 5) {
+    // Fallback to unlimited depth if not specified
+    return getFullTypeInfo(typeName, typeMap, visited, 0, Infinity);
+  }
+  const depth = arguments[3];
+  const maxDepth = arguments[4];
+  if (!typeName) return null;
+  if (visited.has(typeName) || depth > maxDepth) {
+    // Prevent infinite recursion/cycles or excessive depth: return only a reference
+    const t = typeMap[typeName];
+    return t ? { name: t.name, kind: t.kind } : null;
+  }
+  // Create a new Set for each branch to ensure full expansion of each field
+  const localVisited = new Set(visited);
+  localVisited.add(typeName);
 
-    const type = typeMap[typeName];
-    if (!type) return null;
+  const type = typeMap[typeName];
+  if (!type) return null;
 
-    let result = {
-        name: type.name,
-        kind: type.kind,
-        description: type.description,
-        fields: [],
-        inputFields: []
-    };
+  let result = {
+    name: type.name,
+    kind: type.kind,
+    description: type.description,
+    fields: [],
+    inputFields: []
+  };
 
-    if (type.kind === "ENUM") {
-        result.enumValues = type.enumValues ? type.enumValues.map(ev => ({
-            name: ev.name,
-            description: ev.description || ""
-        })) : [];
-        console.log(`📌 ENUM processed: ${type.name}`, result.enumValues); 
-    }
+  if (type.kind === "ENUM") {
+    result.enumValues = type.enumValues ? type.enumValues.map(ev => ({
+      name: ev.name,
+      description: ev.description || ""
+    })) : [];
+    console.log(`📌 ENUM processed: ${type.name}`, result.enumValues); 
+  }
 
-    if (type.fields) {
-        result.fields = type.fields.map(field => ({
-            name: field.name,
-            description: field.description,
-            type: getTypeRef(field.type, typeMap, visited),
-            args: field.args ? field.args.map(arg => ({
-                name: arg.name,
-                description: arg.description,
-                type: getTypeRef(arg.type, typeMap, visited)
-            })) : []
-        }));
-    }
+  if (type.fields) {
+    result.fields = type.fields.map(field => ({
+      name: field.name,
+      description: field.description,
+      type: getTypeRef(field.type, typeMap, localVisited, depth + 1, maxDepth),
+      args: field.args ? field.args.map(arg => ({
+        name: arg.name,
+        description: arg.description,
+        type: getTypeRef(arg.type, typeMap, localVisited, depth + 1, maxDepth)
+      })) : []
+    }));
+  }
 
-    if (type.inputFields) {
-        result.inputFields = type.inputFields.map(inputField => ({
-            name: inputField.name,
-            description: inputField.description,
-            type: getTypeRef(inputField.type, typeMap, visited)
-        }));
-    }
+  if (type.inputFields) {
+    result.inputFields = type.inputFields.map(inputField => ({
+      name: inputField.name,
+      description: inputField.description,
+      type: getTypeRef(inputField.type, typeMap, localVisited, depth + 1, maxDepth)
+    }));
+  }
 
-    return result;
+  return result;
 }
 
 // Recursively unwrap all ofType layers and resolve full type info for complex types
 function getTypeRef(type, typeMap, visited = new Set()) {
-    if (!type) {
-        return { name: undefined, kind: undefined };
+  // Add maxDepth parameter to limit expansion
+  // getTypeRef(type, typeMap, visited, depth, maxDepth)
+  if (arguments.length < 5) {
+    // Called from old code, fallback to unlimited depth
+    return getTypeRef(type, typeMap, visited, 0, Infinity);
+  }
+  const depth = arguments[3];
+  const maxDepth = arguments[4];
+  if (!type) {
+    return { name: undefined, kind: undefined };
+  }
+
+  let isRequired = false;
+  let isList = false;
+  let isItemNonNull = false;
+  let current = type;
+
+  // Recursively unwrap all NON_NULL and LIST layers
+  while (current && (current.kind === "NON_NULL" || current.kind === "LIST")) {
+    if (current.kind === "NON_NULL") {
+      if (!isList) {
+        isRequired = true;
+      } else {
+        isItemNonNull = true;
+      }
+      current = current.ofType;
+    } else if (current.kind === "LIST") {
+      isList = true;
+      current = current.ofType;
     }
+  }
 
-    let isRequired = false;
-    let isList = false;
-    let isItemNonNull = false;
-    let current = type;
+  if (!current) {
+    return { name: undefined, kind: undefined, isRequired, isList, isItemNonNull };
+  }
 
-    // Recursively unwrap all NON_NULL and LIST layers
-    while (current && (current.kind === "NON_NULL" || current.kind === "LIST")) {
-        if (current.kind === "NON_NULL") {
-            if (!isList) {
-                isRequired = true;
-            } else {
-                isItemNonNull = true;
-            }
-            current = current.ofType;
-        } else if (current.kind === "LIST") {
-            isList = true;
-            current = current.ofType;
-        }
-    }
-
-    if (!current) {
-        return { name: undefined, kind: undefined, isRequired, isList, isItemNonNull };
-    }
-
-    // Prevent cycles: if already visited, just return a reference
-    if (
-        (current.kind === "OBJECT" ||
-        current.kind === "INPUT_OBJECT" ||
-        current.kind === "INTERFACE" ||
-        current.kind === "UNION" ||
-        current.kind === "ENUM") &&
-        visited.has(current.name)
-    ) {
-        return {
-            name: current.name,
-            kind: current.kind,
-            isRequired,
-            isList,
-            isItemNonNull
-        };
-    }
-
-    // For complex types, always resolve full info recursively
-    if (
-        current.kind === "OBJECT" ||
-        current.kind === "INPUT_OBJECT" ||
-        current.kind === "INTERFACE" ||
-        current.kind === "UNION" ||
-        current.kind === "ENUM"
-    ) {
-        const typeInfo = getFullTypeInfo(current.name, typeMap, visited);
-        return {
-            ...typeInfo,
-            isRequired,
-            isList,
-            isItemNonNull
-        };
-    }
-
-    // For scalars, just return name/kind
+  // Prevent cycles or excessive depth: if already visited or depth > maxDepth, just return a reference
+  if (
+    (current.kind === "OBJECT" ||
+    current.kind === "INPUT_OBJECT" ||
+    current.kind === "INTERFACE" ||
+    current.kind === "UNION" ||
+    current.kind === "ENUM") &&
+    (visited.has(current.name) || depth > maxDepth)
+  ) {
     return {
-        name: current.name,
-        kind: current.kind,
-        isRequired,
-        isList,
-        isItemNonNull
+      name: current.name,
+      kind: current.kind,
+      isRequired,
+      isList,
+      isItemNonNull
     };
+  }
+
+  // For complex types, always resolve full info recursively
+  if (
+    current.kind === "OBJECT" ||
+    current.kind === "INPUT_OBJECT" ||
+    current.kind === "INTERFACE" ||
+    current.kind === "UNION" ||
+    current.kind === "ENUM"
+  ) {
+    const typeInfo = getFullTypeInfo(current.name, typeMap, visited, depth, maxDepth);
+    return {
+      ...typeInfo,
+      isRequired,
+      isList,
+      isItemNonNull
+    };
+  }
+
+  // For scalars, just return name/kind
+  return {
+    name: current.name,
+    kind: current.kind,
+    isRequired,
+    isList,
+    isItemNonNull
+  };
 }
 
 

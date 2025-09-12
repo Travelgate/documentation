@@ -348,6 +348,67 @@ If applyBoth = true: Indicates that the new price cannot exceed the amount or pe
       Holder's basic information.  
       </summary>
   
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **name**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+        The card holder's name.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **surname**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+        The card holder's surname.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **title** (*Enum of PersonalTitleType*)  
+        Holder’s title.  
+        Possible values:  
+        `MR`  
+      `MRS`  
+      `MISS`  
+      `MS`  
+      `NOT_SPECIFIED`  
+        </summary>
+      </details>
+
+      <details>
+        <summary>
+        **contactInfo** (*ContactInfoInput*)  
+        Holder's contact info.  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **email** (*Email*)  
+          Email contact  
+          </summary>
+        </details>
+
+        <details>
+          <summary>
+          **phone** (*PhoneInput*)  
+          Phone contact  
+          </summary>
+  
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **countryCode**&nbsp;<span class="required"> *</span>&nbsp; (*DialingCountryCode*)  
+            The combination of one, two or three digits identifying a specific country, countries in an integrated numbering plan, or a specific geographic area (1 to 3 digits)  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **number**&nbsp;<span class="required"> *</span>&nbsp; (*PhoneSubscriberNumber*)  
+            Identifies a subscriber for a particular global service  
+            </summary>
+          </details>
+        </details>
+      </details>
     </details>
 
     <details>
@@ -395,7 +456,11 @@ If applyBoth = true: Indicates that the new price cannot exceed the amount or pe
           **title** (*Enum of PersonalTitleType*)  
           Passenger title.  
           Possible values:  
-  
+          `MR`  
+        `MRS`  
+        `MISS`  
+        `MS`  
+        `NOT_SPECIFIED`  
           </summary>
         </details>
       </details>

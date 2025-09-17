@@ -276,11 +276,12 @@
                   </summary>
                 </details>
 
-                <details style={{ pointerEvents: "none" }}>
+                <details>
                   <summary>
-                  **location** (*undefined*)  
+                  **location** (*Location*)  
                   The airport s location  
                   </summary>
+  
                 </details>
               </details>
 
@@ -487,11 +488,25 @@ Possible values: ERROR, WARN, INFO.
               </summary>
             </details>
 
-            <details style={{ pointerEvents: "none" }}>
+            <details>
               <summary>
-              **texts** (*undefined*)  
+              **texts** (*Text*)  
               Contains the descriptive.  
               </summary>
+  
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **text**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                
+                </summary>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **language**&nbsp;<span class="required"> *</span>&nbsp; (*Language*)  
+                
+                </summary>
+              </details>
             </details>
           </details>
 
@@ -518,11 +533,25 @@ Possible values: ERROR, WARN, INFO.
               </summary>
             </details>
 
-            <details style={{ pointerEvents: "none" }}>
+            <details>
               <summary>
-              **texts** (*undefined*)  
+              **texts** (*Text*)  
               Label  
               </summary>
+  
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **text**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                
+                </summary>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **language**&nbsp;<span class="required"> *</span>&nbsp; (*Language*)  
+                
+                </summary>
+              </details>
             </details>
           </details>
 
@@ -571,11 +600,25 @@ Possible values: ERROR, WARN, INFO.
                     </summary>
                   </details>
 
-                  <details style={{ pointerEvents: "none" }}>
+                  <details>
                     <summary>
-                    **texts** (*undefined*)  
+                    **texts** (*Text*)  
                     Label  
                     </summary>
+  
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **text**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                      
+                      </summary>
+                    </details>
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **language**&nbsp;<span class="required"> *</span>&nbsp; (*Language*)  
+                      
+                      </summary>
+                    </details>
                   </details>
 
                   <details style={{ pointerEvents: "none" }}>
@@ -612,25 +655,67 @@ Possible values: ERROR, WARN, INFO.
                       </details>
                     </details>
 
-                    <details style={{ pointerEvents: "none" }}>
+                    <details>
                       <summary>
-                      **infants** (*undefined*)  
+                      **infants** (*OccupancyRange*)  
                       Occupancy Infants Pax Range  
                       </summary>
+  
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **min** (*Int*)  
+                        
+                        </summary>
+                      </details>
+
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **max** (*Int*)  
+                        
+                        </summary>
+                      </details>
                     </details>
 
-                    <details style={{ pointerEvents: "none" }}>
+                    <details>
                       <summary>
-                      **children** (*undefined*)  
+                      **children** (*OccupancyRange*)  
                       Occupancy Children Pax Range  
                       </summary>
+  
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **min** (*Int*)  
+                        
+                        </summary>
+                      </details>
+
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **max** (*Int*)  
+                        
+                        </summary>
+                      </details>
                     </details>
 
-                    <details style={{ pointerEvents: "none" }}>
+                    <details>
                       <summary>
-                      **adults** (*undefined*)  
+                      **adults** (*OccupancyRange*)  
                       Occupancy Adults Pax Range  
                       </summary>
+  
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **min** (*Int*)  
+                        
+                        </summary>
+                      </details>
+
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **max** (*Int*)  
+                        
+                        </summary>
+                      </details>
                     </details>
                   </details>
 
@@ -640,11 +725,25 @@ Possible values: ERROR, WARN, INFO.
                     Room views  
                     </summary>
   
-                    <details style={{ pointerEvents: "none" }}>
+                    <details>
                       <summary>
-                      **texts** (*undefined*)  
+                      **texts** (*Text*)  
                       Contains the descriptive of view.  
                       </summary>
+  
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **text**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                        
+                        </summary>
+                      </details>
+
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **language**&nbsp;<span class="required"> *</span>&nbsp; (*Language*)  
+                        
+                        </summary>
+                      </details>
                     </details>
 
                     <details style={{ pointerEvents: "none" }}>
@@ -655,11 +754,72 @@ Possible values: ERROR, WARN, INFO.
                     </details>
                   </details>
 
-                  <details style={{ pointerEvents: "none" }}>
+                  <details>
                     <summary>
-                    **medias** (*undefined*)  
+                    **medias** (*Media*)  
                     Room medias  
                     </summary>
+  
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **code** (*String*)  
+                      Code.  
+                      </summary>
+                    </details>
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **order** (*String*)  
+                      Indicates the order priority.  
+                      </summary>
+                    </details>
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **type**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of ApplicationAreaType*)  
+                      Indicates the type of the media.  
+                      Possible values:  
+                      `HOTEL`  
+                    `ROOM`  
+                    `SERVICE`  
+                    `GENERAL`  
+                      </summary>
+                    </details>
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **updatedAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+                      Date updated.  
+                      </summary>
+                    </details>
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **url**&nbsp;<span class="required"> *</span>&nbsp; (*URI*)  
+                      Url.  
+                      </summary>
+                    </details>
+
+                    <details>
+                      <summary>
+                      **texts** (*Text*)  
+                      Contains the descriptive.  
+                      </summary>
+  
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **text**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                        
+                        </summary>
+                      </details>
+
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                        **language**&nbsp;<span class="required"> *</span>&nbsp; (*Language*)  
+                        
+                        </summary>
+                      </details>
+                    </details>
                   </details>
 
                   <details>
@@ -728,68 +888,14 @@ Possible values: ERROR, WARN, INFO.
                           Indicates data values of amenity  
                           </summary>
   
-                          <details style={{ pointerEvents: "none" }}>
-                            <summary>
-                            **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-                            Amenity code  
-                            </summary>
-                          </details>
-
-                          <details style={{ pointerEvents: "none" }}>
-                            <summary>
-                            **amenityCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-                            External amenity code  
-                            </summary>
-                          </details>
-
-                          <details style={{ pointerEvents: "none" }}>
-                            <summary>
-                            **type**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
-                            Indicates the type of Amenity.  
-                            </summary>
-                          </details>
-
-                          <details style={{ pointerEvents: "none" }}>
-                            <summary>
-                            **texts**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
-                            Contains the descriptive  
-                            </summary>
-                          </details>
-
-                          <details style={{ pointerEvents: "none" }}>
-                            <summary>
-                            **value**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
-                            Indicates the amenity s value in different languages  
-                            </summary>
-                          </details>
-
-                          <details>
-                            <summary>
-                            **mappings** (*HotelXMappedCode*)  
-                            Mappings of amenity codes in different contexts  
-                            </summary>
-  
-                            <details style={{ pointerEvents: "none" }}>
-                              <summary>
-                              **context**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-                              Context of the mapped code  
-                              </summary>
-                            </details>
-
-                            <details style={{ pointerEvents: "none" }}>
-                              <summary>
-                              **code**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-                              Code in context  
-                              </summary>
-                            </details>
-                          </details>
                         </details>
 
-                        <details style={{ pointerEvents: "none" }}>
+                        <details>
                           <summary>
-                          **adviseMessage** (*undefined*)  
+                          **adviseMessage** (*AdviseMessage*)  
                           List of messages  
                           </summary>
+  
                         </details>
 
                         <details style={{ pointerEvents: "none" }}>
@@ -817,11 +923,65 @@ Possible values: ERROR, WARN, INFO.
                   </details>
                 </details>
 
-                <details style={{ pointerEvents: "none" }}>
+                <details>
                   <summary>
-                  **adviseMessage** (*undefined*)  
+                  **adviseMessage** (*AdviseMessage*)  
                   List of messages  
                   </summary>
+  
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                    **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                    AM code: The following codes can be returned:  
+                    </summary>
+                  </details>
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                    **description**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                    Error description  
+                    </summary>
+                  </details>
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                    **level**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of AdviseMessageLevel*)  
+                    Indicates the level of importance of the message.
+Possible values: ERROR, WARN, INFO.  
+                    Possible values:  
+                    `WARN`  
+                  `ERROR`  
+                  `INFO`  
+                    </summary>
+                  </details>
+
+                  <details>
+                    <summary>
+                    **external** (*ExternalMessage*)  
+                    Specify the external message.  
+                    </summary>
+  
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **code** (*String*)  
+                      External code.  
+                      </summary>
+                    </details>
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **message**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                      External message.  
+                      </summary>
+                    </details>
+                  </details>
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                    **correlationID**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                    Identifier to investigate the cause of the error.  
+                    </summary>
+                  </details>
                 </details>
 
                 <details style={{ pointerEvents: "none" }}>
@@ -952,18 +1112,123 @@ Possible values: ERROR, WARN, INFO.
             CheckIn information  
             </summary>
   
-            <details style={{ pointerEvents: "none" }}>
+            <details>
               <summary>
-              **instructions** (*undefined*)  
+              **instructions** (*Text*)  
               CheckIn instructions  
               </summary>
+  
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **text**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                
+                </summary>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **language**&nbsp;<span class="required"> *</span>&nbsp; (*Language*)  
+                
+                </summary>
+              </details>
+            </details>
+
+            <details>
+              <summary>
+              **specialInstructions** (*Text*)  
+              CheckIn special instructions  
+              </summary>
+  
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **text**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                
+                </summary>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **language**&nbsp;<span class="required"> *</span>&nbsp; (*Language*)  
+                
+                </summary>
+              </details>
             </details>
 
             <details style={{ pointerEvents: "none" }}>
               <summary>
-              **specialInstructions** (*undefined*)  
+              **minAge** (*Int*)  
+              Minimal age allowed for doing the checkin
+              </summary>
+            </details>
+
+            <details>
+              <summary>
+              **schedule** (*TimeRange*)  
+              The schedule of checkIn  
+              </summary>
+  
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **startTime** (*Time*)  
+                the start time of range  
+                </summary>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **endTime** (*Time*)  
+                the end time of range  
+                </summary>
+              </details>
+            </details>
+          </details>
+
+          <details>
+            <summary>
+            **checkOut** (*CheckInformation*)  
+            CheckOut information  
+            </summary>
+  
+            <details>
+              <summary>
+              **instructions** (*Text*)  
+              CheckIn instructions  
+              </summary>
+  
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **text**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                
+                </summary>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **language**&nbsp;<span class="required"> *</span>&nbsp; (*Language*)  
+                
+                </summary>
+              </details>
+            </details>
+
+            <details>
+              <summary>
+              **specialInstructions** (*Text*)  
               CheckIn special instructions  
               </summary>
+  
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **text**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                
+                </summary>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **language**&nbsp;<span class="required"> *</span>&nbsp; (*Language*)  
+                
+                </summary>
+              </details>
             </details>
 
             <details style={{ pointerEvents: "none" }}>
@@ -997,38 +1262,298 @@ Possible values: ERROR, WARN, INFO.
 
           <details style={{ pointerEvents: "none" }}>
             <summary>
-            **checkOut** (*undefined*)  
-            CheckOut information  
-            </summary>
-          </details>
-
-          <details style={{ pointerEvents: "none" }}>
-            <summary>
             **accesses** (*String*)  
             Accesses that has this hotel  
             </summary>
           </details>
 
-          <details style={{ pointerEvents: "none" }}>
+          <details>
             <summary>
-            **allAmenities** (*undefined*)  
+            **allAmenities** (*HotelXAmenityConnection*)  
             Amenities with mapping  
             </summary>
+  
+            <details>
+              <summary>
+              **edges** (*HotelXAmenityEdge*)  
+              Amenity edges of amenity connection  
+              </summary>
+  
+              <details>
+                <summary>
+                **node**&nbsp;<span class="required"> *</span>&nbsp; (*HotelXAmenity*)  
+                Amenity node  
+                </summary>
+  
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                  Node Id  
+                  </summary>
+                </details>
+
+                <details>
+                  <summary>
+                  **amenityData** (*HotelXAmenityData*)  
+                  Indicates data values of amenity  
+                  </summary>
+  
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                    **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                    Amenity code  
+                    </summary>
+                  </details>
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                    **amenityCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                    External amenity code  
+                    </summary>
+                  </details>
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                    **type**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of ApplicationAreaType*)  
+                    Indicates the type of Amenity.  
+                    Possible values:  
+                    `HOTEL`  
+                  `ROOM`  
+                  `SERVICE`  
+                  `GENERAL`  
+                    </summary>
+                  </details>
+
+                  <details>
+                    <summary>
+                    **texts**&nbsp;<span class="required"> *</span>&nbsp; (*Text*)  
+                    Contains the descriptive  
+                    </summary>
+  
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **text**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                      
+                      </summary>
+                    </details>
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **language**&nbsp;<span class="required"> *</span>&nbsp; (*Language*)  
+                      
+                      </summary>
+                    </details>
+                  </details>
+
+                  <details>
+                    <summary>
+                    **value**&nbsp;<span class="required"> *</span>&nbsp; (*Text*)  
+                    Indicates the amenity s value in different languages  
+                    </summary>
+  
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **text**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                      
+                      </summary>
+                    </details>
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **language**&nbsp;<span class="required"> *</span>&nbsp; (*Language*)  
+                      
+                      </summary>
+                    </details>
+                  </details>
+
+                  <details>
+                    <summary>
+                    **mappings** (*HotelXMappedCode*)  
+                    Mappings of amenity codes in different contexts  
+                    </summary>
+  
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **context**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                      Context of the mapped code  
+                      </summary>
+                    </details>
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **code**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                      Code in context  
+                      </summary>
+                    </details>
+                  </details>
+                </details>
+
+                <details>
+                  <summary>
+                  **adviseMessage** (*AdviseMessage*)  
+                  List of messages  
+                  </summary>
+  
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                    **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                    AM code: The following codes can be returned:  
+                    </summary>
+                  </details>
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                    **description**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                    Error description  
+                    </summary>
+                  </details>
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                    **level**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of AdviseMessageLevel*)  
+                    Indicates the level of importance of the message.
+Possible values: ERROR, WARN, INFO.  
+                    Possible values:  
+                    `WARN`  
+                  `ERROR`  
+                  `INFO`  
+                    </summary>
+                  </details>
+
+                  <details>
+                    <summary>
+                    **external** (*ExternalMessage*)  
+                    Specify the external message.  
+                    </summary>
+  
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **code** (*String*)  
+                      External code.  
+                      </summary>
+                    </details>
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                      **message**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                      External message.  
+                      </summary>
+                    </details>
+                  </details>
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                    **correlationID**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+                    Identifier to investigate the cause of the error.  
+                    </summary>
+                  </details>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **createdAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+                  Indicates the creation date of the node  
+                  </summary>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                  **updatedAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
+                  Indicates the date of last update of the node  
+                  </summary>
+                </details>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                **cursor**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+                Edge s cursor  
+                </summary>
+              </details>
+            </details>
           </details>
 
-          <details style={{ pointerEvents: "none" }}>
+          <details>
             <summary>
-            **mappings** (*undefined*)  
+            **mappings** (*HotelXMappedCode*)  
             Mapping codes for this property in various contexts, e.g.: TGX, GIATA,...  
             </summary>
+  
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **context**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+              Context of the mapped code  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **code**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+              Code in context  
+              </summary>
+            </details>
           </details>
         </details>
 
-        <details style={{ pointerEvents: "none" }}>
+        <details>
           <summary>
-          **adviseMessage** (*undefined*)  
+          **adviseMessage** (*AdviseMessage*)  
           List of messages  
           </summary>
+  
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+            AM code: The following codes can be returned:  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **description**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+            Error description  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **level**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of AdviseMessageLevel*)  
+            Indicates the level of importance of the message.
+Possible values: ERROR, WARN, INFO.  
+            Possible values:  
+            `WARN`  
+          `ERROR`  
+          `INFO`  
+            </summary>
+          </details>
+
+          <details>
+            <summary>
+            **external** (*ExternalMessage*)  
+            Specify the external message.  
+            </summary>
+  
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **code** (*String*)  
+              External code.  
+              </summary>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+              **message**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+              External message.  
+              </summary>
+            </details>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **correlationID**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
+            Identifier to investigate the cause of the error.  
+            </summary>
+          </details>
         </details>
 
         <details style={{ pointerEvents: "none" }}>

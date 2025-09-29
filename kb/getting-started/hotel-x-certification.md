@@ -7,16 +7,30 @@ sidebar_position: 3
 ### When to Apply
 You should apply once you've completed implementing the relevant methods.
 
+### Is It Necessary to Complete All Certification Cases?
+No. Case 3 (Direct Payment) is not mandatory if it is not relevant to your business. However, Cases 1 and 2 (Refundable Option and Non-Refundable Option) are always required.
+
 ### What Information Will We Check?
 The certification aims to verify that the Hotel-X API user makes requests correctly. This is done by reviewing request and response logs for the following methods:
-1. Content: Hotels Query request and response.
-2. Booking Flow:
-   1. Search Query request and response.
-   2. Quote Query request and response.
-   3. Book Mutation request and response.
-3. Booking Management: Cancellation Mutation request and response.
 
-For the Booking Flow, we have three possible cases:
+
+| Method       | Request Requirement                                                                 | Response Requirement                                                                 |
+|--------------|--------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
+| **Hotels**   | —                                                                                    | At least one hotel with the requested `hotelCode` should be present in the response. |
+| **C1 Search**| 3 rooms:&nbsp;<br />- 1 room with 3 ADT&nbsp;<br />- 1 room with 2 ADT + 1 CHILD (5yo)&nbsp;<br />- 1 room with 2 ADT&nbsp;<br /> | - Errors need to be requested in response but empty&nbsp;<br />- Number of Options > 0&nbsp;<br />- At least one refundable option present in response |
+| **C2 Search**| 2 rooms:&nbsp;<br />- 1 room with 2 ADT + 1 CHILD (5yo)&nbsp;<br />- 1 room with 2 ADT&nbsp;<br /> | - Errors need to be requested in response but empty&nbsp;<br />- Number of Options > 0&nbsp;<br />- At least one non-refundable option present in response |
+| **C3 Search**| 1 room with 2 ADT&nbsp;<br /> | - Errors need to be requested in response but empty&nbsp;<br />- Number of Options > 0&nbsp;<br />- At least one `DIRECT` payment type option (`option.PaymentType`) present in response |
+| **C1 Quote** | Valid refundable `optionID`&nbsp;<br /> | - Errors need to be requested in response but empty&nbsp;<br />- `rq.HotelX.Quote.OptionQuote.CancelPolicy.Refundable = true` |
+| **C2 Quote** | Valid non-refundable `optionID`&nbsp;<br /> | - Errors need to be requested in response but empty&nbsp;<br />- `rq.HotelX.Quote.OptionQuote.CancelPolicy.Refundable = false` |
+| **C3 Quote** | Valid `optionID` with payment type `DIRECT`&nbsp;<br /> | - Errors need to be requested in response but empty&nbsp;<br />- `rq.HotelX.Quote.OptionQuote.PaymentType = DIRECT` |
+| **C1 Book**  | Valid refundable `optionID`&nbsp;<br /> | Errors need to be requested in response but empty |
+| **C2 Book**  | Valid non-refundable `optionID`&nbsp;<br /> | Errors need to be requested in response but empty |
+| **C3 Book**  | Valid `optionID` with payment type `DIRECT`&nbsp;<br /> | Errors need to be requested in response but empty |
+| **Cancellation** | One of these two cases:&nbsp;<br />- Cancel by `bookingID`&nbsp;<br />- Cancel by client or supplier `reference` &nbsp;<br /> | - Errors need to be requested in response but empty&nbsp;<br />- In Cancel by reference, `HotelCancelInput.reference` and `HotelCancelInput.hotelCode` should be requested |
+| **Booking Read/List** | One of these three cases:&nbsp;<br />- Booking by `bookingID`&nbsp;<br />- Booking with `typeSearch = "DATES"` → requires `rq.Criteria.Dates`&nbsp;<br />- Booking with `typeSearch = "REFERENCES"` → requires `rq.Criteria.References`&nbsp;<br /> | - Errors need to be requested in response but empty&nbsp;<br />- At least one booking must be found in the response&nbsp;<br />- `Booking Status` in the booking object must be requested |
+
+
+#### For the Booking Flow, we have three possible cases:
 1. C1: Refundable Option.
 2. C2: Non-Refundable Option.
 3. C3: Direct Payment Option.
@@ -37,7 +51,7 @@ The following table outlines the names corresponding to each part of the certifi
 | C1 Booking flow > book RQ and RS   | rq_book_rf.json       | rs_book_rf.json       |
 | C2 Booking flow > book RQ and RS   | rq_book_nrf.json      | rs_book_nrf.json      |
 | C3 Booking flow > book RQ and RS   | rq_book_direct.json   | rs_book_direct.json   |
-| Booking management > cancelation RQ and RS | rq_cancel_rf.json | rs_cancel_rf.json     |
+| Booking management > cancellation RQ and RS | rq_cancel_rf.json | rs_cancel_rf.json     |
 
 ### Example of Query Body in JSON Format:
 
@@ -59,9 +73,6 @@ The following table outlines the names corresponding to each part of the certifi
     }
 }
 ```
-
-### Is It Necessary to Complete All Certification Cases?
-No, you only need to complete the cases relevant to your business. However, Case 1 (Refundable Option) is always required.
 
 ### What Credentials and Connections Should I Use for Certification?
 It is recommended to always use the [demo connections provided](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials) (Travelgate test and Smyrooms test) along with your client and API Key.

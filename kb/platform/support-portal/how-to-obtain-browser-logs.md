@@ -122,7 +122,7 @@ To obtain browser logs in Apple Safari, follow these steps:
 
 <img src="https://storage.travelgate.com/kbase/safari-3-logs.png" alt="safari-3-logs" width="500" height=""/>
 
-### Obtain the HAR File (Network Tab)
+#### 3. Obtain the HAR File (Network Tab)
 1. In the **Network** tab, check **Preserve Log**.  
 2. Clear existing logs with 🗑️.  
 3. Reproduce the issue.  
@@ -130,7 +130,7 @@ To obtain browser logs in Apple Safari, follow these steps:
 
 ![safari-4-logs](https://storage.travelgate.com//kbase/safari-4-logs.png)
 
-#### 3. Obtain the Console Log (Console Tab)
+#### 4. Obtain the Console Log (Console Tab)
 1. Open the **Console** tab.  
 2. Click inside the log area.  
 3. Select all (`Cmd+A`) and copy (`Cmd+C`).  

@@ -2,6 +2,10 @@
 sidebar_position: 10
 ---
 
+import {cancelMutation, cancelVariables} from "../../../../../src/graphql/payX/cancel.mutation";
+
+
+
 # Virtual Credit Card
 
 The Virtual Credit Card plugin allows you to connect with a VCC supplier who can create virtual credit cards for you at the time of reservation. For each hotel booking where you indicate the plugin, our system will connect with your VCC supplier to obtain the virtual credit card and use this information to complete the reservation with the hotel supplier.
@@ -76,8 +80,9 @@ All lists are represented as a unique string separated by semicolons (';'). Each
 Example: 
     Currency list => "EUR;USD;MXN" 
 
-:::
+<a id="listCardType"></a>
 
+:::
 <details>
     <summary>List of available card types</summary>
     <div>
@@ -301,6 +306,99 @@ Although it is optional, if you have VCC rules related to a currency, you must i
     ]
 }
 ```
+## 3. Grahql mutation API 
+
+In some cases, an error may occur during the booking process of Hotel-X. This can result in a virtual credit card (VCC) being created even though the hotel reservation was not successfully completed.
+
+To handle this scenario, clients can use the provided GraphQL API to cancel the VCC on their own.
+
+
+### Cancel 
+The cancel operation allows you to cancel virtual credit card made during booking process of Hotel-X. The returned fields include:
+
+* `status`
+* `id`
+* `type`
+
+### Mutation Overview
+
+When creating your cancel query, you have two different inputs to fill based on your specific needs:
+
+1. Criteria
+2. Settings
+
+```graphql
+mutation {
+    payX {
+        cancel(
+            input: {}
+            settings: {}
+        )
+	}
+}
+```
+
+### 1. Input
+
+In this mutation the virtual credit card id is mandatory to able to identify which card we have to cancel"
+
+```js
+{
+    "input" : {
+        "virtualCreditCardId" : "123456789"
+    }
+}
+```
+
+### 2. Settings
+
+Settings are the common configurations used to construct requests to the supplier/s. By default, we apply the same configuration to all Hotel-X clients.
+All fields are mandatory.
+
+```js
+{
+	"settings": {
+		"accessCode": "0",
+		"clientName": "hotxdoc"
+	}
+}
+```
+
+### Response 
+The response of cancel mutation will return below fields:
+
+* `status`
+* `id`
+* `type`
+
+#### Id
+The unique identifier provide by VCC provider to identify virtual credit card
+
+#### Cancel Status
+
+Once a Cancel method is run, our API response will provide its cancel status. This status represents the current status of the cancellation and can be categorized into four possible values:
+
+| Status       | Description                                                                                                                                                      |
+|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `CANCELED`   | The VCC is cancelled.                                                                                                                                            |
+| `CREATED`    | The VCC status is OK, is not cancelled.                                                                                                                          |
+| `EXPIRED`    | The VCC status is expired.                                                                                                                                       |
+| `ACTIVE`     | The VCC status is OK, is not cancelled.                                                                                                                          |
+| `UNKNOWN` | During the cancelation process, an issue led to an unknown status. The Buyer is responsible for confirming with the VCC provider that the VCC has been canceled. |
+
+
+#### Card type
+
+List of possible value: [Here](#listCardType)
+
+
+### Examples
+
+#### Cancel with the `id` from the book response of Hotel-X
+
+<GraphqlSample query={cancelMutation} variables={cancelVariables} />
+
+
 
 
 

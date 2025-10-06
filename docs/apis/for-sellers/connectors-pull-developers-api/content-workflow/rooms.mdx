@@ -1,0 +1,210 @@
+---
+title: "Rooms"
+sidebar_position: 5
+---
+
+## **Overview**
+
+The `Rooms` operation allows clients to retrieve comprehensive room list from a supplier's access that may include translations to other languages, granting you access to all the rooms configured by the Seller for a given set of credentials. The returned fields include: code, name, views, medias, etc.
+
+## **Request**
+
+The Request is structured to accommodate access information for the content retrieval.
+
+### **Overview**
+
+The request that receives the Connector is a Task with essential information that allows it to execute the operation properly:
+- **Access**: Represents access credentials and related information required for a connection.
+- **Operation**: Operation to be executed.
+
+### **Sample**
+
+```json
+{
+    "Task": {
+        "Access": {
+            "Code": 11111,
+            "User": "tgx",
+            "Password": "password",
+            "Urls": {
+                "Generic": "https://api.hotelsupplier.com/generic"
+            },
+            "Parameters": {
+                "maxResults": "50",
+                "cacheEnabled": "true",
+                "requestTimeout": "5000",
+                "preferredSupplier": "SupplierX"
+            }
+        },
+        "Operation": "Rooms",
+        "Languages": [ "en" ],
+        "Platform": "HOTELTEST",
+        "Supplier": "HOTELTEST",
+        "SupplierGroup": "HOTELTEST"
+    }
+}
+```
+
+### **Details**
+
+The object [ContentRq](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/contentrq) represents the structure of the content request as expected by the supplier.
+  
+<!-- TABLE BEGIN Connectors.Content.Pull.Domain.Contracts.Common.ContentRq -->
+
+| Name | Type | Description |
+|------|------|-------------|
+| **TaskId** | Integer | Unique identifier of the task, automatically assigned by the system. |
+| **Supplier** | String | Supplier code associated with the access. |
+| **SupplierGroup** | String | Supplier group associated with the access. |
+| **Platform** | String | The platform that this supplier belongs to. |
+| **Operation** | [ServiceOperationEnum](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/serviceoperationenum) | Operation to be executed. |
+| **Timeout** | String | Maximum time to wait for a supplier response before timing out.Specified as a timestamp string (e.g., "24:00:00" for 24 hours). |
+| **Access** | [Access](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/access) | Access information required for the operation, including API credentials, endpoints,and other integration-specific connection details. |
+| **Access/Code** | Integer | The unique code identifying the access configuration. |
+| **Access/User** | String | The username used for authentication with the supplier. |
+| **Access/Password** | String | The password used for authentication with the supplier. |
+| **Access/ApiKey** | String | The API key used for authentication or authorization. |
+| **Access/Urls** | [Urls](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/urls) | The URLs associated with the access configuration. |
+| **Access/Urls/Book** | String | The URL used for booking operations. |
+| **Access/Urls/Search** | String | The URL used for Search operations. |
+| **Access/Urls/Quote** | String | The URL used for Quote operations. |
+| **Access/Urls/Generic** | String | A generic URL for additional operations. |
+| **Access/Parameters** | [AccessParameters](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/accessparameters) | Additional parameters related to the connection. |
+| **Languages** | List&lt;[Iso2LanguageEnum](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/iso2languageenum)&gt; | Language codes for the operation, represented as a list of ISO 639-1 2-character codes (e.g., "en", "es"). |
+
+<!-- TABLE END -->
+
+## **Response**
+
+The Response is structured to provide detailed information about the hotel.
+
+### **Overview**
+
+
+
+### **Sample**
+
+```json
+{
+	"Code": "201232338",
+	"Names": {
+		"en": "Standard Single room"
+	},
+	"Descriptions": {
+		"en": "Standard Single room"
+	},
+	"Area": 25.0,
+	"RoomOccupancy": {
+		"Adults": {
+			"Min": 1,
+			"Max": 1
+		},
+		"Children": {
+			"Min": 0,
+			"Max": 0
+		},
+		"Infants": {
+			"Min": 0,
+			"Max": 0
+		},
+		"Total": {
+			"Min": 1,
+			"Max": 1
+		}
+	},
+	"Beds": {
+		"NumberOfBeds": 1,
+		"Type": "SINGLE"
+	},
+	"Amenities": [
+		{
+			"Code": "2403",
+			"Type": 1,
+			"Descriptions": {
+				"en": [
+					"Free WiFi"
+				]
+			},
+			"Names": {
+				"en": "RES"
+			}
+		},
+		{
+			"Code": "318",
+			"Type": 1,
+			"Descriptions": {
+				"en": [
+					"Balcony"
+				]
+			},
+			"Names": {
+				"en": "RES"
+			}
+		}
+	],
+	"Medias": [
+		{
+			"Code": "01",
+			"Url": "http://www.images.net/infor/work/imagen/hotel_room_02/M.jpg",
+			"Type": 1,
+			"Order": 1,
+			"Descriptions": {
+				"en": "Room"
+			}
+		}
+	],
+	"Views": [
+		{
+			"Code": "01",
+			"Description": {
+				"en": "Sea view"
+			}
+		}
+	]
+}
+```
+
+### **Details**
+
+The [AccumulativeRoom](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/accumulativeroom) object represents the standardized structure of the mapped room element.
+
+<!-- TABLE BEGIN Content.Common.Domain.AccumulativeContracts.Room -->
+| Name | Type | Description |
+|------|------|-------------|
+| **Code** | String | Gets or sets the code of the room. |
+| **Area** | Double | Gets or sets the area of the room. |
+| **Names** | Dictionary&lt;[Iso2LanguageEnum](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/iso2languageenum), String&gt; | Gets or sets the names of the room in different languages. |
+| **Descriptions** | Dictionary&lt;[Iso2LanguageEnum](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/iso2languageenum), String&gt; | Gets or sets the descriptions of the room in different languages. |
+| **RoomOccupancy** | [AccumulativeRoomOccupancy](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/accumulativeroomoccupancy) | Gets or sets the room occupancy information. |
+| **RoomOccupancy/Adults** | [AccumulativeMinMaxOccupancy](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/accumulativeminmaxoccupancy) | Accumulative occupancy for adults. |
+| **RoomOccupancy/Adults/Min** | Integer | Minimum occupancy. |
+| **RoomOccupancy/Adults/Max** | Integer | Maximum occupancy. |
+| **RoomOccupancy/Children** | [AccumulativeMinMaxOccupancy](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/accumulativeminmaxoccupancy) | Accumulative occupancy for children. |
+| **RoomOccupancy/Children/Min** | Integer | Minimum occupancy. |
+| **RoomOccupancy/Children/Max** | Integer | Maximum occupancy. |
+| **RoomOccupancy/Infants** | [AccumulativeMinMaxOccupancy](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/accumulativeminmaxoccupancy) | Accumulative occupancy for infants. |
+| **RoomOccupancy/Infants/Min** | Integer | Minimum occupancy. |
+| **RoomOccupancy/Infants/Max** | Integer | Maximum occupancy. |
+| **RoomOccupancy/Total** | [AccumulativeMinMaxOccupancy](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/accumulativeminmaxoccupancy) | Accumulative total occupancy. |
+| **RoomOccupancy/Total/Min** | Integer | Minimum occupancy. |
+| **RoomOccupancy/Total/Max** | Integer | Maximum occupancy. |
+| **Beds** | List&lt;[AccumulativeBed](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/accumulativebed)&gt; | Gets or sets the list of beds in the room. |
+| **Beds/NumberOfBeds** | Integer | Gets or sets the number of beds. |
+| **Beds/Type** | String | Gets or sets the type of bed. |
+| **Amenities** | List&lt;[AccumulativeAmenity](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/accumulativeamenity)&gt; | Gets or sets the list of amenities in the room. |
+| **Amenities/Code** | String | Code of the amenity. |
+| **Amenities/Type** | [ApplicationAreaTypeEnum](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/applicationareatypeenum) | Type of the application area. |
+| **Amenities/Descriptions** | Dictionary&lt;[Iso2LanguageEnum](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/iso2languageenum), List&lt;String&gt;&gt; | Descriptions of the amenity, keyed by language. |
+| **Amenities/Names** | Dictionary&lt;[Iso2LanguageEnum](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/iso2languageenum), String&gt; | Names of the amenity, keyed by language. |
+| **Medias** | List&lt;[AccumulativeMedia](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/accumulativemedia)&gt; | Gets or sets the list of media associated with the room. |
+| **Medias/Code** | String | Code of the media. |
+| **Medias/Url** | String | URL of the media. |
+| **Medias/Type** | [MediaTypeEnum](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/mediatypeenum) | Type of the media. |
+| **Medias/Order** | String | Order of the media. Should be ordered from 1 onward. |
+| **Medias/Descriptions** | Dictionary&lt;[Iso2LanguageEnum](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/iso2languageenum), String&gt; | Descriptions of the media, keyed by ISO 2 language code. |
+| **Views** | List&lt;[AccumulativeView](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/accumulativeview)&gt; | Gets or sets the list of views from the room. |
+| **Views/Code** | String | Gets or sets the code. |
+| **Views/Description** | Dictionary&lt;[Iso2LanguageEnum](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/iso2languageenum), String&gt; | Gets or sets the description. |
+<!-- TABLE END -->
+
+---

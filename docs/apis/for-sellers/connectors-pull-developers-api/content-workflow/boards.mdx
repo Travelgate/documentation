@@ -1,0 +1,107 @@
+---
+title: "Boards"
+sidebar_position: 6
+---
+
+## **Overview**
+
+The `Boards` operation allows clients to retrieve boards from suppliers. The returned fields include: code and name.
+
+## **Request**
+
+The Request is structured to accommodate access information for the content retrieval.
+
+### **Overview**
+
+The request that receives the Connector is a Task with essential information that allows it to execute the operation properly:
+- **Access**: Represents access credentials and related information required for a connection.
+- **Operation**: Operation to be executed.
+
+### **Sample**
+
+```json
+{
+    "Task": {
+        "Access": {
+            "Code": 11111,
+            "User": "tgx",
+            "Password": "password",
+            "Urls": {
+                "Generic": "https://api.hotelsupplier.com/generic"
+            },
+            "Parameters": {
+                "maxResults": "50",
+                "cacheEnabled": "true",
+                "requestTimeout": "5000",
+                "preferredSupplier": "SupplierX"
+            }
+        },
+        "Operation": "Boards",
+        "Languages": [ "en" ],
+        "Platform": "HOTELTEST",
+        "Supplier": "HOTELTEST",
+        "SupplierGroup": "HOTELTEST"
+    }
+}
+```
+
+### **Details**
+
+The object [ContentRq](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/contentrq) represents the structure of the content request as expected by the supplier.
+  
+<!-- TABLE BEGIN Connectors.Content.Pull.Domain.Contracts.Common.ContentRq -->
+
+| Name | Type | Description |
+|------|------|-------------|
+| **TaskId** | Integer | Unique identifier of the task, automatically assigned by the system. |
+| **Supplier** | String | Supplier code associated with the access. |
+| **SupplierGroup** | String | Supplier group associated with the access. |
+| **Platform** | String | The platform that this supplier belongs to. |
+| **Operation** | [ServiceOperationEnum](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/serviceoperationenum) | Operation to be executed. |
+| **Timeout** | String | Maximum time to wait for a supplier response before timing out.Specified as a timestamp string (e.g., "24:00:00" for 24 hours). |
+| **Access** | [Access](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/access) | Access information required for the operation, including API credentials, endpoints,and other integration-specific connection details. |
+| **Access/Code** | Integer | The unique code identifying the access configuration. |
+| **Access/User** | String | The username used for authentication with the supplier. |
+| **Access/Password** | String | The password used for authentication with the supplier. |
+| **Access/ApiKey** | String | The API key used for authentication or authorization. |
+| **Access/Urls** | [Urls](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/urls) | The URLs associated with the access configuration. |
+| **Access/Urls/Book** | String | The URL used for booking operations. |
+| **Access/Urls/Search** | String | The URL used for Search operations. |
+| **Access/Urls/Quote** | String | The URL used for Quote operations. |
+| **Access/Urls/Generic** | String | A generic URL for additional operations. |
+| **Access/Parameters** | [AccessParameters](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/accessparameters) | Additional parameters related to the connection. |
+| **Languages** | List&lt;[Iso2LanguageEnum](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/iso2languageenum)&gt; | Language codes for the operation, represented as a list of ISO 639-1 2-character codes (e.g., "en", "es"). |
+
+<!-- TABLE END -->
+
+## **Response**
+
+The response contains the mapped board information.
+
+### **Overview**
+
+The response provides a straightforward structure for mapping boards across multiple languages.
+
+### **Sample**
+
+```json
+{
+	"Code": "RO",
+	"Names": {
+		"en": "Room only"
+	}
+}
+```
+
+### **Details**
+
+The [AccumulativeBoard](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/accumulativeboard) object represents the standardized structure of the mapped board element.
+
+<!-- TABLE BEGIN Content.Common.Domain.AccumulativeContracts.Board -->
+| Name | Type | Description |
+|------|------|-------------|
+| **Code** | String | Code of the board. |
+| **Names** | Dictionary&lt;[Iso2LanguageEnum](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/iso2languageenum), String&gt;  | Dictionary of board names by ISO 2 language. |
+<!-- TABLE END -->
+
+---

@@ -1,0 +1,458 @@
+---
+title: "Quote"
+sidebar_position: 4
+---
+
+:::caution
+If your seller's workflow does not include a Quote step, proceed directly to the [Repeat Operations](../../Connector_Framework/Repeat_Flow_Operations.mdx) section to repeat the Search operation.
+:::
+
+## **Mock**
+
+### **Step 1: Define your Quote responses (Mocks)**
+
+Define the responses for your operation, it is mandatory to insert a supplier response into every mock or at least, into the mocks of the operation you will be developing.
+
+We will be using the **TwoAdultTwoDays** mock through all the steps of the development.
+
+File location: "**test\MockServer\Tests\Quote\Two_Adults_Two_Days.txt**"
+
+![Mock Example](MockTwoAdultsQuote.png)
+
+### **Step 2: Define the Models of your response (Request and Response models)**
+
+These models are crucial because they specify the structure of the objects contained within supplier responses. They'll also play a vital role in serializing and deserializing requests and responses during development.
+
+![Response example](TemplateStructureModelsQuote.png)
+
+**Example of a QuoteRequest model**:
+
+```csharp
+namespace ConnectorsIntegration.Quote.Models.Request;
+
+public class QuoteRequest
+{
+    public string CheckIn { get; set; }
+    public string CheckOut { get; set; }
+    public string HotelCode { get; set; }
+    public List<SupplierOccupancy> Occupancy { get; set; }
+    public string RateId { get; set; }
+}
+
+public class SupplierOccupancy
+{
+    public int Adults { get; set; }
+    public int Children { get; set; }
+    public IEnumerable<int> Infants { get; set; }
+}
+```
+File location: "**ConnectorsIntegration\Quote\Models\Response\QuoteRequest.cs**"
+
+**Example of a QuoteResponse model**:
+
+```csharp
+namespace ConnectorsIntegration.Quote.Models.Response;
+
+public class QuoteResponse
+{
+    public SupplierOption Option { get; set; }
+}
+
+public class SupplierOption
+{
+    public string Status { get; set; }
+    public SupplierPrice SupplierPrice { get; set; }
+    public string SupplierPaymentType { get; set; }
+    public List<SupplierRoom> Rooms { get; set; }
+    public List<SupplierCancelPolicy> SupplierCancelPolicies { get; set; }
+}
+
+public class SupplierCancelPolicy
+{
+    public double PenaltyAmount { get; set; }
+
+    public string PenaltyType { get; set; }
+
+    public string PenaltyCurrency { get; set; }
+
+    public string PenaltyDeadline { get; set; }
+}
+
+public class SupplierPrice
+{
+    public string Currency { get; set; }
+    public double Net { get; set; }
+    public double MinimumSellingPrice { get; set; }
+}
+
+public class SupplierRoom
+{
+    public uint OccupancyId { get; set; }
+    public string RoomCode { get; set; }
+
+    public SupplierPrice SupplierPrice { get; set; }
+    public string RoomDescription { get; set; }
+}
+```
+File location: "**ConnectorsIntegration\Quote\Models\Response\QuoteResponse.cs**"
+
+## **Develop**
+
+### **Step 1: Register the serializers and operations**
+To specify which serializer and operations the developer will be using (based on the Seller's API) we can specify it in our "**Extensions**":
+
+File location: "**ConnectorsIntegration\Quote\QuoteExtensions.cs**"
+
+If the Seller works with **JSON** format, we can specify the integration to work with **JSON** with the following:
+
+```csharp
+internal static class QuoteExtensions
+{
+    public static void AddQuoteServices(this IServiceCollection services,
+        IConfiguration configuration)
+    {
+        //A JsonSerializer service is added along with the request and response model
+        services.AddJsonSerializer<QuoteRequest, QuoteResponse>(ConfigureJSONOptions);
+        //The operation is added, indicating what models should be used during the development of the operation
+        services.AddQuoteOperation<QuoteOperation, QuoteRequest, QuoteResponse, AccessModel>(TgxPlatform.Name,
+            configuration);
+    }
+    private static void ConfigureJSONOptions(JsonSerializerOptions options) { }
+}
+```
+
+For details about others serializers, check [Extensions](../../advanced-use/booking-extensions)
+
+For more details about operations, check [PreOperations](../../Connector_Framework/PreOperation_Overview) and [Operations](../../Connector_Framework/Operation_Overview)
+
+### **Step 2: QuoteOperation validators**
+
+There are two previous validations that serve as a filter so the buildrequest and the parseresponse are as safe as possible. They can be found in the QuoteOperation.cs class:
+
+```chsarp
+internal partial class QuoteOperation : IQuoteOperation<QuoteRequest, QuoteResponse, AccessModel>
+{
+    // Implement any services needed just like in SearchOperation.cs
+}
+```
+File location: "**ConnectorsIntegration\Quote\Operations\QuoteOperation.cs**"
+
+![TryValidateSearch](TryValidateSearch.png)
+
+**TryValidateModelRequest**
+
+This step validates the incoming request from the client. While most validation is defined in the [metadata](../../advanced-configuration/metadata-definition), this step is used for specific edge cases that cannot be generalized.
+
+**Example Use Case:** In a operation, validating that hotel codes are numeric because supplier do not allow non-numeric hotels. This type of validation would not be covered by metadata.
+
+```csharp
+public bool TryValidateModelRequest(
+    QuoteConnectorRequest connectorsRequest, 
+    QuoteParameters<CntAccessModel> connectorParameters,
+    out IEnumerable<AdviseMessage> adviseMessages)
+{
+    //AdviseMessages are used to specify errors, such as checking if the hotel code is numeric and if not, add an AdviseMessage
+    adviseMessages = default;
+    return true; // Validation passes if no issues are found.
+}
+
+```
+
+**TryValidateSupplierResponses**
+
+Once the supplier's response is received, this step validates it for errors or anomalies. Suppliers may return incomplete or erroneous data, so this step ensures only valid responses are processed further.
+
+**Details**:
+
+- Check for supplier-specific error fields.
+- Ensure required fields (e.g., hotel list) are present.
+- Example Use Case: A supplier might return a response with an error code or an empty hotel list. This step would detect and handle such cases.
+
+```csharp
+public bool TryValidateSupplierResponses(
+    QuoteParameters<CntAccessModel> connectorParameters,
+    IEnumerable<SupplierResponseWrapper<QuoteResponse>> supplierResponses,
+    out IEnumerable<AdviseMessage> adviseMessages)
+{
+    var supplierResponseWrappers = supplierResponses as SupplierResponseWrapper<QuoteResponse>[] ?? supplierResponses.ToArray();
+    
+    var success = ResponseValidator.TryValidateSupplierResponses(supplierResponseWrappers, out adviseMessages);
+
+    if (!success) return false;
+    
+    if (supplierResponseWrappers.ElementAt(0).Response.HotelQuote?.Hotel is null)
+    {
+        adviseMessages =
+        [
+            AdviseMessage.BuildSupplierNoResults() // Indicates no results from the supplier.
+        ];
+
+        return false;
+    }
+
+    return true; // Validation passes if no issues are found.
+}
+```
+
+### **Step 3: Build the Seller's request**
+
+This class will contain a "BuildRequests" method that will have the following arguments: 
+
+- Object of the requests from the models previously created (QuoteRequest)
+- The request that the Buyer sends (connectorsRequest)
+- Parameters (connectorParameters) which will have some helpers:
+
+File location: "**ConnectorsIntegration\Quote\Operations\QuoteOperation.BuildRequest.cs**"
+
+![Build Request Quote](BuildRequestQuote.png)
+
+**Example of Build Request:**
+
+```csharp
+using Connectors.Core.Application.Connection;
+using Connectors.Pull.Hotel.Application.Metadata;
+using Connectors.Pull.Hotel.Application.Operations.Quote;
+using Connectors.Pull.Hotel.Domain.Contracts;
+using Connectors.Pull.Hotel.Domain.Contracts.Common;
+using Connectors.Pull.Hotel.Domain.Contracts.Quote.Request;
+using ConnectorsIntegration.Quote.Models.Request;
+using static ConnectorsIntegration.Common.Constants.TgxPlatform;
+
+namespace ConnectorsIntegration.Quote.Operations;
+
+internal partial class QuoteOperation
+{
+    public IEnumerable<SupplierRequestWrapper<QuoteRequest>> BuildRequests(
+        QuoteConnectorRequest connectorsRequest,
+        QuoteParameters<AccessModel> connectorParameters)
+    {
+        QuoteCriteria quoteCriteria = connectorsRequest.QuoteRq.QuoteCriteria;
+        //Refers to the checkIn of the booking
+        string checkIn = quoteCriteria.CheckIn;
+        //Refers to the checkOut of the booking
+        string checkOut = quoteCriteria.CheckOut;
+        string hotelCode = quoteCriteria.Accommodation.Code;
+        //Refers to the occupancy of the booking. If the Seller allows requests with multiple occupancies, the Occupancies should be iterated
+        Occupancy firstOccupancy = quoteCriteria.Occupancies.First();
+        OccupancyInfoDetailed occupancyInfoDetailed = _connectorsUtilities.MetadataConnectorsService.GetDetailedOccupancyInfo(firstOccupancy);
+
+        var rateIdParameter = quoteCriteria.Parameters.GetParameter(SupplierParameters.RateId).Value;
+        QuoteRequest quoteRequest = BuildQuoteRequest(
+            checkIn,
+            checkOut,
+            hotelCode,
+            occupancyInfoDetailed,
+            rateIdParameter);
+
+        //Generic URL we prepared back in the AccessModel, which will be passed by the Buyer
+        string genericUrl = connectorParameters.ParametersModel.UrlGeneric;
+
+        SupplierRequestWrapper<QuoteRequest> supplierRequest = new(
+            quoteRequest,
+            new Uri(genericUrl),
+            HttpMethod.Post);
+
+        return
+        [
+            supplierRequest
+        ];
+    }
+
+    private static QuoteRequest BuildQuoteRequest(string checkIn, string checkOut, string hotelCode, OccupancyInfoDetailed occupancyInfoDetailed, string rateIdParameter)
+    {
+        //The request towards the Seller system
+      
+        return new QuoteRequest()
+        {
+            CheckIn = checkIn,
+            CheckOut = checkOut,
+            HotelCode = hotelCode,
+            Occupancy = new List<SupplierOccupancy>()
+            {
+                new() {
+                    Adults = occupancyInfoDetailed.NumberOfAdults,
+                    Children = occupancyInfoDetailed.NumberOfChildren,
+                    Infants = occupancyInfoDetailed.InfantAges
+                }
+            },
+            RateId = rateIdParameter
+        };
+    }
+}
+```
+
+### **Step 4: Parse the Seller's response**
+
+Once the request has been sent, we will have to control and parse the response returned by the Seller.
+
+We will be implementing the "ParseResponse" step inside QuoteOperation:
+
+File location: "**ConnectorsIntegration\Quote\Operations\QuoteOperation.ParseResponse.cs**"
+
+![Build Response Quote](ParseResponseQuote.png)
+
+**Example of Parse Response:**
+
+```csharp
+using Connectors.Core.Application.Connection;
+using Connectors.Core.Application.Iso;
+using Connectors.Core.Domain;
+using Connectors.Pull.Hotel.Application.Operations.Quote;
+using Connectors.Pull.Hotel.Domain.Contracts.Common;
+using Connectors.Pull.Hotel.Domain.Contracts.Quote.Response;
+using Connectors.Pull.Hotel.Domain.Contracts.Search.Response;
+using ConnectorsIntegration.Quote.Models.Response;
+
+namespace ConnectorsIntegration.Quote.Operations;
+
+internal partial class QuoteOperation
+{
+    public QuoteConnectorResponse ParseResponses(
+        QuoteConnectorRequest connectorsRequest,
+        QuoteParameters<AccessModel> connectorParameters,
+        IEnumerable<SupplierResponseWrapper<QuoteResponse>> supplierResponses,
+        CancellationToken cancellationToken)
+    {
+        var supplierResponse = supplierResponses.First().Response;
+        return new QuoteConnectorResponse(ParseSupplierResponse(connectorsRequest, supplierResponse));
+    }
+
+    private QuoteRs ParseSupplierResponse(QuoteConnectorRequest connectorsRequest, QuoteResponse supplierResponse)
+    {
+        if (supplierResponse.Option == null)
+        {
+            List<AdviseMessage> adviseMessages = new(){AdviseMessage.BuildOptionNotFoundInQuote()};
+            return QuoteRs.BuildErrorResponse(adviseMessages);
+        }
+
+        var supplierOption = supplierResponse.Option;
+        
+        Status status = MapSellerToTgxStatus(supplierOption.Status);
+        Price price = ParseSupplierPrice(supplierOption.SupplierPrice);
+        PaymentType paymentType = MapSellerToTgxPaymentType(supplierOption.SupplierPaymentType);
+        List<Room> roomList = ParseSupplierRooms(supplierOption.Rooms);
+        var checkIn = connectorsRequest.QuoteRq.QuoteCriteria.CheckInAsDateTime;
+
+        var cancelPolicy = ParseSupplierCancelPolicies(checkIn, supplierOption.SupplierCancelPolicies);
+        
+        return new QuoteRs(
+            price,
+            status,
+            cancelPolicy,
+            paymentType,
+            roomList);
+    }
+
+    private OptionCancelPolicy ParseSupplierCancelPolicies(DateTime checkIn, List<SupplierCancelPolicy> supplierCancelPolicies)
+    {
+        List<CancelPenalty> cancelPenalties = [];
+
+        foreach (SupplierCancelPolicy supplierCancelPolicy in supplierCancelPolicies)
+        {
+            //Helper to map a string currency
+            Currency supplierCurrency = CurrencyIso4217Mapper.Map(supplierCancelPolicy.PenaltyCurrency);
+            PenaltyType penaltyType = MapSellerToTgxPenaltyType(supplierCancelPolicy.PenaltyType);
+            //Helper to create a policy based in a Seller cancel penalty with deadline that has timezone
+            var penalty = _connectorsUtilities.CancelPenaltyManager.CancelPenaltyFromDateWithTimeZone(
+                checkIn,
+                penaltyType,
+                supplierCurrency,
+                supplierCancelPolicy.PenaltyAmount,
+                supplierCancelPolicy.PenaltyDeadline,
+                "yyyy-MM-ddTHH:mm:ss.fffffffzzz"
+            );
+            cancelPenalties.Add(penalty);
+        }
+        var refundable = cancelPenalties.Any();
+        return new OptionCancelPolicy(refundable, cancelPenalties);
+    }
+
+    private static List<Room> ParseSupplierRooms(List<SupplierRoom> rooms)
+    {
+        List<Room> roomList = [];
+
+        foreach (SupplierRoom supplierRoom in rooms)
+        {
+            var price = ParseSupplierPrice(supplierRoom.SupplierPrice);
+
+            RoomPrice roomPrice = new(price);
+
+            roomList.Add(new Room(
+                supplierRoom.OccupancyId,
+                supplierRoom.RoomCode,
+                supplierRoom.RoomDescription,
+                roomPrice
+            ));
+        }
+        return roomList;
+    }
+
+    private static PenaltyType MapSellerToTgxPenaltyType(string penaltyType) => penaltyType switch
+    {
+        "Percent" => PenaltyType.Percentage,
+        "Nights" => PenaltyType.Nights,
+        _ => PenaltyType.Amount
+    };
+
+    private static PaymentType MapSellerToTgxPaymentType(string supplierPaymentType) => supplierPaymentType switch
+    {
+        "MerchantPay" => PaymentType.MerchantPay,
+        "CardBookingPay" => PaymentType.CardBookingPay,
+        _ => PaymentType.MerchantPay
+    };
+
+    private static Status MapSellerToTgxStatus(string status) => status switch
+    {
+        "Available" => Status.OK,
+        "OnRequest" => Status.RQ,
+        _ => Status.Unknown
+    };
+
+    private static Price ParseSupplierPrice(SupplierPrice supplierPrice)
+    {
+        Currency supplierCurrency = CurrencyIso4217Mapper.Map(supplierPrice.Currency);
+        //Helper that builds a net price
+        var price = Price.BuildNetPrice(supplierCurrency, supplierPrice.Net, supplierPrice.MinimumSellingPrice);
+
+        return price;
+    }
+}
+```
+
+For more details about helpers, check the - [Price helpers](../../Tools_and_Helpers/Price_Helpers/PriceHelpers) and [Policies helpers](../../Tools_and_Helpers/Policies_Helpers/PoliciesHelpers) 
+
+For more details about the combinatory, check [Recommended Helpers](../../Tools_and_Helpers/Recommended_Helpers)
+
+## **Test**
+
+### **Option 1: Integration Tests**
+
+:::warning 
+Be aware that option 1 is optional for testing the integration but ***mandatory*** once the operation has been developed in order to pass all tests before creating the pull request.
+:::
+
+Use the integration tests provided by Travelgate to validate your implementation:
+- Add the necessary use cases to the **MockServer** for each operation.
+  - [View MockServer Documentation](../../Connector_Framework/MockServer_Documentation.mdx).
+- Execute the associated tests for the implemented operation.
+  - [View Running Integration Tests](../../Connector_Framework/Running_Integration_Tests.mdx).
+
+### **Option 2: FormTest Tool (Shopping)**
+Use the **FormTest** application to test each operation manually:
+- Configure the tool to use your supplier's API settings.
+- Test specific scenarios not covered by predefined use cases.
+- [View FormTest Documentation](../../Tools_and_Helpers/FormTest_Documentation.mdx).
+ 
+## **Code Review**
+
+### **Step 1: Create Pull Request**
+
+    - Commit your changes and push them to a new branch called "**QuoteDevelopment**" into the original repository.
+    - Separate the Pull Request into minimum these 4 commits:
+        - Mock responses
+        - Request and Response models
+        - BuildRequest
+        - ParseResponse
+
+### **Step 2: Wait for Travelgate review**
+    - This step involves waiting for the Travelgate team to review and approve the submitted pull request, for more details, check [Code Review Details](../code-review/code-review-details.mdx)

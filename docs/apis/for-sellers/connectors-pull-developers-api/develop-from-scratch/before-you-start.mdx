@@ -1,0 +1,30 @@
+---
+title: "Before You Start"
+sidebar_position: 2
+---
+
+:::caution
+To ensure a successful implementation, candidates should possess the following foundational knowledge and skills:
+
+1. **Good understanding of the Travel Trade business**: This means knowing how hotels, sellers, and buyers work together, and how they usually deal with their partners.
+2. **Experience with C# programming**: You should be comfortable using C#, since it's the main language used in development. It's also important to understand basic software testing (like unit tests and integration tests).
+3. **Knowledge of Travelgate's Data Model**: You need to understand how Travelgate organizes data about options, rooms, boards, and policies (see [Travelgate’s Business Model](/docs/get-started/travelgate-business-model)). This helps connect everything properly with the Seller’s API.
+4. **Signed NDA**: A signed Non-Disclosure Agreement is required before we can proceed with any development or share sensitive information.
+:::
+
+To begin developing a connector, ensure the following are in place:
+
+- Seller's API documentation should be analized and approved by Travelgate (see the template that we'll be using: [template](./technical-analysis.mdx)).
+- You must have a GitHub account, as Travelgate will assign the license to it.
+- Download the template (both Shopping and Content templates). Travelgate will provide you with them.
+- Join the Discord channel—Travelgate will share the link with you.
+
+Tools you may need:
+
+- **FormTest**: An useful Travelgate tool that will allow you to make requests directly to the Connector. For more details, check [FormTest Documentation](../Tools_and_Helpers/FormTest_Documentation.mdx).
+- **API Clients** such as Postman or Insomnia.
+
+Connector Development process:
+
+- To ensure a smooth experience for both parties, please develop the booking flow and booking management operation by operation, in order (Search -> Quote -> Book -> CheckByReference -> Cancel).
+- In every operation, make sure tests of that operation work fine. There will be a final step in every operation where the developer will be shown how to pass the tests.

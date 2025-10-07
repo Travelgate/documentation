@@ -4,17 +4,17 @@ sidebar_position: 11
 
 # Requote
 
-The **Requote** plugin allows you to activate, deactivate, and set up any Requote app available in the Travelgate marketplace.
+The **Requote** plugin allows you to deactivate any Requote app available in the Travelgate App Store.
 
-Requote helps you find better options when you request a quote from a supplier. It checks if other of your suppliers in the Marketplace can offer the same or better conditions at a lower price.
+The Requote app is a Travelgate feature that automatically evaluates if other of your suppliers in the Marketplace can offer the same or better conditions at a lower price whenever you request a quote.
 
 With Requote, you can:
 
 * See cheaper or better-value alternatives for the same hotel.
 
-* Compare offers from different suppliers before the booking confirmation.
+* Compare offers from different suppliers before confirming a booking.
 
-* Choose at the book step whether to go with your original option or one of the suggested alternatives.
+* Choose at the quote step whether to continue with your original option or one of the suggested alternatives. The alternatives are returned ordered from best to worst and if the list is empty, it means there are no better options than your original quote.
 
 
 :::note
@@ -23,10 +23,12 @@ To use this feature, you must have at least one Requote app activated in the Tra
 
 ## 1. Execute Requote Price Plugin in your Query
 
+The plugin is optional. By default, Requote will always be applied if you have the app enabled in your Marketplace. However, you can use the plugin when you want to **temporarily disable** Requote for a quote request, without removing its global configuration. 
+
 To use the plugin, add the following field to the settings node of your request. Note that the Requote plugin can be executed during a quote request (quote step). To successfully execute the Requote plugin, you need to create the request with the following variables:
 
 * **`name`**: "*appSupplier*.*appName*.*version*"
-* **`enable`**: "true/false". You'll need to indicate if you want to use the APP in your quote query with this boolean. 
+* **`enable`**: "false". You'll need to indicate if you want to disable the APP in your quote query with this boolean. 
 * **`parameters`**: list of parameters depending on the APP supplier.
 
 
@@ -39,7 +41,7 @@ For instance, to use the Requote app from Travelgate:
             "pluginsType" : [
                 {
                     "name" : "tgx.requote.1",
-                    "enable" : "true",
+                    "enable" : "false",
                     "parameters" : [
                         {
                             "key" : "key",
@@ -55,7 +57,7 @@ For instance, to use the Requote app from Travelgate:
 
 ## 2. Read the Requote results
 
-When you execute a **quote query** with the Requote plugin enabled, make sure to request also the field "apps > requote" to obtain in your response the new information. 
+When Requote is active (by default or if you haven’t disabled it via plugin), make sure to request also the field "apps > requote" to obtain the information in your response.
 In this field, you will receive:
 
 * A list of alternative options from other suppliers, already evaluated by the app. These options include the same level of detail as your original quote response.

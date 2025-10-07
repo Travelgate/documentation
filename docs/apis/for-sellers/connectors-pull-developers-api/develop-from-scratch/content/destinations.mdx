@@ -1,0 +1,226 @@
+---
+title: "Destinations"
+sidebar_position: 13
+---
+
+## Destinations
+
+This operation is designed for the comprehensive retrieval of full **Destinations** static data.
+
+## **Models**
+
+### **Step 1: Define the Models of your response (Request and Response models)**
+
+These models are crucial because they specify the structure of the objects contained within supplier responses. They'll also play a vital role in serializing and deserializing requests and responses during development.
+
+![Template Structure Models Destinations](TemplateStructureModelsDestinations.png)
+
+**Destinations** usually do not require any request model, as they are HTTP GET methods.
+
+**Response example**:
+
+```csharp
+public class DestinationsSupplierResponse
+{
+    public List<Destinations> Destinations { get; set; }
+}
+
+public class Destinations
+{
+    public string Code { get; set; }
+    public string Name { get; set; }
+}
+```
+
+## **Develop**
+
+### **Step 1: Register the serializers and operations**
+To specify which serializer and operations the developer will be using (based on the seller's API) we can specify it in our "**Extensions**":
+
+File location: "**Destinations\DestinationsExtensions.cs**"
+
+If the seller works with **JSON** format, we can specify the integration to work with **JSON** with the following:
+
+```csharp
+using System.Text.Json;
+using Connectors.Content.Pull.Api.Extensions.Destinations;
+using Connectors.Core.App.Extensions;
+using ConnectorsTemplateContent.Common.Constants;
+using ConnectorsTemplateContent.Destinations.Models.Request;
+using ConnectorsTemplateContent.Destinations.Models.Response;
+using DestinationsOperation = ConnectorsTemplateContent.Destinations.Operations.DestinationsOperation;
+
+namespace ConnectorsTemplateContent.Destinations;
+
+public static class DestinationsExtensions
+{
+    public static void AddDestinationsServices(this IServiceCollection services,
+        IConfiguration configuration)
+    {
+        services.AddJsonSerializer<DestinationsRequest, DestinationsSupplierResponse>(ConfigureJSONOptions);
+        services.AddDestinationsOperation<DestinationsOperation, DestinationsRequest, DestinationsSupplierResponse, AccessModel>(
+            TgxPlatform.Name, configuration);
+    }
+    private static void ConfigureJSONOptions(JsonSerializerOptions options) { }
+}
+```
+For details about others serializers, check [Extensions](../../advanced-use/content-extensions).
+
+### **Step 2: DestinationsOperation validators**
+
+There are two previous validations that serve as a filter so the buildrequest and the parseresponse are as safe as possible. They can be found in the SearchOperation.cs class:
+
+File location: "**Destinations\Operations\DestinationsOperation.cs**"
+
+![TryValidateDestinations](DestinationsOperation.png)
+
+**TryValidateModelRequest**
+
+This step validates the incoming request from the client. While most validation is defined in the [metadata](../../advanced-configuration/metadata-definition), this step is used for specific edge cases that cannot be generalized.
+
+```csharp
+public bool TryValidateModelRequest(ContentRequest connectorsRequest,
+    ContentOperationParameters<AccessModel> connectorParameters,
+    out IEnumerable<AdviseMessage> adviseMessages)
+{
+    adviseMessages = null;
+    return true;
+}
+```
+
+**TryValidateSupplierResponses**
+
+Once the supplier's response is received, this step validates it for errors or anomalies. Suppliers may return incomplete or erroneous data, so this step ensures only valid responses are processed further.
+
+**Details**:
+
+- Check for supplier-specific error fields.
+- Ensure required fields (e.g., destinations list) are present.
+- Example Use Case: A supplier might return a response with an error code or an empty destinations list. This step would detect and handle such cases.
+
+```csharp
+public bool TryValidateSupplierResponses(ContentOperationParameters<AccessModel> connectorParameters,
+    IEnumerable<SupplierResponseWrapper<DestinationsSupplierResponse>> supplierResponses,
+    out IEnumerable<AdviseMessage> adviseMessages)
+    {
+    var supplierResponseWrappers = supplierResponses as SupplierResponseWrapper<DestinationsSupplierResponse>[] ?? supplierResponses.ToArray();
+    
+    var success = ResponseValidator.TryValidateSupplierResponses(supplierResponseWrappers, out adviseMessages);
+
+    if (!success) return false;
+    
+    if (supplierResponseWrappers.ElementAt(0).Response.Destinations is null)
+    {
+        adviseMessages =
+        [
+            AdviseMessage.BuildSupplierNoResults() // Indicates no results from the supplier.
+        ];
+
+        return false;
+    }
+
+    return true; // Validation passes if no issues are found.
+}
+```
+### **Step 3: Build the Seller's request**
+
+This class will contain a "BuildRequests" method that will have the following args: 
+
+- Object of the requests from the models previously created (DestinationsRequest).
+- The request that the buyer sends (connectorsRequest).
+- Parameters (connectorParameters) which will have some helpers.
+
+File location: "**Destinations\Operations\DestinationsOperation.BuildRequest.cs**"
+
+![Build Request Destinations](DestinationsBuildRequest.png)
+
+**Example of Build Request:**
+```csharp
+using Connectors.Content.Pull.Application.Operations;
+using Connectors.Core.Application.Connection;
+using ConnectorsTemplateContent.Destinations.Models.Request;
+namespace ConnectorsTemplateContent.Destinations.Operations;
+
+internal partial class DestinationsOperation
+{
+    public IEnumerable<SupplierRequestWrapper<DestinationsRequest>> BuildRequests(ContentRequest connectorsRequest,
+        ContentOperationParameters<AccessModel> connectorParameters)
+    {
+        string genericUrl = connectorParameters.ParametersModel.GenericUrl;
+
+        var request = new SupplierRequestWrapper<DestinationsRequest>(
+            null,
+            new Uri(genericUrl),
+            HttpMethod.Post);
+
+        return new List<SupplierRequestWrapper<DestinationsRequest>>()
+        {
+            request
+        };  
+    }
+}
+```
+
+### **Step 4: Parse the Seller's response**
+
+Once the request has been sent, we will have to control and parse the response returned by the seller.
+
+We will be implementing the "ParseResponse" step inside DestinationsOperation:
+
+File location: "**Destinations\Operations\DestinationsOperation.ParseResponse.cs**"
+
+![Build Buyer's Response](DestinationsParseResponse.png)
+
+**Example of Parse Response:**
+
+```csharp
+using Connectors.Content.Pull.Application.Operations;
+using Connectors.Content.Pull.Application.Operations.Destinations;
+using Connectors.Content.Pull.Domain.Contracts.Destinations.Delta;
+using Connectors.Core.Application.Connection;
+using ConnectorsTemplateContent.Destinations.Models.Response;
+using Content.Common.Domain.AccumulativeContracts.Destination;
+
+namespace ConnectorsTemplateContent.Destinations.Operations;
+
+internal partial class DestinationsOperation
+{
+    public DestinationsResponse ParseResponses(ContentRequest connectorsRequest,
+        ContentOperationParameters<AccessModel> connectorParameters,
+        IEnumerable<SupplierResponseWrapper<DestinationsSupplierResponse>> supplierResponses,
+        CancellationToken cancellationToken)
+    {
+        ParseSupplierDestinations(supplierResponses.First().Response);
+        return new DestinationsResponse(new DestinationsRs());
+    }
+
+    private void ParseSupplierDestinations(DestinationsSupplierResponse response)
+    {
+        foreach (var room in response.Destinations)
+        {
+            //Accumulator is used instead of returning an object with the response.
+           _accumulator.AddValue(new AccumulativeDestination()
+            {
+                Code = room.Code,
+                Names = new Dictionary<Iso2LanguageEnum, string>
+                {
+                    { Iso2LanguageEnum.EN, room.Name }
+                }
+            });
+        }
+    }
+}
+```
+
+## **Code Review**
+
+### **Step 1: Create Pull Request**
+
+    - Commit your Search changes and push them to a new branch called "**DestinationsDevelopment**" into the original repository.
+    - Separate the Pull Request into minimum these 4 commits:
+        - Request and Response models
+        - BuildRequest
+        - ParseResponse
+
+### **Step 2: Wait for Travelgate review**
+    - This step involves waiting for the Travelgate team to review and approve the submitted pull request, for more details, check [Code Review Details](../code-review/code-review-details.mdx)

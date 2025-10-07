@@ -1,0 +1,433 @@
+---
+title: "Cancel"
+sidebar_position: 5
+---
+
+## **Overview**
+
+The `Cancel` operation allows clients to terminate a previously confirmed booking. It uses the client and supplier locators to identify the reservation and process the cancellation. Depending on the supplier's policies, penalties or fees may apply.
+
+The `Cancel` operation ensures:
+- **Reservation Termination**: Enables clients to cancel bookings through the supplier's API.
+- **Penalty Calculation**: Returns any applicable cancellation fees based on the supplier's policies provided during `Quote`.
+- **Status Confirmation**: Confirms the success or failure of the cancellation request.
+
+When to Use:
+- **Client-Initiated Cancellations**: When the end-user requests to cancel their reservation.
+- **Penalty Validation**: To verify if a cancellation incurs fees before finalizing the process.
+
+> **Note**: Always check the cancellation policies returned during `Quote` to inform the client about any penalties.
+
+Common Scenarios:
+- **Penalty-Based Cancellations**: Applies when the supplier charges fees for cancellations based on policies.
+- **Error Handling**: Common errors include:
+  - `SupplierError`: Indicates the cancellation could not be processed by the supplier.
+
+## **Request**
+
+### **Overview**
+
+The request operation includes client and supplier locators and any additional data required by the supplier.
+
+### **Sample**
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+  <TabItem value="CancelRequest" label="C#">
+    ```csharp
+    var cancelRq = new CancelRq
+    {
+        Input = new CancelInput
+        {
+            Language = "99",
+            AccommodationRq = new Accommodation
+            {
+                Type = "Hotel",
+                Code = "12345"
+            },
+            Reference = new BookingReference
+            {
+                ClientLocator = "ClientReference12345",
+                SupplierLocator = "SupplierLocator389b10ca-893b-4e7b-adf6-b067a1b1d9b3",
+                HotelLocator = "HotelLocator208c2b6f-1cdf-4204-9ebe-f147808218d9"
+            }
+        },
+        Settings = new Settings
+        {
+            Supplier = "HOTELTEST",
+            Platform = "HOTELTEST",
+            Client = "TravelAgency123",
+            Access = new Access
+            {
+                Code = 1001,
+                User = "agency_user",
+                Password = "secure_password",
+                ApiKey = "API_KEY_123456789",
+                Urls = new Urls
+                {
+                    Book = "https://api.hotelsupplier.com/book",
+                    Search = "https://api.hotelsupplier.com/search",
+                    Quote = "https://api.hotelsupplier.com/quote",
+                    Generic = "https://api.hotelsupplier.com/generic"
+                },
+                Parameters = new Dictionary<string, string>
+                {
+                    { "someParameter1", "50" },
+                    { "someParameter2", "true" },
+                    { "someParameter3", "5000" },
+                    { "someParameter4", "SupplierX" }
+                }
+            },
+            BusinessRules = new BusinessRules
+            {
+                OptionsQuota = 170,
+                BusinessRuleType = "CheaperAmount"
+            },
+            Timeout = "00:00:10",
+            TimeoutAsTimeSpan = TimeSpan.Parse("00:00:10"),
+            IncludeProviderTransactions = true
+        }
+    };
+
+    ```
+  </TabItem>
+  <TabItem value="SampleJsonRequest" label="FormTest Sample JSON">
+```json
+"cancelRq":
+    {
+        "input":
+        {
+            "language": "99",
+            "accommodationRq":
+            {
+                "type": "Hotel",
+                "code": "12345"
+            },
+            "reference":
+            {
+                "clientLocator": "ClientReference12345",
+                "supplierLocator": "SupplierLocator389b10ca-893b-4e7b-adf6-b067a1b1d9b3",
+                "hotelLocator": "HotelLocator208c2b6f-1cdf-4204-9ebe-f147808218d9"
+            }
+        },
+        "settings":
+        {
+            "supplier": "HOTELTEST",
+            "platform": "HOTELTEST",
+            "client": "TravelAgency123",
+            "access":
+            {
+                "code": 1001,
+                "user": "agency_user",
+                "password": "secure_password",
+                "apiKey": "API_KEY_123456789",
+                "urls":
+                {
+                    "book": "https://api.hotelsupplier.com/book",
+                    "search": "https://api.hotelsupplier.com/search",
+                    "quote": "https://api.hotelsupplier.com/quote",
+                    "generic": "https://api.hotelsupplier.com/generic"
+                },
+                "parameters":
+                {
+                    "someParameter1": "50",
+                    "someParameter2": "true",
+                    "someParameter3": "5000",
+                    "someParameter4": "SupplierX"
+                }
+            },
+            "businessRules":
+            {
+                "optionsQuota": 170,
+                "businessRuleType": "CheaperAmount"
+            },
+            "timeout": "00:00:10",
+            "timeoutAsTimeSpan": "00:00:10",
+            "includeProviderTransactions": true
+        }
+    }
+```
+  </TabItem>
+</Tabs>
+
+### **Details**
+
+<!-- TABLE BEGIN Connectors.Pull.Hotel.Domain.Contracts.Cancel.Request.CancelRq -->
+| Name | Relation | Type | Description |
+|------|:--------:|:----:|-------------|
+| **Input** | 1 | [CancelInput](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/cancelinput) |  Gets or initializes the input details for the cancellation request, including specific information about the booking to be canceled. Such as the access, booking reference, and accommodation code. |
+| **Input/AccessCode** | 0 . . 1 | String |  Access code associated with the cancellation request. This property is deprecated and should not be used in new implementations. |
+| **Input/Language** | 1 | String |  Gets or sets the language code for the cancellation request. |
+| **Input/AccommodationRq** | 1 | [AccommodationRQ](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/accommodationrq) |  Details of the accommodation associated with the cancellation request, such as the accommodation type and code. |
+| **Input/AccommodationRq/Type** | 1 | [AccommodationType](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/accommodationtype) |  Specifies the type of accommodation being requested, such as Hotel or Rental. |
+| **Input/AccommodationRq/Code** | 1 | String |  Represents a unique code identifying the accommodation in the request. |
+| **Input/Reference** | 1 | [Reference](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/reference) |  Reference information containing client, supplier, or hotel locators for the booking associated with the cancellation request. Validation of these locators is performed based on the metadata restriction information. |
+| **Input/Reference/ClientLocator** | 0 . . 1 | String |  The booking locator provided by the client.This is typically used to match the booking in the client's internal systems. |
+| **Input/Reference/**<br />**SupplierLocator** | 0 . . 1 | String |  The booking locator provided by the supplier.This identifier is used to reference the booking in the supplier's system. |
+| **Input/Reference/HotelLocator** | 0 . . 1 | String |  The booking locator specific to the hotel, provided by the supplier. (Optional)This may be required in cases where the hotel system uses its own unique identifiers. |
+| **Settings** | 1 | [Settings](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/settings) |  Gets or initializes the platform-specific settings required for processing the cancellation request. These settings include credentials, API endpoints, parameters, and details about the client, supplier, and platform involved in the request. |
+| **Settings/Supplier** | 1 | String |  Identifies the supplier associated with the hotel operation. This is a unique code generated by Travelgate within its system to represent the supplier. |
+| **Settings/Platform** | 1 | String |  Represents the platform on which the hotel operation is performed.Platforms are collections of suppliers, and the platform code is generated by Travelgate to define the operational context. |
+| **Settings/Client** | 1 | String |  Represents the client performing the hotel operation.This is a unique client code assigned by Travelgate to identify the client within its system. |
+| **Settings/Access** | 1 | [Access](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/access) |  Contains access information required for the operation, including API credentials, endpoints, and other connection details specific to the supplier's integration. |
+| **Settings/Access/Code** | 1 | Integer |  The unique code identifying the access configuration. |
+| **Settings/Access/User** | 0 . . 1 | String |  The username used for authentication with the supplier. |
+| **Settings/Access/Password** | 0 . . 1 | String |  The password used for authentication with the supplier. |
+| **Settings/Access/ApiKey** | 0 . . 1 | String |  The API key used for authentication or authorization. |
+| **Settings/Access/Urls** | 1 | [Urls](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/urls) |  The URLs associated with the access configuration. |
+| **Settings/Access/Urls/Book** | 0 . . 1 | String |  The URL used for booking operations. |
+| **Settings/Access/Urls/Search** | 0 . . 1 | String |  The URL used for Search operations. |
+| **Settings/Access/Urls/Quote** | 0 . . 1 | String |  The URL used for Quote operations. |
+| **Settings/Access/Urls/Generic** | 0 . . 1 | String |  A generic URL for additional operations. |
+| **Settings/Access/Parameters** | 0 . . 1 | [AccessParameters](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/accessparameters) |  Additional parameters related to the connection. |
+| **Settings/BusinessRules** |0 . . 1 | [BusinessRules](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/businessrules) |  Specifies the business rules to be applied during the operation. These rules define operational constraints and behavior, such as quota limits or prioritization criteria. |
+| **Settings/BusinessRules/**<br />**OptionsQuota** | 0 . . 1 | Integer |  The maximum number of options returned for each board in the Search query. |
+| **Settings/BusinessRules/**<br />**BusinessRuleType** | 1 | [BusinessRulesType](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/businessrulestype) |  The business rule type that determines how Search results are prioritized or filtered. |
+| **Settings/Timeout** | 1 | String |  Defines the timeout period for the operation as a string value.This indicates the maximum amount of time to wait for a supplier's response before timing out.The value must be provided in timestamp format (e.g., "00:00:10" for 10 seconds). |
+| **Settings/TimeoutAsTimeSpan** | 0 . . 1 | String |  Converts the timeout value from the string representation (Timeout) into a TimeSpan for use in time-based operations. |
+| **Settings/**<br />**IncludeProviderTransactions** | 1 | Boolean |  Indicates whether detailed traces of provider transactions should be included in the operation's response.If enabled, the ProviderAudit field in responses will contain the transaction logs (e.g., requests and responses exchanged with the supplier). |
+<!-- TABLE END -->
+
+## **Response**
+
+Provides the cancellation status, penalties (if any), and any warnings or remarks.
+
+### **Overview**
+
+The `Cancel` operation provides:
+- **Cancellation Status**:
+  - `Confirmed`: The reservation status is OK, is not cancelled.
+  - `Canceled`: Indicates the reservation has been successfully canceled.
+  - `On_Request`: The reservation was completed but the product is still not available by the Seller, so the reservation goes into a waiting list. It is the Buyer’s responsibility to check if the booking is OK.
+  - `Unknown`: During the cancelation process, an issue led to an unknown reservation status. The Buyer is responsible for confirming with the Seller that the booking has been canceled.
+- **Cancellation Fees**: If applicable, the supplier may return a penalty fee for the cancellation.
+- **Warnings or Remarks**: Additional details from the supplier about the cancellation process.
+
+### **Sample**
+
+<Tabs>
+  <TabItem value="CancelResponse" label="C#">
+    ```csharp
+    var cancelRs = new CancelRs
+    {
+        AuditData = new AuditData
+        {
+            Request = new List<RequestItem>
+            {
+                new RequestItem
+                {
+                    Data = "<x>SupplierRequest</x>",
+                    Headers = new Dictionary<string, string>
+                    {
+                        { "Accept", "application/x-protobuf" },
+                        { "Accept-Encoding", "gzip,deflate," }
+                    },
+                    HttpMethod = new HttpMethodType
+                    {
+                        Method = "POST"
+                    },
+                    SendAt = DateTime.Parse("2025-03-16T08:21:49Z"),
+                    Url = "http://travelgate.com"
+                }
+            },
+            Response = new List<ResponseItem>
+            {
+                new ResponseItem
+                {
+                    Data = "<x>SupplierResponse</x>",
+                    Headers = new Dictionary<string, string>
+                    {
+                        { "Content-Encoding", "gzip," }
+                    },
+                    HttpMethod = new HttpMethodType
+                    {
+                        Method = "POST"
+                    },
+                    ReceivedAt = DateTime.Parse("2025-03-16T08:21:49Z"),
+                    StatusCode = 200
+                }
+            }
+        },
+        AdviseMessages = new List<AdviseMessage>
+        {
+            new AdviseMessage
+            {
+                Code = "SupplierError",
+                Level = "Error",
+                Description = "Supplier error, check external for more details",
+                External = new ExternalError
+                {
+                    Code = "Code123",
+                    Message = "Supplier internal error",
+                    HttpStatusCode = 200
+                }
+            }
+        },
+        Reference = new BookingReference
+        {
+            ClientLocator = "ClientReference12345",
+            SupplierLocator = "SupplierLocator389b10ca-893b-4e7b-adf6-b067a1b1d9b3",
+            HotelLocator = "HotelLocator208c2b6f-1cdf-4204-9ebe-f147808218d9"
+        },
+        CancelLocator = "CancelLocator85bf83d1-2a63-4771-98d4-c61bb0d1097a",
+        Status = "Cancelled",
+        BookPrice = new Price
+        {
+            Currency = "EUR",
+            Binding = true,
+            Net = 100,
+            Gross = 100,
+            NetSpecified = true,
+            MinimumSellingPrice = 100
+        },
+        CancelPrice = new Price
+        {
+            Currency = "EUR",
+            Binding = true,
+            Net = 100,
+            Gross = 100,
+            NetSpecified = true,
+            MinimumSellingPrice = 100
+        }
+    };
+
+    ```
+  </TabItem>
+  <TabItem value="SampleJsonRequest" label="FormTest Sample JSON">
+```json
+"cancelRs":
+    {
+        "auditData":
+        {
+            "request":
+            [
+                {
+                    "data": "<x>SupplierRequest</x>",
+                    "headers":
+                    {
+                        "Accept": "application/x-protobuf",
+                        "Accept-Encoding": "gzip,deflate,"
+                    },
+                    "httpMethod":
+                    {
+                        "method": "POST"
+                    },
+                    "sendAt": "2025-03-16 08:21:49Z",
+                    "url": "http://travelgate.com"
+                }
+            ],
+            "response":
+            [
+                {
+                    "data": "<x>SupplierResponse</x>",
+                    "headers":
+                    {
+                        "Content-Encoding": "gzip,"
+                    },
+                    "httpMethod":
+                    {
+                        "method": "POST"
+                    },
+                    "receivedAt": "2025-03-16 08:21:49Z",
+                    "statusCode": 200
+                }
+            ]
+        },
+        "adviseMessages":
+        [
+            {
+                "code": "SupplierError",
+                "level": "Error",
+                "description": "Supplier error, check external for more details",
+                "external":
+                {
+                    "code": "Code123",
+                    "message": "Supplier internal error",
+                    "httpStatusCode": 200
+                }
+            }
+        ],
+        "reference":
+        {
+            "clientLocator": "ClientReference12345",
+            "supplierLocator": "SupplierLocator389b10ca-893b-4e7b-adf6-b067a1b1d9b3",
+            "hotelLocator": "HotelLocator208c2b6f-1cdf-4204-9ebe-f147808218d9"
+        },
+        "cancelLocator": "CancelLocator85bf83d1-2a63-4771-98d4-c61bb0d1097a",
+        "status": "Cancelled",
+        "bookPrice":
+        {
+            "currency": "EUR",
+            "binding": true,
+            "net": 100,
+            "gross": 100,
+            "netSpecified": true,
+            "minimumSellingPrice": 100
+        },
+        "cancelPrice":
+        {
+            "currency": "EUR",
+            "binding": true,
+            "net": 100,
+            "gross": 100,
+            "netSpecified": true,
+            "minimumSellingPrice": 100
+        }
+    }
+```
+  </TabItem>
+</Tabs>
+
+### **Details**
+
+ <!-- TABLE BEGIN Connectors.Pull.Hotel.Domain.Contracts.Cancel.Response.CancelRs -->
+| Name | Relation | Type | Description |
+|------|:--------:|:----:|-------------|
+| **AuditData** | 1 | [ProviderAudit](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/provideraudit) | Gets or sets the audit data provided by the supplier or system for the operation. |
+| **AuditData/Request** | 0 . . N | Array&lt;[ProviderAuditRq](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/providerauditrq)&gt; |  Collection of audit entries for provider requests.Each entry contains details about a specific request made to the provider. |
+| **AuditData/Request/SendAt** | 1 | String |  The timestamp indicating when the request was sent. Date on UTC Standard (ISO 8601 UTC `2025-05-21T08:48:53.9744052+00:00`) |
+| **AuditData/Request/Data** | 1 | String |  The payload data included in the request. |
+| **AuditData/Request/Url** | 1 | String |  The URL of the provider endpoint to which the request is sent. |
+| **AuditData/Request/Headers** | 1 | Object |  A collection of headers included in the request. |
+| **AuditData/Request/HttpMethod** | 1 | [HttpMethod](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/httpmethod) |  The HTTP method used to send the request. |
+| **AuditData/Request/HttpMethod/**<br />**Method** | 1 | String |  No description available. |
+| **AuditData/Response** | 0 . . N | Array&lt;[ProviderAuditRs](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/providerauditrs)&gt; |  Collection of audit entries for provider responses.Each entry contains details about a specific response received from the provider. |
+| **AuditData/Response/ReceivedAt** | 1 | String |  The timestamp indicating when the response was received. Date on UTC Standard (ISO 8601 UTC `2025-05-21T08:48:53.9744052+00:00`) |
+| **AuditData/Response/Data** | 1 | String |  The payload data contained in the provider's response. |
+| **AuditData/Response/Headers** | 1 | Object |  A collection of headers included in the provider's response. |
+| **AuditData/Response/StatusCode** | 1 | Integer |  The HTTP status code returned by the provider. |
+| **AdviseMessages** | 0 . . N | Array&lt;[AdviseMessage](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/advisemessage)&gt; |  Gets the collection of advise messages related to the cancellation operation. |
+| **AdviseMessages/Code** | 1 | [AdviseMessageCode](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/advisemessagecode) |  Gets the code that represents the message type. |
+| **AdviseMessages/Level** | 1 | [AdviseMessageLevel](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/advisemessagelevel) |  Gets the severity level of the message (e.g., Error, Warning, or Info). |
+| **AdviseMessages/Description** | 1 | String |  Gets the message description providing additional context. |
+| **AdviseMessages/CorrelationId** | 0 . . 1 | String |  Gets a unique identifier for correlating the message with specific operations. |
+| **AdviseMessages/External** | 0 . . 1 | [External](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/external) |  Gets additional external details associated with the message. |
+| **AdviseMessages/External/Code** | 1 | String |  The supplier's internal code for identifying the nature of the response or error. |
+| **AdviseMessages/External/**<br />**Message** | 1 | String |  A descriptive message returned by the supplier. |
+| **AdviseMessages/External/**<br />**HttpStatusCode** | 1 | Integer |  The HTTP status code of the supplier's response. |
+| **Reference** | 0 . . 1 | [Reference](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/reference) |  Gets the reference information associated with the booking. |
+| **Reference/ClientLocator** | 0 . . 1 | String |  The booking locator provided by the client.This is typically used to match the booking in the client's internal systems. |
+| **Reference/SupplierLocator** | 0 . . 1 | String |  The booking locator provided by the supplier.This identifier is used to reference the booking in the supplier's system. |
+| **Reference/HotelLocator** | 0 . . 1 | String |  The booking locator specific to the hotel, provided by the supplier. (Optional)This may be required in cases where the hotel system uses its own unique identifiers. |
+| **CancelLocator** | 0 . . 1 | String |  Gets or sets the cancel locator value specific to the cancellation operation. |
+| **Status** | 1 | [BookStatus](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/bookstatus) |  Gets the status of the booking after the cancellation operation. Possible values: Unknown, Ko, Ok, OnRequest, Cancelled or PendingCommit. |
+| **BookPrice** | 0 . . 1 | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/price) |  Gets or sets the original booking price before cancellation. |
+| **BookPrice/Currency** | 1 | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/currency) |  The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
+| **BookPrice/Binding** | 1 | Boolean |  Indicates whether the price is binding. |
+| **BookPrice/Net** | 1 | Double |  The net price paid by the Buyer to the Seller. |
+| **BookPrice/Gross** | 1 | Double |  The gross price, which includes the net price and the Buyer's commission. |
+| **BookPrice/NetSpecified** | 1 | Boolean |  Indicates whether the net price is explicitly specified. |
+| **BookPrice/MinimumSellingPrice** | 1 | Double |  The minimum selling price. |
+| **CancelPrice** | 0 . . 1 | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/price) |  Gets or sets the price associated with the cancellation operation. |
+| **CancelPrice/Currency** | 1 | [Currency](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/currency) |  The currency of the price, represented in ISO 4217 format (e.g., USD, EUR). |
+| **CancelPrice/Binding** | 1 | Boolean |  Indicates whether the price is binding. |
+| **CancelPrice/Net** | 1 | Double |  The net price paid by the Buyer to the Seller. |
+| **CancelPrice/Gross** | 1 | Double |  The gross price, which includes the net price and the Buyer's commission. |
+| **CancelPrice/NetSpecified** | 1 | Boolean |  Indicates whether the net price is explicitly specified. |
+| **CancelPrice/**<br />**MinimumSellingPrice** | 1 | Double |  The minimum selling price. |
+| **AddOns** | 0 . . 1 | Object |  Gets or sets additional supplier information as key-value pairs. |
+<!-- TABLE END -->
+
+---

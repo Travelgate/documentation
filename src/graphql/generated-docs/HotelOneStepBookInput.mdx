@@ -323,11 +323,50 @@ If the chargeType is excluded the customer will have to pay it directly at the h
         </summary>
       </details>
 
-      <details style={{ pointerEvents: "none" }}>
+      <details>
         <summary>
-        **price**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+        **price**&nbsp;<span class="required"> *</span>&nbsp; (*PriceInput*)  
         Indicates the surcharge price.  
         </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **currency**&nbsp;<span class="required"> *</span>&nbsp; (*Currency*)  
+          Currency code indicating which currency should be paid.
+This information is mandatory.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **binding**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+          It indicates if the price indicated in the gross must be respected.
+That is, the customer can not sell the room / option at a price lower than that established by the supplier.
+This information is mandatory.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **net**&nbsp;<span class="required"> *</span>&nbsp; (*Float*)  
+          Indicates the net price that the customer must pay to the supplier.
+This information is mandatory.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **gross**&nbsp;<span class="required"> *</span>&nbsp; (*Float*)  
+          Indicates the retail price that the supplier sells to the customer.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **minimumSellingPrice** (*Float*)  
+          Indicates the minimum selling price it can be sold (determined by the seller).  
+          </summary>
+        </details>
       </details>
 
       <details style={{ pointerEvents: "none" }}>
@@ -384,11 +423,14 @@ If the chargeType is excluded the customer will have to pay it directly at the h
 
       <details style={{ pointerEvents: "none" }}>
         <summary>
-        **chargeType**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+        **chargeType**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of ChargeType*)  
         Indicates the charge types. We need to know whether the supplements have to be paid when the consumer gets to the hotel or beforehand.
 Possible charge types: Include or Exclude.
 When include: this supplement is mandatory and included in the option's price.
 When exclude: this supplement is not included in the option's price.  
+        Possible values:  
+        `INCLUDE`  
+      `EXCLUDE`  
         </summary>
       </details>
 
@@ -471,11 +513,50 @@ Format: YYYY-MM-DD
         </details>
       </details>
 
-      <details style={{ pointerEvents: "none" }}>
+      <details>
         <summary>
-        **price** (*undefined*)  
+        **price** (*PriceInput*)  
         Indicates the supplement price.  
         </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **currency**&nbsp;<span class="required"> *</span>&nbsp; (*Currency*)  
+          Currency code indicating which currency should be paid.
+This information is mandatory.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **binding**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
+          It indicates if the price indicated in the gross must be respected.
+That is, the customer can not sell the room / option at a price lower than that established by the supplier.
+This information is mandatory.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **net**&nbsp;<span class="required"> *</span>&nbsp; (*Float*)  
+          Indicates the net price that the customer must pay to the supplier.
+This information is mandatory.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **gross**&nbsp;<span class="required"> *</span>&nbsp; (*Float*)  
+          Indicates the retail price that the supplier sells to the customer.  
+          </summary>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **minimumSellingPrice** (*Float*)  
+          Indicates the minimum selling price it can be sold (determined by the seller).  
+          </summary>
+        </details>
       </details>
     </details>
 
@@ -630,8 +711,14 @@ Format: YYYY-MM-DD
 
           <details style={{ pointerEvents: "none" }}>
             <summary>
-            **title** (*undefined*)  
+            **title** (*Enum of PersonalTitleType*)  
             Holder’s title.  
+            Possible values:  
+            `MR`  
+          `MRS`  
+          `MISS`  
+          `MS`  
+          `NOT_SPECIFIED`  
             </summary>
           </details>
 
@@ -841,11 +928,73 @@ Format: YYYY-MM-DD
       </details>
     </details>
 
-    <details style={{ pointerEvents: "none" }}>
+    <details>
       <summary>
-      **holder**&nbsp;<span class="required"> *</span>&nbsp; (*undefined*)  
+      **holder**&nbsp;<span class="required"> *</span>&nbsp; (*HolderInput*)  
       Information of the passenger that holds the booking (has to be complementary to the first passenger)  
       </summary>
+  
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **name**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+        The card holder's name.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **surname**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
+        The card holder's surname.  
+        </summary>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+        **title** (*Enum of PersonalTitleType*)  
+        Holder’s title.  
+        Possible values:  
+        `MR`  
+      `MRS`  
+      `MISS`  
+      `MS`  
+      `NOT_SPECIFIED`  
+        </summary>
+      </details>
+
+      <details>
+        <summary>
+        **contactInfo** (*ContactInfoInput*)  
+        Holder's contact info.  
+        </summary>
+  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+          **email** (*Email*)  
+          Email contact  
+          </summary>
+        </details>
+
+        <details>
+          <summary>
+          **phone** (*PhoneInput*)  
+          Phone contact  
+          </summary>
+  
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **countryCode**&nbsp;<span class="required"> *</span>&nbsp; (*DialingCountryCode*)  
+            The combination of one, two or three digits identifying a specific country, countries in an integrated numbering plan, or a specific geographic area (1 to 3 digits)  
+            </summary>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+            **number**&nbsp;<span class="required"> *</span>&nbsp; (*PhoneSubscriberNumber*)  
+            Identifies a subscriber for a particular global service  
+            </summary>
+          </details>
+        </details>
+      </details>
     </details>
 
     <details>

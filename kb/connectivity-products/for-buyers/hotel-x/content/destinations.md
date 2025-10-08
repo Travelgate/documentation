@@ -8,7 +8,7 @@ sidebar_position: 3
 The Destinations Query provides a list of destinations from a supplier’s access, allowing Buyers to retrieve all destinations configured for a given set of credentials.
 
 :::tip
-Check out our [Hotel-X Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/destinations#requests-examples) for a complete example of a Destinations Query! 🚀
+Check out our [Hotel-X Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/destinations#query-overview) for a complete example of a Destinations Query! 🚀
 :::
 
 ### What Information is Included in the Destinations Query Response? 

@@ -1,0 +1,98 @@
+---
+sidebar_position: 11
+---
+
+# Requote
+
+The **Requote** plugin allows you to deactivate any Requote app available in the Travelgate App Store.
+
+The Requote app is a Travelgate feature that automatically evaluates if other of your suppliers in the Marketplace can offer the same or better conditions at a lower price whenever you request a quote.
+
+With Requote, you can:
+
+* See cheaper or better-value alternatives for the same hotel.
+
+* Compare offers from different suppliers before confirming a booking.
+
+* Choose at the quote step whether to continue with your original option or one of the suggested alternatives. The alternatives are returned ordered from best to worst and if the list is empty, it means there are no better options than your original quote.
+
+
+:::note
+To use this feature, you must have at least one Requote app activated in the Travelgate Apps Marketplace.
+:::
+
+## 1. Execute Requote Price Plugin in your Query
+
+The plugin is optional. By default, Requote will always be applied if you have the app enabled in your Marketplace. However, you can use the plugin when you want to **temporarily disable** Requote for a quote request, without removing its global configuration. 
+
+To use the plugin, add the following field to the settings node of your request. Note that the Requote plugin can be executed during a quote request (quote step). To successfully execute the Requote plugin, you need to create the request with the following variables:
+
+* **`name`**: "*appSupplier*.*appName*.*version*"
+* **`enable`**: "false". You'll need to indicate if you want to disable the APP in your quote query with this boolean. 
+* **`parameters`**: list of parameters depending on the APP supplier.
+
+
+For instance, to use the Requote app from Travelgate:
+
+```js
+"settings": {
+    "plugins" : [
+        {
+            "pluginsType" : [
+                {
+                    "name" : "tgx.requote.1",
+                    "enable" : "false",
+                    "parameters" : [
+                        {
+                            "key" : "key",
+                            "value" : "value"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+```
+
+## 2. Read the Requote results
+
+When Requote is active (by default or if you haven’t disabled it via plugin), make sure to request also the field "apps > requote" to obtain the information in your response.
+In this field, you will receive:
+
+* A list of alternative options from other suppliers, already evaluated by the app. These options include the same level of detail as your original quote response.
+* In each alternative option, the **`savings`** node indicates how much you can save compared to your original quoted option.
+
+```js
+{
+    "data" : {
+        "hotelX" : {
+            "quote" : {...}, *original quote response from your request*
+                "apps" : {
+                    "requote" : {
+                        "appSupplierCode" : "TG",
+                        "options" : [
+                            {
+                                "savings" : {
+                                    "value" : 36,
+                                    "currency" : "EUR"
+                                },
+                                "optionQuote" : {...}
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+
+Once you have the results:
+
+1. Review the alternative options and savings.
+2. Decide which option is best for your business.
+3. For the **book** step, use the `optionID` of the option you finally want to confirm.
+ 
+

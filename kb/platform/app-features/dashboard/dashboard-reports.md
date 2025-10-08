@@ -6,36 +6,44 @@ sidebar_position: 2
 
 ## What Kind of Reports Can I Find in My Dashboard? 
 
-### 1. **Quick Overview of Your Connections**
-   - **Total Searches**: Total Search requests sent.
-   - **Total Bookings OK**: Total volume of all OK booking transactions.
-   - **Total Cancellations OK**: Total volume of all cancelled booking transactions.
-   - **Look-to-Book (L2B)**: Total number of Search requests divided by total number of bookings OK, minus cancellations OK.
-   - **Gross Merchandise Value (GMV)**: Total value (€) of all bookings with status OK.
+The Travelgate Dashboard offers several performance reports that help both Buyers and Sellers track their operational data in real time and over short-term periods. Here's a breakdown of the available reports:
 
-   ![dashboard_1](https://storage.travelgate.com/kbase/dashboard_1.jpg)
+### Real-Time Bookings
+Stay up to date with the most recent booking activity. This section includes:
+   - **Latest Update:** Timestamp of the most recent data refresh.
+   - **Today’s Bookings:** Total number of confirmed bookings as of the current date and time.
+   - **Yesterday’s Bookings:** Total number of confirmed bookings as of the same time yesterday.
+   - **Same day last week:** Total number of confirmed bookings as of the same time last week.
 
-### 2. **Latest Status of Reported Issues**  
-   - Overview of the status of the most recent issues raised on your side in our Platform.
-   
-   ![dashboard_2](https://storage.travelgate.com/kbase/dashboard_2.jpg)
+### Quick Overview
+Get a snapshot of your key metrics to evaluate overall platform activity and performance:
+   - **Total Searches:** The total volume of of Search transactions.
+   - **Total Bookings OK:** Total volume of Book transactions with status OK.
+   - **Total Cancellations OK:** Total volume of Cancel transactions with status OK.
+   - **Look-to-Book Ratio (L2B):** Total number of Searches divided by total number of bookings OK, minus cancellations OK.
+   - **Gross Merchandise Value (GMV):** Total value (€) of all bookings with status OK.
 
-### 3. **Smart Traffic APPs**
-   - Travelgate Smart Traffic APPs personalized recommendations to optimize your traffic and improve your overall performance in our Platform.
-   
-   ![dashboard_3](https://storage.travelgate.com/kbase/dashboard_3.jpg)
+**Metrics are available for:**
+- Yesterday
+- Last 7 days
+- Same day last week
 
-### 4. **Additional Performance Reports**
-   - **Top Booked Countries**: Most booked countries and their market share.
-   - **Top Source Markets**: Top source markets and their market share.
-   - **Download Your Latest Invoices**.
-   - **Recommended Partners for You**: [Suggestions](/kb/welcome-to-travelgate/network-essentials/) based on your account profile (Buyer/Seller).
-   - **Connections with the Highest Booking Volume**: Based on total bookings per connection and their corresponding TTV.
-   - **Worst L2B Connections**: Connections with the worst L2B and their corresponding search requests, bookings, and cancellations.
-   - **Worst Availability Ratio Connections**: Based on non-availability responses and their corresponding search requests.
-   - **Connections with the Highest Traffic**: Based on the sum of total search requests per connection.
+**Each metric is also compared to:**
+- The previous day
+- The same day last week
 
-   ![dashboard_4](https://storage.travelgate.com/kbase/dashboard_4.jpg)
+![tg-dashboard-1](https://storage.travelgate.com/kbase/tg-dashboard-1.png)
+
+:::tip
+For an immersive performance monitoring experience, check out our incredible [Stats](/kb/platform/app-features/monitoring-tools/stats/stats-details). It offers a comprehensive range of features that will take your monitoring to the next level! 🚀
+:::
+
+### Additional Performance Reports
+These reports provide deeper insight into your top-performing connections:
+- **Top Connections by Bookings:** Lists the connections that generated the highest number of bookings.
+- **Top Connections by GMV (€):** Highlights connections with the highest Gross Market Value (in euros).
+
+![new-dashboard-2](https://storage.travelgate.com/kbase/new-dashboard-2.png)
 
 :::info GMV and TTV
 - **GMV (Gross Market Value)**: For a Travelgate Partner, GMV stands for "Gross Market Value". Similar to the general definition in B2B contexts, it refers to the total sales value of all transactions processed through the Travelgate Platform. This metric is crucial for partners as it indicates the volume of business conducted via the Platform, reflecting the scale and financial performance of the partnership.

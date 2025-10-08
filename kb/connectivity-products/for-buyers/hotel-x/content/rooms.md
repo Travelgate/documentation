@@ -11,7 +11,7 @@ The Rooms Query provides a comprehensive mapping of room types available for a g
 To retrieve the room list, simply follow the specifications outlined in our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/rooms) and build your own Rooms Query. You can also customize the fields you request to ensure you receive only the relevant information.
 
 :::tip
-Explore our [Hotel-X Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/rooms#requests-examples) for a complete example of a Rooms Query! 🚀
+Explore our [Hotel-X Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/rooms#query-overview) for a complete example of a Rooms Query! 🚀
 :::
 
 ## Filtering and Pagination

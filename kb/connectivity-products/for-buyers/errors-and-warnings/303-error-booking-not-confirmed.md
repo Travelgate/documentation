@@ -5,7 +5,7 @@ sidebar_position: 15
 # 303 Error - Booking Not Confirmed
 
 ## What Does a 303 Error Mean?
-A 303 error is uncommon but may appear in the Book response (Reservation response) when a Seller is unable to confirm a booking.
+A **303 error** is uncommon but may appear in the Book response (Reservation response) when a Seller is unable to confirm a booking.
 
 ```
 <type>303</type> <description>Booking not confirmed</description>

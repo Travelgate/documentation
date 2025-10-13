@@ -71,6 +71,8 @@ To view blocked hotels:
 
 ![traffic_optimizer_5](https://storage.travelgate.com/kbase/traffic_optimizer_5.jpg)
 
+4. You can also request a CSV file containing all the blocked hotels by clicking **Download CSV**. Once the file is generated, you will receive a notification to download it.
+
 ## How is Traffic Optimizer Improving My Search Traffic?
 
 To monitor performance:

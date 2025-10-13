@@ -25,7 +25,7 @@ For a rate with a check-in date of **25/08/2022**, where the Seller operates in 
 - **Example 4:** If the Seller provides `HoursPriorCheckIn:48`, we will return `2022-08-22T19:00:00Z`.
 
 ### Case 3 ✅
-If the Seller states (via a Support Case) that their **timezone is unknown or based on the Buyer’s timezone**, we apply a **+14-hour buffer** to the `Deadline` node as a precautionary measure to avoid penalties.
+If the Seller states (via a Support Case) that their **timezone is unknown**, we apply a **+14-hour buffer** to the `Deadline` node as a precautionary measure to avoid penalties.
 
 For a rate with a check-in date of **25/08/2022**:
 

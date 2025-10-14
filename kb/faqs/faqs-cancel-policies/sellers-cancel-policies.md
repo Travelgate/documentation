@@ -25,7 +25,7 @@ In the Travelgate [Quote (Valuation)](/docs/apis/for-sellers/deprecated/hotel-pu
   ![deadline-format-updated](https://storage.travelgate.com/kbase/deadline-format-updated.jpg)
 
 - **CALCULATED DEADLINE**  
-  The **CalculatedDeadline** specifies if the deadline has been modified by Travelgate by adding 14 hours (Timezone Unknown). This field is for informational purposes only.
+  The **CalculatedDeadline** field indicates whether the Deadline value originates from the Seller’s response or has been calculated by Travelgate.
 
   The table below outlines how cancellation policies are processed based on the timezone specified in Metadata:
 

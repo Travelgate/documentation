@@ -254,6 +254,63 @@ export const searchQuickStartVariables =
 }`
 
 
+export const searchWithoutFilterVariables = 
+`{
+    "criteriaSearch" : {
+        "checkIn" : "2027-05-28",
+        "checkOut" : "2027-05-29",
+        "occupancies" : [
+            {
+                "paxes" : [
+                    {
+                        "age" : 30
+                    },
+                    {
+                        "age" : 30
+                    }
+                ]
+            }
+        ],
+        "hotels" : [
+            "BR1518"
+        ],
+        "currency" : "EUR",
+        "markets" : [
+            "ES"
+        ],
+        "language" : "en",
+        "nationality" : "ES"
+    },
+    "settings" : {
+        "client" : "client_demo",
+        "context" : "TGX",
+        "testMode" : true,
+        "timeout" : 25000,
+        "plugins" : [
+            {
+                "step" : "RESPONSE_OPTION",
+                "pluginsType" : [
+                    {
+                        "type" : "ROOM_MAP",
+                        "name" : "room_map",
+                        "parameters" : [
+                            {
+                                "key" : "context",
+                                "value" : "TGX"
+                            },
+                            {
+                                "key" : "description",
+                                "value" : "true"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}`
+
+
 export const searchTwoRoomsVariables = 
 `{
 	"criteriaSearch": {

@@ -6,7 +6,7 @@ import HotelSettingsInput from "../../../../../src/graphql/generated-docs/HotelS
 import HotelXFilterSearchInput from "../../../../../src/graphql/generated-docs/HotelXFilterSearchInput.mdx";
 import HotelSearch from "../../../../../src/graphql/generated-docs/HotelSearch.mdx";
 
-import {searchQuickStartQuery, searchTwoRoomsVariables, searchMultipleHotelsVariables} from "../../../../../src/graphql/hotel-x/search.quickstart.query";
+import {searchQuickStartQuery, searchTwoRoomsVariables, searchMultipleHotelsVariables, searchWithoutFilterVariables} from "../../../../../src/graphql/hotel-x/search.quickstart.query";
 
 # Search
 
@@ -209,13 +209,24 @@ Some Sellers may not include cancellation policies in their availability data. Y
 
 ## Examples
 
+#### Search query [1 hotel, 1 rooms: 2 adults]
+
+This first search query is executed without specifying the 'filterSearch > access' node. In this case, the request will be sent by default to all accesses linked to the client "client_demo".
+
+<GraphqlSample query={searchQuickStartQuery} variables={searchTwoRoomsVariables}/>
+&nbsp;
+
+In the next example, the search query includes the 'filterSearch > access' node, specifying access "2". This means the request will be sent only to the credentials associated with access 2 of the supplier "HOTELTEST".
+
+<GraphqlSample query={searchQuickStartQuery} variables={searchTwoRoomsVariables}/>
+&nbsp;
+
 #### Search query [1 hotel, 2 rooms: 3 adults 1 child]
 <GraphqlSample query={searchQuickStartQuery} variables={searchTwoRoomsVariables}/>
-
+&nbsp;
 
 #### Search query [2 hotels, 1 room: 2 adults]
 <GraphqlSample query={searchQuickStartQuery} variables={searchMultipleHotelsVariables}/>
-
 &nbsp;
 
 As you can see in these responses, you have multiple options with different rates, meal plans, and room types. Additionally, you receive a warning for those options we couldn't return, as [the supplier does not provide the commission through the API](/kb/connectivity-products/for-buyers/errors-and-warnings/plugin-error). 

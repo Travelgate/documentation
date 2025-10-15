@@ -70,7 +70,7 @@ export const quoteQuickStartVariables =
 	},
 	"settings": {
 		"client": "client_demo",
-		"context": "HOTELTEST",
+		"context": "TGX",
 		"testMode": true,
 		"timeout": 5000
 	}

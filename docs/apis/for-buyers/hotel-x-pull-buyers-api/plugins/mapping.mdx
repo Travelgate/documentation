@@ -4,10 +4,21 @@ sidebar_position: 2
 
 # Mapping
 
-Mapping plugin serves to convert either the Supplier's native codes to the Buyer's codes or vice versa. 
-To do this, you need a file that shows how the Buyer's and Seller's codes relate, so our system can do the conversion automatically.
+The Mapping plugin allows Buyers to perform the entire booking flow using their own hotel, board, room, and rate codes instead of the standard FastX codes or the supplier’s native codes.
 
-This feature includes Hotel Map, Board Map, Room Map, Rate Map, Amenity Map, Promotion Map and Room Description Map categories.
+To make this possible, the Buyer uploads mapping files that define the relationship between their own codes and those of the connected Suppliers.
+Once these mappings are in place, Hotel-X automatically handles the conversion during the booking process:
+
+When you send a Search or Quote request using your Buyer context, the system translates your Buyer codes into the corresponding Supplier codes before sending the request.
+
+In the response, you’ll receive both:
+
+* The supplier’s native information.
+
+* Your mapped Buyer codes for the entities you’ve configured (e.g., hotels, boards, rooms, rates, etc.)
+
+The Mapping plugin supports the following mapping categories:
+Hotel Map, Board Map, Room Map, Rate Map, Amenity Map, Promotion Map, and Room Description Map.
 
 :::warning Keep in mind
 

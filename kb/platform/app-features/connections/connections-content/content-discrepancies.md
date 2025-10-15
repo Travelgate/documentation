@@ -26,7 +26,7 @@ If you're experiencing discrepancies in the content you're receiving, try the fo
 
 2. **Force an Update**: If the issue persists, try [forcing an update](/kb/platform/app-features/connections/connections-content/content-management#how-can-i-use-the-force-update-now-functionality) to refresh your content.
 
-3. **Open a Case with Support**: If the problem continues after forcing an update, you can [open a case](/kb/platform/support-portal/case-guidelines) with our Customer Support Team for further assistance
+3. **Open a Case with Support**: If the problem continues after forcing an update, you can [open a case](/kb/platform/support-portal/case-guidelines) with our Customer Support Team for further assistance.
 
 ### What Should I Do if I Encounter an Error or an Empty Response When Downloading My Content?
 

@@ -12,19 +12,21 @@ _Connecting new Sellers has never been easier—no additional development, no ma
 
 ### What Makes Hotel-X Different?
 
-The Hotel-X API **aggregates results** from multiple Sellers. Whether you prefer aggregation at the hotel level, at the hotel and room type level, or even at the hotel, room type, and rate plan level—or if you choose not to aggregate at all—Hotel-X adapts to your business needs. 
+The Hotel-X API **aggregates results** from multiple Sellers while keeping your connection simple and standardized through FastX codes — Travelgate’s unique identifiers for hotels, rooms, and boards. These codes ensure a seamless integration experience, allowing you to interact with any Supplier in the Marketplace through a single, unified structure.
+
+Whether you prefer aggregation at the hotel level, at the hotel and board level, or even at the hotel, board, and room type level—or if you choose not to aggregate at all— Hotel-X adapts to your business needs.
 
 Enhance your Hotel-X experience by incorporating [Plugins](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/overview). These plugins allow seamless integration of custom business logic, such as currency conversion, hotel blacklisting, and selecting the most cost-effective meal plans. Simple. Flexible. Efficient.
 
 :::info
-Hotel-X is the industry’s **first non-opinionated API**, rapidly becoming the new standard in travel connectivity.
+Hotel-X is the industry’s **first non-opinionated API**, powered by FastX unique codes and rapidly becoming the new standard in travel connectivity.
 :::
 
 ### Key Benefits and Features
 
 Some of the standout benefits of Hotel-X include:
 
-- **Multimode Searches:** Search multiple Sellers with a single API request using your own hotel codes.
+- **One Integration, Infinite Suppliers:** Connect once to Hotel-X and interact with any Seller in the Marketplace through unified FastX codes. 
 - **Aggregate Results:** Apply business rules based on your preferences—receive the cheapest option from each Seller, hotel, and more.
 - **Plugins:** Customize queries and reduce computational costs with plugins like blacklisting, currency conversion, and commission calculations. Need a custom solution? We are open to exploring new features to empower our Partners.
 - **Search by Destination:** Perform searches using destination codes. Hotel-X converts destinations into hotel sets, ensuring compatibility with Sellers.

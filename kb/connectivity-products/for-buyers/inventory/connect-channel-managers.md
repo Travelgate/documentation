@@ -30,7 +30,9 @@ Travelgate allows only **one credential (Hotel-X Access Code) per Channel Manage
 
 7. **Learn with Travelgate Resources:** After gaining access, enhance your knowledge by watching [Travelgate Academy videos](https://www.youtube.com/watch?v=V_nJoDkMOTA) and reviewing our [Extranet Documentation](/docs/apps/inventory/extranet/overview) to get familiar with available features.
 
-8. **Create a Pilot Hotel:** Set up a pilot hotel to conduct product loading tests. Refer to the "Setup" section in our [Documentation](/docs/apps/inventory/extranet/set-up/overview) for step-by-step guidance. We recommend using an actual hotel you plan to work with, making it easier to transition to the live phase.
+8. **Create a Pilot Hotel:** Set up a pilot hotel to perform product loading tests. For step-by-step instructions, refer to the ["Setup" section](/docs/apps/inventory/extranet/set-up/overview) in our documentation. We recommend using a real hotel that you plan to work with, as this will simplify the transition to the live phase.
+
+    Please note that while there is no dedicated testing environment for the Push API/Inventory solution, you can use the **ClientTest** (CTEST) client for testing purposes.
 
 :::info
 For more details about our Inventory Extranet, visit the [Inventory Extranet Overview](/docs/apps/inventory/extranet/overview) 📚

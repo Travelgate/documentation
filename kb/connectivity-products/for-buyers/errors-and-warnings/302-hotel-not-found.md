@@ -17,9 +17,12 @@ A **302 error** occurs when our system is unable to locate the requested hotel i
 
 ## What Can I Do If I Receive a 302 Error?
 
-1. **Ensure Your Portfolio Is Updated**
-   - Verify that your hotel portfolio is up to date. If it is outdated, update it accordingly. You can refer to the 'How can I use the ["Force update now" functionality'] article.
-2. **Contact the Seller**
+1. **Verify Credentials**  
+   - Ensure that your Hotel-X Access Code is active and that its [credentials](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details) (user, password, URLs, etc.) match those configured by the Seller in their system.
+   - If you are using our Legacy Pull Buyers API, verify that your request configurations match the access configurations associated with your credentials in [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details) and it includes the "HotelXAccessCode" parameter.
+2. **Ensure Your Portfolio Is Updated**
+   - Verify that your hotel portfolio is up to date. If it is outdated, update it accordingly. You can refer to the 'How can I use the ["Force update now" functionality'](/kb/platform/app-features/connections/connections-content/content-management#how-can-i-use-the-force-update-now-functionality) article.
+3. **Contact the Seller**
    - Reach out to the Seller to confirm whether the property causing the error has been included in the portfolio generated for your account.
-3. **Seek Assistance**
+4. **Seek Assistance**
    - If the issue persists after checking the above steps, contact our [Customer Support team](https://app.travelgate.com/support). We are here to assist you!

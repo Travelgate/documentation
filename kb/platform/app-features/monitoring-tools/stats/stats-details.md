@@ -70,7 +70,12 @@ Additionally, if any transactions result in errors, you can easily identify the 
 
 ![stats_dashboard_5](https://storage.travelgate.com/kbase/stats_dashboard_5.jpg)
 
-#### Download CSV Functionality
+### Why is a connection missing from the Stats Dashboard dropdown?
+If a connection doesn’t appear in the dropdown on the Stats Dashboard, **check whether it had any traffic during the selected time range**. For example, if you've applied the “Last 12 hours” filter but the connection had no activity during that period, it won’t be listed.
+To ensure visibility, try expanding the time range to include periods when the connection may have had traffic.
+
+
+### Download CSV Functionality
 Above each table, you’ll find a **'Download CSV'** button, which allows you to download the Stats data that is most relevant to your business. Give it a try! 🚀
 
 :::info Legacy Pull Buyers API Information

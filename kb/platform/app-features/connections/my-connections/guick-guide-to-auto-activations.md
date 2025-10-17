@@ -39,13 +39,13 @@ Our goal has always been to make connecting with a Partner easier and faster.
 
     - **Step 3 (Notification Setup)**: Provide one or more contact email addresses for the Partner you are connecting with, so they can be notified once the connection is created and ready for use. **The Partner contact email must be registered in Travelgate**. You can also use the 'Other Contacts' field to add additional email addresses—such as colleagues or relevant team members—who should receive the notifications.
 
-    :::warning Notification Setup Error
-    If the Partner (Buyer or Seller) contact entered in the Notification Setup screen is **not registered under Settings > Users & Contacts Management** in the Travelgate Portal, you will receive the following error: _"The email [Partner email] does not exist in [Partner Organization]. Please use an email that is registered in [Partner Organization]."_
+        :::warning Notification Setup Error
+        If the Partner (Buyer or Seller) contact entered in the Notification Setup screen is **not registered under Settings > Users & Contacts Management** in the Travelgate Portal, you will receive the following error: _"The email [Partner email] does not exist in [Partner Organization]. Please use an email that is registered in [Partner Organization]."_
 
-    To resolve this issue, contact your Partner and **ask them to either:**
-    - Provide a contact email that is already registered in their [Users & Contacts Management section](/kb/platform/app-features/account-settings/users-management/add-users), or
-    - Add the relevant email address to that section.
-    :::
+        To resolve this issue, contact your Partner and **ask them to either:**
+        - Provide a contact email that is already registered in their [Users & Contacts Management section](/kb/platform/app-features/account-settings/users-management/add-users), or
+        - Add the relevant email address to that section.
+        :::
 
         <img src="https://storage.travelgate.com/kbase/autoconnections_step3_3.png" alt="autoconnections_step3_3" width="500" height=""/>
 
@@ -56,16 +56,17 @@ Our goal has always been to make connecting with a Partner easier and faster.
 
         <img src="https://storage.travelgate.com/kbase/autoconnections_step3_4.png" alt="autoconnections_step3_4" width="500" height=""/>
 
-    Once complete, you'll receive an email with all the details to activate the connection. You can also monitor the activation status in the "My Connections" section.
+4. **Once completed**, you’ll receive an email with all the information needed to activate the connection. You can also track the activation status in the "My Connections" section.
+Please note that **all accesses are delivered inactive**, and it is the Partners’ responsibility to activate them (both Buyers and Sellers should be aligned to carry out the activation).
 
 
-:::tip I haven’t received the confirmation email for the credentials I requested. What should I do?  
-If you haven’t received the confirmation email, follow these steps:
-1. **Check Activation Status**: Verify the status of the activation ticket and ensure the requested credential is marked as 'active' in the 'My Connections' section.
-2. **Check Spam/Junk Folder**: Sometimes, confirmation emails end up in your spam folder.
-3. **Review Email Settings**: If the email isn't in your spam folder, there may be an issue with your email notification settings.
-4. **Contact Support**: If you still haven't received the email, contact Travelgate Support for assistance.
-:::
+        :::tip I haven’t received the confirmation email for the credentials I requested. What should I do?  
+        If you haven’t received the confirmation email, follow these steps:
+        1. **Check Activation Status**: Verify the status of the activation ticket and ensure the requested credential is marked as 'active' in the 'My Connections' section.
+        2. **Check Spam/Junk Folder**: Sometimes, confirmation emails end up in your spam folder.
+        3. **Review Email Settings**: If the email isn't in your spam folder, there may be an issue with your email notification settings.
+        4. **Contact Support**: If you still haven't received the email, contact Travelgate Support for assistance.
+        :::
 
 ## Auto-Connection Status
 
@@ -78,7 +79,7 @@ Once you’ve requested a new connection, you can track its progress in the "My 
 | 🔵 **Partner's feedback required** | We’re waiting for additional details from either the Seller or Buyer to proceed. |
 
 :::info
-If you have any updates regarding activation or additional details, please avoid submitting new support cases. Instead, respond to the email thread with the Connectivity Team for more efficient communication.
+If you have any updates regarding activation or additional details, please avoid submitting new support cases. Instead, **respond to the email thread with the Connectivity Team** for more efficient communication.
 :::
 
 

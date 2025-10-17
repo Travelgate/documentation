@@ -12,7 +12,7 @@ Yes, you can search by destination using our Search by Destination [plugin](/doc
 ## Request Limits
 
 ### How many hotel codes can I request per Search?
-- For **Hotel-X Pull Buyers API**, we recommend a maximum of 200 hotels. Our aggregator will split these into batches to efficiently request them from each Supplier.
+- For **Hotel-X Pull Buyers API**, we recommend a maximum of 200 hotels. Our aggregator will automatically split them into batches based on the Supplier's [Metadata](/kb/connectivity-products/for-buyers/hotel-x/content/metadata) to efficiently distribute the requests across each Supplier.
 - For **Legacy Pull Buyers API** (deprecated), our system does not automatically split hotels. You should adhere to the `MaxNumberHotels` value in the Supplier’s Metadata.
 
 :::info
@@ -76,7 +76,7 @@ It serves as the unique identifier for each room. When requesting a single room,
 No, all rooms within an option must be booked together. To book separately, submit separate Search requests for each room.
 
 ### What is the maximum number of rooms and guests per reservation?
-The limits vary by Seller and can be found in the `maxNumberRoomCandidates` and `maxPaxInRoomCandidates` nodes within the Metadata Query.
+The limits vary by Seller and can be found in the `maxNumberRoomCandidates` and `maxPaxInRoomCandidates` nodes within the [Metadata Query](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata).
 
 ### How can we differentiate between a child and an infant? What is the age range for each?
 The age range for children and infants may vary depending on the Seller's restrictions. To determine the specific age range for each of your Sellers, refer to our [Metadata](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata) method or contact the Seller directly.

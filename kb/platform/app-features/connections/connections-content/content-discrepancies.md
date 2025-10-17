@@ -22,11 +22,13 @@ There are a few possible reasons why you may not be receiving the expected conte
 
 If you're experiencing discrepancies in the content you're receiving, try the following steps:
 
-1. **Reach Out to the Seller**: Confirm that the Seller is sending all the necessary information, including any required fields for integration.
+1. **Verify Access Credentials**: Ensure that your [Hotel-X Access Code](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details) is active and that its credentials (user, password, URLs, etc.) match those configured by the Seller in their system. If you are using our Legacy Pull Buyers API, ensure that your request configuration includes the "HotelXAccessCode" parameter.
 
-2. **Force an Update**: If the issue persists, try [forcing an update](/kb/platform/app-features/connections/connections-content/content-management#how-can-i-use-the-force-update-now-functionality) to refresh your content.
+2. **Reach Out to the Seller**: Confirm that the Seller is sending all the necessary information, including any required fields for integration.
 
-3. **Open a Case with Support**: If the problem continues after forcing an update, you can [open a case](/kb/platform/support-portal/case-guidelines) with our Customer Support Team for further assistance.
+3. **Force an Update**: If the issue persists, try [forcing an update](/kb/platform/app-features/connections/connections-content/content-management#how-can-i-use-the-force-update-now-functionality) to refresh your content.
+
+4. **Open a Case with Support**: If the problem continues after forcing an update, you can [open a case](/kb/platform/support-portal/case-guidelines) with our Customer Support Team for further assistance.
 
 ### What Should I Do if I Encounter an Error or an Empty Response When Downloading My Content?
 

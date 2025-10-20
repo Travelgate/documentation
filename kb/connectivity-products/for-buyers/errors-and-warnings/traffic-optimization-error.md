@@ -20,6 +20,10 @@ A **"TRAFFIC_OPTIMIZATION_ERROR"** occurs when a connection or access has been a
 
 ### What Can I Do If I Receive a "TRAFFIC_OPTIMIZATION_ERROR"? 
 1. **Check the Traffic Optimizer Dashboard**
-   - Review the hotels blocked for the specific connection/access.
+   - Review the [hotels blocked](/kb/platform/app-features/smart-traffic/traffic-optimizer/traffic-optimizer-activation#how-can-i-see-which-hotels-are-blocked) for the specific connection/access.
 2. **Examine and Update Criteria**
-   - Assess the Traffic Optimizer criteria for the connection/access and modify it if it does not meet your needs.
+   - Assess the [Traffic Optimizer criteria](/kb/platform/app-features/smart-traffic/traffic-optimizer/traffic-optimizer-details#optimization-criteria) for the connection/access and modify it if it does not meet your needs.
+
+:::tip
+Don't forget to check our [Traffic Optimizer Documentation](/kb/platform/app-features/smart-traffic/traffic-optimizer/traffic-optimizer-activation) for more information🚀
+:::

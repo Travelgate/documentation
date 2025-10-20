@@ -14,19 +14,13 @@ The **Hotel-X API** fully supports GIATA Multicodes in the **Hotel-X Hotels Quer
 
 ### How to Activate GIATA Multicodes
 
-Follow these steps to activate GIATA Multicodes:
+The following steps must be completed by the **Buyer**:
 
-1. **Establish a Commercial Agreement:**
-   - First, you need to reach a commercial agreement with GIATA.
+1. **Establish a Commercial Agreement:** Reach a commercial agreement directly with GIATA to initiate the process.
 
-2. **Contact Customer Support:**
-   - Submit a request via our [Support Portal](https://app.travelgate.com/support), providing your GIATA credentials. Our Customer Support team will verify your agreement with GIATA.
+2. **Submit a Support Request:** Open a case through our [Support Portal](https://app.travelgate.com/support), providing your GIATA credentials. This allows our system to verify your agreement with GIATA and proceed with the necessary configuration.
 
-3. **Retrieve GIATA Codes:**
-   - Once your account is validated, you can retrieve GIATA codes in the [Connections Content](/kb/platform/app-features/connections/connections-content/content-management) section and in your [Hotels Query](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/hotels) response.
-
-Ensure you include `giataData` in your Hotels Query request to receive the information in your response.
-
+3. **Retrieve GIATA Codes:** Once the account is validated, GIATA codes become available in the [Connections Content](/kb/platform/app-features/connections/connections-content/content-management) section and in the [Hotels Query](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/hotels) response - Ensure you include `giataData` in your Hotels Query request to receive the information in your response.
     ```
     {
       hotelData {

@@ -381,7 +381,7 @@ Optionally, you can filter your read by specifying specific searchCancellationsC
 | quoteCancelPenalties      |0..N|CP node| List of cancel penalties on the quote/pre-booking step. Only if the reservation was refundable (nonRefundable = false).
 | quoteCancelPenalties/penaltyType	| 1  |	enum     | Type of penalty:<ul><li>Nights</li><li>Percentage</li><li>Amount</li></ul>
 | quoteCancelPenalties/paymentType	| 1  |	enum     | Type of payment:<ul><li>LaterPay</li><li>MerchantPay</li><li>MixedPay</li><li>CardBookingPay</li><li>CardCheckInPay</li></ul>
-| quoteCancelPenalties/isCalculatedDeadline	| 1  |	boolean      | Specifies if the deadline has been taken from the seller’s response (false) or has been calculated by Travelgate (true)
+| quoteCancelPenalties/isCalculatedDeadline	| 1  |	boolean      | Specifies if the deadline has been modified by Travelgate by adding 14 hours (Timezone Unknown)
 | quoteCancelPenalties/deadline	| 0..1  |	date      | Cancellation fees will be applied between this date and the check-in date
 | quoteCancelPenalties/hoursBefore	| 0..1  |	int      | Number of hours before the check-in, in which this penalty is applied.
 | quoteCancelPenalties/currency		| 1  |	string   | Currency of the penalty

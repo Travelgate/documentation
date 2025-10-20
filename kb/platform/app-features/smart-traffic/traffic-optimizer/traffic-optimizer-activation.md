@@ -84,10 +84,9 @@ To monitor performance:
 
 ## Can I Exclude Hotels from Being Blocked?
 
-Yes! You can exclude specific hotels from the blacklist.
+Yes, you can exclude specific hotels from the Traffic Optimizer blacklist by simply opening a [case](/kb/platform/support-portal/case-guidelines) with our Customer Support team. Please note that exclusions are applied **at the connection level**. 
 
-- Open a [Case](/kb/platform/support-portal/case-guidelines) with our Customer Support team.
-- Some hotels are **temporarily whitelisted** to re-check conversion. This grace period is activated by default for the "Zero bookings" criteria.
+Additionally, some hotels are be **temporarily whitelisted** to re-evaluate conversion performance. This grace period is **automatically activated** for hotels flagged under the "Zero bookings" criteria.
 
 ### Use Cases:
 

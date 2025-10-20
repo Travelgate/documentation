@@ -26,10 +26,10 @@ Hotel-X is the industry’s **first non-opinionated API**, powered by FastX uniq
 
 Some of the standout benefits of Hotel-X include:
 
-- **One Integration, Infinite Suppliers:** Connect once to Hotel-X and interact with any Seller in the Marketplace through unified FastX codes. 
+- **One Integration, Infinite Suppliers:** Connect once to HotelX and interact with any Seller in the Marketplace through unified FastX codes. 
 - **Aggregate Results:** Apply business rules based on your preferences—receive the cheapest option from each Seller, hotel, and more.
 - **Plugins:** Customize queries and reduce computational costs with plugins like blacklisting, currency conversion, and commission calculations. Need a custom solution? We are open to exploring new features to empower our Partners.
-- **Search by Destination:** Perform searches using destination codes. Hotel-X converts destinations into hotel sets, ensuring compatibility with Sellers.
+- **Search by Destination:** Perform searches using destination codes. HotelX converts destinations into hotel sets, ensuring compatibility with Sellers.
 - **Seller Logic Automation:** Hotel-X automatically splits search requests based on each Seller’s maximum supported hotels.
 - **Flexible Requests:** Personalize your queries and mutations by selecting only the fields you need and renaming them to suit your preferences.
 - **Optimized Performance:** Every second counts. Choose to operate with GraphQLX (REST JSON) for enhanced performance and speed.

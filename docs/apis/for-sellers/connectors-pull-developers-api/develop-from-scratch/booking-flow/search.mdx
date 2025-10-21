@@ -13,13 +13,13 @@ We will be using the **TwoAdultTwoDays** mock through all the steps of the devel
 
 File location: "**test\MockServer\Tests\Search\Two_Adults_Two_Days.txt**"
 
-![Mock Example](MockTwoAdults.png)
+![Mock Example](/img/docs/connectors-pull-developers-api/MockTwoAdults.png)
 
 ### **Step 2: Define the Models of your response (Request and Response models)**
 
 These models are crucial because they specify the structure of the objects contained within supplier responses. They'll also play a vital role in serializing and deserializing requests and responses during development.
 
-![Response example](TemplateStructureModels.png)
+![Response example](/img/docs/connectors-pull-developers-api/TemplateStructureModels.png)
 
 **Example of a SearchRequest model**:
 
@@ -171,7 +171,7 @@ The AccessModel is a class that will allow the integration to establish some inf
 
 File location: "**ConnectorsIntegration\AccessModel.cs**"
 
-![AccessModelStructure](AccessModel.png)
+![AccessModelStructure](/img/docs/connectors-pull-developers-api/AccessModel.png)
 
 If the integration needs Generic and Search URLs, along with an Apikey, an AccessModel would look like this:
 
@@ -222,7 +222,7 @@ internal partial class SearchOperation : ISearchOperation<SearchRequest, SearchR
 ```
 File location: "**ConnectorsIntegration\Search\Operations\SearchOperation.cs**"
 
-![TryValidateSearch](TryValidateSearch.png)
+![TryValidateSearch](/img/docs/connectors-pull-developers-api/TryValidateSearch.png)
 
 **TryValidateModelRequest**
 
@@ -290,7 +290,7 @@ This class will contain a "BuildRequests" method that will have the following ar
 
 File location: "**ConnectorsIntegration\Search\Operations\SearchOperation.BuildRequest.cs**"
 
-![Build Request Search](BuildRequestSearch.png)
+![Build Request Search](/img/docs/connectors-pull-developers-api/BuildRequestSearch.png)
 
 **Example of Build Request:**
 
@@ -366,7 +366,7 @@ We will be implementing the "ParseResponse" step inside SearchOperation:
 
 File location: "**ConnectorsIntegration\Search\Operations\SearchOperation.ParseResponse.cs**"
 
-![Build Buyer's Response](BuildBuyersResponseSearch.png)
+![Build Buyer's Response](/img/docs/connectors-pull-developers-api/BuildBuyersResponseSearch.png)
 
 **Example of Parse Response:**
 

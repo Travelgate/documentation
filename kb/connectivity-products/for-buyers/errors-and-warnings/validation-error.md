@@ -15,7 +15,7 @@ Since this error indicates a discrepancy or issue with the validation process, c
 - **Verify Access Type (Test/Live)**
   - Ensure that the "testMode" tag in your request matches the Test/Live settings for that specific access.
 - **Verify Client**
-  - The Client set in your request should be one configured for your account. More details on Hotel-X Clients can be found [here](/kb/platform/app-features/connections/api-settings/).
+  - The client specified in your request must be one that is configured for your account. If you’ve set custom permissions for a client (e.g., limited access to specific accesses), **ensure the client used in your request aligns with those settings**. Otherwise, update either your request or the client configuration accordingly. More details on Hotel-X Clients can be found [here](/kb/platform/app-features/connections/api-settings/).
 - **Verify API Key**
   - Ensure the API key in your request matches the one configured for your account. You can find more information on your API settings [here](/kb/platform/app-features/connections/api-settings/).
 - **Verify Context**

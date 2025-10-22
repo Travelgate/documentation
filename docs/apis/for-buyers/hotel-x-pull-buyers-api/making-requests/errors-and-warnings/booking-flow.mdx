@@ -28,18 +28,19 @@ Errors are situations where the service has been terminated for some reason. Eac
 
 Warnings are potentially harmful situations or errors that do not require the service to be terminated. Warnings can originate from either the Hotel-X layer or the Seller's system. In the case of a warning from the Hotel-X layer, the code and type can be as follows:
 
-#### Hotel-X warnings
+#### Hotel-X Warnings
 
-| Code                 | Type             | Description                 | Explanation                                                                             |
-|----------------------|------------------|-----------------------------|-----------------------------------------------------------------------------------------|
-| WRONG_FIELD          | PLUGIN_ERROR     | _Depending on the scenario_ | It occurs when the input of the plugin is misintroduced or misconstructed.              |
-| BLACKLIST            | PLUGIN_ERROR     | _Depending on the scenario_ | It occurs when the hotels or accesses are blacklisted.                                  |
-| MAPPING_NOT_FOUND    | MAPPING_ERROR    | _Depending on the scenario_ | The option couldn't be processed due to the absence of mapping codes for the supplier context.  |
-| INTERNAL_ERROR       | MAPPING_ERROR    | _Depending on the scenario_ | Internal error produced when mapping codes, it usually happens regarding hotel mapping.          |
-| COMMISSION_NOT_FOUND | API_ERROR        | _Depending on the scenario_ | This occurs when the options are discarded because the supplier returns options with a negative commission that does not allow the calculation of the net price. You need to upload the commission file to solve it.   |
-| EMPTY_PRICE          | API_ERROR        | Supplier hasn't returned a price, the price shown is got from Quote process.   | The supplier hasn't provided the book price in its booking response, so we return the price they provided during the quote step.  |
-| NOT_IMPLEMENTED      | API_ERROR        | _Depending on the scenario_ | The requested operation is currently unavailable and has not been implemented for this supplier integration.             |
-| REFERENCE_NOT_EXISTS | BOOKING_ERROR    | Supplier has not returned any booking with this criteria | This occurs when the provided booking reference is not available in the supplier's system. |
+| Code                 | Type             | Description                                   | Explanation                                                                                                                                             |
+|----------------------|------------------|-----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
+| WRONG_FIELD          | PLUGIN_ERROR     | _Depending on the scenario_                   | Occurs when the plugin input is incorrect or improperly structured.                                               |
+| BLACKLIST            | PLUGIN_ERROR     | _Depending on the scenario_                   | Occurs when one or more hotels or accesses are blacklisted.                                                       |
+| MAPPING_NOT_FOUND    | MAPPING_ERROR    | _Depending on the scenario_                   | The option couldn’t be processed because mapping codes are missing for the supplier context.                      |
+| INTERNAL_ERROR       | MAPPING_ERROR    | _Depending on the scenario_                   | Internal error occurred while processing mapping codes — usually related to hotel mapping.                        |
+| COMMISSION_NOT_FOUND | API_ERROR        | _Depending on the scenario_                   | Occurs when options are discarded because the supplier returned a negative commission, preventing net price calculation. You need to upload a valid commission file to resolve it. |
+| EMPTY_PRICE          | API_ERROR        | Supplier hasn't returned a price; fallback used. | The supplier didn’t provide a booking price in the booking response, so the system returns the price from the Quote step instead. |
+| NOT_IMPLEMENTED      | API_ERROR        | _Depending on the scenario_                   | The requested operation is not currently supported or implemented for this supplier connector.                   |
+| REFERENCE_NOT_EXISTS | BOOKING_ERROR    | Supplier has not returned any booking with this reference. | Occurs when the provided booking reference does not exist in the supplier’s system.                              |
+| _Depends on the App_ | APPSHUB_ERROR    | _Depending on the scenario_                   | Occurs when an active App used in your booking flow returns a specific warning message.                           |
 
 
 #### Connection warnings

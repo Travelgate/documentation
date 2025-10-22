@@ -25,19 +25,20 @@ In the Travelgate [Quote (Valuation)](/docs/apis/for-buyers/hotel-x-pull-buyers-
   ![deadline-format-updated](https://storage.travelgate.com/kbase/deadline-format-updated.jpg)
 
 - **CALCULATED DEADLINE**  
-  The **CalculatedDeadline** field indicates whether the Deadline value originates from the Seller’s response or has been calculated by Travelgate.
+  The **[isCalculatedDeadline](/api/types/objects/cancel-penalty?_highlight=iscalculateddeadline)** field indicates whether the Deadline value originates from the Seller’s response or has been calculated by Travelgate.
 
   The table below outlines how cancellation policies are processed based on the timezone specified in Metadata:
 
-  | Metadata TimeZone  | HoursBefore | Deadline Handling      |
-  |--------------------|-------------|------------------------|
-  | Hotel Local Time   | Bypass      | Converted to UTC-0    |
-  | TimeZone          | Bypass      | Converted to UTC-0    |
-  | Unknown           | Bypass      | +14-hour offset added |
+| Supplier Metadata TimeZone  | HoursBefore | Deadline Handling       | isCalculatedDeadline value |
+|--------------------|-------------|-------------------------|----------------------------|
+| Hotel Local Time   | Bypass      | Converted to UTC-0      | false                      |
+| TimeZone           | Bypass      | Converted to UTC-0      | false                      |
+| Unknown            | Bypass      | +14-hour offset added   | true                       |
+
 
 ## What Do I Need to Do?
 
-- **`hoursBefore` node (deprecated):** Travelgate returns the information exactly as provided by the Seller—no additional hours are added. This logic should be handled on your end.
+- **`hoursBefore` node (deprecated⚠️):** Travelgate returns the information exactly as provided by the Seller—no additional hours are added. This logic should be handled on your end.
 - **`deadline` node:** Travelgate returns the calculated deadline based on the table above. **Please ensure you use this node.**
 
 :::warning Important

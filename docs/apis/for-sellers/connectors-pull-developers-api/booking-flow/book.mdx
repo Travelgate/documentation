@@ -40,66 +40,140 @@ import TabItem from '@theme/TabItem';
 
 <Tabs>
   <TabItem value="BookRequest" label="C#">
-    ```csharp
-    var bookRq = new BookRq
+```csharp
+var bookRq = new BookRq
+{
+    BookCriteria = new BookCriteria
     {
-        BookCriteria = new BookCriteria
+        Accommodation = new Accommodation
         {
-            Accommodation = new Accommodation
+            Type = "Hotel",
+            Code = "12345"
+        },
+        BoardCode = "RO",
+        Occupancies = new List<Occupancy>
+        {
+            new Occupancy
             {
-                Type = "Hotel",
-                Code = "12345"
-            },
-            BoardCode = "RO",
-            Occupancies = new List<Occupancy>
-            {
-                new Occupancy
+                OccupancyId = 1,
+                Paxes = new List<BookPaxInput>
                 {
-                    OccupancyId = 1,
-                    Paxes = new List<Pax>
+                    new BookPaxInput
                     {
-                        new Pax { Age = 30 },
-                        new Pax { Age = 30 }
+                        Age = 30,
+                        Name = "John",
+                        SurName = "Smith",
+                        PersonalTitleType = "MR",
+                        DateOfBirth = "1994-05-20",
+                        IdentificationDocuments = new List<IdentificationDocument>
+                        {
+                            new IdentificationDocument
+                            {
+                                Type = "PAS",
+                                Number = "A12345678",
+                                Issuer = "US",
+                                IssueDate = "2020-06-31",
+                                Nationality = "US",
+                                ExpiryDate = "2030-06-31"
+                            }
+                        }
+                    },
+                    new BookPaxInput
+                    {
+                        Age = 30,
+                        Name = "Javier",
+                        SurName = "Smith",
+                        PersonalTitleType = "MR",
+                        DateOfBirth = "1994-01-20",
+                        IdentificationDocuments = new List<IdentificationDocument>
+                        {
+                            new IdentificationDocument
+                            {
+                                Type = "SSN",
+                                Number = "123456",
+                                Issuer = "US",
+                                IssueDate = "2020-06-31",
+                                Nationality = "US",
+                                ExpiryDate = "2030-06-31"
+                            }
+                        }
                     }
                 }
-            },
-            Market = "ES",
-            Rooms = new List<Room>
+            }
+        },
+        Market = "ES",
+        Rooms = new List<Room>
+        {
+            new Room
             {
-                new Room
+                OccupancyRefId = 1,
+                Code = "DBL",
+                Description = "Double standard"
+            }
+        },
+        PaymentType = "MerchantPay",
+        Remarks = new List<Remark>
+        {
+            new Remark
+            {
+                RemarkType = "General",
+                Text = "I want twin beds"
+            }
+        },
+        ClientReference = "ClientReference12345",
+        BookPrice = new BookPrice
+        {
+            Price = new Price
+            {
+                Currency = "EUR",
+                Binding = true,
+                Net = 100,
+                Gross = 100,
+                NetSpecified = true,
+                MinimumSellingPrice = 100
+            },
+            DeltaPrice = new DeltaPrice
+            {
+                Amount = 5,
+                Percentage = 1
+            }
+        },
+        Holder = new Holder
+        {
+            Name = "John",
+            SurName = "Smith",
+            PersonalTitleType = "MR",
+            IdentificationDocuments = new List<IdentificationDocument>
+            {
+                new IdentificationDocument
                 {
-                    OccupancyRefId = 1,
-                    Code = "DBL",
-                    Description = "Double standard"
+                    Type = "PAS",
+                    Number = "A12345678",
+                    Issuer = "US",
+                    IssueDate = "2020-06-31",
+                    Nationality = "US",
+                    ExpiryDate = "2030-06-31"
                 }
             },
-            PaymentType = "MerchantPay",
-            Remarks = new List<Remark>
+            ContactInfo = new ContactInfo
             {
-                new Remark
-                {
-                    RemarkType = "General",
-                    Text = "I want twin beds"
-                }
-            },
-            ClientReference = "ClientReference12345",
-            BookPrice = new BookPrice
+                Email = "someemail@travelgate.com",
+                Phone = "66666666",
+                DateOfBirth = "1994-05-20"
+            }
+        },
+        PaymentCardInput = new PaymentCardInput
+        {
+            Type = "VI",
+            Number = "4444444444444",
+            Cvc = "123",
+            Expiration = new CardExpiration
             {
-                Price = new Price
-                {
-                    Currency = "EUR",
-                    Binding = true,
-                    Net = 100,
-                    Gross = 100,
-                    NetSpecified = true,
-                    MinimumSellingPrice = 100
-                },
-                DeltaPrice = new DeltaPrice
-                {
-                    Amount = 5,
-                    Percentage = 1
-                }
+                Month = 10,
+                Year = 5,
+                YearFull = 2005
             },
+            IsVcc = false,
             Holder = new Holder
             {
                 Name = "John",
@@ -110,85 +184,62 @@ import TabItem from '@theme/TabItem';
                     Email = "someemail@travelgate.com",
                     Phone = "66666666"
                 }
-            },
-            PaymentCardInput = new PaymentCardInput
-            {
-                Type = "VI",
-                Number = "4444444444444",
-                Cvc = "123",
-                Expiration = new CardExpiration
-                {
-                    Month = 10,
-                    Year = 5,
-                    YearFull = 2005
-                },
-                IsVcc = false,
-                Holder = new Holder
-                {
-                    Name = "John",
-                    SurName = "Smith",
-                    PersonalTitleType = "MR",
-                    ContactInfo = new ContactInfo
-                    {
-                        Email = "someemail@travelgate.com",
-                        Phone = "66666666"
-                    }
-                }
-            },
-            Parameters = new List<Parameter>
-            {
-                new Parameter
-                {
-                    Key = 4,
-                    Value = "Value5a3c4d96-8e0e-43e1-9524-81b0ffb9995d",
-                    ParameterType = "Supplier",
-                    Immutable = false,
-                    RoomId = 105
-                }
-            },
-            CheckIn = "2024-05-12",
-            CheckOut = "2024-05-14",
-            TotalNights = 2,
-            Language = "ES",
-            Currency = "EUR",
-            Nationality = "ES"
+            }
         },
-        Settings = new Settings
+        Parameters = new List<Parameter>
         {
-            Supplier = "HOTELTEST",
-            Platform = "HOTELTEST",
-            Client = "TravelAgency123",
-            Access = new Access
+            new Parameter
             {
-                Code = 1001,
-                User = "agency_user",
-                Password = "secure_password",
-                ApiKey = "API_KEY_123456789",
-                Urls = new Urls
-                {
-                    Book = "https://api.hotelsupplier.com/book",
-                    Search = "https://api.hotelsupplier.com/search",
-                    Quote = "https://api.hotelsupplier.com/quote",
-                    Generic = "https://api.hotelsupplier.com/generic"
-                },
-                Parameters = new Dictionary<string, string>
-                {
-                    { "someParameter1", "50" },
-                    { "someParameter2", "true" },
-                    { "someParameter3", "5000" },
-                    { "someParameter4", "SupplierX" }
-                }
-            },
-            BusinessRules = new BusinessRules
+                Key = 4,
+                Value = "Value5a3c4d96-8e0e-43e1-9524-81b0ffb9995d",
+                ParameterType = "Supplier",
+                Immutable = false,
+                RoomId = 105
+            }
+        },
+        CheckIn = "2024-05-12",
+        CheckOut = "2024-05-14",
+        TotalNights = 2,
+        Language = "ES",
+        Currency = "EUR",
+        Nationality = "ES"
+    },
+    Settings = new Settings
+    {
+        Supplier = "HOTELTEST",
+        Platform = "HOTELTEST",
+        Client = "TravelAgency123",
+        Access = new Access
+        {
+            Code = 1001,
+            User = "agency_user",
+            Password = "secure_password",
+            ApiKey = "API_KEY_123456789",
+            Urls = new Urls
             {
-                OptionsQuota = 170,
-                BusinessRuleType = "CheaperAmount"
+                Book = "https://api.hotelsupplier.com/book",
+                Search = "https://api.hotelsupplier.com/search",
+                Quote = "https://api.hotelsupplier.com/quote",
+                Generic = "https://api.hotelsupplier.com/generic"
             },
-            Timeout = "00:00:10",
-            TimeoutAsTimeSpan = TimeSpan.Parse("00:00:10"),
-            IncludeProviderTransactions = true
-        }
-    };
+            Parameters = new Dictionary<string, string>
+            {
+                { "someParameter1", "50" },
+                { "someParameter2", "true" },
+                { "someParameter3", "5000" },
+                { "someParameter4", "SupplierX" }
+            }
+        },
+        BusinessRules = new BusinessRules
+        {
+            OptionsQuota = 170,
+            BusinessRuleType = "CheaperAmount"
+        },
+        Timeout = "00:00:10",
+        TimeoutAsTimeSpan = TimeSpan.Parse("00:00:10"),
+        IncludeProviderTransactions = true
+    }
+};
 
     ```
   </TabItem>
@@ -200,148 +251,184 @@ import TabItem from '@theme/TabItem';
         {
             "accommodation":
             {
-                "type": "Hotel",
-                "code": "12345"
-            },
-            "boardCode": "RO",
+            "type": "Hotel",
+            "code": "12345"
+        },
+        "boardCode": "RO",
             "occupancies":
             [
-                {
-                    "occupancyId": 1,
-                    "paxes":
-                    [
-                        {
-                            "age": 30
-                        },
-                        {
-                            "age": 30
-                        }
-                    ]
-                }
-            ],
-            "market": "ES",
+            {
+                "occupancyId": 1,
+                "paxes": [
+                    {
+                        "age": 30,
+                        "name": "John",
+                        "surName": "Smith",
+                        "personalTitleType": "MR",
+                        "dateOfBirth": "1994-05-20",
+                        "identificationDocuments": [
+                            {
+                                "type": "PAS",
+                                "number": "A12345678",
+                                "issuer": "US",
+                                "issueDate": "2020-06-31",
+                                "nationality": "US",
+                                "expiryDate": "2030-06-31"
+                            }
+                        ]
+                    },
+                    {
+                        "age": 30,
+                        "name": "Javier",
+                        "surName": "Smith",
+                        "personalTitleType": "MR",
+                        "dateOfBirth": "1994-01-20",
+                        "identificationDocuments": [
+                            {
+                                "type": "SSN",
+                                "number": "123456",
+                                "issuer": "US",
+                                "issueDate": "2020-06-31",
+                                "nationality": "US",
+                                "expiryDate": "2030-06-31"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "market": "ES",
             "rooms":
             [
-                {
-                    "occupancyRefId": 1,
-                    "code": "DBL",
-                    "description": "Double standard"
-                }
-            ],
-            "paymentType": "MerchantPay",
+            {
+                "occupancyRefId": 1,
+                "code": "DBL",
+                "description": "Double standard"
+            }
+        ],
+        "paymentType": "MerchantPay",
             "remarks":
             [
-                {
-                    "remarkType": "General",
-                    "text": "I want twin beds"
-                }
-            ],
-            "clientReference": "ClientReference12345",
+            {
+                "remarkType": "General",
+                "text": "I want twin beds"
+            }
+        ],
+        "clientReference": "ClientReference12345",
             "bookPrice":
             {
                 "price":
                 {
-                    "currency": "EUR",
-                    "binding": true,
-                    "net": 100,
-                    "gross": 100,
-                    "netSpecified": true,
-                    "minimumSellingPrice": 100
-                },
+                "currency": "EUR",
+                "binding": true,
+                "net": 100,
+                "gross": 100,
+                "netSpecified": true,
+                "minimumSellingPrice": 100
+            },
                 "deltaPrice":
                 {
-                    "amount": 5,
-                    "percentage": 1
+                "amount": 5,
+                "percentage": 1
+            }
+        },
+        "holder": {
+            "name": "John",
+            "surName": "Smith",
+            "personalTitleType": "MR",
+            "identificationDocuments": [
+                {
+                    "type": "PAS",
+                    "number": "A12345678",
+                    "issuer": "US",
+                    "issueDate": "2020-06-31",
+                    "nationality": "US",
+                    "expiryDate": "2030-06-31"
                 }
-            },
-            "holder":
+            ],
+            "contactInfo": {
+                "email": "someemail@travelgate.com",
+                "phone": "66666666",
+                "dateOfBirth": "1994-05-20"
+            }
+        },
+            "paymentCardInput":
             {
+            "type": "VI",
+            "number": "4444444444444",
+            "cvc": "123",
+                "expiration":
+                {
+                "month": 10,
+                "year": 5,
+                "yearFull": 2005
+            },
+            "isVcc": false,
+                "holder":
+                {
                 "name": "John",
                 "surName": "Smith",
                 "personalTitleType": "MR",
-                "contactInfo":
-                {
+                    "contactInfo":
+                    {
                     "email": "someemail@travelgate.com",
                     "phone": "66666666"
                 }
-            },
-            "paymentCardInput":
-            {
-                "type": "VI",
-                "number": "4444444444444",
-                "cvc": "123",
-                "expiration":
-                {
-                    "month": 10,
-                    "year": 5,
-                    "yearFull": 2005
-                },
-                "isVcc": false,
-                "holder":
-                {
-                    "name": "John",
-                    "surName": "Smith",
-                    "personalTitleType": "MR",
-                    "contactInfo":
-                    {
-                        "email": "someemail@travelgate.com",
-                        "phone": "66666666"
-                    }
-                }
-            },
+            }
+        },
             "parameters":
             [
-                {
-                    "key": 4,
-                    "value": "Value5a3c4d96-8e0e-43e1-9524-81b0ffb9995d",
-                    "parameterType": "Supplier",
-                    "immutable": false,
-                    "roomId": 105
-                }
-            ],
-            "checkIn": "2024-05-12",
-            "checkOut": "2024-05-14",
-            "totalNights": 2,
-            "language": "ES",
-            "currency": "EUR",
-            "nationality": "ES"
-        },
+            {
+                "key": 4,
+                "value": "Value5a3c4d96-8e0e-43e1-9524-81b0ffb9995d",
+                "parameterType": "Supplier",
+                "immutable": false,
+                "roomId": 105
+            }
+        ],
+        "checkIn": "2024-05-12",
+        "checkOut": "2024-05-14",
+        "totalNights": 2,
+        "language": "ES",
+        "currency": "EUR",
+        "nationality": "ES"
+    },
         "settings":
         {
-            "supplier": "HOTELTEST",
-            "platform": "HOTELTEST",
-            "client": "TravelAgency123",
+        "supplier": "HOTELTEST",
+        "platform": "HOTELTEST",
+        "client": "TravelAgency123",
             "access":
             {
-                "code": 1001,
-                "user": "agency_user",
-                "password": "secure_password",
-                "apiKey": "API_KEY_123456789",
+            "code": 1001,
+            "user": "agency_user",
+            "password": "secure_password",
+            "apiKey": "API_KEY_123456789",
                 "urls":
                 {
-                    "book": "https://api.hotelsupplier.com/book",
-                    "search": "https://api.hotelsupplier.com/search",
-                    "quote": "https://api.hotelsupplier.com/quote",
-                    "generic": "https://api.hotelsupplier.com/generic"
-                },
+                "book": "https://api.hotelsupplier.com/book",
+                "search": "https://api.hotelsupplier.com/search",
+                "quote": "https://api.hotelsupplier.com/quote",
+                "generic": "https://api.hotelsupplier.com/generic"
+            },
                 "parameters":
                 {
-                    "someParameter1": "50",
-                    "someParameter2": "true",
-                    "someParameter3": "5000",
-                    "someParameter4": "SupplierX"
-                }
-            },
+                "someParameter1": "50",
+                "someParameter2": "true",
+                "someParameter3": "5000",
+                "someParameter4": "SupplierX"
+            }
+        },
             "businessRules":
             {
-                "optionsQuota": 170,
-                "businessRuleType": "CheaperAmount"
-            },
-            "timeout": "00:00:10",
-            "timeoutAsTimeSpan": "00:00:10",
-            "includeProviderTransactions": true
-        }
+            "optionsQuota": 170,
+            "businessRuleType": "CheaperAmount"
+        },
+        "timeout": "00:00:10",
+        "timeoutAsTimeSpan": "00:00:10",
+        "includeProviderTransactions": true
     }
+}
 ```
   </TabItem>
 </Tabs>
@@ -371,6 +458,15 @@ import TabItem from '@theme/TabItem';
 | **BookCriteria/Occupancies/Paxes/**<br />**Name** | 1 | String | The first name of the passenger. | 
 | **BookCriteria/Occupancies/Paxes/**<br />**SurName** | 1 | String | The surname (last name) of the passenger. | 
 | **BookCriteria/Occupancies/Paxes/**<br />**PersonalTitleType** | 1 | [PersonalTitleType](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/personaltitletype) | The personal title type of the passenger. | 
+| **BookCriteria/Occupancies/Paxes/**<br />**IdentificationDocuments** | 0 . . N | Array&lt;[IdentificationDocument](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/identification-document)&gt; | The collection of passenger identification documents. |
+| **BookCriteria/Occupancies/Paxes/**<br />**IdentificationDocuments/Type** | 1 | [DocumentType](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/document-type) | Document type represented as an enum. <details><summary>Document Type Options</summary><table><thead><tr><th><strong>Document Type</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr><td>NONE</td><td>No identification document type has been specified. This value can be used when no document is required.</td></tr><tr><td>DNI</td><td>National Identity Card (DNI). Used in Spain and some Latin American countries as the main national identification document issued to citizens.</td></tr><tr><td>NIE</td><td>Foreigner Identity Card (NIE). Used in Spain for non-citizens or foreign residents who have legal status in the country.</td></tr><tr><td>PAS</td><td>Passport. Official travel document issued by a government to certify the holder's identity and nationality for international travel.</td></tr><tr><td>DRIVER_LICENSE</td><td>Driver's License. Official document issued by a governmental authority authorizing the holder to operate motor vehicles.</td></tr><tr><td>CPF</td><td>CPF (Individual Taxpayer Registry). Personal taxpayer identification number used in Brazil for both tax and identity verification purposes.</td></tr><tr><td>PAN</td><td>PAN (Permanent Account Number). Tax identification number issued in India for financial and taxation purposes.</td></tr><tr><td>SSN</td><td>SSN (Social Security Number). Identification number used in the United States for social security, taxation, and general identity verification.</td></tr><tr><td>OTHER</td><td>Other identification document not covered by the predefined list. When this value is used, the <i>Type Other Description</i> field must specify the document's nature.</td></tr></tbody></table></details> | 
+| **BookCriteria/Occupancies/Paxes/**<br />**IdentificationDocuments/Number** | 1 | String | Represents the unique identification number on the document. This property is optional when `Type` is set to `DocumentType.OTHER`. |
+| **BookCriteria/Occupancies/Paxes/**<br />**IdentificationDocuments/Issuer** | 0 . . 1 | String | Represents the issuing authority or country that issued the identification document. Use the country code defined by the ISO 3166-1 alpha-2 standard. |
+| **BookCriteria/Occupancies/Paxes/**<br />**IdentificationDocuments/IssueDate** | 0 . . 1 | String | Represents the date when the identification document was issued. The date must be formatted according to the  ISO 8601 format (YYYY-MM-DD). |
+| **BookCriteria/Occupancies/Paxes/**<br />**IdentificationDocuments/ExpiryDate** | 0 . . 1 | String | Represents the expiration date of the identification document. The date must be formatted according to the  ISO 8601 format (YYYY-MM-DD). |
+| **BookCriteria/Occupancies/Paxes/**<br />**IdentificationDocuments/Nationality** | 0 . . 1 | String | Represents the nationality of the passenger associated with the identification document. Use the country code defined by the ISO 3166-1 alpha-2 standard. |
+| **BookCriteria/Occupancies/Paxes/**<br />**IdentificationDocuments/**<br />**TypeOtherDescription** | 0 . . 1 | String | Provides an additional textual description of the identification document when the `Type` is set to `DocumentType.OTHER`. The description should clearly specify the document's purpose or nature. This property is mandatory when `Type` is set to `DocumentType.OTHER`. |
+| **BookCriteria/Occupancies/Paxes/**<br />**DateOfBirth** | 0 . . 1 | String | Date of birth of the passenger, represented as a string in ISO 8601 format (YYYY-MM-DD). |
 | **BookCriteria/Market** | 0 . . 1 | String | Gets or sets the market for the booking. | 
 | **BookCriteria/Rooms** | 1 . . N | Array&lt;[Room](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/room)&gt; | Gets the rooms for the booking. | 
 | **BookCriteria/Rooms/**<br />**OccupancyRefId** | 1 | Integer | Numeric ID linking this room to its occupancy data in the Occupancy. | 
@@ -461,9 +557,18 @@ import TabItem from '@theme/TabItem';
 | **BookCriteria/Holder/Name** | 1 | String | The name of the holder. | 
 | **BookCriteria/Holder/SurName** | 1 | String | The surname of the holder. | 
 | **BookCriteria/Holder/**<br />**PersonalTitleType** | 1 | [PersonalTitleType](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/personaltitletype) | The personal title type of the holder. | 
+| **BookCriteria/Holder/**<br />**IdentificationDocuments** | 0 . . N | Array&lt;[IdentificationDocument](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/identification-document)&gt; | The collection of passenger identification documents. |
+| **BookCriteria/Holder/**<br />**IdentificationDocuments/Type** | 1 |  [DocumentType](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/document-type) | Document type represented as an enum. <details><summary>Document Type Options</summary><div><div><table><thead><tr><th><strong>Document Type</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr><td>NONE</td><td>No identification document type has been specified. This value can be used when no document is required.</td></tr><tr><td>DNI</td><td>National Identity Card (DNI). Used in Spain and some Latin American countries as the main national identification document issued to citizens.</td></tr><tr><td>NIE</td><td>Foreigner Identity Card (NIE). Used in Spain for non-citizens or foreign residents who have legal status in the country.</td></tr><tr><td>PAS</td><td>Passport. Official travel document issued by a government to certify the holder's identity and nationality for international travel.</td></tr><tr><td>DRIVER_LICENSE</td><td>Driver's License. Official document issued by a governmental authority authorizing the holder to operate motor vehicles.</td></tr><tr><td>CPF</td><td>CPF (Individual Taxpayer Registry). Personal taxpayer identification number used in Brazil for both tax and identity verification purposes.</td></tr><tr><td>PAN</td><td>PAN (Permanent Account Number). Tax identification number issued in India for financial and taxation purposes.</td></tr><tr><td>SSN</td><td>SSN (Social Security Number). Identification number used in the United States for social security, taxation, and general identity verification.</td></tr><tr><td>OTHER</td><td>Other identification document not covered by the predefined list. When this value is used, the <i>Type Other Description</i> field must specify the document's nature.</td></tr></tbody></table></div></div></details> |
+| **BookCriteria/Holder/**<br />**IdentificationDocuments/Number** | 1 | String | Represents the unique identification number on the document. This property is optional when `Type` is set to `DocumentType.OTHER`. |
+| **BookCriteria/Holder/**<br />**IdentificationDocuments/Issuer** | 0 . . 1 | String | Represents the issuing authority or country that issued the identification document. Use the country code defined by the ISO 3166-1 alpha-2 standard. |
+| **BookCriteria/Holder/**<br />**IdentificationDocuments/IssueDate** | 0 . . 1 | String | Represents the date when the identification document was issued. The date must be formatted according to the  ISO 8601 format (YYYY-MM-DD). |
+| **BookCriteria/Holder/**<br />**IdentificationDocuments/ExpiryDate** | 0 . . 1 | String | Represents the expiration date of the identification document. The date must be formatted according to the  ISO 8601 format (YYYY-MM-DD). |
+| **BookCriteria/Holder/**<br />**IdentificationDocuments/Nationality** | 0 . . 1 | String | Represents the nationality of the passenger associated with the identification document. Use the country code defined by the ISO 3166-1 alpha-2 standard. |
+| **BookCriteria/Holder/**<br />**IdentificationDocuments/**<br />**TypeOtherDescription** | 0 . . 1 | String | Provides an additional textual description of the identification document when the `Type` is set to `DocumentType.OTHER`. The description should clearly specify the document's purpose or nature. This property is mandatory when `Type` is set to `DocumentType.OTHER`. |
 | **BookCriteria/Holder/**<br />**ContactInfo** | 0 . . 1 | [ContactInfo](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/contactinfo) | The contact information of the holder. | 
 | **BookCriteria/Holder/**<br />**ContactInfo/Email** | 1 | String | The email address of the passenger. | 
 | **BookCriteria/Holder/**<br />**ContactInfo/Phone** | 0 . . 1 | String | The phone number of the passenger. | 
+| **BookCriteria/Holder/**<br />**ContactInfo/DateOfBirth** | 0 . . 1 | String | Date of birth of the passenger, represented as a string in ISO 8601 format (YYYY-MM-DD). |
 | **BookCriteria/PaymentCardInput** | 0 . . 1 | [CreditCardInput](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/creditcardinput) | Gets the payment card input for the booking. | 
 | **BookCriteria/PaymentCardInput/**<br />**Type** | 1 | [CreditCardType](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/creditcardtype) | The type of the credit card. | 
 | **BookCriteria/PaymentCardInput/**<br />**Number** | 1 | String | The credit card number. | 

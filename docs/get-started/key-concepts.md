@@ -27,7 +27,10 @@ You can have multiple client codes, for instance, to separate traffic for B2B an
 
 
 ### Context
-`Context` is a term used to describe the content codes used by both Buyers and Sellers. Every Supplier has their own unique `context`, which consists of specific codes for items like hotels, boards, and rooms. Buyers can either adopt their own `context` or the ones provided by the Supplier. When employing their own `context`, Buyers can either apply their own codes or engage a content provider (e.g. GIATA), in both cases creating their own `context` using our [Mapping Plugin](../apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping.mdx).
+
+`Context` is a term used to describe the content codes used by both Buyers and Sellers. Every Supplier has their own unique `context`, which consists of specific codes for items like hotels, boards and rooms. Travelgate provides its own standardized context, called **FastX**, which contains unique Travelgate codes for hotels, boards, and rooms. Buyers integrated through Travelgate use these codes throughout the booking flow to access and interact with the Marketplace. These unique codes simplify mapping for Buyers, they only need to understand FastX codes to connect to any Supplier in the Marketplace, without having to map each Supplier's codes individually.
+
+While **FastX** codes are the codes used in the Marketplace, Travelgate remains fully transparent and Supplier native codes are still available and returned in the API responses within the Supplier’s context.
 
 ![Context](https://storage.travelgate.com/docs/Context.png)
 

@@ -13,8 +13,7 @@ import {bookQuickStartMutation, bookQuickStartVariables} from "../../../../src/g
 
 Hotel-X API is a powerful aggregation solution that allows you to get results from the largest network of Sellers in a single request. Whether it's at the hotel, room type, or rate plan level, you have the flexibility to aggregate data to meet your specific needs.
 
-
-What sets Hotel-X API apart is its innovative plugin structure, which enhances connectivity and equips you with a competitive edge in your operations. This unique feature is complemented by Hotel-X's ability to provide pre-processed responses, ensuring your system tasks are efficient and hassle-free.
+What sets Hotel-X API apart is its innovative structure: with a single integration, you can access the products of all Suppliers in the Marketplace, aggregate results, and easily add plugins or apps to extend functionality.  This unique feature is complemented by Hotel-X's ability to provide pre-processed responses, ensuring your system tasks are efficient and hassle-free.
 
 &nbsp;
 ![Hotel-X Overview](https://storage.travelgate.com/docs/hotel-x_overview.svg)
@@ -83,11 +82,17 @@ But now this quickstart guide will focus on the basics of using the Hotel-X API 
 
 ### 1. Find available hotels based on your search criteria
 
-The Search query is where the adventure begins in our shopping journey! Our aim here is to see what's available within your specified date range and for the number of guests (pax) you have in mind, whether it's for a particular hotel or in your desired destination. This step lets you explore your options before committing to a booking. You can even spice things up by searching with one or more sellers' accesses, giving you the freedom to tailor your search. But hey, for this example, let's kick it off with a simple search for a specific hotel using a particular test Seller.
+The Search query is where the adventure begins in our shopping journey! In this example, we'll explore availability for a **single hotel using its FastX code**. This hotel is provided by  two different test Suppliers, so we'll make the request including both supplier accesses: `'2'` and `'5647'`. 
+
+Remember, an **access** is a unique code representing the credentials that a Supplier provides to allow you to query their portfolio. By specifying the accesses in your search, you can retrieve options from one or more suppliers for the same hotel, all in a single request.
+
+This step lets you explore your options before committing to a booking, ensuring you understand what each Supplier offers for the same property.
 
 <GraphqlSample query={searchQuickStartQuery} variables={searchQuickStartVariables}/>
 
-If you execute the previous search query by clicking on the play button, you'll see an example of how a search response could be, with all the options and rates available for the hotel and criteria requested in the query. For each option, you will receive relevant information such as rate, room type, price, cancellation policies, and more.
+&nbsp;
+
+If you execute the previous search query by clicking on the play button, you'll see an example of how a search response could look, with all the options and rates available for the hotel and criteria requested in the query. For each option, you will receive relevant information such as the **Supplier**, **FastX and Supplier codes**, **room type**, **price**, **cancellation policies**, and more.
 
 :::tip
 
@@ -104,10 +109,11 @@ To make this happen, you'll need to retrieve the `optionRefId` from the option o
 
 <GraphqlSample query={quoteQuickStartQuery} variables={quoteQuickStartVariables}/>
 
+&nbsp;
 
 :::danger Important
 
-[`OptionRefID`](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/option-identifiers) is a unique identifier assigned to each option. **It must not be modified** and **must not be used or interpreted externally**, as it is an internal TG system identifier.
+[`OptionRefID`](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/option-identifiers) is a unique identifier assigned to each option. **It must not be modified** and **must not be used or interpreted externally**, as it is an internal Treavelgate system identifier.
 
 :::
 
@@ -119,7 +125,7 @@ You'll need to provide the `optionRefId` returned in the Quote step and enter al
 
 <GraphqlSample query={bookQuickStartMutation} variables={bookQuickStartVariables} />
 
-
+&nbsp;
 
 :::note
 
@@ -137,15 +143,16 @@ To help you get started, we provide test credentials and example data that you c
 - **Client:** `client_demo`
 
 **Example Suppliers and Hotels**  
-- **Travelgate test supplier**  
-  - **Context:** `HOTELTEST`  
+- **Travelgate test supplier** (code: HOTELTEST)
   - **Access Code:** `2`  
   - **Available Hotel Codes:** `1`, `2`, and `23`
 
-- **Smyrooms test supplier**  
-  - **Context:** `LOGITEST`  
+- **Smyrooms test supplier** (code: TTHOTTEST) 
   - **Access Code:** `5647`  
   - **Available Hotel Code:** `27`
+
+- **FastX test supplier, to retrieve static master data such hotel and board codes** (code: FASTX) 
+  - **Access Code:** `34538`  
 
 
 :::warning Important 
@@ -160,7 +167,7 @@ Congratulations on completing this quickstart tutorial! 🎉 You've successfully
 
 - Explore the [Making Requests](../hotel-x-pull-buyers-api/making-requests/endpoint) section to dive deep into how a GraphQL API works and maximize its performance.
 - Discover various queries and mutations grouped by the following actions:
-    - [Retrieve static information](../hotel-x-pull-buyers-api/content/overview): Explore accessing static data.
+    - [Retrieve static information](../hotel-x-pull-buyers-api/content/overview): Explore accessing static data, including how to obtain the list of unique **FastX codes** for hotels and boards, as well as the additional information provided by the Sellers.
     - [Make a booking](../hotel-x-pull-buyers-api/booking-flow/overview): Learn how to book with more details.
     - [Manage reservations](../hotel-x-pull-buyers-api/booking-management/overview): Get the hang of reservation management.
 - Unleash the full potential of your business with our diverse range of [plugins](../hotel-x-pull-buyers-api/plugins/overview).

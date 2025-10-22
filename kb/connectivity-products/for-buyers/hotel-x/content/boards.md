@@ -4,8 +4,13 @@ sidebar_position: 4
 
 # Boards
 
-## What Is the Boards Query? 
-The Boards Query provides a comprehensive mapping of board types available for a given set of credentials (access), which may include translations into multiple languages.
+## What Is the Boards Query?
+
+The Boards Query provides two key pieces of information:
+
+1. **FastX Board List** – the master set of standardized board codes and descriptions used by Travelgate to ensure consistency across all Suppliers.
+2. **Supplier Board Data** – the native board codes and descriptions for a specific Supplier and access, showing how their boards map to the standardized FastX list.
+
 
 ### How Can I Retrieve the Seller's Board List via Hotel-X?
 To retrieve the board list, simply follow the specifications outlined in our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/boards) and build your own Board queries. You can also customize the fields you request to ensure you receive only the relevant information.
@@ -34,12 +39,12 @@ Please note that the total number of boards offered by the Seller cannot be dete
 
 ## Mapping Responsibilities
 
-### Is It My Responsibility to Map Hotel-X Boards, or Does Travelgate Provide Mapping Support? 
-Travelgate delivers the Seller's native data without modifications, meaning the mapping process should be handled internally by your team. You are not required to map the entire board portfolio from a Seller—focus only on the boards relevant to your business needs.
+### Is It My Responsibility to Map Hotel Boards, or Does Travelgate Provide Mapping Support?
 
-:::note
-If you're using the Hotel-X API, you can [upload your own mapping files to our SFTP](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping) to streamline your Booking Flow and personalize your operations. 🚀
-:::
+Each Supplier has its own board codes, but Travelgate provides a standardized **FastX board code**. In search responses, you’ll see both the Supplier’s native code and the corresponding FastX code.
+
+This lets you work directly with FastX codes — consistent across all Suppliers of the Marketplace — without mapping each Supplier’s boards individually, while still having the native codes if needed.
+
 
 ## Availability Considerations
 

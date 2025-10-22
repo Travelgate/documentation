@@ -13,6 +13,10 @@ export const hotelsQuery =
 						  hotelName
 						  categoryCode
 						  chainCode
+						  mappings{
+							context
+							code
+						  }
 						  location {
 							  address
 							  zipCode
@@ -106,7 +110,7 @@ export const hotelsVariables =
 export const hotelsByCountryVariables = 
 `{
 	"criteriaHotels": {
-		"access": "2",
+		"access": "34538",
 		"countries": [
 			"GR"
 		],
@@ -132,11 +136,20 @@ export const hotelsByDestinationCodeVariables =
 export const hotelsByHotelCodeVariables = 
 `{
 	"criteriaHotels": {
-		"access": "2",
+		"access": "34538",
 		"hotelCodes": [
-			"1",
-			"2"
+			"BR1518",
+			"US2028"
 		]
+	},
+	"token": ""
+}`
+
+
+export const hotelsFastXVariables = 
+`{
+	"criteriaHotels": {
+		"access": "34538"
 	},
 	"token": ""
 }`

@@ -6,18 +6,22 @@ import HotelSettingsInput from "../../../../../src/graphql/generated-docs/HotelS
 import HotelXFilterSearchInput from "../../../../../src/graphql/generated-docs/HotelXFilterSearchInput.mdx";
 import HotelSearch from "../../../../../src/graphql/generated-docs/HotelSearch.mdx";
 
-import {searchQuickStartQuery, searchTwoRoomsVariables, searchMultipleHotelsVariables} from "../../../../../src/graphql/hotel-x/search.quickstart.query";
+import {searchQuickStartQuery, searchTwoRoomsVariables, searchMultipleHotelsVariables, searchWithoutFilterVariables} from "../../../../../src/graphql/hotel-x/search.quickstart.query";
 
 # Search
 
-Search serves as the initial step in our booking flow, with the objective of verifying availability within the specified date range and for the requested number of guests, either for specific hotels or for hotels in the desired destination. It provides a comprehensive list of available options based on your search criteria. The returned fields include:
+The **Search** operation is the first step in our booking flow. Its purpose is to check availability for the requested date range and number of guests, either for specific hotels or for hotels in a selected destination. It returns a comprehensive list of available options based on your search criteria.  
+
+The main fields returned include:
 
 * `hotelCode`
+* `hotelCodeSupplier`
 * `hotelName`
 * `boardCode`
+* `boardCodeSupplier`
 * `paymentType`
 * `occupancies`
-* `rooms`
+* `rooms` (including both FastX and supplier native codes and descriptions)
 * `price`
 * `rateRule`
 * `cancelPolicy`
@@ -53,30 +57,32 @@ To specify your search criteria you need to use the input `HotelCriteriaSearchIn
 
 ```js
 {
-	"criteriaSearch": {
-		"checkIn": "2024-10-28",
-		"checkOut": "2024-10-29",
-		"occupancies": [
-			{
-				"paxes": [
-					{
-						"age": 30
-					},
-					{
-						"age": 30
-					}
-				]
-			}
-		],
-		"hotels": [
-			"1",
+    "criteriaSearch" : {
+        "checkIn" : "2026-10-28",
+        "checkOut" : "2026-10-29",
+        "occupancies" : [
+            {
+                "paxes" : [
+                    {
+                        "age" : 30
+                    },
+                    {
+                        "age" : 30
+                    }
+                ]
+            }
+        ],
+        "hotels" : [
+            "1",
             "2"
-		],
-		"currency": "EUR",
-		"markets": ["ES"],
-		"language": "es",
-		"nationality": "ES"
-	}
+        ],
+        "currency" : "EUR",
+        "markets" : [
+            "ES"
+        ],
+        "language" : "es",
+        "nationality" : "ES"
+    }
 }
 ```
 
@@ -92,6 +98,8 @@ To specify your search criteria you need to use the input `HotelCriteriaSearchIn
 * `currency`
 * `nationality`
 * `markets`
+
+If you don’t specify these optional parameters in your query, the system will automatically use the [default values](/docs/apis/for-buyers/hotel-x-pull-buyers-api/making-requests/settings) configured for your account.
 
 ### 2. Settings 
 
@@ -134,13 +142,6 @@ To specify your settings you need to use the [`HotelSettingsInput` input](/api/t
 :::
 
 
-:::caution Using your own context and mapping functionality
-
-To request hotel availability using your own hotel codes, utilize the [Hotel-X mapping feature](../plugins/mapping). You can achieve this by uploading your mapping files to your FTP account. This approach enables you to make requests with your unique context codes and receive results from all your Sellers with your custom hotel codes.
-
-:::
-
-
 ### 3. Filter Search
 
 Filters allow you to precisely tailor the response according to your preferences. 
@@ -151,7 +152,8 @@ To specify your filters you need to use the input `HotelXFilterSearchInput` in y
 
 * `status`: Use this filter to determine which status (OK and RQ) will be included or excluded in the response.
 
-* `access`: By using the access filter, our system will exclusively include or exclude options from the selected accesses. If you choose not to set any access at all, requests will be made to all available accesses.
+* `access`: This filter allows you to include or exclude specific accesses when making a request. If you don’t specify any, our system will automatically query all accesses configured under your client. By using the *include* or *exclude* parameters, you can refine which accesses are considered in the search.  
+Learn how to link specific accesses to your clients [here](/kb/platform/app-features/connections/api-settings/).
 
 
 All these filters are optional. Example to request only search results from access "2" and options "PACKAGE" 
@@ -178,7 +180,9 @@ You would need to apply the same approach for filtering by specific rate rule (`
 
 ### Response Considerations
 
-In the response to your search query, you'll receive all the available options that match your criteria. Each option provides various details, such as room type, price, and cancellation policies. 
+In the response to your search query, you'll receive all the available options that match your criteria. Each option provides various details, such as room type, price, and cancellation policies.  
+
+Remember that you’ll always receive both the unique **FastX codes** and the Supplier’s native codes, ensuring full traceability across all your connections.
 
 Here are some key points to keep in mind:
 
@@ -205,18 +209,27 @@ Some Sellers may not include cancellation policies in their availability data. Y
 
 ## Examples
 
+#### Search query [1 hotel, 1 rooms: 2 adults]
+
+This first search query is executed without specifying the 'filterSearch > access' node. In this case, the request will be sent by default to all accesses linked to the client "client_demo".
+
+<GraphqlSample query={searchQuickStartQuery} variables={searchTwoRoomsVariables}/>
+&nbsp;
+
+In the next example, the search query includes the 'filterSearch > access' node, specifying access "2". This means the request will be sent only to the credentials associated with access 2 of the supplier "HOTELTEST".
+
+<GraphqlSample query={searchQuickStartQuery} variables={searchTwoRoomsVariables}/>
+&nbsp;
+
 #### Search query [1 hotel, 2 rooms: 3 adults 1 child]
 <GraphqlSample query={searchQuickStartQuery} variables={searchTwoRoomsVariables}/>
-
+&nbsp;
 
 #### Search query [2 hotels, 1 room: 2 adults]
 <GraphqlSample query={searchQuickStartQuery} variables={searchMultipleHotelsVariables}/>
+&nbsp;
 
-
-As you can see in these responses, you have multiple options with different rates, meal plans, and room types. 
-Additionally, you  receive a warning for those options we couldn't return, as [the supplier does not provide the commission through the API](/kb/connectivity-products/for-buyers/errors-and-warnings/plugin-error). 
-
-
+As you can see in these responses, you have multiple options with different rates, meal plans, and room types. Additionally, you receive a warning for those options we couldn't return, as [the supplier does not provide the commission through the API](/kb/connectivity-products/for-buyers/errors-and-warnings/plugin-error). 
 
 ## Frequently Asked Questions
 
@@ -243,73 +256,34 @@ Additionally, you  receive a warning for those options we couldn't return, as [t
 
 
 <details>
-<summary>How can I search in single or multi mode?</summary>
+<summary>How can I search using supplier native hotel codes or my own codes?</summary>
 <div>
-    Hotel-X offers two modes for searching: single mode and multi mode. Both modes provide flexibility depending on how you want to query Sellers and their accesses.
+    Hotel-X offers three modes for searching or performing the booking flow with different codes: **FastX codes**, **supplier native codes**, or **Buyer own codes**.  
 </div>
 <br></br>
-<b>Singlemode search</b>
+<b>A. Booking flow with FastX codes (Recommended)</b>
 
-    Single mode is the default way to search in Hotel-X. It’s designed for querying Sellers individually.
-
-
-![Hotel-X Shopping Flow](https://storage.travelgate.com/docs/hotel-x_single_mode.svg)
-
- 
-    You can include multiple accesses from the same Seller in a single search, as long as they share the same context. 
-    Example: If a Seller has different access points for the same hotel inventory, you can query them together.
-
-
-
-    When running your Search, you should add the Seller's access code you would like to query. 
-    Remember that they should have the same context code (in other words, they share the same hotel codes).
-    For example, if I want to make a request for access "2" of the supplier Travelgate Test with the context "HOTELTEST", I would specify it as follows. 
-    (If I had more than one access or credential configured for the same supplier, I could include them as well, as long as they share the same context.)
-
-
-```js
-"settings": {
-    "client": "client_demo",
-    "context": "HOTELTEST",
-    "testMode": true,
-    "timeout": 25000
-  },
-  "filterSearch": {
-    "access": {
-      "includes": [
-        "2"
-      ]
-    }
-  }
-```
-
-<b>Multimode search</b>
-
-    The multimode query allows our Partners to search multiple Sellers or accesses with different contexts at the same time in just one request. To search
-    in multimode, start by uploading your <a href="../plugins/mapping">hotel mapping files</a> to your FTP. Once the
-    files are processed, you'll have the ability to search multiple Sellers simultaneously by using your own context
-    and hotel codes.
-
+    Using FastX codes is the default and most efficient way to search in Hotel-X. FastX unique codes are designed for querying multiple Sellers simultaneously. With a single, unified list of hotel codes, you gain access to all connected suppliers’ systems.
 
 ![Hotel-X Shopping Flow](https://storage.travelgate.com/docs/hotel-x_multi_mode.svg)
 
+    Benefits of FastX:
+    <ul>
+        <li>Query different Sellers or different accesses from the same Seller (even with different contexts) in one request.</li>
+        <li>Avoid the need to manually specify access codes in your query.</li>
+        <li>Get aggregated results from multiple suppliers with minimal setup.</li>
+    </ul>
 
- 
-    You can query different Sellers or different accesses from the same Seller (even if they have different contexts). 
-    This is useful if you need results from diverse configurations in one go.
+    This is the mode we recommend for most Buyers, as it requires the least configuration and maximizes coverage in a single request. 
 
+<b>B. Booking flow with your own Buyer codes</b>
 
- 
-    For example, if you map your hotel and board codes to two different suppliers with different contexts, you can include both in the same request. 
-    You’ll specify your context code, and in the access section, you can include the accesses from different suppliers. 
-    Hotel-X will use your mapping files to send the correct request to each supplier with the appropriate codes, so you can make the request using your own codes.
+    You can also search using your own hotel and board codes via our [Mapping plugin](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping). This allows you to map your codes to multiple suppliers with different contexts.  
 
+    Options when using your own context:
 
-
-    You can choose to:
-
-    <b>1. Specifying the access codes in the filter node in your variables:</b> the query will only be sent to the accesses specified.
-
+    <b>1. Specify accesses in your query</b>
+    The query will only be sent to the accesses listed in your `filterSearch` node:
 
 ```js
 "settings": {
@@ -325,11 +299,8 @@ Additionally, you  receive a warning for those options we couldn't return, as [t
 }
 ```
 
-    <b>2. Not specifying any accesses:</b> The query will be sent to all the accesses connected to your account (only the
-    ones belonging to the Sellers where the mapping files has been uploaded). This
-    query will also check the value of the "testMode" tag in order to request only the test or production accesses,
-    accordingly.
-
+    <b>2. Do not specify accesses</b>  
+    The query will be sent to all accesses connected to your account (only the ones where the mapping file exists). The 'testMode' tag ensures requests go only to test or production accesses as appropriate:
 
 ```js
 "settings": {
@@ -337,6 +308,42 @@ Additionally, you  receive a warning for those options we couldn't return, as [t
     "context": "BUYER_CONTEXT",
     "testMode": true,
     "timeout": 25000
+  }
+```
+
+
+<b>C. Booking flow with supplier native codes</b>
+
+    
+    This mode is designed for querying individual Sellers using their native codes. 
+    
+    Key points:
+    <ul>
+        <li>You must map each supplier manually, as each uses different codes.</li>
+        <li>Queries are per supplier; you cannot aggregate multiple suppliers in a single request unless they share the same context.</li>
+        <li>Multiple accesses from the same Seller can be queried together if they share a context.</li>
+    </ul>
+
+
+    ![Hotel-X Shopping Flow](https://storage.travelgate.com/docs/hotel-x_single_mode.svg)
+
+    While this mode is available, it is less efficient than FastX. It requires more configuration and multiple queries if you want to include different suppliers.
+
+    Example: Querying access "2" of supplier "Travelgate Test" with context "HOTELTEST":
+
+```js
+"settings": {
+    "client": "client_demo",
+    "context": "HOTELTEST",
+    "testMode": true,
+    "timeout": 25000
+  },
+  "filterSearch": {
+    "access": {
+      "includes": [
+        "2"
+      ]
+    }
   }
 ```
 

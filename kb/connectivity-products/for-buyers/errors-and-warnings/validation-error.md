@@ -23,7 +23,7 @@ Since this error indicates a discrepancy or issue with the validation process, c
     - **[Single Mode request](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/search/search-query#single-mode-and-multimode)**: Use the Supplier context (available in [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details)) or your own Client context (uploaded mapping to SFTP).
     - **[Multi-mode request](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/search/search-query#single-mode-and-multimode)**: Use your own Client context.
 - **Verify Criteria**
-  - Ensure your request criteria are valid. For example, do not set check-in and check-out dates in the past. Also, ensure compliance with the supplier's specifications as outlined in their [Metadata](/kb/connectivity-products/for-buyers/hotel-x/content/metadata).
+  - Ensure your request criteria are valid. For example, avoid using check-in or check-out dates in the past, and ensure you're using the correct `optionRefId` [for each method](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/option-identifiers). Also, ensure compliance with the supplier's specifications as outlined in their [Metadata](/kb/connectivity-products/for-buyers/hotel-x/content/metadata).
 
 ### VALIDATION_ERROR Examples 
 
@@ -98,8 +98,8 @@ Since this error indicates a discrepancy or issue with the validation process, c
 }
 ```
 
-### 3. Incorrect Search Criteria
-- **"WRONG_FIELD"; "VALIDATION_ERROR"** (e.g., Invalid Dates)
+### 3. Incorrect Criteria
+- **"WRONG_FIELD"; "VALIDATION_ERROR"** (e.g., Invalid Dates or optionRefId)
 ```json
 {
     "data": {
@@ -120,6 +120,28 @@ Since this error indicates a discrepancy or issue with the validation process, c
         }
     }
 }
+```
+
+```json
+"errors": [
+                {
+                    "code": "WRONG_FIELD",
+                    "type": "VALIDATION_ERROR",
+                    "description": "invalid optionRefIdserialized string cannot be nil or empty"
+                }
+            ]
+
+```
+```json
+"errors": [
+                {
+                    "code": "WRONG_FIELD",
+                    "description": "invalid optionRefIdOptionId from search found, quote OptionId expected",
+                    "type": "VALIDATION_ERROR"
+                }
+            ]
+
+
 ```
 
 :::tip

@@ -17,7 +17,9 @@ To check or manage existing reservations, follow these steps:
    - **Advanced filters**
 
 :::warning Supplier Restrictions
-Some suppliers require specific details—such as hotel codes or currency—or **may not support certain filters**, like searching by booking creation date or client locator. Always check the supplier’s **[Metadata](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata)** to confirm which filters are supported.
+Some Suppliers require specific details—such as hotel codes or currency—or may not support certain filters, like searching by booking creation date or client locator. Always consult the Supplier’s **[Metadata](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata)** to confirm which filters are supported.
+
+**If mandatory filters are missing** in the “Booking Search” screen (Booking Read method), you may receive a “No results found! Try updating your search criteria” message.
 :::
 
    ![b2b_virtual_agency_mybookings_1](https://storage.travelgate.com/kbase/b2b_mybookings_1.png)

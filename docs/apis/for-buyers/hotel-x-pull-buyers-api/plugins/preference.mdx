@@ -53,72 +53,20 @@ If **'filterCompetitors' were disabled**, SUP1 would be added to the group, and 
 
 To get started with the Preference plugin, follow these simple steps:
 
-## 1. Create and Upload your Preference File
+## 1. Create your Preference Rules on our Travelgate website
 
-To get started, create your preference file in the correct format and then upload it to your SFTP account. We've provided a template file below ⬇️ to help you with this process. Just click on the file name, add your own rules, save it in CSV format, and then upload it to the corresponding folder in your SFTP.
+Your searches will use the preference rules you create on our website in the **[Plugins](https://app.travelgate.com/connections/plugins)** section. In this section, under the **Preference** tab, you’ll be able to view, create, and update your rules. A rule is a set of parameters that define both a configuration and a result.
 
-```mdx-code-block
-<BrowserWindow>
+In the preference rule configuration, you must always specify the following:
 
-📁HotelX  
-&nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX_0000  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁BusinessRules  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[BuyerContext_sequential_preference.csv](https://storage.travelgate.com/docs/BuyerContext_sequential_preference.csv)**
+* **IdRule:** Unique identifier of the rule. You can assign any identifier that best suits you.
+* **Suppliers:** List of supplier codes to which you want the rule to apply.
+* **Context:** Buyer context code to which you want the rule to apply.
 
-</BrowserWindow>
-```
+The result of the rule is made up of two manatory values:
 
-:::note
-
-If you need assistance with requesting your credentials to access the SFTP server, determining the endpoint and directory format, or learning how to upload, update, and delete SFTP files, please refer to the [overview](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/overview) section of Plugins.
-
-:::
-
-### File Format Specification
-
-* **File Name:** BuyerContext_sequential_preference.csv
-* **Directory:** HotelX/HotelX\_0000/BusinessRules
-* **Delimiter:** Comma (`,`)
-* **Header Row:**
-   * **RuleId (mandatory):** Rule identifier
-   * **ClientTokens:** Identifier provided by the client that is used to filter which business rules can be applied for the sent request.
-      * Separator for multiples codes in the same row: Semicolon `;`
-   * **SupplierCodes (mandatory):** Supplier codes you want the preference to be applied to.
-      * Separator for multiples codes in the same row: Semicolon `;`
-   * **NotSupplierCodes (mandatory):** Supplier codes you don't want the preference to be applied to.
-      * Separator for multiples codes in the same row: Semicolon `;`
-   * **BookingDateFrom:** Booking date from (yyyy-mm-dd)
-   * **BookingDateTo:** Booking date to (yyyy-mm-dd)
-   * **StartDateFrom:** Start date from (yyyy-mm-dd)
-   * **StartDateTo:** Start date to (yyyy-mm-dd)
-   * **HotelCodes:** Hotel codes you want the preference to be applied to.
-      * Separator for multiples codes in the same row: Semicolon `;`
-   * **NotHotelCodes:** Hotel codes you don't want the preference to be applied to.
-      * Separator for multiples codes in the same row: Semicolon `;`
-   * **ChainsCodes:** Chain codes you want the preference to be applied to.
-      * Separator for multiples codes in the same row: Semicolon `;`
-   * **NotChainCodes:** Chain codes you don't want the preference to be applied to.
-      * Separator for multiples codes in the same row: Semicolon `;`
-   * **DestinationCodes:** Destination codes you want the preference to be applied to.
-      * Separator for multiples codes in the same row: Semicolon `;`
-   * **NotDestinationCodes:** Destination codes you don't want the preference to be applied to.
-      * Separator for multiples codes in the same row: Semicolon `;`
-   * **Status:** Option status (OK, RQ) you want the preference to be applied to.
-      * Separator for multiples codes in the same row: Semicolon `;`
-   * **NotStatus:** Option status (OK, RQ) you don't want the preference to be applied to.
-      * Separator for multiples codes in the same row: Semicolon `;`
-   * **Percentage (mandatory):** Commission value, decimal separator must be point `.`. Percentage represents the tolerance you allow over the net price to avoid discarding the option. In other words, options that meet the criteria of this rule will not be discarded, even if they are up to X% more expensive than the cheapest option.
-   * **FilterCompetitors (mandatory):** true/false value. If set to true, it means that if an option exists that meets the criteria of this rule, only that option will be kept, and all others will be discarded. This ensures you only retain the option that follows the rule's criteria.
-
-
-<details>
-    <summary>📹Learn how to change the format of the csv file in order to edit and save it</summary>
-    <div>
-        <div><iframe width="560" height="315" src="https://www.youtube.com/embed/XkOk3SkZ0Sg?si=TYhN1QfMwYE1fusw&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-    </div>
-</details>
-
-
+* **Percentage:** Commission value. Percentage represents the tolerance you allow over the net price to avoid discarding the option. In other words, options that meet the criteria of this rule will not be discarded, even if they are up to X% more expensive than the cheapest option.
+* **FilterCompetitors:** true/false value. If set to true, it means that if an option exists that meets the criteria of this rule, only that option will be kept, and all others will be discarded. This ensures you only retain the option that follows the rule's criteria.
 
 ## 2. Execute Preference Plugin in your Query
 

@@ -52,9 +52,10 @@ In the **Connections Content** section, you can easily check and force updates f
 
 Both **Buyers and Sellers** can force an update of static content, which is **applied across all content methods**. To do so, just follow these steps:
 
-1. Access the "My Connections Content" section (follow the steps above) and filter by access/Seller credentials.
-2. Filter a specific connection and access, ensuring you are browsing as a Seller or Buyer.
-3. **Click on 'Force Update Now'** to trigger the content update. The time taken will depend on the content size and processing time.
+1. Start by checking whether the requested method is implemented by running a [Metadata query](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata) and review the value of the `implemented` field. If the method is not implemented, contact the Seller directly to discuss the possibility of adding it. Note that **no content will be returned for methods that haven’t been implemented by the Supplier**.
+2. Access the "My Connections Content" section (follow the steps above) and filter by access/Seller credentials.
+3. Filter a specific connection and access, ensuring you are browsing as a Seller or Buyer.
+4. **Click on 'Force Update Now'** to trigger the content update. The time taken will depend on the content size and processing time.
 
     ![tg_force_update](https://storage.travelgate.com/kbase/tg_force_update.jpg)
 

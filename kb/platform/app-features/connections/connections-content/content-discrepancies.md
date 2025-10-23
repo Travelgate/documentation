@@ -8,41 +8,47 @@ sidebar_position: 3
 
 There are a few possible reasons why you may not be receiving the expected content from a Seller:
 
-1. **Content Has Not Been Updated**: If your content hasn’t been updated yet, you can review and manage your content using our "Force Update Now" Functionality. [Learn more here](/kb/platform/app-features/connections/connections-content/content-management).
+1. **The requested method hasn't been implemented by the Supplier:** To verify whether a method is supported by the Supplier, run a Metadata query and review the implemented field. Make sure to include both the `implemented` and `languages` fields in your request, as outlined in our [Metadata Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata). If the method is not implemented, we recommend contacting the Seller directly to discuss the possibility of adding it.
+
+2. **Content Has Not Been Updated**: If your content hasn’t been updated yet, you can review and manage your content using our "Force Update Now" Functionality. [Learn more here](/kb/platform/app-features/connections/connections-content/content-management).
    
-2. **Zero Hotels in the "My Connections Content" Section**: If you see "0 hotels" or "There is no data to display," it may be due to a deactivated access or an incomplete update. In this case, use the [“Force Content Now”](/kb/platform/app-features/connections/connections-content/content-management#how-can-i-use-the-force-update-now-functionality) tool to manually refresh your content. If you've reactivated an access that was previously deactivated, it will show 0 properties until the next scheduled update or until you manually trigger an update.
+3. **Zero Hotels in the "My Connections Content" Section**: If you see "0 hotels" or "There is no data to display," it may be due to a deactivated access or an incomplete update. In this case, use the [“Force Content Now”](/kb/platform/app-features/connections/connections-content/content-management#how-can-i-use-the-force-update-now-functionality) tool to manually refresh your content. If you've reactivated an access that was previously deactivated, it will show 0 properties until the next scheduled update or until you manually trigger an update.
 
    - **Note**: Content updates are only processed for [active accesses](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details#what-information-can-i-find-in-my-connections) on the platform.
 
-3. **Missing Mandatory Fields from the Seller**: If the Seller has not provided certain required fields, some content (e.g., hotels or destinations) might be excluded.
+4. **Missing Mandatory Fields from the Seller**: If the Seller has not provided certain required fields, some content (e.g., hotels or destinations) might be excluded.
 
-4. **Seller Has Not Sent Specific Items**: It's also possible that the Seller simply has not provided the particular content you're expecting.
+5. **Seller Has Not Sent Specific Items**: It's also possible that the Seller simply has not provided the particular content you're expecting.
 
 ### How Can I Manage This Discrepancy?
 
 If you're experiencing discrepancies in the content you're receiving, try the following steps:
 
-1. **Verify Access Credentials**: Ensure that your [Hotel-X Access Code](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details) is active and that its credentials (user, password, URLs, etc.) match those configured by the Seller in their system. If you are using our Legacy Pull Buyers API, ensure that your request configuration includes the "HotelXAccessCode" parameter.
+1. **Check if the requested method is implemented:** Run a [Metadata query](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata) and review the value of the `implemented` field.
 
-2. **Reach Out to the Seller**: Confirm that the Seller is sending all the necessary information, including any required fields for integration.
+2. **Verify Access Credentials**: Ensure that your [Hotel-X Access Code](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details) is active and that its credentials (user, password, URLs, etc.) match those configured by the Seller in their system. If you are using our Legacy Pull Buyers API, ensure that your request configuration includes the "HotelXAccessCode" parameter.
 
-3. **Force an Update**: If the issue persists, try [forcing an update](/kb/platform/app-features/connections/connections-content/content-management#how-can-i-use-the-force-update-now-functionality) to refresh your content.
+3. **Reach Out to the Seller**: Confirm that the Seller is sending all the necessary information, including any required fields for integration.
 
-4. **Open a Case with Support**: If the problem continues after forcing an update, you can [open a case](/kb/platform/support-portal/case-guidelines) with our Customer Support Team for further assistance.
+4. **Force an Update**: If the issue persists, try [forcing an update](/kb/platform/app-features/connections/connections-content/content-management#how-can-i-use-the-force-update-now-functionality) to refresh your content.
+
+5. **Open a Case with Support**: If the problem continues after forcing an update, you can [open a case](/kb/platform/support-portal/case-guidelines) with our Customer Support Team for further assistance.
 
 ### What Should I Do if I Encounter an Error or an Empty Response When Downloading My Content?
 
 If you're receiving an error or an empty response while downloading content, try these steps:
 
-1. **Verify Your Credentials**: Ensure that the credentials in your request (e.g., Hotel-X Access Code or Legacy Configuration) are active and working properly.
+1. **Check if the requested method is implemented:** Run a [Metadata query](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata) and review the value of the `implemented` field.
 
-2. **Check API Request Compliance**: Make sure that your request adheres to our API requirements. If you're querying hotel information for portfolios with concatenated hotel codes, ensure the codes are included with the proper concatenation. For more details, read about [concatenated hotel codes here](/kb/connectivity-products/for-buyers/hotel-x/content/hotels/#what-is-the-difference-between-hotelcode-and-hotelcodesupplier).
+2. **Verify Your Credentials**: Ensure that the credentials in your request (e.g., Hotel-X Access Code or Legacy Configuration) are active and working properly.
 
-3. **Consult the Error and Warning List**: Check our [list of errors and warnings](/kb/connectivity-products/for-buyers/errors-and-warnings/overview) for additional troubleshooting steps.
+3. **Check API Request Compliance**: Make sure that your request adheres to our API requirements. If you're querying hotel information for portfolios with concatenated hotel codes, ensure the codes are included with the proper concatenation. For more details, read about [concatenated hotel codes here](/kb/connectivity-products/for-buyers/hotel-x/content/hotels/#what-is-the-difference-between-hotelcode-and-hotelcodesupplier).
 
-4. **Force an Update**: If you’re still encountering issues, try [forcing an update](/kb/platform/app-features/connections/connections-content/content-management#how-can-i-use-the-force-update-now-functionality). After the update is complete, restart the download process.
+4. **Consult the Error and Warning List**: Check our [list of errors and warnings](/kb/connectivity-products/for-buyers/errors-and-warnings/overview) for additional troubleshooting steps.
 
-5. **Open a Case with Support**: If the error persists or if you receive an unlisted error code, [open a case](/kb/platform/support-portal/case-guidelines) with our Support Team for further investigation.
+5. **Force an Update**: If you’re still encountering issues, try [forcing an update](/kb/platform/app-features/connections/connections-content/content-management#how-can-i-use-the-force-update-now-functionality). After the update is complete, restart the download process.
+
+6. **Open a Case with Support**: If the error persists or if you receive an unlisted error code, [open a case](/kb/platform/support-portal/case-guidelines) with our Support Team for further investigation.
 
 :::info Force Content Updates 
 When using 'Force Content Now' to refresh a Seller's static content, note that the update duration **depends on the content size**. The update is processed through a **queue system** and will begin once it reaches its turn. This could take anywhere from a few minutes to 72 hours.

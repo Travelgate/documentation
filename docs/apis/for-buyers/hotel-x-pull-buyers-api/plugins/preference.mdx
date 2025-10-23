@@ -49,28 +49,82 @@ However, with the preference rule applied:
 
 If **'filterCompetitors' were disabled**, SUP1 would be added to the group, and **both options would be returned** in the results.
 
-
-
 To get started with the Preference plugin, follow these simple steps:
+
 
 ## 1. Create your Preference Rules on our Travelgate website
 
-Your searches will use the preference rules you create on our website in the **[Plugins](https://app.travelgate.com/connections/plugins)** section. In this section, under the **Preference** tab, you’ll be able to view, create, and update your rules. A rule is a set of parameters that define both a configuration and a result.
+Your searches will apply the **Preference rules** you create on our [Travelgate website](https://app.travelgate.com/connections/plugins), under the **Plugins → Preference** section.
 
-In the preference rule configuration, you must always specify the following:
+In this section, you can:
 
-* **IdRule:** Unique identifier of the rule. You can assign any identifier that best suits you.
-* **Suppliers:** List of supplier codes to which you want the rule to apply.
-* **Context:** Buyer context code to which you want the rule to apply.
+* View all your existing rules.
+* Create new ones.
+* Edit or delete existing rules.
+* Configure a **Tiebreaker** — a priority list of suppliers that determines which one to keep in case multiple options are equally ranked after applying your rules.
 
-The result of the rule is made up of two manatory values:
+![Preference Rules](https://stplaformwe.blob.core.windows.net/docs/preference_list.png)
 
-* **Percentage:** Commission value. Percentage represents the tolerance you allow over the net price to avoid discarding the option. In other words, options that meet the criteria of this rule will not be discarded, even if they are up to X% more expensive than the cheapest option.
-* **FilterCompetitors:** true/false value. If set to true, it means that if an option exists that meets the criteria of this rule, only that option will be kept, and all others will be discarded. This ensures you only retain the option that follows the rule's criteria.
+
+Creating or editing a rule is done through a simple **3-step form** in the **Preference App** section of the [Plugins](https://app.travelgate.com/connections/plugins) page. Each step defines how and when your rule will be applied.
+
+#### **Step 1. Rule Name**
+
+Give your rule a clear and identifiable name.
+This name will help you easily recognize it later when managing or prioritizing your rules.
+
+![Preference Step 1](https://stplaformwe.blob.core.windows.net/docs/preference_step1.png)
+
+#### **Step 2. Rule Configuration**
+
+This step defines both the **conditions** under which your preference will apply and the **preference behavior** itself.
+
+##### **2.1. Target Criteria**
+
+Specify the conditions that must be met for this preference rule to apply.
+Here, you can define:
+
+* **Supplier(s):** The supplier(s) to which the preference should apply.
+* **Hotel Filters (optional):** You can narrow down the rule to specific hotel codes or even to hotels within a certain **country**.
+* **Date Filters (optional):** Define booking or check-in date ranges for which this preference should be valid.
+* **Rate Filters (optional):** Apply the preference only to certain rate conditions (e.g., *non-refundable*, *package*, etc.).
+
+These filters allow you to create **very specific preference behaviors** based on your business strategy.
+
+![Preference Step 2.1](https://stplaformwe.blob.core.windows.net/docs/preference_step2.png)
+
+
+##### **2.2. Preference Settings**
+
+Define how your preference should affect the supplier’s competitiveness:
+
+* **Percentage:**
+  This value determines the adjustment applied when comparing suppliers under the defined criteria.
+
+  * A **positive percentage** gives an *advantage* to options that meet this rule’s conditions — they will be considered more competitive.
+  * A **negative percentage** makes those options *less competitive* compared to others.
+
+* **Filter Competitors:**
+  When set to `true`, if at least one option in the group matches this rule’s conditions, **that option will automatically be selected**, and all others will be discarded.
+
+![Preference Step 2.2](https://stplaformwe.blob.core.windows.net/docs/preference_step2b.png)
+
+
+
+#### **Step 3. Review and Create the Rule**
+
+Before saving, review all your configurations. Once confirmed, click **Create Rule**.
+You can **edit or delete** the rule at any time, or even **assign it a higher priority** than other existing rules.
+
+Additionally, you can access **logs** to track which user created or modified each rule and when the change occurred.
+
+![Preference Step 3](https://stplaformwe.blob.core.windows.net/docs/preference_step3.png)
+
+
 
 ## 2. Execute Preference Plugin in your Query
 
-Once you've uploaded your preference file, to use the plugin add the following field to the `settings` node of your request. Note that preference plugin can just be executed in search query. In order to successfully execute the preference plugin, you will need to create the request with the following variables.
+Once you've uploaded your preference rules in the website, to use the plugin add the following field to the `settings` node of your request. Note that preference plugin can just be executed in search query. In order to successfully execute the preference plugin, you will need to create the request with the following variables:
 
 * **`step`**: "RESPONSE"
 * **`type`**: "PRE_STEP"
@@ -116,6 +170,14 @@ Once you've uploaded your preference file, to use the plugin add the following f
                         {
                             "key" : "primaryKey",
                             "value" : "hotel,board,room"
+                        },
+						{
+                            "key" : "optionsPerKey",
+                            "value" : "2"
+                        },
+						{
+                            "key" : "internalCurrencyConversion",
+                            "value" : "true"
                         }
                     ]
 			}

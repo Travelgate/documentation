@@ -48,6 +48,7 @@ The **Metadata** in a Connector serves as a configuration file that outlines the
 | ------- | --- | ---- | ---------| ----------- |
 | Shopping | 1 | ShoppingElement | No | Gets or sets the shopping element. |
 | Shopping/Languages | 1 | LanguagesElement | No | Information about the supported languages in the shopping process. |
+| Shopping/RequiredIdentificationDocuments | 1 | BoolElement | No | Indicates whether the supplier requires identification documents for each guest during the booking process. |
 | Shopping/Currencies | 1 | CurrenciesElement | No | Information about the currencies supported during the shopping process. |
 | Shopping/Price | 1 | PriceElement | No | Details about pricing, including net, gross, and minimum selling price. |
 | Shopping/Nationalities | 1 | NationalitiesElement | No | Information about the nationalities that the supplier supports for bookings. |
@@ -74,6 +75,11 @@ Below is an example of a metadata file used in connectors. Metadata defines the 
 {
     "shopping":
     {
+        "requiredIdentifica4tionDocuments":
+        {
+          "value": false,
+          "reviewDate": "2025-01-14T10:30:58.6278493"
+        },
         "languages":
         {
             "all": true,

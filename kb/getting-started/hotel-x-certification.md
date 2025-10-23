@@ -323,6 +323,7 @@ query (
 
 ```js
 {
+  "data": {
     "hotelX": {
       "search": {
         "context": "HOTELTEST",
@@ -729,7 +730,7 @@ query (
       }
     }
   }
-
+}
 ```
 
 

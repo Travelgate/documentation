@@ -39,7 +39,7 @@ Sellers use this section to **validate or invalidate suggested mappings** betwee
 * **In Group:** Select multiple pairings with checkboxes and apply actions with the buttons above the table.
 ![fastx-seller-validation-group](https://stplaformwe.blob.core.windows.net/kbase/fastx_codes_seller_mode_validation2.png)
 
-* **Bulk via CSV:** Use the "Bulk Hotel Validation" button and download the hotel data and mapping, add a validation column, and upload for processing.
+* **Bulk via CSV:** Use the "Bulk Hotel Validation" button and download the hotel data and mapping, change the 'status' column to validate or invalidate, and upload for processing.
 ![fastx-seller-validation-bulk-csv](https://stplaformwe.blob.core.windows.net/kbase/fastx_codes_seller_mode_validation3.png)
 
 ### Important Notes

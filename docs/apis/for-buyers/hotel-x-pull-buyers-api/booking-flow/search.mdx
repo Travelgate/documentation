@@ -6,7 +6,7 @@ import HotelSettingsInput from "../../../../../src/graphql/generated-docs/HotelS
 import HotelXFilterSearchInput from "../../../../../src/graphql/generated-docs/HotelXFilterSearchInput.mdx";
 import HotelSearch from "../../../../../src/graphql/generated-docs/HotelSearch.mdx";
 
-import {searchQuickStartQuery, searchTwoRoomsVariables, searchMultipleHotelsVariables, searchWithoutFilterVariables} from "../../../../../src/graphql/hotel-x/search.quickstart.query";
+import {searchQuickStartQuery, searchTwoRoomsVariables, searchMultipleHotelsVariables, searchWithoutFilterVariables, searchWithOnlyOneAccess} from "../../../../../src/graphql/hotel-x/search.quickstart.query";
 
 # Search
 
@@ -111,7 +111,6 @@ To specify your settings you need to use the [`HotelSettingsInput` input](/api/t
 {
     "settings" : {
         "client" : "client_demo",
-        "context" : "HOTELTEST",
         "testMode" : true,
         "auditTransactions" : false,
         "timeout" : 5000
@@ -121,7 +120,6 @@ To specify your settings you need to use the [`HotelSettingsInput` input](/api/t
 
 **Mandatory Settings:**
 * `client`
-* `context` (You have the flexibility to choose between using the supplier's context or your own, depending on which hotel codes you want to use in the query input. If you choose to search for different suppliers using the same query, you must use your own context code and mapping functionality.)
 * `timeout` (Timeout in milliseconds for all supplier connections. Won't close Buyer connection if exceeded.)
 
 **Optional Settings:**
@@ -213,12 +211,12 @@ Some Sellers may not include cancellation policies in their availability data. Y
 
 This first search query is executed without specifying the 'filterSearch > access' node. In this case, the request will be sent by default to all accesses linked to the client "client_demo".
 
-<GraphqlSample query={searchQuickStartQuery} variables={searchTwoRoomsVariables}/>
+<GraphqlSample query={searchQuickStartQuery} variables={searchWithoutFilterVariables}/>
 &nbsp;
 
 In the next example, the search query includes the 'filterSearch > access' node, specifying access "2". This means the request will be sent only to the credentials associated with access 2 of the supplier "HOTELTEST".
 
-<GraphqlSample query={searchQuickStartQuery} variables={searchTwoRoomsVariables}/>
+<GraphqlSample query={searchQuickStartQuery} variables={searchWithOnlyOneAccess}/>
 &nbsp;
 
 #### Search query [1 hotel, 2 rooms: 3 adults 1 child]

@@ -47,6 +47,10 @@ By default, stored cache default value is **24 hours**, but Speed allows customi
 
 Once configured, click **'Activate Speed'**, and caching will begin immediately. Performance insights will be available shortly.
 
+:::info
+Every time Speed is **activated** or **deactivated** for any connection or access, a **notification** will be sent via two channels: website notifications and email notifications, to both the Buyer and Seller. The email will be delivered to the addresses listed as your organization’s **Tech Support Contact**.
+:::
+
 ![speed_4](https://storage.travelgate.com/kbase/speed_4.jpg)
 
 ## How to Check Connection Performance

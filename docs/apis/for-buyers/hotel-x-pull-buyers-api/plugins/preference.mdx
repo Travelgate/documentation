@@ -27,27 +27,37 @@ By leveraging the **Preference Plugin**, you gain greater control over how optio
 
 5. There is only one exception to this, which is when a rule states that competitors must be filtered out. Thus, if any of the options meet such a rule, for that group of options, the option that filters out competitors will be the only one returned.
 
-### Example
 
-**Preference Rule Loaded:** Tolerance Percentage = **1%** for all **SUP1** hotels and 'filterCompetitors' is enabled.  
+<details>
+    <summary>Can I have an example on how a preference rule would work?</summary>
+    <div>
+        <div>
+		**Primary Key used**: hotel, room, board
+		
+		**Options per key**: 2
+		
+		**Preference Rule Loaded:** Tolerance Percentage = **1%** for all supplier "**SUP1**" hotels. The 'filterCompetitors' option is enabled.  
 
-**Scenario:**  
-- **Supplier SUP1** offers **126€** for Hotel Santo Domingo (Double Room, All Inclusive).  
-- **Supplier SUP2** offers **125€** for the same hotel and room type.  
+		**Scenario:**  
+		- **Supplier SUP1** offers **126€** for Hotel Santo Domingo (Double Room, All Inclusive).  
+		- **Supplier SUP2** offers **125€** for Hotel Santo Domingo (Double Room, All Inclusive).  
 
-By default, **SUP2 wins** because it has the lowest price.  
-However, with the preference rule applied:  
+		By default, **SUP2 wins** because it has the lowest price. However, with the preference rule applied:  
 
-1. We first group all options with the same **aggregation primary key** (Hotel Santo Domingo - Double Room - All Inclusive).  
-2. Since there is a **preference rule for SUP1 hotels**, we recalculate the price and internally save it like:
+		1. We first group all options with the same **aggregation primary key** (hotel: Hotel Santo Domingo, room: Double Room, board: All Inclusive).  
+		2. Since there is a **preference rule for SUP1 hotels**, we recalculate the price and internally save it like:
 
-   **Formula:**  
-   _Option price * (100 - tolerance%) / 100_  
-   `126€ * (100 - 1) / 100 = 124.74€
+		**Formula:**  
+		_Option price * (100 - tolerance%) / 100_  
+		126€ * (100 - 1) / 100 = 124.74€
 
-3. Since **124.74€ is lower than 125€** and **'filterCompetitors' is enabled**, the **SUP2 option is discarded**, making **SUP1 the only returned option**.  
+		3. Since **124.74€ is lower than 125€** and **'filterCompetitors' is enabled**, the **SUP2 option is discarded**, making **SUP1 the only returned option**.  
 
-If **'filterCompetitors' were disabled**, SUP1 would be added to the group, and **both options would be returned** in the results.
+		If **'filterCompetitors' were disabled**, SUP1 would be added to the group, and **both options would be returned** in the results (as 'optionsPerKey' = 2).
+		</div>
+    </div>
+</details>
+
 
 To get started with the Preference plugin, follow these simple steps:
 
@@ -68,18 +78,18 @@ In this section, you can:
 
 Creating or editing a rule is done through a simple **3-step form** in the **Preference App** section of the [Plugins](https://app.travelgate.com/connections/plugins) page. Each step defines how and when your rule will be applied.
 
-#### **Step 1. Rule Name**
+### **Step 1. Rule Name**
 
 Give your rule a clear and identifiable name.
 This name will help you easily recognize it later when managing or prioritizing your rules.
 
 ![Preference Step 1](https://stplaformwe.blob.core.windows.net/docs/preference_step1.png)
 
-#### **Step 2. Rule Configuration**
+### **Step 2. Rule Configuration**
 
 This step defines both the **conditions** under which your preference will apply and the **preference behavior** itself.
 
-##### **2.1. Target Criteria**
+#### **2.1. Target Criteria**
 
 Specify the conditions that must be met for this preference rule to apply.
 Here, you can define:
@@ -94,7 +104,7 @@ These filters allow you to create **very specific preference behaviors** based o
 ![Preference Step 2.1](https://stplaformwe.blob.core.windows.net/docs/preference_step2.png)
 
 
-##### **2.2. Preference Settings**
+#### **2.2. Preference Settings**
 
 Define how your preference should affect the supplier’s competitiveness:
 
@@ -111,7 +121,7 @@ Define how your preference should affect the supplier’s competitiveness:
 
 
 
-#### **Step 3. Review and Create the Rule**
+### **Step 3. Review and Create the Rule**
 
 Before saving, review all your configurations. Once confirmed, click **Create Rule**.
 You can **edit or delete** the rule at any time, or even **assign it a higher priority** than other existing rules.

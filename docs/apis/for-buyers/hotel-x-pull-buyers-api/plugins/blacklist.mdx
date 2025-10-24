@@ -4,29 +4,84 @@ sidebar_position: 3
 
 # Blacklist
 
-The Blacklist plugin lets you easily exclude specific hotel codes when executing a search. This means that hotels on your blacklist won't be requested from the supplier, helping you streamline your results and improve query efficiency. You can even exclude entire suppliers using customizable rules.
+The Blacklist App allows Buyers to define business rules that block search traffic to specific hotels or suppliers. This helps streamline results and enforce your internal policies. You can create rules based on multiple conditions, such as country, hotel, date range, or rate type (packages, non-refundable, etc.).
 
-To get started with the Blacklist plugin, follow these simple steps:
+To use the Blacklist plugin, you need to:
+
+1. Create your Blacklist rules (via website or SFTP file).
+2. Add the plugin to your Hotel-X search query.
 
 ## 1. Create your Blacklist Rules on our Travelgate website
 
-Your searches will use the blacklist rules you create on our website in the **[Plugins](https://app.travelgate.com/connections/plugins)** section. In this section, under the **Blacklist** tab, you’ll be able to view, create, and update your rules. A rule is a set of parameters that define both a configuration and a result.
+Hotel-X will block the traffic according to the **Blacklist rules** you create on our [Travelgate website](https://app.travelgate.com/connections/plugins), under **Plugins → Blacklist**. 
 
-In the blacklist rule configuration, you must always specify the following:
+In this section, you can:
 
-* **IdRule:** Unique identifier of the rule. You can assign any identifier that best suits you.
-* **Clients, Suppliers and Accesses:** List of client, supplier, and access codes to which you want the rule to apply.
-* **Context:** Buyer context code to which you want the rule to apply.
+* View all your existing rules.
+* Create new rules.
+* Edit or delete rules.
+* Change the priority of rules.
 
-The result of the rule is made up of hotels or countries:
-
-* **Country:** Country code to be blacklisted.
-* **Hotels:** List of hotel codes to be blacklisted.
+![Blacklist Rules Overview](https://stplaformwe.blob.core.windows.net/docs/blacklist_list.png)
 
 
-## Optional: Create and Upload your Blacklist File
+Creating or editing a rule is done through a simple **3-step form** in the **Blacklist App** section of the [Plugins](https://app.travelgate.com/connections/plugins) page. Each step defines how and when your rule will be applied.
 
-You can also create your Blacklist Rules uploading a file to our FTP server instead of using our website.
+
+### Step 1. Rule Name
+
+Give your rule a clear and identifiable name.  
+This name will help you easily recognize the rule later when managing or prioritizing your rules.
+
+![Blacklist Step 1](https://stplaformwe.blob.core.windows.net/docs/blacklist_step1.png)
+
+### Step 2. Rule Configuration
+
+This step defines both the **target criteria** under which your block will apply and the **hotels** affected.
+
+#### 2.1 Target Criteria
+
+Specify the conditions that must be met for this blacklist rule to apply. You can define:
+
+* Clients
+* Suppliers
+* Accesses
+* Markets (optional)
+* Nationalities (optional)
+
+You can select **all clients and suppliers**, or only specific ones. You can also **exclude certain clients or suppliers** using the checkboxes — meaning the rule will apply to all except those marked.
+
+![Blacklist Step 2.1](https://stplaformwe.blob.core.windows.net/docs/blacklist_step2.png)
+
+#### 2.2 Hotels
+
+In this section, you configure:
+
+* Whether the rule is a **Blacklist** or **Whitelist**.
+* The **Buyer context** (if using FastX codes, check the FastX option).
+* The hotels affected:
+  * All hotels
+  * Specific hotel codes
+  * All hotels in one or more countries
+
+![Blacklist Step 2.2](https://stplaformwe.blob.core.windows.net/docs/blacklist_step2b.png)
+
+### Step 3. Review and Create the Rule
+
+Before saving, review all configurations. Once confirmed, click **Create Rule**.  
+
+![Blacklist Step 3](https://stplaformwe.blob.core.windows.net/docs/blacklist_step3.png)
+
+You can also:
+
+* **Edit** or **delete** the rule at any time.
+* **Change the priority** of the rule relative to other existing rules.
+* Access **logs** to track which user created or modified each rule and when the changes occurred.
+
+
+## Optional: Create your Blacklist Rules using a file
+
+You can also create your Blacklist Rules uploading a file to our SFTP server instead of using our website.
 
 To get started, create your blacklist file in the correct format and then upload it to your FTP account. We've provided a template file below ⬇️ to help you with this process. Just click on the file name, add your own rules, save it in CSV format, and then upload it to the corresponding folder in your FTP.
 
@@ -105,7 +160,9 @@ Here are some common use cases for the Blacklist plugin, along with the CSV temp
 
 ## 2. Execute Blacklist Plugin in your Query
 
-Once you've uploaded your blacklist file, to use the plugin add the following field to the `settings` node of your request. Note that blacklist plugin can just be executed in search query. In order to successfully execute the blacklist plugin, you will need to create the request with the following variables.
+Once you have created your blacklist rules — either **via the website** or by **uploading a file to the SFTP** — you can activate the plugin in your HotelX search query.
+
+To do this, add the following field to the `settings` node of your request. Note that the Blacklist plugin can **only be executed during a search query**.
 
 * **`step`**: "REQUEST_ACCESS"
 * **`type`**: "PRE_STEP"

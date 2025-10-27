@@ -27,102 +27,114 @@ By leveraging the **Preference Plugin**, you gain greater control over how optio
 
 5. There is only one exception to this, which is when a rule states that competitors must be filtered out. Thus, if any of the options meet such a rule, for that group of options, the option that filters out competitors will be the only one returned.
 
-### Example
 
-**Preference Rule Loaded:** Tolerance Percentage = **1%** for all **SUP1** hotels and 'filterCompetitors' is enabled.  
+<details>
+    <summary>Can I have an example on how a preference rule would work?</summary>
+    <div>
+        <div>
+		**Primary Key used**: hotel, room, board
+		
+		**Options per key**: 2
+		
+		**Preference Rule Loaded:** Tolerance Percentage = **1%** for all supplier "**SUP1**" hotels. The 'filterCompetitors' option is enabled.  
 
-**Scenario:**  
-- **Supplier SUP1** offers **126€** for Hotel Santo Domingo (Double Room, All Inclusive).  
-- **Supplier SUP2** offers **125€** for the same hotel and room type.  
+		**Scenario:**  
+		- **Supplier SUP1** offers **126€** for Hotel Santo Domingo (Double Room, All Inclusive).  
+		- **Supplier SUP2** offers **125€** for Hotel Santo Domingo (Double Room, All Inclusive).  
 
-By default, **SUP2 wins** because it has the lowest price.  
-However, with the preference rule applied:  
+		By default, **SUP2 wins** because it has the lowest price. However, with the preference rule applied:  
 
-1. We first group all options with the same **aggregation primary key** (Hotel Santo Domingo - Double Room - All Inclusive).  
-2. Since there is a **preference rule for SUP1 hotels**, we recalculate the price and internally save it like:
+		1. We first group all options with the same **aggregation primary key** (hotel: Hotel Santo Domingo, room: Double Room, board: All Inclusive).  
+		2. Since there is a **preference rule for SUP1 hotels**, we recalculate the price and internally save it like:
 
-   **Formula:**  
-   _Option price * (100 - tolerance%) / 100_  
-   `126€ * (100 - 1) / 100 = 124.74€
+		**Formula:**  
+		_Option price * (100 - tolerance%) / 100_  
+		126€ * (100 - 1) / 100 = 124.74€
 
-3. Since **124.74€ is lower than 125€** and **'filterCompetitors' is enabled**, the **SUP2 option is discarded**, making **SUP1 the only returned option**.  
+		3. Since **124.74€ is lower than 125€** and **'filterCompetitors' is enabled**, the **SUP2 option is discarded**, making **SUP1 the only returned option**.  
 
-If **'filterCompetitors' were disabled**, SUP1 would be added to the group, and **both options would be returned** in the results.
-
+		If **'filterCompetitors' were disabled**, SUP1 would be added to the group, and **both options would be returned** in the results (as 'optionsPerKey' = 2).
+		</div>
+    </div>
+</details>
 
 
 To get started with the Preference plugin, follow these simple steps:
 
-## 1. Create and Upload your Preference File
 
-To get started, create your preference file in the correct format and then upload it to your SFTP account. We've provided a template file below ⬇️ to help you with this process. Just click on the file name, add your own rules, save it in CSV format, and then upload it to the corresponding folder in your SFTP.
+## 1. Create your Preference Rules on our Travelgate website
 
-```mdx-code-block
-<BrowserWindow>
+Your searches will apply the **Preference rules** you create on our [Travelgate website](https://app.travelgate.com/connections/plugins), under the **Plugins → Preference** section.
 
-📁HotelX  
-&nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX_0000  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁BusinessRules  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[BuyerContext_sequential_preference.csv](https://storage.travelgate.com/docs/BuyerContext_sequential_preference.csv)**
+In this section, you can:
 
-</BrowserWindow>
-```
+* View all your existing rules.
+* Create new ones.
+* Edit or delete existing rules.
+* Configure a **Tiebreaker** — a priority list of suppliers that determines which one to keep in case multiple options are equally ranked after applying your rules.
 
-:::note
-
-If you need assistance with requesting your credentials to access the SFTP server, determining the endpoint and directory format, or learning how to upload, update, and delete SFTP files, please refer to the [overview](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/overview) section of Plugins.
-
-:::
-
-### File Format Specification
-
-* **File Name:** BuyerContext_sequential_preference.csv
-* **Directory:** HotelX/HotelX\_0000/BusinessRules
-* **Delimiter:** Comma (`,`)
-* **Header Row:**
-   * **RuleId (mandatory):** Rule identifier
-   * **ClientTokens:** Identifier provided by the client that is used to filter which business rules can be applied for the sent request.
-      * Separator for multiples codes in the same row: Semicolon `;`
-   * **SupplierCodes (mandatory):** Supplier codes you want the preference to be applied to.
-      * Separator for multiples codes in the same row: Semicolon `;`
-   * **NotSupplierCodes (mandatory):** Supplier codes you don't want the preference to be applied to.
-      * Separator for multiples codes in the same row: Semicolon `;`
-   * **BookingDateFrom:** Booking date from (yyyy-mm-dd)
-   * **BookingDateTo:** Booking date to (yyyy-mm-dd)
-   * **StartDateFrom:** Start date from (yyyy-mm-dd)
-   * **StartDateTo:** Start date to (yyyy-mm-dd)
-   * **HotelCodes:** Hotel codes you want the preference to be applied to.
-      * Separator for multiples codes in the same row: Semicolon `;`
-   * **NotHotelCodes:** Hotel codes you don't want the preference to be applied to.
-      * Separator for multiples codes in the same row: Semicolon `;`
-   * **ChainsCodes:** Chain codes you want the preference to be applied to.
-      * Separator for multiples codes in the same row: Semicolon `;`
-   * **NotChainCodes:** Chain codes you don't want the preference to be applied to.
-      * Separator for multiples codes in the same row: Semicolon `;`
-   * **DestinationCodes:** Destination codes you want the preference to be applied to.
-      * Separator for multiples codes in the same row: Semicolon `;`
-   * **NotDestinationCodes:** Destination codes you don't want the preference to be applied to.
-      * Separator for multiples codes in the same row: Semicolon `;`
-   * **Status:** Option status (OK, RQ) you want the preference to be applied to.
-      * Separator for multiples codes in the same row: Semicolon `;`
-   * **NotStatus:** Option status (OK, RQ) you don't want the preference to be applied to.
-      * Separator for multiples codes in the same row: Semicolon `;`
-   * **Percentage (mandatory):** Commission value, decimal separator must be point `.`. Percentage represents the tolerance you allow over the net price to avoid discarding the option. In other words, options that meet the criteria of this rule will not be discarded, even if they are up to X% more expensive than the cheapest option.
-   * **FilterCompetitors (mandatory):** true/false value. If set to true, it means that if an option exists that meets the criteria of this rule, only that option will be kept, and all others will be discarded. This ensures you only retain the option that follows the rule's criteria.
+![Preference Rules](https://stplaformwe.blob.core.windows.net/docs/preference_list.png)
 
 
-<details>
-    <summary>📹Learn how to change the format of the csv file in order to edit and save it</summary>
-    <div>
-        <div><iframe width="560" height="315" src="https://www.youtube.com/embed/XkOk3SkZ0Sg?si=TYhN1QfMwYE1fusw&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-    </div>
-</details>
+Creating or editing a rule is done through a simple **3-step form** in the **Preference App** section of the [Plugins](https://app.travelgate.com/connections/plugins) page. Each step defines how and when your rule will be applied.
+
+### **Step 1. Rule Name**
+
+Give your rule a clear and identifiable name.
+This name will help you easily recognize it later when managing or prioritizing your rules.
+
+![Preference Step 1](https://stplaformwe.blob.core.windows.net/docs/preference_step1.png)
+
+### **Step 2. Rule Configuration**
+
+This step defines both the **conditions** under which your preference will apply and the **preference behavior** itself.
+
+#### **2.1. Target Criteria**
+
+Specify the conditions that must be met for this preference rule to apply.
+Here, you can define:
+
+* **Supplier(s):** The supplier(s) to which the preference should apply.
+* **Hotel Filters (optional):** You can narrow down the rule to specific hotel codes or even to hotels within a certain **country**.
+* **Date Filters (optional):** Define booking or check-in date ranges for which this preference should be valid.
+* **Rate Filters (optional):** Apply the preference only to certain rate conditions (e.g., *non-refundable*, *package*, etc.).
+
+These filters allow you to create **very specific preference behaviors** based on your business strategy.
+
+![Preference Step 2.1](https://stplaformwe.blob.core.windows.net/docs/preference_step2.png)
+
+
+#### **2.2. Preference Settings**
+
+Define how your preference should affect the supplier’s competitiveness:
+
+* **Percentage:**
+  This value determines the adjustment applied when comparing suppliers under the defined criteria.
+
+  * A **positive percentage** gives an *advantage* to options that meet this rule’s conditions — they will be considered more competitive.
+  * A **negative percentage** makes those options *less competitive* compared to others.
+
+* **Filter Competitors:**
+  When set to `true`, if at least one option in the group matches this rule’s conditions, **that option will automatically be selected**, and all others will be discarded.
+
+![Preference Step 2.2](https://stplaformwe.blob.core.windows.net/docs/preference_step2b.png)
+
+
+
+### **Step 3. Review and Create the Rule**
+
+Before saving, review all your configurations. Once confirmed, click **Create Rule**.
+You can **edit or delete** the rule at any time, or even **assign it a higher priority** than other existing rules.
+
+Additionally, you can access **logs** to track which user created or modified each rule and when the change occurred.
+
+![Preference Step 3](https://stplaformwe.blob.core.windows.net/docs/preference_step3.png)
 
 
 
 ## 2. Execute Preference Plugin in your Query
 
-Once you've uploaded your preference file, to use the plugin add the following field to the `settings` node of your request. Note that preference plugin can just be executed in search query. In order to successfully execute the preference plugin, you will need to create the request with the following variables.
+Once you've uploaded your preference rules in the website, to use the plugin add the following field to the `settings` node of your request. Note that preference plugin can just be executed in search query. In order to successfully execute the preference plugin, you will need to create the request with the following variables:
 
 * **`step`**: "RESPONSE"
 * **`type`**: "PRE_STEP"
@@ -168,6 +180,14 @@ Once you've uploaded your preference file, to use the plugin add the following f
                         {
                             "key" : "primaryKey",
                             "value" : "hotel,board,room"
+                        },
+						{
+                            "key" : "optionsPerKey",
+                            "value" : "2"
+                        },
+						{
+                            "key" : "internalCurrencyConversion",
+                            "value" : "true"
                         }
                     ]
 			}

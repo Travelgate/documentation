@@ -87,9 +87,6 @@ The Response is structured to provide detailed information about the hotel.
 ```json
 {
 	"Code": "201232338",
-	"Names": {
-		"en": "Standard Single room"
-	},
 	"Descriptions": {
 		"en": "Standard Single room"
 	},
@@ -173,7 +170,7 @@ The [AccumulativeRoom](/docs/apis/for-sellers/connectors-pull-developers-api/api
 |------|------|-------------|
 | **Code** | String | Gets or sets the code of the room. |
 | **Area** | Double | Gets or sets the area of the room. |
-| **Names** | Dictionary&lt;[Iso2LanguageEnum](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/iso2languageenum), String&gt; | Gets or sets the names of the room in different languages. |
+| **Names** | Dictionary&lt;[Iso2LanguageEnum](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/iso2languageenum), String&gt; | **[Deprecated]** This field is deprecated. Use `Descriptions` instead. Gets or sets the names of the room in different languages. |
 | **Descriptions** | Dictionary&lt;[Iso2LanguageEnum](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/iso2languageenum), String&gt; | Gets or sets the descriptions of the room in different languages. |
 | **RoomOccupancy** | [AccumulativeRoomOccupancy](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/accumulativeroomoccupancy) | Gets or sets the room occupancy information. |
 | **RoomOccupancy/Adults** | [AccumulativeMinMaxOccupancy](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/accumulativeminmaxoccupancy) | Accumulative occupancy for adults. |

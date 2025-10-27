@@ -46,61 +46,65 @@
 		}
 	}
 }`,a=`{
-	"input": {
-		"language": "es",
-		"market": "ES",
-		"nationality": "ES",
-		"checkIn": "2024-10-28",
-		"checkOut": "2024-10-29",
-		"hotel": "1",
-		"board": "1",
-		"price": {
-			"currency": "EUR",
-			"binding": false,
-			"net": 146,
-			"gross": 146
-		},
-		"ratePlan": "BAR",
-		"rooms": [
-			{
-				"occupancyRefId": 1,
-				"code": "2269",
-				"paxes": []
-			}
-		],
-		"rateRulesExtended": [
-			{
-				"type": "PACKAGE"
-			},
-			{
-				"type": "NON_REFUNDABLE"
-			}
-		],
-		"occupancies": [
-			{
-				"paxes": [
-					{
-						"age": 30
-					},
-					{
-						"age": 30
-					}
-				]
-			}
-		],
-		"cancelPolicy": {
-			"refundable": false,
-			"cancelPenalties": []
-		}
-	},
-	"settings": {
-		"testMode": true,
-		"client": "client_demo",
-		"context": "HOTELTEST",
-		"timeout": 20000
-	},
-	"filter": {
-		"access": "2",
-		"excludeComparisonFields": "SURCHARGES"
-	}
+    "input" : {
+        "language" : "es",
+        "market" : "ES",
+        "nationality" : "ES",
+        "checkIn" : "2027-05-28",
+        "checkOut" : "2027-05-29",
+        "hotel" : "1",
+        "board" : "14",
+        "price" : {
+            "currency" : "EUR",
+            "binding" : false,
+            "net" : 96.04,
+            "gross" : 98
+        },
+        "ratePlan" : "BAR",
+        "rooms" : [
+            {
+                "occupancyRefId" : 1,
+                "code" : "2269",
+                "paxes" : [
+                ]
+            }
+        ],
+        "rateRulesExtended" : [
+            {
+                "type" : "PACKAGE"
+            },
+            {
+                "type" : "NON_REFUNDABLE"
+            }
+        ],
+        "occupancies" : [
+            {
+                "paxes" : [
+                    {
+                        "age" : 30
+                    },
+                    {
+                        "age" : 30
+                    }
+                ]
+            }
+        ],
+        "cancelPolicy" : {
+            "refundable" : false,
+            "cancelPenalties" : [
+            ]
+        }
+    },
+    "settings" : {
+        "testMode" : true,
+        "client" : "client_demo",
+        "context" : "HOTELTEST",
+        "timeout" : 20000
+    },
+    "filter" : {
+        "access" : "2",
+        "excludeComparisonFields" : [
+            "SURCHARGES"
+        ]
+    }
 }`,p={sidebar_position:3},u="One Step Quote",m={},y=[{value:"Mutation Overview",id:"mutation-overview",level:2},{value:"1. Input",id:"1-input",level:3},{value:"2. Settings",id:"2-settings",level:3},{value:"3. Filter",id:"3-filter",level:3},{value:"Response Considerations",id:"response-considerations",level:3},{value:"Frequently Asked Questions",id:"frequently-asked-questions",level:2},{value:"Query Inputs",id:"query-inputs",level:2},...l.d$,...o.d$,{value:"Returned Fields",id:"returned-fields",level:2},{value:"Examples",id:"examples",level:2},{value:"Quote option without checking the surcharges",id:"quote-option-without-checking-the-surcharges",level:4}];function b(e){let s={a:"a",admonition:"admonition",br:"br",code:"code",h1:"h1",h2:"h2",h3:"h3",h4:"h4",header:"header",li:"li",ol:"ol",p:"p",pre:"pre",strong:"strong",table:"table",tbody:"tbody",td:"td",th:"th",thead:"thead",tr:"tr",ul:"ul",...(0,t.a)(),...e.components},{CautionSettingsHotelX:n,Details:r,GraphqlSample:c}=s;return n||f("CautionSettingsHotelX",!0),r||f("Details",!0),c||f("GraphqlSample",!0),(0,i.jsxs)(i.Fragment,{children:[(0,i.jsx)(s.header,{children:(0,i.jsx)(s.h1,{id:"one-step-quote",children:"One Step Quote"})}),"\n",(0,i.jsx)(s.p,{children:"One step quote operation evaluates the rate before booking, checking if the option is still available and including up-to-date pricing and cancellation policies. The returned fields include:"}),"\n",(0,i.jsxs)(s.ul,{children:["\n",(0,i.jsx)(s.li,{children:(0,i.jsx)(s.code,{children:"status"})}),"\n",(0,i.jsx)(s.li,{children:(0,i.jsx)(s.code,{children:"price"})}),"\n",(0,i.jsx)(s.li,{children:(0,i.jsx)(s.code,{children:"cancelPolicy"})}),"\n",(0,i.jsx)(s.li,{children:(0,i.jsx)(s.code,{children:"rooms"})}),"\n",(0,i.jsx)(s.li,{children:(0,i.jsx)(s.code,{children:"surcharges"})}),"\n"]}),"\n",(0,i.jsx)(s.h2,{id:"mutation-overview",children:"Mutation Overview"}),"\n",(0,i.jsx)(s.p,{children:"When creating your one step quote query, you have three different inputs to fill based on your specific needs:"}),"\n",(0,i.jsxs)(s.ol,{children:["\n",(0,i.jsx)(s.li,{children:"Criteria"}),"\n",(0,i.jsx)(s.li,{children:"Settings"}),"\n",(0,i.jsx)(s.li,{children:"Filter"}),"\n"]}),"\n",(0,i.jsx)(s.pre,{children:(0,i.jsx)(s.code,{className:"language-graphql",children:"query {\n    hotelX {\n    oneStepQuote\n      input: {}\n      settings: {}\n      filter: {}\n	}\n}\n"})}),"\n",(0,i.jsx)(n,{}),"\n",(0,i.jsx)(s.h3,{id:"1-input",children:"1. Input"}),"\n",(0,i.jsx)(s.p,{children:"This query offers versatility in quote options, with certain fields marked as mandatory and others as optional."}),"\n",(0,i.jsxs)(s.p,{children:["To specify your one step quote criteria you need to use the input ",(0,i.jsx)(s.code,{children:"HotelOneStepQuoteInput"})," in your query variables.\nMake sure the values sent in the OneStepQuote input match exactly the information received in the offer option you are trying to quote.\nThis includes fields such as rateRulesExtended, binding, and others."]}),"\n",(0,i.jsx)(s.admonition,{title:"Important",type:"warning",children:(0,i.jsx)(s.p,{children:"Any mismatch between the data sent in this request and the details provided by Channel-X (e.g., promotion codes, rate types, refundability, etc.) may result in errors or unsuccessful quotes."})}),"\n",(0,i.jsx)(s.pre,{children:(0,i.jsx)(s.code,{className:"language-js",children:'{\n	"input": {\n		"language": "es",\n		"market": "ES",\n		"nationality": "ES",\n		"checkIn": "2024-10-28",\n		"checkOut": "2024-10-29",\n		"hotel": "1",\n		"board": "1",\n		"price": {\n			"currency": "EUR",\n			"binding": false,\n			"net": 450.6,\n			"gross": 460.6\n		},\n		"ratePlan": "BAR",\n		"rooms": [\n			{\n				"occupancyRefId": 1,\n				"code": "2269",\n				"paxes": []\n			}\n		],\n		"rateRulesExtended": [\n			{\n				"type": "PACKAGE"\n			},\n			{\n				"type": "NON_REFUNDABLE"\n			}\n		],\n		"occupancies": [\n			{\n				"paxes": [\n					{\n						"age": 30\n					},\n					{\n						"age": 30\n					}\n				]\n			}\n		],\n		"cancelPolicy": {\n			"refundable": false,\n			"cancelPenalties": []\n		}\n	}\n}\n'})}),"\n",(0,i.jsx)(s.p,{children:(0,i.jsx)(s.strong,{children:"Mandatory criteria:"})}),"\n",(0,i.jsxs)(s.ul,{children:["\n",(0,i.jsx)(s.li,{children:(0,i.jsx)(s.code,{children:"checkIn"})}),"\n",(0,i.jsx)(s.li,{children:(0,i.jsx)(s.code,{children:"checkOut"})}),"\n",(0,i.jsx)(s.li,{children:(0,i.jsx)(s.code,{children:"hotel"})}),"\n",(0,i.jsx)(s.li,{children:(0,i.jsx)(s.code,{children:"board"})}),"\n",(0,i.jsx)(s.li,{children:(0,i.jsx)(s.code,{children:"occupancies"})}),"\n",(0,i.jsx)(s.li,{children:(0,i.jsx)(s.code,{children:"rooms"})}),"\n",(0,i.jsx)(s.li,{children:(0,i.jsx)(s.code,{children:"cancelPolicy"})}),"\n",(0,i.jsxs)(s.li,{children:[(0,i.jsx)(s.code,{children:"price"}),": Note that there is a difference on the use of the ",(0,i.jsx)(s.code,{children:"binding"})," field (inside price node) in the request.","\n",(0,i.jsxs)(s.ul,{children:["\n",(0,i.jsxs)(s.li,{children:["\n",(0,i.jsxs)(s.p,{children:[(0,i.jsx)(s.strong,{children:"In OneStepBook"}),":",(0,i.jsx)(s.br,{}),"\n","The ",(0,i.jsx)(s.code,{children:"binding"})," field is a ",(0,i.jsx)(s.strong,{children:"boolean"})," indicating whether the product ",(0,i.jsx)(s.strong,{children:"must be sold at the specified price or above"}),"."]}),"\n"]}),"\n",(0,i.jsxs)(s.li,{children:["\n",(0,i.jsxs)(s.p,{children:[(0,i.jsx)(s.strong,{children:"In Channel-X"}),":",(0,i.jsx)(s.br,{}),"\n","The equivalent field is ",(0,i.jsx)(s.code,{children:"YieldableIndicator"}),", which has an ",(0,i.jsx)(s.strong,{children:"opposite logic"}),":"]}),"\n",(0,i.jsxs)(s.ul,{children:["\n",(0,i.jsxs)(s.li,{children:[(0,i.jsx)(s.code,{children:"YieldableIndicator = true"})," (or not present): the product ",(0,i.jsx)(s.strong,{children:"can"})," be sold ",(0,i.jsx)(s.strong,{children:"below the price"}),"."]}),"\n",(0,i.jsxs)(s.li,{children:[(0,i.jsx)(s.code,{children:"YieldableIndicator = false"}),": the product ",(0,i.jsx)(s.strong,{children:"cannot"})," be sold below the price (",(0,i.jsx)(s.strong,{children:"binding = true"}),")."]}),"\n"]}),"\n"]}),"\n"]}),"\n"]}),"\n"]}),"\n",(0,i.jsx)(s.p,{children:(0,i.jsx)(s.strong,{children:"Optional criteria:"})}),"\n",(0,i.jsxs)(s.ul,{children:["\n",(0,i.jsx)(s.li,{children:(0,i.jsx)(s.code,{children:"language"})}),"\n",(0,i.jsx)(s.li,{children:(0,i.jsx)(s.code,{children:"nationality"})}),"\n",(0,i.jsx)(s.li,{children:(0,i.jsx)(s.code,{children:"market"})}),"\n",(0,i.jsx)(s.li,{children:(0,i.jsx)(s.code,{children:"ratePlan"})}),"\n",(0,i.jsx)(s.li,{children:(0,i.jsx)(s.code,{children:"surcharges"})}),"\n",(0,i.jsx)(s.li,{children:(0,i.jsx)(s.code,{children:"supplements"})}),"\n",(0,i.jsxs)(s.li,{children:[(0,i.jsx)(s.code,{children:"rateRulesExtended"}),": Make sure to correctly translate the Channel-X values before sending them in the ",(0,i.jsx)(s.code,{children:"RateRulesExtended"})," input to avoid errors or mismatches."]}),"\n"]}),"\n",(0,i.jsxs)(s.table,{children:[(0,i.jsx)(s.thead,{children:(0,i.jsxs)(s.tr,{children:[(0,i.jsx)(s.th,{children:"Channel-X/Code"}),(0,i.jsx)(s.th,{children:"Channel-X/PromotionCode"}),(0,i.jsx)(s.th,{children:"Channel-X/RatePlanType"}),(0,i.jsx)(s.th,{children:"Channel-X/NonRefundable"}),(0,i.jsx)(s.th,{children:"OneStepBook/RateRulesType"})]})}),(0,i.jsxs)(s.tbody,{children:[(0,i.jsxs)(s.tr,{children:[(0,i.jsx)(s.td,{children:"0"}),(0,i.jsx)(s.td,{children:"No promotion"}),(0,i.jsx)(s.td,{}),(0,i.jsx)(s.td,{}),(0,i.jsx)(s.td,{})]}),(0,i.jsxs)(s.tr,{children:[(0,i.jsx)(s.td,{children:"25"}),(0,i.jsx)(s.td,{children:"Senior 55"}),(0,i.jsx)(s.td,{}),(0,i.jsx)(s.td,{}),(0,i.jsx)(s.td,{children:"OLDER55"})]}),(0,i.jsxs)(s.tr,{children:[(0,i.jsx)(s.td,{children:"26"}),(0,i.jsx)(s.td,{children:"Senior 60"}),(0,i.jsx)(s.td,{}),(0,i.jsx)(s.td,{}),(0,i.jsx)(s.td,{children:"OLDER60"})]}),(0,i.jsxs)(s.tr,{children:[(0,i.jsx)(s.td,{children:"27"}),(0,i.jsx)(s.td,{children:"Senior 65"}),(0,i.jsx)(s.td,{}),(0,i.jsx)(s.td,{}),(0,i.jsx)(s.td,{children:"OLDER65"})]}),(0,i.jsxs)(s.tr,{children:[(0,i.jsx)(s.td,{children:"0"}),(0,i.jsx)(s.td,{}),(0,i.jsx)(s.td,{children:"No selected"}),(0,i.jsx)(s.td,{}),(0,i.jsx)(s.td,{})]}),(0,i.jsxs)(s.tr,{children:[(0,i.jsx)(s.td,{children:"7"}),(0,i.jsx)(s.td,{}),(0,i.jsx)(s.td,{children:"Large Family"}),(0,i.jsx)(s.td,{}),(0,i.jsx)(s.td,{children:"LARGE_FAMILY"})]}),(0,i.jsxs)(s.tr,{children:[(0,i.jsx)(s.td,{children:"8"}),(0,i.jsx)(s.td,{}),(0,i.jsx)(s.td,{children:"Public Servant"}),(0,i.jsx)(s.td,{}),(0,i.jsx)(s.td,{children:"PUBLIC_SERVANT"})]}),(0,i.jsxs)(s.tr,{children:[(0,i.jsx)(s.td,{children:"10"}),(0,i.jsx)(s.td,{}),(0,i.jsx)(s.td,{children:"Negotiated"}),(0,i.jsx)(s.td,{}),(0,i.jsx)(s.td,{children:"NEGOTIATED"})]}),(0,i.jsxs)(s.tr,{children:[(0,i.jsx)(s.td,{children:"11"}),(0,i.jsx)(s.td,{}),(0,i.jsx)(s.td,{children:"Package"}),(0,i.jsx)(s.td,{}),(0,i.jsx)(s.td,{children:"PACKAGE"})]}),(0,i.jsxs)(s.tr,{children:[(0,i.jsx)(s.td,{children:"34"}),(0,i.jsx)(s.td,{}),(0,i.jsx)(s.td,{children:"Canary Resident"}),(0,i.jsx)(s.td,{}),(0,i.jsx)(s.td,{children:"CANARY_RESIDENT"})]}),(0,i.jsxs)(s.tr,{children:[(0,i.jsx)(s.td,{children:"35"}),(0,i.jsx)(s.td,{}),(0,i.jsx)(s.td,{children:"Balearic Resident"}),(0,i.jsx)(s.td,{}),(0,i.jsx)(s.td,{children:"BALEARIC_RESIDENT"})]}),(0,i.jsxs)(s.tr,{children:[(0,i.jsx)(s.td,{children:"36"}),(0,i.jsx)(s.td,{}),(0,i.jsx)(s.td,{children:"Honeymoon"}),(0,i.jsx)(s.td,{}),(0,i.jsx)(s.td,{children:"HONEYMOON"})]}),(0,i.jsxs)(s.tr,{children:[(0,i.jsx)(s.td,{}),(0,i.jsx)(s.td,{}),(0,i.jsx)(s.td,{}),(0,i.jsx)(s.td,{children:"TRUE"}),(0,i.jsx)(s.td,{children:"NON_REFUNDABLE"})]})]})]}),"\n",(0,i.jsx)(s.h3,{id:"2-settings",children:"2. Settings"}),"\n",(0,i.jsx)(s.p,{children:"Settings are the common configurations used to construct requests to the supplier/s. By default, we apply the same configuration to all Hotel-X clients."}),"\n",(0,i.jsxs)(s.p,{children:["To specify your quote settings you need to use the input ",(0,i.jsx)(s.code,{children:"HotelSettingsInput"})," in your query variables:"]}),"\n",(0,i.jsx)(s.pre,{children:(0,i.jsx)(s.code,{className:"language-js",children:'{\n	"settings": {\n		"client": "client_demo",\n		"context": "HOTELTEST",\n		"testMode": true,\n		"timeout": 180000\n	}\n}\n'})}),"\n",(0,i.jsx)(s.p,{children:(0,i.jsx)(s.strong,{children:"Mandatory Settings:"})}),"\n",(0,i.jsxs)(s.ul,{children:["\n",(0,i.jsx)(s.li,{children:(0,i.jsx)(s.code,{children:"client"})}),"\n",(0,i.jsxs)(s.li,{children:[(0,i.jsx)(s.code,{children:"context"})," (You have the flexibility to choose between using the supplier's context or your own, depending on which codes you want to see in the response. If you prefer to receive responses with your custom codes, please ensure that your context code is linked to the mapping files that you've previously uploaded to your FTP account.)"]}),"\n",(0,i.jsxs)(s.li,{children:[(0,i.jsx)(s.code,{children:"timeout"})," (Timeout in milliseconds for supplier connections. Applied to all suppliers; won't close client connection if exceeded.)"]}),"\n"]}),"\n",(0,i.jsx)(s.admonition,{title:"Key Recommendations",type:"tip",children:(0,i.jsxs)(s.ul,{children:["\n",(0,i.jsxs)(s.li,{children:["\n",(0,i.jsxs)(s.p,{children:["Customize the ",(0,i.jsx)(s.code,{children:"timeout"})," according to your needs, taking into consideration ",(0,i.jsx)(s.strong,{children:"the maximum values in One Step Quote is 180,000ms"}),"."]}),"\n"]}),"\n",(0,i.jsxs)(s.li,{children:["\n",(0,i.jsxs)(s.p,{children:["Set the ",(0,i.jsx)(s.code,{children:"audiTransaction"}),' to "true" in One Step Quote when investigating errors.']}),"\n"]}),"\n"]})}),"\n",(0,i.jsx)(s.h3,{id:"3-filter",children:"3. Filter"}),"\n",(0,i.jsx)(s.p,{children:"Filter allow you to precisely tailor the response according to your preferences."}),"\n",(0,i.jsxs)(s.p,{children:["To specify your filters you need to use the input ",(0,i.jsx)(s.code,{children:"HotelFilterInput"})," in your query variables. The available filters inside this input are:"]}),"\n",(0,i.jsxs)(s.ul,{children:["\n",(0,i.jsxs)(s.li,{children:[(0,i.jsx)(s.code,{children:"access"})," (mandatory): Specify the supplier access you want to use to quote the option."]}),"\n",(0,i.jsxs)(s.li,{children:[(0,i.jsx)(s.code,{children:"excludeComparisonFields"})," (optional): If there are specific rate characteristics you prefer not to use internally for finding the option, indicate them here. For example, you may not want us to specifically check for a non-refundable option. You may want us to quote an option with the same other characteristics (hotel, rate, board), and whether the option is refundable or not doesn't matter to you."]}),"\n"]}),"\n",(0,i.jsx)(s.pre,{children:(0,i.jsx)(s.code,{className:"language-js",children:'{\n    "filter" : {\n        "access" : "2",\n        "excludeComparisonFields" : [\n            "CANCEL_POLICY"\n        ]\n    }\n}\n'})}),"\n",(0,i.jsx)(s.h3,{id:"response-considerations",children:"Response Considerations"}),"\n",(0,i.jsxs)(s.p,{children:["As mentioned earlier, the quote response will provide you with updated information about the option found with the criteria indicated in the input. In this one step quote response, ",(0,i.jsx)(s.strong,{children:"there are some essential details that you should carefully review and consider"})," when providing information to your final customers:"]}),"\n",(0,i.jsxs)(s.ul,{children:["\n",(0,i.jsxs)(s.li,{children:["\n",(0,i.jsxs)(s.p,{children:[(0,i.jsx)(s.strong,{children:"Cancellation Policies:"})," Within the ",(0,i.jsx)(s.code,{children:"cancelPolicy"})," structure response, you will find a ",(0,i.jsx)(s.code,{children:"refundable"}),' field. If this field is marked as "false," it means that the room has a 100% cancellation cost, making it non-refundable.']}),"\n"]}),"\n",(0,i.jsxs)(s.li,{children:["\n",(0,i.jsxs)(s.p,{children:[(0,i.jsx)(s.strong,{children:"Remarks:"})," Pay attention to any remarks or additional notes provided in the response."]}),"\n"]}),"\n",(0,i.jsxs)(s.li,{children:["\n",(0,i.jsxs)(s.p,{children:[(0,i.jsx)(s.strong,{children:"Taxes:"})," Ensure you are aware of any applicable taxes associated with the selected option."]}),"\n"]}),"\n"]}),"\n",(0,i.jsxs)(s.p,{children:["The next step is to confirm the booking using the standard ",(0,i.jsx)(s.a,{href:"../booking-flow/book",children:"book mutation"})," in the Hotel-X API, utilizing the ",(0,i.jsx)(s.code,{children:"optionRefId"})," obtained from the results."]}),"\n",(0,i.jsx)(s.h2,{id:"frequently-asked-questions",children:"Frequently Asked Questions"}),"\n",(0,i.jsxs)(r,{children:[(0,i.jsx)("summary",{children:"Are there any limitations on the number of Hotel-X One Step Quote requests allowed per minute?"}),(0,i.jsx)("div",{children:(0,i.jsx)("div",{children:'Not from Travelgate side, we don\'t have any limitations on the RPM ("Requests for Minute") in any of our methods. However, some Sellers may have some limitations so we suggest you contact directly with them in order to discuss this information.'})})]}),"\n",(0,i.jsxs)(r,{children:[(0,i.jsx)("summary",{children:"Do options get blocked in Hotel-X Quote Query?"}),(0,i.jsx)("div",{children:(0,i.jsx)("div",{children:"Some Sellers may block the options when performing a Quote Query so we strongly recommend to contact them directly regarding this topic in order to prevent future issues."})})]}),"\n",(0,i.jsxs)(r,{children:[(0,i.jsx)("summary",{children:"Is there any possibility to obtain RoomCodes in Quote?"}),(0,i.jsx)("div",{children:(0,i.jsx)("div",{children:"If the Seller provides this information, you can obtain the room code by including the rooms node in the HotelOptionQuote node."})})]}),"\n",(0,i.jsxs)(r,{children:[(0,i.jsx)("summary",{children:"What should I do if I receive a status RQ in Quote response?"}),(0,i.jsx)("div",{children:(0,i.jsx)("div",{children:"You may receive a status On Request (status RQ) in Quote response in those cases the availability of the option previously selected is pending to be confirmed by the Seller. If you receive status RQ in Quote response, you should run a new Search request and restart the Booking Flow."})})]}),"\n",(0,i.jsx)(s.h2,{id:"query-inputs",children:"Query Inputs"}),"\n",(0,i.jsx)(l.ZP,{}),"\n",(0,i.jsx)(d,{}),"\n",(0,i.jsx)(o.ZP,{}),"\n",(0,i.jsx)(s.h2,{id:"returned-fields",children:"Returned Fields"}),"\n",(0,i.jsx)(x,{}),"\n",(0,i.jsx)(s.h2,{id:"examples",children:"Examples"}),"\n",(0,i.jsx)(s.h4,{id:"quote-option-without-checking-the-surcharges",children:"Quote option without checking the surcharges"}),"\n",(0,i.jsx)(c,{query:j,variables:a})]})}function g(e={}){let{wrapper:s}={...(0,t.a)(),...e.components};return s?(0,i.jsx)(s,{...e,children:(0,i.jsx)(b,{...e})}):b(e)}function f(e,s){throw Error("Expected "+(s?"component":"object")+" `"+e+"` to be defined: you likely forgot to import, pass, or provide it.")}},50065:function(e,s,n){n.d(s,{Z:()=>c,a:()=>l});var r=n(67294);let i={},t=r.createContext(i);function l(e){let s=r.useContext(t);return r.useMemo(function(){return"function"==typeof e?e(s):{...s,...e}},[s,e])}function c(e){let s;return s=e.disableParentContext?"function"==typeof e.components?e.components(i):e.components||i:l(e.components),r.createElement(t.Provider,{value:s},e.children)}}}]);

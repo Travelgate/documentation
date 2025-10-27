@@ -15,6 +15,8 @@ In the Travelgate App Store, you’ll find both **Travelgate-built apps (pre-ins
 
 To browse available apps, go to the [App Store](https://app.travelgate.com/app-store/discover-apps) section in the top main menu and use the available filters to refine your search.
 
+![App Store - Discover Apps](https://stplaformwe.blob.core.windows.net/kbase/appstore_discover.png)
+
 Each app includes several key sections:
 
 - **Overview**: App description, key features, and related documentation.  

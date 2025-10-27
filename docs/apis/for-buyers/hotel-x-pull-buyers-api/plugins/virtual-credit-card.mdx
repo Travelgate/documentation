@@ -230,6 +230,7 @@ Once you've uploaded your genvcc file, to use the plugin add the following field
 | `expirationDate` | yyyy/mm/dd    | Represents the date when the virtual credit card will expire                                                                                                             | One month after check in                                        | NO        |
 | `useGross`       | true or false | Indicates that the amount to load onto the VCC will be the reservation value. If true, the gross value will be used; if false, the net value will be used. Not compatible with the 'amount' parameter. | Net reservation price value                                              | NO        |
 | `amount`         | two decimals  | If you do not want to load the VCC with the reservation value and prefer to specify an exact amount, use this parameter. Not compatible with the 'useGross' parameter. If not provided, 'useGross' will be used based on the reservation price; if neither is indicated, the net reservation value will be used.          | Net reservation price value (if 'useGross' is not also sent) | NO        |
+| `currency`       | ISO 4217 code | If you want to override the reservation currency and specify an exact currency, use this parameter. If used, amount must also be provided.                               | Reservation currency of the booking                             | NO        |
 
 
 ```js

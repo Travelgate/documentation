@@ -1,5 +1,150 @@
 [
   {
+    "date": "October 20, 2025",
+    "changes": [
+      {
+        "field": "birthDate",
+        "type": "Added",
+        "description": "Added 'birthDate' field under HolderInput and BookPaxInput. Holds the passenger's date of birth."
+      },
+      {
+        "field": "idDocuments",
+        "type": "Added",
+        "description": "Added 'idDocuments' field under HolderInput and BookPaxInput. Contains a list of passenger identification documents using the new input type IDDocumentInput."
+      },
+      {
+        "field": "IDDocumentInput",
+        "type": "Added",
+        "description": "Added new input type 'IDDocumentInput'. Defines the structure for passenger identification documents, including type, number, issuer, issueDate, expiryDate, nationality, and otherTypeDescription."
+      },
+      {
+        "field": "paymentCard",
+        "type": "Added",
+        "description": "Added 'paymentCard' field under HotelCriteriaAmendBoardCommitInput, HotelCriteriaAmendDatesCommitInput, HotelCriteriaAmendPaxesCommitInput, and HotelAmendRoomsCommitInput. Specifies payment card information when payment is done by credit card."
+      },
+      {
+        "field": "paymentType",
+        "type": "Added",
+        "description": "Added 'paymentType' field under HotelBookingAmend. Specifies the payment type of the option quoted."
+      }
+    ]
+  },
+  {
+    "date": "August 25, 2025",
+    "changes": [
+      {
+        "field": "type",
+        "type": "Deprecated",
+        "description": "The 'type' field in PluginsInput is deprecated."
+      },
+      {
+        "field": "step",
+        "type": "Deprecated",
+        "description": "The 'step' field in PluginStepInput is deprecated."
+      }
+    ]
+  },
+  {
+    "date": "August 18, 2025",
+    "changes": [
+      {
+        "field": "apps",
+        "type": "Added",
+        "description": "Added 'apps' field under HotelQuote. Provides information about the apps solutions. Only returned if app integrations are enabled. You can see more details [here](https://docs.travelgate.com/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/requote)."
+      }
+    ]
+  },
+  {
+    "date": "August 11, 2025",
+    "changes": [
+      {
+        "field": "phone",
+        "type": "Added",
+        "description": "Added 'phone' field under ContactInfo. Represents the phone contact of the holder or passenger."
+      },
+      {
+        "field": "surcharges",
+        "type": "Added",
+        "description": "Added 'surcharges' field under HotelBookingDetail. Lists surcharges associated with the booked option."
+      },
+      {
+        "field": "NOT_SPECIFIED (value from PersonalTitleType)",
+        "type": "Deprecated",
+        "description": "The 'NOT_SPECIFIED' value in PersonalTitleType enum is deprecated."
+      },
+      {
+        "field": "optionType",
+        "type": "Deprecated",
+        "description": "The 'optionType' field under HotelBookingDetail is deprecated."
+      },
+      {
+        "field": "supplements",
+        "type": "Added",
+        "description": "Added 'supplements' field under HotelBookingDetail. Lists supplements associated with the booked option."
+      }
+    ]
+  },
+  {
+    "date": "July 14, 2025",
+    "changes": [
+      {
+        "field": "supplierCode",
+        "type": "Added",
+        "description": "Added 'supplierCode' field under HotelOptionQuote. Indicates the supplier code of the selected option."
+      },
+      {
+        "field": "accessCode",
+        "type": "Added",
+        "description": "Added 'accessCode' field under HotelOptionQuote. Indicates the access code of the selected option."
+      }
+    ]
+  },
+  {
+    "date": "May 19, 2025",
+    "changes": [
+      {
+        "field": "accessCode",
+        "type": "Added",
+        "description": "Added 'accessCode' field under Warning. Indicates the access code related to the warning."
+      }
+    ]
+  },
+  {
+    "date": "March 31, 2025",
+    "changes": [
+      {
+        "field": "vccAccess",
+        "type": "Added",
+        "description": "Added 'vccAccess' field under GeneratedPaymentInfo. Indicates the VCC access code used to generate the payment card at the Book step."
+      }
+    ]
+  },
+  {
+    "date": "March 17, 2025",
+    "changes": [
+      {
+        "field": "CurrenciesFilterInput",
+        "type": "Added",
+        "description": "Added new input type 'CurrenciesFilterInput'. Allows filtering hotel options by included or excluded currencies using 'includes' and 'excludes' lists."
+      },
+      {
+        "field": "currencies",
+        "type": "Added",
+        "description": "Added 'currencies' field under HotelXFilterSearchInput. Uses the new 'CurrenciesFilterInput' to filter options based on desired currencies."
+      }
+    ]
+  },
+  {
+    "date": "February 17, 2025",
+    "changes": [
+      {
+        "field": "occupancyRefId",
+        "type": "Modified",
+        "description": "The 'occupancyRefId' field under OneStepBookRoomInput has been made optional. Previously it was required."
+      }
+    ]
+  },
+  {
     "date": "January 28, 2025",
     "changes": [
       {

@@ -3,7 +3,7 @@ title: "Overview"
 sidebar_position: 1
 ---
 
-The `ContentWorkflow` defines all the operations that Sellers must implement  to load their static content into our database. This includes hotels, rooms, destinations, and other reference data required to ensure our Buyers receive consistent, well-structured, and correctly mapped content from our databse.
+The `Content` defines all the operations that Sellers must implement  to load their static content into our database. This includes hotels, rooms, destinations, and other reference data required to ensure our Buyers receive consistent, well-structured, and correctly mapped content from our databse.
 
 ### Required and Recommended Operations
 
@@ -13,7 +13,7 @@ Sellers **must implement** the following endpoints `HotelList` and `Destinations
 
 ### Workflow
 
-Unlike the `Shopping Workflow`, which relies on real-time calls, the `ContentWorkflow` is designed for **scheduled retrieval of static data**. Our platform periodically calls the Seller endpoints (every 15 days or less, depending on the operation) to fetch the latest content, which we then store in our internal database.
+Unlike the `Shopping flow`, which relies on real-time calls, the `Content` is designed for **scheduled retrieval of static data**. Our platform periodically calls the Seller endpoints (every 15 days or less, depending on the operation) to fetch the latest content, which we then store in our internal database.
 
 This approach enables:
 
@@ -22,6 +22,6 @@ This approach enables:
 
 Buyers retrieve static content data from Travelgate's database, rather than directly from the supplier's API.
 
-![Content Workflow Schema](/img/docs/connectors-content/content_workflow.png)
+![Content Schema](/img/docs/connectors-content/content_workflow.png)
 
 

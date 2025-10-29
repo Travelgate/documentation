@@ -5,7 +5,7 @@ sidebar_position: 4
 
 ## **Overview**
 
-The `Book` operation is the final step in the booking workflow, used to confirm a reservation for a selected option. It involves providing detailed guest information, a client locator, the payment type, and credit card information when required. Once completed, the supplier processes the reservation and returns its status.
+The `Book` operation is the final step in the booking flow, used to confirm a reservation for a selected option. It involves providing detailed guest information, a client locator, the payment type, and credit card information when required. Once completed, the supplier processes the reservation and returns its status.
                                              
 The `Book` operation ensures:
 - **Guest Information Submission**: Transfers passenger details, including names, surnames, and any additional guest-specific data, to the supplier.
@@ -641,10 +641,10 @@ The response object contains the results of the booking operation.
 
 The `Book` operation returns:
 - **Booking Status**:
-  - `Confirmed`: The reservation was successfully completed without any issues.
+  - `Ok`: The reservation was successfully completed without any issues.
   - `Unknown`: During the reservation process, an issue led to an unknown reservation status. The Buyer is responsible for verifying with the Seller that the booking has been confirmed.
-  - `Canceled`: The reservation was completed but due to a supplier error or a timeout the system will immediately cancel the reservation to prevent further possible errors.
-  - `On_Request`: Please note that a Book status may change over time: you may receive an ON_REQUEST status in Book response, and after running a Booking Query some seconds later the status may have already changed to OK.
+  - `Cancelled`: The reservation was completed but due to a supplier error or a timeout the system will immediately cancel the reservation to prevent further possible errors.
+  - `OnRequest`: Please note that a Book status may change over time: you may receive an OnRequest status in Book response, and after running a Booking Query some seconds later the status may have already changed to Ok.
 - **Supplier Locator**: A unique identifier for the booking from the supplier, used for future operations like cancellation or check bookings.
 - **Additional Details**: May include booking remarks or warnings specific to the supplier.
 

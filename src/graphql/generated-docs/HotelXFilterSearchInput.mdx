@@ -1,9 +1,9 @@
 
 <details>
   <summary>
-    <strong>HotelXFilterSearchInput</strong> <em>(INPUT_OBJECT)</em>
+  **HotelXFilterSearchInput** (*INPUT_OBJECT*)  
+  Filters allow you to precisely tailor the response according to your preferences.  
   </summary>
-    Filters allow you to precisely tailor the response according to your preferences.
   
   <details>
     <summary>
@@ -39,17 +39,19 @@
       </summary>
       Plugins to be only executed
 
-      <details style={{ pointerEvents: "none" }}>
+      <details open>
         <summary>
-          <strong>step</strong> <em>(Enum of PluginStepType)</em>
+          <strong>step</strong> <em>(PluginStepType)</em>
         </summary>
         The Step of the plugin to filter. @deprecated(reason: "deprecated from 2025-08-25. This property is no longer recommended for use.")
-        Possible values:
-        `REQUEST`  
-        `REQUEST_ACCESS`  
-        `RESPONSE_OPTION`  
-        `RESPONSE_ACCESS`  
-        `RESPONSE`  
+        <strong>Possible values:</strong>
+        <ul>
+          <li><code>REQUEST</code>: Plugins executed after the Buyer requests a message to Hotel-X</li>
+          <li><code>REQUEST_ACCESS</code>: Plugins executed before sending a request to the supplier using access, and after the Accesses have been calculated</li>
+          <li><code>RESPONSE_OPTION</code>: Plugins executed after the supplier responds a message, applied to every option they return</li>
+          <li><code>RESPONSE_ACCESS</code>: Plugins executed after all access options have been responded to</li>
+          <li><code>RESPONSE</code>: Plugins executed before Hotel-X responds the message to the Buyer</li>
+        </ul>
       </details>
 
       <details style={{ pointerEvents: "none" }}>
@@ -73,17 +75,19 @@
       </summary>
       Plugins to exclude
 
-      <details style={{ pointerEvents: "none" }}>
+      <details open>
         <summary>
-          <strong>step</strong> <em>(Enum of PluginStepType)</em>
+          <strong>step</strong> <em>(PluginStepType)</em>
         </summary>
         The Step of the plugin to filter. @deprecated(reason: "deprecated from 2025-08-25. This property is no longer recommended for use.")
-        Possible values:
-        `REQUEST`  
-        `REQUEST_ACCESS`  
-        `RESPONSE_OPTION`  
-        `RESPONSE_ACCESS`  
-        `RESPONSE`  
+        <strong>Possible values:</strong>
+        <ul>
+          <li><code>REQUEST</code>: Plugins executed after the Buyer requests a message to Hotel-X</li>
+          <li><code>REQUEST_ACCESS</code>: Plugins executed before sending a request to the supplier using access, and after the Accesses have been calculated</li>
+          <li><code>RESPONSE_OPTION</code>: Plugins executed after the supplier responds a message, applied to every option they return</li>
+          <li><code>RESPONSE_ACCESS</code>: Plugins executed after all access options have been responded to</li>
+          <li><code>RESPONSE</code>: Plugins executed before Hotel-X responds the message to the Buyer</li>
+        </ul>
       </details>
 
       <details style={{ pointerEvents: "none" }}>
@@ -108,54 +112,58 @@
     </summary>
     This filter enables you to narrow down the options returned by the suppliers based on the desired rate rules you want to include or exclude.
 
-    <details style={{ pointerEvents: "none" }}>
+    <details open>
       <summary>
-        <strong>includes</strong> <em>(Enum of RateRulesType)</em>
+        <strong>includes</strong> <em>(RateRulesType)</em>
       </summary>
       if includes not nil: only options without rate rules and options with rate rules found in includes will be returned
-      Possible values:
-      `NORMAL`  
-      `PACKAGE`  
-      `OLDER55`  
-      `OLDER60`  
-      `OLDER65`  
-      `CANARY_RESIDENT`  
-      `BALEARIC_RESIDENT`  
-      `LARGE_FAMILY`  
-      `HONEYMOON`  
-      `PUBLIC_SERVANT`  
-      `UNEMPLOYED`  
-      `NON_REFUNDABLE`  
-      `MOBILE`  
-      `WARRANTY`  
-      `ESSENTIAL_WORKER`  
-      `NEGOTIATED`  
-      `CUSTOM`  
+      <strong>Possible values:</strong>
+      <ul>
+        <li><code>NORMAL</code>: NORMAL Used in the RateRulesFilterInput input for the search query to filter and retrieve only options without rate rules.</li>
+        <li><code>PACKAGE</code>: The product can&#39;t be sold separately from another product attached to it, such as a flight.</li>
+        <li><code>OLDER55</code>: OLDER55 can only be sold to people who are 55 and older.</li>
+        <li><code>OLDER60</code>: OLDER60 can only be sold to people who are 60 and older.</li>
+        <li><code>OLDER65</code>: OLDER65 can only be sold to people who are 65 and older.</li>
+        <li><code>CANARY_RESIDENT</code>: CANARY_RESIDENT is applicable to Canary Islands residents only.</li>
+        <li><code>BALEARIC_RESIDENT</code>: BALEARIC_RESIDENT is applicable to Balearic Islands residents only.</li>
+        <li><code>LARGE_FAMILY</code>: LARGE_FAMILY is applicable to large families and is determined by each supplier.</li>
+        <li><code>HONEYMOON</code>: HONEYMOON is applicable to those who just got married and is determined by each supplier.</li>
+        <li><code>PUBLIC_SERVANT</code>: PUBLIC_SERVANT is applicable to public servants only.</li>
+        <li><code>UNEMPLOYED</code>: UNEMPLOYED applies to individuals who are without work.</li>
+        <li><code>NON_REFUNDABLE</code>: NON_REFUNDABLE is applicable to non refundable options.</li>
+        <li><code>MOBILE</code>: MOBILE are special rates confirmed by mobile phone.</li>
+        <li><code>WARRANTY</code>: WARRANTY is applicable to options with cancellation warranty.</li>
+        <li><code>ESSENTIAL_WORKER</code>: ESSENTIAL_WORKER are special hotel rates for essential workers.</li>
+        <li><code>NEGOTIATED</code>: NEGOTIATED are special rates offered only to specific buyers.</li>
+        <li><code>CUSTOM</code>: CUSTOM defines other rates.</li>
+      </ul>
     </details>
 
-    <details style={{ pointerEvents: "none" }}>
+    <details open>
       <summary>
-        <strong>excludes</strong> <em>(Enum of RateRulesType)</em>
+        <strong>excludes</strong> <em>(RateRulesType)</em>
       </summary>
       if excludes not nil: only options without rate rules and options with rate rules that haven t been sent in excludes will be returned
-      Possible values:
-      `NORMAL`  
-      `PACKAGE`  
-      `OLDER55`  
-      `OLDER60`  
-      `OLDER65`  
-      `CANARY_RESIDENT`  
-      `BALEARIC_RESIDENT`  
-      `LARGE_FAMILY`  
-      `HONEYMOON`  
-      `PUBLIC_SERVANT`  
-      `UNEMPLOYED`  
-      `NON_REFUNDABLE`  
-      `MOBILE`  
-      `WARRANTY`  
-      `ESSENTIAL_WORKER`  
-      `NEGOTIATED`  
-      `CUSTOM`  
+      <strong>Possible values:</strong>
+      <ul>
+        <li><code>NORMAL</code>: NORMAL Used in the RateRulesFilterInput input for the search query to filter and retrieve only options without rate rules.</li>
+        <li><code>PACKAGE</code>: The product can&#39;t be sold separately from another product attached to it, such as a flight.</li>
+        <li><code>OLDER55</code>: OLDER55 can only be sold to people who are 55 and older.</li>
+        <li><code>OLDER60</code>: OLDER60 can only be sold to people who are 60 and older.</li>
+        <li><code>OLDER65</code>: OLDER65 can only be sold to people who are 65 and older.</li>
+        <li><code>CANARY_RESIDENT</code>: CANARY_RESIDENT is applicable to Canary Islands residents only.</li>
+        <li><code>BALEARIC_RESIDENT</code>: BALEARIC_RESIDENT is applicable to Balearic Islands residents only.</li>
+        <li><code>LARGE_FAMILY</code>: LARGE_FAMILY is applicable to large families and is determined by each supplier.</li>
+        <li><code>HONEYMOON</code>: HONEYMOON is applicable to those who just got married and is determined by each supplier.</li>
+        <li><code>PUBLIC_SERVANT</code>: PUBLIC_SERVANT is applicable to public servants only.</li>
+        <li><code>UNEMPLOYED</code>: UNEMPLOYED applies to individuals who are without work.</li>
+        <li><code>NON_REFUNDABLE</code>: NON_REFUNDABLE is applicable to non refundable options.</li>
+        <li><code>MOBILE</code>: MOBILE are special rates confirmed by mobile phone.</li>
+        <li><code>WARRANTY</code>: WARRANTY is applicable to options with cancellation warranty.</li>
+        <li><code>ESSENTIAL_WORKER</code>: ESSENTIAL_WORKER are special hotel rates for essential workers.</li>
+        <li><code>NEGOTIATED</code>: NEGOTIATED are special rates offered only to specific buyers.</li>
+        <li><code>CUSTOM</code>: CUSTOM defines other rates.</li>
+      </ul>
     </details>
   </details>
 
@@ -165,24 +173,28 @@
     </summary>
     Use this filter to determine which status (OK and RQ) will be included or excluded in the response.
 
-    <details style={{ pointerEvents: "none" }}>
+    <details open>
       <summary>
-        <strong>includes</strong> <em>(Enum of StatusType)</em>
+        <strong>includes</strong> <em>(StatusType)</em>
       </summary>
       When is not nil: only options with status found in includes will be returned
-      Possible values:
-      `OK`  
-      `RQ`  
+      <strong>Possible values:</strong>
+      <ul>
+        <li><code>OK</code>: The status of the avail is available</li>
+        <li><code>RQ</code>: The status of the avail is On request</li>
+      </ul>
     </details>
 
-    <details style={{ pointerEvents: "none" }}>
+    <details open>
       <summary>
-        <strong>excludes</strong> <em>(Enum of StatusType)</em>
+        <strong>excludes</strong> <em>(StatusType)</em>
       </summary>
       When is not nil: only options without status found in includes will be returned
-      Possible values:
-      `OK`  
-      `RQ`  
+      <strong>Possible values:</strong>
+      <ul>
+        <li><code>OK</code>: The status of the avail is available</li>
+        <li><code>RQ</code>: The status of the avail is On request</li>
+      </ul>
     </details>
   </details>
 

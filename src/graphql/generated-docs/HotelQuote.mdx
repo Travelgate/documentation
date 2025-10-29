@@ -1,9 +1,9 @@
 
 <details>
   <summary>
-    <strong>HotelQuote</strong> <em>(OBJECT)</em>
-  </summary>
+  **HotelQuote** (*OBJECT*)  
   
+  </summary>
   
   
   <details>
@@ -712,14 +712,16 @@
       Indicates the access code of the selected option.
     </details>
 
-    <details style={{ pointerEvents: "none" }}>
+    <details open>
       <summary>
-        <strong>status</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of StatusType)</em>
+        <strong>status</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(StatusType)</em>
       </summary>
       The possible values in the response's status are Available (OK) or On Request (RQ).
-      Possible values:
-      `OK`  
-      `RQ`  
+      <strong>Possible values:</strong>
+      <ul>
+        <li><code>OK</code>: The status of the avail is available</li>
+        <li><code>RQ</code>: The status of the avail is On request</li>
+      </ul>
     </details>
 
     <details>
@@ -865,14 +867,16 @@
             rule name
           </details>
 
-          <details style={{ pointerEvents: "none" }}>
+          <details open>
             <summary>
-              <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of MarkupRuleType)</em>
+              <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(MarkupRuleType)</em>
             </summary>
             type of the value
-            Possible values:
-            `PERCENT`  
-            `IMPORT`  
+            <strong>Possible values:</strong>
+            <ul>
+              <li><code>PERCENT</code>: Indicates the percentage applied by a rule.</li>
+              <li><code>IMPORT</code>: Indicates the exact amount applied by a rule.</li>
+            </ul>
           </details>
 
           <details style={{ pointerEvents: "none" }}>
@@ -960,15 +964,17 @@
           Specifies if the deadline has been taken from the seller’s response (false) or has been calculated by Travelgate (true)
         </details>
 
-        <details style={{ pointerEvents: "none" }}>
+        <details open>
           <summary>
-            <strong>penaltyType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of CancelPenaltyType)</em>
+            <strong>penaltyType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(CancelPenaltyType)</em>
           </summary>
           Type of penalty; this can be Nights, Percent or Import
-          Possible values:
-          `NIGHTS`  
-          `PERCENT`  
-          `IMPORT`  
+          <strong>Possible values:</strong>
+          <ul>
+            <li><code>NIGHTS</code>: Indicates the number of nights to be penalized.</li>
+            <li><code>PERCENT</code>: Indicates the percentage to pay based on the option price.</li>
+            <li><code>IMPORT</code>: Indicates the exact amount payable.</li>
+          </ul>
         </details>
 
         <details style={{ pointerEvents: "none" }}>
@@ -1014,17 +1020,19 @@
         Indicates the surcharge code
       </details>
 
-      <details style={{ pointerEvents: "none" }}>
+      <details open>
         <summary>
-          <strong>chargeType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of ChargeType)</em>
+          <strong>chargeType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ChargeType)</em>
         </summary>
         Indicates the charge type. We need to know whether the supplements have to be paid when the consumer gets to the hotel or beforehand.
         Possible charge types: INCLUDE or EXCLUDE.
         when  INCLUDE : this surcharge is mandatory and included in the option s price
         when  EXCLUDE : this surcharge is not included in the option s price
-        Possible values:
-        `INCLUDE`  
-        `EXCLUDE`  
+        <strong>Possible values:</strong>
+        <ul>
+          <li><code>INCLUDE</code>: The charge is included.</li>
+          <li><code>EXCLUDE</code>: The charge is excluded.</li>
+        </ul>
       </details>
 
       <details style={{ pointerEvents: "none" }}>
@@ -1178,14 +1186,16 @@
               rule name
             </details>
 
-            <details style={{ pointerEvents: "none" }}>
+            <details open>
               <summary>
-                <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of MarkupRuleType)</em>
+                <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(MarkupRuleType)</em>
               </summary>
               type of the value
-              Possible values:
-              `PERCENT`  
-              `IMPORT`  
+              <strong>Possible values:</strong>
+              <ul>
+                <li><code>PERCENT</code>: Indicates the percentage applied by a rule.</li>
+                <li><code>IMPORT</code>: Indicates the exact amount applied by a rule.</li>
+              </ul>
             </details>
 
             <details style={{ pointerEvents: "none" }}>
@@ -1213,35 +1223,37 @@
       </details>
     </details>
 
-    <details style={{ pointerEvents: "none" }}>
+    <details open>
       <summary>
-        <strong>cardTypes</strong> <em>(Enum of PaymentCardType)</em>
+        <strong>cardTypes</strong> <em>(PaymentCardType)</em>
       </summary>
       List of credit cards allowed for this option
-      Possible values:
-      `VI`  
-      `AX`  
-      `BC`  
-      `CA`  
-      `CB`  
-      `CU`  
-      `DS`  
-      `DC`  
-      `T`  
-      `R`  
-      `N`  
-      `L`  
-      `E`  
-      `JC`  
-      `TO`  
-      `S`  
-      `EC`  
-      `EU`  
-      `TP`  
-      `OP`  
-      `ER`  
-      `XS`  
-      `O`  
+      <strong>Possible values:</strong>
+      <ul>
+        <li><code>VI</code>: Visa</li>
+        <li><code>AX</code>: American Express</li>
+        <li><code>BC</code>: BC Card</li>
+        <li><code>CA</code>: MasterCard</li>
+        <li><code>CB</code>: Carte Blanche</li>
+        <li><code>CU</code>: China Union Pay</li>
+        <li><code>DS</code>: Discover</li>
+        <li><code>DC</code>: Diners Club</li>
+        <li><code>T</code>: Carta Si</li>
+        <li><code>R</code>: Carte Bleue</li>
+        <li><code>N</code>: Dankort</li>
+        <li><code>L</code>: Delta</li>
+        <li><code>E</code>: Electron</li>
+        <li><code>JC</code>: Japan Credit Bureau</li>
+        <li><code>TO</code>: Maestro</li>
+        <li><code>S</code>: Switch</li>
+        <li><code>EC</code>: Electronic Cash</li>
+        <li><code>EU</code>: EuroCard</li>
+        <li><code>TP</code>: universal air travel card</li>
+        <li><code>OP</code>: optima</li>
+        <li><code>ER</code>: Air Canada/RnRoute</li>
+        <li><code>XS</code>: access</li>
+        <li><code>O</code>: others</li>
+      </ul>
     </details>
 
     <details>
@@ -1376,16 +1388,18 @@
           Code in supplier context
         </details>
 
-        <details style={{ pointerEvents: "none" }}>
+        <details open>
           <summary>
-            <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of ApplicationAreaType)</em>
+            <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ApplicationAreaType)</em>
           </summary>
           Indicates the type of Amenity.
-          Possible values:
-          `HOTEL`  
-          `ROOM`  
-          `SERVICE`  
-          `GENERAL`  
+          <strong>Possible values:</strong>
+          <ul>
+            <li><code>HOTEL</code>: Apply at the hotel.</li>
+            <li><code>ROOM</code>: Apply in the hotel.</li>
+            <li><code>SERVICE</code>: Applies to a service.</li>
+            <li><code>GENERAL</code>: Applies in general.</li>
+          </ul>
         </details>
 
         <details style={{ pointerEvents: "none" }}>
@@ -1552,14 +1566,16 @@
                 rule name
               </details>
 
-              <details style={{ pointerEvents: "none" }}>
+              <details open>
                 <summary>
-                  <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of MarkupRuleType)</em>
+                  <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(MarkupRuleType)</em>
                 </summary>
                 type of the value
-                Possible values:
-                `PERCENT`  
-                `IMPORT`  
+                <strong>Possible values:</strong>
+                <ul>
+                  <li><code>PERCENT</code>: Indicates the percentage applied by a rule.</li>
+                  <li><code>IMPORT</code>: Indicates the exact amount applied by a rule.</li>
+                </ul>
               </details>
 
               <details style={{ pointerEvents: "none" }}>
@@ -1744,14 +1760,16 @@
                   rule name
                 </details>
 
-                <details style={{ pointerEvents: "none" }}>
+                <details open>
                   <summary>
-                    <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of MarkupRuleType)</em>
+                    <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(MarkupRuleType)</em>
                   </summary>
                   type of the value
-                  Possible values:
-                  `PERCENT`  
-                  `IMPORT`  
+                  <strong>Possible values:</strong>
+                  <ul>
+                    <li><code>PERCENT</code>: Indicates the percentage applied by a rule.</li>
+                    <li><code>IMPORT</code>: Indicates the exact amount applied by a rule.</li>
+                  </ul>
                 </details>
 
                 <details style={{ pointerEvents: "none" }}>
@@ -1916,17 +1934,19 @@
           Indicates the surcharge code
         </details>
 
-        <details style={{ pointerEvents: "none" }}>
+        <details open>
           <summary>
-            <strong>chargeType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of ChargeType)</em>
+            <strong>chargeType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ChargeType)</em>
           </summary>
           Indicates the charge type. We need to know whether the supplements have to be paid when the consumer gets to the hotel or beforehand.
           Possible charge types: INCLUDE or EXCLUDE.
           when  INCLUDE : this surcharge is mandatory and included in the option s price
           when  EXCLUDE : this surcharge is not included in the option s price
-          Possible values:
-          `INCLUDE`  
-          `EXCLUDE`  
+          <strong>Possible values:</strong>
+          <ul>
+            <li><code>INCLUDE</code>: The charge is included.</li>
+            <li><code>EXCLUDE</code>: The charge is excluded.</li>
+          </ul>
         </details>
 
         <details style={{ pointerEvents: "none" }}>
@@ -2080,14 +2100,16 @@
                 rule name
               </details>
 
-              <details style={{ pointerEvents: "none" }}>
+              <details open>
                 <summary>
-                  <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of MarkupRuleType)</em>
+                  <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(MarkupRuleType)</em>
                 </summary>
                 type of the value
-                Possible values:
-                `PERCENT`  
-                `IMPORT`  
+                <strong>Possible values:</strong>
+                <ul>
+                  <li><code>PERCENT</code>: Indicates the percentage applied by a rule.</li>
+                  <li><code>IMPORT</code>: Indicates the exact amount applied by a rule.</li>
+                </ul>
               </details>
 
               <details style={{ pointerEvents: "none" }}>
@@ -2148,15 +2170,17 @@
             Specifies if the deadline has been taken from the seller’s response (false) or has been calculated by Travelgate (true)
           </details>
 
-          <details style={{ pointerEvents: "none" }}>
+          <details open>
             <summary>
-              <strong>penaltyType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of CancelPenaltyType)</em>
+              <strong>penaltyType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(CancelPenaltyType)</em>
             </summary>
             Type of penalty; this can be Nights, Percent or Import
-            Possible values:
-            `NIGHTS`  
-            `PERCENT`  
-            `IMPORT`  
+            <strong>Possible values:</strong>
+            <ul>
+              <li><code>NIGHTS</code>: Indicates the number of nights to be penalized.</li>
+              <li><code>PERCENT</code>: Indicates the percentage to pay based on the option price.</li>
+              <li><code>IMPORT</code>: Indicates the exact amount payable.</li>
+            </ul>
           </details>
 
           <details style={{ pointerEvents: "none" }}>
@@ -2190,16 +2214,18 @@
       </details>
     </details>
 
-    <details style={{ pointerEvents: "none" }}>
+    <details open>
       <summary>
-        <strong>paymentType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of PaymentType)</em>
+        <strong>paymentType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(PaymentType)</em>
       </summary>
       Indicates the payment type of the option returned. Possible options: MERCHANT, DIRECT, CARD_BOOKING and CARD_CHECK_IN.
-      Possible values:
-      `MERCHANT`  
-      `DIRECT`  
-      `CARD_BOOKING`  
-      `CARD_CHECK_IN`  
+      <strong>Possible values:</strong>
+      <ul>
+        <li><code>MERCHANT</code>: Payment is managed by the supplier.</li>
+        <li><code>DIRECT</code>: Payment is made directly to the actual payee (e.g., the hotel), without involving an intermediary or third party. The payment will be completed at check-in.</li>
+        <li><code>CARD_BOOKING</code>: Payment is managed by the supplier. The payment is effectuated at the time of booking.</li>
+        <li><code>CARD_CHECK_IN</code>: Payment is managed by the supplier and is made at the hotel during check-in.</li>
+      </ul>
     </details>
 
     <details style={{ pointerEvents: "none" }}>
@@ -2270,44 +2296,48 @@
           Specifies the pax surname.
         </details>
 
-        <details style={{ pointerEvents: "none" }}>
+        <details open>
           <summary>
-            <strong>title</strong> <em>(Enum of PersonalTitleType)</em>
+            <strong>title</strong> <em>(PersonalTitleType)</em>
           </summary>
           Specifies the pax title.
-          Possible values:
-          `MR`  
-          `MRS`  
-          `MISS`  
-          `MS`  
-          `NOT_SPECIFIED`  
+          <strong>Possible values:</strong>
+          <ul>
+            <li><code>MR</code>: To refer to a man. Is not possible know if it is married or single.</li>
+            <li><code>MRS</code>: To refer to a married woman</li>
+            <li><code>MISS</code>: To refer to a single woman</li>
+            <li><code>MS</code>: To refer to a woman. Is not possible know if it is married or single.</li>
+            <li><code>NOT_SPECIFIED</code>: Deprecated 2025-08-08. PersonalTitleType is optional in inputs and outputs.</li>
+          </ul>
         </details>
       </details>
     </details>
 
-    <details style={{ pointerEvents: "none" }}>
+    <details open>
       <summary>
-        <strong>rateRules</strong> <em>(Enum of RateRulesType)</em>
+        <strong>rateRules</strong> <em>(RateRulesType)</em>
       </summary>
       Specifies rate rules of the option returned. Note: If the option does not have any rate rule, then the option is NORMAL rate. If the supplier does not provide the rate rules, then the rate rules will be the same as the rate rules in the search request.
-      Possible values:
-      `NORMAL`  
-      `PACKAGE`  
-      `OLDER55`  
-      `OLDER60`  
-      `OLDER65`  
-      `CANARY_RESIDENT`  
-      `BALEARIC_RESIDENT`  
-      `LARGE_FAMILY`  
-      `HONEYMOON`  
-      `PUBLIC_SERVANT`  
-      `UNEMPLOYED`  
-      `NON_REFUNDABLE`  
-      `MOBILE`  
-      `WARRANTY`  
-      `ESSENTIAL_WORKER`  
-      `NEGOTIATED`  
-      `CUSTOM`  
+      <strong>Possible values:</strong>
+      <ul>
+        <li><code>NORMAL</code>: NORMAL Used in the RateRulesFilterInput input for the search query to filter and retrieve only options without rate rules.</li>
+        <li><code>PACKAGE</code>: The product can&#39;t be sold separately from another product attached to it, such as a flight.</li>
+        <li><code>OLDER55</code>: OLDER55 can only be sold to people who are 55 and older.</li>
+        <li><code>OLDER60</code>: OLDER60 can only be sold to people who are 60 and older.</li>
+        <li><code>OLDER65</code>: OLDER65 can only be sold to people who are 65 and older.</li>
+        <li><code>CANARY_RESIDENT</code>: CANARY_RESIDENT is applicable to Canary Islands residents only.</li>
+        <li><code>BALEARIC_RESIDENT</code>: BALEARIC_RESIDENT is applicable to Balearic Islands residents only.</li>
+        <li><code>LARGE_FAMILY</code>: LARGE_FAMILY is applicable to large families and is determined by each supplier.</li>
+        <li><code>HONEYMOON</code>: HONEYMOON is applicable to those who just got married and is determined by each supplier.</li>
+        <li><code>PUBLIC_SERVANT</code>: PUBLIC_SERVANT is applicable to public servants only.</li>
+        <li><code>UNEMPLOYED</code>: UNEMPLOYED applies to individuals who are without work.</li>
+        <li><code>NON_REFUNDABLE</code>: NON_REFUNDABLE is applicable to non refundable options.</li>
+        <li><code>MOBILE</code>: MOBILE are special rates confirmed by mobile phone.</li>
+        <li><code>WARRANTY</code>: WARRANTY is applicable to options with cancellation warranty.</li>
+        <li><code>ESSENTIAL_WORKER</code>: ESSENTIAL_WORKER are special hotel rates for essential workers.</li>
+        <li><code>NEGOTIATED</code>: NEGOTIATED are special rates offered only to specific buyers.</li>
+        <li><code>CUSTOM</code>: CUSTOM defines other rates.</li>
+      </ul>
     </details>
   </details>
 
@@ -2384,14 +2414,16 @@
             Indicates the access code of the selected option.
           </details>
 
-          <details style={{ pointerEvents: "none" }}>
+          <details open>
             <summary>
-              <strong>status</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of StatusType)</em>
+              <strong>status</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(StatusType)</em>
             </summary>
             The possible values in the response's status are Available (OK) or On Request (RQ).
-            Possible values:
-            `OK`  
-            `RQ`  
+            <strong>Possible values:</strong>
+            <ul>
+              <li><code>OK</code>: The status of the avail is available</li>
+              <li><code>RQ</code>: The status of the avail is On request</li>
+            </ul>
           </details>
 
           <details>
@@ -2537,14 +2569,16 @@
                   rule name
                 </details>
 
-                <details style={{ pointerEvents: "none" }}>
+                <details open>
                   <summary>
-                    <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of MarkupRuleType)</em>
+                    <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(MarkupRuleType)</em>
                   </summary>
                   type of the value
-                  Possible values:
-                  `PERCENT`  
-                  `IMPORT`  
+                  <strong>Possible values:</strong>
+                  <ul>
+                    <li><code>PERCENT</code>: Indicates the percentage applied by a rule.</li>
+                    <li><code>IMPORT</code>: Indicates the exact amount applied by a rule.</li>
+                  </ul>
                 </details>
 
                 <details style={{ pointerEvents: "none" }}>
@@ -2632,15 +2666,17 @@
                 Specifies if the deadline has been taken from the seller’s response (false) or has been calculated by Travelgate (true)
               </details>
 
-              <details style={{ pointerEvents: "none" }}>
+              <details open>
                 <summary>
-                  <strong>penaltyType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of CancelPenaltyType)</em>
+                  <strong>penaltyType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(CancelPenaltyType)</em>
                 </summary>
                 Type of penalty; this can be Nights, Percent or Import
-                Possible values:
-                `NIGHTS`  
-                `PERCENT`  
-                `IMPORT`  
+                <strong>Possible values:</strong>
+                <ul>
+                  <li><code>NIGHTS</code>: Indicates the number of nights to be penalized.</li>
+                  <li><code>PERCENT</code>: Indicates the percentage to pay based on the option price.</li>
+                  <li><code>IMPORT</code>: Indicates the exact amount payable.</li>
+                </ul>
               </details>
 
               <details style={{ pointerEvents: "none" }}>
@@ -2686,17 +2722,19 @@
               Indicates the surcharge code
             </details>
 
-            <details style={{ pointerEvents: "none" }}>
+            <details open>
               <summary>
-                <strong>chargeType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of ChargeType)</em>
+                <strong>chargeType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ChargeType)</em>
               </summary>
               Indicates the charge type. We need to know whether the supplements have to be paid when the consumer gets to the hotel or beforehand.
               Possible charge types: INCLUDE or EXCLUDE.
               when  INCLUDE : this surcharge is mandatory and included in the option s price
               when  EXCLUDE : this surcharge is not included in the option s price
-              Possible values:
-              `INCLUDE`  
-              `EXCLUDE`  
+              <strong>Possible values:</strong>
+              <ul>
+                <li><code>INCLUDE</code>: The charge is included.</li>
+                <li><code>EXCLUDE</code>: The charge is excluded.</li>
+              </ul>
             </details>
 
             <details style={{ pointerEvents: "none" }}>
@@ -2850,14 +2888,16 @@
                     rule name
                   </details>
 
-                  <details style={{ pointerEvents: "none" }}>
+                  <details open>
                     <summary>
-                      <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of MarkupRuleType)</em>
+                      <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(MarkupRuleType)</em>
                     </summary>
                     type of the value
-                    Possible values:
-                    `PERCENT`  
-                    `IMPORT`  
+                    <strong>Possible values:</strong>
+                    <ul>
+                      <li><code>PERCENT</code>: Indicates the percentage applied by a rule.</li>
+                      <li><code>IMPORT</code>: Indicates the exact amount applied by a rule.</li>
+                    </ul>
                   </details>
 
                   <details style={{ pointerEvents: "none" }}>
@@ -2885,35 +2925,37 @@
             </details>
           </details>
 
-          <details style={{ pointerEvents: "none" }}>
+          <details open>
             <summary>
-              <strong>cardTypes</strong> <em>(Enum of PaymentCardType)</em>
+              <strong>cardTypes</strong> <em>(PaymentCardType)</em>
             </summary>
             List of credit cards allowed for this option
-            Possible values:
-            `VI`  
-            `AX`  
-            `BC`  
-            `CA`  
-            `CB`  
-            `CU`  
-            `DS`  
-            `DC`  
-            `T`  
-            `R`  
-            `N`  
-            `L`  
-            `E`  
-            `JC`  
-            `TO`  
-            `S`  
-            `EC`  
-            `EU`  
-            `TP`  
-            `OP`  
-            `ER`  
-            `XS`  
-            `O`  
+            <strong>Possible values:</strong>
+            <ul>
+              <li><code>VI</code>: Visa</li>
+              <li><code>AX</code>: American Express</li>
+              <li><code>BC</code>: BC Card</li>
+              <li><code>CA</code>: MasterCard</li>
+              <li><code>CB</code>: Carte Blanche</li>
+              <li><code>CU</code>: China Union Pay</li>
+              <li><code>DS</code>: Discover</li>
+              <li><code>DC</code>: Diners Club</li>
+              <li><code>T</code>: Carta Si</li>
+              <li><code>R</code>: Carte Bleue</li>
+              <li><code>N</code>: Dankort</li>
+              <li><code>L</code>: Delta</li>
+              <li><code>E</code>: Electron</li>
+              <li><code>JC</code>: Japan Credit Bureau</li>
+              <li><code>TO</code>: Maestro</li>
+              <li><code>S</code>: Switch</li>
+              <li><code>EC</code>: Electronic Cash</li>
+              <li><code>EU</code>: EuroCard</li>
+              <li><code>TP</code>: universal air travel card</li>
+              <li><code>OP</code>: optima</li>
+              <li><code>ER</code>: Air Canada/RnRoute</li>
+              <li><code>XS</code>: access</li>
+              <li><code>O</code>: others</li>
+            </ul>
           </details>
 
           <details>
@@ -3048,16 +3090,18 @@
                 Code in supplier context
               </details>
 
-              <details style={{ pointerEvents: "none" }}>
+              <details open>
                 <summary>
-                  <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of ApplicationAreaType)</em>
+                  <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ApplicationAreaType)</em>
                 </summary>
                 Indicates the type of Amenity.
-                Possible values:
-                `HOTEL`  
-                `ROOM`  
-                `SERVICE`  
-                `GENERAL`  
+                <strong>Possible values:</strong>
+                <ul>
+                  <li><code>HOTEL</code>: Apply at the hotel.</li>
+                  <li><code>ROOM</code>: Apply in the hotel.</li>
+                  <li><code>SERVICE</code>: Applies to a service.</li>
+                  <li><code>GENERAL</code>: Applies in general.</li>
+                </ul>
               </details>
 
               <details style={{ pointerEvents: "none" }}>
@@ -3224,14 +3268,16 @@
                       rule name
                     </details>
 
-                    <details style={{ pointerEvents: "none" }}>
+                    <details open>
                       <summary>
-                        <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of MarkupRuleType)</em>
+                        <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(MarkupRuleType)</em>
                       </summary>
                       type of the value
-                      Possible values:
-                      `PERCENT`  
-                      `IMPORT`  
+                      <strong>Possible values:</strong>
+                      <ul>
+                        <li><code>PERCENT</code>: Indicates the percentage applied by a rule.</li>
+                        <li><code>IMPORT</code>: Indicates the exact amount applied by a rule.</li>
+                      </ul>
                     </details>
 
                     <details style={{ pointerEvents: "none" }}>
@@ -3416,13 +3462,15 @@
                         rule name
                       </details>
 
-                      <details style={{ pointerEvents: "none" }}>
+                      <details open>
                         <summary>
-                          <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of MarkupRuleType)</em>
+                          <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(MarkupRuleType)</em>
                         </summary>
                         type of the value
-                        Possible values:
-
+                        <strong>Possible values:</strong>
+                        <ul>
+                          <li><em>No values found</em></li>
+                        </ul>
                       </details>
 
                       <details style={{ pointerEvents: "none" }}>
@@ -3587,17 +3635,19 @@
                 Indicates the surcharge code
               </details>
 
-              <details style={{ pointerEvents: "none" }}>
+              <details open>
                 <summary>
-                  <strong>chargeType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of ChargeType)</em>
+                  <strong>chargeType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ChargeType)</em>
                 </summary>
                 Indicates the charge type. We need to know whether the supplements have to be paid when the consumer gets to the hotel or beforehand.
                 Possible charge types: INCLUDE or EXCLUDE.
                 when  INCLUDE : this surcharge is mandatory and included in the option s price
                 when  EXCLUDE : this surcharge is not included in the option s price
-                Possible values:
-                `INCLUDE`  
-                `EXCLUDE`  
+                <strong>Possible values:</strong>
+                <ul>
+                  <li><code>INCLUDE</code>: The charge is included.</li>
+                  <li><code>EXCLUDE</code>: The charge is excluded.</li>
+                </ul>
               </details>
 
               <details style={{ pointerEvents: "none" }}>
@@ -3751,14 +3801,16 @@
                       rule name
                     </details>
 
-                    <details style={{ pointerEvents: "none" }}>
+                    <details open>
                       <summary>
-                        <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of MarkupRuleType)</em>
+                        <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(MarkupRuleType)</em>
                       </summary>
                       type of the value
-                      Possible values:
-                      `PERCENT`  
-                      `IMPORT`  
+                      <strong>Possible values:</strong>
+                      <ul>
+                        <li><code>PERCENT</code>: Indicates the percentage applied by a rule.</li>
+                        <li><code>IMPORT</code>: Indicates the exact amount applied by a rule.</li>
+                      </ul>
                     </details>
 
                     <details style={{ pointerEvents: "none" }}>
@@ -3819,15 +3871,17 @@
                   Specifies if the deadline has been taken from the seller’s response (false) or has been calculated by Travelgate (true)
                 </details>
 
-                <details style={{ pointerEvents: "none" }}>
+                <details open>
                   <summary>
-                    <strong>penaltyType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of CancelPenaltyType)</em>
+                    <strong>penaltyType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(CancelPenaltyType)</em>
                   </summary>
                   Type of penalty; this can be Nights, Percent or Import
-                  Possible values:
-                  `NIGHTS`  
-                  `PERCENT`  
-                  `IMPORT`  
+                  <strong>Possible values:</strong>
+                  <ul>
+                    <li><code>NIGHTS</code>: Indicates the number of nights to be penalized.</li>
+                    <li><code>PERCENT</code>: Indicates the percentage to pay based on the option price.</li>
+                    <li><code>IMPORT</code>: Indicates the exact amount payable.</li>
+                  </ul>
                 </details>
 
                 <details style={{ pointerEvents: "none" }}>
@@ -3861,16 +3915,18 @@
             </details>
           </details>
 
-          <details style={{ pointerEvents: "none" }}>
+          <details open>
             <summary>
-              <strong>paymentType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of PaymentType)</em>
+              <strong>paymentType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(PaymentType)</em>
             </summary>
             Indicates the payment type of the option returned. Possible options: MERCHANT, DIRECT, CARD_BOOKING and CARD_CHECK_IN.
-            Possible values:
-            `MERCHANT`  
-            `DIRECT`  
-            `CARD_BOOKING`  
-            `CARD_CHECK_IN`  
+            <strong>Possible values:</strong>
+            <ul>
+              <li><code>MERCHANT</code>: Payment is managed by the supplier.</li>
+              <li><code>DIRECT</code>: Payment is made directly to the actual payee (e.g., the hotel), without involving an intermediary or third party. The payment will be completed at check-in.</li>
+              <li><code>CARD_BOOKING</code>: Payment is managed by the supplier. The payment is effectuated at the time of booking.</li>
+              <li><code>CARD_CHECK_IN</code>: Payment is managed by the supplier and is made at the hotel during check-in.</li>
+            </ul>
           </details>
 
           <details style={{ pointerEvents: "none" }}>
@@ -3941,44 +3997,48 @@
                 Specifies the pax surname.
               </details>
 
-              <details style={{ pointerEvents: "none" }}>
+              <details open>
                 <summary>
-                  <strong>title</strong> <em>(Enum of PersonalTitleType)</em>
+                  <strong>title</strong> <em>(PersonalTitleType)</em>
                 </summary>
                 Specifies the pax title.
-                Possible values:
-                `MR`  
-                `MRS`  
-                `MISS`  
-                `MS`  
-                `NOT_SPECIFIED`  
+                <strong>Possible values:</strong>
+                <ul>
+                  <li><code>MR</code>: To refer to a man. Is not possible know if it is married or single.</li>
+                  <li><code>MRS</code>: To refer to a married woman</li>
+                  <li><code>MISS</code>: To refer to a single woman</li>
+                  <li><code>MS</code>: To refer to a woman. Is not possible know if it is married or single.</li>
+                  <li><code>NOT_SPECIFIED</code>: Deprecated 2025-08-08. PersonalTitleType is optional in inputs and outputs.</li>
+                </ul>
               </details>
             </details>
           </details>
 
-          <details style={{ pointerEvents: "none" }}>
+          <details open>
             <summary>
-              <strong>rateRules</strong> <em>(Enum of RateRulesType)</em>
+              <strong>rateRules</strong> <em>(RateRulesType)</em>
             </summary>
             Specifies rate rules of the option returned. Note: If the option does not have any rate rule, then the option is NORMAL rate. If the supplier does not provide the rate rules, then the rate rules will be the same as the rate rules in the search request.
-            Possible values:
-            `NORMAL`  
-            `PACKAGE`  
-            `OLDER55`  
-            `OLDER60`  
-            `OLDER65`  
-            `CANARY_RESIDENT`  
-            `BALEARIC_RESIDENT`  
-            `LARGE_FAMILY`  
-            `HONEYMOON`  
-            `PUBLIC_SERVANT`  
-            `UNEMPLOYED`  
-            `NON_REFUNDABLE`  
-            `MOBILE`  
-            `WARRANTY`  
-            `ESSENTIAL_WORKER`  
-            `NEGOTIATED`  
-            `CUSTOM`  
+            <strong>Possible values:</strong>
+            <ul>
+              <li><code>NORMAL</code>: NORMAL Used in the RateRulesFilterInput input for the search query to filter and retrieve only options without rate rules.</li>
+              <li><code>PACKAGE</code>: The product can&#39;t be sold separately from another product attached to it, such as a flight.</li>
+              <li><code>OLDER55</code>: OLDER55 can only be sold to people who are 55 and older.</li>
+              <li><code>OLDER60</code>: OLDER60 can only be sold to people who are 60 and older.</li>
+              <li><code>OLDER65</code>: OLDER65 can only be sold to people who are 65 and older.</li>
+              <li><code>CANARY_RESIDENT</code>: CANARY_RESIDENT is applicable to Canary Islands residents only.</li>
+              <li><code>BALEARIC_RESIDENT</code>: BALEARIC_RESIDENT is applicable to Balearic Islands residents only.</li>
+              <li><code>LARGE_FAMILY</code>: LARGE_FAMILY is applicable to large families and is determined by each supplier.</li>
+              <li><code>HONEYMOON</code>: HONEYMOON is applicable to those who just got married and is determined by each supplier.</li>
+              <li><code>PUBLIC_SERVANT</code>: PUBLIC_SERVANT is applicable to public servants only.</li>
+              <li><code>UNEMPLOYED</code>: UNEMPLOYED applies to individuals who are without work.</li>
+              <li><code>NON_REFUNDABLE</code>: NON_REFUNDABLE is applicable to non refundable options.</li>
+              <li><code>MOBILE</code>: MOBILE are special rates confirmed by mobile phone.</li>
+              <li><code>WARRANTY</code>: WARRANTY is applicable to options with cancellation warranty.</li>
+              <li><code>ESSENTIAL_WORKER</code>: ESSENTIAL_WORKER are special hotel rates for essential workers.</li>
+              <li><code>NEGOTIATED</code>: NEGOTIATED are special rates offered only to specific buyers.</li>
+              <li><code>CUSTOM</code>: CUSTOM defines other rates.</li>
+            </ul>
           </details>
         </details>
       </details>

@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const fetch = require("node-fetch").default;
+const fetch = (...args) => import("node-fetch").then(({ default: fetch }) => fetch(...args));
 
 const GRAPHQL_ENDPOINT = "https://api.travelgate.com";
 const TRAVELGATE_API_KEY = process.env.TRAVELGATE_API_KEY || "test0000-0000-0000-0000-000000000000";

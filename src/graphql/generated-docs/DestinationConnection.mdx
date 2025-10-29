@@ -1,191 +1,191 @@
 
 <details>
   <summary>
-  **DestinationConnection** (*OBJECT*)  
-  DestinationList definition  
+    <strong>DestinationConnection</strong> <em>(OBJECT)</em>
   </summary>
+    DestinationList definition
   
   
+  <details>
+    <summary>
+      <strong>edges</strong> <em>(DestinationEdge)</em>
+    </summary>
+
+
     <details>
       <summary>
-      **edges** (*DestinationEdge*)  
-      
+        <strong>node</strong> <em>(Destination)</em>
       </summary>
-  
+
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>code</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
+        </summary>
+        Destination ID
+      </details>
+
       <details>
         <summary>
-        **node** (*Destination*)  
-        
+          <strong>destinationData</strong> <em>(DestinationData)</em>
         </summary>
-  
+        Destination data
+
         <details style={{ pointerEvents: "none" }}>
           <summary>
-          **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-          Destination ID  
+            <strong>code</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
           </summary>
+          Destination Code
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+            <strong>available</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+          </summary>
+          Indicates if you can search by destination
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+            <strong>destinationLeaf</strong> <em>(String)</em>
+          </summary>
+          Returns destination leafs of the destination.
         </details>
 
         <details>
           <summary>
-          **destinationData** (*DestinationData*)  
-          Destination data  
+            <strong>texts</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Text)</em>
           </summary>
-  
+          Contains the destination name
+
           <details style={{ pointerEvents: "none" }}>
             <summary>
-            **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-            Destination Code  
+              <strong>text</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
             </summary>
+
           </details>
 
           <details style={{ pointerEvents: "none" }}>
             <summary>
-            **available**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-            Indicates if you can search by destination  
+              <strong>language</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Language)</em>
             </summary>
+
           </details>
+        </details>
 
-          <details style={{ pointerEvents: "none" }}>
-            <summary>
-            **destinationLeaf** (*String*)  
-            Returns destination leafs of the destination.  
-            </summary>
-          </details>
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+            <strong>closestDestinations</strong> <em>(String)</em>
+          </summary>
+          Closest destinations, indicates destinations in proximity
+        </details>
 
-          <details>
-            <summary>
-            **texts**&nbsp;<span class="required"> *</span>&nbsp; (*Text*)  
-            Contains the destination name  
-            </summary>
-  
-            <details style={{ pointerEvents: "none" }}>
-              <summary>
-              **text**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-              
-              </summary>
-            </details>
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+            <strong>parent</strong> <em>(String)</em>
+          </summary>
+          Parent destination code
+        </details>
 
-            <details style={{ pointerEvents: "none" }}>
-              <summary>
-              **language**&nbsp;<span class="required"> *</span>&nbsp; (*Language*)  
-              
-              </summary>
-            </details>
-          </details>
-
-          <details style={{ pointerEvents: "none" }}>
-            <summary>
-            **closestDestinations** (*String*)  
-            Closest destinations, indicates destinations in proximity  
-            </summary>
-          </details>
-
-          <details style={{ pointerEvents: "none" }}>
-            <summary>
-            **parent** (*String*)  
-            Parent destination code  
-            </summary>
-          </details>
-
-          <details style={{ pointerEvents: "none" }}>
-            <summary>
-            **type** (*Enum of DestinationType*)  
-            Indicates destination type, zone or city  
-            Possible values:  
-            `ZONE`  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+            <strong>type</strong> <em>(Enum of DestinationType)</em>
+          </summary>
+          Indicates destination type, zone or city
+          Possible values:
+          `ZONE`  
           `CITY`  
-            </summary>
-          </details>
+        </details>
+      </details>
+
+      <details>
+        <summary>
+          <strong>adviseMessage</strong> <em>(AdviseMessage)</em>
+        </summary>
+        List of messages
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+            <strong>code</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
+          </summary>
+          AM code: The following codes can be returned:
         </details>
 
-        <details>
+        <details style={{ pointerEvents: "none" }}>
           <summary>
-          **adviseMessage** (*AdviseMessage*)  
-          List of messages  
+            <strong>description</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
           </summary>
-  
-          <details style={{ pointerEvents: "none" }}>
-            <summary>
-            **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-            AM code: The following codes can be returned:  
-            </summary>
-          </details>
+          Error description
+        </details>
 
-          <details style={{ pointerEvents: "none" }}>
-            <summary>
-            **description**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-            Error description  
-            </summary>
-          </details>
-
-          <details style={{ pointerEvents: "none" }}>
-            <summary>
-            **level**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of AdviseMessageLevel*)  
-            Indicates the level of importance of the message.
-Possible values: ERROR, WARN, INFO.  
-            Possible values:  
-            `WARN`  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+            <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+          </summary>
+          Indicates the level of importance of the message.
+          Possible values: ERROR, WARN, INFO.
+          Possible values:
+          `WARN`  
           `ERROR`  
           `INFO`  
-            </summary>
-          </details>
+        </details>
 
-          <details>
+        <details>
+          <summary>
+            <strong>external</strong> <em>(ExternalMessage)</em>
+          </summary>
+          Specify the external message.
+
+          <details style={{ pointerEvents: "none" }}>
             <summary>
-            **external** (*ExternalMessage*)  
-            Specify the external message.  
+              <strong>code</strong> <em>(String)</em>
             </summary>
-  
-            <details style={{ pointerEvents: "none" }}>
-              <summary>
-              **code** (*String*)  
-              External code.  
-              </summary>
-            </details>
-
-            <details style={{ pointerEvents: "none" }}>
-              <summary>
-              **message**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-              External message.  
-              </summary>
-            </details>
+            External code.
           </details>
 
           <details style={{ pointerEvents: "none" }}>
             <summary>
-            **correlationID**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-            Identifier to investigate the cause of the error.  
+              <strong>message</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
             </summary>
+            External message.
           </details>
         </details>
 
         <details style={{ pointerEvents: "none" }}>
           <summary>
-          **createdAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
-          Date created  
+            <strong>correlationID</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
           </summary>
-        </details>
-
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **updatedAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
-          Date updated  
-          </summary>
+          Identifier to investigate the cause of the error.
         </details>
       </details>
 
       <details style={{ pointerEvents: "none" }}>
         <summary>
-        **cursor**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-        
+          <strong>createdAt</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(DateTime)</em>
         </summary>
+        Date created
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>updatedAt</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(DateTime)</em>
+        </summary>
+        Date updated
       </details>
     </details>
 
     <details style={{ pointerEvents: "none" }}>
       <summary>
-      **token**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-      
+        <strong>cursor</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
       </summary>
+
     </details>
+  </details>
+
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+      <strong>token</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+    </summary>
+
+  </details>
 </details>

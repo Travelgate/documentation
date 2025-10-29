@@ -1,96 +1,96 @@
 
 <details>
   <summary>
-  **HotelCancelInput** (*INPUT_OBJECT*)  
-  Cancel criteria.  
+    <strong>HotelCancelInput</strong> <em>(INPUT_OBJECT)</em>
   </summary>
+    Cancel criteria.
   
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+      <strong>accessCode</strong> <em>(String)</em>
+    </summary>
+    The name of the access to use in the request.
+  </details>
+
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+      <strong>language</strong> <em>(Language)</em>
+    </summary>
+    The language code.
+  </details>
+
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+      <strong>hotelCode</strong> <em>(String)</em>
+    </summary>
+    The hotel code, which is only used if you try to cancel with reference.
+  </details>
+
+  <details>
+    <summary>
+      <strong>reference</strong> <em>(BookReferenceInput)</em>
+    </summary>
+    It contains reservation references. When using the reference object to cancel, hotelCode has to be send as well.
+
     <details style={{ pointerEvents: "none" }}>
       <summary>
-      **accessCode** (*String*)  
-      The name of the access to use in the request.  
+        <strong>client</strong> <em>(String)</em>
       </summary>
+      The client's booking reference
     </details>
 
     <details style={{ pointerEvents: "none" }}>
       <summary>
-      **language** (*Language*)  
-      The language code.  
+        <strong>supplier</strong> <em>(String)</em>
       </summary>
+      The supplier's booking reference
     </details>
 
     <details style={{ pointerEvents: "none" }}>
       <summary>
-      **hotelCode** (*String*)  
-      The hotel code, which is only used if you try to cancel with reference.  
+        <strong>hotel</strong> <em>(String)</em>
       </summary>
+      The hotel's reference
     </details>
 
     <details>
       <summary>
-      **reference** (*BookReferenceInput*)  
-      It contains reservation references. When using the reference object to cancel, hotelCode has to be send as well.  
+        <strong>dates</strong> <em>(BookReferenceDatesInput)</em>
       </summary>
-  
+      Used to receive a list of all the reservations made in a specific type frame. However, even if you are looking for a specific booking using references,
+      this field may be mandatory for some suppliers.
+
       <details style={{ pointerEvents: "none" }}>
         <summary>
-        **client** (*String*)  
-        The client's booking reference  
+          <strong>start</strong> <em>(Date)</em>
         </summary>
+        Start or check-in booking date
+        Format: YYYY-MM-DD
       </details>
 
       <details style={{ pointerEvents: "none" }}>
         <summary>
-        **supplier** (*String*)  
-        The supplier's booking reference  
+          <strong>end</strong> <em>(Date)</em>
         </summary>
+        End or check-out booking date
+        Format: YYYY-MM-DD
       </details>
 
       <details style={{ pointerEvents: "none" }}>
         <summary>
-        **hotel** (*String*)  
-        The hotel's reference  
+          <strong>creation</strong> <em>(Date)</em>
         </summary>
-      </details>
-
-      <details>
-        <summary>
-        **dates** (*BookReferenceDatesInput*)  
-        Used to receive a list of all the reservations made in a specific type frame. However, even if you are looking for a specific booking using references,
-this field may be mandatory for some suppliers.  
-        </summary>
-  
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **start** (*Date*)  
-          Start or check-in booking date
-Format: YYYY-MM-DD  
-          </summary>
-        </details>
-
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **end** (*Date*)  
-          End or check-out booking date
-Format: YYYY-MM-DD  
-          </summary>
-        </details>
-
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **creation** (*Date*)  
-          Booking creation date
-Format: YYYY-MM-DD  
-          </summary>
-        </details>
+        Booking creation date
+        Format: YYYY-MM-DD
       </details>
     </details>
+  </details>
 
-    <details style={{ pointerEvents: "none" }}>
-      <summary>
-      **bookingID** (*String*)  
-      HotelX's booking reference. If you cancel with bookingID nor hotelCode norany other reference needs to be send.  
-      </summary>
-    </details>
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+      <strong>bookingID</strong> <em>(String)</em>
+    </summary>
+    HotelX's booking reference. If you cancel with bookingID nor hotelCode norany other reference needs to be send.
+  </details>
   
 </details>

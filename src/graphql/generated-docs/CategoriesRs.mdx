@@ -1,99 +1,99 @@
 
 <details>
   <summary>
-  **CategoriesRs** (*OBJECT*)  
-  Represents a response object for categories.  
+    <strong>CategoriesRs</strong> <em>(OBJECT)</em>
   </summary>
+    Represents a response object for categories.
   
   
-    <details>
+  <details>
+    <summary>
+      <strong>adviseMessages</strong> <em>(AdviseMessage)</em>
+    </summary>
+    List of advise messages.
+    AdviseMessage
+
+    <details style={{ pointerEvents: "none" }}>
       <summary>
-      **adviseMessages** (*AdviseMessage*)  
-      List of advise messages.
-AdviseMessage  
+        <strong>code</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
       </summary>
-  
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-        AM code: The following codes can be returned:  
-        </summary>
-      </details>
+      AM code: The following codes can be returned:
+    </details>
 
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **description**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-        Error description  
-        </summary>
-      </details>
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>description</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+      </summary>
+      Error description
+    </details>
 
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **level**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of AdviseMessageLevel*)  
-        Indicates the level of importance of the message.
-Possible values: ERROR, WARN, INFO.  
-        Possible values:  
-        `WARN`  
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+      </summary>
+      Indicates the level of importance of the message.
+      Possible values: ERROR, WARN, INFO.
+      Possible values:
+      `WARN`  
       `ERROR`  
       `INFO`  
-        </summary>
-      </details>
-
-      <details>
-        <summary>
-        **external** (*ExternalMessage*)  
-        Specify the external message.  
-        </summary>
-  
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **code** (*String*)  
-          External code.  
-          </summary>
-        </details>
-
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **message**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-          External message.  
-          </summary>
-        </details>
-      </details>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **correlationID**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-        Identifier to investigate the cause of the error.  
-        </summary>
-      </details>
     </details>
 
     <details>
       <summary>
-      **categories** (*InventoryCategory*)  
-      List of categories.
-Category  
+        <strong>external</strong> <em>(ExternalMessage)</em>
       </summary>
-  
+      Specify the external message.
+
       <details style={{ pointerEvents: "none" }}>
         <summary>
-        **id**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
-        Category Id.
+          <strong>code</strong> <em>(String)</em>
         </summary>
+        External code.
       </details>
 
       <details style={{ pointerEvents: "none" }}>
         <summary>
-        **name** (*String*)  
-        Category Name.  
+          <strong>message</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
         </summary>
+        External message.
       </details>
     </details>
 
     <details style={{ pointerEvents: "none" }}>
       <summary>
-      **success**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-      Indicates whether the operation was successful.  
+        <strong>correlationID</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
       </summary>
+      Identifier to investigate the cause of the error.
     </details>
+  </details>
+
+  <details>
+    <summary>
+      <strong>categories</strong> <em>(InventoryCategory)</em>
+    </summary>
+    List of categories.
+    Category
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>id</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Int)</em>
+      </summary>
+      Category Id.
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>name</strong> <em>(String)</em>
+      </summary>
+      Category Name.
+    </details>
+  </details>
+
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+      <strong>success</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+    </summary>
+    Indicates whether the operation was successful.
+  </details>
 </details>

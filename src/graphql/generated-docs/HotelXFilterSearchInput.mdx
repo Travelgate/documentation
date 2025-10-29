@@ -1,119 +1,120 @@
 
 <details>
   <summary>
-  **HotelXFilterSearchInput** (*INPUT_OBJECT*)  
-  Filters allow you to precisely tailor the response according to your preferences.  
+    <strong>HotelXFilterSearchInput</strong> <em>(INPUT_OBJECT)</em>
   </summary>
+    Filters allow you to precisely tailor the response according to your preferences.
   
+  <details>
+    <summary>
+      <strong>access</strong> <em>(AccessFilterInput)</em>
+    </summary>
+    By using the access filter, our system will exclusively include or exclude options from the selected accesses.
+    If you opt not to set any access at all, requests will be made to all available accesses.
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>includes</strong> <em>(ID)</em>
+      </summary>
+      These Access IDs will overwrite the default configuration. Only the IDs on this list will be used in the search query.
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>excludes</strong> <em>(ID)</em>
+      </summary>
+      These Access IDs will overwrite the default configuration. The IDs on this list will be excluded from the search query.
+    </details>
+  </details>
+
+  <details>
+    <summary>
+      <strong>plugin</strong> <em>(HotelXPluginFilterInput)</em>
+    </summary>
+    You can filter and specify which plugins need to be included or excluded.
+
     <details>
       <summary>
-      **access** (*AccessFilterInput*)  
-      By using the access filter, our system will exclusively include or exclude options from the selected accesses.
-If you opt not to set any access at all, requests will be made to all available accesses.  
+        <strong>includes</strong> <em>(HotelXFilterPluginTypeInput)</em>
       </summary>
-  
+      Plugins to be only executed
+
       <details style={{ pointerEvents: "none" }}>
         <summary>
-        **includes** (*ID*)  
-        These Access IDs will overwrite the default configuration. Only the IDs on this list will be used in the search query.  
+          <strong>step</strong> <em>(Enum of PluginStepType)</em>
         </summary>
+        The Step of the plugin to filter. @deprecated(reason: "deprecated from 2025-08-25. This property is no longer recommended for use.")
+        Possible values:
+        `REQUEST`  
+        `REQUEST_ACCESS`  
+        `RESPONSE_OPTION`  
+        `RESPONSE_ACCESS`  
+        `RESPONSE`  
       </details>
 
       <details style={{ pointerEvents: "none" }}>
         <summary>
-        **excludes** (*ID*)  
-        These Access IDs will overwrite the default configuration. The IDs on this list will be excluded from the search query.  
+          <strong>type</strong> <em>(String)</em>
         </summary>
+        The Type of the plugin to filter. @deprecated(reason: "deprecated from 2025-08-25. This property is no longer recommended for use.")
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>name</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+        </summary>
+        The Name of the plugin to filter
       </details>
     </details>
 
     <details>
       <summary>
-      **plugin** (*HotelXPluginFilterInput*)  
-      You can filter and specify which plugins need to be included or excluded.  
+        <strong>excludes</strong> <em>(HotelXFilterPluginTypeInput)</em>
       </summary>
-  
-      <details>
-        <summary>
-        **includes** (*HotelXFilterPluginTypeInput*)  
-        Plugins to be only executed  
-        </summary>
-  
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **step** (*Enum of PluginStepType*)  
-          The Step of the plugin to filter. @deprecated(reason: "deprecated from 2025-08-25. This property is no longer recommended for use.")  
-          Possible values:  
-          `REQUEST`  
-        `REQUEST_ACCESS`  
-        `RESPONSE_OPTION`  
-        `RESPONSE_ACCESS`  
-        `RESPONSE`  
-          </summary>
-        </details>
+      Plugins to exclude
 
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **type** (*String*)  
-          The Type of the plugin to filter. @deprecated(reason: "deprecated from 2025-08-25. This property is no longer recommended for use.")  
-          </summary>
-        </details>
-
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **name**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-          The Name of the plugin to filter  
-          </summary>
-        </details>
-      </details>
-
-      <details>
-        <summary>
-        **excludes** (*HotelXFilterPluginTypeInput*)  
-        Plugins to exclude  
-        </summary>
-  
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **step** (*Enum of PluginStepType*)  
-          The Step of the plugin to filter. @deprecated(reason: "deprecated from 2025-08-25. This property is no longer recommended for use.")  
-          Possible values:  
-          `REQUEST`  
-        `REQUEST_ACCESS`  
-        `RESPONSE_OPTION`  
-        `RESPONSE_ACCESS`  
-        `RESPONSE`  
-          </summary>
-        </details>
-
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **type** (*String*)  
-          The Type of the plugin to filter. @deprecated(reason: "deprecated from 2025-08-25. This property is no longer recommended for use.")  
-          </summary>
-        </details>
-
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **name**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-          The Name of the plugin to filter  
-          </summary>
-        </details>
-      </details>
-    </details>
-
-    <details>
-      <summary>
-      **rateRules** (*RateRulesFilterInput*)  
-      This filter enables you to narrow down the options returned by the suppliers based on the desired rate rules you want to include or exclude.  
-      </summary>
-  
       <details style={{ pointerEvents: "none" }}>
         <summary>
-        **includes** (*Enum of RateRulesType*)  
-        if includes not nil: only options without rate rules and options with rate rules found in includes will be returned  
-        Possible values:  
-        `NORMAL`  
+          <strong>step</strong> <em>(Enum of PluginStepType)</em>
+        </summary>
+        The Step of the plugin to filter. @deprecated(reason: "deprecated from 2025-08-25. This property is no longer recommended for use.")
+        Possible values:
+        `REQUEST`  
+        `REQUEST_ACCESS`  
+        `RESPONSE_OPTION`  
+        `RESPONSE_ACCESS`  
+        `RESPONSE`  
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>type</strong> <em>(String)</em>
+        </summary>
+        The Type of the plugin to filter. @deprecated(reason: "deprecated from 2025-08-25. This property is no longer recommended for use.")
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>name</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+        </summary>
+        The Name of the plugin to filter
+      </details>
+    </details>
+  </details>
+
+  <details>
+    <summary>
+      <strong>rateRules</strong> <em>(RateRulesFilterInput)</em>
+    </summary>
+    This filter enables you to narrow down the options returned by the suppliers based on the desired rate rules you want to include or exclude.
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>includes</strong> <em>(Enum of RateRulesType)</em>
+      </summary>
+      if includes not nil: only options without rate rules and options with rate rules found in includes will be returned
+      Possible values:
+      `NORMAL`  
       `PACKAGE`  
       `OLDER55`  
       `OLDER60`  
@@ -130,15 +131,15 @@ If you opt not to set any access at all, requests will be made to all available 
       `ESSENTIAL_WORKER`  
       `NEGOTIATED`  
       `CUSTOM`  
-        </summary>
-      </details>
+    </details>
 
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **excludes** (*Enum of RateRulesType*)  
-        if excludes not nil: only options without rate rules and options with rate rules that haven t been sent in excludes will be returned  
-        Possible values:  
-        `NORMAL`  
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>excludes</strong> <em>(Enum of RateRulesType)</em>
+      </summary>
+      if excludes not nil: only options without rate rules and options with rate rules that haven t been sent in excludes will be returned
+      Possible values:
+      `NORMAL`  
       `PACKAGE`  
       `OLDER55`  
       `OLDER60`  
@@ -155,56 +156,55 @@ If you opt not to set any access at all, requests will be made to all available 
       `ESSENTIAL_WORKER`  
       `NEGOTIATED`  
       `CUSTOM`  
-        </summary>
-      </details>
     </details>
+  </details>
 
-    <details>
+  <details>
+    <summary>
+      <strong>status</strong> <em>(StatusFilterInput)</em>
+    </summary>
+    Use this filter to determine which status (OK and RQ) will be included or excluded in the response.
+
+    <details style={{ pointerEvents: "none" }}>
       <summary>
-      **status** (*StatusFilterInput*)  
-      Use this filter to determine which status (OK and RQ) will be included or excluded in the response.  
+        <strong>includes</strong> <em>(Enum of StatusType)</em>
       </summary>
-  
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **includes** (*Enum of StatusType*)  
-        When is not nil: only options with status found in includes will be returned  
-        Possible values:  
-        `OK`  
+      When is not nil: only options with status found in includes will be returned
+      Possible values:
+      `OK`  
       `RQ`  
-        </summary>
-      </details>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **excludes** (*Enum of StatusType*)  
-        When is not nil: only options without status found in includes will be returned  
-        Possible values:  
-        `OK`  
-      `RQ`  
-        </summary>
-      </details>
     </details>
 
-    <details>
+    <details style={{ pointerEvents: "none" }}>
       <summary>
-      **currencies** (*CurrenciesFilterInput*)  
-      This filter enables you to narrow down the options returned by the suppliers based on the desired currencies you want to include or exclude.  
+        <strong>excludes</strong> <em>(Enum of StatusType)</em>
       </summary>
-  
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **includes** (*Currency*)  
-        
-        </summary>
-      </details>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **excludes** (*Currency*)  
-        
-        </summary>
-      </details>
+      When is not nil: only options without status found in includes will be returned
+      Possible values:
+      `OK`  
+      `RQ`  
     </details>
+  </details>
+
+  <details>
+    <summary>
+      <strong>currencies</strong> <em>(CurrenciesFilterInput)</em>
+    </summary>
+    This filter enables you to narrow down the options returned by the suppliers based on the desired currencies you want to include or exclude.
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>includes</strong> <em>(Currency)</em>
+      </summary>
+
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>excludes</strong> <em>(Currency)</em>
+      </summary>
+
+    </details>
+  </details>
   
 </details>

@@ -1,422 +1,423 @@
 
 <details>
   <summary>
-  **HotelConnection** (*OBJECT*)  
-  HotelList definition  
+    <strong>HotelConnection</strong> <em>(OBJECT)</em>
   </summary>
+    HotelList definition
   
   
+  <details>
+    <summary>
+      <strong>edges</strong> <em>(HotelEdge)</em>
+    </summary>
+
+
     <details>
       <summary>
-      **edges** (*HotelEdge*)  
-      
+        <strong>node</strong> <em>(Hotel)</em>
       </summary>
-  
+
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>code</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
+        </summary>
+        Hotel ID
+      </details>
+
       <details>
         <summary>
-        **node** (*Hotel*)  
-        
+          <strong>hotelData</strong> <em>(HotelData)</em>
         </summary>
-  
+        Hotel data
+
         <details style={{ pointerEvents: "none" }}>
           <summary>
-          **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-          Hotel ID  
+            <strong>code</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
           </summary>
+          Internal code.
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+            <strong>hotelCode</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+          </summary>
+          Code to perform availability.
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+            <strong>hotelCodeSupplier</strong> <em>(String)</em>
+          </summary>
+          Native supplier hotel code.
         </details>
 
         <details>
           <summary>
-          **hotelData** (*HotelData*)  
-          Hotel data  
+            <strong>giataData</strong> <em>(GiataData)</em>
           </summary>
-  
+          Giata data stored in giata.
+
           <details style={{ pointerEvents: "none" }}>
             <summary>
-            **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-            Internal code.  
+              <strong>id</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
             </summary>
+            Giata System ID.
           </details>
 
           <details style={{ pointerEvents: "none" }}>
             <summary>
-            **hotelCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-            Code to perform availability.  
+              <strong>source</strong> <em>(URI)</em>
             </summary>
+            Giata URL for the hotels of the supplier.
           </details>
 
           <details style={{ pointerEvents: "none" }}>
             <summary>
-            **hotelCodeSupplier** (*String*)  
-            Native supplier hotel code.  
+              <strong>href</strong> <em>(URI)</em>
             </summary>
+            Giata url for the hotel info.
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+              <strong>updatedAt</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(DateTime)</em>
+            </summary>
+            Date of last Giata update for this code.
+          </details>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+            <strong>hotelName</strong> <em>(String)</em>
+          </summary>
+          Name of the hotel in the Supplier selected.
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+            <strong>categoryCode</strong> <em>(String)</em>
+          </summary>
+          Hotel category (for example number of stars).
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+            <strong>chainCode</strong> <em>(String)</em>
+          </summary>
+          Hotel chain code
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+            <strong>exclusiveDeal</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+          </summary>
+          Indicates that the Hotel has an Exclusive Deal.
+        </details>
+
+        <details>
+          <summary>
+            <strong>location</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Location)</em>
+          </summary>
+          Indicates the location of the hotel
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+              <strong>address</strong> <em>(String)</em>
+            </summary>
+            Contains Hotel Address
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+              <strong>city</strong> <em>(String)</em>
+            </summary>
+            Contains the city
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+              <strong>zipCode</strong> <em>(String)</em>
+            </summary>
+            Contains the zipCode.
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+              <strong>country</strong> <em>(Country)</em>
+            </summary>
+            Country where is the Hotel.
           </details>
 
           <details>
             <summary>
-            **giataData** (*GiataData*)  
-            Giata data stored in giata.  
+              <strong>coordinates</strong> <em>(Coordinates)</em>
             </summary>
-  
+            Geographical coordinates corresponding to a location.
+
             <details style={{ pointerEvents: "none" }}>
               <summary>
-              **id**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-              Giata System ID.  
+                <strong>latitude</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Float)</em>
               </summary>
+              Latitude
             </details>
 
             <details style={{ pointerEvents: "none" }}>
               <summary>
-              **source** (*URI*)  
-              Giata URL for the hotels of the supplier.  
+                <strong>longitude</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Float)</em>
               </summary>
+              Longitude
             </details>
-
-            <details style={{ pointerEvents: "none" }}>
-              <summary>
-              **href** (*URI*)  
-              Giata url for the hotel info.  
-              </summary>
-            </details>
-
-            <details style={{ pointerEvents: "none" }}>
-              <summary>
-              **updatedAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
-              Date of last Giata update for this code.  
-              </summary>
-            </details>
-          </details>
-
-          <details style={{ pointerEvents: "none" }}>
-            <summary>
-            **hotelName** (*String*)  
-            Name of the hotel in the Supplier selected.  
-            </summary>
-          </details>
-
-          <details style={{ pointerEvents: "none" }}>
-            <summary>
-            **categoryCode** (*String*)  
-            Hotel category (for example number of stars).  
-            </summary>
-          </details>
-
-          <details style={{ pointerEvents: "none" }}>
-            <summary>
-            **chainCode** (*String*)  
-            Hotel chain code  
-            </summary>
-          </details>
-
-          <details style={{ pointerEvents: "none" }}>
-            <summary>
-            **exclusiveDeal**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-            Indicates that the Hotel has an Exclusive Deal.  
-            </summary>
           </details>
 
           <details>
             <summary>
-            **location**&nbsp;<span class="required"> *</span>&nbsp; (*Location*)  
-            Indicates the location of the hotel  
+              <strong>closestDestination</strong> <em>(DestinationData)</em>
             </summary>
-  
+            Closest destination
+
             <details style={{ pointerEvents: "none" }}>
               <summary>
-              **address** (*String*)  
-              Contains Hotel Address  
+                <strong>code</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
               </summary>
+              Destination Code
             </details>
 
             <details style={{ pointerEvents: "none" }}>
               <summary>
-              **city** (*String*)  
-              Contains the city  
+                <strong>available</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
               </summary>
+              Indicates if you can search by destination
             </details>
 
             <details style={{ pointerEvents: "none" }}>
               <summary>
-              **zipCode** (*String*)  
-              Contains the zipCode.  
+                <strong>destinationLeaf</strong> <em>(String)</em>
               </summary>
-            </details>
-
-            <details style={{ pointerEvents: "none" }}>
-              <summary>
-              **country** (*Country*)  
-              Country where is the Hotel.  
-              </summary>
+              Returns destination leafs of the destination.
             </details>
 
             <details>
               <summary>
-              **coordinates** (*Coordinates*)  
-              Geographical coordinates corresponding to a location.  
+                <strong>texts</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Text)</em>
               </summary>
-  
+              Contains the destination name
+
               <details style={{ pointerEvents: "none" }}>
                 <summary>
-                **latitude**&nbsp;<span class="required"> *</span>&nbsp; (*Float*)  
-                Latitude  
+                  <strong>text</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
                 </summary>
+
               </details>
 
               <details style={{ pointerEvents: "none" }}>
                 <summary>
-                **longitude**&nbsp;<span class="required"> *</span>&nbsp; (*Float*)  
-                Longitude  
+                  <strong>language</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Language)</em>
                 </summary>
+
               </details>
             </details>
 
-            <details>
+            <details style={{ pointerEvents: "none" }}>
               <summary>
-              **closestDestination** (*DestinationData*)  
-              Closest destination  
+                <strong>closestDestinations</strong> <em>(String)</em>
               </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-                Destination Code  
-                </summary>
-              </details>
+              Closest destinations, indicates destinations in proximity
+            </details>
 
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **available**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                Indicates if you can search by destination  
-                </summary>
-              </details>
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>parent</strong> <em>(String)</em>
+              </summary>
+              Parent destination code
+            </details>
 
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **destinationLeaf** (*String*)  
-                Returns destination leafs of the destination.  
-                </summary>
-              </details>
-
-              <details>
-                <summary>
-                **texts**&nbsp;<span class="required"> *</span>&nbsp; (*Text*)  
-                Contains the destination name  
-                </summary>
-  
-                <details style={{ pointerEvents: "none" }}>
-                  <summary>
-                  **text**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-                  
-                  </summary>
-                </details>
-
-                <details style={{ pointerEvents: "none" }}>
-                  <summary>
-                  **language**&nbsp;<span class="required"> *</span>&nbsp; (*Language*)  
-                  
-                  </summary>
-                </details>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **closestDestinations** (*String*)  
-                Closest destinations, indicates destinations in proximity  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **parent** (*String*)  
-                Parent destination code  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **type** (*Enum of DestinationType*)  
-                Indicates destination type, zone or city  
-                Possible values:  
-                `ZONE`  
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>type</strong> <em>(Enum of DestinationType)</em>
+              </summary>
+              Indicates destination type, zone or city
+              Possible values:
+              `ZONE`  
               `CITY`  
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>airports</strong> <em>(Airport)</em>
+            </summary>
+            Airports
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>code</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
+              </summary>
+              Airport ID
+            </details>
+
+            <details>
+              <summary>
+                <strong>airportData</strong> <em>(AirportData)</em>
+              </summary>
+              Airport data
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                  <strong>code</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
                 </summary>
+                Airport Code (IATA)
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                  <strong>name</strong> <em>(String)</em>
+                </summary>
+                The airport s name
+              </details>
+
+              <details>
+                <summary>
+                  <strong>location</strong> <em>(Location)</em>
+                </summary>
+                The airport s location
+
               </details>
             </details>
 
             <details>
               <summary>
-              **airports** (*Airport*)  
-              Airports  
+                <strong>adviseMessage</strong> <em>(AdviseMessage)</em>
               </summary>
-  
+              List of messages
+
               <details style={{ pointerEvents: "none" }}>
                 <summary>
-                **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-                Airport ID  
+                  <strong>code</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
                 </summary>
+                AM code: The following codes can be returned:
               </details>
 
-              <details>
+              <details style={{ pointerEvents: "none" }}>
                 <summary>
-                **airportData** (*AirportData*)  
-                Airport data  
+                  <strong>description</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
                 </summary>
-  
-                <details style={{ pointerEvents: "none" }}>
-                  <summary>
-                  **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-                  Airport Code (IATA)  
-                  </summary>
-                </details>
-
-                <details style={{ pointerEvents: "none" }}>
-                  <summary>
-                  **name** (*String*)  
-                  The airport s name  
-                  </summary>
-                </details>
-
-                <details>
-                  <summary>
-                  **location** (*Location*)  
-                  The airport s location  
-                  </summary>
-  
-                </details>
+                Error description
               </details>
 
-              <details>
+              <details style={{ pointerEvents: "none" }}>
                 <summary>
-                **adviseMessage** (*AdviseMessage*)  
-                List of messages  
+                  <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
                 </summary>
-  
-                <details style={{ pointerEvents: "none" }}>
-                  <summary>
-                  **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-                  AM code: The following codes can be returned:  
-                  </summary>
-                </details>
-
-                <details style={{ pointerEvents: "none" }}>
-                  <summary>
-                  **description**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-                  Error description  
-                  </summary>
-                </details>
-
-                <details style={{ pointerEvents: "none" }}>
-                  <summary>
-                  **level**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of AdviseMessageLevel*)  
-                  Indicates the level of importance of the message.
-Possible values: ERROR, WARN, INFO.  
-                  Possible values:  
-                  `WARN`  
+                Indicates the level of importance of the message.
+                Possible values: ERROR, WARN, INFO.
+                Possible values:
+                `WARN`  
                 `ERROR`  
                 `INFO`  
-                  </summary>
-                </details>
+              </details>
 
-                <details>
+              <details>
+                <summary>
+                  <strong>external</strong> <em>(ExternalMessage)</em>
+                </summary>
+                Specify the external message.
+
+                <details style={{ pointerEvents: "none" }}>
                   <summary>
-                  **external** (*ExternalMessage*)  
-                  Specify the external message.  
+                    <strong>code</strong> <em>(String)</em>
                   </summary>
-  
-                  <details style={{ pointerEvents: "none" }}>
-                    <summary>
-                    **code** (*String*)  
-                    External code.  
-                    </summary>
-                  </details>
-
-                  <details style={{ pointerEvents: "none" }}>
-                    <summary>
-                    **message**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-                    External message.  
-                    </summary>
-                  </details>
+                  External code.
                 </details>
 
                 <details style={{ pointerEvents: "none" }}>
                   <summary>
-                  **correlationID**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-                  Identifier to investigate the cause of the error.  
+                    <strong>message</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
                   </summary>
+                  External message.
                 </details>
               </details>
 
               <details style={{ pointerEvents: "none" }}>
                 <summary>
-                **createdAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
-                Date created  
+                  <strong>correlationID</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
                 </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **updatedAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
-                Date updated  
-                </summary>
+                Identifier to investigate the cause of the error.
               </details>
             </details>
 
             <details style={{ pointerEvents: "none" }}>
               <summary>
-              **state** (*State*)  
-              the state/province of the property  
+                <strong>createdAt</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(DateTime)</em>
               </summary>
-            </details>
-          </details>
-
-          <details>
-            <summary>
-            **contact** (*Contact*)  
-            Contact contains information about hotel contact.  
-            </summary>
-  
-            <details style={{ pointerEvents: "none" }}>
-              <summary>
-              **email** (*String*)  
-              Email  
-              </summary>
+              Date created
             </details>
 
             <details style={{ pointerEvents: "none" }}>
               <summary>
-              **telephone** (*String*)  
-              Telephone  
+                <strong>updatedAt</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(DateTime)</em>
               </summary>
-            </details>
-
-            <details style={{ pointerEvents: "none" }}>
-              <summary>
-              **fax** (*String*)  
-              Fax  
-              </summary>
-            </details>
-
-            <details style={{ pointerEvents: "none" }}>
-              <summary>
-              **web** (*URI*)  
-              Web  
-              </summary>
+              Date updated
             </details>
           </details>
 
           <details style={{ pointerEvents: "none" }}>
             <summary>
-            **rank**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
-            Rank indicates the supplier categorization.
+              <strong>state</strong> <em>(State)</em>
             </summary>
+            the state/province of the property
+          </details>
+        </details>
+
+        <details>
+          <summary>
+            <strong>contact</strong> <em>(Contact)</em>
+          </summary>
+          Contact contains information about hotel contact.
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+              <strong>email</strong> <em>(String)</em>
+            </summary>
+            Email
           </details>
 
           <details style={{ pointerEvents: "none" }}>
             <summary>
-            **cardTypes** (*Enum of PaymentCardType*)  
-            List of credit cards  
-            Possible values:  
-            `VI`  
+              <strong>telephone</strong> <em>(String)</em>
+            </summary>
+            Telephone
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+              <strong>fax</strong> <em>(String)</em>
+            </summary>
+            Fax
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+              <strong>web</strong> <em>(URI)</em>
+            </summary>
+            Web
+          </details>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+            <strong>rank</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Int)</em>
+          </summary>
+          Rank indicates the supplier categorization.
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+            <strong>cardTypes</strong> <em>(Enum of PaymentCardType)</em>
+          </summary>
+          List of credit cards
+          Possible values:
+          `VI`  
           `AX`  
           `BC`  
           `CA`  
@@ -439,89 +440,89 @@ Possible values: ERROR, WARN, INFO.
           `ER`  
           `XS`  
           `O`  
+        </details>
+
+        <details>
+          <summary>
+            <strong>medias</strong> <em>(Media)</em>
+          </summary>
+          Medias
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+              <strong>code</strong> <em>(String)</em>
             </summary>
+            Code.
           </details>
 
-          <details>
+          <details style={{ pointerEvents: "none" }}>
             <summary>
-            **medias** (*Media*)  
-            Medias  
+              <strong>order</strong> <em>(String)</em>
             </summary>
-  
-            <details style={{ pointerEvents: "none" }}>
-              <summary>
-              **code** (*String*)  
-              Code.  
-              </summary>
-            </details>
+            Indicates the order priority.
+          </details>
 
-            <details style={{ pointerEvents: "none" }}>
-              <summary>
-              **order** (*String*)  
-              Indicates the order priority.  
-              </summary>
-            </details>
-
-            <details style={{ pointerEvents: "none" }}>
-              <summary>
-              **type**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of ApplicationAreaType*)  
-              Indicates the type of the media.  
-              Possible values:  
-              `HOTEL`  
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+              <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of ApplicationAreaType)</em>
+            </summary>
+            Indicates the type of the media.
+            Possible values:
+            `HOTEL`  
             `ROOM`  
             `SERVICE`  
             `GENERAL`  
-              </summary>
-            </details>
+          </details>
 
-            <details style={{ pointerEvents: "none" }}>
-              <summary>
-              **updatedAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
-              Date updated.  
-              </summary>
-            </details>
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+              <strong>updatedAt</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(DateTime)</em>
+            </summary>
+            Date updated.
+          </details>
 
-            <details style={{ pointerEvents: "none" }}>
-              <summary>
-              **url**&nbsp;<span class="required"> *</span>&nbsp; (*URI*)  
-              Url.  
-              </summary>
-            </details>
-
-            <details>
-              <summary>
-              **texts** (*Text*)  
-              Contains the descriptive.  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **text**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-                
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **language**&nbsp;<span class="required"> *</span>&nbsp; (*Language*)  
-                
-                </summary>
-              </details>
-            </details>
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+              <strong>url</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(URI)</em>
+            </summary>
+            Url.
           </details>
 
           <details>
             <summary>
-            **descriptions** (*Description*)  
-            Descriptions  
+              <strong>texts</strong> <em>(Text)</em>
             </summary>
-  
+            Contains the descriptive.
+
             <details style={{ pointerEvents: "none" }}>
               <summary>
-              **type**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of DescriptionType*)  
-              Indicates type of description  
-              Possible values:  
-              `ADDITIONAL`  
+                <strong>text</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+              </summary>
+
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>language</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Language)</em>
+              </summary>
+
+            </details>
+          </details>
+        </details>
+
+        <details>
+          <summary>
+            <strong>descriptions</strong> <em>(Description)</em>
+          </summary>
+          Descriptions
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+              <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of DescriptionType)</em>
+            </summary>
+            Indicates type of description
+            Possible values:
+            `ADDITIONAL`  
             `AMENITY`  
             `ACTIVITY`  
             `RESTAURANT`  
@@ -530,1066 +531,1065 @@ Possible values: ERROR, WARN, INFO.
             `POOL`  
             `LOCATION`  
             `HOW_TO_GET`  
-              </summary>
-            </details>
-
-            <details>
-              <summary>
-              **texts** (*Text*)  
-              Label  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **text**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-                
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **language**&nbsp;<span class="required"> *</span>&nbsp; (*Language*)  
-                
-                </summary>
-              </details>
-            </details>
           </details>
 
           <details>
             <summary>
-            **rooms** (*RoomConnection*)  
-            Rooms  
+              <strong>texts</strong> <em>(Text)</em>
             </summary>
-  
-            <details>
+            Label
+
+            <details style={{ pointerEvents: "none" }}>
               <summary>
-              **edges** (*RoomEdge*)  
-              
+                <strong>text</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
               </summary>
-  
-              <details>
-                <summary>
-                **node** (*RoomStatic*)  
-                
-                </summary>
-  
-                <details style={{ pointerEvents: "none" }}>
-                  <summary>
-                  **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-                  Room ID  
-                  </summary>
-                </details>
 
-                <details>
-                  <summary>
-                  **roomData** (*RoomData*)  
-                  Room data  
-                  </summary>
-  
-                  <details style={{ pointerEvents: "none" }}>
-                    <summary>
-                    **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-                    Internal code for checking availability  
-                    </summary>
-                  </details>
-
-                  <details style={{ pointerEvents: "none" }}>
-                    <summary>
-                    **roomCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-                    Code of the hotel in the Supplier selected  
-                    </summary>
-                  </details>
-
-                  <details>
-                    <summary>
-                    **texts** (*Text*)  
-                    Label  
-                    </summary>
-  
-                    <details style={{ pointerEvents: "none" }}>
-                      <summary>
-                      **text**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-                      
-                      </summary>
-                    </details>
-
-                    <details style={{ pointerEvents: "none" }}>
-                      <summary>
-                      **language**&nbsp;<span class="required"> *</span>&nbsp; (*Language*)  
-                      
-                      </summary>
-                    </details>
-                  </details>
-
-                  <details style={{ pointerEvents: "none" }}>
-                    <summary>
-                    **source** (*String*)  
-                    Room source  
-                    </summary>
-                  </details>
-
-                  <details>
-                    <summary>
-                    **occupancies** (*OccupancyStatic*)  
-                    Room occupancies  
-                    </summary>
-  
-                    <details>
-                      <summary>
-                      **total** (*OccupancyRange*)  
-                      Occupancy Total Pax Range  
-                      </summary>
-  
-                      <details style={{ pointerEvents: "none" }}>
-                        <summary>
-                        **min** (*Int*)  
-                        
-                        </summary>
-                      </details>
-
-                      <details style={{ pointerEvents: "none" }}>
-                        <summary>
-                        **max** (*Int*)  
-                        
-                        </summary>
-                      </details>
-                    </details>
-
-                    <details>
-                      <summary>
-                      **infants** (*OccupancyRange*)  
-                      Occupancy Infants Pax Range  
-                      </summary>
-  
-                      <details style={{ pointerEvents: "none" }}>
-                        <summary>
-                        **min** (*Int*)  
-                        
-                        </summary>
-                      </details>
-
-                      <details style={{ pointerEvents: "none" }}>
-                        <summary>
-                        **max** (*Int*)  
-                        
-                        </summary>
-                      </details>
-                    </details>
-
-                    <details>
-                      <summary>
-                      **children** (*OccupancyRange*)  
-                      Occupancy Children Pax Range  
-                      </summary>
-  
-                      <details style={{ pointerEvents: "none" }}>
-                        <summary>
-                        **min** (*Int*)  
-                        
-                        </summary>
-                      </details>
-
-                      <details style={{ pointerEvents: "none" }}>
-                        <summary>
-                        **max** (*Int*)  
-                        
-                        </summary>
-                      </details>
-                    </details>
-
-                    <details>
-                      <summary>
-                      **adults** (*OccupancyRange*)  
-                      Occupancy Adults Pax Range  
-                      </summary>
-  
-                      <details style={{ pointerEvents: "none" }}>
-                        <summary>
-                        **min** (*Int*)  
-                        
-                        </summary>
-                      </details>
-
-                      <details style={{ pointerEvents: "none" }}>
-                        <summary>
-                        **max** (*Int*)  
-                        
-                        </summary>
-                      </details>
-                    </details>
-                  </details>
-
-                  <details>
-                    <summary>
-                    **views** (*View*)  
-                    Room views  
-                    </summary>
-  
-                    <details>
-                      <summary>
-                      **texts** (*Text*)  
-                      Contains the descriptive of view.  
-                      </summary>
-  
-                      <details style={{ pointerEvents: "none" }}>
-                        <summary>
-                        **text**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-                        
-                        </summary>
-                      </details>
-
-                      <details style={{ pointerEvents: "none" }}>
-                        <summary>
-                        **language**&nbsp;<span class="required"> *</span>&nbsp; (*Language*)  
-                        
-                        </summary>
-                      </details>
-                    </details>
-
-                    <details style={{ pointerEvents: "none" }}>
-                      <summary>
-                      **viewCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-                      Containg the view code  
-                      </summary>
-                    </details>
-                  </details>
-
-                  <details>
-                    <summary>
-                    **medias** (*Media*)  
-                    Room medias  
-                    </summary>
-  
-                    <details style={{ pointerEvents: "none" }}>
-                      <summary>
-                      **code** (*String*)  
-                      Code.  
-                      </summary>
-                    </details>
-
-                    <details style={{ pointerEvents: "none" }}>
-                      <summary>
-                      **order** (*String*)  
-                      Indicates the order priority.  
-                      </summary>
-                    </details>
-
-                    <details style={{ pointerEvents: "none" }}>
-                      <summary>
-                      **type**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of ApplicationAreaType*)  
-                      Indicates the type of the media.  
-                      Possible values:  
-                      `HOTEL`  
-                    `ROOM`  
-                    `SERVICE`  
-                    `GENERAL`  
-                      </summary>
-                    </details>
-
-                    <details style={{ pointerEvents: "none" }}>
-                      <summary>
-                      **updatedAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
-                      Date updated.  
-                      </summary>
-                    </details>
-
-                    <details style={{ pointerEvents: "none" }}>
-                      <summary>
-                      **url**&nbsp;<span class="required"> *</span>&nbsp; (*URI*)  
-                      Url.  
-                      </summary>
-                    </details>
-
-                    <details>
-                      <summary>
-                      **texts** (*Text*)  
-                      Contains the descriptive.  
-                      </summary>
-  
-                      <details style={{ pointerEvents: "none" }}>
-                        <summary>
-                        **text**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-                        
-                        </summary>
-                      </details>
-
-                      <details style={{ pointerEvents: "none" }}>
-                        <summary>
-                        **language**&nbsp;<span class="required"> *</span>&nbsp; (*Language*)  
-                        
-                        </summary>
-                      </details>
-                    </details>
-                  </details>
-
-                  <details>
-                    <summary>
-                    **beds** (*BedStatic*)  
-                    Room beds  
-                    </summary>
-  
-                    <details style={{ pointerEvents: "none" }}>
-                      <summary>
-                      **type** (*String*)  
-                      Specifies the bed type  
-                      </summary>
-                    </details>
-
-                    <details style={{ pointerEvents: "none" }}>
-                      <summary>
-                      **count** (*Int*)  
-                      Indicates number of beds in a room
-                      </summary>
-                    </details>
-
-                    <details style={{ pointerEvents: "none" }}>
-                      <summary>
-                      **shared** (*Boolean*)  
-                      Specifies if the bed is shared or not  
-                      </summary>
-                    </details>
-                  </details>
-
-                  <details style={{ pointerEvents: "none" }}>
-                    <summary>
-                    **area** (*Area*)  
-                    Room area in square meters.  
-                    </summary>
-                  </details>
-
-                  <details>
-                    <summary>
-                    **allAmenities** (*HotelXAmenityConnection*)  
-                    Amenities with mapping  
-                    </summary>
-  
-                    <details>
-                      <summary>
-                      **edges** (*HotelXAmenityEdge*)  
-                      Amenity edges of amenity connection  
-                      </summary>
-  
-                      <details>
-                        <summary>
-                        **node**&nbsp;<span class="required"> *</span>&nbsp; (*HotelXAmenity*)  
-                        Amenity node  
-                        </summary>
-  
-                        <details style={{ pointerEvents: "none" }}>
-                          <summary>
-                          **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-                          Node Id  
-                          </summary>
-                        </details>
-
-                        <details>
-                          <summary>
-                          **amenityData** (*HotelXAmenityData*)  
-                          Indicates data values of amenity  
-                          </summary>
-  
-                        </details>
-
-                        <details>
-                          <summary>
-                          **adviseMessage** (*AdviseMessage*)  
-                          List of messages  
-                          </summary>
-  
-                        </details>
-
-                        <details style={{ pointerEvents: "none" }}>
-                          <summary>
-                          **createdAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
-                          Indicates the creation date of the node  
-                          </summary>
-                        </details>
-
-                        <details style={{ pointerEvents: "none" }}>
-                          <summary>
-                          **updatedAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
-                          Indicates the date of last update of the node  
-                          </summary>
-                        </details>
-                      </details>
-
-                      <details style={{ pointerEvents: "none" }}>
-                        <summary>
-                        **cursor**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-                        Edge s cursor  
-                        </summary>
-                      </details>
-                    </details>
-                  </details>
-                </details>
-
-                <details>
-                  <summary>
-                  **adviseMessage** (*AdviseMessage*)  
-                  List of messages  
-                  </summary>
-  
-                  <details style={{ pointerEvents: "none" }}>
-                    <summary>
-                    **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-                    AM code: The following codes can be returned:  
-                    </summary>
-                  </details>
-
-                  <details style={{ pointerEvents: "none" }}>
-                    <summary>
-                    **description**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-                    Error description  
-                    </summary>
-                  </details>
-
-                  <details style={{ pointerEvents: "none" }}>
-                    <summary>
-                    **level**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of AdviseMessageLevel*)  
-                    Indicates the level of importance of the message.
-Possible values: ERROR, WARN, INFO.  
-                    Possible values:  
-                    `WARN`  
-                  `ERROR`  
-                  `INFO`  
-                    </summary>
-                  </details>
-
-                  <details>
-                    <summary>
-                    **external** (*ExternalMessage*)  
-                    Specify the external message.  
-                    </summary>
-  
-                    <details style={{ pointerEvents: "none" }}>
-                      <summary>
-                      **code** (*String*)  
-                      External code.  
-                      </summary>
-                    </details>
-
-                    <details style={{ pointerEvents: "none" }}>
-                      <summary>
-                      **message**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-                      External message.  
-                      </summary>
-                    </details>
-                  </details>
-
-                  <details style={{ pointerEvents: "none" }}>
-                    <summary>
-                    **correlationID**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-                    Identifier to investigate the cause of the error.  
-                    </summary>
-                  </details>
-                </details>
-
-                <details style={{ pointerEvents: "none" }}>
-                  <summary>
-                  **createdAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
-                  Date created  
-                  </summary>
-                </details>
-
-                <details style={{ pointerEvents: "none" }}>
-                  <summary>
-                  **updatedAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
-                  Date updated  
-                  </summary>
-                </details>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **cursor**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-                
-                </summary>
-              </details>
             </details>
 
             <details style={{ pointerEvents: "none" }}>
               <summary>
-              **token** (*String*)  
-              
+                <strong>language</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Language)</em>
               </summary>
-            </details>
-          </details>
 
-          <details>
-            <summary>
-            **propertyType** (*PropertyType*)  
-            Indicates property type.  
-            </summary>
-  
-            <details style={{ pointerEvents: "none" }}>
-              <summary>
-              **propertyCode** (*String*)  
-              Native supplier property code.  
-              </summary>
-            </details>
-
-            <details style={{ pointerEvents: "none" }}>
-              <summary>
-              **name** (*String*)  
-              PropertyType name  
-              </summary>
-            </details>
-          </details>
-
-          <details>
-            <summary>
-            **mandatoryFees** (*MandatoryFee*)  
-            Mandatory fees of property  
-            </summary>
-  
-            <details style={{ pointerEvents: "none" }}>
-              <summary>
-              **duration** (*String*)  
-              Fee duration  
-              </summary>
-            </details>
-
-            <details style={{ pointerEvents: "none" }}>
-              <summary>
-              **mandatoryFeeCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-              Native supplier Mandatry Fee  
-              </summary>
-            </details>
-
-            <details>
-              <summary>
-              **price**&nbsp;<span class="required"> *</span>&nbsp; (*PriceStatic*)  
-              Fee price  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **amount**&nbsp;<span class="required"> *</span>&nbsp; (*Float*)  
-                Net amount  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **currency**&nbsp;<span class="required"> *</span>&nbsp; (*Currency*)  
-                Price curency  
-                </summary>
-              </details>
-            </details>
-
-            <details style={{ pointerEvents: "none" }}>
-              <summary>
-              **scope** (*String*)  
-              The scope of the fee  
-              </summary>
-            </details>
-
-            <details style={{ pointerEvents: "none" }}>
-              <summary>
-              **name** (*String*)  
-              the name of the fee  
-              </summary>
-            </details>
-
-            <details style={{ pointerEvents: "none" }}>
-              <summary>
-              **text** (*String*)  
-              Fee description  
-              </summary>
-            </details>
-
-            <details style={{ pointerEvents: "none" }}>
-              <summary>
-              **included**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-              Indicates if the fee is included in the price  
-              </summary>
-            </details>
-          </details>
-
-          <details>
-            <summary>
-            **checkIn** (*CheckInformation*)  
-            CheckIn information  
-            </summary>
-  
-            <details>
-              <summary>
-              **instructions** (*Text*)  
-              CheckIn instructions  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **text**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-                
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **language**&nbsp;<span class="required"> *</span>&nbsp; (*Language*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **specialInstructions** (*Text*)  
-              CheckIn special instructions  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **text**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-                
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **language**&nbsp;<span class="required"> *</span>&nbsp; (*Language*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details style={{ pointerEvents: "none" }}>
-              <summary>
-              **minAge** (*Int*)  
-              Minimal age allowed for doing the checkin
-              </summary>
-            </details>
-
-            <details>
-              <summary>
-              **schedule** (*TimeRange*)  
-              The schedule of checkIn  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **startTime** (*Time*)  
-                the start time of range  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **endTime** (*Time*)  
-                the end time of range  
-                </summary>
-              </details>
-            </details>
-          </details>
-
-          <details>
-            <summary>
-            **checkOut** (*CheckInformation*)  
-            CheckOut information  
-            </summary>
-  
-            <details>
-              <summary>
-              **instructions** (*Text*)  
-              CheckIn instructions  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **text**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-                
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **language**&nbsp;<span class="required"> *</span>&nbsp; (*Language*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **specialInstructions** (*Text*)  
-              CheckIn special instructions  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **text**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-                
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **language**&nbsp;<span class="required"> *</span>&nbsp; (*Language*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details style={{ pointerEvents: "none" }}>
-              <summary>
-              **minAge** (*Int*)  
-              Minimal age allowed for doing the checkin
-              </summary>
-            </details>
-
-            <details>
-              <summary>
-              **schedule** (*TimeRange*)  
-              The schedule of checkIn  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **startTime** (*Time*)  
-                the start time of range  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **endTime** (*Time*)  
-                the end time of range  
-                </summary>
-              </details>
-            </details>
-          </details>
-
-          <details style={{ pointerEvents: "none" }}>
-            <summary>
-            **accesses** (*String*)  
-            Accesses that has this hotel  
-            </summary>
-          </details>
-
-          <details>
-            <summary>
-            **allAmenities** (*HotelXAmenityConnection*)  
-            Amenities with mapping  
-            </summary>
-  
-            <details>
-              <summary>
-              **edges** (*HotelXAmenityEdge*)  
-              Amenity edges of amenity connection  
-              </summary>
-  
-              <details>
-                <summary>
-                **node**&nbsp;<span class="required"> *</span>&nbsp; (*HotelXAmenity*)  
-                Amenity node  
-                </summary>
-  
-                <details style={{ pointerEvents: "none" }}>
-                  <summary>
-                  **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-                  Node Id  
-                  </summary>
-                </details>
-
-                <details>
-                  <summary>
-                  **amenityData** (*HotelXAmenityData*)  
-                  Indicates data values of amenity  
-                  </summary>
-  
-                  <details style={{ pointerEvents: "none" }}>
-                    <summary>
-                    **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-                    Amenity code  
-                    </summary>
-                  </details>
-
-                  <details style={{ pointerEvents: "none" }}>
-                    <summary>
-                    **amenityCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-                    External amenity code  
-                    </summary>
-                  </details>
-
-                  <details style={{ pointerEvents: "none" }}>
-                    <summary>
-                    **type**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of ApplicationAreaType*)  
-                    Indicates the type of Amenity.  
-                    Possible values:  
-                    `HOTEL`  
-                  `ROOM`  
-                  `SERVICE`  
-                  `GENERAL`  
-                    </summary>
-                  </details>
-
-                  <details>
-                    <summary>
-                    **texts**&nbsp;<span class="required"> *</span>&nbsp; (*Text*)  
-                    Contains the descriptive  
-                    </summary>
-  
-                    <details style={{ pointerEvents: "none" }}>
-                      <summary>
-                      **text**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-                      
-                      </summary>
-                    </details>
-
-                    <details style={{ pointerEvents: "none" }}>
-                      <summary>
-                      **language**&nbsp;<span class="required"> *</span>&nbsp; (*Language*)  
-                      
-                      </summary>
-                    </details>
-                  </details>
-
-                  <details>
-                    <summary>
-                    **value**&nbsp;<span class="required"> *</span>&nbsp; (*Text*)  
-                    Indicates the amenity s value in different languages  
-                    </summary>
-  
-                    <details style={{ pointerEvents: "none" }}>
-                      <summary>
-                      **text**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-                      
-                      </summary>
-                    </details>
-
-                    <details style={{ pointerEvents: "none" }}>
-                      <summary>
-                      **language**&nbsp;<span class="required"> *</span>&nbsp; (*Language*)  
-                      
-                      </summary>
-                    </details>
-                  </details>
-
-                  <details>
-                    <summary>
-                    **mappings** (*HotelXMappedCode*)  
-                    Mappings of amenity codes in different contexts  
-                    </summary>
-  
-                    <details style={{ pointerEvents: "none" }}>
-                      <summary>
-                      **context**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-                      Context of the mapped code  
-                      </summary>
-                    </details>
-
-                    <details style={{ pointerEvents: "none" }}>
-                      <summary>
-                      **code**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-                      Code in context  
-                      </summary>
-                    </details>
-                  </details>
-                </details>
-
-                <details>
-                  <summary>
-                  **adviseMessage** (*AdviseMessage*)  
-                  List of messages  
-                  </summary>
-  
-                  <details style={{ pointerEvents: "none" }}>
-                    <summary>
-                    **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-                    AM code: The following codes can be returned:  
-                    </summary>
-                  </details>
-
-                  <details style={{ pointerEvents: "none" }}>
-                    <summary>
-                    **description**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-                    Error description  
-                    </summary>
-                  </details>
-
-                  <details style={{ pointerEvents: "none" }}>
-                    <summary>
-                    **level**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of AdviseMessageLevel*)  
-                    Indicates the level of importance of the message.
-Possible values: ERROR, WARN, INFO.  
-                    Possible values:  
-                    `WARN`  
-                  `ERROR`  
-                  `INFO`  
-                    </summary>
-                  </details>
-
-                  <details>
-                    <summary>
-                    **external** (*ExternalMessage*)  
-                    Specify the external message.  
-                    </summary>
-  
-                    <details style={{ pointerEvents: "none" }}>
-                      <summary>
-                      **code** (*String*)  
-                      External code.  
-                      </summary>
-                    </details>
-
-                    <details style={{ pointerEvents: "none" }}>
-                      <summary>
-                      **message**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-                      External message.  
-                      </summary>
-                    </details>
-                  </details>
-
-                  <details style={{ pointerEvents: "none" }}>
-                    <summary>
-                    **correlationID**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-                    Identifier to investigate the cause of the error.  
-                    </summary>
-                  </details>
-                </details>
-
-                <details style={{ pointerEvents: "none" }}>
-                  <summary>
-                  **createdAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
-                  Indicates the creation date of the node  
-                  </summary>
-                </details>
-
-                <details style={{ pointerEvents: "none" }}>
-                  <summary>
-                  **updatedAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
-                  Indicates the date of last update of the node  
-                  </summary>
-                </details>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **cursor**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-                Edge s cursor  
-                </summary>
-              </details>
-            </details>
-          </details>
-
-          <details>
-            <summary>
-            **mappings** (*HotelXMappedCode*)  
-            Mapping codes for this property in various contexts, e.g.: TGX, GIATA,...  
-            </summary>
-  
-            <details style={{ pointerEvents: "none" }}>
-              <summary>
-              **context**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-              Context of the mapped code  
-              </summary>
-            </details>
-
-            <details style={{ pointerEvents: "none" }}>
-              <summary>
-              **code**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-              Code in context  
-              </summary>
             </details>
           </details>
         </details>
 
         <details>
           <summary>
-          **adviseMessage** (*AdviseMessage*)  
-          List of messages  
+            <strong>rooms</strong> <em>(RoomConnection)</em>
           </summary>
-  
-          <details style={{ pointerEvents: "none" }}>
+          Rooms
+
+          <details>
             <summary>
-            **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-            AM code: The following codes can be returned:  
+              <strong>edges</strong> <em>(RoomEdge)</em>
             </summary>
+
+
+            <details>
+              <summary>
+                <strong>node</strong> <em>(RoomStatic)</em>
+              </summary>
+
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                  <strong>code</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
+                </summary>
+                Room ID
+              </details>
+
+              <details>
+                <summary>
+                  <strong>roomData</strong> <em>(RoomData)</em>
+                </summary>
+                Room data
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                    <strong>code</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
+                  </summary>
+                  Internal code for checking availability
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                    <strong>roomCode</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+                  </summary>
+                  Code of the hotel in the Supplier selected
+                </details>
+
+                <details>
+                  <summary>
+                    <strong>texts</strong> <em>(Text)</em>
+                  </summary>
+                  Label
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                      <strong>text</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+                    </summary>
+
+                  </details>
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                      <strong>language</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Language)</em>
+                    </summary>
+
+                  </details>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                    <strong>source</strong> <em>(String)</em>
+                  </summary>
+                  Room source
+                </details>
+
+                <details>
+                  <summary>
+                    <strong>occupancies</strong> <em>(OccupancyStatic)</em>
+                  </summary>
+                  Room occupancies
+
+                  <details>
+                    <summary>
+                      <strong>total</strong> <em>(OccupancyRange)</em>
+                    </summary>
+                    Occupancy Total Pax Range
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                        <strong>min</strong> <em>(Int)</em>
+                      </summary>
+
+                    </details>
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                        <strong>max</strong> <em>(Int)</em>
+                      </summary>
+
+                    </details>
+                  </details>
+
+                  <details>
+                    <summary>
+                      <strong>infants</strong> <em>(OccupancyRange)</em>
+                    </summary>
+                    Occupancy Infants Pax Range
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                        <strong>min</strong> <em>(Int)</em>
+                      </summary>
+
+                    </details>
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                        <strong>max</strong> <em>(Int)</em>
+                      </summary>
+
+                    </details>
+                  </details>
+
+                  <details>
+                    <summary>
+                      <strong>children</strong> <em>(OccupancyRange)</em>
+                    </summary>
+                    Occupancy Children Pax Range
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                        <strong>min</strong> <em>(Int)</em>
+                      </summary>
+
+                    </details>
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                        <strong>max</strong> <em>(Int)</em>
+                      </summary>
+
+                    </details>
+                  </details>
+
+                  <details>
+                    <summary>
+                      <strong>adults</strong> <em>(OccupancyRange)</em>
+                    </summary>
+                    Occupancy Adults Pax Range
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                        <strong>min</strong> <em>(Int)</em>
+                      </summary>
+
+                    </details>
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                        <strong>max</strong> <em>(Int)</em>
+                      </summary>
+
+                    </details>
+                  </details>
+                </details>
+
+                <details>
+                  <summary>
+                    <strong>views</strong> <em>(View)</em>
+                  </summary>
+                  Room views
+
+                  <details>
+                    <summary>
+                      <strong>texts</strong> <em>(Text)</em>
+                    </summary>
+                    Contains the descriptive of view.
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                        <strong>text</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+                      </summary>
+
+                    </details>
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                        <strong>language</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Language)</em>
+                      </summary>
+
+                    </details>
+                  </details>
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                      <strong>viewCode</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+                    </summary>
+                    Containg the view code
+                  </details>
+                </details>
+
+                <details>
+                  <summary>
+                    <strong>medias</strong> <em>(Media)</em>
+                  </summary>
+                  Room medias
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                      <strong>code</strong> <em>(String)</em>
+                    </summary>
+                    Code.
+                  </details>
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                      <strong>order</strong> <em>(String)</em>
+                    </summary>
+                    Indicates the order priority.
+                  </details>
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                      <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of ApplicationAreaType)</em>
+                    </summary>
+                    Indicates the type of the media.
+                    Possible values:
+                    `HOTEL`  
+                    `ROOM`  
+                    `SERVICE`  
+                    `GENERAL`  
+                  </details>
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                      <strong>updatedAt</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(DateTime)</em>
+                    </summary>
+                    Date updated.
+                  </details>
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                      <strong>url</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(URI)</em>
+                    </summary>
+                    Url.
+                  </details>
+
+                  <details>
+                    <summary>
+                      <strong>texts</strong> <em>(Text)</em>
+                    </summary>
+                    Contains the descriptive.
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                        <strong>text</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+                      </summary>
+
+                    </details>
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                        <strong>language</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Language)</em>
+                      </summary>
+
+                    </details>
+                  </details>
+                </details>
+
+                <details>
+                  <summary>
+                    <strong>beds</strong> <em>(BedStatic)</em>
+                  </summary>
+                  Room beds
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                      <strong>type</strong> <em>(String)</em>
+                    </summary>
+                    Specifies the bed type
+                  </details>
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                      <strong>count</strong> <em>(Int)</em>
+                    </summary>
+                    Indicates number of beds in a room
+                  </details>
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                      <strong>shared</strong> <em>(Boolean)</em>
+                    </summary>
+                    Specifies if the bed is shared or not
+                  </details>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                    <strong>area</strong> <em>(Area)</em>
+                  </summary>
+                  Room area in square meters.
+                </details>
+
+                <details>
+                  <summary>
+                    <strong>allAmenities</strong> <em>(HotelXAmenityConnection)</em>
+                  </summary>
+                  Amenities with mapping
+
+                  <details>
+                    <summary>
+                      <strong>edges</strong> <em>(HotelXAmenityEdge)</em>
+                    </summary>
+                    Amenity edges of amenity connection
+
+                    <details>
+                      <summary>
+                        <strong>node</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(HotelXAmenity)</em>
+                      </summary>
+                      Amenity node
+
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                          <strong>code</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
+                        </summary>
+                        Node Id
+                      </details>
+
+                      <details>
+                        <summary>
+                          <strong>amenityData</strong> <em>(HotelXAmenityData)</em>
+                        </summary>
+                        Indicates data values of amenity
+
+                      </details>
+
+                      <details>
+                        <summary>
+                          <strong>adviseMessage</strong> <em>(AdviseMessage)</em>
+                        </summary>
+                        List of messages
+
+                      </details>
+
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                          <strong>createdAt</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(DateTime)</em>
+                        </summary>
+                        Indicates the creation date of the node
+                      </details>
+
+                      <details style={{ pointerEvents: "none" }}>
+                        <summary>
+                          <strong>updatedAt</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(DateTime)</em>
+                        </summary>
+                        Indicates the date of last update of the node
+                      </details>
+                    </details>
+
+                    <details style={{ pointerEvents: "none" }}>
+                      <summary>
+                        <strong>cursor</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+                      </summary>
+                      Edge s cursor
+                    </details>
+                  </details>
+                </details>
+              </details>
+
+              <details>
+                <summary>
+                  <strong>adviseMessage</strong> <em>(AdviseMessage)</em>
+                </summary>
+                List of messages
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                    <strong>code</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
+                  </summary>
+                  AM code: The following codes can be returned:
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                    <strong>description</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+                  </summary>
+                  Error description
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                    <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+                  </summary>
+                  Indicates the level of importance of the message.
+                  Possible values: ERROR, WARN, INFO.
+                  Possible values:
+                  `WARN`  
+                  `ERROR`  
+                  `INFO`  
+                </details>
+
+                <details>
+                  <summary>
+                    <strong>external</strong> <em>(ExternalMessage)</em>
+                  </summary>
+                  Specify the external message.
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                      <strong>code</strong> <em>(String)</em>
+                    </summary>
+                    External code.
+                  </details>
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                      <strong>message</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+                    </summary>
+                    External message.
+                  </details>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                    <strong>correlationID</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
+                  </summary>
+                  Identifier to investigate the cause of the error.
+                </details>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                  <strong>createdAt</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(DateTime)</em>
+                </summary>
+                Date created
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                  <strong>updatedAt</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(DateTime)</em>
+                </summary>
+                Date updated
+              </details>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>cursor</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+              </summary>
+
+            </details>
           </details>
 
           <details style={{ pointerEvents: "none" }}>
             <summary>
-            **description**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-            Error description  
+              <strong>token</strong> <em>(String)</em>
             </summary>
+
+          </details>
+        </details>
+
+        <details>
+          <summary>
+            <strong>propertyType</strong> <em>(PropertyType)</em>
+          </summary>
+          Indicates property type.
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+              <strong>propertyCode</strong> <em>(String)</em>
+            </summary>
+            Native supplier property code.
           </details>
 
           <details style={{ pointerEvents: "none" }}>
             <summary>
-            **level**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of AdviseMessageLevel*)  
-            Indicates the level of importance of the message.
-Possible values: ERROR, WARN, INFO.  
-            Possible values:  
-            `WARN`  
-          `ERROR`  
-          `INFO`  
+              <strong>name</strong> <em>(String)</em>
             </summary>
+            PropertyType name
+          </details>
+        </details>
+
+        <details>
+          <summary>
+            <strong>mandatoryFees</strong> <em>(MandatoryFee)</em>
+          </summary>
+          Mandatory fees of property
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+              <strong>duration</strong> <em>(String)</em>
+            </summary>
+            Fee duration
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+              <strong>mandatoryFeeCode</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+            </summary>
+            Native supplier Mandatry Fee
           </details>
 
           <details>
             <summary>
-            **external** (*ExternalMessage*)  
-            Specify the external message.  
+              <strong>price</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(PriceStatic)</em>
             </summary>
-  
+            Fee price
+
             <details style={{ pointerEvents: "none" }}>
               <summary>
-              **code** (*String*)  
-              External code.  
+                <strong>amount</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Float)</em>
               </summary>
+              Net amount
             </details>
 
             <details style={{ pointerEvents: "none" }}>
               <summary>
-              **message**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-              External message.  
+                <strong>currency</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Currency)</em>
               </summary>
+              Price curency
             </details>
           </details>
 
           <details style={{ pointerEvents: "none" }}>
             <summary>
-            **correlationID**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-            Identifier to investigate the cause of the error.  
+              <strong>scope</strong> <em>(String)</em>
             </summary>
+            The scope of the fee
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+              <strong>name</strong> <em>(String)</em>
+            </summary>
+            the name of the fee
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+              <strong>text</strong> <em>(String)</em>
+            </summary>
+            Fee description
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+              <strong>included</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+            </summary>
+            Indicates if the fee is included in the price
+          </details>
+        </details>
+
+        <details>
+          <summary>
+            <strong>checkIn</strong> <em>(CheckInformation)</em>
+          </summary>
+          CheckIn information
+
+          <details>
+            <summary>
+              <strong>instructions</strong> <em>(Text)</em>
+            </summary>
+            CheckIn instructions
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>text</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+              </summary>
+
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>language</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Language)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>specialInstructions</strong> <em>(Text)</em>
+            </summary>
+            CheckIn special instructions
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>text</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+              </summary>
+
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>language</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Language)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+              <strong>minAge</strong> <em>(Int)</em>
+            </summary>
+            Minimal age allowed for doing the checkin
+          </details>
+
+          <details>
+            <summary>
+              <strong>schedule</strong> <em>(TimeRange)</em>
+            </summary>
+            The schedule of checkIn
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>startTime</strong> <em>(Time)</em>
+              </summary>
+              the start time of range
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>endTime</strong> <em>(Time)</em>
+              </summary>
+              the end time of range
+            </details>
+          </details>
+        </details>
+
+        <details>
+          <summary>
+            <strong>checkOut</strong> <em>(CheckInformation)</em>
+          </summary>
+          CheckOut information
+
+          <details>
+            <summary>
+              <strong>instructions</strong> <em>(Text)</em>
+            </summary>
+            CheckIn instructions
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>text</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+              </summary>
+
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>language</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Language)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>specialInstructions</strong> <em>(Text)</em>
+            </summary>
+            CheckIn special instructions
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>text</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+              </summary>
+
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>language</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Language)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+              <strong>minAge</strong> <em>(Int)</em>
+            </summary>
+            Minimal age allowed for doing the checkin
+          </details>
+
+          <details>
+            <summary>
+              <strong>schedule</strong> <em>(TimeRange)</em>
+            </summary>
+            The schedule of checkIn
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>startTime</strong> <em>(Time)</em>
+              </summary>
+              the start time of range
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>endTime</strong> <em>(Time)</em>
+              </summary>
+              the end time of range
+            </details>
           </details>
         </details>
 
         <details style={{ pointerEvents: "none" }}>
           <summary>
-          **createdAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
-          Date created  
+            <strong>accesses</strong> <em>(String)</em>
           </summary>
+          Accesses that has this hotel
+        </details>
+
+        <details>
+          <summary>
+            <strong>allAmenities</strong> <em>(HotelXAmenityConnection)</em>
+          </summary>
+          Amenities with mapping
+
+          <details>
+            <summary>
+              <strong>edges</strong> <em>(HotelXAmenityEdge)</em>
+            </summary>
+            Amenity edges of amenity connection
+
+            <details>
+              <summary>
+                <strong>node</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(HotelXAmenity)</em>
+              </summary>
+              Amenity node
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                  <strong>code</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
+                </summary>
+                Node Id
+              </details>
+
+              <details>
+                <summary>
+                  <strong>amenityData</strong> <em>(HotelXAmenityData)</em>
+                </summary>
+                Indicates data values of amenity
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                    <strong>code</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
+                  </summary>
+                  Amenity code
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                    <strong>amenityCode</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+                  </summary>
+                  External amenity code
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                    <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of ApplicationAreaType)</em>
+                  </summary>
+                  Indicates the type of Amenity.
+                  Possible values:
+                  `HOTEL`  
+                  `ROOM`  
+                  `SERVICE`  
+                  `GENERAL`  
+                </details>
+
+                <details>
+                  <summary>
+                    <strong>texts</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Text)</em>
+                  </summary>
+                  Contains the descriptive
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                      <strong>text</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+                    </summary>
+
+                  </details>
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                      <strong>language</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Language)</em>
+                    </summary>
+
+                  </details>
+                </details>
+
+                <details>
+                  <summary>
+                    <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Text)</em>
+                  </summary>
+                  Indicates the amenity s value in different languages
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                      <strong>text</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+                    </summary>
+
+                  </details>
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                      <strong>language</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Language)</em>
+                    </summary>
+
+                  </details>
+                </details>
+
+                <details>
+                  <summary>
+                    <strong>mappings</strong> <em>(HotelXMappedCode)</em>
+                  </summary>
+                  Mappings of amenity codes in different contexts
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                      <strong>context</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+                    </summary>
+                    Context of the mapped code
+                  </details>
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                      <strong>code</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+                    </summary>
+                    Code in context
+                  </details>
+                </details>
+              </details>
+
+              <details>
+                <summary>
+                  <strong>adviseMessage</strong> <em>(AdviseMessage)</em>
+                </summary>
+                List of messages
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                    <strong>code</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
+                  </summary>
+                  AM code: The following codes can be returned:
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                    <strong>description</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+                  </summary>
+                  Error description
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                    <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+                  </summary>
+                  Indicates the level of importance of the message.
+                  Possible values: ERROR, WARN, INFO.
+                  Possible values:
+                  `WARN`  
+                  `ERROR`  
+                  `INFO`  
+                </details>
+
+                <details>
+                  <summary>
+                    <strong>external</strong> <em>(ExternalMessage)</em>
+                  </summary>
+                  Specify the external message.
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                      <strong>code</strong> <em>(String)</em>
+                    </summary>
+                    External code.
+                  </details>
+
+                  <details style={{ pointerEvents: "none" }}>
+                    <summary>
+                      <strong>message</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+                    </summary>
+                    External message.
+                  </details>
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                    <strong>correlationID</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
+                  </summary>
+                  Identifier to investigate the cause of the error.
+                </details>
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                  <strong>createdAt</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(DateTime)</em>
+                </summary>
+                Indicates the creation date of the node
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                  <strong>updatedAt</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(DateTime)</em>
+                </summary>
+                Indicates the date of last update of the node
+              </details>
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>cursor</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+              </summary>
+              Edge s cursor
+            </details>
+          </details>
+        </details>
+
+        <details>
+          <summary>
+            <strong>mappings</strong> <em>(HotelXMappedCode)</em>
+          </summary>
+          Mapping codes for this property in various contexts, e.g.: TGX, GIATA,...
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+              <strong>context</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+            </summary>
+            Context of the mapped code
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+              <strong>code</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+            </summary>
+            Code in context
+          </details>
+        </details>
+      </details>
+
+      <details>
+        <summary>
+          <strong>adviseMessage</strong> <em>(AdviseMessage)</em>
+        </summary>
+        List of messages
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+            <strong>code</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
+          </summary>
+          AM code: The following codes can be returned:
         </details>
 
         <details style={{ pointerEvents: "none" }}>
           <summary>
-          **updatedAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
-          Date updated  
+            <strong>description</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
           </summary>
+          Error description
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+            <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+          </summary>
+          Indicates the level of importance of the message.
+          Possible values: ERROR, WARN, INFO.
+          Possible values:
+          `WARN`  
+          `ERROR`  
+          `INFO`  
+        </details>
+
+        <details>
+          <summary>
+            <strong>external</strong> <em>(ExternalMessage)</em>
+          </summary>
+          Specify the external message.
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+              <strong>code</strong> <em>(String)</em>
+            </summary>
+            External code.
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+              <strong>message</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+            </summary>
+            External message.
+          </details>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+            <strong>correlationID</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
+          </summary>
+          Identifier to investigate the cause of the error.
         </details>
       </details>
 
       <details style={{ pointerEvents: "none" }}>
         <summary>
-        **cursor**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-        
+          <strong>createdAt</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(DateTime)</em>
         </summary>
+        Date created
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>updatedAt</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(DateTime)</em>
+        </summary>
+        Date updated
       </details>
     </details>
 
     <details style={{ pointerEvents: "none" }}>
       <summary>
-      **count**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
-      
+        <strong>cursor</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
       </summary>
-    </details>
 
-    <details style={{ pointerEvents: "none" }}>
-      <summary>
-      **token** (*String*)  
-      
-      </summary>
     </details>
+  </details>
+
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+      <strong>count</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Int)</em>
+    </summary>
+
+  </details>
+
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+      <strong>token</strong> <em>(String)</em>
+    </summary>
+
+  </details>
 </details>

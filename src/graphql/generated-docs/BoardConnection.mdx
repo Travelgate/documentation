@@ -1,188 +1,188 @@
 
 <details>
   <summary>
-  **BoardConnection** (*OBJECT*)  
-  BoardList definition  
+    <strong>BoardConnection</strong> <em>(OBJECT)</em>
   </summary>
+    BoardList definition
   
   
+  <details>
+    <summary>
+      <strong>edges</strong> <em>(BoardEdge)</em>
+    </summary>
+
+
     <details>
       <summary>
-      **edges** (*BoardEdge*)  
-      
+        <strong>node</strong> <em>(Board)</em>
       </summary>
-  
+
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>code</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
+        </summary>
+        Board ID
+      </details>
+
       <details>
         <summary>
-        **node** (*Board*)  
-        
+          <strong>boardData</strong> <em>(BoardData)</em>
         </summary>
-  
+        Board data
+
         <details style={{ pointerEvents: "none" }}>
           <summary>
-          **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-          Board ID  
+            <strong>code</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
           </summary>
+          Internal code for checking availability
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+            <strong>boardCode</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+          </summary>
+          Code of the hotel in the Supplier selected
         </details>
 
         <details>
           <summary>
-          **boardData** (*BoardData*)  
-          Board data  
+            <strong>texts</strong> <em>(Text)</em>
           </summary>
-  
+          Label
+
           <details style={{ pointerEvents: "none" }}>
             <summary>
-            **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-            Internal code for checking availability  
+              <strong>text</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
             </summary>
+
           </details>
 
           <details style={{ pointerEvents: "none" }}>
             <summary>
-            **boardCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-            Code of the hotel in the Supplier selected  
+              <strong>language</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Language)</em>
             </summary>
-          </details>
 
-          <details>
-            <summary>
-            **texts** (*Text*)  
-            Label  
-            </summary>
-  
-            <details style={{ pointerEvents: "none" }}>
-              <summary>
-              **text**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-              
-              </summary>
-            </details>
-
-            <details style={{ pointerEvents: "none" }}>
-              <summary>
-              **language**&nbsp;<span class="required"> *</span>&nbsp; (*Language*)  
-              
-              </summary>
-            </details>
           </details>
         </details>
+      </details>
 
-        <details>
+      <details>
+        <summary>
+          <strong>adviseMessage</strong> <em>(AdviseMessage)</em>
+        </summary>
+        List of messages
+
+        <details style={{ pointerEvents: "none" }}>
           <summary>
-          **adviseMessage** (*AdviseMessage*)  
-          List of messages  
+            <strong>code</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
           </summary>
-  
-          <details style={{ pointerEvents: "none" }}>
-            <summary>
-            **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-            AM code: The following codes can be returned:  
-            </summary>
-          </details>
+          AM code: The following codes can be returned:
+        </details>
 
-          <details style={{ pointerEvents: "none" }}>
-            <summary>
-            **description**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-            Error description  
-            </summary>
-          </details>
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+            <strong>description</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+          </summary>
+          Error description
+        </details>
 
-          <details style={{ pointerEvents: "none" }}>
-            <summary>
-            **level**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of AdviseMessageLevel*)  
-            Indicates the level of importance of the message.
-Possible values: ERROR, WARN, INFO.  
-            Possible values:  
-            `WARN`  
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+            <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+          </summary>
+          Indicates the level of importance of the message.
+          Possible values: ERROR, WARN, INFO.
+          Possible values:
+          `WARN`  
           `ERROR`  
           `INFO`  
-            </summary>
-          </details>
+        </details>
 
-          <details>
+        <details>
+          <summary>
+            <strong>external</strong> <em>(ExternalMessage)</em>
+          </summary>
+          Specify the external message.
+
+          <details style={{ pointerEvents: "none" }}>
             <summary>
-            **external** (*ExternalMessage*)  
-            Specify the external message.  
+              <strong>code</strong> <em>(String)</em>
             </summary>
-  
-            <details style={{ pointerEvents: "none" }}>
-              <summary>
-              **code** (*String*)  
-              External code.  
-              </summary>
-            </details>
-
-            <details style={{ pointerEvents: "none" }}>
-              <summary>
-              **message**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-              External message.  
-              </summary>
-            </details>
+            External code.
           </details>
 
           <details style={{ pointerEvents: "none" }}>
             <summary>
-            **correlationID**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-            Identifier to investigate the cause of the error.  
+              <strong>message</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
             </summary>
+            External message.
           </details>
         </details>
 
         <details style={{ pointerEvents: "none" }}>
           <summary>
-          **createdAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
-          Date created  
+            <strong>correlationID</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
           </summary>
-        </details>
-
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **updatedAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
-          Date updated  
-          </summary>
+          Identifier to investigate the cause of the error.
         </details>
       </details>
 
       <details style={{ pointerEvents: "none" }}>
         <summary>
-        **cursor**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-        
+          <strong>createdAt</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(DateTime)</em>
         </summary>
+        Date created
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>updatedAt</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(DateTime)</em>
+        </summary>
+        Date updated
       </details>
     </details>
 
-    <details>
+    <details style={{ pointerEvents: "none" }}>
       <summary>
-      **pageInfo**&nbsp;<span class="required"> *</span>&nbsp; (*PageInfo*)  
-      Indicates info about page  
+        <strong>cursor</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
       </summary>
-  
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **hasNextPage**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-        
-        </summary>
-      </details>
 
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **hasPreviousPage**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-        
-        </summary>
-      </details>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **startCursor** (*String*)  
-        
-        </summary>
-      </details>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **endCursor** (*String*)  
-        
-        </summary>
-      </details>
     </details>
+  </details>
+
+  <details>
+    <summary>
+      <strong>pageInfo</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(PageInfo)</em>
+    </summary>
+    Indicates info about page
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>hasNextPage</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+      </summary>
+
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>hasPreviousPage</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+      </summary>
+
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>startCursor</strong> <em>(String)</em>
+      </summary>
+
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>endCursor</strong> <em>(String)</em>
+      </summary>
+
+    </details>
+  </details>
 </details>

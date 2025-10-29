@@ -25,15 +25,15 @@ In the Travelgate [Quote (Valuation)](/docs/apis/for-sellers/deprecated/hotel-pu
   ![deadline-format-updated](https://storage.travelgate.com/kbase/deadline-format-updated.jpg)
 
 - **CALCULATED DEADLINE**  
-  The **CalculatedDeadline** field indicates whether the Deadline value originates from the Seller’s response or has been calculated by Travelgate.
+  The **isCalculatedDeadline** field indicates whether the Deadline value originates from the Seller’s response or has been calculated by Travelgate.
 
   The table below outlines how cancellation policies are processed based on the timezone specified in Metadata:
 
-  | Metadata TimeZone  | HoursBefore | Deadline Handling      |
-  |--------------------|-------------|------------------------|
-  | Hotel Local Time   | Bypass      | Converted to UTC-0    |
-  | TimeZone          | Bypass      | Converted to UTC-0    |
-  | Unknown           | Bypass      | +14-hour offset added |
+| Supplier Metadata TimeZone  | HoursBefore | Deadline Handling       | isCalculatedDeadline value |
+|--------------------|-------------|-------------------------|----------------------------|
+| Hotel Local Time   | Bypass      | Converted to UTC-0      | false                      |
+| TimeZone           | Bypass      | Converted to UTC-0      | false                      |
+| Unknown            | Bypass      | +14-hour offset added   | true                       |
 
 ## Do Cancellation Policy Timezones Apply to All Buyers Connected to a Supplier?
 

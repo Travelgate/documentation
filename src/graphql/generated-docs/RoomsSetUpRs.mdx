@@ -1,186 +1,186 @@
 
 <details>
   <summary>
-  **RoomsSetUpRs** (*OBJECT*)  
-  Represents the response object for room setup operations.  
+    <strong>RoomsSetUpRs</strong> <em>(OBJECT)</em>
   </summary>
+    Represents the response object for room setup operations.
   
   
-    <details>
+  <details>
+    <summary>
+      <strong>adviseMessages</strong> <em>(AdviseMessage)</em>
+    </summary>
+    Collection of advise messages.
+
+    <details style={{ pointerEvents: "none" }}>
       <summary>
-      **adviseMessages** (*AdviseMessage*)  
-      Collection of advise messages.  
+        <strong>code</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
       </summary>
-  
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-        AM code: The following codes can be returned:  
-        </summary>
-      </details>
+      AM code: The following codes can be returned:
+    </details>
 
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **description**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-        Error description  
-        </summary>
-      </details>
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>description</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+      </summary>
+      Error description
+    </details>
 
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **level**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of AdviseMessageLevel*)  
-        Indicates the level of importance of the message.
-Possible values: ERROR, WARN, INFO.  
-        Possible values:  
-        `WARN`  
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+      </summary>
+      Indicates the level of importance of the message.
+      Possible values: ERROR, WARN, INFO.
+      Possible values:
+      `WARN`  
       `ERROR`  
       `INFO`  
-        </summary>
-      </details>
-
-      <details>
-        <summary>
-        **external** (*ExternalMessage*)  
-        Specify the external message.  
-        </summary>
-  
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **code** (*String*)  
-          External code.  
-          </summary>
-        </details>
-
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **message**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-          External message.  
-          </summary>
-        </details>
-      </details>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **correlationID**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-        Identifier to investigate the cause of the error.  
-        </summary>
-      </details>
-    </details>
-
-    <details style={{ pointerEvents: "none" }}>
-      <summary>
-      **rateCode** (*String*)  
-      Rate code associated with the rooms.  
-      </summary>
     </details>
 
     <details>
       <summary>
-      **rooms** (*InventoryRoomSetUp*)  
-      Collection of room setup responses.  
+        <strong>external</strong> <em>(ExternalMessage)</em>
       </summary>
-  
+      Specify the external message.
+
       <details style={{ pointerEvents: "none" }}>
         <summary>
-        **code** (*String*)  
-        Code associated with the room.  
+          <strong>code</strong> <em>(String)</em>
         </summary>
-      </details>
-
-      <details>
-        <summary>
-        **master** (*InventoryMasterRoom*)  
-        Master of the room.  
-        </summary>
-  
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **id**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
-          Id associated with the room master.
-          </summary>
-        </details>
-
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **code** (*String*)  
-          Code associated with the room.  
-          </summary>
-        </details>
-
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **name** (*String*)  
-          Name associated with the room.  
-          </summary>
-        </details>
+        External code.
       </details>
 
       <details style={{ pointerEvents: "none" }}>
         <summary>
-        **active**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-        Indicates whether the room is active.  
+          <strong>message</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
         </summary>
-      </details>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **externalCode** (*String*)  
-        External code associated with the room.  
-        </summary>
-      </details>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **standard**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
-        Standard of the room. Typically the number of guests.
-        </summary>
-      </details>
-
-      <details>
-        <summary>
-        **uses**&nbsp;<span class="required"> *</span>&nbsp; (*InventoryRoomUse*)  
-        List of uses associated with the room.  
-        </summary>
-  
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **numberOfGuests**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
-          Gets or sets the number of guests allowed in the room.
-          </summary>
-        </details>
-
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **minAge**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
-          Gets or sets the minimum age allowed for guests in the room.
-          </summary>
-        </details>
-
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **maxAge**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
-          Gets or sets the maximum age allowed for guests in the room.
-          </summary>
-        </details>
-
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **paxType**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of InventoryPaxType*)  
-          Gets or sets the type of guests allowed in the room.
-PaxType  
-          Possible values:  
-          `INFANT`  
-        `CHILD`  
-        `ADULT`  
-          </summary>
-        </details>
+        External message.
       </details>
     </details>
 
     <details style={{ pointerEvents: "none" }}>
       <summary>
-      **success**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-      Indicates whether the operation was successful based on the absence of advise messages.  
+        <strong>correlationID</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
       </summary>
+      Identifier to investigate the cause of the error.
     </details>
+  </details>
+
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+      <strong>rateCode</strong> <em>(String)</em>
+    </summary>
+    Rate code associated with the rooms.
+  </details>
+
+  <details>
+    <summary>
+      <strong>rooms</strong> <em>(InventoryRoomSetUp)</em>
+    </summary>
+    Collection of room setup responses.
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>code</strong> <em>(String)</em>
+      </summary>
+      Code associated with the room.
+    </details>
+
+    <details>
+      <summary>
+        <strong>master</strong> <em>(InventoryMasterRoom)</em>
+      </summary>
+      Master of the room.
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>id</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Int)</em>
+        </summary>
+        Id associated with the room master.
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>code</strong> <em>(String)</em>
+        </summary>
+        Code associated with the room.
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>name</strong> <em>(String)</em>
+        </summary>
+        Name associated with the room.
+      </details>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>active</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+      </summary>
+      Indicates whether the room is active.
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>externalCode</strong> <em>(String)</em>
+      </summary>
+      External code associated with the room.
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>standard</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Int)</em>
+      </summary>
+      Standard of the room. Typically the number of guests.
+    </details>
+
+    <details>
+      <summary>
+        <strong>uses</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(InventoryRoomUse)</em>
+      </summary>
+      List of uses associated with the room.
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>numberOfGuests</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Int)</em>
+        </summary>
+        Gets or sets the number of guests allowed in the room.
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>minAge</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Int)</em>
+        </summary>
+        Gets or sets the minimum age allowed for guests in the room.
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>maxAge</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Int)</em>
+        </summary>
+        Gets or sets the maximum age allowed for guests in the room.
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>paxType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of InventoryPaxType)</em>
+        </summary>
+        Gets or sets the type of guests allowed in the room.
+        PaxType
+        Possible values:
+        `INFANT`  
+        `CHILD`  
+        `ADULT`  
+      </details>
+    </details>
+  </details>
+
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+      <strong>success</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+    </summary>
+    Indicates whether the operation was successful based on the absence of advise messages.
+  </details>
 </details>

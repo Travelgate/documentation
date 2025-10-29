@@ -1,111 +1,111 @@
 
 <details>
   <summary>
-  **LocalitiesRs** (*OBJECT*)  
-  Represents response data for localities.  
+    <strong>LocalitiesRs</strong> <em>(OBJECT)</em>
   </summary>
+    Represents response data for localities.
   
   
-    <details>
+  <details>
+    <summary>
+      <strong>adviseMessages</strong> <em>(AdviseMessage)</em>
+    </summary>
+    Collection of advise messages.
+
+    <details style={{ pointerEvents: "none" }}>
       <summary>
-      **adviseMessages** (*AdviseMessage*)  
-      Collection of advise messages.  
+        <strong>code</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
       </summary>
-  
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-        AM code: The following codes can be returned:  
-        </summary>
-      </details>
+      AM code: The following codes can be returned:
+    </details>
 
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **description**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-        Error description  
-        </summary>
-      </details>
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>description</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+      </summary>
+      Error description
+    </details>
 
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **level**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of AdviseMessageLevel*)  
-        Indicates the level of importance of the message.
-Possible values: ERROR, WARN, INFO.  
-        Possible values:  
-        `WARN`  
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+      </summary>
+      Indicates the level of importance of the message.
+      Possible values: ERROR, WARN, INFO.
+      Possible values:
+      `WARN`  
       `ERROR`  
       `INFO`  
-        </summary>
-      </details>
-
-      <details>
-        <summary>
-        **external** (*ExternalMessage*)  
-        Specify the external message.  
-        </summary>
-  
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **code** (*String*)  
-          External code.  
-          </summary>
-        </details>
-
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **message**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-          External message.  
-          </summary>
-        </details>
-      </details>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **correlationID**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-        Identifier to investigate the cause of the error.  
-        </summary>
-      </details>
     </details>
 
     <details>
       <summary>
-      **localities** (*InventoryLocality*)  
-      Collection of localities.  
+        <strong>external</strong> <em>(ExternalMessage)</em>
       </summary>
-  
+      Specify the external message.
+
       <details style={{ pointerEvents: "none" }}>
         <summary>
-        **id**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
-        Unique identifier for the locality.
+          <strong>code</strong> <em>(String)</em>
         </summary>
+        External code.
       </details>
 
       <details style={{ pointerEvents: "none" }}>
         <summary>
-        **name** (*String*)  
-        Name of the locality.  
+          <strong>message</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
         </summary>
-      </details>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **countryCode** (*String*)  
-        ISO 2-character country code associated with the locality.  
-        </summary>
-      </details>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **unLocode** (*String*)  
-        UN/LOCODE associated with the locality.  
-        </summary>
+        External message.
       </details>
     </details>
 
     <details style={{ pointerEvents: "none" }}>
       <summary>
-      **success**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-      Indicates whether the response was successful based on the absence of advise messages.  
+        <strong>correlationID</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
       </summary>
+      Identifier to investigate the cause of the error.
     </details>
+  </details>
+
+  <details>
+    <summary>
+      <strong>localities</strong> <em>(InventoryLocality)</em>
+    </summary>
+    Collection of localities.
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>id</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Int)</em>
+      </summary>
+      Unique identifier for the locality.
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>name</strong> <em>(String)</em>
+      </summary>
+      Name of the locality.
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>countryCode</strong> <em>(String)</em>
+      </summary>
+      ISO 2-character country code associated with the locality.
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>unLocode</strong> <em>(String)</em>
+      </summary>
+      UN/LOCODE associated with the locality.
+    </details>
+  </details>
+
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+      <strong>success</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+    </summary>
+    Indicates whether the response was successful based on the absence of advise messages.
+  </details>
 </details>

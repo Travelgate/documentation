@@ -1,9 +1,9 @@
 
 <details>
   <summary>
-    <strong>InventoryRateSetupUpdateInput</strong> <em>(INPUT_OBJECT)</em>
+  **InventoryRateSetupUpdateInput** (*INPUT_OBJECT*)  
+  Rates setup delete input data  
   </summary>
-    Rates setup delete input data
   
   <details style={{ pointerEvents: "none" }}>
     <summary>
@@ -128,47 +128,51 @@
         </summary>
         Rate Accepted Payments, if not informed it is MerchantPay. See AcceptedPayment.
 
-        <details style={{ pointerEvents: "none" }}>
+        <details open>
           <summary>
-            <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of PaymentType)</em>
+            <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(PaymentType)</em>
           </summary>
 
-          Possible values:
-          `MERCHANT`  
-          `DIRECT`  
-          `CARD_BOOKING`  
-          `CARD_CHECK_IN`  
+          <strong>Possible values:</strong>
+          <ul>
+            <li><code>MERCHANT</code>: Payment is managed by the supplier.</li>
+            <li><code>DIRECT</code>: Payment is made directly to the actual payee (e.g., the hotel), without involving an intermediary or third party. The payment will be completed at check-in.</li>
+            <li><code>CARD_BOOKING</code>: Payment is managed by the supplier. The payment is effectuated at the time of booking.</li>
+            <li><code>CARD_CHECK_IN</code>: Payment is managed by the supplier and is made at the hotel during check-in.</li>
+          </ul>
         </details>
 
-        <details style={{ pointerEvents: "none" }}>
+        <details open>
           <summary>
-            <strong>cardTypes</strong> <em>(Enum of PaymentCardType)</em>
+            <strong>cardTypes</strong> <em>(PaymentCardType)</em>
           </summary>
 
-          Possible values:
-          `VI`  
-          `AX`  
-          `BC`  
-          `CA`  
-          `CB`  
-          `CU`  
-          `DS`  
-          `DC`  
-          `T`  
-          `R`  
-          `N`  
-          `L`  
-          `E`  
-          `JC`  
-          `TO`  
-          `S`  
-          `EC`  
-          `EU`  
-          `TP`  
-          `OP`  
-          `ER`  
-          `XS`  
-          `O`  
+          <strong>Possible values:</strong>
+          <ul>
+            <li><code>VI</code>: Visa</li>
+            <li><code>AX</code>: American Express</li>
+            <li><code>BC</code>: BC Card</li>
+            <li><code>CA</code>: MasterCard</li>
+            <li><code>CB</code>: Carte Blanche</li>
+            <li><code>CU</code>: China Union Pay</li>
+            <li><code>DS</code>: Discover</li>
+            <li><code>DC</code>: Diners Club</li>
+            <li><code>T</code>: Carta Si</li>
+            <li><code>R</code>: Carte Bleue</li>
+            <li><code>N</code>: Dankort</li>
+            <li><code>L</code>: Delta</li>
+            <li><code>E</code>: Electron</li>
+            <li><code>JC</code>: Japan Credit Bureau</li>
+            <li><code>TO</code>: Maestro</li>
+            <li><code>S</code>: Switch</li>
+            <li><code>EC</code>: Electronic Cash</li>
+            <li><code>EU</code>: EuroCard</li>
+            <li><code>TP</code>: universal air travel card</li>
+            <li><code>OP</code>: optima</li>
+            <li><code>ER</code>: Air Canada/RnRoute</li>
+            <li><code>XS</code>: access</li>
+            <li><code>O</code>: others</li>
+          </ul>
         </details>
       </details>
     </details>
@@ -221,32 +225,36 @@
         </details>
       </details>
 
-      <details style={{ pointerEvents: "none" }}>
+      <details open>
         <summary>
-          <strong>rateRule</strong> <em>(Enum of RatePlanType)</em>
+          <strong>rateRule</strong> <em>(RatePlanType)</em>
         </summary>
         "NoRatePlanType" indicates absence of a specific rate plan. "LargeFamily" and "PublicServant" denote rates tailored for those groups. "Negotiated" and "Package" signify negotiated rates and package deals, respectively. "CanaryResident" and "BalearicResident" are special rates for residents of the Canary Islands and the Balearic Islands, respectively. Lastly, "HoneyMoon" designates rates intended for honeymooners or couples celebrating their honeymoon.
-        Possible values:
-        `NO_RATE_PLAN_TYPE`  
-        `LARGE_FAMILY`  
-        `PUBLIC_SERVANT`  
-        `NEGOTIATED`  
-        `PACKAGE`  
-        `CANARY_RESIDENT`  
-        `BALEARIC_RESIDENT`  
-        `HONEY_MOON`  
+        <strong>Possible values:</strong>
+        <ul>
+          <li><code>NO_RATE_PLAN_TYPE</code></li>
+          <li><code>LARGE_FAMILY</code></li>
+          <li><code>PUBLIC_SERVANT</code></li>
+          <li><code>NEGOTIATED</code></li>
+          <li><code>PACKAGE</code></li>
+          <li><code>CANARY_RESIDENT</code></li>
+          <li><code>BALEARIC_RESIDENT</code></li>
+          <li><code>HONEY_MOON</code></li>
+        </ul>
       </details>
 
-      <details style={{ pointerEvents: "none" }}>
+      <details open>
         <summary>
-          <strong>seniorRule</strong> <em>(Enum of SeniorRate)</em>
+          <strong>seniorRule</strong> <em>(SeniorRate)</em>
         </summary>
         "NoSeniorRate" indicates the absence of a senior rate. "SeniorRate_55", "SeniorRate_60", and "SeniorRate_65" denote rates applicable to individuals aged 55, 60, and 65, respectively. These rates are typically offered to seniors as a special discount or incentive.
-        Possible values:
-        `NO_SENIOR_RATE`  
-        `SENIOR_RATE_55`  
-        `SENIOR_RATE_60`  
-        `SENIOR_RATE_65`  
+        <strong>Possible values:</strong>
+        <ul>
+          <li><code>NO_SENIOR_RATE</code></li>
+          <li><code>SENIOR_RATE_55</code></li>
+          <li><code>SENIOR_RATE_60</code></li>
+          <li><code>SENIOR_RATE_65</code></li>
+        </ul>
       </details>
     </details>
 
@@ -282,15 +290,17 @@
             Number of days prior to arrival day in which this Cancellation policy applies.
           </details>
 
-          <details style={{ pointerEvents: "none" }}>
+          <details open>
             <summary>
-              <strong>penaltyType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of PenaltyType)</em>
+              <strong>penaltyType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(PenaltyType)</em>
             </summary>
             Penalty type. See PenaltyType.
-            Possible values:
-            `AMOUNT`  
-            `NIGHTS`  
-            `PERCENTAGE`  
+            <strong>Possible values:</strong>
+            <ul>
+              <li><code>AMOUNT</code></li>
+              <li><code>NIGHTS</code></li>
+              <li><code>PERCENTAGE</code></li>
+            </ul>
           </details>
 
           <details style={{ pointerEvents: "none" }}>
@@ -348,15 +358,17 @@
               Number of days prior to arrival day in which this Cancellation policy applies.
             </details>
 
-            <details style={{ pointerEvents: "none" }}>
+            <details open>
               <summary>
-                <strong>penaltyType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of PenaltyType)</em>
+                <strong>penaltyType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(PenaltyType)</em>
               </summary>
               Penalty type. See PenaltyType.
-              Possible values:
-              `AMOUNT`  
-              `NIGHTS`  
-              `PERCENTAGE`  
+              <strong>Possible values:</strong>
+              <ul>
+                <li><code>AMOUNT</code></li>
+                <li><code>NIGHTS</code></li>
+                <li><code>PERCENTAGE</code></li>
+              </ul>
             </details>
 
             <details style={{ pointerEvents: "none" }}>
@@ -396,16 +408,18 @@
           Number of days before arrival.
         </details>
 
-        <details style={{ pointerEvents: "none" }}>
+        <details open>
           <summary>
-            <strong>penaltyType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of PenaltyType)</em>
+            <strong>penaltyType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(PenaltyType)</em>
           </summary>
           Type of penalty.
           PenaltyType
-          Possible values:
-          `AMOUNT`  
-          `NIGHTS`  
-          `PERCENTAGE`  
+          <strong>Possible values:</strong>
+          <ul>
+            <li><code>AMOUNT</code></li>
+            <li><code>NIGHTS</code></li>
+            <li><code>PERCENTAGE</code></li>
+          </ul>
         </details>
 
         <details style={{ pointerEvents: "none" }}>
@@ -423,26 +437,30 @@
       </summary>
       List of surcharges associated with the rate. See Surcharge.
 
-      <details style={{ pointerEvents: "none" }}>
+      <details open>
         <summary>
-          <strong>chargeType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of InventoryChargeType)</em>
+          <strong>chargeType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(InventoryChargeType)</em>
         </summary>
         Indicates if the surcharge is included or not in the price.
-        Possible values:
-        `INCLUDED`  
-        `EXCLUDED`  
+        <strong>Possible values:</strong>
+        <ul>
+          <li><code>INCLUDED</code></li>
+          <li><code>EXCLUDED</code></li>
+        </ul>
       </details>
 
-      <details style={{ pointerEvents: "none" }}>
+      <details open>
         <summary>
-          <strong>taxType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of InventoryTaxType)</em>
+          <strong>taxType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(InventoryTaxType)</em>
         </summary>
         The type of tax applied to the surcharge.
-        Possible values:
-        `CITY`  
-        `LOCAL`  
-        `RESORT_FEE`  
-        `SUPPLEMENT_TO_BE_PAID_ON_SPOT`  
+        <strong>Possible values:</strong>
+        <ul>
+          <li><code>CITY</code>: The tax is a city tax.</li>
+          <li><code>LOCAL</code>: The tax is a local tax.</li>
+          <li><code>RESORT_FEE</code>: The tax is a resort fee.</li>
+          <li><code>SUPPLEMENT_TO_BE_PAID_ON_SPOT</code>: The tax is a supplement to be paid on spot.</li>
+        </ul>
       </details>
 
       <details style={{ pointerEvents: "none" }}>
@@ -452,14 +470,16 @@
         The value of the surcharge.
       </details>
 
-      <details style={{ pointerEvents: "none" }}>
+      <details open>
         <summary>
-          <strong>applyType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of InventoryApplyType)</em>
+          <strong>applyType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(InventoryApplyType)</em>
         </summary>
         The type of application for the surcharge.
-        Possible values:
-        `PERCENTAGE`  
-        `AMOUNT`  
+        <strong>Possible values:</strong>
+        <ul>
+          <li><code>PERCENTAGE</code>: The rate is applied as a percentage.</li>
+          <li><code>AMOUNT</code>: The rate is applied as an amount.</li>
+        </ul>
       </details>
 
       <details style={{ pointerEvents: "none" }}>

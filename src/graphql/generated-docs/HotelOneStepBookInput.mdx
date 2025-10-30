@@ -1,9 +1,9 @@
 
 <details>
   <summary>
-    <strong>HotelOneStepBookInput</strong> <em>(INPUT_OBJECT)</em>
+  **HotelOneStepBookInput** (*INPUT_OBJECT*)  
+  Input that contains all the required information for booking the option in one step.  
   </summary>
-    Input that contains all the required information for booking the option in one step.
   
   <details style={{ pointerEvents: "none" }}>
     <summary>
@@ -115,17 +115,19 @@
         Passenger age on the day of the check-in
       </details>
 
-      <details style={{ pointerEvents: "none" }}>
+      <details open>
         <summary>
-          <strong>title</strong> <em>(Enum of PersonalTitleType)</em>
+          <strong>title</strong> <em>(PersonalTitleType)</em>
         </summary>
         Passenger title.
-        Possible values:
-        `MR`  
-        `MRS`  
-        `MISS`  
-        `MS`  
-        `NOT_SPECIFIED`  
+        <strong>Possible values:</strong>
+        <ul>
+          <li><code>MR</code>: To refer to a man. Is not possible know if it is married or single.</li>
+          <li><code>MRS</code>: To refer to a married woman</li>
+          <li><code>MISS</code>: To refer to a single woman</li>
+          <li><code>MS</code>: To refer to a woman. Is not possible know if it is married or single.</li>
+          <li><code>NOT_SPECIFIED</code>: Deprecated 2025-08-08. PersonalTitleType is optional in inputs and outputs.</li>
+        </ul>
       </details>
 
       <details style={{ pointerEvents: "none" }}>
@@ -141,20 +143,22 @@
         </summary>
         Passenger ID documents.
 
-        <details style={{ pointerEvents: "none" }}>
+        <details open>
           <summary>
-            <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of DocumentType)</em>
+            <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(DocumentType)</em>
           </summary>
           Document type.
-          Possible values:
-          `DNI`  
-          `NIE`  
-          `PASSPORT`  
-          `DRIVER_LICENSE`  
-          `CPF`  
-          `PAN`  
-          `SSN`  
-          `OTHER`  
+          <strong>Possible values:</strong>
+          <ul>
+            <li><code>DNI</code></li>
+            <li><code>NIE</code></li>
+            <li><code>PASSPORT</code></li>
+            <li><code>DRIVER_LICENSE</code></li>
+            <li><code>CPF</code></li>
+            <li><code>PAN</code></li>
+            <li><code>SSN</code></li>
+            <li><code>OTHER</code></li>
+          </ul>
         </details>
 
         <details style={{ pointerEvents: "none" }}>
@@ -229,29 +233,31 @@
     </summary>
     RateRules contains all the rules that the option booked must have.
 
-    <details style={{ pointerEvents: "none" }}>
+    <details open>
       <summary>
-        <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of RateRulesType)</em>
+        <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(RateRulesType)</em>
       </summary>
       Rate rule type
-      Possible values:
-      `NORMAL`  
-      `PACKAGE`  
-      `OLDER55`  
-      `OLDER60`  
-      `OLDER65`  
-      `CANARY_RESIDENT`  
-      `BALEARIC_RESIDENT`  
-      `LARGE_FAMILY`  
-      `HONEYMOON`  
-      `PUBLIC_SERVANT`  
-      `UNEMPLOYED`  
-      `NON_REFUNDABLE`  
-      `MOBILE`  
-      `WARRANTY`  
-      `ESSENTIAL_WORKER`  
-      `NEGOTIATED`  
-      `CUSTOM`  
+      <strong>Possible values:</strong>
+      <ul>
+        <li><code>NORMAL</code>: NORMAL Used in the RateRulesFilterInput input for the search query to filter and retrieve only options without rate rules.</li>
+        <li><code>PACKAGE</code>: The product can&#39;t be sold separately from another product attached to it, such as a flight.</li>
+        <li><code>OLDER55</code>: OLDER55 can only be sold to people who are 55 and older.</li>
+        <li><code>OLDER60</code>: OLDER60 can only be sold to people who are 60 and older.</li>
+        <li><code>OLDER65</code>: OLDER65 can only be sold to people who are 65 and older.</li>
+        <li><code>CANARY_RESIDENT</code>: CANARY_RESIDENT is applicable to Canary Islands residents only.</li>
+        <li><code>BALEARIC_RESIDENT</code>: BALEARIC_RESIDENT is applicable to Balearic Islands residents only.</li>
+        <li><code>LARGE_FAMILY</code>: LARGE_FAMILY is applicable to large families and is determined by each supplier.</li>
+        <li><code>HONEYMOON</code>: HONEYMOON is applicable to those who just got married and is determined by each supplier.</li>
+        <li><code>PUBLIC_SERVANT</code>: PUBLIC_SERVANT is applicable to public servants only.</li>
+        <li><code>UNEMPLOYED</code>: UNEMPLOYED applies to individuals who are without work.</li>
+        <li><code>NON_REFUNDABLE</code>: NON_REFUNDABLE is applicable to non refundable options.</li>
+        <li><code>MOBILE</code>: MOBILE are special rates confirmed by mobile phone.</li>
+        <li><code>WARRANTY</code>: WARRANTY is applicable to options with cancellation warranty.</li>
+        <li><code>ESSENTIAL_WORKER</code>: ESSENTIAL_WORKER are special hotel rates for essential workers.</li>
+        <li><code>NEGOTIATED</code>: NEGOTIATED are special rates offered only to specific buyers.</li>
+        <li><code>CUSTOM</code>: CUSTOM defines other rates.</li>
+      </ul>
     </details>
 
     <details>
@@ -287,15 +293,17 @@
         </summary>
 
 
-        <details style={{ pointerEvents: "none" }}>
+        <details open>
           <summary>
-            <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of HotelOptionRateRestrictionType)</em>
+            <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(HotelOptionRateRestrictionType)</em>
           </summary>
 
-          Possible values:
-          `COMPANY`  
-          `MARKET`  
-          `OTHERS`  
+          <strong>Possible values:</strong>
+          <ul>
+            <li><code>COMPANY</code></li>
+            <li><code>MARKET</code></li>
+            <li><code>OTHERS</code></li>
+          </ul>
         </details>
 
         <details style={{ pointerEvents: "none" }}>
@@ -374,17 +382,19 @@
       Indicates the surcharge code.
     </details>
 
-    <details style={{ pointerEvents: "none" }}>
+    <details open>
       <summary>
-        <strong>chargeType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of ChargeType)</em>
+        <strong>chargeType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ChargeType)</em>
       </summary>
       Indicates the charge types. We need to know whether the supplements have to be paid when the consumer gets to the hotel or beforehand.
       Possible charge types: Include or Exclude.
       When include: this surcharge is mandatory and included in the option's price.
       When exclude: this surcharge is not included in the option's price.
-      Possible values:
-      `INCLUDE`  
-      `EXCLUDE`  
+      <strong>Possible values:</strong>
+      <ul>
+        <li><code>INCLUDE</code>: The charge is included.</li>
+        <li><code>EXCLUDE</code>: The charge is excluded.</li>
+      </ul>
     </details>
 
     <details style={{ pointerEvents: "none" }}>
@@ -476,34 +486,38 @@
       Specifies the supplement description.
     </details>
 
-    <details style={{ pointerEvents: "none" }}>
+    <details open>
       <summary>
-        <strong>supplementType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of SupplementType)</em>
+        <strong>supplementType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(SupplementType)</em>
       </summary>
       Indicates the supplement type. Possible types: Fee, Ski_pass, Lessons, Meals, Equipment, Ticket, Transfers, Gla, Activity or Null.
-      Possible values:
-      `SKI_PASS`  
-      `LESSONS`  
-      `MEALS`  
-      `EQUIPMENT`  
-      `TICKET`  
-      `TRANSFERS`  
-      `GALA`  
-      `ACTIVITY`  
-      `OTHER`  
+      <strong>Possible values:</strong>
+      <ul>
+        <li><code>SKI_PASS</code>: A ticket or pass authorizing the holder to ski in a certain place or resort.</li>
+        <li><code>LESSONS</code>: Lessons of any type that the costumer can take.</li>
+        <li><code>MEALS</code>: Supplement of a determined meal plan.</li>
+        <li><code>EQUIPMENT</code>: Extra equipment for a specific purpose.</li>
+        <li><code>TICKET</code>: Admission to some service.</li>
+        <li><code>TRANSFERS</code>: Transfers used by the costumer.</li>
+        <li><code>GALA</code>: Gala: A festive occasion, celebration or special entertainment.</li>
+        <li><code>ACTIVITY</code>: Activities that the costumer can do.</li>
+        <li><code>OTHER</code>: Other type of supplement.</li>
+      </ul>
     </details>
 
-    <details style={{ pointerEvents: "none" }}>
+    <details open>
       <summary>
-        <strong>chargeType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of ChargeType)</em>
+        <strong>chargeType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ChargeType)</em>
       </summary>
       Indicates the charge types. We need to know whether the supplements have to be paid when the consumer gets to the hotel or beforehand.
       Possible charge types: Include or Exclude.
       When include: this supplement is mandatory and included in the option's price.
       When exclude: this supplement is not included in the option's price.
-      Possible values:
-      `INCLUDE`  
-      `EXCLUDE`  
+      <strong>Possible values:</strong>
+      <ul>
+        <li><code>INCLUDE</code>: The charge is included.</li>
+        <li><code>EXCLUDE</code>: The charge is excluded.</li>
+      </ul>
     </details>
 
     <details style={{ pointerEvents: "none" }}>
@@ -514,14 +528,16 @@
       If the chargeType is excluded the customer will have to pay it directly at the hotel.
     </details>
 
-    <details style={{ pointerEvents: "none" }}>
+    <details open>
       <summary>
-        <strong>durationType</strong> <em>(Enum of DurationType)</em>
+        <strong>durationType</strong> <em>(DurationType)</em>
       </summary>
       Specifies the duration type. Possible duration types: Range (specified dates) or Open. This field is mandatory for PDI.
-      Possible values:
-      `RANGE`  
-      `OPEN`  
+      <strong>Possible values:</strong>
+      <ul>
+        <li><code>RANGE</code>: Date range is set.</li>
+        <li><code>OPEN</code>: Not restricted by date.</li>
+      </ul>
     </details>
 
     <details style={{ pointerEvents: "none" }}>
@@ -531,14 +547,16 @@
       Indicates the quantity of field in the element "unit".
     </details>
 
-    <details style={{ pointerEvents: "none" }}>
+    <details open>
       <summary>
-        <strong>unit</strong> <em>(Enum of UnitTimeType)</em>
+        <strong>unit</strong> <em>(UnitTimeType)</em>
       </summary>
       Indicates the unit type. Possible unit types: Day or Hour.
-      Possible values:
-      `DAY`  
-      `HOUR`  
+      <strong>Possible values:</strong>
+      <ul>
+        <li><code>DAY</code>: Day</li>
+        <li><code>HOUR</code>: Hour</li>
+      </ul>
     </details>
 
     <details style={{ pointerEvents: "none" }}>
@@ -665,15 +683,17 @@
 
       </details>
 
-      <details style={{ pointerEvents: "none" }}>
+      <details open>
         <summary>
-          <strong>penaltyType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of CancelPenaltyType)</em>
+          <strong>penaltyType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(CancelPenaltyType)</em>
         </summary>
 
-        Possible values:
-        `NIGHTS`  
-        `PERCENT`  
-        `IMPORT`  
+        <strong>Possible values:</strong>
+        <ul>
+          <li><code>NIGHTS</code>: Indicates the number of nights to be penalized.</li>
+          <li><code>PERCENT</code>: Indicates the percentage to pay based on the option price.</li>
+          <li><code>IMPORT</code>: Indicates the exact amount payable.</li>
+        </ul>
       </details>
 
       <details style={{ pointerEvents: "none" }}>
@@ -712,16 +732,18 @@
     </summary>
     Information about the option payment. If the payment type is DIRECT, CARD_BOOKING or CARD_CHECK_IN, then is mandatory to specify the payment card information.
 
-    <details style={{ pointerEvents: "none" }}>
+    <details open>
       <summary>
-        <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of PaymentType)</em>
+        <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(PaymentType)</em>
       </summary>
 
-      Possible values:
-      `MERCHANT`  
-      `DIRECT`  
-      `CARD_BOOKING`  
-      `CARD_CHECK_IN`  
+      <strong>Possible values:</strong>
+      <ul>
+        <li><code>MERCHANT</code>: Payment is managed by the supplier.</li>
+        <li><code>DIRECT</code>: Payment is made directly to the actual payee (e.g., the hotel), without involving an intermediary or third party. The payment will be completed at check-in.</li>
+        <li><code>CARD_BOOKING</code>: Payment is managed by the supplier. The payment is effectuated at the time of booking.</li>
+        <li><code>CARD_CHECK_IN</code>: Payment is managed by the supplier and is made at the hotel during check-in.</li>
+      </ul>
     </details>
 
     <details>
@@ -730,35 +752,37 @@
       </summary>
 
 
-      <details style={{ pointerEvents: "none" }}>
+      <details open>
         <summary>
-          <strong>type</strong> <em>(Enum of PaymentCardType)</em>
+          <strong>type</strong> <em>(PaymentCardType)</em>
         </summary>
         Indicates the supported card type, the supported card for this option is shown in Quote step.
-        Possible values:
-        `VI`  
-        `AX`  
-        `BC`  
-        `CA`  
-        `CB`  
-        `CU`  
-        `DS`  
-        `DC`  
-        `T`  
-        `R`  
-        `N`  
-        `L`  
-        `E`  
-        `JC`  
-        `TO`  
-        `S`  
-        `EC`  
-        `EU`  
-        `TP`  
-        `OP`  
-        `ER`  
-        `XS`  
-        `O`  
+        <strong>Possible values:</strong>
+        <ul>
+          <li><code>VI</code>: Visa</li>
+          <li><code>AX</code>: American Express</li>
+          <li><code>BC</code>: BC Card</li>
+          <li><code>CA</code>: MasterCard</li>
+          <li><code>CB</code>: Carte Blanche</li>
+          <li><code>CU</code>: China Union Pay</li>
+          <li><code>DS</code>: Discover</li>
+          <li><code>DC</code>: Diners Club</li>
+          <li><code>T</code>: Carta Si</li>
+          <li><code>R</code>: Carte Bleue</li>
+          <li><code>N</code>: Dankort</li>
+          <li><code>L</code>: Delta</li>
+          <li><code>E</code>: Electron</li>
+          <li><code>JC</code>: Japan Credit Bureau</li>
+          <li><code>TO</code>: Maestro</li>
+          <li><code>S</code>: Switch</li>
+          <li><code>EC</code>: Electronic Cash</li>
+          <li><code>EU</code>: EuroCard</li>
+          <li><code>TP</code>: universal air travel card</li>
+          <li><code>OP</code>: optima</li>
+          <li><code>ER</code>: Air Canada/RnRoute</li>
+          <li><code>XS</code>: access</li>
+          <li><code>O</code>: others</li>
+        </ul>
       </details>
 
       <details>
@@ -781,17 +805,19 @@
           The card holder's surname.
         </details>
 
-        <details style={{ pointerEvents: "none" }}>
+        <details open>
           <summary>
-            <strong>title</strong> <em>(Enum of PersonalTitleType)</em>
+            <strong>title</strong> <em>(PersonalTitleType)</em>
           </summary>
           Holder’s title.
-          Possible values:
-          `MR`  
-          `MRS`  
-          `MISS`  
-          `MS`  
-          `NOT_SPECIFIED`  
+          <strong>Possible values:</strong>
+          <ul>
+            <li><code>MR</code>: To refer to a man. Is not possible know if it is married or single.</li>
+            <li><code>MRS</code>: To refer to a married woman</li>
+            <li><code>MISS</code>: To refer to a single woman</li>
+            <li><code>MS</code>: To refer to a woman. Is not possible know if it is married or single.</li>
+            <li><code>NOT_SPECIFIED</code>: Deprecated 2025-08-08. PersonalTitleType is optional in inputs and outputs.</li>
+          </ul>
         </details>
 
         <details>
@@ -842,20 +868,22 @@
           </summary>
           Passenger ID documents.
 
-          <details style={{ pointerEvents: "none" }}>
+          <details open>
             <summary>
-              <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of DocumentType)</em>
+              <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(DocumentType)</em>
             </summary>
             Document type.
-            Possible values:
-            `DNI`  
-            `NIE`  
-            `PASSPORT`  
-            `DRIVER_LICENSE`  
-            `CPF`  
-            `PAN`  
-            `SSN`  
-            `OTHER`  
+            <strong>Possible values:</strong>
+            <ul>
+              <li><code>DNI</code></li>
+              <li><code>NIE</code></li>
+              <li><code>PASSPORT</code></li>
+              <li><code>DRIVER_LICENSE</code></li>
+              <li><code>CPF</code></li>
+              <li><code>PAN</code></li>
+              <li><code>SSN</code></li>
+              <li><code>OTHER</code></li>
+            </ul>
           </details>
 
           <details style={{ pointerEvents: "none" }}>
@@ -1027,29 +1055,33 @@
           Payer Authentication Response. It is the response to the Payer Authentication Request. The Payer Authentication Response has an XML structure with the information from the response of the authentication, and it contains a digital certificate as a sign of authenticity.
         </details>
 
-        <details style={{ pointerEvents: "none" }}>
+        <details open>
           <summary>
-            <strong>payerResponseStatus</strong> <em>(Enum of PayerResponseStatusType)</em>
+            <strong>payerResponseStatus</strong> <em>(PayerResponseStatusType)</em>
           </summary>
           Payer Authentication Response status
-          Possible values:
-          `AUTHENTICATION_SUCCESS`  
-          `AUTHENTICATION_FAILED`  
-          `AUTHENTICATION_INCOMPLETE`  
-          `TRANSACTION_ATTEMPT_SUCCESS_A`  
-          `TRANSACTION_ATTEMPT_SUCCESS_B`  
-          `AUTHENTICATION_REJECTED`  
+          <strong>Possible values:</strong>
+          <ul>
+            <li><code>AUTHENTICATION_SUCCESS</code>: Successful Authentication</li>
+            <li><code>AUTHENTICATION_FAILED</code>: Failed Authentication</li>
+            <li><code>AUTHENTICATION_INCOMPLETE</code>: Unable to Complete Authentication</li>
+            <li><code>TRANSACTION_ATTEMPT_SUCCESS_A</code>: Successful Attempts Transaction</li>
+            <li><code>TRANSACTION_ATTEMPT_SUCCESS_B</code>: Successful Attempts Transaction</li>
+            <li><code>AUTHENTICATION_REJECTED</code>: Authentication Rejected (Merchant must not submit for authorisation)</li>
+          </ul>
         </details>
 
-        <details style={{ pointerEvents: "none" }}>
+        <details open>
           <summary>
-            <strong>cardEnrolledStatus</strong> <em>(Enum of ThreeDSCardEnrolledStatusType)</em>
+            <strong>cardEnrolledStatus</strong> <em>(ThreeDSCardEnrolledStatusType)</em>
           </summary>
           Result of enrollment status of the service request
-          Possible values:
-          `CARD_ENROLLED`  
-          `CARD_NOT_ENROLLED`  
-          `CANT_AUTHENTICATE`  
+          <strong>Possible values:</strong>
+          <ul>
+            <li><code>CARD_ENROLLED</code>: Card enrolled</li>
+            <li><code>CARD_NOT_ENROLLED</code>: Card not enrolled</li>
+            <li><code>CANT_AUTHENTICATE</code>: Can not authenticate</li>
+          </ul>
         </details>
 
         <details style={{ pointerEvents: "none" }}>
@@ -1059,14 +1091,16 @@
           Merchant Name
         </details>
 
-        <details style={{ pointerEvents: "none" }}>
+        <details open>
           <summary>
-            <strong>signatureStatus</strong> <em>(Enum of ThreeDSSignatureStatusType)</em>
+            <strong>signatureStatus</strong> <em>(ThreeDSSignatureStatusType)</em>
           </summary>
           Signature value
-          Possible values:
-          `SIGNATURE_VALIDATED`  
-          `SIGNATURE_NOT_VALIDATED`  
+          <strong>Possible values:</strong>
+          <ul>
+            <li><code>SIGNATURE_VALIDATED</code>: Signature of the payer response has been validated successfully</li>
+            <li><code>SIGNATURE_NOT_VALIDATED</code>: Signature of the payer response could not be validated</li>
+          </ul>
         </details>
       </details>
     </details>
@@ -1092,17 +1126,19 @@
       The card holder's surname.
     </details>
 
-    <details style={{ pointerEvents: "none" }}>
+    <details open>
       <summary>
-        <strong>title</strong> <em>(Enum of PersonalTitleType)</em>
+        <strong>title</strong> <em>(PersonalTitleType)</em>
       </summary>
       Holder’s title.
-      Possible values:
-      `MR`  
-      `MRS`  
-      `MISS`  
-      `MS`  
-      `NOT_SPECIFIED`  
+      <strong>Possible values:</strong>
+      <ul>
+        <li><code>MR</code>: To refer to a man. Is not possible know if it is married or single.</li>
+        <li><code>MRS</code>: To refer to a married woman</li>
+        <li><code>MISS</code>: To refer to a single woman</li>
+        <li><code>MS</code>: To refer to a woman. Is not possible know if it is married or single.</li>
+        <li><code>NOT_SPECIFIED</code>: Deprecated 2025-08-08. PersonalTitleType is optional in inputs and outputs.</li>
+      </ul>
     </details>
 
     <details>
@@ -1153,20 +1189,22 @@
       </summary>
       Passenger ID documents.
 
-      <details style={{ pointerEvents: "none" }}>
+      <details open>
         <summary>
-          <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of DocumentType)</em>
+          <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(DocumentType)</em>
         </summary>
         Document type.
-        Possible values:
-        `DNI`  
-        `NIE`  
-        `PASSPORT`  
-        `DRIVER_LICENSE`  
-        `CPF`  
-        `PAN`  
-        `SSN`  
-        `OTHER`  
+        <strong>Possible values:</strong>
+        <ul>
+          <li><code>DNI</code></li>
+          <li><code>NIE</code></li>
+          <li><code>PASSPORT</code></li>
+          <li><code>DRIVER_LICENSE</code></li>
+          <li><code>CPF</code></li>
+          <li><code>PAN</code></li>
+          <li><code>SSN</code></li>
+          <li><code>OTHER</code></li>
+        </ul>
       </details>
 
       <details style={{ pointerEvents: "none" }}>

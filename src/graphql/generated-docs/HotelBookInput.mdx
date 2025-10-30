@@ -1,9 +1,9 @@
 
 <details>
   <summary>
-    <strong>HotelBookInput</strong> <em>(INPUT_OBJECT)</em>
+  **HotelBookInput** (*INPUT_OBJECT*)  
+  Offers versatility in book options, with certain fields marked as mandatory (optionRefId, clientReference, holder etc.) and others as optional (language, delta price, payment card etc.). This flexibility empowers you to create a personalized Book Multation, tailoring the requested fields to your specific needs.  
   </summary>
-    Offers versatility in book options, with certain fields marked as mandatory (optionRefId, clientReference, holder etc.) and others as optional (language, delta price, payment card etc.). This flexibility empowers you to create a personalized Book Multation, tailoring the requested fields to your specific needs.
   
   <details style={{ pointerEvents: "none" }}>
     <summary>
@@ -66,35 +66,37 @@
     </summary>
     If the payment is done by credit card, it's mandatory to specify the payment type and the credit card information.
 
-    <details style={{ pointerEvents: "none" }}>
+    <details open>
       <summary>
-        <strong>type</strong> <em>(Enum of PaymentCardType)</em>
+        <strong>type</strong> <em>(PaymentCardType)</em>
       </summary>
       Indicates the supported card type, the supported card for this option is shown in Quote step.
-      Possible values:
-      `VI`  
-      `AX`  
-      `BC`  
-      `CA`  
-      `CB`  
-      `CU`  
-      `DS`  
-      `DC`  
-      `T`  
-      `R`  
-      `N`  
-      `L`  
-      `E`  
-      `JC`  
-      `TO`  
-      `S`  
-      `EC`  
-      `EU`  
-      `TP`  
-      `OP`  
-      `ER`  
-      `XS`  
-      `O`  
+      <strong>Possible values:</strong>
+      <ul>
+        <li><code>VI</code>: Visa</li>
+        <li><code>AX</code>: American Express</li>
+        <li><code>BC</code>: BC Card</li>
+        <li><code>CA</code>: MasterCard</li>
+        <li><code>CB</code>: Carte Blanche</li>
+        <li><code>CU</code>: China Union Pay</li>
+        <li><code>DS</code>: Discover</li>
+        <li><code>DC</code>: Diners Club</li>
+        <li><code>T</code>: Carta Si</li>
+        <li><code>R</code>: Carte Bleue</li>
+        <li><code>N</code>: Dankort</li>
+        <li><code>L</code>: Delta</li>
+        <li><code>E</code>: Electron</li>
+        <li><code>JC</code>: Japan Credit Bureau</li>
+        <li><code>TO</code>: Maestro</li>
+        <li><code>S</code>: Switch</li>
+        <li><code>EC</code>: Electronic Cash</li>
+        <li><code>EU</code>: EuroCard</li>
+        <li><code>TP</code>: universal air travel card</li>
+        <li><code>OP</code>: optima</li>
+        <li><code>ER</code>: Air Canada/RnRoute</li>
+        <li><code>XS</code>: access</li>
+        <li><code>O</code>: others</li>
+      </ul>
     </details>
 
     <details>
@@ -117,17 +119,19 @@
         The card holder's surname.
       </details>
 
-      <details style={{ pointerEvents: "none" }}>
+      <details open>
         <summary>
-          <strong>title</strong> <em>(Enum of PersonalTitleType)</em>
+          <strong>title</strong> <em>(PersonalTitleType)</em>
         </summary>
         Holder’s title.
-        Possible values:
-        `MR`  
-        `MRS`  
-        `MISS`  
-        `MS`  
-        `NOT_SPECIFIED`  
+        <strong>Possible values:</strong>
+        <ul>
+          <li><code>MR</code>: To refer to a man. Is not possible know if it is married or single.</li>
+          <li><code>MRS</code>: To refer to a married woman</li>
+          <li><code>MISS</code>: To refer to a single woman</li>
+          <li><code>MS</code>: To refer to a woman. Is not possible know if it is married or single.</li>
+          <li><code>NOT_SPECIFIED</code>: Deprecated 2025-08-08. PersonalTitleType is optional in inputs and outputs.</li>
+        </ul>
       </details>
 
       <details>
@@ -178,20 +182,22 @@
         </summary>
         Passenger ID documents.
 
-        <details style={{ pointerEvents: "none" }}>
+        <details open>
           <summary>
-            <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of DocumentType)</em>
+            <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(DocumentType)</em>
           </summary>
           Document type.
-          Possible values:
-          `DNI`  
-          `NIE`  
-          `PASSPORT`  
-          `DRIVER_LICENSE`  
-          `CPF`  
-          `PAN`  
-          `SSN`  
-          `OTHER`  
+          <strong>Possible values:</strong>
+          <ul>
+            <li><code>DNI</code></li>
+            <li><code>NIE</code></li>
+            <li><code>PASSPORT</code></li>
+            <li><code>DRIVER_LICENSE</code></li>
+            <li><code>CPF</code></li>
+            <li><code>PAN</code></li>
+            <li><code>SSN</code></li>
+            <li><code>OTHER</code></li>
+          </ul>
         </details>
 
         <details style={{ pointerEvents: "none" }}>
@@ -363,29 +369,33 @@
         Payer Authentication Response. It is the response to the Payer Authentication Request. The Payer Authentication Response has an XML structure with the information from the response of the authentication, and it contains a digital certificate as a sign of authenticity.
       </details>
 
-      <details style={{ pointerEvents: "none" }}>
+      <details open>
         <summary>
-          <strong>payerResponseStatus</strong> <em>(Enum of PayerResponseStatusType)</em>
+          <strong>payerResponseStatus</strong> <em>(PayerResponseStatusType)</em>
         </summary>
         Payer Authentication Response status
-        Possible values:
-        `AUTHENTICATION_SUCCESS`  
-        `AUTHENTICATION_FAILED`  
-        `AUTHENTICATION_INCOMPLETE`  
-        `TRANSACTION_ATTEMPT_SUCCESS_A`  
-        `TRANSACTION_ATTEMPT_SUCCESS_B`  
-        `AUTHENTICATION_REJECTED`  
+        <strong>Possible values:</strong>
+        <ul>
+          <li><code>AUTHENTICATION_SUCCESS</code>: Successful Authentication</li>
+          <li><code>AUTHENTICATION_FAILED</code>: Failed Authentication</li>
+          <li><code>AUTHENTICATION_INCOMPLETE</code>: Unable to Complete Authentication</li>
+          <li><code>TRANSACTION_ATTEMPT_SUCCESS_A</code>: Successful Attempts Transaction</li>
+          <li><code>TRANSACTION_ATTEMPT_SUCCESS_B</code>: Successful Attempts Transaction</li>
+          <li><code>AUTHENTICATION_REJECTED</code>: Authentication Rejected (Merchant must not submit for authorisation)</li>
+        </ul>
       </details>
 
-      <details style={{ pointerEvents: "none" }}>
+      <details open>
         <summary>
-          <strong>cardEnrolledStatus</strong> <em>(Enum of ThreeDSCardEnrolledStatusType)</em>
+          <strong>cardEnrolledStatus</strong> <em>(ThreeDSCardEnrolledStatusType)</em>
         </summary>
         Result of enrollment status of the service request
-        Possible values:
-        `CARD_ENROLLED`  
-        `CARD_NOT_ENROLLED`  
-        `CANT_AUTHENTICATE`  
+        <strong>Possible values:</strong>
+        <ul>
+          <li><code>CARD_ENROLLED</code>: Card enrolled</li>
+          <li><code>CARD_NOT_ENROLLED</code>: Card not enrolled</li>
+          <li><code>CANT_AUTHENTICATE</code>: Can not authenticate</li>
+        </ul>
       </details>
 
       <details style={{ pointerEvents: "none" }}>
@@ -395,14 +405,16 @@
         Merchant Name
       </details>
 
-      <details style={{ pointerEvents: "none" }}>
+      <details open>
         <summary>
-          <strong>signatureStatus</strong> <em>(Enum of ThreeDSSignatureStatusType)</em>
+          <strong>signatureStatus</strong> <em>(ThreeDSSignatureStatusType)</em>
         </summary>
         Signature value
-        Possible values:
-        `SIGNATURE_VALIDATED`  
-        `SIGNATURE_NOT_VALIDATED`  
+        <strong>Possible values:</strong>
+        <ul>
+          <li><code>SIGNATURE_VALIDATED</code>: Signature of the payer response has been validated successfully</li>
+          <li><code>SIGNATURE_NOT_VALIDATED</code>: Signature of the payer response could not be validated</li>
+        </ul>
       </details>
     </details>
   </details>
@@ -434,17 +446,19 @@
       The card holder's surname.
     </details>
 
-    <details style={{ pointerEvents: "none" }}>
+    <details open>
       <summary>
-        <strong>title</strong> <em>(Enum of PersonalTitleType)</em>
+        <strong>title</strong> <em>(PersonalTitleType)</em>
       </summary>
       Holder’s title.
-      Possible values:
-      `MR`  
-      `MRS`  
-      `MISS`  
-      `MS`  
-      `NOT_SPECIFIED`  
+      <strong>Possible values:</strong>
+      <ul>
+        <li><code>MR</code>: To refer to a man. Is not possible know if it is married or single.</li>
+        <li><code>MRS</code>: To refer to a married woman</li>
+        <li><code>MISS</code>: To refer to a single woman</li>
+        <li><code>MS</code>: To refer to a woman. Is not possible know if it is married or single.</li>
+        <li><code>NOT_SPECIFIED</code>: Deprecated 2025-08-08. PersonalTitleType is optional in inputs and outputs.</li>
+      </ul>
     </details>
 
     <details>
@@ -495,20 +509,22 @@
       </summary>
       Passenger ID documents.
 
-      <details style={{ pointerEvents: "none" }}>
+      <details open>
         <summary>
-          <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of DocumentType)</em>
+          <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(DocumentType)</em>
         </summary>
         Document type.
-        Possible values:
-        `DNI`  
-        `NIE`  
-        `PASSPORT`  
-        `DRIVER_LICENSE`  
-        `CPF`  
-        `PAN`  
-        `SSN`  
-        `OTHER`  
+        <strong>Possible values:</strong>
+        <ul>
+          <li><code>DNI</code></li>
+          <li><code>NIE</code></li>
+          <li><code>PASSPORT</code></li>
+          <li><code>DRIVER_LICENSE</code></li>
+          <li><code>CPF</code></li>
+          <li><code>PAN</code></li>
+          <li><code>SSN</code></li>
+          <li><code>OTHER</code></li>
+        </ul>
       </details>
 
       <details style={{ pointerEvents: "none" }}>
@@ -595,17 +611,19 @@
         Passenger age on the day of the check-in
       </details>
 
-      <details style={{ pointerEvents: "none" }}>
+      <details open>
         <summary>
-          <strong>title</strong> <em>(Enum of PersonalTitleType)</em>
+          <strong>title</strong> <em>(PersonalTitleType)</em>
         </summary>
         Passenger title.
-        Possible values:
-        `MR`  
-        `MRS`  
-        `MISS`  
-        `MS`  
-        `NOT_SPECIFIED`  
+        <strong>Possible values:</strong>
+        <ul>
+          <li><code>MR</code>: To refer to a man. Is not possible know if it is married or single.</li>
+          <li><code>MRS</code>: To refer to a married woman</li>
+          <li><code>MISS</code>: To refer to a single woman</li>
+          <li><code>MS</code>: To refer to a woman. Is not possible know if it is married or single.</li>
+          <li><code>NOT_SPECIFIED</code>: Deprecated 2025-08-08. PersonalTitleType is optional in inputs and outputs.</li>
+        </ul>
       </details>
 
       <details style={{ pointerEvents: "none" }}>
@@ -621,20 +639,22 @@
         </summary>
         Passenger ID documents.
 
-        <details style={{ pointerEvents: "none" }}>
+        <details open>
           <summary>
-            <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of DocumentType)</em>
+            <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(DocumentType)</em>
           </summary>
           Document type.
-          Possible values:
-          `DNI`  
-          `NIE`  
-          `PASSPORT`  
-          `DRIVER_LICENSE`  
-          `CPF`  
-          `PAN`  
-          `SSN`  
-          `OTHER`  
+          <strong>Possible values:</strong>
+          <ul>
+            <li><code>DNI</code></li>
+            <li><code>NIE</code></li>
+            <li><code>PASSPORT</code></li>
+            <li><code>DRIVER_LICENSE</code></li>
+            <li><code>CPF</code></li>
+            <li><code>PAN</code></li>
+            <li><code>SSN</code></li>
+            <li><code>OTHER</code></li>
+          </ul>
         </details>
 
         <details style={{ pointerEvents: "none" }}>

@@ -36,6 +36,9 @@ The following steps must be completed by the **Buyer**:
     }
     ```
 
+:::info FastX Codes in GIATA
+Working with FastX Codes? Good news! GIATA mapping is now easier than ever. With Travelgate listed in GIATA’s system as **"travelgate"**, GIATA data is directly available for FastX Codes too.
+:::
 
 ### Why are some hotels missing GIATA codes?
 Not all hotels returned by suppliers through Travelgate are necessarily mapped in the GIATA system. Since Travelgate pulls data directly from GIATA’s database, any unmapped properties will not include a GIATA code. If you need GIATA data for those hotels, please **contact GIATA** to request mapping.

@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const fetch = require("node-fetch").default;
+const fetch = (...args) => import("node-fetch").then(({ default: fetch }) => fetch(...args));
 
 const GRAPHQL_ENDPOINT = "https://api.travelgate.com";
 const TRAVELGATE_API_KEY = process.env.TRAVELGATE_API_KEY || "test0000-0000-0000-0000-000000000000";
@@ -434,7 +434,22 @@ function getTypeRef(type, typeMap, visited = new Set()) {
     };
   }
 
-  // For scalars, just return name/kind
+  // ✅ ENUMs: include enumValues inline if available in typeMap
+  if (current.kind === "ENUM" && typeMap[current.name]?.enumValues) {
+    return {
+      name: current.name,
+      kind: current.kind,
+      isRequired,
+      isList,
+      isItemNonNull,
+      enumValues: typeMap[current.name].enumValues.map(ev => ({
+        name: ev.name,
+        description: ev.description || ""
+      }))
+    };
+  }
+
+  // SCALARS or fallback
   return {
     name: current.name,
     kind: current.kind,
@@ -442,6 +457,7 @@ function getTypeRef(type, typeMap, visited = new Set()) {
     isList,
     isItemNonNull
   };
+
 }
 
 

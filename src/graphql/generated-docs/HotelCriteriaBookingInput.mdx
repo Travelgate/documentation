@@ -6,151 +6,155 @@
 If you are using our Hotelx locator (bookingID) you don t need to indicate any of the other fields  
   </summary>
   
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+      <strong>accessCode</strong> <em>(String)</em>
+    </summary>
+    Name of the access that have to use in the request. Necessary if your search if by references or by dates.
+  </details>
+
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+      <strong>language</strong> <em>(Language)</em>
+    </summary>
+    The language code.
+  </details>
+
+  <details open>
+    <summary>
+      <strong>typeSearch</strong> <em>(BookingCriteriaType)</em>
+    </summary>
+    The search type criteria. Necessary if your search if by references or by dates.
+    <strong>Possible values:</strong>
+    <ul>
+      <li><code>DATES</code>: Search by date range</li>
+      <li><code>REFERENCES</code>: Search by reference codes</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>
+      <strong>references</strong> <em>(CriteriaBookingReferencesInput)</em>
+    </summary>
+    The references criteria.
+
     <details style={{ pointerEvents: "none" }}>
       <summary>
-      **accessCode** (*String*)  
-      Name of the access that have to use in the request. Necessary if your search if by references or by dates.  
+        <strong>hotelCode</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
       </summary>
+      The hotel code.
     </details>
 
     <details style={{ pointerEvents: "none" }}>
       <summary>
-      **language** (*Language*)  
-      The language code.  
+        <strong>currency</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Currency)</em>
       </summary>
-    </details>
-
-    <details style={{ pointerEvents: "none" }}>
-      <summary>
-      **typeSearch** (*Enum of BookingCriteriaType*)  
-      The search type criteria. Necessary if your search if by references or by dates.  
-      Possible values:  
-      `DATES`  
-    `REFERENCES`  
-      </summary>
+      The requested currency. The API will convert to this currency if supplier returns a different one.
     </details>
 
     <details>
       <summary>
-      **references** (*CriteriaBookingReferencesInput*)  
-      The references criteria.  
+        <strong>references</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(BookReferenceInput)</em>
       </summary>
-  
+      Contains all the reservation references.
+
       <details style={{ pointerEvents: "none" }}>
         <summary>
-        **hotelCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-        The hotel code.  
+          <strong>client</strong> <em>(String)</em>
         </summary>
+        The client's booking reference
       </details>
 
       <details style={{ pointerEvents: "none" }}>
         <summary>
-        **currency**&nbsp;<span class="required"> *</span>&nbsp; (*Currency*)  
-        The requested currency. The API will convert to this currency if supplier returns a different one.  
+          <strong>supplier</strong> <em>(String)</em>
         </summary>
+        The supplier's booking reference
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>hotel</strong> <em>(String)</em>
+        </summary>
+        The hotel's reference
       </details>
 
       <details>
         <summary>
-        **references**&nbsp;<span class="required"> *</span>&nbsp; (*BookReferenceInput*)  
-        Contains all the reservation references.  
+          <strong>dates</strong> <em>(BookReferenceDatesInput)</em>
         </summary>
-  
+        Used to receive a list of all the reservations made in a specific type frame. However, even if you are looking for a specific booking using references,
+        this field may be mandatory for some suppliers.
+
         <details style={{ pointerEvents: "none" }}>
           <summary>
-          **client** (*String*)  
-          The client's booking reference  
+            <strong>start</strong> <em>(Date)</em>
           </summary>
+          Start or check-in booking date
+          Format: YYYY-MM-DD
         </details>
 
         <details style={{ pointerEvents: "none" }}>
           <summary>
-          **supplier** (*String*)  
-          The supplier's booking reference  
+            <strong>end</strong> <em>(Date)</em>
           </summary>
+          End or check-out booking date
+          Format: YYYY-MM-DD
         </details>
 
         <details style={{ pointerEvents: "none" }}>
           <summary>
-          **hotel** (*String*)  
-          The hotel's reference  
+            <strong>creation</strong> <em>(Date)</em>
           </summary>
-        </details>
-
-        <details>
-          <summary>
-          **dates** (*BookReferenceDatesInput*)  
-          Used to receive a list of all the reservations made in a specific type frame. However, even if you are looking for a specific booking using references,
-this field may be mandatory for some suppliers.  
-          </summary>
-  
-          <details style={{ pointerEvents: "none" }}>
-            <summary>
-            **start** (*Date*)  
-            Start or check-in booking date
-Format: YYYY-MM-DD  
-            </summary>
-          </details>
-
-          <details style={{ pointerEvents: "none" }}>
-            <summary>
-            **end** (*Date*)  
-            End or check-out booking date
-Format: YYYY-MM-DD  
-            </summary>
-          </details>
-
-          <details style={{ pointerEvents: "none" }}>
-            <summary>
-            **creation** (*Date*)  
-            Booking creation date
-Format: YYYY-MM-DD  
-            </summary>
-          </details>
+          Booking creation date
+          Format: YYYY-MM-DD
         </details>
       </details>
     </details>
+  </details>
 
-    <details>
+  <details>
+    <summary>
+      <strong>dates</strong> <em>(CriteriaBookingDatesInput)</em>
+    </summary>
+    The dates criteria.
+
+    <details open>
       <summary>
-      **dates** (*CriteriaBookingDatesInput*)  
-      The dates criteria.  
+        <strong>dateType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(DateType)</em>
       </summary>
-  
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **dateType**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of DateType*)  
-        Type of date. Can be Arrival or Booking date.  
-        Possible values:  
-        `ARRIVAL`  
-      `BOOKING`  
-        </summary>
-      </details>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **start**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-        Start date.
-Format: YYYY-MM-DD.
-Start of date range  
-        </summary>
-      </details>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **end**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-        End date.
-Format: YYYY-MM-DD.
-End of date range  
-        </summary>
-      </details>
+      Type of date. Can be Arrival or Booking date.
+      <strong>Possible values:</strong>
+      <ul>
+        <li><code>ARRIVAL</code>: Arrival Date</li>
+        <li><code>BOOKING</code>: Booking Creation</li>
+      </ul>
     </details>
 
     <details style={{ pointerEvents: "none" }}>
       <summary>
-      **bookingID** (*String*)  
-      HotelX s booking reference  
+        <strong>start</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
       </summary>
+      Start date.
+      Format: YYYY-MM-DD.
+      Start of date range
     </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>end</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+      </summary>
+      End date.
+      Format: YYYY-MM-DD.
+      End of date range
+    </details>
+  </details>
+
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+      <strong>bookingID</strong> <em>(String)</em>
+    </summary>
+    HotelX s booking reference
+  </details>
   
 </details>

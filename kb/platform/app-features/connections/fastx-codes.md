@@ -112,6 +112,12 @@ Sellers use this section to **validate or invalidate suggested mappings** betwee
 
 Buyers use this section to **visualize the FastX master hotel and board list** and monitor Supplier mappings.
 
+### Step-by-Step Guide
+
+1. **Log in** to the Travelgate Portal.
+2. Switch to **Buyer mode** and navigate to the [FastX Codes section](https://app.travelgate.com/connections/mapping).
+3. Select a Client from your organization to see the mapping content.
+
 ![fastx-buyer-mode](https://stplaformwe.blob.core.windows.net/kbase/fastx_codes_buyer_mode.png)
 
 

@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # Travelgate's Business Model
 
-Travelgate's pull API business model is designed to simplify access to the Marketplace. With a single request using a unique FastX hotel code, Buyers can access the portfolio of one or more Suppliers connected to the platform. This eliminates the need to manage individual Supplier codes and mappings, streamlining integration.
+Travelgate's Pull API business model is designed to simplify access to the Marketplace. With a single request using a unique FastX hotel code, Buyers can access the portfolio of one or more Suppliers connected to the platform. This eliminates the need to manage individual Supplier codes and mappings, streamlining integration.
 
 The responses are fundamentally centered around the concept of **options**, which serve as comprehensive "packages" encapsulating all information required for a Buyer to understand and confirm a booking. Each option includes crucial details such as price, policies, and board information.
 

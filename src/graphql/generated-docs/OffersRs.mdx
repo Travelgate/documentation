@@ -6,210 +6,214 @@
   </summary>
   
   
-    <details>
+  <details>
+    <summary>
+      <strong>adviseMessages</strong> <em>(AdviseMessage)</em>
+    </summary>
+    Gets or sets the list of advise messages associated with the offers.
+    See AdviseMessage.
+
+    <details style={{ pointerEvents: "none" }}>
       <summary>
-      **adviseMessages** (*AdviseMessage*)  
-      Gets or sets the list of advise messages associated with the offers.
-See AdviseMessage.  
+        <strong>code</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
       </summary>
-  
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-        AM code: The following codes can be returned:  
-        </summary>
-      </details>
+      AM code: The following codes can be returned:
+    </details>
 
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **description**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-        Error description  
-        </summary>
-      </details>
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>description</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+      </summary>
+      Error description
+    </details>
 
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **level**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of AdviseMessageLevel*)  
-        Indicates the level of importance of the message.
-Possible values: ERROR, WARN, INFO.  
-        Possible values:  
-        `WARN`  
-      `ERROR`  
-      `INFO`  
-        </summary>
-      </details>
-
-      <details>
-        <summary>
-        **external** (*ExternalMessage*)  
-        Specify the external message.  
-        </summary>
-  
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **code** (*String*)  
-          External code.  
-          </summary>
-        </details>
-
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **message**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-          External message.  
-          </summary>
-        </details>
-      </details>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **correlationID**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-        Identifier to investigate the cause of the error.  
-        </summary>
-      </details>
+    <details open>
+      <summary>
+        <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
+      </summary>
+      Indicates the level of importance of the message.
+      Possible values: ERROR, WARN, INFO.
+      <strong>Possible values:</strong>
+      <ul>
+        <li><code>WARN</code>: Warning message.</li>
+        <li><code>ERROR</code>: Error message.</li>
+        <li><code>INFO</code>: Info message.</li>
+      </ul>
     </details>
 
     <details>
       <summary>
-      **offers** (*OfferDto*)  
-      Gets or sets the list of offers.
-See OfferDto.  
+        <strong>external</strong> <em>(ExternalMessage)</em>
       </summary>
-  
+      Specify the external message.
+
       <details style={{ pointerEvents: "none" }}>
         <summary>
-        **rateCode** (*String*)  
-        The rate code of the offer.  
+          <strong>code</strong> <em>(String)</em>
         </summary>
+        External code.
       </details>
 
       <details style={{ pointerEvents: "none" }}>
         <summary>
-        **code** (*String*)  
-        The offer code.  
+          <strong>message</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
         </summary>
-      </details>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **isActive**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-        Indicates whether the offer is active.  
-        </summary>
-      </details>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **description** (*String*)  
-        The description of the offer.  
-        </summary>
-      </details>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **nightsType**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of NightsType*)  
-        The type of the offer.  
-        Possible values:  
-        `FIRST`  
-      `LAST`  
-      `CHEAPEST`  
-        </summary>
-      </details>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **maxLos** (*Int*)  
-        The maximum length of stay for the offer.
-        </summary>
-      </details>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **minLos** (*Int*)  
-        The minimum length of stay for the offer.
-        </summary>
-      </details>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **applyFrom** (*DateTime*)  
-        The start date when the offer applies.  
-        </summary>
-      </details>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **applyTo** (*DateTime*)  
-        The end date when the offer applies.  
-        </summary>
-      </details>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **numberOfNights** (*Int*)  
-        The number of free nights for the offer.
-        </summary>
-      </details>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **roomCodes** (*String*)  
-        The room codes associated with the offer.  
-        </summary>
-      </details>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **mon** (*Boolean*)  
-        Indicates whether the offer applies on Monday.  
-        </summary>
-      </details>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **tue** (*Boolean*)  
-        Indicates whether the offer applies on Tuesday.  
-        </summary>
-      </details>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **wed** (*Boolean*)  
-        Indicates whether the offer applies on Wednesday.  
-        </summary>
-      </details>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **thu** (*Boolean*)  
-        Indicates whether the offer applies on Thursday.  
-        </summary>
-      </details>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **fri** (*Boolean*)  
-        Indicates whether the offer applies on Friday.  
-        </summary>
-      </details>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **sat** (*Boolean*)  
-        Indicates whether the offer applies on Saturday.  
-        </summary>
-      </details>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **sun** (*Boolean*)  
-        Indicates whether the offer applies on Sunday.  
-        </summary>
+        External message.
       </details>
     </details>
 
     <details style={{ pointerEvents: "none" }}>
       <summary>
-      **success**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-      Gets a value indicating whether the operation was successful.  
+        <strong>correlationID</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
       </summary>
+      Identifier to investigate the cause of the error.
     </details>
+  </details>
+
+  <details>
+    <summary>
+      <strong>offers</strong> <em>(OfferDto)</em>
+    </summary>
+    Gets or sets the list of offers.
+    See OfferDto.
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>rateCode</strong> <em>(String)</em>
+      </summary>
+      The rate code of the offer.
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>code</strong> <em>(String)</em>
+      </summary>
+      The offer code.
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>isActive</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+      </summary>
+      Indicates whether the offer is active.
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>description</strong> <em>(String)</em>
+      </summary>
+      The description of the offer.
+    </details>
+
+    <details open>
+      <summary>
+        <strong>nightsType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(NightsType)</em>
+      </summary>
+      The type of the offer.
+      <strong>Possible values:</strong>
+      <ul>
+        <li><code>FIRST</code>: Apply to the first nights.</li>
+        <li><code>LAST</code>: Apply to the last nights.</li>
+        <li><code>CHEAPEST</code>: Apply to the cheapest nights.</li>
+      </ul>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>maxLos</strong> <em>(Int)</em>
+      </summary>
+      The maximum length of stay for the offer.
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>minLos</strong> <em>(Int)</em>
+      </summary>
+      The minimum length of stay for the offer.
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>applyFrom</strong> <em>(DateTime)</em>
+      </summary>
+      The start date when the offer applies.
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>applyTo</strong> <em>(DateTime)</em>
+      </summary>
+      The end date when the offer applies.
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>numberOfNights</strong> <em>(Int)</em>
+      </summary>
+      The number of free nights for the offer.
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>roomCodes</strong> <em>(String)</em>
+      </summary>
+      The room codes associated with the offer.
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>mon</strong> <em>(Boolean)</em>
+      </summary>
+      Indicates whether the offer applies on Monday.
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>tue</strong> <em>(Boolean)</em>
+      </summary>
+      Indicates whether the offer applies on Tuesday.
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>wed</strong> <em>(Boolean)</em>
+      </summary>
+      Indicates whether the offer applies on Wednesday.
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>thu</strong> <em>(Boolean)</em>
+      </summary>
+      Indicates whether the offer applies on Thursday.
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>fri</strong> <em>(Boolean)</em>
+      </summary>
+      Indicates whether the offer applies on Friday.
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>sat</strong> <em>(Boolean)</em>
+      </summary>
+      Indicates whether the offer applies on Saturday.
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>sun</strong> <em>(Boolean)</em>
+      </summary>
+      Indicates whether the offer applies on Sunday.
+    </details>
+  </details>
+
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+      <strong>success</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+    </summary>
+    Gets a value indicating whether the operation was successful.
+  </details>
 </details>

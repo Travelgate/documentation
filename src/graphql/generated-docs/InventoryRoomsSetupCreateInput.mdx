@@ -5,107 +5,109 @@
   Rooms setup create input.  
   </summary>
   
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+      <strong>clientCode</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+    </summary>
+    Client code.
+  </details>
+
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+      <strong>supplierCode</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+    </summary>
+    Travelgate Supplier/Channel code.
+  </details>
+
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+      <strong>rateCode</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+    </summary>
+    Rate code associated with the rooms.
+  </details>
+
+  <details>
+    <summary>
+      <strong>rooms</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(InventoryRoomSetupInput)</em>
+    </summary>
+    Rooms input data.
+
     <details style={{ pointerEvents: "none" }}>
       <summary>
-      **clientCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-      Client code.  
+        <strong>code</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
       </summary>
+      Code associated with the room.
     </details>
 
     <details style={{ pointerEvents: "none" }}>
       <summary>
-      **supplierCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-      Travelgate Supplier/Channel code.  
+        <strong>masterCode</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
       </summary>
+      Master code of the room.
     </details>
 
     <details style={{ pointerEvents: "none" }}>
       <summary>
-      **rateCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-      Rate code associated with the rooms.  
+        <strong>active</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
       </summary>
+      Indicates whether the room is active.
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>externalCode</strong> <em>(String)</em>
+      </summary>
+      External code associated with the room.
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>standard</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Int)</em>
+      </summary>
+      Standard of the room. Typically the number of guests.
     </details>
 
     <details>
       <summary>
-      **rooms**&nbsp;<span class="required"> *</span>&nbsp; (*InventoryRoomSetupInput*)  
-      Rooms input data.  
+        <strong>uses</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(InventoryRoomUseInput)</em>
       </summary>
-  
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **code**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-        Code associated with the room.  
-        </summary>
-      </details>
+      List of uses associated with the room. The format is Adults-Children-Infants
 
       <details style={{ pointerEvents: "none" }}>
         <summary>
-        **masterCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-        Master code of the room.  
+          <strong>numberOfGuests</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Int)</em>
         </summary>
+        Gets or sets the number of guests allowed in the room.
       </details>
 
-      <details style={{ pointerEvents: "none" }}>
+      <details open>
         <summary>
-        **active**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-        Indicates whether the room is active.  
+          <strong>paxType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(InventoryPaxType)</em>
         </summary>
-      </details>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **externalCode** (*String*)  
-        External code associated with the room.  
-        </summary>
-      </details>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **standard**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
-        Standard of the room. Typically the number of guests.
-        </summary>
-      </details>
-
-      <details>
-        <summary>
-        **uses**&nbsp;<span class="required"> *</span>&nbsp; (*InventoryRoomUseInput*)  
-        List of uses associated with the room. The format is Adults-Children-Infants  
-        </summary>
-  
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **numberOfGuests**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
-          Gets or sets the number of guests allowed in the room.
-          </summary>
-        </details>
-
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **paxType**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of InventoryPaxType*)  
-          Gets or sets the type of guests allowed in the room.
-PaxType  
-          Possible values:  
-          `INFANT`  
-        `CHILD`  
-        `ADULT`  
-          </summary>
-        </details>
+        Gets or sets the type of guests allowed in the room.
+        PaxType
+        <strong>Possible values:</strong>
+        <ul>
+          <li><code>INFANT</code>: Represents an infant guest.</li>
+          <li><code>CHILD</code>: Represents a child guest.</li>
+          <li><code>ADULT</code>: Represents an adult guest.</li>
+        </ul>
       </details>
     </details>
+  </details>
 
-    <details style={{ pointerEvents: "none" }}>
-      <summary>
-      **hotelCode**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-      Code associated with the hotel.  
-      </summary>
-    </details>
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+      <strong>hotelCode</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+    </summary>
+    Code associated with the hotel.
+  </details>
 
-    <details style={{ pointerEvents: "none" }}>
-      <summary>
-      **contextCode** (*String*)  
-      Context code.  
-      </summary>
-    </details>
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+      <strong>contextCode</strong> <em>(String)</em>
+    </summary>
+    Context code.
+  </details>
   
 </details>

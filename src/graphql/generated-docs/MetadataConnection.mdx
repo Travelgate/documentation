@@ -6,2649 +6,2667 @@
   </summary>
   
   
+  <details>
+    <summary>
+      <strong>edges</strong> <em>(MetadataEdge)</em>
+    </summary>
+    contains informations of each metadata requested
+
     <details>
       <summary>
-      **edges** (*MetadataEdge*)  
-      contains informations of each metadata requested  
+        <strong>node</strong> <em>(Metadata)</em>
       </summary>
-  
+      contain information of each metadata requested
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>code</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
+        </summary>
+        Metadata supplier ID
+      </details>
+
       <details>
         <summary>
-        **node** (*Metadata*)  
-        contain information of each metadata requested  
+          <strong>metadataData</strong> <em>(MetadataData)</em>
         </summary>
-  
+        Metadata data
+
         <details style={{ pointerEvents: "none" }}>
           <summary>
-          **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-          Metadata supplier ID  
+            <strong>supplierCode</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
           </summary>
+          Requested supplier code
         </details>
 
         <details>
           <summary>
-          **metadataData** (*MetadataData*)  
-          Metadata data  
+            <strong>search</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(MetadataSearch)</em>
           </summary>
-  
-          <details style={{ pointerEvents: "none" }}>
+          Search metadata
+
+          <details>
             <summary>
-            **supplierCode**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-            Requested supplier code  
+              <strong>destinations</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(MetadataSearchDestinations)</em>
             </summary>
+            Contains information regarding the destinations
+
+            <details>
+              <summary>
+                <strong>maxNumberHotels</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedInt)</em>
+              </summary>
+              Maximum number of hotels that can be requested.
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                  <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+                </summary>
+                Last reviewed date
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                  <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Int)</em>
+                </summary>
+
+              </details>
+            </details>
+
+            <details>
+              <summary>
+                <strong>recommendedNumberHotels</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedInt)</em>
+              </summary>
+              Recomended number of hotels.
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                  <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+                </summary>
+                Last reviewed date
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                  <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Int)</em>
+                </summary>
+
+              </details>
+            </details>
+
+            <details>
+              <summary>
+                <strong>maxNumberCities</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedInt)</em>
+              </summary>
+              Maximum number of cities that can be requested.
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                  <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+                </summary>
+                Last reviewed date
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                  <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Int)</em>
+                </summary>
+
+              </details>
+            </details>
+
+            <details>
+              <summary>
+                <strong>recommendedNumberCities</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedInt)</em>
+              </summary>
+              Recomended number of cities.
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                  <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+                </summary>
+                Last reviewed date
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                  <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Int)</em>
+                </summary>
+
+              </details>
+            </details>
+
+            <details>
+              <summary>
+                <strong>maxNumberZones</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedInt)</em>
+              </summary>
+              Maximum number of zones that can be requested.
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                  <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+                </summary>
+                Last reviewed date
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                  <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Int)</em>
+                </summary>
+
+              </details>
+            </details>
+
+            <details>
+              <summary>
+                <strong>recommendedNumberZones</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedInt)</em>
+              </summary>
+              Recomended number of zones.
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                  <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+                </summary>
+                Last reviewed date
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                  <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Int)</em>
+                </summary>
+
+              </details>
+            </details>
+
+            <details>
+              <summary>
+                <strong>hotelSameDestinationRestriction</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+              </summary>
+              Required all hotels from same destination
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                  <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+                </summary>
+                Last reviewed date
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                  <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+                </summary>
+
+              </details>
+            </details>
           </details>
 
           <details>
             <summary>
-            **search**&nbsp;<span class="required"> *</span>&nbsp; (*MetadataSearch*)  
-            Search metadata  
+              <strong>allowsCurrency</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
             </summary>
-  
+            If true, it is possible to request the currency.
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>implementsCombination</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+            </summary>
+            Informs whether the integration allows room combination or not.
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>numMarketsAllowed</strong> <em>(ReviewedInt)</em>
+            </summary>
+            Number of markets supported by the supplier in the same request.
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Int)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>release</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedInt)</em>
+            </summary>
+            Minimum days required in between booking date and checking date ( days in advance ). If the value is zero then there is no limitation.
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Int)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>maxRelease</strong> <em>(ReviewedInt)</em>
+            </summary>
+            Maximum days required in between booking date and checking date ( days in advance ).
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Int)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>minimumStay</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedInt)</em>
+            </summary>
+            Minimum number of days required for booking. If the value is zero then there is no limitation.
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Int)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>maxStay</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedInt)</em>
+            </summary>
+            Maximum number of days allowed for booking.
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Int)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>roomCandidates</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(MetadataRoomCandidates)</em>
+            </summary>
+            Contains information about the restrictions of the rooms.
+
             <details>
               <summary>
-              **destinations**&nbsp;<span class="required"> *</span>&nbsp; (*MetadataSearchDestinations*)  
-              Contains information regarding the destinations  
+                <strong>maxNumberRoomCandidates</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedInt)</em>
               </summary>
-  
-              <details>
-                <summary>
-                **maxNumberHotels**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedInt*)  
-                Maximum number of hotels that can be requested.  
-                </summary>
-  
-                <details style={{ pointerEvents: "none" }}>
-                  <summary>
-                  **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                  Last reviewed date  
-                  </summary>
-                </details>
+              Maximum number of room candidates that can be requested in the same search request.
 
-                <details style={{ pointerEvents: "none" }}>
-                  <summary>
-                  **value**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
-                  
-                  </summary>
-                </details>
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                  <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+                </summary>
+                Last reviewed date
+              </details>
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                  <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Int)</em>
+                </summary>
+
+              </details>
+            </details>
+
+            <details>
+              <summary>
+                <strong>paxTypeRangeInRoomCandidates</strong> <em>(ReviwedPaxTypeRangeInRoomCandidates)</em>
+              </summary>
+              Contains information about the age restrictions of the guests in a room.
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                  <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+                </summary>
+                Last reviewed date
               </details>
 
               <details>
                 <summary>
-                **recommendedNumberHotels**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedInt*)  
-                Recomended number of hotels.  
+                  <strong>candidates</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(MetadataCandidate)</em>
                 </summary>
-  
+                Guest restrictions for each candidate type in a room.
+
                 <details style={{ pointerEvents: "none" }}>
                   <summary>
-                  **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                  Last reviewed date  
+                    <strong>min</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Int)</em>
                   </summary>
+                  Minimum required number of guest of this type.
                 </details>
 
                 <details style={{ pointerEvents: "none" }}>
                   <summary>
-                  **value**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
-                  
+                    <strong>max</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Int)</em>
                   </summary>
-                </details>
-              </details>
-
-              <details>
-                <summary>
-                **maxNumberCities**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedInt*)  
-                Maximum number of cities that can be requested.  
-                </summary>
-  
-                <details style={{ pointerEvents: "none" }}>
-                  <summary>
-                  **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                  Last reviewed date  
-                  </summary>
+                  Maximum number of guest of this type allowed.
                 </details>
 
-                <details style={{ pointerEvents: "none" }}>
+                <details open>
                   <summary>
-                  **value**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
-                  
+                    <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(HotelPaxType)</em>
                   </summary>
-                </details>
-              </details>
-
-              <details>
-                <summary>
-                **recommendedNumberCities**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedInt*)  
-                Recomended number of cities.  
-                </summary>
-  
-                <details style={{ pointerEvents: "none" }}>
-                  <summary>
-                  **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                  Last reviewed date  
-                  </summary>
-                </details>
-
-                <details style={{ pointerEvents: "none" }}>
-                  <summary>
-                  **value**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
-                  
-                  </summary>
-                </details>
-              </details>
-
-              <details>
-                <summary>
-                **maxNumberZones**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedInt*)  
-                Maximum number of zones that can be requested.  
-                </summary>
-  
-                <details style={{ pointerEvents: "none" }}>
-                  <summary>
-                  **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                  Last reviewed date  
-                  </summary>
-                </details>
-
-                <details style={{ pointerEvents: "none" }}>
-                  <summary>
-                  **value**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
-                  
-                  </summary>
-                </details>
-              </details>
-
-              <details>
-                <summary>
-                **recommendedNumberZones**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedInt*)  
-                Recomended number of zones.  
-                </summary>
-  
-                <details style={{ pointerEvents: "none" }}>
-                  <summary>
-                  **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                  Last reviewed date  
-                  </summary>
-                </details>
-
-                <details style={{ pointerEvents: "none" }}>
-                  <summary>
-                  **value**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
-                  
-                  </summary>
-                </details>
-              </details>
-
-              <details>
-                <summary>
-                **hotelSameDestinationRestriction**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-                Required all hotels from same destination  
-                </summary>
-  
-                <details style={{ pointerEvents: "none" }}>
-                  <summary>
-                  **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                  Last reviewed date  
-                  </summary>
-                </details>
-
-                <details style={{ pointerEvents: "none" }}>
-                  <summary>
-                  **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                  
-                  </summary>
+                  Candidate classification type.(Adult, Child, Infant)
+                  <strong>Possible values:</strong>
+                  <ul>
+                    <li><code>ADULT</code></li>
+                    <li><code>CHILD</code></li>
+                    <li><code>INFANT</code></li>
+                  </ul>
                 </details>
               </details>
             </details>
 
             <details>
               <summary>
-              **allowsCurrency**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              If true, it is possible to request the currency.  
+                <strong>maxPaxInRoomCandidates</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedInt)</em>
               </summary>
-  
+              Maximum number paxs in same room that can be requested in the same search request.
+
               <details style={{ pointerEvents: "none" }}>
                 <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
+                  <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
                 </summary>
+                Last reviewed date
               </details>
 
               <details style={{ pointerEvents: "none" }}>
                 <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
+                  <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Int)</em>
                 </summary>
+
               </details>
             </details>
 
             <details>
               <summary>
-              **implementsCombination**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              Informs whether the integration allows room combination or not.  
+                <strong>maxPaxInAllRooms</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedInt)</em>
               </summary>
-  
+              Total amount of paxs that can be requested in the same search request.
+
               <details style={{ pointerEvents: "none" }}>
                 <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
+                  <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
                 </summary>
+                Last reviewed date
               </details>
 
               <details style={{ pointerEvents: "none" }}>
                 <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
+                  <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Int)</em>
                 </summary>
+
               </details>
             </details>
 
             <details>
               <summary>
-              **numMarketsAllowed** (*ReviewedInt*)  
-              Number of markets supported by the supplier in the same request.  
+                <strong>requiredRoomWithSamePaxConfiguration</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(RequiredRoomWithSamePaxConfiguration)</em>
               </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **release**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedInt*)  
-              Minimum days required in between booking date and checking date ( days in advance ). If the value is zero then there is no limitation.  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **maxRelease** (*ReviewedInt*)  
-              Maximum days required in between booking date and checking date ( days in advance ).  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **minimumStay**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedInt*)  
-              Minimum number of days required for booking. If the value is zero then there is no limitation.  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **maxStay**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedInt*)  
-              Maximum number of days allowed for booking.  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **roomCandidates**&nbsp;<span class="required"> *</span>&nbsp; (*MetadataRoomCandidates*)  
-              Contains information about the restrictions of the rooms.  
-              </summary>
-  
-              <details>
-                <summary>
-                **maxNumberRoomCandidates**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedInt*)  
-                Maximum number of room candidates that can be requested in the same search request.  
-                </summary>
-  
-                <details style={{ pointerEvents: "none" }}>
-                  <summary>
-                  **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                  Last reviewed date  
-                  </summary>
-                </details>
-
-                <details style={{ pointerEvents: "none" }}>
-                  <summary>
-                  **value**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
-                  
-                  </summary>
-                </details>
-              </details>
+              Indicates whether all of the distributions must have the same configuration.
 
               <details>
                 <summary>
-                **paxTypeRangeInRoomCandidates** (*ReviwedPaxTypeRangeInRoomCandidates*)  
-                Contains information about the age restrictions of the guests in a room.  
+                  <strong>samePaxNumber</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
                 </summary>
-  
+                Indicates whether it is necessary that the number of guests be the same in all of the configurations.
+
                 <details style={{ pointerEvents: "none" }}>
                   <summary>
-                  **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                  Last reviewed date  
+                    <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
                   </summary>
-                </details>
-
-                <details>
-                  <summary>
-                  **candidates**&nbsp;<span class="required"> *</span>&nbsp; (*MetadataCandidate*)  
-                  Guest restrictions for each candidate type in a room.  
-                  </summary>
-  
-                  <details style={{ pointerEvents: "none" }}>
-                    <summary>
-                    **min**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
-                    Minimum required number of guest of this type.
-                    </summary>
-                  </details>
-
-                  <details style={{ pointerEvents: "none" }}>
-                    <summary>
-                    **max**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
-                    Maximum number of guest of this type allowed.
-                    </summary>
-                  </details>
-
-                  <details style={{ pointerEvents: "none" }}>
-                    <summary>
-                    **type**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of HotelPaxType*)  
-                    Candidate classification type.(Adult, Child, Infant)  
-                    Possible values:  
-                    `ADULT`  
-                  `CHILD`  
-                  `INFANT`  
-                    </summary>
-                  </details>
-                </details>
-              </details>
-
-              <details>
-                <summary>
-                **maxPaxInRoomCandidates**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedInt*)  
-                Maximum number paxs in same room that can be requested in the same search request.  
-                </summary>
-  
-                <details style={{ pointerEvents: "none" }}>
-                  <summary>
-                  **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                  Last reviewed date  
-                  </summary>
+                  Last reviewed date
                 </details>
 
                 <details style={{ pointerEvents: "none" }}>
                   <summary>
-                  **value**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
-                  
+                    <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
                   </summary>
-                </details>
-              </details>
 
-              <details>
-                <summary>
-                **maxPaxInAllRooms**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedInt*)  
-                Total amount of paxs that can be requested in the same search request.  
-                </summary>
-  
-                <details style={{ pointerEvents: "none" }}>
-                  <summary>
-                  **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                  Last reviewed date  
-                  </summary>
-                </details>
-
-                <details style={{ pointerEvents: "none" }}>
-                  <summary>
-                  **value**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
-                  
-                  </summary>
-                </details>
-              </details>
-
-              <details>
-                <summary>
-                **requiredRoomWithSamePaxConfiguration**&nbsp;<span class="required"> *</span>&nbsp; (*RequiredRoomWithSamePaxConfiguration*)  
-                Indicates whether all of the distributions must have the same configuration.  
-                </summary>
-  
-                <details>
-                  <summary>
-                  **samePaxNumber**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-                  Indicates whether it is necessary that the number of guests be the same in all of the configurations.  
-                  </summary>
-  
-                  <details style={{ pointerEvents: "none" }}>
-                    <summary>
-                    **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                    Last reviewed date  
-                    </summary>
-                  </details>
-
-                  <details style={{ pointerEvents: "none" }}>
-                    <summary>
-                    **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                    
-                    </summary>
-                  </details>
-                </details>
-
-                <details>
-                  <summary>
-                  **samePaxAge**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-                  Indicates whether all of the guests in a particular distribution must be the same age.  
-                  </summary>
-  
-                  <details style={{ pointerEvents: "none" }}>
-                    <summary>
-                    **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                    Last reviewed date  
-                    </summary>
-                  </details>
-
-                  <details style={{ pointerEvents: "none" }}>
-                    <summary>
-                    **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                    
-                    </summary>
-                  </details>
                 </details>
               </details>
 
               <details>
                 <summary>
-                **rateRules**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedRateRule*)  
-                List of rate rule types supported by the supplie  
+                  <strong>samePaxAge</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
                 </summary>
-  
+                Indicates whether all of the guests in a particular distribution must be the same age.
+
                 <details style={{ pointerEvents: "none" }}>
                   <summary>
-                  **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                  Informs of the date when the field was last reviewed.  
+                    <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
                   </summary>
+                  Last reviewed date
                 </details>
 
                 <details style={{ pointerEvents: "none" }}>
                   <summary>
-                  **value**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of RateRulesType*)  
-                  
-                  Possible values:  
-                  `NORMAL`  
-                `PACKAGE`  
-                `OLDER55`  
-                `OLDER60`  
-                `OLDER65`  
-                `CANARY_RESIDENT`  
-                `BALEARIC_RESIDENT`  
-                `LARGE_FAMILY`  
-                `HONEYMOON`  
-                `PUBLIC_SERVANT`  
-                `UNEMPLOYED`  
-                `NON_REFUNDABLE`  
-                `MOBILE`  
-                `WARRANTY`  
-                `ESSENTIAL_WORKER`  
-                `NEGOTIATED`  
-                `CUSTOM`  
+                    <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
                   </summary>
+
+                </details>
+              </details>
+            </details>
+
+            <details>
+              <summary>
+                <strong>rateRules</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedRateRule)</em>
+              </summary>
+              List of rate rule types supported by the supplie
+
+              <details style={{ pointerEvents: "none" }}>
+                <summary>
+                  <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+                </summary>
+                Informs of the date when the field was last reviewed.
+              </details>
+
+              <details open>
+                <summary>
+                  <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(RateRulesType)</em>
+                </summary>
+
+                <strong>Possible values:</strong>
+                <ul>
+                  <li><code>NORMAL</code>: NORMAL Used in the RateRulesFilterInput input for the search query to filter and retrieve only options without rate rules.</li>
+                  <li><code>PACKAGE</code>: The product can&#39;t be sold separately from another product attached to it, such as a flight.</li>
+                  <li><code>OLDER55</code>: OLDER55 can only be sold to people who are 55 and older.</li>
+                  <li><code>OLDER60</code>: OLDER60 can only be sold to people who are 60 and older.</li>
+                  <li><code>OLDER65</code>: OLDER65 can only be sold to people who are 65 and older.</li>
+                  <li><code>CANARY_RESIDENT</code>: CANARY_RESIDENT is applicable to Canary Islands residents only.</li>
+                  <li><code>BALEARIC_RESIDENT</code>: BALEARIC_RESIDENT is applicable to Balearic Islands residents only.</li>
+                  <li><code>LARGE_FAMILY</code>: LARGE_FAMILY is applicable to large families and is determined by each supplier.</li>
+                  <li><code>HONEYMOON</code>: HONEYMOON is applicable to those who just got married and is determined by each supplier.</li>
+                  <li><code>PUBLIC_SERVANT</code>: PUBLIC_SERVANT is applicable to public servants only.</li>
+                  <li><code>UNEMPLOYED</code>: UNEMPLOYED applies to individuals who are without work.</li>
+                  <li><code>NON_REFUNDABLE</code>: NON_REFUNDABLE is applicable to non refundable options.</li>
+                  <li><code>MOBILE</code>: MOBILE are special rates confirmed by mobile phone.</li>
+                  <li><code>WARRANTY</code>: WARRANTY is applicable to options with cancellation warranty.</li>
+                  <li><code>ESSENTIAL_WORKER</code>: ESSENTIAL_WORKER are special hotel rates for essential workers.</li>
+                  <li><code>NEGOTIATED</code>: NEGOTIATED are special rates offered only to specific buyers.</li>
+                  <li><code>CUSTOM</code>: CUSTOM defines other rates.</li>
+                </ul>
+              </details>
+            </details>
+
+            <details>
+              <summary>
+                <strong>beds</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(MetadataBeds)</em>
+              </summary>
+              Information about beds.
+
+              <details>
+                <summary>
+                  <strong>informNumberOfUnits</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+                </summary>
+                Indicates the number of units available per room.
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                    <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+                  </summary>
+                  Last reviewed date
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                    <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+                  </summary>
+
                 </details>
               </details>
 
               <details>
                 <summary>
-                **beds**&nbsp;<span class="required"> *</span>&nbsp; (*MetadataBeds*)  
-                Information about beds.  
+                  <strong>informSharedBed</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
                 </summary>
-  
-                <details>
-                  <summary>
-                  **informNumberOfUnits**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-                  Indicates the number of units available per room.  
-                  </summary>
-  
-                  <details style={{ pointerEvents: "none" }}>
-                    <summary>
-                    **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                    Last reviewed date  
-                    </summary>
-                  </details>
+                Informs in Search response if beds in the room are shared.
 
-                  <details style={{ pointerEvents: "none" }}>
-                    <summary>
-                    **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                    
-                    </summary>
-                  </details>
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                    <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+                  </summary>
+                  Last reviewed date
                 </details>
 
-                <details>
+                <details style={{ pointerEvents: "none" }}>
                   <summary>
-                  **informSharedBed**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-                  Informs in Search response if beds in the room are shared.  
+                    <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
                   </summary>
-  
-                  <details style={{ pointerEvents: "none" }}>
-                    <summary>
-                    **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                    Last reviewed date  
-                    </summary>
-                  </details>
 
-                  <details style={{ pointerEvents: "none" }}>
-                    <summary>
-                    **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                    
-                    </summary>
-                  </details>
-                </details>
-
-                <details>
-                  <summary>
-                  **informBedType**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-                  Informs if the supplier returns the beds types.  
-                  </summary>
-  
-                  <details style={{ pointerEvents: "none" }}>
-                    <summary>
-                    **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                    Last reviewed date  
-                    </summary>
-                  </details>
-
-                  <details style={{ pointerEvents: "none" }}>
-                    <summary>
-                    **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                    
-                    </summary>
-                  </details>
-                </details>
-
-                <details>
-                  <summary>
-                  **informNumberOfBeds**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-                  Informs if the supplier returns the number of beds for each room.  
-                  </summary>
-  
-                  <details style={{ pointerEvents: "none" }}>
-                    <summary>
-                    **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                    Last reviewed date  
-                    </summary>
-                  </details>
-
-                  <details style={{ pointerEvents: "none" }}>
-                    <summary>
-                    **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                    
-                    </summary>
-                  </details>
                 </details>
               </details>
 
               <details>
                 <summary>
-                **ageRange**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedAgeRanges*)  
-                The age range used by the supplier.  
+                  <strong>informBedType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
                 </summary>
-  
+                Informs if the supplier returns the beds types.
+
                 <details style={{ pointerEvents: "none" }}>
                   <summary>
-                  **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                  Last reviewed date  
+                    <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
                   </summary>
+                  Last reviewed date
                 </details>
 
-                <details>
+                <details style={{ pointerEvents: "none" }}>
                   <summary>
-                  **ages**&nbsp;<span class="required"> *</span>&nbsp; (*AgeRange*)  
-                  list of  type of passenger with the age range  
+                    <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
                   </summary>
-  
-                  <details style={{ pointerEvents: "none" }}>
-                    <summary>
-                    **min**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
-                    min age allowed
-                    </summary>
-                  </details>
 
-                  <details style={{ pointerEvents: "none" }}>
-                    <summary>
-                    **max**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
-                    max age allowed
-                    </summary>
-                  </details>
+                </details>
+              </details>
 
-                  <details style={{ pointerEvents: "none" }}>
-                    <summary>
-                    **type**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of HotelPaxType*)  
-                    PaxType  
-                    Possible values:  
-                    `ADULT`  
-                  `CHILD`  
-                  `INFANT`  
-                    </summary>
-                  </details>
+              <details>
+                <summary>
+                  <strong>informNumberOfBeds</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+                </summary>
+                Informs if the supplier returns the number of beds for each room.
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                    <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+                  </summary>
+                  Last reviewed date
+                </details>
+
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                    <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+                  </summary>
+
                 </details>
               </details>
             </details>
 
             <details>
               <summary>
-              **informBindingPrice**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              Supplier returns binding PVPs.  
+                <strong>ageRange</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedAgeRanges)</em>
               </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
+              The age range used by the supplier.
 
               <details style={{ pointerEvents: "none" }}>
                 <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
+                  <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
                 </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **informCancelPolicies**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              Returns cancellation policies at search step  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
+                Last reviewed date
               </details>
 
-              <details style={{ pointerEvents: "none" }}>
+              <details>
                 <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
+                  <strong>ages</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AgeRange)</em>
                 </summary>
-              </details>
-            </details>
+                list of  type of passenger with the age range
 
-            <details>
-              <summary>
-              **informRoomCancelPolicies**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              Returns cancellation policies at room level.  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                    <strong>min</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Int)</em>
+                  </summary>
+                  min age allowed
+                </details>
 
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
-            </details>
+                <details style={{ pointerEvents: "none" }}>
+                  <summary>
+                    <strong>max</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Int)</em>
+                  </summary>
+                  max age allowed
+                </details>
 
-            <details>
-              <summary>
-              **timeZone**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedTimeZone*)  
-              Specifies the timezone in UTC in which the cancellation policies are located.  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of TimeZoneType*)  
-                
-                Possible values:  
-                `UNKNOWN`  
-              `HOTEL_LOCAL_TIME`  
-              `UTC_MINUS_12`  
-              `UTC_MINUS_11`  
-              `UTC_MINUS_10`  
-              `UTC_MINUS_9`  
-              `UTC_MINUS_8`  
-              `UTC_MINUS_7`  
-              `UTC_MINUS_6`  
-              `UTC_MINUS_5`  
-              `UTC_MINUS_4`  
-              `UTC_MINUS_3`  
-              `UTC_MINUS_2`  
-              `UTC_MINUS_1`  
-              `UTC_0`  
-              `UTC_1`  
-              `UTC_2`  
-              `UTC_3`  
-              `UTC_4`  
-              `UTC_5`  
-              `UTC_6`  
-              `UTC_7`  
-              `UTC_8`  
-              `UTC_9`  
-              `UTC_10`  
-              `UTC_11`  
-              `UTC_12`  
-              `UTC_13`  
-              `UTC_14`  
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **informRemarks**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              Space available for any remarks or comments aimed at the client.  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **paymentTypes**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedPaymentType*)  
-              List of payment types accepted by the supplier with their reviewed date  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of PaymentType*)  
-                Indicates the types of payment suppoted  
-                Possible values:  
-                `MERCHANT`  
-              `DIRECT`  
-              `CARD_BOOKING`  
-              `CARD_CHECK_IN`  
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **languages**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedText*)  
-              List of languages supported  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **informDailyPrice**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              Informs if the supplier returns the daily price  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **informDailyRatePlan**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              Informs if the supplier returns the daily rate.  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **informPromotions**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              If true, the supplier returns the promotions(offers) applied.  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **informNRFRateByRoom**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              The supplier can inform in Search if the room is non-refundable.  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **informSurcharges**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              Informs if the supplier returns surcharges.  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **informRoomSurcharges**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              Returns surcharges at room level.  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **informHotelName**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              inform Hotel name at search step  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **requiredNationality** (*ReviewedBool*)  
-              Informs if the supplier requires nationality  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
+                <details open>
+                  <summary>
+                    <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(HotelPaxType)</em>
+                  </summary>
+                  PaxType
+                  <strong>Possible values:</strong>
+                  <ul>
+                    <li><code>ADULT</code></li>
+                    <li><code>CHILD</code></li>
+                    <li><code>INFANT</code></li>
+                  </ul>
+                </details>
               </details>
             </details>
           </details>
 
           <details>
             <summary>
-            **quote**&nbsp;<span class="required"> *</span>&nbsp; (*MetadataQuote*)  
-            Quote metadata  
+              <strong>informBindingPrice</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
             </summary>
-  
-            <details>
-              <summary>
-              **informBindingPrice**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              Informs if the price is binding in Quote response.  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
+            Supplier returns binding PVPs.
 
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
             </details>
 
-            <details>
+            <details style={{ pointerEvents: "none" }}>
               <summary>
-              **informNRFRate**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              The supplier can inform in Quote if the rate is non-refundable.  
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
               </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
 
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **informRemarks**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              Returns remarks.  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **informCancelPolicies**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              Informs cancellation policies.  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **informCancelPoliciesDescription**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              Specifies if the supplier informs the cancel policies in free text.  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **timeZone**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedTimeZone*)  
-              Specifies if the supplier inform the cancel policies in free text  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of TimeZoneType*)  
-                
-                Possible values:  
-                `UNKNOWN`  
-              `HOTEL_LOCAL_TIME`  
-              `UTC_MINUS_12`  
-              `UTC_MINUS_11`  
-              `UTC_MINUS_10`  
-              `UTC_MINUS_9`  
-              `UTC_MINUS_8`  
-              `UTC_MINUS_7`  
-              `UTC_MINUS_6`  
-              `UTC_MINUS_5`  
-              `UTC_MINUS_4`  
-              `UTC_MINUS_3`  
-              `UTC_MINUS_2`  
-              `UTC_MINUS_1`  
-              `UTC_0`  
-              `UTC_1`  
-              `UTC_2`  
-              `UTC_3`  
-              `UTC_4`  
-              `UTC_5`  
-              `UTC_6`  
-              `UTC_7`  
-              `UTC_8`  
-              `UTC_9`  
-              `UTC_10`  
-              `UTC_11`  
-              `UTC_12`  
-              `UTC_13`  
-              `UTC_14`  
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **informSurcharges**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              Informs if the supplier returns surcharges.  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **requiredNationality** (*ReviewedBool*)  
-              Informs if the supplier requires nationality  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
             </details>
           </details>
 
           <details>
             <summary>
-            **book**&nbsp;<span class="required"> *</span>&nbsp; (*MetadataBook*)  
-            Book metadata  
+              <strong>informCancelPolicies</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
             </summary>
-  
-            <details>
-              <summary>
-              **allowsDeltaPrice**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              Allows a margin stipulated by the client for booking with a higher price (delta).  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
+            Returns cancellation policies at search step
 
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
             </details>
 
-            <details>
+            <details style={{ pointerEvents: "none" }}>
               <summary>
-              **requiredAllPassengers**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              Required data for all passengers (names and surnames).  
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
               </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
 
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **allowsRemarks**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              Informs if the supplier allows send remarks.  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **informBillingSupplier**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              Informs if the supplier billing code.  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **informHotelReference**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              Informs if the supplier returns the hotel reference number.  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **informPrice**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              The supplier informs the book price.  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **requiredNationality** (*ReviewedBool*)  
-              Informs if the supplier requires nationality  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
             </details>
           </details>
 
           <details>
             <summary>
-            **booking**&nbsp;<span class="required"> *</span>&nbsp; (*MetadataBooking*)  
-            Booking metadata  
+              <strong>informRoomCancelPolicies</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
             </summary>
-  
-            <details>
-              <summary>
-              **queryableBySupplierReference**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              Specifies if booking can be performed using supplier reference.  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
+            Returns cancellation policies at room level.
 
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
             </details>
 
-            <details>
+            <details style={{ pointerEvents: "none" }}>
               <summary>
-              **queryableByClientReference**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              Specifies if booking can be performed using client reference.  
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
               </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
 
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **queryableByCreationDate**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              Specifies if booking can be performed using creation dates.  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **queryableByCheckinDate**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              Specifies if booking can be performed using check in dates.  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **informHotelReference** (*ReviewedBool*)  
-              Specifies if the supplier informs about Hotel Confirmation Number (HCN).  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **informCancelPolicies** (*ReviewedBool*)  
-              Specifies if the supplier informs about the cancellation policies.  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **informPriceCancel** (*ReviewedBool*)  
-              Specifies if the supplier informs about the cancellation price.  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **requiresCheckInDateInReferences**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              Specifies if the supplier requires check-in date in reference.  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **requiresCheckOutDateInReferences**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              Specifies if the supplier requires check-out date in reference.  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **requiresReservationDateInReferences**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              Specifies if the supplier requires the reservation date in reference.  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **timeZone**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedTimeZone*)  
-              Specifies the timezone in UTC in which the cancellation policies are located.  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of TimeZoneType*)  
-                
-                Possible values:  
-                `UNKNOWN`  
-              `HOTEL_LOCAL_TIME`  
-              `UTC_MINUS_12`  
-              `UTC_MINUS_11`  
-              `UTC_MINUS_10`  
-              `UTC_MINUS_9`  
-              `UTC_MINUS_8`  
-              `UTC_MINUS_7`  
-              `UTC_MINUS_6`  
-              `UTC_MINUS_5`  
-              `UTC_MINUS_4`  
-              `UTC_MINUS_3`  
-              `UTC_MINUS_2`  
-              `UTC_MINUS_1`  
-              `UTC_0`  
-              `UTC_1`  
-              `UTC_2`  
-              `UTC_3`  
-              `UTC_4`  
-              `UTC_5`  
-              `UTC_6`  
-              `UTC_7`  
-              `UTC_8`  
-              `UTC_9`  
-              `UTC_10`  
-              `UTC_11`  
-              `UTC_12`  
-              `UTC_13`  
-              `UTC_14`  
-                </summary>
-              </details>
             </details>
           </details>
 
           <details>
             <summary>
-            **cancel**&nbsp;<span class="required"> *</span>&nbsp; (*MetadataCancel*)  
-            Cancel metadata  
+              <strong>timeZone</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedTimeZone)</em>
             </summary>
-  
-            <details>
-              <summary>
-              **mutableBySupplierReference**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              The supplier allows cancellation with supplier reference.  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
+            Specifies the timezone in UTC in which the cancellation policies are located.
 
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
             </details>
 
-            <details>
+            <details open>
               <summary>
-              **mutableByClientReference**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              The supplier allows cancellation with client reference.  
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(TimeZoneType)</em>
               </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
 
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **informPriceCancel** (*ReviewedBool*)  
-              The supplier informs the cancellation price.  
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
+              <strong>Possible values:</strong>
+              <ul>
+                <li><code>UNKNOWN</code></li>
+                <li><code>HOTEL_LOCAL_TIME</code></li>
+                <li><code>UTC_MINUS_12</code>: UTC-12</li>
+                <li><code>UTC_MINUS_11</code>: UTC-11</li>
+                <li><code>UTC_MINUS_10</code>: UTC-10</li>
+                <li><code>UTC_MINUS_9</code>: UTC-9</li>
+                <li><code>UTC_MINUS_8</code>: UTC-8</li>
+                <li><code>UTC_MINUS_7</code>: UTC-7</li>
+                <li><code>UTC_MINUS_6</code>: UTC-6</li>
+                <li><code>UTC_MINUS_5</code>: UTC-5</li>
+                <li><code>UTC_MINUS_4</code>: UTC-4</li>
+                <li><code>UTC_MINUS_3</code>: UTC-3</li>
+                <li><code>UTC_MINUS_2</code>: UTC-2</li>
+                <li><code>UTC_MINUS_1</code>: UTC-1</li>
+                <li><code>UTC_0</code>: UTC+0</li>
+                <li><code>UTC_1</code>: UTC+1</li>
+                <li><code>UTC_2</code>: UTC+2</li>
+                <li><code>UTC_3</code>: UTC+3</li>
+                <li><code>UTC_4</code>: UTC+4</li>
+                <li><code>UTC_5</code>: UTC+5</li>
+                <li><code>UTC_6</code>: UTC+6</li>
+                <li><code>UTC_7</code>: UTC+7</li>
+                <li><code>UTC_8</code>: UTC+8</li>
+                <li><code>UTC_9</code>: UTC+9</li>
+                <li><code>UTC_10</code>: UTC+10</li>
+                <li><code>UTC_11</code>: UTC+11</li>
+                <li><code>UTC_12</code>: UTC+12</li>
+                <li><code>UTC_13</code>: UTC+13</li>
+                <li><code>UTC_14</code>: UTC+14</li>
+              </ul>
             </details>
           </details>
 
           <details>
             <summary>
-            **amendBoard** (*MetadataAmendBoard*)  
-            Amend Board metadata  
+              <strong>informRemarks</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
             </summary>
-  
-            <details>
-              <summary>
-              **allowsAmendBoard**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
+            Space available for any remarks or comments aimed at the client.
 
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
             </details>
           </details>
 
           <details>
             <summary>
-            **amendDates** (*MetadataAmendDates*)  
-            Amend Dates metadata  
+              <strong>paymentTypes</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedPaymentType)</em>
             </summary>
-  
-            <details>
-              <summary>
-              **allowsAmendCheckIn**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
+            List of payment types accepted by the supplier with their reviewed date
 
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
             </details>
 
-            <details>
+            <details open>
               <summary>
-              **allowsAmendCheckOut**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(PaymentType)</em>
               </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
+              Indicates the types of payment suppoted
+              <strong>Possible values:</strong>
+              <ul>
+                <li><code>MERCHANT</code>: Payment is managed by the supplier.</li>
+                <li><code>DIRECT</code>: Payment is made directly to the actual payee (e.g., the hotel), without involving an intermediary or third party. The payment will be completed at check-in.</li>
+                <li><code>CARD_BOOKING</code>: Payment is managed by the supplier. The payment is effectuated at the time of booking.</li>
+                <li><code>CARD_CHECK_IN</code>: Payment is managed by the supplier and is made at the hotel during check-in.</li>
+              </ul>
             </details>
           </details>
 
           <details>
             <summary>
-            **amendPaxes** (*MetadataAmendPaxes*)  
-            Amend Paxes metadata  
+              <strong>languages</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedText)</em>
             </summary>
-  
-            <details>
-              <summary>
-              **allowsDeletePaxes**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
+            List of languages supported
 
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+
             </details>
 
-            <details>
+            <details style={{ pointerEvents: "none" }}>
               <summary>
-              **allowsAmendAge**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
               </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
 
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **allowsAddPaxes**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **allowsAmendPersonalTitle**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **allowsAmendName**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **allowsAmendSurname**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
             </details>
           </details>
 
           <details>
             <summary>
-            **amendRemarks** (*MetadataAmendRemarks*)  
-            Amend Remarks metadata  
+              <strong>informDailyPrice</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
             </summary>
-  
-            <details>
-              <summary>
-              **allowsAmendRemarks**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
+            Informs if the supplier returns the daily price
 
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
             </details>
           </details>
 
           <details>
             <summary>
-            **amendRooms** (*MetadataAmendRooms*)  
-            Amend Rooms metadata  
+              <strong>informDailyRatePlan</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
             </summary>
-  
-            <details>
-              <summary>
-              **implementsAmendRoom**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
+            Informs if the supplier returns the daily rate.
 
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
             </details>
 
-            <details>
+            <details style={{ pointerEvents: "none" }}>
               <summary>
-              **requireSameGuestsInAllOccupancies** (*ReviewedBool*)  
-              
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
               </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
 
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **requireSameRooms** (*ReviewedBool*)  
-              
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **allowsAddRooms** (*ReviewedBool*)  
-              
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **allowsDeleteRooms** (*ReviewedBool*)  
-              
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **allowsAmendSurname** (*ReviewedBool*)  
-              
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
             </details>
           </details>
 
           <details>
             <summary>
-            **hotels** (*MetadataContent*)  
-            Contains information regarding Hotels, Hotels returns a list of hotels all information available (code, name,
-address, phone, etc.) for each hotel. Return null is not implemented  
+              <strong>informPromotions</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
             </summary>
-  
-            <details>
-              <summary>
-              **implemented**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
+            If true, the supplier returns the promotions(offers) applied.
 
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
             </details>
 
-            <details>
+            <details style={{ pointerEvents: "none" }}>
               <summary>
-              **languages**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedText*)  
-              
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
               </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                
-                </summary>
-              </details>
 
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-                
-                </summary>
-              </details>
             </details>
           </details>
 
           <details>
             <summary>
-            **destinations** (*MetadataContent*)  
-            Contains information regarding Destinations, Destinations returns the supplier s destination list.
-Return null is not implemented  
+              <strong>informNRFRateByRoom</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
             </summary>
-  
-            <details>
-              <summary>
-              **implemented**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
+            The supplier can inform in Search if the room is non-refundable.
 
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
             </details>
 
-            <details>
+            <details style={{ pointerEvents: "none" }}>
               <summary>
-              **languages**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedText*)  
-              
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
               </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                
-                </summary>
-              </details>
 
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-                
-                </summary>
-              </details>
             </details>
           </details>
 
           <details>
             <summary>
-            **rooms** (*MetadataContent*)  
-            Contains information regarding Rooms, RoomList aims to return a list of rooms, their codes as well as descriptions.
-Return null is not implemented  
+              <strong>informSurcharges</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
             </summary>
-  
-            <details>
-              <summary>
-              **implemented**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
+            Informs if the supplier returns surcharges.
 
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
             </details>
 
-            <details>
+            <details style={{ pointerEvents: "none" }}>
               <summary>
-              **languages**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedText*)  
-              
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
               </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                
-                </summary>
-              </details>
 
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-                
-                </summary>
-              </details>
             </details>
           </details>
 
           <details>
             <summary>
-            **boards** (*MetadataContent*)  
-            Contains information regarding Boards, Boards aims to return a list of the search boards,
-which will be used in the Search response. Return null is not implemented  
+              <strong>informRoomSurcharges</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
             </summary>
-  
-            <details>
-              <summary>
-              **implemented**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
+            Returns surcharges at room level.
 
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
             </details>
 
-            <details>
+            <details style={{ pointerEvents: "none" }}>
               <summary>
-              **languages**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedText*)  
-              
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
               </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                
-                </summary>
-              </details>
 
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-                
-                </summary>
-              </details>
             </details>
           </details>
 
           <details>
             <summary>
-            **categories** (*MetadataContent*)  
-            Contains information regarding Categories, Categories returns a list of categories (codes and descriptions)
-used in Hotels List. Return null is not implemented  
+              <strong>informHotelName</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
             </summary>
-  
-            <details>
-              <summary>
-              **implemented**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
+            inform Hotel name at search step
 
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
             </details>
 
-            <details>
+            <details style={{ pointerEvents: "none" }}>
               <summary>
-              **languages**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedText*)  
-              
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
               </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                
-                </summary>
-              </details>
 
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-                
-                </summary>
-              </details>
             </details>
           </details>
 
           <details>
             <summary>
-            **markets** (*MetadataContent*)  
-            Contains information regarding Markets, Markets return a list of the available Markets, which will be
-used in the Search request. Return null is not implemented  
+              <strong>requiredNationality</strong> <em>(ReviewedBool)</em>
             </summary>
-  
-            <details>
-              <summary>
-              **implemented**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
+            Informs if the supplier requires nationality
 
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
             </details>
 
-            <details>
+            <details style={{ pointerEvents: "none" }}>
               <summary>
-              **languages**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedText*)  
-              
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
               </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                
-                </summary>
-              </details>
 
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-                
-                </summary>
-              </details>
-            </details>
-          </details>
-
-          <details>
-            <summary>
-            **currencies** (*MetadataContent*)  
-            Contains information regarding Currencies, Currencies returns a list of currencies the supplier in booking flow.
-Return null is not implemented  
-            </summary>
-  
-            <details>
-              <summary>
-              **implemented**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **languages**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedText*)  
-              
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-                
-                </summary>
-              </details>
-            </details>
-          </details>
-
-          <details>
-            <summary>
-            **amenities** (*MetadataContent*)  
-            Contains information regarding Amenities, Amenities is defined as something intended to make life more
-pleasant or comfortable for people, Examples include: swimming pools, shopping centers, etc.
-Return null is not implemented  
-            </summary>
-  
-            <details>
-              <summary>
-              **implemented**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedBool*)  
-              
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                Last reviewed date  
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-                
-                </summary>
-              </details>
-            </details>
-
-            <details>
-              <summary>
-              **languages**&nbsp;<span class="required"> *</span>&nbsp; (*ReviewedText*)  
-              
-              </summary>
-  
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **reviewDate**&nbsp;<span class="required"> *</span>&nbsp; (*Date*)  
-                
-                </summary>
-              </details>
-
-              <details style={{ pointerEvents: "none" }}>
-                <summary>
-                **value**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-                
-                </summary>
-              </details>
             </details>
           </details>
         </details>
 
         <details>
           <summary>
-          **adviseMessage** (*AdviseMessage*)  
-          List of messages  
+            <strong>quote</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(MetadataQuote)</em>
           </summary>
-  
-          <details style={{ pointerEvents: "none" }}>
-            <summary>
-            **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-            AM code: The following codes can be returned:  
-            </summary>
-          </details>
+          Quote metadata
 
-          <details style={{ pointerEvents: "none" }}>
+          <details>
             <summary>
-            **description**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-            Error description  
+              <strong>informBindingPrice</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
             </summary>
-          </details>
+            Informs if the price is binding in Quote response.
 
-          <details style={{ pointerEvents: "none" }}>
-            <summary>
-            **level**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of AdviseMessageLevel*)  
-            Indicates the level of importance of the message.
-Possible values: ERROR, WARN, INFO.  
-            Possible values:  
-            `WARN`  
-          `ERROR`  
-          `INFO`  
-            </summary>
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
           </details>
 
           <details>
             <summary>
-            **external** (*ExternalMessage*)  
-            Specify the external message.  
+              <strong>informNRFRate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
             </summary>
-  
+            The supplier can inform in Quote if the rate is non-refundable.
+
             <details style={{ pointerEvents: "none" }}>
               <summary>
-              **code** (*String*)  
-              External code.  
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
               </summary>
+              Last reviewed date
             </details>
 
             <details style={{ pointerEvents: "none" }}>
               <summary>
-              **message**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-              External message.  
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
               </summary>
+
             </details>
           </details>
 
-          <details style={{ pointerEvents: "none" }}>
+          <details>
             <summary>
-            **correlationID**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-            Identifier to investigate the cause of the error.  
+              <strong>informRemarks</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
             </summary>
+            Returns remarks.
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>informCancelPolicies</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+            </summary>
+            Informs cancellation policies.
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>informCancelPoliciesDescription</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+            </summary>
+            Specifies if the supplier informs the cancel policies in free text.
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>timeZone</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedTimeZone)</em>
+            </summary>
+            Specifies if the supplier inform the cancel policies in free text
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details open>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(TimeZoneType)</em>
+              </summary>
+
+              <strong>Possible values:</strong>
+              <ul>
+                <li><code>UNKNOWN</code></li>
+                <li><code>HOTEL_LOCAL_TIME</code></li>
+                <li><code>UTC_MINUS_12</code>: UTC-12</li>
+                <li><code>UTC_MINUS_11</code>: UTC-11</li>
+                <li><code>UTC_MINUS_10</code>: UTC-10</li>
+                <li><code>UTC_MINUS_9</code>: UTC-9</li>
+                <li><code>UTC_MINUS_8</code>: UTC-8</li>
+                <li><code>UTC_MINUS_7</code>: UTC-7</li>
+                <li><code>UTC_MINUS_6</code>: UTC-6</li>
+                <li><code>UTC_MINUS_5</code>: UTC-5</li>
+                <li><code>UTC_MINUS_4</code>: UTC-4</li>
+                <li><code>UTC_MINUS_3</code>: UTC-3</li>
+                <li><code>UTC_MINUS_2</code>: UTC-2</li>
+                <li><code>UTC_MINUS_1</code>: UTC-1</li>
+                <li><code>UTC_0</code>: UTC+0</li>
+                <li><code>UTC_1</code>: UTC+1</li>
+                <li><code>UTC_2</code>: UTC+2</li>
+                <li><code>UTC_3</code>: UTC+3</li>
+                <li><code>UTC_4</code>: UTC+4</li>
+                <li><code>UTC_5</code>: UTC+5</li>
+                <li><code>UTC_6</code>: UTC+6</li>
+                <li><code>UTC_7</code>: UTC+7</li>
+                <li><code>UTC_8</code>: UTC+8</li>
+                <li><code>UTC_9</code>: UTC+9</li>
+                <li><code>UTC_10</code>: UTC+10</li>
+                <li><code>UTC_11</code>: UTC+11</li>
+                <li><code>UTC_12</code>: UTC+12</li>
+                <li><code>UTC_13</code>: UTC+13</li>
+                <li><code>UTC_14</code>: UTC+14</li>
+              </ul>
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>informSurcharges</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+            </summary>
+            Informs if the supplier returns surcharges.
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>requiredNationality</strong> <em>(ReviewedBool)</em>
+            </summary>
+            Informs if the supplier requires nationality
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
           </details>
         </details>
 
-        <details style={{ pointerEvents: "none" }}>
+        <details>
           <summary>
-          **createdAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
-          Date created  
+            <strong>book</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(MetadataBook)</em>
           </summary>
+          Book metadata
+
+          <details>
+            <summary>
+              <strong>allowsDeltaPrice</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+            </summary>
+            Allows a margin stipulated by the client for booking with a higher price (delta).
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>requiredAllPassengers</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+            </summary>
+            Required data for all passengers (names and surnames).
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>allowsRemarks</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+            </summary>
+            Informs if the supplier allows send remarks.
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>informBillingSupplier</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+            </summary>
+            Informs if the supplier billing code.
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>informHotelReference</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+            </summary>
+            Informs if the supplier returns the hotel reference number.
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>informPrice</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+            </summary>
+            The supplier informs the book price.
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>requiredNationality</strong> <em>(ReviewedBool)</em>
+            </summary>
+            Informs if the supplier requires nationality
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
         </details>
 
-        <details style={{ pointerEvents: "none" }}>
+        <details>
           <summary>
-          **updatedAt**&nbsp;<span class="required"> *</span>&nbsp; (*DateTime*)  
-          Date updated  
+            <strong>booking</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(MetadataBooking)</em>
           </summary>
+          Booking metadata
+
+          <details>
+            <summary>
+              <strong>queryableBySupplierReference</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+            </summary>
+            Specifies if booking can be performed using supplier reference.
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>queryableByClientReference</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+            </summary>
+            Specifies if booking can be performed using client reference.
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>queryableByCreationDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+            </summary>
+            Specifies if booking can be performed using creation dates.
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>queryableByCheckinDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+            </summary>
+            Specifies if booking can be performed using check in dates.
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>informHotelReference</strong> <em>(ReviewedBool)</em>
+            </summary>
+            Specifies if the supplier informs about Hotel Confirmation Number (HCN).
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>informCancelPolicies</strong> <em>(ReviewedBool)</em>
+            </summary>
+            Specifies if the supplier informs about the cancellation policies.
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>informPriceCancel</strong> <em>(ReviewedBool)</em>
+            </summary>
+            Specifies if the supplier informs about the cancellation price.
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>requiresCheckInDateInReferences</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+            </summary>
+            Specifies if the supplier requires check-in date in reference.
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>requiresCheckOutDateInReferences</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+            </summary>
+            Specifies if the supplier requires check-out date in reference.
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>requiresReservationDateInReferences</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+            </summary>
+            Specifies if the supplier requires the reservation date in reference.
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>timeZone</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedTimeZone)</em>
+            </summary>
+            Specifies the timezone in UTC in which the cancellation policies are located.
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details open>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(TimeZoneType)</em>
+              </summary>
+
+              <strong>Possible values:</strong>
+              <ul>
+                <li><code>UNKNOWN</code></li>
+                <li><code>HOTEL_LOCAL_TIME</code></li>
+                <li><code>UTC_MINUS_12</code>: UTC-12</li>
+                <li><code>UTC_MINUS_11</code>: UTC-11</li>
+                <li><code>UTC_MINUS_10</code>: UTC-10</li>
+                <li><code>UTC_MINUS_9</code>: UTC-9</li>
+                <li><code>UTC_MINUS_8</code>: UTC-8</li>
+                <li><code>UTC_MINUS_7</code>: UTC-7</li>
+                <li><code>UTC_MINUS_6</code>: UTC-6</li>
+                <li><code>UTC_MINUS_5</code>: UTC-5</li>
+                <li><code>UTC_MINUS_4</code>: UTC-4</li>
+                <li><code>UTC_MINUS_3</code>: UTC-3</li>
+                <li><code>UTC_MINUS_2</code>: UTC-2</li>
+                <li><code>UTC_MINUS_1</code>: UTC-1</li>
+                <li><code>UTC_0</code>: UTC+0</li>
+                <li><code>UTC_1</code>: UTC+1</li>
+                <li><code>UTC_2</code>: UTC+2</li>
+                <li><code>UTC_3</code>: UTC+3</li>
+                <li><code>UTC_4</code>: UTC+4</li>
+                <li><code>UTC_5</code>: UTC+5</li>
+                <li><code>UTC_6</code>: UTC+6</li>
+                <li><code>UTC_7</code>: UTC+7</li>
+                <li><code>UTC_8</code>: UTC+8</li>
+                <li><code>UTC_9</code>: UTC+9</li>
+                <li><code>UTC_10</code>: UTC+10</li>
+                <li><code>UTC_11</code>: UTC+11</li>
+                <li><code>UTC_12</code>: UTC+12</li>
+                <li><code>UTC_13</code>: UTC+13</li>
+                <li><code>UTC_14</code>: UTC+14</li>
+              </ul>
+            </details>
+          </details>
         </details>
-      </details>
 
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **cursor**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-        cursor to the next item, used for pagination  
-        </summary>
-      </details>
-    </details>
+        <details>
+          <summary>
+            <strong>cancel</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(MetadataCancel)</em>
+          </summary>
+          Cancel metadata
 
-    <details>
-      <summary>
-      **adviseMessage** (*AdviseMessage*)  
-      List of messages, contain error message, such as invalid input, connection error  
-      </summary>
-  
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **code**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-        AM code: The following codes can be returned:  
-        </summary>
-      </details>
+          <details>
+            <summary>
+              <strong>mutableBySupplierReference</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+            </summary>
+            The supplier allows cancellation with supplier reference.
 
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **description**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-        Error description  
-        </summary>
-      </details>
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
 
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **level**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of AdviseMessageLevel*)  
-        Indicates the level of importance of the message.
-Possible values: ERROR, WARN, INFO.  
-        Possible values:  
-        `WARN`  
-      `ERROR`  
-      `INFO`  
-        </summary>
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>mutableByClientReference</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+            </summary>
+            The supplier allows cancellation with client reference.
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>informPriceCancel</strong> <em>(ReviewedBool)</em>
+            </summary>
+            The supplier informs the cancellation price.
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+        </details>
+
+        <details>
+          <summary>
+            <strong>amendBoard</strong> <em>(MetadataAmendBoard)</em>
+          </summary>
+          Amend Board metadata
+
+          <details>
+            <summary>
+              <strong>allowsAmendBoard</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+            </summary>
+
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+        </details>
+
+        <details>
+          <summary>
+            <strong>amendDates</strong> <em>(MetadataAmendDates)</em>
+          </summary>
+          Amend Dates metadata
+
+          <details>
+            <summary>
+              <strong>allowsAmendCheckIn</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+            </summary>
+
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>allowsAmendCheckOut</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+            </summary>
+
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+        </details>
+
+        <details>
+          <summary>
+            <strong>amendPaxes</strong> <em>(MetadataAmendPaxes)</em>
+          </summary>
+          Amend Paxes metadata
+
+          <details>
+            <summary>
+              <strong>allowsDeletePaxes</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+            </summary>
+
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>allowsAmendAge</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+            </summary>
+
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>allowsAddPaxes</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+            </summary>
+
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>allowsAmendPersonalTitle</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+            </summary>
+
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>allowsAmendName</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+            </summary>
+
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>allowsAmendSurname</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+            </summary>
+
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+        </details>
+
+        <details>
+          <summary>
+            <strong>amendRemarks</strong> <em>(MetadataAmendRemarks)</em>
+          </summary>
+          Amend Remarks metadata
+
+          <details>
+            <summary>
+              <strong>allowsAmendRemarks</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+            </summary>
+
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+        </details>
+
+        <details>
+          <summary>
+            <strong>amendRooms</strong> <em>(MetadataAmendRooms)</em>
+          </summary>
+          Amend Rooms metadata
+
+          <details>
+            <summary>
+              <strong>implementsAmendRoom</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+            </summary>
+
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>requireSameGuestsInAllOccupancies</strong> <em>(ReviewedBool)</em>
+            </summary>
+
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>requireSameRooms</strong> <em>(ReviewedBool)</em>
+            </summary>
+
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>allowsAddRooms</strong> <em>(ReviewedBool)</em>
+            </summary>
+
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>allowsDeleteRooms</strong> <em>(ReviewedBool)</em>
+            </summary>
+
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>allowsAmendSurname</strong> <em>(ReviewedBool)</em>
+            </summary>
+
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+        </details>
+
+        <details>
+          <summary>
+            <strong>hotels</strong> <em>(MetadataContent)</em>
+          </summary>
+          Contains information regarding Hotels, Hotels returns a list of hotels all information available (code, name,
+          address, phone, etc.) for each hotel. Return null is not implemented
+
+          <details>
+            <summary>
+              <strong>implemented</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+            </summary>
+
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>languages</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedText)</em>
+            </summary>
+
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+              </summary>
+
+            </details>
+          </details>
+        </details>
+
+        <details>
+          <summary>
+            <strong>destinations</strong> <em>(MetadataContent)</em>
+          </summary>
+          Contains information regarding Destinations, Destinations returns the supplier s destination list.
+          Return null is not implemented
+
+          <details>
+            <summary>
+              <strong>implemented</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+            </summary>
+
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>languages</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedText)</em>
+            </summary>
+
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+              </summary>
+
+            </details>
+          </details>
+        </details>
+
+        <details>
+          <summary>
+            <strong>rooms</strong> <em>(MetadataContent)</em>
+          </summary>
+          Contains information regarding Rooms, RoomList aims to return a list of rooms, their codes as well as descriptions.
+          Return null is not implemented
+
+          <details>
+            <summary>
+              <strong>implemented</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+            </summary>
+
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>languages</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedText)</em>
+            </summary>
+
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+              </summary>
+
+            </details>
+          </details>
+        </details>
+
+        <details>
+          <summary>
+            <strong>boards</strong> <em>(MetadataContent)</em>
+          </summary>
+          Contains information regarding Boards, Boards aims to return a list of the search boards,
+          which will be used in the Search response. Return null is not implemented
+
+          <details>
+            <summary>
+              <strong>implemented</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+            </summary>
+
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>languages</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedText)</em>
+            </summary>
+
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+              </summary>
+
+            </details>
+          </details>
+        </details>
+
+        <details>
+          <summary>
+            <strong>categories</strong> <em>(MetadataContent)</em>
+          </summary>
+          Contains information regarding Categories, Categories returns a list of categories (codes and descriptions)
+          used in Hotels List. Return null is not implemented
+
+          <details>
+            <summary>
+              <strong>implemented</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+            </summary>
+
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>languages</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedText)</em>
+            </summary>
+
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+              </summary>
+
+            </details>
+          </details>
+        </details>
+
+        <details>
+          <summary>
+            <strong>markets</strong> <em>(MetadataContent)</em>
+          </summary>
+          Contains information regarding Markets, Markets return a list of the available Markets, which will be
+          used in the Search request. Return null is not implemented
+
+          <details>
+            <summary>
+              <strong>implemented</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+            </summary>
+
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>languages</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedText)</em>
+            </summary>
+
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+              </summary>
+
+            </details>
+          </details>
+        </details>
+
+        <details>
+          <summary>
+            <strong>currencies</strong> <em>(MetadataContent)</em>
+          </summary>
+          Contains information regarding Currencies, Currencies returns a list of currencies the supplier in booking flow.
+          Return null is not implemented
+
+          <details>
+            <summary>
+              <strong>implemented</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+            </summary>
+
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>languages</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedText)</em>
+            </summary>
+
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+              </summary>
+
+            </details>
+          </details>
+        </details>
+
+        <details>
+          <summary>
+            <strong>amenities</strong> <em>(MetadataContent)</em>
+          </summary>
+          Contains information regarding Amenities, Amenities is defined as something intended to make life more
+          pleasant or comfortable for people, Examples include: swimming pools, shopping centers, etc.
+          Return null is not implemented
+
+          <details>
+            <summary>
+              <strong>implemented</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedBool)</em>
+            </summary>
+
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+              Last reviewed date
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+              </summary>
+
+            </details>
+          </details>
+
+          <details>
+            <summary>
+              <strong>languages</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ReviewedText)</em>
+            </summary>
+
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>reviewDate</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Date)</em>
+              </summary>
+
+            </details>
+
+            <details style={{ pointerEvents: "none" }}>
+              <summary>
+                <strong>value</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+              </summary>
+
+            </details>
+          </details>
+        </details>
       </details>
 
       <details>
         <summary>
-        **external** (*ExternalMessage*)  
-        Specify the external message.  
+          <strong>adviseMessage</strong> <em>(AdviseMessage)</em>
         </summary>
-  
+        List of messages
+
         <details style={{ pointerEvents: "none" }}>
           <summary>
-          **code** (*String*)  
-          External code.  
+            <strong>code</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
           </summary>
+          AM code: The following codes can be returned:
         </details>
 
         <details style={{ pointerEvents: "none" }}>
           <summary>
-          **message**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-          External message.  
+            <strong>description</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
           </summary>
+          Error description
+        </details>
+
+        <details open>
+          <summary>
+            <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
+          </summary>
+          Indicates the level of importance of the message.
+          Possible values: ERROR, WARN, INFO.
+          <strong>Possible values:</strong>
+          <ul>
+            <li><code>WARN</code>: Warning message.</li>
+            <li><code>ERROR</code>: Error message.</li>
+            <li><code>INFO</code>: Info message.</li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>
+            <strong>external</strong> <em>(ExternalMessage)</em>
+          </summary>
+          Specify the external message.
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+              <strong>code</strong> <em>(String)</em>
+            </summary>
+            External code.
+          </details>
+
+          <details style={{ pointerEvents: "none" }}>
+            <summary>
+              <strong>message</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+            </summary>
+            External message.
+          </details>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+            <strong>correlationID</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
+          </summary>
+          Identifier to investigate the cause of the error.
         </details>
       </details>
 
       <details style={{ pointerEvents: "none" }}>
         <summary>
-        **correlationID**&nbsp;<span class="required"> *</span>&nbsp; (*ID*)  
-        Identifier to investigate the cause of the error.  
+          <strong>createdAt</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(DateTime)</em>
         </summary>
+        Date created
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>updatedAt</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(DateTime)</em>
+        </summary>
+        Date updated
       </details>
     </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>cursor</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+      </summary>
+      cursor to the next item, used for pagination
+    </details>
+  </details>
+
+  <details>
+    <summary>
+      <strong>adviseMessage</strong> <em>(AdviseMessage)</em>
+    </summary>
+    List of messages, contain error message, such as invalid input, connection error
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>code</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
+      </summary>
+      AM code: The following codes can be returned:
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>description</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+      </summary>
+      Error description
+    </details>
+
+    <details open>
+      <summary>
+        <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
+      </summary>
+      Indicates the level of importance of the message.
+      Possible values: ERROR, WARN, INFO.
+      <strong>Possible values:</strong>
+      <ul>
+        <li><code>WARN</code>: Warning message.</li>
+        <li><code>ERROR</code>: Error message.</li>
+        <li><code>INFO</code>: Info message.</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary>
+        <strong>external</strong> <em>(ExternalMessage)</em>
+      </summary>
+      Specify the external message.
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>code</strong> <em>(String)</em>
+        </summary>
+        External code.
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>message</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+        </summary>
+        External message.
+      </details>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>correlationID</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
+      </summary>
+      Identifier to investigate the cause of the error.
+    </details>
+  </details>
 </details>

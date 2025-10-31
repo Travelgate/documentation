@@ -6,6 +6,7 @@ const lightTheme = themes.github;
 const darkTheme = themes.dracula;
 
 
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Travelgate Docs',

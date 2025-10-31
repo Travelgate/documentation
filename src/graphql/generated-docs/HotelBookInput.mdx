@@ -5,465 +5,701 @@
   Offers versatility in book options, with certain fields marked as mandatory (optionRefId, clientReference, holder etc.) and others as optional (language, delta price, payment card etc.). This flexibility empowers you to create a personalized Book Multation, tailoring the requested fields to your specific needs.  
   </summary>
   
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+      <strong>optionRefId</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+    </summary>
+    OptionRefID is a unique identifier assigned to each option.
+    It is important to note that this identifier should not be modified or used externally, as it is an internal system identifier.
+    Additionally, it is crucial to understand that the OptionRefID value should not be interpreted in any other way beyond its use within the system.
+  </details>
+
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+      <strong>language</strong> <em>(Language)</em>
+    </summary>
+    Language to be used in the request.
+  </details>
+
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+      <strong>clientReference</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+    </summary>
+    Booking ID in the client's system.
+  </details>
+
+  <details>
+    <summary>
+      <strong>deltaPrice</strong> <em>(DeltaPriceInput)</em>
+    </summary>
+    Input delta price, indicates price variation permitted by the client
+    An error will be returned if the new price does not abide to DeltaPrice. If DeltaPrice is not sent and the integration implements it, we assume that the price range is 0 and the process will continue
+    price is lower or equal to the price showed in valuation.
+    This field is implemented if its native to the supplier or if another availability/valuation request needs to be done in Reservation. In case the supplier blocks the option in valuation, reservation
+
     <details style={{ pointerEvents: "none" }}>
       <summary>
-      **optionRefId**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-      OptionRefID is a unique identifier assigned to each option.
-It is important to note that this identifier should not be modified or used externally, as it is an internal system identifier.
-Additionally, it is crucial to understand that the OptionRefID value should not be interpreted in any other way beyond its use within the system.  
+        <strong>amount</strong> <em>(Float)</em>
       </summary>
+      The amount that will be accepted by the client to be higher than the Quote price. It is returned in the currency of the option.
     </details>
 
     <details style={{ pointerEvents: "none" }}>
       <summary>
-      **language** (*Language*)  
-      Language to be used in the request.  
+        <strong>percent</strong> <em>(Float)</em>
       </summary>
+      The percentage accepted by the client to be higher than the Quote price.
     </details>
 
     <details style={{ pointerEvents: "none" }}>
       <summary>
-      **clientReference**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-      Booking ID in the client's system.  
+        <strong>applyBoth</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
       </summary>
+      If applyBoth = false: Indicates that one of the conditions (amount or percentage) has to meet the criteria before reservation.
+      If applyBoth = true: Indicates that the new price cannot exceed the amount or percentage indicated by the client.
+    </details>
+  </details>
+
+  <details>
+    <summary>
+      <strong>paymentCard</strong> <em>(PaymentCardInput)</em>
+    </summary>
+    If the payment is done by credit card, it's mandatory to specify the payment type and the credit card information.
+
+    <details open>
+      <summary>
+        <strong>type</strong> <em>(PaymentCardType)</em>
+      </summary>
+      Indicates the supported card type, the supported card for this option is shown in Quote step.
+      <strong>Possible values:</strong>
+      <ul>
+        <li><code>VI</code>: Visa</li>
+        <li><code>AX</code>: American Express</li>
+        <li><code>BC</code>: BC Card</li>
+        <li><code>CA</code>: MasterCard</li>
+        <li><code>CB</code>: Carte Blanche</li>
+        <li><code>CU</code>: China Union Pay</li>
+        <li><code>DS</code>: Discover</li>
+        <li><code>DC</code>: Diners Club</li>
+        <li><code>T</code>: Carta Si</li>
+        <li><code>R</code>: Carte Bleue</li>
+        <li><code>N</code>: Dankort</li>
+        <li><code>L</code>: Delta</li>
+        <li><code>E</code>: Electron</li>
+        <li><code>JC</code>: Japan Credit Bureau</li>
+        <li><code>TO</code>: Maestro</li>
+        <li><code>S</code>: Switch</li>
+        <li><code>EC</code>: Electronic Cash</li>
+        <li><code>EU</code>: EuroCard</li>
+        <li><code>TP</code>: universal air travel card</li>
+        <li><code>OP</code>: optima</li>
+        <li><code>ER</code>: Air Canada/RnRoute</li>
+        <li><code>XS</code>: access</li>
+        <li><code>O</code>: others</li>
+      </ul>
     </details>
 
     <details>
       <summary>
-      **deltaPrice** (*DeltaPriceInput*)  
-      Input delta price, indicates price variation permitted by the client
-An error will be returned if the new price does not abide to DeltaPrice. If DeltaPrice is not sent and the integration implements it, we assume that the price range is 0 and the process will continue
-price is lower or equal to the price showed in valuation.
-This field is implemented if its native to the supplier or if another availability/valuation request needs to be done in Reservation. In case the supplier blocks the option in valuation, reservation  
+        <strong>holder</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(HolderInput)</em>
       </summary>
-  
+      Contains owner's name.
+
       <details style={{ pointerEvents: "none" }}>
         <summary>
-        **amount** (*Float*)  
-        The amount that will be accepted by the client to be higher than the Quote price. It is returned in the currency of the option.  
+          <strong>name</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
         </summary>
+        The card holder's name.
       </details>
 
       <details style={{ pointerEvents: "none" }}>
         <summary>
-        **percent** (*Float*)  
-        The percentage accepted by the client to be higher than the Quote price.  
+          <strong>surname</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
         </summary>
+        The card holder's surname.
       </details>
 
-      <details style={{ pointerEvents: "none" }}>
+      <details open>
         <summary>
-        **applyBoth**&nbsp;<span class="required"> *</span>&nbsp; (*Boolean*)  
-        If applyBoth = false: Indicates that one of the conditions (amount or percentage) has to meet the criteria before reservation.
-If applyBoth = true: Indicates that the new price cannot exceed the amount or percentage indicated by the client.  
+          <strong>title</strong> <em>(PersonalTitleType)</em>
         </summary>
-      </details>
-    </details>
-
-    <details>
-      <summary>
-      **paymentCard** (*PaymentCardInput*)  
-      If the payment is done by credit card, it's mandatory to specify the payment type and the credit card information.  
-      </summary>
-  
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **type** (*Enum of PaymentCardType*)  
-        Indicates the supported card type, the supported card for this option is shown in Quote step.  
-        Possible values:  
-        `VI`  
-      `AX`  
-      `BC`  
-      `CA`  
-      `CB`  
-      `CU`  
-      `DS`  
-      `DC`  
-      `T`  
-      `R`  
-      `N`  
-      `L`  
-      `E`  
-      `JC`  
-      `TO`  
-      `S`  
-      `EC`  
-      `EU`  
-      `TP`  
-      `OP`  
-      `ER`  
-      `XS`  
-      `O`  
-        </summary>
+        Holder’s title.
+        <strong>Possible values:</strong>
+        <ul>
+          <li><code>MR</code>: To refer to a man. Is not possible know if it is married or single.</li>
+          <li><code>MRS</code>: To refer to a married woman</li>
+          <li><code>MISS</code>: To refer to a single woman</li>
+          <li><code>MS</code>: To refer to a woman. Is not possible know if it is married or single.</li>
+          <li><code>NOT_SPECIFIED</code>: Deprecated 2025-08-08. PersonalTitleType is optional in inputs and outputs.</li>
+        </ul>
       </details>
 
       <details>
         <summary>
-        **holder**&nbsp;<span class="required"> *</span>&nbsp; (*HolderInput*)  
-        Contains owner's name.  
+          <strong>contactInfo</strong> <em>(ContactInfoInput)</em>
         </summary>
-  
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **name**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-          The card holder's name.  
-          </summary>
-        </details>
+        Holder's contact info.
 
         <details style={{ pointerEvents: "none" }}>
           <summary>
-          **surname**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-          The card holder's surname.  
+            <strong>email</strong> <em>(Email)</em>
           </summary>
-        </details>
-
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **title** (*Enum of PersonalTitleType*)  
-          Holder’s title.  
-          Possible values:  
-          `MR`  
-        `MRS`  
-        `MISS`  
-        `MS`  
-        `NOT_SPECIFIED`  
-          </summary>
+          Email contact
         </details>
 
         <details>
           <summary>
-          **contactInfo** (*ContactInfoInput*)  
-          Holder's contact info.  
+            <strong>phone</strong> <em>(PhoneInput)</em>
           </summary>
-  
+          Phone contact
+
           <details style={{ pointerEvents: "none" }}>
             <summary>
-            **email** (*Email*)  
-            Email contact  
+              <strong>countryCode</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(DialingCountryCode)</em>
             </summary>
+            The combination of one, two or three digits identifying a specific country, countries in an integrated numbering plan, or a specific geographic area (1 to 3 digits)
           </details>
 
-          <details>
+          <details style={{ pointerEvents: "none" }}>
             <summary>
-            **phone** (*PhoneInput*)  
-            Phone contact  
+              <strong>number</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(PhoneSubscriberNumber)</em>
             </summary>
-  
-            <details style={{ pointerEvents: "none" }}>
-              <summary>
-              **countryCode**&nbsp;<span class="required"> *</span>&nbsp; (*DialingCountryCode*)  
-              The combination of one, two or three digits identifying a specific country, countries in an integrated numbering plan, or a specific geographic area (1 to 3 digits)  
-              </summary>
-            </details>
-
-            <details style={{ pointerEvents: "none" }}>
-              <summary>
-              **number**&nbsp;<span class="required"> *</span>&nbsp; (*PhoneSubscriberNumber*)  
-              Identifies a subscriber for a particular global service  
-              </summary>
-            </details>
+            Identifies a subscriber for a particular global service
           </details>
         </details>
       </details>
 
       <details style={{ pointerEvents: "none" }}>
         <summary>
-        **number**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-        Contains credit card number.  
+          <strong>birthDate</strong> <em>(Date)</em>
         </summary>
-      </details>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **CVC**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-        Contains credit card CVC.  
-        </summary>
+        Passenger birth date.
       </details>
 
       <details>
         <summary>
-        **expire**&nbsp;<span class="required"> *</span>&nbsp; (*ExpireDateInput*)  
-        Contains credit card expiration date.  
+          <strong>idDocuments</strong> <em>(IDDocumentInput)</em>
         </summary>
-  
-        <details style={{ pointerEvents: "none" }}>
+        Passenger ID documents.
+
+        <details open>
           <summary>
-          **month**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
-          Month MM
+            <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(DocumentType)</em>
           </summary>
+          Document type.
+          <strong>Possible values:</strong>
+          <ul>
+            <li><code>DNI</code></li>
+            <li><code>NIE</code></li>
+            <li><code>PASSPORT</code></li>
+            <li><code>DRIVER_LICENSE</code></li>
+            <li><code>CPF</code></li>
+            <li><code>PAN</code></li>
+            <li><code>SSN</code></li>
+            <li><code>OTHER</code></li>
+          </ul>
         </details>
 
         <details style={{ pointerEvents: "none" }}>
           <summary>
-          **year**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
-          Year yy
+            <strong>number</strong> <em>(String)</em>
           </summary>
-        </details>
-      </details>
-
-      <details style={{ pointerEvents: "none" }}>
-        <summary>
-        **isVCC** (*Boolean*)  
-        Indicates if it is a virtual card  
-        </summary>
-      </details>
-
-      <details>
-        <summary>
-        **virtualCreditCard** (*VirtualCreditCardInput*)  
-        Virtual Credit Card data  
-        </summary>
-  
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **activationDate** (*Date*)  
-          The Date from when the card can be charged  
-          </summary>
+          Document number.
         </details>
 
         <details style={{ pointerEvents: "none" }}>
           <summary>
-          **deactivationDate** (*Date*)  
-          The date from when the card will no longer be chargeable.  
+            <strong>issuer</strong> <em>(String)</em>
           </summary>
+          Document issuer.
         </details>
 
         <details style={{ pointerEvents: "none" }}>
           <summary>
-          **currentBalance** (*Float*)  
-          The amount which can be charged to the card.  
+            <strong>issueDate</strong> <em>(Date)</em>
           </summary>
+          Document issue date.
         </details>
 
         <details style={{ pointerEvents: "none" }}>
           <summary>
-          **currencyCode** (*Currency*)  
-          The ISO currency code of the CurrentBalance.  
+            <strong>expiryDate</strong> <em>(Date)</em>
           </summary>
-        </details>
-      </details>
-
-      <details>
-        <summary>
-        **threeDomainSecurity** (*ThreeDomainSecurityInput*)  
-        Three Domain Security data  
-        </summary>
-  
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **version** (*String*)  
-          Three Domain Security Version  
-          </summary>
+          Document expiry date.
         </details>
 
         <details style={{ pointerEvents: "none" }}>
           <summary>
-          **DSTransactionID** (*String*)  
-          Universally unique transaction identifier assigned by the Directory Server (DS) to identify a single transaction.  
+            <strong>nationality</strong> <em>(String)</em>
           </summary>
+          Document nationality.
         </details>
 
         <details style={{ pointerEvents: "none" }}>
           <summary>
-          **XID** (*String*)  
-          Transaction identifier resulting from authentication processing. Uniquely identifies a 3D Secure check request.  
+            <strong>otherTypeDescription</strong> <em>(String)</em>
           </summary>
-        </details>
-
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **ECI** (*String*)  
-          Electronic Commerce Indicator  
-          </summary>
-        </details>
-
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **CAVV** (*String*)  
-          Cardholder Authentication Verification Value  
-          </summary>
-        </details>
-
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **payerResponse** (*String*)  
-          Payer Authentication Response. It is the response to the Payer Authentication Request. The Payer Authentication Response has an XML structure with the information from the response of the authentication, and it contains a digital certificate as a sign of authenticity.  
-          </summary>
-        </details>
-
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **payerResponseStatus** (*Enum of PayerResponseStatusType*)  
-          Payer Authentication Response status  
-          Possible values:  
-          `AUTHENTICATION_SUCCESS`  
-        `AUTHENTICATION_FAILED`  
-        `AUTHENTICATION_INCOMPLETE`  
-        `TRANSACTION_ATTEMPT_SUCCESS_A`  
-        `TRANSACTION_ATTEMPT_SUCCESS_B`  
-        `AUTHENTICATION_REJECTED`  
-          </summary>
-        </details>
-
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **cardEnrolledStatus** (*Enum of ThreeDSCardEnrolledStatusType*)  
-          Result of enrollment status of the service request  
-          Possible values:  
-          `CARD_ENROLLED`  
-        `CARD_NOT_ENROLLED`  
-        `CANT_AUTHENTICATE`  
-          </summary>
-        </details>
-
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **merchantName** (*String*)  
-          Merchant Name  
-          </summary>
-        </details>
-
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **signatureStatus** (*Enum of ThreeDSSignatureStatusType*)  
-          Signature value  
-          Possible values:  
-          `SIGNATURE_VALIDATED`  
-        `SIGNATURE_NOT_VALIDATED`  
-          </summary>
+          Document type other description.
         </details>
       </details>
     </details>
 
     <details style={{ pointerEvents: "none" }}>
       <summary>
-      **remarks** (*String*)  
-      Any customer comments for the supplier to consider.  
+        <strong>number</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
       </summary>
+      Contains credit card number.
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>CVC</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+      </summary>
+      Contains credit card CVC.
     </details>
 
     <details>
       <summary>
-      **holder**&nbsp;<span class="required"> *</span>&nbsp; (*HolderInput*)  
-      Holder's basic information.  
+        <strong>expire</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ExpireDateInput)</em>
       </summary>
-  
+      Contains credit card expiration date.
+
       <details style={{ pointerEvents: "none" }}>
         <summary>
-        **name**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-        The card holder's name.  
+          <strong>month</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Int)</em>
         </summary>
+        Month MM
       </details>
 
       <details style={{ pointerEvents: "none" }}>
         <summary>
-        **surname**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-        The card holder's surname.  
+          <strong>year</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Int)</em>
         </summary>
+        Year yy
+      </details>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>isVCC</strong> <em>(Boolean)</em>
+      </summary>
+      Indicates if it is a virtual card
+    </details>
+
+    <details>
+      <summary>
+        <strong>virtualCreditCard</strong> <em>(VirtualCreditCardInput)</em>
+      </summary>
+      Virtual Credit Card data
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>activationDate</strong> <em>(Date)</em>
+        </summary>
+        The Date from when the card can be charged
       </details>
 
       <details style={{ pointerEvents: "none" }}>
         <summary>
-        **title** (*Enum of PersonalTitleType*)  
-        Holder’s title.  
-        Possible values:  
-        `MR`  
-      `MRS`  
-      `MISS`  
-      `MS`  
-      `NOT_SPECIFIED`  
+          <strong>deactivationDate</strong> <em>(Date)</em>
         </summary>
+        The date from when the card will no longer be chargeable.
       </details>
 
-      <details>
+      <details style={{ pointerEvents: "none" }}>
         <summary>
-        **contactInfo** (*ContactInfoInput*)  
-        Holder's contact info.  
+          <strong>currentBalance</strong> <em>(Float)</em>
         </summary>
-  
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **email** (*Email*)  
-          Email contact  
-          </summary>
-        </details>
+        The amount which can be charged to the card.
+      </details>
 
-        <details>
-          <summary>
-          **phone** (*PhoneInput*)  
-          Phone contact  
-          </summary>
-  
-          <details style={{ pointerEvents: "none" }}>
-            <summary>
-            **countryCode**&nbsp;<span class="required"> *</span>&nbsp; (*DialingCountryCode*)  
-            The combination of one, two or three digits identifying a specific country, countries in an integrated numbering plan, or a specific geographic area (1 to 3 digits)  
-            </summary>
-          </details>
-
-          <details style={{ pointerEvents: "none" }}>
-            <summary>
-            **number**&nbsp;<span class="required"> *</span>&nbsp; (*PhoneSubscriberNumber*)  
-            Identifies a subscriber for a particular global service  
-            </summary>
-          </details>
-        </details>
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>currencyCode</strong> <em>(Currency)</em>
+        </summary>
+        The ISO currency code of the CurrentBalance.
       </details>
     </details>
 
     <details>
       <summary>
-      **rooms**&nbsp;<span class="required"> *</span>&nbsp; (*BookRoomInput*)  
-      Rooms within this option.  
+        <strong>threeDomainSecurity</strong> <em>(ThreeDomainSecurityInput)</em>
       </summary>
-  
+      Three Domain Security data
+
       <details style={{ pointerEvents: "none" }}>
         <summary>
-        **occupancyRefId**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
-        The room s reference in the booking
+          <strong>version</strong> <em>(String)</em>
         </summary>
+        Three Domain Security Version
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>DSTransactionID</strong> <em>(String)</em>
+        </summary>
+        Universally unique transaction identifier assigned by the Directory Server (DS) to identify a single transaction.
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>XID</strong> <em>(String)</em>
+        </summary>
+        Transaction identifier resulting from authentication processing. Uniquely identifies a 3D Secure check request.
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>ECI</strong> <em>(String)</em>
+        </summary>
+        Electronic Commerce Indicator
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>CAVV</strong> <em>(String)</em>
+        </summary>
+        Cardholder Authentication Verification Value
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>payerResponse</strong> <em>(String)</em>
+        </summary>
+        Payer Authentication Response. It is the response to the Payer Authentication Request. The Payer Authentication Response has an XML structure with the information from the response of the authentication, and it contains a digital certificate as a sign of authenticity.
+      </details>
+
+      <details open>
+        <summary>
+          <strong>payerResponseStatus</strong> <em>(PayerResponseStatusType)</em>
+        </summary>
+        Payer Authentication Response status
+        <strong>Possible values:</strong>
+        <ul>
+          <li><code>AUTHENTICATION_SUCCESS</code>: Successful Authentication</li>
+          <li><code>AUTHENTICATION_FAILED</code>: Failed Authentication</li>
+          <li><code>AUTHENTICATION_INCOMPLETE</code>: Unable to Complete Authentication</li>
+          <li><code>TRANSACTION_ATTEMPT_SUCCESS_A</code>: Successful Attempts Transaction</li>
+          <li><code>TRANSACTION_ATTEMPT_SUCCESS_B</code>: Successful Attempts Transaction</li>
+          <li><code>AUTHENTICATION_REJECTED</code>: Authentication Rejected (Merchant must not submit for authorisation)</li>
+        </ul>
+      </details>
+
+      <details open>
+        <summary>
+          <strong>cardEnrolledStatus</strong> <em>(ThreeDSCardEnrolledStatusType)</em>
+        </summary>
+        Result of enrollment status of the service request
+        <strong>Possible values:</strong>
+        <ul>
+          <li><code>CARD_ENROLLED</code>: Card enrolled</li>
+          <li><code>CARD_NOT_ENROLLED</code>: Card not enrolled</li>
+          <li><code>CANT_AUTHENTICATE</code>: Can not authenticate</li>
+        </ul>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>merchantName</strong> <em>(String)</em>
+        </summary>
+        Merchant Name
+      </details>
+
+      <details open>
+        <summary>
+          <strong>signatureStatus</strong> <em>(ThreeDSSignatureStatusType)</em>
+        </summary>
+        Signature value
+        <strong>Possible values:</strong>
+        <ul>
+          <li><code>SIGNATURE_VALIDATED</code>: Signature of the payer response has been validated successfully</li>
+          <li><code>SIGNATURE_NOT_VALIDATED</code>: Signature of the payer response could not be validated</li>
+        </ul>
+      </details>
+    </details>
+  </details>
+
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+      <strong>remarks</strong> <em>(String)</em>
+    </summary>
+    Any customer comments for the supplier to consider.
+  </details>
+
+  <details>
+    <summary>
+      <strong>holder</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(HolderInput)</em>
+    </summary>
+    Holder's basic information.
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>name</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+      </summary>
+      The card holder's name.
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>surname</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+      </summary>
+      The card holder's surname.
+    </details>
+
+    <details open>
+      <summary>
+        <strong>title</strong> <em>(PersonalTitleType)</em>
+      </summary>
+      Holder’s title.
+      <strong>Possible values:</strong>
+      <ul>
+        <li><code>MR</code>: To refer to a man. Is not possible know if it is married or single.</li>
+        <li><code>MRS</code>: To refer to a married woman</li>
+        <li><code>MISS</code>: To refer to a single woman</li>
+        <li><code>MS</code>: To refer to a woman. Is not possible know if it is married or single.</li>
+        <li><code>NOT_SPECIFIED</code>: Deprecated 2025-08-08. PersonalTitleType is optional in inputs and outputs.</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary>
+        <strong>contactInfo</strong> <em>(ContactInfoInput)</em>
+      </summary>
+      Holder's contact info.
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>email</strong> <em>(Email)</em>
+        </summary>
+        Email contact
       </details>
 
       <details>
         <summary>
-        **paxes**&nbsp;<span class="required"> *</span>&nbsp; (*BookPaxInput*)  
-        The list or lists of paxes of the room  
+          <strong>phone</strong> <em>(PhoneInput)</em>
         </summary>
-  
+        Phone contact
+
         <details style={{ pointerEvents: "none" }}>
           <summary>
-          **name**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-          Passenger first  name  
+            <strong>countryCode</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(DialingCountryCode)</em>
           </summary>
+          The combination of one, two or three digits identifying a specific country, countries in an integrated numbering plan, or a specific geographic area (1 to 3 digits)
         </details>
 
         <details style={{ pointerEvents: "none" }}>
           <summary>
-          **surname**&nbsp;<span class="required"> *</span>&nbsp; (*String*)  
-          Passenger last name  
+            <strong>number</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(PhoneSubscriberNumber)</em>
           </summary>
-        </details>
-
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **age**&nbsp;<span class="required"> *</span>&nbsp; (*Int*)  
-          Passenger age on the day of the check-in
-          </summary>
-        </details>
-
-        <details style={{ pointerEvents: "none" }}>
-          <summary>
-          **title** (*Enum of PersonalTitleType*)  
-          Passenger title.  
-          Possible values:  
-          `MR`  
-        `MRS`  
-        `MISS`  
-        `MS`  
-        `NOT_SPECIFIED`  
-          </summary>
+          Identifies a subscriber for a particular global service
         </details>
       </details>
     </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>birthDate</strong> <em>(Date)</em>
+      </summary>
+      Passenger birth date.
+    </details>
+
+    <details>
+      <summary>
+        <strong>idDocuments</strong> <em>(IDDocumentInput)</em>
+      </summary>
+      Passenger ID documents.
+
+      <details open>
+        <summary>
+          <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(DocumentType)</em>
+        </summary>
+        Document type.
+        <strong>Possible values:</strong>
+        <ul>
+          <li><code>DNI</code></li>
+          <li><code>NIE</code></li>
+          <li><code>PASSPORT</code></li>
+          <li><code>DRIVER_LICENSE</code></li>
+          <li><code>CPF</code></li>
+          <li><code>PAN</code></li>
+          <li><code>SSN</code></li>
+          <li><code>OTHER</code></li>
+        </ul>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>number</strong> <em>(String)</em>
+        </summary>
+        Document number.
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>issuer</strong> <em>(String)</em>
+        </summary>
+        Document issuer.
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>issueDate</strong> <em>(Date)</em>
+        </summary>
+        Document issue date.
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>expiryDate</strong> <em>(Date)</em>
+        </summary>
+        Document expiry date.
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>nationality</strong> <em>(String)</em>
+        </summary>
+        Document nationality.
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>otherTypeDescription</strong> <em>(String)</em>
+        </summary>
+        Document type other description.
+      </details>
+    </details>
+  </details>
+
+  <details>
+    <summary>
+      <strong>rooms</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(BookRoomInput)</em>
+    </summary>
+    Rooms within this option.
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>occupancyRefId</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Int)</em>
+      </summary>
+      The room s reference in the booking
+    </details>
+
+    <details>
+      <summary>
+        <strong>paxes</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(BookPaxInput)</em>
+      </summary>
+      The list or lists of paxes of the room
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>name</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+        </summary>
+        Passenger first  name
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>surname</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+        </summary>
+        Passenger last name
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>age</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Int)</em>
+        </summary>
+        Passenger age on the day of the check-in
+      </details>
+
+      <details open>
+        <summary>
+          <strong>title</strong> <em>(PersonalTitleType)</em>
+        </summary>
+        Passenger title.
+        <strong>Possible values:</strong>
+        <ul>
+          <li><code>MR</code>: To refer to a man. Is not possible know if it is married or single.</li>
+          <li><code>MRS</code>: To refer to a married woman</li>
+          <li><code>MISS</code>: To refer to a single woman</li>
+          <li><code>MS</code>: To refer to a woman. Is not possible know if it is married or single.</li>
+          <li><code>NOT_SPECIFIED</code>: Deprecated 2025-08-08. PersonalTitleType is optional in inputs and outputs.</li>
+        </ul>
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>birthDate</strong> <em>(Date)</em>
+        </summary>
+        Passenger birth date.
+      </details>
+
+      <details>
+        <summary>
+          <strong>idDocuments</strong> <em>(IDDocumentInput)</em>
+        </summary>
+        Passenger ID documents.
+
+        <details open>
+          <summary>
+            <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(DocumentType)</em>
+          </summary>
+          Document type.
+          <strong>Possible values:</strong>
+          <ul>
+            <li><code>DNI</code></li>
+            <li><code>NIE</code></li>
+            <li><code>PASSPORT</code></li>
+            <li><code>DRIVER_LICENSE</code></li>
+            <li><code>CPF</code></li>
+            <li><code>PAN</code></li>
+            <li><code>SSN</code></li>
+            <li><code>OTHER</code></li>
+          </ul>
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+            <strong>number</strong> <em>(String)</em>
+          </summary>
+          Document number.
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+            <strong>issuer</strong> <em>(String)</em>
+          </summary>
+          Document issuer.
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+            <strong>issueDate</strong> <em>(Date)</em>
+          </summary>
+          Document issue date.
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+            <strong>expiryDate</strong> <em>(Date)</em>
+          </summary>
+          Document expiry date.
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+            <strong>nationality</strong> <em>(String)</em>
+          </summary>
+          Document nationality.
+        </details>
+
+        <details style={{ pointerEvents: "none" }}>
+          <summary>
+            <strong>otherTypeDescription</strong> <em>(String)</em>
+          </summary>
+          Document type other description.
+        </details>
+      </details>
+    </details>
+  </details>
   
 </details>

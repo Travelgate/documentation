@@ -1,9 +1,9 @@
 
 <details>
   <summary>
-    <strong>HotelConnection</strong> <em>(OBJECT)</em>
+  **HotelConnection** (*OBJECT*)  
+  HotelList definition  
   </summary>
-    HotelList definition
   
   
   <details>
@@ -232,14 +232,16 @@
               Parent destination code
             </details>
 
-            <details style={{ pointerEvents: "none" }}>
+            <details open>
               <summary>
-                <strong>type</strong> <em>(Enum of DestinationType)</em>
+                <strong>type</strong> <em>(DestinationType)</em>
               </summary>
               Indicates destination type, zone or city
-              Possible values:
-              `ZONE`  
-              `CITY`  
+              <strong>Possible values:</strong>
+              <ul>
+                <li><code>ZONE</code>: Zone</li>
+                <li><code>CITY</code>: City</li>
+              </ul>
             </details>
           </details>
 
@@ -276,13 +278,12 @@
                 The airport s name
               </details>
 
-              <details>
+              <div>
                 <summary>
                   <strong>location</strong> <em>(Location)</em>
                 </summary>
                 The airport s location
-
-              </details>
+</div>
             </details>
 
             <details>
@@ -305,16 +306,18 @@
                 Error description
               </details>
 
-              <details style={{ pointerEvents: "none" }}>
+              <details open>
                 <summary>
-                  <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+                  <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
                 </summary>
                 Indicates the level of importance of the message.
                 Possible values: ERROR, WARN, INFO.
-                Possible values:
-                `WARN`  
-                `ERROR`  
-                `INFO`  
+                <strong>Possible values:</strong>
+                <ul>
+                  <li><code>WARN</code>: Warning message.</li>
+                  <li><code>ERROR</code>: Error message.</li>
+                  <li><code>INFO</code>: Info message.</li>
+                </ul>
               </details>
 
               <details>
@@ -411,35 +414,37 @@
           Rank indicates the supplier categorization.
         </details>
 
-        <details style={{ pointerEvents: "none" }}>
+        <details open>
           <summary>
-            <strong>cardTypes</strong> <em>(Enum of PaymentCardType)</em>
+            <strong>cardTypes</strong> <em>(PaymentCardType)</em>
           </summary>
           List of credit cards
-          Possible values:
-          `VI`  
-          `AX`  
-          `BC`  
-          `CA`  
-          `CB`  
-          `CU`  
-          `DS`  
-          `DC`  
-          `T`  
-          `R`  
-          `N`  
-          `L`  
-          `E`  
-          `JC`  
-          `TO`  
-          `S`  
-          `EC`  
-          `EU`  
-          `TP`  
-          `OP`  
-          `ER`  
-          `XS`  
-          `O`  
+          <strong>Possible values:</strong>
+          <ul>
+            <li><code>VI</code>: Visa</li>
+            <li><code>AX</code>: American Express</li>
+            <li><code>BC</code>: BC Card</li>
+            <li><code>CA</code>: MasterCard</li>
+            <li><code>CB</code>: Carte Blanche</li>
+            <li><code>CU</code>: China Union Pay</li>
+            <li><code>DS</code>: Discover</li>
+            <li><code>DC</code>: Diners Club</li>
+            <li><code>T</code>: Carta Si</li>
+            <li><code>R</code>: Carte Bleue</li>
+            <li><code>N</code>: Dankort</li>
+            <li><code>L</code>: Delta</li>
+            <li><code>E</code>: Electron</li>
+            <li><code>JC</code>: Japan Credit Bureau</li>
+            <li><code>TO</code>: Maestro</li>
+            <li><code>S</code>: Switch</li>
+            <li><code>EC</code>: Electronic Cash</li>
+            <li><code>EU</code>: EuroCard</li>
+            <li><code>TP</code>: universal air travel card</li>
+            <li><code>OP</code>: optima</li>
+            <li><code>ER</code>: Air Canada/RnRoute</li>
+            <li><code>XS</code>: access</li>
+            <li><code>O</code>: others</li>
+          </ul>
         </details>
 
         <details>
@@ -462,16 +467,18 @@
             Indicates the order priority.
           </details>
 
-          <details style={{ pointerEvents: "none" }}>
+          <details open>
             <summary>
-              <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of ApplicationAreaType)</em>
+              <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ApplicationAreaType)</em>
             </summary>
             Indicates the type of the media.
-            Possible values:
-            `HOTEL`  
-            `ROOM`  
-            `SERVICE`  
-            `GENERAL`  
+            <strong>Possible values:</strong>
+            <ul>
+              <li><code>HOTEL</code>: Apply at the hotel.</li>
+              <li><code>ROOM</code>: Apply in the hotel.</li>
+              <li><code>SERVICE</code>: Applies to a service.</li>
+              <li><code>GENERAL</code>: Applies in general.</li>
+            </ul>
           </details>
 
           <details style={{ pointerEvents: "none" }}>
@@ -516,21 +523,23 @@
           </summary>
           Descriptions
 
-          <details style={{ pointerEvents: "none" }}>
+          <details open>
             <summary>
-              <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of DescriptionType)</em>
+              <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(DescriptionType)</em>
             </summary>
             Indicates type of description
-            Possible values:
-            `ADDITIONAL`  
-            `AMENITY`  
-            `ACTIVITY`  
-            `RESTAURANT`  
-            `ROOM`  
-            `GENERAL`  
-            `POOL`  
-            `LOCATION`  
-            `HOW_TO_GET`  
+            <strong>Possible values:</strong>
+            <ul>
+              <li><code>ADDITIONAL</code>: Additional Information</li>
+              <li><code>AMENITY</code>: Amenities</li>
+              <li><code>ACTIVITY</code>: Activities</li>
+              <li><code>RESTAURANT</code>: Restaurants</li>
+              <li><code>ROOM</code>: Rooms</li>
+              <li><code>GENERAL</code>: General</li>
+              <li><code>POOL</code>: Pools</li>
+              <li><code>LOCATION</code>: Locations</li>
+              <li><code>HOW_TO_GET</code>: How to get</li>
+            </ul>
           </details>
 
           <details>
@@ -774,16 +783,18 @@
                     Indicates the order priority.
                   </details>
 
-                  <details style={{ pointerEvents: "none" }}>
+                  <details open>
                     <summary>
-                      <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of ApplicationAreaType)</em>
+                      <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ApplicationAreaType)</em>
                     </summary>
                     Indicates the type of the media.
-                    Possible values:
-                    `HOTEL`  
-                    `ROOM`  
-                    `SERVICE`  
-                    `GENERAL`  
+                    <strong>Possible values:</strong>
+                    <ul>
+                      <li><code>HOTEL</code>: Apply at the hotel.</li>
+                      <li><code>ROOM</code>: Apply in the hotel.</li>
+                      <li><code>SERVICE</code>: Applies to a service.</li>
+                      <li><code>GENERAL</code>: Applies in general.</li>
+                    </ul>
                   </details>
 
                   <details style={{ pointerEvents: "none" }}>
@@ -882,21 +893,19 @@
                         Node Id
                       </details>
 
-                      <details>
+                      <div>
                         <summary>
                           <strong>amenityData</strong> <em>(HotelXAmenityData)</em>
                         </summary>
                         Indicates data values of amenity
+</div>
 
-                      </details>
-
-                      <details>
+                      <div>
                         <summary>
                           <strong>adviseMessage</strong> <em>(AdviseMessage)</em>
                         </summary>
                         List of messages
-
-                      </details>
+</div>
 
                       <details style={{ pointerEvents: "none" }}>
                         <summary>
@@ -943,16 +952,18 @@
                   Error description
                 </details>
 
-                <details style={{ pointerEvents: "none" }}>
+                <details open>
                   <summary>
-                    <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+                    <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
                   </summary>
                   Indicates the level of importance of the message.
                   Possible values: ERROR, WARN, INFO.
-                  Possible values:
-                  `WARN`  
-                  `ERROR`  
-                  `INFO`  
+                  <strong>Possible values:</strong>
+                  <ul>
+                    <li><code>WARN</code>: Warning message.</li>
+                    <li><code>ERROR</code>: Error message.</li>
+                    <li><code>INFO</code>: Info message.</li>
+                  </ul>
                 </details>
 
                 <details>
@@ -1312,16 +1323,18 @@
                   External amenity code
                 </details>
 
-                <details style={{ pointerEvents: "none" }}>
+                <details open>
                   <summary>
-                    <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of ApplicationAreaType)</em>
+                    <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ApplicationAreaType)</em>
                   </summary>
                   Indicates the type of Amenity.
-                  Possible values:
-                  `HOTEL`  
-                  `ROOM`  
-                  `SERVICE`  
-                  `GENERAL`  
+                  <strong>Possible values:</strong>
+                  <ul>
+                    <li><code>HOTEL</code>: Apply at the hotel.</li>
+                    <li><code>ROOM</code>: Apply in the hotel.</li>
+                    <li><code>SERVICE</code>: Applies to a service.</li>
+                    <li><code>GENERAL</code>: Applies in general.</li>
+                  </ul>
                 </details>
 
                 <details>
@@ -1408,16 +1421,18 @@
                   Error description
                 </details>
 
-                <details style={{ pointerEvents: "none" }}>
+                <details open>
                   <summary>
-                    <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+                    <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
                   </summary>
                   Indicates the level of importance of the message.
                   Possible values: ERROR, WARN, INFO.
-                  Possible values:
-                  `WARN`  
-                  `ERROR`  
-                  `INFO`  
+                  <strong>Possible values:</strong>
+                  <ul>
+                    <li><code>WARN</code>: Warning message.</li>
+                    <li><code>ERROR</code>: Error message.</li>
+                    <li><code>INFO</code>: Info message.</li>
+                  </ul>
                 </details>
 
                 <details>
@@ -1515,16 +1530,18 @@
           Error description
         </details>
 
-        <details style={{ pointerEvents: "none" }}>
+        <details open>
           <summary>
-            <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+            <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
           </summary>
           Indicates the level of importance of the message.
           Possible values: ERROR, WARN, INFO.
-          Possible values:
-          `WARN`  
-          `ERROR`  
-          `INFO`  
+          <strong>Possible values:</strong>
+          <ul>
+            <li><code>WARN</code>: Warning message.</li>
+            <li><code>ERROR</code>: Error message.</li>
+            <li><code>INFO</code>: Info message.</li>
+          </ul>
         </details>
 
         <details>

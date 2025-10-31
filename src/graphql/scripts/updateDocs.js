@@ -6,6 +6,25 @@ const DOCS_BASE_PATH = path.join(__dirname, "../../../docs/apis");
 
 // Import the mapping of .mdx files
 const FILE_NODE_MAP = require("../node-map/fileNodeMap");
+const { type } = require("os");
+
+const DEBUG_ENUMS = true;
+function logEnumDetection(name, enumValues) {
+  if (DEBUG_ENUMS && enumValues && enumValues.length > 0) {
+    console.log(`🧩 ENUM detected for ${name}:`, enumValues.map(v => v.name).join(", "));
+  }
+}
+
+function escapeHtml(str) {
+  return String(str).replace(/[&<>"']/g, s => (
+    s === '&' ? '&amp;' :
+    s === '<' ? '&lt;'  :
+    s === '>' ? '&gt;'  :
+    s === '"' ? '&quot;':
+    /* ' */     '&#39;'
+  ));
+}
+
 
 function loadSchema() {
     console.log("🔄 Loading GraphQL schema...");
@@ -26,55 +45,82 @@ function sanitizeDescription(desc, indent = 0) {
     .replace(/>/g, "&gt;");
 }
 
-function formatField(field, indent = 0) {
-    const indentation = "  ".repeat(indent);
 
-    if (!field.type) {
-        console.warn(`⚠️ Type not defined for field: ${field.name}`);
-        return "";
-    }
 
-    const requiredMark = field.type.isRequired ? "&nbsp;<span class=\"required\"> *</span>&nbsp;" : "";
+function formatField(field, indent = 0, typeMap = {}) {
+  const indentation = "  ".repeat(indent);
 
-    const description = field.description ? sanitizeDescription(field.description, indent + 1) : "";
+  if (!field.type) {
+    console.warn(`⚠️ Type not defined for field: ${field.name}`);
+    return "";
+  }
 
-    if (field.type.kind === "OBJECT" || field.type.kind === "INPUT_OBJECT") {
-        const subFields = (field.type.fields || field.type.inputFields)
-            ? [...(field.type.fields || []), ...(field.type.inputFields || [])]
-                .map(f => formatField(f, indent + 1))
-                .join("\n")
-            : "";
-        return `
-${indentation}<details>
-${indentation}  <summary>
-${indentation}    <strong>${field.name}</strong>${requiredMark} <em>(${field.type.name})</em>
-${indentation}  </summary>
+  const requiredMark = field.type.isRequired ? '&nbsp;<span class="required"> *</span>&nbsp;' : "";
+  const description = field.description ? sanitizeDescription(field.description, indent + 1) : "";
+
+  const hasSubFields =
+    (field.type.fields && field.type.fields.length > 0) ||
+    (field.type.inputFields && field.type.inputFields.length > 0);
+
+  const summaryLine = `${indentation}  <summary>\n${indentation}    <strong>${field.name}</strong>${requiredMark} <em>(${field.type.name})</em>\n${indentation}  </summary>`;
+
+ // ✅ ENUM rendering (mismo formato visual, solucionando MDX)
+if (field.type.kind === "ENUM" || typeMap[field.type.name]?.kind === "ENUM") {
+  const enumType = field.type.kind === "ENUM"
+    ? field.type
+    : (typeMap[field.type.name] || {});
+
+  const enumValues = Array.isArray(enumType.enumValues) ? enumType.enumValues : [];
+
+  const formattedEnumValues = enumValues.length > 0
+    ? enumValues
+        .map(v =>
+          `${indentation}    <li><code>${escapeHtml(v.name)}</code>${v.description ? `: ${escapeHtml(v.description)}` : ""}</li>`
+        )
+        .join("\n")
+    : `${indentation}    <li><em>No values found</em></li>`;
+
+  return `
+${indentation}<details open>
+${summaryLine}
 ${description}
-${subFields}
+${indentation}  <strong>Possible values:</strong>
+${indentation}  <ul>
+${formattedEnumValues}
+${indentation}  </ul>
 ${indentation}</details>`;
-    } else if (field.type.kind === "ENUM") {
-        const enumValues = field.type.enumValues
-            ? field.type.enumValues.map(v => `${indentation}  \`${v.name}\`  `).join("\n")
-            : "";
-        return `
-${indentation}<details style={{ pointerEvents: "none" }}>
-${indentation}  <summary>
-${indentation}    <strong>${field.name}</strong>${requiredMark} <em>(Enum of ${field.type.name})</em>
-${indentation}  </summary>
-${description}
-${indentation}  Possible values:
-${enumValues}
-${indentation}</details>`;
-    } else {
-        return `
-${indentation}<details style={{ pointerEvents: "none" }}>
-${indentation}  <summary>
-${indentation}    <strong>${field.name}</strong>${requiredMark} <em>(${field.type.name})</em>
-${indentation}  </summary>
-${description}
-${indentation}</details>`;
-    }
 }
+
+
+  // OBJECT / INPUT_OBJECT
+  if (field.type.kind === "OBJECT" || field.type.kind === "INPUT_OBJECT") {
+    if (!hasSubFields) {
+      return `\n${indentation}<div>\n${summaryLine}\n${description}\n</div>`;
+    }
+
+    const subFields = [...(field.type.fields || []), ...(field.type.inputFields || [])]
+      .map(f => formatField(f, indent + 1, typeMap))
+      .join("\n");
+
+    return `\n${indentation}<details>\n${summaryLine}\n${description}\n${subFields}\n${indentation}</details>`;
+  }
+
+  // SCALAR or fallback
+  return `\n${indentation}<details style={{ pointerEvents: "none" }}>\n${summaryLine}\n${description}\n${indentation}</details>`;
+}
+
+
+
+function sanitizeDescription(desc, indent = 0) {
+  const indentation = "  ".repeat(indent);
+  return desc
+    .split("\n")
+    .map(line => `${indentation}${line.trim()}`)
+    .join("\n")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
 
 function removeOldDocumentation(content) {
     return content
@@ -95,43 +141,93 @@ function categorizeInputType(nodeName) {
     const mutationKeywords = ["Create", "Update", "Delete", "Load"];
     return mutationKeywords.some(keyword => nodeName.includes(keyword)) ? "Mutation Inputs" : "Query Inputs";
 }
+function renderEnumType(enumType, indent = 0) {
+  const indentation = "  ".repeat(indent);
+  const values = enumType.enumValues || [];
 
-function generateBreakdownSection(nodes) {
-    let queryInputs = [];
-    let mutationInputs = [];
-    let responseFields = [];
+  if (values.length === 0) return "";
 
-    nodes.forEach(node => {
-        const isMutation = categorizeInputType(node.name) === "Mutation Inputs";
-        const section = `
-<details>
-  <summary>
-    <strong>${node.name}</strong> <em>(${node.kind})</em>
-  </summary>
-  ${node.description ? sanitizeDescription(node.description, 1) : ""}
-  ${node.inputFields ? node.inputFields.map(f => formatField(f, 1)).join("\n") : ""}
-  ${node.fields ? node.fields.map(f => formatField(f, 1)).join("\n") : ""}
-</details>`;
+  const formattedEnumValues = values
+    .map(v => `${indentation}- \`${v.name}\`${v.description ? `: ${v.description}` : ""}`)
+    .join("\n");
 
-        if (node.kind === "INPUT_OBJECT") {
-            if (isMutation) {
-                mutationInputs.push(section);
-            } else {
-                queryInputs.push(section);
-            }
-        } else {
-            responseFields.push(section);
-        }
-    });
-
-    return {
-        queryInputs: queryInputs.length > 0 ? queryInputs.join("\n") : "",
-        mutationInputs: mutationInputs.length > 0 ? mutationInputs.join("\n") : "",
-        responseFields: responseFields.length > 0 ? responseFields.join("\n") : ""
-    };
+  return `\n${indentation}<details>\n${indentation}  <summary>\n${indentation}    <strong>${enumType.name}</strong> <em>(ENUM)</em>\n${indentation}  </summary>\n${indentation}  <strong>Possible values:</strong>\n${formattedEnumValues}\n${indentation}</details>`;
 }
 
-function insertIntoMdxFiles(schema) {
+
+function generateBreakdownSection(nodes, typeMap) {
+  let queryInputs = [];
+  let mutationInputs = [];
+  let responseFields = [];
+
+ 
+  function renderEnumRoot(enumType, indent = 0) {
+  const indentation = "  ".repeat(indent);
+  const values = Array.isArray(enumType.enumValues) ? enumType.enumValues : [];
+  const lis = values.length
+    ? values.map(v => `${indentation}  <li><code>${escapeHtml(v.name)}</code>${v.description ? `: ${escapeHtml(v.description)}` : ""}</li>`).join("\n")
+    : `${indentation}  <li><em>No values found</em></li>`;
+
+  return `
+${indentation}<details open>
+${indentation}  <summary><strong>${escapeHtml(enumType.name)}</strong> <em>(ENUM)</em></summary>
+${indentation}  <strong>Possible values:</strong>
+${indentation}  <ul>
+${lis}
+${indentation}  </ul>
+${indentation}</details>`;
+}
+
+
+  nodes.forEach(node => {
+    
+    if (node.kind === "ENUM") {
+  responseFields.push(renderEnumRoot(node));
+  return;
+}
+
+    const isMutation = categorizeInputType(node.name) === "Mutation Inputs";
+
+    const section = `
+<details>
+  <summary>
+  **${node.name}** (*${node.kind}*)  
+  ${node.description ? node.description + "  " : ""}
+  </summary>
+  ${node.inputFields ? node.inputFields.map(f => formatField(f, 1, typeMap)).join("\n") : ""}
+  ${node.fields ? node.fields.map(f => formatField(f, 1, typeMap)).join("\n") : ""}
+</details>
+`;
+
+    if (node.kind === "INPUT_OBJECT") {
+      if (isMutation) {
+        mutationInputs.push(section);
+      } else {
+        queryInputs.push(section);
+      }
+    } else {
+      responseFields.push(section);
+    }
+  });
+
+  
+  const missingEnums = Object.values(typeMap)
+    .filter(t => t.kind === "ENUM" && !nodes.some(n => n.name === t.name));
+
+  missingEnums.forEach(enumType => {
+    const section = renderEnumMarkdown(enumType);
+    responseFields.push(section);
+  });
+
+  return {
+    queryInputs: queryInputs.length > 0 ? queryInputs.join("\n") : "",
+    mutationInputs: mutationInputs.length > 0 ? mutationInputs.join("\n") : "",
+    responseFields: responseFields.length > 0 ? responseFields.join("\n") : ""
+  };
+}
+
+
+function insertIntoMdxFiles(schema, typeMap) {
     const GENERATED_DOCS_PATH = path.join(__dirname, "../../../src/graphql/generated-docs");
 
     if (!fs.existsSync(GENERATED_DOCS_PATH)) {
@@ -168,7 +264,7 @@ function insertIntoMdxFiles(schema) {
             const docFilePath = path.join(GENERATED_DOCS_PATH, docFileName);
 
             console.log(`📄 Generating documentation in: ${docFilePath}`);
-            let nodeDocumentation = generateBreakdownSection([node]);
+            let nodeDocumentation = generateBreakdownSection([node],typeMap);
 
             fs.writeFileSync(
                 docFilePath,
@@ -243,5 +339,7 @@ function insertIntoMdxFiles(schema) {
 
 (function main() {
     const schema = loadSchema();
-    insertIntoMdxFiles(schema);
+    const typeMap = {};
+    schema.types.forEach(t => typeMap[t.name] = t);
+    insertIntoMdxFiles(schema, typeMap);
 })();

@@ -1,10 +1,10 @@
 
 <details>
   <summary>
-    <strong>HotelCriteriaBookingInput</strong> <em>(INPUT_OBJECT)</em>
+  **HotelCriteriaBookingInput** (*INPUT_OBJECT*)  
+  Criteria of book contains basic information to find a book or books.
+If you are using our Hotelx locator (bookingID) you don t need to indicate any of the other fields  
   </summary>
-    Criteria of book contains basic information to find a book or books.
-  If you are using our Hotelx locator (bookingID) you don t need to indicate any of the other fields
   
   <details style={{ pointerEvents: "none" }}>
     <summary>
@@ -20,14 +20,16 @@
     The language code.
   </details>
 
-  <details style={{ pointerEvents: "none" }}>
+  <details open>
     <summary>
-      <strong>typeSearch</strong> <em>(Enum of BookingCriteriaType)</em>
+      <strong>typeSearch</strong> <em>(BookingCriteriaType)</em>
     </summary>
     The search type criteria. Necessary if your search if by references or by dates.
-    Possible values:
-    `DATES`  
-    `REFERENCES`  
+    <strong>Possible values:</strong>
+    <ul>
+      <li><code>DATES</code>: Search by date range</li>
+      <li><code>REFERENCES</code>: Search by reference codes</li>
+    </ul>
   </details>
 
   <details>
@@ -117,14 +119,16 @@
     </summary>
     The dates criteria.
 
-    <details style={{ pointerEvents: "none" }}>
+    <details open>
       <summary>
-        <strong>dateType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of DateType)</em>
+        <strong>dateType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(DateType)</em>
       </summary>
       Type of date. Can be Arrival or Booking date.
-      Possible values:
-      `ARRIVAL`  
-      `BOOKING`  
+      <strong>Possible values:</strong>
+      <ul>
+        <li><code>ARRIVAL</code>: Arrival Date</li>
+        <li><code>BOOKING</code>: Booking Creation</li>
+      </ul>
     </details>
 
     <details style={{ pointerEvents: "none" }}>

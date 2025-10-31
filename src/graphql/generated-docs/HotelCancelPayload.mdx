@@ -1,9 +1,9 @@
 
 <details>
   <summary>
-    <strong>HotelCancelPayload</strong> <em>(OBJECT)</em>
-  </summary>
+  **HotelCancelPayload** (*OBJECT*)  
   
+  </summary>
   
   
   <details>
@@ -756,16 +756,20 @@
       Cancellation ID in the supplier's system, if supported.
     </details>
 
-    <details style={{ pointerEvents: "none" }}>
+    <details open>
       <summary>
-        <strong>status</strong> <em>(Enum of BookStatusType)</em>
+        <strong>status</strong> <em>(BookStatusType)</em>
       </summary>
       Booking Status.
-      Possible values:
-      `OK`  
-      `ON_REQUEST`  
-      `CANCELLED`  
-      `UNKNOWN`  
+      <strong>Possible values:</strong>
+      <ul>
+        <li><code>OK</code>: The reservation was completed sucessfully.</li>
+        <li><code>ON_REQUEST</code>: The reservation was successfully completed; however, the product is currently unavailable, placing the reservation on a waiting list.
+It is the client&#39;s responsibility to confirm the status of the booking.</li>
+        <li><code>CANCELLED</code>: The status of the booking is cancelled.</li>
+        <li><code>UNKNOWN</code>: The reservation process itself may encounter problems, leading to an unknown reservation status.
+It is the client&#39;s responsibility to verify the booking&#39;s status.</li>
+      </ul>
     </details>
 
     <details>
@@ -911,14 +915,16 @@
             rule name
           </details>
 
-          <details style={{ pointerEvents: "none" }}>
+          <details open>
             <summary>
-              <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of MarkupRuleType)</em>
+              <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(MarkupRuleType)</em>
             </summary>
             type of the value
-            Possible values:
-            `PERCENT`  
-            `IMPORT`  
+            <strong>Possible values:</strong>
+            <ul>
+              <li><code>PERCENT</code>: Indicates the percentage applied by a rule.</li>
+              <li><code>IMPORT</code>: Indicates the exact amount applied by a rule.</li>
+            </ul>
           </details>
 
           <details style={{ pointerEvents: "none" }}>
@@ -1036,17 +1042,19 @@
           Holder's surname.
         </details>
 
-        <details style={{ pointerEvents: "none" }}>
+        <details open>
           <summary>
-            <strong>title</strong> <em>(Enum of PersonalTitleType)</em>
+            <strong>title</strong> <em>(PersonalTitleType)</em>
           </summary>
           Holder's title, if return.
-          Possible values:
-          `MR`  
-          `MRS`  
-          `MISS`  
-          `MS`  
-          `NOT_SPECIFIED`  
+          <strong>Possible values:</strong>
+          <ul>
+            <li><code>MR</code>: To refer to a man. Is not possible know if it is married or single.</li>
+            <li><code>MRS</code>: To refer to a married woman</li>
+            <li><code>MISS</code>: To refer to a single woman</li>
+            <li><code>MS</code>: To refer to a woman. Is not possible know if it is married or single.</li>
+            <li><code>NOT_SPECIFIED</code>: Deprecated 2025-08-08. PersonalTitleType is optional in inputs and outputs.</li>
+          </ul>
         </details>
 
         <details>
@@ -1162,17 +1170,19 @@
               Specifies the pax surname.
             </details>
 
-            <details style={{ pointerEvents: "none" }}>
+            <details open>
               <summary>
-                <strong>title</strong> <em>(Enum of PersonalTitleType)</em>
+                <strong>title</strong> <em>(PersonalTitleType)</em>
               </summary>
               Specifies the pax title.
-              Possible values:
-              `MR`  
-              `MRS`  
-              `MISS`  
-              `MS`  
-              `NOT_SPECIFIED`  
+              <strong>Possible values:</strong>
+              <ul>
+                <li><code>MR</code>: To refer to a man. Is not possible know if it is married or single.</li>
+                <li><code>MRS</code>: To refer to a married woman</li>
+                <li><code>MISS</code>: To refer to a single woman</li>
+                <li><code>MS</code>: To refer to a woman. Is not possible know if it is married or single.</li>
+                <li><code>NOT_SPECIFIED</code>: Deprecated 2025-08-08. PersonalTitleType is optional in inputs and outputs.</li>
+              </ul>
             </details>
           </details>
         </details>
@@ -1347,14 +1357,16 @@
                   rule name
                 </details>
 
-                <details style={{ pointerEvents: "none" }}>
+                <details open>
                   <summary>
-                    <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of MarkupRuleType)</em>
+                    <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(MarkupRuleType)</em>
                   </summary>
                   type of the value
-                  Possible values:
-                  `PERCENT`  
-                  `IMPORT`  
+                  <strong>Possible values:</strong>
+                  <ul>
+                    <li><code>PERCENT</code>: Indicates the percentage applied by a rule.</li>
+                    <li><code>IMPORT</code>: Indicates the exact amount applied by a rule.</li>
+                  </ul>
                 </details>
 
                 <details style={{ pointerEvents: "none" }}>
@@ -1519,14 +1531,16 @@
               rule name
             </details>
 
-            <details style={{ pointerEvents: "none" }}>
+            <details open>
               <summary>
-                <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of MarkupRuleType)</em>
+                <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(MarkupRuleType)</em>
               </summary>
               type of the value
-              Possible values:
-              `PERCENT`  
-              `IMPORT`  
+              <strong>Possible values:</strong>
+              <ul>
+                <li><code>PERCENT</code>: Indicates the percentage applied by a rule.</li>
+                <li><code>IMPORT</code>: Indicates the exact amount applied by a rule.</li>
+              </ul>
             </details>
 
             <details style={{ pointerEvents: "none" }}>
@@ -1614,15 +1628,17 @@
             Specifies if the deadline has been taken from the seller’s response (false) or has been calculated by Travelgate (true)
           </details>
 
-          <details style={{ pointerEvents: "none" }}>
+          <details open>
             <summary>
-              <strong>penaltyType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of CancelPenaltyType)</em>
+              <strong>penaltyType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(CancelPenaltyType)</em>
             </summary>
             Type of penalty; this can be Nights, Percent or Import
-            Possible values:
-            `NIGHTS`  
-            `PERCENT`  
-            `IMPORT`  
+            <strong>Possible values:</strong>
+            <ul>
+              <li><code>NIGHTS</code>: Indicates the number of nights to be penalized.</li>
+              <li><code>PERCENT</code>: Indicates the percentage to pay based on the option price.</li>
+              <li><code>IMPORT</code>: Indicates the exact amount payable.</li>
+            </ul>
           </details>
 
           <details style={{ pointerEvents: "none" }}>
@@ -1655,19 +1671,23 @@
         Additional information about the book.
       </details>
 
-      <details style={{ pointerEvents: "none" }}>
+      <details open>
         <summary>
-          <strong>status</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of BookStatusType)</em>
+          <strong>status</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(BookStatusType)</em>
         </summary>
         Booking Status.
         The possible values for this field are specified in our documentation.
         Possible values for book mutation and booking query: https://docs.travelgate.com/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/book#book-status
         Possible values for cancel mutation: https://docs.travelgate.com/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/cancel#cancel-status
-        Possible values:
-        `OK`  
-        `ON_REQUEST`  
-        `CANCELLED`  
-        `UNKNOWN`  
+        <strong>Possible values:</strong>
+        <ul>
+          <li><code>OK</code>: The reservation was completed sucessfully.</li>
+          <li><code>ON_REQUEST</code>: The reservation was successfully completed; however, the product is currently unavailable, placing the reservation on a waiting list.
+It is the client&#39;s responsibility to confirm the status of the booking.</li>
+          <li><code>CANCELLED</code>: The status of the booking is cancelled.</li>
+          <li><code>UNKNOWN</code>: The reservation process itself may encounter problems, leading to an unknown reservation status.
+It is the client&#39;s responsibility to verify the booking&#39;s status.</li>
+        </ul>
       </details>
 
       <details style={{ pointerEvents: "none" }}>
@@ -1786,17 +1806,19 @@
               Holder's surname.
             </details>
 
-            <details style={{ pointerEvents: "none" }}>
+            <details open>
               <summary>
-                <strong>title</strong> <em>(Enum of PersonalTitleType)</em>
+                <strong>title</strong> <em>(PersonalTitleType)</em>
               </summary>
               Holder's title, if return.
-              Possible values:
-              `MR`  
-              `MRS`  
-              `MISS`  
-              `MS`  
-              `NOT_SPECIFIED`  
+              <strong>Possible values:</strong>
+              <ul>
+                <li><code>MR</code>: To refer to a man. Is not possible know if it is married or single.</li>
+                <li><code>MRS</code>: To refer to a married woman</li>
+                <li><code>MISS</code>: To refer to a single woman</li>
+                <li><code>MS</code>: To refer to a woman. Is not possible know if it is married or single.</li>
+                <li><code>NOT_SPECIFIED</code>: Deprecated 2025-08-08. PersonalTitleType is optional in inputs and outputs.</li>
+              </ul>
             </details>
 
             <details>
@@ -1835,48 +1857,52 @@
             Contains credit card number.
           </details>
 
-          <details style={{ pointerEvents: "none" }}>
+          <details open>
             <summary>
-              <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of PaymentCardType)</em>
+              <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(PaymentCardType)</em>
             </summary>
             Indicates the supported card type.
-            Possible values:
-            `VI`  
-            `AX`  
-            `BC`  
-            `CA`  
-            `CB`  
-            `CU`  
-            `DS`  
-            `DC`  
-            `T`  
-            `R`  
-            `N`  
-            `L`  
-            `E`  
-            `JC`  
-            `TO`  
-            `S`  
-            `EC`  
-            `EU`  
-            `TP`  
-            `OP`  
-            `ER`  
-            `XS`  
-            `O`  
+            <strong>Possible values:</strong>
+            <ul>
+              <li><code>VI</code>: Visa</li>
+              <li><code>AX</code>: American Express</li>
+              <li><code>BC</code>: BC Card</li>
+              <li><code>CA</code>: MasterCard</li>
+              <li><code>CB</code>: Carte Blanche</li>
+              <li><code>CU</code>: China Union Pay</li>
+              <li><code>DS</code>: Discover</li>
+              <li><code>DC</code>: Diners Club</li>
+              <li><code>T</code>: Carta Si</li>
+              <li><code>R</code>: Carte Bleue</li>
+              <li><code>N</code>: Dankort</li>
+              <li><code>L</code>: Delta</li>
+              <li><code>E</code>: Electron</li>
+              <li><code>JC</code>: Japan Credit Bureau</li>
+              <li><code>TO</code>: Maestro</li>
+              <li><code>S</code>: Switch</li>
+              <li><code>EC</code>: Electronic Cash</li>
+              <li><code>EU</code>: EuroCard</li>
+              <li><code>TP</code>: universal air travel card</li>
+              <li><code>OP</code>: optima</li>
+              <li><code>ER</code>: Air Canada/RnRoute</li>
+              <li><code>XS</code>: access</li>
+              <li><code>O</code>: others</li>
+            </ul>
           </details>
 
-          <details style={{ pointerEvents: "none" }}>
+          <details open>
             <summary>
-              <strong>status</strong> <em>(Enum of PaymentCardStatus)</em>
+              <strong>status</strong> <em>(PaymentCardStatus)</em>
             </summary>
             Indicates the credit card status.
-            Possible values:
-            `CREATED`  
-            `CANCELED`  
-            `EXPIRED`  
-            `ACTIVE`  
-            `UNKNOWN`  
+            <strong>Possible values:</strong>
+            <ul>
+              <li><code>CREATED</code>: Payment card created correctly.</li>
+              <li><code>CANCELED</code>: Payment card canceled correctly.</li>
+              <li><code>EXPIRED</code>: Payment card expired.</li>
+              <li><code>ACTIVE</code>: Payment card is active.</li>
+              <li><code>UNKNOWN</code>: When Payment card is UNKNOWN, the buyer needs to check with the VCC provider to ensure if some payment has been made.</li>
+            </ul>
           </details>
         </details>
 
@@ -1887,13 +1913,15 @@
           Payment identification generated by the payment supplier. This field is only returned in Book step, when the card is generated.
         </details>
 
-        <details style={{ pointerEvents: "none" }}>
+        <details open>
           <summary>
-            <strong>method</strong> <em>(Enum of GeneratedPaymentMethodType)</em>
+            <strong>method</strong> <em>(GeneratedPaymentMethodType)</em>
           </summary>
           Indicates the payment method used, which depends on the configured payment supplier.
-          Possible values:
-          `VIRTUAL_CARD`  
+          <strong>Possible values:</strong>
+          <ul>
+            <li><code>VIRTUAL_CARD</code>: The payment method is a generation of a virtual credit card to send to the supplier.</li>
+          </ul>
         </details>
 
         <details>
@@ -2012,47 +2040,51 @@
 
                     </details>
 
-                    <details style={{ pointerEvents: "none" }}>
+                    <details open>
                       <summary>
-                        <strong>entityType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of EntityType)</em>
+                        <strong>entityType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(EntityType)</em>
                       </summary>
 
-                      Possible values:
-                      `ACCESS`  
-                      `SUPPLIER`  
-                      `CLIENT`  
-                      `PROVIDER`  
-                      `MEMBER`  
-                      `ORGANIZATION`  
-                      `API_KEY`  
+                      <strong>Possible values:</strong>
+                      <ul>
+                        <li><code>ACCESS</code></li>
+                        <li><code>SUPPLIER</code></li>
+                        <li><code>CLIENT</code></li>
+                        <li><code>PROVIDER</code></li>
+                        <li><code>MEMBER</code></li>
+                        <li><code>ORGANIZATION</code></li>
+                        <li><code>API_KEY</code></li>
+                      </ul>
                     </details>
 
-                    <details style={{ pointerEvents: "none" }}>
+                    <details open>
                       <summary>
-                        <strong>actionType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of ActionType)</em>
+                        <strong>actionType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ActionType)</em>
                       </summary>
 
-                      Possible values:
-                      `UPDATE`  
-                      `DELETE`  
-                      `CREATE`  
-                      `ARCHIVE`  
-                      `UNARCHIVE`  
-                      `ACTIVATE`  
-                      `DEACTIVATE`  
-                      `GRANT_TO_GROUPS`  
-                      `REVOKE_FROM_FROUPS`  
-                      `APPEND_PARAMETERS`  
-                      `DELETE_PARAMETERS`  
-                      `SET_FIELD`  
-                      `REMOVE_FIELD`  
-                      `ACTIVATE_SPEED`  
-                      `DEACTIVATE_SPEED`  
-                      `SET_IS_PUBLIC`  
-                      `UPDATE_MEMBER_IN_ORGANIZATION`  
-                      `REMOVE_MEMBER_SERVICE_ROLE`  
-                      `UPDATE_MEMBER_SERVICE_ROLE`  
-                      `REFRESH_TOKEN`  
+                      <strong>Possible values:</strong>
+                      <ul>
+                        <li><code>UPDATE</code></li>
+                        <li><code>DELETE</code></li>
+                        <li><code>CREATE</code></li>
+                        <li><code>ARCHIVE</code></li>
+                        <li><code>UNARCHIVE</code></li>
+                        <li><code>ACTIVATE</code></li>
+                        <li><code>DEACTIVATE</code></li>
+                        <li><code>GRANT_TO_GROUPS</code></li>
+                        <li><code>REVOKE_FROM_FROUPS</code></li>
+                        <li><code>APPEND_PARAMETERS</code></li>
+                        <li><code>DELETE_PARAMETERS</code></li>
+                        <li><code>SET_FIELD</code></li>
+                        <li><code>REMOVE_FIELD</code></li>
+                        <li><code>ACTIVATE_SPEED</code></li>
+                        <li><code>DEACTIVATE_SPEED</code></li>
+                        <li><code>SET_IS_PUBLIC</code></li>
+                        <li><code>UPDATE_MEMBER_IN_ORGANIZATION</code></li>
+                        <li><code>REMOVE_MEMBER_SERVICE_ROLE</code></li>
+                        <li><code>UPDATE_MEMBER_SERVICE_ROLE</code></li>
+                        <li><code>REFRESH_TOKEN</code></li>
+                      </ul>
                     </details>
 
                     <details>
@@ -2118,16 +2150,18 @@
                       Error description
                     </details>
 
-                    <details style={{ pointerEvents: "none" }}>
+                    <details open>
                       <summary>
-                        <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+                        <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
                       </summary>
                       Indicates the level of importance of the message.
                       Possible values: ERROR, WARN, INFO.
-                      Possible values:
-                      `WARN`  
-                      `ERROR`  
-                      `INFO`  
+                      <strong>Possible values:</strong>
+                      <ul>
+                        <li><code>WARN</code>: Warning message.</li>
+                        <li><code>ERROR</code>: Error message.</li>
+                        <li><code>INFO</code>: Info message.</li>
+                      </ul>
                     </details>
 
                     <details>
@@ -2244,16 +2278,18 @@
                   Error description
                 </details>
 
-                <details style={{ pointerEvents: "none" }}>
+                <details open>
                   <summary>
-                    <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+                    <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
                   </summary>
                   Indicates the level of importance of the message.
                   Possible values: ERROR, WARN, INFO.
-                  Possible values:
-                  `WARN`  
-                  `ERROR`  
-                  `INFO`  
+                  <strong>Possible values:</strong>
+                  <ul>
+                    <li><code>WARN</code>: Warning message.</li>
+                    <li><code>ERROR</code>: Error message.</li>
+                    <li><code>INFO</code>: Info message.</li>
+                  </ul>
                 </details>
 
                 <details>
@@ -2293,15 +2329,17 @@
               </details>
             </details>
 
-            <details style={{ pointerEvents: "none" }}>
+            <details open>
               <summary>
-                <strong>connectionType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of ProviderConnectionType)</em>
+                <strong>connectionType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ProviderConnectionType)</em>
               </summary>
               Indicates connection type of Supplier
-              Possible values:
-              `PULL`  
-              `PUSH`  
-              `HYBRID`  
+              <strong>Possible values:</strong>
+              <ul>
+                <li><code>PULL</code></li>
+                <li><code>PUSH</code></li>
+                <li><code>HYBRID</code></li>
+              </ul>
             </details>
           </details>
 
@@ -2320,20 +2358,22 @@
             8. package
           </details>
 
-          <details style={{ pointerEvents: "none" }}>
+          <details open>
             <summary>
-              <strong>api</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of APIName)</em>
+              <strong>api</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(APIName)</em>
             </summary>
             API name for service API
-            Possible values:
-            `HOTEL`  
-            `TRANSPORTATION`  
-            `CAR`  
-            `TRANSFERS`  
-            `ACTIVITIES`  
-            `VIRTUALACCOUNT`  
-            `PAYMENT`  
-            `PACKAGE`  
+            <strong>Possible values:</strong>
+            <ul>
+              <li><code>HOTEL</code></li>
+              <li><code>TRANSPORTATION</code></li>
+              <li><code>CAR</code></li>
+              <li><code>TRANSFERS</code></li>
+              <li><code>ACTIVITIES</code></li>
+              <li><code>VIRTUALACCOUNT</code></li>
+              <li><code>PAYMENT</code></li>
+              <li><code>PACKAGE</code></li>
+            </ul>
           </details>
 
           <details>
@@ -2444,16 +2484,18 @@
                     Error description
                   </details>
 
-                  <details style={{ pointerEvents: "none" }}>
+                  <details open>
                     <summary>
-                      <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+                      <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
                     </summary>
                     Indicates the level of importance of the message.
                     Possible values: ERROR, WARN, INFO.
-                    Possible values:
-                    `WARN`  
-                    `ERROR`  
-                    `INFO`  
+                    <strong>Possible values:</strong>
+                    <ul>
+                      <li><code>WARN</code>: Warning message.</li>
+                      <li><code>ERROR</code>: Error message.</li>
+                      <li><code>INFO</code>: Info message.</li>
+                    </ul>
                   </details>
 
                   <details>
@@ -2521,16 +2563,18 @@
                 Error description
               </details>
 
-              <details style={{ pointerEvents: "none" }}>
+              <details open>
                 <summary>
-                  <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+                  <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
                 </summary>
                 Indicates the level of importance of the message.
                 Possible values: ERROR, WARN, INFO.
-                Possible values:
-                `WARN`  
-                `ERROR`  
-                `INFO`  
+                <strong>Possible values:</strong>
+                <ul>
+                  <li><code>WARN</code>: Warning message.</li>
+                  <li><code>ERROR</code>: Error message.</li>
+                  <li><code>INFO</code>: Info message.</li>
+                </ul>
               </details>
 
               <details>
@@ -2672,13 +2716,12 @@
                   Supplier unique code
                 </details>
 
-                <details>
+                <div>
                   <summary>
                     <strong>supplierData</strong> <em>(SupplierData)</em>
                   </summary>
                   Extended Supplier information
-
-                </details>
+</div>
 
                 <details>
                   <summary>
@@ -2700,16 +2743,18 @@
                     Error description
                   </details>
 
-                  <details style={{ pointerEvents: "none" }}>
+                  <details open>
                     <summary>
-                      <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+                      <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
                     </summary>
                     Indicates the level of importance of the message.
                     Possible values: ERROR, WARN, INFO.
-                    Possible values:
-                    `WARN`  
-                    `ERROR`  
-                    `INFO`  
+                    <strong>Possible values:</strong>
+                    <ul>
+                      <li><code>WARN</code>: Warning message.</li>
+                      <li><code>ERROR</code>: Error message.</li>
+                      <li><code>INFO</code>: Info message.</li>
+                    </ul>
                   </details>
 
                   <details>
@@ -2836,13 +2881,12 @@
                 </details>
               </details>
 
-              <details>
+              <div>
                 <summary>
                   <strong>shared</strong> <em>(Access)</em>
                 </summary>
                 Parent Access if Shared Access
-
-              </details>
+</div>
 
               <details>
                 <summary>
@@ -2900,13 +2944,12 @@
                 Range on update date
               </details>
 
-              <details>
+              <div>
                 <summary>
                   <strong>master</strong> <em>(Access)</em>
                 </summary>
                 Parent Master Access. null=&gt;masterAccess, notNull=&gt;slaveAccess
-
-              </details>
+</div>
 
               <details>
                 <summary>
@@ -2967,13 +3010,15 @@
 
                       </details>
 
-                      <details style={{ pointerEvents: "none" }}>
+                      <details open>
                         <summary>
-                          <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of GroupType)</em>
+                          <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(GroupType)</em>
                         </summary>
 
-                        Possible values:
-
+                        <strong>Possible values:</strong>
+                        <ul>
+                          <li><em>No values found</em></li>
+                        </ul>
                       </details>
 
                       <details style={{ pointerEvents: "none" }}>
@@ -2990,45 +3035,40 @@
 
                       </details>
 
-                      <details>
+                      <div>
                         <summary>
                           <strong>parent</strong> <em>(Group)</em>
                         </summary>
 
+</div>
 
-                      </details>
-
-                      <details>
+                      <div>
                         <summary>
                           <strong>children</strong> <em>(GroupConnection)</em>
                         </summary>
                         Only responses children.(non-hierarchically)
+</div>
 
-                      </details>
-
-                      <details>
+                      <div>
                         <summary>
                           <strong>descendents</strong> <em>(GroupConnection)</em>
                         </summary>
                         Response all descendents groups nodes in this group (nom-hierarchically)
+</div>
 
-                      </details>
-
-                      <details>
+                      <div>
                         <summary>
                           <strong>parents</strong> <em>(GroupConnection)</em>
                         </summary>
                         Response all parents groups nodes for this group (nom-hierarchically)
+</div>
 
-                      </details>
-
-                      <details>
+                      <div>
                         <summary>
                           <strong>owner</strong> <em>(Member)</em>
                         </summary>
 
-
-                      </details>
+</div>
 
                       <details style={{ pointerEvents: "none" }}>
                         <summary>
@@ -3051,77 +3091,68 @@
 
                       </details>
 
-                      <details>
+                      <div>
                         <summary>
                           <strong>siblings</strong> <em>(GroupConnection)</em>
                         </summary>
                         Sibilings of the group
+</div>
 
-                      </details>
-
-                      <details>
+                      <div>
                         <summary>
                           <strong>members</strong> <em>(MemberConnection)</em>
                         </summary>
                         Only responses members in this group
+</div>
 
-                      </details>
-
-                      <details>
+                      <div>
                         <summary>
                           <strong>apis</strong> <em>(APIConnection)</em>
                         </summary>
                         APIs assigned to this group. Products have APIs.
+</div>
 
-                      </details>
-
-                      <details>
+                      <div>
                         <summary>
                           <strong>managedGroups</strong> <em>(ManagedGroupConnection)</em>
                         </summary>
                         Responses all managed groups by this group.
+</div>
 
-                      </details>
-
-                      <details>
+                      <div>
                         <summary>
                           <strong>allMembers</strong> <em>(MemberConnection)</em>
                         </summary>
                         Response all members in this group s childrens (hierarchically),
+</div>
 
-                      </details>
-
-                      <details>
+                      <div>
                         <summary>
                           <strong>accesses</strong> <em>(AccessConnection)</em>
                         </summary>
                         Access resources in a group
+</div>
 
-                      </details>
-
-                      <details>
+                      <div>
                         <summary>
                           <strong>suppliers</strong> <em>(SupplierConnection)</em>
                         </summary>
                         Supplier resources in a group
+</div>
 
-                      </details>
-
-                      <details>
+                      <div>
                         <summary>
                           <strong>clients</strong> <em>(ClientConnection)</em>
                         </summary>
                         Clients resources in a group
+</div>
 
-                      </details>
-
-                      <details>
+                      <div>
                         <summary>
                           <strong>roles</strong> <em>(RoleConnection)</em>
                         </summary>
                         You can grant roles to members, which define the roles catalog for a group.
-
-                      </details>
+</div>
 
                       <details style={{ pointerEvents: "none" }}>
                         <summary>
@@ -3165,23 +3196,24 @@
                         Error description
                       </details>
 
-                      <details style={{ pointerEvents: "none" }}>
+                      <details open>
                         <summary>
-                          <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+                          <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
                         </summary>
                         Indicates the level of importance of the message.
                         Possible values: ERROR, WARN, INFO.
-                        Possible values:
-
+                        <strong>Possible values:</strong>
+                        <ul>
+                          <li><em>No values found</em></li>
+                        </ul>
                       </details>
 
-                      <details>
+                      <div>
                         <summary>
                           <strong>external</strong> <em>(ExternalMessage)</em>
                         </summary>
                         Specify the external message.
-
-                      </details>
+</div>
 
                       <details style={{ pointerEvents: "none" }}>
                         <summary>
@@ -3269,16 +3301,18 @@
                     Error description
                   </details>
 
-                  <details style={{ pointerEvents: "none" }}>
+                  <details open>
                     <summary>
-                      <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+                      <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
                     </summary>
                     Indicates the level of importance of the message.
                     Possible values: ERROR, WARN, INFO.
-                    Possible values:
-                    `WARN`  
-                    `ERROR`  
-                    `INFO`  
+                    <strong>Possible values:</strong>
+                    <ul>
+                      <li><code>WARN</code>: Warning message.</li>
+                      <li><code>ERROR</code>: Error message.</li>
+                      <li><code>INFO</code>: Info message.</li>
+                    </ul>
                   </details>
 
                   <details>
@@ -3363,31 +3397,34 @@
 
                       </details>
 
-                      <details style={{ pointerEvents: "none" }}>
+                      <details open>
                         <summary>
-                          <strong>entityType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of EntityType)</em>
+                          <strong>entityType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(EntityType)</em>
                         </summary>
 
-                        Possible values:
-
+                        <strong>Possible values:</strong>
+                        <ul>
+                          <li><em>No values found</em></li>
+                        </ul>
                       </details>
 
-                      <details style={{ pointerEvents: "none" }}>
+                      <details open>
                         <summary>
-                          <strong>actionType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of ActionType)</em>
+                          <strong>actionType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ActionType)</em>
                         </summary>
 
-                        Possible values:
-
+                        <strong>Possible values:</strong>
+                        <ul>
+                          <li><em>No values found</em></li>
+                        </ul>
                       </details>
 
-                      <details>
+                      <div>
                         <summary>
                           <strong>auditDetails</strong> <em>(AuditDetails)</em>
                         </summary>
 
-
-                      </details>
+</div>
 
                       <details style={{ pointerEvents: "none" }}>
                         <summary>
@@ -3424,23 +3461,24 @@
                         Error description
                       </details>
 
-                      <details style={{ pointerEvents: "none" }}>
+                      <details open>
                         <summary>
-                          <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+                          <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
                         </summary>
                         Indicates the level of importance of the message.
                         Possible values: ERROR, WARN, INFO.
-                        Possible values:
-
+                        <strong>Possible values:</strong>
+                        <ul>
+                          <li><em>No values found</em></li>
+                        </ul>
                       </details>
 
-                      <details>
+                      <div>
                         <summary>
                           <strong>external</strong> <em>(ExternalMessage)</em>
                         </summary>
                         Specify the external message.
-
-                      </details>
+</div>
 
                       <details style={{ pointerEvents: "none" }}>
                         <summary>
@@ -3535,16 +3573,18 @@
                     Error description
                   </details>
 
-                  <details style={{ pointerEvents: "none" }}>
+                  <details open>
                     <summary>
-                      <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+                      <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
                     </summary>
                     Indicates the level of importance of the message.
                     Possible values: ERROR, WARN, INFO.
-                    Possible values:
-                    `WARN`  
-                    `ERROR`  
-                    `INFO`  
+                    <strong>Possible values:</strong>
+                    <ul>
+                      <li><code>WARN</code>: Warning message.</li>
+                      <li><code>ERROR</code>: Error message.</li>
+                      <li><code>INFO</code>: Info message.</li>
+                    </ul>
                   </details>
 
                   <details>
@@ -3605,16 +3645,18 @@
                 Error description
               </details>
 
-              <details style={{ pointerEvents: "none" }}>
+              <details open>
                 <summary>
-                  <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+                  <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
                 </summary>
                 Indicates the level of importance of the message.
                 Possible values: ERROR, WARN, INFO.
-                Possible values:
-                `WARN`  
-                `ERROR`  
-                `INFO`  
+                <strong>Possible values:</strong>
+                <ul>
+                  <li><code>WARN</code>: Warning message.</li>
+                  <li><code>ERROR</code>: Error message.</li>
+                  <li><code>INFO</code>: Info message.</li>
+                </ul>
               </details>
 
               <details>
@@ -3761,13 +3803,12 @@
                       Supplier unique code
                     </details>
 
-                    <details>
+                    <div>
                       <summary>
                         <strong>supplierData</strong> <em>(SupplierData)</em>
                       </summary>
                       Extended Supplier information
-
-                    </details>
+</div>
 
                     <details>
                       <summary>
@@ -3789,23 +3830,24 @@
                         Error description
                       </details>
 
-                      <details style={{ pointerEvents: "none" }}>
+                      <details open>
                         <summary>
-                          <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+                          <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
                         </summary>
                         Indicates the level of importance of the message.
                         Possible values: ERROR, WARN, INFO.
-                        Possible values:
-
+                        <strong>Possible values:</strong>
+                        <ul>
+                          <li><em>No values found</em></li>
+                        </ul>
                       </details>
 
-                      <details>
+                      <div>
                         <summary>
                           <strong>external</strong> <em>(ExternalMessage)</em>
                         </summary>
                         Specify the external message.
-
-                      </details>
+</div>
 
                       <details style={{ pointerEvents: "none" }}>
                         <summary>
@@ -3910,13 +3952,12 @@
                     </details>
                   </details>
 
-                  <details>
+                  <div>
                     <summary>
                       <strong>shared</strong> <em>(Access)</em>
                     </summary>
                     Parent Access if Shared Access
-
-                  </details>
+</div>
 
                   <details>
                     <summary>
@@ -3974,13 +4015,12 @@
                     Range on update date
                   </details>
 
-                  <details>
+                  <div>
                     <summary>
                       <strong>master</strong> <em>(Access)</em>
                     </summary>
                     Parent Master Access. null=&gt;masterAccess, notNull=&gt;slaveAccess
-
-                  </details>
+</div>
 
                   <details>
                     <summary>
@@ -3994,13 +4034,12 @@
                       </summary>
 
 
-                      <details>
+                      <div>
                         <summary>
                           <strong>node</strong> <em>(Group)</em>
                         </summary>
 
-
-                      </details>
+</div>
 
                       <details style={{ pointerEvents: "none" }}>
                         <summary>
@@ -4065,23 +4104,24 @@
                         Error description
                       </details>
 
-                      <details style={{ pointerEvents: "none" }}>
+                      <details open>
                         <summary>
-                          <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+                          <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
                         </summary>
                         Indicates the level of importance of the message.
                         Possible values: ERROR, WARN, INFO.
-                        Possible values:
-
+                        <strong>Possible values:</strong>
+                        <ul>
+                          <li><em>No values found</em></li>
+                        </ul>
                       </details>
 
-                      <details>
+                      <div>
                         <summary>
                           <strong>external</strong> <em>(ExternalMessage)</em>
                         </summary>
                         Specify the external message.
-
-                      </details>
+</div>
 
                       <details style={{ pointerEvents: "none" }}>
                         <summary>
@@ -4111,13 +4151,12 @@
                       </summary>
 
 
-                      <details>
+                      <div>
                         <summary>
                           <strong>node</strong> <em>(EntityAudit)</em>
                         </summary>
 
-
-                      </details>
+</div>
 
                       <details style={{ pointerEvents: "none" }}>
                         <summary>
@@ -4182,23 +4221,24 @@
                         Error description
                       </details>
 
-                      <details style={{ pointerEvents: "none" }}>
+                      <details open>
                         <summary>
-                          <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+                          <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
                         </summary>
                         Indicates the level of importance of the message.
                         Possible values: ERROR, WARN, INFO.
-                        Possible values:
-
+                        <strong>Possible values:</strong>
+                        <ul>
+                          <li><em>No values found</em></li>
+                        </ul>
                       </details>
 
-                      <details>
+                      <div>
                         <summary>
                           <strong>external</strong> <em>(ExternalMessage)</em>
                         </summary>
                         Specify the external message.
-
-                      </details>
+</div>
 
                       <details style={{ pointerEvents: "none" }}>
                         <summary>
@@ -4237,16 +4277,18 @@
                     Error description
                   </details>
 
-                  <details style={{ pointerEvents: "none" }}>
+                  <details open>
                     <summary>
-                      <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+                      <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
                     </summary>
                     Indicates the level of importance of the message.
                     Possible values: ERROR, WARN, INFO.
-                    Possible values:
-                    `WARN`  
-                    `ERROR`  
-                    `INFO`  
+                    <strong>Possible values:</strong>
+                    <ul>
+                      <li><code>WARN</code>: Warning message.</li>
+                      <li><code>ERROR</code>: Error message.</li>
+                      <li><code>INFO</code>: Info message.</li>
+                    </ul>
                   </details>
 
                   <details>
@@ -4363,16 +4405,18 @@
                 Error description
               </details>
 
-              <details style={{ pointerEvents: "none" }}>
+              <details open>
                 <summary>
-                  <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+                  <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
                 </summary>
                 Indicates the level of importance of the message.
                 Possible values: ERROR, WARN, INFO.
-                Possible values:
-                `WARN`  
-                `ERROR`  
-                `INFO`  
+                <strong>Possible values:</strong>
+                <ul>
+                  <li><code>WARN</code>: Warning message.</li>
+                  <li><code>ERROR</code>: Error message.</li>
+                  <li><code>INFO</code>: Info message.</li>
+                </ul>
               </details>
 
               <details>
@@ -4457,47 +4501,51 @@
 
                   </details>
 
-                  <details style={{ pointerEvents: "none" }}>
+                  <details open>
                     <summary>
-                      <strong>entityType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of EntityType)</em>
+                      <strong>entityType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(EntityType)</em>
                     </summary>
 
-                    Possible values:
-                    `ACCESS`  
-                    `SUPPLIER`  
-                    `CLIENT`  
-                    `PROVIDER`  
-                    `MEMBER`  
-                    `ORGANIZATION`  
-                    `API_KEY`  
+                    <strong>Possible values:</strong>
+                    <ul>
+                      <li><code>ACCESS</code></li>
+                      <li><code>SUPPLIER</code></li>
+                      <li><code>CLIENT</code></li>
+                      <li><code>PROVIDER</code></li>
+                      <li><code>MEMBER</code></li>
+                      <li><code>ORGANIZATION</code></li>
+                      <li><code>API_KEY</code></li>
+                    </ul>
                   </details>
 
-                  <details style={{ pointerEvents: "none" }}>
+                  <details open>
                     <summary>
-                      <strong>actionType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of ActionType)</em>
+                      <strong>actionType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ActionType)</em>
                     </summary>
 
-                    Possible values:
-                    `UPDATE`  
-                    `DELETE`  
-                    `CREATE`  
-                    `ARCHIVE`  
-                    `UNARCHIVE`  
-                    `ACTIVATE`  
-                    `DEACTIVATE`  
-                    `GRANT_TO_GROUPS`  
-                    `REVOKE_FROM_FROUPS`  
-                    `APPEND_PARAMETERS`  
-                    `DELETE_PARAMETERS`  
-                    `SET_FIELD`  
-                    `REMOVE_FIELD`  
-                    `ACTIVATE_SPEED`  
-                    `DEACTIVATE_SPEED`  
-                    `SET_IS_PUBLIC`  
-                    `UPDATE_MEMBER_IN_ORGANIZATION`  
-                    `REMOVE_MEMBER_SERVICE_ROLE`  
-                    `UPDATE_MEMBER_SERVICE_ROLE`  
-                    `REFRESH_TOKEN`  
+                    <strong>Possible values:</strong>
+                    <ul>
+                      <li><code>UPDATE</code></li>
+                      <li><code>DELETE</code></li>
+                      <li><code>CREATE</code></li>
+                      <li><code>ARCHIVE</code></li>
+                      <li><code>UNARCHIVE</code></li>
+                      <li><code>ACTIVATE</code></li>
+                      <li><code>DEACTIVATE</code></li>
+                      <li><code>GRANT_TO_GROUPS</code></li>
+                      <li><code>REVOKE_FROM_FROUPS</code></li>
+                      <li><code>APPEND_PARAMETERS</code></li>
+                      <li><code>DELETE_PARAMETERS</code></li>
+                      <li><code>SET_FIELD</code></li>
+                      <li><code>REMOVE_FIELD</code></li>
+                      <li><code>ACTIVATE_SPEED</code></li>
+                      <li><code>DEACTIVATE_SPEED</code></li>
+                      <li><code>SET_IS_PUBLIC</code></li>
+                      <li><code>UPDATE_MEMBER_IN_ORGANIZATION</code></li>
+                      <li><code>REMOVE_MEMBER_SERVICE_ROLE</code></li>
+                      <li><code>UPDATE_MEMBER_SERVICE_ROLE</code></li>
+                      <li><code>REFRESH_TOKEN</code></li>
+                    </ul>
                   </details>
 
                   <details>
@@ -4563,16 +4611,18 @@
                     Error description
                   </details>
 
-                  <details style={{ pointerEvents: "none" }}>
+                  <details open>
                     <summary>
-                      <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+                      <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
                     </summary>
                     Indicates the level of importance of the message.
                     Possible values: ERROR, WARN, INFO.
-                    Possible values:
-                    `WARN`  
-                    `ERROR`  
-                    `INFO`  
+                    <strong>Possible values:</strong>
+                    <ul>
+                      <li><code>WARN</code>: Warning message.</li>
+                      <li><code>ERROR</code>: Error message.</li>
+                      <li><code>INFO</code>: Info message.</li>
+                    </ul>
                   </details>
 
                   <details>
@@ -4689,16 +4739,18 @@
                 Error description
               </details>
 
-              <details style={{ pointerEvents: "none" }}>
+              <details open>
                 <summary>
-                  <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+                  <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
                 </summary>
                 Indicates the level of importance of the message.
                 Possible values: ERROR, WARN, INFO.
-                Possible values:
-                `WARN`  
-                `ERROR`  
-                `INFO`  
+                <strong>Possible values:</strong>
+                <ul>
+                  <li><code>WARN</code>: Warning message.</li>
+                  <li><code>ERROR</code>: Error message.</li>
+                  <li><code>INFO</code>: Info message.</li>
+                </ul>
               </details>
 
               <details>
@@ -4744,15 +4796,17 @@
             </summary>
             Service Integration Data
 
-            <details style={{ pointerEvents: "none" }}>
+            <details open>
               <summary>
-                <strong>type</strong> <em>(Enum of ServiceIntegrationType)</em>
+                <strong>type</strong> <em>(ServiceIntegrationType)</em>
               </summary>
 
-              Possible values:
-              `SITH`  
-              `WORKER`  
-              `CONNECTORS`  
+              <strong>Possible values:</strong>
+              <ul>
+                <li><code>SITH</code></li>
+                <li><code>WORKER</code></li>
+                <li><code>CONNECTORS</code></li>
+              </ul>
             </details>
 
             <details style={{ pointerEvents: "none" }}>
@@ -4813,17 +4867,19 @@
           Indicates the surcharge code
         </details>
 
-        <details style={{ pointerEvents: "none" }}>
+        <details open>
           <summary>
-            <strong>chargeType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of ChargeType)</em>
+            <strong>chargeType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ChargeType)</em>
           </summary>
           Indicates the charge type. We need to know whether the supplements have to be paid when the consumer gets to the hotel or beforehand.
           Possible charge types: INCLUDE or EXCLUDE.
           when  INCLUDE : this surcharge is mandatory and included in the option s price
           when  EXCLUDE : this surcharge is not included in the option s price
-          Possible values:
-          `INCLUDE`  
-          `EXCLUDE`  
+          <strong>Possible values:</strong>
+          <ul>
+            <li><code>INCLUDE</code>: The charge is included.</li>
+            <li><code>EXCLUDE</code>: The charge is excluded.</li>
+          </ul>
         </details>
 
         <details style={{ pointerEvents: "none" }}>
@@ -4977,14 +5033,16 @@
                 rule name
               </details>
 
-              <details style={{ pointerEvents: "none" }}>
+              <details open>
                 <summary>
-                  <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of MarkupRuleType)</em>
+                  <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(MarkupRuleType)</em>
                 </summary>
                 type of the value
-                Possible values:
-                `PERCENT`  
-                `IMPORT`  
+                <strong>Possible values:</strong>
+                <ul>
+                  <li><code>PERCENT</code>: Indicates the percentage applied by a rule.</li>
+                  <li><code>IMPORT</code>: Indicates the exact amount applied by a rule.</li>
+                </ul>
               </details>
 
               <details style={{ pointerEvents: "none" }}>
@@ -5039,34 +5097,38 @@
           Specifies the supplement description.
         </details>
 
-        <details style={{ pointerEvents: "none" }}>
+        <details open>
           <summary>
-            <strong>supplementType</strong> <em>(Enum of SupplementType)</em>
+            <strong>supplementType</strong> <em>(SupplementType)</em>
           </summary>
           Indicates the supplement type. Possible types: Fee, Ski_pass, Lessons, Meals, Equipment, Ticket, Transfers, Gla, Activity or Other.
-          Possible values:
-          `SKI_PASS`  
-          `LESSONS`  
-          `MEALS`  
-          `EQUIPMENT`  
-          `TICKET`  
-          `TRANSFERS`  
-          `GALA`  
-          `ACTIVITY`  
-          `OTHER`  
+          <strong>Possible values:</strong>
+          <ul>
+            <li><code>SKI_PASS</code>: A ticket or pass authorizing the holder to ski in a certain place or resort.</li>
+            <li><code>LESSONS</code>: Lessons of any type that the costumer can take.</li>
+            <li><code>MEALS</code>: Supplement of a determined meal plan.</li>
+            <li><code>EQUIPMENT</code>: Extra equipment for a specific purpose.</li>
+            <li><code>TICKET</code>: Admission to some service.</li>
+            <li><code>TRANSFERS</code>: Transfers used by the costumer.</li>
+            <li><code>GALA</code>: Gala: A festive occasion, celebration or special entertainment.</li>
+            <li><code>ACTIVITY</code>: Activities that the costumer can do.</li>
+            <li><code>OTHER</code>: Other type of supplement.</li>
+          </ul>
         </details>
 
-        <details style={{ pointerEvents: "none" }}>
+        <details open>
           <summary>
-            <strong>chargeType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of ChargeType)</em>
+            <strong>chargeType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ChargeType)</em>
           </summary>
           Indicates the charge types. We need to know whether the supplements have to be paid when the consumer gets to the hotel or beforehand.
           Possible charge types: INCLUDE or EXCLUDE.
           when  INCLUDE : this supplement is mandatory and included in the option s price
           when  EXCLUDE : this supplement is not included in the option s price
-          Possible values:
-          `INCLUDE`  
-          `EXCLUDE`  
+          <strong>Possible values:</strong>
+          <ul>
+            <li><code>INCLUDE</code>: The charge is included.</li>
+            <li><code>EXCLUDE</code>: The charge is excluded.</li>
+          </ul>
         </details>
 
         <details style={{ pointerEvents: "none" }}>
@@ -5077,14 +5139,16 @@
           If the chargeType is  EXCLUDE  the customer will have to pay it directly at the hotel
         </details>
 
-        <details style={{ pointerEvents: "none" }}>
+        <details open>
           <summary>
-            <strong>durationType</strong> <em>(Enum of DurationType)</em>
+            <strong>durationType</strong> <em>(DurationType)</em>
           </summary>
           Specifies the duration type. Possible duration types: Range (specified dates) or Open. This field is mandatory for PDI.
-          Possible values:
-          `RANGE`  
-          `OPEN`  
+          <strong>Possible values:</strong>
+          <ul>
+            <li><code>RANGE</code>: Date range is set.</li>
+            <li><code>OPEN</code>: Not restricted by date.</li>
+          </ul>
         </details>
 
         <details style={{ pointerEvents: "none" }}>
@@ -5094,14 +5158,16 @@
           Indicates the quantity of field in the element "unit".
         </details>
 
-        <details style={{ pointerEvents: "none" }}>
+        <details open>
           <summary>
-            <strong>unit</strong> <em>(Enum of UnitTimeType)</em>
+            <strong>unit</strong> <em>(UnitTimeType)</em>
           </summary>
           Indicates the unit type. Possible unit types: Day or Hour.
-          Possible values:
-          `DAY`  
-          `HOUR`  
+          <strong>Possible values:</strong>
+          <ul>
+            <li><code>DAY</code>: Day</li>
+            <li><code>HOUR</code>: Hour</li>
+          </ul>
         </details>
 
         <details style={{ pointerEvents: "none" }}>
@@ -5291,14 +5357,16 @@
                 rule name
               </details>
 
-              <details style={{ pointerEvents: "none" }}>
+              <details open>
                 <summary>
-                  <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of MarkupRuleType)</em>
+                  <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(MarkupRuleType)</em>
                 </summary>
                 type of the value
-                Possible values:
-                `PERCENT`  
-                `IMPORT`  
+                <strong>Possible values:</strong>
+                <ul>
+                  <li><code>PERCENT</code>: Indicates the percentage applied by a rule.</li>
+                  <li><code>IMPORT</code>: Indicates the exact amount applied by a rule.</li>
+                </ul>
               </details>
 
               <details style={{ pointerEvents: "none" }}>
@@ -5373,17 +5441,19 @@
             Holder's surname.
           </details>
 
-          <details style={{ pointerEvents: "none" }}>
+          <details open>
             <summary>
-              <strong>title</strong> <em>(Enum of PersonalTitleType)</em>
+              <strong>title</strong> <em>(PersonalTitleType)</em>
             </summary>
             Holder's title, if return.
-            Possible values:
-            `MR`  
-            `MRS`  
-            `MISS`  
-            `MS`  
-            `NOT_SPECIFIED`  
+            <strong>Possible values:</strong>
+            <ul>
+              <li><code>MR</code>: To refer to a man. Is not possible know if it is married or single.</li>
+              <li><code>MRS</code>: To refer to a married woman</li>
+              <li><code>MISS</code>: To refer to a single woman</li>
+              <li><code>MS</code>: To refer to a woman. Is not possible know if it is married or single.</li>
+              <li><code>NOT_SPECIFIED</code>: Deprecated 2025-08-08. PersonalTitleType is optional in inputs and outputs.</li>
+            </ul>
           </details>
 
           <details>
@@ -5422,48 +5492,52 @@
           Contains credit card number.
         </details>
 
-        <details style={{ pointerEvents: "none" }}>
+        <details open>
           <summary>
-            <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of PaymentCardType)</em>
+            <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(PaymentCardType)</em>
           </summary>
           Indicates the supported card type.
-          Possible values:
-          `VI`  
-          `AX`  
-          `BC`  
-          `CA`  
-          `CB`  
-          `CU`  
-          `DS`  
-          `DC`  
-          `T`  
-          `R`  
-          `N`  
-          `L`  
-          `E`  
-          `JC`  
-          `TO`  
-          `S`  
-          `EC`  
-          `EU`  
-          `TP`  
-          `OP`  
-          `ER`  
-          `XS`  
-          `O`  
+          <strong>Possible values:</strong>
+          <ul>
+            <li><code>VI</code>: Visa</li>
+            <li><code>AX</code>: American Express</li>
+            <li><code>BC</code>: BC Card</li>
+            <li><code>CA</code>: MasterCard</li>
+            <li><code>CB</code>: Carte Blanche</li>
+            <li><code>CU</code>: China Union Pay</li>
+            <li><code>DS</code>: Discover</li>
+            <li><code>DC</code>: Diners Club</li>
+            <li><code>T</code>: Carta Si</li>
+            <li><code>R</code>: Carte Bleue</li>
+            <li><code>N</code>: Dankort</li>
+            <li><code>L</code>: Delta</li>
+            <li><code>E</code>: Electron</li>
+            <li><code>JC</code>: Japan Credit Bureau</li>
+            <li><code>TO</code>: Maestro</li>
+            <li><code>S</code>: Switch</li>
+            <li><code>EC</code>: Electronic Cash</li>
+            <li><code>EU</code>: EuroCard</li>
+            <li><code>TP</code>: universal air travel card</li>
+            <li><code>OP</code>: optima</li>
+            <li><code>ER</code>: Air Canada/RnRoute</li>
+            <li><code>XS</code>: access</li>
+            <li><code>O</code>: others</li>
+          </ul>
         </details>
 
-        <details style={{ pointerEvents: "none" }}>
+        <details open>
           <summary>
-            <strong>status</strong> <em>(Enum of PaymentCardStatus)</em>
+            <strong>status</strong> <em>(PaymentCardStatus)</em>
           </summary>
           Indicates the credit card status.
-          Possible values:
-          `CREATED`  
-          `CANCELED`  
-          `EXPIRED`  
-          `ACTIVE`  
-          `UNKNOWN`  
+          <strong>Possible values:</strong>
+          <ul>
+            <li><code>CREATED</code>: Payment card created correctly.</li>
+            <li><code>CANCELED</code>: Payment card canceled correctly.</li>
+            <li><code>EXPIRED</code>: Payment card expired.</li>
+            <li><code>ACTIVE</code>: Payment card is active.</li>
+            <li><code>UNKNOWN</code>: When Payment card is UNKNOWN, the buyer needs to check with the VCC provider to ensure if some payment has been made.</li>
+          </ul>
         </details>
       </details>
 
@@ -5474,13 +5548,15 @@
         Payment identification generated by the payment supplier. This field is only returned in Book step, when the card is generated.
       </details>
 
-      <details style={{ pointerEvents: "none" }}>
+      <details open>
         <summary>
-          <strong>method</strong> <em>(Enum of GeneratedPaymentMethodType)</em>
+          <strong>method</strong> <em>(GeneratedPaymentMethodType)</em>
         </summary>
         Indicates the payment method used, which depends on the configured payment supplier.
-        Possible values:
-        `VIRTUAL_CARD`  
+        <strong>Possible values:</strong>
+        <ul>
+          <li><code>VIRTUAL_CARD</code>: The payment method is a generation of a virtual credit card to send to the supplier.</li>
+        </ul>
       </details>
 
       <details>
@@ -5599,47 +5675,51 @@
 
                   </details>
 
-                  <details style={{ pointerEvents: "none" }}>
+                  <details open>
                     <summary>
-                      <strong>entityType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of EntityType)</em>
+                      <strong>entityType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(EntityType)</em>
                     </summary>
 
-                    Possible values:
-                    `ACCESS`  
-                    `SUPPLIER`  
-                    `CLIENT`  
-                    `PROVIDER`  
-                    `MEMBER`  
-                    `ORGANIZATION`  
-                    `API_KEY`  
+                    <strong>Possible values:</strong>
+                    <ul>
+                      <li><code>ACCESS</code></li>
+                      <li><code>SUPPLIER</code></li>
+                      <li><code>CLIENT</code></li>
+                      <li><code>PROVIDER</code></li>
+                      <li><code>MEMBER</code></li>
+                      <li><code>ORGANIZATION</code></li>
+                      <li><code>API_KEY</code></li>
+                    </ul>
                   </details>
 
-                  <details style={{ pointerEvents: "none" }}>
+                  <details open>
                     <summary>
-                      <strong>actionType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of ActionType)</em>
+                      <strong>actionType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ActionType)</em>
                     </summary>
 
-                    Possible values:
-                    `UPDATE`  
-                    `DELETE`  
-                    `CREATE`  
-                    `ARCHIVE`  
-                    `UNARCHIVE`  
-                    `ACTIVATE`  
-                    `DEACTIVATE`  
-                    `GRANT_TO_GROUPS`  
-                    `REVOKE_FROM_FROUPS`  
-                    `APPEND_PARAMETERS`  
-                    `DELETE_PARAMETERS`  
-                    `SET_FIELD`  
-                    `REMOVE_FIELD`  
-                    `ACTIVATE_SPEED`  
-                    `DEACTIVATE_SPEED`  
-                    `SET_IS_PUBLIC`  
-                    `UPDATE_MEMBER_IN_ORGANIZATION`  
-                    `REMOVE_MEMBER_SERVICE_ROLE`  
-                    `UPDATE_MEMBER_SERVICE_ROLE`  
-                    `REFRESH_TOKEN`  
+                    <strong>Possible values:</strong>
+                    <ul>
+                      <li><code>UPDATE</code></li>
+                      <li><code>DELETE</code></li>
+                      <li><code>CREATE</code></li>
+                      <li><code>ARCHIVE</code></li>
+                      <li><code>UNARCHIVE</code></li>
+                      <li><code>ACTIVATE</code></li>
+                      <li><code>DEACTIVATE</code></li>
+                      <li><code>GRANT_TO_GROUPS</code></li>
+                      <li><code>REVOKE_FROM_FROUPS</code></li>
+                      <li><code>APPEND_PARAMETERS</code></li>
+                      <li><code>DELETE_PARAMETERS</code></li>
+                      <li><code>SET_FIELD</code></li>
+                      <li><code>REMOVE_FIELD</code></li>
+                      <li><code>ACTIVATE_SPEED</code></li>
+                      <li><code>DEACTIVATE_SPEED</code></li>
+                      <li><code>SET_IS_PUBLIC</code></li>
+                      <li><code>UPDATE_MEMBER_IN_ORGANIZATION</code></li>
+                      <li><code>REMOVE_MEMBER_SERVICE_ROLE</code></li>
+                      <li><code>UPDATE_MEMBER_SERVICE_ROLE</code></li>
+                      <li><code>REFRESH_TOKEN</code></li>
+                    </ul>
                   </details>
 
                   <details>
@@ -5705,16 +5785,18 @@
                     Error description
                   </details>
 
-                  <details style={{ pointerEvents: "none" }}>
+                  <details open>
                     <summary>
-                      <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+                      <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
                     </summary>
                     Indicates the level of importance of the message.
                     Possible values: ERROR, WARN, INFO.
-                    Possible values:
-                    `WARN`  
-                    `ERROR`  
-                    `INFO`  
+                    <strong>Possible values:</strong>
+                    <ul>
+                      <li><code>WARN</code>: Warning message.</li>
+                      <li><code>ERROR</code>: Error message.</li>
+                      <li><code>INFO</code>: Info message.</li>
+                    </ul>
                   </details>
 
                   <details>
@@ -5831,16 +5913,18 @@
                 Error description
               </details>
 
-              <details style={{ pointerEvents: "none" }}>
+              <details open>
                 <summary>
-                  <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+                  <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
                 </summary>
                 Indicates the level of importance of the message.
                 Possible values: ERROR, WARN, INFO.
-                Possible values:
-                `WARN`  
-                `ERROR`  
-                `INFO`  
+                <strong>Possible values:</strong>
+                <ul>
+                  <li><code>WARN</code>: Warning message.</li>
+                  <li><code>ERROR</code>: Error message.</li>
+                  <li><code>INFO</code>: Info message.</li>
+                </ul>
               </details>
 
               <details>
@@ -5880,15 +5964,17 @@
             </details>
           </details>
 
-          <details style={{ pointerEvents: "none" }}>
+          <details open>
             <summary>
-              <strong>connectionType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of ProviderConnectionType)</em>
+              <strong>connectionType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ProviderConnectionType)</em>
             </summary>
             Indicates connection type of Supplier
-            Possible values:
-            `PULL`  
-            `PUSH`  
-            `HYBRID`  
+            <strong>Possible values:</strong>
+            <ul>
+              <li><code>PULL</code></li>
+              <li><code>PUSH</code></li>
+              <li><code>HYBRID</code></li>
+            </ul>
           </details>
         </details>
 
@@ -5907,20 +5993,22 @@
           8. package
         </details>
 
-        <details style={{ pointerEvents: "none" }}>
+        <details open>
           <summary>
-            <strong>api</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of APIName)</em>
+            <strong>api</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(APIName)</em>
           </summary>
           API name for service API
-          Possible values:
-          `HOTEL`  
-          `TRANSPORTATION`  
-          `CAR`  
-          `TRANSFERS`  
-          `ACTIVITIES`  
-          `VIRTUALACCOUNT`  
-          `PAYMENT`  
-          `PACKAGE`  
+          <strong>Possible values:</strong>
+          <ul>
+            <li><code>HOTEL</code></li>
+            <li><code>TRANSPORTATION</code></li>
+            <li><code>CAR</code></li>
+            <li><code>TRANSFERS</code></li>
+            <li><code>ACTIVITIES</code></li>
+            <li><code>VIRTUALACCOUNT</code></li>
+            <li><code>PAYMENT</code></li>
+            <li><code>PACKAGE</code></li>
+          </ul>
         </details>
 
         <details>
@@ -6031,16 +6119,18 @@
                   Error description
                 </details>
 
-                <details style={{ pointerEvents: "none" }}>
+                <details open>
                   <summary>
-                    <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+                    <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
                   </summary>
                   Indicates the level of importance of the message.
                   Possible values: ERROR, WARN, INFO.
-                  Possible values:
-                  `WARN`  
-                  `ERROR`  
-                  `INFO`  
+                  <strong>Possible values:</strong>
+                  <ul>
+                    <li><code>WARN</code>: Warning message.</li>
+                    <li><code>ERROR</code>: Error message.</li>
+                    <li><code>INFO</code>: Info message.</li>
+                  </ul>
                 </details>
 
                 <details>
@@ -6108,16 +6198,18 @@
               Error description
             </details>
 
-            <details style={{ pointerEvents: "none" }}>
+            <details open>
               <summary>
-                <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+                <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
               </summary>
               Indicates the level of importance of the message.
               Possible values: ERROR, WARN, INFO.
-              Possible values:
-              `WARN`  
-              `ERROR`  
-              `INFO`  
+              <strong>Possible values:</strong>
+              <ul>
+                <li><code>WARN</code>: Warning message.</li>
+                <li><code>ERROR</code>: Error message.</li>
+                <li><code>INFO</code>: Info message.</li>
+              </ul>
             </details>
 
             <details>
@@ -6259,13 +6351,12 @@
                 Supplier unique code
               </details>
 
-              <details>
+              <div>
                 <summary>
                   <strong>supplierData</strong> <em>(SupplierData)</em>
                 </summary>
                 Extended Supplier information
-
-              </details>
+</div>
 
               <details>
                 <summary>
@@ -6287,16 +6378,18 @@
                   Error description
                 </details>
 
-                <details style={{ pointerEvents: "none" }}>
+                <details open>
                   <summary>
-                    <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+                    <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
                   </summary>
                   Indicates the level of importance of the message.
                   Possible values: ERROR, WARN, INFO.
-                  Possible values:
-                  `WARN`  
-                  `ERROR`  
-                  `INFO`  
+                  <strong>Possible values:</strong>
+                  <ul>
+                    <li><code>WARN</code>: Warning message.</li>
+                    <li><code>ERROR</code>: Error message.</li>
+                    <li><code>INFO</code>: Info message.</li>
+                  </ul>
                 </details>
 
                 <details>
@@ -6423,13 +6516,12 @@
               </details>
             </details>
 
-            <details>
+            <div>
               <summary>
                 <strong>shared</strong> <em>(Access)</em>
               </summary>
               Parent Access if Shared Access
-
-            </details>
+</div>
 
             <details>
               <summary>
@@ -6487,13 +6579,12 @@
               Range on update date
             </details>
 
-            <details>
+            <div>
               <summary>
                 <strong>master</strong> <em>(Access)</em>
               </summary>
               Parent Master Access. null=&gt;masterAccess, notNull=&gt;slaveAccess
-
-            </details>
+</div>
 
             <details>
               <summary>
@@ -6554,20 +6645,22 @@
 
                     </details>
 
-                    <details style={{ pointerEvents: "none" }}>
+                    <details open>
                       <summary>
-                        <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of GroupType)</em>
+                        <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(GroupType)</em>
                       </summary>
 
-                      Possible values:
-                      `ROOT`  
-                      `ORG`  
-                      `GROUP`  
-                      `TEAM`  
-                      `FOLDER`  
-                      `PRODUCT`  
-                      `RESOURCE`  
-                      `SPECIFIC_RESOURCE`  
+                      <strong>Possible values:</strong>
+                      <ul>
+                        <li><code>ROOT</code></li>
+                        <li><code>ORG</code></li>
+                        <li><code>GROUP</code></li>
+                        <li><code>TEAM</code></li>
+                        <li><code>FOLDER</code></li>
+                        <li><code>PRODUCT</code></li>
+                        <li><code>RESOURCE</code></li>
+                        <li><code>SPECIFIC_RESOURCE</code></li>
+                      </ul>
                     </details>
 
                     <details style={{ pointerEvents: "none" }}>
@@ -6584,37 +6677,33 @@
 
                     </details>
 
-                    <details>
+                    <div>
                       <summary>
                         <strong>parent</strong> <em>(Group)</em>
                       </summary>
 
+</div>
 
-                    </details>
-
-                    <details>
+                    <div>
                       <summary>
                         <strong>children</strong> <em>(GroupConnection)</em>
                       </summary>
                       Only responses children.(non-hierarchically)
+</div>
 
-                    </details>
-
-                    <details>
+                    <div>
                       <summary>
                         <strong>descendents</strong> <em>(GroupConnection)</em>
                       </summary>
                       Response all descendents groups nodes in this group (nom-hierarchically)
+</div>
 
-                    </details>
-
-                    <details>
+                    <div>
                       <summary>
                         <strong>parents</strong> <em>(GroupConnection)</em>
                       </summary>
                       Response all parents groups nodes for this group (nom-hierarchically)
-
-                    </details>
+</div>
 
                     <details>
                       <summary>
@@ -6629,21 +6718,19 @@
 
                       </details>
 
-                      <details>
+                      <div>
                         <summary>
                           <strong>memberData</strong> <em>(MemberData)</em>
                         </summary>
 
+</div>
 
-                      </details>
-
-                      <details>
+                      <div>
                         <summary>
                           <strong>adviseMessage</strong> <em>(AdviseMessage)</em>
                         </summary>
                         List of advise messages.
-
-                      </details>
+</div>
 
                       <details style={{ pointerEvents: "none" }}>
                         <summary>
@@ -6688,13 +6775,12 @@
 
                     </details>
 
-                    <details>
+                    <div>
                       <summary>
                         <strong>siblings</strong> <em>(GroupConnection)</em>
                       </summary>
                       Sibilings of the group
-
-                    </details>
+</div>
 
                     <details>
                       <summary>
@@ -6702,29 +6788,26 @@
                       </summary>
                       Only responses members in this group
 
-                      <details>
+                      <div>
                         <summary>
                           <strong>edges</strong> <em>(MemberEdge)</em>
                         </summary>
 
+</div>
 
-                      </details>
-
-                      <details>
+                      <div>
                         <summary>
                           <strong>pageInfo</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(PageInfo)</em>
                         </summary>
 
+</div>
 
-                      </details>
-
-                      <details>
+                      <div>
                         <summary>
                           <strong>adviseMessage</strong> <em>(AdviseMessage)</em>
                         </summary>
                         List of advise messages.
-
-                      </details>
+</div>
 
                       <details style={{ pointerEvents: "none" }}>
                         <summary>
@@ -6740,21 +6823,19 @@
                       </summary>
                       APIs assigned to this group. Products have APIs.
 
-                      <details>
+                      <div>
                         <summary>
                           <strong>edges</strong> <em>(APIEdge)</em>
                         </summary>
 
+</div>
 
-                      </details>
-
-                      <details>
+                      <div>
                         <summary>
                           <strong>pageInfo</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(PageInfo)</em>
                         </summary>
 
-
-                      </details>
+</div>
                     </details>
 
                     <details>
@@ -6763,21 +6844,19 @@
                       </summary>
                       Responses all managed groups by this group.
 
-                      <details>
+                      <div>
                         <summary>
                           <strong>edges</strong> <em>(ManagedGroupEdge)</em>
                         </summary>
 
+</div>
 
-                      </details>
-
-                      <details>
+                      <div>
                         <summary>
                           <strong>pageInfo</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(PageInfo)</em>
                         </summary>
 
-
-                      </details>
+</div>
                     </details>
 
                     <details>
@@ -6786,29 +6865,26 @@
                       </summary>
                       Response all members in this group s childrens (hierarchically),
 
-                      <details>
+                      <div>
                         <summary>
                           <strong>edges</strong> <em>(MemberEdge)</em>
                         </summary>
 
+</div>
 
-                      </details>
-
-                      <details>
+                      <div>
                         <summary>
                           <strong>pageInfo</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(PageInfo)</em>
                         </summary>
 
+</div>
 
-                      </details>
-
-                      <details>
+                      <div>
                         <summary>
                           <strong>adviseMessage</strong> <em>(AdviseMessage)</em>
                         </summary>
                         List of advise messages.
-
-                      </details>
+</div>
 
                       <details style={{ pointerEvents: "none" }}>
                         <summary>
@@ -6824,29 +6900,26 @@
                       </summary>
                       Access resources in a group
 
-                      <details>
+                      <div>
                         <summary>
                           <strong>edges</strong> <em>(AccessEdge)</em>
                         </summary>
 
+</div>
 
-                      </details>
-
-                      <details>
+                      <div>
                         <summary>
                           <strong>pageInfo</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(PageInfo)</em>
                         </summary>
 
+</div>
 
-                      </details>
-
-                      <details>
+                      <div>
                         <summary>
                           <strong>adviseMessage</strong> <em>(AdviseMessage)</em>
                         </summary>
                         List of advise messages.
-
-                      </details>
+</div>
 
                       <details style={{ pointerEvents: "none" }}>
                         <summary>
@@ -6862,29 +6935,26 @@
                       </summary>
                       Supplier resources in a group
 
-                      <details>
+                      <div>
                         <summary>
                           <strong>edges</strong> <em>(SupplierEdge)</em>
                         </summary>
                         Supplier edges of Supplier connection
+</div>
 
-                      </details>
-
-                      <details>
+                      <div>
                         <summary>
                           <strong>pageInfo</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(PageInfo)</em>
                         </summary>
                         Page info of the connection
+</div>
 
-                      </details>
-
-                      <details>
+                      <div>
                         <summary>
                           <strong>adviseMessage</strong> <em>(AdviseMessage)</em>
                         </summary>
                         List of advise messages.
-
-                      </details>
+</div>
 
                       <details style={{ pointerEvents: "none" }}>
                         <summary>
@@ -6900,29 +6970,26 @@
                       </summary>
                       Clients resources in a group
 
-                      <details>
+                      <div>
                         <summary>
                           <strong>edges</strong> <em>(ClientEdge)</em>
                         </summary>
                         Client edges of client connection
+</div>
 
-                      </details>
-
-                      <details>
+                      <div>
                         <summary>
                           <strong>pageInfo</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(PageInfo)</em>
                         </summary>
                         Page info of the connection
+</div>
 
-                      </details>
-
-                      <details>
+                      <div>
                         <summary>
                           <strong>adviseMessage</strong> <em>(AdviseMessage)</em>
                         </summary>
                         List of advise messages.
-
-                      </details>
+</div>
 
                       <details style={{ pointerEvents: "none" }}>
                         <summary>
@@ -6938,21 +7005,19 @@
                       </summary>
                       You can grant roles to members, which define the roles catalog for a group.
 
-                      <details>
+                      <div>
                         <summary>
                           <strong>edges</strong> <em>(RoleEdge)</em>
                         </summary>
 
+</div>
 
-                      </details>
-
-                      <details>
+                      <div>
                         <summary>
                           <strong>pageInfo</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(PageInfo)</em>
                         </summary>
 
-
-                      </details>
+</div>
                     </details>
 
                     <details style={{ pointerEvents: "none" }}>
@@ -6997,16 +7062,18 @@
                       Error description
                     </details>
 
-                    <details style={{ pointerEvents: "none" }}>
+                    <details open>
                       <summary>
-                        <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+                        <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
                       </summary>
                       Indicates the level of importance of the message.
                       Possible values: ERROR, WARN, INFO.
-                      Possible values:
-                      `WARN`  
-                      `ERROR`  
-                      `INFO`  
+                      <strong>Possible values:</strong>
+                      <ul>
+                        <li><code>WARN</code>: Warning message.</li>
+                        <li><code>ERROR</code>: Error message.</li>
+                        <li><code>INFO</code>: Info message.</li>
+                      </ul>
                     </details>
 
                     <details>
@@ -7116,16 +7183,18 @@
                   Error description
                 </details>
 
-                <details style={{ pointerEvents: "none" }}>
+                <details open>
                   <summary>
-                    <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+                    <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
                   </summary>
                   Indicates the level of importance of the message.
                   Possible values: ERROR, WARN, INFO.
-                  Possible values:
-                  `WARN`  
-                  `ERROR`  
-                  `INFO`  
+                  <strong>Possible values:</strong>
+                  <ul>
+                    <li><code>WARN</code>: Warning message.</li>
+                    <li><code>ERROR</code>: Error message.</li>
+                    <li><code>INFO</code>: Info message.</li>
+                  </ul>
                 </details>
 
                 <details>
@@ -7210,47 +7279,51 @@
 
                     </details>
 
-                    <details style={{ pointerEvents: "none" }}>
+                    <details open>
                       <summary>
-                        <strong>entityType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of EntityType)</em>
+                        <strong>entityType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(EntityType)</em>
                       </summary>
 
-                      Possible values:
-                      `ACCESS`  
-                      `SUPPLIER`  
-                      `CLIENT`  
-                      `PROVIDER`  
-                      `MEMBER`  
-                      `ORGANIZATION`  
-                      `API_KEY`  
+                      <strong>Possible values:</strong>
+                      <ul>
+                        <li><code>ACCESS</code></li>
+                        <li><code>SUPPLIER</code></li>
+                        <li><code>CLIENT</code></li>
+                        <li><code>PROVIDER</code></li>
+                        <li><code>MEMBER</code></li>
+                        <li><code>ORGANIZATION</code></li>
+                        <li><code>API_KEY</code></li>
+                      </ul>
                     </details>
 
-                    <details style={{ pointerEvents: "none" }}>
+                    <details open>
                       <summary>
-                        <strong>actionType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of ActionType)</em>
+                        <strong>actionType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ActionType)</em>
                       </summary>
 
-                      Possible values:
-                      `UPDATE`  
-                      `DELETE`  
-                      `CREATE`  
-                      `ARCHIVE`  
-                      `UNARCHIVE`  
-                      `ACTIVATE`  
-                      `DEACTIVATE`  
-                      `GRANT_TO_GROUPS`  
-                      `REVOKE_FROM_FROUPS`  
-                      `APPEND_PARAMETERS`  
-                      `DELETE_PARAMETERS`  
-                      `SET_FIELD`  
-                      `REMOVE_FIELD`  
-                      `ACTIVATE_SPEED`  
-                      `DEACTIVATE_SPEED`  
-                      `SET_IS_PUBLIC`  
-                      `UPDATE_MEMBER_IN_ORGANIZATION`  
-                      `REMOVE_MEMBER_SERVICE_ROLE`  
-                      `UPDATE_MEMBER_SERVICE_ROLE`  
-                      `REFRESH_TOKEN`  
+                      <strong>Possible values:</strong>
+                      <ul>
+                        <li><code>UPDATE</code></li>
+                        <li><code>DELETE</code></li>
+                        <li><code>CREATE</code></li>
+                        <li><code>ARCHIVE</code></li>
+                        <li><code>UNARCHIVE</code></li>
+                        <li><code>ACTIVATE</code></li>
+                        <li><code>DEACTIVATE</code></li>
+                        <li><code>GRANT_TO_GROUPS</code></li>
+                        <li><code>REVOKE_FROM_FROUPS</code></li>
+                        <li><code>APPEND_PARAMETERS</code></li>
+                        <li><code>DELETE_PARAMETERS</code></li>
+                        <li><code>SET_FIELD</code></li>
+                        <li><code>REMOVE_FIELD</code></li>
+                        <li><code>ACTIVATE_SPEED</code></li>
+                        <li><code>DEACTIVATE_SPEED</code></li>
+                        <li><code>SET_IS_PUBLIC</code></li>
+                        <li><code>UPDATE_MEMBER_IN_ORGANIZATION</code></li>
+                        <li><code>REMOVE_MEMBER_SERVICE_ROLE</code></li>
+                        <li><code>UPDATE_MEMBER_SERVICE_ROLE</code></li>
+                        <li><code>REFRESH_TOKEN</code></li>
+                      </ul>
                     </details>
 
                     <details>
@@ -7316,16 +7389,18 @@
                       Error description
                     </details>
 
-                    <details style={{ pointerEvents: "none" }}>
+                    <details open>
                       <summary>
-                        <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+                        <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
                       </summary>
                       Indicates the level of importance of the message.
                       Possible values: ERROR, WARN, INFO.
-                      Possible values:
-                      `WARN`  
-                      `ERROR`  
-                      `INFO`  
+                      <strong>Possible values:</strong>
+                      <ul>
+                        <li><code>WARN</code>: Warning message.</li>
+                        <li><code>ERROR</code>: Error message.</li>
+                        <li><code>INFO</code>: Info message.</li>
+                      </ul>
                     </details>
 
                     <details>
@@ -7442,16 +7517,18 @@
                   Error description
                 </details>
 
-                <details style={{ pointerEvents: "none" }}>
+                <details open>
                   <summary>
-                    <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+                    <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
                   </summary>
                   Indicates the level of importance of the message.
                   Possible values: ERROR, WARN, INFO.
-                  Possible values:
-                  `WARN`  
-                  `ERROR`  
-                  `INFO`  
+                  <strong>Possible values:</strong>
+                  <ul>
+                    <li><code>WARN</code>: Warning message.</li>
+                    <li><code>ERROR</code>: Error message.</li>
+                    <li><code>INFO</code>: Info message.</li>
+                  </ul>
                 </details>
 
                 <details>
@@ -7512,16 +7589,18 @@
               Error description
             </details>
 
-            <details style={{ pointerEvents: "none" }}>
+            <details open>
               <summary>
-                <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+                <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
               </summary>
               Indicates the level of importance of the message.
               Possible values: ERROR, WARN, INFO.
-              Possible values:
-              `WARN`  
-              `ERROR`  
-              `INFO`  
+              <strong>Possible values:</strong>
+              <ul>
+                <li><code>WARN</code>: Warning message.</li>
+                <li><code>ERROR</code>: Error message.</li>
+                <li><code>INFO</code>: Info message.</li>
+              </ul>
             </details>
 
             <details>
@@ -7668,13 +7747,12 @@
                     Supplier unique code
                   </details>
 
-                  <details>
+                  <div>
                     <summary>
                       <strong>supplierData</strong> <em>(SupplierData)</em>
                     </summary>
                     Extended Supplier information
-
-                  </details>
+</div>
 
                   <details>
                     <summary>
@@ -7696,16 +7774,18 @@
                       Error description
                     </details>
 
-                    <details style={{ pointerEvents: "none" }}>
+                    <details open>
                       <summary>
-                        <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+                        <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
                       </summary>
                       Indicates the level of importance of the message.
                       Possible values: ERROR, WARN, INFO.
-                      Possible values:
-                      `WARN`  
-                      `ERROR`  
-                      `INFO`  
+                      <strong>Possible values:</strong>
+                      <ul>
+                        <li><code>WARN</code>: Warning message.</li>
+                        <li><code>ERROR</code>: Error message.</li>
+                        <li><code>INFO</code>: Info message.</li>
+                      </ul>
                     </details>
 
                     <details>
@@ -7832,13 +7912,12 @@
                   </details>
                 </details>
 
-                <details>
+                <div>
                   <summary>
                     <strong>shared</strong> <em>(Access)</em>
                   </summary>
                   Parent Access if Shared Access
-
-                </details>
+</div>
 
                 <details>
                   <summary>
@@ -7896,13 +7975,12 @@
                   Range on update date
                 </details>
 
-                <details>
+                <div>
                   <summary>
                     <strong>master</strong> <em>(Access)</em>
                   </summary>
                   Parent Master Access. null=&gt;masterAccess, notNull=&gt;slaveAccess
-
-                </details>
+</div>
 
                 <details>
                   <summary>
@@ -7929,21 +8007,19 @@
 
                       </details>
 
-                      <details>
+                      <div>
                         <summary>
                           <strong>groupData</strong> <em>(GroupData)</em>
                         </summary>
 
+</div>
 
-                      </details>
-
-                      <details>
+                      <div>
                         <summary>
                           <strong>adviseMessage</strong> <em>(AdviseMessage)</em>
                         </summary>
                         List of advise messages.
-
-                      </details>
+</div>
 
                       <details style={{ pointerEvents: "none" }}>
                         <summary>
@@ -8023,16 +8099,18 @@
                       Error description
                     </details>
 
-                    <details style={{ pointerEvents: "none" }}>
+                    <details open>
                       <summary>
-                        <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+                        <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
                       </summary>
                       Indicates the level of importance of the message.
                       Possible values: ERROR, WARN, INFO.
-                      Possible values:
-                      `WARN`  
-                      `ERROR`  
-                      `INFO`  
+                      <strong>Possible values:</strong>
+                      <ul>
+                        <li><code>WARN</code>: Warning message.</li>
+                        <li><code>ERROR</code>: Error message.</li>
+                        <li><code>INFO</code>: Info message.</li>
+                      </ul>
                     </details>
 
                     <details>
@@ -8097,21 +8175,19 @@
 
                       </details>
 
-                      <details>
+                      <div>
                         <summary>
                           <strong>entityAuditData</strong> <em>(EntityAuditData)</em>
                         </summary>
 
+</div>
 
-                      </details>
-
-                      <details>
+                      <div>
                         <summary>
                           <strong>adviseMessage</strong> <em>(AdviseMessage)</em>
                         </summary>
 
-
-                      </details>
+</div>
 
                       <details style={{ pointerEvents: "none" }}>
                         <summary>
@@ -8198,16 +8274,18 @@
                       Error description
                     </details>
 
-                    <details style={{ pointerEvents: "none" }}>
+                    <details open>
                       <summary>
-                        <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+                        <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
                       </summary>
                       Indicates the level of importance of the message.
                       Possible values: ERROR, WARN, INFO.
-                      Possible values:
-                      `WARN`  
-                      `ERROR`  
-                      `INFO`  
+                      <strong>Possible values:</strong>
+                      <ul>
+                        <li><code>WARN</code>: Warning message.</li>
+                        <li><code>ERROR</code>: Error message.</li>
+                        <li><code>INFO</code>: Info message.</li>
+                      </ul>
                     </details>
 
                     <details>
@@ -8268,16 +8346,18 @@
                   Error description
                 </details>
 
-                <details style={{ pointerEvents: "none" }}>
+                <details open>
                   <summary>
-                    <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+                    <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
                   </summary>
                   Indicates the level of importance of the message.
                   Possible values: ERROR, WARN, INFO.
-                  Possible values:
-                  `WARN`  
-                  `ERROR`  
-                  `INFO`  
+                  <strong>Possible values:</strong>
+                  <ul>
+                    <li><code>WARN</code>: Warning message.</li>
+                    <li><code>ERROR</code>: Error message.</li>
+                    <li><code>INFO</code>: Info message.</li>
+                  </ul>
                 </details>
 
                 <details>
@@ -8394,16 +8474,18 @@
               Error description
             </details>
 
-            <details style={{ pointerEvents: "none" }}>
+            <details open>
               <summary>
-                <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+                <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
               </summary>
               Indicates the level of importance of the message.
               Possible values: ERROR, WARN, INFO.
-              Possible values:
-              `WARN`  
-              `ERROR`  
-              `INFO`  
+              <strong>Possible values:</strong>
+              <ul>
+                <li><code>WARN</code>: Warning message.</li>
+                <li><code>ERROR</code>: Error message.</li>
+                <li><code>INFO</code>: Info message.</li>
+              </ul>
             </details>
 
             <details>
@@ -8488,47 +8570,51 @@
 
                 </details>
 
-                <details style={{ pointerEvents: "none" }}>
+                <details open>
                   <summary>
-                    <strong>entityType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of EntityType)</em>
+                    <strong>entityType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(EntityType)</em>
                   </summary>
 
-                  Possible values:
-                  `ACCESS`  
-                  `SUPPLIER`  
-                  `CLIENT`  
-                  `PROVIDER`  
-                  `MEMBER`  
-                  `ORGANIZATION`  
-                  `API_KEY`  
+                  <strong>Possible values:</strong>
+                  <ul>
+                    <li><code>ACCESS</code></li>
+                    <li><code>SUPPLIER</code></li>
+                    <li><code>CLIENT</code></li>
+                    <li><code>PROVIDER</code></li>
+                    <li><code>MEMBER</code></li>
+                    <li><code>ORGANIZATION</code></li>
+                    <li><code>API_KEY</code></li>
+                  </ul>
                 </details>
 
-                <details style={{ pointerEvents: "none" }}>
+                <details open>
                   <summary>
-                    <strong>actionType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of ActionType)</em>
+                    <strong>actionType</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ActionType)</em>
                   </summary>
 
-                  Possible values:
-                  `UPDATE`  
-                  `DELETE`  
-                  `CREATE`  
-                  `ARCHIVE`  
-                  `UNARCHIVE`  
-                  `ACTIVATE`  
-                  `DEACTIVATE`  
-                  `GRANT_TO_GROUPS`  
-                  `REVOKE_FROM_FROUPS`  
-                  `APPEND_PARAMETERS`  
-                  `DELETE_PARAMETERS`  
-                  `SET_FIELD`  
-                  `REMOVE_FIELD`  
-                  `ACTIVATE_SPEED`  
-                  `DEACTIVATE_SPEED`  
-                  `SET_IS_PUBLIC`  
-                  `UPDATE_MEMBER_IN_ORGANIZATION`  
-                  `REMOVE_MEMBER_SERVICE_ROLE`  
-                  `UPDATE_MEMBER_SERVICE_ROLE`  
-                  `REFRESH_TOKEN`  
+                  <strong>Possible values:</strong>
+                  <ul>
+                    <li><code>UPDATE</code></li>
+                    <li><code>DELETE</code></li>
+                    <li><code>CREATE</code></li>
+                    <li><code>ARCHIVE</code></li>
+                    <li><code>UNARCHIVE</code></li>
+                    <li><code>ACTIVATE</code></li>
+                    <li><code>DEACTIVATE</code></li>
+                    <li><code>GRANT_TO_GROUPS</code></li>
+                    <li><code>REVOKE_FROM_FROUPS</code></li>
+                    <li><code>APPEND_PARAMETERS</code></li>
+                    <li><code>DELETE_PARAMETERS</code></li>
+                    <li><code>SET_FIELD</code></li>
+                    <li><code>REMOVE_FIELD</code></li>
+                    <li><code>ACTIVATE_SPEED</code></li>
+                    <li><code>DEACTIVATE_SPEED</code></li>
+                    <li><code>SET_IS_PUBLIC</code></li>
+                    <li><code>UPDATE_MEMBER_IN_ORGANIZATION</code></li>
+                    <li><code>REMOVE_MEMBER_SERVICE_ROLE</code></li>
+                    <li><code>UPDATE_MEMBER_SERVICE_ROLE</code></li>
+                    <li><code>REFRESH_TOKEN</code></li>
+                  </ul>
                 </details>
 
                 <details>
@@ -8594,16 +8680,18 @@
                   Error description
                 </details>
 
-                <details style={{ pointerEvents: "none" }}>
+                <details open>
                   <summary>
-                    <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+                    <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
                   </summary>
                   Indicates the level of importance of the message.
                   Possible values: ERROR, WARN, INFO.
-                  Possible values:
-                  `WARN`  
-                  `ERROR`  
-                  `INFO`  
+                  <strong>Possible values:</strong>
+                  <ul>
+                    <li><code>WARN</code>: Warning message.</li>
+                    <li><code>ERROR</code>: Error message.</li>
+                    <li><code>INFO</code>: Info message.</li>
+                  </ul>
                 </details>
 
                 <details>
@@ -8720,16 +8808,18 @@
               Error description
             </details>
 
-            <details style={{ pointerEvents: "none" }}>
+            <details open>
               <summary>
-                <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Enum of AdviseMessageLevel)</em>
+                <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
               </summary>
               Indicates the level of importance of the message.
               Possible values: ERROR, WARN, INFO.
-              Possible values:
-              `WARN`  
-              `ERROR`  
-              `INFO`  
+              <strong>Possible values:</strong>
+              <ul>
+                <li><code>WARN</code>: Warning message.</li>
+                <li><code>ERROR</code>: Error message.</li>
+                <li><code>INFO</code>: Info message.</li>
+              </ul>
             </details>
 
             <details>
@@ -8775,15 +8865,17 @@
           </summary>
           Service Integration Data
 
-          <details style={{ pointerEvents: "none" }}>
+          <details open>
             <summary>
-              <strong>type</strong> <em>(Enum of ServiceIntegrationType)</em>
+              <strong>type</strong> <em>(ServiceIntegrationType)</em>
             </summary>
 
-            Possible values:
-            `SITH`  
-            `WORKER`  
-            `CONNECTORS`  
+            <strong>Possible values:</strong>
+            <ul>
+              <li><code>SITH</code></li>
+              <li><code>WORKER</code></li>
+              <li><code>CONNECTORS</code></li>
+            </ul>
           </details>
 
           <details style={{ pointerEvents: "none" }}>

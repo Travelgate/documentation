@@ -30,7 +30,7 @@ The main fields returned include:
 
 ## Query Overview
 
-When creating your search query, you have three different inputs to fill based on your specific needs:
+When creating your Search query, you have three different inputs to fill based on your specific needs:
 
 1. Criteria
 2. Settings
@@ -51,7 +51,7 @@ query {
 
 ### 1. Criteria 
 
-The search query offers versatility in search options, with certain fields marked as mandatory (`checkIn`, `checkOut`, `hotels` etc.) and others as optional (`language`, `currency`, `nationality` etc.). This flexibility empowers you to create a personalized Search Query, tailoring the requested fields to your specific needs. 
+The Search query offers versatility in search options, with certain fields marked as mandatory (`checkIn`, `checkOut`, `hotels` etc.) and others as optional (`language`, `currency`, `nationality` etc.). This flexibility empowers you to create a personalized Search Query, tailoring the requested fields to your specific needs. 
 
 To specify your search criteria you need to use the input `HotelCriteriaSearchInput` in your query variables:
 
@@ -87,8 +87,8 @@ To specify your search criteria you need to use the input `HotelCriteriaSearchIn
 ```
 
 **Mandatory criteria:**
-* `checkIn` (yyyy-mm-dd)
-* `checkOut` (yyyy-mm-dd)
+* `checkIn` (YYYY-MM-DD)
+* `checkOut` (YYYY-MM-DD)
 * `hotels` (We recommend a maximum of 200 hotel codes per request.)
 * `destinations` (Only if you use the [Search by destination plugin](../plugins/search-by-destination) and you don't use the `hotels` field.)
 * `occupancies` (For multi-room bookings, this array will contain multiple elements, each representing a room, and you'll need to provide occupancy details for each requested room.)
@@ -103,9 +103,9 @@ If you don’t specify these optional parameters in your query, the system will 
 
 ### 2. Settings 
 
-Settings are the common configurations used to construct requests to the supplier/s. You need to specify some in your query or mutation, while others are optional. If you skip the optional ones, we'll use default settings to keep your requests consistent and smooth.
+Settings are the common configurations used to construct requests to the Supplier/s. You need to specify some in your query or mutation, while others are optional. If you skip the optional ones, we'll use default settings to keep your requests consistent and smooth.
 
-To specify your settings you need to use the [`HotelSettingsInput` input](/api/types/inputs/hotel-settings-input) in your query variables:
+To specify your settings you need to use the [`HotelSettingsInput`](/api/types/inputs/hotel-settings-input) input in your query variables:
 
 ```js
 {
@@ -134,8 +134,7 @@ To specify your settings you need to use the [`HotelSettingsInput` input](/api/t
 :::tip Key Recommendations
 
 * Customize the `timeout` according to your needs, taking into consideration **the maximum value in Search is 25,000ms**.
-
-* Set the `auditTransaction` to "false" in Search for better performance.
+* Set the `auditTransaction` to "false" in Search for better performance. Otherwise, it may generate large responses and negatively impact API performance.
 
 :::
 
@@ -144,14 +143,13 @@ To specify your settings you need to use the [`HotelSettingsInput` input](/api/t
 
 Filters allow you to precisely tailor the response according to your preferences. 
 
-To specify your filters you need to use the input `HotelXFilterSearchInput` in your query variables. The available filters inside this input are:
+To specify filters you need to use the input `HotelXFilterSearchInput` in your query variables. The available filters within this input are:
 
-* `rateRules`: This filter enables you to narrow down the options returned by the suppliers based on the desired rate rules you want to include or exclude.
+* `rateRules`: This filter enables you to narrow down the options returned by the Suppliers based on the desired rate rules you want to include or exclude.
 
 * `status`: Use this filter to determine which status (OK and RQ) will be included or excluded in the response.
 
-* `access`: This filter allows you to include or exclude specific accesses when making a request. If you don’t specify any, our system will automatically query all accesses configured under your client. By using the *include* or *exclude* parameters, you can refine which accesses are considered in the search.  
-Learn how to link specific accesses to your clients [here](/kb/platform/app-features/connections/api-settings/).
+* `access`: This filter allows you to include or exclude specific accesses when making a request. If you don’t specify any, our system will automatically query all accesses configured under your client. By using the *include* or *exclude* parameters, you can refine which accesses are considered in the search. Learn how to link specific accesses to your clients [here](/kb/platform/app-features/connections/api-settings/).
 
 
 All these filters are optional. Example to request only search results from access "2" and options "PACKAGE" 
@@ -186,12 +184,12 @@ Here are some key points to keep in mind:
 
 #### Cancel Policies: Refundable Field
 
-In the room structure response, there is a `refundable` field. If this field is set to false, it means the room has a 100% cancellation cost, making it non-refundable. If the field returns a null value, it indicates that the Seller doesn't provide this information at this stage and you will obtain this information in the quote step. 
+In the room structure response, there is a `refundable` field. If this field is set to false, it means the room has a 100% cancellation cost, making it non-refundable. If the field returns a null value, it indicates that the Seller doesn't provide this information at this stage and you will obtain this information in the Quote step. 
 
 For a deeper understanding, take a look at our articles on [how cancellation policies work](/kb/faqs/faqs-cancel-policies/buyer-cancel-policies) and review some [practical cases and examples](/kb/faqs/faqs-cancel-policies/deadline-cases).
 
 :::caution Remember
-Some Sellers may not include cancellation policies in their availability data. You can learn more about each Seller's specific details in their [metadata](../content/metadata).
+Some Sellers may not include cancellation policies in their availability data. You can learn more about each Seller's specific details in their [Metadata](../content/metadata).
 :::
 
 
@@ -209,12 +207,12 @@ Some Sellers may not include cancellation policies in their availability data. Y
 
 #### Search query [1 hotel, 1 rooms: 2 adults]
 
-This first search query is executed without specifying the 'filterSearch > access' node. In this case, the request will be sent by default to all accesses linked to the client "client_demo".
+This first Search query is executed without specifying the 'filterSearch > access' node. In this case, the request will be sent by default to all accesses linked to the client "client_demo".
 
 <GraphqlSample query={searchQuickStartQuery} variables={searchWithoutFilterVariables}/>
 &nbsp;
 
-In the next example, the search query includes the 'filterSearch > access' node, specifying access "2". This means the request will be sent only to the credentials associated with access 2 of the supplier "HOTELTEST".
+In the next example, the Search query includes the 'filterSearch > access' node, specifying access "2". This means the request will be sent only to the credentials associated with access 2 of the supplier "HOTELTEST".
 
 <GraphqlSample query={searchQuickStartQuery} variables={searchWithOnlyOneAccess}/>
 &nbsp;
@@ -227,7 +225,7 @@ In the next example, the search query includes the 'filterSearch > access' node,
 <GraphqlSample query={searchQuickStartQuery} variables={searchMultipleHotelsVariables}/>
 &nbsp;
 
-As you can see in these responses, you have multiple options with different rates, meal plans, and room types. Additionally, you receive a warning for those options we couldn't return, as [the supplier does not provide the commission through the API](/kb/connectivity-products/for-buyers/errors-and-warnings/plugin-error). 
+As you can see in these responses, you have multiple options with different rates, boards, and room types. Additionally, you receive a warning for those options we couldn't return, as [the Supplier does not provide the commission through the API](/kb/connectivity-products/for-buyers/errors-and-warnings/plugin-error). 
 
 ## Frequently Asked Questions
 
@@ -256,12 +254,12 @@ As you can see in these responses, you have multiple options with different rate
 <details>
 <summary>How can I search using supplier native hotel codes or my own codes?</summary>
 <div>
-    Hotel-X offers three modes for searching or performing the booking flow with different codes: **FastX codes**, **supplier native codes**, or **Buyer own codes**.  
+    Hotel-X offers three modes for searching or performing the booking flow with different codes: **FastX codes**, **Supplier native codes**, or **Buyer own codes**.  
 </div>
 <br></br>
 <b>A. Booking flow with FastX codes (Recommended)</b>
 
-    Using FastX codes is the default and most efficient way to search in Hotel-X. FastX unique codes are designed for querying multiple Sellers simultaneously. With a single, unified list of hotel codes, you gain access to all connected suppliers’ systems.
+    Using FastX codes is the default and most efficient way to search in Hotel-X. FastX unique codes are designed for querying multiple Sellers simultaneously. With a single, unified list of hotel codes, you gain access to all connected Suppliers’ systems.
 
 ![Hotel-X Shopping Flow](https://storage.travelgate.com/docs/hotel-x_multi_mode.svg)
 
@@ -280,7 +278,7 @@ As you can see in these responses, you have multiple options with different rate
 
     Options when using your own context:
 
-    <b>1. Specify accesses in your query</b>
+    <b>1. Specify accesses in your query</b>  
     The query will only be sent to the accesses listed in your `filterSearch` node:
 
 ```js
@@ -310,15 +308,15 @@ As you can see in these responses, you have multiple options with different rate
 ```
 
 
-<b>C. Booking flow with supplier native codes</b>
+<b>C. Booking flow with Supplier native codes</b>
 
     
     This mode is designed for querying individual Sellers using their native codes. 
     
     Key points:
     <ul>
-        <li>You must map each supplier manually, as each uses different codes.</li>
-        <li>Queries are per supplier; you cannot aggregate multiple suppliers in a single request unless they share the same context.</li>
+        <li>You must map each Supplier manually, as each uses different codes.</li>
+        <li>Queries are per Supplier; you cannot aggregate multiple suppliers in a single request unless they share the same context.</li>
         <li>Multiple accesses from the same Seller can be queried together if they share a context.</li>
     </ul>
 

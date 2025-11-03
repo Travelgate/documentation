@@ -23,7 +23,7 @@ To configure discounts, offers, and supplements, use the **[Manual Load section]
 ## Inventory Duration & Limitations
 
 - **Product Availability:** You can load allotment and prices for **up to 2 years** from the current date.
-- **Remarks Field:** There is no dedicated remarks field at the room level in the Inventory API, but you can add remarks at the reservation request level. The **room name field** can be used to include additional details as free text.
+- **Remarks Field:** There is no dedicated remarks field at the room level in the Inventory API, but you can add remarks at the reservation request level.
 
 :::info
 Refer to the **[Inventory Documentation](/docs/apps/inventory/extranet/set-up/setup)** for more details! 🚀

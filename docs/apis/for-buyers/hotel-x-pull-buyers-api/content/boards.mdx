@@ -1,15 +1,19 @@
 ---
-sidebar_position: 6
+sidebar_position: 4
 ---
 import HotelXBoardQueryInput from "../../../../../src/graphql/generated-docs/HotelXBoardQueryInput.mdx";
 import BoardConnection from "../../../../../src/graphql/generated-docs/BoardConnection.mdx";
 
-import {boardsQuery, boardsVariables, boardsByBoardCodeVariables} from "../../../../../src/graphql/hotel-x/boards.query";
+import {boardsQuery, boardsVariables, boardsFastXVariables, boardsByBoardCodeVariables} from "../../../../../src/graphql/hotel-x/boards.query";
 
 
 # Boards
 
-The Boards Query returns a comprehensive boards list from a supplier's access that may include translations to other languages, granting you access to all the boards configured by the Seller for a given set of credentials. The returned fields include:
+The Boards Query allows you to retrieve board information in two ways:  
+- The **FastX Board Master**, which returns the complete list of standardized meal plans (boards) used in the Travelgate Marketplace and throughout the booking flow.  
+- The **Supplier Board List**, which provides the native board information returned by each connected Seller, including available translations.
+
+The returned fields include:
 
 * `boardCode`
 * `text`
@@ -25,14 +29,13 @@ When creating your boards query, you have 1 input to fill based on your specific
 
 ### 1. Criteria   
 
-This query offers versatility, with certain fields marked as mandatory (`access`) and others as optional (`boardCodes` and `group`). This flexibility empowers you to create a personalized Boards Query, tailoring the requested fields to your specific needs. Consequently, the response will only include information that is highly relevant to you, streamlining the retrieval process and ensuring the data you receive meets your exact requirements.
+This query offers versatility, with certain fields marked as mandatory (`access`) and others as optional (`boardCodes`). This flexibility empowers you to create a personalized Boards Query, tailoring the requested fields to your specific needs. Consequently, the response will only include information that is highly relevant to you, streamlining the retrieval process and ensuring the data you receive meets your exact requirements.
 
 **Mandatory criteria**
 * `access`
 
 **Optional criteria**
-* `boardCodes` (Search by board type)
-* `group`
+* `boardCodes` (Search a specific board type)
 
 
 ### Response Considerations
@@ -45,14 +48,6 @@ Hotel-X supports all languages, but receiving board descriptions in one or anoth
 
 :::
 
-#### Mapping
-
-When utilizing the Boards List Query, you will receive the Seller's native boards codes. Connecting with a new Seller doesn't always mean that you are interested in the whole board's portfolio, maybe you are just interested in some specific boards. Since mapping depends entirely on your side, you can map only those boards you are interested in.
-
-Additionally, you can upload your own mapping files to our FTP (credentials should be provided by our Customer Care team), and we will use your own boards codes in the booking flow.
-
-You can find all the necessary information in the [mapping section](../plugins/mapping.mdx).
-
 
 ## Query Inputs
 
@@ -64,7 +59,14 @@ You can find all the necessary information in the [mapping section](../plugins/m
 
 ## Examples
 
+#### Search for the FastX master board list for all your connected suppliers
+
+<GraphqlSample query={boardsQuery} variables={boardsFastXVariables} />
+
+
 #### Search for the complete board list from a supplier
+
+For example, using access '5647' for Smyrooms Test supplier.
 
 <GraphqlSample query={boardsQuery} variables={boardsVariables} />
 

@@ -1,9 +1,85 @@
 ---
-title: "Technical Analysis"
+title: "Documentation"
 sidebar_position: 3
 ---
 
-# Checklist for Technical Analysis of an API
+# Documentation
+
+The connector documentation will be stored in the `docs/` directory, which will also be used as context for Copilot.  
+The `docs/` directory will include the following subfolders: `docs/analysis/`, `docs/certification/`, and `docs/supplier/`, each providing additional context about the supplier's API.
+
+- The `docs/analysis/` folder will be pre-filled and will contain a **technical analysis** summarizing the different (JSON or XML) calls and business logic (such as `Metadata`) of the supplier’s API.  
+- The `docs/certification/` folder will initially be empty and should later contain **production logs and examples** from the certification process with the supplier’s API, once the connector has been completed and certified.  
+- The `docs/supplier/` folder will also be pre-filled and will include the **supplier’s API specification file**, which provides the official documentation for the supplier’s API.
+
+---
+
+### **Format Clarification**
+- `<Version>` must follow the format `X.X.X` (e.g., `1.0`, `2.0.2`, etc.).  
+- `<Date>` must follow the format `YYYYMMDD` (e.g., `20250903`).  
+
+---
+
+## Supplier Documentation
+
+The supplier-specific API documentation is stored in the `docs/supplier/` directory.  
+Each file should follow the naming format `spec_<Version>.md`, corresponding to the supplier API version.
+
+---
+
+## Certification
+
+The connector certification files will be stored in the `docs/certification/` directory.  
+This section provides **production examples and logs** used to validate the connector’s API calls against the supplier’s API.  
+It is structured to help coding agents and LLMs understand the layout and use of real-world certification data.
+
+The directory will include a file named `docs/certification/certification_<Version>_<Date>.md`, which describes the expected structure of certification files.
+
+---
+
+### Structure Overview
+
+Two main folders must be created inside the `docs/certification/` directory.
+
+---
+
+#### Travelgate Certification Folder
+
+A folder named `docs/certification/travelgate/` should be created to store the connector certification from **Travelgate’s side**.
+
+Within this folder, the following directories should exist, each representing a certification type:
+
+- **Connectors/**  
+- **HotelX/**  
+- **Legacy/**  
+
+![Certification Folders](/img/docs/connectors-pull-developers-api/CertificationFolders.png)
+
+Each of these directories must contain **four subfolders**, representing different booking flow scenarios for certification:
+
+- `1Rooms@1Adults+1Childs/`  
+- `1Rooms@2Adults/`  
+- `2Rooms@1Adults+1Childs@2Adults/`  
+- `2Rooms@2Adults@2Adults/`  
+
+Each scenario folder should include **production examples** for all main connector operations (e.g., `Search`, `Quote`, `Book`, `Cancel`, `CheckBookingByReference`, etc.) generated during the connector certification process.
+
+![Certification Subfolders](/img/docs/connectors-pull-developers-api/CertificationSubfolders.png)
+
+---
+
+#### Supplier Certification Folder
+
+A folder named `docs/certification/supplier/` should also exist within the certification directory.  
+It will contain the supplier’s own certification data, if a certification process is performed by the supplier.
+
+---
+
+## Technical Analysis of an API
+
+The technical analysis files will be stored in the `docs/analysis/` directory.  
+Each file should follow the naming format `analysis_<Version>_<Date>.md`.  
+These files will provide additional **technical context** about the supplier’s API, organized according to the following table structure:
 
 | ID | Category | Mandatory Category | Checkpoint | Details | Mandatory Checkpoint | Result | Comments |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | 

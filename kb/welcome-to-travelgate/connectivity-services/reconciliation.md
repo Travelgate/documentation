@@ -8,6 +8,13 @@ sidebar_position: 6
 
 Power your operations with a [Reconciliation API](/docs/apps/reconciliation/quickstart/) that instantly validates and reconciles your booking data. Say goodbye to manual work and keep processes running fast and seamlessly. Whether you are a Buyer or a Seller, get accurate, reliable data with a solution that grows with your business.
 
+:::warning Important
+The **Reconciliation API** is a solution we offer to our Partners to help them **validate and reconcile reservation details** between Buyers and Sellers — including reservation status, pricing, cancellation penalties, and more — so they can manage booking information more efficiently.  
+
+Keep in mind that this reconciliation process is **exclusive to the Reconciliation API** and is **not used by our billing systems**. For Travelgate billing adjustments, only external booking cancellations — those processed directly with the Seller outside of Travelgate — are considered (based on the Seller's reservation status). Only the cancellation status is recalculated; amounts, fees, and other data are ignored.
+:::
+
+
 ### How does the Reconciliation API work?
 The Reconciliation API stores all bookings made by a Buyer through Travelgate and matches them with the bookings stored in the Seller’s system. This process ensures that **both Buyers and Sellers have aligned booking records**, reducing the need for manual checks between their systems and Travelgate.
 

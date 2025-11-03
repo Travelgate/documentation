@@ -22,7 +22,7 @@ Accept-Encoding: gzip
 Authentication is required for every request to the Travelgate GraphQL API. An API Key must be included in the HTTP Authorization request header to authenticate the user agent with the server. You can find your list of API Keys (encrypted) on the Travelgate website in [API Keys](https://app.travelgate.com/settings/apikeys).
 
 ```html
-Authorization: ApiKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Authorization: Apikey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```              
 
 ### Keep Alive
@@ -40,7 +40,7 @@ Connection: keep-alive
 In case you expect to be returned +5k options per search response, we suggest using our GraphQL to Rest feature to keep performance at the highest level.
 
 To implement this feature, please follow below steps:
-1. Check that your JSON parser is updated to the last schema as the Array Fields previously defined as single Scalars can produce unexpected JSON marshalling
+1. Check that your JSON parser is updated to the last schema as the Array Fields previously defined as single Scalars can produce unexpected JSON marshalling.
 2. Add the HTTP header to your request(s): 
 ```html
 TGX-Content-Type: graphqlx/json
@@ -52,7 +52,7 @@ TGX-Content-Type: graphqlx/json
 
 This optional header allows specifying a maximum waiting time for Travelgate to process a request in the Hotel-X Pull Buyers API.
 
-This value, expressed in milliseconds, defines how long Travelgate will wait for responses from suppliers, process those responses, and apply business rules (plugins) if used by the buyer. If this time is exceeded, Travelgate will terminate the request and return an error.
+This value, expressed in milliseconds, defines how long Travelgate will wait for responses from suppliers, process those responses, and apply business rules (plugins) if used by the Buyer. If this time is exceeded, Travelgate will terminate the request and return an error.
 
 ```html
 TGX-Operation-Timeout: 5000
@@ -62,4 +62,4 @@ TGX-Operation-Timeout: 5000
 
 * TGX-Operation-Timeout sets the maximum time Travelgate will wait before cutting off the request.
 * The `timeout` field in the booking flow requests defines the time allocated for the final supplier to respond.
-* Since TGX-Operation-Timeout applies to the entire processing time (supplier response + Travelgate processing), it should always be set to a higher value than the timeout sent to the supplier.
+* Since TGX-Operation-Timeout applies to the entire processing time (Supplier response + Travelgate processing), it should always be set to a higher value than the timeout sent to the Supplier.

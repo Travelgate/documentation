@@ -23,10 +23,16 @@ export const boardsQuery =
 export const boardsVariables = 
 `{
 	"criteria": {
-		"access": "2"
+		"access": "5647"
 	}
 }`
 
+export const boardsFastXVariables = 
+`{
+	"criteria": {
+		"access": "34538"
+	}
+}`
 
 export const boardsByBoardCodeVariables = 
 `{

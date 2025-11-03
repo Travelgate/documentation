@@ -5,10 +5,14 @@ sidebar_position: 2
 # Hotels
 
 ## What is the Hotels Query? 
-The Hotels Query allows Buyers to retrieve a list of hotels from a Seller's access, providing all the properties configured for their credentials.
+The Hotels Query allows Buyers to:
+
+1. Retrieve the FastX master hotel list, which contains all unique FastX codes representing every hotel available across all your connected Suppliers in the Marketplace.
+
+2. Retrieve the hotel list from a specific access, returning the Supplier’s own hotels, including their native codes and detailed static information.
 
 ### How Can I Retrieve a Seller's Hotel List via Hotel-X?  
-To retrieve a Seller's hotel list, follow the specifications outlined in our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/hotels) and explore the [API Playground](/playground). You can **customize** the fields in your query to receive only the information relevant to your needs.
+To retrieve a specific Seller's hotel list or the FastX master hotel list, follow the specifications outlined in our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/hotels) and explore the [API Playground](/playground). You can **customize** the fields in your query to receive only the information relevant to your needs.
 
 ## Query Features
 
@@ -51,15 +55,27 @@ You can also verify supported languages through our [Metadata Query](/docs/apis/
 ## Hotel Code Management
 
 ### What Is the Difference Between "hotelCode" and "hotelCodeSupplier"? 
-While both "hotelCode" and "hotelCodeSupplier" are often the same, some Sellers may assign the same hotel code to different properties. To avoid duplication, Travelgate concatenates the destination code with the hotel code to ensure uniqueness. If necessary, you can still find the supplier codes under the 'hotelCodeSupplier' node.
+While both 'hotelCode' and 'hotelCodeSupplier' are often the same, some Sellers may assign the same hotel code to different properties. To avoid duplication, Travelgate concatenates the destination code with the hotel code to ensure uniqueness.
+
+In addition, under the 'mappings' node, you can also find the corresponding FastX code, which represents the unified identifier used across the Marketplace.
 
 ### Can I run a Hotel-X Search Query using the "hotelCodeSupplier"?
-No, you cannot run a Hotel-X Search Query using the `hotelCodeSupplier` (the Supplier's native hotel code); you should use the `hotelCode` field.  
+By default, searches in Hotel-X use the **FastX codes**, which are unique identifiers that allow you to run a single search across one or multiple Sellers simultaneously — without the need to send separate requests for each Supplier.
 
-If you want to use your own codes or map them to Supplier codes, you must upload [mapping files](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping/) and use your mapped codes in conjunction with your own context. However, even in this case, the mapping is done against the `hotelCode` field of the supplier connection, not the `hotelCodeSupplier` field.
+However, you can also search using a Supplier’s native codes by specifying their **context** in the Search Query.
+Additionally, if you prefer to use your own internal codes, you can upload your mappings to our system using the [Mapping Plugin](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping/).
 
-### Can a Single Hotel Have Different Codes?  
-Yes, the same hotel may have different codes depending on the Seller. For example, the hotel "La Plaza" could have code "1" with Supplier A and "2342334" with Supplier B.
+
+### Can a Single Hotel Have Different Codes?
+
+Yes. Each Supplier has its own codes, or **context**. For example, the hotel *“La Plaza”* might be **“1”** with Supplier A and **“2342334”** with Supplier B.
+
+Normally, this requires mapping each Supplier’s codes to match hotels, boards, and rooms. Travelgate simplifies this with **FastX codes** — unique identifiers that unify all Suppliers’ contexts.
+
+As a Buyer, you can work with **FastX codes** without worrying about native Supplier codes. For instance, FastX code **BR1518** (Hotel *“Nord Easy Patos”*) corresponds to Supplier A’s **32123** and Supplier B’s **HFAFHAS**. When you search with BR1518, Travelgate handles the translation automatically.
+
+Responses include both the Supplier’s native codes and descriptions **and** the standardized **FastX codes**, letting you choose whether to work with the unique FastX identifiers or the Supplier-specific ones.
+
 
 ## Availability and Filtering
 

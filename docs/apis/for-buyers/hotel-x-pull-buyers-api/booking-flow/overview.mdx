@@ -6,6 +6,15 @@ sidebar_position: 1
 
 In order to book a hotel room, booking flow methods must be executed sequentially: `search`, `quote` and `book`.
 
+These methods must be executed sequentially:
+
+- **Search**: The starting point of the flow. Here you request availability based on specific criteria such as hotel code, dates, and number of guests. The response returns a list of **options** — rates provided by different Suppliers — including details like price, board, room type, and policies.
+
+- **Quote**: Once you’ve selected an option from the Search response, this step allows you to **revalidate** it. The Quote call confirms the most up-to-date price, policies, and availability for the chosen option before proceeding to booking.
+
+- **Book**: The final step of the flow. This call **confirms the reservation** with the Supplier and returns the booking details and confirmation information.
+
+
 ![Hotel-X Shopping Flow](https://storage.travelgate.com/docs/hotel-x_shopping_flow.svg)
 
 import DocCardList from '@theme/DocCardList';

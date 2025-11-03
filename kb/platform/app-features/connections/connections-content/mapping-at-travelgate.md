@@ -41,7 +41,7 @@ If you’re a Buyer connected to our Hotel-X Buyers API, you have the option to 
 
 ### How Can I Use the Supplier Hotel Codes?
 
-By default, Travelgate uses **FastX codes** in all booking flows. However, if you prefer to use a Ssupplier’s **hotel codes**, you can do so by specifying it in your search request.
+By default, Travelgate uses **FastX codes** in all booking flows. However, if you prefer to use a Supplier’s **hotel codes**, you can do so by specifying it in your search request.
 
 To use Supplier codes, include the following in your **Search Query**:
 

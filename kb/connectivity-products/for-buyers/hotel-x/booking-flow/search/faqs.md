@@ -87,11 +87,9 @@ It represents the number of available rooms of the same type in the hotel, but i
 ## Booking Considerations
 
 ### Can I still get availability if the hotel code is not found in Connections Content?
-No, in order to return availability, the hotels must be included in the **hotel list** of your requested access.
+No, in order to return availability, the hotels must be included in the **hotel list** of your requested access. If a Supplier has recently added new hotels to your portfolio, they might not yet appear in the **Connections Content** section because they were added outside the scheduled content update.
 
-If a Supplier has recently added new hotels to your portfolio, they might not yet appear in the **Connections Content** section because they were added outside the scheduled content update.
-
-Don’t worry — if you know your Seller has added new hotels, you or the Supplier can use the [**Force Update Now**](/kb/platform/app-features/connections/connections-content/content-management#how-can-i-use-the-force-update-now-functionality) feature to refresh your portfolio immediately. You may also contact 
+Don’t worry — if you know your Seller has added new hotels, you or the Supplier can use the [**Force Update Now**](/kb/platform/app-features/connections/connections-content/content-management#how-can-i-use-the-force-update-now-functionality) feature to refresh your portfolio immediately.
 
 ### What is the lifespan of the Search ID?
 Search IDs do not expire, but transitioning from Search to Quote quickly is recommended for a smoother booking process.
@@ -102,7 +100,7 @@ Search IDs do not expire, but transitioning from Search to Quote quickly is reco
 Yes! You have the option to create your own Buyer context. To do this, simply follow the instructions in our documentation and upload the necessary mapping files to use it in your requests. For more details, refer to our [Documentation on Mapping](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping).
 
 ### Can I map at an Hotel-X Access level using the CSV Mapping file?
-No, [Mapping files](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping) are used to convert between the Supplier's native codes and the Buyer's codes (or vice versa), but only at the Supplier level. Mapping at the Hotel-X Access level is not supported.
+No, [Mapping files](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping) are used to convert between the Supplier's hotel codes and the Buyer's codes (or vice versa), but only at the Supplier level. Mapping at the Hotel-X Access level is not supported.
 
 ### Can I get a hotel description in the Search response?
 No, descriptions are retrieved using the [Hotels Query](/kb/connectivity-products/for-buyers/hotel-x/content/hotels).

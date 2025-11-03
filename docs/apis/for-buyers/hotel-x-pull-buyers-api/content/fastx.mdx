@@ -1,0 +1,66 @@
+---
+sidebar_position: 2
+---
+
+import {hotelsQuery, hotelsFastXVariables, hotelsVariables} from "../../../../../src/graphql/hotel-x/hotels.query";
+import {boardsQuery, boardsFastXVariables} from "../../../../../src/graphql/hotel-x/boards.query";
+
+# FastX Codes
+
+**FastX codes** are unique identifiers created by Travelgate to make connectivity across the Marketplace easier and more efficient.  
+They represent a unified way to identify **hotels**, **boards**, and **rooms**, so you can work with multiple Suppliers using a single, consistent set of codes.
+
+As a Buyer, you only need to map to the FastX codes — once you do, you can seamlessly access and book content from any connected Supplier without having to remap each one individually.
+
+To make mapping even easier, **FastX codes are available in GIATA** under the name `"travelgate"`. This means that if you already use GIATA, integrating with Travelgate becomes even simpler — everything aligns smoothly.
+
+The sections below explain how FastX codes work and how you can retrieve them through our API.
+
+
+## Hotels
+
+There are two ways to obtain FastX hotel codes:
+
+### 1. FastX Hotel Master
+
+This is a single call that returns the **master list of FastX hotels** available to you in the Travelgate Marketplace. It includes all unique hotels offered by the Sellers you are connected to. As you add new Sellers, any new properties they provide — not already offered by your other connected Suppliers — are automatically included in your master list.
+
+To retrieve it, make a `hotel list` call using your **FastX access**, which you can find in the *MyConnections* section under the Seller **“Travelgate”**.
+
+You can also receive the **GIATA code** associated with each hotel if you have activated [this functionality](/kb/connectivity-products/for-buyers/mapping-solutions/giata/giata-multicodes).
+
+<GraphqlSample query={hotelsQuery} variables={hotelsFastXVariables} />
+
+
+
+
+### 2. Hotel List by Supplier
+
+Travelgate maintains full transparency. In addition to FastX codes, you can also access each Supplier’s static data. When you make a `hotel list` call to a specific Supplier access, you’ll receive:
+
+- The Supplier’s **native hotel code** and hotel information.
+- The **FastX hotel code** in the `mappings` node.
+- The **GIATA code**, if you have activated [this functionality](/kb/connectivity-products/for-buyers/mapping-solutions/giata/giata-multicodes).
+
+This allows you to keep your systems synchronized with both the standardized FastX codes and each Supplier’s own identifiers.
+
+<GraphqlSample query={hotelsQuery} variables={hotelsVariables} />
+
+
+## Boards
+
+To get the list of **FastX boards**, make a `boards` call using your **FastX access** (available in *MyConnections* under “Travelgate”). This will return the complete set of meal plans you’ll encounter in the booking flow — all identified with standardized FastX codes and names.
+
+<GraphqlSample query={boardsQuery} variables={boardsFastXVariables} />
+
+
+## Rooms
+
+With FastX, Travelgate standardizes room names and codes across all connected Suppliers. We process each Supplier’s room descriptions in real time and convert them into **unique FastX room codes and standardized names**.
+
+When you perform a **search** call, you’ll receive both:
+
+- The **FastX standardized room code and name**  
+- The **Supplier’s native code and description**
+
+This ensures a consistent experience across the Marketplace while keeping full visibility into each Supplier’s original data.

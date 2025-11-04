@@ -9,7 +9,11 @@ sidebar_position: 4
 The Boards Query provides two key pieces of information:
 
 1. **FastX Board List** – the master set of standardized board codes and descriptions used by Travelgate to ensure consistency across all Suppliers.
-2. **Supplier Board Data** – the native board codes and descriptions for a specific Supplier and access, showing how their boards map to the standardized FastX list.
+2. **Supplier Board Data** – the board codes and descriptions for a specific Supplier and access, showing how their boards map to the standardized FastX list.
+
+:::info FastX Codes  
+Not familiar with Travelgate’s **FastX Codes** yet? Visit our [FastX Codes documentation](/kb/platform/app-features/connections/fastx-codes) for a complete overview and all the details you need.  
+:::
 
 
 ### How Can I Retrieve the Seller's Board List via Hotel-X?
@@ -41,9 +45,9 @@ Please note that the total number of boards offered by the Seller cannot be dete
 
 ### Is It My Responsibility to Map Hotel Boards, or Does Travelgate Provide Mapping Support?
 
-Each Supplier has its own board codes, but Travelgate provides a standardized **FastX board code**. In search responses, you’ll see both the Supplier’s native code and the corresponding FastX code.
+Each Supplier has its own board codes, but Travelgate provides a standardized **FastX board code**. In Search responses, you’ll see both the Supplier’s code and the corresponding FastX code.
 
-This lets you work directly with FastX codes — consistent across all Suppliers of the Marketplace — without mapping each Supplier’s boards individually, while still having the native codes if needed.
+This lets you work directly with FastX codes — consistent across all Suppliers of the Marketplace — without mapping each Supplier’s boards individually, while still having their codes if needed.
 
 
 ## Availability Considerations

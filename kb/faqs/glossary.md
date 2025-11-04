@@ -408,7 +408,7 @@ Method that changes or updates data within a system.
 The country affiliation of a person, often used to tailor travel services or pricing.
 
 - **Native Code**  
-Code in the supplier’s system.
+Code in the Supplier’s system.
 
 - **Net Price**  
 The actual price of a travel product after all discounts, taxes, and fees have been applied. The amount payable to the Seller. 

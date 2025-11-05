@@ -20,8 +20,8 @@ To retrieve a specific Seller's hotel list or the FastX master hotel list, follo
 
 ## Query Features
 
-### Can I Search Hotels by Destination? 
-Yes! You can search for hotels by destination by including the **"destinationCodes"** field in your query criteria:
+### Can I Search Hotels by Destination in the Hotels Query? 
+Yes! When using the Hotels Query, you can search for hotels by destination by adding the `destinationCodes` field to your [`HotelXHotelListInput`](/api/types/inputs/hotel-xhotel-list-input).
 
 ![hotels_query_destinations](https://storage.travelgate.com/kbase/hotels_query_destinations.jpg)
 
@@ -44,7 +44,7 @@ Static content fetching is always sequential and the amount of content returned 
 Amenities information varies by supplier and hotel. For details, please consult the specific supplier's hotel list. While Travelgate consistently collects information from each Seller, please note that disclosing amenities information is optional.
 
 ### How Can I Find the Total Number of Properties Returned? 
-To retrieve the total number of properties in the response, simply add the **"count"** field to your query:
+To retrieve the total number of properties in the response, simply add the [`count`](/api/types/objects/hotel-connection) field to your Hotels Query:
 
 ![hotelcount](https://storage.travelgate.com/kbase/hotelcount.jpg)
 

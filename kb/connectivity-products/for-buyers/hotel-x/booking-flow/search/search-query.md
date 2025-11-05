@@ -26,7 +26,8 @@ Single Mode allows Buyers to search the inventory of **one Seller at a time**. Y
 
 * **How does Hotel-X Single Mode work?**  
 Simply include the Seller’s access code in your `HotelXFilterSearchInput` to perform the request. More details on filtering your searches by Hotel-X access code can be found [here](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/search/search-filters).
-  ```
+  
+  ```json
   "filterSearch": {
     "access": {
       "includes": ["5647"]
@@ -44,7 +45,8 @@ Simply include the Seller’s access code in your `HotelXFilterSearchInput` to p
 * **How does Hotel-X Multimode work?**  
 You can perform a Multimode search in two ways:
     1. **By specifying accesses in the request:** Only those connections are queried:
-        ```
+
+        ```json
         "filterSearch": {
             "access": {
                 "includes": [

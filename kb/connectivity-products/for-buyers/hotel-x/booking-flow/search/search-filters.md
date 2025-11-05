@@ -8,9 +8,7 @@ sidebar_position: 2
 ## Refining Search Requests for Precise and Relevant Results
 
 ### How Can I Filter My Search Requests?
-You can filter your Search requests through the **HotelXFilterSearchInput**, using criteria such as access, plugin, rateRules, and status specified in your request.
-
-![filtersearch_playground](https://storage.travelgate.com/kbase/filtersearch_playground.png)
+You can filter your Search requests through the [**HotelXFilterSearchInput**](/api/types/inputs/hotel-xfilter-search-input/), using criteria such as access, plugin, rateRules, and status specified in your request.
 
 ### 1. Access - AccessFilterInput
 You can specify a particular access or none at all. If no access is specified, all configured accesses for the Buyer will be executed. In this case, please ensure you use your own context code to avoid mapping errors. Learn more in the following articles:

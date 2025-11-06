@@ -31,7 +31,7 @@ Check out our Hotel-X Buyers API [Documentation](/docs/apis/for-buyers/hotel-x-p
 ### 4. Status - StatusFilterInput
 Define and filter which status (OK or RQ) should be included or excluded in your Search response. This filter depends on whether the Seller returns this information in their response. Example:
 
-```
+```json
 {
     "filterSearch" : {
         "access" : {

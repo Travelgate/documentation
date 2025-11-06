@@ -218,40 +218,6 @@ const config = {
           }
           `,
     },
-
-    // Structured Data: BreadcrumbList
-    {
-      tagName: "script",
-      attributes: {
-        type: "application/ld+json",
-      },
-      innerHTML: `
-      {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://www.travelgate.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Solutions",
-            "item": "https://www.travelgate.com/solutions"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "Platform",
-            "item": "https://www.travelgate.com/platform"
-          }
-        ]
-      }
-      `,
-    },
   ],
 
   scripts: [

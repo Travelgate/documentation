@@ -132,48 +132,19 @@ const config = {
       },
       innerHTML: `
           {
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "name": "Travelgate",
-            "url": "https://www.travelgate.com/",
-            "inLanguage": "en",
-            "isAccessibleForFree": true,
-            "potentialAction": {
-              "@type": "SearchAction",
-              "target": "https://www.travelgate.com/search?q={search_term_string}",
-              "query-input": "required name=search_term_string"
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "Travelgate Docs",
+          "url": "https://docs.travelgate.com/",
+          "inLanguage": "en",
+          "isAccessibleForFree": true,
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://docs.travelgate.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
             }
           }
           `,
-    },
-
-    // Structured Data: Organization
-    {
-      tagName: "script",
-      attributes: {
-        type: "application/ld+json",
-      },
-      innerHTML: `
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Travelgate",
-        "url": "https://www.travelgate.com/",
-        "logo": "https://www.travelgate.com/assets/img/logos/logo_tg_positive.svg",
-        "sameAs": [
-          "https://www.linkedin.com/company/travelgate",
-          "https://x.com/travelgate",
-          "https://www.facebook.com/travelgate"
-        ],
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "url": "https://team.travelgate.com/contact-us",
-          "contactType": "New Partner Inquiries",
-          "areaServed": "Worldwide",
-          "availableLanguage": ["English", "Spanish"]
-        }
-      }
-      `,
     },
 
     // Structured Data: FAQPage
@@ -189,44 +160,60 @@ const config = {
             "mainEntity": [
               {
                 "@type": "Question",
-                "name": "What is Travelgate?",
+                "name": "How can I become a Travelgate Partner?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Travelgate is a travel technology platform that enables B2B connectivity between travel agencies, suppliers, and distributors via seamless API integrations."
+                  "text": "Visit our platform, click “Contact Travelgate,” and submit the short form—it takes about two minutes. Our partnerships team will follow up promptly to get you started."
                 }
               },
               {
                 "@type": "Question",
-                "name": "What services does Travelgate provide?",
+                "name": "What are the benefits of using the Travelgate app?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Travelgate offers API connectivity, inventory distribution, hotel and channel manager integrations, and technical support for global travel businesses."
+                  "text": "The Travelgate app allows you to manage bookings, monitor performance, and access real-time insights on the go. It's a powerful tool for travel businesses to stay connected and efficient."
                 }
               },
               {
                 "@type": "Question",
-                "name": "Is Travelgate suitable for small travel agencies?",
+                "name": "What resources are available for onboarding?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Yes, Travelgate offers scalable solutions suitable for businesses of all sizes, including small travel agencies looking to expand their reach and streamline operations."
+                  "text": "Travelgate offers a comprehensive onboarding guide, including certification resources, API documentation, and customer success support."
                 }
               },
               {
                 "@type": "Question",
-                "name": "Does Travelgate offer technical support during integration?",
+                "name": "How can I access the Hotel-X API Playground?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Yes, our technical team provides full support during the integration process to ensure smooth setup and operation of APIs and services."
+                  "text": "Access the Hotel-X API Playground via the Travelgate documentation to explore and test API queries, customize GraphQL requests, and view real-time responses in a safe development environment."
                 }
               },
               {
                 "@type": "Question",
-                "name": "What types of suppliers can I connect with through Travelgate?",
+                "name": "How can I troubleshoot common API errors?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Connect seamlessly with a diverse network of suppliers—from tour operators and travel agencies to channel managers—through the Travelgate platform."
+                  "text": "For common API errors, refer to our Errors and Warnings list. It provides detailed steps to resolve issues like timeouts, communication errors, and data retrieval problems."
                 }
-              }
+              },
+              {
+                "@type": "Question",
+                "name": "What is the importance of uptime in Travelgate?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Uptime is critical for ensuring seamless connectivity and uninterrupted service. Travelgate prioritizes high availability to minimize disruptions and maximize operational efficiency."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What payment methods does Travelgate support?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Travelgate supports multiple payment methods, including credit cards, virtual credit cards (VCC), and other supplier-specific payment types. For more details, check our payment guide."
+                }
+              },
             ]
           }
           `,

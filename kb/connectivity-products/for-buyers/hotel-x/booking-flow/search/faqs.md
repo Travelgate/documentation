@@ -102,7 +102,7 @@ Search IDs do not expire, but transitioning from Search to Quote quickly is reco
 Yes! You have the option to create your own Buyer context. To do this, simply follow the instructions in our documentation and upload the necessary mapping files to use it in your requests. For more details, refer to our [Documentation on Mapping](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping).
 
 ### Can I map at an Hotel-X Access level using the CSV Mapping file?
-No, [Mapping files](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping) are used to convert between the Supplier's native codes and the Buyer's codes (or vice versa), but only at the Supplier level. Mapping at the Hotel-X Access level is not supported.
+No, [Mapping files](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping) are used to convert between the Supplier's hotel codes and the Buyer's codes (or vice versa), but only at the Supplier level. Mapping at the Hotel-X Access level is not supported.
 
 ### Can I get a hotel description in the Search response?
 No, descriptions are retrieved using the [Hotels Query](/kb/connectivity-products/for-buyers/hotel-x/content/hotels).

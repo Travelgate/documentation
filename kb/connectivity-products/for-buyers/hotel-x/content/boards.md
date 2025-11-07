@@ -5,12 +5,16 @@ sidebar_position: 4
 # Boards
 
 ## What Is the Boards Query?
+<<<<<<< HEAD
 
 The Boards Query provides two key pieces of information:
 
 1. **FastX Board List** – the master set of standardized board codes and descriptions used by Travelgate to ensure consistency across all Suppliers.
 2. **Supplier Board Data** – the native board codes and descriptions for a specific Supplier and access, showing how their boards map to the standardized FastX list.
 
+=======
+The Boards Query provides a comprehensive mapping of board types available for a given set of credentials (access), which may include translations into multiple languages.
+>>>>>>> main
 
 ### How Can I Retrieve the Seller's Board List via Hotel-X?
 To retrieve the board list, simply follow the specifications outlined in our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/boards) and build your own Board queries. You can also customize the fields you request to ensure you receive only the relevant information.
@@ -21,7 +25,7 @@ Explore our [Hotel-X Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-
 
 ## Filtering Board Queries
 
-### How Can I Filter My Boards Query? 
+### How Can I Filter My Boards Query?
 You can refine your Boards query results by including the **"boardCodes"** field in your query criteria and specifying the board codes you want to retrieve.
 
 ## Understanding the Query Response
@@ -48,7 +52,7 @@ This lets you work directly with FastX codes — consistent across all Suppliers
 
 ## Availability Considerations
 
-### Does the Presence of a Board in the Hotel-X Boards Query Guarantee Its Availability During a Search? 
+### Does the Presence of a Board in the Hotel-X Boards Query Guarantee Its Availability During a Search?
 No, the Boards Query response provides a list of all board types configured by the Seller for your account. However, availability may vary based on your requested dates and distribution criteria. Some boards may not be available for specific searches.
 
 :::tip

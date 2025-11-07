@@ -25,7 +25,7 @@ The response typically includes the following fields:
 ## Understanding Destination List Logic
 
 ### How Are Destinations Categorized? 
-When you run a Destinations Query, the Seller's native destination codes are classified into two categories:
+When you run a Destinations Query, the Supplier's destination codes are classified into two categories:
 
 1. **Zone**  
 2. **City**  

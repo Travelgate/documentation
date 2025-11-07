@@ -68,6 +68,6 @@ Yes! We do not impose any limitations on the number or type of characters used i
 Yes, you can map multiple portfolios for the same connection (e.g., B2B, B2C, or different markets). As long as **each portfolio is provided by the Seller through a specific Hotel-X Access Code** (a unique set of credentials), you can map them independently.
 
 :::info Hotel-X Mapping 🚀
-If you are a Buyer connected via the Hotel-X API, you have the option to **upload your own [mapping files](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping/) to our SFTP**. Take advantage of our SFTP mapping and make the Booking Flow truly your own!  
+If you are a Buyer connected via the Hotel-X API, you have the option to **upload your own [mapping files](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping/) to our SFTP**. Take advantage of our SFTP mapping and make the Booking Flow truly your own!
 Note: Our Hotel-X Mapping feature allows you to set one mapping file per Supplier.
 :::

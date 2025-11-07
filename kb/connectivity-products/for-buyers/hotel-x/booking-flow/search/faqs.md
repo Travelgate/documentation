@@ -87,9 +87,11 @@ It represents the number of available rooms of the same type in the hotel, but i
 ## Booking Considerations
 
 ### Can I still get availability if the hotel code is not found in Connections Content?
-No, in order to return availability, the hotels must be included in the **hotel list** of your requested access. If a Supplier has recently added new hotels to your portfolio, they might not yet appear in the **Connections Content** section because they were added outside the scheduled content update.
+Yes, availability may still be provided if the Supplier returns options based on your search criteria.
 
-Don’t worry — if you know your Seller has added new hotels, you or the Supplier can use the [**Force Update Now**](/kb/platform/app-features/connections/connections-content/content-management#how-can-i-use-the-force-update-now-functionality) feature to refresh your portfolio immediately.
+This situation can occur when a Supplier has added new hotels to your portfolio, but the updates have not yet been reflected in the Connections Content section because they did not coincide with the scheduled content update. During such instances, a hotel might show availability through the integration before it appears in the Connections Content section.
+
+In these scenarios, consider using the [Force Update Now](/kb/platform/app-features/connections/connections-content/content-management#how-can-i-use-the-force-update-now-functionality) feature to update your portfolio and reaching out to the Supplier for further information if needed.
 
 ### What is the lifespan of the Search ID?
 Search IDs do not expire, but transitioning from Search to Quote quickly is recommended for a smoother booking process.
@@ -97,7 +99,7 @@ Search IDs do not expire, but transitioning from Search to Quote quickly is reco
 ## Additional Insights
 
 ### Can we define our own context for multiple Suppliers?
-Yes! You have the option to create your own Buyer context. To do this, simply follow the instructions in our documentation and upload the necessary mapping files to use it in your requests. For more details, refer to our [Documentation on Mapping](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping).
+Yes! You have the option to create your own context. To do this, simply follow the instructions in our documentation and upload the necessary mapping files to use it in your requests. For more details, refer to our [Documentation on Mapping](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping).
 
 ### Can I map at an Hotel-X Access level using the CSV Mapping file?
 No, [Mapping files](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping) are used to convert between the Supplier's hotel codes and the Buyer's codes (or vice versa), but only at the Supplier level. Mapping at the Hotel-X Access level is not supported.

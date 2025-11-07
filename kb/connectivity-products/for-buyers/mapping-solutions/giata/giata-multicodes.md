@@ -40,6 +40,7 @@ The following steps must be completed by the **Buyer**:
     }
     ```
 
+
 ### Why are some hotels missing GIATA codes?
 Not all hotels returned by suppliers through Travelgate are necessarily mapped in the GIATA system. Since Travelgate pulls data directly from GIATA’s database, any unmapped properties will not include a GIATA code. If you need GIATA data for those hotels, please **contact GIATA** to request mapping.
 

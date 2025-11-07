@@ -22,7 +22,7 @@ Our Hotel-X Pull Buyers API offers a range of features, including the flexibilit
 ### Single Mode Search
 
 * **What does Single Mode mean?**  
-Single Mode allows Buyers to search the inventory of **one Seller at a time**. You can include several accesses from the same Seller in the same request, provided they share the same [configuration](/kb/platform/app-features/connections/api-settings#4-access-settings) and [context](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials#context). This mode is ideal for testing or when you want to query a specific Supplier connection.
+Single Mode allows Partners to search one Seller at a time. **Multiple accesses from the same Seller can be included in a single search, provided that they share the same context**. This is the default search mode in Hotel-X.
 
 * **How does Hotel-X Single Mode work?**  
 Simply include the Seller’s access code in your `HotelXFilterSearchInput` to perform the request. More details on filtering your searches by Hotel-X access code can be found [here](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/search/search-filters).
@@ -38,9 +38,7 @@ Simply include the Seller’s access code in your `HotelXFilterSearchInput` to p
 ### Multimode Search
 
 * **What does Multimode mean?**  
-  Multimode allows Buyers to search **multiple Sellers at once**, combining results from different connections (or [contexts](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials#context)) within a single API request. This is possible because HotelX operates with [FastX codes](/kb/platform/app-features/connections/fastx-codes), which unify all Supplier data under a common reference. That means you can send one query using FastX codes and receive aggregated results from various Sellers — each with their own data behind the scenes.
-
-  If you prefer, or haven't yet implemented FastX, you can also search using your own [Buyer context](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials#context) (Buyer codes), provided they have been uploaded to our system using the [mapping plugin functionality](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping).
+Multimode enables Partners to search multiple Sellers or accesses with different contexts simultaneously within a single request. This includes querying **different Sellers or multiple accesses from the same Seller, even if their contexts vary**.
 
 * **How does Hotel-X Multimode work?**  
 You can perform a Multimode search in two ways:

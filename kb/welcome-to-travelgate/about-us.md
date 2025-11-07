@@ -38,7 +38,6 @@ Here’s what you can expect:
 - **Account Management**: Easily update your connection settings, credentials, and preferences.
 - **AI-Powered Assistant**: Get instant help powered by our extensive documentation, available right when you need it.
 - **Integrated Support Platform**: Reach out to our team or explore help articles—without ever leaving the platform.
-- **FastX Standardized Codes**: Work with unique, standardized codes for hotels, boards, and rooms across all Suppliers. This simplifies product management, lets you aggregate offerings in a single feed, and ensures faster, more efficient connections in the Marketplace.
 
 With everything centralized in one place, managing your Travelgate experience has never been easier. Just log in and start exploring.
 
@@ -53,7 +52,7 @@ Connectivity is crucial for any travel business, and partnering with the right c
 
 ### Who can we connect with?
 
-Travelgate boasts **one of the largest networks of partners worldwide.** Explore our [Platform](https://www.travelgate.com/) to view the full list of Partners.
+Travelgate boasts **one of the largest networks of partners worldwide.** Explore our [Platform](https://www.travelgate.com/) to view the full list of partners.
 
 ## How can I become a Travelgate partner?
 

@@ -1,4 +1,4 @@
-export const searchQuickStartQuery = 
+export const searchTwoRoomsQuery = 
 `query (
 	$criteriaSearch: HotelCriteriaSearchInput
 	$settings: HotelSettingsInput
@@ -11,6 +11,16 @@ export const searchQuickStartQuery =
 			filterSearch: $filterSearch
 		) {
 			context
+			errors {
+				code
+				type
+				description
+			}
+			warnings {
+				code
+				type
+				description
+			}
 			options {
 				id
 				accessCode
@@ -171,59 +181,6 @@ export const searchQuickStartQuery =
 				}
 				remarks
 			}
-			errors {
-				code
-				type
-				description
-			}
-			warnings {
-				code
-				type
-				description
-			}
-		}
-	}
-}`
-
-
-export const searchQuickStartVariables = 
-`{
-	"criteriaSearch": {
-		"checkIn": "2027-05-28",
-		"checkOut": "2027-05-29",
-		"occupancies": [
-			{
-				"paxes": [
-					{
-						"age": 30
-					},
-					{
-						"age": 30
-					}
-				]
-			}
-		],
-		"hotels": [
-			"1"
-		],
-		"currency": "EUR",
-		"markets": [
-			"ES"
-		],
-		"language": "es",
-		"nationality": "ES"
-	},
-	"settings": {
-		"client": "client_demo",
-		"context": "HOTELTEST",
-		"testMode": true,
-		"timeout": 25000
-	},
-	"filterSearch": {
-		"access": {
-			"includes": [
-				"2"
-			]
 		}
 	}
 }`
@@ -258,50 +215,6 @@ export const searchTwoRoomsVariables =
 		],
 		"hotels": [
 			"1"
-		],
-		"currency": "EUR",
-		"markets": [
-			"ES"
-		],
-		"language": "es",
-		"nationality": "ES"
-	},
-	"settings": {
-		"client": "client_demo",
-		"context": "HOTELTEST",
-		"testMode": true,
-		"timeout": 25000
-	},
-	"filterSearch": {
-		"access": {
-			"includes": [
-				"2"
-			]
-		}
-	}
-}`
-
-
-export const searchMultipleHotelsVariables = 
-`{
-	"criteriaSearch": {
-		"checkIn": "2027-05-28",
-		"checkOut": "2027-05-29",
-		"occupancies": [
-			{
-				"paxes": [
-					{
-						"age": 30
-					},
-					{
-						"age": 30
-					}
-				]
-			}
-		],
-		"hotels": [
-			"1",
-			"2"
 		],
 		"currency": "EUR",
 		"markets": [

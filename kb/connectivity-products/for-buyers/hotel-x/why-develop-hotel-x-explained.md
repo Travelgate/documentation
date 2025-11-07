@@ -12,7 +12,7 @@ _Connecting new Sellers has never been easier—no additional development, no ma
 
 ### What Makes Hotel-X Different?
 
-The Hotel-X API **aggregates results** from multiple Sellers. Whether you prefer aggregation at the hotel level, at the hotel and room type level, or even at the hotel, room type, and rate plan level—or if you choose not to aggregate at all—Hotel-X adapts to your business needs. 
+The Hotel-X API **aggregates results** from multiple Sellers. Whether you prefer aggregation at the hotel level, at the hotel and room type level, or even at the hotel, room type, and rate plan level—or if you choose not to aggregate at all—Hotel-X adapts to your business needs.
 
 Enhance your Hotel-X experience by incorporating [Plugins](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/overview). These plugins allow seamless integration of custom business logic, such as currency conversion, hotel blacklisting, and selecting the most cost-effective meal plans. Simple. Flexible. Efficient.
 

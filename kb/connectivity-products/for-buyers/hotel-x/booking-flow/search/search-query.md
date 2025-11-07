@@ -21,10 +21,10 @@ Our Hotel-X Pull Buyers API offers a range of features, including the flexibilit
 
 ### Single Mode Search
 
-* **What does Single Mode mean?**  
+* **What does Single Mode mean?**
 Single Mode allows Partners to search one Seller at a time. **Multiple accesses from the same Seller can be included in a single search, provided that they share the same context**. This is the default search mode in Hotel-X.
 
-* **How does Hotel-X Single Mode work?**  
+* **How does Hotel-X Single Mode work?**
     1. Review the tags included in your Hotel-X Search Query and ensure you add the **HotelXFilterSearchInput**. More details on filtering your searches by Hotel-X access code can be found [here](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/search/search-filters).
     2. **Add the access code** of the Seller you wish to query within your `HotelXFilterSearchInput`.
 
@@ -34,12 +34,12 @@ You should use the [Supplier context](/kb/connectivity-products/for-buyers/hotel
 
 ### Multimode Search
 
-* **What does Multimode mean?**  
+* **What does Multimode mean?**
 Multimode enables Partners to search multiple Sellers or accesses with different contexts simultaneously within a single request. This includes querying **different Sellers or multiple accesses from the same Seller, even if their contexts vary**.
 
-* **How does Hotel-X Multimode work?**  
+* **How does Hotel-X Multimode work?**
     1. Begin by uploading your [hotel mapping files](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping) to your SFTP.
-    2. Once processed, you can search across multiple Sellers using your [own context](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials) and hotel codes. You can perform Multimode search in two ways:  
+    2. Once processed, you can search across multiple Sellers using your [own context](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials) and hotel codes. You can perform Multimode search in two ways:
 
         1. **Specifying the Hotel-X access codes** in the `filterSearch` node. This sends queries only to the specified accesses:
             ```

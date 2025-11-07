@@ -7,7 +7,7 @@ sidebar_position: 4
 At Travelgate, we do not use our own hotel codes. Instead, we provide **Supplier native codes** to simplify the mapping process between Buyers and Sellers. This allows both parties to handle mapping independently, with Buyers responsible for mapping each Seller’s content.
 
 :::warning Hotel code concatenation
-When a Seller returns the same hotel ID for multiple properties, we **concatenate** those IDs with their destination code to make them unique. This is the only situation where we modify the Supplier's information. In this case, the `hotelCode` returned by our API will be the concatenated ID, while the `hotelCodeSupplier` will be the Seller's native code.  
+When a Seller returns the same hotel ID for multiple properties, we **concatenate** those IDs with their destination code to make them unique. This is the only situation where we modify the Supplier's information. In this case, the `hotelCode` returned by our API will be the concatenated ID, while the `hotelCodeSupplier` will be the Seller's native code.
 
 Always map the **"hotelCode"**, as this is the code used in Travelgate methods.
 :::
@@ -33,6 +33,6 @@ Yes! We do not impose any limitations on the number or type of characters used i
 Yes, you can map multiple portfolios for the same connection (e.g., B2B, B2C, or different markets). As long as **each portfolio is provided by the Seller through a specific Hotel-X Access Code** (a unique set of credentials), you can map them independently.
 
 :::info Hotel-X Mapping 🚀
-If you are a Buyer connected via the Hotel-X API, you have the option to **upload your own [mapping files](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping/) to our SFTP**. Take advantage of our SFTP mapping and make the Booking Flow truly your own!  
+If you are a Buyer connected via the Hotel-X API, you have the option to **upload your own [mapping files](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping/) to our SFTP**. Take advantage of our SFTP mapping and make the Booking Flow truly your own!
 Note: Our Hotel-X Mapping feature allows you to set one mapping file per Supplier.
 :::

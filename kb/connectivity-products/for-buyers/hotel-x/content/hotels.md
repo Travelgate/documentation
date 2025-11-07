@@ -5,7 +5,7 @@ sidebar_position: 2
 # Hotels
 
 ## What is the Hotels Query?
-The Hotels Query allows Buyers to retrieve a list of hotels from a Seller's access, providing all the properties configured for their credentials.
+The Hotels Query allows Buyers to retrieve the hotel list from a specific access, returning the Supplier’s hotel codes (`hotelCode`field), as well as their native hotel codes (`hotelCodeSupplier` field) and detailed static information.
 
 ### How Can I Retrieve a Seller's Hotel List via Hotel-X?
 To retrieve a Seller's hotel list, follow the specifications outlined in our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/hotels) and explore the [API Playground](/playground). You can **customize** the fields in your query to receive only the information relevant to your needs.
@@ -51,7 +51,7 @@ You can also verify supported languages through our [Metadata Query](/docs/apis/
 ## Hotel Code Management
 
 ### What Is the Difference Between "hotelCode" and "hotelCodeSupplier"?
-While both "hotelCode" and "hotelCodeSupplier" are often the same, some Sellers may assign the same hotel code to different properties. To avoid duplication, Travelgate concatenates the destination code with the hotel code to ensure uniqueness. If necessary, you can still find the supplier codes under the 'hotelCodeSupplier' node.
+While both `hotelCode` and `hotelCodeSupplier` are often the same, some Sellers may assign the same hotel code to different properties. To avoid duplication, Travelgate concatenates the destination code with the hotel code to ensure uniqueness.
 
 ### Can I run a Hotel-X Search Query using the "hotelCodeSupplier"?
 No, you cannot run a Hotel-X Search Query using the `hotelCodeSupplier` (the Supplier's native hotel code); you should use the `hotelCode` field.

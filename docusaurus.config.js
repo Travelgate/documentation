@@ -213,7 +213,7 @@ const config = {
                   "@type": "Answer",
                   "text": "Travelgate supports multiple payment methods, including credit cards, virtual credit cards (VCC), and other supplier-specific payment types. For more details, check our payment guide."
                 }
-              },
+              }
             ]
           }
           `,

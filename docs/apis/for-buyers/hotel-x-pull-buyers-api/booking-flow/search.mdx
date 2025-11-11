@@ -145,11 +145,13 @@ Filters allow you to precisely tailor the response according to your preferences
 
 To specify filters you need to use the input `HotelXFilterSearchInput` in your query variables. The available filters within this input are:
 
-* `rateRules`: This filter enables you to narrow down the options returned by the Suppliers based on the desired rate rules you want to include or exclude.
+* `access`: By using the access filter, our system will exclusively include or exclude options from the selected accesses. If you choose not to set any access at all, requests will be made to all available accesses.
+
+* `rateRules`: This filter enables you to narrow down the options returned by the suppliers based on the desired rate rules you want to include or exclude.
 
 * `status`: Use this filter to determine which status (OK and RQ) will be included or excluded in the response.
 
-* `access`: This filter allows you to include or exclude specific accesses when making a request. If you don’t specify any, our system will automatically query all accesses configured under your client. By using the *include* or *exclude* parameters, you can refine which accesses are considered in the search. Learn how to link specific accesses to your clients [here](/kb/platform/app-features/connections/api-settings/).
+* `currencies`: This filter enables you to narrow down the options returned by the suppliers based on the desired currencies you want to include or exclude.
 
 
 All these filters are optional. Example to request only search results from access "2" and options "PACKAGE" 

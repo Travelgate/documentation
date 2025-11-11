@@ -36,9 +36,7 @@ Yes, an option represents a combination of rooms. Canceling the option implies c
 
 ### Is there any possibility to obtain RoomCodes in Quote?
 
-If the Seller provides this information, you can obtain the room code by including the `rooms` node in the `HotelOptionQuote` node.
-
-![quote_1](https://storage.travelgate.com/kbase/quote_1.jpg)
+If the Seller provides this information, you can obtain the supplier's room code by including the `rooms` node in the [`HotelOptionQuote`](/api/types/objects/hotel-option-quote) node.
 
 ### Is the hotel name included in the Quote response?
 

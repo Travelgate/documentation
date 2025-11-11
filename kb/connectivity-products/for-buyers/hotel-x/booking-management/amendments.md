@@ -35,8 +35,6 @@ To confirm the amendment, send the `amendmentID` received in the previous query 
 
 To determine whether a Seller supports amendments and which modifications are allowed, review their [Metadata](/kb/connectivity-products/for-buyers/hotel-x/content/metadata). This metadata provides insights into the Seller’s capabilities and any restrictions related to amendments.
 
-![amendments_upd](https://storage.travelgate.com/kbase/amendments_upd.jpg)
-
 :::info
 For more details and practical examples of booking modifications, refer to our [Hotel-X Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/amendments/).
 :::

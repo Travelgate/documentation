@@ -8,7 +8,7 @@ sidebar_position: 18
 This warning appears in the Legacy Pull Buyers API response when a connection with the specified supplier hasn't been established or when the entered supplier code doesn't match the one assigned in [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details#additional-access-information). Before proceeding, ensure that you have a commercial agreement with them and have [requested their activation](/kb/platform/app-features/connections/my-connections/guick-guide-to-auto-activations).
 
 ### Example Response:
-```
+```xml
 <warnings>
     <Warning>
         <warning>ProviderNotActivated:[Supplier_code]</warning>

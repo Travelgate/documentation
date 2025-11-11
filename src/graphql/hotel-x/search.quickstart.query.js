@@ -216,6 +216,11 @@ export const searchQuickStartVariables =
         "language" : "en",
         "nationality" : "ES"
     },
+    "settings" : {
+        "client" : "client_demo",
+        "testMode" : true,
+        "timeout" : 25000
+    },
     "filterSearch" : {
         "access" : {
             "includes" : [
@@ -223,33 +228,6 @@ export const searchQuickStartVariables =
                 "5647"
             ]
         }
-    },
-    "settings" : {
-        "client" : "client_demo",
-        "context" : "TGX",
-        "testMode" : true,
-        "timeout" : 25000,
-        "plugins" : [
-            {
-                "step" : "RESPONSE_OPTION",
-                "pluginsType" : [
-                    {
-                        "type" : "ROOM_MAP",
-                        "name" : "room_map",
-                        "parameters" : [
-                            {
-                                "key" : "context",
-                                "value" : "TGX"
-                            },
-                            {
-                                "key" : "description",
-                                "value" : "true"
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
     }
 }`
 
@@ -284,28 +262,7 @@ export const searchWithoutFilterVariables =
         "client" : "client_demo",
         "context" : "TGX",
         "testMode" : true,
-        "timeout" : 25000,
-        "plugins" : [
-            {
-                "step" : "RESPONSE_OPTION",
-                "pluginsType" : [
-                    {
-                        "type" : "ROOM_MAP",
-                        "name" : "room_map",
-                        "parameters" : [
-                            {
-                                "key" : "context",
-                                "value" : "TGX"
-                            },
-                            {
-                                "key" : "description",
-                                "value" : "true"
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
+        "timeout" : 25000
     }
 }`
 
@@ -337,43 +294,20 @@ export const searchWithOnlyOneAccess =
         "language" : "en",
         "nationality" : "ES"
     },
-    "filterSearch" : {
-        "access" : {
-            "includes" : [
-                "2"
-            ]
-        }
-    },
     "settings" : {
         "client" : "client_demo",
         "context" : "TGX",
         "testMode" : true,
-        "timeout" : 25000,
-        "plugins" : [
-            {
-                "step" : "RESPONSE_OPTION",
-                "pluginsType" : [
-                    {
-                        "type" : "ROOM_MAP",
-                        "name" : "room_map",
-                        "parameters" : [
-                            {
-                                "key" : "context",
-                                "value" : "TGX"
-                            },
-                            {
-                                "key" : "description",
-                                "value" : "true"
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
+        "timeout" : 25000
+    },
+	"filterSearch" : {
+		"access" : {
+			"includes" : [
+				"2"
+			]
+		}
     }
 }`
-
-
 
 
 export const searchTwoRoomsVariables = 

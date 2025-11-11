@@ -40,9 +40,9 @@ When creating your Search query, you have three different inputs to fill based o
 query {
     hotelX {
     search
-      criteria: {}
-      settings: {}
-	  filterSearch: {}
+      criteria: {...}
+      settings: {...}
+	  filterSearch: {...}
 	}
 }
 ```
@@ -73,8 +73,8 @@ To specify your search criteria you need to use the input `HotelCriteriaSearchIn
             }
         ],
         "hotels" : [
-            "1",
-            "2"
+            "BR1518",
+            "ES284122"
         ],
         "currency" : "EUR",
         "markets" : [
@@ -99,11 +99,11 @@ To specify your search criteria you need to use the input `HotelCriteriaSearchIn
 * `nationality`
 * `markets`
 
-If you don’t specify these optional parameters in your query, the system will automatically use the [default values](/docs/apis/for-buyers/hotel-x-pull-buyers-api/making-requests/settings) configured for your account.
+If you don’t specify these optional parameters in your query, the system will automatically use the [default values from your API settings](/docs/apis/for-buyers/hotel-x-pull-buyers-api/making-requests/settings) configured for your account.
 
 ### 2. Settings 
 
-Settings are the common configurations used to construct requests to the Supplier/s. You need to specify some in your query or mutation, while others are optional. If you skip the optional ones, we'll use default settings to keep your requests consistent and smooth.
+Settings are the common configurations used to construct requests to the Supplier/s. You need to specify some in your query or mutation, while others are optional. If you skip the optional ones, we'll use default API settings to keep your requests consistent and smooth.
 
 To specify your settings you need to use the [`HotelSettingsInput`](/api/types/inputs/hotel-settings-input) input in your query variables:
 
@@ -145,7 +145,7 @@ Filters allow you to precisely tailor the response according to your preferences
 
 To specify filters you need to use the input `HotelXFilterSearchInput` in your query variables. The available filters within this input are:
 
-* `access`: By using the access filter, our system will exclusively include or exclude options from the selected accesses. If you choose not to set any access at all, requests will be made to all available accesses.
+* `access`: By using the access filter, our system will exclusively include or exclude options from the selected accesses. If you choose not to include or exclude any access at all, requests will be made to all accesses linked to your specified `client`.
 
 * `rateRules`: This filter enables you to narrow down the options returned by the suppliers based on the desired rate rules you want to include or exclude.
 
@@ -154,7 +154,7 @@ To specify filters you need to use the input `HotelXFilterSearchInput` in your q
 * `currencies`: This filter enables you to narrow down the options returned by the suppliers based on the desired currencies you want to include or exclude.
 
 
-All these filters are optional. Example to request only search results from access "2" and options "PACKAGE" 
+All these filters are optional. Example to request only search results from access "2" and options "PACKAGE":
 
 
 ```js

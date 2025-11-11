@@ -240,9 +240,6 @@ A centralized platform for managing the business configuration of Distribution O
 - **Extranet (Inventory)**  
 A tool that allows Inventory Buyers to connect with major Channel Managers. It provides Buyers with tools to set up hotels, rates, and rooms contracted with hoteliers, create user accesses, and check bookings, among other options.
 
-- **FastX**
-Travelgate’s solution that provides unique codes for hotels, boards, and rooms across the Marketplace. It helps Buyers connect with Suppliers more quickly and efficiently, and allows aggregating products from all Suppliers into a single, unified feed.
-
 - **Feed**  
 A continuous stream of data provided to or from a system. In Travelgate’s context, this can also make reference to the traffic flow from a given set of Buyer's credentials.
 
@@ -408,7 +405,7 @@ Method that changes or updates data within a system.
 The country affiliation of a person, often used to tailor travel services or pricing.
 
 - **Native Code**  
-Code in the supplier’s system.
+Code in the Supplier’s system.
 
 - **Net Price**  
 The actual price of a travel product after all discounts, taxes, and fees have been applied. The amount payable to the Seller. 

@@ -13,7 +13,8 @@ import {bookQuickStartMutation, bookQuickStartVariables} from "../../../../src/g
 
 Hotel-X API is a powerful aggregation solution that allows you to get results from the largest network of Sellers in a single request. Whether it's at the hotel, room type, or rate plan level, you have the flexibility to aggregate data to meet your specific needs.
 
-What sets Hotel-X API apart is its innovative structure: with a single integration, you can access the products of all Suppliers in the Marketplace, aggregate results, and easily add plugins or apps to extend functionality.  This unique feature is complemented by Hotel-X's ability to provide pre-processed responses, ensuring your system tasks are efficient and hassle-free.
+
+What sets Hotel-X API apart is its innovative plugin structure, which enhances connectivity and equips you with a competitive edge in your operations. This unique feature is complemented by Hotel-X's ability to provide pre-processed responses, ensuring your system tasks are efficient and hassle-free.
 
 &nbsp;
 ![Hotel-X Overview](https://storage.travelgate.com/docs/hotel-x_overview.svg)
@@ -22,7 +23,7 @@ What sets Hotel-X API apart is its innovative structure: with a single integrati
 **Using the Hotel-X API, you will be able to access static information, make bookings, and manage reservations.** In this quickstart tutorial, you will learn how to create a simple sample booking.
 
 
-## Let's Get Started: How to Make a Booking
+## Let's Get Started: How to Make a Booking!
 
 Hotel-X offers a powerful GraphQL-based API that simplifies the process of booking hotels and managing reservations. Whether you're a seasoned developer or just getting started, this guide will walk you through the basics of using the API to make hotel bookings.
 
@@ -47,7 +48,7 @@ To interact with the API, you'll need to include three essential request headers
 
 
 ```html
-Accept-Encoding: gzip
+Accept-Encoding: gzip.
 ```   
 
 * Keep Alive: In order to increase performance and improve response times.
@@ -61,7 +62,7 @@ Connection: keep-alive
 
 
 ```html
-Authorization: Apikey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Authorization: ApiKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ``` 
 
 If you don't have an API key yet, don't worry — you'll be able to test the upcoming query and mutation examples using a test API key and preloaded test data directly in the playground. You can also find full details of the credentials and hotel data used in the [Development credentials and test data](#development-credentials-and-test-data) section below.
@@ -72,27 +73,21 @@ If you don't have an API key yet, don't worry — you'll be able to test the upc
 Lastly, please note that the Hotel-X API supports two types of operations:
 
 
-* `Query`: which are "read-only" and used for retrieving data from our system. You can use queries to search for hotels, check availability, and more.
+* `Query`: which are "read-only" and used for retrieving data from our system.  You can use queries to search for hotels, check availability...
 
 
-* `Mutation`: which allow for changes, additions, or deletions of data within our system. This is where you can create bookings, update reservations, etc.
+* `Mutation`: which allow for changes, additions, or deletions of data within our system. This is where you can create bookings, update reservations...
 
 But now this quickstart guide will focus on the basics of using the Hotel-X API to make hotel reservations, so let's dive in and get started!
 
 
 ### 1. Find available hotels based on your search criteria
 
-The Search query is where the adventure begins in our shopping journey! In this example, we'll explore availability for a **single hotel using its FastX code**. This hotel is offered by two different test Suppliers, so the request will include both accesses `'2'` and `'5647'`, one for each Supplier. 
-
-Remember, an **access** is a unique code representing the credentials that a Supplier provides to allow you to query their portfolio. By specifying the accesses in your search, you can retrieve options from one or more Suppliers for the same hotel, all in a single request.
-
-This step lets you explore your options before committing to a booking, ensuring you understand what each Supplier offers for the same property.
+The Search query is where the adventure begins in our shopping journey! Our aim here is to see what's available within your specified date range and for the number of guests (pax) you have in mind, whether it's for a particular hotel or in your desired destination. This step lets you explore your options before committing to a booking. You can even spice things up by searching with one or more sellers' accesses, giving you the freedom to tailor your search. But hey, for this example, let's kick it off with a simple search for a specific hotel using a particular test Seller.
 
 <GraphqlSample query={searchQuickStartQuery} variables={searchQuickStartVariables}/>
 
-&nbsp;
-
-If you execute the previous Search query by clicking on the play button, you'll see an example of how a Search response could look, with all the options and rates available for the hotel and criteria requested in the query. For each option, you will receive relevant information such as the **Supplier**, **FastX and Supplier codes**, **room type**, **price**, **cancellation policies**, and more.
+If you execute the previous search query by clicking on the play button, you'll see an example of how a search response could be, with all the options and rates available for the hotel and criteria requested in the query. For each option, you will receive relevant information such as rate, room type, price, cancellation policies, and more.
 
 :::tip
 
@@ -103,17 +98,16 @@ If you execute the previous Search query by clicking on the play button, you'll 
 
 ### 2. Quote your selected option
 
-Now, let's dive into the exciting part! After carefully reviewing all the options in the search results and finding the hotel that perfectly suits your journey, it's time to move forward and request a quote. This Quote operation is like getting an exclusive preview before the grand booking. It provides you with up-to-the-minute pricing, a detailed breakdown of your expenses, and crucial information about cancellation policies.
+Now, let's dive into the exciting part! After carefully reviewing all the options in the search results and finding the hotel that perfectly suits your journey, it's time to move forward and request a quote. This quote operation is like getting an exclusive preview before the grand booking. It provides you with up-to-the-minute pricing, a detailed breakdown of your expenses, and crucial information about cancellation policies.
 
 To make this happen, you'll need to retrieve the `optionRefId` from the option of the search results that you want to valuate and use this value as the input for the Quote request:
 
 <GraphqlSample query={quoteQuickStartQuery} variables={quoteQuickStartVariables}/>
 
-&nbsp;
 
 :::danger Important
 
-[`OptionRefID`](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/option-identifiers) is a unique identifier assigned to each option. **It must not be modified** and **must not be used or interpreted externally**, as it is an internal Treavelgate system identifier.
+[`OptionRefID`](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/option-identifiers) is a unique identifier assigned to each option. **It must not be modified** and **must not be used or interpreted externally**, as it is an internal TG system identifier.
 
 :::
 
@@ -125,7 +119,7 @@ You'll need to provide the `optionRefId` returned in the Quote step and enter al
 
 <GraphqlSample query={bookQuickStartMutation} variables={bookQuickStartVariables} />
 
-&nbsp;
+
 
 :::note
 
@@ -136,23 +130,22 @@ Make sure to change the value of the `clientReference` field so that the Book ca
 
 ## Development credentials and test data
 
-To help you get started, we provide test credentials and example data that you can safely use during the development phase. These credentials allow you to run test queries and explore the structure and behavior of Hotel-X without impacting real live Suppliers.
+To help you get started, we provide test credentials and example data that you can safely use during the development phase. These credentials allow you to run test queries and explore the structure and behavior of Hotel-X without impacting real live suppliers.
 
 **Credentials**  
 - **Apikey:** `test0000-0000-0000-0000-000000000000`  
 - **Client:** `client_demo`
 
 **Example Suppliers and Hotels**  
-- **Travelgate test supplier** (code: HOTELTEST)
+- **Travelgate test supplier**  
+  - **Context:** `HOTELTEST`  
   - **Access Code:** `2`  
   - **Available Hotel Codes:** `1`, `2`, and `23`
 
-- **Smyrooms test supplier** (code: TTHOTTEST) 
+- **Smyrooms test supplier**  
+  - **Context:** `LOGITEST`  
   - **Access Code:** `5647`  
   - **Available Hotel Code:** `27`
-
-- **FastX test supplier, to retrieve static master data such hotel and board codes** (code: FASTX) 
-  - **Access Code:** `34538`  
 
 
 :::warning Important 
@@ -167,7 +160,7 @@ Congratulations on completing this quickstart tutorial! 🎉 You've successfully
 
 - Explore the [Making Requests](../hotel-x-pull-buyers-api/making-requests/endpoint) section to dive deep into how a GraphQL API works and maximize its performance.
 - Discover various queries and mutations grouped by the following actions:
-    - [Retrieve static information](../hotel-x-pull-buyers-api/content/overview): Explore accessing static data, including how to obtain the list of unique **FastX codes** for hotels and boards, as well as the additional information provided by the Sellers.
+    - [Retrieve static information](../hotel-x-pull-buyers-api/content/overview): Explore accessing static data.
     - [Make a booking](../hotel-x-pull-buyers-api/booking-flow/overview): Learn how to book with more details.
     - [Manage reservations](../hotel-x-pull-buyers-api/booking-management/overview): Get the hang of reservation management.
 - Unleash the full potential of your business with our diverse range of [plugins](../hotel-x-pull-buyers-api/plugins/overview).

@@ -22,9 +22,11 @@ To begin developing a connector, ensure the following are in place:
 Tools you may need:
 
 - **FormTest**: An useful Travelgate tool that will allow you to make requests directly to the Connector. For more details, check [FormTest Documentation](../tools-and-helpers/formtest-documentation.mdx).
+- **Mock Server**: This will be used to execute the fake server in order to simulate the API responses from the seller. For more details, check [Mock Server Configuration](../connector-framework/mock-server-documentation.mdx)
+- **Connectors Integration Tests**: These tests assure that the integration has logic based on TG requirements. For more details, check [IntegrationTests](../connector-framework/running-integration-tests)
 - **API Clients** such as Postman or Insomnia.
 
 Connector Development process:
 
-- To ensure a smooth experience for both parties, please develop the booking flow and booking management operation by operation, in order (Search -> Quote -> Book -> CheckByReference -> Cancel).
+- To ensure a smooth experience for both parties, please develop the content, booking flow and booking management operation by operation, in order (Content -> Search -> Quote -> Book -> CheckByReference -> Cancel).
 - In every operation, make sure tests of that operation work fine. There will be a final step in every operation where the developer will be shown how to pass the tests.

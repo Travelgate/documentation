@@ -8,9 +8,11 @@ sidebar_position: 3
 If you are **already a Travelgate customer** and need **commercial** assistance, you can reach out to our team via email at **sales.support@travelgate.com** in the following cases:
 
 - **Buyers**: Looking to connect via our **Inventory Solution**.
+- **Inventory Buyers**: Interested in integrating through our **GraphQL or CSV Push APIs**.
 - **Buyers**: Ready to migrate to our **Hotel-X Pull Buyers API**.
 - **Sellers**: Wanting to start working as a **Buyer**.
 - **Pull Sellers**: Interested in transitioning to a **Push Seller** model.
+- **Push Sellers**: Seeking integration using our **Inventory Push GraphQL API**.
 - **General inquiries or commercial information.**
 
 :::warning Important

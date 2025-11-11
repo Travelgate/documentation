@@ -12,6 +12,7 @@ export const bookQuickStartMutation =
 				type
 				description
 			}
+
 			booking {
 				status
 				price {
@@ -47,7 +48,6 @@ export const bookQuickStartMutation =
 				remarks
 				hotel {
 					hotelCode
-
 					hotelName
 					bookingDate
 					start
@@ -116,7 +116,7 @@ export const bookQuickStartVariables =
 	},
 	"settings": {
 		"client": "client_demo",
-		"context": "TGX",
+		"context": "HOTELTEST",
 		"testMode": true,
 		"timeout": 60000
 	}

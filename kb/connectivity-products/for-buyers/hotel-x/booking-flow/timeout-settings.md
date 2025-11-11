@@ -22,17 +22,18 @@ If you specify a timeout that exceeds the recommended values, our system will au
 ## Setting Timeout Values in Hotel-X Buyers API
 You can configure timeout values in two ways:
 
-1. **At the request level**, by including the timeout parameter in your query settings:
+1. **At the request level**, by including the timeout parameter in your query [settings](/api/types/inputs/hotel-settings-input).
 
-    ```json
-    "settings": {
-        "context": "xxx",
-        "client": "xxx",
-        "testMode": true,
-        "auditTransactions": false,
-        "timeout": 24700
+```json
+{
+    "settings" : {
+        "client" : "client_demo",
+        "testMode" : true,
+        "auditTransactions" : false,
+        "timeout" : 5000
     }
-    ```
+}
+```
 
 2. **As a default timeout value in your API Settings**, more details are available [here](/kb/platform/app-features/connections/api-settings/).
 

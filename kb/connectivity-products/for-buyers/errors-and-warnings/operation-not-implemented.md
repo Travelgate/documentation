@@ -8,11 +8,11 @@ sidebar_position: 19
 The `operationImplemented` tag (Boolean) is part of the Common Elements in our API response. It indicates whether the Supplier has implemented the requested method.
 
 Example responses:
-```
+```xml
 <operationImplemented>false</operationImplemented>
 ```
 or
-```
+```xml
 <operationImplemented>true</operationImplemented>
 ```
 

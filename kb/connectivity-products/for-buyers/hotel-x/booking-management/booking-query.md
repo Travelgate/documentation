@@ -41,18 +41,63 @@ If you are not using the Hotel-X `bookingID` input, ensure you specify your **ac
 
 ### How Can I Retrieve the Details of a Booking?
 
-To obtain the details of a specific reservation, you can use the Booking Query by either **`bookingID`** (returned in the Book response, highly recommended) or **`REFERENCES`** (to be deprecated):
+To obtain the details of a specific reservation, you can add either the **`bookingID`** (returned in the Book response, highly recommended) or the `typeSearch` **`REFERENCES`** (to be deprecated) to your [`HotelCriteriaBookingInput`](/api/types/inputs/hotel-criteria-booking-input).
 
-![bookingquery1](https://storage.travelgate.com/kbase/bookingquery1.jpg)
+**Booking ID:**
+
+```json
+{
+    "criteriaBookingRead" : {
+        "bookingID" : "1@1[241028[241029[230918[1[es[EUR[2[test_0123456789[2596391"
+    }
+}
+```
+
+**References:**
+
+```json
+{
+    "criteriaBookingRead" : {
+        "accessCode" : "2",
+        "typeSearch" : "REFERENCES",
+        "references" : {
+            "hotelCode" : "1",
+            "currency" : "EUR",
+            "references" : [
+                {
+                    "client" : "test_0123456789",
+                    "supplier": "2636944"
+                }
+            ]
+        }
+    }
+}
+```
 
 ## Booking Query: Booking List
 
-### How Can I Retrieve a List of All Bookings Made Within a Specific Time Frame? 💡
+### How do I get the list of bookings for a specific date range?
 
-To obtain a list of all reservations made within a specific time frame, perform the Booking Query using **`typeSearch: "DATES"`**. Then, specify if your `dateType` is either **`BOOKING`** (booking date) or **`ARRIVAL`** (check-in date), along with the `start` and `end` dates of the query (format: yyyy-MM-dd).
+To obtain a list of all reservations made within a specific time frame, perform the Booking Query using `typeSearch` **`DATES`**. Then, specify if your `dateType` is either **`BOOKING`** (booking date) or **`ARRIVAL`** (check-in date), along with the `start` and `end` dates of the query (YYYY-MM-DD).
 
-![bookingquery2](https://storage.travelgate.com/kbase/bookingquery2.jpg)
+
+**Dates:**
+
+```json
+{
+    "criteriaBookingRead" : {
+        "accessCode" : "2",
+        "typeSearch" : "DATES",
+        "dates" : {
+            "dateType" : "ARRIVAL",
+            "start" : "2024-10-28",
+            "end" : "2024-10-28"
+        }
+    }
+}
+```
+
 
 :::tip
-Don't forget to check our [Hotel-X Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/booking-read#booking-list-by-arrival-date-range) for a full example of a Hotel-X Booking Query!🚀
+Don't forget to check our [Hotel-X Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/booking-read#1-criteria) for a full example of a Hotel-X Booking Query!🚀
 :::

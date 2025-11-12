@@ -16,7 +16,7 @@ The Hotels Query allows Buyers to:
 To retrieve a specific Seller's hotel list or the FastX master hotel list, follow the specifications outlined in our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/hotels) and explore the [API Playground](/playground). You can **customize** the fields in your query to receive only the information relevant to your needs.
 =======
 ## What is the Hotels Query?
-The Hotels Query allows Buyers to retrieve a list of hotels from a Seller's access, providing all the properties configured for their credentials.
+The Hotels Query allows Buyers to retrieve the hotel list from a specific access, returning the Supplier’s hotel codes (`hotelCode`field), as well as their native hotel codes (`hotelCodeSupplier` field) and detailed static information.
 
 ### How Can I Retrieve a Seller's Hotel List via Hotel-X?
 To retrieve a Seller's hotel list, follow the specifications outlined in our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/hotels) and explore the [API Playground](/playground). You can **customize** the fields in your query to receive only the information relevant to your needs.
@@ -24,8 +24,8 @@ To retrieve a Seller's hotel list, follow the specifications outlined in our [Do
 
 ## Query Features
 
-### Can I Search Hotels by Destination?
-Yes! You can search for hotels by destination by including the **"destinationCodes"** field in your query criteria:
+### Can I Search Hotels by Destination in the Hotels Query? 
+Yes! When using the Hotels Query, you can search for hotels by destination by adding the `destinationCodes` field to your [`HotelXHotelListInput`](/api/types/inputs/hotel-xhotel-list-input).
 
 ![hotels_query_destinations](https://storage.travelgate.com/kbase/hotels_query_destinations.jpg)
 
@@ -47,8 +47,8 @@ Static content fetching is always sequential and the amount of content returned 
 ### Can I obtain the list of amenities available at Travelgate?
 Amenities information varies by supplier and hotel. For details, please consult the specific supplier's hotel list. While Travelgate consistently collects information from each Seller, please note that disclosing amenities information is optional.
 
-### How Can I Find the Total Number of Properties Returned?
-To retrieve the total number of properties in the response, simply add the **"count"** field to your query:
+### How Can I Find the Total Number of Properties Returned? 
+To retrieve the total number of properties in the response, simply add the [`count`](/api/types/objects/hotel-connection) field to your Hotels Query:
 
 ![hotelcount](https://storage.travelgate.com/kbase/hotelcount.jpg)
 
@@ -84,11 +84,6 @@ As a Buyer, you can work with **FastX codes** without worrying about native Supp
 
 Responses include both the Supplier’s native codes and descriptions **and** the standardized **FastX codes**, letting you choose whether to work with the unique FastX identifiers or the Supplier-specific ones.
 
-<<<<<<< HEAD
-=======
-### Can a Single Hotel Have Different Codes?
-Yes, the same hotel may have different codes depending on the Seller. For example, the hotel "La Plaza" could have code "1" with Supplier A and "2342334" with Supplier B.
->>>>>>> main
 
 ## Availability and Filtering
 

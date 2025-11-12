@@ -25,7 +25,8 @@ The following steps must be completed by the **Buyer**:
 2. **Submit a Support Request:** Open a case through our [Support Portal](https://app.travelgate.com/support), providing your GIATA credentials. This allows our system to verify your agreement with GIATA and proceed with the necessary configuration.
 
 3. **Retrieve GIATA Codes:** Once the account is validated, GIATA codes become available in the [Connections Content](/kb/platform/app-features/connections/connections-content/content-management) section and in the [Hotels Query](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/hotels) response - Ensure you include `giataData` in your Hotels Query request to receive the information in your response.
-    ```
+
+    ```json
     {
       hotelData {
         hotelCode

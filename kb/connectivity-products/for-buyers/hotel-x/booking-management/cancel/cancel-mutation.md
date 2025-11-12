@@ -15,13 +15,22 @@ You have two options to cancel a reservation:
 
 ## What Information Can I Expect in the Cancel Response?
 
-The information returned in the Cancel response may vary between Sellers. Please refer to our [Hotel-X Playground Documentation](/playground) to include the fields relevant to your needs. Additionally, check the Sellers' [Metadata](/kb/connectivity-products/for-buyers/hotel-x/content/metadata) for details on their specifications and data returned.
+The information returned in the Cancel response may vary between Sellers. Please refer to our API Reference to include the [fields](/api/types/objects/hotel-cancel-detail) relevant to your needs. Additionally, check the Sellers' [Metadata](/kb/connectivity-products/for-buyers/hotel-x/content/metadata) for details on their specifications and data returned.
 
-![cancel_mutation_1](https://storage.travelgate.com/kbase/cancel_mutation_1.jpg)
+```json
+type HotelCancelDetail {
+  reference: Reference
+  cancelReference: String
+  status: BookStatusType
+  price: Price
+  booking: HotelBookingDetail
+  paymentInfo: GeneratedPaymentInfo
+}
+```
 
 **Some of the fields returned after a booking is canceled include:**
 
-- **Booking status** – More details on status in the Cancel response.
+- **Booking status**
 - **Reference**
 - **Price**
 - **Holder**

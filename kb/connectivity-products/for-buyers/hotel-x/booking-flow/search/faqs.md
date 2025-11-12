@@ -31,7 +31,8 @@ On Travelgate's side, there are no limitations on the maximum number of parallel
 Null values appear when the Seller does not provide certain data. If a field is requested but the Seller lacks the information, it will be returned as "null."
 
 For example, if you declare the following data in your Search Query, the Seller may return the room description, refundable information, and price. However, the bed type will not be included if that information is unavailable on their side, in which case it would appear as 'null' in the Travelgate response:
-```
+
+```json
 {
   rooms {
     occupancyRefId

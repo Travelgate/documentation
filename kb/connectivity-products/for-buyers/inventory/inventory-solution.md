@@ -20,8 +20,7 @@ Partnering with **Travelgate** and **Channel Managers** offers key advantages:
 - **Quick setup:** Get connected within minutes instead of months.
 - **Scale seamlessly** as your business grows, increasing your direct stock efficiently.
 
-## Why Choose Travelgate for Channel Manager Integration? 
-
+## Travelgate: Your Channel Manager Integration Partner
 Travelgate provides essential features to optimize your connectivity:
 
 - **User-friendly interface** for seamless navigation.

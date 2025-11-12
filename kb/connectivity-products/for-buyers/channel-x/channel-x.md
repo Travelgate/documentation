@@ -20,7 +20,7 @@ Channel-X delivers **real-time Inventory updates**, keeping your system synchron
 2. **Full Product Synchronization** – Refresh product data whenever you need it.
 3. **Improved Performance** – Reduce network latency during availability searches by avoiding external system requests.
 
-Seamlessly consolidate contracted products from multiple Channel Managers into your system through a standardized API!🚀
+Seamlessly consolidate contracted products from multiple Channel Managers into your system through a standardized API!
 
 ## How to Activate Channel-X 
 

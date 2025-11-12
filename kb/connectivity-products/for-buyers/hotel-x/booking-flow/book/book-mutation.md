@@ -56,7 +56,7 @@ The number of rooms and passenger distribution in your Book request **must** mat
 
 Example for a room with two adults:
 
-```
+```json
 "rooms": [
             {
                 "occupancyRefId": 1,

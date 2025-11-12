@@ -260,7 +260,6 @@ export const searchWithoutFilterVariables =
     },
     "settings" : {
         "client" : "client_demo",
-        "context" : "TGX",
         "testMode" : true,
         "timeout" : 25000
     }
@@ -296,7 +295,6 @@ export const searchWithOnlyOneAccess =
     },
     "settings" : {
         "client" : "client_demo",
-        "context" : "TGX",
         "testMode" : true,
         "timeout" : 25000
     },
@@ -349,7 +347,6 @@ export const searchTwoRoomsVariables =
 	},
 	"settings": {
 		"client": "client_demo",
-		"context": "TGX",
 		"testMode": true,
 		"timeout": 25000
 	},
@@ -394,7 +391,6 @@ export const searchMultipleHotelsVariables =
 	},
 	"settings": {
 		"client": "client_demo",
-		"context": "TGX",
 		"testMode": true,
 		"timeout": 25000
 	},

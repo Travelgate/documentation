@@ -8,7 +8,7 @@ sidebar_position: 5
 An Error Code 15 (RoomCode or RateplanCode Does Not Exist in Hotel) occurs when Channel Managers attempt to load a product into the Inventory, but the relevant data cannot be found in the Client's Setup. This typically means that the Setup has been modified without informing the Channel Manager, leading them to attempt loading a product for a room or rate plan that no longer exists.
 
 #### Example Response:
-```
+```xml
 <Errors>
   <Error Language="en" ShortText="Invalid id" Code="15">RoomCode 'STD' or RateplanCode 'RO' no exists in hotel xxx.</Error>
 </Errors>

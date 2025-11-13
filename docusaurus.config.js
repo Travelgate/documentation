@@ -360,7 +360,6 @@ const config = {
   ],
 
   themeConfig:
-<<<<<<< HEAD
   /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
       ({
         announcementBar: {
@@ -379,26 +378,6 @@ const config = {
           logo: {
             alt: 'Travelgate',
             src: 'img/logo.svg',
-=======
-    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-    ({
-      // Replace with your project's social card
-      image: "img/docusaurus-social-card.jpg",
-      navbar: {
-        title: "Travelgate Docs",
-        logo: {
-          alt: "Travelgate",
-          src: "img/logo.svg",
-        },
-        items: [
-          {
-            //to: '/',
-            //activeBasePath: 'docs',
-            type: "docSidebar",
-            sidebarId: "docsSidebar",
-            position: "left",
-            label: "Documentation",
->>>>>>> main
           },
           {
             to: "/kb",

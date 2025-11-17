@@ -4,7 +4,6 @@ sidebar_position: 2
 
 # Hotels
 
-<<<<<<< HEAD
 ## What is the Hotels Query? 
 The Hotels Query allows Buyers to:
 
@@ -14,13 +13,6 @@ The Hotels Query allows Buyers to:
 
 ### How Can I Retrieve a Seller's Hotel List via Hotel-X?  
 To retrieve a specific Seller's hotel list or the FastX master hotel list, follow the specifications outlined in our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/hotels) and explore the [API Playground](/playground). You can **customize** the fields in your query to receive only the information relevant to your needs.
-=======
-## What is the Hotels Query?
-The Hotels Query allows Buyers to retrieve the hotel list from a specific access, returning the Supplier’s hotel codes (`hotelCode`field), as well as their native hotel codes (`hotelCodeSupplier` field) and detailed static information.
-
-### How Can I Retrieve a Seller's Hotel List via Hotel-X?
-To retrieve a Seller's hotel list, follow the specifications outlined in our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/hotels) and explore the [API Playground](/playground). You can **customize** the fields in your query to receive only the information relevant to your needs.
->>>>>>> main
 
 ## Query Features
 

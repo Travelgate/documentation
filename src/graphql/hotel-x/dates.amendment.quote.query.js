@@ -54,10 +54,10 @@ export const datesAmendmentQuoteQuery =
 export const datesAmendmentQuoteVariables = 
 `{
 	"criteria": {
-		"bookingID": "n1@1[241128[241129[240516[1[es[EUR[2[test_09052024_test[3128791[",
+		"bookingID": "n1@1[241128[241129[240516[1[es[EUR[2[test_09052024[3128791[",
 		"dates": {
-			"start": "2025-12-01",
-			"end": "2025-12-04"
+			"start": "2027-12-01",
+			"end": "2027-12-04"
 		}
 	},
 	"settings": {

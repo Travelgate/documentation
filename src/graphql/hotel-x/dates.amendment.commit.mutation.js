@@ -54,7 +54,7 @@ export const datesAmendmentCommitMutation =
 export const datesAmendmentCommitVariables = 
 `{
 	"data": {
-		"amendmentID": "xxx"
+		"amendmentID": "n1%1!1?1@1[271201[271204[250623[7387[en[[6847[test_09052024[31287916[[[260409@260412@251115[["
 	},
 	"settings": {
 		"context": "HOTELTEST",

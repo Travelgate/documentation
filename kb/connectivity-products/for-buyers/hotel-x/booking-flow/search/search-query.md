@@ -40,7 +40,7 @@ This mode is ideal for testing or when you want to query a specific Supplier con
 * **What does Multimode mean?**  
 Multimode allows you to search multiple Sellers at once, combining results from different connections within a single API request.
 
-This is possible because HotelX operates with FastX codes, which unify all Supplier data under a common reference. That means you can send one query using FastX codes and receive aggregated results from various Sellers — each with their own native data behind the scenes.
+This is possible because HotelX operates with FastX codes, which unify all Supplier data under a common reference. That means you can send one query using FastX codes and receive aggregated results from various Sellers — each with their own data behind the scenes.
 
 If you prefer, you can also search using your own Buyer codes, as long as they have been uploaded to our system with the (mapping plugin functionality)[/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping].
 

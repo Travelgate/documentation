@@ -9,12 +9,12 @@ At Travelgate, we use our own standardized codes — called **FastX codes** — 
 In both static content and booking flow responses, Travelgate always returns **two sets of codes**:
 
 * The **FastX codes** (standardized across all Suppliers).
-* The **Supplier native codes** (for full transparency and traceability).
+* The **Supplier codes** (for full transparency and traceability).
 
 This means Buyers can choose to:
 
 * Work exclusively with **FastX codes**, gaining instant access to all connected Sellers without mapping each one individually.
-* Or continue using **Supplier native codes**, if preferred, maintaining their own mapping logic.
+* Or continue using **Supplier codes**, if preferred, maintaining their own mapping logic.
 
 To map FastX codes, Buyers can either handle it internally or use third-party mapping services such as **GIATA**.
 
@@ -41,14 +41,14 @@ If you’re a Buyer connected to our Hotel-X Buyers API, you have the option to 
 
 ### How Can I Use the Supplier Hotel Codes?
 
-By default, Travelgate uses **FastX codes** in all booking flows. However, if you prefer to use a Seller’s **native hotel codes**, you can do so by specifying it in your search request.
+By default, Travelgate uses **FastX codes** in all booking flows. However, if you prefer to use a Supplier **hotel codes**, you can do so by specifying it in your search request.
 
-To use native codes, include the following in your **Search Query**:
+To use the Supplier hotel codes, include the following in your **Search Query**:
 
 * The **supplier hotel code** (the ID of the Seller you want to query).
 * The **`context` field**, indicating the Supplier’s context.
 
-This tells Travelgate that you want to run the search and booking flow using the Supplier’s original codes instead of FastX codes.
+This tells Travelgate that you want to run the search and booking flow using the Supplier codes instead of FastX codes.
 
 :::warning Hotel code concatenation
 When a Seller returns the same hotel ID for multiple properties, we **concatenate** those IDs with their destination code to make them unique. This is the only situation where we modify the Supplier’s information.

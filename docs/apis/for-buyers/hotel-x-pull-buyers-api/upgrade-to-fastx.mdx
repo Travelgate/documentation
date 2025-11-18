@@ -1,0 +1,360 @@
+---
+title: Upgrade to FastX Codes
+sidebar_position: 9
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
+# FastX Migration Guide
+
+**Already working with Hotel-X and ready to start using FastX codes?** Good news, the transition is simple and requires only a few adjustments. 
+FastX introduces a unified coding system that replaces supplier-specific hotel, board, and room codes with a single Travelgate standard. And the best part? You can keep using your existing Hotel-X API exactly as it is.
+
+Until now, your integration depended on each supplier’s own codes. With FastX, you simply request using FastX hotel codes, and the response includes both FastX and supplier codes—cleaner, simpler, and far easier to maintain.
+
+This guide is built for Buyers who already have a full Hotel-X setup and just need to understand what changes to apply. No rebuilds, no new API, just a few small technical adjustments. We’ll walk you through what’s different, why it matters, and how to adapt your current integration quickly and confidently.
+
+## Key Changes When Switching to FastX Codes
+
+When moving from supplier codes to FastX codes, the main updates happen in your Search query. Below you'll find a clear breakdown of what changes, how to adapt your current implementation, and what to expect in the Search and Booking flow.
+
+
+### 1. Context Field Is No Longer Required
+
+Until now, each Search request required you to send both the supplier’s hotel code and its corresponding `context` code. With FastX, this is no longer necessary.
+
+Since you will now always use FastX hotel codes, the context becomes optional:
+
+- You can explicitly set `"context": "FASTX"`, **or**
+- You can simply omit the field. If omitted, we will automatically assume that the hotel code you send is a FastX code.
+
+You only need to specify the context when you intentionally want to continue sending **supplier-specific** hotel codes.
+
+
+<Tabs>
+  <TabItem value="before" label="(Before) Supplier Codes">
+    ```json
+    {
+    "settings" : {
+        "client" : "client_demo",
+        "context" : "HOTELTEST",
+        "testMode" : true,
+        "auditTransactions" : false,
+        "timeout" : 5000
+        }
+    }
+    ```
+  </TabItem>
+  <TabItem value="after" label="(After) FastX Codes">
+    ```json
+    {
+    "settings" : {
+        "client" : "client_demo",
+        "context" : "FASTX", (or you can omit it)
+        "testMode" : true,
+        "auditTransactions" : false,
+        "timeout" : 5000
+        }
+    }
+    ```
+  </TabItem>
+</Tabs>
+
+
+
+
+### 2. The Search Response Now Includes Both FastX and Supplier Codes
+
+Previously, each Search response only included the **supplier’s** hotel, board, and room codes and descriptions.
+
+When using FastX codes in your Search:
+
+- By default, the fields  
+  - `hotelCode`  
+  - `boardCode`  
+  - `rooms -> code`  
+  - `rooms -> description`  
+  now correspond to **FastX** values.
+
+- However, to maintain full transparency, Travelgate still allows you to retrieve the supplier’s original codes and descriptions.  
+  To receive them, include the following fields in your Search request:
+  - `hotelCodeSupplier`
+  - `boardCodeSupplier`
+  - `rooms -> supplierCode`
+  - `rooms -> descriptionSupplier`
+
+<Tabs>
+  <TabItem value="before" label="(Before) Supplier Codes">
+    ```json
+    {
+    "data" : {
+        "hotelX" : {
+            "search" : {
+                "options" : [
+                    {
+                        "id" : "33!~|a0!~|b270528!~|c270529!~|d1!~|e14!~|f0!~|gES!~|hES!~|ies!~|jEUR!~|k0!~|l2!~|m1!~|n14!~|o0!~|p0!~|x18111257!~|rBAR_USD!~|sBAR_USD!~|M79!~|N0!~|Ofalse!~|PUSD!~|Q!~|R0!~|S!~|T!~|z1|30#30|1|2027-05-28|1|5747340|5747342|14|11|0!~|A2269!~|B2269!~|C30|30!~|EDouble Standard!~|FDouble Standard!~|G1!~|H1!~|I1|30#30|1|2027-05-28|1|5747340|5747342|14|11|0!~|J1!~|K1!~|L1!~|H2!~|IES!~|J1!~|K0!~|L1!~|H703!~|I1#3@#!~|J0!~|K1!~|L0!~|H708!~|I551ee6a0-a0cb-49c5-b0d6-2bf6af542780!~|J0!~|K0!~|L0!~|H709!~|Ies!~|J0!~|K0!~|L0!~|tOK!~|uConnectors!~|v0!~|w!~|yPACKAGE!~|q!~|q0!~|y!~|",
+                        "accessCode" : "2",
+                        "supplierCode" : "SUPTEST",
+                        "hotelCode" : "1",
+                        "hotelName" : "Hotel Test",
+                        "boardCode" : "RO",
+                        "paymentType" : "MERCHANT",
+                        "status" : "OK",
+                        "occupancies" : [],
+                        "rooms" : [
+                            {
+                                "occupancyRefId" : 1,
+                                "code" : "2269",
+                                "description" : "Double Standard",
+                                "refundable" : true,
+                                "roomPrice" : {
+                                    "price" : {
+                                        "currency" : "USD",
+                                        "binding" : false,
+                                        "net" : 79,
+                                        "gross" : 79
+                                    },
+                                    "breakdown" : []
+                                },
+                                "ratePlans" : [],
+                                "promotions" : []
+                            }
+                        ],
+                        "price" : {
+                            "currency" : "USD",
+                            "binding" : false,
+                            "net" : 79,
+                            "gross" : 79
+                        },
+                        "supplements" : [],
+                        "surcharges" : [],
+                        "rateRules" : [],
+                        "cancelPolicy" : {
+                            "refundable" : true,
+                            "cancelPenalties" : []
+                        },
+                        "remarks" : null
+                    }
+                ]
+            }
+        }
+    }
+}
+    ```
+  </TabItem>
+  <TabItem value="after" label="(After) FastX Codes">
+    ```json
+    {
+    "data" : {
+        "hotelX" : {
+            "search" : {
+                "options" : [
+                    {
+                        "id" : "33!~|a0!~|b270528!~|c270529!~|d1!~|e14!~|f0!~|gES!~|hES!~|ies!~|jEUR!~|k0!~|l2!~|m1!~|n14!~|o0!~|p0!~|x18111257!~|rBAR_USD!~|sBAR_USD!~|M79!~|N0!~|Ofalse!~|PUSD!~|Q!~|R0!~|S!~|T!~|z1|30#30|1|2027-05-28|1|5747340|5747342|14|11|0!~|A2269!~|B2269!~|C30|30!~|EDouble Standard!~|FDouble Standard!~|G1!~|H1!~|I1|30#30|1|2027-05-28|1|5747340|5747342|14|11|0!~|J1!~|K1!~|L1!~|H2!~|IES!~|J1!~|K0!~|L1!~|H703!~|I1#3@#!~|J0!~|K1!~|L0!~|H708!~|I551ee6a0-a0cb-49c5-b0d6-2bf6af542780!~|J0!~|K0!~|L0!~|H709!~|Ies!~|J0!~|K0!~|L0!~|tOK!~|uConnectors!~|v0!~|w!~|yPACKAGE!~|q!~|q0!~|y!~|",
+                        "accessCode" : "2",
+                        "supplierCode" : "SUPTEST",
+                        "hotelCode" : "ES284122",
+                        "hotelCodeSupplier" : "1", (new)
+                        "hotelName" : "Hotel Test",
+                        "boardCode" : "14",
+                        "boardCodeSupplier" : "RO", (new)
+                        "paymentType" : "MERCHANT",
+                        "status" : "OK",
+                        "occupancies" : [],
+                        "rooms" : [
+                            {
+                                "occupancyRefId" : 1,
+                                "code" : "str----d--",
+                                "supplierCode": "2269", (new)
+                                "description" : "Standard Double Room",
+                                "descriptionSupplier": "Double Standard", (new)
+                                "refundable" : true,
+                                "roomPrice" : {
+                                    "price" : {
+                                        "currency" : "USD",
+                                        "binding" : false,
+                                        "net" : 79,
+                                        "gross" : 79
+                                    },
+                                    "breakdown" : []
+                                },
+                                "ratePlans" : [],
+                                "promotions" : []
+                            }
+                        ],
+                        "price" : {
+                            "currency" : "USD",
+                            "binding" : false,
+                            "net" : 79,
+                            "gross" : 79
+                        },
+                        "supplements" : [],
+                        "surcharges" : [],
+                        "rateRules" : [],
+                        "cancelPolicy" : {
+                            "refundable" : true,
+                            "cancelPenalties" : []
+                        },
+                        "remarks" : null
+                    }
+                ]
+            }
+        }
+    }
+    }
+    ```
+  </TabItem>
+</Tabs>
+
+
+These additional supplier fields are also available in the responses for **Quote**, **Book**, **Booking**, and **Cancel**.
+
+:::info Reminder  
+To know which supplier and which specific access returned each option, refer to:
+- `supplierCode`
+- `accessCode`
+:::
+
+
+### 3. You No Longer Need to Filter by Access in Your Search Queries
+
+One of the major benefits of FastX is parallel supplier searching. When you send a Search request for a given hotel using FastX codes, Travelgate will automatically trigger the search across **all suppliers** that provide that hotel.
+
+This means:
+
+- You **do not** need to include `filterSearch -> includes -> access`, unless you want to restrict results.
+  
+- If no access filter is provided, Travelgate will query **all connected suppliers and accesses** available for your 'client'. For more details on how to link accesses to a 'client', check the documentation [here](/kb/platform/app-features/connections/api-settings).
+
+If at any time you want to limit the request to specific  accesses, you can still do so using the same filtering structure you already know.
+
+
+### 4. Use an Aggregation Plugin (Strongly Recommended)
+
+Since FastX allows you to receive results from multiple suppliers in a single Search request, the response can become large, and you may receive several similar options for the same hotel/board/room combination.
+
+To simplify the response and apply business rules automatically, you can add an **Aggregation Plugin** in your Search query. We currently offer two aggregation plugins:
+
+
+<details>
+    <summary>**Cheapest Price Plugin**</summary>
+    <div>
+        <div>
+        Returns only the <strong>lowest price</strong> for each aggregation key you define. This plugin is designed to reduce the number of redundant options by grouping them based on a configurable key and selecting the most competitive offer within that group.
+        
+        For example, consider the following original options returned by suppliers.
+
+        <b>📥 Original Input Options</b>
+        <table>
+            <thead>
+                <tr>
+                    <th>Supplier</th>
+                    <th>Hotel</th>
+                    <th>Board</th>
+                    <th>Room Type</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>SUP1</td>
+                    <td>Hotel 1</td>
+                    <td>All Inclusive</td>
+                    <td>Junior Suite</td>
+                    <td><strong>100.00€</strong></td>
+                </tr>
+                <tr>
+                    <td>SUP2</td>
+                    <td>Hotel 1</td>
+                    <td>All Inclusive</td>
+                    <td>Junior Suite</td>
+                    <td>102.50€</td>
+                </tr>
+                <tr>
+                    <td>SUP1</td>
+                    <td>Hotel 1</td>
+                    <td>All Inclusive</td>
+                    <td>Standard Room</td>
+                    <td>67.00€</td>
+                </tr>
+                <tr>
+                    <td>SUP3</td>
+                    <td>Hotel 1</td>
+                    <td>All Inclusive</td>
+                    <td>Standard Room</td>
+                    <td><strong>56.00€</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <b>⚙️ Plugin Logic</b>
+
+        If your aggregation key is set to <strong>Hotel, Board, and Room Type</strong>, the plugin processes the options as follows:
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Group Key</th>
+                    <th>Options Considered</th>
+                    <th>Cheapest Price</th>
+                    <th>Winning Supplier</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Group 1:</strong> Hotel 1, All Inclusive, Junior Suite</td>
+                    <td>100.00€ (SUP1), 102.50€ (SUP2)</td>
+                    <td><strong>100.00€</strong></td>
+                    <td>SUP1</td>
+                </tr>
+                <tr>
+                    <td><strong>Group 2:</strong> Hotel 1, All Inclusive, Standard Room</td>
+                    <td>67.00€ (SUP1), 56.00€ (SUP3)</td>
+                    <td><strong>56.00€</strong></td>
+                    <td>SUP3</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <b>✅ Final Output (Aggregated Results)</b>
+
+        Instead of receiving the 4 original options, the system returns only the winning option for each unique group:
+        <ul>
+            <li><strong>SUP1:</strong> Hotel 1, All Inclusive and Junior Suite for <strong>100.00€</strong></li>
+            <li><strong>SUP3:</strong> Hotel 1, All Inclusive and Standard Room for <strong>56.00€</strong></li>
+        </ul>
+        The aggregation key is configurable, allowing you to define which option attributes (like <code>hotel</code>, <code>board</code>, <code>room type</code>, etc.) must be identical for options to be grouped.
+
+        For more details on how to implement this plugin, check the [Cheapest Price documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/cheapest-price).
+        </div>
+    </div>
+</details>
+
+
+<details>
+    <summary>**Preference Plugin (Recommended)**</summary>
+    <div>
+        <div>
+            A more advanced version of the cheapest-price logic. It applies your custom preference rules, such as:
+
+            <blockquote>
+                “Choose the cheapest option for the same hotel/board/room, <strong>unless</strong> supplier <code>SUP1</code> is within 2% of the cheapest price—then choose their option instead.”
+            </blockquote>
+
+            This plugin allows sophisticated business strategies to be applied automatically on Search responses. For more details on how to implement this plugin, check the [Preference documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/preference).
+        </div>
+    </div>
+</details>
+
+
+### 5. Retrieving FastX Hotel and Board Codes
+
+To obtain the FastX hotel and board codes via API, you can access the **hotel list** and **board list** exactly as you always have, but using the **access code of the FastX supplier**, which you'll find in *MyConnections*—just as you would with any other supplier.
+
+In addition, you can retrieve the full list directly from the Travelgate website under the [FastX Codes section](https://app.travelgate.com/connections/mapping) when logged in as a Buyer.
+
+:::info
+You can also continue accessing each supplier’s own hotel list and detailed information exactly as before. Check more info and examples [here](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/fastx).
+:::

@@ -365,7 +365,7 @@ const config = {
         announcementBar: {
           id: 'fastx_preview',
           content: `
-            ?? This is a <b>preview</b> version of the Travelgate documentation, updated with the new <b>FastX</b> solution. Content and structure may change before the official release in January 2026.
+            🧪 This is a <b>preview</b> version of the Travelgate documentation, updated with the new <b>FastX</b> solution. Content and structure may change before the official release in January 2026.
           `,
           backgroundColor: '#fff4e5',
           textColor: '#000000ff',

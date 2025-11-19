@@ -8,7 +8,7 @@ sidebar_position: 2
 ## Refining Search Requests for Precise and Relevant Results
 
 ### How Can I Filter My Search Requests?
-You can filter your Search requests through the [**HotelXFilterSearchInput**](/api/types/inputs/hotel-xfilter-search-input/), using criteria such as access, plugin, rateRules, and status specified in your request.
+You can filter your Search requests through the [**HotelXFilterSearchInput**](/api/types/inputs/hotel-xfilter-search-input/), using criteria such as access, plugin, rateRules, currencies and status specified in your request.
 
 ### 1. Access - AccessFilterInput
 You can specify a particular access or none at all. If no access is specified, all configured accesses for the Buyer will be executed. In this case, please ensure you use your own context code to avoid mapping errors. Learn more in the following articles:
@@ -22,13 +22,17 @@ Rate Rules refer to the specific terms and conditions that define the pricing, a
 Explore all available RateRules types in our [GraphQL API Reference](/api/types/enums/rate-rules-type) for further details.
 
 ### 3. Plugin - HotelXPluginFilterInput
-Hotel-X Plugins allow you to customize requests and responses to meet your business requirements. You can filter which plugins to include or exclude in your search.
+Hotel-X plugin filter gives you the control to specify which plugins to include or exclude in your search.
 
 :::tip
 Check out our Hotel-X Buyers API [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/overview) for more details! 🚀
 :::
 
-### 4. Status - StatusFilterInput
+### 4. Currencies - CurrenciesFilterInput
+This Hotel-X filter enables you to narrow down the options returned by the suppliers based on the desired currencies you want to [include or exclude](/api/types/inputs/currencies-filter-input).
+
+
+### 5. Status - StatusFilterInput
 Define and filter which status (OK or RQ) should be included or excluded in your Search response. This filter depends on whether the Seller returns this information in their response. Example:
 
 ```json

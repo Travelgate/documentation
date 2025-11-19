@@ -380,7 +380,9 @@ export const searchMultipleHotelsVariables =
 		],
 		"hotels": [
 			"BR1518",
-			"ES284122"
+			"ES284122",
+			"US2",
+			"GB1"
 		],
 		"currency": "EUR",
 		"markets": [

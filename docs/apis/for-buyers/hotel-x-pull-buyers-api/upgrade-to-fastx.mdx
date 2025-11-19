@@ -218,17 +218,29 @@ To know which supplier and which specific access returned each option, refer to:
 :::
 
 
-### 3. You No Longer Need to Filter by Access in Your Search Queries
+### 3. More Flexible Access Filtering in Your Search Queries
 
-One of the major benefits of FastX is parallel supplier searching. When you send a Search request for a given hotel using FastX codes, Travelgate will automatically trigger the search across **all suppliers** that provide that hotel.
+One of the major benefits of FastX is parallel supplier searching. When you send a Search request for a given hotel using FastX codes, Travelgate will automatically trigger the search across **all suppliers** that provide that hotel and are linked to your `client`.
 
 This means:
 
-- You **do not** need to include `filterSearch -> includes -> access`, unless you want to restrict results.
-  
-- If no access filter is provided, Travelgate will query **all connected suppliers and accesses** available for your 'client'. For more details on how to link accesses to a 'client', check the documentation [here](/kb/platform/app-features/connections/api-settings).
+- You are no longer limited to using the access filter just to target **a single supplier** per request.  
+- By default, if you **do not** include any access filter, Travelgate will query **all suppliers and accesses** linked to the `client`.
 
-If at any time you want to limit the request to specific  accesses, you can still do so using the same filtering structure you already know.
+If you need to restrict the results to a determined set of suppliers for a specific search or commercial strategy—giving you precise control over which providers are queried—you have two options:
+
+1. **Control via API (recommended for per-request adjustments)**  
+   Use the `filterSearch -> includes/excludes -> access` filter to specify exactly which access codes you want us to use for that request.  
+   With FastX, this filter can include **multiple accesses from different suppliers** in a single Search, offering full flexibility in shaping your availability strategy.
+
+2. **Control via web configuration (recommended for long-term setup)**  
+   Configure different `clients` in the Travelgate website and link, (add or remove) accesses from each client at any time.  
+   In this case, your Search request does not need to send any access filter:
+   - If no access filter is provided, we will use **all the accesses currently linked** to the `client` configuration.
+   - You can maintain different client configurations to reflect different commercial or routing strategies.
+
+For more details on how to link accesses to a `client`, check the documentation [here](/kb/platform/app-features/connections/api-settings).
+
 
 
 ### 4. Use an Aggregation Plugin (Strongly Recommended)

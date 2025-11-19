@@ -1,6 +1,10 @@
 ---
 sidebar_position: 2
 ---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 import HotelCriteriaSearchInput from "../../../../../src/graphql/generated-docs/HotelCriteriaSearchInput.mdx";
 import HotelSettingsInput from "../../../../../src/graphql/generated-docs/HotelSettingsInput.mdx";
 import HotelXFilterSearchInput from "../../../../../src/graphql/generated-docs/HotelXFilterSearchInput.mdx";
@@ -178,7 +182,7 @@ You would need to apply the same approach for filtering by specific rate rule (`
 
 ### Response Considerations
 
-In the response to your search query, you'll receive all the available options that match your criteria. Each option provides various details, such as room type, price, and cancellation policies.  
+In the response to your search query, you'll receive all the available options that match your criteria. Each option includes the supplier (`supplierCode`) that returned it, along with details such as room type, price, cancellation policies, and availability.
 
 Remember that you’ll always receive both the unique **FastX codes** and the Supplier codes, ensuring full traceability across all your connections.
 
@@ -193,6 +197,123 @@ For a deeper understanding, take a look at our articles on [how cancellation pol
 :::caution Remember
 Some Sellers may not include cancellation policies in their availability data. You can learn more about each Seller's specific details in their [Metadata](../content/metadata).
 :::
+
+### Aggregate Your Results (Strongly Recommended)
+
+Since FastX allows you to receive results from multiple suppliers in a single Search request, the response can become large, and you may receive several similar options for the same hotel/board/room combination.
+
+To simplify the response and apply business rules automatically, you can add an **Aggregation Plugin** in your Search query. We currently offer two aggregation plugins:
+
+
+<details>
+    <summary>**Cheapest Price Plugin**</summary>
+    <div>
+        <div>
+        Returns only the <strong>lowest price</strong> for each aggregation key you define. This plugin is designed to reduce the number of redundant options by grouping them based on a configurable key and selecting the most competitive offer within that group.
+        
+        For example, consider the following original options returned by suppliers.
+
+        <b>📥 Original Input Options</b>
+        <table>
+            <thead>
+                <tr>
+                    <th>Supplier</th>
+                    <th>Hotel</th>
+                    <th>Board</th>
+                    <th>Room Type</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>SUP1</td>
+                    <td>Hotel 1</td>
+                    <td>All Inclusive</td>
+                    <td>Junior Suite</td>
+                    <td><strong>100.00€</strong></td>
+                </tr>
+                <tr>
+                    <td>SUP2</td>
+                    <td>Hotel 1</td>
+                    <td>All Inclusive</td>
+                    <td>Junior Suite</td>
+                    <td>102.50€</td>
+                </tr>
+                <tr>
+                    <td>SUP1</td>
+                    <td>Hotel 1</td>
+                    <td>All Inclusive</td>
+                    <td>Standard Room</td>
+                    <td>67.00€</td>
+                </tr>
+                <tr>
+                    <td>SUP3</td>
+                    <td>Hotel 1</td>
+                    <td>All Inclusive</td>
+                    <td>Standard Room</td>
+                    <td><strong>56.00€</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <b>⚙️ Plugin Logic</b>
+
+        If your aggregation key is set to <strong>Hotel, Board, and Room Type</strong>, the plugin processes the options as follows:
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Group Key</th>
+                    <th>Options Considered</th>
+                    <th>Cheapest Price</th>
+                    <th>Winning Supplier</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Group 1:</strong> Hotel 1, All Inclusive, Junior Suite</td>
+                    <td>100.00€ (SUP1), 102.50€ (SUP2)</td>
+                    <td><strong>100.00€</strong></td>
+                    <td>SUP1</td>
+                </tr>
+                <tr>
+                    <td><strong>Group 2:</strong> Hotel 1, All Inclusive, Standard Room</td>
+                    <td>67.00€ (SUP1), 56.00€ (SUP3)</td>
+                    <td><strong>56.00€</strong></td>
+                    <td>SUP3</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <b>✅ Final Output (Aggregated Results)</b>
+
+        Instead of receiving the 4 original options, the system returns only the winning option for each unique group:
+        <ul>
+            <li><strong>SUP1:</strong> Hotel 1, All Inclusive and Junior Suite for <strong>100.00€</strong></li>
+            <li><strong>SUP3:</strong> Hotel 1, All Inclusive and Standard Room for <strong>56.00€</strong></li>
+        </ul>
+        The aggregation key is configurable, allowing you to define which option attributes (like <code>hotel</code>, <code>board</code>, <code>room type</code>, etc.) must be identical for options to be grouped.
+
+        For more details on how to implement this plugin, check the [Cheapest Price documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/cheapest-price).
+        </div>
+    </div>
+</details>
+
+
+<details>
+    <summary>**Preference Plugin (Recommended)**</summary>
+    <div>
+        <div>
+            A more advanced version of the cheapest-price logic. It applies your custom preference rules, such as:
+
+            <blockquote>
+                “Choose the cheapest option for the same hotel/board/room, <strong>unless</strong> supplier <code>SUP1</code> is within 2% of the cheapest price—then choose their option instead.”
+            </blockquote>
+
+            This plugin allows sophisticated business strategies to be applied automatically on Search responses. For more details on how to implement this plugin, check the [Preference documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/preference).
+        </div>
+    </div>
+</details>
 
 
 ## Query Inputs
@@ -223,7 +344,7 @@ In the next example, the Search query includes the 'filterSearch > access' node,
 <GraphqlSample query={searchQuickStartQuery} variables={searchTwoRoomsVariables}/>
 &nbsp;
 
-#### Search query [2 hotels, 1 room: 2 adults]
+#### Search query [4 hotels, 1 room: 2 adults]
 <GraphqlSample query={searchQuickStartQuery} variables={searchMultipleHotelsVariables}/>
 &nbsp;
 

@@ -1,0 +1,60 @@
+# llms.txt — Travelgate (marketing site)
+# Scope: https://www.travelgate.com and selected related subdomains
+
+[meta]
+version=1.0
+site=https://www.travelgate.com
+owner=Travelgate, S.L.
+contact=dpo@travelgate.com
+languages=en,es
+
+[policy]
+purpose=allow_indexing_for_travelgate_information_and_QA
+allowed-uses=question-answering,summarization,semantic-search
+disallowed-uses=impersonation_of_travelgate,biometric_profiling,credit_scoring
+note=Models must not present themselves as Travelgate or as an official Travelgate support channel.
+
+[include-high-priority]
+# Core marketing & product narrative
+url=https://www.travelgate.com/
+url=https://www.travelgate.com/why-travelgate
+url=https://www.travelgate.com/marketplace
+url=https://www.travelgate.com/platform
+url=https://www.travelgate.com/solutions
+url-prefix=https://www.travelgate.com/solutions/
+url=https://www.travelgate.com/service-packages
+url=https://www.travelgate.com/trade-shows
+url=https://www.travelgate.com/about-us
+
+[include-related]
+# Grouped content that helps give context about the brand and ecosystem
+url-prefix=https://blog.travelgate.com
+url-prefix=https://news.travelgate.com
+url-prefix=https://conx.travelgate.com
+url-prefix=https://data.travelgate.com
+
+[include-legal]
+# Legal pages are useful as reference, but should not be reproduced verbatim at length
+url=https://www.travelgate.com/privacy-policy
+url=https://www.travelgate.com/cookies-policy
+url=https://www.travelgate.com/aviso-legal
+
+[exclude]
+# Logged-in apps, back-office, and lead/ops tools
+url-prefix=https://app.travelgate.com
+url-prefix=https://team.travelgate.com
+url-prefix=https://landing.travelgate.com
+url-prefix=https://status.travelgatex.com
+url-prefix=https://community.travelgatex.com
+url-prefix=https://odoo.travelgate.com
+# Old or technical entry points better handled as app/docs, not marketing
+url-prefix=https://connect.xmltravelgate.com
+
+# Tracking & session noise
+pattern=*?session=*
+pattern=*?token=*
+pattern=*?utm_*
+
+[crawl]
+max-request-rate=1/2s
+preferred-fetch-time=night_europe

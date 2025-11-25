@@ -12,27 +12,41 @@ In the **Connections Content** section, you can easily check and force updates f
 
 1. **Log into** [our Platform](https://www.travelgate.com/).
 
-    ![tg_connections_content_1](https://storage.travelgate.com/kbase/tg_connections_content_1.jpg)
-
 2. **Click on** "Connections" > **Connections Content**  
 
-    ![tg_connections_content_2](https://storage.travelgate.com/kbase/tg_connections_content_2.jpg)
+    ![tg_connections_content_1](https://storage.travelgate.com/kbase/tg_connections_content_1.jpg)
 
-    ![tg_connections_content_3](https://storage.travelgate.com/kbase/tg_connections_content_3.jpg)
+3. **Filter by Connection > Supplier > Access**, and click the "Get content" button to retrieve the corresponding portfolio. You can also filter by Country, Hotel Code, or Hotel Name using the "Filter results" panel on the left side of the screen.
 
-3. Review the following details:
-    * Portfolio information at credentials/access level.
-    * Filter by country.
-    * Total properties.
-    * Last update date.
-    * Property details:
-        - Code
-        - Name
-        - Country
-        - City
-        - GIATA ID
-        - Last upload
-        - Additional information (click on a property to view more).
+    ![tg_connections_content_4](https://storage.travelgate.com/kbase/tg_connections_content_5.png)
+
+4. On the **results screen**, you can review the following details:
+    * Hotel Code
+    * [FastX](/kb/platform/app-features/connections/fastx-codes) hotel code (if available)
+    * Hotel name
+    * Country
+    * City
+    * Latitude
+    * Longitude
+    * Last upload
+5. Clicking on a hotel opens its **hotel profile**, which displays additional property-level information (general details and room types). For example:
+    - Hotel Address
+    - Supplier hotel code
+    - Hotel Code
+    - Giata ID
+    - Phone
+    - Fax
+    - Email
+    - Web
+    - Category
+    - Room types: list of all available rooms, as well as their room code, beds type and occupancies.
+
+    ![tg_connections_content_4](https://storage.travelgate.com/kbase/tg_connections_content_4.png)
+
+:::info Missing Hotel Details
+The information displayed on the Connections Content screen **depends on the data provided by each supplier**. As a result, we cannot guarantee that all fields will be complete or available for every property. If a field is missing information, please contact the Seller so they can assess the possibility of including it through the integration.
+:::
+
 
 ## How Can I Download the Seller's Portfolio in CSV?
 

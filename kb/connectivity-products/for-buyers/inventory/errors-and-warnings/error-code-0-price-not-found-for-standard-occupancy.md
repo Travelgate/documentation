@@ -11,7 +11,8 @@ The error message will indicate the mandatory requirement of specifying the numb
 
 ### What Can I Do If I Receive a "Price Not Found for Standard Occupancy" error? 
 #### Example:
-```
+
+```xml
 <Error Type="1" ShortText="Price not found for standard occupancy ( 1 Adults)." Code="0">Price not found for standard occupancy ( 1 Adults).</Error>
 ```
 

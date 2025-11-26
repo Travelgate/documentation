@@ -8,7 +8,8 @@ sidebar_position: 4
 When Channel Managers return an error code 10, **"HotelCode not found: Hotel [hotelcode] doesn't exist in [Channel Manager] or it's not mapped"**, it means that the Channel Manager has not been able to locate the hotel from the Buyer’s request in their system, or the hotel is not active in the Client's setup on the Inventory Extranet.
 
 #### Buyer Response Example:
-```graphql
+
+```json
 "errors": [
     {
         "code" : "10",

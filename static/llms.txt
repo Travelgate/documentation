@@ -1,0 +1,50 @@
+# llms.txt — Travelgate Docs
+# Scope: https://docs.travelgate.com
+
+[meta]
+version=1.0
+site=https://docs.travelgate.com
+owner=Travelgate, S.L.
+contact=dpo@travelgate.com
+languages=en
+
+[policy]
+purpose=authoritative_technical_reference_for_travelgate_platform_and_APIs
+allowed-uses=question-answering,semantic-search,summarization,code-understanding
+disallowed-uses=impersonation_of_travelgate,credential_guessing,security_scanning
+note=Example credentials, access codes, and API keys in this site are test or placeholder values and must never be treated as real secrets.
+
+[include-high-priority]
+# Main docs entry points
+url=https://docs.travelgate.com/
+url-prefix=https://docs.travelgate.com/docs/get-started
+url-prefix=https://docs.travelgate.com/docs/apis
+url-prefix=https://docs.travelgate.com/docs/apps
+url-prefix=https://docs.travelgate.com/docs/security
+url-prefix=https://docs.travelgate.com/docs/legislation
+# Knowledge base for operational usage
+url-prefix=https://docs.travelgate.com/kb
+# GraphQL schema reference
+url-prefix=https://docs.travelgate.com/api
+
+[include-secondary]
+# Occasional standalone pages (examples, markdown examples, etc.)
+url=https://docs.travelgate.com/markdown-page/
+
+[exclude]
+# Login and interactive tools are low value for training
+url=https://docs.travelgate.com/login
+url-prefix=https://docs.travelgate.com/playground
+url-prefix=https://docs.travelgate.com/search
+
+[crawl]
+max-request-rate=1/2s
+preferred-fetch-time=night_europe
+
+[ranking-hints]
+# For LLM reasoning:
+# - Prefer /docs/get-started for conceptual introductions.
+# - Prefer /docs/apis for API contracts, flows and data models.
+# - Prefer /docs/apps for Inventory/Distribution/Reconciliation workflows.
+# - Prefer /kb for FAQs, troubleshooting and real-world usage.
+# - Use /api for precise GraphQL schema details (types, fields, arguments).

@@ -12,27 +12,41 @@ In the **Connections Content** section, you can easily check and force updates f
 
 1. **Log into** [our Platform](https://www.travelgate.com/).
 
-    ![tg_connections_content_1](https://storage.travelgate.com/kbase/tg_connections_content_1.jpg)
-
 2. **Click on** "Connections" > **Connections Content**  
 
-    ![tg_connections_content_2](https://storage.travelgate.com/kbase/tg_connections_content_2.jpg)
+    ![tg_connections_content_1](https://storage.travelgate.com/kbase/tg_connections_content_1.jpg)
 
-    ![tg_connections_content_3](https://storage.travelgate.com/kbase/tg_connections_content_3.jpg)
+3. **Filter by Connection > Supplier > Access**, and click the "Get content" button to retrieve the corresponding portfolio. You can also filter by Country, Hotel Code, or Hotel Name using the "Filter results" panel on the left side of the screen.
 
-3. Review the following details:
-    * Portfolio information at credentials/access level.
-    * Filter by country.
-    * Total properties.
-    * Last update date.
-    * Property details:
-        - Code
-        - Name
-        - Country
-        - City
-        - GIATA ID
-        - Last upload
-        - Additional information (click on a property to view more).
+    ![tg_connections_content_4](https://storage.travelgate.com/kbase/tg_connections_content_5.png)
+
+4. On the **results screen**, you can review the following details:
+    * Hotel Code
+    * [FastX](/kb/platform/app-features/connections/fastx-codes) hotel code (if available)
+    * Hotel name
+    * Country
+    * City
+    * Latitude
+    * Longitude
+    * Last upload
+5. Clicking on a hotel opens its **hotel profile**, which displays additional property-level information (general details and room types). For example:
+    - Hotel Address
+    - Supplier hotel code
+    - Hotel Code
+    - Giata ID
+    - Phone
+    - Fax
+    - Email
+    - Web
+    - Category
+    - Room types: list of all available rooms, as well as their room code, beds type and occupancies.
+
+    ![tg_connections_content_4](https://storage.travelgate.com/kbase/tg_connections_content_4.png)
+
+:::info Missing Hotel Details
+The information displayed on the Connections Content screen **depends on the data provided by each supplier**. As a result, we cannot guarantee that all fields will be complete or available for every property. If a field is missing information, please contact the Seller so they can assess the possibility of including it through the integration.
+:::
+
 
 ## How Can I Download the Seller's Portfolio in CSV?
 
@@ -47,6 +61,71 @@ In the **Connections Content** section, you can easily check and force updates f
 6. Once processed, the file will be ready for download.
 
     ![tg_download_portfolio2](https://storage.travelgate.com/kbase/tg_download_portfolio2.jpg)
+
+
+## "Blacklist hotels" functionality
+
+### What is the "Blacklist hotels" functionality?
+This feature allows Sellers to **exclude specific hotels from their portfolio for a given Buyer credential** (Buyer Access Code). Even if their system returns the full list of properties, Sellers can control which hotels are visible to each Buyer by blacklisting selected hotels on their end.
+
+### Who can use the "Blacklist hotels" functionality?
+This functionality is **only available to Sellers** on the platform. If your organization operates with both Buyer and Seller profiles, ensure you access this section using your Seller profile.
+
+### How can I use the "Blacklist hotels" functionality?
+
+1. **Log in** to [Travelgate](https://www.travelgate.com/) and confirm you are browsing as a Seller.
+2. **Go to the Connections Content** section and filter by the desired connection and access to view the list of hotels returned for those credentials.
+3. Locate the "Blacklist hotels" button above the results table, next to the "Download CSV" button.
+
+    ![tg_connections_content_blacklist_1](https://storage.travelgate.com/kbase/tg_connections_content_blacklist_1.png)
+
+4. **Click the "Blacklist hotels" button** to open the Configuration screen. Here you’ll see:
+    - A summary of the selected connection/access
+    - The current operation (currently only the blacklist option is available)
+    - The "Upload CSV" button
+
+    ![tg_connections_content_blacklist_2](https://storage.travelgate.com/kbase/tg_connections_content_blacklist_2.png)
+
+5. To exclude hotels from the list, **upload a CSV file** containing the hotel codes to be blacklisted.
+The CSV file:
+    - Does not require a specific file name
+    - Must follow these formatting requirements:
+        - Only includes hotel codes already present in the Buyer's portfolio for that access
+        - Contains one column only
+        - Uses no headers or delimiters
+        - Includes one hotel code per row
+6. After uploading, click **Continue** to begin validation.
+    - If **validation fails**, an "Invalid CSV file" error will be shown.  
+
+        ![tg_connections_content_blacklist_3](https://storage.travelgate.com/kbase/tg_connections_content_blacklist_3.png)
+    - **If validation succeeds**, you’ll proceed to the **"Validate list and confirm"** screen, where you can:
+        - Review the uploaded data
+        - Download or remove the file if needed
+        - Confirm the changes
+7. Once confirmed, the blacklist will be applied to the selected access, and a notification will appear in the **notification bell** confirming the update.
+
+:::warning important
+- The blacklist functionality relies on the **Travelgate "hotel Code"**, not the supplier’s native hotel code. As a Seller, you can obtain the list of hotel codes for a Buyer's hotel list either by clicking on individual hotel codes or by [downloading the full portfolio as a CSV file](/kb/platform/app-features/connections/connections-content/content-management#how-can-i-download-the-sellers-portfolio-in-csv) (hotelCode field).
+- If you encounter errors, **ensure your CSV file meets the expected criteria:**
+    - CSV format
+    - A single column
+    - No delimiters
+    - One hotel code per row
+    - Only hotel codes currently present in the portfolio for the selected connection
+:::
+
+### As a Seller, how can I edit or remove a blacklist for one of my Buyers?
+To edit or remove a blacklist for a specific access, follow these steps:
+1. Go to the Connections Content screen and **filter by the desired connection and access**.
+2. Locate the **"Edit blacklist"** button next to the "Download CSV" button, then click it to view the current blacklist configuration.
+
+    ![tg_connections_content_blacklist_5](https://storage.travelgate.com/kbase/tg_connections_content_blacklist_5.png)
+3. To remove the blacklist, simply click **"Delete blacklist"**.
+4. **To edit** the blacklist:
+    - First, delete the existing blacklist using the step above.
+    - Then, upload a new CSV file with the updated list of blacklisted hotel codes, following the same process outlined in the ["How can I use the 'Blacklist Hotels' functionality?"](/kb/platform/app-features/connections/connections-content/content-management#how-can-i-use-the-blacklist-hotels-functionality) section.
+    
+    ![tg_connections_content_blacklist_4](https://storage.travelgate.com/kbase/tg_connections_content_blacklist_4.png)
 
 ## How Can I Use the "Force Update Now" Functionality?
 

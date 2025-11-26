@@ -13,7 +13,7 @@ A **"PLUGIN_ERROR"** occurs when our system cannot validate the plugin informati
 - This warning typically appears due to issues with the input or structure of your plugin. To resolve it, ensure that the plugin format you’ve configured complies with our Hotel-X API [Specifications](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/overview).
 - The warning may also occur if the integration does not receive commission details from the Seller—for example, during a Booking Read, Book or Cancel operation. In such cases, you might encounter a message like:
 
-```
+```json
 "warnings":[{"external":null,"type":"PLUGIN_ERROR","code":"WRONG_FIELD","description":"commission: commission not found"}]
 ```
 

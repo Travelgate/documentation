@@ -90,6 +90,53 @@ Settings are the common configurations used to construct requests to the supplie
 
 <GraphqlSample query={datesAmendmentQuoteQuery} variables={datesAmendmentQuoteVariables} />
 
+**Response example**:
+```json
+{
+    "data" : {
+        "hotelX" : {
+            "quoteDatesAmendment" : {
+                "adviseMessage" : null,
+                "amendFee" : {
+                    "currency" : "EUR",
+                    "net" : 0
+                },
+                "amendedBookingDetail" : {
+                    "cancelPolicy" : {
+                        "cancelPenalties" : [
+                            {
+                                "currency" : "EUR",
+                                "deadline" : "2025-06-22T21:59:00Z",
+                                "hoursBefore" : 6962,
+                                "penaltyType" : "IMPORT",
+                                "value" : 764.59
+                            }
+                        ],
+                        "refundable" : true
+                    },
+                    "payable" : null,
+                    "paymentInfo" : null,
+                    "price" : {
+                        "binding" : false,
+                        "currency" : "EUR",
+                        "gross" : 779.72,
+                        "net" : 779.72
+                    },
+                    "quotePrice" : null,
+                    "reference" : {
+                        "amendmentID" : "n1%1!1?1@1[271201[271204[250623[7387[en[[6847[test_09052024[31287916[[[260409@260412@251115[[",
+                        "client" : "test_09052024",
+                        "supplier" : "3128791"
+                    },
+                    "remarks" : "",
+                    "status" : "OK"
+                }
+            }
+        }
+    }
+}
+```
+
 
 
 
@@ -149,3 +196,51 @@ Settings are the common configurations used to construct requests to the supplie
 ### Requests Examples
 
 <GraphqlSample query={datesAmendmentCommitMutation} variables={datesAmendmentCommitVariables} />
+
+**Response example**:
+```json
+{
+    "data" : {
+        "hotelX" : {
+            "amendDates" : {
+                "adviseMessage" : null,
+                "amendFee" : {
+                    "currency" : "EUR",
+                    "net" : 0
+                },
+                "amendedBookingDetail" : {
+                    "cancelPolicy" : {
+                        "cancelPenalties" : [
+                            {
+                                "currency" : "EUR",
+                                "deadline" : "2025-06-22T21:59:00Z",
+                                "hoursBefore" : 6962,
+                                "penaltyType" : "IMPORT",
+                                "value" : 764.59
+                            }
+                        ],
+                        "refundable" : true
+                    },
+                    "payable" : null,
+                    "paymentInfo" : null,
+                    "price" : {
+                        "binding" : false,
+                        "currency" : "EUR",
+                        "gross" : 779.72,
+                        "net" : 779.72
+                    },
+                    "quotePrice" : null,
+                    "reference" : {
+                        "amendmentID" : "",
+                        "bookingID" : "n1@1[241128[241129[240516[1[es[EUR[2[test_09052024[3128791_232[",
+                        "client" : "test_09052024",
+                        "supplier" : "3128791_232"
+                    },
+                    "remarks" : "",
+                    "status" : "OK"
+                }
+            }
+        }
+    }
+}
+```

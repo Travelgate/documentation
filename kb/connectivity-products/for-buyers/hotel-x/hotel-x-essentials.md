@@ -38,6 +38,14 @@ To ensure smooth operation and maximize efficiency, requests should include spec
 For full details on Hotel-X headers and how to use them, we recommend visiting this [link](/docs/apis/for-buyers/hotel-x-pull-buyers-api/making-requests/request-headers/) to our API documentation.
 :::
 
+### Does Travelgate provide a Postman collection or Swagger documentation?
+We do not offer a Postman collection or Swagger specification for our API. However, you can access our documentation site, which includes:
+- The [API documentation](/docs/get-started/introduction) for developers
+- A comprehensive [Knowledge Base](/kb)
+- GraphQL [API Reference](/api)
+- An interactive [GraphQL Playground](/playground)
+
+
 ## Hotel-X API Languages
 
 ### Supported Languages

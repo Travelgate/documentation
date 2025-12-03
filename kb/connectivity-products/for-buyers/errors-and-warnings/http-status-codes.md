@@ -17,3 +17,14 @@ Here are some common HTTP status codes you might encounter:
 - **HTTP 500:** Internal Server Error.
 - **HTTP 503:** Service Unavailable.
 - **HTTP 504:** Gateway Timeout.
+
+### 580 Error Code
+
+#### What does a 580 error mean?
+A 580 error code typically indicates a network issue, specifically a "socket hang-up." This occurs when the socket fails to establish or maintain a connection within the designated timeout window. This type of error usually happens due to one or more of the following reasons:
+- Transient network fluctuations
+- Increased server load
+- Timeout thresholds being exceeded — the connection took too long to establish or complete and was therefore cut off
+
+#### How can I solve a 580 error?
+580 errors are **typically temporary**, and their occurrence rate is usually statistically negligible. In most cases, no action is required. However, if you observe a significant or persistent increase in 580 errors, please contact our [Support Team](/kb/platform/support-portal/how-to-submit-case). Be sure to include the **relevant error logs** so our team can investigate and assist you further.

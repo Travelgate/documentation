@@ -102,7 +102,7 @@ The CSV file:
         - Review the uploaded data
         - Download or remove the file if needed
         - Confirm the changes
-7. Once confirmed, the blacklist will be applied to the selected access, and a notification will appear in the **notification bell** confirming the update.
+7. Once confirmed, the blacklist will be applied to the selected access, and a notification will appear in the **notification bell** confirming the update. Note that the processing time will depend on the size of the blacklist file.
 
 :::warning important
 - The blacklist functionality relies on the **Travelgate "hotel Code"**, not the supplier’s native hotel code. As a Seller, you can obtain the list of hotel codes for a Buyer's hotel list either by clicking on individual hotel codes or by [downloading the full portfolio as a CSV file](/kb/platform/app-features/connections/connections-content/content-management#how-can-i-download-the-sellers-portfolio-in-csv) (hotelCode field).

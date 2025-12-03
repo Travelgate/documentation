@@ -39,7 +39,8 @@ For full details on Hotel-X headers and how to use them, we recommend visiting t
 :::
 
 ### Does Travelgate provide a Postman collection or Swagger documentation?
-We do not currently offer a Postman collection or Swagger specification for our API. However, you can access our complete [API documentation](/docs/get-started/introduction), which includes:
+We do not offer a Postman collection or Swagger specification for our API. However, you can access our documentation site, which includes:
+- The [API documentation](/docs/get-started/introduction) for developers
 - A comprehensive [Knowledge Base](/kb)
 - GraphQL [API Reference](/api)
 - An interactive [GraphQL Playground](/playground)

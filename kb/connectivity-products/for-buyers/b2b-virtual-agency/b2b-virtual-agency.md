@@ -100,7 +100,7 @@ Follow these steps to search for availability and make a booking via Multi Searc
       ![tg_b2b_multisearch_4](https://storage.travelgate.com/kbase/tg_b2b_multisearch_4.png)
 
       :::info B2B Virtual Agency Search Logs
-      You can access the logs of your availability requests through the B2B Virtual Agency, directly from the "Search Availability" screen. After clicking Search, a **"View Search Logs"** option will appear in the left-hand menu. Click it to open a new window where you can view both the request and response logs. To copy them, simply click the "Copy Logs button".  
+      You can access the logs of your availability requests through the B2B Virtual Agency, directly from the "Search Availability" screen. After clicking Search, a **"View Search Logs"** option will appear in the left-hand menu. Click it to open a new window where you can view both the request and response logs. To copy them, simply click the "Copy Logs" button.  
 
       ![b2b-virtual-agency-logs](https://storage.travelgate.com/kbase/b2b-virtual-agency-logs.jpg)
       :::

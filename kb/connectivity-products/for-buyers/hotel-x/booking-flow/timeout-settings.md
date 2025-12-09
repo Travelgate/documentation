@@ -41,15 +41,6 @@ You can configure timeout values in two ways:
 When making a multimode request, it is not possible to set different timeout values for each Supplier. The timeout value you set will apply uniformly to all Suppliers.
 :::
 
-### Why Does Hotel-X Add 150 Milliseconds to My Requests?
-Hotel-X includes an additional **150 milliseconds** to your requests as an operation timeout value. This operation timeout represents the maximum time allowed before the system cancels the operation. Once this timeout is reached, the operation will be aborted and an error message will be returned.
-
-- The operation timeout should always be set higher than the supplier timeout.
-- If an operation timeout is not specified, the default will be the request timeout plus 150 ms.
-
-**Example:**  
-If you specify a timeout of 20,000 ms, the operation timeout will be set to 20,150 ms by default.
-
 ## Setting Timeout Values in the Hotel Buyers Legacy API
 For users of the **Hotel Buyers Legacy API**, the timeout must be set at the request level using the `timeoutMilliseconds` tag.
 

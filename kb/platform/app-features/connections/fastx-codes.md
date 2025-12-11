@@ -150,3 +150,11 @@ Buyers benefit from consistent FastX codes across all Suppliers, simplifying pro
 * Filter by supplier and use **Download CSV**.
 * Includes Travelgate master data and Supplier portfolio.
 * Applies active filters to the exported file.
+
+:::note Remember
+Here you can check which FastX hotel and board codes are **validated**, **pending**, or **invalidated** by each Seller.  
+By default, your booking flow will allow traffic for both **validated** and **pending** codes. However, if you prefer to work exclusively with **validated** codes, you can configure this in the [API Settings](https://app.travelgate.com/connections/settings) section.
+
+Invalidated codes are **never allowed** in the booking flow — Travelgate will automatically block any traffic that uses FastX codes that have been invalidated by the Seller.
+:::
+

@@ -30,7 +30,7 @@ When you click **'Create New Case'**, the following happens:
 
    Click **“Continue”**, and AIna will search the Knowledge Base and Documentation for solutions.
    
-   ![aina-case-description](https://storage.travelgate.com/kbase/aina-case-description.jpg)
+   ![tg_aina_ai_assistant](https://storage.travelgate.com/kbase/tg_aina_ai_assistant.png)
    ![aina-case-in-progress](https://storage.travelgate.com/kbase/aina-case-in-progress.jpg)
 
 2. **Receive AIna’s Response**: AIna provides reference links, step-by-step guides, and relevant information that can potentially resolve your issue or inquiry.

@@ -34,7 +34,20 @@ and time when the booking was updated in your system.
 When you cancel a booking, the field `canceledAt` is required in the `reservation` object. This field indicates the date
 and time when the booking was canceled in your system.
 
-## Create a booking
+:::warning Important
+Starting from **December 15, 2025**, the `cancellationPolicy` field will be **mandatory** when creating or updating a
+booking. Please ensure to include this field in your requests to avoid any disruptions.
+:::
+
+:::danger Very Important
+Before you can cancel or update a booking, you must have already created it in the system using the `bookingCreateSeller`
+or `bookingCreateBuyer` mutation.
+:::
+
+## Mutations
+Below are examples of how to use the different mutations available in the Reconciliation API.
+
+### Create a seller booking
 
 You create a new booking by using `bookingCreateSeller` mutation. This mutation will create a new booking in the
 system. Below is a full example of how to create a new booking.
@@ -114,7 +127,7 @@ mutation BookingCreateSeller {
 }
 ```
 
-## Cancel a booking
+### Cancel a seller booking
 
 You can cancel a booking by using the `bookingCancelSeller` mutation. This mutation will cancel the booking in the
 system. Below is a full example of how to cancel a booking.
@@ -156,7 +169,7 @@ mutation BookingCancelSeller {
 }
 ```
 
-## Update a booking
+### Update a seller booking
 
 You can update a booking by using the `bookingUpdateSeller` mutation. This mutation will update the booking in the
 system. Below is a full example of how to update a booking.
@@ -171,6 +184,206 @@ mutation BookingUpdateSeller {
         buyerIdentity: {
           travelgate: {
             buyerOrgCode: "xyz"
+          }
+        },
+        reservation: {
+          updatedAt: "2024-02-28T09:00"
+          netPayable: {
+            amount: "50",
+            currency: "EUR"
+          },
+          status: "CONFIRMED",
+          hotel: {
+            codeSeller: "s8",
+            name: "Hotel Test",
+            address: "Bora Bora",
+            country: "ES",
+            coordinates: {
+              latitude: "2.568965",
+              longitude: "42.369854"
+            }
+          },
+          cancellationPolicy: {
+            refundable: true,
+            penalties: [{
+              value: "5",
+              currency: "EUR",
+              deadline: "2024-02-28T09:00"
+            }, {
+              value: "26",
+              currency: "EUR",
+              deadline: "2024-03-01T14:00"
+            }]},
+          rooms: [{
+            checkIn: "2024-03-06",
+            checkOut: "2024-03-08",
+            board: {
+              codeSeller: "sel",
+              description: "-"
+            },
+            room: {
+              codeSeller: "sel",
+              description: "-"
+            },
+            guests: [{
+              age: 25
+            }, {
+              age: 30
+            }]
+          }]
+        }
+      }
+    ) {
+      booking {
+        id
+        buyerReference
+        sellerReference
+        status
+        netPayable {
+          currency
+          amount
+        }
+      }
+    }
+  }
+}
+```
+
+### Create a buyer booking
+
+You create a new booking by using `bookingCreateBuyer` mutation. This mutation will create a new booking in the
+system. Below is a full example of how to create a new booking.
+
+```graphql
+mutation BookingCreateBuyer {
+  reconciliation {
+    bookingCreateBuyer(
+      input: {
+        buyerReference: "test-202403061027",
+        sellerReference: "test-202403061027",
+        sellerIdentity: {
+          travelgate: {
+            supplierCode: "xyz"
+          }
+        },
+        reservation: {
+          createdAt: "2024-02-28T09:00"
+          netPayable: {
+            amount: "50",
+            currency: "EUR"
+          },
+          status: "CONFIRMED",
+          hotel: {
+            codeSeller: "s8",
+            name: "Hotel Test",
+            address: "Bora Bora",
+            country: "ES",
+            coordinates: {
+              latitude: "2.568965",
+              longitude: "42.369854"
+            }
+          },
+          cancellationPolicy: {
+            refundable: true,
+            penalties: [{
+              value: "5",
+              currency: "EUR",
+              deadline: "2024-02-28T09:00"
+            }, {
+              value: "26",
+              currency: "EUR",
+              deadline: "2024-03-01T14:00"
+            }]},
+          rooms: [{
+            checkIn: "2024-03-06",
+            checkOut: "2024-03-08",
+            board: {
+              codeSeller: "sel",
+              description: "-"
+            },
+            room: {
+              codeSeller: "sel",
+              description: "-"
+            },
+            guests: [{
+              age: 25
+            }, {
+              age: 30
+            }]
+          }]
+        }
+      }
+    ) {
+      booking {
+        id
+        buyerReference
+        sellerReference
+        status
+        netPayable {
+          currency
+          amount
+        }
+      }
+    }
+  }
+}
+```
+
+### Cancel a buyer booking
+You can cancel a booking by using the `bookingCancelBuyer` mutation. This mutation will cancel the booking in the
+system. Below is a full example of how to cancel a booking.
+
+```graphql
+mutation BookingCancelBuyer {
+  reconciliation {
+    bookingCancelBuyer(
+      input: {
+        buyerReference: "tet-202411271231",
+        sellerReference: "test-202411271231",
+        sellerIdentity: {
+          travelgate: {
+            supplierCode:    "xyz"
+          }
+        },
+        reservation: {
+          canceledAt: "2024-11-28T18:47",
+          netPayable: {
+            amount: "50",
+            currency: "EUR",
+          }
+        }
+      }
+    ) {
+      booking {
+        id
+        buyerReference
+        sellerReference
+        status
+        createdAt
+        netPayable {
+          currency
+          amount
+        }
+      }
+    }
+  }
+}
+```
+
+### Update a buyer booking
+You can update a booking by using the `bookingUpdateBuyer` mutation. This mutation will update the booking in the
+system. Below is a full example of how to update a booking.
+
+```graphql
+mutation BookingUpdateBuyer {
+  reconciliation {
+    bookingUpdateBuyer(
+      input: {
+        buyerReference: "test-202403061027",
+        sellerReference: "test-202403061027",
+        sellerIdentity: {
+          travelgate: {
+            supplierCode: "xyz"
           }
         },
         reservation: {

@@ -9,6 +9,7 @@ If you are **already a Travelgate customer** and need **commercial** assistance,
 
 - **Buyers**: Looking to connect via our **Inventory Solution**.
 - **Inventory Buyers**: Interested in integrating through our **GraphQL or CSV Push APIs**.
+- **Inventory Buyers**: Looking to start using **Channel-X**.
 - **Buyers**: Ready to migrate to our **Hotel-X Pull Buyers API**.
 - **Sellers**: Wanting to start working as a **Buyer**.
 - **Pull Sellers**: Interested in transitioning to a **Push Seller** model.

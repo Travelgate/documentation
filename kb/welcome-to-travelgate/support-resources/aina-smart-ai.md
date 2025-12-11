@@ -20,7 +20,7 @@ You can easily interact with AIna from any section of our Platform with just one
 
 **Our [Support Portal](/kb/platform/support-portal/how-to-submit-case):**
 
-![aina-case-description](https://storage.travelgate.com/kbase/aina-case-description.jpg)
+![tg_aina_ai_assistant](https://storage.travelgate.com/kbase/tg_aina_ai_assistant.png)
 
 **Our [Discord Server](/kb/welcome-to-travelgate/community/our-discord-server):**  
 Engage with AIna directly via our Discord channel [-ask-ai](https://discord.com/channels/1121158946074402916/1245294813134458910). It functions similarly to traditional support channels but is enhanced with AIna’s capabilities. Prefer private interactions? Simply mention @aina in private channels. Give it a try! 🚀

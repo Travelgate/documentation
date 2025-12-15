@@ -90,7 +90,7 @@ Sellers use this section to **validate or invalidate suggested mappings** betwee
         2. **We detected your new hotel, but the matching algorithm could not find a suitable match.**  
         Please ensure that the hotel’s **name, address, country, and coordinates** are accurate and complete.
 
-        If none of the above apply to your case, please open a ticket with our Customer Care team, and we will review the issue for you.
+        If none of the above apply to your case, please open a case with our [Customer Support team](https://app.travelgate.com/support), and we will review the issue for you.
         </div>
     </div>
 </details>

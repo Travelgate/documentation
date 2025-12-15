@@ -76,6 +76,35 @@ Sellers use this section to **validate or invalidate suggested mappings** betwee
 </details>
 
 <details>
+    <summary>Why does my hotel not appear on the FastX website?</summary>
+    <div>
+        <div>
+        To successfully match a hotel with a FastX code, the following information is required: **name, address, country, and coordinates**.
+        If you are already providing this information in your connection with us and your hotel still does not appear in the FastX section, it may be due to one of the following reasons:
+
+        1. **The content data has not yet been synchronized with FastX.**  
+        Even if your hotel already appears in the Content section, the FastX code may still not be available.  
+        This can happen because it may take a few days for us to synchronize the new data and run our matching algorithm to link it with a FastX code.  
+        This process typically takes a few days and never more than **one week** after the hotel is detected.
+
+        2. **We detected your new hotel, but the matching algorithm could not find a suitable match.**  
+        Please ensure that the hotel’s **name, address, country, and coordinates** are accurate and complete.
+
+        If none of the above apply to your case, please open a ticket with our Customer Care team, and we will review the issue for you.
+        </div>
+    </div>
+</details>
+
+<details>
+    <summary>What happens if the hotel information in my portfolio changes?</summary>
+    <div>
+        <div>
+        We automatically download your hotel list every 15 days. If we detect changes in your hotel data, our FastX system will evaluate whether the current mapping is still valid. If there’s a significant difference and a match with the new information can’t be confirmed, the hotel will be unlinked from its current FastX code and linked to a new one, which will require your validation again.
+        </div>
+    </div>
+</details>
+
+<details>
     <summary>Are the hotels I validate available to all Buyers using FastX codes?</summary>
     <div>
         <div>
@@ -97,24 +126,7 @@ Sellers use this section to **validate or invalidate suggested mappings** betwee
 </details>
 
 
-<details>
-    <summary>How often is the FastX portfolio updated? What if some hotels are missing?</summary>
-    <div>
-        <div>
-        Our FastX codes are updated every two weeks. If you’ve added new hotels recently, they will appear as “Pending” in your FastX list once included. If you notice missing hotels, simply open a case with our [Customer Care](https://app.travelgate.com/support) team and we’ll review it for you.
-        </div>
-    </div>
-</details>
 
-
-<details>
-    <summary>What happens if the hotel information in my portfolio changes?</summary>
-    <div>
-        <div>
-        We automatically download your hotel list every 15 days. If we detect changes in your hotel data, our FastX system will evaluate whether the current mapping is still valid. If there’s a significant difference and a match with the new information can’t be confirmed, the hotel will be unlinked from its current FastX code and linked to a new one, which will require your validation again.
-        </div>
-    </div>
-</details>
 
 
 ## For Buyers

@@ -7,14 +7,15 @@ sidebar_position: 4
 ## What Does a 103 Error Mean?
 A **103 error** occurs when your account exceeds the agreed-upon request limit with the Seller.
 
-### Example:
-```xml
-<applicationErrors>
-    <code>219</code>
-    <type>103</type>
-    <description>Too many requests to the supplier.</description>
-    <httpStatusCode>0</httpStatusCode>
-</applicationErrors>
+#### Example:
+```json
+"errors": [
+            {
+              "code": "",
+              "description": "TooManyRequests",
+              "type": "103"
+            }
+          ]
 ```
 
 ## How to Handle a 103 Error

@@ -8,12 +8,14 @@ sidebar_position: 8
 A **201 error** will appear in your content method response when **your static content data needs to be updated**.
 
 ### Error Example
-```xml
-<applicationErrors>
-    <type>201</type>
-    <description>Error retrieving data</description>
-    <httpStatusCode>0</httpStatusCode>
-</applicationErrors>
+```json
+"errors": [
+            {
+              "code": "201",
+              "description": "Error retrieving data",
+              "type": ""
+            }
+          ]
 ```
 
 

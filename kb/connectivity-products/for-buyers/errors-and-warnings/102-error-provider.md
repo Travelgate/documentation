@@ -9,13 +9,16 @@ The **102 error** is classified as a **provider error** and occurs when a suppli
 
 If the Seller does not provide an error description, the system categorizes it as a 102 error without further details.
 
-```xml
-<applicationErrors>
-    <code>provider_error_code</code>
-    <type>102</type>
-    <description>provider_error_description</description>
-    <httpStatusCode>0</httpStatusCode>
-</applicationErrors>
+#### Example:
+
+```json
+"errors": [
+            {
+              "code": "15223AV",
+              "description": "Error Description",
+              "type": "102"
+            }
+          ]
 ```
 
 ## How to Handle a 102 Error

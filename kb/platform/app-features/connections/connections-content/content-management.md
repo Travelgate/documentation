@@ -123,7 +123,7 @@ To edit or remove a content blacklist for a specific access, follow these steps:
 3. To remove the blacklist, simply click **"Delete blacklist"**.
 4. **To edit** the blacklist:
     - First, delete the existing blacklist using the step above.
-    - Then, upload a new CSV file with the updated list of blacklisted hotel codes, following the same process outlined in the ["How can I use the 'Blacklist Hotels' functionality?"](/kb/platform/app-features/connections/connections-content/content-management#how-can-i-use-the-content-blacklist-functionality) section.
+    - Then, upload a new CSV file with the updated list of blacklisted hotel codes, following the same process outlined in the ["How can I use the 'Content blacklist' functionality?"](/kb/platform/app-features/connections/connections-content/content-management#how-can-i-use-the-content-blacklist-functionality) section.
     
     ![tg_connections_content_blacklist_4](https://storage.travelgate.com/kbase/tg_connections_content_blacklist_4.png)
 

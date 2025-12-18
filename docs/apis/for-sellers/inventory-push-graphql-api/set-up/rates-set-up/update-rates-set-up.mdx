@@ -131,7 +131,7 @@ To update a rate, ensure that all mandatory fields are properly filled out and a
 
 When you update a rate, we recommend always sending *cancelPolicies*, specifically *baseCancelPolicy*. Our API allows you to send *cancelPoliciesByDate* 
 without a base policy; However, if any availability day is not covered, you need to provide a *baseCancelPolicy*. For this reason, when you create a rate without a
-*baseCancelPolicy* our system automatically adds a refundable base cancellation policy with `daysBeforeArrival: 999`, `penaltyType: PERCENTAGE` and `value: 100`, so it's **non refundable**.
+*baseCancelPolicy* our system automatically adds a base cancellation policy with `daysBeforeArrival: 999`, `penaltyType: PERCENTAGE` and `value: 100`, so it's **non refundable**.
 
 This is to prevent a [Rate without cancellation policies](../../../../../apps/inventory/extranet/set-up/setup) from being considered 100% refundable.
 :::

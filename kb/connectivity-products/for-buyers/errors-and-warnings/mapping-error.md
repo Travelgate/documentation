@@ -8,17 +8,17 @@ sidebar_position: 23
 A **"MAPPING_NOT_FOUND"** warning occurs when our system cannot find a match between your own codes (hotel codes, room codes, board codes, etc.) and the Supplier's information. This can also happen when there is a mismatch between the context code used in your request and the context code or data configured in the mapping files uploaded to your SFTP (hotels, boards, rooms).
 
 #### Example:
-    ```json
-    {
-        "warnings" : [
-            {
-                "code" : "MAPPING_NOT_FOUND",
-                "type" : "MAPPING_ERROR",
-                "description" : "Access: 'xxx' couldn't process hotel codes [xxx] due to not finding mapping codes for supplier context [xxx]"
-            }
-        ]
-    }
-    ```
+```json
+{
+    "warnings" : [
+        {
+            "code" : "MAPPING_NOT_FOUND",
+            "type" : "MAPPING_ERROR",
+            "description" : "Access: 'xxx' couldn't process hotel codes [xxx] due to not finding mapping codes for supplier context [xxx]"
+        }
+    ]
+}
+```
 
 ## What Can I Do If I Receive a "MAPPING_ERROR"?
 Since this warning indicates a discrepancy or issue with mapping validation, check the following:

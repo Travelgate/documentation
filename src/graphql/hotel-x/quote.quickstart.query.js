@@ -18,6 +18,10 @@ export const quoteQuickStartQuery =
 			optionQuote {
 				optionRefId
 				status
+				hotelCode
+				hotelCodeSupplier
+				boardCode
+				boardCodeSupplier
 				price {
 					currency
 					binding
@@ -70,7 +74,6 @@ export const quoteQuickStartVariables =
 	},
 	"settings": {
 		"client": "client_demo",
-		"context": "TGX",
 		"testMode": true,
 		"timeout": 5000
 	}

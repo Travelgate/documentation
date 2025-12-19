@@ -187,7 +187,7 @@ If you've followed all the steps and still do not have the most up-to-date conte
 
             This setup is used for accesses where the Seller provides exactly the same hotel list to multiple Buyers.
 
-            Because the hotel list is shared, **Content features such as hotel blacklisting are not available**, as they would affect all accesses that share the same hotel list.
+            Because the hotel list is shared, **Content features such as content blacklist are not available**, as they would affect all accesses that share the same hotel list.
 
             If you need an access to stop being shared, please contact our [Customer Support team](https://app.travelgate.com/support), and we will assist you with the request.
         </div>

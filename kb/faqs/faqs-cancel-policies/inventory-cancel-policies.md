@@ -4,68 +4,63 @@ sidebar_position: 4
 
 # Cancel Policies - Inventory
 
-This section provides clear answers and examples concerning the configuration of cancellation policies as part of your rate setup, ensuring you understand how to manage this crucial aspect of your inventory.
+This section provides clear guidance on configuring cancellation policies as part of your [Inventory rate setup](/docs/apps/inventory/extranet/set-up/setup#rate), helping you understand how to effectively manage this crucial aspect of your inventory.
 
-### How do I define a cancellation policy when creating a new rate in the Extranet?
+### How do I define a cancellation policy when creating a new rate in the Inventory Extranet?
 
-When you create a new rate using the Extranet's **How to add a Rate** feature, you define the cancellation policy in the section dedicated to penalties.
+When creating a new rate for a hotel using the **Add Rate** button in the Setup section, you also define the cancellation policies that apply to that rate.  
 
-- **Example:** You have the option to set up different types of cancellation penalties, such as a fee for late cancellations (Penalty for cancellations made after the deadline) or a no-show penalty. You can specify whether the penalty is a fixed amount, a percentage of the total stay, or based on the cost of a certain number of nights. For instance, a policy might be "Cancellation within 7 days of arrival results in a penalty equal to the cost of the first night."
-- **Additional Clarification (Cancellation Policy Types):** The Extranet allows for two primary policy types:
-    - **Cancellation Policy - Base:** This is the default or standard policy applied to the entire rate, covering all dates unless overridden.
-    - **Cancellation Policy - Calendar:** This allows you to set specific cancellation rules for certain dates or date ranges, overriding the Base policy for those periods (e.g., a stricter policy for a high-demand holiday period).
+The Extranet allows for two primary Cancellation policy types:
+  - **Cancellation Policy - Base:** This is the default policy applied to the entire rate and covers all dates unless overridden. If the **No refund** checkbox is selected, the rate will be non-refundable.
+  - **Cancellation Policy - Calendar:** This option becomes available after you’ve created a rate with a base cancellation policy. It allows you to define specific cancellation rules for certain dates or date ranges, overriding the base policy—for example, applying a stricter policy during high-demand periods like holidays.
+
+    :::info
+    If you want to remove a cancel policy by date you can click the **Delete range** button and specify your dates. You can also delete or check the cancel policies by day clicking in the day's number of the month.
+    :::
+
+
 
 ### Can I apply the same cancellation policy to a derived rate as the parent rate?
 
-Yes, when a rate is set up as a **Derived Rate**, it inherits many properties from its *parent* or *base* rate, and this typically includes the cancellation policy.
+Yes. When a rate is configured as a **Derived Rate**, it typically inherits many properties from its *parent* (or *base*) rate—including the cancellation policy.
 
-- **Clarification:** A derived rate is a child rate that is automatically updated based on the parent rate. If the parent rate's cancellation policy is updated, the derived rate's policy will also update automatically, unless you explicitly override the inherited policy during the derived rate setup.
-- **Important Note:** When setting up a Derived Rate, you will see a specific option to **Use Parent Cancellation Policy** or to **Define a New Policy**. This flexibility is key to managing promotions or special offers that may require a different cancellation rule.
+- **Clarification:** A derived rate is a child rate that automatically updates based on the parent rate. If the parent rate’s cancellation policy changes, the derived rate will also update accordingly—unless you explicitly override the inherited policy during setup.
+- **Important Note:** When setting up a Derived Rate, you will see the specific option to use **Cancel policies from base rate**.
+  - If this option is selected, the derived rate will adopt the parent rate’s cancellation policies.
+  - If it’s unchecked, you’ll have the ability to **define a new cancellation policy**. This flexibility allows you to tailor cancellation rules for promotions, special offers, or unique booking conditions.
 
 ### What are the common penalty structures available for cancellation policies?
 
-The common penalty structures for cancellations allow for flexibility in how you charge for cancellations or no-shows.
+Common cancellation penalty structures offer flexibility in how you handle charges for cancellations or no-shows.
 
-- **Example Structures:**
-    - **Fixed Amount:** A specific monetary amount regardless of the booking value (e.g., $50 cancellation fee).
-    - **Percentage of Total:** A percentage of the total booking amount (e.g., 25% of the total price).
-    - **Per Night Charge:** The cost equivalent to a specified number of nights (e.g., 1-night penalty).
-    - **Non-Refundable:** The full amount is charged and there is no refund upon cancellation. (Cancellation results in a charge of the full amount, and no refund will be issued.)
+**Penalty Structures:**
+    - **Import (Fixed Amount):** A specific monetary fee, regardless of the booking value (e.g., a $50 cancellation fee).
+    - **Percentage (Percentage of Total):** A percentage of the total reservation cost (e.g., 25% of the total booking amount).
+    - **Nights (Per Night Charge):** A penalty equal to the cost of a specified number of nights. For example, a 1-night penalty means the guest is charged the average price of one night, calculated from the entire stay.
+    - **No refund (Non-Refundable):** The full booking amount is charged, and no refund is provided in case of cancellation.
 
 ### How can I define a non-refundable rate using the Extranet?
 
-In the Extranet, when setting up a rate, you can explicitly configure it as **Non-Refundable**.
+In the Extranet, you can easily configure a rate as **Non-Refundable** during setup.
 
-- **Instruction:** When adding or editing a rate, look for the penalty options related to cancellation. Selecting the non-refundable option ensures that the entire amount is charged to the guest regardless of when they cancel.
+- **How to do it:** When adding or editing a rate, navigate to the cancellation penalty options. Select the Non-Refundable option to ensure that the full booking amount is charged to the guest, regardless of when they cancel.
+
+:::warning Important:
+Remember that if no cancellation policies are added or it is not explicitly stated that the rate is non-refundable, the rate will be considered 100% refundable until the check-in date.
+After the check-in date, the cancellation cost will be equal to the total value of the reservation.
+:::
 
 ### How are cancellation policies included when creating rates using the Inventory Push GraphQL API?
 
-When using the **Inventory Push GraphQL API** with the `createRatesSetUp` mutation to create or update rates, the cancellation policy details are included within the input structure of your API call. Specifically, the mutation requires you to provide data that defines the penalties.
+When using the **Inventory Push GraphQL API** with the `createRatesSetUp` mutation, cancellation policy details are specified within the [input structure](/api/types/inputs/cancel-policies-create-input) of your API call.  
 
-- **API Context:** You will use fields within the rate structure to specify the type of penalty (e.g., `CANCELLATION` or `NOSHOW`), the penalty structure (e.g., amount, percentage, or nights), and the deadlines associated with those penalties (e.g., a penalty applies if cancelled X days prior to check-in).
-- **Example API Structure Snippet:**
+You can define both `baseCancelPolicy` and `cancelPoliciesByDate` to cover general and date-specific cancellation rules.
 
-```graphql
-input RateSetUpInput {
-  ...
-  penalties: [PenaltyInput!]
-}
+### Can I modify an existing rate’s cancellation policy using the GraphQL API?
 
-input PenaltyInput {
-  type: PenaltyType! # e.g., CANCELLATION
-  structure: PenaltyStructureInput!
-  # Deadline fields for when the penalty applies
-  appliesUntilDaysBeforeCheckin: Int
-  ...
-}
-```
+Yes, you can update an existing rate’s cancellation policy using the `updateRatesSetUp` mutation in the Inventory Push GraphQL API. This allows you to modify specific fields, such as penalties, without needing to resend the full rate configuration.  
 
-### Is it possible to modify an existing rate's cancellation policy using the GraphQL API?
-
-Yes, you can modify an existing rate's cancellation policy using the **Inventory Push GraphQL API** by utilizing the `updateRatesSetUp` mutation.
-
-*   **Process:** You must reference the unique identifier of the existing rate you wish to change. In the mutation's input, you will send the new, updated cancellation policy details, which will overwrite the previous settings for that rate.
-*   **API Context:** The `updateRatesSetUp` mutation operates on the existing rate setup, allowing for targeted updates to fields like penalties without needing to re-send all rate data.
+**How it works:** Reference the rate code of the rate you want to update, and include the revised cancellation policy details in the mutation input. These updates will replace the existing cancellation settings for that rate.
 
 :::warning
 Always ensure that your cancellation policy is clearly communicated to the guest *before* they complete their booking. Failure to do so can result in disputes and loss of revenue. We strongly recommend having clear terms and conditions on your booking channels.

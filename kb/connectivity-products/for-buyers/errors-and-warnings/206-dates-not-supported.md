@@ -7,6 +7,17 @@ sidebar_position: 11
 ## What Does a 206 Error Mean?
 A **206 error** occurs when the dates in your search request do not align with the Seller's date specifications.
 
+#### Example:
+```json
+"errors": [
+            {
+              "code": "",
+              "description": "Dates Not Supported",
+              "type": "206"
+            }
+          ]
+```
+
 ### How Can I Check the Seller's Date Requirements and Avoid Errors?
 To verify the Seller's date specifications and minimize errors and unnecessary traffic, we strongly recommend using our [Metadata Query](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata).
 

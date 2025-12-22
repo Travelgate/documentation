@@ -24,9 +24,8 @@ Your API key remains the same across both test and production environments.
 An access is a combination of authentication details and configurations that enable a Buyer to connect with a Seller. It helps differentiate Sellers and manage multiple credentials or configurations from the same Seller (e.g., B2B vs. B2C feeds). You can review access details in [My Connections](https://app.travelgate.com/connections/myconnections).
 
 :::info
-Depending on their system specifications, **each Seller may have different access credentials requirements**. For example, some may need specific fields, while others require designated URL endpoints for methods such as search, quote, book, or others. This information should always be provided and confirmed by each Seller. 
-
-Make sure your credentials are active and fully functional before proceeding, as using inactive credentials can cause delays.
+- **Each Seller may have different access credential requirements** depending on their system specifications. Some may require only basic fields, while others require additional data or specific URL endpoints for methods such as Search, Quote, or Book. Supplier authorization may rely on a username and password or a Supplier-generated API key (**not to be confused with the [Travelgate API Key](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials#api-key)** used to authenticate Travelgate users).
+- All access details must be provided and confirmed by each Seller.
 :::
 
 #### Recommended Test Accesses for Hotel-X Implementation:

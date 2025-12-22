@@ -524,8 +524,14 @@ Additional notes on bookings.
 - **Report**  
 Document providing metrics like booking performance.
 
+- **Request (RQ)**  
+A Request (RQ) is a transaction in which a client sends a structured message to a method to invoke an operation. The request typically includes input parameters and other data required for execution, and represents the initiation of processing and the action being requested.
+
 - **ReservationNotif**  
 Notification of reservation to Push suppliers.
+
+- **Response (RS)**  
+A Response (RS) is a transaction in which a method returns a structured message to a client after executing an operation. The response typically includes output data and other information produced during execution, and represents the completion of processing and the outcome of the request.
 
 - **REST**  
 An architecture for designing network applications.

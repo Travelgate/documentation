@@ -43,9 +43,9 @@ Common cancellation penalty structures offer flexibility in how you handle charg
 
 In the Extranet, you can easily configure a rate as **Non-Refundable** during setup.
 
-- **How to do it:** When adding or editing a rate, navigate to the cancellation penalty options. Select the Non-Refundable option to ensure that the full booking amount is charged to the guest, regardless of when they cancel.
+**How to do it:** When adding or editing a rate, navigate to the cancellation penalty options. Select the Non-Refundable option to ensure that the full booking amount is charged to the guest, regardless of when they cancel.
 
-:::warning Important:
+:::warning Cancel Policies via the Inventory Extranet
 Remember that if no cancellation policies are added or it is not explicitly stated that the rate is non-refundable, the rate will be considered 100% refundable until the check-in date.
 After the check-in date, the cancellation cost will be equal to the total value of the reservation.
 :::
@@ -56,12 +56,22 @@ When using the **Inventory Push GraphQL API** with the `createRatesSetUp` mutati
 
 You can define both `baseCancelPolicy` and `cancelPoliciesByDate` to cover general and date-specific cancellation rules.
 
+:::warning Cancel Policies via Inventory Push GraphQL API
+
+When you create or update a rate, we recommend always sending *cancelPolicies*, specifically *baseCancelPolicy*. Our API allows you to send *cancelPoliciesByDate* 
+without a base policy; however, if any availability day is not covered, you must provide a *baseCancelPolicy*.  
+
+For this reason, when you create or update a rate without a *baseCancelPolicy* our system automatically adds a base cancellation policy with `daysBeforeArrival: 999`, `penaltyType: PERCENTAGE` and `value: 100`, making the rate **non refundable**.
+
+This prevents a [rate without cancellation policies](../../../../../apps/inventory/extranet/set-up/setup) from being considered 100% refundable.
+:::
+
 ### Can I modify an existing rate’s cancellation policy using the GraphQL API?
 
 Yes, you can update an existing rate’s cancellation policy using the `updateRatesSetUp` mutation in the Inventory Push GraphQL API. This allows you to modify specific fields, such as penalties, without needing to resend the full rate configuration.  
 
 **How it works:** Reference the rate code of the rate you want to update, and include the revised cancellation policy details in the mutation input. These updates will replace the existing cancellation settings for that rate.
 
-:::warning
+:::tip
 Always ensure that your cancellation policy is clearly communicated to the guest *before* they complete their booking. Failure to do so can result in disputes and loss of revenue. We strongly recommend having clear terms and conditions on your booking channels.
 :::

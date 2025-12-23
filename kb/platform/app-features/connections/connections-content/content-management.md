@@ -63,15 +63,15 @@ The information displayed on the Connections Content screen **depends on the dat
     ![tg_download_portfolio2](https://storage.travelgate.com/kbase/tg_download_portfolio2.jpg)
 
 
-## Content blacklist
+## Customize hotel list
 
-### What is the "Content blacklist" functionality?
-This feature allows Sellers to **exclude specific hotels from their portfolio for a given Buyer credential** (Buyer Access Code). Even if their system returns the full list of properties, Sellers can control which hotels are visible to each Buyer by blacklisting selected hotels on their end.
+### What is the "Customize hotel list" functionality?
+This feature allows Sellers to **exclude specific hotels from their portfolio for a given Buyer credential** (Buyer Access Code). Even if the Seller’s system returns the full property list, they can control which hotels are visible to each Buyer by explicitly filtering out selected hotels at their end
 
-### Who can use the "Content blacklist" functionality?
+### Who can use the "Customize hotel list" functionality?
 This functionality is **only available to Sellers** on the platform. If your organization operates with both Buyer and Seller profiles, ensure you access this section using your Seller profile.
 
-### How can I use the "Content blacklist" functionality?
+### How can I use the "Customize hotel list" functionality?
 
 1. **Log in** to [Travelgate](https://www.travelgate.com/) and confirm you are browsing as a Seller.
 2. **Go to the Connections Content** section and filter by the desired connection and access to view the list of hotels returned for those credentials.
@@ -79,9 +79,8 @@ This functionality is **only available to Sellers** on the platform. If your org
 
     ![tg_connections_content_blacklist_1](https://storage.travelgate.com/kbase/tg_connections_content_blacklist_1.png)
 
-4. **Click the "Content blacklist" button** to open the Configuration screen. Here you’ll see:
+4. **Click the "Customize hotel list" button** to open the Configuration screen. Here you’ll see:
     - A summary of the selected connection/access
-    - The current operation (currently only the blacklist option is available)
     - The "Upload CSV" button
 
     ![tg_connections_content_blacklist_2](https://storage.travelgate.com/kbase/tg_connections_content_blacklist_2.png)
@@ -102,10 +101,10 @@ The CSV file:
         - Review the uploaded data
         - Download or remove the file if needed
         - Confirm the changes
-7. Once confirmed, the content blacklist will be applied to the selected access, and a notification will appear in the **notification bell** confirming the update. Note that the processing time will depend on the size of the blacklist file.
+7. Once confirmed, the Customize hotel list will be applied to the selected access, and a notification will appear in the **notification bell** confirming the update. Note that the processing time will depend on the size of the blacklist file.
 
 :::warning important
-- The content blacklist functionality relies on the supplier hotel code as shown in our Marketplace. As a Seller, you can obtain the list of hotel codes for a Buyer's hotel list either by clicking on individual hotel codes or by [downloading the full portfolio as a CSV file](/kb/platform/app-features/connections/connections-content/content-management#how-can-i-download-the-sellers-portfolio-in-csv) (hotelCode field).
+- The Customize hotel list functionality relies on the supplier hotel code as shown in our Marketplace. As a Seller, you can obtain the list of hotel codes for a Buyer's hotel list either by clicking on individual hotel codes or by [downloading the full portfolio as a CSV file](/kb/platform/app-features/connections/connections-content/content-management#how-can-i-download-the-sellers-portfolio-in-csv) (hotelCode field).
 - If you encounter errors, **ensure your CSV file meets the expected criteria:**
     - CSV format
     - A single column
@@ -114,16 +113,16 @@ The CSV file:
     - Only hotel codes currently present in the portfolio for the selected connection
 :::
 
-### As a Seller, how can I edit or remove a content blacklist for one of my Buyers?
-To edit or remove a content blacklist for a specific access, follow these steps:
+### As a Seller, how can I edit or remove a Customize hotel list for one of my Buyers?
+To edit or remove a Customize hotel list for a specific access, follow these steps:
 1. Go to the Connections Content screen and **filter by the desired connection and access**.
-2. Locate the **"Edit content blacklist"** button next to the "Download CSV" button, then click it to view the current blacklist configuration.
+2. Locate the **"Edit Customize hotel list"** button next to the "Download CSV" button, then click it to view the current blacklist configuration.
 
     ![tg_connections_content_blacklist_5](https://storage.travelgate.com/kbase/tg_connections_content_blacklist_5.png)
 3. To remove the blacklist, simply click **"Delete blacklist"**.
 4. **To edit** the blacklist:
     - First, delete the existing blacklist using the step above.
-    - Then, upload a new CSV file with the updated list of blacklisted hotel codes, following the same process outlined in the ["How can I use the 'Content blacklist' functionality?"](/kb/platform/app-features/connections/connections-content/content-management#how-can-i-use-the-content-blacklist-functionality) section.
+    - Then, upload a new CSV file with the updated list of blacklisted hotel codes, following the same process outlined in the ["How can I use the 'Customize hotel list' functionality?"](/kb/platform/app-features/connections/connections-content/content-management#how-can-i-use-the-content-blacklist-functionality) section.
     
     ![tg_connections_content_blacklist_4](https://storage.travelgate.com/kbase/tg_connections_content_blacklist_4.png)
 
@@ -187,7 +186,7 @@ If you've followed all the steps and still do not have the most up-to-date conte
 
             This setup is used for accesses where the Seller provides exactly the same hotel list to multiple Buyers.
 
-            Because the hotel list is shared, **Content features such as content blacklist are not available**, as they would affect all accesses that share the same hotel list.
+            Because the hotel list is shared, **Content features such as Customize hotel list are not available**, as they would affect all accesses that share the same hotel list.
 
             If you need an access to stop being shared, please contact our [Customer Support team](https://app.travelgate.com/support), and we will assist you with the request.
         </div>

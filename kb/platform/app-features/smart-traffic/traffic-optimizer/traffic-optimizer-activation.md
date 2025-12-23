@@ -19,6 +19,7 @@ sidebar_position: 3
    - **By Connection:** Optimizes all current and future accesses under a Partner connection. If new accesses are added to the connection, they will also be automatically optimized.
    - **By Access:** Optimizes only specific accesses under a Partner connection. Future accesses will not be automatically optimized.
    :::
+   ![traffic_optimizer_5](https://storage.travelgate.com/kbase/traffic_optimizer_5.jpg)
 
 5. **Configure the optimization criteria**: Define the connection/access details and select the optimization criteria.
    ![traffic_optimizer_4](https://storage.travelgate.com/kbase/traffic_optimizer_4.jpg)
@@ -69,7 +70,7 @@ To view blocked hotels:
 2. Click on **'Actions' > 'View Blocked Hotels'**.
 3. Use filters to search by hotel name, code, or optimization criteria.
 
-![traffic_optimizer_5](https://storage.travelgate.com/kbase/traffic_optimizer_5.jpg)
+![traffic_optimizer_7](https://storage.travelgate.com/kbase/traffic_optimizer_7.jpg)
 
 4. You can also request a CSV file containing all the blocked hotels by clicking **Download CSV**. Once the file is generated, you will receive a notification to download it.
 

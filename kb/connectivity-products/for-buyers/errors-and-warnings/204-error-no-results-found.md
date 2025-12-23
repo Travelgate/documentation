@@ -7,6 +7,17 @@ sidebar_position: 9
 ## What Does a 204 Error Mean?
 A **204 error** occurs when a Seller does not return any results for the specific search criteria in the Buyer's request (e.g., hotel, dates, market, etc.).
 
+#### Example:
+```json
+"errors": [
+            {
+              "code": "",
+              "description": "No results found",
+              "type": "204"
+            }
+          ]
+```
+
 This error is primarily returned in **Search responses**, but it can also appear in **Quote** or **Book responses** if an additional search is required for the method.
 
 As a Buyer, you can audit the Seller's response by setting `auditTransactions` to `true` in your Search request.

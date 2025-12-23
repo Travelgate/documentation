@@ -32,9 +32,9 @@ Our goal has always been to make connecting with a Partner easier and faster.
         <img src="https://storage.travelgate.com/kbase/autoconnections_step3_2.png" alt="quickguide_to_autoconnections_step3_2" width="500" height=""/>
         
         :::info
-        Depending on their system specifications, **each Seller may have different access credentials requirements**. For example, some may need specific fields, while others require designated URL endpoints for methods such as search, quote, book, or others. This information should always be provided and confirmed by each Seller.  
-        
-        Make sure your credentials are active and fully functional before proceeding, as using inactive credentials can cause delays.
+        - **Each Seller may have different access credential requirements** depending on their system specifications. Some may require only basic fields, while others require additional data or specific URL endpoints for methods such as Search, Quote, or Book. Supplier authorization may rely on a username and password or a Supplier-generated API key (**not to be confused with the [Travelgate API Key](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials#api-key)** used to authenticate Travelgate users).
+        - All access details must be provided and confirmed by each Seller.
+        - Make sure your credentials are active and fully functional before proceeding, as using inactive credentials can cause delays.
         :::
 
     - **Step 3 (Notification Setup)**: Provide one or more contact email addresses for the Partner you are connecting with, so they can be notified once the connection is created and ready for use. **The Partner contact email must be registered in Travelgate**. You can also use the 'Other Contacts' field to add additional email addresses—such as colleagues or relevant team members—who should receive the notifications.

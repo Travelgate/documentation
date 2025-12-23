@@ -61,7 +61,7 @@ You can define both `baseCancelPolicy` and `cancelPoliciesByDate` to cover gener
 When you create or update a rate, we recommend always sending *cancelPolicies*, specifically *baseCancelPolicy*. Our API allows you to send *cancelPoliciesByDate* 
 without a base policy; however, if any availability day is not covered, you must provide a *baseCancelPolicy*.  
 
-For this reason, when you create or update a rate without a *baseCancelPolicy* our system automatically adds a base cancellation policy with `daysBeforeArrival: 999`, `penaltyType: PERCENTAGE` and `value: 100`, making the rate **non refundable**.
+For this reason, when you create or update a rate without a *baseCancelPolicy* our system automatically adds a base cancellation policy with `daysBeforeArrival: 999`, `penaltyType: PERCENTAGE` and `value: 100`, making the rate **non-refundable**.
 
 This prevents a rate without cancellation policies from being considered 100% refundable.
 :::

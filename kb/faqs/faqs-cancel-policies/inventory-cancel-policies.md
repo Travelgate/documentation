@@ -63,7 +63,7 @@ without a base policy; however, if any availability day is not covered, you must
 
 For this reason, when you create or update a rate without a *baseCancelPolicy* our system automatically adds a base cancellation policy with `daysBeforeArrival: 999`, `penaltyType: PERCENTAGE` and `value: 100`, making the rate **non refundable**.
 
-This prevents a [rate without cancellation policies](../../../../../apps/inventory/extranet/set-up/setup) from being considered 100% refundable.
+This prevents a rate without cancellation policies from being considered 100% refundable.
 :::
 
 ### Can I modify an existing rate’s cancellation policy using the GraphQL API?

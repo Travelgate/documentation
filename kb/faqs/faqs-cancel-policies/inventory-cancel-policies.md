@@ -15,7 +15,7 @@ The Extranet allows for two primary Cancellation policy types:
   - **Cancellation Policy - Calendar:** This option becomes available after you’ve created a rate with a base cancellation policy. It allows you to define specific cancellation rules for certain dates or date ranges, overriding the base policy—for example, applying a stricter policy during high-demand periods like holidays.
 
     :::info
-    If you want to remove a cancel policy by date you can click the **Delete range** button and specify your dates. You can also delete or check the cancel policies by day clicking in the day's number of the month.
+    If you want to remove a cancel policy by date you can click the **Delete range** button and specify your dates. You can also delete or check the cancel policies by day by clicking on the day's number of the month.
     :::
 
 

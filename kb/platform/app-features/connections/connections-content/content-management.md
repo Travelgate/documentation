@@ -66,7 +66,7 @@ The information displayed on the Connections Content screen **depends on the dat
 ## Customize hotel list
 
 ### What is the "Customize hotel list" functionality?
-This feature allows Sellers to **exclude specific hotels from their portfolio for a given Buyer credential** (Buyer Access Code). Even if the Seller’s system returns the full property list, they can control which hotels are visible to each Buyer by explicitly filtering out selected hotels at their end
+This feature allows Sellers to **exclude specific hotels from their portfolio for a given Buyer credential** (Buyer Access Code). Even if the Seller’s system returns the full property list, they can control which hotels are visible to each Buyer by explicitly filtering out selected hotels at their end.
 
 ### Who can use the "Customize hotel list" functionality?
 This functionality is **only available to Sellers** on the platform. If your organization operates with both Buyer and Seller profiles, ensure you access this section using your Seller profile.

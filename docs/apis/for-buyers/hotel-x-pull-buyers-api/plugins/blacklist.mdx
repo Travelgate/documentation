@@ -4,14 +4,36 @@ sidebar_position: 3
 
 # Blacklist
 
-The Blacklist App allows Buyers to define business rules that block search traffic to specific hotels or suppliers. This helps streamline results and enforce your internal policies. You can create rules based on multiple conditions, such as country, hotel, date range, or rate type (packages, non-refundable, etc.).
+The Blacklist plugin allows Buyers to define business rules to control how Search requests are executed across different suppliers.  
+It is especially useful when working in aggregator mode with FastX codes, where a single Search request can be sent to multiple suppliers at the same time.
+
+With this plugin, Buyers can allow or block search traffic to specific hotels or suppliers based on configurable criteria.  
+This provides fine-grained control over which suppliers are queried in each Search, helping Buyers apply commercial and operational rules directly in their booking flow.
+
+### Typical use cases
+
+Some common scenarios where the Blacklist plugin is especially useful include:
+
+- **Blocking traffic from a specific nationality to a given supplier**  
+  For example, prevent searches from users with nationality `FR` from being sent to supplier `SUP1`.
+
+- **Allowing searches only for a defined set of hotels for a specific access**  
+  For example, restrict an access so that Search requests are executed only for a predefined list of FastX hotel codes.
+
+- **Excluding a supplier for certain countries or markets**  
+  For example, avoid querying a supplier when the hotel country is `US` or `BR`.
+
+- **Controlling supplier participation when using FastX aggregation**  
+  For example, when multiple suppliers provide the same hotel, allow only selected suppliers to be queried based on your commercial strategy.
+
+These rules are evaluated dynamically at Search time, giving you full control over how your availability requests are distributed across suppliers.
 
 To use the Blacklist plugin, you need to:
 
-1. Create your Blacklist rules (via website or SFTP file).
-2. Add the plugin to your Hotel-X search query.
+1. anage your Blacklist rules (via the website or by uploading a file via SFTP).
+2. Add the plugin to your Hotel-X Search query.
 
-## 1. Create your Blacklist Rules on our Travelgate website
+## 1. Manage your Blacklist Rules on our Travelgate website
 
 Hotel-X will block the traffic according to the **Blacklist rules** you create on our [Travelgate website](https://app.travelgate.com/connections/plugins), under **Plugins → Blacklist**. 
 
@@ -30,45 +52,60 @@ Creating or editing a rule is done through a simple **3-step form** in the **Bla
 
 ### Step 1. Rule Name
 
-Give your rule a clear and identifiable name.  
-This name will help you easily recognize the rule later when managing or prioritizing your rules.
+Provide a clear and descriptive name for your rule.  
+This will help you easily identify it later when managing priorities or reviewing existing rules.
 
 ![Blacklist Step 1](https://stplaformwe.blob.core.windows.net/docs/blacklist_step1.png)
 
 ### Step 2. Rule Configuration
 
-This step defines both the **target criteria** under which your block will apply and the **hotels** affected.
+This step defines both the **conditions** under which the rule applies and the **scope** of hotels affected.
 
 #### 2.1 Target Criteria
 
-Specify the conditions that must be met for this blacklist rule to apply. You can define:
+This section defines the **conditions that must be met in the Search request** for the rule to be applied.  
+Only when these criteria match the incoming Search request will the **Blacklist or Whitelist behavior configured in the next step** be executed.
 
-* Clients
-* Suppliers
-* Accesses
-* Markets (optional)
-* Nationalities (optional)
+- Clients  
+- Suppliers  
+- Accesses  
+- Markets (optional)  
+- Nationalities (optional)
 
-You can select **all clients and suppliers**, or only specific ones. You can also **exclude certain clients or suppliers** using the checkboxes — meaning the rule will apply to all except those marked.
+You may select **all clients, suppliers or accesses**, or restrict the rule to specific ones.  
+Using the exclusion checkboxes, you can also apply the rule to *all except* the selected clients or suppliers.
 
 ![Blacklist Step 2.1](https://stplaformwe.blob.core.windows.net/docs/blacklist_step2.png)
 
-#### 2.2 Hotels
+#### 2.2 Hotels 
 
-In this section, you configure:
+This section defines **what action will be applied** once the conditions specified in **Step 2.1** are met.  
+In other words, after a Search request matches the target criteria, this configuration determines **how traffic will be allowed or blocked** and **which hotels are affected**.
 
-* Whether the rule is a **Blacklist** or **Whitelist**.
-* The **Buyer context** (if using FastX codes, check the FastX option).
-* The hotels affected:
-  * All hotels
-  * Specific hotel codes
-  * All hotels in one or more countries
+Here you can configure:
+
+- **List type**
+  - **Blacklist**: blocks traffic for the selected hotels.
+  - **Whitelist**: allows traffic *only* for the selected hotels and blocks all others.
+
+- **Buyer context**
+  - Select the context in which the rule applies.
+  - If you are using **FastX codes**, make sure to enable the **FastX** option.
+
+- **Hotel scope**
+  - All hotels
+  - A specific list of hotel codes within the previously selected context
+  - All hotels located in one or more countries
+
+This configuration gives you precise control over which hotels are included or excluded from Search requests that match the defined criteria.
 
 ![Blacklist Step 2.2](https://stplaformwe.blob.core.windows.net/docs/blacklist_step2b.png)
 
+
 ### Step 3. Review and Create the Rule
 
-Before saving, review all configurations. Once confirmed, click **Create Rule**.  
+Review all configured settings to ensure they match your intended behavior.  
+Once confirmed, click **Create Rule** to activate it.
 
 ![Blacklist Step 3](https://stplaformwe.blob.core.windows.net/docs/blacklist_step3.png)
 
@@ -79,8 +116,9 @@ You can also:
 * Access **logs** to track which user created or modified each rule and when the changes occurred.
 
 
-## Optional: Create your Blacklist Rules using a file
-
+<details>
+    <summary>Optional: Create your Blacklist Rules using a file</summary>
+    <div>
 You can also create your Blacklist Rules uploading a file to our SFTP server instead of using our website.
 
 To get started, create your blacklist file in the correct format and then upload it to your FTP account. We've provided a template file below ⬇️ to help you with this process. Just click on the file name, add your own rules, save it in CSV format, and then upload it to the corresponding folder in your FTP.
@@ -102,7 +140,7 @@ If you need assistance with requesting your credentials to access the SFTP serve
 
 :::
 
-### File Format Specification
+**File Format Specification**
 
 * **File Name:** blacklist_access_hotels.csv
 * **Directory:** HotelX/HotelX_0000/BusinessRules
@@ -147,7 +185,7 @@ Keep in mind that this file contains a collection of rules, and the system will 
 </details>
 
 
-### Check Some of the Most Common Use Cases
+**Check Some of the Most Common Use Cases**
 
 Here are some common use cases for the Blacklist plugin, along with the CSV template file to use:
 
@@ -156,6 +194,11 @@ Here are some common use cases for the Blacklist plugin, along with the CSV temp
 | Block all hotels of two accesses                              | 📄[blacklist  _access  _hotels.csv](https://storage.travelgate.com/docs/blacklist_access_hotels-1.csv) |
 | Block all hotels of two suppliers                             | 📄[blacklist  _access  _hotels.csv](https://storage.travelgate.com/docs/blacklist_access_hotels-2.csv) |
 | Block all hotels except “A” and “B” of two suppliers          | 📄[blacklist  _access  _hotels.csv](https://storage.travelgate.com/docs/blacklist_access_hotels-3.csv) |
+
+    </div>
+</details>
+
+
 
 
 ## 2. Execute Blacklist Plugin in your Query
@@ -200,3 +243,150 @@ To apply a specific rule in a query, add the `clientTokens` field to the `settin
         ]
 	}
 ```
+
+## Rule Configuration Examples
+
+Below are some common examples of how Buyers use the Blacklist plugin to apply business rules and control Search traffic across suppliers.
+
+### Example 1. Block traffic from a specific nationality to a supplier
+
+**Use case:**  
+Prevent Search requests from users with nationality `FR` from being sent to supplier `SUP1`.
+
+#### Rule configuration
+
+| Step | Configuration |
+|-----|---------------|
+| **Target Criteria (Step 2.1)** | Supplier: `SUP1`<br/>Nationality: `FR` |
+| **Hotels (Step 2.2)** | Rule type: **Blacklist**<br/>Hotel scope: All hotels |
+
+#### Evaluation
+- If a Search request with nationality `FR` is sent to `SUP1` → the request is **blocked**.
+- All other Search requests are not affected by this rule.
+
+
+### Example 2. Allow searches only for specific hotels on a given access
+
+**Use case:**  
+Restrict a specific access so that availability is searched only for a predefined list of hotels.
+
+#### Rule configuration
+
+| Step | Configuration |
+|-----|---------------|
+| **Target Criteria (Step 2.1)** | Access: `ACCESS_ABC` |
+| **Hotels (Step 2.2)** | Rule type: **Whitelist**<br/>Hotel scope: Specific hotel codes (within the selected context) |
+
+#### Evaluation
+- If a Search request is executed using access `ACCESS_ABC` → only the selected hotels are queried.
+- All other hotels are automatically excluded for that access.
+
+### Example 3. Exclude a supplier for specific markets
+
+**Use case:**  
+Avoid querying a supplier when the Search market is `US` or `BR`.
+
+#### Rule configuration
+
+| Step | Configuration |
+|-----|---------------|
+| **Target Criteria (Step 2.1)** | Supplier: `SUP2`<br/>Markets: `US`, `BR` |
+| **Hotels (Step 2.2)** | Rule type: **Blacklist**<br/>Hotel scope: All hotels |
+
+#### Evaluation
+- If a Search request is sent to `SUP2` with market `US` or `BR` → the request is **blocked**.
+- Search requests for other markets are not affected.
+
+
+
+
+## Best Practices for Rule Configuration
+
+To ensure rules behave as expected, always separate clearly:
+
+- **When a rule applies** → *Target Criteria (Step 2.1)*  
+- **What the rule does** → *Hotels (Step 2.2)*
+
+The following best practices help avoid unexpected behavior when configuring rules.
+
+### Best Practice 1: Group rules with the same target criteria into a single rule
+
+When multiple rules share the **same target criteria** and only differ by values such as destination country or hotel code, they should be grouped into **one single rule**.
+
+Because the plugin applies **only the first matching rule**, splitting values across multiple rules may cause some of them to never be evaluated.
+
+#### Example: Blocking multiple destinations on the same access
+
+**❌ Incorrect setup (multiple rules with the same target criteria)**
+
+| Rule | Target Criteria (Step 2.1) | Hotels (Step 2.2) |
+|-----|----------------------------|-------------------|
+| Rule A | Access: `387` | Rule type: Blacklist<br/>Destination: `US` |
+| Rule B | Access: `387` | Rule type: Blacklist<br/>Destination: `ES` |
+
+**What happens:**
+- The first rule that matches access `387` is applied.
+- The second rule is never evaluated.
+- Only **one destination** is effectively blocked.
+
+
+**✅ Correct setup (single rule)**
+
+| Target Criteria (Step 2.1) | Hotels (Step 2.2) |
+|---------------------------|-------------------|
+| Access: `387` | Rule type: Blacklist<br/>Destinations: `US`, `ES` |
+
+**What happens:**
+- Both destinations are correctly blocked using a single rule.
+
+:::tip Recommendation
+If rules share the same scope and action, always group all values into **one rule**.
+:::
+
+
+### Best Practice 2: Order rules carefully when combining Blacklist and Whitelist rules
+
+When **Blacklist** and **Whitelist** rules overlap, **rule order is critical**. Always place **more specific rules first**, followed by more generic ones.
+
+#### Example: Allowing traffic for a specific access while blocking it globally
+
+**Business requirement:**
+- Block all traffic for destination `ES` for supplier `SUP1`.
+- Allow traffic for destination `ES` **only** for access `2323`.
+
+
+**✅ Correct configuration**
+
+| Rule | Target Criteria (Step 2.1) | Hotels (Step 2.2) |
+|-----|----------------------------|-------------------|
+| Rule 1 (Whitelist – specific) | Supplier: `SUP1`<br/>Access: `2323` | Rule type: Whitelist<br/>Destination: `ES` |
+| Rule 2 (Blacklist – generic) | Supplier: `SUP1` | Rule type: Blacklist<br/>Destination: `ES` |
+
+**Priority order:**
+1. Rule 1  
+2. Rule 2  
+
+**Evaluation flow:**
+- If a Search request for destination `ES` is sent to `SUP1` using access `2323` → **Rule 1 applies (allowed)**.
+- If a Search request for destination `ES` is sent to `SUP1` using any other access → **Rule 2 applies (blocked)**.
+- Searches for other destinations are not affected.
+
+
+**❌ Incorrect configuration (rules reversed)**
+
+**Priority order:**
+1. Rule 2 (generic Blacklist)  
+2. Rule 1 (specific Whitelist)  
+
+**Evaluation flow:**
+- If a Search request for destination `ES` is sent to `SUP1` → **Rule 2 applies first and blocks the request**.
+- Rule 1 is **never evaluated**, even when the access is `2323`.
+
+:::warning Important
+When Whitelist and Blacklist rules are mixed, incorrect ordering can completely override more specific rules.
+:::
+
+
+
+
+

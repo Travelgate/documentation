@@ -9,13 +9,14 @@ A **"TRAFFIC_OPTIMIZATION_ERROR"** occurs when a connection or access has been a
 
 #### Example:
 ```json
-[
-    {
-        "code" : "BLACKLIST",
-        "type" : "TRAFFIC_OPTIMIZATION_ERROR",
-        "description" : "Access: xxx has no codes left after filter hotel codes."
-    }
-]
+"warnings": [
+                    {
+                        "external": null,
+                        "type": "TRAFFIC_OPTIMIZATION_ERROR",
+                        "code": "BLACKLIST",
+                        "description": "Access: 'xxx' has no codes left after filter hotel codes"
+                    }
+                ]
 ```
 
 ### What Can I Do If I Receive a "TRAFFIC_OPTIMIZATION_ERROR"? 

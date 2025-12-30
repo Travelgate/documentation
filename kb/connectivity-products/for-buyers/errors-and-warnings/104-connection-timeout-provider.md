@@ -7,6 +7,17 @@ sidebar_position: 5
 ## What Does a 104 Error Mean?
 A **104 error** occurs when the Seller's response time exceeds the timeout set in the Buyer's request.
 
+#### Example:
+```json
+"errors": [
+            {
+              "code": "",
+              "description": "Connection Timeout With Provider",
+              "type": "104"
+            }
+          ]
+```
+
 ## Timeout Configuration by API
 
 ### Hotel-X Buyers API

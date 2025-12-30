@@ -24,8 +24,22 @@ The **API Settings** section allows you define default values for your Hotel-X P
 
     #### 1. Organization Settings
 
-    This is the most general level of configuration. Settings applied here affect your entire Organization or Hotel-X Group.  
-    Refer to our [Hotel-X API Settings documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/making-requests/settings) for more details.
+    This is the most general level of configuration. Settings applied here affect your entire Organization or Hotel-X Group.
+
+    At this level, default settings are grouped into three main categories:
+
+    - **Default business settings**  
+    Related to business and search criteria fields used in your queries, such as currency, market, nationality, and rate rules (for example, package, refundable, non-refundable, etc.).
+
+    - **Default timeout settings**  
+    Define the default timeout values applied to Search, Quote, and Book requests.
+
+    - **Default FastX settings**  
+    Related to FastX-specific functionalities in the booking flow when using FastX hotel codes, allowing you to control how FastX behaves across your searches and bookings.
+
+    :::info
+     Refer to our [Hotel-X API Settings documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/making-requests/settings) for more details.
+    :::
 
     ![default-api-settings-organization](https://storage.travelgate.com/kbase/default-api-settings-organization.jpg)
 
@@ -36,29 +50,42 @@ The **API Settings** section allows you define default values for your Hotel-X P
     ![default-api-settings-client](https://storage.travelgate.com/kbase/default-api-settings-client.jpg)
 
     - **Create a New Client**  
-    Click **"Create New Client"** to add one - By default, new clients inherit all connection accesses. If your Search query doesn’t specify an access, all available accesses will be used.
+    To add a new client. By default, new clients inherit all connection accesses. If your Search query doesn’t specify an access, all available accesses will be used.
 
-    - **Customize Client Accesses**  
-    Click **"Edit Default Accesses"** to manage access permissions for a client. Uncheck the default box and select the specific accesses you want. If you've assigned specific access permissions to your clients, always use the corresponding clients in your requests to avoid any issues.
+    - **Edit Default Accesses**  
+    To manage access permissions for a client. Uncheck the default box and select the specific accesses you want. If you've assigned specific access permissions to your clients, always use the corresponding clients in your requests to avoid any issues.
 
-    - **Customize Client Default Settings**  
-    To define settings that override the organization-level defaults, click **"Edit Default Settings"**.  
+    - **Edit Default Settings**  
+    To define settings that override the organization-level defaults.  
 
-        :::info Using Our Legacy Pull Buyers API?
-        Legacy clients (or "hub users") come with an associated password. You can retrieve it by clicking **"Get Password"**.
-        ![api-settings-new-updated-7](https://storage.travelgate.com/kbase/apisettings_9.png)
-        :::
+    - **View Logs**  
+    To review the history of changes applied to the client configuration. This section shows what was modified, when the change occurred, and which user performed the action.
+
+
+    :::info Using Our Legacy Pull Buyers API?
+    Legacy clients (or "hub users") come with an associated password. You can retrieve it by clicking **"Get Password"**.
+    ![api-settings-new-updated-7](https://storage.travelgate.com/kbase/apisettings_9.png)
+    :::
 
 
     #### 3. Supplier Settings
 
-    Set default configurations for individual suppliers. These settings override both Organization and Client-level defaults and apply to **all accesses** associated with the selected supplier.
+    - **Edit Default Settings**  
+    To define default configurations for a specific supplier. These settings override both Organization and Client defaults and apply to **all accesses** linked to that supplier.
+
+    - **View Logs**  
+    To review the history of changes applied to the supplier configuration. This section shows what was modified, when the change occurred, and which user performed the action.
 
     ![default-api-settings-supplier](https://storage.travelgate.com/kbase/default-api-settings-supplier.jpg)
 
 
     #### 4. Access Settings
 
-    Need full control over a specific connection between a Buyer and a Supplier? Request **Access-level settings**, which take precedence over all others — except those set directly in the API request.
+    - **Edit Default Settings**  
+    To define default configurations for a specific access. These settings override Organization, Client, and Supplier-level defaults, and are only overridden by values explicitly set in the API request.
+
+    - **View Logs**  
+    To review the history of changes applied to the access configuration. This section shows what was modified, when the change occurred, and which user performed the action.
+
 
     ![default-api-settings-access](https://storage.travelgate.com/kbase/default-api-settings-access.jpg)

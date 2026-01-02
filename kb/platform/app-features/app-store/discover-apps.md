@@ -13,9 +13,9 @@ Welcome to the Travelgate App Store — your one-stop destination for apps desig
 
 In the Travelgate App Store, you’ll find both **Travelgate-built apps (pre-installed)** and **third-party apps** — all created to help you optimize your connections and maximize your sales through the Travelgate platform.
 
-To browse available apps, go to the [App Store](https://app.travelgate.com/app-store/discover-apps) section in the top main menu and use the available filters to refine your search.
+To browse available apps, go to the [Travelgate Store](https://app.travelgate.com/app-store/discover-apps) section in the top main menu and use the available filters to refine your search.
 
-![App Store - Discover Apps](https://stplaformwe.blob.core.windows.net/kbase/appstore_discover.png)
+![Travelgate Store - Discover Apps](https://stplaformwe.blob.core.windows.net/kbase/appstore_discover.png)
 
 Each app includes several key sections:
 

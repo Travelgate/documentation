@@ -7,6 +7,15 @@ sidebar_position: 12
 ## What Does a 207 Error Mean?
 A **207 error** occurs when a Buyer's request does not conform to the Supplier's specifications.
 
+#### Example:
+```xml
+    <applicationErrors>
+      <type>207</type>
+      <description>Request XML not accepted by supplier</description>
+      <httpStatusCode>0</httpStatusCode>
+    </applicationErrors>
+```
+
 ### What Can I Do as a Buyer if I Receive a 207 Error?
 If you receive a 207 error in your response, follow these steps:
 

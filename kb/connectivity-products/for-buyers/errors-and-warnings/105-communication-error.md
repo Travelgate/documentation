@@ -7,6 +7,18 @@ sidebar_position: 6
 ## What Does a 105 Error Mean?
 A **105 error** occurs when the connection to the Seller is refused, meaning Travelgate was unable to establish a connection with their system.
 
+#### Example:
+
+```json
+"errors": [
+            {
+              "code": "",
+              "description": "Error Description",
+              "type": "105"
+            }
+          ]
+```
+
 ## How to Handle a 105 Error
 
 #### 1. **Verify Your URLs**

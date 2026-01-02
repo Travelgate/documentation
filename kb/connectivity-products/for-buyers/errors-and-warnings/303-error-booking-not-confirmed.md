@@ -7,8 +7,13 @@ sidebar_position: 15
 ## What Does a 303 Error Mean?
 A **303 error** is uncommon but may appear in the Book response (Reservation response) when a Seller is unable to confirm a booking.
 
+#### Example:
 ```xml
-<type>303</type> <description>Booking not confirmed</description>
+<applicationErrors>
+    <type>303</type>
+    <description>Booking not confirmed</description>
+    <httpStatusCode>0</httpStatusCode>
+</applicationErrors>
 ```
 
 ## What Can I Do If I Receive a 303 Error?

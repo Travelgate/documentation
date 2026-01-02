@@ -32,6 +32,9 @@ This section highlights tasks that require your attention. Examples include:
    - Setting up contacts
    - Providing feedback
 
+- **Announcements:**
+Find the latest updates from our team in the Announcements section, located on the left side of the dashboard, directly below Pending Actions and above the Blog.
+
 - **Latest Blog Articles:** Discover the latest [Travelgate news](https://news.travelgate.com/), expert insights, and feature updates—designed to help you stay ahead and get the most out of the platform.
 
 ### Main Panel

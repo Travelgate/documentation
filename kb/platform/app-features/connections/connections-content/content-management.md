@@ -14,8 +14,6 @@ In the **Connections Content** section, you can easily check and force updates f
 
 2. **Click on** "Connections" > **Connections Content**  
 
-    ![tg_connections_content_1](https://storage.travelgate.com/kbase/tg_connections_content_1.jpg)
-
 3. **Filter by Connection > Supplier > Access**, and click the "Get content" button to retrieve the corresponding portfolio. You can also filter by Country, Hotel Code, or Hotel Name using the "Filter results" panel on the left side of the screen.
 
     ![tg_connections_content_4](https://storage.travelgate.com/kbase/tg_connections_content_5.png)

@@ -59,3 +59,75 @@ A context represents the content codes used by Buyers and Sellers. Each Seller h
 
 For more details, refer to the [Hotel-X Buyers API Documentation](/docs/get-started/key-concepts) and [API Settings](/kb/platform/app-features/connections/api-settings/).
 :::
+
+##  What is the difference in credential management between Legacy and Hotel-X?
+
+Besides using different technologies (XML vs GraphQL) and offering different levels of functionality, the main difference between **Legacy API** (deprecated) and **Hotel-X API** lies in **how supplier credentials are selected, stored, and used in requests**.
+
+In the **Legacy API**, the Buyer must explicitly send the supplier configuration in every request:
+
+- Username  
+- Password  
+- Additional supplier parameters  
+
+These credentials were included directly in the XML request.  The Buyer was fully responsible for managing, storing, and updating them.
+
+In **Hotel-X**, supplier credentials are **not sent in the API request**. Instead:
+
+- The Buyer sends an **access code** in the request.
+- This access code references a supplier configuration (username, password, parameters) securely stored in the Travelgate platform.
+- Supplier credentials are managed through the **MyConnections** section of the website.
+- Authentication is performed using the [**Travelgate API Key**](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials#api-key), sent in the request headers.
+
+
+<details>
+    <summary>What role does the API Key play?</summary>
+    <div>
+        <div>
+         - Is used only to authenticate the Buyer to Travelgate.
+         - Is sent in the request headers.
+         - Is not supplier-specific.
+         - Is not validated by the supplier.
+         - Is not stored in the access configuration.
+         </div>
+    </div>
+</details>
+
+<details>
+    <summary>Do both Legacy and Hotel-X APIs use supplier credentials?</summary>
+    <div>
+        <div>
+         Yes. Both APIs rely on supplier credentials, but they differ in **how those credentials are referenced**:
+         - **Legacy** (deprecated): Credentials are sent explicitly in every request.
+         - **Hotel-X**: Credentials are referenced indirectly via an access code.
+         This makes Hotel-X more secure, easier to maintain, and better suited for complex integrations.
+         </div>
+    </div>
+</details>
+
+<details>
+    <summary>Do I need to create new accesses when migrating from Legacy?</summary>
+    <div>
+      <div>
+        Not necessarily. If you are already using the Legacy API and your supplier credentials already appear in **[My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details)** with an associated access code, you do **not** need to create new accesses. You can reuse the same access codes when working with Hotel-X.
+      </div>
+    </div>
+</details>
+
+<details>
+    <summary>Who manages supplier credentials in Hotel-X?</summary>
+    <div>
+        <div>
+         Supplier credentials are managed through the Travelgate platform:
+            - The **Buyer** uses the access code in Hotel-X API requests.
+            - The **Seller and Buyer** can manage credentials and configuration via [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details).
+            
+            Credentials are no longer managed inside the API request itself. Centralizing credential management in Travelgate:
+            - Reduces operational complexity
+            - Improves security
+            - Avoids credential duplication
+            - Simplifies supplier and access management
+            - Makes migration and maintenance easier
+         </div>
+    </div>
+ </details>

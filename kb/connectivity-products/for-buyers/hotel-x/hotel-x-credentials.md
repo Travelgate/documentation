@@ -60,7 +60,7 @@ A context represents the content codes used by Buyers and Sellers. Each Seller h
 For more details, refer to the [Hotel-X Buyers API Documentation](/docs/get-started/key-concepts) and [API Settings](/kb/platform/app-features/connections/api-settings/).
 :::
 
-##  What is the difference in credential management between Legacy and Hotel-X?
+## What is the difference in credential management between Legacy and Hotel-X?
 
 Besides using different technologies (XML vs GraphQL) and offering different levels of functionality, the main difference between **Legacy API** (deprecated) and **Hotel-X API** lies in **how supplier credentials are selected, stored, and used in requests**.
 

@@ -70,7 +70,7 @@ In the **Legacy API**, the Buyer must explicitly send the supplier configuration
 - Password  
 - Additional supplier parameters  
 
-These credentials were included directly in the XML request.  The Buyer was fully responsible for managing, storing, and updating them.
+These credentials were included directly in the XML request. The Buyer was fully responsible for managing, storing, and updating them.
 
 In **Hotel-X**, supplier credentials are **not sent in the API request**. Instead:
 

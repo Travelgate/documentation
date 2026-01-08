@@ -76,7 +76,7 @@ In **Hotel-X**, supplier credentials are **not sent in the API request**. Instea
 
 - The Buyer sends an **access code** in the request.
 - This access code references a supplier configuration (username, password, parameters) securely stored in the Travelgate platform.
-- Supplier credentials are managed through the **MyConnections** section of the website.
+- Supplier credentials are managed through the **My Connections** section of the website.
 - Authentication is performed using the [**Travelgate API Key**](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials#api-key), sent in the request headers.
 
 

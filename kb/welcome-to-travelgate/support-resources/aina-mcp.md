@@ -96,7 +96,7 @@ To access Travelgate’s Documentation MCP server (`https://travelgate.mcp.kapa.
         }
         ```
 
-        <img src="https://storage.travelgate.com/kbase/9-tg-aina-mcp-vscode-4.png" alt="9-tg-aina-mcp-vscode-4" width="500" height=""/>
+    <img src="https://storage.travelgate.com/kbase/9-tg-aina-mcp-vscode-4.png" alt="9-tg-aina-mcp-vscode-4" width="500" height=""/>
 
 5. Verify your account when prompted.
 

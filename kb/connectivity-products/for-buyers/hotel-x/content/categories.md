@@ -40,7 +40,7 @@ Please note that the quantity and content of information provided may vary depen
 ## Mapping Responsibilities
 
 ### Should I Map Category Codes as a Buyer? Does Travelgate Provide Mapping Support? 
-Travelgate provides Sellers' native information without modifications. Therefore, mapping should be managed either internally by your team or through an external solution.
+Travelgate provides Sellers' information without modifications. Therefore, mapping should be managed either internally by your team or through an external solution.
 
 Additionally, when connecting with a new Seller, you have the flexibility to map only the categories that align with your business needs rather than mapping the entire portfolio.
 

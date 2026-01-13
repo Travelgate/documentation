@@ -92,7 +92,7 @@ No, in order to return availability, the hotels must be included in the **hotel 
 
 If a Supplier has recently added new hotels to your portfolio, they might not yet appear in the **Connections Content** section because they were added outside the scheduled content update.
 
-Don’t worry — if you know your Seller has added new hotels, you or the Supplier can use the [**Force Update Now**](/kb/platform/app-features/connections/connections-content/content-management#how-can-i-use-the-force-update-now-functionality) feature to refresh your portfolio immediately. You may also contact 
+Don’t worry — if you know your Seller has added new hotels, you or the Supplier can use the [**Force Update Now**](/kb/platform/app-features/connections/connections-content/content-management#how-can-i-use-the-force-update-now-functionality) feature to refresh your portfolio immediately. You may also contact the Supplier or Travelgate support team if the new hotels are still not visible after the update.
 
 ### What is the lifespan of the Search ID?
 Search IDs do not expire, but transitioning from Search to Quote quickly is recommended for a smoother booking process.

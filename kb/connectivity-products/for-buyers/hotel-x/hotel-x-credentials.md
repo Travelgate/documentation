@@ -28,10 +28,8 @@ An access is a combination of authentication details and configurations that ena
 - All access details must be provided and confirmed by each Seller.
 :::
 
-#### Recommended Test Accesses for Hotel-X Implementation:
-To facilitate testing, the following accesses have been pre-activated for your account:
-   - **Travelgate Test Seller:** Access 2 with context `HOTELTEST`
-   - **Smyrooms Test:** Access 5647 with context `LOGITEST`
+To facilitate testing, [these accesses](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart#development-credentials-and-test-data) have been pre-activated for your account.
+
 
 #### How to Obtain an Access Code from an Actual Seller
 To obtain an access code from a Seller, you must establish a commercial agreement with the desired Partner and request activation via the [Auto-Activations Form](/kb/platform/app-features/connections/my-connections/guick-guide-to-auto-activations).
@@ -57,7 +55,7 @@ A context represents the content codes used by Buyers and Sellers. Each Seller h
 - **Access** contains your authentication credentials for a specific connection.
 - **Context** is the internal Travelgate code required to request Supplier codes or mapped Buyer codes (uploaded to our SFTP).
 
-For more details, refer to the [Hotel-X Buyers API Documentation](/docs/get-started/key-concepts) and [API Settings](/kb/platform/app-features/connections/api-settings/).
+For more details, refer to the [HotelX Buyers API Documentation](/docs/get-started/key-concepts) and [API Settings](/kb/platform/app-features/connections/api-settings/).
 :::
 
 ## What is the difference in credential management between Legacy and Hotel-X?

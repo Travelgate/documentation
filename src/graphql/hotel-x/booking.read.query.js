@@ -76,11 +76,10 @@ export const bookingQuery =
 export const bookingByBookingIDVariables = 
 `{
 	"criteriaBookingRead": {
-		"bookingID": "1@1[241028[241029[231010[1[en[EUR[2[test_01234567890[2636944"
+		"bookingID": "n1@1[270528[270529[251219[101930[en[EUR[2[test_0123456789_19122025_2[5015264["
 	},
 	"settings": {
 		"client": "client_demo",
-		"context": "HOTELTEST",
 		"testMode": true,
 		"timeout": 60000
 	}
@@ -93,19 +92,18 @@ export const bookingByReferenceVariables =
 		"accessCode": "2",
 		"typeSearch": "REFERENCES",
 		"references": {
-			"hotelCode": "1",
+			"hotelCode": "BR1518",
 			"currency": "EUR",
 			"references": [
 				{
-					"client": "test_01234567890",
-					"supplier": "2636944"
+					"client": "test_0123456789_19122025_2",
+					"supplier": "5015264"
 				}
 			]
 		}
 	},
 	"settings": {
 		"client": "client_demo",
-		"context": "HOTELTEST",
 		"testMode": true,
 		"timeout": 18000
 	}

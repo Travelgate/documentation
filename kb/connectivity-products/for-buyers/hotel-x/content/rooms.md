@@ -46,12 +46,12 @@ The amount of information returned may vary across different Sellers.
 
 ## Mapping Responsibilities
 
-### Is It My Responsibility to Map Hotel-X Rooms, or Does Travelgate Provide Mapping Support?
-Travelgate delivers the Seller's native data without modifications, meaning the mapping process should be handled internally by your team.  You are not required to map the entire room portfolio from a Seller—focus only on the rooms relevant to your business needs.
+### Is It My Responsibility to Map Hotel Rooms, or Does Travelgate Provide Mapping Support?
 
-:::info
-If you're using the Hotel-X API, you can [upload your own mapping files to our SFTP](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping) to streamline your operations and improve efficiency. 🚀
-:::
+Each Supplier has its own room codes, but Travelgate provides a standardized **FastX room code**.
+In search responses, you’ll see both the Supplier’s room code and description, along with the corresponding FastX code.
+
+This lets you work directly with FastX codes — consistent across all Suppliers — without mapping each Supplier’s rooms individually, while still having their codes if needed.
 
 ## Additional Considerations
 

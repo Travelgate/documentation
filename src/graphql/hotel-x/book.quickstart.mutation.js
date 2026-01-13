@@ -12,9 +12,10 @@ export const bookQuickStartMutation =
 				type
 				description
 			}
-
 			booking {
 				status
+				supplierCode
+				accessCode
 				price {
 					currency
 					binding
@@ -116,7 +117,6 @@ export const bookQuickStartVariables =
 	},
 	"settings": {
 		"client": "client_demo",
-		"context": "HOTELTEST",
 		"testMode": true,
 		"timeout": 60000
 	}

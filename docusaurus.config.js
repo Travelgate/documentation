@@ -234,9 +234,25 @@ const config = {
       "data-user-analytics-fingerprint-enabled": "true",
       "data-user-analytics-store-ip": "true",
       "data-button-text": " ",
-      "data-button-width": "13rem",
-      "data-button-height": "2.5rem",
-      "data-button-image-width": "170",
+      "data-modal-full-screen":"false",
+      "data-modal-open-by-default":"false",
+      "data-modal-close-button-hide":"true",
+      "data-modal-with-overlay":"false",
+      "data-search-mode-enabled":"false",
+
+      "data-button-width":"72px",
+      "data-button-height":"72px",
+      "data-button-image-width":"72px",
+      "data-button-image-height":"72px",
+      "data-button-bg-color":"transparent",
+      "data-button-box-shadow":"0",
+      "data-button-hover-bg-color":"transparent",
+      "data-button-border-radius":"0",
+      "data-button-border":"0",
+      "data-button-hover-animation-enabled":"false",   
+
+      "data-mcp-enabled":"true",
+      "data-mcp-server-url":"https://travelgate.mcp.kapa.ai"
     },
   ],
 

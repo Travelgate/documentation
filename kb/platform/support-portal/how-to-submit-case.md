@@ -35,13 +35,13 @@ When you click **'Create New Case'**, the following happens:
 
 2. **Receive AIna’s Response**: AIna provides reference links, step-by-step guides, and relevant information that can potentially resolve your issue or inquiry.
    
-   ![aina-case-response-screen-1](https://storage.travelgate.com/kbase/aina-case-response-screen-1.jpg)
+   ![tg-aina-case-response-screen-0](https://storage.travelgate.com/kbase/tg-aina-case-response-screen-0.png)
 
 3. **Choose One of Three Options:**
-   - **“Yes, it solved my issue”** – No need to create a case.
-   - **“Go back and rephrase your question”** – This option is located **above the response box**. By clicking it, you can refine your original request for better results. Don’t hesitate to rephrase your question for extra clarity!💡
-   - **“No, I still need help. Show me more options”** – Proceed to create a case with additional details for our support team. Before submitting, ensure the issue categories are accurate and include all necessary information to help expedite resolution. Once submitted, you’ll receive a **Case ID** for tracking, and our team will respond as soon as possible.
-   
-   ![aina-case-response-screen-2](https://storage.travelgate.com/kbase/aina-case-response-screen-2.jpg)
+   - **Ask AIna Again** – Refine your original request or add more details. Don’t hesitate to rephrase your question for extra clarity!💡
+   - **Got what I needed** – AIna has handled your request and there's no need to create a case.
+   - **Need More Help** – If AIna’s response didn’t resolve your issue, create a case with detailed information for our support team. Ensure the issue categories are accurate and include all relevant details. Once submitted, you’ll receive a **Case ID** for tracking, and our team will respond promptly.
+
+   ![tg-aina-case-response-screen-1](https://storage.travelgate.com/kbase/tg-aina-case-response-screen-1.png)
    ![cases-5](https://storage.travelgate.com/kbase/cases-5.jpg)
    ![cases-6](https://storage.travelgate.com/kbase/cases-6.jpg)

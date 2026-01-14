@@ -47,7 +47,7 @@ This is especially useful during certification processes, where having trusted, 
 
 To access Travelgate’s Documentation MCP server (`https://travelgate.mcp.kapa.ai`), follow these steps:
 
-1. Navigate to the Travelgate website (either the **Portal** or the **Documentation** site).
+1. Navigate to the Travelgate website (either the Portal, App or the Documentation site).
 2. Click the **AIna widget** located at the bottom-right corner of the screen.
 3. In the AIna chat window, click **Use MCP** (top-right corner of the chatbox).
 4. Select the AI tool you want to connect (Cursor, VS Code, Claude Code, or copy the MCP URL for Claude or ChatGPT).
@@ -72,7 +72,7 @@ To access Travelgate’s Documentation MCP server (`https://travelgate.mcp.kapa.
 
 5. Ensure the tool `search_travelgate_knowledge_sources` is enabled.
    <img src="https://storage.travelgate.com/kbase/3-tg-aina-mcp-cursor-3.png" alt="3-tg-aina-mcp-cursor-3" width="500" height=""/>
-   <img src="https://storage.travelgate.com/kbase/4-tg-aina-mcp-cursor-4.png" alt="4-tg-aina-mcp-cursor-4" width="500" height=""/>
+   <img src="https://storage.travelgate.com/kbase/4-tg-aina-mcp-cursor-4-.png" alt="4-tg-aina-mcp-cursor-4-" width="500" height=""/>
 
 
 ### VS Code (One-Click Install)
@@ -98,9 +98,8 @@ To access Travelgate’s Documentation MCP server (`https://travelgate.mcp.kapa.
 
     <img src="https://storage.travelgate.com/kbase/9-tg-aina-mcp-vscode-4.png" alt="9-tg-aina-mcp-vscode-4" width="500" height=""/>
 
-5. Verify your account when prompted.
+5. Authenticate your account when prompted.
 
-    <img src="https://storage.travelgate.com/kbase/6-tg-aina-mcp-vscode-2.png" alt="6-tg-aina-mcp-vscode-2" width="500" height=""/>
     <img src="https://storage.travelgate.com/kbase/7-tg-aina-mcp-vscode-3.png" alt="7-tg-aina-mcp-vscode-3" width="500" height=""/>
 
 6. Ensure the tool `search_travelgate_knowledge_sources` is enabled.

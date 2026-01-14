@@ -236,8 +236,8 @@ const config = {
       "data-button-text": " ",
       "data-modal-full-screen": "false",
       "data-modal-open-by-default": "false",
-      "data-modal-close-button-hide": "true",
-      "data-modal-with-overlay": "false",
+      "data-modal-close-button-hide": "false",
+      "data-modal-with-overlay": "true",
       "data-search-mode-enabled": "false",
 
       "data-button-width": "72px",

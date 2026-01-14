@@ -91,8 +91,8 @@ To access Travelgate’s Documentation MCP server (`https://travelgate.mcp.kapa.
 
         ```json
         "travelgate-docs": {
-        "type": "http",
-        "url": "https://travelgate.mcp.kapa.ai"
+          "type": "http",
+          "url": "https://travelgate.mcp.kapa.ai"
         }
         ```
 

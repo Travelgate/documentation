@@ -16,6 +16,21 @@ Until now, your integration depended on each supplier’s own codes. With FastX,
 
 This guide is built for Buyers who already have a full Hotel-X setup and just need to understand what changes to apply. No rebuilds, no new API, just a few small technical adjustments. We’ll walk you through what’s different, why it matters, and how to adapt your current integration quickly and confidently.
 
+### Traditional Flow (Hotel-X Standard)
+In the standard setup, your system handles various supplier codes that must be normalized through a mapping process within the API before reaching the supplier.
+
+![Hotel-X Standard Mode](https://stplaformwe.blob.core.windows.net/kbase/hotelx_simple_mode.gif)
+
+### Optimized Flow (Hotel-X with FastX codes)
+
+By adopting FastX codes, your system **only needs to manage FastX codes**. You send your requests using these standardized codes, and Travelgate automatically handles the relationship and translation to the supplier's native system internally. 
+![Hotel-X FastX Mode](https://stplaformwe.blob.core.windows.net/kbase/hotelx_fastx_mode.gif)
+
+Beyond technical performance, using a unified coding standard unlocks advanced business logic:
+
+* **Simplified Logic:** Your system only processes one set of codes regardless of how many suppliers are behind the request.
+* **Smart Aggregation:** Because rooms and boards are standardized, you can easily apply **aggregation rules**. This allows you to detect the cheapest options among different suppliers that share identical characteristics (e.g., the same room type and board basis), ensuring you always offer the most competitive rate.
+
 ## Key Changes When Switching to FastX Codes
 
 When moving from supplier codes to FastX codes, the main updates happen in your Search query. Below you'll find a clear breakdown of what changes, how to adapt your current implementation, and what to expect in the Search and Booking flow.

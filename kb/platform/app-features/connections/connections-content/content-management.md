@@ -186,7 +186,7 @@ If you've followed all the steps and still do not have the most up-to-date conte
             **Key details to consider:**
             <ul>
                 <li>**Optimization:** Instead of each Buyer pulling updates individually, Travelgate makes a single request, reducing server load and ensuring all Buyers receive the same updated content.</li>
-                <li>**Usage:** These credentials are strictly for <strong>static content synchronization</strong> and are never used for availability or booking requests.</li>
+                <li>**Usage:** These credentials are strictly for **static content synchronization** and are never used for availability or booking requests.</li>
                 <li>**Limitations:** Because the hotel list is shared, features like *"Customize hotel list"* are not available, as any change would affect all Buyers in the group.</li>
             </ul>
 

@@ -30,3 +30,20 @@ Remember that some of Travelgate's core tools, such as **Hotel Blacklist** or **
 To manage your active tools, navigate to the **Travelgate Store** in the top main menu and select the **[My Apps](https://app.travelgate.com/travelgate-store/my-apps)** tab.
 
 ![Travelgate Store - My Apps](https://stplaformwe.blob.core.windows.net/kbase/appstore_myapps.png)
+
+
+### Configuration Levels: Connection vs. Access
+
+To provide maximum flexibility, Travelgate allows you to define exactly where an App should apply its logic. Understanding these levels is key to maintaining a scalable integration.
+
+#### 1. Connection Level (Global Mode - Recommended)
+By default, an App is configured at the **Connection level**. This means the App applies to the entire relationship between a Buyer and a Seller.
+* **Automatic Scaling:** Any new access created under this connection in the future will automatically inherit the App's configuration.
+* **Low Maintenance:** You don't need to manually update the App settings when you add new credentials (access) (e.g., adding an B2B access to a connection that already has B2C).
+
+#### 2. Access Level (Specific Mode)
+If you need a more granular approach, you can choose to apply an App only to **specific accesses** within a connection. 
+* **Granular Control:** Ideal if you want a specific app to apply to one access (e.g., B2B access) but not another (e.g., B2C access) within the same connection.
+* **Manual Management:** You must remember that if you add a new access to your connection, you will need to edit the App configuration to include it manually.
+
+

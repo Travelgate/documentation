@@ -174,21 +174,27 @@ If you've followed all the steps and still do not have the most up-to-date conte
     </div>
 </details>
 
+
 <details>
     <summary>What is a shared access?</summary>
     <div>
         <div>
-            A shared access means that the hotel list for this access is **shared with other accesses from the same Supplier**. As a result, all hotel content management—such as hotel list updates and synchronization—is handled through the **parent access** that is being shared.
+            A **Shared Access** is an optimization feature designed for Sellers who provide the same hotel portfolio to multiple Buyers. It allows for more efficient delivery of static content and reduces the technical load on infrastructure.
 
-            This setup is used for accesses where the Seller provides exactly the same hotel list to multiple Buyers.
+            In this setup, Travelgate uses a dedicated set of credentials (the **Parent Access**) exclusively to request static data such as hotel lists, property details, and destinations. This data is then automatically distributed to all associated Buyers.
 
-            Because the hotel list is shared, **Content features such as Customize hotel list are not available**, as they would affect all accesses that share the same hotel list.
+            **Key details to consider:**
+            <ul>
+                <li>**Optimization:** Instead of each Buyer pulling updates individually, Travelgate makes a single request, reducing server load and ensuring all Buyers receive the same updates simultaneously.</li>
+                <li>**Usage:** These credentials are strictly for <strong>static content synchronization</strong> and are never used for availability or booking requests.</li>
+                <li>**Limitations:** Because the hotel list is shared, features like *"Customize hotel list"* are not available, as any change would affect all Buyers in the group.</li>
+            </ul>
 
-            If you need an access to stop being shared, please contact our [Customer Support team](https://app.travelgate.com/support), and we will assist you with the request.
+            **How to manage:**
+
+            If you want to activate this feature to optimize your content delivery, or if you need an access to stop being shared, please contact our [Customer Support team](https://app.travelgate.com/support). To enable it, you will need to provide a dedicated set of static content credentials and the list of Buyers to be included.
         </div>
     </div>
 </details>
-
-
 
 

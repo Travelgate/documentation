@@ -114,7 +114,7 @@ To access Travelgate’s Documentation MCP server (`https://travelgate.mcp.kapa.
 1. Go to **Settings > Apps > Advanced Settings**.
 2. Toggle **Developer Mode** on.
 
-    <img src="https://storage.travelgate.com/kbase/13-tg-aina-mcp-chatgpt-1.png" alt="13-tg-aina-mcp-chatgpt-1" width="400 " />
+    <img src="https://storage.travelgate.com/kbase/13-tg-aina-mcp-chatgpt-1.png" alt="13-tg-aina-mcp-chatgpt-1" width="400" />
 
     A new **Create app** button will appear in the top-right corner. Alternatively, return to the Apps main page and click **Create app** next to **Advanced Settings**.
 
@@ -126,7 +126,7 @@ In the **New App** screen, fill in the following details:
 - **MCP Server URL:** https://travelgate.mcp.kapa.ai
 - **Authentication:** OAuth
 
-    <img src="https://storage.travelgate.com/kbase/14-tg-aina-mcp-chatgpt-2.png" alt="14-tg-aina-mcp-chatgpt-2" width="300 " />
+    <img src="https://storage.travelgate.com/kbase/14-tg-aina-mcp-chatgpt-2.png" alt="14-tg-aina-mcp-chatgpt-2" width="300" />
 
 #### 3. Final Step
 

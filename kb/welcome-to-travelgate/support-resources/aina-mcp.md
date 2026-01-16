@@ -126,7 +126,7 @@ In the **New App** screen, fill in the following details:
 - **MCP Server URL:** https://travelgate.mcp.kapa.ai
 - **Authentication:** OAuth
 
-    <img src="https://storage.travelgate.com/kbase/14-tg-aina-mcp-chatgpt-2.png" alt="14-tg-aina-mcp-chatgpt-2" width="300 " />
+    <img src="https://storage.travelgate.com/kbase/14-tg-aina-mcp-chatgpt-2.png" alt="14-tg-aina-mcp-chatgpt-2" width="300" />
 
 #### 3. Final Step
 

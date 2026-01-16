@@ -25,11 +25,11 @@ Our goal has always been to make connecting with a Partner easier and faster.
 
 3. **Click "Create a New Connection"** to begin the process.
     - **Step 1 (Partner)**: Select the Partner you want to connect with. Some Sellers may offer multiple connection types ([Pull or Push](/kb/welcome-to-travelgate/connectivity-services/pull-and-push-connectivity)), so choose the one that fits your needs.
-        <img src="https://storage.travelgate.com/kbase/autoconnections_step3_1.png" alt="quickguide_to_autoconnections_step3_1" width="500" height=""/>
+        <img src="https://storage.travelgate.com/kbase/autoconnections_step3_1.png" alt="quickguide_to_autoconnections_step3_1" width="500"/>
   
     - **Step 2 (Access Configuration)**: Assign a distinctive name for your access (e.g., B2B or B2C). Indicate whether it’s for testing or live use. Then, complete the form with the credentials provided by the Seller.
 
-        <img src="https://storage.travelgate.com/kbase/autoconnections_step3_2.png" alt="quickguide_to_autoconnections_step3_2" width="500" height=""/>
+        <img src="https://storage.travelgate.com/kbase/autoconnections_step3_2.png" alt="quickguide_to_autoconnections_step3_2" width="500" />
         
         :::info
         - **Each Seller may have different access credential requirements** depending on their system specifications. Some may require only basic fields, while others require additional data or specific URL endpoints for methods such as Search, Quote, or Book. Supplier authorization may rely on a username and password or a Supplier-generated API key (**not to be confused with the [Travelgate API Key](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials#api-key)** used to authenticate Travelgate users).
@@ -47,14 +47,14 @@ Our goal has always been to make connecting with a Partner easier and faster.
         - Add the relevant email address to that section.
         :::
 
-        <img src="https://storage.travelgate.com/kbase/autoconnections_step3_3.png" alt="autoconnections_step3_3" width="500" height=""/>
+        <img src="https://storage.travelgate.com/kbase/autoconnections_step3_3.png" alt="autoconnections_step3_3" width="500" />
 
     - **Step 4 (Review and Confirm)**: Double-check your information before starting the auto-activation process. If you and your Partner have a Commercial Agreement for 2023, the form will show available payment types:
         - **FREE**: No cost to you. Your Partner will cover the connectivity fee.
         - **STD**: Standard booking fees apply for both you and your Partner.
         - **SUP**: Both standard fees and supplements apply to you, but it's free for your Partner.
 
-        <img src="https://storage.travelgate.com/kbase/autoconnections_step3_4.png" alt="autoconnections_step3_4" width="500" height=""/>
+            <img src="https://storage.travelgate.com/kbase/autoconnections_step3_4.png" alt="autoconnections_step3_4" width="500" />
 
 4. **Once completed**, you’ll receive an email with all the information needed to activate the connection. You can also track the activation status in the "My Connections" section.
 Please note that **all accesses are delivered inactive**, and it is the Partners’ responsibility to activate them (both Buyers and Sellers should be aligned to carry out the activation).

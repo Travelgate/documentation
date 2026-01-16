@@ -31,7 +31,7 @@ To obtain browser logs in Google Chrome, follow these steps:
 - Right-click anywhere on the page and select **Inspect**, or  
 - Use the shortcut: `Ctrl+Shift+I` (Windows/Linux) or `Cmd+Option+I` (Mac).  
 
-<img src="https://storage.travelgate.com/kbase/chrome-1-logs.png" alt="chrome-1-logs" width="500" height=""/>
+<img src="https://storage.travelgate.com/kbase/chrome-1-logs.png" alt="chrome-1-logs" width="500 " />
 
 #### 2. Obtain the HAR File (Network Tab)
 1. Open the **Network** tab.  
@@ -41,14 +41,14 @@ To obtain browser logs in Google Chrome, follow these steps:
 5. Reproduce the issue while tools are recording.  
 6. Click the ⬇️ **Export HAR…** icon to save the file.  
 
-<img src="https://storage.travelgate.com/kbase/chrome-2-logs.png" alt="chrome-2-logs" width="500" height=""/>
+    <img src="https://storage.travelgate.com/kbase/chrome-2-logs.png" alt="chrome-2-logs" width="500 " />
 
 #### 3. Obtain the Console Log (Console Tab)
 1. Open the **Console** tab.  
 2. Right-click any message and select **Save as…**.  
 3. Save the `.log` file to your computer.  
 
-<img src="https://storage.travelgate.com/kbase/chrome-3-logs.png" alt="chrome-3-logs" width="500" height=""/>
+    <img src="https://storage.travelgate.com/kbase/chrome-3-logs.png" alt="chrome-3-logs" width="500 " />
 
 ### Mozilla Firefox
 
@@ -58,7 +58,7 @@ To obtain browser logs in Mozilla Firefox, follow these steps:
 - Open the menu (☰) → **More tools** → **Web Developer Tools**, or  
 - Use the shortcut: `Ctrl+Shift+I` (Windows/Linux) or `Cmd+Option+I` (Mac).  
 
-<img src="https://storage.travelgate.com/kbase/mozilla-1-logs.png" alt="mozilla-1-logs" width="500" height=""/>
+    <img src="https://storage.travelgate.com/kbase/mozilla-1-logs.png" alt="mozilla-1-logs" width="500 " />
 
 #### 2. Obtain the HAR File (Network Tab)
 1. Go to the **Network** tab.  
@@ -66,14 +66,14 @@ To obtain browser logs in Mozilla Firefox, follow these steps:
 3. Right-click inside the request list and select **Save All As HAR**.  
 4. Save the file.  
 
-<img src="https://storage.travelgate.com/kbase/mozilla-2-logs.png" alt="mozilla-2-logs" width="500" height=""/>
+    <img src="https://storage.travelgate.com/kbase/mozilla-2-logs.png" alt="mozilla-2-logs" width="500 " />
 
 #### 3. Obtain the Console Log (Console Tab)
 1. Open the **Console** tab.  
 2. Right-click inside the messages area and select **Save all messages to file**.  
 3. Save the file.  
 
-<img src="https://storage.travelgate.com//kbase/mozilla-logs-3.png" alt="mozilla-logs-3" width="500" height=""/>
+    <img src="https://storage.travelgate.com//kbase/mozilla-logs-3.png" alt="mozilla-logs-3" width="500 " />
 
 ### Microsoft Edge
 
@@ -83,7 +83,7 @@ To obtain browser logs in Microsoft Edge, follow these steps:
 - Menu (…) → **More tools** → **Developer Tools**, or  
 - Use shortcut: `F12` or `Ctrl+Shift+I`.  
 
-<img src="https://storage.travelgate.com/kbase/edge-1-logs.png" alt="edge-1-logs" width="500" height=""/>
+    <img src="https://storage.travelgate.com/kbase/edge-1-logs.png" alt="edge-1-logs" width="500 " />
 
 #### 2. Obtain the HAR File (Network Tab)
 1. Go to the **Network** tab.  
@@ -93,7 +93,7 @@ To obtain browser logs in Microsoft Edge, follow these steps:
 5. Reproduce the issue while recording.  
 6. Export using the ⬇️ **Export HAR** icon.  
 
-<img src="https://storage.travelgate.com/kbase/edge-2-logs.png" alt="edge-2-logs" width="500" height=""/>
+    <img src="https://storage.travelgate.com/kbase/edge-2-logs.png" alt="edge-2-logs" width="500 " />
 
 
 #### 3. Obtain the Console Log (Console Tab)
@@ -101,7 +101,7 @@ To obtain browser logs in Microsoft Edge, follow these steps:
 2. Right-click the messages area and select **Save as…**.  
 3. Save the `.log` file.  
 
-<img src="https://storage.travelgate.com/kbase/edge-3-logs.png" alt="edge-3-logs" width="500" height=""/>
+    <img src="https://storage.travelgate.com/kbase/edge-3-logs.png" alt="edge-3-logs" width="500 " />
 
 ### Apple Safari
 
@@ -112,15 +112,15 @@ To obtain browser logs in Apple Safari, follow these steps:
 2. Open the **Advanced** tab.  
 3. Check **Show Develop menu in menu bar**.  
 
-<img src="https://storage.travelgate.com/kbase/safari-1-logs.png" alt="safari-1-logs" width="500" height=""/>
+    <img src="https://storage.travelgate.com/kbase/safari-1-logs.png" alt="safari-1-logs" width="500 " />
 
-<img src="https://storage.travelgate.com/kbase/safari-2-logs.png" alt="safari-2-logs" width="500" height=""/>
+    <img src="https://storage.travelgate.com/kbase/safari-2-logs.png" alt="safari-2-logs" width="500 " />
 
 #### 2. Open the Web Inspector
 - Menu bar: **Develop** → **Show Web Inspector**, or  
 - Shortcut: `Cmd+Option+I`.  
 
-<img src="https://storage.travelgate.com/kbase/safari-3-logs.png" alt="safari-3-logs" width="500" height=""/>
+    <img src="https://storage.travelgate.com/kbase/safari-3-logs.png" alt="safari-3-logs" width="500 " />
 
 #### 3. Obtain the HAR File (Network Tab)
 1. In the **Network** tab, check **Preserve Log**.  
@@ -128,7 +128,7 @@ To obtain browser logs in Apple Safari, follow these steps:
 3. Reproduce the issue.  
 4. Use the **Export** icon (square with arrow up) to save the `.har` file.  
 
-![safari-4-logs](https://storage.travelgate.com//kbase/safari-4-logs.png)
+    ![safari-4-logs](https://storage.travelgate.com//kbase/safari-4-logs.png)
 
 #### 4. Obtain the Console Log (Console Tab)
 1. Open the **Console** tab.  
@@ -137,4 +137,4 @@ To obtain browser logs in Apple Safari, follow these steps:
 4. Open a plain text editor (e.g., TextEdit, Notes).  
 5. Paste (`Cmd+V`) and save the file.  
 
-![safari-5-logs](https://storage.travelgate.com//kbase/safari-5-logs.png)
+    ![safari-5-logs](https://storage.travelgate.com//kbase/safari-5-logs.png)

@@ -82,7 +82,7 @@ The primary use case for derived rates is to apply supplements or discounts to s
 
 ## Free Night Offers
 
-The Inventory extranet enables you to create [free night offers](/kb/connectivity-products/for-buyers/inventory/set-up/add-rate#free-night-offers) for rates and rooms. These offers reward customers with complimentary nights when they book a minimum number of nights.
+The Inventory extranet enables you to create free night offers for rates and rooms. These offers reward customers with complimentary nights when they book a minimum number of nights.
 
 :::info
 Explore our **[Inventory SetUp Documentation](/docs/apps/inventory/extranet/set-up/setup)** for comprehensive documentation about Inventory Rates, Derived Rates, and Free Night Offers! 🚀

@@ -16,10 +16,8 @@ Once your rates are created, you can easily modify and manage them directly at t
 4. Update the necessary fields (policies, markets, etc.).
 5. Save your changes.
 
-### Best Practices When Editing Rates
-
+:::danger Important:
 **Always coordinate rate changes with your Channel Manager** to ensure synchronization across all distribution channels. Uncoordinated changes may result in pricing discrepancies or booking conflicts.
 
-:::info
 For detailed information about rate configuration fields, see our **[Inventory SetUp Documentation](/docs/apps/inventory/extranet/set-up/setup)** guide.
 :::

@@ -70,7 +70,7 @@ Configure whether the rate is modifiable after booking and define any amendment 
 
 Configure advanced parameters for rate distribution. Note: Some parameters require configuration in the client's access. For Hotel-X Pull Buyer API users, use the "[Add parameters](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/add-parameter)" Hotel-X plugin to modify these settings dynamically.
 
-- **Billing Companies:** Specify the company responsible for billing this  option.
+- **Billing Companies:** Inform the company with which this option is billed. In order to use this feature, billing companies must be pre-loaded into the Travelgate system.
 - **Selling Clients:** Define which clients are included or excluded from this rate option.
 - **Distribution Type:** Select your distribution channel type (B2B or B2C).
 

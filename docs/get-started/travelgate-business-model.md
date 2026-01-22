@@ -10,6 +10,8 @@ The responses are fundamentally centered around the concept of **options**, whic
 
 Additionally, Travelgate returns both **FastX codes** (unique Travelgate identifiers for hotels, boards, and rooms) and **Supplier codes** in the API responses. Buyers can use the standardized FastX codes for simplified integration, while still having access to original Supplier identifiers for transparency and advanced use cases.
 
+![Hotel-X FastX Mode](https://stplaformwe.blob.core.windows.net/kbase/hotelx_fastx_mode.gif)
+
 ## Structure of Options
 
 **Options** are hierarchically structured to provide granular booking details:

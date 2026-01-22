@@ -160,7 +160,7 @@ Buyers benefit from consistent FastX codes across all Suppliers, simplifying pro
 
 ### Export to CSV
 
-* Click on **Download CSV** button to export data in a CSV file.
+* Click on the **Download CSV** button to export data in a CSV file.
 * Includes Travelgate master data and suppliers portfolio.
 * Applies active filters to the exported file.
 

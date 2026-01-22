@@ -53,7 +53,7 @@ To access Travelgate’s Documentation MCP server (`https://travelgate.mcp.kapa.
 4. Select the AI tool you want to connect (Cursor, VS Code, Claude Code, or copy the MCP URL for Claude or ChatGPT).
 5. Follow the setup instructions for your selected tool. Examples are provided below.
 
-    <img src="https://storage.travelgate.com/kbase/0-tg-aina-mcp-web-widget.png" alt="0-tg-aina-mcp-web-widget" width="500" height=""/>
+    <img src="https://storage.travelgate.com/kbase/0-tg-aina-mcp-web-widget.png" alt="0-tg-aina-mcp-web-widget" width="500" />
 
 
 ### Cursor IDE (One-Click Install)
@@ -65,14 +65,14 @@ To access Travelgate’s Documentation MCP server (`https://travelgate.mcp.kapa.
    - **Type:** `streamableHttp` (pre-filled)
    - **URL:** `https://travelgate.mcp.kapa.ai`  
 
-        <img src="https://storage.travelgate.com/kbase/1-tg-aina-mcp-cursor-1.png" alt="1-tg-aina-mcp-cursor-1" width="500" height=""/>
+        <img src="https://storage.travelgate.com/kbase/1-tg-aina-mcp-cursor-1.png" alt="1-tg-aina-mcp-cursor-1" width="500" />
 
 4. Verify your account when prompted.
-   <img src="https://storage.travelgate.com/kbase/2-tg-aina-mcp-cursor-2.png" alt="2-tg-aina-mcp-cursor-2" width="500" height=""/>
+   <img src="https://storage.travelgate.com/kbase/2-tg-aina-mcp-cursor-2.png" alt="2-tg-aina-mcp-cursor-2" width="500" />
 
 5. Ensure the tool `search_travelgate_knowledge_sources` is enabled.
-   <img src="https://storage.travelgate.com/kbase/3-tg-aina-mcp-cursor-3.png" alt="3-tg-aina-mcp-cursor-3" width="500" height=""/>
-   <img src="https://storage.travelgate.com/kbase/4-tg-aina-mcp-cursor-4-.png" alt="4-tg-aina-mcp-cursor-4-" width="500" height=""/>
+   <img src="https://storage.travelgate.com/kbase/3-tg-aina-mcp-cursor-3.png" alt="3-tg-aina-mcp-cursor-3" width="500" />
+   <img src="https://storage.travelgate.com/kbase/4-tg-aina-mcp-cursor-4-.png" alt="4-tg-aina-mcp-cursor-4-" width="500" />
 
 
 ### VS Code (One-Click Install)
@@ -85,7 +85,7 @@ To access Travelgate’s Documentation MCP server (`https://travelgate.mcp.kapa.
    - **Type:** `http`
    - **URL:** `https://travelgate.mcp.kapa.ai`
 
-        <img src="https://storage.travelgate.com/kbase/5-tg-aina-mcp-vscode-1.png" alt="5-tg-aina-mcp-vscode-1" width="500" height=""/>
+        <img src="https://storage.travelgate.com/kbase/5-tg-aina-mcp-vscode-1.png" alt="5-tg-aina-mcp-vscode-1" width="500" />
 
     You can also add the configuration manually:
 
@@ -96,15 +96,15 @@ To access Travelgate’s Documentation MCP server (`https://travelgate.mcp.kapa.
         }
         ```
 
-    <img src="https://storage.travelgate.com/kbase/9-tg-aina-mcp-vscode-4.png" alt="9-tg-aina-mcp-vscode-4" width="500" height=""/>
+    <img src="https://storage.travelgate.com/kbase/9-tg-aina-mcp-vscode-4.png" alt="9-tg-aina-mcp-vscode-4" width="500" />
 
 5. Authenticate your account when prompted.
 
-    <img src="https://storage.travelgate.com/kbase/7-tg-aina-mcp-vscode-3.png" alt="7-tg-aina-mcp-vscode-3" width="500" height=""/>
+    <img src="https://storage.travelgate.com/kbase/7-tg-aina-mcp-vscode-3.png" alt="7-tg-aina-mcp-vscode-3" width="500" />
 
 6. Ensure the tool `search_travelgate_knowledge_sources` is enabled.
-    <img src="https://storage.travelgate.com/kbase/10-tg-aina-mcp-vscode-5.png" alt="10-tg-aina-mcp-vscode-5" width="500" height=""/>
-    <img src="https://storage.travelgate.com/kbase/12-tg-aina-mcp-vscode-7.png" alt="12-tg-aina-mcp-vscode-7" width="500" height=""/>
+    <img src="https://storage.travelgate.com/kbase/10-tg-aina-mcp-vscode-5.png" alt="10-tg-aina-mcp-vscode-5" width="500" />
+    <img src="https://storage.travelgate.com/kbase/12-tg-aina-mcp-vscode-7.png" alt="12-tg-aina-mcp-vscode-7" width="500" />
 
 
 ### ChatGPT
@@ -114,7 +114,7 @@ To access Travelgate’s Documentation MCP server (`https://travelgate.mcp.kapa.
 1. Go to **Settings > Apps > Advanced Settings**.
 2. Toggle **Developer Mode** on.
 
-    <img src="https://storage.travelgate.com/kbase/13-tg-aina-mcp-chatgpt-1.png" alt="13-tg-aina-mcp-chatgpt-1" width="400" height=""/>
+    <img src="https://storage.travelgate.com/kbase/13-tg-aina-mcp-chatgpt-1.png" alt="13-tg-aina-mcp-chatgpt-1" width="400" />
 
     A new **Create app** button will appear in the top-right corner. Alternatively, return to the Apps main page and click **Create app** next to **Advanced Settings**.
 
@@ -126,7 +126,7 @@ In the **New App** screen, fill in the following details:
 - **MCP Server URL:** https://travelgate.mcp.kapa.ai
 - **Authentication:** OAuth
 
-    <img src="https://storage.travelgate.com/kbase/14-tg-aina-mcp-chatgpt-2.png" alt="14-tg-aina-mcp-chatgpt-2" width="300" height=""/>
+    <img src="https://storage.travelgate.com/kbase/14-tg-aina-mcp-chatgpt-2.png" alt="14-tg-aina-mcp-chatgpt-2" width="300" />
 
 #### 3. Final Step
 

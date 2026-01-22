@@ -39,7 +39,7 @@ To provide maximum flexibility, Travelgate allows you to define exactly where an
 #### 1. Connection Level (Global Mode - Recommended)
 By default, an App is configured at the **Connection level**. This means the App applies to the entire relationship between a Buyer and a Seller.
 * **Automatic Scaling:** Any new access created under this connection in the future will automatically inherit the App's configuration.
-* **Low Maintenance:** You don't need to manually update the App settings when you add new credentials (access) (e.g., adding an B2B access to a connection that already has B2C).
+* **Low Maintenance:** You don't need to manually update the App settings when you add new credentials (access) (e.g., adding a B2B access to a connection that already has B2C).
 
 #### 2. Access Level (Specific Mode)
 If you need a more granular approach, you can choose to apply an App only to **specific accesses** within a connection. 

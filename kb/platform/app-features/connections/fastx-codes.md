@@ -137,7 +137,7 @@ Buyers use this section to **visualize the FastX master hotel and board list** a
 
 1. **Log in** to the Travelgate Portal.
 2. Switch to **Buyer mode** and navigate to the [FastX Codes section](https://app.travelgate.com/connections/mapping).
-3. Select a Client from your organization to see the mapping content.
+3. Select a FastX access from your organization to see the mapping content.
 
 ![fastx-buyer-mode](https://stplaformwe.blob.core.windows.net/kbase/fastx_codes_buyer_mode.png)
 
@@ -159,8 +159,8 @@ Buyers benefit from consistent FastX codes across all Suppliers, simplifying pro
 
 ### Export to CSV
 
-* Filter by supplier and use **Download CSV**.
-* Includes Travelgate master data and Supplier portfolio.
+* Click on **Download CSV** button to export data in a CSV file.
+* Includes Travelgate master data and suppliers portfolio.
 * Applies active filters to the exported file.
 
 :::note Remember

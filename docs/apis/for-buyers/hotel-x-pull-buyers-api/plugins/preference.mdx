@@ -15,17 +15,24 @@ For example, you might want to:
 
 By leveraging the **Preference Plugin**, you gain greater control over how options are selected, allowing you to fine-tune your results based on your own **supplier relationships, pricing strategy, and business goals**.  
 
+### Typical Use Cases
+
+* **Prioritize Direct Contracts:** Give an advantage to your direct hotel contracts over third-party redistributors, even if the direct price is slightly higher.
+* **Supplier Commercial Agreements:** Honor volume commitments or overrides with specific Partners by ensuring their results appear more frequently in your top options.
+* **Strategic Filtering:** Automatically discard all competitors when a preferred supplier offers a rate within a specific price tolerance (Filter Competitors).
+* **Currency Harmonization:** Compare prices from suppliers using different currencies in real-time to find the truly most competitive option.
+* **Destination-Based Strategy:** Prioritize a specific supplier for key destinations or countries (e.g., a local specialist in Spain). You can ensure their hotels are selected even if their price is up to **X% higher** than global aggregators.
+
 ## Preference Plugin Workflow
 
-1. Gets the rules stored in database which will establish which options will be added or discarded based on several factors as % of tolerance of the price, hotel codes, supplier, etc.
+The Preference Plugin follows a 5-step logic to ensure your preferred suppliers win the booking, even if they don't have the lowest market price.
 
-2. Go over each option returned by the suppliers and if it matches any of the rules recovered from database, their price will be recalculated by multiplying it by the tolerance factor set in the rule. For example, if the factor is 10%, the new price will be 90% of the original price. This recalculation of the price is only used for aggregation purposes—**the final response will always return the original prices**.  
+1. **Rule Fetching**: The system retrieves your custom rules—such as tolerance percentages, specific suppliers, or target destinations—directly from the Travelgate database.
+2. **Price Adjustment (the "virtual" calculation)**: For every option returned by suppliers, the plugin checks for a match with your rules. If a match is found, it applies a **tolerance factor** to calculate a **"virtual price"**: If a rule gives a **10% advantage** to Supplier A, a $100 room is internally treated as $90. **⚠️ Important:** This calculation is **internal only**. The final price shown to your customer in the response is always the **original supplier price** ($100).
 
-3. Sorts the options in price order (from cheap to expensive) by the recalculated price.
-
-4. Take the first '*n*' options (4 by default, configurable with the **`optionsPerKey`** parameter). That is, this will involve selecting the n cheapest options once the prices have been recalculated, taking the preference rules into account.
-
-5. There is only one exception to this, which is when a rule states that competitors must be filtered out. Thus, if any of the options meet such a rule, for that group of options, the option that filters out competitors will be the only one returned.
+3. **Strategic Ranking**: The system ranks all options from cheapest to most expensive based on these **Virtual Prices**. This allows your preferred suppliers to "climb" to the top of the list, even if their real price is higher.
+4. **Selection (Options per Key)**: The plugin selects the top **"n"** results (4 by default, though this is configurable via `optionsPerKey`). Because of the Virtual Price adjustment, your preferred options are now prioritized within this selection.
+5. **Competitor Filtering (optional)**: If the **"Filter Competitors"** setting is active and an option matches a preference rule, the system will discard all other competing offers for that specific group (hotel/room/board). In this case, your preferred supplier will be the **only one** returned.
 
 
 <details>
@@ -78,18 +85,18 @@ Within the app, you can:
 
 Creating or editing a rule is done through a simple **3-step form** within the **Preference App**. Each step defines how and when your rule will be applied.
 
-### **Step 1. Rule Name**
+### Step 1. Rule Name
 
 Give your rule a clear and identifiable name.
 This name will help you easily recognize it later when managing or prioritizing your rules.
 
 ![Preference Step 1](https://stplaformwe.blob.core.windows.net/docs/preference_step1.png)
 
-### **Step 2. Rule Configuration**
+### Step 2. Rule Configuration
 
 This step defines both the **conditions** under which your preference will apply and the **preference behavior** itself.
 
-#### **2.1. Target Criteria**
+#### 2.1. Target Criteria
 
 Specify the conditions that must be met for this preference rule to apply.
 Here, you can define:
@@ -104,7 +111,7 @@ These filters allow you to create **very specific preference behaviors** based o
 ![Preference Step 2.1](https://stplaformwe.blob.core.windows.net/docs/preference_step2.png)
 
 
-#### **2.2. Preference Settings**
+#### 2.2. Preference Settings
 
 Define how your preference should affect the supplier’s competitiveness:
 
@@ -121,7 +128,7 @@ Define how your preference should affect the supplier’s competitiveness:
 
 
 
-### **Step 3. Review and Create the Rule**
+### Step 3. Review and Create the Rule
 
 Before saving, review all your configurations. Once confirmed, click **Create Rule**.
 You can **edit or delete** the rule at any time, or even **assign it a higher priority** than other existing rules.
@@ -197,21 +204,75 @@ Once you've uploaded your preference rules in the website, to use the plugin add
 ```
 
 
-### Special Aggregation Key: eqRates
+## Rule Configuration Examples
 
-There is a special value for the aggregation key "eqRates" that  will combine the rateRules and ratePlans of an option and group all of the options, based on the file uploaded in the SFTP with the name:
+The following examples demonstrate how to configure different preference strategies using the Preference App.
 
-```mdx-code-block
-<BrowserWindow>
+### Example 1. Prioritize a local specialist in a specific country
 
-📁HotelX  
-&nbsp;&nbsp;&nbsp;&nbsp; 📁HotelX_0000  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📁BusinessRules  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **📄[SupplierContext_rateplanraterule.csv](../../../../../static/files/hotel-x/SupplierContext_rateplanraterule.csv)**
+**Use case:**
+Prioritize a specialist supplier in Spain (`SUP1`) by giving them a competitive advantage, even if their price is up to 0.75% higher than other suppliers.
 
-</BrowserWindow>
-```
+**Rule configuration:**
+
+| Step | Configuration |
+| :--- | :--- |
+| **Target criteria (Step 2.1)** | Supplier: `SUP1`<br/>Country: `ES` |
+| **Preference percentage (Step 2.2)** | Percentage: `0.75%`<br/>Filter competitors: `False` |
+
+**Evaluation:**
+* If `SUP1` offers a hotel in Spain, its price is internally reduced by **0.75%** for ranking purposes.
+* The final response will still show the **original price**.
+* All other search requests or destinations are not affected by this rule.
+
+
+### Example 2. Aggressive strategy for direct contracts
+
+**Use case:**
+If a direct contract supplier (`SUP_D`) provides a price within a 2% margin of any competitor, discard all other options and show only the direct contract.
+
+**Rule configuration:**
+
+| Step | Configuration |
+| :--- | :--- |
+| **Target criteria (Step 2.1)** | Supplier: `SUP_D`<br/>Hotel: `All hotels` |
+| **Preference percentage (Step 2.2)** | Percentage: `2%`<br/>Filter competitors: `True` |
+
+**Evaluation:**
+* If `SUP_D` is within **2%** of the cheapest competitor, all other suppliers for that group are **discarded**.
+* Only the option from `SUP_D` is returned in the response.
+
+
+### Example 3. Seasonal promotion for specific check-in dates
+
+**Use case:**
+Boost a specific supplier (`SUP-SUMMER`) during the high season in Italy.
+
+**Rule configuration:**
+
+| Step | Configuration |
+| :--- | :--- |
+| **Target criteria (Step 2.1)** | Supplier: `SUP-SUMMER`<br/>Country: `IT`<br/>Check-in: `2028-06-01` to `2028-08-31` |
+| **Preference percentage (Step 2.2)** | Percentage: `3%`<br/>Filter competitors: `False` |
+
+**Evaluation:**
+* Options from `SUP-SUMMER` for these dates/destinations receive a **3%** internal price improvement.
+* This increases the probability of this supplier being among the top options returned based on the `optionsPerKey` parameter.
 
 
 
-With this uploaded CSV file, all the options with the ratePlan code "NOREEMBOLSABLE" and no rateRules will be compared with each other. Similarly, all the options without a ratePlan code or without a mapped ratePlan and with rateRules set to "NON_REFUNDABLE" will also be compared with each other.
+## Best Practices for Rule Configuration
+
+To ensure optimal performance and maintain a clean business strategy, we recommend following these best practices when configuring your Preference rules:
+
+1. **Start with Broad Rules, then Refine**: Begin by creating general preference rules (e.g., for a specific supplier globally) before adding granular filters like specific hotel codes or check-in dates. This helps you understand the baseline impact on your results before fine-tuning.
+
+2. **Use "Filter Competitors" Sparingly**: The `Filter Competitors` option is a powerful tool. Use it only when you have high confidence in a supplier's availability and price (e.g., Direct Contracts). If a rule filters out all competitors and the preferred supplier's option fails during the booking flow, you may lose the sale.
+
+3. **Monitor your "optionsPerKey"**: Remember that the Preference Plugin works in tandem with the `optionsPerKey` parameter. If you set a high preference percentage but a low `optionsPerKey` (e.g., 1 or 2), you might be unintentionally hiding competitive rates that could be useful for your customers.
+
+4. **Optimize Aggregation with "primaryKey"**: The choice of `primaryKey` is crucial for the "Virtual Price" comparison. Pro-tip: Including `room` and `board` in your primaryKey ensures you are comparing "apples to apples". Comparing a "Room Only" rate against an "All Inclusive" rate via preference rules can lead to misleading ranking results.
+
+5. **Leveraging Negative Percentages**: Don't just think about who you want to win. Use negative percentages (e.g., -2%) to de-prioritize suppliers with low profit margins or poor operational performance without removing them from your inventory entirely.
+
+6. **Review Rule Priority and Ties**: If multiple rules apply to the same option, the system evaluates them based on priority. Regularly review your **Tiebreaker** settings in the Preference App to ensure that, in case of a draw after all recalculations, the most strategic supplier is still selected.

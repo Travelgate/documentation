@@ -33,8 +33,10 @@
 					start
 					end
 					hotelCode
+					hotelCodeSupplier
 					hotelName
 					boardCode
+					boardCodeSupplier
 					occupancies {
 						id
 						paxes {
@@ -45,6 +47,7 @@
 						occupancyRefId
 						code
 						description
+						descriptionSupplier
 						price {
 							currency
 							net

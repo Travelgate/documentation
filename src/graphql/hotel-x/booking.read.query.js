@@ -34,8 +34,10 @@ export const bookingQuery =
 					start
 					end
 					hotelCode
+					hotelCodeSupplier
 					hotelName
 					boardCode
+					boardCodeSupplier
 					occupancies {
 						id
 						paxes {
@@ -46,6 +48,7 @@ export const bookingQuery =
 						occupancyRefId
 						code
 						description
+						descriptionSupplier
 						price {
 							currency
 							net

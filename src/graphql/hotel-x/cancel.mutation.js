@@ -56,8 +56,10 @@ export const cancelMutation =
 						start
 						end
 						hotelCode
+						hotelCodeSupplier
 						hotelName
 						boardCode
+						boardCodeSupplier
 						occupancies {
 							id
 							paxes {
@@ -67,6 +69,7 @@ export const cancelMutation =
 						rooms {
 							code
 							description
+							descriptionSupplier
 							occupancyRefId
 							price {
 								currency

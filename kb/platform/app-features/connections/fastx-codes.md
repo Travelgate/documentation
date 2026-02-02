@@ -116,12 +116,12 @@ Sellers use this section to **validate or invalidate suggested mappings** betwee
 
 
 <details>
-    <summary>How can I control which hotels or boards I sell to a specific Buyer?</summary>
+    <summary>How can I control which hotels I sell to a specific Buyer?</summary>
     <div>
         <div>
-        Even if you validate your full portfolio, that doesn’t mean all hotels are automatically available to every Buyer. What you offer to each Buyer is managed through the hotel list of each access (you can check this in the [Connections Content](https://app.travelgate.com/connections/content) section). 
+        Even if you validate your full portfolio, it doesn't mean all hotels are automatically available to every Buyer. What you offer to each Buyer is managed through the hotel list of each access (you can check this in the [Connections Content](https://app.travelgate.com/connections/content) section). 
         
-        If your system doesn’t support separate hotel or board lists per access , don’t worry — just create a ticket to our Customer Care team and request filtering your portfolio for a specific access. Please include a CSV file with the hotel codes you want to allow.
+        If your system doesn't support separate hotel lists per access, don't worry — you can use the [**Customize hotel list**](/kb/platform/app-features/connections/connections-content/content-management#customize-hotel-list) feature to exclude specific hotels from a particular Buyer's access. This gives you full control: even if your system returns the entire property list, you can determine which hotels each Buyer can access by filtering them at the access level.
         </div>
     </div>
 </details>

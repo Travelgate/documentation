@@ -13,9 +13,13 @@ When you partner with Travelgate as a Seller, the requests we send to your syste
 
 If you do not currently filter by IP but would like traffic to come from fixed addresses, contact our Customer Support team. We’ll assess your requirements and explore possible solutions.
 
+:::info Date Format
+All update dates in this document follow the YYYY-MM-DD format (Year-Month-Day).
+:::
+
 ### Fixed IP List for Hotel Suppliers
 
-Below is the current list of IP addresses that Hotel Suppliers should allow (Updated on 08/08/2025):
+Below is the current list of IP addresses that Hotel Suppliers should allow (Updated on 2025-08-08):
 
 :::note
 A CIDR range is a way to group several IP addresses. The second column shows all the addresses in that range, if needed.
@@ -60,7 +64,7 @@ Some IP addresses are provided as ranges, such as `172.98.36.0/27`. These ranges
 
 ### Fixed IP List for Inventory Push
 
-Please add **only** these IPs (Updated on 29/10/2024):
+Please add **only** these IPs (Updated on 2024-10-29):
 
 
 | **Single IP Address or CIDR Range**         |  
@@ -77,7 +81,7 @@ Please add **only** these IPs (Updated on 29/10/2024):
 | 141.105.105.232        |  
 
 ### Fixed IP List as a Channel-X Buyer
-Please add **only** these IPs (Updated on 03/10/2024):
+Please add **only** these IPs (Updated on 2024-10-03):
 
 | **Single IP Address or CIDR Range**         |    
 | :--------------------: |  
@@ -90,7 +94,7 @@ Please add **only** these IPs (Updated on 03/10/2024):
 | 141.105.105.232        |  
 
 ### Fixed IP List as a Payment/VCC Supplier
-Please add **only** these IPs (Updated on 29/08/2024):
+Please add **only** these IPs (Updated on 2024-08-29):
 
 | **Single IP Address or CIDR Range**         |  
 | :--------------------: |  

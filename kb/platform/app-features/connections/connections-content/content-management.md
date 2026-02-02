@@ -60,6 +60,20 @@ The information displayed on the Connections Content screen **depends on the dat
 
     ![tg_download_portfolio2](https://storage.travelgate.com/kbase/tg_download_portfolio2.jpg)
 
+7. The CSV file includes these fields (if available by the Seller):
+    - hotelCode
+    - supplierCode
+    - fastXCode
+    - hotelName
+    - country
+    - latitude
+    - longitude
+    - address
+    - city
+    - categoryCode
+    - giataCode
+    - lastUpdate
+
 
 ## Customize hotel list
 

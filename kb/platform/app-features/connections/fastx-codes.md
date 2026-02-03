@@ -134,6 +134,10 @@ Sellers use this section to **validate or invalidate suggested mappings** betwee
 
 Buyers use this section to **visualize the FastX master hotel and board list** and monitor Supplier mappings.
 
+:::warning Important:
+Want to use [FastX Codes](/docs/apis/for-buyers/hotel-x-pull-buyers-api/upgrade-to-fastx)? These are available **exclusively via the HotelX Pull Buyers API**. If you’re currently on the Legacy API, now is the perfect time to upgrade to [HotelX]((/kb/connectivity-products/for-buyers/hotel-x/why-develop-hotel-x-explained)) so you can enjoy our latest features for richer content and a smoother integration.
+:::
+
 ### Step-by-Step Guide
 
 1. **Log in** to the Travelgate Portal.

@@ -46,3 +46,6 @@ The `HoursBefore` field specified the maximum number of hours before a penalty w
 
 It is essential to update your logic and **discontinue the use of the `hoursBefore` node**. Instead, use the `deadline` node. This update applies to both Hotel-X and Legacy Pull Buyers API.
 :::
+
+### Are cancellation penalties always applied to the net price of the booking?
+Cancellation penalties are typically calculated based on the net price. **However**, there are exceptions depending on the supplier's specifications. Because these policies vary, we recommend that Buyers **always confirm this information directly with the supplier**.

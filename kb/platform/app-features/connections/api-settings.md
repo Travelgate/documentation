@@ -63,7 +63,7 @@ The **API Settings** section allows you define default values for your Hotel-X P
 
 
     :::info Using Our Legacy Pull Buyers API?
-    Legacy clients (or "hub users") come with an associated password. You can retrieve it by clicking **"Get Password"**.
+    Legacy clients (or "hub users") have an associated password that you can retrieve by clicking **"Get Password"**. If you're unable to retrieve the password, don't worry, simply reach out through the [Support Portal](/kb/platform/support-portal/how-to-submit-case).
     ![api-settings-new-updated-7](https://storage.travelgate.com/kbase/apisettings_9.png)
     :::
 

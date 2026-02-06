@@ -8,7 +8,19 @@ Discover how specific [Business Rules](/api/types/objects/business-rules#) can s
 
 ## OptionsQuota
 
-The `optionsQuota` limits the number of options in the Search response. It refers to the maximum number of options per board (meal plan) that can be returned. The default value is 300, but it can be customized. The allowed values range from 1 to 300.
+The `optionsQuota` limits the maximum number of options per board (meal plan) returned in the Search response. It accepts values **from 1 to 300**, with 300 as the default.
+
+You can configure `optionsQuota` at the request level or as a default setting in [API Settings](/kb/platform/app-features/connections/api-settings) at the general, connection, client, or access level. _Note that some Suppliers may have internal limitations, which may be lower than the default optionQuota value_. If you exceed the maximum `optionsQuota` allowed, you will receive a warning in the response:
+
+```json
+"warnings" : [
+                    {
+                        "code" : "WRONG_FIELD",
+                        "type" : "VALIDATION_ERROR",
+                        "description" : "Access: 'xxx' Maximum optionsQuota allowed(200) has been exceeded, you are sending 300"
+                    }
+                ]
+```
 
 ## Business Rules Types
 

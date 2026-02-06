@@ -14,7 +14,7 @@ To ensure a seamless booking experience, you must use the `id` or `optionRefId` 
 - Use the **`optionRefId` from the Quote response** in your Book request.
 
 
-### What Is the Lifetime of an `OptionRefId`?
+### What Is the Lifetime of an `optionRefId`?
 
 There are no specific time restrictions imposed by Travelgate on the lifetime of an `OptionRefId`. However, **each Seller may have different constraints.** For instance, some Sellers might impose a maximum time gap (e.g., 5 minutes) between Search and Quote requests.
 
@@ -22,6 +22,10 @@ There are no specific time restrictions imposed by Travelgate on the lifetime of
 ### If I encounter an error in the Quote Response, can I continue using the same Search `id`?
 
 If you encounter an error in the Quote response, you must initiate a **new Search request** and restart the Booking Flow. This ensures that a fresh `id` is generated, improving the accuracy and consistency of the booking process.
+
+### Can I reuse the `id` or `optionRefId` in more than one request?
+
+While Travelgate does not impose restrictions on reusing the same `id` or `optionRefId` across multiple requests, **we recommend against this practice**. Reusing option identifiers may lead to errors on the Supplier's end, particularly when using the same `optionRefId` in multiple Book requests.
 
 
 ### Can I Use the `OptionRefId` for Custom Logic in My API?

@@ -85,6 +85,11 @@ The age range for children and infants may vary depending on the Seller's restri
 ### What does the "units" field indicate?
 It represents the number of available rooms of the same type in the hotel, but its availability depends on the Seller.
 
+### Can I search for all room combinations for a specific total number of guests?
+No, HotelX does not support searching by total guest count alone. You must **specify the exact room distribution** in your Search request.
+
+In the Search query, you define occupancy via the `occupancies` field: each element represents one room with its own `paxes` array (guest ages). The API returns options that match your specified distribution (e.g., 1 room with 6 guests, or 3 rooms with 2 guests each), not all possible combinations that sum to a total number of guests.
+
 ## Booking Considerations
 
 ### Can I still get availability if the hotel code is not found in Connections Content?

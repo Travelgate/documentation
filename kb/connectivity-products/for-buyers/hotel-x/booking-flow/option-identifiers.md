@@ -16,7 +16,7 @@ To ensure a seamless booking experience, you must use the `id` or `optionRefId` 
 
 ### What Is the Lifetime of an `optionRefId`?
 
-There are no specific time restrictions imposed by Travelgate on the lifetime of an `OptionRefId`. However, **each Seller may have different constraints.** For instance, some Sellers might impose a maximum time gap (e.g., 5 minutes) between Search and Quote requests.
+There are no specific time restrictions imposed by Travelgate on the lifetime of an `optionRefId`. However, **each Seller may have different constraints.** For instance, some Sellers might impose a maximum time gap (e.g., 5 minutes) between Search and Quote requests.
 
 
 ### If I encounter an error in the Quote Response, can I continue using the same Search `id`?
@@ -28,9 +28,9 @@ If you encounter an error in the Quote response, you must initiate a **new Searc
 While Travelgate does not impose restrictions on reusing the same `id` or `optionRefId` across multiple requests, **we recommend against this practice**. Reusing option identifiers may lead to errors on the Supplier's end, particularly when using the same `optionRefId` in multiple Book requests.
 
 
-### Can I Use the `OptionRefId` for Custom Logic in My API?
+### Can I Use the `optionRefId` for Custom Logic in My API?
 
-No, you must **not** use or interpret the `OptionRefId` to implement any custom logic within your API. The `OptionRefId` is unique to each connection and may vary across different connections. **Relying on it for business logic may lead to unexpected errors.**
+No, you must **not** use or interpret the `optionRefId` to implement any custom logic within your API. The `optionRefId` is unique to each connection and may vary across different connections. **Relying on it for business logic may lead to unexpected errors.**
 
 
 ### Option identifiers in the Legacy Pull Buyers API

@@ -93,7 +93,7 @@ While you _can_ technically send the same clientReference across multiple Book r
 ### What are the risks of using one reference for multiple Travelgate bookings?
 If your system groups two separate Travelgate bookings under one internal ID, you may encounter the following issues:
 - **Reservation Errors:** Sellers may reject bookings when they detect the same clientReference used for independent reservations.
-- **Fragmented Cancellation:** If you "cancel" the reservation in your system, you must ensure both independent Travelgate bookings are cancelled. One might succeed while the other fails, leading to "ghost" bookings at the Seller side.
+- **Fragmented Cancellation:** If you "cancel" the reservation in your system, you must ensure both independent Travelgate bookings are canceled. One might succeed while the other fails, leading to "ghost" bookings at the Seller side.
 - **Penalty Calculation:** Penalties are calculated at the option level. You will receive two separate penalty sets which your system must then manually aggregate.
 - **Status Mismatches:** If one booking is confirmed and the other is rejected by the Seller, your internal "multi-room" reservation will enter an inconsistent state.
 

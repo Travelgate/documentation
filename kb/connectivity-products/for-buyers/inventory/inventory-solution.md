@@ -26,3 +26,16 @@ Travelgate provides essential features to optimize your connectivity:
 - **User-friendly interface** for seamless navigation.
 - **Comprehensive inventory management** within the back office.
 - **Rapid go-to-market capabilities** to accelerate your sales.
+
+## Using FastX Codes in Inventory
+
+If you are managing your own product via Inventory, you will still need to manage your setup and Channel Manager mapping in the Inventory Extranet. However, for your API implementation, **you have the flexibility to use [FastX codes](/kb/platform/app-features/connections/fastx-codes) to simplify your integration logic during the booking process.**
+
+### Are Inventory codes automatically mapped to FastX?
+Yes. All the hotel codes within Travelgate Inventory are mapped against the FastX unified context. These mappings are validated internally by Travelgate to ensure consistency across the platform.
+
+### Can I use FastX codes in the Booking Flow for Inventory?
+Yes. Since the Hotel-X API supports FastX codes, you can use them during the Search, Quote, and Book mutations even if the underlying provider is an Inventory (Push) connection. By using the FastX context in your HotelX calls, you can maintain a single standard across both your Pull and Push suppliers.
+
+### Can I use FastX codes in ChannelX?
+Not yet, but we are currently working on a deeper integration to ensure FastX codes are also available for ChannelX. This will allow for a 100% unified experience from the moment the product is pushed until the booking is confirmed.

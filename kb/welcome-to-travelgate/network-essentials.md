@@ -42,6 +42,15 @@ Plus, you can now view the top source markets and destinations for each company 
 
 ![network_updated_2](https://storage.travelgate.com/kbase/network_updated_2.jpg)
 
+
+:::info FastX Codes, now easier than ever!
+In our Network section, Suppliers with **over 80% of their portfolio validated in FastX** now receive a dedicated FastX Badge. This badge helps you identify [standardized content](/kb/platform/app-features/connections/fastx-codes) that is ready for immediate, seamless integration.  
+
+Check our Network today to find your next badge-validated partner!
+
+![tg-fastx-verification-badge](https://storage.travelgate.com/kbase/tg-fastx-verification-badge.png)
+:::
+
 ### Looking for a Specific Partner?
 
 Our system suggests Company names as you type, displaying their logo and type. You can also filter to include or exclude Companies that are currently in the Onboarding process by toggling the "Onboarding partners" option in the top right corner of the screen.

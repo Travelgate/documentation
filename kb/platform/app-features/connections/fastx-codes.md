@@ -158,6 +158,14 @@ Want to use [FastX Codes](/docs/apis/for-buyers/hotel-x-pull-buyers-api/upgrade-
 
 Buyers benefit from consistent FastX codes across all Suppliers, simplifying product aggregation and ensuring faster, more efficient access to travel inventory.
 
+:::info FastX Codes, now easier than ever!
+In our [Network](/kb/welcome-to-travelgate/network-essentials) section, Suppliers with **over 80% of their portfolio validated in FastX** now receive a dedicated FastX Badge. This badge helps you identify standardized content that is ready for immediate, seamless integration.  
+
+Check our Network today to find your next badge-validated partner!
+
+![tg-fastx-verification-badge](https://storage.travelgate.com/kbase/tg-fastx-verification-badge.png)
+:::
+
 ### Filters and Search
 
 * **Status:** Validated or Pending.

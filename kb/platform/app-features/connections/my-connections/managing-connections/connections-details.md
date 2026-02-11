@@ -12,6 +12,9 @@ To view and manage your connections, follow these steps:
 
 1. **Log in** to the [Travelgate Platform](https://www.travelgate.com/).  
 2. Ensure you are browsing as either a **Buyer** or a **Seller**, depending on your Partner type.  
+   :::info
+   You can switch between Buyer and Seller views at any time using the **“View data of this page as:”** selector on the left side of the screen. The selector is available **only** for organizations that are connected on the platform as both a Buyer and a Seller.
+   :::
 3. Click **Connections** in the top menu, then select **My Connections**.  
 
    ![myconnections_aug_1](https://storage.travelgate.com/kbase/myconnections_aug_1.jpg)  

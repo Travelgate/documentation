@@ -32,7 +32,7 @@ Get a snapshot of your key metrics to evaluate overall platform activity and per
 - The previous day
 - The same day last week
 
-![tg-dashboard-1](https://storage.travelgate.com/kbase/tg-dashboard-1.png)
+![tg-dashboard-partner-selector-real-time-bookings](https://storage.travelgate.com/kbase/tg-dashboard-partner-selector-real-time-bookings.png)
 
 :::tip
 For an immersive performance monitoring experience, check out our incredible [Stats](/kb/platform/app-features/monitoring-tools/stats/stats-details). It offers a comprehensive range of features that will take your monitoring to the next level! 🚀

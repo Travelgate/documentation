@@ -27,6 +27,6 @@ In other cases, discrepancies occur before a request even reaches the Travelgate
 ### How Can I Review Data Variations?
 
 To align your statistics, we recommend the following steps:
-    1. **Coordinate with your Partner:** Maintain open communication with your Buyer or Seller to compare transaction logs and identify specific timeframes where data diverges.
-    2. **Analyze Error Responses:** Review the specific [errors received](/kb/connectivity-products/for-buyers/errors-and-warnings/overview) (if any). Often, a high volume of failed requests on one side—that never reach the other—is the root cause of the variation.
-    3. **Audit Your Transactions:** Perform a deep-dive [audit of your logs](/kb/platform/app-features/monitoring-tools/logging/audit-searches-functionality) to differentiate between Travelgate's standardized methods and your internal API calls.
+1. **Coordinate with your Partner:** Maintain open communication with your Buyer or Seller to compare transaction logs and identify specific timeframes where data diverges.
+2. **Analyze Error Responses:** Review the specific [errors received](/kb/connectivity-products/for-buyers/errors-and-warnings/overview) (if any). Often, a high volume of failed requests on one side—that never reach the other—is the root cause of the variation.
+3. **Audit Your Transactions:** Perform a deep-dive [audit of your logs](/kb/platform/app-features/monitoring-tools/logging/audit-searches-functionality) to differentiate between Travelgate's standardized methods and your internal API calls.

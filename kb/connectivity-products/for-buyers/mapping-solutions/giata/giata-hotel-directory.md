@@ -24,7 +24,10 @@ With this solution, you can:
 
 Follow these simple steps to activate GIATA Hotel Directory:
 
-1. Log into our Platform and browse as a Buyer.
+1. Log into our Platform and browse as a **Buyer.**
+   :::info
+   You can switch between Buyer and Seller views at any time using the **“View data of this page as:”** selector on the left side of the screen. The selector is available **only** for organizations that are connected on the platform as both a Buyer and a Seller.
+   :::
 2. Navigate to **Connections** → [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details) → **Create a New Connection**.
 3. Request activation for GIATA (Seller) by following the instructions in our [Auto-Activations Quick Guide](/kb/platform/app-features/connections/my-connections/guick-guide-to-auto-activations).
 

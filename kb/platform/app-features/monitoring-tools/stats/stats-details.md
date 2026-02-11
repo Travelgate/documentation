@@ -71,8 +71,12 @@ Additionally, if any transactions result in errors, you can easily identify the 
 ![stats_dashboard_5](https://storage.travelgate.com/kbase/stats_dashboard_5.jpg)
 
 ### Why is a connection missing from the Stats Dashboard dropdown?
-If a connection doesn’t appear in the dropdown on the Stats Dashboard, **check whether it had any traffic during the selected time range**. For example, if you've applied the “Last 12 hours” filter but the connection had no activity during that period, it won’t be listed.
-To ensure visibility, try expanding the time range to include periods when the connection may have had traffic.
+If you can’t find a connection in the Stats Dashboard dropdown, try the following:
+  - **Partner type:**  
+    Make sure you’re browsing in the correct view (**Buyer or Seller**), depending on the data you want to see. You can switch between views at any time using the “View data of this page as:” selector on the left side of the screen.
+  - **Time range:**  
+    If a connection doesn’t appear in the dropdown on the Stats Dashboard, **check whether it had any traffic during the selected time range**. For example, if you've applied the “Last 12 hours” filter but the connection had no activity during that period, it won’t be listed.
+    To ensure visibility, try expanding the time range to include periods when the connection may have had traffic.
 
 
 ### Download CSV Functionality

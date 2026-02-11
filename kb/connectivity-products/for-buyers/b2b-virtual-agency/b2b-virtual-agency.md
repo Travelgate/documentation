@@ -15,6 +15,9 @@ Single Mode ([Single Search](/kb/connectivity-products/for-buyers/hotel-x/bookin
 Follow these steps to search for availability and make a booking via Single Search:
 
 1. **Log in** to [our Platform](https://www.travelgate.com/) as a **Buyer** (only Buyers have access to this solution.).
+   :::info
+   You can switch between Buyer and Seller views at any time using the **“View data of this page as:”** selector on the left side of the screen. The selector is available **only** for organizations that are connected on the platform as both a Buyer and a Seller.
+   :::
 2. Navigate to **Solutions > B2B Virtual Agency**.
 3. The search form will appear. Select the **Single Search** tab and enter the following details - make sure the required connections/accesses are active in ['My Connections'](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details#filtering-your-connections), otherwise, they will not appear in the dropdown:
    - Client

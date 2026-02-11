@@ -85,7 +85,10 @@ This functionality is **only available to Sellers** on the platform. If your org
 
 ### How can I use the "Customize hotel list" functionality?
 
-1. **Log in** to [Travelgate](https://www.travelgate.com/) and confirm you are browsing as a Seller.
+1. **Log in** to [Travelgate](https://www.travelgate.com/) and confirm you are browsing as a **Seller**.
+   :::info
+   You can switch between Buyer and Seller views at any time using the **“View data of this page as:”** selector on the left side of the screen. The selector is available **only** for organizations that are connected on the platform as both a Buyer and a Seller.
+   :::
 2. **Go to the Connections Content** section and filter by the desired connection and access to view the list of hotels returned for those credentials.
 3. Locate the "Customize hotel list" button above the results table, next to the "Download CSV" button.
 

@@ -4,22 +4,29 @@ sidebar_position: 5
 
 # Data Variations
 
-### Why Do the Statistics in My System Differ from the Data Provided by Travelgate?
+## Why Do Data Variations Occur?
 
-We often receive inquiries from our Partners regarding divergences between the data in **Stats** and the information stored in their own systems, particularly regarding variations in the number of requests per method. As you know, the Travelgate Booking Flow involves the following methods:
+We often receive inquiries from Partners regarding divergences between the data shown in Travelgate Stats and the information stored in their own systems. These discrepancies—specifically in the number of requests per method—are common and usually stem from differences in how transactions are counted and processed.
 
-1. **Search**
-2. **Quote**
-3. **Book**
+Data variations typically occur due to two main factors: Travelgate’s transaction logic and Buyer-side processing issues.
 
-### Why Do These Variations Occur?
+### 1. Transaction Logic
 
-Some integrations at Travelgate (not all) require **multiple transactions per method** to align with the Supplier's API workflow. For example, the **Quote** method might need 2 or 3 calls to the Supplier’s system to verify availability, rates, and other details.
+To ensure a seamless experience, Travelgate standardizes the Booking Flow into three methods: **Search, Quote, and Book**. However, some Supplier integrations require multiple transactions per method. For example, a single Travelgate 'Quote' might trigger several calls to the Supplier in order verify availability or final rates.
 
-Even though multiple calls might be made to the Supplier’s system, **Stats** will count only **one transaction per method** (the Travelgate method transaction). This means that there may be variations between the transaction count in our Stats and the actual number of calls made to the Supplier's system.
+Therefore, these differences may lead to a variation in transaction counts: while we record one transaction per method for statistical clarity, your system may log every individual interaction.
 
-In other cases, data variations may result from issues on the Buyer's side that occur **before their requests reach the Seller’s system**. This can lead to situations where the Buyer reports [errors](/kb/connectivity-products/for-buyers/errors-and-warnings/overview), even though no traffic is visible on the Seller’s end. Common causes include validation failures, incorrect credentials, or other client-side errors.
+### 2. Buyer-side Issues
 
-To investigate and resolve such discrepancies, we recommend maintaining communication with the Buyer and asking them to **audit their transactions**. You can find more information on how to do this in the articles linked below:
-    - [How to Audit Search Logs](/kb/platform/app-features/monitoring-tools/logging/audit-searches-functionality)
-    - [How to Audit Supplier Transactions](/kb/platform/app-features/monitoring-tools/logging/audit-supplier-transactions)
+In other cases, discrepancies occur before a request even reaches the Travelgate or Seller systems. This leads to situations where a Buyer reports errors, but no traffic is visible on the Seller’s end. Common causes include:
+
+* **Validation Failures:** The request was blocked because it didn't meet the required schema.
+* **Authentication Errors:** Incorrect credentials prevented the request from initiating.
+* **Client-side Timeouts:** The Buyer’s system timed out before the handshake with the Seller was completed.
+
+### How Can I Review Data Variations?
+
+To align your statistics, we recommend the following steps:
+    1. **Coordinate with your Partner:** Maintain open communication with your Buyer or Seller to compare transaction logs and identify specific timeframes where data diverges.
+    2. **Analyze Error Responses:** Review the specific [errors received](/kb/connectivity-products/for-buyers/errors-and-warnings/overview) (if any). Often, a high volume of failed requests on one side—that never reach the other—is the root cause of the variation.
+    3. **Audit Your Transactions:** Perform a deep-dive [audit of your logs](/kb/platform/app-features/monitoring-tools/logging/audit-searches-functionality) to differentiate between Travelgate's standardized methods and your internal API calls.

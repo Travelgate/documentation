@@ -12,7 +12,7 @@ Data variations typically occur due to two main factors: Travelgate’s transact
 
 ### 1. Transaction Logic
 
-To ensure a seamless experience, Travelgate standardizes the Booking Flow into three methods: **Search, Quote, and Book**. However, some Supplier integrations require multiple transactions per method. For example, a single Travelgate 'Quote' might trigger several calls to the Supplier in order verify availability or final rates.
+To ensure a seamless experience, Travelgate standardizes the Booking Flow into three methods: **Search, Quote, and Book**. However, some Supplier integrations require multiple transactions per method. For example, a single Travelgate 'Quote' might trigger several calls to the Supplier in order to verify availability or final rates.
 
 Therefore, these differences may lead to a variation in transaction counts: while we record one transaction per method for statistical clarity, your system may log every individual interaction.
 

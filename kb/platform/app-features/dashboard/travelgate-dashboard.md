@@ -19,7 +19,7 @@ These insights empower users to monitor and optimize their operations efficientl
 
 Follow these steps to access your Dashboard:
 1. Log in to the [Travelgate Platform](https://www.travelgate.com/).
-2. Click on **"Travelgate"** in the left side of the top navigation menu.
+2. Click on **"Travelgate"** on the left side of the top navigation menu.
 3. Make sure you’re browsing in the correct view (**Buyer or Seller**), depending on the data you want to see. You can switch between views at any time using the **“View data of this page as:”** selector on the left side of the screen. 
    :::note
    The Buyer/Seller selector is available **only** for organizations that are connected on the platform as both a Buyer and a Seller.

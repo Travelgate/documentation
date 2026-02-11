@@ -6,7 +6,7 @@ sidebar_position: 4
 
 :::info 🚀 FastX: The New Standard for Buyers
 
-**FastX** delivers to Buyers all their Sellers’ content — fully mapped at **Hotel**, **Room**, and **Board** levels. One clean connection, faster activations, full transparency.  
+**FastX** delivers to Buyers all their Sellers' content — fully mapped at **Hotel**, **Room**, and **Board** levels. One clean connection, faster activations, full transparency, and no additional cost.
 
 👉 **From 1 January 2026**, FastX will be the mandatory connection mode for all new Buyers. Existing Buyers using HotelX can continue as-is, but those facing mapping or data issues are encouraged to migrate to FastX for improved stability and content quality.
 
@@ -19,6 +19,8 @@ FastX codes are unique identifiers used across Travelgate’s Marketplace for ho
 * **For Sellers**: FastX codes let you validate your portfolio with Travelgate’s master database, ensuring your hotels and boards are correctly represented to all Buyers.
 
 The **FastX Codes tool** helps manage these matches, letting Sellers validate their mappings and Buyers track which Suppliers are matched to each FastX code. Working with FastX codes ensures the marketplace operates faster, more reliably, and with fewer errors.
+
+**FastX Diagram**:
 
 ![Hotel-X FastX Mode](https://stplaformwe.blob.core.windows.net/kbase/hotelx_fastx_mode.gif)
 

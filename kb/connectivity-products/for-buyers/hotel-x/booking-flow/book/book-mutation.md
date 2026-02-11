@@ -78,7 +78,24 @@ Example for a room with two adults:
         ]
 ```
 
-Here's a revised version with improved readability and reduced repetition:
+
+## Client Reference Management
+
+### Does the `clientReference` need to be unique?
+Yes, **`clientReference` should be unique** for each booking to maintain data integrity and ensure smooth communication with the Seller's system. **Reusing client references can lead to failed bookings** since some Sellers may have their own internal constraints that reject duplicate client references.
+
+### Can I use one 'multiroom reservation reference' for two separate Travelgate bookings?
+While you _can_ technically send the same `clientReference` across multiple Book requests, it is **not recommended** to treat separate Travelgate bookings as a single logical entity. In the Travelgate ecosystem, the Booking/Option is the atomic unit of a transaction. This means:
+- **Cancellation is Absolute:** You cannot cancel individual rooms within a single Travelgate booking via Cancel mutation. Cancellation always applies to the entire option/booking.
+- **Independent Policies:** Each booking has its own status, cancellation deadlines, and penalty calculations.
+- **Reconciliation:** Travelgate and Sellers reconcile data per booking. If one internal ID maps to two Travelgate bookings, automated reconciliation may show discrepancies or partial failures that are difficult to track.
+
+### What are the risks of using one reference for multiple Travelgate bookings?
+If your system groups two separate Travelgate bookings under one internal ID, you may encounter the following issues:
+- **Reservation Errors:** Sellers may reject bookings when they detect the same `clientReference` used for independent reservations.
+- **Fragmented Cancellation:** If you "cancel" the reservation in your system, you must ensure both independent Travelgate bookings are cancelled. One might succeed while the other fails, leading to "ghost" bookings at the Seller side.
+- **Penalty Calculation:** Penalties are calculated at the option level. You will receive two separate penalty sets which your system must then manually aggregate.
+- **Status Mismatches:** If one booking is confirmed and the other is rejected by the Seller, your internal "multi-room" reservation will enter an inconsistent state.
 
 :::warning Important  
 - Travelgate does *not* process reservations or cancellations on behalf of our Partners. These actions must be handled directly by the Partner.  

@@ -12,6 +12,9 @@ To view and manage your connections, follow these steps:
 
 1. **Log in** to the [Travelgate Platform](https://www.travelgate.com/).  
 2. Ensure you are browsing as either a **Buyer** or a **Seller**, depending on your Partner type.  
+   :::info
+   You can switch between Buyer and Seller views at any time using the **“View data of this page as:”** selector on the left side of the screen. The selector is available **only** for organizations that are connected on the platform as both a Buyer and a Seller.
+   :::
 3. Click **Connections** in the top menu, then select **My Connections**.  
 
    ![myconnections_aug_1](https://storage.travelgate.com/kbase/myconnections_aug_1.jpg)  
@@ -57,3 +60,19 @@ The access type (live or test) is based on the credentials agreed upon by the Bu
 :::tip  
 Still using our Legacy Pull Buyers API? **Upgrade to [Hotel-X API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart)** to access enhanced features!  
 :::  
+
+### Download CSV
+
+Download a CSV file containing your connection data by clicking the **Download CSV** button at the top of the connections list. The file includes:
+
+- Connection
+- Access code
+- Access name
+- Supplier code
+- Supplier name
+- Supplier context
+- Hotels
+- Status
+- Access type
+
+![tg_my_connections_download-csv](https://storage.travelgate.com/kbase/tg_my_connections_download-csv.png)

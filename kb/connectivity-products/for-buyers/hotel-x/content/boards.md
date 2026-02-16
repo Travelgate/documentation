@@ -4,6 +4,10 @@ sidebar_position: 4
 
 # Boards
 
+:::info
+In Hotel-X API, **boards** refer to meal plans. If you're transitioning from the Legacy Pull Buyers API, note that the MealPlan List method has been replaced with the Boards Query in Hotel-X.
+:::
+
 ## What Is the Boards Query?
 
 The Boards Query provides two key pieces of information:

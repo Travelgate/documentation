@@ -9,6 +9,7 @@ This guide will walk you through the process of requesting a connection with one
 Our goal has always been to make connecting with a Partner easier and faster.
 
 :::info Keep in mind:
+- Both **Buyers and Sellers** can request a connection.
 - **Having a commercial contract with Travelgate** is essential to request a new connection.
 - **Activations of connections with Channel Managers via Travelgate** should always be requested by the Buyers, not the Channel Managers themselves.
 :::

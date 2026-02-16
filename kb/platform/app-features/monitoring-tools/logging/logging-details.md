@@ -82,6 +82,8 @@ Yes, you can obtain **Quote and Book logs** for the **One Step Book** operation 
 
 ## Why can’t I find my logs in the Logging App?
 If you can’t find the logs you need in the Logging App, try the following:
+  - **Partner type:**  
+    Make sure you’re browsing in the correct view (**Buyer or Seller**), depending on the data you want to see. You can switch between views at any time using the “View data of this page as:” selector on the left side of the screen.
   - **For booking or cancellation error logs:**  
     Always search using the “Search by Connections” → **“Time Range” filter** and, if possible, filter by Error. Logs for failed bookings or cancellations cannot be retrieved by client reference, supplier reference, or session ID.
   - **Reference filter for OK logs:**  

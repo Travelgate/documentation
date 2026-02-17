@@ -385,3 +385,189 @@ In addition, you can retrieve the full list directly from the Travelgate website
 :::info
 You can also continue accessing each supplier’s own hotel list and detailed information exactly as before. Check more info and examples [here](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/fastx).
 :::
+
+### 6. The Booking Responses Now Includes Both FastX and Supplier Codes
+As previously mentioned in the Search section, Travelgate’s mappable entities (Hotel, Board, and Room) were being returned using the **supplier’s context** (supplier codes) within the Booking response.
+
+Following the implementation of the new functionality to include FASTX codes in Booking responses, we now provide both **supplier** and **FASTX codes** within the code fields of the mappable entities.
+
+**<u>Specifically:</u>**
+
+**Hotels**: We provide the hotelCode and the hotelCodeSupplier (code in seller's context).  
+
+**Boards**: We provide the boardCode (mapped code) and the boardCodeSupplier (code in seller's context)
+
+**Rooms**: We now return the code field (corresponding to the FASTX code) and the supplierCode field (corresponding to the supplier’s code). Additionally, we have included descriptive fields for rooms: description (mapped description) and descriptionSupplier (original supplier description).
+
+<Tabs>
+  <TabItem value="before" label="(Before) Supplier Codes">
+    ```json
+   {
+	"data": {
+		"hotelX": {
+			"booking": {
+				"errors": null,
+				"warnings":null,
+				"bookings": [
+					{
+						"status": "OK",
+						"reference": {
+							"bookingID": "n1@1[251108[251115[251108[1[en[EUR[2[B39901-1[4902704[",*
+							"client": "B39901-1",
+							"supplier": "4902704",
+							"hotel": null
+						},
+						"holder": {
+							"name": "testA",
+							"surname": "testA"
+						},
+						"hotel": {
+							"bookingDate": "2025-11-08",
+							"start": "2025-11-08",
+							"end": "2025-11-15",
+							"hotelCodeSupplier": "1",
+							"boardCodeSupplier": "14",
+							"hotelName": "Hotel Test",
+							"occupancies": [
+								{
+									"id": 1,
+									"paxes": [
+										{
+											"age": 40
+										},
+										{
+											"age": 1
+										}
+									]
+								}
+							],
+							"rooms": [
+								{
+									"occupancyRefId": 1,
+									"code": "5683",
+									"description": "Double Suite Deluxe",
+									"price": {
+										"currency": "EUR",
+										"net": 625,
+										"exchange": {
+											"currency": "EUR",
+											"rate": 1
+										}
+									}
+								}
+							]
+						},
+						"cancelPolicy": {
+							"refundable": true,
+							"cancelPenalties": [
+								{
+									"hoursBefore": 240,
+									"penaltyType": "IMPORT",
+									"currency": "EUR",
+									"value": 593.75
+								},
+								{
+									"hoursBefore": 48,
+									"penaltyType": "IMPORT",
+									"currency": "EUR",
+									"value": 625
+								}
+							]
+						},
+						"remarks": ""
+					}
+				]
+			}
+		}
+	}
+}
+    ```
+  </TabItem>
+  <TabItem value="after" label="(After) FastX Codes">
+    ```json
+   {
+	"data": {
+		"hotelX": {
+			"booking": {
+				"errors": null,
+				"warnings":null,
+				"bookings": [
+					{
+						"status": "OK",
+						"reference": {
+							"bookingID": "n1@1[251108[251115[251108[1[en[EUR[2[B39901-1[4902704[",
+							"client": "B39901-1",
+							"supplier": "4902704",
+							"hotel": null
+						},
+						"holder": {
+							"name": "testA",
+							"surname": "testA"
+						},
+						"hotel": {
+							"bookingDate": "2025-11-08",
+							"start": "2025-11-08",
+							"end": "2025-11-15",
+							"hotelCode": "MappedHotelCode",
+							"hotelCodeSupplier": "1",
+							"boardCode": "MappedBoardCode",
+							"boardCodeSupplier": "14",
+							"hotelName": "Hotel Test",
+							"occupancies": [
+								{
+									"id": 1,
+									"paxes": [
+										{
+											"age": 40
+										},
+										{
+											"age": 1
+										}
+									]
+								}
+							],
+							"rooms": [
+								{
+									"occupancyRefId": 1,
+									"code": "MappedRoomCode",
+									"supplierCode": "5683",
+									"description": "Mapped Room Description",
+									"descriptionSupplier": "Double Suite Deluxe",
+									"price": {
+										"currency": "EUR",
+										"net": 625,
+										"exchange": {
+											"currency": "EUR",
+											"rate": 1
+										}
+									}
+								}
+							]
+						},
+						"cancelPolicy": {
+							"refundable": true,
+							"cancelPenalties": [
+								{
+									"hoursBefore": 240,
+									"penaltyType": "IMPORT",
+									"currency": "EUR",
+									"value": 593.75
+								},
+								{
+									"hoursBefore": 48,
+									"penaltyType": "IMPORT",
+									"currency": "EUR",
+									"value": 625
+								}
+							]
+						},
+						"remarks": ""
+					}
+				]
+			}
+		}
+	}
+}
+    ```
+  </TabItem>
+</Tabs>

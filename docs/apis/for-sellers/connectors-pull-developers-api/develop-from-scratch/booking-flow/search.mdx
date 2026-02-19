@@ -234,7 +234,7 @@ This step validates the incoming request from the client. While most validation 
 ```csharp
 public bool TryValidateModelRequest(
     SearchConnectorRequest connectorsRequest, 
-    SearchParameters<CntAccessModel> connectorParameters,
+    SearchParameters<AccessModel> connectorParameters,
     out IEnumerable<AdviseMessage> adviseMessages)
 {
     //AdviseMessages are used to specify errors, such as checking if the hotel code is numeric and if not, add an AdviseMessage
@@ -256,7 +256,7 @@ Once the supplier's response is received, this step validates it for errors or a
 
 ```csharp
 public bool TryValidateSupplierResponses(
-    SearchParameters<CntAccessModel> connectorParameters,
+    SearchParameters<AccessModel> connectorParameters,
     IEnumerable<SupplierResponseWrapper<SearchResponse>> supplierResponses,
     out IEnumerable<AdviseMessage> adviseMessages)
 {
@@ -266,7 +266,7 @@ public bool TryValidateSupplierResponses(
 
     if (!success) return false;
     
-    if (supplierResponseWrappers.ElementAt(0).Response.HotelSearch?.Hotel is null)
+    if (supplierResponseWrappers.ElementAt(0).Response.Options is null)
     {
         adviseMessages =
         [

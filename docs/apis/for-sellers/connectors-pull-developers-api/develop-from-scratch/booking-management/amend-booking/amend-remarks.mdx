@@ -1,45 +1,46 @@
 ---
-title: "CheckByReference"
-sidebar_position: 6
+title: "AmendBookingRemarks"
+sidebar_position: 4
 ---
 
 ## **Mock**
 
-### **Step 1: Define your CheckBookingsByReference responses (Mocks)**
+### **Step 1: Define your AmendBookingRemarks responses (Mocks)**
 
 Define the responses for your operation, it is mandatory to insert a supplier response into every mock or at least, into the mocks of the operation you will be developing.
 
 We will be using the **TwoAdultTwoDays** mock through all the steps of the development.
 
-File location: "**test\MockServer\Tests\CheckBookingsByReference\Two_Adults_Two_Days.txt**".
+File location: "**test\MockServer\Tests\AmendBookingRemarks\Two_Adults_Two_Days.txt**".
 
-![Mock Example](/img/docs/connectors-pull-developers-api/MockTwoAdultsCheckBookingsByReference.png)
+![Mock Example](/img/docs/connectors-pull-developers-api/MockTwoAdultsAmendRemarks.png)
 
 ### **Step 2: Define the Models of your response (Request and Response models)**
 
 These models are crucial because they specify the structure of the objects contained within supplier responses. They'll also play a vital role in serializing and deserializing requests and responses during development.
 
-![Response example](/img/docs/connectors-pull-developers-api/TemplateStructureModelsCheckBookingsByReference.png)
+![Response example](/img/docs/connectors-pull-developers-api/TemplateStructureModelsAmendBookingRemarks.png)
 
-**Example of a CheckBookingsByReferenceRequest model**:
+**Example of a AmendBookingRemarksRequest model**:
 
 ```csharp
-namespace ConnectorsIntegration.CheckBookingsByReference.Models.Request;
+namespace ConnectorsIntegration.Amends.Remarks.Models.Request;
 
-public class CheckBookingsByReferenceRequest
+public class AmendRemarksRequest
 {
+    public List<string> NewRemarks { get; set; }
     public string ClientReference { get; set; }
     public string SupplierReference { get; set; }
 }
 ```
-File location: "**ConnectorsIntegration\CheckBookingsByReference\Models\Request\CheckBookingsByReferenceRequest.cs**".
+File location: "**ConnectorsIntegration\Amends\Remarks\Models\Request\AmendRemarksRequest.cs**".
 
-**Example of a CheckBookingsByReferenceResponse model**:
+**Example of a AmendRemarksResponse model**:
 
 ```csharp
-namespace ConnectorsIntegration.CheckBookingsByReference.Models.Response;
+namespace ConnectorsIntegration.Amends.Remarks.Models.Response;
 
-public class CheckBookingsByReferenceResponse
+public class AmendRemarksResponse
 {
     public SupplierOption Option { get; set; }
 }
@@ -83,52 +84,51 @@ public class SupplierRoom
     public string RoomDescription { get; set; }
 }
 ```
-File location: "**ConnectorsIntegration\CheckBookingsByReference\Models\Response\CheckBookingsByReferenceResponse.cs**".
+File location: "**ConnectorsIntegration\Amends\Remarks\Models\Response\AmendRemarksResponse.cs**".
 
 ## **Develop**
 
 ### **Step 1: Register the serializers and operations**
 To specify which serializer and operations the developer will be using (based on the Seller's API) we can specify it in our "**Extensions**":
 
-File location: "**ConnectorsIntegration\CheckBookingsByReference\CheckBookingsByReferenceExtensions.cs**".
+File location: "**ConnectorsIntegration\Amends\Remarks\AmendmentsRemarksExtensions.cs**".
 
 If the Seller works with **JSON** format, we can specify the integration to work with **JSON** with the following:
 
 ```csharp
-internal static class CheckBookingsByReferenceExtensions
+internal static class AmendmentsRemarksExtensions
 {
-    public static void AddCheckBookingsByReferenceServices(this IServiceCollection services,
+    public static void AddAmendBookingRemarksServices(this IServiceCollection services,
         IConfiguration configuration)
     {
         //A JsonSerializer service is added along with the request and response model
-        services.AddJsonSerializer<CheckBookingsByReferenceRequest, CheckBookingsByReferenceResponse>(ConfigureJSONOptions);
+        services.AddJsonSerializer<AmendRemarksRequest, AmendRemarksResponse>(ConfigureJSONOptions);
         //The operation is added, indicating what models should be used during the development of the operation
-        services.AddCheckBookingsByReferenceOperation<CheckBookingsByReferenceOperation, CheckBookingsByReferenceRequest, CheckBookingsByReferenceResponse, AccessModel>(TgxPlatform.Name,
-            configuration);
+        services.AddAmendBookingRemarksOperation<AmendBookingRemarksOperation, AmendRemarksRequest, AmendRemarksResponse, AccessModel>(TgxPlatform.Name, configuration);
     }
     private static void ConfigureJSONOptions(JsonSerializerOptions options) { }
 }
 ```
 
-For details about others serializers, check [Extensions](../../advanced-use/booking-extensions).
+For details about others serializers, check [Extensions](../../../advanced-use/booking-extensions).
 
-For more details about operations, check [PreOperations](../../connector-framework/preoperation-overview) and [Operations](../../connector-framework/operation-overview).
+For more details about operations, check [PreOperations](../../../connector-framework/preoperation-overview) and [Operations](../../../connector-framework/operation-overview).
 
-### **Step 2: CheckBookingsByReferenceOperation validators**
+### **Step 2: AmendBookingRemarksOperation validators**
 
-There are two previous validations that serve as a filter so the buildrequest and the parseresponse are as safe as possible. They can be found in the CheckBookingsByReferenceOperation.cs class:
+There are two previous validations that serve as a filter so the buildrequest and the parseresponse are as safe as possible. They can be found in the AmendBookingRemarksOperation.cs class:
 
 ```chsarp
-internal partial class CheckBookingsByReferenceOperation :
-    ICheckBookingsByReferenceOperation<CheckBookingsByReferenceRequest, CheckBookingsByReferenceResponse, AccessModel>
+internal partial class AmendBookingRemarksOperation :
+    IAmendBookingRemarksOperation<AmendRemarksRequest, AmendRemarksResponse, AccessModel>
 {
     // Implement any services needed just like in SearchOperation.cs
 }
 ```
 
-File location: "**ConnectorsIntegration\CheckBookingsByReference\Operations\CheckBookingsByReferenceOperation.cs**".
+File location: "**ConnectorsIntegration\Amends\Remarks\Operations\AmendBookingRemarksOperation.cs**".
 
-![CheckBookingsByReferenceOperation](/img/docs/connectors-pull-developers-api/CheckBookingsByReferenceOperation.png)
+![AmendBookingRemarksOperation](/img/docs/connectors-pull-developers-api/AmendBookingRemarksOperation.png)
 
 **TryValidateModelRequest**
 
@@ -138,8 +138,8 @@ This step validates the incoming request from the client. While most validation 
 
 ```csharp
 public bool TryValidateModelRequest(
-    CheckBookingsByReferenceConnectorRequest connectorsRequest, 
-    CheckBookingsByReferenceParameters<AccessModel> connectorParameters,
+    AmendBookingRemarksConnectorRequest connectorsRequest, 
+    AmendBookingRemarksParameters<AccessModel> connectorParameters,
     out IEnumerable<AdviseMessage> adviseMessages)
 {
     //AdviseMessages are used to specify errors, such as checking if the hotel code is numeric and if not, add an AdviseMessage
@@ -161,11 +161,11 @@ Once the supplier's response is received, this step validates it for errors or a
 
 ```csharp
 public bool TryValidateSupplierResponses(
-    CheckBookingsByReferenceParameters<AccessModel> connectorParameters,
-    IEnumerable<SupplierResponseWrapper<CheckBookingsByReferenceResponse>> supplierResponses,
+    AmendBookingRemarksParameters<AccessModel> connectorParameters,
+    IEnumerable<SupplierResponseWrapper<AmendRemarksResponse>> supplierResponses,
     out IEnumerable<AdviseMessage> adviseMessages)
 {
-    var supplierResponseWrappers = supplierResponses as SupplierResponseWrapper<CheckBookingsByReferenceResponse>[] ?? supplierResponses.ToArray();
+    var supplierResponseWrappers = supplierResponses as SupplierResponseWrapper<AmendRemarksResponse>[] ?? supplierResponses.ToArray();
     
     var success = ResponseValidator.TryValidateSupplierResponses(supplierResponseWrappers, out adviseMessages);
 
@@ -175,7 +175,7 @@ public bool TryValidateSupplierResponses(
     {
         adviseMessages =
         [
-            AdviseMessage.BuildSupplierError() // Indicates error from the seller
+            AdviseMessage.BuildSupplierError() // Indicates error from the supplier.
         ];
 
         return false;
@@ -189,41 +189,41 @@ public bool TryValidateSupplierResponses(
 
 This class will contain a "BuildRequests" method that will have the following arguments: 
 
-- Object of the requests from the models previously created (CheckBookingsByReferenceRequest).
+- Object of the requests from the models previously created (AmendRemarksRequest).
 - The request that the Buyer sends (connectorsRequest).
 - Parameters (connectorParameters) which will have some helpers:
 
-File location: "**ConnectorsIntegration\CheckBookingsByReference\Operations\CheckBookingsByReferenceOperation.BuildRequest.cs**"
+File location: "**ConnectorsIntegration\Amends\Remarks\Operations\AmendBookingRemarksOperation.BuildRequest.cs**"
 
-![Build Request CheckBookingsByReference](/img/docs/connectors-pull-developers-api/BuildRequestCheckBookingsByReference.png)
+![Build Request AmendRemarks](/img/docs/connectors-pull-developers-api/BuildRequestAmendRemarks.png)
 
 **Example of Build Request:**
 
 ```csharp
 using Connectors.Core.Application.Connection;
-using Connectors.Pull.Hotel.Application.Operations.CheckBookingsByReference;
-using ConnectorsIntegration.CheckBookingsByReference.Models.Request;
+using Connectors.Pull.Hotel.Application.Operations.Amendments.AmendBookingRemarks;
+using ConnectorsIntegration.Amends.Remarks.Models.Request;
 
-namespace ConnectorsIntegration.CheckBookingsByReference.Operations;
+namespace ConnectorsIntegration.Amends.Remarks.Operations;
 
-internal partial class CheckBookingsByReferenceOperation
+internal partial class AmendBookingRemarksOperation
 {
-    public IEnumerable<SupplierRequestWrapper<CheckBookingsByReferenceRequest>> BuildRequests(
-        CheckBookingsByReferenceConnectorRequest connectorsRequest,
-        CheckBookingsByReferenceParameters<AccessModel> connectorParameters)
+    public IEnumerable<SupplierRequestWrapper<AmendRemarksRequest>> BuildRequests(
+        AmendBookingRemarksConnectorRequest connectorsRequest,
+        AmendBookingRemarksParameters<AccessModel> connectorParameters)
     {
-        var clientReference = connectorsRequest.CheckBookingsByReferenceRq.Input.Reference.ClientLocator;
-        var supplierReference = connectorsRequest.CheckBookingsByReferenceRq.Input.Reference.SupplierLocator;
+        var clientReference = connectorsRequest.AmendBookingRemarksRq.Input.Reference.ClientLocator;
+        var supplierReference = connectorsRequest.AmendBookingRemarksRq.Input.Reference.SupplierLocator;
 
-        CheckBookingsByReferenceRequest checkBookingsByReferenceRequest = BuildCheckBookingsByReferenceRequest(
+        AmendBookingRemarksConnectorRequest amendBookingRemarksConnectorRequest = BuildAmendBookingRemarksConnectorRequest(
             clientReference,
             supplierReference);
 
         //Generic URL we prepared back in the AccessModel, which will be passed by the Buyer
         string genericUrl = connectorParameters.ParametersModel.UrlGeneric;
 
-        SupplierRequestWrapper<CheckBookingsByReferenceRequest> supplierRequest = new(
-            checkBookingsByReferenceRequest,
+        SupplierRequestWrapper<AmendRemarksRequest> supplierRequest = new(
+            amendBookingRemarksConnectorRequest,
             new Uri(genericUrl),
             HttpMethod.Post);
 
@@ -233,16 +233,20 @@ internal partial class CheckBookingsByReferenceOperation
         ];
     }
 
-    private static CheckBookingsByReferenceRequest BuildCheckBookingsByReferenceRequest(
+    private static AmendBookingRemarksConnectorRequest BuildAmendBookingRemarksConnectorRequest(
         string clientReference,
         string sellerReference) 
     {
         //The request towards the Seller system
       
-        return new CheckBookingsByReferenceRequest()
+        return new AmendBookingRemarksConnectorRequest()
         {
             ClientReference = clientReference,
-            SellerReference = sellerReference
+            SellerReference = sellerReference,
+            NewRemarks = new List<string>()
+            {
+                "Please add a cot for our baby"
+            }
         };
     }
 }
@@ -252,11 +256,11 @@ internal partial class CheckBookingsByReferenceOperation
 
 Once the request has been sent, we will have to control and parse the response returned by the Seller.
 
-We will be implementing the "ParseResponse" step inside CheckBookingsByReferenceOperation:
+We will be implementing the "ParseResponse" step inside AmendBookingRemarksOperation:
 
-File location: "**ConnectorsIntegration\CheckBookingsByReference\Operations\CheckBookingsByReferenceOperation.ParseResponse.cs**"
+File location: "**ConnectorsIntegration\Amend\Remarks\Operations\AmendBookingRemarksOperation.ParseResponse.cs**"
 
-![Build Response CheckBookingsByReference](/img/docs/connectors-pull-developers-api/ParseResponseCheckBookingsByReference.png)
+![Build Response AmendBookingRemarks](/img/docs/connectors-pull-developers-api/ParseResponseAmendBookingRemarks.png)
 
 **Example of Parse Response:**
 
@@ -265,28 +269,28 @@ using Connectors.Core.Application.Connection;
 using Connectors.Core.Application.Iso;
 using Connectors.Core.Domain;
 using Connectors.Pull.Hotel.Domain.Contracts.Common;
-using Connectors.Pull.Hotel.Application.Operations.CheckBookings.ByReference;
-using Connectors.Pull.Hotel.Domain.Contracts.CheckBookings.Response;
+using Connectors.Pull.Hotel.Application.Operations.Amendments.AmendBookingRemarks;
+using Connectors.Pull.Hotel.Domain.Contracts.Amendments;
 
-namespace ConnectorsIntegration.CheckBookingsByReference.Operations;
+namespace ConnectorsIntegration.Amends.Remarks.Operations;
 
-internal partial class CheckBookingsByReferenceOperation
+internal partial class AmendBookingRemarksOperation
 {
-    public CheckBookingsByReferenceConnectorResponse ParseResponses(
-        CheckBookingsByReferenceConnectorRequest connectorsRequest,
-        CheckBookingsByReferenceParameters<AccessModel> connectorParameters,
-        IEnumerable<SupplierResponseWrapper<CheckBookingsByReferenceResponse>> supplierResponses,
+    public AmendBookingRemarksConnectorResponse ParseResponses(
+        AmendBookingRemarksConnectorRequest connectorsRequest,
+        AmendBookingRemarksParameters<AccessModel> connectorParameters,
+        IEnumerable<SupplierResponseWrapper<AmendRemarksResponse>> supplierResponses,
         CancellationToken cancellationToken)
     {
         var supplierResponse = supplierResponses.First().Response;
-        return new CheckBookingsByReferenceConnectorResponse(ParseSupplierResponse(supplierResponse));
+        return new AmendBookingRemarksConnectorResponse(ParseSupplierResponse(supplierResponse));
     }
 
-    private CheckBookingsRs ParseSupplierResponse(CheckBookingsByReferenceResponse supplierResponse)
+    private AmendRs ParseSupplierResponse(AmendRemarksResponse supplierResponse)
     {
         if (supplierResponse.Option == null)    
         {
-            return CheckBookingsRs.BuildErrorResponse(new[]
+            return AmendRs.BuildErrorResponse(new[]
             {
                 AdviseMessage.BuildSupplierError(new External("", "Option null from supplier response"))
             });
@@ -310,7 +314,7 @@ internal partial class CheckBookingsByReferenceOperation
                 Rooms = roomList,
             }
         };
-        return new CheckBookingsRs([bookDetails]);
+        return new AmendRs([bookDetails]);
     }
 
     private OptionCancelPolicy ParseSupplierCancelPolicies(DateTime checkIn, List<SupplierCancelPolicy> supplierCancelPolicies)
@@ -389,9 +393,9 @@ internal partial class CheckBookingsByReferenceOperation
 }
 ```
 
-For more details about helpers, check the - [Price helpers](../../tools-and-helpers/price-helpers) and [Policies helpers](../../tools-and-helpers/policies-helpers) 
+For more details about helpers, check the - [Price helpers](../../../tools-and-helpers/price-helpers) and [Policies helpers](../../tools-and-helpers/policies-helpers) 
 
-For more details about the combinatory, check [Recommended Helpers](../../tools-and-helpers/recommended-helpers)
+For more details about the combinatory, check [Recommended Helpers](../../../tools-and-helpers/recommended-helpers)
 
 ## **Test**
 
@@ -402,21 +406,21 @@ Be aware that option 1 is optional for testing the integration but ***mandatory*
 :::
 Use the integration tests provided by Travelgate to validate your implementation:
 - Add the necessary use cases to the **MockServer** for each operation.
-  - [View MockServer Documentation](../../connector-framework/mock-server-documentation.mdx).
+  - [View MockServer Documentation](../../../connector-framework/mock-server-documentation.mdx).
 - Execute the associated tests for the implemented operation.
-  - [View Running Integration Tests](../../connector-framework/running-integration-tests.mdx).
+  - [View Running Integration Tests](../../../connector-framework/running-integration-tests.mdx).
 
 ### **Option 2: FormTest Tool (Shopping)**
 Use the **FormTest** application to test each operation manually:
 - Configure the tool to use your supplier's API settings.
 - Test specific scenarios not covered by predefined use cases.
-- [View FormTest Documentation](../../tools-and-helpers/formtest-documentation.mdx).
+- [View FormTest Documentation](../../../tools-and-helpers/formtest-documentation.mdx).
  
 ## **Code Review**
 
 ### **Step 1: Create Pull Request**
 
-    - Commit your changes and push them to a new branch called "**CheckBookingsByReferenceDevelopment**" into the original repository.
+    - Commit your changes and push them to a new branch called "**AmendBookingRemarksDevelopment**" into the original repository.
     - Separate the Pull Request into minimum these 4 commits:
         - Mock responses
         - Request and Response models
@@ -424,4 +428,4 @@ Use the **FormTest** application to test each operation manually:
         - ParseResponse
 
 ### **Step 2: Wait for Travelgate review**
-    - This step involves waiting for the Travelgate team to review and approve the submitted pull request, for more details, check [Code Review Details](../code-review/code-review-details.mdx)
+    - This step involves waiting for the Travelgate team to review and approve the submitted pull request, for more details, check [Code Review Details](../../code-review/code-review-details.mdx)

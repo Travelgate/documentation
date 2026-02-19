@@ -32,7 +32,7 @@ public class CheckBookingsByDateRequest
     public string CheckOut { get; set; }
 }
 ```
-File location: "**ConnectorsIntegration\CheckBookingsByDate\Models\Response\CheckBookingsByDateRequest.cs**".
+File location: "**ConnectorsIntegration\CheckBookingsByDate\Models\Request\CheckBookingsByDateRequest.cs**".
 
 **Example of a CheckBookingsByDateResponse model**:
 
@@ -139,7 +139,7 @@ This step validates the incoming request from the client. While most validation 
 ```csharp
 public bool TryValidateModelRequest(
     CheckBookingsByDateConnectorRequest connectorsRequest, 
-    CheckBookingsByDateParameters<CntAccessModel> connectorParameters,
+    CheckBookingsByDateParameters<AccessModel> connectorParameters,
     out IEnumerable<AdviseMessage> adviseMessages)
 {
     //AdviseMessages are used to specify errors, such as checking if the hotel code is numeric and if not, add an AdviseMessage
@@ -161,7 +161,7 @@ Once the supplier's response is received, this step validates it for errors or a
 
 ```csharp
 public bool TryValidateSupplierResponses(
-    CheckBookingsByDateParameters<CntAccessModel> connectorParameters,
+    CheckBookingsByDateParameters<AccessModel> connectorParameters,
     IEnumerable<SupplierResponseWrapper<CheckBookingsByDateResponse>> supplierResponses,
     out IEnumerable<AdviseMessage> adviseMessages)
 {
@@ -171,11 +171,11 @@ public bool TryValidateSupplierResponses(
 
     if (!success) return false;
     
-    if (supplierResponseWrappers.ElementAt(0).Response.HotelCheckBookingsByDate?.Hotel is null)
+    if (supplierResponseWrappers.ElementAt(0).Response.Option is null)
     {
         adviseMessages =
         [
-            AdviseMessage.BuildSupplierNoResults() // Indicates no results from the supplier.
+            AdviseMessage.BuildSupplierError() // Indicates error from the supplier.
         ];
 
         return false;

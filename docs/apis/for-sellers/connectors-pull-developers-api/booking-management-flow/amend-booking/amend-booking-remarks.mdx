@@ -1,0 +1,382 @@
+---
+title: "AmendBookingRemarks"
+sidebar_position: 5
+---
+
+## **Overview**
+
+The `AmendBookingRemarks` operation allows clients to add or modify special requests and remarks for an existing booking. This operation uses the client and supplier locators to identify the reservation and communicates additional instructions, preferences, or requirements directly to the hotel or service provider.
+
+The AmendBookingRemarks operation ensures:
+
+- **Special Requests Communication**: Enables clients to transmit guest preferences and requirements to the hotel.
+- **Flexible Note Management**: Supports adding multiple remarks for different aspects of the stay.
+- **Booking Enhancement**: Improves guest experience by communicating specific needs before arrival.
+- **Confirmation Tracking**: Returns confirmation that remarks have been successfully added to the booking.
+- **Status Confirmation**: Confirms the success or failure of the remarks amendment request.
+
+**When to Use:**
+
+- **Special Requirements**: When guests have specific needs such as dietary restrictions, accessibility requirements, or medical conditions.
+- **Preference Communication**: To communicate room preferences like high floor, quiet location, or connecting rooms.
+- **Time-Sensitive Requests**: For early check-in, late check-out, or special arrival time notifications.
+- **Additional Services**: To request services like airport transfers, special occasions (honeymoon, birthday), or child-related needs (cribs, high chairs).
+
+**Common Scenarios:**
+
+- **Room Preferences**: Requesting non-smoking rooms, high floor, ocean view, or connecting rooms.
+- **Timing Requests**: Notifying the hotel of late check-in (after 11 PM) or early check-in requirements.
+- **Accessibility Needs**: Requesting wheelchair accessible rooms, ground floor accommodation, or mobility assistance.
+- **Special Occasions**: Informing the hotel about honeymoons, anniversaries, or birthdays for potential room preparation.
+- **Dietary Requirements**: Communicating allergies or dietary restrictions for breakfast or meal plans.
+- **Child-Related Needs**: Requesting cribs, high chairs, extra beds, or childproofing.
+- **Error Handling**: Common errors include:
+  - `BookingNotFound`: Indicates the booking cannot be located with the provided locators.
+  - `SupplierError`: Indicates the amendment could not be processed by the supplier.
+
+---
+
+## **Request**
+
+### **Overview**
+
+The request operation includes the new remarks or special requests, booking references, and any additional data required by the supplier.
+
+### **Sample**
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+  <TabItem value="AmendBookingRemarksRequest" label="C#">
+    ```csharp
+    var amendBookingRemarksRq = new AmendBookingRemarksRq
+    {
+        Input = new AmendRemarksInput
+        {
+            Reference = new Reference
+            {
+                ClientReference = "CLIENT123456",
+                SupplierReference = "SUPPLIER789"
+            },
+            AmendRemarks = new List<Remark>
+            {
+                new Remark
+                {
+                    RemarkType = RemarkType.General,
+                    Text = "Non-smoking room required"
+                },
+                new Remark
+                {
+                    RemarkType = RemarkType.Room,
+                    Text = "Connecting rooms preferred"
+                },
+                new Remark
+                {
+                    RemarkType = RemarkType.General,
+                    Text = "Late check-in expected (after 11 PM)"
+                },
+                new Remark
+                {
+                    RemarkType = RemarkType.Room,
+                    Text = "Guest prefers high floor"
+                }
+            },
+            PaymentType = PaymentType.Merchant,
+            PaymentCardInput = null
+        },
+        Settings = new Settings
+        {
+            Supplier = "HOTELTEST",
+            Platform = "HOTELTEST",
+            Client = "TravelAgency123",
+            Access = new Access
+            {
+                Code = 1001,
+                User = "agency_user",
+                Password = "secure_password",
+                ApiKey = "API_KEY_123456789",
+                Urls = new Urls
+                {
+                    Book = "https://api.hotelsupplier.com/book",
+                    Search = "https://api.hotelsupplier.com/search",
+                    Quote = "https://api.hotelsupplier.com/quote",
+                    Cancel = "https://api.hotelsupplier.com/cancel",
+                    CheckBookings = "https://api.hotelsupplier.com/check",
+                    AmendBookingBoard = "https://api.hotelsupplier.com/amend/board",
+                    AmendBookingDates = "https://api.hotelsupplier.com/amend/dates",
+                    AmendBookingPaxes = "https://api.hotelsupplier.com/amend/paxes",
+                    AmendBookingRemarks = "https://api.hotelsupplier.com/amend/remarks",
+                    AmendBookingRooms = "https://api.hotelsupplier.com/amend/rooms"
+                },
+                Parameters = new Dictionary<string, string>
+                {
+                    { "someParameter1", "50" },
+                    { "someParameter2", "true" },
+                    { "someParameter3", "5000" },
+                    { "someParameter4", "SupplierX" }
+                }
+            },
+            BusinessRules = new BusinessRules
+            {
+                OptionsQuota = 170,
+                BusinessRuleType = "CheaperAmount"
+            },
+            Timeout = "00:00:10",
+            TimeoutAsTimeSpan = TimeSpan.Parse("00:00:10"),
+            IncludeProviderTransactions = false
+        }
+    };
+    ```
+  </TabItem>
+</Tabs>
+
+### **Details**
+
+| Name | Relation | Type | Description |
+|------|:--------:|:----:|-------------|
+| **Input** | 1 | [AmendRemarksInput](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/amendremarksinput) | Input data for the remarks amendment operation. |
+| **Input/Reference** | 1 | [Reference](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/reference) | Booking references for the amendment. |
+| **Input/Reference/**<br />**ClientReference** | 1 | String | The client's internal reference for the booking. |
+| **Input/Reference/**<br />**SupplierReference** | 1 | String | The supplier's reference for the booking. |
+| **Input/AmendRemarks** | 1 . . N | Array&lt;[Remark](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/remark)&gt; | A collection of remarks to be amended or added to the booking. Each remark contains a type and text content. |
+| **Input/AmendRemarks/**<br />**RemarkType** | 1 | [RemarkType](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/remarktype) | The type/category of the remark. Values include: General (general remarks), Hotel (hotel-level remarks), Room (room-specific remarks), Service (service-related remarks). |
+| **Input/AmendRemarks/Text** | 1 | String | The text content of the remark, providing details, instructions, or notes. |
+| **Input/PaymentType** | 0 . . 1 | [PaymentType](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/paymenttype) | Payment type for the booking (e.g., Merchant, Direct). Optional - only required if the supplier needs payment details for the amendment. |
+| **Input/PaymentCardInput** | 0 . . 1 | [PaymentCardInput](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/paymentcardinput) | Payment card details, if applicable. Optional - only required if PaymentType is specified and card details are needed. |
+| **Settings** | 1 | [Settings](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/settings) | Settings for the amendment operation. |
+| **Settings/Supplier** | 1 | String | The identifier for the supplier in the TravelgateX platform. |
+| **Settings/Platform** | 1 | String | The platform hosting the supplier's services. |
+| **Settings/Client** | 1 | String | The client code requesting the operation. |
+| **Settings/Access** | 1 | [Access](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/access) | Authentication and endpoint configuration. |
+| **Settings/Access/Code** | 1 | Integer | Access code for authentication. |
+| **Settings/Access/User** | 0 . . 1 | String | Username for authentication. |
+| **Settings/Access/Password** | 0 . . 1 | String | Password for authentication. |
+| **Settings/Access/ApiKey** | 0 . . 1 | String | API key for authentication. |
+| **Settings/Access/Urls** | 1 | [Urls](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/urls) | URLs for different operations. |
+| **Settings/Access/Parameters** | 0 . . 1 | [AccessParameters](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/accessparameters) | Additional parameters related to the connection. |
+| **Settings/BusinessRules** |0 . . 1 | [BusinessRules](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/businessrules) | Specifies the business rules to be applied during the operation. These rules define operational constraints and behavior, such as quota limits or prioritization criteria. |
+| **Settings/BusinessRules/**<br />**OptionsQuota** | 0 . . 1 | Integer | The maximum number of options returned for each board in the Search query. |
+| **Settings/BusinessRules/**<br />**BusinessRuleType** | 1 | [BusinessRulesType](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/businessrulestype) | The business rule type that determines how Search results are prioritized or filtered. |
+| **Settings/Timeout** | 1 | String | Defines the timeout period for the operation as a string value.This indicates the maximum amount of time to wait for a supplier's response before timing out.The value must be provided in timestamp format (e.g., "00:00:10" for 10 seconds). |
+| **Settings/TimeoutAsTimeSpan** | 0 . . 1 | String | Converts the timeout value from the string representation (Timeout) into a TimeSpan for use in time-based operations. |
+| **Settings/**<br />**IncludeProviderTransactions** | 1 | Boolean | Indicates whether detailed traces of provider transactions should be included in the operation's response. If enabled, the ProviderAudit field in responses will contain the transaction logs (e.g., requests and responses exchanged with the supplier). |
+
+---
+
+## **Response**
+
+Provides the amendment status, updated booking details with the new remarks, and any warnings from the supplier.
+
+### **Overview**
+
+The `AmendBookingRemarks` operation provides:
+- **Amendment Status**:
+  - `Ok`: The remarks amendment has been successfully processed.
+  - `OnRequest`: The amendment request is pending supplier confirmation.
+  - `Unknown`: The amendment status is unknown and requires verification with the supplier.
+- **Updated Booking Details**: Returns the booking information with the updated remarks and special requests.
+- **Warnings or Remarks**: Additional details from the supplier about the amendment process.
+
+### **Sample**
+
+<Tabs>
+  <TabItem value="AmendBookingRemarksResponse" label="C#">
+    ```csharp
+    var amendRs = new AmendRs
+    {
+        AuditData = new AuditData
+        {
+            Request = new List<RequestItem>
+            {
+                new RequestItem
+                {
+                    Data = "<x>SupplierRequest</x>",
+                    Headers = new Dictionary<string, string>
+                    {
+                        { "Accept", "application/x-protobuf" },
+                        { "Accept-Encoding", "gzip,deflate," }
+                    },
+                    HttpMethod = new HttpMethodType
+                    {
+                        Method = "POST"
+                    },
+                    SendAt = DateTime.Parse("2024-07-10T08:21:49Z"),
+                    Url = "http://travelgate.com"
+                }
+            },
+            Response = new List<ResponseItem>
+            {
+                new ResponseItem
+                {
+                    Data = "<x>SupplierResponse</x>",
+                    Headers = new Dictionary<string, string>
+                    {
+                        { "Content-Encoding", "gzip," }
+                    },
+                    HttpMethod = new HttpMethodType
+                    {
+                        Method = "POST"
+                    },
+                    ReceivedAt = DateTime.Parse("2024-07-10T08:21:49Z"),
+                    StatusCode = 200
+                }
+            }
+        },
+        BookDetails = new List<BookDetails>
+        {
+            new BookDetails
+            {
+                Status = BookStatus.Ok,
+                Reference = new Reference
+                {
+                    ClientReference = "CLIENT123456",
+                    SupplierReference = "SUPPLIER789"
+                },
+                Holder = new Holder
+                {
+                    Name = "John",
+                    SurName = "Doe"
+                },
+                Price = Price.BuildNetPrice(Currency.EUR, 450.00, 450.00),
+                Hotel = new HotelDetail
+                {
+                    Code = "HOTEL001",
+                    Name = "Grand Plaza Hotel",
+                    CheckIn = DateTime.Parse("2024-07-10"),
+                    CheckOut = DateTime.Parse("2024-07-15"),
+                    BoardCode = "BB",
+                    Occupancies = new List<BookOccupancy>
+                    {
+                        new BookOccupancy
+                        {
+                            OccupancyId = 1,
+                            Paxes = new List<BookPax>
+                            {
+                                new BookPax
+                                {
+                                    Age = 30,
+                                    Name = "John",
+                                    SurName = "Doe"
+                                },
+                                new BookPax
+                                {
+                                    Age = 28,
+                                    Name = "Jane",
+                                    SurName = "Doe"
+                                }
+                            }
+                        }
+                    },
+                    Rooms = new List<Room>
+                    {
+                        new Room
+                        {
+                            OccupancyRefId = 1,
+                            Code = "DBL",
+                            Description = "Double Room",
+                            RoomPrice = new RoomPrice
+                            {
+                                Price = Price.BuildNetPrice(Currency.EUR, 450.00, 450.00)
+                            },
+                            Remarks = new List<Remark>
+                            {
+                                new Remark
+                                {
+                                    RemarkType = RemarkType.General,
+                                    Text = "Non-smoking room required"
+                                },
+                                new Remark
+                                {
+                                    RemarkType = RemarkType.General,
+                                    Text = "Connecting rooms preferred"
+                                },
+                                new Remark
+                                {
+                                    RemarkType = RemarkType.General,
+                                    Text = "Late check-in expected (after 11 PM)"
+                                },
+                                new Remark
+                                {
+                                    RemarkType = RemarkType.General,
+                                    Text = "Guest prefers high floor"
+                                }
+                            }
+                        }
+                    }
+                },
+                Remarks = new List<Remark>
+                {
+                    new Remark
+                    {
+                        RemarkType = RemarkType.General,
+                        Text = "Non-smoking room required"
+                    },
+                    new Remark
+                    {
+                        RemarkType = RemarkType.General,
+                        Text = "Connecting rooms preferred"
+                    },
+                    new Remark
+                    {
+                        RemarkType = RemarkType.General,
+                        Text = "Late check-in expected (after 11 PM)"
+                    },
+                    new Remark
+                    {
+                        RemarkType = RemarkType.General,
+                        Text = "Guest prefers high floor"
+                    }
+                },
+                CancelPolicy = new OptionCancelPolicy
+                {
+                    Refundable = true,
+                    CancelPenalties = new List<CancelPenalty>
+                    {
+                        new CancelPenalty
+                        {
+                            HoursBefore = 24,
+                            Type = PenaltyType.Percent,
+                            Value = 100
+                        }
+                    }
+                }
+            }
+        }
+    };
+    ```
+  </TabItem>
+</Tabs>
+
+### **Details**
+
+| Name | Relation | Type | Description |
+|------|:--------:|:----:|-------------|
+| **BookDetails** | 1 | [BookDetails](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/bookdetails) | The updated booking details after the remarks amendment. |
+| **BookDetails/Status** | 1 | String | Status of the amended booking (e.g., "OK", "KO", "PENDING"). |
+| **BookDetails/Reference** | 1 | [Reference](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/reference) | References for the booking. |
+| **BookDetails/Reference/**<br />**ClientReference** | 1 | String | The client's internal reference for the booking. |
+| **BookDetails/Reference/**<br />**SupplierReference** | 1 | String | The supplier's reference for the booking. |
+| **BookDetails/Holder** | 1 | [Holder](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/holder) | Primary guest information. |
+| **BookDetails/Holder/Name** | 1 | String | First name of the primary guest. |
+| **BookDetails/Holder/SurName** | 1 | String | Surname of the primary guest. |
+| **BookDetails/Hotel** | 1 | [HotelDetail](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/hoteldetail) | Hotel booking information. |
+| **BookDetails/Hotel/CheckIn** | 1 | String | The check-in date in ISO 8601 format (YYYY-MM-DD). |
+| **BookDetails/Hotel/CheckOut** | 1 | String | The check-out date in ISO 8601 format (YYYY-MM-DD). |
+| **BookDetails/Hotel/Code** | 1 | String | Hotel code. |
+| **BookDetails/Hotel/Name** | 0 . . 1 | String | Hotel name. |
+| **BookDetails/Hotel/BoardCode** | 1 | String | Board/meal plan code. |
+| **BookDetails/Hotel/Occupancies** | 1 . . N | Array&lt;[BookOccupancy](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/bookoccupancy)&gt; | Occupancy information for the booking. |
+| **BookDetails/Hotel/Rooms** | 1 . . N | Array&lt;[Room](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/room)&gt; | Room information for the booking. |
+| **BookDetails/Hotel/Rooms/**<br />**Remarks** | 0 . . N | Array&lt;[Remark](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/remark)&gt; | Special requests and notes associated with each room. |
+| **BookDetails/Price** | 1 | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/price) | Pricing information for the booking. |
+| **BookDetails/Price/Currency** | 1 | String | Currency code (e.g., "EUR", "USD"). |
+| **BookDetails/Price/Binding** | 1 | Boolean | Indicates if the price is binding. |
+| **BookDetails/Price/Net** | 1 | Double | Net price. |
+| **BookDetails/Price/Gross** | 1 | Double | Gross price. |
+| **BookDetails/Price/**<br />**MinimumSellingPrice** | 1 | Double | Minimum selling price. |
+| **BookDetails/Remarks** | 0 . . N | Array&lt;[Remark](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/remark)&gt; | General remarks and notes for the entire booking. |
+| **BookDetails/Remarks/**<br />**RemarkType** | 1 | [RemarkType](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/remarktype) | The type/category of the remark (e.g., "General", "Hotel", "Room"). |
+| **BookDetails/Remarks/Text** | 1 | String | The actual text content of the remark. |
+| **BookDetails/CancelPolicy** | 0 . . 1 | [CancelPolicy](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/cancelpolicy) | Cancellation policy for the amended booking. |
+| **ProviderAudit** | 0 . . 1 | [ProviderAudit](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/provideraudit) | Provider transaction logs if IncludeProviderTransactions is enabled. |

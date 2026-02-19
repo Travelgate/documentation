@@ -1,0 +1,360 @@
+---
+title: "AmendBookingPaxes"
+sidebar_position: 4
+---
+
+## **Overview**
+
+The `AmendBookingPaxes` operation allows clients to modify the passenger (pax) information of an existing booking. This operation uses the client and supplier locators to identify the reservation and processes updates to guest details including names, ages, titles, and the composition of the traveling party.
+
+The AmendBookingPaxes operation ensures:
+
+- **Passenger Information Updates**: Enables clients to correct or update guest names, ages, titles, and personal details.
+- **Occupancy Modification**: Allows changes to the number of passengers per room, accommodating party composition changes.
+- **Age-Based Pricing**: Automatically recalculates pricing when passenger ages change (e.g., adding children or infants).
+- **Status Confirmation**: Confirms the success or failure of the paxes amendment request.
+
+**When to Use:**
+
+- **Name Corrections**: When guest names were entered incorrectly or need to match passport/ID information.
+- **Party Composition Changes**: When travelers are added or removed from the booking.
+- **Age Updates**: When passenger ages need correction to ensure proper pricing (adult vs. child rates).
+
+**Note**: Some suppliers have strict policies regarding passenger changes. Adding or removing passengers may affect pricing and availability. Always verify the new occupancy configuration is valid for the booked rooms.
+
+**Common Scenarios:**
+
+- **Name Spelling Corrections**: Fixing typos or updating names to match travel documents.
+- **Adding Infants**: Adding a baby to the booking without requiring an additional room.
+- **Party Changes**: Replacing one guest with another while maintaining the same occupancy count.
+- **Title Updates**: Correcting personal titles (Mr, Mrs, Ms, etc.) for formal documentation.
+- **Error Handling**: Common errors include:
+  - `BookingNotFound`: Indicates the booking cannot be located with the provided locators.
+  - `MandatoryFieldMissing`: Required passenger information (name, surname, age) is missing.
+  - `SupplierError`: Indicates the amendment could not be processed by the supplier.
+
+---
+
+## **Request**
+
+### **Overview**
+
+The request operation includes the updated passenger information with occupancies, booking references, and any additional data required by the supplier.
+
+### **Sample**
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+  <TabItem value="AmendBookingPaxesRequest" label="C#">
+    ```csharp
+    var amendBookingPaxesRq = new AmendBookingPaxesRq
+    {
+        Input = new AmendPaxesInput
+        {
+            Reference = new Reference
+            {
+                ClientReference = "CLIENT123456",
+                SupplierReference = "SUPPLIER789"
+            },
+            Occupancies = new List<AmendOccupancy>
+            {
+                new AmendOccupancy
+                {
+                    OccupancyId = 1,
+                    Paxes = new List<BookPaxInput>
+                    {
+                        new BookPaxInput
+                        {
+                            Age = 30,
+                            Name = "John",
+                            SurName = "Smith",
+                            PersonalTitleType = PersonalTitleType.MR,
+                            DateOfBirth = "1994-05-15"
+                        },
+                        new BookPaxInput
+                        {
+                            Age = 28,
+                            Name = "Jane",
+                            SurName = "Smith",
+                            PersonalTitleType = PersonalTitleType.MRS,
+                            DateOfBirth = "1996-08-22"
+                        },
+                        new BookPaxInput
+                        {
+                            Age = 0,
+                            Name = "Baby",
+                            SurName = "Smith",
+                            PersonalTitleType = PersonalTitleType.NOT_SPECIFIED,
+                            DateOfBirth = "2024-01-10"
+                        }
+                    }
+                }
+            },
+            PaymentType = PaymentType.Merchant,
+            PaymentCardInput = null
+        },
+        Settings = new Settings
+        {
+            Supplier = "HOTELTEST",
+            Platform = "HOTELTEST",
+            Client = "TravelAgency123",
+            Access = new Access
+            {
+                Code = 1001,
+                User = "agency_user",
+                Password = "secure_password",
+                ApiKey = "API_KEY_123456789",
+                Urls = new Urls
+                {
+                    Book = "https://api.hotelsupplier.com/book",
+                    Search = "https://api.hotelsupplier.com/search",
+                    Quote = "https://api.hotelsupplier.com/quote",
+                    Cancel = "https://api.hotelsupplier.com/cancel",
+                    CheckBookings = "https://api.hotelsupplier.com/check",
+                    AmendBookingBoard = "https://api.hotelsupplier.com/amend/board",
+                    AmendBookingDates = "https://api.hotelsupplier.com/amend/dates",
+                    AmendBookingPaxes = "https://api.hotelsupplier.com/amend/paxes",
+                    AmendBookingRemarks = "https://api.hotelsupplier.com/amend/remarks",
+                    AmendBookingRooms = "https://api.hotelsupplier.com/amend/rooms"
+                },
+                Parameters = new Dictionary<string, string>
+                {
+                    { "someParameter1", "50" },
+                    { "someParameter2", "true" },
+                    { "someParameter3", "5000" },
+                    { "someParameter4", "SupplierX" }
+                }
+            },
+            BusinessRules = new BusinessRules
+            {
+                OptionsQuota = 170,
+                BusinessRuleType = "CheaperAmount"
+            },
+            Timeout = "00:00:10",
+            TimeoutAsTimeSpan = TimeSpan.Parse("00:00:10"),
+            IncludeProviderTransactions = false
+        }
+    };
+    ```
+  </TabItem>
+</Tabs>
+
+### **Details**
+
+| Name | Relation | Type | Description |
+|------|:--------:|:----:|-------------|
+| **Input** | 1 | [AmendPaxesInput](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/amendpaxesinput) | Input data for the paxes amendment operation. |
+| **Input/Reference** | 1 | [Reference](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/reference) | Booking references for the amendment. |
+| **Input/Reference/**<br />**ClientReference** | 1 | String | The client's internal reference for the booking. |
+| **Input/Reference/**<br />**SupplierReference** | 1 | String | The supplier's reference for the booking. |
+| **Input/Occupancies** | 1 . . N | Array&lt;[AmendOccupancy](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/amendoccupancy)&gt; | The updated occupancy information with new passenger details. |
+| **Input/Occupancies/OccupancyId** | 1 | Integer | The unique identifier for the occupancy being updated. |
+| **Input/Occupancies/Paxes** | 1 . . N | Array&lt;[BookPaxInput](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/bookpaxinput)&gt; | The list of passengers in this occupancy. |
+| **Input/Occupancies/Paxes/Age** | 1 | Integer | The age of the passenger. |
+| **Input/Occupancies/Paxes/Name** | 1 | String | The first name of the passenger. |
+| **Input/Occupancies/Paxes/SurName** | 1 | String | The surname (last name) of the passenger. |
+| **Input/Occupancies/Paxes/**<br />**PersonalTitleType** | 0 . . 1 | [PersonalTitleType](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/personaltitletype) | The personal title of the passenger (e.g., MR, MRS, MS, MISS, NOT_SPECIFIED). |
+| **Input/Occupancies/Paxes/**<br />**DateOfBirth** | 0 . . 1 | String | Date of birth of the passenger, represented as a string in ISO 8601 format (YYYY-MM-DD). |
+| **Input/Occupancies/Paxes/**<br />**IdentificationDocuments** | 0 . . N | Array&lt;[IdentificationDocument](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/identificationdocument)&gt; | Identification documents for the passenger (e.g., passport, ID card). |
+| **Input/PaymentType** | 0 . . 1 | [PaymentType](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/paymenttype) | Payment type for the booking (e.g., Merchant, Direct). Optional - only required if the supplier needs payment details for the amendment. |
+| **Input/PaymentCardInput** | 0 . . 1 | [PaymentCardInput](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/paymentcardinput) | Payment card details, if applicable. Optional - only required if PaymentType is specified and card details are needed. |
+| **Settings** | 1 | [Settings](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/settings) | Settings for the amendment operation. |
+| **Settings/Supplier** | 1 | String | The identifier for the supplier in the TravelgateX platform. |
+| **Settings/Platform** | 1 | String | The platform hosting the supplier's services. |
+| **Settings/Client** | 1 | String | The client code requesting the operation. |
+| **Settings/Access** | 1 | [Access](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/access) | Authentication and endpoint configuration. |
+| **Settings/Access/Code** | 1 | Integer | Access code for authentication. |
+| **Settings/Access/User** | 0 . . 1 | String | Username for authentication. |
+| **Settings/Access/Password** | 0 . . 1 | String | Password for authentication. |
+| **Settings/Access/ApiKey** | 0 . . 1 | String | API key for authentication. |
+| **Settings/Access/Urls** | 1 | [Urls](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/urls) | URLs for different operations. |
+| **Settings/Access/Parameters** | 0 . . 1 | [AccessParameters](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/accessparameters) | Additional parameters related to the connection. |
+| **Settings/BusinessRules** |0 . . 1 | [BusinessRules](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/businessrules) | Specifies the business rules to be applied during the operation. These rules define operational constraints and behavior, such as quota limits or prioritization criteria. |
+| **Settings/BusinessRules/**<br />**OptionsQuota** | 0 . . 1 | Integer | The maximum number of options returned for each board in the Search query. |
+| **Settings/BusinessRules/**<br />**BusinessRuleType** | 1 | [BusinessRulesType](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/businessrulestype) | The business rule type that determines how Search results are prioritized or filtered. |
+| **Settings/Timeout** | 1 | String | Defines the timeout period for the operation as a string value.This indicates the maximum amount of time to wait for a supplier's response before timing out.The value must be provided in timestamp format (e.g., "00:00:10" for 10 seconds). |
+| **Settings/TimeoutAsTimeSpan** | 0 . . 1 | String | Converts the timeout value from the string representation (Timeout) into a TimeSpan for use in time-based operations. |
+| **Settings/**<br />**IncludeProviderTransactions** | 1 | Boolean | Indicates whether detailed traces of provider transactions should be included in the operation's response. If enabled, the ProviderAudit field in responses will contain the transaction logs (e.g., requests and responses exchanged with the supplier). |
+
+---
+
+## **Response**
+
+Provides the amendment status, updated booking details with the new passenger information, pricing information, and any warnings or remarks.
+
+### **Overview**
+
+The `AmendBookingPaxes` operation provides:
+- **Amendment Status**:
+  - `Ok`: The passenger amendment has been successfully processed.
+  - `OnRequest`: The amendment request is pending supplier confirmation.
+  - `Unknown`: The amendment status is unknown and requires verification with the supplier.
+- **Updated Booking Details**: Returns the booking information with the updated passenger details and any impact on pricing.
+- **Warnings or Remarks**: Additional details from the supplier about the amendment process.
+
+### **Sample**
+
+<Tabs>
+  <TabItem value="AmendBookingPaxesResponse" label="C#">
+    ```csharp
+    var amendRs = new AmendRs
+    {
+        AuditData = new AuditData
+        {
+            Request = new List<RequestItem>
+            {
+                new RequestItem
+                {
+                    Data = "<x>SupplierRequest</x>",
+                    Headers = new Dictionary<string, string>
+                    {
+                        { "Accept", "application/x-protobuf" },
+                        { "Accept-Encoding", "gzip,deflate," }
+                    },
+                    HttpMethod = new HttpMethodType
+                    {
+                        Method = "POST"
+                    },
+                    SendAt = DateTime.Parse("2024-07-10T08:21:49Z"),
+                    Url = "http://travelgate.com"
+                }
+            },
+            Response = new List<ResponseItem>
+            {
+                new ResponseItem
+                {
+                    Data = "<x>SupplierResponse</x>",
+                    Headers = new Dictionary<string, string>
+                    {
+                        { "Content-Encoding", "gzip," }
+                    },
+                    HttpMethod = new HttpMethodType
+                    {
+                        Method = "POST"
+                    },
+                    ReceivedAt = DateTime.Parse("2024-07-10T08:21:49Z"),
+                    StatusCode = 200
+                }
+            }
+        },
+        BookDetails = new List<BookDetails>
+        {
+            new BookDetails
+            {
+                Status = BookStatus.Ok,
+                Reference = new Reference
+                {
+                    ClientReference = "CLIENT123456",
+                    SupplierReference = "SUPPLIER789"
+                },
+                Holder = new Holder
+                {
+                    Name = "John",
+                    SurName = "Smith"
+                },
+                Price = Price.BuildNetPrice(Currency.EUR, 450.00, 450.00),
+                Hotel = new HotelDetail
+                {
+                    Code = "HOTEL001",
+                    Name = "Grand Plaza Hotel",
+                    CheckIn = DateTime.Parse("2024-07-10"),
+                    CheckOut = DateTime.Parse("2024-07-15"),
+                    BoardCode = "BB",
+                    Occupancies = new List<BookOccupancy>
+                    {
+                        new BookOccupancy
+                        {
+                            OccupancyId = 1,
+                            Paxes = new List<BookPax>
+                            {
+                                new BookPax
+                                {
+                                    Age = 30,
+                                    Name = "John",
+                                    SurName = "Smith",
+                                    PersonalTitleType = PersonalTitleType.MR,
+                                    DateOfBirth = DateTime.Parse("1994-05-15")
+                                },
+                                new BookPax
+                                {
+                                    Age = 28,
+                                    Name = "Jane",
+                                    SurName = "Smith",
+                                    PersonalTitleType = PersonalTitleType.MRS,
+                                    DateOfBirth = DateTime.Parse("1996-08-22")
+                                },
+                                new BookPax
+                                {
+                                    Age = 0,
+                                    Name = "Baby",
+                                    SurName = "Smith",
+                                    PersonalTitleType = PersonalTitleType.NOT_SPECIFIED,
+                                    DateOfBirth = DateTime.Parse("2024-01-10")
+                                }
+                            }
+                        }
+                    },
+                    Rooms = new List<Room>
+                    {
+                        new Room
+                        {
+                            OccupancyRefId = 1,
+                            Code = "DBL",
+                            Description = "Double Room",
+                            RoomPrice = new RoomPrice
+                            {
+                                Price = Price.BuildNetPrice(Currency.EUR, 450.00, 450.00)
+                            }
+                        }
+                    }
+                },
+                CancelPolicy = new OptionCancelPolicy
+                {
+                    Refundable = true,
+                    CancelPenalties = new List<CancelPenalty>
+                    {
+                        new CancelPenalty
+                        {
+                            HoursBefore = 24,
+                            Type = PenaltyType.Percent,
+                            Value = 100
+                        }
+                    }
+                }
+            }
+        }
+    };
+    ```
+  </TabItem>
+</Tabs>
+
+### **Details**
+
+| Name | Relation | Type | Description |
+|------|:--------:|:----:|-------------|
+| **BookDetails** | 1 | [BookDetails](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/bookdetails) | The updated booking details after the paxes amendment. |
+| **BookDetails/Status** | 1 | String | Status of the amended booking (e.g., "OK", "KO", "PENDING"). |
+| **BookDetails/Reference** | 1 | [Reference](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/reference) | References for the booking. |
+| **BookDetails/Reference/**<br />**ClientReference** | 1 | String | The client's internal reference for the booking. |
+| **BookDetails/Reference/**<br />**SupplierReference** | 1 | String | The supplier's reference for the booking. |
+| **BookDetails/Holder** | 1 | [Holder](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/holder) | Primary guest information (typically the first passenger). |
+| **BookDetails/Holder/Name** | 1 | String | First name of the primary guest. |
+| **BookDetails/Holder/SurName** | 1 | String | Surname of the primary guest. |
+| **BookDetails/Hotel** | 1 | [HotelDetail](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/hoteldetail) | Hotel booking information. |
+| **BookDetails/Hotel/CheckIn** | 1 | String | The check-in date in ISO 8601 format (YYYY-MM-DD). |
+| **BookDetails/Hotel/CheckOut** | 1 | String | The check-out date in ISO 8601 format (YYYY-MM-DD). |
+| **BookDetails/Hotel/Code** | 1 | String | Hotel code. |
+| **BookDetails/Hotel/Name** | 0 . . 1 | String | Hotel name. |
+| **BookDetails/Hotel/BoardCode** | 1 | String | Board/meal plan code. |
+| **BookDetails/Hotel/Occupancies** | 1 . . N | Array&lt;[BookOccupancy](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/bookoccupancy)&gt; | The updated occupancy information with new passenger details. |
+| **BookDetails/Hotel/Rooms** | 1 . . N | Array&lt;[Room](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/room)&gt; | Room information for the booking. |
+| **BookDetails/Price** | 1 | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/price) | Pricing information for the booking. |
+| **BookDetails/Price/Currency** | 1 | String | Currency code (e.g., "EUR", "USD"). |
+| **BookDetails/Price/Binding** | 1 | Boolean | Indicates if the price is binding. |
+| **BookDetails/Price/Net** | 1 | Double | Net price. |
+| **BookDetails/Price/Gross** | 1 | Double | Gross price. |
+| **BookDetails/Price/**<br />**MinimumSellingPrice** | 1 | Double | Minimum selling price. |
+| **BookDetails/CancelPolicy** | 0 . . 1 | [CancelPolicy](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/cancelpolicy) | Cancellation policy for the amended booking. |
+| **ProviderAudit** | 0 . . 1 | [ProviderAudit](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/provideraudit) | Provider transaction logs if IncludeProviderTransactions is enabled. |

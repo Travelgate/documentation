@@ -34,7 +34,7 @@ To paginate content effectively, follow these steps:
    Continue requesting pages until the `"token"` field is no longer included in the response.
 
 :::info
-The `"maxSize"` value must be between **1 and 10,000** for Hotels, Rooms, and Destinations queries.
+The `"maxSize"` value must be between **1 and 500 for Hotels queries** and between **1 and 10,000 for Rooms and Destinations queries**.
 :::
 
 ```json
@@ -56,7 +56,7 @@ Follow these steps to paginate content using the Legacy API:
    You can specify the maximum number of objects per page using the `"expectedRange"` attribute.
 
     ```xml
-    <ContinuationToken expectedRange="1000"></ContinuationToken>
+    <ContinuationToken expectedRange="100"></ContinuationToken>
     ```
 
 2. **Request subsequent pages**  
@@ -67,8 +67,6 @@ Follow these steps to paginate content using the Legacy API:
    
 Additional information on how to paginate content responses in the Legacy Pull Buyers API (deprecated) is available [here](/docs/apis/for-buyers/deprecated/legacy-pull-buyers-api/content/hotel-list#how-to-paginate-responses)
 
-### Additional Considerations
-
-- Sometimes, the number of hotels returned may exceed the `expectedRange` value. For example, if set to `1000`, the response may include anywhere from 1000 to 1999 hotels.  
-- If the `expectedRange` attribute is not specified, the default maximum number of hotels in the list is **250,000**.  
-- When using `expectedRange`, select values that are multiples of 1,000 (e.g., 1000, 2000, 3000) for efficient data retrieval.
+:::info
+If the `expectedRange` attribute is not specified, the default maximum number of hotels in the list is **500**.
+:::

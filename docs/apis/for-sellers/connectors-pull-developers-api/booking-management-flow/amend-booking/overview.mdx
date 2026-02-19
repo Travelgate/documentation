@@ -1,0 +1,104 @@
+---
+title: "Amend Booking Operations"
+sidebar_position: 1
+---
+
+## **Overview**
+
+The Amend Booking operations allow clients to modify various aspects of an existing booking after it has been confirmed. These operations provide flexibility for handling client-requested changes while ensuring proper validation and price recalculation through the supplier's system.
+
+## **Important Notes**
+
+- Not all suppliers support all amendment types. Check supplier [Metadata](../../advanced-configuration/metadata-definition#metadata-sample) before attempting amendments.
+- Some amendments may trigger cancellation policies or penalties depending on the booking terms.
+- Always verify that client and supplier references match between the simulate and commit operations.
+
+## **Amendment Flow Process**
+
+To successfully amend a booking, follow this standard two-step workflow:
+
+### **1. Simulate the Amendment**
+
+Simulate the desired amendment to preview the impact before committing. The simulation returns updated pricing and confirms availability for the requested changes.
+
+**Purpose:**
+- Preview price changes resulting from the amendment
+- Validate that the requested changes are available
+- Identify potential errors before committing the change
+- Review updated booking details with new pricing
+
+**What Gets Simulated:**
+- New pricing based on the requested modification
+- Availability confirmation for the new configuration
+- Updated booking snapshot with the proposed changes
+- Any applicable fees or penalties
+
+**Important:** The simulation does not commit the changes to the booking. It only provides a preview of what would happen if the amendment is executed.
+
+### **2. Commit the Amendment**
+
+After reviewing the simulation results and confirming the changes are acceptable, commit the amendment to apply the modifications to the booking.
+
+**Purpose:**
+- Finalize the booking modification
+- Apply new pricing and update the reservation
+- Generate updated booking confirmation
+- Communicate changes to the supplier
+
+**Confirmation:**
+- Returns updated booking details with new locators if applicable
+- Provides final pricing and status
+- Confirms successful processing or returns error details
+
+## **Available Amendment Types**
+
+The system supports the following amendment operations, each targeting specific aspects of a booking:
+
+### **[Amend Board](amend-booking-board)**
+Modify the board type (meal plan) of the booking, such as upgrading from room-only to breakfast included or changing to half board.
+
+**Common Use Cases:**
+- Meal plan upgrades or downgrades
+- Adding or removing board services
+
+### **[Amend Dates](amend-booking-dates)**
+Change the check-in and/or check-out dates to extend, shorten, or shift the stay period.
+
+**Common Use Cases:**
+- Stay extensions or reductions
+- Complete date shifts for rescheduled trips
+
+### **[Amend Paxes](amend-booking-paxes)**
+Update passenger information including names, ages, titles, and party composition.
+
+**Common Use Cases:**
+- Name corrections for travel documents
+- Adding or removing passengers
+- Age updates for proper pricing
+
+### **[Amend Remarks](amend-booking-remarks)**
+Add or modify special requests and instructions for the hotel or service provider.
+
+**Common Use Cases:**
+- Room preference requests
+- Special occasion notifications
+- Accessibility requirements
+- Timing requests (early/late check-in)
+
+### **[Amend Rooms](amend-booking-rooms)**
+Modify the room configuration, including room types, quantities, and occupancy assignments.
+
+**Common Use Cases:**
+- Room upgrades or downgrades
+- Adding or removing rooms in multi-room bookings
+- Changing room type configurations
+
+## **Best Practices**
+
+**Simulate Before Committing:** Always run a simulation to preview price changes and validate availability before committing amendments.
+
+**Handle Errors Gracefully:** Implement proper error handling for common scenarios:
+- **NotAvailable**: Requested changes are not available
+- **PriceChangeRequired**: Significant price difference requires client confirmation
+- **SupplierError**: The supplier system cannot process the amendment
+- **BookingNotFound**: Invalid or expired booking reference

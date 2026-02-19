@@ -1,68 +1,58 @@
 ---
-title: "Quote"
-sidebar_position: 4
+title: "AmendBookingBoard"
+sidebar_position: 1
 ---
-
-:::caution
-If your seller's workflow does not include a Quote step, proceed directly to the [Repeat Operations](../../connector-framework/repeat-flow-operations.mdx) section to repeat the Search operation.
-:::
 
 ## **Mock**
 
-### **Step 1: Define your Quote responses (Mocks)**
+### **Step 1: Define your AmendBookingBoard responses (Mocks)**
 
 Define the responses for your operation, it is mandatory to insert a supplier response into every mock or at least, into the mocks of the operation you will be developing.
 
 We will be using the **TwoAdultTwoDays** mock through all the steps of the development.
 
-File location: "**test\MockServer\Tests\Quote\Two_Adults_Two_Days.txt**"
+File location: "**test\MockServer\Tests\AmendBookingBoard\Two_Adults_Two_Days.txt**".
 
-![Mock Example](/img/docs/connectors-pull-developers-api/MockTwoAdultsQuote.png)
+![Mock Example](/img/docs/connectors-pull-developers-api/MockTwoAdultsAmendBoard.png)
 
 ### **Step 2: Define the Models of your response (Request and Response models)**
 
 These models are crucial because they specify the structure of the objects contained within supplier responses. They'll also play a vital role in serializing and deserializing requests and responses during development.
 
-![Response example](/img/docs/connectors-pull-developers-api/TemplateStructureModelsQuote.png)
+![Response example](/img/docs/connectors-pull-developers-api/TemplateStructureModelsAmendBookingBoard.png)
 
-**Example of a QuoteRequest model**:
+**Example of a AmendBookingBoardRequest model**:
 
 ```csharp
-namespace ConnectorsIntegration.Quote.Models.Request;
+namespace ConnectorsIntegration.Amends.Board.Models.Request;
 
-public class QuoteRequest
+public class AmendBoardRequest
 {
-    public string CheckIn { get; set; }
-    public string CheckOut { get; set; }
-    public string HotelCode { get; set; }
-    public List<SupplierOccupancy> Occupancy { get; set; }
-    public string RateId { get; set; }
-}
-
-public class SupplierOccupancy
-{
-    public int Adults { get; set; }
-    public int Children { get; set; }
-    public IEnumerable<int> Infants { get; set; }
+    public string NewBoard { get; set; }
+    public string ClientReference { get; set; }
+    public string SupplierReference { get; set; }
 }
 ```
-File location: "**ConnectorsIntegration\Quote\Models\Request\QuoteRequest.cs**"
+File location: "**ConnectorsIntegration\Amends\Boards\Models\Request\AmendBoardRequest.cs**".
 
-**Example of a QuoteResponse model**:
+**Example of a AmendBoardResponse model**:
 
 ```csharp
-namespace ConnectorsIntegration.Quote.Models.Response;
+namespace ConnectorsIntegration.Amends.Board.Models.Response;
 
-public class QuoteResponse
+public class AmendBoardResponse
 {
     public SupplierOption Option { get; set; }
 }
 
 public class SupplierOption
 {
+    public DateTime Checkin {get; set;}
     public string Status { get; set; }
     public SupplierPrice SupplierPrice { get; set; }
     public string SupplierPaymentType { get; set; }
+    public string ClientReference { get; set; }
+    public string SupplierReference { get; set; }
     public List<SupplierRoom> Rooms { get; set; }
     public List<SupplierCancelPolicy> SupplierCancelPolicies { get; set; }
 }
@@ -94,61 +84,62 @@ public class SupplierRoom
     public string RoomDescription { get; set; }
 }
 ```
-File location: "**ConnectorsIntegration\Quote\Models\Response\QuoteResponse.cs**"
+File location: "**ConnectorsIntegration\Amends\Board\Models\Response\AmendBoardResponse.cs**".
 
 ## **Develop**
 
 ### **Step 1: Register the serializers and operations**
 To specify which serializer and operations the developer will be using (based on the Seller's API) we can specify it in our "**Extensions**":
 
-File location: "**ConnectorsIntegration\Quote\QuoteExtensions.cs**"
+File location: "**ConnectorsIntegration\Amends\Board\AmendmentsBoardExtensions.cs**".
 
 If the Seller works with **JSON** format, we can specify the integration to work with **JSON** with the following:
 
 ```csharp
-internal static class QuoteExtensions
+internal static class AmendmentsBoardExtensions
 {
-    public static void AddQuoteServices(this IServiceCollection services,
+    public static void AddAmendBookingBoardServices(this IServiceCollection services,
         IConfiguration configuration)
     {
         //A JsonSerializer service is added along with the request and response model
-        services.AddJsonSerializer<QuoteRequest, QuoteResponse>(ConfigureJSONOptions);
+        services.AddJsonSerializer<AmendBoardRequest, AmendBoardResponse>(ConfigureJSONOptions);
         //The operation is added, indicating what models should be used during the development of the operation
-        services.AddQuoteOperation<QuoteOperation, QuoteRequest, QuoteResponse, AccessModel>(TgxPlatform.Name,
-            configuration);
+        services.AddAmendBookingBoardOperation<AmendBookingBoardOperation, AmendBoardRequest, AmendBoardResponse, AccessModel>(TgxPlatform.Name, configuration);
     }
     private static void ConfigureJSONOptions(JsonSerializerOptions options) { }
 }
 ```
 
-For details about others serializers, check [Extensions](../../advanced-use/booking-extensions)
+For details about others serializers, check [Extensions](../../../advanced-use/booking-extensions).
 
-For more details about operations, check [PreOperations](../../connector-framework/preoperation-overview) and [Operations](../../connector-framework/operation-overview)
+For more details about operations, check [PreOperations](../../../connector-framework/preoperation-overview) and [Operations](../../../connector-framework/operation-overview).
 
-### **Step 2: QuoteOperation validators**
+### **Step 2: AmendBookingBoardOperation validators**
 
-There are two previous validations that serve as a filter so the buildrequest and the parseresponse are as safe as possible. They can be found in the QuoteOperation.cs class:
+There are two previous validations that serve as a filter so the buildrequest and the parseresponse are as safe as possible. They can be found in the AmendBookingBoardOperation.cs class:
 
 ```csharp
-internal partial class QuoteOperation : IQuoteOperation<QuoteRequest, QuoteResponse, AccessModel>
+internal partial class AmendBookingBoardOperation :
+    IAmendBookingBoardOperation<AmendBoardRequest, AmendBoardResponse, AccessModel>
 {
     // Implement any services needed just like in SearchOperation.cs
 }
 ```
-File location: "**ConnectorsIntegration\Quote\Operations\QuoteOperation.cs**"
 
-![TryValidateSearch](/img/docs/connectors-pull-developers-api/TryValidateSearch.png)
+File location: "**ConnectorsIntegration\Amends\Board\Operations\AmendBookingBoardOperation.cs**".
+
+![AmendBookingBoardOperation](/img/docs/connectors-pull-developers-api/AmendBookingBoardOperation.png)
 
 **TryValidateModelRequest**
 
-This step validates the incoming request from the client. While most validation is defined in the [metadata](../../advanced-configuration/metadata-definition), this step is used for specific edge cases that cannot be generalized.
+This step validates the incoming request from the client. While most validation is defined in the [metadata](../../../advanced-configuration/metadata-definition), this step is used for specific edge cases that cannot be generalized.
 
 **Example Use Case:** In a operation, validating that hotel codes are numeric because supplier do not allow non-numeric hotels. This type of validation would not be covered by metadata.
 
 ```csharp
 public bool TryValidateModelRequest(
-    QuoteConnectorRequest connectorsRequest, 
-    QuoteParameters<AccessModel> connectorParameters,
+    AmendBookingBoardConnectorRequest connectorsRequest, 
+    AmendBookingBoardParameters<AccessModel> connectorParameters,
     out IEnumerable<AdviseMessage> adviseMessages)
 {
     //AdviseMessages are used to specify errors, such as checking if the hotel code is numeric and if not, add an AdviseMessage
@@ -170,11 +161,11 @@ Once the supplier's response is received, this step validates it for errors or a
 
 ```csharp
 public bool TryValidateSupplierResponses(
-    QuoteParameters<AccessModel> connectorParameters,
-    IEnumerable<SupplierResponseWrapper<QuoteResponse>> supplierResponses,
+    AmendBookingBoardParameters<AccessModel> connectorParameters,
+    IEnumerable<SupplierResponseWrapper<AmendBoardResponse>> supplierResponses,
     out IEnumerable<AdviseMessage> adviseMessages)
 {
-    var supplierResponseWrappers = supplierResponses as SupplierResponseWrapper<QuoteResponse>[] ?? supplierResponses.ToArray();
+    var supplierResponseWrappers = supplierResponses as SupplierResponseWrapper<AmendBoardResponse>[] ?? supplierResponses.ToArray();
     
     var success = ResponseValidator.TryValidateSupplierResponses(supplierResponseWrappers, out adviseMessages);
 
@@ -184,7 +175,7 @@ public bool TryValidateSupplierResponses(
     {
         adviseMessages =
         [
-            AdviseMessage.BuildOptionNotFoundInQuote() // Indicates option was not found in the supplier system.
+            AdviseMessage.BuildSupplierError() // Indicates error from the supplier.
         ];
 
         return false;
@@ -198,57 +189,41 @@ public bool TryValidateSupplierResponses(
 
 This class will contain a "BuildRequests" method that will have the following arguments: 
 
-- Object of the requests from the models previously created (QuoteRequest)
-- The request that the Buyer sends (connectorsRequest)
+- Object of the requests from the models previously created (AmendBoardRequest).
+- The request that the Buyer sends (connectorsRequest).
 - Parameters (connectorParameters) which will have some helpers:
 
-File location: "**ConnectorsIntegration\Quote\Operations\QuoteOperation.BuildRequest.cs**"
+File location: "**ConnectorsIntegration\Amends\Board\Operations\AmendBookingBoardOperation.BuildRequest.cs**"
 
-![Build Request Quote](/img/docs/connectors-pull-developers-api/BuildRequestQuote.png)
+![Build Request AmendBoard](/img/docs/connectors-pull-developers-api/BuildRequestAmendBoard.png)
 
 **Example of Build Request:**
 
 ```csharp
 using Connectors.Core.Application.Connection;
-using Connectors.Pull.Hotel.Application.Metadata;
-using Connectors.Pull.Hotel.Application.Operations.Quote;
-using Connectors.Pull.Hotel.Domain.Contracts;
-using Connectors.Pull.Hotel.Domain.Contracts.Common;
-using Connectors.Pull.Hotel.Domain.Contracts.Quote.Request;
-using ConnectorsIntegration.Quote.Models.Request;
-using static ConnectorsIntegration.Common.Constants.TgxPlatform;
+using Connectors.Pull.Hotel.Application.Operations.Amendments.AmendBookingBoard;
+using ConnectorsIntegration.Amends.Board.Models.Request;
 
-namespace ConnectorsIntegration.Quote.Operations;
+namespace ConnectorsIntegration.Amends.Board.Operations;
 
-internal partial class QuoteOperation
+internal partial class AmendBookingBoardOperation
 {
-    public IEnumerable<SupplierRequestWrapper<QuoteRequest>> BuildRequests(
-        QuoteConnectorRequest connectorsRequest,
-        QuoteParameters<AccessModel> connectorParameters)
+    public IEnumerable<SupplierRequestWrapper<AmendBoardRequest>> BuildRequests(
+        AmendBookingBoardConnectorRequest connectorsRequest,
+        AmendBookingBoardParameters<AccessModel> connectorParameters)
     {
-        QuoteCriteria quoteCriteria = connectorsRequest.QuoteRq.QuoteCriteria;
-        //Refers to the checkIn of the booking
-        string checkIn = quoteCriteria.CheckIn;
-        //Refers to the checkOut of the booking
-        string checkOut = quoteCriteria.CheckOut;
-        string hotelCode = quoteCriteria.Accommodation.Code;
-        //Refers to the occupancy of the booking. If the Seller allows requests with multiple occupancies, the Occupancies should be iterated
-        Occupancy firstOccupancy = quoteCriteria.Occupancies.First();
-        OccupancyInfoDetailed occupancyInfoDetailed = _connectorsUtilities.MetadataConnectorsService.GetDetailedOccupancyInfo(firstOccupancy);
+        var clientReference = connectorsRequest.AmendBookingBoardRq.Input.Reference.ClientLocator;
+        var supplierReference = connectorsRequest.AmendBookingBoardRq.Input.Reference.SupplierLocator;
 
-        var rateIdParameter = quoteCriteria.Parameters.GetParameter(SupplierParameters.RateId).Value;
-        QuoteRequest quoteRequest = BuildQuoteRequest(
-            checkIn,
-            checkOut,
-            hotelCode,
-            occupancyInfoDetailed,
-            rateIdParameter);
+        AmendBookingBoardConnectorRequest amendBookingBoardConnectorRequest = BuildAmendBookingBoardConnectorRequest(
+            clientReference,
+            supplierReference);
 
         //Generic URL we prepared back in the AccessModel, which will be passed by the Buyer
         string genericUrl = connectorParameters.ParametersModel.UrlGeneric;
 
-        SupplierRequestWrapper<QuoteRequest> supplierRequest = new(
-            quoteRequest,
+        SupplierRequestWrapper<AmendBoardRequest> supplierRequest = new(
+            amendBookingBoardConnectorRequest,
             new Uri(genericUrl),
             HttpMethod.Post);
 
@@ -258,24 +233,17 @@ internal partial class QuoteOperation
         ];
     }
 
-    private static QuoteRequest BuildQuoteRequest(string checkIn, string checkOut, string hotelCode, OccupancyInfoDetailed occupancyInfoDetailed, string rateIdParameter)
+    private static AmendBookingBoardConnectorRequest BuildAmendBookingBoardConnectorRequest(
+        string clientReference,
+        string sellerReference) 
     {
         //The request towards the Seller system
       
-        return new QuoteRequest()
+        return new AmendBookingBoardConnectorRequest()
         {
-            CheckIn = checkIn,
-            CheckOut = checkOut,
-            HotelCode = hotelCode,
-            Occupancy = new List<SupplierOccupancy>()
-            {
-                new() {
-                    Adults = occupancyInfoDetailed.NumberOfAdults,
-                    Children = occupancyInfoDetailed.NumberOfChildren,
-                    Infants = occupancyInfoDetailed.InfantAges
-                }
-            },
-            RateId = rateIdParameter
+            ClientReference = clientReference,
+            SellerReference = sellerReference,
+            NewBoard = "AI"
         };
     }
 }
@@ -285,11 +253,11 @@ internal partial class QuoteOperation
 
 Once the request has been sent, we will have to control and parse the response returned by the Seller.
 
-We will be implementing the "ParseResponse" step inside QuoteOperation:
+We will be implementing the "ParseResponse" step inside AmendBookingBoardOperation:
 
-File location: "**ConnectorsIntegration\Quote\Operations\QuoteOperation.ParseResponse.cs**"
+File location: "**ConnectorsIntegration\Amend\Boards\Operations\AmendBookingBoardOperation.ParseResponse.cs**"
 
-![Build Response Quote](/img/docs/connectors-pull-developers-api/ParseResponseQuote.png)
+![Build Response AmendBookingBoard](/img/docs/connectors-pull-developers-api/ParseResponseAmendBookingBoards.png)
 
 **Example of Parse Response:**
 
@@ -297,50 +265,53 @@ File location: "**ConnectorsIntegration\Quote\Operations\QuoteOperation.ParseRes
 using Connectors.Core.Application.Connection;
 using Connectors.Core.Application.Iso;
 using Connectors.Core.Domain;
-using Connectors.Pull.Hotel.Application.Operations.Quote;
 using Connectors.Pull.Hotel.Domain.Contracts.Common;
-using Connectors.Pull.Hotel.Domain.Contracts.Quote.Response;
-using Connectors.Pull.Hotel.Domain.Contracts.Search.Response;
-using ConnectorsIntegration.Quote.Models.Response;
+using Connectors.Pull.Hotel.Application.Operations.Amendments.AmendBookingBoard;
+using Connectors.Pull.Hotel.Domain.Contracts.Amendments;
 
-namespace ConnectorsIntegration.Quote.Operations;
+namespace ConnectorsIntegration.Amends.Board.Operations;
 
-internal partial class QuoteOperation
+internal partial class AmendBookingBoardOperation
 {
-    public QuoteConnectorResponse ParseResponses(
-        QuoteConnectorRequest connectorsRequest,
-        QuoteParameters<AccessModel> connectorParameters,
-        IEnumerable<SupplierResponseWrapper<QuoteResponse>> supplierResponses,
+    public AmendBookingBoardConnectorResponse ParseResponses(
+        AmendBookingBoardConnectorRequest connectorsRequest,
+        AmendBookingBoardParameters<AccessModel> connectorParameters,
+        IEnumerable<SupplierResponseWrapper<AmendBoardResponse>> supplierResponses,
         CancellationToken cancellationToken)
     {
         var supplierResponse = supplierResponses.First().Response;
-        return new QuoteConnectorResponse(ParseSupplierResponse(connectorsRequest, supplierResponse));
+        return new AmendBookingBoardConnectorResponse(ParseSupplierResponse(supplierResponse));
     }
 
-    private QuoteRs ParseSupplierResponse(QuoteConnectorRequest connectorsRequest, QuoteResponse supplierResponse)
+    private AmendRs ParseSupplierResponse(AmendBoardResponse supplierResponse)
     {
-        if (supplierResponse.Option == null)
+        if (supplierResponse.Option == null)    
         {
-            List<AdviseMessage> adviseMessages = new(){AdviseMessage.BuildOptionNotFoundInQuote()};
-            return QuoteRs.BuildErrorResponse(adviseMessages);
+            return AmendRs.BuildErrorResponse(new[]
+            {
+                AdviseMessage.BuildSupplierError(new External("", "Option null from supplier response"))
+            });
         }
-
         var supplierOption = supplierResponse.Option;
-        
-        Status status = MapSellerToTgxStatus(supplierOption.Status);
-        Price price = ParseSupplierPrice(supplierOption.SupplierPrice);
-        PaymentType paymentType = MapSellerToTgxPaymentType(supplierOption.SupplierPaymentType);
-        List<Room> roomList = ParseSupplierRooms(supplierOption.Rooms);
-        var checkIn = connectorsRequest.QuoteRq.QuoteCriteria.CheckInAsDateTime;
 
-        var cancelPolicy = ParseSupplierCancelPolicies(checkIn, supplierOption.SupplierCancelPolicies);
-        
-        return new QuoteRs(
-            price,
-            status,
-            cancelPolicy,
-            paymentType,
-            roomList);
+        BookStatus status = MapSellerToTgxStatus(supplierOption.Status);
+        Price price = ParseSupplierPrice(supplierOption.SupplierPrice);
+        List<Room> roomList = ParseSupplierRooms(supplierOption.Rooms);
+
+        var cancelPolicy = ParseSupplierCancelPolicies(supplierResponse.CheckIn, supplierOption.SupplierCancelPolicies);
+
+        var clientReference = supplierOption.ClientReference;
+        var supplierReference = supplierOption.SupplierReference;
+
+        BookDetails bookDetails = new BookDetails(status, new Reference(clientReference, supplierReference), price)
+        {
+            CancelPolicy = cancelPolicy,
+            Hotel = new HotelDetail()
+            {
+                Rooms = roomList,
+            }
+        };
+        return new AmendRs([bookDetails]);
     }
 
     private OptionCancelPolicy ParseSupplierCancelPolicies(DateTime checkIn, List<SupplierCancelPolicy> supplierCancelPolicies)
@@ -401,11 +372,11 @@ internal partial class QuoteOperation
         _ => PaymentType.MerchantPay
     };
 
-    private static Status MapSellerToTgxStatus(string status) => status switch
+    private static BookStatus MapSellerToTgxStatus(string status) => status switch
     {
-        "Available" => Status.OK,
-        "OnRequest" => Status.RQ,
-        _ => Status.Unknown
+        "Booked" => BookStatus.Ok,
+        "OnRequest" => BookStatus.OnRequest,
+        _ => BookStatus.Unknown
     };
 
     private static Price ParseSupplierPrice(SupplierPrice supplierPrice)
@@ -419,9 +390,9 @@ internal partial class QuoteOperation
 }
 ```
 
-For more details about helpers, check the - [Price helpers](../../tools-and-helpers/price-helpers) and [Policies helpers](../../tools-and-helpers/policies-helpers) 
+For more details about helpers, check the - [Price helpers](../../../tools-and-helpers/price-helpers) and [Policies helpers](../../../tools-and-helpers/policies-helpers) 
 
-For more details about the combinatory, check [Recommended Helpers](../../tools-and-helpers/recommended-helpers)
+For more details about the combinatory, check [Recommended Helpers](../../../tools-and-helpers/recommended-helpers)
 
 ## **Test**
 
@@ -430,24 +401,23 @@ For more details about the combinatory, check [Recommended Helpers](../../tools-
 :::warning 
 Be aware that option 1 is optional for testing the integration but ***mandatory*** once the operation has been developed in order to pass all tests before creating the pull request.
 :::
-
 Use the integration tests provided by Travelgate to validate your implementation:
 - Add the necessary use cases to the **MockServer** for each operation.
-  - [View MockServer Documentation](../../connector-framework/mock-server-documentation.mdx).
+  - [View MockServer Documentation](../../../connector-framework/mock-server-documentation.mdx).
 - Execute the associated tests for the implemented operation.
-  - [View Running Integration Tests](../../connector-framework/running-integration-tests.mdx).
+  - [View Running Integration Tests](../../../connector-framework/running-integration-tests.mdx).
 
 ### **Option 2: FormTest Tool (Shopping)**
 Use the **FormTest** application to test each operation manually:
 - Configure the tool to use your supplier's API settings.
 - Test specific scenarios not covered by predefined use cases.
-- [View FormTest Documentation](../../tools-and-helpers/formtest-documentation.mdx).
+- [View FormTest Documentation](../../../tools-and-helpers/formtest-documentation.mdx).
  
 ## **Code Review**
 
 ### **Step 1: Create Pull Request**
 
-    - Commit your changes and push them to a new branch called "**QuoteDevelopment**" into the original repository.
+    - Commit your changes and push them to a new branch called "**AmendBookingBoardDevelopment**" into the original repository.
     - Separate the Pull Request into minimum these 4 commits:
         - Mock responses
         - Request and Response models
@@ -455,4 +425,4 @@ Use the **FormTest** application to test each operation manually:
         - ParseResponse
 
 ### **Step 2: Wait for Travelgate review**
-    - This step involves waiting for the Travelgate team to review and approve the submitted pull request, for more details, check [Code Review Details](../code-review/code-review-details.mdx)
+    - This step involves waiting for the Travelgate team to review and approve the submitted pull request, for more details, check [Code Review Details](../../code-review/code-review-details.mdx)

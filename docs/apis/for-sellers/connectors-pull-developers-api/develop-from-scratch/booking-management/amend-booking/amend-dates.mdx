@@ -254,7 +254,7 @@ internal partial class AmendBookingDatesOperation
             NewDates = new NewDate()
             {
                 CheckIn = "2026-02-17",
-                CheckOut = "2026-02-18
+                CheckOut = "2026-02-18"
             }
         };
     }
@@ -310,9 +310,9 @@ internal partial class AmendBookingDatesOperation
         Price price = ParseSupplierPrice(supplierOption.SupplierPrice);
         List<Room> roomList = ParseSupplierRooms(supplierOption.Rooms);
 
-        var cancelPolicy = ParseSupplierCancelPolicies(supplierResponse.CheckIn;, supplierOption.SupplierCancelPolicies);
+        var cancelPolicy = ParseSupplierCancelPolicies(supplierOption.Checkin, supplierOption.SupplierCancelPolicies);
 
-        var clientReference = supplierOption.clientReference;
+        var clientReference = supplierOption.ClientReference;
         var supplierReference = supplierOption.SupplierReference;
 
         BookDetails bookDetails = new BookDetails(status, new Reference(clientReference, supplierReference), price)

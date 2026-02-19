@@ -13,4 +13,4 @@ Represents the input data for adding or modifying special requests and remarks f
 | **AmendRemarks/**<br />**RemarkType** | [RemarkType](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/remarktype) | The type/category of the remark: General, Hotel, Room, or Service. |
 | **AmendRemarks/Text** | String | The text content of the remark. |
 | **PaymentType** | [PaymentType](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/paymenttype) | Payment type for the booking (e.g., Merchant, Direct). Optional - only required if the supplier needs payment details for the amendment. |
-| **PaymentCardInput** | [PaymentCardInput](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/paymentcardinput) | Payment card details, if applicable. Optional - only required if PaymentType is specified and card details are needed. |
+| **PaymentCardInput** | [CreditCardInput](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/creditcardinput) | Payment card details, if applicable. Optional - only required if PaymentType is specified and card details are needed. |

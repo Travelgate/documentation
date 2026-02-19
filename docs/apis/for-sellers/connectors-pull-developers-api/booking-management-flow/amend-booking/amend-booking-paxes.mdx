@@ -157,9 +157,9 @@ import TabItem from '@theme/TabItem';
 | **Input/Occupancies/Paxes/SurName** | 1 | String | The surname (last name) of the passenger. |
 | **Input/Occupancies/Paxes/**<br />**PersonalTitleType** | 0 . . 1 | [PersonalTitleType](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/personaltitletype) | The personal title of the passenger (e.g., MR, MRS, MS, MISS, NOT_SPECIFIED). |
 | **Input/Occupancies/Paxes/**<br />**DateOfBirth** | 0 . . 1 | String | Date of birth of the passenger, represented as a string in ISO 8601 format (YYYY-MM-DD). |
-| **Input/Occupancies/Paxes/**<br />**IdentificationDocuments** | 0 . . N | Array&lt;[IdentificationDocument](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/identificationdocument)&gt; | Identification documents for the passenger (e.g., passport, ID card). |
+| **Input/Occupancies/Paxes/**<br />**IdentificationDocuments** | 0 . . N | Array&lt;[IdentificationDocument](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/identification-document)&gt; | Identification documents for the passenger (e.g., passport, ID card). |
 | **Input/PaymentType** | 0 . . 1 | [PaymentType](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/paymenttype) | Payment type for the booking (e.g., Merchant, Direct). Optional - only required if the supplier needs payment details for the amendment. |
-| **Input/PaymentCardInput** | 0 . . 1 | [PaymentCardInput](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/paymentcardinput) | Payment card details, if applicable. Optional - only required if PaymentType is specified and card details are needed. |
+| **Input/PaymentCardInput** | 0 . . 1 | [CreditCardInput](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/creditcardinput) | Payment card details, if applicable. Optional - only required if PaymentType is specified and card details are needed. |
 | **Settings** | 1 | [Settings](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/settings) | Settings for the amendment operation. |
 | **Settings/Supplier** | 1 | String | The identifier for the supplier in the TravelgateX platform. |
 | **Settings/Platform** | 1 | String | The platform hosting the supplier's services. |

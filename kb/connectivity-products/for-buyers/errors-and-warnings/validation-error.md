@@ -15,9 +15,13 @@ Since this error indicates a discrepancy or issue with the validation process, c
 - **Verify Access Type (Test/Live)**
   - Ensure that the "testMode" tag in your request matches the Test/Live settings for that specific access.
 - **Verify Client**
-  - The client specified in your request must be one that is configured for your account. If you’ve set custom permissions for a client (e.g., limited access to specific accesses), **ensure the client used in your request aligns with those settings**. Otherwise, update either your request or the client configuration accordingly. More details on Hotel-X Clients can be found [here](/kb/platform/app-features/connections/api-settings/).
+  - The client specified in your request must be active and configured for your account. If you’ve set custom permissions for a client (e.g., limited access to specific accesses), **ensure the client used in your request aligns with those permissions**. Otherwise, update either your request or the client configuration accordingly. More details on Hotel-X Clients can be found [here](/kb/platform/app-features/connections/api-settings/).
+- **Verify Supplier**
+  - The supplier specified in your request must be active and configured for your account. You can review this information in the [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details) section.
 - **Verify API Key**
   - Ensure the API key in your request matches the one configured for your account. You can find more information on your API settings [here](/kb/platform/app-features/connections/api-settings/).
+- **Verify User**
+  - Ensure the user making the request has the necessary permissions. For instance, a Viewer user cannot make reservations via the B2B Virtual Agency since Viewers only have permissions for searches and quotes. More details on user roles can be found [here](/kb/platform/app-features/account-settings/users-management/modify-user-roles).
 - **Verify Context**
   - The context code in your request should match the expected mapping:
     - **[Single Mode request](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/search/search-query#single-mode-and-multimode)**: Use the Supplier context (available in [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details)) or your own Client context (uploaded mapping to SFTP).

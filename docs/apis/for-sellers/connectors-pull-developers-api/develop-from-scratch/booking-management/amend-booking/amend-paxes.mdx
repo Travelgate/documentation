@@ -349,12 +349,12 @@ internal partial class AmendBookingPaxesOperation
         BookStatus status = MapSellerToTgxStatus(supplierOption.Status);
         Price price = ParseSupplierPrice(supplierOption.SupplierPrice);
         List<Room> roomList = ParseSupplierRooms(supplierOption.Rooms);
-
-        var cancelPolicy = ParseSupplierCancelPolicies(supplierResponse.CheckIn;, supplierOption.SupplierCancelPolicies);
-
-        var clientReference = supplierOption.clientReference;
+ 
+        var cancelPolicy = ParseSupplierCancelPolicies(supplierResponse.CheckIn, supplierOption.SupplierCancelPolicies);
+ 
+        var clientReference = supplierOption.ClientReference;
         var supplierReference = supplierOption.SupplierReference;
-
+ 
         BookDetails bookDetails = new BookDetails(status, new Reference(clientReference, supplierReference), price)
         {
             CancelPolicy = cancelPolicy,

@@ -310,9 +310,9 @@ internal partial class AmendBookingDatesOperation
         Price price = ParseSupplierPrice(supplierOption.SupplierPrice);
         List<Room> roomList = ParseSupplierRooms(supplierOption.Rooms);
 
-        var cancelPolicy = ParseSupplierCancelPolicies(supplierResponse.CheckIn;, supplierOption.SupplierCancelPolicies);
+        var cancelPolicy = ParseSupplierCancelPolicies(supplierOption.Checkin, supplierOption.SupplierCancelPolicies);
 
-        var clientReference = supplierOption.clientReference;
+        var clientReference = supplierOption.ClientReference;
         var supplierReference = supplierOption.SupplierReference;
 
         BookDetails bookDetails = new BookDetails(status, new Reference(clientReference, supplierReference), price)

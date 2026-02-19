@@ -34,7 +34,7 @@ To paginate content effectively, follow these steps:
    Continue requesting pages until the `"token"` field is no longer included in the response.
 
 :::info
-The `"maxSize"` value must be between **1 and 500 for Hotels** query and between **1 and 10,000 for Rooms and Destinations** queries.
+The `"maxSize"` value must be between **1 and 500 for Hotels queries** and between **1 and 10,000 for Rooms and Destinations queries**.
 :::
 
 ```json

@@ -264,14 +264,14 @@ internal partial class AmendBookingRoomsSimulateOperation
 
     private static AmendRoomsSimulateRequest BuildAmendBookingRoomsSimulateConnectorRequest(
         string clientReference,
-        string sellerReference) 
+        string supplierReference) 
     {
         //The request towards the Seller system
       
         return new AmendRoomsSimulateRequest()
         {
             ClientReference = clientReference,
-            SellerReference = sellerReference,
+            SupplierReference = supplierReference,
             NewRooms = new List<AmendRoom>()
             {
                 new AmendRoom

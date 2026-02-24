@@ -143,7 +143,7 @@ This step validates the incoming request from the client. While most validation 
 ```csharp
 public bool TryValidateModelRequest(
     AmendBookingBoardSimulateConnectorRequest connectorsRequest, 
-    AmendBookingBoardSimulateParameters<AccessModel> connectorParameters,
+    AmendBookingBoardParameters<AccessModel> connectorParameters,
     out IEnumerable<AdviseMessage> adviseMessages)
 {
     //AdviseMessages are used to specify errors, such as checking if the hotel code is numeric and if not, add an AdviseMessage
@@ -164,7 +164,7 @@ Once the supplier's response is received, this step validates it for errors or a
 
 ```csharp
 public bool TryValidateSupplierResponses(
-    AmendBookingBoardSimulateParameters<AccessModel> connectorParameters,
+    AmendBookingBoardParameters<AccessModel> connectorParameters,
     IEnumerable<SupplierResponseWrapper<AmendBoardResponse>> supplierResponses,
     out IEnumerable<AdviseMessage> adviseMessages)
 {
@@ -213,7 +213,7 @@ internal partial class AmendBookingBoardSimulateOperation
 {
     public IEnumerable<SupplierRequestWrapper<AmendBoardSimulateRequest>> BuildRequests(
         AmendBookingBoardSimulateConnectorRequest connectorsRequest,
-        AmendBookingBoardSimulateParameters<AccessModel> connectorParameters)
+        AmendBookingBoardParameters<AccessModel> connectorParameters)
     {
         var clientReference = connectorsRequest.AmendBookingBoardSimulateRq.Input.Reference.ClientLocator;
         var supplierReference = connectorsRequest.AmendBookingBoardSimulateRq.Input.Reference.SupplierLocator;
@@ -282,7 +282,7 @@ internal partial class AmendBookingBoardSimulateOperation
 {
     public AmendBookingBoardSimulateConnectorResponse ParseResponses(
         AmendBookingBoardSimulateConnectorRequest connectorsRequest,
-        AmendBookingBoardSimulateParameters<AccessModel> connectorParameters,
+        AmendBookingBoardParameters<AccessModel> connectorParameters,
         IEnumerable<SupplierResponseWrapper<AmendBoardResponse>> supplierResponses,
         CancellationToken cancellationToken)
     {

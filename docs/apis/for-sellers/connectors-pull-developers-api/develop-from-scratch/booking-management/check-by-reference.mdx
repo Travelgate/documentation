@@ -32,7 +32,7 @@ public class CheckBookingsByReferenceRequest
     public string SupplierReference { get; set; }
 }
 ```
-File location: "**ConnectorsIntegration\CheckBookingsByReference\Models\Response\CheckBookingsByReferenceRequest.cs**".
+File location: "**ConnectorsIntegration\CheckBookingsByReference\Models\Request\CheckBookingsByReferenceRequest.cs**".
 
 **Example of a CheckBookingsByReferenceResponse model**:
 
@@ -118,7 +118,7 @@ For more details about operations, check [PreOperations](../../connector-framewo
 
 There are two previous validations that serve as a filter so the buildrequest and the parseresponse are as safe as possible. They can be found in the CheckBookingsByReferenceOperation.cs class:
 
-```chsarp
+```csharp
 internal partial class CheckBookingsByReferenceOperation :
     ICheckBookingsByReferenceOperation<CheckBookingsByReferenceRequest, CheckBookingsByReferenceResponse, AccessModel>
 {
@@ -139,7 +139,7 @@ This step validates the incoming request from the client. While most validation 
 ```csharp
 public bool TryValidateModelRequest(
     CheckBookingsByReferenceConnectorRequest connectorsRequest, 
-    CheckBookingsByReferenceParameters<CntAccessModel> connectorParameters,
+    CheckBookingsByReferenceParameters<AccessModel> connectorParameters,
     out IEnumerable<AdviseMessage> adviseMessages)
 {
     //AdviseMessages are used to specify errors, such as checking if the hotel code is numeric and if not, add an AdviseMessage
@@ -161,7 +161,7 @@ Once the supplier's response is received, this step validates it for errors or a
 
 ```csharp
 public bool TryValidateSupplierResponses(
-    CheckBookingsByReferenceParameters<CntAccessModel> connectorParameters,
+    CheckBookingsByReferenceParameters<AccessModel> connectorParameters,
     IEnumerable<SupplierResponseWrapper<CheckBookingsByReferenceResponse>> supplierResponses,
     out IEnumerable<AdviseMessage> adviseMessages)
 {
@@ -171,11 +171,11 @@ public bool TryValidateSupplierResponses(
 
     if (!success) return false;
     
-    if (supplierResponseWrappers.ElementAt(0).Response.HotelCheckBookingsByReference?.Hotel is null)
+    if (supplierResponseWrappers.ElementAt(0).Response.Option is null)
     {
         adviseMessages =
         [
-            AdviseMessage.BuildSupplierNoResults() // Indicates no results from the supplier.
+            AdviseMessage.BuildSupplierError() // Indicates error from the seller
         ];
 
         return false;

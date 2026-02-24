@@ -1,0 +1,309 @@
+---
+title: "AmendBookingDates"
+sidebar_position: 3
+---
+
+## **Overview**
+
+The `AmendBookingDates` operation allows clients to modify the check-in and/or check-out dates of an existing booking. This operation uses the client and supplier locators to identify the reservation and processes the date change request while recalculating pricing based on the new stay period.
+
+The AmendBookingDates operation ensures:
+
+- **Date Modification**: Enables clients to change check-in and/or check-out dates through the supplier's API.
+- **Price Recalculation**: Returns updated pricing based on the new date range and availability.
+- **Availability Validation**: Confirms that the hotel has availability for the requested new dates.
+- **Status Confirmation**: Confirms the success or failure of the date amendment request.
+
+**When to Use:**
+
+- **Client-Requested Changes**: When the end-user needs to extend or shorten their stay due to travel plan changes.
+- **Flexible Bookings**: To accommodate guests who wish to arrive earlier or depart later than originally planned.
+
+**Common Scenarios:**
+
+- **Stay Extension**: Extending checkout date to add extra nights to the reservation.
+- **Stay Shortening**: Reducing the number of nights due to changed travel plans.
+- **Date Shift**: Moving the entire booking to different dates (changing both check-in and check-out).
+- **Error Handling**: Common errors include:
+  - `BookingNotFound`: Indicates the booking cannot be located with the provided locators.
+  - `InvalidDateRange`: The new dates are invalid (e.g., check-out before check-in).
+  - `SupplierError`: Indicates the amendment could not be processed by the supplier.
+
+---
+
+## **Request**
+
+### **Overview**
+
+The request operation includes the new check-in and check-out dates, booking references, and any additional data required by the supplier.
+
+### **Sample**
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+  <TabItem value="AmendBookingDatesRequest" label="C#">
+    ```csharp
+    var amendBookingDatesRq = new AmendBookingDatesRq
+    {
+        Input = new AmendDatesInput
+        {
+            Reference = new Reference
+            {
+                ClientReference = "CLIENT123456",
+                SupplierReference = "SUPPLIER789"
+            },
+            AmendDates = new AmendDates
+            {
+                CheckIn = "2024-07-15",
+                CheckOut = "2024-07-20"
+            },
+            PaymentType = PaymentType.Merchant,
+            PaymentCardInput = null
+        },
+        Settings = new Settings
+        {
+            Supplier = "HOTELTEST",
+            Platform = "HOTELTEST",
+            Client = "TravelAgency123",
+            Access = new Access
+            {
+                Code = 1001,
+                User = "agency_user",
+                Password = "secure_password",
+                ApiKey = "API_KEY_123456789",
+                Urls = new Urls
+                {
+                    Book = "https://api.hotelsupplier.com/book",
+                    Search = "https://api.hotelsupplier.com/search",
+                    Quote = "https://api.hotelsupplier.com/quote",
+                    Cancel = "https://api.hotelsupplier.com/cancel",
+                    CheckBookings = "https://api.hotelsupplier.com/check",
+                    AmendBookingBoard = "https://api.hotelsupplier.com/amend/board",
+                    AmendBookingDates = "https://api.hotelsupplier.com/amend/dates",
+                    AmendBookingPaxes = "https://api.hotelsupplier.com/amend/paxes",
+                    AmendBookingRemarks = "https://api.hotelsupplier.com/amend/remarks",
+                    AmendBookingRooms = "https://api.hotelsupplier.com/amend/rooms"
+                },
+                Parameters = new Dictionary<string, string>
+                {
+                    { "someParameter1", "50" },
+                    { "someParameter2", "true" },
+                    { "someParameter3", "5000" },
+                    { "someParameter4", "SupplierX" }
+                }
+            },
+            BusinessRules = new BusinessRules
+            {
+                OptionsQuota = 170,
+                BusinessRuleType = "CheaperAmount"
+            },
+            Timeout = "00:00:10",
+            TimeoutAsTimeSpan = TimeSpan.Parse("00:00:10"),
+            IncludeProviderTransactions = false
+        }
+    };
+    ```
+  </TabItem>
+</Tabs>
+
+### **Details**
+
+| Name | Relation | Type | Description |
+|------|:--------:|:----:|-------------|
+| **Input** | 1 | [AmendDatesInput](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/amenddatesinput) | Input data for the dates amendment operation. |
+| **Input/Reference** | 1 | [Reference](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/reference) | Booking references for the amendment. |
+| **Input/Reference/**<br />**ClientReference** | 1 | String | The client's internal reference for the booking. |
+| **Input/Reference/**<br />**SupplierReference** | 1 | String | The supplier's reference for the booking. |
+| **Input/AmendDates** | 1 | [AmendDates](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/amenddates) | The amended dates for the booking. |
+| **Input/AmendDates/CheckIn** | 1 | String | The new check-in date for the booking, represented as a string in ISO 8601 format (YYYY-MM-DD). |
+| **Input/AmendDates/CheckOut** | 1 | String | The new check-out date for the booking, represented as a string in ISO 8601 format (YYYY-MM-DD). |
+| **Input/PaymentType** | 0 . . 1 | [PaymentType](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/paymenttype) | The payment type for the amendment request. |
+| **Input/PaymentCardInput** | 0 . . 1 | [CreditCardInput](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/creditcardinput) | The credit card input for the amendment request. |
+| **Settings** | 1 | [Settings](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/settings) | Settings for the amendment operation. |
+| **Settings/Supplier** | 1 | String | The identifier for the supplier in the TravelgateX platform. |
+| **Settings/Platform** | 1 | String | The platform hosting the supplier's services. |
+| **Settings/Client** | 1 | String | The client code requesting the operation. |
+| **Settings/Access** | 1 | [Access](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/access) | Authentication and endpoint configuration. |
+| **Settings/Access/Code** | 1 | Integer | Access code for authentication. |
+| **Settings/Access/User** | 0 . . 1 | String | Username for authentication. |
+| **Settings/Access/Password** | 0 . . 1 | String | Password for authentication. |
+| **Settings/Access/ApiKey** | 0 . . 1 | String | API key for authentication. |
+| **Settings/Access/Urls** | 1 | [Urls](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/urls) | URLs for different operations. |
+| **Settings/Access/Parameters** | 0 . . 1 | [AccessParameters](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/accessparameters) | Additional parameters related to the connection. |
+| **Settings/BusinessRules** |0 . . 1 | [BusinessRules](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/businessrules) | Specifies the business rules to be applied during the operation. These rules define operational constraints and behavior, such as quota limits or prioritization criteria. |
+| **Settings/BusinessRules/**<br />**OptionsQuota** | 0 . . 1 | Integer | The maximum number of options returned for each board in the Search query. |
+| **Settings/BusinessRules/**<br />**BusinessRuleType** | 1 | [BusinessRulesType](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/businessrulestype) | The business rule type that determines how Search results are prioritized or filtered. |
+| **Settings/Timeout** | 1 | String | Defines the timeout period for the operation as a string value.This indicates the maximum amount of time to wait for a supplier's response before timing out.The value must be provided in timestamp format (e.g., "00:00:10" for 10 seconds). |
+| **Settings/TimeoutAsTimeSpan** | 0 . . 1 | String | Converts the timeout value from the string representation (Timeout) into a TimeSpan for use in time-based operations. |
+| **Settings/**<br />**IncludeProviderTransactions** | 1 | Boolean | Indicates whether detailed traces of provider transactions should be included in the operation's response. If enabled, the ProviderAudit field in responses will contain the transaction logs (e.g., requests and responses exchanged with the supplier). |
+
+---
+
+## **Response**
+
+Provides the amendment status, updated booking details with the new dates, pricing information, and any warnings or remarks.
+
+### **Overview**
+
+The `AmendBookingDates` operation provides:
+- **Amendment Status**:
+  - `Ok`: The dates amendment has been successfully processed.
+  - `OnRequest`: The amendment request is pending supplier confirmation.
+  - `Unknown`: The amendment status is unknown and requires verification with the supplier.
+- **Updated Booking Details**: Returns the booking information with the new check-in and check-out dates and updated pricing.
+- **Warnings or Remarks**: Additional details from the supplier about the amendment process.
+
+### **Sample**
+
+<Tabs>
+  <TabItem value="AmendBookingDatesResponse" label="C#">
+    ```csharp
+    var amendRs = new AmendRs
+    {
+        AuditData = new AuditData
+        {
+            Request = new List<RequestItem>
+            {
+                new RequestItem
+                {
+                    Data = "<x>SupplierRequest</x>",
+                    Headers = new Dictionary<string, string>
+                    {
+                        { "Accept", "application/x-protobuf" },
+                        { "Accept-Encoding", "gzip,deflate," }
+                    },
+                    HttpMethod = new HttpMethodType
+                    {
+                        Method = "POST"
+                    },
+                    SendAt = DateTime.Parse("2024-07-10T08:21:49Z"),
+                    Url = "http://travelgate.com"
+                }
+            },
+            Response = new List<ResponseItem>
+            {
+                new ResponseItem
+                {
+                    Data = "<x>SupplierResponse</x>",
+                    Headers = new Dictionary<string, string>
+                    {
+                        { "Content-Encoding", "gzip," }
+                    },
+                    HttpMethod = new HttpMethodType
+                    {
+                        Method = "POST"
+                    },
+                    ReceivedAt = DateTime.Parse("2024-07-10T08:21:49Z"),
+                    StatusCode = 200
+                }
+            }
+        },
+        BookDetails = new List<BookDetails>
+        {
+            new BookDetails
+            {
+                Status = BookStatus.Ok,
+                Reference = new Reference
+                {
+                    ClientReference = "CLIENT123456",
+                    SupplierReference = "SUPPLIER789"
+                },
+                Holder = new Holder
+                {
+                    Name = "John",
+                    SurName = "Doe"
+                },
+                Price = Price.BuildNetPrice(Currency.EUR, 500.00, 500.00),
+                Hotel = new HotelDetail
+                {
+                    Code = "HOTEL001",
+                    Name = "Grand Plaza Hotel",
+                    CheckIn = DateTime.Parse("2024-07-15"),
+                    CheckOut = DateTime.Parse("2024-07-20"),
+                    BoardCode = "BB",
+                    Occupancies = new List<BookOccupancy>
+                    {
+                        new BookOccupancy
+                        {
+                            OccupancyId = 1,
+                            Paxes = new List<BookPax>
+                            {
+                                new BookPax
+                                {
+                                    Age = 30,
+                                    Name = "John",
+                                    SurName = "Doe"
+                                },
+                                new BookPax
+                                {
+                                    Age = 28,
+                                    Name = "Jane",
+                                    SurName = "Doe"
+                                }
+                            }
+                        }
+                    },
+                    Rooms = new List<Room>
+                    {
+                        new Room
+                        {
+                            OccupancyRefId = 1,
+                            Code = "DBL",
+                            Description = "Double Room",
+                            RoomPrice = new RoomPrice
+                            {
+                                Price = Price.BuildNetPrice(Currency.EUR, 500.00, 500.00)
+                            }
+                        }
+                    }
+                },
+                CancelPolicy = new OptionCancelPolicy
+                {
+                    Refundable = true,
+                    CancelPenalties = new List<CancelPenalty>
+                    {
+                        new CancelPenalty
+                        {
+                            HoursBefore = 24,
+                            Type = PenaltyType.Percent,
+                            Value = 100
+                        }
+                    }
+                }
+            }
+        }
+    };
+    ```
+  </TabItem>
+</Tabs>
+
+### **Details**
+
+| Name | Relation | Type | Description |
+|------|:--------:|:----:|-------------|
+| **BookDetails** | 1 | [BookDetails](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/bookdetails) | The updated booking details after the dates amendment. |
+| **BookDetails/Status** | 1 | String | Status of the amended booking (e.g., "OK", "KO", "PENDING"). |
+| **BookDetails/Reference** | 1 | [Reference](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/reference) | References for the booking. |
+| **BookDetails/Reference/**<br />**ClientReference** | 1 | String | The client's internal reference for the booking. |
+| **BookDetails/Reference/**<br />**SupplierReference** | 1 | String | The supplier's reference for the booking. |
+| **BookDetails/Holder** | 1 | [Holder](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/holder) | Primary guest information. |
+| **BookDetails/Holder/Name** | 1 | String | First name of the primary guest. |
+| **BookDetails/Holder/SurName** | 1 | String | Surname of the primary guest. |
+| **BookDetails/Hotel** | 1 | [HotelDetail](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/hoteldetail) | Hotel booking information. |
+| **BookDetails/Hotel/CheckIn** | 1 | String | The updated check-in date in ISO 8601 format (YYYY-MM-DD). |
+| **BookDetails/Hotel/CheckOut** | 1 | String | The updated check-out date in ISO 8601 format (YYYY-MM-DD). |
+| **BookDetails/Hotel/Code** | 1 | String | Hotel code. |
+| **BookDetails/Hotel/Name** | 0 . . 1 | String | Hotel name. |
+| **BookDetails/Hotel/BoardCode** | 1 | String | Board/meal plan code. |
+| **BookDetails/Hotel/Occupancies** | 1 . . N | Array&lt;[BookOccupancy](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/bookoccupancy)&gt; | Occupancy information for the booking. |
+| **BookDetails/Hotel/Rooms** | 1 . . N | Array&lt;[Room](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/room)&gt; | Room information for the booking. |
+| **BookDetails/Price** | 1 | [Price](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/price) | Updated pricing information for the booking. |
+| **BookDetails/Price/Currency** | 1 | String | Currency code (e.g., "EUR", "USD"). |
+| **BookDetails/Price/Binding** | 1 | Boolean | Indicates if the price is binding. |
+| **BookDetails/Price/Net** | 1 | Double | Net price. |
+| **BookDetails/Price/Gross** | 1 | Double | Gross price. |
+| **BookDetails/Price/**<br />**MinimumSellingPrice** | 1 | Double | Minimum selling price. |
+| **BookDetails/CancelPolicy** | 0 . . 1 | [CancelPolicy](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/cancelpolicy) | Cancellation policy for the amended booking. |
+| **ProviderAudit** | 0 . . 1 | [ProviderAudit](/docs/apis/for-sellers/connectors-pull-developers-api/api-reference/provideraudit) | Provider transaction logs if IncludeProviderTransactions is enabled. |

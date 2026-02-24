@@ -1,0 +1,151 @@
+---
+sidebar_position: 3
+---
+
+# Webhooks
+
+When an anomaly is detected during booking reconciliation, Recon can send an HTTP request to a configured webhook
+URL delivering a JSON payload with the anomaly details. These webhooks allow you to receive real-time notifications
+about discrepancies in your booking data, enabling you to take immediate action and maintain accurate records
+across your systems.
+
+You can configure your webhook URL and authentication method in the [Reconciliation Dashboard](https://app-reconciliation.travelgate.com/webhooks) under **Webhooks** section.
+Recon supports three authentication methods for webhooks: API Key, Basic Authentication, and Bearer Token. You can
+choose the method that best fits your security requirements.
+
+## HTTP headers
+
+Every webhook request includes the following headers:
+
+| Header | Value |
+|---|---|
+| `Content-Type` | `application/json` |
+| `User-Agent` | `Travelgate-Recon-Webhook/1.0` |
+
+Additionally, any custom headers and authentication headers (API Key, Basic Auth, or Bearer Token) configured on the webhook are included.
+
+## Demo payload
+
+```json
+{
+  "event": "anomaly.detected",
+  "anomaly": {
+    "id": 42,
+    "scenario": "status",
+    "pair": "seller-internal",
+    "severity": "error",
+    "summary": "Status differs: CONFIRMED vs CANCELLED",
+    "details": { "left": "CONFIRMED", "right": "CANCELLED" },
+    "fingerprint": "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2",
+    "is_open": true,
+    "detected_at": "2026-02-19T10:30:00+00:00",
+    "first_seen_at": "2026-02-19T10:30:00+00:00"
+  },
+  "booking_references": {
+    "internal_id": 1001,
+    "seller_id": 2002,
+    "buyer_id": null
+  },
+  "timestamp": "2026-02-19T10:30:00+00:00"
+}
+```
+
+## Field descriptions
+
+| Field | Type | Description |
+|---|---|---|
+| `event` | string | Always `"anomaly.detected"`. |
+| `anomaly.id` | integer | Unique identifier of the anomaly. |
+| `anomaly.scenario` | string | The type of check that detected the anomaly (see scenarios below). |
+| `anomaly.pair` | string | Which two booking sources were compared (see pairs below). |
+| `anomaly.severity` | string | Severity level: `error`, `warn`, or `info`. |
+| `anomaly.summary` | string | Human-readable description of the anomaly. |
+| `anomaly.details` | object | Scenario-specific data (see details per scenario below). |
+| `anomaly.fingerprint` | string | SHA-256 hash used for deduplication. |
+| `anomaly.is_open` | boolean | Whether the anomaly is still open. |
+| `anomaly.detected_at` | string | ISO 8601 datetime when the anomaly was detected. |
+| `anomaly.first_seen_at` | string | ISO 8601 datetime when the anomaly was first seen. |
+| `booking_references.internal_id` | integer or null | ID of the internal booking (if involved in the pair). |
+| `booking_references.seller_id` | integer or null | ID of the seller booking (if involved in the pair). |
+| `booking_references.buyer_id` | integer or null | ID of the buyer booking (if involved in the pair). |
+| `timestamp` | string | ISO 8601 datetime (same as `detected_at`). |
+
+## Anomaly scenarios
+
+| Scenario | Description |
+|---|---|
+| `status` | Booking status mismatch between two sources. |
+| `net_amount` | Net payable amount differs beyond tolerance. |
+| `check_in_out` | Check-in or check-out dates do not match. |
+| `hotel` | Hotel code mismatch between two sources. |
+| `cancel_penalties_nrf` | Non-refundable flag mismatch. |
+| `cancel_penalties_deadline` | Cancellation penalty deadline mismatch. |
+| `cancel_penalties_net_amount` | Cancellation penalty amount mismatch. |
+
+### `details` per scenario
+
+The `anomaly.details` object varies by scenario:
+
+- **status**
+```json
+{ "left": "CONFIRMED", "right": "CANCELLED" }
+  ```
+
+- **net_amount**
+```json
+{ "amount_left": "350.00", "amount_right": "375.50", "delta": "25.50" }
+  ```
+
+- **check_in_out**
+```json
+{
+  "left": { "check_in": "2026-03-10", "check_out": "2026-03-15" },
+  "right": { "check_in": "2026-03-10", "check_out": "2026-03-14" }
+}
+  ```
+
+- **hotel**
+```json
+{ "mismatches": { "code_seller": ["HTL-ABC", "HTL-XYZ"] } }
+  ```
+
+- **cancel_penalties_nrf**
+```json
+{
+  "left": { "refundable": true, "penalties": [] },
+  "right": { "refundable": false, "penalties": [] }
+}
+  ```
+
+- **cancel_penalties_deadline**
+```json
+{
+  "left": "2026-03-01T12:00:00+00:00",
+  "right": "2026-02-28T12:00:00+00:00",
+  "left_penalties_count": 1,
+  "right_penalties_count": 2
+}
+  ```
+
+- **cancel_penalties_net_amount**
+```json
+{ "left": "150.00", "right": "200.00" }
+  ```
+
+## Severity values
+
+| Severity | Meaning |
+|---|---|
+| `error` | Critical discrepancy that likely requires immediate action. |
+| `warn` | Notable difference that should be reviewed. |
+| `info` | Informational; values match or difference is within tolerance. |
+
+## Pair values
+
+The `pair` field indicates which two booking sources were compared. The value before the hyphen is the "left" side and the value after is the "right" side in the `details` object.
+
+| Pair | Description |
+|---|---|
+| `seller-internal` | Seller booking compared against internal (Travelgate) booking. |
+| `buyer-seller` | Buyer booking compared against seller booking. |
+| `buyer-internal` | Buyer booking compared against internal (Travelgate) booking. |

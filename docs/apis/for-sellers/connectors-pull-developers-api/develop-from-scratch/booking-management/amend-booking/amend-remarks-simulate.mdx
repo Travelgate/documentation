@@ -1,19 +1,23 @@
 ---
-title: "AmendBookingRemarks"
-sidebar_position: 8
+title: "AmendBookingRemarksSimulate"
+sidebar_position: 7
 ---
+
+:::note
+This operation simulates what would happen if you execute the `AmendBookingRemarks` operation, without actually committing the changes.
+:::
 
 ## **Mock**
 
-### **Step 1: Define your AmendBookingRemarks responses (Mocks)**
+### **Step 1: Define your AmendBookingRemarks Simulate responses (Mocks)**
 
-Define the responses for your operation, it is mandatory to insert a supplier response into every mock or at least, into the mocks of the operation you will be developing.
+Define the responses for your Simulate operation. It is mandatory to insert a supplier response into every mock or at least into the mocks of the operation you will be developing.
 
 We will be using the **TwoAdultTwoDays** mock through all the steps of the development.
 
 File location: "**test\MockServer\Tests\AmendBookingRemarks\Two_Adults_Two_Days.txt**".
 
-![Mock Example](/img/docs/connectors-pull-developers-api/MockTwoAdultsAmendRemarks.png)
+![Mock Example](/img/docs/connectors-pull-developers-api/MockTwoAdultsAmendRemarksSimulate.png)
 
 ### **Step 2: Define the Models of your response (Request and Response models)**
 
@@ -21,12 +25,12 @@ These models are crucial because they specify the structure of the objects conta
 
 ![Response example](/img/docs/connectors-pull-developers-api/TemplateStructureModelsAmendBookingRemarks.png)
 
-**Example of a AmendBookingRemarksRequest model**:
+**Example of a AmendRemarksSimulateRequest model**:
 
 ```csharp
 namespace ConnectorsIntegration.Amends.Remarks.Models.Request;
 
-public class AmendRemarksRequest
+public class AmendRemarksSimulateRequest
 {
     public List<string> NewRemarks { get; set; }
     public string ClientReference { get; set; }
@@ -96,15 +100,15 @@ File location: "**ConnectorsIntegration\Amends\Remarks\AmendmentsRemarksExtensio
 If the Seller works with **JSON** format, we can specify the integration to work with **JSON** with the following:
 
 ```csharp
-internal static class AmendmentsRemarksExtensions
+internal static class AmendmentsRemarksSimulateExtensions
 {
-    public static void AddAmendBookingRemarksServices(this IServiceCollection services,
+    public static void AddAmendBookingRemarksSimulateServices(this IServiceCollection services,
         IConfiguration configuration)
     {
         //A JsonSerializer service is added along with the request and response model
-        services.AddJsonSerializer<AmendRemarksRequest, AmendRemarksResponse>(ConfigureJSONOptions);
+        services.AddJsonSerializer<AmendRemarksSimulateRequest, AmendRemarksResponse>(ConfigureJSONOptions);
         //The operation is added, indicating what models should be used during the development of the operation
-        services.AddAmendBookingRemarksOperation<AmendBookingRemarksOperation, AmendRemarksRequest, AmendRemarksResponse, AccessModel>(TgxPlatform.Name, configuration);
+        services.AddAmendBookingRemarksSimulateOperation<AmendBookingRemarksSimulateOperation, AmendRemarksSimulateRequest, AmendRemarksResponse, AccessModel>(TgxPlatform.Name, configuration);
     }
     private static void ConfigureJSONOptions(JsonSerializerOptions options) { }
 }
@@ -114,13 +118,13 @@ For details about others serializers, check [Extensions](../../../advanced-use/b
 
 For more details about operations, check [PreOperations](../../../connector-framework/preoperation-overview) and [Operations](../../../connector-framework/operation-overview).
 
-### **Step 2: AmendBookingRemarksOperation validators**
+### **Step 2: AmendBookingRemarksSimulateOperation validators**
 
-There are two previous validations that serve as a filter so the buildrequest and the parseresponse are as safe as possible. They can be found in the AmendBookingRemarksOperation.cs class:
+There are two previous validations that serve as a filter so the buildrequest and the parseresponse are as safe as possible.
 
 ```csharp
-internal partial class AmendBookingRemarksOperation :
-    IAmendBookingRemarksOperation<AmendRemarksRequest, AmendRemarksResponse, AccessModel>
+internal partial class AmendBookingRemarksSimulateOperation :
+    IAmendBookingRemarksSimulateOperation<AmendRemarksSimulateRequest, AmendRemarksResponse, AccessModel>
 {
     // Implement any services needed just like in SearchOperation.cs
 }
@@ -128,7 +132,7 @@ internal partial class AmendBookingRemarksOperation :
 
 File location: "**ConnectorsIntegration\Amends\Remarks\Operations\AmendBookingRemarksOperation.cs**".
 
-![AmendBookingRemarksOperation](/img/docs/connectors-pull-developers-api/AmendBookingRemarksOperation.png)
+![AmendBookingRemarksOperation](/img/docs/connectors-pull-developers-api/AmendBookingRemarksOperationSimulate.png)
 
 **TryValidateModelRequest**
 
@@ -138,7 +142,7 @@ This step validates the incoming request from the client. While most validation 
 
 ```csharp
 public bool TryValidateModelRequest(
-    AmendBookingRemarksConnectorRequest connectorsRequest, 
+    AmendBookingRemarksSimulateConnectorRequest connectorsRequest, 
     AmendBookingRemarksParameters<AccessModel> connectorParameters,
     out IEnumerable<AdviseMessage> adviseMessages)
 {
@@ -146,7 +150,6 @@ public bool TryValidateModelRequest(
     adviseMessages = default;
     return true; // Validation passes if no issues are found.
 }
-
 ```
 
 **TryValidateSupplierResponses**
@@ -189,41 +192,41 @@ public bool TryValidateSupplierResponses(
 
 This class will contain a "BuildRequests" method that will have the following arguments: 
 
-- Object of the requests from the models previously created (AmendRemarksRequest).
+- Object of the requests from the models previously created (AmendRemarksSimulateRequest).
 - The request that the Buyer sends (connectorsRequest).
-- Parameters (connectorParameters) which will have some helpers:
+- Parameters (connectorParameters) which will have some helpers.
 
-File location: "**ConnectorsIntegration\Amends\Remarks\Operations\AmendBookingRemarksOperation.BuildRequest.cs**"
+File location: "**ConnectorsIntegration\Amends\Remarks\Operations\AmendBookingRemarksSimulateOperation.BuildRequest.cs**"
 
-![Build Request AmendRemarks](/img/docs/connectors-pull-developers-api/BuildRequestAmendRemarks.png)
+![Build Request AmendRemarks](/img/docs/connectors-pull-developers-api/BuildRequestAmendRemarksSimulate.png)
 
 **Example of Build Request:**
 
 ```csharp
 using Connectors.Core.Application.Connection;
-using Connectors.Pull.Hotel.Application.Operations.Amendments.AmendBookingRemarks;
+using Connectors.Pull.Hotel.Application.Operations.Amendments.AmendBookingRemarksSimulate;
 using ConnectorsIntegration.Amends.Remarks.Models.Request;
 
 namespace ConnectorsIntegration.Amends.Remarks.Operations;
 
-internal partial class AmendBookingRemarksOperation
+internal partial class AmendBookingRemarksSimulateOperation
 {
-    public IEnumerable<SupplierRequestWrapper<AmendRemarksRequest>> BuildRequests(
-        AmendBookingRemarksConnectorRequest connectorsRequest,
+    public IEnumerable<SupplierRequestWrapper<AmendRemarksSimulateRequest>> BuildRequests(
+        AmendBookingRemarksSimulateConnectorRequest connectorsRequest,
         AmendBookingRemarksParameters<AccessModel> connectorParameters)
     {
-        var clientReference = connectorsRequest.AmendBookingRemarksRq.Input.Reference.ClientLocator;
-        var supplierReference = connectorsRequest.AmendBookingRemarksRq.Input.Reference.SupplierLocator;
+        var clientReference = connectorsRequest.AmendBookingRemarksSimulateRq.Input.Reference.ClientLocator;
+        var supplierReference = connectorsRequest.AmendBookingRemarksSimulateRq.Input.Reference.SupplierLocator;
 
-        AmendBookingRemarksConnectorRequest amendBookingRemarksConnectorRequest = BuildAmendBookingRemarksConnectorRequest(
+        AmendRemarksSimulateRequest amendBookingRemarksSimulateConnectorRequest = BuildAmendBookingRemarksSimulateConnectorRequest(
             clientReference,
             supplierReference);
 
         //Generic URL we prepared back in the AccessModel, which will be passed by the Buyer
         string genericUrl = connectorParameters.ParametersModel.UrlGeneric;
 
-        SupplierRequestWrapper<AmendRemarksRequest> supplierRequest = new(
-            amendBookingRemarksConnectorRequest,
+        SupplierRequestWrapper<AmendRemarksSimulateRequest> supplierRequest = new(
+            amendBookingRemarksSimulateConnectorRequest,
             new Uri(genericUrl),
             HttpMethod.Post);
 
@@ -233,16 +236,16 @@ internal partial class AmendBookingRemarksOperation
         ];
     }
 
-    private static AmendBookingRemarksConnectorRequest BuildAmendBookingRemarksConnectorRequest(
+    private static AmendRemarksSimulateRequest BuildAmendBookingRemarksSimulateConnectorRequest(
         string clientReference,
-        string sellerReference) 
+        string supplierReference) 
     {
         //The request towards the Seller system
       
-        return new AmendBookingRemarksConnectorRequest()
+        return new AmendRemarksSimulateRequest()
         {
             ClientReference = clientReference,
-            SellerReference = sellerReference,
+            SupplierReference = supplierReference,
             NewRemarks = new List<string>()
             {
                 "Please add a cot for our baby"
@@ -256,11 +259,15 @@ internal partial class AmendBookingRemarksOperation
 
 Once the request has been sent, we will have to control and parse the response returned by the Seller.
 
-We will be implementing the "ParseResponse" step inside AmendBookingRemarksOperation:
+:::note
+The ParseResponse implementation is shared between Simulate and Commit operations, as they return the same response structure (AmendRemarksResponse).
+:::
 
-File location: "**ConnectorsIntegration\Amends\Remarks\Operations\AmendBookingRemarksOperation.ParseResponse.cs**"
+We will be implementing the "ParseResponse" step inside the Simulate operation:
 
-![Build Response AmendBookingRemarks](/img/docs/connectors-pull-developers-api/ParseResponseAmendBookingRemarks.png)
+File location: "**ConnectorsIntegration\Amends\Remarks\Operations\AmendBookingRemarksSimulateOperation.ParseResponse.cs**"
+
+![Build Response AmendBookingRemarks](/img/docs/connectors-pull-developers-api/ParseResponseAmendBookingRemarksSimulate.png)
 
 **Example of Parse Response:**
 
@@ -269,21 +276,21 @@ using Connectors.Core.Application.Connection;
 using Connectors.Core.Application.Iso;
 using Connectors.Core.Domain;
 using Connectors.Pull.Hotel.Domain.Contracts.Common;
-using Connectors.Pull.Hotel.Application.Operations.Amendments.AmendBookingRemarks;
+using Connectors.Pull.Hotel.Application.Operations.Amendments.AmendBookingRemarksSimulate;
 using Connectors.Pull.Hotel.Domain.Contracts.Amendments;
 
 namespace ConnectorsIntegration.Amends.Remarks.Operations;
 
-internal partial class AmendBookingRemarksOperation
+internal partial class AmendBookingRemarksSimulateOperation
 {
-    public AmendBookingRemarksConnectorResponse ParseResponses(
-        AmendBookingRemarksConnectorRequest connectorsRequest,
+    public AmendBookingRemarksSimulateConnectorResponse ParseResponses(
+        AmendBookingRemarksSimulateConnectorRequest connectorsRequest,
         AmendBookingRemarksParameters<AccessModel> connectorParameters,
         IEnumerable<SupplierResponseWrapper<AmendRemarksResponse>> supplierResponses,
         CancellationToken cancellationToken)
     {
         var supplierResponse = supplierResponses.First().Response;
-        return new AmendBookingRemarksConnectorResponse(ParseSupplierResponse(supplierResponse));
+        return new AmendBookingRemarksSimulateConnectorResponse(ParseSupplierResponse(supplierResponse));
     }
 
     private AmendRs ParseSupplierResponse(AmendRemarksResponse supplierResponse)
@@ -301,7 +308,7 @@ internal partial class AmendBookingRemarksOperation
         Price price = ParseSupplierPrice(supplierOption.SupplierPrice);
         List<Room> roomList = ParseSupplierRooms(supplierOption.Rooms);
 
-        var cancelPolicy = ParseSupplierCancelPolicies(supplierResponse.Checkin, supplierOption.SupplierCancelPolicies);
+        var cancelPolicy = ParseSupplierCancelPolicies(supplierOption.Checkin, supplierOption.SupplierCancelPolicies);
 
         var clientReference = supplierOption.ClientReference;
         var supplierReference = supplierOption.SupplierReference;
@@ -405,13 +412,13 @@ For more details about the combinatory, check [Recommended Helpers](../../../too
 Be aware that option 1 is optional for testing the integration but ***mandatory*** once the operation has been developed in order to pass all tests before creating the pull request.
 :::
 Use the integration tests provided by Travelgate to validate your implementation:
-- Add the necessary use cases to the **MockServer** for each operation.
+- Add the necessary use cases to the **MockServer** for the Simulate operation.
   - [View MockServer Documentation](../../../connector-framework/mock-server-documentation.mdx).
 - Execute the associated tests for the implemented operation.
   - [View Running Integration Tests](../../../connector-framework/running-integration-tests.mdx).
 
 ### **Option 2: FormTest Tool (Shopping)**
-Use the **FormTest** application to test each operation manually:
+Use the **FormTest** application to test the Simulate operation manually:
 - Configure the tool to use your supplier's API settings.
 - Test specific scenarios not covered by predefined use cases.
 - [View FormTest Documentation](../../../tools-and-helpers/formtest-documentation.mdx).
@@ -420,7 +427,7 @@ Use the **FormTest** application to test each operation manually:
 
 ### **Step 1: Create Pull Request**
 
-    - Commit your changes and push them to a new branch called "**AmendBookingRemarksDevelopment**" into the original repository.
+    - Commit your changes and push them to a new branch called "**AmendBookingRemarksSimulateDevelopment**" into the original repository.
     - Separate the Pull Request into minimum these 4 commits:
         - Mock responses
         - Request and Response models

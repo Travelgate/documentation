@@ -384,7 +384,7 @@ internal partial class AmendBookingRoomsSimulateOperation
         Price price = ParseSupplierPrice(supplierOption.SupplierPrice);
         List<Room> roomList = ParseSupplierRooms(supplierOption.Rooms);
 
-        var cancelPolicy = ParseSupplierCancelPolicies(supplierResponse.CheckIn, supplierOption.SupplierCancelPolicies);
+        var cancelPolicy = ParseSupplierCancelPolicies(supplierOption.Checkin, supplierOption.SupplierCancelPolicies);
 
         var clientReference = supplierOption.ClientReference;
         var supplierReference = supplierOption.SupplierReference;

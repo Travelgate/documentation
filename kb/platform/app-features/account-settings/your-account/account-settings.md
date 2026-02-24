@@ -35,9 +35,13 @@ To update your password, follow these steps:
    
    ![changepassword_3](https://storage.travelgate.com/kbase/changepassword_3.jpg)
 
-:::info
-This feature is not available for users who log in via Google authentication.
-:::
+
+### I forgot my password but am not receiving the recovery email. What should I do?
+This usually happens when a user previously logged in using [Google authentication](/kb/platform/app-features/account-settings/your-account/account-settings#can-i-log-in-using-my-google-account).
+
+If you have ever used your Google account to log in, you must continue to use the "Sign in with Google" option. **Once you switch to Google authentication, the traditional username and password login, password recovery, and the option to change your password are no longer available for your account**.
+
+
 
 ## Can I log in using my Google account?
 
@@ -55,7 +59,3 @@ Yes. **Travelgate supports Google account login** for both new and existing user
    2.	Click the 'Sign In' button in the top-right corner of the page.
    3.	On the 'Log me in' screen, select **Log in with Google** and sign in with your Google account.
    4.	**Set up your Two-Factor Authentication (2FA) again** by following the steps in [this article](/kb/platform/app-features/account-settings/your-account/two-factor-authentication/).
-
-:::warning Important
-Once you switch to logging in with your Google account, the username-and-password login option will **no longer be available**.
-:::

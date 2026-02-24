@@ -47,7 +47,7 @@ public class SupplierOccupancy
     public IEnumerable<int> Infants { get; set; }
 }
 ```
-File location: "**ConnectorsIntegration\Book\Models\Response\BookRequest.cs**"
+File location: "**ConnectorsIntegration\Book\Models\Request\BookRequest.cs**"
 
 **Example of a BookResponse model**:
 
@@ -133,7 +133,7 @@ For more details about operations, check [PreOperations](../../connector-framewo
 
 There are two previous validations that serve as a filter so the buildrequest and the parseresponse are as safe as possible. They can be found in the BookOperation.cs class:
 
-```chsarp
+```csharp
 internal partial class BookOperation : IBookOperation<BookRequest, BookResponse, AccessModel>
 {
     // Implement any services needed just like in SearchOperation.cs
@@ -153,7 +153,7 @@ This step validates the incoming request from the client. While most validation 
 ```csharp
 public bool TryValidateModelRequest(
     BookConnectorRequest connectorsRequest, 
-    BookParameters<CntAccessModel> connectorParameters,
+    BookParameters<AccessModel> connectorParameters,
     out IEnumerable<AdviseMessage> adviseMessages)
 {
     //AdviseMessages are used to specify errors, such as checking if the hotel code is numeric and if not, add an AdviseMessage
@@ -175,7 +175,7 @@ Once the supplier's response is received, this step validates it for errors or a
 
 ```csharp
 public bool TryValidateSupplierResponses(
-    BookParameters<CntAccessModel> connectorParameters,
+    BookParameters<AccessModel> connectorParameters,
     IEnumerable<SupplierResponseWrapper<BookResponse>> supplierResponses,
     out IEnumerable<AdviseMessage> adviseMessages)
 {
@@ -185,11 +185,11 @@ public bool TryValidateSupplierResponses(
 
     if (!success) return false;
     
-    if (supplierResponseWrappers.ElementAt(0).Response.HotelBook?.Hotel is null)
+    if (supplierResponseWrappers.ElementAt(0).Response.Option is null)
     {
         adviseMessages =
         [
-            AdviseMessage.BuildSupplierNoResults() // Indicates no results from the supplier.
+            AdviseMessage.BuildSupplierError() // Indicates error from the supplier.
         ];
 
         return false;

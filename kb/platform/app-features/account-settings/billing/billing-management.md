@@ -169,7 +169,7 @@ Credit card payments are only available for amounts under 1,000 EUR.
 
 No, Travelgate processes all invoices in EUR, and we are unable to accommodate changes to the billing currency.
 
-### What exchange rate is applied to bookings made in a currency other than EUR?​
+### What exchange rate is applied to bookings made in a currency other than EUR?
 In the event that the booking has been made in another currency, the conversion of the amount into EUR will be made by calculating the official exchange rate of the European Central Bank applicable on the day the invoice is issued.
 
 ### Are test bookings invoiced?

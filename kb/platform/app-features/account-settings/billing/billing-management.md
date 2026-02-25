@@ -145,7 +145,6 @@ The CSV Bookings locator contains **all transactions processed through our platf
   - "CANCELLED" bookings without cancellation costs.
 :::
 
-
 #### 4. Pay Invoice
 Find our bank information and pay your invoices by **wire transfer**.  
 For credit card payments (only available for amounts under 1,000 EUR), select the invoice you wish to pay and click **Pay now > Pay by credit card**.

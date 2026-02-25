@@ -17,7 +17,7 @@ You can specify a particular access or none at all. If no access is specified, a
 - [Hotel-X Credentials](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials)
 
 ### 2. Supplier - SupplierFilterInput
-You can specify a particular supplier or none at all. This filter has preference over the access filter, so if a supplier is included in the supplier filter but its access is excluded in the access filter, the supplier will be included in the search query.
+You can specify a particular supplier or none at all. You can send includes, excludes, or both. When a supplier appears in both, includes takes precedence.
 
 ### 3. RateRules - RateRulesFilterInput
 Rate Rules refer to the specific terms and conditions that define the pricing, availability, and booking policies for hotel accommodations. You can include or exclude specific rate rules to request only the data that aligns with your business needs.

@@ -40,8 +40,8 @@ Should you face any issues, please don't hesitate to get in touch with our [Cust
 3. Click on "Options" (three dots) of a specific agreement and you will be able to visualize the following actions:
    - View your fiscal data
    - View your fees
-   - Pdf: Download the signed agreement in Pdf format (only available for Commercial Agreement 2023)
-   - Change history: View the history of payment type changes (only available for Commercial Agreement 2023)
+   - Pdf: Download the signed agreement in Pdf format
+   - Change history: View the history of payment type changes
 
 	![billing_03_2](https://storage.travelgate.com/kbase/billing_03_2.jpg)
 
@@ -133,8 +133,25 @@ Review the full details of your invoice—including total GMV, booking fee (STD)
 You can download the PDFs of your invoices or credit note.
 #### 3. Access CSV bookings locator
 Download the booking list with their corresponding locator in CSV format.
+
+:::info
+The CSV Bookings locator contains **all transactions processed through our platform for the selected month**. However, the booking fee is only applied as follows:
+- **Booking Fee Applied:** 
+  - Bookings with "OK" status.
+  - "CANCELLED" bookings with cancellation costs.
+- **Booking Fee NOT Applied:** 
+  - "UNKNOWN" bookings.
+  - "ON_REQUEST" bookings.
+  - "CANCELLED" bookings without cancellation costs.
+:::
+
 #### 4. Pay Invoice
-Find our bank information and pay your invoices by wire transfer.
+Find our bank information and pay your invoices by **wire transfer**.  
+For credit card payments (only available for amounts under 1,000 EUR), select the invoice you wish to pay and click **Pay now > Pay by credit card**.
+
+![tg_billing_15](https://storage.travelgate.com/kbase/tg_billing_15.png)
+
+![tg_billing_16](https://storage.travelgate.com/kbase/tg_billing_16.png)
 
 ## Frequently Asked Questions
 
@@ -142,10 +159,22 @@ Find our bank information and pay your invoices by wire transfer.
 
 Our system doesn't send reminders, but it does automatically email invoices to you. To make sure you receive them, please keep your **billing contact information** up to date. You can easily update this information and add any additional contacts through the ['Users & Contact Management'](/kb/platform/app-features/account-settings/users-management/add-users) section.
 
+![tg_billing_14](https://storage.travelgate.com/kbase/tg_billing_14.png)
+
 ### Can I pay Travelgate invoices by credit card?
 
-Credit card payments are only available for amounts less than 500 EUR. Please raise a ticket to the [Billing department](https://app.travelgate.com/support) and request the corresponding payment link.
+Credit card payments are only available for amounts under 1,000 EUR.
 
 ### Can I change the billing currency?
 
 No, Travelgate processes all invoices in EUR, and we are unable to accommodate changes to the billing currency.
+
+### What exchange rate is applied to bookings made in a currency other than EUR?
+In the event that the booking has been made in another currency, the conversion of the amount into EUR will be made by calculating the official exchange rate of the European Central Bank applicable on the day the invoice is issued.
+
+### Are test bookings invoiced?
+Any bookings made using a test access must be refundable and be cancelled through the Travelgate API to avoid charges in your invoices. 
+
+:::warning Important
+**Travelgate does not perform manual reconciliation for booking status**. If you cancel bookings (including test bookings) outside the Travelgate Platform, the full Booking Fee will still be applied and invoiced.
+:::

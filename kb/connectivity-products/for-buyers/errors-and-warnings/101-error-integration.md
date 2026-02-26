@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# 101 Error - System Exception
+# 101 Error - System exception
 
 ## What Does a 101 Error Mean? 
 A **101 error** (system exception) occurs when Travelgate does not receive a required tag or field while parsing the supplier’s response. This error can also appear if the Buyer omits necessary fields in their request.

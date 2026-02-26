@@ -1,0 +1,27 @@
+"use strict";(self.webpackChunkdocumentation=self.webpackChunkdocumentation||[]).push([["70106"],{72310(e,t,s){s.d(t,{A:()=>p});var a=s(74848);s(44819);var r=s(96540),n=s(9526),l=s(1080),i=s(20299),o=s(19863),c=s(91289),d=s(29637);let u=`
+    query {
+      hotelX {
+        hotels(criteria: {access: 7245}) {
+          edges {
+            node {
+              hotelData {
+                hotelName
+                hotelCode
+                categoryCode
+                location {
+                  city
+                  country
+                  coordinates {
+                    latitude
+                    longitude
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+`,h=null;h=c.A.canUseDOM?(0,l.a)({url:"https://api.travelgate.com/",headers:{Authorization:"Apikey test0000-0000-0000-0000-000000000000"}}):null;let p=(0,d.A)(({token:e,query:t,variables:s})=>{let l=(0,o.A)(),[c,d]=(0,r.useState)(`{
+        "Authorization": "Apikey test0000-0000-0000-0000-000000000000"
+    }`),[p,m]=(0,r.useState)(s);return(0,r.useEffect)(()=>{e&&d(`{"Authorization": "Bearer ${e}"}`)},[e]),(0,r.useEffect)(()=>{var e;let t;s&&m((e=localStorage.getItem("client")??"client_demo",t=JSON.parse(s),t?.settings?.client?(t.settings.client=e,JSON.stringify(t,null,2)):s))},[s]),(0,a.jsx)(a.Fragment,{children:l&&h&&c&&(0,a.jsx)(n.A,{fallback:(0,a.jsx)("div",{children:"Loading..."}),children:()=>(0,a.jsx)(a.Fragment,{children:(0,a.jsx)(i.J,{fetcher:h,initialHeaders:c,initialQuery:t??u,initialVariables:p??"",children:(0,a.jsx)(i.J.Logo,{children:(0,a.jsx)(a.Fragment,{})})})})})})})},47947(e,t,s){s.d(t,{A:()=>b});var a=s(96540),r=s(54737),n=s(46784),l=s(37107),i=s(37875),o=s(66188),c=s(72310),d=s(74848),u=s(34164);let h="dot_giz1",p="bar_rrRL";var m=s(77444),g=s(9011),x=s(70235),j=s(96519),y=s(19338);l.Yv.add(i.Cvc,o.X7I);let b={...r.A,icon:n.g,GraphqlSample:c.A,BrowserWindow:function({children:e,minHeight:t,url:s="sftp://sftp.travelgate.com:22",style:a,bodyStyle:r}){return(0,d.jsxs)("div",{className:"browserWindow_my1Q",style:{...a,minHeight:t},children:[(0,d.jsxs)("div",{className:"browserWindowHeader_jXSR",children:[(0,d.jsxs)("div",{className:"buttons_uHc7",children:[(0,d.jsx)("span",{className:h,style:{background:"#f25f58"}}),(0,d.jsx)("span",{className:h,style:{background:"#fbbe3c"}}),(0,d.jsx)("span",{className:h,style:{background:"#58cb42"}})]}),(0,d.jsx)("div",{className:(0,u.A)("browserWindowAddressBar_Pd8y","text--truncate"),children:s}),(0,d.jsx)("div",{className:"browserWindowMenuIcon_Vhuh",children:(0,d.jsxs)("div",{children:[(0,d.jsx)("span",{className:p}),(0,d.jsx)("span",{className:p}),(0,d.jsx)("span",{className:p})]})})]}),(0,d.jsx)("div",{className:"browserWindowBody_Idgs",style:r,children:e})]})},TipContactCustomerCare:()=>(0,d.jsx)(d.Fragment,{children:(0,d.jsxs)(m.A,{type:"info",children:["Got questions or need additional support? Feel free to reach out to our team through our ",(0,d.jsx)("a",{href:"https://app.travelgate.com/support",target:"_blank",children:"Support Portal"}),", and we'll be happy to help you out! \u{1F680}"]})}),CautionSettingsHotelX:()=>(0,d.jsx)(d.Fragment,{children:(0,d.jsxs)(m.A,{type:"caution",title:"Remember",children:['It\'s important to note that even if certain fields in the "criteria" or "settings" inputs are labeled as optional, we still need to use some value internally. This value will either come from your query/mutation request or your ',(0,d.jsx)("a",{href:"/docs/apis/for-buyers/hotel-x-pull-buyers-api/making-requests/settings",target:"_blank",children:"default settings"}),". You have the ability to manage your default API settings by visiting the ",(0,d.jsx)("a",{href:"https://app.travelgate.com/connections/settings",target:"_blank",children:"API Settings section"})," on our website."]})}),YoutubeVideo:({id:e})=>(0,d.jsx)("iframe",{style:{aspectRatio:"16 / 9",width:"100%"},src:`https://www.youtube.com/embed/${e}?controls=0`,title:"YouTube video player",frameBorder:"0",allow:"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",allowFullScreen:!0}),RestPlayground:function(){let[e,t]=(0,a.useState)("https://api.travelgate.com"),[s,r]=(0,a.useState)("POST"),[n,l]=(0,a.useState)(""),[i,o]=(0,a.useState)(""),c=a.useCallback((e,t)=>{console.log("val:",e),l(e)},[]),u=async()=>{try{let t=await fetch(e,{method:s,headers:{"Content-Type":"application/json"},body:"GET"===s?null:n}),a=await t.json();o(JSON.stringify(a,null,2))}catch(e){o("Error: "+e.toString())}};return(0,d.jsxs)("div",{className:"playground-wrap",children:[(0,d.jsx)("div",{children:"Method & URL"}),(0,d.jsx)("div",{className:"post-method",children:(0,d.jsxs)("select",{id:"method",value:s,onChange:e=>r(e.target.value),className:"playground-select",children:[(0,d.jsx)("option",{children:"GET"}),(0,d.jsx)("option",{children:"POST"})]})}),(0,d.jsx)("div",{className:"endpoint",children:(0,d.jsx)("input",{id:"endpoint",type:"text",placeholder:"https://api.travelgate.com",value:e,onChange:e=>t(e.target.value)})}),(0,d.jsxs)("div",{children:[(0,d.jsx)("label",{htmlFor:"requestData",children:"Request Data (for POST, PUT, etc.):"}),(0,d.jsx)(x.Ay,{value:n,height:"300px",extensions:[(0,j.Pq)()],theme:y.Ts,onChange:c})]}),(0,d.jsx)("div",{children:(0,d.jsx)("button",{onClick:u,className:"playground-btn",children:"Send Request"})}),(0,d.jsx)("div",{className:i?"":"hidden",children:(0,d.jsx)(g.A,{language:"jsx",title:`Response from ${e}`,showLineNumbers:!0,children:i})})]})}}}}]);

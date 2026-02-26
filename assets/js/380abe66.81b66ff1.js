@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocumentation=self.webpackChunkdocumentation||[]).push([["14745"],{94837(e,n,t){t.r(n),t.d(n,{default:()=>a});var r=t(74848);t(96540);var u=t(21988);let a=()=>{let{loginWithRedirect:e}=(0,u.WB)();return(0,r.jsx)(r.Fragment,{children:(0,r.jsx)("button",{onClick:()=>e(),children:"Log In"})})}}}]);

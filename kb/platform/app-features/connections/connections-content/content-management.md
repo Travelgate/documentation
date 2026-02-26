@@ -19,7 +19,7 @@ In the **Connections Content** section, you can easily check and force updates f
     ![tg_connections_content_4](https://storage.travelgate.com/kbase/tg_connections_content_5.png)
 
     :::info Missing Access in the Connections Content Dropdown?
-    **Only active accesses** from [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details) appear in the Connections Content dropdown. If the access is missing, ensure it is set to "Active" in "My Connections" section.
+    **Only active accesses** from [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details) appear in the Connections Content dropdown. If the access is missing, ensure it is set to "Active" in the "My Connections" section.
 
     **Note:** If no active accesses exist for a connection, the dropdown will be disabled with the message "No active accesses available for this supplier." If necessary, make the corresponding access-level revisions in the "My Connections" section.
 

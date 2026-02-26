@@ -151,7 +151,7 @@ export const bookingByBookingDatesVariables =
 	}
 }`
 
-export const bookingByDatesAggregated = 
+export const bookingByDatesAggregatedVariables = 
 `{
 	"criteriaBookingRead": {
 		"typeSearch": "DATES",

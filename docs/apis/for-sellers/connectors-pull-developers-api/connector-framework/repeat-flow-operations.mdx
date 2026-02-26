@@ -71,7 +71,7 @@ A `Quote` operation might require a `Search` operation in the following cases:
 To configure this, include the following in the **Extensions** for `Quote`:
 
 ```csharp
-services.AddDefaultQuoteOnlySearchOperation<SearchResponse, CntAccessModel>(
+services.AddDefaultQuoteOnlySearchOperation<SearchResponse, AccessModel>(
     TgxPlatform.PlatformName,
     configuration);
 ```
@@ -79,7 +79,7 @@ services.AddDefaultQuoteOnlySearchOperation<SearchResponse, CntAccessModel>(
 If customization of the `ParseResponse` logic is required, use:
 
 ```csharp
-services.AddQuoteOnlySearchOperation<SearchResponse, CntAccessModel>(
+services.AddQuoteOnlySearchOperation<SearchResponse, AccessModel>(
     TgxPlatform.PlatformName,
     configuration);
 ```

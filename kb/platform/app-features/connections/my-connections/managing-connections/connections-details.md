@@ -33,11 +33,15 @@ You can filter your connections using the following parameters:
 
 - **Access Type**:  
   - **Live**: Access using production credentials.  
-  - **Test**: Access using test credentials.  
+  - **Test**: Access using test credentials.
 
-:::warning Access Type Information  
-The access type (live or test) is based on the credentials agreed upon by the Buyer and Seller. Both parties must ensure consensus on this, as the access type is **editable per access**.  
-:::  
+      :::warning Important:  
+      The "Access Type" label (Test or Live) serves as a **visual indicator**. However, the actual live or test nature of an access is determined solely by the credentials agreed upon and managed by the Buyer and Seller. The access type is **editable**, and if an access is labeled "Test" but uses production credentials, any bookings made will be considered live bookings by the supplier.
+
+      Additionally, when an access is labeled as "Test":
+      - The `testMode` field in the request must be set to true.
+      - The names of the passengers (paxes) in bookings made via this access will be displayed as placeholder names (e.g., "TestA", "test test").
+      :::
 
 - **Access Active Status**:  
   - **Yes**: The access is active and operational.  

@@ -35,7 +35,7 @@ You can filter your connections using the following parameters:
   - **Live**: Access using production credentials.  
   - **Test**: Access using test credentials.
 
-      :::warning Important:  
+      :::warning Important:
       The "Access Type" label (Test or Live) serves as a **visual indicator**. However, the actual live or test nature of an access is determined solely by the credentials agreed upon and managed by the Buyer and Seller. The access type is **editable**, and if an access is labeled "Test" but uses production credentials, any bookings made will be considered live bookings by the supplier.
 
       Additionally, when an access is labeled as "Test":

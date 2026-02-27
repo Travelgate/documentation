@@ -38,7 +38,7 @@ Our goal has always been to make connecting with a Partner easier and faster.
         - Make sure your credentials are active and fully functional before proceeding, as using inactive credentials can cause delays.
         :::
 
-    - **Step 3 (Notification Setup)**: Provide one or more contact email addresses for the Partner you are connecting with, so they can be notified once the connection is created and ready for use. **The Partner contact email must be registered in Travelgate**. You can also use the 'Other Contacts' field to add additional email addresses—such as colleagues or relevant team members—who should receive the notifications.
+    - **Step 3 (Notification Setup)**: Activations are always **notified by default to the "Tech Support Contact"** email, which is set up in ["Contacts Management"](/kb/platform/app-features/account-settings/users-management/add-users#how-to-assign-a-contact-user-to-receive-notifications-from-travelgate). You can also specify additional contact emails to receive notification that the connection has been created and is ready for use, provided those emails are **already registered within the Travelgate platform**.
 
         :::warning Notification Setup Error
         If the Partner (Buyer or Seller) contact entered in the Notification Setup screen is **not registered under Settings > Users & Contacts Management** in the Travelgate Portal, you will receive the following error: _"The email [Partner email] does not exist in [Partner Organization]. Please use an email that is registered in [Partner Organization]."_
@@ -48,7 +48,7 @@ Our goal has always been to make connecting with a Partner easier and faster.
         - Add the relevant email address to that section.
         :::
 
-        <img src="https://storage.travelgate.com/kbase/autoconnections_step3_3.png" alt="autoconnections_step3_3" width="500" />
+        <img src="https://storage.travelgate.com/kbase/tg-auto-activation-step-3.png" alt="tg-auto-activation-step-3" width="500" />
 
     - **Step 4 (Review and Confirm)**: Double-check your information before starting the auto-activation process. If you and your Partner have a Commercial Agreement for 2023, the form will show available payment types:
         - **FREE**: No cost to you. Your Partner will cover the connectivity fee.

@@ -157,6 +157,13 @@ To specify filters you need to use the input `HotelXFilterSearchInput` in your q
 
 * `currencies`: This filter enables you to narrow down the options returned by the suppliers based on the desired currencies you want to include or exclude.
 
+* `suppliers`: This filter operates similarly to the access filter and allows you to specify which suppliers you want to use in the search operation. If you define one or more suppliers to include, only results from those specific suppliers will be returned. Alternatively, you can exclude specific suppliers, which will use accesses from all suppliers except those listed in the exclusion list. 
+  
+  :::caution Important
+  You cannot define both includes and excludes simultaneously. An include operation implicitly excludes all suppliers not present in the include list. If you need to specify excluded suppliers, ensure you do not include an include list at the same time.
+  :::
+  
+  The supplier filter and the access filter are combinable, and when both are applied, **the supplier filter takes precedence** over the access filter, ensuring more granular control over which supplier data is returned.
 
 All these filters are optional. Example to request only search results from access "2" and options "PACKAGE":
 

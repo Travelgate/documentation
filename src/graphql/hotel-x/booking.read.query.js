@@ -150,3 +150,20 @@ export const bookingByBookingDatesVariables =
 		"timeout": 180000
 	}
 }`
+
+export const bookingByDatesAggregatedVariables = 
+`{
+	"criteriaBookingRead": {
+		"typeSearch": "DATES",
+		"dates": {
+			"dateType": "BOOKING",
+			"start": "2025-10-01",
+			"end": "2025-10-01"
+		}
+	},
+	"settings": {
+		"client": "client_demo",
+		"testMode": true,
+		"timeout": 180000
+	}
+}`

@@ -140,7 +140,7 @@ Buyers use this section to **visualize the FastX master hotel and board list** a
 
 These codes are available **exclusively via the HotelX Pull Buyers API**. If you're currently on the Legacy API, now is the perfect time to upgrade to [HotelX](/kb/connectivity-products/for-buyers/hotel-x/why-develop-hotel-x-explained) to enjoy our latest features, richer content, and a smoother integration!
 
-Already on HotelX? If you're a Buyer already connected to Travelgate via HotelX but want to start using [FastX Codes](/docs/apis/for-buyers/hotel-x-pull-buyers-api/upgrade-to-fastx), simply contact our team via sales.support@travelgate.com to manage the upgrade and get your FastX access.
+Already using HotelX? If you're a Buyer connected to Travelgate via our HotelX Pull Buyers API and want to start using [FastX Codes](/docs/apis/for-buyers/hotel-x-pull-buyers-api/upgrade-to-fastx), simply contact our team via sales.support@travelgate.com to manage the upgrade and get your FastX access.
 
 **Contact our team at sales.support@travelgate.com to get started!**
 :::

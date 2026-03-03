@@ -97,6 +97,8 @@ To obtain a list of all reservations made within a specific time frame, perform 
 }
 ```
 
+#### Booking List by Dates for Multiple Suppliers
+To retrieve a booking list (by booking or arrival dates) for **all the suppliers associated with a specific client**, ensure the accessCode field is omitted from your request.
 
 :::tip
 Don't forget to check our [Hotel-X Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/booking-read#1-criteria) for a full example of a Hotel-X Booking Query!🚀

@@ -28,6 +28,9 @@ Since this error indicates a discrepancy or issue with the validation process, c
     - **[Multi-mode request](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/search/search-query#single-mode-and-multimode)**: Use your own Client context.
 - **Verify Criteria**
   - Ensure your request criteria are valid. For example, avoid using check-in or check-out dates in the past, and ensure you're using the correct `optionRefId` [for each method](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/option-identifiers). Also, ensure compliance with the supplier's specifications as outlined in their [Metadata](/kb/connectivity-products/for-buyers/hotel-x/content/metadata).
+- **Verify Settings**
+  - Check that your request settings don't exceed the limits allowed for that method. For instance, ensure that the optionsQuota value in the request (or in default settings) is lower than maximum allowed.
+
 
 ### VALIDATION_ERROR Examples 
 
@@ -103,7 +106,7 @@ Since this error indicates a discrepancy or issue with the validation process, c
 ```
 
 ### 3. Incorrect Criteria
-- **"WRONG_FIELD"; "VALIDATION_ERROR"** (e.g., Invalid Dates or optionRefId)
+- **"WRONG_FIELD"; "VALIDATION_ERROR"**
 ```json
 {
     "data": {
@@ -146,6 +149,18 @@ Since this error indicates a discrepancy or issue with the validation process, c
             ]
 
 
+```
+
+```json
+{
+    "warnings": [
+        {
+            "code": "WRONG_FIELD",
+            "type": "VALIDATION_ERROR",
+            "description": "Access: 'xxx' Maximum optionsQuota allowed(200) has been exceeded, you are sending 300"
+        }
+    ]
+}
 ```
 
 :::tip

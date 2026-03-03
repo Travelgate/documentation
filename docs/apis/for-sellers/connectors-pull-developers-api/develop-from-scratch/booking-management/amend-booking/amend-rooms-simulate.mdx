@@ -1,0 +1,514 @@
+---
+title: "AmendBookingRoomsSimulate"
+sidebar_position: 9
+---
+
+:::note
+This operation simulates what would happen if you execute the `AmendBookingRooms` operation, without actually committing the changes.
+:::
+
+## **Mock**
+
+### **Step 1: Define your AmendBookingRooms Simulate responses (Mocks)**
+
+Define the responses for your Simulate operation. It is mandatory to insert a supplier response into every mock or at least into the mocks of the operation you will be developing.
+
+We will be using the **TwoAdultTwoDays** mock through all the steps of the development.
+
+File location: "**test\MockServer\Tests\AmendBookingRooms\Two_Adults_Two_Days.txt**".
+
+![Mock Example](/img/docs/connectors-pull-developers-api/MockTwoAdultsAmendRoomsSimulate.png)
+
+### **Step 2: Define the Models of your response (Request and Response models)**
+
+These models are crucial because they specify the structure of the objects contained within supplier responses. They'll also play a vital role in serializing and deserializing requests and responses during development.
+
+![Response example](/img/docs/connectors-pull-developers-api/TemplateStructureModelsAmendBookingRooms.png)
+
+**Example of a AmendRoomsSimulateRequest model**:
+
+```csharp
+namespace ConnectorsIntegration.Amends.Rooms.Models.Request;
+
+public class AmendRoomsSimulateRequest
+{
+    public List<AmendRoom> NewRooms { get; set; }
+    public List<Occupancy> NewPaxes { get; set; }
+    public string ClientReference { get; set; }
+    public string SupplierReference { get; set; }
+}
+
+public class AmendRoom
+{
+    public uint OccupancyRefId { get; set; }
+    public string Code { get; set; }
+}
+
+public class Occupancy
+{
+    public uint OccupancyId { get; set; }
+    public IEnumerable<Pax> Paxes { get; set; }
+}
+
+public class Pax
+{
+    public int Age { get; init; }
+
+    public string Name { get; set; }
+
+    public string SurName { get; set; }
+
+    public string PersonalTitleType { get; init; }
+
+    public string DateOfBirth { get; set; }
+}
+```
+File location: "**ConnectorsIntegration\Amends\Rooms\Models\Request\AmendRoomsRequest.cs**".
+
+**Example of a AmendRoomsResponse model**:
+
+```csharp
+namespace ConnectorsIntegration.Amends.Rooms.Models.Response;
+
+public class AmendRoomsResponse
+{
+    public SupplierOption Option { get; set; }
+}
+
+public class SupplierOption
+{
+    public DateTime Checkin {get; set;}
+    public string Status { get; set; }
+    public SupplierPrice SupplierPrice { get; set; }
+    public string SupplierPaymentType { get; set; }
+    public string ClientReference { get; set; }
+    public string SupplierReference { get; set; }
+    public List<SupplierRoom> Rooms { get; set; }
+    public List<SupplierCancelPolicy> SupplierCancelPolicies { get; set; }
+}
+
+public class SupplierCancelPolicy
+{
+    public double PenaltyAmount { get; set; }
+
+    public string PenaltyType { get; set; }
+
+    public string PenaltyCurrency { get; set; }
+
+    public string PenaltyDeadline { get; set; }
+}
+
+public class SupplierPrice
+{
+    public string Currency { get; set; }
+    public double Net { get; set; }
+    public double MinimumSellingPrice { get; set; }
+}
+
+public class SupplierRoom
+{
+    public uint OccupancyId { get; set; }
+    public string RoomCode { get; set; }
+
+    public SupplierPrice SupplierPrice { get; set; }
+    public string RoomDescription { get; set; }
+}
+```
+File location: "**ConnectorsIntegration\Amends\Rooms\Models\Response\AmendRoomsResponse.cs**".
+
+## **Develop**
+
+### **Step 1: Register the serializers and operations**
+To specify which serializer and operations the developer will be using (based on the Seller's API) we can specify it in our "**Extensions**":
+
+File location: "**ConnectorsIntegration\Amends\Rooms\AmendmentsRoomsExtensions.cs**".
+
+If the Seller works with **JSON** format, we can specify the integration to work with **JSON** with the following:
+
+```csharp
+internal static class AmendmentsRoomsSimulateExtensions
+{
+    public static void AddAmendBookingRoomsSimulateServices(this IServiceCollection services,
+        IConfiguration configuration)
+    {
+        //A JsonSerializer service is added along with the request and response model
+        services.AddJsonSerializer<AmendRoomsSimulateRequest, AmendRoomsResponse>(ConfigureJSONOptions);
+        //The operation is added, indicating what models should be used during the development of the operation
+        services.AddAmendBookingRoomsSimulateOperation<AmendBookingRoomsSimulateOperation, AmendRoomsSimulateRequest, AmendRoomsResponse, AccessModel>(TgxPlatform.Name, configuration);
+    }
+    private static void ConfigureJSONOptions(JsonSerializerOptions options) { }
+}
+```
+
+For details about others serializers, check [Extensions](../../../advanced-use/booking-extensions).
+
+For more details about operations, check [PreOperations](../../../connector-framework/preoperation-overview) and [Operations](../../../connector-framework/operation-overview).
+
+### **Step 2: AmendBookingRoomsSimulateOperation validators**
+
+There are two previous validations that serve as a filter so the buildrequest and the parseresponse are as safe as possible.
+
+```csharp
+internal partial class AmendBookingRoomsSimulateOperation :
+    IAmendBookingRoomsSimulateOperation<AmendRoomsSimulateRequest, AmendRoomsResponse, AccessModel>
+{
+    // Implement any services needed just like in SearchOperation.cs
+}
+```
+
+File location: "**ConnectorsIntegration\Amends\Rooms\Operations\AmendBookingRoomsOperation.cs**".
+
+![AmendBookingRoomsOperation](/img/docs/connectors-pull-developers-api/AmendBookingRoomsOperationSimulate.png)
+
+**TryValidateModelRequest**
+
+This step validates the incoming request from the client. While most validation is defined in the [metadata](../../../advanced-configuration/metadata-definition), this step is used for specific edge cases that cannot be generalized.
+
+**Example Use Case:** In a operation, validating that hotel codes are numeric because supplier do not allow non-numeric hotels. This type of validation would not be covered by metadata.
+
+```csharp
+public bool TryValidateModelRequest(
+    AmendBookingRoomsSimulateConnectorRequest connectorsRequest, 
+    AmendBookingRoomsParameters<AccessModel> connectorParameters,
+    out IEnumerable<AdviseMessage> adviseMessages)
+{
+    //AdviseMessages are used to specify errors, such as checking if the hotel code is numeric and if not, add an AdviseMessage
+    adviseMessages = default;
+    return true; // Validation passes if no issues are found.
+}
+```
+
+**TryValidateSupplierResponses**
+
+Once the supplier's response is received, this step validates it for errors or anomalies. Suppliers may return incomplete or erroneous data, so this step ensures only valid responses are processed further.
+
+**Details**:
+
+- Check for supplier-specific error fields.
+- Ensure required fields (e.g., hotel list) are present.
+- Example Use Case: A supplier might return a response with an error code or an empty hotel list. This step would detect and handle such cases.
+
+```csharp
+public bool TryValidateSupplierResponses(
+    AmendBookingRoomsParameters<AccessModel> connectorParameters,
+    IEnumerable<SupplierResponseWrapper<AmendRoomsResponse>> supplierResponses,
+    out IEnumerable<AdviseMessage> adviseMessages)
+{
+    var supplierResponseWrappers = supplierResponses as SupplierResponseWrapper<AmendRoomsResponse>[] ?? supplierResponses.ToArray();
+    
+    var success = ResponseValidator.TryValidateSupplierResponses(supplierResponseWrappers, out adviseMessages);
+
+    if (!success) return false;
+    
+    if (supplierResponseWrappers.ElementAt(0).Response.Option is null)
+    {
+        adviseMessages =
+        [
+            AdviseMessage.BuildSupplierError() // Indicates error from the supplier.
+        ];
+
+        return false;
+    }
+
+    return true; // Validation passes if no issues are found.
+}
+```
+
+### **Step 3: Build the Seller's request**
+
+This class will contain a "BuildRequests" method that will have the following arguments: 
+
+- Object of the requests from the models previously created (AmendRoomsSimulateRequest).
+- The request that the Buyer sends (connectorsRequest).
+- Parameters (connectorParameters) which will have some helpers.
+
+File location: "**ConnectorsIntegration\Amends\Rooms\Operations\AmendBookingRoomsSimulateOperation.BuildRequest.cs**"
+
+![Build Request AmendRooms](/img/docs/connectors-pull-developers-api/BuildRequestAmendRoomsSimulate.png)
+
+**Example of Build Request:**
+
+```csharp
+using Connectors.Core.Application.Connection;
+using Connectors.Pull.Hotel.Application.Operations.Amendments.AmendBookingRoomsSimulate;
+using ConnectorsIntegration.Amends.Rooms.Models.Request;
+
+namespace ConnectorsIntegration.Amends.Rooms.Operations;
+
+internal partial class AmendBookingRoomsSimulateOperation
+{
+    public IEnumerable<SupplierRequestWrapper<AmendRoomsSimulateRequest>> BuildRequests(
+        AmendBookingRoomsSimulateConnectorRequest connectorsRequest,
+        AmendBookingRoomsParameters<AccessModel> connectorParameters)
+    {
+        var clientReference = connectorsRequest.AmendBookingRoomsSimulateRq.Input.Reference.ClientLocator;
+        var supplierReference = connectorsRequest.AmendBookingRoomsSimulateRq.Input.Reference.SupplierLocator;
+
+        AmendRoomsSimulateRequest amendBookingRoomsSimulateConnectorRequest = BuildAmendBookingRoomsSimulateConnectorRequest(
+            clientReference,
+            supplierReference);
+
+        //Generic URL we prepared back in the AccessModel, which will be passed by the Buyer
+        string genericUrl = connectorParameters.ParametersModel.UrlGeneric;
+
+        SupplierRequestWrapper<AmendRoomsSimulateRequest> supplierRequest = new(
+            amendBookingRoomsSimulateConnectorRequest,
+            new Uri(genericUrl),
+            HttpMethod.Post);
+
+        return
+        [
+            supplierRequest
+        ];
+    }
+
+    private static AmendRoomsSimulateRequest BuildAmendBookingRoomsSimulateConnectorRequest(
+        string clientReference,
+        string supplierReference) 
+    {
+        //The request towards the Seller system
+      
+        return new AmendRoomsSimulateRequest()
+        {
+            ClientReference = clientReference,
+            SupplierReference = supplierReference,
+            NewRooms = new List<AmendRoom>()
+            {
+                new AmendRoom
+                {
+                    OccupancyRefId = 1,
+                    Code = "DBL"
+                },
+                new AmendRoom
+                {
+                    OccupancyRefId = 2,
+                    Code = "SGL"
+                }
+            },
+            NewPaxes = new List<Occupancy>()
+            {
+                new Occupancy
+                {
+                    OccupancyId = 1,
+                    Paxes = new List<Pax>
+                    {
+                        new Pax
+                        {
+                            Age = 35,
+                            Name = "John",
+                            SurName = "Doe",
+                            PersonalTitleType = "MR",
+                            DateOfBirth = "1989-05-15"
+                        },
+                        new Pax
+                        {
+                            Age = 33,
+                            Name = "Jane",
+                            SurName = "Doe",
+                            PersonalTitleType = "MRS",
+                            DateOfBirth = "1991-08-22"
+                        }
+                    }
+                },
+                new Occupancy
+                {
+                    OccupancyId = 2,
+                    Paxes = new List<Pax>
+                    {
+                        new Pax
+                        {
+                            Age = 42,
+                            Name = "Michael",
+                            SurName = "Smith",
+                            PersonalTitleType = "MR",
+                            DateOfBirth = "1984-03-10"
+                        }
+                    }
+                }
+            }
+        };
+    }
+}
+```
+
+### **Step 4: Parse the Seller's response**
+
+Once the request has been sent, we will have to control and parse the response returned by the Seller.
+
+:::note
+The ParseResponse implementation is shared between Simulate and Commit operations, as they return the same response structure (AmendRoomsResponse).
+:::
+
+We will be implementing the "ParseResponse" step inside the Simulate operation:
+
+File location: "**ConnectorsIntegration\Amends\Rooms\Operations\AmendBookingRoomsSimulateOperation.ParseResponse.cs**"
+
+![Build Response AmendBookingRooms](/img/docs/connectors-pull-developers-api/ParseResponseAmendBookingRoomsSimulate.png)
+
+**Example of Parse Response:**
+
+```csharp
+using Connectors.Core.Application.Connection;
+using Connectors.Core.Application.Iso;
+using Connectors.Core.Domain;
+using Connectors.Pull.Hotel.Domain.Contracts.Common;
+using Connectors.Pull.Hotel.Application.Operations.Amendments.AmendBookingRoomsSimulate;
+using Connectors.Pull.Hotel.Domain.Contracts.Amendments;
+
+namespace ConnectorsIntegration.Amends.Rooms.Operations;
+
+internal partial class AmendBookingRoomsSimulateOperation
+{
+    public AmendBookingRoomsSimulateConnectorResponse ParseResponses(
+        AmendBookingRoomsSimulateConnectorRequest connectorsRequest,
+        AmendBookingRoomsParameters<AccessModel> connectorParameters,
+        IEnumerable<SupplierResponseWrapper<AmendRoomsResponse>> supplierResponses,
+        CancellationToken cancellationToken)
+    {
+        var supplierResponse = supplierResponses.First().Response;
+        return new AmendBookingRoomsSimulateConnectorResponse(ParseSupplierResponse(supplierResponse));
+    }
+
+    private AmendRs ParseSupplierResponse(AmendRoomsResponse supplierResponse)
+    {
+        if (supplierResponse.Option == null)    
+        {
+            return AmendRs.BuildErrorResponse(new[]
+            {
+                AdviseMessage.BuildSupplierError(new External("", "Option null from supplier response"))
+            });
+        }
+        var supplierOption = supplierResponse.Option;
+
+        BookStatus status = MapSellerToTgxStatus(supplierOption.Status);
+        Price price = ParseSupplierPrice(supplierOption.SupplierPrice);
+        List<Room> roomList = ParseSupplierRooms(supplierOption.Rooms);
+
+        var cancelPolicy = ParseSupplierCancelPolicies(supplierOption.Checkin, supplierOption.SupplierCancelPolicies);
+
+        var clientReference = supplierOption.ClientReference;
+        var supplierReference = supplierOption.SupplierReference;
+
+        BookDetails bookDetails = new BookDetails(status, new Reference(clientReference, supplierReference), price)
+        {
+            CancelPolicy = cancelPolicy,
+            Hotel = new HotelDetail()
+            {
+                Rooms = roomList,
+            }
+        };
+        return new AmendRs([bookDetails]);
+    }
+
+    private OptionCancelPolicy ParseSupplierCancelPolicies(DateTime checkIn, List<SupplierCancelPolicy> supplierCancelPolicies)
+    {
+        List<CancelPenalty> cancelPenalties = [];
+
+        foreach (SupplierCancelPolicy supplierCancelPolicy in supplierCancelPolicies)
+        {
+            //Helper to map a string currency
+            Currency supplierCurrency = CurrencyIso4217Mapper.Map(supplierCancelPolicy.PenaltyCurrency);
+            PenaltyType penaltyType = MapSellerToTgxPenaltyType(supplierCancelPolicy.PenaltyType);
+            //Helper to create a policy based in a Seller cancel penalty with deadline that has timezone
+            var penalty = _connectorsUtilities.CancelPenaltyManager.CancelPenaltyFromDateWithTimeZone(
+                checkIn,
+                penaltyType,
+                supplierCurrency,
+                supplierCancelPolicy.PenaltyAmount,
+                supplierCancelPolicy.PenaltyDeadline,
+                "yyyy-MM-ddTHH:mm:ss.fffffffzzz"
+            );
+            cancelPenalties.Add(penalty);
+        }
+        var refundable = cancelPenalties.Any();
+        return new OptionCancelPolicy(refundable, cancelPenalties);
+    }
+
+    private static List<Room> ParseSupplierRooms(List<SupplierRoom> rooms)
+    {
+        List<Room> roomList = [];
+
+        foreach (SupplierRoom supplierRoom in rooms)
+        {
+            var price = ParseSupplierPrice(supplierRoom.SupplierPrice);
+
+            RoomPrice roomPrice = new(price);
+
+            roomList.Add(new Room(
+                supplierRoom.OccupancyId,
+                supplierRoom.RoomCode,
+                supplierRoom.RoomDescription,
+                roomPrice
+            ));
+        }
+        return roomList;
+    }
+
+    private static PenaltyType MapSellerToTgxPenaltyType(string penaltyType) => penaltyType switch
+    {
+        "Percent" => PenaltyType.Percentage,
+        "Nights" => PenaltyType.Nights,
+        _ => PenaltyType.Amount
+    };
+
+    private static PaymentType MapSellerToTgxPaymentType(string supplierPaymentType) => supplierPaymentType switch
+    {
+        "MerchantPay" => PaymentType.MerchantPay,
+        "CardBookingPay" => PaymentType.CardBookingPay,
+        _ => PaymentType.MerchantPay
+    };
+
+    private static BookStatus MapSellerToTgxStatus(string status) => status switch
+    {
+        "Booked" => BookStatus.Ok,
+        "OnRequest" => BookStatus.OnRequest,
+        _ => BookStatus.Unknown
+    };
+
+    private static Price ParseSupplierPrice(SupplierPrice supplierPrice)
+    {
+        Currency supplierCurrency = CurrencyIso4217Mapper.Map(supplierPrice.Currency);
+        //Helper that builds a net price
+        var price = Price.BuildNetPrice(supplierCurrency, supplierPrice.Net, supplierPrice.MinimumSellingPrice);
+
+        return price;
+    }
+}
+```
+
+For more details about helpers, check the - [Price helpers](../../../tools-and-helpers/price-helpers) and [Policies helpers](../../../tools-and-helpers/policies-helpers) 
+
+For more details about the combinatory, check [Recommended Helpers](../../../tools-and-helpers/recommended-helpers)
+
+## **Test**
+
+### **Option 1: Integration Tests**
+
+:::warning 
+Be aware that option 1 is optional for testing the integration but ***mandatory*** once the operation has been developed in order to pass all tests before creating the pull request.
+:::
+Use the integration tests provided by Travelgate to validate your implementation:
+- Add the necessary use cases to the **MockServer** for the Simulate operation.
+  - [View MockServer Documentation](../../../connector-framework/mock-server-documentation.mdx).
+- Execute the associated tests for the implemented operation.
+  - [View Running Integration Tests](../../../connector-framework/running-integration-tests.mdx).
+
+### **Option 2: FormTest Tool (Shopping)**
+Use the **FormTest** application to test the Simulate operation manually:
+- Configure the tool to use your supplier's API settings.
+- Test specific scenarios not covered by predefined use cases.
+- [View FormTest Documentation](../../../tools-and-helpers/formtest-documentation.mdx).
+ 
+## **Code Review**
+
+### **Step 1: Create Pull Request**
+
+    - Commit your changes and push them to a new branch called "**AmendBookingRoomsSimulateDevelopment**" into the original repository.
+    - Separate the Pull Request into minimum these 4 commits:
+        - Mock responses
+        - Request and Response models
+        - BuildRequest
+        - ParseResponse
+
+### **Step 2: Wait for Travelgate review**
+    - This step involves waiting for the Travelgate team to review and approve the submitted pull request, for more details, check [Code Review Details](../../code-review/code-review-details.mdx)

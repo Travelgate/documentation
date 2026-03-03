@@ -32,7 +32,7 @@ public class CancelRequest
     public string SupplierReference { get; set; }
 }
 ```
-File location: "**ConnectorsIntegration\Cancel\Models\Response\CancelRequest.cs**"
+File location: "**ConnectorsIntegration\Cancel\Models\Request\CancelRequest.cs**"
 
 **Example of a CancelResponse model**:
 
@@ -93,8 +93,8 @@ For more details about operations, check [PreOperations](../../connector-framewo
 
 There are two previous validations that serve as a filter so the buildrequest and the parseresponse are as safe as possible. They can be found in the CancelOperation.cs class:
 
-```chsarp
-internal partial class QuoteOperation : IQuoteOperation<QuoteRequest, QuoteResponse, AccessModel>
+```csharp
+internal partial class CancelOperation : ICancelOperation<CancelRequest, CancelResponse, AccessModel>
 {
     // Implement any services needed just like in SearchOperation.cs
 }
@@ -113,7 +113,7 @@ This step validates the incoming request from the client. While most validation 
 ```csharp
 public bool TryValidateModelRequest(
     CancelConnectorRequest connectorsRequest, 
-    CancelParameters<CntAccessModel> connectorParameters,
+    CancelParameters<AccessModel> connectorParameters,
     out IEnumerable<AdviseMessage> adviseMessages)
 {
     //AdviseMessages are used to specify errors, such as checking if the hotel code is numeric and if not, add an AdviseMessage
@@ -135,7 +135,7 @@ Once the supplier's response is received, this step validates it for errors or a
 
 ```csharp
 public bool TryValidateSupplierResponses(
-    CancelParameters<CntAccessModel> connectorParameters,
+    CancelParameters<AccessModel> connectorParameters,
     IEnumerable<SupplierResponseWrapper<CancelResponse>> supplierResponses,
     out IEnumerable<AdviseMessage> adviseMessages)
 {
@@ -145,11 +145,11 @@ public bool TryValidateSupplierResponses(
 
     if (!success) return false;
     
-    if (supplierResponseWrappers.ElementAt(0).Response.HotelCancel?.Hotel is null)
+    if (supplierResponseWrappers.ElementAt(0).Response.Option is null)
     {
         adviseMessages =
         [
-            AdviseMessage.BuildSupplierNoResults() // Indicates no results from the supplier.
+            AdviseMessage.BuildSupplierError() // Indicates error from the supplier.
         ];
 
         return false;

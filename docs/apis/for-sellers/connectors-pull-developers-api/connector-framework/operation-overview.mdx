@@ -12,7 +12,7 @@ To add a new operation, the Connector uses extensions. For example, to implement
 Define the class for the operation by inheriting from the appropriate interface. For a Search operation, inherit from `ISearchOperation`.
 
 ```csharp
-public partial class SearchOperation : ISearchOperation<SearchRequest, SearchResponse, CntAccessModel>
+public partial class SearchOperation : ISearchOperation<SearchRequest, SearchResponse, AccessModel>
 {
     // Implement the methods for TryValidateModelRequest, BuildRequests, etc.
 }
@@ -25,7 +25,7 @@ In the `Extensions` class, add the operation using the relevant helper method. E
 public static IServiceCollection AddSearchServices(this IServiceCollection services,
     IConfiguration configuration)
 {
-    services.AddSearchOperation<SearchOperation, SearchRequest, SearchResponse, CntAccessModel>(
+    services.AddSearchOperation<SearchOperation, SearchRequest, SearchResponse, AccessModel>(
         TgxPlatform.PlatformName,
         configuration);
     
@@ -78,7 +78,7 @@ This step validates the incoming request from the client. While most validation 
 ```csharp
 public bool TryValidateModelRequest(
     SearchConnectorRequest connectorsRequest, 
-    SearchParameters<CntAccessModel> connectorParameters,
+    SearchParameters<AccessModel> connectorParameters,
     out IEnumerable<AdviseMessage> adviseMessages)
 {
     adviseMessages = default;
@@ -100,7 +100,7 @@ Transforms the client request (in **Connector format**) into the supplier's form
 ```csharp
 public IEnumerable<SupplierRequestWrapper<SearchRequest>> BuildRequests(
     SearchConnectorRequest connectorsRequest, 
-    SearchParameters<CntAccessModel> connectorParameters)
+    SearchParameters<AccessModel> connectorParameters)
 {
     return
     [
@@ -127,7 +127,7 @@ Once the supplier's response is received, this step validates it for errors or a
 
 ```csharp
 public bool TryValidateSupplierResponses(
-    SearchParameters<CntAccessModel> connectorParameters,
+    SearchParameters<AccessModel> connectorParameters,
     IEnumerable<SupplierResponseWrapper<SearchResponse>> supplierResponses,
     out IEnumerable<AdviseMessage> adviseMessages)
 {
@@ -163,7 +163,7 @@ Transforms the supplier's response back into the **Connector format**. This step
 ```csharp
 public SearchConnectorResponse ParseResponses(
     SearchConnectorRequest connectorsRequest,
-    SearchParameters<CntAccessModel> connectorParameters,
+    SearchParameters<AccessModel> connectorParameters,
     IEnumerable<SupplierResponseWrapper<SearchResponse>> supplierResponses,
     CancellationToken cancellationToken)
 {

@@ -1,0 +1,149 @@
+---
+sidebar_position: 3
+---
+
+# Anomaly Check Engine
+
+The **Anomaly Check Engine** is the part of Recon that **automatically compares booking information** from different sides of a transaction and **flags when something doesn’t match**.
+
+In practice, a single booking can be seen in three places:
+
+- **Seller (supplier)** - the hotel or provider’s view
+- **Buyer (client)** - the client’s view
+- **Internal** - Travelgate’s own view
+
+The engine takes the same booking from two of these sides and runs a set of checks. If it finds a difference, it creates an **anomaly** and can notify the right teams (e.g. via webhooks), so they can correct data, fix processes, or avoid billing and operational issues.
+
+## How does it work?
+
+1. **Booking data arrives**
+When a booking is created or updated (from seller, buyer, or internal source), the system stores it and schedules an anomaly check.
+
+2. **Waiting period (grace period)**
+A short waiting time (e.g. 1 hour, or configurable per supplier) is applied so that all sides have time to send or update their data. This reduces false alarms when one side is simply slower.
+
+3. **Matching the same booking across sides**
+The engine finds the "same" booking on the other side(s) using references, identifiers, and other safe fallbacks. Only when it has two comparable views (e.g. seller vs internal, or buyer vs seller) does it run the checks.
+
+4. **Running the checks**
+For each pair of views (e.g. internal–seller, buyer–seller, buyer–internal), the engine runs every enabled check (status, amounts, dates, hotel, cancellation rules, etc.). If something doesn’t match, it creates an anomaly with a severity (error, warning, or info).
+
+5. **Surfacing results**
+Anomalies are stored and can be shown in the Recon Dashboard, sent via webhooks to the relevant organizations, and used for reporting so that sales, operations, and support can act on them.
+
+## What scenarios do we cover?
+
+The engine runs a set of **detectors**, each focused on one type of comparison. Below is what each one does in business terms.
+
+### 1. **Status Mismatch**
+
+**What it checks:**
+Whether the booking **status** (e.g. confirmed, cancelled) is the same on both sides.
+
+**Why it matters:**
+If one side shows "Confirmed" and the other "Cancelled", or the other way around, you can have wrong availability, wrong billing, or unhappy clients. Catching this early avoids disputes and wrong payouts.
+
+**Special behavior:**
+- Treats "OK" and "CONFIRMED" as the same (different systems often use different labels).
+- If internal says "Cancelled" but seller says "Confirmed", it’s raised as an **error** (high priority).
+- If internal says "Confirmed" but seller says "Cancelled", it’s raised as a **warning** (seller may have cancelled after our snapshot).
+
+### 2. **Net Amount**
+
+**What it checks:**
+Whether the **total booking amount** (normalized to a common currency where possible) matches between the two sides, within a small tolerance that grows with the amount.
+
+**Why it matters:**
+Price mismatches lead to wrong invoicing, reconciliation failures, and financial discrepancies. The tolerance allows for small rounding or FX differences without creating noise.
+
+**Outcomes:**
+- Amounts within tolerance → no anomaly (or info).
+- One side clearly **lower** than the other → **warning**.
+- One side clearly **higher** than the other → **error** (risk of overcharging or wrong payouts).
+
+### 3. **Check-in / Check-out Mismatch**
+
+**What it checks:**
+Whether **check-in and check-out dates** (per room) match between the two sides.
+
+**Why it matters:**
+Wrong dates mean wrong stay, wrong pricing, and possible no-shows or overbookings. Aligning dates across seller, buyer, and internal is essential for operations and finance.
+
+**Specific checks:**
+- Missing check-in or check-out on one side → **warning**.
+- Invalid sequence (e.g. check-out before or equal to check-in) → **error**.
+- Different dates between the two sides → **warning**.
+
+### 4. **Hotel Mismatch**
+
+**What it checks:**
+Whether **hotel identifiers** (e.g. seller code, buyer code) match between the two sides.
+
+**Why it matters:**
+Different codes for the same property can cause wrong mapping, wrong content, or wrong commission. Catching mismatches keeps catalog and commercial data consistent.
+
+**Outcome:**
+If both sides have hotel codes but they differ → **warning**.
+
+### 5. **Cancel Penalties - Refundable / Non-Refundable (NRF)**
+
+**What it checks:**
+Whether the **refundable vs non-refundable** flag is consistent between the two sides.
+
+**Why it matters:**
+If one side says "refundable" and the other "non-refundable", cancellation policies and penalties will be wrong. This can lead to wrong fees, chargebacks, or client expectations.
+
+**Outcomes:**
+- Both null → **warning**.
+- One side null, the other has a value → **warning** or **error** depending on which side is missing.
+- One side TRUE (refundable), the other FALSE (non-refundable) → **error** or **warning** depending on direction.
+
+### 6. **Cancel Penalties - Deadline**
+
+**What it checks:**
+Whether **cancellation penalty deadlines** (e.g. "free cancellation until date X") align between the two sides. The engine compares the **earliest** (most restrictive) deadline on each side.
+
+**Why it matters:**
+Stricter deadlines on one side than the other can cause unexpected penalties or wrong client communication. Keeping deadlines in sync avoids disputes and wrong cancellation fees.
+
+**Outcomes:**
+- Both sides have no deadlines → **warning**.
+- One side has deadlines, the other doesn’t → **warning**.
+- Invalid date format → **error**.
+- One side’s earliest deadline is **later** (less restrictive) than the other → **error**.
+- One side’s earliest deadline is **earlier** (more restrictive) → **warning**.
+
+### 7. **Cancel Penalties - Net Amount**
+
+**What it checks:**
+When **both** sides show the booking as **cancelled**, whether the **cancellation amount** (what was charged or refunded for the cancellation) matches.
+
+**Why it matters:**
+Different cancellation amounts mean reconciliation issues, wrong supplier payouts, or wrong client charges. This check only runs when both sides are cancelled, so it stays relevant to real cancellation cases.
+
+**Outcomes:**
+- Same amount → no anomaly (or info).
+- One side lower → **warning**.
+- One side higher → **error**.
+
+## Who gets notified?
+
+When an anomaly is found:
+
+- It is **stored** and can be viewed in the Recon application.
+- **Webhooks** can be sent to the relevant organizations (e.g. seller org, buyer org), so their systems or teams can react without having to poll Recon.
+- Internal/platform teams can use the same data for **reporting and operations**.
+
+## Summary table
+
+| Scenario                     | What we compare           | Main business impact                          |
+|-----------------------------|---------------------------|-----------------------------------------------|
+| Status Mismatch             | Booking status            | Wrong availability, billing, disputes         |
+| Net Amount                  | Total booking price       | Invoicing errors, reconciliation failures    |
+| Check-in / Check-out       | Stay dates per room       | Wrong stay, wrong pricing, no-shows           |
+| Hotel Mismatch              | Hotel codes               | Wrong property mapping, commission errors    |
+| Cancel Penalties NRF        | Refundable yes/no         | Wrong cancellation policy and expectations    |
+| Cancel Penalties Deadline   | Earliest penalty deadline| Unexpected penalties, wrong client info       |
+| Cancel Penalties Net Amount | Cancellation charge       | Wrong payouts/charges on cancelled bookings  |
+
+*This document reflects the anomaly check engine behavior as implemented in the Recon application. For technical details or configuration, refer to the development team or technical documentation.*

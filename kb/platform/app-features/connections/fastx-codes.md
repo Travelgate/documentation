@@ -49,7 +49,7 @@ Sellers use this section to **validate or invalidate suggested mappings** betwee
 ![tg-fastx-sellers-2](https://stplaformwe.blob.core.windows.net/kbase/tg-fastx-sellers-2.png)
 
 * **In Group:** Select multiple pairings with checkboxes and apply actions with the buttons above the table.
-![tg-fastx-sellers-3](https://stplaformwe.blob.core.windows.net/kbase/tg-fastx-sellers-3.png)
+  ![tg-fastx-sellers-3](https://stplaformwe.blob.core.windows.net/kbase/tg-fastx-sellers-3.png)
 
 * **Bulk via CSV:** Use the "Bulk Hotel Validation" button and download the hotel data and mapping, change the 'status' column to validate or invalidate, and upload for processing.
 ![fastx-seller-validation-bulk-csv](https://stplaformwe.blob.core.windows.net/kbase/fastx_codes_seller_mode_validation3.png)

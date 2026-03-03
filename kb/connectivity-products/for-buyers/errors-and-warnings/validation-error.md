@@ -29,7 +29,7 @@ Since this error indicates a discrepancy or issue with the validation process, c
 - **Verify Criteria**
   - Ensure your request criteria are valid. For example, avoid using check-in or check-out dates in the past, and ensure you're using the correct `optionRefId` [for each method](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/option-identifiers). Also, ensure compliance with the supplier's specifications as outlined in their [Metadata](/kb/connectivity-products/for-buyers/hotel-x/content/metadata).
 - **Verify Settings**
-  - Check that your request settings don't exceed the limits allowed for that method. For instance, ensure that the optionsQuota value in the request (or in default settings) is lower than maximum allowed.
+  - Check that your request settings don't exceed the limits allowed for that method. For instance, ensure that the `optionsQuota` value in the request (or in default settings) is lower than the maximum allowed.
 
 
 ### VALIDATION_ERROR Examples 

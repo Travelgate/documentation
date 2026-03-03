@@ -28,7 +28,7 @@ The **FastX Codes tool** helps manage these matches, letting Sellers validate th
 
 Sellers use this section to **validate or invalidate suggested mappings** between their own hotel and board codes and Travelgate’s master FastX codes.
 
-![fastx-seller-mode](https://stplaformwe.blob.core.windows.net/kbase/fastx_codes_seller_mode.png)
+![tg-fastx-sellers-1](https://stplaformwe.blob.core.windows.net/kbase/tg-fastx-sellers-1.png)
 
 ### Step-by-Step Guide
 
@@ -46,10 +46,10 @@ Sellers use this section to **validate or invalidate suggested mappings** betwee
 ### Ways to Validate or Invalidate
 
 * **Individually:** Use buttons in the status column for each pairing.
-![fastx-seller-validation-individually](https://stplaformwe.blob.core.windows.net/kbase/fastx_codes_seller_mode_validation1.png)
+![tg-fastx-sellers-2](https://stplaformwe.blob.core.windows.net/kbase/tg-fastx-sellers-2.png)
 
 * **In Group:** Select multiple pairings with checkboxes and apply actions with the buttons above the table.
-![fastx-seller-validation-group](https://stplaformwe.blob.core.windows.net/kbase/fastx_codes_seller_mode_validation2.png)
+![tg-fastx-sellers-3](https://stplaformwe.blob.core.windows.net/kbase/tg-fastx-sellers-3.png)
 
 * **Bulk via CSV:** Use the "Bulk Hotel Validation" button and download the hotel data and mapping, change the 'status' column to validate or invalidate, and upload for processing.
 ![fastx-seller-validation-bulk-csv](https://stplaformwe.blob.core.windows.net/kbase/fastx_codes_seller_mode_validation3.png)
@@ -61,7 +61,7 @@ Sellers use this section to **validate or invalidate suggested mappings** betwee
 * New hotels or significant updates in your hotel list information automatically set the status to **Pending** and require re-validation.
 * Check both hotel and board mappings.
 
-![fastx-seller-mode-boards](https://stplaformwe.blob.core.windows.net/kbase/fastx_codes_seller_mode_boards.png)
+![tg-fastx-sellers-4](https://stplaformwe.blob.core.windows.net/kbase/tg-fastx-sellers-4.png)
 
 
 ### FAQs
@@ -151,7 +151,7 @@ Already using HotelX? If you're a Buyer connected to Travelgate via our HotelX P
 2. Switch to **Buyer mode** and navigate to the [FastX Codes section](https://app.travelgate.com/connections/mapping).
 3. Select a FastX access from your organization to see the mapping content.
 
-![fastx-buyer-mode](https://stplaformwe.blob.core.windows.net/kbase/fastx_codes_buyer_mode.png)
+![tg-fastx-buyers-5](https://stplaformwe.blob.core.windows.net/kbase/tg-fastx-buyers-5.png)
 
 
 ### Features

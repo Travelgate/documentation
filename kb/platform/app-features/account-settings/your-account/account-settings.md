@@ -15,7 +15,7 @@ In the **Account Settings** section, you can update and personalize your user pr
 
 Make the necessary adjustments to set up your personalized user profile on Travelgate.
 
-![tg_account_settings](https://storage.travelgate.com/kbase/tg_account_settings.jpg)
+![tg-account-settings-1](https://storage.travelgate.com/kbase/tg-account-settings-1.png)
 
 ## How Can I Change My Password?
 To update your password, follow these steps:

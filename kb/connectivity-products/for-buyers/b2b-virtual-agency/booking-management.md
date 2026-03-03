@@ -26,14 +26,14 @@ Some Suppliers require specific details—such as hotel codes or currency—or m
 
 5. Click **Search**. If bookings match your criteria, they will be displayed in a table.
 
-   ![b2b_virtual_agency_mybookings_2](https://storage.travelgate.com/kbase/b2b_mybookings_2.png)
+   ![tg-b2b-virtual-agency-3](https://storage.travelgate.com/kbase/tg-b2b-virtual-agency-3.png)
 
 6. To view details of a booking, select it and click **Actions > View details**.
 
 ### CSV Booking Reports
 You can download your booking list reports directly from the **'My Bookings'** screen. First, perform a booking search. Then, click the 'Download CSV' button located above the booking results.
 
-![bb2b_virtual_agency_booking_report](https://storage.travelgate.com/kbase/b2b_virtual_agency_booking_report.jpg)
+![tg-b2b-virtual-agency-4](https://storage.travelgate.com/kbase/tg-b2b-virtual-agency-4.png)
 
 
 ### No Results in "My Bookings" 

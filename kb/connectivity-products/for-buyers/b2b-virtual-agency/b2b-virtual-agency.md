@@ -29,7 +29,7 @@ Follow these steps to search for availability and make a booking via Single Sear
    - Rooms
    - Show advanced search (market, nationality, language and currency)
    
-   ![tg_b2b_singlesearch_1](https://storage.travelgate.com/kbase/tg_b2b_singlesearch_1.png)
+   ![tg-b2b-virtual-agency-1](https://storage.travelgate.com/kbase/tg-b2b-virtual-agency-1.png)
 
 4. Click **Search** to view available hotel options. The results display:
    - Cheapest available rates by hotel
@@ -92,7 +92,7 @@ Follow these steps to search for availability and make a booking via Multi Searc
       - Preference: Applies aggregation rules from the Preference plugin if configured.
       - Use test access: If the client has both live and test accesses, live is used by default. Enable this option to use test access instead.
 
-   ![tg_b2b_multisearch_1](https://storage.travelgate.com/kbase/tg_b2b_multisearch_1.png)
+   ![tg-b2b-virtual-agency-2](https://storage.travelgate.com/kbase/tg-b2b-virtual-agency-2.png)
    ![tg_b2b_multisearch_2](https://storage.travelgate.com/kbase/tg_b2b_multisearch_2.png)
 
 4. Click **Search** and all available options from suppliers that returned results will appear **under the same hotel card**. If you used the aggregation option, and a result was discarded in favor of another due to aggregation rules, a link will appear allowing you to view the **discarded option.**  

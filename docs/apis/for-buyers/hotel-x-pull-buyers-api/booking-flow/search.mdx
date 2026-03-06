@@ -42,16 +42,16 @@ The main fields returned include:
 When creating your Search query, you have three different inputs to fill based on your specific needs:
 
 1. Criteria
-2. Settings
-3. Filter Search
+2. Filter Search
+3. Settings
 
 ```graphql
 query {
     hotelX {
     search
       criteria: {...}
+      filterSearch: {...}
       settings: {...}
-	  filterSearch: {...}
 	}
 }
 ```
@@ -112,7 +112,55 @@ To specify your search criteria you need to use the input `HotelCriteriaSearchIn
 
 If you don’t specify these optional parameters in your query, the system will automatically use the [default values from your API settings](/docs/apis/for-buyers/hotel-x-pull-buyers-api/making-requests/settings) configured for your account.
 
-### 2. Settings
+### 2. Filter Search
+
+Filters allow you to precisely tailor the response according to your preferences.
+
+To specify filters you need to use the input `HotelXFilterSearchInput` in your query variables. The available filters within this input are:
+
+- `suppliers`: The Buyer can define an `includes` or `excludes` list with one or more Supplier Code values. Hotel-X will execute the Search request using **all accesses (credentials)** available for the selected suppliers. If `includes` is used, only those suppliers are queried. If `excludes` is used, all suppliers except those in the list are queried.
+
+- `access`: This filter is similar to `suppliers`, but it works at credential level. The Buyer can define an `includes` or `excludes` list with one or more access codes, even from different suppliers. Hotel-X will execute the Search request using exactly the selected accesses (or all except excluded ones).
+
+- `rateRules`: This filter enables you to narrow down the options returned by the suppliers based on the desired rate rules you want to include or exclude.
+
+- `status`: Use this filter to determine which status (OK and RQ) will be included or excluded in the response.
+
+- `currencies`: This filter enables you to narrow down the options returned by the suppliers based on the desired currencies you want to include or exclude.
+
+:::caution Important
+  You cannot define both `includes` and `excludes` simultaneously in the same filter.
+:::
+
+:::tip Suppliers + Access Combined
+The `suppliers` and `access` filters are combinable.
+
+When both are present, **the `suppliers` filter takes precedence** over the `access` filter.
+:::
+
+All these filters are optional. Example to request only search results from access "2" and options "PACKAGE":
+
+```js
+{
+    "filterSearch" : {
+        "access" : {
+            "includes" : [
+                "2"
+            ]
+        },
+        "rateRules" : {
+            "includes" : [
+                "PACKAGE"
+            ]
+        }
+    }
+}
+```
+
+You would need to apply the same approach for filtering by specific rate rule (`rateRule`) and status (`status`).
+
+
+### 3. Settings
 
 Settings are the common configurations used to construct requests to the Supplier/s. You need to specify some in your query or mutation, while others are optional. If you skip the optional ones, we'll use default API settings to keep your requests consistent and smooth.
 
@@ -124,7 +172,8 @@ To specify your settings you need to use the [`HotelSettingsInput`](/api/types/i
         "client" : "client_demo",
         "testMode" : true,
         "auditTransactions" : false,
-        "timeout" : 5000
+        "timeout" : 5000,
+        "plugins": [...]
     }
 }
 ```
@@ -270,52 +319,8 @@ For that reason, we strongly recommend always using an aggregation plugin in mul
 
 :::
 
-### 3. Filter Search
 
-Filters allow you to precisely tailor the response according to your preferences.
 
-To specify filters you need to use the input `HotelXFilterSearchInput` in your query variables. The available filters within this input are:
-
-- `suppliers`: The Buyer can define an `includes` or `excludes` list with one or more Supplier Code values. Hotel-X will execute the Search request using **all accesses (credentials)** available for the selected suppliers. If `includes` is used, only those suppliers are queried. If `excludes` is used, all suppliers except those in the list are queried.
-
-- `access`: This filter is similar to `suppliers`, but it works at credential level. The Buyer can define an `includes` or `excludes` list with one or more access codes, even from different suppliers. Hotel-X will execute the Search request using exactly the selected accesses (or all except excluded ones).
-
-- `rateRules`: This filter enables you to narrow down the options returned by the suppliers based on the desired rate rules you want to include or exclude.
-
-- `status`: Use this filter to determine which status (OK and RQ) will be included or excluded in the response.
-
-- `currencies`: This filter enables you to narrow down the options returned by the suppliers based on the desired currencies you want to include or exclude.
-
-:::caution Important
-  You cannot define both `includes` and `excludes` simultaneously in the same filter.
-:::
-
-:::tip Suppliers + Access Combined
-The `suppliers` and `access` filters are combinable.
-
-When both are present, **the `suppliers` filter takes precedence** over the `access` filter.
-:::
-
-All these filters are optional. Example to request only search results from access "2" and options "PACKAGE":
-
-```js
-{
-    "filterSearch" : {
-        "access" : {
-            "includes" : [
-                "2"
-            ]
-        },
-        "rateRules" : {
-            "includes" : [
-                "PACKAGE"
-            ]
-        }
-    }
-}
-```
-
-You would need to apply the same approach for filtering by specific rate rule (`rateRule`) and status (`status`).
 
 ### Response Considerations
 

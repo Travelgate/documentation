@@ -2,7 +2,7 @@
 sidebar_position: 5
 ---
 
-# 104 Error - Connection Timeout With Provider
+# 104 Error - Connection timeout with supplier
 
 ## What Does a 104 Error Mean?
 A **104 error** occurs when the Seller's response time exceeds the timeout set in the Buyer's request.
@@ -12,7 +12,7 @@ A **104 error** occurs when the Seller's response time exceeds the timeout set i
 "errors": [
             {
               "code": "",
-              "description": "Connection Timeout With Provider",
+              "description": "Connection timeout with supplier",
               "type": "104"
             }
           ]

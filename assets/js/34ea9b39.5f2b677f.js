@@ -241,6 +241,7 @@
             }
         ],
         "hotels" : [
+			"ES284122",
             "BR1518"
         ],
         "currency" : "EUR",
@@ -272,7 +273,7 @@
             }
         ],
         "hotels" : [
-            "BR1518"
+			"ES284122"
         ],
         "currency" : "EUR",
         "markets" : [
@@ -320,6 +321,7 @@
 			}
 		],
 		"hotels": [
+			"ES284122",
 			"BR1518"
 		],
 		"currency": "EUR",

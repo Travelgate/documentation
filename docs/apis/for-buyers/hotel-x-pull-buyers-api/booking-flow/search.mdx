@@ -354,14 +354,14 @@ Some Sellers may not include cancellation policies in their availability data. Y
 
 In all examples below, we include the **Preference plugin** with the following configuration:
 
-- `primaryKey: "hotel, board, room, rateRules"`: Hotel-X will internally detect and group all options returned by all suppliers in your request that share the same hotel, board, room, and rate rule.
-- `optionsPerKey: 2`: for each group created by the `primaryKey`, Hotel-X returns the 2 cheapest options that also comply with the preference rules configured on our website (if any).
+- `primaryKey: "hotel,board,room,rateRules"`: Hotel-X will internally detect and group all options returned by all suppliers in your request that share the same hotel, board, room, and rate rule.
+- `optionsPerKey: 1`: for each group created by the `primaryKey`, Hotel-X returns the 1 cheapest option that also complies with the preference rules configured on our website (if any).
 
 <details>
   <summary>Small example on how grouping works with `primaryKey` + `optionsPerKey`</summary>
   <div>
     <div>
-      If Hotel-X receives multiple options for `Standard Double Room + All Inclusive + Non-Refundable`, it will return only the 2 cheapest options for that group. If it also receives options for `Standard Double Room + All Inclusive + Refundable`, that is a different group, and Hotel-X will also return the 2 cheapest options for that second group.
+      If Hotel-X receives multiple options for `Standard Double Room + All Inclusive + Non-Refundable`, it will return only the cheapest option for that group. If it also receives options for `Standard Double Room + All Inclusive + Refundable`, that is a different group, and Hotel-X will also return the cheapest option for that second group.
 
       You can find more examples and a detailed explanation of how this plugin works in the **[Preference plugin page](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/preference)**.
     </div>

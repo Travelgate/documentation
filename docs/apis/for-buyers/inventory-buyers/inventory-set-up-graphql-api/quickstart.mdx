@@ -28,6 +28,83 @@ Highlights of the Inventory Set Up GraphQL API include:
 
 By integrating the Inventory Set Up GraphQL API, you can expect a smoother, more responsive workflow that keeps your inventory up-to-date and accurately represented across all channels.
 
+## Integration Approaches: Understanding Setup Models
+
+This API supports different integration models adapted to your business needs. Depending on your provider type or channel manager, you can understand which approach best suits your workflow.
+
+### Integration Types in Inventory
+
+Before diving into the flows, it is important to understand the two integration types available in Inventory:
+
+- **Push**: The booking flow is handled in Inventory. Travelgate pushes booking notifications to the provider/channel manager, or the provider retrieves bookings to keep its side updated.
+- **Hybrid**: The setup, availability and pricing are managed in Inventory, but the booking flow works as in pull integrations. Pull calls are executed to the provider to price and book products stored in Inventory.
+
+### Setup Approach
+
+This flow explains how the setup is created and maintained in Inventory. Depending on the integration, setup can be manual, fully automated, or partially automated:
+
+### Manual SetUp
+The traditional approach used by legacy integrations. In this model:
+- Setup is managed **manually** by the client or authorized hotel users through the Inventory Extranet
+- No automation occurs—all data entry, updates, and master information management is done directly by users
+- Requires significant manual effort and time investment
+
+### Full AutoSetUp
+A modern, fully automated integration model where **Travelgate implements the complete setup** using provider information:
+- The integration automatically loads and manages all hotel data, rates, rooms, and related properties into Inventory
+- **Clients do not need to perform any manual setup tasks**—everything is handled by the integration
+- Significantly reduces time to production and eliminates manual data entry errors
+- Provider information is leveraged to fully populate the inventory without any client intervention
+- Ideal for providers and channel managers that provide complete data sets
+
+Current Full AutoSetUp integrations:
+
+| Supplier Name | Supplier Code | Integration Type |
+| --- | --- | --- |
+| IBS Software | IBSP | Push |
+| Sandals | SHAP | Push |
+| TBO Push | TBOP | Push |
+| My Morocco | MMO | Push |
+| JumbOnline | JMBP | Push |
+| BEDS4GREECE | B4G | Push |
+| World2Meet | W2MP | Push |
+| Juniper (Connectycs) | H10C | Hybrid |
+| DerbySoft | GOHOTEL | Hybrid |
+| Swap Systems | SNR | Hybrid |
+| Axis Data | AXIS | Hybrid |
+| Cretan Holidays | CRE | Hybrid |
+| HotelTrader | HTRP | Hybrid |
+| Magic Travel | MTRP | Hybrid |
+
+### Partial AutoSetUp
+A hybrid approach where **part of the setup is automated**, but some elements require manual configuration:
+- The integration handles certain aspects of the setup automatically using provider data
+- However, some data may not be available directly from the provider and must be provided by the client first (e.g., hotel codes)
+- Once the required information is provided, the integration retrieves and loads the remaining related setup data
+- Useful for scenarios where provider data is partially complete
+- Reduces manual work while maintaining flexibility for data that requires client specification
+
+Current Partial AutoSetUp integrations:
+
+| Supplier Name | Supplier Code | Integration Type |
+| --- | --- | --- |
+| Phobs | PHOB | Push |
+
+Each setup approach offers distinct advantages depending on your integration capabilities and data availability.
+
+### Booking Flow Approach
+
+Once the setup is ready in Inventory, the booking flow is defined by the integration type:
+
+- **Push**: Inventory manages the booking lifecycle and sends booking notifications to the provider/channel manager. In some cases, the provider retrieves bookings from Inventory to keep its side updated.
+- **Hybrid**: Inventory stores setup, availability and pricing, but pricing and booking are executed through pull calls to the provider at booking time.
+
+:::caution One Step Book and Hybrid integrations
+For Hybrid integrations, the price or cancellation policies stored in Inventory can change when the quote is requested from the provider. This can lead to One Step Book flows returning a "booking error" when, in practice, the quote price or policies have been updated by the provider.
+
+To connect safely with Hybrid integrations, we strongly recommend implementing [One Step Quote](/docs/apis/for-buyers/hotel-x-pull-buyers-api/one-shot-booking-flow/onestepquote) or, alternatively, integrating through [Hotel-X Pull Buyers API Quickstart](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart).
+:::
+
 ## Let's Get Started: Power up your Inventory management!
 Dive into the GraphQL methods of our newest API, designed to perfect your setup, simplify updates, and ensure complete control over your own stock.
 

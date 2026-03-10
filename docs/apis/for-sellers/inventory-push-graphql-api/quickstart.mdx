@@ -28,6 +28,51 @@ Highlights of the Inventory Set Up GraphQL API include:
 
 By integrating the Inventory Set Up GraphQL API, you can expect a smoother, more responsive workflow that keeps your inventory up-to-date and accurately represented across all channels.
 
+## Integration Approaches: Understanding Setup Models
+
+This API supports different integration models adapted to your business needs. Depending on your channel manager or connectivity strategy, you can understand which approach best suits your workflow.
+
+### Integration Types in Inventory
+
+This seller guide focuses on **Push** integrations for generic supplier developments:
+
+- **Push**: The booking flow is handled in Inventory. Your integration should consume booking notifications sent from Inventory or retrieve bookings from Inventory to keep your side updated. Keep in mind that booking notifications support all payment types, while retrieve works only with Merchant payment.
+
+### Setup Approach
+
+This flow explains how the setup is created and maintained in Inventory. Depending on the integration, setup can be manual, fully automated, or partially automated:
+
+#### Manual SetUp
+The traditional approach used by legacy integrations. In this model:
+- Setup is managed **manually** by the client or authorized hotel users through the Inventory Extranet
+- No automation occurs—all data entry, updates, and master information management is done directly by users
+- Requires significant manual effort and time investment
+
+#### Full AutoSetUp (recommended)
+A modern, fully automated integration model where the integration implements the complete setup using provider information:
+- The integration automatically loads and manages all hotel data, rates, rooms, and related properties into Inventory
+- **Clients do not need to perform any manual setup tasks**—everything is handled by the integration
+- Significantly reduces time to production and eliminates manual data entry errors
+- Provider information is leveraged to fully populate the inventory without any client intervention
+- Ideal for providers and channel managers that provide complete data sets
+- **Why we strongly recommend it**: Full AutoSetUp minimizes onboarding friction, removes manual product loading tasks for clients, and helps them start purchasing your inventory faster.
+
+#### Partial AutoSetUp
+A partially automated approach where some setup elements require manual configuration:
+- The integration handles certain aspects of the setup automatically using provider data
+- However, some data may not be available directly from the provider and must be provided by the client first (e.g., hotel codes)
+- Once the required information is provided, the integration retrieves and loads the remaining related setup data
+- Useful for scenarios where provider data is partially complete
+- Reduces manual work while maintaining flexibility for data that requires client specification
+
+Each setup approach offers distinct advantages depending on your integration capabilities and data availability.
+
+### Booking Flow Approach
+
+Once the setup is ready in Inventory, the booking flow is defined by the integration type:
+
+- **Push**: Inventory manages the booking lifecycle. Your integration should process booking notifications from Inventory, or retrieve bookings from Inventory, to keep your platform synchronized. Keep in mind that booking notifications support all payment types, while retrieve works only with Merchant payment.
+
 ## Let's Get Started: Power up your Inventory management!
 Dive into the GraphQL methods of our newest API, designed to perfect your setup, simplify updates, and ensure complete control over your own stock.
 

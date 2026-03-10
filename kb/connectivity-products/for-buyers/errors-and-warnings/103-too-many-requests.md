@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# 103 Error - Too Many Requests to the Supplier
+# 103 Error - Too many requests to the supplier
 
 ## What Does a 103 Error Mean?
 A **103 error** occurs when your account exceeds the agreed-upon request limit with the Seller.

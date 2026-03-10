@@ -2,7 +2,7 @@
 sidebar_position: 12
 ---
 
-# 207 Error - Request XML Not Accepted by Supplier
+# 207 Error - Request not accepted by supplier
 
 ## What Does a 207 Error Mean?
 A **207 error** occurs when a Buyer's request does not conform to the Supplier's specifications.
@@ -11,7 +11,7 @@ A **207 error** occurs when a Buyer's request does not conform to the Supplier's
 ```xml
     <applicationErrors>
       <type>207</type>
-      <description>Request XML not accepted by supplier</description>
+      <description>Request not accepted by supplier</description>
       <httpStatusCode>0</httpStatusCode>
     </applicationErrors>
 ```

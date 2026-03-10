@@ -2,7 +2,7 @@
 sidebar_position: 11
 ---
 
-# 206 Error - Dates Not Supported
+# 206 Error - Dates not supported
 
 ## What Does a 206 Error Mean?
 A **206 error** occurs when the dates in your search request do not align with the Seller's date specifications.
@@ -12,7 +12,7 @@ A **206 error** occurs when the dates in your search request do not align with t
 "errors": [
             {
               "code": "",
-              "description": "Dates Not Supported",
+              "description": "Dates not supported",
               "type": "206"
             }
           ]

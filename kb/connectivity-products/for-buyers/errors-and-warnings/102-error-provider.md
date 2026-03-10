@@ -2,10 +2,10 @@
 sidebar_position: 3
 ---
 
-# 102 Error - Provider Error
+# 102 Error - Supplier Error
 
 ## What Does a 102 Error Mean?
-The **102 error** is classified as a **provider error** and occurs when a supplier returns a specific error code or description, which is then relayed to you in our response.
+The **102 error** is classified as a **supplier error** and occurs when a supplier returns a specific error code or description, which is then relayed to you in our response.
 
 If the Seller does not provide an error description, the system categorizes it as a 102 error without further details.
 

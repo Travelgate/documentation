@@ -34,10 +34,12 @@ This API supports different integration models adapted to your business needs. D
 
 ### Integration Types in Inventory
 
-Before diving into the flows, it is important to understand the two integration types available in Inventory:
+Before diving into the different setup models and flows, it is important to understand the two integration types available in Inventory.
 
-- **Push**: The booking flow is handled in Inventory. Travelgate pushes booking notifications to the provider/channel manager, or the provider retrieves bookings to keep its side updated.
-- **Hybrid**: The setup, availability and pricing are managed in Inventory, but the booking flow works as in pull integrations. Pull calls are executed to the provider to price and book products stored in Inventory.
+As a Buyer, your connectivity remains the same regardless of the model; the difference lies in how the Seller manages their data and how the booking is confirmed:
+
+- **Push**: The Seller sends all their availability, rates, and inventory directly to our system, making Travelgate the "Master Database". When you book, the confirmation is instant because the transaction happens directly against the data already stored in our Inventory solution.
+- **Hybrid**: The Seller manages their setup in Inventory but requires a real-time validation for the final booking. While Inventory handles the initial Search, every Quote or Book request triggers a real-time call to the Seller’s system to confirm the final price and availability.
 
 ### Setup Approach
 
@@ -76,7 +78,7 @@ Current Full AutoSetUp integrations:
 | HotelTrader | HTRP | Hybrid |
 | Magic Travel | MTRP | Hybrid |
 
-### Partial AutoSetUp
+#### Partial AutoSetUp
 A hybrid approach where **part of the setup is automated**, but some elements require manual configuration:
 - The integration handles certain aspects of the setup automatically using provider data
 - However, some data may not be available directly from the provider and must be provided by the client first (e.g., hotel codes)

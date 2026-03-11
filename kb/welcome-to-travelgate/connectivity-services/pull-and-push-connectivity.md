@@ -56,33 +56,28 @@ In Push integrations, static content is generated and stored within Travelgate's
 
 #### 1. Push Standard
 
-In the Push Standard model, all availability, rates, and booking requests are managed through Travelgate’s internal database. The Buyer receives pre-loaded availability and pricing information, with no need for real-time queries to the Seller.
+In the Push Standard model, availability, rates, and the entire booking flow are managed directly within Travelgate’s Inventory platform. Buyers access pre-loaded data, meaning no real-time API calls to the Seller's system are required during the booking flow process.
 
 **Advantages of Push Standard Connectivity**
 
-    - Reduced traffic load for Sellers, minimizing the need for extensive system investment.
-    - Faster response times for Buyers.
+- Reduced Traffic Load: Minimizes server requests for Sellers, drastically reducing the need for expensive infrastructure and system investments.
+- Lightning-Fast Responses: Buyers experience near-instant response times since data is queried locally from the Inventory.
+- Total Portfolio Control: Empowers Buyers and Hoteliers to directly load, update, and manage their portfolio (hotels, rates, rooms, and availability) within the platform.
 
-**Disadvantages of Push Standard Connectivity**
-
-    - Availability updates are not in real-time; Sellers communicate changes only when products are sold.
-    - Requires more development time compared to Pull integrations.
+:::note
+Channel managers usually work with full Push Standard flows, while Pull providers are the most common adopters of the Hybrid model.
+:::
 
 #### 2. Push Hybrid
 
-The Push Hybrid model is similar to the Push Standard but with one key difference: **it only uses the Inventory system up to the availability stage**. After that, all remaining booking flow requests function like a Pull connection, meaning Travelgate sends queries directly to the provider for real-time responses.
+The Push Hybrid model blends a Push-style setup with a Pull-style booking flow. While the initial setup, pricing,  and availability are loaded and maintained in the Inventory (Push), the other steps  (Quote, Book, Read, and Cancel) behave like a Pull integration where Travelgate executes real-time supplier calls  to validate updated cancellation policies and exact pricing right before confirmation.
+
 
 **Advantages of Push Hybrid Connectivity**
 
-    - Prices in hybrid integrations tend to be more precise, as the provider returns the exact price, including offers and taxes if applicable.
-    - Booking status verification: Reservations that remain in an "UN" (unknown) status can be checked against the provider in real time, ensuring up-to-date status.
-    - AutoSetup available: Most hybrid integrations include the AutoSetup feature, eliminating the need for manual setup within Inventory.
-    - Availability updates are not in real-time, but pricing accuracy is improved compared to Standard Push.
-
-**Disadvantages of Push Hybrid Connectivity**
-
-    - Requires more development effort than the Push Standard Model due to the mixed approach.
-    - Hybrid integrations still involve some degree of Pull traffic, which may increase system complexity.
+    - Optimized Look-to-Book (L2B) Ratio: Drastically reduces the volume of massive availability requests sent to the Seller's servers that do not convert into bookings.
+    - Real-Time Accuracy: Helps ensure that pricing, final availability, and cancellation policies are validated at the exact moment of booking for maximum accuracy.
+    - Best of Both Worlds: Combines the high-speed search performance of the Push model (for availability) with the transactional reliability and up-to-date conditions of the Pull model (for booking).
 
 :::info Future Developments
 The AutoSetup feature, currently a key advantage of the Push Hybrid model, is also being developed for some new Push Standard integrations. This enhancement will further streamline the onboarding process for Buyers using Standard Push connections.

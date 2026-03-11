@@ -2,7 +2,7 @@
 sidebar_position: 13
 ---
 
-# 301 Error - Option Not Found in Valuation
+# 301 Error - Option not found in quote
 
 ## What Does a 301 Error Mean?
 A **301 error** occurs when a Seller fails to return the option previously selected by the Buyer in the Search response. This means the option is no longer available. This error can appear in the Quote response and Book response (when an additional Quote request is needed for the Seller).
@@ -12,7 +12,7 @@ A **301 error** occurs when a Seller fails to return the option previously selec
 "errors": [
             {
               "code": "",
-              "description": "Option Not Found In Valuation",
+              "description": "Option not found in quote",
               "type": "301"
             }
           ]

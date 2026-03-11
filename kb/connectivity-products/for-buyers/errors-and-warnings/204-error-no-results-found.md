@@ -2,7 +2,7 @@
 sidebar_position: 9
 ---
 
-# 204 Error - No Results Found
+# 204 Error - No results found
 
 ## What Does a 204 Error Mean?
 A **204 error** occurs when a Seller does not return any results for the specific search criteria in the Buyer's request (e.g., hotel, dates, market, etc.).

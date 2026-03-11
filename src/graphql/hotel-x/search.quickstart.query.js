@@ -249,6 +249,7 @@ export const searchWithoutFilterVariables =
             }
         ],
         "hotels" : [
+			"ES284122",
             "BR1518"
         ],
         "currency" : "EUR",
@@ -284,7 +285,7 @@ export const searchWithOnlyOneAccess =
             }
         ],
         "hotels" : [
-            "BR1518"
+			"ES284122"
         ],
         "currency" : "EUR",
         "markets" : [
@@ -336,6 +337,7 @@ export const searchTwoRoomsVariables =
 			}
 		],
 		"hotels": [
+			"ES284122",
 			"BR1518"
 		],
 		"currency": "EUR",

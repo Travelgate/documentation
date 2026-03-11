@@ -76,7 +76,7 @@ The Push Hybrid model blends a Push-style setup with a Pull-style booking flow. 
 **Advantages of Push Hybrid Connectivity**
 
     - Optimized Look-to-Book (L2B) Ratio: Drastically reduces the volume of massive availability requests sent to the Seller's servers that do not convert into bookings.
-    - Real-Time Accuracy: Guarantees that pricing, final availability, and cancellation policies are 100% accurate and validated at the exact moment of booking.
+    - Real-Time Accuracy: Helps ensure that pricing, final availability, and cancellation policies are validated at the exact moment of booking for maximum accuracy.
     - Best of Both Worlds: Combines the high-speed search performance of the Push model (for availability) with the transactional reliability and up-to-date conditions of the Pull model (for booking).
 
 :::info Future Developments

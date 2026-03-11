@@ -258,17 +258,10 @@ const config = {
 
   plugins: [
     "docusaurus-plugin-sass",
-    // [
-    //   "@docusaurus/plugin-google-gtag",
-    //   {
-    //     trackingID: "G-ECHYSGVN82",
-    //     anonymizeIP: true,
-    //   },
-    // ],
     [
-      '@docusaurus/plugin-google-tag-manager',
+      "@docusaurus/plugin-google-tag-manager",
       {
-        containerId: 'GTM-T3M3XRZ',
+        containerId: "GTM-T3M3XRZ",
       },
     ],
     [

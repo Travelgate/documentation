@@ -266,6 +266,12 @@ const config = {
       },
     ],
     [
+      '@docusaurus/plugin-google-tag-manager',
+      {
+        containerId: 'GTM-T3M3XRZ',
+      },
+    ],
+    [
       "@graphql-markdown/docusaurus",
       {
         schema: "./schemas/filtered-schema.graphql",

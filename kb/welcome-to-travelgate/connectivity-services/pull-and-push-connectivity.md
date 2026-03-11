@@ -60,11 +60,11 @@ In the Push Standard model, availability, rates, and the entire booking flow are
 
 **Advantages of Push Standard Connectivity**
 
-    - Reduced Traffic Load: Minimizes server requests for Sellers, drastically reducing the need for expensive infrastructure and system investments.
-    - Lightning-Fast Responses: Buyers experience near-instant response times since data is queried locally from the Inventory.
-    - Total Portfolio Control: Empowers Buyers and Hoteliers to directly load, update, and manage their portfolio (hotels, rates, rooms, and availability) within the platform.
+- Reduced Traffic Load: Minimizes server requests for Sellers, drastically reducing the need for expensive infrastructure and system investments.
+- Lightning-Fast Responses: Buyers experience near-instant response times since data is queried locally from the Inventory.
+- Total Portfolio Control: Empowers Buyers and Hoteliers to directly load, update, and manage their portfolio (hotels, rates, rooms, and availability) within the platform.
 
-:::Note
+:::note
 Channel managers usually work with full Push Standard flows, while Pull providers are the most common adopters of the Hybrid model.
 :::
 

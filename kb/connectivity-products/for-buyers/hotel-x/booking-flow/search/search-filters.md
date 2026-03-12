@@ -10,29 +10,34 @@ sidebar_position: 2
 ### How Can I Filter My Search Requests?
 You can filter your Search requests through the [**HotelXFilterSearchInput**](/api/types/inputs/hotel-xfilter-search-input/), using criteria such as access, plugin, rateRules, currencies and status specified in your request.
 
-### 1. Access - AccessFilterInput
+### 1. Supplier - SupplierFilterInput
+The Supplier Filter allows the Buyer to narrow down the Search by defining an includes or excludes list of specific Supplier codes. If this filter is not provided, Hotel-X will default to querying all active suppliers configured for the client.
+- Includes: If used, HotelX will execute the Search request using all accesses available **only** for the selected suppliers.
+- Excludes: If used, all available suppliers will be queried except those specified in the list.
+
+### 2. Access - AccessFilterInput
 You can specify a particular access or none at all. If no access is specified, all configured accesses for the Buyer will be executed. In this case, please ensure you use your own context code to avoid mapping errors. Learn more in the following articles:
 
 - [Hotel-X Development - Search Query](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/search)
 - [Hotel-X Credentials](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials)
 
-### 2. RateRules - RateRulesFilterInput
+### 3. RateRules - RateRulesFilterInput
 Rate Rules refer to the specific terms and conditions that define the pricing, availability, and booking policies for hotel accommodations. You can include or exclude specific rate rules to request only the data that aligns with your business needs.
 
 Explore all available RateRules types in our [GraphQL API Reference](/api/types/enums/rate-rules-type) for further details.
 
-### 3. Plugin - HotelXPluginFilterInput
+### 4. Plugin - HotelXPluginFilterInput
 Hotel-X plugin filter gives you the control to specify which plugins to include or exclude in your search.
 
 :::tip
 Check out our Hotel-X Buyers API [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/overview) for more details! 🚀
 :::
 
-### 4. Currencies - CurrenciesFilterInput
+### 5. Currencies - CurrenciesFilterInput
 This Hotel-X filter enables you to narrow down the options returned by the suppliers based on the desired currencies you want to [include or exclude](/api/types/inputs/currencies-filter-input).
 
 
-### 5. Status - StatusFilterInput
+### 6. Status - StatusFilterInput
 Define and filter which status (OK or RQ) should be included or excluded in your Search response. This filter depends on whether the Seller returns this information in their response. Example:
 
 ```json

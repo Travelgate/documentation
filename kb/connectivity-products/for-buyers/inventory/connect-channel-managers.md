@@ -12,7 +12,7 @@ sidebar_position: 3
 
 ### Activation and Configuration
 
-Travelgate allows only **one credential (Hotel-X Access Code) per Channel Manager**. If you require multiple configurations, the Inventory Extranet offers flexible setup options to tailor your product settings efficiently.
+Travelgate allows only **one credential (Hotel-X Access Code) per Channel Manager**. If you require multiple configurations, the [Inventory Extranet](/docs/apps/inventory/extranet/overview) offers flexible setup options to tailor your product settings efficiently.
 
 ### How to Connect to a Channel Manager 
 
@@ -30,11 +30,8 @@ Travelgate allows only **one credential (Hotel-X Access Code) per Channel Manage
 
 7. **Learn with Travelgate Resources:** After gaining access, enhance your knowledge by watching [Travelgate Academy videos](https://www.youtube.com/watch?v=V_nJoDkMOTA) and reviewing our [Extranet Documentation](/docs/apps/inventory/extranet/overview) to get familiar with available features.
 
-8. **Create a Pilot Hotel:** Set up a pilot hotel to perform product loading tests. For step-by-step instructions, refer to the ["Setup" section](/docs/apps/inventory/extranet/set-up/overview) in our documentation. We recommend using a real hotel that you plan to work with, as this will simplify the transition to the live phase.
+8. **Create a Pilot Hotel:** Set up a pilot hotel to perform product loading tests. For step-by-step instructions, refer to the [Setup section](/docs/apps/inventory/extranet/set-up/overview) in our documentation. To simplify the transition to the live phase, we recommend using a **real hotel** intended for your portfolio and performing all tests via the ClientTest (CTEST) client.
 
-    Please note that while there is no dedicated testing environment for the Push API/Inventory solution, you can use the **ClientTest** (CTEST) client for testing purposes.
-
-:::info
-For more details about our Inventory Extranet, visit the [Inventory Extranet Overview](/docs/apps/inventory/extranet/overview) 📚
-:::
-
+    :::info Important:
+    Please note that **there are no test credentials or dedicated testing environments for Inventory/Push Suppliers**. You must coordinate directly with your provider to **designate a specific pilot hotel for your testing procedures.**
+    :::

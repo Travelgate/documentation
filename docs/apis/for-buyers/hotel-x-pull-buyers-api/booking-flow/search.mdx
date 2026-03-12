@@ -133,9 +133,20 @@ To specify filters you need to use the input `HotelXFilterSearchInput` in your q
 :::
 
 :::tip Suppliers + Access Combined
-The `suppliers` and `access` filters are combinable.
+The supplier and access filters are combinable. When both are present and there is a conflict, the supplier filter takes precedence over the access filter.
 
-When both are present, **the `suppliers` filter takes precedence** over the `access` filter.
+Combination behavior:
+
+- `supplier.includes + access.includes`: both filters are applied and results are combined.
+- `supplier.excludes + access.includes`: accesses that belong to excluded suppliers are removed.
+- `supplier.includes + access.excludes`: all accesses from the included suppliers are considered, except the excluded access codes.
+
+Examples:
+
+- `suppliers.includes = ["HOTELTEST"]` + `access.includes = ["5647"]` (access from `TTHOTTEST`):
+  Search runs with all accesses from `HOTELTEST`, plus access `5647` from `TTHOTTEST`.
+- `suppliers.excludes = ["TTHOTTEST"]` + `access.includes = ["5647", "2"]`:
+  Access `5647` is removed because `TTHOTTEST` is excluded. Access `2` is kept.
 :::
 
 All these filters are optional. Example to request only search results from access "2" and options "PACKAGE":

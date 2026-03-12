@@ -3,13 +3,12 @@ title: Upgrade to FastX Codes
 sidebar_position: 9
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
 # FastX Migration Guide
 
-**Already working with Hotel-X and ready to start using FastX codes?** Good news, the transition is simple and requires only a few adjustments. 
+**Already working with Hotel-X and ready to start using FastX codes?** Good news, the transition is simple and requires only a few adjustments.
 FastX introduces a unified coding system that replaces supplier-specific hotel, board, and room codes with a single Travelgate standard. And the best part? You can keep using your existing Hotel-X API exactly as it is.
 
 Until now, your integration depended on each supplier’s own codes. With FastX, you simply request using FastX hotel codes, and the response includes both FastX and supplier codes—cleaner, simpler, and far easier to maintain.
@@ -17,24 +16,24 @@ Until now, your integration depended on each supplier’s own codes. With FastX,
 This guide is built for Buyers who already have a full Hotel-X setup and just need to understand what changes to apply. No rebuilds, no new API, just a few small technical adjustments. We’ll walk you through what’s different, why it matters, and how to adapt your current integration quickly and confidently.
 
 ### Traditional Flow (Hotel-X Standard)
+
 In the standard setup, your system handles various supplier codes that must be normalized through a mapping process within the API before reaching the supplier.
 
 ![Hotel-X Standard Mode](https://stplaformwe.blob.core.windows.net/kbase/hotelx_simple_mode.gif)
 
 ### Optimized Flow (Hotel-X with FastX codes)
 
-By adopting FastX codes, your system **only needs to manage FastX codes**. You send your requests using these standardized codes, and Travelgate automatically handles the relationship and translation to the supplier's native system internally. 
+By adopting FastX codes, your system **only needs to manage FastX codes**. You send your requests using these standardized codes, and Travelgate automatically handles the relationship and translation to the supplier's native system internally.
 ![Hotel-X FastX Mode](https://stplaformwe.blob.core.windows.net/kbase/hotelx_fastx_mode.gif)
 
 Beyond technical performance, using a unified coding standard unlocks advanced business logic:
 
-* **Simplified Logic:** Your system only processes one set of codes regardless of how many suppliers are behind the request.
-* **Smart Aggregation:** Because rooms and boards are standardized, you can easily apply **aggregation rules**. This allows you to detect the cheapest options among different suppliers that share identical characteristics (e.g., the same room type and board basis), ensuring you always offer the most competitive rate.
+- **Simplified Logic:** Your system only processes one set of codes regardless of how many suppliers are behind the request.
+- **Smart Aggregation:** Because rooms and boards are standardized, you can easily apply **aggregation rules**. This allows you to detect the cheapest options among different suppliers that share identical characteristics (e.g., the same room type and board basis), ensuring you always offer the most competitive rate.
 
 ## Key Changes When Switching to FastX Codes
 
 When moving from supplier codes to FastX codes, the main updates happen in your Search query. Below you'll find a clear breakdown of what changes, how to adapt your current implementation, and what to expect in the Search and Booking flow.
-
 
 ### 1. Context Field Is No Longer Required
 
@@ -46,7 +45,6 @@ Since you will now always use FastX hotel codes, the context becomes optional:
 - You can simply omit the field. If omitted, we will automatically assume that the hotel code you send is a FastX code.
 
 You only need to specify the context when you intentionally want to continue sending **supplier-specific** hotel codes.
-
 
 <Tabs>
   <TabItem value="before" label="(Before) Supplier Codes">
@@ -77,21 +75,18 @@ You only need to specify the context when you intentionally want to continue sen
   </TabItem>
 </Tabs>
 
-
-
-
 ### 2. The Search Response Now Includes Both FastX and Supplier Codes
 
 Previously, each Search response only included the **supplier’s** hotel, board, and room codes and descriptions.
 
 When using FastX codes in your Search:
 
-- By default, the fields  
-  - `hotelCode`  
-  - `boardCode`  
-  - `rooms -> code`  
+- By default, the fields
+  - `hotelCode`
+  - `boardCode`
+  - `rooms -> code`
   - `rooms -> description`  
-  now correspond to **FastX** values.
+    now correspond to **FastX** values.
 
 - However, to maintain full transparency, Travelgate still allows you to retrieve the supplier’s original codes and descriptions.  
   To receive them, include the following fields in your Search request:
@@ -223,15 +218,14 @@ When using FastX codes in your Search:
   </TabItem>
 </Tabs>
 
-
 These additional supplier fields are also available in the responses for **Quote**, **Book**, **Booking**, and **Cancel**.
 
 :::info Reminder  
 To know which supplier and which specific access returned each option, refer to:
+
 - `supplierCode`
 - `accessCode`
-:::
-
+  :::
 
 ### 3. More Flexible Access Filtering in Your Search Queries
 
@@ -239,7 +233,7 @@ One of the major benefits of FastX is parallel supplier searching. When you send
 
 This means:
 
-- You are no longer limited to using the access filter just to target **a single supplier** per request.  
+- You are no longer limited to using the access filter just to target **a single supplier** per request.
 - By default, if you **do not** include any access filter, Travelgate will query **all suppliers and accesses** linked to the `client`.
 
 If you need to restrict the results to a determined set of suppliers for a specific search or commercial strategy—giving you precise control over which providers are queried—you have two options:
@@ -256,14 +250,11 @@ If you need to restrict the results to a determined set of suppliers for a speci
 
 For more details on how to link accesses to a `client`, check the documentation [here](/kb/platform/app-features/connections/api-settings).
 
-
-
 ### 4. Use an Aggregation Plugin (Strongly Recommended)
 
 Since FastX allows you to receive results from multiple suppliers in a single Search request, the response can become large, and you may receive several similar options for the same hotel/board/room combination.
 
 To simplify the response and apply business rules automatically, you can add an **Aggregation Plugin** in your Search query. We currently offer two aggregation plugins:
-
 
 <details>
     <summary>**Cheapest Price Plugin**</summary>
@@ -357,8 +348,8 @@ To simplify the response and apply business rules automatically, you can add an 
         For more details on how to implement this plugin, check the [Cheapest Price documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/cheapest-price).
         </div>
     </div>
-</details>
 
+</details>
 
 <details>
     <summary>**Preference Plugin (Recommended)**</summary>
@@ -373,12 +364,12 @@ To simplify the response and apply business rules automatically, you can add an 
             This plugin allows sophisticated business strategies to be applied automatically on Search responses. For more details on how to implement this plugin, check the [Preference documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/preference).
         </div>
     </div>
-</details>
 
+</details>
 
 ### 5. Retrieving FastX Hotel and Board Codes
 
-To obtain the FastX hotel and board masters via API, you can access the **hotel list** and **board list** exactly as you always have, but using the **access code of the FastX supplier**, which you'll find in *MyConnections*—just as you would with any other supplier.
+To obtain the FastX hotel and board masters via API, you can access the **hotel list** and **board list** exactly as you always have, but using the **access code of the FastX supplier**, which you'll find in _MyConnections_—just as you would with any other supplier.
 
 In addition, you can retrieve the full list directly from the Travelgate website under the [FastX Codes section](https://app.travelgate.com/connections/mapping) when logged in as a Buyer.
 
@@ -386,18 +377,28 @@ In addition, you can retrieve the full list directly from the Travelgate website
 You can also continue accessing each supplier’s own hotel list and detailed information exactly as before. Check more info and examples [here](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/fastx).
 :::
 
-### 6. The Booking Responses Now Includes Both FastX and Supplier Codes
-As previously mentioned in the Search section, Travelgate’s mappable entities (Hotel, Board, and Room) were being returned using the **supplier’s context** (supplier codes) within the Booking response.
+### 6. Booking Management: FastX and Supplier Codes (Current Scope)
 
-Following the implementation of the new functionality to include FASTX codes in Booking responses, we now provide both **supplier** and **FASTX codes** within the code fields of the mappable entities.
+Within Booking Management (**Booking**, **Cancel**, and **Amends**), FastX support is currently available with the following scope:
 
-**<u>Specifically:</u>**
+In this section, saying that an operation **supports FastX** means both:
 
-**Hotels**: We provide the hotelCode and the hotelCodeSupplier (code in seller's context).  
+- You can use **FastX codes in requests**.
+- You receive **FastX codes and supplier codes** in responses.
 
-**Boards**: We provide the boardCode (mapped code) and the boardCodeSupplier (code in seller's context)
+- **Booking**: FastX is supported.
+- **Cancel**: FastX is supported.
+- **Amends**: FastX codes are **not supported yet**:
+  - You cannot send FastX codes.
+  - FastX codes are not returned in the response.
 
-**Rooms**: We now return the code field (corresponding to the FASTX code) and the supplierCode field (corresponding to the supplier’s code). Additionally, we have included descriptive fields for rooms: description (mapped description) and descriptionSupplier (original supplier description).
+Additionally, in **aggregated Booking by date** call (when you do not specify an access), responses still return **supplier codes only** for now.
+
+When FastX mapping is available in the booking flow, these are the returned fields:
+
+- **Hotels**: `hotelCode` (FastX mapped code) and `hotelCodeSupplier` (seller context code).
+- **Boards**: `boardCode` (FastX mapped code) and `boardCodeSupplier` (seller context code).
+- **Rooms**: `code` (FastX mapped code), `supplierCode` (supplier code), `description` (mapped description), and `descriptionSupplier` (supplier description).
 
 <Tabs>
   <TabItem value="before" label="(Before) Supplier Codes">

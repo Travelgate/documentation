@@ -30,8 +30,8 @@ Travelgate allows only **one credential (Hotel-X Access Code) per Channel Manage
 
 7. **Learn with Travelgate Resources:** After gaining access, enhance your knowledge by watching [Travelgate Academy videos](https://www.youtube.com/watch?v=V_nJoDkMOTA) and reviewing our [Extranet Documentation](/docs/apps/inventory/extranet/overview) to get familiar with available features.
 
-8. **Create a Pilot Hotel:** Set up a pilot hotel to perform product loading tests. For step-by-step instructions, refer to the [Setup section](/docs/apps/inventory/extranet/set-up/overview) in our documentation. To simplify the transition to the live phase, we recommend using a **real hotel** intended for your portfolio and performing all tests via the ClientTest (CTEST) client in your buyer account (this is a dedicated client identifier used for test bookings in the live environment, not a separate sandbox).
+8. **Create a Pilot Hotel:** Set up a pilot hotel to perform product loading tests. For step-by-step instructions, refer to the [Setup section](/docs/apps/inventory/extranet/set-up/overview) in our documentation. To simplify the transition to the live phase, we recommend using a **real hotel** intended for your portfolio and performing all tests via the ClientTest (CTEST) client.
 
     :::info Important:
-    Please note that **there are no separate test credentials or dedicated sandbox environments for Inventory/Push Suppliers**. The ClientTest (CTEST) client uses your standard production access, so you must coordinate directly with your provider to **designate a specific pilot hotel and agree how test bookings will be handled.**
+    Please note that **there are no separate test credentials or dedicated sandbox environments for Inventory/Push Suppliers**. The ClientTest (CTEST) client uses your standard production access, so you must coordinate directly with your provider to **designate a specific pilot hotel for your testing procedures.**
     :::

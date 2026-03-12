@@ -11,7 +11,7 @@ sidebar_position: 2
 You can filter your Search requests through the [**HotelXFilterSearchInput**](/api/types/inputs/hotel-xfilter-search-input/), using criteria such as access, plugin, rateRules, currencies and status specified in your request.
 
 ### 1. Supplier - SupplierFilterInput
-The Supplier Filter allows the Buyer to narrow down the Search by defining an includes or excludes list of specific Supplier codes. If this filter is not provided, Hotel-X will default to querying all active suppliers configured for the client.
+The Supplier Filter allows the Buyer to narrow down the Search by defining an include or exclude list of specific Supplier codes. If this filter is not provided, Hotel-X will default to querying all active suppliers configured for the client.
 - Includes: If used, HotelX will execute the Search request using all accesses available **only** for the selected suppliers.
 - Excludes: If used, all available suppliers will be queried except those specified in the list.
 

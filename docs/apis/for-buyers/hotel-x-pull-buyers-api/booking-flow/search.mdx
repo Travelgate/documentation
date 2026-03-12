@@ -42,16 +42,16 @@ The main fields returned include:
 When creating your Search query, you have three different inputs to fill based on your specific needs:
 
 1. Criteria
-2. Settings
-3. Filter Search
+2. Filter Search
+3. Settings
 
 ```graphql
 query {
     hotelX {
     search
       criteria: {...}
+      filterSearch: {...}
       settings: {...}
-	  filterSearch: {...}
 	}
 }
 ```
@@ -112,52 +112,15 @@ To specify your search criteria you need to use the input `HotelCriteriaSearchIn
 
 If you don’t specify these optional parameters in your query, the system will automatically use the [default values from your API settings](/docs/apis/for-buyers/hotel-x-pull-buyers-api/making-requests/settings) configured for your account.
 
-### 2. Settings
-
-Settings are the common configurations used to construct requests to the Supplier/s. You need to specify some in your query or mutation, while others are optional. If you skip the optional ones, we'll use default API settings to keep your requests consistent and smooth.
-
-To specify your settings you need to use the [`HotelSettingsInput`](/api/types/inputs/hotel-settings-input) input in your query variables:
-
-```js
-{
-    "settings" : {
-        "client" : "client_demo",
-        "testMode" : true,
-        "auditTransactions" : false,
-        "timeout" : 5000
-    }
-}
-```
-
-**Mandatory Settings:**
-
-- `client`
-- `timeout` (Timeout in milliseconds for all supplier connections. Won't close Buyer connection if exceeded.)
-
-**Optional Settings:**
-
-- `group`
-- `auditTransactions`
-- `suppliers` (Each one contains its own code, settings and accesses.)
-- `plugins`
-- `testMode` (This flag allows only the accesses checked as test.)
-- `businessRules`
-- `clientTokens` (Used to identify the origin of the request, this is only used with some [plugins](../plugins/overview).)
-
-:::tip Key Recommendations
-
-- Customize the `timeout` according to your needs, taking into consideration **the maximum value in Search is 25,000ms**.
-- Set the `auditTransaction` to "false" in Search for better performance. Otherwise, it may generate large responses and negatively impact API performance.
-
-:::
-
-### 3. Filter Search
+### 2. Filter Search
 
 Filters allow you to precisely tailor the response according to your preferences.
 
 To specify filters you need to use the input `HotelXFilterSearchInput` in your query variables. The available filters within this input are:
 
-- `access`: By using the access filter, our system will exclusively include or exclude options from the selected accesses. If you choose not to include or exclude any access at all, requests will be made to all accesses linked to your specified `client`.
+- `suppliers`: The Buyer can define an `includes` or `excludes` list with one or more Supplier Code values. Hotel-X will execute the Search request using **all accesses (credentials)** available for the selected suppliers. If `includes` is used, only those suppliers are queried. If `excludes` is used, all suppliers except those in the list are queried.
+
+- `access`: This filter is similar to `suppliers`, but it works at credential level. The Buyer can define an `includes` or `excludes` list with one or more access codes, even from different suppliers. Hotel-X will execute the Search request using exactly the selected accesses (or all except excluded ones).
 
 - `rateRules`: This filter enables you to narrow down the options returned by the suppliers based on the desired rate rules you want to include or exclude.
 
@@ -165,13 +128,15 @@ To specify filters you need to use the input `HotelXFilterSearchInput` in your q
 
 - `currencies`: This filter enables you to narrow down the options returned by the suppliers based on the desired currencies you want to include or exclude.
 
-- `suppliers`: This filter operates similarly to the access filter and allows you to specify which suppliers you want to use in the search operation. If you define one or more suppliers to include, only results from those specific suppliers will be returned. Alternatively, you can exclude specific suppliers, which will use accesses from all suppliers except those listed in the exclusion list.
-
 :::caution Important
-  You cannot define both includes and excludes simultaneously. An include operation implicitly excludes all suppliers not present in the include list. If you need to specify excluded suppliers, ensure you do not include an include list at the same time.
+  You cannot define both `includes` and `excludes` simultaneously in the same filter.
 :::
 
-  The supplier filter and the access filter are combinable, and when both are applied, **the supplier filter takes precedence** over the access filter, ensuring more granular control over which supplier data is returned.
+:::tip Suppliers + Access Combined
+The `suppliers` and `access` filters are combinable.
+
+When both are present, **the `suppliers` filter takes precedence** over the `access` filter.
+:::
 
 All these filters are optional. Example to request only search results from access "2" and options "PACKAGE":
 
@@ -194,29 +159,52 @@ All these filters are optional. Example to request only search results from acce
 
 You would need to apply the same approach for filtering by specific rate rule (`rateRule`) and status (`status`).
 
-### Response Considerations
 
-In the response to your search query, you'll receive all the available options that match your criteria. Each option includes the supplier (`supplierCode`) that returned it, along with details such as room type, price, cancellation policies, and availability.
+### 3. Settings
 
-Remember that you’ll always receive both the unique **FastX codes** and the Supplier codes, ensuring full traceability across all your connections.
+Settings are the common configurations used to construct requests to the Supplier/s. You need to specify some in your query or mutation, while others are optional. If you skip the optional ones, we'll use default API settings to keep your requests consistent and smooth.
 
-Here are some key points to keep in mind:
+To specify your settings you need to use the [`HotelSettingsInput`](/api/types/inputs/hotel-settings-input) input in your query variables:
 
-#### Cancel Policies: Refundable Field
+```js
+{
+    "settings" : {
+        "client" : "client_demo",
+        "testMode" : true,
+        "auditTransactions" : false,
+        "timeout" : 5000,
+        "plugins": [...]
+    }
+}
+```
 
-In the room structure response, there is a `refundable` field. If this field is set to false, it means the room has a 100% cancellation cost, making it non-refundable. If the field returns a null value, it indicates that the Seller doesn't provide this information at this stage and you will obtain this information in the Quote step.
+**Mandatory Settings:**
 
-For a deeper understanding, take a look at our articles on [how cancellation policies work](/kb/faqs/faqs-cancel-policies/buyer-cancel-policies) and review some [practical cases and examples](/kb/faqs/faqs-cancel-policies/deadline-cases).
+- `client`
+- `timeout` (Timeout in milliseconds for all supplier connections. Won't close Buyer connection if exceeded.)
 
-:::caution Remember
-Some Sellers may not include cancellation policies in their availability data. You can learn more about each Seller's specific details in their [Metadata](../content/metadata).
+**Optional Settings:**
+
+- `group`
+- `auditTransactions`
+- `suppliers` (Each one contains its own code, settings and accesses.)
+- `plugins` (optional setting that lets you apply [extra functionality and business rules](../plugins/overview) to the response.)
+- `testMode` (This flag allows only the accesses checked as test.)
+- `businessRules`
+- `clientTokens` (Used to identify the origin of the request, this is only used with some [plugins](../plugins/overview).)
+
+:::tip Key Recommendations
+
+- Customize the `timeout` according to your needs, taking into consideration **the maximum value in Search is 25,000ms**.
+- Set the `auditTransaction` to "false" in Search for better performance. Otherwise, it may generate large responses and negatively impact API performance.
+
 :::
 
-### Aggregate Your Results (Strongly Recommended)
+:::tip Aggregation Plugins in Settings (Strongly Recommended)
 
-Since FastX allows you to receive results from multiple suppliers in a single Search request, the response can become large, and you may receive several similar options for the same hotel/board/room combination.
+When you search with **FastX codes** across more than one supplier (or multiple accesses), the response can become very large. The key advantage of FastX is that you can query multiple suppliers in one request and then **aggregate those results automatically**.
 
-To simplify the response and apply business rules automatically, you can add an **Aggregation Plugin** in your Search query. We currently offer two aggregation plugins:
+For that reason, we strongly recommend always using an aggregation plugin in multi-supplier/multi-access Search:
 
 <details>
     <summary>**Cheapest Price Plugin**</summary>
@@ -307,7 +295,7 @@ To simplify the response and apply business rules automatically, you can add an 
         </ul>
         The aggregation key is configurable, allowing you to define which option attributes (like <code>hotel</code>, <code>board</code>, <code>room type</code>, etc.) must be identical for options to be grouped.
 
-        For more details on how to implement this plugin, check the [Cheapest Price documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/cheapest-price).
+        For more details on how to implement this plugin, check the **[Cheapest Price documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/cheapest-price)**.
         </div>
     </div>
 
@@ -323,11 +311,35 @@ To simplify the response and apply business rules automatically, you can add an 
                 “Choose the cheapest option for the same hotel/board/room, <strong>unless</strong> supplier <code>SUP1</code> is within 2% of the cheapest price—then choose their option instead.”
             </blockquote>
 
-            This plugin allows sophisticated business strategies to be applied automatically on Search responses. For more details on how to implement this plugin, check the [Preference documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/preference).
+            This plugin is based on advanced preference rules that you can configure on our website, allowing sophisticated business strategies to be applied automatically on Search responses so selection is not only price-based. For more details on how to implement this plugin, check the **[Preference documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/preference)**.
         </div>
     </div>
 
 </details>
+
+:::
+
+
+
+
+### Response Considerations
+
+In the response to your search query, you'll receive all the available options that match your criteria. Each option includes the supplier (`supplierCode`) that returned it, along with details such as room type, price, cancellation policies, and availability.
+
+Remember that you’ll always receive both the unique **FastX codes** and the Supplier codes, ensuring full traceability across all your connections.
+
+Here are some key points to keep in mind:
+
+#### Cancel Policies: Refundable Field
+
+In the room structure response, there is a `refundable` field. If this field is set to false, it means the room has a 100% cancellation cost, making it non-refundable. If the field returns a null value, it indicates that the Seller doesn't provide this information at this stage and you will obtain this information in the Quote step.
+
+For a deeper understanding, take a look at our articles on [how cancellation policies work](/kb/faqs/faqs-cancel-policies/buyer-cancel-policies) and review some [practical cases and examples](/kb/faqs/faqs-cancel-policies/deadline-cases).
+
+:::caution Remember
+Some Sellers may not include cancellation policies in their availability data. You can learn more about each Seller's specific details in their [Metadata](../content/metadata).
+:::
+
 
 ## Query Inputs
 
@@ -339,6 +351,22 @@ To simplify the response and apply business rules automatically, you can add an 
 <HotelSearch />
 
 ## Examples
+
+In all examples below, we include the **Preference plugin** with the following configuration:
+
+- `primaryKey: "hotel,board,room,rateRules"`: Hotel-X will internally detect and group all options returned by all suppliers in your request that share the same hotel, board, room, and rate rule.
+- `optionsPerKey: 1`: for each group created by the `primaryKey`, Hotel-X returns the 1 cheapest option that also complies with the preference rules configured on our website (if any).
+
+<details>
+  <summary>Small example on how grouping works with `primaryKey` + `optionsPerKey`</summary>
+  <div>
+    <div>
+      If Hotel-X receives multiple options for `Standard Double Room + All Inclusive + Non-Refundable`, it will return only the cheapest option for that group. If it also receives options for `Standard Double Room + All Inclusive + Refundable`, that is a different group, and Hotel-X will also return the cheapest option for that second group.
+
+      You can find more examples and a detailed explanation of how this plugin works in the **[Preference plugin page](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/preference)**.
+    </div>
+  </div>
+</details>
 
 #### Search query [1 hotel, 1 rooms: 2 adults]
 

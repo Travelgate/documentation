@@ -2,7 +2,7 @@
 sidebar_position: 8
 ---
 
-# 201 Error - Error Retrieving Data
+# 201 Error - Error retrieving data
 
 ## What Does a 201 Error Mean?
 A **201 error** will appear in your content method response when **your static content data needs to be updated**.

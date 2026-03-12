@@ -216,11 +216,6 @@ export const searchQuickStartVariables =
         "language" : "en",
         "nationality" : "ES"
     },
-    "settings" : {
-        "client" : "client_demo",
-        "testMode" : true,
-        "timeout" : 25000
-    },
     "filterSearch" : {
         "access" : {
             "includes" : [
@@ -228,6 +223,34 @@ export const searchQuickStartVariables =
                 "5647"
             ]
         }
+    },
+    "settings" : {
+        "client" : "client_demo",
+        "testMode" : true,
+        "timeout" : 25000,
+        "plugins" : [
+            {
+                "step" : "RESPONSE",
+                "pluginsType" : {
+                    "type" : "PRE_STEP",
+                    "name" : "preference",
+                    "parameters" : [
+                        {
+                            "key" : "primaryKey",
+                            "value" : "hotel,board,room,rateRules"
+                        },
+                        {
+                            "key" : "optionsPerKey",
+                            "value" : "1"
+                        },
+                        {
+                            "key" : "internalCurrencyConversion",
+                            "value" : "true"
+                        }
+                    ]
+                }
+            }
+        ]
     }
 }`
 
@@ -249,6 +272,7 @@ export const searchWithoutFilterVariables =
             }
         ],
         "hotels" : [
+			"ES284122",
             "BR1518"
         ],
         "currency" : "EUR",
@@ -261,7 +285,30 @@ export const searchWithoutFilterVariables =
     "settings" : {
         "client" : "client_demo",
         "testMode" : true,
-        "timeout" : 25000
+        "timeout" : 25000,
+        "plugins" : [
+            {
+                "step" : "RESPONSE",
+                "pluginsType" : {
+                    "type" : "PRE_STEP",
+                    "name" : "preference",
+                    "parameters" : [
+                        {
+                            "key" : "primaryKey",
+                            "value" : "hotel,board,room,rateRules"
+                        },
+                        {
+                            "key" : "optionsPerKey",
+                            "value" : "1"
+                        },
+                        {
+                            "key" : "internalCurrencyConversion",
+                            "value" : "true"
+                        }
+                    ]
+                }
+            }
+        ]
     }
 }`
 
@@ -284,6 +331,81 @@ export const searchWithOnlyOneAccess =
             }
         ],
         "hotels" : [
+			"ES284122"
+        ],
+        "currency" : "EUR",
+        "markets" : [
+            "ES"
+        ],
+        "language" : "en",
+        "nationality" : "ES"
+    },
+    "filterSearch" : {
+        "access" : {
+            "includes" : [
+                "2"
+            ]
+        }
+    },
+    "settings" : {
+        "client" : "client_demo",
+        "testMode" : true,
+        "timeout" : 25000,
+        "plugins" : [
+            {
+                "step" : "RESPONSE",
+                "pluginsType" : {
+                    "type" : "PRE_STEP",
+                    "name" : "preference",
+                    "parameters" : [
+                        {
+                            "key" : "primaryKey",
+                            "value" : "hotel,board,room,rateRules"
+                        },
+                        {
+                            "key" : "optionsPerKey",
+                            "value" : "1"
+                        },
+                        {
+                            "key" : "internalCurrencyConversion",
+                            "value" : "true"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}`
+
+
+export const searchTwoRoomsVariables = 
+`{
+    "criteriaSearch" : {
+        "checkIn" : "2027-05-28",
+        "checkOut" : "2027-05-29",
+        "occupancies" : [
+            {
+                "paxes" : [
+                    {
+                        "age" : 30
+                    },
+                    {
+                        "age" : 30
+                    }
+                ]
+            },
+            {
+                "paxes" : [
+                    {
+                        "age" : 30
+                    },
+                    {
+                        "age" : 8
+                    }
+                ]
+            }
+        ],
+        "hotels" : [
             "BR1518"
         ],
         "currency" : "EUR",
@@ -293,115 +415,109 @@ export const searchWithOnlyOneAccess =
         "language" : "en",
         "nationality" : "ES"
     },
+    "filterSearch" : {
+        "access" : {
+            "includes" : [
+                "2",
+                "5647"
+            ]
+        }
+    },
     "settings" : {
         "client" : "client_demo",
         "testMode" : true,
-        "timeout" : 25000
-    },
-	"filterSearch" : {
-		"access" : {
-			"includes" : [
-				"2"
-			]
-		}
+        "timeout" : 25000,
+        "plugins" : [
+            {
+                "step" : "RESPONSE",
+                "pluginsType" : {
+                    "type" : "PRE_STEP",
+                    "name" : "preference",
+                    "parameters" : [
+                        {
+                            "key" : "primaryKey",
+                            "value" : "hotel,board,room,rateRules"
+                        },
+                        {
+                            "key" : "optionsPerKey",
+                            "value" : "1"
+                        },
+                        {
+                            "key" : "internalCurrencyConversion",
+                            "value" : "true"
+                        }
+                    ]
+                }
+            }
+        ]
     }
-}`
-
-
-export const searchTwoRoomsVariables = 
-`{
-	"criteriaSearch": {
-		"checkIn": "2027-05-28",
-		"checkOut": "2027-05-29",
-		"occupancies": [
-			{
-				"paxes": [
-					{
-						"age": 30
-					},
-					{
-						"age": 30
-					}
-				]
-			},
-			{
-				"paxes": [
-					{
-						"age": 30
-					},
-					{
-						"age": 8
-					}
-				]
-			}
-		],
-		"hotels": [
-			"BR1518"
-		],
-		"currency": "EUR",
-		"markets": [
-			"ES"
-		],
-		"language": "es",
-		"nationality": "ES"
-	},
-	"settings": {
-		"client": "client_demo",
-		"testMode": true,
-		"timeout": 25000
-	},
-	"filterSearch": {
-		"access": {
-			"includes": [
-				"2",
-				"5647"
-			]
-		}
-	}
 }`
 
 
 export const searchMultipleHotelsVariables = 
 `{
-	"criteriaSearch": {
-		"checkIn": "2027-05-28",
-		"checkOut": "2027-05-29",
-		"occupancies": [
-			{
-				"paxes": [
-					{
-						"age": 30
-					},
-					{
-						"age": 30
-					}
-				]
-			}
-		],
-		"hotels": [
-			"BR1518",
-			"ES284122",
-			"US2",
-			"GB1"
-		],
-		"currency": "EUR",
-		"markets": [
-			"ES"
-		],
-		"language": "es",
-		"nationality": "ES"
-	},
-	"settings": {
-		"client": "client_demo",
-		"testMode": true,
-		"timeout": 25000
-	},
-	"filterSearch": {
-		"access": {
-			"includes": [
-				"2",
-				"5647"
-			]
-		}
-	}
+    "criteriaSearch" : {
+        "checkIn" : "2027-05-28",
+        "checkOut" : "2027-05-29",
+        "occupancies" : [
+            {
+                "paxes" : [
+                    {
+                        "age" : 30
+                    },
+                    {
+                        "age" : 30
+                    }
+                ]
+            }
+        ],
+        "hotels" : [
+            "BR1518",
+            "ES284122",
+            "US2",
+            "GB1"
+        ],
+        "currency" : "EUR",
+        "markets" : [
+            "ES"
+        ],
+        "language" : "en",
+        "nationality" : "ES"
+    },
+    "filterSearch" : {
+        "access" : {
+            "includes" : [
+                "2",
+                "5647"
+            ]
+        }
+    },
+    "settings" : {
+        "client" : "client_demo",
+        "testMode" : true,
+        "timeout" : 25000,
+        "plugins" : [
+            {
+                "step" : "RESPONSE",
+                "pluginsType" : {
+                    "type" : "PRE_STEP",
+                    "name" : "preference",
+                    "parameters" : [
+                        {
+                            "key" : "primaryKey",
+                            "value" : "hotel,board,room,rateRules"
+                        },
+                        {
+                            "key" : "optionsPerKey",
+                            "value" : "1"
+                        },
+                        {
+                            "key" : "internalCurrencyConversion",
+                            "value" : "true"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
 }`

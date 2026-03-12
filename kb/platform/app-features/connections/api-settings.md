@@ -41,13 +41,13 @@ The **API Settings** section allows you define default values for your Hotel-X P
      Refer to our [Hotel-X API Settings documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/making-requests/settings) for more details.
     :::
 
-    ![default-api-settings-organization](https://storage.travelgate.com/kbase/default-api-settings-organization.jpg)
+    ![tg-api-settings-1](https://storage.travelgate.com/kbase/tg-api-settings-1.png)
 
     #### 2. Clients Settings
 
     Use this section to manage your Hotel-X clients or create new ones. Clients serve as labels to organize traffic and configuration.
 
-    ![default-api-settings-client](https://storage.travelgate.com/kbase/default-api-settings-client.jpg)
+    ![tg-api-settings-2](https://storage.travelgate.com/kbase/tg-api-settings-2.png)
 
     - **Create a New Client**  
     To add a new client. By default, new clients inherit all connection accesses. If your Search query doesn’t specify an access, all available accesses will be used.
@@ -76,7 +76,7 @@ The **API Settings** section allows you define default values for your Hotel-X P
     - **View Logs**  
     To review the history of changes applied to the supplier configuration. This section shows what was modified, when the change occurred, and which user performed the action.
 
-    ![default-api-settings-supplier](https://storage.travelgate.com/kbase/default-api-settings-supplier.jpg)
+    ![tg-api-settings-4](https://storage.travelgate.com/kbase/tg-api-settings-4.png)
 
 
     #### 4. Access Settings
@@ -88,4 +88,4 @@ The **API Settings** section allows you define default values for your Hotel-X P
     To review the history of changes applied to the access configuration. This section shows what was modified, when the change occurred, and which user performed the action.
 
 
-    ![default-api-settings-access](https://storage.travelgate.com/kbase/default-api-settings-access.jpg)
+    ![tg-api-settings-5](https://storage.travelgate.com/kbase/tg-api-settings-5.png)

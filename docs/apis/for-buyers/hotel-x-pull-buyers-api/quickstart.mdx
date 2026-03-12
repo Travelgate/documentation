@@ -82,7 +82,15 @@ But now this quickstart guide will focus on the basics of using the Hotel-X API 
 
 ### 1. Find available hotels based on your search criteria
 
-The Search query is where the adventure begins in our shopping journey! In this example, we'll explore availability for a **single hotel using its FastX code**. This hotel is offered by two different test Suppliers, so the request will include both accesses `'2'` and `'5647'`, one for each Supplier. 
+The Search query is where the adventure begins in our shopping journey.
+
+In Hotel-X, a Buyer can decide the scope of each Search request:
+
+- Send the request to **all connected Suppliers**.
+- Send the request to only **specific Suppliers**.
+- Send the request to only **specific accesses** (credentials).
+
+In this example, we'll explore availability for a **single hotel using its FastX code** and we will send the Search request to **2 specific accesses**: `'2'` and `'5647'`.
 
 Remember, an **access** is a unique code representing the credentials that a Supplier provides to allow you to query their portfolio. By specifying the accesses in your search, you can retrieve options from one or more Suppliers for the same hotel, all in a single request.
 
@@ -92,11 +100,18 @@ This step lets you explore your options before committing to a booking, ensuring
 
 &nbsp;
 
-If you execute the previous Search query by clicking on the play button, you'll see an example of how a Search response could look, with all the options and rates available for the hotel and criteria requested in the query. For each option, you will receive relevant information such as the **Supplier**, **FastX and Supplier codes**, **room type**, **price**, **cancellation policies**, and more.
+If you execute the previous Search query by clicking the play button, you'll get a sample Search response with all available options and rates for the requested hotel and criteria.
+
+For each option, you will receive key details such as **Supplier**, **FastX and Supplier codes**, **room type**, **price**, **cancellation policies**, and more. 
+This example focuses on the essential fields, but Hotel-X API supports many additional capabilities. To explore all Search features, check the full [search step documentation](../hotel-x-pull-buyers-api/booking-flow/search). 
 
 :::tip
 
- This example demonstrates the essential fields for obtaining results but keep in mind that the Hotel-X API offers a wide range of additional fields and functionalities! If you're curious and want to discover all the exciting details, check out the full [search step documentation](./booking-flow/search). Happy exploring! 😊🔍
+As explained in the detailed [Search documentation](./booking-flow/search), the more Suppliers and accesses you include in a single request, the larger the response can become.
+
+To keep responses manageable and improve performance, **we strongly recommend using an aggregation plugin** such as [Cheapest Price](../hotel-x-pull-buyers-api/plugins/cheapest-price) or [Preference](../hotel-x-pull-buyers-api/plugins/preference). With aggregation, Hotel-X can internally group equivalent options (for example, same hotel, board, and room type) across Suppliers and return only the **N best options**, based on your configuration.
+
+**This is one of the key advantages of FastX**: in a single request, you can query all suppliers or only selected ones, and then aggregate results automatically. 🚀
 
 :::
 
@@ -145,11 +160,11 @@ To help you get started, we provide test credentials and example data that you c
 **Example Suppliers and Hotels**  
 - **Travelgate test supplier** (code: HOTELTEST)
   - **Access Code:** `2`  
-  - **Available Hotel Codes:** `1`, `2`, and `23`
+  - **Available Hotel Codes:** `ES284122`, `BR1518`
 
 - **Smyrooms test supplier** (code: TTHOTTEST) 
   - **Access Code:** `5647`  
-  - **Available Hotel Code:** `27`
+  - **Available Hotel Code:** `BR1518`
 
 - **FastX test supplier, to retrieve static master data such hotel and board codes** (code: FASTX) 
   - **Access Code:** `34538`  

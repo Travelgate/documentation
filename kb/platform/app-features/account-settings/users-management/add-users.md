@@ -19,7 +19,7 @@ Follow these steps to invite new users to your Organization:
 3. There, you will see two tabs: Users Management and Contacts Management.
 4. Navigate to **Users Management**. Here, you’ll see a list of users already linked to your Organization.
 
-	![inviteuser_1](https://storage.travelgate.com/kbase/inviteuser_1.jpg)
+	![tg-users-management-1](https://storage.travelgate.com/kbase/tg-users-management-1.png)
 4. Click **Invite a User** and fill out the form with the requested information. **Only Owner and Admin roles** can invite new users.
    ![inviteuser_2](https://storage.travelgate.com/kbase/inviteuser_2.jpg)
    ![inviteuser_3](https://storage.travelgate.com/kbase/inviteuser_3.jpg)

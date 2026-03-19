@@ -129,7 +129,7 @@ Now that your responses are standardized across Suppliers, FastX enables powerfu
    - **Custom (business-driven):** your rules determine the winner
 
 <details>
-<summary><strong>📋 Aggreation example: "Hotel Santo Domingo" search</strong></summary>
+<summary><strong>📋 Aggregation example: "Hotel Santo Domingo" search</strong></summary>
 
 **Raw Search Results** — you receive 6 options across 3 Suppliers:
 

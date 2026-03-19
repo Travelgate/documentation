@@ -13,7 +13,7 @@ From **1 January 2026**, FastX is the mandatory connection mode for all new Buye
 
 ## Problem to Solve
 
-Without FastX, Buyers usually face 3 recurring problems when connection to more Partners:
+Without FastX, Buyers usually face 3 recurring problems when connecting to more Partners:
 
 - **Slow onboarding:** each new Supplier takes time to configure.
 - **Too much mapping:** hotel, board, and room mappings must be repeated again and again with every new Supplier the Buyer connects.

@@ -54,6 +54,25 @@ Sellers use this section to **validate or invalidate suggested mappings** betwee
 * **Bulk via CSV:** Use the "Bulk Hotel Validation" button and download the hotel data and mapping, change the 'status' column to validate or invalidate, and upload for processing.
   ![fastx-seller-validation-bulk-csv](https://stplaformwe.blob.core.windows.net/kbase/fastx_codes_seller_mode_validation3.png)
 
+### Understanding the Yellow Warning Icon in the FastX Validation Tool
+
+The Yellow Warning Icon indicates a **lower FastX match confidence score** based on system-wide data analysis.
+
+![tg-fastx-yellow-flag](https://storage.travelgate.com/kbase/tg-fastx-yellow-flag.png)
+
+#### How It Works
+
+This metric analyzes all Sellers mapped to a specific FastX code. If the data deviates significantly across the network, the system flags a potential mismatch between the FastX content and the Seller’s information.
+
+#### Action Required (Production Requirement)
+
+To ensure data integrity, any match marked with this icon **must be manually validated** before it can enter the production environment.
+
+#### Key Takeaways
+The yellow warning is a signal to **pay special attention** to the entry—it does not automatically mean the match is incorrect.
+The icon will remain visible even after validation because it reflects a collective data trend, not a single user's action.
+
+
 ### Important Notes
 
 * Always review data carefully before validating; you are responsible for confirmed mappings.
@@ -129,6 +148,25 @@ Sellers use this section to **validate or invalidate suggested mappings** betwee
 </details>
 
 
+<details>
+    <summary>Do I need to inform Travelgate to map my hotels, boards, and rooms for FastX?</summary>
+    <div>
+        <div>
+        No, Travelgate automatically maps the hotels/boards/rooms of all Sellers against the FastX database. However, Sellers must validate the mapping directly from the FastX section of the Travelgate Portal if they want Buyers to be able to request their product through the FastX access.
+        </div>
+    </div>
+</details>
+
+
+<details>
+    <summary>How long does it take to update the FastX mapping if I invalidate a hotel?</summary>
+    <div>
+        <div>
+        If a Seller invalidates a hotel previously validated against FastX, the change is immediate. The hotel will be removed from the booking flow instantly, and no further petitions will be sent to the supplier for that property via FastX.
+        </div>
+    </div>
+</details>
+
 
 
 
@@ -190,3 +228,35 @@ By default, your booking flow will allow traffic for both **validated** and **pe
 Invalidated codes are **never allowed** in the booking flow — Travelgate will automatically block any traffic that uses FastX codes that have been invalidated by the Seller.
 :::
 
+### FAQs
+
+
+<details>
+    <summary>In which languages are FastX room descriptions returned?</summary>
+    <div>
+         <div>
+         Room descriptions can be returned in either English or Spanish. This can be configured by the Buyer according to their preference.
+        </div>
+    </div>
+</details>
+
+
+
+<details>
+    <summary>Can I obtain FastX codes if I request with the Supplier’s context?</summary>
+    <div>
+         <div>
+         If you are a Buyer with FastX access but perform a request using the Supplier context, you will only receive FastX codes for Hotels and Boards within the mappings node of the response. Room codes cannot be obtained this way, as they must be mapped through the Search response.
+        </div>
+    </div>
+</details>
+
+
+<details>
+    <summary>Can I see FastX codes if I do not have FastX access?</summary>
+    <div>
+         <div>
+         Buyers without FastX access can still view the FastX hotel codes associated with some of their connected Suppliers. However, they will not have access to the dedicated FastX Codes section on the Travelgate web portal for advanced management and mapping visibility.
+        </div>
+    </div>
+</details>

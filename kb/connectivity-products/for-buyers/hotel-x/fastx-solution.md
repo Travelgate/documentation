@@ -7,13 +7,13 @@ sidebar_position: 2
 FastX is **the new baseline for hotel connectivity** with our [Hotel-X API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart). It is not a separate API: you keep using Hotel-X, but with a standardized `FASTX` context and stronger aggregation capabilities.
 
 :::info 🚀 FastX: The New Standard for Buyers
-From **1 January 2026**, FastX is the mandatory connection mode for all new Buyers. Existing Buyers using Hotel-X API can continue as-is, but Buyers facing mapping or aggregation issues are strongly encouraged to [upgrade to FastX]((/docs/apis/for-buyers/hotel-x-pull-buyers-api/upgrade-to-fastx)) for improved stability and content quality.
+From **1 January 2026**, FastX is the mandatory connection mode for all new Buyers. Existing Buyers using Hotel-X API can continue as-is, but Buyers facing mapping or aggregation issues are strongly encouraged to [upgrade to FastX](/docs/apis/for-buyers/hotel-x-pull-buyers-api/upgrade-to-fastx) for improved stability and content quality.
 :::
 
 
 ## Problem to Solve
 
-Without FastX, Buyers usually face 3 recurring problems when connection to more Partners:
+Without FastX, Buyers usually face 3 recurring problems when connecting to more Partners:
 
 - **Slow onboarding:** each new Supplier takes time to configure.
 - **Too much mapping:** hotel, board, and room mappings must be repeated again and again with every new Supplier the Buyer connects.
@@ -50,13 +50,13 @@ FastX is not just a technical upgrade—it's a marketplace-wide shift that benef
 - **Less mapping overhead:** avoid repeating hotel, board, and room mapping work every time a new Supplier is connected.
 - **Aggregation in one query:** receive and compare options from multiple Suppliers in a single Search request.
 - **Faster Supplier activations:** reduce onboarding friction when expanding your Supplier coverage.
-- **Simpler operations:** maintain one unified code system instead of managing multiple Supplier-specific code logics.
+- **Simpler operations:** maintain one unified code system instead of managing multiple Supplier-specific code systems.
 - **Full transparency:** responses include both FastX standardized values and Supplier-native values.
 - **GIATA compatibility:** FastX codes align with GIATA's standardized identifiers (available as `travelgate`; see [GIATA multicodes](/kb/connectivity-products/for-buyers/mapping-solutions/giata/giata-multicodes)).
 - **Scalable growth:** expand your Supplier portfolio without proportionally multiplying technical complexity.
 
 **For Sellers:**
-- **Reduced mapping effort:** validate hotel and board matchings once, then serve all FastX Buyers with standardized codes.
+- **Reduced mapping effort:** validate hotel and board mappings once, then serve all FastX Buyers with standardized codes.
 - **Faster onboarding with Buyers:** standardized codes eliminate mapping back-and-forth cycles, accelerating go-live timelines.
 - **Higher portfolio quality:** validation workflows ensure hotel and board data is consistent across the Marketplace.
 - **Single-language distribution:** one shared code system reduces operational friction across all Buyer integrations.
@@ -72,7 +72,7 @@ To support standardization across the Marketplace, Travelgate generates unique F
 ### Hotel and Board Mapping
 
 Hotels and boards are mapped once and Travelgate provides standardized codes via:
-- The [Hotel-X API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/fastx)
+- The [Hotel-X API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/fastx-content)
 - The [FastX Codes tool](/kb/platform/app-features/connections/fastx-codes) (visual interface for validation)
 
 **Validation workflow:**
@@ -129,7 +129,7 @@ Now that your responses are standardized across Suppliers, FastX enables powerfu
    - **Custom (business-driven):** your rules determine the winner
 
 <details>
-<summary><strong>📋 Aggreation example: "Hotel Santo Domingo" search</strong></summary>
+<summary><strong>📋 Aggregation example: "Hotel Santo Domingo" search</strong></summary>
 
 **Raw Search Results** — you receive 6 options across 3 Suppliers:
 

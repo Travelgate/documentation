@@ -152,7 +152,7 @@ The icon will remain visible even after validation because it reflects a collect
     <summary>Do I need to inform Travelgate to map my hotels, boards, and rooms for FastX?</summary>
     <div>
         <div>
-        No, Travelgate automatically maps the hotels/boards/rooms of all Sellers against the FastX database. However, Sellers must validate the mapping directly from the FastX section of the Travelgate Portal if they want Buyers to be able to request their product through the FastX access.
+        No, Travelgate automatically maps the hotels/boards/rooms of all Sellers against the FastX database. However, **Sellers must validate these mappings** in the Travelgate Portal for their products to be accessible to Buyers using "Validated" mode; Buyers in "Default" mode can still access unvalidated content. Additionally, validating 80% or more of your portfolio grants you the "FastX Verified Seller" status in our Network, boosting your visibility and credibility.
         </div>
     </div>
 </details>
@@ -162,7 +162,7 @@ The icon will remain visible even after validation because it reflects a collect
     <summary>How long does it take to update the FastX mapping if I invalidate a hotel?</summary>
     <div>
         <div>
-        If a Seller invalidates a hotel previously validated against FastX, the change is immediate. The hotel will be removed from the booking flow instantly, and no further requests will be sent to the supplier for that property via FastX.
+        If a Seller invalidates a hotel previously validated against FastX, the change is immediate. The hotel will be instantly removed from the booking flow for all FastX Buyers — including those not using 'validated' mode. No further requests will be sent to the Supplier for that property via FastX.
         </div>
     </div>
 </details>
@@ -246,7 +246,9 @@ Invalidated codes are **never allowed** in the booking flow — Travelgate will 
     <summary>Can I obtain FastX codes if I request with the Supplier’s context?</summary>
     <div>
          <div>
-         If you are a Buyer with FastX access but perform a request using the Supplier context, you will only receive FastX codes for Hotels and Boards within the mappings node of the response. Room codes cannot be obtained this way, as they must be mapped through the Search response.
+          Buyers with FastX access performing a **Content request** in the Supplier context will receive FastX codes for Hotels and Boards within the response's mapping node. Room codes cannot be obtained this way, as they must be mapped through the Search response.  
+
+         Note: **This does not apply to the Booking Flow**; if you use the Supplier context during Search, Quote, or Book, you will never receive FastX information..
         </div>
     </div>
 </details>

@@ -50,7 +50,7 @@ FastX is not just a technical upgrade—it's a marketplace-wide shift that benef
 - **Less mapping overhead:** avoid repeating hotel, board, and room mapping work every time a new Supplier is connected.
 - **Aggregation in one query:** receive and compare options from multiple Suppliers in a single Search request.
 - **Faster Supplier activations:** reduce onboarding friction when expanding your Supplier coverage.
-- **Simpler operations:** maintain one unified code system instead of managing multiple Supplier-specific code logics.
+- **Simpler operations:** maintain one unified code system instead of managing multiple Supplier-specific code systems.
 - **Full transparency:** responses include both FastX standardized values and Supplier-native values.
 - **GIATA compatibility:** FastX codes align with GIATA's standardized identifiers (available as `travelgate`; see [GIATA multicodes](/kb/connectivity-products/for-buyers/mapping-solutions/giata/giata-multicodes)).
 - **Scalable growth:** expand your Supplier portfolio without proportionally multiplying technical complexity.

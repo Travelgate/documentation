@@ -161,21 +161,21 @@ After the check-in date, the cancellation cost will be equal to the total value 
   The parameters that are typically evaluated are:
 
   - **`DistributionTypeFilter`**
-    - **Format:** `"DistributionTypeFilter": "B2B"` or `"DistributionTypeFilter": "B2C"`
+    - **Format:** `DistributionTypeFilter: B2B` or `DistributionTypeFilter: B2C`
     - **Maps to field in Inventory:** **Distribution Type**
 
   - **`BillingCompanyFilter`**
-    - **Format:** `"BillingCompanyFilter": "ACME_TRAVEL"`
+    - **Format:** `BillingCompanyFilter: ACME_TRAVEL`
     - **Maps to field in Inventory:** **Billing Companies**
 
   - **`ClientFilter`**
-    - **Format:** `"ClientFilter": "CLIENT_A"`
+    - **Format:** `ClientFilter: CLIENT_A`
     - **Maps to field in Inventory:** **Selling Clients**
 
   The behavior and business meaning of each value (notification and filtering) are defined in **Business Rules fields** below.
 
   :::tip Dynamic parameter override
-  To hot-change these parameters in Search (without changing the access static configuration), if you use Hotel-X Pull Buyer API, use the ["Add parameters" Hotel-X plugin](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/add-parameter).
+  To hot-change these parameters in Search (without changing the access static configuration), if you use Hotel-X Pull Buyers API, use the ["Add parameters" Hotel-X plugin](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/add-parameter).
   :::
 
 
@@ -368,7 +368,7 @@ Firs step would be to click in the `Add Offer` button over the base rate for whi
 <li>Typical model: <code>n</code> accesses in the organization mapped to <code>n</code> clients in Inventory (one client per access).</li>
 </ul>
 
-<p>In many multi-access cases, <a href="/docs/apps/inventory/extranet/set-up/setup#how-to-add-a-rate">Business Rules</a> are also used to:</p>
+<p>In many multi-access cases, the configurations described in <a href="/docs/apps/inventory/extranet/set-up/setup#how-to-add-a-rate">How to add a rate</a> are also used to:</p>
 <ul>
 <li>notify who is booking (Billing Company / Selling Client), and</li>
 <li>filter availability by Billing Companies, Selling Clients, or Distribution Type.</li>

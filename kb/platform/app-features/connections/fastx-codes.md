@@ -162,7 +162,7 @@ The icon will remain visible even after validation because it reflects a collect
     <summary>How long does it take to update the FastX mapping if I invalidate a hotel?</summary>
     <div>
         <div>
-        If a Seller invalidates a hotel previously validated against FastX, the change is immediate. The hotel will be removed from the booking flow instantly, and no further petitions will be sent to the supplier for that property via FastX.
+        If a Seller invalidates a hotel previously validated against FastX, the change is immediate. The hotel will be removed from the booking flow instantly, and no further requests will be sent to the supplier for that property via FastX.
         </div>
     </div>
 </details>

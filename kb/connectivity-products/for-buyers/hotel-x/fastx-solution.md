@@ -56,7 +56,7 @@ FastX is not just a technical upgrade—it's a marketplace-wide shift that benef
 - **Scalable growth:** expand your Supplier portfolio without proportionally multiplying technical complexity.
 
 **For Sellers:**
-- **Reduced mapping effort:** validate hotel and board matchings once, then serve all FastX Buyers with standardized codes.
+- **Reduced mapping effort:** validate hotel and board mappings once, then serve all FastX Buyers with standardized codes.
 - **Faster onboarding with Buyers:** standardized codes eliminate mapping back-and-forth cycles, accelerating go-live timelines.
 - **Higher portfolio quality:** validation workflows ensure hotel and board data is consistent across the Marketplace.
 - **Single-language distribution:** one shared code system reduces operational friction across all Buyer integrations.

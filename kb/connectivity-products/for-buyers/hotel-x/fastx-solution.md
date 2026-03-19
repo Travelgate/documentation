@@ -7,7 +7,7 @@ sidebar_position: 2
 FastX is **the new baseline for hotel connectivity** with our [Hotel-X API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart). It is not a separate API: you keep using Hotel-X, but with a standardized `FASTX` context and stronger aggregation capabilities.
 
 :::info 🚀 FastX: The New Standard for Buyers
-From **1 January 2026**, FastX is the mandatory connection mode for all new Buyers. Existing Buyers using Hotel-X API can continue as-is, but Buyers facing mapping or aggregation issues are strongly encouraged to [upgrade to FastX]((/docs/apis/for-buyers/hotel-x-pull-buyers-api/upgrade-to-fastx)) for improved stability and content quality.
+From **1 January 2026**, FastX is the mandatory connection mode for all new Buyers. Existing Buyers using Hotel-X API can continue as-is, but Buyers facing mapping or aggregation issues are strongly encouraged to [upgrade to FastX](/docs/apis/for-buyers/hotel-x-pull-buyers-api/upgrade-to-fastx) for improved stability and content quality.
 :::
 
 

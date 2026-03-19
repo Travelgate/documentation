@@ -247,7 +247,7 @@ Invalidated codes are **never allowed** in the booking flow — Travelgate will 
          <div>
           Buyers with FastX access performing a **Content request** in the Supplier context will receive FastX codes for Hotels and Boards within the response's mapping node. Room codes cannot be obtained this way, as they must be mapped through the Search response.  
 
-         Note: **This does not apply to the Booking Flow**; if you use the Supplier context during Search, Quote, or Book, you will never receive FastX information..
+         Note: **This does not apply to the Booking Flow**; if you use the Supplier context during Search, Quote, or Book, you will never receive FastX information.
         </div>
     </div>
 </details>

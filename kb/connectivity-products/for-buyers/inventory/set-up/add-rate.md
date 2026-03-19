@@ -68,11 +68,41 @@ Configure whether the rate is modifiable after booking and define any amendment 
 
 #### Business Rules
 
-Configure advanced parameters for rate distribution. Note: Some parameters require configuration in the client's access. For Hotel-X Pull Buyer API users, use the "[Add parameters](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/add-parameter)" Hotel-X plugin to modify these settings dynamically.
+Business Rules let you classify a rate and control how it behaves in Search and booking flows for Push/Hybrid connections.
 
-- **Billing Companies:** Inform the company with which this option is billed. In order to use this feature, billing companies must be pre-loaded into the Travelgate system.
-- **Selling Clients:** Define which clients are included or excluded from this rate option.
-- **Distribution Type:** Select your distribution channel type (B2B or B2C).
+These fields are evaluated together with the **Access Code** context used by the buyer. In other words, what you configure in the rate is matched with the access parameters (or dynamic parameters sent in the request).
+
+Supported filters:
+
+- `DistributionTypeFilter` (B2B/B2C)
+- `BillingCompanyFilter` (billing company value)
+- `ClientFilter` (selling client value)
+
+If you work with Hotel-X Pull Buyer API and need to change values per request, use the [Add parameters plugin](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/add-parameter).
+
+**Notification function**
+
+Use these fields to notify the provider which billing company/client is making the reservation.
+For [Hybrid](/docs/apis/for-buyers/inventory-buyers/inventory-set-up-graphql-api/quickstart) connections, this value can be propagated to the provider booking request (if the provider has a target field in its API).
+
+**Filter function (availability)**
+
+You can also use the same values as filters in Search results:
+
+- If a rate is configured with specific values, only matching requests will receive it.
+- If a field is empty at rate level, it is considered open (available for all values in that field).
+
+Fields:
+
+- **Billing Companies:** Billing company associated with the rate. You must send the company list to Support so it is loaded and appears in the Inventory Extranet selector.
+- **Selling Clients:** Client(s) allowed (or excluded) for the rate. You must send the client list to Support so values are available.
+- **Distribution Type:** Channel type for that rate (`B2B` or `B2C`). If empty, the rate can be returned to both.
+
+Practical examples:
+
+- A rate with `Billing Companies = ACME_TRAVEL` is returned only when that billing company is present in the request context.
+- A rate configured for `Selling Client = CLIENT_A` is hidden for other clients.
+- A rate with `Distribution Type = B2C` is not returned in B2B requests.
 
 ## What are Derived Rates?
 

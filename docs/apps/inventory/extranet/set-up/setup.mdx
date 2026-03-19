@@ -151,26 +151,51 @@ After the check-in date, the cancellation cost will be equal to the total value 
 :::
 * **Cancellation policy - Calendar:** This option will only appear once you have created your rate previously with base cancel policies. The cancellation policy by calendar allows you to create specific cancel policies by day or date range. You can click the `Add range` button to specify a date range and the cancel policies. This new cancel policies by day will override the base cancel policies specified at rate level. If you want to remove a cancel policy by date you can click the `Delete range` button and specify your dates. You can also delete or check the cancel policies by day clicking in the day's number of the month.
 * **Specific Clients:** If you want to inform that this rate is only for a list of specific clients check this option and add both Code (code that represent your client) and Description (normally the name of the client). You can add maximum 15 clients. The client codes have to be unique on the same rate.
-* **Amendments policy:** Informs if a Rate is modifiable and their fees if any is applied. When the checkbox `Amendments allowed` is checked, the rate allows modifications. If the modifications implies fees, they can be added through the `+` button to setup the rate amend fees. All you need to do is to indicate the days in advance before the arrival date, type (between amount and percent) and amount. If no fee is required, then you don't need to specify it. 
-* **BusinessRules:** The business rules explained below have the peculiarity that some parameters need to be added to the client's access to use this functionality correctly. The parameters that must be added are the following:
-    
-      "DistributionTypeFilter": "B2C/B2B".
-      "BillingCompanyFilter": "one of the companies indicated in the initial listing".
-      "ClientFilter": "client1"(client requesting availability).
+* **BusinessRules:** Business Rules in Inventory allow you to classify a rate and then control how that rate is consumed in Search/Book flows.
 
- To be able to hot-change these parameters, if you use the Hotel-X Pull Buyer API, you must use the ["Add parameters" Hotel-X plugin](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/add-parameter).
+  These rules can be used with two main purposes:
 
-    * **Billing Companies:** Informs the company with which this option is billed. In order to use this feature, billing companies must be pre-loaded into the travelgate system.
-    * **Selling Clients:** Inform which clients are included or excluded from this option. To use this function, you have to send us a file with a list of all the clients you work with. We preload these clients into the Travelgate system.
-    * **Distribution Type:** Select the type of distribution you work with for this option.
+  1. **Notification purpose:** Inform the final provider who is booking (for example, billing department or client).
+  2. **Filter purpose:** Restrict availability so a rate is returned only for specific commercial segments.
 
-:::note
+  The parameters that are typically evaluated are:
 
-As a reminder, the total amount of a **modification** is the addition of amend fee, applicable cancellation changes and rate variance. This criteria will build the new amount to be quoted in any Amend request. Total amended price = cancellation policy fee i(if applicable) + amend fee + new price
+  - **`DistributionTypeFilter`**
+    - **Format:** `"DistributionTypeFilter": "B2B"` or `"DistributionTypeFilter": "B2C"`
+    - **Maps to field in Inventory:** **Distribution Type**
 
-:::
+  - **`BillingCompanyFilter`**
+    - **Format:** `"BillingCompanyFilter": "ACME_TRAVEL"`
+    - **Maps to field in Inventory:** **Billing Companies**
 
-When a rate is added, it appears in the hotel node when you click the arrow that appears on the left side of the hotel name.
+  - **`ClientFilter`**
+    - **Format:** `"ClientFilter": "CLIENT_A"`
+    - **Maps to field in Inventory:** **Selling Clients**
+
+  The behavior and business meaning of each value (notification and filtering) are defined in **Business Rules fields** below.
+
+  :::tip Dynamic parameter override
+  To hot-change these parameters in Search (without changing the access static configuration), if you use Hotel-X Pull Buyer API, use the ["Add parameters" Hotel-X plugin](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/add-parameter).
+  :::
+
+
+  **Business Rules fields**
+
+    * **Billing Companies:** Identifies the billing company associated with the rate.
+      - **Notification use:** informs the provider about the billing department/company behind the booking.<br/><br/>*Example: if a booking is made for the finance division `ACME_FINANCE`, that value can be sent to the provider booking request so they can identify who is billing the reservation.*<br/><br/>
+      - **Filter use:**  you can include/exclude the billing company, if Billing Companies are configured at rate level, only matching values will return that rate in availability. If no value is configured in the rate, availability is open to all. Billing Companies values must be preloaded in Travelgate (send your list to Support).<br/><br/>*Example: if a rate is configured with Billing Companies = `ACME_FINANCE`, a Search with `BillingCompanyFilter=ACME_FINANCE` returns the rate, while `BillingCompanyFilter=ACME_LEISURE` does not.*<br/><br/>
+
+    * **Selling Clients:** Identifies which internal client(s) can consume that rate.
+      - **Notification use:** can identify the client making the reservation.<br/><br/>*Example: if the booking belongs to internal client `CLIENT_A`, that value can be sent to the provider to identify the source client of the booking.*<br/><br/>
+      - **Filter use:** you can include/exclude specific clients. If no client is configured in the rate, it is available for all clients. Selling Clients values must be preloaded in Travelgate (provide the full client list to Support).<br/><br/>*Example: if a negotiated rate is configured only for `CLIENT_A`, a Search with `ClientFilter=CLIENT_A` returns it, while `ClientFilter=CLIENT_B` does not.*<br/><br/>
+
+    * **Distribution Type:** Identifies the commercial channel for the rate.
+      - Values: **B2B** or **B2C**.
+      - **Filter use:** if the rate has B2B/B2C configured, only matching distribution requests will receive it. If no value is configured, it is returned for both.<br/><br/>*Example: if a rate is configured as `B2C`, requests with `DistributionTypeFilter=B2C` receive the rate, while `DistributionTypeFilter=B2B` do not.*<br/><br/>
+
+  Include/Exclude filter example in Business Rules fields:
+
+  ![Include/Exclude business rules filter example](/img/docs/push-api/Include_exclude_businessRules.png)
 
 ## Room
 
@@ -225,7 +250,6 @@ room in order to be able to save the derived rate. Bear in mind that if the deri
 * **Inform Base Rate:** Checkbox that indicates that the retrieve functions would return the name of the Base Rate instead of the derived rate’s name, if checked.
 * **Apply MealPlan Supplement from Base Rate:** Checkbox that allows the derived rate to have its own MealPlan Supplements. If checked, the derived rate would get the MealPlans of the base rate if any.
 * **Apply Specific Clients from Base Rate:** Checkbox that allows the derived rate to have its own Specific Clients. If checked, the derived rate would get them of the base rate if any.
-* **Apply Amend Fees from Base Rate:** Checkbox that allows the derived rate to be modifiable and to have its own Amends Fees. If checked, the derived rate will inherit from the base rate, if any.
 * **Booking Window:** Booking dates for which the rate will be available.
 
 :::note
@@ -313,6 +337,44 @@ Firs step would be to click in the `Add Offer` button over the base rate for whi
 
 ![Setup_FAQs_9](https://storage.travelgate.com/docs/Setup_FAQs_9.png)
 
+</details>
+
+<details>
+<summary>I need more than one access for a Push/Hybrid connection. How can I do it?</summary>
+<p>If you need to create multiple accesses for the same Push or Hybrid integration, open a ticket in the <a href="https://app.travelgate.com/support">Support Portal</a> and explain your business reason.</p>
+
+<p>To speed up the process, include:</p>
+<ul>
+<li>Organization name</li>
+<li>Provider / integration code</li>
+<li>Number of accesses required</li>
+<li>Access naming convention you want to use</li>
+<li>Which business model applies (scenario 1 or 2 below)</li>
+</ul>
+
+<b>1) Same inventory, multiple billing divisions</b>
+<p>You need multiple accesses to separate reservation billing by internal divisions, but all of them consume the same inventory.</p>
+<ul>
+<li>Functional impact: same properties, same prices, same availability for all accesses.</li>
+<li>Internal setup impact: low complexity.</li>
+<li>Typical model: <code>n</code> accesses in the organization mapped to <code>1</code> client in Inventory.</li>
+</ul>
+
+<b>2) Different internal clients/divisions with independent inventory</b>
+<p>You need one access per internal client/division, and each one must have independent contracting and distribution.</p>
+<ul>
+<li>Functional impact: each access can have its own properties, prices, and availability.</li>
+<li>Internal setup impact: higher complexity.</li>
+<li>Typical model: <code>n</code> accesses in the organization mapped to <code>n</code> clients in Inventory (one client per access).</li>
+</ul>
+
+<p>In many multi-access cases, <a href="/docs/apps/inventory/extranet/set-up/setup#how-to-add-a-rate">Business Rules</a> are also used to:</p>
+<ul>
+<li>notify who is booking (Billing Company / Selling Client), and</li>
+<li>filter availability by Billing Companies, Selling Clients, or Distribution Type.</li>
+</ul>
+
+<p>If this is part of your use case, include it in your support ticket so the setup is aligned from the beginning.</p>
 </details>
 
 <details>

@@ -5,7 +5,14 @@ sidebar_position: 2
 # Booking Notification
 ## Overview
 
-During the booking process, we'll send you a `BookNotif` request message to share reservation details. You just need to check and let us know the reservation status. After that, Travelgate will handle the response from your system, moving forward with the reservation and updating you on the status.
+During the booking lifecycle, we'll send you a `BookNotif` request message to share reservation details. This same object is used for both booking notifications and cancellation notifications. You just need to check and let us know the reservation status. After that, Travelgate will handle the response from your system, moving forward with the reservation and updating you on the status.
+
+The type of notification is determined by `bookDetails.status`:
+
+- `Confirmed`: booking notification (reservation confirmation).
+- `Cancelled`: cancellation notification (reservation cancellation).
+
+No other `status` values are expected in `BookNotif`.
 
 :::tip
 
@@ -838,9 +845,9 @@ After each request, a response should be provided from yours side. If a `bookNot
     <details style={{ pointerEvents: "none" }}>
       <summary>
         **status**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of String*)    
-        Status of the booking. Possible values:    
-        `Confirmed`    
-        `Cancelled`  
+        Status used to identify the notification type. Possible values:    
+        `Confirmed` (booking notification)   
+        `Cancelled` (cancellation notification)  
       </summary>
     </details>
       <details style={{ pointerEvents: "none" }}>
@@ -1801,9 +1808,9 @@ After each request, a response should be provided from yours side. If a `bookNot
   <details style={{ pointerEvents: "none" }}>
     <summary>
       **status**&nbsp;<span class="required"> *</span>&nbsp; (*Enum of String*)  
-      Status of the booking. Mandatory if the response is successful. Possible values:  
-      `Confirmed`: when bookNotif has bookDetails with status Confirmed.  
-      `Cancelled`: when bookNotif has bookDetails with status Cancelled.  
+      Status of the processed notification. Mandatory if the response is successful. Possible values:  
+      `Confirmed`: when `bookNotif.bookDetails.status` is `Confirmed` (booking notification).  
+      `Cancelled`: when `bookNotif.bookDetails.status` is `Cancelled` (cancellation notification).  
     </summary>
   </details>
 

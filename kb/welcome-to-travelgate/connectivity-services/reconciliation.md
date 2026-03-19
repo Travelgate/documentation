@@ -35,7 +35,11 @@ The Reconciliation API stores all bookings made by a Buyer through Travelgate an
 4. **Alerts & Reports**: Stay informed with:
     - Real-time notifications
     - Custom reports
-    - Insights to maintain accuracy
+    - Insights to maintain accuracy  
+    
+        :::info Full Visibility and Control
+        Track results in real-time through our centralized [Reconciliation Dashboard](https://app-reconciliation.travelgate.com/), where your information is transformed into clear, actionable insights and comprehensive reports. For a more hands-off approach, integrate [Webhooks](/docs/apps/reconciliation/webhooks) to push automated alerts directly to your internal systems, ensuring you maintain total oversight at every stage of the process.
+        :::
 
 ### Why is booking reconciliation important?
 Booking reconciliation helps resolve discrepancies such as:  
@@ -64,12 +68,6 @@ At the end of each month, Travelgate compares the reservation data from Sellers 
 2. Take corrective actions or contact the Support team if needed (according to each error).
 
 Reconciliation helps ensure accuracy but **should be used in addition to, not instead of**, proper booking management through API.
-
-### What else?
-We have also begun implementing **anomaly detection** for reservations. This involves comparing data between parties to identify potential discrepancies. When inconsistencies are detected, alerts are triggered to highlight the specific differences.  
-
-Currently, the system monitors changes in reservation prices, check-in and check-out dates, cancellation penalty deadlines, total prices and amounts, rooms count, and whether the reservation is refundable or non-refundable.
-
 
 :::info
 🚀 **Ready to start?** Check out our [API integration section](/docs/apps/reconciliation/quickstart/)!

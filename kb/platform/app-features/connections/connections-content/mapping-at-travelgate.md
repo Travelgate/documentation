@@ -21,7 +21,7 @@ To map FastX codes, Buyers can either handle it internally or use third-party ma
 :::tip Why FastX?
 FastX eliminates the need for repetitive mapping, reduces connection time, and ensures consistency across all Suppliers — enabling **faster integrations and more reliable data** across the Travelgate Marketplace.  
 
-Want to learn more about FastX Codes? You’ll find everything you need in the [FastX documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/fastx)🚀.
+Want to learn more about FastX Codes? You’ll find everything you need in the [FastX documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/fastx-content)🚀.
 :::
 
 ### Can all Buyers use FastX Codes?

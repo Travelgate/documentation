@@ -78,7 +78,7 @@ Supported filters:
 - `BillingCompanyFilter` (billing company value)
 - `ClientFilter` (selling client value)
 
-If you work with Hotel-X Pull Buyer API and need to change values per request, use the [Add parameters plugin](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/add-parameter).
+If you work with Hotel-X Pull Buyers API and need to change values per request, use the [Add parameters plugin](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/add-parameter).
 
 **Notification function**
 

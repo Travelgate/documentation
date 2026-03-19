@@ -75,7 +75,6 @@ The icon will remain visible even after validation because it reflects a collect
 
 ### Important Notes
 
-* Always review data carefully before validating; you are responsible for confirmed mappings.
 * If unsure, leave the status as **Pending** rather than invalidating.
 * New hotels or significant updates in your hotel list information automatically set the status to **Pending** and require re-validation.
 * Check both hotel and board mappings.

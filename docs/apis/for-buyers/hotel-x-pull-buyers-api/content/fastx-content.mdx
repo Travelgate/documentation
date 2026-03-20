@@ -5,7 +5,7 @@ sidebar_position: 2
 import {hotelsQuery, hotelsFastXVariables, hotelsVariables} from "../../../../../src/graphql/hotel-x/hotels.query";
 import {boardsQuery, boardsFastXVariables} from "../../../../../src/graphql/hotel-x/boards.query";
 
-# FastX Codes Content
+# FastX Content
 
 **FastX codes** are unique identifiers created by Travelgate to make connectivity across the Marketplace easier and more efficient.  
 They represent a unified way to identify **hotels**, **boards**, and **rooms**, so you can work with multiple Suppliers using a single, consistent set of codes.
@@ -19,7 +19,7 @@ The sections below explain how FastX codes work and how you can retrieve them th
 
 ## Hotels
 
-There are two ways to obtain FastX hotel codes:
+There are two ways to obtain FastX hotel codes via Hotel-X API:
 
 ### 1. FastX Hotel Master
 
@@ -57,11 +57,49 @@ To get the list of **FastX boards**, make a `boards` call using your **FastX acc
 
 ## Rooms
 
-With FastX, Travelgate standardizes room names and codes across all connected Suppliers. We process each Supplier’s room descriptions in real time and convert them into **unique FastX room codes and standardized names**.
+With FastX, room standardization happens at **search time**. There is no static room list.
 
-When you perform a **search** call, you’ll receive both:
+For each availability response, Travelgate analyzes the Supplier's native room description with an AI-based process. The model detects room components and then generates a **single FastX standardized description and code**.
 
-- The **FastX standardized room code and name**  
-- The **Supplier code and description**
+Detected components:
 
-This ensures a consistent experience across the Marketplace while keeping full visibility into each Supplier’s original data.
+- **Category** (`Standard`, `Deluxe`, `Basic`, etc.)
+- **Type** (`Room`, `Studio`, `Apartment`, etc.)
+- **Capacity** (`Single`, `Twin`, `Double`, `Triple`, etc.)
+- **Environment** (`Shared Bed`, `Women Only`, etc.)
+- **View** (`Ocean`, `Sea`, `Park`, `Garden`, etc.)
+- **Features** (`Jacuzzi`, `Air Conditioning`, `Kitchenette`, etc.)
+- **Beds** (`Queen`, `Double`, `King`, etc.)
+- **Bedrooms** (`1`, `2`, `3`, etc.)
+
+As a Buyer, in every **search** response you receive both:
+
+- The **Supplier's original room description and code**
+- The **FastX standardized room description and code**
+
+This gives you the best of both worlds:
+
+- **Consistency across Suppliers** with one unified room naming logic
+- **Less mapping effort** in your internal systems
+- **Easier comparison and deduplication** when different Suppliers describe the same room in different ways
+- **Full transparency** by preserving each Supplier's original data
+
+Example:
+Different Supplier descriptions can be standardized into the same FastX room name.
+
+| Supplier | Supplier Room Description | TGX Room Code | TGX Room Description |
+| --- | --- | --- | --- |
+| `SUP1` | `Sea View Double Room (BB BAR FLEX)` | `str--AA--d--` | `Standard Double Room views Sea` |
+| `SUP2` | `Sea View Double Room (RO BAR FLEX)` | `str--AA--d--` | `Standard Double Room views Sea` |
+| `SUP3` | `DOUBLE SEA VIEW` | `str--AA--d--` | `Standard Double Room views Sea` |
+| `SUP4` | `Double Sea View A` | `str--AA--d--` | `Standard Double Room views Sea` |
+| `SUP5` | `Double Sea View` | `str--AA--d--` | `Standard Double Room views Sea` |
+| `SUP6` | `double room,sea view` | `str--AA--d--` | `Standard Double Room views Sea` |
+| `SUP7` | `Double Sea View BB` | `str--AA--d--` | `Standard Double Room views Sea` |
+| `SUP8` | `Double Sea View HB` | `str--AA--d--` | `Standard Double Room views Sea` |
+| `SUP9` | `Habitacion doble con vistas al mar 2A` | `str--AA--d--` | `Standard Double Room views Sea` |
+| `SUP10` | `Main Building Double Seaview Room` | `str--AA--d--` | `Standard Double Room views Sea` |
+
+:::warning
+Room standardization is generated in real time and is **not Seller-validated**. This differs from entities such as **hotel** and **board**, which can be Seller-validated when using validated mode.
+:::

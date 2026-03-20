@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 # Why Choose Hotel-X?
@@ -15,7 +15,7 @@ _Connecting new Sellers has never been easier—no additional development, no ma
 The Hotel-X API **aggregates results** from multiple Sellers while keeping your connection simple and standardized through **FastX codes** — Travelgate’s unique identifiers for hotels, rooms, and boards. These codes ensure a seamless integration experience, allowing you to interact with any Supplier in the Marketplace through a single, unified structure.
 
 :::info FastX codes
-Want to learn more about FastX Codes? You’ll find everything you need in the **[FastX documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/fastx)**.  
+Want to learn more about FastX Codes? You’ll find everything you need in the **[FastX documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/fastx-content)**.  
 
 If you’re already certified and using previous mapping methods—either with your own codes or the supplier’s—don’t worry, those will still work. However, we highly recommend exploring the advantages of FastX for a more efficient and streamlined mapping experience!🚀
 :::

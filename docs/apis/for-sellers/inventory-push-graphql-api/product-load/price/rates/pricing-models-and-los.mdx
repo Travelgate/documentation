@@ -380,11 +380,31 @@ Guidance:
 The fields `minLos`, `maxLos`, and `duration` are already implemented in our **internal platform logic**, but they are still pending full GraphQL availability for external integrations.
 :::
 
-Internally, when LOS pricing is enabled for a given supplier-client pair, LOS is handled at rate level with:
+### What LOS means
+
+`LOS` means **Length of Stay**: the number of nights in the booking request.
+
+In LOS pricing, the same rate can have different price records depending on stay length conditions.
+
+### LOS fields and meaning
+
+When LOS is enabled internally for a supplier-client pair, LOS is handled at rate level with:
 
 - `minLos`
 - `maxLos`
 - `duration`
+
+Detailed behavior:
+
+- `minLos`: minimum stay length (in nights) for that price record to apply.
+- `maxLos`: maximum stay length (in nights) for that price record to apply.
+- `duration`: number of nights represented by the loaded amount block.
+
+Practical interpretation:
+
+- If a request stay length is outside `minLos`/`maxLos`, that LOS price record does not apply.
+- `duration` controls how the amount is interpreted by LOS logic (if omitted, behavior is equivalent to daily pricing).
+- LOS adds **stay-length conditions** to pricing; it does not replace the base price model logic.
 
 Internal logic example (same for any of the 5 pricing models):
 
@@ -408,7 +428,47 @@ Internal logic example (same for any of the 5 pricing models):
 }
 ```
 
-Once GraphQL LOS support is enabled, you can apply the same approach to any pricing model by keeping `minLos`/`maxLos`/`duration` and replacing only the inner `prices` block with:
+### How LOS affects each pricing model
+
+LOS acts as a **conditioning layer** on top of the selected pricing model.
+
+#### 1) `Per Room` + LOS
+
+- Base room amount remains `pricePerRoom.amount`.
+- LOS decides when that room amount is valid by stay length.
+- Extra guest supplements (if configured) still apply with the same supplement rules.
+
+#### 2) `Per Occupancy` + LOS
+
+- Occupancy-specific totals remain defined in `pricesPerOccupancy.prices`.
+- LOS filters those totals by stay-length conditions.
+- Result: exact occupancy pricing + LOS eligibility.
+
+#### 3) `Per Standard Occupancy` + LOS
+
+- Standard-occupancy base logic remains unchanged.
+- LOS controls whether the loaded standard-occupancy price set applies to that stay length.
+- Under-standard prices and extra-guest supplements continue to work as configured.
+
+#### 4) `Per Age Range` + LOS
+
+- Adult/child age-range logic remains unchanged.
+- LOS controls eligibility of that age-range price set for the requested stay length.
+- Age mapping and non-overlap rules are still required.
+
+#### 5) `Per Age Range And Occupancy` + LOS
+
+- Age-range + exact quantity logic remains unchanged.
+- LOS adds stay-length eligibility to that granular age/quantity configuration.
+- Quantity matching inside each age range still applies exactly as configured.
+
+### Summary
+
+- LOS does **not** change each model’s calculation philosophy.
+- LOS adds **when** a price applies (stay-length condition).
+- Price model defines **how** the amount is calculated; LOS defines **for which stay lengths** that model entry is valid.
+
+Once GraphQL LOS support is enabled, you can apply the same structure to any pricing model by keeping `minLos`/`maxLos`/`duration` and replacing only the inner `prices` block with:
 
 - `pricesPerOccupancy`
 - `pricePerStandardOccupancy`

@@ -1,0 +1,424 @@
+---
+sidebar_position: 2
+---
+
+# Pricing Models and LOS
+
+This page centralizes the pricing behavior for Inventory Product Load (`loadPriceRates`) in one place.
+
+It includes the 5 supported pricing models:
+
+- `Per Room`
+- `Per Occupancy`
+- `Per Standard Occupancy`
+- `Per Age Range`
+- `Per Age Range And Occupancy`
+
+And how each one combines with `LOS pricing` (`minLos`, `maxLos`, `duration`).
+
+## Scope and current status
+
+All pricing models described here are part of Inventory pricing behavior.
+
+| Pricing model | `rates[].prices` field | Dedicated GraphQL doc page |
+| --- | --- | --- |
+| Per Room | `pricePerRoom` | ✅ `load-rate-price-per-room` |
+| Per Occupancy | `pricesPerOccupancy` | ✅ `load-rate-price-per-occupancy` |
+| Per Standard Occupancy | `pricePerStandardOccupancy` | ✅ `load-rate-price-per-standard-occupancy` |
+| Per Age Range | `guestPricesPerAgeRange` | ⚠️ No dedicated page (covered here) |
+| Per Age Range And Occupancy | `guestPricesPerAgeRangeOccupancy` | ⚠️ No dedicated page (covered here) |
+
+:::note
+If your GraphQL environment is not yet updated, some fields may not be exposed in schema/UI helpers even if they are already explained here.
+In that case, keep these models documented and validated with your provider integration team.
+:::
+
+## Important rule: one pricing model per rate
+
+Inside each rate (`rates[]`), send **only one** pricing block inside `prices`.
+
+```json
+{
+  "rates": [
+    {
+      "rateCode": "BAR",
+      "prices": {
+        "pricePerRoom": {
+          "amount": 100.0
+        }
+      }
+    }
+  ]
+}
+```
+
+Do not mix multiple models (`pricePerRoom` + `pricesPerOccupancy`, etc.) in the same rate object.
+
+## Base `loadPriceRates` structure
+
+```graphql
+mutation LoadPriceRates($input: InventoryLoadPriceRatesInput!) {
+  loadPriceRates(loadPriceRatesInput: $input) {
+    success
+    adviseMessages {
+      code
+      description
+      level
+    }
+  }
+}
+```
+
+```json
+{
+  "input": {
+    "clientCode": "CLIENT_001",
+    "supplierCode": "SUPPLIER_001",
+    "hotelCode": "HOTEL_001",
+    "contextCode": "CTX_001",
+    "rates": [
+      {
+        "rateCode": "BAR",
+        "currency": "EUR",
+        "rooms": ["DBL"],
+        "dateRange": {
+          "start": "2026-05-01",
+          "end": "2026-05-10"
+        },
+        "prices": {
+        }
+      }
+    ]
+  }
+}
+```
+
+## Pricing models (without LOS)
+
+Before sending examples, this section explains the business logic of each pricing model so providers can choose the correct one for their commercial strategy.
+
+### How to choose the right pricing model
+
+| If your business needs... | Recommended model | Why |
+| --- | --- | --- |
+| One base room price for most occupancies | `Per Room` | Simple base amount, optional supplements only for extra guests |
+| A fixed final price for each exact occupancy | `Per Occupancy` | Maximum control per occupancy combination |
+| A rate centered on room standard occupancy | `Per Standard Occupancy` | Natural fit when standard occupancy is your pricing anchor |
+| Child pricing by age brackets (unit-based) | `Per Age Range` | Price depends on guest age intervals |
+| Child pricing by age bracket + exact quantity | `Per Age Range And Occupancy` | More granular control for each age range and guest count |
+
+### Common concepts (applies to all models)
+
+- Pricing is loaded at `rates[].prices`.
+- Send exactly **one** model inside each `prices` block.
+- `dateRange`, `rooms`, and `applicableWeekdays` define where that price applies.
+- If no matching price exists for a requested occupancy/date context, availability pricing may not be returned for that case.
+
+### 1) Per Room
+
+`Per Room` defines a single base amount for the room.
+
+Use this model when your commercial logic is “same room price by default”, with optional supplements only for guests above standard occupancy.
+
+Key behavior:
+
+- One base amount for the room.
+- Occupancies at or below room standard occupancy use the base room amount.
+- Extra-guest supplements can be defined by guest type (`adult`, `child`, `infant`) and position (`guestPosition`).
+- Best fit when you do not need a different base amount per occupancy combination.
+
+```json
+"prices": {
+  "pricePerRoom": {
+    "amount": 120.0
+  }
+}
+```
+
+### 2) Per Occupancy
+
+`Per Occupancy` defines a final total amount for each exact occupancy combination.
+
+Use this model when you need strict control per occupancy scenario (for example `2-0-0` vs `2-1-0`) and want to avoid system interpolation.
+
+Key behavior:
+
+- Each row is a complete price for one exact combination.
+- The combination must match exactly to apply that amount.
+- No standard-occupancy split logic is required: each amount is already final.
+- Supplements are typically not needed because pricing is already explicit by occupancy.
+
+```json
+"prices": {
+  "pricesPerOccupancy": {
+    "prices": [
+      {
+        "amount": 100.0,
+        "numberOfAdults": 2,
+        "numberOfChildren": 0,
+        "numberOfInfants": 0
+      },
+      {
+        "amount": 130.0,
+        "numberOfAdults": 2,
+        "numberOfChildren": 1,
+        "numberOfInfants": 0
+      }
+    ]
+  }
+}
+```
+
+### 3) Per Standard Occupancy
+
+`Per Standard Occupancy` defines a base amount for the room standard occupancy and lets you model below-standard and above-standard scenarios.
+
+Use this model when your commercial logic is centered on room standard occupancy.
+
+Key behavior:
+
+- `amount` is the reference price for standard occupancy.
+- `pricesUnderStandardOccupancy` optionally sets explicit prices for fewer guests.
+- `additionalGuestsSupplements` optionally adds supplements for extra guests above standard occupancy.
+- Until standard occupancy is fulfilled, passengers are priced against the standard-occupancy logic.
+- After standard occupancy is fulfilled, extra guests are priced using configured supplements.
+
+Practical interpretation:
+
+- If standard occupancy is `2`, a request `1 adult + 1 child` is priced as occupancy size `2` for the base part.
+- If request goes above standard occupancy (for example `1 adult + 2 children` in a standard `2` room), the extra passenger(s) use supplement rules.
+
+```json
+"prices": {
+  "pricePerStandardOccupancy": {
+    "amount": 150.0,
+    "pricesUnderStandardOccupancy": [
+      {
+        "guests": 1,
+        "amount": 110.0
+      }
+    ],
+    "additionalGuestsSupplements": {
+      "additionalAdults": [
+        {
+          "additionalGuestType": "ADULT",
+          "guestPosition": 1,
+          "amount": 30.0,
+          "type": "ADDITIVE"
+        }
+      ]
+    }
+  }
+}
+```
+
+### 4) Per Age Range
+
+`Per Age Range` separates pricing by adult amount(s) and child age brackets.
+
+Use this model when child price depends on age ranges, but not on exact child quantity per range.
+
+Key behavior:
+
+- Adults are priced through `adultPrices`.
+- Children are priced per age interval (`ageFrom`/`ageTo`).
+- Age ranges must be coherent and non-overlapping.
+- Child rows represent age-based pricing bands; request ages must map to the correct band.
+
+Practical interpretation:
+
+- Use this model when your child strategy is mainly “price by age group”.
+- It is especially useful when different child ages must produce different totals, even with similar occupancy structures.
+
+For conceptual behavior in Extranet, see:
+
+- [Price Per Age Range](/docs/apps/inventory/extranet/availability-and-rates/calendar-and-availability#price-per-age-range)
+
+```json
+"prices": {
+  "guestPricesPerAgeRange": {
+    "adultPrices": [
+      {
+        "numberOfAdults": 2,
+        "amount": 180.0
+      }
+    ],
+    "guestPrices": [
+      {
+        "ageFrom": 0,
+        "ageTo": 2,
+        "amount": 0.0
+      },
+      {
+        "ageFrom": 3,
+        "ageTo": 11,
+        "amount": 35.0
+      }
+    ]
+  }
+}
+```
+
+### 5) Per Age Range And Occupancy
+
+`Per Age Range And Occupancy` extends age-range logic by adding `numberOfGuests` per age bracket.
+
+Use this model when price must vary by both age interval and exact quantity in that interval.
+
+Key behavior:
+
+- Adults are priced through `adultPrices`.
+- Child pricing depends on `ageFrom` + `ageTo` + `numberOfGuests`.
+- For the same age range, duplicate `numberOfGuests` values are not allowed.
+- Matching is done with both age bracket and quantity context.
+
+Practical interpretation:
+
+- Choose this model when “1 child age 6-11” and “2 children age 6-11” must have different configured values.
+- It gives the highest granularity for child pricing behavior.
+
+For conceptual behavior in Extranet, see:
+
+- [Price Per Age Range and Occupancy](/docs/apps/inventory/extranet/availability-and-rates/calendar-and-availability#price-per-age-range-and-occupancy)
+
+```json
+"prices": {
+  "guestPricesPerAgeRangeOccupancy": {
+    "adultPrices": [
+      {
+        "numberOfAdults": 2,
+        "amount": 170.0
+      }
+    ],
+    "guestPrices": [
+      {
+        "ageFrom": 0,
+        "ageTo": 5,
+        "numberOfGuests": 1,
+        "amount": 0.0
+      },
+      {
+        "ageFrom": 6,
+        "ageTo": 11,
+        "numberOfGuests": 2,
+        "amount": 45.0
+      }
+    ]
+  }
+}
+```
+
+## Typical provider cases
+
+Use these examples to quickly identify which pricing model usually fits each provider strategy.
+
+### Case 1: "I have one room price and only charge extras above standard occupancy"
+
+Recommended model: `Per Room`
+
+Why:
+
+- Base amount is the same for the room.
+- You only configure supplements for extra adult/child/infant positions.
+- Easy maintenance when your pricing is mostly flat.
+
+### Case 2: "Each occupancy has its own final commercial price"
+
+Recommended model: `Per Occupancy`
+
+Why:
+
+- You define exact totals per occupancy combination.
+- No intermediate price logic is needed.
+- Best for providers that already maintain occupancy-price matrices.
+
+### Case 3: "My pricing is designed around standard occupancy"
+
+Recommended model: `Per Standard Occupancy`
+
+Why:
+
+- Base amount is anchored to room standard occupancy.
+- You can add specific prices below standard occupancy.
+- You can add supplements for guests above standard occupancy.
+
+### Case 4: "Child price depends on age brackets"
+
+Recommended model: `Per Age Range`
+
+Why:
+
+- Adults and children can be priced with separate logic.
+- Child pricing follows age intervals (`0-2`, `3-11`, etc.).
+- Good fit for family pricing policies with age-based child treatment.
+
+### Case 5: "Child price depends on both age bracket and number of children"
+
+Recommended model: `Per Age Range And Occupancy`
+
+Why:
+
+- Supports different prices for the same age range at different quantities.
+- Highest granularity for child pricing rules.
+- Useful for providers with detailed child-occupancy commercial policies.
+
+### Case 6: "I currently need LOS in my strategy"
+
+Current GraphQL status: not available yet.
+
+Guidance:
+
+- Keep your integration with one of the 5 pricing models currently exposed in GraphQL.
+- Prepare your internal pricing mapping for future LOS activation (`minLos`, `maxLos`, `duration`).
+- Coordinate LOS rollout timing with your Travelgate contact before enabling it in production flows.
+
+## LOS pricing with each model
+
+:::warning
+`LOS pricing` is currently **not available in GraphQL**.
+
+The fields `minLos`, `maxLos`, and `duration` are already implemented in our **internal platform logic**, but they are still pending full GraphQL availability for external integrations.
+:::
+
+Internally, when LOS pricing is enabled for a given supplier-client pair, LOS is handled at rate level with:
+
+- `minLos`
+- `maxLos`
+- `duration`
+
+Internal logic example (same for any of the 5 pricing models):
+
+```json
+{
+  "rateCode": "BAR",
+  "currency": "EUR",
+  "rooms": ["DBL"],
+  "dateRange": {
+    "start": "2026-05-01",
+    "end": "2026-05-10"
+  },
+  "minLos": 2,
+  "maxLos": 7,
+  "duration": 1,
+  "prices": {
+    "pricePerRoom": {
+      "amount": 120.0
+    }
+  }
+}
+```
+
+Once GraphQL LOS support is enabled, you can apply the same approach to any pricing model by keeping `minLos`/`maxLos`/`duration` and replacing only the inner `prices` block with:
+
+- `pricesPerOccupancy`
+- `pricePerStandardOccupancy`
+- `guestPricesPerAgeRange`
+- `guestPricesPerAgeRangeOccupancy`
+
+## Validation rules to keep in mind
+
+- `prices` must contain exactly one pricing model.
+- `amount` in `pricePerRoom`, `pricePerStandardOccupancy` and `pricesPerOccupancy` must be `> 0`.
+- Age-range models require non-overlapping ranges.
+- Age-range-and-occupancy must avoid duplicate `numberOfGuests` in the same age range.
+- `additionalGuestsSupplements` supports up to 3 positions per group (`adult`, `child`, `infant`).

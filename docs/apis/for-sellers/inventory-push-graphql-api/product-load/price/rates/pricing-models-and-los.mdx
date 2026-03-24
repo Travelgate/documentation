@@ -221,7 +221,7 @@ Use this model when child price depends on age ranges, but not on exact child qu
 Key behavior:
 
 - Adults are priced through `adultPrices`.
-- Children are priced per age interval (`ageFrom`/`ageTo`).
+- Children are priced per age interval (`ageFrom`/`ageTo`), where both boundaries are **inclusive** (values in these fields are included in the price range).
 - Age ranges must be coherent and non-overlapping.
 - Child rows represent age-based pricing bands; request ages must map to the correct band.
 
@@ -268,7 +268,7 @@ Use this model when price must vary by both age interval and exact quantity in t
 Key behavior:
 
 - Adults are priced through `adultPrices`.
-- Child pricing depends on `ageFrom` + `ageTo` + `numberOfGuests`.
+- Child pricing depends on `ageFrom` + `ageTo` + `numberOfGuests`, where both age boundaries are **inclusive** (values in these fields are included in the price range).
 - For the same age range, duplicate `numberOfGuests` values are not allowed.
 - Matching is done with both age bracket and quantity context.
 
@@ -436,7 +436,7 @@ LOS acts as a **conditioning layer** on top of the selected pricing model.
 
 - Base room amount remains `pricePerRoom.amount`.
 - LOS decides when that room amount is valid by stay length.
-- Extra guest supplements (if configured) still apply with the same supplement rules.
+- Extra guest supplements (if configured) still apply with the same supplement rules + LOS supplements rules.
 
 #### 2) `Per Occupancy` + LOS
 
@@ -448,7 +448,7 @@ LOS acts as a **conditioning layer** on top of the selected pricing model.
 
 - Standard-occupancy base logic remains unchanged.
 - LOS controls whether the loaded standard-occupancy price set applies to that stay length.
-- Under-standard prices and extra-guest supplements continue to work as configured.
+- Extra guest supplements (if configured) still apply with the same supplement rules + LOS supplements rules.
 
 #### 4) `Per Age Range` + LOS
 

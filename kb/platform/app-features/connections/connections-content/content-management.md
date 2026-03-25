@@ -27,8 +27,8 @@ In the **Connections Content** section, you can easily check and force updates f
     :::
 
 4. On the **results screen**, you can review the following details:
-    * Hotel Code
-    * [FastX](/kb/platform/app-features/connections/fastx-codes) hotel code (if available)
+    * Hotel code
+    * [FastX](/kb/platform/app-features/connections/fastx-codes) hotel code (or '_pending_' if unavailable).
     * Hotel name
     * Country
     * City
@@ -37,15 +37,23 @@ In the **Connections Content** section, you can easily check and force updates f
     * Last upload
 5. Clicking on a hotel opens its **hotel profile**, which displays additional property-level information (general details and room types). For example:
     - Hotel Address
-    - Supplier hotel code
-    - Hotel Code
+    - Hotel code
+    - Original supplier hotel code (if applicable)
     - Giata ID
     - Phone
     - Fax
     - Email
     - Web
     - Category
-    - Room types: list of all available rooms, as well as their room code, beds type and occupancies.
+    - Room types: list of all available rooms, as well as their room code, beds type and occupancies.  
+
+:::info
+Travelgate displays the **"Hotel code"** as the primary hotel identifier. This is the operational code used by the Buyer during Travelgate's booking flow within the Supplier context.
+
+To ensure full traceability, the **"Original supplier hotel code"** (the Seller’s native hotel code) is also displayed if it differs from the hotel code. If both identifiers are identical, the original supplier code is hidden to avoid redundancy.
+
+When reviewing **portfolio content for FastX**, the FastX hotel code and Original supplier hotel code columns are excluded because **the primary Hotel Code field already displays the required FastX identifier**.
+:::
 
     ![tg_connections_content_4](https://storage.travelgate.com/kbase/tg_connections_content_4.png)
 
@@ -69,18 +77,18 @@ The information displayed on the Connections Content screen **depends on the dat
     ![tg_download_portfolio2](https://storage.travelgate.com/kbase/tg_download_portfolio2.jpg)
 
 7. The CSV file includes these fields (if available by the Seller):
-    - hotelCode
-    - supplierCode
-    - fastXCode
-    - hotelName
-    - country
-    - latitude
-    - longitude
-    - address
-    - city
-    - categoryCode
-    - giataCode
-    - lastUpdate
+    - Hotel code
+    - Original supplier hotel code
+    - FastX hotel code
+    - Hotel name
+    - Country
+    - Latitude
+    - Longitude
+    - Address
+    - City
+    - Category code
+    - Giata ID
+    - Last Update
 
 
 ## Customize hotel list
@@ -126,7 +134,7 @@ The CSV file:
 7. Once confirmed, the Customize hotel list will be applied to the selected access, and a notification will appear in the **notification bell** confirming the update. Note that the processing time will depend on the size of the hotel list file.
 
 :::warning important
-- The Customize hotel list functionality relies on the supplier hotel code as shown in our Marketplace. As a Seller, you can obtain the list of hotel codes for a Buyer's hotel list either by clicking on individual hotel codes or by [downloading the full portfolio as a CSV file](/kb/platform/app-features/connections/connections-content/content-management#how-can-i-download-the-sellers-portfolio-in-csv) (hotelCode field).
+- The Customize hotel list functionality relies on the hotel codes as shown in our Marketplace. As a Seller, you can obtain the list of hotel codes for a Buyer's hotel list either by clicking on individual hotel codes or by [downloading the full portfolio as a CSV file](/kb/platform/app-features/connections/connections-content/content-management#how-can-i-download-the-sellers-portfolio-in-csv) (Hotel code field).
 - If you encounter errors, **ensure your CSV file meets the expected criteria:**
     - CSV format
     - A single column

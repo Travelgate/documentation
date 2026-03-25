@@ -48,11 +48,11 @@ After completing the hotel setup, the Buyer notifies the Channel Manager to "pus
 Buyers, Hotels, and Channel Managers should **maintain ongoing communication** to stay informed about updates, such as modifications, new rates, and room changes.
 :::
 
-### Handling Static Content
+### Push Integrations: Static Content
 
 In Push integrations, static content is generated and stored within Travelgate's system. Hotel and room codes will follow Travelgate’s format instead of the Seller’s, ensuring consistency across all connected Channel Managers and Push suppliers. However, content such as images, descriptions, and amenities is **not** provided.
 
-### Types of Push Integrations
+### Push Integrations: Booking Flow
 
 #### 1. Push Standard
 
@@ -79,6 +79,19 @@ The Push Hybrid model blends a Push-style setup with a Pull-style booking flow. 
     - Real-Time Accuracy: Helps ensure that pricing, final availability, and cancellation policies are validated at the exact moment of booking for maximum accuracy.
     - Best of Both Worlds: Combines the high-speed search performance of the Push model (for availability) with the transactional reliability and up-to-date conditions of the Pull model (for booking).
 
-:::info Future Developments
-The AutoSetup feature, currently a key advantage of the Push Hybrid model, is also being developed for some new Push Standard integrations. This enhancement will further streamline the onboarding process for Buyers using Standard Push connections.
+
+### Push Integrations: Setup
+Depending on the Push Supplier's compatibility, Buyers can choose between three levels of [SetUp automation](/docs/apis/for-buyers/inventory-buyers/inventory-set-up-graphql-api/quickstart/#setup-approach):  
+
+1. **Manual Setup:**  
+The Buyer manually inputs all Hotel, Room, and Rate data into the Travelgate Inventory Extranet. This offers maximum control but requires the most operational time.  
+
+2. **Partial AutoSetup:**  
+The system automatically synchronizes "Static" content (Hotels and Rooms) from the Supplier. Ideal for partially complete provider data, this reduces manual effort while allowing client-specified flexibility.
+
+3. **Full AutoSetup:**
+The entire process—including Hotels, Rooms, and Rates—is automated. This eliminates manual entry entirely, significantly reducing time to production and eliminating manual data entry errors.
+
+:::info
+SetUp automation availability depends on the specific Supplier's integration. Check out the full list of compatible Suppliers for Partial and Full AutoSetup [here](/docs/apis/for-buyers/inventory-buyers/inventory-set-up-graphql-api/quickstart/#setup-approach).
 :::

@@ -84,7 +84,7 @@ The Push Hybrid model blends a Push-style setup with a Pull-style booking flow. 
 Depending on the Push Supplier's compatibility, Buyers can choose between three levels of [SetUp automation](/docs/apis/for-buyers/inventory-buyers/inventory-set-up-graphql-api/quickstart/#setup-approach):  
 
 1. **Manual Setup:**  
-The Buyer manually inputs all Hotel, Room, and Rate data into the Travelgate Inventory Extranet. This offers maximum control but requires the most operational time.  
+    The Buyer manually inputs all Hotel, Room, and Rate data into the Travelgate Inventory Extranet. This offers maximum control but requires the most operational time.  
 
 2. **Partial AutoSetup:**  
 The system automatically synchronizes "Static" content (Hotels and Rooms) from the Supplier. Ideal for partially complete provider data, this reduces manual effort while allowing client-specified flexibility.

@@ -14,7 +14,7 @@ In the **Connections Content** section, you can easily check and force updates f
 
 2. **Click on** "Connections" > **Connections Content**  
 
-3. **Filter by Connection > Supplier > Access**, and click the "Get content" button to retrieve the corresponding portfolio. You can also filter by Country, Hotel Code, or Hotel Name using the "Filter results" panel on the left side of the screen.
+3. **Filter by Connection > Supplier > Access**, and click the "Get content" button to retrieve the corresponding portfolio. You can also filter by Country, Hotel code, or Hotel Name using the "Filter results" panel on the left side of the screen.
 
     ![tg_connections_content_4](https://storage.travelgate.com/kbase/tg_connections_content_5.png)
 
@@ -52,7 +52,7 @@ In the **Connections Content** section, you can easily check and force updates f
 
     To ensure full traceability, the **"Original supplier hotel code"** (the Seller’s native hotel code) is also displayed if it differs from the hotel code. If both identifiers are identical, the original supplier code is hidden to avoid redundancy.
 
-    When reviewing **portfolio content for FastX**, the FastX hotel code and Original supplier hotel code columns are excluded because **the primary Hotel Code field already displays the required FastX identifier**.
+    When reviewing **portfolio content for FastX**, the FastX hotel code and Original supplier hotel code columns are excluded because **the primary Hotel code field already displays the required FastX identifier**.
     :::
 
     ![tg_connections_content_4](https://storage.travelgate.com/kbase/tg_connections_content_4.png)

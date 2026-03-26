@@ -27,13 +27,14 @@ If you've ever submitted a Tech Support case, you know how important it is to st
 When you click **'Create New Case'**, the following happens:
 
 1. **Related Case Screen**: Indicate if your inquiry is linked to an existing support case to ensure streamlined communication and faster resolution.
+   - **"Yes, this is related to another case":** Select this option if you are following up on a previous request.
+      - Reference Number: Enter the related case ID so our team can immediately access the history of your request.
+      - Open Cases: If the related case is still Open, please return to that specific case in the Support Cases screen to add your comments. Keeping all communication in a single thread helps our team provide a faster solution.
+      - Closed Cases: If the original case is Closed, providing the reference number here allows us to link the context, and you may choose to reopen the original case if needed.
+   - **"No, this is not related to another case"**
+Select this option for entirely new inquiries. Upon selection, the "AIna Support Screen" will appear to guide you through the next steps (see the AIna Support section below for more details).
 
-- "Yes, this is related to another case": Select this option if you are following up on a previous request.
-   - Reference Number: Enter the related case ID so our team can immediately access the history of your request.
-   -Open Cases: If the related case is still Open, we recommend returning to that specific case in the Support Cases screen to add your comments. Keeping all communication in a single thread helps our team provide a faster solution.
-   - Closed Cases: If the original case is Closed, providing the reference number here allows us to link the context, or you may choose to reopen the original case if needed.
-- "No, this is not related to another case"
-Select this option for entirely new inquiries. Upon selection, the AIna Support Screen will appear to guide you through the next steps (see the AIna Support section below for more details).
+   ![tg-related-case](https://storage.travelgate.com/kbase/tg-related-case.png)
 
 2. **AIna Support Screen**: Enter your issue in the subject and provide a *detailed description* (include snippets, method used, error descriptions, etc.). This enables our virtual assistant, AIna, to potentially resolve your issue more quickly, and ensures our support team has all the necessary information to assist you effectively if further help is needed. **Refer to our [AIna User Guide](/kb/welcome-to-travelgate/support-resources/aina-user-guide) for best practices**.  
 

@@ -47,13 +47,13 @@ In the **Connections Content** section, you can easily check and force updates f
     - Category
     - Room types: list of all available rooms, as well as their room code, beds type and occupancies.  
 
-:::info
-Travelgate displays the **"Hotel code"** as the primary hotel identifier. This is the operational code used by the Buyer during Travelgate's booking flow within the Supplier context.
+    :::info
+    Travelgate displays the **"Hotel code"** as the primary hotel identifier. This is the operational code used by the Buyer during Travelgate's booking flow within the Supplier context.
 
-To ensure full traceability, the **"Original supplier hotel code"** (the Seller’s native hotel code) is also displayed if it differs from the hotel code. If both identifiers are identical, the original supplier code is hidden to avoid redundancy.
+    To ensure full traceability, the **"Original supplier hotel code"** (the Seller’s native hotel code) is also displayed if it differs from the hotel code. If both identifiers are identical, the original supplier code is hidden to avoid redundancy.
 
-When reviewing **portfolio content for FastX**, the FastX hotel code and Original supplier hotel code columns are excluded because **the primary Hotel Code field already displays the required FastX identifier**.
-:::
+    When reviewing **portfolio content for FastX**, the FastX hotel code and Original supplier hotel code columns are excluded because **the primary Hotel Code field already displays the required FastX identifier**.
+    :::
 
     ![tg_connections_content_4](https://storage.travelgate.com/kbase/tg_connections_content_4.png)
 

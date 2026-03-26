@@ -32,7 +32,7 @@ When you click **'Create New Case'**, the following happens:
       - Open Cases: If the related case is still Open, please return to that specific case in the Support Cases screen to add your comments. Keeping all communication in a single thread helps our team provide a faster solution.
       - Closed Cases: If the original case is Closed, providing the reference number here allows us to link the context, and you may choose to reopen the original case if needed.
    - **"No, this is not related to another case"**
-Select this option for entirely new inquiries. Upon selection, the "AIna Support Screen" will appear to guide you through the next steps (see the AIna Support section below for more details).
+    Select this option for entirely new inquiries. Upon selection, the "AIna Support Screen" will appear to guide you through the next steps (see the AIna Support section below for more details).
 
    ![tg-related-case](https://storage.travelgate.com/kbase/tg-related-case.png)
 

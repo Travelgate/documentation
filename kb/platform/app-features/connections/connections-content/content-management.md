@@ -45,7 +45,7 @@ In the **Connections Content** section, you can easily check and force updates f
     - Email
     - Web
     - Category
-    - Room types: list of all available rooms, as well as their room code, beds type and occupancies.  
+    - Room types: list of all available rooms, as well as their room code, bed types and occupancies.  
 
     :::info
     Travelgate displays the **"Hotel code"** as the primary hotel identifier. This is the operational code used by the Buyer during Travelgate's booking flow within the Supplier context.

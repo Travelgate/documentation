@@ -227,20 +227,24 @@ To do this, add the following field to the `settings` node of your request. Note
 To apply a specific rule in a query, add the `clientTokens` field to the `settings` node of your request:
 
 ```js
-	"settings": {
-		"clientTokens": [
-			"testToken"
-		],
-		"plugins": [
+{
+    "settings" : {
+        "clientTokens" : [
+            "testToken"
+        ],
+        "plugins" : [
             {
-				"step": "REQUEST_ACCESS",
-				"pluginsType": {
-					"type": "PRE_STEP",
-					"name": "blacklist"
-				}
-			}
+                "step" : "REQUEST_ACCESS",
+                "pluginsType" : [
+                    {
+                        "type" : "PRE_STEP",
+                        "name" : "blacklist"
+                    }
+                ]
+            }
         ]
-	}
+    }
+}
 ```
 
 ## Rule Configuration Examples

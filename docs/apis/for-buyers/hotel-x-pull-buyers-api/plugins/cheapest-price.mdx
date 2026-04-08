@@ -60,28 +60,30 @@ To use the plugin add the following field to the `settings` node of your request
 For instance, if you want to find the most affordable option for each hotel, supplier, and room:
 
 ```js
-"settings": {
-    "plugins" : [
-        {
-            "step" : "RESPONSE",
-            "pluginsType" : [
-                {
-                    "type" : "PRE_STEP",
-                    "name" : "cheapest_price",
-                    "parameters" : [
-                        {
-                            "key" : "primaryKey",
-                            "value" : "hotel,supplier,room"
-                        },
-                        {
-                            "key" : "optionsPerKey",
-                            "value" : "1"
-                        }
-                    ]
-                }
-            ]
-        }
-    ]
+{
+    "settings" : {
+        "plugins" : [
+            {
+                "step" : "RESPONSE",
+                "pluginsType" : [
+                    {
+                        "type" : "PRE_STEP",
+                        "name" : "cheapest_price",
+                        "parameters" : [
+                            {
+                                "key" : "primaryKey",
+                                "value" : "hotel,supplier,room"
+                            },
+                            {
+                                "key" : "optionsPerKey",
+                                "value" : "1"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
 }
 ```
 

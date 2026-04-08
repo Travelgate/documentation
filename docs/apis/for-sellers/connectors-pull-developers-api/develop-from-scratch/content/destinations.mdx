@@ -196,15 +196,15 @@ internal partial class DestinationsOperation
 
     private void ParseSupplierDestinations(DestinationsSupplierResponse response)
     {
-        foreach (var room in response.Destinations)
+        foreach (var destination in response.Destinations)
         {
             //Accumulator is used instead of returning an object with the response.
-           _accumulator.AddValue(new AccumulativeDestination()
+            _accumulator.AddValue(new AccumulativeDestination()
             {
-                Code = room.Code,
+                Code = destination.Code,
                 Names = new Dictionary<Iso2LanguageEnum, string>
                 {
-                    { Iso2LanguageEnum.EN, room.Name }
+                    { Iso2LanguageEnum.EN, destination.Name }
                 }
             });
         }

@@ -27,11 +27,19 @@ All these structures can be activated/deactivated or deleted. See Activate/Deact
 
 ### How to view hotels already setup
 
-There are two ways of checking hotels already configured: you can view all the hotels for a relation `Client – Supplier`, as in the previous image. Alternatively, you can search  suppliers or channel managers that have a specific hotel. To filter is faster if you want to search for a particular hotel - tick the checkbox of `filter by hotels`, type either the hotel code or name and complete it with one of the options that the autocomplete offers (the field left as blank would be filled automatically).
+There are two ways of checking hotels already configured: you can view all the hotels for a relation `Client – Supplier`, as in the previous image. Alternatively, you can search suppliers or channel managers that have a specific hotel. To filter, tick the checkbox of `Filter by Hotels` and use any of the following fields to locate the hotel:
 
-![Inventory SetUp](https://storage.travelgate.com/docs/inventory_setup2.png)
+* **Hotel ID:** The hotel's internal Inventory ID.
+* **Hotel Code:** The provider's own hotel code (if assigned by the channel manager).
+* **Hotel Name:** The hotel's name.
+
+Complete the search with one of the options that the autocomplete offers (the fields left blank will be filled automatically).
+
+![Inventory SetUp](inventory_setup2.png)
 
 Click the button `Filter Providers` and a list of providers that offer the selected hotel will appear in the drop-down menu. Once you select one of those channels, only the configuration done for this hotel with this supplier will appear.
+
+In the hotel list, each hotel row displays the **Hotel ID**, the **Hotel Code** (in parentheses, if assigned), the **Hotel Name**, and the **City**. For example: `98716 (CHM-4521) - Hotel Antar (Bechar)`.
 
 ### How to add a hotel
 
@@ -107,7 +115,10 @@ In order to add a new rate, click in the `Add Rate` button in the hotel row:
 The information needed to add a rate is listed below:
 
 * **Code:** Rate code. It needs to be unique per hotel. This code need to coincide with the rate code of the channel manager.  
-  Allowed characters: Only letters **(a–z, A–Z)**, numbers **(0–9)**, **spaces**, and the following symbols: **(-, _, %, /, (, ), +, *, and uppercase M)**. Any other characters will be rejected. 
+  Allowed characters: Only letters **(a–z, A–Z)**, numbers **(0–9)**, **spaces**, and the following symbols: **(-, _, %, /, (, ), +, *, and uppercase M)**. Any other characters will be rejected.  
+  :::caution
+  Once the rate is created, the **Code** field cannot be edited.
+  :::
 * **Name:** Rate name.
 * **Included board:** Meal plan.
 * **Age Max Baby:** The maximum age for a passenger to be considered a baby (indicated age not included, meaning if the *Max Age* for a baby is 3 you should indicate 4, that way any passenger aged 0-3 will be considered a baby). 
@@ -205,7 +216,7 @@ The next step is to add and configurate rooms to each rate.
 
 In order to add a new room, click in the ``Add Room`` button in the hotel row and a pop-up window appears where you will find two options:
 
-1. **All room types:** Select from the autocomplete field a room code and description from your own room master list. Room code can be modified for this rate.
+1. **All room types:** Select from the autocomplete field a room code and description from your own room master list.
 
 ![Inventory SetUp](https://storage.travelgate.com/docs/inventory_setup8.png)
 
@@ -213,7 +224,10 @@ In order to add a new room, click in the ``Add Room`` button in the hotel row an
 
 ![Inventory SetUp](https://storage.travelgate.com/docs/inventory_setup9.png)
 
-* **Code:** Room code. Must be unique per rate and has to coincide with the code used by the channel.
+* **Code:** Room code. Must be unique per rate and has to coincide with the code used by the channel.  
+  :::caution
+  Once the room is created, the **Code** field cannot be edited.
+  :::
 * **Name:** Room name. Text field that allows you to introduce the room description that will be shown to your buyers. This field is just informative.
 * **Standard Occupancy:** This field is useful to calculate the room amount when prices are loaded per passenger. Normally, it indicates the maximum number of adults (only adults) allowed for the room. The maximum number of passengers for standard occupancy from the web is 8.
 * **Occupancy only Adults:** Defines the occupancies of adults allowed for this room. (Dark Blue icons are adults).
@@ -233,7 +247,10 @@ To add a derived rate, first it is necessary to click the `Add Derived Rate` but
 
 The information needed to add a derived rate is listed below:
 
-* **Code:** Derived rate code. Must be unique per hotel. (it cannot coincide with any other rate or derived rate code in the same hotel).
+* **Code:** Derived rate code. Must be unique per hotel. (it cannot coincide with any other rate or derived rate code in the same hotel).  
+  :::caution
+  Once the derived rate is created, the **Code** field cannot be edited.
+  :::
 * **Name:** Derived rate name.
 * **Cancel policies from base rate:** Checkbox that will apply the cancel policies from the base rate to the derived rate depending on whether it is checked or not. If it is not checked, a form appears like the one seen previously when adding a rate, letting you add the cancel policies you may want for this derived rate.
 * **Markets from base rate:** Checkbox that will apply the markets from the base rate to the derived rate depending on whether it is checked or not. If unchecked, a form appears like the one seen previously when adding a rate, letting you select any markets you may want included or excluded for this derived rate.
@@ -266,7 +283,10 @@ Firs step would be to click in the `Add Offer` button over the base rate for whi
 
 ![Inventory SetUp](https://storage.travelgate.com/docs/inventory_setup11.png)
 
-* **Code:** Offer code. It must be unique at rate level (it can not match with any other offer code in the same rate).
+* **Code:** Offer code. It must be unique at rate level (it can not match with any other offer code in the same rate).  
+  :::caution
+  Once the offer is created, the **Code** field cannot be edited.
+  :::
 * **Name:** Offer name.
 * **Offer Type:** Type of offer to apply. Currently the only available type is free night.
 * **Length Of Stay:** Minimum and maximum length of stay that the booking has to comply with.

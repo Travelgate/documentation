@@ -226,24 +226,26 @@
         "plugins" : [
             {
                 "step" : "RESPONSE",
-                "pluginsType" : {
-                    "type" : "PRE_STEP",
-                    "name" : "preference",
-                    "parameters" : [
-                        {
-                            "key" : "primaryKey",
-                            "value" : "hotel,board,room,rateRules"
-                        },
-                        {
-                            "key" : "optionsPerKey",
-                            "value" : "1"
-                        },
-                        {
-                            "key" : "internalCurrencyConversion",
-                            "value" : "true"
-                        }
-                    ]
-                }
+                "pluginsType" : [
+                    {
+                        "type" : "PRE_STEP",
+                        "name" : "preference",
+                        "parameters" : [
+                            {
+                                "key" : "primaryKey",
+                                "value" : "hotel,board,room,rateRules"
+                            },
+                            {
+                                "key" : "optionsPerKey",
+                                "value" : "1"
+                            },
+                            {
+                                "key" : "internalCurrencyConversion",
+                                "value" : "true"
+                            }
+                        ]
+                    }
+                ]
             }
         ]
     }
@@ -264,7 +266,7 @@
             }
         ],
         "hotels" : [
-			"ES284122",
+            "ES284122",
             "BR1518"
         ],
         "currency" : "EUR",
@@ -281,24 +283,26 @@
         "plugins" : [
             {
                 "step" : "RESPONSE",
-                "pluginsType" : {
-                    "type" : "PRE_STEP",
-                    "name" : "preference",
-                    "parameters" : [
-                        {
-                            "key" : "primaryKey",
-                            "value" : "hotel,board,room,rateRules"
-                        },
-                        {
-                            "key" : "optionsPerKey",
-                            "value" : "1"
-                        },
-                        {
-                            "key" : "internalCurrencyConversion",
-                            "value" : "true"
-                        }
-                    ]
-                }
+                "pluginsType" : [
+                    {
+                        "type" : "PRE_STEP",
+                        "name" : "preference",
+                        "parameters" : [
+                            {
+                                "key" : "primaryKey",
+                                "value" : "hotel,board,room,rateRules"
+                            },
+                            {
+                                "key" : "optionsPerKey",
+                                "value" : "1"
+                            },
+                            {
+                                "key" : "internalCurrencyConversion",
+                                "value" : "true"
+                            }
+                        ]
+                    }
+                ]
             }
         ]
     }
@@ -319,7 +323,7 @@
             }
         ],
         "hotels" : [
-			"ES284122"
+            "ES284122"
         ],
         "currency" : "EUR",
         "markets" : [
@@ -342,24 +346,26 @@
         "plugins" : [
             {
                 "step" : "RESPONSE",
-                "pluginsType" : {
-                    "type" : "PRE_STEP",
-                    "name" : "preference",
-                    "parameters" : [
-                        {
-                            "key" : "primaryKey",
-                            "value" : "hotel,board,room,rateRules"
-                        },
-                        {
-                            "key" : "optionsPerKey",
-                            "value" : "1"
-                        },
-                        {
-                            "key" : "internalCurrencyConversion",
-                            "value" : "true"
-                        }
-                    ]
-                }
+                "pluginsType" : [
+                    {
+                        "type" : "PRE_STEP",
+                        "name" : "preference",
+                        "parameters" : [
+                            {
+                                "key" : "primaryKey",
+                                "value" : "hotel,board,room,rateRules"
+                            },
+                            {
+                                "key" : "optionsPerKey",
+                                "value" : "1"
+                            },
+                            {
+                                "key" : "internalCurrencyConversion",
+                                "value" : "true"
+                            }
+                        ]
+                    }
+                ]
             }
         ]
     }
@@ -414,24 +420,26 @@
         "plugins" : [
             {
                 "step" : "RESPONSE",
-                "pluginsType" : {
-                    "type" : "PRE_STEP",
-                    "name" : "preference",
-                    "parameters" : [
-                        {
-                            "key" : "primaryKey",
-                            "value" : "hotel,board,room,rateRules"
-                        },
-                        {
-                            "key" : "optionsPerKey",
-                            "value" : "1"
-                        },
-                        {
-                            "key" : "internalCurrencyConversion",
-                            "value" : "true"
-                        }
-                    ]
-                }
+                "pluginsType" : [
+                    {
+                        "type" : "PRE_STEP",
+                        "name" : "preference",
+                        "parameters" : [
+                            {
+                                "key" : "primaryKey",
+                                "value" : "hotel,board,room,rateRules"
+                            },
+                            {
+                                "key" : "optionsPerKey",
+                                "value" : "1"
+                            },
+                            {
+                                "key" : "internalCurrencyConversion",
+                                "value" : "true"
+                            }
+                        ]
+                    }
+                ]
             }
         ]
     }
@@ -479,24 +487,26 @@
         "plugins" : [
             {
                 "step" : "RESPONSE",
-                "pluginsType" : {
-                    "type" : "PRE_STEP",
-                    "name" : "preference",
-                    "parameters" : [
-                        {
-                            "key" : "primaryKey",
-                            "value" : "hotel,board,room,rateRules"
-                        },
-                        {
-                            "key" : "optionsPerKey",
-                            "value" : "1"
-                        },
-                        {
-                            "key" : "internalCurrencyConversion",
-                            "value" : "true"
-                        }
-                    ]
-                }
+                "pluginsType" : [
+                    {
+                        "type" : "PRE_STEP",
+                        "name" : "preference",
+                        "parameters" : [
+                            {
+                                "key" : "primaryKey",
+                                "value" : "hotel,board,room,rateRules"
+                            },
+                            {
+                                "key" : "optionsPerKey",
+                                "value" : "1"
+                            },
+                            {
+                                "key" : "internalCurrencyConversion",
+                                "value" : "true"
+                            }
+                        ]
+                    }
+                ]
             }
         ]
     }

@@ -1,0 +1,199 @@
+---
+sidebar_position: 2
+title: Stats
+draft: true
+---
+
+# Stats
+
+## Overview
+
+Stats is the real-time connectivity performance dashboard of Travelgate. It is designed to monitor connection performance and quickly troubleshoot traffic issues by providing detailed data per connection and method (Search, Quote, Book, Cancel, and Other).
+
+This document details the steps to extract and query metrics using the TravelgateX Stats API. The queries detailed below provide the exact same level of analytics data access as our web platform.
+
+:::info Authentication
+For all Stats API calls, it is required to first retrieve the bearer token using the `admin { jwt }` query. The returned token must be included in the header of subsequent requests: `Authorization: Bearer <your_jwt>`.
+:::
+
+## Considerations & Business Rules
+
+Before querying your stats, keep in mind the following platform rules and behaviors:
+
+* **"OK" Status vs. Reservation Status:** The "OK" data in Stats *only* indicates that the transaction was processed through our integration without technical errors. **It does not reflect the actual business status of a reservation.** To know the real status of a booking with the supplier, you must perform a `BookingRead` operation.
+* **The "Other" Operation:** When grouping or filtering by `operationType`, the "OTHER" category covers operations outside the standard booking flow, such as: `ReservationRead`, `ReservationList`, `DescriptiveInfo`, `HotelList`, `GeographicalTree`, `RoomList`, and `MealPlanList`.
+* **Data Discrepancies:** It is common to find slight discrepancies between the data in Stats and your own internal systems. The main causes are:
+  * *Travelgate's Transaction Logic:* We log one transaction per method (Search, Quote, Book), even if multiple internal calls are made to the Supplier.
+  * *Buyer-side Issues:* Validation errors, incorrect authentication, or client timeouts that occur *before* the request successfully reaches Travelgate will not be logged in our Stats.
+* **Timezones:** While our Web UI automatically switches to UTC for periods longer than 7 days, the Stats API requires you to always send the exact absolute dates in your `timeRange` filter.
+
+## Traffic Types
+
+When filtering your Stats (especially for Search operations), you can use the `trafficType_in` parameter to isolate different types of requests. This is particularly useful if you use our Speed solution:
+
+| Type | Description |
+|------|-------------|
+| **BASIC** | Standard transaction between Buyer and Seller without additional solutions. |
+| **SPEED** | The request is intercepted and served by the Speed cache; it is not sent directly to the Seller. |
+| **SCHEDULER** | Static content (Hotel Lists, Hotel Info) stored in Travelgate's database (offline traffic). |
+| **OPTIMIZED** | Background requests sent automatically by Travelgate to update its internal databases (from Speed or Scheduler). |
+
+*Note: By default, Buyer overall stats usually combine BASIC + SPEED. If you only want to see the traffic actively managed by the Seller's system, filter by BASIC + OPTIMIZED.*
+
+## Query Overview
+
+The Stats API offers several methods to retrieve information, depending on the level of detail and grouping you need:
+
+### 1. getAggregationStats
+This is the primary query used to retrieve grouped statistical data based on specific criteria. It is commonly used to render charts, graphs, and aggregated data tables.
+
+### 2. getRealTimeRangeStats
+Used to visualize the volume of requests and metrics in updated, smaller time blocks (real-time monitoring).
+
+## Examples
+
+### Example 1: Get Aggregation Stats (`getAggregationStats`)
+
+When creating your aggregation query, you define the time range, the filters, and how you want the data to be grouped.
+
+**Query:**
+```graphql
+query getAggregatedStats($where: StatsAggregationConnectionWhereInput!, $groupBy: StatsAggregationConnectionGroupByInput!) {
+  stats {
+    getAggregationStats(where: $where, groupBy: $groupBy) {
+      totalCount
+      adviseMessage {
+        code
+        description
+        level
+      }
+      edges {
+        node {
+          aggregationData {
+            hits
+            time
+            totalTime
+            errorType
+            errorCode
+            operationType
+            operation {
+              code
+            }
+            seller {
+              code
+            }
+            buyer {
+              code
+            }
+            access {
+              code
+            }
+            client {
+              clientData {
+                code
+                name
+              }
+            }
+            supplier {
+              code
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+**Variables:**
+```json
+{
+  "where": {
+    "mode": "BUYER",
+    "buyer_in": ["BUYER_CODE"],
+    "trafficType_in": ["BASIC", "SPEED"],
+    "api_in": ["hotel"],
+    "timeRange": {
+      "absolute": {
+        "from": "2026-04-05 18:00:00",
+        "to": "2026-04-06 08:00:00"
+      }
+    }
+  },
+  "groupBy": {
+    "data": ["OPERATION_TYPE"]
+  }
+}
+```
+
+**Mandatory criteria:**
+* `where.mode` (Search perspective, either `BUYER` or `SELLER`).
+* `where.timeRange` (Absolute date range using the `from` and `to` fields in `"YYYY-MM-DD HH:mm:ss"` format).
+
+**Optional criteria & Grouping:**
+* `where.buyer_in`, `where.api_in`, `where.trafficType_in` (Filters to narrow down the results).
+* `groupBy.data` (Fields by which to group the results, e.g., `OPERATION_TYPE`, `BUYER`, `SELLER`).
+* `groupBy.time` (Temporal grouping like `MINUTE`, `HOUR`, `DAY`. If omitted, data is aggregated as a total sum).
+
+### Example 2: Get Real Time Stats (`getRealTimeRangeStats`)
+
+**Query:**
+```graphql
+query getRealTimeStats($where: StatsRealTimeRangeWhereInput!) {
+  stats {
+    getRealTimeRangeStats(where: $where) {
+      realTimeRangeData {
+        from
+        to
+      }
+      adviseMessage {
+        code
+        description
+        level
+      }
+    }
+  }
+}
+```
+
+**Variables:**
+```json
+{
+  "where": {
+    "timeRange": {
+      "absolute": {
+        "from": "2026-04-06 07:00:00",
+        "to": "2026-04-06 08:00:00"
+      }
+    },
+    "groupByTime": "MINUTE"
+  }
+}
+```
+
+**Mandatory criteria:**
+* `where.timeRange` (Absolute block with the exact dates in `"YYYY-MM-DD HH:mm:ss"` format).
+* `where.groupByTime` (Time interval to group the returned results, e.g., `MINUTE`, `HOUR`).
+
+## Frequently Asked Questions
+
+<details>
+    <summary>Why is a connection/supplier missing from my Stats results?</summary>
+    <div>
+        <div>If you cannot find a specific connection, first ensure you are querying using the correct <code>mode</code> (Buyer or Seller). Additionally, if the connection had absolutely no traffic during the specified <code>timeRange</code>, it will not appear in the results. Try expanding your date range to include periods with known activity.</div>
+    </div>
+</details>
+
+<details>
+    <summary>What date format should I use in the timeRange filter?</summary>
+    <div>
+        <div>You must use the absolute block format. The <code>from</code> and <code>to</code> fields must be sent as an exact date and time string in <code>YYYY-MM-DD HH:mm:ss</code> format (e.g., "2026-04-05 18:00:00").</div>
+    </div>
+</details>
+
+<details>
+    <summary>Do I always need to group the data by time in getAggregationStats?</summary>
+    <div>
+        <div>No, the <code>groupBy.time</code> parameter is optional. If you omit it from your query, the system will return the total aggregated sum for the entire period you requested in your <code>timeRange</code>.</div>
+    </div>
+</details>

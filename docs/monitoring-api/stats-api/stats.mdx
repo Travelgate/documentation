@@ -4,6 +4,13 @@ title: Stats
 draft: true
 ---
 
+import {
+  getAggregationStatsQuery,
+  getAggregationStatsVariables,
+  getRealTimeStatsQuery,
+  getRealTimeStatsVariables,
+} from "../../../src/graphql/stats/stats.queries";
+
 # Stats
 
 ## Overview
@@ -27,41 +34,19 @@ For all Stats API calls, it is required to first retrieve the bearer token using
 
 ## Query Overview
 
+The Stats API offers several methods to retrieve information, depending on the level of detail and grouping you need:
+
 ### 1. getAggregationStats
-Primary query used to retrieve grouped statistical data (hits, time, errors) based on specific criteria.
+Primary query used to retrieve grouped statistical data (hits, time, errors) based on specific criteria. It is commonly used to render charts, graphs, and aggregated data tables.
 
 ### 2. getRealTimeRangeStats
-Used for real-time monitoring of requests and metrics in small time blocks.
+Used for real-time monitoring of requests and metrics in updated, smaller time blocks.
 
-## Examples
+#### A. Where (Filters)
 
-### Example: Aggregation Stats (`getAggregationStats`)
+The `where` input allows you to precisely filter the statistics based on time range, buyers, APIs, or traffic types.
 
-**Query**
-```graphql
-query getAggregatedStats($where: StatsAggregationConnectionWhereInput!, $groupBy: StatsAggregationConnectionGroupByInput!) {
-  stats {
-    getAggregationStats(where: $where, groupBy: $groupBy) {
-      totalCount
-      edges {
-        node {
-          aggregationData {
-            hits
-            time
-            totalTime
-            operationType
-            seller { code }
-            buyer { code }
-          }
-        }
-      }
-    }
-  }
-}
-```
-
-**Variables**
-```json
+```js
 {
   "where": {
     "mode": "BUYER",
@@ -69,44 +54,54 @@ query getAggregatedStats($where: StatsAggregationConnectionWhereInput!, $groupBy
     "operationType_in": ["SEARCH"],
     "timeRange": {
       "absolute": {
-        "from": "2026-04-05T18:00:00.000Z",
-        "to": "2026-04-06T08:00:00.000Z"
+        "from": "2026-04-14 00:00:00",
+        "to": "2026-04-14 12:00:00"
       }
     }
-  },
-  "groupBy": {
-    "data": ["operation-type"]
   }
 }
 ```
 
-**Response Example**
-```json
+**Mandatory criteria:**
+* `mode` (Search perspective, either `BUYER` or `SELLER`).
+* `timeRange` (Absolute date range using the format `"YYYY-MM-DD HH:mm:ss"`).
+
+#### B. Group By
+
+The `groupBy` input defines how the returned data will be aggregated.
+
+```js
 {
-  "data": {
-    "stats": {
-      "getAggregationStats": {
-        "totalCount": 1,
-        "edges": [
-          {
-            "node": {
-              "aggregationData": {
-                "hits": 1500,
-                "operationType": "SEARCH",
-                "seller": { "code": "SELLER_CODE" }
-              }
-            }
-          }
-        ]
-      }
-    }
+  "groupBy": {
+    "data": ["OPERATION_TYPE"]
   }
 }
 ```
 
-## Frequently Asked Questions
+**Optional grouping:**
+* `data`: Fields by which to group the results (e.g., `OPERATION_TYPE`, `BUYER`, `SELLER`).
+* `time`: Temporal grouping like `MINUTE`, `HOUR`, `DAY`.
 
-<details>
-    <summary>What date format should I use?</summary>
-    <div>You must use the ISO 8601 format: <code>"YYYY-MM-DDTHH:mm:ss.sssZ"</code> (e.g., "2026-04-05T18:00:00.000Z").</div>
-</details>
+## Examples
+
+In the following examples, you can see how to extract different types of stats using the interactive playground.
+
+### Example 1: Aggregation Stats (`getAggregationStats`)
+
+Primary query used to retrieve grouped statistical data based on specific criteria.
+
+<GraphqlSample
+  query={getAggregationStatsQuery}
+  variables={getAggregationStatsVariables}
+/>
+&nbsp;
+
+### Example 2: Real Time Stats (`getRealTimeRangeStats`)
+
+Used for real-time monitoring of requests and metrics in small time blocks.
+
+<GraphqlSample
+  query={getRealTimeStatsQuery}
+  variables={getRealTimeStatsVariables}
+/>
+&nbsp;

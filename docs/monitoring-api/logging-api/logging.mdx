@@ -1,16 +1,15 @@
 ---
 sidebar_position: 1
 title: Logging
-draft: true
 ---
 
-# Logging
+# Logging API
 
 ## Overview
 
-Logging is a powerful monitoring feature that allows users to access and analyze transaction logs across the Travelgate platform. It is designed to track and analyze the booking flow, identify error codes, and troubleshoot performance issues. 
+[Logging](/kb/platform/app-features/monitoring-tools/logging/logging-details) is a powerful monitoring feature that allows users to access and analyze transaction logs across the Travelgate platform. It is designed to track and analyze the booking flow, identify error codes, and troubleshoot performance issues. 
 
-This document details the steps to search, extract traces, and download request logs (XML/JSON) using the Travelgate Logging API. The queries detailed below provide the exact same level of data access as our web platform.
+This document details the steps to search, extract traces, and download request logs (XML/JSON) using the **Travelgate Logging API**. The queries detailed below provide the exact same level of data access as our web platform.
 
 :::info Authentication
 For all Logging API calls, it is required to first retrieve the bearer token using the `admin { jwt }` query. The returned token must be included in the header of subsequent requests: `Authorization: Bearer <your_jwt>`.
@@ -20,10 +19,10 @@ For all Logging API calls, it is required to first retrieve the bearer token usi
 
 Before querying the logs, keep in mind the following platform rules:
 
-* **Error Codes vs. Reservation Status:** The "Status/Error code" returned in the logs *only* indicates if the transaction was processed through our integration without technical errors. **It does not reflect the actual business status of a reservation.** To know the real status of a booking with the supplier, you must perform a [BookingRead](https://docs.travelgate.com/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/booking-read/) operation.
-* **Search Logs Auditing:** Travelgate processes over 6 billion daily transactions, meaning **Search logs are not stored by default**. To retrieve Search logs via the API, an audit must first be triggered manually from the Web Platform (Monitoring > Logging > Audit Search Logs). Once triggered, the system stores 5% of the Search traffic for 5 minutes.
-* **One Step Book:** You can successfully retrieve both Quote and Book logs for a One Step Book operation by filtering by connection, reference, or Session ID.
-* **Trace Types:** Depending on the buyer's integration, you will see either **HotelX Logs** or **Legacy Logs**, but never both. **Connector Logs** (communication directly with the Seller) are always available.
+* **Error Codes vs. Reservation Status:** The "Status/Error code" returned in the logs *only* indicates if the transaction was processed through our integration without technical errors. **It does not reflect the actual [booking status](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/book/book-status/) of a reservation.** To know the real status of a booking with the supplier, you must perform a [BookingRead](https://docs.travelgate.com/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/booking-read/) operation.
+* **Search Logs Auditing:** Travelgate processes over 6 billion daily transactions, meaning **Search logs are not stored by default**. To retrieve Search logs via the API, an audit must first be [triggered manually](/kb/platform/app-features/monitoring-tools/logging/audit-searches-functionality) from the Web Platform (Monitoring > Logging > Audit Search Logs). Once triggered, the system stores 5% of the Search traffic for 5 minutes.
+* **One Step Book:** You can successfully retrieve both Quote and Book logs for a [One Step Book](/docs/apis/for-buyers/hotel-x-pull-buyers-api/one-shot-booking-flow/onestepbook) operation by filtering by connection, reference, or Session ID.
+* **Trace Types:** Depending on the Buyer's integration, you will see either **HotelX Logs** or **Legacy Logs**, but never both. **Connector Logs** (communication directly with the Seller) are always available.
 
 ## Query Overview
 

@@ -10,7 +10,7 @@ draft: true
 
 Logging is a powerful monitoring feature that allows users to access and analyze transaction logs across the Travelgate platform. It is designed to track and analyze the booking flow, identify error codes, and troubleshoot performance issues. 
 
-This document details the steps to search, extract traces, and download request logs (XML/JSON) using the TravelgateX Logging API. The queries detailed below provide the exact same level of data access as our web platform.
+This document details the steps to search, extract traces, and download request logs (XML/JSON) using the Travelgate Logging API. The queries detailed below provide the exact same level of data access as our web platform.
 
 :::info Authentication
 For all Logging API calls, it is required to first retrieve the bearer token using the `admin { jwt }` query. The returned token must be included in the header of subsequent requests: `Authorization: Bearer <your_jwt>`.
@@ -20,31 +20,29 @@ For all Logging API calls, it is required to first retrieve the bearer token usi
 
 Before querying the logs, keep in mind the following platform rules:
 
-* **Error Codes vs. Reservation Status:** The "Status/Error code" returned in the logs *only* indicates if the transaction was processed through our integration without technical errors. **It does not reflect the actual business status of a reservation.** To know the real status of a booking with the supplier, you must perform a `BookingRead` operation.
+* **Error Codes vs. Reservation Status:** The "Status/Error code" returned in the logs *only* indicates if the transaction was processed through our integration without technical errors. **It does not reflect the actual business status of a reservation.** To know the real status of a booking with the supplier, you must perform a [BookingRead](https://docs.travelgate.com/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/booking-read/) operation.
 * **Search Logs Auditing:** Travelgate processes over 6 billion daily transactions, meaning **Search logs are not stored by default**. To retrieve Search logs via the API, an audit must first be triggered manually from the Web Platform (Monitoring > Logging > Audit Search Logs). Once triggered, the system stores 5% of the Search traffic for 5 minutes.
 * **One Step Book:** You can successfully retrieve both Quote and Book logs for a One Step Book operation by filtering by connection, reference, or Session ID.
-* **Trace Types:** Depending on the buyer's integration, you will see either **Hotel-X Logs** or **Legacy Logs**, but never both. **Connector Logs** (communication directly with the Seller) are always available.
+* **Trace Types:** Depending on the buyer's integration, you will see either **HotelX Logs** or **Legacy Logs**, but never both. **Connector Logs** (communication directly with the Seller) are always available.
 
 ## Query Overview
 
-The Logging API offers three main methods to search and retrieve information, depending on the initial data you have available for your search:
+The Logging API offers three main methods to search and retrieve information:
 
 ### 1. getLogs
-This is the primary query to search the log history by applying multiple filters (dates, supplier, buyer, operation type, or error codes). It returns a paginated collection of logs.
+Primary query to search the log history by applying multiple filters (dates, supplier, buyer, operation type, or error codes).
 
 ### 2. getLogsByReference
-Designed to search for logs using a specific locator or reference. This is highly useful when looking for a specific booking or quote log using its ID (e.g., the client or supplier locator).
+Designed to search for logs using a specific locator or reference (client or supplier ID).
 
 ### 3. getQuoteLogsFromBook
-A specific query to track and retrieve the trace of the original Quote that generated a specific Booking. Unlike the previous ones, it returns a single record and is often used to directly extract the trace download URLs (`files`).
+Specific query to track the original Quote that generated a specific Booking.
 
 ## Examples
 
-### Example 1: Search Logs (`getLogs`)
+### Example: Search Logs (`getLogs`)
 
-When creating your `getLogs` query, you can use several criteria to filter the results.
-
-**Query:**
+**Query**
 ```graphql
 query getLoggings($input: LoggingLogsWhereInput!) {
   logging {
@@ -89,126 +87,62 @@ query getLoggings($input: LoggingLogsWhereInput!) {
 }
 ```
 
-**Variables:**
+**Variables**
 ```json
 {
   "input": {
     "api": "hotel",
     "timeRange": {
       "absolute": {
-        "from": "2026-04-07 09:38:00",
-        "to": "2026-04-07 10:38:00"
+        "from": "2026-04-07T09:38:00.000Z",
+        "to": "2026-04-07T10:38:00.000Z"
       }
     },
     "mode": "BUYER",
-    "errorCode_in": [0, 102, 204, 205, 206, 207, 301, 303, 101, 2, 3, 103, 104, 105, 106],
+    "errorCode_in": [0, 102],
     "operationType_in": ["BOOKING"],
     "buyer_in": ["BUYER_CODE"],
-    "seller_in": ["SELLER_CODE"],
-    "access_in": ["30278"]
+    "seller_in": ["SELLER_CODE"]
   }
 }
 ```
 
-**Mandatory criteria:**
-* `limit` (Defines the maximum number of results to return).
-* `input.mode` (Search perspective, either `BUYER` or `SELLER`).
-
-**Optional criteria:**
-* `input.timeRange` (Absolute date range using the `from` and `to` fields in `"YYYY-MM-DD HH:mm:ss"` format).
-* `input.api` (API over which logs are searched, e.g., `"hotel"`).
-* `input.errorCode_in` (Numeric array with specific error codes to track).
-* `input.operationType_in` (Operation type, e.g., `"BOOKING"`, `"QUOTE"`, `"SEARCH"`).
-* `input.buyer_in`, `input.seller_in`, `input.access_in`.
-
-### Example 2: Get Quote Logs from Book (`getQuoteLogsFromBook`)
-
-**Query:**
-```graphql
-query getQuoteLogsFromBook($input: LoggingQuoteLogFromBookInput!) {
-  logging {
-    getQuoteLogsFromBook(where: $input) {
-      adviseMessage {
-        code
-        description
-        correlationID
-        level
-        external {
-          code
-          message
-        }
-      }
-      logData {
-        files {
-          legacy
-          hotelX
-          connector
-        }
+**Response Example**
+```json
+{
+  "data": {
+    "logging": {
+      "getLogs": {
+        "totalCount": 1,
+        "edges": [
+          {
+            "node": {
+              "logData": {
+                "timestamp": "2026-04-07T09:40:05.123Z",
+                "operationType": "BOOKING",
+                "sessionID": "9ffb5416-249f-4916-b9f0-88c2198804dc",
+                "files": {
+                  "hotelX": "[https://api.travelgate.com/logs/v1/download/](https://api.travelgate.com/logs/v1/download/)...",
+                  "connector": "[https://api.travelgate.com/logs/v1/download/](https://api.travelgate.com/logs/v1/download/)..."
+                }
+              }
+            }
+          }
+        ]
       }
     }
   }
 }
 ```
 
-**Variables:**
-```json
-{
-  "input": {
-    "timeRange": {
-      "absolute": {
-        "from": "2026-04-09 03:49:00",
-        "to": "2026-04-10 09:49:00"
-      }
-    },
-    "sessionId": "9ffb5416-249f-4916-b9f0-88c2198804dc",
-    "buyer": "BUYER_CODE",
-    "seller": "SELLER_CODE",
-    "mode": "BUYER",
-    "api": "hotel"
-  }
-}
-```
-
-**Mandatory criteria:**
-* `input.sessionId` (The session ID or internal locator of the booking).
-* `input.buyer` and `input.seller` (Codes of the involved buyer and seller).
-* `input.mode` (`BUYER` or `SELLER`).
-* `input.api` (Operation API, e.g., `"hotel"`).
-* `input.timeRange` (Date range when the booking took place).
-
 ## Frequently Asked Questions
 
 <details>
-    <summary>Where can I find the link to download the request XML/JSON trace?</summary>
-    <div>
-        <div>In any of the Logging queries, you must request the <code>files</code> node within <code>logData</code>. This node will return the download URLs for the traces at different architecture points (<code>hotelX</code>, <code>legacy</code>, <code>connector</code>).</div>
-    </div>
-</details>
-
-<details>
     <summary>Why can't I find my error logs by reference?</summary>
-    <div>
-        <div>Failed bookings or cancellations cannot be retrieved using the client reference, supplier reference, or session ID filters. You must always use the <strong>Time Range</strong> filter combined with the specific error code to find them.</div>
-    </div>
+    <div>Failed bookings or cancellations cannot be retrieved using locators. You must use the <strong>Time Range</strong> filter combined with the specific error code.</div>
 </details>
 
 <details>
-    <summary>Why is the Reference filter not returning OK logs?</summary>
-    <div>
-        <div>The reference filter index might not return results until the day <em>after</em> the booking is made. If you are looking for a same-day transaction, use the <strong>Time Range</strong> filter as an alternative.</div>
-    </div>
-</details>
-
-<details>
-    <summary>Why is the Access filter not working for Legacy connections?</summary>
-    <div>
-        <div>The Access filter only applies to Hotel-X connections. For Legacy connections, you must use the <strong>Time Range</strong> filter instead.</div>
-    </div>
-</details>
-
-<details>
-    <summary>What date format should I use in the timeRange filter?</summary>
-    <div>
-        <div>You must use the absolute block format. The <code>from</code> and <code>to</code> fields must be sent as an exact date and time string in <code>YYYY-MM-DD HH:mm:ss</code> format (e.g., "2026-04-07 09:38:00").</div>
-    </div>
+    <summary>What date format should I use?</summary>
+    <div>You must use the ISO 8601 format with enclosing double quotes: <code>"2026-04-07T09:38:00.000Z"</code>.</div>
 </details>

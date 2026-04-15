@@ -11,13 +11,13 @@ import {
   getRealTimeStatsVariables,
 } from "../../../src/graphql/stats/stats.queries";
 
-# Stats
+# Stats API
 
 ## Overview
 
-Stats is the real-time connectivity performance dashboard of Travelgate. It is designed to monitor connection performance and quickly troubleshoot traffic issues by providing detailed data per connection and method.
+[Stats](/kb/platform/app-features/monitoring-tools/stats/stats-details) is the real-time connectivity performance dashboard of Travelgate. It is designed to monitor connection performance and quickly troubleshoot traffic issues by providing detailed data per connection and method.
 
-This document details the steps to extract and query metrics using the Travelgate Stats API. 
+This document details the steps to extract and query metrics using the **Travelgate Stats API**. 
 
 :::info Authentication
 For all Stats API calls, it is required to first retrieve the bearer token using the `admin { jwt }` query. The returned token must be included in the header of subsequent requests: `Authorization: Bearer <your_jwt>`.
@@ -25,11 +25,11 @@ For all Stats API calls, it is required to first retrieve the bearer token using
 
 ## Considerations & Business Rules
 
-* **"OK" Status vs. Reservation Status:** The "OK" data in Stats *only* indicates that the transaction was technically successful. **It does not reflect the actual business status of a reservation.** To know the real status, you must perform a [BookingRead](https://docs.travelgate.com/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/booking-read/) operation.
+* **"OK" Status vs. Reservation Status:** The "OK" data in Stats *only* indicates that the transaction was technically successful. **It does not reflect the actual [booking status](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/book/book-status) of a reservation.** To know the real status, you must perform a [BookingRead](https://docs.travelgate.com/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/booking-read/) operation.
 * **The "Other" Operation:** The `OTHER` category covers operations outside the standard booking flow. For HotelX, these are equivalent to:
-  * [HotelData](https://docs.travelgate.com/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/hotel-list) (HotelList, DescriptiveInfo)
-  * [BookingRead](https://docs.travelgate.com/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/booking-read/) (ReservationRead, ReservationList)
-  * [Board & Room Lists](https://docs.travelgate.com/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/hotel-list) (RoomList, MealPlanList)
+  * [Hotels Query](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/hotels) (HotelList, DescriptiveInfo)
+  * [Booking Read and Booking List](https://docs.travelgate.com/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/booking-read/) (ReservationRead, ReservationList)
+  * [Rooms Query](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/boards) and [Boards Query](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/rooms) (RoomList, MealPlanList)
 * **Traffic Types:** When filtering your Stats, you can use the `trafficType_in` parameter: `BASIC`, `SPEED`, `SCHEDULER`, or `OPTIMIZED`.
 
 ## Query Overview

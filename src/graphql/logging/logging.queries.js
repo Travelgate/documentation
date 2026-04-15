@@ -46,15 +46,16 @@ export const getLogsVariables = `{
     "api": "hotel",
     "timeRange": {
       "absolute": {
-        "from": "2026-04-14 09:38:00",
-        "to": "2026-04-14 10:38:00"
+        "from": "2026-04-07 09:38:00",
+        "to": "2026-04-07 10:38:00"
       }
     },
     "mode": "BUYER",
-    "errorCode_in": [0, 102],
+    "errorCode_in": [0, 102, 204, 205, 206, 207, 301, 303, 101, 2, 3, 103, 104, 105, 106],
     "operationType_in": ["BOOKING"],
     "buyer_in": ["BUYER_CODE"],
-    "seller_in": ["SELLER_CODE"]
+    "seller_in": ["SELLER_CODE"],
+    "access_in": ["YOUR_ACCESS"]
   }
 }`;
 
@@ -125,11 +126,11 @@ export const getQuoteLogsFromBookVariables = `{
   "input": {
     "timeRange": {
       "absolute": {
-        "from": "2026-04-14 00:00:00",
-        "to": "2026-04-15 00:00:00"
+        "from": "2026-04-09 03:49:00",
+        "to": "2026-04-10 09:49:00"
       }
     },
-    "sessionId": "9ffb5416-249f-4916-b9f0-88c2198804dc",
+    "sessionId": "9ffb5416-249f-4916-b9f0-xxxxxxxx",
     "buyer": "BUYER_CODE",
     "seller": "SELLER_CODE",
     "mode": "BUYER",

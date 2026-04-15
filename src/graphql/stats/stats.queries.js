@@ -1,16 +1,43 @@
+// 1. getAggregationStats 
 export const getAggregationStatsQuery = `query getAggregatedStats($where: StatsAggregationConnectionWhereInput!, $groupBy: StatsAggregationConnectionGroupByInput!) {
   stats {
     getAggregationStats(where: $where, groupBy: $groupBy) {
       totalCount
+      adviseMessage {
+        code
+        description
+        level
+      }
       edges {
         node {
           aggregationData {
             hits
             time
             totalTime
+            errorType
+            errorCode
             operationType
-            seller { code }
-            buyer { code }
+            operation {
+              code
+            }
+            seller {
+              code
+            }
+            buyer {
+              code
+            }
+            access {
+              code
+            }
+            client {
+              clientData {
+                code
+                name
+              }
+            }
+            supplier {
+              code
+            }
           }
         }
       }
@@ -22,7 +49,8 @@ export const getAggregationStatsVariables = `{
   "where": {
     "mode": "BUYER",
     "buyer_in": ["BUYER_CODE"],
-    "operationType_in": ["SEARCH"],
+    "trafficType_in": ["BASIC", "SPEED"],
+    "api_in": ["hotel"],
     "timeRange": {
       "absolute": {
         "from": "2026-04-14 00:00:00",
@@ -35,6 +63,7 @@ export const getAggregationStatsVariables = `{
   }
 }`;
 
+// 2. RealTime
 export const getRealTimeStatsQuery = `query getRealTimeStats($where: StatsRealTimeRangeWhereInput!) {
   stats {
     getRealTimeRangeStats(where: $where) {
@@ -55,8 +84,8 @@ export const getRealTimeStatsVariables = `{
   "where": {
     "timeRange": {
       "absolute": {
-        "from": "2026-04-14 10:00:00",
-        "to": "2026-04-14 11:00:00"
+        "from": "2026-04-14 15:00:00",
+        "to": "2026-04-14 16:00:00"
       }
     },
     "groupByTime": "MINUTE"

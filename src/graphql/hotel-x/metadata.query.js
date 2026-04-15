@@ -174,7 +174,7 @@ export const metadataQuery =
 								reviewDate
 								value
 							}
-							timezone {
+							timeZone {
 								reviewDate
 								value
 							}
@@ -208,7 +208,7 @@ export const metadataQuery =
 								reviewDate
 								value
 							}
-							timezone {
+							timeZone {
 								reviewDate
 								value
 							}

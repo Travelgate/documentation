@@ -12,7 +12,13 @@ sidebar_position: 3
 
 ### Activation and Configuration
 
-Travelgate allows only **one credential (Hotel-X Access Code) per Channel Manager**. If you require multiple configurations, the [Inventory Extranet](/docs/apps/inventory/extranet/overview) offers flexible setup options to tailor your product settings efficiently.
+By default, Travelgate allows one credential (HotelX Access Code) per Channel Manager. To tailor your product settings efficiently, you can use the flexible setup options available via the [Inventory Extranet](/docs/apps/inventory/extranet/overview).
+
+However, you may require a custom configuration if:
+- You need to separate your billing by internal divisions while maintaining the same inventory.
+- You require independent contracting and distribution for different internal clients or divisions.
+
+If your situation matches either of these use cases and you require an additional HotelX Access Code, please [open a case](https://app.travelgate.com/support) in our Support Portal and explain your business requirements. This ensures your setup is aligned and optimized from the start.
 
 ### How to Connect to a Channel Manager 
 

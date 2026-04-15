@@ -177,30 +177,34 @@ Once you've uploaded your preference rules in the website, to use the plugin add
    
 
 ```js
-"settings": {
-	"plugins": [
-		{
-			"step": "RESPONSE",
-			"pluginsType": {
-				"type": "PRE_STEP",
-				"name": "preference",
-            "parameters" : [
-                        {
-                            "key" : "primaryKey",
-                            "value" : "hotel,board,room"
-                        },
-						{
-                            "key" : "optionsPerKey",
-                            "value" : "2"
-                        },
-						{
-                            "key" : "internalCurrencyConversion",
-                            "value" : "true"
-                        }
-                    ]
-			}
-		}
-	]
+{
+    "settings" : {
+        "plugins" : [
+            {
+                "step" : "RESPONSE",
+                "pluginsType" : [
+                    {
+                        "type" : "PRE_STEP",
+                        "name" : "preference",
+                        "parameters" : [
+                            {
+                                "key" : "primaryKey",
+                                "value" : "hotel,board,room"
+                            },
+                            {
+                                "key" : "optionsPerKey",
+                                "value" : "2"
+                            },
+                            {
+                                "key" : "internalCurrencyConversion",
+                                "value" : "true"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
 }
 ```
 

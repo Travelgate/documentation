@@ -28,7 +28,7 @@ Our goal has always been to make connecting with a Partner easier and faster.
     - **Step 1 (Partner)**: Select the Partner you want to connect with. Some Sellers may offer multiple connection types ([Pull or Push](/kb/welcome-to-travelgate/connectivity-services/pull-and-push-connectivity)), so choose the one that fits your needs.
         <img src="https://storage.travelgate.com/kbase/autoconnections_step3_1.png" alt="quickguide_to_autoconnections_step3_1" width="500" />
   
-    - **Step 2 (Access Configuration)**: Assign a distinctive name for your access (e.g., B2B or B2C). Indicate whether it’s for testing or live use. Then, complete the form with the credentials provided by the Seller.
+    - **Step 2 (Access Configuration)**: Assign a unique name to your access (e.g., B2B or B2C) and specify the environment as either Test or Live. Then, complete the form using the credentials and connection parameters provided by the Seller, along with any necessary Travelgate Connection Parameters.
 
         <img src="https://storage.travelgate.com/kbase/autoconnections_step3_2.png" alt="quickguide_to_autoconnections_step3_2" width="500" />
         

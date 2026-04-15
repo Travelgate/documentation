@@ -61,6 +61,55 @@ The Hotel List method returns a comprehensive hotel list from a supplier's acces
 
 `HotelList` request does not require any elements. 
 
+### How to Paginate Responses
+
+The Legacy Pull Buyers API provides paginated responses to handle cases where the number of hotels from the selected supplier exceeds 200.000. The default response page contains a maximum of 10.000 hotels, but you can specify the number of objects returned per page using the `ContinuationToken` and the attribute `expectedRange` fields in the request.
+
+To include the ContinuationToken in your request, all you need to do is:
+
+1. Add the ContinuationToken and expectedRange fields to the request.
+
+2. After receiving a response, you will only receive a portion of the full list. To access the next page, simply copy the ContinuationToken tag from the response,  including the expectedRange attribute used and include it in your next request. This will allow you to obtain a new set of objects in the following response.
+
+3. Repeat these steps until the token is no longer included in the response.
+
+
+:::note
+
+If the client requests 1000 hotels, the response may contain a range between 0 to 1000 hotels.
+
+:::
+
+**1. Indicate the ContinuationToken and expectedRange in the Request**
+
+First, in your hotel list request you will add `ContinuationToken` field and specify in `expectedRange` field the number of hotels expected to receive in the response:
+
+```xml
+<HotelListRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">                
+  <ContinuationToken expectedRange = "1000"></ContinuationToken>
+</HotelListRQ>
+```
+
+**2. You will receive the Response**
+
+You will obtain a response with 1000 hotels per page:
+
+```xml
+<HotelListRS xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">                
+  <ContinuationToken expectedRange = "1000">245635987415761654626</ContinuationToken>
+</HotelListRS>
+```
+
+**3. Add the Token in the Request**
+
+This token and the previous expectedRange should be used as input in your next hotel list request, inside the `ContinuationToken` field:
+
+
+```xml
+<HotelListRQ xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">                
+  <ContinuationToken expectedRange = "1000">245635987415761654626</ContinuationToken>
+</HotelListRQ>
+```
 
 ## HotelList Response
 

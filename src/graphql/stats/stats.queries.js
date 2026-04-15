@@ -31,7 +31,7 @@ export const getAggregationStatsVariables = `{
     }
   },
   "groupBy": {
-    "data": ["OPERATION"]
+    "data": ["OPERATION_TYPE"]
   }
 }`;
 
@@ -55,8 +55,8 @@ export const getRealTimeStatsVariables = `{
   "where": {
     "timeRange": {
       "absolute": {
-        "from": "2026-04-14 15:00:00",
-        "to": "2026-04-14 16:00:00"
+        "from": "2026-04-14 10:00:00",
+        "to": "2026-04-14 11:00:00"
       }
     },
     "groupByTime": "MINUTE"

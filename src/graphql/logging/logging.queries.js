@@ -1,5 +1,5 @@
-// 1. getLogs 
-export const getLoggingsQuery = `query getLoggings($input: LoggingLogsWhereInput!) {
+// 1. getLogs
+export const getLogsQuery = `query getLogs($input: LoggingLogsWhereInput!) {
   logging {
     getLogs(limit: 1000, where: $input) {
       totalCount
@@ -41,7 +41,7 @@ export const getLoggingsQuery = `query getLoggings($input: LoggingLogsWhereInput
   }
 }`;
 
-export const getLoggingsVariables = `{
+export const getLogsVariables = `{
   "input": {
     "api": "hotel",
     "timeRange": {
@@ -96,7 +96,7 @@ export const getLogsByRefVariables = `{
   }
 }`;
 
-// 3. getQuoteLogsFromBook 
+// 3. getQuoteLogsFromBook
 export const getQuoteLogsFromBookQuery = `query getQuoteLogsFromBook($input: LoggingQuoteLogFromBookInput!) {
   logging {
     getQuoteLogsFromBook(where: $input) {

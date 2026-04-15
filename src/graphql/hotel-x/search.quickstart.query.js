@@ -231,24 +231,26 @@ export const searchQuickStartVariables =
         "plugins" : [
             {
                 "step" : "RESPONSE",
-                "pluginsType" : {
-                    "type" : "PRE_STEP",
-                    "name" : "preference",
-                    "parameters" : [
-                        {
-                            "key" : "primaryKey",
-                            "value" : "hotel,board,room,rateRules"
-                        },
-                        {
-                            "key" : "optionsPerKey",
-                            "value" : "1"
-                        },
-                        {
-                            "key" : "internalCurrencyConversion",
-                            "value" : "true"
-                        }
-                    ]
-                }
+                "pluginsType" : [
+                    {
+                        "type" : "PRE_STEP",
+                        "name" : "preference",
+                        "parameters" : [
+                            {
+                                "key" : "primaryKey",
+                                "value" : "hotel,board,room,rateRules"
+                            },
+                            {
+                                "key" : "optionsPerKey",
+                                "value" : "1"
+                            },
+                            {
+                                "key" : "internalCurrencyConversion",
+                                "value" : "true"
+                            }
+                        ]
+                    }
+                ]
             }
         ]
     }
@@ -272,7 +274,7 @@ export const searchWithoutFilterVariables =
             }
         ],
         "hotels" : [
-			"ES284122",
+            "ES284122",
             "BR1518"
         ],
         "currency" : "EUR",
@@ -289,24 +291,26 @@ export const searchWithoutFilterVariables =
         "plugins" : [
             {
                 "step" : "RESPONSE",
-                "pluginsType" : {
-                    "type" : "PRE_STEP",
-                    "name" : "preference",
-                    "parameters" : [
-                        {
-                            "key" : "primaryKey",
-                            "value" : "hotel,board,room,rateRules"
-                        },
-                        {
-                            "key" : "optionsPerKey",
-                            "value" : "1"
-                        },
-                        {
-                            "key" : "internalCurrencyConversion",
-                            "value" : "true"
-                        }
-                    ]
-                }
+                "pluginsType" : [
+                    {
+                        "type" : "PRE_STEP",
+                        "name" : "preference",
+                        "parameters" : [
+                            {
+                                "key" : "primaryKey",
+                                "value" : "hotel,board,room,rateRules"
+                            },
+                            {
+                                "key" : "optionsPerKey",
+                                "value" : "1"
+                            },
+                            {
+                                "key" : "internalCurrencyConversion",
+                                "value" : "true"
+                            }
+                        ]
+                    }
+                ]
             }
         ]
     }
@@ -331,7 +335,7 @@ export const searchWithOnlyOneAccess =
             }
         ],
         "hotels" : [
-			"ES284122"
+            "ES284122"
         ],
         "currency" : "EUR",
         "markets" : [
@@ -354,24 +358,26 @@ export const searchWithOnlyOneAccess =
         "plugins" : [
             {
                 "step" : "RESPONSE",
-                "pluginsType" : {
-                    "type" : "PRE_STEP",
-                    "name" : "preference",
-                    "parameters" : [
-                        {
-                            "key" : "primaryKey",
-                            "value" : "hotel,board,room,rateRules"
-                        },
-                        {
-                            "key" : "optionsPerKey",
-                            "value" : "1"
-                        },
-                        {
-                            "key" : "internalCurrencyConversion",
-                            "value" : "true"
-                        }
-                    ]
-                }
+                "pluginsType" : [
+                    {
+                        "type" : "PRE_STEP",
+                        "name" : "preference",
+                        "parameters" : [
+                            {
+                                "key" : "primaryKey",
+                                "value" : "hotel,board,room,rateRules"
+                            },
+                            {
+                                "key" : "optionsPerKey",
+                                "value" : "1"
+                            },
+                            {
+                                "key" : "internalCurrencyConversion",
+                                "value" : "true"
+                            }
+                        ]
+                    }
+                ]
             }
         ]
     }
@@ -430,24 +436,26 @@ export const searchTwoRoomsVariables =
         "plugins" : [
             {
                 "step" : "RESPONSE",
-                "pluginsType" : {
-                    "type" : "PRE_STEP",
-                    "name" : "preference",
-                    "parameters" : [
-                        {
-                            "key" : "primaryKey",
-                            "value" : "hotel,board,room,rateRules"
-                        },
-                        {
-                            "key" : "optionsPerKey",
-                            "value" : "1"
-                        },
-                        {
-                            "key" : "internalCurrencyConversion",
-                            "value" : "true"
-                        }
-                    ]
-                }
+                "pluginsType" : [
+                    {
+                        "type" : "PRE_STEP",
+                        "name" : "preference",
+                        "parameters" : [
+                            {
+                                "key" : "primaryKey",
+                                "value" : "hotel,board,room,rateRules"
+                            },
+                            {
+                                "key" : "optionsPerKey",
+                                "value" : "1"
+                            },
+                            {
+                                "key" : "internalCurrencyConversion",
+                                "value" : "true"
+                            }
+                        ]
+                    }
+                ]
             }
         ]
     }
@@ -499,24 +507,26 @@ export const searchMultipleHotelsVariables =
         "plugins" : [
             {
                 "step" : "RESPONSE",
-                "pluginsType" : {
-                    "type" : "PRE_STEP",
-                    "name" : "preference",
-                    "parameters" : [
-                        {
-                            "key" : "primaryKey",
-                            "value" : "hotel,board,room,rateRules"
-                        },
-                        {
-                            "key" : "optionsPerKey",
-                            "value" : "1"
-                        },
-                        {
-                            "key" : "internalCurrencyConversion",
-                            "value" : "true"
-                        }
-                    ]
-                }
+                "pluginsType" : [
+                    {
+                        "type" : "PRE_STEP",
+                        "name" : "preference",
+                        "parameters" : [
+                            {
+                                "key" : "primaryKey",
+                                "value" : "hotel,board,room,rateRules"
+                            },
+                            {
+                                "key" : "optionsPerKey",
+                                "value" : "1"
+                            },
+                            {
+                                "key" : "internalCurrencyConversion",
+                                "value" : "true"
+                            }
+                        ]
+                    }
+                ]
             }
         ]
     }

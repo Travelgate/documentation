@@ -174,6 +174,10 @@ export const metadataQuery =
 								reviewDate
 								value
 							}
+							timeZone {
+								reviewDate
+								value
+							}
 						}
 						quote {
 							informBindingPrice {
@@ -201,6 +205,10 @@ export const metadataQuery =
 								value
 							}
 							requiredNationality {
+								reviewDate
+								value
+							}
+							timeZone {
 								reviewDate
 								value
 							}

@@ -1,0 +1,106 @@
+---
+sidebar_position: 2
+title: Stats
+---
+
+import {
+  getAggregationStatsQuery,
+  getAggregationStatsVariables,
+  getRealTimeStatsQuery,
+  getRealTimeStatsVariables,
+} from "../../../src/graphql/stats/stats.queries";
+
+# Stats API
+
+## Overview
+
+[Stats](/kb/platform/app-features/monitoring-tools/stats/stats-details) is the real-time connectivity performance dashboard of Travelgate. It is designed to monitor connection performance and quickly troubleshoot traffic issues by providing detailed data per connection and method.
+
+This document details the steps to extract and query metrics using the **Travelgate Stats API**. 
+
+:::info Authentication
+For all Stats API calls, it is required to first retrieve the bearer token using the `admin { jwt }` query. The returned token must be included in the header of subsequent requests: `Authorization: Bearer <your_jwt>`.
+:::
+
+## Considerations & Business Rules
+
+* **"OK" Status vs. Reservation Status:** The "OK" data in Stats *only* indicates that the transaction was technically successful. **It does not reflect the actual [booking status](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/book/book-status) of a reservation.** To know the real status, you must perform a [BookingRead](https://docs.travelgate.com/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/booking-read/) operation.
+* **The "Other" Operation:** The `OTHER` category covers operations outside the standard booking flow. For HotelX, these are equivalent to:
+  * [Hotels Query](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/hotels) (HotelList, DescriptiveInfo)
+  * [Booking Read and Booking List](https://docs.travelgate.com/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/booking-read/) (ReservationRead, ReservationList)
+  * [Rooms Query](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/rooms) and [Boards Query](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/boards) (RoomList, MealPlanList)
+* **Traffic Types:** When filtering your Stats, you can use the `trafficType_in` parameter: `BASIC`, `SPEED`, `SCHEDULER`, or `OPTIMIZED`.
+
+## Query Overview
+
+The Stats API offers several methods to retrieve information, depending on the level of detail and grouping you need:
+
+### 1. getAggregationStats
+Primary query used to retrieve grouped statistical data (hits, time, errors) based on specific criteria. It is commonly used to render charts, graphs, and aggregated data tables.
+
+### 2. getRealTimeRangeStats
+Used for real-time monitoring of requests and metrics in updated, smaller time blocks.
+
+#### A. Where (Filters)
+
+The `where` input allows you to precisely filter the statistics based on time range, buyers, APIs, or traffic types.
+
+```js
+{
+  "where": {
+    "mode": "BUYER",
+    "buyer_in": ["BUYER_CODE"],
+    "operationType_in": ["SEARCH"],
+    "timeRange": {
+      "absolute": {
+        "from": "2026-04-14 00:00:00",
+        "to": "2026-04-14 12:00:00"
+      }
+    }
+  }
+}
+```
+
+**Mandatory criteria:**
+* `mode` (Search perspective, either `BUYER` or `SELLER`).
+* `timeRange` (Absolute date range using the format `"YYYY-MM-DD HH:mm:ss"`).
+
+#### B. Group By
+
+The `groupBy` input defines how the returned data will be aggregated.
+
+```js
+{
+  "groupBy": {
+    "data": ["OPERATION_TYPE"]
+  }
+}
+```
+
+**Optional grouping:**
+* `data`: Fields by which to group the results (e.g., `OPERATION_TYPE`, `BUYER`, `SELLER`).
+* `time`: Temporal grouping like `MINUTE`, `HOUR`, `DAY`.
+
+## Examples
+
+In the following examples, you can see how to extract different types of stats using the interactive playground.
+
+### Example 1: Aggregation Stats (`getAggregationStats`)
+
+Primary query used to retrieve grouped statistical data based on specific criteria.
+
+<GraphqlSample
+  query={getAggregationStatsQuery}
+  variables={getAggregationStatsVariables}
+/>
+&nbsp;
+
+### Example 2: Real Time Stats (`getRealTimeRangeStats`)
+
+Used for real-time monitoring of requests and metrics in small time blocks.
+
+<GraphqlSample
+  query={getRealTimeStatsQuery}
+  variables={getRealTimeStatsVariables}
+/>
+&nbsp;

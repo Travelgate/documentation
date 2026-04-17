@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 4
 ---
 
@@ -1680,6 +1680,80 @@ available for a specific number of guests in this age range, no availability is 
         </div> 
     </div>
 </details>
+
+#### **Length of Stay (LOS) Pricing**
+
+The LOS pricing model extends all existing price types (per room, per standard occupancy, per occupancy, per age range, and per age range occupancy) by adding stay duration conditions. When LOS conditions are present, prices apply **only** to bookings that meet the specified minimum and maximum length of stay.
+
+Each `Rate` element can include the following LOS-related attributes:
+
+| Attribute | Description |
+|-----------|-------------|
+| `MinLOS` | Minimum number of nights required to book this rate. |
+| `MaxLOS` | Maximum number of nights allowed with this rate. |
+| `RateTimeUnit` | Unit of time for the rate. Always `Day`. |
+| `UnitMultiplier` | Number of days the amount covers. `1` = daily rate, `7` = weekly rate. |
+
+:::note
+When `MinLOS` and `MaxLOS` are not present, the price is considered a **daily rate with no LOS restrictions** (standard behavior).
+When multiple prices exist for the same day — some with LOS conditions and some without — the system will return the **cheapest price** in booking flow. Note that in Channel-X, all prices (with and without LOS conditions) are sent to the Buyer.
+:::  
+
+ 
+**Daily Rate with LOS Conditions**
+
+A rate available only for stays between 2 and 5 nights:
+
+```js
+<Rate Start="2024-02-02" End="2024-02-02" MinLOS="2" MaxLOS="5">
+    <BaseByGuestAmts>
+        <BaseByGuestAmt AmountAfterTax="50" NumberOfGuests="2"/>
+    </BaseByGuestAmts>
+    <AdditionalGuestAmounts>
+        <AdditionalGuestAmount MaxAdditionalGuests="1" AgeQualifyingCode="10" Type="Exclusive" Amount="30"/>
+    </AdditionalGuestAmounts>
+</Rate>
+```
+
+- `MinLOS="2"` → Guests must stay at least 2 nights.
+- `MaxLOS="5"` → Guests can stay a maximum of 5 nights.
+
+
+
+**Weekly Rate (Fixed LOS)**
+
+A rate exclusively for 7-night stays with a single weekly price:
+
+```js
+<Rate Start="2024-03-01" End="2024-03-31" MinLOS="7" MaxLOS="7" RateTimeUnit="Day" UnitMultiplier="7">
+    <BaseByGuestAmts>
+        <BaseByGuestAmt AmountAfterTax="700" NumberOfGuests="2"/>
+    </BaseByGuestAmts>
+</Rate>
+```
+
+- `MinLOS="7"` & `MaxLOS="7"` → Only available for exactly 7-night stays.
+- `UnitMultiplier="7"` → The amount of 700 covers the **full 7-day period**, not per night.
+
+
+
+**LOS-Based Meal Plan Supplements**
+
+Meal plan supplements can also include LOS conditions:
+
+```js
+<Supplements>
+    <Supplement AgeQualifyingCode="10" Amount="10" Start="2024-01-02" End="2024-01-02"
+                MinLOS="2" MaxLOS="5" RateTimeUnit="Day" UnitMultiplier="1"
+                SupplementType="Board" InvCode="19"/>
+    <Supplement AgeQualifyingCode="10" Amount="16" Start="2024-01-02" End="2024-01-02"
+                MinLOS="7" MaxLOS="7" RateTimeUnit="Day" UnitMultiplier="7"
+                SupplementType="Board" InvCode="19"/>
+</Supplements>
+```
+
+- First supplement: Applies only for stays between 2 and 5 nights (10 per night).
+- Second supplement: Applies only for exactly 7-night stays (16 for the full week).
 
 ## HotelRatePlanNotif Response
 

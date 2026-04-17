@@ -47,8 +47,8 @@ import TabItem from '@theme/TabItem';
                         <StatusApplicationControl Start="2023-11-10" End="2023-11-14" RatePlanCode="BAR" InvCode="SNG" InvType="ROOM" Mon="true" Tue="true" Weds="true" Thur="true" Fri="true" Sat="true" Sun="true" />
                         <LengthsOfStay ArrivalDateBased="false">
                             <LengthOfStay Time="1" TimeUnit="Day" MinMaxMessageType="MinLOS" />
-                            <LengthOfStay Time="2" TimeUnit="Day" MinMaxMessageType="MaxLOS" />                        
-						</LengthsOfStay>
+                            <LengthOfStay Time="2" TimeUnit="Day" MinMaxMessageType="MaxLOS" />
+                        </LengthsOfStay>
                         <RestrictionStatus />
                     </AvailStatusMessage>
                     <AvailStatusMessage BookingLimit="100">
@@ -69,12 +69,17 @@ import TabItem from '@theme/TabItem';
                         <StatusApplicationControl Start="2023-11-27" End="2023-11-28" RatePlanCode="BAR" InvCode="SNG" InvType="ROOM" Mon="true" Tue="true" Weds="true" Thur="true" Fri="true" Sat="true" Sun="true" />
                         <LengthsOfStay ArrivalDateBased="false">
                             <LengthOfStay Time="1" TimeUnit="Day" MinMaxMessageType="MinLOS" />
-                            <LengthOfStay Time="2" TimeUnit="Day" MinMaxMessageType="MaxLOS" />                        
-						</LengthsOfStay>
+                            <LengthOfStay Time="2" TimeUnit="Day" MinMaxMessageType="MaxLOS" />
+                        </LengthsOfStay>
                         <RestrictionStatus Restriction="Departure" Status="Close" />
                     </AvailStatusMessage>
                     <AvailStatusMessage BookingLimit="20">
                         <StatusApplicationControl Start="2024-01-07" End="2024-01-31" RatePlanCode="BAR" InvCode="SNG" InvType="ROOM" Mon="true" Tue="true" Weds="true" Thur="true" Fri="true" Sat="true" Sun="true" />
+                        <LengthsOfStay FixedPatternLength="8">
+                            <LengthOfStay MinMaxMessageType="FullPatternLOS">
+                                <LOS_Pattern FullPatternLOS="00101011"></LOS_Pattern>
+                            </LengthOfStay>
+                        </LengthsOfStay>
                         <RestrictionStatus MaxAdvancedBookingOffset="5" MinAdvancedBookingOffset="3" />
                     </AvailStatusMessage>
                 </AvailStatusMessages>
@@ -247,6 +252,36 @@ Download the following requests to explore all possible scenarios of information
 
 </BrowserWindow>
 ```
+
+#### **Fixed Pattern Length of Stay (FPLOS)**
+
+The FPLOS functionality allows defining which stay durations are available for booking on specific dates using a binary pattern. FPLOS restrictions are always **arrival date based**, meaning the pattern is evaluated only on the check-in day (equivalent to `ArrivalDateBased="true"`).
+
+```js
+<LengthsOfStay FixedPatternLength="8">
+    <LengthOfStay MinMaxMessageType="FullPatternLOS">
+        <LOS_Pattern FullPatternLOS="00101011"></LOS_Pattern>
+    </LengthOfStay>
+</LengthsOfStay>
+```
+
+| Attribute | Description |
+|-----------|-------------|
+| `FixedPatternLength` | Total number of days for which LOS restrictions apply. |
+| `FullPatternLOS` | Binary pattern where each position represents a stay length: `1` = available, `0` = not available. |
+
+**Example: Pattern `00101011`**
+
+| Stay Length | Available |
+|-------------|-----------|
+| 1 Night     | ❌ No     |
+| 2 Nights    | ❌ No     |
+| 3 Nights    | ✅ Yes    |
+| 4 Nights    | ❌ No     |
+| 5 Nights    | ✅ Yes    |
+| 6 Nights    | ❌ No     |
+| 7 Nights    | ✅ Yes    |
+| 8 Nights    | ✅ Yes    |
 
 ## HotelAvailNotif Response
 

@@ -12,15 +12,92 @@ import {
 
 # Stats API
 
+## API Endpoint
+
+All Stats API operations use a single GraphQL endpoint:
+
+```
+https://api.travelgate.com
+```
+
 ## Overview
 
 [Stats](/kb/platform/app-features/monitoring-tools/stats/stats-details) is the real-time connectivity performance dashboard of Travelgate. It is designed to monitor connection performance and quickly troubleshoot traffic issues by providing detailed data per connection and method.
 
 This document details the steps to extract and query metrics using the **Travelgate Stats API**. 
 
-:::info Authentication
-For all Stats API calls, it is required to first retrieve the bearer token using the `admin { jwt }` query. The returned token must be included in the header of subsequent requests: `Authorization: Bearer <your_jwt>`.
-:::
+## Authentication
+
+All Stats API calls require authentication using a JWT (JSON Web Token). Follow these steps:
+
+### Step 1: Retrieve Your JWT Token
+
+First, obtain your bearer token by executing the following query:
+
+**Query:**
+
+```graphql
+query {
+  admin {
+    jwt
+  }
+}
+```
+
+**Request Example (curl):**
+
+```bash
+curl 'https://api.travelgate.com' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: ApiKey YOUR_API_KEY' \
+  --data-raw '{"query":"query { admin { jwt } }"}'
+```
+
+**Response:**
+
+```json
+{
+  "data": {
+    "admin": {
+      "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+    }
+  }
+}
+```
+
+### Step 2: Use JWT in Subsequent Requests
+
+Include the JWT token in the `Authorization` header of all Stats API requests:
+
+```
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+```
+
+**Complete Request Example:**
+
+```bash
+curl 'https://api.travelgate.com' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer YOUR_JWT_TOKEN' \
+  --data-raw '{
+    "query": "query getAggregatedStats($where: StatsAggregationConnectionWhereInput!, $groupBy: StatsAggregationConnectionGroupByInput!) { stats { getAggregationStats(where: $where, groupBy: $groupBy) { totalCount edges { node { aggregationData { hits operationType } } } } } }",
+    "variables": {
+      "where": {
+        "mode": "BUYER",
+        "buyer_in": ["BUYER_CODE"],
+        "timeRange": {
+          "absolute": {
+            "from": "2026-04-14 00:00:00",
+            "to": "2026-04-14 12:00:00"
+          }
+        }
+      },
+      "groupBy": {
+        "data": ["OPERATION_TYPE"]
+      }
+    }
+  }'
+```
 
 ## Considerations & Business Rules
 
@@ -89,6 +166,189 @@ In the following examples, you can see how to extract different types of stats u
 
 Primary query used to retrieve grouped statistical data based on specific criteria.
 
+**Query:**
+
+```graphql
+query getAggregatedStats($where: StatsAggregationConnectionWhereInput!, $groupBy: StatsAggregationConnectionGroupByInput!) {
+  stats {
+    getAggregationStats(where: $where, groupBy: $groupBy) {
+      totalCount
+      adviseMessage {
+        code
+        description
+        level
+      }
+      edges {
+        node {
+          aggregationData {
+            hits
+            time
+            totalTime
+            errorType
+            errorCode
+            operationType
+            operation {
+              code
+            }
+            seller {
+              code
+            }
+            buyer {
+              code
+            }
+            access {
+              code
+            }
+            client {
+              clientData {
+                code
+                name
+              }
+            }
+            supplier {
+              code
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+**Variables:**
+
+```json
+{
+  "where": {
+    "mode": "BUYER",
+    "buyer_in": ["BUYER_CODE"],
+    "trafficType_in": ["BASIC", "SPEED"],
+    "api_in": ["hotel"],
+    "timeRange": {
+      "absolute": {
+        "from": "2026-04-14 00:00:00",
+        "to": "2026-04-14 12:00:00"
+      }
+    }
+  },
+  "groupBy": {
+    "data": ["OPERATION_TYPE"]
+  }
+}
+```
+
+**Sample Response:**
+
+```json
+{
+  "data": {
+    "stats": {
+      "getAggregationStats": {
+        "totalCount": 3,
+        "adviseMessage": null,
+        "edges": [
+          {
+            "node": {
+              "aggregationData": {
+                "hits": 1250,
+                "time": 450,
+                "totalTime": 562500,
+                "errorType": "NO_ERROR",
+                "errorCode": null,
+                "operationType": "SEARCH",
+                "operation": {
+                  "code": "hotel"
+                },
+                "seller": null,
+                "buyer": {
+                  "code": "BUYER_CODE"
+                },
+                "access": null,
+                "client": null,
+                "supplier": null
+              }
+            }
+          },
+          {
+            "node": {
+              "aggregationData": {
+                "hits": 85,
+                "time": 320,
+                "totalTime": 27200,
+                "errorType": "NO_ERROR",
+                "errorCode": null,
+                "operationType": "QUOTE",
+                "operation": {
+                  "code": "hotel"
+                },
+                "seller": null,
+                "buyer": {
+                  "code": "BUYER_CODE"
+                },
+                "access": null,
+                "client": null,
+                "supplier": null
+              }
+            }
+          },
+          {
+            "node": {
+              "aggregationData": {
+                "hits": 42,
+                "time": 520,
+                "totalTime": 21840,
+                "errorType": "NO_ERROR",
+                "errorCode": null,
+                "operationType": "BOOK",
+                "operation": {
+                  "code": "hotel"
+                },
+                "seller": null,
+                "buyer": {
+                  "code": "BUYER_CODE"
+                },
+                "access": null,
+                "client": null,
+                "supplier": null
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+**curl Example:**
+
+```bash
+curl 'https://api.travelgate.com' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer YOUR_JWT_TOKEN' \
+  --data-raw '{
+    "query": "query getAggregatedStats($where: StatsAggregationConnectionWhereInput!, $groupBy: StatsAggregationConnectionGroupByInput!) { stats { getAggregationStats(where: $where, groupBy: $groupBy) { totalCount adviseMessage { code description level } edges { node { aggregationData { hits time totalTime errorType errorCode operationType operation { code } seller { code } buyer { code } access { code } client { clientData { code name } } supplier { code } } } } } } }",
+    "variables": {
+      "where": {
+        "mode": "BUYER",
+        "buyer_in": ["BUYER_CODE"],
+        "trafficType_in": ["BASIC", "SPEED"],
+        "api_in": ["hotel"],
+        "timeRange": {
+          "absolute": {
+            "from": "2026-04-14 00:00:00",
+            "to": "2026-04-14 12:00:00"
+          }
+        }
+      },
+      "groupBy": {
+        "data": ["OPERATION_TYPE"]
+      }
+    }
+  }'
+```
+
 <GraphqlSample
   query={getAggregationStatsQuery}
   variables={getAggregationStatsVariables}
@@ -98,6 +358,82 @@ Primary query used to retrieve grouped statistical data based on specific criter
 ### Example 2: Real Time Stats (`getRealTimeRangeStats`)
 
 Used for real-time monitoring of requests and metrics in small time blocks.
+
+**Query:**
+
+```graphql
+query getRealTimeStats($where: StatsRealTimeRangeWhereInput!) {
+  stats {
+    getRealTimeRangeStats(where: $where) {
+      realTimeRangeData {
+        from
+        to
+      }
+      adviseMessage {
+        code
+        description
+        level
+      }
+    }
+  }
+}
+```
+
+**Variables:**
+
+```json
+{
+  "where": {
+    "timeRange": {
+      "absolute": {
+        "from": "2026-04-14 15:00:00",
+        "to": "2026-04-14 16:00:00"
+      }
+    },
+    "groupByTime": "MINUTE"
+  }
+}
+```
+
+**Sample Response:**
+
+```json
+{
+  "data": {
+    "stats": {
+      "getRealTimeRangeStats": {
+        "realTimeRangeData": {
+          "from": "2026-04-14 15:00:00",
+          "to": "2026-04-14 16:00:00"
+        },
+        "adviseMessage": null
+      }
+    }
+  }
+}
+```
+
+**curl Example:**
+
+```bash
+curl 'https://api.travelgate.com' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer YOUR_JWT_TOKEN' \
+  --data-raw '{
+    "query": "query getRealTimeStats($where: StatsRealTimeRangeWhereInput!) { stats { getRealTimeRangeStats(where: $where) { realTimeRangeData { from to } adviseMessage { code description level } } } }",
+    "variables": {
+      "where": {
+        "timeRange": {
+          "absolute": {
+            "from": "2026-04-14 15:00:00",
+            "to": "2026-04-14 16:00:00"
+          }
+        },
+        "groupByTime": "MINUTE"
+      }
+    }
+  }'
+```
 
 <GraphqlSample
   query={getRealTimeStatsQuery}

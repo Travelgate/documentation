@@ -89,6 +89,161 @@ In the following examples, you can see how to extract different types of stats u
 
 Primary query used to retrieve grouped statistical data based on specific criteria.
 
+**Query:**
+
+```graphql
+query getAggregatedStats($where: StatsAggregationConnectionWhereInput!, $groupBy: StatsAggregationConnectionGroupByInput!) {
+  stats {
+    getAggregationStats(where: $where, groupBy: $groupBy) {
+      totalCount
+      adviseMessage {
+        code
+        description
+        level
+      }
+      edges {
+        node {
+          aggregationData {
+            hits
+            time
+            totalTime
+            errorType
+            errorCode
+            operationType
+            operation {
+              code
+            }
+            seller {
+              code
+            }
+            buyer {
+              code
+            }
+            access {
+              code
+            }
+            client {
+              clientData {
+                code
+                name
+              }
+            }
+            supplier {
+              code
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+**Variables:**
+
+```json
+{
+  "where": {
+    "mode": "BUYER",
+    "buyer_in": ["BUYER_CODE"],
+    "trafficType_in": ["BASIC", "SPEED"],
+    "api_in": ["hotel"],
+    "timeRange": {
+      "absolute": {
+        "from": "2026-04-14 00:00:00",
+        "to": "2026-04-14 12:00:00"
+      }
+    }
+  },
+  "groupBy": {
+    "data": ["OPERATION_TYPE"]
+  }
+}
+```
+
+**Sample Response:**
+
+```json
+{
+  "data": {
+    "stats": {
+      "getAggregationStats": {
+        "totalCount": 3,
+        "adviseMessage": null,
+        "edges": [
+          {
+            "node": {
+              "aggregationData": {
+                "hits": 1250,
+                "time": 450,
+                "totalTime": 562500,
+                "errorType": "NO_ERROR",
+                "errorCode": null,
+                "operationType": "SEARCH",
+                "operation": {
+                  "code": "hotel"
+                },
+                "seller": null,
+                "buyer": {
+                  "code": "BUYER_CODE"
+                },
+                "access": null,
+                "client": null,
+                "supplier": null
+              }
+            }
+          },
+          {
+            "node": {
+              "aggregationData": {
+                "hits": 85,
+                "time": 320,
+                "totalTime": 27200,
+                "errorType": "NO_ERROR",
+                "errorCode": null,
+                "operationType": "QUOTE",
+                "operation": {
+                  "code": "hotel"
+                },
+                "seller": null,
+                "buyer": {
+                  "code": "BUYER_CODE"
+                },
+                "access": null,
+                "client": null,
+                "supplier": null
+              }
+            }
+          },
+          {
+            "node": {
+              "aggregationData": {
+                "hits": 42,
+                "time": 520,
+                "totalTime": 21840,
+                "errorType": "NO_ERROR",
+                "errorCode": null,
+                "operationType": "BOOK",
+                "operation": {
+                  "code": "hotel"
+                },
+                "seller": null,
+                "buyer": {
+                  "code": "BUYER_CODE"
+                },
+                "access": null,
+                "client": null,
+                "supplier": null
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
 <GraphqlSample
   query={getAggregationStatsQuery}
   variables={getAggregationStatsVariables}
@@ -98,6 +253,60 @@ Primary query used to retrieve grouped statistical data based on specific criter
 ### Example 2: Real Time Stats (`getRealTimeRangeStats`)
 
 Used for real-time monitoring of requests and metrics in small time blocks.
+
+**Query:**
+
+```graphql
+query getRealTimeStats($where: StatsRealTimeRangeWhereInput!) {
+  stats {
+    getRealTimeRangeStats(where: $where) {
+      realTimeRangeData {
+        from
+        to
+      }
+      adviseMessage {
+        code
+        description
+        level
+      }
+    }
+  }
+}
+```
+
+**Variables:**
+
+```json
+{
+  "where": {
+    "timeRange": {
+      "absolute": {
+        "from": "2026-04-14 15:00:00",
+        "to": "2026-04-14 16:00:00"
+      }
+    },
+    "groupByTime": "MINUTE"
+  }
+}
+```
+
+**Sample Response:**
+
+```json
+{
+  "data": {
+    "stats": {
+      "getRealTimeRangeStats": {
+        "realTimeRangeData": {
+          "from": "2026-04-14 15:00:00",
+          "to": "2026-04-14 16:00:00"
+        },
+        "adviseMessage": null
+      }
+    }
+  }
+}
+```
 
 <GraphqlSample
   query={getRealTimeStatsQuery}

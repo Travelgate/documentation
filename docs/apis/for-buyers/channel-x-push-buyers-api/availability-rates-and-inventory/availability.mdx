@@ -75,7 +75,7 @@ import TabItem from '@theme/TabItem';
                     </AvailStatusMessage>
                     <AvailStatusMessage BookingLimit="20">
                         <StatusApplicationControl Start="2024-01-07" End="2024-01-31" RatePlanCode="BAR" InvCode="SNG" InvType="ROOM" Mon="true" Tue="true" Weds="true" Thur="true" Fri="true" Sat="true" Sun="true" />
-                        <LengthsOfStay FixedPatternLength="8">
+                        <LengthsOfStay FixedPatternLength="8" ArrivalDateBased="true">
                             <LengthOfStay MinMaxMessageType="FullPatternLOS">
                                 <LOS_Pattern FullPatternLOS="00101011"></LOS_Pattern>
                             </LengthOfStay>
@@ -258,7 +258,7 @@ Download the following requests to explore all possible scenarios of information
 The FPLOS functionality allows defining which stay durations are available for booking on specific dates using a binary pattern. FPLOS restrictions are always **arrival date based**, meaning the pattern is evaluated only on the check-in day (equivalent to `ArrivalDateBased="true"`).
 
 ```js
-<LengthsOfStay FixedPatternLength="8">
+<LengthsOfStay FixedPatternLength="8" ArrivalDateBased="true">
     <LengthOfStay MinMaxMessageType="FullPatternLOS">
         <LOS_Pattern FullPatternLOS="00101011"></LOS_Pattern>
     </LengthOfStay>

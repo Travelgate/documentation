@@ -22,9 +22,20 @@ https://api.travelgate.com
 
 ## Overview
 
-[Stats](/kb/platform/app-features/monitoring-tools/stats/stats-details) is the real-time connectivity performance dashboard of Travelgate. It is designed to monitor connection performance and quickly troubleshoot traffic issues by providing detailed data per connection and method.
+[Stats](/kb/platform/app-features/monitoring-tools/stats/stats-details) is the real-time connectivity performance dashboard of Travelgate. Use the Stats API to programmatically monitor connection performance, check error rates, and analyze booking flow metrics. This API lets you extract and query statistical data by connection, operation type, buyer/seller perspective, and time range for detailed performance insights.
+
+### Common Use Cases
+
+- **Monitor Connection Error Rates:** Track NOK (error) percentages for your connections to identify performance issues.
+- **Analyze Booking Flow Performance:** Measure the performance of Search, Quote, Book, and Cancel operations to understand your conversion funnel.
+- **Troubleshoot Traffic Issues:** Investigate traffic patterns, error types, and transaction volumes in real-time or aggregated views.
+- **Performance Dashboards:** Build custom dashboards using aggregated stats grouped by operation type, traffic type, Buyer/Seller, or time periods.
 
 This document details the steps to extract and query metrics using the **Travelgate Stats API**. 
+
+:::info Public Monitoring API Scope
+Stats is the currently published Monitoring API.
+:::
 
 ## Authentication
 
@@ -108,6 +119,30 @@ curl 'https://api.travelgate.com' \
   * [Rooms Query](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/rooms) and [Boards Query](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/boards) (RoomList, MealPlanList)
 * **Traffic Types:** When filtering your Stats, you can use the `trafficType_in` parameter: `BASIC`, `SPEED`, `SCHEDULER`, or `OPTIMIZED`.
 
+## Choosing the Right Query
+
+The Stats API provides two main query types, each suited for different use cases:
+
+### When to Use `getAggregationStats`
+
+Use `getAggregationStats` for:
+- **Historical Analysis:** Analyze stats from hours, days, or weeks in the past
+- **Trend Analysis:** Compare performance across time periods, operation types, or connections
+- **SLA Monitoring:** Validate service levels over agreed-upon time windows
+- **Large Time Ranges:** Query days or weeks of data grouped by hour or day
+
+**Example:** "Show me the total search hits and average response time grouped by operation type for the last 7 days"
+
+### When to Use `getRealTimeRangeStats`
+
+Use `getRealTimeRangeStats` for:
+- **Real-Time Monitoring:** Monitor traffic patterns in live, smaller time windows (minutes to hours)
+- **Traffic Anomaly Detection:** Identify sudden spikes or drops in traffic
+- **Small Time Windows:** Query recent data (last few hours) with minute-level granularity
+- **Live Dashboards:** Build dashboards that update with the latest minute-by-minute metrics
+
+**Example:** "Show me the hits and errors for the last hour, broken down by minute"
+
 ## Query Overview
 
 The Stats API offers several methods to retrieve information, depending on the level of detail and grouping you need:
@@ -156,7 +191,119 @@ The `groupBy` input defines how the returned data will be aggregated.
 
 **Optional grouping:**
 * `data`: Fields by which to group the results (e.g., `OPERATION_TYPE`, `BUYER`, `SELLER`).
-* `time`: Temporal grouping like `MINUTE`, `HOUR`, `DAY`.
+* `time`: Temporal grouping like `MINUTE`, `HOUR`, `DAY`, `MONTH`.
+
+#### C. Enum Reference
+
+##### Data Grouping Fields
+
+The `data` field in `groupBy` allows you to group results by any of the following dimensions:
+
+| Value | Description |
+|-------|-------------|
+| `BUYER` | Group by the buyer organization |
+| `SELLER` | Group by the seller organization |
+| `ACCESS` | Group by the Hotel-X access code |
+| `CLIENT` | Group by the client or buyer system |
+| `SUPPLIER` | Group by the supplier or seller system |
+| `OPERATION` | Group by the operation or API name (for example, `hotel`) |
+| `OPERATION_TYPE` | Group by the booking flow step (`SEARCH`, `QUOTE`, `BOOK`, `CANCEL`, `OTHER`) |
+| `TRAFFIC_TYPE` | Group by traffic type (`BASIC`, `SPEED`, `SCHEDULER`, `OPTIMIZED`) |
+| `ERROR_CODE` | Group by specific error code |
+| `ERROR_TYPE` | Group by error type |
+| `API` | Group by API |
+
+##### Time Grouping Fields
+
+The `time` field in `groupBy` allows you to aggregate data by time buckets:
+
+| Value | Description |
+|-------|-------------|
+| `MINUTE` | Group results into 1-minute buckets |
+| `HOUR` | Group results into 1-hour buckets |
+| `DAY` | Group results into 1-day buckets |
+| `MONTH` | Group results into 1-month buckets |
+
+##### Mode Values
+
+The `mode` field specifies whose perspective you want to query:
+
+| Value | Description |
+|-------|-------------|
+| `BUYER` | Query statistics from the buyer's perspective (incoming requests from buyers) |
+| `SELLER` | Query statistics from the seller's perspective (outgoing requests to sellers) |
+
+##### Operation Type Values
+
+The `operationType` field indicates the booking flow step:
+
+| Value | Description |
+|-------|-------------|
+| `SEARCH` | Search operations - initial hotel availability queries |
+| `QUOTE` | Quote operations - rate and availability confirmation |
+| `BOOK` | Book operations - reservation creation and confirmation |
+| `CANCEL` | Cancel operations - reservation cancellations |
+| `OTHER` | Other operations - non-booking flow operations like HotelList, DescriptiveInfo, ReservationRead, RoomList, etc. |
+
+##### Traffic Type Values
+
+The `trafficType_in` field filters by traffic source when using Speed or Scheduler solutions:
+
+| Value | Description |
+|-------|-------------|
+| `BASIC` | Standard direct traffic between buyer and seller without Speed/Scheduler |
+| `SPEED` | Traffic routed through the Speed cache solution |
+| `SCHEDULER` | Traffic for static content management via the Scheduler solution |
+| `OPTIMIZED` | Background update requests sent by Travelgate to update internal databases |
+
+### Response Fields
+
+#### adviseMessage
+
+The `adviseMessage` field appears in both `getAggregationStats` and `getRealTimeRangeStats` responses to provide operational guidance. It may be `null` if no warnings or issues are detected.
+
+**adviseMessage Structure:**
+
+```json
+[
+  {
+    "code": "SAMPLE_CODE",
+    "type": "SAMPLE_TYPE",
+    "description": "Description of the advisory message",
+    "level": "WARN",
+    "correlationID": "1234567890",
+    "external": null
+  }
+]
+```
+
+**adviseMessage Levels:**
+
+| Level | Meaning | Action Required |
+|-------|---------|-----------------|
+| `INFO` | Informational message, no action needed | None - informational only |
+| `WARN` | Caution recommended, may affect data accuracy | Review the message and consider investigation |
+| `ERROR` | Significant issue detected | Immediate investigation recommended |
+
+**adviseMessage Fields:**
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `code` | `ID!` | Message code returned by the API |
+| `type` | `String!` | Message type/category |
+| `description` | `String!` | Human-readable message description |
+| `level` | `AdviseMessageLevel!` | Severity level (`WARN`, `ERROR`, `INFO`) |
+| `correlationID` | `ID!` | Identifier for troubleshooting and support investigations |
+| `external` | `ExternalMessage` | Optional external message payload |
+
+**Common adviseMessage Scenarios:**
+
+- **Incomplete Data:** When a query returns partial data or has gaps, adviseMessage indicates the data may not be complete for the requested period.
+- **Data Lag:** When querying very recent time windows, adviseMessage may indicate the data is still being processed and more recent results may appear in the next query.
+- **Filter Mismatches:** When filters don't match any data, adviseMessage explains why no results were returned.
+- **Query Limits:** When results are truncated due to pagination or size limits, adviseMessage provides guidance.
+
+If `adviseMessage` is not `null`, examine each message in the list and use `level`, `description`, and `correlationID` to understand potential data limitations and speed up support investigations.
 
 ## Examples
 
@@ -412,6 +559,16 @@ query getRealTimeStats($where: StatsRealTimeRangeWhereInput!) {
   }
 }
 ```
+
+**Response Fields:**
+
+- **realTimeRangeData.from** (`DateTime`): The start of the requested time range
+- **realTimeRangeData.to** (`DateTime`): The end of the requested time range
+- **adviseMessage** (`[AdviseMessage]`): Optional warnings or information about the query results (see [Response Fields](#response-fields) section)
+
+:::note
+`getRealTimeRangeStats` validates the time range and data availability. To retrieve actual metrics (hits, time, errors) grouped by time buckets, use `getAggregationStats` with `groupBy.time` set to `MINUTE`, `HOUR`, `DAY`, or `MONTH` and include fields like `hits`, `time`, `totalTime`, and `errorType` in your query.
+:::
 
 **curl Example:**
 

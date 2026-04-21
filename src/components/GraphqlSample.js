@@ -45,10 +45,11 @@ const GraphqlSample = ({token, query, variables}) => {
     return (
         <>
             {isBrowser && fetcher && headers && (
-                <BrowserOnly fallback={<div>Loading...</div>}>
+                <BrowserOnly fallback={<div>Loading interactive playground...</div>}>
                     {() => {
                         return (
-                            <>
+                            <div className="graphql-sample-interactive" aria-label="Interactive GraphQL playground">
+                                <p><strong>Interactive playground:</strong></p>
                                 <GraphiQL
                                     fetcher={fetcher}
                                     initialHeaders={headers}
@@ -58,7 +59,7 @@ const GraphqlSample = ({token, query, variables}) => {
                                 >
                                     <GraphiQL.Logo><></></GraphiQL.Logo>
                                 </GraphiQL>
-                            </>
+                            </div>
                         )
                     }}
                 </BrowserOnly>

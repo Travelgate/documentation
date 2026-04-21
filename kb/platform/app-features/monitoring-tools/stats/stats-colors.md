@@ -33,8 +33,6 @@ The thresholds above are the reference values used by Stats scorecards. You can 
 ![stats_colors_1](https://storage.travelgate.com/kbase/stats_colors_1.jpg)
 ![stats_colors_2](https://storage.travelgate.com/kbase/stats_colors_2.jpg)
 
-![stats_colors_3](https://storage.travelgate.com/kbase/stats_colors_3.jpg)
-
 :::info
 Looking to improve your connections’ performance? Explore our range of tools, like the [Traffic Optimizer](/kb/platform/app-features/smart-traffic/traffic-optimizer/traffic-optimizer-details) and [Speed](/kb/platform/app-features/smart-traffic/speed/speed-details), designed to boost your experience! 🚀
 :::

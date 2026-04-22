@@ -37,6 +37,18 @@ This document details the steps to extract and query metrics using the **Travelg
 Stats is the currently published Monitoring API.
 :::
 
+## When to Use Stats, Stats API, or Logging
+
+Use these tools together depending on whether you need dashboard monitoring, programmatic access, or transaction-level troubleshooting.
+
+| Need | Recommended Tool | Why |
+|---|---|---|
+| Review connection health, booking-flow performance, and NOK ratios in the platform UI | [Stats](/kb/platform/app-features/monitoring-tools/stats/stats-details) | Provides the built-in monitoring dashboard for operational analysis |
+| Build custom dashboards, automate reporting, or query aggregated metrics programmatically | Stats API | Returns aggregated metrics optimized for integrations and reporting workflows |
+| Investigate a specific transaction or inspect request/response logs | [Logging](/kb/platform/app-features/monitoring-tools/logging/logging-details) | Provides transaction-level traceability for troubleshooting |
+
+For transaction-level investigations, see [How to Use Logging](/kb/platform/app-features/monitoring-tools/logging/logging-details) and [How to Audit Supplier Transactions](/kb/platform/app-features/monitoring-tools/logging/audit-supplier-transactions).
+
 ## Authentication
 
 All Stats API calls require authentication using a JWT (JSON Web Token). Follow these steps:
@@ -118,6 +130,16 @@ curl 'https://api.travelgate.com' \
   * [Booking Read and Booking List](https://docs.travelgate.com/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/booking-read/) (ReservationRead, ReservationList)
   * [Rooms Query](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/rooms) and [Boards Query](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/boards) (RoomList, MealPlanList)
 * **Traffic Types:** When filtering your Stats, you can use the `trafficType_in` parameter: `BASIC`, `SPEED`, `SCHEDULER`, or `OPTIMIZED`.
+
+### Traffic Type Filtering Patterns
+
+Use `trafficType_in` in `where` to isolate the traffic source for specific troubleshooting scenarios.
+
+- Diagnose seller-managed traffic by filtering `BASIC` and `OPTIMIZED`.
+- Measure cache behavior by filtering only `SPEED`.
+- Audit static-content update traffic by filtering `SCHEDULER`.
+
+For the full meaning of each traffic type in the Stats dashboard, see [Traffic Types](/kb/platform/app-features/monitoring-tools/stats/traffic-types).
 
 ## Choosing the Right Query
 

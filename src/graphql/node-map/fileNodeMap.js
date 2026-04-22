@@ -23,7 +23,6 @@ const FILE_NODE_MAP = {
 // **Precios - Tarifas**
 "for-sellers/inventory-sellers/inventory-push-graphql-api/product-load/price/rates/load-rate-price-per-occupancy.mdx": ["InventoryLoadPriceRatesInput", "PriceRatesRs"],
 "for-sellers/inventory-sellers/inventory-push-graphql-api/product-load/price/rates/load-rate-price-per-room.mdx": ["InventoryLoadPriceRatesInput", "PriceRatesRs"],
-"for-sellers/inventory-sellers/inventory-push-graphql-api/product-load/price/rates/load-rate-price-per-standard-occupancy.mdx": ["InventoryLoadPriceRatesInput", "PriceRatesRs"],
 "for-sellers/inventory-sellers/inventory-push-graphql-api/product-load/price/rates/retrieve-rate-price.mdx": ["InventoryPriceRatesInput", "PriceRatesRs"],
 // **Configuración - Hoteles**
 "for-sellers/inventory-sellers/inventory-push-graphql-api/set-up/hotels-set-up/create-hotel-set-up.mdx": ["InventoryHotelsSetupCreateInput", "HotelsSetupRs"],

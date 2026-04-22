@@ -14,7 +14,11 @@ In our dynamic Marketplace, which handles over 6 billion searches and 30,000 boo
 - **Yellow**: A yellow connection is performing well, but there's room for improvement. The error ratio is above the baseline but manageable. Fine-tuning its error ratio could enhance performance.
 - **Red**: A red connection indicates the error ratio needs attention. The error rate exceeds recommended thresholds and should be reviewed to reduce errors further.
 
-## NOK Percentage Thresholds
+## Why Is My Connection Red in Stats?
+
+Your connection is shown in red when the NOK percentage for the selected booking-flow step is above the red threshold in the table below. Check the selected tab (Search, Quote, Book, or Cancel), compare the NOK percentage with the thresholds, and prioritize the error types with the highest volume.
+
+## NOK Percentage Thresholds by Booking-Flow Step
 
 Each color is determined by the **NOK (Not OK) percentage** per booking-flow step:
 

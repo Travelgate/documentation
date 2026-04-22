@@ -100,6 +100,8 @@ If you can’t find a connection in the Stats Dashboard dropdown, try the follow
     If a connection doesn’t appear in the dropdown on the Stats Dashboard, **check whether it had any traffic during the selected time range**. For example, if you've applied the “Last 12 hours” filter but the connection had no activity during that period, it won’t be listed.
     To ensure visibility, try expanding the time range to include periods when the connection may have had traffic.
 
+If your question is about color status (for example, why a connection appears in red), review the [Stats Color Guide](/kb/platform/app-features/monitoring-tools/stats/stats-colors), including the NOK thresholds by booking-flow step.
+
 
 ### Download CSV Functionality
 Above each table, you’ll find a **'Download CSV'** button, which allows you to download the Stats data that is most relevant to your business. Give it a try! 🚀

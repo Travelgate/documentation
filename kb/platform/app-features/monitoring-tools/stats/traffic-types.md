@@ -29,4 +29,6 @@ To help you understand the different traffic types, we’ve provided the diagram
 
 By default, **Stats** shows the combined traffic sent by the Buyer, including both **Basic** and **Speed** traffic. If you'd prefer to view only the traffic that the Seller system actively manages (Basic Traffic and Optimized Traffic), you can use the filter to select the **'Optimize'** and **'Basic'** options.
 
+The screenshot below shows the Search Traffic Type filter in the Stats dashboard:
+
 ![stats_traffic_type_2](https://storage.travelgate.com/kbase/stats_traffic_type_2.jpg)

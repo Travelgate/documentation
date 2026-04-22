@@ -18,7 +18,7 @@ In our dynamic Marketplace, which handles over 6 billion searches and 30,000 boo
 
 Your connection is shown in red when the NOK percentage for the selected booking-flow step is above the red threshold in the table below. Check the selected tab (Search, Quote, Book, or Cancel), compare the NOK percentage with the thresholds, and prioritize the error types with the highest volume.
 
-## NOK Percentage Thresholds
+## NOK Percentage Thresholds by Booking-Flow Step
 
 Each color is determined by the **NOK (Not OK) percentage** per booking-flow step:
 

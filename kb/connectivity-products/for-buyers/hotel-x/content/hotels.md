@@ -35,7 +35,7 @@ The Hotels Query response may include the following fields:
 - Room details, including max/min occupancy and pax ranges (if available)
 
 :::info FastX Content:
-When performing a Hotels query **using the FastX context**, the following fields are currently returned:
+When performing a Hotels Query **using the FastX context**, the following fields are currently returned:
 - Hotel code
 - Hotel name
 - Country

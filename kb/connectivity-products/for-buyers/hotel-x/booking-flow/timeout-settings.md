@@ -17,7 +17,12 @@ The ideal timeout values depend on your preferences and operational needs. We re
 - **Book:** 180,000 ms
 
 ### What Happens if I Set a Timeout Higher Than the Allowed Limits?
-If you specify a timeout that exceeds the recommended values, our system will automatically apply the maximum allowable limit. For example, if you set a timeout of 30,000 ms in a Search request, the system will cap it at the allowed maximum of 25,000 ms.
+If you specify a timeout that exceeds the recommended values, our system will automatically apply the maximum allowable limit.
+
+:::warning Scenario: Timeout Capping and Handler_timeout errors
+To understand why this error occurs, consider what happens when your settings exceed allowable limits.  
+For example, if you set a 28,000ms timeout for a Search request, our system will cap it at the 25,000ms limit. If Hotel-X cannot provide a response within the 28,000ms window (your timeout), you will receive a **HANDLER_TIMEOUT**. To resolve this, **ensure your request timeout is set within the allowed limits**.
+:::
 
 ## Setting Timeout Values in Hotel-X Buyers API
 You can configure timeout values in two ways:

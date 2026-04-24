@@ -35,33 +35,6 @@ export const priceRateQuery =
                             }
                         }
                     }
-                    pricePerStandardOccupancy {
-                        amount
-                        pricesUnderStandardOccupancy {
-                            amount
-                            guests
-                        }
-                        additionalGuestsSupplements {
-                            additionalAdults {
-                                additionalGuestType
-                                guestPosition
-                                amount
-                                type
-                            }
-                            additionalChildren {
-                                additionalGuestType
-                                guestPosition
-                                amount
-                                type
-                            }
-                            additionalInfants {
-                                additionalGuestType
-                                guestPosition
-                                amount
-                                type
-                            }
-                        }
-                    }
                     pricesPerOccupancy {
                         prices {
                             amount

@@ -13,9 +13,9 @@ A `client` identifies the application or integration component that makes reques
 
 Use this endpoint when you need to:
 
-* Audit available client identities
-* Verify which clients are active
-* Inspect the group assigned to each client
+* List available client identities in your organization
+* Build a minimal client directory for internal checks
+* Validate that your integration can retrieve client names
 
 ## Query Overview
 
@@ -55,6 +55,6 @@ Returned fields:
 
 ## Response Considerations
 
-* `code` follows the client identifier format used by the platform.
-* `group` helps understand where the client belongs in your organization hierarchy.
-* Depending on your role permissions, some sensitive fields may not be returned.
+* In this sample, the response includes only `name` because it is the only field requested.
+* If requested, `code` follows the client identifier format used by the platform.
+* If requested, `group` helps understand where the client belongs in your organization hierarchy.

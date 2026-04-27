@@ -14,8 +14,8 @@ A `supplier` represents the Seller connection metadata used across your Hotel-X 
 Use this endpoint when you need to:
 
 * Identify which suppliers are currently active
-* Map supplier `code` with its `context`
-* Validate provider-level information for troubleshooting
+* Build a basic supplier directory (`code` and `name`)
+* Validate supplier status before using accesses
 
 ## Query Overview
 
@@ -51,7 +51,6 @@ Returned fields:
 * `code`
 * `name`
 * `isActive`
-* `context`
 
 <GraphqlSample query={allSuppliersListQuery}/>
 
@@ -59,5 +58,4 @@ Returned fields:
 ## Response Considerations
 
 * `isActive` can be affected by provider status.
-* `context` is useful to configure plugins and static-content mappings.
-* `serviceApi` and `api` help identify the technical integration type per supplier.
+* Use `code` as the stable supplier identifier in your integrations.

@@ -7,11 +7,46 @@ import {allAccessesListQuery, allAccessesDetailQuery} from "../../../../../src/g
 
 # Get Accesses
 
-The `allAccesses` query provides you with all your available accesses and their basic information. Remember that an `access` is the set of credentials and authentication configuration that enables a Buyer to connect to a Seller.
+The `allAccesses` query returns all Access configurations available in your organization.
+
+An `access` is the set of credentials and technical settings that lets a Buyer connect to a Seller in Hotel-X.
+
+Use this endpoint when you need to:
+
+* Build an internal catalog of usable accesses
+* Validate if an access is active before executing Search/Quote/Book
+* Identify which supplier and credentials are currently configured
+
+## Query Overview
+
+Path: `admin/get-accesses/`
+
+GraphQL root:
+
+```graphql
+admin {
+	allAccesses {
+		edges {
+			node {
+				accessData {
+					...
+				}
+			}
+		}
+	}
+}
+```
+
+The response is a connection, so you can read:
+
+* `edges`: list of accesses
+* `totalCount`: total number of accesses in your organization
 
 ### Simple Accesses Request
 
-When performing a simple `allAccesses` request, the following fields will be returned for all your accesses:
+Use this version when you only need a lightweight inventory of configured accesses.
+
+Returned fields:
 
 * `name`
 * `isActive`
@@ -23,7 +58,9 @@ When performing a simple `allAccesses` request, the following fields will be ret
 
 ### Advanced Accesses Request
 
-If you want to obtain detailed information about each access, you can request additional fields, allowing you to access the parameters contained within each access.
+Use this version when you need integration-level details (credentials, supplier metadata, URLs and runtime parameters).
+
+Returned fields:
 
 * `name`
 * `isActive`
@@ -36,3 +73,10 @@ If you want to obtain detailed information about each access, you can request ad
 * `parameters`
 
 <GraphqlSample query={allAccessesDetailQuery}/>
+
+
+## Response Considerations
+
+* `password` requires ADMIN permissions. Without those permissions, it is returned as `null`.
+* `supplier` helps you map each access to a specific Seller and `context`.
+* `parameters` may vary by Seller integration type.

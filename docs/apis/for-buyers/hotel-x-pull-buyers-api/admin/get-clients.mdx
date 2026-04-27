@@ -1,0 +1,60 @@
+---
+sidebar_position: 5
+---
+
+import {allClientsListQuery} from "../../../../../src/graphql/admin/allclients.query";
+
+
+# Get Clients
+
+The `allClients` query returns all Clients (service accounts) available in your organization.
+
+A `client` identifies the application or integration component that makes requests to the platform.
+
+Use this endpoint when you need to:
+
+* Audit available client identities
+* Verify which clients are active
+* Inspect the group assigned to each client
+
+## Query Overview
+
+Path: `admin/get-clients/`
+
+GraphQL root:
+
+```graphql
+admin {
+  allClients {
+    edges {
+      node {
+        clientData {
+          ...
+        }
+      }
+    }
+  }
+}
+```
+
+The response is a connection, so you can read:
+
+* `edges`: list of clients
+* `totalCount`: total number of clients in your organization
+
+### Simple Clients Request
+
+Use this version for a minimal list of available client names.
+
+Returned fields:
+
+* `name`
+
+<GraphqlSample query={allClientsListQuery}/>
+
+
+## Response Considerations
+
+* `code` follows the client identifier format used by the platform.
+* `group` helps understand where the client belongs in your organization hierarchy.
+* Depending on your role permissions, some sensitive fields may not be returned.

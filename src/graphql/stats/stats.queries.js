@@ -51,6 +51,7 @@ export const getAggregationStatsVariables = `{
     "buyer_in": ["BUYER_CODE"],
     "trafficType_in": ["BASIC", "SPEED"],
     "api_in": ["hotel"],
+    "excludeTestSupplier": true,
     "timeRange": {
       "absolute": {
         "from": "2026-04-14 00:00:00",

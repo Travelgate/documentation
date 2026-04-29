@@ -192,14 +192,16 @@ The `data` field in `groupBy` uses the `StatsDataGroupBy` enum to specify dimens
 | `CLIENT` | Group by the client or buyer system |
 | `SUPPLIER` | Group by the supplier or seller system |
 | `OPERATION` | Group by the operation or API name (for example, `hotel`) |
-| `OPERATION_TYPE` | Group by operation type (`SEARCH`, `QUOTE`, `BOOKING`, `CANCEL`, `SCHEDULER`, `CREATE`, `READ`, `UPDATE`, `DELETE`, `EXECUTE`, `OTHER`) |
+| `OPERATION_TYPE` | Group by operation type: `SEARCH`, `QUOTE`, `BOOKING`, `CANCEL`, `OTHER` |
 | `TRAFFIC_TYPE` | Group by traffic type (`BASIC`, `SPEED`, `SCHEDULER`, `OPTIMIZED`) |
 | `ERROR_CODE` | Group by specific error code |
 | `ERROR_TYPE` | Group by error type |
 | `API` | Group by API |
 
-:::note
-This is the complete list of `StatsDataGroupBy` enum values. You can combine multiple values in a single `groupBy.data` array (for example, `["OPERATION_TYPE", "ERROR_CODE"]`) to create multi-dimensional aggregations.
+:::info
+This is the complete list of `StatsDataGroupBy` enum values supported by the Stats API. You can combine multiple values in a single `groupBy.data` array (for example, `["OPERATION_TYPE", "ERROR_CODE"]`) to create multi-dimensional aggregations.
+
+The `OPERATION_TYPE` field is restricted to `SEARCH`, `QUOTE`, `BOOKING`, `CANCEL`, and `OTHER`. Other operation type values exist in the `OperationType` enum used by other Travelgate APIs (`SCHEDULER`, `CREATE`, `READ`, `UPDATE`, `DELETE`, `EXECUTE`) but are not supported by the Stats API.
 :::
 
 ##### Time Grouping Fields
@@ -224,7 +226,7 @@ The `mode` field specifies whose perspective you want to query:
 
 ##### Operation Type Values
 
-The `operationType_in` filter uses the `OperationType` enum:
+The `operationType_in` filter in Stats API accepts these operation type values:
 
 | Value | Description |
 |-------|-------------|
@@ -232,13 +234,11 @@ The `operationType_in` filter uses the `OperationType` enum:
 | `QUOTE` | Quote operations - rate and availability confirmation |
 | `BOOKING` | Booking operations - reservation creation and confirmation |
 | `CANCEL` | Cancel operations - reservation cancellations |
-| `SCHEDULER` | Scheduler-related operations |
-| `CREATE` | Create operations |
-| `READ` | Read operations |
-| `UPDATE` | Update operations |
-| `DELETE` | Delete operations |
-| `EXECUTE` | Execute operations |
 | `OTHER` | Other operations - non-booking flow operations like HotelList, DescriptiveInfo, ReservationRead, RoomList, etc. |
+
+:::note
+The broader `OperationType` enum used by other Travelgate APIs includes additional values (`SCHEDULER`, `CREATE`, `READ`, `UPDATE`, `DELETE`, `EXECUTE`) that are not supported by the Stats API.
+:::
 
 ##### Traffic Type Values
 

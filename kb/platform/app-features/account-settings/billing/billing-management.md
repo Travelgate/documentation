@@ -175,6 +175,8 @@ In the event that the booking has been made in another currency, the conversion 
 ### Are test bookings invoiced?
 Any bookings made using a test access must be refundable and be cancelled through the Travelgate API to avoid charges in your invoices. 
 
-:::warning Important
-**Travelgate does not perform manual reconciliation for booking status**. If you cancel bookings (including test bookings) outside the Travelgate Platform, the full Booking Fee will still be applied and invoiced.
+:::warning Important: Manual Reconciliation Policy
+**Travelgate does not perform manual reconciliation for booking statuses or cancellation costs.**
+- **Booking Fees:** If you cancel a booking (including test bookings) outside the Travelgate Platform, the full Booking Fee will still be invoiced.
+- **Cancellation Costs:** Amounts shown in the CSV locator file are pulled directly from the booking's specific cancellation policy and cannot be manually adjusted.
 :::

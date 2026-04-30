@@ -178,5 +178,5 @@ Any bookings made using a test access must be refundable and be cancelled throug
 :::warning Important: Manual Reconciliation Policy
 **Travelgate does not perform manual reconciliation for booking statuses or cancellation costs.**
 - **Booking Fees:** If you cancel a booking (including test bookings) outside the Travelgate Platform, the full Booking Fee will still be invoiced.
-- **Cancellation Costs:** Amounts shown in the CSV locator file are pulled directly from the booking's specific cancellation policy and cannot be manually adjusted.
+- **Cancellation Costs:** Amounts shown in the CSV Bookings locator file are pulled directly from the booking's specific cancellation policy and cannot be manually adjusted.
 :::

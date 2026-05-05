@@ -56,7 +56,7 @@ Follow these steps to invite new users to your Organization:
 		Previously known as "Role", user permissions allow you to select the desired permission level for each service. A warning banner will remind you that each selection determines access to sensitive data.
 		- Dropdown Configuration: For each service (Booking Flow, Connectivity, Company Management, FastX), you must select the desired permission level.
 		- Dynamic Descriptions: Upon selecting a permission (Admin, Editor, or Viewer), the description under the service name will dynamically update to explain exactly what that user can do.
-		- Important: Billing permissions includes a **security toggle**. If turned OFF, the Billing dropdown is disabled and is no longer mandatory to complete the creation.
+		- Important: Billing permissions include a **security toggle**. If turned OFF, the Billing dropdown is disabled and is no longer mandatory to complete the creation.
 		![tg-invite-user-2](https://storage.travelgate.com/kbase/tg-invite-user-3.png)
 
 	6. **The new user will receive an email** with instructions to either [set a password or link their Google account](/kb/platform/app-features/account-settings/your-account/account-settings/) for future logins. Once completed, they will be able to access and explore the Travelgate platform.

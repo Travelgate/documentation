@@ -29,6 +29,7 @@ https://api.travelgate.com
 - **Monitor Connection Error Rates:** Track NOK (error) percentages for your connections to identify performance issues.
 - **Analyze Booking Flow Performance:** Measure the performance of Search, Quote, Book, and Cancel operations to understand your conversion funnel.
 - **Troubleshoot Traffic Issues:** Investigate traffic patterns, error types, and transaction volumes in real-time or aggregated views.
+- **Filter Out Test Traffic:** Use `excludeTestSupplier` to exclude internal or test supplier traffic from your analysis for accurate performance insights.
 - **Performance Dashboards:** Build custom dashboards using aggregated stats grouped by operation type, traffic type, Buyer/Seller, or time periods.
 
 This document details the steps to extract and query metrics using the **Travelgate Stats API**. 
@@ -51,52 +52,11 @@ For transaction-level investigations, see [How to Use Logging](/kb/platform/app-
 
 ## Authentication
 
-All Stats API calls require authentication using a JWT (JSON Web Token). Follow these steps:
+All Stats API calls require JWT (JSON Web Token) authentication. Follow the steps in the [Monitoring API Authentication Guide](/docs/monitoring-api/authentication) to obtain your bearer token and include it in all API requests.
 
-### Step 1: Retrieve Your JWT Token
+**Quick Example:**
 
-First, obtain your bearer token by executing the following query:
-
-**Query:**
-
-```graphql
-query {
-  admin {
-    jwt
-  }
-}
-```
-
-**Request Example (curl):**
-
-```bash
-curl 'https://api.travelgate.com' \
-  -H 'Content-Type: application/json' \
-  -H 'Authorization: ApiKey YOUR_API_KEY' \
-  --data-raw '{"query":"query { admin { jwt } }"}'
-```
-
-**Response:**
-
-```json
-{
-  "data": {
-    "admin": {
-      "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
-    }
-  }
-}
-```
-
-### Step 2: Use JWT in Subsequent Requests
-
-Include the JWT token in the `Authorization` header of all Stats API requests:
-
-```
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
-```
-
-**Complete Request Example:**
+Include your JWT token in the `Authorization` header:
 
 ```bash
 curl 'https://api.travelgate.com' \
@@ -199,6 +159,9 @@ The `where` input allows you to precisely filter the statistics based on time ra
 * `mode` (Search perspective, either `BUYER` or `SELLER`).
 * `timeRange` (Absolute date range using the format `"YYYY-MM-DD HH:mm:ss"`).
 
+**Optional filters:**
+* `excludeTestSupplier` (Boolean): Set to `true` to exclude test supplier traffic from results. Useful for filtering out noise and focusing on production metrics. Default is `false`.
+
 #### B. Group By
 
 The `groupBy` input defines how the returned data will be aggregated.
@@ -217,23 +180,29 @@ The `groupBy` input defines how the returned data will be aggregated.
 
 #### C. Enum Reference
 
-##### Data Grouping Fields
+##### Data Grouping Fields (StatsDataGroupBy)
 
-The `data` field in `groupBy` allows you to group results by any of the following dimensions:
+The `data` field in `groupBy` uses the `StatsDataGroupBy` enum to specify dimensions for aggregation. Use **any one or combination** of the values listed below to break down your stats:
 
 | Value | Description |
 |-------|-------------|
 | `BUYER` | Group by the buyer organization |
 | `SELLER` | Group by the seller organization |
-| `ACCESS` | Group by the Hotel-X access code |
-| `CLIENT` | Group by the client or buyer system |
+| `ACCESS` | Group by access (the set of credentials and authentication configuration used by a Buyer to connect to a Seller) |
+| `CLIENT` | Group by client (the Buyer-defined tag used to categorize traffic, for example B2B or B2C) |
 | `SUPPLIER` | Group by the supplier or seller system |
 | `OPERATION` | Group by the operation or API name (for example, `hotel`) |
-| `OPERATION_TYPE` | Group by the booking flow step (`SEARCH`, `QUOTE`, `BOOK`, `CANCEL`, `OTHER`) |
+| `OPERATION_TYPE` | Group by operation type: `SEARCH`, `QUOTE`, `BOOKING`, `CANCEL`, `OTHER` |
 | `TRAFFIC_TYPE` | Group by traffic type (`BASIC`, `SPEED`, `SCHEDULER`, `OPTIMIZED`) |
 | `ERROR_CODE` | Group by specific error code |
 | `ERROR_TYPE` | Group by error type |
 | `API` | Group by API |
+
+:::info
+This is the complete list of `StatsDataGroupBy` enum values supported by the Stats API. You can combine multiple values in a single `groupBy.data` array (for example, `["OPERATION_TYPE", "ERROR_CODE"]`) to create multi-dimensional aggregations.
+
+The `OPERATION_TYPE` field is restricted to `SEARCH`, `QUOTE`, `BOOKING`, `CANCEL`, and `OTHER`. Other operation type values exist in the `OperationType` enum used by other Travelgate APIs (`SCHEDULER`, `CREATE`, `READ`, `UPDATE`, `DELETE`, `EXECUTE`) but are not supported by the Stats API.
+:::
 
 ##### Time Grouping Fields
 
@@ -257,15 +226,19 @@ The `mode` field specifies whose perspective you want to query:
 
 ##### Operation Type Values
 
-The `operationType` field indicates the booking flow step:
+The `operationType_in` filter in Stats API accepts these operation type values:
 
 | Value | Description |
 |-------|-------------|
 | `SEARCH` | Search operations - initial hotel availability queries |
 | `QUOTE` | Quote operations - rate and availability confirmation |
-| `BOOK` | Book operations - reservation creation and confirmation |
+| `BOOKING` | Booking operations - reservation creation and confirmation |
 | `CANCEL` | Cancel operations - reservation cancellations |
 | `OTHER` | Other operations - non-booking flow operations like HotelList, DescriptiveInfo, ReservationRead, RoomList, etc. |
+
+:::note
+The broader `OperationType` enum used by other Travelgate APIs includes additional values (`SCHEDULER`, `CREATE`, `READ`, `UPDATE`, `DELETE`, `EXECUTE`) that are not supported by the Stats API.
+:::
 
 ##### Traffic Type Values
 
@@ -394,6 +367,7 @@ query getAggregatedStats($where: StatsAggregationConnectionWhereInput!, $groupBy
     "buyer_in": ["BUYER_CODE"],
     "trafficType_in": ["BASIC", "SPEED"],
     "api_in": ["hotel"],
+    "excludeTestSupplier": true,
     "timeRange": {
       "absolute": {
         "from": "2026-04-14 00:00:00",
@@ -469,7 +443,7 @@ query getAggregatedStats($where: StatsAggregationConnectionWhereInput!, $groupBy
                 "totalTime": 21840,
                 "errorType": "NO_ERROR",
                 "errorCode": null,
-                "operationType": "BOOK",
+                "operationType": "BOOKING",
                 "operation": {
                   "code": "hotel"
                 },
@@ -504,6 +478,7 @@ curl 'https://api.travelgate.com' \
         "buyer_in": ["BUYER_CODE"],
         "trafficType_in": ["BASIC", "SPEED"],
         "api_in": ["hotel"],
+        "excludeTestSupplier": true,
         "timeRange": {
           "absolute": {
             "from": "2026-04-14 00:00:00",

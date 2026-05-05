@@ -22,7 +22,9 @@ Yes! When using the Hotels Query, you can search for hotels by destination by ad
 ![hotels_query_destinations](https://storage.travelgate.com/kbase/hotels_query_destinations.jpg)
 
 ### What Information Can I Expect in the Hotels Query Response?
-The response may include the following fields:
+Static content fetching is always sequential and **the amount of content returned may vary between Sellers**. Learn more about mapping on Travelgate [here](/kb/platform/app-features/connections/connections-content/mapping-at-travelgate).  
+
+The Hotels Query response may include the following fields:
 
 - Hotel code
 - Hotel name
@@ -32,8 +34,17 @@ The response may include the following fields:
 - Descriptions
 - Room details, including max/min occupancy and pax ranges (if available)
 
-:::info
-Static content fetching is always sequential and the amount of content returned may vary between Sellers. Learn more about mapping on Travelgate [here](/kb/platform/app-features/connections/connections-content/mapping-at-travelgate).
+:::info FastX Content:
+When performing a Hotels Query **using the FastX context**, the following fields are currently returned:
+- Hotel code
+- Hotel name
+- Country
+- Address
+- Latitude
+- Longitude
+- GIATA ID (if this functionality has been [activated](/kb/connectivity-products/for-buyers/mapping-solutions/giata/giata-multicodes))
+
+To provide you with a more comprehensive experience, our team is developing a Content App that will deliver richer content for FastX Hotels. Stay tuned for further updates!
 :::
 
 ### Can I obtain the list of amenities available at Travelgate?

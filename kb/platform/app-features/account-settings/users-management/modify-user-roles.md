@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # How to Modify User Permissions
 
-**To access the edit menu, you must have at least Editor permissions** in the ["Manage Users"](/kb/platform/app-features/account-settings/users-management/add-users#permissions-by-service) service:  
+**To access the edit menu, you must have at least Editor permissions** as described in the [Permissions by Service](/kb/platform/app-features/account-settings/users-management/add-users#permissions-by-service) section:  
    - **Editors** can only update the "Job Title". The notification/contact assignments will be visible but locked.
    - **Admins/Owners** can update the "Job Title" and modify all assigned contact notifications (Commercial, Tech, Billing, etc.).
 

@@ -32,10 +32,10 @@ Follow these steps to invite new users to your Organization:
 	2. Click on the **“Users & Contacts Management”** section under your user data, located on the right side of the screen.
 	3. There, you will see two tabs: Users Management and Contacts Management.
 	4. Navigate to **Users Management**. Here, you’ll see a list of users already linked to your Organization.
-	4. Click **Invite a User**.
+	5. Click **Invite a User**.
 		![tg-users-management-1](https://storage.travelgate.com/kbase/tg-users-management-1.png)
 
-	5. **Complete the sign-up process**:
+	6. **Complete the sign-up process**:
 		- **Step 1: User Email**    
 		Enter a valid email address. Note that **emails cannot be updated once created**. If a mistake is made, you must delete the incorrect user and create a new user account.  
 		![tg-invite-user-1](https://storage.travelgate.com/kbase/tg-invite-user-1.png)
@@ -59,7 +59,7 @@ Follow these steps to invite new users to your Organization:
 		- Important: Billing permissions include a **security toggle**. If turned OFF, the Billing dropdown is disabled and is no longer mandatory to complete the creation.
 		![tg-invite-user-2](https://storage.travelgate.com/kbase/tg-invite-user-3.png)
 
-	6. **The new user will receive an email** with instructions to either [set a password or link their Google account](/kb/platform/app-features/account-settings/your-account/account-settings/) for future logins. Once completed, they will be able to access and explore the Travelgate platform.
+	7. **The new user will receive an email** with instructions to either [set a password or link their Google account](/kb/platform/app-features/account-settings/your-account/account-settings/) for future logins. Once completed, they will be able to access and explore the Travelgate platform.
 
 ### Permissions by Service
 

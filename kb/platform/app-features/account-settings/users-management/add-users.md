@@ -13,7 +13,7 @@ sidebar_position: 2
 ### Overview
 The user management page has been redesigned to offer a clearer and more secure experience for managing your Organization's contacts.
 	- **Unified List:** All users now appear in a single paginated list (10, 20, or 50 items per page), replacing the previous separate tabs for Admins, Editors, and Viewers.
-	- **Contact Identifier:** User cards feature a visual label ("Assigned up as a contact") if the user is designated to receive specific notifications.
+	- **Contact Identifier:** User cards feature a visual label ("Assigned as a contact") if the user is designated to receive specific notifications.
 	- **Search & Filters:**
 		- User Search: Search quickly by name or email.
 		- User permissions: Filter by service access (Booking Flow, Connectivity Management, Company Management, FastX, and Billing).

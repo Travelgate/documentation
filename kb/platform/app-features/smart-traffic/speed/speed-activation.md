@@ -33,7 +33,7 @@ Choose the **connection**/**access** where you want to activate caching.
 ### 2. Choose Speed Mode
 Speed operates in two modes when the requested data is **not already cached**:
 - **Standard:** If a search result is not stored in Speed, the request is sent to the Seller, and the response is returned to the Buyer. **(Recommended)**
-- **Fast:** If a search result is not stored in Speed, no results are returned. However, the request is sent to the Seller to store the response for future searches. **(This mode increases the likelihood of "no availability" results.)**
+- **Fast:** If a search result is not stored in Speed, no results are returned. However, the request is sent to the Seller to store the response for future searches. This mode increases the likelihood of **"no availability"** results ([204 error](/kb/connectivity-products/for-buyers/errors-and-warnings/error-no-results-found)).
 
 ![speed_3](https://storage.travelgate.com/kbase/speed_3.jpg)
 

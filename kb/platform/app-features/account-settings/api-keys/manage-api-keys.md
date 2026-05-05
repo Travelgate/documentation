@@ -26,6 +26,16 @@ To manage your Organization’s API keys, follow these simple steps:
 Here’s what you can find in the **API Keys** section:
 
 - **View API Key List**: Check the list of API keys associated with your Organization.
-- **API Key Details**: For each key, you’ll see the name, creation date, and the last few characters of the key. For security reasons, the full API key cannot be retrieved after creation. If you’ve lost access to your API key, you will need to generate a new one.
+- **API Key Details**: For each key, you’ll see the name, creation date, and the last few characters of the key. For security reasons, the full API Key cannot be retrieved after creation. If you’ve lost access to your API key, you will need to generate a new one.
+- **Toggle Status (Active/Inactive)**: Instantly enable or disable an API key. This is useful for temporary pauses in traffic or security rotations.
+- **More Actions**:
+   - **Delete API Key**: Securely remove API Keys that are no longer in use.
+   - **View logs**: View the complete modification history to track all changes.
 
    ![apikey](https://storage.travelgate.com/kbase/apikey.png)
+   ![tg-apikey-toggle](https://storage.travelgate.com/kbase/tg-apikey-toggle.png)
+   ![tg-delete-apikey](https://storage.travelgate.com/kbase/tg-delete-apikey.png)
+
+   :::warning
+   Instead of deleting an API key immediately during a migration, **we strongly recommend verifying that no traffic is lost before performing a permanent deletion**. Note that any application using a deleted API Key will immediately lose access to the Travelgate API.
+   :::

@@ -48,9 +48,9 @@ Follow these steps to invite new users to your Organization:
 				- Billing contact.
 			![tg-invite-user-2](https://storage.travelgate.com/kbase/tg-invite-user-2.png)
 
-			:::info Contacts Management
-			You can also designate users to receive Travelgate notifications via the Contacts Management tab in the Users & Contacts section.
-			:::
+            :::info Contacts Management
+            You can also designate users to receive Travelgate notifications via the Contacts Management tab in the Users & Contacts section.
+            :::
 
 		- **Step 3: User Permissions**  
 		Previously known as "Role", user permissions allow you to select the desired permission level for each service. A warning banner will remind you that each selection determines access to sensitive data.

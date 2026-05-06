@@ -12,5 +12,5 @@ You can assign different [permissions](/kb/platform/app-features/account-setting
 		
 	:::info
 	- You cannot assign a permission lower than the user’s organization-wide permission.
-	- To assign these notification permissions, you need Admin permissions for **Company Management**. A tooltip will remind you to contact your administrator if you lack these rights.
+	- Admin permissions for **Company Management** are required to assign notification permissions. A tooltip will remind you to contact your administrator if you lack these rights.
 	:::

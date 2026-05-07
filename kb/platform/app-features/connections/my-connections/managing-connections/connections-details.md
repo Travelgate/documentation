@@ -57,9 +57,11 @@ You can filter your connections using the following parameters:
 - **Updated & Created Date**: View the last modification date and the original creation date.  
 - **Accommodations**: Number of properties available for that access.  
 - **Context Code**: Check the [content codes](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials#context) used.  
+
 - **Buyer Integration Type**: If you're a Seller, you can check if your Buyer is integrated via the **Hotel-X API** or the **Legacy Pull Buyers API**. If using **Hotel-X**, a label will be displayed.  
 
-   ![tg_hotelx_buyers](https://storage.travelgate.com/kbase/tg_hotelx_buyers.jpg)  
+   ![tg-my-connections-buyer-integration-type](https://storage.travelgate.com/kbase/tg-my-connections-buyer-integration-type.png)  
+   ![tg-my-connections-fastx-supplier](https://storage.travelgate.com/kbase/tg-my-connections-fastx-supplier.png)
 
 :::tip  
 Still using our Legacy Pull Buyers API? **Upgrade to [Hotel-X API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart)** to access enhanced features!  

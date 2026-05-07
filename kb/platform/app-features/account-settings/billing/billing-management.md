@@ -14,7 +14,7 @@ At Travelgate, we provide easy-to-use tools for managing your agreements, tracki
 
 :::warning important
 To ensure seamless billing, **it's important that you handle all cancellations via our API**.  
-Should you face any issues, please don't hesitate to get in touch with our [Customer Support team](https://app.travelgate.com/support) for assistance. Additionally, please make sure to cancel any test bookings with Sellers and to check that such bookings are refundable.
+If you experience any issues with cancellations, please don't hesitate to get in touch with our [Customer Support team](https://app.travelgate.com/support) for assistance. Additionally, please make sure to cancel any test bookings you create and to check that such bookings are refundable. **Travelgate does not perform manual reconciliation for booking statuses or cancellation costs.**
 :::
 
 
@@ -135,7 +135,7 @@ You can download the PDFs of your invoices or credit note.
 Download the booking list with their corresponding locator in CSV format.
 
 :::info
-The CSV Bookings locator contains **all transactions processed through our platform for the selected month**. However, the booking fee is only applied as follows:
+**The CSV Bookings locator contains all transactions processed through our platform for the selected month**. However, the booking fee is only applied based on the **status of the reservation in our Platform**:
 - **Booking Fee Applied:** 
   - Bookings with "OK" status.
   - "CANCELLED" bookings with cancellation costs.
@@ -175,6 +175,8 @@ In the event that the booking has been made in another currency, the conversion 
 ### Are test bookings invoiced?
 Any bookings made using a test access must be refundable and be cancelled through the Travelgate API to avoid charges in your invoices. 
 
-:::warning Important
-**Travelgate does not perform manual reconciliation for booking status**. If you cancel bookings (including test bookings) outside the Travelgate Platform, the full Booking Fee will still be applied and invoiced.
+:::warning Important: Manual Reconciliation Policy
+**Travelgate does not perform manual reconciliation for booking statuses or cancellation costs.**
+- **Booking Fees:** If you cancel a booking (including test bookings) outside the Travelgate Platform, the full Booking Fee will still be invoiced.
+- **Cancellation Costs:** Amounts shown in the CSV Bookings locator file are pulled directly from the booking's specific cancellation policy and cannot be manually adjusted.
 :::

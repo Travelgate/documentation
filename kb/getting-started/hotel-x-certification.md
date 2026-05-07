@@ -80,14 +80,15 @@ query (
 			settings: $settings
 			filterSearch: $filterSearch
 		) {
-			context
 			options {
 				id
 				accessCode
 				supplierCode
 				hotelCode
+				hotelCodeSupplier
 				hotelName
 				boardCode
+				boardCodeSupplier
 				paymentType
 				status
 				occupancies {
@@ -99,7 +100,9 @@ query (
 				rooms {
 					occupancyRefId
 					code
+					supplierCode
 					description
+					descriptionSupplier
 					refundable
 					roomPrice {
 						price {
@@ -278,40 +281,47 @@ query (
             "age": 30
           }
         ]
-      },
-      {
-        "paxes": [
-          {
-            "age": 30
-          },
-          {
-            "age": 8
-          }
-        ]
       }
     ],
     "hotels": [
-      "1"
+      "BR1518"
     ],
     "currency": "EUR",
     "markets": [
       "ES"
     ],
-    "language": "es",
+    "language": "en",
     "nationality": "ES"
   },
   "settings": {
     "client": "client_demo",
-    "context": "HOTELTEST",
     "testMode": true,
-    "timeout": 25000
-  },
-  "filterSearch": {
-    "access": {
-      "includes": [
-        "2"
-      ]
-    }
+    "timeout": 25000,
+    "plugins": [
+      {
+        "step": "RESPONSE",
+        "pluginsType": [
+          {
+            "type": "PRE_STEP",
+            "name": "preference",
+            "parameters": [
+              {
+                "key": "primaryKey",
+                "value": "hotel,board,room,rateRules"
+              },
+              {
+                "key": "optionsPerKey",
+                "value": "1"
+              },
+              {
+                "key": "internalCurrencyConversion",
+                "value": "true"
+              }
+            ]
+          }
+        ]
+      }
+    ]
   }
 }
 ```
@@ -326,15 +336,16 @@ query (
   "data": {
     "hotelX": {
       "search": {
-        "context": "HOTELTEST",
         "options": [
           {
-            "id": "33!~|a0!~|b270528!~|c270529!~|d1!~|e14!~|f0!~|gES!~|hES!~|ies!~|jEUR!~|k0!~|l2!~|m1!~|n14!~|o0!~|p0!~|x30090856!~|rBARRF!~|sBARRF!~|rBARRF!~|sBARRF!~|M213!~|N0!~|Ofalse!~|PEUR!~|Q!~|R0!~|S!~|T!~|z1|30#30/30#8|1|2027-05-28|1|4247163|4247164|14|11|0!~|A5683!~|B5683!~|C30|30!~|EDouble Suite Deluxe!~|FDouble Suite Deluxe!~|G1!~|z2|30#30/30#8|1|2027-05-28|1|4247163|4247164|14|11|0!~|A5683!~|B5683!~|C30|8!~|EDouble Suite Deluxe!~|FDouble Suite Deluxe!~|G2!~|H1!~|I1|30#30/30#8|1|2027-05-28|1|4247163|4247164|14|11|0!~|J1!~|K1!~|L1!~|H2!~|IES!~|J1!~|K0!~|L1!~|H1!~|I2|30#30/30#8|1|2027-05-28|1|4247163|4247164|14|11|0!~|J1!~|K1!~|L2!~|H703!~|I1#3@#!~|J0!~|K1!~|L0!~|H708!~|I99b6129f-7356-417c-9977-1e22de1b674a!~|J0!~|K0!~|L0!~|tOK!~|uConnectors!~|v0!~|w!~|yPACKAGE!~|q!~|q0!~|y!~|",
+            "id": "33!~|a0!~|b270528!~|c270529!~|d101930!~|e3!~|f0!~|gES!~|hES!~|ien!~|jEUR!~|k0!~|l2!~|mBR1518!~|n19!~|nTGX!~|o0!~|p1!~|x07050945!~|r!~|sBARTEST!~|M625!~|N0!~|Ofalse!~|PEUR!~|Q!~|R0!~|S!~|T!~|z1|30#30|101930|2027-05-28|1|7556761|7591854|3|11|0!~|A116216!~|Bprmsu---Aw--1k-!~|C30|30!~|EPremium Suite Jacuzzi 1 King Bed!~|Fsuite premium with jacuzzi and king bed!~|G1!~|U2,625,1811239200!~|H1!~|I1|30#30|101930|2027-05-28|1|7556761|7591854|3|11|0!~|J1!~|K1!~|L1!~|H2!~|IES!~|J1!~|K0!~|L1!~|H703!~|I1#3@#!~|J0!~|K1!~|L0!~|H710!~|I1250!~|J0!~|K0!~|L0!~|H708!~|I3759f074-5aed-46f8-8401-6ae7935fd9e4!~|J0!~|K0!~|L0!~|H709!~|Ien!~|J0!~|K0!~|L0!~|tOK!~|uConnectors!~|v0!~|w!~|yPACKAGE!~|q!~|q1!~|y!~|",
             "accessCode": "2",
             "supplierCode": "HOTELTEST",
-            "hotelCode": "1",
-            "hotelName": "Hotel Test",
-            "boardCode": "14",
+            "hotelCode": "BR1518",
+            "hotelCodeSupplier": "101930",
+            "hotelName": "Hotel Nord Easy Patos",
+            "boardCode": "19",
+            "boardCodeSupplier": "3",
             "paymentType": "MERCHANT",
             "status": "OK",
             "occupancies": [
@@ -348,31 +359,22 @@ query (
                     "age": 30
                   }
                 ]
-              },
-              {
-                "id": 2,
-                "paxes": [
-                  {
-                    "age": 30
-                  },
-                  {
-                    "age": 8
-                  }
-                ]
               }
             ],
             "rooms": [
               {
                 "occupancyRefId": 1,
-                "code": "5683",
-                "description": "Double Suite Deluxe",
+                "code": "prmsu---Aw--1k-",
+                "supplierCode": "116216",
+                "description": "Premium Suite Jacuzzi 1 King Bed",
+                "descriptionSupplier": "suite premium with jacuzzi and king bed",
                 "refundable": true,
                 "roomPrice": {
                   "price": {
                     "currency": "EUR",
                     "binding": false,
-                    "net": 122,
-                    "gross": 122,
+                    "net": 625,
+                    "gross": 625,
                     "exchange": {
                       "currency": "EUR",
                       "rate": 1
@@ -385,8 +387,8 @@ query (
                       "price": {
                         "currency": "EUR",
                         "binding": false,
-                        "net": 120,
-                        "gross": 120,
+                        "net": 625,
+                        "gross": 625,
                         "exchange": {
                           "currency": "EUR",
                           "rate": 1
@@ -401,53 +403,8 @@ query (
                   {
                     "start": null,
                     "end": null,
-                    "code": "BARRF",
-                    "name": "BAR TEST RF"
-                  }
-                ],
-                "promotions": null
-              },
-              {
-                "occupancyRefId": 2,
-                "code": "5683",
-                "description": "Double Suite Deluxe",
-                "refundable": true,
-                "roomPrice": {
-                  "price": {
-                    "currency": "EUR",
-                    "binding": false,
-                    "net": 91,
-                    "gross": 91,
-                    "exchange": {
-                      "currency": "EUR",
-                      "rate": 1
-                    }
-                  },
-                  "breakdown": [
-                    {
-                      "start": "2027-05-28",
-                      "end": "2027-05-29",
-                      "price": {
-                        "currency": "EUR",
-                        "binding": false,
-                        "net": 89,
-                        "gross": 89,
-                        "exchange": {
-                          "currency": "EUR",
-                          "rate": 1
-                        },
-                        "minimumSellingPrice": null
-                      }
-                    }
-                  ]
-                },
-                "beds": null,
-                "ratePlans": [
-                  {
-                    "start": null,
-                    "end": null,
-                    "code": "BARRF",
-                    "name": "BAR TEST RF"
+                    "code": "BARTEST",
+                    "name": "Test BAR Rate"
                   }
                 ],
                 "promotions": null
@@ -456,8 +413,8 @@ query (
             "price": {
               "currency": "EUR",
               "binding": false,
-              "net": 213,
-              "gross": 213,
+              "net": 625,
+              "gross": 625,
               "exchange": {
                 "currency": "EUR",
                 "rate": 1
@@ -466,42 +423,7 @@ query (
               "markups": null
             },
             "supplements": null,
-            "surcharges": [
-              {
-                "code": "0",
-                "chargeType": "INCLUDE",
-                "description": "City",
-                "mandatory": true,
-                "price": {
-                  "currency": "EUR",
-                  "binding": true,
-                  "net": 2,
-                  "gross": 2,
-                  "exchange": {
-                    "currency": "EUR",
-                    "rate": 1
-                  },
-                  "markups": null
-                }
-              },
-              {
-                "code": "0",
-                "chargeType": "INCLUDE",
-                "description": "City",
-                "mandatory": true,
-                "price": {
-                  "currency": "EUR",
-                  "binding": true,
-                  "net": 2,
-                  "gross": 2,
-                  "exchange": {
-                    "currency": "EUR",
-                    "rate": 1
-                  },
-                  "markups": null
-                }
-              }
-            ],
+            "surcharges": null,
             "rateRules": [
               "PACKAGE"
             ],
@@ -509,31 +431,26 @@ query (
               "refundable": true,
               "cancelPenalties": [
                 {
-                  "deadline": "2027-05-17T10:00:00Z",
-                  "isCalculatedDeadline": false,
-                  "penaltyType": "IMPORT",
-                  "currency": "EUR",
-                  "value": 202.35000000000002
-                },
-                {
                   "deadline": "2027-05-25T10:00:00Z",
-                  "isCalculatedDeadline": false,
+                  "isCalculatedDeadline": true,
                   "penaltyType": "IMPORT",
                   "currency": "EUR",
-                  "value": 213
+                  "value": 625
                 }
               ]
             },
             "remarks": null
           },
           {
-            "id": "33!~|a0!~|b270528!~|c270529!~|d1!~|e14!~|f1!~|gES!~|hES!~|ies!~|jEUR!~|k0!~|l2!~|m1!~|n14!~|o0!~|p0!~|x30090856!~|rBARRF!~|sBARRF!~|rBARRF!~|sBARRF!~|M213!~|N0!~|Ofalse!~|PEUR!~|Q!~|R0!~|S!~|T!~|z1|30#30/30#8|1|2027-05-28|1|4247163|4247164|14|11|0!~|A5683!~|B5683!~|C30|30!~|EDouble Suite Deluxe!~|FDouble Suite Deluxe!~|G1!~|z2|30#30/30#8|1|2027-05-28|1|4247163|4247164|14|11|0!~|A5683!~|B5683!~|C30|8!~|EDouble Suite Deluxe!~|FDouble Suite Deluxe!~|G2!~|H1!~|I1|30#30/30#8|1|2027-05-28|1|4247163|4247164|14|11|0!~|J1!~|K1!~|L1!~|H2!~|IES!~|J1!~|K0!~|L1!~|H1!~|I2|30#30/30#8|1|2027-05-28|1|4247163|4247164|14|11|0!~|J1!~|K1!~|L2!~|H703!~|I1#3@#!~|J0!~|K1!~|L0!~|H708!~|I99b6129f-7356-417c-9977-1e22de1b674a!~|J0!~|K0!~|L0!~|tOK!~|uConnectors!~|v0!~|w!~|yPACKAGE!~|q!~|q0!~|y!~|",
+            "id": "33!~|a0!~|b270528!~|c270529!~|d101930!~|e1!~|f0!~|gES!~|hES!~|ien!~|jEUR!~|k0!~|l2!~|mBR1518!~|n1!~|nTGX!~|o0!~|p1!~|x07050945!~|r!~|sBARTEST!~|M745!~|N0!~|Ofalse!~|PEUR!~|Q!~|R0!~|S!~|T!~|z1|30#30|101930|2027-05-28|1|7556761|7591854|1|11|0!~|A116216!~|Bprmsu---Aw--1k-!~|C30|30!~|EPremium Suite Jacuzzi 1 King Bed!~|Fsuite premium with jacuzzi and king bed!~|G1!~|U2,745,1811239200!~|H1!~|I1|30#30|101930|2027-05-28|1|7556761|7591854|1|11|0!~|J1!~|K1!~|L1!~|H2!~|IES!~|J1!~|K0!~|L1!~|H703!~|I1#3@#!~|J0!~|K1!~|L0!~|H710!~|I1490!~|J0!~|K0!~|L0!~|H708!~|I3759f074-5aed-46f8-8401-6ae7935fd9e4!~|J0!~|K0!~|L0!~|H709!~|Ien!~|J0!~|K0!~|L0!~|tOK!~|uConnectors!~|v0!~|w!~|yPACKAGE!~|q!~|q1!~|y!~|",
             "accessCode": "2",
             "supplierCode": "HOTELTEST",
-            "hotelCode": "1",
-            "hotelName": "Hotel Test",
-            "boardCode": "14",
-            "paymentType": "DIRECT",
+            "hotelCode": "BR1518",
+            "hotelCodeSupplier": "101930",
+            "hotelName": "Hotel Nord Easy Patos",
+            "boardCode": "1",
+            "boardCodeSupplier": "1",
+            "paymentType": "MERCHANT",
             "status": "OK",
             "occupancies": [
               {
@@ -546,31 +463,22 @@ query (
                     "age": 30
                   }
                 ]
-              },
-              {
-                "id": 2,
-                "paxes": [
-                  {
-                    "age": 30
-                  },
-                  {
-                    "age": 8
-                  }
-                ]
               }
             ],
             "rooms": [
               {
                 "occupancyRefId": 1,
-                "code": "5683",
-                "description": "Double Suite Deluxe",
+                "code": "prmsu---Aw--1k-",
+                "supplierCode": "116216",
+                "description": "Premium Suite Jacuzzi 1 King Bed",
+                "descriptionSupplier": "suite premium with jacuzzi and king bed",
                 "refundable": true,
                 "roomPrice": {
                   "price": {
                     "currency": "EUR",
                     "binding": false,
-                    "net": 122,
-                    "gross": 122,
+                    "net": 745,
+                    "gross": 745,
                     "exchange": {
                       "currency": "EUR",
                       "rate": 1
@@ -583,8 +491,8 @@ query (
                       "price": {
                         "currency": "EUR",
                         "binding": false,
-                        "net": 120,
-                        "gross": 120,
+                        "net": 745,
+                        "gross": 745,
                         "exchange": {
                           "currency": "EUR",
                           "rate": 1
@@ -599,53 +507,8 @@ query (
                   {
                     "start": null,
                     "end": null,
-                    "code": "BARRF",
-                    "name": "BAR TEST RF"
-                  }
-                ],
-                "promotions": null
-              },
-              {
-                "occupancyRefId": 2,
-                "code": "5683",
-                "description": "Double Suite Deluxe",
-                "refundable": true,
-                "roomPrice": {
-                  "price": {
-                    "currency": "EUR",
-                    "binding": false,
-                    "net": 91,
-                    "gross": 91,
-                    "exchange": {
-                      "currency": "EUR",
-                      "rate": 1
-                    }
-                  },
-                  "breakdown": [
-                    {
-                      "start": "2027-05-28",
-                      "end": "2027-05-29",
-                      "price": {
-                        "currency": "EUR",
-                        "binding": false,
-                        "net": 89,
-                        "gross": 89,
-                        "exchange": {
-                          "currency": "EUR",
-                          "rate": 1
-                        },
-                        "minimumSellingPrice": null
-                      }
-                    }
-                  ]
-                },
-                "beds": null,
-                "ratePlans": [
-                  {
-                    "start": null,
-                    "end": null,
-                    "code": "BARRF",
-                    "name": "BAR TEST RF"
+                    "code": "BARTEST",
+                    "name": "Test BAR Rate"
                   }
                 ],
                 "promotions": null
@@ -654,8 +517,8 @@ query (
             "price": {
               "currency": "EUR",
               "binding": false,
-              "net": 213,
-              "gross": 213,
+              "net": 745,
+              "gross": 745,
               "exchange": {
                 "currency": "EUR",
                 "rate": 1
@@ -664,42 +527,7 @@ query (
               "markups": null
             },
             "supplements": null,
-            "surcharges": [
-              {
-                "code": "0",
-                "chargeType": "INCLUDE",
-                "description": "City",
-                "mandatory": true,
-                "price": {
-                  "currency": "EUR",
-                  "binding": true,
-                  "net": 2,
-                  "gross": 2,
-                  "exchange": {
-                    "currency": "EUR",
-                    "rate": 1
-                  },
-                  "markups": null
-                }
-              },
-              {
-                "code": "0",
-                "chargeType": "INCLUDE",
-                "description": "City",
-                "mandatory": true,
-                "price": {
-                  "currency": "EUR",
-                  "binding": true,
-                  "net": 2,
-                  "gross": 2,
-                  "exchange": {
-                    "currency": "EUR",
-                    "rate": 1
-                  },
-                  "markups": null
-                }
-              }
-            ],
+            "surcharges": null,
             "rateRules": [
               "PACKAGE"
             ],
@@ -707,18 +535,427 @@ query (
               "refundable": true,
               "cancelPenalties": [
                 {
-                  "deadline": "2027-05-17T10:00:00Z",
-                  "isCalculatedDeadline": false,
+                  "deadline": "2027-05-25T10:00:00Z",
+                  "isCalculatedDeadline": true,
                   "penaltyType": "IMPORT",
                   "currency": "EUR",
-                  "value": 202.35000000000002
+                  "value": 745
+                }
+              ]
+            },
+            "remarks": null
+          },
+          {
+            "id": "33!~|a0!~|b270528!~|c270529!~|d101930!~|e3!~|f0!~|gES!~|hES!~|ien!~|jEUR!~|k0!~|l2!~|mBR1518!~|n19!~|nTGX!~|o0!~|p1!~|x07050945!~|r!~|sBARTEST!~|M125!~|N0!~|Ofalse!~|PEUR!~|Q!~|R0!~|S!~|T!~|z1|30#30|101930|2027-05-28|1|7556761|7591166|3|11|0!~|A2269!~|Bstr----d--!~|C30|30!~|EStandard Double Room!~|FDouble Standard!~|G1!~|U2,125,1811239200!~|H1!~|I1|30#30|101930|2027-05-28|1|7556761|7591166|3|11|0!~|J1!~|K1!~|L1!~|H2!~|IES!~|J1!~|K0!~|L1!~|H703!~|I1#3@#!~|J0!~|K1!~|L0!~|H710!~|I250!~|J0!~|K0!~|L0!~|H708!~|I3759f074-5aed-46f8-8401-6ae7935fd9e4!~|J0!~|K0!~|L0!~|H709!~|Ien!~|J0!~|K0!~|L0!~|tOK!~|uConnectors!~|v0!~|w!~|yPACKAGE!~|q!~|q1!~|y!~|",
+            "accessCode": "2",
+            "supplierCode": "HOTELTEST",
+            "hotelCode": "BR1518",
+            "hotelCodeSupplier": "101930",
+            "hotelName": "Hotel Nord Easy Patos",
+            "boardCode": "19",
+            "boardCodeSupplier": "3",
+            "paymentType": "MERCHANT",
+            "status": "OK",
+            "occupancies": [
+              {
+                "id": 1,
+                "paxes": [
+                  {
+                    "age": 30
+                  },
+                  {
+                    "age": 30
+                  }
+                ]
+              }
+            ],
+            "rooms": [
+              {
+                "occupancyRefId": 1,
+                "code": "str----d--",
+                "supplierCode": "2269",
+                "description": "Standard Double Room",
+                "descriptionSupplier": "Double Standard",
+                "refundable": true,
+                "roomPrice": {
+                  "price": {
+                    "currency": "EUR",
+                    "binding": false,
+                    "net": 125,
+                    "gross": 125,
+                    "exchange": {
+                      "currency": "EUR",
+                      "rate": 1
+                    }
+                  },
+                  "breakdown": [
+                    {
+                      "start": "2027-05-28",
+                      "end": "2027-05-29",
+                      "price": {
+                        "currency": "EUR",
+                        "binding": false,
+                        "net": 125,
+                        "gross": 125,
+                        "exchange": {
+                          "currency": "EUR",
+                          "rate": 1
+                        },
+                        "minimumSellingPrice": null
+                      }
+                    }
+                  ]
                 },
+                "beds": null,
+                "ratePlans": [
+                  {
+                    "start": null,
+                    "end": null,
+                    "code": "BARTEST",
+                    "name": "Test BAR Rate"
+                  }
+                ],
+                "promotions": null
+              }
+            ],
+            "price": {
+              "currency": "EUR",
+              "binding": false,
+              "net": 125,
+              "gross": 125,
+              "exchange": {
+                "currency": "EUR",
+                "rate": 1
+              },
+              "minimumSellingPrice": null,
+              "markups": null
+            },
+            "supplements": null,
+            "surcharges": null,
+            "rateRules": [
+              "PACKAGE"
+            ],
+            "cancelPolicy": {
+              "refundable": true,
+              "cancelPenalties": [
                 {
                   "deadline": "2027-05-25T10:00:00Z",
-                  "isCalculatedDeadline": false,
+                  "isCalculatedDeadline": true,
                   "penaltyType": "IMPORT",
                   "currency": "EUR",
-                  "value": 213
+                  "value": 125
+                }
+              ]
+            },
+            "remarks": null
+          },
+          {
+            "id": "33!~|a0!~|b270528!~|c270529!~|d101930!~|e1!~|f0!~|gES!~|hES!~|ien!~|jEUR!~|k0!~|l2!~|mBR1518!~|n1!~|nTGX!~|o0!~|p1!~|x07050945!~|r!~|sBARTEST!~|M225!~|N0!~|Ofalse!~|PEUR!~|Q!~|R0!~|S!~|T!~|z1|30#30|101930|2027-05-28|1|7556761|7591166|1|11|0!~|A2269!~|Bstr----d--!~|C30|30!~|EStandard Double Room!~|FDouble Standard!~|G1!~|U2,225,1811239200!~|H1!~|I1|30#30|101930|2027-05-28|1|7556761|7591166|1|11|0!~|J1!~|K1!~|L1!~|H2!~|IES!~|J1!~|K0!~|L1!~|H703!~|I1#3@#!~|J0!~|K1!~|L0!~|H710!~|I450!~|J0!~|K0!~|L0!~|H708!~|I3759f074-5aed-46f8-8401-6ae7935fd9e4!~|J0!~|K0!~|L0!~|H709!~|Ien!~|J0!~|K0!~|L0!~|tOK!~|uConnectors!~|v0!~|w!~|yPACKAGE!~|q!~|q1!~|y!~|",
+            "accessCode": "2",
+            "supplierCode": "HOTELTEST",
+            "hotelCode": "BR1518",
+            "hotelCodeSupplier": "101930",
+            "hotelName": "Hotel Nord Easy Patos",
+            "boardCode": "1",
+            "boardCodeSupplier": "1",
+            "paymentType": "MERCHANT",
+            "status": "OK",
+            "occupancies": [
+              {
+                "id": 1,
+                "paxes": [
+                  {
+                    "age": 30
+                  },
+                  {
+                    "age": 30
+                  }
+                ]
+              }
+            ],
+            "rooms": [
+              {
+                "occupancyRefId": 1,
+                "code": "str----d--",
+                "supplierCode": "2269",
+                "description": "Standard Double Room",
+                "descriptionSupplier": "Double Standard",
+                "refundable": true,
+                "roomPrice": {
+                  "price": {
+                    "currency": "EUR",
+                    "binding": false,
+                    "net": 225,
+                    "gross": 225,
+                    "exchange": {
+                      "currency": "EUR",
+                      "rate": 1
+                    }
+                  },
+                  "breakdown": [
+                    {
+                      "start": "2027-05-28",
+                      "end": "2027-05-29",
+                      "price": {
+                        "currency": "EUR",
+                        "binding": false,
+                        "net": 225,
+                        "gross": 225,
+                        "exchange": {
+                          "currency": "EUR",
+                          "rate": 1
+                        },
+                        "minimumSellingPrice": null
+                      }
+                    }
+                  ]
+                },
+                "beds": null,
+                "ratePlans": [
+                  {
+                    "start": null,
+                    "end": null,
+                    "code": "BARTEST",
+                    "name": "Test BAR Rate"
+                  }
+                ],
+                "promotions": null
+              }
+            ],
+            "price": {
+              "currency": "EUR",
+              "binding": false,
+              "net": 225,
+              "gross": 225,
+              "exchange": {
+                "currency": "EUR",
+                "rate": 1
+              },
+              "minimumSellingPrice": null,
+              "markups": null
+            },
+            "supplements": null,
+            "surcharges": null,
+            "rateRules": [
+              "PACKAGE"
+            ],
+            "cancelPolicy": {
+              "refundable": true,
+              "cancelPenalties": [
+                {
+                  "deadline": "2027-05-25T10:00:00Z",
+                  "isCalculatedDeadline": true,
+                  "penaltyType": "IMPORT",
+                  "currency": "EUR",
+                  "value": 225
+                }
+              ]
+            },
+            "remarks": null
+          },
+          {
+            "id": "33!~|a0!~|b270528!~|c270529!~|d101930!~|e3!~|f0!~|gES!~|hES!~|ien!~|jEUR!~|k0!~|l2!~|mBR1518!~|n19!~|nTGX!~|o0!~|p1!~|x07050945!~|r!~|sBARTEST!~|M356!~|N0!~|Ofalse!~|PEUR!~|Q!~|R0!~|S!~|T!~|z1|30#30|101930|2027-05-28|1|7556761|7556762|3|11|0!~|A33841!~|Bjusu------!~|C30|30!~|EJunior Suite!~|FJunior Suite!~|G1!~|U2,356,1811239200!~|H1!~|I1|30#30|101930|2027-05-28|1|7556761|7556762|3|11|0!~|J1!~|K1!~|L1!~|H2!~|IES!~|J1!~|K0!~|L1!~|H703!~|I1#3@#!~|J0!~|K1!~|L0!~|H710!~|I712!~|J0!~|K0!~|L0!~|H708!~|I3759f074-5aed-46f8-8401-6ae7935fd9e4!~|J0!~|K0!~|L0!~|H709!~|Ien!~|J0!~|K0!~|L0!~|tOK!~|uConnectors!~|v0!~|w!~|yPACKAGE!~|q!~|q1!~|y!~|",
+            "accessCode": "2",
+            "supplierCode": "HOTELTEST",
+            "hotelCode": "BR1518",
+            "hotelCodeSupplier": "101930",
+            "hotelName": "Hotel Nord Easy Patos",
+            "boardCode": "19",
+            "boardCodeSupplier": "3",
+            "paymentType": "MERCHANT",
+            "status": "OK",
+            "occupancies": [
+              {
+                "id": 1,
+                "paxes": [
+                  {
+                    "age": 30
+                  },
+                  {
+                    "age": 30
+                  }
+                ]
+              }
+            ],
+            "rooms": [
+              {
+                "occupancyRefId": 1,
+                "code": "jusu------",
+                "supplierCode": "33841",
+                "description": "Junior Suite",
+                "descriptionSupplier": "Junior Suite",
+                "refundable": true,
+                "roomPrice": {
+                  "price": {
+                    "currency": "EUR",
+                    "binding": false,
+                    "net": 356,
+                    "gross": 356,
+                    "exchange": {
+                      "currency": "EUR",
+                      "rate": 1
+                    }
+                  },
+                  "breakdown": [
+                    {
+                      "start": "2027-05-28",
+                      "end": "2027-05-29",
+                      "price": {
+                        "currency": "EUR",
+                        "binding": false,
+                        "net": 356,
+                        "gross": 356,
+                        "exchange": {
+                          "currency": "EUR",
+                          "rate": 1
+                        },
+                        "minimumSellingPrice": null
+                      }
+                    }
+                  ]
+                },
+                "beds": null,
+                "ratePlans": [
+                  {
+                    "start": null,
+                    "end": null,
+                    "code": "BARTEST",
+                    "name": "Test BAR Rate"
+                  }
+                ],
+                "promotions": null
+              }
+            ],
+            "price": {
+              "currency": "EUR",
+              "binding": false,
+              "net": 356,
+              "gross": 356,
+              "exchange": {
+                "currency": "EUR",
+                "rate": 1
+              },
+              "minimumSellingPrice": null,
+              "markups": null
+            },
+            "supplements": null,
+            "surcharges": null,
+            "rateRules": [
+              "PACKAGE"
+            ],
+            "cancelPolicy": {
+              "refundable": true,
+              "cancelPenalties": [
+                {
+                  "deadline": "2027-05-25T10:00:00Z",
+                  "isCalculatedDeadline": true,
+                  "penaltyType": "IMPORT",
+                  "currency": "EUR",
+                  "value": 356
+                }
+              ]
+            },
+            "remarks": null
+          },
+          {
+            "id": "33!~|a0!~|b270528!~|c270529!~|d101930!~|e1!~|f0!~|gES!~|hES!~|ien!~|jEUR!~|k0!~|l2!~|mBR1518!~|n1!~|nTGX!~|o0!~|p1!~|x07050945!~|r!~|sBARTEST!~|M456!~|N0!~|Ofalse!~|PEUR!~|Q!~|R0!~|S!~|T!~|z1|30#30|101930|2027-05-28|1|7556761|7556762|1|11|0!~|A33841!~|Bjusu------!~|C30|30!~|EJunior Suite!~|FJunior Suite!~|G1!~|U2,456,1811239200!~|H1!~|I1|30#30|101930|2027-05-28|1|7556761|7556762|1|11|0!~|J1!~|K1!~|L1!~|H2!~|IES!~|J1!~|K0!~|L1!~|H703!~|I1#3@#!~|J0!~|K1!~|L0!~|H710!~|I912!~|J0!~|K0!~|L0!~|H708!~|I3759f074-5aed-46f8-8401-6ae7935fd9e4!~|J0!~|K0!~|L0!~|H709!~|Ien!~|J0!~|K0!~|L0!~|tOK!~|uConnectors!~|v0!~|w!~|yPACKAGE!~|q!~|q1!~|y!~|",
+            "accessCode": "2",
+            "supplierCode": "HOTELTEST",
+            "hotelCode": "BR1518",
+            "hotelCodeSupplier": "101930",
+            "hotelName": "Hotel Nord Easy Patos",
+            "boardCode": "1",
+            "boardCodeSupplier": "1",
+            "paymentType": "MERCHANT",
+            "status": "OK",
+            "occupancies": [
+              {
+                "id": 1,
+                "paxes": [
+                  {
+                    "age": 30
+                  },
+                  {
+                    "age": 30
+                  }
+                ]
+              }
+            ],
+            "rooms": [
+              {
+                "occupancyRefId": 1,
+                "code": "jusu------",
+                "supplierCode": "33841",
+                "description": "Junior Suite",
+                "descriptionSupplier": "Junior Suite",
+                "refundable": true,
+                "roomPrice": {
+                  "price": {
+                    "currency": "EUR",
+                    "binding": false,
+                    "net": 456,
+                    "gross": 456,
+                    "exchange": {
+                      "currency": "EUR",
+                      "rate": 1
+                    }
+                  },
+                  "breakdown": [
+                    {
+                      "start": "2027-05-28",
+                      "end": "2027-05-29",
+                      "price": {
+                        "currency": "EUR",
+                        "binding": false,
+                        "net": 456,
+                        "gross": 456,
+                        "exchange": {
+                          "currency": "EUR",
+                          "rate": 1
+                        },
+                        "minimumSellingPrice": null
+                      }
+                    }
+                  ]
+                },
+                "beds": null,
+                "ratePlans": [
+                  {
+                    "start": null,
+                    "end": null,
+                    "code": "BARTEST",
+                    "name": "Test BAR Rate"
+                  }
+                ],
+                "promotions": null
+              }
+            ],
+            "price": {
+              "currency": "EUR",
+              "binding": false,
+              "net": 456,
+              "gross": 456,
+              "exchange": {
+                "currency": "EUR",
+                "rate": 1
+              },
+              "minimumSellingPrice": null,
+              "markups": null
+            },
+            "supplements": null,
+            "surcharges": null,
+            "rateRules": [
+              "PACKAGE"
+            ],
+            "cancelPolicy": {
+              "refundable": true,
+              "cancelPenalties": [
+                {
+                  "deadline": "2027-05-25T10:00:00Z",
+                  "isCalculatedDeadline": true,
+                  "penaltyType": "IMPORT",
+                  "currency": "EUR",
+                  "value": 456
                 }
               ]
             },
@@ -726,7 +963,13 @@ query (
           }
         ],
         "errors": null,
-        "warnings": null
+        "warnings": [
+          {
+            "code": "",
+            "type": "204",
+            "description": "Access `5647` returned: No results found"
+          }
+        ]
       }
     }
   }
@@ -741,10 +984,7 @@ query (
 It is recommended to always use the [demo connections provided](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials) (Travelgate test and Smyrooms test) along with your client and API Key.
 
 ### Which Credentials and Hotels Can I Use for Certification Cases?
-For certification cases, you can use the following credentials and hotels:
+For certification cases, you can use the following credentials and hotel:
 - **Apikey:** "Apikey test0000-0000-0000-0000-000000000000".
 - **Client:** “client_demo”.
-- **Travelgate test supplier:** Context “HOTELTEST", Access code “2”, Hotels "1", "2", and "23".
-- **Smyrooms test supplier:** Hotel "27".
-
-Those hotels are recommended, but remember that any hotel showing availability in Travelgate and Smyrooms test suppliers is valid.
+- **Hotel:** "BR1518".

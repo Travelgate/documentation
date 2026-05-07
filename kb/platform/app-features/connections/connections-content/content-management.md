@@ -94,7 +94,7 @@ The information displayed on the Connections Content screen **depends on the dat
 ## Customize hotel list
 
 ### What is the "Customize hotel list" functionality?
-This feature allows Sellers to **exclude specific hotels from their portfolio for a given Buyer credential** (Buyer Access Code). Even if the Seller’s system returns the full property list, they can control which hotels are visible to each Buyer by explicitly filtering out selected hotels at their end.
+This feature allows Sellers to **exclude or include specific hotels from their portfolio for a given Buyer credential** (Buyer Access Code). Even if the Seller’s system returns the full property list, they can control which hotels are visible to each Buyer by explicitly filtering out selected hotels at their end.
 
 ### Who can use the "Customize hotel list" functionality?
 This functionality is **only available to Sellers** on the platform. If your organization operates with both Buyer and Seller profiles, ensure you access this section using your Seller profile.
@@ -112,11 +112,12 @@ This functionality is **only available to Sellers** on the platform. If your org
 
 4. **Click the "Customize hotel list" button** to open the Configuration screen. Here you’ll see:
     - A summary of the selected connection/access
+    - The Operation list (Blacklist or Whitelist)
     - The "Upload CSV" button
 
-    ![tg_connections_content_blacklist_2](https://storage.travelgate.com/kbase/tg_connections_content_blacklist_2.png)
+    ![tg-customize-hotel-list-0](https://storage.travelgate.com/kbase/tg-customize-hotel-list-0.png)
 
-5. To exclude hotels from the list, **upload a CSV file** containing the hotel codes to be blacklisted.
+5. To exclude or include hotels from the list, **upload a CSV file** containing the hotel codes to be blacklisted or whitelisted (according to the chosen operation).
 The CSV file:
     - Does not require a specific file name
     - Must follow these formatting requirements:
@@ -131,7 +132,13 @@ The CSV file:
         - Review the uploaded data
         - Download or remove the file if needed
         - Confirm the changes
+
+
 7. Once confirmed, the Customize hotel list will be applied to the selected access, and a notification will appear in the **notification bell** confirming the update. Note that the processing time will depend on the size of the hotel list file.
+
+<img src="https://storage.travelgate.com/kbase/tg-customize-hotel-list-2.png" alt="tg-customize-hotel-list-2" width="500" />
+
+    ![tg-customize-hotel-list-7](https://storage.travelgate.com/kbase/tg-customize-hotel-list-7.png)
 
 :::warning important
 - The Customize hotel list functionality relies on the hotel codes as shown in our Marketplace. As a Seller, you can obtain the list of hotel codes for a Buyer's hotel list either by clicking on individual hotel codes or by [downloading the full portfolio as a CSV file](/kb/platform/app-features/connections/connections-content/content-management#how-can-i-download-the-sellers-portfolio-in-csv) (Hotel code field).
@@ -141,6 +148,7 @@ The CSV file:
     - No delimiters
     - One hotel code per row
     - Only hotel codes currently present in the portfolio for the selected connection
+- Hotel codes not included in the supplier's portfolio will be ignored. If your hotel list appears empty after uploading, verify that the Operation is correct and the Hotel Codes in the CSV are valid.
 :::
 
 ### As a Seller, how can I edit or remove a Customize hotel list for one of my Buyers?
@@ -151,8 +159,10 @@ To edit or remove a Customize hotel list for a specific access, follow these ste
     ![tg_connections_content_blacklist_5](https://storage.travelgate.com/kbase/tg_connections_content_blacklist_5.png)
 3. To remove the hotel list, simply click **"Delete hotel list"**.
 4. **To edit** the customized hotel list:
-    - First, delete the existing hotel list using the step above.
+    - First, delete the existing customized hotel list using the step above.
     - Then, upload a new CSV file with the updated list of hotel codes, following the same process outlined in the ["How can I use the 'Customize hotel list' functionality?"](/kb/platform/app-features/connections/connections-content/content-management#how-can-i-use-the-customize-hotel-list-functionality) section.
+
+    <img src="https://storage.travelgate.com/kbase/tg-customize-hotel-list-9.png" alt="tg-customize-hotel-list-9" width="500" />
     
 
 ## How Can I Use the "Force Update Now" Functionality?

@@ -47,7 +47,7 @@ Depending on the Seller’s specifications, cancellation costs can be calculated
 - Travelgate does *not* process reservations or cancellations on behalf of our Partners. These actions must be handled directly by the Partner.  
 - For seamless billing, **all cancellations should be processed through our API.**  
 
-If you encounter any issues in Cancel (booking cancellation), feel free to contact our [Customer Support team](https://app.travelgate.com/support) for assistance. Additionally, please remember to cancel any test bookings performed and verify that these bookings are refundable. **Travelgate does not perform manual reconciliation for booking statuses or cancellation costs.**
+If you encounter any issues with the Cancel mutation, feel free to contact our [Customer Support team](https://app.travelgate.com/support) for assistance. Additionally, please remember to cancel any test bookings you create and verify that these bookings are refundable. **Travelgate does not perform manual reconciliation for booking statuses or cancellation costs.**
 
 :::
 

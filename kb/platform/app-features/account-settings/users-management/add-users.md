@@ -8,8 +8,6 @@ sidebar_position: 2
 **Starting March 15**, Platform notifications will only be sent to contacts listed in the Contacts Management section. Please take a moment to ensure this section is up to date. Additionally, Billing information will only be sent to the “Billing Contact(s)” specified in the Contacts Management section, **regardless of any previously configured billing emails**. Please make sure all the relevant details are aligned.  
 :::
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/EQSzhhZn6e8?si=tIbJLeczcm-ZUej7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
 ### Overview
 The user management page has been redesigned to offer a clearer and more secure experience for managing your Organization's contacts.
 	- **Unified List:** All users now appear in a single paginated list (10, 20, or 50 items per page), replacing the previous separate tabs for Admins, Editors, and Viewers.
@@ -54,10 +52,10 @@ Follow these steps to invite new users to your Organization:
 
 		- **Step 3: User Permissions**  
 		Previously known as "Role", user permissions allow you to select the desired permission level for each service. A warning banner will remind you that each selection determines access to sensitive data.
-		- Dropdown Configuration: For each service (Booking Flow, Connectivity, Company Management, FastX), you must select the desired permission level.
-		- Dynamic Descriptions: Upon selecting a permission (Admin, Editor, or Viewer), the description under the service name will dynamically update to explain exactly what that user can do.
-		- Important: Billing permissions include a **security toggle**. If turned OFF, the Billing dropdown is disabled and is no longer mandatory to complete the creation.
-		![tg-invite-user-2](https://storage.travelgate.com/kbase/tg-invite-user-3.png)
+			- Dropdown Configuration: For each service (Booking Flow, Connectivity, Company Management, FastX), you must select the desired permission level.
+			- Dynamic Descriptions: Upon selecting a permission (Admin, Editor, or Viewer), the description under the service name will dynamically update to explain exactly what that user can do.
+			- Important: Billing permissions include a **security toggle**. If turned OFF, the Billing dropdown is disabled and is no longer mandatory to complete the creation.
+			![tg-invite-user-2](https://storage.travelgate.com/kbase/tg-invite-user-3.png)
 
 	7. **The new user will receive an email** with instructions to either [set a password or link their Google account](/kb/platform/app-features/account-settings/your-account/account-settings/) for future logins. Once completed, they will be able to access and explore the Travelgate platform.
 

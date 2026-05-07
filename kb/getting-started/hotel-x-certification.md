@@ -967,7 +967,7 @@ query (
           {
             "code": "",
             "type": "204",
-            "description": "Access `5647` returned:  No results found"
+            "description": "Access `5647` returned: No results found"
           }
         ]
       }

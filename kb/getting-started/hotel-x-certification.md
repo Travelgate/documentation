@@ -987,4 +987,4 @@ It is recommended to always use the [demo connections provided](/kb/connectivity
 For certification cases, you can use the following credentials and hotel:
 - **Apikey:** "Apikey test0000-0000-0000-0000-000000000000".
 - **Client:** “client_demo”.
-- **Hotel** "BR1518".
+- **Hotel:** "BR1518".

@@ -14,7 +14,7 @@ At Travelgate, we provide easy-to-use tools for managing your agreements, tracki
 
 :::warning important
 To ensure seamless billing, **it's important that you handle all cancellations via our API**.  
-Should you face any issues in Cancel (booking cancellation), please don't hesitate to get in touch with our [Customer Support team](https://app.travelgate.com/support) for assistance. Additionally, please make sure to cancel any test bookings performed and to check that such bookings are refundable. **Travelgate does not perform manual reconciliation for booking statuses or cancellation costs.**
+If you experience any issues with cancellations, please don't hesitate to get in touch with our [Customer Support team](https://app.travelgate.com/support) for assistance. Additionally, please make sure to cancel any test bookings you create and to check that such bookings are refundable. **Travelgate does not perform manual reconciliation for booking statuses or cancellation costs.**
 :::
 
 

@@ -14,7 +14,7 @@ At Travelgate, we provide easy-to-use tools for managing your agreements, tracki
 
 :::warning important
 To ensure seamless billing, **it's important that you handle all cancellations via our API**.  
-Should you face any issues, please don't hesitate to get in touch with our [Customer Support team](https://app.travelgate.com/support) for assistance. Additionally, please make sure to cancel any test bookings with Sellers and to check that such bookings are refundable.
+Should you face any issues in Cancel (booking cancellation), please don't hesitate to get in touch with our [Customer Support team](https://app.travelgate.com/support) for assistance. Additionally, please make sure to cancel any test bookings performed and to check that such bookings are refundable. **Travelgate does not perform manual reconciliation for booking statuses or cancellation costs.**
 :::
 
 
@@ -135,7 +135,7 @@ You can download the PDFs of your invoices or credit note.
 Download the booking list with their corresponding locator in CSV format.
 
 :::info
-The CSV Bookings locator contains **all transactions processed through our platform for the selected month**. However, the booking fee is only applied as follows:
+**The CSV Bookings locator contains all transactions processed through our platform for the selected month**. However, the booking fee is only applied based on the **status of the reservation in our Platform**:
 - **Booking Fee Applied:** 
   - Bookings with "OK" status.
   - "CANCELLED" bookings with cancellation costs.

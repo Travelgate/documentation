@@ -1,0 +1,69 @@
+---
+sidebar_position: 2
+title: Authentication
+---
+
+# API Authentication
+
+All Travelgate APIs use API key or JWT (JSON Web Token) bearer authentication. Follow the steps below to obtain and use your JWT authentication token.
+
+## Getting Your JWT Token
+
+All Monitoring API calls require a bearer token. Obtain it by executing the following GraphQL query:
+
+**Query:**
+
+```graphql
+query {
+  admin {
+    jwt
+  }
+}
+```
+
+**Request Example (curl):**
+
+```bash
+curl 'https://api.travelgate.com' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: ApiKey YOUR_API_KEY' \
+  --data-raw '{"query":"query { admin { jwt } }"}'
+```
+
+**Response:**
+
+```json
+{
+  "data": {
+    "admin": {
+      "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+    }
+  }
+}
+```
+
+## Using Your JWT Token
+
+Include the JWT token in the `Authorization` header of all subsequent API requests using the `Bearer` scheme:
+
+```
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+```
+
+**Example Request with Bearer Token:**
+
+```bash
+curl 'https://api.travelgate.com' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer YOUR_JWT_TOKEN' \
+  --data-raw '{
+    "query": "your_graphql_query",
+    "variables": {}
+  }'
+```
+
+## Important Notes
+
+- **Token Lifecycle:** Store your JWT token securely. Tokens expire after a certain period; retrieve a new one when needed.
+- **API Key Required:** You need your Travelgate API Key to retrieve the JWT token. Find your API Key in the [Travelgate App settings](https://app.travelgate.com/settings/apikeys).
+- **All Requests:** Every API call requires the Bearer token in the `Authorization` header.

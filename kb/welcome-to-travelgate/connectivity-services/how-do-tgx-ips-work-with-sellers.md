@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 # Travelgate Fixed IP Lists
@@ -113,11 +113,11 @@ At Travelgate, we ensure that all our IPs are whitelisted in your system. Howeve
 
 ## How the IP Management API Supports Your Operations
 
-The new [IP Management API](/docs/security/ip-management-api/quickstart) is a read-only tool that provides Buyers and Sellers with real-time **visibility into the fixed IP addresses used by Travelgate**. It allows you to easily query IP ranges, check their status, and see which services they’re associated with — helping you configure firewall rules and ensure secure, controlled access to services.
+The new [IP Management API](/docs/apis/for-buyers-and-sellers/ip-management-api/quickstart) is a read-only tool that provides Buyers and Sellers with real-time **visibility into the fixed IP addresses used by Travelgate**. It allows you to easily query IP ranges, check their status, and see which services they’re associated with — helping you configure firewall rules and ensure secure, controlled access to services.
 
 Designed to streamline your infrastructure management, this API offers a centralized source of accurate IP data, Boosting operational security. Whether you're managing connectivity as a Buyer or a Seller, it helps keep your systems resilient, reliable, and easy to maintain.
 
 :::info
-🚀 Ready to start? Check out our IP Management API Documentation [here](/docs/security/ip-management-api/quickstart)!
+🚀 Ready to start? Check out our IP Management API Documentation [here](/docs/apis/for-buyers-and-sellers/ip-management-api/quickstart)!
 :::
 

@@ -1,0 +1,167 @@
+---
+sidebar_position: 6
+---
+
+import {allAccessesListQuery, allAccessesDetailQuery} from "../../../../src/graphql/admin/allaccesses.query.js";
+
+
+# Get Accesses
+
+The `allAccesses` query returns all Access configurations available in your organization.
+
+An `access` is the set of credentials and technical settings that lets a Buyer connect to a Seller in HotelX.
+
+Use this endpoint when you need to:
+
+* Build an internal catalog of usable accesses
+* Validate if an access is active before executing Search/Quote/Book
+* Identify which supplier and credentials are currently configured
+
+## Query Overview
+
+Path: `admin/get-accesses/`
+
+GraphQL root:
+
+```graphql
+admin {
+	allAccesses {
+		edges {
+			node {
+				accessData {
+					...
+				}
+			}
+		}
+	}
+}
+```
+
+The response is a connection, so you can read:
+
+* `edges`: list of accesses
+* `totalCount`: total number of accesses in your organization
+
+### Simple Accesses Request
+
+Use this version when you only need a lightweight inventory of configured accesses.
+
+Returned fields:
+
+* `name`
+* `isActive`
+* `code`
+
+
+<GraphqlSample query={allAccessesListQuery}/>
+
+
+### Advanced Accesses Request
+
+Use this version when you need integration-level details (credentials, supplier metadata, URLs and runtime parameters).
+
+Returned fields:
+
+* `name`
+* `isActive`
+* `code`
+* `supplier`
+* `isTest`
+* `user`
+* `password` (To retrieve this field, ADMIN permissions are required.  Otherwise, the value will be null.)
+* `urls`
+* `parameters`
+
+### Field Descriptions
+
+The following fields are returned in the `accessData` object:
+
+| Field       | Description                                                                 |
+|-------------|-----------------------------------------------------------------------------|
+| `name`      | The name of the access configuration.                                       |
+| `isActive`  | Indicates whether the access is currently active.                          |
+| `code`      | A unique code identifying the access configuration.                        |
+| `supplier`  | The supplier associated with the access.                                   |
+| `isTest`    | Specifies if the access is for testing purposes.                           |
+| `user`      | The username used for authentication.                                      |
+| `password`  | The password for authentication (requires ADMIN permissions to retrieve).  |
+| `urls`      | The URLs associated with the access configuration.                         |
+| `parameters`| Additional runtime parameters for the access configuration.                |
+
+This table complements the "Returned fields" lists provided earlier by offering detailed descriptions for each field.
+
+<GraphqlSample query={allAccessesDetailQuery}/>
+
+
+### Common Use Cases
+
+- **Validate Access Configurations:** Ensure that all access configurations are active and correctly set up.
+- **Build Access Catalogs:** Create an internal catalog of all available accesses for operational monitoring.
+- **Identify Supplier Credentials:** Retrieve supplier-specific credentials and information for integration purposes.
+
+## Query Example
+
+### Simple Request
+
+This example retrieves a list of all accesses with their basic details.
+
+```graphql
+query {
+  admin {
+    allAccesses {
+      edges {
+        node {
+          name
+          isActive
+          code
+        }
+      }
+    }
+  }
+}
+```
+
+### Variables Example
+
+This query does not require variables.
+
+```json
+{}
+```
+
+## Response Example
+
+Here is an example of the response:
+
+```json
+{
+  "data": {
+    "admin": {
+      "allAccesses": {
+        "edges": [
+          {
+            "node": {
+              "name": "Access A",
+              "isActive": true,
+              "code": "11123"
+            }
+          },
+          {
+            "node": {
+              "name": "Access B",
+              "isActive": false,
+              "code": "444456"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+## Response Considerations
+
+* `password` requires ADMIN permissions. Without those permissions, it is returned as `null`.
+* `supplier` helps you map each access to a specific Seller and `context`.
+* `parameters` may vary by Seller integration.

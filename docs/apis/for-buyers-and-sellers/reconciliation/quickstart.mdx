@@ -1,0 +1,58 @@
+---
+sidebar_position: 1
+---
+
+# Quickstart
+
+## Introduction
+
+Experience seamless booking reconciliation with our powerful, fully integrated solution. Whether you’re already a
+Travelgate partner or working with external providers, our system automatically validates and reconciles data from
+Buyers and Sellers, detecting discrepancies in real-time. Minimize disputes by leveraging transparent data triangulation
+that pinpoints errors the moment they arise, ensuring faster resolutions and boosted trust among all parties involved.
+
+If you are a developer and want to quickly jump into the code, check out
+our [API integration](/docs/apis/for-buyers-and-sellers/reconciliation/api-integration) section.
+
+:::warning Important
+The **Reconciliation API** is a solution we offer to our Partners to help them **validate and reconcile reservation details** between Buyers and Sellers — including reservation status, pricing, cancellation penalties, and more — so they can manage booking information more efficiently.  
+
+Keep in mind that this reconciliation process is **exclusive to the Reconciliation API** and is **not used by our billing systems**. For Travelgate billing adjustments, only booking cancellations confirmed by both the Seller and the Buyer will be taken into consideration. Only the cancellation status is recalculated; amounts, fees, and other data are ignored.
+:::
+
+
+## How It Works
+
+* **Effortless Data Ingestion**: Easily feed booking information into our platform via a built-in API.
+
+* **Match & Verify**: Our system triangulates data between Buyers, Sellers, and Travelgate. It checks and compares
+statuses, prices (amount and currency), cancellations (including penalties), and—optionally—detailed property
+information like hotel name, address, and room details.
+
+* **Automated Reconciliation**: Verified bookings are reconciled instantly, and updates are shared across all parties.
+This ensures accurate records, faster dispute resolution, and far fewer billing errors.
+
+* **Notifications & Reporting**: Any anomalies are flagged automatically. Receive web notifications or generate custom
+reports so you can act promptly and maintain full control of your booking ecosystem.
+
+
+## Why Use Reconciliation Solution?
+* **Buyer-Seller Reconciliation**: Avoid unnecessary fees and minimize billing errors by ensuring all booking data is accurately captured and validated between parties.
+* **Travelgate-Buyer and Seller Reconciliation**: Verify that Travelgate's booking data perfectly matches Seller and Buyer records, preventing costly integration errors.
+* **Track "Ghost" Bookings**: Reconciliation actively monitors reservations, ensuring no unaccounted bookings slip through the cracks
+* **Accurate External Cancellation Billing**: Reconcile cancellation statuses for bookings processed "out-of-band" (directly with the Seller), so that Travelgate billing adjustments reflect cancellations confirmed by both the Seller and the Buyer. Note that only the cancellation status is taken into account - amounts, fees, and other data are not recalculated.
+
+## What We Reconcile?
+Our reconciliation solution provides comprehensive coverage across all critical booking data points during the Match & Verify process:
+
+* **Booking Statuses**: Track and reconcile all status changes, including Confirmed, Cancelled, Pending, and Modified
+* **Financial Accuracy**: Verify prices (amount and currency) to ensure consistent financial records across all parties
+* **Cancellations and Penalties**: Accurately process all cancellations, including any associated penalties and fees
+* **Booking Details**: Confirm all core information, including hotel, room types, and board basis
+* **Date Verification**: Ensure check-in/check-out dates match across all booking records
+
+## Where can I see this data?
+All reconciled data and detected anomalies are accessible through our user-friendly [dashboard](https://app-reconciliation.travelgate.com), providing real-time
+insights and comprehensive reporting tools. You can also set up custom notifications to stay informed about any
+discrepancies or updates, using our [webhooks](/docs/apis/for-buyers-and-sellers/reconciliation/webhooks). This ensures you have full visibility and control over your booking
+data at all times.

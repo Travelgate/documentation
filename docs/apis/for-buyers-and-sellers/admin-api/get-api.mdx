@@ -1,0 +1,177 @@
+---
+sidebar_position: 3
+---
+
+import {apiByCodeQuery} from "../../../../src/graphql/admin/api.query.js";
+
+
+# Get API by Code
+
+The `api` query in `admin` lets you retrieve one API definition by using a search filter.
+
+This is useful when you need to inspect:
+
+* API metadata (`code`, `label`)
+* API-level advisories (`adviseMessage`)
+* Error catalog and available operations for that API
+
+## Query Overview
+
+Path: `admin/get-api/`
+
+GraphQL root:
+
+```graphql
+admin {
+  api(where: {searchBy: CODE, search: "hotel"}) {
+    ...
+  }
+}
+```
+
+Unlike `allAccesses`, `allSuppliers`, and `allClients`, this query returns a single `api` node (not a connection).
+
+### API Request
+
+Returned fields:
+
+* `adviseMessage` (`code`, `description`, `level`)
+* `apiData.code`
+* `apiData.label`
+* `apiData.errorCatalog` (`code`, `description`, `type`, `level`)
+* `apiData.operations.edges.node.operationData` (`code`, `label`, `types`)
+
+<GraphqlSample query={apiByCodeQuery}/>
+
+### Complete Query Example
+
+Here is a complete example of the `api` query with all fields included:
+
+```graphql
+admin {
+  api(where: {searchBy: CODE, search: "hotel"}) {
+    adviseMessage {
+      code
+      description
+      level
+    }
+    apiData {
+      code
+      label
+      errorCatalog {
+        code
+        description
+        type
+        level
+      }
+      operations {
+        edges {
+          node {
+            operationData {
+              code
+              label
+              types
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+## Query Example
+
+### Simple Request
+
+This example retrieves metadata for a specific API using its code.
+
+```graphql
+query {
+  admin {
+    api(where: {searchBy: CODE, search: "hotel"}) {
+      apiData {
+        code
+        label
+        errorCatalog {
+          code
+          description
+          type
+          level
+        }
+        operations {
+          edges {
+            node {
+              operationData {
+                code
+                label
+                types
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+### Variables Example
+
+This query does not require variables.
+
+```json
+{}
+```
+
+## Response Example
+
+Here is an example of the response:
+
+```json
+{
+  "data": {
+    "admin": {
+      "api": {
+        "apiData": {
+          "code": "api-code",
+          "label": "api-label",
+          "errorCatalog": [
+            {
+              "code": "error-code",
+              "description": "error-description",
+              "type": "error-type",
+              "level": "error-level"
+            }
+          ],
+          "operations": {
+            "edges": [
+              {
+                "node": {
+                  "operationData": {
+                    "code": "operation-code",
+                    "label": "operation-label",
+                    "types": ["operation-type"]
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+## Response Considerations
+
+* `searchBy: CODE` + `search: "hotel"` filters the API by its code.
+* `errorCatalog` is useful for mapping business/technical errors expected for that API.
+* `operations` helps you discover which operation types are available before implementing flows.
+
+### Common Use Cases
+
+- **Inspect API Information:** Retrieve data such as `code` and `label` for specific APIs.
+- **Analyze API Error Catalogs:** Access error codes and descriptions to troubleshoot API issues.
+- **Validate API Operations:** Check available operations for an API to ensure compatibility with your integration.

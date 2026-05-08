@@ -1,8 +1,8 @@
 ---
-sidebar_position: 5
+sidebar_position: 4
 ---
 
-import {allClientsListQuery} from "../../../../../src/graphql/admin/allclients.query";
+import {allClientsListQuery} from "../../../../src/graphql/admin/allclients.query";
 
 
 # Get Clients
@@ -58,3 +58,25 @@ Returned fields:
 * In this sample, the response includes only `name` because it is the only field requested.
 * If requested, `code` follows the client identifier format used by the platform.
 * If requested, `group` helps understand where the client belongs in your organization hierarchy.
+
+### Common Use Cases
+
+- **List Client Identities:** Retrieve a list of all the clients in your organization for internal audits.
+- **Validate Client Permissions:** Ensure that client accounts have the correct permissions for API operations.
+- **Build Client Directories:** Create a directory of client accounts for operational monitoring and troubleshooting.
+
+### Troubleshooting
+
+Here are some common issues and their resolutions when using the `allClients` query:
+
+1. **No clients returned**:
+   - **Cause**: The organization has no registered clients.
+   - **Resolution**: Verify that clients have been created in the [API Settings section](/kb/platform/app-features/connections/api-settings) of our Platform.
+
+2. **Permission denied error**:
+   - **Cause**: The API key or Bearer token used does not have sufficient permissions.
+   - **Resolution**: Ensure the API key or Bearer token has the required `ADMIN` permissions.
+
+3. **Query timeout**:
+   - **Cause**: The query is fetching a large number of clients.
+   - **Resolution**: Use pagination to limit the number of results returned in a single query.

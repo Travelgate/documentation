@@ -3,9 +3,9 @@ sidebar_position: 2
 title: Authentication
 ---
 
-# Monitoring API Authentication
+# API Authentication
 
-All Travelgate Monitoring APIs use JWT (JSON Web Token) bearer authentication. Follow the steps below to obtain and use your authentication token.
+All Travelgate APIs use API key or JWT (JSON Web Token) bearer authentication. Follow the steps below to obtain and use your JWT authentication token.
 
 ## Getting Your JWT Token
 
@@ -44,7 +44,7 @@ curl 'https://api.travelgate.com' \
 
 ## Using Your JWT Token
 
-Include the JWT token in the `Authorization` header of all subsequent Monitoring API requests using the `Bearer` scheme:
+Include the JWT token in the `Authorization` header of all subsequent API requests using the `Bearer` scheme:
 
 ```
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
@@ -66,4 +66,4 @@ curl 'https://api.travelgate.com' \
 
 - **Token Lifecycle:** Store your JWT token securely. Tokens expire after a certain period; retrieve a new one when needed.
 - **API Key Required:** You need your Travelgate API Key to retrieve the JWT token. Find your API Key in the [Travelgate App settings](https://app.travelgate.com/settings/apikeys).
-- **All Requests:** Every Monitoring API call requires the Bearer token in the `Authorization` header.
+- **All Requests:** Every API call requires the Bearer token in the `Authorization` header.

@@ -54,33 +54,6 @@ Returned fields:
 
 <GraphqlSample query={allSuppliersListQuery}/>
 
-### Sample Response
-
-```json
-{
-  "data": {
-    "allSuppliers": {
-      "edges": [
-        {
-          "node": {
-            "name": "Supplier A",
-            "isActive": true,
-            "code": "SUPA"
-          }
-        },
-        {
-          "node": {
-            "name": "Supplier B",
-            "isActive": false,
-            "code": "SUPB"
-          }
-        }
-      ]
-    }
-  }
-}
-```
-
 ### Common Use Cases
 
 - **Monitor Supplier Status:** Check which suppliers are currently active and available for transactions.
@@ -129,15 +102,15 @@ Here is an example of the response:
         "edges": [
           {
             "node": {
-              "code": "SUP123",
-              "name": "Supplier A",
+              "code": "supplier-code",
+              "name": "supplier-name",
               "isActive": true
             }
           },
           {
             "node": {
-              "code": "SUP456",
-              "name": "Supplier B",
+              "code": "another-supplier-code",
+              "name": "another-supplier-name",
               "isActive": false
             }
           }

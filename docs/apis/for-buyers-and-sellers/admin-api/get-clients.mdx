@@ -53,6 +53,67 @@ Returned fields:
 <GraphqlSample query={allClientsListQuery}/>
 
 
+## Query Example
+
+### Simple Request
+
+This example retrieves a list of all clients with their basic details.
+
+```graphql
+query {
+  admin {
+    allClients {
+      edges {
+        node {
+          name
+          code
+          group
+        }
+      }
+    }
+  }
+}
+```
+
+### Variables Example
+
+This query does not require variables.
+
+```json
+{}
+```
+
+## Response Example
+
+Here is an example of the response:
+
+```json
+{
+  "data": {
+    "admin": {
+      "allClients": {
+        "edges": [
+          {
+            "node": {
+              "name": "client-name-1",
+              "code": "client-code-1",
+              "group": "client-group-1"
+            }
+          },
+          {
+            "node": {
+              "name": "client-name-2",
+              "code": "client-code-2",
+              "group": "client-group-2"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
 ## Response Considerations
 
 * In this sample, the response includes only `name` because it is the only field requested.

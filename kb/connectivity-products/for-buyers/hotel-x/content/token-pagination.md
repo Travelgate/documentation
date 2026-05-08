@@ -68,5 +68,5 @@ Follow these steps to paginate content using the Legacy API:
 Additional information on how to paginate content responses in the Legacy Pull Buyers API (deprecated) is available [here](/docs/apis/for-buyers/deprecated/legacy-pull-buyers-api/content/hotel-list#how-to-paginate-responses)
 
 :::info
-If the `expectedRange` attribute is not specified, the default maximum number of hotels in the list is **500**.
+If the `expectedRange` attribute is not specified, the default maximum number of hotels in the list is **10000**.
 :::

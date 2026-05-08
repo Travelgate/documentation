@@ -27,7 +27,18 @@ This is a single call that returns the **master list of FastX hotels** available
 
 To retrieve it, make a `hotel list` call using your **FastX access**, which you can find in the *MyConnections* section under the Seller **“Travelgate”**.
 
-You can also receive the **GIATA code** associated with each hotel if you have activated [this functionality](/kb/connectivity-products/for-buyers/mapping-solutions/giata/giata-multicodes).
+:::info FastX Content:
+When performing a Hotels Query **using the FastX context**, the following fields are currently returned:
+- Hotel code
+- Hotel name
+- Country
+- Address
+- Latitude
+- Longitude
+- GIATA ID (if this functionality has been [activated](/kb/connectivity-products/for-buyers/mapping-solutions/giata/giata-multicodes))
+
+To provide you with a more comprehensive experience, our team is developing a Content App that will deliver richer content for FastX Hotels. Stay tuned for further updates!
+:::
 
 <GraphqlSample query={hotelsQuery} variables={hotelsFastXVariables} />
 

@@ -10,6 +10,10 @@ Welcome to **Stats**, Travelgate's real-time connectivity performance dashboard 
 
 Let [Stats](https://app.travelgate.com/apps/stats) help you make data-driven decisions and take your business to new heights! 🚀
 
+:::tip
+Need to automate Stats data extraction? See the [Stats API](/docs/monitoring-api/stats-api/stats/) documentation.
+:::
+
 ![stats_dashboard_1](https://storage.travelgate.com/kbase/stats_dashboard_1.jpg)
 
 ## How Can I Use Stats?
@@ -68,7 +72,25 @@ To determine the actual [status of a reservation](/kb/connectivity-products/for-
 
 Additionally, if any transactions result in errors, you can easily identify the specific error code and download the log transactions for the Quote, Book, and Cancel steps. Stats provides you with all the data you need to stay on top of your performance.
 
+:::tip
+Do your internal numbers differ from what you see in Stats? Review [Data Variations](/kb/platform/app-features/monitoring-tools/stats/data-variations) to understand the most common causes of request-count differences and validation mismatches.
+:::
+
 ![stats_dashboard_5](https://storage.travelgate.com/kbase/stats_dashboard_5.jpg)
+
+### Error Types
+
+When analyzing errors in Stats, transactions are categorized by error type to help you understand the nature of issues:
+
+| Error Type | Description |
+|------------|-------------|
+| **OK** | Transaction completed successfully with no errors |
+| **PROVIDER** | Error originated from the supplier/provider (e.g., provider timeout, invalid response) |
+| **TIMEOUT** | Request exceeded the maximum response time limit |
+| **INTEGRATION** | Error related to data integration or format issues |
+| **COMMUNICATION** | Error in network communication between systems |
+
+By filtering and analyzing errors by type, you can identify patterns and target improvements. For example, a high number of TIMEOUT errors suggests you may need to increase timeout thresholds or optimize request handling with the affected provider.
 
 ### Why is a connection missing from the Stats Dashboard dropdown?
 If you can’t find a connection in the Stats Dashboard dropdown, try the following:
@@ -77,6 +99,8 @@ If you can’t find a connection in the Stats Dashboard dropdown, try the follow
   - **Time range:**  
     If a connection doesn’t appear in the dropdown on the Stats Dashboard, **check whether it had any traffic during the selected time range**. For example, if you've applied the “Last 12 hours” filter but the connection had no activity during that period, it won’t be listed.
     To ensure visibility, try expanding the time range to include periods when the connection may have had traffic.
+
+If your question is about color status (for example, why a connection appears in red), review the [Stats Color Guide](/kb/platform/app-features/monitoring-tools/stats/stats-colors), including the NOK thresholds by booking-flow step.
 
 
 ### Download CSV Functionality

@@ -39,7 +39,7 @@ The Reconciliation API stores all bookings made by a Buyer through Travelgate an
     - Insights to maintain accuracy  
     
         :::info Full Visibility and Control
-        Track results in real-time through our centralized [Reconciliation Dashboard](https://app-reconciliation.travelgate.com/), where your information is transformed into clear, actionable insights and comprehensive reports. For a more hands-off approach, integrate [Webhooks](/docs/reconciliation/webhooks) to push automated alerts directly to your internal systems, ensuring you maintain total oversight at every stage of the process.
+        Track results in real-time through our centralized [Reconciliation Dashboard](https://app-reconciliation.travelgate.com/), where your information is transformed into clear, actionable insights and comprehensive reports. For a more hands-off approach, integrate [Webhooks](/docs/apis/for-buyers-and-sellers/reconciliation/webhooks) to push automated alerts directly to your internal systems, ensuring you maintain total oversight at every stage of the process.
         :::
 
 ### Why is booking reconciliation important?

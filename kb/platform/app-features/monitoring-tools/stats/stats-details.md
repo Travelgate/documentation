@@ -11,7 +11,7 @@ Welcome to **Stats**, Travelgate's real-time connectivity performance dashboard 
 Let [Stats](https://app.travelgate.com/apps/stats) help you make data-driven decisions and take your business to new heights! 🚀
 
 :::tip
-Need to automate Stats data extraction? See the [Stats API](/docs/monitoring-api/stats-api/stats/) documentation.
+Need to automate Stats data extraction? See the [Stats API](/docs/apis/for-buyers-and-sellers/monitoring-api/stats-api/stats/) documentation.
 :::
 
 ![stats_dashboard_1](https://storage.travelgate.com/kbase/stats_dashboard_1.jpg)

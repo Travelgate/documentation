@@ -1,0 +1,127 @@
+---
+sidebar_position: 5
+---
+
+import {allSuppliersListQuery} from "../../../../src/graphql/admin/allsuppliers.query";
+
+
+# Get Suppliers
+
+The `allSuppliers` query returns all Suppliers available in your organization.
+
+A `supplier` represents the Seller connection metadata used across your HotelX integrations.
+
+Use this endpoint when you need to:
+
+* Identify which suppliers are currently active
+* Build a basic supplier directory (`code` and `name`)
+* Validate supplier status before using accesses
+
+## Query Overview
+
+Path: `admin/get-suppliers/`
+
+GraphQL root:
+
+```graphql
+admin {
+  allSuppliers {
+    edges {
+      node {
+        supplierData {
+          ...
+        }
+      }
+    }
+  }
+}
+```
+
+The response is a connection, so you can read:
+
+* `edges`: list of suppliers
+* `totalCount`: total number of suppliers in your organization
+
+### Simple Suppliers Request
+
+Use this version for a quick supplier directory.
+
+Returned fields:
+
+* `code`
+* `name`
+* `isActive`
+
+<GraphqlSample query={allSuppliersListQuery}/>
+
+### Common Use Cases
+
+- **Monitor Supplier Status:** Check which suppliers are currently active and available for transactions.
+- **Build Supplier Directories:** Create a directory of suppliers for operational monitoring and reporting.
+- **Validate Supplier Information:** Retrieve supplier-specific data for integration and troubleshooting purposes.
+
+## Query Example
+
+### Simple Request
+
+This example retrieves a list of all suppliers with their basic details.
+
+```graphql
+query {
+  admin {
+    allSuppliers {
+      edges {
+        node {
+          code
+          name
+          isActive
+        }
+      }
+    }
+  }
+}
+```
+
+### Variables Example
+
+This query does not require variables.
+
+```json
+{}
+```
+
+## Response Example
+
+Here is an example of the response:
+
+```json
+{
+  "data": {
+    "admin": {
+      "allSuppliers": {
+        "edges": [
+          {
+            "node": {
+              "code": "supplier-code",
+              "name": "supplier-name",
+              "isActive": true
+            }
+          },
+          {
+            "node": {
+              "code": "another-supplier-code",
+              "name": "another-supplier-name",
+              "isActive": false
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+## Response Considerations
+
+* `isActive` can be affected by provider status.
+* Use `code` as the stable supplier identifier in your integrations.

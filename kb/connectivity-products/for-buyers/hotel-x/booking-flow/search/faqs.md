@@ -7,7 +7,13 @@ sidebar_position: 5
 ## Searching by Destination
 
 ### Can I search by destination?
-Yes, you can search by destination using our Search by Destination [plugin](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/search-by-destination).
+Yes, you can search by destination using our [Search by Destination plugin](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/search-by-destination).
+  :::warning Important Note on Search by Destination
+  The [Search by Destination plugin](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/search-by-destination/) is **exclusively** compatible with searches performed using a **Supplier Context**.  
+  Please note that this plugin **cannot** be used with:
+  - FASTX Context
+  - Buyer Context
+  :::
 
 ## Request Limits
 

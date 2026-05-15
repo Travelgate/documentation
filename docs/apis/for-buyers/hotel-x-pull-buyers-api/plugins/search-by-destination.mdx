@@ -4,11 +4,18 @@ sidebar_position: 113
 
 # Search by Destination
 
-The Search by Destination plugin enables to search by destinations codes in the Search query. Destination codes will be converted to hotel codes, then merged with the hotel codes sent in criteria if any, and finally the request will be sent to the supplier. In order to achieve the destination to hotel conversion, a source must be specified in a plugin.
+The Search by Destination plugin enables to search by destinations codes in the Search query. Destination codes will be converted to hotel codes, then merged with the hotel codes sent in criteria if any, and finally the request will be sent to the supplier.    
 
-:::note
-You don't need to create any files for this plugin. Just specify it in the `settings` > `plugins` field in your search query.
-:::
+In order to achieve the destination to hotel conversion, a source must be specified in a plugin. **You don't need to create any files for this plugin**. Just specify it in the `settings` > `plugins` field in your search query.
+
+  :::warning Important Note on Search by Destination
+  - When you're setting up your [Search](../booking-flow/search) query, **be sure to include the `destinations` field in the criteria, not `hotels`**. This is where you can specify your destination codes. To discover the destination codes accessible for your access, just refer to the [Destinations](../content/destinations) content query.
+  - The [Search by Destination plugin](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/search-by-destination/) is **exclusively** compatible with searches performed using a **Supplier Context**.  
+  - Please note that **this plugin cannot be used with:**
+	- FASTX Context
+	- Buyer Context
+  :::
+
 
 ## 1. Execute Search by Destination Plugin in your Query
 
@@ -40,11 +47,3 @@ To use the plugin add the following field to the `settings` node of your request
 	]
 }
 ```
-
-:::caution Remember
-
-When you're setting up your [search](../booking-flow/search) query, be sure to include the `destinations` field in the criteria, not `hotels`. This is where you can specify your destination codes.
-
-To discover the destination codes accessible for your access, just refer to the [destinations](../content/destinations) content query.
-
-:::

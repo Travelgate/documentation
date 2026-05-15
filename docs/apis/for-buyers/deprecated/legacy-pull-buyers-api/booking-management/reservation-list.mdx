@@ -263,6 +263,16 @@ The response options include either **success** or an **error**. In the event of
 | TransactionStatus/RSStatus		| 1    		| String	| <details>     <summary>Response Status</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Status</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>DESCONOCIDO</td>  						 <td>Unknown</td>  					 </tr>  					 <tr>  						 <td>EXISTE</td>  						 <td>Exists</td>  					 </tr>           <tr>  						 <td>EXISTECANCELADA</td>  						 <td>exists but it's cancelled</td>  					 </tr>				 <tr>  						 <td>NO_EXISTE</td>  						 <td>Does not exist</td>  					 </tr>       </tbody>  			</table>         </div>     </div> </details>|
 | TransactionStatus/ResStatus		| 1    		| String	| <details>     <summary>Reservation Status</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Status Code</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>OK</td>  						 <td>The reservation was completed with no problems.</td>  					 </tr>  					 <tr>  						 <td>RQ</td>  						 <td>The reservation was completed but the product is still not available, so the reservation goes into a waiting list (Request).</td>  					 </tr>           <tr>  						 <td>CN</td>  						 <td>The reservation was completed but due to a supplier error or a timeout the system will immediately cancel the reservation to prevent further possible errors.</td>  					 </tr>				 <tr>  						 <td>UN</td>  						 <td>During the reservation process, an issue led to an unknown reservation status. The Buyer is responsible for verifying with the Seller that the booking has been confirmed.</td>  					 </tr>       </tbody>  			</table>         </div>     </div> </details>|
 
+### Understanding TransactionStatus fields
+
+When managing bookings, it is important to distinguish between the **technical communication, the record availability, and the actual status of a reservation**.
+
+| Field | Purpose | Key Values |
+| --- | --- | --- |
+| **CommunicationStatus** | The technical health of the connection between Travelgate and the Seller. | - OK: The communication with the Seller was successful.&nbsp;<br />  - KO: Connection established but failed.&nbsp;<br />  - OFFLINE: Seller system unreachable. |
+| **RSStatus** | Indicates if the reservation record exists in the Seller’s database. | - EXISTE: Found. &nbsp;<br /> - NO_EXISTE: Not found.&nbsp;<br />  - EXISTECANCELADA: Found but cancelled.&nbsp;<br />  - DESCONOCIDO: Unknown. |
+| **ResStatus** | The actual status of the booking itself. | - OK: Confirmed. &nbsp;<br /> - RQ: On Request (Waiting list). &nbsp;<br /> - CN: Cancelled. &nbsp;<br /> - UN: Unknown (Buyer follow-up is required). |
+
 ### Error
 
 ```xml

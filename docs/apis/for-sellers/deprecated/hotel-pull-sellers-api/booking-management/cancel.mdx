@@ -121,6 +121,16 @@ The response options include either **success** or an **error**. In the event of
 | @commission				| 1    		| Decimal	| <details>     <summary>Commission Scenarios</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Commission</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>0</td>  						 <td>The price returned is net.</td>  					 </tr>  					 <tr>  						 <td>-1</td>  						 <td>The supplier has not supplied the sale price nor the commission. This information is in the commercial contract with the supplier.</td>  					 </tr>           <tr>  						 <td>Greater than 0</td>  						 <td>X = % of the commission applied to the amount.</td>  					 </tr>				 </tbody>  			</table>         </div>     </div> </details>	|
 | @minimumSellingPrice 				   | 1 		    | Decimal 	    | Indicates the minimum selling price it can be sold (determined by the Seller). If is specified (different than "-1"), that field takes preference to amount.		<details>     <summary>Minimum Selling Price Scenarios</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Minimum Selling Price</strong>  						 </th>  						 <th>  							 <strong>Description</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody> <tr>  						 <td>0</td>  						 <td>No minimum selling price is provided.</td>  					 </tr>       <tr>  						 <td>-1</td>  						 <td>We have no information about MSP from the Seller.</td>  					 </tr>     <tr>  						 <td>Greater than 0</td>  						 <td>The lowest possible amount that can be sold commercially.</td>  					 </tr>				 </tbody>  			</table>         </div>     </div> </details> |
 
+### Understanding TransactionStatus fields
+
+When managing bookings, it is important to distinguish between the **technical communication, the record availability, and the actual status of a reservation**.
+
+| Field | Purpose | Key Values |
+| --- | --- | --- |
+| **CommunicationStatus** | The technical health of the connection between Travelgate and the Seller. | - OK: The communication with the Seller was successful.&nbsp;<br />  - KO: Connection established but failed.&nbsp;<br />  - OFFLINE: Seller system unreachable. |
+| **RSStatus** | Indicates if the reservation record exists in the Seller’s database. | - EXISTE: Found. &nbsp;<br /> - NO_EXISTE: Not found.&nbsp;<br />  - EXISTECANCELADA: Found but cancelled.&nbsp;<br />  - DESCONOCIDO: Unknown. |
+| **ResStatus** | The actual status of the booking itself. | - OK: Confirmed. &nbsp;<br /> - RQ: On Request (Waiting list). &nbsp;<br /> - CN: Cancelled. &nbsp;<br /> - UN: Unknown (Buyer follow-up is required). |
+
 ### Error
 
 ```xml

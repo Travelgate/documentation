@@ -19,10 +19,14 @@ When you begin using Travelgate, these settings are automatically created, but i
 
 We'll clarify which fields are categorized as `settings` and where you can locate them. We'll also specify whether it's mandatory to provide a value for each field or if you have the option to leave it empty, in which case the default settings will be applied:
 
-| Field                  | Mandatory / Optional | Where to Fill It                                        |
+:::info Context Mode
+Use the [Context Mode Selection](/docs/apis/for-buyers/hotel-x-pull-buyers-api/context-mode-selection) page to decide whether to use FASTX, Buyer context, or Supplier context.
+:::
+
+| Field                  | Mandatory / Optional / Conditional | Where to Fill It                                        |
 |------------------------|----------------------|---------------------------------------------------------|
 | `client`               | Mandatory            | Query (Settings input)                                  |
-| `context`              | Mandatory            | Query (Settings input) or Default Settings will be used |
+| `context`              | Conditional          | Query (Settings input) or Default Settings. In FastX, it can be omitted when sending FastX hotel codes. |
 | `timeout`              | Mandatory            | Query (Settings input) or Default Settings will be used |
 | `businessRules`        | Mandatory            | Query (Settings input) or Default Settings will be used |
 | `language`             | Mandatory            | Query (Criteria input) or Default Settings will be used |

@@ -1,0 +1,96 @@
+---
+title: Context Mode Selection
+sidebar_position: 3
+---
+
+# Context Mode Selection
+
+Use this page to decide which `settings.context` mode to use in HotelX booking flow: **FASTX**, **Buyer context**, or **Supplier context**.
+
+## Quick Recommendation
+
+1. Use **FASTX** when it is enabled for your account.
+2. Use **Buyer context** when you must run booking flow with your own internal codes/mapping files, or when your plugin file strategy depends on Buyer-context naming (for example `BuyerContext_sequential_commission.csv`).
+3. Use **Supplier context** when you intentionally need supplier-native workflows.
+
+## FastX Context Behavior (Important)
+
+When you use FastX hotel codes, the context field is not required.
+
+- You can explicitly set `"context": "FASTX"`, or
+- You can omit `context`. If omitted, HotelX assumes the hotel codes in your request are FastX codes.
+
+You only need to specify a non-FASTX context when your request uses a non-FastX code system (for example supplier context codes or your Buyer context code).
+
+## Decision Matrix
+
+| Mode | Best for | `settings.context` usage | Multi-supplier behavior | Search by Destination plugin | Codes returned in booking flow |
+|---|---|---|---|---|---|
+| **FastX** (Recommended) | Standardized content codes, simpler maintenance, aggregation across suppliers | Optional. You can set `"context": "FASTX"` or omit `context` when sending FastX hotel codes. | Designed for multi-supplier requests and aggregation in one query. | Not compatible. | FastX codes are returned in standard fields. Supplier values are available in supplier fields (for example `hotelCodeSupplier`, `boardCodeSupplier`, `rooms.supplierCode`). |
+| **Buyer context** | Buyers that must operate with their own hotel/board/room/rate codes, or manage plugin files by Buyer-context naming (for example mapping files) | Required (your Buyer context code). | Can work across multiple accesses/suppliers when mappings are configured for those connections. | Not compatible. | Response keeps supplier information and mapped Buyer codes for mapped entities. |
+| **Supplier context** | Supplier-native flows, supplier troubleshooting, supplier-only features | Required (supplier context code). | Scoped per request to one supplier context. You can include multiple accesses only if they share that same supplier context. | Compatible (required mode). | Supplier-context values. In booking flow (Search/Quote/Book), FastX information is not returned when using supplier context. |
+
+## Practical Rules
+
+### Rule 1: If you are starting now, choose FastX
+
+FastX is the baseline mode for most Buyers because it reduces mapping complexity and improves scalability.
+
+### Rule 2: Choose Buyer context only when your own code system is a hard requirement
+
+If your business logic depends on internal codes, use Buyer context and maintain mapping files in SFTP. This also applies when plugin file names depend on request context (for example `BuyerContext_sequential_commission.csv` in the Commission plugin flow).
+
+### Rule 3: Choose Supplier context only for supplier-native scenarios
+
+Use this mode when you intentionally want supplier-native code behavior or need plugins that only support supplier context (such as Search by Destination).
+
+## Minimal Settings Examples
+
+### FastX mode
+
+```json
+{
+  "settings": {
+    "client": "client_demo",
+    "context": "FASTX",
+    "timeout": 5000,
+    "testMode": true
+  }
+}
+```
+
+You can also omit `context` when your request uses FastX hotel codes.
+
+### Buyer context mode
+
+```json
+{
+  "settings": {
+    "client": "client_demo",
+    "context": "BUYER_CONTEXT",
+    "timeout": 5000,
+    "testMode": true
+  }
+}
+```
+
+### Supplier context mode
+
+```json
+{
+  "settings": {
+    "client": "client_demo",
+    "context": "HOTELTEST",
+    "timeout": 5000,
+    "testMode": true
+  }
+}
+```
+
+## Related Pages
+
+- [Search](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/search)
+- [Settings](/docs/apis/for-buyers/hotel-x-pull-buyers-api/making-requests/settings)
+- [Upgrade to FastX](/docs/apis/for-buyers/hotel-x-pull-buyers-api/upgrade-to-fastx)
+- [Mapping plugin](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping)
+- [Search by Destination plugin](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/search-by-destination)

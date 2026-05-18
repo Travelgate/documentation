@@ -85,6 +85,7 @@ query {
 
 #### 4. **Validate Request Constraints**
 - Confirm market, nationality, date, and stay parameters are valid for Seller rules.
+- Review any filters applied in your HotelX Search request, since restrictive filters can reduce or eliminate available results. Pay special attention to access, supplier, plugin, rateRules, currency, and status filters. For more details, see [Search Filters](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/search/search-filters).
 - Re-test using criteria known to be allowed for your credentials.
 
 #### 5. **Review Speed Configuration**

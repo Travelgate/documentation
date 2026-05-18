@@ -23,7 +23,7 @@ Since this error indicates a discrepancy or issue with the validation process, c
 - **Verify User**
   - Ensure the user making the request has the necessary permissions. For instance, a Viewer user cannot make reservations via the B2B Virtual Agency since Viewers only have permissions for searches and quotes. More details on user roles can be found [here](/kb/platform/app-features/account-settings/users-management/modify-user-roles).
 - **Verify Context**
-    - Ensure your configuration aligns with the correct context (FastX, Buyer, or Supplier) as detailed in the [Context Mode Selection](/docs/apis/for-buyers/hotel-x-pull-buyers-api/context-mode-selection) section.
+    - Ensure your configuration aligns with the correct context (FastX, Buyer, or Supplier) as detailed in the [Context Decision Matrix](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials#context).
 - **Verify Criteria**
   - Ensure your request criteria are valid. For example, avoid using check-in or check-out dates in the past, and ensure you're using the correct `optionRefId` [for each method](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/option-identifiers). Also, ensure compliance with the supplier's specifications as outlined in their [Metadata](/kb/connectivity-products/for-buyers/hotel-x/content/metadata).
 - **Verify Settings**

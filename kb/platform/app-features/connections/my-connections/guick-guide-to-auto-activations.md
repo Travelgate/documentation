@@ -12,7 +12,7 @@ Our goal has always been to make connecting with a Partner easier and faster.
 - Both **Buyers and Sellers** can request a connection.
 - **Having a commercial contract with Travelgate** is essential to request a new connection.
 - **Activations of connections with Channel Managers via Travelgate** should always be requested by the Buyers, not the Channel Managers themselves.
-- **Each Seller may have different access credential requirements** depending on their system specifications. Some may require only basic fields, while others require additional data or specific URL endpoints for methods such as Search, Quote, or Book. Supplier authorization may rely on a username and password or a Supplier-generated API key (**not to be confused with the [Travelgate API Key](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials#api-key)** used to authenticate Travelgate users).
+- **Each Seller may have different access credential requirements** depending on their system specifications. Some may require only basic fields, while others require additional data or specific URL endpoints for methods such as Search, Quote, or Book. Seller authentication may rely on a username and password or a Seller-generated API key (**not to be confused with the [Travelgate API Key](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials#api-key)** used to authenticate Travelgate users).
 - All access details must be provided and **confirmed by each Seller**.
 - Make sure your credentials are active and **fully functional before proceeding**, as using inactive credentials can cause delays.
 :::

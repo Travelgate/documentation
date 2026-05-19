@@ -108,8 +108,27 @@ After incident recovery, continue with the [optimization playbook](/kb/connectiv
 Use the `auditData` parameter in the **HotelX Pull Buyers API** or `registerTransactions` in the **Legacy Pull Buyers API**. Detailed instructions are available in [Audit Supplier Transactions](/kb/platform/app-features/monitoring-tools/logging/audit-supplier-transactions).
 :::
 
-### Why Do I Receive No Availability Through Travelgate When the Seller's Platform Returns Results?
-Travelgate displays results based on the Seller’s integration. A Seller may return results in their own platform but not through Travelgate. If this happens, **contact the Seller** directly to ensure product information for your credentials is correctly updated.
+### Why Do I Receive No Availability (No results found) Through Travelgate When the Seller's Website Returns Results?
+It is essential to understand that Travelgate acts primarily as a technological bypass. Our platform connects your request directly to the Seller’s API and delivers the response they return to us. **Availability on a web interface does not guarantee availability via an API integration** for the following reasons:
+
+   1. **Inventory Segmentation by Channel**  
+   Many Sellers manage separate inventories for their direct sales channels (B2C websites) and their XML/API distribution channels. A product may be available to the general public on a website but restricted or sold out for third-party technological integrations.
+
+   2. **Credential and Contract Specifics**  
+   The availability you receive through Travelgate is tied exclusively to the credentials provided to you by the Seller. The inventory returned is linked to your specific contract, assigned market, and negotiated commercial conditions. A search on a Seller’s public website often uses generic criteria that may not match your API access.
+
+   3. **Differences in Product Portfolio**  
+   Not all hotels or room types displayed on a Seller’s website are necessarily open for API distribution. If the requested product is not part of the portfolio activated for your specific integration, the Seller will not return results via the API.
+
+   4. **API-Specific Business Rules and Filters**  
+   Sellers often apply specific business logic—such as market restrictions, passenger nationality requirements, or minimum lead-time rules—only to their API booking engine and not to their direct website.
+
+   5. **Cache Layer (Speed)**  
+   If you are using our Speed optimization solution, you may be receiving a cached response. In "Fast" mode, you will only see results already stored in the cache; if the data is not currently stored, Travelgate will return a 204 error even if the Seller has real-time availability.
+
+   :::info
+   If you have verified that your Search criteria (dates, occupancy, and market) are identical and the discrepancy persists, we recommend contacting the Seller directly. Ask them to verify if the product is explicitly enabled for your API credentials and not just for their web environment.
+   :::
 
 ### How to Handle 204 Errors in Quote Responses
 

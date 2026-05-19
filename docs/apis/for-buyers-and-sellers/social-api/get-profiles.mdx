@@ -1,0 +1,81 @@
+---
+sidebar_position: 2
+---
+
+import {allProfilesV2ListQuery} from "../../../../src/graphql/social/allprofilesv2.query.js";
+
+
+# Get Profiles
+
+The `allProfilesV2` query returns social profiles. You can optionally filter the result by using the `where` input.
+
+Use this endpoint when you need to:
+
+* Retrieve profile records for a specific owner code
+* Inspect company profile and commercial status fields
+* Review contacts, categories, classifications, and commercial status
+
+## Query Overview
+
+Path: `social/get-profiles/`
+
+GraphQL root:
+
+```graphql
+social {
+  allProfilesV2(where: {ownerCode: {equals: "example-owner"}}) {
+    edges {
+      node {
+        profileData {
+          ...
+        }
+      }
+    }
+  }
+}
+```
+
+The `where` filter is optional. This example uses a fictitious owner code only to illustrate the syntax.
+
+The response is a connection, so you can read:
+
+* `edges`: list of profiles
+
+### Profiles Request
+
+This sample requests the following profile fields:
+
+* `name`
+* `owner.code`
+* `status`
+* `order`
+* `slug`
+* `country`
+* `description`
+* `classifications`
+* `websiteUrl`
+* `mainMarkets`
+* `buyerPartnerStatus`
+* `sellerPartnerStatus`
+* `sellerIntegrationType`
+* `buyerIntegrationType`
+* `buyerOrgType`
+* `sellerOrgType`
+* `buyerKeyContacts` (`email`, `contactType`)
+* `sellerKeyContacts` (`email`, `contactType`)
+* `buyerCategory`
+* `sellerCategory`
+* `buyerSubCategory`
+* `sellerSubCategory`
+* `isDemandBridge`
+* `isSupplyBridge`
+* `buyerLifecycleStage`
+* `sellerLifecycleStage`
+
+<GraphqlSample query={allProfilesV2ListQuery}/>
+
+## Response Considerations
+
+* `where` is optional. If you use it, `ownerCode.equals: "example-owner"` is only a sample filter value.
+* `buyer...` and `seller...` fields let you inspect both sides of the commercial relationship in one query.
+* Contact, classification, lifecycle, and partner-status fields can be used for operational or CRM-style analysis.

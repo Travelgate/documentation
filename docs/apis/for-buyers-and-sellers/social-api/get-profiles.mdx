@@ -74,6 +74,131 @@ This sample requests the following profile fields:
 
 <GraphqlSample query={allProfilesV2ListQuery}/>
 
+### Common Use Cases
+
+- **Filter Profiles by Owner:** Retrieve only the profiles related to a specific owner code when needed.
+- **Inspect Commercial Profile Data:** Review partner status, lifecycle stage, integration type, and organization type.
+- **Review Contacts and Classification:** Retrieve key contacts, classifications, and category data for operational analysis.
+
+## Query Example
+
+### Simple Request
+
+This example retrieves profile data with an optional owner filter.
+
+```graphql
+query {
+  social {
+    allProfilesV2(where: {ownerCode: {equals: "example-owner"}}) {
+      edges {
+        node {
+          profileData {
+            name
+            owner {
+              code
+            }
+            status
+            order
+            slug
+            country
+            description
+            classifications
+            websiteUrl
+            mainMarkets
+            buyerPartnerStatus
+            sellerPartnerStatus
+            sellerIntegrationType
+            buyerIntegrationType
+            buyerOrgType
+            sellerOrgType
+            buyerKeyContacts {
+              email
+              contactType
+            }
+            sellerKeyContacts {
+              email
+              contactType
+            }
+            buyerCategory
+            sellerCategory
+            buyerSubCategory
+            sellerSubCategory
+            isDemandBridge
+            isSupplyBridge
+            buyerLifecycleStage
+            sellerLifecycleStage
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+### Variables Example
+
+This query does not require variables.
+
+```json
+{}
+```
+
+## Response Example
+
+Here is an example of the response:
+
+```json
+{
+  "data": {
+    "social": {
+      "allProfilesV2": {
+        "edges": [
+          {
+            "node": {
+              "profileData": {
+                "name": "Example Travel Company",
+                "owner": {
+                  "code": "example-owner"
+                },
+                "status": "PUBLISHED",
+                "order": -1,
+                "slug": "example-travel-company",
+                "country": "ES",
+                "description": "Example company profile used for documentation purposes.",
+                "classifications": ["OTA"],
+                "websiteUrl": "https://example.com",
+                "mainMarkets": [],
+                "buyerPartnerStatus": "ACTIVE",
+                "sellerPartnerStatus": "INACTIVE",
+                "sellerIntegrationType": null,
+                "buyerIntegrationType": ["CHANNELX", "LEGACY"],
+                "buyerOrgType": "OTA_ONLINE_TRAVEL_AGENCY",
+                "sellerOrgType": null,
+                "buyerKeyContacts": [
+                  {
+                    "email": "buyer@example.com",
+                    "contactType": "Activation"
+                  }
+                ],
+                "sellerKeyContacts": null,
+                "buyerCategory": "Travel Agency",
+                "sellerCategory": null,
+                "buyerSubCategory": "Online",
+                "sellerSubCategory": null,
+                "isDemandBridge": false,
+                "isSupplyBridge": false,
+                "buyerLifecycleStage": "CUSTOMER",
+                "sellerLifecycleStage": "CUSTOMER"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
 ## Response Considerations
 
 * `where` is optional. If you use it, `ownerCode.equals: "example-owner"` is only a sample filter value.

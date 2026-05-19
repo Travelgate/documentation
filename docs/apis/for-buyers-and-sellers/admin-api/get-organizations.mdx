@@ -47,6 +47,74 @@ The sample below requests these fields from `organizationsData`:
 
 <GraphqlSample query={allOrganizationsListQuery}/>
 
+### Common Use Cases
+
+- **List Organizations:** Retrieve the organizations available in the admin scope.
+- **Check Organization Status:** Verify whether a specific organization is active.
+- **Inspect Ownership:** Identify the owner organization associated with each record.
+
+## Query Example
+
+### Simple Request
+
+This example retrieves organizations filtered by organization code.
+
+```graphql
+query {
+  admin {
+    allOrganizations(where: {code_in: "code_org"}) {
+      edges {
+        node {
+          organizationsData {
+            code
+            isActive
+            owner {
+              code
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+### Variables Example
+
+This query does not require variables.
+
+```json
+{}
+```
+
+## Response Example
+
+Here is an example of the response:
+
+```json
+{
+  "data": {
+    "admin": {
+      "allOrganizations": {
+        "edges": [
+          {
+            "node": {
+              "organizationsData": {
+                "code": "code_org",
+                "isActive": true,
+                "owner": {
+                  "code": "owner_org"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
 
 ## Response Considerations
 

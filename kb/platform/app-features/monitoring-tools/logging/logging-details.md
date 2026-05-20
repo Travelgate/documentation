@@ -95,7 +95,7 @@ If you can't find the logs you need in the Logging App, check the following:
 
 - **Partner type**: Make sure you are browsing in the correct view, **Buyer** or **Seller**, depending on the data you want to see. You can switch views using the **View data of this page as:** selector on the left side of the screen.
 - **Booking or cancellation errors**: Use **Search by Connections** with the **Time Range** filter and, if possible, filter by error. Failed bookings or cancellations cannot be retrieved by client reference, supplier reference, or session ID.
-- **Reference filter for OK logs**: The reference will not return results until the day after the booking is made. If it does not, use the **Time Range** filter instead.
+- **Reference filter for OK logs**: The reference will not return results until the day after the booking is made. If the reference still does not return results, use the **Time Range** filter instead.
     
 ### When to Use the Access Filter  
 Use the Access Filter **only for HotelX Connections**. If you apply it to a **Legacy Connection**, it will return no results even when transactions exist for that period.

@@ -9,36 +9,13 @@ export const allProfilesV2ListQuery =
             owner {
               code
             }
-            status
-            order
-            slug
-            country
-            description
-            classifications
             websiteUrl
-            mainMarkets
-            buyerPartnerStatus
-            sellerPartnerStatus
             sellerIntegrationType
             buyerIntegrationType
-            buyerOrgType
-            sellerOrgType
-            buyerKeyContacts {
-              email
-              contactType
-            }
-            sellerKeyContacts {
-              email
-              contactType
-            }
             buyerCategory
             sellerCategory
             buyerSubCategory
             sellerSubCategory
-            isDemandBridge
-            isSupplyBridge
-            buyerLifecycleStage
-            sellerLifecycleStage
           }
         }
       }

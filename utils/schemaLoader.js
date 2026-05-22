@@ -72,8 +72,8 @@ async function loadFilteredSchema() {
         const schema = buildClientSchema(result.data);
 
         // Define which operations to include
-        const allowedQueries = ['hotelX', 'inventory', 'reconciliation', 'infraestructure', 'stats'];
-        const allowedMutations = ['hotelX', 'inventory', 'reconciliation'];
+        const allowedQueries = ['hotelX', 'inventory', 'infraestructure', 'stats'];
+        const allowedMutations = ['hotelX', 'inventory'];
 
         // Build filtered schema string
         let filteredSchema = '';

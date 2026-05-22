@@ -35,7 +35,7 @@ Our goal has always been to make connecting with a Partner easier and faster.
 
         <img src="https://storage.travelgate.com/kbase/autoconnections_step3_2.png" alt="quickguide_to_autoconnections_step3_2" width="500" />
 
-    - **Step 3 (Notification Setup)**: Notifications are **sent by default to the "Tech Support Contact" email address**, which is set up in ["Contacts Management"](/kb/platform/app-features/account-settings/users-management/add-users#how-to-assign-a-contact-user-to-receive-notifications-from-travelgate). You can also specify additional contact emails to receive notifications that the connection has been created and is ready for use, provided those emails are **already registered within the Travelgate platform**.
+    - **Step 3 (Notification Setup)**: Notifications are **sent by default to the "Tech Support Contact" email address**, which is set up in ["Users & Contacts Management"](/kb/platform/app-features/account-settings/users-management/add-users#how-to-add-users-to-your-organization). You can also specify additional contact emails to receive notifications that the connection has been created and is ready for use, provided those emails are **already registered within the Travelgate platform**.
 
         :::warning Notification Setup Error
         If the Partner (Buyer or Seller) contact entered in the Notification Setup screen is **not registered under Settings > Users & Contacts Management** in the Travelgate Portal, you will receive the following error: _"The email [Partner email] does not exist in [Partner Organization]. Please use an email that is registered in [Partner Organization]."_

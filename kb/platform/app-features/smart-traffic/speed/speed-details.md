@@ -8,8 +8,6 @@ sidebar_position: 2
 
 At Travelgate, we continuously evolve our technology to meet our Partners’ needs. One key challenge is reducing traffic and improving Search response times. Our **dynamic cache solution, Speed**, helps optimize performance by saving up to **80% of total hits** to the Seller's system, resulting in significantly faster Search responses.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/uZO0Wm74wMA?si=gWCRLuObK1RjvLJ0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
 ## Who Can Benefit from Speed and How
 
 - **Sellers:**

@@ -8,6 +8,10 @@ sidebar_position: 3
 Only users with **Admin permissions** can generate new API keys.
 :::
 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/1g-NisQ2IKE?si=UDmuzve3TEkfQlq-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
 You can follow these steps to create a new API key for your Organization:
 
 1. **Provide a Name and Description**: Enter a name and description for your new API key. This helps in organizing and identifying different keys.

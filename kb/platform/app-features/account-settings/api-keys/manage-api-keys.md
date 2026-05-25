@@ -10,9 +10,6 @@ An **API key** is a unique alphanumeric identifier used to authenticate requests
 
 In the **API Keys** section, you can manage and view the API keys configured for your Organization, including details such as their creation dates and the ability to generate new ones.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/1g-NisQ2IKE?si=UDmuzve3TEkfQlq-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-
 To manage your Organization’s API keys, follow these simple steps:
 
 1. **Log into Travelgate**: Start by logging into your [Travelgate account](https://www.travelgate.com/).

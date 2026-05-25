@@ -10,15 +10,11 @@ sidebar_position: 2
 
 You can verify the allotment, prices, and conditions loaded by hoteliers in the **[Calendar section](/docs/apps/inventory/extranet/availability-and-rates/calendar-and-availability)**.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/_bcKWNE0QXA?si=0JL1YiRWhUUANnny" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
 ## Loading Discounts and Offers
 
 To configure discounts, offers, and supplements, use the **[Manual Load section](/docs/apps/inventory/extranet/availability-and-rates/manual-load/overview)**.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/6hPP00NPcis?si=j-2EJkhiKSNm11BY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/WGFGMW-c3B8?si=_dBDW6ODX2UApPGz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Inventory Duration & Limitations
 

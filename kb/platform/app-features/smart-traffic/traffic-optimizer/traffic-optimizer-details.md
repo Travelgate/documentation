@@ -10,8 +10,6 @@ Searching for availability in hotels that don't convert isn't just inefficient�
 
 At Travelgate, we understand the impact of handling **useless traffic** across the entire connectivity chain. That’s why we’ve developed **Traffic Optimizer**, an intelligent solution that enhances connection efficiency within our Marketplace.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/3383vV-Ggu8?si=G9pmQ_bw72KeMmUM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
 ## Who Can Activate Traffic Optimizer?
 
 Both **Buyers and Sellers** can enable Traffic Optimizer within Travelgate. It’s available for every connection regardless of the API used by the Buyer—it works with both the **Hotel-X API and the Legacy API**.

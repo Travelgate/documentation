@@ -20,8 +20,6 @@ Follow these steps to configure your product in the **Travelgate Inventory** sys
 - If an error occurs during loading, first **verify that the product the Channel Manager is trying to load (including room codes, rate codes, etc.) exactly matches what is defined in your setup**. If there's a mismatch, they should retrieve the latest data and remap accordingly. For example, if a Channel Manager attempts to load prices for a room that doesn’t exist, an error will be returned.
 :::
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/V_nJoDkMOTA?si=VHPDpuanWe5G8AmP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
 ## Destinations in Pull vs. Push Connections
 ### As a Buyer, does the way I retrieve destinations differ?
 **No.** From a technical standpoint, Buyers use the same GraphQL query ([hotelX.destinations](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/destinations#query-overview)) regardless of the Seller connection type. However, the background process varies:

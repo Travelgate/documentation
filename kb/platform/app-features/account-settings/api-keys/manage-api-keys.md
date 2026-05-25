@@ -8,7 +8,7 @@ sidebar_position: 2
 
 An **API key** is a unique alphanumeric identifier used to authenticate requests to Travelgate’s APIs, such as the **Hotel-X Pull Buyers API**. The API key must be included in the **HTTP Authorization** header to verify the requestor’s identity and authenticate the user agent with the server.
 
-In the **API Keys** section, you can manage and view the API keys configured for your Organization, including details such as their creation dates and the ability to generate new ones.  
+In the **API Keys** section, you can manage and view the API keys configured for your Organization, including details such as their creation dates and the ability to generate new ones.
 
 To manage your Organization’s API keys, follow these simple steps:
 

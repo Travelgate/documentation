@@ -12,6 +12,9 @@ Our goal has always been to make connecting with a Partner easier and faster.
 - Both **Buyers and Sellers** can request a connection.
 - **Having a commercial contract with Travelgate** is essential to request a new connection.
 - **Activations of connections with Channel Managers via Travelgate** should always be requested by the Buyers, not the Channel Managers themselves.
+- **Each Seller may have different access credential requirements** depending on their system specifications. Some may require only basic fields, while others require additional data or specific URL endpoints for methods such as Search, Quote, or Book. Seller authentication may rely on a username and password or a Seller-generated API key (**not to be confused with the [Travelgate API Key](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials#api-key)** used to authenticate Travelgate users).
+- All access details must be provided and **confirmed by each Seller**.
+- Make sure your credentials are active and **fully functional before proceeding**, as using inactive credentials can cause delays.
 :::
 
 ## How Can I Request a New Connection?
@@ -29,12 +32,6 @@ Our goal has always been to make connecting with a Partner easier and faster.
     - **Step 2 (Access Configuration)**: Assign a unique name to your access (e.g., B2B or B2C) and specify the environment as either Test or Live. Then, complete the form using the credentials and connection parameters provided by the Seller, along with any necessary Travelgate Connection Parameters.
 
         <img src="https://storage.travelgate.com/kbase/autoconnections_step3_2.png" alt="quickguide_to_autoconnections_step3_2" width="500" />
-        
-        :::info
-        - **Each Seller may have different access credential requirements** depending on their system specifications. Some may require only basic fields, while others require additional data or specific URL endpoints for methods such as Search, Quote, or Book. Supplier authorization may rely on a username and password or a Supplier-generated API key (**not to be confused with the [Travelgate API Key](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials#api-key)** used to authenticate Travelgate users).
-        - All access details must be provided and confirmed by each Seller.
-        - Make sure your credentials are active and fully functional before proceeding, as using inactive credentials can cause delays.
-        :::
 
     - **Step 3 (Notification Setup)**: Notifications are **sent by default to the "Tech Support Contact" email address**, which is set up in ["Users & Contacts Management"](/kb/platform/app-features/account-settings/users-management/add-users#how-to-add-users-to-your-organization). You can also specify additional contact emails to receive notifications that the connection has been created and is ready for use, provided those emails are **already registered within the Travelgate platform**.
 

@@ -18,7 +18,7 @@ What you will learn in this guide:
 
 Sellers use this section to **validate or invalidate suggested mappings** between their own hotel and board codes and Travelgate’s master FastX codes.
 
-![tg-fastx-sellers-1](https://stplaformwe.blob.core.windows.net/kbase/tg-fastx-sellers-1.png)
+![fastx-sellers-1](https://stplaformwe.blob.core.windows.net/kbase/fastx-sellers-1.png)
 
 ### Step-by-Step Guide
 
@@ -36,31 +36,52 @@ Sellers use this section to **validate or invalidate suggested mappings** betwee
 ### Ways to Validate or Invalidate
 
 * **Individually:** Use buttons in the status column for each pairing.
-  ![tg-fastx-sellers-2](https://stplaformwe.blob.core.windows.net/kbase/tg-fastx-sellers-2.png)
+  ![fastx-sellers-2](https://stplaformwe.blob.core.windows.net/kbase/fastx-sellers-2.png)
 
 * **In Group:** Select multiple pairings with checkboxes and apply actions with the buttons above the table.
-  ![tg-fastx-sellers-3](https://stplaformwe.blob.core.windows.net/kbase/tg-fastx-sellers-3.png)
+  ![fastx-sellers-3](https://stplaformwe.blob.core.windows.net/kbase/fastx-sellers-3.png)
 
 * **Bulk via CSV:** Use the "Bulk Hotel Validation" button and download the hotel data and mapping, change the 'status' column to validate or invalidate, and upload for processing.
-  ![fastx-seller-validation-bulk-csv](https://stplaformwe.blob.core.windows.net/kbase/fastx_codes_seller_mode_validation3.png)
+  ![fastx-sellers-4](https://stplaformwe.blob.core.windows.net/kbase/fastx-sellers-4.png)
 
-### Understanding the Yellow Warning Icon in the FastX Validation Tool
+### Seller Interface at a Glance
 
-The Yellow Warning Icon indicates a **lower FastX match confidence score** based on system-wide data analysis.
+The FastX Codes Seller screen combines KPIs, validation progress, and quality signals so you can review mappings in one place.
+
+#### 1. Visual Summary Cards
+
+* **Total Hotels:** Total number of hotels from your portfolio that have been successfully mapped to a FastX code.
+* **Validated:** Hotels where you have confirmed the mapping is correct.
+* **Pending:** Mapped hotels awaiting your review. These properties need your confirmation to ensure accuracy for your Buyers.
+* **Invalidated:** Hotels marked as incorrectly mapped. To protect booking quality, these properties are excluded from the booking flow until they are re-mapped.
+
+Use these cards first to understand your current mapping status before applying filters or reviewing individual rows.
+
+#### 2. Badge Progress Indicator
+
+The circular **% Validated** indicator shows your validation progress and badge eligibility.
+
+**Earn your FastX Verified Seller badge!**
+Reach **80% validation** to unlock your verified badge, gain higher visibility, and improve your ranking in the Travelgate Network to build stronger trust with Buyers.
+
+#### 3. Confidence Level Filter and Warning Icon
+
+Use the **Confidence Level** filter to focus on low-confidence matches.
+These hotels are marked with a yellow icon by the mapping engine so you can prioritize manual review.
 
 ![tg-fastx-yellow-flag](https://storage.travelgate.com/kbase/tg-fastx-yellow-flag.png)
 
-#### How It Works
+The yellow warning icon indicates a **lower FastX match confidence score** based on system-wide data analysis.
 
-This metric analyzes all Sellers mapped to a specific FastX code. If the data deviates significantly across the network, the system flags a potential mismatch between the FastX content and the Seller’s information.
+#### How the Confidence Signal Works
 
-#### Action Required (Production Requirement)
+This metric analyzes all Sellers mapped to a specific FastX code. If the data deviates significantly across the network, the system flags a potential mismatch between the FastX content and the Seller's information.
+
+#### Required Action for Low-Confidence Matches
 
 To ensure data integrity, any match marked with this icon **must be manually validated** before it can enter the production environment.
 
-#### Key Takeaways
-The yellow warning is a signal to **pay special attention** to the entry—it does not automatically mean the match is incorrect.
-The icon will remain visible even after validation because it reflects a collective data trend, not a single user's action.
+The warning icon is a signal to **pay special attention** to the entry. It does not automatically mean the match is incorrect, and it can remain visible after validation because it reflects a collective data trend across the network.
 
 
 ### Important Notes
@@ -69,7 +90,7 @@ The icon will remain visible even after validation because it reflects a collect
 * New hotels or significant updates in your hotel list information automatically set the status to **Pending** and require re-validation.
 * Check both hotel and board mappings.
 
-![tg-fastx-sellers-4](https://stplaformwe.blob.core.windows.net/kbase/tg-fastx-sellers-4.png)
+![fastx-sellers-5](https://stplaformwe.blob.core.windows.net/kbase/fastx-sellers-5.png)
 
 
 ### FAQs

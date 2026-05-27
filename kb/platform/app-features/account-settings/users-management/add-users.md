@@ -39,6 +39,9 @@ Follow these steps to invite new users to your Organization:
 		![tg-invite-user-1](https://storage.travelgate.com/kbase/tg-invite-user-1.png)
 		- **Step 2: User Data**     
 		First Name, Last Name, and Job Title are mandatory. If the system detects that the user already exists in Travelgate, a warning banner will appear indicating you can add them to your Organization by specifying their job title and name, and last name will be automatically pre-filled.
+
+			#### How to Assign a Contact User to Receive Notifications from Travelgate
+
 			- **Notification Assignment:** You can assign this contact to receive notifications from Travelgate (Buyer or Seller) by checking:
 				- Commercial decision maker
 				- Technical Support contact

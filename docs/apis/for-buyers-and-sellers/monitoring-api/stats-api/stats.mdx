@@ -178,7 +178,19 @@ The `groupBy` input defines how the returned data will be aggregated.
 * `data`: Fields by which to group the results (e.g., `OPERATION_TYPE`, `BUYER`, `SELLER`).
 * `time`: Temporal grouping like `MINUTE`, `HOUR`, `DAY`, `MONTH`.
 
-#### C. Enum Reference
+#### C. Obtaining Filter Values (Equivalences)
+
+If you need to fetch a dynamic list of valid values to populate your Stats filters, use the following equivalence table to find them via the [Admin API](https://docs.travelgate.com/docs/apis/for-buyers-and-sellers/admin-api/overview):
+
+| Stats Filter Input | What it Represents | How to obtain it via Admin API |
+|---|---|---|
+| `buyer_in` | Buyer Organization Code | Query your Buyers list to retrieve the `orgCode` |
+| `seller_in` | Seller Organization Code | Query your Sellers list to retrieve the `orgCode` |
+| `access_in` | Access Code | Query your Connections/Accesses to retrieve the `code` |
+| `client_in` | Client Code | Query your Clients to retrieve the `code` |
+| `supplier_in` | Supplier Code | Query your Suppliers to retrieve the `code` |
+
+#### D. Enum Reference
 
 ##### Data Grouping Fields (StatsDataGroupBy)
 

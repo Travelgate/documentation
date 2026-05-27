@@ -88,7 +88,6 @@ Yes, **`clientReference` should be unique** for each booking to maintain data in
 While you _can_ technically send the same `clientReference` across multiple Book requests, it is **not recommended** to treat separate Travelgate bookings as a single logical entity. In the Travelgate ecosystem, the Booking/Option is the atomic unit of a transaction. This means:
 - **Cancellation is Absolute:** You cannot cancel individual rooms within a single Travelgate booking via Cancel mutation. Cancellation always applies to the entire option/booking.
 - **Independent Policies:** Each booking has its own status, cancellation deadlines, and penalty calculations.
-- **Reconciliation:** Travelgate and Sellers reconcile data per booking. If one internal ID maps to two Travelgate bookings, automated reconciliation may show discrepancies or partial failures that are difficult to track.
 
 ### What are the risks of using one reference for multiple Travelgate bookings?
 If your system groups two separate Travelgate bookings under one internal ID, you may encounter the following issues:

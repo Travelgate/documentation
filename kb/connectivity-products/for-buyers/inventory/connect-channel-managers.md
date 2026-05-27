@@ -34,7 +34,7 @@ If your situation matches either of these use cases and you require an additiona
 
 6. **Access and Configuration:** Once activation is complete, we will provide the necessary access credentials and configuration settings to connect via API and use the Inventory Extranet.
 
-7. **Learn with Travelgate Resources:** After gaining access, enhance your knowledge by watching [Travelgate Academy videos](https://www.youtube.com/watch?v=V_nJoDkMOTA) and reviewing our [Extranet Documentation](/docs/apps/inventory/extranet/overview) to get familiar with available features.
+7. **Learn with Travelgate Resources:** After gaining access, review our [Extranet Documentation](/docs/apps/inventory/extranet/overview) to get familiar with available features.
 
 8. **Create a Pilot Hotel:** Set up a pilot hotel to perform product loading tests. For step-by-step instructions, refer to the [Setup section](/docs/apps/inventory/extranet/set-up/overview) in our documentation. To simplify the transition to the live phase, we recommend using a **real hotel** intended for your portfolio and performing all tests via the ClientTest (CTEST) client.
 

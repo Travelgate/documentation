@@ -153,7 +153,7 @@ For credit card payments (only available for amounts under 1,000 EUR), select th
   - "UNKNOWN" bookings.
   - "ON_REQUEST" bookings.
   - "CANCELLED" bookings without cancellation costs.
-
+  
 #### Examples of Booking Fee Application:
 The following table uses examples from a standard billing CSV Bookings locator report to clarify exactly when and how the booking fee is applied based on the booking status and associated costs:
 

@@ -65,11 +65,11 @@ Since this error indicates a discrepancy or issue with the validation process, c
                 "auditData" : null,
                 "context" : "xxx",
                 "options" : null,
-                "errors" : [
+                "errors": [
                     {
-                        "code" : "ACCESS_ERROR",
-                        "type" : "VALIDATION_ERROR",
-                        "description" : "this group does not have execution permission over src"
+                        "code": "ACCESS_ERROR",
+                        "type": "VALIDATION_ERROR",
+                        "description": "this user does not have execution permission over search"
                     }
                 ],
                 "warnings" : null

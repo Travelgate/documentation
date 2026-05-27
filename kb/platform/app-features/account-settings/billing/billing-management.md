@@ -148,7 +148,7 @@ For credit card payments (only available for amounts under 1,000 EUR), select th
 **The CSV Bookings locator contains all transactions processed through our platform for the selected month**. However, the booking fee is only applied based on the **status of the reservation in our Platform**:
 - **Booking Fee Applied:** 
   - Bookings with "OK" status.
-  - "CANCELLED" bookings with cancellation costs. (Important: In these cases, the booking fee is calculated based strictly on the cancellation cost, which corresponds directly to the cancellation policy of the reservation returned in Quote response. If a cancellation cost exists, the fee applies).
+  - "CANCELLED" bookings with cancellation costs: If a cancellation cost exists, the booking fee applies. This fee is calculated exclusively from the cancellation cost, as defined by the policy in the Quote response.
 - **Booking Fee NOT Applied:** 
   - "UNKNOWN" bookings.
   - "ON_REQUEST" bookings.

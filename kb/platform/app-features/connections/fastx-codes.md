@@ -177,7 +177,17 @@ The warning icon is a signal to **pay special attention** to the entry. It does 
     </div>
 </details>
 
+<details>
+  <summary>What happens if a board cannot be mapped in FastX?</summary>
 
+  When FastX processes boards:
+  * **Mapped Boards:** If a Seller's board maps successfully to a FastX code, it is processed and made available to Buyers.
+  * **Unmapped Boards:** If a board cannot be mapped, the system ignores it entirely, including any options the Seller returns under that board. Consequently, no availability will be returned for those specific options.
+
+  :::warning Recommendation for Sellers
+  To prevent availability issues for your Buyers, **keep board names and texts strictly focused on standard meal plans** (e.g., Half Board, All Inclusive). Do not include occupancy details, promotions, or any other non-board information.
+  :::
+</details>
 
 
 ## For Buyers

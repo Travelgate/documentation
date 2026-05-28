@@ -988,3 +988,14 @@ For certification cases, you can use the following credentials and hotel:
 - **Apikey:** "Apikey test0000-0000-0000-0000-000000000000".
 - **Client:** “client_demo”.
 - **Hotel:** "BR1518".
+
+### What credentials should I use when moving to the production environment?
+
+Once you complete the Hotel-X certification process and transition to the production environment, you must **update your connection credentials**. 
+
+During the certification phase, you utilize the [test API Key and Client](/kb/getting-started/hotel-x-certification#which-credentials-and-hotels-can-i-use-for-certification-cases) provided by Travelgate. To successfully process live requests, you must **replace these test credentials with your own**:
+
+* **API Key:** Replace the Travelgate test API Key with your [assigned Buyer production API Key](/kb/platform/app-features/account-settings/api-keys/manage-api-keys).
+* **Client:** Replace the Travelgate client_demo with your [production Client identifier](/kb/platform/app-features/connections/api-settings).
+
+Ensure these parameters are updated in your request headers before initiating any live traffic to avoid authentication and [validation errors](/kb/connectivity-products/for-buyers/errors-and-warnings/validation-error).

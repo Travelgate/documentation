@@ -39,7 +39,7 @@ In the **Connections Content** section, you can easily check and force updates f
     - Hotel Address
     - Hotel code
     - Original supplier hotel code (if applicable)
-    - Giata ID
+    - GIATA ID
     - Phone
     - Fax
     - Email
@@ -87,7 +87,7 @@ The information displayed on the Connections Content screen **depends on the dat
     - Address
     - City
     - Category code
-    - Giata ID
+    - GIATA ID
     - Last Update
 
 

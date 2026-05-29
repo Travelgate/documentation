@@ -80,7 +80,7 @@ Please add **only** these IPs (Updated on 2024-10-29):
 | 108.143.13.154         |
 | 141.105.105.232        |  
 
-### Fixed IP List as a Channel-X Buyer
+### Fixed IP List as a ChannelX Buyer
 Please add **only** these IPs (Updated on 2024-10-03):
 
 | **Single IP Address or CIDR Range**         |    

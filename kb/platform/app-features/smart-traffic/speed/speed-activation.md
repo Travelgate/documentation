@@ -24,7 +24,7 @@ To configure Speed for a connection or one of your accesses, click on **'Speed a
 Choose the **connection**/**access** where you want to activate caching.
 
 :::warning Important:
-- For **Hotel-X Buyers**, always select **Access**.
+- For **HotelX Buyers**, always select **Access**.
 - For **Legacy Buyers**, always select **Connection**.
 :::
 
@@ -63,7 +63,7 @@ To monitor improvements in response time and traffic reduction, select **"View D
 
 ## Can I skip cache for a specific request when Speed is active?
 
-Yes. Buyers can skip the cache for a specific request by setting the `useCache` parameter to `false` in the request configuration. This feature is **available for both Legacy and Hotel-X Buyers**.
+Yes. Buyers can skip the cache for a specific request by setting the `useCache` parameter to `false` in the request configuration. This feature is **available for both Legacy and HotelX Buyers**.
 
 
 | Parameter Key | Type   | Possible Values | Description                                                                 |
@@ -71,10 +71,10 @@ Yes. Buyers can skip the cache for a specific request by setting the `useCache` 
 | `useCache`    | string | `false`         | When set to `false`, bypasses the cache and forwards the request to the Seller. |
 
 
-**'useCache' for Hotel-X Buyers:**  
-Buyers using the Hotel-X Buyers Pull API **must include the `AddParameter` plugin** to enable the 'useCache' functionality. More details [here](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/add-parameter).
+**'useCache' for HotelX Buyers:**  
+Buyers using the HotelX Buyers Pull API **must include the `AddParameter` plugin** to enable the 'useCache' functionality. More details [here](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/add-parameter).
 
 :::warning Important
-To use this feature for your connection (either **Legacy** or **Hotel-X**), you must first activate it. Otherwise, the **`useCache`** parameter will have no effect.  
+To use this feature for your connection (either **Legacy** or **HotelX**), you must first activate it. Otherwise, the **`useCache`** parameter will have no effect.  
 You can activate this feature through our [Travelgate website](https://app.travelgate.com/smart-traffic/speed) by editing the configuration.
 :::

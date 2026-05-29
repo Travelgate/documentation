@@ -15,18 +15,18 @@ To **edit or update an access**, follow these simple steps:
 ![edit_access_2](https://storage.travelgate.com/kbase/edit_access_2.jpg)
 
 :::warning Inventory (Push) Access Code Modifications
-To edit the configuration credentials of an **Inventory (Push) Hotel-X Access Code**, please submit a case through our [Support Portal](/kb/platform/support-portal/how-to-submit-case). This ensures the necessary internal updates are properly handled.
+To edit the configuration credentials of an **Inventory (Push) HotelX Access Code**, please submit a case through our [Support Portal](/kb/platform/support-portal/how-to-submit-case). This ensures the necessary internal updates are properly handled.
 :::
 
 ### Connections via Legacy Pull Buyers API
 
-If you are working with connections established through the Legacy Pull Buyers API, please note that updates to credentials (such as Hotel-X Access Codes) must be made in two places:
+If you are working with connections established through the Legacy Pull Buyers API, please note that updates to credentials (such as HotelX Access Codes) must be made in two places:
 
 1. **My Connections** – Edit the access at the access level.
 2. **Buyer's System** – Update the legacy configuration stored on the buyer's end to ensure consistency across both systems.
 
-Simply updating the Hotel-X Access Code in My Connections will not be sufficient.
+Simply updating the HotelX Access Code in My Connections will not be sufficient.
 
 :::info
-As a Seller, you can check if your Buyers are using the Hotel-X Pull Buyers API by inspecting the label on their Buyer card in the [My Connections](https://yoururl.com/kb/platform/app-features/connections/my-connections/managing-connections/connections-details#what-can-i-find-in-my-connections) section.
+As a Seller, you can check if your Buyers are using the HotelX Pull Buyers API by inspecting the label on their Buyer card in the [My Connections](https://yoururl.com/kb/platform/app-features/connections/my-connections/managing-connections/connections-details#what-can-i-find-in-my-connections) section.
 :::

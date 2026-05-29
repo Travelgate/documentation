@@ -45,12 +45,12 @@ You can filter your connections using the following parameters:
 
 - **Access Active Status**:  
   - **Yes**: The access is active and operational.  
-  - **No**: The access is inactive, meaning no further Hotel-X requests will be processed. **Note**: Deactivating an access may take time to fully propagate through the system.  
+  - **No**: The access is inactive, meaning no further HotelX requests will be processed. **Note**: Deactivating an access may take time to fully propagate through the system.  
 
    ![tg_filter_results](https://storage.travelgate.com/kbase/tg_filter_results.jpg)  
 
 ### **Additional Access Information**  
-- **Hotel-X Access Code**: Unique identifier for the access.  
+- **HotelX Access Code**: Unique identifier for the access.  
 - **Supplier Code**: The Supplier's specific code for that access.  
 - **Access Name**: Name identifier for the access.  
 - **Partner Name**: The Partner connected via the access (Buyer or Seller).  
@@ -58,13 +58,13 @@ You can filter your connections using the following parameters:
 - **Accommodations**: Number of properties available for that access.  
 - **Context Code**: Check the [content codes](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials#context) used.  
 
-- **Buyer Integration Type**: If you're a Seller, you can check if your Buyer is integrated via the **Hotel-X API** or the **Legacy Pull Buyers API**. If using **Hotel-X**, a label will be displayed.  
+- **Buyer Integration Type**: If you're a Seller, you can check if your Buyer is integrated via the **HotelX API** or the **Legacy Pull Buyers API**. If using **HotelX**, a label will be displayed.  
 
    ![tg-my-connections-buyer-integration-type](https://storage.travelgate.com/kbase/tg-my-connections-buyer-integration-type.png)  
    ![tg-my-connections-fastx-supplier](https://storage.travelgate.com/kbase/tg-my-connections-fastx-supplier.png)
 
 :::tip  
-Still using our Legacy Pull Buyers API? **Upgrade to [Hotel-X API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart)** to access enhanced features!  
+Still using our Legacy Pull Buyers API? **Upgrade to [HotelX API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart)** to access enhanced features!  
 :::  
 
 ### Download CSV

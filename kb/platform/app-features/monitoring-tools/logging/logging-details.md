@@ -19,7 +19,7 @@ By leveraging Logging, you can gain valuable insights into your connection activ
 3. Choose your search method: You can search by **connection, reference, or session ID**.
 4. Apply filters to refine your search:
    - Time range: Up to **2 months**.
-   - Access: Filter by Hotel-X Access (by Name or Code). This filter applies only to **Hotel-X connections**.
+   - Access: Filter by HotelX Access (by Name or Code). This filter applies only to **HotelX connections**.
    - Operation type: Search, Quote, Book, Cancel, Other (e.g. Booking Read, Booking List).  
      - *Note:* The "Search" operation type will only return results if searches have been **[audited first](/kb/platform/app-features/monitoring-tools/logging/audit-searches-functionality)**.
    - Status/Error code: Select specific errors to filter results.
@@ -111,7 +111,7 @@ Use the **Access Filter only for HotelX Connections**. If you apply it to a **Le
     
 
 :::warning Legacy Pull Buyers API Information  
-For Buyer connections through our **Legacy Pull Buyers API**, filtering by **Hotel-X Access Code** is **not available**. Instead, connections are identified through the Buyer's **clientname#suppliercode** relationship.  
+For Buyer connections through our **Legacy Pull Buyers API**, filtering by **HotelX Access Code** is **not available**. Instead, connections are identified through the Buyer's **clientname#suppliercode** relationship.  
 
 Some Buyers may be transitioning from the **Legacy Pull Buyers API** to the **HotelX API**, meaning they could have traffic on both APIs. If you're unsure, we strongly recommend **reaching out to your Buyers** for further details.
 :::

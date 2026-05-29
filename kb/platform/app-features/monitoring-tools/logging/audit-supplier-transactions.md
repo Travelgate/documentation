@@ -17,10 +17,10 @@ While this feature is highly useful for your Booking Flow and Booking Management
 If you encounter an error, you can **temporarily** set the `auditTransactions` value to `true` in Search requests. This will provide additional insights into the Supplier's response.
 :::
 
-## Setting the `auditTransactions` Field in a Hotel-X Pull Buyers API Request
-To configure the `auditTransactions` field in your Hotel-X Search request, ensure that both your **Query** and **Query variables** include the necessary settings as shown below.
+## Setting the `auditTransactions` Field in a HotelX Pull Buyers API Request
+To configure the `auditTransactions` field in your HotelX Search request, ensure that both your **Query** and **Query variables** include the necessary settings as shown below.
 
-### Hotel-X Query
+### HotelX Query
 Add the `auditTransactions` field to your `HotelSettingsInput` as follows:
 
 ![logging_audit_transactions_1](https://storage.travelgate.com/kbase/logging_audit_transactions_1.jpg)
@@ -44,7 +44,7 @@ query ($criteriaSearch: HotelCriteriaSearchInput, $settings: HotelSettingsInput,
 }
 ```
 
-### Hotel-X Query Variables
+### HotelX Query Variables
 Include the `auditTransactions` field in your Query settings:
 
 ```json

@@ -36,7 +36,7 @@ To enable VCC payments through Travelgate, follow these steps:
 2. **Submit a case** via our [Support Platform](https://app.travelgate.com/support), including details about your VCC supplier, credentials, and the Sellers for whom you wish to activate VCC payments. Our team will notify you once activation is complete.
 3. **Create and upload your VCC Rules file** to your SFTP.
 4. **Complete the VCC setup**:
-   - **For Hotel-X Pull Buyers API users**: Add the VCC Plugin to your Hotel-X Book and Cancel mutations.
+   - **For HotelX Pull Buyers API users**: Add the VCC Plugin to your HotelX Book and Cancel mutations.
    - **For Distribution Solution users**: Log into the **Distribution Extranet** and configure the "Allow VCC" rule at the agency level.
      
      ![vcc_activation_1](https://storage.travelgate.com/kbase/vcc_activation_1.jpg)

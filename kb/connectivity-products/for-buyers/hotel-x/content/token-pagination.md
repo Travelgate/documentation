@@ -20,7 +20,7 @@ Pagination is available for the following queries:
 
 The token has an expiration time of **4 minutes**, but each time a page request is made, the timer resets. This means the total time allowed depends on the size of the list and the frequency of requests.
 
-### Token-Based Pagination Guide for Hotel-X Pull Buyers API
+### Token-Based Pagination Guide for HotelX Pull Buyers API
 
 To paginate content effectively, follow these steps:
 

@@ -20,7 +20,7 @@ Within **My Connections**, you can perform several actions at the access level:
 
 ## Handling Connections via the Legacy Pull Buyers API  
 
-For Buyers using the **Legacy Pull Buyers API**, managing credential deactivations requires an additional step beyond the **My Connections** section:  
+For Buyers using the **Legacy Pull Buyers API**, managing credential deactivation requires an additional step beyond the **My Connections** section:  
 
 ### **Steps to Disconnect a Legacy API Connection**  
 
@@ -30,7 +30,7 @@ For Buyers using the **Legacy Pull Buyers API**, managing credential deactivatio
 
 2. **Deactivating Specific Credentials**:  
    - Credential management should be handled **directly between the Buyer and Seller** to ensure traffic stops from the Buyer's system.  
-   - Activate or deactivate the **Hotel-X Access Code** accordingly to reflect the actual traffic being sent.  
+   - Activate or deactivate the **HotelX Access Code** accordingly to reflect the actual traffic being sent.  
 
 3. **Seller Actions if Requests Continue**:  
    - If a Seller continues to receive traffic from a deactivated access, contact the Buyer to confirm they have deactivated the credentials on their end.  

@@ -2,19 +2,19 @@
 sidebar_position: 2
 ---
 
-# Channel-X
+# ChannelX
 
-## What is Channel-X? 
+## What is ChannelX? 
 
-**Channel-X** extracts product data loaded by Channel Managers into our [Inventory](/kb/connectivity-products/for-buyers/inventory/inventory-solution) tool and pushes it directly into the system of a Travelgate Partner, typically an OTA (Buyer).
+**ChannelX** extracts product data loaded by Channel Managers into our [Inventory](/kb/connectivity-products/for-buyers/inventory/inventory-solution) tool and pushes it directly into the system of a Travelgate Partner, typically an OTA (Buyer).
 
-With Channel-X, you have full control over when and what product data to refresh. This powerful tool ensures your prices, availability, and inventory stay up to date—acting as the perfect bridge between your system and the Channel Managers you're connected with!
+With ChannelX, you have full control over when and what product data to refresh. This powerful tool ensures your prices, availability, and inventory stay up to date—acting as the perfect bridge between your system and the Channel Managers you're connected with!
 
 :::info Real-time Inventory Updates   
-Channel-X delivers **real-time Inventory updates**, keeping your system synchronized. However, if you prefer, you can also purchase from Channel Managers using our **Hotel-X Pull Buyers API**, giving you the flexibility to choose the best option for your needs.
+ChannelX delivers **real-time Inventory updates**, keeping your system synchronized. However, if you prefer, you can also purchase from Channel Managers using our **HotelX Pull Buyers API**, giving you the flexibility to choose the best option for your needs.
 :::
 
-## Advantages of Using Channel-X 
+## Advantages of Using ChannelX 
 
 1. **Enhanced Pricing Displays** – Store product data on your system to build and display **price calendars**.
 2. **Full Product Synchronization** – Refresh product data whenever you need it.
@@ -22,28 +22,28 @@ Channel-X delivers **real-time Inventory updates**, keeping your system synchron
 
 Seamlessly consolidate contracted products from multiple Channel Managers into your system through a standardized API!
 
-## How to Activate Channel-X 
+## How to Activate ChannelX 
 
-To activate and use Channel-X, consider the following steps:
+To activate and use ChannelX, consider the following steps:
 
-1. **Hotel-X Buyers API Integration**  
-   - Before using Channel-X, you must be connected to our **Hotel-X Buyers API** (as Book mutation is performed through Hotel-X API).
+1. **HotelX Buyers API Integration**  
+   - Before using ChannelX, you must be connected to our **HotelX Buyers API** (as Book mutation is performed through HotelX API).
 
 2. **Setup via Inventory Extranet**  
-   - Since Channel-X integrates with **Inventory**, you need to configure hotel, rate, and room setups using our Inventory Extranet. This enables Channel Managers to map the properties correctly.  
+   - Since ChannelX integrates with **Inventory**, you need to configure hotel, rate, and room setups using our Inventory Extranet. This enables Channel Managers to map the properties correctly.  
    - Find more details on **[Inventory setup](/kb/connectivity-products/for-buyers/inventory/set-up/overview)**.
 
 3. **Inventory Data Reception & Storage**  
    - Once mapped, Channel Managers will load and update availability and pricing for the configured hotels and rates.
 
-4. **Channel-X Data Push to Your System**  
+4. **ChannelX Data Push to Your System**  
    - Every update received from the Channel Manager is pushed directly into your system.
 
 5. **Booking Flow Execution**  
-   - Run your requests and enjoy the seamless functionality of Channel-X!
+   - Run your requests and enjoy the seamless functionality of ChannelX!
 
    ![channel_x](https://storage.travelgate.com/kbase/channel_x.jpg)
 
-:::tip Learn More About Channel-X 📖  
-For detailed information on Channel-X functionalities and API specifications, check out our [Documentation](/docs/apis/for-buyers/channel-x-push-buyers-api/quickstart)!
+:::tip Learn More About ChannelX 📖  
+For detailed information on ChannelX functionalities and API specifications, check out our [Documentation](/docs/apis/for-buyers/channel-x-push-buyers-api/quickstart)!
 :::

@@ -4,7 +4,7 @@ sidebar_position: 22
 
 # PLUGIN_ERROR - Commission Files
 
-## Why Do I Receive This Warning in My Hotel-X Response?
+## Why Do I Receive This Warning in My HotelX Response?
 You will receive a commission warning **"some of the options have been discarded because we don't know if price is gross or net"** when a Supplier does not return the price commission via the integration (it has been established at a contractual level).
 
 ```json

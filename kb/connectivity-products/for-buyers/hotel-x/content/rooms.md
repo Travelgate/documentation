@@ -7,11 +7,11 @@ sidebar_position: 5
 ## What Is the Rooms Query?
 The Rooms Query provides a comprehensive mapping of room types available for a given set of credentials (access), which may include translations into multiple languages. It is important to note that the response object `roomData` is shared with the Hotels Query but may contain different data.
 
-### How Can I Retrieve the Seller's Room List via Hotel-X?
+### How Can I Retrieve the Seller's Room List via HotelX?
 To retrieve the room list, simply follow the specifications outlined in our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/rooms) and build your own Rooms Query. You can also customize the fields you request to ensure you receive only the relevant information.
 
 :::tip
-Explore our [Hotel-X Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/rooms#query-overview) for a complete example of a Rooms Query! 🚀
+Explore our [HotelX Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/rooms#query-overview) for a complete example of a Rooms Query! 🚀
 :::
 
 ## Filtering and Pagination

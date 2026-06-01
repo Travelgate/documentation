@@ -26,7 +26,7 @@ If you're experiencing discrepancies in the content you're receiving, try the fo
 
 1. **Check if the requested method is implemented:** Run a [Metadata query](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata) and review the value of the `implemented` field.
 
-2. **Verify Access Credentials**: Ensure that your [Hotel-X Access Code](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details) is active and that its credentials (user, password, URLs, etc.) match those configured by the Seller in their system. If you are using our Legacy Pull Buyers API, ensure that your request configuration includes the "HotelXAccessCode" parameter.
+2. **Verify Access Credentials**: Ensure that your [HotelX Access Code](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details) is active and that its credentials (user, password, URLs, etc.) match those configured by the Seller in their system. If you are using our Legacy Pull Buyers API, ensure that your request configuration includes the "HotelXAccessCode" parameter.
 
 3. **Reach Out to the Seller**: Confirm that the Seller is sending all the necessary information, including any required fields for integration.
 
@@ -40,7 +40,7 @@ If you're receiving an error or an empty response while downloading content, try
 
 1. **Check if the requested method is implemented:** Run a [Metadata query](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata) and review the value of the `implemented` field.
 
-2. **Verify Your Credentials**: Ensure that the credentials in your request (e.g., Hotel-X Access Code or Legacy Configuration) are active and working properly.
+2. **Verify Your Credentials**: Ensure that the credentials in your request (e.g., HotelX Access Code or Legacy Configuration) are active and working properly.
 
 3. **Check API Request Compliance**: Make sure that your request adheres to our API requirements. If you're querying hotel information for portfolios with concatenated hotel codes, ensure the codes are included with the proper concatenation. For more details, read about [concatenated hotel codes here](/kb/connectivity-products/for-buyers/hotel-x/content/hotels/#what-is-the-difference-between-hotelcode-and-hotelcodesupplier).
 

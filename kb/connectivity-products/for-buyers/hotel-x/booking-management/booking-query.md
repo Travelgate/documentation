@@ -6,7 +6,7 @@ sidebar_position: 2
 
 ## Booking Query
 
-The Hotel-X **Booking Query** operation allows you to retrieve specific reservation details (Booking Read) or a list of reservations made within a specified time frame (Booking List).
+The HotelX **Booking Query** operation allows you to retrieve specific reservation details (Booking Read) or a list of reservations made within a specified time frame (Booking List).
 
 ## What Information Can I Expect in the Booking Query Response?
 
@@ -19,7 +19,7 @@ Some of the key fields returned in the Booking Query response include:
 - **Status**
 
 :::info
-- For a complete list of available fields, please visit our [Hotel-X Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/booking-read) and explore the GraphQL Playground.  
+- For a complete list of available fields, please visit our [HotelX Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/booking-read) and explore the GraphQL Playground.  
 - Keep in mind that the information provided in the Booking Query response can vary by Seller. If you require specific fields, we encourage you to contact the Seller directly.
 :::
 
@@ -33,7 +33,7 @@ The fields available for querying may vary across Sellers. You can verify the fi
 - **"reviewDate"** – Shows the last date the field value was verified against the Seller.
 
 :::info
-If you are not using the Hotel-X `bookingID` input, ensure you specify your **accessCode** in the `HotelCriteriaBookingInput`. While the language parameter is optional, including it is recommended for optimal results.
+If you are not using the HotelX `bookingID` input, ensure you specify your **accessCode** in the `HotelCriteriaBookingInput`. While the language parameter is optional, including it is recommended for optimal results.
 :::
 
 
@@ -101,5 +101,5 @@ To obtain a list of all reservations made within a specific time frame, perform 
 To retrieve a booking list (by booking or arrival dates) for **all the suppliers associated with a specific client**, ensure the `accessCode` field is omitted from your request.
 
 :::tip
-Don't forget to check our [Hotel-X Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/booking-read#1-criteria) for a full example of a Hotel-X Booking Query!🚀
+Don't forget to check our [HotelX Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/booking-read#1-criteria) for a full example of a HotelX Booking Query!🚀
 :::

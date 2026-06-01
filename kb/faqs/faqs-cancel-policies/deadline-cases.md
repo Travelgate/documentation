@@ -69,4 +69,4 @@ Given the following cancellation policies for a booking with check-in on **2025-
 
 - **Before 2025-11-02 09:00 UTC** → No penalty applies.
 - **From 2025-11-02 09:00 UTC to 2025-11-16 09:00 UTC** → Penalty of **€431.96**.
-- **From 2025-11-16 09:00 UTC onwards** → Penalty of **€863.92**.
+- **From 2025-11-16 09:00 UTC onward** → Penalty of **€863.92**.

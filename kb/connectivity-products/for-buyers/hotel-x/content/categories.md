@@ -7,13 +7,13 @@ sidebar_position: 6
 ## What Is the Categories Query?
 The Categories Query retrieves the list of categories associated with a given set of credentials (access), such as "5 stars," "1 key," and others.
 
-### How Can I Retrieve the Seller's Category List via Hotel-X?
+### How Can I Retrieve the Seller's Category List via HotelX?
 You can easily retrieve the category list by following the specifications outlined in our [API Playground](/playground) and creating your own Categories Query. 
 
 Additionally, you can **customize** the fields requested to receive only the information relevant to your business needs.
 
 :::tip
-Check out our [Hotel-X Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/categories#query-overview) for a full example of a Categories Query. 🚀
+Check out our [HotelX Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/categories#query-overview) for a full example of a Categories Query. 🚀
 :::
 
 ## Filtering and Pagination
@@ -50,5 +50,5 @@ Additionally, when connecting with a new Seller, you have the flexibility to map
 No, the Categories Query response contains all the categories that a Seller has configured for your account. However, availability may vary based on your search criteria, such as specific dates or distribution requests.
 
 :::tip
-For further details on the Hotel-X Categories Query, don't forget to check our [API Playground](/playground). 🚀
+For further details on the HotelX Categories Query, don't forget to check our [API Playground](/playground). 🚀
 :::

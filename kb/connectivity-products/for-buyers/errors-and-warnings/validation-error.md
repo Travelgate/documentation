@@ -5,7 +5,7 @@ sidebar_position: 20
 # VALIDATION_ERROR
 
 ## What Does a "VALIDATION_ERROR" Mean? 
-A **"VALIDATION_ERROR"** occurs when the validation information provided in your Hotel-X request does not match the information set for your account or is invalid for that specific request.
+A **"VALIDATION_ERROR"** occurs when the validation information provided in your HotelX request does not match the information set for your account or is invalid for that specific request.
 
 ## What Can I Do If I Receive a "VALIDATION_ERROR"? 
 Since this error indicates a discrepancy or issue with the validation process, check the following:
@@ -15,7 +15,7 @@ Since this error indicates a discrepancy or issue with the validation process, c
 - **Verify Access Type (Test/Live)**
   - Ensure that the "testMode" tag in your request matches the Test/Live settings for that specific access.
 - **Verify Client**
-  - The client specified in your request must be active and configured for your account. If you’ve set custom permissions for a client (e.g., limited access to specific accesses), **ensure the client used in your request aligns with those permissions**. Otherwise, update either your request or the client configuration accordingly. More details on Hotel-X Clients can be found [here](/kb/platform/app-features/connections/api-settings/).
+  - The client specified in your request must be active and configured for your account. If you’ve set custom permissions for a client (e.g., limited access to specific accesses), **ensure the client used in your request aligns with those permissions**. Otherwise, update either your request or the client configuration accordingly. More details on HotelX Clients can be found [here](/kb/platform/app-features/connections/api-settings/).
 - **Verify Supplier**
   - The supplier specified in your request must be active and configured for your account. You can review this information in the [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details) section.
 - **Verify API Key**
@@ -32,7 +32,7 @@ Since this error indicates a discrepancy or issue with the validation process, c
 
 ### VALIDATION_ERROR Examples 
 
-### 1. Incorrect Hotel-X Credentials (e.g., Access, Client, API Key)
+### 1. Incorrect HotelX Credentials (e.g., Access, Client, API Key)
 - **"ACCESS_ERROR"; "VALIDATION_ERROR"**
 ```json
 {

@@ -5,7 +5,7 @@ sidebar_position: 4
 # Boards
 
 :::info
-In Hotel-X API, **boards** refer to meal plans. If you're transitioning from the Legacy Pull Buyers API, note that the MealPlan List method has been replaced with the Boards Query in Hotel-X.
+In HotelX API, **boards** refer to meal plans. If you're transitioning from the Legacy Pull Buyers API, note that the MealPlan List method has been replaced with the Boards Query in HotelX.
 :::
 
 ## What Is the Boards Query?
@@ -16,11 +16,11 @@ The Boards Query provides two key pieces of information:
 2. **Supplier Board Data** – the board codes and descriptions for a specific Supplier and access, showing how their boards map to the standardized FastX list.
 
 
-### How Can I Retrieve the Seller's Board List via Hotel-X?
+### How Can I Retrieve the Seller's Board List via HotelX?
 To retrieve the board list, simply follow the specifications outlined in our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/boards) and build your own Board queries. You can also customize the fields you request to ensure you receive only the relevant information.
 
 :::tip
-Explore our [Hotel-X Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/boards#query-overview) for a complete example of a Boards Query! 🚀
+Explore our [HotelX Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/boards#query-overview) for a complete example of a Boards Query! 🚀
 :::
 
 ## Filtering Board Queries
@@ -52,7 +52,7 @@ This lets you work directly with FastX codes — consistent across all Suppliers
 
 ## Availability Considerations
 
-### Does the Presence of a Board in the Hotel-X Boards Query Guarantee Its Availability During a Search?
+### Does the Presence of a Board in the HotelX Boards Query Guarantee Its Availability During a Search?
 No, the Boards Query response provides a list of all board types configured by the Seller for your account. However, availability may vary based on your requested dates and distribution criteria. Some boards may not be available for specific searches.
 
 :::tip

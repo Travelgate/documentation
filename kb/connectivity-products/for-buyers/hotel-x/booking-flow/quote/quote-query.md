@@ -12,7 +12,7 @@ The information returned in the Quote response may vary depending on the Seller.
 Always rely on the **Quote response** for valid cancellation penalties. These take precedence over other methods (Search, Booking Query, or Cancel) regardless of whether they return policy data. Because this information is not guaranteed in subsequent responses, the Quote response should be stored as the authoritative source before finalizing a reservation.
 :::
 
-To ensure you receive the necessary data, refer to our [Hotel-X API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart) to include the required fields (such as price, cancellation policies, rooms, status, etc.) in your request. Additionally, review the [Metadata](/kb/connectivity-products/for-buyers/hotel-x/content/metadata) of your Sellers to understand their specifications for this method.
+To ensure you receive the necessary data, refer to our [HotelX API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart) to include the required fields (such as price, cancellation policies, rooms, status, etc.) in your request. Additionally, review the [Metadata](/kb/connectivity-products/for-buyers/hotel-x/content/metadata) of your Sellers to understand their specifications for this method.
 
 ## Status in Quote Response
 

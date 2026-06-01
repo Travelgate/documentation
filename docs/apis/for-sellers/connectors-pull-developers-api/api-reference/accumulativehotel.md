@@ -7,7 +7,7 @@ Represents an accumulative hotel object.
 | Name | Type | Description |
 |------|------|-------------|
 | **Code** | String | Hotel code. This code may have concatenated information. |
-| **NativeSupplierCode** | String | Native supplier code, without any concatenations. This code will be used to retrieve Giata information. |
+| **NativeSupplierCode** | String | Native supplier code, without any concatenations. This code will be used to retrieve GIATA information. |
 | **Name** | String | Hotel name. |
 | **CategoryCode** | String | Category code. |
 | **ChainCode** | String | Hotel chain code. |

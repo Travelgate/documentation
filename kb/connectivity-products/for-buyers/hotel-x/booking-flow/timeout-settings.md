@@ -21,10 +21,10 @@ If you specify a timeout that exceeds the recommended values, our system will au
 
 :::warning Scenario: Timeout Capping and Handler_timeout errors
 To understand why this error occurs, consider what happens when your settings exceed allowable limits.  
-For example, if you set a 28,000ms timeout for a Search request, our system will cap it at the 25,000ms limit. If Hotel-X cannot provide a response within the 28,000ms window (your timeout), you will receive a **HANDLER_TIMEOUT**. If you want to avoid this error, **we recommend reducing the request timeout.**.
+For example, if you set a 28,000ms timeout for a Search request, our system will cap it at the 25,000ms limit. If HotelX cannot provide a response within the 28,000ms window (your timeout), you will receive a **HANDLER_TIMEOUT**. If you want to avoid this error, **we recommend reducing the request timeout.**.
 :::
 
-## Setting Timeout Values in Hotel-X Buyers API
+## Setting Timeout Values in HotelX Buyers API
 You can configure timeout values in two ways:
 
 1. **At the request level**, by including the timeout parameter in your query [settings](/api/types/inputs/hotel-settings-input).

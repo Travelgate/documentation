@@ -135,9 +135,9 @@ No, both fields are critical:
 - **Binding = true** + Seller provides MSP → **Minimum Selling Price = Gross**
 - **Binding = false** + No MSP provided → **Pricing flexibility**
 
-## Understanding Commission in Hotel-X and Legacy APIs
+## Understanding Commission in HotelX and Legacy APIs
 
-In Hotel-X, both net and gross prices are provided for easy calculation. In the Legacy Pull Buyers API, only `amount`, `commission`, and `binding` information is available. Example:
+In HotelX, both net and gross prices are provided for easy calculation. In the Legacy Pull Buyers API, only `amount`, `commission`, and `binding` information is available. Example:
 ```xml
 <Price currency="EUR" amount="36.20" binding="false" commission="-1"/>
 ```
@@ -147,7 +147,7 @@ In Hotel-X, both net and gross prices are provided for easy calculation. In the 
 - `commission = -1` → Selling price and commission are not provided by the Seller. The Seller's contract defines the commission, which is handled separately from the integration.
 - `commission > 0` → Percentage commission applied to the amount
 
-Since the Hotel-X API does not include a commission field, you can calculate it using:
+Since the HotelX API does not include a commission field, you can calculate it using:
 ```math
 Gross - Net = Commission
 ```

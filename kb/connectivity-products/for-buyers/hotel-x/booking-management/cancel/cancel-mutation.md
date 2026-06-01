@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Cancel Mutation
 
-You can use the Hotel-X Cancel Mutation to easily cancel a booking made through Travelgate.
+You can use the HotelX Cancel Mutation to easily cancel a booking made through Travelgate.
 
 ## How Can I Cancel a Booking?
 
@@ -52,6 +52,6 @@ If you encounter any issues/errors with the Cancel mutation, feel free to contac
 :::
 
 :::tip
-Don't forget to check our [Hotel-X API Playground](/playground) and [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/cancel) for further information on Cancel Mutation. Interested in learning more about cancellation penalties? Explore our in-depth [articles](/kb/faqs/faqs-cancel-policies/deadline-cases) on the topic!🚀
+Don't forget to check our [HotelX API Playground](/playground) and [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/cancel) for further information on Cancel Mutation. Interested in learning more about cancellation penalties? Explore our in-depth [articles](/kb/faqs/faqs-cancel-policies/deadline-cases) on the topic!🚀
 :::
 

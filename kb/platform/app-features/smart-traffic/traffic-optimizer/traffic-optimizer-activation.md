@@ -106,7 +106,7 @@ Additionally, some hotels are be **temporarily whitelisted** to re-evaluate conv
 :::info
 - All criteria (**No Availability, Zero Bookings, and Not in Portfolio**) can be applied together. However, we recommend **starting with one at a time**.
 - To activate the "Zero Bookings" criteria, the connection/access must have **at least one booking per month for the past six months** (excluding the current month).
-- When a Buyer using **Hotel-X API** requests a blacklisted hotel, the following **error/warning** appears:
+- When a Buyer using **HotelX API** requests a blacklisted hotel, the following **error/warning** appears:
   ```json
   {
       "code": "BLACKLIST",

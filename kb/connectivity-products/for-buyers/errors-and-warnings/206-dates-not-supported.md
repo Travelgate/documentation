@@ -29,5 +29,5 @@ To verify the Seller's date specifications and minimize errors and unnecessary t
 Please ensure the date format for check-in and check-out follows these standards:
 
 - **Legacy Pull Buyers API:** "StartDate" and "EndDate" must be in **dd/mm/yyyy** format.
-- **Hotel-X Pull Buyers API:** "checkIn" and "checkOut" must be in **yyyy-mm-dd** format.
+- **HotelX Pull Buyers API:** "checkIn" and "checkOut" must be in **yyyy-mm-dd** format.
 :::

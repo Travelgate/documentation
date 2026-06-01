@@ -2,11 +2,11 @@
 sidebar_position: 3
 ---
 
-# Hotel-X Credentials
+# HotelX Credentials
 
 ## API Key
 
-An API key is a unique alphanumeric code used for authentication when accessing the Hotel-X API. It must be included in the HTTP Authorization request header to verify and authenticate the user agent with the server. This secure identifier ensures that only authorized users can access API functionalities.
+An API key is a unique alphanumeric code used for authentication when accessing the HotelX API. It must be included in the HTTP Authorization request header to verify and authenticate the user agent with the server. This secure identifier ensures that only authorized users can access API functionalities.
 
 #### How to Find and Manage Your API Keys:
 1. Log in to the [Travelgate App](https://www.travelgate.com/).
@@ -35,13 +35,13 @@ To facilitate testing, [these accesses](/docs/apis/for-buyers/hotel-x-pull-buyer
 To obtain an access code from a Seller, you must establish a commercial agreement with the desired Partner and request activation via the [Auto-Activations Form](/kb/platform/app-features/connections/my-connections/guick-guide-to-auto-activations).
 
 :::warning important
-- **Avoid making live bookings** during the Hotel-X implementation process until Travelgate has certified your development. If you create test bookings, ensure they are canceled and refundable.
+- **Avoid making live bookings** during the HotelX implementation process until Travelgate has certified your development. If you create test bookings, ensure they are canceled and refundable.
 - To ensure proper billing, **all cancellations must be handled via the API**. If you encounter any issues, contact [Customer Support](https://app.travelgate.com/support) for assistance.
 :::
 
 ## Client
 
-A client is an entity purchasing accommodation services through the Hotel-X API. Client codes remain consistent across all Travelgate implementations and help identify the requesting business and its assigned configurations.
+A client is an entity purchasing accommodation services through the HotelX API. Client codes remain consistent across all Travelgate implementations and help identify the requesting business and its assigned configurations.
 
 Multiple client codes may be used to distinguish different traffic types, such as B2B and B2C transactions (e.g., `client_b2b`, `client_b2c`). Since all accesses are compatible with any client code, selecting the appropriate one is essential. You can review client information in your [API Settings](/kb/platform/app-features/connections/api-settings/).
 
@@ -67,9 +67,9 @@ Buyers can use **FastX context (highly recommended)**, their own Buyer context, 
 For more details, refer to the [HotelX Buyers API Documentation](/docs/get-started/key-concepts) and [API Settings](/kb/platform/app-features/connections/api-settings/).
 :::
 
-## What is the difference in credential management between Legacy and Hotel-X?
+## What is the difference in credential management between Legacy and HotelX?
 
-Besides using different technologies (XML vs GraphQL) and offering different levels of functionality, the main difference between **Legacy API** (deprecated) and **Hotel-X API** lies in **how supplier credentials are selected, stored, and used in requests**.
+Besides using different technologies (XML vs GraphQL) and offering different levels of functionality, the main difference between **Legacy API** (deprecated) and **HotelX API** lies in **how supplier credentials are selected, stored, and used in requests**.
 
 In the **Legacy API**, the Buyer must explicitly send the supplier configuration in every request:
 
@@ -79,7 +79,7 @@ In the **Legacy API**, the Buyer must explicitly send the supplier configuration
 
 These credentials were included directly in the XML request. The Buyer was fully responsible for managing, storing, and updating them.
 
-In **Hotel-X**, supplier credentials are **not sent in the API request**. Instead:
+In **HotelX**, supplier credentials are **not sent in the API request**. Instead:
 
 - The Buyer sends an **access code** in the request.
 - This access code references a supplier configuration (username, password, parameters) securely stored in the Travelgate platform.
@@ -101,13 +101,13 @@ In **Hotel-X**, supplier credentials are **not sent in the API request**. Instea
 </details>
 
 <details>
-    <summary>Do both Legacy and Hotel-X APIs use supplier credentials?</summary>
+    <summary>Do both Legacy and HotelX APIs use supplier credentials?</summary>
     <div>
         <div>
          Yes. Both APIs rely on supplier credentials, but they differ in **how those credentials are referenced**:
          - **Legacy** (deprecated): Credentials are sent explicitly in every request.
-         - **Hotel-X**: Credentials are referenced indirectly via an access code.
-         This makes Hotel-X more secure, easier to maintain, and better suited for complex integrations.
+         - **HotelX**: Credentials are referenced indirectly via an access code.
+         This makes HotelX more secure, easier to maintain, and better suited for complex integrations.
          </div>
     </div>
 </details>
@@ -116,17 +116,17 @@ In **Hotel-X**, supplier credentials are **not sent in the API request**. Instea
     <summary>Do I need to create new accesses when migrating from Legacy?</summary>
     <div>
       <div>
-        Not necessarily. If you are already using the Legacy API and your supplier credentials already appear in **[My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details)** with an associated access code, you do **not** need to create new accesses. You can reuse the same access codes when working with Hotel-X.
+        Not necessarily. If you are already using the Legacy API and your supplier credentials already appear in **[My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details)** with an associated access code, you do **not** need to create new accesses. You can reuse the same access codes when working with HotelX.
       </div>
     </div>
 </details>
 
 <details>
-    <summary>Who manages supplier credentials in Hotel-X?</summary>
+    <summary>Who manages supplier credentials in HotelX?</summary>
     <div>
         <div>
          Supplier credentials are managed through the Travelgate platform:
-            - The **Buyer** uses the access code in Hotel-X API requests.
+            - The **Buyer** uses the access code in HotelX API requests.
             - The **Seller and Buyer** can manage credentials and configuration via [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details).
             
             Credentials are no longer managed inside the API request itself. Centralizing credential management in Travelgate:

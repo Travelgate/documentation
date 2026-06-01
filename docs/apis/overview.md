@@ -8,8 +8,8 @@ Travelgate offers powerful and flexible API solutions tailored to enhance travel
 
 ### For Buyers  
 
-- The [**Hotel-X Pull Buyers API**](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart.mdx) enables real-time transactions with Sellers, providing dynamic, on-demand responses for search, quote, and booking operations.  
-- The [**Channel-X Push Buyers API**](/docs/apis/for-buyers/channel-x-push-buyers-api/quickstart.mdx) delivers hotel product data — such as availability and prices — directly to the Buyer's system in a push-based format, while still enabling real-time bookings through Hotel-X.
+- The [**HotelX Pull Buyers API**](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart.mdx) enables real-time transactions with Sellers, providing dynamic, on-demand responses for search, quote, and booking operations.  
+- The [**ChannelX Push Buyers API**](/docs/apis/for-buyers/channel-x-push-buyers-api/quickstart.mdx) delivers hotel product data — such as availability and prices — directly to the Buyer's system in a push-based format, while still enabling real-time bookings through HotelX.
 
 ### For Sellers  
 

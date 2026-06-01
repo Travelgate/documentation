@@ -6,11 +6,11 @@ sidebar_position: 2
 
 ## Quote Request Limitations
 
-### Do options get blocked in Hotel-X Quote Query?
+### Do options get blocked in HotelX Quote Query?
 
 Some Sellers may block options when performing a Quote query. It is strongly recommended to contact them directly to prevent potential issues.
 
-### Are there any limitations on the number of Hotel-X Quote requests allowed per minute?
+### Are there any limitations on the number of HotelX Quote requests allowed per minute?
 
 There are no limitations on Requests Per Minute (RPM) or Transactions Per Minute (TPM) from Travelgate's side. However, some Sellers may impose their own restrictions, so it is advisable to contact them directly to confirm.
 
@@ -20,7 +20,7 @@ Yes, to confirm a reservation, you must complete all three booking flow methods:
 
 ### Can I group a set of Quotes to make a single reservation?
 
-No, each Quote obtained through the Hotel-X API is linked to a unique option and must be booked individually. If you have multiple quotes, each must be booked separately by completing the full booking flow.
+No, each Quote obtained through the HotelX API is linked to a unique option and must be booked individually. If you have multiple quotes, each must be booked separately by completing the full booking flow.
 
 ## Optimizing Quote Performance
 
@@ -36,7 +36,7 @@ Yes, an option represents a combination of rooms. Canceling the option implies c
 
 ### Is there any possibility to obtain RoomCodes in Quote?
 
-If the Seller provides this information, you can obtain the Supplier room codes by including the `rooms` node in the `HotelOptionQuote` node.  You will also receive the FastX standarized room code and room description.
+If the Seller provides this information, you can obtain the Supplier room codes by including the `rooms` node in the `HotelOptionQuote` node.  You will also receive the FastX standardized room code and room description.
 
 ![quote_1](https://storage.travelgate.com/kbase/quote_1.jpg)
 
@@ -45,6 +45,6 @@ If the Seller provides this information, you can obtain the Supplier room codes 
 The Quote response does not include the hotel name. However, it can be retrieved from the Search Query response if the Supplier provides this information.
 
 :::tip
-Don't forget to check our [Hotel-X Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/quote#query-overview) for a complete example of a Hotel-X Quote Query! 🚀
+Don't forget to check our [HotelX Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/quote#query-overview) for a complete example of a HotelX Quote Query! 🚀
 :::
 

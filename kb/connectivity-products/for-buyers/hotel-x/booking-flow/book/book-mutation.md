@@ -6,7 +6,7 @@ sidebar_position: 2
 
 The [Book](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/book) operation is used to request a booking confirmation for a specified `optionRefId` returned in the Quote response. It provides a summary of the selected option along with the reservation status.
 
-The information returned in the Book response may vary by Seller. To ensure you receive the required details, refer to our [Hotel-X Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart) and include the necessary fields in your Book request. Additionally, check the [Metadata](/kb/connectivity-products/for-buyers/hotel-x/content/metadata) of your Sellers for their specific requirements.
+The information returned in the Book response may vary by Seller. To ensure you receive the required details, refer to our [HotelX Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart) and include the necessary fields in your Book request. Additionally, check the [Metadata](/kb/connectivity-products/for-buyers/hotel-x/content/metadata) of your Sellers for their specific requirements.
 
 Some key fields to include in your Book mutation request:
 
@@ -14,7 +14,7 @@ Some key fields to include in your Book mutation request:
 - **Price:** The total price of the booking.
 - **Client Reference:** The booking reference in your system (an alphanumeric value). It should be unique to avoid errors on the Supplier's side.
 - **Supplier Reference:** The booking reference in the Supplier's system.
-- **BookingID:** The unique identifier for the reservation in Hotel-X.
+- **BookingID:** The unique identifier for the reservation in HotelX.
 - **Holder:** The lead passenger information.
 - **Hotel:** Hotel information.
 

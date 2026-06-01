@@ -28,7 +28,7 @@ To get started, create your temporary pricing rules file in the correct format a
 * **Directory:** Distribution
 * **Delimiter:** Hashtag (`#`)
 * **Data:**
-   * **For All or Specific Agencies (mandatory)**: Defines if the rule is specific for a list of concret agencies or if it applies to all agencies.
+   * **For All or Specific Agencies (mandatory)**: Defines if the rule is applicable to a list of specific agencies or if it applies to all agencies.
       * **`0`**: All agencies.
       * **`1`**: List of specific agencies, in this case it is mandatory to receive a list of items, a list of agency codes separated with `;`(e.g. 1|Agency1;Agency2#).
    * **Type of Cancellation Policies (mandatory)**: 
@@ -39,12 +39,12 @@ To get started, create your temporary pricing rules file in the correct format a
       * **`0`**: All (B2C + B2B).
       * **`1`**: Only B2C.
       * **`2`**: Only B2B.
-   * **For All, Direct, Third Party or Concrete providers (mandatory)**: Defines if the rule is specific for a list of concrete providers or if it applies to all providers or only to direct or third party providers. 
+   * **For All, Direct, Third Party or Concrete providers (mandatory)**: Defines if the rule is applicable to a list of specific providers or if it applies to all providers or only to direct or third party providers. 
       * **`0`**: All providers.
       * **`1`**: List of concrete providers. In this case it is mandatory to receive a list of items, a list of provider codes separated with `;`(e.g. #1|Provider1;Provider2#).
       * **`2`**: Only all Third Party providers.
       * **`3`**: Only all Direct providers.
-   * **For All or a List of Concrete Hotels (and from countries, cities, chains or destinations) (mandatory)**: Defines if the rule is specific for a list of concrete hotels (and from countries, cities, chains or destinations) or if it applies to all hotels. 
+   * **For All or a List of Concrete Hotels (and from countries, cities, chains or destinations) (mandatory)**: Defines if the rule is applicable to a list of specific hotels (and from countries, cities, chains or destinations) or if it applies to all hotels. 
       * **`0`**: All hotels.
       * **`1`**: List of hotels. In this case it is mandatory to receive a list of items, a list of hotel codes separated with `;` (e.g. #1|Hotel1;Hotel2#).
       * **`2`**: Hotels from a list of countries. In this case it is mandatory to receive a list of items, a list of country codes separated with `;`. In ISO 3166-1 alpha-2 code format (e.g. #2|FR;PT#).
@@ -52,19 +52,19 @@ To get started, create your temporary pricing rules file in the correct format a
       * **`4`**: Hotels from a list of chains. In this case it is mandatory to receive a list of items, a list of chain codes separated with `;` (e.g. #4|Chain1;Chain2#).
       * **`5`**: Hotels from a list of destinations. In this case it is mandatory to receive a list of items, a list of destination codes separated with `;`. In ISO 3166-1 alpha-2 code format (e.g. #5|SP;PT#).
       * **`6`**: Hotels from a list of groups of destinations. In this case it is mandatory to receive a list of items, a list of group of destination codes separated with `;` (e.g. #6|Group1;Group2#).
-   * **For All or a List of Concrete Markets (mandatory)**: Defines if the rule is specific for a list of concrete markets or if it applies to all markets. 
+   * **For All or a List of Concrete Markets (mandatory)**: Defines if the rule is applicable to a specific a list of markets or if it applies to all markets. 
       * **`0`**: All markets.
       * **`1`**: List of markets. In this case it is mandatory to receive a list of items, a list of market codes separated with `;`(e.g. #1|ES;FR#).
-   * **For All or Concrete Meal Plans (mandatory)**: Defines if the rule is specific for a list of concrete meal plans or if it applies to all meal plans.
+   * **For All or Concrete Meal Plans (mandatory)**: Defines if the rule is specific to a list of meal plans or if it applies to all meal plans.
       * **`0`**: All meal plans.
       * **`1`**: List of meal plans. In this case it is mandatory to receive a list of items, a list of meal plan codes separated with `;`(e.g. #1|MealPlan1;MealPlan2#).
-   * **For Any or Concrete Check-in Dates (mandatory)**: Defines if the rule is specific for a concrete range of check-in dates or if it applies to any date.
+   * **For Any or Concrete Check-in Dates (mandatory)**: Defines if the rule is specific to a range of check-in dates or if it applies to any date.
       * **`0`**: All check-in dates.
       * **`1`**: Range of check-in dates. In this case it is mandatory to receive a list of items, a range of check-in dates, from - to, separated with `;`(e.g. #1|yyyy-mm-dd;yyyy-mm-dd#).
-   * **For Any or Concrete Booking Dates (mandatory)**: Defines if the rule is specific for a concret range of booking dates or if it applies to any date.
+   * **For Any or Concrete Booking Dates (mandatory)**: Defines if the rule is specific to a range of booking dates or if it applies to any date.
       * **`0`**: All booking dates.
       * **`1`**: Range of booking dates. In this case it is mandatory to receive a list of items, a range of booking dates, from - to, separated with `;`(e.g. #1|yyyy-mm-dd;yyyy-mm-dd#).
-   * **For Any or Concrete Range of Prices (mandatory)**: Defines if the rule is specific for a concret range of prices or if it applies to any price.
+   * **For Any or Concrete Range of Prices (mandatory)**: Defines if the rule is specific to a range of prices or if it applies to any price.
       * **`0`**: All prices.
       * **`1`**: Range of prices. In this case it is mandatory to receive a list of items, a range of prices, from - to, separated with `;`(e.g. #1|50.5;95.85#).
    * **Overriding Rule or Not (mandatory)**: Defines if the rule is an overriding rule or not.
@@ -73,10 +73,10 @@ To get started, create your temporary pricing rules file in the correct format a
    * **Commission/Markup of the Rule (mandatory)**: Decimal (e.g. 0.5).
    * **Description of the Rule (mandatory)**
    * **Release**: Defines the release. A zero value indicates that there is no release applied. By default it is considered 0 if this field does not exist or it is not defined.
-   * **For Any or Concrete Range of Release from check-in**: Defines if the rule is specific for a concret range of days of release from check-in or if it applies to any release.
+   * **For Any or Concrete Range of Release from check-in**: Defines if the rule is applicable to a specific range of days of release from check-in or if it applies to any release.
       * **`0`**: No release. By default if this field does not exist or it is not defined.
       * **`1`**: Range of days of release from check-in. In this case it is mandatory to receive a list of items, a range of dates, from - to, separated with `;`(e.g. #1|yyyy-mm-dd;yyyy-mm-dd#).
-   * **For Any or Concrete Range of Hours**: Defines if the rule is specific for a concret range of hours or if it applies to any hour.
+   * **For Any or Concrete Range of Hours**: Defines if the rule is applicable to a specific range of hours or if it applies to any hour.
       * **`0`**: All hours. By default if this field does not exist or it is not defined.
       * **`1`**: Range of hours. In this case it is mandatory to receive a list of items, a range of hours, from - to, separated with `;`. Value has to be set with an integer between 0 and 23 (e.g. #1|15;20# = for three pm to eight pm).
    * **For Any or Concrete Days of the Week**: Defines if the rule is specific for some day of the week or if it applies to any day.

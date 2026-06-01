@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Hotel-X Certification
+# HotelX Certification
 
 ### When to Apply
 You should apply once you've completed implementing the relevant methods.
@@ -11,7 +11,7 @@ You should apply once you've completed implementing the relevant methods.
 No. Case 3 (Direct Payment) is not mandatory if it is not relevant to your business. However, Cases 1 and 2 (Refundable Option and Non-Refundable Option) are always required.
 
 ### What Information Will We Check?
-The certification aims to verify that the Hotel-X API user makes requests correctly. This is done by reviewing request and response logs for the following methods:
+The certification aims to verify that the HotelX API user makes requests correctly. This is done by reviewing request and response logs for the following methods:
 
 
 | Method       | Request Requirement                                                                 | Response Requirement                                                                 |
@@ -35,7 +35,7 @@ The certification aims to verify that the Hotel-X API user makes requests correc
 2. C2: Non-Refundable Option.
 3. C3: Direct Payment Option.
 
-Travelgate has implemented an automated certification system to ensure the key points of the methods are correctly covered according to the Hotel-X Pull Buyers API. This system requires the certification files to be **uploaded in a specific name and format**: the format should be “.json”and the name should indicate the corresponding certification.
+Travelgate has implemented an automated certification system to ensure the key points of the methods are correctly covered according to the HotelX Pull Buyers API. This system requires the certification files to be **uploaded in a specific name and format**: the format should be “.json”and the name should indicate the corresponding certification.
 
 The following table outlines the names corresponding to each part of the certification process:
 
@@ -58,7 +58,7 @@ The following table outlines the names corresponding to each part of the certifi
 <details>
 <summary>**Query Logs**</summary>
 <div>
-    Be sure to check our [**Hotel-X API Documentation**](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/search) for complete details and examples of queries and mutations.
+    Be sure to check our [**HotelX API Documentation**](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/search) for complete details and examples of queries and mutations.
 </div>
 <br></br>
 
@@ -991,7 +991,7 @@ For certification cases, you can use the following credentials and hotel:
 
 ### What credentials should I use when moving to the production environment?
 
-Once you complete the Hotel-X certification process and transition to the production environment, you must **update your connection credentials**. 
+Once you complete the HotelX certification process and transition to the production environment, you must **update your connection credentials**. 
 
 During the certification phase, you utilize the [test API Key and Client](/kb/getting-started/hotel-x-certification#which-credentials-and-hotels-can-i-use-for-certification-cases) provided by Travelgate. To successfully process live requests, you must **replace these test credentials with your own**:
 

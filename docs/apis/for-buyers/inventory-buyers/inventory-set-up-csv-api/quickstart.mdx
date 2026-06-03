@@ -133,6 +133,15 @@ Imagine you are the client "travelClient (TG)" connected to the channel manager 
 * **Example for Scenario 2:**
 Imagine you are the client "travelClient (TG)" connected to the channel manager "travelgateChannelManager (TGCM)", which uses hotel codes from the inventory. If you are completing the "rooms" file, the download file name should be: "clientCode(Inventory)-providerCode(Inventory)-HotelCode#ContextCode-rooms.csv. In this case, you would name the file "TG-TRVCM-1234-rooms.csv", omitting the #ContextCode since the connected channel does not use native codes but relies on Travelgate's inventory codes.
 
+:::caution
+**IMPORTANT**: The file name is parsed by the system using the dash (`-`) character as a separator. Make sure your client code and provider code do NOT contain dashes. The system expects the following patterns:
+- `clientCode-providerCode-entity.csv` (for masters like hotelsMaster)
+- `clientCode-providerCode-HotelCode#ContextCode-entity.csv` (for setups)
+- `clientCode-roomsMaster.csv` (special case for rooms master)
+
+The **entity** part must match one of the supported types exactly (case-insensitive): `hotels`, `rooms`, `rateplans`, `policies`, `taxes`, `offers`, `hotelsMaster`, `roomsMaster`.
+:::
+
 ### 4. Uploading Files to SFTP and Configuration 
 
 After completing the necessary preliminary steps, the next stage involves uploading your files to the SFTP server. 
@@ -148,7 +157,36 @@ When accessing the SFTP, you will find three folders in the main directory, each
 :::caution
 **IMPORTANT**: It is essential to use the correct file naming conventions to ensure the files can be processed via the SFTP.
 :::
+
 #### File Checking Frequency
-It is important to note that our CSV API checks the SFTP server every 10 seconds for new files. This frequent scanning ensures that any files you upload are quickly detected and processed, minimizing delay in data handling.
+It is important to note that our CSV API checks the SFTP server periodically for new files (approximately every hour). Once detected, files are queued for processing. The processing time depends on the file size and the current system load.
+
+:::info
+**File Processing Status:** After a file is picked up for processing, it will be renamed with a suffix indicating its status:
+- **-Processing**: The file is currently being processed.
+- **-Processed**: The file has been successfully processed.
+- **-Error**: An error occurred during processing. Check your file format and data.
+
+You can monitor these status changes on the SFTP to track the progress of your uploads.
+:::
 
 This guide will ensure you can securely transfer your files to the appropriate destination without any issues.
+
+### 5. CSV Format Requirements
+
+:::caution
+**Critical formatting rules that must be followed:**
+:::
+
+| Requirement | Details |
+|---|---|
+| **Delimiter** | Semicolon (`;`) — NOT comma, NOT tab |
+| **Encoding** | UTF-8 (recommended) or ANSI |
+| **Header row** | Must be present as the first line (it is skipped during processing) |
+| **Empty optional fields** | Leave the value empty between semicolons (e.g., `value1;;value3`) |
+| **Multi-value fields** | Use pipe (`\|`) as separator (e.g., `email1@test.com\|email2@test.com`) |
+| **Decimal numbers** | Both dot (`.`) and comma (`,`) are accepted as decimal separators |
+| **Date format** | `dd/MM/yyyy` (e.g., `14/04/2026`) |
+| **Boolean fields** | `1` = True, `0` = False |
+| **Line endings** | Both Windows (CRLF) and Unix (LF) are accepted |
+| **Quoting** | Optional — values may be enclosed in double quotes (`"value"`) |

@@ -84,8 +84,8 @@ Follow these steps to search for availability and make a booking via Multi Searc
    - Connections (optional)
    - Suppliers (optional)
    - Accesses (optional)
-   - <!-- vale Vale.Terms = NO --> Context (set **"FASTX"** if you are using FastX codes) 
-   - <!-- vale Vale.Terms = YES --> Hotel codes
+   - Context (set "FASTX" if you are using FastX codes) 
+   - Hotel codes
    - Dates
    - Rooms
    - **Aggregation criteria:** This option lets you aggregate results from all active accesses/suppliers that return results. If left unchecked, nothing is aggregated and all available options are returned (see the [Cheapest Price plugin](https://docs.travelgate.com/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/cheapest-price/) documentation for details on available aggregation fields).

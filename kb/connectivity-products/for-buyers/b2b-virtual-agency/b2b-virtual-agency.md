@@ -84,7 +84,7 @@ Follow these steps to search for availability and make a booking via Multi Searc
    - Connections (optional)
    - Suppliers (optional)
    - Accesses (optional)
-   - Context (set "FASTX" if you are using FastX codes) 
+   - Context (set `FASTX` if you are using FastX codes)
    - Hotel codes
    - Dates
    - Rooms

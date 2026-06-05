@@ -72,7 +72,33 @@ Yes. Buyers can skip the cache for a specific request by setting the `useCache` 
 
 
 **'useCache' for HotelX Buyers:**  
-Buyers using the HotelX Buyers Pull API **must include the `AddParameter` plugin** to enable the 'useCache' functionality. More details [here](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/add-parameter).
+Buyers using the HotelX Buyers Pull API **must include the `AddParameter` plugin** to enable the 'useCache' functionality. The following example shows how to include it in your Search request to skip the cache:
+
+```json
+{
+  "settings": {
+    "plugins": [
+      {
+        "step": "REQUEST_ACCESS",
+        "pluginsType": [
+          {
+            "name": "add_parameter",
+            "type": "PRE_STEP",
+            "parameters": [
+              {
+                "key": "useCache",
+                "value": "false"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+For more details on the `AddParameter` plugin, see [this page](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/add-parameter).
 
 :::warning Important
 To use this feature for your connection (either **Legacy** or **HotelX**), you must first activate it. Otherwise, the **`useCache`** parameter will have no effect.  

@@ -92,16 +92,22 @@ Additionally, some hotels are be **temporarily whitelisted** to re-evaluate conv
 ### Use Cases:
 
 1. **Traffic Optimizer with "No Availability" Criteria:**
-   - **Day 1:** "Hotel A" reports 100% no availability.
-   - **Day 2:** "No Availability" criteria is applied, blocking "Hotel A."
-   - **Day 3:** "Hotel A" is automatically removed from the blacklist.
-   - **Day 4:** If "Hotel A" still reports 100% no availability on day 3, it is blocked again.
+
+   | Day | What happens |
+   |-----|-------------|
+   | Day 1 | "Hotel A" reports 100% no availability. |
+   | Day 2 | "No Availability" criteria is applied, blocking "Hotel A." |
+   | Day 3 | "Hotel A" is automatically removed from the blacklist. |
+   | Day 4 | If "Hotel A" still reports 100% no availability on Day 3 → blocked again. |
 
 2. **Traffic Optimizer with "Zero Bookings" Criteria:**
-   - **Day 1:** "Hotel A" has never been booked by any Buyer connected to the Supplier.
-   - **Day 2:** "Zero Bookings" criteria is applied, blocking "Hotel A."
-   - **Day 3:** "Hotel A" is temporarily whitelisted to allow new requests.
-   - **Day _n_:** If "Hotel A" receives a booking, it is removed from the blacklist.
+
+   | Day | What happens |
+   |-----|-------------|
+   | Day 1 | "Hotel A" has never been booked by any Buyer connected to the Supplier. |
+   | Day 2 | "Zero Bookings" criteria is applied, blocking "Hotel A." |
+   | Day 3 | "Hotel A" is temporarily whitelisted to allow new requests. |
+   | Day _n_ | If "Hotel A" receives a booking → removed from the blacklist. |
 
 :::info
 - All criteria (**No Availability, Zero Bookings, and Not in Portfolio**) can be applied together. However, we recommend **starting with one at a time**.

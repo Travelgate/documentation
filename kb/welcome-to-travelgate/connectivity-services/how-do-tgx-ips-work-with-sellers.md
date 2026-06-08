@@ -19,7 +19,7 @@ All update dates in this document follow the YYYY-MM-DD format (Year-Month-Day).
 
 ### Fixed IP List for Hotel Suppliers
 
-Below is the current list of IP addresses that Hotel Suppliers should allow (Updated on 2025-08-08):
+Below is the current list of IP addresses that Hotel Suppliers should allow (Updated on 2026-06-08):
 
 :::note
 A CIDR range is a way to group several IP addresses. The second column shows all the addresses in that range, if needed.
@@ -55,6 +55,7 @@ A CIDR range is a way to group several IP addresses. The second column shows all
 | 216.59.58.96/28                    | 216.59.58.96&nbsp;<br /> 216.59.58.97&nbsp;<br /> 216.59.58.98&nbsp;<br /> 216.59.58.99&nbsp;<br /> 216.59.58.100&nbsp;<br /> 216.59.58.101&nbsp;<br /> 216.59.58.102&nbsp;<br /> 216.59.58.103&nbsp;<br /> 216.59.58.104&nbsp;<br /> 216.59.58.105&nbsp;<br /> 216.59.58.106&nbsp;<br /> 216.59.58.107&nbsp;<br /> 216.59.58.108&nbsp;<br /> 216.59.58.109&nbsp;<br /> 216.59.58.110&nbsp;<br /> 216.59.58.111 |
 | 216.59.58.248/29                   | 216.59.58.248&nbsp;<br /> 216.59.58.249&nbsp;<br /> 216.59.58.250&nbsp;<br /> 216.59.58.251&nbsp;<br /> 216.59.58.252&nbsp;<br /> 216.59.58.253&nbsp;<br /> 216.59.58.254&nbsp;<br /> 216.59.58.255 |  
 | 216.59.61.160/27                   | 216.59.61.160&nbsp;<br /> 216.59.61.161&nbsp;<br /> 216.59.61.162&nbsp;<br /> 216.59.61.163&nbsp;<br /> 216.59.61.164&nbsp;<br /> 216.59.61.165&nbsp;<br /> 216.59.61.166&nbsp;<br /> 216.59.61.167&nbsp;<br /> 216.59.61.168&nbsp;<br /> 216.59.61.169&nbsp;<br /> 216.59.61.170&nbsp;<br /> 216.59.61.171&nbsp;<br /> 216.59.61.172&nbsp;<br /> 216.59.61.173&nbsp;<br /> 216.59.61.174&nbsp;<br /> 216.59.61.175&nbsp;<br /> 216.59.61.176&nbsp;<br /> 216.59.61.177&nbsp;<br /> 216.59.61.178&nbsp;<br /> 216.59.61.179&nbsp;<br /> 216.59.61.180&nbsp;<br /> 216.59.61.181&nbsp;<br /> 216.59.61.182&nbsp;<br /> 216.59.61.183&nbsp;<br /> 216.59.61.184&nbsp;<br /> 216.59.61.185&nbsp;<br /> 216.59.61.186&nbsp;<br /> 216.59.61.187&nbsp;<br /> 216.59.61.188&nbsp;<br /> 216.59.61.189&nbsp;<br /> 216.59.61.190&nbsp;<br /> 216.59.61.191 |
+| 111.119.240.176/29                   | 111.119.240.176&nbsp;<br /> 111.119.240.177&nbsp;<br /> 111.119.240.178&nbsp;<br /> 111.119.240.179&nbsp;<br /> 111.119.240.180&nbsp;<br /> 111.119.240.181&nbsp;<br /> 111.119.240.182&nbsp;<br /> 111.119.240.183&nbsp;<br />  |
 | 101.46.140.136                     |                                         |
 | 101.46.142.234                     |                                         |
 

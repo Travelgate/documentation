@@ -28,8 +28,8 @@ If you have any questions about how to add the requested information to create t
 | PaymentType        |   0   | List of accepted payment types for this rate, separated by pipe (\|) if multiple. ([Check the Payment Types Codes](/docs/apis/for-buyers/inventory-buyers/inventory-set-up-csv-api/set-up/rateplans#paymenttype)). |
 | Commission        |   0   | Value of the rate's commission in the range 0-100. Can optionally include a `%` suffix (e.g., `18.5` or `18.5%` are both valid). Decimal separator must be a dot (`.`) or comma (`,`). |
 | Currency        |   1   | ISO code that identifies the currency of the rate, format code: ISO 4217 |
-| Markets Included        |   0   | List of included markets (ISO 3166-1 alpha-2) separated by pipe (\|) for this rate. |
-| Markets Excluded        |   0   | List of excluded markets (ISO 3166-1 alpha-2) separated by pipe (\|) for this rate. |
+| Markets Included        |   0   | List of included markets (ISO 3166-1 alpha-2) separated by pipe (\|) for this rate. Leave **empty** to allow all markets. |
+| Markets Excluded        |   0   | List of excluded markets (ISO 3166-1 alpha-2) separated by pipe (\|) for this rate. Leave **empty** for no exclusions. |
 | Meal Plan        |   0   | Meal plan included in rate ([Check the Meal Plan Codes](/docs/apis/for-buyers/inventory-buyers/inventory-set-up-csv-api/set-up/rateplans#meal-plan)). |
 | Binding        |   0   | Indicate if the rate's price could be sold under the price shown. Example: (**0 - False** (binding price false)) or (**1 - True** (binding price true)). |
 | Senior Rule        |   0   | Sets the rate for senior citizens ([Check the Senior Rule Codes](/docs/apis/for-buyers/inventory-buyers/inventory-set-up-csv-api/set-up/rateplans#senior-rule)). |
@@ -38,16 +38,17 @@ If you have any questions about how to add the requested information to create t
 **IMPORTANT**: The file must contain exactly **16 columns** (including empty optional ones). Rows with fewer columns will be skipped.
 :::
 
-#### Sheet Format Example
-
-![inventory_csv_rateplans-setup](https://storage.travelgate.com/docs/inventory_csv_rateplans-setup.png)
 
 #### CSV Format Example for Channel Managers
 
 ```
 Code;Name;Rate Rule;Active;Max Age Child;Max Age Infant;Booking From;Booking To;PaymentType;Commission;Currency;Markets Included;Markets Excluded;Meal Plan;Binding;Senior Rule
-123RATE_TEST;NameRate_test;;1;18;1;;;MerchantPay;18.5%;EUR;;;All inclusive;;
+BAR_14;Best Available Rate;NoRatePlanType;1;12;2;01/01/2026;31/12/2026;MerchantPay;18.5%;EUR;;;Bed and breakfast;0;No Senior Rate
 ```
+
+:::note Meal Plan, Payment Type and Senior Rule values
+These three columns expect one of the values from the tables below. Values are validated case-insensitively, but stick to the exact label to avoid issues. Leave the column **empty** if not applicable.
+:::
 
 ### Additional information
 

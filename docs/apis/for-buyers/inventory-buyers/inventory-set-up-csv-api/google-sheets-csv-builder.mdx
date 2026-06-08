@@ -1,0 +1,268 @@
+---
+sidebar_position: 2
+---
+
+# Google Sheets CSV Builder
+
+## What Is This Tool?
+
+The **Travelgate Inventory CSV Builder** is a Google Sheets template pre-configured by Travelgate. It helps you create, validate, and export all inventory CSV files without building them manually.
+
+The tool covers all 8 inventory entities:
+
+| Sheet | CSV Entity | Purpose |
+|---|---|---|
+| 🏨 HotelsMaster | `hotelsMaster` | Register hotels in the master catalog |
+| 🛏️ RoomsMaster | `roomsMaster` | Define room type master records |
+| 🏩 Hotels | `hotels` | Activate hotels and configure booking notifications |
+| 💰 RatePlans | `rateplans` | Create and configure rate plans per hotel |
+| 🚪 Rooms | `rooms` | Assign room types to rate plans |
+| 📋 Policies | `policies` | Define cancellation policies per rate |
+| 🧾 Taxes | `taxes` | Configure taxes and surcharges per rate |
+| 🎁 Offers | `offers` | Set up promotional offers per rate |
+
+---
+
+## Workflow Overview
+
+```
+You create your personal sheet copy using the button below
+         ↓
+You fill in ⚙️ Config (Client Code + Supplier Code)
+         ↓
+Load dynamic data from the API → dropdowns auto-populated
+         ↓
+Fill data sheet by sheet (follow the recommended order)
+         ↓
+Validate all sheets → fix errors highlighted in red
+         ↓
+Export CSVs → rename if needed → upload to SFTP ✅
+```
+
+---
+
+## Step 1 — Get Your Own Copy of the Builder
+
+Click the button below to create your **own private copy** of the Travelgate Inventory CSV Builder. Google will open a dialog asking you to confirm the destination Google Drive — the copy then belongs entirely to you.
+
+<a
+  href="https://docs.google.com/spreadsheets/d/11jn9Gy6HMS9-a6rEwfA0n08EEeACOz1M82ebDdeUEGc/copy"
+  target="_blank"
+  rel="noopener noreferrer"
+  style={{
+    display: 'inline-block',
+    padding: '12px 24px',
+    backgroundColor: '#1a73e8',
+    color: '#fff',
+    fontWeight: 600,
+    borderRadius: '6px',
+    textDecoration: 'none',
+    marginTop: '8px',
+    marginBottom: '8px'
+  }}>
+  📄 Make my own copy
+</a>
+
+:::tip Safe for parallel use
+Each copy is a fully independent Google Sheet with its own Apps Script instance. Your data, your dropdowns and your exported CSV files belong only to your Google Drive — multiple clients can create and use their copies in parallel without ever interfering with each other.
+:::
+
+:::important Your API key is never exposed
+The Travelgate API key required to load dynamic data **is not stored inside the sheet**. The Apps Script bundled with your copy calls a Travelgate-hosted endpoint that holds the credentials server-side, so the key is never visible in any cell, formula, or script property — not even to you.
+:::
+
+After the copy is created, Google will open it automatically. Continue with **Step 2** to configure your codes.
+
+---
+
+## Step 2 — Configure Client and Supplier Codes
+
+Open the **⚙️ Config** tab and fill in:
+
+| Setting | Description | Example |
+|---|---|---|
+| **Client Code** | Your Travelgate inventory client code | `AXI` |
+| **Supplier Code** | Your channel manager provider code | `HOTP` |
+
+These codes are used automatically to name your exported CSV files.
+
+:::note How to find your codes
+Go to [My Connections](https://app.travelgate.com/connections/myconnections), click **Get form data** on any access:
+- The **Password** field → your **Client Code**
+- The **User** field → your **Supplier Code**
+:::
+
+---
+
+## Step 3 — Initialize Sheets
+
+Click **📦 Inventory CSV → ⚙️ Initialize Sheets** in the top menu.
+
+This will:
+- Create (or reset) all 8 data sheets with correct column headers
+- Apply data validation dropdowns for enum fields (Active, PaymentType, Currency, etc.)
+- Add column tooltips — hover over any header cell to read the expected format
+- Clear any previous data and reset cell highlight colors
+
+:::caution
+Re-running **Initialize Sheets** will **erase all data** in all sheets. Only do this when starting a completely new batch.
+:::
+
+---
+
+## Step 4 — Load Dynamic Data from the API
+
+Click **📦 Inventory CSV → 🔄 Load Dynamic Data (API)**
+
+This fetches live data from Travelgate and populates the following dropdowns automatically:
+
+| Field | Sheet | Description |
+|---|---|---|
+| Context codes | HotelsMaster, Hotels | Inventory contexts available for your supplier |
+| Hotel categories | HotelsMaster | Full hotel category catalog |
+| Meal plans | RatePlans | All available meal plan names |
+| Room Master codes | Rooms | Your existing rooms master codes |
+
+:::note
+If a dropdown is empty after loading, the API returned no results for your Client/Supplier combination. Double-check the codes in **⚙️ Config**.
+:::
+
+---
+
+## Step 5 — Fill In Your Data
+
+Fill each sheet following the order below. **Order matters**: each entity references data from the previous ones (e.g. Rooms reference Rate Codes from RatePlans).
+
+```
+1. 🏨 HotelsMaster   ← Only if hotels are not yet in the master catalog
+2. 🛏️ RoomsMaster    ← Define room types before assigning them
+3. 🏩 Hotels         ← Activate hotels and set notification emails
+4. 💰 RatePlans      ← Create rate plans per hotel
+5. 🚪 Rooms          ← Assign room types to rate plans
+6. 📋 Policies       ← Cancellation conditions per rate
+7. 🧾 Taxes          ← Taxes and surcharges per rate
+8. 🎁 Offers         ← Promotional offers per rate
+```
+
+### Formatting Rules
+
+| Field type | Expected format | Notes |
+|---|---|---|
+| Dates | `dd/MM/yyyy` | e.g. `14/04/2026`. Date-type cells convert automatically. |
+| Boolean | `0` or `1` | `1` = True, `0` = False. Dropdowns enforce valid values. |
+| Multi-value | Pipe-separated `\|` | e.g. `MerchantPay\|LaterPay` or `ES\|FR\|DE` |
+| Markets Included | ISO-2 codes or **empty** | Empty = all markets. `ALL` is accepted and exported as empty. |
+| Markets Excluded | ISO-2 codes or **empty** | Empty = none excluded. `N/A` is accepted and exported as empty. |
+| Decimal numbers | `.` or `,` | `18.5` and `18,5` are both valid |
+
+:::tip Use column tooltips
+Hover over any **header cell** to read a tooltip describing the expected format. This is the quickest way to check requirements without leaving the sheet.
+:::
+
+For complete field-by-field specifications, see the individual entity pages:
+- [Hotels Master](./masters/hotels-master) · [Rooms Master](./masters/rooms-master)
+- [Hotels](./set-up/hotels) · [RatePlans](./set-up/rateplans) · [Rooms](./set-up/rooms)
+- [Policies](./set-up/policies) · [Taxes](./set-up/taxes) · [Offers](./set-up/offers)
+
+---
+
+## Step 6 — Validate Your Data
+
+Click **📦 Inventory CSV → ✅ Validate All Sheets**
+
+The validator checks every row across all 8 sheets and:
+- Highlights invalid cells in **red**
+- Shows a summary listing up to 25 errors at a time
+- Displays **"✅ All sheets valid!"** when everything passes
+
+**Fix all red cells before exporting.** Common errors and their solutions:
+
+| Error message | Cause | Fix |
+|---|---|---|
+| `Id is required` / `Id must be numeric` | Hotels sheet: the Id column must contain the numeric Travelgate hotel ID | Copy the numeric Id from your HotelsMaster |
+| `Invalid email format` | A malformed email address | Use a valid email; multiple addresses must be pipe-separated |
+| `Markets Included must be ISO-2` | A value like `SPAIN` was entered | Use 2-letter codes (`ES`, `FR`) or leave the cell **empty** |
+| `Uses format: 2-0-0\|2-0-1` | Room occupancy format is wrong | Use `adults-children-infants` e.g. `2-0-0\|2-1-0` |
+| `Booking From: use dd/MM/yyyy` | Date format is incorrect | Type as `dd/MM/yyyy` or use a Google Sheets date cell |
+| `Currency is required` | Currency column is empty | Select a value from the dropdown |
+| `Active must be 0 or 1` | Boolean field has an unrecognized value | Use `0` or `1` |
+
+:::note
+Validation runs automatically again at export time. If errors exist, the export is blocked until all red cells are fixed.
+:::
+
+---
+
+## Step 7 — Export CSV Files
+
+Once validation passes, export via the menu:
+
+- **📦 Inventory CSV → 📥 Export CSV → [Sheet name]** — exports one sheet
+- **📦 Inventory CSV → 📥 Export CSV → 📦 Export All** — exports all 8 sheets at once
+
+Each export:
+1. Re-validates the sheet (export blocked if errors remain)
+2. Generates a file using **semicolon (`;`) delimiter** and **UTF-8 encoding**
+3. Names the file automatically: `{ClientCode}-{SupplierCode}-{entity}.csv`
+4. Saves it to your **Google Drive root** and shows a download link
+
+:::caution File naming for hotel-specific entities
+For setup entities (rateplans, rooms, policies, taxes, offers) the exported filename must include the hotel code before uploading to the SFTP:
+
+```
+clientCode-providerCode-HotelCode#ContextCode-rateplans.csv
+```
+
+The sheet generates `AXI-HOTP-rateplans.csv` — **rename it** to include the hotel code before uploading.  
+See [File Naming for SFTP Uploads](./quickstart#3-file-naming-importance-for-travelgate-ftp-uploads) for full rules and examples.
+:::
+
+---
+
+## Step 8 — Upload to SFTP
+
+Upload the renamed CSV files to:
+
+```
+sftp://sftp.travelgate.com:22
+```
+
+Place the files inside the **Inventory** folder. The system checks for new files approximately **every hour**. After a file is picked up, it is renamed with a status suffix:
+
+| Suffix | Meaning |
+|---|---|
+| `-Processing` | File is currently being processed |
+| `-Processed` | File was loaded successfully ✅ |
+| `-Error` | Processing failed — check file name and field values |
+
+Monitor these suffixes on the SFTP to track your uploads.  
+For full SFTP setup instructions, see [Uploading Files to SFTP](./quickstart#4-uploading-files-to-sftp-and-configuration).
+
+---
+
+## Working with Multiple Hotels or Clients
+
+### Multiple hotels, same client and supplier
+All sheets support multiple rows. Fill RatePlans, Rooms, Policies, Taxes, and Offers for all hotels in one session. After exporting, rename each file with the corresponding hotel code before uploading.
+
+### Different clients or suppliers
+Create a separate sheet copy per client/supplier combination using the same **Make my own copy** button. Update **⚙️ Config** in each copy. Exported file names will reflect the correct codes automatically.
+
+### Team collaboration on the same sheet
+- Coordinate who edits each sheet (e.g. person A fills RatePlans, person B fills Policies)
+- Use **File → Version history → See version history** in Google Sheets to review and revert changes
+- Avoid simultaneous editing of the same sheet to prevent data conflicts
+
+---
+
+## Troubleshooting
+
+| Symptom | Solution |
+|---|---|
+| Menu **📦 Inventory CSV** not visible | Reload the page (F5). The menu loads via an `onOpen` script trigger. |
+| Dropdowns empty after Initialize | Run **🔄 Load Dynamic Data (API)** |
+| Load Dynamic Data fails | Verify Client Code and Supplier Code in **⚙️ Config**. Contact Travelgate support if the issue persists. |
+| Export is blocked | Fix all red-highlighted cells, then retry |
+| File renamed `-Error` on SFTP | Check the file name format and verify all required fields are present and valid |
+| File stuck as `-Processing` after 2+ hours | Contact Travelgate support with the file name and upload timestamp |
+| `ALL` / `N/A` in Markets fields | Valid inputs — converted to empty on export (= all markets / no exclusions) |

@@ -36,14 +36,17 @@ If you have any questions about how to add the requested information to create t
 | Phones      |   1   | Contact phone number(s) for the hotel.                                                            |
 | Address     |   1   | Street address of the hotel.                                                                      |
 | PostalCode  |   1   | Postal code for the hotel's location.                                                             |
-| Latitude    |   1   | Latitude of the hotel's geographical position in WGS84 standard format.                           |
-| Longitude   |   1   | Longitude of the hotel's geographical position in WGS84 standard format.                          |
+| Latitude    |   1   | Latitude of the hotel's geographical position in WGS84 decimal format (single decimal separator: dot or comma). Example: `36.500832` or `36,500832`. |
+| Longitude   |   1   | Longitude of the hotel's geographical position in WGS84 decimal format (single decimal separator: dot or comma). Example: `-4.881620` or `-4,881620`. |
 | Category    |   1   | Classification or category of the hotel. [Check the list of hotel categories](#list-of-hotel-categories) |
 
-#### Sheet Format Example
+:::caution Common coordinate mistake
+Do **not** combine the thousands separator with the decimal separator inside a coordinate (for example `36.500,832` is invalid because the dot is treated as decimal separator and the rest is rejected). Use a **single** decimal separator only.
+:::
 
-
-![inventory_csv_hotel-master-context](https://storage.travelgate.com/docs/inventory_csv_hotel-master_context.png)
+:::caution Locality must match the API catalog
+The `Locality` value is matched **case-sensitively** against the catalog returned by the provider for your `client`/`supplier`. Use the exact spelling (for example `Marbella`, not `MARBELLA` or `marbella ` with trailing spaces). If you are unsure of the right spelling, query the catalog with the `localities` GraphQL endpoint or use the dropdown in the [Google Sheets CSV Builder](../google-sheets-csv-builder).
+:::
 
 #### CSV Format Example for Channel Managers with context
 
@@ -90,29 +93,29 @@ Master hotels Codes: Each Code must be unique; duplication of master hotels code
 
 The table below displays the list of available hotel categories. In addition, you have at your disposal the `hotelCategories` query to retrieve these categories. We recommend using this query to fetch the categories in real-time.
 
-| Category         
-|------------------------------------
-| 1 Espigas        
-| 1 Llaves         
-| 1*               
-| 2 Espigas        
-| 2 Llaves         
-| 2*               
-| 2*Sup            
-| 3 Espigas        
-| 3 Llaves         
-| 3*               
-| 3*Sup            
-|4 Espigas
-|4 Llaves
-|4*
-|4*Sup
-|5 Espigas
-|5 Llaves
-|5*
-|5*Sup
-|Apartment
-|Luxury Apartments
-|Villa
+| Category |
+|----------|
+| 1 Espigas |
+| 1 Llaves |
+| 1* |
+| 2 Espigas |
+| 2 Llaves |
+| 2* |
+| 2*Sup |
+| 3 Espigas |
+| 3 Llaves |
+| 3* |
+| 3*Sup |
+| 4 Espigas |
+| 4 Llaves |
+| 4* |
+| 4*Sup |
+| 5 Espigas |
+| 5 Llaves |
+| 5* |
+| 5*Sup |
+| Apartment |
+| Luxury Apartments |
+| Villa |
 
 To retrieve these categories in real-time, you can use the `hotelCategories` query. For more information on how to use this query, refer to the [Hotel Categories](/docs/apis/for-buyers/inventory-buyers/inventory-set-up-graphql-api/static-data/hotel-categories) documentation.

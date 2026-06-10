@@ -17,7 +17,12 @@ To view existing master room data, clients can retrieve current details using th
 
 ### Filename Format
 
-The file naming format for the Rooms Master is as follows: **clientCode-roomsMaster.csv**.
+The file naming format for the Rooms Master supports two formats:
+
+- **clientCode-roomsMaster.csv** (without provider code)
+- **clientCode-providerCode-roomsMaster.csv** (with provider code)
+
+Both formats are valid and will be processed correctly by the system.
 
 If you have any questions about how to add the requested information to create the file name, you can check the following link:  
 [File Naming Importance for Travelgate FTP Uploads](../quickstart#3-file-naming-importance-for-travelgate-ftp-uploads)
@@ -31,9 +36,6 @@ If you have any questions about how to add the requested information to create t
 | Name        |   1   | A descriptive name of the room, providing an easy identification and reference for users.                                                                      |
 
 
-#### Sheet Format Example
-
-![inventory_csv_hotel-master](https://storage.travelgate.com/docs/inventory_csv_room-master.png)
 
 #### CSV Format Example for Channel Managers.
 
@@ -44,6 +46,3 @@ Code;Name
 
 #### Data Uniqueness
 Master Room Codes: Each Code must be unique; duplication of master room codes within the same file or across multiple files for the same client is not permitted. Ensuring uniqueness is crucial for maintaining data integrity and avoiding conflicts in room identification within the platform.
-
-
-

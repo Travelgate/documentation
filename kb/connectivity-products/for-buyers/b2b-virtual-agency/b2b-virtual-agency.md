@@ -24,12 +24,12 @@ Follow these steps to search for availability and make a booking via Single Sear
    - Connection
    - Supplier
    - Access
-   - Destination (hotel or destination)
+   - Destination (supports **name-based** search for country, city, and hotel, and **code-based** search by hotel code)
    - Dates
    - Rooms
    - Show advanced search (market, nationality, language and currency)
    
-   ![tg-b2b-virtual-agency-1](https://storage.travelgate.com/kbase/tg-b2b-virtual-agency-1.png)
+   ![tg-b2b-virtual-agency-1-a](https://storage.travelgate.com/kbase/tg-b2b-virtual-agency-1-a.png)
 
 4. Click **Search** to view available hotel options. The results display:
    - Cheapest available rates by hotel
@@ -81,19 +81,21 @@ Follow these steps to search for availability and make a booking via Multi Searc
 2. Navigate to **Solutions > B2B Virtual Agency**.
 3. The search form will appear. Select the **Multi Search** tab and enter the following details - make sure the required clients and accesses are active in ['My Connections'](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details#filtering-your-connections) and properly configured according to your needs in the section [API Settings](/kb/platform/app-features/connections/api-settings):
    - Client
-   - Context (set **"FASTX"** if you are using FastX codes)
+   - Connections (optional)
+   - Suppliers (optional)
+   - Accesses (optional)
+   - Context (set `FASTX` if you are using FastX codes)
    - Hotel codes
    - Dates
    - Rooms
    - **Aggregation criteria:** This option lets you aggregate results from all active accesses/suppliers that return results. If left unchecked, nothing is aggregated and all available options are returned (see the [Cheapest Price plugin](https://docs.travelgate.com/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/cheapest-price/) documentation for details on available aggregation fields).
    - Show advanced search (market, nationality, language and currency)
-   - **Other Plugins**
+   - **Apps (plugins)**
       - Blacklist: Applies blacklist rules if any have been configured.
       - Preference: Applies aggregation rules from the Preference plugin if configured.
       - Use test access: If the client has both live and test accesses, live is used by default. Enable this option to use test access instead.
 
-   ![tg-b2b-virtual-agency-2](https://storage.travelgate.com/kbase/tg-b2b-virtual-agency-2.png)
-   ![tg_b2b_multisearch_2](https://storage.travelgate.com/kbase/tg_b2b_multisearch_2.png)
+   ![tg-b2b-virtual-agency-2-a](https://storage.travelgate.com/kbase/tg-b2b-virtual-agency-2-a.png)
 
 4. Click **Search** and all available options from suppliers that returned results will appear **under the same hotel card**. If you used the aggregation option, and a result was discarded in favor of another due to aggregation rules, a link will appear allowing you to view the **discarded option.**  
    
@@ -101,6 +103,15 @@ Follow these steps to search for availability and make a booking via Multi Searc
 
       ![tg_b2b_multisearch_3](https://storage.travelgate.com/kbase/tg_b2b_multisearch_3.png)
       ![tg_b2b_multisearch_4](https://storage.travelgate.com/kbase/tg_b2b_multisearch_4.png)
+
+   When running requests with the FastX context, you can view:
+   - FastX hotel code
+   - FastX room description
+   - Supplier hotel code
+   - Supplier room description
+   - Supplier board description
+
+   ![tg-b2b-virtual-agency-3-a](https://storage.travelgate.com/kbase/tg-b2b-virtual-agency-3-a.png)
 
       :::info B2B Virtual Agency Search Logs
       You can access the logs of your availability requests through the B2B Virtual Agency, directly from the "Search Availability" screen. After clicking Search, a **"View Search Logs"** option will appear in the left-hand menu. Click it to open a new window where you can view both the request and response logs. To copy them, simply click the "Copy Logs" button.  

@@ -36,13 +36,20 @@ If you have any questions about how to add the requested information to create t
 | EmailNotificationCC        |   0   | List of emails separated by pipe (\|) that would be in copy when the notification is sended.  Example: **test@gmail.com\|test1@gmail.com**. |
 | EmailNotificationInfo        |   0   | The from list of emails separated by pipe (\|). Example: **test@gmail.com\|test1@gmail.com**. |
 
-#### Sheet Format Example
 
-![inventory_csv_hotel-setup](https://storage.travelgate.com/docs/inventory_csv_hotel-setup.png)
+:::caution Order matters
+The hotels you reference here must already exist in the **Hotels Master** catalog (either created previously through the `hotelsMaster` file or shared with your client). The combination **`Id` + `Context`** is used to look up the hotel — if either value does not match the master, processing fails with `Hotel not found`.
+
+For Channel Managers using native codes, the `Context` of this file **must be identical** to the `Context` declared in the corresponding `hotelsMaster` row.
+:::
+
+:::caution Avoid empty rows
+A row containing only semicolons (e.g. `;;;;;;;`) is **not** ignored automatically and will be sent to the provider as an invalid hotel. Make sure to delete blank rows from the CSV before uploading.
+:::
 
 #### CSV Format Example for Channel Managers
 ```
 Id;Code;Context;Active;SendNotification;EmailNotification;EmailNotificationCC;EmailNotificationInfo
-"1";;;"1";"1";"email1@hotel.com|email2@hotel.com";;"
+"1";;;"1";"1";"email1@hotel.com|email2@hotel.com";;
 ```
 

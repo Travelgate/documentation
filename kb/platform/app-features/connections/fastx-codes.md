@@ -87,9 +87,9 @@ The warning icon is a signal to **pay special attention** to the entry. It does 
 
 ![fastx-sellers-download](https://stplaformwe.blob.core.windows.net/kbase/fastx-download-csv.png)
 
-* Click on the **Download CSV** button to export data in a CSV file.
-* Includes Travelgate master data and suppliers portfolio.
-* Applies active filters to the exported file.
+* Click on the **Download CSV** button to export the data as a CSV file.
+* Includes Travelgate master data and the selected supplier's portfolio.
+* Applies the active filters to the exported file.
 
 
 ### Important Notes

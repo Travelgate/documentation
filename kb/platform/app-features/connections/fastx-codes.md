@@ -84,6 +84,14 @@ To ensure data integrity, any match marked with this icon **must be manually val
 
 The warning icon is a signal to **pay special attention** to the entry. It does not automatically mean the match is incorrect, and it can remain visible after validation because it reflects a collective data trend across the network.
 
+### Export to CSV
+
+![fastx-sellers-download](https://stplaformwe.blob.core.windows.net/kbase/fastx-download-csv.png)
+
+* Click on the **Download CSV** button to export the data as a CSV file.
+* Includes Travelgate master data and the selected supplier's portfolio.
+* Applies the active filters to the exported file.
+
 
 ### Important Notes
 

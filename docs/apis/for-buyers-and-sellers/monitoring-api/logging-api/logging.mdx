@@ -1,7 +1,6 @@
 ---
 sidebar_position: 1
 title: Logging
-draft: true
 ---
 
 import {
@@ -15,15 +14,75 @@ import {
 
 # Logging API
 
+## API Endpoint
+
+All Logging API operations use a single GraphQL endpoint:
+
+```
+https://api.travelgate.com
+```
+
 ## Overview
 
-[Logging](/kb/platform/app-features/monitoring-tools/logging/logging-details) is a powerful monitoring feature that allows users to access and analyze transaction logs across the Travelgate platform. It is designed to track and analyze the booking flow, identify error codes, and troubleshoot performance issues. 
+[Logging](/kb/platform/app-features/monitoring-tools/logging/logging-details) is Travelgate's powerful monitoring feature that allows users to access and analyze transaction logs across the Travelgate platform. It is
+designed to track and analyze the booking flow, identify error codes, and troubleshoot performance issues. This API lets you access log data by connection, reference, operation type, and time range, and download the underlying XML/JSON request and response files for detailed investigations.
 
-This document details the steps to search, extract traces, and download request logs (XML/JSON) using the **Travelgate Logging API**. The queries detailed below provide the exact same level of data access as our web platform.
+This document details how to search, extract traces, and download request logs (XML/JSON) using the **Travelgate Logging API**. The queries detailed below provide the exact same level of data access as our web platform.
 
-:::info Authentication
-All Logging API calls require JWT (JSON Web Token) authentication. See the [Admin API Authentication Guide](/docs/apis/for-buyers-and-sellers/admin-api/authentication) to obtain your bearer token and include it in all API requests: `Authorization: Bearer <your_jwt>`.
-:::
+### Common Use Cases
+
+- **Inspect Transaction Traces:** Retrieve request and response logs for a specific method or error case.
+- **Find Logs by Reference:** Search logs using a client reference or supplier reference.
+- **Review Quote-to-Book Flow:** Trace the Quote that generated a known Booking or One Step Book transaction.
+- **Audit Search Logs:** Retrieve search traffic only after Search Auditing has been triggered in the web platform.
+- **Download Log Files:** Access HotelX, Legacy, and Connector log files for troubleshooting and support investigations.
+
+## When to Use Logging, Logging API, Stats, or Stats API
+
+Use these tools together depending on whether you need UI-based log browsing, programmatic transaction-level access, dashboard monitoring, or programmatic aggregated metrics.
+
+| Need | Recommended Tool | Why |
+|---|---|---|
+| Review and troubleshoot transactions in the platform UI | [Logging](/kb/platform/app-features/monitoring-tools/logging/logging-details) | Provides the built-in transaction-level log viewer for operational troubleshooting |
+| Search, extract traces, and download request/response logs programmatically | Logging API | Returns transaction-level log data for automated audit and support workflows |
+| Review connection health, booking-flow performance, and NOK ratios in the platform UI | [Stats](/kb/platform/app-features/monitoring-tools/stats/stats-details) | Provides the built-in monitoring dashboard for operational analysis |
+| Build custom dashboards, automate reporting, or query aggregated metrics programmatically | [Stats API](/docs/apis/for-buyers-and-sellers/monitoring-api/stats-api/stats) | Returns aggregated metrics optimized for integrations and reporting workflows |
+
+For a practical guide to the Logging web UI workflow, see [How to Use Logging](/kb/platform/app-features/monitoring-tools/logging/logging-details) and [How to Audit Supplier Transactions](/kb/platform/app-features/monitoring-tools/logging/audit-supplier-transactions).
+
+## Authentication
+
+All Logging API calls require JWT (JSON Web Token) authentication. Follow the steps in the [Admin API Authentication Guide](/docs/apis/for-buyers-and-sellers/admin-api/authentication) to obtain your bearer token and include it in all API requests.
+
+**Quick Example:**
+
+Include your JWT token in the `Authorization` header:
+
+```bash
+curl 'https://api.travelgate.com' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer YOUR_JWT_TOKEN' \
+  --data-raw '{
+    "query": "query getLogs($input: LoggingLogsWhereInput!) { logging { getLogs(limit: 10, where: $input) { totalCount adviseMessage { code description level } edges { node { logData { timestamp execTime api buyer { code } seller { code } access { accessData { code } } client { clientData { name code } } errorCode errorType operationCode operationType sessionID trafficType files { hotelX legacy connector connectorUnencrypted } } } } } } }",
+    "variables": {
+      "input": {
+        "api": "hotel",
+        "timeRange": {
+          "absolute": {
+            "from": "2026-04-07 09:38:00",
+            "to": "2026-04-07 10:38:00"
+          }
+        },
+        "mode": "BUYER",
+        "errorCode_in": [0, 102, 204, 205, 206, 207, 301, 303, 101, 2, 3, 103, 104, 105, 106],
+        "operationType_in": ["BOOKING"],
+        "buyer_in": ["BUYER_CODE"],
+        "seller_in": ["SELLER_CODE"],
+        "access_in": ["YOUR_ACCESS"]
+      }
+    }
+  }'
+```
 
 ## Considerations & Business Rules
 
@@ -34,47 +93,669 @@ Before querying the logs, keep in mind the following platform rules:
 * **One Step Book:** You can successfully retrieve both Quote and Book logs for a [One Step Book](/docs/apis/for-buyers/hotel-x-pull-buyers-api/one-shot-booking-flow/onestepbook) operation by filtering by connection, reference, or Session ID.
 * **Trace Types:** Depending on the Buyer's integration, you will see either **HotelX Logs** or **Legacy Logs**, but never both. **Connector Logs** (communication directly with the Seller) are always available.
 
+### Legacy API Access Filter
+
+The `access_in` filter in `where` only applies to **HotelX connections**. Do not use it for Legacy API connections.
+
+- For HotelX connections, filter by access code to narrow results to a specific credential set.
+- For Legacy API connections, omit the access filter and use the time range together with Buyer and Seller filters instead.
+- If a Buyer is transitioning between Legacy and HotelX, they may have traffic on both APIs. Use the **My Connections** screen to confirm the integration type before applying the access filter.
+
+For more detail on when to use the access filter, see [How to Use Logging](/kb/platform/app-features/monitoring-tools/logging/logging-details).
+
 ## Query Overview
 
 The Logging API offers three main methods to search and retrieve information:
 
-### 1. getLogs
-Primary query to search the log history by applying multiple filters (dates, supplier, buyer, operation type, or error codes).
+### Log Search (`getLogs`)
+Use this query to perform general searches based on time ranges and filters.
 
-### 2. getLogsByReference
+#### A. Where (Filters)
+
+The `input` object allows you to precisely filter logs based on API, partner perspective, time range, access, and operation type.
+
+```js
+{
+  "input": {
+    "api": "hotel",
+    "timeRange": {
+      "absolute": {
+        "from": "2026-04-07 09:38:00",
+        "to": "2026-04-07 10:38:00"
+      }
+    },
+    "mode": "BUYER",
+    "operationType_in": ["BOOKING"],
+    "buyer_in": ["BUYER_CODE"],
+    "seller_in": ["SELLER_CODE"],
+    "access_in": ["YOUR_ACCESS"]
+  }
+}
+```
+
+**Mandatory criteria:**
+* `api` (The API whose logs you want to inspect, for example `hotel`).
+* `mode` (Search perspective, either `BUYER` or `SELLER`).
+* `timeRange` (Absolute date range using the format `"YYYY-MM-DD HH:mm:ss"`).
+
+**Optional filters:**
+* `buyer_in`: Restrict results to one or more Buyer organization codes.
+* `seller_in`: Restrict results to one or more Seller organization codes.
+* `access_in`: Restrict results to one or more access codes. Use only for HotelX connections.
+* `operationType_in`: Restrict results to one or more operation types such as `SEARCH`, `QUOTE`, `BOOKING`, `CANCEL`, or `OTHER`.
+* `errorCode_in`: Restrict results to one or more platform error codes when troubleshooting failed transactions.
+
+#### B. Obtaining Filter Values (Equivalences)
+
+If you need to fetch or confirm the values used in your Logging filters, use the following equivalence table:
+
+| Logging Filter Input | What it Represents | How to obtain it |
+|---|---|---|
+| `buyer_in` | Buyer Organization Code | Query your Buyers list in the [Admin API](https://docs.travelgate.com/docs/apis/for-buyers-and-sellers/admin-api/overview) to retrieve the `orgCode` |
+| `seller_in` | Seller Organization Code | Query your Sellers list in the [Admin API](https://docs.travelgate.com/docs/apis/for-buyers-and-sellers/admin-api/overview) to retrieve the `orgCode` |
+| `access_in` | Access Code | Query your Connections/Accesses in the [Admin API](https://docs.travelgate.com/docs/apis/for-buyers-and-sellers/admin-api/overview) to retrieve the `code` |
+| `reference.supplier` | Supplier Reference / Locator | Use the supplier locator returned by the supplier or Seller system |
+| `reference.client` | Client Reference / Locator | Use the client reference set in the Book request |
+
+#### C. Enum Reference
+
+##### Mode Values
+
+The `mode` field specifies whose perspective you want to query:
+
+| Value | Description |
+|-------|-------------|
+| `BUYER` | Query logs from the Buyer's perspective |
+| `SELLER` | Query logs from the Seller's perspective |
+
+##### Operation Type Values
+
+The `operationType_in` filter in Logging API typically uses these operation type values:
+
+| Value | Description |
+|-------|-------------|
+| `SEARCH` | Search operations - initial availability queries |
+| `QUOTE` | Quote operations - rate and availability confirmation |
+| `BOOKING` | Booking operations - reservation creation and confirmation |
+| `CANCEL` | Cancel operations - reservation cancellations |
+| `OTHER` | Other operations outside the standard booking flow, such as read or content-related requests |
+
+##### Log File Types
+
+The `files` object in log responses identifies which downloadable traces are available:
+
+| Field | Description |
+|-------|-------------|
+| `hotelX` | HotelX request/response trace for Buyer traffic integrated through HotelX |
+| `legacy` | Legacy Pull Buyers API request/response trace |
+| `connector` | Connector trace showing the communication between Travelgate and the Seller |
+| `connectorUnencrypted` | Connector payload without encryption when available for troubleshooting |
+
+### Log Search by Reference (`getLogsByReference`)
+
 Designed to search for logs using a specific locator or reference (client or supplier ID).
 
-### 3. getQuoteLogsFromBook
+**Key inputs:**
+* `where.api`: The API whose logs you want to inspect.
+* `where.mode`: Whether to inspect Buyer or Seller-side traffic.
+* `where.timeRange`: Time window used to narrow the lookup.
+* `where.reference.supplier` or `where.reference.client`: The reference you want to track.
+
+Use this query when you already know a locator and want to retrieve the matching session-level log records quickly.
+
+### Quote Logs from Booking (`getQuoteLogsFromBook`)
+
 Specific query to track the original Quote that generated a specific Booking.
 
+**Key inputs:**
+* `input.timeRange`: Time window around the booking transaction.
+* `input.sessionId`: The booking session ID you want to trace back to its Quote.
+* `input.buyer` and `input.seller`: Organization codes used to narrow the lookup.
+* `input.mode` and `input.api`: Partner perspective and API scope for the search.
+
+Use this query when you need quote-to-book traceability for a booking investigation or One Step Book analysis.
+
+### Response Fields
+
+#### Advisory Messages
+
+The `adviseMessage` field appears in `getLogs` and `getQuoteLogsFromBook` responses to provide operational guidance. It may be `null` if no warnings or issues are detected.
+
+**Advisory Message Structure (`adviseMessage`):**
+
+```json
+[
+  {
+    "code": "SAMPLE_CODE",
+    "description": "Description of the advisory message",
+    "correlationID": "1234567890",
+    "level": "WARN",
+    "external": {
+      "code": "SUPPLIER_CODE",
+      "message": "Additional external context"
+    }
+  }
+]
+```
+
+**Advisory Message Levels:**
+
+| Level | Meaning | Action Required |
+|-------|---------|-----------------|
+| `INFO` | Informational message, no action needed | None - informational only |
+| `WARN` | Caution recommended, may affect result completeness or traceability | Review the message and consider investigation |
+| `ERROR` | Issue detected | Investigation recommended |
+
+**Advisory Message Fields:**
+
+| Field | Returned By | Description |
+|-------|-------------|-------------|
+| `code` | `getLogs`, `getQuoteLogsFromBook` | Message code returned by the API |
+| `description` | `getLogs`, `getQuoteLogsFromBook` | Human-readable message description |
+| `correlationID` | `getQuoteLogsFromBook` | Identifier for troubleshooting and support investigations |
+| `level` | `getLogs`, `getQuoteLogsFromBook` | Severity level (`WARN`, `ERROR`, `INFO`) |
+| `external.code` | `getQuoteLogsFromBook` | External or supplier-related code when available |
+| `external.message` | `getQuoteLogsFromBook` | External or supplier-related message when available |
+
+#### Main Log Data Fields
+
+The `logData` object contains the main trace metadata returned by Logging API queries.
+
+| Field | Returned By | Description |
+|-------|-------------|-------------|
+| `timestamp` | `getLogs`, `getLogsByReference` | Date and time when the logged transaction was recorded |
+| `execTime` | `getLogs` | Transaction duration at the integration level |
+| `api` | `getLogs` | API where the transaction was processed, for example `hotel` |
+| `buyer.code` | `getLogs` | Buyer organization code associated with the transaction |
+| `seller.code` | `getLogs` | Seller organization code associated with the transaction |
+| `access.accessData.code` | `getLogs` | Access code used by the Buyer for the connection |
+| `client.clientData.name` / `client.clientData.code` | `getLogs` | Buyer-defined client metadata used to categorize the traffic |
+| `errorCode` | `getLogs` | Platform error code associated with the transaction |
+| `errorType` | `getLogs` | Error classification returned for the transaction |
+| `operationCode` | `getLogs` | Specific operation or method code processed in the transaction |
+| `operationType` | `getLogs`, `getLogsByReference` | Operation family such as `SEARCH`, `QUOTE`, `BOOKING`, or `CANCEL` |
+| `sessionID` | `getLogs`, `getLogsByReference` | Session identifier used to correlate related transactions |
+| `trafficType` | `getLogs` | Traffic category associated with the transaction |
+| `files` | All three queries | Available downloadable trace files for the transaction |
+
 ## Examples
+
+In the following examples, you can see how to extract different types of logs using the interactive playground.
 
 ### Example 1: Search Logs (`getLogs`)
 
 Use this query to perform general searches based on time ranges and filters.
 
+**Query:**
+
+```graphql
+query getLogs($input: LoggingLogsWhereInput!) {
+  logging {
+    getLogs(limit: 10, where: $input) {
+      totalCount
+      adviseMessage {
+        code
+        description
+        level
+      }
+      edges {
+        node {
+          logData {
+            timestamp
+            execTime
+            api
+            buyer {
+              code
+            }
+            seller {
+              code
+            }
+            access {
+              accessData {
+                code
+              }
+            }
+            client {
+              clientData {
+                name
+                code
+              }
+            }
+            errorCode
+            errorType
+            operationCode
+            operationType
+            sessionID
+            trafficType
+            files {
+              hotelX
+              legacy
+              connector
+              connectorUnencrypted
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+**Variables:**
+
+```json
+{
+  "input": {
+    "api": "hotel",
+    "timeRange": {
+      "absolute": {
+        "from": "2026-04-07 09:38:00",
+        "to": "2026-04-07 10:38:00"
+      }
+    },
+    "mode": "BUYER",
+    "errorCode_in": [0, 102, 204, 205, 206, 207, 301, 303, 101, 2, 3, 103, 104, 105, 106],
+    "operationType_in": ["BOOKING"],
+    "buyer_in": ["BUYER_CODE"],
+    "seller_in": ["SELLER_CODE"],
+    "access_in": ["YOUR_ACCESS"]
+  }
+}
+```
+
+**Sample Response:**
+
+```json
+{
+  "data": {
+    "logging": {
+      "getLogs": {
+        "totalCount": 2,
+        "adviseMessage": null,
+        "edges": [
+          {
+            "node": {
+              "logData": {
+                "timestamp": "2026-04-07 09:42:11",
+                "execTime": 428,
+                "api": "hotel",
+                "buyer": {
+                  "code": "BUYER_CODE"
+                },
+                "seller": {
+                  "code": "SELLER_CODE"
+                },
+                "access": {
+                  "accessData": {
+                    "code": "YOUR_ACCESS"
+                  }
+                },
+                "client": {
+                  "clientData": {
+                    "name": "B2B Web",
+                    "code": "WEB-B2B"
+                  }
+                },
+                "errorCode": 0,
+                "errorType": "NO_ERROR",
+                "operationCode": "book",
+                "operationType": "BOOKING",
+                "sessionID": "f7f11b67-6b50-4bb0-bb56-xxxxxxxxxxxx",
+                "trafficType": "BASIC",
+                "files": {
+                  "hotelX": true,
+                  "legacy": false,
+                  "connector": true,
+                  "connectorUnencrypted": false
+                }
+              }
+            }
+          },
+          {
+            "node": {
+              "logData": {
+                "timestamp": "2026-04-07 09:44:03",
+                "execTime": 615,
+                "api": "hotel",
+                "buyer": {
+                  "code": "BUYER_CODE"
+                },
+                "seller": {
+                  "code": "SELLER_CODE"
+                },
+                "access": {
+                  "accessData": {
+                    "code": "YOUR_ACCESS"
+                  }
+                },
+                "client": {
+                  "clientData": {
+                    "name": "B2B Web",
+                    "code": "WEB-B2B"
+                  }
+                },
+                "errorCode": 204,
+                "errorType": "APPLICATION",
+                "operationCode": "book",
+                "operationType": "BOOKING",
+                "sessionID": "40dd74b3-0e56-4d7d-8cab-xxxxxxxxxx",
+                "trafficType": "BASIC",
+                "files": {
+                  "hotelX": true,
+                  "legacy": false,
+                  "connector": true,
+                  "connectorUnencrypted": false
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+**Response Notes:**
+
+- `totalCount` shows how many matching log records were found for the requested filter set.
+- `edges[].node.logData` contains one log record per matching transaction.
+- `errorCode`, `errorType`, and `operationType` are the fastest fields to inspect when diagnosing failed transactions.
+- `files` tells you which downloadable traces are available for each result.
+
+**curl Example:**
+
+```bash
+curl 'https://api.travelgate.com' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer YOUR_JWT_TOKEN' \
+  --data-raw '{
+    "query": "query getLogs($input: LoggingLogsWhereInput!) { logging { getLogs(limit: 10, where: $input) { totalCount adviseMessage { code description level } edges { node { logData { timestamp execTime api buyer { code } seller { code } access { accessData { code } } client { clientData { name code } } errorCode errorType operationCode operationType sessionID trafficType files { hotelX legacy connector connectorUnencrypted } } } } } } }",
+    "variables": {
+      "input": {
+        "api": "hotel",
+        "timeRange": {
+          "absolute": {
+            "from": "2026-04-07 09:38:00",
+            "to": "2026-04-07 10:38:00"
+          }
+        },
+        "mode": "BUYER",
+        "errorCode_in": [0, 102, 204, 205, 206, 207, 301, 303, 101, 2, 3, 103, 104, 105, 106],
+        "operationType_in": ["BOOKING"],
+        "buyer_in": ["BUYER_CODE"],
+        "seller_in": ["SELLER_CODE"],
+        "access_in": ["YOUR_ACCESS"]
+      }
+    }
+  }'
+```
+
 <GraphqlSample
   query={getLogsQuery}
   variables={getLogsVariables}
 />
+&nbsp;
 
 ### Example 2: Logs by Reference (`getLogsByReference`)
 
 Ideal for finding all logs associated with a specific locator or reference ID.
 
+**Query:**
+
+```graphql
+query getLogsByRef($where: LoggingLogsByReferenceWhereInput!) {
+  logging {
+    getLogsByReference(where: $where) {
+      edges {
+        node {
+          logData {
+            sessionID
+            timestamp
+            operationType
+            files {
+              hotelX
+              legacy
+              connector
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+**Variables:**
+
+```json
+{
+  "where": {
+    "api": "hotel",
+    "mode": "BUYER",
+    "timeRange": {
+      "absolute": {
+        "from": "2026-04-14 00:00:00",
+        "to": "2026-04-15 00:00:00"
+      }
+    },
+    "reference": {
+      "supplier": "SUPPLIER_LOCATOR_HERE"
+    }
+  }
+}
+```
+
+**Sample Response:**
+
+```json
+{
+  "data": {
+    "logging": {
+      "getLogsByReference": {
+        "edges": [
+          {
+            "node": {
+              "logData": {
+                "sessionID": "9ffb5416-249f-4916-b9f0-xxxxxxxxxxxx",
+                "timestamp": "2026-04-14 08:17:22",
+                "operationType": "BOOKING",
+                "files": {
+                  "hotelX": true,
+                  "legacy": false,
+                  "connector": true
+                }
+              }
+            }
+          },
+          {
+            "node": {
+              "logData": {
+                "sessionID": "9ffb5416-249f-4916-b9f0-xxxxxxxxxxx",
+                "timestamp": "2026-04-14 08:16:58",
+                "operationType": "QUOTE",
+                "files": {
+                  "hotelX": true,
+                  "legacy": false,
+                  "connector": true
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+**Response Fields:**
+
+- **logData.sessionID** (`ID`): Session identifier shared by related transactions in the same flow.
+- **logData.timestamp** (`DateTime`): Date and time when the matching record was logged.
+- **logData.operationType** (`OperationType`): Flow stage represented by the returned record, such as `QUOTE` or `BOOKING`.
+- **logData.files** (`LoggingFiles`): Downloadable traces available for that reference match.
+
+:::note
+`getLogsByReference` is especially useful when you want to reconstruct the transaction sequence for a known locator. If the same `sessionID` appears in multiple rows, review the `timestamp` and `operationType` fields together to understand the order of events.
+:::
+
+**curl Example:**
+
+```bash
+curl 'https://api.travelgate.com' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer YOUR_JWT_TOKEN' \
+  --data-raw '{
+    "query": "query getLogsByRef($where: LoggingLogsByReferenceWhereInput!) { logging { getLogsByReference(where: $where) { edges { node { logData { sessionID timestamp operationType files { hotelX legacy connector } } } } } } }",
+    "variables": {
+      "where": {
+        "api": "hotel",
+        "mode": "BUYER",
+        "timeRange": {
+          "absolute": {
+            "from": "2026-04-14 00:00:00",
+            "to": "2026-04-15 00:00:00"
+          }
+        },
+        "reference": {
+          "supplier": "SUPPLIER_LOCATOR_HERE"
+        }
+      }
+    }
+  }'
+```
+
 <GraphqlSample
   query={getLogsByRefQuery}
   variables={getLogsByRefVariables}
 />
+&nbsp;
 
 ### Example 3: Quote Logs from Booking (`getQuoteLogsFromBook`)
 
 Use this to find the specific Quote log that originated a known Booking session.
 
+**Query:**
+
+```graphql
+query getQuoteLogsFromBook($input: LoggingQuoteLogFromBookInput!) {
+  logging {
+    getQuoteLogsFromBook(where: $input) {
+      adviseMessage {
+        code
+        description
+        correlationID
+        level
+        external {
+          code
+          message
+        }
+      }
+      logData {
+        files {
+          legacy
+          hotelX
+          connector
+        }
+      }
+    }
+  }
+}
+```
+
+**Variables:**
+
+```json
+{
+  "input": {
+    "timeRange": {
+      "absolute": {
+        "from": "2026-04-09 03:49:00",
+        "to": "2026-04-10 09:49:00"
+      }
+    },
+    "sessionId": "9ffb5416-249f-4916-b9f0-xxxxxxxx",
+    "buyer": "BUYER_CODE",
+    "seller": "SELLER_CODE",
+    "mode": "BUYER",
+    "api": "hotel"
+  }
+}
+```
+
+**Sample Response:**
+
+```json
+{
+  "data": {
+    "logging": {
+      "getQuoteLogsFromBook": {
+        "adviseMessage": [
+          {
+            "code": "TRACE_INFO",
+            "description": "Quote trace found for the requested booking session.",
+            "correlationID": "1234567890",
+            "level": "INFO",
+            "external": null
+          }
+        ],
+        "logData": {
+          "files": {
+            "legacy": false,
+            "hotelX": true,
+            "connector": true
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+**Response Fields:**
+
+- **adviseMessage.code** (`ID`): Internal message code associated with the trace lookup result.
+- **adviseMessage.description** (`String`): Human-readable explanation of the lookup outcome.
+- **adviseMessage.correlationID** (`ID`): Correlation identifier that can be used in support investigations.
+- **adviseMessage.level** (`AdviseMessageLevel`): Severity of the returned message.
+- **logData.files** (`LoggingFiles`): Trace files available for the Quote associated with the requested Booking session.
+
+:::note
+`getQuoteLogsFromBook` does not return the full quote payload inline. Instead, it tells you which trace files are available so you can download and inspect the Quote-side HotelX, Legacy, or Connector logs for the booking flow.
+:::
+
+**curl Example:**
+
+```bash
+curl 'https://api.travelgate.com' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer YOUR_JWT_TOKEN' \
+  --data-raw '{
+    "query": "query getQuoteLogsFromBook($input: LoggingQuoteLogFromBookInput!) { logging { getQuoteLogsFromBook(where: $input) { adviseMessage { code description correlationID level external { code message } } logData { files { legacy hotelX connector } } } } }",
+    "variables": {
+      "input": {
+        "timeRange": {
+          "absolute": {
+            "from": "2026-04-09 03:49:00",
+            "to": "2026-04-10 09:49:00"
+          }
+        },
+        "sessionId": "9ffb5416-249f-4916-b9f0-xxxxxxxx",
+        "buyer": "BUYER_CODE",
+        "seller": "SELLER_CODE",
+        "mode": "BUYER",
+        "api": "hotel"
+      }
+    }
+  }'
+```
+
 <GraphqlSample
   query={getQuoteLogsFromBookQuery}
   variables={getQuoteLogsFromBookVariables}
 />
+&nbsp;
 
 ## Frequently Asked Questions
 

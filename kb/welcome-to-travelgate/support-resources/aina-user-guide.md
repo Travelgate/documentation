@@ -18,7 +18,7 @@ Let's dive in and unlock the full potential of your AIna experience! 🚀
 When reporting an error, please include relevant snippets from the **error and warning logs in Travelgate's response** (or ‘applicationError’ for responses via the Legacy Pull Buyers API) to help us provide the best possible assistance. For more details on error structures and expected warnings, refer to:
 
 - [List of Errors and Warnings](/kb/connectivity-products/for-buyers/errors-and-warnings/overview)
-- [Hotel-X Booking Flow and Management Errors](/docs/apis/for-buyers/hotel-x-pull-buyers-api/making-requests/errors-and-warnings/booking-flow) and [Hotel-X Content Errors](/docs/apis/for-buyers/hotel-x-pull-buyers-api/making-requests/errors-and-warnings/content)
+- [HotelX Booking Flow and Management Errors](/docs/apis/for-buyers/hotel-x-pull-buyers-api/making-requests/errors-and-warnings/booking-flow) and [HotelX Content Errors](/docs/apis/for-buyers/hotel-x-pull-buyers-api/making-requests/errors-and-warnings/content)
 - [Legacy Pull Buyers API Booking Flow and Management Errors](/docs/apis/for-buyers/deprecated/legacy-pull-buyers-api/making-requests/errors-and-warnings/booking-flow) and [Legacy Pull Buyers API Content Errors](/docs/apis/for-buyers/deprecated/legacy-pull-buyers-api/making-requests/errors-and-warnings/content)
 :::
 
@@ -26,7 +26,7 @@ When reporting an error, please include relevant snippets from the **error and w
 
 Include specific terms or keywords related to your inquiry, such as:
 
-- API in use (e.g., Hotel-X, Channel-X, Inventory, etc.).
+- API in use (e.g., HotelX, ChannelX, Inventory, etc.).
 - The method (e.g., Search, Quote, Hotels, etc.).
 - Your organization type (Buyer or Seller).
 - The APP or solution being used (Inventory, Distribution).
@@ -54,9 +54,9 @@ AIna provides quick answers and guidance for troubleshooting errors but cannot m
 
 **Correct Example:**
 
-"Hi AIna, I'm currently working on my Hotel-X development and need to know if there are any character limitations for passenger names and surnames in a booking. Could you provide this information?"
+"Hi AIna, I'm currently working on my HotelX development and need to know if there are any character limitations for passenger names and surnames in a booking. Could you provide this information?"
 
-- This query is well-structured and specific, providing essential details such as the API in use and the exact requirement. It includes specific keywords such as "Hotel-X development", "booking", "passenger names and surnames" and "character limitations," which assist AIna in identifying the query. By providing a complete question in full sentences, it helps AIna understand the user's intent more effectively.
+- This query is well-structured and specific, providing essential details such as the API in use and the exact requirement. It includes specific keywords such as "HotelX development", "booking", "passenger names and surnames" and "character limitations," which assist AIna in identifying the query. By providing a complete question in full sentences, it helps AIna understand the user's intent more effectively.
 
 **Incorrect Example:**
 
@@ -68,7 +68,7 @@ AIna provides quick answers and guidance for troubleshooting errors but cannot m
 
 **Correct Example:**
 
-"Hello AIna, I'm trying to make a booking in Hotel-X Pull Buyers API, but I'm getting a 102 error - Provider error message in Book response. Could you help me identify the issue? Here is the error message: [insert error snippet]."
+"Hello AIna, I'm trying to make a booking in HotelX Pull Buyers API, but I'm getting a 102 error - Provider error message in Book response. Could you help me identify the issue? Here is the error message: [insert error snippet]."
 
 - Providing specific details about the error code and context helps AIna deliver a precise response.
 
@@ -96,7 +96,7 @@ AIna provides quick answers and guidance for troubleshooting errors but cannot m
 
 **Correct Example:**
 
-"Hello AIna, we're experiencing an issue with reservation statuses in the Hotel-X API. We receive 'Booking status: UN' in the Book Mutation response and 'Booking status: OK' in the Booking Query response. Could you provide steps to resolve this?"
+"Hello AIna, we're experiencing an issue with reservation statuses in the HotelX API. We receive 'Booking status: UN' in the Book Mutation response and 'Booking status: OK' in the Booking Query response. Could you provide steps to resolve this?"
 
 - The detailed explanation of the issue allows AIna to suggest appropriate troubleshooting steps.
 

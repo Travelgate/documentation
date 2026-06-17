@@ -6,11 +6,11 @@ sidebar_position: 4
 
 ## Cancellation Process
 
-### Can I apply any filters to my Hotel-X Cancel Mutation?
+### Can I apply any filters to my HotelX Cancel Mutation?
 No, filters cannot be applied to the Cancel Mutation request.
 
 ### Is it possible to retrieve cancellation costs without canceling the booking?
-Yes, if the Seller provides cancellation policy details, you can retrieve this information through the **Hotel-X Quote Query** or the **Hotel-X Booking Query** without initiating a cancellation.
+Yes, if the Seller provides cancellation policy details, you can retrieve this information through the **HotelX Quote Query** or the **HotelX Booking Query** without initiating a cancellation.
 
 ### Can Travelgate remove cancellation fees if the hotel waives them after the booking is canceled?
 As cancellation policies are returned by the Supplier via the integration, it is not possible to remove cancellation fees from a booking that already includes them.
@@ -21,7 +21,7 @@ Yes, an option represents a combination of rooms. Canceling an option results in
 ## Booking Management
 
 ### Can I cancel individual rooms within a booking?
-No, **you cannot cancel individual rooms within a booking** using the Hotel-X API. Cancellations apply to the entire booking (option), which includes all rooms in that reservation. When you cancel the option, all associated rooms are canceled together.
+No, **you cannot cancel individual rooms within a booking** using the HotelX API. Cancellations apply to the entire booking (option), which includes all rooms in that reservation. When you cancel the option, all associated rooms are canceled together.
 
 If you need to remove or change a specific room, you can use the [Amend Rooms](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/amendments/amend-rooms) operation. This allows you to modify the structure of the booking rather than cancel individual rooms. Note that this is not the same as a partial cancellation—it is a booking modification and may involve amendment fees or price changes, depending on the supplier’s policies.
 
@@ -33,5 +33,5 @@ No, once a booking is canceled, it cannot be reinstated. However, you can initia
 If you need further details regarding a mistakenly canceled booking, please contact the Seller directly. Keep in mind that any booking management actions conducted outside Travelgate will not be reflected in our system. Our platform only tracks bookings and cancellations made through Travelgate.
 
 :::tip Need more information?
-Explore our [Hotel-X Cancel Mutation Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/cancel) for further insights on handling cancellations. 🚀
+Explore our [HotelX Cancel Mutation Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/cancel) for further insights on handling cancellations. 🚀
 :::

@@ -6,7 +6,19 @@ sidebar_position: 1
 
 The setup CSV files provide the essential static Inventory information for setting up the hotel product, including all information about the hotel, rates, rooms, policies, etc.
 
-To effectively manage this data, please familiarise yourself with the `hotels`, `rateplans`, `rooms`, `policies`, `specific-clients`, `taxes` and `offers` setup files.
+To effectively manage this data, please familiarise yourself with the `hotels`, `rateplans`, `rooms`, `policies`, `taxes` and `offers` setup files.
+
+:::important Upload order matters
+The setup files reference data from the master files and from each other. To avoid `Hotel not found` or `No rates for hotelId ...` errors, upload them in this exact order:
+
+1. **Masters** first — `hotelsMaster`, `roomsMaster`
+2. **Hotels Setup** — `hotels` (activates the hotels in your inventory)
+3. **RatePlans** — `rateplans` (creates the rate codes)
+4. **Rooms** — `rooms` (assigns rooms to rate codes, requires rates to exist)
+5. **Policies / Taxes / Offers** — can be uploaded in any order once the rates exist
+
+The system polls the SFTP approximately every hour. If you upload everything at once, the dependencies are resolved sequentially as files are picked up; however, uploading in order minimises the chance of transient errors.
+:::
 
 import DocCardList from '@theme/DocCardList';
 import {useCurrentSidebarCategory} from '@docusaurus/theme-common';

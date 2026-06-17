@@ -19,15 +19,15 @@ By leveraging Logging, you can gain valuable insights into your connection activ
 3. Choose your search method: You can search by **connection, reference, or session ID**.
 4. Apply filters to refine your search:
    - Time range: Up to **2 months**.
-   - Access: Filter by Hotel-X Access (by Name or Code). This filter applies only to **Hotel-X connections**.
-   - Operation type: Search, Quote, Book, Cancel, Other (Booking List/Booking Read).  
+   - Access: Filter by HotelX Access (by Name or Code). This filter applies only to **HotelX connections**.
+   - Operation type: Search, Quote, Book, Cancel, Other (e.g. Booking Read, Booking List).  
      - *Note:* The "Search" operation type will only return results if searches have been **[audited first](/kb/platform/app-features/monitoring-tools/logging/audit-searches-functionality)**.
    - Status/Error code: Select specific errors to filter results.
 5. Click on "Search logs" to retrieve the logs.
 
-:::info
+:::warning
 - Buyer connections using our **Legacy API** are audited at the **connection level** — access-level auditing is not available. This means that when retrieving logs using the Logging tool, you **should not use the Access Filter**, as it will return no results.
-- If you're a Seller, you can check whether your Buyer is integrated via the Hotel-X API or the Legacy Pull Buyers API by looking for the “Hotel-X” label on the connection in the “My Connections” screen. If the Buyer is using the Hotel-X API, the [“Hotel-X” label](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details/#additional-access-information) will appear next to the “Buyer” label.
+- If you're a Seller, you can check whether your Buyer is integrated via the HotelX API or the Legacy Pull Buyers API by looking for the **“HotelX” label** on the connection in the “My Connections” screen. If the Buyer is using the HotelX API, the [“HotelX” label](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details/#additional-access-information) will appear next to the “Buyer” label.
 :::
 
 ![logging_new_1](https://storage.travelgate.com/kbase/logging_new_1.jpg)
@@ -45,7 +45,7 @@ When your search returns logs, Logging will display the following details:
 - **Operation type** (Search, Quote, Book, Cancel, Other)
 - **Session ID** (unique identifier for the transaction)
 - **Traffic Type** (Basic, Optimized, Scheduler, Speed)
-- **Actions**: Logs available for download include Hotel-X Logs/Legacy Logs, and Connector Logs. For Book transactions, you can directly download the corresponding Quote logs used in that specific booking flow. Additionally, you can download all visible logs on your screen by clicking the 'Download All' button above the table.
+- **Actions**: Logs available for download include HotelX Logs/Legacy Logs, and Connector Logs. For Book transactions, you can directly download the corresponding Quote logs used in that specific booking flow. Additionally, you can download all visible logs on your screen by clicking the 'Download All' button above the table.
 
 ![logging_new_2](https://storage.travelgate.com/kbase/logging_new_2.jpg)
 
@@ -62,48 +62,56 @@ The "Status/Error Code" displayed in the Logging screen only shows whether the t
 To determine the actual [status of a reservation](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/book/book-status), you should perform a [Booking Read](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/booking-read) operation.
 :::
 
-## Can I download my Hotel-X logs through Logging?
-Yes, you can retrieve Hotel-X logs directly by selecting **'Hotel-X Logs'** under the Download options.
+## Can I Download HotelX and Legacy Logs?
 
-### What is the difference between Hotel-X Logs, Legacy Logs, and Connector Logs?
+Yes, you can retrieve both HotelX and Legacy logs. In the Log Download options, select:
+
+- **Buyer HotelX Log** to download HotelX logs.
+- **Buyer Legacy Log** to download Legacy logs.
+
+### What is the difference between HotelX Logs, Legacy Logs, and Connector Logs?
 
 In the **Actions** section, you can download different types of transaction logs:
 
-- **Hotel-X Logs**: Transactions made by **Buyers** through our **Hotel-X API**.
+- **HotelX Logs**: Transactions made by **Buyers** through our **HotelX API**.
 - **Legacy Logs**: Transactions made by **Buyers** through our **Legacy API**.
-- **Connector Logs**: Transactions made through our **integration** when directly interacting with the **Seller’s API**.  
+- **Connector Logs**: Transactions generated through our **integration** when interacting directly with the **Seller's API**.
 
-**Connector Logs** are always available, as they capture all activity between our integration and the Seller. However, you’ll see either **Hotel-X Logs or Legacy Logs**—never both—depending on which API the Buyer is using.
+**Connector Logs** are always available because they capture all activity between our integration and the Seller. Depending on the Buyer's API, you may see either **HotelX Logs** or **Legacy Logs**, never both.
 
 ## Can I Retrieve Logs from a One Step Book Operation?
 
-Yes, you can obtain **Quote and Book logs** for the **One Step Book** operation using Logging. Simply apply the appropriate filters (**connection, reference, or session ID**) to locate the relevant logs.
+Yes. You can retrieve both **Quote** and **Book** logs for a **One Step Book** operation.
+
+To find them, search using one of these filters:
+
+- **Connection**
+- **Reference**
+- **Session ID**
 
 
 ## Why can’t I find my logs in the Logging App?
-If you can’t find the logs you need in the Logging App, try the following:
-  - **Partner type:**  
-    Make sure you’re browsing in the correct view (**Buyer or Seller**), depending on the data you want to see. You can switch between views at any time using the “View data of this page as:” selector on the left side of the screen.
-  - **For booking or cancellation error logs:**  
-    Always search using the “Search by Connections” → **“Time Range” filter** and, if possible, filter by Error. Logs for failed bookings or cancellations cannot be retrieved by client reference, supplier reference, or session ID.
-  - **Reference filter for OK logs:**  
-    The search-by-reference filter won’t return results until the day after the booking is made. To find logs before then—or if the reference search doesn’t return results—use the 'Time Range' filter instead.
+If you can't find the logs you need in the Logging App, check the following:
+
+- **Partner type**: Make sure you are browsing in the correct view, **Buyer** or **Seller**, depending on the data you want to see. You can switch views using the **View data of this page as:** selector on the left side of the screen.
+- **Booking or cancellation errors**: Use **Search by Connections** with the **Time Range** filter and, if possible, filter by error. Failed bookings or cancellations cannot be retrieved by client reference, supplier reference, or session ID.
+- **Reference filter for OK logs**: The reference will not return results until the day after the booking is made. If the reference still does not return results, use the **Time Range** filter instead.
     
 ### When to Use the Access Filter  
-Do not use the Access Filter for Legacy Connections—it **only returns results for Hotel-X Connections**. If you apply it to a Legacy Connection, it will return no results even if transactions exist for that time frame.  
+Use the **Access Filter only for HotelX Connections**. If you apply it to a **Legacy Connection**, it will return **no results** even when transactions exist for that period.
 
-**To check whether a Buyer is connected via Legacy or Hotel-X:**
+**To check whether a Buyer is connected via Legacy or HotelX:**
+
 1. Go to Connections → My Connections.
 2. Filter by Buyer ([Buyer card](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details#additional-access-information)).
 3. Look at the **Buyer Card** to the right of the Buyer name and code.
-  - If **the Hotel-X label appears**, the Buyer uses the **Hotel-X API**.
-  - If **no Hotel-X label appears**, the Buyer uses the **Legacy API**, and the Access filter will not return results and you should **use the 'Time Range' filter instead**.
 
-Some Buyers may be transitioning from Legacy to Hotel-X. If you’re unsure, contact the Buyer for confirmation.
+- If the **HotelX** label appears, the Buyer uses the **HotelX API**.
+- If the **HotelX** label does not appear, the Buyer uses the **Legacy API**. In that case, the Access Filter will not return results, so use the **Time Range** filter instead.
     
 
-:::info Legacy Pull Buyers API Information  
-For Buyer connections through our **Legacy Pull Buyers API**, filtering by **Hotel-X Access Code** is **not available**. Instead, connections are identified through the Buyer's **clientname#suppliercode** relationship.  
+:::warning Legacy Pull Buyers API Information  
+For Buyer connections through our **Legacy Pull Buyers API**, filtering by **HotelX Access Code** is **not available**. Instead, connections are identified through the Buyer's **clientname#suppliercode** relationship.  
 
-Some Buyers may be transitioning from the **Legacy Pull Buyers API** to the **Hotel-X API**, meaning they could have traffic on both APIs. If you're unsure, we strongly recommend **reaching out to your Buyers** for further details.
+Some Buyers may be transitioning from the **Legacy Pull Buyers API** to the **HotelX API**, meaning they could have traffic on both APIs. If you're unsure, we strongly recommend **reaching out to your Buyers** for further details.
 :::

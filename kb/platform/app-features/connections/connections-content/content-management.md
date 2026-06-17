@@ -28,7 +28,7 @@ In the **Connections Content** section, you can easily check and force updates f
 
 4. On the **results screen**, you can review the following details:
     * Hotel code
-    * [FastX](/kb/platform/app-features/connections/fastx-codes) hotel code (or '_pending_' if unavailable).
+    * [FastX](/kb/platform/app-features/connections/fastx-codes) hotel code (or '_Processing_' if a FastX code has not been assigned yet to that supplier hotel code).
     * Hotel name
     * Country
     * City
@@ -39,7 +39,7 @@ In the **Connections Content** section, you can easily check and force updates f
     - Hotel Address
     - Hotel code
     - Original supplier hotel code (if applicable)
-    - Giata ID
+    - GIATA ID
     - Phone
     - Fax
     - Email
@@ -87,7 +87,7 @@ The information displayed on the Connections Content screen **depends on the dat
     - Address
     - City
     - Category code
-    - Giata ID
+    - GIATA ID
     - Last Update
 
 

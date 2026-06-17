@@ -10,21 +10,21 @@ An "option" refers to different combinations of rooms, prices, and policies avai
 
 :::info The Booking Flow at Travelgate
 The booking flow consists of 3 sequential methods necessary to book a hotel room:
-- **For the Hotel-X Pull Buyers API**, the methods are Search, Quote, and Book. Search finds all available options, Quote retrieves updated pricing for the selected option, and Book completes the reservation.
+- **For the HotelX Pull Buyers API**, the methods are Search, Quote, and Book. Search finds all available options, Quote retrieves updated pricing for the selected option, and Book completes the reservation.
 - **For the Legacy Pull Buyers API (deprecated)** and **Hotel Pull Sellers API (deprecated),** the methods are Avail, Valuation, and Reservation.
 :::
 
 
 ## Single Mode and Multimode
 
-Our Hotel-X Pull Buyers API offers a range of features, including the flexibility to choose between **Single Mode** and **Multimode** searches.
+Our HotelX Pull Buyers API offers a range of features, including the flexibility to choose between **Single Mode** and **Multimode** searches.
 
 ### Single Mode Search
 
 * **What does Single Mode mean?**  
 Single Mode allows you to search the inventory of one Seller at a time. You can include several accesses from the same Seller in the same request, provided they share the same configuration and context.
 
-* **How does Hotel-X Single Mode work?**  
+* **How does HotelX Single Mode work?**  
 Simply include the Seller’s access code in your 'HotelXFilterSearchInput' to perform the request.
 ```
 "filterSearch": {
@@ -44,7 +44,7 @@ This is possible because HotelX operates with FastX codes, which unify all Suppl
 
 If you prefer, you can also search using your own Buyer codes, as long as they have been uploaded to our system with the [mapping plugin functionality](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping).
 
-* **How does Hotel-X Multimode work?**  
+* **How does HotelX Multimode work?**  
 You can perform a Multimode search in two ways:
     1. **By specifying accesses in the request**, so only those connections are queried:
     ```

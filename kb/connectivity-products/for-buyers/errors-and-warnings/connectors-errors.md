@@ -5,7 +5,7 @@ draft: true
 
 # Connector Errors
 
-Below is a reference table mapping **Connector error codes** (errors logged during transactions made through our integration when directly interacting with the Seller’s API) to the corresponding error types received in the **Buyer-side API responses** (Hotel-X/Legacy).  
+Below is a reference table mapping **Connector error codes** (errors logged during transactions made through our integration when directly interacting with the Seller’s API) to the corresponding error types received in the **Buyer-side API responses** (HotelX/Legacy).  
 
 This equivalence table helps you quickly identify the cause of an error, enabling you to manage and resolve each case more efficiently.
 

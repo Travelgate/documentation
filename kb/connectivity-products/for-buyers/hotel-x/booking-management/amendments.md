@@ -12,7 +12,7 @@ Amendments allow you to modify various aspects of an existing booking. Currently
 - **amendBoard**: Change the meal plan (board) associated with a booking.
 - **amendRemarks**: Add special requests (remarks) to a booking.
 - **amendPaxes**: Modify the number or details of guests in a booking.
-- **amendRooms**: Nodify your booking's rooms.
+- **amendRooms**: Modify your booking's rooms.
 
 Each amendment type is performed in two steps: **Query** and **Mutation**.
 
@@ -36,5 +36,5 @@ To confirm the amendment, send the `amendmentID` received in the previous query 
 To determine whether a Seller supports amendments and which modifications are allowed, review their [Metadata](/kb/connectivity-products/for-buyers/hotel-x/content/metadata). This metadata provides insights into the Seller’s capabilities and any restrictions related to amendments.
 
 :::info
-For more details and practical examples of booking modifications, refer to our [Hotel-X Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/amendments/).
+For more details and practical examples of booking modifications, refer to our [HotelX Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-management/amendments/).
 :::

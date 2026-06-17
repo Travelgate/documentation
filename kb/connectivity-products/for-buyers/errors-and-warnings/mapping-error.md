@@ -33,5 +33,5 @@ Since this warning indicates a discrepancy or issue with mapping validation, che
    - Verify that the requested hotel has been added to your mapping file and that the file was processed without errors.
 
 :::tip
-Don't forget to check our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping) for more details on the Hotel-X Mapping plugin! 🚀
+Don't forget to check our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping) for more details on the HotelX Mapping plugin! 🚀
 :::

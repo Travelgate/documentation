@@ -4,10 +4,10 @@ sidebar_position: 2
 
 # FastX Solution Overview
 
-FastX is **the new baseline for hotel connectivity** with our [Hotel-X API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart). It is not a separate API: you keep using Hotel-X, but with a standardized `FASTX` context and stronger aggregation capabilities.
+FastX is **the new baseline for hotel connectivity** with our [HotelX API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart). It is not a separate API: you keep using HotelX, but with a standardized `FASTX` context and stronger aggregation capabilities.
 
 :::info 🚀 FastX: The New Standard for Buyers
-From **1 January 2026**, FastX is the mandatory connection mode for all new Buyers. Existing Buyers using Hotel-X API can continue as-is, but Buyers facing mapping or aggregation issues are strongly encouraged to [upgrade to FastX](/docs/apis/for-buyers/hotel-x-pull-buyers-api/upgrade-to-fastx) for improved stability and content quality.
+From **1 January 2026**, FastX is the mandatory connection mode for all new Buyers. Existing Buyers using HotelX API can continue as-is, but Buyers facing mapping or aggregation issues are strongly encouraged to [upgrade to FastX](/docs/apis/for-buyers/hotel-x-pull-buyers-api/upgrade-to-fastx) for improved stability and content quality.
 :::
 
 
@@ -36,11 +36,11 @@ This reduces integration effort, improves consistency, and accelerates operation
 
 In traditional mode, your integration must handle each Supplier's code system separately. For example, the same hotel can have three different identifiers across three Suppliers; as shown in the image, the Buyer must understand all three code formats and launch one query per Supplier code:
 
-![Hotel-X Standard Mode](https://stplaformwe.blob.core.windows.net/kbase/hotelx_simple_mode.gif)
+![HotelX Standard Mode](https://stplaformwe.blob.core.windows.net/kbase/hotelx_simple_mode.gif)
 
 With FastX mode, your system works with only one shared language (FastX codes) while Travelgate handles Supplier translation internally:
 
-![Hotel-X FastX Mode](https://stplaformwe.blob.core.windows.net/kbase/hotelx_fastx_mode.gif)
+![HotelX FastX Mode](https://stplaformwe.blob.core.windows.net/kbase/hotelx_fastx_mode.gif)
 
 ## Why FastX Matters
 
@@ -52,7 +52,7 @@ FastX is not just a technical upgrade—it's a marketplace-wide shift that benef
 - **Faster Supplier activations:** reduce onboarding friction when expanding your Supplier coverage.
 - **Simpler operations:** maintain one unified code system instead of managing multiple Supplier-specific code systems.
 - **Full transparency:** responses include both FastX standardized values and Supplier-native values.
-- **GIATA compatibility:** FastX codes align with GIATA's standardized identifiers (available as `travelgate`; see [GIATA multicodes](/kb/connectivity-products/for-buyers/mapping-solutions/giata/giata-multicodes)).
+- **GIATA compatibility:** FastX codes align with GIATA's standardized identifiers (available as `travelgate`; see [GIATA Multicodes](/kb/connectivity-products/for-buyers/mapping-solutions/giata/giata-multicodes)).
 - **Scalable growth:** expand your Supplier portfolio without proportionally multiplying technical complexity.
 
 **For Sellers:**
@@ -72,7 +72,7 @@ To support standardization across the Marketplace, Travelgate generates unique F
 ### Hotel and Board Mapping
 
 Hotels and boards are mapped once and Travelgate provides standardized codes via:
-- The [Hotel-X API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/fastx-content)
+- The [HotelX API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/fastx-content)
 - The [FastX Codes tool](/kb/platform/app-features/connections/fastx-codes) (visual interface for validation)
 
 **Validation workflow:**

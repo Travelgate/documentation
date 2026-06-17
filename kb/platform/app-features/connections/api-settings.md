@@ -4,11 +4,11 @@ sidebar_position: 4
 
 # API Settings
 
-Welcome to the **API Settings** section! This guide will help you manage your Hotel-X Pull Buyers API connection with ease.
+Welcome to the **API Settings** section! This guide will help you manage your HotelX Pull Buyers API connection with ease.
 
 ### What's Inside API Settings?
 
-The **API Settings** section allows you define default values for your Hotel-X Pull Buyers API requests. These defaults are **automatically applied** whenever a request (query or mutation) does not include certain parameters.
+The **API Settings** section allows you define default values for your HotelX Pull Buyers API requests. These defaults are **automatically applied** whenever a request (query or mutation) does not include certain parameters.
 
 :::info
 - You can set **defaults at various levels**: Organization, Client, Supplier, and Access. The more specific the level, the higher its priority.  
@@ -24,7 +24,7 @@ The **API Settings** section allows you define default values for your Hotel-X P
 
     #### 1. Organization Settings
 
-    This is the most general level of configuration. Settings applied here affect your entire Organization or Hotel-X Group.
+    This is the most general level of configuration. Settings applied here affect your entire Organization or HotelX Group.
 
     At this level, default settings are grouped into three main categories:
 
@@ -38,14 +38,14 @@ The **API Settings** section allows you define default values for your Hotel-X P
     Related to FastX-specific functionalities in the booking flow when using FastX hotel codes, allowing you to control how FastX behaves across your searches and bookings.
 
     :::info
-     Refer to our [Hotel-X API Settings documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/making-requests/settings) for more details.
+     Refer to our [HotelX API Settings documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/making-requests/settings) for more details.
     :::
 
     ![tg-api-settings-1](https://storage.travelgate.com/kbase/tg-api-settings-1.png)
 
     #### 2. Clients Settings
 
-    Use this section to manage your Hotel-X clients or create new ones. Clients serve as labels to organize traffic and configuration.
+    Use this section to manage your HotelX clients or create new ones. Clients serve as labels to organize traffic and configuration.
 
     ![tg-api-settings-2](https://storage.travelgate.com/kbase/tg-api-settings-2.png)
 

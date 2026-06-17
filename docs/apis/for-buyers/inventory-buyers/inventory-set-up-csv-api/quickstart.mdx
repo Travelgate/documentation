@@ -23,72 +23,38 @@ Let's get started on simplifying and enhancing your inventory management process
 
 ## Let's Get Started: How to use the CSV!
 
-  ### 1. Download and prepare the files on your drive
+  ### 1. Prepare Your Working Sheet
 
- Here's a quickstart guide for accessing and organizing files needed for operations available on the CSV API:
+The recommended way to create and manage inventory CSV files is using the **Travelgate Inventory CSV Builder** — a Google Sheets template with built-in validation, dynamic dropdowns, and one-click CSV export.
 
+:::important Your sheet is set up for you
+Create your own private copy directly from the **Make my own copy** button in the builder guide. You do not need to configure any API key.
+:::
 
-#### Step 1: Access the File Repository
- 
- * **Follow the Link**: Click on this [link](https://drive.google.com/drive/folders/1GmfBZ2Aqpg963TtZMDsRJsEyMqHaQR08?usp=drive_link) which will direct you to the Google Drive folder containing all necessary files.  
- * **Review Files**: Once you open the link, you will find multiple files required for operations via the CSV API.
+For a complete step-by-step guide on how to use the tool, see:  
+**[📋 Google Sheets CSV Builder](./google-sheets-csv-builder)**
 
-#### Step 2: Make Copies of the Necessary Files
-  
-* **Read-only Access**: Note that the files are in 'read-only' mode, which means you cannot directly edit or use them for uploads.
-* **Create Copies**: Right-click on the file you need. Select "Make a copy". The copy will automatically be saved in your Drive, usually in the 'My Drive' main folder.
+Alternatively, if you prefer to build CSV files manually, you can follow the formatting rules described in [Section 5 (CSV Format Requirements)](#5-csv-format-requirements) and the field specifications in the individual entity pages.
 
-#### Step 3: Organize Your Files "recommended"
+### 2. Google Sheets CSV Builder — Key Features
 
-* **Create a New Folder**: In your Google Drive, click "New" > "Folder". Name the folder after the channel you will be working with (e.g., "Travelgate_Channel_Files"). Click "Create".  
-* **Move Copied Files**: Navigate back to 'My Drive' or wherever your copies were saved. Click and drag your copied files into the new folder you created, or right-click each file, select "Move to", and choose your new folder.
+The Google Sheets template includes the following built-in capabilities:
 
-#### Step 4: Prepare for Operations
+#### Data Validation
+As you fill the spreadsheet, the script automatically checks all required fields and format rules. Invalid cells are highlighted in **red** with a description of the error. Run **✅ Validate All Sheets** at any time to see a full error summary.
 
-* **Organize and Customize**: Within your channel-specific folder, organize and edit the CSV files as needed for uploading products or any other operations.  
-* **Follow API Guidelines**: Ensure all CSV modifications align with the requirements and standards provided by the CSV API documentation.
+#### Dynamic Dropdowns from the API
+After running **🔄 Load Dynamic Data (API)**, the following columns are populated with live data from Travelgate:
+- **Context codes** (HotelsMaster and Hotels sheets)
+- **Hotel categories** (HotelsMaster)
+- **Meal plan names** (RatePlans)
+- **Room master codes** (Rooms)
 
-#### Helpful Tips
- 
-* Regularly update your copied files if the original source files are updated.
-* Check permissions when sharing your folder or files with teammates to ensure data security.
-* Always verify your data for accuracy and completeness before using the files for uploads or any important tasks.
+#### CSV Export
+Use **📥 Export CSV** to generate correctly formatted CSV files (semicolon-delimited, UTF-8) ready for SFTP upload. The tool names the files automatically using your Client Code and Supplier Code.
 
-This guide should help you efficiently access and manage the necessary files for using the CSV API. Happy working!
-
-### 2. Enhanced Spreadsheet Features
-	The spreadsheets you are using have been equipped with custom scripts designed to perform several functions, such as data validation, mandatory field checks, and exporting to a specific CSV format. These enhancements help ensure data consistency and ease the data handling process.
-
-#### 1. Data Validation Scripts
-   
-Mandatory Fields: As you fill out the spreadsheet, scripts automatically check whether all required fields have been completed. If a mandatory field is missing, a prompt will appear, indicating which data is required in that particular row.
-Format Validation: If data entered into a field with a specified format is incorrect, a message will be sent explaining the required format, often accompanied by an example. This ensures that all data adheres to expected standards before processing or exporting.
-
-#### 2. Export Functionality
-   
-CSV Export with Custom Separator: A new function has been added to allow exporting the spreadsheet data as a CSV file using a semicolon (;) as a delimiter. This feature is particularly useful for maintaining compatibility with systems that require this specific CSV format.
-
-#### 3. Interactive Column Descriptions
-   
-Guidance on Data Entry: To understand what type of information should be entered in each column, simply hover your cursor over the header row of each column. A tooltip will appear providing a brief description of the data expected in that column. This feature serves as an in-built guide to aid in correct data entry.
-
-How to Use These Features
-#### Completing the Spreadsheet
-Fill out each cell carefully, adhering to the instructions and format guidelines provided.
-Pay attention to prompts and error messages.
-These are designed to help you correct entries before proceeding.
-
-#### Exporting Data
-Locate the export button or option within the spreadsheet tools.
-Choose the CSV export option, ensuring that the semicolon (;) delimiter is selected or set.
-Save or download the file to your desired location.
-
-Tips for Effective Use
-Regularly save your progress to avoid data loss.
-Familiarize yourself with the format requirements and tooltips before beginning intensive data entry.
-If repeated errors occur, review the data formats and requirements in the tooltips or documentation to ensure understanding.
-
-These tools and features are designed to streamline your workflow and enhance data accuracy. By following these guidelines, you can effectively manage and prepare your data using the enhanced capabilities of the speadsheet.
+#### Column Tooltips
+Hover over any **header cell** to read a tooltip describing the expected format for that column.
 
 ### 3. File Naming Importance for Travelgate FTP Uploads
 
@@ -133,6 +99,15 @@ Imagine you are the client "travelClient (TG)" connected to the channel manager 
 * **Example for Scenario 2:**
 Imagine you are the client "travelClient (TG)" connected to the channel manager "travelgateChannelManager (TGCM)", which uses hotel codes from the inventory. If you are completing the "rooms" file, the download file name should be: "clientCode(Inventory)-providerCode(Inventory)-HotelCode#ContextCode-rooms.csv. In this case, you would name the file "TG-TRVCM-1234-rooms.csv", omitting the #ContextCode since the connected channel does not use native codes but relies on Travelgate's inventory codes.
 
+:::caution
+**IMPORTANT**: The file name is parsed by the system using the dash (`-`) character as a separator. Make sure your client code and provider code do NOT contain dashes. The system expects the following patterns:
+- `clientCode-providerCode-entity.csv` (for masters like hotelsMaster)
+- `clientCode-providerCode-HotelCode#ContextCode-entity.csv` (for setups)
+- `clientCode-roomsMaster.csv` (special case for rooms master)
+
+The **entity** part must match one of the supported types exactly (case-insensitive): `hotels`, `rooms`, `rateplans`, `policies`, `taxes`, `offers`, `hotelsMaster`, `roomsMaster`.
+:::
+
 ### 4. Uploading Files to SFTP and Configuration 
 
 After completing the necessary preliminary steps, the next stage involves uploading your files to the SFTP server. 
@@ -148,7 +123,42 @@ When accessing the SFTP, you will find three folders in the main directory, each
 :::caution
 **IMPORTANT**: It is essential to use the correct file naming conventions to ensure the files can be processed via the SFTP.
 :::
+
 #### File Checking Frequency
-It is important to note that our CSV API checks the SFTP server every 10 seconds for new files. This frequent scanning ensures that any files you upload are quickly detected and processed, minimizing delay in data handling.
+It is important to note that our CSV API checks the SFTP server periodically for new files (approximately every hour). Once detected, files are queued for processing. The processing time depends on the file size and the current system load.
+
+:::info
+**File Processing Status:** After a file is picked up for processing, it will be renamed with a suffix indicating its status:
+- **-Queued**: The file has been detected and is waiting to be processed.
+- **-Processing**: The file is currently being processed.
+- **-Processed**: The file has been successfully processed.
+- **-Error**: An error occurred during processing. Check your file format and data.
+
+In production, the SFTP is polled approximately **once per hour**, so allow that time before expecting a status change.
+
+You can monitor these status changes on the SFTP to track the progress of your uploads.
+:::
 
 This guide will ensure you can securely transfer your files to the appropriate destination without any issues.
+
+### 5. CSV Format Requirements
+
+:::caution
+**Critical formatting rules that must be followed:**
+:::
+
+| Requirement | Details |
+|---|---|
+| **Delimiter** | Semicolon (`;`) — NOT comma, NOT tab |
+| **Encoding** | UTF-8 (recommended) or ANSI |
+| **Header row** | Must be present as the first line (it is skipped during processing) |
+| **Empty optional fields** | Leave the value empty between semicolons (e.g., `value1;;value3`) |
+| **Multi-value fields** | Use pipe (`\|`) as separator (e.g., `email1@test.com\|email2@test.com`) |
+| **Decimal numbers** | Both dot (`.`) and comma (`,`) are accepted as decimal separators |
+| **Date format** | `dd/MM/yyyy` (e.g., `14/04/2026`) |
+| **Boolean fields** | `1` = True, `0` = False |
+| **Line endings** | Both Windows (CRLF) and Unix (LF) are accepted |
+| **Quoting** | Optional — values may be enclosed in double quotes (`"value"`) |
+| **Markets fields** | `ALL` and `N/A` are accepted as shortcuts and are exported as empty (= all markets / no exclusions) |
+| **Coordinates** | Use a **single** decimal separator. `36.500832` and `36,500832` are valid; `36.500,832` is **not** |
+| **Empty rows** | Rows with only delimiters (`;;;;;`) are **not** ignored — delete them before uploading |

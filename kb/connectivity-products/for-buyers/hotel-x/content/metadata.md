@@ -38,5 +38,5 @@ No. **A Supplier’s Metadata applies globally to all their Buyers**, so individ
 
 
 :::tip
-For a full example of a Hotel-X Metadata Query, check out our [Hotel-X Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata#query-overview). 🚀
+For a full example of a HotelX Metadata Query, check out our [HotelX Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata#query-overview). 🚀
 :::

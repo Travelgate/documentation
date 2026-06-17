@@ -5,7 +5,7 @@ sidebar_position: 20
 # VALIDATION_ERROR
 
 ## What Does a "VALIDATION_ERROR" Mean? 
-A **"VALIDATION_ERROR"** occurs when the validation information provided in your Hotel-X request does not match the information set for your account or is invalid for that specific request.
+A **"VALIDATION_ERROR"** occurs when the validation information provided in your HotelX request does not match the information set for your account or is invalid for that specific request.
 
 ## What Can I Do If I Receive a "VALIDATION_ERROR"? 
 Since this error indicates a discrepancy or issue with the validation process, check the following:
@@ -15,7 +15,7 @@ Since this error indicates a discrepancy or issue with the validation process, c
 - **Verify Access Type (Test/Live)**
   - Ensure that the "testMode" tag in your request matches the Test/Live settings for that specific access.
 - **Verify Client**
-  - The client specified in your request must be active and configured for your account. If you’ve set custom permissions for a client (e.g., limited access to specific accesses), **ensure the client used in your request aligns with those permissions**. Otherwise, update either your request or the client configuration accordingly. More details on Hotel-X Clients can be found [here](/kb/platform/app-features/connections/api-settings/).
+  - The client specified in your request must be active and configured for your account. If you’ve set custom permissions for a client (e.g., limited access to specific accesses), **ensure the client used in your request aligns with those permissions**. Otherwise, update either your request or the client configuration accordingly. More details on HotelX Clients can be found [here](/kb/platform/app-features/connections/api-settings/).
 - **Verify Supplier**
   - The supplier specified in your request must be active and configured for your account. You can review this information in the [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details) section.
 - **Verify API Key**
@@ -23,9 +23,7 @@ Since this error indicates a discrepancy or issue with the validation process, c
 - **Verify User**
   - Ensure the user making the request has the necessary permissions. For instance, a Viewer user cannot make reservations via the B2B Virtual Agency since Viewers only have permissions for searches and quotes. More details on user roles can be found [here](/kb/platform/app-features/account-settings/users-management/modify-user-roles).
 - **Verify Context**
-  - The context code in your request should match the expected mapping:
-    - **[Single Mode request](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/search/search-query#single-mode-and-multimode)**: Use the Supplier context (available in [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details)) or your own Client context (uploaded mapping to SFTP).
-    - **[Multi-mode request](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/search/search-query#single-mode-and-multimode)**: Use your own Client context.
+    - Ensure your configuration aligns with the correct context (FastX, Buyer, or Supplier) as detailed in the [Context Decision Matrix](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials#context).
 - **Verify Criteria**
   - Ensure your request criteria are valid. For example, avoid using check-in or check-out dates in the past, and ensure you're using the correct `optionRefId` [for each method](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/option-identifiers). Also, ensure compliance with the supplier's specifications as outlined in their [Metadata](/kb/connectivity-products/for-buyers/hotel-x/content/metadata).
 - **Verify Settings**
@@ -34,7 +32,7 @@ Since this error indicates a discrepancy or issue with the validation process, c
 
 ### VALIDATION_ERROR Examples 
 
-### 1. Incorrect Hotel-X Credentials (e.g., Access, Client, API Key)
+### 1. Incorrect HotelX Credentials (e.g., Access, Client, API Key)
 - **"ACCESS_ERROR"; "VALIDATION_ERROR"**
 ```json
 {
@@ -67,11 +65,11 @@ Since this error indicates a discrepancy or issue with the validation process, c
                 "auditData" : null,
                 "context" : "xxx",
                 "options" : null,
-                "errors" : [
+                "errors": [
                     {
-                        "code" : "ACCESS_ERROR",
-                        "type" : "VALIDATION_ERROR",
-                        "description" : "this group does not have execution permission over src"
+                        "code": "ACCESS_ERROR",
+                        "type": "VALIDATION_ERROR",
+                        "description": "this user does not have execution permission over search"
                     }
                 ],
                 "warnings" : null

@@ -13,5 +13,5 @@ If a Seller does not support the currency specified in the Search request, one o
 2. The Seller responds with the default currency configured on their end for your credentials.
 
 :::tip
-For more details, explore our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart) and try the [Hotel-X Playground](/playground) 🚀
+For more details, explore our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart) and try the [HotelX Playground](/playground) 🚀
 :::

@@ -4,6 +4,14 @@ sidebar_position: 9
 
 # 204 Error - No results found
 
+This comprehensive guide covers how to troubleshoot and resolve 204 'no results found' errors in your integrations, with dedicated sections for both Buyers and Sellers.
+
+> **Terminology:** In this article, **204 error**, **no results**, and **no availability** refer to the same condition: the Seller returns zero results for a request.
+
+:::info When to Use This Article
+**You received a 204 error** in your Search, Quote, or Book response and need to troubleshoot the issue. If you're trying to prevent high no-availability rates before they occur, see [How to Optimize Search Results](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/search/how-to-optimize-search-results).
+:::
+
 ## What Does a 204 Error Mean?
 A **204 error** occurs when a Seller does not return any results for the specific search criteria in the Buyer's request (e.g., hotel, dates, market, etc.).
 
@@ -23,44 +31,104 @@ This error is primarily returned in **Search responses**, but it can also appear
 As a Buyer, you can audit the Seller's response by setting `auditTransactions` to `true` in your Search request.
 
 :::info
-For more details on auditing Seller transactions, see [this article](/kb/platform/app-features/monitoring-tools/logging/audit-searches-functionality).
+For more details on auditing Seller transactions, see [Audit Search Logs Functionality](/kb/platform/app-features/monitoring-tools/logging/audit-searches-functionality).
 :::
 
 ## For Buyers
 ### How to Handle 204 Errors in Search Responses
 
-#### 1. **Verify Product in Seller's Portfolio**  
-   - Ensure the requested product is included in the Seller's portfolio. If not, [force an update](/kb/platform/app-features/connections/connections-content/content-management#how-can-i-use-the-force-update-now-functionality) to receive the latest information.
+This section is an **incident runbook** for active 204 failures. It is designed for fast root-cause isolation and recovery on specific failing searches.
 
-#### 2. **Check Mapping File**  
-   - If using the **Hotel-X Pull Buyers API** with your own [context](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials), ensure your mapping file is updated. More details on Hotel-X Mapping files can be found [here](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/overview).
+For long-term availability improvement planning, use [How to Optimize Search Results](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/search/how-to-optimize-search-results).
 
-#### 3. **Align Request Configurations**  
-   - For **Legacy Pull Buyers API** users, confirm that your request configurations match the access configuration in [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details).
+Start with Buyer credentials before reviewing portfolio, mapping, or cache behavior. If credentials are not active or not aligned, the rest of the checks are not reliable.
 
-#### 4. **Confirm Seller Availability**  
-   - If the product is in the Seller's portfolio, check whether they provide availability for your credentials. Use the **[Audit Search Logs Functionality](/kb/platform/app-features/monitoring-tools/logging/audit-searches-functionality)** or audit transactions for a specific search by setting `auditTransactions` to `true` temporarily.
+| Priority | What to Review | Source of Data | What Good Looks Like | Action if Fails |
+|---|---|---|---|---|
+| 1 | Buyer credentials and access setup | [HotelX Credentials](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials), [My Connections details](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details) | Active credentials and access configuration aligned with Seller setup | Fix credentials or access configuration first |
+| 2 | Seller raw response vs Travelgate response | [Audit Search Logs Functionality](/kb/platform/app-features/monitoring-tools/logging/audit-searches-functionality), [audit transactions](/kb/platform/app-features/monitoring-tools/logging/audit-supplier-transactions) | Seller response and Travelgate output are consistent for tested criteria | Identify where availability is being filtered |
+| 3 | Portfolio and mapping coverage | [Connections Content](/kb/platform/app-features/connections/connections-content/content-management), [HotelX Mapping File Overview](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/overview) | Requested hotels are enabled and mapped correctly | Force update content and remap valid hotels |
+| 4 | Request constraints (market, dates, stay) | Seller Metadata and test searches | Search criteria match Seller restrictions | Adjust request parameters to valid values |
+| 5 | Speed/cache behavior | [Speed Mode Settings](/kb/platform/app-features/smart-traffic/speed/speed-activation#2-choose-speed-mode) | Standard mode used for troubleshooting baseline | Switch from Fast to Standard and re-test |
+| 6 | Seller validation with evidence | Audit logs, request/response samples, credential context | Seller confirms credentials, portfolio scope, and criteria compatibility | Align Seller-side configuration or request rules |
+| 7 | Support escalation package | Request/response logs, audit evidence, successful Seller references | Support receives complete reproducible case details | Open support case with full evidence package |
 
-#### 5. **Direct Seller Communication**  
-   - If no results appear via integration, contact the Seller to verify that:
-     - Your credentials are valid.
-     - Your search criteria align with their availability.
+#### 1. **Verify Buyer Credentials First**
+- Confirm your Buyer credentials are active and correctly configured in your connection.
+- For **Legacy Pull Buyers API**, ensure request configuration matches [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details).
+- If credentials are incorrect, stop and fix this first.
 
-#### 6. **Speed Configuration**  
-   - If your connection/access is enabled through the [Speed](/kb/platform/app-features/smart-traffic/speed/speed-activation#2-choose-speed-mode) cache feature, review your current Speed mode settings.
-      - The **"Fast" mode increases the likelihood of no availability results** because it only displays cached responses.
-      - If the data isn’t already stored, no results will appear—though the request is still forwarded to the Seller for future caching.
-   - Switch to the Standard speed mode (recommended) and monitor whether the availability ratio improves.
+#### 2. **Audit the Seller Response**
+Auditing lets you inspect the Seller response in its original format before Travelgate processing.
 
-#### 7. **Handling Persistent 204 Errors**  
-   - If you’ve completed the previous steps but are still receiving a 204 error, please reach out to **Customer Support** with complete **request (RQ) and response (RS) logs**, along with the Seller’s successful availability transactions for further analysis.
+- **For HotelX API users:** Set `auditTransactions: true` in your Search request.
+- **For Legacy API users:** Set `registerTransactions: true` in your Search request.
+
+Use [Audit Search Logs Functionality](/kb/platform/app-features/monitoring-tools/logging/audit-searches-functionality) for log-level analysis, or [audit transactions](/kb/platform/app-features/monitoring-tools/logging/audit-supplier-transactions) for request-level raw payloads.
+
+**Example (HotelX API):**
+```graphql
+query {
+  hotelSearch(
+    criteria: {...}
+    auditTransactions: true
+  ) {
+    errors { code description type }
+  }
+}
+```
+
+#### 3. **Verify Portfolio and Mapping Coverage**
+- Ensure requested products/hotels are in the Seller portfolio.
+- If needed, [force an update](/kb/platform/app-features/connections/connections-content/content-management#how-can-i-use-the-force-update-now-functionality).
+- If using **HotelX Pull Buyers API** with your own context, confirm mapping is current in [HotelX Mapping File Overview](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/overview).
+
+#### 4. **Validate Request Constraints**
+- Confirm market, nationality, date, and stay parameters are valid for Seller rules.
+- Review any filters applied in your HotelX Search request, since restrictive filters can reduce or eliminate available results. Pay special attention to access, supplier, plugin, rateRules, currency, and status filters. For more details, see [Search Filters](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/search/search-filters).
+- Re-test using criteria known to be allowed for your credentials.
+
+#### 5. **Review Speed Configuration**
+- If your connection/access uses [Speed](/kb/platform/app-features/smart-traffic/speed/speed-activation#2-choose-speed-mode), review current mode.
+- **Fast mode** can increase no-availability outcomes because only cached responses are returned.
+- Use **Standard mode** for troubleshooting and baseline validation.
+
+#### 6. **Contact Seller With Evidence**
+- Share audited request/response examples and ask the Seller to confirm credential permissions and portfolio scope.
+
+#### 7. **Escalate Persistent 204 Cases**
+- If 204 persists after completing the checks above, contact **Customer Support** with:
+  - Request/response logs
+  - Audit evidence
+  - Seller successful availability references for matching criteria
+
+After incident recovery, continue with the [optimization playbook](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/search/how-to-optimize-search-results) to reduce future no-availability rates.
 
 :::info How to Obtain Seller Logs in Their Own Format 
-Use the `auditData` parameter in the **Hotel-X Pull Buyers API** or `registerTransactions` in the **Legacy Pull Buyers API**. Detailed instructions can be found [here](/kb/platform/app-features/monitoring-tools/logging/audit-supplier-transactions).
+Use the `auditData` parameter in the **HotelX Pull Buyers API** or `registerTransactions` in the **Legacy Pull Buyers API**. Detailed instructions are available in [Audit Supplier Transactions](/kb/platform/app-features/monitoring-tools/logging/audit-supplier-transactions).
 :::
 
-### Why Do I Receive No Availability Through Travelgate When the Supplier's Platform Returns Results?
-Travelgate displays results based on the Seller’s integration. A Supplier may return results in their own Platform but not through Travelgate. If this happens, **contact the Supplier** directly to ensure product information for your credentials is correctly updated.
+### Why Do I Receive No Availability (No results found) Through Travelgate When the Seller's Website Returns Results?
+It is essential to understand that Travelgate acts primarily as a technological bypass. Our platform connects your request directly to the Seller’s API and delivers the response they return to us. **Availability on a web interface does not guarantee availability via an API integration** for the following reasons:
+
+   1. **Inventory Segmentation by Channel**  
+   Many Sellers manage separate inventories for their direct sales channels (B2C websites) and their XML/API distribution channels. A product may be available to the general public on a website but restricted or sold out for third-party technological integrations.
+
+   2. **Credential and Contract Specifics**  
+   The availability you receive through Travelgate is tied exclusively to the credentials provided to you by the Seller. The inventory returned is linked to your specific contract, assigned market, and negotiated commercial conditions. A search on a Seller’s public website often uses generic criteria that may not match your API access.
+
+   3. **Differences in Product Portfolio**  
+   Not all hotels or room types displayed on a Seller’s website are necessarily open for API distribution. If the requested product is not part of the portfolio activated for your specific integration, the Seller will not return results via the API.
+
+   4. **API-Specific Business Rules and Filters**  
+   Sellers often apply specific business logic—such as market restrictions, passenger nationality requirements, or minimum lead-time rules—only to their API booking engine and not to their direct website.
+
+   5. **Cache Layer (Speed)**  
+   If you are using our Speed optimization solution, you may be receiving a cached response. In "Fast" mode, you will only see results already stored in the cache; if the data is not currently stored, Travelgate will return a 204 error even if the Seller has real-time availability.
+
+   :::info
+   If you have verified that your Search criteria (dates, occupancy, and market) are identical and the discrepancy persists, we recommend contacting the Seller directly. Ask them to verify if the product is explicitly enabled for your API credentials and not just for their web environment.
+   :::
 
 ### How to Handle 204 Errors in Quote Responses
 
@@ -74,7 +142,7 @@ Travelgate displays results based on the Seller’s integration. A Supplier may 
    - High-occupancy periods or last-minute searches may result in limited availability.
 
 #### 4. **Review Speed Configuration**  
-   - If using **Speed**, check the **TTL (Time to Live) settings** and adjust them if needed. More details on Speed configuration can be found [here](/kb/platform/app-features/smart-traffic/speed/speed-activation#how-does-speed-work).
+   - If using **Speed**, check the **TTL (Time to Live) settings** and adjust them if needed. More details are available in [How Speed Works](/kb/platform/app-features/smart-traffic/speed/speed-activation#how-does-speed-work).
 
 ## For Sellers
 
@@ -93,7 +161,7 @@ Travelgate displays results based on the Seller’s integration. A Supplier may 
    - Switch to the Standard speed mode (recommended) and monitor whether the availability ratio improves.
 
 #### 4. **Update Mapping File**  
-   - If the Buyer is using **Hotel-X API**, they should ensure their mapping file is current. More details can be found [here](https://docs.travelgate.com/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping).
+   - If the Buyer is using **HotelX API**, they should ensure their mapping file is current. More details are available in [HotelX Mapping Plugin Documentation](https://docs.travelgate.com/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping).
 
 #### 5. **Confirm Request Validity**  
    - If your system shows availability but the Buyer does not receive it, they should audit their **Search logs** by setting `auditTransactions` to `true`. If discrepancies persist, they should provide:

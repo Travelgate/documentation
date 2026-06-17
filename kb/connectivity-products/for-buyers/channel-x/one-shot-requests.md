@@ -4,11 +4,11 @@ sidebar_position: 3
 
 # One-Shot Requests
 
-## What Are "One-Shot" Requests in the Channel-X API?
+## What Are "One-Shot" Requests in the ChannelX API?
 
-As a **Buyer** using the [Channel-X Push Buyers API](https://docs.travelgate.com/docs/apis/for-buyers/inventory-buyers/channel-x-push-buyers-api/quickstart/), you already have **hotel availability data** from your suppliers stored in your system.
+As a **Buyer** using the [ChannelX Push Buyers API](https://docs.travelgate.com/docs/apis/for-buyers/inventory-buyers/channel-x-push-buyers-api/quickstart/), you already have **hotel availability data** from your suppliers stored in your system.
 
-To complete a booking, you need to be connected to **Travelgate** via the **Hotel-X Pull Buyers API**. If you are already following the standard **Search, Quote, and Book** booking flow, you may continue using it. However, to improve efficiency and reduce redundant requests, we recommend implementing specialized methods designed to streamline the booking process.
+To complete a booking, you need to be connected to **Travelgate** via the **HotelX Pull Buyers API**. If you are already following the standard **Search, Quote, and Book** booking flow, you may continue using it. However, to improve efficiency and reduce redundant requests, we recommend implementing specialized methods designed to streamline the booking process.
 
 To simplify bookings, we have introduced the **'oneStepQuote'** and **'oneStepBook'** methods. You can choose the one that best fits your operational needs.
 

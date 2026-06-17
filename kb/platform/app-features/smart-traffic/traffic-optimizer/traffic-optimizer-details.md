@@ -4,17 +4,13 @@ sidebar_position: 2
 
 # How to Use Traffic Optimizer
 
-## Traffic Optimizer: Reduce Unnecessary Search Traffic and Improve Your L2B
+## What is Traffic Optimizer?
 
-Searching for availability in hotels that don't convert isn't just inefficient—it’s a waste of resources. This challenge is widespread in the travel industry, yet many accept it as "normal."
-
-At Travelgate, we understand the impact of handling **useless traffic** across the entire connectivity chain. That’s why we’ve developed **Traffic Optimizer**, an intelligent solution that enhances connection efficiency within our Marketplace.
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/3383vV-Ggu8?si=G9pmQ_bw72KeMmUM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+**Traffic Optimizer** is an intelligent Travelgate tool that analyzes search data and automatically blocks non-converting hotels—eliminating unnecessary traffic, reducing overhead, and boosting marketplace connection efficiency.
 
 ## Who Can Activate Traffic Optimizer?
 
-Both **Buyers and Sellers** can enable Traffic Optimizer within Travelgate. It’s available for every connection regardless of the API used by the Buyer—it works with both the **Hotel-X API and the Legacy API**.
+Both **Buyers and Sellers** can enable Traffic Optimizer within Travelgate. It’s available for every connection regardless of the API used by the Buyer—it works with both the **HotelX API and the Legacy API**.
 
 ## What Are the Benefits of Traffic Optimizer?
 - **Improve your Look-to-Book (L2B) ratio** by filtering out low-converting searches.
@@ -36,11 +32,18 @@ It uses a **data-driven approach** to analyze past transactions and **automatica
     - Example: If searches for January 13th return 100% no availability, the hotel will be blacklisted on the following day (January 14th).
   - If a hotel was not searched the previous day, it will not be considered for blocking. Only hotels that were requested are eligible to be blocked.
   - Hotels blocked under this criteria receive a **grace period** to accept new searches, and will be **unblocked automatically** when availability is detected (following day).
-  - **Grace period**: Each hour, some blocked hotels will be allowed to be requested. All blocked hotels will be unblocked during two different grace periods per day.
-      - Example:
-          - Day 1: "Hotel A" reports 100% no availability.
-          - Day 2:  "Hotel A" is marked as blocked, but **grace period** allows it to still respond to searches.
-          - Day 3: If "Hotel A" returns availability during any of the grace periods on Day 2 it will not remain blocked. Otherwise, it will be blocked again.
+  - **Grace period**: Blocked hotels are given periodic opportunities to respond to searches:
+    - Each hour, a subset of blocked hotels is allowed to be requested.
+    - All blocked hotels are fully unblocked during **two grace periods per day**.
+    - A hotel is **unblocked** if it returns availability during any grace period.
+
+    **Example:**
+
+    | Day | What happens |
+    |-----|-------------|
+    | Day 1 | "Hotel A" reports 100% no availability. |
+    | Day 2 | "Hotel A" is blocked, but the grace period allows it to respond to searches. |
+    | Day 3 | If "Hotel A" returned availability on Day 2 → stays unblocked. Otherwise → blocked again. |
 
 - **Zero Bookings:**
   - Blocks hotels that have **never recorded a booking** with Travelgate.

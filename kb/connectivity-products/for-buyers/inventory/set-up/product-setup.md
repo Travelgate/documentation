@@ -20,8 +20,6 @@ Follow these steps to configure your product in the **Travelgate Inventory** sys
 - If an error occurs during loading, first **verify that the product the Channel Manager is trying to load (including room codes, rate codes, etc.) exactly matches what is defined in your setup**. If there's a mismatch, they should retrieve the latest data and remap accordingly. For example, if a Channel Manager attempts to load prices for a room that doesn’t exist, an error will be returned.
 :::
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/V_nJoDkMOTA?si=VHPDpuanWe5G8AmP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
 ## Destinations in Pull vs. Push Connections
 ### As a Buyer, does the way I retrieve destinations differ?
 **No.** From a technical standpoint, Buyers use the same GraphQL query ([hotelX.destinations](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/destinations#query-overview)) regardless of the Seller connection type. However, the background process varies:
@@ -43,11 +41,11 @@ Even though the retrieval method is identical for Buyers, remember that for Push
 :::
 
 ### Retrieving a Hotel's Destination Code
-- To obtain the destination code of a specific hotel in your Inventory SetUp, run a **Hotel-X Hotels query** and check the response for the closestDestination field. For the Legacy Pull Buyers API, use the **Descriptive Info method** and look for the GeographicDestination node.
-- To retrieve the full list of destinations at the connection level, run a **Hotel-X Destinations query** and locate the relevant field in the response. For the Legacy Pull Buyers API, use the **Geographic Destination Tree method** and follow the same approach.
+- To obtain the destination code of a specific hotel in your Inventory SetUp, run a **HotelX Hotels query** and check the response for the closestDestination field. For the Legacy Pull Buyers API, use the **Descriptive Info method** and look for the GeographicDestination node.
+- To retrieve the full list of destinations at the connection level, run a **HotelX Destinations query** and locate the relevant field in the response. For the Legacy Pull Buyers API, use the **Geographic Destination Tree method** and follow the same approach.
 
     :::info
-    For details on destination-related fields in each query or method, please refer to the [Hotel-X](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/overview) and [Legacy Pull Buyers API](/docs/apis/for-buyers/deprecated/legacy-pull-buyers-api/content/overview) documentation.
+    For details on destination-related fields in each query or method, please refer to the [HotelX](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/overview) and [Legacy Pull Buyers API](/docs/apis/for-buyers/deprecated/legacy-pull-buyers-api/content/overview) documentation.
     :::
 
 

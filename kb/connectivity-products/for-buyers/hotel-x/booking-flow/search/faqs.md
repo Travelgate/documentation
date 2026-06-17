@@ -7,12 +7,18 @@ sidebar_position: 5
 ## Searching by Destination
 
 ### Can I search by destination?
-Yes, you can search by destination using our Search by Destination [plugin](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/search-by-destination).
+Yes, you can search by destination using our [Search by Destination plugin](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/search-by-destination).
+  :::warning Important Note on Search by Destination
+  The [Search by Destination plugin](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/search-by-destination/) is **exclusively** compatible with searches performed using a **Supplier Context**.  
+  Please note that this plugin **cannot** be used with:
+  - FASTX Context
+  - Buyer Context
+  :::
 
 ## Request Limits
 
 ### How many hotel codes can I request per Search?
-- For **Hotel-X Pull Buyers API**, we recommend a maximum of 200 hotels. Our aggregator will automatically split them into batches based on the Supplier's [Metadata](/kb/connectivity-products/for-buyers/hotel-x/content/metadata) to efficiently distribute the requests across each Supplier.
+- For **HotelX Pull Buyers API**, we recommend a maximum of 200 hotels. Our aggregator will automatically split them into batches based on the Supplier's [Metadata](/kb/connectivity-products/for-buyers/hotel-x/content/metadata) to efficiently distribute the requests across each Supplier.
 - For **Legacy Pull Buyers API** (deprecated), our system does not automatically split hotels. You should adhere to the `MaxNumberHotels` value in the Supplier’s Metadata.
 
 :::info
@@ -62,7 +68,7 @@ Yes, nationality and market might impact the rates in the Search response. This 
 Yes, you can filter responses using the `rateRules` tag to receive rates that match your requirements. Learn more [here](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/search/search-filters).
 
 ### Can I filter Search results by payment type?
-No, Hotel-X API does not currently support filtering by payment type.
+No, HotelX API does not currently support filtering by payment type.
 
 ### Can I receive daily prices in the Search response?
 Yes, if the Seller provides this information, you can receive daily prices in the Search response through the `roomPrice > breakdown` field.
@@ -107,8 +113,8 @@ Search IDs do not expire, but transitioning from Search to Quote quickly is reco
 ### Can we define our own context for multiple Suppliers?
 Yes! You have the option to create your own Buyer context. To do this, simply follow the instructions in our documentation and upload the necessary mapping files to use it in your requests. For more details, refer to our [Documentation on Mapping](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping).
 
-### Can I map at an Hotel-X Access level using the CSV Mapping file?
-No, [Mapping files](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping) are used to convert between the Supplier's hotel codes and the Buyer's codes (or vice versa), but only at the Supplier level. Mapping at the Hotel-X Access level is not supported.
+### Can I map at an HotelX Access level using the CSV Mapping file?
+No, [Mapping files](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping) are used to convert between the Supplier's hotel codes and the Buyer's codes (or vice versa), but only at the Supplier level. Mapping at the HotelX Access level is not supported.
 
 ### Can I get a hotel description in the Search response?
 No, descriptions are retrieved using the [Hotels Query](/kb/connectivity-products/for-buyers/hotel-x/content/hotels).

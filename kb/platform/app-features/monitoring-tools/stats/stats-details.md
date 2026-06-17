@@ -107,6 +107,6 @@ If your question is about color status (for example, why a connection appears in
 Above each table, you’ll find a **'Download CSV'** button, which allows you to download the Stats data that is most relevant to your business. Give it a try! 🚀
 
 :::info Legacy Pull Buyers API Information
-For Buyer connections via our Legacy Pull Buyers API, filtering by Hotel-X Access Code is **not available**. Instead, connections are identified using the **clientname#suppliercode** relationship.  
-Some Buyers may be transitioning from the Legacy Pull Buyers API to the Hotel-X API, meaning they could have traffic through both APIs. If you're unsure, we recommend you **reach out to your Buyers** for more detailed information.
+For Buyer connections via our Legacy Pull Buyers API, filtering by HotelX Access Code is **not available**. Instead, connections are identified using the **clientname#suppliercode** relationship.  
+Some Buyers may be transitioning from the Legacy Pull Buyers API to the HotelX API, meaning they could have traffic through both APIs. If you're unsure, we recommend you **reach out to your Buyers** for more detailed information.
 :::

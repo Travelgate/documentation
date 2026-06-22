@@ -270,8 +270,6 @@ Create a separate sheet copy per client/supplier combination using the same **Ma
 | Export is blocked (red cells) | Fix all red-highlighted cells (validation errors), then retry |
 | Export is blocked (orange cells) | Orange cells indicate **suspicious/corrupted code values** (e.g. `##########`, `{HotelCode}`). Replace them with the actual codes. |
 | Export fails with "Missing context" | The **Context** column is empty for one or more hotels referenced in setup entities. Fill in the Context in the Hotels or HotelsMaster sheet. |
-| Browser blocks multiple downloads | The first time you export, your browser may ask to "allow multiple downloads" from this site. Accept it once. |
-| `#` in filename saved as `%23` | Some browsers convert the `#` character in downloaded filenames. Rename `%23` back to `#` before uploading, or download from Google Drive instead. |
-| File renamed `-Error` on SFTP | Check the file name format and verify all required fields are present and valid |
+| `#` in filename saved as `%23` | No action needed — the system decodes `%23` → `#` automatically during processing. If your SFTP client or OS still causes issues, upload the file from Google Drive instead (or rename `%23` back to `#`). |
 | File stuck as `-Processing` after 2+ hours | Contact Travelgate support with the file name and upload timestamp |
 | `ALL` / `N/A` in Markets fields | Valid inputs — converted to empty on export (= all markets / no exclusions) |

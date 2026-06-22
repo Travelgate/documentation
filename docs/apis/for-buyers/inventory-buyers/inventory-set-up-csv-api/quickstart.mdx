@@ -102,7 +102,7 @@ Imagine you are the client "travelClient (TG)" connected to the channel manager 
 :::caution
 **IMPORTANT**: The file name is parsed by the system using the dash (`-`) character as a separator. Make sure your client code and provider code do NOT contain dashes. The system expects the following patterns:
 - `clientCode-providerCode-entity.csv` (for masters like hotelsMaster and global entities like hotels)
-- `clientCode-providerCode-HotelCode#ContextCode-entity.csv` (for per-hotel setups)
+- `clientCode-providerCode-HotelCode[#ContextCode]-entity.csv` (for per-hotel setups; include `#ContextCode` when applicable)
 - `clientCode-roomsMaster.csv` (special case for rooms master — also accepts `clientCode-providerCode-roomsMaster.csv`)
 
 The **entity** part must match one of the supported types exactly (case-insensitive): `hotels`, `rooms`, `rateplans`, `policies`, `taxes`, `offers`, `hotelsMaster`, `roomsMaster`, `amendPolicies`, `businessRules`.

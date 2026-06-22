@@ -186,8 +186,7 @@ The validator checks every row across all 8 sheets and:
 | `Uses format: 2-0-0\|2-0-1` | Room occupancy format is wrong | Use `adults-children-infants` e.g. `2-0-0\|2-1-0` |
 | `Booking From: use dd/MM/yyyy` | Date format is incorrect | Type as `dd/MM/yyyy` or use a Google Sheets date cell |
 | `Currency is required` | Currency column is empty | Select a value from the dropdown |
-| `Active must be False or True` | Boolean field has an unrecognized value | Select `True` or `False` from the dropdown |
-| `⚠️ SOSPECHOSO — Code looks invalid` | A code cell contains a corrupted or placeholder value (e.g. `##########`, `{HotelCode}`, `----`) | Replace it with the actual code. These cells are highlighted in **orange**. |
+| `⚠️ SOSPECHOSO (Suspicious) — Code looks invalid` | A code cell contains a corrupted or placeholder value (e.g. `##########`, `{HotelCode}`, `----`) | Replace it with the actual code. These cells are highlighted in **orange**. |
 
 :::note
 Validation runs automatically again at export time. If errors or suspicious values exist, the export is blocked until all red and orange cells are fixed.

@@ -41,7 +41,7 @@ Alternatively, if you prefer to build CSV files manually, you can follow the for
 The Google Sheets template includes the following built-in capabilities:
 
 #### Data Validation
-As you fill the spreadsheet, the script automatically checks all required fields and format rules. Invalid cells are highlighted in **red** with a description of the error. Run **✅ Validate All Sheets** at any time to see a full error summary.
+As you fill the spreadsheet, the script automatically checks all required fields and format rules. Invalid cells are highlighted in **red** with a description of the error. Suspicious or corrupted code values (e.g. `##########`, `{HotelCode}`, `----`) are highlighted in **orange**. Run **✅ Validate All Sheets** at any time to see a full error summary in a copyable dialog.
 
 #### Dynamic Dropdowns from the API
 After running **🔄 Load Dynamic Data (API)**, the following columns are populated with live data from Travelgate:
@@ -51,7 +51,7 @@ After running **🔄 Load Dynamic Data (API)**, the following columns are popula
 - **Room master codes** (Rooms)
 
 #### CSV Export
-Use **📥 Export CSV** to generate correctly formatted CSV files (semicolon-delimited, UTF-8) ready for SFTP upload. The tool names the files automatically using your Client Code and Supplier Code.
+Use **📥 Export CSV** to generate correctly formatted CSV files (semicolon-delimited, UTF-8) ready for SFTP upload. The tool names the files automatically using your Client Code, Supplier Code, and — for per-hotel entities (rateplans, rooms, policies, taxes, offers) — the Hotel Code and Context Code. Files are auto-split per hotel and saved to Google Drive as well as downloaded to your local machine. Boolean values (`True`/`False`) are automatically converted to `1`/`0` on export.
 
 #### Column Tooltips
 Hover over any **header cell** to read a tooltip describing the expected format for that column.
@@ -101,11 +101,21 @@ Imagine you are the client "travelClient (TG)" connected to the channel manager 
 
 :::caution
 **IMPORTANT**: The file name is parsed by the system using the dash (`-`) character as a separator. Make sure your client code and provider code do NOT contain dashes. The system expects the following patterns:
-- `clientCode-providerCode-entity.csv` (for masters like hotelsMaster)
-- `clientCode-providerCode-HotelCode#ContextCode-entity.csv` (for setups)
-- `clientCode-roomsMaster.csv` (special case for rooms master)
+- `clientCode-providerCode-entity.csv` (for masters like hotelsMaster and global entities like hotels)
+- `clientCode-providerCode-HotelCode#ContextCode-entity.csv` (for per-hotel setups)
+- `clientCode-roomsMaster.csv` (special case for rooms master — also accepts `clientCode-providerCode-roomsMaster.csv`)
 
-The **entity** part must match one of the supported types exactly (case-insensitive): `hotels`, `rooms`, `rateplans`, `policies`, `taxes`, `offers`, `hotelsMaster`, `roomsMaster`.
+The **entity** part must match one of the supported types exactly (case-insensitive): `hotels`, `rooms`, `rateplans`, `policies`, `taxes`, `offers`, `hotelsMaster`, `roomsMaster`, `amendPolicies`, `businessRules`.
+
+The system automatically decodes percent-encoded characters in filenames (e.g. `%23` → `#`), so files uploaded from browsers that encode the `#` symbol will be processed correctly.
+:::
+
+:::info New entities: amendPolicies and businessRules
+Two additional entity types are supported by the system:
+- **`amendPolicies`** — defines amendment/modification fees per rate (columns: Rate Code, Days Before, Value, Type)
+- **`businessRules`** — configures distribution rules per rate (columns: Rate Code, Distribution Type, Billing Company Included, Billing Company Excluded, Clients Included, Clients Excluded)
+
+These entities follow the same per-hotel filename format: `clientCode-providerCode-HotelCode#ContextCode-entity.csv`. They are not yet available in the Google Sheets CSV Builder but can be uploaded directly via SFTP.
 :::
 
 ### 4. Uploading Files to SFTP and Configuration 

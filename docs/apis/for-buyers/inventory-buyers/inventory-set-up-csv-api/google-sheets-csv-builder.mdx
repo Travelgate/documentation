@@ -149,7 +149,7 @@ Fill each sheet following the order below. **Order matters**: each entity refere
 | Field type | Expected format | Notes |
 |---|---|---|
 | Dates | `dd/MM/yyyy` | e.g. `14/04/2026`. Date-type cells convert automatically. |
-| Boolean | `0` or `1` | `1` = True, `0` = False. Dropdowns enforce valid values. |
+| Boolean | `True` or `False` | Dropdowns enforce valid values. The export converts them to `1`/`0` automatically (the format expected by setup_loading). |
 | Multi-value | Pipe-separated `\|` | e.g. `MerchantPay\|LaterPay` or `ES\|FR\|DE` |
 | Markets Included | ISO-2 codes or **empty** | Empty = all markets. `ALL` is accepted and exported as empty. |
 | Markets Excluded | ISO-2 codes or **empty** | Empty = none excluded. `N/A` is accepted and exported as empty. |
@@ -171,11 +171,12 @@ For complete field-by-field specifications, see the individual entity pages:
 Click **📦 Inventory CSV → ✅ Validate All Sheets**
 
 The validator checks every row across all 8 sheets and:
-- Highlights invalid cells in **red**
-- Shows a summary listing up to 25 errors at a time
+- Highlights invalid cells in **red** (hard errors)
+- Highlights suspicious code values in **orange** (e.g. `##########`, `{HotelCode}`, `----` — values that are technically non-empty but almost certainly corrupted)
+- Shows a copyable modal dialog listing **all** errors and suspicious findings, so you can paste the full list into Gemini or another assistant for help
 - Displays **"✅ All sheets valid!"** when everything passes
 
-**Fix all red cells before exporting.** Common errors and their solutions:
+**Fix all red and orange cells before exporting.** Both errors and suspicious values block the export. Common errors and their solutions:
 
 | Error message | Cause | Fix |
 |---|---|---|
@@ -185,10 +186,11 @@ The validator checks every row across all 8 sheets and:
 | `Uses format: 2-0-0\|2-0-1` | Room occupancy format is wrong | Use `adults-children-infants` e.g. `2-0-0\|2-1-0` |
 | `Booking From: use dd/MM/yyyy` | Date format is incorrect | Type as `dd/MM/yyyy` or use a Google Sheets date cell |
 | `Currency is required` | Currency column is empty | Select a value from the dropdown |
-| `Active must be 0 or 1` | Boolean field has an unrecognized value | Use `0` or `1` |
+| `Active must be False or True` | Boolean field has an unrecognized value | Select `True` or `False` from the dropdown |
+| `⚠️ SOSPECHOSO — Code looks invalid` | A code cell contains a corrupted or placeholder value (e.g. `##########`, `{HotelCode}`, `----`) | Replace it with the actual code. These cells are highlighted in **orange**. |
 
 :::note
-Validation runs automatically again at export time. If errors exist, the export is blocked until all red cells are fixed.
+Validation runs automatically again at export time. If errors or suspicious values exist, the export is blocked until all red and orange cells are fixed.
 :::
 
 ---
@@ -197,31 +199,33 @@ Validation runs automatically again at export time. If errors exist, the export 
 
 Once validation passes, export via the menu:
 
-- **📦 Inventory CSV → 📥 Export CSV → [Sheet name]** — exports one sheet
-- **📦 Inventory CSV → 📥 Export CSV → 📦 Export All** — exports all 8 sheets at once
+- **📦 Inventory CSV → 📥 Export CSV → [Sheet name]** — exports one entity
+- **📦 Inventory CSV → 📥 Export CSV → 📦 Export All** — exports all 8 entities at once (silent/batch mode — no per-file pop-ups, one final summary dialog)
 
 Each export:
-1. Re-validates the sheet (export blocked if errors remain)
-2. Generates a file using **semicolon (`;`) delimiter** and **UTF-8 encoding**
-3. Names the file automatically: `{ClientCode}-{SupplierCode}-{entity}.csv`
-4. Saves it to your **Google Drive root** and shows a download link
+1. Re-validates the sheet (export blocked if errors or suspicious values remain)
+2. Generates files using **semicolon (`;`) delimiter** and **UTF-8 encoding**
+3. Converts boolean values from `True`/`False` to `1`/`0` automatically
+4. **Auto-splits per-hotel entities** (rateplans, rooms, policies, taxes, offers) into one file per hotel, using the context from the Hotels / HotelsMaster sheet
+5. Names files automatically following the correct naming convention:
+   - Masters: `{ClientCode}-{SupplierCode}-hotelsMaster.csv`
+   - Hotels setup: `{ClientCode}-{SupplierCode}-hotels.csv`
+   - Per-hotel entities: `{ClientCode}-{SupplierCode}-{HotelCode}#{ContextCode}-{entity}.csv`
+6. Saves files to your **Google Drive root** and **downloads them to your local machine** via a browser dialog
 
-:::caution File naming for hotel-specific entities
-For setup entities (rateplans, rooms, policies, taxes, offers) the exported filename must include the hotel code before uploading to the SFTP:
+:::tip No manual renaming needed
+Since version 3.4 of the script, the tool automatically splits setup entities by hotel code and includes the `#ContextCode` suffix in the filename. The context is read from the **Context** column of the Hotels or HotelsMaster sheet. You no longer need to rename files manually before uploading to the SFTP.
+:::
 
-```
-clientCode-providerCode-HotelCode#ContextCode-rateplans.csv
-```
-
-The sheet generates `AXI-HOTP-rateplans.csv` — **rename it** to include the hotel code before uploading.  
-See [File Naming for SFTP Uploads](./quickstart#3-file-naming-importance-for-travelgate-ftp-uploads) for full rules and examples.
+:::caution Missing context blocks the export
+If a hotel referenced in a setup entity (e.g. RatePlans) does not have a Context defined in the Hotels or HotelsMaster sheet, the export will fail and list the affected hotel codes. Fill in the Context column for those hotels before exporting.
 :::
 
 ---
 
 ## Step 8 — Upload to SFTP
 
-Upload the renamed CSV files to:
+Upload the exported CSV files to:
 
 ```
 sftp://sftp.travelgate.com:22
@@ -231,6 +235,7 @@ Place the files inside the **Inventory** folder. The system checks for new files
 
 | Suffix | Meaning |
 |---|---|
+| `-Queued` | File has been detected and is waiting to be processed |
 | `-Processing` | File is currently being processed |
 | `-Processed` | File was loaded successfully ✅ |
 | `-Error` | Processing failed — check file name and field values |
@@ -243,7 +248,7 @@ For full SFTP setup instructions, see [Uploading Files to SFTP](./quickstart#4-u
 ## Working with Multiple Hotels or Clients
 
 ### Multiple hotels, same client and supplier
-All sheets support multiple rows. Fill RatePlans, Rooms, Policies, Taxes, and Offers for all hotels in one session. After exporting, rename each file with the corresponding hotel code before uploading.
+All sheets support multiple rows. Fill RatePlans, Rooms, Policies, Taxes, and Offers for all hotels in one session. The **Hotel Code** column in each setup sheet groups the rows — on export, the tool automatically splits the data into one file per hotel, each named with the correct `HotelCode#ContextCode` suffix. No manual renaming is needed.
 
 ### Different clients or suppliers
 Create a separate sheet copy per client/supplier combination using the same **Make my own copy** button. Update **⚙️ Config** in each copy. Exported file names will reflect the correct codes automatically.
@@ -262,7 +267,11 @@ Create a separate sheet copy per client/supplier combination using the same **Ma
 | Menu **📦 Inventory CSV** not visible | Reload the page (F5). The menu loads via an `onOpen` script trigger. |
 | Dropdowns empty after Initialize | Run **🔄 Load Dynamic Data (API)** |
 | Load Dynamic Data fails | Verify Client Code and Supplier Code in **⚙️ Config**. Contact Travelgate support if the issue persists. |
-| Export is blocked | Fix all red-highlighted cells, then retry |
+| Export is blocked (red cells) | Fix all red-highlighted cells (validation errors), then retry |
+| Export is blocked (orange cells) | Orange cells indicate **suspicious/corrupted code values** (e.g. `##########`, `{HotelCode}`). Replace them with the actual codes. |
+| Export fails with "Missing context" | The **Context** column is empty for one or more hotels referenced in setup entities. Fill in the Context in the Hotels or HotelsMaster sheet. |
+| Browser blocks multiple downloads | The first time you export, your browser may ask to "allow multiple downloads" from this site. Accept it once. |
+| `#` in filename saved as `%23` | Some browsers convert the `#` character in downloaded filenames. Rename `%23` back to `#` before uploading, or download from Google Drive instead. |
 | File renamed `-Error` on SFTP | Check the file name format and verify all required fields are present and valid |
 | File stuck as `-Processing` after 2+ hours | Contact Travelgate support with the file name and upload timestamp |
 | `ALL` / `N/A` in Markets fields | Valid inputs — converted to empty on export (= all markets / no exclusions) |

@@ -46,6 +46,12 @@ This allows you to load the 3 different types of price and extra passengers and 
     * Price per Standard Occupancy
     * Price per Occupancy
 
+| Price type | Use this when | How price is calculated | Occupancy supplements | Meal plan supplements |
+| --- | --- | --- | --- | --- |
+| Price per Room | You want one base amount for the room, regardless of occupancy, until standard occupancy is exceeded. | The `Room Price` applies to occupancies equal to or below standard occupancy. Above standard occupancy, supplements can be applied. | Optional for passengers above standard occupancy. | Supported. |
+| Price per Standard Occupancy | You want specific prices for occupancies under or equal to the room standard occupancy. | Prices are based on standard occupancy. Children and babies are treated as adults until standard occupancy is fulfilled. Above standard occupancy, supplements can be applied. | Optional for passengers above standard occupancy. | Supported. |
+| Price per Occupancy | You want to load an exact total amount for each occupancy use. | No system calculation is applied. Standard occupancy is not used. | Not used. | Supported. |
+
 ### Price per Room
 
 Price per room allows you to load a price for the whole room and the option to add occupancy and meal plan supplements.
@@ -69,30 +75,43 @@ All occupancies uses **equal and below** the room standard occupancy will have t
 * **1 adult (1-0-0):** 100€ *(room price)*
 * **2 adults (2-0-0):** 100€ *(room price)*
 
-If the room allows occupancies uses **above** the standard occupancy you can control the price for these extra passengers using the `Occupancy Supplements` option. You can add different supplements by adult, child and baby. The supplement type defines how the calculation is done: 
+If the room allows occupancies uses **above** the standard occupancy you can control the price for these extra passengers using the `Occupancy Supplements` option. You can add different supplements by adult, child and baby. The supplement type defines how the calculation is done:
 
-* **Amount (calculated by system):** This price is the amount added to the average price per pax calculated by the system. If the price per room is 100€ and the first extra adult has an **amount** supplement, the final price in our example for different occupancies would be:
+##### Amount (calculated by system)
 
-    * **1 adult (1-0-0):** 100€ *(room price)*
-    * **2 adults (2-0-0):** 100€ *(room price)*
-    * **1 adult and 1 child (1-1-0):** 100€ *(room price)*
-     * **3 adults (3-0-0):** 100€ *(room price)* + 50€ *(average price per pax: room price / standard occupancy, 100/2)* + 50€ *(adult amount supplement)* = 200€
-    * **2 adults and 1 child (2-1-0):**  100€ *(room price)* + 0€ *(child exclusive supplement)* = 100€
+This price is the amount added to the average price per pax calculated by the system. If the price per room is 100€ and the first extra adult has an **amount** supplement, the final price in our example for different occupancies would be:
 
-* **Percent (calculated by system):** This price is the percent obtained from the average price per pax calculated from the room price. If the price per room is 100€ and the first extra adult has a **percent** of 10% supplement, the final price in our example for different occupancies would be:
+| Occupancy use | Final price calculation |
+| --- | --- |
+| **1 adult (1-0-0)** | 100€ *(room price)* |
+| **2 adults (2-0-0)** | 100€ *(room price)* |
+| **1 adult and 1 child (1-1-0)** | 100€ *(room price)* |
+| **3 adults (3-0-0)** | 100€ *(room price)* + 50€ *(average price per pax: room price / standard occupancy, 100/2)* + 50€ *(adult amount supplement)* = 200€ |
+| **2 adults and 1 child (2-1-0)** | 100€ *(room price)* + 0€ *(child exclusive supplement)* = 100€ |
 
-    * **1 adult (1-0-0):** 100€ *(room price)*
-    * **2 adults (2-0-0):** 100€ *(room price)*
-    * **1 adult and 1 child (1-1-0):** 100€ *(room price)*
-    * **3 adults (3-0-0):** 100€ *(room price)* + 50€ *(average price per pax: room price / standard occupancy, 100/2)* + 5€ *(10% from 50 - average price per pax)* = 155€
-    * **2 adults and 1 child (2-1-0):**  100€ *(room price)* + 0€ *(child exclusive supplement)* = 100€
+##### Percent (calculated by system)
 
-* **Exclusive fixed amount:** This price is absolute. If the price per room is 100€ and the first extra adult has an **exclusive** supplement, the final price in our example for different occupancies would be:
-    * **1 adult (1-0-0):** 100€ (room price)
-    * **2 adults (2-0-0):** 100€ (room price)
-    * **1 adult and 1 child (1-1-0):** 100€ (room price)
-    * **3 adults (3-0-0):** 100€ (room price) + 50€ (adult exclusive supplement) = 150€
-    * **2 adults and 1 child (2-1-0):**  100€ (room price) + 0€ (child exclusive supplement) = 100€
+This price is the percent obtained from the average price per pax calculated from the room price. If the price per room is 100€ and the first extra adult has a **percent** of 10% supplement, the final price in our example for different occupancies would be:
+
+| Occupancy use | Final price calculation |
+| --- | --- |
+| **1 adult (1-0-0)** | 100€ *(room price)* |
+| **2 adults (2-0-0)** | 100€ *(room price)* |
+| **1 adult and 1 child (1-1-0)** | 100€ *(room price)* |
+| **3 adults (3-0-0)** | 100€ *(room price)* + 50€ *(average price per pax: room price / standard occupancy, 100/2)* + 5€ *(10% from 50 - average price per pax)* = 155€ |
+| **2 adults and 1 child (2-1-0)** | 100€ *(room price)* + 0€ *(child exclusive supplement)* = 100€ |
+
+##### Exclusive fixed amount
+
+This price is absolute. If the price per room is 100€ and the first extra adult has an **exclusive** supplement, the final price in our example for different occupancies would be:
+
+| Occupancy use | Final price calculation |
+| --- | --- |
+| **1 adult (1-0-0)** | 100€ (room price) |
+| **2 adults (2-0-0)** | 100€ (room price) |
+| **1 adult and 1 child (1-1-0)** | 100€ (room price) |
+| **3 adults (3-0-0)** | 100€ (room price) + 50€ (adult exclusive supplement) = 150€ |
+| **2 adults and 1 child (2-1-0)** | 100€ (room price) + 0€ (child exclusive supplement) = 100€ |
 
 
 #### Meal plan supplements
@@ -125,11 +144,13 @@ If we load price for this room using price per standard occupancy we will be abl
 
 If we load 50€ for 1 adult and 100€ for 2 adults, let's check how all occupancy uses will be priced:
 
-* **1 adult (1-0-0):** 50€ (occupancy below the standard occupancy and price loaded specific for this use case).
-* **2 adults (2-0-0):** 100€ (occupancy equal to the standard occupancy and price loaded specific for this use case).
-* **1 adult and 1 child (1-1-0):** 100€. Children and babies are treated as adult until the standard occupancy is fulfilled, so in this case we have 1 adult + 1 child converted as an adult because we need to have 2 adults (standard occupancy), that way the price will be the one loaded for two adults.
-* **1 adult and 2 children (1-2-0):** 100€ (for two adults) + 25€ (child supplement) = 125€. Children and babies are treated as adult until the standard occupancy is fulfilled, so in this case we have 1 adult + 1 child converted as an adult + 1 child, that way the price will be the one loaded for two adults and the price for the first extra child.
-* **3 adults (3-0-0):**  100€ (for two adults) + 30€ (adult supplement) = 130€. In this case, all paxes are adults, as the standard occupancy is 2, we use that price and the supplement for the third adult. 
+| Occupancy use | Conversion rule | Final price calculation |
+| --- | --- | --- |
+| **1 adult (1-0-0)** | Below standard occupancy (2). | 50€ (occupancy below the standard occupancy and price loaded specific for this use case). |
+| **2 adults (2-0-0)** | Equal to standard occupancy (2). | 100€ (occupancy equal to the standard occupancy and price loaded specific for this use case). |
+| **1 adult and 1 child (1-1-0)** | Child is treated as adult until standard occupancy is fulfilled. | 100€. In this case we have 1 adult + 1 child converted as an adult because we need to have 2 adults (standard occupancy), that way the price will be the one loaded for two adults. |
+| **1 adult and 2 children (1-2-0)** | First child is treated as adult to fulfill standard occupancy; remaining child keeps child type. | 100€ (for two adults) + 25€ (child supplement) = 125€. In this case we have 1 adult + 1 child converted as an adult + 1 child, that way the price will be the one loaded for two adults and the price for the first extra child. |
+| **3 adults (3-0-0)** | Standard occupancy uses 2 adults; third adult is above standard occupancy. | 100€ (for two adults) + 30€ (adult supplement) = 130€. In this case, all paxes are adults, as the standard occupancy is 2, we use that price and the supplement for the third adult. |
 
 :::caution
 
@@ -139,7 +160,7 @@ If we load 50€ for 1 adult and 100€ for 2 adults, let's check how all occupa
 
 :::note
 
-Check the [occupancy supplements sections](#) explained earlier to know how different types of supplements work.
+Check the [occupancy supplements sections](/docs/apps/inventory/extranet/availability-and-rates/manual-load/availability-and-price) explained earlier to know how different types of supplements work.
 
 :::
 
@@ -147,6 +168,14 @@ Check the [occupancy supplements sections](#) explained earlier to know how diff
 
 Price per occupancy allows you to load exactly the amount for each occupancy use that your room allows. In this case, our system doesn't do any calculation and we don't use the standard occupancy, only the occupancy uses. 
 
+| Rule | Result |
+| --- | --- |
+| Requested occupancy matches a loaded occupancy use. | Final price is exactly the amount loaded for that occupancy use. |
+| Requested occupancy has no loaded amount. | There is no system calculation to derive a fallback amount for that occupancy use. |
+| Standard occupancy | Not used in this price type. |
+| Occupancy supplements | Not used in this price type. |
+| Meal plan supplements | Can be loaded and applied. |
+
 ![Inventory Manual Load](https://storage.travelgate.com/docs/inventory_manual-load-rate6.png)
 
-As you can indicate an specific amount for each occupancy, it doesn't make sense to have occupancy supplements, but you can load [meal plan supplements](#) explained before. 
+As you can indicate an specific amount for each occupancy, it doesn't make sense to have occupancy supplements, but you can load [meal plan supplements](/docs/apps/inventory/extranet/availability-and-rates/manual-load/availability-and-price#meal-plan-supplements) explained before. 

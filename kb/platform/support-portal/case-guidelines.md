@@ -40,5 +40,5 @@ To facilitate a faster resolution, please include the following details when rep
 - **Web Logs:** If the issue occurs on your Platform, follow the steps in our Knowledge Base to [obtain browser logs](/kb/platform/support-portal/how-to-obtain-browser-logs.md).  
 - **Additional Snapshots or Information (if necessary):** Any extra screenshots or relevant details you can provide will be helpful for troubleshooting.  
 
-### Minor API Updates by Sellers
+## Minor API Updates by Sellers
 If you're a Seller notifying us of an API update (minor or maintenance-related), please include your updated API Documentation for review.  

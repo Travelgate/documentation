@@ -15,8 +15,6 @@ This guide explains:
 
 **Scope:** This applies to all POST requests to the GraphQL API. Other HTTP methods (GET, OPTIONS, DELETE, etc.) are not subject to these authorization checks.
 
----
-
 ## HTTP Response
 
 ```
@@ -27,7 +25,6 @@ Body: {
 }
 ```
 
----
 
 ## Circumstances Triggering "Authorization not allowed"
 
@@ -56,8 +53,6 @@ Content-Type: application/json
 - Forgot to include credentials in the API call
 - First-time integration without authentication setup
 
----
-
 ### **2. Malformed Authorization Header**
 
 **What happens:** Authorization header is missing the required format or space separator.
@@ -81,8 +76,6 @@ Authorization: eyJhbGc...                 # No type
 **User Case:**
 - Copy-paste error when adding credentials
 - Accidental concatenation of type and token
-
----
 
 ### **3. Invalid Bearer Token**
 
@@ -108,8 +101,6 @@ Authorization: Bearer eyJhbGc...XZW         # Malformed or expired
 - Token accidentally modified or truncated
 - Using an old/revoked token
 
----
-
 ### **4. Invalid or Expired API Key**
 
 **What happens:** Authorization header uses APIKey authentication but the key is not recognized or has been revoked.
@@ -134,8 +125,6 @@ Authorization: Apikey 550e8400-e29b-xxxx-a716-xxxxxxxxxxxx
 - Using a deleted API key
 - API key revoked due to security policy
 - Copy-paste error in the key value
-
----
 
 ### **5. Unsupported Authorization Type**
 
@@ -185,8 +174,6 @@ Making a POST request?
       └─ Yes → Request should work ✓
 ```
 
----
-
 ## Troubleshooting Guide
 
 ### For Users Getting "Authorization not allowed"
@@ -200,9 +187,6 @@ Making a POST request?
 | Wrong Type | Using supported auth type (Bearer or APIKey) | Use `Bearer` for JWT or `apikey` for UUID |
 
 
-
-
-
 ## Summary
 
 The **"Authorization not allowed"** error (HTTP 401) is returned when a POST request fails authentication checks. Here are the main reasons:
@@ -214,8 +198,6 @@ The **"Authorization not allowed"** error (HTTP 401) is returned when a POST req
 5. **Unsupported auth type** - Use only Bearer or apikey authentication
 
 **Note:** Only POST requests require authentication. GET and other HTTP methods bypass these checks.
-
----
 
 ## Quick Reference: Supported Authentication Methods
 

@@ -25,7 +25,9 @@ Once on the [Company Profile](https://app.travelgate.com/settings/company-profil
    - **Website URL**
    - **Logo**
    - **Description**
-   - **Headquarters Country**  
+   - **Headquarters Country**
+   - **Category**
+   - **Subcategory**  
 
    Ensure your Company Description is **clear and concise**. Once published, all Marketplace players (Buyers and Sellers) will have access to this information via the Travelgate Network.
 

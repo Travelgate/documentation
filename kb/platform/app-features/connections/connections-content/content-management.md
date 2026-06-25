@@ -98,13 +98,13 @@ Click in the hotel row to expand the full hotel information card. You will see t
 
 #### Step 3: Click the Status Tag
 Click directly on the yellow **Pending** tag.
-        ![tg-connections-content-fastx-expanded-yellow-1b](https://storage.travelgate.com/kbase/tg-connections-content-fastx-expanded-yellow-1b.png)
+![tg-connections-content-fastx-expanded-yellow-1b](https://storage.travelgate.com/kbase/tg-connections-content-fastx-expanded-yellow-1b.png)
 
 
 #### Step 4: Resolve in FastX Validation Tool
 The platform redirects you automatically to the **[FastX Codes / FastX Validation Tool](/kb/platform/app-features/connections/fastx-codes)**, with the supplier and hotel code prefilled so you land directly on the target mapping.
 
-        ![tg-connections-content-fastx-expanded-yellow-2](https://storage.travelgate.com/kbase/tg-connections-content-fastx-expanded-yellow-2.png)
+![tg-connections-content-fastx-expanded-yellow-2](https://storage.travelgate.com/kbase/tg-connections-content-fastx-expanded-yellow-2.png)
 
 Review the data and choose to **Validate** or **Invalidate** the mapping.
 

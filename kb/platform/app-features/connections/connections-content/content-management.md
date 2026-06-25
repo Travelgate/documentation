@@ -244,7 +244,7 @@ If you've followed all the steps and still do not have the most up-to-date conte
 <details>
     <summary>Why is the FastX status tag not clickable?</summary>
     <div>
-        <div>Ensure your view data toggle (located in the upper left corner of the platform dashboard) is explicitly set to **Seller**. If you are in **Buyer** mode, or if the status is already **Validated** or **Invalidated**, navigation is disabled by design. You must also expand the hotel row to access the interactive tag; the colored dot in the main list view is not clickable.</div>
+        <div>Ensure your view data toggle (located in the upper-left corner of the platform dashboard) is explicitly set to **Seller**. If you are in **Buyer** mode, or if the status is already **Validated** or **Invalidated**, navigation is disabled by design. You must also expand the hotel row to access the interactive tag; the colored dot in the main list view is not clickable.</div>
     </div>
 </details>
 

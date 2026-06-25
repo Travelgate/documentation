@@ -73,7 +73,7 @@ In the portfolio list, if a hotel has an associated FastX code, a colored dot ap
     ![tg-connections-content-fastx-red](https://storage.travelgate.com/kbase/tg-connections-content-fastx-red.png)
 
 ### 2. Expanded Detail View (FastX Status Tags)
-To interact with these statuses, you must click in the hotel row to view the detailed **Hotel information**. In this expanded view, the status is displayed as a full, color-coded tag.
+To interact with these statuses, you must click on the hotel row to view the detailed **Hotel information**. In this expanded view, the status is displayed as a full, color-coded tag.
 
 Clickability depends on your view mode (Buyer or Seller) and the tag's state:
 

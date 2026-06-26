@@ -154,7 +154,7 @@ The `where` input allows you to precisely filter the statistics based on time ra
 
 **Mandatory criteria:**
 * `mode` (Search perspective, either `BUYER` or `SELLER`).
-* `timeRange` (Absolute date range using the format `"YYYY-MM-DD HH:mm:ss"`).
+* `timeRange` (Absolute date range. In Monitoring APIs, only `timeRange.absolute` is supported. It accepts both ISO 8601 and `"2006-01-02 15:04:05"` formats).
 
 **Optional filters:**
 * `excludeTestSupplier` (Boolean): Set to `true` to exclude test supplier traffic from results. Useful for filtering out noise and focusing on production metrics. Default is `false`.
@@ -571,6 +571,10 @@ query getRealTimeStats($where: StatsRealTimeRangeWhereInput!) {
 - **realTimeRangeData.from** (`DateTime`): The start of the requested time range
 - **realTimeRangeData.to** (`DateTime`): The end of the requested time range
 - **adviseMessage** (`[AdviseMessage]`): Optional warnings or information about the query results (see [Response Fields](#response-fields) section)
+
+:::info
+For Monitoring APIs, use `timeRange.absolute` in real-time queries as well. The `from` and `to` request values accept both ISO 8601 and `"2006-01-02 15:04:05"` formats.
+:::
 
 :::note
 `getRealTimeRangeStats` validates the time range and data availability. To retrieve actual metrics (hits, time, errors) grouped by time buckets, use `getAggregationStats` with `groupBy.time` set to `MINUTE`, `HOUR`, `DAY`, or `MONTH` and include fields like `hits`, `time`, `totalTime`, and `errorType` in your query.

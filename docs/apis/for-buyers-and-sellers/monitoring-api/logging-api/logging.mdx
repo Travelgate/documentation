@@ -136,7 +136,7 @@ The `input` object allows you to precisely filter logs based on API, partner per
 **Mandatory criteria:**
 * `api` (The API whose logs you want to inspect, for example `hotel`).
 * `mode` (Search perspective, either `BUYER` or `SELLER`).
-* `timeRange` (Absolute date range using the format `"YYYY-MM-DD HH:mm:ss"`).
+* `timeRange` (Required time window. Logging accepts both `timeRange.absolute` and relative ranges, but `timeRange.absolute` is recommended for consistent and reproducible filtering. For absolute ranges, date values accept both ISO 8601 and `"2006-01-02 15:04:05"` formats.)
 
 **Optional filters:**
 * `buyer_in`: Restrict results to one or more Buyer organization codes.
@@ -198,7 +198,7 @@ Designed to search for logs using a specific locator or reference (client or sup
 **Key inputs:**
 * `where.api`: The API whose logs you want to inspect.
 * `where.mode`: Whether to inspect Buyer or Seller-side traffic.
-* `where.timeRange`: Time window used to narrow the lookup.
+* `where.timeRange`: Time window used to narrow the lookup. Logging accepts both `timeRange.absolute` and relative ranges, but `timeRange.absolute` is recommended for consistent and reproducible filtering. For absolute ranges, date values accept both ISO 8601 and `"2006-01-02 15:04:05"` formats.
 * `where.reference.supplier` or `where.reference.client`: The reference you want to track.
 
 Use this query when you already know a locator and want to retrieve the matching session-level log records quickly.
@@ -208,7 +208,7 @@ Use this query when you already know a locator and want to retrieve the matching
 Specific query to track the original Quote that generated a specific Booking.
 
 **Key inputs:**
-* `input.timeRange`: Time window around the booking transaction.
+* `input.timeRange`: Time window around the booking transaction. Logging accepts both `timeRange.absolute` and relative ranges, but `timeRange.absolute` is recommended for consistent and reproducible filtering. For absolute ranges, date values accept both ISO 8601 and `"2006-01-02 15:04:05"` formats.
 * `input.sessionId`: The booking session ID you want to trace back to its Quote.
 * `input.buyer` and `input.seller`: Organization codes used to narrow the lookup.
 * `input.mode` and `input.api`: Partner perspective and API scope for the search.

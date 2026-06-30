@@ -16,7 +16,7 @@ In the **Connections Content** section, you can easily check and force updates f
 
 3. **Filter by Connection > Supplier > Access**, and click the "Get content" button to retrieve the corresponding portfolio. You can also filter by Country, Hotel code, or Hotel Name using the "Filter results" panel on the left side of the screen.
 
-    ![tg_connections_content_4](https://storage.travelgate.com/kbase/tg_connections_content_5.png)
+    ![tg-connections-content-fastx](https://storage.travelgate.com/kbase/tg-connections-content-fastx.png)
 
     :::info Missing Access in the Connections Content Dropdown?
     **Only active accesses** from [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details) appear in the Connections Content dropdown. If the access is missing, ensure it is set to "Active" in the "My Connections" section.
@@ -47,18 +47,71 @@ In the **Connections Content** section, you can easily check and force updates f
     - Category
     - Room types: list of all available rooms, as well as their room code, bed types and occupancies.  
 
-    :::info
-    Travelgate displays the **"Hotel code"** as the primary hotel identifier. This is the operational code used by the Buyer during Travelgate's booking flow within the Supplier context.
+    :::info Hotel Code Visibility
+    Travelgate displays **Hotel code** as the primary hotel identifier used in the Buyer booking flow within the Supplier context.
 
-    To ensure full traceability, the **"Original supplier hotel code"** (the Seller’s native hotel code) is also displayed if it differs from the hotel code. If both identifiers are identical, the original supplier code is hidden to avoid redundancy.
+    For traceability, **Original supplier hotel code** (the Seller's native hotel code) is shown only when it differs from **Hotel code**. If both values are identical, the original supplier code is hidden to avoid redundancy.
 
-    When reviewing **portfolio content for FastX**, the FastX hotel code and Original supplier hotel code columns are excluded because **the primary Hotel code field already displays the required FastX identifier**.
+    For the **FastX** portfolio, the **FastX hotel code** and **Original supplier hotel code** columns are excluded because the primary **Hotel code** already displays the required FastX identifier.
     :::
 
-    ![tg_connections_content_4](https://storage.travelgate.com/kbase/tg_connections_content_4.png)
+### Missing Hotel Details
+The information shown in Connections Content **depends on the data provided by each supplier**. As a result, some fields may be unavailable for certain properties. If a field is missing, contact the Seller to assess whether that information can be included through the integration.
 
-:::info Missing Hotel Details
-The information displayed on the Connections Content screen **depends on the data provided by each supplier**. As a result, we cannot guarantee that all fields will be complete or available for every property. If a field is missing information, please contact the Seller so they can assess the possibility of including it through the integration.
+## FastX Validation Statuses
+
+Connections Content shows each property's FastX validation status. You can see this status in two places: the portfolio list (colored dot status indicator) and the expanded hotel details (status tag).
+
+### 1. Portfolio List Screen (FastX Status Indicators)
+In the portfolio list, if a hotel has an associated FastX code, a colored dot appears next to the code in the **FastX hotel code** column.
+
+*   **Pending (Yellow):** The hotel mapping is pending verification or review.
+    ![tg-connections-content-fastx-yellow](https://storage.travelgate.com/kbase/tg-connections-content-fastx-yellow.png)
+*   **Validated (Green):** The hotel mapping is verified and fully operational.
+    ![tg-connections-content-fastx-green](https://storage.travelgate.com/kbase/tg-connections-content-fastx-green.png)
+*   **Invalidated (Red):** The hotel mapping contains errors or has been rejected.
+    ![tg-connections-content-fastx-red](https://storage.travelgate.com/kbase/tg-connections-content-fastx-red.png)
+
+### 2. Expanded Detail View (FastX Status Tags)
+To interact with these statuses, you must click on the hotel row to view the detailed **Hotel information**. In this expanded view, the status is displayed as a full, color-coded tag.
+
+Clickability depends on your view mode (Buyer or Seller) and the tag's state:
+
+*   **Buyer Mode:** All tags are informational only — flat visual labels with no click interaction.
+*   **Seller Mode:** Interaction depends on the tag state:
+    *   **Validated (Green):** Non-clickable. No further validation action is required.
+        ![tg-connections-content-fastx-expanded-green](https://storage.travelgate.com/kbase/tg-connections-content-fastx-expanded-green.png)
+    *   **Invalidated (Red):** Non-clickable. Navigation through this tag is disabled.
+        ![tg-connections-content-fastx-expanded-red](https://storage.travelgate.com/kbase/tg-connections-content-fastx-expanded-red.png)
+    *   **Pending (Yellow):** **Clickable**. Clicking the tag automatically redirects you to the FastX Codes section to complete the validation.
+        ![tg-connections-content-fastx-expanded-yellow-1](https://storage.travelgate.com/kbase/tg-connections-content-fastx-expanded-yellow-1.png)
+
+### Validating a Pending FastX Code (Sellers Only)
+
+If you are operating in **Seller** mode and need to resolve a pending mapping, follow these specific steps to use the direct filter navigation:
+
+#### Step 1: Locate the Pending Property
+From the portfolio list, find a property displaying a yellow dot indicator under the FastX column.
+
+#### Step 2: Expand Hotel Details
+Click in the hotel row to expand the full hotel information card. You will see the complete **Pending** tag next to the FastX hotel code.
+
+#### Step 3: Click the Status Tag
+Click directly on the yellow **Pending** tag.
+![tg-connections-content-fastx-expanded-yellow-1b](https://storage.travelgate.com/kbase/tg-connections-content-fastx-expanded-yellow-1b.png)
+
+
+#### Step 4: Resolve in FastX Validation Tool
+The platform redirects you automatically to the **[FastX Codes / FastX Validation Tool](/kb/platform/app-features/connections/fastx-codes)**, with the supplier and hotel code prefilled so you land directly on the target mapping.
+
+![tg-connections-content-fastx-expanded-yellow-2](https://storage.travelgate.com/kbase/tg-connections-content-fastx-expanded-yellow-2.png)
+
+Review the data and choose to **Validate** or **Invalidate** the mapping.
+
+:::tip If the redirect does not occur
+- Confirm you are in **Seller** mode (check the view toggle in the upper-left corner).
+- Confirm the tag status is **Pending** — Validated and Invalidated tags are not clickable.
+- Refresh the page and expand the hotel row again before retrying.
 :::
 
 
@@ -187,6 +240,20 @@ If you've followed all the steps and still do not have the most up-to-date conte
 :::
 
 ## Frequently Asked Questions
+
+<details>
+    <summary>Why is the FastX status tag not clickable?</summary>
+    <div>
+        <div>Ensure your view data toggle (located in the upper-left corner of the platform dashboard) is explicitly set to **Seller**. If you are in **Buyer** mode, or if the status is already **Validated** or **Invalidated**, navigation is disabled by design. You must also expand the hotel row to access the interactive tag; the colored dot in the main list view is not clickable.</div>
+    </div>
+</details>
+
+<details>
+    <summary>How long does it take for a status change to reflect here?</summary>
+    <div>
+        <div>Once a property is processed through the FastX Validation Tool, updates synchronize with the master portfolio listing during the scheduled content refresh window (typically within 24 to 72 hours).</div>
+    </div>
+</details>
 
 <details>
     <summary>Is the Seller's content stored in Travelgate's database?</summary>

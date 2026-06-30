@@ -213,6 +213,15 @@ Specific query to track the original Quote that generated a specific Booking.
 * `input.buyer` and `input.seller`: Organization codes used to narrow the lookup.
 * `input.mode` and `input.api`: Partner perspective and API scope for the search.
 
+#### Obtaining Filter Values (Equivalences)
+
+The `buyer` and `seller` fields in `getQuoteLogsFromBook` represent the same organization codes as `buyer_in` and `seller_in` in `getLogs`. The difference is that `buyer_in` and `seller_in` accept an array of values, while `buyer` and `seller` each accept a single scalar string. Use the following equivalence table to obtain the correct values:
+
+| `getQuoteLogsFromBook` Input | Equivalent in `getLogs` | What it Represents | How to obtain it |
+|---|---|---|---|
+| `buyer` (scalar `String`) | `buyer_in` (array of `String`) | Buyer Organization Code | Query your Buyers list in the [Admin API](https://docs.travelgate.com/docs/apis/for-buyers-and-sellers/admin-api/overview) to retrieve the `orgCode` |
+| `seller` (scalar `String`) | `seller_in` (array of `String`) | Seller Organization Code | Query your Sellers list in the [Admin API](https://docs.travelgate.com/docs/apis/for-buyers-and-sellers/admin-api/overview) to retrieve the `orgCode` |
+
 Use this query when you need quote-to-book traceability for a booking investigation or One Step Book analysis.
 
 ### Response Fields

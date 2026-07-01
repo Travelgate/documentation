@@ -1,0 +1,183 @@
+---
+sidebar_position: 2
+title: Get Profiles
+---
+
+import {allProfilesV2ListQuery} from "../../../../src/graphql/social/allprofilesv2.query.js";
+
+
+# Get Profiles
+
+## API Endpoint
+
+All Social API operations use a single GraphQL endpoint:
+
+```
+https://api.travelgate.com
+```
+
+## Overview
+
+Use `allProfilesV2` to retrieve organization profile data in the Social API scope. This query helps you inspect profile attributes for Buyers and Sellers, including owner code, categories, and integration types.
+
+### Common Use Cases
+
+- **List Available Profiles:** Retrieve profile records visible to your authenticated scope.
+- **Filter by Owner Organization:** Retrieve profiles for one owner code (useful when you belong to more than one organization).
+- **Inspect Commercial Classification:** Review buyer/seller categories and subcategories.
+- **Review Integration Type Signals:** Check `buyerIntegrationType` and `sellerIntegrationType` values.
+
+## Authentication
+
+All Social API calls require JWT (JSON Web Token) authentication. Follow the [Admin API Authentication Guide](/docs/apis/for-buyers-and-sellers/admin-api/authentication) to obtain your bearer token and include it in all API requests.
+
+## Query Overview
+
+The Social API root field is `social`, and profile data is returned through `allProfilesV2`:
+
+```graphql
+social {
+  allProfilesV2(where: { ownerCode: { equals: "example-owner" } }) {
+    edges {
+      node {
+        profileData {
+          ...
+        }
+      }
+    }
+  }
+}
+```
+
+### Where Filter
+
+The `where` input is optional.
+
+- `ownerCode.equals`: Filters profiles by owner organization code.
+
+Use sample values (for example, `example-owner`) only as placeholders.
+
+### Requested Profile Fields
+
+This page examples focus on these `profileData` fields:
+
+- `name`
+- `owner.code`
+- `websiteUrl`
+- `sellerIntegrationType`
+- `buyerIntegrationType`
+- `buyerCategory`
+- `sellerCategory`
+- `buyerSubCategory`
+- `sellerSubCategory`
+
+<GraphqlSample query={allProfilesV2ListQuery}/>
+
+## Query Examples
+
+### Example 1. Inline Filter
+
+```graphql
+query {
+  social {
+    allProfilesV2(where: { ownerCode: { equals: "example-owner" } }) {
+      edges {
+        node {
+          profileData {
+            name
+            owner {
+              code
+            }
+            websiteUrl
+            sellerIntegrationType
+            buyerIntegrationType
+            buyerCategory
+            sellerCategory
+            buyerSubCategory
+            sellerSubCategory
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+### Example 2. Query with Variables
+
+```graphql
+query GetProfiles($ownerCode: String!) {
+  social {
+    allProfilesV2(where: { ownerCode: { equals: $ownerCode } }) {
+      edges {
+        node {
+          profileData {
+            name
+            owner {
+              code
+            }
+            websiteUrl
+            sellerIntegrationType
+            buyerIntegrationType
+            buyerCategory
+            sellerCategory
+            buyerSubCategory
+            sellerSubCategory
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+```json
+{
+  "ownerCode": "example-owner"
+}
+```
+
+## Response Example
+
+```json
+{
+  "data": {
+    "social": {
+      "allProfilesV2": {
+        "edges": [
+          {
+            "node": {
+              "profileData": {
+                "name": "Example Travel Company",
+                "owner": {
+                  "code": "example-owner"
+                },
+                "websiteUrl": "https://example.com",
+                "sellerIntegrationType": null,
+                "buyerIntegrationType": ["HOTELX"],
+                "buyerCategory": "Travel Agency",
+                "sellerCategory": null,
+                "buyerSubCategory": "Online",
+                "sellerSubCategory": null
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+## Response Considerations
+
+- `allProfilesV2` follows a connection structure: `edges -> node -> profileData`.
+- `seller...` and `buyer...` fields can be `null` depending on the organization profile.
+- `owner.code` identifies the owner organization associated with the profile.
+- `buyerIntegrationType` and `sellerIntegrationType` may return multiple values.
+
+## Troubleshooting Notes
+
+- **Empty results:** Verify your JWT permissions and visibility scope for the requested owner code.
+- **Unexpected null fields:** Some organizations may not expose both Buyer and Seller profile attributes.
+- **No owner filter applied:** Omitting `where` returns all profiles visible to your authenticated scope.

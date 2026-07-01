@@ -1,0 +1,124 @@
+---
+sidebar_position: 7
+---
+
+import {allOrganizationsListQuery} from "../../../../src/graphql/admin/allorganizations.query.js";
+
+
+# Get Organizations
+
+The `allOrganizations` query returns organizations available in the admin scope.
+
+You can optionally filter the result by using the `where` input.
+
+Use this endpoint when you need to:
+
+* List organization codes
+* Check whether an organization is active
+* Identify the owner organization linked to each record
+
+## Query Overview
+
+Path: `admin/get-organizations/`
+
+GraphQL root:
+
+```graphql
+admin {
+  allOrganizations(where: {code_in: "code_org"}) {
+    edges {
+      node {
+        organizationsData {
+          ...
+        }
+      }
+    }
+  }
+}
+```
+
+The `where` filter is optional. This example uses `code_in: "code_org"` only to illustrate the syntax.
+
+The sample below requests these fields from `organizationsData`:
+
+* `code`
+* `isActive`
+* `owner.code`
+
+<GraphqlSample query={allOrganizationsListQuery}/>
+
+### Common Use Cases
+
+- **List Organizations:** Retrieve the organizations available in the admin scope.
+- **Check Organization Status:** Verify whether a specific organization is active.
+- **Inspect Ownership:** Identify the owner organization associated with each record.
+
+## Query Example
+
+### Simple Request
+
+This example retrieves organizations filtered by organization code.
+
+```graphql
+query {
+  admin {
+    allOrganizations(where: {code_in: "code_org"}) {
+      edges {
+        node {
+          organizationsData {
+            code
+            isActive
+            owner {
+              code
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+### Variables Example
+
+This query does not require variables.
+
+```json
+{}
+```
+
+## Response Example
+
+Here is an example of the response:
+
+```json
+{
+  "data": {
+    "admin": {
+      "allOrganizations": {
+        "edges": [
+          {
+            "node": {
+              "organizationsData": {
+                "code": "code_org",
+                "isActive": true,
+                "owner": {
+                  "code": "owner_org"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+
+## Response Considerations
+
+* `where` is optional. If you use it, `code_in: "code_org"` is only a sample filter value.
+* `code` is the organization identifier.
+* `isActive` indicates whether the organization is active.
+* `owner.code` helps identify the owning organization associated with the record.

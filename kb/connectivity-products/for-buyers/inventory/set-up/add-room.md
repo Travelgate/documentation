@@ -25,6 +25,15 @@ With Inventory, you can easily manage your personalized room type list across al
 
 ![inventory_setup8](https://storage.travelgate.com//docs/inventory_setup8.png)
 
-:::info
-For a complete understanding of how the Inventory Extranet works and its full functionalities, check our [Documentation](/docs/apps/inventory/extranet/overview).
+
+### Assigning Room Occupancy (Uses)
+Once your room type is ready, you must define its occupancy combinations ("Uses"). The Extranet provides a predefined selection of standard passenger combinations (up to 8 guests) grouped by adults, children, and babies. 
+
+If your room accommodates a unique or larger combination not listed by default (up to 16 adults or 9 children/babies), you can manually add it by selecting **Create a new use**. 
+
+For step-by-step instructions on managing standard occupancies or configuring custom combinations, see the [Create a New Use Guide](/docs/apps/inventory/extranet/set-up/setup/#create-a-new-use).
+
+
+:::info Additional Resources
+For a comprehensive look at all available Inventory features, browse the [Inventory Extranet Manual](/docs/apps/inventory/extranet/overview).
 :::

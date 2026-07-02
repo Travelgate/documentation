@@ -27,7 +27,7 @@ function HomepageHeader() {
     <header className={clsx('hero hero--primary hero-docs', styles.heroBanner)}>
       <div className="container">
         <h1 className="hero__title">Travelgate Documentation</h1>
-        <p className="hero__subtitle">Intuitive, flexible and customisable APIs connecting Buyers and Sellers across the Travel Industry.</p>
+        <p className="hero__subtitle">Intuitive, flexible and customizable APIs connecting Buyers and Sellers across the Travel Industry.</p>
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"

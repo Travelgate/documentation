@@ -78,6 +78,11 @@ Once you’ve requested a new connection, you can track its progress in the "My 
 If you have any updates regarding activation or additional details, please avoid submitting new support cases. Instead, **respond to the email thread with the Connectivity Team** for more efficient communication.
 :::
 
+### Automated "No Availability" Optimization
+By default, all auto-activated connections are paired with our **Traffic Optimizer "No Availability"** criteria. This [automated system feature](/kb/platform/app-features/smart-traffic/traffic-optimizer/traffic-optimizer-activation#automated-no-availability-optimization) optimizes your look-to-book ratio right away by filtering out requests that yield zero results, protecting your bandwidth and server health.
+
+* **Dashboard Visibility:** You can track these automated updates in your Traffic Optimizer Dashboard. They are labeled as **`Requester: Auto-Opt.`** under the **"Last Update (UTC)"** column at both the Access and Connection levels.
+* **Control:** While we **highly recommend leaving this active** to maintain peak search performance, you have the flexibility to manually deactivate this optimization at any time at the Access or Connection level.
 
 ## Frequently Asked Questions
 

@@ -107,7 +107,7 @@ Authorization: Bearer eyJhbGc...XZW         # Malformed or expired
 
 **Example:**
 ```http
-Authorization: Apikey 550e8400-e29b-xxxx-a716-xxxxxxxxxxxx
+Authorization: Apikey 550xxx00-e29b-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
 **Why it fails:**
@@ -161,14 +161,14 @@ Making a POST request?
 │  └─ Add the Authorization header (see examples below)
 │
 ├─ Format incorrect? (missing space)
-│  └─ Fix format: "Bearer <token>" or "apikey <key>"
+│  └─ Fix format: "Bearer <token>" or "Apikey <key>"
 │
 ├─ Using Bearer authentication?
 │  └─ Is token a valid JWT?
 │     ├─ No → Request a new token
 │     └─ Yes → Request should work ✓
 │
-└─ Using APIKey authentication?
+└─ Using Apikey authentication?
    └─ Is the API key valid and active?
       ├─ No → Check API key in admin console or generate new one
       └─ Yes → Request should work ✓
@@ -236,4 +236,4 @@ For a quick diagnosis path, use the troubleshooting flowchart and the troublesho
 | Method | Format | Example | Best For |
 |--------|--------|---------|----------|
 | Bearer | `Authorization: Bearer <jwt_token>` | `Authorization: Bearer eyJhbGc...` | Service-to-service authentication |
-| API Key | `Authorization: Apikey <uuid>` | `Authorization: Apikey 550e8400-e29...` | Application-level API access |
+| API Key | `Authorization: Apikey <uuid>` | `Authorization: Apikey 55xxxx00-x29...` | Application-level API access |

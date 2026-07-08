@@ -1,0 +1,284 @@
+---
+sidebar_position: 1
+title: Insights
+---
+
+import {
+  bookingsReportQuery,
+  bookingsReportVariables,
+} from "../../../../../src/graphql/insights/insights.queries";
+
+# Insights API
+
+## API Endpoint
+
+All Insights API operations use a single GraphQL endpoint:
+
+```
+https://api.travelgate.com
+```
+
+## Overview
+
+Travelgate's Insights API lets you query booking reports programmatically.
+
+This document provides the query reference and request/response patterns for the **Travelgate Insights API**.
+
+### Common Use Cases
+
+- **Booking Analysis:** Retrieve detailed and aggregated booking results.
+- **Performance Reporting:** Analyze booking metrics by client, supplier, market, and destination.
+- **Trend Monitoring:** Track booking volume and revenue trends over time using groupBy dimensions.
+
+## Authentication
+
+All Insights API calls require JWT (JSON Web Token) authentication. Follow the steps in the [Admin API Authentication Guide](/docs/apis/for-buyers-and-sellers/admin-api/authentication) to obtain your bearer token and include it in all API requests.
+
+**Quick Example:**
+
+Include your JWT token in the `Authorization` header:
+
+```bash
+curl 'https://api.travelgate.com' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer YOUR_JWT_TOKEN' \
+  --data-raw '{
+    "query": "query BookingsReportExample { insights { bookingsReport(where: { requestMode: BUYER bookingAt: { gte: \\"2026-06-01 00:00:00\\" lte: \\"2026-06-30 23:59:59\\" } } limit: 50) { bookingsAggregation { edges { node { InsightsXBookingAggregationData { bookingAt amount amountEur numBookings } } } } } } }"
+  }'
+```
+
+## Query Overview
+
+### bookingsReport
+
+Retrieve booking detail and aggregation data.
+
+```graphql
+insights {
+  bookingsReport(
+    where: BookingsReportWhereInput
+    orderBy: BookingsReportOrderByInput
+    groupBy: [BookingsReportGroupByInput!]
+    limit: Int
+    relay: RelayInput
+  ): InsightsXBookingReport
+}
+```
+
+## Input Highlights
+
+### Required
+
+- No top-level argument is strictly required by the schema.
+- If `where` is provided, `where.requestMode` is required.
+
+### Optional
+
+- `where.bookingAt`, `where.checkInAt`, `where.cancelAt`
+- `where.reference`
+- `where.ownerCode_in`, `where.groupCode_in`, `where.accessCode_in`
+- `where.supplierCode_in`, `where.clientCode_in`
+- `where.marketCode_in`, `where.countryCode_in`
+- `where.bookingStatus_in`
+- `orderBy`, `groupBy`, `limit`, `relay`
+
+### Enum Reference
+
+#### ModeType
+
+| Value | Description |
+|-------|-------------|
+| `BUYER` | Query from the Buyer's perspective |
+| `SELLER` | Query from the Seller's perspective |
+
+#### BookingsReportOrderByInput
+
+| Value | Description |
+|-------|-------------|
+| `bookingAt_ASC` / `bookingAt_DES` | Sort by booking date ascending or descending |
+| `checkInAt_ASC` / `checkInAt_DES` | Sort by check-in date ascending or descending |
+| `cancelAt_ASC` / `cancelAt_DES` | Sort by cancellation date ascending or descending |
+| `numBookings_ASC` / `numBookings_DES` | Sort by number of bookings ascending or descending |
+| `amountEur_ASC` / `amountEur_DES` | Sort by amount in EUR ascending or descending |
+
+#### BookingsReportGroupByInput
+
+| Value | Description |
+|-------|-------------|
+| `status` | Group by booking status |
+| `clientCode` | Group by client code |
+| `clientOrganization` | Group by client organization |
+| `supplierCode` | Group by supplier code |
+| `supplierOrganization` | Group by supplier organization |
+| `currency` | Group by currency |
+| `bookingAt` | Group by booking date |
+| `checkInAt` | Group by check-in date |
+| `cancelAt` | Group by cancellation date |
+| `originMarket` | Group by origin market |
+| `destinationCountry` | Group by destination country |
+| `paxType` | Group by passenger type |
+| `lengthOfStay` | Group by length of stay |
+| `bookingWindow` | Group by booking window |
+| `hotel` | Group by hotel |
+
+#### BookStatusType
+
+| Value | Description |
+|-------|-------------|
+| `OK` | Booking confirmed successfully |
+| `KO` | Booking failed |
+| `ON_REQUEST` | Booking pending confirmation |
+| `CANCELLED` | Booking cancelled |
+| `PENDING_COMMIT` | Booking awaiting commit |
+| `UNKNOWN` | Booking status unknown |
+
+## Baseline Response Shape
+
+Main response sections:
+
+- `bookingsDetails` — row-level booking records
+- `bookingsAggregation` — grouped aggregation data
+- `adviseMessage` — operational warnings or errors
+
+## Examples
+
+In the following examples, you can see how to extract bookings data using the interactive playground.
+
+### Example 1: Bookings Report (`bookingsReport`)
+
+**Query:**
+
+```graphql
+query BookingsReportExample {
+  insights {
+    bookingsReport(
+      where: {
+        requestMode: BUYER
+        bookingAt: {
+          gte: "2026-06-01 00:00:00"
+          lte: "2026-06-30 23:59:59"
+        }
+        clientCode_in: ["client_demo"]
+        supplierCode_in: ["SUPPLIER_CODE"]
+        marketCode_in: ["ES"]
+        countryCode_in: ["PT"]
+        bookingStatus_in: [OK, CANCELLED]
+      }
+      orderBy: amountEur_DES
+      groupBy: [clientCode, supplierCode, bookingAt]
+      limit: 50
+    ) {
+      bookingsDetails {
+        edges {
+          node {
+            InsightsXBookingDetailData {
+              reference {
+                client
+                supplier
+                hotel
+              }
+              hotel {
+                bookingDate
+                start
+                end
+                hotelCode
+                hotelName
+              }
+              status
+              price {
+                net
+                gross
+                exchange {
+                  currency
+                  rate
+                }
+              }
+            }
+          }
+        }
+      }
+      bookingsAggregation {
+        edges {
+          node {
+            InsightsXBookingAggregationData {
+              bookingAt
+              amount
+              amountEur
+              numBookings
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+**Sample Response:**
+
+```json
+{
+  "data": {
+    "insights": {
+      "bookingsReport": {
+      "bookingsDetails": {
+        "edges": [
+          {
+            "node": {
+              "InsightsXBookingDetailData": {
+                "reference": {
+                  "client": "CLI-REF-001",
+                  "supplier": "SUP-REF-777",
+                  "hotel": "HOTEL-REF-99"
+                },
+                "hotel": {
+                  "bookingDate": "2026-06-10",
+                  "start": "2026-07-01",
+                  "end": "2026-07-05",
+                  "hotelCode": "HTL123",
+                  "hotelName": "Demo Hotel"
+                },
+                "status": "OK",
+                "price": {
+                  "net": 120.5,
+                  "gross": 130.0,
+                  "exchange": {
+                    "currency": "EUR",
+                    "rate": 1.0
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "bookingsAggregation": {
+        "edges": [
+          {
+            "node": {
+              "InsightsXBookingAggregationData": {
+                "bookingAt": "2026-06-10",
+                "amount": 120.5,
+                "amountEur": 120.5,
+                "numBookings": 1
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+<GraphqlSample
+  query={bookingsReportQuery}
+  variables={bookingsReportVariables}
+/>
+&nbsp;
+
+## Related Guides
+
+- [Monitoring APIs](/docs/apis/for-buyers-and-sellers/monitoring-api/)
+- [Stats API](/docs/apis/for-buyers-and-sellers/monitoring-api/stats-api/stats)
+- [Logging API](/docs/apis/for-buyers-and-sellers/monitoring-api/logging-api/logging)

@@ -221,50 +221,51 @@ query BookingsReportExample {
   "data": {
     "insights": {
       "bookingsReport": {
-      "bookingsDetails": {
-        "edges": [
-          {
-            "node": {
-              "InsightsXBookingDetailData": {
-                "reference": {
-                  "client": "CLI-REF-001",
-                  "supplier": "SUP-REF-777",
-                  "hotel": "HOTEL-REF-99"
-                },
-                "hotel": {
-                  "bookingDate": "2026-06-10",
-                  "start": "2026-07-01",
-                  "end": "2026-07-05",
-                  "hotelCode": "HTL123",
-                  "hotelName": "Demo Hotel"
-                },
-                "status": "OK",
-                "price": {
-                  "net": 120.5,
-                  "gross": 130.0,
-                  "exchange": {
-                    "currency": "EUR",
-                    "rate": 1.0
+        "bookingsDetails": {
+          "edges": [
+            {
+              "node": {
+                "InsightsXBookingDetailData": {
+                  "reference": {
+                    "client": "CLI-REF-001",
+                    "supplier": "SUP-REF-777",
+                    "hotel": "HOTEL-REF-99"
+                  },
+                  "hotel": {
+                    "bookingDate": "2026-06-10",
+                    "start": "2026-07-01",
+                    "end": "2026-07-05",
+                    "hotelCode": "HTL123",
+                    "hotelName": "Demo Hotel"
+                  },
+                  "status": "OK",
+                  "price": {
+                    "net": 120.5,
+                    "gross": 130.0,
+                    "exchange": {
+                      "currency": "EUR",
+                      "rate": 1.0
+                    }
                   }
                 }
               }
             }
-          }
-        ]
-      },
-      "bookingsAggregation": {
-        "edges": [
-          {
-            "node": {
-              "InsightsXBookingAggregationData": {
-                "bookingAt": "2026-06-10",
-                "amount": 120.5,
-                "amountEur": 120.5,
-                "numBookings": 1
+          ]
+        },
+        "bookingsAggregation": {
+          "edges": [
+            {
+              "node": {
+                "InsightsXBookingAggregationData": {
+                  "bookingAt": "2026-06-10",
+                  "amount": 120.5,
+                  "amountEur": 120.5,
+                  "numBookings": 1
+                }
               }
             }
-          }
-        ]
+          ]
+        }
       }
     }
   }
@@ -279,6 +280,5 @@ query BookingsReportExample {
 
 ## Related Guides
 
-- [Monitoring APIs](/docs/apis/for-buyers-and-sellers/monitoring-api/)
 - [Stats API](/docs/apis/for-buyers-and-sellers/monitoring-api/stats-api/stats)
 - [Logging API](/docs/apis/for-buyers-and-sellers/monitoring-api/logging-api/logging)

@@ -82,7 +82,8 @@ const config = {
       "data-button-border": "0",
       "data-button-hover-animation-enabled": "false",
       "data-mcp-enabled": "true",
-      "data-mcp-server-url": "https://travelgate.mcp.kapa.ai"
+      "data-mcp-server-url": "https://travelgate.mcp.kapa.ai",
+      "data-customization-id": "1d732488-1c1e-4ed6-b4ed-3135ad6fde53"
 
     }
   ],

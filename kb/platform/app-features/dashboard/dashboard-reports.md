@@ -17,7 +17,7 @@ Stay up to date with the most recent booking activity. This section includes:
 
 ### Quick Overview
 Get a snapshot of your key metrics to evaluate overall platform activity and performance:
-   - **Total Searches:** The total volume of of Search transactions.
+   - **Total Searches:** The total volume of Search transactions.
    - **Total Bookings OK:** Total volume of Book transactions with status OK.
    - **Total Cancellations OK:** Total volume of Cancel transactions with status OK.
    - **Look-to-Book Ratio (L2B):** Total number of Searches divided by total number of bookings OK, minus cancellations OK.

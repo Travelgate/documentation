@@ -32,7 +32,7 @@ However, we have established partnerships with affiliates specializing in these 
    - Example requests:
      - Booking flow data discrepancies.
      - Static data download errors or inconsistencies.
-     - Minor API updates, such as supporting new cancelation policies in Search.
+     - Minor API updates, such as supporting new cancellation policies in Search.
 
 :::info
 - To share your Product Development ideas, join the [Travelgate Community](https://discord.com/invite/travelgate), where our Product team evaluates suggestions and requests.

@@ -4,7 +4,7 @@ Defines the available service operations for hotel content operations.
 
 ## Enum Values
 
-| Name | Descrption |
+| Name | Description |
 |------|-------|
 | **HotelListBasicInfo** | **Not yet implemented.** Intended to return a minimal set of hotel data (e.g., name, location) and additional information to be retrieved separately with `HotelDetails`. |
 | **HotelListFull** | Used when the supplier returns all the information in one call. |

@@ -134,17 +134,6 @@ You can download the PDFs of your invoices or credit note.
 #### 3. Access CSV bookings locator
 Download the booking list with their corresponding locator in CSV format.
 
-:::info
-**The CSV Bookings locator contains all transactions processed through our platform for the selected month**. However, the booking fee is only applied based on the **status of the reservation in our Platform**:
-- **Booking Fee Applied:** 
-  - Bookings with "OK" status.
-  - "CANCELLED" bookings with cancellation costs.
-- **Booking Fee NOT Applied:** 
-  - "UNKNOWN" bookings.
-  - "ON_REQUEST" bookings.
-  - "CANCELLED" bookings without cancellation costs.
-:::
-
 #### 4. Pay Invoice
 Find our bank information and pay your invoices by **wire transfer**.  
 For credit card payments (only available for amounts under 1,000 EUR), select the invoice you wish to pay and click **Pay now > Pay by credit card**.
@@ -154,6 +143,27 @@ For credit card payments (only available for amounts under 1,000 EUR), select th
 ![tg_billing_16](https://storage.travelgate.com/kbase/tg_billing_16.png)
 
 ## Frequently Asked Questions
+
+### How is the booking fee calculated and when does it apply?
+**The CSV Bookings locator contains all transactions processed through our platform for the selected month**. However, the booking fee is only applied based on the **status of the reservation in our Platform**:
+- **Booking Fee Applied:** 
+  - Bookings with "OK" status.
+  - "CANCELLED" bookings with cancellation costs: If a cancellation cost exists, the booking fee applies. This fee is calculated exclusively from the cancellation cost, as defined by the policy in the Quote response.
+- **Booking Fee NOT Applied:** 
+  - "UNKNOWN" bookings.
+  - "ON_REQUEST" bookings.
+  - "CANCELLED" bookings without cancellation costs.
+  
+#### Examples of Booking Fee Application:
+The following table uses examples from a standard billing CSV Bookings locator report to clarify exactly when and how the booking fee is applied based on the booking status and associated costs:
+
+| **Status** | **Book Amount** | **Book Cancel Cost** | **Booking Fee Application** |
+| :--- | :--- | :--- | :--- |
+| `CANCELLED` | 1132.90 | 88.82 | Booking fee applied over the cancel cost |
+| `CANCELLED` | 119.49 | 0.00 | No fees applied |
+| `OK` | 184.42 | 0.00 | Booking fee applied over the amount |
+| `ON_REQUEST` | 709.60 | 0.00 | No fees applied |
+
 
 ### Does your system send payment reminders?
 

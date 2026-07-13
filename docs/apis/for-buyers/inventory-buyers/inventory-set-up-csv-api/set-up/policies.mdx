@@ -19,21 +19,38 @@ If you have any questions about how to add the requested information to create t
 |-------------|-----|---------------------------------------------------------------------------------------------------|
 | Rate Code        |	  1   | Unique identifier that associate this policies to a unique rate. |
 | Refundable        |   1   | Indicate if it is a refundable policy or not. Example: (**0 - False** (not refundable)) or (**1 - True** (refundable)). |
-| Days Before        |   0   | Number of days prior to check-in when the cancellation policy takes effect. |
-| Penalty Value        |   0   | Amount to be paid if the book is canceled in the range of days that this policy is effective.([Check the Penalty Type Codes](/docs/apis/for-buyers/inventory-buyers/inventory-set-up-csv-api/set-up/policies#additional-information)). |
-| Penalty Type        |   0   | Type of penalty to be chosen between: Percentage, Amount and Nights. |
+| Days Before        |   0   | Number of days prior to check-in when the cancellation policy takes effect. Leave empty for non-refundable policies. |
+| Penalty Value        |   0   | Amount to be paid if the book is canceled in the range of days that this policy is effective. Leave empty for non-refundable policies. ([Check the Penalty Type Codes](/docs/apis/for-buyers/inventory-buyers/inventory-set-up-csv-api/set-up/policies#additional-information)). |
+| Penalty Type        |   0   | Type of penalty to be chosen between: Percentage, Amount and Nights. Leave empty for non-refundable policies. |
 | Start Date        |   0   | Indicate the starting date of the policy. Format date: dd/MM/yyyy. |
 | End Date        |   0   | Indicate the ending date of the policy. Format date: dd/MM/yyyy. |
 
-#### Sheet Format Example
+:::info
+**Non-Refundable Policies (NRF):** When `Refundable` is set to `0`, the fields `Days Before`, `Penalty Value`, and `Penalty Type` can be left empty. The system will interpret this as a fully non-refundable rate with no specific penalty details.
+:::
 
-![inventory_csv_policies-setup](https://storage.travelgate.com/docs/inventory_csv_policies-setup.png)
+:::tip Multiple penalty tiers per rate
+You can declare **several rows for the same `Rate Code`** to define different penalty tiers (for example, 100% penalty within 7 days of check-in and 50% penalty between 8 and 14 days). Each row represents one cancellation window, and all of them are applied together for that rate.
+:::
+
 
 #### CSV Format Example for Channel Managers
+
+**Refundable policy:**
 ```
-Rate Code;Refundable;Days Before Arrival;Penalty Value;Penalty Type;Start Date;End Date
-"123RATE_TEST";"1";"2";"100";"Amount";"20/05/2024";"25/05/2024"
+Rate Code;Refundable;Days Before;Penalty Value;Penalty Type;Start Date;End Date
+"BAR_14";"1";"7";"100";"Amount";"14/04/2026";"31/12/2029"
 ```
+
+**Non-refundable policy (NRF):**
+```
+Rate Code;Refundable;Days Before;Penalty Value;Penalty Type;Start Date;End Date
+"NRF_14";"0";;;;"14/04/2026";"31/12/2029"
+```
+
+:::note
+Note that for NRF policies, the semicolons (`;`) must still be present as column separators even when the values are empty.
+:::
 
 ### Additional information
 

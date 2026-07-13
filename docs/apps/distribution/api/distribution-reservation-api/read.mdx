@@ -33,8 +33,8 @@ Optionally, you can filter your read by specifying specific searchCancellationsC
 
 | Element				| Rel | Type	| Description					|
 | ------------------------------------- | ---------- | -------- | ----------------------------------------------------- |
-| access		| 1  |	node  | Acces information: <ul><li>It will be validated to grant acces to the API and to the operation.</li><li>If there is any problem then an error will be returned.</li></ul>
-| access/accessToken 		| 1  |	string  | Key to acces to the API.
+| access		| 1  |	node  | Access information: <ul><li>It will be validated to grant access to the API and to the operation.</li><li>If there is any problem then an error will be returned.</li></ul>
+| access/accessToken 		| 1  |	string  | Key to access to the API.
 | access/user        		| 1  |	string  | User.
 | access/password    		| 1  |	string  | Password related to the user.
 | tgxLocators    		    |0..N|list(string)| TG locators to search for.
@@ -385,7 +385,7 @@ Optionally, you can filter your read by specifying specific searchCancellationsC
 | quoteCancelPenalties/deadline	| 0..1  |	date      | Cancellation fees will be applied between this date and the check-in date
 | quoteCancelPenalties/hoursBefore	| 0..1  |	int      | Number of hours before the check-in, in which this penalty is applied.
 | quoteCancelPenalties/currency		| 1  |	string   | Currency of the penalty
-| quoteCancelPenalties/value     	| 1  |	decimal  | Value of the pentalty: will depend on the type of penalty.
+| quoteCancelPenalties/value     	| 1  |	decimal  | Value of the penalty: will depend on the type of penalty.
 | officeCode               	| 0,1| string | If returned then this will be the code of the office.
 | officeName               	| 0,1| string | If returned then this will be the name of the office.
 | accessCodeHX              | 1  | string | Code of the access used in HotelX layer to access the provider.
@@ -393,7 +393,7 @@ Optionally, you can filter your read by specifying specific searchCancellationsC
 | correlationID           	| 0,1| string | Correlation ID.
 | priceBreakdown           	| 0,1| node   | Information about how selling price has been calculated.
 | priceBreakdown/comissionMarkupType | 1 | enum | Type of calculation:<ul><li>**C** → Commission</li><li>**M** → Markup</li></ul>
-| priceBreakdown/totalComission | 1 | decimal |Total Commission/Markup applied to obtain the selling price. It is calculated as the sumatory of:<ul><li>**_baseCommission_**</li><li>**_baseRappel_**</li><li>**_rulesCommission_**</li><li>**_officeCommission_**</li></ul>*There are some distribution rules that can affect this calculation.*
+| priceBreakdown/totalComission | 1 | decimal |Total Commission/Markup applied to obtain the selling price. It is calculated as the summatory of:<ul><li>**_baseCommission_**</li><li>**_baseRappel_**</li><li>**_rulesCommission_**</li><li>**_officeCommission_**</li></ul>*There are some distribution rules that can affect this calculation.*
 | priceBreakdown/baseComission | 1  | decimal | Base commission/markup (if any).
 | priceBreakdown/baseRappel    | 1  | decimal | Base rappel (if any).
 | priceBreakdown/rulesComission| 1  | decimal | Commission/Markup obtained from applying the "Selling Pricing Rules".

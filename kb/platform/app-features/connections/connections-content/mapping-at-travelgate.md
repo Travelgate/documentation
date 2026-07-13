@@ -37,7 +37,7 @@ Unfortunately, it’s not possible to retrieve this information at the hotel lev
 
 ### How Can I Use My Own Hotel Codes?
 
-If you’re a Buyer connected to our Hotel-X Buyers API, you have the option to upload your own mapping files to our SFTP and use your own hotel codes. For more information, you can check our article on Hotel-X Mapping [here](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping).
+If you’re a Buyer connected to our HotelX Buyers API, you have the option to upload your own mapping files to our SFTP and use your own hotel codes. For more information, you can check our article on HotelX Mapping [here](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping).
 
 ### How Can I Use the Supplier Hotel Codes?
 
@@ -65,9 +65,9 @@ Yes! We do not impose any limitations on the number or type of characters used i
 
 ### Can I Map Different Portfolios for the Same Connection?
 
-Yes, you can map multiple portfolios for the same connection (e.g., B2B, B2C, or different markets). As long as **each portfolio is provided by the Seller through a specific Hotel-X Access Code** (a unique set of credentials), you can map them independently.
+Yes, you can map multiple portfolios for the same connection (e.g., B2B, B2C, or different markets). As long as **each portfolio is provided by the Seller through a specific HotelX Access Code** (a unique set of credentials), you can map them independently.
 
-:::info Hotel-X Mapping 🚀
-If you are a Buyer connected via the Hotel-X API, you have the option to **upload your own [mapping files](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping/) to our SFTP**. Take advantage of our SFTP mapping and make the Booking Flow truly your own!
-Note: Our Hotel-X Mapping feature allows you to set one mapping file per Supplier.
+:::info HotelX Mapping 🚀
+If you are a Buyer connected via the HotelX API, you have the option to **upload your own [mapping files](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping/) to our SFTP**. Take advantage of our SFTP mapping and make the Booking Flow truly your own!
+Note: Our HotelX Mapping feature allows you to set one mapping file per Supplier.
 :::

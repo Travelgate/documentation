@@ -32,7 +32,7 @@ If the error description for a 102 error is unclear, we strongly recommend reach
 ### Retrieving Seller Logs in Their Format
 To obtain Seller logs in their original system format, use one of the following methods:
 
-- **Hotel-X Pull Buyers API:** Utilize the `auditData` parameter.
+- **HotelX Pull Buyers API:** Utilize the `auditData` parameter.
 - **Legacy Pull Buyers API:** Use the `registerTransactions` feature.
 
 For step-by-step guidance on retrieving these transactions, refer to this [article](/kb/platform/app-features/monitoring-tools/logging/audit-supplier-transactions).

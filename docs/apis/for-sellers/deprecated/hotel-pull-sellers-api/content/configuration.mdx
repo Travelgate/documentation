@@ -194,13 +194,13 @@ After each request, the Seller will have to process the data and provide a respo
 | ConfigurationRS/Parameters    | 1          	|               | 				|
 | Parameters/Parameter	        | 1..n          |               | 				| 
 | Parameter/TagRunTime          |  1        	|Enum           | This is the tag of the configuration node in the requests that you want to contextualize in the activation form. Possible values: `User`, `Password`, `UrlAvail`, `UrlReservation`, `UrlValuation`, `UrlGeneric`, `Parameter`.			| 
-| Parameter/ProviderTagName	    | 1        	    | String        | Name of the parameter in the activation form, as you use our PULL Seller API, it is recomendable to put similar names used on it in a human readbility format. For example: _Availability Url_ or _Valuation Url_. If it is an extra parameter, you should put a name similar to the key used, and preferly with a human readbility format too. 				| 
+| Parameter/ProviderTagName	    | 1        	    | String        | Name of the parameter in the activation form, as you use our PULL Seller API, it is advisable to put similar names used on it in a human readability format. For example: _Availability Url_ or _Valuation Url_. If it is an extra parameter, you should put a name similar to the key used, and preferably with a human readability format too. 				| 
 | Parameter/Show	            | 1         	| Boolean		| Indicates if you want to show the parameter in the connection form or not. May be you want that some parameter to be filled internally and you do not want the Buyer fill it in. |
 | Parameter/Mandatory	        | 1         	| Boolean       | Indicates if the parameter is compulsory or not in order to make a connection without any problem.		| 
-| Parameter/Type	            |1          	| Enum          |  The parameter value data type. Posible types are:  `eString`, `eBoolean`, `eUri`. 				| 
-| Parameter/Pattern	            |0..1          	| String        | Regular expression to validate the parameter value. If the parameter type is `eUri` or `eBoolean` the pattern is mandatory, and has a specific regular expresion. You can find more information about patterns [here](/docs/apis/for-sellers/deprecated/hotel-pull-sellers-api/content/configuration#patterns-for-euri-and-eboolean). If the type is `eString` or you add the tag `PossibleValues`, the pattern is not mandatory.| 
+| Parameter/Type	            |1          	| Enum          |  The parameter value data type. Possible types are:  `eString`, `eBoolean`, `eUri`. 				| 
+| Parameter/Pattern	            |0..1          	| String        | Regular expression to validate the parameter value. If the parameter type is `eUri` or `eBoolean` the pattern is mandatory, and has a specific regular expression. You can find more information about patterns [here](/docs/apis/for-sellers/deprecated/hotel-pull-sellers-api/content/configuration#patterns-for-euri-and-eboolean). If the type is `eString` or you add the tag `PossibleValues`, the pattern is not mandatory.| 
 | Parameter/DescriptionPattern	|0..1          	|String         | This is the error that the Buyer see if the parameter value do not validate the pattern. Please, fill this node if you want to expedite your connections and avoid future issues.				| 
-| Parameter/Description	        |0..1          	|String         |  Value of the tooltip that explains the parameter. Avoid use an only word, avoid use the same value than `ProviderTagName`, and if it is an aditional parameter, avoid use the same value than `Key`. Please, fill this information to help the Buyer to connect you.| 
+| Parameter/Description	        |0..1          	|String         |  Value of the tooltip that explains the parameter. Avoid use an only word, avoid use the same value than `ProviderTagName`, and if it is an additional parameter, avoid use the same value than `Key`. Please, fill this information to help the Buyer to connect you.| 
 | Parameter/Key	                |0..1          	| String        | Value of the `key` attribute as you accept in the xml requests in `Configuration` node.				| 
 | Parameter/DefaultValue	    | 0..1         	| String        | Value by the default, if the Buyer do not change it, all connections to you are set up with this value. | 
 | Parameter/ExampleValue	    | 0..1         	| String        | Value of the placeholder for this parameter in the form. If the Buyer do not fill the parameter, the value is empty				| 
@@ -209,7 +209,7 @@ After each request, the Seller will have to process the data and provide a respo
 
 #### Patterns for eUri and eBoolean
 
-All the patterns must work with Golang and ECMAScript (javaScript). You can validate your regular expressions by this two laguanges at <a href="https://regex101.com/">regex101</a>
+All the patterns must work with Golang and ECMAScript (javaScript). You can validate your regular expressions by this two languages at <a href="https://regex101.com/">regex101</a>
 
 eUri: `^(?:(http(s)?|ftp|file):\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&’\(\)\*\+,;=.]+$`
 

@@ -12,20 +12,20 @@ At Travelgate, we aim to make the onboarding process as seamless and efficient a
 Once you’ve signed the commercial contract, your onboarding process will follow one of two paths:
 
 - **Using an Existing Platform** → You will skip the **Development** phase and proceed directly to **Customer Success**.
-- **Implementing the Hotel-X Buyers API** → You will begin with the **Development** phase, where we guide you through API integration.
+- **Implementing the HotelX Buyers API** → You will begin with the **Development** phase, where we guide you through API integration.
 
-## Step 2: Development Phase (For Hotel-X API Users)
+## Step 2: Development Phase (For HotelX API Users)
 
 Our Onboarding team supports you through every step of the API implementation process:
 
 - **Kickoff Email** → You will receive an introduction email with a presentation and a link to schedule a **Kickoff Call**.
-- **Kickoff Call** → We will explain the core functions and features of the **Hotel-X API** and answer any technical questions.
+- **Kickoff Call** → We will explain the core functions and features of the **HotelX API** and answer any technical questions.
 - **Ongoing Support** → Our team is available for any API or documentation-related inquiries.
 - **Periodic Check-ins** → We monitor your progress and offer assistance when needed to ensure a smooth implementation.
 
 ## Step 3: Certification & Transition to Customer Success
 
-Once your **Hotel-X API** integration is complete, you can **request certification**, marking the transition to the **Customer Success phase**. The certification process ensures your integration is fully functional. After certification, our **Customer Success** team will help you maximize platform benefits and provide ongoing support.
+Once your **HotelX API** integration is complete, you can **request certification**, marking the transition to the **Customer Success phase**. The certification process ensures your integration is fully functional. After certification, our **Customer Success** team will help you maximize platform benefits and provide ongoing support.
 
 ## Step 4: Launch
 
@@ -48,4 +48,4 @@ Following certification, the **customer education process** begins, during which
 5. **Periodic Status Updates** → We will check in on your progress until your first **Live Bookings** are successfully processed and will offer additional assistance if needed.
 6. **Performance Reports** → Once live, our team will monitor your performance and provide insights on key KPIs, such as errors, **L2B (Look-to-Book ratio)**, and unavailability. We will also highlight areas for improvement and suggest optimizations for your connections.
 
-At Travelgate, we are committed to providing continuous support throughout your onboarding journey. Whether you are integrating via an **existing platform** or implementing our **Hotel-X API**, we ensure a smooth and efficient process, assisting you at every step!
+At Travelgate, we are committed to providing continuous support throughout your onboarding journey. Whether you are integrating via an **existing platform** or implementing our **HotelX API**, we ensure a smooth and efficient process, assisting you at every step!

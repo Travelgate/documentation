@@ -27,6 +27,8 @@ Our **VCC Generation Plugin** offers key functionalities to streamline virtual c
 
 2. **VccCan - Cancel a Virtual Credit Card**  
    The [VCC Cancel Plugin](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/virtual-credit-card) enables cancellation of a VCC using the ID returned in the Book response. The cancellation status appears in the `paymentInfo` field. Rules in the `genvcc.csv` file can be configured to determine which VCCs should be canceled. More details on this process can be found [here](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/virtual-credit-card#file-format-specification).
+   Once a card has been canceled, it is permanently deactivated and cannot be used for any further transactions. For any future operations, a new card must be issued.
+   Please note that canceling a booking does not automatically cancel the associated card; you must cancel it with an independent API call. However, the VCC plugin can be configured to cancel the card simultaneously with the reservation cancellation.
 
 ## Activating VCC Payments with Integrated VCC Suppliers
 
@@ -36,7 +38,7 @@ To enable VCC payments through Travelgate, follow these steps:
 2. **Submit a case** via our [Support Platform](https://app.travelgate.com/support), including details about your VCC supplier, credentials, and the Sellers for whom you wish to activate VCC payments. Our team will notify you once activation is complete.
 3. **Create and upload your VCC Rules file** to your SFTP.
 4. **Complete the VCC setup**:
-   - **For Hotel-X Pull Buyers API users**: Add the VCC Plugin to your Hotel-X Book and Cancel mutations.
+   - **For HotelX Pull Buyers API users**: Add the VCC Plugin to your HotelX Book and Cancel mutations.
    - **For Distribution Solution users**: Log into the **Distribution Extranet** and configure the "Allow VCC" rule at the agency level.
      
      ![vcc_activation_1](https://storage.travelgate.com/kbase/vcc_activation_1.jpg)

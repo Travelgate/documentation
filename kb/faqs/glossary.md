@@ -10,7 +10,7 @@ Discover the Travelgate Glossary, designed to help you navigate the specialized 
 A security process requiring two different forms of identification to verify a user's identity before accessing a system. It adds an additional layer of security to your Travelgate account compared to traditional login methods.
 
 - **Access**  
-It refers to the permission granted to users or systems to view, modify, or interact with specific resources, such as APIs, services, or data. In Hotel-X, an access is the set of credentials and the authentication configuration that enables a Buyer to connect to a Seller. It is used to differentiate among Sellers and also to filter different credentials and configurations from the same Seller (e.g. B2B and B2C credentials).
+It refers to the permission granted to users or systems to view, modify, or interact with specific resources, such as APIs, services, or data. In HotelX, an access is the set of credentials and the authentication configuration that enables a Buyer to connect to a Seller. It is used to differentiate among Sellers and also to filter different credentials and configurations from the same Seller (e.g. B2B and B2C credentials).
 
 - **Account**  
 A collection of information pertaining to a company or user registered in the Travelgate Platform. This includes credentials for accessing services, company-specific configurations, business details, and contact information.
@@ -22,7 +22,7 @@ The process of enabling an access, user, or connection.
 A user role with elevated privileges, typically responsible for managing other users, overseeing configurations and request activations.
 
 - **Aggregation**  
-The process of gathering and combining data from multiple sources into a single, consolidated output. In the context of Hotel-X, it involves consolidating data according to different possiblities, suchas aggregating at a hotel level, hotel-room level, etc.
+The process of gathering and combining data from multiple sources into a single, consolidated output. In the context of HotelX, it involves consolidating data according to different possibilities, such as aggregating at a hotel level, hotel-room level, etc.
 
 - **AIna**  
 Travelgate's multilingual AI assistant. Powered by Large Language Models (LLMs), AIna is designed to specifically address your questions about Travelgate, providing responses based on our Official Documentation. 
@@ -37,7 +37,7 @@ A request operation that allows the Buyer to modify details of an existing reser
 A set of rules and tools that allow different software applications to communicate with each other.
 
 - **API Key**  
-A unique alphanumeric identifier that serves as a form of authentication required for accessing Hotel-X API.
+A unique alphanumeric identifier that serves as a form of authentication required for accessing HotelX API.
 
 - **Array**  
 A data structure that stores multiple elements (such as the number of occupancies in a Search) in a single variable. Arrays allow efficient handling of lists of information, making it easier to process bulk data in queries or responses.
@@ -94,10 +94,10 @@ The process of handling and modifying bookings, including cancellations, amendme
 The Booking query allows you to retrieve a specific booking with all its details using the booking ID or reference locator. You can also obtain a list of bookings that were made within a specific arrival or booking date range.  
 
 - **BookingID**  
-A Hotel-X unique booking identifier. It is used to reference and manage individual bookings within the Travelgate's system. 
+A HotelX unique booking identifier. It is used to reference and manage individual bookings within the Travelgate's system. 
 
 - **Business Rules**  
-A set of conditions or criteria that determines the options returned in Hotel-X Search response. This includes optionsQuota, as well as BusinessRulesTypes CHEAPER_AMOUNT and ROOM_TYPE. 
+A set of conditions or criteria that determines the options returned in HotelX Search response. This includes optionsQuota, as well as BusinessRulesTypes CHEAPER_AMOUNT and ROOM_TYPE. 
 
 - **Buyer**  
 The entity or business that uses the Travelgate platform to book travel services such as hotels for their customers. Buyers include Travel Agencies, Tour Operators, Tech Platforms, etc. 
@@ -114,8 +114,8 @@ The Calendar tool allows Inventory Buyers to check the information loaded in a h
 - **Cancel Mutation (Cancel method)**  
 The cancel operation allows you to cancel a booking made via Travelgate.
 
-- **Channel-X**  
-Channel-X API extracts the product loaded between the Buyer and the Channel Managers into our Inventory Tool, and sends it to the Buyer's system.
+- **ChannelX**  
+ChannelX API extracts the product loaded between the Buyer and the Channel Managers into our Inventory Tool, and sends it to the Buyer's system.
 
 - **Close Sales**  
 The process of stopping sales for a particular period, typically when all available inventory has been booked or when the hotel is no longer available.
@@ -142,7 +142,7 @@ A specific instance or scenario used to test and verify compliance with certific
 A tech platform used to manage distribution channels, allowing hotels to update availability, rates, and inventory across multiple booking platforms simultaneously.
 
 - **Client**  
-A tag or label that Buyers use to categorize their traffic. The client is the entity that purchases accommodation services via the Hotel-X API.
+A tag or label that Buyers use to categorize their traffic. The client is the entity that purchases accommodation services via the HotelX API.
 
 - **Client Reference**  
 A unique identifier or code provided by a client (such as a travel agency) to track bookings or transactions within their own systems.
@@ -296,7 +296,7 @@ The owner or manager of a hotel or accommodation service, responsible for overse
 - **Hotels Query (HotelList)**  
 A query used to retrieve a list of hotels or properties from the Travelgate system.
 
-- **Hotel-X**  
+- **HotelX**  
 Powerful GraphQL-based aggregation API specifically designed to meet the unique needs of Buyers on Travelgate platform, providing key benefits such as multimode searches and plugins.
 
 - **HTTP Authorization**  
@@ -309,7 +309,7 @@ A code returned by a server in response to an HTTP request, indicating whether t
 A status indicator within Travelgate that shows the operational status of our hub for a given request.
 
 - **Hubuser**  
-A tag or label that Buyers use to categorize their traffic via the Legacy Pull Buyers API (similar to the Client in Hotel-X).
+A tag or label that Buyers use to categorize their traffic via the Legacy Pull Buyers API (similar to the Client in HotelX).
 
 - **Id**  
 Unique identifier used to reference specific entities or options within a database or system.
@@ -342,7 +342,7 @@ A ratio or metric that compares the number of views a travel product receives to
 The delay before a transfer of data begins following an instruction for its transfer, often measured to assess network speed.
 
 - **Legacy**  
-Older systems or technology in the context of newer advancements. In Travelgate's context, this can be seen as the Legacy Pull Buyers API (deprecated) versus the Hotel-X Pull Buyers API.
+Older systems or technology in the context of newer advancements. In Travelgate's context, this can be seen as the Legacy Pull Buyers API (deprecated) versus the HotelX Pull Buyers API.
 
 - **Live (production)**  
 It refers to the environment where software applications or integrations are fully operational and accessible to end-users. It is the opposite of a test environment.
@@ -399,7 +399,7 @@ The lowest price at which a product can be sold to ensure profitability. It indi
 A set of tools provided to help Travelgate Partners track, analyze, and optimize their connections and performance within the Travelgate ecosystem.
 
 - **Multimode**  
-Supporting multiple modes or methods of operation within a system or service. In Hotel-X, Multimode refers to the capability for Buyers to search multiple Sellers at the same time in just one request. 
+Supporting multiple modes or methods of operation within a system or service. In HotelX, Multimode refers to the capability for Buyers to search multiple Sellers at the same time in just one request. 
 
 - **Mutation**  
 Method that changes or updates data within a system.
@@ -426,7 +426,7 @@ An API designed to be flexible and adaptable, allowing developers to use it in v
 The process of integrating new partners into the platform, ensuring they are set up and understand how to use Travelgate’s system effectively.
 
 - **One-Shot Requests**  
-A type of request that is executed once, typically to retrieve data or perform a single operation, without maintaining a persistent connection. In the context of Channel-X Push Buyers API, 'oneStepQuote' and 'oneStepBook' methods allow Buyers to simplify their booking flow. 
+A type of request that is executed once, typically to retrieve data or perform a single operation, without maintaining a persistent connection. In the context of ChannelX Push Buyers API, 'oneStepQuote' and 'oneStepBook' methods allow Buyers to simplify their booking flow. 
 
 - **Offer**  
 A travel product or service proposal provided to a customer, possibly including specific terms and pricing.
@@ -479,7 +479,7 @@ A hotel used for testing in the Travelgate ecosystem.
 - **Platform (Tech Platform/Tech Bridge Platform)**  
 The underlying technology infrastructure or bridge allowing interactions and transactions between partners.
 
-- **Playground (Hotel-X Playground)**  
+- **Playground (HotelX Playground)**  
 A testing environment to experiment with APIs and queries.
 
 - **Plugin**  
@@ -579,7 +579,7 @@ Options defining an API or account operation.
 Secure protocol for file transfers.
 
 - **Single Mode**  
-System operating in one mode for simplicity. In Hotel-X, Single Mode refers to the capability for Buyers to conduct a single search per Seller at any given time (default mode).
+System operating in one mode for simplicity. In HotelX, Single Mode refers to the capability for Buyers to conduct a single search per Seller at any given time (default mode).
 
 - **Smart Traffic (features)**  
 Tools to optimize the traffic flow through Travelgate.
@@ -609,7 +609,7 @@ Entity providing inventory for distribution.
 A unique identifier or code returned by a supplier when a booking is successfully completed via Travelgate.
 
 - **Supplier Context**  
-It describes the content codes used for a specifc supplier.
+It describes the content codes used for a specific supplier.
 
 - **Surcharge**  
 Fee added to the base price.
@@ -621,7 +621,7 @@ Process to verify system functionality.
 A specified duration that limits how long a process or operation should take before being halted automatically.
 
 - **Traffic Optimizer**  
-Intelligent optimization tool offered by Travelgate that aims to improve the Look-to-Book (L2B) ratio, reduce unnecessary search traffic, and cut costs for connections using the Hotel-X Buyers API.
+Intelligent optimization tool offered by Travelgate that aims to improve the Look-to-Book (L2B) ratio, reduce unnecessary search traffic, and cut costs for connections using the HotelX Buyers API.
 
 - **Travelgate Academy**  
 Training videos and resources for users.

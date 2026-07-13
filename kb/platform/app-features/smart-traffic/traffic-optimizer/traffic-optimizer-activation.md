@@ -83,6 +83,26 @@ To monitor performance:
 
 ![traffic_optimizer_6](https://storage.travelgate.com/kbase/traffic_optimizer_6.jpg)
 
+### Automated "No Availability" Optimization
+
+To maximize your operational efficiency from day one, **all requested activations automatically implement the "No Availability" optimization criteria**. 
+
+This proactive feature delivers immediate value by filtering out requests that consistently yield zero results, preventing unnecessary traffic from consuming your bandwidth and infrastructure resources.
+
+:::tip How to identify automated optimizations in your Dashboard
+You can easily track these automated system improvements directly within your **Traffic Optimizer Dashboard**:
+* **Identifier:** Look for the label **`Requester: Auto-Opt.`**
+* **Location:** This indicator is displayed under the **"Last Update (UTC)"** date column.
+* **Granularity:** These insights are visible at both the **Access** and **Connection** levels, giving you full visibility into where the system is protecting your performance.
+:::
+
+### Flexibility and Control
+
+While this automation runs by default to secure the highest possible system efficiency, you retain full control over your configuration:
+
+* **Deactivation:** You have the flexibility to manually deactivate this auto-opt optimization at either the **Access** or **Connection** level if your business strategy requires it.
+* **Our Recommendation:** We **highly recommend keeping this feature enabled**. Leaving it active is a best practice for maintaining optimal search speeds, preventing unnecessary server load, and maximizing overall platform performance.
+
 ## Can I Exclude Hotels from Being Blocked?
 
 Yes, you can exclude specific hotels from the Traffic Optimizer blacklist by simply opening a [case](/kb/platform/support-portal/case-guidelines) with our Customer Support team. Please note that exclusions are applied **at the connection level**. 
@@ -92,21 +112,27 @@ Additionally, some hotels are be **temporarily whitelisted** to re-evaluate conv
 ### Use Cases:
 
 1. **Traffic Optimizer with "No Availability" Criteria:**
-   - **Day 1:** "Hotel A" reports 100% no availability.
-   - **Day 2:** "No Availability" criteria is applied, blocking "Hotel A."
-   - **Day 3:** "Hotel A" is automatically removed from the blacklist.
-   - **Day 4:** If "Hotel A" still reports 100% no availability on day 3, it is blocked again.
+
+   | Day | What happens |
+   |-----|-------------|
+   | Day 1 | "Hotel A" reports 100% no availability. |
+   | Day 2 | "No Availability" criteria is applied, blocking "Hotel A." |
+   | Day 3 | "Hotel A" is automatically removed from the blacklist. |
+   | Day 4 | If "Hotel A" still reports 100% no availability on Day 3 → blocked again. |
 
 2. **Traffic Optimizer with "Zero Bookings" Criteria:**
-   - **Day 1:** "Hotel A" has never been booked by any Buyer connected to the Supplier.
-   - **Day 2:** "Zero Bookings" criteria is applied, blocking "Hotel A."
-   - **Day 3:** "Hotel A" is temporarily whitelisted to allow new requests.
-   - **Day _n_:** If "Hotel A" receives a booking, it is removed from the blacklist.
+
+   | Day | What happens |
+   |-----|-------------|
+   | Day 1 | "Hotel A" has never been booked by any Buyer connected to the Supplier. |
+   | Day 2 | "Zero Bookings" criteria is applied, blocking "Hotel A." |
+   | Day 3 | "Hotel A" is temporarily whitelisted to allow new requests. |
+   | Day _n_ | If "Hotel A" receives a booking → removed from the blacklist. |
 
 :::info
 - All criteria (**No Availability, Zero Bookings, and Not in Portfolio**) can be applied together. However, we recommend **starting with one at a time**.
 - To activate the "Zero Bookings" criteria, the connection/access must have **at least one booking per month for the past six months** (excluding the current month).
-- When a Buyer using **Hotel-X API** requests a blacklisted hotel, the following **error/warning** appears:
+- When a Buyer using **HotelX API** requests a blacklisted hotel, the following **error/warning** appears:
   ```json
   {
       "code": "BLACKLIST",

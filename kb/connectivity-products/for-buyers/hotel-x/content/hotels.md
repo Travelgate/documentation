@@ -11,7 +11,7 @@ The Hotels Query allows Buyers to:
 
 2. Retrieve the hotel list from a specific access, returning the Supplier’s hotel codes ([`hotelCode`](/api/types/objects/hotel-data/) object), their native codes ([`hotelCodeSupplier`](/api/types/objects/hotel-data/) object) and detailed static information.
 
-### How Can I Retrieve a Seller's Hotel List via Hotel-X?  
+### How Can I Retrieve a Seller's Hotel List via HotelX?  
 To retrieve a specific Seller's hotel list or the FastX master hotel list, follow the specifications outlined in our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/hotels) and explore the [API Playground](/playground). You can **customize** the fields in your query to receive only the information relevant to your needs.
 
 ## Query Features
@@ -58,8 +58,8 @@ To retrieve the total number of properties in the response, simply add the [`cou
 ### Can I Paginate Content Methods?
 Yes, you can! Check out our [pagination guide](/kb/connectivity-products/for-buyers/hotel-x/content/token-pagination) for more details.
 
-### What Languages Does Hotel-X Hotels Query Support?
-Hotel-X supports all languages; however, the availability of hotel descriptions depends on the languages supported by the Seller. We recommend confirming this information with the Seller before activating the connection.
+### What Languages Does HotelX Hotels Query Support?
+HotelX supports all languages; however, the availability of hotel descriptions depends on the languages supported by the Seller. We recommend confirming this information with the Seller before activating the connection.
 
 You can also verify supported languages through our [Metadata Query](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata). Keep in mind that the displayed information is general and may be subject to change based on your agreement with the Seller.
 
@@ -70,8 +70,8 @@ While both 'hotelCode' and 'hotelCodeSupplier' are often the same, some Sellers 
 
 In addition, under the 'mappings' node, you can also find the corresponding FastX code, which represents the unified identifier used across the Marketplace.
 
-### Can I run a Hotel-X Search Query using the "hotelCodeSupplier"?
-By default, searches in Hotel-X use the **FastX codes**, which are unique identifiers that allow you to run a single search across one or multiple Sellers simultaneously — without the need to send separate requests for each Supplier.
+### Can I run a HotelX Search Query using the "hotelCodeSupplier"?
+By default, searches in HotelX use the **FastX codes**, which are unique identifiers that allow you to run a single search across one or multiple Sellers simultaneously — without the need to send separate requests for each Supplier.
 
 However, you can also search using the Supplier hotel codes ([`hotelCode`](/api/types/objects/hotel-data/) object) by specifying their **context** in the Search Query.
 Additionally, if you prefer to use your own internal codes, you can upload your mappings to our system using the [Mapping Plugin](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/mapping/).

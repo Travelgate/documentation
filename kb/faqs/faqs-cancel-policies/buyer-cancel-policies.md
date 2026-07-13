@@ -44,7 +44,7 @@ In the Travelgate [Quote (Valuation)](/docs/apis/for-buyers/hotel-x-pull-buyers-
 :::warning Important
 The `HoursBefore` field specified the maximum number of hours before a penalty would apply. To provide more accurate information and maintain competitiveness, we introduced the **`Deadline` node**, which eliminates ambiguity by representing a specific date in UTC-0 Standard.
 
-It is essential to update your logic and **discontinue the use of the `hoursBefore` node**. Instead, use the `deadline` node. This update applies to both Hotel-X and Legacy Pull Buyers API.
+It is essential to update your logic and **discontinue the use of the `hoursBefore` node**. Instead, use the `deadline` node. This update applies to both HotelX and Legacy Pull Buyers API.
 :::
 
 ### Are cancellation penalties always applied to the net price of the booking?

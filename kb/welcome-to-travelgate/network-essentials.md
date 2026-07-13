@@ -36,7 +36,12 @@ Take control of your search results with enhanced filtering options available in
 * Destination markets
 * Category
 * Companies already connected to your business via Travelgate
-* Seller connection type
+* Seller Connection Type (Push, Pull, Push & Pull)
+* Buyer Connection Type (FastX, HotelX, ChannelX, Legacy)
+
+:::info
+As a Seller, you can view the Buyer Connection Type by looking at the **Buyer Integration Type** label under [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details#additional-access-information).
+:::
 
 Plus, you can now view the top source markets and destinations for each company directly from their card at a glance!
 

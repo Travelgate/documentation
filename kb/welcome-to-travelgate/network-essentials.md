@@ -39,8 +39,9 @@ Take control of your search results with enhanced filtering options available in
 * Seller Connection Type (Push, Pull, Push & Pull)
 * Buyer Connection Type (FastX, HotelX, ChannelX, Legacy)
 
-:::info
-As a Seller, you can view the Buyer Connection Type by looking at the **Buyer Integration Type** label under [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details#additional-access-information).
+:::info Buyer Connection Type
+- Seeing a Buyer listed under a specific connection type filter **does not imply that 100% of their connections or traffic run through that specific API.** For example, if a Buyer has migrated almost all traffic to the HotelX API but maintains a single active connection via the Legacy API, that Buyer will appear when filtering for both HotelX and Legacy.
+- As a Seller, you can view the Buyer Connection Type by looking at the **Buyer Integration Type** label under [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details#additional-access-information).
 :::
 
 Plus, you can now view the top source markets and destinations for each company directly from their card at a glance!

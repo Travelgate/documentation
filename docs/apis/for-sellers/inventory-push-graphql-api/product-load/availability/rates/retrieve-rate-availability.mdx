@@ -109,6 +109,34 @@ The query returns the retrieved rates along with success status and possible adv
     * `external` (*ExternalMessage*) - External message details.
     * `correlationID` (*ID*) - Identifier for debugging.
 
+### Error Handling
+
+When the operation fails, the envelope returns `success: false`, `data` is `null`, and the reason is described in `adviseMessages`. Any message with `level: ERROR` marks the operation as unsuccessful.
+
+The most relevant fields of each advise message are:
+
+* `level` – `ERROR` blocks the operation; `WARN`/`INFO` are informational.
+* `code` – machine-readable error code. Common values are `INPUT_VALIDATION_FAILED` (a field is missing or malformed) and `STATE_CONFLICT` (the resulting state is not valid).
+* `type` – exposed in the schema for compatibility but currently not populated; rely on `code` for programmatic handling.
+* `description` – human-readable reason, prefixed with the affected identifier when applicable.
+* `external` – present only when the error originates in an external/source system, carrying its own `code` and `message`.
+* `correlationID` – identifier to share with support when investigating the error.
+
+```json
+{
+  "success": false,
+  "data": null,
+  "adviseMessages": [
+    {
+      "code": "INPUT_VALIDATION_FAILED",
+      "description": "RATE001: rateCode not found for the specified hotel.",
+      "level": "ERROR",
+      "correlationID": "3f9c1a5e-0b7d-4e2a-9c1b-8a2f7d6e4c10"
+    }
+  ]
+}
+```
+
 ## Query Inputs
 
 <InventoryAvailRatesInput />

@@ -12,7 +12,7 @@ description: Learn how to simultaneously operate and configure both B2B and B2C 
 
 Managing distinct commercial audiences requires a flexible technical infrastructure. **Travelgate allows partners to run both Business-to-Business (B2B) and Business-to-Consumer (B2C) operations simultaneously under a single integration.** By combining dedicated client codes, separate accesses, and rate-level business rules, you can segment traffic, apply commercial restrictions, and optimize your distribution strategy without maintaining separate API implementations.
 
-This guide explains how B2B and B2C segmentation works in Travelgate, which configuration layers control it, and how to decide whether to separate traffic with client codes, accesses or portfolios.
+This guide explains how B2B and B2C segmentation works in Travelgate, which configuration layers control it, and how to decide whether to separate traffic with client codes, accesses, or portfolios.
 
 ## Frequently Asked Questions
 

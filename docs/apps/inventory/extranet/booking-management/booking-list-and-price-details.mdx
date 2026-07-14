@@ -17,8 +17,74 @@ It is possible to filter by dates or locator. In case of filtering by date, you 
 
 ![Inventory Booking List and Price](https://storage.travelgate.com/docs/inventory_booking-list-and-price2.png)
 
+### Search filters
+
+| Field | Description |
+| --- | --- |
+| **Client** | The client (Buyer) whose bookings you want to retrieve. |
+| **Provider** | The Channel Manager (provider) the bookings belong to. |
+| **Hotel Id** | The Inventory internal ID of the hotel. |
+| **Hotel Name** | The name of the hotel the bookings were made for. |
+| **By Date / By Locator** | Choose whether to search by a date range or by a specific locator. |
+| **Date Type** | When searching *By Date*, the date the range applies to: arrival (check-in) date, creation date, departure (check-out) date or last update date. |
+| **Date From / Date To** | The start and end of the date range to search within. |
+| **Locator Type / Locator** | When searching *By Locator*, the locator to search for: Client (Buyer) locator, internal (Inventory) locator or Channel Manager (provider) locator. |
+
+### Result fields
+
+Each row of the Booking List shows the following fields:
+
+| Field | Description |
+| --- | --- |
+| **Hotel Name** | The name of the hotel the booking belongs to. |
+| **Check In** | The arrival date of the booking. |
+| **Check Out** | The departure date of the booking. |
+| **Booking Date** | The date and time the booking was created. |
+| **Status** | The current status of the booking (e.g. `CN` for confirmed / `CX` for cancelled). |
+| **Provider Locator** | The reference/locator assigned by the Channel Manager (provider). |
+| **Client Locator** | The reference/locator sent by the client (Buyer). |
+| **Customer** | The name of the holder/lead passenger of the booking. |
+| **Room Type** | The number of rooms booked and the room type code (e.g. `2 DBLSTD`). |
+| **Board Name** | The board of the booking (e.g. `Room_only`). |
+| **Price** | The total price of the booking. |
+| **Currency** | The currency the price is expressed in (e.g. `EUR`). |
+
+You can export the whole list using the **Export to Excel** button.
+
 ## Booking Price Details
 
 This tool will let you retrieve the details of a particular booking. As always, it is necessary to select the client and the Channel Manager. Afterwards, it will be necessary to indicate the type and locator. As a result you will see a panel where you will be able to check the price of the booking and its details.
 
 ![Inventory Booking List and Price](https://storage.travelgate.com/docs/inventory_booking-list-and-price3.png)
+
+### Search filters
+
+| Field | Description |
+| --- | --- |
+| **Client** | The client (Buyer) the booking belongs to. |
+| **Provider** | The Channel Manager (provider) the booking belongs to. |
+| **Locator Type** | The type of locator you are searching by: Client (Buyer), internal (Inventory) or Channel Manager (provider). |
+| **Locator** | The locator value of the booking you want to look up. |
+
+### Result fields
+
+The results panel is grouped by room. For each room you will find:
+
+| Field | Description |
+| --- | --- |
+| **Option** | The room option: room type description, room type code and board (e.g. `Double Standard (DBLSTD) - Room_only`). |
+| **Rate** | The rate plan applied to the booking, shown as its name and code (e.g. `TEST BAR (BAR)`). This information is only available through the Inventory Extranet — it is **not** returned by the Booking Read (Reservation Read) GraphQL query. |
+| **Price** | The total price of the room option. |
+| **Date (From / To)** | The stay dates (check-in and check-out) the room option covers. |
+
+Within each room option, the **Detail Rates** table breaks the price down by night (date range). For every detail rate you will see the per-pax breakdown:
+
+| Field | Description |
+| --- | --- |
+| **Date (From / To)** | The specific night/date range the detail rate applies to, and its price. |
+| **Pax** | The passenger number within the room. |
+| **Age** | The age of the passenger. |
+| **Base Price** | The base price for that passenger. |
+| **Pax Supplement Type** | The type of supplement applied to the passenger, if any. |
+| **Pax Supplement Price** | The amount of the passenger supplement, if any. |
+| **Total** | The total price for that passenger, including supplements. |

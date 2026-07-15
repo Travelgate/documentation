@@ -171,7 +171,7 @@ The warning icon is a signal to **pay special attention** to the entry. It does 
     <summary>Do I need to inform Travelgate to map my hotels, boards, and rooms for FastX?</summary>
     <div>
         <div>
-        No, Travelgate automatically maps the hotels/boards/rooms of all Sellers against the FastX database. However, **Sellers must validate these mappings** in the Travelgate Portal for their products to be accessible to Buyers using "Validated" mode; Buyers in "Default" mode can still access invalidated content. Additionally, validating 80% or more of your portfolio grants you the "FastX Verified Seller" status in our Network, boosting your visibility and credibility.
+        No, Travelgate automatically maps the hotels/boards/rooms of all Sellers against the FastX database. However, as a Seller **you must validate these mappings** in the Travelgate Portal for your products to be accessible to Buyers. Additionally, validating 80% or more of your portfolio grants you the "FastX Verified Seller" status in our Network, boosting your visibility and credibility.
         </div>
     </div>
 </details>
@@ -306,6 +306,16 @@ Invalidated codes are **never allowed** in the booking flow — Travelgate will 
 
 ### FAQs
 
+<details>
+    <summary>Which FastX codes can I use in my booking flow?</summary>
+    <div>
+         <div>
+         By default (Default mode), your booking flow allows both **validated** and **pending** FastX codes from Suppliers. Invalidated codes are never allowed — Travelgate automatically blocks invalidated codes to protect booking quality.
+         
+         If you prefer to use **only validated codes**, you can enable this restriction in your [API Settings](https://app.travelgate.com/connections/api-settings) under the `useOnlyValidatedFastXCodes` option.
+        </div>
+    </div>
+</details>
 
 <details>
     <summary>In which languages are FastX room descriptions returned?</summary>

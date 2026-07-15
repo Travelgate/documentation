@@ -3,8 +3,26 @@ const path = require("path");
 const fetch = (...args) => import("node-fetch").then(({ default: fetch }) => fetch(...args));
 
 const GRAPHQL_ENDPOINT = "https://api.travelgate.com";
-const TRAVELGATE_API_KEY = process.env.TRAVELGATE_API_KEY || "test0000-0000-0000-0000-000000000000";
 const OUTPUT_FILE = path.join(__dirname, "../schema-json/inventory-schema.json");
+
+// The schema is downloaded on behalf of the person updating the documentation, using their
+// personal Travelgate bearer token. No API key is used and there is no dummy fallback: if the
+// bearer is missing the script stops and asks for it, so we never fetch against an invalid key.
+function requireBearerToken() {
+  const token = process.env.TRAVELGATE_BEARER;
+  if (!token) {
+    console.error(
+      "❌ Missing TRAVELGATE_BEARER.\n" +
+      "   This script downloads the GraphQL schema using the bearer token of the person\n" +
+      "   updating the documentation. Set your bearer before running, e.g.:\n" +
+      "     PowerShell:  $env:TRAVELGATE_BEARER = \"<your-bearer>\"\n" +
+      "     bash/zsh:    export TRAVELGATE_BEARER=\"<your-bearer>\"\n" +
+      "   Then re-run this script."
+    );
+    process.exit(1);
+  }
+  return token;
+}
 
 // List of types to extract including all their subtypes
 const REQUIRED_TYPES = new Set([
@@ -137,6 +155,8 @@ const REQUIRED_TYPES = new Set([
 async function fetchSchema() {
     console.log("⏳ Downloading GraphQL schema...");
 
+    const TRAVELGATE_BEARER = requireBearerToken();
+
     const QUERY_TYPES = {
       query: `
       {
@@ -228,7 +248,7 @@ async function fetchSchema() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Apikey " + TRAVELGATE_API_KEY,
+        Authorization: "Bearer " + TRAVELGATE_BEARER,
       },
       body: JSON.stringify(QUERY_TYPES),
     });

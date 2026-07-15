@@ -283,7 +283,7 @@ const config = {
         //     module: "@graphql-tools/url-loader",
         //     options: {
         //       headers: {
-        //         Authorization: "Apikey " + TRAVELGATE_API_KEY,
+        //         Authorization: "Bearer " + process.env.TRAVELGATE_BEARER,
         //       }
         //     }
         //   }

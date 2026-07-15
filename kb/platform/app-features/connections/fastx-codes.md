@@ -171,7 +171,7 @@ The warning icon is a signal to **pay special attention** to the entry. It does 
     <summary>Do I need to inform Travelgate to map my hotels, boards, and rooms for FastX?</summary>
     <div>
         <div>
-        No, Travelgate automatically maps the hotels/boards/rooms of all Sellers against the FastX database. However, **we highly recommend validating these mappings in the Travelgate Portal** so Buyers can access your products. Additionally, validating 80% or more of your portfolio grants you the "FastX Verified Seller" status in our Network, boosting your visibility and credibility.
+        No, Travelgate automatically maps the hotels/boards/rooms of all Sellers against the FastX database. However, **we highly recommend validating these mappings in the Travelgate Portal** to improve mapping quality and ensure Buyers who restrict their booking flow to validated FastX codes can still access your products. Additionally, validating 80% or more of your portfolio grants you the "FastX Verified Seller" status in our Network, boosting your visibility and credibility.
         </div>
     </div>
 </details>

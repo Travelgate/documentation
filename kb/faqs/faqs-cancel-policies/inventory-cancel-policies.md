@@ -52,7 +52,7 @@ After the check-in date, the cancellation cost will be equal to the total value 
 
 ### How are cancellation policies included when creating rates using the Inventory Push GraphQL API?
 
-When using the **Inventory Push GraphQL API** with the `createRatesSetUp` mutation, cancellation policy details are specified within the [input structure](/api/types/inputs/cancel-policies-create-input) of your API call.  
+When using the **Inventory Push GraphQL API** with the `createRatesSetup` mutation, cancellation policy details are specified within the [input structure](/api/types/inputs/cancel-policies-create-input) of your API call.  
 
 You can define both `baseCancelPolicy` and `cancelPoliciesByDate` to cover general and date-specific cancellation rules.
 
@@ -68,7 +68,7 @@ This prevents a rate without cancellation policies from being considered 100% re
 
 ### Can I modify an existing rate’s cancellation policy using the GraphQL API?
 
-Yes, you can update an existing rate’s cancellation policy using the `updateRatesSetUp` mutation in the Inventory Push GraphQL API. This allows you to modify specific fields, such as penalties, without needing to resend the full rate configuration.  
+Yes, you can update an existing rate’s cancellation policy using the `updateRateSetup` mutation in the Inventory Push GraphQL API. This allows you to modify specific fields, such as penalties, without needing to resend the full rate configuration.  
 
 **How it works:** Reference the rate code of the rate you want to update, and include the revised cancellation policy details in the mutation input. These updates will replace the existing cancellation settings for that rate.
 

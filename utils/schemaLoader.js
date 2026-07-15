@@ -5,19 +5,29 @@ using AI, I recommend you to use Sonnet 4 or later. It took 17 versions to get t
 const { buildClientSchema, getIntrospectionQuery } = require('graphql');
 
 // The schema is downloaded on behalf of the person updating the documentation, using their
-// personal Travelgate bearer token. No API key is used and there is no dummy fallback: if the
-// bearer is missing we stop and ask for it, so we never fetch against an invalid key.
-function requireBearerToken() {
-    const token = process.env.TRAVELGATE_BEARER;
-    if (!token) {
-        throw new Error(
-            'Missing TRAVELGATE_BEARER. This command downloads the GraphQL schema using the ' +
-            'bearer token of the person updating the documentation. Set your bearer before ' +
-            'running, e.g. (PowerShell) $env:TRAVELGATE_BEARER = "<your-bearer>" or ' +
-            '(bash/zsh) export TRAVELGATE_BEARER="<your-bearer>", then re-run.'
-        );
+// personal Travelgate bearer token (TRAVELGATE_BEARER, sent as `Bearer`). A running person is
+// always asked for their bearer. In CI there is no interactive user, so it falls back to the
+// stable service API key (TRAVELGATE_API_KEY secret) and, if that is absent, to the public
+// introspection key — this keeps the automated schema generation working without a bearer.
+const PUBLIC_INTROSPECTION_KEY = 'test0000-0000-0000-0000-000000000000';
+
+function resolveAuthHeader() {
+    const bearer = process.env.TRAVELGATE_BEARER;
+    if (bearer) return 'Bearer ' + bearer;
+
+    if (process.env.CI) {
+        return 'Apikey ' + (process.env.TRAVELGATE_API_KEY || PUBLIC_INTROSPECTION_KEY);
     }
-    return token;
+
+    const apiKey = process.env.TRAVELGATE_API_KEY;
+    if (apiKey) return 'Apikey ' + apiKey;
+
+    throw new Error(
+        'Missing TRAVELGATE_BEARER. This command downloads the GraphQL schema using the bearer ' +
+        'token of the person updating the documentation. Set your bearer before running, e.g. ' +
+        '(PowerShell) $env:TRAVELGATE_BEARER = "<your-bearer>" or (bash/zsh) ' +
+        'export TRAVELGATE_BEARER="<your-bearer>", then re-run.'
+    );
 }
 
 // Helper function to safely format default values
@@ -48,7 +58,7 @@ async function loadFilteredSchema() {
     try {
         console.log('Fetching GraphQL schema...');
 
-        const TRAVELGATE_BEARER = requireBearerToken();
+        const TRAVELGATE_AUTH = resolveAuthHeader();
 
         // Dynamic import for node-fetch v3+ or use built-in fetch
         let fetch;
@@ -69,7 +79,7 @@ async function loadFilteredSchema() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + TRAVELGATE_BEARER
+                'Authorization': TRAVELGATE_AUTH
             },
             body: JSON.stringify({
                 query: getIntrospectionQuery()

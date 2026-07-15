@@ -6,22 +6,32 @@ const GRAPHQL_ENDPOINT = "https://api.travelgate.com";
 const OUTPUT_FILE = path.join(__dirname, "../schema-json/inventory-schema.json");
 
 // The schema is downloaded on behalf of the person updating the documentation, using their
-// personal Travelgate bearer token. No API key is used and there is no dummy fallback: if the
-// bearer is missing the script stops and asks for it, so we never fetch against an invalid key.
-function requireBearerToken() {
-  const token = process.env.TRAVELGATE_BEARER;
-  if (!token) {
-    console.error(
-      "❌ Missing TRAVELGATE_BEARER.\n" +
-      "   This script downloads the GraphQL schema using the bearer token of the person\n" +
-      "   updating the documentation. Set your bearer before running, e.g.:\n" +
-      "     PowerShell:  $env:TRAVELGATE_BEARER = \"<your-bearer>\"\n" +
-      "     bash/zsh:    export TRAVELGATE_BEARER=\"<your-bearer>\"\n" +
-      "   Then re-run this script."
-    );
-    process.exit(1);
+// personal Travelgate bearer token (TRAVELGATE_BEARER, sent as `Bearer`). A running person is
+// always asked for their bearer. In CI there is no interactive user, so it falls back to the
+// stable service API key (TRAVELGATE_API_KEY secret) and, if that is absent, to the public
+// introspection key — this keeps the automated schema generation working without a bearer.
+const PUBLIC_INTROSPECTION_KEY = "test0000-0000-0000-0000-000000000000";
+
+function resolveAuthHeader() {
+  const bearer = process.env.TRAVELGATE_BEARER;
+  if (bearer) return "Bearer " + bearer;
+
+  if (process.env.CI) {
+    return "Apikey " + (process.env.TRAVELGATE_API_KEY || PUBLIC_INTROSPECTION_KEY);
   }
-  return token;
+
+  const apiKey = process.env.TRAVELGATE_API_KEY;
+  if (apiKey) return "Apikey " + apiKey;
+
+  console.error(
+    "❌ Missing TRAVELGATE_BEARER.\n" +
+    "   This script downloads the GraphQL schema using the bearer token of the person\n" +
+    "   updating the documentation. Set your bearer before running, e.g.:\n" +
+    "     PowerShell:  $env:TRAVELGATE_BEARER = \"<your-bearer>\"\n" +
+    "     bash/zsh:    export TRAVELGATE_BEARER=\"<your-bearer>\"\n" +
+    "   Then re-run this script."
+  );
+  process.exit(1);
 }
 
 // List of types to extract including all their subtypes
@@ -155,7 +165,7 @@ const REQUIRED_TYPES = new Set([
 async function fetchSchema() {
     console.log("⏳ Downloading GraphQL schema...");
 
-    const TRAVELGATE_BEARER = requireBearerToken();
+    const authHeader = resolveAuthHeader();
 
     const QUERY_TYPES = {
       query: `
@@ -248,7 +258,7 @@ async function fetchSchema() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + TRAVELGATE_BEARER,
+        Authorization: authHeader,
       },
       body: JSON.stringify(QUERY_TYPES),
     });

@@ -87,8 +87,9 @@ cambia el schema. Orquesta los scripts existentes:
 fetchSchema.js  →  schema-json/inventory-schema.json  →  updateDocs.js (+ node-map/fileNodeMap.js)  →  generated-docs/*.mdx + inyectado en las páginas de docs/apis
 ```
 
-Requiere la variable de entorno `TRAVELGATE_BEARER` (el bearer de quien actualiza la
-documentación; los scripts se detienen y lo solicitan si falta).
+Requiere la variable de entorno `TRAVELGATE_BEARER` para ejecuciones manuales (el bearer de quien
+actualiza la documentación; los scripts se detienen y lo solicitan si falta). En CI los scripts
+recurren automáticamente al secret `TRAVELGATE_API_KEY` (o a la clave pública de introspección).
 
 **Ejemplos de disparo:** "regenera la breakdown de … tras el cambio de schema", "añade el nodo … a la
 página …".

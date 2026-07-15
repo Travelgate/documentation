@@ -15,6 +15,17 @@ What you will learn in this guide:
 - How to test room description normalization using the new Rooms tab.
 - How to use filters, search, and CSV export in daily operations.
 
+:::note Product Scope
+This guide covers the **FastX validation workflow**: Travelgate generates hotel and board mapping suggestions between Seller codes and FastX codes; Sellers can review and validate or invalidate them using this tool.
+
+FastX is one of three operating models for code management on Travelgate:
+- **FastX:** Travelgate generates mapping suggestions; Sellers validate or invalidate them via the FastX Codes tool (this guide)
+- **Inventory:** Codes are generated internally by Travelgate; Buyers manage setup via the Inventory Extranet
+- **Buyer-owned mappings:** Buyers manage their own custom mappings through HotelX mapping files
+
+The Seller validation workflow described in this guide applies **only to FastX** and does not affect Inventory's separate internal-validation process.
+:::
+
 ## For Sellers
 
 Sellers use this section to **validate or invalidate suggested mappings** between their own hotel and board codes and Travelgate’s master FastX codes.
@@ -295,14 +306,52 @@ Use **Rooms** when you want to:
 This tab is a **testing and preview tool** for room standardization behavior. It helps you validate how descriptions are interpreted before relying on them in operational booking flows.
 :::
 
+
+### Room Standardization vs. Hotel/Board Mapping
+**Room standardization** is fundamentally different from hotel and board **mapping**:
+
+**Hotel/Board Mapping (validated)**
+- **Persistent:** Mapping is reviewed once by the Seller, stored, and reused across all Buyers
+- **Seller-validated:** The Seller confirms each mapping is correct via the Hotels and Boards tabs
+- **Status-based access:** Buyers can work with Validated, Pending, or exclude Invalidated codes
+
+**Room Standardization (real-time, not validated)**
+- **Real-time:** Generated at Search time from the Supplier's native room description
+- **Not Seller-validated:** Automated process; Sellers do not validate individual room outputs
+- **Limitations:** Output quality depends on the source description; attributes not present in the native text may be missing; standardized grouping does not guarantee commercial identity
+- **Native data always preserved:** The original Supplier room code and description are always returned alongside standardized values
+
+Use the **Rooms tab** to preview how descriptions are interpreted. For operational mapping control, work in the **Hotels** and **Boards** tabs.
+
+
 ## General Notes and FAQs
 
-:::note Remember
-In the **Hotels** and **Boards** tabs, you can check which FastX codes are **validated**, **pending**, or **invalidated** by each Seller.  
-By default, your booking flow will allow traffic for both **validated** and **pending** codes. However, if you prefer to work exclusively with **validated** codes, you can configure this in the [API Settings](https://app.travelgate.com/connections/settings) section.
+### FastX Mapping Status
+Each FastX mapping has one of three statuses, determined by Seller review:
 
-Invalidated codes are **never allowed** in the booking flow — Travelgate will automatically block any traffic that uses FastX codes that have been invalidated by the Seller.
-:::
+**Validated**
+- **Meaning:** The Seller has reviewed and confirmed the suggested correspondence between their native code and the FastX code
+- **Impact on booking flow:** Allowed in both Default and Validated-only modes
+- **Note:** Validated status confirms the Seller's approval but does not constitute independent Travelgate certification of every commercial or descriptive attribute
+
+**Pending**
+- **Meaning:** The suggested mapping is awaiting Seller confirmation and review
+- **Impact on booking flow:** Allowed in Default mode; blocked in Validated-only mode
+- **Action:** Sellers should review and confirm (Validate) or reject (Invalidate) pending mappings
+
+**Invalidated**
+- **Meaning:** The Seller has rejected the suggested mapping as incorrect or no longer applicable
+- **Impact on booking flow:** Never allowed; automatically blocked to protect booking quality
+- **Action if invalidated:** Re-map the property and re-validate if needed
+
+**Default Mode** (recommended for most Buyers)
+- Allows both **Validated** and **Pending** codes
+- Maximizes content availability while respecting Seller validation preferences
+
+**Validated-only Mode**
+- Allows **only Validated** codes
+- Requires manual configuration in [API Settings](/kb/platform/app-features/connections/api-settings)
+
 
 ### FAQs
 

@@ -10,7 +10,7 @@ import {boardsQuery, boardsFastXVariables} from "../../../../../src/graphql/hote
 **FastX codes** are unique identifiers created by Travelgate to make connectivity across the Marketplace easier and more efficient.  
 They represent a unified way to identify **hotels**, **boards**, and **rooms**, so you can work with multiple Suppliers using a single, consistent set of codes.
 
-As a Buyer, you only need to map to the FastX codes — once you do, you can seamlessly access and book content from any connected Supplier without having to remap each one individually.
+As a Buyer, you can map to the FastX code set once and use it across eligible content from connected Suppliers, subject to connection status, portfolio configuration, mapping status, search criteria, and availability.
 
 To make mapping even easier, **FastX codes are available in GIATA** under the name `"travelgate"`. This means that if you already use GIATA, integrating with Travelgate becomes even simpler — everything aligns smoothly.
 
@@ -98,7 +98,7 @@ This gives you the best of both worlds:
 Example:
 Different Supplier descriptions can be standardized into the same FastX room name.
 
-| Supplier | Supplier Room Description | TGX Room Code | TGX Room Description |
+| Supplier | Supplier Room Description | FastX Room Code | FastX Room Description |
 | --- | --- | --- | --- |
 | `SUP1` | `Sea View Double Room (BB BAR FLEX)` | `str--AA--d--` | `Standard Double Room views Sea` |
 | `SUP2` | `Sea View Double Room (RO BAR FLEX)` | `str--AA--d--` | `Standard Double Room views Sea` |
@@ -111,6 +111,10 @@ Different Supplier descriptions can be standardized into the same FastX room nam
 | `SUP9` | `Habitacion doble con vistas al mar 2A` | `str--AA--d--` | `Standard Double Room views Sea` |
 | `SUP10` | `Main Building Double Seaview Room` | `str--AA--d--` | `Standard Double Room views Sea` |
 
-:::warning
-Room standardization is generated in real time and is **not Seller-validated**. This differs from entities such as **hotel** and **board**, which can be Seller-validated when using validated mode.
+:::warning Room standardization
+Room standardization is generated in real time from the Supplier-native room description and is **not Seller-validated**.
+
+The standardized code and description are intended to facilitate comparison and aggregation. They do not guarantee that rooms with the same FastX output are commercially identical in every respect.
+
+The Supplier-native room code and description are preserved in the Search response and should be reviewed whenever exact product equivalence is material.
 :::

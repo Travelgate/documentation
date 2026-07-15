@@ -59,7 +59,7 @@ FastX is not just a technical upgrade—it's a marketplace-wide shift that benef
 **For Sellers:**
 - **Reduced mapping effort:** validate hotel and board mappings once, then serve all FastX Buyers with standardized codes.
 - **Faster onboarding with Buyers:** standardized codes eliminate mapping back-and-forth cycles, accelerating go-live timelines.
-- **Higher portfolio quality:** validation workflows ensure hotel and board data is consistent across the Marketplace.
+- **Improved portfolio consistency:** validation workflows help Sellers review hotel and board correspondences across the Marketplace.
 - **Single-language distribution:** one shared code system reduces operational friction across all Buyer integrations.
 
 ## How FastX Codes Work
@@ -120,9 +120,7 @@ Travelgate then creates a standardized FastX room code and description, and your
 | `SUP5` | `Habitacion doble con vistas al mar 2A` | `str--AA--d--` | `Standard Double Room views Sea` |
 | `SUP6` | `Main Building Double Seaview Room` | `str--AA--d--` | `Standard Double Room views Sea` |
 
-:::warning Remember
-Room codes are generated at search time and are **not Seller-validated**. Hotel and board mappings follow formal validation workflows for quality control.
-:::
+
 
 ## Aggregating Results with Preference Plugin
 
@@ -135,6 +133,10 @@ Now that your responses are standardized across Suppliers, FastX enables powerfu
 3. **Two modes available:**
    - **Default (cost-optimized):** lowest-priced option wins automatically
    - **Custom (business-driven):** your rules determine the winner
+
+:::caution Aggregation does not verify complete product identity
+An aggregation key groups options according to the selected FastX values. Before treating grouped options as interchangeable, review any Supplier-native attributes that are material to the commercial or customer-facing use case.
+:::
 
 <details>
 <summary><strong>📋 Aggregation example: "Hotel Santo Domingo" search</strong></summary>

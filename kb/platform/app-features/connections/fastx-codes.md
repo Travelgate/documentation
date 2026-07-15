@@ -192,10 +192,14 @@ The warning icon is a signal to **pay special attention** to the entry. It does 
 
 
 <details>
-    <summary>Do I need to inform Travelgate to map my hotels, boards, and rooms for FastX?</summary>
+    <summary>Do I need to inform Travelgate to process my hotels, boards, and rooms for FastX?</summary>
     <div>
         <div>
-        No, Travelgate automatically maps the hotels/boards/rooms of all Sellers against the FastX database. However, **we highly recommend validating these mappings in the Travelgate Portal** so Buyers can access your products. Additionally, validating 80% or more of your portfolio grants you the "FastX Verified Seller" status in our Network, boosting your visibility and credibility.
+        No action is required to trigger FastX processing.
+
+        For **hotels and boards**, Travelgate generates suggested correspondences from your content. Sellers should review these suggestions and validate or invalidate them in the Travelgate Portal. Validating 80% or more of your eligible hotel and board mappings earns you the FastX Verified Seller badge in the Network.
+
+        **Rooms follow a different process:** FastX room codes and descriptions are generated at Search time from the Supplier-native room description and are not Seller-validated.
         </div>
     </div>
 </details>
@@ -306,7 +310,8 @@ Use **Rooms** when you want to:
 
 * The tool returns a **FastX standardized format** based on the native description provided.
 * If an attribute does not appear in the native text, it may appear empty (`-`) in the result.
-* The standardized output helps Buyers keep one consistent room language across multiple Suppliers.
+* The output is intended to support comparison and aggregation; it is not a verification of physical inventory or a guarantee that rooms with the same standardized output are commercially identical in every respect.
+* Supplier-native room codes and descriptions remain available for traceability and should be reviewed whenever exact product equivalence is material.
 
 ### Best practices
 

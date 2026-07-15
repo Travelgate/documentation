@@ -3,8 +3,41 @@ const path = require("path");
 const fetch = (...args) => import("node-fetch").then(({ default: fetch }) => fetch(...args));
 
 const GRAPHQL_ENDPOINT = "https://api.travelgate.com";
-const TRAVELGATE_API_KEY = process.env.TRAVELGATE_API_KEY || "test0000-0000-0000-0000-000000000000";
 const OUTPUT_FILE = path.join(__dirname, "../schema-json/inventory-schema.json");
+
+// The schema is downloaded on behalf of the person updating the documentation, using their
+// personal Travelgate bearer token (TRAVELGATE_BEARER, sent as `Bearer`). A running person is
+// always asked for their bearer. In CI there is no interactive user, so it falls back to the
+// stable service API key (TRAVELGATE_API_KEY secret) and, if that is absent, to the public
+// introspection key — this keeps the automated schema generation working without a bearer.
+const PUBLIC_INTROSPECTION_KEY = "test0000-0000-0000-0000-000000000000";
+
+function resolveAuthHeader() {
+  const rawBearer = process.env.TRAVELGATE_BEARER;
+  // Normalize: trim whitespace and strip an optional leading "Bearer " prefix so pasting a
+  // full Authorization header value does not duplicate the scheme when we prepend "Bearer ".
+  const bearer = typeof rawBearer === "string"
+    ? rawBearer.trim().replace(/^Bearer\s+/i, "")
+    : rawBearer;
+  if (bearer) return "Bearer " + bearer;
+
+  if (process.env.CI) {
+    return "Apikey " + (process.env.TRAVELGATE_API_KEY || PUBLIC_INTROSPECTION_KEY);
+  }
+
+  const apiKey = process.env.TRAVELGATE_API_KEY;
+  if (apiKey) return "Apikey " + apiKey;
+
+  console.error(
+    "❌ Missing TRAVELGATE_BEARER.\n" +
+    "   This script downloads the GraphQL schema using the bearer token of the person\n" +
+    "   updating the documentation. Set your bearer before running, e.g.:\n" +
+    "     PowerShell:  $env:TRAVELGATE_BEARER = \"<your-bearer>\"\n" +
+    "     bash/zsh:    export TRAVELGATE_BEARER=\"<your-bearer>\"\n" +
+    "   Then re-run this script."
+  );
+  process.exit(1);
+}
 
 // List of types to extract including all their subtypes
 const REQUIRED_TYPES = new Set([
@@ -137,6 +170,8 @@ const REQUIRED_TYPES = new Set([
 async function fetchSchema() {
     console.log("⏳ Downloading GraphQL schema...");
 
+    const authHeader = resolveAuthHeader();
+
     const QUERY_TYPES = {
       query: `
       {
@@ -224,33 +259,34 @@ async function fetchSchema() {
     
 
     try {
-    const response = await fetch(GRAPHQL_ENDPOINT, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Apikey " + TRAVELGATE_API_KEY,
-      },
-      body: JSON.stringify(QUERY_TYPES),
-    });
+      const response = await fetch(GRAPHQL_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: authHeader,
+        },
+        body: JSON.stringify(QUERY_TYPES),
+      });
 
-    if (!response.ok) {
-      throw new Error(
-        `❌ Request failed: ${response.status} ${response.statusText}`
-      );
-    }
+      if (!response.ok) {
+        throw new Error(
+          `❌ Request failed: ${response.status} ${response.statusText}`
+        );
+      }
 
-        const data = await response.json();
+      const data = await response.json();
 
-        console.log("✅ Schema downloaded successfully. Filtering information...");
+      console.log("✅ Schema downloaded successfully. Filtering information...");
 
-        const filteredSchema = filterRequiredTypes(data);
+      const filteredSchema = filterRequiredTypes(data);
 
-        // Save the filtered schema to a JSON file
-        fs.writeFileSync(OUTPUT_FILE, JSON.stringify(filteredSchema, null, 2), "utf-8");
+      // Save the filtered schema to a JSON file
+      fs.writeFileSync(OUTPUT_FILE, JSON.stringify(filteredSchema, null, 2), "utf-8");
 
-        console.log(`✅ Filtered schema saved at: ${OUTPUT_FILE}`);
+      console.log(`✅ Filtered schema saved at: ${OUTPUT_FILE}`);
     } catch (error) {
-        console.error(`❌ Failed to fetch schema: ${error.message}`);
+      console.error(`❌ Failed to fetch schema: ${error.message}`);
+      process.exitCode = 1;
     }
 }
 

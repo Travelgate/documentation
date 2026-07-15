@@ -3,7 +3,37 @@ IMPORTANT: This file was mainly generated with the help of Claude Sonnet 4. If y
 using AI, I recommend you to use Sonnet 4 or later. It took 17 versions to get to this point :)
 */
 const { buildClientSchema, getIntrospectionQuery } = require('graphql');
-const TRAVELGATE_API_KEY ='test0000-0000-0000-0000-000000000000';
+
+// The schema is downloaded on behalf of the person updating the documentation, using their
+// personal Travelgate bearer token (TRAVELGATE_BEARER, sent as `Bearer`). A running person is
+// always asked for their bearer. In CI there is no interactive user, so it falls back to the
+// stable service API key (TRAVELGATE_API_KEY secret) and, if that is absent, to the public
+// introspection key — this keeps the automated schema generation working without a bearer.
+const PUBLIC_INTROSPECTION_KEY = 'test0000-0000-0000-0000-000000000000';
+
+function resolveAuthHeader() {
+    const rawBearer = process.env.TRAVELGATE_BEARER;
+    // Normalize: trim whitespace and strip an optional leading "Bearer " prefix so pasting a
+    // full Authorization header value does not duplicate the scheme when we prepend "Bearer ".
+    const bearer = typeof rawBearer === 'string'
+        ? rawBearer.trim().replace(/^Bearer\s+/i, '')
+        : rawBearer;
+    if (bearer) return 'Bearer ' + bearer;
+
+    if (process.env.CI) {
+        return 'Apikey ' + (process.env.TRAVELGATE_API_KEY || PUBLIC_INTROSPECTION_KEY);
+    }
+
+    const apiKey = process.env.TRAVELGATE_API_KEY;
+    if (apiKey) return 'Apikey ' + apiKey;
+
+    throw new Error(
+        'Missing TRAVELGATE_BEARER. This command downloads the GraphQL schema using the bearer ' +
+        'token of the person updating the documentation. Set your bearer before running, e.g. ' +
+        '(PowerShell) $env:TRAVELGATE_BEARER = "<your-bearer>" or (bash/zsh) ' +
+        'export TRAVELGATE_BEARER="<your-bearer>", then re-run.'
+    );
+}
 
 // Helper function to safely format default values
 function formatDefaultValue(value) {
@@ -33,6 +63,8 @@ async function loadFilteredSchema() {
     try {
         console.log('Fetching GraphQL schema...');
 
+        const TRAVELGATE_AUTH = resolveAuthHeader();
+
         // Dynamic import for node-fetch v3+ or use built-in fetch
         let fetch;
         try {
@@ -52,7 +84,7 @@ async function loadFilteredSchema() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Apikey ' + TRAVELGATE_API_KEY
+                'Authorization': TRAVELGATE_AUTH
             },
             body: JSON.stringify({
                 query: getIntrospectionQuery()

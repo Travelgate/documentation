@@ -12,7 +12,12 @@ const { buildClientSchema, getIntrospectionQuery } = require('graphql');
 const PUBLIC_INTROSPECTION_KEY = 'test0000-0000-0000-0000-000000000000';
 
 function resolveAuthHeader() {
-    const bearer = process.env.TRAVELGATE_BEARER;
+    const rawBearer = process.env.TRAVELGATE_BEARER;
+    // Normalize: trim whitespace and strip an optional leading "Bearer " prefix so pasting a
+    // full Authorization header value does not duplicate the scheme when we prepend "Bearer ".
+    const bearer = typeof rawBearer === 'string'
+        ? rawBearer.trim().replace(/^Bearer\s+/i, '')
+        : rawBearer;
     if (bearer) return 'Bearer ' + bearer;
 
     if (process.env.CI) {

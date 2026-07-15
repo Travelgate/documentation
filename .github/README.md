@@ -3,7 +3,7 @@
 > 🇪🇸 Versión en español: [README.es.md](./README.es.md)
 
 Agent customization for maintaining the **public Travelgate documentation**
-(https://docs.travelgate.com — Docusaurus 3, MDX/Markdown) with a consistent criteria across
+(https://docs.travelgate.com — Docusaurus 3, MDX/Markdown) with consistent criteria across
 every department.
 
 Everything lives in `.github/` and is loaded automatically by Copilot / VS Code when you work in

@@ -13,7 +13,12 @@ const OUTPUT_FILE = path.join(__dirname, "../schema-json/inventory-schema.json")
 const PUBLIC_INTROSPECTION_KEY = "test0000-0000-0000-0000-000000000000";
 
 function resolveAuthHeader() {
-  const bearer = process.env.TRAVELGATE_BEARER;
+  const rawBearer = process.env.TRAVELGATE_BEARER;
+  // Normalize: trim whitespace and strip an optional leading "Bearer " prefix so pasting a
+  // full Authorization header value does not duplicate the scheme when we prepend "Bearer ".
+  const bearer = typeof rawBearer === "string"
+    ? rawBearer.trim().replace(/^Bearer\s+/i, "")
+    : rawBearer;
   if (bearer) return "Bearer " + bearer;
 
   if (process.env.CI) {
@@ -254,33 +259,34 @@ async function fetchSchema() {
     
 
     try {
-    const response = await fetch(GRAPHQL_ENDPOINT, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: authHeader,
-      },
-      body: JSON.stringify(QUERY_TYPES),
-    });
+      const response = await fetch(GRAPHQL_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: authHeader,
+        },
+        body: JSON.stringify(QUERY_TYPES),
+      });
 
-    if (!response.ok) {
-      throw new Error(
-        `❌ Request failed: ${response.status} ${response.statusText}`
-      );
-    }
+      if (!response.ok) {
+        throw new Error(
+          `❌ Request failed: ${response.status} ${response.statusText}`
+        );
+      }
 
-        const data = await response.json();
+      const data = await response.json();
 
-        console.log("✅ Schema downloaded successfully. Filtering information...");
+      console.log("✅ Schema downloaded successfully. Filtering information...");
 
-        const filteredSchema = filterRequiredTypes(data);
+      const filteredSchema = filterRequiredTypes(data);
 
-        // Save the filtered schema to a JSON file
-        fs.writeFileSync(OUTPUT_FILE, JSON.stringify(filteredSchema, null, 2), "utf-8");
+      // Save the filtered schema to a JSON file
+      fs.writeFileSync(OUTPUT_FILE, JSON.stringify(filteredSchema, null, 2), "utf-8");
 
-        console.log(`✅ Filtered schema saved at: ${OUTPUT_FILE}`);
+      console.log(`✅ Filtered schema saved at: ${OUTPUT_FILE}`);
     } catch (error) {
-        console.error(`❌ Failed to fetch schema: ${error.message}`);
+      console.error(`❌ Failed to fetch schema: ${error.message}`);
+      process.exitCode = 1;
     }
 }
 

@@ -74,7 +74,20 @@ Use these cards first to understand your current mapping status before applying 
 The circular **% Validated** indicator shows your validation progress and badge eligibility.
 
 **Earn your FastX Verified Seller badge!**
-Reach **80% validation** to unlock your verified badge, gain higher visibility, and improve your ranking in the Travelgate Network to build stronger trust with Buyers.
+Validate **80% or more** of your eligible hotel and board mappings to unlock your verified badge, gain higher visibility, and improve your ranking in the Travelgate Network to build stronger trust with Buyers.
+
+:::info What the FastX Verified Seller badge represents
+The badge is a **validation-coverage indicator**, not a quality certification.
+
+**What it means:**
+- You have validated 80% or more of your eligible hotel and board mappings against FastX codes
+- Your badge is visible to Buyers in the Travelgate Network, helping them identify Suppliers with a largely-validated mapped portfolio
+
+**What it does not guarantee:**
+- It is not a guarantee that every individual mapping or content attribute is error-free
+- It does not cover room standardization, which is generated at search time and is not Seller-validated
+- Individual mappings may still benefit from manual review by Buyers
+:::
 
 #### 3. Confidence Level Filter and Warning Icon
 
@@ -242,7 +255,7 @@ Already using HotelX? If you're a Buyer connected to Travelgate via our HotelX P
 Buyers benefit from consistent FastX codes across all Suppliers, simplifying product aggregation and ensuring faster, more efficient access to travel inventory.
 
 :::info FastX Codes, now easier than ever!
-In our [Network](/kb/welcome-to-travelgate/network-essentials) section, Suppliers with **over 80% of their portfolio validated in FastX** now receive a dedicated FastX Badge. This badge helps you identify standardized content that is ready for immediate, seamless integration.  
+In our [Network](/kb/welcome-to-travelgate/network-essentials) section, Suppliers with **80% or more of their eligible hotel and board mappings validated in FastX** receive a **FastX Verified Seller badge**. This badge is a validation-coverage indicator — it helps you identify Suppliers with a largely-validated hotel and board portfolio.
 
 Check our Network today to find your next badge-validated partner!
 

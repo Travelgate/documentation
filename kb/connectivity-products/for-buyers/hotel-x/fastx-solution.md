@@ -54,6 +54,7 @@ FastX is not just a technical upgrade—it's a marketplace-wide shift that benef
 - **Full transparency:** responses include both FastX standardized values and Supplier-native values.
 - **GIATA compatibility:** FastX codes align with GIATA's standardized identifiers (available as `travelgate`; see [GIATA Multicodes](/kb/connectivity-products/for-buyers/mapping-solutions/giata/giata-multicodes)).
 - **Scalable growth:** expand your Supplier portfolio without proportionally multiplying technical complexity.
+- **Verified Seller badge:** Suppliers who have validated 80% or more of their hotel and board mappings receive a **FastX Verified Seller badge**, visible in the [Travelgate Network](https://app.travelgate.com/network/partners). It is a validation-coverage indicator — not a quality certification for every individual mapping.
 
 **For Sellers:**
 - **Reduced mapping effort:** validate hotel and board mappings once, then serve all FastX Buyers with standardized codes.
@@ -79,6 +80,13 @@ Hotels and boards are mapped once and Travelgate provides standardized codes via
 1. Sellers validate mappings using reference data: hotel name, country, address, and coordinates.
 2. Mapping status appears in [FastX Codes](/kb/platform/app-features/connections/fastx-codes) as `validated`, `pending`, or `invalidated`.
 3. This visibility ensures quality and consistency across the production environment.
+
+**What each status means for your booking flow:**
+- **Validated** — Seller confirmed the mapping
+- **Pending** — Awaiting Seller review; available by default, blocked only if you enable Validated-only mode
+- **Invalidated** — Seller rejected the mapping; never allowed
+
+By default, your booking flow accepts both `validated` and `pending` codes. If your business requires only Seller-confirmed mappings, you can switch to Validated-only mode in your [API Settings](/kb/platform/app-features/connections/api-settings).
 
 ![tg-fastx-buyers-5](https://stplaformwe.blob.core.windows.net/kbase/tg-fastx-buyers-5.png)
 

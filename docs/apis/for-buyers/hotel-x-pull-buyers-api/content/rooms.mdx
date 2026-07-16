@@ -129,6 +129,29 @@ Hotel-X supports all languages, but receiving room descriptions in one or anothe
 <Token />
 
 
+## How FastX Room Standardization Works
+
+Every FastX search response includes **FastX standardized room codes and descriptions** alongside the Supplier's native values. This provides your system with a unified room information across all connected Suppliers.
+
+### Standardization process
+
+1. **Supplier sends native room description** during Search (for example, "Twin Deluxe with Sea View")
+2. **FastX analyzes** the description in real time using an AI-based process
+3. **Standardized output generated:** A uniform room code and normalized description
+4. **Both values returned:** Original Supplier room code and description + FastX standardized room code and description
+
+### Important characteristics
+
+- **Real-time generation:** Occurs at Search time for every room in the response; there is no static room master list
+- **Not Seller-validated:** Generated automatically; Sellers do not validate individual room outputs
+- **Source-dependent quality:** Output depends on clarity and structure of the native description provided
+- **Attributes may be incomplete:** If an attribute is not present or inferable from the native text, it may be missing from the standardized output
+- **Grouping signal, not guarantee:** Rooms with the same standardized code may have minor commercial differences; review native values when exact equivalence matters
+
+:::info Native room data
+Supplier-native room codes and descriptions are always preserved in the response alongside FastX standardized values. Reference native codes and descriptions whenever exact product equivalence is material.
+:::
+
 ## Examples
 
 #### Search for the complete rooms list from a supplier

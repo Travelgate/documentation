@@ -44,14 +44,17 @@ The response typically includes the following fields:
 The amount of information returned may vary across different Sellers.
 :::
 
-## Mapping Responsibilities
+## Mapping Process
 
-### Is It My Responsibility to Map Hotel Rooms, or Does Travelgate Provide Mapping Support?
+Each Supplier has its own native room codes and descriptions. FastX generates a standardized room code and description at Search time from the Supplier-native description.
 
-Each Supplier has its own room codes, but Travelgate provides a standardized **FastX room code**.
-In search responses, you’ll see both the Supplier’s room code and description, along with the corresponding FastX code.
+Search responses include both:
+- the Supplier-native room code and description;
+- the FastX standardized room code and description.
 
-This lets you work directly with FastX codes — consistent across all Suppliers — without mapping each Supplier’s rooms individually, while still having their codes if needed.
+FastX room standardization is not Seller-validated. It is intended to reduce repetitive mapping and facilitate comparison, but it does not guarantee that rooms with the same standardized output are commercially identical in every respect.
+
+Review the Supplier-native values whenever exact room equivalence, bedding, view, capacity, amenities, or other product attributes are material to your operation.
 
 ## Additional Considerations
 

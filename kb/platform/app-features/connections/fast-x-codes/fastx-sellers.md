@@ -1,21 +1,8 @@
-﻿---
-sidebar_position: 4
+---
+sidebar_position: 2
 ---
 
-# FastX Codes
-
-Welcome to **FastX Codes**. This guide walks you through the FastX Codes web tool in the Travelgate Platform, so you can manage FastX validation faster and with full visibility.
-
-If you want the complete FastX product overview (what it is, why it matters, room standardization, and aggregation), read [FastX Solution Overview](/kb/connectivity-products/for-buyers/hotel-x/fastx-solution).
-
-What you will learn in this guide:
-
-- How Sellers validate or invalidate hotel and board mappings.
-- How Buyers review mapping coverage and validation status across Suppliers.
-- How to test room description normalization using the new Rooms tab.
-- How to use filters, search, and CSV export in daily operations.
-
-## For Sellers
+# FastX for Sellers
 
 Sellers use this section to **validate or invalidate suggested mappings** between their own hotel and board codes and Travelgate’s master FastX codes.
 
@@ -63,7 +50,20 @@ Use these cards first to understand your current mapping status before applying 
 The circular **% Validated** indicator shows your validation progress and badge eligibility.
 
 **Earn your FastX Verified Seller badge!**
-Reach **80% validation** to unlock your verified badge, gain higher visibility, and improve your ranking in the Travelgate Network to build stronger trust with Buyers.
+Validate **80% or more** of your eligible hotel and board mappings to unlock your verified badge, gain higher visibility, and improve your ranking in the Travelgate Network to build stronger trust with Buyers.
+
+:::info What the FastX Verified Seller badge represents
+The badge is a **validation-coverage indicator**, not a quality certification.
+
+**What it means:**
+- You have validated 80% or more of your eligible hotel and board mappings against FastX codes
+- Your badge is visible to Buyers in the Travelgate Network, helping them identify Suppliers with a largely-validated mapped portfolio
+
+**What it does not guarantee:**
+- It is not a guarantee that every individual mapping or content attribute is error-free
+- It does not cover room standardization, which is generated at search time and is not Seller-validated
+- Individual mappings may still benefit from manual review by Buyers
+:::
 
 #### 3. Confidence Level Filter and Warning Icon
 
@@ -100,6 +100,10 @@ The warning icon is a signal to **pay special attention** to the entry. It does 
 * Check both hotel and board mappings.
 
 ![fastx-sellers-5](https://stplaformwe.blob.core.windows.net/kbase/fastx-sellers-5.png)
+
+:::info Inventory Disclaimer
+Channel Managers selling through our Inventory solution use an **Inventory hotel code** rather than their native hotel code. This Inventory code is also mapped to a FastX. Do not automatically apply this FastX playbook, as public documentation describes Inventory FastX mappings as internally validated by Travelgate.
+::::
 
 
 ### FAQs
@@ -168,10 +172,14 @@ The warning icon is a signal to **pay special attention** to the entry. It does 
 
 
 <details>
-    <summary>Do I need to inform Travelgate to map my hotels, boards, and rooms for FastX?</summary>
+    <summary>Do I need to inform Travelgate to process my hotels, boards, and rooms for FastX?</summary>
     <div>
         <div>
-        No, Travelgate automatically maps the hotels/boards/rooms of all Sellers against the FastX database. However, **we highly recommend validating these mappings in the Travelgate Portal** to improve mapping quality and ensure Buyers who restrict their booking flow to validated FastX codes can still access your products. Additionally, validating 80% or more of your portfolio grants you the "FastX Verified Seller" status in our Network, boosting your visibility and credibility.
+        No action is required to trigger FastX processing.
+
+        For **hotels and boards**, Travelgate generates suggested correspondences from your content. Sellers should review these suggestions and validate or invalidate them in the Travelgate Portal. Validating 80% or more of your eligible hotel and board mappings earns you the FastX Verified Seller badge in the Network.
+
+        **Rooms follow a different process:** FastX room codes and descriptions are generated at Search time from the Supplier-native room description and are not Seller-validated.
         </div>
     </div>
 </details>
@@ -196,155 +204,4 @@ The warning icon is a signal to **pay special attention** to the entry. It does 
   :::warning Recommendation for Sellers
   To prevent availability issues for your Buyers, **keep board names and texts strictly focused on standard meal plans** (e.g., Half Board, All Inclusive). Do not include occupancy details, promotions, or any other non-board information.
   :::
-</details>
-
-
-## For Buyers
-
-Buyers use this section to **visualize the FastX master hotel and board list** and monitor Supplier mappings.
-
-:::warning Want to use FastX Codes?
-
-These codes are available **exclusively via the HotelX Pull Buyers API**. If you're currently on the Legacy API, now is the perfect time to upgrade to [HotelX](/kb/connectivity-products/for-buyers/hotel-x/why-develop-hotel-x-explained) to enjoy our latest features, richer content, and a smoother integration!
-
-Already using HotelX? If you're a Buyer connected to Travelgate via our HotelX Pull Buyers API and want to start using [FastX Codes](/docs/apis/for-buyers/hotel-x-pull-buyers-api/upgrade-to-fastx), simply contact our team via sales.support@travelgate.com to manage the upgrade and get your FastX access.
-
-**Contact our team at sales.support@travelgate.com to get started!**
-:::
-
-### Step-by-Step Guide
-
-1. **Log in** to the Travelgate Portal.
-2. Switch to **Buyer mode** and navigate to the [FastX Codes section](https://app.travelgate.com/connections/mapping).
-3. Select a FastX access from your organization to see the mapping content.
-
-![tg-fastx-buyers-5](https://stplaformwe.blob.core.windows.net/kbase/tg-fastx-buyers-5.png)
-
-
-### Features
-
-* See which Suppliers are mapped to each FastX hotel and board code.
-* Check validation status for each Supplier (validated or pending).
-* Filter by hotel, country, or status to monitor mapping completeness.
-* Export reports to CSV for analysis or auditing.
-
-Buyers benefit from consistent FastX codes across all Suppliers, simplifying product aggregation and ensuring faster, more efficient access to travel inventory.
-
-:::info FastX Codes, now easier than ever!
-In our [Network](/kb/welcome-to-travelgate/network-essentials) section, Suppliers with **over 80% of their portfolio validated in FastX** now receive a dedicated FastX Badge. This badge helps you identify standardized content that is ready for immediate, seamless integration.  
-
-Check our Network today to find your next badge-validated partner!
-
-![tg-fastx-verification-badge](https://storage.travelgate.com/kbase/tg-fastx-verification-badge.png)
-:::
-
-### Filters and Search
-
-* **Status:** Validated or Pending.
-* **Name or Code:** Search for hotels or boards.
-* **Country:** Filter by location.
-
-### Export to CSV
-
-* Click on the **Download CSV** button to export data in a CSV file.
-* Includes Travelgate master data and suppliers portfolio.
-* Applies active filters to the exported file.
-
-## Rooms (Standardization Test Tool)
-
-The **Rooms** tab is designed to test how FastX standardizes free-text room descriptions sent by Sellers.
-
-Instead of validating hotel or board mappings, this section lets you simulate the normalization process and preview the standardized output that Buyers will receive in API responses.
-
-### What this section is for
-
-Use **Rooms** when you want to:
-
-* Paste one or more native Seller room descriptions.
-* See the normalized FastX room description generated by the engine.
-* Review extracted attributes such as category, type, capacity, view, and beds.
-* Detect unclear or noisy native descriptions before they impact production traffic.
-
-### How to use it
-
-1. Go to [FastX Codes](https://app.travelgate.com/connections/mapping).
-2. Open the **Rooms** tab.
-3. Enter one or more Seller room descriptions (one input per room).
-4. Click **Get room(s) content**.
-5. Review the output card:
-    * **Normalized room description** (FastX standardized text).
-    * **Generated room code**.
-    * **Extracted attributes** (for example category, type, capacity, view, beds).
-
-![rooms standardization](https://storage.travelgate.com/kbase/fastx_codes_rooms.png)
-
-### How to interpret the result
-
-* The tool returns a **FastX standardized format** based on the native description provided.
-* If an attribute does not appear in the native text, it may appear empty (`-`) in the result.
-* The standardized output helps Buyers keep one consistent room language across multiple Suppliers.
-
-### Best practices
-
-* Keep native room descriptions clear, concise, and structured.
-* Avoid mixing room features with unrelated promotional text.
-* Include key room attributes explicitly (bed type, view, occupancy-related details when relevant).
-* Test representative samples from your inventory periodically to ensure quality.
-
-:::caution Preview only
-This tab is a **testing and preview tool** for room standardization behavior. It helps you validate how descriptions are interpreted before relying on them in operational booking flows.
-:::
-
-## General Notes and FAQs
-
-:::note Remember
-In the **Hotels** and **Boards** tabs, you can check which FastX codes are **validated**, **pending**, or **invalidated** by each Seller.  
-By default, your booking flow will allow traffic for both **validated** and **pending** codes. However, if you prefer to work exclusively with **validated** codes, you can configure this in the [API Settings](https://app.travelgate.com/connections/settings) section.
-
-Invalidated codes are **never allowed** in the booking flow — Travelgate will automatically block any traffic that uses FastX codes that have been invalidated by the Seller.
-:::
-
-### FAQs
-
-<details>
-    <summary>Which FastX codes can I use in my booking flow?</summary>
-    <div>
-         <div>
-         By default (Default mode), your booking flow allows both **validated** and **pending** FastX codes from Suppliers. Invalidated codes are never allowed — Travelgate automatically blocks invalidated codes to protect booking quality.
-         
-         If you prefer to use **only validated codes**, you can enable this restriction in your [API Settings](https://app.travelgate.com/connections/api-settings) under the `useOnlyValidatedFastXCodes` option.
-        </div>
-    </div>
-</details>
-
-<details>
-    <summary>In which languages are FastX room descriptions returned?</summary>
-    <div>
-         <div>
-         Room descriptions can be returned in either English or Spanish. This can be configured by the Buyer according to their preference.
-        </div>
-    </div>
-</details>
-
-
-
-<details>
-    <summary>Can I obtain FastX codes if I request with the Supplier’s context?</summary>
-    <div>
-         <div>
-          Buyers with FastX access performing a **Content request** in the Supplier context will receive FastX codes for Hotels and Boards within the response's mapping node. Room codes cannot be obtained this way, as they must be mapped through the Search response.  
-
-         Note: **This does not apply to the Booking Flow**; if you use the Supplier context during Search, Quote, or Book, you will never receive FastX information.
-        </div>
-    </div>
-</details>
-
-
-<details>
-    <summary>Can I see FastX codes if I do not have FastX access?</summary>
-    <div>
-         <div>
-         Buyers without FastX access can still view the FastX hotel codes associated with some of their connected Suppliers. However, they will not have access to the dedicated FastX Codes section on the Travelgate web portal for advanced management and mapping visibility.
-        </div>
-    </div>
 </details>

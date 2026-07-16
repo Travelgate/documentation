@@ -28,7 +28,7 @@ In the **Connections Content** section, you can easily check and force updates f
 
 4. On the **results screen**, you can review the following details:
     * Hotel code
-    * [FastX](/kb/platform/app-features/connections/fastx-codes) hotel code (or '_Processing_' if a FastX code has not been assigned yet to that supplier hotel code).
+    * [FastX](/kb/platform/app-features/connections/fast-x-codes/fastx-codes) hotel code (or '_Processing_' if a FastX code has not been assigned yet to that supplier hotel code).
     * Hotel name
     * Country
     * City
@@ -65,12 +65,16 @@ Connections Content shows each property's FastX validation status. You can see t
 ### 1. Portfolio List Screen (FastX Status Indicators)
 In the portfolio list, if a hotel has an associated FastX code, a colored dot appears next to the code in the **FastX hotel code** column.
 
-*   **Pending (Yellow):** The hotel mapping is pending verification or review.
+*   **Pending (Yellow):** Travelgate has generated a suggested correspondence, but the Seller has not yet confirmed or rejected it. Pending mappings are available in Default mode and excluded when the Buyer enables validated-only mode.
     ![tg-connections-content-fastx-yellow](https://storage.travelgate.com/kbase/tg-connections-content-fastx-yellow.png)
-*   **Validated (Green):** The hotel mapping is verified and fully operational.
+*   **Validated (Green):** The Seller has reviewed and confirmed the suggested correspondence between its native code and the FastX code. This indicates Seller confirmation of the mapping, not an independent Travelgate certification of every product attribute.
     ![tg-connections-content-fastx-green](https://storage.travelgate.com/kbase/tg-connections-content-fastx-green.png)
-*   **Invalidated (Red):** The hotel mapping contains errors or has been rejected.
+*   **Invalidated (Red):** The Seller has rejected the suggested correspondence. Invalidated mappings are blocked from the FastX booking flow for all Buyers (both for Default and Validated mode) until a new mapping is proposed.
     ![tg-connections-content-fastx-red](https://storage.travelgate.com/kbase/tg-connections-content-fastx-red.png)
+
+:::note Validation scope
+These statuses apply to FastX hotel and board mappings. FastX room codes and descriptions are generated at Search time and are not Seller-validated.
+:::
 
 ### 2. Expanded Detail View (FastX Status Tags)
 To interact with these statuses, you must click on the hotel row to view the detailed **Hotel information**. In this expanded view, the status is displayed as a full, color-coded tag.
@@ -102,7 +106,7 @@ Click directly on the yellow **Pending** tag.
 
 
 #### Step 4: Resolve in FastX Validation Tool
-The platform redirects you automatically to the **[FastX Codes / FastX Validation Tool](/kb/platform/app-features/connections/fastx-codes)**, with the supplier and hotel code prefilled so you land directly on the target mapping.
+The platform redirects you automatically to the **[FastX Codes / FastX Validation Tool](/kb/platform/app-features/connections/fast-x-codes/fastx-codes)**, with the supplier and hotel code prefilled so you land directly on the target mapping.
 
 ![tg-connections-content-fastx-expanded-yellow-2](https://storage.travelgate.com/kbase/tg-connections-content-fastx-expanded-yellow-2.png)
 

@@ -41,13 +41,20 @@ The response typically includes the following fields:
 Please note that the total number of boards offered by the Seller cannot be determined unless the complete boards list is downloaded. The amount of information returned may also vary across different Sellers.
 :::
 
-## Mapping Responsibilities
+## Mapping Process
 
-### Is It My Responsibility to Map Hotel Boards, or Does Travelgate Provide Mapping Support?
+Each Supplier has its own board codes and descriptions. Travelgate generates suggested correspondences to standardized FastX board codes, and the Seller can validate or invalidate those suggestions.
 
-Each Supplier has its own board codes, but Travelgate provides a standardized **FastX board code**. In search responses, you’ll see both the Supplier code and the corresponding FastX code.
+Buyers can:
+- Use Default mode, which allows validated and pending board mappings;
+- Enable validated-only mode to restrict to Seller-confirmed mappings;
+- Review both the FastX board value and the Supplier-native board value.
 
-This lets you work directly with FastX codes — consistent across all Suppliers of the Marketplace — without mapping each Supplier’s boards individually, while still having their codes if needed.
+Sellers should keep board descriptions focused on the meal plan itself. Occupancy, promotional, rate, or unrelated information can reduce mapping quality. Boards that cannot be mapped are not made available through FastX.
+
+:::note Validation meaning
+A validated board mapping means the Seller has confirmed the suggested correspondence. It is not an independent Travelgate certification of every commercial condition associated with the option.
+:::
 
 
 ## Availability Considerations

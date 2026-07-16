@@ -34,17 +34,35 @@ Use the [Context Decision Matrix](/kb/connectivity-products/for-buyers/hotel-x/h
 | `nationality`          | Mandatory            | Query (Criteria input) or Default Settings will be used |
 | `markets`              | Mandatory            | Query (Criteria input) or Default Settings will be used |
 | `optionsQuota`         | Optional             | Query (Criteria input), default settings or 300 will be used as value. This sets the maximum number of options returned per board in a search. If not specified in the query, the system will use the value from your Hotel-X API default settings. If no value is set there, the system will default to 300 options. |
-| `useOnlyValidatedFastXCodes` | Optional       | Configurable only in the [API Settings](/kb/platform/app-features/connections/api-settings) section on the website. Default value is `false`. When enabled, **only requests using validated FastX hotel and board codes will be allowed**. If set to `false`, all validated and pending FastX codes will be allowed. More info about FastX codes can be found [here](/kb/platform/app-features/connections/fastx-codes). |
+| `useOnlyValidatedFastXCodes` | Optional       | Configurable only in the [API Settings](/kb/platform/app-features/connections/api-settings) section on the website. Default: `false`. Controls which FastX hotel and board codes are accepted in your booking flow. See [FastX codes validation modes](#fastx-codes-validation-modes) below. |
+
+
+### FastX codes validation modes
+
+The `useOnlyValidatedFastXCodes` setting has two modes:
+
+| Value | Mode | Codes allowed in booking flow |
+|-------|------|-------------------------------|
+| `false` | Default Mode (recommended) | Validated + Pending |
+| `true` | Validated-only Mode | Validated only |
+
+
+**FastX mapping statuses:**
+- **Validated** — Seller confirmed the suggested mapping is correct
+- **Pending** — Awaiting Seller review; accepted in Default Mode
+- **Invalidated** — Seller rejected the mapping; always blocked by Travelgate
+
+To understand how Sellers assign these statuses and what each means for your booking flow, see [FastX Codes](/kb/platform/app-features/connections/fast-x-codes/fastx-codes).
 
 
 ## Default settings levels
 
 Understanding the various levels at which default settings can be applied is crucial for tailoring your configurations precisely to your needs:
 
-1. **Organization/Group Level**: Settings at this level apply to the entire organization or Hotel-X group.
+1. **Organization/Group Level**: Settings at this level apply to the entire organization or HotelX group.
 
 > Hotel-X groups refer to a group of clients to which you can apply different business rules. 
-> By default, as a Buyer, you only have one Hotel-X group. You don’t need to worry about having more than one unless you have very specific business needs. If you do, please contact our Customer Care team.
+> By default, as a Buyer, you only have one HotelX group. You don’t need to worry about having more than one unless you have very specific business needs. If you do, please contact our Customer Care team.
 
 2. **Client Level**: Settings at this level are specific to individual clients. This means that default settings set for a particular client will only affect that client.
 

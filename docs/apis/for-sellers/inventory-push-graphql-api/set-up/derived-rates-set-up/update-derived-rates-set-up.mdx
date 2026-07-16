@@ -1,0 +1,92 @@
+---
+sidebar_position: 3
+---
+
+
+
+import DerivedRatesSetupRs from "../../../../../../src/graphql/generated-docs/DerivedRatesSetupRs.mdx";
+import InventoryDerivedRateSetupUpdateInput from "../../../../../../src/graphql/generated-docs/InventoryDerivedRateSetupUpdateInput.mdx";
+
+import {updateDerivedRatesSetUpMutation, updateDerivedRatesSetUpVariables} from "/src/graphql/inventory/set-up/derived-rates-set-up.mutation";
+
+# Update Derived Rates
+
+## Mutation Overview
+
+The `updateDerivedRatesSetup` mutation allows you to update an existing derived rate for a hotel in a specific client - seller relation in Inventory. You only need to send the fields you want to change; any inheritance flag you provide overrides the previous inheritance behaviour for that section. The returned fields include:
+
+* `code`
+* `name`
+* `active`
+* `baseCode`
+* `mealPlanIncluded`
+* `informBaseRate`
+* `inheritMealPlanSupplements`
+
+### 1. Criteria
+
+When building your mutation, you need to provide the following input fields:
+
+#### Mandatory Input
+* `clientCode`
+* `supplierCode`
+* `hotelCode`
+* `rate`
+  * `code`
+
+#### Optional Input
+* `contextCode`
+* `rate`
+  * `name`
+  * `active`
+  * `mealPlanIncludedDetails`
+  * `informBaseRate`
+  * `paymentPolicies`
+  * `bookingRules`
+  * `cancelPolicies`
+  * `baseCode`
+  * `roomsDetails`
+  * `inheritMealPlanSupplements`
+
+### 2. Settings
+
+Ensure that the derived rate `code` corresponds to an existing derived rate in your inventory setup. Only the sections you include in the mutation are modified.
+
+:::note
+
+For cancel policies, the `isPartialUpdate` flag determines whether the new policies are added (`true`) or replace the existing ones (`false`).
+
+:::
+
+### Response Considerations
+
+The mutation returns the updated derived rate details along with success status and possible advise messages.
+
+#### `DerivedRatesSetupRs` (*OBJECT*)
+* `ratesUpdated` (*DerivedRateSetup*) - A collection of updated derived rates.
+  * `code` (*String*) - The derived rate code.
+  * `name` (*String*) - Name of the derived rate.
+  * `active` (*Boolean*) - Indicates if the derived rate is active.
+  * `baseCode` (*String*) - The base rate code the derived rate inherits from.
+  * `mealPlanIncluded` (*Object*) - Meal plan included, with its resolved value and inheritance flag.
+  * `informBaseRate` (*Boolean*) - Indicates if the base rate code is sent to the supplier instead of the derived rate code.
+  * `inheritMealPlanSupplements` (*Boolean*) - Indicates whether meal plan supplements are inherited from the base rate.
+* `success` (*Boolean*) - Indicates if the operation was successful.
+* `adviseMessages` (*AdviseMessage*) - Messages related to the operation.
+
+
+## Mutation Inputs
+
+<InventoryDerivedRateSetupUpdateInput />
+## Returned Fields
+
+<DerivedRatesSetupRs />
+
+
+## Examples
+
+#### Update a derived rate
+
+With the following mutation, we are going to stop inheriting the meal plan and payment policies from the base rate and set specific values for the derived rate `BAR-DERIVED`.
+
+<GraphqlSample query={updateDerivedRatesSetUpMutation} variables={updateDerivedRatesSetUpVariables} />

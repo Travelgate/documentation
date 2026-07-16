@@ -40,10 +40,10 @@ const FILE_NODE_MAP = {
 "for-sellers/inventory-sellers/inventory-push-graphql-api/set-up/rates-set-up/rates-set-up.mdx": ["InventoryRatesSetupFilterInput", "RatesRs"],
 "for-sellers/inventory-sellers/inventory-push-graphql-api/set-up/rates-set-up/update-rates-set-up.mdx": ["InventoryRatesSetupUpdateInput", "RatesSetUpRs"],
 // **Configuración - Tarifas Derivadas**
-"for-sellers/inventory-sellers/inventory-push-graphql-api/set-up/derived-rates-set-up/derived-rates-set-up.mdx": ["InventoryDerivedRatesSetupFilterInput", "DerivedRatesRs"],
-"for-sellers/inventory-sellers/inventory-push-graphql-api/set-up/derived-rates-set-up/create-derived-rates-set-up.mdx": ["InventoryDerivedRateSetupCreateInput", "DerivedRatesSetupRs"],
-"for-sellers/inventory-sellers/inventory-push-graphql-api/set-up/derived-rates-set-up/update-derived-rates-set-up.mdx": ["InventoryDerivedRateSetupUpdateInput", "DerivedRatesSetupRs"],
-"for-sellers/inventory-sellers/inventory-push-graphql-api/set-up/derived-rates-set-up/delete-derived-rates-set-up.mdx": ["InventoryDerivedRateSetupDeleteInput", "DerivedRatesSetupRs"],
+"for-sellers/inventory-push-graphql-api/set-up/derived-rates-set-up/derived-rates-set-up.mdx": ["InventoryDerivedRatesSetupFilterInput", "DerivedRatesRs"],
+"for-sellers/inventory-push-graphql-api/set-up/derived-rates-set-up/create-derived-rates-set-up.mdx": ["InventoryDerivedRateSetupCreateInput", "DerivedRatesSetupRs"],
+"for-sellers/inventory-push-graphql-api/set-up/derived-rates-set-up/update-derived-rates-set-up.mdx": ["InventoryDerivedRateSetupUpdateInput", "DerivedRatesSetupRs"],
+"for-sellers/inventory-push-graphql-api/set-up/derived-rates-set-up/delete-derived-rates-set-up.mdx": ["InventoryDerivedRateSetupDeleteInput", "DerivedRatesSetupRs"],
 // **Configuración - Habitaciones**
 "for-sellers/inventory-sellers/inventory-push-graphql-api/set-up/rooms-set-up/create-rooms-set-up.mdx": ["InventoryRoomsSetupCreateInput", "RoomsSetUpRs"],
 "for-sellers/inventory-sellers/inventory-push-graphql-api/set-up/rooms-set-up/delete-rooms-set-up.mdx": ["InventoryRoomSetupDeleteInput", "RoomsSetUpRs"],

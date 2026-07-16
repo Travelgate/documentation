@@ -73,7 +73,7 @@ To support standardization across the Marketplace, Travelgate generates unique F
 ### Hotel and Board Mapping
 
 Hotels and boards are mapped once and Travelgate provides standardized codes via:
-- The [HotelX API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/fastx-content.mdx)
+- The [HotelX API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/fastx-content)
 - The [FastX Codes tool](/kb/platform/app-features/connections/fast-x-codes/fastx-codes) (visual interface for validation)
 
 **Validation workflow:**

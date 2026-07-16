@@ -49,12 +49,16 @@ Plus, you can now view the top source markets and destinations for each company 
 ![network_updated_2](https://storage.travelgate.com/kbase/network_updated_2.jpg)
 
 
-:::info FastX Codes, now easier than ever!
-In our Network section, Suppliers with **over 80% of their portfolio validated in FastX** now receive a dedicated FastX Badge. This badge helps you identify [standardized content](/kb/platform/app-features/connections/fastx-codes) that is ready for immediate, seamless integration.  
+:::info FastX Verified Seller badge
+Suppliers with **80% or more of their eligible hotel and board mappings validated in FastX** receive a **FastX Verified Seller badge**, visible on their Network profile.
 
-Check our Network today to find your next badge-validated partner!
+The badge is a **validation-coverage indicator** — it tells you the Supplier has validated the majority of their mapped portfolio. It is not a quality certification for every individual mapping, and it does not cover room standardization, which is generated at search time.
+
+Check our Network today to find your next badge-verified Partner!
 
 ![tg-fastx-verification-badge](https://storage.travelgate.com/kbase/tg-fastx-verification-badge.png)
+
+For details on how Sellers earn the badge, see [FastX Codes](/kb/platform/app-features/connections/fast-x-codes/fastx-codes).
 :::
 
 ### Looking for a Specific Partner?

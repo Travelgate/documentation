@@ -32,6 +32,6 @@ Jump straight to the section that matches your role:
   <div className="card" style={{flex: '1', minWidth: '240px', padding: '1.5rem', border: '1px solid var(--ifm-color-emphasis-300)', borderRadius: '8px'}}>
     <h3>🔍 I'm a Buyer</h3>
     <p>Monitor mapping coverage and validation status across all your Suppliers to maximize content quality.</p>
-    <a className="button button--secondary button--lg" href="./fastx-buyers">Go to FastX for Buyers →</a>
+    <a className="button button--secondary button--lg" href="/kb/platform/app-features/connections/fast-x-codes/fastx-buyers">Go to FastX for Buyers →</a>
   </div>
 </div>

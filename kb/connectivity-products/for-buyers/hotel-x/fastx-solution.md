@@ -66,7 +66,7 @@ FastX is not just a technical upgrade—it's a marketplace-wide shift that benef
 
 To support standardization across the Marketplace, Travelgate generates unique FastX codes for three asset types: **hotels**, **boards**, and **rooms**.
 
-- **Hotels & boards:** Travelgate creates persistent, standardized codes. The [FastX Codes tool](/kb/platform/app-features/connections/fastx-codes) lets Sellers validate mappings and Buyers track which Suppliers are matched to each code.
+- **Hotels & boards:** Travelgate creates persistent, standardized codes. The [FastX Codes tool](/kb/platform/app-features/connections/fast-x-codes/fastx-codes) lets Sellers validate mappings and Buyers track which Suppliers are matched to each code.
 - **Rooms:** Travelgate generates codes at search time (see [Room Mapping](#room-mapping) below).
 
 
@@ -74,11 +74,11 @@ To support standardization across the Marketplace, Travelgate generates unique F
 
 Hotels and boards are mapped once and Travelgate provides standardized codes via:
 - The [HotelX API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/fastx-content)
-- The [FastX Codes tool](/kb/platform/app-features/connections/fastx-codes) (visual interface for validation)
+- The [FastX Codes tool](/kb/platform/app-features/connections/fast-x-codes/fastx-codes) (visual interface for validation)
 
 **Validation workflow:**
 1. Sellers validate mappings using reference data: hotel name, country, address, and coordinates.
-2. Mapping status appears in [FastX Codes](/kb/platform/app-features/connections/fastx-codes) as `validated`, `pending`, or `invalidated`.
+2. Mapping status appears in [FastX Codes](/kb/platform/app-features/connections/fast-x-codes/fastx-codes) as `validated`, `pending`, or `invalidated`.
 3. This visibility ensures quality and consistency across the production environment.
 
 **What each status means for your booking flow:**

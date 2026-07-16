@@ -28,7 +28,7 @@ In the **Connections Content** section, you can easily check and force updates f
 
 4. On the **results screen**, you can review the following details:
     * Hotel code
-    * [FastX](/kb/platform/app-features/connections/fastx-codes) hotel code (or '_Processing_' if a FastX code has not been assigned yet to that supplier hotel code).
+    * [FastX](/kb/platform/app-features/connections/fast-x-codes/fastx-codes) hotel code (or '_Processing_' if a FastX code has not been assigned yet to that supplier hotel code).
     * Hotel name
     * Country
     * City
@@ -69,7 +69,7 @@ In the portfolio list, if a hotel has an associated FastX code, a colored dot ap
     ![tg-connections-content-fastx-yellow](https://storage.travelgate.com/kbase/tg-connections-content-fastx-yellow.png)
 *   **Validated (Green):** The Seller has reviewed and confirmed the suggested correspondence between its native code and the FastX code. This indicates Seller confirmation of the mapping, not an independent Travelgate certification of every product attribute.
     ![tg-connections-content-fastx-green](https://storage.travelgate.com/kbase/tg-connections-content-fastx-green.png)
-*   **Invalidated (Red):** The Seller has rejected the suggested correspondence. Invalidated mappings are blocked from the FastX booking flow until a new mapping is proposed.
+*   **Invalidated (Red):** The Seller has rejected the suggested correspondence. Invalidated mappings are blocked from the FastX booking flow for all Buyers (both for Default and Validated mode) until a new mapping is proposed.
     ![tg-connections-content-fastx-red](https://storage.travelgate.com/kbase/tg-connections-content-fastx-red.png)
 
 :::note Validation scope
@@ -106,7 +106,7 @@ Click directly on the yellow **Pending** tag.
 
 
 #### Step 4: Resolve in FastX Validation Tool
-The platform redirects you automatically to the **[FastX Codes / FastX Validation Tool](/kb/platform/app-features/connections/fastx-codes)**, with the supplier and hotel code prefilled so you land directly on the target mapping.
+The platform redirects you automatically to the **[FastX Codes / FastX Validation Tool](/kb/platform/app-features/connections/fast-x-codes/fastx-codes)**, with the supplier and hotel code prefilled so you land directly on the target mapping.
 
 ![tg-connections-content-fastx-expanded-yellow-2](https://storage.travelgate.com/kbase/tg-connections-content-fastx-expanded-yellow-2.png)
 

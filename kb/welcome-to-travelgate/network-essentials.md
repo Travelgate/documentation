@@ -58,7 +58,7 @@ Check our Network today to find your next badge-verified Partner!
 
 ![tg-fastx-verification-badge](https://storage.travelgate.com/kbase/tg-fastx-verification-badge.png)
 
-For details on how Sellers earn the badge, see [FastX Codes](/kb/platform/app-features/connections/fastx-codes).
+For details on how Sellers earn the badge, see [FastX Codes](/kb/platform/app-features/connections/fast-x-codes/fastx-codes).
 :::
 
 ### Looking for a Specific Partner?

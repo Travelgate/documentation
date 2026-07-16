@@ -88,7 +88,7 @@ fetchSchema.js  →  schema-json/inventory-schema.json  →  updateDocs.js (+ no
 ```
 
 Requiere la variable de entorno `TRAVELGATE_BEARER` para ejecuciones manuales (el bearer de quien
-actualiza la documentación; los scripts se detienen y lo solicitan si falta). En CI los scripts
+actualiza la documentación; los scripts fallan con un error indicando cómo establecerlo si falta). En CI los scripts
 recurren automáticamente al secret `TRAVELGATE_API_KEY` (o a la clave pública de introspección).
 
 **Ejemplos de disparo:** "regenera la breakdown de … tras el cambio de schema", "añade el nodo … a la

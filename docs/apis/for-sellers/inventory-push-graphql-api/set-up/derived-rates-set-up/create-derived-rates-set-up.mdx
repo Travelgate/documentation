@@ -1,0 +1,104 @@
+---
+sidebar_position: 2
+---
+
+
+
+import DerivedRatesSetupRs from "../../../../../../src/graphql/generated-docs/DerivedRatesSetupRs.mdx";
+import InventoryDerivedRateSetupCreateInput from "../../../../../../src/graphql/generated-docs/InventoryDerivedRateSetupCreateInput.mdx";
+
+import {createDerivedRatesSetUpMutation, createDerivedRatesSetUpVariables} from "/src/graphql/inventory/set-up/derived-rates-set-up.mutation";
+
+# Create Derived Rates
+
+## Mutation Overview
+
+The `createDerivedRatesSetup` mutation allows you to create a new derived rate for a hotel in a specific client - seller relation in Inventory. A derived rate inherits its configuration from a *base rate* (`baseCode`); for each inheritable section you decide whether to inherit the value from the base rate or to override it with a specific value. The returned fields include:
+
+* `code`
+* `name`
+* `active`
+* `baseCode`
+* `mealPlanIncluded`
+* `paymentPolicies`
+* `inheritAllRoomsBaseRate`
+* `informBaseRate`
+* `inheritMealPlanSupplements`
+
+### 1. Criteria
+
+When building your mutation, you need to provide the following input fields:
+
+#### Mandatory Input
+* `clientCode`
+* `supplierCode`
+* `hotelCode`
+* `rate`
+  * `code`
+  * `name`
+  * `active`
+  * `mealPlanIncludedDetails`
+    * `inheritMealPlanIncludedFromBaseRate`
+  * `informBaseRate`
+  * `paymentPolicies`
+    * `inheritFromBaseRate`
+  * `cancelPolicies`
+    * `inheritFromBaseRate`
+  * `roomsDetails`
+    * `inheritAllRoomsBaseRate`
+  * `inheritMealPlanSupplements`
+
+#### Optional Input
+* `contextCode`
+* `rate`
+  * `baseCode`
+  * `bookingRules`
+    * `bookingWindowDetails`
+    * `marketsDetails`
+    * `rateRulesDetails`
+    * `seniorRuleDetails`
+
+### 2. Settings
+
+Ensure that the provided `baseCode` matches an existing rate in your inventory setup, and that the inheritance flags are set according to the values you want to inherit or override.
+
+:::note
+
+Age policies are always inherited from the base rate, so they cannot be overridden when creating a derived rate.
+
+:::
+
+### Response Considerations
+
+The mutation returns the created derived rate details along with success status and possible advise messages.
+
+#### `DerivedRatesSetupRs` (*OBJECT*)
+* `ratesCreated` (*DerivedRateSetup*) - A collection of created derived rates.
+  * `code` (*String*) - The derived rate code.
+  * `name` (*String*) - Name of the derived rate.
+  * `active` (*Boolean*) - Indicates if the derived rate is active.
+  * `baseCode` (*String*) - The base rate code the derived rate inherits from.
+  * `mealPlanIncluded` (*Object*) - Meal plan included, with its resolved value and inheritance flag.
+  * `paymentPolicies` (*Object*) - Payment policies with inheritance metadata.
+  * `inheritAllRoomsBaseRate` (*Boolean*) - Indicates whether all rooms are inherited from the base rate.
+  * `informBaseRate` (*Boolean*) - Indicates if the base rate code is sent to the supplier instead of the derived rate code.
+  * `inheritMealPlanSupplements` (*Boolean*) - Indicates whether meal plan supplements are inherited from the base rate.
+* `success` (*Boolean*) - Indicates if the operation was successful.
+* `adviseMessages` (*AdviseMessage*) - Messages related to the operation.
+
+
+## Mutation Inputs
+
+<InventoryDerivedRateSetupCreateInput />
+## Returned Fields
+
+<DerivedRatesSetupRs />
+
+
+## Examples
+
+#### Create a new derived rate
+
+With the following mutation, we are going to create a new derived rate for hotel 2 that inherits its whole configuration from the base rate `BAR`.
+
+<GraphqlSample query={createDerivedRatesSetUpMutation} variables={createDerivedRatesSetUpVariables} />

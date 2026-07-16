@@ -1,0 +1,59 @@
+---
+sidebar_position: 4
+---
+
+
+import DerivedRatesSetupRs from "../../../../../../../src/graphql/generated-docs/DerivedRatesSetupRs.mdx";
+import InventoryDerivedRateSetupDeleteInput from "../../../../../../../src/graphql/generated-docs/InventoryDerivedRateSetupDeleteInput.mdx";
+
+import {deleteDerivedRatesSetUpMutation, deleteDerivedRatesSetUpVariables} from "/src/graphql/inventory/set-up/derived-rates-set-up.mutation";
+
+# Delete Derived Rates
+
+## Mutation Overview
+
+The `deleteDerivedRatesSetup` mutation removes derived rates from a hotel in a client-seller relation in Inventory. The returned fields include:
+
+* `ratesDeleted`
+* `success`
+* `adviseMessages`
+
+### 1. Criteria
+
+When building your mutation, you need to provide the following input fields:
+
+#### Mandatory Input
+* `clientCode`
+* `supplierCode`
+* `hotelCode`
+* `derivedRateCodes`
+
+#### Optional Input
+* `contextCode`
+
+### 2. Settings
+
+Ensure that the provided derived rate codes correspond to existing derived rates in your inventory setup.
+
+### Response Considerations
+
+The mutation returns the collection of deleted derived rate codes along with success status and potential advise messages regarding the operation.
+
+#### `DerivedRatesSetupRs` (*OBJECT*)
+* `ratesDeleted` (*String*) - A collection of deleted derived rate codes.
+* `success` (*Boolean*) - Indicates if the operation was successful.
+* `adviseMessages` (*AdviseMessage*) - Messages related to the operation.
+
+## Mutation Inputs
+
+<InventoryDerivedRateSetupDeleteInput />
+## Returned Fields
+
+<DerivedRatesSetupRs />
+
+
+## Examples
+
+#### Delete a derived rate
+
+<GraphqlSample query={deleteDerivedRatesSetUpMutation} variables={deleteDerivedRatesSetUpVariables} />

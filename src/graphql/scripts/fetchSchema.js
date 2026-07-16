@@ -41,6 +41,12 @@ function resolveAuthHeader() {
 
 // List of types to extract including all their subtypes
 const REQUIRED_TYPES = new Set([
+  "InventoryDerivedRatesSetupFilterInput",
+  "DerivedRatesRs",
+  "InventoryDerivedRateSetupCreateInput",
+  "InventoryDerivedRateSetupUpdateInput",
+  "InventoryDerivedRateSetupDeleteInput",
+  "DerivedRatesSetupRs",
   "InventoryAvailDerivedRatesInput",
   "AvailDerivedRatesRs",
   "InventoryAvailOffersInput",

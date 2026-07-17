@@ -1,0 +1,159 @@
+---
+sidebar_position: 4
+---
+
+import HotelsRs from "../../../../../../src/graphql/generated-docs/HotelsRs.mdx";
+import InventoryHotelMasterUpdateInput from "../../../../../../src/graphql/generated-docs/InventoryHotelMasterUpdateInput.mdx";
+
+# Update Hotel Master
+
+## Mutation Overview
+
+The `updateHotelMaster` mutation allows you to update an existing hotel master in Inventory. The returned fields include:
+
+* `id`
+* `name`
+* `email`
+* `phones`
+* `fax`
+* `address`
+* `postalCode`
+* `latitude`
+* `longitude`
+* `externalCode`
+* `category`
+    * `id`
+	* `name`
+* `locality`
+    * `id`
+    * `name`
+    * `countryCode`
+* `hotelCode`
+* `contextCode`
+
+### 1. Criteria
+
+When building your mutation, you need to provide the following input fields inside the `hotel` object:
+
+#### Mandatory Input
+* `hotelCode`
+
+#### Optional Input
+* `contextCode`
+* `name`
+* `email`
+* `phones`
+* `fax`
+* `address`
+* `postalCode`
+* `latitude`
+* `longitude`
+* `externalCode`
+* `categoryId`
+* `localityId`
+* `maxAgeBaby`
+* `maxAgeChild`
+
+### 2. Settings
+
+To build your `updateHotelMaster` input, identify the hotel to modify through its `hotelCode` and provide only the fields you want to update. Any field left out will keep its current value.
+
+If the hotel belongs to a specific supplier that requires native hotel codes, the field `contextCode` must be provided together with the `hotelCode`. Otherwise the default value "TGX_PUSH" will be used.
+
+:::note
+The `localityId` value from the desired locality can be retrieved using the queries [Localities](../../static-data/localities/) or [Search Localities](../../static-data/localities/search-localities).  
+The possible values for `contextCode` can be retrieved using the query [Inventory Contexts](../../static-data/inventory-contexts).
+:::
+
+```js
+{
+  "input":{
+    "hotel":{
+      "hotelCode": "1",
+      "contextCode": "TGX_PUSH",
+      "name": "hotel test updated",
+      "email": "hotelpush@xmltravelgate.com",
+      "phones": ["971858585"],
+      "address": "Calle Prueba TEST 2",
+      "postalCode": "07121",
+      "latitude": 50.07,
+      "longitude": 14.14,
+      "localityId": 1042
+    }
+  }
+}
+```
+
+### Response Considerations
+
+The mutation returns the updated hotel object along with success status and possible advise messages.
+
+#### `HotelsRs` (*OBJECT*)
+* `hotels` (*InventoryHotelMaster*) - A collection of updated hotels.
+    * `id` (*Int*) - Unique identifier.
+    * `name` (*String*) - Hotel name.
+    * `email` (*String*) - Contact email.
+    * `phones` (*String*) - Phone numbers.
+    * `fax` (*String*) - Fax number.
+    * `address` (*String*) - Physical address.
+    * `postalCode` (*String*) - Postal code.
+    * `latitude` (*Decimal*) - Geographic latitude.
+    * `longitude` (*Decimal*) - Geographic longitude.
+    * `category` (*InventoryCategory*)
+        * `id` (*Int*) - Category ID.
+        * `name` (*String*) - Category name.
+    * `locality` (*InventoryLocality*)
+        * `id` (*Int*) - Locality ID.
+        * `name` (*String*) - Locality name.
+        * `countryCode` (*String*) - ISO country code.
+    * `hotelCode` (*String*) - Supplier's hotel code.
+    * `contextCode` (*String*) - Context code associated.
+* `success` (*Boolean*) - Indicates if the operation was successful.
+* `adviseMessages` (*AdviseMessage*) - Messages related to the operation.
+
+## Mutation Inputs
+
+<InventoryHotelMasterUpdateInput />
+## Returned Fields
+
+<HotelsRs />
+
+
+## Examples
+
+```js
+{
+  "data": {
+    "inventory": {
+      "hotelsMaster": {
+        "hotels": [
+          {
+            "id": 1,
+            "name": "hotel test updated",
+            "hotelCode": "1",
+            "contextCode": "TGX_PUSH",
+            "email": "hotelpush@xmltravelgate.com",
+            "phones": [
+              "971858585"
+            ],
+            "fax": null,
+            "address": "Calle Prueba TEST 2",
+            "postalCode": "07121",
+            "latitude": 50.07,
+            "longitude": 14.14,
+            "category": {
+              "id": 1,
+              "name": "1*"
+            },
+            "locality": {
+              "id": 1042,
+              "name": "Andorra la Vella",
+              "countryCode": "AD"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+```

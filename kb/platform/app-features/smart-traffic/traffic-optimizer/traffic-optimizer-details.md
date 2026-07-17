@@ -25,9 +25,9 @@ Traffic Optimizer can be applied to either:
 
 It uses a **data-driven approach** to analyze past transactions and **automatically blacklist hotels** that did not convert the previous day, based on selected optimization criteria:
 
-### **Optimization Criteria:**
 
-- **No Availability:**
+### No Availability
+
   - Blocks hotels that returned **100% "no availability"** results the previous day for all requested dates.
     - Example: If searches for January 13th return 100% no availability, the hotel will be blacklisted on the following day (January 14th).
   - If a hotel was not searched the previous day, it will not be considered for blocking. Only hotels that were requested are eligible to be blocked.
@@ -45,15 +45,19 @@ It uses a **data-driven approach** to analyze past transactions and **automatica
     | Day 2 | "Hotel A" is blocked, but the grace period allows it to respond to searches. |
     | Day 3 | If "Hotel A" returned availability on Day 2 → stays unblocked. Otherwise → blocked again. |
 
-- **Zero Bookings:**
+### Zero Bookings
+
   - Blocks hotels that have **never recorded a booking** with Travelgate.
   - Hotels blocked under this criteria receive a **grace period** to accept new searches, and will be **unblocked automatically** when a Booking is detected.
 
-- **Not in Portfolio:**
+### Not in Portfolio
+
   - Identifies and blocks hotel codes that are **no longer offered by the Seller**.
   - A hotel must be requested before it becomes eligible for blocking. As a result, there may be a time gap between the first request and the actual blocking.
   - Once a hotel is blocked, it will never be unblocked unless it is included again by the Seller in the HotelList.
 
 Hotels that match these criteria are **blacklisted**, meaning searches for those properties will be blocked, reducing unnecessary traffic.
 
+:::info
 🚀 **Daily Updates:** The blacklist is refreshed **every 24 hours**, ensuring optimization is always up to date!
+:::

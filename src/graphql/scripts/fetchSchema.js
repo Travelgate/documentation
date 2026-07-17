@@ -6,10 +6,10 @@ const GRAPHQL_ENDPOINT = "https://api.travelgate.com";
 const OUTPUT_FILE = path.join(__dirname, "../schema-json/inventory-schema.json");
 
 // The schema is downloaded on behalf of the person updating the documentation, using their
-// personal Travelgate bearer token (TRAVELGATE_BEARER, sent as `Bearer`). A running person is
-// always asked for their bearer. In CI there is no interactive user, so it falls back to the
-// stable service API key (TRAVELGATE_API_KEY secret) and, if that is absent, to the public
-// introspection key — this keeps the automated schema generation working without a bearer.
+// personal Travelgate bearer token (TRAVELGATE_BEARER, sent as `Bearer`). For local/manual runs,
+// this script fails fast if the bearer is missing. In CI there is no interactive user, so it
+// falls back to the stable service API key (TRAVELGATE_API_KEY secret) and, if that is absent, to
+// the public introspection key — this keeps the automated schema generation working without a bearer.
 const PUBLIC_INTROSPECTION_KEY = "test0000-0000-0000-0000-000000000000";
 
 function resolveAuthHeader() {

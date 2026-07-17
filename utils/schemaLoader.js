@@ -5,10 +5,10 @@ using AI, I recommend you to use Sonnet 4 or later. It took 17 versions to get t
 const { buildClientSchema, getIntrospectionQuery } = require('graphql');
 
 // The schema is downloaded on behalf of the person updating the documentation, using their
-// personal Travelgate bearer token (TRAVELGATE_BEARER, sent as `Bearer`). A running person is
-// always asked for their bearer. In CI there is no interactive user, so it falls back to the
-// stable service API key (TRAVELGATE_API_KEY secret) and, if that is absent, to the public
-// introspection key — this keeps the automated schema generation working without a bearer.
+// personal Travelgate bearer token (TRAVELGATE_BEARER, sent as `Bearer`). For local/manual runs,
+// this command fails fast if the bearer is missing. In CI there is no interactive user, so it
+// falls back to the stable service API key (TRAVELGATE_API_KEY secret) and, if that is absent, to
+// the public introspection key — this keeps the automated schema generation working without a bearer.
 const PUBLIC_INTROSPECTION_KEY = 'test0000-0000-0000-0000-000000000000';
 
 function resolveAuthHeader() {

@@ -3,10 +3,10 @@
 const FILE_NODE_MAP = {
     //API GRAPHQL SELLERS
 // **Hoteles**
-"for-sellers/inventory-sellers/inventory-push-graphql-api/masters/hotels-master/create-hotel-master.mdx": ["InventoryHotelMasterCreateInput", "HotelsRs"],
-"for-sellers/inventory-sellers/inventory-push-graphql-api/masters/hotels-master/update-hotel-master.mdx": ["InventoryHotelMasterUpdateInput", "HotelsRs"],
-"for-sellers/inventory-sellers/inventory-push-graphql-api/masters/hotels-master/search-hotels-master.mdx": ["InventoryHotelsMasterSearchFilterInput", "HotelsRs"],
-"for-sellers/inventory-sellers/inventory-push-graphql-api/masters/hotels-master/hotels-master.mdx": ["InventoryHotelMasterFilterInput", "HotelsRs"],
+"for-sellers/inventory-push-graphql-api/masters/hotels-master/create-hotel-master.mdx": ["InventoryHotelMasterCreateInput", "HotelsRs"],
+"for-sellers/inventory-push-graphql-api/masters/hotels-master/update-hotel-master.mdx": ["InventoryHotelMasterUpdateInput", "HotelsRs"],
+"for-sellers/inventory-push-graphql-api/masters/hotels-master/search-hotels-master.mdx": ["InventoryHotelsMasterSearchFilterInput", "HotelsRs"],
+"for-sellers/inventory-push-graphql-api/masters/hotels-master/hotels-master.mdx": ["InventoryHotelMasterFilterInput", "HotelsRs"],
 // **Habitaciones**
 "for-sellers/inventory-sellers/inventory-push-graphql-api/masters/rooms-master/create-rooms-master.mdx": ["InventoryRoomMasterCreateInput", "RoomsRs"],
 "for-sellers/inventory-sellers/inventory-push-graphql-api/masters/rooms-master/rooms-master.mdx": ["InventoryRoomsMasterFilterInput", "RoomsRs"],

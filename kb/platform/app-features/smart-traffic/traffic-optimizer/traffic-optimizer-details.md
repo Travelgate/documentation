@@ -48,7 +48,7 @@ It uses a **data-driven approach** to analyze past transactions and **automatica
 ### Zero Bookings
 
   - Blocks hotels that have **never recorded a booking** with Travelgate.
-  - Hotels blocked under this criteria receive a **grace period** to accept new searches, and will be **unblocked automatically** when a Booking is detected.
+  - Hotels blocked under this criterion receive a **grace period** to accept new searches, and will be **unblocked automatically** when a booking is detected.
 
 ### Not in Portfolio
 

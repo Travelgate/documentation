@@ -41,7 +41,9 @@ use the `graphql-generated-docs` skill for that.
      but singular `updateRateSetup`); casing is `Setup` (lowercase u), not `SetUp`.
 
 4. **Apply the change following repo conventions** (see `.github/copilot-instructions.md`):
-   - Internal links: relative WITH `.mdx`. KB links: absolute `/kb/...` without extension.
+   - Internal links: use relative source-file links WITH `.md`/`.mdx` for nearby pages, or absolute
+     site routes (`/docs/...`, `/kb/...`) WITHOUT extension for cross-section links. Do not use
+     extensionless relative links.
    - Keep the `## Examples` section intact on generated GraphQL pages.
    - Never touch JS import identifier lines (`...SetUpMutation`) when fixing prose.
    - Use admonitions (`:::info`, `:::warning`, `:::tip`) for call-outs.

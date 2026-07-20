@@ -35,9 +35,9 @@ GraphQL API Reference — not necessarily what the prose currently says.
 ## Invariants (follow exactly on every change)
 
 - **Internal doc links**: relative paths **WITH** the `.mdx`/`.md` extension (e.g.
-  `./availability/rates/load-rate-availability.mdx`); absolute internal links use `/docs/...` **with**
-  extension. Extensionless relative links resolve wrong.
-- **KB links**: absolute `/kb/...` **WITHOUT** extension; anchors as `#lower-kebab-case`.
+  `./availability/rates/load-rate-availability.mdx`). Absolute site routes under `/docs/...` and
+  `/kb/...` are valid **WITHOUT** extension. Extensionless relative links resolve wrong.
+- **KB links**: prefer absolute `/kb/...` **WITHOUT** extension; anchors as `#lower-kebab-case`.
 - Do **not** hardcode `https://docs.travelgate.com/...` for internal pages — use `/docs/...` or relative.
 - `docusaurus.config.js` sets `onBrokenLinks: "throw"` → a broken internal link **fails the build**.
 - Every auto-populated GraphQL page must keep its **`## Examples`** section — `updateDocs.js` inserts

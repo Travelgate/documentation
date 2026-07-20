@@ -52,7 +52,7 @@ FastX is not just a technical upgrade—it's a marketplace-wide shift that benef
 - **Faster Supplier activations:** reduce onboarding friction when expanding your Supplier coverage.
 - **Simpler operations:** maintain one unified code system instead of managing multiple Supplier-specific code systems.
 - **Full transparency:** responses include both FastX standardized values and Supplier-native values.
-- **GIATA compatibility:** FastX codes align with GIATA's standardized identifiers (available as `travelgate`; see [GIATA Multicodes](/kb/connectivity-products/for-buyers/mapping-solutions/giata/giata-multicodes)).
+- **GIATA compatibility:** FastX codes align with GIATA's standardized identifiers (available as `travelgate`; see [GIATA Multicodes](/kb/connectivity-products/for-buyers/mapping-solutions/giata-multicodes)).
 - **Scalable growth:** expand your Supplier portfolio without proportionally multiplying technical complexity.
 - **Verified Seller badge:** Suppliers who have validated 80% or more of their hotel and board mappings receive a **FastX Verified Seller badge**, visible in the [Travelgate Network](https://app.travelgate.com/network/partners). It is a validation-coverage indicator — not a quality certification for every individual mapping.
 

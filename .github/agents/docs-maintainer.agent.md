@@ -37,6 +37,8 @@ Load the relevant skill and follow its procedure. Sequence them for multi-part w
 4. **Edit.** Apply the change respecting the invariants. For bulk edits prefer the `edit` tool per
    file; if scripting in PowerShell, `-ne`/`-eq` are case-insensitive (use `-cne`/`-ceq`) and build
    backticks via `[char]0x60`.
+   Preserve canonical product naming in agent-facing text as well: the assistant name is **`AIna`**;
+   only URL paths/slugs are exempt from that casing rule.
 5. **Validate.** `npx docusaurus-mdx-checker`; run `npm run build` for non-trivial link/structure
    changes. Re-`search` to confirm zero stray wrong tokens / all intended files changed.
 6. **Branch.** Cut `docs/push-XXXX-short-slug` from a clean `main`; leave changes **uncommitted**.

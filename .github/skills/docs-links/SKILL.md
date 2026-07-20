@@ -20,16 +20,18 @@ commit message.
 | Target | Correct form | Example |
 |--------|--------------|---------|
 | Doc → doc, same/nearby tree | **relative path WITH extension** | `[text](./availability/rates/load-rate-availability.mdx)` |
-| Doc → doc, far/absolute | **`/docs/...` WITH extension** | `[text](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart.mdx)` |
+| Doc → doc, far/absolute | **`/docs/...` WITHOUT extension** | `[text](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart)` |
 | Any → KB article | **`/kb/...` WITHOUT extension** | `[text](/kb/welcome-to-travelgate/support-resources/aina-smart-ai)` |
 | Anchor within/other page | append `#lower-kebab-case` | `.../security-overview#fixed-ip-list` |
 | External | full `https://` URL | `[text](https://example.com)` |
 
 Rules of thumb:
-- **Relative and `/docs/` internal links keep the `.mdx`/`.md` extension.** Extensionless relative
-  links resolve wrong. (Exception: KB `/kb/...` links are intentionally extensionless.)
+- **Relative internal links keep the `.mdx`/`.md` extension.** Extensionless relative links resolve
+   wrong.
+- **Absolute `/docs/...` and `/kb/...` site routes are valid without extension.** Prefer relative
+   links for nearby pages and absolute site routes for distant or cross-section links.
 - **Avoid hardcoded `https://docs.travelgate.com/...`** for internal pages — use a site-relative
-  `/docs/...` or a relative `./...mdx` link instead (survives previews, feeds Aina correctly).
+   `/docs/...` or a relative `./...mdx` link instead (survives previews, feeds AIna correctly).
 - Anchors must match a real heading slug on the target page (Docusaurus lowercases, replaces spaces
   with `-`, strips punctuation). Verify the heading exists.
 - `docusaurus.config.js`: `onBrokenLinks: "throw"` (build fails on broken internal links) and
@@ -44,14 +46,14 @@ Rules of thumb:
    Classify each as relative-internal, absolute-internal (`/docs`, `/kb`), external, or anchor-only.
 
 3. **Check conventions:**
-   - Relative or `/docs/` internal link missing `.mdx`/`.md` → flag/fix (add extension).
-   - `/kb/...` link WITH extension → flag/fix (remove extension).
-   - Hardcoded `https://docs.travelgate.com/...` → flag (convert to `/docs/...` keeping the extension,
-     or a relative `./...mdx` if in the same tree).
+    - Relative internal link missing `.mdx`/`.md` → flag/fix (add extension).
+    - Absolute `/docs/...` or `/kb/...` link WITH `.md`/`.mdx` → flag/fix (remove extension).
+    - Hardcoded `https://docs.travelgate.com/...` → flag (convert to `/docs/...` without extension,
+       or a relative `./...mdx` if in the same tree).
 
 4. **Verify targets exist** (this prevents build failures):
    - Relative link → resolve against the file's directory; the target file must exist.
-   - `/docs/<path>.mdx` → maps to `docs/<path>.mdx` (strip leading `/docs/`).
+   - `/docs/<path>` → maps to `docs/<path>.md` or `.mdx` (strip leading `/docs/`).
    - `/kb/<path>` → maps to `kb/<path>.md` or `.mdx` (extensionless in the link).
    - Use the `glob`/`view` tools to confirm each resolved path exists.
 

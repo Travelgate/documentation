@@ -107,8 +107,9 @@ página …".
 
 ### Conventions the agent follows (quick reference)
 
-- Internal doc links: **relative with `.mdx`** (or `/docs/...` with extension). KB links:
-  **`/kb/...` without extension**, anchors `#lower-kebab-case`.
+- Internal links: use **relative source-file links with `.md`/`.mdx`** for nearby pages, or
+  **absolute `/docs/...` and `/kb/...` routes without extension** for site-route links; anchors
+  `#lower-kebab-case`.
 - Keep the `## Examples` section on generated GraphQL pages.
 - Don't edit JS import identifier lines (`...SetUpMutation`) when fixing prose.
 - Docs prose in **English**; Jira ticket replies in **Spanish**.

@@ -6,7 +6,7 @@ const withToken = (WrappedComponent) => {
 
     // Return a new component
     return function WithToken(props) {
-        const { user, isAuthenticated, loginWithPopup, getIdTokenClaims } = useAuth0();
+        const { isAuthenticated, getIdTokenClaims } = useAuth0();
         const [token, setToken] = React.useState(null);
 
         useEffect(() => {

@@ -72,11 +72,11 @@ Once the App is installed from the Travelgate Store, the flow is as follows:
 ### How to Use
 Once you're set up, getting your hands on enriched hotel and room data is super easy. You've got two ways to do it:
 
-####🔌 API Integration
-Pull data straight into your app using your usual FastX setup. 
+#### 🔌 API Integration
+Pull data straight into your app using your usual FastX setup.
 Just make your standard hotel content calls—it works seamlessly with the same old Hotel-X Pull Content API structure!
 
-####🌐 Web Portal
+#### 🌐 Web Portal
 Prefer a visual look? Just log into your Travelgate dashboard, head over to Connections Content, and set these quick filters:
 Connection: `Travelgate`
 Suppliers: `FastX`

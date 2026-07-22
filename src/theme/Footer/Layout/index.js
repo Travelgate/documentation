@@ -48,7 +48,6 @@ export default function FooterLayout({style, links, logo, copyright}) {
               <li><a href="https://docs.travelgate.com/kb" target="_blank">Help Center</a></li>
               <li><a href="https://app.travelgate.com/status" target="_blank">Status Services</a></li>
               <li><a href="https://landing.travelgate.com/en/travel-trends-dashboard?utm_campaign=Data%20Digest" target="_blank">Travel Trends Data Dashboard</a></li>
-              <li><a href="https://app.travelgate.com/network/roadmap" target="_blank">Integrations Roadmap</a></li>
               <li><a href="https://discord.com/servers/travelgate-1121158946074402916" target="_blank">Travelgate Community</a></li>
               <li><a href="https://www.travelgate.com/press-kit" target="_blank">Press Kit</a></li>
             </ul>

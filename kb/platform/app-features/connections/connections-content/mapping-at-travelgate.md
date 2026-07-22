@@ -23,7 +23,7 @@ FastX reduces repetitive mapping work and is designed to improve consistency and
 
 FastX does not remove the need to select an appropriate validation mode, maintain Buyer-owned mappings when used, or review Supplier-native values when exact product equivalence matters.
 
-Learn more in the [FastX documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/fastx-content).
+Learn more in the [FastX documentation](/kb/connectivity-products/for-buyers/hotel-x/fastx-solution.md).
 :::
 
 ### Can all Buyers use FastX Codes?

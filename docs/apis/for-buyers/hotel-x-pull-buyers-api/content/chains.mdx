@@ -1,0 +1,63 @@
+---
+sidebar_position: 8
+---
+
+import {chainsQuery, chainsVariables, chainsFastXVariables, chainsByChainCodeVariables} from "../../../../../src/graphql/hotel-x/chains.query";
+
+# Chains
+
+The Chains Query allows you to retrieve hotel chain master data in two ways:
+- The **FastX Chain List**, which returns standardized chain values from Travelgate.
+- The **Supplier Chain List**, which returns native chain values configured by each connected Seller.
+
+In the Hotels list response, you receive `chainCode` for each property. The list of possible chain values depends on the access used in the query (FastX access or Supplier access).
+
+The returned fields include:
+
+* `chainCode`
+* `text`
+* `language`
+
+## Query Overview
+
+To retrieve chain values, use the Chains Query with the `criteria` input.
+
+When creating your chains query, you have one input to fill based on your needs:
+
+1. Criteria
+
+### 1. Criteria
+
+**Mandatory criteria**
+* `access`
+
+**Optional criteria**
+* `chainCodes` (Search by chain code)
+
+## Use Cases
+
+### FastX master chain list
+
+To retrieve chain values from the FastX scope, run the query using your FastX access (Seller **"Travelgate"** in *MyConnections*).
+
+<GraphqlSample query={chainsQuery} variables={chainsFastXVariables} />
+
+### Supplier chain list
+
+To retrieve chain values from one Supplier scope, run the query using that Supplier access (for example, access `2` for Travelgate Test supplier).
+
+<GraphqlSample query={chainsQuery} variables={chainsVariables} />
+
+### Chain list for specific chain codes
+
+Use the Chains Query to filter specific chain values. For example, include `chainCodes` in your criteria to retrieve only selected chain codes from the chosen Supplier scope.
+
+<GraphqlSample query={chainsQuery} variables={chainsByChainCodeVariables} />
+
+:::note
+
+The values in `chainCode` come from the selected scope (FastX or Supplier, depending on access).
+
+Some hotels may not include a `chainCode` in the hotel list response.
+
+:::

@@ -10,8 +10,8 @@ import {boardsQuery, boardsVariables, boardsFastXVariables, boardsByBoardCodeVar
 # Boards
 
 The Boards Query allows you to retrieve board information in two ways:  
-- The **FastX Board Master**, which returns the complete list of standardized meal plans (boards) used in the Travelgate Marketplace and throughout the booking flow.  
-- The **Supplier Board List**, which provides the board information for each connected Seller, including available translations.
+- The **FastX Board List**, which returns the complete list of standardized meal plans (boards) used in Travelgate throughout the booking flow.  
+- The **Supplier Board List**, which provides the native board information for each connected supplier.
 
 The returned fields include:
 
@@ -38,7 +38,28 @@ This query offers versatility, with certain fields marked as mandatory (`access`
 * `boardCodes` (Search a specific board type)
 
 
-### Response Considerations
+## Query Inputs
+
+<HotelXBoardQueryInput />
+## Returned Fields
+
+<BoardConnection />
+
+
+## Use Cases
+
+#### FastX master board list
+
+To retrieve the **FastX Board Master**, make a `board list` call using your **FastX access**, which you can find in the *MyConnections* section under the Seller **"Travelgate"**. This returns the complete list of unique boards from the Travelgate ecosystem. 
+
+<GraphqlSample query={boardsQuery} variables={boardsFastXVariables} />
+
+
+#### Supplier board list
+
+To retrieve only one Supplier's native board list, include that Supplier's access in the query (for example, access `2` for the Travelgate Test supplier).
+
+<GraphqlSample query={boardsQuery} variables={boardsVariables} />
 
 :::note
 
@@ -49,30 +70,8 @@ Hotel-X supports all languages, but receiving board descriptions in one or anoth
 :::
 
 
-## Query Inputs
+#### Board list for specific board code
 
-<HotelXBoardQueryInput />
-## Returned Fields
-
-<BoardConnection />
-
-
-## Examples
-
-#### Search for the FastX master board list for all your connected suppliers
-
-<GraphqlSample query={boardsQuery} variables={boardsFastXVariables} />
-
-
-#### Search for the complete board list from a supplier
-
-For example, using access '5647' for Smyrooms Test supplier.
-
-<GraphqlSample query={boardsQuery} variables={boardsVariables} />
-
-
-#### Search for a specific board list from a supplier
-
-When utilizing the Boards List Query, for more personalized results, filter specific boards based on your interests. For example, to focus solely on the half board inventory of a Seller, add the `boardCodes` field with "2" and "256" (these are the codes this Seller has assigned for the half board from their side) in your criteria. This can provide you with highly targeted and relevant information.
+Use the Boards List Query to filter specific board types. For example, if you only want half board options, include `boardCodes` such as "2" and "256" in your criteria (these are supplier-native codes for half board in this example). This helps you retrieve more targeted and relevant results.
 
 <GraphqlSample query={boardsQuery} variables={boardsByBoardCodeVariables} />

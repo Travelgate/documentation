@@ -4,12 +4,20 @@ sidebar_position: 6
 import HotelXCategoryQueryInput from "../../../../../src/graphql/generated-docs/HotelXCategoryQueryInput.mdx";
 import CategoryConnection from "../../../../../src/graphql/generated-docs/CategoryConnection.mdx";
 
-import {categoriesQuery, categoriesVariables, categoriesByCategoryCodeVariables} from "../../../../../src/graphql/hotel-x/categories.query";
+import {categoriesQuery, categoriesVariables, categoriesFastXVariables, categoriesByCategoryCodeVariables} from "../../../../../src/graphql/hotel-x/categories.query";
 
 
 # Categories
 
-The Categories Query returns a comprehensive hotel categories list from a supplier's access that may include translations to other languages, granting you access to all the categories configured by the Seller for a given set of credentials. The returned fields include:
+The Categories Query allows you to retrieve category information in two ways:
+- The **FastX Category List**, which returns standardized categories from Travelgate.
+- The **Supplier Category List**, which returns the native category values configured by each connected Seller.
+
+Categories represent the classification types that can be assigned to a hotel (for example, star ratings and similar category systems).
+
+In the Hotels list response, you receive the `category` field for each property. The possible category values that may appear there are the ones listed in this Categories call, either from the FastX master or from the Supplier master, depending on the access used.
+
+The returned fields include:
 
 * `categoryCode`
 * `text`
@@ -33,18 +41,6 @@ This query offers versatility, with certain fields marked as mandatory (`access`
 * `categoryCodes` (Search by category type)
 * `group`
 
-
-### Response Considerations
-
-:::note
-
-The amount of information and content returned might vary between Sellers.
-
-Hotel-X supports all languages, but receiving categories descriptions in one or another depends entirely on the languages supported by the Seller.
-
-:::
-
-
 ## Query Inputs
 
 <HotelXCategoryQueryInput />
@@ -53,16 +49,33 @@ Hotel-X supports all languages, but receiving categories descriptions in one or 
 <CategoryConnection />
 
 
-## Examples
+## Use Cases
 
-#### Search for the complete categories list from a supplier
+### FastX master category list
+
+To retrieve the **FastX Category Master**, make a `category list` call using your **FastX access**, which you can find in the *MyConnections* section under the Seller **"Travelgate"**.
+
+<GraphqlSample query={categoriesQuery} variables={categoriesFastXVariables} />
+
+
+### Supplier category list
+
+To retrieve one Supplier's native category master, include that Supplier's access in the query (for example, access `2` for the Travelgate Test supplier).
 
 <GraphqlSample query={categoriesQuery} variables={categoriesVariables} />
 
+:::note
 
-#### Search for a specific category code from a supplier
+The amount of information and content returned might vary between Sellers.
 
-When utilizing the Categories List Query, for more personalized results, filter specific categories based on your interests. For example, to focus solely on the 4\* (four stars) inventory of a Seller, add the `categoryCodes` field with "4" and "5" (these are the codes that this Seller has assigned for the 4\* categories) in your criteria. This will provider you with highly targeted and relevant information.
+Hotel-X supports all languages, but receiving category descriptions in one language or another depends entirely on the languages supported by the Seller.
+
+:::
+
+
+### Category list for specific category codes
+
+Use the Categories List Query to filter specific category types. For example, to focus on 4-star inventory from a Supplier, include `categoryCodes` such as "4" and "5" in your criteria (these are supplier-native category codes in this example). This helps you retrieve more targeted and relevant results.
 
 <GraphqlSample query={categoriesQuery} variables={categoriesByCategoryCodeVariables} />
 

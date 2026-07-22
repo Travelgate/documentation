@@ -9,9 +9,11 @@ import {roomsQuery, roomsVariables, roomsByRoomCodeVariables} from "../../../../
 
 # Rooms
 
-The Rooms Query returns a comprehensive room list from a supplier's access, which may include translations to other languages. This call is primarily intended for Suppliers with a fixed room list. Keep in mind that many Suppliers work with **dynamic rooms**, where room details are generated on the fly during the search.  
+The Rooms Query returns a **static room list** from a Supplier access, and may include translations to other languages.
 
-Thanks to **FastX codes**, every search response also includes the **standardized FastX room code and description**, ensuring a consistent experience across the Marketplace.
+This call is only useful for Suppliers that publish a static room master. Many Suppliers do not provide one because their room details are generated dynamically at Search time. In those cases, the Rooms Query may return limited data or no room list.
+
+FastX does not provide a static room master list endpoint. Instead, FastX returns a **standardized room code and description at Search time**, based on each Supplier's native room values in the response.
 
 The returned fields of the rooms query include:
 
@@ -22,8 +24,6 @@ The returned fields of the rooms query include:
 * `medias`
 * `views`
 * `beds`
-
-
 
 
 ## Query Overview
@@ -69,7 +69,7 @@ To include the token in your request, all you need to do is:
 
 2. After receiving a response, you will only receive a portion of the full list. To access the next page, simply copy the `token` tag from the response and include it in your next request. This will allow you to obtain a new set of objects in the following response.
 
-3. Repeat these steps until the `token` is no longer included in the response, the query will return “Rooms not found”.
+3. Repeat these steps until the `token` is no longer included in the response, which indicates that all available results have been retrieved.
 
 **Query variables**
 
@@ -131,7 +131,9 @@ Hotel-X supports all languages, but receiving room descriptions in one or anothe
 
 ## How FastX Room Standardization Works
 
-Every FastX search response includes **FastX standardized room codes and descriptions** alongside the Supplier's native values. This provides your system with a unified room information across all connected Suppliers.
+Every FastX Search response includes **FastX standardized room codes and descriptions** alongside the Supplier's native values. This provides your system with unified room information across connected Suppliers.
+
+This standardization is generated in real time during Search. It is not a static room catalog that you can retrieve in advance.
 
 ### Standardization process
 
@@ -139,6 +141,36 @@ Every FastX search response includes **FastX standardized room codes and descrip
 2. **FastX analyzes** the description in real time using an AI-based process
 3. **Standardized output generated:** A uniform room code and normalized description
 4. **Both values returned:** Original Supplier room code and description + FastX standardized room code and description
+
+### Detected room components
+
+The model analyzes the Supplier's native room description and detects the following attributes:
+
+- **Category** (`Standard`, `Deluxe`, `Basic`, etc.)
+- **Type** (`Room`, `Studio`, `Apartment`, etc.)
+- **Capacity** (`Single`, `Twin`, `Double`, `Triple`, etc.)
+- **Environment** (`Shared Bed`, `Women Only`, etc.)
+- **View** (`Ocean`, `Sea`, `Park`, `Garden`, etc.)
+- **Features** (`Jacuzzi`, `Air Conditioning`, `Kitchenette`, etc.)
+- **Beds** (`Queen`, `Double`, `King`, etc.)
+- **Bedrooms** (`1`, `2`, `3`, etc.)
+
+### Example
+
+Different Supplier descriptions can be standardized into the same FastX room code and description:
+
+| Supplier | Supplier Room Description | FastX Room Code | FastX Room Description |
+| --- | --- | --- | --- |
+| `SUP1` | `Sea View Double Room (BB BAR FLEX)` | `str--AA--d--` | `Standard Double Room views Sea` |
+| `SUP2` | `Sea View Double Room (RO BAR FLEX)` | `str--AA--d--` | `Standard Double Room views Sea` |
+| `SUP3` | `DOUBLE SEA VIEW` | `str--AA--d--` | `Standard Double Room views Sea` |
+| `SUP4` | `Double Sea View A` | `str--AA--d--` | `Standard Double Room views Sea` |
+| `SUP5` | `Double Sea View` | `str--AA--d--` | `Standard Double Room views Sea` |
+| `SUP6` | `double room,sea view` | `str--AA--d--` | `Standard Double Room views Sea` |
+| `SUP7` | `Double Sea View BB` | `str--AA--d--` | `Standard Double Room views Sea` |
+| `SUP8` | `Double Sea View HB` | `str--AA--d--` | `Standard Double Room views Sea` |
+| `SUP9` | `Habitacion doble con vistas al mar 2A` | `str--AA--d--` | `Standard Double Room views Sea` |
+| `SUP10` | `Main Building Double Seaview Room` | `str--AA--d--` | `Standard Double Room views Sea` |
 
 ### Important characteristics
 
@@ -148,19 +180,27 @@ Every FastX search response includes **FastX standardized room codes and descrip
 - **Attributes may be incomplete:** If an attribute is not present or inferable from the native text, it may be missing from the standardized output
 - **Grouping signal, not guarantee:** Rooms with the same standardized code may have minor commercial differences; review native values when exact equivalence matters
 
+:::warning Room standardization
+Room standardization is generated in real time from the Supplier-native room description and is **not Seller-validated**.
+
+The standardized code and description are intended to facilitate comparison and aggregation. They do not guarantee that rooms with the same FastX output are commercially identical in every respect.
+
+The Supplier-native room code and description are preserved in the Search response and should be reviewed whenever exact product equivalence is material.
+:::
+
 :::info Native room data
 Supplier-native room codes and descriptions are always preserved in the response alongside FastX standardized values. Reference native codes and descriptions whenever exact product equivalence is material.
 :::
 
-## Examples
+## Use Cases
 
-#### Search for the complete rooms list from a supplier
+#### Supplier room list
 
 <GraphqlSample query={roomsQuery} variables={roomsVariables} />
 
 
-#### Search for a specific room list from a supplier
+#### Room list for specific room code
 
-When utilizing the Rooms List Query, for more personalized results, filter specific rooms based on your interests. For example, to focus solely on the twin room inventory of a Seller, add the `roomCodes` field with "2269" (this is the code that this Seller has assigned for the "Double Standard" room) in your criteria. This will provide you with highly targeted and relevant information.
+Use the Rooms List Query to filter specific room types. For example, if you want to focus on a Seller's double room inventory, include `roomCodes` such as "2269" in your criteria (in this example, it corresponds to the Seller's "Double Standard" room). This helps you retrieve more targeted and relevant results.
 
 <GraphqlSample query={roomsQuery} variables={roomsByRoomCodeVariables} />

@@ -78,6 +78,6 @@ Just make your standard hotel content calls—it works seamlessly with the same 
 
 #### 🌐 Web Portal
 Prefer a visual look? Just log into your Travelgate dashboard, head over to Connections Content, and set these quick filters:
-Connection: `Travelgate`
-Suppliers: `FastX`
+- Connection: `Travelgate`
+- Suppliers: `FastX`
 

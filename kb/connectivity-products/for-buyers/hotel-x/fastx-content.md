@@ -31,7 +31,7 @@ In simple terms:
 4. Everything is delivered through a standardized response in a single block, reducing your content integration effort to zero.
 
 ### Subscription Plans (Tiers)
-FastX Content by AO adapts to the complexity and volume of your business through three plans:
+FastX Content by AO adapts to the complexity and volume of your business through four plans:
 
 - ** 🥉 Bronze:**
     - It builds on FastX codes to offer widely improved, normalized, and aggregated hotel content using AI technology.

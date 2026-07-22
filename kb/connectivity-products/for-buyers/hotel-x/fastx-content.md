@@ -38,7 +38,7 @@ FastX Content by AO adapts to the complexity and volume of your business through
     - It includes standardized hotel names, chains, categories, and geolocation.
 Language note: The Bronze plan will display the content in English by default.
 
-- ** 🥈 Silver:** Bonce + Rooms
+- **🥈 Silver:** Bronze + Rooms
     - It includes everything from the Bronze plan and adds content at the Rooms level.
     - It normalizes and maps room descriptions, amenities, and images to the highest industry standards.
 

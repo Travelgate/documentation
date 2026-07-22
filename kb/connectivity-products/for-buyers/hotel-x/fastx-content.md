@@ -5,12 +5,12 @@ sidebar_position: 2
 # FastX Content: Overview
 
 FastX Content by AO is **the new content standard**, designed to integrate perfectly with our HotelX API. This premium application, available in the Travelgate Store, represents the natural evolution of our connectivity. To understand this product, it is essential to visualize our connectivity in two phases:
-- **Phase 1 - FastX Solution (The Origin):** The operational standard that standardizes hotel, board, and room codes in the booking flow, eliminating the need to map each supplier individually.
+- **Phase 1 - FastX Solution (The Origin):** A unified coding system that standardizes hotel, board, and room codes in the booking flow, eliminating the need to map suppliers individually.
 - **Phase 2 - FastX Content (The Premium Extension):** The top paid layer that wraps those FastX codes with complete, multi-language static content enriched through Artificial Intelligence.
 
 
 ## FASTX CONTENT: THE NEW CONTENT STANDARD FOR BUYERS
-From a solid connectivity foundation, FastX Content allows buyers to transform raw data into high-converting visual descriptions.
+From a solid connectivity foundation, FastX Content allows Buyers to transform raw data into high-converting visual descriptions.
 
 ### The Problem to Solve
 
@@ -43,19 +43,19 @@ FastX Content by AO adapts to the complexity and volume of your business through
     - It normalizes and maps room descriptions, amenities, and images to the highest industry standards.
 
 - ** 🥇 Gold:** Silver + Personalized Content
-    - It includes everything from the Silver plan and allows the buyer to upload their own locally contracted content.
+    - It includes everything from the Silver plan and allows the Buyer to upload their own locally contracted content.
     - It applies custom brand and tone of voice rules through artificial intelligence.
 
 - ** 🎖️ Enterprise:**
     - An omnichannel Product Information Management (PIM) system for the travel sector. It expands the scope beyond hotels to include destinations, points of interest (POI), excursions, tours, and data on accessibility and sustainability.
   
-:::info 🚀 Bolt-ons and add-ons
-Both initial tiers offer additional "bolt-ons" or add-ons for translations into more languages or market customization.
+:::info 🚀 Add-ons
+Both initial tiers offer additional add-ons for translations into more languages or market customization.
 :::
 
 ### Why FastX Content by AO matters
 
-This premium extension greatly benefits the final conversion (Look-to-Book) of buyers:
+This premium extension greatly benefits the final conversion (Look-to-Book) of Buyers:
 
 - ** Zero content mapping effort:** Not only do you save on code mapping (thanks to FastX Solution), but now you also delegate the cleaning, normalization, and deduplication of images and texts.
 - ** Frictionless activation:** Installation is done in a simple 3-step loop directly from the Travelgate Store.
@@ -74,10 +74,10 @@ Once you're set up, getting your hands on enriched hotel and room data is super 
 
 #### 🔌 API Integration
 Pull data straight into your app using your usual FastX setup.
-Just make your standard hotel content calls—it works seamlessly with the same old Hotel-X Pull Content API structure!
+Just make your standard hotel content calls—it works seamlessly with the HotelX Pull Content API structure!
 
 #### 🌐 Web Portal
-Prefer a visual look? Just log into your Travelgate dashboard, head over to Connections Content, and set these quick filters:
+Prefer a visual look? Just log into your Travelgate Dashboard, head over to Connections Content, and set these quick filters:
 - Connection: `Travelgate`
 - Suppliers: `FastX`
 

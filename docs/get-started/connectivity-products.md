@@ -29,7 +29,7 @@ The API mirrors the functionalities of our Inventory Extranet, but with the adde
 
 #### Connectors Pull Sellers Framework
 
-* We have launched a new Pull Sellers API, in which Travelgate currently plays a proactive role in developing API integrations on behalf of the Seller. On this [website](https://app.travelgate.com/network/roadmap) you can find the roadmap and status of developments.
+* [Connectors Pull Sellers Framework](../apis/for-sellers/connectors-pull-developers-api/overview/overview.mdx): This framework supports real-time communication with the Seller's system, allowing dynamic product access for Buyers in the marketplace. It standardizes the integration between Sellers and Travelgate, helping developers build connectors that comply with Travelgate best practices, business rules, and operational standards.
 
 
 #### Inventory Push Sellers API

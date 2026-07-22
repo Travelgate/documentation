@@ -49,7 +49,9 @@ Language note: The Bronze plan will display the content in English by default.
 - ** 🎖️ Enterprise:**
     - An omnichannel Product Information Management (PIM) system for the travel sector. It expands the scope beyond hotels to include destinations, points of interest (POI), excursions, tours, and data on accessibility and sustainability.
   
-:::info 🚀Both initial tiers offer additional "bolt-ons" or add-ons for translations into more languages or market customization.:::
+:::info 🚀 Bolt-ons and add-ons
+Both initial tiers offer additional "bolt-ons" or add-ons for translations into more languages or market customization.
+:::
 
 ### Why FastX Content by AO matters
 

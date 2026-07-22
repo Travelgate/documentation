@@ -13,9 +13,11 @@ $ npm install
 
 ### Generate GraphQL API reference
 
-To run this command, you need to have a Travelgate api key called `TRAVELGATE_API_KEY`  in
-your environment variables. You can get the key from the team. The way you set the environment
-variable depends on your operating system.
+To run this command, you need a Travelgate **bearer token** set in an environment variable called
+`TRAVELGATE_BEARER`. This is the bearer of the person updating the documentation (you can obtain it
+from your Travelgate session). The way you set the environment variable depends on your operating
+system. For a local/manual run, if the bearer is missing, `npm run generate-schema` fails with an error message explaining how to set `TRAVELGATE_BEARER`.
+In CI the command falls back automatically to the `TRAVELGATE_API_KEY` secret (or the public introspection key), so no bearer is needed on the pipeline.
 
 #### Before you continue
 
@@ -34,10 +36,11 @@ Once the schema is generated, you can run the command to generate the API docs b
 npx docusaurus graphql-to-doc
 ```
 
-or with a temporary environment variable:
+or, to set the bearer token just for the schema generation step, use a temporary environment
+variable:
 
 ```
-TRAVELGATE_API_KEY=your_api_key npx docusaurus graphql-to-doc
+TRAVELGATE_BEARER=your_bearer_token npm run generate-schema
 ```
 
 The GraphQL API reference is generated from the Travelgate GraphQL schema but
@@ -65,12 +68,13 @@ To generate the GraphQL API reference using the Windows GUI, follow these steps:
 2. Click on **System**, then select **Advanced system settings**.
 3. In the **Advanced** tab, click on **Environment Variables**.
 4. Under **User variables**, click **New** and enter the following details:
-   - **Variable name**: `TRAVELGATE_API_KEY`
-   - **Variable value**: (Provided by the Travelgate team)
+   - **Variable name**: `TRAVELGATE_BEARER`
+   - **Variable value**: (Your personal Travelgate bearer token)
 5. Click **OK** to save the changes and close all dialog boxes.
-6. Open **Windows PowerShell**, navigate to your documentation project directory, and run the following command:
+6. Open **Windows PowerShell**, navigate to your documentation project directory, and run the following commands (the first one downloads the schema using your bearer, the second one generates the reference):
 
 ```
+npm run generate-schema
 npx docusaurus graphql-to-doc
 ```
 

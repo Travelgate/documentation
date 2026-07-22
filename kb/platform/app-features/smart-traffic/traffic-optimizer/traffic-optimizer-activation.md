@@ -83,6 +83,26 @@ To monitor performance:
 
 ![traffic_optimizer_6](https://storage.travelgate.com/kbase/traffic_optimizer_6.jpg)
 
+### Automated "No Availability" Optimization
+
+To maximize your operational efficiency from day one, **all requested activations automatically implement the "No Availability" optimization criteria**. 
+
+This proactive feature delivers immediate value by filtering out requests that consistently yield zero results, preventing unnecessary traffic from consuming your bandwidth and infrastructure resources.
+
+:::tip How to identify automated optimizations in your Dashboard
+You can easily track these automated system improvements directly within your **Traffic Optimizer Dashboard**:
+* **Identifier:** Look for the label **`Requester: Auto-Opt.`**
+* **Location:** This indicator is displayed under the **"Last Update (UTC)"** date column.
+* **Granularity:** These insights are visible at both the **Access** and **Connection** levels, giving you full visibility into where the system is protecting your performance.
+:::
+
+### Flexibility and Control
+
+While this automation runs by default to secure the highest possible system efficiency, you retain full control over your configuration:
+
+* **Deactivation:** You have the flexibility to manually deactivate this auto-opt optimization at either the **Access** or **Connection** level if your business strategy requires it.
+* **Our Recommendation:** We **highly recommend keeping this feature enabled**. Leaving it active is a best practice for maintaining optimal search speeds, preventing unnecessary server load, and maximizing overall platform performance.
+
 ## Can I Exclude Hotels from Being Blocked?
 
 Yes, you can exclude specific hotels from the Traffic Optimizer blacklist by simply opening a [case](/kb/platform/support-portal/case-guidelines) with our Customer Support team. Please note that exclusions are applied **at the connection level**. 

@@ -1,0 +1,33 @@
+---
+sidebar_position: 1
+title: Quickstart
+---
+
+# Quickstart
+
+## API Endpoint
+
+All Social API operations use a single GraphQL endpoint:
+
+```
+https://api.travelgate.com
+```
+
+## Overview
+
+Use the Social API to retrieve organization profile data with the `allProfilesV2` query. The current documented scope focuses on profile attributes for Buyers and Sellers, including owner code, categories, subcategories, and integration types.
+
+### Common Use Cases
+
+- **List Available Profiles**: Retrieve profile records visible to your authenticated scope.
+- **Filter by Owner Organization**: Use `where.ownerCode.equals` to retrieve profiles for one owner code.
+- **Inspect Commercial Classification**: Review `buyerCategory`, `sellerCategory`, `buyerSubCategory`, and `sellerSubCategory`.
+- **Review Integration Types**: Check `buyerIntegrationType` and `sellerIntegrationType` values.
+
+## Authentication
+
+All Social API calls require JWT (JSON Web Token) authentication. Follow the [Admin API Authentication Guide](/docs/apis/for-buyers-and-sellers/admin-api/authentication) to obtain your bearer token and include it in all API requests.
+
+## Next Steps
+
+- Start with [Get Profiles](get-profiles.mdx) for query structure, examples, and response interpretation.

@@ -3,9 +3,10 @@
 const FILE_NODE_MAP = {
     //API GRAPHQL SELLERS
 // **Hoteles**
-"for-sellers/inventory-sellers/inventory-push-graphql-api/masters/hotels-master/create-hotel-master.mdx": ["InventoryHotelMasterCreateInput", "HotelsRs"],
-"for-sellers/inventory-sellers/inventory-push-graphql-api/masters/hotels-master/search-hotels-master.mdx": ["InventoryHotelsMasterSearchFilterInput", "HotelsRs"],
-"for-sellers/inventory-sellers/inventory-push-graphql-api/masters/hotels-master/hotels-master.mdx": ["InventoryHotelMasterFilterInput", "HotelsRs"],
+"for-sellers/inventory-push-graphql-api/masters/hotels-master/create-hotel-master.mdx": ["InventoryHotelMasterCreateInput", "HotelsRs"],
+"for-sellers/inventory-push-graphql-api/masters/hotels-master/update-hotel-master.mdx": ["InventoryHotelMasterUpdateInput", "HotelsRs"],
+"for-sellers/inventory-push-graphql-api/masters/hotels-master/search-hotels-master.mdx": ["InventoryHotelsMasterSearchFilterInput", "HotelsRs"],
+"for-sellers/inventory-push-graphql-api/masters/hotels-master/hotels-master.mdx": ["InventoryHotelMasterFilterInput", "HotelsRs"],
 // **Habitaciones**
 "for-sellers/inventory-sellers/inventory-push-graphql-api/masters/rooms-master/create-rooms-master.mdx": ["InventoryRoomMasterCreateInput", "RoomsRs"],
 "for-sellers/inventory-sellers/inventory-push-graphql-api/masters/rooms-master/rooms-master.mdx": ["InventoryRoomsMasterFilterInput", "RoomsRs"],
@@ -39,6 +40,11 @@ const FILE_NODE_MAP = {
 "for-sellers/inventory-sellers/inventory-push-graphql-api/set-up/rates-set-up/delete-rates-set-up.mdx": ["InventoryRateSetupDeleteInput", "RatesRs"],
 "for-sellers/inventory-sellers/inventory-push-graphql-api/set-up/rates-set-up/rates-set-up.mdx": ["InventoryRatesSetupFilterInput", "RatesRs"],
 "for-sellers/inventory-sellers/inventory-push-graphql-api/set-up/rates-set-up/update-rates-set-up.mdx": ["InventoryRatesSetupUpdateInput", "RatesSetUpRs"],
+// **Configuración - Tarifas Derivadas**
+"for-sellers/inventory-push-graphql-api/set-up/derived-rates-set-up/derived-rates-set-up.mdx": ["InventoryDerivedRatesSetupFilterInput", "DerivedRatesRs"],
+"for-sellers/inventory-push-graphql-api/set-up/derived-rates-set-up/create-derived-rates-set-up.mdx": ["InventoryDerivedRateSetupCreateInput", "DerivedRatesSetupRs"],
+"for-sellers/inventory-push-graphql-api/set-up/derived-rates-set-up/update-derived-rates-set-up.mdx": ["InventoryDerivedRateSetupUpdateInput", "DerivedRatesSetupRs"],
+"for-sellers/inventory-push-graphql-api/set-up/derived-rates-set-up/delete-derived-rates-set-up.mdx": ["InventoryDerivedRateSetupDeleteInput", "DerivedRatesSetupRs"],
 // **Configuración - Habitaciones**
 "for-sellers/inventory-sellers/inventory-push-graphql-api/set-up/rooms-set-up/create-rooms-set-up.mdx": ["InventoryRoomsSetupCreateInput", "RoomsSetUpRs"],
 "for-sellers/inventory-sellers/inventory-push-graphql-api/set-up/rooms-set-up/delete-rooms-set-up.mdx": ["InventoryRoomSetupDeleteInput", "RoomsSetUpRs"],
@@ -58,6 +64,7 @@ const FILE_NODE_MAP = {
   //API GRAPHQL BUYERS
 // **Hoteles**
 "for-buyers/inventory-buyers/inventory-set-up-graphql-api/masters/hotels-master/create-hotel-master.mdx": ["InventoryHotelMasterCreateInput", "HotelsRs"],
+"for-buyers/inventory-buyers/inventory-set-up-graphql-api/masters/hotels-master/update-hotel-master.mdx": ["InventoryHotelMasterUpdateInput", "HotelsRs"],
 "for-buyers/inventory-buyers/inventory-set-up-graphql-api/masters/hotels-master/hotels-master.mdx": ["InventoryHotelsMasterSearchFilterInput", "HotelsRs"],
 "for-buyers/inventory-buyers/inventory-set-up-graphql-api/masters/hotels-master/search-hotels-master.mdx": ["InventoryHotelMasterFilterInput", "HotelsRs"],
 // **Habitaciones**
@@ -78,6 +85,11 @@ const FILE_NODE_MAP = {
 "for-buyers/inventory-buyers/inventory-set-up-graphql-api/set-up/rates-set-up/delete-rates-set-up.mdx": ["InventoryRateSetupDeleteInput", "RatesRs"],
 "for-buyers/inventory-buyers/inventory-set-up-graphql-api/set-up/rates-set-up/rates-set-up.mdx": ["InventoryRatesSetupFilterInput", "RatesRs"],
 "for-buyers/inventory-buyers/inventory-set-up-graphql-api/set-up/rates-set-up/update-rates-set-up.mdx": ["InventoryRateSetupUpdateInput", "RatesSetUpRs"],
+// **Configuración - Tarifas Derivadas**
+"for-buyers/inventory-buyers/inventory-set-up-graphql-api/set-up/derived-rates-set-up/derived-rates-set-up.mdx": ["InventoryDerivedRatesSetupFilterInput", "DerivedRatesRs"],
+"for-buyers/inventory-buyers/inventory-set-up-graphql-api/set-up/derived-rates-set-up/create-derived-rates-set-up.mdx": ["InventoryDerivedRateSetupCreateInput", "DerivedRatesSetupRs"],
+"for-buyers/inventory-buyers/inventory-set-up-graphql-api/set-up/derived-rates-set-up/update-derived-rates-set-up.mdx": ["InventoryDerivedRateSetupUpdateInput", "DerivedRatesSetupRs"],
+"for-buyers/inventory-buyers/inventory-set-up-graphql-api/set-up/derived-rates-set-up/delete-derived-rates-set-up.mdx": ["InventoryDerivedRateSetupDeleteInput", "DerivedRatesSetupRs"],
 // **Configuración - Habitaciones**
 "for-buyers/inventory-buyers/inventory-set-up-graphql-api/set-up/rooms-set-up/create-rooms-set-up.mdx": ["InventoryRoomsSetupCreateInput", "RoomsSetUpRs"],
 "for-buyers/inventory-buyers/inventory-set-up-graphql-api/set-up/rooms-set-up/delete-rooms-set-up.mdx": ["InventoryRoomSetupDeleteInput", "RoomsSetUpRs"],

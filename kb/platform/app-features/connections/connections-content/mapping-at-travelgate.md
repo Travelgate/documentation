@@ -16,12 +16,14 @@ This means Buyers can choose to:
 * Work exclusively with **FastX codes**, gaining instant access to all connected Sellers without mapping each one individually.
 * Or continue using **Supplier codes**, if preferred, maintaining their own mapping logic.
 
-To map FastX codes, Buyers can either handle it internally or use third-party mapping services such as **GIATA**.
+Buyers that need to use their own internal identifiers can maintain a mapping to FastX internally, use a third-party mapping service such as **GIATA**, or use the HotelX Mapping plugin where applicable.
 
 :::tip Why FastX?
-FastX eliminates the need for repetitive mapping, reduces connection time, and ensures consistency across all Suppliers — enabling **faster integrations and more reliable data** across the Travelgate Marketplace.  
+FastX reduces repetitive mapping work and is designed to improve consistency and traceability across Supplier connections.
 
-Want to learn more about FastX Codes? You’ll find everything you need in the [FastX documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/fastx-content)🚀.
+FastX does not remove the need to select an appropriate validation mode, maintain Buyer-owned mappings when used, or review Supplier-native values when exact product equivalence matters.
+
+Learn more in the [FastX documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/fastx-content).
 :::
 
 ### Can all Buyers use FastX Codes?

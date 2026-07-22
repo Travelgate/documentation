@@ -1,0 +1,107 @@
+---
+sidebar_position: 1
+---
+
+
+import InventoryDerivedRatesSetupFilterInput from "../../../../../../src/graphql/generated-docs/InventoryDerivedRatesSetupFilterInput.mdx";
+import DerivedRatesRs from "../../../../../../src/graphql/generated-docs/DerivedRatesRs.mdx";
+
+import {derivedRatesSetUpQuery, derivedRatesSetUpVariables, derivedRatesSetUpByBaseCodesVariables} from "/src/graphql/inventory/set-up/derived-rates-set-up.query";
+
+
+# Derived Rates
+
+## Query Overview
+
+A **derived rate** is a rate whose configuration is inherited from another rate (its *base rate*). Instead of defining every value from scratch, a derived rate reuses the base rate configuration and only overrides the specific fields you need. Each inheritable field is returned wrapped in an object that exposes both its resolved `value` and an `isInherit` flag indicating whether the value comes from the base rate.
+
+The `derivedRatesSetup` query returns the derived rates added to a hotel for a specific client-seller relation in Inventory. The returned fields include:
+
+* `code`
+* `name`
+* `active`
+* `baseCode`
+* `mealPlanIncluded`
+	* `value`
+	* `isInherit`
+* `inheritedAgePolicies`
+	* `maxAgeChildren`
+	* `maxAgeInfants`
+	* `freeInfants`
+	* `freeChildren`
+* `paymentPolicies`
+	* `inheritedCurrency`
+	* `inheritedCommission`
+	* `inheritedPriceIsBinding`
+	* `acceptedPayments`
+* `bookingRules`
+	* `bookingWindow`
+	* `markets`
+	* `rateRule`
+	* `seniorRule`
+* `cancelPolicies`
+	* `value`
+	* `isInherit`
+* `inheritedSurcharges`
+* `inheritAllRoomsBaseRate`
+* `rooms`
+* `informBaseRate`
+* `inheritMealPlanSupplements`
+
+### 1. Criteria
+
+When building your query, you need to provide the following input fields:
+
+#### Mandatory Input
+* `clientCode`
+* `supplierCode`
+* `hotelCode`
+
+#### Optional Input
+* `contextCode`
+* `baseRateCodes`
+
+### 2. Settings
+
+Ensure that all required fields are properly set and match existing hotel derived rate configurations.
+
+### Response Considerations
+
+The query returns a collection of derived rates along with success status and possible advise messages.
+
+#### `DerivedRatesRs` (*OBJECT*)
+* `rates` (*DerivedRateSetup*) - A collection of retrieved derived rates.
+  * `code` (*String*) - The derived rate code.
+  * `name` (*String*) - The name of the derived rate.
+  * `active` (*Boolean*) - Indicates if the derived rate is active.
+  * `baseCode` (*String*) - The base rate code the derived rate inherits from.
+  * `mealPlanIncluded` (*Object*) - Meal plan included, with its resolved value and inheritance flag.
+  * `inheritedAgePolicies` (*Object*) - Age policies inherited from the base rate.
+  * `paymentPolicies` (*Object*) - Payment policies with inheritance metadata.
+  * `bookingRules` (*Object*) - Booking window, markets and special rate rules with inheritance metadata.
+  * `cancelPolicies` (*Object*) - Cancel policies with inheritance metadata.
+  * `inheritedSurcharges` (*Object*) - Surcharges inherited from the base rate.
+  * `inheritAllRoomsBaseRate` (*Boolean*) - Indicates whether all rooms are inherited from the base rate.
+  * `rooms` (*Object*) - Rooms associated with the derived rate when they are not inherited.
+  * `informBaseRate` (*Boolean*) - Indicates if the base rate code is sent to the supplier instead of the derived rate code.
+  * `inheritMealPlanSupplements` (*Boolean*) - Indicates whether meal plan supplements are inherited from the base rate.
+* `success` (*Boolean*) - Indicates if the operation was successful.
+* `adviseMessages` (*AdviseMessage*) - Messages related to the operation.
+
+## Query Inputs
+
+<InventoryDerivedRatesSetupFilterInput />
+## Returned Fields
+
+<DerivedRatesRs />
+
+
+## Examples
+
+#### Retrieve all derived rates from a hotel
+
+<GraphqlSample query={derivedRatesSetUpQuery} variables={derivedRatesSetUpVariables} />
+
+#### Retrieve derived rates by base rate code
+
+<GraphqlSample query={derivedRatesSetUpQuery} variables={derivedRatesSetUpByBaseCodesVariables} />

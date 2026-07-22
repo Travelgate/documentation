@@ -34,21 +34,18 @@ https://api.travelgate.com
 
 This document details the steps to extract and query metrics using the **Travelgate Stats API**. 
 
-:::info Public Monitoring API Scope
-Stats is the currently published Monitoring API.
-:::
+## When to Use Stats, Stats API, Logging, or Logging API
 
-## When to Use Stats, Stats API, or Logging
-
-Use these tools together depending on whether you need dashboard monitoring, programmatic access, or transaction-level troubleshooting.
+Use these tools together depending on whether you need dashboard monitoring, programmatic aggregated metrics, UI-based log browsing, or programmatic transaction-level access.
 
 | Need | Recommended Tool | Why |
 |---|---|---|
 | Review connection health, booking-flow performance, and NOK ratios in the platform UI | [Stats](/kb/platform/app-features/monitoring-tools/stats/stats-details) | Provides the built-in monitoring dashboard for operational analysis |
 | Build custom dashboards, automate reporting, or query aggregated metrics programmatically | Stats API | Returns aggregated metrics optimized for integrations and reporting workflows |
-| Investigate a specific transaction or inspect request/response logs | [Logging](/kb/platform/app-features/monitoring-tools/logging/logging-details) | Provides transaction-level traceability for troubleshooting |
+| Review and troubleshoot transactions in the platform UI | [Logging](/kb/platform/app-features/monitoring-tools/logging/logging-details) | Provides the built-in transaction-level log viewer for operational troubleshooting |
+| Search, extract traces, and download request/response logs programmatically | [Logging API](/docs/apis/for-buyers-and-sellers/monitoring-api/logging-api/logging) | Returns transaction-level log data for automated audit and support workflows |
 
-For transaction-level investigations, see [How to Use Logging](/kb/platform/app-features/monitoring-tools/logging/logging-details) and [How to Audit Supplier Transactions](/kb/platform/app-features/monitoring-tools/logging/audit-supplier-transactions).
+For a practical guide to the Stats web UI workflow, see [How to Use Stats](/kb/platform/app-features/monitoring-tools/stats/stats-details) and [Traffic Types](/kb/platform/app-features/monitoring-tools/stats/traffic-types).
 
 ## Authentication
 
@@ -157,7 +154,7 @@ The `where` input allows you to precisely filter the statistics based on time ra
 
 **Mandatory criteria:**
 * `mode` (Search perspective, either `BUYER` or `SELLER`).
-* `timeRange` (Absolute date range using the format `"YYYY-MM-DD HH:mm:ss"`).
+* `timeRange` (Absolute date range. In Monitoring APIs, only `timeRange.absolute` is supported. It accepts both ISO 8601 and `"2006-01-02 15:04:05"` formats).
 
 **Optional filters:**
 * `excludeTestSupplier` (Boolean): Set to `true` to exclude test supplier traffic from results. Useful for filtering out noise and focusing on production metrics. Default is `false`.
@@ -574,6 +571,10 @@ query getRealTimeStats($where: StatsRealTimeRangeWhereInput!) {
 - **realTimeRangeData.from** (`DateTime`): The start of the requested time range
 - **realTimeRangeData.to** (`DateTime`): The end of the requested time range
 - **adviseMessage** (`[AdviseMessage]`): Optional warnings or information about the query results (see [Response Fields](#response-fields) section)
+
+:::info
+For Monitoring APIs, use `timeRange.absolute` in real-time queries as well. The `from` and `to` request values accept both ISO 8601 and `"2006-01-02 15:04:05"` formats.
+:::
 
 :::note
 `getRealTimeRangeStats` validates the time range and data availability. To retrieve actual metrics (hits, time, errors) grouped by time buckets, use `getAggregationStats` with `groupBy.time` set to `MINUTE`, `HOUR`, `DAY`, or `MONTH` and include fields like `hits`, `time`, `totalTime`, and `errorType` in your query.

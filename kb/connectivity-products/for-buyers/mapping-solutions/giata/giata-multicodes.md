@@ -13,7 +13,7 @@ GIATA Multicodes is a hotel mapping solution offered by GIATA, previously known 
 The **HotelX API** fully supports GIATA Multicodes in the **HotelX Hotels Query** response (available only at the hotel level).
 
 :::info FastX Codes in GIATA
-Working with [FastX Codes](/kb/platform/app-features/connections/fastx-codes)? Good news! GIATA mapping is now easier than ever. With Travelgate listed in GIATA’s system as **"travelgate"**, GIATA data is directly available for FastX Codes too.
+Working with [FastX Codes](/kb/platform/app-features/connections/fast-x-codes/fastx-codes)? Good news! GIATA mapping is now easier than ever. With Travelgate listed in GIATA’s system as **"travelgate"**, GIATA data is directly available for FastX Codes too.
 :::
 
 ### How to Activate GIATA Multicodes

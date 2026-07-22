@@ -54,18 +54,19 @@ FastX is not just a technical upgrade—it's a marketplace-wide shift that benef
 - **Full transparency:** responses include both FastX standardized values and Supplier-native values.
 - **GIATA compatibility:** FastX codes align with GIATA's standardized identifiers (available as `travelgate`; see [GIATA Multicodes](/kb/connectivity-products/for-buyers/mapping-solutions/giata/giata-multicodes)).
 - **Scalable growth:** expand your Supplier portfolio without proportionally multiplying technical complexity.
+- **Verified Seller badge:** Suppliers who have validated 80% or more of their hotel and board mappings receive a **FastX Verified Seller badge**, visible in the [Travelgate Network](https://app.travelgate.com/network/partners). It is a validation-coverage indicator — not a quality certification for every individual mapping.
 
 **For Sellers:**
 - **Reduced mapping effort:** validate hotel and board mappings once, then serve all FastX Buyers with standardized codes.
 - **Faster onboarding with Buyers:** standardized codes eliminate mapping back-and-forth cycles, accelerating go-live timelines.
-- **Higher portfolio quality:** validation workflows ensure hotel and board data is consistent across the Marketplace.
+- **Improved portfolio consistency:** validation workflows help Sellers review hotel and board correspondences across the Marketplace.
 - **Single-language distribution:** one shared code system reduces operational friction across all Buyer integrations.
 
 ## How FastX Codes Work
 
 To support standardization across the Marketplace, Travelgate generates unique FastX codes for three asset types: **hotels**, **boards**, and **rooms**.
 
-- **Hotels & boards:** Travelgate creates persistent, standardized codes. The [FastX Codes tool](/kb/platform/app-features/connections/fastx-codes) lets Sellers validate mappings and Buyers track which Suppliers are matched to each code.
+- **Hotels & boards:** Travelgate creates persistent, standardized codes. The [FastX Codes tool](/kb/platform/app-features/connections/fast-x-codes/fastx-codes) lets Sellers validate mappings and Buyers track which Suppliers are matched to each code.
 - **Rooms:** Travelgate generates codes at search time (see [Room Mapping](#room-mapping) below).
 
 
@@ -73,12 +74,19 @@ To support standardization across the Marketplace, Travelgate generates unique F
 
 Hotels and boards are mapped once and Travelgate provides standardized codes via:
 - The [HotelX API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/fastx-content)
-- The [FastX Codes tool](/kb/platform/app-features/connections/fastx-codes) (visual interface for validation)
+- The [FastX Codes tool](/kb/platform/app-features/connections/fast-x-codes/fastx-codes) (visual interface for validation)
 
 **Validation workflow:**
 1. Sellers validate mappings using reference data: hotel name, country, address, and coordinates.
-2. Mapping status appears in [FastX Codes](/kb/platform/app-features/connections/fastx-codes) as `validated`, `pending`, or `invalidated`.
+2. Mapping status appears in [FastX Codes](/kb/platform/app-features/connections/fast-x-codes/fastx-codes) as `validated`, `pending`, or `invalidated`.
 3. This visibility ensures quality and consistency across the production environment.
+
+**What each status means for your booking flow:**
+- **Validated** — Seller confirmed the mapping
+- **Pending** — Awaiting Seller review; available by default, blocked only if you enable Validated-only mode
+- **Invalidated** — Seller rejected the mapping; never allowed
+
+By default, your booking flow accepts both `validated` and `pending` codes. If your business requires only Seller-confirmed mappings, you can switch to Validated-only mode in your [API Settings](/kb/platform/app-features/connections/api-settings).
 
 ![tg-fastx-buyers-5](https://stplaformwe.blob.core.windows.net/kbase/tg-fastx-buyers-5.png)
 
@@ -112,9 +120,7 @@ Travelgate then creates a standardized FastX room code and description, and your
 | `SUP5` | `Habitacion doble con vistas al mar 2A` | `str--AA--d--` | `Standard Double Room views Sea` |
 | `SUP6` | `Main Building Double Seaview Room` | `str--AA--d--` | `Standard Double Room views Sea` |
 
-:::warning Remember
-Room codes are generated at search time and are **not Seller-validated**. Hotel and board mappings follow formal validation workflows for quality control.
-:::
+
 
 ## Aggregating Results with Preference Plugin
 
@@ -127,6 +133,10 @@ Now that your responses are standardized across Suppliers, FastX enables powerfu
 3. **Two modes available:**
    - **Default (cost-optimized):** lowest-priced option wins automatically
    - **Custom (business-driven):** your rules determine the winner
+
+:::caution Aggregation does not verify complete product identity
+An aggregation key groups options according to the selected FastX values. Before treating grouped options as interchangeable, review any Supplier-native attributes that are material to the commercial or customer-facing use case.
+:::
 
 <details>
 <summary><strong>📋 Aggregation example: "Hotel Santo Domingo" search</strong></summary>

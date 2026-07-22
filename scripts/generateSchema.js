@@ -7,4 +7,7 @@ async function generateSchemaFile() {
     console.log('Schema file generated successfully');
 }
 
-generateSchemaFile().catch(console.error);
+generateSchemaFile().catch((error) => {
+    console.error(error);
+    process.exitCode = 1;
+});

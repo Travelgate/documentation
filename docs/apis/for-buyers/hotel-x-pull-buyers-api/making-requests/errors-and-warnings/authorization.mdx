@@ -1,0 +1,239 @@
+---
+sidebar_position: 3
+---
+
+# Authorization Error
+
+## Overview
+
+When you submit a POST request to the GraphQL gateway, the system must verify your credentials. If verification fails, you'll receive an **"Authorization not allowed"** error response.
+
+This guide explains:
+- When and why this error occurs
+- What causes each failure scenario
+- How to troubleshoot and fix the issue
+
+**Scope:** This page explains the `Authorization not allowed` validation error in the GraphQL gateway. Authentication is required for HotelX API requests. For canonical header requirements, see [Request Headers](/docs/apis/for-buyers/hotel-x-pull-buyers-api/making-requests/request-headers) and [Admin API Authentication](/docs/apis/for-buyers-and-sellers/admin-api/authentication).
+
+## HTTP Response
+
+```http
+Status Code: 401 (Unauthorized)
+Header: Content-Type: application/json
+Body: {
+  "error": "Authorization not allowed"
+}
+```
+
+
+## Circumstances Triggering "Authorization not allowed"
+
+### 1. Missing Authorization Header
+
+**What happens:** No `Authorization` header is included in the request.
+
+**Example:**
+```http
+POST / HTTP/1.1
+Host: gateway.example.com
+Content-Type: application/json
+
+{"query": "..."}
+```
+
+**Why it fails:**
+- The gateway requires authentication for all POST requests
+- Without the header, the server has no credentials to verify
+
+**How to fix:**
+- Add the Authorization header with either a Bearer token or Apikey
+- Example: `Authorization: Bearer eyJhbGc...`
+
+**Common causes:**
+- Forgot to include credentials in the API call
+- First-time integration without authentication setup
+
+### 2. Malformed Authorization Header
+
+**What happens:** Authorization header is missing the required format or space separator.
+
+**Examples:**
+```http
+Authorization: BearerInvalidFormat        # No space
+Authorization: Bearer                     # No token
+Authorization: eyJhbGc...                 # No type
+```
+
+**Why it fails:**
+- The gateway expects: `<type> <token>` (with a space), where supported `<type>` values are `Bearer` and `Apikey`
+- Malformed headers cannot be parsed
+
+**How to fix:**
+- Ensure proper format: `Bearer <token>` or `Apikey <uuid>`
+- Add space between type and token
+- Include both components
+
+**Common causes:**
+- Copy-paste error when adding credentials
+- Accidental concatenation of type and token
+
+### 3. Invalid Bearer Token
+
+**What happens:** Authorization header uses Bearer authentication but the JWT token is invalid.
+
+**Examples:**
+```http
+Authorization: Bearer invalid.jwt.format     # Wrong format
+Authorization: Bearer eyJhbGc...XZW         # Malformed or expired
+```
+
+**Why it fails:**
+- Bearer tokens must be valid JWT tokens (JSON Web Tokens)
+- The token may be expired, corrupted, or tampered with
+
+**How to fix:**
+- Request a new authentication token from your auth service
+- Verify the token hasn't expired
+- Check that you're copying the full token value
+
+**Common causes:**
+- Token expired after a period of inactivity
+- Token accidentally modified or truncated
+- Using an old/revoked token
+
+### 4. Invalid or Expired API Key
+
+**What happens:** Authorization header uses Apikey authentication but the key is not recognized or has been revoked.
+
+**Example:**
+```http
+Authorization: Apikey 550xxx00-e29b-xxxx-xxxx-xxxxxxxxxxxx
+```
+
+**Why it fails:**
+- The API key doesn't exist in the system
+- The API key has been revoked or deleted
+- The API key isn't provisioned for your organization
+
+**How to fix:**
+- Verify the API key is correct in your admin console
+- Check if the key is still active (not expired/revoked)
+- Generate a new API key if the current one is no longer valid
+- Ensure the key is provisioned for your organization
+
+**Common causes:**
+- Using a deleted API key
+- API key revoked due to security policy
+- Copy-paste error in the key value
+
+### 5. Unsupported Authorization Type
+
+**What happens:** Authorization header specifies an authentication type that isn't supported.
+
+**Examples:**
+```http
+Authorization: Basic dXNlcjpwYXNz          # Basic Auth (not supported)
+Authorization: Digest username="user"      # Digest Auth (not supported)
+Authorization: CustomAuth token123         # Custom type (not supported)
+Authorization: Baerer token123             # Typo (should be Bearer)
+```
+
+**Why it fails:**
+- The gateway only supports two authentication types: **Bearer** and **Apikey**
+- Other authentication schemes are not accepted
+
+**How to fix:**
+- Use either `Bearer` (for JWT tokens) or `Apikey` (for API keys)
+- Check spelling in the auth type and ensure a valid token format
+- Contact support if you need a different authentication method
+
+**Common causes:**
+- Attempting legacy authentication (Basic Auth)
+- Typo in authorization type
+- Trying unsupported authentication scheme
+
+## Troubleshooting Flowchart
+
+```
+Making a POST request?
+│
+├─ No authorization header?
+│  └─ Add the Authorization header (see examples below)
+│
+├─ Format incorrect? (missing space)
+│  └─ Fix format: "Bearer <token>" or "Apikey <key>"
+│
+├─ Using Bearer authentication?
+│  └─ Is token a valid JWT?
+│     ├─ No → Request a new token
+│     └─ Yes → Request should work ✓
+│
+└─ Using Apikey authentication?
+   └─ Is the API key valid and active?
+      ├─ No → Check API key in admin console or generate new one
+      └─ Yes → Request should work ✓
+```
+
+If you prefer a checklist instead of a diagram:
+
+1. Confirm the `Authorization` header exists.
+2. Confirm format: `Bearer <token>` or `Apikey <key>`.
+3. If using Bearer, validate token integrity and expiry.
+4. If using Apikey, validate key status and provisioning.
+5. If using another auth type, switch to Bearer or Apikey.
+
+## Troubleshooting Guide
+
+### For Users Getting "Authorization not allowed"
+
+| Error Scenario | Check | Solution |
+|---|---|---|
+| Missing header | Request includes `Authorization` header | Add: `Authorization: Bearer <token>` |
+| Malformed header | Header format is `<type> <token>` (with space) | Fix spacing: `Bearer token123` not `Bearertoken123` |
+| Invalid Bearer | JWT token is valid | Regenerate token or check expiry |
+| Invalid API key | API key exists and is active | Verify key in admin console; regenerate if needed |
+| Wrong Type | Using supported auth type (Bearer or Apikey) | Use `Bearer` for JWT or `Apikey` for UUID |
+
+### Executable Request Examples
+
+**Malformed header example (expected 401):**
+
+```bash
+curl 'https://api.travelgate.com' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: BearerInvalidFormat' \
+  --data-raw '{"query":"query { hotelX { metadata { client } } }"}'
+```
+
+Expected response:
+
+```json
+{
+  "error": "Authorization not allowed"
+}
+```
+
+**Corrected header example (format):**
+
+```bash
+curl 'https://api.travelgate.com' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer YOUR_JWT_TOKEN' \
+  --data-raw '{"query":"query { hotelX { metadata { client } } }"}'
+```
+
+
+## Summary
+
+The **"Authorization not allowed"** error (HTTP 401) is returned when a request fails authentication checks.
+
+For a quick diagnosis path, use the troubleshooting flowchart and the troubleshooting guide table above.
+
+**Related:** For complete authentication setup and canonical header requirements, see [Request Headers](/docs/apis/for-buyers/hotel-x-pull-buyers-api/making-requests/request-headers) and [Admin API Authentication](/docs/apis/for-buyers-and-sellers/admin-api/authentication).
+
+## Quick Reference: Supported Authentication Methods
+
+| Method | Format | Example | Best For |
+|--------|--------|---------|----------|
+| Bearer | `Authorization: Bearer <jwt_token>` | `Authorization: Bearer eyJhbGc...` | Service-to-service authentication |
+| API Key | `Authorization: Apikey <uuid>` | `Authorization: Apikey 55xxxx00-x29...` | Application-level API access |

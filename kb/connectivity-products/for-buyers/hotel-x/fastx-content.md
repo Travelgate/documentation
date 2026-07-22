@@ -33,10 +33,10 @@ In simple terms:
 ### Subscription Plans (Tiers)
 FastX Content by AO adapts to the complexity and volume of your business through four plans:
 
-- ** 🥉 Bronze:**
+- **🥉 Bronze:**
     - It builds on FastX codes to offer widely improved, normalized, and aggregated hotel content using AI technology.
     - It includes standardized hotel names, chains, categories, and geolocation.
-Language note: The Bronze plan will display the content in English by default.
+    - Language note: The Bronze plan will display the content in English by default.
 
 - **🥈 Silver:** Bronze + Rooms
     - It includes everything from the Bronze plan and adds content at the Rooms level.

@@ -19,7 +19,7 @@ To help you find the right solution, apps are organized into specialized categor
 * **Currency Conversion:** Apps that allow you to manage multiple currencies and exchange rates in real-time.
 * **Requote:** Solutions to verify if cheaper options with the same characteristics are available among all your connected suppliers before finalizing a booking.
 * **Traffic Optimization:** Tools to refine your search traffic, such as the Hotel Blacklist app, ensuring you only process valuable requests.
-* **Content:** Apps that enrich hotel static content — including descriptions, images, and room details — by layering premium, AI-powered data on top of unified supplier codes. Currently available for FastX Buyers through [FastX Content by AO](/kb/connectivity-products/for-buyers/hotel-x/fastx-content).
+* **Content:** Apps that enrich hotel static content — including descriptions, images, and room details — by layering premium, AI-powered data on top of unified supplier codes. Currently available for FastX Buyers through [FastX Content by AO](/kb/connectivity-products/for-buyers/hotel-x/fastx/fastx-content).
 
 
 ### Detailed App Insights

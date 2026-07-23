@@ -16,7 +16,7 @@ Our partnership with GIATA has introduced **three innovative solutions** to our 
 
 Previously offered as GIATA Universal Hotel Codes, this solution provides seamless access to your GIATA hotel codes through Travelgate at no additional cost—just provide your credentials. However, to use this solution, you must have a commercial agreement with GIATA.
 
-Find more information about GIATA Multicodes [here](/kb/connectivity-products/for-buyers/mapping-solutions/giata/giata-multicodes).
+Find more information about GIATA Multicodes [here](/kb/connectivity-products/for-buyers/mapping-solutions/giata-multicodes).
 
 ### GIATA Hotel Directory (GIATA Drive)
 
@@ -26,7 +26,7 @@ This service is available to all wholesalers and travel companies, offering veri
 
 ![giataproducts_hoteldirectory](https://storage.travelgate.com/kbase/giata_products_giata_hotel_directory.jpg)
 
-Find more details about GIATA Hotel Directory [here](/kb/connectivity-products/for-buyers/mapping-solutions/giata/giata-hotel-directory).
+Find more details about GIATA Hotel Directory [here](/kb/connectivity-products/for-buyers/mapping-solutions/giata-hotel-directory).
 
 ### GIATA Multilingual Hotel Guide (MHG)
 

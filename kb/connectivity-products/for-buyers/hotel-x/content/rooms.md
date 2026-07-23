@@ -59,7 +59,7 @@ Review the Supplier-native values whenever exact room equivalence, bedding, view
 ## Additional Considerations
 
 ### Can I Receive GIATA Codes in the Rooms Query Response?
-Unfortunately, GIATA codes are not included in the Rooms Query response. For specific details on GIATA codes in the **Hotels Query response**, please check our article on [GIATA Multicodes](/kb/connectivity-products/for-buyers/mapping-solutions/giata/giata-multicodes).
+Unfortunately, GIATA codes are not included in the Rooms Query response. For specific details on GIATA codes in the **Hotels Query response**, please check our article on [GIATA Multicodes](/kb/connectivity-products/for-buyers/mapping-solutions/giata-multicodes).
 
 ### Does the Presence of a Room in the Rooms Query Guarantee Its Availability During a Search?
 No, the Rooms Query response provides a list of all the rooms a Seller has configured for your account. However, availability may vary based on your requested dates and distribution criteria. Some rooms may not be available for specific searches.

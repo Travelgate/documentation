@@ -11,7 +11,7 @@ import {hotelsQuery, hotelsVariables, hotelsFastXVariables, hotelsByCountryVaria
 # Hotels
 
 The Hotels Query allows you to retrieve hotel information in two ways:  
-- The **FastX Hotel Master**, a unified list of all unique hotels available to you in the Travelgate Marketplace. These FastX codes are the ones used throughout the booking flow.  
+- The **FastX Hotel List**, a unified list of all unique hotels available to you in the Travelgate Marketplace. These FastX codes are the ones used throughout the booking flow.  
 - The **Supplier Hotel List**, which provides the hotel information returned for each connected Seller.
 
 This flexibility lets you work with both standardized FastX codes for a seamless integration and the original Supplier data when you need full visibility into each Partner’s portfolio.
@@ -28,7 +28,7 @@ The returned fields include:
 
 ## Query Overview
 
-When creating your hotels query, you have three different inputs to fill based on your specific needs:
+When creating your hotels query, you have two different inputs to fill based on your specific needs:
 
 1. Criteria
 2. Token
@@ -56,13 +56,12 @@ This query offers versatility, with certain fields marked as mandatory (`access`
 * `hotelCodes` (Search by hotel)
 * `countries` (Search by country)
 * `destinationCodes` (Search by destination)
-* `ranks`
 * `maxSize` (Paginate response)
 
 
 ### 2. Token
 
-The Hotel-X API provides paginated responses to handle cases where the number of hotels from the selected supplier exceeds 500. The default response page contains 500 hotels, but you can specify the number of objects returned per page using the `maxSize` field in the criteria variable explained before to retrieve between 1 and 500 hotels.
+The HotelX API provides paginated responses to handle cases where the number of hotels from the requested access exceeds 500. The default response page contains 500 hotels, but you can specify the number of objects returned per page using the `maxSize` field in the criteria variable explained before to retrieve between 1 and 500 hotels.
 
 To include the token in your request, all you need to do is:
 
@@ -88,49 +87,30 @@ First, in your hotels query you won't indicate any `token` input:
 
 You will obtain a response with 5 hotels per page:
 
-**Response**
-
+**Response (truncated):**
 ```js
 {
-	"data": {
-		"hotelX": {
-			"hotels": {
-				"token": "FGluY2x1ZGVfY29udGV4dF91dWlkDnF1ZXJ5VGhlbkZldGNoAhZMN2w2SlZYaVNaaXhYeXQwdm1GWjlBAAAAAAV14HUWeXZ3cU02MkpSbTY3WkF6QzJraWJWZxY2NDJ0Uk1EUFFkZXZZTS1ENDVTd2tBAAAAAAZuWSgWdFZSMzRYUVBUWC1nZ1ltWVRCTjVMZw==",
-				"edges": [
-					{
-						"..."
-					}
-				]
-			}
-		}
-	}
+  "data": {
+    "hotelX": {
+      "hotels": {
+        "token": "FGluY2x1ZGVfY29udGV4dF91dWlkDnF1ZXJ5VGhlbkZl...",
+        "edges": [ {...}, {...} ]
+      }
+    }
+  }
 }
 ```
 
-This token should be used as input in your next hotels query, inside the `token` input:
-
-
+**Example — Next Page (include token):**
 ```js
 {
-    "criteriaHotels" : {
-        "access" : "2",
-        "maxSize" : 5
-    },
-    "token" : "FGluY2x1ZGVfY29udGV4dF91dWlkDnF1ZXJ5VGhlbkZldGNoAhZMN2w2SlZYaVNaaXhYeXQwdm1GWjlBAAAAAAV14HUWeXZ3cU02MkpSbTY3WkF6QzJraWJWZxY2NDJ0Uk1EUFFkZXZZTS1ENDVTd2tBAAAAAAZuWSgWdFZSMzRYUVBUWC1nZ1ltWVRCTjVMZw=="
+  "criteriaHotels": {
+    "access": "2",
+    "maxSize": 5
+  },
+  "token": "FGluY2x1ZGVfY29udGV4dF91dWlkDnF1ZXJ5VGhlbkZl..."
 }
 ```
-
-
-### Response Considerations
-
-:::note
-
-The amount of information and content returned might vary between Sellers.
-
-Hotel-X supports all languages, but receiving hotel descriptions in one or another depends entirely on the languages supported by the Seller.
-
-:::
-
 
 ## Query Inputs
 
@@ -141,38 +121,64 @@ Hotel-X supports all languages, but receiving hotel descriptions in one or anoth
 <HotelConnection />
 
 
-## Examples
+## Use Cases
 
-#### Search for the FastX master hotel list for all your connected suppliers
+### FastX master hotel list
 
-You should use your FastX access in order to obtain the hotel list master:
+To retrieve the **FastX Hotel Master**, make a `hotel list` call using your **FastX access**, which you can find in the *MyConnections* section under the Seller **"Travelgate"**. This returns the complete list of unique hotels available to you across all connected Suppliers. As you add new Sellers, any new properties they provide — not already offered by your other connected Suppliers — are automatically included in your master list.
+
+:::info FastX Content
+When performing a Hotels Query **using the FastX access**, the following fields are currently returned:
+- Hotel code
+- Hotel name
+- Country
+- Address
+- Latitude / Longitude
+- GIATA ID (if this functionality has been [activated](/kb/connectivity-products/for-buyers/mapping-solutions/giata/giata-multicodes))
+
+**Coming soon:**
+To obtain complete enriched static hotel data for each FastX code, you can activate our FastX Content solution, which adds standardized content including descriptions, images, amenities, and more.
+:::
 
 <GraphqlSample query={hotelsQuery} variables={hotelsFastXVariables} />
 
+### Supplier hotel list
 
-#### Search for a specific country
+To retrieve only one Supplier's portfolio, include that Supplier's access in the query (for example, access `2` for the Travelgate Test supplier).
 
-When utilizing the Hotels List Query, for more personalized results, filter specific hotels, countries or destinations based on your interests. For example, to focus solely on the inventory of all your Sellers in Greece, add the `countries` field with "GR" in your criteria. This will ensure you receive hotels directly related to that country, providing you with highly targeted and relevant information.
+The response returns the Supplier's native static content, so the available data depends on what that Seller provides. In this case, `hotelCode` corresponds to the Supplier's native hotel code, and you can also find the matched FastX code in the `mappings` field.
 
-<GraphqlSample query={hotelsQuery} variables={hotelsByCountryVariables} />
+<GraphqlSample query={hotelsQuery} variables={hotelsVariables} />
+
+:::note
+
+The amount of information and content returned might vary between Sellers.
+
+HotelX supports all languages, but receiving hotel descriptions in one or another depends entirely on the languages supported by the Seller.
+
+:::
 
 
-#### Search for a specific hotel code
+### Hotel list of specific hotel codes
 
 If you want to retrieve the information of specific hotel codes, you will need to specify the codes in the `hotelCodes` field:
 
 <GraphqlSample query={hotelsQuery} variables={hotelsByHotelCodeVariables} />
 
 
-#### Search for the complete hotel list from a specific supplier
-
-To obtain only the portfolio of a specific access you should include in the query the access of that specific supplier, for example access '2' for Travelgate Test supplier.
-<GraphqlSample query={hotelsQuery} variables={hotelsVariables} />
 
 
-#### Search for a specific destination from a specific supplier
+### Hotel list by country
 
-For example, if you want to obtain only hotels from "Santorini", you can use the destination code for that zone. In the bellow case, test supplier have determined code "101402" as Santorini, so you need to specify this code in the `destinationCodes` field:
+When utilizing the Hotels List Query, for more personalized results, filter specific hotels, countries or destinations based on your interests. For example, to focus solely on the inventory of all your Sellers in Greece, add the `countries` field with "GR" in your criteria. This will ensure you receive hotels directly related to that country, providing you with highly targeted and relevant information.
+
+<GraphqlSample query={hotelsQuery} variables={hotelsByCountryVariables} />
+
+
+
+### Hotel list by destination
+
+Filter hotels by destination zone. For example, to retrieve only hotels in Santorini, use the destination code that the Supplier has assigned (e.g., `"101402"` for Santorini in the test Supplier). Include this code in the `destinationCodes` field:
 
 <GraphqlSample query={hotelsQuery} variables={hotelsByDestinationCodeVariables} />
 
@@ -181,74 +187,13 @@ For example, if you want to obtain only hotels from "Santorini", you can use the
 
 ## Frequently Asked Questions
 
-<details>
-    <summary>How can I obtain the GIATA code?</summary>
-    <div>
-        <div>
-			GIATA codes are supported in the Hotel-X Hotels Query response at the hotel level. To activate this feature:
-			1. [Open a ticket](https://app.travelgate.com/support) with Customer Care, providing your GIATA credentials and the Sellers for which you want GIATA codes.  
-			2. Once activated, include the `giataData` node in your Hotels Query to receive GIATA details in the response.
-		</div>
-		<b>Request</b>
-		
-```graphql
-query {
-    hotelX {
-		hotels(criteria: {access: "2"}) {
-			edges {
-				cursor
-				node {
-					code
-					hotelData {
-						hotelCode
-						hotelName
-						giataData {
-						updatedAt
-						source
-						href
-						}
-						...
-					}
-				}
-			}
-		}
-	}
-}
-```
-		<b>Response</b>
-    </div>
-```graphql
-{
-	"data": {
-		"hotelX": {
-			"hotels": {
-				"edges": [
-					{
-						"cursor": "",
-						"node": {
-							"code": "",
-							"hotelData": {
-								"hotelCode": "66337",
-								"hotelName": "Hotel Test",
-								"giataData": "11267",
-								...
-							}
-						}
-					}
-				]
-			}
-		}
-	}
-}
-```
-</details>
 
 
 
 <details>
-    <summary>Can I know the total amount of properties?</summary>
+    <summary>Can I get the total property count without fetching all hotels?</summary>
     <div>
-        <div>To obtain the total number of properties in the list, you can easily add the `count` field to your Hotels Query.</div>
+        <div>Yes. Add the `count` field to your Hotels Query to retrieve the total number of properties. You can request `count` alone without `edges` if you only need the total.</div>
 		<b>Request</b>
 ```graphql
 query {
@@ -278,4 +223,67 @@ query {
 }
 ```		
     </div>
+</details>
+
+
+<details>
+    <summary>How can I obtain GIATA codes?</summary>
+	<div>
+        <div>GIATA codes are supported at the hotel level and must be activated first. **Setup steps:** </div>
+		1. [Open a ticket](https://app.travelgate.com/support) with Customer Care with your GIATA credentials and the Suppliers you want to activate GIATA for.
+		2. Once enabled, include the `giataData` node in your Hotels Query to receive GIATA identifiers.
+		
+		<b>Request</b>
+		
+```graphql
+query {
+    hotelX {
+		hotels(criteria: {access: "2"}) {
+			edges {
+				cursor
+				node {
+					code
+					hotelData {
+						hotelCode
+						hotelName
+						giataData {
+						updatedAt
+						source
+						href
+						}
+						...
+					}
+				}
+			}
+		}
+	}
+}
+```
+		<b>Response</b>
+   
+```graphql
+{
+	"data": {
+		"hotelX": {
+			"hotels": {
+				"edges": [
+					{
+						"cursor": "",
+						"node": {
+							"code": "",
+							"hotelData": {
+								"hotelCode": "66337",
+								"hotelName": "Hotel Test",
+								"giataData": "11267",
+								...
+							}
+						}
+					}
+				]
+			}
+		}
+	}
+}
+```
+	</div>
 </details>

@@ -4,9 +4,26 @@ sidebar_position: 1
 
 # Overview
 
-The Content methods provide access to essential static information from Sellers, including hotel and destination lists, room types, boards, and more. The main focus of this section is how to obtain the unique **FastX codes**, which are used throughout the booking flow and allow you to interact seamlessly with any Supplier in the Marketplace. 
+The Content methods give you access to key static data from FastX codes and Sellers own data: hotels, rooms, boards, categories, destinations, and more.
 
-Additionally, you will learn how to access the static data that each Seller provides individually (hotels, rooms, destinations, etc.). The [`metadata`](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata) call is particularly important when connecting with a Seller, as it provides details on restrictions and settings specific to that Supplier—such as release days or other limitations—ensuring smooth and informed integration.
+In this section, the main goal is to help you retrieve and use **FastX codes** across your booking flow, so you can work with multiple Suppliers through a single standardized model.
+
+At the same time, you can still access each Seller's own static data and native identifiers. This gives you both standardization and full transparency.
+
+The [`metadata`](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/metadata) call is especially important when connecting to a Seller. It provides supplier-specific rules and settings (for example, release days and other restrictions), helping you integrate with fewer surprises.
+
+## What are FastX Codes?
+
+**FastX codes** are unique identifiers created by Travelgate to simplify connectivity across the Marketplace. They provide a unified way to identify **hotels**, **boards**, and **rooms**, so you can connect to multiple Suppliers using one consistent coding model.
+
+To make mapping even easier, **FastX codes are available in GIATA** under the supplier name `"travelgate"`. If you already use GIATA, this alignment helps speed up your integration.
+
+You can retrieve **FastX codes** and enriched content through our **FastX Content App**. For full transparency, you can also retrieve each **Supplier's native codes** and static data.
+
+For each Content call type (hotels, boards, categories, and more), we explain:
+
+- How to retrieve **FastX master data**.
+- How to retrieve **Supplier master data**.
 
 
 import DocCardList from '@theme/DocCardList';

@@ -70,7 +70,7 @@ To support standardization across the Marketplace, Travelgate generates unique F
 - **Rooms:** Travelgate generates codes at search time (see [Room Mapping](#room-mapping) below).
 
 ### And what about Content?
-If you are looking to take your catalog's visual experience to the next level and offer top-quality content to your customers, check out our new app: [FastX Content](/kb/connectivity-products/for-buyers/hotel-x/fastx-content).
+If you are looking to take your catalog's visual experience to the next level and offer top-quality content to your customers, check out our new app: [FastX Content](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/fastx-content).
 - **Zero mapping effort:** Unified images, categories, and descriptions.
 - **Instant integration:** Available directly from the [Travelgate Store](https://app.travelgate.com/travelgate-store/discover-apps).
 

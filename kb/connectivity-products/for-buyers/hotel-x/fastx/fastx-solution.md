@@ -56,6 +56,10 @@ FastX is not just a technical upgrade—it's a marketplace-wide shift that benef
 - **Scalable growth:** expand your Supplier portfolio without proportionally multiplying technical complexity.
 - **Verified Seller badge:** Suppliers who have validated 80% or more of their hotel and board mappings receive a **FastX Verified Seller badge**, visible in the [Travelgate Network](https://app.travelgate.com/network/partners). It is a validation-coverage indicator — not a quality certification for every individual mapping.
 
+:::tip Want a richer hotel catalog experience?
+Enhance your product display with high-quality hotel content and deliver a more compelling shopping experience with [**FastX Content**](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/fastx-content).
+:::
+
 **For Sellers:**
 - **Reduced mapping effort:** validate hotel and board mappings once, then serve all FastX Buyers with standardized codes.
 - **Faster onboarding with Buyers:** standardized codes eliminate mapping back-and-forth cycles, accelerating go-live timelines.

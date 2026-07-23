@@ -36,7 +36,8 @@ FastX Content by AO adapts to the complexity and volume of your business through
 - **🥉 Bronze:**
     - It builds on FastX codes to offer widely improved, normalized, and aggregated hotel content using AI technology.
     - It includes standardized hotel names, chains, categories, and geolocation.
-    - Language note: The Bronze plan will display the content in English by default.
+:::info Language note: The Bronze plan will display the content in English by default.
+:::
 
 - **🥈 Silver:** Bronze + Rooms
     - It includes everything from the Bronze plan and adds content at the Rooms level.
@@ -63,7 +64,7 @@ This premium extension greatly benefits the final conversion (Look-to-Book) of B
 
 ### How to activate the service
 
-Once the App is installed from the Travelgate Store, the flow is as follows:
+Once the App is installed from the [Travelgate Store](https://app.travelgate.com/travelgate-store/discover-apps), the flow is as follows:
 
 1. The Partnerships team receives your installation request and validates the commercial agreement.
 2. A Travelgate administrator activates your application immediately after the review.

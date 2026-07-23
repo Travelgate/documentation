@@ -1,8 +1,8 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 ---
 
-# FastX Solution Overview
+# What is FastX?
 
 FastX is **the new baseline for hotel connectivity** with our [HotelX API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart). It is not a separate API: you keep using HotelX, but with a standardized `FASTX` context and stronger aggregation capabilities.
 

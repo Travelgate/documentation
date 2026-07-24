@@ -40,5 +40,5 @@ Follow these simple steps to activate GIATA Hotel Directory:
 
 :::tip
 **Interested in GIATA Multicodes as well?**
-Follow the easy steps outlined in this [guide](/kb/connectivity-products/for-buyers/mapping-solutions/giata/giata-multicodes).
+Follow the easy steps outlined in this [guide](/kb/connectivity-products/for-buyers/giata/giata-multicodes).
 :::

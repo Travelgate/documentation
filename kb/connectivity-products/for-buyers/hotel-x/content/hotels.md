@@ -42,7 +42,7 @@ When performing a Hotels Query **using the FastX context**, the following fields
 - Address
 - Latitude
 - Longitude
-- GIATA ID (if this functionality has been [activated](/kb/connectivity-products/for-buyers/mapping-solutions/giata/giata-multicodes))
+- GIATA ID (if this functionality has been [activated](/kb/connectivity-products/for-buyers/giata/giata-multicodes))
 
 To provide you with a more comprehensive experience, our team is developing a Content App that will deliver richer content for FastX Hotels. Stay tuned for further updates!
 :::

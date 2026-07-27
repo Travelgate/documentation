@@ -130,9 +130,9 @@ Filters allow you to precisely tailor the response according to your preferences
 
 To specify filters you need to use the input `HotelXFilterSearchInput` in your query variables. The available filters within this input are:
 
-- `suppliers`: The Buyer can define an `includes` or `excludes` list with one or more Supplier Code values. Hotel-X will execute the Search request using **all accesses (credentials)** available for the selected suppliers. If `includes` is used, only those suppliers are queried. If `excludes` is used, all suppliers except those in the list are queried.
+- `suppliers`: The Buyer can define an `includes` or `excludes` list with one or more Supplier Code values. HotelX will execute the Search request using **all accesses (credentials)** available for the selected suppliers. If `includes` is used, only those suppliers are queried. If `excludes` is used, all suppliers except those in the list are queried.
 
-- `access`: This filter is similar to `suppliers`, but it works at credential level. The Buyer can define an `includes` or `excludes` list with one or more access codes, even from different suppliers. Hotel-X will execute the Search request using exactly the selected accesses (or all except excluded ones).
+- `access`: This filter is similar to `suppliers`, but it works at credential level. The Buyer can define an `includes` or `excludes` list with one or more access codes, even from different suppliers. HotelX will execute the Search request using exactly the selected accesses (or all except excluded ones).
 
 - `rateRules`: This filter enables you to narrow down the options returned by the suppliers based on the desired rate rules you want to include or exclude.
 
@@ -377,14 +377,14 @@ Some Sellers may not include cancellation policies in their availability data. Y
 
 In all examples below, we include the **Preference plugin** with the following configuration:
 
-- `primaryKey: "hotel,board,room,rateRules"`: Hotel-X will internally detect and group all options returned by all suppliers in your request that share the same hotel, board, room, and rate rule.
-- `optionsPerKey: 1`: for each group created by the `primaryKey`, Hotel-X returns the 1 cheapest option that also complies with the preference rules configured on our website (if any).
+- `primaryKey: "hotel,board,room,rateRules"`: HotelX will internally detect and group all options returned by all suppliers in your request that share the same hotel, board, room, and rate rule.
+- `optionsPerKey: 1`: for each group created by the `primaryKey`, HotelX returns the 1 cheapest option that also complies with the preference rules configured on our website (if any).
 
 <details>
   <summary>Small example on how grouping works with `primaryKey` + `optionsPerKey`</summary>
   <div>
     <div>
-      If Hotel-X receives multiple options for `Standard Double Room + All Inclusive + Non-Refundable`, it will return only the cheapest option for that group. If it also receives options for `Standard Double Room + All Inclusive + Refundable`, that is a different group, and Hotel-X will also return the cheapest option for that second group.
+      If HotelX receives multiple options for `Standard Double Room + All Inclusive + Non-Refundable`, it will return only the cheapest option for that group. If it also receives options for `Standard Double Room + All Inclusive + Refundable`, that is a different group, and HotelX will also return the cheapest option for that second group.
 
       You can find more examples and a detailed explanation of how this plugin works in the **[Preference plugin page](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/preference)**.
     </div>
@@ -433,7 +433,7 @@ As you can see in these responses, you have multiple options with different rate
   <summary>How many hotel codes per request can I request in Search?</summary>
   <div>
     <div>
-      We recommend a maximum of 200 hotels: our Hotel-X solution will split them
+      We recommend a maximum of 200 hotels: our HotelX solution will split them
       in batches in order to request all of them to each Seller.
     </div>
   </div>
@@ -466,14 +466,14 @@ As you can see in these responses, you have multiple options with different rate
 <details>
 <summary>How can I search using supplier hotel codes or my own codes?</summary>
 <div>
-    Hotel-X offers three modes for searching or performing the booking flow with different codes: **FastX codes**, **Supplier codes**, or **Buyer own codes**.  
+    HotelX offers three modes for searching or performing the booking flow with different codes: **FastX codes**, **Supplier codes**, or **Buyer own codes**.  
 </div>
 <br></br>
 <b>A. Booking flow with FastX codes (Recommended)</b>
 
-    Using FastX codes is the default and most efficient way to search in Hotel-X. FastX unique codes are designed for querying multiple Sellers simultaneously. With a single, unified list of hotel codes, you gain access to all connected Suppliers’ systems.
+    Using FastX codes is the default and most efficient way to search in HotelX. FastX unique codes are designed for querying multiple Sellers simultaneously. With a single, unified list of hotel codes, you gain access to all connected Suppliers’ systems.
 
-![Hotel-X Shopping Flow](https://storage.travelgate.com/docs/hotel-x_multi_mode.svg)
+![HotelX Shopping Flow](https://storage.travelgate.com/docs/hotel-x_multi_mode.svg)
 
     Benefits of FastX:
     <ul>
@@ -531,7 +531,7 @@ As you can see in these responses, you have multiple options with different rate
     </ul>
 
 
-    ![Hotel-X Shopping Flow](https://storage.travelgate.com/docs/hotel-x_single_mode.svg)
+    ![HotelX Shopping Flow](https://storage.travelgate.com/docs/hotel-x_single_mode.svg)
 
     While this mode is available, it is less efficient than FastX. It requires more configuration and multiple queries if you want to include different suppliers.
 
@@ -570,10 +570,10 @@ As you can see in these responses, you have multiple options with different rate
 </details>
 
 <details>
-  <summary>Can I filter the Hotel-X Search results by payment type?</summary>
+  <summary>Can I filter the HotelX Search results by payment type?</summary>
   <div>
     <div>
-      Unfortunately, Hotel-X API does not currently offer the capability to
+      Unfortunately, HotelX API does not currently offer the capability to
       filter search results by payment type.
     </div>
   </div>
@@ -585,7 +585,7 @@ As you can see in these responses, you have multiple options with different rate
         <div>
             <ul>
                 <li>
-                    <b>optionsQuota, how to limit the number of options in search response:</b> Thanks to the optionsQuota tag in Hotel-X Pull Buyers API,
+                    <b>optionsQuota, how to limit the number of options in search response:</b> Thanks to the optionsQuota tag in HotelX Pull Buyers API,
                     you are able to control and limit the number of options per board returned in the search response in those
                     cases the Seller allows business rules (<i>you will be able to check this information through our Metadata Query</i>).
                     Note that we have established a system-level limit so that if the OptionsQuota set on your side is higher than the
@@ -663,7 +663,7 @@ As you can see in these responses, you have multiple options with different rate
 </details>
 
 <details>
-  <summary>Can I receive daily prices in Hotel-X Search response?</summary>
+  <summary>Can I receive daily prices in HotelX Search response?</summary>
   <div>
     <div>
       Yes, you can receive Daily Prices in Search Response (if the Seller

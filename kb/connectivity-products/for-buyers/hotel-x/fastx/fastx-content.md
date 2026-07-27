@@ -51,12 +51,13 @@ FastX Content by AO adapts to the complexity and volume of your business through
     - It includes everything from the Bronze plan and adds content at the Rooms level.
     - It normalizes and maps room descriptions, amenities, and images to the highest industry standards.
 
-**🥇 Gold:** Silver + Personalized Content
-    - It includes everything from the Silver plan and allows the Buyer to upload their own locally contracted content.
-    - It applies custom brand and tone-of-voice rules through artificial intelligence.
+**🥇 Gold:**
+    - It includes everything from your base plan (Bronze or Silver) and allows you to upload your own locally contracted content.
+    - It applies custom brand and tone-of-voice rules using artificial intelligence.
 
 **🎖️ Enterprise:**
-    - An omnichannel Product Information Management (PIM) system for the travel sector. It expands the scope beyond hotels to include destinations, points of interest (POI), excursions, tours, and data on accessibility and sustainability.
+    - It includes everything needed to create and manage content in-house across any channel.
+    - It provides full Travel Product Information Management (PIM) functionality, with deployment on your own infrastructure directly through AO.
   
 :::info Add-ons
 Both initial tiers (Bronze and Silver) offer add-ons for extra language coverage and market customization. If your business needs a specific tone or image strategy, our team can adapt the content.

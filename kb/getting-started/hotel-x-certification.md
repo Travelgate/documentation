@@ -8,50 +8,100 @@ sidebar_position: 3
 You should apply once you've completed implementing the relevant methods.
 
 ### Is It Necessary to Complete All Certification Cases?
-No. Case 3 (Direct Payment) is not mandatory if it is not relevant to your business. However, Cases 1 and 2 (Refundable Option and Non-Refundable Option) are always required.
+No. The **Direct Payment case** is optional if it is not relevant to your business. The **Refundable** and **Non-Refundable** cases are always required.
 
 ### What Information Will We Check?
 The certification aims to verify that the HotelX API user makes requests correctly. This is done by reviewing request and response logs for the following methods:
 
+The onboarding certification follows this phase order:
+
+1. **Content certification**
+2. **Case: Refundable**
+3. **Case: Non Refundable**
+4. **Case: Payment Card (optional)**
+
+### Content certification
+
+| Method | Request Requirement | Response Requirement |
+|--------------|--------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
+| **Hotels** | — | At least one hotel with the requested `hotelCode` should be present in the response. |
+
+### Case: Refundable
 
 | Method       | Request Requirement                                                                 | Response Requirement                                                                 |
 |--------------|--------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
-| **Hotels**   | —                                                                                    | At least one hotel with the requested `hotelCode` should be present in the response. |
-| **C1 Search**| 3 rooms:&nbsp;<br />- 1 room with 3 ADT&nbsp;<br />- 1 room with 2 ADT + 1 CHILD (5yo)&nbsp;<br />- 1 room with 2 ADT&nbsp;<br /> | - Errors need to be requested in response but empty&nbsp;<br />- Number of Options > 0&nbsp;<br />- At least one refundable option present in response |
-| **C2 Search**| 2 rooms:&nbsp;<br />- 1 room with 2 ADT + 1 CHILD (5yo)&nbsp;<br />- 1 room with 2 ADT&nbsp;<br /> | - Errors need to be requested in response but empty&nbsp;<br />- Number of Options > 0&nbsp;<br />- At least one non-refundable option present in response |
-| **C3 Search**| 1 room with 2 ADT&nbsp;<br /> | - Errors need to be requested in response but empty&nbsp;<br />- Number of Options > 0&nbsp;<br />- At least one `DIRECT` payment type option (`option.PaymentType`) present in response |
-| **C1 Quote** | Valid refundable `optionID`&nbsp;<br /> | - Errors need to be requested in response but empty&nbsp;<br />- `rq.HotelX.Quote.OptionQuote.CancelPolicy.Refundable = true` |
-| **C2 Quote** | Valid non-refundable `optionID`&nbsp;<br /> | - Errors need to be requested in response but empty&nbsp;<br />- `rq.HotelX.Quote.OptionQuote.CancelPolicy.Refundable = false` |
-| **C3 Quote** | Valid `optionID` with payment type `DIRECT`&nbsp;<br /> | - Errors need to be requested in response but empty&nbsp;<br />- `rq.HotelX.Quote.OptionQuote.PaymentType = DIRECT` |
-| **C1 Book**  | Valid refundable `optionID`&nbsp;<br /> | Errors need to be requested in response but empty |
-| **C2 Book**  | Valid non-refundable `optionID`&nbsp;<br /> | Errors need to be requested in response but empty |
-| **C3 Book**  | Valid `optionID` with payment type `DIRECT`&nbsp;<br /> | Errors need to be requested in response but empty |
+| **Refundable Search** | 3 rooms:&nbsp;<br />- 1 room with 3 ADT&nbsp;<br />- 1 room with 2 ADT + 1 CHILD (5yo)&nbsp;<br />- 1 room with 2 ADT&nbsp;<br /> | - Errors need to be requested in response but empty&nbsp;<br />- Number of Options > 0&nbsp;<br />- At least one refundable option present in response |
+| **Refundable Quote** | Valid refundable `optionID`&nbsp;<br /> | - Errors need to be requested in response but empty&nbsp;<br />- `rq.HotelX.Quote.OptionQuote.CancelPolicy.Refundable = true` |
+| **Refundable Book** | Valid refundable `optionRefId`&nbsp;<br /> | Errors need to be requested in response but empty |
+
+### Case: Non Refundable
+
+| Method       | Request Requirement                                                                 | Response Requirement                                                                 |
+|--------------|--------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
+| **Non-Refundable Search** | 2 rooms:&nbsp;<br />- 1 room with 2 ADT + 1 CHILD (5yo)&nbsp;<br />- 1 room with 2 ADT&nbsp;<br /> | - Errors need to be requested in response but empty&nbsp;<br />- Number of Options > 0&nbsp;<br />- At least one non-refundable option present in response |
+| **Non-Refundable Quote** | Valid non-refundable `optionID`&nbsp;<br /> | - Errors need to be requested in response but empty&nbsp;<br />- `rq.HotelX.Quote.OptionQuote.CancelPolicy.Refundable = false` |
+| **Non-Refundable Book** | Valid non-refundable `optionRefId`&nbsp;<br /> | Errors need to be requested in response but empty |
+
+### Case: Payment Card (optional)
+
+| Method       | Request Requirement                                                                 | Response Requirement                                                                 |
+|--------------|--------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
+| **Direct Payment Search (Optional)** | 1 room with 2 ADT&nbsp;<br /> | - Errors need to be requested in response but empty&nbsp;<br />- Number of Options > 0&nbsp;<br />- At least one `DIRECT` payment type option (`option.PaymentType`) present in response |
+| **Direct Payment Quote (Optional)** | Valid `optionID` with payment type `DIRECT`&nbsp;<br /> | - Errors need to be requested in response but empty&nbsp;<br />- `rq.HotelX.Quote.OptionQuote.PaymentType = DIRECT` |
+| **Direct Payment Book (Optional)** | Valid `optionRefId` with payment type `DIRECT`&nbsp;<br /> | Errors need to be requested in response but empty |
+
+### Additional Validations
+
+These validations apply independently of the four onboarding phases above.
+
+| Method       | Request Requirement                                                                 | Response Requirement                                                                 |
+|--------------|--------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
 | **Cancellation** | One of these two cases:&nbsp;<br />- Cancel by `bookingID`&nbsp;<br />- Cancel by client or supplier `reference` &nbsp;<br /> | - Errors need to be requested in response but empty&nbsp;<br />- In Cancel by reference, `HotelCancelInput.reference` and `HotelCancelInput.hotelCode` should be requested |
 | **Booking Read/List** | One of these three cases:&nbsp;<br />- Booking by `bookingID`&nbsp;<br />- Booking with `typeSearch = "DATES"` → requires `rq.Criteria.Dates`&nbsp;<br />- Booking with `typeSearch = "REFERENCES"` → requires `rq.Criteria.References`&nbsp;<br /> | - Errors need to be requested in response but empty&nbsp;<br />- At least one booking must be found in the response&nbsp;<br />- `Booking Status` in the booking object must be requested |
 
 
-#### For the Booking Flow, we have three possible cases:
-1. C1: Refundable Option.
-2. C2: Non-Refundable Option.
-3. C3: Direct Payment Option.
-
+### Certification Files Format
 Travelgate has implemented an automated certification system to ensure the key points of the methods are correctly covered according to the HotelX Pull Buyers API. This system requires the certification files to be **uploaded in a specific name and format**: the format should be “.json”and the name should indicate the corresponding certification.
 
 The following table outlines the names corresponding to each part of the certification process:
 
 | Method                       | Request                  | Response              |
 | ---------------------------- | ------------------------ | --------------------- |
-| Content > Hotels RQ and RS   | Not required              | rs_hotels.json        |
-| C1 Booking Flow > Search RQ and RS | rq_search_rf.json     | rs_search_rf.json     |
-| C2 Booking Flow > Search RQ and RS | rq_search_nrf.json    | rs_search_nrf.json    |
-| C3 Booking Flow > Search RQ and RS | rq_search_direct.json | rs_search_direct.json |
-| C1 Booking Flow > Quote RQ and RS  | rq_quote_rf.json      | rs_quote_rf.json      |
-| C2 Booking Flow > Quote RQ and RS  | rq_quote_nrf.json     | rs_quote_nrf.json     |
-| C3 Booking Flow > Quote RQ and RS  | rq_quote_direct.json  | rs_quote_direct.json  |
-| C1 Booking Flow > Book RQ and RS   | rq_book_rf.json       | rs_book_rf.json       |
-| C2 Booking Flow > Book RQ and RS   | rq_book_nrf.json      | rs_book_nrf.json      |
-| C3 Booking Flow > Book RQ and RS   | rq_book_direct.json   | rs_book_direct.json   |
+| Content certification > Hotels RQ and RS   | Not required              | rs_hotels.json        |
+| Case: Refundable > Search RQ and RS | rq_search_rf.json     | rs_search_rf.json     |
+| Case: Refundable > Quote RQ and RS  | rq_quote_rf.json      | rs_quote_rf.json      |
+| Case: Refundable > Book RQ and RS   | rq_book_rf.json       | rs_book_rf.json       |
+| Case: Non Refundable > Search RQ and RS | rq_search_nrf.json    | rs_search_nrf.json    |
+| Case: Non Refundable > Quote RQ and RS  | rq_quote_nrf.json     | rs_quote_nrf.json     |
+| Case: Non Refundable > Book RQ and RS   | rq_book_nrf.json      | rs_book_nrf.json      |
+| Case: Payment Card (optional) > Search RQ and RS | rq_search_direct.json | rs_search_direct.json |
+| Case: Payment Card (optional) > Quote RQ and RS  | rq_quote_direct.json  | rs_quote_direct.json  |
+| Case: Payment Card (optional) > Book RQ and RS   | rq_book_direct.json   | rs_book_direct.json   |
 | Booking Management > Cancel RQ and RS | rq_cancel_rf.json | rs_cancel_rf.json     |
+
+## Certification Panel Support with AIna
+
+The onboarding certification panel now includes a direct support box powered by [**AIna**](/kb/welcome-to-travelgate/support-resources/aina-smart-ai), Travelgate's AI Assistant. Use the **Need help? Let's solve it together!** box to describe your issue and click **Ask AIna**. When you submit a question, a chat window opens with troubleshooting guidance and source references from Travelgate Documentation.
+
+![tg-certification-aina-1](https://storage.travelgate.com/kbase/tg-certification-aina-1.png)
+
+### How to Use the Embedded AIna Box Effectively
+
+1. Add your issue in full sentences (avoid short or generic prompts).
+2. Include your context:
+  - API: HotelX Pull Buyers API
+  - Method: Hotels, Search, Quote, Book, Cancel, or Booking Read/List
+  - Exact error message and type (for example, `VALIDATION_ERROR`)
+4. Submit your prompt with **Ask AIna**.
+5. Review the returned checklist and linked sources before retrying your request. Your chat history is saved automatically so you can pick up where you left off. To start a fresh conversation, click the **pencil icon** next to the Use MCP button.
+
+  ![tg-certification-aina-2](https://storage.travelgate.com/kbase/tg-certification-aina-2.png)
+
+:::info AINA AND THE CERTIFICATION PROCESS
+AIna can provide troubleshooting guidance and documentation references throughout your certification, but it cannot modify your configuration or account settings. For account-level changes or unresolved issues during your certification process, contact our team via sales.support@travelgate.com.
+:::
+
+For best interaction practices, see the [AIna User Guide](/kb/welcome-to-travelgate/support-resources/aina-user-guide).
 
 ### Example of a Search Query Request and Response
 
@@ -998,4 +1048,4 @@ During the certification phase, you utilize the [test API Key and Client](/kb/ge
 * **API Key:** Replace the Travelgate test API Key with your [assigned Buyer production API Key](/kb/platform/app-features/account-settings/api-keys/manage-api-keys).
 * **Client:** Replace the Travelgate client_demo with your [production Client identifier](/kb/platform/app-features/connections/api-settings).
 
-Ensure these parameters are updated in your request headers before initiating any live traffic to avoid authentication and [validation errors](/kb/connectivity-products/for-buyers/errors-and-warnings/validation-error).
+Ensure these parameters are updated in your request headers **before** initiating any live traffic to avoid authentication and [validation errors](/kb/connectivity-products/for-buyers/errors-and-warnings/validation-error).

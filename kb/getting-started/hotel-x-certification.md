@@ -17,7 +17,7 @@ The onboarding certification follows this phase order:
 
 1. **Content certification**
 2. **Case: Refundable**
-3. **Case: Non Refundable**
+3. **Case: Non-Refundable**
 4. **Case: Payment Card (optional)**
 
 ### Content certification

@@ -61,7 +61,7 @@ These validations apply independently of the four onboarding phases above.
 
 
 ### Certification Files Format
-Travelgate has implemented an automated certification system to ensure the key points of the methods are correctly covered according to the HotelX Pull Buyers API. This system requires the certification files to be **uploaded in a specific name and format**: the format should be “.json”and the name should indicate the corresponding certification.
+Travelgate has implemented an automated certification system to ensure the key points of the methods are correctly covered according to the HotelX Pull Buyers API. This system requires the certification files to be **uploaded in a specific name and format**: the format should be `.json` and the name should indicate the corresponding certification.
 
 The following table outlines the names corresponding to each part of the certification process:
 

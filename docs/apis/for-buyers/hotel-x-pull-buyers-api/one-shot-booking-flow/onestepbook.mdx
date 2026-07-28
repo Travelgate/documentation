@@ -54,7 +54,7 @@ Make sure the values sent in the OneStepBook input match exactly the information
 This includes fields such as rateRulesExtended, binding, and others.
 
 :::warning Important
- Any mismatch between the data sent in this request and the details provided by Channel-X (e.g., promotion codes, rate types, refundability, etc.) may result in errors or unsuccessful bookings.
+ Any mismatch between the data sent in this request and the details provided by ChannelX (e.g., promotion codes, rate types, refundability, etc.) may result in errors or unsuccessful bookings.
 :::
 
 ```js
@@ -130,7 +130,7 @@ This includes fields such as rateRulesExtended, binding, and others.
 	- **In OneStepQuote**:  
   	The `binding` field is a **boolean** indicating whether the product **must be sold at the specified price or above**.
   
-	- **In Channel-X**:  
+	- **In ChannelX**:  
 	The equivalent field is `YieldableIndicator`, which has an **opposite logic**:
 
 		- `YieldableIndicator = true` (or not present): the product **can** be sold **below the price**.  
@@ -146,9 +146,9 @@ This includes fields such as rateRulesExtended, binding, and others.
 * `ratePlan`
 * `surcharges` 
 * `supplements`
-* `rateRulesExtended`: Make sure to correctly translate the Channel-X values before sending them in the `RateRulesExtended` input to avoid errors or mismatches.
+* `rateRulesExtended`: Make sure to correctly translate the ChannelX values before sending them in the `RateRulesExtended` input to avoid errors or mismatches.
 
-| Channel-X/Code | Channel-X/PromotionCode | Channel-X/RatePlanType | Channel-X/NonRefundable | OneStepQuote/RateRulesType |
+| ChannelX/Code | ChannelX/PromotionCode | ChannelX/RatePlanType | ChannelX/NonRefundable | OneStepQuote/RateRulesType |
 |---------------|-------------------------|------------------------|------------------------|----------------------------------------|
 | 0             | No promotion            |                        |                        |                                        |
 | 25            | Senior 55               |                        |                        | OLDER55                                |
@@ -182,7 +182,7 @@ If the option or rate you want to book has a payment type such as DIRECT, CARD_B
 
 ### 2. Settings 
 
-Settings are the common configurations used to construct requests to the supplier/s. By default, we apply the same configuration to all Hotel-X clients.
+Settings are the common configurations used to construct requests to the supplier/s. By default, we apply the same configuration to all HotelX clients.
 
 To specify your quote settings you need to use the input `HotelSettingsInput` in your query variables:
 

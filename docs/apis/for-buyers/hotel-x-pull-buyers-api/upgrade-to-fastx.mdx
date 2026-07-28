@@ -8,12 +8,12 @@ import TabItem from "@theme/TabItem";
 
 # FastX Migration Guide
 
-**Already working with Hotel-X and ready to start using FastX codes?** Good news, the transition is simple and requires only a few adjustments.
-FastX introduces a unified coding system that replaces supplier-specific hotel, board, and room codes with a single Travelgate standard. And the best part? You can keep using your existing Hotel-X API exactly as it is.
+**Already working with HotelX and ready to start using FastX codes?** Good news, the transition is simple and requires only a few adjustments.
+FastX introduces a unified coding system that replaces supplier-specific hotel, board, and room codes with a single Travelgate standard. And the best part? You can keep using your existing HotelX API exactly as it is.
 
 Until now, your integration depended on each supplier’s own codes. With FastX, you simply request using FastX hotel codes, and the response includes both FastX and supplier codes—cleaner, simpler, and far easier to maintain.
 
-**This guide is built for Buyers who already have a full Hotel-X setup and just need to understand what changes to apply. No rebuilds, no new API, just a few small technical adjustments.** We’ll walk you through what’s different, why it matters, and how to adapt your current integration quickly and confidently.
+**This guide is built for Buyers who already have a full HotelX setup and just need to understand what changes to apply. No rebuilds, no new API, just a few small technical adjustments.** We’ll walk you through what’s different, why it matters, and how to adapt your current integration quickly and confidently.
 
 :::warning A quick note for Buyers onboarded before 2026-01-01
 If you have been working with Travelgate since before 2026-01-01, you will just need to sign an additional annex to use FastX codes in the booking flow. The process is simple and completely free.
@@ -21,16 +21,16 @@ If you have been working with Travelgate since before 2026-01-01, you will just 
 Contact us at [sales.support@travelgate.com](mailto:sales.support@travelgate.com) and start using FastX codes and their full potential.
 :::
 
-### Traditional Flow (Hotel-X Standard)
+### Traditional Flow (HotelX Standard)
 
 In the standard setup, your system handles various supplier codes that must be normalized through a mapping process within the API before reaching the supplier.
 
-![Hotel-X Standard Mode](https://stplaformwe.blob.core.windows.net/kbase/hotelx_simple_mode.gif)
+![HotelX Standard Mode](https://stplaformwe.blob.core.windows.net/kbase/hotelx_simple_mode.gif)
 
-### Optimized Flow (Hotel-X with FastX codes)
+### Optimized Flow (HotelX with FastX codes)
 
 By adopting FastX codes, your system **only needs to manage FastX codes**. You send your requests using these standardized codes, and Travelgate automatically handles the relationship and translation to the supplier's native system internally.
-![Hotel-X FastX Mode](https://stplaformwe.blob.core.windows.net/kbase/hotelx_fastx_mode.gif)
+![HotelX FastX Mode](https://stplaformwe.blob.core.windows.net/kbase/hotelx_fastx_mode.gif)
 
 Beyond technical performance, using a unified coding standard unlocks advanced business logic:
 

@@ -1,6 +1,6 @@
 ---
 name: graphql-generated-docs
-description: "Regenerate the custom GraphQL breakdown docs under src/graphql/generated-docs/*.mdx for the Travelgate documentation site. Use when the GraphQL schema changed (new/renamed/removed types, fields, enums, mutations or queries) and the embedded <details> field trees in the Inventory / Hotel-X API pages need updating, or when adding a new node to a page. Orchestrates the existing scripts (fetchSchema.js downloads + filters the schema, updateDocs.js maps nodes to .mdx via fileNodeMap.js and injects the breakdowns), then validates the output and fixes REQUIRED_TYPES / fileNodeMap / MDX as needed. Requires TRAVELGATE_BEARER (the bearer token of the person updating the docs)."
+description: "Regenerate the custom GraphQL breakdown docs under src/graphql/generated-docs/*.mdx for the Travelgate documentation site. Use when the GraphQL schema changed (new/renamed/removed types, fields, enums, mutations or queries) and the embedded <details> field trees in the Inventory / HotelX API pages need updating, or when adding a new node to a page. Orchestrates the existing scripts (fetchSchema.js downloads + filters the schema, updateDocs.js maps nodes to .mdx via fileNodeMap.js and injects the breakdowns), then validates the output and fixes REQUIRED_TYPES / fileNodeMap / MDX as needed. Requires TRAVELGATE_BEARER (the bearer token of the person updating the docs)."
 argument-hint: "which node/type/page changed, or 'full regenerate'"
 ---
 

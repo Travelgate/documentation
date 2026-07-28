@@ -11,7 +11,7 @@ Use Mapping only when your integration needs Buyer-owned codes. For mode selecti
 :::
 
 To make this possible, the Buyer uploads mapping files that define the relationship between their own codes and those of the connected Suppliers.
-Once these mappings are in place, Hotel-X automatically handles the conversion during the booking process:
+Once these mappings are in place, HotelX automatically handles the conversion during the booking process:
 
 When you send a Search or Quote request using your Buyer context, the system translates your Buyer codes into the corresponding Supplier codes before sending the request.
 
@@ -122,7 +122,7 @@ When working with your search query, you have two distinct ways to implement map
 
 #### Option 1: Mapping only with Buyer context and SFTP files
 
-If your search query's context is defined as your own Buyer context (meaning it differs from the supplier's context), Hotel-X will make an effort to map all entities (such as hotels, boards, etc., excluding amenities and promotions) to align with the query's context.
+If your search query's context is defined as your own Buyer context (meaning it differs from the supplier's context), HotelX will make an effort to map all entities (such as hotels, boards, etc., excluding amenities and promotions) to align with the query's context.
 
 :::caution Important
 In this scenario, there's no need to specify a plugin in your query. Just provide your own context in the context field and upload the mapping files to your SFTP account.
@@ -162,7 +162,7 @@ On the other hand, please note that it's absolutely mandatory to use the plugin 
 #### Option 2: Mapping with mixed contexts for specific entities
 
 While you can use either the Supplier's context or your own Buyer's context via SFTP files in your search query, you can also mix both contexts for specific entities like boards, amenities, and promotions. For instance, you can keep using the Supplier's context for hotels or rooms but switch to your Buyer context for boards, amenities, and promotions. 
-This approach lets Hotel-X exclusively focus on mapping the entities you've specified in your query.
+This approach lets HotelX exclusively focus on mapping the entities you've specified in your query.
 
 To enable this, just include the plugin in your query. After uploading your mapping file, add the following field to the settings node of your request. To make the most of the mapping plugin, configure the request with the appropriate variables based on the type of mapping you intend to perform:
 

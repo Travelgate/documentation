@@ -311,13 +311,13 @@ Although it is optional, if you have VCC rules related to a currency, you must i
 ```
 ## 3. Grahql mutation API 
 
-In some cases, an error may occur during the booking process of Hotel-X. This can result in a virtual credit card (VCC) being created even though the hotel reservation was not successfully completed.
+In some cases, an error may occur during the booking process of HotelX. This can result in a virtual credit card (VCC) being created even though the hotel reservation was not successfully completed.
 
 To handle this scenario, clients can use the provided GraphQL API to cancel the VCC on their own.
 
 
 ### Cancel 
-The cancel operation allows you to cancel virtual credit card made during booking process of Hotel-X. The returned fields include:
+The cancel operation allows you to cancel virtual credit card made during booking process of HotelX. The returned fields include:
 
 * `status`
 * `id`
@@ -355,7 +355,7 @@ In this mutation the virtual credit card id is mandatory to able to identify whi
 
 ### 2. Settings
 
-Settings are the common configurations used to construct requests to the supplier/s. By default, we apply the same configuration to all Hotel-X clients.
+Settings are the common configurations used to construct requests to the supplier/s. By default, we apply the same configuration to all HotelX clients.
 All fields are mandatory.
 
 ```js
@@ -395,7 +395,7 @@ List of possible value: [Here](#listcardtype)
 
 ### Examples
 
-#### Cancel with the `id` from the book response of Hotel-X
+#### Cancel with the `id` from the book response of HotelX
 
 <GraphqlSample query={cancelMutation} variables={cancelVariables} />
 

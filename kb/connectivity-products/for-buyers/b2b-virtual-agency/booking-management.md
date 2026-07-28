@@ -73,7 +73,7 @@ You can still check the **status** of your reservations on the **My Bookings** s
 3. Go to the **My Bookings** tab and apply filters to find the booking you want to cancel.
 4. Click **Cancel booking**.
 
-   ![b2b_virtual_agency_cancel_2](https://storage.travelgate.com/kbase/b2b_cancel_2.png)
+   ![tg-b2b-virtual-agency-booking-details](https://storage.travelgate.com/kbase/tg-b2b-virtual-agency-booking-details.png)
 
 5. A pop-up will display the cancellation costs. Click **Confirm** ('Yes, cancel booking') to proceed.
 

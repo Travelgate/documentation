@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Introduction
 
-Travelgate is a connectivity marketplace that brings together Buyers and Sellers of travel product. Our cutting-edge technology has earned the trust and confidence of major industry players as well as specialized providers worldwide.
+Travelgate is the **global network for hotel distribution**, connecting Buyers and Sellers of travel product. Our cutting-edge technology has earned the trust and confidence of major industry players as well as specialized providers worldwide.
 
 No longer do travel agencies and websites have to go through the hassle of integrating multiple APIs to access different Sellers' products. With Travelgate, you only need one single integration to our API and you instantly gain access to a wide range of travel opportunities, enabling a fast and seamless integration and unbeatable time-to-market.
 

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7
+sidebar_position: 5
 description: Learn how to use the HotelX Metadata Query to understand a Seller's capabilities, limits, and field support before sending your first requests.
 ---
 

@@ -57,7 +57,7 @@ To retrieve the total number of properties in the response, simply add the [`cou
 ![hotelcount](https://storage.travelgate.com/kbase/hotelcount.jpg)
 
 ### Can I Paginate Content Methods?
-Yes, you can! Check out our [pagination guide](/kb/connectivity-products/for-buyers/hotel-x/content/token-pagination) for more details.
+Yes, you can! Check out our [pagination guide](/kb/connectivity-products/for-buyers/hotel-x/content/boards-rooms-categories#token-based-pagination) for more details.
 
 ### What Languages Does HotelX Hotels Query Support?
 HotelX supports all languages; however, the availability of hotel descriptions depends on the languages supported by the Seller. We recommend confirming this information with the Seller before activating the connection.

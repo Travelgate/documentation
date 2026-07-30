@@ -14,7 +14,7 @@ const config = {
     v4: {
       removeLegacyPostBuildHeadAttribute: true, // required
     },
-    experimental_faster: true,
+    faster: true,
   },
   // Set the production url of your site here
   url: "https://docs.travelgate.com",
@@ -28,7 +28,11 @@ const config = {
   projectName: "documentation", // Usually your repo name.
 
   onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: "warn",
+    },
+  },
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want

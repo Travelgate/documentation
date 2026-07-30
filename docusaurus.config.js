@@ -42,7 +42,18 @@ const config = {
     locales: ["en"],
   },
 
+  clientModules: [require.resolve("./src/gtm/gtmTracking.js")],
+
   headTags: [
+    // Preinitialize the kapa (AINA) widget JS object so event handlers (e.g.
+    // onModalOpen) registered by the GTM client module are queued and never
+    // lost to a race with the deferred widget bundle.
+    {
+      tagName: "script",
+      attributes: {},
+      innerHTML:
+        "(function(){var k=window.Kapa;if(!k){var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};window.Kapa=i;}})();",
+    },
     {
       tagName: "link",
       attributes: {

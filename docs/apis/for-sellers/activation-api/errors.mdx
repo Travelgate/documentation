@@ -1,0 +1,204 @@
+---
+sidebar_position: 7
+title: Error Handling
+---
+
+# Error Handling
+
+Errors in Activation can be returned in two formats:
+
+- `adviseMessage[]` inside the GraphQL data payload (most business and validation errors).
+- `errors[]` at GraphQL top level (typical authorization or gateway-level failures).
+
+## 9.1 AdviseMessage: Error Level (`level`)
+
+| `level` | Meaning                                                                                     |
+| ------- | ------------------------------------------------------------------------------------------- |
+| `ERROR` | The process stopped. The access was not created.                                            |
+| `WARN`  | A non-critical validation step failed. The process continued until final validation result. |
+| `INFO`  | Informational message. No action required.                                                  |
+
+## 9.2 Numeric Codes (`code`)
+
+Each `adviseMessage.code` is a numeric category. The concrete cause is always in `description`.
+
+| `code`  | Name           | When it appears                                                                                                                                                                                       | Action                                                                                                    |
+| ------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `11400` | Bad Request    | Required field is empty or invalid; parameters do not satisfy supplier runtime constraints (missing, invalid format, pattern mismatch); PUSH supplier with `isTest: true`                             | Read all `WARN` messages in `adviseMessage` because each one points to the exact failing field and reason |
+| `22401` | Unauthorized   | Invalid API key or missing permissions from auth gateway; token organization does not match `organizationBuyerCode` or supplier organization (`not authorized to create access on this organization`) | Validate API key and `organizationBuyerCode`                                                              |
+| `22500` | Internal Error | TGX internal service failure: supplier not found, HotelX group not configured, runtime/signup/admin failure, or database error                                                                        | Contact TGX and include `correlationID`                                                                   |
+
+> How to diagnose quickly: verify `activationData.status` first (`MANUAL` means failure). Then read every `adviseMessage[].description`. Use numeric `code` to separate caller-input issues (`11400`, `22401`) from TGX internal service failures (`22500`).
+
+## 9.3 Description Reference by Operation
+
+### Mutation `connect`
+
+Messages with `code: "11400"` and `level: "WARN"` describe specific failing fields. They are typically followed by a final `ERROR` message: `validation process failed, please see warnings`.
+
+| `code`  | `level` | `description`                                                                     | Cause                                                                                                                                               |
+| ------- | ------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `11400` | `WARN`  | `mandatory field "{tagRuntime}" not found`                                        | Required credential or URL field was not sent. `{tagRuntime}` can be `USER`, `PASSWORD`, `URLGENERIC`, `URLAVAIL`, `URLVALUATION`, `URLRESERVATION` |
+| `11400` | `WARN`  | `mandatory parameter "{key}" not found`                                           | Required parameter is missing in `parameters[]`                                                                                                     |
+| `11400` | `WARN`  | `mandatory parameter with key "{key}" not found`                                  | Parameter exists but has no value                                                                                                                   |
+| `11400` | `WARN`  | `value {value} for parameter {key} not match the pattern {pattern}`               | Parameter value does not match supplier runtime regex                                                                                               |
+| `11400` | `WARN`  | `value {value} for field "{tagRuntime}" not match the pattern {pattern}`          | Field value (`user`/`password`/URL) does not match supplier runtime regex                                                                           |
+| `11400` | `WARN`  | `value "{value}" for parameter "{key}" is not valid. Possible values: [{values}]` | Parameter value is outside runtime `possibleValues`                                                                                                 |
+| `11400` | `WARN`  | `value "{value}" for field "{tagRuntime}" not valid: possibles values [{values}]` | Field value is outside runtime `possibleValues`                                                                                                     |
+| `11400` | `ERROR` | `organization code is empty`                                                      | `organizationBuyerCode` is empty                                                                                                                    |
+| `11400` | `ERROR` | `supplierCode not found in query`                                                 | `accessConfiguration.supplier` is empty                                                                                                             |
+| `11400` | `ERROR` | `activation provider PUSH and connection type TEST`                               | PUSH supplier with `isTest: true`                                                                                                                   |
+| `11400` | `ERROR` | `validation process failed, please see warnings`                                  | Runtime validation failed; one or more `WARN` messages exist above                                                                                  |
+| `22401` | `ERROR` | `not authorized to create access on this organization`                            | Token does not have permission for `organizationBuyerCode` or supplier organization                                                                 |
+| `22500` | `ERROR` | `INTERNAL_ERROR`                                                                  | TGX internal service error                                                                                                                          |
+
+For `22500` on `connect`, one common trigger is sending an invalid HotelX group, or not sending one when the organization has multiple groups. Re-check the `connect` payload first. If payload is correct, report the error with `correlationID`.
+
+### Query `activations`
+
+| `code`  | `level` | `description`                                              | Cause                                                                                      |
+| ------- | ------- | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| `11400` | `ERROR` | `bad request`                                              | No filter was provided (`organizationBuyerCode` and `organizationSellerCode` both missing) |
+| `22401` | `ERROR` | `not authorized to read activations for this organization` | Token has no permission for requested organization                                         |
+| `22401` | `ERROR` | `parse organization data error, organization not found`    | Provided organization does not exist                                                       |
+| `22500` | `ERROR` | `INTERNAL_ERROR`                                           | TGX internal service error. Report with `correlationID`                                    |
+
+## 9.4 Additional Behavior and Examples
+
+When a step fails:
+
+- `activationData.status` is usually `MANUAL`.
+- `adviseMessage` contains one or more messages.
+- If `activationData.access.code` is empty, the access was not created.
+
+Most functional errors are returned in `adviseMessage[]`, but authorization can also arrive in GraphQL top-level `errors[]`.
+
+### 9.4.1 GraphQL top-level `errors[]` example
+
+```json
+{
+  "data": null,
+  "errors": [
+    {
+      "message": "Authorization not allowed"
+    }
+  ]
+}
+```
+
+### 9.4.2 `adviseMessage[]` examples
+
+Missing mandatory runtime field:
+
+```json
+{
+  "data": {
+    "activation": {
+      "connect": {
+        "adviseMessage": [
+          {
+            "code": "11400",
+            "description": "mandatory field \"USER\" not found",
+            "level": "WARN",
+            "correlationID": "89ff78dc-b33e-45fe-bb38-4bd0a4662aea"
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+Runtime validation failure (missing mandatory parameter plus pattern mismatch):
+
+```json
+{
+  "data": {
+    "activation": {
+      "connect": {
+        "activationData": {
+          "access": {
+            "code": "",
+            "supplier": {
+              "code": "HOTELTEST"
+            }
+          },
+          "buyer": {
+            "code": "buyer_code"
+          },
+          "seller": {
+            "code": ""
+          },
+          "status": "MANUAL"
+        },
+        "adviseMessage": [
+          {
+            "code": "11400",
+            "level": "WARN",
+            "description": "mandatory parameter \"email\" not found",
+            "correlationID": "550e8400-e29b-41d4-a716-446655440000"
+          },
+          {
+            "code": "11400",
+            "level": "WARN",
+            "description": "field 'country' value 'España' does not match pattern '^[A-Z]{2}$'",
+            "correlationID": "550e8400-e29b-41d4-a716-446655440000"
+          },
+          {
+            "code": "11400",
+            "level": "ERROR",
+            "description": "validation process failed, please see warnings",
+            "correlationID": "550e8400-e29b-41d4-a716-446655440000"
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+API key without organization permission:
+
+```json
+{
+  "data": {
+    "activation": {
+      "connect": {
+        "activationData": {
+          "access": {
+            "code": "",
+            "supplier": {
+              "code": "HOTELTEST"
+            }
+          },
+          "buyer": {
+            "code": ""
+          },
+          "seller": {
+            "code": ""
+          },
+          "status": "MANUAL"
+        },
+        "adviseMessage": [
+          {
+            "code": "22401",
+            "level": "ERROR",
+            "description": "not authorized to create access on this organization",
+            "correlationID": "550e8400-e29b-41d4-a716-446655440000"
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+## Related Pages
+
+- [Get Runtime Configuration](runtime-configuration.mdx)
+- [Connect](connect.mdx)
+- [Get Activations](activations.mdx)
+
+## Next Step
+
+- [Seller Activation Flow Guide](activation-flow-guide.mdx)

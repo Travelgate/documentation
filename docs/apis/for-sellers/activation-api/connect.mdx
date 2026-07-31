@@ -1,0 +1,90 @@
+---
+sidebar_position: 5
+title: Connect
+---
+
+import ActivationConnectInput from "../../../../src/graphql/generated-docs/ActivationConnectInput.mdx";
+import Activation from "../../../../src/graphql/generated-docs/Activation.mdx";
+
+import {
+  activationConnectMutation,
+  activationConnectVariables,
+} from "/src/graphql/admin/activation-connect.mutation";
+
+# Connect
+
+Use `connect` to submit the activation request on behalf of the target buyer. The input type is `ActivationConnectInput`.
+
+## Seller Input Context
+
+Build the request with:
+
+- `organizationBuyerCode` (required) — the target buyer's organization code.
+- `notificationEmail` (optional) — addresses notified when the activation completes.
+- `accessConfiguration` (required, `AccessInput`) — at minimum `supplier`, and the `parameters` (`key`/`value` pairs) required by that supplier, as discovered in [Get Runtime Configuration](runtime-configuration.mdx).
+
+Resolve the buyer organization code before calling `connect`.
+
+## Mutation Overview
+
+```graphql
+mutation Connect($data: ActivationConnectInput!) {
+  activation {
+    connect(data: $data) {
+      code
+      activationData {
+        status
+      }
+    }
+  }
+}
+```
+
+For the exhaustive breakdown of `ActivationConnectInput`, `AccessInput`, and every selectable response field, see the [GraphQL API Reference](/api/types/inputs/activation-connect-input.mdx) — the input and return types are expandable there, the same way `HotelCriteriaSearchInput` or other input objects are documented elsewhere in the reference.
+
+```json
+{
+  "data": {
+    "organizationBuyerCode": "BUYER_ORG_CODE",
+    "notificationEmail": ["ops@example.com"],
+    "accessConfiguration": {
+      "supplier": "SUPPLIER_CODE",
+      "name": "SUPPLIER_ACCESS_NAME",
+      "user": "SUPPLIER_USER",
+      "password": "SUPPLIER_PASSWORD",
+      "isTest": false,
+      "urls": {
+        "generic": "https://api.supplier.com",
+        "search": "https://api.supplier.com/search",
+        "quote": "https://api.supplier.com/quote",
+        "book": "https://api.supplier.com/book"
+      },
+      "parameters": [{ "key": "PARAM_KEY", "value": "PARAM_VALUE" }]
+    }
+  }
+}
+```
+
+## Query Inputs
+
+<ActivationConnectInput />
+## Returned Fields
+
+<Activation />
+## Examples
+
+<GraphqlSample
+  query={activationConnectMutation}
+  variables={activationConnectVariables}
+/>
+---
+
+## Next Step
+
+- [Get Activations](activations.mdx)
+
+## Related Calls
+
+- [Get Runtime Configuration](runtime-configuration.mdx)
+- [Get Activations](activations.mdx)
+- [Seller Activation Flow Guide](activation-flow-guide.mdx)

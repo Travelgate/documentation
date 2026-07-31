@@ -45,13 +45,13 @@ When you click **'Create New Case'**, the following happens:
 
 3. **Receive AIna’s Response**: AIna provides reference links, step-by-step guides, and relevant information that can potentially resolve your issue or inquiry.
    
-   ![tg-aina-case-response-screen-0](https://storage.travelgate.com/kbase/tg-aina-case-response-screen-0.png)
+   ![tg-support-cases-aina-rs-1](https://storage.travelgate.com/kbase/tg-support-cases-aina-rs-1.png)
 
 4. **Choose One of Three Options:**
    - **Ask AIna Again** – Refine your original request or add more details. Don’t hesitate to rephrase your question for extra clarity!💡
    - **Got what I needed** – AIna has handled your request and there's no need to create a case.
    - **Need More Help** – If AIna’s response didn’t resolve your issue, create a case with detailed information for our support team. Ensure the issue categories are accurate and include all relevant details. Once submitted, you’ll receive a **Case ID** for tracking, and our team will respond promptly.
 
-   ![tg-aina-case-response-screen-1](https://storage.travelgate.com/kbase/tg-aina-case-response-screen-1.png)
+   ![tg-support-cases-aina-rs-2](https://storage.travelgate.com/kbase/tg-support-cases-aina-rs-2.png)
    ![cases-5](https://storage.travelgate.com/kbase/cases-5.jpg)
    ![cases-6](https://storage.travelgate.com/kbase/cases-6.jpg)

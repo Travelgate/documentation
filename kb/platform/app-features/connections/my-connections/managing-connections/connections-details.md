@@ -58,9 +58,9 @@ You can filter your connections using the following parameters:
 - **Accommodations**: Number of properties available for that access.  
 - **Context Code**: Check the [content codes](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials#context) used.  
 
-- **Buyer Integration Type**: If you're a Seller, you can check if your Buyer is integrated via the **HotelX API** or the **Legacy Pull Buyers API**. If using **HotelX**, a label will be displayed.  
+- **Buyer Connection Type**: If you're a Seller, you can check if your Buyer is connected via the **HotelX API** or the **Legacy Pull Buyers API (deprecated)**. If using **HotelX**, a label will be displayed.  
 
-   ![tg-my-connections-buyer-integration-type](https://storage.travelgate.com/kbase/tg-my-connections-buyer-integration-type.png)  
+   ![tg-my-connections-connection-type](https://storage.travelgate.com/kbase/tg-my-connections-connection-type.png)  
    ![tg-my-connections-fastx-supplier](https://storage.travelgate.com/kbase/tg-my-connections-fastx-supplier.png)
 
 :::tip  

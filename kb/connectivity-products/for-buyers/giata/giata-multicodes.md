@@ -50,6 +50,6 @@ Not all hotels returned by suppliers through Travelgate are necessarily mapped i
 
 :::tip
 **Interested in GIATA Hotel Directory as well?**
-Follow the easy steps outlined in this [guide](/kb/connectivity-products/for-buyers/mapping-solutions/giata/giata-multicodes).
+Follow the easy steps outlined in this [guide](/kb/connectivity-products/for-buyers/giata/giata-multicodes).
 :::
 

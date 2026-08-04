@@ -26,15 +26,14 @@ This page documents the complete Activation flow for both Buyer and Seller profi
    - `organizationBuyerCode` for the target buyer.
    - `accessConfiguration` (`AccessInput`) with `supplier` and the runtime parameters discovered in step 2.
 4. Verify status with `activation.activations(data: ActivationReadInput!)`.
-5. If the workflow requires access validation per client, execute `activation.validate(data: ActivationValidateInput!)`.
 
 ## Role Differences at a Glance
 
-| Topic                | Buyer                                                      | Seller                                                                |
-| -------------------- | ---------------------------------------------------------- | --------------------------------------------------------------------- |
-| Organization scope   | Uses its own `organizationBuyerCode`                       | Uses the target buyer `organizationBuyerCode`                         |
-| Group resolution     | May need `group` when the buyer has multiple HotelX groups | Typically does not resolve buyer group in this flow                   |
-| Activation ownership | Creates the activation request for its own organization    | Creates and can validate the activation on behalf of the target buyer |
+| Topic                | Buyer                                                      | Seller                                               |
+| -------------------- | ---------------------------------------------------------- | ---------------------------------------------------- |
+| Organization scope   | Uses its own `organizationBuyerCode`                       | Uses the target buyer `organizationBuyerCode`        |
+| Group resolution     | May need `group` when the buyer has multiple HotelX groups | Typically does not resolve buyer group in this flow  |
+| Activation ownership | Creates the activation request for its own organization    | Creates the activation on behalf of the target buyer |
 
 :::tip
 For the exhaustive list of arguments and selectable fields for each operation, see the [GraphQL API Reference](/api/) under the `activation` namespace and `hotelX` for `runtimeConfiguration`.
@@ -45,6 +44,5 @@ For the exhaustive list of arguments and selectable fields for each operation, s
 - [Get Buyer Organizations (Seller)](get-buyer-organizations.mdx)
 - [Get Runtime Configuration](runtime-configuration.mdx)
 - [Connect](connect.mdx)
-- [Validate](validate.mdx)
 - [Get Activations](activations.mdx)
 - [Error Handling](errors.mdx)

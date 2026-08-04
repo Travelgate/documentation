@@ -81,14 +81,29 @@ function trackPageView(location) {
   });
 }
 
-// AINA (kapa) modal open -> aina_open. Relies on the preinitialized window.Kapa
-// queue (see the head script in docusaurus.config.js) so registration is never
-// lost to a race with the deferred widget bundle.
+// Ensures window.Kapa exists as kapa's documented async queue. The head script
+// in docusaurus.config.js normally sets this up first; this is a self-contained
+// fallback so the handler is never silently lost if that script didn't run.
+function ensureKapaQueue() {
+  if (typeof window === "undefined") {
+    return null;
+  }
+  if (typeof window.Kapa !== "function") {
+    window.Kapa = function () {
+      (window.Kapa.q = window.Kapa.q || []).push(arguments);
+    };
+  }
+  return window.Kapa;
+}
+
+// AINA (kapa) modal open -> aina_open. Registration is queued on window.Kapa.q
+// and replayed by the deferred widget bundle, so it survives the load race.
 function registerAinaOpen() {
-  if (typeof window === "undefined" || typeof window.Kapa !== "function") {
+  const kapa = ensureKapaQueue();
+  if (!kapa) {
     return;
   }
-  window.Kapa("onModalOpen", function () {
+  kapa("onModalOpen", function () {
     pushToDataLayer({ event: "aina_open" });
   });
 }
@@ -107,13 +122,13 @@ function registerEditInterest() {
         return;
       }
       const editLink = target.closest(
-        '.theme-edit-this-page, a[href*="github.com/Travelgate/documentation"]'
+        '.theme-edit-this-page, a[href*="github.com/travelgate/documentation" i]',
       );
       if (editLink) {
         pushToDataLayer({ event: "docs_edit_interest" });
       }
     },
-    true
+    true,
   );
 }
 

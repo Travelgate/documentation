@@ -42,18 +42,7 @@ const config = {
     locales: ["en"],
   },
 
-  clientModules: [require.resolve("./src/gtm/gtmTracking.js")],
-
   headTags: [
-    // Preinitialize the kapa (AINA) widget JS object so event handlers (e.g.
-    // onModalOpen) registered by the GTM client module are queued and never
-    // lost to a race with the deferred widget bundle.
-    {
-      tagName: "script",
-      attributes: {},
-      innerHTML:
-        "(function(){var k=window.Kapa;if(!k){var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};window.Kapa=i;}})();",
-    },
     {
       tagName: "link",
       attributes: {
@@ -83,7 +72,7 @@ const config = {
       attributes: {
         property: "og:description",
         content:
-            "Explore comprehensive API documentation, integration instructions, and technical support for Travelgate's platform",
+          "Explore comprehensive API documentation, integration instructions, and technical support for Travelgate's platform",
       },
     },
     {
@@ -128,7 +117,7 @@ const config = {
       attributes: {
         name: "twitter:description",
         content:
-            "Full API documentation and integration guides for the Travelgate platform. Build fast, scale globally",
+          "Full API documentation and integration guides for the Travelgate platform. Build fast, scale globally",
       },
     },
     {
@@ -245,7 +234,7 @@ const config = {
       "data-project-color": "#0B59DE",
       "data-project-logo": "/img/ask_ia.svg",
       "data-modal-disclaimer":
-          "AIna, Travelgate's multilingual AI assistant, provides quick answers and troubleshooting guidance based on our official documentation. For the most precise and helpful response, please describe your inquiry clearly and in detail. While we strive for thoroughness, AI-generated responses may not always be perfect. They are provided as is, and Travelgate disclaims any liability for inaccuracies. Please use discretion.",
+        "AIna, Travelgate's multilingual AI assistant, provides quick answers and troubleshooting guidance based on our official documentation. For the most precise and helpful response, please describe your inquiry clearly and in detail. While we strive for thoroughness, AI-generated responses may not always be perfect. They are provided as is, and Travelgate disclaims any liability for inaccuracies. Please use discretion.",
       "data-user-analytics-fingerprint-enabled": "true",
       "data-user-analytics-store-ip": "true",
       "data-button-text": " ",
@@ -268,7 +257,7 @@ const config = {
 
       "data-mcp-enabled": "true",
       "data-mcp-server-url": "https://travelgate.mcp.kapa.ai",
-      "data-customization-id": "1d732488-1c1e-4ed6-b4ed-3135ad6fde53"
+      "data-customization-id": "1d732488-1c1e-4ed6-b4ed-3135ad6fde53",
     },
   ],
 
@@ -391,73 +380,73 @@ const config = {
   ],
 
   themeConfig:
-  /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-      ({
-        // Replace with your project's social card
-        image: "img/docusaurus-social-card.jpg",
-        navbar: {
-          title: "Travelgate Docs",
-          logo: {
-            alt: "Travelgate",
-            src: "img/logo.svg",
+    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+    ({
+      // Replace with your project's social card
+      image: "img/docusaurus-social-card.jpg",
+      navbar: {
+        title: "Travelgate Docs",
+        logo: {
+          alt: "Travelgate",
+          src: "img/logo.svg",
+        },
+        items: [
+          {
+            //to: '/',
+            //activeBasePath: 'docs',
+            type: "docSidebar",
+            sidebarId: "docsSidebar",
+            position: "left",
+            label: "Documentation",
           },
-          items: [
-            {
-              //to: '/',
-              //activeBasePath: 'docs',
-              type: "docSidebar",
-              sidebarId: "docsSidebar",
-              position: "left",
-              label: "Documentation",
-            },
-            {
-              to: "/kb",
-              //type: 'docSidebar',
-              sidebarId: "kbSidebar",
-              label: "Knowledge Base",
-              position: "left",
-            },
-            {
-              to: "/api",
-              //type: 'docSidebar',
-              sidebarId: "schemaSidebar",
-              label: "GraphQL API Reference",
-              position: "left",
-            },
-            {
-              to: "/playground",
-              //type: 'docSidebar',
-              sidebarId: "playgroundSidebar",
-              label: "GraphQL Playground",
-              position: "left",
-            },
-            {
-              to: "/ask-ai",
-              //type: 'docSidebar',
-              sidebarId: "askAiSidebar",
-              label: "Ask AI",
-              position: "left",
-            },
-            {
-              to: "https://app.travelgate.com/tickets",
-              //type: 'docSidebar',
-              sidebarId: "supportCenterSidebar",
-              label: "Support Center",
-              position: "left",
-            },
-          ],
-        },
-        footer: {
-          style: "dark",
-          links: [],
-          copyright: `Copyright © ${new Date().getFullYear()} Travelgate.`,
-        },
-        prism: {
-          theme: lightTheme,
-          darkTheme: darkTheme,
-          additionalLanguages: ["csharp"], // Agregar soporte para C#
-        },
-      }),
+          {
+            to: "/kb",
+            //type: 'docSidebar',
+            sidebarId: "kbSidebar",
+            label: "Knowledge Base",
+            position: "left",
+          },
+          {
+            to: "/api",
+            //type: 'docSidebar',
+            sidebarId: "schemaSidebar",
+            label: "GraphQL API Reference",
+            position: "left",
+          },
+          {
+            to: "/playground",
+            //type: 'docSidebar',
+            sidebarId: "playgroundSidebar",
+            label: "GraphQL Playground",
+            position: "left",
+          },
+          {
+            to: "/ask-ai",
+            //type: 'docSidebar',
+            sidebarId: "askAiSidebar",
+            label: "Ask AI",
+            position: "left",
+          },
+          {
+            to: "https://app.travelgate.com/tickets",
+            //type: 'docSidebar',
+            sidebarId: "supportCenterSidebar",
+            label: "Support Center",
+            position: "left",
+          },
+        ],
+      },
+      footer: {
+        style: "dark",
+        links: [],
+        copyright: `Copyright © ${new Date().getFullYear()} Travelgate.`,
+      },
+      prism: {
+        theme: lightTheme,
+        darkTheme: darkTheme,
+        additionalLanguages: ["csharp"], // Agregar soporte para C#
+      },
+    }),
 };
 
 module.exports = config;

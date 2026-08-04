@@ -81,9 +81,9 @@ function trackPageView(location) {
   });
 }
 
-// Ensures window.Kapa exists as kapa's documented async queue. The head script
-// in docusaurus.config.js normally sets this up first; this is a self-contained
-// fallback so the handler is never silently lost if that script didn't run.
+// Ensures window.Kapa exists as kapa's documented async queue so the handler is
+// never lost to a race with the deferred widget bundle: if the bundle hasn't
+// loaded yet we register on the queue, which the bundle replays once ready.
 function ensureKapaQueue() {
   if (typeof window === "undefined") {
     return null;

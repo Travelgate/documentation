@@ -11,14 +11,9 @@
 const API_FAMILY_SUFFIXES = new Set([
   "api",
   "graphql",
-  "rest",
-  "soap",
   "pull",
   "push",
-  "set",
-  "up",
   "buyers",
-  "sellers",
 ]);
 
 function normalizeSegments(pathname) {
@@ -42,7 +37,7 @@ function apiFamily(segment) {
   while (parts.length > 1 && API_FAMILY_SUFFIXES.has(parts[parts.length - 1])) {
     parts.pop();
   }
-  return parts.join("-") || null;
+  return parts.join("-");
 }
 
 export function getContentGroups(pathname) {

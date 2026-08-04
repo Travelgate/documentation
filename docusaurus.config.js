@@ -42,6 +42,8 @@ const config = {
     locales: ["en"],
   },
 
+  clientModules: [require.resolve("./src/gtm/gtmTracking.js")],
+
   headTags: [
     {
       tagName: "link",

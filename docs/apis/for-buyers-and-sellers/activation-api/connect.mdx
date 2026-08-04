@@ -1,0 +1,117 @@
+---
+sidebar_position: 4
+title: Connect
+---
+
+import ActivationConnectInput from "../../../../src/graphql/generated-docs/ActivationConnectInput.mdx";
+import Activation from "../../../../src/graphql/generated-docs/Activation.mdx";
+
+import {
+  activationConnectMutation,
+  activationConnectVariables,
+} from "/src/graphql/admin/activation-connect.mutation";
+
+# Connect
+
+Use `connect` to submit the activation request. The input type is `ActivationConnectInput`.
+
+## Role-Specific Input Context
+
+### Buyer
+
+Build the request with:
+
+- `organizationBuyerCode` (required): your buyer organization code, obtained from `allOrganizations` where `isBuyer = true`.
+- `group` (conditional): your HotelX group code when the buyer organization has more than one group.
+- `notificationEmail` (optional): addresses notified when the activation completes.
+- `accessConfiguration` (required, `AccessInput`): at minimum `supplier`, plus the credential, URL, and parameter values required by the supplier.
+
+### Seller
+
+Build the request with:
+
+- `organizationBuyerCode` (required): the target buyer organization code.
+- `notificationEmail` (optional): addresses notified when the activation completes.
+- `accessConfiguration` (required, `AccessInput`): at minimum `supplier`, plus the credential, URL, and parameter values required by the supplier.
+
+Resolve the target buyer before calling `connect`.
+
+## Runtime-to-Connect Mapping
+
+Use the `tagRuntime` values returned by `hotelX.runtimeConfiguration` to decide where each value must be sent in `accessConfiguration` for `connect`.
+
+| `tagRuntime` | Field in `accessConfiguration` | Notes                                        |
+| ------------ | ------------------------------ | -------------------------------------------- |
+| `USER`       | `user`                         | Supplier user credential                     |
+| `PASSWORD`   | `password`                     | Supplier password credential                 |
+| `URLGENERIC` | `urls.generic`                 | Valid URL for all methods                    |
+| `URLAVAIL`   | `urls.search`                  | Availability URL                             |
+| `URLQUOTE`   | `urls.quote`                   | Valuation URL                                |
+| `URLBOOK`    | `urls.book`                    | Booking URL                                  |
+| `PARAMETER`  | `parameters[]`                 | Parameters as `{ key: "...", value: "..." }` |
+
+## Mutation Overview
+
+```graphql
+mutation Connect($data: ActivationConnectInput!) {
+  activation {
+    connect(data: $data) {
+      code
+      activationData {
+        status
+      }
+    }
+  }
+}
+```
+
+For the exhaustive breakdown of `ActivationConnectInput`, `AccessInput`, and every selectable response field, see the [GraphQL API Reference](/api/types/inputs/activation-connect-input) for the input type and the [Activation object](/api/types/objects/activation) for the response tree.
+
+```json
+{
+  "data": {
+    "organizationBuyerCode": "BUYER_ORG_CODE",
+    "group": "BUYER_GROUP_CODE",
+    "notificationEmail": ["ops@example.com"],
+    "accessConfiguration": {
+      "supplier": "SUPPLIER_CODE",
+      "name": "SUPPLIER_ACCESS_NAME",
+      "user": "SUPPLIER_USER",
+      "password": "SUPPLIER_PASSWORD",
+      "isTest": false,
+      "urls": {
+        "generic": "https://api.supplier.com",
+        "search": "https://api.supplier.com/search",
+        "quote": "https://api.supplier.com/quote",
+        "book": "https://api.supplier.com/book"
+      },
+      "parameters": [{ "key": "PARAM_KEY", "value": "PARAM_VALUE" }]
+    }
+  }
+}
+```
+
+## Query Inputs
+
+<ActivationConnectInput />
+
+## Returned Fields
+
+<Activation />
+
+## Examples
+
+<GraphqlSample
+  query={activationConnectMutation}
+  variables={activationConnectVariables}
+/>
+
+## Related Calls
+
+- [Get Runtime Configuration](runtime-configuration.mdx)
+- [Validate](validate.mdx)
+- [Get Activations](activations.mdx)
+
+## Next Step
+
+- [Get Activations](activations.mdx)

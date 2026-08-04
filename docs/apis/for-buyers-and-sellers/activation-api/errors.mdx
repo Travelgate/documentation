@@ -1,0 +1,73 @@
+---
+sidebar_position: 7
+title: Error Handling
+---
+
+# Error Handling
+
+Errors in Activation can be returned in two formats:
+
+- `adviseMessage[]` inside the GraphQL data payload for most business and validation errors.
+- `errors[]` at GraphQL top level for typical authorization or gateway-level failures.
+
+## AdviseMessage Level
+
+| `level` | Meaning                                                                                         |
+| ------- | ----------------------------------------------------------------------------------------------- |
+| `ERROR` | The process stopped. The access was not created.                                                |
+| `WARN`  | A non-critical validation step failed. The process continued until the final validation result. |
+| `INFO`  | Informational message. No action required.                                                      |
+
+## Numeric Codes
+
+Each `adviseMessage.code` is a numeric category. The concrete cause is always in `description`.
+
+| `code`  | Name           | When it appears                                                                                                                            | Action                                                                              |
+| ------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------- |
+| `11400` | Bad Request    | Required field is empty or invalid, parameters do not satisfy supplier runtime constraints, or a PUSH supplier is sent with `isTest: true` | Read all `WARN` messages because each one identifies the failing field or parameter |
+| `22401` | Unauthorized   | Invalid API key, missing permissions, or token organization mismatch                                                                       | Validate the API key and organization scope                                         |
+| `22500` | Internal Error | TGX internal service failure such as supplier not found, group not configured, runtime failure, or database error                          | Contact TGX and include `correlationID`                                             |
+
+> Diagnose quickly by checking `activationData.status` first. `MANUAL` usually indicates failure. Then review every `adviseMessage[].description`.
+
+## Operation-Specific Notes
+
+### `connect`
+
+Messages with `code: "11400"` and `level: "WARN"` describe specific failing fields. They are often followed by the final `ERROR` message `validation process failed, please see warnings`.
+
+- Missing `USER`, `PASSWORD`, or runtime URL fields means the payload did not satisfy a mandatory `tagRuntime` requirement.
+- Missing or invalid `parameters[]` entries mean the supplier runtime definition was not satisfied.
+- `not authorized to create access on this organization` means the token does not have permission for the requested buyer or supplier organization.
+
+For `22500` on `connect`, one common trigger is sending an invalid HotelX group, or not sending one when the buyer organization has multiple groups. Re-check the `connect` payload first. If the payload is correct, report the error with `correlationID`.
+
+### `activations`
+
+- `bad request` usually means no valid filter was provided.
+- `not authorized to read activations for this organization` means the token has no permission for the requested organization.
+- `parse organization data error, organization not found` means the provided organization does not exist.
+
+### `validate`
+
+`validate` returns the same `Activation` object shape used by `connect`, so the same `adviseMessage[]` and `activationData.status` inspection pattern applies when validation fails.
+
+## GraphQL Top-Level `errors[]` Example
+
+```json
+{
+  "data": null,
+  "errors": [
+    {
+      "message": "Authorization not allowed"
+    }
+  ]
+}
+```
+
+## Related Pages
+
+- [Get Runtime Configuration](runtime-configuration.mdx)
+- [Connect](connect.mdx)
+- [Validate](validate.mdx)
+- [Get Activations](activations.mdx)

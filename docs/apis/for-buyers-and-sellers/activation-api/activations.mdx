@@ -1,0 +1,82 @@
+---
+sidebar_position: 6
+title: Get Activations
+---
+
+import ActivationReadInput from "../../../../src/graphql/generated-docs/ActivationReadInput.mdx";
+import ActivationConnection from "../../../../src/graphql/generated-docs/ActivationConnection.mdx";
+
+import {
+  activationsQuery,
+  activationsVariables,
+} from "/src/graphql/admin/activation-activations.query";
+
+# Get Activations
+
+Use `activations` to verify created connections and inspect status after `connect`. The input type is `ActivationReadInput`.
+
+## Query Overview
+
+```graphql
+query Activations($data: ActivationReadInput!) {
+  activation {
+    activations(data: $data) {
+      edges {
+        node {
+          code
+          activationData {
+            status
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+### Buyer Example
+
+```json
+{
+  "data": {
+    "organizationBuyerCode": "BUYER_ORG_CODE"
+  }
+}
+```
+
+### Seller Example
+
+```json
+{
+  "data": {
+    "organizationSellerCode": "SELLER_ORG_CODE",
+    "organizationBuyerCode": "BUYER_ORG_CODE"
+  }
+}
+```
+
+See the [GraphQL API Reference](/api/types/objects/activation-connection) for the full `activations` field tree. `status` is one of `PENDING`, `AVAILABLE`, `MANUAL`, or `PENDING_SELLER_RESOLUTION`.
+
+## Operational Use
+
+- Confirm whether the activation already exists.
+- Validate the final state after `connect` or `validate`.
+- Track activation state from buyer or seller systems.
+
+## Query Inputs
+
+<ActivationReadInput />
+
+## Returned Fields
+
+<ActivationConnection />
+
+## Examples
+
+<GraphqlSample query={activationsQuery} variables={activationsVariables} />
+
+## Related Calls
+
+- [Connect](connect.mdx)
+- [Validate](validate.mdx)
+- [Error Handling](errors.mdx)

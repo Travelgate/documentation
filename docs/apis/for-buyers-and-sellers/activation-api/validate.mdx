@@ -1,0 +1,58 @@
+---
+sidebar_position: 5
+title: Validate
+---
+
+# Validate
+
+Use `validate` to validate an existing connection between a buyer and a seller. The input type is `ActivationValidateInput`.
+
+## When to Use
+
+Call `validate` after `connect` when your workflow requires validating an existing access against one or more buyer client names.
+
+## Mutation Overview
+
+```graphql
+mutation Validate($data: ActivationValidateInput!) {
+  activation {
+    validate(data: $data) {
+      code
+      activationData {
+        status
+      }
+      adviseMessage {
+        code
+        level
+        description
+      }
+    }
+  }
+}
+```
+
+For the exhaustive breakdown of `ActivationValidateInput` and the returned `Activation` object, see the [GraphQL API Reference](/api/types/inputs/activation-validate-input) and [Activation object](/api/types/objects/activation).
+
+```json
+{
+  "data": {
+    "accessCode": "ACCESS_CODE",
+    "clientNames": ["CLIENT_NAME"]
+  }
+}
+```
+
+## Input Notes
+
+- `accessCode` is the access identifier to validate.
+- `clientNames` is the list of buyer client names that must be validated for that access.
+
+## Related Calls
+
+- [Connect](connect.mdx)
+- [Get Activations](activations.mdx)
+- [Error Handling](errors.mdx)
+
+## Next Step
+
+- [Get Activations](activations.mdx)

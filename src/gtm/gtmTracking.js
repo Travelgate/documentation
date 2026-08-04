@@ -7,7 +7,7 @@
  *   2. `gtm.pageview` with the virtual page + content_group / content_subgroup.
  *
  * It also pushes the Docs-zone interaction events:
- *   - `aina_open`          when the AINA (kapa) widget modal is opened.
+ *   - `aina_open`          when the AIna (kapa) widget modal is opened.
  *   - `docs_edit_interest` when the "Edit this page" link is clicked.
  */
 
@@ -96,7 +96,7 @@ function ensureKapaQueue() {
   return window.Kapa;
 }
 
-// AINA (kapa) modal open -> aina_open. Registration is queued on window.Kapa.q
+// AIna (kapa) modal open -> aina_open. Registration is queued on window.Kapa.q
 // and replayed by the deferred widget bundle, so it survives the load race.
 function registerAinaOpen() {
   const kapa = ensureKapaQueue();

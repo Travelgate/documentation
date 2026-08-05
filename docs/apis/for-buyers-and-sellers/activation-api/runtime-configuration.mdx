@@ -1,0 +1,63 @@
+---
+sidebar_position: 3
+title: Get Runtime Configuration
+---
+
+import HotelRuntimeConfiguration from "../../../../src/graphql/generated-docs/HotelRuntimeConfiguration.mdx";
+import {
+  runtimeConfigurationQuery,
+  runtimeConfigurationVariables,
+} from "/src/graphql/admin/activation-runtime-configuration.query";
+
+# Get Runtime Configuration
+
+Before calling `connect`, discover which parameters the target supplier requires using the HotelX API `runtimeConfiguration` query. This call is not part of the `activation` namespace, but it is the prerequisite for building a valid `AccessInput.parameters` payload.
+
+:::info
+Run this step after resolving the target buyer and, in buyer mode, after confirming whether the buyer also needs a specific HotelX `group`.
+:::
+
+## Relationship to the Connector RuntimeConfiguration Model
+
+The `hotelRuntimeParameters` returned here follow the same model documented for Connectors. See [RuntimeConfiguration (Connectors Pull Sellers API)](/docs/apis/for-sellers/connectors-pull-developers-api/advanced-configuration/runtime-configuration) for the complete field-by-field definition (`key`, `mandatory`, `type`, `possibleValues`, `pattern`, and related fields).
+
+## Query Overview
+
+```graphql
+query RuntimeConfiguration($supplierCode: ID!) {
+  hotelX {
+    runtimeConfiguration(supplierCode: $supplierCode) {
+      hotelRuntimeConfigurationData {
+        hotelRuntimeParameters {
+          key
+          mandatory
+          type
+          defaultValue
+          possibleValues
+        }
+      }
+    }
+  }
+}
+```
+
+```json
+{
+  "supplierCode": "SUPPLIER_CODE"
+}
+```
+
+## Returned Fields
+
+<HotelRuntimeConfiguration />
+
+## Examples
+
+<GraphqlSample
+  query={runtimeConfigurationQuery}
+  variables={runtimeConfigurationVariables}
+/>
+
+## Next Step
+
+- [Connect](connect.mdx)

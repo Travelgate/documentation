@@ -11,12 +11,12 @@ import {bookQuickStartMutation, bookQuickStartVariables} from "../../../../src/g
 
 ## Introduction
 
-Hotel-X API is a powerful aggregation solution that allows you to get results from the largest network of Sellers in a single request. Whether it's at the hotel, room type, or rate plan level, you have the flexibility to aggregate data to meet your specific needs.
+HotelX API is a powerful aggregation solution that allows you to get results from the largest network of Sellers in a single request. Whether it's at the hotel, room type, or rate plan level, you have the flexibility to aggregate data to meet your specific needs.
 
-What sets Hotel-X API apart is its innovative structure: with a single integration, you can access the products of all Suppliers in the Marketplace, aggregate results, and easily add plugins or apps to extend functionality.  This unique feature is complemented by Hotel-X's ability to provide pre-processed responses, ensuring your system tasks are efficient and hassle-free.
+What sets HotelX API apart is its innovative structure: with a single integration, you can access the products of all Suppliers in the Marketplace, aggregate results, and easily add plugins or apps to extend functionality.  This unique feature is complemented by HotelX's ability to provide pre-processed responses, ensuring your system tasks are efficient and hassle-free.
 
 &nbsp;
-![Hotel-X Overview](https://storage.travelgate.com/docs/hotel-x_overview.svg)
+![HotelX Overview](https://storage.travelgate.com/docs/hotel-x_overview.svg)
 
 
 **Within Hotel-X API, Buyers work across three main areas:**
@@ -30,14 +30,14 @@ In this quickstart tutorial, you will learn how to create a simple sample bookin
 
 ## Let's Get Started: How to Make a Booking
 
-Hotel-X offers a powerful GraphQL-based API that simplifies the process of booking hotels and managing reservations. Whether you're a seasoned developer or just getting started, this guide will walk you through the basics of using the API to make hotel bookings.
+HotelX offers a powerful GraphQL-based API that simplifies the process of booking hotels and managing reservations. Whether you're a seasoned developer or just getting started, this guide will walk you through the basics of using the API to make hotel bookings.
 
 
 ### Prerequisites
 
 #### Endpoint
 
-Hotel-X, being a GraphQL-based API, utilizes a single endpoint for all operations:
+HotelX, being a GraphQL-based API, utilizes a single endpoint for all operations:
 
 
 ```html
@@ -75,7 +75,7 @@ If you don't have an API key yet, don't worry — you'll be able to test the upc
 
 #### Supported Operations
 
-Lastly, please note that the Hotel-X API supports two types of operations:
+Lastly, please note that the HotelX API supports two types of operations:
 
 
 * `Query`: which are "read-only" and used for retrieving data from our system. You can use queries to search for hotels, check availability, and more.
@@ -83,14 +83,14 @@ Lastly, please note that the Hotel-X API supports two types of operations:
 
 * `Mutation`: which allow for changes, additions, or deletions of data within our system. This is where you can create bookings, update reservations, etc.
 
-But now this quickstart guide will focus on the basics of using the Hotel-X API to make hotel reservations, so let's dive in and get started!
+But now this quickstart guide will focus on the basics of using the HotelX API to make hotel reservations, so let's dive in and get started!
 
 
 ### 1. Find available hotels based on your search criteria
 
 The Search query is where the adventure begins in our shopping journey.
 
-In Hotel-X, a Buyer can decide the scope of each Search request:
+In HotelX, a Buyer can decide the scope of each Search request:
 
 - Send the request to **all connected Suppliers**.
 - Send the request to only **specific Suppliers**.
@@ -109,13 +109,13 @@ This step lets you explore your options before committing to a booking, ensuring
 If you execute the previous Search query by clicking the play button, you'll get a sample Search response with all available options and rates for the requested hotel and criteria.
 
 For each option, you will receive key details such as **Supplier**, **FastX and Supplier codes**, **room type**, **price**, **cancellation policies**, and more. 
-This example focuses on the essential fields, but Hotel-X API supports many additional capabilities. To explore all Search features, check the full [search step documentation](../hotel-x-pull-buyers-api/booking-flow/search). 
+This example focuses on the essential fields, but HotelX API supports many additional capabilities. To explore all Search features, check the full [search step documentation](../hotel-x-pull-buyers-api/booking-flow/search). 
 
 :::tip
 
 As explained in the detailed [Search documentation](./booking-flow/search), the more Suppliers and accesses you include in a single request, the larger the response can become.
 
-To keep responses manageable and improve performance, **we strongly recommend using an aggregation plugin** such as [Cheapest Price](../hotel-x-pull-buyers-api/plugins/cheapest-price) or [Preference](../hotel-x-pull-buyers-api/plugins/preference). With aggregation, Hotel-X can internally group equivalent options (for example, same hotel, board, and room type) across Suppliers and return only the **N best options**, based on your configuration.
+To keep responses manageable and improve performance, **we strongly recommend using an aggregation plugin** such as [Cheapest Price](../hotel-x-pull-buyers-api/plugins/cheapest-price) or [Preference](../hotel-x-pull-buyers-api/plugins/preference). With aggregation, HotelX can internally group equivalent options (for example, same hotel, board, and room type) across Suppliers and return only the **N best options**, based on your configuration.
 
 **This is one of the key advantages of FastX**: in a single request, you can query all suppliers or only selected ones, and then aggregate results automatically. 🚀
 
@@ -157,7 +157,7 @@ Make sure to change the value of the `clientReference` field so that the Book ca
 
 ## Development credentials and test data
 
-To help you get started, we provide test credentials and example data that you can safely use during the development phase. These credentials allow you to run test queries and explore the structure and behavior of Hotel-X without impacting real live Suppliers.
+To help you get started, we provide test credentials and example data that you can safely use during the development phase. These credentials allow you to run test queries and explore the structure and behavior of HotelX without impacting real live Suppliers.
 
 **Credentials**  
 - **Apikey:** `test0000-0000-0000-0000-000000000000`  

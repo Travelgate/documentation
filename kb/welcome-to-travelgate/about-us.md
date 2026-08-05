@@ -1,72 +1,97 @@
 ---
 sidebar_position: 2
+title: About Us
+description: Discover Travelgate's global hotel distribution network, technology infrastructure, network metrics, and integration within the Travelsoft Group.
 ---
 
 # About Us
 
-## What Is Travelgate And How Can It Help Me?
+**Connect Faster. Distribute at Scale. Grow Without Friction.**
 
-Travelgate is a **Connectivity Marketplace** that connects Buyers and Sellers of travel products. Our advanced technology has earned the trust of major industry players and specialized providers worldwide.
+Travelgate is a **global network for hotel distribution**. Founded in 2012 and headquartered in Palma de Mallorca (Spain), Travelgate connects more than 1,000 Buyers and Sellers through a **unified API platform**.
 
-Gone are the days when travel agencies and websites had to manage multiple API integrations to access different Sellers' products. With Travelgate, a single API integration provides instant access to a vast array of travel opportunities, ensuring fast and seamless connections with an unbeatable time-to-market.
+## What Does Travelgate Do?
 
-For Buyers, integrating with our API provides a standardized data feed from all Sellers. No more juggling multiple integrations—adding a new Seller is as simple as signing a contract, with no additional integration work required.
+Travelgate provides the infrastructure behind hotel connectivity — built for scale, designed for growth. We reduce integration complexity, improve operational reliability, and **enable seamless access to hotel inventory worldwide through a single API.**
 
-For Sellers, Travelgate offers an expansive distribution network. Whether you're a Tour Operator, OTA, Bedbank, or DMC, our platform allows you to sell your products and cross-sell to a diverse pool of potential customers. The possibilities in our dynamic Marketplace are endless.
+## How Big Is Travelgate's Network?
 
-:::info
-**Discover how Travelgate came to be from our Founder [here](https://blog.travelgate.com/en/from-xml-travelgate-to-travelgatex).**
+Travelgate operates at enterprise scale:
+
+| Metric | Volume / Scale |
+| :--- | :--- |
+| **Daily Bookings** | 65,000+ bookings per day |
+| **Daily Search Volume** | 15+ billion searches per day |
+| **Annual Turnover** | €5+ billion yearly turnover |
+| **Connected Partners** | 1,000+ Buyers & Sellers globally |
+
+
+## How Does Travelgate Help Partners?
+
+Travelgate acts as a centralized bridge between travel ecosystem partners.
+
+It is designed for travel agencies, OTAs, Tour Operators, Bedbanks, DMCs, Hotel Chains, and other companies that need scalable hotel connectivity.
+
+### For Buyers
+Travelgate delivers a standardized hotel data feed from every Seller on the network through one API integration. Adding a new hotel provider requires no additional integration work — only a signed contract.
+
+* **Key Benefit:** One integration, unlimited hotel suppliers.
+
+### For Sellers
+For Tour Operators, OTAs, Bedbanks, and DMCs — Travelgate is the network for reaching new Buyers at scale. List your hotel product and distribute it across a global pool of travel Buyers, with built-in cross-selling opportunities.
+
+* **Key Benefit:** Expand distribution across a global Buyer network.
+
+
+## What Is the Travelgate APP?
+
+The **Travelgate APP** is the main portal to manage and monitor connectivity operations:
+
+- **Connection Monitoring & Optimization:** real-time integration performance tracking.
+- **Smart Reports:** customizable, data-driven distribution insights.
+- **Account Management:** self-service credentials and configuration.
+- **AI-Powered Assistant:** instant, documentation-backed answers.
+- **Integrated Support Platform:** direct access to the Travelgate support team.
+- **FastX Standardized Codes:** unified hotel, board, and room codes across Suppliers, enabling faster product aggregation.
+
+
+To explore current partner activity and opportunities, you can use the [Dashboard](https://app.travelgate.com/dashboard) and the [Network Partner List](https://app.travelgate.com/network/partners).
+
+
+
+## Is Travelgate Part of a Larger Group?
+
+Since 2024, Travelgate has been part of **Travelsoft Group**, a leading global travel SaaS enterprise operating in over 90 countries. Travelsoft technologies power more than **€50 billion in annual bookings** and employ over 700 travel technology experts.
+
+Travelsoft focuses on solving complex technical challenges across travel — automating sourcing, packaging, booking, and connectivity — while driving industry innovation through AI integration across its suite of platforms.
+
+The group includes 12 travel technology brands:
+
+> **Travelsoft Brand Ecosystem:**  
+> Airquest • Atcore • .Bosys • Orchestra • Tigerbay • Traffics • Travel Compositor • Travel Connection Technology • **Travelgate** • Travelsoft Pay • Travelsoft Services • Eventiz
+> 
+> Learn more at [www.travelsoft.com](https://www.travelsoft.com).
+
+
+
+## Who Are Travelgate's Industry Partners?
+
+Travelgate collaborates with major companies across the travel distribution ecosystem, including Agoda, Expedia, British Airways Holidays, Lastminute.com, Trip.com, Hotelbeds, On the Beach, Love Holidays, Avoris, and Logitravel.
+
+
+## How Can I Become a Travelgate Partner?
+
+Joining the Travelgate network takes only a few minutes:
+
+1. Visit the [Travelgate Platform](https://app.travelgate.com/).
+2. Click **Contact Travelgate**.
+3. Fill out and submit the quick contact form.
+
+Our onboarding team responds promptly to every partnership request.
+
+:::info Looking for Technical Guides or API References?
+If you are setting up or managing an integration, explore our [Getting Started Guide](/kb/getting-started/onboarding) or dive directly into the [Developer API Documentation](/docs/apis/overview).
 :::
 
-
-## Travelgate APP: Your Gateway to Endless Opportunities
-
-At Travelgate, we’re redefining how the travel industry connects. As a leading Connectivity Marketplace, our mission is to empower our partners—both Buyers and Sellers—to unlock the full potential of their connections through innovative, seamless technology.
-
-### Designed to Maximize Your Connections
-
-The **Travelgate Platform** has been built with one clear purpose: to help you get the most out of your partnerships and business opportunities. Over time, the platform has evolved to offer more powerful features, all centered around streamlining connectivity and enhancing collaboration within the travel ecosystem.
-
-### What Can You Do with the Travelgate APP?
-
-The **Travelgate APP** is your all-in-one access point for everything Travelgate-related. It consolidates a wide array of tools and features into a single, user-friendly interface—eliminating the need to navigate multiple systems or websites.
-
-Here’s what you can expect:
-
-- **Connection Monitoring & Optimization**: Keep track of your integrations in real time and ensure they’re performing at their best.
-- **Smart Reports**: Make data-driven decisions with detailed, customizable insights.
-- **Account Management**: Easily update your connection settings, credentials, and preferences.
-- **AI-Powered Assistant**: Get instant help powered by our extensive documentation, available right when you need it.
-- **Integrated Support Platform**: Reach out to our team or explore help articles—without ever leaving the platform.
-- **FastX Standardized Codes**: Work with unique, standardized codes for hotels, boards, and rooms across all Suppliers. This simplifies product management, lets you aggregate offerings in a single feed, and ensures faster, more efficient connections in the Marketplace.
-
-With everything centralized in one place, managing your Travelgate experience has never been easier. Just log in and start exploring.
-
-:::tip 
-Learn more about the Travelgate APP and its full feature set in [this section](/kb/platform/app-features/dashboard/travelgate-dashboard).
-:::
-
-
-## Who are our current partners?
-
-Connectivity is crucial for any travel business, and partnering with the right companies is key to success. We proudly collaborate with renowned industry leaders such as Agoda, Expedia, British Airways Holidays, Lastminute.com, Trip.com, Hotelbeds, On the Beach, Love Holidays, Avoris, Logitravel, and many more. These trusted partners are already benefiting from our extensive connectivity ecosystem.
-
-### Who can we connect with?
-
-Travelgate boasts **one of the largest networks of partners worldwide.** Explore our [Platform](https://www.travelgate.com/) to view the full list of Partners.
-
-## How can I become a Travelgate partner?
-
-If you haven't partnered with Travelgate yet, getting started is easy. Simply visit our [Platform](https://www.travelgate.com/), click "Contact Travelgate," and fill out the form—it takes just two minutes! Our team will get in touch with you promptly.
-
-![tg_about_us](https://storage.travelgate.com/kbase/tg_about_us.jpg)
-
-**Thank you for choosing Travelgate as your trusted travel partner!**
-
-:::info Our Core Values:
- 
-- **Network:** Connect to the largest travel network with a single integration.  
-- **Innovation:** Leverage world-class technology with the most advanced travel APIs.  
-- **Partnership:** Trusted by industry leaders and specialized providers worldwide.
-:::
-
+### Travelgate's Core Values
+**Connect faster. Distribute at scale. Grow without friction.**

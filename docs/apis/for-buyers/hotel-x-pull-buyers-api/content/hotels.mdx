@@ -112,6 +112,16 @@ You will obtain a response with 5 hotels per page:
 }
 ```
 
+### Response Considerations
+
+:::note
+
+The amount of information and content returned might vary between Sellers.
+
+HotelX supports all languages, but receiving hotel descriptions in one or another depends entirely on the languages supported by the Seller.
+
+:::
+
 ## Query Inputs
 
 <HotelXHotelListInput />
@@ -187,6 +197,67 @@ Filter hotels by destination zone. For example, to retrieve only hotels in Santo
 
 ## Frequently Asked Questions
 
+<details>
+    <summary>How can I obtain the GIATA code?</summary>
+    <div>
+        <div>
+			GIATA codes are supported in the HotelX Hotels Query response at the hotel level. To activate this feature:
+			1. [Open a ticket](https://app.travelgate.com/support) with Customer Care, providing your GIATA credentials and the Sellers for which you want GIATA codes.
+			2. Once activated, include the `giataData` node in your Hotels Query to receive GIATA details in the response.
+		</div>
+		<b>Request</b>
+
+```graphql
+query {
+    hotelX {
+		hotels(criteria: {access: "2"}) {
+			edges {
+				cursor
+				node {
+					code
+					hotelData {
+						hotelCode
+						hotelName
+						giataData {
+						updatedAt
+						source
+						href
+						}
+						...
+					}
+				}
+			}
+		}
+	}
+}
+```
+		<b>Response</b>
+    </div>
+```graphql
+{
+	"data": {
+		"hotelX": {
+			"hotels": {
+				"edges": [
+					{
+						"cursor": "",
+						"node": {
+							"code": "",
+							"hotelData": {
+								"hotelCode": "66337",
+								"hotelName": "Hotel Test",
+								"giataData": "11267",
+								...
+							}
+						}
+					}
+				]
+			}
+		}
+	}
+}
+```
+</details>
 
 
 

@@ -41,6 +41,16 @@ This query offers versatility, with certain fields marked as mandatory (`access`
 * `categoryCodes` (Search by category type)
 * `group`
 
+### Response Considerations
+
+:::note
+
+The amount of information and content returned might vary between Sellers.
+
+HotelX supports all languages, but receiving categories descriptions in one or another depends entirely on the languages supported by the Seller.
+
+:::
+
 ## Query Inputs
 
 <HotelXCategoryQueryInput />
@@ -63,15 +73,6 @@ To retrieve the **FastX Category Master**, make a `category list` call using you
 To retrieve one Supplier's native category master, include that Supplier's access in the query (for example, access `2` for the Travelgate Test supplier).
 
 <GraphqlSample query={categoriesQuery} variables={categoriesVariables} />
-
-:::note
-
-The amount of information and content returned might vary between Sellers.
-
-Hotel-X supports all languages, but receiving category descriptions in one language or another depends entirely on the languages supported by the Seller.
-
-:::
-
 
 ### Category list for specific category codes
 

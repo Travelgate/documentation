@@ -28,7 +28,20 @@ This document provides the query reference and request/response patterns for the
 
 - **Booking Analysis:** Retrieve detailed and aggregated booking results.
 - **Performance Reporting:** Analyze booking metrics by client, supplier, market, and destination.
-- **Trend Monitoring:** Track booking volume and revenue trends over time using groupBy dimensions.
+- **Trend Monitoring:** Track booking volume and revenue trends over time using `groupBy` dimensions.
+
+## When to Use Insights, Stats, Logging, or Their APIs
+
+Use these tools together depending on whether you need booking-level business reporting, operational monitoring, UI-based log analysis, or programmatic integrations.
+
+| Need | Recommended Tool | Why |
+|---|---|---|
+| Analyze booking behavior, commercial trends, and business dimensions in the platform UI | [Insights (web)](/kb/platform/app-features/insights/overview) | Provides built-in business-oriented reporting views for booking analysis |
+| Build custom booking reports programmatically by client, supplier, market, destination, and time dimensions | Insights API | Returns booking detail and aggregation data optimized for business reporting workflows |
+| Review connection health, booking-flow performance, and error ratios in the platform UI | [Stats (web)](/kb/platform/app-features/monitoring-tools/stats/stats-details) | Provides the built-in monitoring dashboard for operational analysis |
+| Build custom operational dashboards and query aggregated connectivity metrics programmatically | [Stats API](/docs/apis/for-buyers-and-sellers/monitoring-api/stats-api/stats) | Returns aggregated metrics optimized for integrations and reporting workflows |
+| Review and troubleshoot transaction-level traces in the platform UI | [Logging (web)](/kb/platform/app-features/monitoring-tools/logging/logging-details) | Provides the built-in transaction-level log viewer for operational troubleshooting |
+| Search, extract traces, and download request/response logs programmatically | [Logging API](/docs/apis/for-buyers-and-sellers/monitoring-api/logging-api/logging) | Returns transaction-level log data for audit and troubleshooting workflows |
 
 ## Authentication
 
@@ -47,9 +60,28 @@ curl 'https://api.travelgate.com' \
   }'
 ```
 
+## Considerations & Business Rules
+
+Before querying Insights, keep in mind the following interpretation rules:
+
+- **Perspective Is Mandatory in Practice:** While `where` is optional at schema level, real reporting scenarios require `where.requestMode` (`BUYER` or `SELLER`) to avoid mixed or ambiguous results.
+- **Aggregation Depends on Grouping:** `bookingsAggregation` results reflect the selected `groupBy` dimensions. Changing `groupBy` changes how metrics are grouped and interpreted.
+- **Date Filters Drive Report Scope:** Use precise absolute ranges in `where.bookingAt`, `where.checkInAt`, or `where.cancelAt` to avoid empty outputs or misleading trend windows.
+- **Operational Incidents Need Monitoring APIs:** Use Insights API for business reporting, and use [Logging API](/docs/apis/for-buyers-and-sellers/monitoring-api/logging-api/logging) or [Stats API](/docs/apis/for-buyers-and-sellers/monitoring-api/stats-api/stats) when troubleshooting technical transaction behavior.
+
+### Troubleshooting Empty or Unexpected Results
+
+If your query returns no rows or values that look inconsistent, verify the following in order:
+
+1. Confirm `where.requestMode` matches the perspective you want to analyze.
+2. Validate date ranges (`gte` / `lte`) and ensure the selected time window contains real traffic.
+3. Recheck filter values such as `clientCode_in`, `supplierCode_in`, `marketCode_in`, and `countryCode_in`.
+4. Temporarily remove `groupBy` to inspect raw (non-grouped) data, then add dimensions progressively.
+5. Review `adviseMessage` in the response for warnings about invalid combinations or data limitations.
+
 ## Query Overview
 
-### bookingsReport
+### `bookingsReport`
 
 Retrieve booking detail and aggregation data.
 
@@ -84,11 +116,37 @@ insights {
 
 ### Obtaining Filter Values (Equivalences)
 
-If you need to fetch a dynamic list of valid values to populate your Insights filters, use the following equivalence table to find them via the [Admin API](https://docs.travelgate.com/docs/apis/for-buyers-and-sellers/admin-api/overview):
+If you need to fetch a dynamic list of valid values to populate your Insights filters, use the following equivalence table to find them via the [Admin API](/docs/apis/for-buyers-and-sellers/admin-api/overview):
+
+:::warning Important: `clientCode_in` is not `buyer_in`
+In Insights API, `where.clientCode_in` expects **Client codes**, not Buyer organization codes.
+
+- Do not use `buyer_in` values in `clientCode_in`.
+- To populate `clientCode_in`, retrieve values with the Admin `allClients` query and use `clientData.code`.
+- Reference: [All Clients](/docs/apis/for-buyers-and-sellers/admin-api/all-clients)
+
+Example source path:
+
+```graphql
+query {
+  admin {
+    allClients {
+      edges {
+        node {
+          clientData {
+            code
+          }
+        }
+      }
+    }
+  }
+}
+```
+:::
 
 | Insights Filter / GroupBy Field | What it Represents | How to obtain it via Admin API |
 |---|---|---|
-| `clientCode` | Client Code | Query your Clients list to retrieve the `code` |
+| `clientCode` / `clientCode_in` | Client Code | Query `allClients` and use `clientData.code` |
 | `clientOrganization` | Buyer Organization Code | Query your Buyers list to retrieve the `orgCode` |
 | `supplierCode` | Supplier Code | Query your Suppliers list to retrieve the `code` |
 | `supplierOrganization` | Seller Organization Code | Query your Sellers list to retrieve the `orgCode` |
@@ -150,6 +208,23 @@ Main response sections:
 - `bookingsDetails` — row-level booking records
 - `bookingsAggregation` — grouped aggregation data
 - `adviseMessage` — operational warnings or errors
+
+### Advisory Messages (`adviseMessage`)
+
+The `adviseMessage` field provides operational warnings or errors associated with your report request. It may be `null` when the query executes without warnings.
+
+**How to interpret `adviseMessage`:**
+
+- `code`: Machine-readable identifier for the message.
+- `description`: Human-readable explanation of the warning or issue.
+- `null` value: No advisory messages were returned for that request.
+
+**Recommended handling workflow:**
+
+1. Check whether `adviseMessage` is `null`.
+2. If not `null`, review each returned message before using results for reporting.
+3. Validate date range and filter combinations when messages indicate constrained or empty results.
+4. Fix input conditions indicated by the message and re-run the query.
 
 ## Examples
 
@@ -281,6 +356,68 @@ query BookingsReportExample {
     }
   }
 }
+```
+
+**Variables:**
+
+```json
+{
+  "where": {
+    "requestMode": "BUYER",
+    "bookingAt": {
+      "gte": "2026-06-01 00:00:00",
+      "lte": "2026-06-30 23:59:59"
+    },
+    "clientCode_in": [
+      "YOUR_CLIENT_CODE"
+    ],
+    "bookingStatus_in": [
+      "OK",
+      "CANCELLED"
+    ]
+  },
+  "orderBy": "amountEur_DES",
+  "groupBy": [
+    "clientCode",
+    "supplierCode",
+    "bookingAt"
+  ],
+  "limit": 50
+}
+```
+
+**curl Example:**
+
+```bash
+curl 'https://api.travelgate.com' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer YOUR_JWT_TOKEN' \
+  --data-raw '{
+    "query": "query BookingsReportExample($where: BookingsReportWhereInput, $orderBy: BookingsReportOrderByInput, $groupBy: [BookingsReportGroupByInput!], $limit: Int) { insights { bookingsReport(where: $where, orderBy: $orderBy, groupBy: $groupBy, limit: $limit) { bookingsDetails { edges { node { InsightsXBookingDetailData { reference { client supplier hotel } hotel { bookingDate start end hotelCode hotelName } status price { net gross exchange { currency rate } } } } } } bookingsAggregation { edges { node { InsightsXBookingAggregationData { bookingAt amount amountEur numBookings } } } } adviseMessage { code description } } } }",
+    "variables": {
+      "where": {
+        "requestMode": "BUYER",
+        "bookingAt": {
+          "gte": "2026-06-01 00:00:00",
+          "lte": "2026-06-30 23:59:59"
+        },
+        "clientCode_in": [
+          ""
+        ],
+        "bookingStatus_in": [
+          "OK",
+          "CANCELLED"
+        ]
+      },
+      "orderBy": "amountEur_DES",
+      "groupBy": [
+        "clientCode",
+        "supplierCode",
+        "bookingAt"
+      ],
+      "limit": 50
+    }
+  }'
 ```
 
 <GraphqlSample

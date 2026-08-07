@@ -403,7 +403,7 @@ When FastX mapping is available in the booking flow, these are the returned fiel
 
 - **Hotels**: `hotelCode` (FastX mapped code) and `hotelCodeSupplier` (seller context code).
 - **Boards**: `boardCode` (FastX mapped code) and `boardCodeSupplier` (seller context code).
-- **Rooms**: `code` (FastX mapped code), `supplierCode` (supplier code), `description` (mapped description), and `descriptionSupplier` (supplier description).
+- **Rooms**: `code` (FastX standardized code), `supplierCode` (supplier code), `description` (standardized description), and `descriptionSupplier` (supplier description).
 
 <Tabs>
   <TabItem value="before" label="(Before) Supplier Codes">
@@ -535,9 +535,9 @@ When FastX mapping is available in the booking flow, these are the returned fiel
 							"rooms": [
 								{
 									"occupancyRefId": 1,
-									"code": "MappedRoomCode",
+                                    "code": "StandardizedRoomCode",
 									"supplierCode": "5683",
-									"description": "Mapped Room Description",
+                                    "description": "Standardized Room Description",
 									"descriptionSupplier": "Double Suite Deluxe",
 									"price": {
 										"currency": "EUR",

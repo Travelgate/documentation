@@ -49,7 +49,7 @@ FastX Content by AO adapts to the complexity and volume of your business through
 
 **🥈 Silver:** Bronze + Rooms
     - It includes everything from the Bronze plan and adds content at the Rooms level.
-    - It normalizes and maps room descriptions, amenities, and images to the highest industry standards.
+    - It standardizes room descriptions, amenities, and images to the highest industry standards.
 
 **🥇 Gold:**
     - It includes everything from your base plan (Bronze or Silver) and allows you to upload your own locally contracted content.

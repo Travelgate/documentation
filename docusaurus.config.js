@@ -262,7 +262,7 @@ const config = {
       "data-customization-id": "1d732488-1c1e-4ed6-b4ed-3135ad6fde53",
     },
     {
-      src: "//js-eu1.hs-scripts.com/2825176.js",
+      src: "https://js-eu1.hs-scripts.com/2825176.js",
       id: "hs-script-loader",
       async: true,
       defer: true,

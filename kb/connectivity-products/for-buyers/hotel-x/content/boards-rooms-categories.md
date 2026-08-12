@@ -90,7 +90,7 @@ You can refine your Rooms query results by including the **"roomCodes"** field i
 To specify the number of rooms returned in the response, include the **"maxSize"** field in your query criteria. The maximum value for "maxSize" is 10,000; however, we recommend requesting 500 rooms per page to optimize response times.
 
 #### How Can I Paginate My Rooms Query?
-Note that it is not possible to determine the total number of rooms offered by the Seller without downloading the complete list using [pagination](#token-based-pagination). 
+Note that it is not possible to determine the total number of rooms offered by the Seller without downloading the complete list using [pagination](/kb/connectivity-products/for-buyers/hotel-x/content/token-pagination). 
 
 **Pagination** involves using the token provided in each response to fetch the next batch of rooms. The full list is retrieved only when you receive an error indicating "rooms not found."
 
@@ -147,10 +147,10 @@ You can easily retrieve the category list by following the specifications outlin
 Check out our [HotelX Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/categories#query-overview) for a full example of a Categories Query. 🚀
 :::
 
-### Filtering and Pagination
+### Filtering Categories Queries
 
 #### How Can I Determine the Total Number of Categories Provided by a Seller?
-To obtain the full list of categories, you must download the entire dataset. Use pagination techniques to ensure you capture all available categories.
+To obtain the full list of categories, you must download the entire dataset.
 
 #### Can I Filter by Category Code?
 Yes, you can filter your results by adding the **"categoryCodes"** field to your query criteria and specifying the desired categories.
@@ -182,73 +182,4 @@ No, the Categories Query response contains all the categories that a Seller has 
 
 :::tip
 For further details on the HotelX Categories Query, don't forget to check our [API Reference](/api). 🚀
-:::
-
-## Token-based Pagination
-
-### What Is a Token (ContinuationToken)?
-
-The **token**, also known as the **ContinuationToken** in the Hotel Buyers API (Legacy), plays a crucial role in downloading large lists of objects. It helps break down content into smaller segments, effectively preventing potential timeout errors.
-
-### Which Queries Support Pagination?
-
-Pagination is available for the following queries:
-
-- **Hotels**
-- **Destinations**
-- **Rooms**
-
-### What Is the Expiration Time for the Token (ContinuationToken)?
-
-The token has an expiration time of **4 minutes**, but each time a page request is made, the timer resets. This means the total time allowed depends on the size of the list and the frequency of requests.
-
-### Token-Based Pagination Guide for HotelX Pull Buyers API
-
-To paginate content effectively, follow these steps:
-
-1. **Include the token in your request**  
-   Add the [`"token"`](/api/types/objects/hotel-connection) field to your query. You can also control the number of objects returned per page by using the `"maxSize"` in your Query input.
-
-2. **Request subsequent pages**  
-   Once you receive a response, only a portion of the total list will be returned. To get the next page, copy the `"token"` value from the response and include it in your next request.
-
-3. **Repeat until completion**  
-   Continue requesting pages until the `"token"` field is no longer included in the response.
-
-:::info
-The `"maxSize"` value must be between **1 and 500 for Hotels queries** and between **1 and 10,000 for Rooms and Destinations queries**.
-
-```json
-{
-    "criteria": {
-        "access": "",
-        "maxSize": 100
-    },
-    "language": "en",
-    "token": ""
-}
-```
-:::
-
-### A Quick Guide for Users of Legacy Pull Buyers API
-
-Follow these steps to paginate content using the Legacy API:
-
-1. **Add the ContinuationToken tag to your request**  
-   You can specify the maximum number of objects per page using the `"expectedRange"` attribute.
-
-    ```xml
-    <ContinuationToken expectedRange="100"></ContinuationToken>
-    ```
-
-2. **Request subsequent pages**  
-   After receiving a response, copy the `ContinuationToken` tag from the response and paste it into the next request to retrieve additional content.
-
-3. **Repeat until completion**  
-   Continue this process until the `ContinuationToken` is no longer present in the response. If you encounter a **11204 error**, it indicates that the entire list has been retrieved.
-
-Additional information on how to paginate content responses in the Legacy Pull Buyers API (deprecated) is available [here](/docs/apis/for-buyers/deprecated/legacy-pull-buyers-api/content/hotel-list#how-to-paginate-responses)
-
-:::info
-If the `expectedRange` attribute is not specified, the default maximum number of hotels in the list is **10000**.
 :::

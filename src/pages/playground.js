@@ -15,7 +15,7 @@ const Explorer = (props) => {
             description="GraphQL Explorer"
         >
             <div className={`g-playground`}>
-                <GraphqlSample {...props} />
+                <GraphqlSample {...props} showLabel={false} />
             </div>
         </Layout>
     );

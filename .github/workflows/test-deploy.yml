@@ -30,10 +30,15 @@ jobs:
         env:
           NODE_OPTIONS: "--max_old_space_size=4096"
           TRAVELGATE_API_KEY: ${{ secrets.TRAVELGATE_API_KEY }}
-      # This step is needed because the graphql-to-doc script
-      # generates a sidebar-schema file which has an invalid dirName
+      # graphql-to-doc generates a sidebar-schema file with an invalid dirName
       - name: Copy api-sidebar-schema.dis to api/sidebar-schema.js
         run: cp api-sidebar-schema.dist api/sidebar-schema.js
+      # Restore custom _category_.yml files overwritten by graphql-to-doc --force
+      - name: Restore custom api _category_ config
+        run: |
+          cp .github/api-categories/operations/_category_.yml api/operations/_category_.yml
+          cp .github/api-categories/operations/queries/_category_.yml api/operations/queries/_category_.yml
+          cp .github/api-categories/operations/mutations/_category_.yml api/operations/mutations/_category_.yml
       - name: Test build website
         env:
           NODE_OPTIONS: "--max_old_space_size=4096"

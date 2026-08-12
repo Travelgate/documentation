@@ -716,6 +716,23 @@ async function loadFilteredSchema() {
             }
         });
 
+        // Rename namespace types to prevent @graphql-markdown from treating them as
+        // namespaced operations (detected by types ending with Query/Mutation/Subscription).
+        // Appending 'Ops' breaks the suffix while keeping the name recognisable.
+        const namespaceSuffixes = ['Query', 'Mutation', 'Subscription'];
+        for (const typeName of allNeededTypes) {
+            for (const suffix of namespaceSuffixes) {
+                if (typeName.endsWith(suffix) && typeName !== suffix) {
+                    const renamed = typeName + 'Ops';
+                    filteredSchema = filteredSchema.replace(
+                        new RegExp(`\\b${typeName}\\b`, 'g'),
+                        renamed
+                    );
+                    break;
+                }
+            }
+        }
+
         console.log('Schema loaded and filtered successfully');
         return filteredSchema;
 

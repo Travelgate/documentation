@@ -11,6 +11,23 @@ const { buildClientSchema, getIntrospectionQuery } = require('graphql');
 // the public introspection key — this keeps the automated schema generation working without a bearer.
 const PUBLIC_INTROSPECTION_KEY = 'test0000-0000-0000-0000-000000000000';
 
+// Fields to hide from the generated GraphQL API Reference (/api). The filtered schema that feeds
+// `@graphql-markdown/docusaurus` is rebuilt from the live schema on every deploy, so hiding
+// documentation-only fields must be done here rather than by hand-editing filtered-schema.graphql.
+// The metadata content methods `markets`, `currencies` and `amenities` are not exposed as Hotel-X
+// content calls, so they are excluded from the public API Reference (see PULL-11785). Excluding a
+// field here also drops any type only reachable through it (e.g. MetadataContentCurrency via
+// `currencies`) from the reference.
+// Format: { TypeName: ['fieldName', ...] }
+const EXCLUDED_TYPE_FIELDS = {
+    MetadataData: ['markets', 'currencies', 'amenities'],
+};
+
+function isExcludedField(typeName, fieldName) {
+    const fields = EXCLUDED_TYPE_FIELDS[typeName];
+    return Array.isArray(fields) && fields.includes(fieldName);
+}
+
 function resolveAuthHeader() {
     const rawBearer = process.env.TRAVELGATE_BEARER;
     // Normalize: trim whitespace and strip an optional leading "Bearer " prefix so pasting a
@@ -280,6 +297,7 @@ async function loadFilteredSchema() {
                 // Get field types
                 const fields = type.getFields();
                 Object.values(fields).forEach(field => {
+                    if (isExcludedField(type.name, field.name)) return;
                     let fieldType = field.type;
                     while (fieldType.ofType) {
                         fieldType = fieldType.ofType;
@@ -427,6 +445,7 @@ async function loadFilteredSchema() {
 
                 const fields = type.getFields();
                 Object.values(fields).forEach(field => {
+                    if (isExcludedField(type.name, field.name)) return;
                     // Add field description
                     if (field.description) {
                         typeDef += formatDescription(field.description, '  ');

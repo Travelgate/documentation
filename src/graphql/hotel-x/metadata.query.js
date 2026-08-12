@@ -317,24 +317,6 @@ export const metadataQuery =
 								value
 							}
 						}
-						markets {
-							languages {
-								reviewDate
-								value
-							}
-						}
-						currencies {
-							languages {
-								reviewDate
-								value
-							}
-						}
-						amenities {
-							languages {
-								reviewDate
-								value
-							}
-						}
 					}
 					createdAt
 					updatedAt

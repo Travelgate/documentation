@@ -1,0 +1,362 @@
+---
+sidebar_position: 2
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+
+# FastX Content
+
+FastX Content (powered by [AO](https://blog.travelgate.com/travelgate-part-of-travelsoft-group-acquires-ao-uk-ltd)) is **the new content standard**, designed to integrate perfectly with our HotelX API. This premium application, available in the Travelgate Store, represents the natural evolution of our connectivity. 
+
+To understand the product, think about connectivity in two phases:
+
+- **Phase 1 - FastX Solution (foundation):** A unified coding system that standardizes hotel, board, and room codes in the booking flow. This removes the need to map each supplier individually and lets you apply aggregation business rules.
+- **Phase 2 - FastX Content (premium extension):** A paid layer that enriches FastX codes with complete, standardized, multilingual static content powered by AI. It gives you a single source for hotel and room content.
+
+
+## FastX: The new content standard for Buyers
+
+Built on a solid connectivity foundation, FastX Content helps Buyers transform raw supplier data into clear, conversion-ready content.
+
+### The Problem to Solve
+
+Even when using FastX unified codes in the booking flow, Buyers usually face static-content issues from suppliers:
+
+- **Inconsistent content:** Fragmented or incomplete descriptions of hotels and rooms depending on the supplier.
+- **Lack of visual standardization:** Broken, low-quality, or duplicated images in the catalogs.
+- **Content management overload:** The need to contract separate external feeds to obtain descriptions in multiple languages and detailed room features.
+
+### The FastX Content Solution
+
+By activating FastX Content, your integration moves from unified codes to complete property-level content.
+
+In simple terms:
+
+1. You send a search with your usual FastX codes.
+2. The Travelgate platform connects with the suppliers.
+3. You receive the transactional data along with AO's premium static content (images, clean descriptions, and categories) from more than 500 suppliers.
+4. Everything is delivered through the current standardized HotelX API response in a single block, reducing your content integration effort to zero. No need for developments. 
+
+### Subscription Plans (Tiers)
+FastX Content by AO adapts to the complexity and volume of your business through four plans:
+
+**🥉 Bronze:**
+    - It builds on FastX codes to offer widely improved, normalized, and aggregated hotel content using AI technology.
+    - It includes standardized hotel names, chains, categories, contacts, descriptions, amenities, and geolocation.
+    - Language note: The Bronze plan will display the content in English by default.
+
+**🥈 Silver:** Bronze + Rooms
+    - It includes everything from the Bronze plan and adds content at the Rooms level.
+    - It standardizes room descriptions, amenities, and images to the highest industry standards.
+
+**🥇 Gold:**
+    - It includes everything from your base plan (Bronze or Silver) and allows you to upload your own locally contracted content.
+    - It applies custom brand and tone-of-voice rules using artificial intelligence.
+
+**🎖️ Enterprise:**
+    - It includes everything needed to create and manage content in-house across any channel.
+    - It provides full Travel Product Information Management (PIM) functionality, with deployment on your own infrastructure directly through AO.
+  
+:::info Add-ons
+Both initial tiers (Bronze and Silver) offer add-ons for extra language coverage and market customization. If your business needs a specific tone or image strategy, our team can adapt the content.
+:::
+
+### Why FastX Content by AO matters
+
+This premium extension greatly benefits the final conversion (Look-to-Book) of Buyers:
+
+- **Zero content mapping effort:** You work with one code model in the Travelgate network (FastX Solution) and delegate content cleaning, normalization, and deduplication.
+- **Frictionless activation:** Setup follows a simple 3-step process through the Travelgate Store.
+- **No booking-flow latency impact:** Enriched static content is delivered through HotelX content methods without adding delay to the booking flow.
+
+### How to activate the service
+
+Once FastX Content is installed from the Travelgate Store, the flow is as follows:
+
+1. Our Partnerships team receives your FastX Content request and validates the commercial agreement.
+2. A Travelgate administrator activates your application immediately after the review.
+3. You will be able to start consuming the content directly via the [HotelX API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/hotels) (using your FastX access) or visually through the web panel in [Connections Content](/kb/platform/app-features/connections/connections-content/content-management).
+
+#### API response examples
+
+<Tabs>
+  <TabItem value="before" label="(Before) Basic content">
+    ```json
+        {
+            "node": {
+                "createdAt": "2026-06-21T02:44:18.5836893Z",
+                "updatedAt": "2026-07-21T08:28:36.1567405Z",
+                "hotelData": {
+                "hotelCode": "ES2235",
+                "hotelName": "Ilunion Malaga",
+                "categoryCode": null,
+                "chainCode": null,
+                "location": {
+                    "address": "Paseo Maritimo Antonio Machado, 10",
+                    "zipCode": null,
+                    "city": null,
+                    "country": "ES",
+                    "coordinates": {
+                    "latitude": 36.710408,
+                    "longitude": -4.427283
+                    }
+                },
+                "contact": {
+                    "email": null,
+                    "telephone": null,
+                    "fax": null,
+                    "web": null
+                },
+                "descriptions": [],
+                "medias": null,
+                "rooms": {
+                    "edges": null
+                },
+                "allAmenities": null
+                }
+            }
+        }
+        ```
+  </TabItem>
+  <TabItem value="after" label="(After) With FastX Content by AO">
+    ```json
+    {
+    "node" : {
+        "createdAt" : "2026-07-21T08:58:05.556905Z",
+        "updatedAt" : "2026-07-31T11:29:50.779379Z",
+        "hotelData" : {
+            "hotelCode" : "ES2235",
+            "hotelName" : "Hotel ILUNION Malaga",
+            "categoryCode" : "4.0",
+            "chainCode" : "ILUNIONGRO",
+            "location" : {
+                "address" : "Paseo Marítimo Antonio Machado, 10",
+                "zipCode" : "29002",
+                "city" : "Malaga",
+                "country" : "ES",
+                "coordinates" : {
+                    "latitude" : 36.710259,
+                    "longitude" : -4.42725
+                }
+            },
+            "contact" : {
+                "email" : "reservasmalaga@ilunionhotels.com",
+                "telephone" : "34-95-655478057",
+                "fax" : "34-95-2046006",
+                "web" : "http://www.ilunionmalaga.com/"
+            },
+            "checkIn" : {
+                "minAge" : 18,
+                "schedule" : {
+                    "startTime" : "14:00"
+                },
+                "instructions" : [
+                    {
+                        "language" : "en",
+                        "text" : "<ul>  <li>Extra-person charges may apply and vary depending on property policy</li><li>Government-issued photo identification and a credit card, debit card, or cash deposit may be required at check-in for incidental charges</li><li>Special requests are subject to availability upon check-in and may incur additional charges; special requests cannot be guaranteed</li><li>Special cancellation policies or charges may apply for group reservations (more than 8 rooms for the same property / stay dates)</li><li>This property accepts credit cards, debit cards, and cash</li><li>Safety features at this property include a fire extinguisher</li>  </ul>"
+                    }
+                ],
+                "specialInstructions" : [
+                    {
+                        "language" : "en",
+                        "text" : "To make arrangements for check-in please contact the property ahead of time using the information on the booking confirmation. If you are planning to arrive after 6:00 PM please contact the property in advance using the information on the booking confirmation. Guests must contact the property in advance for check-in instructions. Front desk staff will greet guests on arrival at the property. Information provided by the property may be translated using automated translation tools."
+                    }
+                ]
+            },
+            "checkOut" : {
+                "minAge" : 0,
+                "schedule" : {
+                    "endTime" : "12:00"
+                }
+            },
+            "descriptions" : [
+                {
+                    "type" : "ACTIVITY",
+                    "texts" : [
+                        {
+                            "language" : "en",
+                            "text" : "Distances are displayed to the nearest 0.1 mile and kilometer. <br /> <p>Soho - 0.1 km / 0.1 mi <br /> CAC Málaga - 0.6 km / 0.4 mi <br /> Centro Comercial Larios Centro - 0.7 km / 0.4 mi <br /> Parque del Mar - 0.8 km / 0.5 mi <br /> Teatro del Soho CaixaBank - 0.9 km / 0.6 mi <br /> Playa de San Andrés - 1 km / 0.6 mi <br /> El Corte Ingles Commercial Center - 1 km / 0.6 mi <br /> Picasso Park - 1.1 km / 0.7 mi <br /> Central Market of Atarazanas - 1.1 km / 0.7 mi <br /> Port of Malaga - 1.1 km / 0.7 mi <br /> Santisimo Cristo de la Buena Muerte - 1.1 km / 0.7 mi <br /> Málaga Park - 1.2 km / 0.7 mi <br /> Calle Larios - 1.3 km / 0.8 mi <br /> Carmen Thyssen Museum - 1.5 km / 0.9 mi <br /> Tajo's Tree-Lined Avenue - 1.5 km / 0.9 mi <br /> </p><p>The preferred airport for Hotel ILUNION Malaga is Malaga Airport (AGP) - 10.7 km / 6.6 mi </p>"
+                        }
+                    ]
+                },
+                {
+                    "type" : "AMENITY",
+                    "texts" : [
+                        {
+                            "language" : "en",
+                            "text" : "Be sure to enjoy recreational amenities, including an indoor pool, a sauna, and a fitness center. Additional amenities at this hotel include complimentary wireless internet access, an arcade/game room, and gift shops/newsstands."
+                        }
+                    ]
+                },
+                {
+                    "type" : "GENERAL",
+                    "texts" : [
+                        {
+                            "language" : "en",
+                            "text" : "In Málaga (Málaga Centro),Featured amenities include a business center, dry cleaning/laundry services, and a 24-hour front desk. Planning an event in Málaga? This hotel has 8611 square feet (800 square meters) of space consisting of a conference center and meeting rooms. Self parking (subject to charges) is available onsite.,In the heart of Málaga, Hotel ILUNION Malaga is within a 5-minute drive of Málaga Cathedral and Alcazaba of Málaga.  This hotel is 1.2 mi (1.9 km) from Port of Malaga and 1.9 mi (3.1 km) from Picasso Museum Malaga."
+                        }
+                    ]
+                },
+                {
+                    "type" : "RESTAURANT",
+                    "texts" : [
+                        {
+                            "language" : "en",
+                            "text" : "Enjoy Mediterranean cuisine at El Puerto, a restaurant which features a bar/lounge, or stay in and take advantage of the room service (during limited hours). English breakfasts are available daily from 7:00 AM to 11:00 AM for a fee."
+                        }
+                    ]
+                }
+            ],
+            "medias" : [
+                {
+                    "type" : "HOTEL",
+                    "url" : "https://images.orbiscdn.com/images/ES2235/base/f91381fa7520c356931c12510557dd1b9d016d1e2456cfca11f8d4db9eab4467"
+                },
+                {
+                    "type" : "HOTEL",
+                    "url" : "https://images.orbiscdn.com/images/ES2235/base/0abb7aa662978d3b3e3093077157650f04eb38ed6478fafebcf3d93c96698dd7"
+                },
+                {
+                    "type" : "GENERAL",
+                    "url" : "https://images.orbiscdn.com/images/ES2235/base/c277aa4e6213a54324305c4984463d5b768c02796c5cb777aa9f6f9d00447873"
+                },
+                {
+                    "type" : "HOTEL",
+                    "url" : "https://images.orbiscdn.com/images/ES2235/base/123feeb0b6fcdf63d52621711acc1da35b846cf7c2c4dacd3c1fc792ca6868c2"
+                },
+                {
+                    "type" : "GENERAL",
+                    "url" : "https://images.orbiscdn.com/images/ES2235/base/94800fb733ba9a155db7727f22c2730e7653e1a78a73c8d1543b2dc474992972"
+                },
+                {
+                    "type" : "ROOM",
+                    "url" : "https://images.orbiscdn.com/images/ES2235/base/c6642d444aa4c66f202177f48edc1126fa282857a0acbcfb519e1af31cd6670d"
+                },
+                {...}
+            ],
+            "allAmenities" : {
+                "edges" : [
+                    {
+                        "node" : {
+                            "amenityData" : {
+                                "amenityCode" : "HAC116",
+                                "texts" : [
+                                    {
+                                        "language" : "en",
+                                        "text" : "Accessible parking"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "node" : {
+                            "amenityData" : {
+                                "amenityCode" : "HAC101",
+                                "texts" : [
+                                    {
+                                        "language" : "en",
+                                        "text" : "Wheelchair access"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "node" : {
+                            "amenityData" : {
+                                "amenityCode" : "HAC74",
+                                "texts" : [
+                                    {
+                                        "language" : "en",
+                                        "text" : "Ramp access"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "node" : {
+                            "amenityData" : {
+                                "amenityCode" : "HAC79",
+                                "texts" : [
+                                    {
+                                        "language" : "en",
+                                        "text" : "Sauna"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "node" : {
+                            "amenityData" : {
+                                "amenityCode" : "HAC35",
+                                "texts" : [
+                                    {
+                                        "language" : "en",
+                                        "text" : "Exercise gym"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "node" : {
+                            "amenityData" : {
+                                "amenityCode" : "HAC103",
+                                "texts" : [
+                                    {
+                                        "language" : "en",
+                                        "text" : "Multilingual staff"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "node" : {
+                            "amenityData" : {
+                                "amenityCode" : "HAC87",
+                                "texts" : [
+                                    {
+                                        "language" : "en",
+                                        "text" : "Storage space"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "node" : {
+                            "amenityData" : {
+                                "amenityCode" : "HAC1",
+                                "texts" : [
+                                    {
+                                        "language" : "en",
+                                        "text" : "24-hour front desk"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {...}
+                ]
+            }
+        }
+    }
+}
+
+    ```
+  </TabItem>
+</Tabs>
+
+#### Key differences at a glance
+
+- Without FastX Content, static fields may be incomplete or empty.
+- With FastX Content, you get normalized multilingual descriptions, curated images, and richer room-level attributes.
+- Both responses keep the same hotel identity (same FastX hotel code) while improving content quality.
+
+

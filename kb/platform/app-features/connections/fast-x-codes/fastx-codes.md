@@ -6,13 +6,13 @@ sidebar_position: 1
 
 Welcome to **FastX Codes**. This guide walks you through the FastX Codes web tool in the Travelgate Platform, so you can manage FastX validation faster and with full visibility.
 
-If you want the complete FastX product overview (what it is, why it matters, room standardization, and aggregation), read [FastX Solution Overview](/kb/connectivity-products/for-buyers/hotel-x/fastx-solution).
+If you want the complete FastX product overview (what it is, why it matters, room standardization, and aggregation), read [FastX Solution Overview](/kb/connectivity-products/for-buyers/hotel-x/fastx/fastx-solution.md).
 
 What you will learn in this guide:
 
 - How Sellers validate or invalidate hotel and board mappings.
 - How Buyers review mapping coverage and validation status across Suppliers.
-- How to test room description normalization using the new Rooms tab.
+- How to test room description standardization using the new Rooms tab.
 - How to use filters, search, and CSV export in daily operations.
 
 :::note Product Scope

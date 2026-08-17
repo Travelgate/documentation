@@ -128,12 +128,15 @@ Review the data and choose to **Validate** or **Invalidate** the mapping.
     ![tg_download_portfolio1](https://storage.travelgate.com/kbase/tg_download_portfolio1.jpg)
 
 4. Wait for a confirmation message that the CSV is being processed.
-5. Monitor the bell notification in the top-right corner for updates on the CSV status.
-6. Once processed, the file will be ready for download.
+5. Once processed, a notification will appear in the notification bell. Click the **notification bell icon**, then click the corresponding notification in the list to start the download.
 
     ![tg_download_portfolio2](https://storage.travelgate.com/kbase/tg_download_portfolio2.jpg)
 
-7. The CSV file includes these fields (if available by the Seller):
+    :::tip Don't forget to check the notification bell
+    The CSV is **not downloaded automatically** once processed. If you don't see the file after requesting it, check the notification bell before opening a support ticket.
+    :::
+
+6. The CSV file includes these fields (if available by the Seller):
     - Hotel code
     - Original supplier hotel code
     - FastX hotel code

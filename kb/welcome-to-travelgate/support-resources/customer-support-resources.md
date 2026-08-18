@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 # Customer Support Resources
@@ -37,6 +37,6 @@ However, we have established partnerships with affiliates specializing in these 
 :::info
 - To share your Product Development ideas, join the [Travelgate Community](https://discord.com/invite/travelgate), where our Product team evaluates suggestions and requests.
 - For Product Maintenance requests, please submit them via our [Support Portal](https://app.travelgate.com/support).
-- Any integration changes requested for a supplier must **always** be initiated by the Seller, who should provide updated API documentation for our IT team to assess implementation.
+- Any integration changes requested for a supplier must **always** be initiated by the Seller, who should provide updated API documentation for our IT team to assess implementation. See [Supplier Integration Version Migration](/kb/welcome-to-travelgate/support-resources/supplier-integration-version-migration) for more details.
 :::
 

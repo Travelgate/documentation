@@ -22,8 +22,28 @@ A **301 error** occurs when a Seller fails to return the option previously selec
 - A **204 error** in a Quote response means the Seller did not provide any options for the availability request linked to that method.
 - A **301 error** occurs when the Seller provides results, but none match the option previously selected by the Buyer.
 
-:::note
-**Aligning our Booking Flow with the Seller's is a priority.** In some cases, our Quote method involves multiple operations. As a result, it is common for Travelgate Quotes to include a second Search to the Seller's system to confirm the availability of the selected option.
+### Secondary Search Operations in Quote
+**Aligning our Booking Flow with the Seller's system is a priority.** In some cases, our Quote method involves multiple operations, requiring a second Search request to the Seller to confirm option availability and verify necessary Quote data.
+
+Because this second Search transaction is embedded directly within the Quote logs (Seller Connector logs), it is codified and cannot be read directly from the main Quote log details. However, you can retrieve the complete transaction details—including the secondary Search run within the Quote—directly in the [Logging App](/kb/platform/app-features/monitoring-tools/logging/logging-details).
+
+#### Retrieve the secondary Search log from a Quote
+
+1. Open the [Logging App](/kb/platform/app-features/monitoring-tools/logging/logging-details) and select **Search by connections**.
+2. Filter the logs using the relevant access or connection, time range, `QUOTE` as the operation type, and the status or error code. Select **Search logs**.
+3. Find the relevant Quote log and copy its **Session ID**.
+![tg-second-search-logs-1](https://storage.travelgate.com/kbase/tg-second-search-logs-1.png)
+4. Add `Search` to the selected **Operation Types** filter.
+![tg-second-search-logs-2](https://storage.travelgate.com/kbase/tg-second-search-logs-2.png)
+5. Open the **Search by session ID** tab and paste the Session ID.
+![tg-second-search-logs-3](https://storage.travelgate.com/kbase/tg-second-search-logs-3.png)
+6. Review the two returned log entries:
+   - **Quote:** The original Quote transaction.
+   - **Search:** The secondary Search transaction run for that Quote.
+   ![tg-second-search-logs-4](https://storage.travelgate.com/kbase/tg-second-search-logs-4.png)
+
+:::warning Important:
+You must add **"Search"** to the Operation Type filter before moving to the "Search by session ID" section.
 :::
 
 ## Understanding Quote Subcodes and Cascade Validation

@@ -5,101 +5,196 @@ sidebar_position: 8
 
 # **Connectors Error Handling**
 
-This section outlines the error handling mechanism in Connectors, focusing on the use of `AdviseMessage` to represent errors, warnings, and informational messages. It describes the available error codes, helper methods for generating errors, and best practices for implementing error handling in your Connector.
+This section explains how Connectors report errors, warnings, and informational messages through the `AdviseMessage` object. It describes every property of the object, the full list of codes with their equivalences in the **Legacy** and **HotelX** Buyer APIs, when the `external` object is filled, and the helper methods available when building a Connector.
+
+Because Buyers can download Connector traces from Logging, this reference is useful both for **Connector developers** (to raise the right message) and for **Buyers** (to interpret the messages they receive).
 
 ---
 
 ## **AdviseMessage Overview**
 
-An `AdviseMessage` is used to convey information about the outcome of operations in a standardized manner. It consists of the following key properties:
+An `AdviseMessage` conveys the outcome of an operation in a standardized way. It is made up of the following properties:
 
-- **Code**: Represents the type of message (error, warning, or informational).
-- **Level**: Indicates the severity of the message (e.g., `Error`, `Warning`, `Info`).
-- **Description**: Provides a human-readable explanation of the message.
-- **CorrelationId**: Associates the message with specific operations or requests.
-- **External**: Includes additional external details, such as supplier-specific error information.
+| Property        | Description                                                                                                                              |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `code`          | The message type as a readable name (e.g. `SupplierError`, `ItemNotAvailable`). See the [equivalence table](#code-equivalence-table).   |
+| `level`         | The severity of the message: `Error`, `Warning`, or `Info`.                                                                             |
+| `description`   | A human-readable, default explanation of the message.                                                                                   |
+| `external`      | Optional supplier-specific details (supplier code, message, and HTTP status code). See [The external object](#the-external-object).     |
+| `id`            | The numeric identifier of the `code` (e.g. `ItemNotAvailable` → `11301`).                                                               |
+| `legacyId`      | The equivalent **Legacy** error code, also surfaced as the **HotelX** error `type` (e.g. `11301` → `301`).                              |
+| `correlationId` | An identifier used to correlate the message with a specific operation or request.                                                       |
 
----
+:::info
+In the API response the property names are serialized in **camelCase** (`code`, `level`, `description`, `external`, `id`, `legacyId`). The `code` field carries the **name** of the message (not its number); the numeric value is available in `id`.
+:::
 
 ### **Example of an AdviseMessage**
 
 ```json
-{
-  "Code": 11204,
-  "Level": "Warning",
-  "Description": "No results found from the supplier.",
-  "CorrelationId": "12345",
-  "External": {
-    "Code": "",
-    "Message": "Supplier returned empty response for Search criteria.",
-    "HttpStatusCode": 200
+"adviseMessages": [
+  {
+    "code": "ItemNotAvailable",
+    "description": "Option not found in quote",
+    "external": {
+      "httpStatusCode": 200,
+      "message": "Option not found in quote: Parameters not found (1). Total options to try to do match: 3 ..."
+    },
+    "id": 11301,
+    "legacyId": 301,
+    "level": "Error"
   }
-}
+]
 ```
 
 ---
 
-## **Error Codes**
+## **Understanding `code`, `id`, and `legacyId`**
 
-### **Supplier Errors**
-| **Code**    | **Description**                                                                                  |
-|-------------|--------------------------------------------------------------------------------------------------|
-| `11102`     | **SupplierError**: Generic supplier error when no specific type fits.                            |
-| `11207`     | **SupplierBadRequest**: Indicates a malformed request was sent to the supplier.                  |
-| `11204`     | **SupplierNoResultsFound**: No results found for the given criteria (e.g., no availability).      |
-| `11205`     | **SupplierSessionExpired**: The supplier's session expired, requiring re-authentication.          |
-| `11206`     | **SupplierResponseNotSerializable**: The supplier's response could not be deserialized.          |
-| `11303`     | **SupplierBookingNotConfirmed**: The booking was not confirmed by the supplier.                  |
-| `31103`     | **SupplierTooManyRequests**: Indicates the supplier returned an HTTP status code for rate limiting.|
-| `31104`     | **SupplierTimeout**: The supplier did not respond within the specified timeout.                  |
-| `31105`     | **SupplierConnectionError**: Connection error with the supplier, usually due to non-200 status codes.|
+Each message is defined by a single `code`. From that `code` two numeric identifiers are derived automatically:
 
----
+- **`id`** — the native Connectors numeric identifier of the `code`. It is stable and specific to Connectors.
+- **`legacyId`** — the equivalent code in the **Legacy** Pull API. This same value is what the **HotelX** API returns as the error/warning `type` for messages that originate from the connection with the Seller.
 
-### **Connector Errors (Internal)**
-| **Code**    | **Description**                                                              |
-|-------------|------------------------------------------------------------------------------|
-| `12207`     | **BadRequest**: Malformed client request to the Connector.                   |
-| `22101`     | **InternalError**: Internal error within the Connector.                      |
-| `22106`     | **SupplierResponseMaxSizeExceeded**: The supplier's response exceeded the maximum size limit. |
-| `22107`     | **MaxOptionsExceeded**: More than the allowed number of options were returned (e.g., >20,000).|
+This means a single Connectors message can be traced across the three APIs:
 
----
+> `AdviseMessage.code` (Connectors) → `id` (Connectors numeric) → `legacyId` (Legacy `code` = HotelX `type`)
 
-### **Booking and Quote Errors**
-| **Code**    | **Description**                                                                                  |
-|-------------|--------------------------------------------------------------------------------------------------|
-| `11301`     | **ItemNotAvailable**: The requested option is no longer available (e.g., during Quote).          |
-| `11304`     | **PriceChanged**: The price changed between Quote and book.                                      |
-| `11302`     | **ItemNotFoundInContent**: The requested item (e.g., hotel) was not found in the content database.|
-| `11305`     | **BookingNotFound**: The booking could not be located.                                           |
+For the meaning of each Legacy/HotelX code, see the [Legacy Avail errors](/docs/apis/for-buyers/deprecated/legacy-pull-buyers-api/booking-flow/avail) and the [HotelX errors and warnings](/docs/apis/for-buyers/hotel-x-pull-buyers-api/making-requests/errors-and-warnings/booking-flow) documentation.
+
+### **How the `id` is built**
+
+Connectors codes follow a standard so that common codes can be reused consistently. The **first two digits** of the `id` encode the nature and origin of the message:
+
+- **First digit — type of message:**
+  - `1` → **Business**
+  - `2` → **Systems**
+  - `3` → **Communication**
+- **Second digit — origin of the message:**
+  - `1` → **External** (raised by a service external to Travelgate, i.e. the Seller/supplier)
+  - `2` → **Internal** (raised by a Travelgate service)
+
+The remaining digits identify the specific message within that category.
+
+For example, `11102` (`SupplierError`) is a **Business** (`1`) error from an **External** (`1`) service, whereas `22101` (`InternalError`) is a **Systems** (`2`) error **Internal** (`2`) to Travelgate, and `31105` (`SupplierConnectionError`) is a **Communication** (`3`) error from an **External** (`1`) service.
+
+:::info
+The `level` property is independent of this numbering and indicates the importance of the message (`Error`, `Warning`, `Info`). The external service's own code/message is detailed in the `external` object — see [The external object](#the-external-object).
+:::
 
 ---
 
-### **Warnings**
-| **Code**    | **Description**                                                                                  |
-|-------------|--------------------------------------------------------------------------------------------------|
-| `12290`     | **InternalWarning**: Internal warning within the Connector.                                      |
-| `11291`     | **SupplierWarning**: Supplier-specific warning.                                                 |
+## **Code Equivalence Table**
+
+The following table lists every `AdviseMessage` code, its Connectors `id`, the default severity `level`, the equivalent `legacyId` (Legacy `code` / HotelX `type`), the default `description`, and whether the `external` object is included.
+
+The **External** column indicates:
+
+- **Required** — the message is always raised with an `external` object.
+- **Optional** — an `external` object may be included when the supplier returns additional details.
+- **Not included** — the message never carries an `external` object (it is generated internally by Connectors).
+
+| Code                              | `id`  | `level` | `legacyId` (Legacy / HotelX) | Default `description`                                | External      |
+| --------------------------------- | ----- | ------- | ---------------------------- | --------------------------------------------------- | ------------- |
+| `SupplierError`                   | 11102 | Error   | 102                          | Supplier error                                      | Required      |
+| `SupplierBadRequest`              | 11207 | Error   | 102                          | Bad request to supplier                             | Optional      |
+| `SupplierSessionExpired`          | 11205 | Error   | 102                          | Session expired                                     | Optional      |
+| `SupplierResponseNotSerializable` | 11206 | Error   | 102                          | Supplier request or response cannot be deserialized | Optional      |
+| `PriceChanged`                    | 11304 | Error   | 102                          | Price changed                                       | Optional      |
+| `BookingNotFound`                 | 11305 | Error   | 102                          | Booking not found                                   | Optional      |
+| `Unauthorized`                    | 12401 | Error   | 102                          | Unauthorized                                        | Optional      |
+| `SupplierNoResultsFound`          | 11204 | Warning | 204                          | No results found                                    | Optional      |
+| `BadRequest`                      | 12207 | Error   | 207                          | Request not accepted by supplier                    | Optional      |
+| `NotImplemented`                  | 12501 | Info    | 207                          | Operation not Implemented                           | Not included  |
+| `ItemNotAvailable`                | 11301 | Error   | 301                          | Option not found in quote                           | Optional      |
+| `ItemNotFoundInContent`           | 11302 | Error   | 302                          | Hotel not found                                     | Not included  |
+| `SupplierBookingNotConfirmed`     | 11303 | Error   | 303                          | Booking not confirmed                               | Optional      |
+| `InternalError`                   | 22101 | Error   | 101                          | Internal error                                      | Optional      |
+| `ExtraOperationConnectionError`   | 22105 | Error   | 105                          | Internal connection error                           | Not included  |
+| `SupplierResponseMaxSizeExceeded` | 22106 | Error   | 105                          | Supplier response size exceeded maximum allowed     | Optional      |
+| `MaxOptionsExceeded`              | 22107 | Error   | 101                          | Maximum number of options exceeded                  | Optional      |
+| `SupplierTooManyRequests`         | 31103 | Error   | 103                          | Too many requests to the supplier                   | Required      |
+| `SupplierTimeout`                 | 31104 | Error   | 104                          | Connection timeout with supplier                    | Optional      |
+| `SupplierConnectionError`         | 31105 | Error   | 105                          | Communication error                                 | Required      |
+| `RequestAbortedByClient`          | 12106 | Error   | 106                          | Request aborted by client                           | Not included  |
+| `InternalWarning`                 | 12290 | Warning | 0 (OK)                       | Internal Warning                                    | Optional      |
+| `SupplierWarning`                 | 11291 | Warning | 0 (OK)                       | Supplier Warning, check external for more details   | Required      |
+
+:::info
+Messages with `level` `Warning` or `Info` do not map to a Legacy/HotelX error code, so their `legacyId` is `0` (`OK`).
+:::
+
+### **Legacy / HotelX code reference**
+
+For convenience, these are the meanings of the `legacyId` values used above:
+
+| `legacyId` | Meaning                                    |
+| ---------- | ------------------------------------------ |
+| 0          | OK (no error, warning/info only)           |
+| 101        | System error / Internal error              |
+| 102        | Provider (supplier) error                  |
+| 103        | Too many requests                          |
+| 104        | Connection timeout with provider           |
+| 105        | Communication error                        |
+| 106        | Request aborted by client                  |
+| 204        | No results found                           |
+| 207        | Request not accepted by supplier           |
+| 301        | Option not found in Valuation / Quote      |
+| 302        | Hotel not found                            |
+| 303        | Booking not confirmed                      |
 
 ---
 
-## **Using the `External` Class for Error Details**
+## **The `external` object**
 
-The `External` class provides additional context about supplier-specific errors. Each `AdviseMessage` can include an `External` object with details such as:
+The `external` object carries the supplier-specific context behind a message. It is especially useful for tracing and diagnosing issues that originate on the Seller's side.
 
-### **`External` Class Definition**
+### **Fields**
+
+| Field            | Description                                                                                                            |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `code`           | The supplier's own code identifying the response or error. **Optional** — it is only present when the supplier provides it. It is *not* a Connectors code. |
+| `message`        | A descriptive, human-readable message returned by (or built from) the supplier's response.                            |
+| `httpStatusCode` | The HTTP status code of the supplier's response (e.g. `200`, `400`, `500`). Defaults to `200` when not applicable.    |
+
+```json
+"external": {
+  "code": "E9999.1",
+  "message": "Supplier internal error",
+  "httpStatusCode": 500
+}
+```
+
+### **When is `external` filled?**
+
+Whether an `AdviseMessage` includes an `external` object depends on the `code`, as shown in the **External** column of the [equivalence table](#code-equivalence-table):
+
+- **Required** — the message is always accompanied by an `external` object (e.g. `SupplierError`, `SupplierConnectionError`, `SupplierTooManyRequests`, `SupplierWarning`). Use it to inspect the supplier's own response.
+- **Optional** — an `external` object is added when the supplier returns additional details, but it may be absent otherwise.
+- **Not included** — the message is generated internally by Connectors and never carries an `external` object (e.g. `ItemNotFoundInContent`, `NotImplemented`, `ExtraOperationConnectionError`, `RequestAbortedByClient`).
+
+:::tip
+When troubleshooting a supplier-originated error, always check `external.message` and `external.httpStatusCode` first — they contain the raw context returned by the Seller, which is not reflected in the standardized `description`.
+:::
+
+---
+
+## **Helper Methods**
+
+When building a Connector, always use the provided helper methods to generate `AdviseMessage` instances so that the `code`, `level`, `description`, and `external` handling stay consistent across all Connectors.
+
+### **`External` class definition**
+
 ```csharp
 public class External
 {
-    public string Code { get; init; } // Supplier-specific error code
-    public string Message { get; init; } // Human-readable message from the supplier
-    public int HttpStatusCode { get; init; } // HTTP status code of the supplier's response
+    public string Code { get; init; }        // Supplier-specific code (optional)
+    public string Message { get; init; }      // Human-readable message from the supplier
+    public int HttpStatusCode { get; init; }  // HTTP status code of the supplier's response
 }
 ```
 
-### **Example: Adding External Details to Errors**
-Here's an example of creating an `AdviseMessage` with `External` details for a supplier timeout error:
+### **Example: adding external details to an error**
 
 ```csharp
 var externalDetails = new External(
@@ -111,36 +206,35 @@ var externalDetails = new External(
 var adviseMessage = AdviseMessage.BuildSupplierTimeout(externalDetails);
 ```
 
----
+### **Common helper methods**
 
-## **Helper Methods**
-
-### **Supplier Error Helpers**
-| **Method**                            | **Description**                                                                 |
-|---------------------------------------|---------------------------------------------------------------------------------|
-| `BuildSupplierError`                  | Creates a generic supplier error message.                                      |
-| `BuildSupplierBadRequest`             | Creates a message for bad requests to the supplier.                            |
-| `BuildSupplierBookingNotConfirmed`    | Indicates the supplier did not confirm the booking.                            |
-| `BuildSupplierTimeout`                | Indicates the supplier timed out during the operation.                         |
-| `BuildSupplierConnectionError`        | Creates a message for connection errors with the supplier.                     |
-| `BuildSupplierNoResults`              | Creates a warning message indicating no results were found.                    |
+| Method                             | Description                                             |
+| ---------------------------------- | ------------------------------------------------------- |
+| `BuildSupplierError`               | Creates a generic supplier error message.               |
+| `BuildSupplierBadRequest`          | Creates a message for bad requests to the supplier.     |
+| `BuildSupplierBookingNotConfirmed` | Indicates the supplier did not confirm the booking.     |
+| `BuildSupplierTimeout`             | Indicates the supplier timed out during the operation.  |
+| `BuildSupplierConnectionError`     | Creates a message for connection errors with the supplier. |
+| `BuildSupplierNoResults`           | Creates a warning message indicating no results were found. |
+| `BuildOptionNotFoundInQuote`       | Indicates the option is no longer available during Quote.  |
+| `BuildHotelNotFoundInContent`      | Indicates the requested hotel was not found in content. |
+| `BuildInternalError`               | Creates an internal Connector error message.            |
 
 ---
 
 ## **Implementation Best Practices**
-- **Use Helper Methods**: Always use the provided helper methods to generate `AdviseMessage` instances. This ensures consistency across all Connectors.
-- **Map Supplier Errors**: When processing supplier responses, map their error codes or messages to the appropriate `AdviseMessageCode`.
-- **Log Details**: Include detailed descriptions and external information in `AdviseMessage` instances to aid debugging.
-- **Validate Responses**: Use validation methods like `TryValidateSupplierResponses` to check supplier responses and generate appropriate messages.
 
----
+- **Use helper methods**: Always generate `AdviseMessage` instances with the provided helpers to ensure consistency across Connectors.
+- **Map supplier errors**: When processing supplier responses, map their error codes or messages to the appropriate `AdviseMessageCode`.
+- **Fill `external` for supplier issues**: Include the supplier's `code`, `message`, and `httpStatusCode` whenever the error originates on the Seller's side.
+- **Validate responses**: Use validation methods like `TryValidateSupplierResponses` to check supplier responses and generate appropriate messages.
 
-## **Example Implementation**
+### **Example Implementation**
 
 ```csharp
 public static bool TryValidateSupplierResponses<TRs>(
     IEnumerable<SupplierResponseWrapper<TRs>> supplierResponses,
-    out IEnumerable<AdviseMessage> adviseMessages) 
+    out IEnumerable<AdviseMessage> adviseMessages)
     where TRs : BaseResponse
 {
     var firstResponse = supplierResponses.First();

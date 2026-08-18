@@ -32,11 +32,11 @@ Because this second Search transaction is embedded directly within the Quote log
 1. Open the [Logging App](/kb/platform/app-features/monitoring-tools/logging/logging-details) and select **Search by connections**.
 2. Filter the logs using the relevant access or connection, time range, `QUOTE` as the operation type, and the status or error code. Select **Search logs**.
 3. Find the relevant Quote log and copy its **Session ID**.
-![tg-second-search-logs-1](https://storage.travelgate.com/kbase/tg-second-search-logs-1.png)
+   ![tg-second-search-logs-1](https://storage.travelgate.com/kbase/tg-second-search-logs-1.png)
 4. Add `Search` to the selected **Operation Types** filter.
-![tg-second-search-logs-2](https://storage.travelgate.com/kbase/tg-second-search-logs-2.png)
+   ![tg-second-search-logs-2](https://storage.travelgate.com/kbase/tg-second-search-logs-2.png)
 5. Open the **Search by session ID** tab and paste the Session ID.
-![tg-second-search-logs-3](https://storage.travelgate.com/kbase/tg-second-search-logs-3.png)
+   ![tg-second-search-logs-3](https://storage.travelgate.com/kbase/tg-second-search-logs-3.png)
 6. Review the two returned log entries:
    - **Quote:** The original Quote transaction.
    - **Search:** The secondary Search transaction run for that Quote.

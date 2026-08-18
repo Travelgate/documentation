@@ -26,25 +26,27 @@ An `AdviseMessage` conveys the outcome of an operation in a standardized way. It
 | `correlationId` | An identifier used to correlate the message with a specific operation or request.                                                       |
 
 :::info
-In the API response the property names are serialized in **camelCase** (`code`, `level`, `description`, `external`, `id`, `legacyId`). The `code` field carries the **name** of the message (not its number); the numeric value is available in `id`.
+In the API response the property names are serialized in **camelCase** (`code`, `level`, `description`, `external`, `id`, `legacyId`, `correlationId`). The `code` field carries the **name** of the message (not its number); the numeric value is available in `id`.
 :::
 
 ### **Example of an AdviseMessage**
 
 ```json
-"adviseMessages": [
-  {
-    "code": "ItemNotAvailable",
-    "description": "Option not found in quote",
-    "external": {
-      "httpStatusCode": 200,
-      "message": "Option not found in quote: Parameters not found (1). Total options to try to do match: 3 ..."
-    },
-    "id": 11301,
-    "legacyId": 301,
-    "level": "Error"
-  }
-]
+{
+  "adviseMessages": [
+    {
+      "code": "ItemNotAvailable",
+      "description": "Option not found in quote",
+      "external": {
+        "httpStatusCode": 200,
+        "message": "Option not found in quote: Parameters not found (1). Total options to try to do match: 3 ..."
+      },
+      "id": 11301,
+      "legacyId": 301,
+      "level": "Error"
+    }
+  ]
+}
 ```
 
 ---
@@ -105,7 +107,7 @@ The **External** column indicates:
 | `Unauthorized`                    | 12401 | Error   | 102                          | Unauthorized                                        | Optional      |
 | `SupplierNoResultsFound`          | 11204 | Warning | 204                          | No results found                                    | Optional      |
 | `BadRequest`                      | 12207 | Error   | 207                          | Request not accepted by supplier                    | Optional      |
-| `NotImplemented`                  | 12501 | Info    | 207                          | Operation not Implemented                           | Not included  |
+| `NotImplemented`                  | 12501 | Info    | 207                          | Operation not implemented                           | Not included  |
 | `ItemNotAvailable`                | 11301 | Error   | 301                          | Option not found in quote                           | Optional      |
 | `ItemNotFoundInContent`           | 11302 | Error   | 302                          | Hotel not found                                     | Not included  |
 | `SupplierBookingNotConfirmed`     | 11303 | Error   | 303                          | Booking not confirmed                               | Optional      |
@@ -158,7 +160,7 @@ The `external` object carries the supplier-specific context behind a message. It
 | `httpStatusCode` | The HTTP status code of the supplier's response (e.g. `200`, `400`, `500`). Defaults to `200` when not applicable.    |
 
 ```json
-"external": {
+{
   "code": "E9999.1",
   "message": "Supplier internal error",
   "httpStatusCode": 500
@@ -191,6 +193,13 @@ public class External
     public string Code { get; init; }        // Supplier-specific code (optional)
     public string Message { get; init; }      // Human-readable message from the supplier
     public int HttpStatusCode { get; init; }  // HTTP status code of the supplier's response
+
+    public External(string code, string message, int httpStatusCode = 200)
+    {
+        Code = code;
+        Message = message;
+        HttpStatusCode = httpStatusCode;
+    }
 }
 ```
 

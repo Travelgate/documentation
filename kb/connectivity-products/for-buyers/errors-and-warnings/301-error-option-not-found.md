@@ -35,7 +35,7 @@ To provide better traceability and help you identify exactly why an option was n
 4. **Payment**
 5. **Rooms**
 
-**The validation stops at the first level that fails to find a match**. The level where the process stops determines the specific `reason` and `subCodeError` reported in your diagnostic message.
+**The validation stops at the first level that fails to find a match**. The level where the process stops determines the diagnostic reason and the corresponding subcode.
 
 ### Diagnostic Subcodes
 The following subcodes act as a quick reference to locate the functional reason behind the error:
@@ -47,29 +47,52 @@ The following subcodes act as a quick reference to locate the functional reason 
 *   **204 - Rooms not found:** This is the final check. The system cannot reconstruct the complete combination of requested rooms based on count, occupancy, distribution ID, or room code.
 
 ### How to Read the Diagnostic Trace
-The diagnostic message includes match counters, which act as a "snapshot" showing how many results remain compatible after each filter. These counters are not separate errors; they represent the progressive reduction of valid candidates.
+The diagnostic reason and trace are included in the `description` field of the `hotelX.quote.errors[]` object. They are not separate JSON fields and are not part of the Seller's availability response. The error `type` identifies the 301 error; the text after `Option not found in quote:` identifies the reason, and the lines that follow contain the diagnostic trace.
 
-**Example Trace:**
+The match counters act as a snapshot of how many results remain compatible after each validation step. They are not separate errors; they show the progressive reduction of valid candidates.
+
+```json
+{
+  "data": {
+    "hotelX": {
+      "quote": {
+        "errors": [
+          {
+            "code": "",
+            "description": "Option not found in quote: Rooms not found\nTotal options to try to do match: 6\nHotel: 12345 - HotelsMatch=1\nBoard: BB - BoardsMatch=1\nParameters - OptionsMatch=6:\nPayment Type: Merchant - OptionsMatch=6\n\nRooms count: 1 - OptionsMatch=0\nRoom 1 - RoomsMatch=0:\n  OccupancyRefId=1\n  Code=Superior Room\n  Description=Superior Room\n  LegacyRoomId=1#Superior Room",
+            "type": "301"
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+In this example, `Rooms not found` is the diagnostic reason. The hotel, board, parameters, and payment type all matched successfully. The validation stopped at the room level because `RoomsMatch=0`, which corresponds to subcode **204 - Rooms not found**.
+
+
 ```text
-Option not found in quote: Rooms not found.
-Total options to try to do match: 5
+Option not found in quote: Rooms not found
+Total options to try to do match: 6
 Hotel: 12345 - HotelsMatch=1
 Board: BB - BoardsMatch=1
-Parameters - OptionsMatch=2:
- Key=rateType, Value=NRF
-Payment Type: MERCHANT - OptionsMatch=1
-Rooms count: 2 - OptionsMatch=1
+Parameters - OptionsMatch=6:
+Payment Type: Merchant - OptionsMatch=6
+
+Rooms count: 1 - OptionsMatch=0
 Room 1 - RoomsMatch=0:
- OccupancyRefId=1
- Code=DBL
- Description=Double Room
- LegacyRoomId=9876
+  OccupancyRefId=1
+  Code=Superior Room
+  Description=Superior Room
+  LegacyRoomId=1#Superior Room
 ```
-*In this example, the process successfully matched the hotel, board, parameters, and payment type, but failed to find a valid match for Room 1.*
+
+The log trace shows the same progression as the response: the hotel, board, parameters, and payment type matched, but no valid room match remained. The failed room-level counter, `RoomsMatch=0`, identifies the reason as **Rooms not found** and maps to subcode **204**.
 
 ## What Can I Do If I Receive a 301 Error?
 When troubleshooting, use the diagnostic trace to your advantage:
-*   **Start with the reason:** Identify the `reason` and `subCodeError` to find the exact level where the process stopped.
+*   **Start with the reason:** Read the diagnostic reason and corresponding subcode to find the exact level where the process stopped.
 *   **Check the counters:** Look for the last counter greater than zero to confirm what was successfully matched. 
 *   **Compare the failed level:** Compare only the failed criteria between your request and the Seller's response. Do not investigate levels beyond where the process stopped, as they were never validated.
 

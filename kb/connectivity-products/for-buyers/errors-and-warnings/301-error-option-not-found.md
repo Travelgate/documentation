@@ -25,7 +25,7 @@ A **301 error** occurs when a Seller fails to return the option previously selec
 ### Secondary Search Operations in Quote
 **Aligning our Booking Flow with the Seller's system is a priority.** In some cases, our Quote method involves multiple operations, requiring a second Search request to the Seller to confirm option availability and verify necessary Quote data.
 
-Because this second Search transaction is embedded directly within the Quote logs (Seller Connector logs), it is codified and cannot be read directly from the main Quote log details. However, you can retrieve the complete transaction details—including the secondary Search run within the Quote—directly in the [Logging App](/kb/platform/app-features/monitoring-tools/logging/logging-details).
+Because this second Search transaction is embedded directly within the Quote logs (Seller Connector logs), it is encoded and cannot be read directly from the main Quote log details. However, you can retrieve the complete transaction details—including the secondary Search run within the Quote—directly in the [Logging App](/kb/platform/app-features/monitoring-tools/logging/logging-details).
 
 #### Retrieve the secondary Search log from a Quote
 

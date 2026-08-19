@@ -157,6 +157,12 @@ After each request, the Seller will process the data and provide you with a resp
 
 The response options include either **success** or an **error**. In the event of success, the valuation response will provide you with updated information about the option you selected during the avail step.
 
+:::info Rooms node in the response
+
+Although the examples below show elements such as `Fees` at the root of `ValuationRS`, some Sellers also return a `Rooms` node in the Valuation response, mirroring the [Avail response structure](./avail.mdx#success-response-data-breakdown). When a Seller returns `Rooms`, room-level elements such as `Fees` may be nested inside each `Room` instead of appearing at the `ValuationRS` root. Whether the `Rooms` node is returned—and where the `Fees` are placed—depends on the Seller.
+
+:::
+
 ### Success
 
 ```xml

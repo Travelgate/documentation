@@ -69,7 +69,7 @@ It uses a **data-driven approach** to analyze past transactions and **automatica
 :::
 
 :::tip Need a different default?
-If you need a specific default configuration for your setup, please contact us.
+If you need a specific default configuration for your setup, please [contact us](https://app.travelgate.com/support).
 :::
 
 ### Booking Error
@@ -92,7 +92,7 @@ If you need a specific default configuration for your setup, please contact us.
 
 
 :::tip Need a different default?
-If you need a specific default configuration for your setup, please contact us.
+If you need a specific default configuration for your setup, please [contact us](https://app.travelgate.com/support).
 :::
 
 ### Not in Portfolio

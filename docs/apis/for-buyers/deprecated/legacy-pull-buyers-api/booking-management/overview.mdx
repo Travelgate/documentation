@@ -13,6 +13,10 @@ The Legacy Pull Buyers API, our initial Buyers API launched in 2012, is now depr
 
 The Booking Management operations provide a streamlined approach to handle bookings with a specific Seller. These operations include `Reservation List`, `Reservation Read`, and `Cancel`. The Booking Read and List facilitates retrieval of detailed booking information. Cancellation offers a straightforward way to cancel bookings when needed. Utilizing these operations streamlines the booking process and empowers you to manage bookings effectively with your designated Seller.
 
+:::info Who queries the bookings here
+These operations are **Buyer-driven**: you (the Buyer) initiate the call through Travelgate, the Seller processes it and returns the data, and you receive the result. `Reservation List` and `Reservation Read` return the bookings you made against the Seller — they are **not** a way for a Seller to look up the bookings received in our platform.
+:::
+
 import DocCardList from '@theme/DocCardList';
 import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
 

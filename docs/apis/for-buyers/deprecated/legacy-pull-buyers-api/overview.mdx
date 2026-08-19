@@ -15,9 +15,9 @@ The Legacy Pull Buyers API, our initial Buyers API launched in 2012, is now depr
 :::info Direction of every call
 The Legacy Pull Buyers API is **Buyer-driven**. For every method (content, booking flow and booking management), the flow is always the same:
 
-- **Initiates the call:** you, the Buyer, through Travelgate.
+- **Initiates the call:** the Buyer, through Travelgate.
 - **Processes and returns the data:** the Seller.
-- **Receives the result:** you, the Buyer.
+- **Receives the result:** the Buyer.
 
 The Seller's system is **reactive**: it only receives and answers requests, it never queries Travelgate for data. So if you are a **Seller** and want to consult the bookings you have received in our platform, this API (and methods such as `Reservation List` or `Reservation Read`) is **not** the way to do it — those calls return bookings to the Buyer who made them, not to the Seller. A Seller should use its booking reporting/reservations tooling instead.
 :::

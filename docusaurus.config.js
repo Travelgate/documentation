@@ -237,8 +237,9 @@ const config = {
       "data-project-logo": "/img/ask_ia.svg",
       "data-modal-disclaimer":
         "AIna, Travelgate's multilingual AI assistant, provides quick answers and troubleshooting guidance based on our official documentation. For the most precise and helpful response, please describe your inquiry clearly and in detail. While we strive for thoroughness, AI-generated responses may not always be perfect. They are provided as is, and Travelgate disclaims any liability for inaccuracies. Please use discretion.",
-      "data-user-analytics-fingerprint-enabled": "true",
-      "data-user-analytics-store-ip": "true",
+      "data-user-analytics-fingerprint-enabled": "false",
+      "data-user-analytics-cookie-enabled": "false",
+      "data-user-analytics-store-ip": "false",
       "data-button-text": " ",
       "data-modal-full-screen": "false",
       "data-modal-open-by-default": "false",

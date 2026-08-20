@@ -780,27 +780,89 @@ footer {
   padding: 20px !important;
 }
 
-// Ask IA button
+// Ask IA button / Sidebar
 
 #kapa-widget-container {
-  .mantine-f1fjxp {
-    background-color: transparent !important;
-    box-shadow: none !important;
-    width: 9rem !important;
+  position: fixed !important;
+  bottom: 0 !important;
+  right: 0 !important;
+  z-index: 9999 !important;
+  height: 100vh !important;
+  overflow: visible !important;
+}
+
+#kapa-button {
+  position: fixed !important;
+  right: 0 !important;
+  bottom: 20px !important;
+  top: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 10px 10px 10px 25px !important;
+  background-color: #0f64f3 !important;
+  background-image: none !important;
+  border: none !important;
+  border-radius: 50px 0 0 50px !important;
+  z-index: 99 !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+  width: auto !important;
+  height: auto !important;
+  min-width: 60px !important;
+  
+  /* Override Mantine CSS variables */
+  --button-bg: #0f64f3 !important;
+  --mantine-color-white: transparent !important;
+
+  &:hover {
+    background-color: #0b59de !important;
   }
 
-  .mantine-1uwoaul {
+  &:active {
+    background-color: #0a4dcc !important;
+  }
+
+  /* Style the inner content */
+  .mantine-Button-inner {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  img {
+    width: 38px !important;
+    height: 36px !important;
+    display: block !important;
+    margin: 8px 0 12px 0 !important;
+  }
+
+  span {
+    display: block !important;
+    font-size: 16px !important;
+    color: #ffffff !important;
+    margin: 0 !important;
+    font-weight: 600 !important;
+    line-height: 1 !important;
+    letter-spacing: 0.5px !important;
+  }
+
+  p {
     display: none !important;
   }
+}
 
-  .mantine-yxmaw9 {
-    width: 9rem !important;
-  }
+// Hide the custom flap button (we use Kapa's original button now)
+#kapa-ai-flap {
+  display: none !important;
+}
 
-  .mantine-1sc70ew {
-    width: 9rem !important;
-    height: 4rem !important;
-    object-fit: scale-down !important;
+// Kapa AI button - now using Kapa's original button with custom styling
+// No longer needed - styling moved to #kapa-widget-container button
+
+@media (max-width: 991px) {
+  #kapa-button {
+    bottom: 80px !important;
   }
 }
 

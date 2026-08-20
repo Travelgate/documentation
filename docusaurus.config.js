@@ -133,24 +133,47 @@ const config = {
     // Structured Data: WebSite
     {
       tagName: "script",
-      attributes: {
-        type: "application/ld+json",
-      },
+      attributes: {},
       innerHTML: `
-          {
-          "@context": "https://schema.org",
-          "@type": "WebSite",
-          "name": "Travelgate Docs",
-          "url": "https://docs.travelgate.com/",
-          "inLanguage": "en",
-          "isAccessibleForFree": true,
-          "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://docs.travelgate.com/search?q={search_term_string}",
-            "query-input": "required name=search_term_string"
-            }
+        (function() {
+          // Kapa is already initialized via the script tag, no need for custom button
+          console.log('✅ Kapa widget loaded with custom styling');
+        })();
+      `
+    },
+
+    // Kapa button styling with maximum specificity
+    {
+      tagName: "style",
+      attributes: {},
+      innerHTML: `
+        #kapa-button,
+        #kapa-button button,
+        #kapa-widget-container #kapa-button {
+          background-color: #0f64f3 !important;
+          background-image: none !important;
+          border-radius: 50px 0 0 50px !important;
+          position: fixed !important;
+          right: 0 !important;
+          bottom: 20px !important;
+          z-index: 99 !important;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+        }
+        
+        #kapa-button:hover,
+        #kapa-button:hover button,
+        #kapa-widget-container #kapa-button:hover {
+          background-color: #0b59de !important;
+        }
+        
+        @media (max-width: 991px) {
+          #kapa-button,
+          #kapa-button button,
+          #kapa-widget-container #kapa-button {
+            bottom: 80px !important;
           }
-          `,
+        }
+      `
     },
 
     // Structured Data: FAQPage
@@ -234,29 +257,25 @@ const config = {
       "data-website-id": "22c9d321-f9d2-48e3-958b-a5789f17c4b7",
       "data-project-name": "Travelgate",
       "data-project-color": "#0B59DE",
-      "data-project-logo": "/img/ask_ia.svg",
+      "data-project-logo": "/img/aina_stars.svg",
+      "data-view-mode": "sidebar",
+      "data-modal-open-by-default": "false",
+      "data-search-mode-enabled": "false",
       "data-modal-disclaimer":
         "AIna, Travelgate's multilingual AI assistant, provides quick answers and troubleshooting guidance based on our official documentation. For the most precise and helpful response, please describe your inquiry clearly and in detail. While we strive for thoroughness, AI-generated responses may not always be perfect. They are provided as is, and Travelgate disclaims any liability for inaccuracies. Please use discretion.",
       "data-user-analytics-fingerprint-enabled": "true",
       "data-user-analytics-store-ip": "true",
-      "data-button-text": " ",
-      "data-modal-full-screen": "false",
-      "data-modal-open-by-default": "false",
-      "data-modal-close-button-hide": "false",
-      "data-modal-with-overlay": "true",
-      "data-search-mode-enabled": "false",
-
+      "data-button-text": "AIna",
       "data-button-width": "72px",
       "data-button-height": "72px",
-      "data-button-image-width": "72px",
-      "data-button-image-height": "72px",
-      "data-button-bg-color": "transparent",
-      "data-button-box-shadow": "0",
-      "data-button-hover-bg-color": "transparent",
-      "data-button-border-radius": "0",
+      "data-button-image-width": "38px",
+      "data-button-image-height": "36px",
+      "data-button-bg-color": "#0f64f3",
+      "data-button-box-shadow": "0 2px 8px rgba(0, 0, 0, 0.15)",
+      "data-button-hover-bg-color": "#0b59de",
+      "data-button-border-radius": "50px 0 0 50px",
       "data-button-border": "0",
       "data-button-hover-animation-enabled": "false",
-
       "data-mcp-enabled": "true",
       "data-mcp-server-url": "https://travelgate.mcp.kapa.ai",
       "data-customization-id": "1d732488-1c1e-4ed6-b4ed-3135ad6fde53",

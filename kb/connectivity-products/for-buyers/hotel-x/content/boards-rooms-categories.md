@@ -1,6 +1,5 @@
 ---
 sidebar_position: 4
-draft: true
 ---
 
 # Boards, Rooms, and Categories

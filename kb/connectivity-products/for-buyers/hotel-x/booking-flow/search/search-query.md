@@ -1,12 +1,17 @@
 ---
 sidebar_position: 1
+description: Learn how to build HotelX Search queries — including Single Mode and Multimode searches, context mode selection, and option status filtering.
 ---
 
 # Search Query
 
-[Search](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/search) is the first step in our booking flow. The Search Query is designed to return all available options based on specified dates and search criteria, such as the number of guests, choice of hotels, etc. This applies across one or multiple Sellers' accesses.
+[Search](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/search) is the first step in the HotelX booking flow, returning all available options from one or multiple Sellers based on your search criteria.
 
 An "option" refers to different combinations of rooms, prices, and policies available in a hotel. Each option has a unique identifier known as `id` (in Search) or `optionRefId` (in Quote and Book). This identifier is crucial for the booking flow and **must not be altered**.
+
+:::info Context Mode
+Before building your Search query, make sure you have selected your context mode. This affects which hotel, board, and room codes to use in your requests. See the [Context Decision Matrix](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials#context) for guidance.
+:::
 
 :::info The Booking Flow at Travelgate
 The booking flow consists of 3 sequential methods necessary to book a hotel room:
@@ -68,3 +73,7 @@ When a Search query is successful, and the Seller returns results, each option i
 2. **RQ:** The option is not yet available by the Seller and is placed on a waiting list.
 
 You can use the StatusFilterInput to specify which status (OK or RQ) to include or exclude in your Search response. For more details, please refer to this [article](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/search/search-filters).
+
+:::tip
+Have questions about Search results, null values, hotel limits, or room combinations? Check our [Search FAQs](/kb/connectivity-products/for-buyers/hotel-x/booking-flow/search/faqs) for the most common questions and answers. 🚀
+:::

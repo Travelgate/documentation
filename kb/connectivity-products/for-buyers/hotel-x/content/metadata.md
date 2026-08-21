@@ -36,7 +36,7 @@ Metadata is especially useful in the following scenarios:
 
 - **When onboarding a new Seller:** Review their capabilities and constraints before writing any integration logic. For example, check whether they support amendments or require specific passenger details before your first request.
 - **When optimizing Search requests:** Use `maxNumberHotels` and similar fields to align your batching strategy with the Seller's limits, reducing errors and unnecessary traffic.
-- **When building request validation:** Use fields like `maxPaxInRoomCandidates` or `minNumberNights` to validate requests on your side before sending them, avoiding easily preventable errors.
+- **When building request validation:** Use fields like `maxPaxInRoomCandidates` or `minimumStay` to validate requests on your side before sending them, avoiding easily preventable errors.
 - **When verifying feature support:** Before attempting amendments or specific query types, confirm the Seller supports them via Metadata rather than discovering limitations in production.
 
 ### How Often Is Metadata Information Updated?

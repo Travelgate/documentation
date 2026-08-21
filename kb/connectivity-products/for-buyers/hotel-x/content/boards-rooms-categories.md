@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # Boards, Rooms, and Categories
 
-The Boards, Rooms, and Categories queries let you retrieve static information about a Seller's meal plans, room types, and hotel categories. This data is **Supplier-wide**, not per-property. Use these queries to support your mapping and understand what a Seller exposes before running search requests.
+The Boards, Rooms, and Categories queries let you retrieve static information about a Seller's meal plans, room types, and hotel categories. The results are tied to the selected access and are not filtered per property. Use these queries to support your mapping and understand what a Seller exposes before running search requests.
 
 ## Boards
 

@@ -13,6 +13,12 @@ The Legacy Pull Buyers API, our initial Buyers API launched in 2012, is now depr
 
 Valuation operation evaluates the rate before reservation, providing the same information as the Avail response for a hotel rate, including up-to-date pricing. Additionally, it offers further details such as rate breakdown and cancellation policies. The returned fields include: `Status`, `Price`, `CancelPenalities`, `Fees`, `PaymentOptions` etc.
 
+:::info Roles in this call
+- **Initiates the call:** the Buyer, through Travelgate.
+- **Processes and returns the data:** the Seller.
+- **Receives the result:** the Buyer.
+:::
+
 :::caution
 
 The amount of information returned might vary between Sellers.
@@ -150,6 +156,12 @@ Check the values you need to add in the [header](/docs/apis/for-buyers/deprecate
 After each request, the Seller will process the data and provide you with a response. Upon receiving a `Valuation` request, the Seller will send you a corresponding `Valuation` response. 
 
 The response options include either **success** or an **error**. In the event of success, the valuation response will provide you with updated information about the option you selected during the avail step.
+
+:::info Rooms node in the response
+
+Although the examples below show elements such as `Fees` at the root of `ValuationRS`, some Sellers also return a `Rooms` node in the Valuation response, mirroring the [Avail response structure](./avail.mdx#success-response-data-breakdown). When a Seller returns `Rooms`, room-level elements such as `Fees` may be nested inside each `Room` instead of appearing at the `ValuationRS` root. Whether the `Rooms` node is returned—and where the `Fees` are placed—depends on the Seller.
+
+:::
 
 ### Success
 

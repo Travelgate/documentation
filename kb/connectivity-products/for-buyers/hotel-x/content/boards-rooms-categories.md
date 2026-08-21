@@ -21,7 +21,7 @@ The Boards Query provides two key pieces of information:
 2. **Supplier Board Data** – the board codes and descriptions for a specific Supplier and access, showing how their boards map to the standardized FastX list.
 
 #### How Can I Retrieve the Seller's Board List via HotelX?
-To retrieve the board list, simply follow the specifications outlined in our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/boards) and build your own Board queries. You can also customize the fields you request to ensure you receive only the relevant information.
+To retrieve the board list, simply follow the specifications outlined in our [Boards Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/boards) and build your own Board queries. You can also **customize the fields** you request to ensure you receive only the relevant information.
 
 :::tip
 Explore our [HotelX Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/boards#query-overview) for a complete example of a Boards Query! 🚀
@@ -42,22 +42,22 @@ The response typically includes the following fields:
 - **Text**
 
 :::info
-Please note that the total number of boards offered by the Seller cannot be determined unless the complete boards list is downloaded. The amount of information returned may also vary across different Sellers.
+Please note that the total number of boards offered by the Seller cannot be determined unless the complete boards list is downloaded. The amount of information returned may also **vary across different Sellers.**
 :::
 
 ### Mapping Process
 
-Each Supplier has its own board codes and descriptions. Travelgate generates suggested correspondences to standardized FastX board codes, and the Seller can validate or invalidate those suggestions.
+Each Supplier has its own board codes and descriptions. Travelgate generates suggested correspondences to standardized FastX board codes, and the Seller can [validate or invalidate](/kb/platform/app-features/connections/fast-x-codes/fastx-sellers) those suggestions.
 
 **Buyers can:**
-- Use Default mode, which allows validated and pending board mappings;
-- Enable validated-only mode to restrict to Seller-confirmed mappings;
-- Review both the FastX board value and the Supplier-native board value.
+- **Use Default mode**, which allows validated and pending board mappings;
+- **Enable validated-only mode** to restrict to Seller-confirmed mappings;
+- **Review both** the FastX board value and the Supplier-native board value.
 
-**Sellers** should keep board descriptions focused on the meal plan itself. Occupancy, promotions, rates, or unrelated information can reduce mapping quality. Boards that cannot be mapped are not made available through FastX.
 
-:::warning Validation meaning
-A validated board mapping means the Seller has confirmed the suggested correspondence. It is not an independent Travelgate certification of every commercial condition associated with the option.
+:::warning Important:
+- **Sellers should keep board descriptions focused on the meal plan itself**. Occupancy, promotions, rates, or unrelated information can reduce mapping quality. Boards that cannot be mapped are not made available through FastX.
+- A **validated** board mapping means the **Seller has confirmed the suggested correspondence**. It is not an independent Travelgate certification of every commercial condition associated with the option.
 :::
 
 ### Availability Considerations
@@ -90,7 +90,7 @@ You can refine your Rooms query results by including the **"roomCodes"** field i
 To specify the number of rooms returned in the response, include the **"maxSize"** field in your query criteria. The maximum value for "maxSize" is 10,000; however, we recommend requesting 500 rooms per page to optimize response times.
 
 #### How Can I Paginate My Rooms Query?
-Note that it is not possible to determine the total number of rooms offered by the Seller without downloading the complete list using [pagination](/kb/connectivity-products/for-buyers/hotel-x/content/token-pagination). 
+Note that it is not possible to determine the total number of rooms offered by the Seller without downloading the complete list using [**pagination**](/kb/connectivity-products/for-buyers/hotel-x/content/token-pagination). 
 
 **Pagination** involves using the token provided in each response to fetch the next batch of rooms. The full list is retrieved only when you receive an error indicating "rooms not found."
 
@@ -113,15 +113,16 @@ The amount of information returned may vary across different Sellers.
 
 ### Standardization Process
 
-Each Supplier has its own native room codes and descriptions. FastX generates a standardized room code and description at Search time from the Supplier-native description.
+Each Supplier has its own native room codes and descriptions. **FastX generates a standardized room code and description at Search** time from the Supplier-native description.
 
 Search responses include both:
 - The Supplier-native room code and description;
 - The FastX standardized room code and description.
 
-FastX room standardization is **not Seller-validated**. It is intended to reduce repetitive mapping and facilitate comparison, but it does not guarantee that rooms with the same standardized output are commercially identical in every respect.
-
-Review the Supplier-native values whenever exact room equivalence, bedding, view, capacity, amenities, or other product attributes are material to your operation.
+:::warning Important:
+- **FastX room standardization is not Seller-validated**. It is intended to reduce repetitive mapping and facilitate comparison, but it does not guarantee that rooms with the same standardized output are commercially identical in every respect.  
+- Review the Supplier-native values whenever exact room equivalence, bedding, view, capacity, amenities, or other product attributes are material to your operation.
+:::
 
 ### Additional Considerations
 
@@ -150,10 +151,10 @@ Check out our [HotelX Pull Buyers API Documentation](/docs/apis/for-buyers/hotel
 ### Filtering Categories Queries
 
 #### How Can I Determine the Total Number of Categories Provided by a Seller?
-To obtain the full list of categories, you must download the entire dataset.
+To obtain the full list of categories, you must **download the entire dataset.**
 
 #### Can I Filter by Category Code?
-Yes, you can filter your results by adding the **"categoryCodes"** field to your query criteria and specifying the desired categories.
+Yes, you can filter your results by adding the `categoryCodes` field to your query criteria and specifying the desired categories.
 
 ### Understanding the Query Response
 

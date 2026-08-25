@@ -8,6 +8,21 @@ const DOCS_BASE_PATH = path.join(__dirname, "../../../docs/apis");
 const FILE_NODE_MAP = require("../node-map/fileNodeMap");
 const { type } = require("os");
 
+// Fields hidden from the generated <details> breakdown blocks, keyed by their parent type. Kept in
+// sync with the API Reference exclusions in utils/schemaLoader.js: the metadata content methods
+// `markets`, `currencies` and `amenities` are not exposed as Hotel-X content calls, so they are
+// hidden from the docs breakdown as well (see PULL-11785). The schema JSON stays complete; fields
+// are filtered only at render time.
+// Format: { TypeName: ['fieldName', ...] }
+const EXCLUDED_TYPE_FIELDS = {
+  MetadataData: ["markets", "currencies", "amenities"],
+};
+
+function isExcludedField(parentTypeName, fieldName) {
+  const fields = EXCLUDED_TYPE_FIELDS[parentTypeName];
+  return Array.isArray(fields) && fields.includes(fieldName);
+}
+
 const DEBUG_ENUMS = true;
 function logEnumDetection(name, enumValues) {
   if (DEBUG_ENUMS && enumValues && enumValues.length > 0) {
@@ -99,6 +114,7 @@ ${indentation}</details>`;
     }
 
     const subFields = [...(field.type.fields || []), ...(field.type.inputFields || [])]
+      .filter(f => !isExcludedField(field.type.name, f.name))
       .map(f => formatField(f, indent + 1, typeMap))
       .join("\n");
 
@@ -194,8 +210,8 @@ ${indentation}</details>`;
   **${node.name}** (*${node.kind}*)  
   ${node.description ? node.description + "  " : ""}
   </summary>
-  ${node.inputFields ? node.inputFields.map(f => formatField(f, 1, typeMap)).join("\n") : ""}
-  ${node.fields ? node.fields.map(f => formatField(f, 1, typeMap)).join("\n") : ""}
+  ${node.inputFields ? node.inputFields.filter(f => !isExcludedField(node.name, f.name)).map(f => formatField(f, 1, typeMap)).join("\n") : ""}
+  ${node.fields ? node.fields.filter(f => !isExcludedField(node.name, f.name)).map(f => formatField(f, 1, typeMap)).join("\n") : ""}
 </details>
 `;
 

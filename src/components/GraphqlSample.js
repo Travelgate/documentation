@@ -23,7 +23,7 @@ if (ExecutionEnvironment.canUseDOM) {
     fetcher = null;
 }
 
-const GraphqlSample = ({token, query, variables}) => {
+const GraphqlSample = ({token, query, variables, showLabel = true}) => {
     const isBrowser = useIsBrowser();
     const [headers, setHeaders] = useState(`{
         "Authorization": "Apikey test0000-0000-0000-0000-000000000000"
@@ -49,7 +49,7 @@ const GraphqlSample = ({token, query, variables}) => {
                     {() => {
                         return (
                             <div className="graphql-sample-interactive" aria-label="Interactive GraphQL playground">
-                                <p><strong>Interactive playground:</strong></p>
+                                {showLabel && <p><strong>Interactive playground:</strong></p>}
                                 <GraphiQL
                                     fetcher={fetcher}
                                     initialHeaders={headers}

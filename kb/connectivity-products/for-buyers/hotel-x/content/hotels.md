@@ -1,5 +1,6 @@
 ---
 sidebar_position: 2
+description: Learn how to retrieve hotel lists via the HotelX Hotels Query — including FastX codes, hotel code management, destination filtering, and content by access.
 ---
 
 # Hotels
@@ -99,5 +100,5 @@ No, it is not possible to exclude hotels with no availability from the portfolio
 To check real-time availability, you should use the **Search Query** in the booking flow. Additionally, you can optimize search results using the **Traffic Optimizer** tool, which allows blacklisting of hotels with consistent no availability issues. For more details, check the [Traffic Optimizer documentation](/kb/platform/app-features/smart-traffic/traffic-optimizer/traffic-optimizer-details).
 
 :::tip
-More information is available in our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/hotels) and [API Playground](/playground).
+Explore our [HotelX Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/hotels#query-overview) for a complete example of a Hotels Query and the full list of available fields. 🚀
 :::

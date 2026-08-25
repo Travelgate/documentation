@@ -111,14 +111,16 @@ The response options include either **success** or an **error**. In the event of
             <Holder name = "name" surname = "surname"/>
             <Price currency = "EUR" amount = "658.94" binding = "false" commission = "-1" minimumSellingPrice="-1"/>
             <Rooms>
-               <Room id = "27441" roomCandidateRefId = "1" description = "Doble Standard"/>
+               <Room id = "27441" roomCandidateRefId = "1" code = "27441" description = "Doble Standard" nonRefundable = "false" numberOfUnits = "1">
+                  <Price currency = "EUR" amount = "658.94" binding = "false" commission = "-1" minimumSellingPrice="-1"/>
+                  <Fees>
+                      <Fee includedPriceOption = "true" description = "TaxAndServiceFee" mandatory = "true" refundable = "false">
+                          <Price currency = "EUR" amount = "8.11" binding = "false" commission = "-1" minimumSellingPrice="-1"/>
+                          <Code>SPE</Code>
+                      </Fee>
+                  </Fees>
+               </Room>
             </Rooms>
-            <Fees>
-                <Fee includedPriceOption = "true" description = "TaxAndServiceFee" mandatory = "true" refundable = "false">
-                    <Price currency = "EUR" amount = "8.11" binding = "false" commission = "-1" minimumSellingPrice="-1"/>
-                    <Code>SPE</Code>
-                </Fee>
-            </Fees>
             <CancelPenalties nonRefundable = "false">
                <CancelPenalty>
                   <HoursBefore>72</HoursBefore>
@@ -155,14 +157,16 @@ The response options include either **success** or an **error**. In the event of
             <Holder name = "name" surname = "surname"/>
             <Price currency = "EUR" amount = "36.20" binding = "false" commission = "-1" minimumSellingPrice="-1"/>
             <Rooms>
-               <Room id = "4582" roomCandidateRefId = "1" description = "Doble Standard.."/>
+               <Room id = "4582" roomCandidateRefId = "1" code = "4582" description = "Doble Standard.." nonRefundable = "false" numberOfUnits = "1">
+                  <Price currency = "EUR" amount = "36.20" binding = "false" commission = "-1" minimumSellingPrice="-1"/>
+                  <Fees>
+                      <Fee includedPriceOption = "true" description = "TaxAndServiceFee" mandatory = "true" refundable = "false">
+                          <Price currency = "EUR" amount = "8.11" binding = "false" commission = "-1" minimumSellingPrice="-1"/>
+                          <Code>SPE</Code>
+                      </Fee>
+                  </Fees>
+               </Room>
             </Rooms>
-            <Fees>
-                <Fee includedPriceOption = "true" description = "TaxAndServiceFee" mandatory = "true" refundable = "false">
-                    <Price currency = "EUR" amount = "8.11" binding = "false" commission = "-1" minimumSellingPrice="-1"/>
-                    <Code>SPE</Code>
-                </Fee>
-            </Fees>
             <CancelPenalties nonRefundable = "false">
                <CancelPenalty>
                   <HoursBefore>120</HoursBefore>
@@ -218,6 +222,14 @@ The response options include either **success** or an **error**. In the event of
 | @roomCandidateRefId			| 0..1 		| Integer	| Identifier of room candidate.			|
 | @code 				| 0..1 		| String	| Room code.     				|
 | @description				| 0..1 		| String	| Room description.				|
+| @nonRefundable			| 0..1 		| Boolean	| Indicates whether the room rate is non-refundable.	|
+| @numberOfUnits			| 0..1 		| Integer	| Number of units booked for this room.			|
+| Room/Price				| 0..1 		|		| Price at room level (same structure as `Hotel/Price`).	|
+| @currency				| 1    		| String	| Currency code (Our system uses a standard ISO - 3 for all suppliers).	|
+| @amount				| 1    		| Decimal	| Total amount for the room.				|
+| @binding				| 1    		| Boolean	| If binding is set as true, then the client can't sell the product for a lower price than the one set by the supplier. If set as false, the client can sell the product for a lower price. |
+| @commission				| 1    		| Decimal	| Commission applied to the amount. See the `Commission Scenarios` described for `Hotel/Price`.	|
+| @minimumSellingPrice			| 1    		| Decimal	| Minimum selling price determined by the Seller. See the `Minimum Selling Price Scenarios` described for `Hotel/Price`.	|
 | Hotel/RoomCandidates		| 0..1       	|		| Rooms requested at the time of booking.|
 | RoomCandidates/RoomCandidate	| 1..n       	|		| Room required.				|
 | @id					| 0..1 		| Integer	| Id of the requested room (starting at 1). 	|
@@ -225,7 +237,8 @@ The response options include either **success** or an **error**. In the event of
 | Paxes/Pax | 1..n       	|		| Pax required.					|
 | @age					| 0..1 		| Integer	| Passenger age on the day of check-in.				|
 | @id					| 0..1 		| Integer	| Id of the requested room (starting at 1).	|
-| Hotel/Fees/Fee | 0..n | |                                                                   |
+| Room/Fees | 0..1 | | Fees applied at room level. |
+| Room/Fees/Fee | 0..n | |                                                                   |
 | @includedPriceOption			        | 1		        | Boolean       | Indicates if the fee is included or not in the final price. <details>     <summary>How to interpret includePriceOption Scenarios</summary>     <div>         <div>          <table>  				 <thead>  					 <tr>  						 <th>  							 <strong>Payment Type</strong>  						 </th>  						 <th>  							 <strong>includedPriceOption</strong>  						 </th>  					 </tr>  				 </thead>  				 <tbody>  					 <tr>  						 <td>MerchantPay, CardBookingPay, CardCheckInPay</td>  						 <td>If True the amount of the fee is already included in the price and is paid at the time of booking. If False, said fee have to be paid in the hotel.</td>  					 </tr>  					 <tr>  						 <td>LaterPay</td>  						 <td>In both cases if True or False, the amount of the fee has to be paid in the hotel, as the type of payment is LaterPay. The difference is that if includedPriceOption = False the client would have to sum the amount on their end. This is done if the supplier does not include it. This way, the client can show the fee on their web separated from the option price, and it’s now the client’s own decision how they should treat it.</td>  					 </tr>			 </tbody>  			</table>         </div>     </div> </details>                                   |
 | @description				            | 1             | String        | Remarks regarding fee.                                                                        |
 | @mandatory 				            | 1             | Boolean       | If the fee is obligatory, depending on the includedPriceOption to know if it is paid at the time of booking or at the hotel. In case it is false, it could be a fee such as "cleaning" that the consumer could hire if he wanted. |

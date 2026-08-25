@@ -84,271 +84,247 @@ Once FastX Content is installed from the Travelgate Store, the flow is as follow
 <Tabs>
   <TabItem value="before" label="(Before) Basic content">
     ```json
-        {
-            "node": {
-                "createdAt": "2026-06-21T02:44:18.5836893Z",
-                "updatedAt": "2026-07-21T08:28:36.1567405Z",
-                "hotelData": {
-                "hotelCode": "ES2235",
-                "hotelName": "Ilunion Malaga",
-                "categoryCode": null,
-                "chainCode": null,
-                "location": {
-                    "address": "Paseo Maritimo Antonio Machado, 10",
-                    "zipCode": null,
-                    "city": null,
-                    "country": "ES",
-                    "coordinates": {
-                    "latitude": 36.710408,
-                    "longitude": -4.427283
-                    }
+    {
+        "node" : {
+            "createdAt" : "2026-06-21T02:44:18.5836893Z",
+            "updatedAt" : "2026-08-10T12:27:03.4047945Z",
+            "hotelData" : {
+                "hotelCode" : "ES2235",
+                "hotelName" : "Ilunion Malaga",
+                "categoryCode" : null,
+                "chainCode" : null,
+                "location" : {
+                    "address" : "Paseo Maritimo Antonio Machado, 10",
+                    "zipCode" : null,
+                    "city" : null,
+                    "state" : null,
+                    "country" : "ES",
+                    "coordinates" : {
+                        "latitude" : 36.710408,
+                        "longitude" : -4.427283
+                    },
+                    "airports" : null
                 },
-                "contact": {
-                    "email": null,
-                    "telephone": null,
-                    "fax": null,
-                    "web": null
+                "contact" : {
+                    "email" : null,
+                    "telephone" : null,
+                    "fax" : null,
+                    "web" : null
                 },
-                "descriptions": [],
-                "medias": null,
-                "rooms": {
-                    "edges": null
+                "cardTypes" : null,
+                "checkIn" : {
+                    "minAge" : 0,
+                    "schedule" : null,
+                    "instructions" : null,
+                    "specialInstructions" : null
                 },
-                "allAmenities": null
-                }
+                "checkOut" : {
+                    "minAge" : 0,
+                    "schedule" : null,
+                    "instructions" : null,
+                    "specialInstructions" : null
+                },
+                "mandatoryFees" : null,
+                "descriptions" : [
+                ],
+                "medias" : null,
+                "allAmenities" : null
             }
         }
-        ```
+    }
+    ```
   </TabItem>
   <TabItem value="after" label="(After) With FastX Content by AO">
     ```json
     {
-    "node" : {
-        "createdAt" : "2026-07-21T08:58:05.556905Z",
-        "updatedAt" : "2026-07-31T11:29:50.779379Z",
-        "hotelData" : {
-            "hotelCode" : "ES2235",
-            "hotelName" : "Hotel ILUNION Malaga",
-            "categoryCode" : "4.0",
-            "chainCode" : "ILUNIONGRO",
-            "location" : {
-                "address" : "Paseo Marítimo Antonio Machado, 10",
-                "zipCode" : "29002",
-                "city" : "Malaga",
-                "country" : "ES",
-                "coordinates" : {
-                    "latitude" : 36.710259,
-                    "longitude" : -4.42725
-                }
-            },
-            "contact" : {
-                "email" : "reservasmalaga@ilunionhotels.com",
-                "telephone" : "34-95-655478057",
-                "fax" : "34-95-2046006",
-                "web" : "http://www.ilunionmalaga.com/"
-            },
-            "checkIn" : {
-                "minAge" : 18,
-                "schedule" : {
-                    "startTime" : "14:00"
+        "node" : {
+            "createdAt" : "2026-07-21T08:58:05.556905Z",
+            "updatedAt" : "2026-08-25T09:19:01.8295728Z",
+            "hotelData" : {
+                "hotelCode" : "ES2235",
+                "hotelName" : "Hotel ILUNION Malaga",
+                "categoryCode" : "4",
+                "chainCode" : "ILUNIONGRO",
+                "location" : {
+                    "address" : "Paseo Marítimo Antonio Machado, 10",
+                    "zipCode" : "29002",
+                    "city" : "Málaga",
+                    "state" : "Malaga",
+                    "country" : "ES",
+                    "coordinates" : {
+                        "latitude" : 36.710255,
+                        "longitude" : -4.427258
+                    },
+                    "airports" : [
+                        {
+                            "airportData" : {
+                                "code" : "AGP"
+                            }
+                        }
+                    ]
                 },
-                "instructions" : [
+                "contact" : {
+                    "email" : "reservasmalaga@ilunionhotels.com",
+                    "telephone" : "34-95-655478057",
+                    "fax" : "34-95-2046006",
+                    "web" : "http://www.ilunionmalaga.com/"
+                },
+                "cardTypes" : [
+                    "VI",
+                    "DC",
+                    "AX",
+                    "CA"
+                ],
+                "checkIn" : {
+                    "minAge" : 18,
+                    "schedule" : {
+                        "startTime" : "14:00"
+                    },
+                    "instructions" : [
+                        {
+                            "language" : "en",
+                            "text" : "<ul>  <li>Extra-person charges may apply and vary depending on property policy</li><li>Government-issued photo identification and a credit card, debit card, or cash deposit may be required at check-in for incidental charges</li><li>Special requests are subject to availability upon check-in and may incur additional charges; special requests cannot be guaranteed</li><li>Special cancellation policies or charges may apply for group reservations (more than 8 rooms for the same property / stay dates)</li><li>This property accepts credit cards, debit cards, and cash</li><li>Safety features at this property include a fire extinguisher</li>  </ul>"
+                        }
+                    ],
+                    "specialInstructions" : [
+                        {
+                            "language" : "en",
+                            "text" : "To make arrangements for check-in please contact the property ahead of time using the information on the booking confirmation. If you are planning to arrive after 6:00 PM please contact the property in advance using the information on the booking confirmation. Guests must contact the property in advance for check-in instructions. Front desk staff will greet guests on arrival at the property. Information provided by the property may be translated using automated translation tools."
+                        }
+                    ]
+                },
+                "checkOut" : {
+                    "schedule" : {
+                        "endTime" : "12:00"
+                    },
+                    "instructions" : null,
+                    "specialInstructions" : null
+                },
+                "descriptions" : [
                     {
-                        "language" : "en",
-                        "text" : "<ul>  <li>Extra-person charges may apply and vary depending on property policy</li><li>Government-issued photo identification and a credit card, debit card, or cash deposit may be required at check-in for incidental charges</li><li>Special requests are subject to availability upon check-in and may incur additional charges; special requests cannot be guaranteed</li><li>Special cancellation policies or charges may apply for group reservations (more than 8 rooms for the same property / stay dates)</li><li>This property accepts credit cards, debit cards, and cash</li><li>Safety features at this property include a fire extinguisher</li>  </ul>"
+                        "type" : "ACTIVITY",
+                        "texts" : [
+                            {
+                                "language" : "en",
+                                "text" : "Distances are displayed to the nearest 0.1 mile and kilometer. <br /> <p>Soho - 0.1 km / 0.1 mi <br /> CAC Málaga - 0.6 km / 0.4 mi <br /> Parque Canino Parque de Huelin - 0.7 km / 0.4 mi <br /> Centro Comercial Larios Centro - 0.7 km / 0.4 mi <br /> Parque del Mar - 0.8 km / 0.5 mi <br /> Teatro del Soho CaixaBank - 0.9 km / 0.6 mi <br /> Playa de San Andrés - 1 km / 0.6 mi <br /> El Corte Ingles Commercial Center - 1 km / 0.6 mi <br /> Picasso Park - 1.1 km / 0.7 mi <br /> Central Market of Atarazanas - 1.1 km / 0.7 mi <br /> Port of Malaga - 1.1 km / 0.7 mi <br /> Santisimo Cristo de la Buena Muerte - 1.1 km / 0.7 mi <br /> Calle Larios - 1.3 km / 0.8 mi <br /> Carmen Thyssen Museum - 1.5 km / 0.9 mi <br /> Tajo's Tree-Lined Avenue - 1.5 km / 0.9 mi <br /> </p><p>The preferred airport for Hotel ILUNION Malaga is Malaga Airport (AGP) - 10.7 km / 6.6 mi </p>"
+                            }
+                        ]
+                    },
+                    {
+                        "type" : "AMENITY",
+                        "texts" : [
+                            {
+                                "language" : "en",
+                                "text" : "Be sure to enjoy recreational amenities, including an indoor pool, a sauna, and a fitness center. Additional amenities at this hotel include complimentary wireless internet access, an arcade/game room, and gift shops/newsstands."
+                            }
+                        ]
+                    },
+                    {
+                        "type" : "GENERAL",
+                        "texts" : [
+                            {
+                                "language" : "en",
+                                "text" : "In Málaga (Málaga Centro),Featured amenities include a business center, dry cleaning/laundry services, and a 24-hour front desk. Planning an event in Málaga? This hotel has 8611 square feet (800 square meters) of space consisting of a conference center and meeting rooms. Self parking (subject to charges) is available onsite.,In the heart of Málaga, Hotel ILUNION Malaga is within a 5-minute drive of Málaga Cathedral and Alcazaba of Málaga.  This hotel is 1.2 mi (1.9 km) from Port of Malaga and 1.9 mi (3.1 km) from Picasso Museum Malaga."
+                            }
+                        ]
+                    },
+                    {
+                        "type" : "RESTAURANT",
+                        "texts" : [
+                            {
+                                "language" : "en",
+                                "text" : "Enjoy Mediterranean cuisine at El Puerto, a restaurant which features a bar/lounge, or stay in and take advantage of the room service (during limited hours). English breakfasts are available daily from 7:00 AM to 11:00 AM for a fee."
+                            }
+                        ]
                     }
                 ],
-                "specialInstructions" : [
+                "medias" : [
                     {
-                        "language" : "en",
-                        "text" : "To make arrangements for check-in please contact the property ahead of time using the information on the booking confirmation. If you are planning to arrive after 6:00 PM please contact the property in advance using the information on the booking confirmation. Guests must contact the property in advance for check-in instructions. Front desk staff will greet guests on arrival at the property. Information provided by the property may be translated using automated translation tools."
+                        "type" : "HOTEL",
+                        "url" : "https://images.orbiscdn.com/images/ES2235/base/f91381fa7520c356931c12510557dd1b9d016d1e2456cfca11f8d4db9eab4467",
+                        "texts" : [
+                            {
+                                "language" : "en",
+                                "text" : "Primary image"
+                            }
+                        ]
+                    },
+                    {
+                        "type" : "GENERAL",
+                        "url" : "https://images.orbiscdn.com/images/ES2235/base/c277aa4e6213a54324305c4984463d5b768c02796c5cb777aa9f6f9d00447873",
+                        "texts" : [
+                            {
+                                "language" : "en",
+                                "text" : "Lobby"
+                            }
+                        ]
+                    },
+                    {
+                        "type" : "ROOM",
+                        "url" : "https://images.orbiscdn.com/images/ES2235/base/254556702633955b4d0c0175b4c6a512791e6dd46c9f387c49a90f9f0bbc9757",
+                        "texts" : [
+                            {
+                                "language" : "en",
+                                "text" : "Room"
+                            }
+                        ]
+                    },
+                    {
+                        "..." : "more media items"
                     }
-                ]
-            },
-            "checkOut" : {
-                "minAge" : 0,
-                "schedule" : {
-                    "endTime" : "12:00"
+                ],
+                "allAmenities" : {
+                    "edges" : [
+                        {
+                            "node" : {
+                                "amenityData" : {
+                                    "code" : "",
+                                    "amenityCode" : "HAC116",
+                                    "texts" : [
+                                        {
+                                            "language" : "en",
+                                            "text" : "Accessible parking"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "node" : {
+                                "amenityData" : {
+                                    "code" : "",
+                                    "amenityCode" : "HAC79",
+                                    "texts" : [
+                                        {
+                                            "language" : "en",
+                                            "text" : "Sauna"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "node" : {
+                                "amenityData" : {
+                                    "code" : "",
+                                    "amenityCode" : "HAC1",
+                                    "texts" : [
+                                        {
+                                            "language" : "en",
+                                            "text" : "24-hour front desk"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "..." : "more amenities"
+                        }
+                    ]
                 }
-            },
-            "descriptions" : [
-                {
-                    "type" : "ACTIVITY",
-                    "texts" : [
-                        {
-                            "language" : "en",
-                            "text" : "Distances are displayed to the nearest 0.1 mile and kilometer. <br /> <p>Soho - 0.1 km / 0.1 mi <br /> CAC Málaga - 0.6 km / 0.4 mi <br /> Centro Comercial Larios Centro - 0.7 km / 0.4 mi <br /> Parque del Mar - 0.8 km / 0.5 mi <br /> Teatro del Soho CaixaBank - 0.9 km / 0.6 mi <br /> Playa de San Andrés - 1 km / 0.6 mi <br /> El Corte Ingles Commercial Center - 1 km / 0.6 mi <br /> Picasso Park - 1.1 km / 0.7 mi <br /> Central Market of Atarazanas - 1.1 km / 0.7 mi <br /> Port of Malaga - 1.1 km / 0.7 mi <br /> Santisimo Cristo de la Buena Muerte - 1.1 km / 0.7 mi <br /> Málaga Park - 1.2 km / 0.7 mi <br /> Calle Larios - 1.3 km / 0.8 mi <br /> Carmen Thyssen Museum - 1.5 km / 0.9 mi <br /> Tajo's Tree-Lined Avenue - 1.5 km / 0.9 mi <br /> </p><p>The preferred airport for Hotel ILUNION Malaga is Malaga Airport (AGP) - 10.7 km / 6.6 mi </p>"
-                        }
-                    ]
-                },
-                {
-                    "type" : "AMENITY",
-                    "texts" : [
-                        {
-                            "language" : "en",
-                            "text" : "Be sure to enjoy recreational amenities, including an indoor pool, a sauna, and a fitness center. Additional amenities at this hotel include complimentary wireless internet access, an arcade/game room, and gift shops/newsstands."
-                        }
-                    ]
-                },
-                {
-                    "type" : "GENERAL",
-                    "texts" : [
-                        {
-                            "language" : "en",
-                            "text" : "In Málaga (Málaga Centro),Featured amenities include a business center, dry cleaning/laundry services, and a 24-hour front desk. Planning an event in Málaga? This hotel has 8611 square feet (800 square meters) of space consisting of a conference center and meeting rooms. Self parking (subject to charges) is available onsite.,In the heart of Málaga, Hotel ILUNION Malaga is within a 5-minute drive of Málaga Cathedral and Alcazaba of Málaga.  This hotel is 1.2 mi (1.9 km) from Port of Malaga and 1.9 mi (3.1 km) from Picasso Museum Malaga."
-                        }
-                    ]
-                },
-                {
-                    "type" : "RESTAURANT",
-                    "texts" : [
-                        {
-                            "language" : "en",
-                            "text" : "Enjoy Mediterranean cuisine at El Puerto, a restaurant which features a bar/lounge, or stay in and take advantage of the room service (during limited hours). English breakfasts are available daily from 7:00 AM to 11:00 AM for a fee."
-                        }
-                    ]
-                }
-            ],
-            "medias" : [
-                {
-                    "type" : "HOTEL",
-                    "url" : "https://images.orbiscdn.com/images/ES2235/base/f91381fa7520c356931c12510557dd1b9d016d1e2456cfca11f8d4db9eab4467"
-                },
-                {
-                    "type" : "HOTEL",
-                    "url" : "https://images.orbiscdn.com/images/ES2235/base/0abb7aa662978d3b3e3093077157650f04eb38ed6478fafebcf3d93c96698dd7"
-                },
-                {
-                    "type" : "GENERAL",
-                    "url" : "https://images.orbiscdn.com/images/ES2235/base/c277aa4e6213a54324305c4984463d5b768c02796c5cb777aa9f6f9d00447873"
-                },
-                {
-                    "type" : "HOTEL",
-                    "url" : "https://images.orbiscdn.com/images/ES2235/base/123feeb0b6fcdf63d52621711acc1da35b846cf7c2c4dacd3c1fc792ca6868c2"
-                },
-                {
-                    "type" : "GENERAL",
-                    "url" : "https://images.orbiscdn.com/images/ES2235/base/94800fb733ba9a155db7727f22c2730e7653e1a78a73c8d1543b2dc474992972"
-                },
-                {
-                    "type" : "ROOM",
-                    "url" : "https://images.orbiscdn.com/images/ES2235/base/c6642d444aa4c66f202177f48edc1126fa282857a0acbcfb519e1af31cd6670d"
-                },
-                {...}
-            ],
-            "allAmenities" : {
-                "edges" : [
-                    {
-                        "node" : {
-                            "amenityData" : {
-                                "amenityCode" : "HAC116",
-                                "texts" : [
-                                    {
-                                        "language" : "en",
-                                        "text" : "Accessible parking"
-                                    }
-                                ]
-                            }
-                        }
-                    },
-                    {
-                        "node" : {
-                            "amenityData" : {
-                                "amenityCode" : "HAC101",
-                                "texts" : [
-                                    {
-                                        "language" : "en",
-                                        "text" : "Wheelchair access"
-                                    }
-                                ]
-                            }
-                        }
-                    },
-                    {
-                        "node" : {
-                            "amenityData" : {
-                                "amenityCode" : "HAC74",
-                                "texts" : [
-                                    {
-                                        "language" : "en",
-                                        "text" : "Ramp access"
-                                    }
-                                ]
-                            }
-                        }
-                    },
-                    {
-                        "node" : {
-                            "amenityData" : {
-                                "amenityCode" : "HAC79",
-                                "texts" : [
-                                    {
-                                        "language" : "en",
-                                        "text" : "Sauna"
-                                    }
-                                ]
-                            }
-                        }
-                    },
-                    {
-                        "node" : {
-                            "amenityData" : {
-                                "amenityCode" : "HAC35",
-                                "texts" : [
-                                    {
-                                        "language" : "en",
-                                        "text" : "Exercise gym"
-                                    }
-                                ]
-                            }
-                        }
-                    },
-                    {
-                        "node" : {
-                            "amenityData" : {
-                                "amenityCode" : "HAC103",
-                                "texts" : [
-                                    {
-                                        "language" : "en",
-                                        "text" : "Multilingual staff"
-                                    }
-                                ]
-                            }
-                        }
-                    },
-                    {
-                        "node" : {
-                            "amenityData" : {
-                                "amenityCode" : "HAC87",
-                                "texts" : [
-                                    {
-                                        "language" : "en",
-                                        "text" : "Storage space"
-                                    }
-                                ]
-                            }
-                        }
-                    },
-                    {
-                        "node" : {
-                            "amenityData" : {
-                                "amenityCode" : "HAC1",
-                                "texts" : [
-                                    {
-                                        "language" : "en",
-                                        "text" : "24-hour front desk"
-                                    }
-                                ]
-                            }
-                        }
-                    },
-                    {...}
-                ]
             }
         }
     }
-}
-
     ```
   </TabItem>
 </Tabs>

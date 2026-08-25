@@ -35,7 +35,7 @@ export const hotelsQuery =
               fax
               web
             }
-						cardTypes
+			cardTypes
             checkIn {
               minAge
               schedule {

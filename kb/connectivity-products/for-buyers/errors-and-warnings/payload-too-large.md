@@ -2,7 +2,7 @@
 sidebar_position: 23
 ---
 
-# VALIDATION_ERROR - PAYLOAD_TOO_LARGE
+# PAYLOAD_TOO_LARGE
 
 ## What Does "PAYLOAD_TOO_LARGE" Mean?
 A **"PAYLOAD_TOO_LARGE"** error appears when a HotelX Search would return more options than the platform can safely deliver in a single response.

@@ -12,7 +12,7 @@ What you will learn in this guide:
 
 - How Sellers validate or invalidate hotel and board mappings.
 - How Buyers review mapping coverage and validation status across Suppliers.
-- How to test room description normalization using the new Rooms tab.
+- How to test room description standardization using the new Rooms tab.
 - How to use filters, search, and CSV export in daily operations.
 
 :::note Product Scope

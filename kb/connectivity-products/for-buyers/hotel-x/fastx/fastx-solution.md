@@ -47,7 +47,7 @@ With FastX mode, your system works with only one shared language (FastX codes) w
 FastX is not just a technical upgrade—it's a marketplace-wide shift that benefits both Buyers and Sellers.
 
 **For Buyers:**
-- **Less mapping overhead:** avoid repeating hotel, board, and room mapping work every time a new Supplier is connected.
+- **Less mapping overhead:** avoid repeating hotel and board mapping work and reduce repetitive room interpretation effort every time a new Supplier is connected.
 - **Aggregation in one query:** receive and compare options from multiple Suppliers in a single Search request.
 - **Faster Supplier activations:** reduce onboarding friction when expanding your Supplier coverage.
 - **Simpler operations:** maintain one unified code system instead of managing multiple Supplier-specific code systems.
@@ -71,7 +71,7 @@ FastX is not only the standard connectivity layer for unique hotel, board, and r
 To support standardization across the Marketplace, Travelgate generates unique FastX codes for three asset types: **hotels**, **boards**, and **rooms**.
 
 - **Hotels & boards:** Travelgate creates persistent, standardized codes. The [FastX Codes tool](/kb/platform/app-features/connections/fast-x-codes/fastx-codes) lets Sellers validate mappings and Buyers track which Suppliers are matched to each code.
-- **Rooms:** Travelgate generates codes at search time (see [Room Mapping](#room-mapping) below).
+- **Rooms:** Travelgate generates standardized codes and descriptions at search time (see [Room Standardization](#room-standardization) below).
 
 
 ### Hotel and Board Mapping
@@ -95,7 +95,7 @@ By default, your booking flow accepts both `validated` and `pending` codes. If y
 ![tg-fastx-buyers-5](https://stplaformwe.blob.core.windows.net/kbase/tg-fastx-buyers-5.png)
 
 
-### Room Mapping
+### Room Standardization
 
 Unlike hotels and boards, room descriptions are highly dynamic and change daily across Suppliers. Because of this, there is no static room master list. Instead, **FastX generates standardized room codes and descriptions at search time** when Supplier availability is received.
 

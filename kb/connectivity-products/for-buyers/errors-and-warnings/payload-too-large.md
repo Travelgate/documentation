@@ -40,7 +40,6 @@ Main triggers:
 - **Broad destination searches** (for example, large city-level destination codes) that expand to very large hotel sets.
 - **Large hotel volumes in criteria** combined with broad distribution scope.
 - **Unfiltered multi-supplier searches** executed across many accesses without aggregation or filtering rules.
-- **Missing request constraints** (for example, no options cap, no supplier/access filters, or no market segmentation).
 
 ## What Can I Do If I Receive "PAYLOAD_TOO_LARGE"?
 Apply the following optimizations to reduce response size and improve performance.

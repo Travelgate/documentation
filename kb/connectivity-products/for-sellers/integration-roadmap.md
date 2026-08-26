@@ -20,7 +20,7 @@ The [Seller API Development Roadmap](https://app.travelgate.com/network/roadmap)
 Each connector card can include:
 
 - **Connector name** and **Company Type**, such as **Seller**.
-- **Product (Connection type)**, such as **PUSH**, **PULL**, or **PUSH PROVIDER DEVELOPMENT**.
+- **Product**, such as **PUSH PROVIDER DEVELOPMENT**, **PUSH GENERIC**, **PUSH**, **PULL PROVIDER DEVELOPMENT**, **PULL GENERIC**, or **PULL**.
 - **Development status**, such as **In progress**, **Completed**, **Certification**, or **Selected for development**.
 - **Progress percentage**, indicating the current stage of development.
 - **Company Profile** summary, when available.

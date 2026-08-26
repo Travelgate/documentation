@@ -1,26 +1,31 @@
 ---
 sidebar_position: 2
-draft: true
 ---
 
-# Development Roadmap
+# Seller API Development Roadmap
 
-At Travelgate, we are committed to collaboration and innovation. Our **[Seller API Development Roadmap](https://app.travelgate.com/network/roadmap)** provides **transparency**, allowing you to strategically schedule your product development with a clear view of our plans and progress.
+The [Seller API Development Roadmap](https://app.travelgate.com/network/roadmap) shows the integrations Travelgate is developing for Sellers, together with their current status and progress. Use the roadmap to check whether a connector is **completed, in progress, being certified, or selected for development.**
 
-As we phase out our Legacy Pull Sellers API (deprecated), we continue to drive technological advancement by developing all new API integrations. Our goal is to ensure you remain at the forefront of innovation in the travel industry.
+## How to Access the Roadmap
 
-Our roadmap highlights the **integrations** being added to our Marketplace, helping you stay competitive in an evolving industry. At Travelgate, we recognize the importance of **scalability**—as your business expands, our technology evolves alongside it, equipping you with the resources needed for sustained success.
+1. Open the [Travelgate website](https://travelgate.com/) or go directly to the [Travelgate Platform](https://app.travelgate.com/).
+2. Open **Network > Roadmap**.
+3. Search for a connector by name or filter the results by **Status**.
+4. Sort the results by **Name** or **Last updated (Date)**.
 
-## How to Access Travelgate’s Roadmap & What You’ll Find
+![Seller API roadmap showing connector search, filters, statuses, and progress](https://storage.travelgate.com/kbase/tg-roadmap-dashboard.png)
 
-To explore our roadmap:
+## What the Roadmap Shows
 
-1. **Visit our Platform**.
-2. **Navigate to "Network" in the top menu and select "Roadmap"**.
-3. On the **Roadmap** page, you can:
-   - **View all ongoing Seller developments**.
-   - **Apply filters** (on the left side of the screen) based on development status or **Seller name**.
+Each connector card can include:
 
-   ![roadmap_aug](https://storage.travelgate.com/kbase/roadmap_aug.jpg)
+- **Connector name** and **Company Type**, such as **Seller**.
+- **Product (Connection type)**, such as **PUSH**, **PULL**, or **PUSH PROVIDER DEVELOPMENT**.
+- **Development status**, such as **In progress**, **Completed**, **Certification**, or **Selected for development**.
+- **Progress percentage**, indicating the current stage of development.
+- **Company Profile** summary, when available.
+- A **View profile** link with more information about the connector.
 
-Stay ahead in the travel industry with **Travelgate's evolving API solutions**!
+:::info
+The connector count, progress percentages, and status values can change as the roadmap is updated.
+:::

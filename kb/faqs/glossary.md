@@ -360,7 +360,7 @@ Monitoring feature that allows users to access and analyze transaction logs thou
 Ongoing upkeep and updates to ensure product functionality and performance, encompassing any development efforts focused on maintaining the proper operation of existing products and services.
 
 - **Mapping**  
-Process of matching elements from one dataset to corresponding elements of another dataset, ensuring data alignment and consistency. E.g. hotel mapping, board mapping, room mapping.
+Process of matching elements from one dataset to corresponding elements of another dataset, ensuring data alignment and consistency. E.g. hotel mapping or board mapping.
 
 - **Mapping file**  
 A file that holds definitions and correlations between two datasets, used during the mapping process.

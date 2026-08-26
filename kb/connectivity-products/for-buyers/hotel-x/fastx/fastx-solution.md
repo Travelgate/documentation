@@ -1,8 +1,8 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 ---
 
-# FastX Solution Overview
+# What is FastX?
 
 FastX is **the new baseline for hotel connectivity** with our [HotelX API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart). It is not a separate API: you keep using HotelX, but with a standardized `FASTX` context and stronger aggregation capabilities.
 
@@ -47,7 +47,7 @@ With FastX mode, your system works with only one shared language (FastX codes) w
 FastX is not just a technical upgrade—it's a marketplace-wide shift that benefits both Buyers and Sellers.
 
 **For Buyers:**
-- **Less mapping overhead:** avoid repeating hotel, board, and room mapping work every time a new Supplier is connected.
+- **Less mapping overhead:** avoid repeating hotel and board mapping work and reduce repetitive room interpretation effort every time a new Supplier is connected.
 - **Aggregation in one query:** receive and compare options from multiple Suppliers in a single Search request.
 - **Faster Supplier activations:** reduce onboarding friction when expanding your Supplier coverage.
 - **Simpler operations:** maintain one unified code system instead of managing multiple Supplier-specific code systems.
@@ -55,6 +55,10 @@ FastX is not just a technical upgrade—it's a marketplace-wide shift that benef
 - **GIATA compatibility:** FastX codes align with GIATA's standardized identifiers (available as `travelgate`; see [GIATA Multicodes](/kb/connectivity-products/for-buyers/giata/giata-multicodes)).
 - **Scalable growth:** expand your Supplier portfolio without proportionally multiplying technical complexity.
 - **Verified Seller badge:** Suppliers who have validated 80% or more of their hotel and board mappings receive a **FastX Verified Seller badge**, visible in the [Travelgate Network](https://app.travelgate.com/network/partners). It is a validation-coverage indicator — not a quality certification for every individual mapping.
+
+:::tip Need a complete, unified hotel and room static content layer too?
+FastX is not only the standard connectivity layer for unique hotel, board, and room codes in the booking flow. If the Buyer wants it, FastX also adds a single, complete, and standardized hotel and room content service. See [**FastX Content**](/kb/connectivity-products/for-buyers/hotel-x/fastx/fastx-content).
+:::
 
 **For Sellers:**
 - **Reduced mapping effort:** validate hotel and board mappings once, then serve all FastX Buyers with standardized codes.
@@ -67,13 +71,13 @@ FastX is not just a technical upgrade—it's a marketplace-wide shift that benef
 To support standardization across the Marketplace, Travelgate generates unique FastX codes for three asset types: **hotels**, **boards**, and **rooms**.
 
 - **Hotels & boards:** Travelgate creates persistent, standardized codes. The [FastX Codes tool](/kb/platform/app-features/connections/fast-x-codes/fastx-codes) lets Sellers validate mappings and Buyers track which Suppliers are matched to each code.
-- **Rooms:** Travelgate generates codes at search time (see [Room Mapping](#room-mapping) below).
+- **Rooms:** Travelgate generates standardized codes and descriptions at search time (see [Room Standardization](#room-standardization) below).
 
 
 ### Hotel and Board Mapping
 
 Hotels and boards are mapped once and Travelgate provides standardized codes via:
-- The [HotelX API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/fastx-content)
+- The [HotelX API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/hotels)
 - The [FastX Codes tool](/kb/platform/app-features/connections/fast-x-codes/fastx-codes) (visual interface for validation)
 
 **Validation workflow:**
@@ -91,7 +95,7 @@ By default, your booking flow accepts both `validated` and `pending` codes. If y
 ![tg-fastx-buyers-5](https://stplaformwe.blob.core.windows.net/kbase/tg-fastx-buyers-5.png)
 
 
-### Room Mapping
+### Room Standardization
 
 Unlike hotels and boards, room descriptions are highly dynamic and change daily across Suppliers. Because of this, there is no static room master list. Instead, **FastX generates standardized room codes and descriptions at search time** when Supplier availability is received.
 

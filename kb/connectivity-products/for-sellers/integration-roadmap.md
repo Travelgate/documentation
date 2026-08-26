@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Seller API Development Roadmap
 
-The [Seller API Development Roadmap](https://app.travelgate.com/network/roadmap) shows the integrations Travelgate is developing for Sellers, together with their current status and progress. Use the roadmap to check whether a connector is **completed, in progress, being certified, or selected for development.**
+The [Seller API Development Roadmap](https://app.travelgate.com/network/roadmap) shows the integrations Travelgate is developing for Sellers, together with their current status and progress. Use the roadmap to check whether a connector is **completed, in progress, in certification, or selected for development.**
 
 ## How to Access the Roadmap
 

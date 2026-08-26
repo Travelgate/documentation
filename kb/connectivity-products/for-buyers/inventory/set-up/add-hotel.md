@@ -43,6 +43,11 @@ If the hotel does not appear in the **Autocomplete** field, follow these steps t
    - **Locality:** Specify the hotel’s area.
    - **Latitude & Longitude:** Enter the hotel’s exact geographic coordinates.  
 
+:::warning Important behavior in Inventory Extranet
+After saving the hotel, **Code (Optional)** and **Inventory Context** cannot be edited from Extranet.
+If you need to change either one, create a new hotel with the correct values.
+:::
+
 
 ![inventory_setup3_create_aug](https://storage.travelgate.com/kbase/inventory_setup3_create_aug.jpg)
 ![how_to_add_hotel_inventory_4](https://storage.travelgate.com/kbase/how_to_add_hotel_inventory_4.jpg)

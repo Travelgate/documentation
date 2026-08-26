@@ -23,6 +23,12 @@ The `updateHotelSetup` mutation allows you to update the configuration of a hote
 * `emailNotificationCc`
 * `emailNotificationSupport`
 
+:::info Extranet and API behavior
+In Inventory Extranet, `hotelCode` and `contextCode` become immutable once the hotel is created. If you need different values there, create a new hotel.
+
+In `updateHotelSetup`, `hotelCode` is used to identify the target hotel setup, and `contextCode` can be sent in the update payload for API-based integrations.
+:::
+
 ### 1. Criteria
 
 When building your mutation, you need to provide the following input fields:

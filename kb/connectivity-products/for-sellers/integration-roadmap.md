@@ -8,12 +8,17 @@ The [Seller API Development Roadmap](https://app.travelgate.com/network/roadmap)
 
 ## How to Access the Roadmap
 
-1. Open the [Travelgate website](https://travelgate.com/) or go directly to the [Travelgate Platform](https://app.travelgate.com/).
+1. Open the [Travelgate website](https://travelgate.com/) or go directly to the [Travelgate App](https://app.travelgate.com/).
+
+     - **Travelgate website**
+
+         ![tg-roadmap-dashboard](https://storage.travelgate.com/kbase/tg-roadmap-dashboard.png)
+     - **Travelgate App**
+
+         ![tg-roadmap-dashboard-tg-app](https://storage.travelgate.com/kbase/tg-roadmap-dashboard-tg-app.png)
 2. Open **Network > Roadmap**.
 3. Search for a connector by name or filter the results by **Status**.
 4. Sort the results by **Name** or **Last updated (Date)**.
-
-![Seller API roadmap showing connector search, filters, statuses, and progress](https://storage.travelgate.com/kbase/tg-roadmap-dashboard.png)
 
 ## What the Roadmap Shows
 

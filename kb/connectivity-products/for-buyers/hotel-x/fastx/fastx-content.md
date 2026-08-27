@@ -8,7 +8,7 @@ import TabItem from "@theme/TabItem";
 
 # FastX Content
 
-FastX Content (powered by [AO](https://blog.travelgate.com/travelgate-part-of-travelsoft-group-acquires-ao-uk-ltd)) is **the new content standard**, designed to integrate perfectly with our HotelX API. This premium application, available in the Travelgate Store, represents the natural evolution of our connectivity. 
+FastX Content (powered by [AO](https://blog.travelgate.com/travelgate-part-of-travelsoft-group-acquires-ao-uk-ltd)) is **the new content standard**, designed to integrate perfectly with our HotelX API. This premium application, available in the [Travelgate Store](/kb/platform/app-features/app-store/discover-apps), represents the natural evolution of our connectivity. 
 
 To understand the product, think about connectivity in two phases:
 
@@ -53,7 +53,6 @@ FastX Content by AO adapts to the complexity and volume of your business through
 
 **🥇 Gold:**
     - It includes everything from your base plan (Bronze or Silver) and allows you to upload your own locally contracted content.
-    - It applies custom brand and tone-of-voice rules using artificial intelligence.
 
 **🎖️ Enterprise:**
     - It includes everything needed to create and manage content in-house across any channel.
@@ -68,12 +67,12 @@ Both initial tiers (Bronze and Silver) offer add-ons for extra language coverage
 This premium extension greatly benefits the final conversion (Look-to-Book) of Buyers:
 
 - **Zero content mapping effort:** You work with one code model in the Travelgate network (FastX Solution) and delegate content cleaning, normalization, and deduplication.
-- **Frictionless activation:** Setup follows a simple 3-step process through the Travelgate Store.
+- **Frictionless activation:** Setup follows a simple 3-step process through the [Travelgate Store](/kb/platform/app-features/app-store/discover-apps).
 - **No booking-flow latency impact:** Enriched static content is delivered through HotelX content methods without adding delay to the booking flow.
 
 ### How to activate the service
 
-Once FastX Content is installed from the Travelgate Store, the flow is as follows:
+Once FastX Content is installed from the [Travelgate Store](/kb/platform/app-features/app-store/discover-apps), the flow is as follows:
 
 1. Our Partnerships team receives your FastX Content request and validates the commercial agreement.
 2. A Travelgate administrator activates your application immediately after the review.
@@ -183,7 +182,7 @@ Once FastX Content is installed from the Travelgate Store, the flow is as follow
                     "instructions" : [
                         {
                             "language" : "en",
-                            "text" : "<ul>  <li>Extra-person charges may apply and vary depending on property policy</li><li>Government-issued photo identification and a credit card, debit card, or cash deposit may be required at check-in for incidental charges</li><li>Special requests are subject to availability upon check-in and may incur additional charges; special requests cannot be guaranteed</li><li>Special cancellation policies or charges may apply for group reservations (more than 8 rooms for the same property / stay dates)</li><li>This property accepts credit cards, debit cards, and cash</li><li>Safety features at this property include a fire extinguisher</li>  </ul>"
+                            "text" : "Extra-person charges may apply and vary depending on property policy. Government-issued photo identification and a credit card, debit card, or cash deposit may be required at check-in for incidental charges. Special requests are subject to availability upon check-in and may incur additional charges; special requests cannot be guaranteed. Special cancellation policies or charges may apply for group reservations (more than 8 rooms for the same property / stay dates). This property accepts credit cards, debit cards, and cash. Safety features at this property include a fire extinguisher"
                         }
                     ],
                     "specialInstructions" : [
@@ -206,7 +205,7 @@ Once FastX Content is installed from the Travelgate Store, the flow is as follow
                         "texts" : [
                             {
                                 "language" : "en",
-                                "text" : "Distances are displayed to the nearest 0.1 mile and kilometer. <br /> <p>Soho - 0.1 km / 0.1 mi <br /> CAC Málaga - 0.6 km / 0.4 mi <br /> Parque Canino Parque de Huelin - 0.7 km / 0.4 mi <br /> Centro Comercial Larios Centro - 0.7 km / 0.4 mi <br /> Parque del Mar - 0.8 km / 0.5 mi <br /> Teatro del Soho CaixaBank - 0.9 km / 0.6 mi <br /> Playa de San Andrés - 1 km / 0.6 mi <br /> El Corte Ingles Commercial Center - 1 km / 0.6 mi <br /> Picasso Park - 1.1 km / 0.7 mi <br /> Central Market of Atarazanas - 1.1 km / 0.7 mi <br /> Port of Malaga - 1.1 km / 0.7 mi <br /> Santisimo Cristo de la Buena Muerte - 1.1 km / 0.7 mi <br /> Calle Larios - 1.3 km / 0.8 mi <br /> Carmen Thyssen Museum - 1.5 km / 0.9 mi <br /> Tajo's Tree-Lined Avenue - 1.5 km / 0.9 mi <br /> </p><p>The preferred airport for Hotel ILUNION Malaga is Malaga Airport (AGP) - 10.7 km / 6.6 mi </p>"
+                                "text" : "Distances are displayed to the nearest 0.1 mile and kilometer. Soho - 0.1 km / 0.1 mi - CAC Málaga - 0.6 km / 0.4 mi - Parque Canino Parque de Huelin - 0.7 km / 0.4 mi - Centro Comercial Larios Centro - 0.7 km / 0.4 mi - Parque del Mar - 0.8 km / 0.5 mi - Teatro del Soho CaixaBank - 0.9 km / 0.6 mi - Playa de San Andrés - 1 km / 0.6 mi - El Corte Ingles Commercial Center - 1 km / 0.6 mi - Picasso Park - 1.1 km / 0.7 mi - Central Market of Atarazanas - 1.1 km / 0.7 mi - Port of Malaga - 1.1 km / 0.7 mi - Santisimo Cristo de la Buena Muerte - 1.1 km / 0.7 mi - Calle Larios - 1.3 km / 0.8 mi - Carmen Thyssen Museum - 1.5 km / 0.9 mi - Tajo's Tree-Lined Avenue - 1.5 km / 0.9 mi. The preferred airport for Hotel ILUNION Malaga is Malaga Airport (AGP) - 10.7 km / 6.6 mi"
                             }
                         ]
                     },

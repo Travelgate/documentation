@@ -23,11 +23,7 @@ function pushToDataLayer(payload) {
 }
 
 function getLoginStatus() {
-  try {
-    return window.localStorage.getItem("token") ? "logged" : "not_logged";
-  } catch {
-    return "not_logged";
-  }
+  return "not_logged";
 }
 
 function getPageLang() {

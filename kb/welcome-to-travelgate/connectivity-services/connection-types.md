@@ -70,7 +70,7 @@ In the Push Standard model, availability, rates, and the entire booking flow are
 - Lightning-Fast Responses: Buyers experience near-instant response times since data is queried locally from the Inventory.
 - Total Portfolio Control: Empowers Buyers and Hoteliers to directly load, update, and manage their portfolio (hotels, rates, rooms, and availability) within the platform.
 
-#### 2. Push Hybrid
+#### 2. Hybrid
 
 The Push Hybrid model blends a Push-style setup with a Pull-style booking flow. While the initial setup, pricing, and availability are loaded and maintained in the Inventory (Push), the other steps (Quote, Book, Read, and Cancel) behave like a Pull integration where Travelgate executes real-time supplier calls to validate updated cancellation policies and exact pricing right before confirmation.
 

@@ -69,7 +69,7 @@ Since this error indicates a discrepancy or issue with the validation process, c
                     {
                         "code": "ACCESS_ERROR",
                         "type": "VALIDATION_ERROR",
-                        "description": "access xxx is not active"
+                        "description": "access ACCESS_CODE is not active"
                     }
                 ],
                 "warnings": null
@@ -79,7 +79,7 @@ Since this error indicates a discrepancy or issue with the validation process, c
 }
 ```
 
-This description indicates that the specified access is inactive or archived. Check the access status and activate it before retrying the request.
+This description indicates that the specified access is inactive. Check the access status and activate it before retrying the request.
 
 ```json
 {

@@ -115,7 +115,7 @@ export default function Home() {
                           <img src="https://storage.travelgate.com/kbase/landing_pullpush.jpg" />
                           <h4>Pull/Push Connection Types</h4>
                           <p>Understanding the differences between Push and Pull connectivity is key to choosing the right integration strategy in the Travelgate ecosystem. In this article, we break down how each integration works, their pros and cons, and how they impact real-time communication between Buyers and Sellers through Travelgate.</p>
-                          <p><a href="/kb/welcome-to-travelgate/connectivity-services/pull-and-push-connectivity">Read article <i class="fa-solid fa-chevron-right"></i></a></p>
+                          <p><a href="/kb/welcome-to-travelgate/connectivity-services/connection-types">Read article <i class="fa-solid fa-chevron-right"></i></a></p>
                         </div>
                       </div>
                     </div>

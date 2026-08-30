@@ -2,23 +2,6 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <style>
-        html,
-        body {
-            margin: 0px;
-            height: 100%;
-            width: 100%;
-        }
-
-        .mantine-Modal-header {
-            display: none;
-        }
-
-        /* Hide Kapa's default button */
-        [data-kapa-widget-button] {
-            display: none !important;
-        }
-    </style>
     <script async
             src="https://widget.kapa.ai/kapa-widget.bundle.js"
             data-website-id="22c9d321-f9d2-48e3-958b-a5789f17c4b7"
@@ -26,9 +9,8 @@
             data-project-color="#0B59DE"
             data-project-logo="/img/aina_stars.svg"
             data-view-mode="sidebar"
-            data-modal-open-by-default="true"
             data-search-mode-enabled="false"
-            data-modal-disclaimer="AIna, Travelgate's multilingual AI assistant, provides quick answers and troubleshooting guidance based on our official documentation. For the most precise and helpful response, please describe your inquiry clearly and in detail. While we strive for thoroughness, AI-generated responses may not always be perfect. They are provided as is, and Travelgate disclaims any liability for inaccuracies. Please use discretion."
+            data-disclaimer="AIna, Travelgate's multilingual AI assistant, provides quick answers and troubleshooting guidance based on our official documentation. For the most precise and helpful response, please describe your inquiry clearly and in detail. While we strive for thoroughness, AI-generated responses may not always be perfect. They are provided as is, and Travelgate disclaims any liability for inaccuracies. Please use discretion."
             data-user-analytics-fingerprint-enabled="true"
             data-user-analytics-store-ip="true"
             data-button-text=" "
@@ -41,29 +23,11 @@
             data-button-hover-bg-color="transparent"
             data-button-border-radius="0"
             data-button-border="0"
-            data-button-hover-animation-enabled="false"
             data-customization-id="1d732488-1c1e-4ed6-b4ed-3135ad6fde53"
             data-mcp-enabled="true"
             data-mcp-server-url="https://travelgate.mcp.kapa.ai"
-    ></script>
 </head>
 
 <body>
-    <!-- Custom Kapa AI Flap Button -->
-    <button id="kapa-ai-flap" aria-label="Ask AIna">
-        <div class="flap-button-content">
-            <img src="/img/aina_stars.svg" alt="AIna" style="width: 32px; height: 32px;">
-            <span>AIna</span>
-        </div>
-    </button>
-
-    <script>
-        // Open Kapa sidebar when custom button is clicked
-        document.getElementById('kapa-ai-flap').addEventListener('click', function() {
-            if (window.Kapa) {
-                window.Kapa.open();
-            }
-        });
-    </script>
 </body>
 </html>

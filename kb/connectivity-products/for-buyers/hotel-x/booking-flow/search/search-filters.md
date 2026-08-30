@@ -1,5 +1,6 @@
 --- 
 sidebar_position: 2
+description: Learn how to filter HotelX Search requests by Supplier, Access, Rate Rules, Plugins, Currencies, and Status to get precise availability results.
 ---
 
 
@@ -20,6 +21,30 @@ You can specify a particular access or none at all. If no access is specified, a
 
 - [HotelX Development - Search Query](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/search)
 - [HotelX Credentials](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials)
+
+For example, to restrict a Search to specific accesses:
+
+```json
+{
+    "filterSearch": {
+        "access": {
+            "includes": ["2", "5647"]
+        }
+    }
+}
+```
+
+To exclude specific accesses and query all others:
+
+```json
+{
+    "filterSearch": {
+        "access": {
+            "excludes": ["5647"]
+        }
+    }
+}
+```
 
 ### 3. RateRules - RateRulesFilterInput
 Rate Rules refer to the specific terms and conditions that define the pricing, availability, and booking policies for hotel accommodations. You can include or exclude specific rate rules to request only the data that aligns with your business needs.
@@ -57,9 +82,15 @@ Define and filter which status (OK or RQ) should be included or excluded in your
 }
 ```
 
-If you're still using our Legacy Pull Buyers API (deprecated), you can find information on filtering availability status using the `OnRequest` tag through this [link](/docs/apis/for-buyers/deprecated/legacy-pull-buyers-api/booking-flow/avail). However, we highly recommend exploring the [HotelX Pull Buyers API documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/overview) to benefit from all its [advanced features and improvements](/kb/connectivity-products/for-buyers/hotel-x/why-develop-hotel-x-explained).
+:::info Still using the Legacy Pull Buyers API?
+If you are still on the **Legacy Pull Buyers API (deprecated)**, you can find equivalent information on filtering availability status using the `OnRequest` tag [here](/docs/apis/for-buyers/deprecated/legacy-pull-buyers-api/booking-flow/avail). We strongly recommend migrating to [HotelX Pull Buyers API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/overview) to benefit from its [advanced features and improvements](/kb/connectivity-products/for-buyers/hotel-x/why-develop-hotel-x-explained).
+:::
 
 :::info Aggregate and Apply Business Rules to This Field 🚀
 To aggregate or apply business rules, simply add 'status' or 'notStatus' to the primary key of the aggregation and preference plugins. Both plugins operate similarly, making it easy to implement. For more details, visit our [Developers Resources](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/overview).
+:::
+
+:::tip
+For the complete filter schema, all available input types, and additional examples, check our [HotelX Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/booking-flow/search). 🚀
 :::
 

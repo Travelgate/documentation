@@ -12,19 +12,20 @@ The [Seller Connectors Roadmap](https://app.travelgate.com/network/roadmap) show
 
      - **Travelgate website**
 
-         ![tg-roadmap-dashboard-development-type](https://storage.travelgate.com/kbase/tg-roadmap-dashboard-development-type.png)
+         ![tg-roadmap-dashboard-development-type](https://storage.travelgate.com/kbase/tg-roadmap-dashboard-development-typ-1.jpeg)
+         ![tg-roadmap-dashboard-development-type](https://storage.travelgate.com/kbase/tg-roadmap-dashboard-development-typ-2.jpeg)
      - **Travelgate App**
 
-         ![tg-roadmap-dashboard-app-development-type](https://storage.travelgate.com/kbase/tg-roadmap-dashboard-app-development-type.png)
+         ![tg-roadmap-dashboard-app-development-type](https://storage.travelgate.com/kbase/tg-roadmap-dashboard-app-development-type.jpeg)
 2. Open **Network > Roadmap**.
-3. Search for a connector by name or filter the results by **Status**.
+3. Search for a connector by name, filter the results by **Status** or **Development Type**.
 4. Sort the results by **Name** or **Last updated (Date)**.
 
 ## What the Roadmap Shows
 
 Each connector card can include:
 
-- **Connector name** and **Company Type**, such as **Seller**.
+- **Connector name**.
 - **Development Type**, as described below:
 
     | Development Type | Description |

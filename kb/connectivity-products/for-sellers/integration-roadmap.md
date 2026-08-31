@@ -1,26 +1,45 @@
 ---
 sidebar_position: 2
-draft: true
 ---
 
-# Development Roadmap
+# Seller Connectors Roadmap
 
-At Travelgate, we are committed to collaboration and innovation. Our **[Seller API Development Roadmap](https://app.travelgate.com/network/roadmap)** provides **transparency**, allowing you to strategically schedule your product development with a clear view of our plans and progress.
+The [Seller Connectors Roadmap](https://app.travelgate.com/network/roadmap) shows the integrations Travelgate is developing for Sellers, together with their current status and progress. Use the roadmap to check whether a connector is **completed, in progress, in certification, or selected for development.**.
 
-As we phase out our Legacy Pull Sellers API (deprecated), we continue to drive technological advancement by developing all new API integrations. Our goal is to ensure you remain at the forefront of innovation in the travel industry.
+## How to Access the Roadmap
 
-Our roadmap highlights the **integrations** being added to our Marketplace, helping you stay competitive in an evolving industry. At Travelgate, we recognize the importance of **scalability**—as your business expands, our technology evolves alongside it, equipping you with the resources needed for sustained success.
+1. Open the [Travelgate website](https://app.travelgate.com/network/roadmap).
 
-## How to Access Travelgate’s Roadmap & What You’ll Find
+     - **Travelgate website**
 
-To explore our roadmap:
+         ![tg-roadmap-dashboard-development-type](https://storage.travelgate.com/kbase/tg-roadmap-dashboard-development-typ-1.jpeg)
+         ![tg-roadmap-dashboard-development-type](https://storage.travelgate.com/kbase/tg-roadmap-dashboard-development-typ-2.jpeg)
+     - **Travelgate App**
 
-1. **Visit our Platform**.
-2. **Navigate to "Network" in the top menu and select "Roadmap"**.
-3. On the **Roadmap** page, you can:
-   - **View all ongoing Seller developments**.
-   - **Apply filters** (on the left side of the screen) based on development status or **Seller name**.
+         ![tg-roadmap-dashboard-app-development-type](https://storage.travelgate.com/kbase/tg-roadmap-dashboard-app-development-type.jpeg)
+2. Open **Network > Roadmap**.
+3. Search for a connector by name, filter the results by **Status** or **Development Type**.
+4. Sort the results by **Name** or **Last updated (Date)**.
 
-   ![roadmap_aug](https://storage.travelgate.com/kbase/roadmap_aug.jpg)
+## What the Roadmap Shows
 
-Stay ahead in the travel industry with **Travelgate's evolving API solutions**!
+Each connector card can include:
+
+- **Connector name**.
+- **Development Type**, as described below:
+
+    | Development Type | Description |
+    | --- | --- |
+    | **Pull (Travelgate Native)** | Built and maintained directly by Travelgate using dynamic real-time API queries. |
+    | **Push (Travelgate Native)** | Built and maintained directly by Travelgate using Inventory setup and ARI updates. |
+    | **Hybrid (Travelgate Native)** | Built by Travelgate. Fast local inventory search with dynamic price & policy validation at booking. |
+    | **Pull (Seller Built)** | Developed and maintained directly by the Seller using Travelgate's Connectors Framework. |
+    | **Push (Seller Built)** | Developed and maintained directly by the Seller or Channel Manager pushing data to our Inventory tool. |
+- **Development status**, such as **In progress**, **Completed**, **Certification**, or **Selected for development**.
+- **Progress percentage**, indicating the current stage of development.
+- **Company Profile** summary, when available.
+- A **View profile** link with more information about the connector.
+
+:::info
+The connector count, progress percentages, and status values can change as the roadmap is updated.
+:::

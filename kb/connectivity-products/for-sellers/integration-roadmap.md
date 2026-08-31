@@ -10,15 +10,15 @@ The [Seller Connectors Roadmap](https://app.travelgate.com/network/roadmap) show
 
 1. Open the [Travelgate website](https://travelgate.com/) or go directly to the [Travelgate App](https://app.travelgate.com/).
 
-     - **Travelgate website**
+   - **Travelgate website**
 
-        ![tg-roadmap-dashboard-development-type-landpage](https://storage.travelgate.com/kbase/tg-roadmap-dashboard-development-type-landpage.png)
+     ![tg-roadmap-dashboard-development-type-landpage](https://storage.travelgate.com/kbase/tg-roadmap-dashboard-development-type-landpage.png)
 
-        ![tg-roadmapdashboard-development-type](https://storage.travelgate.com/kbase/tg-roadmapdashboard-development-type.png)
-        
-     - **Travelgate App**
+     ![tg-roadmapdashboard-development-type](https://storage.travelgate.com/kbase/tg-roadmapdashboard-development-type.png)
 
-       ![tg-roadmapdashboard-app-development-type](https://storage.travelgate.com/kbase/tg-roadmapdashboard-app-development-type.png)
+   - **Travelgate App**
+
+     ![tg-roadmapdashboard-app-development-type](https://storage.travelgate.com/kbase/tg-roadmapdashboard-app-development-type.png)
 
 2. Open **Network > [Roadmap](https://app.travelgate.com/network/roadmap)**.
 3. Search for a connector by name, filter the results by **Status** or **Development Type**.

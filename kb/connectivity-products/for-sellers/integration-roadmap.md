@@ -4,22 +4,24 @@ sidebar_position: 2
 
 # Seller Connectors Roadmap
 
-The [Seller Connectors Roadmap](https://app.travelgate.com/network/roadmap) shows the integrations Travelgate is developing for Sellers, together with their current status and progress. Use the roadmap to check whether a connector is **completed, in progress, in certification, or selected for development.**.
+The [Seller Connectors Roadmap](https://app.travelgate.com/network/roadmap) shows the integrations Travelgate is developing for Sellers, together with their current status and progress. Use the roadmap to check whether a connector is **completed, in progress, in certification, or selected for development.**
 
 ## How to Access the Roadmap
 
-1. Open the [Travelgate website](https://app.travelgate.com/network/roadmap).
+1. Open the [Travelgate website](https://travelgate.com/) or go directly to the [Travelgate App](https://app.travelgate.com/).
 
-     - **Travelgate website**
+     - **Travelgate website:** Open Resources > **[Seller Connectors Roadmap](https://app.travelgate.com/network/roadmap)**.
 
-         ![tg-roadmap-dashboard-development-type](https://storage.travelgate.com/kbase/tg-roadmap-dashboard-development-typ-1.jpeg)
-         ![tg-roadmap-dashboard-development-type](https://storage.travelgate.com/kbase/tg-roadmap-dashboard-development-typ-2.jpeg)
-     - **Travelgate App**
+        ![tg-roadmapdashboard-landpage-screen](https://storage.travelgate.com/kbase/tg-roadmapdashboard-landpage-screen.png)
 
-         ![tg-roadmap-dashboard-app-development-type](https://storage.travelgate.com/kbase/tg-roadmap-dashboard-app-development-type.jpeg)
-2. Open **Network > Roadmap**.
-3. Search for a connector by name, filter the results by **Status** or **Development Type**.
-4. Sort the results by **Name** or **Last updated (Date)**.
+        ![tg-roadmapdashboard-development-type](https://storage.travelgate.com/kbase/tg-roadmapdashboard-development-type.png)
+        
+     - **Travelgate App:** Open Network > **[Seller Connectors Roadmap](https://app.travelgate.com/network/roadmap)**.
+
+        ![tg-roadmapdashboard-app-development-type](https://storage.travelgate.com/kbase/tg-roadmapdashboard-app-development-type.png)
+
+2. Search for a connector by name, filter the results by **Status** or **Development Type**.
+3. Sort the results by **Name** or **Last updated (Date)**.
 
 ## What the Roadmap Shows
 

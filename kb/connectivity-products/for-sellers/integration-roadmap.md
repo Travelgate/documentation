@@ -16,9 +16,9 @@ The [Seller Connectors Roadmap](https://app.travelgate.com/network/roadmap) show
 
         ![tg-roadmapdashboard-development-type](https://storage.travelgate.com/kbase/tg-roadmapdashboard-development-type.png)
         
-     - **Travelgate App:** Open Network > **[Roadmap](https://app.travelgate.com/network/roadmap)**.
+     - **Travelgate App:** Open Network > **[Seller Connectors Roadmap](https://app.travelgate.com/network/roadmap)**.
 
-       ![tg-roadmapdashboard-app-development-type](https://storage.travelgate.com/kbase/tg-roadmapdashboard-app-development-type.png)
+        ![tg-roadmapdashboard-app-development-type](https://storage.travelgate.com/kbase/tg-roadmapdashboard-app-development-type.png)
 
 2. Search for a connector by name, filter the results by **Status** or **Development Type**.
 3. Sort the results by **Name** or **Last updated (Date)**.

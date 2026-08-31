@@ -36,9 +36,9 @@ function getPageLang() {
   }
 }
 
-// Mirrors Docusaurus core normalizeLocation: real pages resolve to an `exact`
-// leaf route; the 404 catch-all wildcard route does not. So an unmatched path
-// is a 404.
+// Mirrors the 404 detection logic in Docusaurus core normalizeLocation: real
+// pages resolve to an `exact` leaf route; the 404 catch-all wildcard route does
+// not. So an unmatched path is a 404.
 function getHttpStatus(pathname) {
   try {
     const matched = matchRoutes(routes, pathname);

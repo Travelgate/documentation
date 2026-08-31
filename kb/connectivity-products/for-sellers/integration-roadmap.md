@@ -8,7 +8,7 @@ The [Seller Connectors Roadmap](https://app.travelgate.com/network/roadmap) show
 
 ## How to Access the Roadmap
 
-1. Open the [Travelgate website](https://travelgate.com/) or go directly to the [Travelgate App](https://app.travelgate.com/).
+1. Open the [Travelgate website](https://app.travelgate.com/network/roadmap).
 
      - **Travelgate website**
 

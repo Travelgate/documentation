@@ -34,7 +34,7 @@ Already using HotelX? If you're a Buyer connected to Travelgate via our HotelX P
 Buyers benefit from consistent FastX codes across all Suppliers, simplifying product aggregation and ensuring faster, more efficient access to travel inventory.
 
 :::info FastX Codes, now easier than ever!
-In our [Network](/kb/welcome-to-travelgate/network-essentials) section, Suppliers with **80% or more of their eligible hotel and board mappings validated in FastX** receive a **FastX Verified Seller badge**. This badge is a validation-coverage indicator — it helps you identify Suppliers with a largely-validated hotel and board portfolio.
+In our [Network](/kb/welcome-to-travelgate/network/network-essentials) section, Suppliers with **80% or more of their eligible hotel and board mappings validated in FastX** receive a **FastX Verified Seller badge**. This badge is a validation-coverage indicator — it helps you identify Suppliers with a largely-validated hotel and board portfolio.
 
 Check our Network today to find your next badge-validated partner!
 

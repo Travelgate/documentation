@@ -6,7 +6,7 @@ sidebar_position: 2
 
 ## Manage your apps in one place
 
-The **My Apps** section is your personal dashboard within the [Travelgate Store](/kb/platform/app-features/app-store/discover-apps). Whether you are a **Buyer** or a **Seller**, this is where you can view, access, and manage all the applications that are currently active or pre-installed for your account.
+The **My Apps** section is your personal dashboard within the [Travelgate Store](https://app.travelgate.com/travelgate-store/discover-apps). Whether you are a **Buyer** or a **Seller**, this is where you can view, access, and manage all the applications that are currently active or pre-installed for your account.
 
 Think of this section as your control center: from here, you can quickly jump into the configuration of your business rules or adjust the settings of your active integrations.
 
@@ -27,7 +27,7 @@ Remember that some of Travelgate's core tools, such as **Hotel Blacklist** or **
 
 ### How to Access
 
-To manage your active tools, navigate to the **[Travelgate Store](/kb/platform/app-features/app-store/discover-apps)** in the top main menu and select the **[My Apps](https://app.travelgate.com/travelgate-store/my-apps)** tab.
+To manage your active tools, navigate to the **[Travelgate Store](https://app.travelgate.com/travelgate-store/discover-apps)** in the top main menu and select the **[My Apps](https://app.travelgate.com/travelgate-store/my-apps)** tab.
 
 ![Travelgate Store - My Apps](https://stplaformwe.blob.core.windows.net/kbase/appstore_myapps.png)
 

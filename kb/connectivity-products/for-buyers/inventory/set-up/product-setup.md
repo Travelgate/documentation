@@ -16,6 +16,8 @@ Follow these steps to configure your product in the **Travelgate Inventory** sys
 
 :::warning
 - To avoid mapping or loading issues on the Channel Manager’s side, please ensure that your portfolio is up to date and that **your setup includes all the hotels, rates, and rooms** the Channel Manager intends to map before they perform a retrieval
+- You can **review your current setup** at any time by exporting it to Excel from the SetUp list toolbar. We recommend the **[NEW Export to Excel](/docs/apps/inventory/extranet/set-up/setup#export-to-excel)** option (the original *Export to Excel* will be deprecated at the end of October 2026).
+- If the downloaded file opens in **Protected View**, click **Enable Editing** before using the Excel links. Otherwise, the hotel-to-rates and rate-to-rooms hyperlinks may not work correctly.
 - You can **update your portfolio** at any time by going to the Connections > Content section and clicking the ["Force Update Now"](/kb/platform/app-features/connections/connections-content/content-management) button.
 - If an error occurs during loading, first **verify that the product the Channel Manager is trying to load (including room codes, rate codes, etc.) exactly matches what is defined in your setup**. If there's a mismatch, they should retrieve the latest data and remap accordingly. For example, if a Channel Manager attempts to load prices for a room that doesn’t exist, an error will be returned.
 :::

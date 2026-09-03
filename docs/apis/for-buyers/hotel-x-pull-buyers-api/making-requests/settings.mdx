@@ -23,37 +23,35 @@ We'll clarify which fields are categorized as `settings` and where you can locat
 Use the [Context Decision Matrix](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials#context) to decide whether to use FASTX, Buyer context, or Supplier context.
 :::
 
-| Field                  | Mandatory / Optional / Conditional | Where to Fill It                                        |
-|------------------------|----------------------|---------------------------------------------------------|
-| `client`               | Mandatory            | Query (Settings input)                                  |
-| `context`              | Conditional          | Query (Settings input) or Default Settings. In FastX, it can be omitted when sending FastX hotel codes. |
-| `timeout`              | Mandatory            | Query (Settings input) or Default Settings will be used |
-| `businessRules`        | Mandatory            | Query (Settings input) or Default Settings will be used |
-| `language`             | Mandatory            | Query (Criteria input) or Default Settings will be used |
-| `currency`             | Mandatory            | Query (Criteria input) or Default Settings will be used |
-| `nationality`          | Mandatory            | Query (Criteria input) or Default Settings will be used |
-| `markets`              | Mandatory            | Query (Criteria input) or Default Settings will be used |
-| `optionsQuota`         | Optional             | Query (Criteria input), default settings or 300 will be used as value. This sets the maximum number of options returned per board in a search. If not specified in the query, the system will use the value from your HotelX API default settings. If no value is set there, the system will default to 300 options. |
-| `useOnlyValidatedFastXCodes` | Optional       | Configurable only in the [API Settings](/kb/platform/app-features/connections/api-settings) section on the website. Default: `false`. Controls which FastX hotel and board codes are accepted in your booking flow. See [FastX codes validation modes](#fastx-codes-validation-modes) below. |
-
+| Field                        | Mandatory / Optional / Conditional | Where to Fill It                                                                                                                                                                                                                                                                                                     |
+| ---------------------------- | ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `client`                     | Mandatory                          | Query (Settings input)                                                                                                                                                                                                                                                                                               |
+| `context`                    | Conditional                        | Query (Settings input) or Default Settings. In FastX, it can be omitted when sending FastX hotel codes.                                                                                                                                                                                                              |
+| `timeout`                    | Mandatory                          | Query (Settings input) or Default Settings will be used                                                                                                                                                                                                                                                              |
+| `businessRules`              | Mandatory                          | Query (Settings input) or Default Settings will be used                                                                                                                                                                                                                                                              |
+| `language`                   | Mandatory                          | Query (Criteria input) or Default Settings will be used                                                                                                                                                                                                                                                              |
+| `currency`                   | Mandatory                          | Query (Criteria input) or Default Settings will be used                                                                                                                                                                                                                                                              |
+| `nationality`                | Mandatory                          | Query (Criteria input) or Default Settings will be used                                                                                                                                                                                                                                                              |
+| `markets`                    | Mandatory                          | Query (Criteria input) or Default Settings will be used                                                                                                                                                                                                                                                              |
+| `optionsQuota`               | Optional                           | Query (Criteria input), default settings or 300 will be used as value. This sets the maximum number of options returned per board in a search. If not specified in the query, the system will use the value from your HotelX API default settings. If no value is set there, the system will default to 300 options. |
+| `useOnlyValidatedFastXCodes` | Optional                           | Configurable only in the [API Settings](/kb/platform/app-features/connections/api-settings) section on the website. Default: `false`. Controls which FastX hotel and board codes are accepted in your booking flow. See [FastX codes validation modes](#fastx-codes-validation-modes) below.                         |
 
 ### FastX codes validation modes
 
 The `useOnlyValidatedFastXCodes` setting has two modes:
 
-| Value | Mode | Codes allowed in booking flow |
-|-------|------|-------------------------------|
-| `false` | Default Mode (recommended) | Validated + Pending |
-| `true` | Validated-only Mode | Validated only |
-
+| Value   | Mode                       | Codes allowed in booking flow |
+| ------- | -------------------------- | ----------------------------- |
+| `false` | Default Mode (recommended) | Validated + Pending           |
+| `true`  | Validated-only Mode        | Validated only                |
 
 **FastX mapping statuses:**
+
 - **Validated** — Seller confirmed the suggested mapping is correct
 - **Pending** — Awaiting Seller review; accepted in Default Mode
 - **Invalidated** — Seller rejected the mapping; always blocked by Travelgate
 
 To understand how Sellers assign these statuses and what each means for your booking flow, see [FastX Codes](/kb/platform/app-features/connections/fast-x-codes/fastx-codes).
-
 
 ## Default settings levels
 
@@ -61,7 +59,7 @@ Understanding the various levels at which default settings can be applied is cru
 
 1. **Organization/Group Level**: Settings at this level apply to the entire organization or HotelX group.
 
-> HotelX groups refer to a group of clients to which you can apply different business rules. 
+> HotelX groups refer to a group of clients to which you can apply different business rules.
 > By default, as a Buyer, you only have one HotelX group. You don’t need to worry about having more than one unless you have very specific business needs. If you do, please contact our Customer Care team.
 
 2. **Client Level**: Settings at this level are specific to individual clients. This means that default settings set for a particular client will only affect that client.
@@ -72,10 +70,170 @@ Understanding the various levels at which default settings can be applied is cru
 
 5. **Query/Mutation Level**: These settings are those you, as a Buyer, specify in your query or mutation. Regardless of the default settings configured at other levels, these settings take precedence and will override them.
 
-:::warning 
+:::warning
 Settings defined in your API request (at the query or mutation level) override all other default settings. The priority order (from highest to lowest) is: Query/Mutation > Access > Supplier > Client > Organization.
 :::
 
-:::info 
+## Read and update settings via API
+
+You can also manage your default HotelX settings directly via GraphQL, without using the platform UI.
+
+The API exposes two settings families:
+
+- `defaultSettings`: Organization and Client levels.
+- `commonSettings`: Supplier and Access levels.
+
+:::info Recommended workflow
+
+1. Read current settings first.
+2. Apply your update mutation.
+3. Read again to confirm the final values.
+:::
+
+### 1. Read Organization or Client defaults
+
+Use `defaultSettings` to retrieve defaults at Organization level (`group`) or at Client level (`group + clientName`).
+
+```graphql
+query ReadDefaultSettings {
+  hotelX {
+    defaultSettings(group: "YOUR_GROUP_ID", clientName: "client_demo") {
+      settings {
+        context
+        language
+        currency
+        nationality
+        markets
+        validatedDataOnly
+        timeout {
+          search
+          quote
+          book
+        }
+      }
+      adviseMessage {
+        code
+        message
+      }
+    }
+  }
+}
+```
+
+### 2. Read Supplier or Access defaults
+
+Use `commonSettings` to retrieve defaults for:
+
+- a supplier: `group + supplier`
+- a specific access: `group + access`
+
+```graphql
+query ReadCommonSettings {
+  hotelX {
+    commonSettings(group: "YOUR_GROUP_ID", supplier: "YOUR_SUPPLIER_ID") {
+      settings {
+        currency
+        markets
+        timeout {
+          search
+          quote
+          book
+        }
+      }
+      adviseMessage {
+        code
+        message
+      }
+    }
+  }
+}
+```
+
+### 3. Create or update Organization/Client defaults
+
+For Organization and Client levels, use:
+
+- `createDefaultSettings` when the record does not exist yet.
+- `updateDefaultSettings` when you want to modify an existing record.
+
+```graphql
+mutation UpdateClientDefaultSettings {
+  hotelX {
+    updateDefaultSettings(
+      group: "YOUR_GROUP_ID"
+      clientName: "client_demo"
+      settings: {
+        language: "en"
+        currency: "EUR"
+        nationality: "ES"
+        markets: ["ES"]
+        validatedDataOnly: false
+        timeout: { search: 12000, quote: 12000, book: 18000 }
+      }
+    ) {
+      settings {
+        language
+        currency
+        nationality
+        markets
+        validatedDataOnly
+      }
+      adviseMessage {
+        code
+        message
+      }
+    }
+  }
+}
+```
+
+### 4. Create or update Supplier/Access defaults
+
+For Supplier and Access levels, use:
+
+- `createCommonSettings`
+- `updateCommonSettings`
+
+Use either `supplier` or `access` depending on the level you want to manage.
+
+```graphql
+mutation UpdateAccessCommonSettings {
+  hotelX {
+    updateCommonSettings(
+      group: "YOUR_GROUP_ID"
+      access: "YOUR_ACCESS_ID"
+      settings: {
+        currency: "EUR"
+        markets: ["ES", "PT"]
+        timeout: { search: 10000, quote: 10000, book: 15000 }
+      }
+    ) {
+      settings {
+        currency
+        markets
+        timeout {
+          search
+          quote
+          book
+        }
+      }
+      adviseMessage {
+        code
+        message
+      }
+    }
+  }
+}
+```
+
+:::warning Scope note
+In these operations, `group` refers to your HotelX group. For common settings, target one specific scope at a time (Supplier or Access) to avoid configuration mistakes.
+:::
+
+:::tip Naming note
+In API schema, the field is `validatedDataOnly`. In API Settings UI and functional documentation, this behavior is described as `useOnlyValidatedFastXCodes`.
+:::
+
+:::info
 You can configure and adjust all these default settings at the [API Settings](/kb/platform/app-features/connections/api-settings) section on our website.
 :::

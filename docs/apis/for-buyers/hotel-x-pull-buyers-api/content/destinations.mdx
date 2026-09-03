@@ -5,16 +5,23 @@ import HotelXDestinationListInput from "../../../../../src/graphql/generated-doc
 import DestinationConnection from "../../../../../src/graphql/generated-docs/DestinationConnection.mdx";
 import Token from "../../../../../src/graphql/generated-docs/token.mdx";
 
-import {destinationsQuery, destinationsVariables, destinationsByDestinationCodeVariables} from "../../../../../src/graphql/hotel-x/destinations.query";
+import {destinationsQuery, destinationsVariables, destinationsFastXVariables, destinationsByDestinationCodeVariables} from "../../../../../src/graphql/hotel-x/destinations.query";
 
 
 # Destinations
 
-The Destinations Query returns a comprehensive destination list from a supplier's access, granting you access to all the destinations configured by the Seller for a given set of credentials. The returned fields include:
+The Destinations Query allows you to retrieve destination master data in two ways:
+
+- The **FastX Destination List**, which returns standardized destination values from Travelgate.
+- The **Supplier Destination List**, which returns the native destination values configured by each connected Seller.
+
+Use this query to inspect the destination master available for a given access, either from the FastX scope or from one Supplier scope.
+
+The returned fields include:
 
 * `code`
 * `available`
-* `detinationLeaf`
+* `destinationLeaf`
 * `texts` 
 * `closestDestinations`
 * `parent`
@@ -23,7 +30,7 @@ The Destinations Query returns a comprehensive destination list from a supplier'
 
 ## Query Overview
 
-When creating your destinations query, you have two different inputs to fill based on your specific needs:
+When creating your destinations query, you have 2 inputs to fill based on your specific needs:
 
 1. Criteria
 2. Token
@@ -31,7 +38,7 @@ When creating your destinations query, you have two different inputs to fill bas
 
 ### 1. Criteria  
 
-This query offers versatility, with certain fields marked as mandatory (`access`) and others as optional (`group`, `destinationCodes`, etc.). This flexibility empowers you to create a personalized Destinations Query, tailoring the requested fields to your specific needs. Consequently, the response will only include information that is highly relevant to you, streamlining the retrieval process and ensuring the data you receive meets your exact requirements.
+This query offers versatility, with certain fields marked as mandatory (`access`) and others as optional (`group`, `destinationCodes`, and `maxSize`). This flexibility empowers you to create a personalized Destinations Query, tailoring the requested fields to your specific needs. Consequently, the response will only include information that is highly relevant to you, streamlining the retrieval process and ensuring the data you receive meets your exact requirements.
 
 ```js
 {
@@ -50,10 +57,9 @@ This query offers versatility, with certain fields marked as mandatory (`access`
 * `access`
 
 **Optional criteria**
-* `destinationCodes` (Search by destination)
+* `destinationCodes` (Search by destination code)
 * `group`
 * `maxSize` (Paginate response)
-
 
 ### 2. Token
 
@@ -65,12 +71,12 @@ To include the token in your request, all you need to do is:
 
 2. After receiving a response, you will only receive a portion of the full list. To access the next page, simply copy the `token` tag from the response and include it in your next request. This will allow you to obtain a new set of objects in the following response.
 
-3. Repeat these steps until the `token` is no longer included in the response, the query will return “Destinations not found”.
+3. Repeat these steps until the `token` is no longer included in the response, the query will return "Destinations not found".
 
 
 **Query variables**
 
-First, in your destinations query you won't indicate any `token`input:
+First, in your destinations query you won't indicate any `token` input:
 
 ```js
 {
@@ -116,19 +122,16 @@ This token should be used as input in your next destinations query, inside the `
 }
 ```
 
-
-
 ### Response Considerations
 
 #### Destination List Logic
 
-Once you run a Destinations Query, you will receive the Seller's destination codes in the response. These codes can be classified into 2 categories:
+Once you run a Destinations Query, the returned destination codes can be classified into 2 categories:
 
 1. Zone
 2. City
 
-Sellers build their own Destination Tree based on both nodes. Consequently, when you request their destination list, you will receive a structured categorized response that can help you with the mapping process.
-
+Sellers build their own destination tree based on these nodes. Consequently, when you request their destination list, you receive a structured response that can help you with the mapping process.
 
 :::note
 
@@ -136,8 +139,9 @@ The amount of information and content returned might vary between Sellers.
 
 HotelX supports all languages, but receiving destination descriptions in one or another depends entirely on the languages supported by the Seller.
 
-:::
+The values returned depend on the selected scope (FastX or Supplier, depending on access).
 
+:::
 
 ## Query Inputs
 
@@ -147,16 +151,22 @@ HotelX supports all languages, but receiving destination descriptions in one or 
 
 <DestinationConnection />
 
+## Use Cases
 
-## Examples
+### FastX master destination list
 
-#### Search for the complete destination list from a supplier
+To retrieve the **FastX Destination Master**, make a `destination list` call using your **FastX access**, which you can find in the *MyConnections* section under the Seller **"Travelgate"**.
+
+<GraphqlSample query={destinationsQuery} variables={destinationsFastXVariables} />
+
+### Supplier destination list
+
+To retrieve one Supplier's native destination master, include that Supplier's access in the query (for example, access `2` for the Travelgate Test supplier).
 
 <GraphqlSample query={destinationsQuery} variables={destinationsVariables} />
 
+### Destination list for specific destination codes
 
-#### Search for a specific destination code from a supplier
-
-When utilizing the Destination List Query, for more personalized results, filter specific destinations based on your interests. For example, to focus solely on the Spanish inventory of a Seller, add the `destinationCodes` field with "ES" in your criteria. This will ensure you receive destinations directly related to the "ES" zone, providing you with highly targeted and relevant information.
+Use the Destinations Query to filter specific destination values. For example, to focus solely on the Spanish inventory of a Seller, include `destinationCodes` with `"ES"` in your criteria. This will ensure you receive destinations directly related to that selected node.
 
 <GraphqlSample query={destinationsQuery} variables={destinationsByDestinationCodeVariables} />

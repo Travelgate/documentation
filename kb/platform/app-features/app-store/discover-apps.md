@@ -6,7 +6,7 @@ sidebar_position: 1
 
 ## Travelgate App Store: Enhance your business with just one click
 
-The **Discover Apps** section is your gateway to the [Travelgate Store](/kb/platform/app-features/app-store/discover-apps). Whether you are a **Buyer** or a **Seller**, here you will find the apps designed to help you enhance your connectivity, optimize your operations, and increase your profitability.
+The **Discover Apps** section is your gateway to the [Travelgate Store](https://app.travelgate.com/travelgate-store/discover-apps). Whether you are a **Buyer** or a **Seller**, here you will find the apps designed to help you enhance your connectivity, optimize your operations, and increase your profitability.
 
 Whether you are looking for official **Travelgate built apps** or **Third-party apps**, the Store offers everything you need to scale your business with just a few clicks.
 
@@ -35,6 +35,6 @@ Before installing or using an app, you can examine every detail to ensure it fit
 
 ### How to Access
 
-You can start exploring now by visiting the **[Travelgate Store](/kb/platform/app-features/app-store/discover-apps)** section in the top main menu and using the available filters to refine your search.
+You can start exploring now by visiting the **[Travelgate Store](https://app.travelgate.com/travelgate-store/discover-apps)** section in the top main menu and using the available filters to refine your search.
 
 ![Travelgate Store - Discover Apps](https://stplaformwe.blob.core.windows.net/kbase/appstore_discover.png)

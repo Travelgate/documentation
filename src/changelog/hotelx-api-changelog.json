@@ -3,7 +3,7 @@
     "date": "July 7, 2026",
     "changes": [
       {
-        "field": "cancelPolicy.cancelPenalties.deadline (type CancelPenalty)",
+        "field": "cancelPolicy.cancelPenalties.deadline (CancelPenalty)",
         "type": "Changed",
         "description": "The 'deadline' field of the CancelPenalty type is now mandatory (DateTime!, previously nullable). This is the field reached via 'cancelPolicy.cancelPenalties[].deadline', where 'cancelPolicy' is of type CancelPolicy (response type). This affects every HotelX response that returns a CancelPolicy (e.g. search, oneStepQuote, oneStepBook, book, booking, and amend* operations), at both option level and room level. It does NOT affect 'cancelPolicy.cancelPenalties[].deadline' when 'cancelPolicy' is of the input type CancelPolicyInput (used to submit the option's cancel policy in oneStepQuote/oneStepBook room inputs), where 'deadline' is of type CancelPenaltyInput and remains an optional String."
       }

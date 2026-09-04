@@ -29,8 +29,15 @@ export const destinationsQuery =
 export const destinationsVariables = 
 `{
 	"criteria": {
-		"access": "2",
-		"maxSize": 15
+		"access": "2"
+	},
+	"token": ""
+}`
+
+export const destinationsFastXVariables = 
+`{
+	"criteria": {
+		"access": "34538"
 	},
 	"token": ""
 }`

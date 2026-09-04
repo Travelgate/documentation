@@ -78,6 +78,170 @@ Settings defined in your API request (at the query or mutation level) override a
 You can configure and adjust all these default settings at the [API Settings](/kb/platform/app-features/connections/api-settings) section on our website.
 :::
 
+## Read and update settings via API
+
+You can also manage your default HotelX settings directly via GraphQL, without using the platform UI.
+
+The API exposes two settings families:
+
+- `defaultSettings`: Organization and Client levels.
+- `commonSettings`: Supplier and Access levels.
+
+:::info Recommended workflow
+
+1. Read current settings first.
+2. Apply your update mutation.
+3. Read again to confirm the final values.
+:::
+
+### 1. Read Organization or Client defaults
+
+Use `defaultSettings` to retrieve defaults at Organization level (`group`) or at Client level (`group + clientName`).
+
+```graphql
+query ReadDefaultSettings {
+  hotelX {
+    defaultSettings(group: "YOUR_GROUP_ID", clientName: "client_demo") {
+      settings {
+        context
+        language
+        currency
+        nationality
+        markets
+        validatedDataOnly
+        timeout {
+          search
+          quote
+          book
+        }
+      }
+      adviseMessage {
+        code
+        message
+      }
+    }
+  }
+}
+```
+
+### 2. Read Supplier or Access defaults
+
+Use `commonSettings` to retrieve defaults for:
+
+- a supplier: `group + supplier`
+- a specific access: `group + access`
+
+```graphql
+query ReadCommonSettings {
+  hotelX {
+    commonSettings(group: "YOUR_GROUP_ID", supplier: "YOUR_SUPPLIER_ID") {
+      settings {
+        currency
+        markets
+        timeout {
+          search
+          quote
+          book
+        }
+      }
+      adviseMessage {
+        code
+        message
+      }
+    }
+  }
+}
+```
+
+### 3. Create or update Organization/Client defaults
+
+For Organization and Client levels, use:
+
+- `createDefaultSettings` when the record does not exist yet.
+- `updateDefaultSettings` when you want to modify an existing record.
+
+```graphql
+mutation UpdateClientDefaultSettings {
+  hotelX {
+    updateDefaultSettings(
+      group: "YOUR_GROUP_ID"
+      clientName: "client_demo"
+      settings: {
+        language: "en"
+        currency: "EUR"
+        nationality: "ES"
+        markets: ["ES"]
+        validatedDataOnly: false
+        timeout: { search: 12000, quote: 12000, book: 18000 }
+      }
+    ) {
+      settings {
+        language
+        currency
+        nationality
+        markets
+        validatedDataOnly
+      }
+      adviseMessage {
+        code
+        message
+      }
+    }
+  }
+}
+```
+
+### 4. Create or update Supplier/Access defaults
+
+For Supplier and Access levels, use:
+
+- `createCommonSettings`
+- `updateCommonSettings`
+
+Use either `supplier` or `access` depending on the level you want to manage.
+
+```graphql
+mutation UpdateAccessCommonSettings {
+  hotelX {
+    updateCommonSettings(
+      group: "YOUR_GROUP_ID"
+      access: "YOUR_ACCESS_ID"
+      settings: {
+        currency: "EUR"
+        markets: ["ES", "PT"]
+        timeout: { search: 10000, quote: 10000, book: 15000 }
+      }
+    ) {
+      settings {
+        currency
+        markets
+        timeout {
+          search
+          quote
+          book
+        }
+      }
+      adviseMessage {
+        code
+        message
+      }
+    }
+  }
+}
+```
+
+:::warning Scope note
+In these operations, `group` refers to your HotelX group. For common settings, target one specific scope at a time (Supplier or Access) to avoid configuration mistakes.
+:::
+
+:::tip Naming note
+In API schema, the field is `validatedDataOnly`. In API Settings UI and functional documentation, this behavior is described as `useOnlyValidatedFastXCodes`.
+:::
+
+:::info
+You can configure and adjust all these default settings at the [API Settings](/kb/platform/app-features/connections/api-settings) section on our website.
+:::
+
 ## Overriding settings for a specific supplier in your request
 
 As explained above, any setting you send at the Query/Mutation level (for example, `currency` inside your `criteria`) takes priority over any default settings, regardless of the level at which they were configured.

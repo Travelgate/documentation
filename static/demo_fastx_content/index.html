@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelgateX | FastX Content Comparator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --tx-blue-900: #001f3f;
+            --tx-blue-700: #003366;
+            --tx-blue-500: #0056b3;
+            --tx-blue-300: #007bff;
+            --tx-blue-100: #e6f0ff;
+            --tx-neutral-900: #1a1a1a;
+            --tx-neutral-700: #4a4a4a;
+            --tx-neutral-500: #808080;
+            --tx-neutral-300: #cccccc;
+            --tx-neutral-100: #f1f5f9;
+            --tx-white: #ffffff;
+            --tx-accent-gold: #FFB81C;
+            --tx-danger: #EF4444;
+            --bg-body: #f8fafc;
+            --border-color: #e2e8f0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg-body); color: var(--tx-neutral-900); min-height: 100vh; display: flex; flex-direction: column; }
+
+        [role="button"]:focus-visible { outline: 2px solid var(--tx-blue-500); outline-offset: 2px; }
+
+        header {
+            background-color: var(--tx-white);
+            padding: 1rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 31, 63, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        .logo-area { display: flex; align-items: center; gap: 12px; }
+        header h1 { font-size: 1.4rem; font-weight: 900; color: var(--tx-blue-900); }
+        .badge-fx {
+            background-color: var(--tx-blue-100); color: var(--tx-blue-700);
+            border: 1px solid var(--tx-blue-300); padding: 4px 10px;
+            border-radius: 4px; font-size: 0.7rem; font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .dashboard { display: grid; grid-template-columns: 280px 1fr; flex: 1; }
+        .col-left { background-color: var(--tx-white); border-right: 1px solid var(--border-color); display: flex; flex-direction: column; }
+        .col-header {
+            padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border-color);
+            background-color: var(--tx-neutral-100); font-weight: 700; font-size: 0.9rem;
+            color: var(--tx-blue-900); text-transform: uppercase;
+        }
+        .hotel-list { padding: 1rem; display: flex; flex-direction: column; gap: 0.75rem; }
+        .hotel-item { padding: 1rem; border: 1px solid var(--border-color); border-radius: 6px; cursor: pointer; background: var(--tx-white); }
+        .hotel-item.active { border-left: 4px solid var(--tx-blue-500); border-color: var(--tx-blue-300); background-color: var(--tx-blue-100); }
+        .hotel-name-title { font-weight: 700; font-size: 0.95rem; color: var(--tx-blue-900); margin-bottom: 4px;}
+        .hotel-loc { font-size: 0.75rem; color: var(--tx-neutral-700); }
+
+        .col-right { display: flex; flex-direction: column; padding: 1.5rem; gap: 1.5rem; background-color: var(--bg-body); }
+        .accordion { background: var(--tx-white); border: 1px solid var(--border-color); border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.03); display: flex; flex-direction: column; overflow: hidden; }
+        .acc-header { padding: 1rem 1.5rem; background: var(--tx-white); border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; cursor: pointer; user-select: none; }
+        .acc-title { font-weight: 700; font-size: 1.05rem; color: var(--tx-blue-900); display: flex; align-items: center; gap: 10px;}
+        .acc-icon { transition: transform 0.3s; font-size: 1.2rem; color: var(--tx-neutral-500); }
+        .accordion.open .acc-icon { transform: rotate(180deg); }
+        .acc-body { display: none; padding: 1.5rem; background: var(--bg-body); }
+        .accordion.open .acc-body { display: block; }
+
+        .view-toggle { display: flex; background: var(--tx-neutral-100); border: 1px solid var(--border-color); border-radius: 6px; overflow: hidden; margin-left: auto; margin-right: 15px; }
+        .toggle-btn { padding: 6px 12px; font-size: 0.75rem; font-weight: 600; cursor: pointer; border: none; background: transparent; color: var(--tx-neutral-700); }
+        .toggle-btn.active { background: var(--tx-blue-500); color: var(--tx-white); }
+
+        .plan-selector-container { background: var(--tx-white); border: 1px solid var(--border-color); border-radius: 6px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 15px; }
+        .plan-selector-label { font-size: 0.85rem; font-weight: 700; color: var(--tx-blue-900); display: flex; align-items: center; gap: 8px; text-transform: uppercase; }
+        .plan-chips { display: flex; gap: 10px; flex-wrap: wrap; }
+        .plan-chip { padding: 8px 16px; border-radius: 6px; border: 1px solid var(--border-color); background: var(--tx-neutral-100); font-size: 0.8rem; font-weight: 700; color: var(--tx-neutral-700); cursor: pointer; transition: all 0.2s; }
+        .plan-chip.active { background: var(--tx-blue-500); color: var(--tx-white); border-color: var(--tx-blue-500); }
+        .plan-chip.active-gold { background: var(--tx-accent-gold); color: var(--tx-blue-900); border-color: var(--tx-accent-gold); }
+
+        .suppliers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+        .sup-card { background: var(--tx-white); border: 1px solid var(--border-color); border-radius: 6px; padding: 1.25rem; cursor: pointer; transition: all 0.2s; position: relative; }
+        .sup-card.selected { border: 2px solid var(--tx-blue-500); background: #f8faff; }
+        .sup-card.selected::after { content: '✓ Selected'; position: absolute; top: -10px; right: 10px; background: var(--tx-blue-500); color: white; font-size: 0.65rem; font-weight: bold; padding: 2px 8px; border-radius: 10px; }
+        .sup-name { font-weight: 800; font-size: 1.1rem; color: var(--tx-blue-900); margin-bottom: 8px;}
+        .sup-code { font-family: 'Fira Code', monospace; font-size: 0.75rem; color: var(--tx-neutral-500); background: var(--tx-neutral-100); padding: 2px 6px; border-radius: 4px;}
+        .sup-details { margin-top: 12px; font-size: 0.8rem; color: var(--tx-neutral-700); line-height: 1.6;}
+
+        .gallery-mini { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; align-items: center; }
+        .gallery-mini img { width: 44px; height: 44px; object-fit: cover; border-radius: 4px; border: 1px solid var(--border-color);}
+
+        .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: stretch; }
+        .comp-pane { background: var(--tx-white); border: 1px solid var(--border-color); border-radius: 6px; padding: 1.5rem; display: flex; flex-direction: column; }
+        .pane-supplier { border-top: 4px solid var(--tx-neutral-300); }
+        .pane-fastx { border-top: 4px solid var(--tx-accent-gold); background: #FFFEFA; }
+        .pane-title { font-size: 0.9rem; font-weight: 800; text-transform: uppercase; color: var(--tx-blue-900); margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;}
+
+        .info-block { margin-bottom: 15px; }
+        .info-label { font-size: 0.7rem; font-weight: 700; color: var(--tx-neutral-500); text-transform: uppercase; margin-bottom: 4px;}
+        .info-val { font-size: 0.85rem; color: var(--tx-neutral-900); line-height: 1.6; white-space: pre-line; }
+
+        .tags-container { display: flex; flex-wrap: wrap; gap: 6px; }
+        .tag { font-size: 0.7rem; padding: 3px 8px; border-radius: 4px; background: var(--tx-neutral-100); border: 1px solid var(--border-color); font-weight: 600;}
+        .tag.gold { background: rgba(255, 184, 28, 0.15); border-color: rgba(255, 184, 28, 0.4); color: #B27B00; }
+        .not-available-badge { color: var(--tx-danger); background: #fef2f2; border: 1px solid #fecaca; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem; font-style: italic; font-weight: 600; display: inline-block; }
+
+        .big-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+        .big-gallery img { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 4px; border: 1px solid var(--border-color);}
+
+        .rooms-container { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+        .room-card { background: #f8fafc; border: 1px solid var(--border-color); border-radius: 6px; padding: 12px 14px; }
+        .room-title { font-weight: 800; font-size: 0.9rem; color: var(--tx-blue-900); margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center; }
+        .room-code-tag { font-family: 'Fira Code', monospace; font-size: 0.7rem; background: var(--tx-blue-100); color: var(--tx-blue-700); padding: 2px 6px; border-radius: 4px; }
+        .room-grid-details { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.78rem; color: var(--tx-neutral-700); margin-top: 6px; }
+        .room-detail-item { background: var(--tx-white); border: 1px solid var(--border-color); padding: 6px 8px; border-radius: 4px; }
+        .room-detail-item strong { color: var(--tx-blue-900); }
+
+        .gold-banner { background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); border: 1px solid #fde68a; border-radius: 6px; padding: 12px; margin-bottom: 15px; }
+        .gold-banner-title { font-weight: 800; font-size: 0.85rem; color: #92400e; margin-bottom: 6px; }
+
+        .chinese-trans-box { background: #f0fdf4; border: 2px solid #22c55e; border-radius: 6px; padding: 14px; margin-bottom: 15px; }
+        .chinese-trans-title { font-weight: 800; font-size: 0.85rem; color: #15803d; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+
+        .json-view { display: none; background: #0d1117; border-radius: 6px; padding: 1.5rem; max-height: 600px; overflow-y: auto; border: 1px solid #30363d; }
+        .json-view pre { font-family: 'Fira Code', monospace; font-size: 0.8rem; line-height: 1.5; color: #c9d1d9; }
+        .json-columns { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .json-col { background: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 1.25rem; overflow: auto; max-height: 600px; }
+        .json-col-title { color: #8b949e; font-size: 0.75rem; margin-bottom: 10px; font-family: monospace; text-transform: uppercase; border-bottom: 1px solid #30363d; padding-bottom: 6px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-area">
+            <h1>TravelgateX</h1>
+            <span class="badge-fx">FastX Content</span>
+        </div>
+        <div style="font-size: 0.8rem; font-weight: 500; color: var(--tx-neutral-500);">Interactive Comparison UI</div>
+    </header>
+
+    <div class="dashboard">
+        <div class="col-left">
+            <div class="col-header">Hotels</div>
+            <div class="hotel-list" id="hotelList"></div>
+        </div>
+
+        <div class="col-right">
+            <!-- ROW 1: SUPPLIERS -->
+            <div class="accordion open" id="row1">
+                <div class="acc-header" role="button" tabindex="0" aria-expanded="true" onclick="toggleAcc('row1')" onkeydown="if ((event.key === 'Enter' || event.key === ' ') && event.target === this) { event.preventDefault(); toggleAcc('row1'); }">
+                    <div class="acc-title"><span class="acc-icon">▼</span> 1. Content per supplier</div>
+                    <div class="view-toggle" onclick="event.stopPropagation();">
+                        <button class="toggle-btn active" id="btn-v-row1" onclick="setView('row1', 'visual')">Visual</button>
+                        <button class="toggle-btn" id="btn-j-row1" onclick="setView('row1', 'json')">JSON</button>
+                    </div>
+                </div>
+
+                <div class="acc-body" id="body-row1">
+                    <div class="visual-view" id="vis-row1">
+                        <div class="suppliers-grid" id="suppliersGrid"></div>
+                    </div>
+                    <div class="json-view" id="json-row1">
+                        <div class="json-columns" id="jsonColumnsRow1"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ROW 2: COMPARISON -->
+            <div class="accordion open" id="row2">
+                <div class="acc-header" role="button" tabindex="0" aria-expanded="true" onclick="toggleAcc('row2')" onkeydown="if ((event.key === 'Enter' || event.key === ' ') && event.target === this) { event.preventDefault(); toggleAcc('row2'); }">
+                    <div class="acc-title"><span class="acc-icon">▼</span> 2. Comparison: Supplier vs FastX Content</div>
+                    <div class="view-toggle" onclick="event.stopPropagation();">
+                        <button class="toggle-btn active" id="btn-v-row2" onclick="setView('row2', 'visual')">Visual</button>
+                        <button class="toggle-btn" id="btn-j-row2" onclick="setView('row2', 'json')">JSON</button>
+                    </div>
+                </div>
+
+                <div class="acc-body" id="body-row2">
+                    <div class="plan-selector-container">
+                        <div class="plan-selector-label"><span>⚡ Select FastX Content Tier:</span></div>
+                        <div class="plan-chips">
+                            <div class="plan-chip active" id="chip-bronze" role="button" tabindex="0" aria-pressed="true" onclick="selectPlan('bronze')" onkeydown="if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); selectPlan('bronze'); }">🥉 Bronze</div>
+                            <div class="plan-chip" id="chip-silver" role="button" tabindex="0" aria-pressed="false" onclick="selectPlan('silver')" onkeydown="if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); selectPlan('silver'); }">🥈 Silver</div>
+                            <div class="plan-chip" id="chip-gold" role="button" tabindex="0" aria-pressed="false" onclick="selectPlan('gold')" onkeydown="if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); selectPlan('gold'); }">🥇 Gold</div>
+                            <div class="plan-chip" id="chip-bolts" role="button" tabindex="0" aria-pressed="false" onclick="selectPlan('bolts')" onkeydown="if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); selectPlan('bolts'); }">⚙️ Bolts-On</div>
+                        </div>
+                    </div>
+
+                    <div class="visual-view" id="vis-row2">
+                        <div class="comp-grid">
+                            <div class="comp-pane pane-supplier" id="compSupVis"></div>
+                            <div class="comp-pane pane-fastx" id="compFastXVis"></div>
+                        </div>
+                    </div>
+
+                    <div class="json-view" id="json-row2">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; min-height: 500px;">
+                            <div style="background: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 1.5rem; overflow:auto;">
+                                <div style="color: #8b949e; font-size: 0.75rem; margin-bottom: 10px; font-family: monospace;" id="jsonCompSupTitle">RAW FEED JSON</div>
+                                <pre id="jsonCompSup"></pre>
+                            </div>
+                            <div style="background: #0d1117; border: 1px solid #d4af3740; border-radius: 6px; padding: 1.5rem; overflow:auto;">
+                                <div style="color: #FFB81C; font-size: 0.75rem; margin-bottom: 10px; font-family: monospace;" id="jsonCompFastXTitle">FASTX CONTENT JSON</div>
+                                <pre id="jsonCompFastX"></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // RAW SUPPLIER FEEDS
+        const rawDarinaJson = {"data": {"hotelX": {"hotels": {"token": null, "count": 1, "edges": [{"node": {"createdAt": "2021-09-17T09:52:53.4974186Z", "updatedAt": "2026-09-03T00:23:28.5244267Z", "hotelData": {"hotelCode": "644", "hotelName": "THE ST. REGIS ABU DHABI", "categoryCode": "5", "chainCode": null, "location": {"address": "Nation Tower, Corniche - Abu Dhabi - United Arab Emirates", "zipCode": null, "city": "Abu Dhabi", "state": null, "country": "AE", "coordinates": {"latitude": 24.46386, "longitude": 54.32827}, "airports": null}, "contact": {"email": null, "telephone": "+971 2 6944444", "fax": null, "web": null}, "cardTypes": null, "checkIn": {"minAge": 0, "schedule": null, "instructions": null, "specialInstructions": null}, "checkOut": {"minAge": 0, "schedule": null, "instructions": null, "specialInstructions": null}, "descriptions": [{"type": "ADDITIONAL", "texts": [{"language": "en", "text": "Tourism Dirham or any city taxes must be paid directly by the guest during check-in or check-out at the hotel."}]}, {"type": "GENERAL", "texts": [{"language": "en", "text": "Boasting a landmark address on the Corniche, in the iconic Nation Towers, The St. Regis Abu Dhabi offers worldly refinement..."}]}], "medias": [{"type": "HOTEL", "url": "https://images.darinab2b.com/ShowImg.aspx?params=dtc_644_16609_False_False_22"}, {"type": "HOTEL", "url": "https://images.darinab2b.com/ShowImg.aspx?params=dtc_644_16610_False_False_22"}, {"type": "HOTEL", "url": "https://images.darinab2b.com/ShowImg.aspx?params=dtc_644_16611_False_False_22"}, {"type": "HOTEL", "url": "https://images.darinab2b.com/ShowImg.aspx?params=dtc_644_16612_False_False_22"}, {"type": "HOTEL", "url": "https://images.darinab2b.com/ShowImg.aspx?params=dtc_644_16613_False_False_22"}, {"type": "HOTEL", "url": "https://images.darinab2b.com/ShowImg.aspx?params=dtc_644_16614_False_False_22"}, {"type": "HOTEL", "url": "https://images.darinab2b.com/ShowImg.aspx?params=dtc_644_16615_False_False_22"}, {"type": "HOTEL", "url": "https://images.darinab2b.com/ShowImg.aspx?params=dtc_644_16616_False_False_22"}, {"type": "HOTEL", "url": "https://images.darinab2b.com/ShowImg.aspx?params=dtc_644_16617_False_False_22"}, {"type": "HOTEL", "url": "https://images.darinab2b.com/ShowImg.aspx?params=dtc_644_16618_False_False_22"}, {"type": "HOTEL", "url": "https://images.darinab2b.com/ShowImg.aspx?params=dtc_644_16619_False_False_22"}], "allAmenities": null}}}]}}}};
+        const rawFlyJson = {"data": {"hotelX": {"hotels": {"token": null, "count": 1, "edges": [{"node": {"createdAt": "2023-03-21T03:20:56.535331Z", "updatedAt": "2026-09-02T19:52:32.1196643Z", "hotelData": {"hotelCode": "87383", "hotelName": "The St. Regis Abu Dhabi", "categoryCode": "5", "chainCode": null, "location": {"address": "Nation Towers", "zipCode": null, "city": "Abu Dhabi", "state": null, "country": "AE", "coordinates": {"latitude": 24.464983, "longitude": 54.32766}}, "contact": null, "cardTypes": null, "checkIn": null, "checkOut": null, "descriptions": [], "medias": null, "allAmenities": null}}}]}}}};
+        const rawTldJson = {"data": {"hotelX": {"hotels": {"token": null, "count": 1, "edges": [{"node": {"createdAt": "2023-05-03T07:52:45.16755Z", "updatedAt": "2026-09-03T00:46:37.242155Z", "hotelData": {"hotelCode": "2006138", "hotelName": "The St. Regis Abu Dhabi", "categoryCode": "5", "chainCode": null, "location": {"address": "Nation Tower Corniche P.O. Box 60476 Abu Dhabi", "zipCode": null, "city": "Abu Dhabi", "state": null, "country": "AE", "coordinates": {"latitude": 24.465176, "longitude": 54.327757}}, "contact": {"email": null, "telephone": "+97126944444", "fax": null, "web": null}, "cardTypes": null, "checkIn": null, "checkOut": null, "descriptions": [{"type": "GENERAL", "texts": [{"language": "en", "text": "Located in the heart of Abu Dhabi, The St. Regis offers luxurious accommodations..."}]}], "medias": [{"type": "GENERAL", "url": "https://online.travellanda.com/photo/hotel/4981463e352c08a7/d4/d495d5dd91103262/01-b.jpg"}, {"type": "GENERAL", "url": "https://online.travellanda.com/photo/hotel/4981463e352c08a7/d4/d495d5dd91103262/02-b.jpg"}, {"type": "GENERAL", "url": "https://online.travellanda.com/photo/hotel/4981463e352c08a7/d4/d495d5dd91103262/03-b.jpg"}, {"type": "GENERAL", "url": "https://online.travellanda.com/photo/hotel/4981463e352c08a7/d4/d495d5dd91103262/04-b.jpg"}, {"type": "GENERAL", "url": "https://online.travellanda.com/photo/hotel/4981463e352c08a7/d4/d495d5dd91103262/05-b.jpg"}, {"type": "GENERAL", "url": "https://online.travellanda.com/photo/hotel/4981463e352c08a7/d4/d495d5dd91103262/06-b.jpg"}, {"type": "GENERAL", "url": "https://online.travellanda.com/photo/hotel/4981463e352c08a7/d4/d495d5dd91103262/07-b.jpg"}, {"type": "GENERAL", "url": "https://online.travellanda.com/photo/hotel/4981463e352c08a7/d4/d495d5dd91103262/08-b.jpg"}, {"type": "GENERAL", "url": "https://online.travellanda.com/photo/hotel/4981463e352c08a7/d4/d495d5dd91103262/09-b.jpg"}, {"type": "GENERAL", "url": "https://online.travellanda.com/photo/hotel/4981463e352c08a7/d4/d495d5dd91103262/10-b.jpg"}], "allAmenities": null}}}]}}}};
+
+        // EXACT MASTER JSON FROM AE114_FastXContent.json
+        const rawFastXMasterJson = {
+            "data": {
+                "hotelX": {
+                    "hotels": {
+                        "token": null,
+                        "count": 1,
+                        "edges": [{
+                            "node": {
+                                "createdAt": "2026-08-27T10:32:15.4569001Z",
+                                "updatedAt": "2026-09-04T08:35:30.444194Z",
+                                "hotelData": {
+                                    "hotelCode": "AE114",
+                                    "hotelName": "The St. Regis Abu Dhabi",
+                                    "categoryCode": "5",
+                                    "chainCode": "XR",
+                                    "location": {
+                                        "address": "Nation Tower, Corniche - Abu Dhabi - United Arab Emirates",
+                                        "zipCode": "P.O. Box 60476",
+                                        "city": "Abu Dhabi",
+                                        "country": "AE",
+                                        "coordinates": { "latitude": 24.464983, "longitude": 54.327659 },
+                                        "closestDestination": {
+                                            "code": "AE-ABU-DHABI",
+                                            "texts": [
+                                                { "language": "en", "text": "Abu Dhabi" },
+                                                { "language": "zh", "text": "阿布扎比" }
+                                            ]
+                                        }
+                                    },
+                                    "contact": {
+                                        "email": "reservation16@aoryx.ae",
+                                        "telephone": "+97126944444",
+                                        "fax": "+97126581126",
+                                        "web": "www.stregisabudhabi.com"
+                                    },
+                                    "cardTypes": ["CA", "VI"],
+                                    "checkIn": {
+                                        "minAge": 0,
+                                        "schedule": { "startTime": "15:00", "endTime": "00:00" },
+                                        "instructions": [
+                                            { "language": "en", "text": "Extra-person charges may apply and vary depending on property policy. Government-issued photo identification and credit card required at check-in." },
+                                            { "language": "zh", "text": "额外费用可能适用，且可能根据住宿政策而有所不同。办理入住时可能需要出示政府签发的附有照片的身份证件。" }
+                                        ],
+                                        "specialInstructions": [
+                                            { "language": "en", "text": "This property offers transfers from the airport (surcharges may apply)." },
+                                            { "language": "zh", "text": "此住宿提供机场接机服务（可能需要收费）。" }
+                                        ]
+                                    },
+                                    "checkOut": { "schedule": { "endTime": "12:00" } },
+                                    "descriptions": [
+                                        {
+                                            "type": "GENERAL",
+                                            "texts": [
+                                                { "language": "en", "text": "The St. Regis Abu Dhabi stands as a landmark on Nation Towers, steps from the beach and the city's vibrant pulse. You’ll find both an outdoor and indoor pool, each designed for relaxation and easy access from the guest rooms." },
+                                                { "language": "zh", "text": "The St. Regis Abu Dhabi位于Nation Towers的一个地标上,距离海滩几步之遥,城市充满活力。 您会发现一个室外和室内游泳池,每个游泳池都设计了放松和轻松到达客人的房间。" }
+                                            ]
+                                        }
+                                    ],
+                                    "medias": [
+                                        { "type": "HOTEL", "url": "https://images.orbiscdn.com/images/AE114/base/2000ab11393cf31e297a688e536c7d9eb20e5b58ddc2791f1019d3036d3b1581", "texts": [{ "language": "en", "text": "Primary image" }, { "language": "zh", "text": "主图" }] },
+                                        { "type": "HOTEL", "url": "https://images.orbiscdn.com/images/AE114/base/0bc17d63540b6d9123d79c45565dfbc14a026549cebd99a424b5899f3fce43df", "texts": [{ "language": "en", "text": "Exterior" }, { "language": "zh", "text": "外观" }] },
+                                        { "type": "GENERAL", "url": "https://images.orbiscdn.com/images/AE114/base/d4061b890726a0316c486f9cd44718ad419fe3a961f613021584e457564264e4", "texts": [{ "language": "en", "text": "Exterior" }, { "language": "zh", "text": "外观" }] }
+                                    ],
+                                    "allAmenities": {
+                                        "edges": [
+                                            { "node": { "amenityData": { "code": "RAM-001", "amenityCode": "HAC1", "texts": [{ "language": "en", "text": "24-hour front desk" }, { "language": "zh", "text": "24小时前台" }] } } },
+                                            { "node": { "amenityData": { "code": "RAM-002", "amenityCode": "HAC286", "texts": [{ "language": "en", "text": "Complimentary wireless internet" }, { "language": "zh", "text": "免费无线网络" }] } } },
+                                            { "node": { "amenityData": { "code": "RAM-003", "amenityCode": "HAC66", "texts": [{ "language": "en", "text": "Outdoor pool" }, { "language": "zh", "text": "室外游泳池" }] } } },
+                                            { "node": { "amenityData": { "code": "RAM-004", "amenityCode": "HAC84", "texts": [{ "language": "en", "text": "Spa" }, { "language": "zh", "text": "水疗中心" }] } } }
+                                        ]
+                                    },
+                                    "rooms": {
+                                        "edges": [
+                                            {
+                                                "node": {
+                                                    "roomData": {
+                                                        "code": "RM-AE114-001", "roomCode": "SUP_KG_SEA", "source": "AO_NORMALIZED", "area": 55.0,
+                                                        "texts": [{ "language": "en", "text": "Superior Guest Room, 1 King, Sea View" }, { "language": "zh", "text": "尊贵客房，1 张特大床，海景" }],
+                                                        "occupancies": { "total": { "min": 1, "max": 3 }, "adults": { "min": 1, "max": 2 }, "children": { "min": 0, "max": 1 }, "infants": { "min": 0, "max": 1 } },
+                                                        "views": [{ "texts": [{ "language": "en", "text": "Arabian Gulf Sea View" }, { "language": "zh", "text": "阿拉伯湾海景" }] }],
+                                                        "beds": [{ "type": "King", "count": 1, "shared": false }],
+                                                        "medias": [{ "url": "https://cache.marriott.com/content/dam/marriott-renditions/AUHRX/auhrx-superior-king-8821-hor-feat.jpg", "texts": [{ "language": "en", "text": "Superior King Room Overview" }, { "language": "zh", "text": "尊贵海景大床房概览" }] }],
+                                                        "allAmenities": { "edges": [{ "node": { "amenityData": { "code": "RAM-001", "amenityCode": "HAC286", "texts": [{ "language": "en", "text": "Free High-Speed Wi-Fi" }, { "language": "zh", "text": "免费高速无线网络" }] } } }] }
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "node": {
+                                                    "roomData": {
+                                                        "code": "RM-AE114-002", "roomCode": "DEL_TWN_SEA", "source": "AO_NORMALIZED", "area": 55.0,
+                                                        "texts": [{ "language": "en", "text": "Deluxe Guest Room, 2 Twin/Single Bed(s), Sea View" }, { "language": "zh", "text": "豪华客房，2 张单人床，海景" }],
+                                                        "occupancies": { "total": { "min": 1, "max": 3 }, "adults": { "min": 1, "max": 3 }, "children": { "min": 0, "max": 2 }, "infants": { "min": 0, "max": 1 } },
+                                                        "views": [{ "texts": [{ "language": "en", "text": "Corniche Sea View" }, { "language": "zh", "text": "滨海路海景" }] }],
+                                                        "beds": [{ "type": "Twin", "count": 2, "shared": false }],
+                                                        "medias": [{ "url": "https://cache.marriott.com/content/dam/marriott-renditions/AUHRX/auhrx-deluxe-twin-9201-hor-feat.jpg", "texts": [{ "language": "en", "text": "Deluxe Twin Room Bed Area" }, { "language": "zh", "text": "豪华双床房卧床区" }] }],
+                                                        "allAmenities": { "edges": [{ "node": { "amenityData": { "code": "RAM-003", "amenityCode": "HAC191", "texts": [{ "language": "en", "text": "Marble Bathroom with Deep Soaking Tub" }, { "language": "zh", "text": "带浸泡浴缸的大理石浴室" }] } } }] }
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "node": {
+                                                    "roomData": {
+                                                        "code": "RM-AE114-003", "roomCode": "STE_GD_STR", "source": "AO_NORMALIZED", "area": 85.0,
+                                                        "texts": [{ "language": "en", "text": "Grand Deluxe 1 Bedroom Executive Suite, 1 King, Sea View" }, { "language": "zh", "text": "特大号床大豪华单卧室行政套房，海景" }],
+                                                        "occupancies": { "total": { "min": 1, "max": 4 }, "adults": { "min": 1, "max": 3 }, "children": { "min": 0, "max": 2 }, "infants": { "min": 0, "max": 1 } },
+                                                        "views": [{ "texts": [{ "language": "en", "text": "Panoramic Gulf Sea View" }, { "language": "zh", "text": "全景海湾海景" }] }],
+                                                        "beds": [{ "type": "King", "count": 1, "shared": false }, { "type": "Sofa Bed", "count": 1, "shared": true }],
+                                                        "medias": [{ "url": "https://cache.marriott.com/content/dam/marriott-renditions/AUHRX/auhrx-grand-deluxe-suite-3012-hor-feat.jpg", "texts": [{ "language": "en", "text": "Grand Deluxe Suite Living Room" }, { "language": "zh", "text": "大豪华套房客厅" }] }],
+                                                        "allAmenities": { "edges": [{ "node": { "amenityData": { "code": "RAM-004", "amenityCode": "HAC228", "texts": [{ "language": "en", "text": "Executive Living Area & Work Space" }, { "language": "zh", "text": "行政生活区和工作区" }] } } }] }
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "node": {
+                                                    "roomData": {
+                                                        "code": "RM-AE114-004", "roomCode": "STE_AD_SUP", "source": "AO_NORMALIZED", "area": 1120.0,
+                                                        "texts": [{ "language": "en", "text": "Abu Dhabi Suite, Suspended Bridge, 3 Bedrooms, Sea View" }, { "language": "zh", "text": "阿布扎比悬空天桥三卧室套房，海景" }],
+                                                        "occupancies": { "total": { "min": 2, "max": 10 }, "adults": { "min": 2, "max": 8 }, "children": { "min": 0, "max": 4 }, "infants": { "min": 0, "max": 2 } },
+                                                        "views": [{ "texts": [{ "language": "en", "text": "360-Degree Ocean & City Skyline View" }, { "language": "zh", "text": "360度海洋与城市天际线景观" }] }],
+                                                        "beds": [{ "type": "Master King", "count": 2, "shared": false }, { "type": "Double", "count": 2, "shared": false }],
+                                                        "medias": [{ "url": "https://cache.marriott.com/content/dam/marriott-renditions/AUHRX/auhrx-abu-dhabi-suite-0041-hor-feat.jpg", "texts": [{ "language": "en", "text": "Suspended Sky Bridge Living Room" }, { "language": "zh", "text": "悬空天桥客厅" }] }],
+                                                        "allAmenities": { "edges": [{ "node": { "amenityData": { "code": "RAM-005", "amenityCode": "HAC84", "texts": [{ "language": "en", "text": "Private In-Suite Spa Room & Sauna" }, { "language": "zh", "text": "套房内私人水疗室和桑拿房" }] } } }] }
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }]
+                    }
+                }
+            }
+        };
+
+        const data = {
+            suppliers: {
+                "darina": {
+                    id: "darina", name: "Darina B2B", code: "644",
+                    hotelName: "THE ST. REGIS ABU DHABI",
+                    chain: null,
+                    contact: "+971 2 6944444",
+                    address: "Nation Tower, Corniche - Abu Dhabi - United Arab Emirates",
+                    cardTypes: null, checkIn: null, checkOut: null,
+                    desc: "Boasting a landmark address on the Corniche, in the iconic Nation Towers, The St. Regis Abu Dhabi offers worldly refinement and timeless traditions just steps from the Federal National Council, Supreme Court, and prestigious corporate headquarters.Dedicated to uncompromised living, the hotel features 4,800 square meters of meeting space along with a pool and Rémede Spa. Additionally, Michelin-starred chef Gary Rhodes presents rare culinary offerings at Rhodes 44, Café 44, the Tea Lounge, and The St. Regis Bar.The hotel comprises 228 distinctive guest rooms and 55 grand suites, including one on the connecting bridge with captivating Gulf views. Every experience is enhanced with the bespoke St. Regis Butler Service, available any time, day or night.\n\nTourism Dirham or any city taxes must be paid directly by the guest during check-in or check-out at the hotel.",
+                    images: [
+                        "https://images.darinab2b.com/ShowImg.aspx?params=dtc_644_16609_False_False_22",
+                        "https://images.darinab2b.com/ShowImg.aspx?params=dtc_644_16610_False_False_22",
+                        "https://images.darinab2b.com/ShowImg.aspx?params=dtc_644_16611_False_False_22",
+                        "https://images.darinab2b.com/ShowImg.aspx?params=dtc_644_16612_False_False_22",
+                        "https://images.darinab2b.com/ShowImg.aspx?params=dtc_644_16613_False_False_22",
+                        "https://images.darinab2b.com/ShowImg.aspx?params=dtc_644_16614_False_False_22",
+                        "https://images.darinab2b.com/ShowImg.aspx?params=dtc_644_16615_False_False_22",
+                        "https://images.darinab2b.com/ShowImg.aspx?params=dtc_644_16616_False_False_22",
+                        "https://images.darinab2b.com/ShowImg.aspx?params=dtc_644_16617_False_False_22",
+                        "https://images.darinab2b.com/ShowImg.aspx?params=dtc_644_16618_False_False_22",
+                        "https://images.darinab2b.com/ShowImg.aspx?params=dtc_644_16619_False_False_22"
+                    ],
+                    amenities: null, rawJson: rawDarinaJson
+                },
+                "fly": {
+                    id: "fly", name: "Fly", code: "87383",
+                    hotelName: "The St. Regis Abu Dhabi",
+                    chain: null, contact: null, address: "Nation Towers",
+                    cardTypes: null, checkIn: null, checkOut: null, desc: null, images: null, amenities: null, rawJson: rawFlyJson
+                },
+                "tld": {
+                    id: "tld", name: "Travellanda", code: "2006138",
+                    hotelName: "The St. Regis Abu Dhabi",
+                    chain: null, contact: "+97126944444", address: "Nation Tower Corniche P.O. Box 60476 Abu Dhabi",
+                    cardTypes: null, checkIn: null, checkOut: null,
+                    desc: "Located in the heart of Abu Dhabi, The St. Regis offers luxurious accommodations just steps from the Corniche and a short drive from Heritage Village. This 5-star hotel boasts two outdoor swimming pools, a private beach, and a full-service spa offering massages, body treatments, and facials. Guests can choose from 283 individually decorated rooms, each featuring an iPod docking station, LED TV, and cable programming. Seven restaurants, including the Italian Villa Toscana, provide diverse dining options, complemented by 24-hour room service and a coffee shop. Additional amenities include complimentary Wi-Fi, concierge services, and a 24-hour business center.",
+                    images: [
+                        "https://online.travellanda.com/photo/hotel/4981463e352c08a7/d4/d495d5dd91103262/01-b.jpg",
+                        "https://online.travellanda.com/photo/hotel/4981463e352c08a7/d4/d495d5dd91103262/02-b.jpg",
+                        "https://online.travellanda.com/photo/hotel/4981463e352c08a7/d4/d495d5dd91103262/03-b.jpg",
+                        "https://online.travellanda.com/photo/hotel/4981463e352c08a7/d4/d495d5dd91103262/04-b.jpg",
+                        "https://online.travellanda.com/photo/hotel/4981463e352c08a7/d4/d495d5dd91103262/05-b.jpg",
+                        "https://online.travellanda.com/photo/hotel/4981463e352c08a7/d4/d495d5dd91103262/06-b.jpg",
+                        "https://online.travellanda.com/photo/hotel/4981463e352c08a7/d4/d495d5dd91103262/07-b.jpg",
+                        "https://online.travellanda.com/photo/hotel/4981463e352c08a7/d4/d495d5dd91103262/08-b.jpg",
+                        "https://online.travellanda.com/photo/hotel/4981463e352c08a7/d4/d495d5dd91103262/09-b.jpg",
+                        "https://online.travellanda.com/photo/hotel/4981463e352c08a7/d4/d495d5dd91103262/10-b.jpg"
+                    ],
+                    amenities: null, rawJson: rawTldJson
+                }
+            }
+        };
+
+        let selectedSupplierKey = 'darina';
+        let selectedPlanKey = 'bronze';
+
+        // RECURSIVE FILTER FUNCTION FOR "zh" NODES
+        function filterZhNodes(obj, keepZh) {
+            if (!obj || typeof obj !== 'object') return obj;
+            if (Array.isArray(obj)) {
+                if (obj.length > 0 && obj[0] && typeof obj[0] === 'object' && 'language' in obj[0]) {
+                    if (!keepZh) {
+                        return obj.filter(item => item.language !== 'zh').map(item => filterZhNodes(item, keepZh));
+                    }
+                }
+                return obj.map(item => filterZhNodes(item, keepZh));
+            }
+            const copy = {};
+            for (const key in obj) {
+                if (Object.prototype.hasOwnProperty.call(obj, key)) {
+                    copy[key] = filterZhNodes(obj[key], keepZh);
+                }
+            }
+            return copy;
+        }
+
+        // GENERATE DYNAMIC TIER JSON FOR JSON VIEW
+        function getTierJson(planKey) {
+            let cloned = JSON.parse(JSON.stringify(rawFastXMasterJson));
+            const keepZh = (planKey === 'bolts');
+            cloned = filterZhNodes(cloned, keepZh);
+
+            const hotelNode = cloned.data.hotelX.hotels.edges[0].node.hotelData;
+
+            if (planKey === 'bronze') {
+                delete hotelNode.rooms;
+            } else if (planKey === 'gold' || planKey === 'bolts') {
+                hotelNode.personalized_content = {
+                    "target_segment": "Honeymoon & Romantic Escapes",
+                    "storytelling": "An Enchanting Seaside Sanctuary for Unforgettable Honeymoons...",
+                    "romantic_perks": [
+                        "Chilled Moët & Chandon Champagne with Strawberries upon arrival",
+                        "Rose Petal Evening Turndown Service in Suites",
+                        "Private Beachfront Candlelight Dinner for Two",
+                        "Side-by-Side Couples Massage at Remède Spa"
+                    ]
+                };
+            }
+            return cloned;
+        }
+
+        function init() {
+            renderHotelList();
+            renderRow1Visual();
+            renderRow1Json();
+            renderRow2Visual();
+            renderRow2Json();
+        }
+
+        function renderHotelList() {
+            const list = document.getElementById('hotelList');
+            list.innerHTML = `
+                <div class="hotel-item active">
+                    <div class="hotel-name-title">The St. Regis Abu Dhabi</div>
+                    <div class="hotel-loc">Abu Dhabi, United Arab Emirates (FastX: AE114)</div>
+                </div>
+            `;
+        }
+
+        // POINT 1 VISUAL RENDERING: SHOW AT LEAST 5 IMAGES & TOTAL COUNT
+        function renderRow1Visual() {
+            const grid = document.getElementById('suppliersGrid');
+            grid.innerHTML = '';
+            Object.keys(data.suppliers).forEach(key => {
+                const sup = data.suppliers[key];
+                const isSelected = selectedSupplierKey === key;
+
+                const hotelNameVal = sup.hotelName ? sup.hotelName : '<span class="not-available-badge">hotelName = "Not available"</span>';
+                const chainVal = sup.chain ? sup.chain : '<span class="not-available-badge">chainCode = "Not available"</span>';
+                const addressVal = sup.address ? sup.address : '<span class="not-available-badge">location.address = "Not available"</span>';
+                const cardTypesVal = sup.cardTypes ? (Array.isArray(sup.cardTypes) ? sup.cardTypes.join(', ') : sup.cardTypes) : '<span class="not-available-badge">cardTypes = "Not available"</span>';
+                const checkInVal = sup.checkIn ? sup.checkIn : '<span class="not-available-badge">checkIn = "Not available"</span>';
+                const checkOutVal = sup.checkOut ? sup.checkOut : '<span class="not-available-badge">checkOut = "Not available"</span>';
+                const contactVal = sup.contact ? sup.contact : '<span class="not-available-badge">contact = "Not available"</span>';
+                const descVal = sup.desc ? sup.desc : '<span class="not-available-badge">descriptions = "Not available"</span>';
+                const amenitiesVal = sup.amenities ? sup.amenities.join(', ') : '<span class="not-available-badge">allAmenities = "Not available"</span>';
+
+                let imagesHTML = '<span class="not-available-badge">medias = "Not available"</span>';
+                if (sup.images && sup.images.length > 0) {
+                    const visibleImages = sup.images.slice(0, 5);
+                    const remainingCount = sup.images.length - visibleImages.length;
+                    const remainingBadge = remainingCount > 0 ? `<span style="font-size:0.75rem; font-weight:700; color:var(--tx-blue-500); padding-left:4px;">+${remainingCount} more</span>` : '';
+                    imagesHTML = `
+                        <div class="gallery-mini">
+                            ${visibleImages.map(img => `<img src="${img}" alt="Hotel Media">`).join('')}
+                            ${remainingBadge}
+                        </div>
+                    `;
+                }
+
+                grid.innerHTML += `
+                    <div class="sup-card ${isSelected ? 'selected' : ''}" role="button" tabindex="0" aria-pressed="${isSelected}" onclick="selectSupplier('${key}')" onkeydown="if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); selectSupplier('${key}'); }">
+                        <div class="sup-name">${sup.name}</div>
+                        <div><span class="sup-code">Code: ${sup.code}</span></div>
+                        <div class="sup-details">
+                            <p><strong>Hotel Name:</strong> ${hotelNameVal}</p>
+                            <p><strong>Chain:</strong> ${chainVal}</p>
+                            <p><strong>Address:</strong> ${addressVal}</p>
+                            <p><strong>Card Types:</strong> ${cardTypesVal}</p>
+                            <p><strong>Check-In:</strong> ${checkInVal} | <strong>Check-Out:</strong> ${checkOutVal}</p>
+                            <p><strong>Contact:</strong> ${contactVal}</p>
+                            <p><strong>Amenities:</strong> ${amenitiesVal}</p>
+                            <p style="margin-top:6px;"><strong>Description:</strong> ${descVal}</p>
+                            <div style="margin-top:8px;"><strong>Medias (Total: ${sup.images ? sup.images.length : 0}):</strong> ${imagesHTML}</div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function renderRow1Json() {
+            const container = document.getElementById('jsonColumnsRow1');
+            container.innerHTML = `
+                <div class="json-col"><div class="json-col-title">DARINA B2B (hotel_AE114_Supplier_DRNPRV.txt)</div><pre>${JSON.stringify(rawDarinaJson, null, 2)}</pre></div>
+                <div class="json-col"><div class="json-col-title">FLY (hotel_AE114_Supplier_FLY.txt)</div><pre>${JSON.stringify(rawFlyJson, null, 2)}</pre></div>
+                <div class="json-col"><div class="json-col-title">TRAVELLANDA (hotel_AE114_Supplier_TLD.txt)</div><pre>${JSON.stringify(rawTldJson, null, 2)}</pre></div>
+            `;
+        }
+
+        function renderRow2Visual() {
+            const sup = data.suppliers[selectedSupplierKey];
+            const supPane = document.getElementById('compSupVis');
+
+            const hotelNameVal = sup.hotelName ? sup.hotelName : '<span class="not-available-badge">hotelName = "Not available"</span>';
+            const chainVal = sup.chain ? sup.chain : '<span class="not-available-badge">chainCode = "Not available"</span>';
+            const addressVal = sup.address ? sup.address : '<span class="not-available-badge">location.address = "Not available"</span>';
+            const cardTypesVal = sup.cardTypes ? (Array.isArray(sup.cardTypes) ? sup.cardTypes.join(', ') : sup.cardTypes) : '<span class="not-available-badge">cardTypes = "Not available"</span>';
+            const checkInVal = sup.checkIn ? sup.checkIn : '<span class="not-available-badge">checkIn = "Not available"</span>';
+            const checkOutVal = sup.checkOut ? sup.checkOut : '<span class="not-available-badge">checkOut = "Not available"</span>';
+            const contactVal = sup.contact ? sup.contact : '<span class="not-available-badge">contact = "Not available"</span>';
+            const descVal = sup.desc ? sup.desc : '<span class="not-available-badge">descriptions = "Not available"</span>';
+            const amenitiesVal = sup.amenities ? sup.amenities.join(', ') : '<span class="not-available-badge">allAmenities = "Not available"</span>';
+
+            let imagesHTML = '<span class="not-available-badge">medias = "Not available"</span>';
+            if (sup.images && sup.images.length > 0) {
+                imagesHTML = `<div class="big-gallery">${sup.images.slice(0, 6).map(img => `<img src="${img}" alt="Hotel Media">`).join('')}</div>`;
+            }
+
+            supPane.innerHTML = `
+                <div class="pane-title">
+                    <span>${sup.name} (RAW FEED)</span>
+                    <span class="sup-code">${sup.code}</span>
+                </div>
+                <div class="info-block"><div class="info-label">Hotel Name</div><div class="info-val">${hotelNameVal}</div></div>
+                <div class="info-block"><div class="info-label">Chain</div><div class="info-val">${chainVal}</div></div>
+                <div class="info-block"><div class="info-label">Address</div><div class="info-val">${addressVal}</div></div>
+                <div class="info-block"><div class="info-label">Card Types</div><div class="info-val">${cardTypesVal}</div></div>
+                <div class="info-block"><div class="info-label">Check-In / Check-Out</div><div class="info-val">${checkInVal} / ${checkOutVal}</div></div>
+                <div class="info-block"><div class="info-label">Contact Info</div><div class="info-val">${contactVal}</div></div>
+                <div class="info-block"><div class="info-label">Description</div><div class="info-val">${descVal}</div></div>
+                <div class="info-block"><div class="info-label">Amenities</div><div class="info-val">${amenitiesVal}</div></div>
+                <div class="info-block"><div class="info-label">Medias</div><div class="info-val">${imagesHTML}</div></div>
+            `;
+
+            const fastxPane = document.getElementById('compFastXVis');
+            const hData = rawFastXMasterJson.data.hotelX.hotels.edges[0].node.hotelData;
+
+            // PREPARE BLOCKS
+            let topBannerHTML = '';
+            let roomsHTML = '';
+
+            // GOLD BANNER
+            if (selectedPlanKey === 'gold') {
+                topBannerHTML = `
+                    <div class="gold-banner">
+                        <div class="gold-banner-title">💖 Honeymoon & Romantic Specialization (Gold Plan)</div>
+                        <div style="font-size:0.75rem; color:#78350f; margin-bottom:6px;">"An Enchanting Seaside Sanctuary for Unforgettable Honeymoons..."</div>
+                        <div class="tags-container">
+                            <span class="tag gold">Chilled Moët & Chandon Champagne with Strawberries</span>
+                            <span class="tag gold">Rose Petal Evening Turndown Service</span>
+                            <span class="tag gold">Private Beachfront Candlelight Dinner for Two</span>
+                            <span class="tag gold">Side-by-Side Couples Massage at Remède Spa</span>
+                        </div>
+                    </div>
+                `;
+            }
+            // BOLTS-ON BANNER
+            else if (selectedPlanKey === 'bolts') {
+                const chineseDesc = hData.descriptions[0].texts.find(t => t.language === 'zh').text;
+                topBannerHTML = `
+                    <div class="chinese-trans-box">
+                        <div class="chinese-trans-title">🌐 CONTRACTED TRANSLATION: CHINESE (ZH) - BOLTS-ON EXCLUSIVE</div>
+                        <div class="info-label" style="color:#166534; margin-bottom:6px;">Base Language: English (EN) | Contracted Translation: Chinese (ZH)</div>
+                        <div class="info-val" style="font-weight:500; line-height:1.6; color:#064e3b; background:white; padding:12px; border-radius:4px; border:1px solid #a7f3d0;">
+                            ${chineseDesc}
+                        </div>
+                    </div>
+                `;
+            }
+
+            // ROOMS BLOCK (SILVER, GOLD, BOLTS)
+            if (selectedPlanKey === 'silver' || selectedPlanKey === 'gold' || selectedPlanKey === 'bolts') {
+                const roomEdges = hData.rooms.edges;
+                roomsHTML = `
+                    <div class="info-block">
+                        <div class="info-label">Standardized Rooms Module (4 Rooms - Full GraphQL RoomData Schema)</div>
+                        <div class="rooms-container">
+                            ${roomEdges.map(e => {
+                                const rm = e.node.roomData;
+                                const enText = rm.texts.find(t => t.language === 'en').text;
+                                const zhText = rm.texts.find(t => t.language === 'zh');
+                                const nameDisplay = (selectedPlanKey === 'bolts' && zhText) ? `${enText} <br><span style="color:#166534;">(ZH: ${zhText.text})</span>` : enText;
+
+                                const enView = rm.views[0].texts.find(t => t.language === 'en').text;
+                                const zhView = rm.views[0].texts.find(t => t.language === 'zh');
+                                const viewDisplay = (selectedPlanKey === 'bolts' && zhView) ? `${enView} (ZH: ${zhView.text})` : enView;
+
+                                const amenitiesDisplay = rm.allAmenities.edges.map(a => {
+                                    const enA = a.node.amenityData.texts.find(t => t.language === 'en').text;
+                                    const zhA = a.node.amenityData.texts.find(t => t.language === 'zh');
+                                    return (selectedPlanKey === 'bolts' && zhA) ? `${enA} (ZH: ${zhA.text})` : enA;
+                                }).join(', ');
+
+                                return `
+                                    <div class="room-card">
+                                        <div class="room-title">
+                                            <div>${nameDisplay}</div>
+                                            <span class="room-code-tag">${rm.code} / ${rm.roomCode}</span>
+                                        </div>
+                                        <div class="room-grid-details">
+                                            <div class="room-detail-item"><strong>Source:</strong> ${rm.source}</div>
+                                            <div class="room-detail-item"><strong>Area:</strong> ${rm.area} sqm</div>
+                                            <div class="room-detail-item"><strong>Max Occupancy:</strong> ${rm.occupancies.total.max} Pax (${rm.occupancies.adults.max} Adt, ${rm.occupancies.children.max} Chd, ${rm.occupancies.infants.max} Inf)</div>
+                                            <div class="room-detail-item"><strong>Views:</strong> ${viewDisplay}</div>
+                                            <div class="room-detail-item"><strong>Beds:</strong> ${rm.beds.map(b => `${b.count}x ${b.type}`).join(', ')}</div>
+                                            <div class="room-detail-item"><strong>Amenities:</strong> ${amenitiesDisplay}</div>
+                                        </div>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            const fastxCardTypes = hData.cardTypes.join(', ');
+
+            // HOTEL DETAILS BLOCK
+            const enDesc = hData.descriptions[0].texts.find(t => t.language === 'en').text;
+            const zhDesc = hData.descriptions[0].texts.find(t => t.language === 'zh');
+            const descDisplay = (selectedPlanKey === 'bolts' && zhDesc) ? `${enDesc}\n\n<span style="color:#166534; font-weight:600;">[ZH Translation]:</span> ${zhDesc.text}` : enDesc;
+
+            const closestDestEn = hData.location.closestDestination.texts.find(t => t.language === 'en').text;
+            const closestDestZh = hData.location.closestDestination.texts.find(t => t.language === 'zh');
+            const destDisplay = (selectedPlanKey === 'bolts' && closestDestZh) ? `${closestDestEn} (ZH: ${closestDestZh.text})` : closestDestEn;
+
+            const checkInInstEn = hData.checkIn.instructions.find(t => t.language === 'en').text;
+            const checkInInstZh = hData.checkIn.instructions.find(t => t.language === 'zh');
+            const checkInInstDisplay = (selectedPlanKey === 'bolts' && checkInInstZh) ? `${checkInInstEn}<br><span style="color:#166534; font-weight:600;">[ZH Translation]:</span> ${checkInInstZh.text}` : checkInInstEn;
+
+            const hotelDetailsHTML = `
+                <div class="info-block"><div class="info-label">Hotel Name</div><div class="info-val"><strong>${hData.hotelName}</strong></div></div>
+                <div class="info-block"><div class="info-label">Hotel Chain</div><div class="info-val"><strong>Marriott (St Regis) [ChainCode: ${hData.chainCode}]</strong></div></div>
+                <div class="info-block"><div class="info-label">Address & Destination</div><div class="info-val">${hData.location.address}, ${hData.location.zipCode} | Destination: ${destDisplay}</div></div>
+                <div class="info-block"><div class="info-label">Card Types</div><div class="info-val">${fastxCardTypes}</div></div>
+                <div class="info-block"><div class="info-label">Check-In / Check-Out</div><div class="info-val">${hData.checkIn.schedule.startTime} / ${hData.checkOut.schedule.endTime}</div></div>
+                <div class="info-block"><div class="info-label">Check-In Instructions</div><div class="info-val">${checkInInstDisplay}</div></div>
+                <div class="info-block"><div class="info-label">Contact Info</div><div class="info-val">Phone: ${hData.contact.telephone} | Email: ${hData.contact.email} | Web: ${hData.contact.web}</div></div>
+                <div class="info-block"><div class="info-label">Descriptions</div><div class="info-val">${descDisplay}</div></div>
+                <div class="info-block">
+                    <div class="info-label">Normalized Amenities (${hData.allAmenities.edges.length} Mapped Codes)</div>
+                    <div class="tags-container">
+                        ${hData.allAmenities.edges.map(e => {
+                            const enA = e.node.amenityData.texts.find(t => t.language === 'en').text;
+                            const zhA = e.node.amenityData.texts.find(t => t.language === 'zh');
+                            const label = (selectedPlanKey === 'bolts' && zhA) ? `${enA} (ZH: ${zhA.text})` : enA;
+                            return `<span class="tag">${e.node.amenityData.amenityCode}: ${label}</span>`;
+                        }).join('')}
+                    </div>
+                </div>
+                <div class="info-block">
+                    <div class="info-label">Unified Image Gallery (${hData.medias.length} High-Res Images)</div>
+                    <div class="big-gallery">
+                        ${hData.medias.map(m => {
+                            const captionEn = m.texts.find(t => t.language === 'en');
+                            const captionZh = m.texts.find(t => t.language === 'zh');
+                            const capText = (selectedPlanKey === 'bolts' && captionZh) ? `${captionEn ? captionEn.text : ''} (ZH: ${captionZh.text})` : (captionEn ? captionEn.text : '');
+                            return `<div><img src="${m.url}" alt="Gallery Image"><div style="font-size:0.65rem; color:#666; margin-top:2px;">${capText}</div></div>`;
+                        }).join('')}
+                    </div>
+                </div>
+            `;
+
+            // RENDER ACCORDING TO TIER-SPECIFIC ORDERING
+            let finalContentHTML = '';
+
+            if (selectedPlanKey === 'silver') {
+                // SILVER ORDER: 1) Rooms FIRST, 2) Hotel Details
+                finalContentHTML = roomsHTML + hotelDetailsHTML;
+            } else if (selectedPlanKey === 'gold' || selectedPlanKey === 'bolts') {
+                // GOLD: personalization banner first. BOLTS-ON: ZH translation box first. Both then Hotel Details + Rooms.
+                finalContentHTML = topBannerHTML + hotelDetailsHTML + roomsHTML;
+            } else {
+                // BRONZE ORDER: Hotel Details only
+                finalContentHTML = hotelDetailsHTML;
+            }
+
+            fastxPane.innerHTML = `
+                <div class="pane-title">
+                    <span>FastX Content (${selectedPlanKey.toUpperCase()})</span>
+                    <span class="sup-code" style="background:#fff3cd; color:#856404;">FastX Code: AE114</span>
+                </div>
+                ${finalContentHTML}
+            `;
+        }
+
+        function renderRow2Json() {
+            document.getElementById('jsonCompSupTitle').innerText = `${data.suppliers[selectedSupplierKey].name.toUpperCase()} RAW JSON`;
+            document.getElementById('jsonCompSup').innerText = JSON.stringify(data.suppliers[selectedSupplierKey].rawJson, null, 2);
+
+            const tierData = getTierJson(selectedPlanKey);
+            document.getElementById('jsonCompFastXTitle').innerText = `FASTX CONTENT JSON (${selectedPlanKey.toUpperCase()} PLAN) ${selectedPlanKey === 'bolts' ? '[WITH ZH TRANSLATIONS]' : '[EN ONLY]'}`;
+            document.getElementById('jsonCompFastX').innerText = JSON.stringify(tierData, null, 2);
+        }
+
+        function selectSupplier(key) {
+            selectedSupplierKey = key;
+            renderRow1Visual();
+            renderRow2Visual();
+            renderRow2Json();
+        }
+
+        function selectPlan(plan) {
+            selectedPlanKey = plan;
+            document.querySelectorAll('.plan-chip').forEach(c => {
+                c.classList.remove('active', 'active-gold');
+                c.setAttribute('aria-pressed', 'false');
+            });
+            const activeChip = document.getElementById(`chip-${plan}`);
+            if (plan === 'gold') activeChip.classList.add('active-gold');
+            else activeChip.classList.add('active');
+            activeChip.setAttribute('aria-pressed', 'true');
+            renderRow2Visual();
+            renderRow2Json();
+        }
+
+        function toggleAcc(id) {
+            const acc = document.getElementById(id);
+            const isOpen = acc.classList.toggle('open');
+            const header = acc.querySelector('.acc-header');
+            if (header) header.setAttribute('aria-expanded', String(isOpen));
+        }
+
+        function setView(rowId, view) {
+            const visEl = document.getElementById(`vis-${rowId}`);
+            const jsonEl = document.getElementById(`json-${rowId}`);
+            const btnV = document.getElementById(`btn-v-${rowId}`);
+            const btnJ = document.getElementById(`btn-j-${rowId}`);
+
+            if (view === 'visual') {
+                visEl.style.display = 'block';
+                jsonEl.style.display = 'none';
+                btnV.classList.add('active');
+                btnJ.classList.remove('active');
+            } else {
+                visEl.style.display = 'none';
+                jsonEl.style.display = 'block';
+                btnV.classList.remove('active');
+                btnJ.classList.add('active');
+            }
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>

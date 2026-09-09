@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travelgate | FastX Booking Flow Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --tx-blue-900: #001f3f;
+            --tx-blue-700: #003366;
+            --tx-blue-500: #0056b3;
+            --tx-blue-300: #007bff;
+            --tx-blue-100: #e6f0ff;
+            --tx-neutral-900: #102038;
+            --tx-neutral-700: #475569;
+            --tx-neutral-500: #64748b;
+            --tx-neutral-300: #cbd5e1;
+            --tx-neutral-100: #f1f5f9;
+            --tx-white: #ffffff;
+            --tx-accent-gold: #FFB81C;
+            --tx-success: #10B981;
+            --tx-danger: #EF4444;
+            --bg-body: #f4f7fb;
+            --bg-soft: #f8fbff;
+            --border-color: #dce5f1;
+            --shadow-soft: 0 8px 28px rgba(0, 31, 63, 0.08);
+            --shadow-light: 0 4px 14px rgba(0, 31, 63, 0.06);
+            --brand-cyan: #00a8e8;
+            --brand-blue: #0077d8;
+            --brand-ink: #0b2f59;
+            --ok: #0bbf7b;
+            --bad: #e85b66;
+            --sup-1: #0088f0;
+            --sup-2: #00b89a;
+            --sup-3: #ff9a56;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+
+        body {
+            color: var(--tx-neutral-900);
+            background:
+                radial-gradient(circle at 8% 4%, rgba(0, 123, 255, 0.08), transparent 42%),
+                radial-gradient(circle at 92% 10%, rgba(255, 184, 28, 0.08), transparent 40%),
+                var(--bg-body);
+            min-height: 100vh;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(100deg, var(--tx-blue-900) 0%, var(--tx-blue-700) 55%, #0c4f9e 100%);
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 10px 24px rgba(0, 31, 63, 0.24);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(4px);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        header h1 {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--tx-white);
+            letter-spacing: 0.2px;
+        }
+
+        .badge-fx {
+            background: linear-gradient(135deg, #fff2cb 0%, #ffd667 100%);
+            color: #5f3d00;
+            border: 1px solid #ffcf55;
+            padding: 5px 11px;
+            border-radius: 999px;
+            font-size: 0.68rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.45px;
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header-link {
+            text-decoration: none;
+            color: #2f1c00;
+            font-weight: 800;
+            font-size: 0.7rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 0.72rem 1.2rem;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #ffe29b 0%, #ffbf22 100%);
+            border: 1px solid #ffcf55;
+            transition: all 0.2s ease;
+            box-shadow: 0 8px 20px rgba(255, 191, 34, 0.28);
+        }
+
+        .header-link:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 28px rgba(255, 191, 34, 0.34);
+        }
+
+        .page {
+            max-width: 1380px;
+            margin: 0 auto;
+            padding: 28px 24px 42px;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .hero {
+            border: 1px solid rgba(0, 119, 216, 0.2);
+            background: linear-gradient(135deg, #ffffff 0%, #f7fbff 100%);
+            border-radius: 22px;
+            padding: 44px 48px;
+            display: grid;
+            grid-template-columns: minmax(0, 1.45fr) minmax(220px, 0.9fr);
+            align-items: center;
+            gap: 28px;
+            box-shadow: 0 18px 45px rgba(11, 47, 89, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0,168,232,0.25), transparent);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 12px;
+            color: var(--tx-blue-900);
+        }
+
+        .hero h1 img { width: 140px; }
+
+        .hero-tagline {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--tx-blue-500);
+            text-transform: uppercase;
+            letter-spacing: 1.1px;
+            margin-bottom: 8px;
+        }
+
+        .hero p {
+            color: var(--tx-neutral-700);
+            font-size: 1rem;
+            max-width: 620px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .hero-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .pill-link {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 12px 22px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--tx-blue-500), #0a67c9);
+            box-shadow: 0 8px 20px rgba(0, 86, 179, 0.25);
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .pill-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px rgba(0, 86, 179, 0.3);
+        }
+
+        .hero-benefits {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .intro-visual {
+            width: 100%;
+            max-width: 420px;
+            justify-self: end;
+            background: linear-gradient(135deg, #ffffff, #f3f8ff);
+            border: 1px solid rgba(0, 119, 216, 0.14);
+            border-radius: 18px;
+            padding: 18px;
+            box-shadow: 0 12px 28px rgba(11, 47, 89, 0.08);
+            z-index: 1;
+        }
+
+        .intro-visual img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+        }
+
+        .benefit-card {
+            background: #f8fbff;
+            padding: 12px 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 119, 216, 0.12);
+            text-align: center;
+            box-shadow: 0 4px 14px rgba(0, 31, 63, 0.04);
+        }
+
+        .benefit-card .icon {
+            font-size: 1.8rem;
+            margin-bottom: 6px;
+            color: var(--tx-blue-500);
+        }
+
+        .benefit-card .label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--tx-neutral-700);
+            letter-spacing: 0.5px;
+        }
+
+        .module {
+            border: 2px solid rgba(0,168,232,0.2);
+            border-radius: 22px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fcff 100%);
+            overflow: hidden;
+            box-shadow: 0 16px 40px rgba(17, 52, 92, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .module:hover {
+            box-shadow: 0 20px 50px rgba(17, 52, 92, 0.12);
+            border-color: rgba(0,168,232,0.4);
+        }
+
+        .module-head {
+            display: flex;
+            justify-content: space-between;
+            gap: 14px;
+            align-items: center;
+            border-bottom: 2px solid rgba(0,168,232,0.1);
+            padding: 28px 28px;
+            background: linear-gradient(135deg, #f0f7ff 0%, #e8f0ff 100%);
+        }
+
+        .eyebrow {
+            font-size: 0.68rem;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+            color: var(--brand-cyan);
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 700;
+        }
+
+        .module-title {
+            margin-top: 8px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .module-desc {
+            color: var(--muted);
+            font-size: 0.9rem;
+            max-width: 880px;
+            margin-top: 8px;
+            line-height: 1.5;
+        }
+
+        .badge {
+            padding: 8px 14px;
+            border: 1px solid rgba(0,188,123,0.3);
+            border-radius: 999px;
+            font-size: 0.72rem;
+            color: #0f7d56;
+            background: rgba(11,191,123,0.08);
+            white-space: nowrap;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+
+        .module-body {
+            padding: 28px;
+            display: grid;
+            gap: 24px;
+        }
+
+        .supplier-controls {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(200px, 1fr));
+            gap: 14px;
+        }
+
+        .supplier-card {
+            background: var(--panel);
+            border: 2px solid var(--stroke);
+            border-radius: 14px;
+            padding: 16px;
+            box-shadow: 0 6px 20px rgba(12, 46, 88, 0.06);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .supplier-card:hover {
+            border-color: var(--brand-cyan);
+            box-shadow: 0 12px 28px rgba(0, 168, 232, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .supplier-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--sup-1), var(--sup-2), var(--sup-3));
+            border-radius: 14px 14px 0 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .supplier-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .supplier-name {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dot { 
+            width: 12px; 
+            height: 12px; 
+            border-radius: 50%; 
+            box-shadow: 0 0 8px currentColor;
+            opacity: 0.7;
+        }
+
+        .micro {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            color: #557094;
+            line-height: 1.6;
+            margin-bottom: 10px;
+            background: #f8fbff;
+            padding: 8px;
+            border-radius: 8px;
+        }
+
+        .micro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .micro-item {
+            background: #ffffff;
+            border: 1px solid rgba(0, 119, 216, 0.12);
+            border-radius: 8px;
+            padding: 7px 8px;
+            min-height: 52px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .micro-item .label {
+            font-size: 0.58rem;
+            color: #6d84a3;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .micro-item .value {
+            font-size: 0.72rem;
+            color: var(--tx-blue-900);
+            font-weight: 700;
+            word-break: break-word;
+        }
+
+        .range-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 7px;
+            appearance: none;
+            background: linear-gradient(90deg, rgba(0,119,216,0.18), rgba(0,168,232,0.12));
+            border-radius: 999px;
+            cursor: pointer;
+            transition: filter 0.15s ease, transform 0.15s ease;
+            accent-color: var(--brand-blue);
+            touch-action: pan-y;
+        }
+
+        input[type="range"]:active {
+            transform: scaleY(1.08);
+            filter: saturate(1.2);
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--brand-blue), var(--brand-cyan));
+            box-shadow: 0 3px 10px rgba(0,119,216,0.35), 0 0 0 2px rgba(255,255,255,0.8);
+            cursor: pointer;
+            border: none;
+            transition: transform 0.12s ease;
+        }
+
+        input[type="range"]:hover::-webkit-slider-thumb,
+        input[type="range"]:active::-webkit-slider-thumb {
+            transform: scale(1.08);
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--brand-blue), var(--brand-cyan));
+            box-shadow: 0 3px 10px rgba(0,119,216,0.35), 0 0 0 2px rgba(255,255,255,0.8);
+            cursor: pointer;
+            border: none;
+        }
+
+        .price {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.95rem;
+            font-weight: 700;
+            min-width: 60px;
+            text-align: right;
+            color: var(--brand-blue);
+        }
+
+        .flow-container {
+            background: linear-gradient(135deg, #f0f7ff, #e8f0ff);
+            border-radius: 14px;
+            padding: 16px;
+            border: 1px solid rgba(0,168,232,0.2);
+        }
+
+        .flow-line {
+            padding: 12px;
+            border-radius: 12px;
+            border: 2px solid var(--brand-cyan);
+            background: linear-gradient(135deg, rgba(255,255,255,0.6), rgba(240,247,255,0.8));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: var(--text);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.76rem;
+            flex-wrap: wrap;
+            font-weight: 600;
+        }
+
+        .node {
+            border: 2px solid var(--stroke);
+            background: #ffffff;
+            border-radius: 999px;
+            padding: 8px 16px;
+            color: #3c587b;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .node::before {
+            display: none;
+        }
+
+        .node.main { 
+            border-color: rgba(11,191,123,0.5); 
+            background: rgba(11,191,123,0.08);
+            color: #0f7d56; 
+        }
+
+        .arrow {
+            color: var(--muted);
+            font-weight: 700;
+        }
+
+        .compare {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .pane {
+            border: 2px solid var(--stroke);
+            border-radius: 16px;
+            background: var(--panel);
+            padding: 20px;
+            display: grid;
+            gap: 14px;
+            min-width: 0;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(17, 52, 92, 0.07);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .pane:hover {
+            box-shadow: 0 12px 32px rgba(17, 52, 92, 0.12);
+        }
+
+        .pane.fastx {
+            border-color: rgba(11,191,123,0.4);
+            background: linear-gradient(135deg, #ffffff 0%, rgba(11,191,123,0.02) 100%);
+        }
+
+        .pane.fastx::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--ok), transparent);
+        }
+
+        .pane h3 {
+            font-size: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+        }
+
+        .tag {
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 0.65rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .tag.bad { 
+            background: linear-gradient(135deg, rgba(232,91,102,0.15), rgba(232,91,102,0.08)); 
+            color: #a73a45; 
+            border: 1px solid rgba(232,91,102,0.3); 
+        }
+
+        .tag.good { 
+            background: linear-gradient(135deg, rgba(11,191,123,0.15), rgba(11,191,123,0.08)); 
+            color: #0c6d4f; 
+            border: 1px solid rgba(11,191,123,0.4); 
+        }
+
+        .tag.premium { 
+            background: linear-gradient(135deg, rgba(0,168,232,0.15), rgba(0,168,232,0.08)); 
+            color: #0d6ea8; 
+            border: 1px solid rgba(0,168,232,0.3); 
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .chip {
+            border: 1px solid var(--stroke);
+            border-radius: 12px;
+            padding: 12px;
+            background: linear-gradient(135deg, #f8fbff, #f0f7ff);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .chip:hover {
+            border-color: var(--brand-cyan);
+            background: linear-gradient(135deg, #f0f7ff, #e8f0ff);
+        }
+
+        .chip .k {
+            font-size: 0.65rem;
+            color: #6d84a3;
+            font-family: 'IBM Plex Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            font-weight: 600;
+        }
+
+        .chip .v {
+            margin-top: 6px;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .option-list {
+            display: grid;
+            gap: 10px;
+        }
+
+        .option {
+            border: 2px solid var(--stroke);
+            border-radius: 12px;
+            padding: 12px 14px;
+            background: linear-gradient(135deg, #f9fcff, #f3f8ff);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .option:hover {
+            border-color: var(--brand-cyan);
+            background: linear-gradient(135deg, #f0f7ff, #e8f0ff);
+        }
+
+        .option.winner {
+            border-color: rgba(11,191,123,0.5);
+            background: linear-gradient(135deg, rgba(11,191,123,0.08), rgba(11,191,123,0.04));
+            box-shadow: 0 0 16px rgba(11,191,123,0.15);
+        }
+
+        .option strong { 
+            display: block; 
+            font-size: 0.88rem;
+            font-weight: 700;
+        }
+
+        .option span { 
+            color: #617c9f; 
+            font-size: 0.76rem;
+            line-height: 1.4;
+        }
+
+        .option .price-big { 
+            font-family: 'IBM Plex Mono', monospace; 
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--brand-blue);
+            min-width: 80px;
+            text-align: right;
+        }
+
+        .fastx-win-detail {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .fastx-detail-item {
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid rgba(11, 191, 123, 0.22);
+            border-radius: 10px;
+            padding: 9px 10px;
+            min-height: 74px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .fastx-detail-item .label {
+            font-size: 0.58rem;
+            color: #0d6d53;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .fastx-detail-item .value {
+            font-size: 0.75rem;
+            line-height: 1.5;
+            color: var(--tx-blue-900);
+            font-weight: 700;
+            word-break: break-word;
+        }
+
+        .option-content {
+            flex: 1;
+        }
+
+        .json-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        pre {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            line-height: 1.6;
+            border: 2px solid var(--stroke);
+            border-radius: 12px;
+            background: linear-gradient(135deg, #1a2f4a, #0f2744);
+            color: #a0c9ff;
+            padding: 16px;
+            overflow: auto;
+            min-height: 200px;
+            transition: all 0.3s ease;
+        }
+
+        pre:hover {
+            border-color: var(--brand-cyan);
+            box-shadow: 0 0 20px rgba(0,168,232,0.15);
+        }
+
+        .json-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .json-label .icon {
+            font-size: 1rem;
+            color: var(--brand-cyan);
+        }
+
+        .muted-note {
+            color: var(--muted);
+            font-size: 0.8rem;
+            line-height: 1.5;
+            padding: 12px 16px;
+            background: rgba(0,168,232,0.05);
+            border-left: 3px solid var(--brand-cyan);
+            border-radius: 4px;
+            margin-top: 12px;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        .next-step {
+            border: 2px solid rgba(139,92,246,0.3);
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(248,247,255,0.95));
+            padding: 24px;
+            display: grid;
+            gap: 16px;
+            flex-wrap: wrap;
+            box-shadow: 0 12px 32px rgba(139,92,246,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .next-step::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(139,92,246,0.1), transparent);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .next-step-content {
+            z-index: 1;
+        }
+
+        .next-step h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .next-step p {
+            color: var(--muted);
+            font-size: 0.9rem;
+            max-width: 700px;
+            line-height: 1.6;
+        }
+
+        .demo-disclaimer {
+            margin-top: 14px;
+            padding: 12px 14px 12px 42px;
+            border-radius: 12px;
+            background: rgba(255, 184, 0, 0.06);
+            border: 1px solid rgba(255, 184, 0, 0.2);
+            color: var(--muted);
+            font-size: 0.78rem;
+            line-height: 1.6;
+            position: relative;
+            box-shadow: inset 0 0 0 1px rgba(255, 184, 0, 0.04);
+        }
+
+        .demo-disclaimer::before {
+            content: "⚠";
+            position: absolute;
+            left: 14px;
+            top: 10px;
+            font-size: 1rem;
+            color: #b7791f;
+        }
+
+        .demo-disclaimer strong {
+            color: var(--text);
+        }
+
+        .next-link {
+            text-decoration: none;
+            border: none;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
+            color: #ffffff;
+            border-radius: 12px;
+            padding: 12px 24px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            font-weight: 700;
+            white-space: nowrap;
+            box-shadow: 0 8px 20px rgba(139,92,246,0.3);
+            transition: all 0.3s ease;
+            width: fit-content;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .next-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(139,92,246,0.4);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .module {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .module:nth-child(2) { animation-delay: 0.1s; }
+        .module:nth-child(3) { animation-delay: 0.2s; }
+
+        .supplier-card {
+            animation: slideIn 0.4s ease-out;
+        }
+
+        .chip {
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        .option {
+            animation: slideIn 0.4s ease-out;
+        }
+
+        @media (max-width: 1100px) {
+            .supplier-controls { grid-template-columns: 1fr; }
+            .compare { grid-template-columns: 1fr; }
+            .json-grid { grid-template-columns: 1fr; }
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 30px 24px;
+            }
+            .intro-visual {
+                justify-self: stretch;
+                max-width: none;
+            }
+            .hero-benefits { grid-template-columns: repeat(2, 1fr); }
+            .stats { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 28px 20px;
+            }
+
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+
+            .module-title {
+                font-size: 1.2rem;
+            }
+
+            .flow-line {
+                font-size: 0.65rem;
+            }
+
+            .pane h3 {
+                font-size: 0.9rem;
+            }
+
+            .hero-benefits {
+                grid-template-columns: 1fr;
+            }
+
+            .next-step {
+                padding: 16px;
+            }
+
+            .next-step h3 {
+                font-size: 1rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-area">
+            <img src="https://www.travelgate.com/assets/img/logos/logo_tg_negative.svg" alt="Travelgate logo" style="height: 28px; width: auto; display: block;">
+            <span class="badge-fx">DEMO</span>
+        </div>
+    </header>
+
+    <div class="page">
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-tagline">⚡ FastX Booking Flow</div>
+                <p>
+                    FastX connects multiple suppliers through one shared layer, standardizing hotel, room and board codes so your marketplace can aggregate content without the mapping chaos. It keeps native codes available while delivering a cleaner, scalable response model for faster integrations and cleaner buyer experiences.
+                </p>
+                <div class="hero-links">
+                    <a class="pill-link" href="https://docs.travelgate.com/kb/connectivity-products/for-buyers/hotel-x/fastx/fastx-solution" target="_blank" rel="noopener noreferrer">📖 Documentation</a>
+                    <a class="pill-link" href="fastxcontent.html" style="background: linear-gradient(135deg, #8b5cf6, #ec4899);">✨ FastX Content</a>
+                </div>
+                <div class="hero-benefits">
+                    <div class="benefit-card">
+                        <div class="icon">🎯</div>
+                        <div class="label">Unified Codes</div>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="icon">⚡</div>
+                        <div class="label">Auto Deduplication</div>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="icon">💰</div>
+                        <div class="label">Best Price Logic</div>
+                    </div>
+                </div>
+            </div>
+            <div class="intro-visual" aria-label="FastX overview">
+                <img src="https://travelgate.com/assets/img/fastx/img_fastx.svg" alt="FastX overview" />
+            </div>
+        </section>
+
+        <section class="module">
+            <div class="module-head">
+                <div>
+                    <div class="eyebrow">🚀 Interactive Demo</div>
+                    <div class="module-title">FastX Booking Flow Aggregation</div>
+                    <div class="module-desc">
+                        FastX unifies fragmented supplier codes (hotel, room, board) into a single master model. This unique set of codes in our network allows you to apply aggregation business rules to deduplicate equivalent options and return the commercially best result. In the response we remain transparent: even when a single standardized FastX code is exposed, we still return the original supplier code alongside it for traceability and control. Adjust supplier prices below to see the transformation in real time.
+                    </div>
+                </div>
+                <div class="badge">✓ Test data</div>
+            </div>
+            <div class="module-body">
+                <div style="padding: 14px; background: rgba(0,168,232,0.05); border-radius: 12px; border-left: 4px solid var(--brand-cyan);">
+                    <span style="font-weight: 600; font-size: 0.9rem; color: var(--text);">💡 Try this:</span>
+                    <span style="font-size: 0.85rem; color: var(--muted); display: block; margin-top: 4px;">Drag the sliders to change supplier prices and watch how FastX automatically selects the best option. The response stays transparent: we expose the normalized FastX code, but we always keep the native supplier code alongside it.</span>
+                </div>
+
+                <div class="demo-disclaimer">
+                    <strong>Disclaimer:</strong> This page is a simplified demo created for illustration purposes only. It is not a production payload, not a live supplier response, and the sample data shown here is fictional and deliberately simplified to explain the FastX model clearly.
+                </div>
+
+                <div class="supplier-controls" id="supplier-controls"></div>
+
+                <div class="flow-container">
+                    <div style="font-size: 0.75rem; font-weight: 600; color: var(--brand-cyan); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px;">Processing Pipeline</div>
+                    <div class="flow-line">
+                        <span class="node"><i class="fas fa-boxes" style="margin-right:4px;"></i> Suppliers</span>
+                        <span class="arrow">↓</span>
+                        <span class="node main"><i class="fas fa-sync-alt" style="margin-right:4px;"></i> FastX Model</span>
+                        <span class="arrow">↓</span>
+                        <span class="node main"><i class="fas fa-layer-group" style="margin-right:4px;"></i> Aggregation</span>
+                        <span class="arrow">↓</span>
+                        <span class="node main"><i class="fas fa-star" style="margin-right:4px;"></i> Winner</span>
+                    </div>
+                </div>
+
+                <div class="compare">
+                    <article class="pane">
+                        <h3>
+                            <span>❌ Without FastX</span> 
+                            <span class="tag bad">raw supplier output</span>
+                        </h3>
+                        <div class="stats" id="stats-raw"></div>
+                        <div class="option-list" id="raw-options"></div>
+                    </article>
+
+                    <article class="pane fastx">
+                        <h3>
+                            <span>✅ With FastX</span> 
+                            <span class="tag good">deduplicated & optimized</span>
+                        </h3>
+                        <div class="stats" id="stats-fastx"></div>
+                        <div class="option-list" id="fastx-option"></div>
+                    </article>
+                </div>
+
+                <div class="json-grid">
+                    <div>
+                        <div class="json-label">
+                            <span class="icon">📤</span>
+                            <div class="eyebrow">Without FastX Codes</div>
+                        </div>
+                        <pre id="json-raw"></pre>
+                    </div>
+                    <div>
+                        <div class="json-label">
+                            <span class="icon">📥</span>
+                            <div class="eyebrow">With FastX Unified Model</div>
+                        </div>
+                        <pre id="json-fastx"></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="module">
+            <div class="module-body">
+                <div class="next-step">
+                    <div class="next-step-content">
+                        <h3>🎨 Ready to explore FastX Content?</h3>
+                        <p>The same unified FastX codes can be enriched with normalized media, descriptions, and amenities. Discover how this drives higher conversion rates and better user experience.</p>
+                    </div>
+                    <a class="next-link" href="fastxcontent.html">→ Open Content Demo</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const suppliers = [
+            {
+                name: 'Hotelbeds',
+                color: '#0088f0',
+                hotelCode: 'HB-8812',
+                roomCode: 'Sea View DBL (BB BAR)',
+                boardCode: 'RO',
+                price: 136
+            },
+            {
+                name: 'WebBeds',
+                color: '#00b89a',
+                hotelCode: 'WB-A6F5',
+                roomCode: 'DOUBLE SEA VIEW',
+                boardCode: 'ROOM_ONLY',
+                price: 122
+            },
+            {
+                name: 'Expedia',
+                color: '#ff9a56',
+                hotelCode: 'EXP-992',
+                roomCode: 'Dbl Rm, sea view',
+                boardCode: '2234',
+                price: 128
+            }
+        ];
+
+        const fastxMaster = {
+            hotelCode: 'AE114',
+            hotelName: 'Hotel Riu Plaza Espana',
+            roomCode: 'str--AA--d--',
+            roomDesc: 'Standard Double Room Sea View',
+            boardCode: 'RO'
+        };
+
+        function updatePrice(index, value) {
+            suppliers[index].price = Number(value);
+            const winner = getWinner();
+            const cards = document.querySelectorAll('.supplier-card');
+
+            cards.forEach((card, i) => {
+                const sup = suppliers[i];
+                const isWinner = sup === winner;
+                card.style.borderColor = isWinner ? 'rgba(11,191,123,0.5)' : 'var(--stroke)';
+                card.style.background = isWinner ? 'linear-gradient(135deg, #ffffff, rgba(11,191,123,0.02))' : 'var(--panel)';
+                card.querySelector('.price').textContent = euro(sup.price);
+                card.querySelector('input[type="range"]').value = String(sup.price);
+                const valueText = card.querySelector('.range-value');
+                if (valueText) valueText.textContent = '€' + sup.price;
+                const name = card.querySelector('.supplier-name span:last-child');
+                if (name) {
+                    name.textContent = sup.name + (isWinner ? ' 🏆' : '');
+                }
+            });
+
+            renderBookingComparison();
+        }
+
+        function getWinner() {
+            const sorted = [...suppliers].sort((a, b) => a.price - b.price);
+            return sorted[0];
+        }
+
+        function euro(value) {
+            return '€' + value + '.00';
+        }
+
+        function setJson(id, obj) {
+            document.getElementById(id).textContent = JSON.stringify(obj, null, 2);
+        }
+
+        function renderSupplierControls() {
+            const wrapper = document.getElementById('supplier-controls');
+            const winner = getWinner();
+            
+            wrapper.innerHTML = suppliers.map((sup, i) => {
+                const isWinner = sup === winner;
+                return `
+                    <div class="supplier-card" style="${isWinner ? 'border-color: rgba(11,191,123,0.5); background: linear-gradient(135deg, #ffffff, rgba(11,191,123,0.02));' : ''}">
+                        <div class="supplier-title">
+                            <div class="supplier-name">
+                                <span class="dot" style="background:${sup.color}; box-shadow: 0 0 12px ${sup.color};"></span>
+                                <span>${sup.name}${isWinner ? ' 🏆' : ''}</span>
+                            </div>
+                            <span class="price">${euro(sup.price)}</span>
+                        </div>
+                        <div class="micro-grid">
+                            <div class="micro-item">
+                                <span class="label">Hotel</span>
+                                <span class="value">${sup.hotelCode}</span>
+                            </div>
+                            <div class="micro-item">
+                                <span class="label">Board</span>
+                                <span class="value">${sup.boardCode}</span>
+                            </div>
+                            <div class="micro-item" style="grid-column: 1 / -1;">
+                                <span class="label">Room</span>
+                                <span class="value">${sup.roomCode}</span>
+                            </div>
+                        </div>
+                        <div class="range-row">
+                            <input type="range" min="80" max="180" value="${sup.price}" oninput="updatePrice(${i}, this.value)">
+                            <span class="range-value" style="font-size: 0.75rem; color: var(--muted); min-width: 35px;">€${sup.price}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderBookingComparison() {
+            const winner = getWinner();
+            const sortedRaw = [...suppliers].sort((a, b) => a.price - b.price);
+
+            const rawList = sortedRaw.map((s, idx) => {
+                return `
+                    <div class="option">
+                        <div class="option-content">
+                            <strong>${s.hotelCode}</strong>
+                            <span>${s.name} • ${s.roomCode} • Board: ${s.boardCode}</span>
+                        </div>
+                        <div class="price-big">${euro(s.price)}</div>
+                    </div>
+                `;
+            }).join('');
+
+            const fastxList = `
+                <div class="option winner">
+                    <div class="option-content">
+                        <strong>${winner.name}</strong>
+                        <span>Best selected supplier for FastX</span>
+                    </div>
+                    <div class="price-big">${euro(winner.price)}</div>
+                </div>
+                <div class="fastx-win-detail">
+                    <div class="fastx-detail-item">
+                        <span class="label">FastX Hotel Code</span>
+                        <span class="value">${fastxMaster.hotelCode}</span>
+                    </div>
+                    <div class="fastx-detail-item">
+                        <span class="label">FastX Description</span>
+                        <span class="value">${fastxMaster.roomDesc}</span>
+                    </div>
+                    <div class="fastx-detail-item">
+                        <span class="label">FastX Board</span>
+                        <span class="value">${fastxMaster.boardCode}</span>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('raw-options').innerHTML = rawList;
+            document.getElementById('fastx-option').innerHTML = fastxList;
+
+            // Calculate dedupe savings
+            const duplicateCount = suppliers.length - 1;
+            const savings = Math.round((suppliers.reduce((sum, s) => sum + s.price, 0) - winner.price) / (suppliers.length - 1));
+
+            document.getElementById('stats-raw').innerHTML = `
+                <div class="chip"><div class="k">Options</div><div class="v">${suppliers.length}</div></div>
+                <div class="chip"><div class="k">Model</div><div class="v">Fragmented</div></div>
+                <div class="chip"><div class="k">Result</div><div class="v">Noisy</div></div>
+            `;
+
+            document.getElementById('stats-fastx').innerHTML = `
+                <div class="chip"><div class="k">Options</div><div class="v">1</div></div>
+                <div class="chip"><div class="k">Model</div><div class="v">Unified</div></div>
+                <div class="chip"><div class="k">Result</div><div class="v">Clean ✓</div></div>
+            `;
+
+            const rawPayload = {
+                data: {
+                    hotelX: {
+                        search: {
+                            options: sortedRaw.map((s, idx) => ({
+                                id: `opt-${idx + 1}`,
+                                accessCode: `A-${idx + 1}2${idx + 9}`,
+                                supplierCode: s.name === 'Hotelbeds' ? 'HB' : s.name === 'WebBeds' ? 'WB' : 'EXP',
+                                hotelCode: s.hotelCode,
+                                hotelName: fastxMaster.hotelName,
+                                boardCode: s.boardCode,
+                                paymentType: 'MERCHANT',
+                                status: 'OK',
+                                rooms: [
+                                    {
+                                        occupancyRefId: 1,
+                                        code: s.roomCode,
+                                        description: s.roomCode,
+                                        refundable: true,
+                                        pricing: {
+                                            currency: 'EUR',
+                                            net: s.price,
+                                            gross: s.price
+                                        }
+                                    }
+                                ],
+                                price: {
+                                    currency: 'EUR',
+                                    net: s.price,
+                                    gross: s.price
+                                }
+                            }))
+                        }
+                    }
+                }
+            };
+
+            const fxPayload = {
+                data: {
+                    hotelX: {
+                        search: {
+                            options: [
+                                {
+                                    id: `opt-fastx-${winner.name.toLowerCase()}`,
+                                    accessCode: winner.name === 'Hotelbeds' ? 'A-12H' : winner.name === 'WebBeds' ? 'A-28W' : 'A-41E',
+                                    supplierCode: winner.name === 'Hotelbeds' ? 'HB' : winner.name === 'WebBeds' ? 'WB' : 'EXP',
+                                    hotelCode: fastxMaster.hotelCode,
+                                    hotelCodeSupplier: winner.hotelCode,
+                                    hotelName: fastxMaster.hotelName,
+                                    boardCode: fastxMaster.boardCode,
+                                    boardCodeSupplier: winner.boardCode,
+                                    paymentType: 'MERCHANT',
+                                    status: 'OK',
+                                    rooms: [
+                                        {
+                                            occupancyRefId: 1,
+                                            code: fastxMaster.roomCode,
+                                            supplierCode: winner.roomCode,
+                                            description: fastxMaster.roomDesc,
+                                            descriptionSupplier: winner.roomCode,
+                                            refundable: true,
+                                            pricing: {
+                                                currency: 'EUR',
+                                                net: winner.price,
+                                                gross: winner.price
+                                            }
+                                        }
+                                    ],
+                                    price: {
+                                        currency: 'EUR',
+                                        net: winner.price,
+                                        gross: winner.price
+                                    },
+                                    aggregation: {
+                                        strategy: 'CHEAPEST_PRICE',
+                                        aggregatedSuppliers: suppliers.length
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            };
+
+            setJson('json-raw', rawPayload);
+            setJson('json-fastx', fxPayload);
+        }
+
+        function render() {
+            renderSupplierControls();
+            renderBookingComparison();
+        }
+
+        render();
+    </script>
+</body>
+</html>

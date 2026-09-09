@@ -27,6 +27,8 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
         body { background-color: var(--bg-body); color: var(--tx-neutral-900); min-height: 100vh; display: flex; flex-direction: column; }
 
+        [role="button"]:focus-visible { outline: 2px solid var(--tx-blue-500); outline-offset: 2px; }
+
         header {
             background-color: var(--tx-white);
             padding: 1rem 2rem;
@@ -150,7 +152,7 @@
         <div class="col-right">
             <!-- ROW 1: SUPPLIERS -->
             <div class="accordion open" id="row1">
-                <div class="acc-header" onclick="toggleAcc('row1')">
+                <div class="acc-header" role="button" tabindex="0" aria-expanded="true" onclick="toggleAcc('row1')" onkeydown="if ((event.key === 'Enter' || event.key === ' ') && event.target === this) { event.preventDefault(); toggleAcc('row1'); }">
                     <div class="acc-title"><span class="acc-icon">▼</span> 1. Content per supplier</div>
                     <div class="view-toggle" onclick="event.stopPropagation();">
                         <button class="toggle-btn active" id="btn-v-row1" onclick="setView('row1', 'visual')">Visual</button>
@@ -170,7 +172,7 @@
 
             <!-- ROW 2: COMPARISON -->
             <div class="accordion open" id="row2">
-                <div class="acc-header" onclick="toggleAcc('row2')">
+                <div class="acc-header" role="button" tabindex="0" aria-expanded="true" onclick="toggleAcc('row2')" onkeydown="if ((event.key === 'Enter' || event.key === ' ') && event.target === this) { event.preventDefault(); toggleAcc('row2'); }">
                     <div class="acc-title"><span class="acc-icon">▼</span> 2. Comparison: Supplier vs FastX Content</div>
                     <div class="view-toggle" onclick="event.stopPropagation();">
                         <button class="toggle-btn active" id="btn-v-row2" onclick="setView('row2', 'visual')">Visual</button>
@@ -182,10 +184,10 @@
                     <div class="plan-selector-container">
                         <div class="plan-selector-label"><span>⚡ Select FastX Content Tier:</span></div>
                         <div class="plan-chips">
-                            <div class="plan-chip active" id="chip-bronze" onclick="selectPlan('bronze')">🥉 Bronze</div>
-                            <div class="plan-chip" id="chip-silver" onclick="selectPlan('silver')">🥈 Silver</div>
-                            <div class="plan-chip" id="chip-gold" onclick="selectPlan('gold')">🥇 Gold</div>
-                            <div class="plan-chip" id="chip-bolts" onclick="selectPlan('bolts')">⚙️ Bolts-On</div>
+                            <div class="plan-chip active" id="chip-bronze" role="button" tabindex="0" aria-pressed="true" onclick="selectPlan('bronze')" onkeydown="if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); selectPlan('bronze'); }">🥉 Bronze</div>
+                            <div class="plan-chip" id="chip-silver" role="button" tabindex="0" aria-pressed="false" onclick="selectPlan('silver')" onkeydown="if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); selectPlan('silver'); }">🥈 Silver</div>
+                            <div class="plan-chip" id="chip-gold" role="button" tabindex="0" aria-pressed="false" onclick="selectPlan('gold')" onkeydown="if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); selectPlan('gold'); }">🥇 Gold</div>
+                            <div class="plan-chip" id="chip-bolts" role="button" tabindex="0" aria-pressed="false" onclick="selectPlan('bolts')" onkeydown="if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); selectPlan('bolts'); }">⚙️ Bolts-On</div>
                         </div>
                     </div>
 
@@ -424,8 +426,8 @@
                 return obj.map(item => filterZhNodes(item, keepZh));
             }
             const copy = {};
-            for (let key in obj) {
-                if (obj.hasOwnProperty(key)) {
+            for (const key in obj) {
+                if (Object.prototype.hasOwnProperty.call(obj, key)) {
                     copy[key] = filterZhNodes(obj[key], keepZh);
                 }
             }
@@ -483,21 +485,21 @@
                 const sup = data.suppliers[key];
                 const isSelected = selectedSupplierKey === key;
 
-                const hotelNameVal = sup.hotelName ? sup.hotelName : '<span class="not-available-badge">hotelName = "No available"</span>';
-                const chainVal = sup.chain ? sup.chain : '<span class="not-available-badge">chainCode = "No available"</span>';
-                const addressVal = sup.address ? sup.address : '<span class="not-available-badge">location.address = "No available"</span>';
-                const cardTypesVal = sup.cardTypes ? (Array.isArray(sup.cardTypes) ? sup.cardTypes.join(', ') : sup.cardTypes) : '<span class="not-available-badge">cardTypes = "No available"</span>';
-                const checkInVal = sup.checkIn ? sup.checkIn : '<span class="not-available-badge">checkIn = "No available"</span>';
-                const checkOutVal = sup.checkOut ? sup.checkOut : '<span class="not-available-badge">checkOut = "No available"</span>';
-                const contactVal = sup.contact ? sup.contact : '<span class="not-available-badge">contact = "No available"</span>';
-                const descVal = sup.desc ? sup.desc : '<span class="not-available-badge">descriptions = "No available"</span>';
-                const amenitiesVal = sup.amenities ? sup.amenities.join(', ') : '<span class="not-available-badge">allAmenities = "No available"</span>';
+                const hotelNameVal = sup.hotelName ? sup.hotelName : '<span class="not-available-badge">hotelName = "Not available"</span>';
+                const chainVal = sup.chain ? sup.chain : '<span class="not-available-badge">chainCode = "Not available"</span>';
+                const addressVal = sup.address ? sup.address : '<span class="not-available-badge">location.address = "Not available"</span>';
+                const cardTypesVal = sup.cardTypes ? (Array.isArray(sup.cardTypes) ? sup.cardTypes.join(', ') : sup.cardTypes) : '<span class="not-available-badge">cardTypes = "Not available"</span>';
+                const checkInVal = sup.checkIn ? sup.checkIn : '<span class="not-available-badge">checkIn = "Not available"</span>';
+                const checkOutVal = sup.checkOut ? sup.checkOut : '<span class="not-available-badge">checkOut = "Not available"</span>';
+                const contactVal = sup.contact ? sup.contact : '<span class="not-available-badge">contact = "Not available"</span>';
+                const descVal = sup.desc ? sup.desc : '<span class="not-available-badge">descriptions = "Not available"</span>';
+                const amenitiesVal = sup.amenities ? sup.amenities.join(', ') : '<span class="not-available-badge">allAmenities = "Not available"</span>';
 
-                let imagesHTML = '<span class="not-available-badge">medias = "No available"</span>';
+                let imagesHTML = '<span class="not-available-badge">medias = "Not available"</span>';
                 if (sup.images && sup.images.length > 0) {
                     const visibleImages = sup.images.slice(0, 5);
                     const remainingCount = sup.images.length - visibleImages.length;
-                    const remainingBadge = remainingCount > 0 ? `<span style="font-size:0.75rem; font-weight:700; color:var(--tx-blue-500); padding-left:4px;">+${remainingCount} más</span>` : '';
+                    const remainingBadge = remainingCount > 0 ? `<span style="font-size:0.75rem; font-weight:700; color:var(--tx-blue-500); padding-left:4px;">+${remainingCount} more</span>` : '';
                     imagesHTML = `
                         <div class="gallery-mini">
                             ${visibleImages.map(img => `<img src="${img}" alt="Hotel Media">`).join('')}
@@ -507,7 +509,7 @@
                 }
 
                 grid.innerHTML += `
-                    <div class="sup-card ${isSelected ? 'selected' : ''}" onclick="selectSupplier('${key}')">
+                    <div class="sup-card ${isSelected ? 'selected' : ''}" role="button" tabindex="0" aria-pressed="${isSelected}" onclick="selectSupplier('${key}')" onkeydown="if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); selectSupplier('${key}'); }">
                         <div class="sup-name">${sup.name}</div>
                         <div><span class="sup-code">Code: ${sup.code}</span></div>
                         <div class="sup-details">
@@ -539,17 +541,17 @@
             const sup = data.suppliers[selectedSupplierKey];
             const supPane = document.getElementById('compSupVis');
 
-            const hotelNameVal = sup.hotelName ? sup.hotelName : '<span class="not-available-badge">hotelName = "No available"</span>';
-            const chainVal = sup.chain ? sup.chain : '<span class="not-available-badge">chainCode = "No available"</span>';
-            const addressVal = sup.address ? sup.address : '<span class="not-available-badge">location.address = "No available"</span>';
-            const cardTypesVal = sup.cardTypes ? (Array.isArray(sup.cardTypes) ? sup.cardTypes.join(', ') : sup.cardTypes) : '<span class="not-available-badge">cardTypes = "No available"</span>';
-            const checkInVal = sup.checkIn ? sup.checkIn : '<span class="not-available-badge">checkIn = "No available"</span>';
-            const checkOutVal = sup.checkOut ? sup.checkOut : '<span class="not-available-badge">checkOut = "No available"</span>';
-            const contactVal = sup.contact ? sup.contact : '<span class="not-available-badge">contact = "No available"</span>';
-            const descVal = sup.desc ? sup.desc : '<span class="not-available-badge">descriptions = "No available"</span>';
-            const amenitiesVal = sup.amenities ? sup.amenities.join(', ') : '<span class="not-available-badge">allAmenities = "No available"</span>';
+            const hotelNameVal = sup.hotelName ? sup.hotelName : '<span class="not-available-badge">hotelName = "Not available"</span>';
+            const chainVal = sup.chain ? sup.chain : '<span class="not-available-badge">chainCode = "Not available"</span>';
+            const addressVal = sup.address ? sup.address : '<span class="not-available-badge">location.address = "Not available"</span>';
+            const cardTypesVal = sup.cardTypes ? (Array.isArray(sup.cardTypes) ? sup.cardTypes.join(', ') : sup.cardTypes) : '<span class="not-available-badge">cardTypes = "Not available"</span>';
+            const checkInVal = sup.checkIn ? sup.checkIn : '<span class="not-available-badge">checkIn = "Not available"</span>';
+            const checkOutVal = sup.checkOut ? sup.checkOut : '<span class="not-available-badge">checkOut = "Not available"</span>';
+            const contactVal = sup.contact ? sup.contact : '<span class="not-available-badge">contact = "Not available"</span>';
+            const descVal = sup.desc ? sup.desc : '<span class="not-available-badge">descriptions = "Not available"</span>';
+            const amenitiesVal = sup.amenities ? sup.amenities.join(', ') : '<span class="not-available-badge">allAmenities = "Not available"</span>';
 
-            let imagesHTML = '<span class="not-available-badge">medias = "No available"</span>';
+            let imagesHTML = '<span class="not-available-badge">medias = "Not available"</span>';
             if (sup.images && sup.images.length > 0) {
                 imagesHTML = `<div class="big-gallery">${sup.images.slice(0, 6).map(img => `<img src="${img}" alt="Hotel Media">`).join('')}</div>`;
             }
@@ -740,16 +742,23 @@
 
         function selectPlan(plan) {
             selectedPlanKey = plan;
-            document.querySelectorAll('.plan-chip').forEach(c => c.classList.remove('active', 'active-gold'));
+            document.querySelectorAll('.plan-chip').forEach(c => {
+                c.classList.remove('active', 'active-gold');
+                c.setAttribute('aria-pressed', 'false');
+            });
             const activeChip = document.getElementById(`chip-${plan}`);
             if (plan === 'gold') activeChip.classList.add('active-gold');
             else activeChip.classList.add('active');
+            activeChip.setAttribute('aria-pressed', 'true');
             renderRow2Visual();
             renderRow2Json();
         }
 
         function toggleAcc(id) {
-            document.getElementById(id).classList.toggle('open');
+            const acc = document.getElementById(id);
+            const isOpen = acc.classList.toggle('open');
+            const header = acc.querySelector('.acc-header');
+            if (header) header.setAttribute('aria-expanded', String(isOpen));
         }
 
         function setView(rowId, view) {

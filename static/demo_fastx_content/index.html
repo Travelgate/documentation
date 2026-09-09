@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +19,6 @@
             --tx-neutral-100: #f1f5f9;
             --tx-white: #ffffff;
             --tx-accent-gold: #FFB81C;
-            --tx-success: #10B981;
             --tx-danger: #EF4444;
             --bg-body: #f8fafc;
             --border-color: #e2e8f0;
@@ -42,11 +41,11 @@
         }
         .logo-area { display: flex; align-items: center; gap: 12px; }
         header h1 { font-size: 1.4rem; font-weight: 900; color: var(--tx-blue-900); }
-        .badge-fx { 
+        .badge-fx {
             background-color: var(--tx-blue-100); color: var(--tx-blue-700);
-            border: 1px solid var(--tx-blue-300); padding: 4px 10px; 
+            border: 1px solid var(--tx-blue-300); padding: 4px 10px;
             border-radius: 4px; font-size: 0.7rem; font-weight: 700;
-            text-transform: uppercase; 
+            text-transform: uppercase;
         }
 
         .dashboard { display: grid; grid-template-columns: 280px 1fr; flex: 1; }
@@ -102,7 +101,7 @@
         .info-block { margin-bottom: 15px; }
         .info-label { font-size: 0.7rem; font-weight: 700; color: var(--tx-neutral-500); text-transform: uppercase; margin-bottom: 4px;}
         .info-val { font-size: 0.85rem; color: var(--tx-neutral-900); line-height: 1.6; white-space: pre-line; }
-        
+
         .tags-container { display: flex; flex-wrap: wrap; gap: 6px; }
         .tag { font-size: 0.7rem; padding: 3px 8px; border-radius: 4px; background: var(--tx-neutral-100); border: 1px solid var(--border-color); font-weight: 600;}
         .tag.gold { background: rgba(255, 184, 28, 0.15); border-color: rgba(255, 184, 28, 0.4); color: #B27B00; }
@@ -158,7 +157,7 @@
                         <button class="toggle-btn" id="btn-j-row1" onclick="setView('row1', 'json')">JSON</button>
                     </div>
                 </div>
-                
+
                 <div class="acc-body" id="body-row1">
                     <div class="visual-view" id="vis-row1">
                         <div class="suppliers-grid" id="suppliersGrid"></div>
@@ -178,7 +177,7 @@
                         <button class="toggle-btn" id="btn-j-row2" onclick="setView('row2', 'json')">JSON</button>
                     </div>
                 </div>
-                
+
                 <div class="acc-body" id="body-row2">
                     <div class="plan-selector-container">
                         <div class="plan-selector-label"><span>⚡ Select FastX Content Tier:</span></div>
@@ -438,9 +437,9 @@
             let cloned = JSON.parse(JSON.stringify(rawFastXMasterJson));
             const keepZh = (planKey === 'bolts');
             cloned = filterZhNodes(cloned, keepZh);
-            
+
             const hotelNode = cloned.data.hotelX.hotels.edges[0].node.hotelData;
-            
+
             if (planKey === 'bronze') {
                 delete hotelNode.rooms;
             } else if (planKey === 'gold' || planKey === 'bolts') {
@@ -483,7 +482,7 @@
             Object.keys(data.suppliers).forEach(key => {
                 const sup = data.suppliers[key];
                 const isSelected = selectedSupplierKey === key;
-                
+
                 const hotelNameVal = sup.hotelName ? sup.hotelName : '<span class="not-available-badge">hotelName = "No available"</span>';
                 const chainVal = sup.chain ? sup.chain : '<span class="not-available-badge">chainCode = "No available"</span>';
                 const addressVal = sup.address ? sup.address : '<span class="not-available-badge">location.address = "No available"</span>';
@@ -530,16 +529,16 @@
         function renderRow1Json() {
             const container = document.getElementById('jsonColumnsRow1');
             container.innerHTML = `
-                <div class="json-col"><div class="json-col-title">DARINA B2B (hotel_AE114_Suppier_DRNPRV.txt)</div><pre>${JSON.stringify(rawDarinaJson, null, 2)}</pre></div>
-                <div class="json-col"><div class="json-col-title">FLY (hotel_AE114_Suppier_FLY.txt)</div><pre>${JSON.stringify(rawFlyJson, null, 2)}</pre></div>
-                <div class="json-col"><div class="json-col-title">TRAVELLANDA (hotel_AE114_Suppier_TLD.txt)</div><pre>${JSON.stringify(rawTldJson, null, 2)}</pre></div>
+                <div class="json-col"><div class="json-col-title">DARINA B2B (hotel_AE114_Supplier_DRNPRV.txt)</div><pre>${JSON.stringify(rawDarinaJson, null, 2)}</pre></div>
+                <div class="json-col"><div class="json-col-title">FLY (hotel_AE114_Supplier_FLY.txt)</div><pre>${JSON.stringify(rawFlyJson, null, 2)}</pre></div>
+                <div class="json-col"><div class="json-col-title">TRAVELLANDA (hotel_AE114_Supplier_TLD.txt)</div><pre>${JSON.stringify(rawTldJson, null, 2)}</pre></div>
             `;
         }
 
         function renderRow2Visual() {
             const sup = data.suppliers[selectedSupplierKey];
             const supPane = document.getElementById('compSupVis');
-            
+
             const hotelNameVal = sup.hotelName ? sup.hotelName : '<span class="not-available-badge">hotelName = "No available"</span>';
             const chainVal = sup.chain ? sup.chain : '<span class="not-available-badge">chainCode = "No available"</span>';
             const addressVal = sup.address ? sup.address : '<span class="not-available-badge">location.address = "No available"</span>';
@@ -573,7 +572,7 @@
 
             const fastxPane = document.getElementById('compFastXVis');
             const hData = rawFastXMasterJson.data.hotelX.hotels.edges[0].node.hotelData;
-            
+
             // PREPARE BLOCKS
             let topBannerHTML = '';
             let roomsHTML = '';
@@ -592,7 +591,7 @@
                         </div>
                     </div>
                 `;
-            } 
+            }
             // BOLTS-ON BANNER
             else if (selectedPlanKey === 'bolts') {
                 const chineseDesc = hData.descriptions[0].texts.find(t => t.language === 'zh').text;
@@ -619,7 +618,7 @@
                                 const enText = rm.texts.find(t => t.language === 'en').text;
                                 const zhText = rm.texts.find(t => t.language === 'zh');
                                 const nameDisplay = (selectedPlanKey === 'bolts' && zhText) ? `${enText} <br><span style="color:#166534;">(ZH: ${zhText.text})</span>` : enText;
-                                
+
                                 const enView = rm.views[0].texts.find(t => t.language === 'en').text;
                                 const zhView = rm.views[0].texts.find(t => t.language === 'zh');
                                 const viewDisplay = (selectedPlanKey === 'bolts' && zhView) ? `${enView} (ZH: ${zhView.text})` : enView;
@@ -706,11 +705,8 @@
             if (selectedPlanKey === 'silver') {
                 // SILVER ORDER: 1) Rooms FIRST, 2) Hotel Details
                 finalContentHTML = roomsHTML + hotelDetailsHTML;
-            } else if (selectedPlanKey === 'gold') {
-                // GOLD ORDER: 1) Personalization FIRST, 2) Hotel Details, 3) Rooms
-                finalContentHTML = topBannerHTML + hotelDetailsHTML + roomsHTML;
-            } else if (selectedPlanKey === 'bolts') {
-                // BOLTS-ON ORDER: 1) Translation Box FIRST, 2) Hotel Details (with ZH inline), 3) Rooms (with ZH inline)
+            } else if (selectedPlanKey === 'gold' || selectedPlanKey === 'bolts') {
+                // GOLD: personalization banner first. BOLTS-ON: ZH translation box first. Both then Hotel Details + Rooms.
                 finalContentHTML = topBannerHTML + hotelDetailsHTML + roomsHTML;
             } else {
                 // BRONZE ORDER: Hotel Details only
@@ -770,7 +766,7 @@
             } else {
                 visEl.style.display = 'none';
                 jsonEl.style.display = 'block';
-                btnV.classList.add('active');
+                btnV.classList.remove('active');
                 btnJ.classList.add('active');
             }
         }

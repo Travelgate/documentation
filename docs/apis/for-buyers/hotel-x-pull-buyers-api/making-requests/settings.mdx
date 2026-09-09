@@ -88,7 +88,7 @@ The API exposes two settings families:
 1. Read current settings first.
 2. Apply your update mutation.
 3. Read again to confirm the final values.
-:::
+   :::
 
 ### 1. Read Organization or Client defaults
 
@@ -236,4 +236,139 @@ In API schema, the field is `validatedDataOnly`. In API Settings UI and function
 
 :::info
 You can configure and adjust all these default settings at the [API Settings](/kb/platform/app-features/connections/api-settings) section on our website.
+:::
+
+## Overriding settings for a specific supplier in your request
+
+As explained above, any setting you send at the Query/Mutation level (for example, `currency` inside your `criteria`) takes priority over any default settings, regardless of the level at which they were configured.
+
+You can also go further and override some of these fields for a single supplier (or a single access of that supplier) using the `suppliers` field of the [`HotelSettingsInput`](/api/types/inputs/hotel-settings-input) (`settings`).
+
+:::danger Important
+A field sent in `criteria` (such as `currency`) is used for **every** supplier in the request and always wins, even over a `suppliers[]` override for that same field. The `suppliers[]` override for a given field only has an effect when that field is **not** sent in `criteria`.
+
+This means that if your system always sends `currency` in `criteria` and can't leave it empty, there's **no way** to force a different `currency` for a single supplier in that same request — the value in `criteria` will be sent to all suppliers regardless of any `suppliers[]` override.
+:::
+
+To force a different `currency` for one specific supplier, you must omit `currency` from `criteria` entirely, and set it individually via the `suppliers` field instead. Suppliers you don't list there will fall back to whatever default settings are configured for them (org/client/supplier/access level).
+
+:::warning
+Setting `suppliers[].settings` alone, without listing any `accesses`, has **no effect**. You must always include the `accesses` node for the override to be applied — either by setting the value per access, or by listing the accesses that should use the supplier-level value.
+:::
+
+For example, if you don't send `currency` in `criteria` and need supplier `HOTELTEST` to receive `USD` for one of its accesses and `BRL` for another, set `currency` inside each access' own `settings`:
+
+```js
+{
+    "criteriaSearch": {
+        "checkIn": "2026-10-28",
+        "checkOut": "2026-10-29",
+        "hotels": [
+            "BR1518"
+        ],
+        "occupancies": [
+            {
+                "paxes": [
+                    {
+                        "age": 30
+                    },
+                    {
+                        "age": 30
+                    }
+                ]
+            }
+        ],
+        "language": "es",
+        "nationality": "ES",
+        "markets": [
+            "ES"
+        ]
+    },
+    "settings": {
+        "client": "client_demo",
+        "timeout": 11000,
+        "suppliers": [
+            {
+                "code": "HOTELTEST",
+                "accesses": [
+                    {
+                        "accessId": "2",
+                        "settings": {
+                            "currency": "USD"
+                        }
+                    },
+                    {
+                        "accessId": "3",
+                        "settings": {
+                            "currency": "BRL"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}
+```
+
+Alternatively, if you want the **same** override to apply to every access of that supplier, you can set `currency` once in the supplier-level `settings`, but you still need to list those accesses under `accesses` (without repeating the setting on each one) for it to take effect:
+
+```js
+"settings": {
+    "client": "client_demo",
+    "timeout": 11000,
+    "suppliers": [
+        {
+            "code": "HOTELTEST",
+            "settings": {
+                "currency": "USD"
+            },
+            "accesses": [
+                { "accessId": "2" },
+                { "accessId": "3" }
+            ]
+        }
+    ]
+}
+```
+
+Both approaches can be combined and used for multiple suppliers within the same `suppliers` array — for example, a shared `currency` for all accesses of one supplier, and a specific `currency` for a single access of another supplier:
+
+```js
+"settings": {
+    "client": "client_demo",
+    "timeout": 11000,
+    "suppliers": [
+        {
+            "code": "HOTELTEST",
+            "settings": {
+                "currency": "BRL"
+            },
+            "accesses": [
+                { "accessId": "2" },
+                { "accessId": "3" }
+            ]
+        },
+        {
+            "code": "TTHOTTEST",
+            "accesses": [
+                {
+                    "accessId": "5647",
+                    "settings": {
+                        "currency": "EUR"
+                    }
+                }
+            ]
+        }
+    ]
+}
+```
+
+Each entry in `suppliers` ([`HotelXSupplierInput`](/api/types/inputs/hotel-xsupplier-input)) is made up of:
+
+- `code` (mandatory): the code of the supplier the override applies to.
+- `settings`: the values to override for all the listed `accesses` of that supplier, unless a given access defines its own `settings`. It accepts `currency`.
+- `accesses`: the accesses of that supplier the override applies to. **This is required** — without it, `suppliers[].settings` is ignored. Each access can optionally define its own `settings`, which takes precedence over the supplier-level `settings` for that access only.
+
+:::info
+Supplier and access-level settings sent this way overwrite default settings, following this priority: access `settings` > supplier `settings` > default settings (Access > Supplier > Client > Organization). None of these levels can override a field also present in `criteria`/request-level `settings`, since that value is used for the whole request.
 :::

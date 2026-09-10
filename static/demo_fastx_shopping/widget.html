@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FastX Aggregation Widget</title>
+  <style>
+    :root {
+      --bg: #f4f8ff;
+      --panel: #ffffff;
+      --stroke: #d6e4f5;
+      --text: #12335a;
+      --muted: #5f7899;
+      --brand-blue: #0077d8;
+      --brand-cyan: #00a8e8;
+      --ok: #0bbf7b;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Space Grotesk", "Segoe UI", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      padding: 10px;
+    }
+
+    .widget {
+      border: 1px solid rgba(0, 119, 216, 0.14);
+      border-radius: 16px;
+      background: linear-gradient(145deg, #ffffff, #f8fbff);
+      box-shadow: 0 10px 32px rgba(13, 52, 95, 0.08);
+      overflow: hidden;
+    }
+
+    .head {
+      padding: 10px 14px;
+      border-bottom: 1px solid rgba(0, 119, 216, 0.15);
+      background: linear-gradient(135deg, rgba(0, 168, 232, 0.1), rgba(0, 119, 216, 0.07));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .badge {
+      border: 1px solid rgba(11, 191, 123, 0.35);
+      background: rgba(11, 191, 123, 0.12);
+      color: #0b7a53;
+      font-size: 0.66rem;
+      border-radius: 999px;
+      padding: 4px 9px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .body {
+      padding: 10px;
+      display: grid;
+      gap: 10px;
+    }
+
+    /* Aggregation key: one inline row of chips */
+    .aggregation-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      border: 1px solid rgba(0, 119, 216, 0.2);
+      border-radius: 10px;
+      background: linear-gradient(135deg, #f8fbff, #f0f7ff);
+      padding: 8px 10px;
+    }
+
+    .aggregation-bar .agg-label {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-right: 2px;
+      white-space: nowrap;
+    }
+
+    .agg-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #ffffff;
+      border: 1px solid rgba(0, 119, 216, 0.16);
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 0.74rem;
+      color: #3c587b;
+      font-weight: 600;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.15s ease;
+    }
+
+    .agg-chip.active {
+      background: rgba(0, 168, 232, 0.12);
+      border-color: var(--brand-cyan);
+      color: #0d6ea8;
+    }
+
+    .agg-chip input {
+      display: none;
+    }
+
+    /* Suppliers: always 3 compact columns */
+    .supplier-controls {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .supplier-card {
+      background: var(--panel);
+      border: 2px solid var(--stroke);
+      border-radius: 10px;
+      padding: 8px;
+      transition: all 0.25s ease;
+      min-width: 0;
+    }
+
+    .supplier-card.winner {
+      border-color: rgba(11, 191, 123, 0.5);
+      background: linear-gradient(135deg, #ffffff, rgba(11, 191, 123, 0.03));
+    }
+
+    .supplier-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    .supplier-name {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .price {
+      font-family: "IBM Plex Mono", monospace;
+      color: var(--brand-blue);
+      font-size: 0.84rem;
+      white-space: nowrap;
+    }
+
+    .supplier-meta {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.66rem;
+      color: #557094;
+      line-height: 1.6;
+      background: #f8fbff;
+      border: 1px solid rgba(0, 119, 216, 0.1);
+      padding: 6px 8px;
+      border-radius: 7px;
+      margin-bottom: 7px;
+      overflow: hidden;
+    }
+
+    .supplier-meta b {
+      color: #1d4776;
+      font-weight: 700;
+    }
+
+    .range-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      min-width: 0;
+      height: 5px;
+      appearance: none;
+      background: linear-gradient(90deg, rgba(0,119,216,0.18), rgba(0,168,232,0.12));
+      border-radius: 999px;
+      cursor: pointer;
+      accent-color: var(--brand-blue);
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      appearance: none;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(135deg, var(--brand-blue), var(--brand-cyan));
+      box-shadow: 0 2px 8px rgba(0,119,216,0.35);
+    }
+
+    input[type="range"]::-moz-range-thumb {
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(135deg, var(--brand-blue), var(--brand-cyan));
+      box-shadow: 0 2px 8px rgba(0,119,216,0.35);
+    }
+
+    .range-value {
+      font-size: 0.72rem;
+      color: var(--muted);
+      min-width: 34px;
+      text-align: right;
+      font-family: "IBM Plex Mono", monospace;
+    }
+
+    /* Comparison: always 2 columns */
+    .compare {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .pane {
+      border: 2px solid var(--stroke);
+      border-radius: 10px;
+      background: var(--panel);
+      padding: 10px;
+      display: grid;
+      gap: 8px;
+      min-width: 0;
+    }
+
+    .pane.fastx {
+      border-color: rgba(11,191,123,0.35);
+      background: linear-gradient(135deg, #ffffff, rgba(11,191,123,0.03));
+    }
+
+    .pane h3 {
+      margin: 0;
+      font-size: 0.86rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      font-size: 0.62rem;
+      border-radius: 999px;
+      padding: 4px 9px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-family: "IBM Plex Mono", monospace;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .tag.bad {
+      background: rgba(232,91,102,0.1);
+      color: #a23a45;
+      border: 1px solid rgba(232,91,102,0.28);
+    }
+
+    .tag.good {
+      background: rgba(11,191,123,0.1);
+      color: #0c6d4f;
+      border: 1px solid rgba(11,191,123,0.35);
+    }
+
+    .stats {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .chip {
+      flex: 1;
+      min-width: 90px;
+      border: 1px solid var(--stroke);
+      border-radius: 8px;
+      padding: 6px 9px;
+      background: #f8fbff;
+      text-align: center;
+    }
+
+    .k {
+      font-size: 0.58rem;
+      color: #6d84a3;
+      font-family: "IBM Plex Mono", monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-weight: 600;
+    }
+
+    .v {
+      margin-top: 2px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    .option-list {
+      display: grid;
+      gap: 6px;
+    }
+
+    .option {
+      border: 1px solid var(--stroke);
+      border-radius: 8px;
+      padding: 8px 10px;
+      background: linear-gradient(135deg, #f9fcff, #f3f8ff);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .option.winner {
+      border-color: rgba(11,191,123,0.45);
+      background: linear-gradient(135deg, rgba(11,191,123,0.08), rgba(11,191,123,0.04));
+    }
+
+    .option-content {
+      min-width: 0;
+    }
+
+    .option strong {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 1px;
+    }
+
+    .option span {
+      color: #617c9f;
+      font-size: 0.68rem;
+      line-height: 1.4;
+      display: block;
+    }
+
+    .price-big {
+      font-family: "IBM Plex Mono", monospace;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--brand-blue);
+      white-space: nowrap;
+    }
+
+    .fastx-win-detail {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: 2px;
+    }
+
+    .fastx-detail-item {
+      background: rgba(255,255,255,0.75);
+      border: 1px solid rgba(11,191,123,0.2);
+      border-radius: 6px;
+      padding: 4px 8px;
+      font-size: 0.64rem;
+      font-family: "IBM Plex Mono", monospace;
+      color: #1d4776;
+      white-space: nowrap;
+    }
+
+    .fastx-detail-item .label {
+      color: #0d6d53;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-weight: 700;
+    }
+
+    /* JSON payloads folded behind toggles */
+    details.json-toggle {
+      border: 1px solid var(--stroke);
+      border-radius: 10px;
+      background: #f8fbff;
+      overflow: hidden;
+    }
+
+    details.json-toggle summary {
+      cursor: pointer;
+      padding: 8px 12px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: #3c587b;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    details.json-toggle summary::before {
+      content: "▸";
+      font-size: 0.7rem;
+      transition: transform 0.15s ease;
+    }
+
+    .disclaimer {
+      font-size: 0.68rem;
+      color: #8a6d1d;
+      background: rgba(255, 184, 0, 0.07);
+      border: 1px solid rgba(255, 184, 0, 0.22);
+      border-radius: 8px;
+      padding: 7px 10px;
+      line-height: 1.45;
+    }
+
+    details.json-toggle[open] summary::before {
+      transform: rotate(90deg);
+    }
+
+    .json-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      padding: 0 10px 10px;
+    }
+
+    .json-title {
+      font-size: 0.62rem;
+      color: #5f7899;
+      letter-spacing: 0.06em;
+      font-family: "IBM Plex Mono", monospace;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    pre {
+      margin: 0;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.66rem;
+      line-height: 1.45;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #1a2f4a, #0f2744);
+      color: #a0c9ff;
+      padding: 8px;
+      overflow: auto;
+      max-height: 260px;
+    }
+
+    /* Only stack on very narrow screens */
+    @media (max-width: 560px) {
+      .supplier-controls,
+      .compare,
+      .json-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="widget">
+    <div class="head">
+      <h2 class="title">⚡ FastX Aggregation</h2>
+      <span class="badge">Interactive Demo</span>
+    </div>
+
+    <div class="body">
+      <div class="aggregation-bar" id="aggregation-controls"></div>
+      <div class="supplier-controls" id="supplier-controls"></div>
+
+      <div class="compare">
+        <article class="pane">
+          <h3>
+            <span>❌ Without FastX</span>
+            <span class="tag bad">raw output</span>
+          </h3>
+          <div class="stats" id="stats-raw"></div>
+          <div class="option-list" id="raw-options"></div>
+        </article>
+
+        <article class="pane fastx">
+          <h3>
+            <span>✅ With FastX</span>
+            <span class="tag good">optimized</span>
+          </h3>
+          <div class="stats" id="stats-fastx"></div>
+          <div class="option-list" id="fastx-option"></div>
+        </article>
+      </div>
+
+      <details class="json-toggle" id="json-toggle">
+        <summary>🔍 View HotelX Search JSON response</summary>
+        <div class="json-grid">
+          <div>
+            <div class="json-title">Without FastX Codes</div>
+            <pre id="json-raw"></pre>
+          </div>
+          <div>
+            <div class="json-title">With FastX Unified Model</div>
+            <pre id="json-fastx"></pre>
+          </div>
+        </div>
+      </details>
+
+      <div class="disclaimer">
+        <strong>Disclaimer:</strong> Simplified interactive demo for illustration only. Sample data is fictional — not a production payload or a live supplier response.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const aggregationFields = [
+      { key: "hotel", label: "hotel", defaultSelected: true },
+      { key: "board", label: "board", defaultSelected: true },
+      { key: "room", label: "room", defaultSelected: true },
+      { key: "refundable", label: "refundable", defaultSelected: false },
+      { key: "binding", label: "binding", defaultSelected: false },
+      { key: "currency", label: "currency", defaultSelected: false },
+      { key: "paymentType", label: "payment type", defaultSelected: false }
+    ];
+
+    let selectedAggregationKeys = aggregationFields
+      .filter((field) => field.defaultSelected)
+      .map((field) => field.key);
+
+    const suppliers = [
+      {
+        name: "Supplier A",
+        color: "#0088f0",
+        hotelCode: "SPA-8812",
+        roomCode: "Sea View DBL (BB BAR)",
+        boardCode: "RO",
+        refundable: true,
+        binding: false,
+        currency: "EUR",
+        paymentType: "MERCHANT",
+        price: 136
+      },
+      {
+        name: "Supplier B",
+        color: "#00b89a",
+        hotelCode: "SPB-A6F5",
+        roomCode: "DOUBLE SEA VIEW",
+        boardCode: "ROOM_ONLY",
+        refundable: false,
+        binding: true,
+        currency: "EUR",
+        paymentType: "DIRECT",
+        price: 122
+      },
+      {
+        name: "Supplier C",
+        color: "#ff9a56",
+        hotelCode: "SPC-992",
+        roomCode: "Dbl Rm, sea view",
+        boardCode: "2234",
+        refundable: true,
+        binding: false,
+        currency: "EUR",
+        paymentType: "MERCHANT",
+        price: 128
+      }
+    ];
+
+    const fastxMaster = {
+      hotelCode: "AE114",
+      hotelName: "Hotel Riu Plaza Espana",
+      roomCode: "str--AA--d--",
+      roomDesc: "Standard Double Room Sea View",
+      boardCode: "RO"
+    };
+
+    function getSupplierCode(supplierName) {
+      if (supplierName === "Supplier A") return "SUPA";
+      if (supplierName === "Supplier B") return "SUPB";
+      return "SUPC";
+    }
+
+    function getAccessCode(supplierName) {
+      if (supplierName === "Supplier A") return "A-12A";
+      if (supplierName === "Supplier B") return "A-28B";
+      return "A-41C";
+    }
+
+    function yesNo(value) {
+      return value ? "Yes" : "No";
+    }
+
+    function euro(value) {
+      return "€" + value + ".00";
+    }
+
+    function setJson(id, obj) {
+      document.getElementById(id).textContent = JSON.stringify(obj, null, 2);
+    }
+
+    function getAggregationValue(supplier, key) {
+      if (key === "hotel") return fastxMaster.hotelCode;
+      if (key === "board") return fastxMaster.boardCode;
+      if (key === "room") return fastxMaster.roomCode;
+      if (key === "refundable") return supplier.refundable;
+      if (key === "binding") return supplier.binding;
+      if (key === "currency") return supplier.currency;
+      if (key === "paymentType") return supplier.paymentType;
+      return "";
+    }
+
+    function buildAggregationSignature(supplier) {
+      return selectedAggregationKeys
+        .map((key) => key + ":" + String(getAggregationValue(supplier, key)).toLowerCase())
+        .join("|");
+    }
+
+    function getWinningGroups() {
+      const groups = {};
+
+      suppliers.forEach((supplier) => {
+        const signature = buildAggregationSignature(supplier);
+        const values = {};
+        selectedAggregationKeys.forEach((key) => {
+          values[key] = getAggregationValue(supplier, key);
+        });
+
+        if (!groups[signature]) {
+          groups[signature] = {
+            signature,
+            values,
+            candidates: [],
+            winner: supplier
+          };
+        }
+
+        groups[signature].candidates.push(supplier);
+        if (supplier.price < groups[signature].winner.price) {
+          groups[signature].winner = supplier;
+        }
+      });
+
+      return Object.values(groups).sort((a, b) => a.winner.price - b.winner.price);
+    }
+
+    function getWinningSuppliers() {
+      return new Set(getWinningGroups().map((group) => group.winner));
+    }
+
+    function updatePrice(index, value) {
+      suppliers[index].price = Number(value);
+      const winningSuppliers = getWinningSuppliers();
+      const cards = document.querySelectorAll("#supplier-controls .supplier-card");
+
+      // Update only what changes so the slider drag stays fluid
+      cards.forEach((card, i) => {
+        const supplier = suppliers[i];
+        const isWinner = winningSuppliers.has(supplier);
+        card.classList.toggle("winner", isWinner);
+        card.querySelector(".price").textContent = euro(supplier.price);
+        card.querySelector(".range-value").textContent = "€" + supplier.price;
+        const name = card.querySelector(".supplier-name span:last-child");
+        if (name) name.textContent = supplier.name + (isWinner ? " 🏆" : "");
+      });
+
+      renderBookingComparison();
+      notifyHeight();
+    }
+
+    function toggleAggregationKey(key) {
+      const idx = selectedAggregationKeys.indexOf(key);
+      if (idx >= 0) {
+        selectedAggregationKeys.splice(idx, 1);
+      } else {
+        selectedAggregationKeys.push(key);
+      }
+      if (selectedAggregationKeys.length === 0) {
+        selectedAggregationKeys = ["hotel", "board", "room"];
+      }
+      render();
+    }
+
+    function renderAggregationControls() {
+      const wrapper = document.getElementById("aggregation-controls");
+
+      wrapper.innerHTML = `
+        <span class="agg-label">🧩 Aggregation key:</span>
+        ${aggregationFields.map((field) => `
+          <label class="agg-chip ${selectedAggregationKeys.includes(field.key) ? "active" : ""}">
+            <input
+              type="checkbox"
+              data-aggregation-key="${field.key}"
+              ${selectedAggregationKeys.includes(field.key) ? "checked" : ""}
+              onchange="toggleAggregationKey('${field.key}')"
+            />
+            <span>${field.label}</span>
+          </label>
+        `).join("")}
+      `;
+    }
+
+    function renderSupplierControls() {
+      const wrapper = document.getElementById("supplier-controls");
+      const winningSuppliers = getWinningSuppliers();
+
+      wrapper.innerHTML = suppliers.map((supplier, index) => {
+        const isWinner = winningSuppliers.has(supplier);
+        return `
+          <div class="supplier-card ${isWinner ? "winner" : ""}">
+            <div class="supplier-title">
+              <div class="supplier-name">
+                <span class="dot" style="background:${supplier.color}; box-shadow: 0 0 8px ${supplier.color};"></span>
+                <span>${supplier.name}${isWinner ? " 🏆" : ""}</span>
+              </div>
+              <span class="price">${euro(supplier.price)}</span>
+            </div>
+            <div class="supplier-meta">
+              ${supplier.hotelCode} · ${supplier.boardCode}<br>
+              ${supplier.roomCode}<br>
+              Ref: <b>${yesNo(supplier.refundable)}</b> · Bind: <b>${yesNo(supplier.binding)}</b> · <b>${supplier.paymentType}</b> · <b>${supplier.currency}</b>
+            </div>
+            <div class="range-row">
+              <input type="range" min="80" max="180" value="${supplier.price}" oninput="updatePrice(${index}, this.value)">
+              <span class="range-value">€${supplier.price}</span>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function renderBookingComparison() {
+      const winningGroups = getWinningGroups();
+      const sortedRaw = [...suppliers].sort((a, b) => a.price - b.price);
+
+      const rawList = sortedRaw.map((supplier) => `
+        <div class="option">
+          <div class="option-content">
+            <strong>${supplier.hotelCode} — ${supplier.name}</strong>
+            <span>${supplier.roomCode} · ${supplier.boardCode} · Ref: ${yesNo(supplier.refundable)} · Bind: ${yesNo(supplier.binding)} · ${supplier.paymentType}</span>
+          </div>
+          <div class="price-big">${euro(supplier.price)}</div>
+        </div>
+      `).join("");
+
+      const fastxList = winningGroups.map((group, index) => {
+        const winner = group.winner;
+        const groupingText = selectedAggregationKeys
+          .map((key) => key + ": " + group.values[key])
+          .join(" · ");
+
+        return `
+          <div class="option winner">
+            <div class="option-content">
+              <strong>${fastxMaster.hotelCode} — ${winner.name} 🏆</strong>
+              <span>Group ${index + 1} · ${group.candidates.length} candidate${group.candidates.length > 1 ? "s" : ""} · ${groupingText}</span>
+            </div>
+            <div class="price-big">${euro(winner.price)}</div>
+          </div>
+          <div class="fastx-win-detail">
+            <div class="fastx-detail-item"><span class="label">hotel</span> ${fastxMaster.hotelCode}</div>
+            <div class="fastx-detail-item"><span class="label">room</span> ${fastxMaster.roomCode}</div>
+            <div class="fastx-detail-item"><span class="label">board</span> ${fastxMaster.boardCode}</div>
+            <div class="fastx-detail-item"><span class="label">ref</span> ${yesNo(winner.refundable)}</div>
+            <div class="fastx-detail-item"><span class="label">bind</span> ${yesNo(winner.binding)}</div>
+            <div class="fastx-detail-item"><span class="label">pay</span> ${winner.paymentType}</div>
+            <div class="fastx-detail-item"><span class="label">curr</span> ${winner.currency}</div>
+          </div>
+        `;
+      }).join("");
+
+      document.getElementById("raw-options").innerHTML = rawList;
+      document.getElementById("fastx-option").innerHTML = fastxList;
+
+      document.getElementById("stats-raw").innerHTML = `
+        <div class="chip"><div class="k">Options</div><div class="v">${suppliers.length}</div></div>
+        <div class="chip"><div class="k">Result</div><div class="v">Noisy</div></div>
+      `;
+
+      document.getElementById("stats-fastx").innerHTML = `
+        <div class="chip"><div class="k">Options</div><div class="v">${winningGroups.length}</div></div>
+        <div class="chip"><div class="k">Key</div><div class="v">${selectedAggregationKeys.join(" + ")}</div></div>
+        <div class="chip"><div class="k">Result</div><div class="v">Optimized ✓</div></div>
+      `;
+
+      const rawPayload = {
+        data: {
+          hotelX: {
+            search: {
+              options: sortedRaw.map((supplier, index) => ({
+                id: `opt-${index + 1}`,
+                accessCode: `A-${index + 1}2${index + 9}`,
+                supplierCode: getSupplierCode(supplier.name),
+                hotelCode: supplier.hotelCode,
+                hotelName: fastxMaster.hotelName,
+                boardCode: supplier.boardCode,
+                paymentType: supplier.paymentType,
+                binding: supplier.binding,
+                status: "OK",
+                rooms: [
+                  {
+                    occupancyRefId: 1,
+                    code: supplier.roomCode,
+                    description: supplier.roomCode,
+                    refundable: supplier.refundable,
+                    binding: supplier.binding,
+                    pricing: {
+                      currency: supplier.currency,
+                      net: supplier.price,
+                      gross: supplier.price
+                    }
+                  }
+                ],
+                price: {
+                  currency: supplier.currency,
+                  net: supplier.price,
+                  gross: supplier.price
+                }
+              }))
+            }
+          }
+        }
+      };
+
+      const fxPayload = {
+        data: {
+          hotelX: {
+            search: {
+              aggregationSettings: {
+                strategy: "CHEAPEST_PRICE",
+                aggregationKey: selectedAggregationKeys.join(", ")
+              },
+              options: winningGroups.map((group, index) => {
+                const winner = group.winner;
+                return {
+                  id: `opt-fastx-${index + 1}-${winner.name.toLowerCase()}`,
+                  accessCode: getAccessCode(winner.name),
+                  supplierCode: getSupplierCode(winner.name),
+                  hotelCode: fastxMaster.hotelCode,
+                  hotelCodeSupplier: winner.hotelCode,
+                  hotelName: fastxMaster.hotelName,
+                  boardCode: fastxMaster.boardCode,
+                  boardCodeSupplier: winner.boardCode,
+                  paymentType: winner.paymentType,
+                  binding: winner.binding,
+                  status: "OK",
+                  rooms: [
+                    {
+                      occupancyRefId: 1,
+                      code: fastxMaster.roomCode,
+                      supplierCode: winner.roomCode,
+                      description: fastxMaster.roomDesc,
+                      descriptionSupplier: winner.roomCode,
+                      refundable: winner.refundable,
+                      binding: winner.binding,
+                      pricing: {
+                        currency: winner.currency,
+                        net: winner.price,
+                        gross: winner.price
+                      }
+                    }
+                  ],
+                  price: {
+                    currency: winner.currency,
+                    net: winner.price,
+                    gross: winner.price
+                  }
+                };
+              })
+            }
+          }
+        }
+      };
+
+      setJson("json-raw", rawPayload);
+      setJson("json-fastx", fxPayload);
+    }
+
+    function notifyHeight() {
+      if (window.parent && window.parent !== window) {
+        window.parent.postMessage({ type: "fastx-widget-height", height: document.body.scrollHeight }, "*");
+      }
+    }
+
+    function render() {
+      renderAggregationControls();
+      renderSupplierControls();
+      renderBookingComparison();
+      requestAnimationFrame(notifyHeight);
+    }
+
+    // Auto-height support: keep parent informed when JSON toggle opens/closes or window resizes
+    document.getElementById("json-toggle").addEventListener("toggle", notifyHeight);
+    window.addEventListener("resize", notifyHeight);
+
+    render();
+  </script>
+</body>
+</html>

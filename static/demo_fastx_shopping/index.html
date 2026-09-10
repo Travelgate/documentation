@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1008,8 +1008,8 @@
                     FastX connects multiple suppliers through one shared layer, standardizing hotel, room and board codes so your marketplace can aggregate content without the mapping chaos. It keeps native codes available while delivering a cleaner, scalable response model for faster integrations and cleaner buyer experiences.
                 </p>
                 <div class="hero-links">
-                    <a class="pill-link" href="https://docs.travelgate.com/kb/connectivity-products/for-buyers/hotel-x/fastx/fastx-solution" target="_blank" rel="noopener noreferrer">📖 Documentation</a>
-                    <a class="pill-link" href="fastxcontent.html" style="background: linear-gradient(135deg, #8b5cf6, #ec4899);">✨ FastX Content</a>
+                    <a class="pill-link" href="/kb/connectivity-products/for-buyers/hotel-x/fastx/fastx-solution">📖 Documentation</a>
+                    <a class="pill-link" href="/demo_fastx_content" style="background: linear-gradient(135deg, #8b5cf6, #ec4899);">✨ FastX Content</a>
                 </div>
                 <div class="hero-benefits">
                     <div class="benefit-card">
@@ -1113,7 +1113,7 @@
                         <h3>🎨 Ready to explore FastX Content?</h3>
                         <p>The same unified FastX codes can be enriched with normalized media, descriptions, and amenities. Discover how this drives higher conversion rates and better user experience.</p>
                     </div>
-                    <a class="next-link" href="fastxcontent.html">→ Open Content Demo</a>
+                    <a class="next-link" href="/demo_fastx_content">→ Open Content Demo</a>
                 </div>
             </div>
         </section>
@@ -1271,10 +1271,6 @@
 
             document.getElementById('raw-options').innerHTML = rawList;
             document.getElementById('fastx-option').innerHTML = fastxList;
-
-            // Calculate dedupe savings
-            const duplicateCount = suppliers.length - 1;
-            const savings = Math.round((suppliers.reduce((sum, s) => sum + s.price, 0) - winner.price) / (suppliers.length - 1));
 
             document.getElementById('stats-raw').innerHTML = `
                 <div class="chip"><div class="k">Options</div><div class="v">${suppliers.length}</div></div>

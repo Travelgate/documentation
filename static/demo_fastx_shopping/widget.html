@@ -731,7 +731,7 @@
               Ref: <b>${yesNo(supplier.refundable)}</b> · Bind: <b>${yesNo(supplier.binding)}</b> · <b>${supplier.paymentType}</b> · <b>${supplier.currency}</b>
             </div>
             <div class="range-row">
-              <input type="range" min="80" max="180" value="${supplier.price}" oninput="updatePrice(${index}, this.value)">
+              <input type="range" min="80" max="180" value="${supplier.price}" aria-label="${supplier.name} price" oninput="updatePrice(${index}, this.value)">
               <span class="range-value">€${supplier.price}</span>
             </div>
           </div>

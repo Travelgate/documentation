@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FastX Content Widget</title>
+  <style>
+    :root {
+      --bg: #f4f8ff;
+      --panel: #ffffff;
+      --stroke: #d6e4f5;
+      --text: #12335a;
+      --muted: #5f7899;
+      --brand-blue: #0077d8;
+      --brand-cyan: #00a8e8;
+      --ok: #0bbf7b;
+      --gold: #ffb81c;
+      --danger: #d6455b;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Space Grotesk", "Segoe UI", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      padding: 10px;
+    }
+
+    .widget {
+      border: 1px solid rgba(0, 119, 216, 0.14);
+      border-radius: 16px;
+      background: linear-gradient(145deg, #ffffff, #f8fbff);
+      box-shadow: 0 10px 32px rgba(13, 52, 95, 0.08);
+      overflow: hidden;
+    }
+
+    .head {
+      padding: 10px 14px;
+      border-bottom: 1px solid rgba(0, 119, 216, 0.15);
+      background: linear-gradient(135deg, rgba(0, 168, 232, 0.1), rgba(255, 184, 28, 0.1));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .badge {
+      border: 1px solid rgba(255, 184, 28, 0.5);
+      background: rgba(255, 184, 28, 0.14);
+      color: #8a5400;
+      font-size: 0.66rem;
+      border-radius: 999px;
+      padding: 4px 9px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .body {
+      padding: 10px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .plans-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      border: 1px solid rgba(0, 119, 216, 0.2);
+      border-radius: 10px;
+      background: linear-gradient(135deg, #f8fbff, #f0f7ff);
+      padding: 8px 10px;
+    }
+
+    .plans-bar .plans-label {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-right: 2px;
+      white-space: nowrap;
+    }
+
+    .plan-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #ffffff;
+      border: 1px solid rgba(0, 119, 216, 0.16);
+      border-radius: 999px;
+      padding: 4px 11px;
+      font-size: 0.74rem;
+      color: #3c587b;
+      font-weight: 600;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.15s ease;
+    }
+
+    .plan-chip:hover { border-color: var(--brand-cyan); }
+
+    .plan-chip.active {
+      background: linear-gradient(135deg, rgba(255, 184, 28, 0.2), rgba(255, 184, 28, 0.1));
+      border-color: var(--gold);
+      color: #8a5400;
+      box-shadow: 0 2px 10px rgba(255, 184, 28, 0.2);
+    }
+
+    .plan-note {
+      font-size: 0.66rem;
+      color: var(--muted);
+      background: #f8fbff;
+      border: 1px dashed var(--stroke);
+      border-radius: 8px;
+      padding: 5px 9px;
+    }
+
+    /* Comparison: 3 supplier mini-cards on top, FastX full-width below */
+    .suppliers-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .pane {
+      border: 2px solid var(--stroke);
+      border-radius: 10px;
+      background: var(--panel);
+      padding: 10px;
+      display: grid;
+      gap: 8px;
+      min-width: 0;
+      align-content: start;
+    }
+
+    .pane.supplier { border-top: 3px solid #8ca6c8; }
+
+    .pane.fastx {
+      border-color: rgba(255, 184, 28, 0.45);
+      border-top: 3px solid var(--gold);
+      background: linear-gradient(180deg, #fffdfa 0%, #fffaf0 100%);
+    }
+
+    .pane h3 {
+      margin: 0;
+      font-size: 0.82rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .pane h3 .icon { flex-shrink: 0; }
+
+    .tag {
+      font-size: 0.6rem;
+      border-radius: 999px;
+      padding: 3px 8px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-family: "IBM Plex Mono", monospace;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .tag.bad {
+      background: rgba(214, 69, 91, 0.08);
+      color: #a23a45;
+      border: 1px solid rgba(214, 69, 91, 0.25);
+    }
+
+    .tag.gold {
+      background: rgba(255, 184, 28, 0.16);
+      color: #8f5c00;
+      border: 1px solid rgba(255, 184, 28, 0.46);
+    }
+
+    .hotel-line {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .hotel-name {
+      font-size: 0.74rem;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    .fastx .hotel-name {
+      font-size: 0.84rem;
+    }
+
+    .hotel-code {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.64rem;
+      background: #e7f1ff;
+      color: #174983;
+      padding: 2px 7px;
+      border-radius: 4px;
+      width: fit-content;
+    }
+
+    .hotel-code.fastx {
+      background: #fff3cd;
+      color: #856404;
+    }
+
+    .thumb {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 7px;
+      border: 1px solid var(--stroke);
+      box-shadow: 0 3px 8px rgba(0, 31, 63, 0.08);
+      display: block;
+      background: #e8eef7;
+    }
+
+    .thumb-meta {
+      font-size: 0.6rem;
+      color: var(--muted);
+      font-family: "IBM Plex Mono", monospace;
+      margin-top: 3px;
+    }
+
+    .status-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: 2px;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 0.6rem;
+      padding: 2px 7px;
+      border-radius: 999px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .status-pill.ok {
+      color: #0c6d4f;
+      background: rgba(11, 191, 123, 0.1);
+      border: 1px solid rgba(11, 191, 123, 0.3);
+    }
+
+    .status-pill.partial {
+      color: #8a6d1d;
+      background: rgba(255, 184, 0, 0.08);
+      border: 1px solid rgba(255, 184, 0, 0.25);
+    }
+
+    .status-pill.na {
+      color: var(--danger);
+      background: #fff4f4;
+      border: 1px solid #fecaca;
+    }
+
+    /* Custom tooltip (replaces native title) */
+    .tt {
+      position: relative;
+      cursor: help;
+    }
+
+    .tt .tt-box {
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%) translateY(4px);
+      width: max-content;
+      max-width: 240px;
+      background: linear-gradient(135deg, #1a2f4a, #0f2744);
+      color: #dbe8ff;
+      font-size: 0.64rem;
+      font-weight: 500;
+      line-height: 1.5;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(0, 168, 232, 0.35);
+      box-shadow: 0 8px 24px rgba(15, 39, 68, 0.35);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+      z-index: 30;
+      pointer-events: none;
+      white-space: normal;
+      text-align: left;
+    }
+
+    .tt .tt-box::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 5px solid transparent;
+      border-top-color: #14273f;
+    }
+
+    .tt .tt-label {
+      display: block;
+      font-size: 0.54rem;
+      font-family: "IBM Plex Mono", monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #7cc7f0;
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+
+    .tt:hover .tt-box,
+    .tt:focus-within .tt-box {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .status-pill {
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .tt:hover.status-pill {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(13, 52, 95, 0.15);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr;
+      gap: 6px;
+      align-items: stretch;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      border-radius: 7px;
+      border: 1px solid var(--stroke);
+      box-shadow: 0 3px 8px rgba(0, 31, 63, 0.08);
+      background: #e8eef7;
+    }
+
+    .gallery img:first-child {
+      grid-row: span 2;
+      aspect-ratio: auto;
+      min-height: 100%;
+    }
+
+    .gallery .gallery-more {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      border-radius: 7px;
+      border: 1px solid var(--stroke);
+      overflow: hidden;
+      background: #f8fbff;
+    }
+
+    .gallery .gallery-more img {
+      position: absolute;
+      inset: 0;
+      filter: brightness(0.55) saturate(0.8);
+      border-radius: 0;
+      border: none;
+      box-shadow: none;
+      aspect-ratio: auto;
+    }
+
+    .gallery .gallery-more .more-chip {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: #ffffff;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .addon-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: linear-gradient(135deg, rgba(22, 163, 74, 0.12), rgba(22, 163, 74, 0.06));
+      border: 1px solid rgba(22, 163, 74, 0.35);
+      color: #15803d;
+      border-radius: 999px;
+      padding: 3px 10px;
+      font-size: 0.64rem;
+      font-weight: 700;
+      width: fit-content;
+    }
+
+    .info-row {
+      display: grid;
+      gap: 3px;
+    }
+
+    .info-label {
+      font-size: 0.56rem;
+      color: #6d84a3;
+      font-family: "IBM Plex Mono", monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-weight: 600;
+    }
+
+    .info-val {
+      font-size: 0.68rem;
+      color: var(--text);
+      line-height: 1.45;
+      word-break: break-word;
+    }
+
+    .info-val.muted { color: var(--muted); font-style: italic; }
+
+    .not-available {
+      color: var(--danger);
+      background: #fff4f4;
+      border: 1px solid #fecaca;
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-size: 0.64rem;
+      font-style: italic;
+      font-weight: 600;
+      display: inline-block;
+    }
+
+    .partial {
+      color: #8a6d1d;
+      background: rgba(255, 184, 0, 0.08);
+      border: 1px solid rgba(255, 184, 0, 0.25);
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-size: 0.64rem;
+      font-weight: 600;
+      display: inline-block;
+    }
+
+    .ok-badge {
+      color: #0c6d4f;
+      background: rgba(11, 191, 123, 0.1);
+      border: 1px solid rgba(11, 191, 123, 0.3);
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-size: 0.64rem;
+      font-weight: 600;
+      display: inline-block;
+    }
+
+    .tags-container { display: flex; flex-wrap: wrap; gap: 4px; }
+
+    .amenity-tag {
+      font-size: 0.62rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #eef4fb;
+      border: 1px solid var(--stroke);
+      font-weight: 600;
+      color: #3c587b;
+    }
+
+    .amenity-tag.gold {
+      background: rgba(255, 184, 28, 0.16);
+      border-color: rgba(255, 184, 28, 0.46);
+      color: #8f5c00;
+    }
+
+    .rooms-container { display: grid; gap: 6px; }
+
+    .room-card {
+      background: linear-gradient(180deg, #f8fbff 0%, #f2f7ff 100%);
+      border: 1px solid var(--stroke);
+      border-radius: 8px;
+      padding: 8px 10px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .room-card img {
+      width: 64px;
+      height: 44px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 1px solid var(--stroke);
+      flex-shrink: 0;
+      background: #e8eef7;
+    }
+
+    .room-title {
+      font-weight: 700;
+      font-size: 0.74rem;
+      color: var(--text);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .room-code-tag {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.6rem;
+      background: #e7f1ff;
+      color: #174983;
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+
+    .room-details {
+      font-size: 0.64rem;
+      color: var(--muted);
+      margin-top: 2px;
+      line-height: 1.45;
+    }
+
+    .locked {
+      filter: blur(3px) grayscale(0.5);
+      opacity: 0.55;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .locked-wrap { position: relative; }
+
+    .locked-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #8a5400;
+      background: rgba(255, 248, 230, 0.45);
+      border-radius: 8px;
+      text-align: center;
+      padding: 6px;
+    }
+
+    .gold-banner {
+      background: linear-gradient(135deg, #fff7de 0%, #ffe9a9 100%);
+      border: 1px solid #f7cf6f;
+      border-radius: 8px;
+      padding: 7px 10px;
+      font-size: 0.68rem;
+      color: #8a5400;
+      line-height: 1.5;
+    }
+
+    .gold-banner strong { font-weight: 800; }
+
+    details.json-toggle {
+      border: 1px solid var(--stroke);
+      border-radius: 10px;
+      background: #f8fbff;
+      overflow: hidden;
+    }
+
+    details.json-toggle summary {
+      cursor: pointer;
+      padding: 8px 12px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: #3c587b;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    details.json-toggle summary::before {
+      content: "▸";
+      font-size: 0.7rem;
+      transition: transform 0.15s ease;
+    }
+
+    details.json-toggle[open] summary::before { transform: rotate(90deg); }
+
+    .json-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      padding: 0 10px 10px;
+    }
+
+    .json-title {
+      font-size: 0.62rem;
+      color: #5f7899;
+      letter-spacing: 0.06em;
+      font-family: "IBM Plex Mono", monospace;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    pre {
+      margin: 0;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.66rem;
+      line-height: 1.5;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #1a2f4a, #0f2744);
+      color: #a0c9ff;
+      padding: 10px;
+      overflow-x: hidden;
+      overflow-y: auto;
+      max-height: 320px;
+      white-space: pre-wrap;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+    }
+
+    .disclaimer {
+      font-size: 0.68rem;
+      color: #8a6d1d;
+      background: rgba(255, 184, 0, 0.07);
+      border: 1px solid rgba(255, 184, 0, 0.22);
+      border-radius: 8px;
+      padding: 7px 10px;
+      line-height: 1.45;
+    }
+
+    @media (max-width: 640px) {
+      .suppliers-row,
+      .json-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="widget">
+    <div class="head">
+      <h2 class="title">✨ FastX Content</h2>
+      <span class="badge">Interactive Demo</span>
+    </div>
+
+    <div class="body">
+      <div class="plans-bar" id="plans-bar"></div>
+      <div class="plan-note" id="plan-note"></div>
+
+      <div class="suppliers-row" id="suppliers-row"></div>
+      <div class="compare" id="compare"></div>
+
+      <details class="json-toggle" id="json-toggle">
+        <summary>🔍 View HotelX Hotels JSON response</summary>
+        <div class="json-grid">
+          <div>
+            <div class="json-title">Raw Supplier Feeds</div>
+            <pre id="json-supplier"></pre>
+          </div>
+          <div>
+            <div class="json-title" id="json-fastx-title">FastX Content (Bronze)</div>
+            <pre id="json-fastx"></pre>
+          </div>
+        </div>
+      </details>
+
+      <div class="disclaimer">
+        <strong>Disclaimer:</strong> Simplified interactive demo for illustration only. Sample data is fictional — not a production payload or a live supplier response.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const hotel = {
+      fastxCode: "AE114",
+      name: "The St. Regis Abu Dhabi",
+      city: "Abu Dhabi, AE"
+    };
+
+    const suppliers = [
+      {
+        label: "Supplier A",
+        code: "644",
+        name: "THE ST. REGIS ABU DHABI",
+        image: "https://images.darinab2b.com/ShowImg.aspx?params=dtc_644_16609_False_False_22",
+        imageCount: 8,
+        address: "Nation Tower, Corniche - Abu Dhabi - United Arab Emirates",
+        description: { status: "partial", text: "Boasting a landmark address on the Corniche, in the iconic Nation Towers, The St. Regis Abu Dhabi offers worldly refinement..." },
+        contact: { status: "partial", text: "+971 2 6944444" },
+        amenities: { status: "na" }
+      },
+      {
+        label: "Supplier B",
+        code: "87383",
+        name: "The St. Regis Abu Dhabi",
+        image: null,
+        imageCount: 0,
+        address: "Nation Towers",
+        description: { status: "na" },
+        contact: { status: "na" },
+        amenities: { status: "na" }
+      },
+      {
+        label: "Supplier C",
+        code: "2006138",
+        name: "The St. Regis Abu Dhabi",
+        image: "https://online.travellanda.com/photo/hotel/4981463e352c08a7/d4/d495d5dd91103262/01-b.jpg",
+        imageCount: 9,
+        address: "Nation Tower Corniche P.O. Box 60476 Abu Dhabi",
+        description: { status: "partial", text: "Located in the heart of Abu Dhabi, The St. Regis offers luxurious accommodations..." },
+        contact: { status: "partial", text: "+97126944444" },
+        amenities: { status: "na" }
+      }
+    ];
+
+    const fastx = {
+      address: "Nation Tower, Corniche — Abu Dhabi, United Arab Emirates",
+      description: "The St. Regis Abu Dhabi stands as a landmark on Nation Towers, steps from the beach and the city's vibrant pulse. You'll find both an outdoor and indoor pool, each designed for relaxation and easy access from the guest rooms.",
+      descriptionZh: "The St. Regis Abu Dhabi位于Nation Towers的一个地标上,距离海滩几步之遥,城市充满活力。",
+      contact: "reservation16@aoryx.ae · +97126944444 · www.stregisabudhabi.com",
+      gallery: [
+        "https://images.orbiscdn.com/images/AE114/base/2000ab11393cf31e297a688e536c7d9eb20e5b58ddc2791f1019d3036d3b1581",
+        "https://images.orbiscdn.com/images/AE114/base/0bc17d63540b6d9123d79c45565dfbc14a026549cebd99a424b5899f3fce43df",
+        "https://images.orbiscdn.com/images/AE114/base/d4061b890726a0316c486f9cd44718ad419fe3a961f613021584e457564264e4"
+      ],
+      galleryCount: 14,
+      amenities: ["24-hour front desk", "Complimentary wireless internet", "Outdoor pool", "Spa"],
+      rooms: [
+        { code: "RM-AE114-001", name: "Superior Guest Room, 1 King, Sea View", details: "55 m² · King ×1 · Arabian Gulf Sea View", image: "https://images.orbiscdn.com/images/AE114/base/1fcaa00d011d142fd750569b370ee0e664360b29c11e1583b3250321432cba25" },
+        { code: "RM-AE114-002", name: "Deluxe Guest Room, 2 Twin, Sea View", details: "55 m² · Twin ×2 · Corniche Sea View", image: "https://images.orbiscdn.com/images/AE114/base/db5ee73c735f256190b24c00f88a414f45bf5d123f2f0e02fa49657801f352d4" },
+        { code: "RM-AE114-003", name: "Grand Deluxe Executive Suite, 1 King", details: "85 m² · King ×1 · Panoramic Gulf View", image: "https://images.orbiscdn.com/images/AE114/base/ad143b32d1a1219a0ade1fbe910d5a25bfffb0da28d9d87deab2112cd9c3ffbd" }
+      ]
+    };
+
+    const plans = {
+      bronze: {
+        tag: "🥉 Bronze",
+        note: "Bronze: standardized hotel-level content (names, chain, category, contact, descriptions, amenities, geolocation). English by default.",
+        rooms: false,
+        zh: false,
+        ownContent: false
+      },
+      silver: {
+        tag: "🥈 Silver",
+        note: "Silver: Bronze + room-level content — standardized room descriptions, amenities and images.",
+        rooms: true,
+        zh: false,
+        ownContent: false
+      },
+      gold: {
+        tag: "🥇 Gold",
+        note: "Gold: Bronze/Silver + upload and blend your own locally contracted content into the response.",
+        rooms: true,
+        zh: false,
+        ownContent: true
+      },
+      bolts: {
+        tag: "⚙️ Bolts-On",
+        note: "Bolts-On: add-ons on top of Bronze/Silver — extra languages (e.g. Chinese) and market customization.",
+        rooms: true,
+        zh: true,
+        ownContent: false
+      }
+    };
+
+    let currentPlan = "bronze";
+
+    function statusPill(label, field) {
+      if (field.status === "na") {
+        return `
+          <span class="status-pill na tt" tabindex="0">
+            ✗ ${label}
+            <span class="tt-box"><span class="tt-label">${label}</span>Not provided by this supplier</span>
+          </span>
+        `;
+      }
+      return `
+        <span class="status-pill partial tt" tabindex="0">
+          ◐ ${label}
+          <span class="tt-box"><span class="tt-label">${label} · partial</span>${field.text || ""}</span>
+        </span>
+      `;
+    }
+
+    function supplierPaneHtml(s) {
+      const thumb = s.image
+        ? `<div><img class="thumb" src="${s.image}" alt="hotel photo" loading="lazy" onerror="this.style.display='none'"><div class="thumb-meta">${s.imageCount} images · mixed sizes</div></div>`
+        : `<div><div class="thumb" style="display:flex;align-items:center;justify-content:center;color:#9fb4d1;font-size:0.7rem;">No image</div><div class="thumb-meta">0 images</div></div>`;
+
+      return `
+        <article class="pane supplier">
+          <h3><span><span class="icon">❌</span> ${s.label}</span></h3>
+          <div class="hotel-line">
+            <span class="hotel-name">${s.name}</span>
+            <span class="hotel-code">${s.code}</span>
+          </div>
+          ${thumb}
+          <div class="status-row">
+            ${statusPill("Description", s.description)}
+            ${statusPill("Contact", s.contact)}
+            <span class="status-pill na tt" tabindex="0">✗ Amenities<span class="tt-box"><span class="tt-label">Amenities</span>Not provided by this supplier</span></span>
+            <span class="status-pill na tt" tabindex="0">✗ Rooms<span class="tt-box"><span class="tt-label">Rooms</span>No standardized room content</span></span>
+          </div>
+        </article>
+      `;
+    }
+
+    function fastxPaneHtml() {
+      const plan = plans[currentPlan];
+
+      const gallery = `
+        <div class="gallery">
+          <img src="${fastx.gallery[0]}" alt="hotel photo" loading="lazy" onerror="this.style.display='none'">
+          <img src="${fastx.gallery[1]}" alt="hotel photo" loading="lazy" onerror="this.style.display='none'">
+          <img src="${fastx.gallery[2]}" alt="hotel photo" loading="lazy" onerror="this.style.display='none'">
+          <div class="gallery-more">
+            <img src="${fastx.gallery[2]}" alt="" loading="lazy" onerror="this.style.display='none'">
+            <span class="more-chip">+${fastx.galleryCount - 3} more</span>
+          </div>
+        </div>
+      `;
+
+      const amenitiesHtml = fastx.amenities
+        .map((a) => `<span class="amenity-tag ${currentPlan !== "bronze" ? "gold" : ""}">${a}</span>`)
+        .join("");
+
+      const roomsBlock = plan.rooms
+        ? `
+          <div class="info-row">
+            <span class="info-label">Rooms (standardized)</span>
+            <div class="rooms-container">
+              ${fastx.rooms.map((r) => `
+                <div class="room-card">
+                  <img src="${r.image}" alt="${r.name}" loading="lazy" onerror="this.style.display='none'">
+                  <div>
+                    <div class="room-title">${r.name} <span class="room-code-tag">${r.code}</span></div>
+                    <div class="room-details">${r.details}</div>
+                  </div>
+                </div>
+              `).join("")}
+            </div>
+          </div>
+        `
+        : `
+          <div class="info-row">
+            <span class="info-label">Rooms</span>
+            <div class="locked-wrap">
+              <div class="locked">
+                <div class="rooms-container">
+                  <div class="room-card">
+                    <img src="${fastx.rooms[0].image}" alt="" loading="lazy">
+                    <div>
+                      <div class="room-title">${fastx.rooms[0].name}</div>
+                      <div class="room-details">${fastx.rooms[0].details}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="locked-overlay">🔒 Room-level content available from Silver</div>
+            </div>
+          </div>
+        `;
+
+      const zhBlock = plan.zh
+        ? `
+          <div class="info-row">
+            <span class="addon-badge">🌐 Language add-on contracted: Chinese (ZH)</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Description (中文)</span>
+            <span class="info-val">${fastx.descriptionZh}</span>
+          </div>
+        `
+        : "";
+
+      const goldBanner = plan.ownContent
+        ? `
+          <div class="gold-banner">
+            <strong>Your own content:</strong> Gold merges your locally contracted descriptions, images and room data with FastX standardized content in the same response.
+          </div>
+        `
+        : "";
+
+      return `
+        <article class="pane fastx">
+          <h3><span><span class="icon">✅</span> FastX Content</span><span class="tag gold">${plan.tag.replace(/^\S+\s/, "")}</span></h3>
+          <div class="hotel-line">
+            <span class="hotel-name">${hotel.name}</span>
+            <span class="hotel-code fastx">FastX: ${hotel.fastxCode}</span>
+          </div>
+          ${goldBanner}
+          ${gallery}
+          <div class="info-row">
+            <span class="info-label">Address</span>
+            <span class="info-val">${fastx.address}</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Description (EN)</span>
+            <span class="info-val">${fastx.description}</span>
+          </div>
+          ${zhBlock}
+          <div class="info-row">
+            <span class="info-label">Contact</span>
+            <span class="info-val">${fastx.contact}</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Amenities</span>
+            <div class="tags-container">${amenitiesHtml}</div>
+          </div>
+          ${roomsBlock}
+        </article>
+      `;
+    }
+
+    function renderCompare() {
+      document.getElementById("suppliers-row").innerHTML = suppliers.map(supplierPaneHtml).join("");
+      document.getElementById("compare").innerHTML = fastxPaneHtml();
+    }
+
+    function renderPlansBar() {
+      document.getElementById("plans-bar").innerHTML = `
+        <span class="plans-label">⚡ FastX Content tier:</span>
+        ${Object.entries(plans).map(([key, plan]) => `
+          <span class="plan-chip ${currentPlan === key ? "active" : ""}" onclick="selectPlan('${key}')">${plan.tag}</span>
+        `).join("")}
+      `;
+      document.getElementById("plan-note").textContent = plans[currentPlan].note;
+    }
+
+    function renderJson() {
+      const plan = plans[currentPlan];
+
+      const supplierPayload = {
+        data: {
+          hotelX: {
+            hotels: {
+              edges: suppliers.map((s) => ({
+                node: {
+                  hotelData: {
+                    hotelCode: s.code,
+                    hotelName: s.name,
+                    categoryCode: "5",
+                    chainCode: null,
+                    location: { address: s.address, city: "Abu Dhabi", country: "AE" },
+                    contact: s.contact.status === "na" ? null : { telephone: s.contact.text },
+                    descriptions: s.description.status === "na" ? [] : [{ type: "GENERAL", texts: [{ language: "en", text: s.description.text }] }],
+                    medias: s.image ? [{ type: "GENERAL", url: s.image }] : null,
+                    allAmenities: null
+                  }
+                }
+              }))
+            }
+          }
+        }
+      };
+
+      const fastxHotelData = {
+        hotelCode: hotel.fastxCode,
+        hotelName: hotel.name,
+        categoryCode: "5",
+        chainCode: "XR",
+        location: {
+          address: fastx.address,
+          city: "Abu Dhabi",
+          country: "AE",
+          coordinates: { latitude: 24.464983, longitude: 54.327659 }
+        },
+        contact: { email: "reservation16@aoryx.ae", telephone: "+97126944444", web: "www.stregisabudhabi.com" },
+        descriptions: [{
+          type: "GENERAL",
+          texts: [
+            { language: "en", text: fastx.description },
+            ...(plan.zh ? [{ language: "zh", text: fastx.descriptionZh }] : [])
+          ]
+        }],
+        medias: fastx.gallery.map((url) => ({ type: "HOTEL", url })),
+        allAmenities: { edges: fastx.amenities.map((a, i) => ({ node: { amenityData: { amenityCode: "HAC" + (i + 1), texts: [{ language: "en", text: a }] } } })) },
+        ...(plan.rooms ? {
+          rooms: {
+            edges: fastx.rooms.map((r) => ({
+              node: { roomData: { code: r.code, source: "AO_NORMALIZED", texts: [{ language: "en", text: r.name }], medias: [{ url: r.image }] } }
+            }))
+          }
+        } : {})
+      };
+
+      const fastxPayload = {
+        data: {
+          hotelX: {
+            hotels: {
+              edges: [{ node: { hotelData: fastxHotelData } }]
+            }
+          }
+        },
+        extensions: {
+          fastxContent: {
+            tier: plan.tag,
+            hotelLevelContent: true,
+            roomLevelContent: plan.rooms,
+            extraLanguages: plan.zh ? ["zh"] : [],
+            ownContentMerge: plan.ownContent
+          }
+        }
+      };
+
+      document.getElementById("json-supplier").textContent = JSON.stringify(supplierPayload, null, 2);
+      document.getElementById("json-fastx").textContent = JSON.stringify(fastxPayload, null, 2);
+      document.getElementById("json-fastx-title").textContent = "FastX Content (" + plan.tag.replace(/^\S+\s/, "") + ")";
+    }
+
+    function selectPlan(key) {
+      currentPlan = key;
+      renderPlansBar();
+      renderCompare();
+      renderJson();
+      notifyHeight();
+    }
+
+    function notifyHeight() {
+      if (window.parent && window.parent !== window) {
+        window.parent.postMessage({ type: "fastx-widget-height", height: document.body.scrollHeight }, "*");
+      }
+    }
+
+    function render() {
+      renderPlansBar();
+      renderCompare();
+      renderJson();
+      requestAnimationFrame(notifyHeight);
+    }
+
+    document.getElementById("json-toggle").addEventListener("toggle", notifyHeight);
+    window.addEventListener("resize", notifyHeight);
+
+    render();
+  </script>
+</body>
+</html>

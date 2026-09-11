@@ -39,6 +39,20 @@ In simple terms:
 3. You receive the transactional data along with AO's premium static content (images, clean descriptions, and categories) from more than 500 suppliers.
 4. Everything is delivered through the current standardized HotelX API response in a single block, reducing your content integration effort to zero. No need for developments. 
 
+### Interactive FastX Content Demo
+
+Use this embedded demo to compare a raw supplier feed with the standardized FastX Content response, and switch between tiers (Bronze, Silver, Gold, Bolts-On) to see what each plan unlocks.
+
+<iframe
+   title="FastX Content Demo"
+   src="/demo_fastx_content/widget.html"
+   width="100%"
+   height="800"
+   loading="lazy"
+></iframe>
+
+<script src="/js/fastx-widget-iframe.js"></script>
+
 ### Subscription Plans (Tiers)
 FastX Content by AO adapts to the complexity and volume of your business through four plans:
 

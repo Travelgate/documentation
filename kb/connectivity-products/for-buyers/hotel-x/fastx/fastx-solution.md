@@ -130,6 +130,20 @@ Travelgate then creates a standardized FastX room code and description, and your
 
 Now that your responses are standardized across Suppliers, FastX enables powerful aggregation. When multiple Suppliers return similar options (same hotel, board, and room), the **Preference plugin** helps you select the most relevant option per group.
 
+### Interactive FastX Shopping Demo
+
+Use this embedded demo to simulate how aggregation behaves when you change supplier prices and the aggregation key dimensions (`hotel`, `board`, `room`, `refundable`, `binding`, `currency`, `payment type`).
+
+<iframe
+   title="FastX Shopping Aggregation Demo"
+   src="/demo_fastx_shopping/widget.html"
+   width="100%"
+   height="640"
+   loading="lazy"
+></iframe>
+
+<script src="/js/fastx-widget-iframe.js"></script>
+
 **How it works:**
 
 1. **Group equivalent options** using your aggregation key (typically: `hotel + board + room`)

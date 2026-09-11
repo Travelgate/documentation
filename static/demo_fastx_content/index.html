@@ -11681,6 +11681,17 @@
             return fallback;
         }
 
+        function escapeHtml(value) {
+            const str = value == null ? '' : String(value);
+            return str.replace(/[&<>"']/g, char => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#39;'
+            }[char]));
+        }
+
 		function normalizeRichText(text, fallback = '-') {
 			if (text == null) return fallback;
 			const raw = String(text).trim();
@@ -11691,11 +11702,10 @@
 				.replace(/<\s*\/li\s*>\s*<\s*li\s*>/gi, '. ')
 				.replace(/<\s*li\s*>/gi, '')
 				.replace(/<\s*\/li\s*>/gi, '. ')
-				.replace(/<\s*\/p\s*>\s*<\s*p\s*>/gi, ' ');
+				.replace(/<\s*\/p\s*>\s*<\s*p\s*>/gi, ' ')
+				.replace(/<[^>]+>/g, ' ');
 
-			const tmp = document.createElement('div');
-			tmp.innerHTML = prepared;
-			const plain = (tmp.textContent || tmp.innerText || '')
+			const plain = prepared
 				.replace(/\s+/g, ' ')
 				.replace(/\s*\.\s*\./g, '.')
 				.trim();
@@ -11714,17 +11724,17 @@
 
 		const NA_BADGE = '<span class="not-available-badge">No available</span>';
 
-		function renderContactInfo(contact, useLineBreaks = true) {
-			const line = (icon, label, value) => {
-				const val = value || NA_BADGE;
-				return useLineBreaks
-					? `<div style="display:flex; align-items:center; gap:8px; margin-top:4px;"><span style="font-size:1rem;">${icon}</span><span><strong>${label}:</strong> ${val}</span></div>`
-					: `<div style="display:flex; align-items:center; gap:6px; margin-top:2px; font-size:0.8rem;"><span>${icon}</span><span><strong>${label}:</strong> ${val}</span></div>`;
-			};
+        function renderContactInfo(contact, useLineBreaks = true) {
+            const line = (icon, label, value) => {
+                const val = value ? escapeHtml(value) : NA_BADGE;
+                return useLineBreaks
+                    ? `<div style="display:flex; align-items:center; gap:8px; margin-top:4px;"><span style="font-size:1rem;">${icon}</span><span><strong>${label}:</strong> ${val}</span></div>`
+                    : `<div style="display:flex; align-items:center; gap:6px; margin-top:2px; font-size:0.8rem;"><span>${icon}</span><span><strong>${label}:</strong> ${val}</span></div>`;
+            };
 
-			const c = contact || {};
-			return line('📞', 'Phone', c.telephone) + line('✉️', 'Email', c.email) + line('🌐', 'Web', c.web);
-		}
+            const c = contact || {};
+            return line('📞', 'Phone', c.telephone) + line('✉️', 'Email', c.email) + line('🌐', 'Web', c.web);
+        }
 
         function formatCoordinates(coords) {
             if (!coords || coords.latitude == null || coords.longitude == null) {
@@ -11995,10 +12005,24 @@
         function renderRow1Json() {
             const suppliers = getCurrentSuppliers();
             const container = document.getElementById('jsonColumnsRow1');
-            container.innerHTML = Object.keys(suppliers).map(key => {
+            container.innerHTML = '';
+
+            Object.keys(suppliers).forEach(key => {
                 const sup = suppliers[key];
-                return `<div class="json-col"><div class="json-col-title">${sup.name.toUpperCase()} (${sup.sourceFile})</div><pre>${JSON.stringify(sup.rawJson, null, 2)}</pre></div>`;
-            }).join('');
+                const col = document.createElement('div');
+                col.className = 'json-col';
+
+                const title = document.createElement('div');
+                title.className = 'json-col-title';
+                title.textContent = `${sup.name.toUpperCase()} (${sup.sourceFile})`;
+
+                const pre = document.createElement('pre');
+                pre.textContent = JSON.stringify(sup.rawJson, null, 2);
+
+                col.appendChild(title);
+                col.appendChild(pre);
+                container.appendChild(col);
+            });
         }
 
         function renderRow2Visual() {

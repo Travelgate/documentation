@@ -364,10 +364,6 @@
       background: #e8eef7;
     }
 
-    .gallery img:first-child {
-      aspect-ratio: 1.3 / 1;
-    }
-
     .gallery .gallery-more {
       position: relative;
       aspect-ratio: 1.15 / 1;
@@ -705,141 +701,326 @@
   </div>
 
   <script>
-    const hotel = {
-      fastxCode: "AE114",
-      name: "The St. Regis Abu Dhabi",
-      city: "Abu Dhabi, AE"
+    let hotel = {
+      fastxCode: "CN9",
+      name: "Regal Airport Hotel",
+      city: "Hong Kong, HK",
+      chain: "REGAL HOTELS"
     };
 
-    const suppliers = [
+    let suppliers = [
       {
         label: "Supplier A",
-        code: "644",
-        name: "THE ST. REGIS ABU DHABI",
-        image: "https://images.orbiscdn.com/images/AE114/base/0bc17d63540b6d9123d79c45565dfbc14a026549cebd99a424b5899f3fce43df",
-        imageCount: 8,
-        address: "Nation Tower, Corniche - Abu Dhabi - United Arab Emirates",
-        description: { status: "partial", text: "Boasting a landmark address on the Corniche, in the iconic Nation Towers, The St. Regis Abu Dhabi offers worldly refinement..." },
-        contact: { status: "partial", text: "+971 2 6944444" },
-        amenities: { status: "na" }
-      },
-      {
-        label: "Supplier B",
-        code: "87383",
-        name: "The St. Regis Abu Dhabi",
-        image: null,
-        imageCount: 0,
-        address: "Nation Towers",
+        code: "363574",
+        name: "Regal Airport Hotel",
+        image: "https://content.ppg.travel/i/GhQIARA4GAMgQioKY2ZmM2I3YjNfdw",
+        imageCount: 3,
+        address: "9 Cheong Tat Road Chek Lap Kok HK",
         description: { status: "na" },
         contact: { status: "na" },
         amenities: { status: "na" }
       },
       {
+        label: "Supplier B",
+        code: "3883",
+        name: "REGAL AIRPORT",
+        image: "https://i.travelapi.com/lodging/1000000/440000/439700/439634/cff3b7b3_b.jpg",
+        imageCount: 3,
+        address: "9 Cheong Tat Road, Chek Lap Kok, HK",
+        description: { status: "partial", text: "Located in Chek Lap Kok, Regal Airport Hotel is connected to the airport." },
+        contact: { status: "partial", text: "+852 2286 8888" },
+        amenities: { status: "na" }
+      },
+      {
         label: "Supplier C",
-        code: "2006138",
-        name: "The St. Regis Abu Dhabi",
-        image: "https://images.orbiscdn.com/images/AE114/base/0bc17d63540b6d9123d79c45565dfbc14a026549cebd99a424b5899f3fce43df",
-        imageCount: 9,
-        address: "Nation Tower Corniche P.O. Box 60476 Abu Dhabi",
-        description: { status: "partial", text: "Located in the heart of Abu Dhabi, The St. Regis offers luxurious accommodations..." },
-        contact: { status: "partial", text: "+97126944444" },
+        code: "10099221",
+        name: "Regal Airport Hotel",
+        image: "https://i.travelapi.com/lodging/1000000/440000/439700/439634/033cc14f_z.jpg",
+        imageCount: 3,
+        address: "9 Cheong Tat Road",
+        description: { status: "na" },
+        contact: { status: "partial", text: "852-22-868888" },
         amenities: { status: "na" }
       }
     ];
 
-    const fastx = {
-      address: "Nation Tower, Corniche — Abu Dhabi, United Arab Emirates",
-      description: "The St. Regis Abu Dhabi stands as a landmark on Nation Towers, steps from the beach and the city's vibrant pulse. You’ll find both an outdoor and indoor pool, each designed for relaxation and easy access from the guest rooms. The rooms offer spacious layouts with sea view options and airy, sunlit interiors.Seven restaurants serve diverse cuisine, from casual poolside bites to refined dining experiences. The hotel’s location on Nation Towers places you handy for shopping, dining, and cultural sites. Check-in begins at 3:00 PM, with a 12:00 PM check-out, and guests aged 21 and over may check-in anytime.Accessible features include wheelchair-friendly elevators, ramps, and dedicated parking, ensuring ease of movement throughout.",
-      descriptionZh: "The St. Regis Abu Dhabi位于Nation Towers的一个地标上,距离海滩几步之遥,城市充满活力。 您会发现一个室外和室内游泳池,每个游泳池都设计了放松和轻松到达客人的房间。 房间提供宽敞的布局,享有海景选项和宽敞的日光浴内饰。七家餐厅提供多样化的美食,从随意泳池边的小吃到精致的餐饮体验。 这家酒店位于Nation Towers的位置,适合您购物、用餐和文化遗址。 入住登记从下午3:00开始,中午12点退房,年龄为21岁及以上的客人可以随时入住。无障碍设施包括轮椅友好的电梯、坡道和专用停车场,确保了整个行动便利。",
+    let fastx = {
+      address: "9 Cheong Tat Road, Hong Kong",
+      description: "You will find the Regal Airport Hotel located just steps away from Chek Lap Kok Airport, within walking distance for arrivals and departures. The hotel's spacious guest rooms offer sea view options, designed with relaxation and comfort in mind. Sun loungers by the pool provide daily relaxation, with access to both indoor and outdoor pools. Guests can enjoy fine dining at one of the on-site restaurants serving all-day cuisine. This location is ideal for airport travel and local exploration, just steps from the terminal. Check-in starts at 3:00 PM with express and contactless options available, and check-out is at noon. The hotel features a business center, on-site shops, and complimentary wireless internet for all guests.",
+      descriptionZh: "您会发现the Regal Airport Hotel距离Chek Lap Kok’s机场仅几步之遥,步行即可到达和离开。 酒店宽敞的客房提供海景选项,设计时会考虑舒适、轻松的舒适。 泳池旁躺椅是每日的娱乐,室内和室外游泳池均可使用。您可以在酒店的一家现场餐厅享用美餐,该餐厅提供全天菜肴。 这个位置让您非常适合机场旅行和当地探索,并且距离地面仅几步之遥。 入住登记时间为下午3:00,提供快速和无接触选项,退房时间为中午。这家酒店设有商务中心、现场商店以及免费的无线网络,供所有客人使用。",
       checkIn: "03:00 PM",
       checkOut: "12:00 PM",
-      contact: "reservation16@aoryx.ae · +97126944444 · www.stregisabudhabi.com",
+      contact: "rah.rsvn@regalhotel.com · 85222868888 · www.regalhotel.com/regal-airport-hotel/en/home/home.html",
       gallery: [
-        "https://images.orbiscdn.com/images/AE114/base/2000ab11393cf31e297a688e536c7d9eb20e5b58ddc2791f1019d3036d3b1581",
-        "https://images.orbiscdn.com/images/AE114/base/0bc17d63540b6d9123d79c45565dfbc14a026549cebd99a424b5899f3fce43df",
-        "https://images.orbiscdn.com/images/AE114/base/d4061b890726a0316c486f9cd44718ad419fe3a961f613021584e457564264e4",
-        "https://images.orbiscdn.com/images/AE114/base/103b090885a7b1bc9ad7b7d37c26ca916b0e4f29368046ef7edeb290329fc4c3",
-        "https://images.orbiscdn.com/images/AE114/base/c3096ab2ddcce58af8b12b87186f5665809f70b4a54295b50872ec3fbf306bb1",
-        "https://images.orbiscdn.com/images/AE114/base/c996d661fa9331ea8597e56fdfea8c1c04db504c65a44c5cfe669a2f4b789f6f",
-        "https://images.orbiscdn.com/images/AE114/base/77da33173a23c45ad7b80144c8d6e2ffdbbf9edd235c984145559ac21809f341",
-        "https://images.orbiscdn.com/images/AE114/base/77e460718b7df6c2610f09cc4e0546df440e1306ced987f3fe7fd50ea1ededc2",
-        "https://images.orbiscdn.com/images/AE114/base/2f65f783f8e5b4a0e5d10bf03fd29107c10e86a32ef9ee984a94708cad8f14aa",
-        "https://images.orbiscdn.com/images/AE114/base/153e17601378fe94b6410ec4ae710a06d413e5bce6f32ca7a29f89eab9b8e9b8",
-        "https://images.orbiscdn.com/images/AE114/base/656f36ce3d57045ff8160192ebee74f9a06c2feab3a6bdd83eef734b1938c3ee",
-        "https://images.orbiscdn.com/images/AE114/base/8a7cb0e34502a308b5452d37714ded5c1de62dd0be42baec8918f10a78640cf9"
+        "https://images.orbiscdn.com/images/CN9/base/3b74c5cce4b5e3b79854463071993a6d01909540496ae0e84607dcdb2d176e0e",
+        "https://images.orbiscdn.com/images/CN9/base/f8977f2a5bfd739b3cf8d6c00c71d39c3396da8b922c78c888a5823435bc3a3e",
+        "https://images.orbiscdn.com/images/CN9/base/f8beab8868c93e5b25d17122c1435e4a300fd1a60d59b212b24f2a24b2e5644d",
+        "https://images.orbiscdn.com/images/CN9/base/2f967d5afa4d507636e14076ce1a41b7bfc57ab8835a720a50a78925a2660c37",
+        "https://images.orbiscdn.com/images/CN9/base/c850816febdfae8e2fa1a35387dffa1b79fb60db11e2a8f209cd900e1294ffa0",
+        "https://images.orbiscdn.com/images/CN9/base/58047180dfeb7edd851e213b66f16ca61c9984ef59fd36c672641d3200c8b589",
+        "https://images.orbiscdn.com/images/CN9/base/4ab9fd889b81f787fad3467d9ea836b11393f99d4f449b7e170bb2020519615c",
+        "https://images.orbiscdn.com/images/CN9/base/71acbf39f2088708dadb69d252f9bc20dae996ab4cb73fc679721d83a438acf8",
+        "https://images.orbiscdn.com/images/CN9/base/4509b5745407fd2893197126a94ce80b42f5d2ef020ecaf62ef93f000d6e254f",
+        "https://images.orbiscdn.com/images/CN9/base/0e948e75c7f2c61f863c55a0b8228c70b2868bd6c83271f81231014322e71477",
+        "https://images.orbiscdn.com/images/CN9/base/5f72801fdabb69390e9334d55860c8a72a287b9617ea425e4bffbf87061d603a",
+        "https://images.orbiscdn.com/images/CN9/base/6da0195c2a0856fc8ba7008f1b9c701e39617b74b4da17fad2ea0d27a8534625"
       ],
-      galleryCount: 32,
+      galleryCount: 12,
       amenities: [
-        { code: "HAC258", label: "Accessible rooms", zh: "无障碍客房" },
-        { code: "HAC47", label: "Accessible facilities", zh: "无障碍设施" },
-        { code: "HAC116", label: "Accessible parking", zh: "无障碍停车位" },
-        { code: "HAC101", label: "Wheelchair access", zh: "轮椅通道" },
-        { code: "HAC74", label: "Ramp access", zh: "坡道入口" },
-        { code: "HAC35", label: "Exercise gym", zh: "健身房" },
-        { code: "HAC79", label: "Sauna" },
-        { code: "HAC80", label: "Security", zh: "安保" },
-        { code: "HAC1", label: "24-hour front desk" },
-        { code: "HAC292", label: "Newspaper", zh: "报纸" },
-        { code: "HAC22", label: "Concierge desk", zh: "礼宾服务台" },
-        { code: "HAC87", label: "Storage space", zh: "储物空间" },
-        { code: "HAC103", label: "Multilingual staff", zh: "多语种工作人员" },
         { code: "HAC286", label: "Complimentary wireless internet", zh: "免费无线网络" },
         { code: "HAC223", label: "Internet services", zh: "互联网服务" },
-        { code: "HAC71", label: "Pool", zh: "游泳池" },
-        { code: "HAC66", label: "Outdoor pool", zh: "室外游泳池" },
-        { code: "HAC54", label: "Indoor pool", zh: "室内游泳池" },
-        { code: "HAC49", label: "Heated pool" },
         { code: "HAC91", label: "Tour/sightseeing desk", zh: "旅游/观光服务台" },
         { code: "HAC122", label: "Shops and commercial services", zh: "商店和商业服务" },
         { code: "HAC316", label: "Electric car charging stations", zh: "电动汽车充电站" },
         { code: "HAC77", label: "Room service", zh: "客房服务" },
-        { code: "HAC58", label: "Laundry/Valet service" },
+        { code: "HAC58", label: "Laundry/Valet service", zh: "洗衣/代客洗涤服务" },
         { code: "HAC96", label: "Dry cleaning", zh: "干洗" },
         { code: "HAC165", label: "Lounges/bars", zh: "休息室/酒吧" },
-        { code: "HAC97", label: "Valet parking", zh: "代客泊车" },
-        { code: "HAC63", label: "Off-Site parking", zh: "场外停车" },
         { code: "HAC228", label: "Business center", zh: "商务中心" },
-        { code: "HAC48", label: "Health club" },
-        { code: "HAC8", label: "Baby sitting", zh: "婴儿看护" },
+        { code: "HAC48", label: "Health club", zh: "健身俱乐部" },
         { code: "HAC154", label: "Medical Facilities Service", zh: "医疗服务设施" },
+        { code: "HAC8", label: "Baby sitting", zh: "婴儿看护" },
         { code: "HAC64", label: "On-Site parking", zh: "酒店内停车场" },
-        { code: "HAC21", label: "Coin operated laundry", zh: "投币式洗衣" },
-        { code: "HAC104", label: "Wedding services" },
-        { code: "HAC42", label: "Free parking", zh: "免费停车" },
-        { code: "HAC84", label: "Spa", zh: "水疗中心" },
         { code: "HAC2", label: "24-hour room service", zh: "24小时客房服务" },
+        { code: "HAC104", label: "Wedding services", zh: "婚礼服务" },
+        { code: "HAC84", label: "Spa", zh: "水疗中心" },
         { code: "HAC50", label: "Housekeeping - daily", zh: "每日客房清洁" },
+        { code: "HAC21", label: "Coin operated laundry", zh: "投币式洗衣" },
         { code: "HAC33", label: "Elevators", zh: "电梯" },
+        { code: "HAC47", label: "Accessible facilities", zh: "无障碍设施" },
+        { code: "HAC116", label: "Accessible parking", zh: "无障碍停车位" },
+        { code: "HAC74", label: "Ramp access", zh: "坡道入口" },
+        { code: "HAC35", label: "Exercise gym", zh: "健身房" },
+        { code: "HAC79", label: "Sauna", zh: "桑拿浴室" },
+        { code: "HAC80", label: "Security", zh: "安保" },
+        { code: "HAC292", label: "Newspaper", zh: "报纸" },
+        { code: "HAC22", label: "Concierge desk", zh: "礼宾服务台" },
+        { code: "HAC87", label: "Storage space", zh: "储物空间" },
+        { code: "HAC103", label: "Multilingual staff", zh: "多语种工作人员" },
+        { code: "HAC71", label: "Pool", zh: "游泳池" },
+        { code: "HAC54", label: "Indoor pool", zh: "室内游泳池" },
+        { code: "HAC66", label: "Outdoor pool", zh: "室外游泳池" },
         { code: "HAC231", label: "Racquetball", zh: "壁球" },
         { code: "HAC233", label: "Tennis court", zh: "网球场" },
         { code: "HAC76", label: "Restaurant", zh: "餐厅" },
-        { code: "HAC15", label: "Car rental desk", zh: "租车服务台" },
-        { code: "HAC282", label: "Airport shuttle service", zh: "机场班车服务" },
-        { code: "HAC88", label: "Sun terrace", zh: "阳台露台" }
+        { code: "HAC232", label: "Snow sports", zh: "雪上运动" },
+        { code: "HAC15", label: "Car rental desk", zh: "租车服务台" }
       ],
       rooms: [
         {
-          code: "9ZCF0",
-          name: "Superior Double Room, City View",
-          nameZh: "高级双人间，城市景观",
-          details: "45 sqm · 1 King · City view · Max 2 adults + 1 child",
-          description: "Private Bathroom",
+          code: "75P8A",
+          name: "Deluxe Double Room, Bathtub",
+          nameZh: "豪华双人房，浴缸",
+          details: "Max 4 guests · Deluxe room",
+          description: "private_bathroom",
           descriptionZh: "私人浴室",
-          amenities: ["Private Bathroom"],
-          image: "https://images.orbiscdn.com/images/AE114/base/ad143b32d1a1219a0ade1fbe910d5a25bfffb0da28d9d87deab2112cd9c3ffbd"
+          amenities: ["air_conditioning", "private_bathroom", "wi-fi"],
+          image: "https://images.orbiscdn.com/images/CN9/base/6da0195c2a0856fc8ba7008f1b9c701e39617b74b4da17fad2ea0d27a8534625"
         },
         {
-          code: "D403B",
-          name: "Superior Suite, Double Bed",
-          nameZh: "高级套房，双人床",
-          details: "Max 4 guests · 2 adults max · 3 children max",
-          description: "Private Bathroom",
+          code: "N3FV4",
+          name: "Presidential Suite",
+          nameZh: "总统套房",
+          details: "Max 8 guests · Suite",
+          description: "private_bathroom",
           descriptionZh: "私人浴室",
-          amenities: ["Private Bathroom"],
-          image: "https://images.orbiscdn.com/images/AE114/OTV_ROOMS/591ed80026f2b2cafb9eec93175fa73ef29f5208efa3a4ed0cc210dff6206e9c"
+          amenities: ["air_conditioning", "private_bathroom", "in_room_safe"],
+          image: "https://images.orbiscdn.com/images/CN9/base/3a0db8411fe1a74e56d66bfe3c7bce9fac0dcff135b0a8b17d3d9c5f084062cb"
         }
       ]
     };
+
+    let rawSupplierFeeds = [];
+    let rawFastXFeed = null;
+
+    function getHotelData(rawPayload) {
+      return rawPayload?.data?.hotelX?.hotels?.edges?.[0]?.node?.hotelData || null;
+    }
+
+    function getLangText(texts, lang) {
+      if (!Array.isArray(texts)) return "";
+      return texts.find((t) => t?.language === lang)?.text || texts[0]?.text || "";
+    }
+
+    function to12h(time) {
+      if (!time || typeof time !== "string" || !time.includes(":")) return "-";
+      const [hStr, m] = time.split(":");
+      const hour = Number(hStr);
+      if (!Number.isFinite(hour)) return time;
+      const suffix = hour >= 12 ? "PM" : "AM";
+      const h12 = hour % 12 === 0 ? 12 : hour % 12;
+      return `${String(h12).padStart(2, "0")}:${m} ${suffix}`;
+    }
+
+    function getChainLabel(chainCode) {
+      const code = String(chainCode || "").trim().toUpperCase();
+      const labels = {
+        XR: "ST. REGIS",
+        RQ: "REGAL HOTELS",
+        INDEPENDEN: "Independent"
+      };
+      return labels[code] || code || "-";
+    }
+
+    function extractConstObject(source, constName) {
+      const marker = `const ${constName} =`;
+      const markerIdx = source.indexOf(marker);
+      if (markerIdx === -1) return null;
+
+      const start = source.indexOf("{", markerIdx + marker.length);
+      if (start === -1) return null;
+
+      let depth = 0;
+      let inString = false;
+      let quote = "";
+      let escaped = false;
+      let end = -1;
+
+      for (let i = start; i < source.length; i++) {
+        const ch = source[i];
+
+        if (inString) {
+          if (escaped) {
+            escaped = false;
+          } else if (ch === "\\") {
+            escaped = true;
+          } else if (ch === quote) {
+            inString = false;
+            quote = "";
+          }
+          continue;
+        }
+
+        if (ch === "'" || ch === '"' || ch === "`") {
+          inString = true;
+          quote = ch;
+          continue;
+        }
+
+        if (ch === "{") depth++;
+        if (ch === "}") {
+          depth--;
+          if (depth === 0) {
+            end = i;
+            break;
+          }
+        }
+      }
+
+      if (end === -1) return null;
+
+      const literal = source.slice(start, end + 1);
+      try {
+        return Function(`"use strict"; return (${literal});`)();
+      } catch (_) {
+        return null;
+      }
+    }
+
+    function mapSupplier(raw, idx) {
+      const data = getHotelData(raw) || {};
+      const medias = Array.isArray(data.medias) ? data.medias.filter((m) => !!m?.url) : [];
+      const descriptions = Array.isArray(data.descriptions) ? data.descriptions : [];
+      const general = descriptions.find((d) => d?.type === "GENERAL") || descriptions[0] || null;
+      const generalText = general ? getLangText(general.texts, "en") : "";
+      const contactBits = [data.contact?.telephone, data.contact?.email, data.contact?.web].filter(Boolean);
+
+      return {
+        label: `Supplier ${String.fromCharCode(64 + idx)}`,
+        code: String(data.hotelCode || "-"),
+        name: data.hotelName || "-",
+        image: medias[0]?.url || null,
+        imageCount: medias.length,
+        address: data.location?.address || "-",
+        description: generalText ? { status: "partial", text: generalText } : { status: "na" },
+        contact: contactBits.length ? { status: "partial", text: contactBits.join(" · ") } : { status: "na" },
+        amenities: { status: "na" }
+      };
+    }
+
+    function mapFastX(raw) {
+      const data = getHotelData(raw) || {};
+      const descriptions = Array.isArray(data.descriptions) ? data.descriptions : [];
+      const general = descriptions.find((d) => d?.type === "GENERAL") || descriptions[0] || {};
+      const medias = Array.isArray(data.medias) ? data.medias.filter((m) => !!m?.url) : [];
+      const amenitiesEdges = data.allAmenities?.edges || [];
+      const roomEdges = data.rooms?.edges || [];
+
+      const mappedRooms = roomEdges.map((edge) => {
+        const room = edge?.node?.roomData || {};
+        const occ = room.occupancies?.total?.max;
+        const area = room.area ? `${room.area} sqm` : "";
+        const occText = occ ? `Max ${occ} guests` : "";
+        const details = [area, occText].filter(Boolean).join(" · ") || "Standard room";
+        const roomAmenities = (room.allAmenities?.edges || [])
+          .map((a) => {
+            const texts = a?.node?.amenityData?.texts;
+            const code = a?.node?.amenityData?.amenityCode || "";
+            return {
+              label: getLangText(texts, "en") || code,
+              zh: getLangText(texts, "zh") || ""
+            };
+          })
+          .filter((a) => !!a.label);
+
+        return {
+          code: room.roomCode || room.code || "-",
+          name: getLangText(room.texts, "en") || "Room",
+          nameZh: getLangText(room.texts, "zh") || "",
+          details,
+          description: "",
+          descriptionZh: "",
+          amenities: roomAmenities,
+          image: room.medias?.find((m) => !!m?.url)?.url || medias[0]?.url || ""
+        };
+      });
+
+      return {
+        address: data.location?.address || "-",
+        description: getLangText(general.texts, "en") || "-",
+        descriptionZh: getLangText(general.texts, "zh") || "",
+        checkIn: to12h(data.checkIn?.schedule?.startTime),
+        checkOut: to12h(data.checkOut?.schedule?.endTime),
+        contact: [data.contact?.email, data.contact?.telephone, data.contact?.web].filter(Boolean).join(" · "),
+        gallery: medias.map((m) => m.url),
+        galleryCount: medias.length,
+        amenities: amenitiesEdges.map((a) => ({
+          code: a?.node?.amenityData?.amenityCode || "",
+          label: getLangText(a?.node?.amenityData?.texts, "en") || a?.node?.amenityData?.amenityCode || "",
+          zh: getLangText(a?.node?.amenityData?.texts, "zh") || ""
+        })),
+        rooms: mappedRooms
+      };
+    }
+
+    async function loadRegalDataFromIndex() {
+      const response = await fetch("./index.html", { cache: "no-store" });
+      if (!response.ok) throw new Error("Unable to fetch index.html");
+      const source = await response.text();
+
+      const ppg2 = extractConstObject(source, "rawCN9SupplierPPG2");
+      const gog = extractConstObject(source, "rawCN9SupplierGOG");
+      const pkf = extractConstObject(source, "rawCN9SupplierPKF");
+      const fastxRaw = extractConstObject(source, "rawCN9FastXJson");
+
+      if (!ppg2 || !gog || !pkf || !fastxRaw) {
+        throw new Error("CN9 raw blocks not found in index.html");
+      }
+
+      rawSupplierFeeds = [ppg2, gog, pkf];
+      rawFastXFeed = fastxRaw;
+
+      const fastxData = getHotelData(fastxRaw) || {};
+      hotel = {
+        fastxCode: String(fastxData.hotelCode || "CN9"),
+        name: fastxData.hotelName || "Regal Airport Hotel",
+        city: `${fastxData.location?.city || "Hong Kong"}, ${fastxData.location?.country || "HK"}`,
+        chain: getChainLabel(fastxData.chainCode)
+      };
+
+      suppliers = rawSupplierFeeds.map((raw, index) => mapSupplier(raw, index + 1));
+      fastx = mapFastX(fastxRaw);
+    }
 
     const plans = {
       bronze: {
@@ -917,12 +1098,17 @@
     function fastxPaneHtml() {
       const plan = plans[currentPlan];
 
+      const normalizeRoomAmenity = (item) => {
+        if (typeof item === "string") return { label: item, zh: "" };
+        return { label: item?.label || "", zh: item?.zh || "" };
+      };
+
       const visibleGallery = fastx.gallery.slice(0, 5);
       const remainingGallery = Math.max(fastx.gallery.length - visibleGallery.length, 0);
       const gallery = `
         <div class="gallery">
-          ${visibleGallery.map((url, index) => `
-            <img src="${url}" alt="hotel photo" loading="lazy" onerror="this.style.display='none'" ${index === 0 ? 'style="grid-row: span 2;"' : ''}>
+          ${visibleGallery.map((url) => `
+            <img src="${url}" alt="hotel photo" loading="lazy" onerror="this.style.display='none'">
           `).join("")}
           ${remainingGallery > 0 ? `
             <div class="gallery-more">
@@ -953,16 +1139,18 @@
                 <div class="room-card">
                   <img src="${r.image}" alt="${r.name}" loading="lazy" onerror="this.style.display='none'">
                   <div>
-                    <div class="room-title">${r.name} <span class="room-code-tag">${r.code}</span></div>
+                    <div class="room-title">${r.name}</div>
                     <div class="room-details">${r.details}</div>
                     ${plan.zh ? `<div class="room-details zh"><strong>ZH:</strong> ${r.nameZh}</div>` : ""}
                     ${r.amenities && r.amenities.length ? `
                       <div class="tags-container" style="margin-top: 5px;">
-                        ${r.amenities.slice(0, 2).map((a) => `<span class="amenity-tag">${a}</span>`).join("")}
-                        ${plan.zh && r.descriptionZh ? `<span class="amenity-tag gold">${r.descriptionZh}</span>` : ""}
+                        ${r.amenities.map((a) => {
+                          const amenity = normalizeRoomAmenity(a);
+                          const text = plan.zh && amenity.zh ? `${amenity.label} · ${amenity.zh}` : amenity.label;
+                          return `<span class="amenity-tag">${text}</span>`;
+                        }).join("")}
                       </div>
                     ` : ""}
-                    ${r.description ? `<div class="room-details compact">${r.description}${plan.zh ? ` <span class="room-details zh">· ${r.descriptionZh}</span>` : ""}</div>` : ""}
                   </div>
                 </div>
               `).join("")}
@@ -1015,6 +1203,7 @@
           <div class="hotel-line">
             <span class="hotel-name">${hotel.name}</span>
             <span class="hotel-code fastx">FastX: ${hotel.fastxCode}</span>
+            <span class="hotel-code fastx">Chain: ${hotel.chain || "-"}</span>
           </div>
           ${goldBanner}
           ${gallery}
@@ -1062,6 +1251,36 @@
     function renderJson() {
       const plan = plans[currentPlan];
 
+      if (rawSupplierFeeds.length && rawFastXFeed) {
+        const supplierPayload = {
+          data: {
+            hotelX: {
+              hotels: {
+                edges: rawSupplierFeeds
+                  .map((raw) => raw?.data?.hotelX?.hotels?.edges?.[0])
+                  .filter(Boolean)
+              }
+            }
+          }
+        };
+
+        const fastxPayload = JSON.parse(JSON.stringify(rawFastXFeed));
+        fastxPayload.extensions = {
+          fastxContent: {
+            tier: plan.tag,
+            hotelLevelContent: true,
+            roomLevelContent: plan.rooms,
+            extraLanguages: plan.zh ? ["zh"] : [],
+            ownContentMerge: plan.ownContent
+          }
+        };
+
+        document.getElementById("json-supplier").textContent = JSON.stringify(supplierPayload, null, 2);
+        document.getElementById("json-fastx").textContent = JSON.stringify(fastxPayload, null, 2);
+        document.getElementById("json-fastx-title").textContent = "FastX Content (" + plan.tag.replace(/^\S+\s/, "") + ")";
+        return;
+      }
+
       const supplierPayload = {
         data: {
           hotelX: {
@@ -1073,7 +1292,7 @@
                     hotelName: s.name,
                     categoryCode: "5",
                     chainCode: null,
-                    location: { address: s.address, city: "Abu Dhabi", country: "AE" },
+                    location: { address: s.address, city: "Hong Kong", country: "HK" },
                     contact: s.contact.status === "na" ? null : { telephone: s.contact.text },
                     descriptions: s.description.status === "na" ? [] : [{ type: "GENERAL", texts: [{ language: "en", text: s.description.text }] }],
                     medias: s.image ? [{ type: "GENERAL", url: s.image }] : null,
@@ -1090,14 +1309,14 @@
         hotelCode: hotel.fastxCode,
         hotelName: hotel.name,
         categoryCode: "5",
-        chainCode: "XR",
+        chainCode: "RQ",
         location: {
           address: fastx.address,
-          city: "Abu Dhabi",
-          country: "AE",
-          coordinates: { latitude: 24.464983, longitude: 54.327659 }
+          city: "Hong Kong",
+          country: "HK",
+          coordinates: { latitude: 22.318979, longitude: 113.933617 }
         },
-        contact: { email: "reservation16@aoryx.ae", telephone: "+97126944444", web: "www.stregisabudhabi.com" },
+        contact: { email: "rah.rsvn@regalhotel.com", telephone: "85222868888", web: "www.regalhotel.com/regal-airport-hotel/en/home/home.html" },
         checkIn: { schedule: { startTime: fastx.checkIn }, instructions: [{ language: "en", text: "Check-in begins at 3:00 PM." }, ...(plan.zh ? [{ language: "zh", text: "入住时间从下午 3:00 开始。" }] : [])] },
         checkOut: { schedule: { endTime: fastx.checkOut }, instructions: [{ language: "en", text: "Check-out is at 12:00 PM." }, ...(plan.zh ? [{ language: "zh", text: "退房时间为中午 12:00。" }] : [])] },
         descriptions: [{
@@ -1194,7 +1413,9 @@
     document.getElementById("json-toggle").addEventListener("toggle", notifyHeight);
     window.addEventListener("resize", notifyHeight);
 
-    render();
+    loadRegalDataFromIndex()
+      .then(() => render())
+      .catch(() => render());
   </script>
 </body>
 </html>

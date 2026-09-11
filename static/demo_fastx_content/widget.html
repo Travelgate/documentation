@@ -1103,7 +1103,10 @@
         return { label: item?.label || "", zh: item?.zh || "" };
       };
 
-      const visibleGallery = fastx.gallery.slice(0, 5);
+      const maxGalleryTiles = 5;
+      const hasMoreGallery = fastx.gallery.length > maxGalleryTiles;
+      const visibleGalleryCount = hasMoreGallery ? maxGalleryTiles - 1 : maxGalleryTiles;
+      const visibleGallery = fastx.gallery.slice(0, visibleGalleryCount);
       const remainingGallery = Math.max(fastx.gallery.length - visibleGallery.length, 0);
       const gallery = `
         <div class="gallery">
@@ -1112,7 +1115,7 @@
           `).join("")}
           ${remainingGallery > 0 ? `
             <div class="gallery-more">
-              <img src="${fastx.gallery[4] || fastx.gallery[0]}" alt="" loading="lazy" onerror="this.style.display='none'">
+              <img src="${fastx.gallery[visibleGalleryCount] || fastx.gallery[0]}" alt="" loading="lazy" onerror="this.style.display='none'">
               <span class="more-chip">+${remainingGallery} more</span>
             </div>
           ` : ""}

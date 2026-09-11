@@ -36,12 +36,13 @@ In simple terms:
 
 1. You send a search with your usual FastX codes.
 2. The Travelgate platform connects with the suppliers.
-3. You receive the transactional data along with AO's premium static content (images, clean descriptions, and categories) from more than 500 suppliers.
+3. You receive the transactional data along with AO's premium static content (images, clean descriptions, and categories).
 4. Everything is delivered through the current standardized HotelX API response in a single block, reducing your content integration effort to zero. No need for developments. 
 
 ### Interactive FastX Content Demo
 
 Use this embedded demo to compare a raw supplier feed with the standardized FastX Content response, and switch between tiers (Bronze, Silver, Gold, Bolts-On) to see what each plan unlocks.
+This interactive demo is a visual representation of how data retrieved in real time via the API could be displayed using FastX Content.
 
 <iframe
    title="FastX Content Demo"

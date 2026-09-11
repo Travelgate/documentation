@@ -486,7 +486,7 @@
       <div class="compare">
         <article class="pane">
           <h3>
-            <span>❌ Without FastX</span>
+            <span>❌ Options returned without FastX</span>
             <span class="tag bad">raw output</span>
           </h3>
           <div class="stats" id="stats-raw"></div>
@@ -495,7 +495,7 @@
 
         <article class="pane fastx">
           <h3>
-            <span>✅ With FastX</span>
+            <span>✅ Options returned with FastX</span>
             <span class="tag good">optimized</span>
           </h3>
           <div class="stats" id="stats-fastx"></div>
@@ -504,7 +504,7 @@
       </div>
 
       <details class="json-toggle" id="json-toggle">
-        <summary>🔍 View HotelX Search JSON response</summary>
+        <summary>🔍 View HotelX Search response (JSON)</summary>
         <div class="json-grid">
           <div>
             <div class="json-title">Without FastX Codes</div>
@@ -612,7 +612,7 @@
     function getAggregationValue(supplier, key) {
       if (key === "hotel") return fastxMaster.hotelCode;
       if (key === "board") return fastxMaster.boardCode;
-      if (key === "room") return fastxMaster.roomCode;
+      if (key === "room") return fastxMaster.roomDesc;
       if (key === "refundable") return supplier.refundable;
       if (key === "binding") return supplier.binding;
       if (key === "currency") return supplier.currency;
@@ -695,7 +695,7 @@
       const wrapper = document.getElementById("aggregation-controls");
 
       wrapper.innerHTML = `
-        <span class="agg-label">🧩 Aggregation key:</span>
+        <span class="agg-label">🧩 Choose your aggregation key:</span>
         ${aggregationFields.map((field) => `
           <label class="agg-chip ${selectedAggregationKeys.includes(field.key) ? "active" : ""}">
             <input
@@ -769,7 +769,7 @@
           </div>
           <div class="fastx-win-detail">
             <div class="fastx-detail-item"><span class="label">hotel</span> ${fastxMaster.hotelCode}</div>
-            <div class="fastx-detail-item"><span class="label">room</span> ${fastxMaster.roomCode}</div>
+            <div class="fastx-detail-item"><span class="label">room</span> ${fastxMaster.roomDesc}</div>
             <div class="fastx-detail-item"><span class="label">board</span> ${fastxMaster.boardCode}</div>
             <div class="fastx-detail-item"><span class="label">ref</span> ${yesNo(winner.refundable)}</div>
             <div class="fastx-detail-item"><span class="label">bind</span> ${yesNo(winner.binding)}</div>

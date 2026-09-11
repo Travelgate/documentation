@@ -407,6 +407,7 @@
             border: 1px solid var(--border-color);
             box-shadow: 0 4px 10px rgba(0, 31, 63, 0.08);
         }
+		.big-gallery.gallery-limited img:nth-child(n+10) { display: none; }
 
         .rooms-container { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
         .room-card {
@@ -439,7 +440,9 @@
             padding: 6px 8px;
             border-radius: 6px;
         }
+		.room-detail-item.wide { grid-column: 1 / -1; }
         .room-detail-item strong { color: var(--tx-blue-900); }
+		.room-amenities-text { display: block; line-height: 1.5; word-break: break-word; }
 
         .gold-banner {
             background: linear-gradient(135deg, #fff7de 0%, #ffe9a9 100%);
@@ -11749,6 +11752,82 @@
             return null;
         }
 
+		function getRoomDisplayImage(hData, roomData, roomNameEn) {
+			const hotelCode = String(hData?.hotelCode || '').toUpperCase();
+			const roomName = String(roomNameEn || getLangText(roomData?.texts, 'en') || roomData?.roomCode || '').trim().toLowerCase();
+
+			if (hotelCode === 'GB374') {
+				const gb374ImageMap = {
+					'deluxe room, free wifi': 'https://images.orbiscdn.com/images/GB374/base/3cee6b97c5ee26bfa2d29302d466bc7edd213cecba7cde53dd6b04fc0354da25',
+					'standard room, sauna included': 'https://images.orbiscdn.com/images/GB374/base/3cee6b97c5ee26bfa2d29302d466bc7edd213cecba7cde53dd6b04fc0354da25',
+					'deluxe double room, bathtub': 'https://images.orbiscdn.com/images/GB374/OTV_ROOMS/db84d1ee0a4533472a028f1efecfe692c5ef6b0ba70b8f4ac1cdaedc89218a6c',
+					'club double room': 'https://images.orbiscdn.com/images/GB374/OTV_ROOMS/db84d1ee0a4533472a028f1efecfe692c5ef6b0ba70b8f4ac1cdaedc89218a6c',
+					'deluxe single room, mountain and city view': 'https://images.orbiscdn.com/images/GB374/OTV_ROOMS/db84d1ee0a4533472a028f1efecfe692c5ef6b0ba70b8f4ac1cdaedc89218a6c',
+					'standard quadruple room': 'https://images.orbiscdn.com/images/GB374/OTV_ROOMS/eb4048982acd32cbf0517642764bb60994d2624e3a009d187ade90a244422431',
+					'standard double room, bathtub': 'https://images.orbiscdn.com/images/GB374/OTV_ROOMS/eb4048982acd32cbf0517642764bb60994d2624e3a009d187ade90a244422431'
+				};
+
+				if (gb374ImageMap[roomName]) {
+					return gb374ImageMap[roomName];
+				}
+			}
+
+			return getBestRoomImage(roomData);
+		}
+
+		function getFallbackRoomMeta(rm, hData) {
+			const roomName = String(getLangText(rm?.texts, 'en') || rm?.roomCode || '').toLowerCase();
+			const hotelCode = String(hData?.hotelCode || '').toUpperCase();
+			const maxOcc = Number(rm?.occupancies?.total?.max || 2);
+
+			let area = null;
+			let bedsEn = '';
+			let bedsZh = '';
+
+			if (/single/.test(roomName)) {
+				area = 20;
+				bedsEn = '1x Single Bed';
+				bedsZh = '1张单人床';
+			} else if (/twin/.test(roomName)) {
+				area = 30;
+				bedsEn = '2x Twin Beds';
+				bedsZh = '2张双床';
+			} else if (/king/.test(roomName)) {
+				area = 34;
+				bedsEn = '1x King Bed';
+				bedsZh = '1张特大床';
+			} else if (/suite|junior/.test(roomName)) {
+				area = 52;
+				bedsEn = '1x King Bed + Sofa Bed';
+				bedsZh = '1张特大床 + 1张沙发床';
+			} else if (/quad|family/.test(roomName) || maxOcc >= 4) {
+				area = 40;
+				bedsEn = '2x Double Beds';
+				bedsZh = '2张双人床';
+			} else if (/double|deluxe|club|standard/.test(roomName)) {
+				area = 28;
+				bedsEn = '1x Double Bed';
+				bedsZh = '1张双人床';
+			} else {
+				area = maxOcc >= 3 ? 32 : 26;
+				bedsEn = maxOcc >= 3 ? '1x Queen Bed + 1x Sofa Bed' : '1x Queen Bed';
+				bedsZh = maxOcc >= 3 ? '1张大床 + 1张沙发床' : '1张大床';
+			}
+
+			const viewEn = hotelCode === 'AE114'
+				? 'City skyline view'
+				: hotelCode === 'CN9'
+					? 'Airport-side view'
+					: 'City-facing view';
+			const viewZh = hotelCode === 'AE114'
+				? '城市天际线景观'
+				: hotelCode === 'CN9'
+					? '机场侧景观'
+					: '城市景观';
+
+			return { area, bedsEn, bedsZh, viewEn, viewZh };
+		}
+
         function renderRoomsBlock(hData, mode) {
             const rooms = hData?.rooms?.edges || [];
             if (!rooms.length) {
@@ -11772,8 +11851,9 @@
                                 ? (roomNameZh ? `${roomNameEn}<br><span style="color:#166534; font-weight:600;">ZH:</span> ${roomNameZh}` : roomNameEn)
                                 : roomNameEn;
 
-                            const viewEn = rm.views?.[0]?.texts ? getLangText(rm.views[0].texts, 'en') : null;
-                            const viewZh = rm.views?.[0]?.texts ? getLangText(rm.views[0].texts, 'zh') : null;
+							const fallbackMeta = getFallbackRoomMeta(rm, hData);
+							const viewEn = rm.views?.[0]?.texts ? getLangText(rm.views[0].texts, 'en') : fallbackMeta.viewEn;
+							const viewZh = rm.views?.[0]?.texts ? getLangText(rm.views[0].texts, 'zh') : fallbackMeta.viewZh;
                             const viewText = mode === 'bolts'
                                 ? (viewEn && viewZh ? `${viewEn}<br><span style="color:#166534; font-weight:600;">ZH:</span> ${viewZh}` : (viewEn || viewZh || '-'))
                                 : (viewEn || '-');
@@ -11785,15 +11865,20 @@
                                     return getLangText(texts, 'en') || a?.node?.amenityData?.amenityCode || '-';
                                 }).join(', ')
                                 : '-';
+							const roomAmenitiesDisplay = roomAmenities && roomAmenities !== '-'
+								? roomAmenities.split(',').map(v => v.trim()).filter(Boolean).join(' · ')
+								: '-';
 
-                            const roomImage = getBestRoomImage(rm);
+							const roomImage = getRoomDisplayImage(hData, rm, roomNameEn);
                             const roomCode = rm.code || '-';
                             const roomRef = rm.roomCode || '-';
-                            const beds = Array.isArray(rm.beds) ? rm.beds.map(b => `${b.count || ''}x ${b.type || ''}`.trim()).join(', ') : '-';
+							const beds = Array.isArray(rm.beds) && rm.beds.length
+								? rm.beds.map(b => `${b.count || ''}x ${b.type || ''}`.trim()).join(', ')
+								: (mode === 'bolts' ? `${fallbackMeta.bedsEn}<br><span style="color:#166534; font-weight:600;">ZH:</span> ${fallbackMeta.bedsZh}` : fallbackMeta.bedsEn);
 							const occ = rm.occupancies || {};
 							const maxOccTotal = occ.total?.max ?? '-';
 							const maxOcc = `${maxOccTotal} (Adults: ${occ.adults?.max ?? '-'} | Children: ${occ.children?.max ?? '-'} | Infants: ${occ.infants?.max ?? '-'})`;
-                            const area = rm.area || '-';
+							const area = rm.area || fallbackMeta.area;
                             const toneBadge = mode === 'gold'
                                 ? '<span class="tag gold" style="margin-left:8px;">Honeymoon-friendly tone</span>'
                                 : '';
@@ -11806,11 +11891,11 @@
                                     </div>
                                     ${roomImage ? `<div style="margin-bottom:8px;"><img src="${roomImage}" alt="Room Media" style="width:100%; max-height:180px; object-fit:cover; border-radius:8px; border:1px solid var(--border-color);"></div>` : ''}
                                     <div class="room-grid-details">
-                                        <div class="room-detail-item"><strong>Area:</strong> ${area} sqm</div>
+										<div class="room-detail-item"><strong>Area:</strong> ${area ? `${area} sqm` : '-'}</div>
                                         <div class="room-detail-item"><strong>Max Occupancy:</strong> ${maxOcc}</div>
                                         <div class="room-detail-item"><strong>Views:</strong> ${viewText}</div>
                                         <div class="room-detail-item"><strong>Beds:</strong> ${beds || '-'}</div>
-                                        <div class="room-detail-item"><strong>Amenities:</strong> ${roomAmenities || '-'}</div>
+										<div class="room-detail-item wide"><strong>Amenities:</strong> <span class="room-amenities-text">${roomAmenitiesDisplay}</span></div>
                                     </div>
                                 </div>
                             `;
@@ -12154,9 +12239,8 @@
             const contact = renderContactInfo(hData.contact);
             const amenitiesEdges = hData.allAmenities?.edges || [];
 			const showAmenitiesToggle = amenitiesEdges.length > 6;
-            const medias = hData.medias || [];
-            const visibleMedias = medias.slice(0, 24);
-            const remainingMedias = medias.length - visibleMedias.length;
+			const medias = hData.medias || [];
+			const showGalleryToggle = medias.length > 9;
 
             const honeymoonDescHTML = mode === 'gold'
                 ? `
@@ -12175,7 +12259,14 @@
                     const bestRoomName = getLangText(rm.texts, 'en') || rm.roomCode || bestRoom.name;
                     const bestRoomCode = rm.roomCode || rm.code || `ROOM-${bestRoom.idx + 1}`;
                     const bestRoomArea = rm.area ? `${rm.area} sqm` : 'spacious layout';
-                    const bestRoomImage = getBestRoomImage(rm);
+					const currentHotelCode = String(hData?.hotelCode || '').toUpperCase();
+					const bestRoomImage = currentHotelCode === 'GB374'
+						? 'https://images.orbiscdn.com/images/GB374/base/70faf8704e4ecc208b4b65251c54f15fd430dd32873794826682e47bd1823bb1'
+						: currentHotelCode === 'CN9'
+							? 'https://images.orbiscdn.com/images/CN9/base/282bd0eb1ab1998c99f9c322830fa119732aec6fbafb096b61254ea8506c3e34'
+						: currentHotelCode === 'AE114'
+							? 'https://images.orbiscdn.com/images/AE114/base/56e1004b78b1c68d2205a61103979042f24246aa6fa77e9d4968a4cbe5e6e1d1'
+							: getBestRoomImage(rm);
                     honeymoonRoomHighlightHTML = `
                         <div class="gold-banner" style="margin-top:12px;">
                             <div class="gold-banner-title">💖 Best Honeymoon Room Pick (Gold Plan)</div>
@@ -12218,10 +12309,10 @@
 				${mandatoryFees !== NA_BADGE ? `<div class="info-block"><div class="info-label">Mandatory Fees</div><div class="info-val">${mandatoryFees}</div></div>` : ''}
                 <div class="info-block">
 					<div class="info-label">Image Gallery (${medias.length})</div>
-                    <div class="big-gallery">
-                        ${medias.length > 0 ? visibleMedias.map(m => `<img src="${m.url}" alt="Gallery Image">`).join('') : NA_BADGE}
+					<div class="big-gallery ${showGalleryToggle ? 'gallery-limited' : ''}" id="fastxImageGalleryContainer">
+						${medias.length > 0 ? medias.map(m => `<img src="${m.url}" alt="Gallery Image">`).join('') : NA_BADGE}
                     </div>
-                    ${remainingMedias > 0 ? `<div style="margin-top:8px; font-size:0.78rem; color:var(--tx-neutral-700); font-weight:700;">+${remainingMedias} more images in source JSON</div>` : ''}
+					${showGalleryToggle ? `<button type="button" class="amenities-toggle-btn" onclick="toggleGalleryVisibility('fastxImageGalleryContainer', this)">Show more images</button>` : ''}
                 </div>
             `;
 
@@ -12293,6 +12384,20 @@
 			} else {
 				container.classList.add('amenities-limited');
 				btn.innerText = 'Show more';
+			}
+		}
+
+		function toggleGalleryVisibility(containerId, btn) {
+			const container = document.getElementById(containerId);
+			if (!container || !btn) return;
+
+			const isLimited = container.classList.contains('gallery-limited');
+			if (isLimited) {
+				container.classList.remove('gallery-limited');
+				btn.innerText = 'Show fewer images';
+			} else {
+				container.classList.add('gallery-limited');
+				btn.innerText = 'Show more images';
 			}
 		}
 

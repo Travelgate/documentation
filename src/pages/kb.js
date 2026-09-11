@@ -75,7 +75,7 @@ export default function Home() {
                         <div class="item"> 
                           <img src="https://storage.travelgate.com/kbase/img_fastx.png"/>
                           <h4>FastX</h4>
-                          <p>FastX is how the marketplace operates at scale. It allows Buyers to retrieve aggregated content from various Sellers in a single response, reducing the technical overhead of managing individual connections and manual mapping tables. astX eliminates repetitive work by giving the entire marketplace a shared language for hotels, boards and rooms.</p>
+                          <p>FastX is how the marketplace operates at scale. It allows Buyers to retrieve aggregated content from various Sellers in a single response, reducing the technical overhead of managing individual connections and manual mapping tables. FastX eliminates repetitive work by giving the entire marketplace a shared language for hotels, boards and rooms.</p>
                           <p><a href="/kb/connectivity-products/for-buyers/hotel-x/fastx/fastx-solution">Read article <i class="fa-solid fa-chevron-right"></i></a></p>
                         </div>
                       </div>

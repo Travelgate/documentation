@@ -64,14 +64,21 @@
         .badge-fx {
             background: linear-gradient(135deg, #fff2cb 0%, #ffd667 100%);
             color: #5f3d00;
-            border: 1px solid #ffcf55;
-            padding: 5px 11px;
+            border: 2px solid #ffcf55;
+			padding: 0 12px;
             border-radius: 999px;
-            font-size: 0.68rem;
-            font-weight: 800;
+			font-size: 1.38rem;
+			font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 0.45px;
-            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+			letter-spacing: 0.75px;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			width: 118px;
+			height: 52px;
+			line-height: 1;
+			box-sizing: border-box;
+			box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35), 0 8px 18px rgba(0, 0, 0, 0.28);
         }
         .header-actions {
             display: flex;
@@ -563,7 +570,7 @@
             <!-- ROW 1: SUPPLIERS -->
             <div class="accordion open" id="row1">
                 <div class="acc-header" onclick="toggleAcc('row1')">
-                    <div class="acc-title"><span class="acc-icon">▼</span> 1. Content per supplier</div>
+                    <div class="acc-title"><span class="acc-icon">▼</span> 1. Native Content Supplier</div>
                     <div class="view-toggle" onclick="event.stopPropagation();">
                         <button class="toggle-btn active" id="btn-v-row1" onclick="setView('row1', 'visual')">Visual</button>
                         <button class="toggle-btn" id="btn-j-row1" onclick="setView('row1', 'json')">JSON</button>
@@ -583,7 +590,7 @@
             <!-- ROW 2: COMPARISON -->
             <div class="accordion open" id="row2">
                 <div class="acc-header" onclick="toggleAcc('row2')">
-                    <div class="acc-title"><span class="acc-icon">▼</span> 2. Comparison: Supplier vs FastX Content</div>
+                    <div class="acc-title"><span class="acc-icon">▼</span> 2. Native Supplier Content vs. Orchestrated FastX Content</div>
                     <div class="view-toggle" onclick="event.stopPropagation();">
                         <button class="toggle-btn active" id="btn-v-row2" onclick="setView('row2', 'visual')">Visual</button>
                         <button class="toggle-btn" id="btn-j-row2" onclick="setView('row2', 'json')">JSON</button>
@@ -12442,8 +12449,13 @@
 								: (mode === 'bolts' ? `${fallbackMeta.bedsEn}<br><span style="color:#166534; font-weight:600;">ZH:</span> ${fallbackMeta.bedsZh}` : fallbackMeta.bedsEn);
 							const occ = rm.occupancies || {};
 							const maxOccTotal = occ.total?.max ?? '-';
-							const maxOcc = `${maxOccTotal} (Adults: ${occ.adults?.max ?? '-'} | Children: ${occ.children?.max ?? '-'} | Infants: ${occ.infants?.max ?? '-'})`;
+							const maxOcc = mode === 'bolts'
+								? `${maxOccTotal} (Adults: ${occ.adults?.max ?? '-'} | Children: ${occ.children?.max ?? '-'} | Infants: ${occ.infants?.max ?? '-'})<br><span style="color:#166534; font-weight:600;">ZH:</span> ${maxOccTotal}（成人：${occ.adults?.max ?? '-'}｜儿童：${occ.children?.max ?? '-'}｜婴儿：${occ.infants?.max ?? '-'}）`
+								: `${maxOccTotal} (Adults: ${occ.adults?.max ?? '-'} | Children: ${occ.children?.max ?? '-'} | Infants: ${occ.infants?.max ?? '-'})`;
 							const area = rm.area || fallbackMeta.area;
+							const areaDisplay = mode === 'bolts'
+								? (area ? `${area} sqm<br><span style="color:#166534; font-weight:600;">ZH:</span> ${area} 平方米` : '-')
+								: (area ? `${area} sqm` : '-');
                             const toneBadge = mode === 'gold'
                                 ? '<span class="tag gold" style="margin-left:8px;">Honeymoon-friendly tone</span>'
                                 : '';
@@ -12456,7 +12468,7 @@
                                     </div>
                                     ${roomImage ? `<div style="margin-bottom:8px;"><img src="${roomImage}" alt="Room Media" style="width:100%; max-height:180px; object-fit:cover; border-radius:8px; border:1px solid var(--border-color);"></div>` : ''}
                                     <div class="room-grid-details">
-										<div class="room-detail-item"><strong>Area:</strong> ${area ? `${area} sqm` : '-'}</div>
+										<div class="room-detail-item"><strong>Area:</strong> ${areaDisplay}</div>
                                         <div class="room-detail-item"><strong>Max Occupancy:</strong> ${maxOcc}</div>
                                         <div class="room-detail-item"><strong>Views:</strong> ${viewText}</div>
                                         <div class="room-detail-item"><strong>Beds:</strong> ${beds || '-'}</div>
@@ -12542,9 +12554,28 @@
                 locationText: 'Abu Dhabi, United Arab Emirates',
                 rawFastXJson: rawFastXMasterJson,
                 suppliers: {
-                    darina: normalizeSupplier(rawDarinaJson, { id: 'darina', name: 'SUP1', code: 'ANON-001', sourceFile: 'hotel_AE114_Suppier_DRNPRV.txt' }),
+					darina: {
+						...normalizeSupplier(rawDarinaJson, { id: 'darina', name: 'SUP1', code: 'ANON-001', sourceFile: 'hotel_AE114_Suppier_DRNPRV.txt' }),
+						images: [
+							'https://images.orbiscdn.com/images/AE114/base/01795b6c4553a537a7c2615f902b0c50d6ad23e2d7275a756ce14ff1566bc120',
+							'https://images.orbiscdn.com/images/AE114/base/2000ab11393cf31e297a688e536c7d9eb20e5b58ddc2791f1019d3036d3b1581',
+							'https://images.orbiscdn.com/images/AE114/base/0bc17d63540b6d9123d79c45565dfbc14a026549cebd99a424b5899f3fce43df',
+							'https://images.orbiscdn.com/images/AE114/base/c3096ab2ddcce58af8b12b87186f5665809f70b4a54295b50872ec3fbf306bb1',
+							'https://images.orbiscdn.com/images/AE114/base/77da33173a23c45ad7b80144c8d6e2ffdbbf9edd235c984145559ac21809f341',
+							'https://images.orbiscdn.com/images/AE114/base/44f4b1f4c5b144bb4fbb989127986c26935d6ec35ba686dc159fe6eb55b9e5ed'
+						]
+					},
                     fly: normalizeSupplier(rawFlyJson, { id: 'fly', name: 'SUP2', code: 'ANON-002', sourceFile: 'hotel_AE114_Suppier_FLY.txt' }),
-                    tld: normalizeSupplier(rawTldJson, { id: 'tld', name: 'SUP3', code: 'ANON-003', sourceFile: 'hotel_AE114_Suppier_TLD.txt' })
+					tld: {
+						...normalizeSupplier(rawTldJson, { id: 'tld', name: 'SUP3', code: 'ANON-003', sourceFile: 'hotel_AE114_Suppier_TLD.txt' }),
+						images: [
+							'https://images.orbiscdn.com/images/AE114/base/d4061b890726a0316c486f9cd44718ad419fe3a961f613021584e457564264e4',
+							'https://images.orbiscdn.com/images/AE114/base/103b090885a7b1bc9ad7b7d37c26ca916b0e4f29368046ef7edeb290329fc4c3',
+							'https://images.orbiscdn.com/images/AE114/base/44f4b1f4c5b144bb4fbb989127986c26935d6ec35ba686dc159fe6eb55b9e5ed',
+							'https://images.orbiscdn.com/images/AE114/base/77e460718b7df6c2610f09cc4e0546df440e1306ced987f3fe7fd50ea1ededc2',
+							'https://images.orbiscdn.com/images/AE114/base/2f65f783f8e5b4a0e5d10bf03fd29107c10e86a32ef9ee984a94708cad8f14aa'
+						]
+					}
                 }
             },
             cn9: {
@@ -12553,9 +12584,29 @@
                 locationText: 'Hong Kong, Hong Kong',
                 rawFastXJson: rawCN9FastXJson,
                 suppliers: {
-                    ppg2: normalizeSupplier(rawCN9SupplierPPG2, { id: 'ppg2', name: 'SUP1', code: 'ANON-001', sourceFile: 'hotel_CN9_Supplier_PPG2.txt' }),
-                    gog: normalizeSupplier(rawCN9SupplierGOG, { id: 'gog', name: 'SUP2', code: 'ANON-002', sourceFile: 'hotel_CN9_Supplier_GOG.txt' }),
-                    pkf: normalizeSupplier(rawCN9SupplierPKF, { id: 'pkf', name: 'SUP3', code: 'ANON-003', sourceFile: 'hotel_CN9_Supplier_PKF.txt' })
+					ppg2: {
+						...normalizeSupplier(rawCN9SupplierPPG2, { id: 'ppg2', name: 'SUP1', code: 'ANON-001', sourceFile: 'hotel_CN9_Supplier_PPG2.txt' }),
+						images: [
+							'https://images.orbiscdn.com/images/CN9/base/3b74c5cce4b5e3b79854463071993a6d01909540496ae0e84607dcdb2d176e0e',
+							'https://images.orbiscdn.com/images/CN9/base/f8977f2a5bfd739b3cf8d6c00c71d39c3396da8b922c78c888a5823435bc3a3e',
+							'https://images.orbiscdn.com/images/CN9/base/f8beab8868c93e5b25d17122c1435e4a300fd1a60d59b212b24f2a24b2e5644d',
+							'https://images.orbiscdn.com/images/CN9/base/4ab9fd889b81f787fad3467d9ea836b11393f99d4f449b7e170bb2020519615c'
+						]
+					},
+					gog: {
+						...normalizeSupplier(rawCN9SupplierGOG, { id: 'gog', name: 'SUP2', code: 'ANON-002', sourceFile: 'hotel_CN9_Supplier_GOG.txt' }),
+						images: [
+							'https://images.orbiscdn.com/images/CN9/base/c850816febdfae8e2fa1a35387dffa1b79fb60db11e2a8f209cd900e1294ffa0'
+						]
+					},
+					pkf: {
+						...normalizeSupplier(rawCN9SupplierPKF, { id: 'pkf', name: 'SUP3', code: 'ANON-003', sourceFile: 'hotel_CN9_Supplier_PKF.txt' }),
+						images: [
+							'https://images.orbiscdn.com/images/CN9/base/4ab9fd889b81f787fad3467d9ea836b11393f99d4f449b7e170bb2020519615c',
+							'https://images.orbiscdn.com/images/CN9/base/58047180dfeb7edd851e213b66f16ca61c9984ef59fd36c672641d3200c8b589',
+							'https://images.orbiscdn.com/images/CN9/base/2f967d5afa4d507636e14076ce1a41b7bfc57ab8835a720a50a78925a2660c37'
+						]
+					}
                 }
             },
             gb374: {
@@ -12564,9 +12615,27 @@
                 locationText: 'London, United Kingdom',
                 rawFastXJson: rawGB374FastXJson,
                 suppliers: {
-                    tml: normalizeSupplier(rawGB374SupplierTML, { id: 'tml', name: 'SUP1', code: 'ANON-001', sourceFile: 'hotel_GB374_Supplier_TML.txt' }),
-                    t10: normalizeSupplier(rawGB374SupplierT10, { id: 't10', name: 'SUP2', code: 'ANON-002', sourceFile: 'hotel_GB374_Supplier_T10.txt' }),
-                    fyy: normalizeSupplier(rawGB374SupplierFYY, { id: 'fyy', name: 'SUP3', code: 'ANON-003', sourceFile: 'hotel_GB374_Supplier_FYY.txt' })
+					tml: {
+						...normalizeSupplier(rawGB374SupplierTML, { id: 'tml', name: 'SUP1', code: 'ANON-001', sourceFile: 'hotel_GB374_Supplier_TML.txt' }),
+						images: [
+							'https://images.orbiscdn.com/images/GB374/base/35526654994c66480f14c7282487c6d887f0a98df3d972b445c1c440c9ce1174',
+							'https://images.orbiscdn.com/images/GB374/base/2b51ed607a7a1e0999f9e2e82f02d9e98a8b616b5c4af1e41ee67cea784fc09c'
+						]
+					},
+					t10: {
+						...normalizeSupplier(rawGB374SupplierT10, { id: 't10', name: 'SUP2', code: 'ANON-002', sourceFile: 'hotel_GB374_Supplier_T10.txt' }),
+						images: [
+							'https://images.orbiscdn.com/images/GB374/base/6507efca1875c46a78f2c25519523a06edebc8b2cca4cb102c4707b25f436493',
+							'https://images.orbiscdn.com/images/GB374/base/5a958188be3fc38def4e81d53f3463840000b32a1c54c457c2d9a18b5e6dff96',
+							'https://images.orbiscdn.com/images/GB374/base/fd7c1934acea0fe665419e9cf3c069b75636a6a77f30b949b3bc519f3950f103'
+						]
+					},
+					fyy: {
+						...normalizeSupplier(rawGB374SupplierFYY, { id: 'fyy', name: 'SUP3', code: 'ANON-003', sourceFile: 'hotel_GB374_Supplier_FYY.txt' }),
+						images: [
+							'https://images.orbiscdn.com/images/GB374/base/04ebd55cfee7142a8ecf0731e92debd91cdfb191ede7112449695950e8f8a575'
+						]
+					}
                 }
             }
         };

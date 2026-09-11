@@ -96,7 +96,7 @@ export default function Home() {
                     <div className="row">
                       <div className="col col--4">
                         <div class="item">
-                          <img src="https://storage.travelgate.com/kbase/landing_connectionscontent.jpg" />
+                          <img src="https://storage.travelgate.com/kbase/landing_errorsandwarnings.jpg" />
                           <h4>Errors and Warnings</h4>
                           <p>Welcome to this section where we'll provide you with a comprehensive list of errors and warnings that users may come across while using our Hotel Buyers API. These errors and warnings can be received in responses during the booking flow, management, and content methods.</p>
                           <p><a href="/kb/connectivity-products/for-buyers/errors-and-warnings/overview">Read article <i class="fa-solid fa-chevron-right"></i></a></p>

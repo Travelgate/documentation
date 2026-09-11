@@ -8397,7 +8397,7 @@
 							"updatedAt": "2026-09-10T13:05:04.8640263Z",
 							"hotelData": {
 								"hotelCode": "GB374",
-								"hotelName": "Best Western Plus Park Grand London Heathrow",
+								"hotelName": "Park Grand London Heathrow",
 								"categoryCode": "4",
 								"chainCode": "INDEPENDEN",
 								"location": {
@@ -11957,6 +11957,19 @@
             };
         }
 
+        function getChainLabel(chainCode) {
+            const code = typeof chainCode === 'string' ? chainCode.trim() : '';
+            if (!code) return NA_BADGE;
+
+            const labels = {
+                XR: 'ST. REGIS',
+                RQ: 'REGAL HOTELS',
+                INDEPENDEN: 'Independent'
+            };
+
+            return labels[code.toUpperCase()] || code;
+        }
+
         const hotelCatalog = {
             ae114: {
                 fastxCode: 'AE114',
@@ -11982,7 +11995,7 @@
             },
             gb374: {
                 fastxCode: 'GB374',
-                hotelName: 'Best Western Plus Park Grand London Heathrow',
+                hotelName: 'Plus Park Grand London Heathrow',
                 locationText: 'London, United Kingdom',
                 rawFastXJson: rawGB374FastXJson,
                 suppliers: {
@@ -12280,7 +12293,7 @@
 
             const hotelDetailsHTML = `
                 <div class="info-block"><div class="info-label">Hotel Name</div><div class="info-val"><strong>${hData.hotelName || '-'}</strong></div></div>
-                <div class="info-block"><div class="info-label">Hotel Chain</div><div class="info-val"><strong>${hData.chainCode || NA_BADGE}</strong></div></div>
+                <div class="info-block"><div class="info-label">Hotel Chain</div><div class="info-val"><strong>${getChainLabel(hData.chainCode)}</strong></div></div>
                 <div class="info-block"><div class="info-label">Address & Destination</div><div class="info-val">${address}, ${zip} | Destination: ${destination}</div></div>
                 <div class="info-block"><div class="info-label">City</div><div class="info-val">${city}</div></div>
                 <div class="info-block"><div class="info-label">Coordinates</div><div class="info-val">${coordinates}</div></div>

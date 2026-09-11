@@ -349,6 +349,28 @@
         }
         .info-val { font-size: 0.85rem; color: var(--tx-neutral-900); line-height: 1.6; white-space: pre-line; }
 		.info-val.rich-content { white-space: normal; }
+		.card-types-icons { display: inline-flex; flex-wrap: wrap; gap: 6px; vertical-align: middle; }
+		.card-type-chip {
+			display: inline-flex;
+			align-items: center;
+			gap: 5px;
+			padding: 2px 7px;
+			border-radius: 999px;
+			border: 1px solid #dbe7f5;
+			background: #f8fbff;
+			font-size: 0.72rem;
+			font-weight: 700;
+			color: #1f3b63;
+			line-height: 1.2;
+		}
+		.card-type-icon {
+			width: 18px;
+			height: 12px;
+			border-radius: 3px;
+			border: 1px solid #cbd5e1;
+			object-fit: cover;
+			background: #fff;
+		}
 		.desc-type-group { margin-top: 10px; }
 		.desc-type-card {
 			background: #ffffff;
@@ -12218,6 +12240,45 @@
 			return String(value).replace(/_/g, ' ').replace(/\s+/g, ' ').trim();
 		}
 
+		function getCardTypeMeta(rawType) {
+			const label = String(rawType || '').trim();
+			const normalized = label.toUpperCase().replace(/[\s_-]/g, '');
+
+			if (normalized === 'VI' || normalized.includes('VISA')) return { short: 'VI', color: '#1a4db3', label: label || 'Visa' };
+			if (normalized === 'CA' || normalized === 'MC' || normalized.includes('MASTERCARD')) return { short: 'MC', color: '#ff5f00', label: label || 'Mastercard' };
+			if (normalized === 'AX' || normalized.includes('AMEX') || normalized.includes('AMERICANEXPRESS')) return { short: 'AX', color: '#2e77bb', label: label || 'Amex' };
+			if (normalized === 'DI' || normalized.includes('DISCOVER')) return { short: 'DI', color: '#f97316', label: label || 'Discover' };
+			if (normalized.includes('JCB')) return { short: 'JCB', color: '#0d9488', label: label || 'JCB' };
+			if (normalized === 'DC' || normalized.includes('DINERS')) return { short: 'DC', color: '#0f766e', label: label || 'Diners' };
+			if (normalized === 'UP' || normalized.includes('UNIONPAY')) return { short: 'UP', color: '#be123c', label: label || 'UnionPay' };
+
+			const short = (normalized || 'CC').slice(0, 3);
+			return { short, color: '#475569', label: label || short };
+		}
+
+		function getCardTypeIconDataUrl(short, color) {
+			const safeShort = String(short || 'CC').slice(0, 3).toUpperCase();
+			const safeColor = String(color || '#475569');
+			const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="72" height="48" viewBox="0 0 72 48"><rect x="1" y="1" width="70" height="46" rx="8" fill="${safeColor}"/><rect x="1" y="1" width="70" height="46" rx="8" fill="none" stroke="rgba(255,255,255,0.35)"/><text x="36" y="31" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#ffffff">${safeShort}</text></svg>`;
+			return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+		}
+
+		function renderCardTypesWithIcons(cardTypes) {
+			if (!cardTypes) return NA_BADGE;
+
+			const list = (Array.isArray(cardTypes) ? cardTypes : String(cardTypes).split(/[,;|/]+/))
+				.map(v => String(v || '').trim())
+				.filter(Boolean);
+
+			if (!list.length) return NA_BADGE;
+
+			return `<span class="card-types-icons">${list.map(type => {
+				const meta = getCardTypeMeta(type);
+				const icon = getCardTypeIconDataUrl(meta.short, meta.color);
+				return `<span class="card-type-chip"><img class="card-type-icon" src="${icon}" alt="${escapeHtml(meta.label)} icon"><span>${escapeHtml(meta.label)}</span></span>`;
+			}).join('')}</span>`;
+		}
+
 		function getBedTypeZh(type) {
 			const normalized = String(type || '').toLowerCase().trim();
 			if (!normalized) return '床位';
@@ -12562,7 +12623,7 @@
                 const addressVal = sup.address ? sup.address : NA_BADGE;
                 const cityVal = sup.city ? sup.city : NA_BADGE;
                 const coordinatesVal = formatCoordinates(sup.coordinates);
-                const cardTypesVal = sup.cardTypes ? (Array.isArray(sup.cardTypes) ? sup.cardTypes.join(', ') : sup.cardTypes) : NA_BADGE;
+				const cardTypesVal = renderCardTypesWithIcons(sup.cardTypes);
                 const checkInVal = sup.checkIn ? sup.checkIn : NA_BADGE;
                 const checkOutVal = sup.checkOut ? sup.checkOut : NA_BADGE;
                 const contactVal = renderContactInfo(sup.contact, false);
@@ -12637,7 +12698,7 @@
             const addressVal = sup.address ? sup.address : NA_BADGE;
             const cityVal = sup.city ? sup.city : NA_BADGE;
             const coordinatesVal = formatCoordinates(sup.coordinates);
-            const cardTypesVal = sup.cardTypes ? (Array.isArray(sup.cardTypes) ? sup.cardTypes.join(', ') : sup.cardTypes) : NA_BADGE;
+			const cardTypesVal = renderCardTypesWithIcons(sup.cardTypes);
             const checkInVal = sup.checkIn ? sup.checkIn : NA_BADGE;
             const checkOutVal = sup.checkOut ? sup.checkOut : NA_BADGE;
             const contactVal = renderContactInfo(sup.contact);
@@ -12699,7 +12760,7 @@
 				`;
             }
 
-            const fastxCardTypes = Array.isArray(hData.cardTypes) ? hData.cardTypes.join(', ') : NA_BADGE;
+			const fastxCardTypes = renderCardTypesWithIcons(hData.cardTypes);
 			const descriptions = Array.isArray(hData.descriptions) ? hData.descriptions : [];
 			const descObj = descriptions.find(d => d.type === 'GENERAL' && d.texts?.length) || descriptions[0] || null;
 			const orderedDescriptionTypes = ['GENERAL', 'ACTIVITY', 'RESTAURANT'];

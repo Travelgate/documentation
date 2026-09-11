@@ -994,7 +994,32 @@
     }
 
     async function loadRegalDataFromIndex() {
-      return;
+      const response = await fetch("./index.html", { cache: "no-store" });
+      if (!response.ok) throw new Error("Unable to fetch index.html");
+      const source = await response.text();
+
+      const ppg2 = extractConstObject(source, "rawCN9SupplierPPG2");
+      const gog = extractConstObject(source, "rawCN9SupplierGOG");
+      const pkf = extractConstObject(source, "rawCN9SupplierPKF");
+      const fastxRaw = extractConstObject(source, "rawCN9FastXJson");
+
+      if (!ppg2 || !gog || !pkf || !fastxRaw) {
+        throw new Error("CN9 raw blocks not found in index.html");
+      }
+
+      rawSupplierFeeds = [ppg2, gog, pkf];
+      rawFastXFeed = fastxRaw;
+
+      const fastxData = getHotelData(fastxRaw) || {};
+      hotel = {
+        fastxCode: String(fastxData.hotelCode || "CN9"),
+        name: fastxData.hotelName || "Regal Airport Hotel",
+        city: `${fastxData.location?.city || "Hong Kong"}, ${fastxData.location?.country || "HK"}`,
+        chain: getChainLabel(fastxData.chainCode)
+      };
+
+      suppliers = rawSupplierFeeds.map((raw, index) => mapSupplier(raw, index + 1));
+      fastx = mapFastX(fastxRaw);
     }
 
     const plans = {

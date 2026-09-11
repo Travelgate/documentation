@@ -72,19 +72,19 @@ export default function Home() {
                         </div>
                       </div>
                       <div className="col col--4">
-                        <div class="item">
-                          <img src="https://storage.travelgate.com/kbase/landing_trafficoptimizer.jpg"/>
-                          <h4>Traffic Optimizer</h4>
-                          <p>At Travelgate, we understand the impact of handling useless traffic across the entire connectivity chain. That’s why we’ve developed Traffic Optimizer, an intelligent solution that enhances connection efficiency within our Marketplace.</p>
-                          <p><a href="/kb/platform/app-features/smart-traffic/traffic-optimizer/traffic-optimizer-details">Read article <i class="fa-solid fa-chevron-right"></i></a></p>
+                        <div class="item"> 
+                          <img src="https://storage.travelgate.com/kbase/img_fastx.png"/>
+                          <h4>FastX</h4>
+                          <p>FastX is how the marketplace operates at scale. It allows Buyers to retrieve aggregated content from various Sellers in a single response, reducing the technical overhead of managing individual connections and manual mapping tables. astX eliminates repetitive work by giving the entire marketplace a shared language for hotels, boards and rooms.</p>
+                          <p><a href="/kb/connectivity-products/for-buyers/hotel-x/fastx/fastx-solution">Read article <i class="fa-solid fa-chevron-right"></i></a></p>
                         </div>
                       </div>
                       <div className="col col--4">
                         <div class="item">
-                          <img src="https://storage.travelgate.com/kbase/landing_errorsandwarnings.jpg"/>
-                          <h4>Errors and Warnings</h4>
-                          <p>Welcome to this section where we'll provide you with a comprehensive list of errors and warnings that users may come across while using our Hotel Buyers API. These errors and warnings can be received in responses during the booking flow, management, and content methods.</p>
-                          <p><a href="/kb/connectivity-products/for-buyers/errors-and-warnings/overview">Read article <i class="fa-solid fa-chevron-right"></i></a></p>
+                          <img src="https://storage.travelgate.com/kbase/fastx_content_ao_app.png"/>
+                          <h4>FastX Content</h4>
+                          <p>FastX Content by AO enables seamless management and optimization of your hotel content within the FastX ecosystem. Learn how to effectively organize, update, and leverage your content data to enhance your distribution performance.</p>
+                          <p><a href="/kb/connectivity-products/for-buyers/hotel-x/fastx/fastx-content">Read article <i class="fa-solid fa-chevron-right"></i></a></p>
                         </div>
                       </div>
                     </div>
@@ -97,9 +97,9 @@ export default function Home() {
                       <div className="col col--4">
                         <div class="item">
                           <img src="https://storage.travelgate.com/kbase/landing_connectionscontent.jpg" />
-                          <h4>Connections Content</h4>
-                          <p>In the Connections Content section, you can easily check and force updates for your connections' static content. This allows for timely updates and better market responsiveness, making your operations smoother and more effective.</p>
-                          <p><a href="/kb/platform/app-features/connections/connections-content/content-management">Read article <i class="fa-solid fa-chevron-right"></i></a></p>
+                          <h4>Errors and Warnings</h4>
+                          <p>Welcome to this section where we'll provide you with a comprehensive list of errors and warnings that users may come across while using our Hotel Buyers API. These errors and warnings can be received in responses during the booking flow, management, and content methods.</p>
+                          <p><a href="/kb/connectivity-products/for-buyers/errors-and-warnings/overview">Read article <i class="fa-solid fa-chevron-right"></i></a></p>
                         </div>
                       </div>
                       <div className="col col--4">

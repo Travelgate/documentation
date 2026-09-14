@@ -172,6 +172,8 @@ This includes fields such as rateRulesExtended, binding, and others.
 
 * Consider that the `deltaPrice` sets the price tolerance between Quote and Book. For instance, if the Quote stage displays a price of 120€ and the `deltaPrice.amount` is 10, a price up to 130€ will still secure a confirmed booking. Similarly, if `deltaPrice.percent` is 5 (meaning 5%), a price up to 126€ will be accepted.
 
+* In One Step Book, `deltaPrice` validation checks both the `net` and `gross` prices when comparing the Quote and Book amounts.
+
 :::
 
 :::note

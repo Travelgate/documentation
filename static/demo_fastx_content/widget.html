@@ -998,16 +998,16 @@
       if (!response.ok) throw new Error("Unable to fetch index.html");
       const source = await response.text();
 
-      const ppg2 = extractConstObject(source, "rawCN9SupplierPPG2");
-      const gog = extractConstObject(source, "rawCN9SupplierGOG");
-      const pkf = extractConstObject(source, "rawCN9SupplierPKF");
+      const supplierA = extractConstObject(source, "rawSupplierACN9Json");
+      const supplierB = extractConstObject(source, "rawSupplierBCN9Json");
+      const supplierC = extractConstObject(source, "rawSupplierCCN9Json");
       const fastxRaw = extractConstObject(source, "rawCN9FastXJson");
 
-      if (!ppg2 || !gog || !pkf || !fastxRaw) {
+      if (!supplierA || !supplierB || !supplierC || !fastxRaw) {
         throw new Error("CN9 raw blocks not found in index.html");
       }
 
-      rawSupplierFeeds = [ppg2, gog, pkf];
+      rawSupplierFeeds = [supplierA, supplierB, supplierC];
       rawFastXFeed = fastxRaw;
 
       const fastxData = getHotelData(fastxRaw) || {};

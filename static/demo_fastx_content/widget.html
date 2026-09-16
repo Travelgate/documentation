@@ -708,7 +708,7 @@
       chain: "REGAL HOTELS"
     };
 
-    let suppliers = [
+    const fallbackSuppliers = [
       {
         label: "Supplier A",
         code: "363574",
@@ -735,7 +735,7 @@
         label: "Supplier C",
         code: "10099221",
         name: "Regal Airport Hotel",
-        image: "https://images.orbiscdn.com/images/CN9/base/2f967d5afa4d507636e14076ce1a41b7bfc57ab8835a720a50a78925a2660c37",
+        image: "na",
         imageCount: 8,
         address: "9 Cheong Tat Road",
         description: { status: "na" },
@@ -743,6 +743,8 @@
         amenities: { status: "na" }
       }
     ];
+
+    let suppliers = fallbackSuppliers;
 
     let fastx = {
       address: "9 Cheong Tat Road, Hong Kong",
@@ -842,6 +844,14 @@
       return texts.find((t) => t?.language === lang)?.text || texts[0]?.text || "";
     }
 
+    function getValidImage(value) {
+      if (typeof value !== "string") return "";
+      const normalized = value.trim();
+      if (!normalized) return "";
+      if (["na", "n/a", "null", "none", "no image"].includes(normalized.toLowerCase())) return "";
+      return normalized;
+    }
+
     function to12h(time) {
       if (!time || typeof time !== "string" || !time.includes(":")) return "-";
       const [hStr, m] = time.split(":");
@@ -917,21 +927,24 @@
       }
     }
 
-    function mapSupplier(raw, idx) {
+    function mapSupplier(raw, idx, fallbackSupplier = {}) {
       const data = getHotelData(raw) || {};
       const medias = Array.isArray(data.medias) ? data.medias.filter((m) => !!m?.url) : [];
       const descriptions = Array.isArray(data.descriptions) ? data.descriptions : [];
       const general = descriptions.find((d) => d?.type === "GENERAL") || descriptions[0] || null;
       const generalText = general ? getLangText(general.texts, "en") : "";
       const contactBits = [data.contact?.telephone, data.contact?.email, data.contact?.web].filter(Boolean);
+      const fallbackImage = getValidImage(fallbackSupplier.image);
+      const primaryImage = getValidImage(medias[0]?.url) || fallbackImage;
+      const imageCount = medias.length || (primaryImage ? Number(fallbackSupplier.imageCount) || 1 : 0);
 
       return {
         label: `Supplier ${String.fromCharCode(64 + idx)}`,
-        code: String(data.hotelCode || "-"),
-        name: data.hotelName || "-",
-        image: medias[0]?.url || null,
-        imageCount: medias.length,
-        address: data.location?.address || "-",
+        code: String(data.hotelCode || fallbackSupplier.code || "-"),
+        name: data.hotelName || fallbackSupplier.name || "-",
+        image: primaryImage || null,
+        imageCount,
+        address: data.location?.address || fallbackSupplier.address || "-",
         description: generalText ? { status: "partial", text: generalText } : { status: "na" },
         contact: contactBits.length ? { status: "partial", text: contactBits.join(" · ") } : { status: "na" },
         amenities: { status: "na" }
@@ -1018,7 +1031,7 @@
         chain: getChainLabel(fastxData.chainCode)
       };
 
-      suppliers = rawSupplierFeeds.map((raw, index) => mapSupplier(raw, index + 1));
+      suppliers = rawSupplierFeeds.map((raw, index) => mapSupplier(raw, index + 1, fallbackSuppliers[index]));
       fastx = mapFastX(fastxRaw);
     }
 
@@ -1073,8 +1086,9 @@
     }
 
     function supplierPaneHtml(s) {
-      const thumb = s.image
-        ? `<div><img class="thumb" src="${s.image}" alt="hotel photo" loading="lazy" onerror="this.style.display='none'"><div class="thumb-meta">${s.imageCount} images · mixed sizes</div></div>`
+      const image = getValidImage(s.image);
+      const thumb = image
+        ? `<div><img class="thumb" src="${image}" alt="hotel photo" loading="lazy" onerror="this.style.display='none'"><div class="thumb-meta">${s.imageCount} images · mixed sizes</div></div>`
         : `<div><div class="thumb" style="display:flex;align-items:center;justify-content:center;color:#9fb4d1;font-size:0.7rem;">No image</div><div class="thumb-meta">0 images</div></div>`;
 
       return `

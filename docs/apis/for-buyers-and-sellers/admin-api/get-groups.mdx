@@ -1,0 +1,90 @@
+---
+sidebar_position: 8
+---
+
+import {getGroupsByOrgQuery} from "../../../../src/graphql/admin/getgroupsbyorg.query.js";
+
+
+# Get Groups
+
+The `allGroups` query returns the HotelX groups available for a given organization.
+
+Use `codeStartsWith: "HotelX"` to list only HotelX groups linked to a buyer organization.
+
+Use this endpoint when you need to:
+
+* List the HotelX groups available for a buyer organization
+* Determine which group code to use in activation requests
+
+## Query Overview
+
+Path: `admin/get-groups/`
+
+GraphQL root:
+
+```graphql
+admin {
+  allGroups(orgCode: "<orgBuyerCode>", codeStartsWith: "HotelX") {
+    adviseMessage {
+      code
+      description
+    }
+    edges {
+      node {
+        code
+      }
+    }
+  }
+}
+```
+
+The sample below requests the `code` field from each group node and `adviseMessage` for error handling.
+
+<GraphqlSample query={getGroupsByOrgQuery}/>
+
+### Common Use Cases
+
+- **List HotelX Groups:** Retrieve all HotelX groups linked to a buyer organization.
+- **Identify the Activation Group:** Find the group code to use in the `group` field of the `connect` mutation.
+
+## Query Example
+
+### Request
+
+This example lists HotelX groups for organization `orgBuyerCode`.
+
+```graphql
+query getGroupsByOrg {
+  admin {
+    allGroups(orgCode: "orgBuyerCode", codeStartsWith: "HotelX") {
+      adviseMessage {
+        code
+        description
+      }
+      edges {
+        node {
+          code
+        }
+      }
+    }
+  }
+}
+```
+
+### Response
+
+```json
+{
+  "data": {
+    "admin": {
+      "allGroups": {
+        "adviseMessage": [],
+        "edges": [
+          { "node": { "code": "HotelX_XXXXX" } },
+          { "node": { "code": "HotelX_YYYYY" } }
+        ]
+      }
+    }
+  }
+}
+```

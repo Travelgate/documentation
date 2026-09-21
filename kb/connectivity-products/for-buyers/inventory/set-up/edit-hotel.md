@@ -19,6 +19,6 @@ Even if you have Admin permissions, only the Travelgate team can modify a hotel 
 
 ### Updates to Push Hybrid Hotel Codes
 
-If you're purchasing from a property connected to Travelgate via a [Push Hybrid model](/kb/welcome-to-travelgate/connectivity-services/pull-and-push-connectivity#2-push-hybrid), you can update the ["Code"](/docs/apps/inventory/extranet/set-up/setup#how-to-create-a-new-hotel) field in the hotel card with the Channel Manager’s hotel code information.
+If you're purchasing from a property connected to Travelgate via a [Push Hybrid model](/kb/welcome-to-travelgate/connectivity-services/connection-types#2-push-hybrid), you can update the ["Code"](/docs/apps/inventory/extranet/set-up/setup#how-to-create-a-new-hotel) field in the hotel card with the Channel Manager’s hotel code information.
 
 If you have a **Client Admin role** but are unable to make this change, please submit a case through our [Support Portal](https://app.travelgate.com/support), and our team will be happy to assist you.

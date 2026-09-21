@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FastX Content Widget</title>
+  <style>
+    :root {
+      --bg: #f4f8ff;
+      --panel: #ffffff;
+      --stroke: #d6e4f5;
+      --text: #12335a;
+      --muted: #5f7899;
+      --brand-blue: #0077d8;
+      --brand-cyan: #00a8e8;
+      --ok: #0bbf7b;
+      --gold: #ffb81c;
+      --danger: #d6455b;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Space Grotesk", "Segoe UI", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      padding: 10px;
+    }
+
+    .widget {
+      border: 1px solid rgba(0, 119, 216, 0.14);
+      border-radius: 16px;
+      background: linear-gradient(145deg, #ffffff, #f8fbff);
+      box-shadow: 0 10px 32px rgba(13, 52, 95, 0.08);
+      overflow: hidden;
+    }
+
+    .head {
+      padding: 10px 14px;
+      border-bottom: 1px solid rgba(0, 119, 216, 0.15);
+      background: linear-gradient(135deg, rgba(0, 168, 232, 0.1), rgba(255, 184, 28, 0.1));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .badge {
+      border: 1px solid rgba(255, 184, 28, 0.5);
+      background: rgba(255, 184, 28, 0.14);
+      color: #8a5400;
+      font-size: 0.66rem;
+      border-radius: 999px;
+      padding: 4px 9px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .body {
+      padding: 10px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .plans-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      border: 1px solid rgba(0, 119, 216, 0.2);
+      border-radius: 10px;
+      background: linear-gradient(135deg, #f8fbff, #f0f7ff);
+      padding: 8px 10px;
+    }
+
+    .plans-bar .plans-label {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-right: 2px;
+      white-space: nowrap;
+    }
+
+    .plan-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #ffffff;
+      border: 1px solid rgba(0, 119, 216, 0.16);
+      border-radius: 999px;
+      padding: 4px 11px;
+      font-size: 0.74rem;
+      color: #3c587b;
+      font-weight: 600;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.15s ease;
+    }
+
+    .plan-chip:hover { border-color: var(--brand-cyan); }
+
+    .plan-chip.active {
+      background: linear-gradient(135deg, rgba(255, 184, 28, 0.2), rgba(255, 184, 28, 0.1));
+      border-color: var(--gold);
+      color: #8a5400;
+      box-shadow: 0 2px 10px rgba(255, 184, 28, 0.2);
+    }
+
+    .plan-note {
+      font-size: 0.66rem;
+      color: var(--muted);
+      background: #f8fbff;
+      border: 1px dashed var(--stroke);
+      border-radius: 8px;
+      padding: 5px 9px;
+    }
+
+    /* Comparison: 3 supplier mini-cards on top, FastX full-width below */
+    .suppliers-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .pane {
+      border: 2px solid var(--stroke);
+      border-radius: 10px;
+      background: var(--panel);
+      padding: 10px;
+      display: grid;
+      gap: 8px;
+      min-width: 0;
+      align-content: start;
+    }
+
+    .pane.supplier { border-top: 3px solid #8ca6c8; }
+
+    .pane.fastx {
+      border-color: rgba(255, 184, 28, 0.45);
+      border-top: 3px solid var(--gold);
+      background: linear-gradient(180deg, #fffdfa 0%, #fffaf0 100%);
+    }
+
+    .pane h3 {
+      margin: 0;
+      font-size: 0.82rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .pane h3 .icon { flex-shrink: 0; }
+
+    .tag {
+      font-size: 0.6rem;
+      border-radius: 999px;
+      padding: 3px 8px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-family: "IBM Plex Mono", monospace;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .tag.bad {
+      background: rgba(214, 69, 91, 0.08);
+      color: #a23a45;
+      border: 1px solid rgba(214, 69, 91, 0.25);
+    }
+
+    .tag.gold {
+      background: rgba(255, 184, 28, 0.16);
+      color: #8f5c00;
+      border: 1px solid rgba(255, 184, 28, 0.46);
+    }
+
+    .hotel-line {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .hotel-name {
+      font-size: 0.74rem;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    .fastx .hotel-name {
+      font-size: 0.84rem;
+    }
+
+    .hotel-code {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.64rem;
+      background: #e7f1ff;
+      color: #174983;
+      padding: 2px 7px;
+      border-radius: 4px;
+      width: fit-content;
+    }
+
+    .hotel-code.fastx {
+      background: #fff3cd;
+      color: #856404;
+    }
+
+    .thumb {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 7px;
+      border: 1px solid var(--stroke);
+      box-shadow: 0 3px 8px rgba(0, 31, 63, 0.08);
+      display: block;
+      background: #e8eef7;
+    }
+
+    .thumb-meta {
+      font-size: 0.6rem;
+      color: var(--muted);
+      font-family: "IBM Plex Mono", monospace;
+      margin-top: 3px;
+    }
+
+    .status-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: 2px;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 0.6rem;
+      padding: 2px 7px;
+      border-radius: 999px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .status-pill.ok {
+      color: #0c6d4f;
+      background: rgba(11, 191, 123, 0.1);
+      border: 1px solid rgba(11, 191, 123, 0.3);
+    }
+
+    .status-pill.partial {
+      color: #8a6d1d;
+      background: rgba(255, 184, 0, 0.08);
+      border: 1px solid rgba(255, 184, 0, 0.25);
+    }
+
+    .status-pill.na {
+      color: var(--danger);
+      background: #fff4f4;
+      border: 1px solid #fecaca;
+    }
+
+    /* Custom tooltip (replaces native title) */
+    .tt {
+      position: relative;
+      cursor: help;
+    }
+
+    .tt .tt-box {
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%) translateY(4px);
+      width: max-content;
+      max-width: 240px;
+      background: linear-gradient(135deg, #1a2f4a, #0f2744);
+      color: #dbe8ff;
+      font-size: 0.64rem;
+      font-weight: 500;
+      line-height: 1.5;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(0, 168, 232, 0.35);
+      box-shadow: 0 8px 24px rgba(15, 39, 68, 0.35);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+      z-index: 30;
+      pointer-events: none;
+      white-space: normal;
+      text-align: left;
+    }
+
+    .tt .tt-box::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 5px solid transparent;
+      border-top-color: #14273f;
+    }
+
+    .tt .tt-label {
+      display: block;
+      font-size: 0.54rem;
+      font-family: "IBM Plex Mono", monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #7cc7f0;
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+
+    .tt:hover .tt-box,
+    .tt:focus-within .tt-box {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .status-pill {
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .tt:hover.status-pill {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(13, 52, 95, 0.15);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 4px;
+      align-items: stretch;
+      margin-top: 2px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 1.15 / 1;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 1px solid var(--stroke);
+      box-shadow: 0 2px 6px rgba(0, 31, 63, 0.08);
+      background: #e8eef7;
+    }
+
+    .gallery .gallery-more {
+      position: relative;
+      aspect-ratio: 1.15 / 1;
+      border-radius: 6px;
+      border: 1px solid var(--stroke);
+      overflow: hidden;
+      background: #f8fbff;
+    }
+
+    .gallery .gallery-more img {
+      position: absolute;
+      inset: 0;
+      filter: brightness(0.55) saturate(0.8);
+      border-radius: 0;
+      border: none;
+      box-shadow: none;
+      aspect-ratio: auto;
+    }
+
+    .gallery .gallery-more .more-chip {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: #ffffff;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .addon-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: linear-gradient(135deg, rgba(22, 163, 74, 0.12), rgba(22, 163, 74, 0.06));
+      border: 1px solid rgba(22, 163, 74, 0.35);
+      color: #15803d;
+      border-radius: 999px;
+      padding: 3px 10px;
+      font-size: 0.64rem;
+      font-weight: 700;
+      width: fit-content;
+    }
+
+    .info-row {
+      display: grid;
+      gap: 3px;
+    }
+
+    .info-label {
+      font-size: 0.56rem;
+      color: #6d84a3;
+      font-family: "IBM Plex Mono", monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-weight: 600;
+    }
+
+    .info-val {
+      font-size: 0.68rem;
+      color: var(--text);
+      line-height: 1.45;
+      word-break: break-word;
+    }
+
+    .info-val.muted { color: var(--muted); font-style: italic; }
+
+    .not-available {
+      color: var(--danger);
+      background: #fff4f4;
+      border: 1px solid #fecaca;
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-size: 0.64rem;
+      font-style: italic;
+      font-weight: 600;
+      display: inline-block;
+    }
+
+    .partial {
+      color: #8a6d1d;
+      background: rgba(255, 184, 0, 0.08);
+      border: 1px solid rgba(255, 184, 0, 0.25);
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-size: 0.64rem;
+      font-weight: 600;
+      display: inline-block;
+    }
+
+    .ok-badge {
+      color: #0c6d4f;
+      background: rgba(11, 191, 123, 0.1);
+      border: 1px solid rgba(11, 191, 123, 0.3);
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-size: 0.64rem;
+      font-weight: 600;
+      display: inline-block;
+    }
+
+    .tags-container { display: flex; flex-wrap: wrap; gap: 4px; }
+
+    .amenity-tag {
+      font-size: 0.62rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #eef4fb;
+      border: 1px solid var(--stroke);
+      font-weight: 600;
+      color: #3c587b;
+    }
+
+    .amenity-tag.gold {
+      background: rgba(255, 184, 28, 0.16);
+      border-color: rgba(255, 184, 28, 0.46);
+      color: #8f5c00;
+    }
+
+    .amenity-tag.more {
+      background: linear-gradient(135deg, rgba(15, 118, 110, 0.12), rgba(15, 118, 110, 0.04));
+      border-color: rgba(15, 118, 110, 0.32);
+      color: #0f766e;
+      font-weight: 700;
+    }
+
+    .rooms-container { display: grid; gap: 6px; }
+
+    .room-card {
+      background: linear-gradient(180deg, #f8fbff 0%, #f2f7ff 100%);
+      border: 1px solid var(--stroke);
+      border-radius: 8px;
+      padding: 8px 10px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .room-card img {
+      width: 64px;
+      height: 44px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 1px solid var(--stroke);
+      flex-shrink: 0;
+      background: #e8eef7;
+    }
+
+    .room-title {
+      font-weight: 700;
+      font-size: 0.74rem;
+      color: var(--text);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .room-code-tag {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.6rem;
+      background: #e7f1ff;
+      color: #174983;
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+
+    .room-details {
+      font-size: 0.64rem;
+      color: var(--muted);
+      margin-top: 2px;
+      line-height: 1.45;
+    }
+
+    .room-details.zh {
+      color: #0f766e;
+      font-weight: 700;
+      margin-top: 4px;
+    }
+
+    .room-details.compact {
+      margin-top: 6px;
+    }
+
+    .locked {
+      filter: blur(3px) grayscale(0.5);
+      opacity: 0.55;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .locked-wrap { position: relative; }
+
+    .locked-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #8a5400;
+      background: rgba(255, 248, 230, 0.45);
+      border-radius: 8px;
+      text-align: center;
+      padding: 6px;
+    }
+
+    .gold-banner {
+      background: linear-gradient(135deg, #fff7de 0%, #ffe9a9 100%);
+      border: 1px solid #f7cf6f;
+      border-radius: 8px;
+      padding: 7px 10px;
+      font-size: 0.68rem;
+      color: #8a5400;
+      line-height: 1.5;
+    }
+
+    .gold-banner strong { font-weight: 800; }
+
+    details.json-toggle {
+      border: 1px solid var(--stroke);
+      border-radius: 10px;
+      background: #f8fbff;
+      overflow: hidden;
+    }
+
+    details.json-toggle summary {
+      cursor: pointer;
+      padding: 8px 12px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: #3c587b;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    details.json-toggle summary::before {
+      content: "▸";
+      font-size: 0.7rem;
+      transition: transform 0.15s ease;
+    }
+
+    details.json-toggle[open] summary::before { transform: rotate(90deg); }
+
+    .json-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      padding: 0 10px 10px;
+    }
+
+    .json-title {
+      font-size: 0.62rem;
+      color: #5f7899;
+      letter-spacing: 0.06em;
+      font-family: "IBM Plex Mono", monospace;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    pre {
+      margin: 0;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.66rem;
+      line-height: 1.5;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #1a2f4a, #0f2744);
+      color: #a0c9ff;
+      padding: 10px;
+      overflow-x: hidden;
+      overflow-y: auto;
+      max-height: 320px;
+      white-space: pre-wrap;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+    }
+
+    .disclaimer {
+      font-size: 0.68rem;
+      color: #8a6d1d;
+      background: rgba(255, 184, 0, 0.07);
+      border: 1px solid rgba(255, 184, 0, 0.22);
+      border-radius: 8px;
+      padding: 7px 10px;
+      line-height: 1.45;
+    }
+
+    @media (max-width: 640px) {
+      .suppliers-row,
+      .json-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="widget">
+    <div class="head">
+      <h2 class="title">✨ FastX Content</h2>
+      <span class="badge">Interactive Demo</span>
+    </div>
+
+    <div class="body">
+      <div class="plans-bar" id="plans-bar"></div>
+      <div class="plan-note" id="plan-note"></div>
+
+      <div class="suppliers-row" id="suppliers-row"></div>
+      <div class="compare" id="compare"></div>
+
+      <details class="json-toggle" id="json-toggle">
+        <summary>🔍 View HotelX Hotels JSON response</summary>
+        <div class="json-grid">
+          <div>
+            <div class="json-title">Raw Supplier Feeds</div>
+            <pre id="json-supplier"></pre>
+          </div>
+          <div>
+            <div class="json-title" id="json-fastx-title">FastX Content (Bronze)</div>
+            <pre id="json-fastx"></pre>
+          </div>
+        </div>
+      </details>
+
+      <div class="disclaimer">
+        <strong>Disclaimer:</strong> Simplified interactive demo for illustration only. Sample data is fictional — not a production payload or a live supplier response.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let hotel = {
+      fastxCode: "CN9",
+      name: "Regal Airport Hotel",
+      city: "Hong Kong, HK",
+      chain: "REGAL HOTELS"
+    };
+
+    const fallbackSuppliers = [
+      {
+        label: "Supplier A",
+        code: "363574",
+        name: "Regal Airport Hotel",
+        image: "https://images.orbiscdn.com/images/CN9/base/2f967d5afa4d507636e14076ce1a41b7bfc57ab8835a720a50a78925a2660c37",
+        imageCount: 3,
+        address: "9 Cheong Tat Road Chek Lap Kok HK",
+        description: { status: "na" },
+        contact: { status: "na" },
+        amenities: { status: "na" }
+      },
+      {
+        label: "Supplier B",
+        code: "3883",
+        name: "REGAL AIRPORT",
+        image: "https://images.orbiscdn.com/images/CN9/base/c850816febdfae8e2fa1a35387dffa1b79fb60db11e2a8f209cd900e1294ffa0",
+        imageCount: 10,
+        address: "9 Cheong Tat Road, Chek Lap Kok, HK",
+        description: { status: "partial", text: "Located in Chek Lap Kok, Regal Airport Hotel is connected to the airport." },
+        contact: { status: "partial", text: "+852 2286 8888" },
+        amenities: { status: "na" }
+      },
+      {
+        label: "Supplier C",
+        code: "10099221",
+        name: "Regal Airport Hotel",
+        image: "na",
+        imageCount: 8,
+        address: "9 Cheong Tat Road",
+        description: { status: "na" },
+        contact: { status: "partial", text: "852-22-868888" },
+        amenities: { status: "na" }
+      }
+    ];
+
+    let suppliers = fallbackSuppliers;
+
+    let fastx = {
+      address: "9 Cheong Tat Road, Hong Kong",
+      description: "You will find the Regal Airport Hotel located just steps away from Chek Lap Kok Airport, within walking distance for arrivals and departures. The hotel's spacious guest rooms offer sea view options, designed with relaxation and comfort in mind. Sun loungers by the pool provide daily relaxation, with access to both indoor and outdoor pools. Guests can enjoy fine dining at one of the on-site restaurants serving all-day cuisine. This location is ideal for airport travel and local exploration, just steps from the terminal. Check-in starts at 3:00 PM with express and contactless options available, and check-out is at noon. The hotel features a business center, on-site shops, and complimentary wireless internet for all guests.",
+      descriptionZh: "您会发现the Regal Airport Hotel距离Chek Lap Kok’s机场仅几步之遥,步行即可到达和离开。 酒店宽敞的客房提供海景选项,设计时会考虑舒适、轻松的舒适。 泳池旁躺椅是每日的娱乐,室内和室外游泳池均可使用。您可以在酒店的一家现场餐厅享用美餐,该餐厅提供全天菜肴。 这个位置让您非常适合机场旅行和当地探索,并且距离地面仅几步之遥。 入住登记时间为下午3:00,提供快速和无接触选项,退房时间为中午。这家酒店设有商务中心、现场商店以及免费的无线网络,供所有客人使用。",
+      checkIn: "03:00 PM",
+      checkOut: "12:00 PM",
+      contact: "rah.rsvn@regalhotel.com · 85222868888 · www.regalhotel.com/regal-airport-hotel/en/home/home.html",
+      gallery: [
+        "https://images.orbiscdn.com/images/CN9/base/3b74c5cce4b5e3b79854463071993a6d01909540496ae0e84607dcdb2d176e0e",
+        "https://images.orbiscdn.com/images/CN9/base/f8977f2a5bfd739b3cf8d6c00c71d39c3396da8b922c78c888a5823435bc3a3e",
+        "https://images.orbiscdn.com/images/CN9/base/f8beab8868c93e5b25d17122c1435e4a300fd1a60d59b212b24f2a24b2e5644d",
+        "https://images.orbiscdn.com/images/CN9/base/2f967d5afa4d507636e14076ce1a41b7bfc57ab8835a720a50a78925a2660c37",
+        "https://images.orbiscdn.com/images/CN9/base/c850816febdfae8e2fa1a35387dffa1b79fb60db11e2a8f209cd900e1294ffa0",
+        "https://images.orbiscdn.com/images/CN9/base/58047180dfeb7edd851e213b66f16ca61c9984ef59fd36c672641d3200c8b589",
+        "https://images.orbiscdn.com/images/CN9/base/4ab9fd889b81f787fad3467d9ea836b11393f99d4f449b7e170bb2020519615c",
+        "https://images.orbiscdn.com/images/CN9/base/71acbf39f2088708dadb69d252f9bc20dae996ab4cb73fc679721d83a438acf8",
+        "https://images.orbiscdn.com/images/CN9/base/4509b5745407fd2893197126a94ce80b42f5d2ef020ecaf62ef93f000d6e254f",
+        "https://images.orbiscdn.com/images/CN9/base/0e948e75c7f2c61f863c55a0b8228c70b2868bd6c83271f81231014322e71477",
+        "https://images.orbiscdn.com/images/CN9/base/5f72801fdabb69390e9334d55860c8a72a287b9617ea425e4bffbf87061d603a",
+        "https://images.orbiscdn.com/images/CN9/base/6da0195c2a0856fc8ba7008f1b9c701e39617b74b4da17fad2ea0d27a8534625"
+      ],
+      galleryCount: 12,
+      amenities: [
+        { code: "HAC286", label: "Complimentary wireless internet", zh: "免费无线网络" },
+        { code: "HAC223", label: "Internet services", zh: "互联网服务" },
+        { code: "HAC91", label: "Tour/sightseeing desk", zh: "旅游/观光服务台" },
+        { code: "HAC122", label: "Shops and commercial services", zh: "商店和商业服务" },
+        { code: "HAC316", label: "Electric car charging stations", zh: "电动汽车充电站" },
+        { code: "HAC77", label: "Room service", zh: "客房服务" },
+        { code: "HAC58", label: "Laundry/Valet service", zh: "洗衣/代客洗涤服务" },
+        { code: "HAC96", label: "Dry cleaning", zh: "干洗" },
+        { code: "HAC165", label: "Lounges/bars", zh: "休息室/酒吧" },
+        { code: "HAC228", label: "Business center", zh: "商务中心" },
+        { code: "HAC48", label: "Health club", zh: "健身俱乐部" },
+        { code: "HAC154", label: "Medical Facilities Service", zh: "医疗服务设施" },
+        { code: "HAC8", label: "Baby sitting", zh: "婴儿看护" },
+        { code: "HAC64", label: "On-Site parking", zh: "酒店内停车场" },
+        { code: "HAC2", label: "24-hour room service", zh: "24小时客房服务" },
+        { code: "HAC104", label: "Wedding services", zh: "婚礼服务" },
+        { code: "HAC84", label: "Spa", zh: "水疗中心" },
+        { code: "HAC50", label: "Housekeeping - daily", zh: "每日客房清洁" },
+        { code: "HAC21", label: "Coin operated laundry", zh: "投币式洗衣" },
+        { code: "HAC33", label: "Elevators", zh: "电梯" },
+        { code: "HAC47", label: "Accessible facilities", zh: "无障碍设施" },
+        { code: "HAC116", label: "Accessible parking", zh: "无障碍停车位" },
+        { code: "HAC74", label: "Ramp access", zh: "坡道入口" },
+        { code: "HAC35", label: "Exercise gym", zh: "健身房" },
+        { code: "HAC79", label: "Sauna", zh: "桑拿浴室" },
+        { code: "HAC80", label: "Security", zh: "安保" },
+        { code: "HAC292", label: "Newspaper", zh: "报纸" },
+        { code: "HAC22", label: "Concierge desk", zh: "礼宾服务台" },
+        { code: "HAC87", label: "Storage space", zh: "储物空间" },
+        { code: "HAC103", label: "Multilingual staff", zh: "多语种工作人员" },
+        { code: "HAC71", label: "Pool", zh: "游泳池" },
+        { code: "HAC54", label: "Indoor pool", zh: "室内游泳池" },
+        { code: "HAC66", label: "Outdoor pool", zh: "室外游泳池" },
+        { code: "HAC231", label: "Racquetball", zh: "壁球" },
+        { code: "HAC233", label: "Tennis court", zh: "网球场" },
+        { code: "HAC76", label: "Restaurant", zh: "餐厅" },
+        { code: "HAC232", label: "Snow sports", zh: "雪上运动" },
+        { code: "HAC15", label: "Car rental desk", zh: "租车服务台" }
+      ],
+      rooms: [
+        {
+          code: "75P8A",
+          name: "Deluxe Double Room, Bathtub",
+          nameZh: "豪华双人房，浴缸",
+          details: "Max 4 guests · Deluxe room",
+          description: "private_bathroom",
+          descriptionZh: "私人浴室",
+          amenities: ["air_conditioning", "private_bathroom", "wi-fi"],
+          image: "https://images.orbiscdn.com/images/CN9/base/6da0195c2a0856fc8ba7008f1b9c701e39617b74b4da17fad2ea0d27a8534625"
+        },
+        {
+          code: "N3FV4",
+          name: "Presidential Suite",
+          nameZh: "总统套房",
+          details: "Max 8 guests · Suite",
+          description: "private_bathroom",
+          descriptionZh: "私人浴室",
+          amenities: ["air_conditioning", "private_bathroom", "in_room_safe"],
+          image: "https://images.orbiscdn.com/images/CN9/base/3a0db8411fe1a74e56d66bfe3c7bce9fac0dcff135b0a8b17d3d9c5f084062cb"
+        }
+      ]
+    };
+
+    let rawSupplierFeeds = [];
+    let rawFastXFeed = null;
+
+    function getHotelData(rawPayload) {
+      return rawPayload?.data?.hotelX?.hotels?.edges?.[0]?.node?.hotelData || null;
+    }
+
+    function getLangText(texts, lang) {
+      if (!Array.isArray(texts)) return "";
+      return texts.find((t) => t?.language === lang)?.text || texts[0]?.text || "";
+    }
+
+    function getValidImage(value) {
+      if (typeof value !== "string") return "";
+      const normalized = value.trim();
+      if (!normalized) return "";
+      if (["na", "n/a", "null", "none", "no image"].includes(normalized.toLowerCase())) return "";
+      return normalized;
+    }
+
+    function to12h(time) {
+      if (!time || typeof time !== "string" || !time.includes(":")) return "-";
+      const [hStr, m] = time.split(":");
+      const hour = Number(hStr);
+      if (!Number.isFinite(hour)) return time;
+      const suffix = hour >= 12 ? "PM" : "AM";
+      const h12 = hour % 12 === 0 ? 12 : hour % 12;
+      return `${String(h12).padStart(2, "0")}:${m} ${suffix}`;
+    }
+
+    function getChainLabel(chainCode) {
+      const code = String(chainCode || "").trim().toUpperCase();
+      const labels = {
+        XR: "ST. REGIS",
+        RQ: "REGAL HOTELS",
+        INDEPENDEN: "Independent"
+      };
+      return labels[code] || code || "-";
+    }
+
+    function extractConstObject(source, constName) {
+      const marker = `const ${constName} =`;
+      const markerIdx = source.indexOf(marker);
+      if (markerIdx === -1) return null;
+
+      const start = source.indexOf("{", markerIdx + marker.length);
+      if (start === -1) return null;
+
+      let depth = 0;
+      let inString = false;
+      let quote = "";
+      let escaped = false;
+      let end = -1;
+
+      for (let i = start; i < source.length; i++) {
+        const ch = source[i];
+
+        if (inString) {
+          if (escaped) {
+            escaped = false;
+          } else if (ch === "\\") {
+            escaped = true;
+          } else if (ch === quote) {
+            inString = false;
+            quote = "";
+          }
+          continue;
+        }
+
+        if (ch === "'" || ch === '"' || ch === "`") {
+          inString = true;
+          quote = ch;
+          continue;
+        }
+
+        if (ch === "{") depth++;
+        if (ch === "}") {
+          depth--;
+          if (depth === 0) {
+            end = i;
+            break;
+          }
+        }
+      }
+
+      if (end === -1) return null;
+
+      const literal = source.slice(start, end + 1);
+      try {
+        return Function(`"use strict"; return (${literal});`)();
+      } catch (_) {
+        return null;
+      }
+    }
+
+    function mapSupplier(raw, idx, fallbackSupplier = {}) {
+      const data = getHotelData(raw) || {};
+      const medias = Array.isArray(data.medias) ? data.medias.filter((m) => !!m?.url) : [];
+      const descriptions = Array.isArray(data.descriptions) ? data.descriptions : [];
+      const general = descriptions.find((d) => d?.type === "GENERAL") || descriptions[0] || null;
+      const generalText = general ? getLangText(general.texts, "en") : "";
+      const contactBits = [data.contact?.telephone, data.contact?.email, data.contact?.web].filter(Boolean);
+      const fallbackImage = getValidImage(fallbackSupplier.image);
+      const primaryImage = getValidImage(medias[0]?.url) || fallbackImage;
+      const imageCount = medias.length || (primaryImage ? Number(fallbackSupplier.imageCount) || 1 : 0);
+
+      return {
+        label: `Supplier ${String.fromCharCode(64 + idx)}`,
+        code: String(data.hotelCode || fallbackSupplier.code || "-"),
+        name: data.hotelName || fallbackSupplier.name || "-",
+        image: primaryImage || null,
+        imageCount,
+        address: data.location?.address || fallbackSupplier.address || "-",
+        description: generalText ? { status: "partial", text: generalText } : { status: "na" },
+        contact: contactBits.length ? { status: "partial", text: contactBits.join(" · ") } : { status: "na" },
+        amenities: { status: "na" }
+      };
+    }
+
+    function mapFastX(raw) {
+      const data = getHotelData(raw) || {};
+      const descriptions = Array.isArray(data.descriptions) ? data.descriptions : [];
+      const general = descriptions.find((d) => d?.type === "GENERAL") || descriptions[0] || {};
+      const medias = Array.isArray(data.medias) ? data.medias.filter((m) => !!m?.url) : [];
+      const amenitiesEdges = data.allAmenities?.edges || [];
+      const roomEdges = data.rooms?.edges || [];
+
+      const mappedRooms = roomEdges.map((edge) => {
+        const room = edge?.node?.roomData || {};
+        const occ = room.occupancies?.total?.max;
+        const area = room.area ? `${room.area} sqm` : "";
+        const occText = occ ? `Max ${occ} guests` : "";
+        const details = [area, occText].filter(Boolean).join(" · ") || "Standard room";
+        const roomAmenities = (room.allAmenities?.edges || [])
+          .map((a) => {
+            const texts = a?.node?.amenityData?.texts;
+            const code = a?.node?.amenityData?.amenityCode || "";
+            return {
+              label: getLangText(texts, "en") || code,
+              zh: getLangText(texts, "zh") || ""
+            };
+          })
+          .filter((a) => !!a.label);
+
+        return {
+          code: room.roomCode || room.code || "-",
+          name: getLangText(room.texts, "en") || "Room",
+          nameZh: getLangText(room.texts, "zh") || "",
+          details,
+          description: "",
+          descriptionZh: "",
+          amenities: roomAmenities,
+          image: room.medias?.find((m) => !!m?.url)?.url || medias[0]?.url || ""
+        };
+      });
+
+      return {
+        address: data.location?.address || "-",
+        description: getLangText(general.texts, "en") || "-",
+        descriptionZh: getLangText(general.texts, "zh") || "",
+        checkIn: to12h(data.checkIn?.schedule?.startTime),
+        checkOut: to12h(data.checkOut?.schedule?.endTime),
+        contact: [data.contact?.email, data.contact?.telephone, data.contact?.web].filter(Boolean).join(" · "),
+        gallery: medias.map((m) => m.url),
+        galleryCount: medias.length,
+        amenities: amenitiesEdges.map((a) => ({
+          code: a?.node?.amenityData?.amenityCode || "",
+          label: getLangText(a?.node?.amenityData?.texts, "en") || a?.node?.amenityData?.amenityCode || "",
+          zh: getLangText(a?.node?.amenityData?.texts, "zh") || ""
+        })),
+        rooms: mappedRooms
+      };
+    }
+
+    async function loadRegalDataFromIndex() {
+      const response = await fetch("./index.html", { cache: "no-store" });
+      if (!response.ok) throw new Error("Unable to fetch index.html");
+      const source = await response.text();
+
+      const supplierA = extractConstObject(source, "rawSupplierACN9Json");
+      const supplierB = extractConstObject(source, "rawSupplierBCN9Json");
+      const supplierC = extractConstObject(source, "rawSupplierCCN9Json");
+      const fastxRaw = extractConstObject(source, "rawCN9FastXJson");
+
+      if (!supplierA || !supplierB || !supplierC || !fastxRaw) {
+        throw new Error("CN9 raw blocks not found in index.html");
+      }
+
+      rawSupplierFeeds = [supplierA, supplierB, supplierC];
+      rawFastXFeed = fastxRaw;
+
+      const fastxData = getHotelData(fastxRaw) || {};
+      hotel = {
+        fastxCode: String(fastxData.hotelCode || "CN9"),
+        name: fastxData.hotelName || "Regal Airport Hotel",
+        city: `${fastxData.location?.city || "Hong Kong"}, ${fastxData.location?.country || "HK"}`,
+        chain: getChainLabel(fastxData.chainCode)
+      };
+
+      suppliers = rawSupplierFeeds.map((raw, index) => mapSupplier(raw, index + 1, fallbackSuppliers[index]));
+      fastx = mapFastX(fastxRaw);
+    }
+
+    const plans = {
+      bronze: {
+        tag: "🥉 Bronze",
+        note: "Bronze: standardized hotel-level content (names, chain, category, contact, descriptions, amenities, geolocation). English by default.",
+        rooms: false,
+        zh: false,
+        ownContent: false
+      },
+      silver: {
+        tag: "🥈 Silver",
+        note: "Silver: Bronze + room-level content — standardized room descriptions, amenities and images.",
+        rooms: true,
+        zh: false,
+        ownContent: false
+      },
+      gold: {
+        tag: "🥇 Gold",
+        note: "Gold: Bronze/Silver + upload and blend your own locally contracted content into the response.",
+        rooms: true,
+        zh: false,
+        ownContent: true
+      },
+      bolts: {
+        tag: "⚙️ Bolts-On",
+        note: "Bolts-On: add-ons on top of Bronze/Silver — extra languages (e.g. Chinese) and market customization.",
+        rooms: true,
+        zh: true,
+        ownContent: false
+      }
+    };
+
+    let currentPlan = "bronze";
+
+    function statusPill(label, field) {
+      if (field.status === "na") {
+        return `
+          <span class="status-pill na tt" tabindex="0">
+            ✗ ${label}
+            <span class="tt-box"><span class="tt-label">${label}</span>Not provided by this supplier</span>
+          </span>
+        `;
+      }
+      return `
+        <span class="status-pill partial tt" tabindex="0">
+          ◐ ${label}
+          <span class="tt-box"><span class="tt-label">${label} · partial</span>${field.text || ""}</span>
+        </span>
+      `;
+    }
+
+    function supplierPaneHtml(s) {
+      const image = getValidImage(s.image);
+      const thumb = image
+        ? `<div><img class="thumb" src="${image}" alt="hotel photo" loading="lazy" onerror="this.style.display='none'"><div class="thumb-meta">${s.imageCount} images · mixed sizes</div></div>`
+        : `<div><div class="thumb" style="display:flex;align-items:center;justify-content:center;color:#9fb4d1;font-size:0.7rem;">No image</div><div class="thumb-meta">0 images</div></div>`;
+
+      return `
+        <article class="pane supplier">
+          <h3><span><span class="icon">❌</span> ${s.label}</span></h3>
+          <div class="hotel-line">
+            <span class="hotel-name">${s.name}</span>
+            <span class="hotel-code">${s.code}</span>
+          </div>
+          ${thumb}
+          <div class="status-row">
+            ${statusPill("Description", s.description)}
+            ${statusPill("Contact", s.contact)}
+            <span class="status-pill na tt" tabindex="0">✗ Amenities<span class="tt-box"><span class="tt-label">Amenities</span>Not provided by this supplier</span></span>
+            <span class="status-pill na tt" tabindex="0">✗ Rooms<span class="tt-box"><span class="tt-label">Rooms</span>No standardized room content</span></span>
+          </div>
+        </article>
+      `;
+    }
+
+    function fastxPaneHtml() {
+      const plan = plans[currentPlan];
+
+      const normalizeRoomAmenity = (item) => {
+        if (typeof item === "string") return { label: item, zh: "" };
+        return { label: item?.label || "", zh: item?.zh || "" };
+      };
+
+      const maxGalleryTiles = 5;
+      const hasMoreGallery = fastx.gallery.length > maxGalleryTiles;
+      const visibleGalleryCount = hasMoreGallery ? maxGalleryTiles - 1 : maxGalleryTiles;
+      const visibleGallery = fastx.gallery.slice(0, visibleGalleryCount);
+      const remainingGallery = Math.max(fastx.gallery.length - visibleGallery.length, 0);
+      const gallery = `
+        <div class="gallery">
+          ${visibleGallery.map((url) => `
+            <img src="${url}" alt="hotel photo" loading="lazy" onerror="this.style.display='none'">
+          `).join("")}
+          ${remainingGallery > 0 ? `
+            <div class="gallery-more">
+              <img src="${fastx.gallery[visibleGalleryCount] || fastx.gallery[0]}" alt="" loading="lazy" onerror="this.style.display='none'">
+              <span class="more-chip">+${remainingGallery} more</span>
+            </div>
+          ` : ""}
+        </div>
+      `;
+
+      const visibleAmenities = fastx.amenities.slice(0, 5);
+      const remainingAmenities = Math.max(fastx.amenities.length - visibleAmenities.length, 0);
+      const amenitiesHtml = [
+        ...visibleAmenities.map((item) => {
+          const amenity = typeof item === "string" ? { label: item, zh: "" } : item;
+          const zhText = plan.zh && amenity.zh ? ` · ${amenity.zh}` : "";
+          return `<span class="amenity-tag ${currentPlan !== "bronze" ? "gold" : ""}">${amenity.label}${zhText}</span>`;
+        }),
+        ...(remainingAmenities ? [`<span class="amenity-tag ${currentPlan !== "bronze" ? "gold" : ""} more">(+${remainingAmenities} more)</span>`] : [])
+      ].join("");
+
+      const roomsBlock = plan.rooms
+        ? `
+          <div class="info-row">
+            <span class="info-label">Rooms (standardized)</span>
+            <div class="rooms-container">
+              ${fastx.rooms.map((r) => `
+                <div class="room-card">
+                  <img src="${r.image}" alt="${r.name}" loading="lazy" onerror="this.style.display='none'">
+                  <div>
+                    <div class="room-title">${r.name}</div>
+                    <div class="room-details">${r.details}</div>
+                    ${plan.zh ? `<div class="room-details zh"><strong>ZH:</strong> ${r.nameZh}</div>` : ""}
+                    ${r.amenities && r.amenities.length ? `
+                      <div class="tags-container" style="margin-top: 5px;">
+                        ${r.amenities.map((a) => {
+                          const amenity = normalizeRoomAmenity(a);
+                          const text = plan.zh && amenity.zh ? `${amenity.label} · ${amenity.zh}` : amenity.label;
+                          return `<span class="amenity-tag">${text}</span>`;
+                        }).join("")}
+                      </div>
+                    ` : ""}
+                  </div>
+                </div>
+              `).join("")}
+            </div>
+          </div>
+        `
+        : `
+          <div class="info-row">
+            <span class="info-label">Rooms</span>
+            <div class="locked-wrap">
+              <div class="locked">
+                <div class="rooms-container">
+                  <div class="room-card">
+                    <img src="${fastx.rooms[0].image}" alt="" loading="lazy">
+                    <div>
+                      <div class="room-title">${fastx.rooms[0].name}</div>
+                      <div class="room-details">${fastx.rooms[0].details}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="locked-overlay">🔒 Room-level content available from Silver</div>
+            </div>
+          </div>
+        `;
+
+      const zhBlock = plan.zh
+        ? `
+          <div class="info-row">
+            <span class="addon-badge">🌐 Language add-on contracted: Chinese (ZH)</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Description (中文)</span>
+            <span class="info-val">${fastx.descriptionZh}</span>
+          </div>
+        `
+        : "";
+
+      const goldBanner = plan.ownContent
+        ? `
+          <div class="gold-banner">
+            <strong>Your own content:</strong> Gold merges your locally contracted descriptions, images and room data with FastX standardized content in the same response.
+          </div>
+        `
+        : "";
+
+      return `
+        <article class="pane fastx">
+          <h3><span><span class="icon">✅</span> FastX Content</span><span class="tag gold">${plan.tag.replace(/^\S+\s/, "")}</span></h3>
+          <div class="hotel-line">
+            <span class="hotel-name">${hotel.name}</span>
+            <span class="hotel-code fastx">FastX: ${hotel.fastxCode}</span>
+            <span class="hotel-code fastx">Chain: ${hotel.chain || "-"}</span>
+          </div>
+          ${goldBanner}
+          ${gallery}
+          <div class="info-row">
+            <span class="info-label">Address</span>
+            <span class="info-val">${fastx.address}</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Description (EN)</span>
+            <span class="info-val">${fastx.description}</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Check-in / Check-out</span>
+            <span class="info-val">${fastx.checkIn} / ${fastx.checkOut}</span>
+          </div>
+          ${zhBlock}
+          <div class="info-row">
+            <span class="info-label">Contact</span>
+            <span class="info-val">${fastx.contact}</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Amenities</span>
+            <div class="tags-container">${amenitiesHtml}</div>
+          </div>
+          ${roomsBlock}
+        </article>
+      `;
+    }
+
+    function renderCompare() {
+      document.getElementById("suppliers-row").innerHTML = suppliers.map(supplierPaneHtml).join("");
+      document.getElementById("compare").innerHTML = fastxPaneHtml();
+    }
+
+    function renderPlansBar() {
+      document.getElementById("plans-bar").innerHTML = `
+        <span class="plans-label">⚡ FastX Content tier:</span>
+        ${Object.entries(plans).map(([key, plan]) => `
+          <span class="plan-chip ${currentPlan === key ? "active" : ""}" onclick="selectPlan('${key}')">${plan.tag}</span>
+        `).join("")}
+      `;
+      document.getElementById("plan-note").textContent = plans[currentPlan].note;
+    }
+
+    function renderJson() {
+      const plan = plans[currentPlan];
+
+      if (rawSupplierFeeds.length && rawFastXFeed) {
+        const supplierPayload = {
+          data: {
+            hotelX: {
+              hotels: {
+                edges: rawSupplierFeeds
+                  .map((raw) => raw?.data?.hotelX?.hotels?.edges?.[0])
+                  .filter(Boolean)
+              }
+            }
+          }
+        };
+
+        const fastxPayload = JSON.parse(JSON.stringify(rawFastXFeed));
+        fastxPayload.extensions = {
+          fastxContent: {
+            tier: plan.tag,
+            hotelLevelContent: true,
+            roomLevelContent: plan.rooms,
+            extraLanguages: plan.zh ? ["zh"] : [],
+            ownContentMerge: plan.ownContent
+          }
+        };
+
+        document.getElementById("json-supplier").textContent = JSON.stringify(supplierPayload, null, 2);
+        document.getElementById("json-fastx").textContent = JSON.stringify(fastxPayload, null, 2);
+        document.getElementById("json-fastx-title").textContent = "FastX Content (" + plan.tag.replace(/^\S+\s/, "") + ")";
+        return;
+      }
+
+      const supplierPayload = {
+        data: {
+          hotelX: {
+            hotels: {
+              edges: suppliers.map((s) => ({
+                node: {
+                  hotelData: {
+                    hotelCode: s.code,
+                    hotelName: s.name,
+                    categoryCode: "5",
+                    chainCode: null,
+                    location: { address: s.address, city: "Hong Kong", country: "HK" },
+                    contact: s.contact.status === "na" ? null : { telephone: s.contact.text },
+                    descriptions: s.description.status === "na" ? [] : [{ type: "GENERAL", texts: [{ language: "en", text: s.description.text }] }],
+                    medias: s.image ? [{ type: "GENERAL", url: s.image }] : null,
+                    allAmenities: null
+                  }
+                }
+              }))
+            }
+          }
+        }
+      };
+
+      const fastxHotelData = {
+        hotelCode: hotel.fastxCode,
+        hotelName: hotel.name,
+        categoryCode: "5",
+        chainCode: "RQ",
+        location: {
+          address: fastx.address,
+          city: "Hong Kong",
+          country: "HK",
+          coordinates: { latitude: 22.318979, longitude: 113.933617 }
+        },
+        contact: { email: "rah.rsvn@regalhotel.com", telephone: "85222868888", web: "www.regalhotel.com/regal-airport-hotel/en/home/home.html" },
+        checkIn: { schedule: { startTime: fastx.checkIn }, instructions: [{ language: "en", text: "Check-in begins at 3:00 PM." }, ...(plan.zh ? [{ language: "zh", text: "入住时间从下午 3:00 开始。" }] : [])] },
+        checkOut: { schedule: { endTime: fastx.checkOut }, instructions: [{ language: "en", text: "Check-out is at 12:00 PM." }, ...(plan.zh ? [{ language: "zh", text: "退房时间为中午 12:00。" }] : [])] },
+        descriptions: [{
+          type: "GENERAL",
+          texts: [
+            { language: "en", text: fastx.description },
+            ...(plan.zh ? [{ language: "zh", text: fastx.descriptionZh }] : [])
+          ]
+        }],
+        medias: fastx.gallery.map((url) => ({ type: "HOTEL", url })),
+        allAmenities: { edges: fastx.amenities.map((entry) => {
+          const amenity = typeof entry === "string" ? { code: "HAC" + Math.random().toString(36).slice(2, 7), label: entry, zh: "" } : entry;
+          const zhText = plan.zh && amenity.zh ? [{ language: "zh", text: amenity.zh }] : [];
+          return {
+            node: {
+              amenityData: {
+                amenityCode: amenity.code,
+                texts: [{ language: "en", text: amenity.label }, ...zhText]
+              }
+            }
+          };
+        }) },
+        ...(plan.rooms ? {
+          rooms: {
+            edges: fastx.rooms.map((r) => ({
+              node: {
+                roomData: {
+                  code: r.code,
+                  source: "AO_NORMALIZED",
+                  texts: [
+                    { language: "en", text: r.name },
+                    ...(plan.zh ? [{ language: "zh", text: r.nameZh || r.name }] : [])
+                  ],
+                  descriptions: [{
+                    type: "GENERAL",
+                    texts: [
+                      { language: "en", text: r.description || r.details },
+                      ...(plan.zh ? [{ language: "zh", text: r.descriptionZh || r.details }] : [])
+                    ]
+                  }],
+                  medias: [{ url: r.image }]
+                }
+              }
+            }))
+          }
+        } : {})
+      };
+
+      const fastxPayload = {
+        data: {
+          hotelX: {
+            hotels: {
+              edges: [{ node: { hotelData: fastxHotelData } }]
+            }
+          }
+        },
+        extensions: {
+          fastxContent: {
+            tier: plan.tag,
+            hotelLevelContent: true,
+            roomLevelContent: plan.rooms,
+            extraLanguages: plan.zh ? ["zh"] : [],
+            ownContentMerge: plan.ownContent
+          }
+        }
+      };
+
+      document.getElementById("json-supplier").textContent = JSON.stringify(supplierPayload, null, 2);
+      document.getElementById("json-fastx").textContent = JSON.stringify(fastxPayload, null, 2);
+      document.getElementById("json-fastx-title").textContent = "FastX Content (" + plan.tag.replace(/^\S+\s/, "") + ")";
+    }
+
+    function selectPlan(key) {
+      currentPlan = key;
+      renderPlansBar();
+      renderCompare();
+      renderJson();
+      notifyHeight();
+    }
+
+    function notifyHeight() {
+      if (window.parent && window.parent !== window) {
+        window.parent.postMessage({ type: "fastx-widget-height", height: document.body.scrollHeight }, "*");
+      }
+    }
+
+    function render() {
+      renderPlansBar();
+      renderCompare();
+      renderJson();
+      requestAnimationFrame(notifyHeight);
+    }
+
+    document.getElementById("json-toggle").addEventListener("toggle", notifyHeight);
+    window.addEventListener("resize", notifyHeight);
+
+    loadRegalDataFromIndex()
+      .then(() => render())
+      .catch(() => render());
+  </script>
+</body>
+</html>

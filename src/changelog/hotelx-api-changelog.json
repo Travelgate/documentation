@@ -1,5 +1,95 @@
 [
-   {
+  {
+    "date": "July 7, 2026",
+    "changes": [
+      {
+        "field": "cancelPolicy.cancelPenalties.deadline (CancelPenalty)",
+        "type": "Changed",
+        "description": "The 'deadline' field of the CancelPenalty type is now mandatory (DateTime!, previously nullable). This is the field reached via 'cancelPolicy.cancelPenalties[].deadline', where 'cancelPolicy' is of type CancelPolicy (response type). This affects every HotelX response that returns a CancelPolicy (e.g. search, oneStepQuote, oneStepBook, book, booking, and amend* operations), at both option level and room level. It does NOT affect 'cancelPolicy.cancelPenalties[].deadline' when 'cancelPolicy' is of the input type CancelPolicyInput (used to submit the option's cancel policy in oneStepQuote/oneStepBook room inputs), where 'deadline' is of type CancelPenaltyInput and remains an optional String."
+      }
+    ]
+  },
+  {
+    "date": "May 13, 2026",
+    "changes": [
+      {
+        "field": "commit",
+        "type": "Removed",
+        "description": "Removed the 'commit' mutation along with its related types HotelCommitInput, HotelCommitPayload, HotelCommitDetails, and HotelXCommitReferenceInput."
+      },
+      {
+        "field": "commitRequired",
+        "type": "Deprecated",
+        "description": "The 'commitRequired' field under HotelSettingsInput and SettingsBaseInput is deprecated."
+      },
+      {
+        "field": "currencies (MetadataData)",
+        "type": "Changed",
+        "description": "The 'currencies' field under MetadataData now returns the new type MetadataContentCurrency, whose 'codes' field returns a list of Currency values instead of raw strings."
+      }
+    ]
+  },
+  {
+    "date": "April 28, 2026",
+    "changes": [
+      {
+        "field": "ratePlans",
+        "type": "Added",
+        "description": "Added 'ratePlans' field under BookingRoom. Provides a list of rate plans associated with the booked room."
+      }
+    ]
+  },
+  {
+    "date": "March 18, 2026",
+    "changes": [
+      {
+        "field": "codeSupplier",
+        "type": "Added",
+        "description": "Added 'codeSupplier' field under BookingRoom. Indicates the supplier's room code."
+      }
+    ]
+  },
+  {
+    "date": "February 16, 2026",
+    "changes": [
+      {
+        "field": "supplier (HotelXFilterSearchInput)",
+        "type": "Added",
+        "description": "Added 'supplier' field under HotelXFilterSearchInput using the new SupplierFilterInput type. Allows including or excluding specific suppliers (by ID) in a search query."
+      }
+    ]
+  },
+  {
+    "date": "January 15, 2026",
+    "changes": [
+      {
+        "field": "hotelCodeSupplier",
+        "type": "Added",
+        "description": "Added 'hotelCodeSupplier' field under BookingHotel. Indicates the supplier's hotel code."
+      },
+      {
+        "field": "boardCodeSupplier",
+        "type": "Added",
+        "description": "Added 'boardCodeSupplier' field under BookingHotel. Indicates the supplier's board code."
+      },
+      {
+        "field": "descriptionSupplier",
+        "type": "Added",
+        "description": "Added 'descriptionSupplier' field under BookingRoom. Description about the room in the supplier's context."
+      }
+    ]
+  },
+  {
+    "date": "December 19, 2025",
+    "changes": [
+      {
+        "field": "holder",
+        "type": "Added",
+        "description": "Added 'holder' field under HotelCancelInput and HotelCriteriaBookingInput. Specifies the holder of the reservation to be cancelled."
+      }
+    ]
+  },
+  {
     "date": "November 10, 2025",
     "changes": [
       {

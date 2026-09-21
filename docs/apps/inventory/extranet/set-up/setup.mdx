@@ -332,6 +332,40 @@ Firs step would be to click in the `Add Offer` button over the base rate for whi
 * **Available Dates:** Used to specify whether the offer is available for all the dates or just for a particular date range.
 * **Apply to all rooms:** Used to specify whether the offer will apply to all the rooms of the rate or just to some of them.
 
+## Export to Excel
+
+From the SetUp list toolbar (next to `Add Hotel`), you can export the inventory configured for the selected `Client – Supplier` relation to an Excel file. This is useful to review your portfolio, share it, or cross-check what the Channel Manager will be able to map.
+
+There are two options:
+
+### NEW Export to Excel (recommended)
+
+Generates a single Excel workbook organised into three linked sheets:
+
+* **Hotels:** one row per hotel, including hotels that don't have rates or rooms configured yet. It contains the Channel Manager, hotel ID, hotel code, context code, hotel name, whether it is active, the notification emails (email, CC and From address) and whether booking notifications are enabled.
+* **Rates:** one row per rate, with the hotel ID and hotel code to identify which hotel it belongs to, plus the rate code and name, board type, parent derived rate (code and name), booking window (Apply From / Apply To) and the maximum baby/child ages. **Derived rates are included as their own rows**: a derived rate lists, in the *parent derived rate* columns, the base rate it derives from, while a base rate leaves those columns empty.
+* **Rooms:** one row per room, with the hotel ID, hotel code and rate code to identify which rate it belongs to, plus the room code, room name and the occupancy uses.
+
+To make navigation easier, the sheets are linked: clicking a **hotel code** in the *Hotels* sheet jumps to that hotel's rates in the *Rates* sheet, and clicking a **rate code** in the *Rates* sheet jumps to that rate's rooms in the *Rooms* sheet. Rows are also colour-banded per hotel (in *Rates*) and per rate (in *Rooms*) so the groups are easy to tell apart.
+
+While the file is being generated, the button shows a `Generating Excel…` indicator; the download starts automatically when it's ready.
+
+:::warning
+If the downloaded file opens in **Protected View** in Excel, the cross-sheet links may not work correctly. To use the hotel-to-rates and rate-to-rooms links as expected, click **Enable Editing** (or **Enable Content** / **Edit Anyway**, depending on the Excel version) before using the hyperlinks.
+:::
+
+:::note
+Hotels without rates, and rates without rooms, are still listed (in the *Hotels* and *Rates* sheets respectively); they simply won't have a link to jump to their child rows.
+:::
+
+### Export to Excel (deprecated)
+
+The original `Export to Excel` produces a workbook with one sheet per hotel, listing that hotel's rate, room and derived-rate codes.
+
+:::warning Deprecation notice
+The original **Export to Excel** will be **deprecated at the end of October 2026**. We recommend switching to **NEW Export to Excel**, which provides more information (hotels, rates and rooms, notification settings, board type, occupancy, etc.) in a clearer, cross-referenced format.
+:::
+
 ## Frequently Asked Questions
 
 <details>

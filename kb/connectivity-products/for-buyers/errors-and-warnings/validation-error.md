@@ -59,6 +59,30 @@ Since this error indicates a discrepancy or issue with the validation process, c
 ```
 ```json
 {
+    "data": {
+        "hotelX": {
+            "search": {
+                "auditData": null,
+                "context": "xxx",
+                "options": null,
+                "errors": [
+                    {
+                        "code": "ACCESS_ERROR",
+                        "type": "VALIDATION_ERROR",
+                        "description": "access ACCESS_CODE is not active"
+                    }
+                ],
+                "warnings": null
+            }
+        }
+    }
+}
+```
+
+This description indicates that the specified access is inactive. Check the access status and activate it before retrying the request.
+
+```json
+{
     "data" : {
         "hotelX" : {
             "search" : {

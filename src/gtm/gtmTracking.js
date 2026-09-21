@@ -12,6 +12,8 @@
  */
 
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
+import { matchRoutes } from "react-router-config";
+import routes from "@generated/routes";
 import { getContentGroups } from "./contentGroups";
 
 function pushToDataLayer(payload) {
@@ -34,6 +36,18 @@ function getPageLang() {
   }
 }
 
+// Mirrors the 404 detection logic in Docusaurus core normalizeLocation: real
+// pages resolve to an `exact` leaf route; the 404 catch-all wildcard route does
+// not. So an unmatched path is a 404.
+function getHttpStatus(pathname) {
+  try {
+    const matched = matchRoutes(routes, pathname);
+    return matched.some(({ route }) => route.exact === true) ? 200 : 404;
+  } catch {
+    return 200;
+  }
+}
+
 let userContextPushed = false;
 let lastPageViewSignature = null;
 
@@ -45,6 +59,8 @@ function trackPageView(location) {
     (location && location.search) ||
     (typeof window !== "undefined" ? window.location.search : "");
 
+  const http_status = getHttpStatus(pathname);
+
   // User/session context: pushed once per real page load (SPA), per the
   // guide's `gtm.datalayer` event (without content_group/subgroup).
   if (!userContextPushed) {
@@ -52,7 +68,7 @@ function trackPageView(location) {
       event: "gtm.datalayer",
       user_login_status: getLoginStatus(),
       page_lang: getPageLang(),
-      http_status: 200,
+      http_status,
     });
     userContextPushed = true;
   }
@@ -71,7 +87,7 @@ function trackPageView(location) {
   pushToDataLayer({
     event: "gtm.pageview",
     virtual_url,
-    virtual_status: 200,
+    virtual_status: http_status,
     content_group,
     content_subgroup,
   });

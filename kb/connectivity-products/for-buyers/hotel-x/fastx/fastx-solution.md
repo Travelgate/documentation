@@ -128,19 +128,28 @@ Travelgate then creates a standardized FastX room code and description, and your
 
 ## Aggregating Results with Preference Plugin
 
-Now that your responses are standardized across Suppliers, FastX enables powerful aggregation. When multiple Suppliers return similar options (same hotel, board, and room), the **Preference plugin** helps you select the most relevant option per group.
+Now that your responses are standardized across Suppliers, FastX enables powerful aggregation. When multiple Suppliers return similar options (for example same hotel, board, and room), the [**Preference plugin**](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/preference) helps you select the most relevant option per group.
 
 **How it works:**
 
-1. **Group equivalent options** using your aggregation key (typically: `hotel + board + room`)
-2. **Apply your Preference rule** to select one winner per group
-3. **Two modes available:**
-   - **Default (cost-optimized):** lowest-priced option wins automatically
-   - **Custom (business-driven):** your rules determine the winner
+1. **Options are grouped** using your aggregation key (for example: `hotel + board + room`)
+2. **One winner is selected per group** — by default, the cheapest option wins
+3. **Optionally, apply custom rules** to prioritize specific Suppliers or business criteria instead of pure price
 
-:::caution Aggregation does not verify complete product identity
-An aggregation key groups options according to the selected FastX values. Before treating grouped options as interchangeable, review any Supplier-native attributes that are material to the commercial or customer-facing use case.
-:::
+
+### Interactive FastX Shopping Demo
+
+Use this embedded demo to simulate how aggregation behaves when you change supplier prices and the aggregation key dimensions (`hotel`, `board`, `room`, `refundable`, `binding`, `currency`, `payment type`).
+
+<iframe
+   title="FastX Shopping Aggregation Demo"
+   src="/demo_fastx_shopping/widget.html"
+   width="100%"
+   height="640"
+   loading="lazy"
+></iframe>
+
+<script src="/js/fastx-widget-iframe.js"></script>
 
 <details>
 <summary><strong>📋 Aggregation example: "Hotel Santo Domingo" search</strong></summary>

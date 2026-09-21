@@ -63,21 +63,46 @@ These validations apply independently of the four onboarding phases above.
 ### Certification Files Format
 Travelgate has implemented an automated certification system to ensure the key points of the methods are correctly covered according to the HotelX Pull Buyers API. This system requires the certification files to be **uploaded in a specific name and format**: the format should be `.json` and the name should indicate the corresponding certification.
 
-The following table outlines the names corresponding to each part of the certification process:
+The following tables outline the files corresponding to each part of the certification process:
 
-| Method                       | Request                  | Response              |
-| ---------------------------- | ------------------------ | --------------------- |
-| Content certification > Hotels RQ and RS   | Not required              | rs_hotels.json        |
-| Case: Refundable > Search RQ and RS | rq_search_rf.json     | rs_search_rf.json     |
-| Case: Refundable > Quote RQ and RS  | rq_quote_rf.json      | rs_quote_rf.json      |
-| Case: Refundable > Book RQ and RS   | rq_book_rf.json       | rs_book_rf.json       |
-| Case: Non Refundable > Search RQ and RS | rq_search_nrf.json    | rs_search_nrf.json    |
-| Case: Non Refundable > Quote RQ and RS  | rq_quote_nrf.json     | rs_quote_nrf.json     |
-| Case: Non Refundable > Book RQ and RS   | rq_book_nrf.json      | rs_book_nrf.json      |
-| Case: Payment Card (optional) > Search RQ and RS | rq_search_direct.json | rs_search_direct.json |
-| Case: Payment Card (optional) > Quote RQ and RS  | rq_quote_direct.json  | rs_quote_direct.json  |
-| Case: Payment Card (optional) > Book RQ and RS   | rq_book_direct.json   | rs_book_direct.json   |
-| Booking Management > Cancel RQ and RS | rq_cancel_rf.json | rs_cancel_rf.json     |
+**Content certification**
+
+| Method            | Request      | Response       |
+| ------------------ | ------------ | -------------- |
+| Hotels RQ and RS   | Not required | rs_hotels.json |
+
+**Case: Refundable**
+
+| Method            | Request            | Response           |
+| ------------------ | ------------------ | ------------------ |
+| Search RQ and RS   | rq_search_rf.json  | rs_search_rf.json  |
+| Quote RQ and RS    | rq_quote_rf.json   | rs_quote_rf.json   |
+| Book RQ and RS     | rq_book_rf.json    | rs_book_rf.json    |
+| Cancel RQ and RS   | rq_cancel_rf.json  | rs_cancel_rf.json  |
+
+**Case: Non Refundable**
+
+| Method            | Request             | Response            |
+| ------------------ | ------------------- | -------------------- |
+| Search RQ and RS   | rq_search_nrf.json  | rs_search_nrf.json  |
+| Quote RQ and RS    | rq_quote_nrf.json   | rs_quote_nrf.json   |
+| Book RQ and RS     | rq_book_nrf.json    | rs_book_nrf.json    |
+| Cancel RQ and RS   | rq_cancel_nrf.json  | rs_cancel_nrf.json  |
+
+**Case: Payment Card (optional)**
+
+| Method            | Request                | Response               |
+| ------------------ | ---------------------- | ---------------------- |
+| Search RQ and RS   | rq_search_direct.json  | rs_search_direct.json  |
+| Quote RQ and RS    | rq_quote_direct.json   | rs_quote_direct.json   |
+| Book RQ and RS     | rq_book_direct.json    | rs_book_direct.json    |
+| Cancel RQ and RS   | rq_cancel_direct.json  | rs_cancel_direct.json  |
+
+**Booking Management**
+
+| Method                | Request         | Response        |
+| ---------------------- | --------------- | ---------------- |
+| Booking Read/List RQ and RS | rq_booking.json | rs_booking.json |
 
 ## Certification Panel Support with AIna
 

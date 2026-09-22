@@ -80,7 +80,7 @@ The following tables outline the files corresponding to each part of the certifi
 | Book RQ and RS     | rq_book_rf.json    | rs_book_rf.json    |
 | Cancel RQ and RS   | rq_cancel_rf.json  | rs_cancel_rf.json  |
 
-**Case: Non Refundable**
+**Case: Non-Refundable**
 
 | Method            | Request             | Response            |
 | ------------------ | ------------------- | -------------------- |

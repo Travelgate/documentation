@@ -105,7 +105,7 @@ If you need a specific default configuration for your setup, please [contact us]
   - Blocks hotels whose **price increases from Avail to Quote** at a rate that exceeds the configured threshold.
   - The price returned in the **Avail** is compared against the price confirmed in the **Quote**. When a quote comes back more expensive than the Avail by at least the configured **price deviation**, that quote counts as an error.
   - This criteria evaluates the **percentage of affected quotes** over a defined time window and only triggers after a minimum number of requests are received.
-  - A price increase means the Buyer is shown a price they cannot actually book, which harms conversion and the end customer's experience.
+  - A price increase means the Buyer is shown a higher price at Quote than at Avail, which can harm conversion and the end customer's experience.
   - You can customize the following settings:
     - **Price deviation**: how much more expensive the Quote must be than the Avail for that quote to count as an error.
     - **Percentage error**: maximum tolerated ratio of affected quotes before blocking.

@@ -10,7 +10,11 @@ sidebar_position: 3
 2. Navigate to **Smart Traffic > [Traffic Optimizer](https://app.travelgate.com/traffic-optimizer)**. This will take you to the **Traffic Optimizer Dashboard**, where you can review connections and accesses currently active or previously optimized.
 3. Click on the **"Optimize a Connection"** button.
    ![to_updated_2](https://storage.travelgate.com/kbase/to_updated_2.jpg)
-4. **Select the connection or access to optimize**: Only unconfigured connections or accesses will appear in the menu. If you can't find a connection/access, check the dashboard and review the filters. Connections of Buyers using the **Legacy API** should not be configured per access but rather for the whole connection.
+4. **Select the connection or access to optimize**: Only unconfigured connections or accesses will appear in the menu. If you can't find a connection/access, check the dashboard and review the filters.
+
+   :::warning Legacy API setup
+   Connections of Buyers using the **Legacy API** should not be configured per access but rather for the whole connection.
+   :::
 
    ![traffic_optimizer_3](https://storage.travelgate.com/kbase/traffic_optimizer_3.jpg)
 
@@ -22,7 +26,7 @@ sidebar_position: 3
    ![traffic_optimizer_5](https://storage.travelgate.com/kbase/traffic_optimizer_5.jpg)
 
 5. **Configure the optimization criteria**: Define the connection/access details and select the optimization criteria.
-   ![traffic_optimizer_4](https://storage.travelgate.com/kbase/traffic_optimizer_4.jpg)
+   ![traffic_optimizer_4](https://storage.travelgate.com/kbase/traffic_optimizer_4-1.jpg)
 
 ## Can I Edit the Configuration?
 
@@ -30,14 +34,19 @@ Yes! To edit optimization criteria for connections or accesses:
 1. Click the **three dots** under 'Actions'. 
 2. Select **"Edit Configuration"**.
 
+:::info Configuration scope
 If you need to switch from **access-level to connection-level optimization (or vice versa),** please open a [Case](https://app.travelgate.com/support).
+:::
 
 ![TO_edit_actions](https://storage.travelgate.com/kbase/TO_edit_actions.jpg)
 
 ## Why Can’t I Find a Specific Connection or Access?
 
 If a connection or access is missing from Traffic Optimizer, consider the following:
-- If a connection or access was previously activated but later deactivated, it will be hidden. To view and reactivate it, **uncheck "Show only active"** on the left side of the Traffic Optimizer dashboard.
+
+:::tip Quick check
+If a connection or access was previously activated but later deactivated, it will be hidden. To view and reactivate it, **uncheck "Show only active"** on the left side of the Traffic Optimizer dashboard.
+:::
 
 ## What Information is Displayed in the Traffic Optimizer Dashboard?
 
@@ -45,7 +54,7 @@ At the top, three performance summary cards display:
 
 - **Searches 100% Blocked (Yesterday):** Total searches completely blocked and saved.
 - **Δ L2B Improvement (Yesterday):** Estimated Look-to-Book (L2B) improvement due to reduced search traffic. This L2B figure is distinct from the one you see in the Stats section.
-- **Δ Search NOK Improvement (Yesterday):** Percentage of searches blocked due to the set criteria (**No Availability, No Bookings, Not in Portfolio**). This value is distinct from the one you see in the Stats section.
+- **Δ Search NOK Improvement (Yesterday):** Percentage of searches blocked due to the set criteria (**No Availability, Zero Bookings, Not in Portfolio, Quote Error, and Booking Error**). This value is distinct from the one you see in the Stats section.
 
 Additional details available in the dashboard:
 - **Connection/Access Name:** By default, only active connections/accesses appear.
@@ -105,9 +114,15 @@ While this automation runs by default to secure the highest possible system effi
 
 ## Can I Exclude Hotels from Being Blocked?
 
-Yes, you can exclude specific hotels from the Traffic Optimizer blacklist by simply opening a [case](/kb/platform/support-portal/case-guidelines) with our Customer Support team. Please note that exclusions are applied **at the connection level**. 
+Yes, you can exclude specific hotels from the Traffic Optimizer blacklist by simply opening a [case](/kb/platform/support-portal/case-guidelines) with our Customer Support team.
 
-Additionally, some hotels are be **temporarily whitelisted** to re-evaluate conversion performance. This grace period is **automatically activated** for hotels flagged under the "Zero bookings" criteria.
+:::info Exclusions
+Exclusions are applied **at the connection level**.
+:::
+
+:::tip Temporary whitelist
+Some hotels may be **temporarily whitelisted** to re-evaluate conversion performance. This grace period is **automatically activated** for hotels flagged under the "Zero Bookings" criteria.
+:::
 
 ### Use Cases:
 
@@ -130,7 +145,7 @@ Additionally, some hotels are be **temporarily whitelisted** to re-evaluate conv
    | Day _n_ | If "Hotel A" receives a booking → removed from the blacklist. |
 
 :::info
-- All criteria (**No Availability, Zero Bookings, and Not in Portfolio**) can be applied together. However, we recommend **starting with one at a time**.
+- All criteria (**No Availability, Zero Bookings, Not in Portfolio, Quote Error, and Booking Error**) can be applied together. However, we recommend **starting with one at a time**.
 - To activate the "Zero Bookings" criteria, the connection/access must have **at least one booking per month for the past six months** (excluding the current month).
 - When a Buyer using **HotelX API** requests a blacklisted hotel, the following **error/warning** appears:
   ```json

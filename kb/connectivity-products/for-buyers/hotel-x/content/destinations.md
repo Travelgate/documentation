@@ -5,7 +5,12 @@ sidebar_position: 3
 # Destinations
 
 ## What is the Destinations Query?
-The Destinations Query provides a list of destinations from a supplier’s access, allowing Buyers to retrieve all destinations configured for a given set of credentials.
+The Destinations Query lets you retrieve destination master data from HotelX in two scopes:
+
+1. **FastX Destination List**: standardized destination values from Travelgate.
+2. **Supplier Destination List**: native destination values configured by each Seller.
+
+This allows you to inspect either the FastX destination master or one Seller's native destination tree, depending on the access used in the query.
 
 :::tip
 Check out our [HotelX Pull Buyers API Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/destinations#query-overview) for a complete example of a Destinations Query! 🚀
@@ -14,13 +19,22 @@ Check out our [HotelX Pull Buyers API Documentation](/docs/apis/for-buyers/hotel
 ### What Information is Included in the Destinations Query Response? 
 The response typically includes the following fields:
 
-- **Code** – The Seller’s destination code.
+- **Code** – The destination code from the selected Seller.
 - **Available** – Indicates if the destination is available.
 - **DestinationLeaf** – Specifies whether the destination is a final node in the hierarchy.
 - **Texts** – Contains descriptions of the destination.
 - **ClosestDestinations** – Lists nearby destinations.
 - **Parent** – Indicates the parent destination in the hierarchy.
 - **Type** – Specifies whether the destination is a zone or a city.
+
+## FastX and Supplier Scope
+
+### How Do FastX and Supplier Destination Values Differ?
+
+- With **FastX access**, the destination list comes from the FastX standardized destination master.
+- With **Supplier access**, the destination list comes from the Seller-native destination tree.
+
+If your integration consumes both scopes, keep in mind that destination values and structure can vary depending on the selected access.
 
 ## Understanding Destination List Logic
 
@@ -37,6 +51,12 @@ Suppliers structure their Destination Tree using both zone and city nodes. When 
 The amount of information, content, and categorization of destinations may vary across Sellers.  
 For example, one Seller might classify San Francisco as a "Zone," while another may categorize it as a "City."
 :::
+
+### How Can I Retrieve the FastX Destination Master?
+Use your **FastX access** in the Destinations Query. You can find it in *MyConnections* under the Seller **"Travelgate"**.
+
+### How Can I Retrieve a Seller's Native Destination List?
+Use that Seller's access in the Destinations Query to retrieve the native destination tree configured for your account.
 
 ## Destination Mapping and Filtering
 

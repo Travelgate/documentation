@@ -2,9 +2,7 @@
 sidebar_position: 2
 ---
 
-# ChannelX
-
-## What is ChannelX? 
+# What is ChannelX?
 
 **ChannelX** extracts product data loaded by Channel Managers into our [Inventory](/kb/connectivity-products/for-buyers/inventory/inventory-solution) tool and pushes it directly into the system of a Travelgate Partner, typically an OTA (Buyer).
 

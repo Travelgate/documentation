@@ -48,13 +48,57 @@ It uses a **data-driven approach** to analyze past transactions and **automatica
 ### Zero Bookings
 
   - Blocks hotels that have **never recorded a booking** with Travelgate.
-  - Hotels blocked under this criterion receive a **grace period** to accept new searches, and will be **unblocked automatically** when a booking is detected.
+  - Hotels blocked under this criteria receive a **grace period** to accept new searches, and will be **unblocked automatically** when a booking is detected.
+
+### Quote Error
+
+  - Blocks hotels when their **quote requests return errors** at a rate that exceeds the configured threshold.
+  - This criteria evaluates the **percentage of quote errors** over a defined time window and only triggers after a minimum number of requests are received.
+  - You can customize the following settings:
+    - **Percentage error**: maximum tolerated error rate before blocking.
+    - **Minimum requests**: minimum number of quote requests needed before the rule is evaluated.
+    - **Evaluation window hours**: period used to calculate the error ratio.
+    - **Block duration hours**: how long the hotel remains blacklisted if the threshold is exceeded.
+
+
+:::info Default configuration for Quote Error
+- **Percentage error**: `50%`
+- **Minimum requests**: `5`
+- **Evaluation window hours**: `2h`
+- **Block duration hours**: `2h`
+:::
+
+:::tip Need a different default?
+If you need a specific default configuration for your setup, please [contact us](https://app.travelgate.com/support).
+:::
+
+### Booking Error
+
+  - Blocks hotels when their **booking requests fail** at a rate that exceeds the configured threshold.
+  - This criteria evaluates the **percentage of booking errors** over a defined time window and only triggers after a minimum number of requests are received.
+  - You can customize the following settings:
+    - **Percentage error**: maximum tolerated error rate before blocking.
+    - **Minimum requests**: minimum number of booking requests needed before the rule is evaluated.
+    - **Evaluation window hours**: period used to calculate the error ratio.
+    - **Block duration hours**: how long the hotel remains blacklisted if the threshold is exceeded.
+
+
+:::info Default configuration for Booking Error
+- **Percentage error**: `50%`
+- **Minimum requests**: `2`
+- **Evaluation window hours**: `4h`
+- **Block duration hours**: `2h`
+:::
+
+
+:::tip Need a different default?
+If you need a specific default configuration for your setup, please [contact us](https://app.travelgate.com/support).
+:::
 
 ### Not in Portfolio
 
   - Identifies and blocks hotel codes that are **no longer offered by the Seller**.
   - A hotel must be requested before it becomes eligible for blocking. As a result, there may be a time gap between the first request and the actual blocking.
-  - Once a hotel is blocked, it will never be unblocked unless it is included again by the Seller in the HotelList.
 
 Hotels that match these criteria are **blacklisted**, meaning searches for those properties will be blocked, reducing unnecessary traffic.
 

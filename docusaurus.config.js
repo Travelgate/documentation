@@ -430,13 +430,6 @@ const config = {
             position: "left",
           },
           {
-            to: "/ask-ai",
-            //type: 'docSidebar',
-            sidebarId: "askAiSidebar",
-            label: "Ask AI",
-            position: "left",
-          },
-          {
             to: "https://app.travelgate.com/tickets",
             //type: 'docSidebar',
             sidebarId: "supportCenterSidebar",

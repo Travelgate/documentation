@@ -44,7 +44,7 @@ The response typically includes the following fields:
 The amount of information returned may vary across different Sellers.
 :::
 
-## Mapping Process
+## FastX Room Standardization
 
 Each Supplier has its own native room codes and descriptions. FastX generates a standardized room code and description at Search time from the Supplier-native description.
 

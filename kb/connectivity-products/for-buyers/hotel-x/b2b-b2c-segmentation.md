@@ -1,7 +1,7 @@
 ---
 title: B2B and B2C Commercial Channels
 sidebar_label: B2B & B2C Segmentation
-sidebar_position: 5
+sidebar_position: 4
 description: Learn how to simultaneously operate and configure both B2B and B2C feeds using Travelgate's platform and HotelX API.
 ---
 

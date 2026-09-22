@@ -14,7 +14,11 @@ In the **Connections Content** section, you can easily check and force updates f
 
 2. **Click on** "Connections" > **Connections Content**  
 
-3. **Filter by Connection > Supplier > Access**, and click the "Get content" button to retrieve the corresponding portfolio. You can also filter by Country, Hotel code, or Hotel Name using the "Filter results" panel on the left side of the screen.
+3. **Select a Connection, Supplier, Access, and Language**, then click "Get content". Use the left-side panel to filter results by Country, Hotel code, or Hotel Name.
+
+    :::note Available Languages
+    The **languages available** in the dropdown depend on the selected access, as they correspond to the languages the Seller has indicated they can return for that access.
+    :::
 
     ![tg-connections-content-fastx](https://storage.travelgate.com/kbase/tg-connections-content-fastx.png)
 

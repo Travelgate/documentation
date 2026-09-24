@@ -145,8 +145,9 @@ Some hotels may be **temporarily whitelisted** to re-evaluate conversion perform
    | Day _n_ | If "Hotel A" receives a booking → removed from the blacklist. |
 
 :::info
-- All criteria (**No Availability, Zero Bookings, Not in Portfolio, Quote Error, and Booking Error**) can be applied together. However, we recommend **starting with one at a time**.
+- All criteria (**No Availability, Zero Bookings, Not in Portfolio, Quote Error, Booking Error, Price Increase, and Price Decrease**) can be applied together. However, we recommend **starting with one at a time**.
 - To activate the "Zero Bookings" criteria, the connection/access must have **at least one booking per month for the past six months** (excluding the current month).
+- The **Price Increase** and **Price Decrease** criteria can be activated **without specifying a configuration**, in which case the default thresholds are applied. See [How to Use Traffic Optimizer](/kb/platform/app-features/smart-traffic/traffic-optimizer/traffic-optimizer-details) for the full list of configurable thresholds.
 - When a Buyer using **HotelX API** requests a blacklisted hotel, the following **error/warning** appears:
   ```json
   {

@@ -48,18 +48,23 @@ This query offers versatility, with certain fields marked as mandatory (`access`
 
 ## Use Cases
 
-#### FastX master board list
+### FastX master board list
 
-To retrieve the **FastX Board Master**, make a `board list` call using your **FastX access**, which you can find in the *MyConnections* section under the Seller **"Travelgate"**. This returns the complete list of unique boards from the Travelgate ecosystem. 
+To retrieve the **FastX Board Master**, make a `board list` call using your **FastX access**, which you can find in the *MyConnections* section under the Seller **"Travelgate"**. This returns the complete list of unique boards from the Travelgate ecosystem.
 
 <GraphqlSample query={boardsQuery} variables={boardsFastXVariables} />
 
-
-#### Supplier board list
+### Supplier board list
 
 To retrieve only one Supplier's native board list, include that Supplier's access in the query (for example, access `2` for the Travelgate Test supplier).
 
 <GraphqlSample query={boardsQuery} variables={boardsVariables} />
+
+### Board list for specific board code
+
+Use the Boards List Query to filter specific board types. For example, if you only want half board options, include `boardCodes` such as "2" and "256" in your criteria (these are supplier-native codes for half board in this example). This helps you retrieve more targeted and relevant results.
+
+<GraphqlSample query={boardsQuery} variables={boardsByBoardCodeVariables} />
 
 :::note
 
@@ -68,10 +73,3 @@ The amount of information and content returned might vary between Sellers.
 HotelX supports all languages, but receiving board descriptions in one or another depends entirely on the languages supported by the Seller.
 
 :::
-
-
-#### Board list for specific board code
-
-Use the Boards List Query to filter specific board types. For example, if you only want half board options, include `boardCodes` such as "2" and "256" in your criteria (these are supplier-native codes for half board in this example). This helps you retrieve more targeted and relevant results.
-
-<GraphqlSample query={boardsQuery} variables={boardsByBoardCodeVariables} />

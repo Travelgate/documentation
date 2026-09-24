@@ -6,9 +6,9 @@ export default function FooterLayout({style, links, logo, copyright}) {
       className={clsx('footer', {
         'footer--dark': style === 'dark',
       })}>
-      <div className="container container-fluid">
+      <div className="container">
         <div className="row">
-          <div className="col col--3">
+          <div className="col col--2">
             <img src="https://www.travelgate.com/assets/img/logos/logo_tg_negative.svg" className="logo" />
             <div className="social">
               <span><a target="_blank" className="footer__list-rrss" href="https://twitter.com/travelgatex"><i className="fa-brands fa-x-twitter" aria-hidden="true"></i></a></span>
@@ -21,7 +21,7 @@ export default function FooterLayout({style, links, logo, copyright}) {
             <p className="copyright">A complete ecosystem of travel connections, democratizing and simplifying sourcing & distribution.</p>
             <p>© {(new Date()).getFullYear()} Travelgate</p>
           </div>
-          <div className="col col--3">
+          <div className="col col--2">
             <h6>Company</h6>
             <ul>
               <li><a href="https://www.travelgate.com/about-us" target="_blank">About us</a></li>
@@ -31,7 +31,7 @@ export default function FooterLayout({style, links, logo, copyright}) {
               <li><a href="https://www.travelgate.com/iso-certificate" target="_blank">ISO Certificate</a></li>
             </ul>
           </div>
-          <div className="col col--3">
+          <div className="col col--2">
             <h6>Navigation</h6>
             <ul>
               <li><a href="https://www.travelgate.com" target="_blank">Home</a></li>
@@ -41,7 +41,7 @@ export default function FooterLayout({style, links, logo, copyright}) {
               <li><a href="https://www.travelgate.com/service-packages" target="_blank">Service Packages</a></li>
             </ul>
           </div>
-          <div className="col col--3">
+          <div className="col col--2">
             <h6>Resources</h6>
             <ul>
               <li><a href="/" target="_blank">Documentation</a></li>
@@ -50,6 +50,14 @@ export default function FooterLayout({style, links, logo, copyright}) {
               <li><a href="https://landing.travelgate.com/en/travel-trends-dashboard?utm_campaign=Data%20Digest" target="_blank">Travel Trends Data Dashboard</a></li>
               <li><a href="https://discord.com/servers/travelgate-1121158946074402916" target="_blank">Travelgate Community</a></li>
               <li><a href="https://www.travelgate.com/press-kit" target="_blank">Press Kit</a></li>
+            </ul>
+          </div>
+          <div className="col col--2">
+            <h6>Legal</h6>
+            <ul>
+              <li><a href="https://www.travelgate.com/cookies-policy" target="_blank">Cookies Policy</a></li>
+              <li><a href="https://www.travelgate.com/privacy-policy" target="_blank">Privacy Policy</a></li>
+              <li><a href="https://www.travelgate.com/aviso-legal" target="_blank">Aviso Legal</a></li>
             </ul>
           </div>
         </div>

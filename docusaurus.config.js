@@ -236,16 +236,16 @@ const config = {
       "data-project-color": "#0B59DE",
       "data-project-logo": "/img/ask_ia.svg",
       "data-modal-disclaimer":
-        "AIna, Travelgate's multilingual AI assistant, provides quick answers and troubleshooting guidance based on our official documentation. For the most precise and helpful response, please describe your inquiry clearly and in detail. While we strive for thoroughness, AI-generated responses may not always be perfect. They are provided as is, and Travelgate disclaims any liability for inaccuracies. Please use discretion.",
-      "data-user-analytics-fingerprint-enabled": "true",
-      "data-user-analytics-store-ip": "true",
+        "AIna, Travelgate's multilingual AI assistant, provides quick answers and troubleshooting guidance based on our official documentation. For the most precise and helpful response, please describe your inquiry clearly and in detail. AIna is powered by kapa.ai and your questions are processed outside the European Economic Area (EEA): please do not share confidential, customer or personal data. While we strive for thoroughness, AI-generated responses may not always be perfect. They are provided as is, and Travelgate disclaims any liability for inaccuracies. Please use discretion. See our [Privacy Policy](https://www.travelgate.com/privacy-policy), [Cookies Policy](https://www.travelgate.com/cookies-policy), and [kapa.ai subprocessors](https://docs.kapa.ai/security-subprocessors) for more information.",
+      "data-user-analytics-fingerprint-enabled": "false",
+      "data-user-analytics-cookie-enabled": "true",
+      "data-user-analytics-store-ip": "false",
       "data-button-text": " ",
       "data-modal-full-screen": "false",
       "data-modal-open-by-default": "false",
       "data-modal-close-button-hide": "false",
       "data-modal-with-overlay": "true",
       "data-search-mode-enabled": "false",
-
       "data-button-width": "72px",
       "data-button-height": "72px",
       "data-button-image-width": "72px",
@@ -256,10 +256,15 @@ const config = {
       "data-button-border-radius": "0",
       "data-button-border": "0",
       "data-button-hover-animation-enabled": "false",
-
       "data-mcp-enabled": "true",
       "data-mcp-server-url": "https://travelgate.mcp.kapa.ai",
       "data-customization-id": "1d732488-1c1e-4ed6-b4ed-3135ad6fde53",
+      "data-consent-required": "true",
+      "data-consent-screen-title": "You're about to chat with AIna, our AI assistant",
+      "data-consent-screen-disclaimer":
+        "Your questions are sent to and answered by our AI provider, kapa.ai, whose infrastructure is located outside the European Economic Area (EEA). This choice only applies to AIna: clicking 'Accept' lets kapa.ai set its own cookie scoped to this AI assistant, containing a unique anonymous ID. This is separate from any other cookies used elsewhere on this site. You can decline and still browse the documentation.",
+      "data-consent-screen-accept-button-text": "Accept and start chatting",
+      "data-consent-screen-reject-button-text": "Decline",
     },
     {
       src: "https://js-eu1.hs-scripts.com/2825176.js",

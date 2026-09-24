@@ -208,7 +208,7 @@ const config = {
     {
       src: "https://widget.kapa.ai/kapa-widget.bundle.js",
       defer: true,
-      // basic parametrs for Kapa widget
+      // basic parameters for Kapa widget
       "data-website-id": "22c9d321-f9d2-48e3-958b-a5789f17c4b7",
       "data-project-name": "Travelgate",
       "data-project-color": "#0B59DE",

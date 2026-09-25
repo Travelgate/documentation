@@ -130,29 +130,6 @@ const config = {
       },
     },
 
-    // Structured Data: WebSite
-    {
-      tagName: "script",
-      attributes: {
-        type: "application/ld+json",
-      },
-      innerHTML: `
-          {
-          "@context": "https://schema.org",
-          "@type": "WebSite",
-          "name": "Travelgate Docs",
-          "url": "https://docs.travelgate.com/",
-          "inLanguage": "en",
-          "isAccessibleForFree": true,
-          "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://docs.travelgate.com/search?q={search_term_string}",
-            "query-input": "required name=search_term_string"
-            }
-          }
-          `,
-    },
-
     // Structured Data: FAQPage
     {
       tagName: "script",
@@ -231,32 +208,37 @@ const config = {
     {
       src: "https://widget.kapa.ai/kapa-widget.bundle.js",
       defer: true,
+      // basic parameters for Kapa widget
       "data-website-id": "22c9d321-f9d2-48e3-958b-a5789f17c4b7",
       "data-project-name": "Travelgate",
       "data-project-color": "#0B59DE",
-      "data-project-logo": "/img/ask_ia.svg",
-      "data-modal-disclaimer":
+      "data-project-logo": "/img/aina_stars.svg",
+      // optional parameters for Kapa widget
+      "data-view-mode": "sidebar",
+      "data-modal-size": "600px",
+      "data-modal-logo-background-color": "#0f64f3",
+      "data-modal-logo-width": "22px",
+      "data-modal-logo-height": "22px",
+      "data-modal-logo-padding": "3px",
+      "data-search-mode-enabled": "false",
+      "data-chat-disclaimer":
         "AIna, Travelgate's multilingual AI assistant, provides quick answers and troubleshooting guidance based on our official documentation. For the most precise and helpful response, please describe your inquiry clearly and in detail. While we strive for thoroughness, AI-generated responses may not always be perfect. They are provided as is, and Travelgate disclaims any liability for inaccuracies. Please use discretion.",
       "data-user-analytics-fingerprint-enabled": "true",
       "data-user-analytics-store-ip": "true",
-      "data-button-text": " ",
-      "data-modal-full-screen": "false",
-      "data-modal-open-by-default": "false",
-      "data-modal-close-button-hide": "false",
-      "data-modal-with-overlay": "true",
-      "data-search-mode-enabled": "false",
-
-      "data-button-width": "72px",
-      "data-button-height": "72px",
-      "data-button-image-width": "72px",
-      "data-button-image-height": "72px",
-      "data-button-bg-color": "transparent",
-      "data-button-box-shadow": "0",
-      "data-button-hover-bg-color": "transparent",
-      "data-button-border-radius": "0",
-      "data-button-border": "0",
-      "data-button-hover-animation-enabled": "false",
-
+      "data-launcher-button-text": "AIna",
+      "data-launcher-button-width": "58px",
+      "data-launcher-button-height": "62px",
+      "data-launcher-button-image-width": "32px",
+      "data-launcher-button-image-height": "30px",
+      "data-launcher-button-label-font-size": "12px",
+      "data-launcher-button-padding-left": "8px",
+      "data-launcher-button-justify-content": "flex-start",
+      "data-launcher-button-right": "0",
+      "data-launcher-button-background-color": "#0f64f3",
+      "data-launcher-button-box-shadow": "0 2px 8px rgba(0, 0, 0, 0.15)",
+      "data-launcher-button-hover-background-color": "#0b59de",
+      "data-launcher-button-border-radius": "50px 0 0 50px",
+      "data-launcher-button-border": "0",
       "data-mcp-enabled": "true",
       "data-mcp-server-url": "https://travelgate.mcp.kapa.ai",
       "data-customization-id": "1d732488-1c1e-4ed6-b4ed-3135ad6fde53",

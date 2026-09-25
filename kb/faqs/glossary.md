@@ -336,7 +336,7 @@ JavaScript Object Notation, a lightweight data-interchange format that's easy fo
 A signal used in network protocols to check and maintain a connection as active and open.
 
 - **L2B (Look-to-Book)**  
-A ratio or metric that compares the number of views a travel product receives to the number of bookings made. Total number of Search requests by total number of bookings OK, minus cancellations OK.
+A ratio or metric that compares the number of views a travel product receives to the number of bookings made. Total number of Search requests divided by total number of bookings OK.
 
 - **Latency**  
 The delay before a transfer of data begins following an instruction for its transfer, often measured to assess network speed.

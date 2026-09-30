@@ -206,17 +206,13 @@ Once you have created your blacklist rules — either **via the website** or by 
 
 To do this, add the following field to the `settings` node of your request. Note that the Blacklist plugin can **only be executed during a search query**.
 
-* **`step`**: "REQUEST_ACCESS"
-* **`type`**: "PRE_STEP"
 * **`name`**: "blacklist"
 
 ```js
 "settings": {
 	"plugins": [
 		{
-			"step": "REQUEST_ACCESS",
 			"pluginsType": {
-				"type": "PRE_STEP",
 				"name": "blacklist"
 			}
 		}
@@ -234,10 +230,8 @@ To apply a specific rule in a query, add the `clientTokens` field to the `settin
         ],
         "plugins" : [
             {
-                "step" : "REQUEST_ACCESS",
                 "pluginsType" : [
                     {
-                        "type" : "PRE_STEP",
                         "name" : "blacklist"
                     }
                 ]

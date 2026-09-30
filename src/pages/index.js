@@ -98,8 +98,8 @@ export default function Home() {
             <div className="row">
               <div className="col col--12">
                 <div className="section-title">
-                  <h3>Explore Travelgate APPs</h3>
-                  <p>If you don’t have an API in your tech stack, aren’t integrated with any tech platform, or simply want to maximize our apps, Travelgate offers user-friendly, tailored solutions.</p>
+                  <h3>Explore More from Travelgate</h3>
+                  <p>Discover our Inventory Solution and our App Store, two additional ways to work with Travelgate beyond our APIs.</p>
                 </div>
               </div>
             </div>
@@ -108,21 +108,24 @@ export default function Home() {
                 <div className="item">
                   <img src="https://storage.travelgate.com/docs/home_docs_browse_inventory.svg" />
                   <h4>Inventory</h4>
-                  <p>In our Inventory extranet we will give you the tools to setup hotels, rates and rooms contracted with the hoteliers, allowing channel managers to push availability and prices.</p>
+                  <p>If you don’t have an API in your tech stack, our Inventory Solution lets you set up the products you’ve contracted with hoteliers and gives channel managers the tools to push availability and prices.</p>
                   <p><a href="/docs/apps/inventory/quickstart">Quickstart guide <i className="fa-solid fa-chevron-right"></i></a></p>
                 </div>
               </div>
               <div className="col col--4">
                 <div className="item">
                   <img src="https://storage.travelgate.com/docs/home_docs_browse_distribution.svg" />
-                  <h4>Distribution</h4>
-                  <p>With Distribution you will be able to configure distribution rules to connect your B2B Buyers effortless and access all Sellers from our Marketplace.</p>
-                  <p><a href="/docs/apps/distribution/quickstart">Quickstart guide <i className="fa-solid fa-chevron-right"></i></a></p>
+                  <h4>Travelgate App Store</h4>
+                  <p>Whether you're looking for official Travelgate apps or Third-party integrations, the Store offers everything you need to scale your business in just a few clicks.</p>
+                  <p><a href="/kb/platform/app-features/app-store/discover-apps">Discover Apps <i className="fa-solid fa-chevron-right"></i></a></p>
                 </div>
               </div>
             </div>
           </div>
+
         </div>
+
+        
 
         <div className="subhero-kb">
           <div className="container">

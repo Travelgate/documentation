@@ -113,12 +113,28 @@ If you need a specific default configuration for your setup, please [contact us]
     - **Evaluation window hours**: period used to calculate the error ratio.
     - **Block duration hours**: how long the hotel remains blacklisted if the threshold is exceeded.
 
+:::info Default configuration for Price Increase
+- **Price deviation**: `5%`
+- **Percentage error**: `50%`
+- **Minimum requests**: `20`
+- **Evaluation window hours**: `4h`
+- **Block duration hours**: `2h`
+:::
+
 ### Price Decrease
 
   - Blocks hotels whose **price decreases from Avail to Quote** at a rate that exceeds the configured threshold.
   - Same comparison as Price Increase in the opposite direction: a quote that comes back cheaper than the Avail by at least the configured **price deviation** counts as an error.
   - A large drop usually means the Avail price was not reliable, even though the final price favours the Buyer.
   - You can customize the same settings as Price Increase: **Price deviation**, **Percentage error**, **Minimum requests**, **Evaluation window hours** and **Block duration hours**.
+
+:::info Default configuration for Price Decrease
+- **Price deviation**: `50%`
+- **Percentage error**: `50%`
+- **Minimum requests**: `20`
+- **Evaluation window hours**: `4h`
+- **Block duration hours**: `2h`
+:::
 
 :::info Configuring the price criteria
 - Both criteria can be activated **without specifying a configuration**, in which case Travelgate's default thresholds are applied.

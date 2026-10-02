@@ -79,7 +79,7 @@ export default function Home() {
                 <div className="item">
                   <img src="https://storage.travelgate.com/docs/home_docs_browse_channelx.svg" />
                   <h4>ChannelX Push Buyers API</h4>
-                  <p>ChannelX API extracts products loaded into our Inventory tool and pushes them to the Buyer’s system. Note that to enable bookings, it is essential to also develop Hotel-X API.</p>
+                  <p>ChannelX API extracts products loaded into our Inventory tool and pushes them to the Buyer’s system. Note that to enable bookings, it is essential to also develop HotelX API.</p>
                   <p><a href="/docs/apis/for-buyers/channel-x-push-buyers-api/quickstart">Quickstart guide <i className="fa-solid fa-chevron-right"></i></a></p>
                 </div>
               </div>

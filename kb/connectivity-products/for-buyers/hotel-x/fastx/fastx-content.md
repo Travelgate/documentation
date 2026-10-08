@@ -44,6 +44,11 @@ In simple terms:
 Use this embedded demo to compare a raw supplier feed with the standardized FastX Content response, and switch between tiers (Bronze, Silver, Gold, Bolts-On) to see what each plan unlocks.
 This interactive demo is a visual representation of how data retrieved in real time via the API could be displayed using FastX Content.
 
+:::warning important
+**Advise about Mandatory Fees**
+Mandatory Fee details in Content are for informational purposes only; the Seller's definitive and updated data is what is received via Shopping within the Booking Flow.
+:::
+
 <iframe
    title="FastX Content Demo"
    src="/demo_fastx_content/widget.html"
@@ -94,7 +99,9 @@ Once FastX Content is installed from the [Travelgate Store](/kb/platform/app-fea
 3. You will be able to start consuming the content directly via the [HotelX API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/hotels) (using your FastX access) or visually through the web panel in [Connections Content](/kb/platform/app-features/connections/connections-content/content-management).
 
 #### API response examples
-
+:::warning important
+Mandatory fee information in Content serves purely as a reference and holds no commercial validity.
+:::
 <Tabs>
   <TabItem value="before" label="(Before) Basic content">
     ```json
@@ -349,4 +356,93 @@ Once FastX Content is installed from the [Travelgate Store](/kb/platform/app-fea
 - With FastX Content, you get normalized multilingual descriptions, curated images, and richer room-level attributes.
 - Both responses keep the same hotel identity (same FastX hotel code) while improving content quality.
 
+## Frequently Asked Questions
+
+<details>
+    <summary>What does AO do?</summary>
+    <div>
+        <div>AO **transforms fragmented, inconsistent supplier content into a single, canonical source of truth**. We offer three flexible tiers (Bronze, Silver, and Gold) plus optional Bolt-Ons so you can choose the exact solution that best fits your needs.
+The result is one clean, deduplicated, OTA-conformant canonical hotel dataset — the Bronze foundation. This is the base feed everything else builds on.</div>
+    </div>
+</details>
+
+<details>
+    <summary>Where does AO get its content from?</summary>
+    <div>
+        <div>AO supplies **AO Atlas** — a data orchestration and processing engine that brings content together and cleans it up. AO doesn't own the content, unless AO has created and/or paid for that content. AO Atlas works from several authorised sources:
+           <ul>
+              <li>Content from the Buyer's own credentialed, contractually permitted Travelgate connections</li>
+              <li>Direct **API feeds** from third-party hotel content providers, again using the Buyer’s entitled credentials.</li>
+              <li>**Hotel Direct** — straight from hotels' own systems and ecosystems, including the **AO Travel Content Hub**, where hoteliers will soon access, verify and manage their own information.</li>
+              <li>**AI-generated content** — created from extensive meta data and imagery, also via each Buyer’s entitled content and internally verified.</li>
+              <li>**Publicly available** data gathered through lawful, compliant means.</li>
+           </ul>
+Always within the limits of the Buyer's own commercial and licensing agreements.</div>
+    </div>
+</details>
+
+<details>
+    <summary>How do we know where each piece of content came from?</summary>
+    <div>
+        <div>Every record carries its **provenance** — AO tracks which source each piece came from, so its origin is always clear.
+           <ul>
+              <li>**AI-qualification flags** — AI-generated or AI-enhanced content is marked/li>
+              <li>**Translations are AI-derived** — non-English content is produced by AI translation from the English source and flagged.</li>
+           </ul>
+        </div>
+    </div>
+</details>
+
+<details>
+    <summary>How does AO turn many suppliers into one record?</summary>
+    <div>
+        <div>
+           <ul>
+              <li>**Ingest** — receive and store the raw, unchanged original record from each source, tidy the field names and update via deltas to the latest version.</li>
+              <li>**Normalise** — convert every supplier's format into one standard schema (the GOD template).</li>
+              <li>**Match & deduplicate** — a multi-signal 'fingerprint' per property/room links the same thing across suppliers.</li>
+              <li>**Canonicalise** — merge into a single best-of-all-sources **Base record**, best value per field.</li>
+              <li>**Signals** — every record carries **confidence, quality and freshness** signals by date, so canonicalisation picks the best and most current value per field.</li>
+           </ul>
+        </div>
+    </div>
+</details>
+
+<details>
+    <summary>How is accuracy maintained across many sources?</summary>
+    <div>
+        <div>Supplier feeds are just one input — they're blended with AO's other authorised sources 
+(AI-generated,  public data and will gradually be verified by the Hotels directly, with the introduction of the AO Travel Content Hub and other sources). Where the same hotel or room appears across several of these, the fingerprint links them reliably, minimising duplicates and mix-ups, and delivering one clean, deduplicated result drawn from the best of all sources.</div>
+    </div>
+</details>
+
+<details>
+    <summary>How is it kept up to date?</summary>
+    <div>
+        <div>AO treats change management as core: source feeds are updated weekly or sooner based on deltas received, monitored and re-processed as suppliers, hotels or AI enrichments update them. Each change is tracked and audited; the latest source data is always preserved.</div>
+    </div>
+</details>
+
+<details>
+    <summary>Content and Image Information Sources</summary>
+    <div>
+        <div>The AO Atlas platform collects, cleans, and standardizes data using five authorized sources:
+           <ul>
+              <li>**Travelgate Direct Connections** (Buyer's permitted connections): Content extracted directly from integrations already contracted by the buyer in Travelgate (Bedbanks, Sellers, etc.).</li>
+              <li>**Third-Party API Feeds:** External suppliers specializing in hotel content (for example, Hotelbeds, Expedia, DOTW, among others).</li>
+              <li>**Hotel Direct:** Information will be uploaded, managed, and verified directly by hoteliers in their systems, or via (AO Travel Content Hub).</li>
+              <li>**AI-Generated Content:** Texts and descriptions enriched and internally verified by Large Language Models (LLMs) to minimise errors or inconsistencies.</li>
+              <li>**Publicly Accessible Data:** Information collected legally and in full compliance with current regulations.</li>
+           </ul>
+**Information Sources:** Content and images originate from the Buyer's contractual connections in Travelgate, third-party API feeds, direct hotel management  soon via (AO TCH), AI-generated/verified text, and compliant public data.
+**Rights and Legal Usage:** All materials can be used safely and seamlessly within the framework of the commercial contract. Images are deduplicated using pHash technology, and supplier-proprietary or exclusive images are filtered out to prevent copyright infringement, ensuring the use of freely distributable generic material provided directly by the properties.</div>
+    </div>
+</details>
+
+<details>
+    <summary>Content update</summary>
+    <div>
+        <div>Rich Content updates are driven by deltas from each supplier and AO will re-generate new versions of the content based on business rules for certain fields. Updates will vary by supplier, weekly is the normal and in some cases can be more often.</div>
+    </div>
+</details>
 

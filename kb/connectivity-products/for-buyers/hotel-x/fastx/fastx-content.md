@@ -386,7 +386,7 @@ Always within the limits of the Buyer's own commercial and licensing agreements.
     <div>
         <div>Every record carries its **provenance** — AO tracks which source each piece came from, so its origin is always clear.
            <ul>
-              <li>**AI-qualification flags** — AI-generated or AI-enhanced content is marked/li>
+              <li>**AI-qualification flags** — AI-generated or AI-enhanced content is marked.</li>
               <li>**Translations are AI-derived** — non-English content is produced by AI translation from the English source and flagged.</li>
            </ul>
         </div>

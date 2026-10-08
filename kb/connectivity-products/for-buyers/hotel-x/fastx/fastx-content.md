@@ -369,7 +369,8 @@ The result is one clean, deduplicated, OTA-conformant canonical hotel dataset �
 <details>
     <summary>Where does AO get its content from?</summary>
     <div>
-        <div>AO supplies **AO Atlas** — a data orchestration and processing engine that brings content together and cleans it up. AO doesn't own the content, unless AO has created and/or paid for that content. AO Atlas works from several authorised sources:
+        <div>
+        AO supplies **AO Atlas** — a data orchestration and processing engine that brings content together and cleans it up. AO doesn't own the content, unless AO has created and/or paid for that content. AO Atlas works from several authorised sources:
            <ul>
               <li>Content from the Buyer's own credentialed, contractually permitted Travelgate connections</li>
               <li>Direct **API feeds** from third-party hotel content providers, again using the Buyer’s entitled credentials.</li>
@@ -377,14 +378,16 @@ The result is one clean, deduplicated, OTA-conformant canonical hotel dataset �
               <li>**AI-generated content** — created from extensive meta data and imagery, also via each Buyer’s entitled content and internally verified.</li>
               <li>**Publicly available** data gathered through lawful, compliant means.</li>
            </ul>
-Always within the limits of the Buyer's own commercial and licensing agreements.</div>
+Always within the limits of the Buyer's own commercial and licensing agreements.
+        </div>
     </div>
 </details>
 
 <details>
     <summary>How do we know where each piece of content came from?</summary>
     <div>
-        <div>Every record carries its **provenance** — AO tracks which source each piece came from, so its origin is always clear.
+        <div>
+        Every record carries its **provenance** — AO tracks which source each piece came from, so its origin is always clear.
            <ul>
               <li>**AI-qualification flags** — AI-generated or AI-enhanced content is marked.</li>
               <li>**Translations are AI-derived** — non-English content is produced by AI translation from the English source and flagged.</li>
@@ -426,7 +429,8 @@ Always within the limits of the Buyer's own commercial and licensing agreements.
 <details>
     <summary>Content and Image Information Sources</summary>
     <div>
-        <div>The AO Atlas platform collects, cleans, and standardizes data using five authorized sources:
+        <div>
+        The AO Atlas platform collects, cleans, and standardizes data using five authorized sources:
            <ul>
               <li>**Travelgate Direct Connections** (Buyer's permitted connections): Content extracted directly from integrations already contracted by the buyer in Travelgate (Bedbanks, Sellers, etc.).</li>
               <li>**Third-Party API Feeds:** External suppliers specializing in hotel content (for example, Hotelbeds, Expedia, DOTW, among others).</li>
@@ -435,7 +439,8 @@ Always within the limits of the Buyer's own commercial and licensing agreements.
               <li>**Publicly Accessible Data:** Information collected legally and in full compliance with current regulations.</li>
            </ul>
 **Information Sources:** Content and images originate from the Buyer's contractual connections in Travelgate, third-party API feeds, direct hotel management  soon via (AO TCH), AI-generated/verified text, and compliant public data.
-**Rights and Legal Usage:** All materials can be used safely and seamlessly within the framework of the commercial contract. Images are deduplicated using pHash technology, and supplier-proprietary or exclusive images are filtered out to prevent copyright infringement, ensuring the use of freely distributable generic material provided directly by the properties.</div>
+**Rights and Legal Usage:** All materials can be used safely and seamlessly within the framework of the commercial contract. Images are deduplicated using pHash technology, and supplier-proprietary or exclusive images are filtered out to prevent copyright infringement, ensuring the use of freely distributable generic material provided directly by the properties.
+        </div>
     </div>
 </details>
 

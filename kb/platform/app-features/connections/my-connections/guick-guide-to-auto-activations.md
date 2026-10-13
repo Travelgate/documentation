@@ -70,7 +70,7 @@ Once you’ve requested a new connection, you can track its progress in the "My 
 
 | Status                    | Description |
 |---------------------------|-------------|
-| 🟢 **Working**             | Your access is ready and working! Please wait for the email from our activations team confirming that your credentials are ready before opening your feed. |
+| 🟢 **Working**             | Your access is ready and working! Please wait for the email from our activations team confirming that your credentials are ready before opening your feed (that is, before using the new access to send requests). |
 | 🟡 **In Progress**         | The automatic setup is still in process, but it will be ready soon. If there’s an issue, our team will intervene and update you. |
 | 🔵 **Partner's feedback required** | We’re waiting for additional details from either the Seller or Buyer to proceed. |
 

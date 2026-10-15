@@ -374,10 +374,8 @@ query (
     "timeout": 25000,
     "plugins": [
       {
-        "step": "RESPONSE",
         "pluginsType": [
           {
-            "type": "PRE_STEP",
             "name": "preference",
             "parameters": [
               {

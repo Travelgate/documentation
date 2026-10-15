@@ -16,8 +16,6 @@ You don't need to create any files for this plugin. Just specify it in the `sett
 
 To use the plugin, add the following field to the `settings` node of your request. Note that the add parameter plugin can be executed in `search`, `quote`, `book`, `booking`, and `cancel` requests. To successfully execute the add parameter plugin, you will need to create the request with the following variables:
 
-* **`step`**: "REQUEST_ACCESS"
-* **`type`**: "PRE_STEP"
 * **`name`**: "add_parameterX"
 * **`parameters`**:
 	* **`key`**: "parameter_name"
@@ -34,11 +32,9 @@ In single mode, for a specific supplier search request, if you need to send an e
     "settings": {
         "plugins": [
             {
-                "step": "REQUEST_ACCESS",
                 "pluginsType": [
                     {
                         "name": "add_parameter",
-                        "type": "PRE_STEP",
                         "parameters": [
                             {
                                 "key": "client",
@@ -59,11 +55,9 @@ In multi mode, the search request will be replicated to different suppliers, and
 
 ```json
 {
-    "step": "REQUEST_ACCESS",
     "pluginsType": [
         {
             "name": "add_parameterX",
-            "type": "POST_STEP",
             "parameters": [
                 {
                     "key": "JSONConfiguration",
@@ -79,11 +73,9 @@ Another case could be adding parameters by supplier. For example, for supplier X
 
 ```json
 {
-    "step": "REQUEST_ACCESS",
     "pluginsType": [
         {
             "name": "add_parameterX",
-            "type": "POST_STEP",
             "parameters": [
                 {
                     "key": "JSONConfiguration",

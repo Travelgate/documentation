@@ -70,16 +70,16 @@ export default function Home() {
               <div className="col col--4">
                 <div className="item">
                   <img src="https://storage.travelgate.com/docs/home_docs_browse_api_hotelx.svg" />
-                  <h4>Hotel-X Pull Buyers API</h4>
-                  <p>Hotel-X API allows you to get results from the largest network of Sellers in a single request. It enables access to static information, booking and reservation management.</p>
+                  <h4>HotelX Pull Buyers API</h4>
+                  <p>HotelX API allows you to get results from the largest network of Sellers in a single request. It enables access to static information, booking and reservation management.</p>
                   <p><a href="/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart">Quickstart guide <i className="fa-solid fa-chevron-right"></i></a></p>
                 </div>
               </div>
               <div className="col col--4">
                 <div className="item">
                   <img src="https://storage.travelgate.com/docs/home_docs_browse_channelx.svg" />
-                  <h4>Channel-X Push Buyers API</h4>
-                  <p>Channel-X API extracts products loaded into our Inventory tool and pushes them to the Buyer’s system. Note that to enable bookings, it is essential to also develop Hotel-X API.</p>
+                  <h4>ChannelX Push Buyers API</h4>
+                  <p>ChannelX API extracts products loaded into our Inventory tool and pushes them to the Buyer’s system. Note that to enable bookings, it is essential to also develop HotelX API.</p>
                   <p><a href="/docs/apis/for-buyers/channel-x-push-buyers-api/quickstart">Quickstart guide <i className="fa-solid fa-chevron-right"></i></a></p>
                 </div>
               </div>

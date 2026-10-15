@@ -230,10 +230,8 @@ export const searchQuickStartVariables =
         "timeout" : 25000,
         "plugins" : [
             {
-                "step" : "RESPONSE",
                 "pluginsType" : [
                     {
-                        "type" : "PRE_STEP",
                         "name" : "preference",
                         "parameters" : [
                             {
@@ -290,10 +288,8 @@ export const searchWithoutFilterVariables =
         "timeout" : 25000,
         "plugins" : [
             {
-                "step" : "RESPONSE",
                 "pluginsType" : [
                     {
-                        "type" : "PRE_STEP",
                         "name" : "preference",
                         "parameters" : [
                             {
@@ -357,10 +353,8 @@ export const searchWithOnlyOneAccess =
         "timeout" : 25000,
         "plugins" : [
             {
-                "step" : "RESPONSE",
                 "pluginsType" : [
                     {
-                        "type" : "PRE_STEP",
                         "name" : "preference",
                         "parameters" : [
                             {
@@ -435,10 +429,8 @@ export const searchTwoRoomsVariables =
         "timeout" : 25000,
         "plugins" : [
             {
-                "step" : "RESPONSE",
                 "pluginsType" : [
                     {
-                        "type" : "PRE_STEP",
                         "name" : "preference",
                         "parameters" : [
                             {
@@ -506,10 +498,8 @@ export const searchMultipleHotelsVariables =
         "timeout" : 25000,
         "plugins" : [
             {
-                "step" : "RESPONSE",
                 "pluginsType" : [
                     {
-                        "type" : "PRE_STEP",
                         "name" : "preference",
                         "parameters" : [
                             {

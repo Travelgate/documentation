@@ -79,11 +79,9 @@ Buyers using the HotelX Buyers Pull API **must include the `AddParameter` plugin
   "settings": {
     "plugins": [
       {
-        "step": "REQUEST_ACCESS",
         "pluginsType": [
           {
             "name": "add_parameter",
-            "type": "PRE_STEP",
             "parameters": [
               {
                 "key": "useCache",

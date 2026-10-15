@@ -59,7 +59,7 @@ To explore current partner activity and opportunities, you can use the [Dashboar
 
 ## Is Travelgate Part of a Larger Group?
 
-Yes. Since 2024, Travelgate is part of **Travelsoft Group**, a leading travel SaaS company operating in 90 countries under twelve brand names. As a frontrunner in travel tech, Travelsoft drives industry innovation through the synergistic use of AI across all its platforms.
+Yes. Since 2024, Travelgate has been part of **Travelsoft Group**, a leading travel SaaS company operating in 90 countries under twelve brand names. As a frontrunner in travel tech, Travelsoft drives industry innovation through the synergistic use of AI across all its platforms.
 
 ### What Is Travelsoft?
 

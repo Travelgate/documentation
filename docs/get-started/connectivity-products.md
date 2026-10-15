@@ -27,10 +27,8 @@ The API mirrors the functionalities of our Inventory Extranet, but with the adde
 
 ### For Sellers
 
-#### Connectors Pull Sellers Framework
-
-* [Connectors Pull Sellers Framework](../apis/for-sellers/connectors-pull-developers-api/overview/overview.mdx): This framework supports real-time communication with the Seller's system, allowing dynamic product access for Buyers in the marketplace. It standardizes the integration between Sellers and Travelgate, helping developers build connectors that comply with Travelgate best practices, business rules, and operational standards.
-
+#### Pull Integrations
+* **Pull integrations**: Support real-time communication with the Seller's system, allowing dynamic product access for Buyers in the marketplace. Check the [Seller Connectors Roadmap](/kb/welcome-to-travelgate/network/integration-roadmap) to see the available connectors, their development type, and their status.
 
 #### Inventory Push Sellers API
 * [Inventory Push Sellers API](../apis/for-sellers/inventory-push-graphql-api/quickstart.mdx): We offer a comprehensive GraphQL API designed to optimize the management of static information and master data in the travel industry for our Push Suppliers. This API enables both Buyers and Sellers to efficiently set up, load, and retrieve crucial data necessary for establishing and maintaining their inventory, including the complete configuration of hotels, rates, rooms, and offers.

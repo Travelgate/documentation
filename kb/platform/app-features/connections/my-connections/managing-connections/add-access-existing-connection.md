@@ -2,7 +2,7 @@
 sidebar_position: 7
 ---
 
-# How to Add an Access for an Existing Connection
+# How to Add an Access (Additional Feed) for an Existing Connection
 
 If you already have a connection with one of our Partners and need to **add additional credentials (new accesses)**, you can do this directly at the connection level in "My Connections."
 

@@ -215,16 +215,17 @@ const config = {
       "data-project-logo": "/img/aina_stars.svg",
       // optional parameters for Kapa widget
       "data-view-mode": "sidebar",
-      "data-modal-size": "600px",
+      "data-modal-size": "min(100vw, clamp(420px, 25vw, 600px))",
       "data-modal-logo-background-color": "#0f64f3",
       "data-modal-logo-width": "22px",
       "data-modal-logo-height": "22px",
       "data-modal-logo-padding": "3px",
       "data-search-mode-enabled": "false",
-      "data-chat-disclaimer":
-        "AIna, Travelgate's multilingual AI assistant, provides quick answers and troubleshooting guidance based on our official documentation. For the most precise and helpful response, please describe your inquiry clearly and in detail. While we strive for thoroughness, AI-generated responses may not always be perfect. They are provided as is, and Travelgate disclaims any liability for inaccuracies. Please use discretion.",
-      "data-user-analytics-fingerprint-enabled": "true",
-      "data-user-analytics-store-ip": "true",
+      "data-modal-disclaimer":
+        "Alna, Travelgate's multilingual AI assistant, provides quick answers and troubleshooting guidance based on our official documentation. For the most precise and helpful response, please describe your inquiry clearly and in detail. Alna is powered by Kapa.ai  and your questions may be processed outside the European Economic Area (EEA). Please do not share personal data, customer information or confidential information. AI-generated responses may contain inaccuracies. Please verify any critical information before relying on it.",
+      "data-user-analytics-fingerprint-enabled": "false",
+      "data-user-analytics-cookie-enabled": "true",
+      "data-user-analytics-store-ip": "false",
       "data-launcher-button-text": "AIna",
       "data-launcher-button-width": "58px",
       "data-launcher-button-height": "62px",
@@ -242,6 +243,12 @@ const config = {
       "data-mcp-enabled": "true",
       "data-mcp-server-url": "https://travelgate.mcp.kapa.ai",
       "data-customization-id": "1d732488-1c1e-4ed6-b4ed-3135ad6fde53",
+      "data-consent-required": "true",
+      "data-consent-screen-title": "You're about to chat with AIna, our AI assistant",
+      "data-consent-screen-disclaimer":
+        "By clicking 'Accept', you allow kapa.ai to set a cookie scoped to this AI assistant with a unique, anonymous ID. You can choose to decline and continue browsing the documentation.",
+      "data-consent-screen-accept-button-text": "Accept and start chatting",
+      "data-consent-screen-reject-button-text": "Decline",
     },
     {
       src: "https://js-eu1.hs-scripts.com/2825176.js",

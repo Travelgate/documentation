@@ -85,6 +85,20 @@ This premium extension greatly benefits the final conversion (Look-to-Book) of B
 - **Frictionless activation:** Setup follows a simple 3-step process through the [Travelgate Store](/kb/platform/app-features/app-store/discover-apps).
 - **No booking-flow latency impact:** Enriched static content is delivered through HotelX content methods without adding delay to the booking flow.
 
+### Content and Image Information Sources
+
+The AO Atlas platform collects, cleans, and standardizes data using five authorized sources:
+
+- **Travelgate Direct Connections** (Buyer's permitted connections): Content extracted directly from integrations already contracted by the buyer in Travelgate (Bedbanks, Sellers, etc.).
+- **Third-Party API Feeds:** External suppliers specializing in hotel content (for example, Hotelbeds, Expedia, DOTW, among others).
+- **Hotel Direct (AO Travel Content Hub / Belle Travel Hub):** Information uploaded, managed, and verified directly by hoteliers in their systems.
+- **AI-Generated Content:** Texts and descriptions enriched and internally verified by Large Language Models (LLMs) to prevent errors or inconsistencies.
+- **Publicly Accessible Data:** Information collected legally and in full compliance with current regulations.
+
+**Information Sources:** Content and images originate from the Buyer's contractual connections in Travelgate, third-party API feeds, direct hotel management (Belle Travel Hub), AI-generated/verified text, and compliant public data.
+
+**Rights and Legal Usage:** All materials can be used safely and seamlessly within the framework of the commercial contract. Images are deduplicated using pHash technology, and supplier-proprietary or exclusive images are filtered out to prevent copyright infringement, ensuring the use of freely distributable generic material provided directly by the properties.
+
 ### How to activate the service
 
 Once FastX Content is installed from the [Travelgate Store](/kb/platform/app-features/app-store/discover-apps), the flow is as follows:

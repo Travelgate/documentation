@@ -5,7 +5,9 @@ sidebar_position: 26
 # INSUFFICIENT_TIMEOUT
 
 ## What Does "INSUFFICIENT_TIMEOUT" Mean?
-An **"INSUFFICIENT_TIMEOUT"** warning is returned in **Search** when the timeout set for a HotelX request is too low to receive a response. The message shows the timeout that was applied, in milliseconds. It is a **warning at access level**, so only the affected access fails while the other accesses can still return results.
+An **"INSUFFICIENT_TIMEOUT"** warning is returned when the timeout set for a HotelX request is too low to receive a response. The message shows the timeout that was applied, in milliseconds.
+
+It is a **warning at access level**. In **Search**, only the affected access fails, while the other accesses can still return results. However, if **all** the accesses fail with this warning, or in mono-access operations such as **Quote** and **Book**, the warning is returned together with an **ALL_PROCESSES_FAILED** error.
 
 #### Example:
 
@@ -15,7 +17,7 @@ An **"INSUFFICIENT_TIMEOUT"** warning is returned in **Search** when the timeout
     {
       "type": "CONNECTION_ERROR",
       "code": "INSUFFICIENT_TIMEOUT",
-      "message": "Insufficient timeout to integration: X ms"
+      "description": "Insufficient timeout to integration: X ms"
     }
   ]
 }

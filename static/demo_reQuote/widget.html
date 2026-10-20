@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Hotel Quote + reQuote Comparator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --tx-blue-900: #001f3f;
+      --tx-blue-700: #003366;
+      --tx-blue-500: #0056b3;
+      --tx-blue-300: #007bff;
+      --tx-blue-100: #e6f0ff;
+      --tx-neutral-900: #102038;
+      --tx-neutral-700: #475569;
+      --tx-neutral-500: #64748b;
+      --tx-neutral-300: #cbd5e1;
+      --tx-neutral-100: #f1f5f9;
+      --tx-white: #ffffff;
+      --tx-accent-gold: #FFB81C;
+      --tx-success: #10B981;
+      --tx-danger: #EF4444;
+      --bg-body: #f4f7fb;
+      --bg-soft: #f8fbff;
+      --border-color: #dce5f1;
+      --shadow-soft: 0 8px 28px rgba(0, 31, 63, 0.08);
+      --shadow-light: 0 4px 14px rgba(0, 31, 63, 0.06);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+
+    body {
+      background:
+        radial-gradient(circle at 8% 4%, rgba(0, 123, 255, 0.08), transparent 42%),
+        radial-gradient(circle at 92% 10%, rgba(255, 184, 28, 0.08), transparent 40%),
+        var(--bg-body);
+      color: var(--tx-neutral-900);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: linear-gradient(100deg, var(--tx-blue-900) 0%, var(--tx-blue-700) 55%, #0c4f9e 100%);
+      padding: 1rem 2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 10px 24px rgba(0, 31, 63, 0.24);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(4px);
+    }
+
+    .logo-area { display: flex; align-items: center; gap: 12px; }
+
+    .badge-fx {
+      background: linear-gradient(135deg, #fff2cb 0%, #ffd667 100%);
+      color: #5f3d00;
+      border: 2px solid #ffcf55;
+      padding: 0 12px;
+      border-radius: 999px;
+      font-size: 1.38rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.75px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 118px;
+      height: 52px;
+      line-height: 1;
+      box-sizing: border-box;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35), 0 8px 18px rgba(0, 0, 0, 0.28);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .header-link {
+      text-decoration: none;
+      color: #2f1c00;
+      font-weight: 800;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.72rem 1.2rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #ffe29b 0%, #ffbf22 100%);
+      border: 1px solid #ffcf55;
+      transition: all 0.2s ease;
+      box-shadow: 0 8px 20px rgba(255, 191, 34, 0.28);
+    }
+
+    .header-link:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 28px rgba(255, 191, 34, 0.34);
+    }
+
+    .header-link-secondary {
+      color: var(--tx-white);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.08) 100%);
+      border-color: rgba(255, 255, 255, 0.24);
+      box-shadow: 0 8px 20px rgba(0, 31, 63, 0.18);
+    }
+
+    main {
+      width: min(1140px, 100% - 2rem);
+      margin: 1.5rem auto 2rem;
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .card {
+      background: var(--tx-white);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .card-head {
+      padding: 1rem 1.25rem;
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+      border-bottom: 1px solid var(--border-color);
+      font-weight: 800;
+      color: var(--tx-blue-900);
+      letter-spacing: .2px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .view-toggle {
+      display: inline-flex;
+      background: #edf3fb;
+      border: 1px solid #d8e3f1;
+      border-radius: 999px;
+      overflow: hidden;
+      padding: 2px;
+      gap: 2px;
+      flex-shrink: 0;
+    }
+
+    .toggle-btn {
+      padding: 6px 13px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border: none;
+      background: transparent;
+      color: var(--tx-neutral-700);
+      border-radius: 999px;
+      text-transform: none;
+      letter-spacing: 0;
+      box-shadow: none;
+    }
+
+    .toggle-btn.active {
+      background: linear-gradient(135deg, var(--tx-blue-500) 0%, #0a67c9 100%);
+      color: var(--tx-white);
+      box-shadow: 0 4px 12px rgba(0, 86, 179, 0.35);
+    }
+
+    .section-view { display: none; }
+    .section-view.show { display: block; }
+
+    .json-panel {
+      margin: 1rem;
+      border: 1px solid #d6e3f3;
+      border-radius: 12px;
+      background: #0d1a2b;
+      overflow: hidden;
+      box-shadow: var(--shadow-light);
+    }
+
+    .json-panel pre {
+      margin: 0;
+      padding: 1rem;
+      color: #d9e7ff;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.77rem;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: .9rem;
+      padding: 1.25rem;
+      background: var(--bg-soft);
+    }
+
+    .field { display: grid; gap: .35rem; }
+    .field label {
+      font-size: .72rem;
+      color: var(--tx-neutral-500);
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: .4px;
+    }
+
+    .field input, .field select {
+      border: 1px solid var(--tx-neutral-300);
+      border-radius: 10px;
+      padding: .62rem .7rem;
+      font-size: .9rem;
+      color: var(--tx-neutral-900);
+      background: white;
+      outline: none;
+    }
+
+    .field input:focus, .field select:focus {
+      border-color: var(--tx-blue-300);
+      box-shadow: 0 0 0 3px rgba(0, 123, 255, .12);
+    }
+
+    .span-2 { grid-column: span 2; }
+    .span-1 { grid-column: span 1; }
+
+    .actions {
+      display: flex;
+      align-items: end;
+    }
+
+    button {
+      border: 0;
+      border-radius: 999px;
+      padding: .72rem 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: .2s ease;
+      font-size: .83rem;
+      text-transform: uppercase;
+      letter-spacing: .6px;
+    }
+
+    .btn-primary {
+      color: white;
+      background: linear-gradient(135deg, var(--tx-blue-500) 0%, #0a67c9 100%);
+      box-shadow: 0 8px 18px rgba(0, 86, 179, 0.28);
+    }
+
+    .btn-gold {
+      color: #2f1c00;
+      background: linear-gradient(135deg, #ffe29b 0%, #ffbf22 100%);
+      border: 1px solid #ffcf55;
+      box-shadow: 0 8px 20px rgba(255, 191, 34, 0.28);
+    }
+
+    button:hover { transform: translateY(-1px); }
+    button:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+
+    .results {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      padding: 1rem;
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+    }
+
+    .quote-pane {
+      border: 1px solid #dfe9f6;
+      border-radius: 16px;
+      padding: 1.15rem;
+      box-shadow: 0 14px 28px rgba(0, 31, 63, 0.08);
+      background: linear-gradient(180deg, #ffffff 0%, #f9fcff 100%);
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      gap: .9rem;
+    }
+
+    .quote-pane.requote {
+      border-left: 4px solid var(--tx-accent-gold);
+      background: linear-gradient(180deg, #fffdfa 0%, #fff9ee 100%);
+    }
+
+    .quote-pane.supplier {
+      border-left: 4px solid #8ca6c8;
+    }
+
+    .pane-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: .8rem;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      color: var(--tx-blue-900);
+      font-weight: 800;
+    }
+
+    .pane-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pane-ref {
+      display: none;
+    }
+
+    .price {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      font-size: 2.2rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      color: var(--tx-blue-900);
+      line-height: 1;
+      padding: .5rem .85rem;
+      border-radius: 14px;
+      border: 1px solid #d9e5f5;
+      background: linear-gradient(180deg, #ffffff 0%, #eef5ff 100%);
+      box-shadow: 0 8px 18px rgba(0, 31, 63, 0.1);
+    }
+
+    .requote .price {
+      color: #8a5a00;
+      background: linear-gradient(180deg, #fffdf6 0%, #fff4d8 100%);
+      border-color: #f4dc9c;
+      box-shadow: 0 8px 18px rgba(138, 90, 0, 0.14);
+    }
+
+    .price-saving {
+      font-size: .87rem;
+      font-weight: 800;
+      color: #065f46;
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      border-radius: 10px;
+      padding: .45rem .7rem;
+      display: none;
+      width: fit-content;
+      margin-top: -.2rem;
+    }
+
+    .price-saving.show {
+      display: inline-flex;
+    }
+
+    .photo-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .55rem;
+      align-items: stretch;
+    }
+
+    .hidden-before-quote {
+      display: none !important;
+    }
+
+    .photo-wrap {
+      display: block;
+      background: #f8fbff;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: .4rem;
+      height: 184px;
+    }
+
+    .photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 1px solid #d9e6f7;
+      box-shadow: 0 4px 10px rgba(0, 31, 63, 0.1);
+    }
+
+    .requote-top-row {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: .9rem;
+      margin-bottom: 0;
+    }
+
+    .requote-price-stack {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+      width: 100%;
+    }
+
+    .info-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .6rem;
+    }
+
+    .mini {
+      background: var(--tx-neutral-100);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: .6rem;
+    }
+
+    .mini .label {
+      font-size: .66rem;
+      text-transform: uppercase;
+      letter-spacing: .45px;
+      color: var(--tx-neutral-500);
+      font-weight: 700;
+      margin-bottom: .2rem;
+    }
+
+    .mini .value { font-size: .85rem; font-weight: 700; color: var(--tx-neutral-900); }
+
+    .status {
+      font-family: 'Fira Code', monospace;
+      font-size: .78rem;
+      color: var(--tx-neutral-700);
+      background: #eef5ff;
+      border: 1px solid #dbe7f5;
+      border-radius: 8px;
+      padding: .5rem .65rem;
+      margin-top: auto;
+    }
+
+    .status-inline {
+      margin-top: .55rem;
+      margin-bottom: .95rem;
+      width: fit-content;
+    }
+
+    .status-success {
+      color: #065f46;
+      background: #ecfdf5;
+      border-color: #a7f3d0;
+      font-weight: 800;
+    }
+
+    .requote-result-row {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      flex-wrap: wrap;
+      margin-top: .55rem;
+      margin-bottom: .95rem;
+    }
+
+    .price-supplier-row {
+      display: flex;
+      align-items: flex-start;
+      gap: .6rem;
+      width: 100%;
+    }
+
+    .mini-inline {
+      padding: .45rem .6rem;
+      min-width: 140px;
+    }
+
+    .mini-inline-right {
+      margin-left: auto;
+    }
+
+    .saving {
+      padding: .55rem .7rem;
+      border-radius: 10px;
+      font-size: .82rem;
+      font-weight: 800;
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      color: #065f46;
+      display: none;
+    }
+
+    .saving.show { display: block; }
+
+    @media (max-width: 960px) {
+      .form-grid { grid-template-columns: 1fr 1fr; }
+      .span-2, .span-1 { grid-column: span 1; }
+      .results { grid-template-columns: 1fr; }
+      .photo-wrap { height: 170px; }
+      .photo-wrap img { width: 100%; height: 100%; }
+      .photo-pair { grid-template-columns: 1fr; }
+      .requote-top-row { flex-direction: column; align-items: stretch; }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem 1.1rem;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .header-actions {
+        width: 100%;
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="card">
+      <div class="card-head">
+        <span>Hotel Quote Request</span>
+        <div class="view-toggle">
+          <button type="button" class="toggle-btn active" id="requestToggleVisual" onclick="setSectionView('request', 'visual')">Visual</button>
+          <button type="button" class="toggle-btn" id="requestToggleJson" onclick="setSectionView('request', 'json')">JSON</button>
+        </div>
+      </div>
+      <div class="section-view show" id="requestVisual">
+        <form id="quoteForm" class="form-grid">
+          <div class="field span-2">
+            <label for="hotelName">Hotel</label>
+            <input id="hotelName" name="hotelName" value="Ocean View Resort" required />
+          </div>
+          <div class="field span-1">
+            <label for="checkIn">Check-in</label>
+            <input id="checkIn" name="checkIn" type="date" required />
+          </div>
+          <div class="field span-1">
+            <label for="checkOut">Check-out</label>
+            <input id="checkOut" name="checkOut" type="date" required />
+          </div>
+          <div class="field span-1">
+            <label for="pax">PAX</label>
+            <input id="pax" name="pax" type="number" min="1" value="2" required />
+          </div>
+          <div class="field span-1">
+            <label for="roomType">Room</label>
+            <select id="roomType" name="roomType">
+              <option value="Standard">Standard</option>
+              <option value="Deluxe">Deluxe</option>
+              <option value="Suite">Suite</option>
+            </select>
+          </div>
+          <div class="actions span-1">
+            <button type="submit" class="btn-primary" id="btnQuote">Request reQuote</button>
+          </div>
+        </form>
+      </div>
+      <div class="section-view" id="requestJson">
+        <div class="json-panel">
+          <pre id="requestJsonContent">{
+  "quoteRequest": "Pending execution"
+}</pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="results">
+        <article class="quote-pane supplier" id="supplierPane">
+          <div class="pane-title">
+            <span>Original quote</span>
+            <div class="pane-controls">
+              <span class="pane-ref" id="supplierRef"></span>
+              <div class="view-toggle">
+                <button type="button" class="toggle-btn active" id="supplierToggleVisual" onclick="setSectionView('supplier', 'visual')">Visual</button>
+                <button type="button" class="toggle-btn" id="supplierToggleJson" onclick="setSectionView('supplier', 'json')">JSON</button>
+              </div>
+            </div>
+          </div>
+          <div class="section-view show" id="supplierVisual">
+            <div class="price-supplier-row">
+              <div class="price" id="supplierPrice">—</div>
+              <div class="mini mini-inline mini-inline-right">
+                <div class="label">Supplier</div>
+                <div class="value" id="supplierCode">—</div>
+              </div>
+            </div>
+            <div class="requote-result-row">
+              <div class="status" id="supplierStatus">Waiting for request...</div>
+            </div>
+            <div class="photo-pair hidden-before-quote" id="supplierPhotos">
+              <div class="photo-wrap">
+                <img id="supplierHotelPhoto" src="https://images.unsplash.com/photo-1455587734955-081b22074882?auto=format&fit=crop&w=1280&q=80" alt="Hotel photo">
+              </div>
+              <div class="photo-wrap">
+                <img id="supplierRoomPhoto" src="https://images.unsplash.com/photo-1631049552057-403cdb8f0658?auto=format&fit=crop&w=1280&q=80" alt="Room photo">
+              </div>
+            </div>
+            <div class="info-row">
+              <div class="mini">
+                <div class="label">Hotel</div>
+                <div class="value" id="supplierHotel">—</div>
+              </div>
+              <div class="mini">
+                <div class="label">Board</div>
+                <div class="value" id="supplierBoard">—</div>
+              </div>
+              <div class="mini">
+                <div class="label">Nights</div>
+                <div class="value" id="supplierNights">—</div>
+              </div>
+              <div class="mini">
+                <div class="label">Cancellation</div>
+                <div class="value" id="supplierPolicy">—</div>
+              </div>
+            </div>
+          </div>
+          <div class="section-view" id="supplierJson">
+            <div class="json-panel">
+              <pre id="supplierJsonContent">{
+  "quoteResponse": "Pending execution"
+}</pre>
+            </div>
+          </div>
+        </article>
+
+        <article class="quote-pane requote" id="requotePane">
+          <div class="pane-title">
+            <span>reQuote (same option)</span>
+            <div class="pane-controls">
+              <span class="pane-ref" id="requoteRef"></span>
+              <div class="view-toggle">
+                <button type="button" class="toggle-btn active" id="requoteToggleVisual" onclick="setSectionView('requote', 'visual')">Visual</button>
+                <button type="button" class="toggle-btn" id="requoteToggleJson" onclick="setSectionView('requote', 'json')">JSON</button>
+              </div>
+            </div>
+          </div>
+          <div class="section-view show" id="requoteVisual">
+            <div class="requote-top-row">
+              <div class="requote-price-stack">
+                <div class="price-supplier-row">
+                  <div class="price" id="requotePrice">—</div>
+                  <div class="mini mini-inline mini-inline-right">
+                    <div class="label">Supplier</div>
+                    <div class="value" id="requoteSupplierCode">—</div>
+                  </div>
+                </div>
+                <div class="requote-result-row">
+                  <div class="status" id="requoteStatus">Waiting for quote request...</div>
+                </div>
+              </div>
+            </div>
+            <div class="photo-pair hidden-before-quote" id="requotePhotos">
+              <div class="photo-wrap">
+                <img id="requoteHotelPhoto" src="https://images.unsplash.com/photo-1455587734955-081b22074882?auto=format&fit=crop&w=1280&q=80" alt="Hotel photo">
+              </div>
+              <div class="photo-wrap">
+                <img id="requoteRoomPhoto" src="https://images.unsplash.com/photo-1631049552057-403cdb8f0658?auto=format&fit=crop&w=1280&q=80" alt="Room photo">
+              </div>
+            </div>
+            <div class="info-row">
+              <div class="mini">
+                <div class="label">Hotel</div>
+                <div class="value" id="requoteHotel">—</div>
+              </div>
+              <div class="mini">
+                <div class="label">Board</div>
+                <div class="value" id="requoteBoard">—</div>
+              </div>
+              <div class="mini">
+                <div class="label">Nights</div>
+                <div class="value" id="requoteNights">—</div>
+              </div>
+              <div class="mini">
+                <div class="label">Optimization</div>
+                <div class="value" id="requoteOptimization">—</div>
+              </div>
+            </div>
+          </div>
+          <div class="section-view" id="requoteJson">
+            <div class="json-panel">
+              <pre id="requoteJsonContent">{
+  "reQuoteResponse": "Pending search"
+}</pre>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const currencyFormatters = new Map();
+    function formatAmount(value, currencyCode = 'USD') {
+      if (!currencyFormatters.has(currencyCode)) {
+        currencyFormatters.set(currencyCode, new Intl.NumberFormat('en-US', { style: 'currency', currency: currencyCode }));
+      }
+      return currencyFormatters.get(currencyCode).format(value);
+    }
+
+    const SHARED_ROOM_PHOTO = 'https://images.unsplash.com/photo-1631049552057-403cdb8f0658?auto=format&fit=crop&w=1280&q=80';
+    const SHARED_HOTEL_PHOTO = 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1280&q=80';
+
+    const QUOTE_ORIGINAL_RESPONSE = {
+      quote: {
+        optionQuote: {
+          optionRefId: 'HIDDEN_OPTION_REF_ID_FROM_DOCS_EXAMPLE',
+          status: 'OK',
+          supplierCode: 'SUP1',
+          accessCode: 'xxxxx',
+          hotelCode: '049598',
+          boardCode: 'FB',
+          paymentType: 'MERCHANT',
+          price: {
+            currency: 'USD',
+            binding: false,
+            net: 43039.2,
+            gross: 43039.2
+          },
+          surcharges: null,
+          cancelPolicy: {
+            refundable: true,
+            cancelPenalties: [
+              {
+                deadline: '2026-04-20T09:59:00Z',
+                penaltyType: 'IMPORT',
+                currency: 'USD',
+                value: 43039.2
+              }
+            ]
+          },
+          rooms: [
+            {
+              code: '049598#Superior Room',
+              description: 'Superior Room'
+            }
+          ]
+        }
+      }
+    };
+
+    const REQUOTE_RESPONSE = {
+      requote: {
+        appSupplierCode: 'tgx.requote.1',
+        options: [
+          {
+            savings: {
+              value: 2009.95,
+              currency: 'USD'
+            },
+            optionQuote: {
+              optionRefId: 'HIDDEN_OPTION_REF_ID_REQUOTE',
+              status: 'OK',
+              supplierCode: 'SUP4',
+              accessCode: 'xxxxx',
+              hotelCode: '328034',
+              boardCode: 'AI',
+              paymentType: 'MERCHANT',
+              price: {
+                currency: 'USD',
+                binding: false,
+                net: 41029.25,
+                gross: 41029.25
+              },
+              surcharges: null,
+              cancelPolicy: {
+                refundable: false
+              },
+              rooms: [
+                {
+                  code: 'DBL.SU-1',
+                  description: 'Superior Room'
+                }
+              ]
+            }
+          }
+        ]
+      }
+    };
+
+    const HOTEL_QUOTE_REQUEST_TEMPLATE = {
+      query: "query ($criteriaQuote: HotelCriteriaQuoteInput!, $settings: HotelSettingsInput) {\n  hotelX {\n    quote(criteria: $criteriaQuote, settings: $settings) {auditData {  transactions {    request    response  }  timeStamp}optionQuote {  optionRefId  status  hotelCode  boardCode  price {    currency    binding    net    gross    exchange {      currency      rate    }    markups {      channel      currency      binding      net      gross      exchange {        currency        rate      }    }  }  surcharges {    code    mandatory    chargeType    price {      currency      binding      net      gross      exchange {        currency        rate      }      markups {        channel        currency        binding        net        gross        exchange {currencyrate        }      }    }    description  }  cancelPolicy {    refundable    cancelPenalties {      deadline      penaltyType      currency      value    }  }  rooms {    occupancyRefId    legacyRoomId    code    supplierCode    description    features {      code    }  }  cardTypes  remarks  paymentType}errors {  code  type  description}warnings {  code  type  description}apps {requote {  appSupplierCode  options {    savings {      value      currency    }    optionQuote {      optionRefId      boardCode      accessCode      hotelCode      hotelCodeSupplier      supplierCode      status      paymentType      price {        currency        binding        net        gross        exchange {currencyrate        }        markups {channelcurrencybindingnetgrossexchange {  currency  rate}        }      }      surcharges {        chargeType        mandatory        price {currencybindingnetgrossexchange {  currency  rate}markups {  channel  currency  binding  net  gross  exchange {    currency    rate  }}        }        description      }      cancelPolicy {        refundable        cancelPenalties {deadlinehoursBeforepenaltyTypecurrencyvalue        }      }    rooms {      occupancyRefId      legacyRoomId      code      supplierCode      description      features {code        }      }      cardTypes      remarks    }  }}\n      }\n    }\n  }\n}\n    ",
+      variables: {
+        criteriaQuote: {
+          optionRefId: '33!~|a0!~|b261101!~|c261104!~|d1287600!~|eSA!~|f0!~|gMX!~|hMX!~|ies!~|jMXN!~|k0!~|l28154!~|m1287600!~|nSA!~|nLOGI!~|o1!~|p0!~|x14102214!~|M13277.24!~|N0!~|Ofalse!~|PMXN!~|Q!~|R0!~|S!~|T!~|z1#6297!~|A6297!~|B6297!~|C30|30!~|EHabitación!~|FHabitación!~|G1!~|H0!~|IBCJNGEBAwNYBAAD0DgoHMTI4NzYwMBICU0EaCjAxLzExLzIwMjYiCjA0DADxOyoLTWVyY2hhbnRQYXkyA01YTjoSCgNNWE4SCDEzMjc3LjaI0IgEwQhcKBjEjNjI5NxABGgQ2Mjk3IgUzMC0zMEoPCgExEgQIHhABBgD/XwJaEDIwLjYyMzE5OTQ2Mjg5MDZiEzIwMjYtMTAtMTRUMjE6NTE6MjVyEgiWgICAipKCqXkQhoHKogcaYOHoEEAEYAYIBCUhETzJUUk1NWJIBAk1YmgEAwgEBMOIBBUFWQUlM6gEBMPIBHjMuNjAwAgAERjIy+gF1APEmNSAwMDoxNDoyMIoCFTwzNDcxMiMrLTAuOSBbMTU1MDVdPapICAzQuNZoCAzAuMKICATDCAgUnAPMAygIBMPoCATCCAwEwogNATgHBfDIwMjYxMTAxfDN8BAGVfE1YfFNBfEh8uAD/DHwxfHx8fE18SHwyOTE1NDZ8TTN8fHyyAx4xLrMABH8wMDAwMsIDFgEA8w/aAwoKBHRydWUSAk1Y4gMVEgNNWE4aBgi2j04YBCoIAPEX6gMSCSuH/TdSHtlIEbySkzT3vlUHmAQBsAQCuAQBwAQB4gQOU0GHAOBOUkZ8fEh88AQB+ATwRwAAAAA=!~|J1!~|K1!~|L0!~|H703!~|I1##!~|J0!~|K1!~|L0!~|H710!~|I26554.48!~|J0!~|K0!~|L0!~|H708!~|I2b22988e-2168-4300-9747-ed7161bc9ff4!~|J0!~|K0!~|L0!~|tOK!~|uConnectors!~|v0!~|w!~|yNON_REFUNDABLE!~|q!~|q0!~|y!~|'
+        },
+        settings: {
+          client: 'client_demo',
+          testMode: true
+        }
+      }
+    };
+
+    const quoteForm = document.getElementById('quoteForm');
+    const btnQuote = document.getElementById('btnQuote');
+
+    const sectionViews = {
+      request: {
+        visual: document.getElementById('requestVisual'),
+        json: document.getElementById('requestJson'),
+        btnVisual: document.getElementById('requestToggleVisual'),
+        btnJson: document.getElementById('requestToggleJson')
+      },
+      supplier: {
+        visual: document.getElementById('supplierVisual'),
+        json: document.getElementById('supplierJson'),
+        btnVisual: document.getElementById('supplierToggleVisual'),
+        btnJson: document.getElementById('supplierToggleJson')
+      },
+      requote: {
+        visual: document.getElementById('requoteVisual'),
+        json: document.getElementById('requoteJson'),
+        btnVisual: document.getElementById('requoteToggleVisual'),
+        btnJson: document.getElementById('requoteToggleJson')
+      }
+    };
+
+    function setSectionView(section, view) {
+      const config = sectionViews[section];
+      if (!config) return;
+      const showVisual = view === 'visual';
+      config.visual.classList.toggle('show', showVisual);
+      config.json.classList.toggle('show', !showVisual);
+      config.btnVisual.classList.toggle('active', showVisual);
+      config.btnJson.classList.toggle('active', !showVisual);
+    }
+
+    function setJson(targetId, payload) {
+      document.getElementById(targetId).textContent = JSON.stringify(sanitizeForDisplay(payload), null, 2);
+    }
+
+    function sanitizeForDisplay(value) {
+      if (Array.isArray(value)) {
+        return value.map(sanitizeForDisplay);
+      }
+      if (value && typeof value === 'object') {
+        const next = {};
+        for (const [key, nested] of Object.entries(value)) {
+          next[key] = key === 'optionRefId' ? '[HIDDEN_OPTION_REF_ID]' : sanitizeForDisplay(nested);
+        }
+        return next;
+      }
+      return value;
+    }
+
+    setJson('supplierJsonContent', QUOTE_ORIGINAL_RESPONSE);
+    setJson('requoteJsonContent', REQUOTE_RESPONSE);
+
+    const today = new Date();
+    const tomorrow = new Date(today);
+    tomorrow.setDate(today.getDate() + 1);
+    const plus3 = new Date(today);
+    plus3.setDate(today.getDate() + 4);
+    const toISO = d => d.toISOString().slice(0, 10);
+    document.getElementById('checkIn').value = toISO(tomorrow);
+    document.getElementById('checkOut').value = toISO(plus3);
+
+    let latestQuote = null;
+
+    function nightsBetween(checkIn, checkOut) {
+      const a = new Date(checkIn);
+      const b = new Date(checkOut);
+      return Math.max(1, Math.round((b - a) / 86400000));
+    }
+
+    function randomRef(prefix) {
+      return `${prefix}-${Math.random().toString(36).slice(2, 8).toUpperCase()}`;
+    }
+
+    function updateOriginalUI(data) {
+      document.getElementById('supplierRef').textContent = '';
+      document.getElementById('supplierPrice').textContent = formatAmount(data.totalPrice, data.currency);
+      document.getElementById('supplierHotel').textContent = data.hotelName;
+      document.getElementById('supplierBoard').textContent = data.board;
+      document.getElementById('supplierNights').textContent = `${data.nights} nights · ${data.pax} pax`;
+      document.getElementById('supplierPolicy').textContent = data.cancellation;
+      document.getElementById('supplierCode').textContent = data.supplierCode;
+      document.getElementById('supplierStatus').textContent = 'Quote received instantly';
+      document.getElementById('supplierHotelPhoto').src = SHARED_HOTEL_PHOTO;
+      document.getElementById('supplierRoomPhoto').src = SHARED_ROOM_PHOTO;
+      document.getElementById('supplierPhotos').classList.remove('hidden-before-quote');
+      setJson('supplierJsonContent', data.rawResponse);
+    }
+
+    function updateRequoteUI(data, originalPrice) {
+      document.getElementById('requoteRef').textContent = '';
+      document.getElementById('requotePrice').textContent = formatAmount(data.totalPrice, data.currency);
+      document.getElementById('requoteHotel').textContent = data.hotelName;
+      document.getElementById('requoteBoard').textContent = data.board;
+      document.getElementById('requoteNights').textContent = `${data.nights} nights · ${data.pax} pax`;
+      document.getElementById('requoteOptimization').textContent = data.optimization;
+      document.getElementById('requoteSupplierCode').textContent = data.supplierCode;
+      document.getElementById('requoteHotelPhoto').src = SHARED_HOTEL_PHOTO;
+      document.getElementById('requoteRoomPhoto').src = SHARED_ROOM_PHOTO;
+      document.getElementById('requotePhotos').classList.remove('hidden-before-quote');
+
+      const saving = originalPrice - data.totalPrice;
+      const savingPct = (saving / originalPrice) * 100;
+      const savingsText = `reQuote savings: ${formatAmount(saving, data.currency)} (${savingPct.toFixed(1)}%)`;
+      const requoteStatus = document.getElementById('requoteStatus');
+      requoteStatus.textContent = savingsText;
+      requoteStatus.classList.add('status-success');
+      setJson('requoteJsonContent', data.rawResponse);
+    }
+
+    function createOriginalQuote(payload) {
+      const optionQuote = QUOTE_ORIGINAL_RESPONSE.quote.optionQuote;
+      const nights = nightsBetween(payload.checkIn, payload.checkOut);
+
+      return {
+        ...payload,
+        nights,
+        totalPrice: optionQuote.price.net,
+        currency: optionQuote.price.currency,
+        board: optionQuote.boardCode,
+        cancellation: optionQuote.cancelPolicy.refundable ? 'Refundable' : 'Non-refundable',
+        reference: optionQuote.optionRefId,
+        hotelCode: optionQuote.hotelCode,
+        supplierCode: optionQuote.supplierCode,
+        accessCode: optionQuote.accessCode,
+        paymentType: optionQuote.paymentType,
+        roomCode: optionQuote.rooms?.[0]?.code || '-',
+        roomDescription: optionQuote.rooms?.[0]?.description || 'Room',
+        rawResponse: QUOTE_ORIGINAL_RESPONSE
+      };
+    }
+
+    function createRequoteQuote(original) {
+      const option = REQUOTE_RESPONSE.requote.options[0];
+      const optionQuote = option.optionQuote;
+      const savings = option.savings.value;
+      const discountPct = (savings / original.totalPrice) * 100;
+      return {
+        ...original,
+        totalPrice: optionQuote.price.net,
+        currency: optionQuote.price.currency,
+        board: optionQuote.boardCode,
+        reference: optionQuote.optionRefId,
+        hotelCode: optionQuote.hotelCode,
+        supplierCode: optionQuote.supplierCode,
+        accessCode: optionQuote.accessCode,
+        paymentType: optionQuote.paymentType,
+        roomCode: optionQuote.rooms?.[0]?.code || '-',
+        roomDescription: optionQuote.rooms?.[0]?.description || 'Room',
+        optimization: `Automatic rate improvement (${discountPct.toFixed(1)}%)`,
+        rawResponse: REQUOTE_RESPONSE
+      };
+    }
+
+    quoteForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(quoteForm);
+      const payload = {
+        hotelName: formData.get('hotelName'),
+        checkIn: formData.get('checkIn'),
+        checkOut: formData.get('checkOut'),
+        pax: Number(formData.get('pax')),
+        roomType: formData.get('roomType')
+      };
+      setJson('requestJsonContent', {
+        quoteRequest: payload,
+        hotelQuoteRequest: HOTEL_QUOTE_REQUEST_TEMPLATE
+      });
+
+      document.getElementById('supplierStatus').textContent = 'Requesting quote...';
+      document.getElementById('supplierCode').textContent = '—';
+      const requoteStatus = document.getElementById('requoteStatus');
+      requoteStatus.textContent = 'Preparing reQuote search...';
+      requoteStatus.classList.remove('status-success');
+      document.getElementById('requotePrice').textContent = '—';
+      document.getElementById('requoteRef').textContent = '';
+      document.getElementById('requoteSupplierCode').textContent = '—';
+      document.getElementById('supplierPhotos').classList.add('hidden-before-quote');
+      document.getElementById('requotePhotos').classList.add('hidden-before-quote');
+      setJson('requoteJsonContent', REQUOTE_RESPONSE);
+
+      btnQuote.disabled = true;
+
+      await new Promise(resolve => setTimeout(resolve, 350)); // instant response simulation
+      latestQuote = createOriginalQuote(payload);
+      updateOriginalUI(latestQuote);
+
+      requoteStatus.textContent = 'Searching a better price in reQuote...';
+      await new Promise(resolve => setTimeout(resolve, 500));
+      const requoteQuote = createRequoteQuote(latestQuote);
+      updateRequoteUI(requoteQuote, latestQuote.totalPrice);
+
+      btnQuote.disabled = false;
+    });
+  </script>
+</body>
+</html>

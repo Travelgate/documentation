@@ -37,11 +37,21 @@ HotelX offers a powerful GraphQL-based API that simplifies the process of bookin
 
 #### Endpoint
 
-HotelX, being a GraphQL-based API, utilizes a single endpoint for all operations:
+HotelX uses different GraphQL hosts depending on the operation family:
 
+- **Shopping / booking flow**: `https://api-shopping.travelgate.com`  
+  Used for `search`, `quote`, `book`, `cancel`, `booking`, amendments, `oneStepBook`, and `oneStepQuote`.
+
+- **Content / static data**: `https://api-content.travelgate.com`  
+  Used for hotel, board, destination, and other static master-data requests.
+
+- **Generic / shared GraphQL**: `https://api.travelgate.com`  
+  Used for other shared GraphQL operations such as stats, logging, admin, and non-shopping API calls.
+
+For HotelX booking and shopping requests, the main endpoint is:
 
 ```html
-https://api.travelgate.com
+https://api-shopping.travelgate.com
 ```
 
 #### Request Headers

@@ -101,7 +101,7 @@ The failure reason labels are described below. In the interface.
 | `Missing coordinates` | The hotel has no coordinates that can be used for mapping. |
 | `Invalid coordinates` | The hotel has coordinates, but they are inconsistent or unusable for the process. |
 | `Missing address` | The hotel has no usable address for comparison. |
-| `Missing name NAME` | The hotel name is null, empty, or not useful for matching. |
+| `Missing name` | The hotel name is null, empty, or not useful for matching. |
 | `Match not found` | The hotel reached the mapping algorithm, but no reliable match was found. |
 | `Other` | Residual case for input conditions outside the main matching logic. |
 

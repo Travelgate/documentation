@@ -55,7 +55,25 @@ For instance, to use the Requote app from Travelgate:
 }
 ```
 
-## 2. Read the Requote results
+## 2. Create the Requote RQ
+Here is a sample structure for criteriaQuote:
+
+```js
+{
+	"query": "query ($criteriaQuote: HotelCriteriaQuoteInput!, $settings: HotelSettingsInput) {\n  hotelX {\n    quote(criteria: $criteriaQuote, settings: $settings) {auditData {  transactions {    request    response  }  timeStamp}optionQuote {  optionRefId  status  hotelCode  boardCode  price {    currency    binding    net    gross    exchange {      currency      rate    }    markups {      channel      currency      binding      net      gross      exchange {        currency        rate      }    }  }  surcharges {    code    mandatory    chargeType    price {      currency      binding      net      gross      exchange {        currency        rate      }      markups {        channel        currency        binding        net        gross        exchange {currencyrate        }      }    }    description  }  cancelPolicy {    refundable    cancelPenalties {      deadline      penaltyType      currency      value    }  }  rooms {    occupancyRefId    legacyRoomId    code    supplierCode    description    features {      code    }  }  cardTypes  remarks  paymentType}errors {  code  type  description}warnings {  code  type  description}apps {requote {  appSupplierCode  options {    savings {      value      currency    }    optionQuote {      optionRefId      boardCode      accessCode      hotelCode      hotelCodeSupplier      supplierCode      status      paymentType      price {        currency        binding        net        gross        exchange {currencyrate        }        markups {channelcurrencybindingnetgrossexchange {  currency  rate}        }      }      surcharges {        chargeType        mandatory        price {currencybindingnetgrossexchange {  currency  rate}markups {  channel  currency  binding  net  gross  exchange {    currency    rate  }}        }        description      }      cancelPolicy {        refundable        cancelPenalties {deadlinehoursBeforepenaltyTypecurrencyvalue        }      }    rooms {      occupancyRefId      legacyRoomId      code      supplierCode      description      features {code        }      }      cardTypes      remarks    }  }}\n      }\n    }\n  }\n}\n    ",
+	"variables": {
+		"criteriaQuote": {
+			"optionRefId": "13[%!03!~|3[%@241028!~|241029!~|1!~|1!~|0!~|ES!~|ES!~|es!~|EUR!~|0!~|2!~|1!~|1!~|1!~|0!~|15091141!~|BAR[%@BAR!~|146[%@0[%@false[%@EUR[%@[%@0[%@!~|1|30#30|1|2024-10-28|1|4132467|4132468|1|11|0!~|2269[%!2269!~|30[%@30!~|!~|Double Standard!~|1!~|!~|mercado[%@ES[%!ExpireDate[%@29/10/2024[%!tarifaNRF[%@true[%!RateRule[%@tarifaNoRefundablePorHabitacion!~|OK!~|Sith!~|0!~|"
+		},
+		"settings": {
+			"client": "client_demo",
+			"testMode": true
+		}
+	}
+}
+```
+
+## 3. Read the Requote results
 
 When Requote is active (by default or if you haven’t disabled it via plugin), make sure to request also the field "apps > requote" to obtain the information in your response.
 In this field, you will receive:
@@ -103,7 +121,7 @@ In this field, you will receive:
                 },
                 "apps" : {
                     "requote" : {
-                        "appSupplierCode" : "MZE.mizerequote.1",
+                        "appSupplierCode" : "tgx.requote.1",
                         "options" : [
                             {
                                 "savings" : {
@@ -151,5 +169,17 @@ Once you have the results:
 1. Review the alternative options and savings.
 2. Decide which option is best for your business.
 3. For the **book** step, use the `optionID` of the option you finally want to confirm.
- 
 
+
+### Interactive reQuote Demo
+
+Use this embedded demo to compare the original quote response with the reQuote option for that same request.
+This interactive demo is a visual representation of how data retrieved in real time via the API could be displayed using reQuote plugin.
+
+<iframe
+   title="reQuote Demo"
+   src="/demo_reQuote/widget.html"
+   width="100%"
+   height="800"
+   loading="lazy"
+></iframe>

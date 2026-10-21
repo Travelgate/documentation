@@ -84,6 +84,30 @@ To ensure data integrity, any match marked with this icon **must be manually val
 
 The warning icon is a signal to **pay special attention** to the entry. It does not automatically mean the match is incorrect, and it can remain visible after validation because it reflects a collective data trend across the network.
 
+#### 4. Unmapped Hotels
+
+The **Unmapped hotels** tab shows hotels from the selected Supplier that could not be mapped to a FastX code, together with the reasons. These are different from **Pending** hotels, which already have a suggested mapping awaiting your validation.
+
+1. In **Seller mode**, open **Hotels**, select a **Supplier**, and click **Get content**.
+2. Switch from **Mapped hotels** to **Unmapped hotels**.
+3. Review the **Hotel code**, **Hotel name**, and **Failure reason** columns. A hotel can have more than one failure reason.
+4. Use **Search by hotel code** to locate a specific property or the **Unmapped reasons** checkboxes to filter the list by cause.
+
+The failure reason labels shown in the interface are described below.
+
+| Label | Description |
+| --- | --- |
+| `MISSING COUNTRY` | The hotel has no country and it cannot be resolved from geography or valid coordinates. |
+| `MISSING COORDINATES` | The hotel has no coordinates that can be used for mapping. |
+| `INVALID COORDINATES` | The hotel has coordinates, but they are inconsistent or unusable for the process. |
+| `MISSING ADDRESS` | The hotel has no usable address for comparison. |
+| `MISSING_NAME` | The hotel name is null, empty, or not useful for matching. |
+| `MATCH NOT FOUND` | The hotel reached the mapping algorithm, but no reliable match was found. |
+| `PENDING CRITERIA TO_MAP` | The hotel does not meet activity criteria to be mapped yet: No Bookings and no Searches for this hotel code. |
+| `OTHER` | Residual case for input conditions outside the main matching logic. |
+
+Use these reasons to identify missing or unusable content in your hotel data. For content-related failures, review the affected fields and provide accurate, complete information through your connection with Travelgate.
+
 ### Export to CSV
 
 ![fastx-sellers-download](https://stplaformwe.blob.core.windows.net/kbase/fastx-download-csv.png)
@@ -113,7 +137,7 @@ Channel Managers selling through our Inventory solution use an **Inventory hotel
     <summary>Where does the portfolio of hotels and boards in the FastX section come from?</summary>
     <div>
          <div>
-         The hotel and board portfolio you see in the FastX section is compiled by Travelgate. It includes all the hotels and board types that you, as a Seller, have made available to Buyers through our marketplace. We aggregate this portfolio based on the hotels shared with all your connected Buyers, as long as each hotel includes the minimum required information (name, country, address, and coordinates). 
+         The hotel and board portfolio you see in the FastX section is compiled by Travelgate. It includes all the hotels and board types that you, as a Seller, have made available to Buyers through our marketplace. We aggregate this portfolio based on the hotels shared with all your connected Buyers. In the Hotels view, successfully mapped hotels appear under **Mapped hotels**, while hotels that could not be mapped appear under **Unmapped hotels** with their failure reasons.
          
          Every two weeks, when we run the FastX process, we retrieve your latest hotel content and add any new hotels that are detected. If some of your hotels have updated information, this will also be taken into account. If the changes are significant — for example, a hotel name change — the system may suggest a new FastX code for that property with the status pending for your validation.
         </div>
@@ -125,17 +149,14 @@ Channel Managers selling through our Inventory solution use an **Inventory hotel
     <div>
         <div>
         To successfully match a hotel with a FastX code, the following information is required: **name, address, country, and coordinates**.
-        If you are already providing this information in your connection with us and your hotel still does not appear in the FastX section, it may be due to one of the following reasons:
+        First, check the **Unmapped hotels** tab for the selected Supplier and search by hotel code. If the hotel is listed there, review its **Failure reason** labels to understand why it could not be mapped.
 
-        1. **The content data has not yet been synchronized with FastX.**  
+        If your hotel does not appear in either **Mapped hotels** or **Unmapped hotels**, **the content data may not yet have been synchronized with FastX**.
         Even if your hotel already appears in the Content section, the FastX code may still not be available.  
         This can happen because it may take a few days for us to synchronize the new data and run our matching algorithm to link it with a FastX code.  
         This process typically takes a few days and never more than **one week** after the hotel is detected.
 
-        2. **We detected your new hotel, but the matching algorithm could not find a suitable match.**  
-        Please ensure that the hotel’s **name, address, country, and coordinates** are accurate and complete.
-
-        If none of the above apply to your case, please open a case with our [Customer Support team](https://app.travelgate.com/support), and we will review the issue for you.
+        If you still cannot locate your hotel after this period, please open a case with our [Customer Support team](https://app.travelgate.com/support), and we will review the issue for you.
         </div>
     </div>
 </details>

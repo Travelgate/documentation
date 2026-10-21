@@ -93,7 +93,7 @@ The **Unmapped hotels** tab shows hotels from the selected Supplier that could n
 3. Review the **Hotel code**, **Hotel name**, and **Failure reason** columns. A hotel can have more than one failure reason.
 4. Use **Search by hotel code** to locate a specific property or the **Unmapped reasons** checkboxes to filter the list by cause.
 
-The failure reason labels are described below. In the interface.
+The failure reason labels shown in the interface are described below.
 
 | Label | Description |
 | --- | --- |

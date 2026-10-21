@@ -5,7 +5,15 @@ sidebar_position: 3
 
 # HotelX GraphQL API
 
-HotelX is a travel API based on GraphQL. Unlike XML Soap APIs, GraphQL allows to request and receive only the necessary data. Our Gateway, written in NodeJS, is the sole endpoint for all our APIs.
+HotelX is a travel API based on GraphQL. Unlike XML Soap APIs, GraphQL allows to request and receive only the necessary data. Travelgate exposes different GraphQL hosts depending on the product family and the type of operation you need to execute.
+
+### Endpoint selection
+
+| API family | Endpoint | Typical operations |
+| --- | --- | --- |
+| Shopping and booking flow | `https://api-shopping.travelgate.com` | search, quote, book, cancel, booking, amendments, `oneStepBook`, `oneStepQuote` |
+| Content and static master data | `https://api-content.travelgate.com` | hotels, boards, destinations and similar reference data |
+| Stats, logging, admin and other shared APIs | `https://api.travelgate.com` | stats, logging, admin and support calls |
 
 ### Why GraphQL?
 
@@ -14,7 +22,7 @@ Travelgate's GraphQL API provides a flexible and efficient approach to data acce
 #### Key Benefits
 
 - **Client-Specific Queries**: Clients define their own query structure, receiving only the data they request. This avoids over-fetching and under-fetching common in REST APIs.
-- **Single Endpoint**: All queries and mutations are served through one unified endpoint, simplifying integration and improving performance.
+- **Domain-Specific Endpoints**: Different GraphQL domains use their own host, making routing clearer and easier to manage.
 - **No Versioning Required**: GraphQL supports forward-compatible schema evolution, so new fields can be added and old ones deprecated without breaking existing applications.
 - **Real-Time Capabilities**: Via subscriptions, GraphQL enables real-time data updates, ideal for responsive travel applications.
 - **Strongly Typed Schema**: The self-documenting and typed schema allows for auto-completion, query validation, and integration with advanced tooling.

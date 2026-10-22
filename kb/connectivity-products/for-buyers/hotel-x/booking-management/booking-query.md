@@ -41,7 +41,7 @@ If you are not using the HotelX `bookingID` input, ensure you specify your **acc
 
 ### How Can I Retrieve the Details of a Booking?
 
-To obtain the details of a specific reservation, you can add either the **`bookingID`** (returned in the Book response, highly recommended) or the `typeSearch` **`REFERENCES`** (to be deprecated) to your [`HotelCriteriaBookingInput`](/api/types/inputs/hotel-criteria-booking-input).
+To obtain the details of a specific reservation, you can add either the **`bookingID`** (returned in the Book response, highly recommended) or the `typeSearch` **`REFERENCES`** to your [`HotelCriteriaBookingInput`](/api/types/inputs/hotel-criteria-booking-input).
 
 **Booking ID:**
 

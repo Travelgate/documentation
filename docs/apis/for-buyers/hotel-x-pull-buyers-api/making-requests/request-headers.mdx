@@ -9,13 +9,21 @@ The following HTTP request headers are essential for all request methods and mus
 
 ## Mandatory Request Headers
 
-### Gzip Compression
+### Compression
 
-In order to increase performance and save bandwidth, all the live traffic must enable GZIP compression in the HTTP header. 
+To improve performance and reduce bandwidth usage, requests must include HTTP compression in the `Accept-Encoding` header. At least one of the following values is required:
 
 ```html
 Accept-Encoding: gzip
-```                           
+```
+
+or
+
+```html
+Accept-Encoding: zstd
+```
+
+The API supports both `gzip` and `zstd` compression. You must send one of them in every request.
 
 ### Apikey
 

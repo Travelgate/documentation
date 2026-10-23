@@ -56,18 +56,21 @@ https://api-shopping.travelgate.com
 
 #### Request Headers
 
-To interact with the API, you'll need to include three essential request headers:
+To interact with the API, you'll need to include the following request headers:
 
-
-* Gzip Compression: This header helps optimize data transfer between your application and the API.
-
+* Compression: this header is mandatory. At least one of the following values must be included in every request:
 
 ```html
 Accept-Encoding: gzip
-```   
+```
+
+or
+
+```html
+Accept-Encoding: zstd
+```
 
 * Keep Alive: In order to increase performance and improve response times.
-
 
 ```html
 Connection: keep-alive

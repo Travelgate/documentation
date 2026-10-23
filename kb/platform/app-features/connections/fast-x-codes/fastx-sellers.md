@@ -97,14 +97,13 @@ The failure reason labels shown in the interface are described below.
 
 | Label | Description |
 | --- | --- |
-| `MISSING COUNTRY` | The hotel has no country and it cannot be resolved from geography or valid coordinates. |
-| `MISSING COORDINATES` | The hotel has no coordinates that can be used for mapping. |
-| `INVALID COORDINATES` | The hotel has coordinates, but they are inconsistent or unusable for the process. |
-| `MISSING ADDRESS` | The hotel has no usable address for comparison. |
-| `MISSING_NAME` | The hotel name is null, empty, or not useful for matching. |
-| `MATCH NOT FOUND` | The hotel reached the mapping algorithm, but no reliable match was found. |
-| `PENDING CRITERIA TO_MAP` | The hotel does not meet activity criteria to be mapped yet: No Bookings and no Searches for this hotel code. |
-| `OTHER` | Residual case for input conditions outside the main matching logic. |
+| `Missing country` | The hotel has no country and it cannot be resolved from geography or valid coordinates. |
+| `Missing coordinates` | The hotel has no coordinates that can be used for mapping. |
+| `Invalid coordinates` | The hotel has coordinates, but they are inconsistent or unusable for the process. |
+| `Missing address` | The hotel has no usable address for comparison. |
+| `Missing name` | The hotel name is null, empty, or not useful for matching. |
+| `Match not found` | The hotel reached the mapping algorithm, but no reliable match was found. |
+| `Other` | Residual case for input conditions outside the main matching logic. |
 
 Use these reasons to identify missing or unusable content in your hotel data. For content-related failures, review the affected fields and provide accurate, complete information through your connection with Travelgate.
 

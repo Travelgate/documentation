@@ -5,20 +5,24 @@ sidebar_position: 1
 
 # HotelX Endpoint
 
-Travelgate GraphQL APIs use different hosts depending on the product family and the type of operation. For HotelX shopping and booking operations, use:
+Travelgate uses different GraphQL hosts depending on the type of operation you are making.
 
-```text
-https://api-shopping.travelgate.com
-```
+| Operation type | Endpoint | Typical calls |
+| --- | --- | --- |
+| Shopping and booking flow | `https://api-shopping.travelgate.com` | `search`, `quote`, `book`, `cancel`, `booking`, amendments, `oneStepBook`, `oneStepQuote` |
+| Content and static master data | `https://api-content.travelgate.com` | `hotels`, `boards`, `destinations`, `chains`, `rooms` |
+| Shared / generic GraphQL | `https://api.travelgate.com` | `stats`, `logging`, `admin` and other shared operations |
 
-This host is used for operations such as search, quote, book, cancel, booking retrieval, booking amendments (`quote` and `commit`), `oneStepBook`, and `oneStepQuote`.
+## Which host should I use?
 
-For other GraphQL domains, the corresponding endpoints are:
+- Use `https://api-shopping.travelgate.com` for any HotelX shopping or reservation workflow.
+- Use `https://api-content.travelgate.com` for hotel and static content queries.
+- Use `https://api.travelgate.com` only for shared GraphQL operations outside the HotelX shopping/content flow.
 
-| API family | Endpoint |
-| --- | --- |
-| Shopping and booking flow | `https://api-shopping.travelgate.com` |
-| Content and static master data | `https://api-content.travelgate.com` |
-| Stats, logging, admin and other shared APIs | `https://api.travelgate.com` |
+## Quick examples
 
-Use the endpoint associated with the specific operation you are calling, instead of sending all requests to the same host.
+- Searching availability: `https://api-shopping.travelgate.com`
+- Getting hotel or board lists: `https://api-content.travelgate.com`
+- Reading stats or admin data: `https://api.travelgate.com`
+
+This separation keeps each API domain focused and avoids mixing shopping, content, and administrative calls on the same host.

@@ -1,0 +1,54 @@
+---
+sidebar_position: 3
+---
+
+# Prices per Room File
+
+The Prices per Room file assigns a base amount for the room, and adds supplements dynamically for each extra passenger based on their position (e.g., the 1st extra adult pays X, the 2nd extra adult pays Y).
+
+## Purpose
+
+This file is used to define:
+
+- base room price
+- date range
+- LOS (length of stay) pricing
+- extra adult price
+- extra child price
+- extra infant price
+
+## Example
+
+[Download the example Prices per Room file (CSV)](https://stplaformwe.blob.core.windows.net/docs/sellerfiles/rulesfile/prices_per_room.csv)
+
+## Field definitions
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `hotelCode` | String | Hotel identifier. |
+| `rateCode` | String | Rate plan. |
+| `priceCurrency` | String | Currency used for the price. |
+| `roomCode` | String | Room type affected by the row. |
+| `startDate` | Date | Start date of the price validity. |
+| `endDate` | Date | End date of the price validity. |
+| `minLengthOfStay` | Integer | Minimum LOS rule. |
+| `maxLengthOfStay` | Integer | Maximum LOS rule. |
+| `durationDays` | Integer | Duration of the price period. |
+| `pricePerRoom` | Decimal | Base room price. |
+| `extraAdults` | String | Price rule for extra adults. |
+| `extraChildren` | String | Price rule for extra children. |
+| `extraInfants` | String | Price rule for extra infants. |
+
+## Understanding complex fields
+
+Because CSVs are flat, we use specific delimiters (`,` and `|`) to send lists inside a single cell.
+
+### `extraAdults` / `extraChildren` / `extraInfants`
+
+List of objects — separate the supplement for each extra passenger position with a pipe `|`.
+
+- **Format**: `Position,Amount,Type | Position,Amount,Type...`
+- **Example**: `1,25.00,AMOUNT|2,20.00,AMOUNT`
+- **Meaning**: the 1st extra adult pays 25.00, the 2nd extra adult pays 20.00, both as a fixed amount.
+
+`Type` defines how the amount is applied. The examples use `AMOUNT` (a fixed amount). You can define up to three additional guests per group (adult, child, infant).

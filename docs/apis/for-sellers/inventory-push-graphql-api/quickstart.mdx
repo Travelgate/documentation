@@ -6,27 +6,29 @@ sidebar_position: 1
 
 :::note New API
 
-The **Inventory Push Sellers API** is a comprehensive solution designed to optimize the management of static information and master data in the travel industry. This API enables buyers and sellers to configure, upload, and retrieve crucial data needed to efficiently establish and maintain their inventory.
+The **Inventory Push Sellers API** is intended for suppliers that already have a push-based integration model. In this flow, the provider loads availability, rates, and pricing information into Travelgate’s **Inventory** database. Once the product is stored in Inventory, connected Buyers can consume it through different channels and integration models according to their needs.
 
-It is important to note that developments for this API can be carried out either by **Travelgate** or **third parties**. This flexibility allows users to choose the option that best suits their needs and resources.
+This model is used when the Seller wants to publish its product to the Travelgate network by sending updates into our Inventory. The connector can be developed by **Travelgate**, or the Seller can implement our API directly to load the product data into our Inventory system.
 
 :::
 
 ## Introduction
 
-This is a comprehensive GraphQL API designed to streamline the handling of static information and master data for the travel industry. This API enables both Buyers and Sellers to efficiently set up, load, and retrieve crucial data necessary for establishing and maintaining their stock. It supports the complete setup of hotels, including the creation of rates, rooms and offers.
+This GraphQL API is designed for suppliers that need to push product data into Travelgate’s Inventory system. Instead of exposing real-time availability and pricing directly to Buyers through a pull model, the supplier sends the data to Travelgate, where it is stored and managed centrally.
 
-This API mirrors the capabilities available on our existing [Inventory Extranet](/docs/apps/inventory/extranet/overview) but with the added benefits that come from API integration, such as automation, improved efficiency, and reduced likelihood of human error.
+From there, Buyers can access the product in multiple ways, depending on the commercial setup and their own connectivity model. The result is a centralized inventory layer that makes it easier to maintain consistency, automate updates, and expose the same product data to different buyers and channels.
 
-What sets this API apart is its use of GraphQL technology, which allows users to precisely define the data they require, reducing the overhead and increasing the efficiency of data transfer. The API also supports asynchronous operations, ensuring that your system can handle large volumes of data without performance bottlenecks.
+This API mirrors the capabilities available on our existing [Inventory Extranet](/docs/apps/inventory/extranet/overview), with the added advantages of API automation, scalability, and reduced manual effort.
 
-Highlights of the Inventory Set Up GraphQL API include:
-* **Efficient Data Management**: Directly manage and update hotel information, room details, rate plans, and more.
-* **Dynamic Updates**: Load and update availability and pricing information quickly to reflect real-time changes.
-* **Error Reduction**: Automate data entry and updates to minimize errors and inconsistencies.
-* **Scalability**: Designed to handle operations at scale, making it suitable for both small vendors and large enterprise operations.
+The Inventory Push Sellers API supports the complete setup and maintenance of hotel product information, including:
 
-By integrating the Inventory Set Up GraphQL API, you can expect a smoother, more responsive workflow that keeps your inventory up-to-date and accurately represented across all channels.
+* **Hotels and master data**
+* **Rates and room configuration**
+* **Availability and closing conditions**
+* **Pricing and occupancy logic**
+* **Structured updates to Travelgate Inventory**
+
+This model is especially useful when a supplier wants to push product information to Travelgate and then let Buyers consume that data through their preferred integration path, without requiring each Buyer to integrate directly with the supplier’s own system.
 
 ## Integration Approaches: Understanding Setup Models
 

@@ -1,0 +1,54 @@
+---
+sidebar_position: 1
+slug: /apis/for-sellers/sellers-cache-files/overview
+---
+
+# Overview
+
+:::info Sellers Cache Files
+
+Travelgate can integrate Sellers that want to load their product through files instead of a live API. In this scenario, the Supplier may send data using its own file format, or it may use a Travelgate-provided standard format if a simpler and more structured onboarding approach is preferred.
+
+In this model, Travelgate develops the ingestion layer to read the files and load the rates, availability, and pricing data into our Inventory. Once the product is in Inventory, it can be consumed by any Buyer connected to the network.
+:::
+
+## What this solution is
+
+Sellers Cache Files is a connectivity model for Sellers that distribute their inventory and pricing through files instead of a real-time API. The files can use:
+
+- the Seller's propietary file format
+- a standard Travelgate template, adapted to the Seller's catalog
+
+Batch updates can cover inventory, rates, restrictions, and pricing.
+
+## How it works
+
+1. The Seller shares its file structure with Travelgate.
+2. Travelgate validates the files and maps the fields to the Travelgate standard.
+3. Travelgate builds the ingestion layer and loads the data into Inventory.
+4. Connected Buyers access the Seller's product without integrating with the Seller.
+
+## Choose a file format
+
+| Format | Description | Best for |
+| --- | --- | --- |
+| [Flat Files](./flat-files/overview.mdx) | A single CSV file where each row is a priced product record. | Simpler product feeds. |
+| [Rules Files](./rules-files/overview.mdx) | Master files (hotels, rates, rooms) and pricing files (restrictions and prices). | Complex catalogs that need separate definitions for rates, rooms, restrictions, and pricing logic. |
+
+:::tip
+The key point is that Travelgate can adapt either the Seller's own file format or a standard Travelgate format, depending on the commercial and technical requirements of the integration.
+:::
+
+This model is a strong option for Suppliers that:
+
+- do not currently expose an API
+- distribute data in files instead of real-time systems
+- need a lightweight and scalable way to join the marketplace
+- want Travelgate to adapt their format into the network standard
+
+In short, file-based integrations allow Suppliers to participate in the marketplace even when an API is not available.
+
+:::tip
+
+Flat Files are ideal for simpler pricing feeds, while Rules Files are better suited for more structured and detailed inventory and rate logic.
+:::

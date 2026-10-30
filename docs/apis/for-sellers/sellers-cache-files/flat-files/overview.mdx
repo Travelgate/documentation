@@ -1,0 +1,95 @@
+---
+sidebar_position: 1
+---
+
+# Overview
+
+Flat Files are the simplest file-based integration model for Sellers that do not expose a live API. They are designed for scenarios where product information can be distributed in a compact, row-based format.
+
+Travelgate can integrate a Supplier's own Flat File format or provide a standard template when the Seller prefers a simpler, more structured onboarding approach.
+
+## What a Flat File is
+
+A Flat File is a plain CSV file where each row represents one priced product record: a specific combination of hotel, rate plan, room, board, and occupancy for a given check-in date and length of stay.
+
+Unlike the Rules Files model — where master data, restrictions, and pricing live in separate files — a Flat File contains all the information needed to sell the product in a single row. This makes it ideal for simpler integrations.
+
+:::warning Important Note
+The files and tables below are **representative examples** showing the maximum scope of fields and accepted formats. Every supplier is unique; you may omit or leave empty any fields that do not apply to your specific business model or are not required by your systems.
+:::
+
+## Example
+
+[Download the example Flat File (CSV)](https://stplaformwe.blob.core.windows.net/docs/sellerfiles/flatfile/seller_flatfile.csv)
+
+## Field definitions
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `market` | String | Market code to which the price applies (e.g. `ES`). |
+| `checkIn` | Date | Check-in date of the stay. |
+| `nights` | Integer | Length of stay in nights. |
+| `paxesRequest` | String | Ages of the guests in the booking, separated by `#` (see complex fields below). |
+| `paxesRange` | String | Age range applicable to each guest, separated by `#`. |
+| `supplierCode` | String | Code identifying the supplier. |
+| `hotelCode` | String | Hotel code in the supplier's own system. |
+| `boardCode` | String | Board code in the supplier's own system (e.g. `AI`, `HB`, `FB`). |
+| `priceCurrency` | String | Currency of the price. |
+| `priceBinding` | Boolean | Whether the price is binding (non-commissionable). |
+| `priceNet` | Decimal | Net price of the stay. |
+| `priceGross` | Decimal | Gross (selling) price of the stay. |
+| `paymentType` | String | Payment model, for example `MERCHANT` or `DIRECT`. |
+| `roomCode` | String | Room code in the supplier's own system. |
+| `ratePlanCode` | String | Rate plan code of the record (e.g. `BAR`, `BARTEST`). |
+| `rateRulesExtended` | String | Rate rules that apply, separated by `\|` (e.g. `PACKAGE`, `OLDER_55`). |
+| `cancelPolicyRefundable` | Integer | Whether the rate is refundable (`1`) or non-refundable (`0`). |
+| `cancelPenaltiesDeadlines` | String | Cancellation penalties by deadline (see complex fields below). Leave empty for non-refundable rates. |
+
+## Understanding complex fields
+
+Because CSVs are flat, we use specific delimiters (`#`, `|`, and `:`) to send lists inside a single cell.
+
+### 1. `paxesRequest`
+
+Guest ages for the booking, separated by `#`.
+
+- **Format**: `Age#Age#Age...`
+- **Example**: `30#30#10`
+- **Meaning**: a booking with 3 guests aged 30, 30, and 10.
+
+### 2. `paxesRange`
+
+The age range applicable to each guest, in the same position order as `paxesRequest`, separated by `#`. This tells Travelgate which age bracket (adult, child, infant) each guest falls into.
+
+- **Format**: `AgeFrom-AgeTo#AgeFrom-AgeTo...`
+- **Example**: `18-30#18-30#2-12`
+- **Meaning**: the first two guests fall in the 18-30 range and the third in the 2-12 range.
+
+### 3. `rateRulesExtended`
+
+List of rate rules, separated by a pipe `|`.
+
+- **Format**: `Rule|Rule...`
+- **Example**: `PACKAGE|OLDER_55`
+- **Meaning**: the rate is a package rate and also applies a senior (55+) rule.
+
+### 4. `cancelPenaltiesDeadlines`
+
+List of cancellation penalties, separated by a pipe `|`. Each penalty is defined with `:` delimiters.
+
+- **Format**: `DeadlineDatetime:PenaltyType:Currency:Amount | DeadlineDatetime:PenaltyType:Currency:Amount...`
+- **Example**: `2027-05-23T10:00:00Z:AMOUNT:EUR:100|2027-05-24T10:00:00Z:AMOUNT:USD:278`
+- **Meaning**: cancelling before 23 May 2027 at 10:00 UTC costs 100 EUR; cancelling between that deadline and the next one costs 278 USD.
+
+## Typical use cases
+
+Flat Files are commonly used when:
+
+- the Seller does not have a real-time API
+- the data model is relatively simple
+- prices can be expressed in bulk by market, check-in date, and occupancy
+- the Supplier wants a quick onboarding process without a full technical integration layer
+
+:::info
+If your catalog requires separate master data definitions and multiple pricing models, consider using [Rules Files](../rules-files/overview.mdx) instead.
+:::

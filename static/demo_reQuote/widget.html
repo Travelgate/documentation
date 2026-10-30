@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -33,13 +33,14 @@
 
     body {
       background:
-        radial-gradient(circle at 8% 4%, rgba(0, 123, 255, 0.08), transparent 42%),
-        radial-gradient(circle at 92% 10%, rgba(255, 184, 28, 0.08), transparent 40%),
+        radial-gradient(circle at 8% 4%, rgba(0, 123, 255, 0.06), transparent 42%),
+        radial-gradient(circle at 92% 10%, rgba(255, 184, 28, 0.06), transparent 40%),
+        radial-gradient(circle at 84% 84%, rgba(228, 170, 255, 0.08), transparent 44%),
         var(--bg-body);
       color: var(--tx-neutral-900);
-      min-height: 100vh;
       display: flex;
       flex-direction: column;
+      padding: .5rem;
     }
 
     header {
@@ -112,25 +113,26 @@
     }
 
     main {
-      width: min(1140px, 100% - 2rem);
-      margin: 1.5rem auto 2rem;
+      width: min(920px, 100%);
+      margin: 0 auto;
       display: grid;
-      gap: 1.25rem;
+      gap: .75rem;
     }
 
     .card {
       background: var(--tx-white);
       border: 1px solid var(--border-color);
-      border-radius: 16px;
-      box-shadow: var(--shadow-soft);
+      border-radius: 14px;
+      box-shadow: 0 10px 24px rgba(0, 31, 63, 0.07);
       overflow: hidden;
     }
 
     .card-head {
-      padding: 1rem 1.25rem;
+      padding: .72rem .9rem;
       background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
       border-bottom: 1px solid var(--border-color);
-      font-weight: 800;
+      font-weight: 700;
+      font-size: .9rem;
       color: var(--tx-blue-900);
       letter-spacing: .2px;
       display: flex;
@@ -151,8 +153,8 @@
     }
 
     .toggle-btn {
-      padding: 6px 13px;
-      font-size: 0.75rem;
+      padding: 5px 11px;
+      font-size: 0.72rem;
       font-weight: 700;
       border: none;
       background: transparent;
@@ -173,9 +175,9 @@
     .section-view.show { display: block; }
 
     .json-panel {
-      margin: 1rem;
+      margin: .65rem;
       border: 1px solid #d6e3f3;
-      border-radius: 12px;
+      border-radius: 10px;
       background: #0d1a2b;
       overflow: hidden;
       box-shadow: var(--shadow-light);
@@ -183,11 +185,11 @@
 
     .json-panel pre {
       margin: 0;
-      padding: 1rem;
+      padding: .75rem;
       color: #d9e7ff;
       font-family: 'Fira Code', monospace;
-      font-size: 0.77rem;
-      line-height: 1.5;
+      font-size: 0.7rem;
+      line-height: 1.4;
       white-space: pre-wrap;
       word-break: break-word;
     }
@@ -195,8 +197,8 @@
     .form-grid {
       display: grid;
       grid-template-columns: repeat(6, minmax(0, 1fr));
-      gap: .9rem;
-      padding: 1.25rem;
+      gap: .6rem;
+      padding: .85rem;
       background: var(--bg-soft);
     }
 
@@ -211,9 +213,9 @@
 
     .field input, .field select {
       border: 1px solid var(--tx-neutral-300);
-      border-radius: 10px;
-      padding: .62rem .7rem;
-      font-size: .9rem;
+      border-radius: 9px;
+      padding: .52rem .6rem;
+      font-size: .82rem;
       color: var(--tx-neutral-900);
       background: white;
       outline: none;
@@ -235,11 +237,11 @@
     button {
       border: 0;
       border-radius: 999px;
-      padding: .72rem 1rem;
+      padding: .58rem .86rem;
       font-weight: 800;
       cursor: pointer;
       transition: .2s ease;
-      font-size: .83rem;
+      font-size: .74rem;
       text-transform: uppercase;
       letter-spacing: .6px;
     }
@@ -263,21 +265,21 @@
     .results {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      padding: 1rem;
+      gap: .7rem;
+      padding: .7rem;
       background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
     }
 
     .quote-pane {
       border: 1px solid #dfe9f6;
-      border-radius: 16px;
-      padding: 1.15rem;
-      box-shadow: 0 14px 28px rgba(0, 31, 63, 0.08);
+      border-radius: 12px;
+      padding: .78rem;
+      box-shadow: 0 10px 22px rgba(0, 31, 63, 0.07);
       background: linear-gradient(180deg, #ffffff 0%, #f9fcff 100%);
-      min-height: 260px;
+      min-height: 220px;
       display: flex;
       flex-direction: column;
-      gap: .9rem;
+      gap: .62rem;
     }
 
     .quote-pane.requote {
@@ -293,7 +295,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: .8rem;
+      font-size: .72rem;
       text-transform: uppercase;
       letter-spacing: .5px;
       color: var(--tx-blue-900);
@@ -314,13 +316,13 @@
       display: inline-flex;
       align-items: center;
       width: fit-content;
-      font-size: 2.2rem;
+      font-size: 1.55rem;
       font-weight: 900;
       letter-spacing: -0.02em;
       color: var(--tx-blue-900);
       line-height: 1;
-      padding: .5rem .85rem;
-      border-radius: 14px;
+      padding: .4rem .65rem;
+      border-radius: 10px;
       border: 1px solid #d9e5f5;
       background: linear-gradient(180deg, #ffffff 0%, #eef5ff 100%);
       box-shadow: 0 8px 18px rgba(0, 31, 63, 0.1);
@@ -365,9 +367,9 @@
       display: block;
       background: #f8fbff;
       border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: .4rem;
-      height: 184px;
+      border-radius: 10px;
+      padding: .3rem;
+      height: 128px;
     }
 
     .photo-wrap img {
@@ -404,8 +406,8 @@
     .mini {
       background: var(--tx-neutral-100);
       border: 1px solid var(--border-color);
-      border-radius: 10px;
-      padding: .6rem;
+      border-radius: 9px;
+      padding: .48rem;
     }
 
     .mini .label {
@@ -417,16 +419,16 @@
       margin-bottom: .2rem;
     }
 
-    .mini .value { font-size: .85rem; font-weight: 700; color: var(--tx-neutral-900); }
+    .mini .value { font-size: .78rem; font-weight: 700; color: var(--tx-neutral-900); }
 
     .status {
       font-family: 'Fira Code', monospace;
-      font-size: .78rem;
+      font-size: .69rem;
       color: var(--tx-neutral-700);
       background: #eef5ff;
       border: 1px solid #dbe7f5;
       border-radius: 8px;
-      padding: .5rem .65rem;
+      padding: .42rem .52rem;
       margin-top: auto;
     }
 
@@ -460,8 +462,8 @@
     }
 
     .mini-inline {
-      padding: .45rem .6rem;
-      min-width: 140px;
+      padding: .35rem .48rem;
+      min-width: 118px;
     }
 
     .mini-inline-right {
@@ -481,14 +483,67 @@
 
     .saving.show { display: block; }
 
+    .embed-header {
+      width: min(920px, 100%);
+      margin: 0 auto .65rem;
+      padding: .58rem .78rem;
+      border-radius: 14px;
+      border: 1px solid #cfe1f7;
+      background: linear-gradient(100deg, #e8f3ff 0%, #edf7ff 52%, #fff2ce 100%);
+      box-shadow: 0 6px 16px rgba(0, 31, 63, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .7rem;
+    }
+
+    .embed-header-title {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: 1.75rem;
+      font-weight: 900;
+      color: #09396d;
+      letter-spacing: -0.01em;
+      line-height: 1;
+    }
+
+    .embed-header-title-icon {
+      font-size: 1rem;
+      transform: translateY(-1px);
+      filter: drop-shadow(0 1px 0 rgba(255,255,255,.65));
+    }
+
+    .embed-header-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      border: 1px solid #f2c35b;
+      background: linear-gradient(180deg, #ffe9b3 0%, #ffd97a 100%);
+      color: #8a5600;
+      font-size: .66rem;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .42rem .7rem;
+      white-space: nowrap;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .35);
+    }
+
     @media (max-width: 960px) {
       .form-grid { grid-template-columns: 1fr 1fr; }
       .span-2, .span-1 { grid-column: span 1; }
       .results { grid-template-columns: 1fr; }
-      .photo-wrap { height: 170px; }
+      .photo-wrap { height: 118px; }
       .photo-wrap img { width: 100%; height: 100%; }
       .photo-pair { grid-template-columns: 1fr; }
       .requote-top-row { flex-direction: column; align-items: stretch; }
+    }
+
+    @media (min-width: 961px) {
+      .form-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .span-2, .span-1 { grid-column: span 1; }
     }
 
     @media (max-width: 768px) {
@@ -506,6 +561,14 @@
   </style>
 </head>
 <body>
+  <div class="embed-header">
+    <div class="embed-header-title">
+      <span class="embed-header-title-icon">🔁</span>
+      <span>reQuote</span>
+    </div>
+    <span class="embed-header-badge">Interactive Demo</span>
+  </div>
+
   <main>
     <section class="card">
       <div class="card-head">

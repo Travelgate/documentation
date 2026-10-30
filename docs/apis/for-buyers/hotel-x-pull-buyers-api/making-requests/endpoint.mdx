@@ -7,22 +7,24 @@ sidebar_position: 1
 
 Travelgate uses different GraphQL hosts depending on the type of operation you are making.
 
-| Operation type | Endpoint | Typical calls |
-| --- | --- | --- |
-| Shopping and booking flow | `https://api-shopping.travelgate.com` | `search`, `quote`, `book`, `cancel`, `booking`, amendments, `oneStepBook`, `oneStepQuote` |
-| Content and static master data | `https://api-content.travelgate.com` | `hotels`, `boards`, `destinations`, `chains`, `rooms` |
-| Shared / generic GraphQL | `https://api.travelgate.com` | `stats`, `logging`, `admin` and other shared operations |
+| Operation type                 | Endpoint                                      | Playground                                                                        | Typical calls                                                                             |
+| ------------------------------ | --------------------------------------------- | --------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| Shopping and booking flow      | `https://api-shopping.travelgate.com/graphql` | [Shopping API Playground](https://api-shopping.travelgate.com/graphql/playground) | `search`, `quote`, `book`, `cancel`, `booking`, amendments, `oneStepBook`, `oneStepQuote` |
+| Content and static master data | `https://api-content.travelgate.com/graphql`  | [Content API Playground](https://api-content.travelgate.com/graphql/playground)   | `hotels`, `boards`, `destinations`, `chains`, `rooms`                                     |
+| Shared / generic GraphQL       | `https://api.travelgate.com`                  | [Shared API Playground](https://api.travelgate.com/playground)                    | `stats`, `logging`, `admin` and other shared operations                                   |
+
+The shared API Playground currently exposes the admin, content, inventory, and booking-flow schemas. It is expected to expose only the admin operations schema in the future. Use the product-specific Playgrounds above to explore the booking-flow and content schemas.
 
 ## Which host should I use?
 
-- Use `https://api-shopping.travelgate.com` for any HotelX shopping or reservation workflow.
-- Use `https://api-content.travelgate.com` for hotel and static content queries.
+- Use `https://api-shopping.travelgate.com/graphql` for any HotelX shopping or reservation workflow.
+- Use `https://api-content.travelgate.com/graphql` for hotel and static content queries.
 - Use `https://api.travelgate.com` only for shared GraphQL operations outside the HotelX shopping/content flow.
 
 ## Quick examples
 
-- Searching availability: `https://api-shopping.travelgate.com`
-- Getting hotel or board lists: `https://api-content.travelgate.com`
+- Searching availability: `https://api-shopping.travelgate.com/graphql`
+- Getting hotel or board lists: `https://api-content.travelgate.com/graphql`
 - Reading stats or admin data: `https://api.travelgate.com`
 
 This separation keeps each API domain focused and avoids mixing shopping, content, and administrative calls on the same host.

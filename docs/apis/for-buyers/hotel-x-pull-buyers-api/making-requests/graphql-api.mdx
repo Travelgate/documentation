@@ -9,11 +9,11 @@ HotelX is a travel API based on GraphQL. Unlike XML Soap APIs, GraphQL allows to
 
 ### Endpoint selection
 
-| API family | Endpoint | Typical operations |
-| --- | --- | --- |
-| Shopping and booking flow | `https://api-shopping.travelgate.com` | search, quote, book, cancel, booking, amendments, `oneStepBook`, `oneStepQuote` |
-| Content and static master data | `https://api-content.travelgate.com` | hotels, boards, destinations and similar reference data |
-| Stats, logging, admin and other shared APIs | `https://api.travelgate.com` | stats, logging, admin and support calls |
+| API family                                  | Endpoint                                      | Typical operations                                                              |
+| ------------------------------------------- | --------------------------------------------- | ------------------------------------------------------------------------------- |
+| Shopping and booking flow                   | `https://api-shopping.travelgate.com/graphql` | search, quote, book, cancel, booking, amendments, `oneStepBook`, `oneStepQuote` |
+| Content and static master data              | `https://api-content.travelgate.com/graphql`  | hotels, boards, destinations and similar reference data                         |
+| Stats, logging, admin and other shared APIs | `https://api.travelgate.com`                  | stats, logging, admin and support calls                                         |
 
 ### Why GraphQL?
 
@@ -27,12 +27,9 @@ Travelgate's GraphQL API provides a flexible and efficient approach to data acce
 - **Real-Time Capabilities**: Via subscriptions, GraphQL enables real-time data updates, ideal for responsive travel applications.
 - **Strongly Typed Schema**: The self-documenting and typed schema allows for auto-completion, query validation, and integration with advanced tooling.
 
-
 ### Queries and Mutations
 
 There are two types of allowed operations in the Travelgate GraphQL APIs:
-
-
 
 #### Queries
 
@@ -46,18 +43,11 @@ Mutations change, add or delete the data in our system. For example, making a bo
 
 This operation can include inserting a new object in a database, or deleting, or updating a data record.
 
-
-
-
 ### GraphQL Playground
 
-Get to know our [API Playground](/playground/) – a fun and interactive tool for getting to know our HotelX API! In the API Playground, you can easily customize your API requests by adding headers and variables. As you start typing your query, our Playground will even suggest fields and options, making it a breeze to build your queries. 
+Use the [Shopping API Playground](https://api-shopping.travelgate.com/graphql/playground) for booking-flow operations or the [Content API Playground](https://api-content.travelgate.com/graphql/playground) for content queries. The [shared API Playground](https://api.travelgate.com/playground) currently includes the admin, content, inventory, and booking-flow schemas; it is expected to expose only the admin operations schema in the future. You can customize requests with headers and variables and use autocomplete while writing queries.
 
 To learn more about our data model and discover all the query possibilities, you can also explore our [GraphQL API Reference](/api/). And don't forget, you can tailor the response to your needs by setting query variables and fields. This way, you'll only get the information you're interested in.
-
-
-
-
 
 ### GraphQL Resources
 

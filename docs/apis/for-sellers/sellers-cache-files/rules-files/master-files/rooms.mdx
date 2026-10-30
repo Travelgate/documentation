@@ -1,0 +1,62 @@
+---
+sidebar_position: 3
+---
+
+# Rooms File
+
+The Rooms file maps the physical inventory to your Rates. It describes the room types available for sale under each rate, and its `occupancies` field determines which occupancy combinations are accepted for each product.
+
+## Purpose
+
+This file is used to define:
+
+- hotel code
+- rate code
+- room code
+- room description
+- active status
+- external supplier code
+- standard occupancy
+- valid occupancies
+
+## Example
+
+```csv
+hotelCode,rateCode,roomCode,description,active,externalCode,standardOccupancy,occupancies
+HTL-001,NRF_BB,DBL_STD,Standard Double Room,TRUE,EXT_DBL_01,2,1-0-0|2-0-0|1-1-0|1-0-1|1-1-1
+```
+
+**Occupancy string (`occupancies`):** uses a standard `Adults-Children-Infants` format, delimited by `|` (e.g., `1-1-0` means 1 Adult, 1 Child, 0 Infants).
+
+## Field definitions
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `hotelCode` | String | Unique code of the hotel. |
+| `rateCode` | String | Rate plan associated with the room. |
+| `roomCode` | String | Internal code identifying the room type. |
+| `description` | String | Human-readable room description. |
+| `active` | Boolean | Indicates whether the room is active. |
+| `externalCode` | String | Supplier or external mapping code. |
+| `standardOccupancy` | Integer | Standard room occupancy used as the baseline for pricing. |
+| `occupancies` | String | Valid guest combinations in the format `Adults-Children-Infants`, separated by `|`. |
+
+## Occupancy format
+
+The `occupancies` value follows the format:
+
+`Adults-Children-Infants`
+
+Examples:
+
+- `1-0-0`: 1 adult, 0 children, 0 infants
+- `2-0-0`: 2 adults, 0 children, 0 infants
+- `2-1-0`: 2 adults, 1 child, 0 infants
+
+This lets Travelgate know which combinations are valid for each room and ensures pricing logic aligns with the room's actual capacity.
+
+## Notes
+
+- `roomCode` must be consistent across all pricing and restriction files.
+- `standardOccupancy` is often used as the base for occupancy-based pricing rules.
+- `occupancies` may contain multiple valid combinations in the same row.

@@ -1,0 +1,64 @@
+---
+sidebar_position: 1
+---
+
+# Overview
+
+Rules Files are the recommended model for more structured and scalable Seller integrations. Instead of storing everything in a single flat file, the data is split into multiple files based on its purpose.
+
+This approach is especially useful when the Supplier has more complex pricing logic, detailed commercial conditions, and stricter operational restrictions.
+
+:::warning Important Note
+The files and tables in this section are **representative examples** showing the maximum scope of fields and accepted formats. Every supplier is unique; you may omit or leave empty any fields that do not apply to your specific business model or are not required by your systems.
+:::
+
+## Core concepts
+
+In a Travelgate Rules File integration, your inventory is divided into three main entities:
+
+1. **Hotel**: the physical property.
+2. **Rate**: the set of booking conditions, cancellation policies, and surcharges under which rooms are sold.
+3. **Room**: the physical room types attached to a rate, which later receive the pricing and conditions.
+
+The integration has two phases:
+
+- **Setup phase**: creating the Hotels, Rates, and Rooms in Inventory (the [Master Files](./master-files/overview.mdx)).
+- **Load phase**: loading restrictions and pricing into those Rates (the [Pricing Files](./pricing-files/overview.mdx)).
+
+If you have any doubts, keep in mind that all the operations described here are exactly the same as the ones you can perform using the [Inventory Push Sellers API](/docs/apis/for-sellers/inventory-push-graphql-api/quickstart).
+
+## Main structure
+
+The Rules File model is organized in two large groups:
+
+1. [Master Files](./master-files/overview.mdx): hotels, rooms, and rates
+2. [Pricing Files](./pricing-files/overview.mdx): restrictions, price per room, price per standard occupancy, price per occupancy, and price by age range
+
+## Why use Rules Files
+
+Rules Files allow Travelgate to keep the integration organized and easier to maintain. They separate:
+
+- product structure and master data
+- commercial conditions and rate definitions
+- operational restrictions and stop-sales logic
+- dynamic pricing calculations
+
+This makes the integration more predictable, easier to validate, and easier to scale.
+
+## How Travelgate handles them
+
+Travelgate can accept:
+
+- the Seller's own Rules File format
+- a standard Travelgate Rules File format if the Seller prefers a common onboarding template
+
+In both cases, the files are validated, mapped, and adapted to the marketplace network so Buyers can consume the product in a standardized way.
+
+:::info
+Rules Files are the preferred model for complex Sellers because they separate the master setup from the pricing logic and operational conditions.
+:::
+
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items.filter((item, i) => i > 0)}/>

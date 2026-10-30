@@ -1,0 +1,52 @@
+---
+sidebar_position: 4
+---
+
+# Prices per Standard Occupancy File
+
+This file assigns a base amount matching the `standardOccupancy` value of the Room Master, and adds supplements for any extra passenger exceeding that standard capacity.
+
+## Purpose
+
+This model is used when the room price is based on the standard guest capacity of the room rather than a simple fixed room package.
+
+## Example
+
+```csv
+hotelCode,rateCode,priceCurrency,roomCode,startDate,endDate,minLengthOfStay,maxLengthOfStay,durationDays,pricePerStandardOccupancy,extraAdults,extraChildren,extraInfants
+HTL-001,NRF_BB,USD,DBL_STD,2026-06-01,2026-06-30,1,14,,100,"1,30.00,AMOUNT|2,25.00,AMOUNT","1,15.00,AMOUNT","1,0.00,AMOUNT"
+```
+
+## Field definitions
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `hotelCode` | String | Hotel identifier. |
+| `rateCode` | String | Rate plan identifier. |
+| `priceCurrency` | String | Currency of the price. |
+| `roomCode` | String | Room type. |
+| `startDate` | Date | Start date of the pricing range. |
+| `endDate` | Date | End date of the pricing range. |
+| `minLengthOfStay` | Integer | Minimum LOS condition. |
+| `maxLengthOfStay` | Integer | Maximum LOS condition. |
+| `durationDays` | Integer | Duration of the price rule. |
+| `pricePerStandardOccupancy` | Decimal | Price applied to the standard occupancy level. |
+| `extraAdults` | String | Supplement rules for extra adults. |
+| `extraChildren` | String | Supplement rules for extra children. |
+| `extraInfants` | String | Supplement rules for extra infants. |
+
+## Understanding complex fields
+
+Because CSVs are flat, we use specific delimiters (`,` and `|`) to send lists inside a single cell.
+
+### `extraAdults` / `extraChildren` / `extraInfants`
+
+List of objects — separate the supplement for each extra passenger position with a pipe `|`.
+
+- **Format**: `Position,Amount,Type | Position,Amount,Type...`
+- **Example**: `1,30.00,AMOUNT|2,25.00,AMOUNT`
+- **Meaning**: the 1st extra adult pays 30.00, the 2nd extra adult pays 25.00, both as a fixed amount.
+
+## Notes
+
+This model is useful when the Seller defines the room price around the room's standard capacity and charges more for additional guests beyond that threshold.

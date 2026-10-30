@@ -1,0 +1,50 @@
+---
+sidebar_position: 2
+---
+
+# Restrictions File
+
+The Restrictions file is used to set Stop Sales, booking limits, and stay restrictions. It defines when a room or rate can or cannot be sold, controlling the operational conditions applied during a date range.
+
+## Purpose
+
+This file is used to define:
+
+- validity period
+- booking limits
+- minimum and maximum release windows
+- free sales status
+- minimum and maximum stay rules
+- arrival and departure closure conditions
+
+## Example
+
+```csv
+hotelCode,rateCode,roomCode,startDate,endDate,bookingLimit,minRelease,maxRelease,freeSales,minStayNightsDuringStay,maxStayNightsDuringStay,minStayNightsOnArrival,maxStayNightsOnArrival,closeMaster,closeOnArrival,closeOnDeparture
+HTL-001,NRF_BB,DBL_STD,2026-06-01,2026-09-30,10,2,30,TRUE,3,14,2,7,FALSE,FALSE,FALSE
+```
+
+## Field definitions
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `hotelCode` | String | Hotel associated with the restriction. |
+| `rateCode` | String | Rate plan affected by the restriction. |
+| `roomCode` | String | Room type affected by the restriction. |
+| `startDate` | Date | Start date of the restriction validity. |
+| `endDate` | Date | End date of the restriction validity. |
+| `bookingLimit` | Integer | Maximum number of bookings allowed. |
+| `minRelease` | Integer | Minimum number of days before arrival allowed for release. |
+| `maxRelease` | Integer | Maximum number of days before arrival allowed for release. |
+| `freeSales` | Boolean | Whether the room can be sold freely. |
+| `minStayNightsDuringStay` | Integer | Minimum stay requirement during the stay period. |
+| `maxStayNightsDuringStay` | Integer | Maximum stay requirement during the stay period. |
+| `minStayNightsOnArrival` | Integer | Minimum stay requirement on arrival day. |
+| `maxStayNightsOnArrival` | Integer | Maximum stay requirement on arrival day. |
+| `closeMaster` | Boolean | Closes the room/rate at master level. |
+| `closeOnArrival` | Boolean | Closes product sales for arrival dates. |
+| `closeOnDeparture` | Boolean | Closes product sales for departure dates. |
+
+## Notes
+
+Restrictions are critical because they guarantee that the product is sold under valid commercial and operational conditions. This file normally works together with the Rates and Rooms files to define the effective sales logic.

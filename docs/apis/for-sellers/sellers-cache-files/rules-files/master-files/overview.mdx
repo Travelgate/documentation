@@ -1,0 +1,31 @@
+---
+sidebar_position: 1
+---
+
+# Overview
+
+Master Files define the supplier's foundational product structure. They contain the hotel, room, and rate definitions that describe how the commercial offer is organized and under which conditions it can be sold.
+
+This group is the backbone of a Rules File integration. Without accurate master data, pricing files cannot be interpreted correctly.
+
+## Included file types
+
+- [Hotels](./hotels.mdx)
+- [Rooms](./rooms.mdx)
+- [Rates](./rates.mdx)
+
+## How these files work together
+
+The standard logic is:
+
+1. the hotel is defined in the hotel master file
+2. room types are defined under that hotel
+3. rates are attached to the hotel and room set
+4. pricing and restrictions are then loaded into the rate and room combination (see [Pricing Files](../pricing-files/overview.mdx))
+
+This creates a clear and consistent relationship between catalog structure and commercial conditions.
+
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items.filter((item, i) => i > 0)}/>

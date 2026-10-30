@@ -5,7 +5,7 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start --port=4200",
-    "build": "docusaurus build && cp CNAME build/CNAME",
+    "build": "docusaurus build && node -e \"const fs=require('fs'); fs.copyFileSync('CNAME', 'build/CNAME');\"",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",

@@ -1,0 +1,54 @@
+---
+sidebar_position: 6
+---
+
+# Prices by Age Range File
+
+In the Prices by Age Range file, the price dynamically adapts based on the exact age of the guest inside a given bracket, using the format `AgeFrom-AgeTo,Amount,Type`. This is especially useful for family or child-inclusive rate structures.
+
+## Purpose
+
+This file is used when each guest age group has a different price or discount. Typical ranges are:
+
+- `0-2`
+- `3-12`
+- `13-99`
+
+## Example
+
+```csv
+hotelCode,rateCode,priceCurrency,roomCode,startDate,endDate,minLengthOfStay,maxLengthOfStay,durationDays,basePrice,pricesByAgeRange
+HTL-001,NRF_BB,USD,DBL_STD,2026-06-01,2026-06-30,1,14,7,50,"0-2,0.00,AMOUNT|3-12,25.00,AMOUNT|13-99,80.00,AMOUNT"
+```
+
+## Field definitions
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `hotelCode` | String | Hotel identifier. |
+| `rateCode` | String | Rate plan identifier. |
+| `priceCurrency` | String | Currency of the price. |
+| `roomCode` | String | Room type. |
+| `startDate` | Date | Start date of the pricing range. |
+| `endDate` | Date | End date of the pricing range. |
+| `minLengthOfStay` | Integer | Minimum LOS rule. |
+| `maxLengthOfStay` | Integer | Maximum LOS rule. |
+| `durationDays` | Integer | Rule duration. |
+| `basePrice` | Decimal | Reference base price for the age-based logic. |
+| `pricesByAgeRange` | String | Price definition by age range in the format `AgeFrom-AgeTo,Amount,Type`. |
+
+## Understanding complex fields
+
+Because CSVs are flat, we use specific delimiters (`,` and `|`) to send lists inside a single cell.
+
+### `pricesByAgeRange`
+
+List of objects — separate different age brackets with a pipe `|`.
+
+- **Format**: `AgeFrom-AgeTo,Amount,Type | AgeFrom-AgeTo,Amount,Type...`
+- **Example**: `0-2,0.00,AMOUNT|3-12,25.00,AMOUNT|13-99,80.00,AMOUNT`
+- **Meaning**: ages 0-2 pay 0.00, ages 3-12 pay 25.00, ages 13-99 pay 80.00, all as fixed amounts.
+
+## Notes
+
+This model is especially useful when the Seller needs to calculate pricing according to the guest age distribution rather than a fixed adult-based rate.

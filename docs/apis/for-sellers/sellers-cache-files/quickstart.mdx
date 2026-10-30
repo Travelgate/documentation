@@ -14,43 +14,26 @@ In this model, Travelgate develops the ingestion layer to read the files and loa
 
 ## What this solution is
 
-Sellers Cache Files are a connectivity model for suppliers that distribute their inventory and pricing through files instead of a real-time API.
+Sellers Cache Files is a connectivity model for Sellers that distribute their inventory and pricing through files instead of a real-time API. The files can use:
 
-This can include:
+- the Seller's propietary file format
+- a standard Travelgate template, adapted to the Seller's catalog
 
-- proprietary file formats provided by the Seller
-- standard Travelgate templates adapted to the Seller's catalog
-- batch-based product updates for inventory, rates, restrictions, and pricing
+Batch updates can cover inventory, rates, restrictions, and pricing.
 
-## How we work
+## How it works
 
-Travelgate can:
+1. The Seller shares its file structure with Travelgate.
+2. Travelgate validates the files and maps the fields to the Travelgate standard.
+3. Travelgate builds the ingestion layer and loads the data into Inventory.
+4. Connected Buyers access the Seller's product without integrating with the Seller.
 
-1. receive the Seller's file structure
-2. validate and map the fields to our standards
-3. implement the connector in our network
-4. make the Seller's product available to connected Buyers through the marketplace
+## Choose a file format
 
-## Supported formats
-
-We support two main models:
-
-- [Flat Files](./flat-files/overview): simple file-based integrations for straightforward product feeds
-- [Rules Files](./rules-files/overview): structured integrations with multiple file types and detailed commercial logic
-
-## When to choose this model
-
-This approach is useful when the Seller:
-
-- does not have an API
-- shares data through CSV or file-based processes
-- needs to onboard quickly into the marketplace
-- wants a connector built by Travelgate without managing direct Buyer-specific integrations
-
-## Recommended approach
-
-- Use [Flat Files](./flat-files/overview) for simpler product feeds.
-- Use [Rules Files](./rules-files/overview) when the catalog is more complex and requires separate definitions for rates, rooms, restrictions, and pricing logic.
+| Format | Description | Best for |
+| --- | --- | --- |
+| [Flat Files](./flat-files/overview.mdx) | A single CSV file where each row is a priced product record. | Simpler product feeds. |
+| [Rules Files](./rules-files/overview.mdx) | Master files (hotels, rates, rooms) and pricing files (restrictions and prices). | Complex catalogs that need separate definitions for rates, rooms, restrictions, and pricing logic. |
 
 :::tip
 The key point is that Travelgate can adapt either the Seller's own file format or a standard Travelgate format, depending on the commercial and technical requirements of the integration.

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 3
 ---
 
 # Rates File
@@ -22,11 +22,11 @@ This file is used to define:
 ## Example
 
 ```csv
-rateCode,rateName,hotelCode,active,board,childMaxAge,infantMaxAge,infantsStayFree,childrenStayFree,currency,commission,binding,paymentType,cardType,bookingWindowStartDate,bookingWindowEndDate,includedMarkets,excludeMarkets,rateRule,seniorRule,baseCancelPolicy,cancelPoliciesByDate,surcharges
-NRF_BB,Non-Refundable Bed & Breakfast,HTL-001,TRUE,BB,12,2,TRUE,FALSE,USD,15,TRUE,MERCHANT,"VI,CA,AX",2026-01-01,2026-12-31,"US,CA,GB",,LARGE_FAMILY,SENIOR_55,"false,0,PERCENTAGE,100.0","2026-06-01,2026-06-30,true,7,NIGHTS,1.0|2026-07-01,2026-08-31,true,14,PERCENTAGE,50.0","CITY_TAX,AMOUNT,2.5,PER_STAY,true,true|RESORT_FEE,PERCENTAGE,5.0,PER_STAY,false,false"
+rateCode,rateName,hotelCode,active,board,childMaxAge,infantMaxAge,infantsStayFree,childrenStayFree,priceCurrency,commission,priceBinding,paymentType,cardType,bookingWindowStartDate,bookingWindowEndDate,includedMarkets,excludeMarkets,rateRule,seniorRule,baseCancelPolicy,cancelPoliciesByDate,surcharges
+NRF_BB,Non-Refundable Bed & Breakfast,HTL-001,TRUE,BB,12,2,TRUE,FALSE,USD,15,TRUE,MERCHANT,"VI,CA,AX",2026-01-01,2026-12-31,"US,CA,GB",,LARGE_FAMILY,SENIOR_55,"false,0,PERCENTAGE,100.0","2026-06-01,2026-06-30,true,7,NIGHTS,1.0|2026-07-01,2026-08-31,true,14,PERCENTAGE,50.0","EXCLUDED,CITY,2.5,AMOUNT,true,true|EXCLUDED,RESORT_FEE,5.0,PERCENTAGE,false,false"
 ```
 
-## Understanding complex fields in Rates
+## Understanding complex fields
 
 Because CSVs are flat, we use specific delimiters (`,` and `|`) to send lists inside a single cell.
 
@@ -51,8 +51,17 @@ List of objects — separate different date ranges with a pipe `|`.
 List of objects — separate different surcharges with a pipe `|`.
 
 - **Format**: `chargeType,taxType,value,applyType,perNight,perPax | chargeType...`
-- **Example**: `CITY_TAX,AMOUNT,2.5,PER_STAY,true,true|RESORT_FEE,PERCENTAGE,5.0,PER_STAY,false,false`
-- **Meaning**: a city tax of 2.5 applied per night and passenger, plus a 5% resort fee applied per stay.
+- **Example**: `EXCLUDED,CITY,2.5,AMOUNT,true,true|EXCLUDED,RESORT_FEE,5.0,PERCENTAGE,false,false`
+- **Meaning**: a city tax of 2.5 applied per night and per person, plus a 5% resort fee applied once per stay. Neither is included in the price.
+
+| Element | Description |
+| --- | --- |
+| `chargeType` | Whether the surcharge is included in the price: `INCLUDED` or `EXCLUDED`. |
+| `taxType` | Type of tax: `CITY`, `LOCAL`, `RESORT_FEE`, or `SUPPLEMENT_TO_BE_PAID_ON_SPOT`. |
+| `value` | Value of the surcharge. |
+| `applyType` | How the value is applied: `AMOUNT` or `PERCENTAGE`. |
+| `perNight` | `true` if the surcharge applies per night. |
+| `perPax` | `true` if the surcharge applies per person. |
 
 ## Field definitions
 

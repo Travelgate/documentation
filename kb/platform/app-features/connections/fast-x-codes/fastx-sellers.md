@@ -103,6 +103,7 @@ The failure reason labels are described below. In the interface.
 | `Missing address` | The hotel has no usable address for comparison. |
 | `Missing name` | The hotel name is null, empty, or not useful for matching. |
 | `Match not found` | The hotel reached the mapping algorithm, but no reliable match was found. |
+| `Pending traffic` | The hotel currently has no search or booking traffic recorded in the network. |
 | `Other` | Residual case for input conditions outside the main matching logic. |
 
 Use these reasons to identify missing or unusable content in your hotel data. For content-related failures, review the affected fields and provide accurate, complete information through your connection with Travelgate.

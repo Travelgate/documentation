@@ -65,5 +65,5 @@ Unfortunately, GIATA codes are not included in the Rooms Query response. For spe
 No, the Rooms Query response provides a list of all the rooms a Seller has configured for your account. However, availability may vary based on your requested dates and distribution criteria. Some rooms may not be available for specific searches.
 
 :::tip
-Check our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/rooms) and [API Playground](/playground) for further details. 🚀
+Check our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/content/rooms) and [API Playground](/playground?api=content) for further details. 🚀
 :::

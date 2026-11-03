@@ -1,6 +1,6 @@
 import 'graphiql/setup-workers/webpack';
 
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import BrowserOnly from '@docusaurus/BrowserOnly';
 import {createGraphiQLFetcher} from '@graphiql/toolkit';
 import {GraphiQL} from 'graphiql';
@@ -9,26 +9,30 @@ import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 import withToken from "../components/WithToken";
 import {hotelsListQuerySampleA} from "../graphql/sample-queries/hotels.list.query";
 import {replaceClient} from "../utils";
+import {getGraphqlApi, createPlaygroundStorage} from "../graphql/playgrounds";
 
-let fetcher = null;
-
-if (ExecutionEnvironment.canUseDOM) {
-    fetcher = createGraphiQLFetcher({
-        url: 'https://api.travelgate.com/',
-        headers: {
-            "Authorization": "Apikey test0000-0000-0000-0000-000000000000"
-        }
-    });
-} else {
-    fetcher = null;
-}
-
-const GraphqlSample = ({token, query, variables, showLabel = true}) => {
+const GraphqlSample = ({token, query, variables, api = 'generic', showLabel = true}) => {
     const isBrowser = useIsBrowser();
+    const {endpoint} = getGraphqlApi(api);
+    const fetcher = useMemo(() => ExecutionEnvironment.canUseDOM
+        ? createGraphiQLFetcher({
+            url: endpoint,
+            headers: {
+                "Authorization": "Apikey test0000-0000-0000-0000-000000000000"
+            }
+        })
+        : null, [endpoint]);
+    const storage = useMemo(() => ExecutionEnvironment.canUseDOM
+        ? createPlaygroundStorage(api, localStorage)
+        : undefined, [api]);
     const [headers, setHeaders] = useState(`{
         "Authorization": "Apikey test0000-0000-0000-0000-000000000000"
     }`);
     const [parsedVariables, setParsedVariables] = useState(variables);
+    const formattedHeaders = useMemo(() => JSON.stringify(JSON.parse(headers), null, 2), [headers]);
+    const formattedVariables = useMemo(() => parsedVariables
+        ? JSON.stringify(JSON.parse(parsedVariables), null, 2)
+        : '', [parsedVariables]);
 
     useEffect(() => {
         if (token) {
@@ -51,11 +55,12 @@ const GraphqlSample = ({token, query, variables, showLabel = true}) => {
                             <div className="graphql-sample-interactive" aria-label="Interactive GraphQL playground">
                                 {showLabel && <p><strong>Interactive playground:</strong></p>}
                                 <GraphiQL
+                                    key={api}
                                     fetcher={fetcher}
-                                    initialHeaders={headers}
+                                    storage={storage}
+                                    initialHeaders={formattedHeaders}
                                     initialQuery={query??hotelsListQuerySampleA}
-                                    initialVariables={parsedVariables??''}
-                                    //onTabChange={(tabState) => { tabState.tabs = []; return false; }}
+                                    initialVariables={formattedVariables}
                                 >
                                     <GraphiQL.Logo><></></GraphiQL.Logo>
                                 </GraphiQL>

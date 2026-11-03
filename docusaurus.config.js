@@ -404,11 +404,10 @@ const config = {
             position: "left",
           },
           {
-            to: "/playground",
-            //type: 'docSidebar',
-            sidebarId: "playgroundSidebar",
+            type: "dropdown",
             label: "GraphQL Playground",
             position: "left",
+            items: require("./src/graphql/playgrounds").PLAYGROUND_LINKS,
           },
           {
             to: "https://app.travelgate.com/tickets",

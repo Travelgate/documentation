@@ -1,5 +1,5 @@
 export const allAccessesListQuery = 
-`{
+`query {
 	admin {
 		allAccesses {
 			edges {
@@ -17,7 +17,7 @@ export const allAccessesListQuery =
 
 
 export const allAccessesDetailQuery = 
-`{
+`query {
 	admin{
 	  allAccesses{
 		edges{

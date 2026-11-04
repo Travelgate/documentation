@@ -1,4 +1,4 @@
-import 'graphiql/setup-workers/webpack';
+import '../graphql/setupMonacoWorkers';
 
 import {useEffect, useMemo, useState} from 'react';
 import BrowserOnly from '@docusaurus/BrowserOnly';
@@ -9,7 +9,7 @@ import useIsBrowser from '@docusaurus/useIsBrowser';
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 import withToken from "../components/WithToken";
 import {CheckIcon, CopyIcon, CopyStatus, useCopyToClipboard} from "../components/CopyToClipboard";
-import {hotelsListQuerySampleA} from "../graphql/sample-queries/hotels.list.query";
+import {hotelsListQuerySampleA, hotelsListQuerySampleAVariables} from "../graphql/sample-queries/hotels.list.query";
 import {replaceClient} from "../utils";
 import {getGraphqlApi, createPlaygroundStorage} from "../graphql/playgrounds";
 
@@ -34,9 +34,13 @@ const EndpointBar = ({label, endpoint}) => {
     );
 };
 
-const GraphqlSampleEditor = ({token, query, variables, api = 'generic', showLabel = true}) => {
+const GraphqlSampleEditor = ({token, query: queryProp, variables: variablesProp, api = 'generic', showLabel = true}) => {
     const isBrowser = useIsBrowser();
     const {label, endpoint} = getGraphqlApi(api);
+    // The default sample declares its own variables, so both must fall back together.
+    const usesDefaultSample = queryProp === undefined;
+    const query = usesDefaultSample ? hotelsListQuerySampleA : queryProp;
+    const variables = usesDefaultSample ? hotelsListQuerySampleAVariables : variablesProp;
     const fetcher = useMemo(() => ExecutionEnvironment.canUseDOM
         ? createGraphiQLFetcher({
             url: endpoint,
@@ -82,7 +86,7 @@ const GraphqlSampleEditor = ({token, query, variables, api = 'generic', showLabe
                                     fetcher={fetcher}
                                     storage={storage}
                                     initialHeaders={formattedHeaders}
-                                    initialQuery={query??hotelsListQuerySampleA}
+                                    initialQuery={query}
                                     initialVariables={formattedVariables}
                                 >
                                     <GraphiQL.Logo><></></GraphiQL.Logo>

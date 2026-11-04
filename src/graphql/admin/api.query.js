@@ -1,7 +1,7 @@
 export const apiByCodeQuery =
-`{
+`query($where: APIWhereUniqueInput!) {
 	admin {
-		api(where: {searchBy: CODE, search: "hotel"}) {
+		api(where: $where) {
 			adviseMessage {
 				code
 				description
@@ -30,4 +30,11 @@ export const apiByCodeQuery =
 			}
 		}
 	}
+}`
+
+export const apiByCodeVariables = `{
+  "where": {
+    "searchBy": "CODE",
+    "search": "hotel"
+  }
 }`

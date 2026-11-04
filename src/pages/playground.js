@@ -6,19 +6,17 @@ import {CheckIcon, CopyIcon, CopyStatus, useCopyToClipboard} from "../components
 import GraphqlSample from "../components/GraphqlSample";
 import Link from "@docusaurus/Link";
 import {useLocation} from "@docusaurus/router";
-import {useEffect, useState} from "react";
-import {parse, print} from "graphql";
 import {GRAPHQL_APIS} from "../graphql/playgrounds";
-import {hotelsListQuerySampleA} from "../graphql/sample-queries/hotels.list.query";
+import {hotelsListQuerySampleA, hotelsListQuerySampleAVariables} from "../graphql/sample-queries/hotels.list.query";
 import {searchQuickStartQuery, searchQuickStartVariables} from "../graphql/hotel-x/search.quickstart.query";
 import {hotelsMasterQuery, hotelsMasterByContextCodeVariables} from "../graphql/inventory/masters/hotels-master.query";
-import {apiByCodeQuery} from "../graphql/admin/api.query";
+import {apiByCodeQuery, apiByCodeVariables} from "../graphql/admin/api.query";
 
 const samples = {
     shopping: {query: searchQuickStartQuery, variables: searchQuickStartVariables},
-    content: {query: hotelsListQuerySampleA},
+    content: {query: hotelsListQuerySampleA, variables: hotelsListQuerySampleAVariables},
     inventory: {query: hotelsMasterQuery, variables: hotelsMasterByContextCodeVariables},
-    generic: {query: print(parse(apiByCodeQuery))},
+    generic: {query: apiByCodeQuery, variables: apiByCodeVariables},
 };
 
 const EndpointField = ({endpoint}) => {
@@ -47,22 +45,6 @@ const Explorer = (props) => {
     const location = useLocation();
     const api = new URLSearchParams(location.search).get('api') ?? 'generic';
     const validApi = Object.hasOwn(GRAPHQL_APIS, api);
-    const [visitedApis, setVisitedApis] = useState(() => new Set(validApi ? [api] : []));
-
-    useEffect(() => {
-        if (validApi) {
-            setVisitedApis((previous) => {
-                if (previous.has(api)) {
-                    return previous;
-                }
-                return new Set([...previous, api]);
-            });
-        }
-    }, [api, validApi]);
-
-    const mountedApis = Object.keys(GRAPHQL_APIS).filter(
-        (value) => visitedApis.has(value) || (validApi && value === api),
-    );
 
     return (
         <Layout
@@ -86,12 +68,9 @@ const Explorer = (props) => {
                     </nav>
                     {validApi && <EndpointField endpoint={GRAPHQL_APIS[api].endpoint} />}
                 </div>
-                {mountedApis.map((editorApi) => (
-                    <div key={editorApi} hidden={editorApi !== api}>
-                        <GraphqlSample {...props} {...samples[editorApi]} api={editorApi} showLabel={false} collapsible={false} />
-                    </div>
-                ))}
-                {!validApi && <p role="alert">Unknown GraphQL API: {api}. Choose one of the APIs above.</p>}
+                {validApi
+                    ? <GraphqlSample key={api} {...props} {...samples[api]} api={api} showLabel={false} collapsible={false} />
+                    : <p role="alert">Unknown GraphQL API: {api}. Choose one of the APIs above.</p>}
             </div>
         </Layout>
     );

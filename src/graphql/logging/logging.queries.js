@@ -1,7 +1,7 @@
 // 1. getLogs
-export const getLogsQuery = `query getLogs($input: LoggingLogsWhereInput!) {
+export const getLogsQuery = `query getLogs($input: LoggingLogsWhereInput!, $limit: Int!) {
   logging {
-    getLogs(limit: 1000, where: $input) {
+    getLogs(limit: $limit, where: $input) {
       totalCount
       adviseMessage {
         code
@@ -42,6 +42,7 @@ export const getLogsQuery = `query getLogs($input: LoggingLogsWhereInput!) {
 }`;
 
 export const getLogsVariables = `{
+  "limit": 1000,
   "input": {
     "api": "hotel",
     "timeRange": {

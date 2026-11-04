@@ -171,22 +171,22 @@ Keep in mind that the content of the Booking response can differ depending on th
 
 #### Booking read with the `bookingID` from the book response
 
-<GraphqlSample query={bookingQuery} variables={bookingByBookingIDVariables} />
+<GraphqlSample api="shopping" query={bookingQuery} variables={bookingByBookingIDVariables} />
 
 #### Booking read using the `accessCode`, `hotelCode`, `currency` and `reference` from the book response
 
-<GraphqlSample query={bookingQuery} variables={bookingByReferenceVariables} />
+<GraphqlSample api="shopping" query={bookingQuery} variables={bookingByReferenceVariables} />
 
 #### Booking list by arrival date range
 
-<GraphqlSample
+<GraphqlSample api="shopping"
   query={bookingQuery}
   variables={bookingByArrivalDatesVariables}
 />
 
 #### Booking list by booking date range
 
-<GraphqlSample
+<GraphqlSample api="shopping"
   query={bookingQuery}
   variables={bookingByBookingDatesVariables}
 />
@@ -195,4 +195,4 @@ Keep in mind that the content of the Booking response can differ depending on th
 
 You can generate a booking list based on booking or arrival dates by simply specifying your client (and deleting the access). This will provide a consolidated booking list from all suppliers associated with that client.
 
-<GraphqlSample query={bookingQuery} variables={bookingByDatesAggregatedVariables} />
+<GraphqlSample api="shopping" query={bookingQuery} variables={bookingByDatesAggregatedVariables} />

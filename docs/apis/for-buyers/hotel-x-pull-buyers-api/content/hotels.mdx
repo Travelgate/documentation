@@ -150,7 +150,7 @@ When performing a Hotels Query **using the FastX access**, the following fields 
 Activate [**FastX Content by AO**](/kb/connectivity-products/for-buyers/hotel-x/fastx/fastx-content) to add complete and standardized hotel and room content for each FastX code, including descriptions, images, amenities, and more.
 :::
 
-<GraphqlSample query={hotelsQuery} variables={hotelsFastXVariables} />
+<GraphqlSample api="content" query={hotelsQuery} variables={hotelsFastXVariables} />
 
 ### Supplier hotel list
 
@@ -158,7 +158,7 @@ To retrieve only one Supplier's portfolio, include that Supplier's access in the
 
 The response returns the Supplier's native static content, so the available data depends on what that Seller provides. In this case, `hotelCode` corresponds to the Supplier's native hotel code, and you can also find the matched FastX code in the `mappings` field.
 
-<GraphqlSample query={hotelsQuery} variables={hotelsVariables} />
+<GraphqlSample api="content" query={hotelsQuery} variables={hotelsVariables} />
 
 :::note
 
@@ -173,7 +173,7 @@ HotelX supports all languages, but receiving hotel descriptions in one or anothe
 
 If you want to retrieve the information of specific hotel codes, you will need to specify the codes in the `hotelCodes` field:
 
-<GraphqlSample query={hotelsQuery} variables={hotelsByHotelCodeVariables} />
+<GraphqlSample api="content" query={hotelsQuery} variables={hotelsByHotelCodeVariables} />
 
 
 
@@ -182,7 +182,7 @@ If you want to retrieve the information of specific hotel codes, you will need t
 
 When utilizing the Hotels List Query, for more personalized results, filter specific hotels, countries or destinations based on your interests. For example, to focus solely on the inventory of all your Sellers in Greece, add the `countries` field with "GR" in your criteria. This will ensure you receive hotels directly related to that country, providing you with highly targeted and relevant information.
 
-<GraphqlSample query={hotelsQuery} variables={hotelsByCountryVariables} />
+<GraphqlSample api="content" query={hotelsQuery} variables={hotelsByCountryVariables} />
 
 
 
@@ -190,7 +190,7 @@ When utilizing the Hotels List Query, for more personalized results, filter spec
 
 Filter hotels by destination zone. For example, to retrieve only hotels in Santorini, use the destination code that the Supplier has assigned (e.g., `"101402"` for Santorini in the test Supplier). Include this code in the `destinationCodes` field:
 
-<GraphqlSample query={hotelsQuery} variables={hotelsByDestinationCodeVariables} />
+<GraphqlSample api="content" query={hotelsQuery} variables={hotelsByDestinationCodeVariables} />
 
 
 

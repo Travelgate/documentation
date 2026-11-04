@@ -1,7 +1,7 @@
 export const allProfilesV2ListQuery = 
-`query {
+`query($where: ProfileWhereInput) {
   social {
-    allProfilesV2(where: {ownerCode: {equals: "example-owner"}}) {
+    allProfilesV2(where: $where) {
       edges {
         node {
           profileData {
@@ -19,6 +19,14 @@ export const allProfilesV2ListQuery =
           }
         }
       }
+    }
+  }
+}`
+
+export const allProfilesV2ListVariables = `{
+  "where": {
+    "ownerCode": {
+      "equals": "example-owner"
     }
   }
 }`

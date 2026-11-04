@@ -1,6 +1,6 @@
-export const hotelsListQuerySampleA = `query {
+export const hotelsListQuerySampleA = `query($criteria: HotelXHotelListInput!) {
   hotelX {
-    hotels(criteria: {access: 7245}) {
+    hotels(criteria: $criteria) {
       edges {
         node {
           hotelData {
@@ -19,5 +19,11 @@ export const hotelsListQuerySampleA = `query {
         }
       }
     }
+  }
+}`;
+
+export const hotelsListQuerySampleAVariables = `{
+  "criteria": {
+    "access": "34538"
   }
 }`;

@@ -3,7 +3,7 @@ sidebar_position: 2
 title: Get Profiles
 ---
 
-import {allProfilesV2ListQuery} from "../../../../src/graphql/social/allprofilesv2.query.js";
+import {allProfilesV2ListQuery, allProfilesV2ListVariables} from "../../../../src/graphql/social/allprofilesv2.query.js";
 
 
 # Get Profiles
@@ -36,12 +36,14 @@ All Social API calls require JWT (JSON Web Token) authentication. Follow the [Ad
 The Social API root field is `social`, and profile data is returned through `allProfilesV2`:
 
 ```graphql
-social {
-  allProfilesV2(where: { ownerCode: { equals: "example-owner" } }) {
-    edges {
-      node {
-        profileData {
-          ...
+query {
+  social {
+    allProfilesV2(where: { ownerCode: { equals: "example-owner" } }) {
+      edges {
+        node {
+          profileData {
+            ...
+          }
         }
       }
     }
@@ -71,7 +73,7 @@ This page examples focus on these `profileData` fields:
 - `buyerSubCategory`
 - `sellerSubCategory`
 
-<GraphqlSample api="generic" query={allProfilesV2ListQuery}/>
+<GraphqlSample api="generic" query={allProfilesV2ListQuery} variables={allProfilesV2ListVariables}/>
 
 ## Query Examples
 

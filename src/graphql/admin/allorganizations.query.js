@@ -1,7 +1,7 @@
 export const allOrganizationsListQuery = 
-`query {
+`query($where: OrganizationsWhereInput) {
 	admin {
-		allOrganizations(where: {code_in: "code_org"}) {
+		allOrganizations(where: $where) {
 			edges {
 				node {
 					organizationsData {
@@ -15,4 +15,10 @@ export const allOrganizationsListQuery =
 			}
 		}
 	}
+}`
+
+export const allOrganizationsListVariables = `{
+  "where": {
+    "code_in": ["code_org"]
+  }
 }`

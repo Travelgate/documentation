@@ -1,4 +1,3 @@
-import React from 'react';
 import LinkItem from '@theme/Footer/LinkItem';
 function ColumnLinkItem({item}) {
   return item.html ? (

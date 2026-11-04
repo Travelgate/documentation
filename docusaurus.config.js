@@ -254,6 +254,17 @@ const config = {
   plugins: [
     "docusaurus-plugin-sass",
     [
+      "@docusaurus/plugin-content-docs",
+      {
+        sidebarPath: require.resolve("./sidebars.js"),
+        editUrl: "https://github.com/Travelgate/documentation/tree/main",
+      },
+    ],
+    "@docusaurus/plugin-content-pages",
+    ...(process.env.NODE_ENV !== "production"
+      ? ["@docusaurus/plugin-debug"]
+      : []),
+    [
       "@docusaurus/plugin-google-tag-manager",
       {
         containerId: "GTM-T3M3XRZ",
@@ -325,6 +336,15 @@ const config = {
 
   themes: [
     [
+      "@docusaurus/theme-classic",
+      {
+        customCss: [
+          "./node_modules/graphiql/dist/style.css",
+          require.resolve("./src/scss/custom.scss"),
+        ],
+      },
+    ],
+    [
       require.resolve("@easyops-cn/docusaurus-search-local"),
       /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
       ({
@@ -347,30 +367,8 @@ const config = {
     ],
   ],
 
-  presets: [
-    [
-      "classic",
-      /** @type {import('@docusaurus/preset-classic').Options} */
-      ({
-        docs: {
-          sidebarPath: require.resolve("./sidebars.js"),
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl: "https://github.com/Travelgate/documentation/tree/main",
-        },
-        blog: false,
-        theme: {
-          customCss: [
-            "./node_modules/graphiql/dist/style.css",
-            require.resolve("./src/scss/custom.scss"),
-          ],
-        },
-      }),
-    ],
-  ],
-
   themeConfig:
-    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+    /** @type {import('@docusaurus/types').ThemeConfig} */
     ({
       // Replace with your project's social card
       image: "img/docusaurus-social-card.jpg",
@@ -405,8 +403,6 @@ const config = {
           },
           {
             to: "/playground",
-            //type: 'docSidebar',
-            sidebarId: "playgroundSidebar",
             label: "GraphQL Playground",
             position: "left",
           },

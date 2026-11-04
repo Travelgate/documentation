@@ -2,7 +2,7 @@
 sidebar_position: 7
 ---
 
-import {allOrganizationsListQuery} from "../../../../src/graphql/admin/allorganizations.query.js";
+import {allOrganizationsListQuery, allOrganizationsListVariables} from "../../../../src/graphql/admin/allorganizations.query.js";
 
 
 # All Organizations
@@ -24,12 +24,14 @@ Path: `admin/all-organizations/`
 GraphQL root:
 
 ```graphql
-admin {
-  allOrganizations(where: {code_in: "code_org"}) {
-    edges {
-      node {
-        organizationsData {
-          ...
+query {
+  admin {
+    allOrganizations(where: {code_in: "code_org"}) {
+      edges {
+        node {
+          organizationsData {
+            ...
+          }
         }
       }
     }
@@ -45,7 +47,7 @@ The sample below requests these fields from `organizationsData`:
 * `isActive`
 * `owner.code`
 
-<GraphqlSample query={allOrganizationsListQuery}/>
+<GraphqlSample api="generic" query={allOrganizationsListQuery} variables={allOrganizationsListVariables}/>
 
 ### Common Use Cases
 

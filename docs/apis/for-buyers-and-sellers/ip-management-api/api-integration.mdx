@@ -38,7 +38,7 @@ Retrieve all available services with optional details on associated IP addresses
 **Query Example**:
 
 ```graphql
-{
+query {
   infraestructure {
     allServices {
       id
@@ -90,7 +90,7 @@ Retrieve all IP addresses or ranges with associated services and their statuses.
 **Query Example**:
 
 ```graphql
-{
+query {
   infraestructure {
     allIpAddresses {
       ipAddress
@@ -140,7 +140,7 @@ Retrieve detailed information about a specific service and its associated IPs.
 **Query Example**:
 
 ```graphql
-{
+query {
   infraestructure {
     serviceByID(id: "2") {
       id
@@ -190,7 +190,7 @@ Fetch details of a specific IP address or check if an IP falls within a defined 
 **Query Example**:
 
 ```graphql
-{
+query {
   infraestructure {
     ipByAddress(address: "52.148.208.57") {
       ipAddress
@@ -238,7 +238,7 @@ Query for an IP address by providing an IP within a range.
 **Query Example**:
 
 ```graphql
-{
+query {
   infraestructure {
     ipByAddress(address: "216.59.61.160") {
       ipAddress
@@ -288,7 +288,7 @@ If an invalid IP address is passed, the API will return an error message.
 **Example**:
 
 ```graphql
-{
+query {
   infraestructure {
     ipByAddress(address: "999.999.999.999") {
       ipAddress

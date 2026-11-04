@@ -1,4 +1,3 @@
-import React from 'react';
 
 const typeColors = {
   Added: '#4CAF50',    // Green

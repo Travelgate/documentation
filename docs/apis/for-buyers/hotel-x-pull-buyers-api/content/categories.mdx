@@ -65,18 +65,18 @@ HotelX supports all languages, but receiving categories descriptions in one or a
 
 To retrieve the **FastX Category Master**, make a `category list` call using your **FastX access**, which you can find in the *MyConnections* section under the Seller **"Travelgate"**.
 
-<GraphqlSample query={categoriesQuery} variables={categoriesFastXVariables} />
+<GraphqlSample api="content" query={categoriesQuery} variables={categoriesFastXVariables} />
 
 
 ### Supplier category list
 
 To retrieve one Supplier's native category master, include that Supplier's access in the query (for example, access `2` for the Travelgate Test supplier).
 
-<GraphqlSample query={categoriesQuery} variables={categoriesVariables} />
+<GraphqlSample api="content" query={categoriesQuery} variables={categoriesVariables} />
 
 ### Category list for specific category codes
 
 Use the Categories List Query to filter specific category types. For example, to focus on 4-star inventory from a Supplier, include `categoryCodes` such as "4" and "5" in your criteria (these are supplier-native category codes in this example). This helps you retrieve more targeted and relevant results.
 
-<GraphqlSample query={categoriesQuery} variables={categoriesByCategoryCodeVariables} />
+<GraphqlSample api="content" query={categoriesQuery} variables={categoriesByCategoryCodeVariables} />
 

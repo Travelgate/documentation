@@ -24,12 +24,14 @@ Path: `admin/all-clients/`
 GraphQL root:
 
 ```graphql
-admin {
-  allClients {
-    edges {
-      node {
-        clientData {
-          ...
+query {
+  admin {
+    allClients {
+      edges {
+        node {
+          clientData {
+            ...
+          }
         }
       }
     }
@@ -50,7 +52,7 @@ Returned fields:
 
 * `name`
 
-<GraphqlSample query={allClientsListQuery}/>
+<GraphqlSample api="generic" query={allClientsListQuery}/>
 
 
 ## Query Example

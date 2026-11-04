@@ -22,5 +22,5 @@ It depends on whether you send `currency` in your Search criteria. When you do, 
 If you don't send `currency` in the Search criteria, its value is normally taken from your default settings (Access > Supplier > Client > Organization). In that case, you can still set a different `currency` for a specific Supplier (or a specific access) using the `suppliers` field of your [settings](/docs/apis/for-buyers/hotel-x-pull-buyers-api/making-requests/settings#overriding-settings-for-a-specific-supplier-in-your-request), and list the relevant `accesses` so the override is applied. This override wins over the default settings for that Supplier/access. Suppliers you don't list there will simply use their default settings.
 
 :::tip
-For more details, explore our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart) and try the [HotelX Playground](/playground) 🚀
+For more details, explore our [Documentation](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart) and try the [HotelX Playground](/playground?api=shopping) 🚀
 :::

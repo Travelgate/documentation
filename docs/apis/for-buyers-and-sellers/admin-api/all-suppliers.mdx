@@ -24,12 +24,14 @@ Path: `admin/all-suppliers/`
 GraphQL root:
 
 ```graphql
-admin {
-  allSuppliers {
-    edges {
-      node {
-        supplierData {
-          ...
+query {
+  admin {
+    allSuppliers {
+      edges {
+        node {
+          supplierData {
+            ...
+          }
         }
       }
     }
@@ -52,7 +54,7 @@ Returned fields:
 * `name`
 * `isActive`
 
-<GraphqlSample query={allSuppliersListQuery}/>
+<GraphqlSample api="generic" query={allSuppliersListQuery}/>
 
 ### Common Use Cases
 

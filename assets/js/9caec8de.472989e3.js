@@ -1,6 +1,6 @@
-"use strict";(self.webpackChunkdocumentation=self.webpackChunkdocumentation||[]).push([["38666"],{20832(e,n,s){s.r(n),s.d(n,{metadata:()=>r,default:()=>f,frontMatter:()=>g,contentTitle:()=>x,toc:()=>p,assets:()=>j});var r=JSON.parse('{"id":"apis/for-buyers-and-sellers/monitoring-api/logging-api/logging","title":"Logging","description":"API Endpoint","source":"@site/docs/apis/for-buyers-and-sellers/monitoring-api/logging-api/logging.mdx","sourceDirName":"apis/for-buyers-and-sellers/monitoring-api/logging-api","slug":"/apis/for-buyers-and-sellers/monitoring-api/logging-api/logging","permalink":"/docs/apis/for-buyers-and-sellers/monitoring-api/logging-api/logging","draft":false,"unlisted":false,"editUrl":"https://github.com/Travelgate/documentation/tree/main/docs/apis/for-buyers-and-sellers/monitoring-api/logging-api/logging.mdx","tags":[],"version":"current","sidebarPosition":1,"frontMatter":{"sidebar_position":1,"title":"Logging"},"sidebar":"docsSidebar","previous":{"title":"Stats","permalink":"/docs/apis/for-buyers-and-sellers/monitoring-api/stats-api/stats"},"next":{"title":"Insights","permalink":"/docs/apis/for-buyers-and-sellers/monitoring-api/insights-api/insights"}}'),o=s(74848),i=s(28453);let t=`query getLogs($input: LoggingLogsWhereInput!) {
+"use strict";(self.webpackChunkdocumentation=self.webpackChunkdocumentation||[]).push([["38666"],{20832(e,n,s){s.r(n),s.d(n,{metadata:()=>r,default:()=>f,frontMatter:()=>g,contentTitle:()=>x,toc:()=>p,assets:()=>j});var r=JSON.parse('{"id":"apis/for-buyers-and-sellers/monitoring-api/logging-api/logging","title":"Logging","description":"API Endpoint","source":"@site/docs/apis/for-buyers-and-sellers/monitoring-api/logging-api/logging.mdx","sourceDirName":"apis/for-buyers-and-sellers/monitoring-api/logging-api","slug":"/apis/for-buyers-and-sellers/monitoring-api/logging-api/logging","permalink":"/docs/apis/for-buyers-and-sellers/monitoring-api/logging-api/logging","draft":false,"unlisted":false,"editUrl":"https://github.com/Travelgate/documentation/tree/main/docs/apis/for-buyers-and-sellers/monitoring-api/logging-api/logging.mdx","tags":[],"version":"current","sidebarPosition":1,"frontMatter":{"sidebar_position":1,"title":"Logging"},"sidebar":"docsSidebar","previous":{"title":"Stats","permalink":"/docs/apis/for-buyers-and-sellers/monitoring-api/stats-api/stats"},"next":{"title":"Insights","permalink":"/docs/apis/for-buyers-and-sellers/monitoring-api/insights-api/insights"}}'),o=s(74848),i=s(28453);let t=`query getLogs($input: LoggingLogsWhereInput!, $limit: Int!) {
   logging {
-    getLogs(limit: 1000, where: $input) {
+    getLogs(limit: $limit, where: $input) {
       totalCount
       adviseMessage {
         code
@@ -39,6 +39,7 @@
     }
   }
 }`,l=`{
+  "limit": 1000,
   "input": {
     "api": "hotel",
     "timeRange": {

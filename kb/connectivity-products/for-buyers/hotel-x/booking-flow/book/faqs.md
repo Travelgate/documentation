@@ -28,7 +28,7 @@ Travelgate does not impose a character limit on guest names and surnames; howeve
 
 ### How can I add remarks to a Book request?
 
-Remarks, which are customer comments for the Seller, can be included in the Book request if the Supplier supports them. For more information, refer to our [HotelX Schema](/playground/) and check the Seller's [Metadata](/kb/connectivity-products/for-buyers/hotel-x/content/metadata).
+Remarks, which are customer comments for the Seller, can be included in the Book request if the Supplier supports them. For more information, refer to our [HotelX Schema](/playground?api=shopping) and check the Seller's [Metadata](/kb/connectivity-products/for-buyers/hotel-x/content/metadata).
 
 ### Can I change the guest details for an existing booking?
 
@@ -53,4 +53,3 @@ No, Travelgate is not PCI certified. However, we are committed to maintaining th
 ### Will the currency in Book be the same as the currency in Quote?
 
 Yes, the currency used during the transaction remains consistent throughout the entire booking flow, including cancellation policies.
-

@@ -1,5 +1,5 @@
 export const allClientsListQuery =
-    `{
+    `query {
 	admin {
 		allClients {
 			edges {

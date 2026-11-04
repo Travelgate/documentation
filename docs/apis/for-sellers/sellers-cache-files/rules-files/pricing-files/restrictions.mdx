@@ -1,0 +1,47 @@
+---
+sidebar_position: 2
+---
+
+# Restrictions File
+
+The Restrictions file is used to set Stop Sales, booking limits, and stay restrictions. It defines when a room or rate can or cannot be sold, controlling the operational conditions applied during a date range.
+
+## Purpose
+
+This file is used to define:
+
+- validity period
+- booking limits
+- minimum and maximum release windows
+- free sales status
+- minimum and maximum stay rules
+- arrival and departure closure conditions
+
+## Example
+
+[Download the example Restrictions file (CSV)](https://stplaformwe.blob.core.windows.net/docs/sellerfiles/rulesfile/restrictions.csv)
+
+## Field definitions
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `hotelCode` | String | Hotel associated with the restriction. |
+| `rateCode` | String | Rate plan affected by the restriction. |
+| `roomCode` | String | Room type affected by the restriction. |
+| `startDate` | Date | Start date of the restriction validity. |
+| `endDate` | Date | End date of the restriction validity. |
+| `bookingLimit` | Integer | Maximum number of bookings allowed in the date range. |
+| `minRelease` | Integer | Minimum number of days before arrival that the product can be booked. |
+| `maxRelease` | Integer | Maximum number of days before arrival that the product can be booked. |
+| `freeSales` | Boolean | Whether the room can be sold freely. |
+| `minStayNightsDuringStay` | Integer | Minimum stay requirement during the stay period. |
+| `maxStayNightsDuringStay` | Integer | Maximum stay requirement during the stay period. |
+| `minStayNightsOnArrival` | Integer | Minimum stay requirement on arrival day. |
+| `maxStayNightsOnArrival` | Integer | Maximum stay requirement on arrival day. |
+| `closeMaster` | Boolean | Closes the room/rate at master level. |
+| `closeOnArrival` | Boolean | Closes product sales for arrival dates. |
+| `closeOnDeparture` | Boolean | Closes product sales for departure dates. |
+
+## Notes
+
+Restrictions are critical because they guarantee that the product is sold under valid commercial and operational conditions. This file normally works together with the Rates and Rooms files to define the effective sales logic.

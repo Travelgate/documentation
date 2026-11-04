@@ -157,16 +157,16 @@ The values returned depend on the selected scope (FastX or Supplier, depending o
 
 To retrieve the **FastX Destination Master**, make a `destination list` call using your **FastX access**, which you can find in the *MyConnections* section under the Seller **"Travelgate"**.
 
-<GraphqlSample query={destinationsQuery} variables={destinationsFastXVariables} />
+<GraphqlSample api="content" query={destinationsQuery} variables={destinationsFastXVariables} />
 
 ### Supplier destination list
 
 To retrieve one Supplier's native destination master, include that Supplier's access in the query (for example, access `2` for the Travelgate Test supplier).
 
-<GraphqlSample query={destinationsQuery} variables={destinationsVariables} />
+<GraphqlSample api="content" query={destinationsQuery} variables={destinationsVariables} />
 
 ### Destination list for specific destination codes
 
 Use the Destinations Query to filter specific destination values. For example, to focus solely on the Spanish inventory of a Seller, include `destinationCodes` with `"ES"` in your criteria. This will ensure you receive destinations directly related to that selected node.
 
-<GraphqlSample query={destinationsQuery} variables={destinationsByDestinationCodeVariables} />
+<GraphqlSample api="content" query={destinationsQuery} variables={destinationsByDestinationCodeVariables} />

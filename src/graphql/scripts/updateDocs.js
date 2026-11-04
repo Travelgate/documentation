@@ -6,7 +6,6 @@ const DOCS_BASE_PATH = path.join(__dirname, "../../../docs/apis");
 
 // Import the mapping of .mdx files
 const FILE_NODE_MAP = require("../node-map/fileNodeMap");
-const { type } = require("os");
 
 // Fields hidden from the generated <details> breakdown blocks, keyed by their parent type. Kept in
 // sync with the API Reference exclusions in utils/schemaLoader.js: the metadata content methods

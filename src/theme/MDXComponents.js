@@ -1,4 +1,3 @@
-import React from 'react';
 // Import the original mapper
 import MDXComponents from '@theme-original/MDXComponents';
 
@@ -13,10 +12,7 @@ library.add(fab, fas); // Add all icons to the library so you can use them witho
 // Our custom components
 import GraphqlSample from "../components/GraphqlSample";
 import BrowserWindow from "../components/BrowserWindow";
-import TipContactCustomerCare from "../components/Admonitions/TipContactCustomerCare";
 import CautionSettingsHotelX from "../components/Admonitions/CautionSettingsHotelX";
-import YoutubeVideo from "../components/Youtube";
-import RestPlayground from "../components/RestPlayground";
 
 
 export default {
@@ -25,8 +21,5 @@ export default {
     icon: FontAwesomeIcon,
     GraphqlSample,
     BrowserWindow,
-    TipContactCustomerCare,
     CautionSettingsHotelX,
-    YoutubeVideo,
-    RestPlayground
 };

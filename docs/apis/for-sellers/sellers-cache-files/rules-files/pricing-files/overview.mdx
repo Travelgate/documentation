@@ -1,0 +1,51 @@
+---
+sidebar_position: 1
+---
+
+# Overview
+
+Pricing Files belong to the **Load phase**: once the Hotels, Rates, and Rooms are created in Inventory, pricing files load the price logic into those Rates for a given date range and commercial logic.
+
+This section includes the main pricing models supported by Travelgate's Rules File integration.
+
+## Standard Rate Loading vs LOS Pricing
+
+When loading prices and conditions into a `Rate`, it is important to differentiate between two integration types:
+
+1. **Standard Rate Loading**: a rate will have different sets of conditions, but a rate can only have one type of pricing structure per day.
+2. **LOS (Length of Stay) Pricing**: some suppliers work with LOS Pricing. This means that for a single day, you can have multiple different prices depending on the `minLengthOfStay`, `maxLengthOfStay`, or `durationDays`.
+
+:::note
+LOS parameters are optional. If your business doesn't work with them, leave them blank.
+:::
+
+For a full breakdown of the supported pricing types in the Inventory Push GraphQL API, check:
+
+- [Load Rate Price Per Occupancy](/docs/apis/for-sellers/inventory-push-graphql-api/product-load/price/rates/load-rate-price-per-occupancy)
+- [Load Rate Price Per Room](/docs/apis/for-sellers/inventory-push-graphql-api/product-load/price/rates/load-rate-price-per-room)
+
+## Included file types
+
+- [Restrictions](./restrictions.mdx)
+- [Prices per Room](./prices-per-room.mdx)
+- [Prices per Standard Occupancy](./prices-per-standard.mdx)
+- [Prices per Occupancy](./prices-per-occupancy.mdx)
+- [Prices by Age Range](./prices-by-age-range.mdx)
+
+:::info
+Only use the pricing model that matches your business model — each of the four pricing files is an alternative, not a mandatory set. The Restrictions file applies regardless of the pricing model you choose.
+:::
+
+## How these files work
+
+Each pricing file is attached to a hotel, rate, and room definition and adds a specific commercial calculation model. Depending on the Seller's business logic, Travelgate can use:
+
+- a fixed room price
+- a standard-occupancy price
+- exact occupancy pricing
+- age-based pricing
+
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items.filter((item, i) => i > 0)}/>

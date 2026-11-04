@@ -5,9 +5,24 @@ sidebar_position: 1
 
 # HotelX Endpoint
 
+Travelgate uses different GraphQL hosts depending on the type of operation you are making.
 
-One significant advantage of GraphQL is the simplicity of having a single endpoint for all operations. Regardless of whether you're in a testing or production environment, you can access the HotelX API methods effortlessly using this primary endpoint:
+| Operation type | Endpoint | Typical calls |
+| --- | --- | --- |
+| Shopping and booking flow | `https://api-shopping.travelgate.com` | `search`, `quote`, `book`, `cancel`, `booking`, amendments, `oneStepBook`, `oneStepQuote` |
+| Content and static master data | `https://api-content.travelgate.com` | `hotels`, `boards`, `destinations`, `chains`, `rooms` |
+| Shared / generic GraphQL | `https://api.travelgate.com` | `stats`, `logging`, `admin` and other shared operations |
 
-```
-https://api.travelgate.com
-```
+## Which host should I use?
+
+- Use `https://api-shopping.travelgate.com` for any HotelX shopping or reservation workflow.
+- Use `https://api-content.travelgate.com` for hotel and static content queries.
+- Use `https://api.travelgate.com` only for shared GraphQL operations outside the HotelX shopping/content flow.
+
+## Quick examples
+
+- Searching availability: `https://api-shopping.travelgate.com`
+- Getting hotel or board lists: `https://api-content.travelgate.com`
+- Reading stats or admin data: `https://api.travelgate.com`
+
+This separation keeps each API domain focused and avoids mixing shopping, content, and administrative calls on the same host.

@@ -1,0 +1,50 @@
+---
+sidebar_position: 5
+---
+
+# Prices per Occupancy File
+
+The Prices per Occupancy file assigns an exact amount depending on the specific combination of Adults-Children-Infants. This is a highly granular pricing model where each occupancy combination has its own price.
+
+## Purpose
+
+This file is useful when the Seller prices the stay depending on combinations such as:
+
+- `1-0-0`
+- `2-0-0`
+- `2-1-0`
+
+## Example
+
+[Download the example Prices per Occupancy file (CSV)](https://stplaformwe.blob.core.windows.net/docs/sellerfiles/rulesfile/prices_per_occupancy.csv)
+
+## Field definitions
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `hotelCode` | String | Hotel identifier. |
+| `rateCode` | String | Rate plan. |
+| `priceCurrency` | String | Currency used. |
+| `roomCode` | String | Room type. |
+| `startDate` | Date | Start date of the price validity period. |
+| `endDate` | Date | End date of the price validity period. |
+| `minLengthOfStay` | Integer | Minimum LOS condition. |
+| `maxLengthOfStay` | Integer | Maximum LOS condition. |
+| `durationDays` | Integer | Duration of the rule. |
+| `pricesByOccupancy` | String | Occupancy-price pairs in the format `Occupancy,Amount` separated by `|`. |
+
+## Understanding complex fields
+
+Because CSVs are flat, we use specific delimiters (`,` and `|`) to send lists inside a single cell.
+
+### `pricesByOccupancy`
+
+List of objects — separate different occupancy combinations with a pipe `|`.
+
+- **Format**: `Adults-Children-Infants,Amount | Adults-Children-Infants,Amount...`
+- **Example**: `1-0-0,100.00|2-0-0,150.00|2-1-0,180.00`
+- **Meaning**: one adult = 100.00, two adults = 150.00, two adults and one child = 180.00.
+
+## Notes
+
+This is one of the most precise pricing methods because it calculates the total price according to the exact occupancy combination.

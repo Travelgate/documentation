@@ -6,6 +6,7 @@ import {CheckIcon, CopyIcon, CopyStatus, useCopyToClipboard} from "../components
 import GraphqlSample from "../components/GraphqlSample";
 import Link from "@docusaurus/Link";
 import {useLocation} from "@docusaurus/router";
+import {useEffect, useState} from "react";
 import {parse, print} from "graphql";
 import {GRAPHQL_APIS} from "../graphql/playgrounds";
 import {hotelsListQuerySampleA} from "../graphql/sample-queries/hotels.list.query";
@@ -46,6 +47,22 @@ const Explorer = (props) => {
     const location = useLocation();
     const api = new URLSearchParams(location.search).get('api') ?? 'generic';
     const validApi = Object.hasOwn(GRAPHQL_APIS, api);
+    const [visitedApis, setVisitedApis] = useState(() => new Set(validApi ? [api] : []));
+
+    useEffect(() => {
+        if (validApi) {
+            setVisitedApis((previous) => {
+                if (previous.has(api)) {
+                    return previous;
+                }
+                return new Set([...previous, api]);
+            });
+        }
+    }, [api, validApi]);
+
+    const mountedApis = Object.keys(GRAPHQL_APIS).filter(
+        (value) => visitedApis.has(value) || (validApi && value === api),
+    );
 
     return (
         <Layout
@@ -69,9 +86,12 @@ const Explorer = (props) => {
                     </nav>
                     {validApi && <EndpointField endpoint={GRAPHQL_APIS[api].endpoint} />}
                 </div>
-                {validApi
-                    ? <GraphqlSample key={api} {...props} {...samples[api]} api={api} showLabel={false} collapsible={false} />
-                    : <p role="alert">Unknown GraphQL API: {api}. Choose one of the APIs above.</p>}
+                {mountedApis.map((editorApi) => (
+                    <div key={editorApi} hidden={editorApi !== api}>
+                        <GraphqlSample {...props} {...samples[editorApi]} api={editorApi} showLabel={false} collapsible={false} />
+                    </div>
+                ))}
+                {!validApi && <p role="alert">Unknown GraphQL API: {api}. Choose one of the APIs above.</p>}
             </div>
         </Layout>
     );

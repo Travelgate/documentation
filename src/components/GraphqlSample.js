@@ -7,13 +7,36 @@ import {GraphiQL} from 'graphiql';
 import useIsBrowser from '@docusaurus/useIsBrowser';
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 import withToken from "../components/WithToken";
+import {CheckIcon, CopyIcon, CopyStatus, useCopyToClipboard} from "../components/CopyToClipboard";
 import {hotelsListQuerySampleA} from "../graphql/sample-queries/hotels.list.query";
 import {replaceClient} from "../utils";
 import {getGraphqlApi, createPlaygroundStorage} from "../graphql/playgrounds";
 
+const EndpointBar = ({label, endpoint}) => {
+    const [copied, copy] = useCopyToClipboard(endpoint);
+
+    return (
+        <div className="graphql-sample-interactive__bar">
+            <span className="graphql-sample-interactive__api">{label}</span>
+            <code className="graphql-sample-interactive__url">{endpoint}</code>
+            <button
+                type="button"
+                className="graphql-sample-interactive__copy"
+                onClick={copy}
+                title={`Copy ${label} endpoint URL`}
+                aria-label={copied ? `${label} endpoint URL copied` : `Copy ${label} endpoint URL ${endpoint}`}
+            >
+                {copied ? <CheckIcon size={14} /> : <CopyIcon size={14} />}
+                {copied ? 'Copied' : 'Copy'}
+            </button>
+            <CopyStatus copied={copied} message={`${label} endpoint URL copied`} />
+        </div>
+    );
+};
+
 const GraphqlSample = ({token, query, variables, api = 'generic', showLabel = true}) => {
     const isBrowser = useIsBrowser();
-    const {endpoint} = getGraphqlApi(api);
+    const {label, endpoint} = getGraphqlApi(api);
     const fetcher = useMemo(() => ExecutionEnvironment.canUseDOM
         ? createGraphiQLFetcher({
             url: endpoint,
@@ -53,7 +76,7 @@ const GraphqlSample = ({token, query, variables, api = 'generic', showLabel = tr
                     {() => {
                         return (
                             <div className="graphql-sample-interactive" aria-label="Interactive GraphQL playground">
-                                {showLabel && <p><strong>Interactive playground:</strong></p>}
+                                {showLabel && <EndpointBar label={label} endpoint={endpoint} />}
                                 <GraphiQL
                                     key={api}
                                     fetcher={fetcher}

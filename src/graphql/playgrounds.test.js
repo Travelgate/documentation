@@ -35,6 +35,13 @@ test('navbar and reference links select an allowlisted internal API', () => {
     }
 });
 
+test('every API label carries the API suffix', () => {
+    assert.deepEqual(
+        Object.values(GRAPHQL_APIS).map(({label}) => label),
+        ['Shopping API', 'Content API', 'Inventory API', 'Generic API'],
+    );
+});
+
 test('unknown API names are rejected rather than used as request URLs', () => {
     for (const api of ['', 'unknown', 'toString', '__proto__', 'https://example.com/graphql']) {
         assert.throws(() => getGraphqlApi(api), /Unknown GraphQL API/);

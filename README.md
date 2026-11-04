@@ -124,8 +124,9 @@ their API explicitly, for example `<GraphqlSample api="content" query={hotelsQue
 Before assigning a dedicated API to a new example, validate the complete operation against that
 endpoint's introspection schema. Shared or mixed operations stay on `api="generic"`; an omitted
 `api` also defaults to generic. Editing a query does not change its endpoint automatically.
-Embedded examples do not display the endpoint URL; the standalone explorer shows it in its toolbar,
-with one tab per API (each tab's tooltip lists its typical operations) and a button to copy the URL.
+Embedded examples show a bar above the editor with the API name, its endpoint URL and a copy button.
+The standalone explorer shows the same information in its toolbar, with one tab per API (each tab's
+tooltip lists its typical operations).
 Tabs and history are stored separately for each API, and request headers remain editable.
 Use a local, git-ignored `.env` containing `TRAVELGATE_BEARER` for authenticated schema checks;
 never put this token in public samples or browser configuration.

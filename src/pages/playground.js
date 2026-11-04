@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import 'graphiql/graphiql.css';
 import withToken from "../components/WithToken";
+import {CheckIcon, CopyIcon, CopyStatus, useCopyToClipboard} from "../components/CopyToClipboard";
 import GraphqlSample from "../components/GraphqlSample";
 import Link from "@docusaurus/Link";
 import {useLocation} from "@docusaurus/router";
@@ -20,39 +21,8 @@ const samples = {
     generic: {query: print(parse(apiByCodeQuery))},
 };
 
-const CopyIcon = () => (
-    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2"
-         strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <rect x="9" y="9" width="13" height="13" rx="2" />
-        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-);
-
-const CheckIcon = () => (
-    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.5"
-         strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M20 6 9 17l-5-5" />
-    </svg>
-);
-
 const EndpointField = ({endpoint}) => {
-    const [copied, setCopied] = useState(false);
-
-    useEffect(() => setCopied(false), [endpoint]);
-    useEffect(() => {
-        if (!copied) return undefined;
-        const timer = setTimeout(() => setCopied(false), 2000);
-        return () => clearTimeout(timer);
-    }, [copied]);
-
-    const copy = async () => {
-        try {
-            await navigator.clipboard.writeText(endpoint);
-            setCopied(true);
-        } catch {
-            setCopied(false);
-        }
-    };
+    const [copied, copy] = useCopyToClipboard(endpoint);
 
     return (
         <div className="g-playground__endpoint">
@@ -67,7 +37,7 @@ const EndpointField = ({endpoint}) => {
             >
                 {copied ? <CheckIcon /> : <CopyIcon />}
             </button>
-            <span className="g-playground__sr-only" role="status">{copied ? 'Endpoint URL copied' : ''}</span>
+            <CopyStatus copied={copied} message="Endpoint URL copied" />
         </div>
     );
 };

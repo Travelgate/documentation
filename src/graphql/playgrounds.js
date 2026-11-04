@@ -1,21 +1,21 @@
 const GRAPHQL_APIS = {
     shopping: {
-        label: 'Shopping',
+        label: 'Shopping API',
         description: 'Search, quote, book, cancel, booking, amendments, oneStepBook and oneStepQuote',
         endpoint: 'https://api-shopping.travelgate.com/graphql',
     },
     content: {
-        label: 'Content',
+        label: 'Content API',
         description: 'Hotels, boards, destinations, chains, rooms and other static master data',
         endpoint: 'https://api-content.travelgate.com/graphql',
     },
     inventory: {
-        label: 'Inventory',
+        label: 'Inventory API',
         description: 'All buyer and seller inventory operations',
         endpoint: 'https://api-inventory.travelgate.com/graphql',
     },
     generic: {
-        label: 'Generic',
+        label: 'Generic API',
         description: 'Stats, logging, admin and other shared operations',
         endpoint: 'https://api.travelgate.com/',
     },

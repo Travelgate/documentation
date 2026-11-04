@@ -1,8 +1,8 @@
-import React, {useEffect} from 'react';
+import {useEffect} from 'react';
 import 'graphiql/graphiql.css';
 import {Auth0Provider} from '@auth0/auth0-react';
 import useIsBrowser from "@docusaurus/useIsBrowser";
-import {ApolloProvider, ApolloClient, InMemoryCache, useQuery, gql, createHttpLink} from "@apollo/client";
+import {ApolloProvider, ApolloClient, InMemoryCache, createHttpLink} from "@apollo/client";
 import {setContext} from "@apollo/client/link/context";
 
 const httpLink = createHttpLink({

@@ -71,7 +71,7 @@ const Explorer = (props) => {
                     {validApi && <EndpointField endpoint={GRAPHQL_APIS[api].endpoint} />}
                 </div>
                 {validApi
-                    ? <GraphqlSample key={api} {...props} {...samples[api]} api={api} showLabel={false} />
+                    ? <GraphqlSample key={api} {...props} {...samples[api]} api={api} showLabel={false} collapsible={false} />
                     : <p role="alert">Unknown GraphQL API: {api}. Choose one of the APIs above.</p>}
             </div>
         </Layout>

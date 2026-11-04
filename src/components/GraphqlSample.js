@@ -2,6 +2,7 @@ import 'graphiql/setup-workers/webpack';
 
 import React, {useEffect, useMemo, useState} from 'react';
 import BrowserOnly from '@docusaurus/BrowserOnly';
+import {Details} from '@docusaurus/theme-common/Details';
 import {createGraphiQLFetcher} from '@graphiql/toolkit';
 import {GraphiQL} from 'graphiql';
 import useIsBrowser from '@docusaurus/useIsBrowser';
@@ -17,7 +18,6 @@ const EndpointBar = ({label, endpoint}) => {
 
     return (
         <div className="graphql-sample-interactive__bar">
-            <span className="graphql-sample-interactive__api">{label}</span>
             <code className="graphql-sample-interactive__url">{endpoint}</code>
             <button
                 type="button"
@@ -34,7 +34,7 @@ const EndpointBar = ({label, endpoint}) => {
     );
 };
 
-const GraphqlSample = ({token, query, variables, api = 'generic', showLabel = true}) => {
+const GraphqlSampleEditor = ({token, query, variables, api = 'generic', showLabel = true}) => {
     const isBrowser = useIsBrowser();
     const {label, endpoint} = getGraphqlApi(api);
     const fetcher = useMemo(() => ExecutionEnvironment.canUseDOM
@@ -95,5 +95,35 @@ const GraphqlSample = ({token, query, variables, api = 'generic', showLabel = tr
         </>
     );
 }
+
+const GraphqlSample = ({collapsible = true, ...props}) => {
+    const [hasOpened, setHasOpened] = useState(false);
+    const {label} = getGraphqlApi(props.api ?? 'generic');
+
+    if (!collapsible) {
+        return <GraphqlSampleEditor {...props} />;
+    }
+
+    return (
+        <Details
+            className="graphql-example"
+            summary={
+                <summary className="graphql-example__summary">
+                    <span className="graphql-example__title">Try this example</span>
+                    <span className="graphql-sample-interactive__api">{label}</span>
+                </summary>
+            }
+            onToggle={(event) => {
+                if (event.currentTarget.open) {
+                    setHasOpened(true);
+                }
+            }}
+        >
+            <div className="graphql-example__content">
+                {hasOpened && <GraphqlSampleEditor {...props} />}
+            </div>
+        </Details>
+    );
+};
 
 export default withToken(GraphqlSample);

@@ -1,0 +1,93 @@
+---
+sidebar_position: 3
+---
+
+# Rates File
+
+The Rates file defines the rules under which rooms will be sold. It defines the commercial configuration of each rate plan: booking conditions, cancellation policies, and surcharges.
+
+## Purpose
+
+This file is used to define:
+
+- rate code and name
+- associated hotel
+- board plan
+- market scope
+- payment method
+- fine details of commercial rules
+- cancellation policies
+- surcharges
+
+## Example
+
+[Download the example Rates file (CSV)](https://stplaformwe.blob.core.windows.net/docs/sellerfiles/rulesfile/rates.csv)
+
+## Understanding complex fields
+
+Because CSVs are flat, we use specific delimiters (`,` and `|`) to send lists inside a single cell.
+
+### 1. `baseCancelPolicy`
+
+Single object — the pipe `|` delimiter is not needed.
+
+- **Format**: `refundable,daysBeforeArrival,penaltyType,value`
+- **Example**: `false,0,PERCENTAGE,100.0`
+- **Meaning**: non-refundable, 0 days, percentage penalty, 100%.
+
+### 2. `cancelPoliciesByDate`
+
+List of objects — separate different date ranges with a pipe `|`.
+
+- **Format**: `start,end,refundable,daysBeforeArrival,penaltyType,value | start,end...`
+- **Example**: `2026-06-01,2026-06-30,true,7,NIGHTS,1.0|2026-07-01,2026-08-31,true,14,PERCENTAGE,50.0`
+- **Meaning**: one policy for June (7 days notice, 1 night penalty), and another for July-August (14 days notice, 50% penalty).
+
+### 3. `surcharges`
+
+List of objects — separate different surcharges with a pipe `|`.
+
+- **Format**: `chargeType,taxType,value,applyType,perNight,perPax | chargeType...`
+- **Example**: `EXCLUDED,CITY,2.5,AMOUNT,true,true|EXCLUDED,RESORT_FEE,5.0,PERCENTAGE,false,false`
+- **Meaning**: a city tax of 2.5 applied per night and per person, plus a 5% resort fee applied once per stay. Neither is included in the price.
+
+| Element | Description |
+| --- | --- |
+| `chargeType` | Whether the surcharge is included in the price: `INCLUDED` or `EXCLUDED`. |
+| `taxType` | Type of tax: `CITY`, `LOCAL`, `RESORT_FEE`, or `SUPPLEMENT_TO_BE_PAID_ON_SPOT`. |
+| `value` | Value of the surcharge. |
+| `applyType` | How the value is applied: `AMOUNT` or `PERCENTAGE`. |
+| `perNight` | `true` if the surcharge applies per night. |
+| `perPax` | `true` if the surcharge applies per person. |
+
+## Field definitions
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `rateCode` | String | Unique code of the rate plan. |
+| `rateName` | String | Commercial name of the rate. |
+| `hotelCode` | String | Hotel to which the rate belongs. |
+| `active` | Boolean | Indicates whether the rate is active. |
+| `board` | String | Meal or board plan, such as `BB`, `RO`, `HB`, or `FB`. |
+| `childMaxAge` | Integer | Maximum age considered a child. |
+| `infantMaxAge` | Integer | Maximum age considered an infant. |
+| `infantsStayFree` | Boolean | Whether infants stay free of charge. |
+| `childrenStayFree` | Boolean | Whether children stay free of charge. |
+| `priceCurrency` | String | Currency for rate pricing. |
+| `commission` | Decimal | Commission or commercial margin applied. |
+| `priceBinding` | Boolean | Whether the rate is tied to fixed or bound pricing. |
+| `paymentType` | String | Payment model, for example `MERCHANT`. |
+| `cardType` | String | Accepted card types. |
+| `bookingWindowStartDate` | Date | Start date of the booking window. |
+| `bookingWindowEndDate` | Date | End date of the booking window. |
+| `includedMarkets` | String | Markets that are included in the rate. |
+| `excludeMarkets` | String | Markets excluded from the rate. |
+| `rateRule` | String | Commercial rule classification. |
+| `seniorRule` | String | Senior-specific rule or condition. |
+| `baseCancelPolicy` | String | Base cancellation policy in compact structured format. |
+| `cancelPoliciesByDate` | String | Cancellation policies applied by date range. |
+| `surcharges` | String | Additional taxes or fees applied to the rate. |
+
+## Notes
+
+This file is the commercial layer of the integration. It complements the hotel and room structure and is applied together with the restrictions and pricing files to define the final selling logic.

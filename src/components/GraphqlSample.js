@@ -1,6 +1,6 @@
 import 'graphiql/setup-workers/webpack';
 
-import React, {useEffect, useMemo, useState} from 'react';
+import {useEffect, useMemo, useState} from 'react';
 import BrowserOnly from '@docusaurus/BrowserOnly';
 import {Details} from '@docusaurus/theme-common/Details';
 import {createGraphiQLFetcher} from '@graphiql/toolkit';

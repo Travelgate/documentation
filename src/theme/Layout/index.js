@@ -1,4 +1,3 @@
-import React, {useEffect} from 'react';
 import Layout from '@theme-original/Layout';
 import withToken from "../../components/WithToken";
 

@@ -8,6 +8,10 @@ Managing your content efficiently without relying on Travelgate helps you get to
 
 In the **Connections Content** section, you can easily check and force updates for your connections' static content, like hotel lists. This allows for timely updates and better market responsiveness, making your operations smoother and more effective.
 
+:::info Shared portfolios for Sellers
+Sellers can manage shared hotel catalogs from the **Shared portfolios** tab in Connections Content. See the [Shared portfolios guide](/kb/platform/app-features/connections/connections-content/shared-portfolios) for availability, setup, permissions, and how shared access is reflected in My Connections.
+:::
+
 ## How Can I Check My Connections Content?
 
 1. **Log into** [our Platform](https://www.travelgate.com/).
@@ -300,25 +304,11 @@ If you've followed all the steps and still do not have the most up-to-date conte
 
 
 <details>
-    <summary>What is a shared access?</summary>
+    <summary>What is a shared portfolio?</summary>
     <div>
         <div>
-            A **Shared Access** is an optimization feature designed for Sellers who provide the same hotel portfolio to multiple Buyers. It allows for more efficient delivery of static content and reduces the technical load on infrastructure.
-
-            In this setup, Travelgate uses a dedicated set of credentials (the **Parent Access**) exclusively to request static data such as hotel lists, property details, and destinations. This data is then automatically distributed to all associated Buyers.
-
-            **Key details to consider:**
-            <ul>
-                <li>**Optimization:** Instead of each Buyer pulling updates individually, Travelgate makes a single request, reducing server load and ensuring all Buyers receive the same updated content.</li>
-                <li>**Usage:** These credentials are strictly for **static content synchronization** and are never used for availability or booking requests.</li>
-                <li>**Limitations:** Because the hotel list is shared, features like *"Customize hotel list"* are not available, as any change would affect all Buyers in the group.</li>
-            </ul>
-
-            **How to manage:**
-
-            If you want to activate this feature to optimize your content delivery, or if you need an access to stop being shared, please contact our [Customer Support team](https://app.travelgate.com/support). To enable it, you will need to provide a dedicated set of static content credentials and the list of Buyers to be included.
+            A shared portfolio is managed by the Seller in Connections Content. A master access synchronizes the static hotel catalog, which linked Buyer accesses inherit. Buyer credentials and transactional settings remain independent. See the [Shared portfolios guide](/kb/platform/app-features/connections/connections-content/shared-portfolios) for details.
         </div>
     </div>
 </details>
-
 

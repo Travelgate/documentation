@@ -2,6 +2,8 @@
 sidebar_position: 11
 ---
 
+import {mizeQuickStartQuery, mizeQuickStartVariables} from "../../../../../src/graphql/hotel-x/mize.quickstart.query";
+
 # Requote
 
 The **Requote** plugin allows you to deactivate any Requote app available in the Travelgate App Store.
@@ -170,7 +172,7 @@ Once you have the results:
 2. Decide which option is best for your business.
 3. For the **book** step, use the `optionID` of the option you finally want to confirm.
 
-
+## 4. Examples
 ### Interactive reQuote Demo
 
 Use this embedded demo to compare the original quote response with the reQuote option for that same request.
@@ -179,7 +181,18 @@ This interactive demo is a visual representation of how data retrieved in real t
 <iframe
    title="reQuote Demo"
    src="/demo_reQuote/widget.html"
-   width="100%"
-   height="800"
+    width="100%"
+    height="780"
    loading="lazy"
 ></iframe>
+
+### Interactive reQuote Playground
+
+<div className="requote-playground-tall">
+    <GraphqlSample api="shopping"
+            collapsible={false}
+            showLabel={false}
+            query={mizeQuickStartQuery}
+            variables={mizeQuickStartVariables}
+    />
+</div>

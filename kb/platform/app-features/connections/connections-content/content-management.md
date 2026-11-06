@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 2
+sidebar_position:   1
 ---
 
 # Connections Content
@@ -9,7 +9,7 @@ Managing your content efficiently without relying on Travelgate helps you get to
 In the **Connections Content** section, you can easily check and force updates for your connections' static content, like hotel lists. This allows for timely updates and better market responsiveness, making your operations smoother and more effective.
 
 :::info Shared portfolios for Sellers
-Sellers can manage shared hotel catalogs from the **Shared portfolios** tab in Connections Content. See the [Shared portfolios guide](/kb/platform/app-features/connections/connections-content/shared-portfolios) for availability, setup, permissions, and how shared access is reflected in My Connections.
+Sellers can share one hotel catalog across multiple Buyer accesses from the **Shared portfolios** tab in Connections Content. See the [Shared portfolios guide](/kb/platform/app-features/connections/connections-content/shared-portfolios) for setup, permissions, and how shared portfolios appear in My Connections.
 :::
 
 ## How Can I Check My Connections Content?

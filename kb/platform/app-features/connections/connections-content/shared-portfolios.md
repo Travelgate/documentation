@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 # Shared portfolios
@@ -7,12 +7,12 @@ sidebar_position: 3
 Shared portfolios let a Seller use one master access to synchronize a static hotel catalog and share it with multiple Buyer accesses. This avoids downloading the same hotel list separately for every Buyer.
 
 :::info Seller view only
-The **Shared portfolios** tab is available in **Connections > Connections Content** when you are viewing the platform as a Seller. It is not available in Buyer view.
+The **Shared portfolios** tab is available in **Connections > Connections Content** when you are viewing the platform as a Seller. It is **not available in Buyer view**, so Buyers cannot view or manage shared portfolios.  
+
+![Connections Content in Seller view with the Shared portfolios tab highlighted](https://storage.travelgate.com/kbase/tg-sharedportfolios-seller-tab.png)
 :::
 
-![Connections Content in Seller view with the Shared portfolios tab](https://storage.travelgate.com/kbase/shared-portfolios-seller-tab.png)
-
-## What is shared
+## How a shared portfolio works
 
 A shared portfolio contains one **master access** and one or more **linked accesses**:
 
@@ -26,7 +26,7 @@ Each portfolio belongs to one Supplier. Only existing Buyer accesses for that sa
 
 Open **Connections > Connections Content** and select **Shared portfolios**. The list is scoped to the currently selected organization; changing organizations loads that organization's portfolios.
 
-![Shared portfolios list](https://storage.travelgate.com/kbase/shared-portfolios-list.png)
+![Shared portfolios tab with the Create shared portfolio button and the portfolio list](https://storage.travelgate.com/kbase/tg-sharedportfolios-list.png)
 
 The table shows:
 
@@ -63,9 +63,9 @@ Select **Create shared portfolio** and complete the three steps:
 2. **Portfolio access configuration**: enter the credentials and parameters required by the Supplier. These credentials are used only to synchronize static content, not for bookings.
 3. **Link Buyer accesses**: select one or more Buyer connections and the eligible accesses to include. Selecting a connection does not automatically select its accesses.
 
-![Create a shared portfolio and select Buyer accesses](https://storage.travelgate.com/kbase/shared-portfolios-create-accesses.png)
+![Create a shared portfolio and select Buyer accesses](https://storage.travelgate.com/kbase/tg-sharedportfolios-create-accesses.png)
 
-Nothing is saved until you select **Create shared portfolio**. The platform creates the master and queues its first hotel-list download. The selected Buyer accesses remain pending until that download succeeds.
+Nothing is saved until you select **Create shared portfolio**. The platform creates the master and queues its first hotel-list download. Until that download succeeds, the selected Buyer accesses stay pending, and the portfolio's actions and unlink controls are disabled.
 
 When creation succeeds, the message confirms that the download was queued; it does not mean that the download has finished or that the accesses are already linked. Reload the page to check the result:
 
@@ -73,8 +73,6 @@ When creation succeeds, the message confirms that the download was queued; it do
 - If it fails, the accesses are not linked and the portfolio shows **Error**. Review the master credentials and its catalog before linking the Buyer accesses.
 
 If the master was created but the download request failed, retry from the same open wizard. Do not start a new wizard, which would create another master.
-
-While the first download is pending, the portfolio actions and unlink controls are disabled. The selected Buyer accesses appear as pending.
 
 ## Manage a portfolio
 
@@ -96,7 +94,7 @@ Changing the master credentials does not immediately start another download; the
 
 Select the unlink control for an access in the expanded portfolio details and confirm **Yes, unlink this access**. The access stops inheriting the master's catalog and resumes independent content synchronization.
 
-![Confirm unlinking a Buyer access](https://storage.travelgate.com/kbase/shared-portfolios-unlink-confirmation.png)
+![Unlink access from shared portfolio confirmation dialog](https://storage.travelgate.com/kbase/tg-sharedportfolios-unlink-confirmation.png)
 
 Unlinking does not delete the Buyer access or its connection, and it does not change its transactional configuration. An access cannot be unlinked while the portfolio's first download is pending. To move an access to another portfolio, unlink it first, then link it to a portfolio for the same Supplier.
 
@@ -120,7 +118,7 @@ The management links open the **Shared portfolios** tab.
 
 ### My Connections
 
-In Seller view, My Connections marks masters and linked accesses with a link icon. A management link on the master opens the corresponding portfolio in **Shared portfolios**. Linked accesses include an information message that identifies the master whose static content they inherit.
+In Seller view, masters and linked accesses are marked with a link icon. The master links to its portfolio in **Shared portfolios**, and each linked access shows a message identifying its master.
 
 See [Connections Details](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details) for more about the My Connections page.
 

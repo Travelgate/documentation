@@ -69,7 +69,7 @@ Still using our Legacy Pull Buyers API? **Upgrade to [HotelX API](/docs/apis/for
 
 ### Shared portfolios (Seller view)
 
-If you are a Seller, accesses that belong to a shared portfolio are marked with a link icon. The master access links to its portfolio, and each linked access shows a message identifying its master. Shared portfolios are managed in [Connections Content](/kb/platform/app-features/connections/connections-content/shared-portfolios); My Connections only displays the relationship.
+If you are a Seller, accesses that belong to a shared portfolio are marked with a link icon. The master access links to its portfolio, and each linked access shows a message identifying its master. Shared portfolios are managed in [Connections Content](/kb/platform/app-features/connections/connections-content/shared-portfolios); My Connections only displays the relationship. The Buyer access and its transactional configuration remain separate from the shared hotel catalog.
 
 ### Download CSV
 

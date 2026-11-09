@@ -1,0 +1,45 @@
+---
+sidebar_position: 1
+title: Overview
+---
+
+# Overview
+
+## API Endpoint
+
+All Activation API operations use this GraphQL endpoint:
+
+```
+https://api.travelgate.com/
+```
+
+Use the public interactive playground for testing and schema validation: [docs.travelgate.com/playground](https://docs.travelgate.com/playground).
+
+## Overview
+
+The Activation API supports both Buyers and Sellers. Buyers use it to request self-service connections for their own organization. Sellers use it to request connections on behalf of a target buyer.
+
+### Core Operations in the Flow
+
+- Resolve the target `organizationBuyerCode`.
+- If the buyer has more than one HotelX group, resolve the correct `group` before calling `connect`.
+- Call `hotelX.runtimeConfiguration` to discover which runtime parameters the supplier requires.
+- Call `activation.connect` to submit the activation request.
+- Call `activation.activations` to verify the created connection and inspect its status.
+
+:::info
+The operation and argument names on this page were verified against the live GraphQL schema under the `activation` namespace. If the schema changes, this page must be re-verified against the schema and the GraphQL API Reference.
+:::
+
+## Authentication
+
+All Activation API calls require JWT (JSON Web Token) authentication. Use the [Admin API Authentication Guide](/docs/apis/for-buyers-and-sellers/admin-api/authentication) to obtain your bearer token.
+
+## Next Steps
+
+- Start with [Activation Flow Guide](activation-flow-guide.mdx)
+- Sellers: resolve the target buyer first with [Get Buyer Organizations (Seller)](get-buyer-organizations.mdx)
+- Continue with [Get Runtime Configuration](runtime-configuration.mdx)
+- Continue with [Connect](connect.mdx)
+- Continue with [Get Activations](activations.mdx)
+- Review [Error Handling](errors.mdx)

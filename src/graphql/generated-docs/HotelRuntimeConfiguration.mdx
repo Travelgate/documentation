@@ -1,0 +1,208 @@
+
+<details>
+  <summary>
+  **HotelRuntimeConfiguration** (*OBJECT*)  
+  
+  </summary>
+  
+  
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+      <strong>code</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
+    </summary>
+    Internal TGX identificator
+  </details>
+
+  <details>
+    <summary>
+      <strong>hotelRuntimeConfigurationData</strong> <em>(HotelRuntimeConfigurationData)</em>
+    </summary>
+    HotelRuntimeConfigurationData information for one supplier
+
+    <details>
+      <summary>
+        <strong>hotelRuntimeParameters</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(HotelRuntimeParameter)</em>
+      </summary>
+      List of parameters object
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>defaultValue</strong> <em>(String)</em>
+        </summary>
+        Indicates the value used if no value is specified in connection configuration.
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>description</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+        </summary>
+        Specifies why and for what the parameter/field is necessary. If this field has a correlation in suppliers api, the description is gotten from the supplier documentation. Else this description shows a description set bu TGX.
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>exampleValue</strong> <em>(String)</em>
+        </summary>
+        Show an example value of the parameter.
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>key</strong> <em>(String)</em>
+        </summary>
+        Field used to identify the parameter. It is unique in every connection.
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>mandatory</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+        </summary>
+        Indicates if the parameter/field is optional or mandatory. If is optional and no value is specified, our process uses the defaultValue.
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>pattern</strong> <em>(String)</em>
+        </summary>
+        Regular expression to validate the parameter/field value.
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>patternDescription</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+        </summary>
+        Description to translate a human lenguage the regular expression.
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>possibleValues</strong> <em>(String)</em>
+        </summary>
+        List of valid values when the parameter only accepts a little set of values.
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>providerTagName</strong> <em>(String)</em>
+        </summary>
+        Supplier s tag name that correlates with the parameter.
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>show</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(Boolean)</em>
+        </summary>
+        Indicates if the parameter is public or for internal use of TGX.
+      </details>
+
+      <details open>
+        <summary>
+          <strong>tagRuntime</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(TagRuntimeType)</em>
+        </summary>
+        Indicates the parameter s correlation with connection configuration.
+        <strong>Possible values:</strong>
+        <ul>
+          <li><code>USER</code></li>
+          <li><code>PASSWORD</code></li>
+          <li><code>URLAVAIL</code></li>
+          <li><code>URLVALUATION</code></li>
+          <li><code>URLRESERVATION</code></li>
+          <li><code>URLGENERIC</code></li>
+          <li><code>PARAMETER</code></li>
+        </ul>
+      </details>
+
+      <details open>
+        <summary>
+          <strong>type</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(MetadataType)</em>
+        </summary>
+        Indicates the parameter s value type.
+        <strong>Possible values:</strong>
+        <ul>
+          <li><code>STRING</code></li>
+          <li><code>NUMERIC</code></li>
+          <li><code>BOOLEAN</code></li>
+          <li><code>XML</code></li>
+          <li><code>URI</code></li>
+        </ul>
+      </details>
+    </details>
+  </details>
+
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+      <strong>createdAt</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(DateTime)</em>
+    </summary>
+    Create date
+  </details>
+
+  <details style={{ pointerEvents: "none" }}>
+    <summary>
+      <strong>updatedAt</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(DateTime)</em>
+    </summary>
+    Update date
+  </details>
+
+  <details>
+    <summary>
+      <strong>adviseMessage</strong> <em>(AdviseMessage)</em>
+    </summary>
+    List of messages
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>code</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
+      </summary>
+      AM code: The following codes can be returned:
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>description</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+      </summary>
+      Error description
+    </details>
+
+    <details open>
+      <summary>
+        <strong>level</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(AdviseMessageLevel)</em>
+      </summary>
+      Indicates the level of importance of the message.
+      Possible values: ERROR, WARN, INFO.
+      <strong>Possible values:</strong>
+      <ul>
+        <li><code>WARN</code>: Warning message.</li>
+        <li><code>ERROR</code>: Error message.</li>
+        <li><code>INFO</code>: Info message.</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary>
+        <strong>external</strong> <em>(ExternalMessage)</em>
+      </summary>
+      Specify the external message.
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>code</strong> <em>(String)</em>
+        </summary>
+        External code.
+      </details>
+
+      <details style={{ pointerEvents: "none" }}>
+        <summary>
+          <strong>message</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(String)</em>
+        </summary>
+        External message.
+      </details>
+    </details>
+
+    <details style={{ pointerEvents: "none" }}>
+      <summary>
+        <strong>correlationID</strong>&nbsp;<span class="required"> *</span>&nbsp; <em>(ID)</em>
+      </summary>
+      Identifier to investigate the cause of the error.
+    </details>
+  </details>
+</details>

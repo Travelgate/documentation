@@ -4,7 +4,9 @@ sidebar_position: 1
 
 # What is FastX?
 
-FastX is **the new baseline for hotel connectivity** with our [HotelX API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart). It is not a separate API: you keep using HotelX, but with a standardized `FASTX` context and stronger aggregation capabilities.
+FastX is **the new baseline for hotel connectivity** with our [HotelX API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart). It is not a separate API and not a mapping tool: you keep using HotelX, but with a standardized `FASTX` context and stronger aggregation capabilities. FastX is the standardization and orchestration layer on top of HotelX — **FastX codes** are simply the unique identifiers (hotels, boards, rooms) that FastX uses as the common language of the Marketplace.
+
+FastX covers the complete accommodation-distribution flow in one place: the **shopping and booking flow** (standardized codes, orchestration and aggregation across Sellers) and, optionally, the **hotel content** Buyers need to display and sell those hotels, through [FastX Content by AO](/kb/connectivity-products/for-buyers/hotel-x/fastx/fastx-content). In short: in Travelgate you have everything you need for accommodation distribution.
 
 :::info 🚀 FastX: The New Standard for Buyers
 From **1 January 2026**, FastX is the mandatory connection mode for all new Buyers. Existing Buyers using HotelX API can continue as-is, but Buyers facing mapping or aggregation issues are strongly encouraged to [upgrade to FastX](/docs/apis/for-buyers/hotel-x-pull-buyers-api/upgrade-to-fastx) for improved stability and content quality.
@@ -42,6 +44,15 @@ With FastX mode, your system works with only one shared language (FastX codes) w
 
 ![HotelX FastX Mode](https://stplaformwe.blob.core.windows.net/kbase/hotelx_fastx_mode.gif)
 
+## The Complete FastX Solution: Shopping Flow + Content
+
+FastX brings together the two things Buyers need to distribute accommodation at scale:
+
+1. **Shopping and booking flow** (included with FastX): standardized FastX codes for hotels, boards, and rooms; one Buyer Search orchestrated across your connected Sellers; and aggregation and business rules applied to standardized results.
+2. **Unified, complete content** ([FastX Content by AO](/kb/connectivity-products/for-buyers/hotel-x/fastx/fastx-content), a separate paid service): built around the same FastX identifiers, it enriches them with standardized, multilingual hotel and room content — descriptions, images, amenities, and categories — combined and deduplicated from multiple authorized sources with AI.
+
+Because both layers share the same FastX identifiers, you don't need separate integrations for mapping, aggregation, and content: **in Travelgate you have everything you need for accommodation distribution**, through one API and one code model.
+
 ## Why FastX Matters
 
 FastX is not just a technical upgrade—it's a marketplace-wide shift that benefits both Buyers and Sellers.
@@ -55,10 +66,6 @@ FastX is not just a technical upgrade—it's a marketplace-wide shift that benef
 - **GIATA compatibility:** FastX codes align with GIATA's standardized identifiers (available as `travelgate`; see [GIATA Multicodes](/kb/connectivity-products/for-buyers/giata/giata-multicodes)).
 - **Scalable growth:** expand your Supplier portfolio without proportionally multiplying technical complexity.
 - **Verified Seller badge:** Suppliers who have validated 80% or more of their hotel and board mappings receive a **FastX Verified Seller badge**, visible in the [Travelgate Network](https://app.travelgate.com/network/partners). It is a validation-coverage indicator — not a quality certification for every individual mapping.
-
-:::tip Need a complete, unified hotel and room static content layer too?
-FastX is not only the standard connectivity layer for unique hotel, board, and room codes in the booking flow. If the Buyer wants it, FastX also adds a single, complete, and standardized hotel and room content service. See [**FastX Content**](/kb/connectivity-products/for-buyers/hotel-x/fastx/fastx-content).
-:::
 
 **For Sellers:**
 - **Reduced mapping effort:** validate hotel and board mappings once, then serve all FastX Buyers with standardized codes.
@@ -224,6 +231,7 @@ In summary, FastX transforms hotel connectivity by replacing fragmented, per-Sup
 - Clean aggregation through Preference plugins (cost-optimized or custom business rules)
 - Parallel queries across multiple Suppliers in a single Search request
 - Full transparency with both FastX and Supplier-native values in responses
+- Optionally, complete and standardized hotel and room content through [FastX Content by AO](/kb/connectivity-products/for-buyers/hotel-x/fastx/fastx-content)
 
-**The impact:** Reduce integration friction, scale Supplier coverage faster, and apply consistent business logic across your entire marketplace presence.
+**The impact:** Reduce integration friction, scale Supplier coverage faster, and apply consistent business logic across your entire marketplace presence — with booking flow and content unified under one solution.
 

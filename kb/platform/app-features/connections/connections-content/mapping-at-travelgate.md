@@ -13,7 +13,7 @@ In both static content and booking flow responses, Travelgate always returns **t
 
 This means Buyers can choose to:
 
-* Work exclusively with **FastX codes**, gaining instant access to all connected Sellers without mapping each one individually.
+* Work exclusively with **FastX codes**, connecting to all connected Sellers without mapping each one individually.
 * Or continue using **Supplier codes**, if preferred, maintaining their own mapping logic.
 
 Buyers that need to use their own internal identifiers can maintain a mapping to FastX internally, use a third-party mapping service such as **GIATA**, or use the HotelX Mapping plugin where applicable.

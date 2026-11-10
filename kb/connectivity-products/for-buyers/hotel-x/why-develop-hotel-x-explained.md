@@ -24,6 +24,12 @@ Whether you prefer aggregation at the hotel level, at the hotel and board level,
 
 Enhance your HotelX experience by incorporating [Plugins](/docs/apis/for-buyers/hotel-x-pull-buyers-api/plugins/overview). These plugins allow seamless integration of custom business logic, such as currency conversion, hotel blacklisting, and selecting the most cost-effective meal plans. Simple. Flexible. Efficient.
 
+:::info FastX Content
+Still don't know about FastX Content? Get high-quality static content for your hotels. Check it in the **[FastX Content documentation](/kb/connectivity-products/for-buyers/hotel-x/fastx/fastx-content)**. 
+
+A new layer built to enrich FastX codes with advanced static hotel content, featuring AI-generated multi-language descriptions and images.
+:::
+
 :::info
 HotelX is the industry’s **first non-opinionated API**, powered by FastX unique codes and rapidly becoming the new standard in travel connectivity.
 :::

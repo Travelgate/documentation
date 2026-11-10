@@ -11,7 +11,7 @@ import TabItem from "@theme/TabItem";
 FastX Content (powered by [AO](https://blog.travelgate.com/travelgate-part-of-travelsoft-group-acquires-ao-uk-ltd)) is **the new content standard**, designed to integrate perfectly with our HotelX API. This premium application, available in the [Travelgate Store](/kb/platform/app-features/app-store/discover-apps), represents the natural evolution of our connectivity. 
 
 :::info Part of the complete FastX solution
-This article dives deep into the content layer. For the big picture of the full FastX solution — booking-flow standardization, orchestration, and aggregation — see [What is FastX?](/kb/connectivity-products/for-buyers/hotel-x/fastx/fastx-solution.md).
+This article dives deep into the content layer. For the big picture of the full FastX solution — booking-flow standardization, orchestration, and aggregation — see [What is FastX?](/kb/connectivity-products/for-buyers/hotel-x/fastx/fastx-solution).
 :::
 
 To understand the product, think about connectivity in two phases:

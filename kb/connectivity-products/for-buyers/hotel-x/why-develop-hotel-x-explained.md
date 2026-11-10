@@ -27,7 +27,7 @@ Enhance your HotelX experience by incorporating [Plugins](/docs/apis/for-buyers/
 :::info FastX Content
 Still don't know about FastX Content? Get high-quality static content for your hotels. Check it in the **[FastX Content documentation](/kb/connectivity-products/for-buyers/hotel-x/fastx/fastx-content)**. 
 
-A new layer built to enrich FastX codes with advanced static hotel content, featuring AI-generated multi-language descriptions and images.
+A new layer built to enrich FastX codes with advanced static hotel content, featuring AI-generated multilingual descriptions and standardized images.
 :::
 
 :::info

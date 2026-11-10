@@ -44,4 +44,4 @@ Yes. FastX codes for suppliers selling through Inventory are automatically mappe
 Yes. Since the HotelX API supports FastX codes, you can use them during the Search, Quote, and Book mutations even if the underlying provider is an Inventory (Push) connection. By using the FastX context in your HotelX calls, you can maintain a single standard across both your Pull and Push suppliers.
 
 ### Can I use FastX codes in ChannelX?
-Not yet, but we are currently working on a deeper integration to ensure FastX codes are also available for ChannelX. This will allow for a 100% unified experience from the moment the product is pushed until the booking is confirmed.
+Not yet, but we are currently working on a deeper integration to ensure FastX codes are also available for ChannelX. This will allow for a fully unified experience from the moment the product is pushed until the booking is confirmed.

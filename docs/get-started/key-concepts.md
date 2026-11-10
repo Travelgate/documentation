@@ -28,9 +28,11 @@ You can have multiple client codes, for instance, to separate traffic for B2B an
 
 ### Context
 
-`Context` is a term used to describe the content codes used by both Buyers and Sellers. Every Supplier has their own unique `context`, which consists of specific codes for items like hotels, boards and rooms. Travelgate provides its own standardized context, called **FastX**, which contains unique Travelgate codes for hotels, boards, and rooms. Buyers integrated through Travelgate use these codes throughout the booking flow to access and interact with the Marketplace. These unique codes simplify mapping for Buyers, they only need to understand FastX codes to connect to any Supplier in the Marketplace, without having to map each Supplier's codes individually.
+`Context` is a term used to describe the content codes used by both Buyers and Sellers. Every Supplier has their own unique `context`, which consists of specific codes for items like hotels, boards and rooms. Travelgate provides its own standardized context, called `FASTX`, which contains **FastX codes** — unique Travelgate identifiers for hotels, boards, and rooms.
 
-While **FastX** codes are the codes used in the Marketplace, Travelgate remains fully transparent and Supplier codes are still available and returned in the API responses within the Supplier’s context.
+**FastX** is Travelgate's standardization and orchestration connectivity mode on the HotelX API — not a separate API and not a mapping tool. When you work in FastX mode, you keep using HotelX, but you send a single Buyer Search using FastX codes and Travelgate orchestrates the corresponding Supplier-specific requests behind it, standardizing the response and enabling aggregation and business rules. Buyers only need to understand FastX codes to connect to any Supplier in the Marketplace, without having to map each Supplier's codes individually.
+
+While **FastX codes** are the codes used in the Marketplace, Travelgate remains fully transparent and Supplier codes are still available and returned in the API responses within the Supplier’s context.
 
 ![Context](https://storage.travelgate.com/docs/Context.png)
 

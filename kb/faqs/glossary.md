@@ -244,7 +244,7 @@ A tool that allows Inventory Buyers to connect with major Channel Managers. It p
 Travelgate’s standardization and orchestration connectivity mode on the HotelX API. It is not a separate API or a mapping tool: Buyers keep using HotelX, while FastX standardizes hotels, boards, and rooms across Sellers, orchestrates a single Buyer Search across them, and enables aggregation and business rules. Supplier-native codes and data remain available in responses for full transparency.
 
 - **FastX Codes**  
-Travelgate’s unique standardized identifiers for hotels, boards, and rooms — the common language used by FastX across the Marketplace. They are also available in GIATA under the supplier name `"travelgate"`.
+Travelgate’s unique standardized identifiers for hotels, boards, and rooms — the common language used by FastX across the Marketplace. FastX hotel codes are also available in GIATA under the supplier name `"travelgate"`.
 
 - **Feed**  
 A continuous stream of data provided to or from a system. In Travelgate’s context, this can also make reference to the traffic flow from a given set of Buyer's credentials.

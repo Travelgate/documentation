@@ -1,13 +1,25 @@
 ---
 sidebar_position: 8
-description: Recommended cadence and responsibility split for rotating the credentials stored in your Travelgate accesses, by connection model and organization type.
+description: Best practices for handling and rotating the credentials stored in your Travelgate accesses, including recommended cadence and responsibilities by connection model and organization type.
 ---
 
-# Credential Rotation Best Practices
+# Credential Security and Rotation Best Practices
 
-Rotating the credentials stored in your [accesses](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials#access) reduces the risk of unauthorized use. This article explains how often to rotate them and who is responsible, depending on your connection model.
+Credentials give direct access to your connections, so protecting them is essential for Buyers and Sellers alike. This article explains how to handle credentials securely, how often to rotate the ones stored in your [accesses](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials#access), and who is responsible for each rotation.
 
-## Recommendation
+## Handle Credentials Securely
+
+Never share credentials or passwords through any of the following channels:
+
+- **Email.** Use the HotelX Access Code instead: it identifies the access without exposing the underlying credentials.
+- **Chat.** Instant messaging and chat tools are not a secure channel for secrets.
+- **Logs, traces or Legacy requests.** Do not include credentials or passwords in logs, traces or Legacy Pull Buyers API requests.
+
+:::tip
+If a credential has been shared through any of these channels, treat it as compromised and [rotate it immediately](#rotation-cadence).
+:::
+
+## Rotation Cadence
 
 - Rotate credentials **at least once a year**.
 - Rotate **immediately** if you suspect a compromise, regardless of the annual cycle.

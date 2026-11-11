@@ -85,7 +85,7 @@ Never share credentials or passwords through any of the following channels:
 
 Store credentials in a secure secret manager or an approved internal vault, not in source code, spreadsheets, shared documents, or ticket comments. 
 
-Limit credential visibility to the users who need it (only **ADMIN** users can view stored passwords; see [Add Users](/kb/platform/app-features/account-settings/users-management/add-users)), and review access when people change role or leave. Also check places where secrets tend to leak: repositories, screenshots of My Connections or the Logging App, and spreadsheets or tickets.
+Limit credential visibility to the users who need it and review access when people change role or leave. Also check places where secrets tend to leak: repositories, screenshots of My Connections or the Logging App, and spreadsheets or tickets.
 
 :::tip
 If a credential has been shared through any of these channels, treat it as compromised and [rotate it immediately](#rotation-cadence).

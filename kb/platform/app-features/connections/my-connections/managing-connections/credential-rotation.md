@@ -109,3 +109,7 @@ When you do rotate a credential:
 3. **Validate in a controlled window.** Do not rotate credentials without validating the receiving system. A replacement secret that was never tested can create a silent outage or block production traffic unexpectedly.
 4. **Keep the old credential active only briefly.** Leave a short overlap window only when needed for zero-downtime migration, and remove the old secret as soon as validation is complete.
 5. **Document the change.** Record the date, owner, and access involved so future audits are easier to manage.
+
+:::warning
+Disabling a connection does not replace rotating the credentials. A connection can be inactive while the underlying secret is still exposed, compromised, or still valid in another system.
+:::

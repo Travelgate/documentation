@@ -49,7 +49,7 @@ The correct rotation flow depends on where the credential is stored and how the 
 | Role | Connection type | Typical responsibility | Recommended action |
 | --- | --- | --- | --- |
 | **Buyer** | **Legacy Buyer + Push Supplier** | **Travelgate** | No separate Buyer-side rotation is usually required beyond validating the updated flow. |
-| **Buyer** | **Legacy Buyer + Pull / Push Hybrid** | **Buyer** | Rotate the credential in your own system and keep the request configuration aligned with the new value. |
+| **Buyer** | **Legacy Buyer + Pull / Push Hybrid** | **Buyer** | Rotate the credential in your own system, keep the request configuration aligned with the new value, and also update the credentials in the access in [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/edit-access). |
 | **Buyer** | **HotelX Buyer + Push Supplier** | **Travelgate** | No action is typically required in the Buyer's system. |
 | **Buyer** | **HotelX Buyer + Pull / Push Hybrid** | **Buyer or Seller** | Update the relevant access in My Connections, or request the other party to do it and share the new value securely when required. |
 | **Seller** | **Push** | **Travelgate** | No manual credential rotation is usually required from the Seller or Buyer side. |
@@ -58,7 +58,7 @@ The correct rotation flow depends on where the credential is stored and how the 
 ### Buyer connected with Legacy API
 
 - **With a Supplier Push connection:** Travelgate typically manages the credential in the push flow, so the Buyer does not normally need to rotate it manually.
-- **With a Pull or Push Hybrid connection:** the credentials are usually included in the request payload, so the Buyer should rotate them in its own system and keep the request configuration aligned with the new value.
+- **With a Pull or Push Hybrid connection:** the credentials are usually included in the request payload, so the Buyer should rotate them in its own system and keep the request configuration aligned with the new value. The Buyer must also update the credentials in the access in My Connections.
 - **As a practical rule:** updating the access in [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/edit-access) is not always enough for Legacy integrations if the credential is also stored in the system that sends the request.
 
 ### Buyer connected with HotelX API

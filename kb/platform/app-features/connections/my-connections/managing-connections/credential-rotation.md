@@ -22,10 +22,10 @@ This article covers the credentials stored in your accesses. To manage your Trav
 
 | Role | Connection type | Typical responsibility | Recommended action |
 | --- | --- | --- | --- |
-| **Buyer** | **Legacy + Push Supplier** | **Travelgate** | No separate Buyer-side rotation is usually required beyond validating the updated flow. |
-| **Buyer** | **Legacy + Pull / Push Hybrid** | **Buyer** | Rotate the credential in your own system and keep the request configuration aligned with the new value. |
-| **Buyer** | **HotelX + Push Supplier** | **Travelgate** | No action is typically required in the Buyer's system. |
-| **Buyer** | **HotelX + Pull / Push Hybrid** | **Buyer or Seller** | Update the relevant access in My Connections, or request the other party to do it and share the new value securely when required. |
+| **Buyer** | **Legacy Buyer + Push Supplier** | **Travelgate** | No separate Buyer-side rotation is usually required beyond validating the updated flow. |
+| **Buyer** | **Legacy Buyer + Pull / Push Hybrid** | **Buyer** | Rotate the credential in your own system, keep the request configuration aligned with the new value, and also update the credentials in the access in [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/edit-access). |
+| **Buyer** | **HotelX Buyer + Push Supplier** | **Travelgate** | No action is typically required in the Buyer's system. |
+| **Buyer** | **HotelX Buyer + Pull / Push Hybrid** | **Buyer or Seller** | Update the relevant access in My Connections, or request the other party to do it and share the new value securely when required. |
 | **Seller** | **Push** | **Travelgate** | No manual credential rotation is usually required from the Seller or Buyer side. |
 | **Seller** | **Pull / Push Hybrid** | **Seller** | Rotate the credential in your own system and keep the corresponding access updated. If the counterparty uses Legacy, share the new value securely so both sides remain aligned. |
 
@@ -38,7 +38,7 @@ This article covers the credentials stored in your accesses. To manage your Trav
 ### Buyer connected with Legacy API
 
 - **With a Supplier Push connection:** Travelgate typically manages the credential in the push flow, so the Buyer does not normally need to rotate it manually.
-- **With a Pull or Push Hybrid connection:** the credentials are usually included in the request payload, so the Buyer should rotate them in its own system and keep the request configuration aligned with the new value.
+- **With a Pull or Push Hybrid connection:** the credentials are usually included in the request payload, so the Buyer should rotate them in its own system and keep the request configuration aligned with the new value. The Buyer must also update the credentials in the access in My Connections.
 - **As a practical rule:** updating the access in [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/edit-access) is not always enough for Legacy integrations if the credential is also stored in the system that sends the request.
 
 ### Buyer connected with HotelX API
@@ -68,6 +68,12 @@ Follow this sequence whenever you rotate a credential:
 3. **Validate in a controlled window.** Do not rotate credentials without validating the receiving system. A replacement secret that was never tested can create a silent outage or block production traffic unexpectedly.
 4. **Keep the old credential active only briefly.** Leave a short overlap window only when needed for zero-downtime migration, and remove the old secret as soon as validation is complete.
 
+### If You Suspect a Compromise
+
+1. Rotate and revoke the old credential right away, without an overlap window. For Inventory (Push) accesses, [submit an urgent case](/kb/platform/support-portal/how-to-submit-case) through the Support Portal.
+2. Confirm in the [Logging App](/kb/platform/app-features/monitoring-tools/logging/logging-details) that traffic uses the new credential.
+3. Review recent logs for activity you don't recognize.
+4. Rotate any other access or system that shares the same password.
 
 ## Recommendations On How To Handle Credentials Securely
 
@@ -78,6 +84,8 @@ Never share credentials or passwords through any of the following channels:
 - **Logs, traces or shared request samples.** Do not include credentials or passwords in logs or traces, and redact them from Legacy Pull Buyers API request samples before sharing them with Partners.
 
 Store credentials in a secure secret manager or an approved internal vault, not in source code, spreadsheets, shared documents, or ticket comments. 
+
+Limit credential visibility to the users who need it (only **ADMIN** users can view stored passwords; see [Add Users](/kb/platform/app-features/account-settings/users-management/add-users)), and review access when people change role or leave. Also check places where secrets tend to leak: repositories, screenshots of My Connections or the Logging App, and spreadsheets or tickets.
 
 :::tip
 If a credential has been shared through any of these channels, treat it as compromised and [rotate it immediately](#rotation-cadence).

@@ -5,8 +5,7 @@ description: Best practices for handling and rotating the credentials stored in 
 
 # Credential Security and Rotation Best Practices
 
-Credentials give direct access to your connections, so protecting them is essential for Buyers and Sellers alike. This article explains how to handle credentials securely, how often to rotate the ones stored in your [accesses](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials#access), and who is responsible for each rotation.
-
+Credentials give direct access to your connections, so protecting them is essential for Buyers and Sellers alike. These are recommended practices for handling the credentials associated with your [accesses](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials#access), keeping them aligned across systems, and rotating them before they become a security risk.
 
 ## Rotation Cadence
 
@@ -21,36 +20,38 @@ This article covers the credentials stored in your accesses. To manage your Trav
 
 ### Quick Summary
 
-| Role | Connection type | Who rotates the credential | What you need to do |
+| Role | Connection type | Typical responsibility | Recommended action |
 | --- | --- | --- | --- |
-| **Buyer** | **Legacy Buyer + Push Supplier** | **Travelgate** | No action required on your side beyond checking the updated flow if needed. |
-| **Buyer** | **Legacy Buyer + Pull or Push Hybrid Supplier** | **Buyer** | Rotate the credential in your own system with the new one provided by the Seller. |
-| **Buyer** | **HotelX Buyer + Push Supplier** | **Travelgate** | No action required. Travelgate handles it transparently. |
-| **Buyer** | **HotelX Buyer + Pull or Push Hybrid Supplier** | **Buyer or Seller** | You can request the Seller to directly update it in MyConnections or they can share the new credentials with you and you can do the change in MyConnections. |
-| **Seller** | **Push Supplier** | **Travelgate** | No action required from you or the Buyer. |
-| **Seller** | **Pull / Push Hybrid Supplier** | **Seller** | Rotate the credential in your own system and in My Connections. If the Buyer uses the Legacy API, also share the new value securely so they can update their integration. |
+| **Buyer** | **Legacy + Push Supplier** | **Travelgate** | No separate Buyer-side rotation is usually required beyond validating the updated flow. |
+| **Buyer** | **Legacy + Pull / Push Hybrid** | **Buyer** | Rotate the credential in your own system and keep the request configuration aligned with the new value. |
+| **Buyer** | **HotelX + Push Supplier** | **Travelgate** | No action is typically required in the Buyer's system. |
+| **Buyer** | **HotelX + Pull / Push Hybrid** | **Buyer or Seller** | Update the relevant access in My Connections, or request the other party to do it and share the new value securely when required. |
+| **Seller** | **Push** | **Travelgate** | No manual credential rotation is usually required from the Seller or Buyer side. |
+| **Seller** | **Pull / Push Hybrid** | **Seller** | Rotate the credential in your own system and keep the corresponding access updated. If the counterparty uses Legacy, share the new value securely so both sides remain aligned. |
 
-### If you are a Buyer Legacy
 
-- **If the connection is with a Supplier Push:** Travelgate rotates the credential internally in the push flow and notifies you if a sync is required.
-- **If the connection is with a Pull or Push Hybrid Supplier:** the credentials are included in your request payload, so you must rotate them in your own system. The Seller must share the new credentials with you, and you must update the value in the integration code or configuration that sends the Legacy request.
-- **Important:** a rotation is not complete just because the access was updated in [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/edit-access). In Legacy integrations, as a Buyer, you must also update the secret in your own system.
+### Seller
 
-### If you are a Buyer HotelX
+- **With a Push integration:** Travelgate generally handles the credential rotation, so manual action is usually not required from either party.
+- **With a Pull or Push Hybrid integration:** the Seller should rotate the credential in its own system and keep the corresponding access updated in My Connections. **If the Buyer uses Legacy API:** the new value should be shared securely with them so both sides remain aligned.
 
-- **If the connection is with a Push Supplier:** you do not need to do anything. Travelgate rotates the credential stored in the access and the change is transparent for you.
-- **If the connection is with a Pull or Push Hybrid Supplier:** the credential is stored in the Travelgate access, so you must update the access in My Connections. The Seller may rotate it by its own in MyConnections, or they may provide the new credentials so you can update the access yourself.
-- **Important:** for HotelX, the secret is stored in the Travelgate access and is not embedded in the request. That means the credential change is made in Travelgate, not in the request payload itself.
+### Buyer connected with Legacy API
 
-### If you are a Seller
+- **With a Supplier Push connection:** Travelgate typically manages the credential in the push flow, so the Buyer does not normally need to rotate it manually.
+- **With a Pull or Push Hybrid connection:** the credentials are usually included in the request payload, so the Buyer should rotate them in its own system and keep the request configuration aligned with the new value.
+- **As a practical rule:** updating the access in [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/edit-access) is not always enough for Legacy integrations if the credential is also stored in the system that sends the request.
 
-- **If your integration is Push:** neither you nor the Buyer need to rotate anything manually. Travelgate manages the credential rotation for the push flow.
-- **If your integration is Pull or Push Hybrid:** you must rotate the credentials on your side and update the corresponding access in My Connections. **Important exception:** if the counterparty is a Buyer using the Legacy API and you change the credential on your side, you must also share the new value with that Buyer so they can update the corresponding credential in their Travelgate integration as well.
+### Buyer connected with HotelX API
 
-### Detailed explanation: Legacy vs HotelX
+- **With a Push connection:** the credential is managed in the Travelgate access and usually does not require any manual action from the Buyer.
+- **With a Pull or Push Hybrid connection:** the credential is typically stored as a Travelgate access, so the access should be updated in My Connections. The other party may also rotate it on their side and share the new value securely if needed.
+- **As a practical rule:** in HotelX, the secret is usually stored as an access in Travelgate rather than embedded in the request payload, so the change is generally made in My Connections.
 
-- **Legacy Buyer API:** the actual credentials are usually sent in the request, so the Buyer must update them in its own system as well as in the Travelgate configuration when required.
-- **HotelX Buyer API:** the credential is stored as an access in Travelgate, so updating the access in My Connections is sufficient. The request itself does not carry the secret.
+
+### Legacy vs HotelX in practice
+
+- **Buyer Legacy API:** the credential is commonly sent in the request, so both the client system and the Travelgate configuration must stay aligned.
+- **Buyer HotelX API:** the credential is usually stored in the Travelgate access, so updating that access is sufficient.
 
 ## How to Update a Rotated Credential
 

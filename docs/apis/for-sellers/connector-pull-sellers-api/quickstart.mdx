@@ -21,12 +21,14 @@ This model is especially useful when the Seller already has a functional API and
 
 ## How it works
 
-The flow is straightforward:
+This is the journey a Seller with a pull API follows to join the Travelgate network:
 
-1. The Seller provides the API documentation and technical specifications.
-2. Travelgate analyzes the contract and defines the integration approach.
-3. Travelgate builds the connector that adapts the Seller's API to our network and marketplace standards.
-4. Buyers can access the product through the Travelgate ecosystem without managing a separate direct integration with the Seller.
+1. **Technical validation** — the Seller completes the [Technical Requirements Template](https://storage.travelgate.com/docs/Travelgate_Seller__API_Technical_Requirements_Template.xlsx) following the [technical validation criteria](./technical-requirements.mdx). Our team reviews the submission and, if the API passes the validation, the integration moves forward.
+2. **Detailed analysis** — all the information is sent to the Travelgate Connectors team, which starts a detailed analysis for the connector build. Meanwhile, the Seller receives two questionnaires:
+   - **Metadata specifications** — the supplier details our team needs to configure the Seller in the network (payment types, rate types, occupancies, releases, etc.).
+   - **Sandbox & credentials** — the test environment access needed to run tests.
+3. **Connector development** — Travelgate builds the connector that adapts the Seller's API to our network and marketplace standards, and runs the necessary tests.
+4. **Live in the Marketplace** — Buyers can access the Seller's product through the Travelgate ecosystem without managing a separate direct integration with the Seller.
 
 This means the Seller does not need to build a different integration for each Buyer. Instead, one connector is developed and shared across the network.
 
@@ -56,5 +58,9 @@ By building a connector once, Travelgate can expose one Seller product to many B
 
 :::tip
 
-If your system already has a pull-based API, this is usually the fastest and most scalable path to marketplace connectivity.
+If your system already has a pull-based API, this is usually the fastest and most scalable path to marketplace connectivity. Interested in joining the Travelgate network? [Contact our team](https://team.travelgate.com/contact-us).
 :::
+
+## Before development starts
+
+To start the connector development, your API must meet our technical validation criteria. Check the [Technical Validation Criteria](./technical-requirements.mdx) page for the mandatory requirements, the recommended features, and the materials you need to submit (requirements template, sandbox access, Postman collection, and mapping tables).

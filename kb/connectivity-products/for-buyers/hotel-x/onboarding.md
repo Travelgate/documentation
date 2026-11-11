@@ -25,7 +25,7 @@ Our Onboarding team supports you through every step of the API implementation pr
 
 ## Step 3: Certification & Transition to Customer Success
 
-Once your **HotelX API** integration is complete, you can **request certification**, marking the transition to the **Customer Success phase**. The certification process ensures your integration is fully functional. After certification, our **Customer Success** team will help you maximize platform benefits and provide ongoing support.
+Once your **HotelX API** integration is complete, you can [**request certification**](/docs/apis/for-buyers/hotel-x-pull-buyers-api/hotel-x-certification), marking the transition to the **Customer Success phase**. The certification process ensures your integration is fully functional. After certification, our **Customer Success** team will help you maximize platform benefits and provide ongoing support.
 
 ## Step 4: Launch
 

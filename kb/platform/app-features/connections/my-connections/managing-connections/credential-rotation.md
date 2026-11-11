@@ -74,7 +74,7 @@ Never share credentials or passwords through any of the following channels:
 
 - **Email.** Use the HotelX Access Code instead: it identifies the access without exposing the underlying credentials.
 - **Chat.** Instant messaging and chat tools are not a secure channel for secrets.
-- **Logs, traces or Legacy requests.** Do not include credentials or passwords in logs, traces or Legacy Pull Buyers API requests that you send to Partners.
+- **Logs, traces or shared request samples.** Do not include credentials or passwords in logs or traces, and redact them from Legacy Pull Buyers API request samples before sharing them with Partners.
 
 Store credentials in a secure secret manager or an approved internal vault, not in source code, spreadsheets, shared documents, or ticket comments. 
 

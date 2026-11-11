@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position:   1
+sidebar_position: 1
 ---
 
 # Connections Content
@@ -307,7 +307,7 @@ If you've followed all the steps and still do not have the most up-to-date conte
     <summary>What is a shared portfolio?</summary>
     <div>
         <div>
-            A shared portfolio is managed by the Seller in Connections Content. A master access synchronizes the static hotel catalog, which linked Buyer accesses inherit. Buyer credentials and transactional settings remain independent. See the [Shared portfolios guide](/kb/platform/app-features/connections/connections-content/shared-portfolios) for details.
+            A shared portfolio is managed by the Seller in Connections Content. A master access downloads the Hotel List, which linked Buyer accesses inherit. Buyer credentials and transactional settings remain independent. See the [Shared portfolios guide](/kb/platform/app-features/connections/connections-content/shared-portfolios) for details.
         </div>
     </div>
 </details>

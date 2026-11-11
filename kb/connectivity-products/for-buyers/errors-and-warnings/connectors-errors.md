@@ -23,7 +23,7 @@ Connector messages use these fields:
 | `external`      | Supplier-specific details, when available.                              |
 | `correlationId` | Identifier used to correlate the message with the operation or request. |
 
-For example, `ItemNotAvailable` has Connector `id` `11301` and maps to Buyer error `301`:
+In the following Connector response example, the `ItemNotAvailable` connector `code` has the Connector id `11301` and maps to legacyId `301`:
 
 ```json
 {
@@ -34,7 +34,7 @@ For example, `ItemNotAvailable` has Connector `id` `11301` and maps to Buyer err
   "level": "Error",
   "external": {
     "httpStatusCode": 200,
-    "message": "Option not found in quote: Parameters not found"
+    "message": "Parameters not found"
   }
 }
 ```
@@ -86,6 +86,21 @@ The common Buyer error meanings are:
 |         301 | Option not found in quote                                     |
 |         302 | Hotel not found                                               |
 |         303 | Booking not confirmed                                         |
+
+
+
+For the Connector message in the previous example, the HotelX response contains the following error:
+
+```json
+  "errors": [
+            {
+              "code": "11301",
+              "description": "Option not found in quote External: Parameters not found",
+              "type": "301"
+            }
+          ],
+```
+
 
 ## Supplier Details in `external`
 

@@ -28,7 +28,7 @@ This article covers the credentials stored in your accesses. To manage your Trav
 | **Buyer** | **HotelX Buyer + Push Supplier** | **Travelgate** | No action required. Travelgate handles it transparently. |
 | **Buyer** | **HotelX Buyer + Pull or Push Hybrid Supplier** | **Buyer or Seller** | You can request the Seller to directly update it in MyConnections or they can share the new credentials with you and you can do the change in MyConnections. |
 | **Seller** | **Push Supplier** | **Travelgate** | No action required from you or the Buyer. |
-| **Seller** | **Pull / Push Hybrid Supplier** | **Seller** | Rotate the credential in My Connections and, if the other party is a Buyer HotelX, also share the new value with them. |
+| **Seller** | **Pull / Push Hybrid Supplier** | **Seller** | Rotate the credential in your own system and in My Connections. If the Buyer uses the Legacy API, also share the new value securely so they can update their integration. |
 
 ### If you are a Buyer Legacy
 

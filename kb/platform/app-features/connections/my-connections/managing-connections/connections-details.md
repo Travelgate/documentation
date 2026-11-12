@@ -47,7 +47,11 @@ You can filter your connections using the following parameters:
   - **Yes**: The access is active and operational.  
   - **No**: The access is inactive, meaning no further HotelX requests will be processed. **Note**: Deactivating an access may take time to fully propagate through the system.  
 
-   ![tg_filter_results](https://storage.travelgate.com/kbase/tg_filter_results.jpg)  
+- **Seller Connection Type**: Filter by how the Seller is configured: **PULL**, **PUSH**, or **HYBRID**. Available in both Buyer and Seller views. For more information, see [Connection Types](/kb/welcome-to-travelgate/connectivity-services/connection-types).
+
+- **Buyer Connection Type** *(Seller view only)*: Filter by how your Buyers are connected: **HotelX**, **Legacy**, **ChannelX**, **FastX**.
+
+   ![tg-filter-connection-types](https://storage.travelgate.com/kbase/tg-filter-connection-types.png)  
 
 ### **Additional Access Information**  
 - **HotelX Access Code**: Unique identifier for the access.  
@@ -58,10 +62,12 @@ You can filter your connections using the following parameters:
 - **Accommodations**: Number of properties available for that access.  
 - **Context Code**: Check the [content codes](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials#context) used.  
 
-- **Supplier Connection Type**: In the access card, next to the **Supplier Code**, you can check whether the supplier is configured as **Pull**, **Push**, or **Push Hybrid**. This helps you understand where the credential is managed and how the integration is expected to behave.
-- **Buyer Connection Type**: If you're a Seller, you can check if your Buyer is connected via the **HotelX API** or the **Legacy Pull Buyers API (deprecated)**. If using **HotelX**, a badge is displayed on the Buyer card. This badge helps you quickly identify whether the Buyer is using the newer HotelX setup or the Legacy flow.
+- **Seller Connection Type**: In the access card, next to the **Supplier Code**, you can check whether the supplier is configured as **PULL**, **PUSH**, or **HYBRID**.
+- **Buyer Connection Type**: If you're a Seller, you can check if your Buyer is connected via the **HotelX API** or the **Legacy Pull Buyers API (deprecated)**. This badge helps you quickly identify whether the Buyer is using the newer HotelX setup or the Legacy flow.
 
-   ![tg-my-connections-connection-type](https://storage.travelgate.com/kbase/tg-my-connections-connection-type.png)  
+   ![tg-buyer-connection-types](https://storage.travelgate.com/kbase/tg-buyer-connection-types.png)  
+     ![tg-seller-connection-types-1](https://storage.travelgate.com/kbase/tg-seller-connection-types-1.png)
+     
    ![tg-my-connections-fastx-supplier](https://storage.travelgate.com/kbase/tg-my-connections-fastx-supplier.png)
 
 :::tip  
@@ -88,5 +94,7 @@ Download a CSV file containing your connection data by clicking the **Download C
 - Hotels
 - Status
 - Access type
+- Buyer Connection Type
+- Seller Connection Type
 
 ![tg_my_connections_download-csv](https://storage.travelgate.com/kbase/tg_my_connections_download-csv.png)

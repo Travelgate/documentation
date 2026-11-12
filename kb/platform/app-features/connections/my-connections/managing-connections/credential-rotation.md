@@ -68,6 +68,17 @@ This is useful when you need to confirm whether the credential is managed in the
 - **With a Pull or Push Hybrid supplier connection:** the credentials are included in the request payload, so the Buyer should rotate them in its own system and keep the request configuration aligned with the new value. The Buyer must also update the credentials in the access in My Connections.
 - **As a practical rule:** updating the access in [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/edit-access) is not always enough for Legacy integrations if the credential is also stored in the system that sends the request.
 
+:::warning Credentials for Legacy Pull Buyers API connections
+Any change to the credentials used by a Buyer connected through the **Legacy Pull Buyers API** must always be carried out in a coordinated manner in two places, so that the credentials remain functional:
+
+1. **My Connections** – Edit the credentials at the access level.
+2. **Buyer's System** – Notify the Buyer so they update the configuration stored on their end.
+
+Updating the credentials only in My Connections is **not sufficient**.
+
+As a Seller, you can check whether a Buyer uses the Legacy Pull Buyers API by looking at the **HotelX / Legacy** badge on the Buyer card of the access in My Connections. See [Additional Access Information](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details#additional-access-information).
+:::
+
 #### Buyer using the HotelX API
 
 - **With a Push supplier connection:** the credential is managed in the Travelgate access and usually does not require any manual action from the Buyer.

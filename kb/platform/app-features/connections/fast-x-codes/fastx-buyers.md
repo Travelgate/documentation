@@ -154,7 +154,7 @@ Each FastX mapping has one of three statuses, determined by Seller review:
          <div>
          By default (Default mode), your booking flow allows both **validated** and **pending** FastX codes from Suppliers. Invalidated codes are never allowed — Travelgate automatically blocks invalidated codes to protect booking quality.
          
-         If you prefer to use **only validated codes**, you can enable this restriction in your [API Settings](https://app.travelgate.com/connections/api-settings) under the `useOnlyValidatedFastXCodes` option.
+         If you prefer to use **only validated codes**, you can enable this restriction in your [API Settings](https://app.travelgate.com/connections/settings) under the `useOnlyValidatedFastXCodes` option.
         </div>
     </div>
 </details>

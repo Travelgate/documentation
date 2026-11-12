@@ -58,7 +58,8 @@ You can filter your connections using the following parameters:
 - **Accommodations**: Number of properties available for that access.  
 - **Context Code**: Check the [content codes](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials#context) used.  
 
-- **Buyer Connection Type**: If you're a Seller, you can check if your Buyer is connected via the **HotelX API** or the **Legacy Pull Buyers API (deprecated)**. If using **HotelX**, a label will be displayed.  
+- **Supplier Connection Type**: In the access card, next to the **Supplier Code**, you can check whether the supplier is configured as **Pull**, **Push**, or **Push Hybrid**. This helps you understand where the credential is managed and how the integration is expected to behave.
+- **Buyer Connection Type**: If you're a Seller, you can check if your Buyer is connected via the **HotelX API** or the **Legacy Pull Buyers API (deprecated)**. If using **HotelX**, a badge is displayed on the Buyer card. This badge helps you quickly identify whether the Buyer is using the newer HotelX setup or the Legacy flow.
 
    ![tg-my-connections-connection-type](https://storage.travelgate.com/kbase/tg-my-connections-connection-type.png)  
    ![tg-my-connections-fastx-supplier](https://storage.travelgate.com/kbase/tg-my-connections-fastx-supplier.png)
@@ -66,6 +67,13 @@ You can filter your connections using the following parameters:
 :::tip  
 Still using our Legacy Pull Buyers API? **Upgrade to [HotelX API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart)** to access enhanced features!  
 :::  
+
+:::info
+In **My Connections**, you can identify the connection model directly from the card:
+
+- **Supplier side**: look next to the **Supplier Code** to see whether the supplier is configured as **Pull**, **Push**, or **Push Hybrid**.
+- **Buyer side**: look for the **HotelX / Legacy** badge on the Buyer card to confirm whether the Buyer is using the HotelX API or the Legacy Pull Buyers API.
+:::
 
 ### Download CSV
 

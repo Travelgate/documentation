@@ -57,15 +57,15 @@ This is useful when you need to confirm whether the credential is managed in the
 
 | Connection type | Typical responsibility | Recommended action |
 | --- | --- | --- |
-| **Legacy Buyer + Push Supplier** | **Travelgate** | No Buyer action is usually required. |
+| **Legacy Buyer + Push Supplier** | **Travelgate** | Rotate in your system with the new credential provided by Travelgate. |
 | **Legacy Buyer + Pull or Push Hybrid Supplier** | **Buyer** | Rotate in your system with the new credential provided by Seller and update the access in [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/edit-access). |
 | **HotelX Buyer + Push Supplier** | **Travelgate** | No Buyer action is usually required. |
 | **HotelX Buyer + Pull or Push Hybrid Supplier** | **Buyer or Seller** | Update the access in [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/edit-access) with the new credential provided by Seller or directly request the Seller to do it. |
 
 #### Buyer using the Legacy API
 
-- **With a Push supplier connection:** Travelgate typically manages the credential in the push flow, so the Buyer does not normally need to rotate it manually.
-- **With a Pull or Push Hybrid supplier connection:** the credentials are usually included in the request payload, so the Buyer should rotate them in its own system and keep the request configuration aligned with the new value. The Buyer must also update the credentials in the access in My Connections.
+- **With a Push supplier connection:** Travelgate typically manages the credential in the push flow, so the Buyer should rotate it if Travelgate provides with new credentials.
+- **With a Pull or Push Hybrid supplier connection:** the credentials are included in the request payload, so the Buyer should rotate them in its own system and keep the request configuration aligned with the new value. The Buyer must also update the credentials in the access in My Connections.
 - **As a practical rule:** updating the access in [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/edit-access) is not always enough for Legacy integrations if the credential is also stored in the system that sends the request.
 
 #### Buyer using the HotelX API
@@ -78,11 +78,11 @@ This is useful when you need to confirm whether the credential is managed in the
 
 | Connection type | Typical responsibility | Recommended action |
 | --- | --- | --- |
-| **Push** | **Travelgate** | No manual Seller or Buyer rotation is required. |
+| **Push** | **Travelgate** | No manual Seller rotation is required. Legacy Buyers must update their stored credential when Travelgate provides new credentials. |
 | **Pull or Push Hybrid** | **Seller** | Rotate on your side and keep the corresponding access updated on [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/edit-access). Share the new value securely if the Buyer uses Legacy API. |
 
 
-- **With a Push integration:** Travelgate generally handles the credential rotation, so manual action is usually not required from either party.
+- **With a Push integration:** Travelgate generally handles the credential rotation, so manual action is usually not required from the Seller. However, Buyers using the Legacy API must update their stored credential when Travelgate provides new credentials.
 - **With a Pull or Push Hybrid integration:** the Seller should rotate the credential in its own system and keep the corresponding access updated in My Connections.
 - **If the counterparty uses Legacy:** the new value should be shared securely with them so both sides remain aligned.
 
@@ -109,3 +109,7 @@ When you do rotate a credential:
 3. **Validate in a controlled window.** Do not rotate credentials without validating the receiving system. A replacement secret that was never tested can create a silent outage or block production traffic unexpectedly.
 4. **Keep the old credential active only briefly.** Leave a short overlap window only when needed for zero-downtime migration, and remove the old secret as soon as validation is complete.
 5. **Document the change.** Record the date, owner, and access involved so future audits are easier to manage.
+
+:::warning
+Disabling a connection does not replace rotating the credentials. A connection can be inactive while the underlying secret is still exposed, compromised, or still valid in another system.
+:::

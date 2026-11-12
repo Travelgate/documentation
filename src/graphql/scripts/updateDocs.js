@@ -9,7 +9,7 @@ const FILE_NODE_MAP = require("../node-map/fileNodeMap");
 
 // Fields hidden from the generated <details> breakdown blocks, keyed by their parent type. Kept in
 // sync with the API Reference exclusions in utils/schemaLoader.js: the metadata content methods
-// `markets`, `currencies` and `amenities` are not exposed as Hotel-X content calls, so they are
+// `markets`, `currencies` and `amenities` are not exposed as HotelX content calls, so they are
 // hidden from the docs breakdown as well (see PULL-11785). The schema JSON stays complete; fields
 // are filtered only at render time.
 // Format: { TypeName: ['fieldName', ...] }

@@ -78,11 +78,11 @@ This is useful when you need to confirm whether the credential is managed in the
 
 | Connection type | Typical responsibility | Recommended action |
 | --- | --- | --- |
-| **Push** | **Travelgate** | No manual Seller or Buyer rotation is required. |
+| **Push** | **Travelgate** | No manual Seller rotation is required. Legacy Buyers must update their stored credential when Travelgate provides new credentials. |
 | **Pull or Push Hybrid** | **Seller** | Rotate on your side and keep the corresponding access updated on [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/edit-access). Share the new value securely if the Buyer uses Legacy API. |
 
 
-- **With a Push integration:** Travelgate generally handles the credential rotation, so manual action is usually not required from Seller side. Travelgate will provide news credentials if needed for Buyers using Legacy API.
+- **With a Push integration:** Travelgate generally handles the credential rotation, so manual action is usually not required from the Seller. However, Buyers using the Legacy API must update their stored credential when Travelgate provides new credentials.
 - **With a Pull or Push Hybrid integration:** the Seller should rotate the credential in its own system and keep the corresponding access updated in My Connections.
 - **If the counterparty uses Legacy:** the new value should be shared securely with them so both sides remain aligned.
 

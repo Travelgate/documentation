@@ -10,10 +10,14 @@ import TabItem from "@theme/TabItem";
 
 FastX Content (powered by [AO](https://blog.travelgate.com/travelgate-part-of-travelsoft-group-acquires-ao-uk-ltd)) is **the new content standard**, designed to integrate perfectly with our HotelX API. This premium application, available in the [Travelgate Store](/kb/platform/app-features/app-store/discover-apps), represents the natural evolution of our connectivity. 
 
+:::info Part of the complete FastX solution
+This article dives deep into the content layer. For the big picture of the full FastX solution — booking-flow standardization, orchestration, and aggregation — see [What is FastX?](/kb/connectivity-products/for-buyers/hotel-x/fastx/fastx-solution).
+:::
+
 To understand the product, think about connectivity in two phases:
 
-- **Phase 1 - FastX Solution (foundation):** A unified coding system that standardizes hotel, board, and room codes in the booking flow. This removes the need to map each supplier individually and lets you apply aggregation business rules.
-- **Phase 2 - FastX Content (premium extension):** A paid layer that enriches FastX codes with complete, standardized, multilingual static content powered by AI. It gives you a single source for hotel and room content.
+- **Phase 1 - FastX (foundation):** The standardization and orchestration layer of the booking flow on HotelX. It uses FastX codes (unique hotel, board, and room identifiers) to remove the need to map each supplier individually and lets you apply aggregation business rules.
+- **Phase 2 - FastX Content by AO (premium extension):** A separate paid layer that enriches FastX codes with complete, standardized, multilingual static content powered by multiple hotel content sources and AI. It gives you a single source for hotel and room content.
 
 
 ## FastX: The new content standard for Buyers
@@ -37,7 +41,7 @@ In simple terms:
 1. You send a search with your usual FastX codes.
 2. The Travelgate platform connects with the suppliers.
 3. You receive the transactional data along with AO's premium static content (images, clean descriptions, and categories).
-4. Everything is delivered through the current standardized HotelX API response in a single block, reducing your content integration effort to zero. No need for developments. 
+4. Everything is delivered through the current standardized HotelX API response in a single block, keeping your content integration effort to a minimum.
 
 ### Interactive FastX Content Demo
 
@@ -86,7 +90,7 @@ Both initial tiers (Bronze and Silver) offer add-ons for extra language coverage
 
 This premium extension greatly benefits the final conversion (Look-to-Book) of Buyers:
 
-- **Zero content mapping effort:** You work with one code model in the Travelgate network (FastX Solution) and delegate content cleaning, normalization, and deduplication.
+- **No content mapping to maintain:** You work with one code model in the Travelgate network (FastX) and delegate content cleaning, normalization, and deduplication.
 - **Frictionless activation:** Setup follows a simple 3-step process through the [Travelgate Store](/kb/platform/app-features/app-store/discover-apps).
 - **No booking-flow latency impact:** Enriched static content is delivered through HotelX content methods without adding delay to the booking flow.
 

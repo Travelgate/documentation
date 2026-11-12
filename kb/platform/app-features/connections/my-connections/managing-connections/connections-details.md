@@ -52,6 +52,17 @@ You can filter your connections using the following parameters:
 - **Buyer Connection Type** *(Seller view only)*: Filter by how your Buyers are connected: **HotelX**, **Legacy**, **ChannelX**, **FastX**.
 
    ![tg-filter-connection-types](https://storage.travelgate.com/kbase/tg-filter-connection-types.png)  
+   
+:::warning Credentials for Legacy Pull Buyers API connections
+Any change to the credentials used by a Buyer connected through the **Legacy Pull Buyers API** must always be carried out in a coordinated manner in two places, so that the credentials remain functional:
+
+1. **My Connections** – Edit the credentials at the access level.
+2. **Buyer's System** – Notify the Buyer so they update the configuration stored on their end.
+
+Updating the credentials only in My Connections is **not sufficient**.
+
+As a Seller, you can check whether a Buyer uses the Legacy Pull Buyers API by looking at the **HotelX / Legacy** badge on the Buyer card of the access in My Connections. See [Additional Access Information](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details#additional-access-information).
+:::
 
 ### **Additional Access Information**  
 - **HotelX Access Code**: Unique identifier for the access.  

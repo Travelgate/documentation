@@ -49,9 +49,9 @@ You can filter your connections using the following parameters:
 
 - **Seller Connection Type**: Filter by how the Seller is configured: **PULL**, **PUSH**, or **HYBRID**. Available in both Buyer and Seller views. For more information, see [Connection Types](/kb/welcome-to-travelgate/connectivity-services/connection-types).
 
-- **Buyer Connection Type** *(Seller view only)*: Filter by how your Buyers are connected: **HotelX** or **Legacy**.
+- **Buyer Connection Type** *(Seller view only)*: Filter by how your Buyers are connected: **HotelX**, **Legacy**, **ChannelX**, **FastX**.
 
-   ![tg_filter_results](https://storage.travelgate.com/kbase/tg_filter_results.jpg)  
+   ![tg-filter-connection-types](https://storage.travelgate.com/kbase/tg-filter-connection-types.png)  
 
 ### **Additional Access Information**  
 - **HotelX Access Code**: Unique identifier for the access.  
@@ -65,7 +65,9 @@ You can filter your connections using the following parameters:
 - **Seller Connection Type**: In the access card, next to the **Supplier Code**, you can check whether the supplier is configured as **PULL**, **PUSH**, or **HYBRID**.
 - **Buyer Connection Type**: If you're a Seller, you can check if your Buyer is connected via the **HotelX API** or the **Legacy Pull Buyers API (deprecated)**. This badge helps you quickly identify whether the Buyer is using the newer HotelX setup or the Legacy flow.
 
-   ![tg-my-connections-connection-type](https://storage.travelgate.com/kbase/tg-my-connections-connection-type.png)  
+   ![tg-buyer-connection-types](https://storage.travelgate.com/kbase/tg-buyer-connection-types.png)  
+     ![tg-seller-connection-types-1](https://storage.travelgate.com/kbase/tg-seller-connection-types-1.png)
+     
    ![tg-my-connections-fastx-supplier](https://storage.travelgate.com/kbase/tg-my-connections-fastx-supplier.png)
 
 :::tip  

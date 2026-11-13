@@ -37,10 +37,14 @@ If a credential has been shared through any of these channels, treat it as compr
 
 The correct rotation flow depends on where the credential is stored and how the integration authenticates.
 
-- **If the credential is stored in a HotelX access in Travelgate:** update the credential in the relevant access in [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/edit-access).
+- **If the credential is stored in a HotelX access in Travelgate:** update the credential in the relevant access in [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/edit-access). The exception is an Inventory (Push) HotelX Access Code, which is modified through a support case (see the note below).
 - **If the Buyer in the connection uses Legacy API:** Buyer must update the credential in its system, as well as in the Travelgate access when required. Editing the access in My Connections alone is not enough when the credentials are embedded in the request payload.
 - **If a Seller rotates a credential on their side:** share the new value securely with the Buyer so both integrations remain aligned.
 - **After any rotation:** validate the connection, confirm the correct access is active, and remove any old values from local scripts, shared notes, or logs.
+
+:::info Inventory (Push) Access Code Modifications
+To edit the configuration credentials of an **Inventory (Push) HotelX Access Code**, please submit a case through our [Support Portal](/kb/platform/support-portal/how-to-submit-case). This ensures the necessary internal updates are properly handled.
+:::
 
 :::info
 In [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details), you can quickly identify the connection model for each party:
@@ -57,9 +61,9 @@ This is useful when you need to confirm whether the credential is managed in the
 
 | Connection type | Typical responsibility | Recommended action |
 | --- | --- | --- |
-| **Legacy Buyer + Push Supplier** | **Travelgate** | Rotate in your system with the new credential provided by Travelgate. |
+| **Legacy Buyer + Push Supplier** | **Travelgate** | Credentials of the Inventory (Push) HotelX Access Code are changed through a [support case](/kb/platform/support-portal/how-to-submit-case), not in My Connections. Rotate in your system with the new credential provided by Travelgate. |
 | **Legacy Buyer + Pull or Push Hybrid Supplier** | **Buyer** | Rotate in your system with the new credential provided by Seller and update the access in [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/edit-access). |
-| **HotelX Buyer + Push Supplier** | **Travelgate** | No Buyer action is usually required. |
+| **HotelX Buyer + Push Supplier** | **Travelgate** | No Buyer action is usually required. Credentials of the Inventory (Push) HotelX Access Code are changed through a [support case](/kb/platform/support-portal/how-to-submit-case). |
 | **HotelX Buyer + Pull or Push Hybrid Supplier** | **Buyer or Seller** | Update the access in [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/edit-access) with the new credential provided by Seller or directly request the Seller to do it. |
 
 #### Buyer using the Legacy API
@@ -81,7 +85,7 @@ As a Seller, you can check whether a Buyer uses the Legacy Pull Buyers API by lo
 
 #### Buyer using the HotelX API
 
-- **With a Push supplier connection:** the credential is managed in the Travelgate access and usually does not require any manual action from the Buyer.
+- **With a Push supplier connection:** the credential is managed in the Travelgate access and usually does not require any manual action from the Buyer. Changes to the Inventory (Push) HotelX Access Code credentials are made through a support case.
 - **With a Pull or Push Hybrid supplier connection:** the credential is typically stored as a Travelgate access, so the access should be updated in My Connections. The other party may also rotate it on their side and share the new value securely if needed.
 - **As a practical rule:** in HotelX, the secret is usually stored as an access in Travelgate rather than embedded in the request payload, so the change is generally made in My Connections.
 
@@ -89,11 +93,11 @@ As a Seller, you can check whether a Buyer uses the Legacy Pull Buyers API by lo
 
 | Connection type | Typical responsibility | Recommended action |
 | --- | --- | --- |
-| **Push** | **Travelgate** | No manual Seller rotation is required. Legacy Buyers must update their stored credential when Travelgate provides new credentials. |
+| **Push** | **Travelgate** | To edit the credentials of the Inventory (Push) HotelX Access Code, submit a [support case](/kb/platform/support-portal/how-to-submit-case). Legacy Buyers must update their stored credential when Travelgate provides new credentials. |
 | **Pull or Push Hybrid** | **Seller** | Rotate on your side and keep the corresponding access updated on [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/edit-access). Share the new value securely if the Buyer uses Legacy API. |
 
 
-- **With a Push integration:** Travelgate generally handles the credential rotation, so manual action is usually not required from the Seller. However, Buyers using the Legacy API must update their stored credential when Travelgate provides new credentials.
+- **With a Push integration:** Travelgate generally handles the credential rotation. Any change to the Inventory (Push) HotelX Access Code credentials must be requested through a support case. Buyers using the Legacy API must update their stored credential when Travelgate provides new credentials.
 - **With a Pull or Push Hybrid integration:** the Seller should rotate the credential in its own system and keep the corresponding access updated in My Connections.
 - **If the counterparty uses Legacy:** the new value should be shared securely with them so both sides remain aligned.
 

@@ -5,10 +5,13 @@ sidebar_position: 28
 # Connector Errors 
 
 ## What Are Connector Errors?
-When a Buyer's request reaches a Seller through a Travelgate Connector, the Connector can return a message describing what happened. Travelgate translates each message into the error you receive in **HotelX** or the **Legacy Buyers API**.
+When a Buyer's request fails at the Seller, the Travelgate Connector receives a message describing what happened. Travelgate translates that message into the error you receive in **HotelX** or the **Legacy Buyers API**. Each error includes:
 
-- In the **HotelX** response, several messages can lead to the same error `type`. The error `code` tells you exactly which situation occurred in the Connector's response, so you can find the right fix faster (see [Error Codes and What They Mean](/kb/connectivity-products/for-buyers/errors-and-warnings/connectors-errors#error-codes-and-what-they-mean) table).  
-- In the **Legacy Buyers API** response, the `description` is the only place where you will find the details of the error.                                        
+- **`type`:** the kind of error. Several Connector errors can share the same `type`.
+- **`code` (HotelX only):** the Connector error id. It identifies the exact situation, so you can find the right fix faster.
+- **`description`:** the standard description and, when the Seller provides it, the Seller's own message.
+
+Look up your `type` and `code` in [Error Codes and What They Mean](#error-codes-and-what-they-mean). In the Legacy Buyers API there is no `code`, so the `description` is the only place with the error details.
 
 #### Example (HotelX):
 ```json
@@ -42,8 +45,6 @@ Room 1 - RoomsMatch=0:
   </description>
 </applicationErrors>
 ```
-
-In this example, the error is a `301` and its `code` `11301` indicates that the option you selected is no longer available. The text after the standard description comes from the Seller.
 
 ## Error Codes and What They Mean
 Find your error `type` and `code` in the table. Follow the link on the `type` to read what it means and how to resolve it.

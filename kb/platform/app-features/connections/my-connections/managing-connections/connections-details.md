@@ -52,7 +52,16 @@ You can filter your connections using the following parameters:
 - **Buyer Connection Type** *(Seller view only)*: Filter by how your Buyers are connected: **HotelX**, **Legacy**, **ChannelX**, **FastX**.
 
    ![tg-filter-connection-types](https://storage.travelgate.com/kbase/tg-filter-connection-types.png)  
-   
+
+- **Filter by date**: Turn on the toggle and choose a period: **Last 7 days**, **Last 30 days**, or **Custom**. Then select which date the period applies to:
+  - **Creation Date**: When the access was created.
+  - **Last Modified**: When the access was last modified.
+  - **Last Credential Update**: When the access credentials were last updated.
+
+- **Credential Health**: Turn on **Rotation Recommended** to show only the accesses whose credentials have reached the recommended rotation window. The number next to the option is the number of accesses that match. See [Credential Security Best Practices](/kb/platform/app-features/connections/my-connections/managing-connections/credential-rotation) to learn how to rotate them.
+
+     ![tg-rotation-filter-6](https://storage.travelgate.com/kbase/tg-rotation-filter-6.png)
+
 :::warning Credentials for Legacy Pull Buyers API connections
 Any change to the credentials used by a Buyer connected through the **Legacy Pull Buyers API** must always be carried out in a coordinated manner in two places, so that the credentials remain functional:
 
@@ -80,6 +89,16 @@ As a Seller, you can check whether a Buyer uses the Legacy Pull Buyers API by lo
      ![tg-seller-connection-types-1](https://storage.travelgate.com/kbase/tg-seller-connection-types-1.png)
      
    ![tg-my-connections-fastx-supplier](https://storage.travelgate.com/kbase/tg-my-connections-fastx-supplier.png)
+
+- **Rotation Recommended**: An orange rotation icon indicates that an access credential has reached the recommended rotation window. Hover over the icon to see the message: *"This credential has reached our recommended rotation window. Updating it helps keep your connection secure."* The icon appears in:
+  - **Connection cards**: As a badge next to the number of accesses, showing how many accesses of that connection need rotation.
+  - **Accesses**: Next to the access in both the card view and the list view.
+  - **Edit Access form**: Next to the affected credential field, with a **Learn more** link.
+   ![tg-rotation-filter-2](https://storage.travelgate.com/kbase/tg-rotation-filter-2.png)
+   ![tg-rotation-filter-3](https://storage.travelgate.com/kbase/tg-rotation-filter-3.png)
+   ![tg-rotation-filter-4](https://storage.travelgate.com/kbase/tg-rotation-filter-4.png)
+
+   To find all affected accesses, use the **Credential Health** filter in [Filtering Your Connections](#filtering-your-connections). To learn how to rotate the credentials, see [Credential Security Best Practices](/kb/platform/app-features/connections/my-connections/managing-connections/credential-rotation).
 
 :::tip  
 Still using our Legacy Pull Buyers API? **Upgrade to [HotelX API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart)** to access enhanced features!  

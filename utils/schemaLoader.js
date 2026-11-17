@@ -7,9 +7,7 @@ const { buildClientSchema, getIntrospectionQuery } = require('graphql');
 // The schema is downloaded on behalf of the person updating the documentation, using their
 // personal Travelgate bearer token (TRAVELGATE_BEARER, sent as `Bearer`). For local/manual runs,
 // this command fails fast if the bearer is missing. In CI there is no interactive user, so it
-// falls back to the stable service API key (TRAVELGATE_API_KEY secret) and, if that is absent, to
-// the public introspection key — this keeps the automated schema generation working without a bearer.
-const PUBLIC_INTROSPECTION_KEY = 'test0000-0000-0000-0000-000000000000';
+// uses the stable service API key (TRAVELGATE_API_KEY secret). CI fails if the key is missing.
 
 // Fields to hide from the generated GraphQL API Reference (/api). The filtered schema that feeds
 // `@graphql-markdown/docusaurus` is rebuilt from the live schema on every deploy, so hiding
@@ -29,6 +27,13 @@ function isExcludedField(typeName, fieldName) {
 }
 
 function resolveAuthHeader() {
+    if (process.env.CI) {
+        if (!process.env.TRAVELGATE_API_KEY) {
+            throw new Error('Missing TRAVELGATE_API_KEY in CI. Configure the repository secret before generating the schema.');
+        }
+        return 'Apikey ' + process.env.TRAVELGATE_API_KEY;
+    }
+
     const rawBearer = process.env.TRAVELGATE_BEARER;
     // Normalize: trim whitespace and strip an optional leading "Bearer " prefix so pasting a
     // full Authorization header value does not duplicate the scheme when we prepend "Bearer ".
@@ -37,16 +42,12 @@ function resolveAuthHeader() {
         : rawBearer;
     if (bearer) return 'Bearer ' + bearer;
 
-    if (process.env.CI) {
-        return 'Apikey ' + (process.env.TRAVELGATE_API_KEY || PUBLIC_INTROSPECTION_KEY);
-    }
-
     const apiKey = process.env.TRAVELGATE_API_KEY;
     if (apiKey) return 'Apikey ' + apiKey;
 
     throw new Error(
-        'Missing TRAVELGATE_BEARER. This command downloads the GraphQL schema using the bearer ' +
-        'token of the person updating the documentation. Set your bearer before running, e.g. ' +
+        'Missing TRAVELGATE_BEARER or TRAVELGATE_API_KEY. This command downloads the GraphQL schema. Set your bearer ' +
+        'token before running, e.g. ' +
         '(PowerShell) $env:TRAVELGATE_BEARER = "<your-bearer>" or (bash/zsh) ' +
         'export TRAVELGATE_BEARER="<your-bearer>", then re-run.'
     );

@@ -1067,13 +1067,8 @@ For certification cases, use your own Travelgate Apikey and client, along with t
 
 Once you complete the HotelX certification process and transition to the production environment, you must **update your connection credentials**. 
 
-During the certification phase, you authenticate with your own Travelgate Onboarding Apikey and client provided by Travelgate. To successfully process live requests, you must **switch to your production credentials**:
-
-* **Authorization:** Replace your Apikey with your [production API Key](/kb/platform/app-features/account-settings/api-keys/manage-api-keys) (`Apikey <YOUR_API_KEY>`).
-* **Client:** Replace your client with your [production Client](/kb/platform/app-features/connections/api-settings).
+During the certification phase, you authenticate with your own Travelgate Onboarding Apikey and use the test accesses provided by Travelgate. To successfully process live requests, you must **switch to your production credentials** and replace your Apikey with your [production API Key](/kb/platform/app-features/account-settings/api-keys/manage-api-keys) (`Apikey <YOUR_API_KEY>`).
 
 :::warning Live reservations may incur charges
 All reservations made in the production environment are **live reservations**. Suppliers consider them real bookings and may apply charges, such as cancellation penalties or no-show fees.
 :::
-
-Update both parameters in your request headers **before sending any live traffic**. This avoids [validation errors](/kb/connectivity-products/for-buyers/errors-and-warnings/validation-error) and unintended supplier charges. If you need to run further tests after going live, see [Hotel X credentials](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials) for the recommended precautions.

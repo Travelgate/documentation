@@ -189,9 +189,27 @@ The CSV file:
     - Does not require a specific file name
     - Must follow these formatting requirements:
         - Only includes hotel codes already present in the Buyer's portfolio for that access
-        - Contains one column only
-        - Uses no headers or delimiters
+        - Contains **one column only**
+        - Uses **no headers, delimiters or separators** (no commas, semicolons or tabs)
+        - Uses **no quotation marks** around the codes (neither `"` nor `'`)
         - Includes one hotel code per row
+
+    :::tip CSV file example
+    ✅ **Correct:** one code per row, no quotes, no header, no separators.
+    ```
+    ABC04
+    ABC05
+    ABC09
+    ```
+
+    ❌ **Incorrect:**
+    ```
+    "ABC04"           <- quotes
+    ABC04,ABC05       <- more than one column / comma separator
+    hotel_code        <- header row
+    ABC09;            <- trailing separator
+    ```
+    :::
 6. After uploading, click **Continue** to begin validation.
     - If **validation fails**, an "Invalid CSV file" error will be shown.  
 
@@ -212,7 +230,8 @@ The CSV file:
 - If you encounter errors, **ensure your CSV file meets the expected criteria:**
     - CSV format
     - A single column
-    - No delimiters
+    - No delimiters or separators
+    - No quotation marks around the codes
     - One hotel code per row
     - Only hotel codes currently present in the portfolio for the selected connection
 - Hotel codes not included in the supplier's portfolio will be ignored. If your hotel list appears empty after uploading, verify that the Operation is correct and the Hotel Codes in the CSV are valid.

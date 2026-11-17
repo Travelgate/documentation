@@ -13,6 +13,10 @@ This article covers the credentials stored in your accesses. To manage your Trav
 
 ## Security Recommendations
 
+:::tip
+In [My Connections](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details#filtering-your-connections), use the **Credential Health** filter or look for the **Rotation Recommended** icon to find the accesses whose credentials have reached the recommended rotation window.
+:::
+
 Use these practices as a default baseline for every integration:
 
 - **Store credentials in a secure secret manager.** Keep them out of source code, spreadsheets, shared documents, ticket comments, and personal notes.

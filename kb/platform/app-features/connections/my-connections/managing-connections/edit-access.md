@@ -18,6 +18,10 @@ To edit the configuration credentials of an **Inventory (Push) HotelX Access Cod
 ![myconnections_aug_6](https://storage.travelgate.com/kbase/myconnections_aug_6.jpg)
 ![edit_access_2](https://storage.travelgate.com/kbase/edit_access_2.jpg)
 
+:::tip Rotation Recommended
+If a credential field shows the **Rotation recommended** icon, the credential has reached the recommended rotation window. See [Credential Security Best Practices](/kb/platform/app-features/connections/my-connections/managing-connections/credential-rotation) before updating it.
+:::
+
 :::warning Credentials for Legacy Pull Buyers API connections
 Any change to the credentials used by a Buyer connected through the **Legacy Pull Buyers API** must always be carried out in a coordinated manner in two places, so that the credentials remain functional:
 

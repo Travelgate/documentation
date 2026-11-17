@@ -47,7 +47,22 @@ You can filter your connections using the following parameters:
   - **Yes**: The access is active and operational.  
   - **No**: The access is inactive, meaning no further HotelX requests will be processed. **Note**: Deactivating an access may take time to fully propagate through the system.  
 
-   ![tg_filter_results](https://storage.travelgate.com/kbase/tg_filter_results.jpg)  
+- **Seller Connection Type**: Filter by how the Seller is configured: **PULL**, **PUSH**, or **HYBRID**. Available in both Buyer and Seller views. For more information, see [Connection Types](/kb/welcome-to-travelgate/connectivity-services/connection-types).
+
+- **Buyer Connection Type** *(Seller view only)*: Filter by how your Buyers are connected: **HotelX**, **Legacy**, **ChannelX**, **FastX**.
+
+   ![tg-filter-connection-types](https://storage.travelgate.com/kbase/tg-filter-connection-types.png)  
+   
+:::warning Credentials for Legacy Pull Buyers API connections
+Any change to the credentials used by a Buyer connected through the **Legacy Pull Buyers API** must always be carried out in a coordinated manner in two places, so that the credentials remain functional:
+
+1. **My Connections** – Edit the credentials at the access level.
+2. **Buyer's System** – Notify the Buyer so they update the configuration stored on their end.
+
+Updating the credentials only in My Connections is **not sufficient**.
+
+As a Seller, you can check whether a Buyer uses the Legacy Pull Buyers API by looking at the **HotelX / Legacy** badge on the Buyer card of the access in My Connections. See [Additional Access Information](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details#additional-access-information).
+:::
 
 ### **Additional Access Information**  
 - **HotelX Access Code**: Unique identifier for the access.  
@@ -58,14 +73,24 @@ You can filter your connections using the following parameters:
 - **Accommodations**: Number of properties available for that access.  
 - **Context Code**: Check the [content codes](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials#context) used.  
 
-- **Buyer Connection Type**: If you're a Seller, you can check if your Buyer is connected via the **HotelX API** or the **Legacy Pull Buyers API (deprecated)**. If using **HotelX**, a label will be displayed.  
+- **Seller Connection Type**: In the access card, next to the **Supplier Code**, you can check whether the supplier is configured as **PULL**, **PUSH**, or **HYBRID**.
+- **Buyer Connection Type**: If you're a Seller, you can check if your Buyer is connected via the **HotelX API** or the **Legacy Pull Buyers API (deprecated)**. This badge helps you quickly identify whether the Buyer is using the newer HotelX setup or the Legacy flow.
 
-   ![tg-my-connections-connection-type](https://storage.travelgate.com/kbase/tg-my-connections-connection-type.png)  
+   ![tg-buyer-connection-types](https://storage.travelgate.com/kbase/tg-buyer-connection-types.png)  
+     ![tg-seller-connection-types-1](https://storage.travelgate.com/kbase/tg-seller-connection-types-1.png)
+     
    ![tg-my-connections-fastx-supplier](https://storage.travelgate.com/kbase/tg-my-connections-fastx-supplier.png)
 
 :::tip  
 Still using our Legacy Pull Buyers API? **Upgrade to [HotelX API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart)** to access enhanced features!  
 :::  
+
+:::info
+In **My Connections**, you can identify the connection model directly from the card:
+
+- **Supplier side**: look next to the **Supplier Code** to see whether the supplier is configured as **Pull**, **Push**, or **Push Hybrid**.
+- **Buyer side**: look for the **HotelX / Legacy** badge on the Buyer card to confirm whether the Buyer is using the HotelX API or the Legacy Pull Buyers API.
+:::
 
 ### Download CSV
 
@@ -80,5 +105,7 @@ Download a CSV file containing your connection data by clicking the **Download C
 - Hotels
 - Status
 - Access type
+- Buyer Connection Type
+- Seller Connection Type
 
 ![tg_my_connections_download-csv](https://storage.travelgate.com/kbase/tg_my_connections_download-csv.png)

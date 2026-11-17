@@ -11,22 +11,20 @@ To **edit or update an access**, follow these simple steps:
 3. From the drop-down menu, select **Edit Access**.
 4. You'll see your current credentials for that access. Modify the details as needed (only editable fields are available for modification).
 
-![myconnections_aug_6](https://storage.travelgate.com/kbase/myconnections_aug_6.jpg)
-![edit_access_2](https://storage.travelgate.com/kbase/edit_access_2.jpg)
-
-:::warning Inventory (Push) Access Code Modifications
+:::info Inventory (Push) Access Code Modifications
 To edit the configuration credentials of an **Inventory (Push) HotelX Access Code**, please submit a case through our [Support Portal](/kb/platform/support-portal/how-to-submit-case). This ensures the necessary internal updates are properly handled.
 :::
 
-### Connections via Legacy Pull Buyers API
+![myconnections_aug_6](https://storage.travelgate.com/kbase/myconnections_aug_6.jpg)
+![edit_access_2](https://storage.travelgate.com/kbase/edit_access_2.jpg)
 
-If you are working with connections established through the Legacy Pull Buyers API, please note that updates to credentials (such as HotelX Access Codes) must be made in two places:
+:::warning Credentials for Legacy Pull Buyers API connections
+Any change to the credentials used by a Buyer connected through the **Legacy Pull Buyers API** must always be carried out in a coordinated manner in two places, so that the credentials remain functional:
 
-1. **My Connections** – Edit the access at the access level.
-2. **Buyer's System** – Update the legacy configuration stored on the buyer's end to ensure consistency across both systems.
+1. **My Connections** – Edit the credentials at the access level.
+2. **Buyer's System** – Notify the Buyer so they update the configuration stored on their end.
 
-Simply updating the HotelX Access Code in My Connections will not be sufficient.
+Updating the credentials only in My Connections is **not sufficient**.
 
-:::info
-As a Seller, you can check if your Buyers are using the HotelX Pull Buyers API by inspecting the label on their Buyer card in the [My Connections](https://yoururl.com/kb/platform/app-features/connections/my-connections/managing-connections/connections-details#what-can-i-find-in-my-connections) section.
+As a Seller, you can check whether a Buyer uses the Legacy Pull Buyers API by looking at the **HotelX / Legacy** badge on the Buyer card of the access in My Connections. See [Additional Access Information](/kb/platform/app-features/connections/my-connections/managing-connections/connections-details#additional-access-information).
 :::

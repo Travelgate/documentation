@@ -1,6 +1,7 @@
 import '../graphql/setupMonacoWorkers';
 
 import {useEffect, useMemo, useRef, useState} from 'react';
+import {useEffect, useMemo, useRef, useState} from 'react';
 import BrowserOnly from '@docusaurus/BrowserOnly';
 import {Details} from '@docusaurus/theme-common/Details';
 import {createGraphiQLFetcher} from '@graphiql/toolkit';
@@ -12,6 +13,11 @@ import {CheckIcon, CopyIcon, CopyStatus, useCopyToClipboard} from "../components
 import {hotelsListQuerySampleA, hotelsListQuerySampleAVariables} from "../graphql/sample-queries/hotels.list.query";
 import {replaceClient} from "../utils";
 import {getGraphqlApi, createPlaygroundStorage} from "../graphql/playgrounds";
+
+const PLAYGROUND_HEADERS_STORAGE_KEY = 'travelgate-playground:request-headers';
+const DEFAULT_HEADERS = JSON.stringify({
+    Authorization: 'Bearer <YOUR_TRAVELGATE_BEARER_TOKEN>',
+}, null, 2);
 
 const PLAYGROUND_HEADERS_STORAGE_KEY = 'travelgate-playground:request-headers';
 const DEFAULT_HEADERS = JSON.stringify({
@@ -63,6 +69,23 @@ const GraphqlSampleEditor = ({token, query: queryProp, variables: variablesProp,
     });
     const [fetcherHeaders, setFetcherHeaders] = useState(() => JSON.parse(headers));
     const headerUpdateTimer = useRef(null);
+    const [headers, setHeaders] = useState(() => {
+        if (token) return JSON.stringify({Authorization: `Bearer ${token}`}, null, 2);
+        if (typeof window !== 'undefined') {
+            try {
+                const storedHeaders = window.sessionStorage.getItem(PLAYGROUND_HEADERS_STORAGE_KEY);
+                const parsedHeaders = storedHeaders && JSON.parse(storedHeaders);
+                if (parsedHeaders && typeof parsedHeaders === 'object' && !Array.isArray(parsedHeaders)) {
+                    return storedHeaders;
+                }
+            } catch {
+                return DEFAULT_HEADERS;
+            }
+        }
+        return DEFAULT_HEADERS;
+    });
+    const [fetcherHeaders, setFetcherHeaders] = useState(() => JSON.parse(headers));
+    const headerUpdateTimer = useRef(null);
     const fetcher = useMemo(() => ExecutionEnvironment.canUseDOM
         ? createGraphiQLFetcher({url: endpoint, headers: fetcherHeaders})
         : null, [endpoint, fetcherHeaders]);
@@ -70,6 +93,9 @@ const GraphqlSampleEditor = ({token, query: queryProp, variables: variablesProp,
         ? createPlaygroundStorage(api, localStorage)
         : undefined, [api]);
     const [parsedVariables, setParsedVariables] = useState(variables);
+    const formattedHeaders = useMemo(() => token
+        ? JSON.stringify({Authorization: `Bearer ${token}`}, null, 2)
+        : JSON.stringify(JSON.parse(headers), null, 2), [headers, token]);
     const formattedHeaders = useMemo(() => token
         ? JSON.stringify({Authorization: `Bearer ${token}`}, null, 2)
         : JSON.stringify(JSON.parse(headers), null, 2), [headers, token]);
@@ -84,6 +110,26 @@ const GraphqlSampleEditor = ({token, query: queryProp, variables: variablesProp,
             setFetcherHeaders({Authorization: `Bearer ${token}`});
         }
     }, [token]);
+
+    useEffect(() => () => clearTimeout(headerUpdateTimer.current), []);
+
+    const updateHeaders = (value) => {
+        clearTimeout(headerUpdateTimer.current);
+        let parsedHeaders;
+        try {
+            parsedHeaders = JSON.parse(value);
+        } catch {
+            return;
+        }
+        if (!parsedHeaders || typeof parsedHeaders !== 'object' || Array.isArray(parsedHeaders)) return;
+
+        try {
+            window.sessionStorage.setItem(PLAYGROUND_HEADERS_STORAGE_KEY, value);
+        } catch {
+            // Continue without persistence if browser storage is unavailable.
+        }
+        headerUpdateTimer.current = setTimeout(() => setFetcherHeaders(parsedHeaders), 500);
+    };
 
     useEffect(() => () => clearTimeout(headerUpdateTimer.current), []);
 
@@ -120,6 +166,7 @@ const GraphqlSampleEditor = ({token, query: queryProp, variables: variablesProp,
                             <div className="graphql-sample-interactive" aria-label="Interactive GraphQL playground">
                                 {showLabel && <EndpointBar label={label} endpoint={endpoint} />}
                                 <GraphiQL
+                                    key={`${api}:${token ? 'authenticated' : 'anonymous'}`}
                                     key={`${api}:${token ? 'authenticated' : 'anonymous'}`}
                                     fetcher={fetcher}
                                     storage={storage}

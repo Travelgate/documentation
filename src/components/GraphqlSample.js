@@ -108,7 +108,7 @@ const GraphqlSampleEditor = ({token, query: queryProp, variables: variablesProp,
 
     useEffect(() => {
         if (variables) {
-            setParsedVariables(replaceClient(variables, localStorage.getItem('client') ?? 'client_demo'));
+            setParsedVariables(replaceClient(variables, localStorage.getItem('client') ?? '<YOUR_CLIENT>'));
         }
     }, [variables]);
 

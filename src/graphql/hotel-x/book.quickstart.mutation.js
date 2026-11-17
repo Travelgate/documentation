@@ -116,7 +116,7 @@ export const bookQuickStartVariables =
 		]
 	},
 	"settings": {
-		"client": "client_demo",
+		"client": "<YOUR_CLIENT>",
 		"testMode": true,
 		"timeout": 60000
 	}

@@ -225,7 +225,7 @@ export const searchQuickStartVariables =
         }
     },
     "settings" : {
-        "client" : "client_demo",
+        "client" : "<YOUR_CLIENT>",
         "testMode" : true,
         "timeout" : 25000,
         "plugins" : [
@@ -283,7 +283,7 @@ export const searchWithoutFilterVariables =
         "nationality" : "ES"
     },
     "settings" : {
-        "client" : "client_demo",
+        "client" : "<YOUR_CLIENT>",
         "testMode" : true,
         "timeout" : 25000,
         "plugins" : [
@@ -348,7 +348,7 @@ export const searchWithOnlyOneAccess =
         }
     },
     "settings" : {
-        "client" : "client_demo",
+        "client" : "<YOUR_CLIENT>",
         "testMode" : true,
         "timeout" : 25000,
         "plugins" : [
@@ -424,7 +424,7 @@ export const searchTwoRoomsVariables =
         }
     },
     "settings" : {
-        "client" : "client_demo",
+        "client" : "<YOUR_CLIENT>",
         "testMode" : true,
         "timeout" : 25000,
         "plugins" : [
@@ -493,7 +493,7 @@ export const searchMultipleHotelsVariables =
         }
     },
     "settings" : {
-        "client" : "client_demo",
+        "client" : "<YOUR_CLIENT>",
         "testMode" : true,
         "timeout" : 25000,
         "plugins" : [

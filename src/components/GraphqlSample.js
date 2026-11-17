@@ -80,6 +80,7 @@ const GraphqlSampleEditor = ({token, query: queryProp, variables: variablesProp,
     useEffect(() => {
         if (token) {
             setHeaders(`{"Authorization": "Bearer ${token}"}`);
+            clearTimeout(headerUpdateTimer.current);
             setFetcherHeaders({Authorization: `Bearer ${token}`});
         }
     }, [token]);

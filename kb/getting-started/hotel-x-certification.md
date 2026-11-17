@@ -1054,11 +1054,11 @@ query (
 </details>
 
 ### What Connections Should I Use for Certification?
-It is recommended to always use the [demo connections provided](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials) (Travelgate test and Smyrooms test) along with your client and API Key.
+It is recommended to always use the [demo connections provided](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials) (Travelgate test and Smyrooms test) along with your client and Travelgate bearer token.
 
 ### Which Credentials and Hotels Can I Use for Certification Cases?
-For certification cases, you can use the following credentials and hotel:
-- **Apikey:** "Apikey test0000-0000-0000-0000-000000000000".
+For certification cases, use your own Travelgate bearer token and the following client and hotel. Replace only the placeholder in the Authorization header; keep the `Bearer ` prefix and the space after it:
+- **Authorization:** `Bearer <YOUR_TRAVELGATE_BEARER_TOKEN>`.
 - **Client:** “client_demo”.
 - **Hotel:** "BR1518".
 

@@ -8,11 +8,17 @@ const OUTPUT_FILE = path.join(__dirname, "../schema-json/inventory-schema.json")
 // The schema is downloaded on behalf of the person updating the documentation, using their
 // personal Travelgate bearer token (TRAVELGATE_BEARER, sent as `Bearer`). For local/manual runs,
 // this script fails fast if the bearer is missing. In CI there is no interactive user, so it
-// falls back to the stable service API key (TRAVELGATE_API_KEY secret) and, if that is absent, to
-// the public introspection key — this keeps the automated schema generation working without a bearer.
-const PUBLIC_INTROSPECTION_KEY = "test0000-0000-0000-0000-000000000000";
+// uses the stable service API key (TRAVELGATE_API_KEY secret). CI fails if the key is missing.
 
 function resolveAuthHeader() {
+  if (process.env.CI) {
+    if (!process.env.TRAVELGATE_API_KEY) {
+      console.error("Missing TRAVELGATE_API_KEY in CI. Configure the repository secret before generating the schema.");
+      process.exit(1);
+    }
+    return "Apikey " + process.env.TRAVELGATE_API_KEY;
+  }
+
   const rawBearer = process.env.TRAVELGATE_BEARER;
   // Normalize: trim whitespace and strip an optional leading "Bearer " prefix so pasting a
   // full Authorization header value does not duplicate the scheme when we prepend "Bearer ".
@@ -21,17 +27,12 @@ function resolveAuthHeader() {
     : rawBearer;
   if (bearer) return "Bearer " + bearer;
 
-  if (process.env.CI) {
-    return "Apikey " + (process.env.TRAVELGATE_API_KEY || PUBLIC_INTROSPECTION_KEY);
-  }
-
   const apiKey = process.env.TRAVELGATE_API_KEY;
   if (apiKey) return "Apikey " + apiKey;
 
   console.error(
-    "❌ Missing TRAVELGATE_BEARER.\n" +
-    "   This script downloads the GraphQL schema using the bearer token of the person\n" +
-    "   updating the documentation. Set your bearer before running, e.g.:\n" +
+    "Missing TRAVELGATE_BEARER or TRAVELGATE_API_KEY.\n" +
+    "   Set your bearer token before running, e.g.:\n" +
     "     PowerShell:  $env:TRAVELGATE_BEARER = \"<your-bearer>\"\n" +
     "     bash/zsh:    export TRAVELGATE_BEARER=\"<your-bearer>\"\n" +
     "   Then re-run this script."

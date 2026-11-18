@@ -1054,21 +1054,26 @@ query (
 </details>
 
 ### What Connections Should I Use for Certification?
-It is recommended to always use the [demo connections provided](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials) (Travelgate test and Smyrooms test) along with your client and API Key.
+It is recommended to always use the [demo connections provided](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials) (Travelgate test and Smyrooms test) along with your client and Travelgate Onboarding Apikey.
 
 ### Which Credentials and Hotels Can I Use for Certification Cases?
-For certification cases, you can use the following credentials and hotel:
-- **Apikey:** "Apikey test0000-0000-0000-0000-000000000000".
-- **Client:** “client_demo”.
+For certification cases, use your own Travelgate Apikey and client, along with the following hotel. Replace only the placeholder in the Authorization header; keep the `Apikey` prefix and the space after it:
+- **Authorization:** `Apikey <YOUR_API_KEY>`.
+- **Client:** `<YOUR_CLIENT>`.
+- **Access Code:** `2`
 - **Hotel:** "BR1518".
 
 ### What credentials should I use when moving to the production environment?
 
 Once you complete the HotelX certification process and transition to the production environment, you must **update your connection credentials**. 
 
-During the certification phase, you utilize the [test API Key and Client](/docs/apis/for-buyers/hotel-x-pull-buyers-api/hotel-x-certification#which-credentials-and-hotels-can-i-use-for-certification-cases) provided by Travelgate. To successfully process live requests, you must **replace these test credentials with your own**:
+During the certification phase, you authenticate with your own Travelgate Onboarding Apikey and client provided by Travelgate. To successfully process live requests, you must **switch to your production credentials**:
 
-* **API Key:** Replace the Travelgate test API Key with your [assigned Buyer production API Key](/kb/platform/app-features/account-settings/api-keys/manage-api-keys).
-* **Client:** Replace the Travelgate client_demo with your [production Client identifier](/kb/platform/app-features/connections/api-settings).
+* **Authorization:** Replace your Apikey with your [production API Key](/kb/platform/app-features/account-settings/api-keys/manage-api-keys) (`Apikey <YOUR_API_KEY>`).
+* **Client:** Replace your client with your [production Client](/kb/platform/app-features/connections/api-settings).
 
-Ensure these parameters are updated in your request headers **before** initiating any live traffic to avoid authentication and [validation errors](/kb/connectivity-products/for-buyers/errors-and-warnings/validation-error).
+:::warning Live reservations may incur charges
+All reservations made in the production environment are **live reservations**. Suppliers consider them real bookings and may apply charges, such as cancellation penalties or no-show fees.
+:::
+
+Update both parameters in your request headers **before sending any live traffic**. This avoids [validation errors](/kb/connectivity-products/for-buyers/errors-and-warnings/validation-error) and unintended supplier charges. If you need to run further tests after going live, see [Hotel X credentials](/kb/connectivity-products/for-buyers/hotel-x/hotel-x-credentials) for the recommended precautions.

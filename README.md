@@ -3,7 +3,7 @@
 This website is built using [Docusaurus 3](https://docusaurus.io/)
 
 ## Requirements
-* Node.js version 18 or above
+* Node.js 24.22.3 (see `.nvmrc`)
 
 ## Installation
 
@@ -17,7 +17,7 @@ To run this command, you need a Travelgate **bearer token** set in an environmen
 `TRAVELGATE_BEARER`. This is the bearer of the person updating the documentation (you can obtain it
 from your Travelgate session). The way you set the environment variable depends on your operating
 system. For a local/manual run, if the bearer is missing, `npm run generate-schema` fails with an error message explaining how to set `TRAVELGATE_BEARER`.
-In CI the command falls back automatically to the `TRAVELGATE_API_KEY` secret (or the public introspection key), so no bearer is needed on the pipeline.
+In CI the command requires the `TRAVELGATE_API_KEY` secret and fails if it is unavailable. It does not fall back to a public key.
 
 #### Before you continue
 

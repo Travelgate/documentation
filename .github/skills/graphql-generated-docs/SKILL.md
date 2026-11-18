@@ -42,10 +42,8 @@ else (OBJECT/ENUM responses) → **Returned Fields**.
 
 ## Prerequisites
 - `TRAVELGATE_BEARER` must be set in the environment when running the scripts manually (ask the
-  user for their bearer token if missing; do not hardcode it). For a local/manual run the scripts
-  exit with an error message if it is absent. In CI (`process.env.CI`) there is no interactive user, so
-  the scripts fall back to the `TRAVELGATE_API_KEY` secret and, if that is absent too, to the
-  public introspection key — keeping the automated schema generation working without a bearer.
+   user for their bearer token if missing; do not hardcode it). In CI (`process.env.CI`), the scripts
+   require the `TRAVELGATE_API_KEY` secret and exit with an error if it is unavailable.
 - Dependencies installed (`npm install`) — `fetchSchema.js` uses `node-fetch`.
 
 ## Procedure

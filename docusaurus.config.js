@@ -167,10 +167,10 @@ const config = {
               },
               {
                 "@type": "Question",
-                "name": "How can I access the Hotel-X API Playground?",
+                "name": "How can I access the HotelX API Playground?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Access the Hotel-X API Playground via the Travelgate documentation to explore and test API queries, customize GraphQL requests, and view real-time responses in a safe development environment."
+                  "text": "Access the HotelX API Playground via the Travelgate documentation to explore and test API queries, customize GraphQL requests, and view real-time responses in a safe development environment."
                 }
               },
               {

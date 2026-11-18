@@ -19,7 +19,7 @@ What sets HotelX API apart is its innovative structure: with a single integratio
 ![HotelX Overview](https://storage.travelgate.com/docs/hotel-x_overview.svg)
 
 
-**Within Hotel-X API, Buyers work across three main areas:**
+**Within HotelX API, Buyers work across three main areas:**
 
 - **Content**: static master data, including both **FastX codes** (Travelgate unique codes) and each Supplier's **native codes and static information**.
 - **Booking Flow**: all required steps to complete an end-to-end booking flow.
@@ -83,7 +83,7 @@ Connection: keep-alive
 Authorization: Apikey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ``` 
 
-If you don't have an API key yet, don't worry — you'll be able to test the upcoming query and mutation examples using a test API key and preloaded test data directly in the playground. You can also find full details of the credentials and hotel data used in the [Development credentials and test data](#development-credentials-and-test-data) section below.
+If you don't have an API key yet, you can still test the upcoming query and mutation examples in the playground using your personal Travelgate bearer token and preloaded test data. Follow the [Admin API Authentication Guide](/docs/apis/for-buyers-and-sellers/admin-api/authentication) to obtain your token. The [Development credentials and test data](#development-credentials-and-test-data) section below explains how to set the Authorization header and lists the test hotel data.
 
 
 #### Supported Operations
@@ -170,11 +170,12 @@ Make sure to change the value of the `clientReference` field so that the Book ca
 
 ## Development credentials and test data
 
-To help you get started, we provide test credentials and example data that you can safely use during the development phase. These credentials allow you to run test queries and explore the structure and behavior of HotelX without impacting real live Suppliers.
+To help you get started, we provide test data that you can safely use during development. In the GraphQL editor, set the `Authorization` header to `Apikey <YOUR_API_KEY>`, replacing only the placeholder with your Apikey. Keep the `Apikey` prefix and the space after it.
 
 **Credentials**  
-- **Apikey:** `test0000-0000-0000-0000-000000000000`  
-- **Client:** `client_demo`
+- **Authorization:** `Apikey <YOUR_API_KEY>` for the playground and direct API requests. Replace only the placeholder and keep the prefix.
+- **Authorization (without an API key):** For the playground, set the `Authorization` header to the `Bearer` prefix, a space, and your personal Travelgate bearer token.
+- **Client:** `<YOUR_CLIENT>`. Use the client assigned to your organization for the Certification process.
 
 **Example Suppliers and Hotels**  
 - **Travelgate test supplier** (supplier code: HOTELTEST - context: HOTELTEST)

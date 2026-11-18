@@ -88,7 +88,7 @@ Travelgate partners with major hotel distribution and travel industry leaders, i
 The Travelgate team responds promptly to every partnership request.
 
 :::info Looking for Technical Guides or API References?
-If you are setting up or managing an integration, explore our [Getting Started Guide](/kb/getting-started/onboarding) or dive directly into the [Developer API Documentation](/docs/apis/overview).
+If you are setting up or managing an integration, explore our [Getting Started Guide](/kb/connectivity-products/for-buyers/hotel-x/onboarding) or dive directly into the [Developer API Documentation](/docs/apis/overview).
 :::
 
 ### Travelgate's Core Values

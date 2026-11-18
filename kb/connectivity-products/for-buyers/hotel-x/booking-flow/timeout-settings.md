@@ -32,7 +32,7 @@ You can configure timeout values in two ways:
 ```json
 {
     "settings" : {
-        "client" : "client_demo",
+        "client" : "<YOUR_CLIENT>",
         "testMode" : true,
         "auditTransactions" : false,
         "timeout" : 5000

@@ -84,7 +84,7 @@ export const roomsAmendmentQuoteVariables =
 	},
 	"settings": {
 		"context": "HOTELTEST",
-		"client": "client_demo",
+		"client": "<YOUR_CLIENT>",
 		"auditTransactions": true,
 		"timeout": 60000,
 		"testMode": true

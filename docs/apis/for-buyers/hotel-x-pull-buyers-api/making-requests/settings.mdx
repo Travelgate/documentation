@@ -97,7 +97,7 @@ Use `defaultSettings` to retrieve defaults at Organization level (`group`) or at
 ```graphql
 query ReadDefaultSettings {
   hotelX {
-    defaultSettings(group: "YOUR_GROUP_ID", clientName: "client_demo") {
+    defaultSettings(group: "<YOUR_GROUP_ID>", clientName: "<YOUR_CLIENT>") {
       settings {
         context
         language
@@ -130,7 +130,7 @@ Use `commonSettings` to retrieve defaults for:
 ```graphql
 query ReadCommonSettings {
   hotelX {
-    commonSettings(group: "YOUR_GROUP_ID", supplier: "YOUR_SUPPLIER_ID") {
+    commonSettings(group: "<YOUR_GROUP_ID>", supplier: "<YOUR_SUPPLIER_ID>") {
       settings {
         currency
         markets
@@ -160,8 +160,8 @@ For Organization and Client levels, use:
 mutation UpdateClientDefaultSettings {
   hotelX {
     updateDefaultSettings(
-      group: "YOUR_GROUP_ID"
-      clientName: "client_demo"
+      group: "<YOUR_GROUP_ID>"
+      clientName: "<YOUR_CLIENT>"
       settings: {
         language: "en"
         currency: "EUR"
@@ -285,7 +285,7 @@ For example, if you don't send `currency` in `criteria` and need supplier `HOTEL
         ]
     },
     "settings": {
-        "client": "client_demo",
+        "client": "<YOUR_CLIENT>",
         "timeout": 11000,
         "suppliers": [
             {
@@ -314,7 +314,7 @@ Alternatively, if you want the **same** override to apply to every access of tha
 
 ```js
 "settings": {
-    "client": "client_demo",
+    "client": "<YOUR_CLIENT>",
     "timeout": 11000,
     "suppliers": [
         {
@@ -335,7 +335,7 @@ Both approaches can be combined and used for multiple suppliers within the same 
 
 ```js
 "settings": {
-    "client": "client_demo",
+    "client": "<YOUR_CLIENT>",
     "timeout": 11000,
     "suppliers": [
         {

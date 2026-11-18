@@ -37,7 +37,7 @@ export const destinationsVariables =
 export const destinationsFastXVariables = 
 `{
 	"criteria": {
-		"access": "34538"
+		"access": "34769"
 	},
 	"token": ""
 }`

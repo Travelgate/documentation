@@ -16,7 +16,11 @@ import {
   searchMultipleHotelsVariables,
   searchWithoutFilterVariables,
   searchWithOnlyOneAccess,
-} from "../../../../../src/graphql/hotel-x/search.quickstart.query";
+} from "../../../../../src/graphql/hotel-x/search/search.quickstart.query";
+import searchWithoutFilterResponse from "../../../../../src/graphql/hotel-x/search/responses/search-without-filter.response.json";
+import searchOnlyOneAccessResponse from "../../../../../src/graphql/hotel-x/search/responses/search-only-one-access.response.json";
+import searchTwoRoomsResponse from "../../../../../src/graphql/hotel-x/search/responses/search-two-rooms.response.json";
+import searchMultipleHotelsResponse from "../../../../../src/graphql/hotel-x/search/responses/search-multiple-hotels.response.json";
 
 # Search
 
@@ -398,6 +402,7 @@ This first Search query is executed without specifying the 'filterSearch > acces
 <GraphqlSample api="shopping"
   query={searchQuickStartQuery}
   variables={searchWithoutFilterVariables}
+  response={searchWithoutFilterResponse}
 />
 &nbsp;
 
@@ -406,6 +411,7 @@ In the next example, the Search query includes the 'filterSearch > access' node,
 <GraphqlSample api="shopping"
   query={searchQuickStartQuery}
   variables={searchWithOnlyOneAccess}
+  response={searchOnlyOneAccessResponse}
 />
 &nbsp;
 
@@ -414,6 +420,7 @@ In the next example, the Search query includes the 'filterSearch > access' node,
 <GraphqlSample api="shopping"
   query={searchQuickStartQuery}
   variables={searchTwoRoomsVariables}
+  response={searchTwoRoomsResponse}
 />
 &nbsp;
 
@@ -422,6 +429,7 @@ In the next example, the Search query includes the 'filterSearch > access' node,
 <GraphqlSample api="shopping"
   query={searchQuickStartQuery}
   variables={searchMultipleHotelsVariables}
+  response={searchMultipleHotelsResponse}
 />
 &nbsp;
 

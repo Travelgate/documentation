@@ -24,6 +24,6 @@ export const hotelsListQuerySampleA = `query($criteria: HotelXHotelListInput!) {
 
 export const hotelsListQuerySampleAVariables = `{
   "criteria": {
-    "access": "34538"
+    "access": "34769"
   }
 }`;

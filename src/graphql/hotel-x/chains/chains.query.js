@@ -29,17 +29,17 @@ export const chainsVariables =
 export const chainsFastXVariables =
 `{
   "criteria": {
-    "access": "34538"
+    "access": "34769"
   }
 }`
 
 export const chainsByChainCodeVariables =
 `{
   "criteria": {
-    "access": "34538",
+    "access": "34769",
     "chainCodes": [
-      "MARR",
-      "HYAT"
+      "RIUHOTELS",
+      "MC"
     ]
   }
 }`

@@ -31,7 +31,7 @@ export const categoriesVariables =
 export const categoriesFastXVariables = 
 `{
 	"criteria": {
-		"access": "34538"
+		"access": "34769"
 	}
 }`
 

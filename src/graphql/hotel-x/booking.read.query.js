@@ -82,7 +82,7 @@ export const bookingByBookingIDVariables =
 		"bookingID": "n1@1[270528[270529[251219[101930[en[EUR[2[test_0123456789_19122025_2[5015264["
 	},
 	"settings": {
-		"client": "client_demo",
+		"client": "<YOUR_CLIENT>",
 		"testMode": true,
 		"timeout": 60000
 	}
@@ -106,7 +106,7 @@ export const bookingByReferenceVariables =
 		}
 	},
 	"settings": {
-		"client": "client_demo",
+		"client": "<YOUR_CLIENT>",
 		"testMode": true,
 		"timeout": 18000
 	}
@@ -125,7 +125,7 @@ export const bookingByArrivalDatesVariables =
 		}
 	},
 	"settings": {
-		"client": "client_demo",
+		"client": "<YOUR_CLIENT>",
 		"context": "HOTELTEST",
 		"testMode": true,
 		"timeout": 180000
@@ -144,7 +144,7 @@ export const bookingByBookingDatesVariables =
 		}
 	},
 	"settings": {
-		"client": "client_demo",
+		"client": "<YOUR_CLIENT>",
 		"context": "HOTELTEST",
 		"testMode": true,
 		"timeout": 180000
@@ -162,7 +162,7 @@ export const bookingByDatesAggregatedVariables =
 		}
 	},
 	"settings": {
-		"client": "client_demo",
+		"client": "<YOUR_CLIENT>",
 		"testMode": true,
 		"timeout": 180000
 	}

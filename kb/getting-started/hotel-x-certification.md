@@ -369,7 +369,7 @@ query (
     "nationality": "ES"
   },
   "settings": {
-    "client": "client_demo",
+    "client": "<YOUR_CLIENT>",
     "testMode": true,
     "timeout": 25000,
     "plugins": [

@@ -101,7 +101,7 @@ export const oneStepQuoteVariables =
     },
     "settings" : {
         "testMode" : true,
-        "client" : "client_demo",
+        "client" : "<YOUR_CLIENT>",
         "context" : "HOTELTEST",
         "timeout" : 20000
     },

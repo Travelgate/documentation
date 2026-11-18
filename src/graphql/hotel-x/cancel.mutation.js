@@ -96,7 +96,7 @@ export const cancelByBookingIDVariables =
 		"bookingID": "n1@1[270528[270529[251219[101930[en[EUR[2[test_0123456789_19122025_2[5015264["
 	},
 	"settings": {
-		"client": "client_demo",
+		"client": "<YOUR_CLIENT>",
 		"testMode": true,
 		"timeout": 18000
 	}
@@ -114,7 +114,7 @@ export const cancelByReferenceVariables =
 		}
 	},
 	"settings": {
-		"client": "client_demo",
+		"client": "<YOUR_CLIENT>",
 		"testMode": true,
 		"timeout": 60000
 	}

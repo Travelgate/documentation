@@ -130,9 +130,9 @@ export const hotelsByCountryVariables =
 	"criteriaHotels": {
 		"access": "34769",
 		"countries": [
-			"GR"
+			"US"
 		],
-		"maxSize": 5
+		"maxSize": 10
 	},
 	"token": ""
 }`

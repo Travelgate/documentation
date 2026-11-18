@@ -11,7 +11,7 @@ A **connector** functions as a "translator" between the systems of Buyers and Se
 :::info This page covers the Seller side
 This page explains how a **Seller** connects its product to Travelgate (Pull, Push Standard, or Push Hybrid) — that is, how availability, rates, and bookings flow between the Seller's system and Travelgate.
 
-This is independent from how a **Buyer** consumes that product: no matter which Seller connection type is used, Buyers can always retrieve the product in **Pull** (via the [HotelX Pull Buyers API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart)) or in **Push** (via the [ChannelX Push Buyers API](/docs/apis/for-buyers/channel-x-push-buyers-api/quickstart)). For example, a Seller that pushes its product into our Inventory can be consumed by a Buyer in Pull mode through HotelX, or in Push mode through ChannelX.
+Buyers can retrieve product in **Pull** via the [HotelX Pull Buyers API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart). **Push** delivery via the [ChannelX Push Buyers API](/docs/apis/for-buyers/channel-x-push-buyers-api/quickstart) is available only for product previously pushed into Travelgate Inventory, not for Pull-only Sellers. For example, a Seller that pushes its product into our Inventory can be consumed by a Buyer in Pull mode through HotelX, or in Push mode through ChannelX.
 :::
 
 ## Which Connectivity Model Should I Use?

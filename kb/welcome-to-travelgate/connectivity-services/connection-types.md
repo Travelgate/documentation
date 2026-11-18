@@ -2,17 +2,29 @@
 sidebar_position: 3
 ---
 
-# Connection Types
+# Seller Connection Types
 
 ## First Things First: What is a Connector?
 
 A **connector** functions as a "translator" between the systems of Buyers and Sellers. It allows different formats or programming languages to be compatible, ensuring that information from a hotel provider is accessible on an online travel agency’s portal—even if their databases are structured differently.
+
+:::info This page covers the Seller side
+This page explains how a **Seller** connects its product to Travelgate (Pull, Push Standard, or Push Hybrid) — that is, how availability, rates, and bookings flow between the Seller's system and Travelgate.
+
+Buyers can retrieve product in **Pull** via the [HotelX Pull Buyers API](/docs/apis/for-buyers/hotel-x-pull-buyers-api/quickstart). **Push** delivery via the [ChannelX Push Buyers API](/docs/apis/for-buyers/channel-x-push-buyers-api/quickstart) is available only for product previously pushed into Travelgate Inventory, not for Pull-only Sellers. For example, a Seller that pushes its product into our Inventory can be consumed by a Buyer in Pull mode through HotelX, or in Push mode through ChannelX.
+:::
 
 ## Which Connectivity Model Should I Use?
 
 - Use **Pull** when the Seller remains the real-time source of availability, pricing, and booking data. Travelgate requests the information from the Seller when the Buyer needs it.
 - Use **Push Standard** when Travelgate should manage the Seller Inventory locally (setup, availability and pricing). Buyers use data that has already been loaded into Inventory.
 - Use **Push Hybrid** when setup and search data are stored in Travelgate Inventory, but the final price, cancellation policies, or booking details must be validated in real time with the Seller.
+
+:::info Who develops each integration?
+- **Pull connectors** are always developed and maintained by **Travelgate** — the Seller only exposes its API and technical specifications.
+- **Push integrations** are developed by the **Seller** (or its Channel Manager), implementing the [Inventory Push Sellers API](/docs/apis/for-sellers/inventory-push-graphql-api/quickstart) to load data into Travelgate Inventory.
+- **Hybrid connectors** are developed by **Travelgate**, combining a Push setup with real-time validation at booking.
+:::
 
 ## Pull Connection
 

@@ -8,7 +8,7 @@ import Link from "@docusaurus/Link";
 import {useLocation} from "@docusaurus/router";
 import {GRAPHQL_APIS} from "../graphql/playgrounds";
 import {hotelsListQuerySampleA, hotelsListQuerySampleAVariables} from "../graphql/sample-queries/hotels.list.query";
-import {searchQuickStartQuery, searchQuickStartVariables} from "../graphql/hotel-x/search.quickstart.query";
+import {searchQuickStartQuery, searchQuickStartVariables} from "../graphql/hotel-x/search/search.quickstart.query";
 import {hotelsMasterQuery, hotelsMasterByContextCodeVariables} from "../graphql/inventory/masters/hotels-master.query";
 import {apiByCodeQuery, apiByCodeVariables} from "../graphql/admin/api.query";
 

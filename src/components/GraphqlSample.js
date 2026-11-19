@@ -3,6 +3,7 @@ import '../graphql/setupMonacoWorkers';
 import {useEffect, useMemo, useRef, useState} from 'react';
 import BrowserOnly from '@docusaurus/BrowserOnly';
 import {Details} from '@docusaurus/theme-common/Details';
+import CodeBlock from '@theme/CodeBlock';
 import {createGraphiQLFetcher} from '@graphiql/toolkit';
 import {GraphiQL} from 'graphiql';
 import useIsBrowser from '@docusaurus/useIsBrowser';
@@ -53,6 +54,23 @@ const EndpointBar = ({label, endpoint}) => {
             </button>
             <CopyStatus copied={copied} message={`${label} endpoint URL copied`} />
         </div>
+    );
+};
+
+const GraphqlResponse = ({response}) => {
+    const formattedResponse = useMemo(() => JSON.stringify(response, null, 2), [response]);
+
+    return (
+        <Details
+            className="graphql-sample-response"
+            summary={
+                <summary className="graphql-sample-response__summary">
+                    <span className="graphql-sample-response__title">View sample response</span>
+                </summary>
+            }
+        >
+            <CodeBlock language="json">{formattedResponse}</CodeBlock>
+        </Details>
     );
 };
 
@@ -142,12 +160,17 @@ const GraphqlSampleEditor = ({token, query: queryProp, variables: variablesProp,
     );
 }
 
-const GraphqlSample = ({collapsible = true, ...props}) => {
+const GraphqlSample = ({collapsible = true, response, ...props}) => {
     const [hasOpened, setHasOpened] = useState(false);
     const {label} = getGraphqlApi(props.api ?? 'generic');
 
     if (!collapsible) {
-        return <GraphqlSampleEditor {...props} />;
+        return (
+            <>
+                <GraphqlSampleEditor {...props} />
+                {response && <GraphqlResponse response={response} />}
+            </>
+        );
     }
 
     return (
@@ -166,7 +189,12 @@ const GraphqlSample = ({collapsible = true, ...props}) => {
             }}
         >
             <div className="graphql-example__content">
-                {hasOpened && <GraphqlSampleEditor {...props} />}
+                {hasOpened && (
+                    <>
+                        <GraphqlSampleEditor {...props} />
+                        {response && <GraphqlResponse response={response} />}
+                    </>
+                )}
             </div>
         </Details>
     );

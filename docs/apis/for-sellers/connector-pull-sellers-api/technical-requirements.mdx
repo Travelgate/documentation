@@ -1,0 +1,109 @@
+---
+sidebar_position: 2
+---
+
+# Technical Validation Criteria
+
+Before Travelgate starts developing your connector, every Seller API goes through a **technical validation**. This page explains what we check, why it matters, and what you need to send us — so the development phase starts faster and the resulting connection delivers high-quality product to our Buyers.
+
+:::info Two levels of requirements
+- **Mandatory** — your API must meet these criteria for development to begin.
+- **Highly recommended** — not blockers, but essential for your product to be competitive in the Marketplace.
+:::
+
+## What your API must provide (mandatory)
+
+These checkpoints are **non-negotiable**. If any of them is missing, the integration cannot move forward.
+
+### 1. Complete documentation and working authentication
+
+We need **detailed endpoint documentation** and a **comprehensive list of error codes**, plus a **stable authentication flow** (OAuth, API Key, etc.) that is fully functional in your test environment. Without this, our team cannot reliably build or troubleshoot the connector.
+
+### 2. A standard booking flow
+
+Your API must support the standard shopping flow:
+
+**Search → Quote (if applicable) → Book**
+
+It must also focus on **standard accommodation with daily check-in**. We do not currently integrate packages, last-minute hourly offers, or non-standard booking units through this flow.
+
+### 3. Structured cancellation policies
+
+Cancellation policies protect both the Buyer and the Seller, so we cannot work with free-text descriptions. Every policy must include:
+
+- **Start date** and **end date**
+- **Penalty amount** and **penalty type** (Amount, Percentage, or Number of Nights)
+
+The policy logic must allow a **direct or algorithmic mapping** to the Travelgate model.
+
+### 4. Compatible payment types
+
+Your API must support at least one of these payment types:
+
+`MERCHANT` · `DIRECT` · `CARD_BOOKING` · `CARD_CHECK_IN`
+
+## What makes your product competitive (highly recommended)
+
+Your integration might technically work without these, but they make a real difference in how your product performs on the Buyer side.
+
+| Requirement | Why it matters |
+| --- | --- |
+| **Request/Response examples** | Dramatically reduces development time and troubleshooting. |
+| **Defined meal plans** | If not provided, Travelgate assumes "Room Only", lowering your product's value. |
+| **Category codes and descriptions** | Without them, your hotels are listed as "NC" (No Category), reducing competitiveness. |
+| **Meal plan list** | Essential for mapping and filtering on the Buyer side. |
+| **Geocoding and address data** | Required for accurate hotel mapping (latitude/longitude, name, country). |
+| **Real-time cancellation status** | Needed to confirm the success of a cancellation request. |
+
+## Technical checklist before development
+
+Make sure your API supports these capabilities before the Development phase begins.
+
+**Performance & scalability**
+- Stable response times under load. Scalability testing is mandatory to ensure your production environment can handle Travelgate's traffic volumes.
+
+**Availability & inventory**
+- **Multi-hotel search** — search by a list of hotel codes in a single request.
+- **Unique identifiers** — every option/room returned must have a unique identifier to prevent booking errors.
+
+**Static data (content)**
+- **Hotel list endpoint** (mandatory) — retrieve your full portfolio of hotel codes.
+- **Destination tree** (recommended) — your destination structure for better geographic filtering.
+
+## How to submit your API for validation
+
+Once your API meets the mandatory and high-priority criteria, send us the following:
+
+1. **Requirements template** — download the [Seller API Technical Requirements Template](https://storage.travelgate.com/docs/Travelgate_Seller__API_Technical_Requirements_Template.xlsx) and return it with columns **G** and **H** fully completed.
+2. **Production-like sandbox access** — credentials for a testing environment.
+3. **API request examples** — a collection of example requests and responses covering a full Search-to-Book flow.
+4. **Mapping tables** — specifically for Room Types, Meal Plans, and Cancellation Penalties.
+
+:::tip
+The more complete your submission is (documentation, examples, and mapping tables), the faster our team can validate your API and start the connector development.
+:::
+
+## Annex: criteria reference codes
+
+The requirements template uses internal reference codes for each criterion. Use this table to map the criteria above to the codes in the Excel file.
+
+| Code | Category | Criterion |
+| --- | --- | --- |
+| DOC-01, DOC-02, DOC-04 | Documentation | Full endpoint documentation and error code list |
+| DOC-03 | Documentation | Request/Response examples |
+| AUTH-01, AUTH-02 | Security | Stable authentication flow in test environment |
+| FUN-02 | Booking flow | Standard Search → Quote → Book flow |
+| AVAI-01 | Availability | Multi-hotel search in a single request |
+| AVAI-06 | Availability | Unique identifier per option/room |
+| AVAI-07 | Availability | Standard accommodation with daily check-in |
+| AVAIL-05 | Availability | Defined meal plans |
+| CAT-01 | Categories | Category codes and descriptions |
+| MEAL-01 | Meal plans | Meal plan list |
+| HINFO-01 | Hotel info | Geocoding and address data |
+| CNP-01 | Cancellation | Structured policy data (dates, amount, type) |
+| CNP-04 | Cancellation | Mappable policy logic (no free text) |
+| CNX-01 | Cancellation | Real-time cancellation status |
+| PAY-01 | Payment | At least one supported payment type |
+| PER-01, PER-02 | Performance | Stable response times and scalability testing |
+| HLIS-01 | Content | Hotel list endpoint |
+| DES-01 | Content | Destination tree |

@@ -2,9 +2,12 @@
 sidebar_position: 1
 ---
 
-import {searchQuickStartQuery, searchQuickStartVariables} from "../../../../src/graphql/hotel-x/search.quickstart.query";
-import {quoteQuickStartQuery, quoteQuickStartVariables} from "../../../../src/graphql/hotel-x/quote.quickstart.query";
-import {bookQuickStartMutation, bookQuickStartVariables} from "../../../../src/graphql/hotel-x/book.quickstart.mutation";
+import {searchQuickStartQuery, searchQuickStartVariables} from "../../../../src/graphql/hotel-x/search/search.quickstart.query";
+import searchQuickStartResponse from "../../../../src/graphql/hotel-x/search/responses/search-quickstart.response.json";
+import {quoteQuickStartQuery, quoteQuickStartVariables} from "../../../../src/graphql/hotel-x/quote/quote.quickstart.query";
+import quoteQuickStartResponse from "../../../../src/graphql/hotel-x/quote/responses/quote-quickstart.response.json";
+import {bookQuickStartMutation, bookQuickStartVariables} from "../../../../src/graphql/hotel-x/book/book.quickstart.mutation";
+import bookQuickStartResponse from "../../../../src/graphql/hotel-x/book/responses/book-quickstart.response.json";
 
 
 # Quickstart
@@ -115,11 +118,16 @@ Remember, an **access** is a unique code representing the credentials that a Sup
 
 This step lets you explore your options before committing to a booking, ensuring you understand what each Supplier offers for the same property.
 
-<GraphqlSample api="shopping" query={searchQuickStartQuery} variables={searchQuickStartVariables}/>
+<GraphqlSample
+  api="shopping"
+  query={searchQuickStartQuery}
+  variables={searchQuickStartVariables}
+  response={searchQuickStartResponse}
+/>
 
 &nbsp;
 
-If you execute the previous Search query by clicking the play button, you'll get a sample Search response with all available options and rates for the requested hotel and criteria.
+If you execute the previous Search query by clicking the play button, you'll get a Search response with all available options and rates for the requested hotel and criteria. You can also expand **View sample response** to inspect a captured example.
 
 For each option, you will receive key details such as **Supplier**, **FastX and Supplier codes**, **room type**, **price**, **cancellation policies**, and more. 
 This example focuses on the essential fields, but HotelX API supports many additional capabilities. To explore all Search features, check the full [search step documentation](../hotel-x-pull-buyers-api/booking-flow/search). 
@@ -141,7 +149,12 @@ Now, let's dive into the exciting part! After carefully reviewing all the option
 
 To make this happen, you'll need to retrieve the `optionRefId` from the option of the search results that you want to valuate and use this value as the input for the Quote request:
 
-<GraphqlSample api="shopping" query={quoteQuickStartQuery} variables={quoteQuickStartVariables}/>
+<GraphqlSample
+  api="shopping"
+  query={quoteQuickStartQuery}
+  variables={quoteQuickStartVariables}
+  response={quoteQuickStartResponse}
+/>
 
 &nbsp;
 
@@ -157,7 +170,12 @@ You're almost there! After securing your quote and ensuring all the details alig
 
 You'll need to provide the `optionRefId` returned in the Quote step and enter all the necessary passenger information. Upon a successful booking request, you'll receive a confirmation along with essential reservation details. Congratulations! Your hotel stay is now officially booked.
 
-<GraphqlSample api="shopping" query={bookQuickStartMutation} variables={bookQuickStartVariables} />
+<GraphqlSample
+  api="shopping"
+  query={bookQuickStartMutation}
+  variables={bookQuickStartVariables}
+  response={bookQuickStartResponse}
+/>
 
 &nbsp;
 
@@ -187,14 +205,12 @@ To help you get started, we provide test data that you can safely use during dev
   - **Available Hotel Code:** `BR1518`
 
 - **FastX test supplier, to retrieve static master data such hotel and board codes** (code: FASTX) 
-  - **Access Code:** `34538`  
+  - **Access Code:** `34769`
 
 
 :::warning Important 
 These credentials and hotel codes are **for development and testing purposes only**. Please do **not** use them in a production environment, as they are shared and may not reflect live availability.
 :::
-
-
 
 ## Next Steps
 

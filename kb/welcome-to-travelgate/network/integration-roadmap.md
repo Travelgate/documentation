@@ -33,9 +33,8 @@ Each connector card can include:
     | Development Type | Description |
     | --- | --- |
     | **Pull (Travelgate Native)** | Built and maintained directly by Travelgate using dynamic real-time API queries. |
-    | **Push (Travelgate Native)** | Built and maintained directly by Travelgate using Inventory setup and ARI updates. |
+    | **Push (Travelgate Native)** | Built and maintained by Travelgate using Inventory setup and ARI updates. **Legacy/exceptional cases only** — all new Push integrations are developed by the Seller via the [Inventory Push Sellers API](/docs/apis/for-sellers/inventory-push-graphql-api/quickstart). |
     | **Hybrid (Travelgate Native)** | Built by Travelgate. Fast local inventory search with dynamic price & policy validation at booking. |
-    | **Pull (Seller Built)** | Developed and maintained directly by the Seller. |
     | **Push (Seller Built)** | Developed and maintained directly by the Seller or Channel Manager pushing data to our Inventory tool. |
 - **Development status**, such as **In progress**, **Completed**, **Certification**, or **Selected for development**.
 - **Progress percentage**, indicating the current stage of development.

@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Overview
 
-Travelgate offers a set of API and connectivity models that let Buyers and Sellers connect to the marketplace in the way that best fits their systems. This overview helps a Partner quickly identify the right integration path for each side of the network.
+Travelgate offers a set of API and connectivity models that let Buyers and Sellers connect to the network in the way that best fits their systems. This overview helps a Partner quickly identify the right integration path for each side of the network.
 
 ![Diagram of the Travelgate API and connectivity models for Buyers and Sellers](https://storage.travelgate.com/docs/APIs_Overview.svg)
 
@@ -31,5 +31,10 @@ Sellers publish their product to Travelgate in one of three ways.
 | Connectivity model | How the Seller connects | What Travelgate does | Who builds the integration | What the Buyer sees |
 | --- | --- | --- | --- | --- |
 | [**Connector Pull Sellers API**](./for-sellers/connector-pull-sellers-api/quickstart.mdx) | The Seller exposes a pull-based API, and Travelgate builds the connector. | Adapts the Seller API to the Travelgate standard and runs the connectivity layer. | Travelgate builds the connector. | The product through Travelgate, without integrating directly with the Seller. |
-| [**Inventory Push Sellers API**](./for-sellers/inventory-push-graphql-api/quickstart.mdx) | The Seller pushes availability, rates and prices into Travelgate Inventory. | Stores the product centrally in Inventory. | Travelgate or the Seller, using the Inventory API. | The product through different channels and integration models backed by Inventory. |
+| [**Inventory Push Sellers API**](./for-sellers/inventory-push-graphql-api/quickstart.mdx) | The Seller pushes availability, rates and prices into Travelgate Inventory. | Stores the product centrally in Inventory. | The Seller, implementing the Inventory Push API directly. | The product through different channels and integration models backed by Inventory. |
+| **Hybrid (Push + real-time validation)** | The Seller pushes setup and availability into Inventory, and Travelgate validates price, policies, and booking details in real time with the Seller at quote/book. | Combines fast local inventory search with real-time validation at booking. | Travelgate builds the connector. | Fast search responses with up-to-date price and policy confirmation at booking. |
 | [**Sellers Cache Files**](./for-sellers/sellers-cache-files/quickstart.mdx) | The Seller loads product data through files instead of an API. | Loads the files into Inventory, in the Seller's format or a Travelgate standard template. | Travelgate builds the ingestion layer. | The same product in the network, without needing an API connection to the Seller. |
+
+:::tip Not a Partner yet?
+Are you a Seller interested in joining the Travelgate network? [Contact our team](https://team.travelgate.com/contact-us) and we will help you choose the right connectivity model.
+:::

@@ -187,8 +187,12 @@ const GraphqlSample = ({collapsible = true, response, ...props}) => {
             }}
         >
             <div className="graphql-example__content">
-                {hasOpened && <GraphqlSampleEditor {...props} />}
-                {response && <GraphqlResponse response={response} />}
+                {hasOpened && (
+                    <>
+                        <GraphqlSampleEditor {...props} />
+                        {response && <GraphqlResponse response={response} />}
+                    </>
+                )}
             </div>
         </Details>
     );

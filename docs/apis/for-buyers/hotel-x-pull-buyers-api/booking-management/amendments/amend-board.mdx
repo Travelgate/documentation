@@ -4,6 +4,8 @@ sidebar_position: 3
 
 import {boardAmendmentQuoteQuery, boardAmendmentQuoteVariables} from "../../../../../../src/graphql/hotel-x/amend-board/board.amendment.quote.query";
 import {boardAmendmentCommitMutation, boardAmendmentCommitVariables} from "../../../../../../src/graphql/hotel-x/amend-board/board.amendment.commit.mutation";
+import boardAmendmentQuoteResponse from "../../../../../../src/graphql/hotel-x/amend-board/responses/board-amendment-quote.response.json";
+import boardAmendmentCommitResponse from "../../../../../../src/graphql/hotel-x/amend-board/responses/board-amendment-commit.response.json";
 
 # Amend Board
 
@@ -86,7 +88,7 @@ Settings are the common configurations used to construct requests to the supplie
 
 #### Board amendment quote with the `bookingID` from the book response
 
-<GraphqlSample api="shopping" query={boardAmendmentQuoteQuery} variables={boardAmendmentQuoteVariables} />
+<GraphqlSample api="shopping" query={boardAmendmentQuoteQuery} variables={boardAmendmentQuoteVariables} response={boardAmendmentQuoteResponse} />
 
 
 ## Commit Amend Board 
@@ -143,4 +145,4 @@ Settings are the common configurations used to construct requests to the supplie
 
 ### Requests Examples
 
-<GraphqlSample api="shopping" query={boardAmendmentCommitMutation} variables={boardAmendmentCommitVariables} />
+<GraphqlSample api="shopping" query={boardAmendmentCommitMutation} variables={boardAmendmentCommitVariables} response={boardAmendmentCommitResponse} />

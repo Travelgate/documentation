@@ -5,6 +5,9 @@ import HotelXCategoryQueryInput from "../../../../../src/graphql/generated-docs/
 import CategoryConnection from "../../../../../src/graphql/generated-docs/CategoryConnection.mdx";
 
 import {categoriesQuery, categoriesVariables, categoriesFastXVariables, categoriesByCategoryCodeVariables} from "../../../../../src/graphql/hotel-x/categories/categories.query";
+import categoriesResponse from "../../../../../src/graphql/hotel-x/categories/responses/categories.response.json";
+import categoriesFastXResponse from "../../../../../src/graphql/hotel-x/categories/responses/categories-fastx.response.json";
+import categoriesByCategoryCodeResponse from "../../../../../src/graphql/hotel-x/categories/responses/categories-by-category-code.response.json";
 
 
 # Categories
@@ -65,18 +68,18 @@ HotelX supports all languages, but receiving categories descriptions in one or a
 
 To retrieve the **FastX Category Master**, make a `category list` call using your **FastX access**, which you can find in the *MyConnections* section under the Seller **"Travelgate"**.
 
-<GraphqlSample api="content" query={categoriesQuery} variables={categoriesFastXVariables} />
+<GraphqlSample api="content" query={categoriesQuery} variables={categoriesFastXVariables} response={categoriesFastXResponse} />
 
 
 ### Supplier category list
 
 To retrieve one Supplier's native category master, include that Supplier's access in the query (for example, access `2` for the Travelgate Test supplier).
 
-<GraphqlSample api="content" query={categoriesQuery} variables={categoriesVariables} />
+<GraphqlSample api="content" query={categoriesQuery} variables={categoriesVariables} response={categoriesResponse} />
 
 ### Category list for specific category codes
 
 Use the Categories List Query to filter specific category types. For example, to focus on 4-star inventory from a Supplier, include `categoryCodes` such as "4" and "5" in your criteria (these are supplier-native category codes in this example). This helps you retrieve more targeted and relevant results.
 
-<GraphqlSample api="content" query={categoriesQuery} variables={categoriesByCategoryCodeVariables} />
+<GraphqlSample api="content" query={categoriesQuery} variables={categoriesByCategoryCodeVariables} response={categoriesByCategoryCodeResponse} />
 

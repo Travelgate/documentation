@@ -3,6 +3,7 @@ import '../graphql/setupMonacoWorkers';
 import {useEffect, useMemo, useRef, useState} from 'react';
 import BrowserOnly from '@docusaurus/BrowserOnly';
 import {Details} from '@docusaurus/theme-common/Details';
+import {useColorMode} from '@docusaurus/theme-common';
 import CodeBlock from '@theme/CodeBlock';
 import {createGraphiQLFetcher} from '@graphiql/toolkit';
 import {GraphiQL} from 'graphiql';
@@ -21,6 +22,12 @@ const DEFAULT_HEADERS = JSON.stringify({
 }, null, 2);
 
 const getBearerHeaders = (token) => JSON.stringify({Authorization: `Bearer ${token}`}, null, 2);
+
+// GraphiQL resolves the Monaco theme from the OS preference; pin both variants to the site's color mode.
+const EDITOR_THEMES = {
+    light: {light: 'graphiql-LIGHT', dark: 'graphiql-LIGHT'},
+    dark: {light: 'graphiql-DARK', dark: 'graphiql-DARK'},
+};
 
 const getStoredHeaders = () => {
     if (typeof window === 'undefined') return DEFAULT_HEADERS;
@@ -74,8 +81,32 @@ const GraphqlResponse = ({response}) => {
     );
 };
 
+const formatJson = (value) => {
+    try {
+        return JSON.stringify(JSON.parse(value), null, 2);
+    } catch {
+        return value;
+    }
+};
+
+const GraphqlStaticExample = ({query, variables, response}) => {
+    const formattedVariables = useMemo(() => variables && formatJson(variables), [variables]);
+    const formattedResponse = useMemo(() => JSON.stringify(response, null, 2), [response]);
+
+    return (
+        <div className="graphql-static-example">
+            <CodeBlock language="graphql" title="Query">{query.trim().replace(/\t/g, '  ')}</CodeBlock>
+            {formattedVariables && <CodeBlock language="json" title="Variables">{formattedVariables}</CodeBlock>}
+            <CodeBlock language="json" title="Response" className="graphql-static-example__response">
+                {formattedResponse}
+            </CodeBlock>
+        </div>
+    );
+};
+
 const GraphqlSampleEditor = ({token, query: queryProp, variables: variablesProp, api = 'generic', showLabel = true}) => {
     const isBrowser = useIsBrowser();
+    const {colorMode} = useColorMode();
     const client = useClientName();
     const {label, endpoint} = getGraphqlApi(api);
     // The default sample declares its own variables, so both must fall back together.
@@ -143,6 +174,8 @@ const GraphqlSampleEditor = ({token, query: queryProp, variables: variablesProp,
                                 <GraphiQL
                                     key={`${api}:${token ?? 'anonymous'}:${client ?? 'placeholder'}`}
                                     fetcher={fetcher}
+                                    forcedTheme={colorMode}
+                                    editorTheme={EDITOR_THEMES[colorMode]}
                                     storage={storage}
                                     initialHeaders={formattedHeaders}
                                     onEditHeaders={updateHeaders}
@@ -163,14 +196,20 @@ const GraphqlSampleEditor = ({token, query: queryProp, variables: variablesProp,
 const GraphqlSample = ({collapsible = true, response, ...props}) => {
     const [hasOpened, setHasOpened] = useState(false);
     const {label} = getGraphqlApi(props.api ?? 'generic');
+    // Without a session the APIs can't be called, so samples with a stored response are shown statically.
+    const isStatic = !props.token && Boolean(response) && Boolean(props.query);
 
-    if (!collapsible) {
-        return (
+    const content = isStatic
+        ? <GraphqlStaticExample query={props.query} variables={props.variables} response={response} />
+        : (
             <>
                 <GraphqlSampleEditor {...props} />
                 {response && <GraphqlResponse response={response} />}
             </>
         );
+
+    if (!collapsible) {
+        return content;
     }
 
     return (
@@ -178,7 +217,7 @@ const GraphqlSample = ({collapsible = true, response, ...props}) => {
             className="graphql-example"
             summary={
                 <summary className="graphql-example__summary">
-                    <span className="graphql-example__title">Try this example</span>
+                    <span className="graphql-example__title">{isStatic ? 'View the example' : 'Try this example'}</span>
                     <span className="graphql-sample-interactive__api">{label}</span>
                 </summary>
             }
@@ -189,12 +228,7 @@ const GraphqlSample = ({collapsible = true, response, ...props}) => {
             }}
         >
             <div className="graphql-example__content">
-                {hasOpened && (
-                    <>
-                        <GraphqlSampleEditor {...props} />
-                        {response && <GraphqlResponse response={response} />}
-                    </>
-                )}
+                {hasOpened && content}
             </div>
         </Details>
     );

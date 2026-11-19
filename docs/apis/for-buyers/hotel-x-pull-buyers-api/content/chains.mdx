@@ -3,6 +3,9 @@ sidebar_position: 8
 ---
 
 import {chainsQuery, chainsVariables, chainsFastXVariables, chainsByChainCodeVariables} from "../../../../../src/graphql/hotel-x/chains/chains.query";
+import chainsResponse from "../../../../../src/graphql/hotel-x/chains/responses/chains.response.json";
+import chainsFastXResponse from "../../../../../src/graphql/hotel-x/chains/responses/chains-fastx.response.json";
+import chainsByChainCodeResponse from "../../../../../src/graphql/hotel-x/chains/responses/chains-by-chain-code.response.json";
 
 # Chains
 
@@ -40,19 +43,19 @@ When creating your chains query, you have one input to fill based on your needs:
 
 To retrieve chain values from the FastX scope, run the query using your FastX access (Seller **"Travelgate"** in *MyConnections*).
 
-<GraphqlSample api="content" query={chainsQuery} variables={chainsFastXVariables} />
+<GraphqlSample api="content" query={chainsQuery} variables={chainsFastXVariables} response={chainsFastXResponse} />
 
 ### Supplier chain list
 
 To retrieve chain values from one Supplier scope, run the query using that Supplier access (for example, access `2` for Travelgate Test supplier).
 
-<GraphqlSample api="content" query={chainsQuery} variables={chainsVariables} />
+<GraphqlSample api="content" query={chainsQuery} variables={chainsVariables} response={chainsResponse} />
 
 ### Chain list for specific chain codes
 
 Use the Chains Query to filter specific chain values. For example, include `chainCodes` in your criteria to retrieve only selected chain codes from the chosen Supplier scope.
 
-<GraphqlSample api="content" query={chainsQuery} variables={chainsByChainCodeVariables} />
+<GraphqlSample api="content" query={chainsQuery} variables={chainsByChainCodeVariables} response={chainsByChainCodeResponse} />
 
 :::note
 

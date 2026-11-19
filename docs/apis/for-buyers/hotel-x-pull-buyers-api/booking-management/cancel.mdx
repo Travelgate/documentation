@@ -7,6 +7,8 @@ import HotelCancelInput from "../../../../../src/graphql/generated-docs/HotelCan
 import HotelCancelPayload from "../../../../../src/graphql/generated-docs/HotelCancelPayload.mdx";
 
 import {cancelMutation, cancelByBookingIDVariables, cancelByReferenceVariables} from "../../../../../src/graphql/hotel-x/cancel/cancel.mutation";
+import cancelByBookingIDResponse from "../../../../../src/graphql/hotel-x/cancel/responses/cancel-by-booking-id.response.json";
+import cancelByReferenceResponse from "../../../../../src/graphql/hotel-x/cancel/responses/cancel-by-reference.response.json";
 
 
 # Cancel
@@ -165,11 +167,11 @@ Cancellation always takes into account the day and time of the destination in or
 
 #### Cancel with the `bookingID` from the book response
 
-<GraphqlSample api="shopping" query={cancelMutation} variables={cancelByBookingIDVariables} />
+<GraphqlSample api="shopping" query={cancelMutation} variables={cancelByBookingIDVariables} response={cancelByBookingIDResponse} />
 
 #### Cancel using the `accessCode`, `hotelCode` and `reference` from the book response
 
-<GraphqlSample api="shopping" query={cancelMutation} variables={cancelByReferenceVariables} />
+<GraphqlSample api="shopping" query={cancelMutation} variables={cancelByReferenceVariables} response={cancelByReferenceResponse} />
 
 
 ## Frequently Asked Questions

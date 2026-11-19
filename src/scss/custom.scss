@@ -131,6 +131,55 @@ article .graphiql-sidebar {
   }
 }
 
+.graphql-static-example__response pre {
+  max-height: 32rem;
+}
+
+// Prism tokens use inline colors, so !important is needed to match GraphiQL's light editor palette.
+html[data-theme='light'] .graphql-static-example {
+  .token.punctuation,
+  .token.operator {
+    color: #383a42 !important;
+  }
+
+  .token.keyword,
+  .token.boolean,
+  .token.null,
+  .token.constant {
+    color: #0000ff !important;
+  }
+
+  .token.string {
+    color: #a31515 !important;
+  }
+
+  .token.number {
+    color: #098658 !important;
+  }
+
+  .language-graphql {
+    .token.property,
+    .token.object,
+    .token.property-query {
+      color: #001080 !important;
+    }
+
+    .token.variable,
+    .token.attr-name {
+      color: #6c69ce !important;
+    }
+
+    .token.class-name,
+    .token.scalar {
+      color: #267f99 !important;
+    }
+  }
+
+  .language-json .token.property {
+    color: #0451a5 !important;
+  }
+}
+
 .graphql-sample-interactive__bar {
   display: flex;
   align-items: center;

@@ -5,6 +5,9 @@ import HotelXBoardQueryInput from "../../../../../src/graphql/generated-docs/Hot
 import BoardConnection from "../../../../../src/graphql/generated-docs/BoardConnection.mdx";
 
 import {boardsQuery, boardsVariables, boardsFastXVariables, boardsByBoardCodeVariables} from "../../../../../src/graphql/hotel-x/boards/boards.query";
+import boardsResponse from "../../../../../src/graphql/hotel-x/boards/responses/boards.response.json";
+import boardsFastXResponse from "../../../../../src/graphql/hotel-x/boards/responses/boards-fastx.response.json";
+import boardsByBoardCodeResponse from "../../../../../src/graphql/hotel-x/boards/responses/boards-by-board-code.response.json";
 
 
 # Boards
@@ -52,19 +55,19 @@ This query offers versatility, with certain fields marked as mandatory (`access`
 
 To retrieve the **FastX Board Master**, make a `board list` call using your **FastX access**, which you can find in the *MyConnections* section under the Seller **"Travelgate"**. This returns the complete list of unique boards from the Travelgate ecosystem.
 
-<GraphqlSample api="content" query={boardsQuery} variables={boardsFastXVariables} />
+<GraphqlSample api="content" query={boardsQuery} variables={boardsFastXVariables} response={boardsFastXResponse} />
 
 ### Supplier board list
 
 To retrieve only one Supplier's native board list, include that Supplier's access in the query (for example, access `2` for the Travelgate Test supplier).
 
-<GraphqlSample api="content" query={boardsQuery} variables={boardsVariables} />
+<GraphqlSample api="content" query={boardsQuery} variables={boardsVariables} response={boardsResponse} />
 
 ### Board list for specific board code
 
 Use the Boards List Query to filter specific board types. For example, if you only want half board options, include `boardCodes` such as "2" and "256" in your criteria (these are supplier-native codes for half board in this example). This helps you retrieve more targeted and relevant results.
 
-<GraphqlSample api="content" query={boardsQuery} variables={boardsByBoardCodeVariables} />
+<GraphqlSample api="content" query={boardsQuery} variables={boardsByBoardCodeVariables} response={boardsByBoardCodeResponse} />
 
 :::note
 

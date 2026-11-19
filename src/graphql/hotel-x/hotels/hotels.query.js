@@ -128,11 +128,11 @@ export const hotelsVariables =
 export const hotelsByCountryVariables = 
 `{
 	"criteriaHotels": {
-		"access": "34538",
+		"access": "34769",
 		"countries": [
-			"GR"
+			"US"
 		],
-		"maxSize": 5
+		"maxSize": 10
 	},
 	"token": ""
 }`
@@ -154,7 +154,7 @@ export const hotelsByDestinationCodeVariables =
 export const hotelsByHotelCodeVariables = 
 `{
 	"criteriaHotels": {
-		"access": "34538",
+		"access": "34769",
 		"hotelCodes": [
 			"BR1518",
 			"US2028"
@@ -167,7 +167,7 @@ export const hotelsByHotelCodeVariables =
 export const hotelsFastXVariables = 
 `{
 	"criteriaHotels": {
-		"access": "34538"
+		"access": "34769"
 	},
 	"token": ""
 }`

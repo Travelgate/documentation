@@ -30,7 +30,7 @@ export const boardsVariables =
 export const boardsFastXVariables = 
 `{
 	"criteria": {
-		"access": "34538"
+		"access": "34769"
 	}
 }`
 

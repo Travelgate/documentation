@@ -3,6 +3,7 @@ import '../graphql/setupMonacoWorkers';
 import {useEffect, useMemo, useRef, useState} from 'react';
 import BrowserOnly from '@docusaurus/BrowserOnly';
 import {Details} from '@docusaurus/theme-common/Details';
+import {useColorMode} from '@docusaurus/theme-common';
 import CodeBlock from '@theme/CodeBlock';
 import {createGraphiQLFetcher} from '@graphiql/toolkit';
 import {GraphiQL} from 'graphiql';
@@ -12,12 +13,35 @@ import withToken from "../components/WithToken";
 import {CheckIcon, CopyIcon, CopyStatus, useCopyToClipboard} from "../components/CopyToClipboard";
 import {hotelsListQuerySampleA, hotelsListQuerySampleAVariables} from "../graphql/sample-queries/hotels.list.query";
 import {replaceClient} from "../utils";
+import {useClientName} from "../auth/ClientProvider";
 import {getGraphqlApi, createPlaygroundStorage} from "../graphql/playgrounds";
 
 const PLAYGROUND_HEADERS_STORAGE_KEY = 'travelgate-playground:request-headers';
 const DEFAULT_HEADERS = JSON.stringify({
     Authorization: 'Bearer <YOUR_TRAVELGATE_BEARER_TOKEN>',
 }, null, 2);
+
+const getBearerHeaders = (token) => JSON.stringify({Authorization: `Bearer ${token}`}, null, 2);
+
+// GraphiQL resolves the Monaco theme from the OS preference; pin both variants to the site's color mode.
+const EDITOR_THEMES = {
+    light: {light: 'graphiql-LIGHT', dark: 'graphiql-LIGHT'},
+    dark: {light: 'graphiql-DARK', dark: 'graphiql-DARK'},
+};
+
+const getStoredHeaders = () => {
+    if (typeof window === 'undefined') return DEFAULT_HEADERS;
+    try {
+        const storedHeaders = window.sessionStorage.getItem(PLAYGROUND_HEADERS_STORAGE_KEY);
+        const parsedHeaders = storedHeaders && JSON.parse(storedHeaders);
+        if (parsedHeaders && typeof parsedHeaders === 'object' && !Array.isArray(parsedHeaders)) {
+            return storedHeaders;
+        }
+    } catch {
+        return DEFAULT_HEADERS;
+    }
+    return DEFAULT_HEADERS;
+};
 
 const EndpointBar = ({label, endpoint}) => {
     const [copied, copy] = useCopyToClipboard(endpoint);
@@ -57,28 +81,41 @@ const GraphqlResponse = ({response}) => {
     );
 };
 
+const formatJson = (value) => {
+    try {
+        return JSON.stringify(JSON.parse(value), null, 2);
+    } catch {
+        return value;
+    }
+};
+
+const GraphqlStaticExample = ({query, variables, response}) => {
+    const formattedVariables = useMemo(() => variables && formatJson(variables), [variables]);
+    const formattedResponse = useMemo(() => JSON.stringify(response, null, 2), [response]);
+
+    return (
+        <div className="graphql-static-example">
+            <CodeBlock language="graphql" title="Query">{query.trim().replace(/\t/g, '  ')}</CodeBlock>
+            {formattedVariables && <CodeBlock language="json" title="Variables">{formattedVariables}</CodeBlock>}
+            {response && (
+                <CodeBlock language="json" title="Response" className="graphql-static-example__response">
+                    {formattedResponse}
+                </CodeBlock>
+            )}
+        </div>
+    );
+};
+
 const GraphqlSampleEditor = ({token, query: queryProp, variables: variablesProp, api = 'generic', showLabel = true}) => {
     const isBrowser = useIsBrowser();
+    const {colorMode} = useColorMode();
+    const client = useClientName();
     const {label, endpoint} = getGraphqlApi(api);
     // The default sample declares its own variables, so both must fall back together.
     const usesDefaultSample = queryProp === undefined;
     const query = usesDefaultSample ? hotelsListQuerySampleA : queryProp;
     const variables = usesDefaultSample ? hotelsListQuerySampleAVariables : variablesProp;
-    const [headers, setHeaders] = useState(() => {
-        if (token) return JSON.stringify({Authorization: `Bearer ${token}`}, null, 2);
-        if (typeof window !== 'undefined') {
-            try {
-                const storedHeaders = window.sessionStorage.getItem(PLAYGROUND_HEADERS_STORAGE_KEY);
-                const parsedHeaders = storedHeaders && JSON.parse(storedHeaders);
-                if (parsedHeaders && typeof parsedHeaders === 'object' && !Array.isArray(parsedHeaders)) {
-                    return storedHeaders;
-                }
-            } catch {
-                return DEFAULT_HEADERS;
-            }
-        }
-        return DEFAULT_HEADERS;
-    });
+    const [headers] = useState(() => token ? getBearerHeaders(token) : getStoredHeaders());
     const [fetcherHeaders, setFetcherHeaders] = useState(() => JSON.parse(headers));
     const headerUpdateTimer = useRef(null);
     const fetcher = useMemo(() => ExecutionEnvironment.canUseDOM
@@ -87,21 +124,11 @@ const GraphqlSampleEditor = ({token, query: queryProp, variables: variablesProp,
     const storage = useMemo(() => ExecutionEnvironment.canUseDOM
         ? createPlaygroundStorage(api, localStorage)
         : undefined, [api]);
-    const [parsedVariables, setParsedVariables] = useState(variables);
-    const formattedHeaders = useMemo(() => token
-        ? JSON.stringify({Authorization: `Bearer ${token}`}, null, 2)
-        : JSON.stringify(JSON.parse(headers), null, 2), [headers, token]);
+    const parsedVariables = useMemo(() => variables && client ? replaceClient(variables, client) : variables, [variables, client]);
+    const formattedHeaders = useMemo(() => JSON.stringify(JSON.parse(headers), null, 2), [headers]);
     const formattedVariables = useMemo(() => parsedVariables
         ? JSON.stringify(JSON.parse(parsedVariables), null, 2)
         : '', [parsedVariables]);
-
-    useEffect(() => {
-        if (token) {
-            setHeaders(`{"Authorization": "Bearer ${token}"}`);
-            clearTimeout(headerUpdateTimer.current);
-            setFetcherHeaders({Authorization: `Bearer ${token}`});
-        }
-    }, [token]);
 
     useEffect(() => () => clearTimeout(headerUpdateTimer.current), []);
 
@@ -116,19 +143,16 @@ const GraphqlSampleEditor = ({token, query: queryProp, variables: variablesProp,
         }
         if (!parsedHeaders || typeof parsedHeaders !== 'object' || Array.isArray(parsedHeaders)) return;
 
-        try {
-            window.sessionStorage.setItem(PLAYGROUND_HEADERS_STORAGE_KEY, value);
-        } catch {
-            // Continue without persistence if browser storage is unavailable.
+        // Never persist headers that carry the logged-in user's token.
+        if (!token) {
+            try {
+                window.sessionStorage.setItem(PLAYGROUND_HEADERS_STORAGE_KEY, value);
+            } catch {
+                // Continue without persistence if browser storage is unavailable.
+            }
         }
         headerUpdateTimer.current = setTimeout(() => setFetcherHeaders(parsedHeaders), 500);
     };
-
-    useEffect(() => {
-        if (variables) {
-            setParsedVariables(replaceClient(variables, localStorage.getItem('client') ?? '<YOUR_CLIENT>'));
-        }
-    }, [variables]);
 
     return (
         <>
@@ -139,8 +163,10 @@ const GraphqlSampleEditor = ({token, query: queryProp, variables: variablesProp,
                             <div className="graphql-sample-interactive" aria-label="Interactive GraphQL playground">
                                 {showLabel && <EndpointBar label={label} endpoint={endpoint} />}
                                 <GraphiQL
-                                    key={`${api}:${token ? 'authenticated' : 'anonymous'}`}
+                                    key={`${api}:${client ?? 'placeholder'}`}
                                     fetcher={fetcher}
+                                    forcedTheme={colorMode}
+                                    editorTheme={EDITOR_THEMES[colorMode]}
                                     storage={storage}
                                     initialHeaders={formattedHeaders}
                                     onEditHeaders={updateHeaders}
@@ -158,17 +184,26 @@ const GraphqlSampleEditor = ({token, query: queryProp, variables: variablesProp,
     );
 }
 
-const GraphqlSample = ({collapsible = true, response, ...props}) => {
+const GraphqlSample = ({collapsible = true, response: responseProp, ...props}) => {
     const [hasOpened, setHasOpened] = useState(false);
     const {label} = getGraphqlApi(props.api ?? 'generic');
+    // Some stored responses are still empty placeholders (`{}`); they must not render as a response.
+    const response = responseProp && Object.keys(responseProp).length > 0 ? responseProp : null;
+    // Without a session the APIs can't be called, so HotelX samples (those with a stored response) are shown statically.
+    const isStatic = !props.token && Boolean(responseProp) && Boolean(props.query);
 
-    if (!collapsible) {
-        return (
+    const content = isStatic
+        ? <GraphqlStaticExample query={props.query} variables={props.variables} response={response} />
+        : (
             <>
-                <GraphqlSampleEditor {...props} />
+                {/* Remount on token change so headers and fetcher start from the current token. */}
+                <GraphqlSampleEditor key={props.token ?? 'anonymous'} {...props} />
                 {response && <GraphqlResponse response={response} />}
             </>
         );
+
+    if (!collapsible) {
+        return content;
     }
 
     return (
@@ -176,7 +211,7 @@ const GraphqlSample = ({collapsible = true, response, ...props}) => {
             className="graphql-example"
             summary={
                 <summary className="graphql-example__summary">
-                    <span className="graphql-example__title">Try this example</span>
+                    <span className="graphql-example__title">{isStatic ? 'View the example' : 'Try this example'}</span>
                     <span className="graphql-sample-interactive__api">{label}</span>
                 </summary>
             }
@@ -187,12 +222,7 @@ const GraphqlSample = ({collapsible = true, response, ...props}) => {
             }}
         >
             <div className="graphql-example__content">
-                {hasOpened && (
-                    <>
-                        <GraphqlSampleEditor {...props} />
-                        {response && <GraphqlResponse response={response} />}
-                    </>
-                )}
+                {hasOpened && content}
             </div>
         </Details>
     );

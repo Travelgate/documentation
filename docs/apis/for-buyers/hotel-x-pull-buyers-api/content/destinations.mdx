@@ -6,6 +6,9 @@ import DestinationConnection from "../../../../../src/graphql/generated-docs/Des
 import Token from "../../../../../src/graphql/generated-docs/token.mdx";
 
 import {destinationsQuery, destinationsVariables, destinationsFastXVariables, destinationsByDestinationCodeVariables} from "../../../../../src/graphql/hotel-x/destinations/destinations.query";
+import destinationsResponse from "../../../../../src/graphql/hotel-x/destinations/responses/destinations.response.json";
+import destinationsFastXResponse from "../../../../../src/graphql/hotel-x/destinations/responses/destinations-fastx.response.json";
+import destinationsByDestinationCodeResponse from "../../../../../src/graphql/hotel-x/destinations/responses/destinations-by-destination-code.response.json";
 
 
 # Destinations
@@ -157,16 +160,16 @@ The values returned depend on the selected scope (FastX or Supplier, depending o
 
 To retrieve the **FastX Destination Master**, make a `destination list` call using your **FastX access**, which you can find in the *MyConnections* section under the Seller **"Travelgate"**.
 
-<GraphqlSample api="content" query={destinationsQuery} variables={destinationsFastXVariables} />
+<GraphqlSample api="content" query={destinationsQuery} variables={destinationsFastXVariables} response={destinationsFastXResponse} />
 
 ### Supplier destination list
 
 To retrieve one Supplier's native destination master, include that Supplier's access in the query (for example, access `2` for the Travelgate Test supplier).
 
-<GraphqlSample api="content" query={destinationsQuery} variables={destinationsVariables} />
+<GraphqlSample api="content" query={destinationsQuery} variables={destinationsVariables} response={destinationsResponse} />
 
 ### Destination list for specific destination codes
 
 Use the Destinations Query to filter specific destination values. For example, to focus solely on the Spanish inventory of a Seller, include `destinationCodes` with `"ES"` in your criteria. This will ensure you receive destinations directly related to that selected node.
 
-<GraphqlSample api="content" query={destinationsQuery} variables={destinationsByDestinationCodeVariables} />
+<GraphqlSample api="content" query={destinationsQuery} variables={destinationsByDestinationCodeVariables} response={destinationsByDestinationCodeResponse} />

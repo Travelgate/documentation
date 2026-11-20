@@ -1,22 +1,12 @@
-import React, {useEffect} from 'react';
-import {useAuth0} from "@auth0/auth0-react";
+import React from 'react';
+import {useAuth} from "../auth/AuthProvider";
 
 
 const withToken = (WrappedComponent) => {
 
     // Return a new component
     return function WithToken(props) {
-        const { isAuthenticated, getIdTokenClaims } = useAuth0();
-        const [token, setToken] = React.useState(null);
-
-        useEffect(() => {
-            if (isAuthenticated) {
-                getIdTokenClaims().then(token => {
-                    setToken(token?.__raw)
-                });
-            }
-
-        }, [isAuthenticated]);
+        const {idToken: token} = useAuth();
 
         // Merge the extraProps with the existing props
         const combinedProps = {

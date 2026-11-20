@@ -5,6 +5,13 @@ const { themes } = require("prism-react-renderer");
 const lightTheme = themes.github;
 const darkTheme = themes.dracula;
 
+// `npm start` only: `.env` may point the login to a local web BFF; builds always use production.
+const isDevelopment = process.env.NODE_ENV === "development";
+const envFile = require("path").join(__dirname, ".env");
+if (isDevelopment && require("fs").existsSync(envFile)) {
+  process.loadEnvFile(envFile);
+}
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Travelgate Docs",
@@ -43,6 +50,11 @@ const config = {
   },
 
   clientModules: [require.resolve("./src/gtm/gtmTracking.js")],
+
+  customFields: {
+    // Shared Travelgate web BFF handling the Auth0 login (must be same-site with the docs origin).
+    webBffUrl: (isDevelopment && process.env.WEB_BFF_URL) || "https://app.travelgate.com/api/",
+  },
 
   headTags: [
     {

@@ -6,6 +6,11 @@ import HotelConnection from "../../../../../src/graphql/generated-docs/HotelConn
 import Token from "../../../../../src/graphql/generated-docs/token.mdx";
 
 import {hotelsQuery, hotelsVariables, hotelsFastXVariables, hotelsByCountryVariables, hotelsByDestinationCodeVariables, hotelsByHotelCodeVariables} from "../../../../../src/graphql/hotel-x/hotels/hotels.query";
+import hotelsResponse from "../../../../../src/graphql/hotel-x/hotels/responses/hotels.response.json";
+import hotelsFastXResponse from "../../../../../src/graphql/hotel-x/hotels/responses/hotels-fastx.response.json";
+import hotelsByCountryResponse from "../../../../../src/graphql/hotel-x/hotels/responses/hotels-by-country.response.json";
+import hotelsByDestinationCodeResponse from "../../../../../src/graphql/hotel-x/hotels/responses/hotels-by-destination-code.response.json";
+import hotelsByHotelCodeResponse from "../../../../../src/graphql/hotel-x/hotels/responses/hotels-by-hotel-code.response.json";
 
 
 # Hotels
@@ -150,7 +155,7 @@ When performing a Hotels Query **using the FastX access**, the following fields 
 Activate [**FastX Content by AO**](/kb/connectivity-products/for-buyers/hotel-x/fastx/fastx-content) to add complete and standardized hotel and room content for each FastX code, including descriptions, images, amenities, and more.
 :::
 
-<GraphqlSample api="content" query={hotelsQuery} variables={hotelsFastXVariables} />
+<GraphqlSample api="content" query={hotelsQuery} variables={hotelsFastXVariables} response={hotelsFastXResponse} />
 
 ### Supplier hotel list
 
@@ -158,7 +163,7 @@ To retrieve only one Supplier's portfolio, include that Supplier's access in the
 
 The response returns the Supplier's native static content, so the available data depends on what that Seller provides. In this case, `hotelCode` corresponds to the Supplier's native hotel code, and you can also find the matched FastX code in the `mappings` field.
 
-<GraphqlSample api="content" query={hotelsQuery} variables={hotelsVariables} />
+<GraphqlSample api="content" query={hotelsQuery} variables={hotelsVariables} response={hotelsResponse} />
 
 :::note
 
@@ -173,7 +178,7 @@ HotelX supports all languages, but receiving hotel descriptions in one or anothe
 
 If you want to retrieve the information of specific hotel codes, you will need to specify the codes in the `hotelCodes` field:
 
-<GraphqlSample api="content" query={hotelsQuery} variables={hotelsByHotelCodeVariables} />
+<GraphqlSample api="content" query={hotelsQuery} variables={hotelsByHotelCodeVariables} response={hotelsByHotelCodeResponse} />
 
 
 
@@ -182,7 +187,7 @@ If you want to retrieve the information of specific hotel codes, you will need t
 
 When utilizing the Hotels List Query, for more personalized results, filter specific hotels, countries or destinations based on your interests. For example, to focus solely on the inventory of all your Sellers in Greece, add the `countries` field with "GR" in your criteria. This will ensure you receive hotels directly related to that country, providing you with highly targeted and relevant information.
 
-<GraphqlSample api="content" query={hotelsQuery} variables={hotelsByCountryVariables} />
+<GraphqlSample api="content" query={hotelsQuery} variables={hotelsByCountryVariables} response={hotelsByCountryResponse} />
 
 
 
@@ -190,7 +195,7 @@ When utilizing the Hotels List Query, for more personalized results, filter spec
 
 Filter hotels by destination zone. For example, to retrieve only hotels in Santorini, use the destination code that the Supplier has assigned (e.g., `"101402"` for Santorini in the test Supplier). Include this code in the `destinationCodes` field:
 
-<GraphqlSample api="content" query={hotelsQuery} variables={hotelsByDestinationCodeVariables} />
+<GraphqlSample api="content" query={hotelsQuery} variables={hotelsByDestinationCodeVariables} response={hotelsByDestinationCodeResponse} />
 
 
 

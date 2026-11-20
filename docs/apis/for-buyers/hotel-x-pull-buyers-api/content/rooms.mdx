@@ -5,6 +5,8 @@ import HotelXRoomQueryInput from "../../../../../src/graphql/generated-docs/Hote
 import Token from "../../../../../src/graphql/generated-docs/token.mdx";
 
 import {roomsQuery, roomsVariables, roomsByRoomCodeVariables} from "../../../../../src/graphql/hotel-x/rooms/rooms.query";
+import roomsResponse from "../../../../../src/graphql/hotel-x/rooms/responses/rooms.response.json";
+import roomsByRoomCodeResponse from "../../../../../src/graphql/hotel-x/rooms/responses/rooms-by-room-code.response.json";
 
 
 # Rooms
@@ -196,11 +198,11 @@ Supplier-native room codes and descriptions are always preserved in the response
 
 #### Supplier room list
 
-<GraphqlSample api="content" query={roomsQuery} variables={roomsVariables} />
+<GraphqlSample api="content" query={roomsQuery} variables={roomsVariables} response={roomsResponse} />
 
 
 #### Room list for specific room code
 
 Use the Rooms List Query to filter specific room types. For example, if you want to focus on a Seller's double room inventory, include `roomCodes` such as "2269" in your criteria (in this example, it corresponds to the Seller's "Double Standard" room). This helps you retrieve more targeted and relevant results.
 
-<GraphqlSample api="content" query={roomsQuery} variables={roomsByRoomCodeVariables} />
+<GraphqlSample api="content" query={roomsQuery} variables={roomsByRoomCodeVariables} response={roomsByRoomCodeResponse} />

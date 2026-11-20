@@ -4,6 +4,8 @@ sidebar_position: 6
 
 import {remarksAmendmentQuoteQuery, remarksAmendmentQuoteVariables} from "../../../../../../src/graphql/hotel-x/amend-remarks/remarks.amendment.quote.query";
 import {remarksAmendmentCommitMutation, remarksAmendmentCommitVariables} from "../../../../../../src/graphql/hotel-x/amend-remarks/remarks.amendment.commit.mutation";
+import remarksAmendmentQuoteResponse from "../../../../../../src/graphql/hotel-x/amend-remarks/responses/remarks-amendment-quote.response.json";
+import remarksAmendmentCommitResponse from "../../../../../../src/graphql/hotel-x/amend-remarks/responses/remarks-amendment-commit.response.json";
 
 # Amend Remarks
 
@@ -91,7 +93,7 @@ Keep in mind that if you leave some of the fields in the `settings` inputs unspe
 
 #### Remarks amendment quote with the `bookingID` from the book response
 
-<GraphqlSample api="shopping" query={remarksAmendmentQuoteQuery} variables={remarksAmendmentQuoteVariables} />
+<GraphqlSample api="shopping" query={remarksAmendmentQuoteQuery} variables={remarksAmendmentQuoteVariables} response={remarksAmendmentQuoteResponse} />
 
 
 
@@ -150,4 +152,4 @@ Settings are the common configurations used to construct requests to the supplie
 
 ### Requests Examples
 
-<GraphqlSample api="shopping" query={remarksAmendmentCommitMutation} variables={remarksAmendmentCommitVariables} />
+<GraphqlSample api="shopping" query={remarksAmendmentCommitMutation} variables={remarksAmendmentCommitVariables} response={remarksAmendmentCommitResponse} />

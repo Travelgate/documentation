@@ -8,6 +8,8 @@ import SearchBar from '@theme/SearchBar';
 import NavbarMobileSidebarToggle from '@theme/Navbar/MobileSidebar/Toggle';
 import NavbarLogo from '@theme/Navbar/Logo';
 import NavbarSearch from '@theme/Navbar/Search';
+import {useAuth} from '../../../auth/AuthProvider';
+import NavbarProfileMenu, {NavbarSignIn} from '../../../components/NavbarProfileMenu';
 
 function useNavbarItems() {
   // TODO temporary casting until ThemeConfig type is improved
@@ -49,6 +51,7 @@ export default function NavbarContent() {
   const items = useNavbarItems();
   const [leftItems, rightItems] = splitNavbarItems(items);
   const searchBarItem = items.find((item) => item.type === 'search');
+  const {status} = useAuth();
 
 
   return (
@@ -72,6 +75,12 @@ export default function NavbarContent() {
               <SearchBar />
             </NavbarSearch>
           )}
+
+          {status !== 'loading' && (status === 'authenticated' ? (
+            <NavbarProfileMenu />
+          ) : (
+            <NavbarSignIn />
+          ))}
         </>
       }
     />

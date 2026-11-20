@@ -4,6 +4,8 @@ sidebar_position: 4
 
 import {roomsAmendmentQuoteQuery, roomsAmendmentQuoteVariables} from "../../../../../../src/graphql/hotel-x/amend-rooms/rooms.amendment.quote.query";
 import {roomsAmendmentCommitMutation, roomsAmendmentCommitVariables} from "../../../../../../src/graphql/hotel-x/amend-rooms/rooms.amendment.commit.mutation";
+import roomsAmendmentQuoteResponse from "../../../../../../src/graphql/hotel-x/amend-rooms/responses/rooms-amendment-quote.response.json";
+import roomsAmendmentCommitResponse from "../../../../../../src/graphql/hotel-x/amend-rooms/responses/rooms-amendment-commit.response.json";
 
 
 # Amend Rooms
@@ -113,7 +115,7 @@ Settings are the common configurations used to construct requests to the supplie
 
 #### Rooms amendment quote with the `bookingID` from the book response
 
-<GraphqlSample api="shopping" query={roomsAmendmentQuoteQuery} variables={roomsAmendmentQuoteVariables} />
+<GraphqlSample api="shopping" query={roomsAmendmentQuoteQuery} variables={roomsAmendmentQuoteVariables} response={roomsAmendmentQuoteResponse} />
 
 
 
@@ -170,4 +172,4 @@ Settings are the common configurations used to construct requests to the supplie
 
 ### Requests Examples
 
-<GraphqlSample api="shopping" query={roomsAmendmentCommitMutation} variables={roomsAmendmentCommitVariables} />
+<GraphqlSample api="shopping" query={roomsAmendmentCommitMutation} variables={roomsAmendmentCommitVariables} response={roomsAmendmentCommitResponse} />

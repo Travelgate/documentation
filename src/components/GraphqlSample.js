@@ -97,9 +97,11 @@ const GraphqlStaticExample = ({query, variables, response}) => {
         <div className="graphql-static-example">
             <CodeBlock language="graphql" title="Query">{query.trim().replace(/\t/g, '  ')}</CodeBlock>
             {formattedVariables && <CodeBlock language="json" title="Variables">{formattedVariables}</CodeBlock>}
-            <CodeBlock language="json" title="Response" className="graphql-static-example__response">
-                {formattedResponse}
-            </CodeBlock>
+            {response && (
+                <CodeBlock language="json" title="Response" className="graphql-static-example__response">
+                    {formattedResponse}
+                </CodeBlock>
+            )}
         </div>
     );
 };
@@ -113,10 +115,9 @@ const GraphqlSampleEditor = ({token, query: queryProp, variables: variablesProp,
     const usesDefaultSample = queryProp === undefined;
     const query = usesDefaultSample ? hotelsListQuerySampleA : queryProp;
     const variables = usesDefaultSample ? hotelsListQuerySampleAVariables : variablesProp;
-    const [headers, setHeaders] = useState(() => token ? getBearerHeaders(token) : getStoredHeaders());
+    const [headers] = useState(() => token ? getBearerHeaders(token) : getStoredHeaders());
     const [fetcherHeaders, setFetcherHeaders] = useState(() => JSON.parse(headers));
     const headerUpdateTimer = useRef(null);
-    const previousToken = useRef(token);
     const fetcher = useMemo(() => ExecutionEnvironment.canUseDOM
         ? createGraphiQLFetcher({url: endpoint, headers: fetcherHeaders})
         : null, [endpoint, fetcherHeaders]);
@@ -128,16 +129,6 @@ const GraphqlSampleEditor = ({token, query: queryProp, variables: variablesProp,
     const formattedVariables = useMemo(() => parsedVariables
         ? JSON.stringify(JSON.parse(parsedVariables), null, 2)
         : '', [parsedVariables]);
-
-    useEffect(() => {
-        if (previousToken.current === token) return;
-        previousToken.current = token;
-
-        const nextHeaders = token ? getBearerHeaders(token) : getStoredHeaders();
-        clearTimeout(headerUpdateTimer.current);
-        setHeaders(nextHeaders);
-        setFetcherHeaders(JSON.parse(nextHeaders));
-    }, [token]);
 
     useEffect(() => () => clearTimeout(headerUpdateTimer.current), []);
 
@@ -172,7 +163,7 @@ const GraphqlSampleEditor = ({token, query: queryProp, variables: variablesProp,
                             <div className="graphql-sample-interactive" aria-label="Interactive GraphQL playground">
                                 {showLabel && <EndpointBar label={label} endpoint={endpoint} />}
                                 <GraphiQL
-                                    key={`${api}:${token ?? 'anonymous'}:${client ?? 'placeholder'}`}
+                                    key={`${api}:${client ?? 'placeholder'}`}
                                     fetcher={fetcher}
                                     forcedTheme={colorMode}
                                     editorTheme={EDITOR_THEMES[colorMode]}
@@ -193,17 +184,20 @@ const GraphqlSampleEditor = ({token, query: queryProp, variables: variablesProp,
     );
 }
 
-const GraphqlSample = ({collapsible = true, response, ...props}) => {
+const GraphqlSample = ({collapsible = true, response: responseProp, ...props}) => {
     const [hasOpened, setHasOpened] = useState(false);
     const {label} = getGraphqlApi(props.api ?? 'generic');
-    // Without a session the APIs can't be called, so samples with a stored response are shown statically.
-    const isStatic = !props.token && Boolean(response) && Boolean(props.query);
+    // Some stored responses are still empty placeholders (`{}`); they must not render as a response.
+    const response = responseProp && Object.keys(responseProp).length > 0 ? responseProp : null;
+    // Without a session the APIs can't be called, so HotelX samples (those with a stored response) are shown statically.
+    const isStatic = !props.token && Boolean(responseProp) && Boolean(props.query);
 
     const content = isStatic
         ? <GraphqlStaticExample query={props.query} variables={props.variables} response={response} />
         : (
             <>
-                <GraphqlSampleEditor {...props} />
+                {/* Remount on token change so headers and fetcher start from the current token. */}
+                <GraphqlSampleEditor key={props.token ?? 'anonymous'} {...props} />
                 {response && <GraphqlResponse response={response} />}
             </>
         );

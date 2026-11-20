@@ -3,10 +3,11 @@ import {useAuth} from "../auth/AuthProvider";
 
 
 const LoginPage = () => {
-    const {login} = useAuth();
+    const {login, loginState} = useAuth();
     return (
         <>
-            <button onClick={() => login()}>Log In</button>
+            <button onClick={() => login()} disabled={loginState === 'pending'}>Log In</button>
+            {loginState === 'error' && <p role="alert">Sign in failed. Please try again.</p>}
         </>
     )
 }

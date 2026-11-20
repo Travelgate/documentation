@@ -29,13 +29,42 @@ const Avatar = ({user, name, className}) => {
 };
 
 export function NavbarSignIn() {
-    const {login} = useAuth();
+    const {login, loginState, dismissLoginError} = useAuth();
+    const errorId = useId();
+    const hasError = loginState === 'error';
+
+    useEffect(() => {
+        if (!hasError) return undefined;
+
+        const onKeyDown = (event) => {
+            if (event.key === 'Escape') dismissLoginError();
+        };
+        document.addEventListener('pointerdown', dismissLoginError);
+        document.addEventListener('keydown', onKeyDown);
+        return () => {
+            document.removeEventListener('pointerdown', dismissLoginError);
+            document.removeEventListener('keydown', onKeyDown);
+        };
+    }, [hasError, dismissLoginError]);
 
     return (
-        <button type="button" className={styles.signIn} onClick={() => login()}>
-            <i className="fa-solid fa-user" aria-hidden="true" />
-            Sign in
-        </button>
+        <div className={styles.signInWrapper}>
+            <button
+                type="button"
+                className={styles.signIn}
+                disabled={loginState === 'pending'}
+                aria-describedby={hasError ? errorId : undefined}
+                onClick={() => login()}
+            >
+                <i className="fa-solid fa-user" aria-hidden="true" />
+                Sign in
+            </button>
+            {hasError && (
+                <span id={errorId} role="alert" className={styles.signInError}>
+                    Sign in failed. Please try again.
+                </span>
+            )}
+        </div>
     );
 }
 
